@@ -6,6 +6,8 @@ import { Application, ReflectionKind } from 'typedoc';
 import type { Comment, DeclarationReflection, ProjectReflection, Reflection, SignatureReflection } from 'typedoc';
 import ts from 'typescript';
 
+import { components as headlessComponents } from '../headless/src/constants/components';
+
 type ApiSectionKind = 'props' | 'emits' | 'slots' | 'slotProps';
 
 type ApiMember = {
@@ -62,10 +64,16 @@ type ComponentApi = {
   symbols: Record<string, ComponentSymbolApi>;
 };
 
+type ComponentApiIndexEntry = {
+  component: string;
+  file: string;
+  symbols: string[];
+};
+
 type ComponentApiIndex = {
   generatedAt: string;
-  schemaVersion: 2;
-  components: Record<string, ComponentApi>;
+  schemaVersion: 3;
+  components: Record<string, ComponentApiIndexEntry>;
 };
 
 const rootDir = process.cwd();
@@ -145,9 +153,22 @@ const reflectionSuffixes = [
   { suffix: 'Emits', kind: 'emits' },
   { suffix: 'Props', kind: 'props' }
 ] satisfies Array<{ suffix: string; kind: ApiSectionKind }>;
+const apiSectionSuffixes = {
+  props: 'Props',
+  emits: 'Emits',
+  slots: 'Slots',
+  slotProps: 'SlotProps'
+} satisfies Record<ApiSectionKind, string>;
+const componentSymbolsByKey = Object.fromEntries(
+  Object.entries(headlessComponents).map(([componentKey, symbols]) => [toKebabCase(componentKey), symbols])
+) as Record<string, string[]>;
 
 function toPosixPath(filePath: string): string {
   return filePath.split(path.sep).join('/');
+}
+
+function toKebabCase(value: string): string {
+  return value.replace(/([a-z0-9])([A-Z])/g, '$1-$2').toLowerCase();
 }
 
 function toRelativePath(filePath: string): string {
@@ -973,8 +994,119 @@ function buildSection(kind: ApiSectionKind, reflection: DeclarationReflection): 
   };
 }
 
+function getDeclarationCommentText(declaration: TsDeclaration, checker: ts.TypeChecker): string {
+  const symbol = checker.getSymbolAtLocation(declaration.name);
+
+  if (!symbol) {
+    return '';
+  }
+
+  return getSymbolDescription(symbol, checker);
+}
+
+function getDeclarationDisplayText(declaration: TsDeclaration): string {
+  const declarationKind = ts.isInterfaceDeclaration(declaration) ? 'Interface' : 'TypeAlias';
+  const typeParameters = declaration.typeParameters?.length
+    ? `<${declaration.typeParameters.map(typeParameter => typeParameter.name.text).join(', ')}>`
+    : '';
+
+  return `${declarationKind} ${declaration.name.text}${typeParameters}`;
+}
+
+function buildSectionFromDeclaration(kind: ApiSectionKind, declaration: TsDeclaration): ApiSection {
+  const { checker } = getTsProgramContext();
+  const typeContext = createNestedTsTypeContext(declaration, checker);
+  const symbols = getSectionPropertySymbols(typeContext);
+  const sourcePath = getDeclarationSourcePath(declaration);
+  const seenTypeKeys = new Set<string>([createTypeKey(declaration.name.text, sourcePath)]);
+
+  return {
+    kind,
+    name: declaration.name.text,
+    type: getDeclarationDisplayText(declaration),
+    resolvedType: buildResolvedType(typeContext),
+    description: getDeclarationCommentText(declaration, checker),
+    sourcePath,
+    typeParameters: getTsDeclarationTypeParameters(declaration),
+    members:
+      kind === 'props' || kind === 'slotProps'
+        ? symbols.map(symbol => toApiMember(symbol, typeContext, true, seenTypeKeys))
+        : [],
+    callables:
+      kind === 'emits' || kind === 'slots'
+        ? symbols.map(symbol => toApiCallable(symbol, typeContext, true, seenTypeKeys))
+        : [],
+    referencedTypes: collectReferencedTypes(typeContext.type, checker, declaration, new Set(seenTypeKeys))
+  };
+}
+
 function sortEntries<T>(record: Record<string, T>): Record<string, T> {
   return Object.fromEntries(Object.entries(record).sort(([left], [right]) => left.localeCompare(right)));
+}
+
+function getComponentTypeFilePaths(componentKey: string): string[] {
+  return [
+    path.join(rootDir, 'src/components', componentKey, 'types.ts'),
+    path.join(rootDir, 'headless/src/components', componentKey, 'types.ts')
+  ];
+}
+
+function getComponentSymbolDeclaration(
+  componentKey: string,
+  symbolName: string,
+  kind: ApiSectionKind
+): TsDeclaration | null {
+  const declarationName = `${symbolName}${apiSectionSuffixes[kind]}`;
+
+  for (const filePath of getComponentTypeFilePaths(componentKey)) {
+    const declaration = getTsDeclaration(filePath, declarationName);
+
+    if (declaration) {
+      return declaration;
+    }
+  }
+
+  return null;
+}
+
+function completeSymbolApi(
+  componentKey: string,
+  symbolName: string,
+  symbolApi: ComponentSymbolApi
+): ComponentSymbolApi {
+  const completedSymbolApi: ComponentSymbolApi = { ...symbolApi };
+
+  for (const kind of ['props', 'emits', 'slots', 'slotProps'] as ApiSectionKind[]) {
+    if (completedSymbolApi[kind]) {
+      continue;
+    }
+
+    const declaration = getComponentSymbolDeclaration(componentKey, symbolName, kind);
+
+    if (!declaration) {
+      continue;
+    }
+
+    completedSymbolApi[kind] = buildSectionFromDeclaration(kind, declaration);
+  }
+
+  return completedSymbolApi;
+}
+
+function completeComponentSymbols(componentKey: string, componentApi: ComponentApi): ComponentApi {
+  const symbolNames = new Set([...Object.keys(componentApi.symbols), ...(componentSymbolsByKey[componentKey] ?? [])]);
+
+  return {
+    ...componentApi,
+    symbols: sortEntries(
+      Object.fromEntries(
+        Array.from(symbolNames).map(symbolName => [
+          symbolName,
+          completeSymbolApi(componentKey, symbolName, componentApi.symbols[symbolName] ?? {})
+        ])
+      )
+    )
+  };
 }
 
 function collectComponentApis(project: ProjectReflection): Record<string, ComponentApi> {
@@ -1013,25 +1145,38 @@ function collectComponentApis(project: ProjectReflection): Record<string, Compon
   return Object.fromEntries(
     Object.entries(components)
       .sort(([left], [right]) => left.localeCompare(right))
-      .map(([componentKey, componentApi]) => [
-        componentKey,
-        {
-          ...componentApi,
-          symbols: sortEntries(componentApi.symbols)
-        }
-      ])
+      .map(([componentKey, componentApi]) => [componentKey, completeComponentSymbols(componentKey, componentApi)])
   );
 }
 
-async function writeOutputs(index: ComponentApiIndex): Promise<void> {
+function createComponentApiIndex(generatedAt: string, components: Record<string, ComponentApi>): ComponentApiIndex {
+  return {
+    generatedAt,
+    schemaVersion: 3,
+    components: Object.fromEntries(
+      Object.entries(components).map(([componentKey, componentApi]) => [
+        componentKey,
+        {
+          component: componentApi.component,
+          file: `${componentKey}.json`,
+          symbols: Object.keys(componentApi.symbols)
+        }
+      ])
+    )
+  };
+}
+
+async function writeOutputs(generatedAt: string, components: Record<string, ComponentApi>): Promise<void> {
   await rm(legacyOutputDir, { force: true, recursive: true });
   await rm(outputDir, { force: true, recursive: true });
   await mkdir(outputDir, { recursive: true });
 
+  const index = createComponentApiIndex(generatedAt, components);
+
   await writeFile(path.join(outputDir, 'index.json'), `${JSON.stringify(index, null, 2)}\n`, 'utf8');
 
   await Promise.all(
-    Object.entries(index.components).map(async ([componentKey, componentApi]) => {
+    Object.entries(components).map(async ([componentKey, componentApi]) => {
       const filePath = path.join(outputDir, `${componentKey}.json`);
       await writeFile(filePath, `${JSON.stringify(componentApi, null, 2)}\n`, 'utf8');
     })
@@ -1052,12 +1197,9 @@ async function generateComponentApi(): Promise<void> {
   }
 
   const components = collectComponentApis(project);
+  const generatedAt = new Date().toISOString();
 
-  await writeOutputs({
-    generatedAt: new Date().toISOString(),
-    schemaVersion: 2,
-    components
-  });
+  await writeOutputs(generatedAt, components);
 }
 
 generateComponentApi().catch(error => {

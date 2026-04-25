@@ -69,7 +69,7 @@
               {
                 "name": "LayoutUi",
                 "kind": "typeAlias",
-                "type": "{ root: ClassValue; header: ClassValue; trigger: ClassValue; content: ClassValue; footer: ClassValue; main: ClassValue; tab: ClassValue; sidebar: ClassValue; sidebarRoot: ClassValue; sidebarWrapper: ClassValue; sidebarGapHandler: ClassValue; rail: ClassValue; mobile: ClassValue; mobileDrawer: ClassValue; mobileOverlay: ClassValue; }",
+                "type": "{ root: ClassValue; header: ClassValue; trigger: ClassValue; content: ClassValue; footer: ClassValue; tab: ClassValue; sidebar: ClassValue; sidebarRoot: ClassValue; sidebarWrapper: ClassValue; sidebarGapHandler: ClassValue; main: ClassValue; rail: ClassValue; mobile: ClassValue; mobileDrawer: ClassValue; mobileOverlay: ClassValue; }",
                 "resolvedType": null,
                 "description": "",
                 "sourcePath": "headless/src/components/layout/types.ts",
@@ -513,6 +513,20 @@
         ]
       }
     },
+    "LayoutContent": {
+      "props": {
+        "kind": "props",
+        "name": "LayoutContentProps",
+        "type": "Interface LayoutContentProps",
+        "resolvedType": null,
+        "description": "",
+        "sourcePath": "headless/src/components/layout/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
     "LayoutFooter": {
       "props": {
         "kind": "props",
@@ -813,6 +827,62 @@
         "sourcePath": "headless/src/components/layout/types.ts",
         "typeParameters": [],
         "members": [],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "LayoutTrigger": {
+      "props": {
+        "kind": "props",
+        "name": "LayoutTriggerProps",
+        "type": "Interface LayoutTriggerProps",
+        "resolvedType": "{ asChild?: boolean; as?: AsTag | Component }",
+        "description": "",
+        "sourcePath": "headless/src/components/layout/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "asChild",
+            "type": "boolean",
+            "required": false,
+            "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/primitive/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "as",
+            "type": "AsTag | Component",
+            "required": false,
+            "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+            "default": "'div'",
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/primitive/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Component",
+                "kind": "typeAlias",
+                "type": "Component",
+                "resolvedType": null,
+                "description": "A type used in public APIs where a component type is expected.\nThe constructor type is an artificial type returned by defineComponent().",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [
+                  "PropsOrInstance = any",
+                  "RawBindings = any",
+                  "D = any",
+                  "C extends ComputedOptions = ComputedOptions",
+                  "M extends MethodOptions = MethodOptions",
+                  "E extends EmitsOptions | Record<string, any[]> = {}",
+                  "S extends Record<string, any> = any"
+                ],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
         "callables": [],
         "referencedTypes": []
       }

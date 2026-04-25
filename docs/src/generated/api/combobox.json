@@ -6,7 +6,7 @@
         "kind": "props",
         "name": "ComboboxProps",
         "type": "Interface ComboboxProps<M>",
-        "resolvedType": "{ class?: string | Record<string, boolean> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<ComboboxUi>; items: ComboboxOptionData[]; placeholder?: string; searchPlaceholder?: string; clearLabel?: string; emptyLabel?: string; anchorProps?: ComboboxAnchorProps; triggerProps?: ComboboxTriggerProps; cancelProps?: ComboboxCancelProps; portalProps?: PortalProps; contentProps?: ComboboxContentProps; viewportProps?: ComboboxViewportProps; inputProps?: ComboboxInputProps; emptyProps?: ComboboxEmptyProps; groupProps?: ComboboxGroupProps; groupLabelProps?: ComboboxGroupLabelProps; itemProps?: ComboboxItemProps; itemIndicatorProps?: ComboboxItemIndicatorProps; separatorProps?: ComboboxSeparatorProps; open?: boolean; defaultOpen?: boolean; resetSearchTermOnBlur?: boolean; resetSearchTermOnSelect?: boolean; openOnFocus?: boolean; openOnClick?: boolean; ignoreFilter?: boolean; resetModelValueOnClear?: boolean; disabled?: boolean; dir?: Direction; modelValue?: (M extends true ? string[] : string); name?: string; defaultValue?: (M extends true ? string[] : string); highlightOnHover?: boolean; required?: boolean; multiple?: M; clearable?: boolean }",
+        "resolvedType": "{ class?: string | Record<string, boolean> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<ComboboxUi>; items: ComboboxOptionData[]; placeholder?: string; searchPlaceholder?: string; clearLabel?: string; emptyLabel?: string; anchorProps?: ComboboxAnchorProps; triggerProps?: ComboboxTriggerProps; cancelProps?: ComboboxCancelProps; portalProps?: PortalProps; contentProps?: ComboboxContentProps; viewportProps?: ComboboxViewportProps; inputProps?: ComboboxInputProps; emptyProps?: ComboboxEmptyProps; groupProps?: ComboboxGroupProps; groupLabelProps?: ComboboxGroupLabelProps; itemProps?: ComboboxItemProps; itemIndicatorProps?: ComboboxItemIndicatorProps; separatorProps?: ComboboxSeparatorProps; open?: boolean; defaultOpen?: boolean; resetSearchTermOnBlur?: boolean; resetSearchTermOnSelect?: boolean; openOnFocus?: boolean; openOnClick?: boolean; ignoreFilter?: boolean; resetModelValueOnClear?: boolean; disabled?: boolean; dir?: Direction; name?: string; defaultValue?: (M extends true ? string[] : string); modelValue?: (M extends true ? string[] : string); highlightOnHover?: boolean; required?: boolean; multiple?: M; clearable?: boolean }",
         "description": "",
         "sourcePath": "src/components/combobox/types.ts",
         "typeParameters": [
@@ -71,7 +71,7 @@
               {
                 "name": "ComboboxUi",
                 "kind": "typeAlias",
-                "type": "{ root: ClassValue; item: ClassValue; trigger: ClassValue; triggerIcon: ClassValue; anchor: ClassValue; inputRoot: ClassValue; inputControl: ClassValue; viewport: ClassValue; group: ClassValue; groupLabel: ClassValue; itemIndicator: ClassValue; separator: ClassValue; empty: ClassValue; popup: ClassValue; cancel: ClassValue; positioner: ClassValue; arrow: ClassValue; virtualizer: ClassValue; }",
+                "type": "{ root: ClassValue; item: ClassValue; trigger: ClassValue; triggerIcon: ClassValue; anchor: ClassValue; inputRoot: ClassValue; inputControl: ClassValue; viewport: ClassValue; group: ClassValue; groupLabel: ClassValue; itemIndicator: ClassValue; separator: ClassValue; empty: ClassValue; cancel: ClassValue; positioner: ClassValue; popup: ClassValue; arrow: ClassValue; virtualizer: ClassValue; }",
                 "resolvedType": null,
                 "description": "",
                 "sourcePath": "headless/src/components/combobox/types.ts",
@@ -1215,16 +1215,6 @@
             ]
           },
           {
-            "name": "modelValue",
-            "type": "(M extends true ? string[] : string)",
-            "required": false,
-            "description": "The controlled value of the selected item(s).\n\nUse this when you need to control the state of the items. Can be bound with `v-model`",
-            "default": null,
-            "inheritedFrom": "modelValue",
-            "sourcePath": "headless/src/types/common.ts",
-            "referencedTypes": []
-          },
-          {
             "name": "name",
             "type": "string",
             "required": false,
@@ -1241,6 +1231,16 @@
             "description": "The default value of the selected item(s).\n\nUse this when you need to set the initial state of the items.",
             "default": null,
             "inheritedFrom": "defaultValue",
+            "sourcePath": "headless/src/types/common.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "modelValue",
+            "type": "(M extends true ? string[] : string)",
+            "required": false,
+            "description": "The controlled value of the selected item(s).\n\nUse this when you need to control the state of the items. Can be bound with `v-model`",
+            "default": null,
+            "inheritedFrom": "modelValue",
             "sourcePath": "headless/src/types/common.ts",
             "referencedTypes": []
           },
@@ -1831,6 +1831,20 @@
         "referencedTypes": []
       }
     },
+    "ComboboxArrow": {
+      "props": {
+        "kind": "props",
+        "name": "ComboboxArrowProps",
+        "type": "Interface ComboboxArrowProps",
+        "resolvedType": null,
+        "description": "",
+        "sourcePath": "headless/src/components/combobox/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
     "ComboboxCancel": {
       "props": {
         "kind": "props",
@@ -2136,7 +2150,7 @@
         "kind": "props",
         "name": "ComboboxCompactProps",
         "type": "Interface ComboboxCompactProps<M>",
-        "resolvedType": "{ items: ComboboxOptionData[]; placeholder?: string; searchPlaceholder?: string; clearLabel?: string; emptyLabel?: string; anchorProps?: ComboboxAnchorProps; triggerProps?: ComboboxTriggerProps; cancelProps?: ComboboxCancelProps; portalProps?: PortalProps; contentProps?: ComboboxContentProps; viewportProps?: ComboboxViewportProps; inputProps?: ComboboxInputProps; emptyProps?: ComboboxEmptyProps; groupProps?: ComboboxGroupProps; groupLabelProps?: ComboboxGroupLabelProps; itemProps?: ComboboxItemProps; itemIndicatorProps?: ComboboxItemIndicatorProps; separatorProps?: ComboboxSeparatorProps; open?: boolean; defaultOpen?: boolean; resetSearchTermOnBlur?: boolean; resetSearchTermOnSelect?: boolean; openOnFocus?: boolean; openOnClick?: boolean; ignoreFilter?: boolean; resetModelValueOnClear?: boolean; disabled?: boolean; dir?: Direction; modelValue?: (M extends true ? string[] : string); name?: string; defaultValue?: (M extends true ? string[] : string); highlightOnHover?: boolean; required?: boolean; multiple?: M; clearable?: boolean }",
+        "resolvedType": "{ items: ComboboxOptionData[]; placeholder?: string; searchPlaceholder?: string; clearLabel?: string; emptyLabel?: string; anchorProps?: ComboboxAnchorProps; triggerProps?: ComboboxTriggerProps; cancelProps?: ComboboxCancelProps; portalProps?: PortalProps; contentProps?: ComboboxContentProps; viewportProps?: ComboboxViewportProps; inputProps?: ComboboxInputProps; emptyProps?: ComboboxEmptyProps; groupProps?: ComboboxGroupProps; groupLabelProps?: ComboboxGroupLabelProps; itemProps?: ComboboxItemProps; itemIndicatorProps?: ComboboxItemIndicatorProps; separatorProps?: ComboboxSeparatorProps; open?: boolean; defaultOpen?: boolean; resetSearchTermOnBlur?: boolean; resetSearchTermOnSelect?: boolean; openOnFocus?: boolean; openOnClick?: boolean; ignoreFilter?: boolean; resetModelValueOnClear?: boolean; disabled?: boolean; dir?: Direction; name?: string; defaultValue?: (M extends true ? string[] : string); modelValue?: (M extends true ? string[] : string); highlightOnHover?: boolean; required?: boolean; multiple?: M; clearable?: boolean }",
         "description": "",
         "sourcePath": "headless/src/components/combobox/types.ts",
         "typeParameters": [
@@ -3276,16 +3290,6 @@
             ]
           },
           {
-            "name": "modelValue",
-            "type": "(M extends true ? string[] : string)",
-            "required": false,
-            "description": "The controlled value of the selected item(s).\n\nUse this when you need to control the state of the items. Can be bound with `v-model`",
-            "default": null,
-            "inheritedFrom": "modelValue",
-            "sourcePath": "headless/src/types/common.ts",
-            "referencedTypes": []
-          },
-          {
             "name": "name",
             "type": "string",
             "required": false,
@@ -3302,6 +3306,16 @@
             "description": "The default value of the selected item(s).\n\nUse this when you need to set the initial state of the items.",
             "default": null,
             "inheritedFrom": "defaultValue",
+            "sourcePath": "headless/src/types/common.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "modelValue",
+            "type": "(M extends true ? string[] : string)",
+            "required": false,
+            "description": "The controlled value of the selected item(s).\n\nUse this when you need to control the state of the items. Can be bound with `v-model`",
+            "default": null,
+            "inheritedFrom": "modelValue",
             "sourcePath": "headless/src/types/common.ts",
             "referencedTypes": []
           },
@@ -4689,6 +4703,7 @@
         "referencedTypes": []
       }
     },
+    "ComboboxPortal": {},
     "ComboboxRoot": {
       "emits": {
         "kind": "emits",
@@ -4751,7 +4766,7 @@
         "kind": "props",
         "name": "ComboboxRootProps",
         "type": "Interface ComboboxRootProps<M>",
-        "resolvedType": "{ open?: boolean; defaultOpen?: boolean; resetSearchTermOnBlur?: boolean; resetSearchTermOnSelect?: boolean; openOnFocus?: boolean; openOnClick?: boolean; ignoreFilter?: boolean; resetModelValueOnClear?: boolean; disabled?: boolean; dir?: Direction; modelValue?: (M extends true ? string[] : string); name?: string; defaultValue?: (M extends true ? string[] : string); highlightOnHover?: boolean; required?: boolean; multiple?: M; clearable?: boolean }",
+        "resolvedType": "{ open?: boolean; defaultOpen?: boolean; resetSearchTermOnBlur?: boolean; resetSearchTermOnSelect?: boolean; openOnFocus?: boolean; openOnClick?: boolean; ignoreFilter?: boolean; resetModelValueOnClear?: boolean; disabled?: boolean; dir?: Direction; name?: string; defaultValue?: (M extends true ? string[] : string); modelValue?: (M extends true ? string[] : string); highlightOnHover?: boolean; required?: boolean; multiple?: M; clearable?: boolean }",
         "description": "",
         "sourcePath": "headless/src/components/combobox/types.ts",
         "typeParameters": [
@@ -4872,16 +4887,6 @@
             ]
           },
           {
-            "name": "modelValue",
-            "type": "(M extends true ? string[] : string)",
-            "required": false,
-            "description": "The controlled value of the selected item(s).\n\nUse this when you need to control the state of the items. Can be bound with `v-model`",
-            "default": null,
-            "inheritedFrom": "Omit.modelValue",
-            "sourcePath": "headless/src/types/common.ts",
-            "referencedTypes": []
-          },
-          {
             "name": "name",
             "type": "string",
             "required": false,
@@ -4898,6 +4903,16 @@
             "description": "The default value of the selected item(s).\n\nUse this when you need to set the initial state of the items.",
             "default": null,
             "inheritedFrom": "Omit.defaultValue",
+            "sourcePath": "headless/src/types/common.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "modelValue",
+            "type": "(M extends true ? string[] : string)",
+            "required": false,
+            "description": "The controlled value of the selected item(s).\n\nUse this when you need to control the state of the items. Can be bound with `v-model`",
+            "default": null,
+            "inheritedFrom": "Omit.modelValue",
             "sourcePath": "headless/src/types/common.ts",
             "referencedTypes": []
           },

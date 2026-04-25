@@ -789,6 +789,298 @@
         "referencedTypes": []
       }
     },
+    "TreeMenuButton": {
+      "props": {
+        "kind": "props",
+        "name": "TreeMenuButtonProps",
+        "type": "Interface TreeMenuButtonProps",
+        "resolvedType": "{ disabledActive?: boolean; asChild?: boolean; as?: AsTag | Component }",
+        "description": "",
+        "sourcePath": "headless/src/components/tree-menu/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "disabledActive",
+            "type": "boolean",
+            "required": false,
+            "description": "When `true`, prevents the user from activating the item.",
+            "default": "false",
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/tree-menu/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "asChild",
+            "type": "boolean",
+            "required": false,
+            "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/primitive/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "as",
+            "type": "AsTag | Component",
+            "required": false,
+            "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+            "default": "'div'",
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/primitive/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Component",
+                "kind": "typeAlias",
+                "type": "Component",
+                "resolvedType": null,
+                "description": "A type used in public APIs where a component type is expected.\nThe constructor type is an artificial type returned by defineComponent().",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [
+                  "PropsOrInstance = any",
+                  "RawBindings = any",
+                  "D = any",
+                  "C extends ComputedOptions = ComputedOptions",
+                  "M extends MethodOptions = MethodOptions",
+                  "E extends EmitsOptions | Record<string, any[]> = {}",
+                  "S extends Record<string, any> = any"
+                ],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "TreeMenuCollapsible": {
+      "props": {
+        "kind": "props",
+        "name": "TreeMenuCollapsibleProps",
+        "type": "Interface TreeMenuCollapsibleProps",
+        "resolvedType": "{ disabledCollapsible?: boolean; asChild?: boolean; as?: AsTag | Component }",
+        "description": "",
+        "sourcePath": "headless/src/components/tree-menu/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "disabledCollapsible",
+            "type": "boolean",
+            "required": false,
+            "description": "When `true`, prevents the user from activating the collapsible trigger.",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/tree-menu/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "asChild",
+            "type": "boolean",
+            "required": false,
+            "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/primitive/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "as",
+            "type": "AsTag | Component",
+            "required": false,
+            "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+            "default": "'div'",
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/primitive/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Component",
+                "kind": "typeAlias",
+                "type": "Component",
+                "resolvedType": null,
+                "description": "A type used in public APIs where a component type is expected.\nThe constructor type is an artificial type returned by defineComponent().",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [
+                  "PropsOrInstance = any",
+                  "RawBindings = any",
+                  "D = any",
+                  "C extends ComputedOptions = ComputedOptions",
+                  "M extends MethodOptions = MethodOptions",
+                  "E extends EmitsOptions | Record<string, any[]> = {}",
+                  "S extends Record<string, any> = any"
+                ],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "TreeMenuGroup": {
+      "props": {
+        "kind": "props",
+        "name": "TreeMenuGroupProps",
+        "type": "Interface TreeMenuGroupProps",
+        "resolvedType": "{ asChild?: boolean; as?: AsTag | Component }",
+        "description": "",
+        "sourcePath": "headless/src/components/tree-menu/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "asChild",
+            "type": "boolean",
+            "required": false,
+            "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/primitive/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "as",
+            "type": "AsTag | Component",
+            "required": false,
+            "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+            "default": "'div'",
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/primitive/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Component",
+                "kind": "typeAlias",
+                "type": "Component",
+                "resolvedType": null,
+                "description": "A type used in public APIs where a component type is expected.\nThe constructor type is an artificial type returned by defineComponent().",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [
+                  "PropsOrInstance = any",
+                  "RawBindings = any",
+                  "D = any",
+                  "C extends ComputedOptions = ComputedOptions",
+                  "M extends MethodOptions = MethodOptions",
+                  "E extends EmitsOptions | Record<string, any[]> = {}",
+                  "S extends Record<string, any> = any"
+                ],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "TreeMenuGroupLabel": {
+      "props": {
+        "kind": "props",
+        "name": "TreeMenuGroupLabelProps",
+        "type": "Interface TreeMenuGroupLabelProps",
+        "resolvedType": null,
+        "description": "",
+        "sourcePath": "headless/src/components/tree-menu/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "TreeMenuGroupRoot": {
+      "props": {
+        "kind": "props",
+        "name": "TreeMenuGroupRootProps",
+        "type": "Interface TreeMenuGroupRootProps",
+        "resolvedType": null,
+        "description": "",
+        "sourcePath": "headless/src/components/tree-menu/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "TreeMenuItem": {
+      "props": {
+        "kind": "props",
+        "name": "TreeMenuItemProps",
+        "type": "Interface TreeMenuItemProps",
+        "resolvedType": "{ value: string; disabled?: boolean; asChild?: boolean; as?: AsTag | Component }",
+        "description": "",
+        "sourcePath": "headless/src/components/tree-menu/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "value",
+            "type": "string",
+            "required": true,
+            "description": "The unique value of the item.",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/tree-menu/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "disabled",
+            "type": "boolean",
+            "required": false,
+            "description": "When `true`, prevents the user from interacting with the item.",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/tree-menu/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "asChild",
+            "type": "boolean",
+            "required": false,
+            "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/primitive/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "as",
+            "type": "AsTag | Component",
+            "required": false,
+            "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+            "default": "'div'",
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/primitive/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Component",
+                "kind": "typeAlias",
+                "type": "Component",
+                "resolvedType": null,
+                "description": "A type used in public APIs where a component type is expected.\nThe constructor type is an artificial type returned by defineComponent().",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [
+                  "PropsOrInstance = any",
+                  "RawBindings = any",
+                  "D = any",
+                  "C extends ComputedOptions = ComputedOptions",
+                  "M extends MethodOptions = MethodOptions",
+                  "E extends EmitsOptions | Record<string, any[]> = {}",
+                  "S extends Record<string, any> = any"
+                ],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
     "TreeMenuOption": {
       "slotProps": {
         "kind": "slotProps",
@@ -2863,6 +3155,121 @@
         ]
       }
     },
+    "TreeMenuRoot": {
+      "props": {
+        "kind": "props",
+        "name": "TreeMenuRootProps",
+        "type": "Interface TreeMenuRootProps",
+        "resolvedType": "{ modelValue?: string; defaultValue?: string; expanded?: string[]; defaultExpanded?: string[]; collapsed?: boolean; defaultCollapsed?: boolean }",
+        "description": "",
+        "sourcePath": "headless/src/components/tree-menu/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "modelValue",
+            "type": "string",
+            "required": false,
+            "description": "the active value of the tree menu. can be bound-with with `v-model`.",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/tree-menu/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "defaultValue",
+            "type": "string",
+            "required": false,
+            "description": "the value of the tree menu when initially rendered. use when you do not need to control the state of the tree.",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/tree-menu/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "expanded",
+            "type": "string[]",
+            "required": false,
+            "description": "the expanded value of the tree menu. can be bound-with with `v-model`.",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/tree-menu/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "defaultExpanded",
+            "type": "string[]",
+            "required": false,
+            "description": "the expanded value of the tree menu when initially rendered. use when you do not need to control the state of the tree.",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/tree-menu/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "collapsed",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether the tree menu is collapsed.",
+            "default": "false",
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/tree-menu/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "defaultCollapsed",
+            "type": "boolean",
+            "required": false,
+            "description": "The value of the tree menu when it's collapsed.",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/tree-menu/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      },
+      "emits": {
+        "kind": "emits",
+        "name": "TreeMenuRootEmits",
+        "type": "TypeAlias TreeMenuRootEmits",
+        "resolvedType": "{ \"update:modelValue\": [value: string]; \"update:expanded\": [value: string[]]; \"update:collapsed\": [value: boolean] }",
+        "description": "",
+        "sourcePath": "headless/src/components/tree-menu/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [
+          {
+            "name": "update:modelValue",
+            "type": "[value: string]",
+            "parameters": "value: string",
+            "required": true,
+            "description": "",
+            "sourcePath": "headless/src/components/tree-menu/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "update:expanded",
+            "type": "[value: string[]]",
+            "parameters": "value: string[]",
+            "required": true,
+            "description": "",
+            "sourcePath": "headless/src/components/tree-menu/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "update:collapsed",
+            "type": "[value: boolean]",
+            "parameters": "value: boolean",
+            "required": true,
+            "description": "",
+            "sourcePath": "headless/src/components/tree-menu/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "referencedTypes": []
+      }
+    },
     "TreeMenuStyledItem": {
       "props": {
         "kind": "props",
@@ -2937,6 +3344,62 @@
                 "sourcePath": "src/components/tree-menu/types.ts",
                 "typeParameters": [],
                 "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "TreeMenuSub": {
+      "props": {
+        "kind": "props",
+        "name": "TreeMenuSubProps",
+        "type": "Interface TreeMenuSubProps",
+        "resolvedType": "{ asChild?: boolean; as?: AsTag | Component }",
+        "description": "",
+        "sourcePath": "headless/src/components/tree-menu/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "asChild",
+            "type": "boolean",
+            "required": false,
+            "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/primitive/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "as",
+            "type": "AsTag | Component",
+            "required": false,
+            "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+            "default": "'div'",
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/primitive/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Component",
+                "kind": "typeAlias",
+                "type": "Component",
+                "resolvedType": null,
+                "description": "A type used in public APIs where a component type is expected.\nThe constructor type is an artificial type returned by defineComponent().",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [
+                  "PropsOrInstance = any",
+                  "RawBindings = any",
+                  "D = any",
+                  "C extends ComputedOptions = ComputedOptions",
+                  "M extends MethodOptions = MethodOptions",
+                  "E extends EmitsOptions | Record<string, any[]> = {}",
+                  "S extends Record<string, any> = any"
+                ],
+                "external": true,
                 "members": [],
                 "callables": []
               }

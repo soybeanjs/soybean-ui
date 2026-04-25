@@ -643,6 +643,51 @@
         ],
         "callables": [],
         "referencedTypes": []
+      },
+      "emits": {
+        "kind": "emits",
+        "name": "CardRootEmits",
+        "type": "TypeAlias CardRootEmits",
+        "resolvedType": "{ \"update:open\": [value: boolean] }",
+        "description": "",
+        "sourcePath": "headless/src/components/card/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [
+          {
+            "name": "update:open",
+            "type": "[value: boolean]",
+            "parameters": "value: boolean",
+            "required": true,
+            "description": "Event handler called when the open state of the collapsible changes.",
+            "sourcePath": "headless/src/components/collapsible/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "referencedTypes": [
+          {
+            "name": "CollapsibleRootEmits",
+            "kind": "typeAlias",
+            "type": "{ 'update:open': [value: boolean]; }",
+            "resolvedType": "{ \"update:open\": [value: boolean] }",
+            "description": "",
+            "sourcePath": "headless/src/components/collapsible/types.ts",
+            "typeParameters": [],
+            "external": false,
+            "members": [],
+            "callables": [
+              {
+                "name": "update:open",
+                "type": "[value: boolean]",
+                "parameters": "value: boolean",
+                "required": true,
+                "description": "Event handler called when the open state of the collapsible changes.",
+                "sourcePath": "headless/src/components/collapsible/types.ts",
+                "referencedTypes": []
+              }
+            ]
+          }
+        ]
       }
     },
     "CardTitle": {

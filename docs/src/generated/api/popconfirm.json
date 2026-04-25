@@ -69,7 +69,7 @@
               {
                 "name": "PopconfirmUi",
                 "kind": "typeAlias",
-                "type": "{ header: ClassValue; content: ClassValue; description: ClassValue; title: ClassValue; icon: ClassValue; popup: ClassValue; footer: ClassValue; positioner: ClassValue; arrow: ClassValue; }",
+                "type": "{ header: ClassValue; content: ClassValue; description: ClassValue; title: ClassValue; icon: ClassValue; footer: ClassValue; positioner: ClassValue; popup: ClassValue; arrow: ClassValue; }",
                 "resolvedType": null,
                 "description": "",
                 "sourcePath": "src/components/popconfirm/types.ts",

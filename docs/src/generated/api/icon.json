@@ -26,7 +26,7 @@
                 "type": "string | import(\"vue\").Component | import(\"vue\").VNode<import(\"vue\").RendererNode, import(\"vue\").RendererElement, { [key: string]: any; }> | null | undefined",
                 "resolvedType": "string | Component | VNode<import(\"vue\").RendererNode, import(\"vue\").RendererElement, { [key: string]: any; }> | null | undefined",
                 "description": "",
-                "sourcePath": "headless/src/components/icon/types.ts",
+                "sourcePath": "headless/src/components/_icon/types.ts",
                 "typeParameters": [],
                 "external": false,
                 "members": [],

@@ -486,6 +486,20 @@
         "referencedTypes": []
       }
     },
+    "FormControl": {
+      "props": {
+        "kind": "props",
+        "name": "FormControlProps",
+        "type": "Interface FormControlProps",
+        "resolvedType": null,
+        "description": "",
+        "sourcePath": "headless/src/components/form/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
     "FormDescription": {
       "props": {
         "kind": "props",

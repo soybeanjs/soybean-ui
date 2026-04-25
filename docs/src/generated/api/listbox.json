@@ -112,6 +112,793 @@
         "callables": [],
         "referencedTypes": []
       }
+    },
+    "ListboxContent": {
+      "props": {
+        "kind": "props",
+        "name": "ListboxContentProps",
+        "type": "Interface ListboxContentProps",
+        "resolvedType": null,
+        "description": "",
+        "sourcePath": "headless/src/components/listbox/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "ListboxFilter": {
+      "props": {
+        "kind": "props",
+        "name": "ListboxFilterProps",
+        "type": "Interface ListboxFilterProps",
+        "resolvedType": "{ inputRef?: ((el: HTMLInputElement) => void); controlProps?: InputControlProps; defaultValue?: string; modelValue?: string; id?: string; autofocus?: boolean; disabled?: boolean; maxlength?: number; minlength?: number; pattern?: string; placeholder?: string; readonly?: boolean; name?: string; required?: boolean }",
+        "description": "",
+        "sourcePath": "headless/src/components/listbox/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "inputRef",
+            "type": "((el: HTMLInputElement) => void)",
+            "required": false,
+            "description": "The function to set the input element.",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/listbox/types.ts",
+            "referencedTypes": [
+              {
+                "name": "HTMLInputElement",
+                "kind": "interface",
+                "type": "HTMLInputElement",
+                "resolvedType": null,
+                "description": "The **`HTMLInputElement`** interface provides special properties and methods for manipulating the options, layout, and presentation of <input> elements.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLInputElement)",
+                "sourcePath": "node_modules/.pnpm/typescript@6.0.3/node_modules/typescript/lib/lib.dom.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "controlProps",
+            "type": "InputControlProps",
+            "required": false,
+            "description": "The props of the input extra props.",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/listbox/types.ts",
+            "referencedTypes": [
+              {
+                "name": "InputControlProps",
+                "kind": "interface",
+                "type": "InputControlProps",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/components/input/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "defaultValue",
+            "type": "string",
+            "required": false,
+            "description": "The default value of the input",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/input/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "modelValue",
+            "type": "string",
+            "required": false,
+            "description": "The controlled value of the input",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/input/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "id",
+            "type": "string",
+            "required": false,
+            "description": "Id of the input element",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/input/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "autofocus",
+            "type": "boolean",
+            "required": false,
+            "description": "When `true`, the input is auto-focused.",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/input/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "disabled",
+            "type": "boolean",
+            "required": false,
+            "description": "When `true`, prevents the user from interacting with the input.",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/input/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "maxlength",
+            "type": "number",
+            "required": false,
+            "description": "The maximum number of characters allowed in the input",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/input/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "minlength",
+            "type": "number",
+            "required": false,
+            "description": "The minimum number of characters allowed in the input",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/input/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "pattern",
+            "type": "string",
+            "required": false,
+            "description": "The pattern attribute of the input",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/input/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "placeholder",
+            "type": "string",
+            "required": false,
+            "description": "The placeholder of the input",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/input/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "readonly",
+            "type": "boolean",
+            "required": false,
+            "description": "When `true`, the input is read-only.",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/input/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "name",
+            "type": "string",
+            "required": false,
+            "description": "The name of the field. Submitted with its owning form as part of a name/value pair.",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/types/component.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "required",
+            "type": "boolean",
+            "required": false,
+            "description": "When `true`, indicates that the user must set the value before the owning form can be submitted.",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/types/component.ts",
+            "referencedTypes": []
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      },
+      "emits": {
+        "kind": "emits",
+        "name": "ListboxFilterEmits",
+        "type": "TypeAlias ListboxFilterEmits",
+        "resolvedType": "{ \"update:modelValue\": [value: string] }",
+        "description": "",
+        "sourcePath": "headless/src/components/listbox/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [
+          {
+            "name": "update:modelValue",
+            "type": "[value: string]",
+            "parameters": "value: string",
+            "required": true,
+            "description": "",
+            "sourcePath": "headless/src/components/input/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "referencedTypes": [
+          {
+            "name": "InputRootEmits",
+            "kind": "typeAlias",
+            "type": "{ 'update:modelValue': [value: string]; }",
+            "resolvedType": "{ \"update:modelValue\": [value: string] }",
+            "description": "",
+            "sourcePath": "headless/src/components/input/types.ts",
+            "typeParameters": [],
+            "external": false,
+            "members": [],
+            "callables": [
+              {
+                "name": "update:modelValue",
+                "type": "[value: string]",
+                "parameters": "value: string",
+                "required": true,
+                "description": "",
+                "sourcePath": "headless/src/components/input/types.ts",
+                "referencedTypes": []
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "ListboxGroup": {
+      "props": {
+        "kind": "props",
+        "name": "ListboxGroupProps",
+        "type": "Interface ListboxGroupProps",
+        "resolvedType": null,
+        "description": "",
+        "sourcePath": "headless/src/components/listbox/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "ListboxGroupLabel": {
+      "props": {
+        "kind": "props",
+        "name": "ListboxGroupLabelProps",
+        "type": "Interface ListboxGroupLabelProps",
+        "resolvedType": null,
+        "description": "",
+        "sourcePath": "headless/src/components/listbox/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "ListboxItem": {
+      "props": {
+        "kind": "props",
+        "name": "ListboxItemProps",
+        "type": "Interface ListboxItemProps",
+        "resolvedType": "{ value: string; disabled?: boolean; asChild?: boolean; as?: AsTag | Component }",
+        "description": "",
+        "sourcePath": "headless/src/components/listbox/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "value",
+            "type": "string",
+            "required": true,
+            "description": "The value given as data when submitted with a `name`.",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/listbox/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "disabled",
+            "type": "boolean",
+            "required": false,
+            "description": "When `true`, prevents the user from interacting with the item.",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/listbox/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "asChild",
+            "type": "boolean",
+            "required": false,
+            "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/primitive/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "as",
+            "type": "AsTag | Component",
+            "required": false,
+            "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+            "default": "'div'",
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/primitive/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Component",
+                "kind": "typeAlias",
+                "type": "Component",
+                "resolvedType": null,
+                "description": "A type used in public APIs where a component type is expected.\nThe constructor type is an artificial type returned by defineComponent().",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [
+                  "PropsOrInstance = any",
+                  "RawBindings = any",
+                  "D = any",
+                  "C extends ComputedOptions = ComputedOptions",
+                  "M extends MethodOptions = MethodOptions",
+                  "E extends EmitsOptions | Record<string, any[]> = {}",
+                  "S extends Record<string, any> = any"
+                ],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      },
+      "emits": {
+        "kind": "emits",
+        "name": "ListboxItemEmits",
+        "type": "TypeAlias ListboxItemEmits",
+        "resolvedType": "{ select: [event: SelectEvent<string>] }",
+        "description": "",
+        "sourcePath": "headless/src/components/listbox/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [
+          {
+            "name": "select",
+            "type": "[event: SelectEvent<string>]",
+            "parameters": "event: SelectEvent<string>",
+            "required": true,
+            "description": "Event handler called when the selecting item. <br> It can be prevented by calling `event.preventDefault`.",
+            "sourcePath": "headless/src/components/listbox/types.ts",
+            "referencedTypes": [
+              {
+                "name": "SelectEvent",
+                "kind": "typeAlias",
+                "type": "CustomEvent<{ originalEvent: MouseEvent; value?: string | undefined; }>",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/types/event.ts",
+                "typeParameters": [
+                  "T"
+                ],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "referencedTypes": []
+      }
+    },
+    "ListboxItemIndicator": {
+      "props": {
+        "kind": "props",
+        "name": "ListboxItemIndicatorProps",
+        "type": "Interface ListboxItemIndicatorProps",
+        "resolvedType": "{ asChild?: boolean; as?: AsTag | Component }",
+        "description": "",
+        "sourcePath": "headless/src/components/listbox/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "asChild",
+            "type": "boolean",
+            "required": false,
+            "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/primitive/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "as",
+            "type": "AsTag | Component",
+            "required": false,
+            "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+            "default": "'div'",
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/primitive/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Component",
+                "kind": "typeAlias",
+                "type": "Component",
+                "resolvedType": null,
+                "description": "A type used in public APIs where a component type is expected.\nThe constructor type is an artificial type returned by defineComponent().",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [
+                  "PropsOrInstance = any",
+                  "RawBindings = any",
+                  "D = any",
+                  "C extends ComputedOptions = ComputedOptions",
+                  "M extends MethodOptions = MethodOptions",
+                  "E extends EmitsOptions | Record<string, any[]> = {}",
+                  "S extends Record<string, any> = any"
+                ],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "ListboxRoot": {
+      "props": {
+        "kind": "props",
+        "name": "ListboxRootProps",
+        "type": "Interface ListboxRootProps<M>",
+        "resolvedType": "{ orientation?: DataOrientation; dir?: Direction; disabled?: boolean; highlightOnHover?: boolean; modelValue?: (M extends true ? string[] : string); defaultValue?: (M extends true ? string[] : string); multiple?: M; clearable?: boolean; selectionBehavior?: SelectionBehavior; name?: string; required?: boolean }",
+        "description": "",
+        "sourcePath": "headless/src/components/listbox/types.ts",
+        "typeParameters": [
+          "M extends boolean = false"
+        ],
+        "members": [
+          {
+            "name": "orientation",
+            "type": "DataOrientation",
+            "required": false,
+            "description": "The orientation of the listbox. <br>Mainly so arrow navigation is done accordingly (left & right vs. up & down)",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/listbox/types.ts",
+            "referencedTypes": [
+              {
+                "name": "DataOrientation",
+                "kind": "typeAlias",
+                "type": "'vertical' | 'horizontal'",
+                "resolvedType": "'vertical' | 'horizontal'",
+                "description": "",
+                "sourcePath": "headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "dir",
+            "type": "Direction",
+            "required": false,
+            "description": "The reading direction of the listbox when applicable. <br> If omitted, inherits globally from `ConfigProvider` or\nassumes LTR (left-to-right) reading mode.",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/listbox/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Direction",
+                "kind": "typeAlias",
+                "type": "'ltr' | 'rtl'",
+                "resolvedType": "'ltr' | 'rtl'",
+                "description": "",
+                "sourcePath": "headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "disabled",
+            "type": "boolean",
+            "required": false,
+            "description": "When `true`, prevents the user from interacting with listbox",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/listbox/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "highlightOnHover",
+            "type": "boolean",
+            "required": false,
+            "description": "When `true`, hover over item will trigger highlight",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/listbox/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "modelValue",
+            "type": "(M extends true ? string[] : string)",
+            "required": false,
+            "description": "The controlled value of the selected item(s).\n\nUse this when you need to control the state of the items. Can be bound with `v-model`",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/types/common.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "defaultValue",
+            "type": "(M extends true ? string[] : string)",
+            "required": false,
+            "description": "The default value of the selected item(s).\n\nUse this when you need to set the initial state of the items.",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/types/common.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "multiple",
+            "type": "M",
+            "required": false,
+            "description": "Determines whether a \"single\" or \"multiple\" items can be selected at a time.\n\nThis prop will overwrite the inferred type from `modelValue` and `defaultValue`.",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/types/common.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "clearable",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether selected item can be cleared when `multiple` is false.",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/types/common.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "selectionBehavior",
+            "type": "SelectionBehavior",
+            "required": false,
+            "description": "How multiple selection should behave in the collection.",
+            "default": "'toggle'",
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/types/common.ts",
+            "referencedTypes": [
+              {
+                "name": "SelectionBehavior",
+                "kind": "typeAlias",
+                "type": "'toggle' | 'replace'",
+                "resolvedType": "'toggle' | 'replace'",
+                "description": "",
+                "sourcePath": "headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "name",
+            "type": "string",
+            "required": false,
+            "description": "The name of the field. Submitted with its owning form as part of a name/value pair.",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/types/component.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "required",
+            "type": "boolean",
+            "required": false,
+            "description": "When `true`, indicates that the user must set the value before the owning form can be submitted.",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/types/component.ts",
+            "referencedTypes": []
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      },
+      "emits": {
+        "kind": "emits",
+        "name": "ListboxRootEmits",
+        "type": "TypeAlias ListboxRootEmits<M>",
+        "resolvedType": "{ \"update:modelValue\": [value: M extends true ? string[] : string]; highlight: [payload?: CollectionItemData<ListboxCollectionItemData> | undefined]; entryFocus: [event: CustomEvent<any>]; leave: [event: Event] }",
+        "description": "",
+        "sourcePath": "headless/src/components/listbox/types.ts",
+        "typeParameters": [
+          "M extends boolean = false"
+        ],
+        "members": [],
+        "callables": [
+          {
+            "name": "update:modelValue",
+            "type": "[value: M extends true ? string[] : string]",
+            "parameters": "value: M extends true ? string[] : string",
+            "required": true,
+            "description": "",
+            "sourcePath": "headless/src/types/common.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "highlight",
+            "type": "[payload?: CollectionItemData<ListboxCollectionItemData> | undefined]",
+            "parameters": "payload?: CollectionItemData<ListboxCollectionItemData> | undefined",
+            "required": true,
+            "description": "Event handler when highlighted element changes.",
+            "sourcePath": "headless/src/components/listbox/types.ts",
+            "referencedTypes": [
+              {
+                "name": "CollectionItemData",
+                "kind": "interface",
+                "type": "CollectionItemData<ListboxCollectionItemData>",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/composables/use-collection.ts",
+                "typeParameters": [
+                  "ItemData = Record<string, any>"
+                ],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "entryFocus",
+            "type": "[event: CustomEvent<any>]",
+            "parameters": "event: CustomEvent<any>",
+            "required": true,
+            "description": "Event handler called when container is being focused. Can be prevented.",
+            "sourcePath": "headless/src/components/listbox/types.ts",
+            "referencedTypes": [
+              {
+                "name": "CustomEvent",
+                "kind": "interface",
+                "type": "CustomEvent",
+                "resolvedType": null,
+                "description": "The **`CustomEvent`** interface can be used to attach custom data to an event generated by an application.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/CustomEvent)",
+                "sourcePath": "node_modules/.pnpm/typescript@6.0.3/node_modules/typescript/lib/lib.dom.d.ts",
+                "typeParameters": [
+                  "T = any"
+                ],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "leave",
+            "type": "[event: Event]",
+            "parameters": "event: Event",
+            "required": true,
+            "description": "Event handler called when the mouse leave the container",
+            "sourcePath": "headless/src/components/listbox/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Event",
+                "kind": "interface",
+                "type": "Event",
+                "resolvedType": null,
+                "description": "The **`Event`** interface represents an event which takes place on an EventTarget.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event)",
+                "sourcePath": "node_modules/.pnpm/typescript@6.0.3/node_modules/typescript/lib/lib.dom.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "referencedTypes": []
+      }
+    },
+    "ListboxVirtualizer": {
+      "props": {
+        "kind": "props",
+        "name": "ListboxVirtualizerProps",
+        "type": "Interface ListboxVirtualizerProps",
+        "resolvedType": "{ options: string[]; overscan?: number; estimateSize?: number | ((index: number) => number); textContent?: ((option: string) => string) }",
+        "description": "",
+        "sourcePath": "headless/src/components/listbox/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "options",
+            "type": "string[]",
+            "required": true,
+            "description": "List of items",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/listbox/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "overscan",
+            "type": "number",
+            "required": false,
+            "description": "Number of items rendered outside the visible area",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/listbox/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "estimateSize",
+            "type": "number | ((index: number) => number)",
+            "required": false,
+            "description": "Estimated size (in px) of each item",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/listbox/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "textContent",
+            "type": "((option: string) => string)",
+            "required": false,
+            "description": "Text content for each item to achieve type-ahead feature",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/listbox/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      },
+      "slots": {
+        "kind": "slots",
+        "name": "ListboxVirtualizerSlots",
+        "type": "TypeAlias ListboxVirtualizerSlots",
+        "resolvedType": "{ default: (props: ListboxVirtualizerSlotsProps) => any }",
+        "description": "",
+        "sourcePath": "headless/src/components/listbox/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [
+          {
+            "name": "default",
+            "type": "(props: ListboxVirtualizerSlotsProps) => any",
+            "parameters": "props: { option: string; virtualizer: Virtualizer<HTMLElement, Element>; virtualItem: VirtualItem; }",
+            "required": true,
+            "description": "",
+            "sourcePath": "headless/src/components/listbox/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ListboxVirtualizerSlotsProps",
+                "kind": "typeAlias",
+                "type": "{ option: string; virtualizer: Virtualizer<HTMLElement, Element>; virtualItem: VirtualItem; }",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/components/listbox/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "referencedTypes": []
+      }
     }
   }
 }

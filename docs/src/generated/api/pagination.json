@@ -494,6 +494,8 @@
         "referencedTypes": []
       }
     },
+    "PaginationFirst": {},
+    "PaginationLast": {},
     "PaginationList": {
       "props": {
         "kind": "props",
@@ -533,6 +535,8 @@
         "referencedTypes": []
       }
     },
+    "PaginationNext": {},
+    "PaginationPrev": {},
     "PaginationRoot": {
       "props": {
         "kind": "props",

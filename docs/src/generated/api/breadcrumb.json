@@ -647,6 +647,583 @@
         "referencedTypes": []
       }
     },
+    "BreadcrumbCompact": {
+      "props": {
+        "kind": "props",
+        "name": "BreadcrumbCompactProps",
+        "type": "Interface BreadcrumbCompactProps<T>",
+        "resolvedType": "{ items: T[]; ellipsis?: true | [number, number] | null; listProps?: BreadcrumbListProps; itemProps?: BreadcrumbItemProps; linkProps?: BreadcrumbLinkProps; pageProps?: BreadcrumbPageProps; separatorProps?: BreadcrumbSeparatorProps; ellipsisProps?: BreadcrumbEllipsisProps }",
+        "description": "",
+        "sourcePath": "headless/src/components/breadcrumb/types.ts",
+        "typeParameters": [
+          "T extends BreadcrumbOptionData = BreadcrumbOptionData"
+        ],
+        "members": [
+          {
+            "name": "items",
+            "type": "T[]",
+            "required": true,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/breadcrumb/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "ellipsis",
+            "type": "true | [number, number] | null",
+            "required": false,
+            "description": "The range of items to show ellipsis.\n\nWhen the item count is greater than 4, we will show ellipsis.",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/breadcrumb/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "listProps",
+            "type": "BreadcrumbListProps",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/breadcrumb/types.ts",
+            "referencedTypes": [
+              {
+                "name": "BreadcrumbListProps",
+                "kind": "interface",
+                "type": "BreadcrumbListProps",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/components/breadcrumb/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "itemProps",
+            "type": "BreadcrumbItemProps",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/breadcrumb/types.ts",
+            "referencedTypes": [
+              {
+                "name": "BreadcrumbItemProps",
+                "kind": "interface",
+                "type": "BreadcrumbItemProps",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/components/breadcrumb/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "linkProps",
+            "type": "BreadcrumbLinkProps",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/breadcrumb/types.ts",
+            "referencedTypes": [
+              {
+                "name": "BreadcrumbLinkProps",
+                "kind": "interface",
+                "type": "BreadcrumbLinkProps",
+                "resolvedType": "{ to?: string | import(\"vue-router\").RouteLocationAsRelativeGeneric | import(\"vue-router\").RouteLocationAsPathGeneric; replace?: boolean; href?: string; disabled?: boolean; activeClass?: string; exactActiveClass?: string; inactiveClass?: string; prefetchedClass?: string; external?: boolean; ariaCurrentValue?: 'true' | 'false' | 'page' | 'step' | 'location' | 'date' | 'time'; viewTransition?: boolean; target?: '_blank' | '_parent' | '_self' | '_top' | (string & {}) | null; rel?: (string & {}) | 'noopener' | 'noreferrer' | 'nofollow' | 'sponsored' | 'ugc' | null; noRel?: boolean; prefetch?: boolean; prefetchOn?: 'visibility' | 'interaction' | Partial<{ visibility: boolean; interaction: boolean; }>; noPrefetch?: boolean; trailingSlash?: 'append' | 'remove'; asChild?: boolean; as?: AsTag | Component }",
+                "description": "",
+                "sourcePath": "headless/src/components/breadcrumb/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "to",
+                    "type": "string | import(\"vue-router\").RouteLocationAsRelativeGeneric | import(\"vue-router\").RouteLocationAsPathGeneric",
+                    "required": false,
+                    "description": "Route Location the link should navigate to when clicked on.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "replace",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Calls `router.replace` instead of `router.push`.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "href",
+                    "type": "string",
+                    "required": false,
+                    "description": "The URL the link should navigate to when clicked on.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "disabled",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "When `true`, the link is disabled.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "activeClass",
+                    "type": "string",
+                    "required": false,
+                    "description": "Class to apply when the link is active",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "exactActiveClass",
+                    "type": "string",
+                    "required": false,
+                    "description": "Class to apply when the link is exact active",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "inactiveClass",
+                    "type": "string",
+                    "required": false,
+                    "description": "The class to apply to the link when it is inactive.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "prefetchedClass",
+                    "type": "string",
+                    "required": false,
+                    "description": "A class to apply to links that have been prefetched.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "external",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Forces the link to be considered as external (true) or internal (false). This is helpful to handle edge-cases",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "ariaCurrentValue",
+                    "type": "'true' | 'false' | 'page' | 'step' | 'location' | 'date' | 'time'",
+                    "required": false,
+                    "description": "Value passed to the attribute `aria-current` when the link is exact active.",
+                    "default": "`'page'`",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "viewTransition",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Pass the returned promise of `router.push()` to `document.startViewTransition()` if supported.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "target",
+                    "type": "'_blank' | '_parent' | '_self' | '_top' | (string & {}) | null",
+                    "required": false,
+                    "description": "Where to display the linked URL, as the name for a browsing context.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "rel",
+                    "type": "(string & {}) | 'noopener' | 'noreferrer' | 'nofollow' | 'sponsored' | 'ugc' | null",
+                    "required": false,
+                    "description": "A rel attribute value to apply on the link. Defaults to \"noopener noreferrer\" for external links.",
+                    "default": "'noopener noreferrer'",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "noRel",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "If set to true, no rel attribute will be added to the link",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "prefetch",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "When enabled will prefetch middleware, layouts and payloads of links in the viewport.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "prefetchOn",
+                    "type": "'visibility' | 'interaction' | Partial<{ visibility: boolean; interaction: boolean; }>",
+                    "required": false,
+                    "description": "Allows controlling when to prefetch links. By default, prefetch is triggered only on visibility.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "noPrefetch",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Escape hatch to disable `prefetch` attribute.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "trailingSlash",
+                    "type": "'append' | 'remove'",
+                    "required": false,
+                    "description": "An option to either add or remove trailing slashes in the `href` for this specific link.\nOverrides the global `trailingSlash` option if provided.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "asChild",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "as",
+                    "type": "AsTag | Component",
+                    "required": false,
+                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+                    "default": "'div'",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "pageProps",
+            "type": "BreadcrumbPageProps",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/breadcrumb/types.ts",
+            "referencedTypes": [
+              {
+                "name": "BreadcrumbPageProps",
+                "kind": "interface",
+                "type": "BreadcrumbPageProps",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/components/breadcrumb/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "separatorProps",
+            "type": "BreadcrumbSeparatorProps",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/breadcrumb/types.ts",
+            "referencedTypes": [
+              {
+                "name": "BreadcrumbSeparatorProps",
+                "kind": "interface",
+                "type": "BreadcrumbSeparatorProps",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/components/breadcrumb/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "ellipsisProps",
+            "type": "BreadcrumbEllipsisProps",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/breadcrumb/types.ts",
+            "referencedTypes": [
+              {
+                "name": "BreadcrumbEllipsisProps",
+                "kind": "interface",
+                "type": "BreadcrumbEllipsisProps",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/components/breadcrumb/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      },
+      "emits": {
+        "kind": "emits",
+        "name": "BreadcrumbCompactEmits",
+        "type": "TypeAlias BreadcrumbCompactEmits<T>",
+        "resolvedType": "{ click: [item: T] }",
+        "description": "",
+        "sourcePath": "headless/src/components/breadcrumb/types.ts",
+        "typeParameters": [
+          "T extends BreadcrumbOptionData = BreadcrumbOptionData"
+        ],
+        "members": [],
+        "callables": [
+          {
+            "name": "click",
+            "type": "[item: T]",
+            "parameters": "item: T",
+            "required": true,
+            "description": "",
+            "sourcePath": "headless/src/components/breadcrumb/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "referencedTypes": []
+      },
+      "slots": {
+        "kind": "slots",
+        "name": "BreadcrumbCompactSlots",
+        "type": "TypeAlias BreadcrumbCompactSlots<T>",
+        "resolvedType": "{ default?: ((props: BreadcrumbCompactItemSlotProps<T>) => any); ellipsis?: ((props: BreadcrumbCompactEllipsisSlotProps<T>) => any); \"ellipsis-icon\"?: (() => any); separator?: (() => any); \"item-leading\"?: ((props: BreadcrumbCompactItemSlotProps<T>) => any); \"item-link\"?: ((props: BreadcrumbCompactItemSlotProps<T>) => any); \"item-label\"?: ((props: BreadcrumbCompactItemSlotProps<T>) => any); \"item-trailing\"?: ((props: BreadcrumbCompactItemSlotProps<T>) => any) }",
+        "description": "",
+        "sourcePath": "headless/src/components/breadcrumb/types.ts",
+        "typeParameters": [
+          "T extends BreadcrumbOptionData = BreadcrumbOptionData"
+        ],
+        "members": [],
+        "callables": [
+          {
+            "name": "default",
+            "type": "((props: BreadcrumbCompactItemSlotProps<T>) => any) | undefined",
+            "parameters": "((props: BreadcrumbCompactItemSlotProps<T>) => any) | undefined",
+            "required": false,
+            "description": "",
+            "sourcePath": "headless/src/components/breadcrumb/types.ts",
+            "referencedTypes": [
+              {
+                "name": "BreadcrumbCompactItemSlotProps",
+                "kind": "interface",
+                "type": "BreadcrumbCompactItemSlotProps<T>",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/components/breadcrumb/types.ts",
+                "typeParameters": [
+                  "T extends BreadcrumbOptionData = BreadcrumbOptionData"
+                ],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "ellipsis",
+            "type": "((props: BreadcrumbCompactEllipsisSlotProps<T>) => any) | undefined",
+            "parameters": "((props: BreadcrumbCompactEllipsisSlotProps<T>) => any) | undefined",
+            "required": false,
+            "description": "",
+            "sourcePath": "headless/src/components/breadcrumb/types.ts",
+            "referencedTypes": [
+              {
+                "name": "BreadcrumbCompactEllipsisSlotProps",
+                "kind": "interface",
+                "type": "BreadcrumbCompactEllipsisSlotProps<T>",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/components/breadcrumb/types.ts",
+                "typeParameters": [
+                  "T extends BreadcrumbOptionData = BreadcrumbOptionData"
+                ],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "ellipsis-icon",
+            "type": "(() => any) | undefined",
+            "parameters": "(() => any) | undefined",
+            "required": false,
+            "description": "",
+            "sourcePath": "headless/src/components/breadcrumb/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "separator",
+            "type": "(() => any) | undefined",
+            "parameters": "(() => any) | undefined",
+            "required": false,
+            "description": "",
+            "sourcePath": "headless/src/components/breadcrumb/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "item-leading",
+            "type": "((props: BreadcrumbCompactItemSlotProps<T>) => any) | undefined",
+            "parameters": "((props: BreadcrumbCompactItemSlotProps<T>) => any) | undefined",
+            "required": false,
+            "description": "",
+            "sourcePath": "headless/src/components/breadcrumb/types.ts",
+            "referencedTypes": [
+              {
+                "name": "BreadcrumbCompactItemSlotProps",
+                "kind": "interface",
+                "type": "BreadcrumbCompactItemSlotProps<T>",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/components/breadcrumb/types.ts",
+                "typeParameters": [
+                  "T extends BreadcrumbOptionData = BreadcrumbOptionData"
+                ],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "item-link",
+            "type": "((props: BreadcrumbCompactItemSlotProps<T>) => any) | undefined",
+            "parameters": "((props: BreadcrumbCompactItemSlotProps<T>) => any) | undefined",
+            "required": false,
+            "description": "",
+            "sourcePath": "headless/src/components/breadcrumb/types.ts",
+            "referencedTypes": [
+              {
+                "name": "BreadcrumbCompactItemSlotProps",
+                "kind": "interface",
+                "type": "BreadcrumbCompactItemSlotProps<T>",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/components/breadcrumb/types.ts",
+                "typeParameters": [
+                  "T extends BreadcrumbOptionData = BreadcrumbOptionData"
+                ],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "item-label",
+            "type": "((props: BreadcrumbCompactItemSlotProps<T>) => any) | undefined",
+            "parameters": "((props: BreadcrumbCompactItemSlotProps<T>) => any) | undefined",
+            "required": false,
+            "description": "",
+            "sourcePath": "headless/src/components/breadcrumb/types.ts",
+            "referencedTypes": [
+              {
+                "name": "BreadcrumbCompactItemSlotProps",
+                "kind": "interface",
+                "type": "BreadcrumbCompactItemSlotProps<T>",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/components/breadcrumb/types.ts",
+                "typeParameters": [
+                  "T extends BreadcrumbOptionData = BreadcrumbOptionData"
+                ],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "item-trailing",
+            "type": "((props: BreadcrumbCompactItemSlotProps<T>) => any) | undefined",
+            "parameters": "((props: BreadcrumbCompactItemSlotProps<T>) => any) | undefined",
+            "required": false,
+            "description": "",
+            "sourcePath": "headless/src/components/breadcrumb/types.ts",
+            "referencedTypes": [
+              {
+                "name": "BreadcrumbCompactItemSlotProps",
+                "kind": "interface",
+                "type": "BreadcrumbCompactItemSlotProps<T>",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/components/breadcrumb/types.ts",
+                "typeParameters": [
+                  "T extends BreadcrumbOptionData = BreadcrumbOptionData"
+                ],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "referencedTypes": []
+      }
+    },
     "BreadcrumbEllipsis": {
       "props": {
         "kind": "props",

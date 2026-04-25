@@ -6,7 +6,7 @@
         "kind": "props",
         "name": "ColorPickerProps",
         "type": "Interface ColorPickerProps",
-        "resolvedType": "{ class?: string | Record<string, boolean> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<ColorPickerUi>; modelValue?: import(\"@soybeanjs/colord\").AnyColor; defaultValue?: import(\"@soybeanjs/colord\").AnyColor; format?: ColorFormat; defaultFormat?: ColorFormat; disabled?: boolean; colorSpace?: ColorSpace; showAlpha?: boolean; showFields?: boolean; showSwatches?: boolean; swatches?: string[]; triggerButtonProps?: ButtonProps; areaProps?: Omit<ColorAreaProps, 'onChange' | 'disabled' | 'modelValue' | 'defaultValue' | 'colorSpace' | 'format' | 'xChannel' | 'yChannel' | 'onChangeEnd'>; hueSliderProps?: Omit<ColorSliderProps, 'onChange' | 'disabled' | 'modelValue' | 'defaultValue' | 'colorSpace' | 'format' | 'onChangeEnd' | 'channel'>; alphaSliderProps?: Omit<ColorSliderProps, 'onChange' | 'disabled' | 'modelValue' | 'defaultValue' | 'colorSpace' | 'format' | 'onChangeEnd' | 'channel'>; alphaFieldProps?: Omit<ColorFieldProps, 'disabled' | 'modelValue' | 'defaultValue' | 'colorSpace' | 'format' | 'channel'>; hexFieldProps?: Omit<ColorFieldProps, 'disabled' | 'modelValue' | 'defaultValue' | 'colorSpace' | 'format' | 'channel'>; fieldProps?: Omit<ColorFieldProps, 'disabled' | 'modelValue' | 'defaultValue' | 'colorSpace' | 'format' | 'channel'>; swatchPickerProps?: Omit<ColorSwatchPickerProps, 'disabled' | 'modelValue' | 'defaultValue' | 'colors'>; swatchProps?: Omit<UiColorSwatchProps, 'class' | 'color' | 'size'>; open?: boolean; defaultOpen?: boolean; modal?: boolean; placement?: Placement; showArrow?: boolean; positionerProps?: PopoverPositionerProps; popupProps?: PopoverPopupProps; triggerProps?: PopoverTriggerProps; closeProps?: PopoverCloseProps; portalProps?: PopoverPortalProps; arrowProps?: PopoverArrowProps }",
+        "resolvedType": "{ class?: string | Record<string, boolean> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<ColorPickerUi>; modelValue?: import(\"@soybeanjs/colord\").AnyColor; defaultValue?: import(\"@soybeanjs/colord\").AnyColor; format?: ColorFormat; defaultFormat?: ColorFormat; disabled?: boolean; colorSpace?: ColorSpace; showAlpha?: boolean; showFields?: boolean; showSwatches?: boolean; swatches?: string[]; triggerButtonProps?: ButtonProps; areaProps?: Omit<ColorAreaProps, 'onChange' | 'disabled' | 'defaultValue' | 'modelValue' | 'colorSpace' | 'format' | 'xChannel' | 'yChannel' | 'onChangeEnd'>; hueSliderProps?: Omit<ColorSliderProps, 'onChange' | 'disabled' | 'defaultValue' | 'modelValue' | 'colorSpace' | 'format' | 'onChangeEnd' | 'channel'>; alphaSliderProps?: Omit<ColorSliderProps, 'onChange' | 'disabled' | 'defaultValue' | 'modelValue' | 'colorSpace' | 'format' | 'onChangeEnd' | 'channel'>; alphaFieldProps?: Omit<ColorFieldProps, 'disabled' | 'defaultValue' | 'modelValue' | 'colorSpace' | 'format' | 'channel'>; hexFieldProps?: Omit<ColorFieldProps, 'disabled' | 'defaultValue' | 'modelValue' | 'colorSpace' | 'format' | 'channel'>; fieldProps?: Omit<ColorFieldProps, 'disabled' | 'defaultValue' | 'modelValue' | 'colorSpace' | 'format' | 'channel'>; swatchPickerProps?: Omit<ColorSwatchPickerProps, 'disabled' | 'defaultValue' | 'modelValue' | 'colors'>; swatchProps?: Omit<UiColorSwatchProps, 'class' | 'color' | 'size'>; open?: boolean; defaultOpen?: boolean; modal?: boolean; placement?: Placement; showArrow?: boolean; positionerProps?: PopoverPositionerProps; popupProps?: PopoverPopupProps; triggerProps?: PopoverTriggerProps; closeProps?: PopoverCloseProps; portalProps?: PopoverPortalProps; arrowProps?: PopoverArrowProps }",
         "description": "",
         "sourcePath": "src/components/color-picker/types.ts",
         "typeParameters": [],
@@ -355,7 +355,7 @@
           },
           {
             "name": "areaProps",
-            "type": "Omit<ColorAreaProps, 'onChange' | 'disabled' | 'modelValue' | 'defaultValue' | 'colorSpace' | 'format' | 'xChannel' | 'yChannel' | 'onChangeEnd'>",
+            "type": "Omit<ColorAreaProps, 'onChange' | 'disabled' | 'defaultValue' | 'modelValue' | 'colorSpace' | 'format' | 'xChannel' | 'yChannel' | 'onChangeEnd'>",
             "required": false,
             "description": "",
             "default": null,
@@ -378,7 +378,7 @@
           },
           {
             "name": "hueSliderProps",
-            "type": "Omit<ColorSliderProps, 'onChange' | 'disabled' | 'modelValue' | 'defaultValue' | 'colorSpace' | 'format' | 'onChangeEnd' | 'channel'>",
+            "type": "Omit<ColorSliderProps, 'onChange' | 'disabled' | 'defaultValue' | 'modelValue' | 'colorSpace' | 'format' | 'onChangeEnd' | 'channel'>",
             "required": false,
             "description": "",
             "default": null,
@@ -401,7 +401,7 @@
           },
           {
             "name": "alphaSliderProps",
-            "type": "Omit<ColorSliderProps, 'onChange' | 'disabled' | 'modelValue' | 'defaultValue' | 'colorSpace' | 'format' | 'onChangeEnd' | 'channel'>",
+            "type": "Omit<ColorSliderProps, 'onChange' | 'disabled' | 'defaultValue' | 'modelValue' | 'colorSpace' | 'format' | 'onChangeEnd' | 'channel'>",
             "required": false,
             "description": "",
             "default": null,
@@ -424,7 +424,7 @@
           },
           {
             "name": "alphaFieldProps",
-            "type": "Omit<ColorFieldProps, 'disabled' | 'modelValue' | 'defaultValue' | 'colorSpace' | 'format' | 'channel'>",
+            "type": "Omit<ColorFieldProps, 'disabled' | 'defaultValue' | 'modelValue' | 'colorSpace' | 'format' | 'channel'>",
             "required": false,
             "description": "",
             "default": null,
@@ -447,7 +447,7 @@
           },
           {
             "name": "hexFieldProps",
-            "type": "Omit<ColorFieldProps, 'disabled' | 'modelValue' | 'defaultValue' | 'colorSpace' | 'format' | 'channel'>",
+            "type": "Omit<ColorFieldProps, 'disabled' | 'defaultValue' | 'modelValue' | 'colorSpace' | 'format' | 'channel'>",
             "required": false,
             "description": "",
             "default": null,
@@ -470,7 +470,7 @@
           },
           {
             "name": "fieldProps",
-            "type": "Omit<ColorFieldProps, 'disabled' | 'modelValue' | 'defaultValue' | 'colorSpace' | 'format' | 'channel'>",
+            "type": "Omit<ColorFieldProps, 'disabled' | 'defaultValue' | 'modelValue' | 'colorSpace' | 'format' | 'channel'>",
             "required": false,
             "description": "",
             "default": null,
@@ -493,7 +493,7 @@
           },
           {
             "name": "swatchPickerProps",
-            "type": "Omit<ColorSwatchPickerProps, 'disabled' | 'modelValue' | 'defaultValue' | 'colors'>",
+            "type": "Omit<ColorSwatchPickerProps, 'disabled' | 'defaultValue' | 'modelValue' | 'colors'>",
             "required": false,
             "description": "",
             "default": null,
@@ -1118,6 +1118,261 @@
             "referencedTypes": []
           }
         ],
+        "referencedTypes": []
+      }
+    },
+    "ColorPickerRoot": {
+      "props": {
+        "kind": "props",
+        "name": "ColorPickerRootProps",
+        "type": "Interface ColorPickerRootProps",
+        "resolvedType": "{ modelValue?: import(\"@soybeanjs/colord\").AnyColor; defaultValue?: import(\"@soybeanjs/colord\").AnyColor; format?: ColorFormat; disabled?: boolean; asChild?: boolean; as?: AsTag | Component; name?: string; required?: boolean }",
+        "description": "",
+        "sourcePath": "headless/src/components/color-picker/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "modelValue",
+            "type": "import(\"@soybeanjs/colord\").AnyColor",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/color-picker/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "defaultValue",
+            "type": "import(\"@soybeanjs/colord\").AnyColor",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/color-picker/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "format",
+            "type": "ColorFormat",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/color-picker/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ColorFormat",
+                "kind": "typeAlias",
+                "type": "'hsl' | 'oklch' | 'hex' | 'rgb'",
+                "resolvedType": "'hsl' | 'oklch' | 'hex' | 'rgb'",
+                "description": "",
+                "sourcePath": "headless/src/shared/color.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "disabled",
+            "type": "boolean",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/color-picker/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "asChild",
+            "type": "boolean",
+            "required": false,
+            "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/primitive/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "as",
+            "type": "AsTag | Component",
+            "required": false,
+            "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+            "default": "'div'",
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/primitive/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Component",
+                "kind": "typeAlias",
+                "type": "Component",
+                "resolvedType": null,
+                "description": "A type used in public APIs where a component type is expected.\nThe constructor type is an artificial type returned by defineComponent().",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [
+                  "PropsOrInstance = any",
+                  "RawBindings = any",
+                  "D = any",
+                  "C extends ComputedOptions = ComputedOptions",
+                  "M extends MethodOptions = MethodOptions",
+                  "E extends EmitsOptions | Record<string, any[]> = {}",
+                  "S extends Record<string, any> = any"
+                ],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "name",
+            "type": "string",
+            "required": false,
+            "description": "The name of the field. Submitted with its owning form as part of a name/value pair.",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/types/component.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "required",
+            "type": "boolean",
+            "required": false,
+            "description": "When `true`, indicates that the user must set the value before the owning form can be submitted.",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/types/component.ts",
+            "referencedTypes": []
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      },
+      "emits": {
+        "kind": "emits",
+        "name": "ColorPickerRootEmits",
+        "type": "TypeAlias ColorPickerRootEmits",
+        "resolvedType": "{ \"update:modelValue\": [value: string]; \"update:color\": [value: NormalizedColor]; change: [value: string] }",
+        "description": "",
+        "sourcePath": "headless/src/components/color-picker/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [
+          {
+            "name": "update:modelValue",
+            "type": "[value: string]",
+            "parameters": "value: string",
+            "required": true,
+            "description": "",
+            "sourcePath": "headless/src/components/color-picker/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "update:color",
+            "type": "[value: NormalizedColor]",
+            "parameters": "value: NormalizedColor",
+            "required": true,
+            "description": "",
+            "sourcePath": "headless/src/components/color-picker/types.ts",
+            "referencedTypes": [
+              {
+                "name": "NormalizedColor",
+                "kind": "typeAlias",
+                "type": "import(\"@soybeanjs/colord\").RgbColor | import(\"@soybeanjs/colord\").HslColor | import(\"@soybeanjs/colord\").HsvColor | import(\"@soybeanjs/colord\").OklchColor",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/shared/color.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "change",
+            "type": "[value: string]",
+            "parameters": "value: string",
+            "required": true,
+            "description": "",
+            "sourcePath": "headless/src/components/color-picker/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "referencedTypes": []
+      },
+      "slotProps": {
+        "kind": "slotProps",
+        "name": "ColorPickerRootSlotProps",
+        "type": "Interface ColorPickerRootSlotProps",
+        "resolvedType": "{ color: ComputedRef<import(\"@soybeanjs/colord\").AnyColor>; formattedValue: ComputedRef<string>; setColor: (color: ColorValue) => void }",
+        "description": "",
+        "sourcePath": "headless/src/components/color-picker/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "color",
+            "type": "ComputedRef<import(\"@soybeanjs/colord\").AnyColor>",
+            "required": true,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/color-picker/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ComputedRef",
+                "kind": "interface",
+                "type": "ComputedRef<ColorValue>",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@vue+reactivity@3.5.33/node_modules/@vue/reactivity/dist/reactivity.d.ts",
+                "typeParameters": [
+                  "T = any"
+                ],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "formattedValue",
+            "type": "ComputedRef<string>",
+            "required": true,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/color-picker/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ComputedRef",
+                "kind": "interface",
+                "type": "ComputedRef<string>",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@vue+reactivity@3.5.33/node_modules/@vue/reactivity/dist/reactivity.d.ts",
+                "typeParameters": [
+                  "T = any"
+                ],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "setColor",
+            "type": "(color: ColorValue) => void",
+            "required": true,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/color-picker/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "callables": [],
         "referencedTypes": []
       }
     }

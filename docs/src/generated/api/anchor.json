@@ -534,6 +534,437 @@
         ]
       }
     },
+    "AnchorCompact": {
+      "props": {
+        "kind": "props",
+        "name": "AnchorCompactProps",
+        "type": "Interface AnchorCompactProps",
+        "resolvedType": "{ items: AnchorItemData[]; linkProps?: AnchorLinkProps; indicatorProps?: HTMLAttributes; titleProps?: HTMLAttributes; subProps?: HTMLAttributes; bounds?: number; dir?: Direction; getContainer?: (() => AnchorContainer | null); getCurrentAnchor?: ((activeHref: string) => string); modelValue?: string; offsetTop?: number; orientation?: DataOrientation; replace?: boolean; targetOffset?: number; asChild?: boolean; as?: AsTag | Component }",
+        "description": "",
+        "sourcePath": "headless/src/components/anchor/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "items",
+            "type": "AnchorItemData[]",
+            "required": true,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/anchor/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "linkProps",
+            "type": "AnchorLinkProps",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/anchor/types.ts",
+            "referencedTypes": [
+              {
+                "name": "AnchorLinkProps",
+                "kind": "interface",
+                "type": "AnchorLinkProps",
+                "resolvedType": "{ href: string; asChild?: boolean; as?: AsTag | Component; disabled?: boolean; target?: '_blank' | '_parent' | '_self' | '_top' | (string & {}) | null }",
+                "description": "",
+                "sourcePath": "headless/src/components/anchor/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "href",
+                    "type": "string",
+                    "required": true,
+                    "description": "",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/anchor/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "asChild",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "as",
+                    "type": "AsTag | Component",
+                    "required": false,
+                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+                    "default": "'div'",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "disabled",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "When `true`, the link is disabled.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "target",
+                    "type": "'_blank' | '_parent' | '_self' | '_top' | (string & {}) | null",
+                    "required": false,
+                    "description": "Where to display the linked URL, as the name for a browsing context.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "indicatorProps",
+            "type": "HTMLAttributes",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/anchor/types.ts",
+            "referencedTypes": [
+              {
+                "name": "HTMLAttributes",
+                "kind": "interface",
+                "type": "HTMLAttributes",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-dom@3.5.33/node_modules/@vue/runtime-dom/dist/runtime-dom.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "titleProps",
+            "type": "HTMLAttributes",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/anchor/types.ts",
+            "referencedTypes": [
+              {
+                "name": "HTMLAttributes",
+                "kind": "interface",
+                "type": "HTMLAttributes",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-dom@3.5.33/node_modules/@vue/runtime-dom/dist/runtime-dom.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "subProps",
+            "type": "HTMLAttributes",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/anchor/types.ts",
+            "referencedTypes": [
+              {
+                "name": "HTMLAttributes",
+                "kind": "interface",
+                "type": "HTMLAttributes",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-dom@3.5.33/node_modules/@vue/runtime-dom/dist/runtime-dom.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "bounds",
+            "type": "number",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/anchor/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "dir",
+            "type": "Direction",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/anchor/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Direction",
+                "kind": "typeAlias",
+                "type": "'ltr' | 'rtl'",
+                "resolvedType": "'ltr' | 'rtl'",
+                "description": "",
+                "sourcePath": "headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "getContainer",
+            "type": "(() => AnchorContainer | null)",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/anchor/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "getCurrentAnchor",
+            "type": "((activeHref: string) => string)",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/anchor/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "modelValue",
+            "type": "string",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/anchor/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "offsetTop",
+            "type": "number",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/anchor/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "orientation",
+            "type": "DataOrientation",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/anchor/types.ts",
+            "referencedTypes": [
+              {
+                "name": "DataOrientation",
+                "kind": "typeAlias",
+                "type": "'vertical' | 'horizontal'",
+                "resolvedType": "'vertical' | 'horizontal'",
+                "description": "",
+                "sourcePath": "headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "replace",
+            "type": "boolean",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/anchor/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "targetOffset",
+            "type": "number",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/anchor/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "asChild",
+            "type": "boolean",
+            "required": false,
+            "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/primitive/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "as",
+            "type": "AsTag | Component",
+            "required": false,
+            "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+            "default": "'div'",
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/primitive/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Component",
+                "kind": "typeAlias",
+                "type": "Component",
+                "resolvedType": null,
+                "description": "A type used in public APIs where a component type is expected.\nThe constructor type is an artificial type returned by defineComponent().",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [
+                  "PropsOrInstance = any",
+                  "RawBindings = any",
+                  "D = any",
+                  "C extends ComputedOptions = ComputedOptions",
+                  "M extends MethodOptions = MethodOptions",
+                  "E extends EmitsOptions | Record<string, any[]> = {}",
+                  "S extends Record<string, any> = any"
+                ],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      },
+      "emits": {
+        "kind": "emits",
+        "name": "AnchorCompactEmits",
+        "type": "TypeAlias AnchorCompactEmits",
+        "resolvedType": "{ \"update:modelValue\": [value: string]; activeChange: [value: string]; itemSelect: [event: MouseEvent, payload: { href: string; }] }",
+        "description": "",
+        "sourcePath": "headless/src/components/anchor/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [
+          {
+            "name": "update:modelValue",
+            "type": "[value: string]",
+            "parameters": "value: string",
+            "required": true,
+            "description": "",
+            "sourcePath": "headless/src/components/anchor/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "activeChange",
+            "type": "[value: string]",
+            "parameters": "value: string",
+            "required": true,
+            "description": "",
+            "sourcePath": "headless/src/components/anchor/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "itemSelect",
+            "type": "[event: MouseEvent, payload: { href: string; }]",
+            "parameters": "event: MouseEvent, payload: { href: string; }",
+            "required": true,
+            "description": "",
+            "sourcePath": "headless/src/components/anchor/types.ts",
+            "referencedTypes": [
+              {
+                "name": "__type",
+                "kind": "typeLiteral",
+                "type": "{ href: string; }",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/components/anchor/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "MouseEvent",
+                "kind": "interface",
+                "type": "MouseEvent",
+                "resolvedType": null,
+                "description": "The **`MouseEvent`** interface represents events that occur due to the user interacting with a pointing device (such as a mouse). Common events using this interface include click, dblclick, mouseup, mousedown.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent)",
+                "sourcePath": "node_modules/.pnpm/typescript@6.0.3/node_modules/typescript/lib/lib.dom.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "referencedTypes": [
+          {
+            "name": "AnchorRootEmits",
+            "kind": "typeAlias",
+            "type": "{ 'update:modelValue': [value: string]; activeChange: [value: string]; itemSelect: [event: MouseEvent, payload: { href: string; }]; }",
+            "resolvedType": "{ \"update:modelValue\": [value: string]; activeChange: [value: string]; itemSelect: [event: MouseEvent, payload: { href: string; }] }",
+            "description": "",
+            "sourcePath": "headless/src/components/anchor/types.ts",
+            "typeParameters": [],
+            "external": false,
+            "members": [],
+            "callables": [
+              {
+                "name": "update:modelValue",
+                "type": "[value: string]",
+                "parameters": "value: string",
+                "required": true,
+                "description": "",
+                "sourcePath": "headless/src/components/anchor/types.ts",
+                "referencedTypes": []
+              },
+              {
+                "name": "activeChange",
+                "type": "[value: string]",
+                "parameters": "value: string",
+                "required": true,
+                "description": "",
+                "sourcePath": "headless/src/components/anchor/types.ts",
+                "referencedTypes": []
+              },
+              {
+                "name": "itemSelect",
+                "type": "[event: MouseEvent, payload: { href: string; }]",
+                "parameters": "event: MouseEvent, payload: { href: string; }",
+                "required": true,
+                "description": "",
+                "sourcePath": "headless/src/components/anchor/types.ts",
+                "referencedTypes": []
+              }
+            ]
+          }
+        ]
+      }
+    },
     "AnchorLink": {
       "props": {
         "kind": "props",

@@ -161,7 +161,7 @@
                 "type": "string | import(\"vue\").Component | import(\"vue\").VNode<import(\"vue\").RendererNode, import(\"vue\").RendererElement, { [key: string]: any; }> | null | undefined",
                 "resolvedType": "string | Component | VNode<import(\"vue\").RendererNode, import(\"vue\").RendererElement, { [key: string]: any; }> | null | undefined",
                 "description": "",
-                "sourcePath": "headless/src/components/icon/types.ts",
+                "sourcePath": "headless/src/components/_icon/types.ts",
                 "typeParameters": [],
                 "external": false,
                 "members": [],
@@ -540,6 +540,309 @@
           }
         ],
         "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "AlertCompact": {
+      "props": {
+        "kind": "props",
+        "name": "AlertCompactProps",
+        "type": "Interface AlertCompactProps",
+        "resolvedType": "{ title?: string; description?: string; icon?: string | import(\"vue\").Component | import(\"vue\").VNode<import(\"vue\").RendererNode, import(\"vue\").RendererElement, { [key: string]: any; }> | null; closable?: boolean; contentProps?: AlertContentProps; titleProps?: AlertTitleProps; descriptionProps?: AlertDescriptionProps; closeProps?: AlertCloseProps; open?: boolean }",
+        "description": "",
+        "sourcePath": "headless/src/components/alert/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "title",
+            "type": "string",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/alert/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "description",
+            "type": "string",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/alert/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "icon",
+            "type": "string | import(\"vue\").Component | import(\"vue\").VNode<import(\"vue\").RendererNode, import(\"vue\").RendererElement, { [key: string]: any; }> | null",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/alert/types.ts",
+            "referencedTypes": [
+              {
+                "name": "IconValue",
+                "kind": "typeAlias",
+                "type": "string | import(\"vue\").Component | import(\"vue\").VNode<import(\"vue\").RendererNode, import(\"vue\").RendererElement, { [key: string]: any; }> | null | undefined",
+                "resolvedType": "string | Component | VNode<import(\"vue\").RendererNode, import(\"vue\").RendererElement, { [key: string]: any; }> | null | undefined",
+                "description": "",
+                "sourcePath": "headless/src/components/_icon/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "closable",
+            "type": "boolean",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/alert/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "contentProps",
+            "type": "AlertContentProps",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/alert/types.ts",
+            "referencedTypes": [
+              {
+                "name": "AlertContentProps",
+                "kind": "interface",
+                "type": "AlertContentProps",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/components/alert/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "titleProps",
+            "type": "AlertTitleProps",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/alert/types.ts",
+            "referencedTypes": [
+              {
+                "name": "AlertTitleProps",
+                "kind": "interface",
+                "type": "AlertTitleProps",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/components/alert/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "descriptionProps",
+            "type": "AlertDescriptionProps",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/alert/types.ts",
+            "referencedTypes": [
+              {
+                "name": "AlertDescriptionProps",
+                "kind": "interface",
+                "type": "AlertDescriptionProps",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/components/alert/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "closeProps",
+            "type": "AlertCloseProps",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/alert/types.ts",
+            "referencedTypes": [
+              {
+                "name": "AlertCloseProps",
+                "kind": "interface",
+                "type": "AlertCloseProps",
+                "resolvedType": "{ asChild?: boolean; as?: AsTag | Component }",
+                "description": "",
+                "sourcePath": "headless/src/components/alert/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "asChild",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "as",
+                    "type": "AsTag | Component",
+                    "required": false,
+                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+                    "default": "'div'",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "open",
+            "type": "boolean",
+            "required": false,
+            "description": "The controlled open state of the alert. Can be bound with `v-model:open`.",
+            "default": "true",
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/alert/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      },
+      "emits": {
+        "kind": "emits",
+        "name": "AlertCompactEmits",
+        "type": "TypeAlias AlertCompactEmits",
+        "resolvedType": "{ \"update:open\": [open: boolean] }",
+        "description": "",
+        "sourcePath": "headless/src/components/alert/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [
+          {
+            "name": "update:open",
+            "type": "[open: boolean]",
+            "parameters": "open: boolean",
+            "required": true,
+            "description": "",
+            "sourcePath": "headless/src/components/alert/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "referencedTypes": [
+          {
+            "name": "AlertRootEmits",
+            "kind": "typeAlias",
+            "type": "{ 'update:open': [open: boolean]; }",
+            "resolvedType": "{ \"update:open\": [open: boolean] }",
+            "description": "",
+            "sourcePath": "headless/src/components/alert/types.ts",
+            "typeParameters": [],
+            "external": false,
+            "members": [],
+            "callables": [
+              {
+                "name": "update:open",
+                "type": "[open: boolean]",
+                "parameters": "open: boolean",
+                "required": true,
+                "description": "",
+                "sourcePath": "headless/src/components/alert/types.ts",
+                "referencedTypes": []
+              }
+            ]
+          }
+        ]
+      },
+      "slots": {
+        "kind": "slots",
+        "name": "AlertCompactSlots",
+        "type": "TypeAlias AlertCompactSlots",
+        "resolvedType": "{ default?: (() => any); leading?: (() => any); title?: (() => any); description?: (() => any); trailing?: (() => any); close?: (() => any) }",
+        "description": "",
+        "sourcePath": "headless/src/components/alert/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [
+          {
+            "name": "default",
+            "type": "(() => any) | undefined",
+            "parameters": "(() => any) | undefined",
+            "required": false,
+            "description": "",
+            "sourcePath": "headless/src/components/alert/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "leading",
+            "type": "(() => any) | undefined",
+            "parameters": "(() => any) | undefined",
+            "required": false,
+            "description": "",
+            "sourcePath": "headless/src/components/alert/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "title",
+            "type": "(() => any) | undefined",
+            "parameters": "(() => any) | undefined",
+            "required": false,
+            "description": "",
+            "sourcePath": "headless/src/components/alert/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "description",
+            "type": "(() => any) | undefined",
+            "parameters": "(() => any) | undefined",
+            "required": false,
+            "description": "",
+            "sourcePath": "headless/src/components/alert/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "trailing",
+            "type": "(() => any) | undefined",
+            "parameters": "(() => any) | undefined",
+            "required": false,
+            "description": "",
+            "sourcePath": "headless/src/components/alert/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "close",
+            "type": "(() => any) | undefined",
+            "parameters": "(() => any) | undefined",
+            "required": false,
+            "description": "",
+            "sourcePath": "headless/src/components/alert/types.ts",
+            "referencedTypes": []
+          }
+        ],
         "referencedTypes": []
       }
     },

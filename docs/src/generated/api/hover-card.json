@@ -69,7 +69,7 @@
               {
                 "name": "PopperUi",
                 "kind": "typeAlias",
-                "type": "{ popup: ClassValue; positioner: ClassValue; arrow: ClassValue; }",
+                "type": "{ positioner: ClassValue; popup: ClassValue; arrow: ClassValue; }",
                 "resolvedType": null,
                 "description": "",
                 "sourcePath": "headless/src/components/popper/types.ts",
@@ -634,6 +634,7 @@
         "referencedTypes": []
       }
     },
+    "HoverCardArrow": {},
     "HoverCardPopup": {
       "props": {
         "kind": "props",
@@ -648,6 +649,7 @@
         "referencedTypes": []
       }
     },
+    "HoverCardPortal": {},
     "HoverCardPositioner": {
       "props": {
         "kind": "props",
@@ -1137,6 +1139,7 @@
         ],
         "referencedTypes": []
       }
-    }
+    },
+    "HoverCardTrigger": {}
   }
 }

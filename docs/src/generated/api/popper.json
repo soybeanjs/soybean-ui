@@ -28,6 +28,419 @@
         "callables": [],
         "referencedTypes": []
       }
-    }
+    },
+    "PopperAnchor": {
+      "props": {
+        "kind": "props",
+        "name": "PopperAnchorProps",
+        "type": "Interface PopperAnchorProps",
+        "resolvedType": "{ reference?: ReferenceElement; asChild?: boolean; as?: AsTag | Component }",
+        "description": "",
+        "sourcePath": "headless/src/components/popper/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "reference",
+            "type": "ReferenceElement",
+            "required": false,
+            "description": "The reference (or anchor) element that is being referred to for positioning. If not provided will use the current\ncomponent as anchor.",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/popper/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ReferenceElement",
+                "kind": "typeAlias",
+                "type": "ReferenceElement",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@floating-ui+dom@1.7.6/node_modules/@floating-ui/dom/dist/floating-ui.dom.d.mts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "asChild",
+            "type": "boolean",
+            "required": false,
+            "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/primitive/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "as",
+            "type": "AsTag | Component",
+            "required": false,
+            "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+            "default": "'div'",
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/primitive/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Component",
+                "kind": "typeAlias",
+                "type": "Component",
+                "resolvedType": null,
+                "description": "A type used in public APIs where a component type is expected.\nThe constructor type is an artificial type returned by defineComponent().",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [
+                  "PropsOrInstance = any",
+                  "RawBindings = any",
+                  "D = any",
+                  "C extends ComputedOptions = ComputedOptions",
+                  "M extends MethodOptions = MethodOptions",
+                  "E extends EmitsOptions | Record<string, any[]> = {}",
+                  "S extends Record<string, any> = any"
+                ],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "PopperArrow": {
+      "props": {
+        "kind": "props",
+        "name": "PopperArrowProps",
+        "type": "Interface PopperArrowProps",
+        "resolvedType": null,
+        "description": "",
+        "sourcePath": "headless/src/components/popper/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "PopperPopup": {
+      "props": {
+        "kind": "props",
+        "name": "PopperPopupProps",
+        "type": "Interface PopperPopupProps",
+        "resolvedType": null,
+        "description": "",
+        "sourcePath": "headless/src/components/popper/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "PopperPositioner": {
+      "props": {
+        "kind": "props",
+        "name": "PopperPositionerProps",
+        "type": "Interface PopperPositionerProps",
+        "resolvedType": "{ placement?: Placement; side?: Side; sideOffset?: number; sideFlip?: boolean; align?: Align; alignOffset?: number; alignFlip?: boolean; avoidCollisions?: boolean; collisionBoundary?: Element | (Element | null)[] | null; collisionPadding?: Padding; arrowPadding?: number; hideShiftedArrow?: boolean; sticky?: 'partial' | 'always'; hideWhenDetached?: boolean; positionStrategy?: 'fixed' | 'absolute'; updatePositionStrategy?: 'always' | 'optimized'; disableUpdateOnLayoutShift?: boolean; prioritizePosition?: boolean; reference?: ReferenceElement }",
+        "description": "",
+        "sourcePath": "headless/src/components/popper/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "placement",
+            "type": "Placement",
+            "required": false,
+            "description": "The placement of the floating element.\n\nIf used, it will override the `side` and `align` props.",
+            "default": "undefined",
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/popper/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Placement",
+                "kind": "typeAlias",
+                "type": "'top' | 'right' | 'bottom' | 'left' | 'top-start' | 'top-end' | 'right-start' | 'right-end' | 'bottom-start' | 'bottom-end' | 'left-start' | 'left-end'",
+                "resolvedType": "'top' | 'right' | 'bottom' | 'left' | 'top-start' | 'top-end' | 'right-start' | 'right-end' | 'bottom-start' | 'bottom-end' | 'left-start' | 'left-end'",
+                "description": "",
+                "sourcePath": "headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "side",
+            "type": "Side",
+            "required": false,
+            "description": "The preferred side of the trigger to render against when open. Will be reversed when collisions occur and\navoidCollisions is enabled.",
+            "default": "'bottom'",
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/popper/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Side",
+                "kind": "typeAlias",
+                "type": "Side",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@floating-ui+utils@0.2.11/node_modules/@floating-ui/utils/dist/floating-ui.utils.d.mts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "sideOffset",
+            "type": "number",
+            "required": false,
+            "description": "The distance in pixels from the trigger.",
+            "default": "0",
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/popper/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "sideFlip",
+            "type": "boolean",
+            "required": false,
+            "description": "Flip to the opposite side when colliding with boundary.",
+            "default": "true",
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/popper/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "align",
+            "type": "Align",
+            "required": false,
+            "description": "The preferred alignment against the trigger. May change when collisions occur.",
+            "default": "'center'",
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/popper/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Align",
+                "kind": "typeAlias",
+                "type": "'start' | 'center' | 'end'",
+                "resolvedType": "'start' | 'center' | 'end'",
+                "description": "",
+                "sourcePath": "headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "alignOffset",
+            "type": "number",
+            "required": false,
+            "description": "An offset in pixels from the `start` or `end` alignment options.",
+            "default": "0",
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/popper/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "alignFlip",
+            "type": "boolean",
+            "required": false,
+            "description": "Flip alignment when colliding with boundary.\nMay only occur when `prioritizePosition` is true.",
+            "default": "true",
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/popper/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "avoidCollisions",
+            "type": "boolean",
+            "required": false,
+            "description": "When `true`, overrides the side and align preferences to prevent collisions with boundary edges.",
+            "default": "true",
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/popper/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "collisionBoundary",
+            "type": "Element | (Element | null)[] | null",
+            "required": false,
+            "description": "The element used as the collision boundary. By default this is the viewport, though you can provide additional\nelement(s) to be included in this check.",
+            "default": "[ ]",
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/popper/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Element",
+                "kind": "interface",
+                "type": "Element",
+                "resolvedType": null,
+                "description": "**`Element`** is the most general base class from which all element objects (i.e., objects that represent elements) in a Document inherit. It only has methods and properties common to all kinds of elements. More specific classes inherit from Element.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element)",
+                "sourcePath": "node_modules/.pnpm/typescript@6.0.3/node_modules/typescript/lib/lib.dom.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "collisionPadding",
+            "type": "Padding",
+            "required": false,
+            "description": "The distance in pixels from the boundary edges where collision detection should occur. Accepts a number (same for\nall sides), or a partial padding object, for example: { top: 20, left: 20 }.",
+            "default": "0",
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/popper/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Padding",
+                "kind": "typeAlias",
+                "type": "Padding",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@floating-ui+utils@0.2.11/node_modules/@floating-ui/utils/dist/floating-ui.utils.d.mts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "arrowPadding",
+            "type": "number",
+            "required": false,
+            "description": "The padding between the arrow and the edges of the content. If your content has border-radius, this will prevent it\nfrom overflowing the corners.",
+            "default": "0",
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/popper/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "hideShiftedArrow",
+            "type": "boolean",
+            "required": false,
+            "description": "When `true`, hides the arrow when it cannot be centered\nto the reference element.",
+            "default": "true",
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/popper/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "sticky",
+            "type": "'partial' | 'always'",
+            "required": false,
+            "description": "The sticky behavior on the align axis. `partial` will keep the content in the boundary as long as the trigger is at\nleast partially in the boundary whilst \"always\" will keep the content in the boundary regardless.",
+            "default": "'partial'",
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/popper/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "hideWhenDetached",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether to hide the content when the trigger becomes fully occluded.",
+            "default": "false",
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/popper/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "positionStrategy",
+            "type": "'fixed' | 'absolute'",
+            "required": false,
+            "description": "The type of CSS position property to use.",
+            "default": "'fixed'",
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/popper/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "updatePositionStrategy",
+            "type": "'always' | 'optimized'",
+            "required": false,
+            "description": "Strategy to update the position of the floating element on every animation frame.",
+            "default": "'optimized'",
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/popper/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "disableUpdateOnLayoutShift",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether to disable the update position for the content when the layout shifted.",
+            "default": "false",
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/popper/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "prioritizePosition",
+            "type": "boolean",
+            "required": false,
+            "description": "Force content to be position within the viewport. Might overlap the reference element, which may not be desired.",
+            "default": "false",
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/popper/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "reference",
+            "type": "ReferenceElement",
+            "required": false,
+            "description": "The custom element or virtual element that will be set as the reference to position the floating element. If\nprovided, it will replace the default anchor element.",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/popper/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ReferenceElement",
+                "kind": "typeAlias",
+                "type": "ReferenceElement",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@floating-ui+dom@1.7.6/node_modules/@floating-ui/dom/dist/floating-ui.dom.d.mts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      },
+      "emits": {
+        "kind": "emits",
+        "name": "PopperPositionerEmits",
+        "type": "Interface PopperPositionerEmits",
+        "resolvedType": "{ placed: [] }",
+        "description": "",
+        "sourcePath": "headless/src/components/popper/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [
+          {
+            "name": "placed",
+            "type": "[]",
+            "parameters": null,
+            "required": true,
+            "description": "Event handler called when the positioner is placed",
+            "sourcePath": "headless/src/components/popper/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "referencedTypes": []
+      }
+    },
+    "PopperRoot": {}
   }
 }

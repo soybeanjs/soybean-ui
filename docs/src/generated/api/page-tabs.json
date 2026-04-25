@@ -201,6 +201,212 @@
         "callables": [],
         "referencedTypes": []
       }
+    },
+    "PageTabsClose": {
+      "props": {
+        "kind": "props",
+        "name": "PageTabsCloseProps",
+        "type": "Interface PageTabsCloseProps",
+        "resolvedType": "{ asChild?: boolean; as?: AsTag | Component }",
+        "description": "",
+        "sourcePath": "headless/src/components/page-tabs/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "asChild",
+            "type": "boolean",
+            "required": false,
+            "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/primitive/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "as",
+            "type": "AsTag | Component",
+            "required": false,
+            "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+            "default": "'div'",
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/primitive/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Component",
+                "kind": "typeAlias",
+                "type": "Component",
+                "resolvedType": null,
+                "description": "A type used in public APIs where a component type is expected.\nThe constructor type is an artificial type returned by defineComponent().",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [
+                  "PropsOrInstance = any",
+                  "RawBindings = any",
+                  "D = any",
+                  "C extends ComputedOptions = ComputedOptions",
+                  "M extends MethodOptions = MethodOptions",
+                  "E extends EmitsOptions | Record<string, any[]> = {}",
+                  "S extends Record<string, any> = any"
+                ],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "PageTabsItem": {
+      "props": {
+        "kind": "props",
+        "name": "PageTabsItemProps",
+        "type": "Interface PageTabsItemProps",
+        "resolvedType": "{ value: string; pinned?: boolean }",
+        "description": "",
+        "sourcePath": "headless/src/components/page-tabs/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "value",
+            "type": "string",
+            "required": true,
+            "description": "The unique value of the tab.",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/page-tabs/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "pinned",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether the tab is pinned.",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/page-tabs/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      },
+      "emits": {
+        "kind": "emits",
+        "name": "PageTabsItemEmits",
+        "type": "TypeAlias PageTabsItemEmits",
+        "resolvedType": "(e: 'click') => void | (e: 'close') => void | (e: 'pin', pinned: boolean) => void",
+        "description": "",
+        "sourcePath": "headless/src/components/page-tabs/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "PageTabsPin": {
+      "props": {
+        "kind": "props",
+        "name": "PageTabsPinProps",
+        "type": "Interface PageTabsPinProps",
+        "resolvedType": "{ asChild?: boolean; as?: AsTag | Component }",
+        "description": "",
+        "sourcePath": "headless/src/components/page-tabs/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "asChild",
+            "type": "boolean",
+            "required": false,
+            "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/primitive/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "as",
+            "type": "AsTag | Component",
+            "required": false,
+            "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+            "default": "'div'",
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/primitive/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Component",
+                "kind": "typeAlias",
+                "type": "Component",
+                "resolvedType": null,
+                "description": "A type used in public APIs where a component type is expected.\nThe constructor type is an artificial type returned by defineComponent().",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [
+                  "PropsOrInstance = any",
+                  "RawBindings = any",
+                  "D = any",
+                  "C extends ComputedOptions = ComputedOptions",
+                  "M extends MethodOptions = MethodOptions",
+                  "E extends EmitsOptions | Record<string, any[]> = {}",
+                  "S extends Record<string, any> = any"
+                ],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "PageTabsRoot": {
+      "props": {
+        "kind": "props",
+        "name": "PageTabsRootProps",
+        "type": "Interface PageTabsRootProps",
+        "resolvedType": "{ modelValue?: string; middleClickClose?: boolean }",
+        "description": "",
+        "sourcePath": "headless/src/components/page-tabs/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "modelValue",
+            "type": "string",
+            "required": false,
+            "description": "The active tab value.",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/page-tabs/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "middleClickClose",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether middle-clicking a tab closes it.",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/page-tabs/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      },
+      "emits": {
+        "kind": "emits",
+        "name": "PageTabsRootEmits",
+        "type": "TypeAlias PageTabsRootEmits",
+        "resolvedType": "(e: 'update:modelValue', value: string) => void",
+        "description": "",
+        "sourcePath": "headless/src/components/page-tabs/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [],
+        "referencedTypes": []
+      }
     }
   }
 }

@@ -92,7 +92,7 @@
               {
                 "name": "DialogUi",
                 "kind": "typeAlias",
-                "type": "{ header: ClassValue; content: ClassValue; description: ClassValue; title: ClassValue; icon: ClassValue; close: ClassValue; overlay: ClassValue; popup: ClassValue; footer: ClassValue; cancel: ClassValue; confirm: ClassValue; }",
+                "type": "{ header: ClassValue; content: ClassValue; description: ClassValue; title: ClassValue; icon: ClassValue; close: ClassValue; footer: ClassValue; cancel: ClassValue; popup: ClassValue; overlay: ClassValue; confirm: ClassValue; }",
                 "resolvedType": null,
                 "description": "",
                 "sourcePath": "headless/src/components/dialog/types.ts",
@@ -138,7 +138,7 @@
                 "type": "string | import(\"vue\").Component | VNode<import(\"vue\").RendererNode, import(\"vue\").RendererElement, { [key: string]: any; }> | null | undefined",
                 "resolvedType": "string | Component | VNode<import(\"vue\").RendererNode, import(\"vue\").RendererElement, { [key: string]: any; }> | null | undefined",
                 "description": "",
-                "sourcePath": "headless/src/components/icon/types.ts",
+                "sourcePath": "headless/src/components/_icon/types.ts",
                 "typeParameters": [],
                 "external": false,
                 "members": [],

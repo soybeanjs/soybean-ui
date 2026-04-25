@@ -1081,6 +1081,1270 @@
         "referencedTypes": []
       }
     },
+    "TableBody": {
+      "props": {
+        "kind": "props",
+        "name": "TableBodyProps",
+        "type": "Interface TableBodyProps",
+        "resolvedType": null,
+        "description": "",
+        "sourcePath": "headless/src/components/table/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "TableCell": {
+      "props": {
+        "kind": "props",
+        "name": "TableCellProps",
+        "type": "Interface TableCellProps",
+        "resolvedType": null,
+        "description": "",
+        "sourcePath": "headless/src/components/table/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [],
+        "referencedTypes": []
+      },
+      "slotProps": {
+        "kind": "slotProps",
+        "name": "TableCellSlotProps",
+        "type": "Interface TableCellSlotProps<T>",
+        "resolvedType": "{ index: number; column: TableTypeColumn | TableDataColumn<T> | TableGroupColumn<T>; row: T; level: number; hasChildren: boolean; expanded: boolean; toggleExpand: () => void }",
+        "description": "",
+        "sourcePath": "headless/src/components/table/types.ts",
+        "typeParameters": [
+          "T extends TableBaseData = TableBaseData"
+        ],
+        "members": [
+          {
+            "name": "index",
+            "type": "number",
+            "required": true,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/table/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "column",
+            "type": "TableTypeColumn | TableDataColumn<T> | TableGroupColumn<T>",
+            "required": true,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/table/types.ts",
+            "referencedTypes": [
+              {
+                "name": "TableColumn",
+                "kind": "typeAlias",
+                "type": "TableTypeColumn | TableDataColumn<T> | TableGroupColumn<T>",
+                "resolvedType": "{ type?: TableColumnType; dataIndex?: Path<TableRowValue<T>>; children?: TableColumn<T>[]; sorter?: boolean | ((a: T, b: T) => number); filter?: boolean | TableColumnFilter<T>; key?: string; title?: string; align?: TableAlign; width?: string; minWidth?: string; hidden?: boolean; fixed?: 'start' | 'end'; resizable?: boolean }",
+                "description": "",
+                "sourcePath": "headless/src/components/table/types.ts",
+                "typeParameters": [
+                  "T extends TableBaseData = TableBaseData"
+                ],
+                "external": false,
+                "members": [
+                  {
+                    "name": "type",
+                    "type": "TableColumnType",
+                    "required": false,
+                    "description": "",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/table/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "dataIndex",
+                    "type": "Path<TableRowValue<T>>",
+                    "required": false,
+                    "description": "",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/table/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "children",
+                    "type": "TableColumn<T>[]",
+                    "required": false,
+                    "description": "",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/table/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "filter",
+                    "type": "boolean | TableColumnFilter<T>",
+                    "required": false,
+                    "description": "",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/table/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "key",
+                    "type": "string",
+                    "required": false,
+                    "description": "",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/table/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "title",
+                    "type": "string",
+                    "required": false,
+                    "description": "",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/table/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "align",
+                    "type": "TableAlign",
+                    "required": false,
+                    "description": "",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/table/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "width",
+                    "type": "string",
+                    "required": false,
+                    "description": "",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/table/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "minWidth",
+                    "type": "string",
+                    "required": false,
+                    "description": "",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/table/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "hidden",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/table/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "fixed",
+                    "type": "'start' | 'end'",
+                    "required": false,
+                    "description": "",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/table/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "resizable",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/table/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": [
+                  {
+                    "name": "sorter",
+                    "type": "boolean | ((a: T, b: T) => number) | undefined",
+                    "parameters": "boolean | ((a: T, b: T) => number) | undefined",
+                    "required": false,
+                    "description": "",
+                    "sourcePath": "headless/src/components/table/types.ts",
+                    "referencedTypes": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "row",
+            "type": "T",
+            "required": true,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/table/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "level",
+            "type": "number",
+            "required": true,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/table/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "hasChildren",
+            "type": "boolean",
+            "required": true,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/table/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "expanded",
+            "type": "boolean",
+            "required": true,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/table/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "toggleExpand",
+            "type": "() => void",
+            "required": true,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/table/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "TableCompact": {
+      "props": {
+        "kind": "props",
+        "name": "TableCompactProps",
+        "type": "Interface TableCompactProps<T, R, M>",
+        "resolvedType": "{ columns: TableColumn<T>[]; data: T[]; rowKey: (row: T) => R; defaultSortState?: TableSortState; sortState?: TableSortState; defaultFilterState?: TableFilterState; filterState?: TableFilterState; defaultColumnWidths?: TableColumnWidthState; columnWidths?: TableColumnWidthState; getChildren?: TableRowChildrenResolver<T>; indent?: number; virtual?: boolean; height?: string | number; estimateSize?: number | ((index: number, row: T) => number); virtualizerOptions?: VirtualizerOptions; defaultExpanded?: R[]; expanded?: R[]; defaultExpandAll?: boolean; contentProps?: TableContentProps; headerProps?: TableHeaderProps; bodyProps?: TableBodyProps; footerProps?: TableFooterProps; headProps?: TableHeadProps; rowProps?: TableRowProps; cellProps?: TableCellProps; dir?: Direction; defaultSelected?: (M extends true ? R[] : R); selected?: (M extends true ? R[] : R); multiple?: M }",
+        "description": "",
+        "sourcePath": "headless/src/components/table/types.ts",
+        "typeParameters": [
+          "T extends TableBaseData = TableBaseData",
+          "R extends TableUnifiedKey = TableUnifiedKey",
+          "M extends boolean = false"
+        ],
+        "members": [
+          {
+            "name": "columns",
+            "type": "TableColumn<T>[]",
+            "required": true,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/table/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "data",
+            "type": "T[]",
+            "required": true,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/table/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "rowKey",
+            "type": "(row: T) => R",
+            "required": true,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/table/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "defaultSortState",
+            "type": "TableSortState",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/table/types.ts",
+            "referencedTypes": [
+              {
+                "name": "TableSortState",
+                "kind": "interface",
+                "type": "TableSortState",
+                "resolvedType": "{ key: string; order: 'asc' | 'desc' }",
+                "description": "",
+                "sourcePath": "headless/src/components/table/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "key",
+                    "type": "string",
+                    "required": true,
+                    "description": "",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/table/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "order",
+                    "type": "'asc' | 'desc'",
+                    "required": true,
+                    "description": "",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/table/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "sortState",
+            "type": "TableSortState",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/table/types.ts",
+            "referencedTypes": [
+              {
+                "name": "TableSortState",
+                "kind": "interface",
+                "type": "TableSortState",
+                "resolvedType": "{ key: string; order: 'asc' | 'desc' }",
+                "description": "",
+                "sourcePath": "headless/src/components/table/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "key",
+                    "type": "string",
+                    "required": true,
+                    "description": "",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/table/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "order",
+                    "type": "'asc' | 'desc'",
+                    "required": true,
+                    "description": "",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/table/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "defaultFilterState",
+            "type": "TableFilterState",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/table/types.ts",
+            "referencedTypes": [
+              {
+                "name": "TableFilterState",
+                "kind": "typeAlias",
+                "type": "{ [x: string]: TableFilterValue; }",
+                "resolvedType": "{ [x: string]: TableFilterValue; }",
+                "description": "",
+                "sourcePath": "headless/src/components/table/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "filterState",
+            "type": "TableFilterState",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/table/types.ts",
+            "referencedTypes": [
+              {
+                "name": "TableFilterState",
+                "kind": "typeAlias",
+                "type": "{ [x: string]: TableFilterValue; }",
+                "resolvedType": "{ [x: string]: TableFilterValue; }",
+                "description": "",
+                "sourcePath": "headless/src/components/table/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "defaultColumnWidths",
+            "type": "TableColumnWidthState",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/table/types.ts",
+            "referencedTypes": [
+              {
+                "name": "TableColumnWidthState",
+                "kind": "typeAlias",
+                "type": "{ [x: string]: string; }",
+                "resolvedType": "{ [x: string]: string; }",
+                "description": "",
+                "sourcePath": "headless/src/components/table/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "columnWidths",
+            "type": "TableColumnWidthState",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/table/types.ts",
+            "referencedTypes": [
+              {
+                "name": "TableColumnWidthState",
+                "kind": "typeAlias",
+                "type": "{ [x: string]: string; }",
+                "resolvedType": "{ [x: string]: string; }",
+                "description": "",
+                "sourcePath": "headless/src/components/table/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "getChildren",
+            "type": "TableRowChildrenResolver<T>",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/table/types.ts",
+            "referencedTypes": [
+              {
+                "name": "TableRowChildrenResolver",
+                "kind": "typeAlias",
+                "type": "(row: T) => T[] | undefined",
+                "resolvedType": "(row: T) => T[] | undefined",
+                "description": "",
+                "sourcePath": "headless/src/components/table/types.ts",
+                "typeParameters": [
+                  "T extends TableBaseData = TableBaseData"
+                ],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "indent",
+            "type": "number",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/table/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "virtual",
+            "type": "boolean",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/table/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "height",
+            "type": "string | number",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/table/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "estimateSize",
+            "type": "number | ((index: number, row: T) => number)",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/table/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "virtualizerOptions",
+            "type": "VirtualizerOptions",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/table/types.ts",
+            "referencedTypes": [
+              {
+                "name": "VirtualizerOptions",
+                "kind": "interface",
+                "type": "VirtualizerOptions",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/components/virtualizer/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "defaultExpanded",
+            "type": "R[]",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/table/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "expanded",
+            "type": "R[]",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/table/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "defaultExpandAll",
+            "type": "boolean",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/table/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "contentProps",
+            "type": "TableContentProps",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/table/types.ts",
+            "referencedTypes": [
+              {
+                "name": "TableContentProps",
+                "kind": "interface",
+                "type": "TableContentProps",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/components/table/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "headerProps",
+            "type": "TableHeaderProps",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/table/types.ts",
+            "referencedTypes": [
+              {
+                "name": "TableHeaderProps",
+                "kind": "interface",
+                "type": "TableHeaderProps",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/components/table/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "bodyProps",
+            "type": "TableBodyProps",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/table/types.ts",
+            "referencedTypes": [
+              {
+                "name": "TableBodyProps",
+                "kind": "interface",
+                "type": "TableBodyProps",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/components/table/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "footerProps",
+            "type": "TableFooterProps",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/table/types.ts",
+            "referencedTypes": [
+              {
+                "name": "TableFooterProps",
+                "kind": "interface",
+                "type": "TableFooterProps",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/components/table/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "headProps",
+            "type": "TableHeadProps",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/table/types.ts",
+            "referencedTypes": [
+              {
+                "name": "TableHeadProps",
+                "kind": "interface",
+                "type": "TableHeadProps",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/components/table/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "rowProps",
+            "type": "TableRowProps",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/table/types.ts",
+            "referencedTypes": [
+              {
+                "name": "TableRowProps",
+                "kind": "interface",
+                "type": "TableRowProps",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/components/table/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "cellProps",
+            "type": "TableCellProps",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/table/types.ts",
+            "referencedTypes": [
+              {
+                "name": "TableCellProps",
+                "kind": "interface",
+                "type": "TableCellProps",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/components/table/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "dir",
+            "type": "Direction",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/table/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Direction",
+                "kind": "typeAlias",
+                "type": "'ltr' | 'rtl'",
+                "resolvedType": "'ltr' | 'rtl'",
+                "description": "",
+                "sourcePath": "headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "defaultSelected",
+            "type": "(M extends true ? R[] : R)",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/table/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "selected",
+            "type": "(M extends true ? R[] : R)",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/table/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "multiple",
+            "type": "M",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/table/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      },
+      "emits": {
+        "kind": "emits",
+        "name": "TableCompactEmits",
+        "type": "TypeAlias TableCompactEmits<R, M>",
+        "resolvedType": "{ \"update:sortState\": [state: TableSortState | undefined]; \"update:filterState\": [state: TableFilterState]; \"update:columnWidths\": [state: TableColumnWidthState]; \"update:expanded\": [expanded: R[]]; \"update:selected\": [selected: M extends true ? R[] : R | undefined] }",
+        "description": "",
+        "sourcePath": "headless/src/components/table/types.ts",
+        "typeParameters": [
+          "R extends TableUnifiedKey = TableUnifiedKey",
+          "M extends boolean = false"
+        ],
+        "members": [],
+        "callables": [
+          {
+            "name": "update:sortState",
+            "type": "[state: TableSortState | undefined]",
+            "parameters": "state: TableSortState | undefined",
+            "required": true,
+            "description": "",
+            "sourcePath": "headless/src/components/table/types.ts",
+            "referencedTypes": [
+              {
+                "name": "TableSortState",
+                "kind": "interface",
+                "type": "TableSortState",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/components/table/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "update:filterState",
+            "type": "[state: TableFilterState]",
+            "parameters": "state: TableFilterState",
+            "required": true,
+            "description": "",
+            "sourcePath": "headless/src/components/table/types.ts",
+            "referencedTypes": [
+              {
+                "name": "TableFilterState",
+                "kind": "typeAlias",
+                "type": "{ [x: string]: TableFilterValue; }",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/components/table/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "update:columnWidths",
+            "type": "[state: TableColumnWidthState]",
+            "parameters": "state: TableColumnWidthState",
+            "required": true,
+            "description": "",
+            "sourcePath": "headless/src/components/table/types.ts",
+            "referencedTypes": [
+              {
+                "name": "TableColumnWidthState",
+                "kind": "typeAlias",
+                "type": "{ [x: string]: string; }",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/components/table/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "update:expanded",
+            "type": "[expanded: R[]]",
+            "parameters": "expanded: R[]",
+            "required": true,
+            "description": "",
+            "sourcePath": "headless/src/components/table/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "update:selected",
+            "type": "[selected: M extends true ? R[] : R | undefined]",
+            "parameters": "selected: M extends true ? R[] : R | undefined",
+            "required": true,
+            "description": "",
+            "sourcePath": "headless/src/components/table/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "referencedTypes": []
+      },
+      "slots": {
+        "kind": "slots",
+        "name": "TableCompactSlots",
+        "type": "TypeAlias TableCompactSlots<T>",
+        "resolvedType": "{ bottom?: (() => any); header?: ((props: TableHeaderSlotProps<T>) => any); \"header-index\"?: ((props: { column: TableColumn<T>; }) => any); \"header-selection\"?: ((props: TableHeaderSelectionSlotProps<T>) => any); \"header-expand\"?: ((props: { column: TableColumn<T>; }) => any); \"header-filter\"?: ((props: TableHeaderFilterSlotProps<T>) => any); \"header-sort\"?: ((props: TableHeaderSortSlotProps<T>) => any); \"header-resize\"?: ((props: TableHeaderResizeSlotProps<T>) => any); index?: ((props: TableIndexSlotProps<T>) => any); selection?: ((props: TableSelectionSlotProps<T>) => any); expand?: ((props: TableExpandSlotProps<T>) => any); \"expanded-row\"?: ((props: TableExpandedRowSlotProps<T>) => any); \"tree-toggle\"?: ((props: TableTreeToggleSlotProps<T>) => any); footer?: ((props: { columnSize: number; }) => any) }",
+        "description": "",
+        "sourcePath": "headless/src/components/table/types.ts",
+        "typeParameters": [
+          "T extends TableBaseData"
+        ],
+        "members": [],
+        "callables": [
+          {
+            "name": "bottom",
+            "type": "(() => any) | undefined",
+            "parameters": "(() => any) | undefined",
+            "required": false,
+            "description": "",
+            "sourcePath": "headless/src/components/table/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "header",
+            "type": "((props: TableHeaderSlotProps<T>) => any) | undefined",
+            "parameters": "((props: TableHeaderSlotProps<T>) => any) | undefined",
+            "required": false,
+            "description": "",
+            "sourcePath": "headless/src/components/table/types.ts",
+            "referencedTypes": [
+              {
+                "name": "TableHeaderSlotProps",
+                "kind": "interface",
+                "type": "TableHeaderSlotProps<T>",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/components/table/types.ts",
+                "typeParameters": [
+                  "T extends TableBaseData = TableBaseData"
+                ],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "header-index",
+            "type": "((props: { column: TableColumn<T>; }) => any) | undefined",
+            "parameters": "((props: { column: TableColumn<T>; }) => any) | undefined",
+            "required": false,
+            "description": "",
+            "sourcePath": "headless/src/components/table/types.ts",
+            "referencedTypes": [
+              {
+                "name": "__type",
+                "kind": "typeLiteral",
+                "type": "{ column: TableColumn<T>; }",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/components/table/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "header-selection",
+            "type": "((props: TableHeaderSelectionSlotProps<T>) => any) | undefined",
+            "parameters": "((props: TableHeaderSelectionSlotProps<T>) => any) | undefined",
+            "required": false,
+            "description": "",
+            "sourcePath": "headless/src/components/table/types.ts",
+            "referencedTypes": [
+              {
+                "name": "TableHeaderSelectionSlotProps",
+                "kind": "interface",
+                "type": "TableHeaderSelectionSlotProps<T>",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/components/table/types.ts",
+                "typeParameters": [
+                  "T extends TableBaseData = TableBaseData"
+                ],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "header-expand",
+            "type": "((props: { column: TableColumn<T>; }) => any) | undefined",
+            "parameters": "((props: { column: TableColumn<T>; }) => any) | undefined",
+            "required": false,
+            "description": "",
+            "sourcePath": "headless/src/components/table/types.ts",
+            "referencedTypes": [
+              {
+                "name": "__type",
+                "kind": "typeLiteral",
+                "type": "{ column: TableColumn<T>; }",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/components/table/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "header-filter",
+            "type": "((props: TableHeaderFilterSlotProps<T>) => any) | undefined",
+            "parameters": "((props: TableHeaderFilterSlotProps<T>) => any) | undefined",
+            "required": false,
+            "description": "",
+            "sourcePath": "headless/src/components/table/types.ts",
+            "referencedTypes": [
+              {
+                "name": "TableHeaderFilterSlotProps",
+                "kind": "interface",
+                "type": "TableHeaderFilterSlotProps<T>",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/components/table/types.ts",
+                "typeParameters": [
+                  "T extends TableBaseData = TableBaseData"
+                ],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "header-sort",
+            "type": "((props: TableHeaderSortSlotProps<T>) => any) | undefined",
+            "parameters": "((props: TableHeaderSortSlotProps<T>) => any) | undefined",
+            "required": false,
+            "description": "",
+            "sourcePath": "headless/src/components/table/types.ts",
+            "referencedTypes": [
+              {
+                "name": "TableHeaderSortSlotProps",
+                "kind": "interface",
+                "type": "TableHeaderSortSlotProps<T>",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/components/table/types.ts",
+                "typeParameters": [
+                  "T extends TableBaseData = TableBaseData"
+                ],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "header-resize",
+            "type": "((props: TableHeaderResizeSlotProps<T>) => any) | undefined",
+            "parameters": "((props: TableHeaderResizeSlotProps<T>) => any) | undefined",
+            "required": false,
+            "description": "",
+            "sourcePath": "headless/src/components/table/types.ts",
+            "referencedTypes": [
+              {
+                "name": "TableHeaderResizeSlotProps",
+                "kind": "interface",
+                "type": "TableHeaderResizeSlotProps<T>",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/components/table/types.ts",
+                "typeParameters": [
+                  "T extends TableBaseData = TableBaseData"
+                ],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "index",
+            "type": "((props: TableIndexSlotProps<T>) => any) | undefined",
+            "parameters": "((props: TableIndexSlotProps<T>) => any) | undefined",
+            "required": false,
+            "description": "",
+            "sourcePath": "headless/src/components/table/types.ts",
+            "referencedTypes": [
+              {
+                "name": "TableIndexSlotProps",
+                "kind": "interface",
+                "type": "TableIndexSlotProps<T>",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/components/table/types.ts",
+                "typeParameters": [
+                  "T extends TableBaseData = TableBaseData"
+                ],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "selection",
+            "type": "((props: TableSelectionSlotProps<T>) => any) | undefined",
+            "parameters": "((props: TableSelectionSlotProps<T>) => any) | undefined",
+            "required": false,
+            "description": "",
+            "sourcePath": "headless/src/components/table/types.ts",
+            "referencedTypes": [
+              {
+                "name": "TableSelectionSlotProps",
+                "kind": "interface",
+                "type": "TableSelectionSlotProps<T>",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/components/table/types.ts",
+                "typeParameters": [
+                  "T extends TableBaseData = TableBaseData"
+                ],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "expand",
+            "type": "((props: TableExpandSlotProps<T>) => any) | undefined",
+            "parameters": "((props: TableExpandSlotProps<T>) => any) | undefined",
+            "required": false,
+            "description": "",
+            "sourcePath": "headless/src/components/table/types.ts",
+            "referencedTypes": [
+              {
+                "name": "TableExpandSlotProps",
+                "kind": "interface",
+                "type": "TableExpandSlotProps<T>",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/components/table/types.ts",
+                "typeParameters": [
+                  "T extends TableBaseData = TableBaseData"
+                ],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "expanded-row",
+            "type": "((props: TableExpandedRowSlotProps<T>) => any) | undefined",
+            "parameters": "((props: TableExpandedRowSlotProps<T>) => any) | undefined",
+            "required": false,
+            "description": "",
+            "sourcePath": "headless/src/components/table/types.ts",
+            "referencedTypes": [
+              {
+                "name": "TableExpandedRowSlotProps",
+                "kind": "interface",
+                "type": "TableExpandedRowSlotProps<T>",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/components/table/types.ts",
+                "typeParameters": [
+                  "T extends TableBaseData = TableBaseData"
+                ],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "tree-toggle",
+            "type": "((props: TableTreeToggleSlotProps<T>) => any) | undefined",
+            "parameters": "((props: TableTreeToggleSlotProps<T>) => any) | undefined",
+            "required": false,
+            "description": "",
+            "sourcePath": "headless/src/components/table/types.ts",
+            "referencedTypes": [
+              {
+                "name": "TableTreeToggleSlotProps",
+                "kind": "typeAlias",
+                "type": "TableExpandSlotProps<T>",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/components/table/types.ts",
+                "typeParameters": [
+                  "T extends TableBaseData = TableBaseData"
+                ],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "footer",
+            "type": "((props: { columnSize: number; }) => any) | undefined",
+            "parameters": "((props: { columnSize: number; }) => any) | undefined",
+            "required": false,
+            "description": "",
+            "sourcePath": "headless/src/components/table/types.ts",
+            "referencedTypes": [
+              {
+                "name": "__type",
+                "kind": "typeLiteral",
+                "type": "{ columnSize: number; }",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/components/table/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "referencedTypes": []
+      }
+    },
+    "TableContent": {
+      "props": {
+        "kind": "props",
+        "name": "TableContentProps",
+        "type": "Interface TableContentProps",
+        "resolvedType": null,
+        "description": "",
+        "sourcePath": "headless/src/components/table/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
     "TableFilterPopover": {
       "props": {
         "kind": "props",
@@ -1730,6 +2994,524 @@
         "referencedTypes": []
       }
     },
+    "TableFooter": {
+      "props": {
+        "kind": "props",
+        "name": "TableFooterProps",
+        "type": "Interface TableFooterProps",
+        "resolvedType": null,
+        "description": "",
+        "sourcePath": "headless/src/components/table/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "TableHead": {
+      "props": {
+        "kind": "props",
+        "name": "TableHeadProps",
+        "type": "Interface TableHeadProps",
+        "resolvedType": null,
+        "description": "",
+        "sourcePath": "headless/src/components/table/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "TableHeader": {
+      "props": {
+        "kind": "props",
+        "name": "TableHeaderProps",
+        "type": "Interface TableHeaderProps",
+        "resolvedType": null,
+        "description": "",
+        "sourcePath": "headless/src/components/table/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [],
+        "referencedTypes": []
+      },
+      "slotProps": {
+        "kind": "slotProps",
+        "name": "TableHeaderSlotProps",
+        "type": "Interface TableHeaderSlotProps<T>",
+        "resolvedType": "{ column: TableTypeColumn | TableDataColumn<T> | TableGroupColumn<T>; colSpan: number; rowSpan: number; sortable: boolean; filterable: boolean; filtered: boolean; resizable: boolean; sortOrder?: TableSortOrder; multiple?: boolean; checked?: CheckedState; disabled?: boolean; updateChecked?: ((value: CheckedState | null) => void); toggleSort: () => void; filterValue: string; filterValues: string[]; filterState?: TableFilterValue; filterOptions: TableColumnFilterOption[]; setFilterValue: (value: string) => void; setFilterValues: (values: string[]) => void; setFilterState: (value: TableFilterValue | undefined) => void; toggleFilterOption: (value: string) => void; isFilterOptionSelected: (value: string) => boolean; clearFilter: () => void }",
+        "description": "",
+        "sourcePath": "headless/src/components/table/types.ts",
+        "typeParameters": [
+          "T extends TableBaseData = TableBaseData"
+        ],
+        "members": [
+          {
+            "name": "column",
+            "type": "TableTypeColumn | TableDataColumn<T> | TableGroupColumn<T>",
+            "required": true,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/table/types.ts",
+            "referencedTypes": [
+              {
+                "name": "TableColumn",
+                "kind": "typeAlias",
+                "type": "TableTypeColumn | TableDataColumn<T> | TableGroupColumn<T>",
+                "resolvedType": "{ type?: TableColumnType; dataIndex?: Path<TableRowValue<T>>; children?: TableColumn<T>[]; sorter?: boolean | ((a: T, b: T) => number); filter?: boolean | TableColumnFilter<T>; key?: string; title?: string; align?: TableAlign; width?: string; minWidth?: string; hidden?: boolean; fixed?: 'start' | 'end'; resizable?: boolean }",
+                "description": "",
+                "sourcePath": "headless/src/components/table/types.ts",
+                "typeParameters": [
+                  "T extends TableBaseData = TableBaseData"
+                ],
+                "external": false,
+                "members": [
+                  {
+                    "name": "type",
+                    "type": "TableColumnType",
+                    "required": false,
+                    "description": "",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/table/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "dataIndex",
+                    "type": "Path<TableRowValue<T>>",
+                    "required": false,
+                    "description": "",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/table/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "children",
+                    "type": "TableColumn<T>[]",
+                    "required": false,
+                    "description": "",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/table/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "filter",
+                    "type": "boolean | TableColumnFilter<T>",
+                    "required": false,
+                    "description": "",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/table/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "key",
+                    "type": "string",
+                    "required": false,
+                    "description": "",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/table/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "title",
+                    "type": "string",
+                    "required": false,
+                    "description": "",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/table/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "align",
+                    "type": "TableAlign",
+                    "required": false,
+                    "description": "",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/table/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "width",
+                    "type": "string",
+                    "required": false,
+                    "description": "",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/table/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "minWidth",
+                    "type": "string",
+                    "required": false,
+                    "description": "",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/table/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "hidden",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/table/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "fixed",
+                    "type": "'start' | 'end'",
+                    "required": false,
+                    "description": "",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/table/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "resizable",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/table/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": [
+                  {
+                    "name": "sorter",
+                    "type": "boolean | ((a: T, b: T) => number) | undefined",
+                    "parameters": "boolean | ((a: T, b: T) => number) | undefined",
+                    "required": false,
+                    "description": "",
+                    "sourcePath": "headless/src/components/table/types.ts",
+                    "referencedTypes": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "colSpan",
+            "type": "number",
+            "required": true,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/table/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "rowSpan",
+            "type": "number",
+            "required": true,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/table/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "sortable",
+            "type": "boolean",
+            "required": true,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/table/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "filterable",
+            "type": "boolean",
+            "required": true,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/table/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "filtered",
+            "type": "boolean",
+            "required": true,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/table/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "resizable",
+            "type": "boolean",
+            "required": true,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/table/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "sortOrder",
+            "type": "TableSortOrder",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/table/types.ts",
+            "referencedTypes": [
+              {
+                "name": "TableSortOrder",
+                "kind": "typeAlias",
+                "type": "'asc' | 'desc'",
+                "resolvedType": "'asc' | 'desc'",
+                "description": "",
+                "sourcePath": "headless/src/components/table/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "multiple",
+            "type": "boolean",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/table/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "checked",
+            "type": "CheckedState",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/table/types.ts",
+            "referencedTypes": [
+              {
+                "name": "CheckedState",
+                "kind": "typeAlias",
+                "type": "boolean | 'indeterminate'",
+                "resolvedType": "boolean | 'indeterminate'",
+                "description": "",
+                "sourcePath": "headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "disabled",
+            "type": "boolean",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/table/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "updateChecked",
+            "type": "((value: CheckedState | null) => void)",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/table/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "toggleSort",
+            "type": "() => void",
+            "required": true,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/table/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "filterValue",
+            "type": "string",
+            "required": true,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/table/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "filterValues",
+            "type": "string[]",
+            "required": true,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/table/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "filterState",
+            "type": "TableFilterValue",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/table/types.ts",
+            "referencedTypes": [
+              {
+                "name": "TableColumnFilterValue",
+                "kind": "interface",
+                "type": "TableColumnFilterValue",
+                "resolvedType": "{ keyword?: string; values?: string[] }",
+                "description": "",
+                "sourcePath": "headless/src/components/table/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "keyword",
+                    "type": "string",
+                    "required": false,
+                    "description": "",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/table/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "values",
+                    "type": "string[]",
+                    "required": false,
+                    "description": "",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/table/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              },
+              {
+                "name": "TableFilterValue",
+                "kind": "typeAlias",
+                "type": "string | TableColumnFilterValue",
+                "resolvedType": "string | TableColumnFilterValue",
+                "description": "",
+                "sourcePath": "headless/src/components/table/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "filterOptions",
+            "type": "TableColumnFilterOption[]",
+            "required": true,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/table/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "setFilterValue",
+            "type": "(value: string) => void",
+            "required": true,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/table/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "setFilterValues",
+            "type": "(values: string[]) => void",
+            "required": true,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/table/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "setFilterState",
+            "type": "(value: TableFilterValue | undefined) => void",
+            "required": true,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/table/types.ts",
+            "referencedTypes": [
+              {
+                "name": "TableColumnFilterValue",
+                "kind": "interface",
+                "type": "TableColumnFilterValue",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/components/table/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "toggleFilterOption",
+            "type": "(value: string) => void",
+            "required": true,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/table/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "isFilterOptionSelected",
+            "type": "(value: string) => boolean",
+            "required": true,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/table/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "clearFilter",
+            "type": "() => void",
+            "required": true,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/table/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
     "TableRadio": {
       "props": {
         "kind": "props",
@@ -1774,6 +3556,58 @@
             "referencedTypes": []
           }
         ],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "TableRoot": {
+      "props": {
+        "kind": "props",
+        "name": "TableRootProps",
+        "type": "Interface TableRootProps",
+        "resolvedType": "{ dir?: Direction }",
+        "description": "",
+        "sourcePath": "headless/src/components/table/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "dir",
+            "type": "Direction",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/table/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Direction",
+                "kind": "typeAlias",
+                "type": "'ltr' | 'rtl'",
+                "resolvedType": "'ltr' | 'rtl'",
+                "description": "",
+                "sourcePath": "headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "TableRow": {
+      "props": {
+        "kind": "props",
+        "name": "TableRowProps",
+        "type": "Interface TableRowProps",
+        "resolvedType": null,
+        "description": "",
+        "sourcePath": "headless/src/components/table/types.ts",
+        "typeParameters": [],
+        "members": [],
         "callables": [],
         "referencedTypes": []
       }

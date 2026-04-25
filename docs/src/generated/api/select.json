@@ -49,7 +49,7 @@
               {
                 "name": "SelectUi",
                 "kind": "typeAlias",
-                "type": "{ item: ClassValue; trigger: ClassValue; triggerIcon: ClassValue; value: ClassValue; viewport: ClassValue; group: ClassValue; groupLabel: ClassValue; itemText: ClassValue; itemIndicator: ClassValue; separator: ClassValue; popup: ClassValue; positioner: ClassValue; arrow: ClassValue; scrollUpButton: ClassValue; scrollDownButton: ClassValue; }",
+                "type": "{ item: ClassValue; trigger: ClassValue; triggerIcon: ClassValue; value: ClassValue; viewport: ClassValue; group: ClassValue; groupLabel: ClassValue; itemText: ClassValue; itemIndicator: ClassValue; separator: ClassValue; positioner: ClassValue; popup: ClassValue; arrow: ClassValue; scrollUpButton: ClassValue; scrollDownButton: ClassValue; }",
                 "resolvedType": null,
                 "description": "",
                 "sourcePath": "headless/src/components/select/types.ts",
@@ -1431,6 +1431,1368 @@
         "referencedTypes": []
       }
     },
+    "SelectArrow": {},
+    "SelectCompact": {
+      "props": {
+        "kind": "props",
+        "name": "SelectCompactProps",
+        "type": "Interface SelectCompactProps<T, M>",
+        "resolvedType": "{ items: SelectOptionData<T>[]; showArrow?: boolean; triggerProps?: SelectTriggerProps; triggerIconProps?: SelectTriggerIconProps; placeholder?: string; valueProps?: SelectValueProps; portalProps?: PortalProps; contentProps?: SelectContentProps; placement?: import(\"@/index\").Placement; popupProps?: SelectPopupProps; viewportProps?: SelectViewportProps; scrollDownButtonProps?: SelectScrollDownButtonProps; scrollUpButtonProps?: SelectScrollUpButtonProps; groupProps?: SelectGroupProps; groupLabelProps?: SelectGroupLabelProps; itemProps?: SelectItemProps; itemTextProps?: SelectItemTextProps; itemIndicatorProps?: SelectItemIndicatorProps; separatorProps?: SelectSeparatorProps; arrowProps?: PopperArrowProps; open?: boolean; defaultOpen?: boolean; dir?: Direction; autocomplete?: string; disabled?: boolean; modelValue?: (M extends true ? T[] : T); defaultValue?: (M extends true ? T[] : T); multiple?: M; clearable?: boolean; selectionBehavior?: SelectionBehavior; name?: string; required?: boolean }",
+        "description": "",
+        "sourcePath": "headless/src/components/select/types.ts",
+        "typeParameters": [
+          "T extends DefinedValue = DefinedValue",
+          "M extends boolean = false"
+        ],
+        "members": [
+          {
+            "name": "items",
+            "type": "SelectOptionData<T>[]",
+            "required": true,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/select/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "showArrow",
+            "type": "boolean",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/select/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "triggerProps",
+            "type": "SelectTriggerProps",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/select/types.ts",
+            "referencedTypes": [
+              {
+                "name": "SelectTriggerProps",
+                "kind": "interface",
+                "type": "SelectTriggerProps",
+                "resolvedType": "{ disabled?: boolean; reference?: ReferenceElement; asChild?: boolean; as?: AsTag | Component }",
+                "description": "",
+                "sourcePath": "headless/src/components/select/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "disabled",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/select/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "reference",
+                    "type": "ReferenceElement",
+                    "required": false,
+                    "description": "The reference (or anchor) element that is being referred to for positioning. If not provided will use the current\ncomponent as anchor.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/popper/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "asChild",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "as",
+                    "type": "AsTag | Component",
+                    "required": false,
+                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+                    "default": "'div'",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "triggerIconProps",
+            "type": "SelectTriggerIconProps",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/select/types.ts",
+            "referencedTypes": [
+              {
+                "name": "SelectTriggerIconProps",
+                "kind": "interface",
+                "type": "SelectTriggerIconProps",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/components/select/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "placeholder",
+            "type": "string",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/select/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "valueProps",
+            "type": "SelectValueProps",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/select/types.ts",
+            "referencedTypes": [
+              {
+                "name": "SelectValueProps",
+                "kind": "interface",
+                "type": "SelectValueProps",
+                "resolvedType": "{ placeholder?: string }",
+                "description": "",
+                "sourcePath": "headless/src/components/select/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "placeholder",
+                    "type": "string",
+                    "required": false,
+                    "description": "The content that will be rendered inside the `SelectValue` when no `value` or `defaultValue` is set.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/select/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "portalProps",
+            "type": "PortalProps",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/select/types.ts",
+            "referencedTypes": [
+              {
+                "name": "PortalProps",
+                "kind": "interface",
+                "type": "PortalProps",
+                "resolvedType": "{ to?: string | HTMLElement; disabled?: boolean; defer?: boolean; forceMount?: boolean }",
+                "description": "",
+                "sourcePath": "headless/src/components/portal/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "to",
+                    "type": "string | HTMLElement",
+                    "required": false,
+                    "description": "Vue native teleport component prop `:to`\n\n{@link https://vuejs.org/guide/built-ins/teleport.html#basic-usage}",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/portal/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "disabled",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Disable teleport and render the component inline\n\n{@link https://vuejs.org/guide/built-ins/teleport.html#disabling-teleport}",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/portal/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "defer",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Defer the resolving of a Teleport target until other parts of the application have mounted (requires Vue 3.5.0+)\n\n{@link https://vuejs.org/guide/built-ins/teleport.html#deferred-teleport}",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/portal/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "forceMount",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Used to force mounting when more control is needed.\n\nUseful when controlling animation with Vue animation libraries.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/types/component.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "contentProps",
+            "type": "SelectContentProps",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/select/types.ts",
+            "referencedTypes": [
+              {
+                "name": "SelectContentProps",
+                "kind": "interface",
+                "type": "SelectContentProps",
+                "resolvedType": "{ position?: SelectPosition; bodyLock?: boolean; popupProps?: SelectPopupProps; placement?: Placement; side?: Side; sideOffset?: number; sideFlip?: boolean; align?: Align; alignOffset?: number; alignFlip?: boolean; avoidCollisions?: boolean; collisionBoundary?: Element | (Element | null)[] | null; collisionPadding?: Padding; arrowPadding?: number; hideShiftedArrow?: boolean; sticky?: 'partial' | 'always'; hideWhenDetached?: boolean; positionStrategy?: 'fixed' | 'absolute'; updatePositionStrategy?: 'always' | 'optimized'; disableUpdateOnLayoutShift?: boolean; prioritizePosition?: boolean; reference?: ReferenceElement; disableOutsidePointerEvents?: boolean; forceMount?: boolean }",
+                "description": "",
+                "sourcePath": "headless/src/components/select/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "position",
+                    "type": "SelectPosition",
+                    "required": false,
+                    "description": "The positioning mode to use\n\n`item-aligned (default)` - behaves similarly to a native MacOS menu by positioning content relative to the active\nitem. <br> `popper` - positions content in the same way as our other primitives, for example `Popover` or\n`DropdownMenu`.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/select/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "bodyLock",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "The document.body will be lock, and scrolling will be disabled.",
+                    "default": "true",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/select/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "popupProps",
+                    "type": "SelectPopupProps",
+                    "required": false,
+                    "description": "",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/select/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "placement",
+                    "type": "Placement",
+                    "required": false,
+                    "description": "The placement of the floating element.\n\nIf used, it will override the `side` and `align` props.",
+                    "default": "undefined",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/popper/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "side",
+                    "type": "Side",
+                    "required": false,
+                    "description": "The preferred side of the trigger to render against when open. Will be reversed when collisions occur and\navoidCollisions is enabled.",
+                    "default": "'bottom'",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/popper/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "sideOffset",
+                    "type": "number",
+                    "required": false,
+                    "description": "The distance in pixels from the trigger.",
+                    "default": "0",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/popper/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "sideFlip",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Flip to the opposite side when colliding with boundary.",
+                    "default": "true",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/popper/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "align",
+                    "type": "Align",
+                    "required": false,
+                    "description": "The preferred alignment against the trigger. May change when collisions occur.",
+                    "default": "'center'",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/popper/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "alignOffset",
+                    "type": "number",
+                    "required": false,
+                    "description": "An offset in pixels from the `start` or `end` alignment options.",
+                    "default": "0",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/popper/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "alignFlip",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Flip alignment when colliding with boundary.\nMay only occur when `prioritizePosition` is true.",
+                    "default": "true",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/popper/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "avoidCollisions",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "When `true`, overrides the side and align preferences to prevent collisions with boundary edges.",
+                    "default": "true",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/popper/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "collisionBoundary",
+                    "type": "Element | (Element | null)[] | null",
+                    "required": false,
+                    "description": "The element used as the collision boundary. By default this is the viewport, though you can provide additional\nelement(s) to be included in this check.",
+                    "default": "[ ]",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/popper/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "collisionPadding",
+                    "type": "Padding",
+                    "required": false,
+                    "description": "The distance in pixels from the boundary edges where collision detection should occur. Accepts a number (same for\nall sides), or a partial padding object, for example: { top: 20, left: 20 }.",
+                    "default": "0",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/popper/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "arrowPadding",
+                    "type": "number",
+                    "required": false,
+                    "description": "The padding between the arrow and the edges of the content. If your content has border-radius, this will prevent it\nfrom overflowing the corners.",
+                    "default": "0",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/popper/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "hideShiftedArrow",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "When `true`, hides the arrow when it cannot be centered\nto the reference element.",
+                    "default": "true",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/popper/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "sticky",
+                    "type": "'partial' | 'always'",
+                    "required": false,
+                    "description": "The sticky behavior on the align axis. `partial` will keep the content in the boundary as long as the trigger is at\nleast partially in the boundary whilst \"always\" will keep the content in the boundary regardless.",
+                    "default": "'partial'",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/popper/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "hideWhenDetached",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Whether to hide the content when the trigger becomes fully occluded.",
+                    "default": "false",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/popper/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "positionStrategy",
+                    "type": "'fixed' | 'absolute'",
+                    "required": false,
+                    "description": "The type of CSS position property to use.",
+                    "default": "'fixed'",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/popper/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "updatePositionStrategy",
+                    "type": "'always' | 'optimized'",
+                    "required": false,
+                    "description": "Strategy to update the position of the floating element on every animation frame.",
+                    "default": "'optimized'",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/popper/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "disableUpdateOnLayoutShift",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Whether to disable the update position for the content when the layout shifted.",
+                    "default": "false",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/popper/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "prioritizePosition",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Force content to be position within the viewport. Might overlap the reference element, which may not be desired.",
+                    "default": "false",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/popper/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "reference",
+                    "type": "ReferenceElement",
+                    "required": false,
+                    "description": "The custom element or virtual element that will be set as the reference to position the floating element. If\nprovided, it will replace the default anchor element.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/popper/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "disableOutsidePointerEvents",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "When `true`, hover/focus/click interactions will be disabled on elements outside the `DismissableLayer`. Users will\nneed to click twice on outside elements to interact with them: once to close the `DismissableLayer`, and again to\ntrigger the element.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/types/component.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "forceMount",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Used to force mounting when more control is needed.\n\nUseful when controlling animation with Vue animation libraries.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/types/component.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "placement",
+            "type": "import(\"@/index\").Placement",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/select/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "popupProps",
+            "type": "SelectPopupProps",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/select/types.ts",
+            "referencedTypes": [
+              {
+                "name": "SelectPopupProps",
+                "kind": "interface",
+                "type": "SelectPopupProps",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/components/select/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "viewportProps",
+            "type": "SelectViewportProps",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/select/types.ts",
+            "referencedTypes": [
+              {
+                "name": "SelectViewportProps",
+                "kind": "interface",
+                "type": "SelectViewportProps",
+                "resolvedType": "{ nonce?: string }",
+                "description": "",
+                "sourcePath": "headless/src/components/select/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "nonce",
+                    "type": "string",
+                    "required": false,
+                    "description": "Will add `nonce` attribute to the style tag which can be used by Content Security Policy. <br> If omitted, inherits\nglobally from `ConfigProvider`.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/select/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "scrollDownButtonProps",
+            "type": "SelectScrollDownButtonProps",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/select/types.ts",
+            "referencedTypes": [
+              {
+                "name": "SelectScrollDownButtonProps",
+                "kind": "interface",
+                "type": "SelectScrollDownButtonProps",
+                "resolvedType": "{ asChild?: boolean; as?: AsTag | Component }",
+                "description": "",
+                "sourcePath": "headless/src/components/select/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "asChild",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "as",
+                    "type": "AsTag | Component",
+                    "required": false,
+                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+                    "default": "'div'",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "scrollUpButtonProps",
+            "type": "SelectScrollUpButtonProps",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/select/types.ts",
+            "referencedTypes": [
+              {
+                "name": "SelectScrollUpButtonProps",
+                "kind": "interface",
+                "type": "SelectScrollUpButtonProps",
+                "resolvedType": "{ asChild?: boolean; as?: AsTag | Component }",
+                "description": "",
+                "sourcePath": "headless/src/components/select/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "asChild",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "as",
+                    "type": "AsTag | Component",
+                    "required": false,
+                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+                    "default": "'div'",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "groupProps",
+            "type": "SelectGroupProps",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/select/types.ts",
+            "referencedTypes": [
+              {
+                "name": "SelectGroupProps",
+                "kind": "interface",
+                "type": "SelectGroupProps",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/components/select/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "groupLabelProps",
+            "type": "SelectGroupLabelProps",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/select/types.ts",
+            "referencedTypes": [
+              {
+                "name": "SelectGroupLabelProps",
+                "kind": "interface",
+                "type": "SelectGroupLabelProps",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/components/select/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "itemProps",
+            "type": "SelectItemProps",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/select/types.ts",
+            "referencedTypes": [
+              {
+                "name": "SelectItemProps",
+                "kind": "interface",
+                "type": "SelectItemProps",
+                "resolvedType": "{ value: string | number; disabled?: boolean; textValue?: string; asChild?: boolean; as?: AsTag | Component }",
+                "description": "",
+                "sourcePath": "headless/src/components/select/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "value",
+                    "type": "string | number",
+                    "required": true,
+                    "description": "The value given as data when submitted with a `name`.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/select/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "disabled",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "When `true`, prevents the user from interacting with the item.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/select/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "textValue",
+                    "type": "string",
+                    "required": false,
+                    "description": "Optional text used for typeahead purposes. By default the typeahead behavior will use the `.textContent` of the\n`SelectItemText` part. Use this when the content is complex, or you have non-textual content inside.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/select/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "asChild",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "as",
+                    "type": "AsTag | Component",
+                    "required": false,
+                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+                    "default": "'div'",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "itemTextProps",
+            "type": "SelectItemTextProps",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/select/types.ts",
+            "referencedTypes": [
+              {
+                "name": "SelectItemTextProps",
+                "kind": "interface",
+                "type": "SelectItemTextProps",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/components/select/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "itemIndicatorProps",
+            "type": "SelectItemIndicatorProps",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/select/types.ts",
+            "referencedTypes": [
+              {
+                "name": "SelectItemIndicatorProps",
+                "kind": "interface",
+                "type": "SelectItemIndicatorProps",
+                "resolvedType": "{ asChild?: boolean; as?: AsTag | Component }",
+                "description": "",
+                "sourcePath": "headless/src/components/select/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "asChild",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "as",
+                    "type": "AsTag | Component",
+                    "required": false,
+                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+                    "default": "'div'",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "separatorProps",
+            "type": "SelectSeparatorProps",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/select/types.ts",
+            "referencedTypes": [
+              {
+                "name": "SelectSeparatorProps",
+                "kind": "interface",
+                "type": "SelectSeparatorProps",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/components/select/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "arrowProps",
+            "type": "PopperArrowProps",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/select/types.ts",
+            "referencedTypes": [
+              {
+                "name": "PopperArrowProps",
+                "kind": "interface",
+                "type": "PopperArrowProps",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/components/popper/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "open",
+            "type": "boolean",
+            "required": false,
+            "description": "The controlled open state of the Select. Can be bind as `v-model:open`.",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/select/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "defaultOpen",
+            "type": "boolean",
+            "required": false,
+            "description": "The open state of the select when it is initially rendered. Use when you do not need to control its open state.",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/select/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "dir",
+            "type": "Direction",
+            "required": false,
+            "description": "The reading direction of the combobox when applicable. <br> If omitted, inherits globally from `ConfigProvider` or\nassumes LTR (left-to-right) reading mode.",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/select/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Direction",
+                "kind": "typeAlias",
+                "type": "'ltr' | 'rtl'",
+                "resolvedType": "'ltr' | 'rtl'",
+                "description": "",
+                "sourcePath": "headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "autocomplete",
+            "type": "string",
+            "required": false,
+            "description": "Native html input `autocomplete` attribute.",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/select/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "disabled",
+            "type": "boolean",
+            "required": false,
+            "description": "When `true`, prevents the user from interacting with Select",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/select/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "modelValue",
+            "type": "(M extends true ? T[] : T)",
+            "required": false,
+            "description": "The controlled value of the selected item(s).\n\nUse this when you need to control the state of the items. Can be bound with `v-model`",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/types/common.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "defaultValue",
+            "type": "(M extends true ? T[] : T)",
+            "required": false,
+            "description": "The default value of the selected item(s).\n\nUse this when you need to set the initial state of the items.",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/types/common.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "multiple",
+            "type": "M",
+            "required": false,
+            "description": "Determines whether a \"single\" or \"multiple\" items can be selected at a time.\n\nThis prop will overwrite the inferred type from `modelValue` and `defaultValue`.",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/types/common.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "clearable",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether selected item can be cleared when `multiple` is false.",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/types/common.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "selectionBehavior",
+            "type": "SelectionBehavior",
+            "required": false,
+            "description": "How multiple selection should behave in the collection.",
+            "default": "'toggle'",
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/types/common.ts",
+            "referencedTypes": [
+              {
+                "name": "SelectionBehavior",
+                "kind": "typeAlias",
+                "type": "'toggle' | 'replace'",
+                "resolvedType": "'toggle' | 'replace'",
+                "description": "",
+                "sourcePath": "headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "name",
+            "type": "string",
+            "required": false,
+            "description": "The name of the field. Submitted with its owning form as part of a name/value pair.",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/types/component.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "required",
+            "type": "boolean",
+            "required": false,
+            "description": "When `true`, indicates that the user must set the value before the owning form can be submitted.",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/types/component.ts",
+            "referencedTypes": []
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      },
+      "emits": {
+        "kind": "emits",
+        "name": "SelectCompactEmits",
+        "type": "TypeAlias SelectCompactEmits<T, M>",
+        "resolvedType": "{ \"update:modelValue\": [value: M extends true ? T[] : T]; \"update:open\": [value: boolean]; closeAutoFocus: [event: Event]; escapeKeyDown: [event: KeyboardEvent]; pointerDownOutside: [event: PointerDownOutsideEvent]; select: [event: SelectItemEvent<T>] }",
+        "description": "",
+        "sourcePath": "headless/src/components/select/types.ts",
+        "typeParameters": [
+          "T extends DefinedValue = DefinedValue",
+          "M extends boolean = false"
+        ],
+        "members": [],
+        "callables": [
+          {
+            "name": "update:modelValue",
+            "type": "[value: M extends true ? T[] : T]",
+            "parameters": "value: M extends true ? T[] : T",
+            "required": true,
+            "description": "",
+            "sourcePath": "headless/src/types/common.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "update:open",
+            "type": "[value: boolean]",
+            "parameters": "value: boolean",
+            "required": true,
+            "description": "Event handler called when the open state of the context menu changes.",
+            "sourcePath": "headless/src/components/select/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "closeAutoFocus",
+            "type": "[event: Event]",
+            "parameters": "event: Event",
+            "required": true,
+            "description": "",
+            "sourcePath": "headless/src/components/select/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Event",
+                "kind": "interface",
+                "type": "Event",
+                "resolvedType": null,
+                "description": "The **`Event`** interface represents an event which takes place on an EventTarget.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event)",
+                "sourcePath": "node_modules/.pnpm/typescript@6.0.3/node_modules/typescript/lib/lib.dom.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "escapeKeyDown",
+            "type": "[event: KeyboardEvent]",
+            "parameters": "event: KeyboardEvent",
+            "required": true,
+            "description": "Event handler called when the escape key is down. Can be prevented.",
+            "sourcePath": "headless/src/components/select/types.ts",
+            "referencedTypes": [
+              {
+                "name": "KeyboardEvent",
+                "kind": "interface",
+                "type": "KeyboardEvent",
+                "resolvedType": null,
+                "description": "**`KeyboardEvent`** objects describe a user interaction with the keyboard; each event describes a single interaction between the user and a key (or combination of a key with modifier keys) on the keyboard. The event type (keydown, keypress, or keyup) identifies what kind of keyboard activity occurred.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/KeyboardEvent)",
+                "sourcePath": "node_modules/.pnpm/typescript@6.0.3/node_modules/typescript/lib/lib.dom.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "pointerDownOutside",
+            "type": "[event: PointerDownOutsideEvent]",
+            "parameters": "event: PointerDownOutsideEvent",
+            "required": true,
+            "description": "Event handler called when the a `pointerdown` event happens outside of the `DismissableLayer`. Can be prevented.",
+            "sourcePath": "headless/src/components/select/types.ts",
+            "referencedTypes": [
+              {
+                "name": "PointerDownOutsideEvent",
+                "kind": "typeAlias",
+                "type": "CustomEvent<{ originalEvent: PointerEvent; }>",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/types/event.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "select",
+            "type": "[event: SelectItemEvent<T>]",
+            "parameters": "event: SelectItemEvent<T>",
+            "required": true,
+            "description": "Event handler called when the selecting item. <br> It can be prevented by calling `event.preventDefault`.",
+            "sourcePath": "headless/src/components/select/types.ts",
+            "referencedTypes": [
+              {
+                "name": "SelectItemEvent",
+                "kind": "typeAlias",
+                "type": "CustomEvent<{ originalEvent: PointerEvent | KeyboardEvent; value: T; }>",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/components/select/types.ts",
+                "typeParameters": [
+                  "T extends DefinedValue = DefinedValue"
+                ],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "referencedTypes": []
+      },
+      "slots": {
+        "kind": "slots",
+        "name": "SelectCompactSlots",
+        "type": "TypeAlias SelectCompactSlots<T, M>",
+        "resolvedType": "{ \"trigger-leading\"?: (() => any); \"trigger-value\"?: ((props: SelectCompactTriggerValueSlotProps<T, M>) => any); \"trigger-trailing\"?: (() => any); \"trigger-icon\"?: (() => any); \"scroll-up-button\"?: (() => any); \"scroll-down-button\"?: (() => any); \"group-label\"?: ((props: SelectCompactGroupLabelSlotProps<T>) => any); \"item-text\"?: ((props: SelectCompactItemSlotProps<T>) => any); \"item-leading\"?: ((props: SelectCompactItemSlotProps<T>) => any); \"item-trailing\"?: ((props: SelectCompactItemSlotProps<T>) => any); \"item-indicator\"?: ((props: SelectCompactItemSlotProps<T>) => any) }",
+        "description": "",
+        "sourcePath": "headless/src/components/select/types.ts",
+        "typeParameters": [
+          "T extends DefinedValue = DefinedValue",
+          "M extends boolean = false"
+        ],
+        "members": [],
+        "callables": [
+          {
+            "name": "trigger-leading",
+            "type": "(() => any) | undefined",
+            "parameters": "(() => any) | undefined",
+            "required": false,
+            "description": "",
+            "sourcePath": "headless/src/components/select/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "trigger-value",
+            "type": "((props: SelectCompactTriggerValueSlotProps<T, M>) => any) | undefined",
+            "parameters": "((props: SelectCompactTriggerValueSlotProps<T, M>) => any) | undefined",
+            "required": false,
+            "description": "",
+            "sourcePath": "headless/src/components/select/types.ts",
+            "referencedTypes": [
+              {
+                "name": "SelectCompactTriggerValueSlotProps",
+                "kind": "interface",
+                "type": "SelectCompactTriggerValueSlotProps<T, M>",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/components/select/types.ts",
+                "typeParameters": [
+                  "T extends DefinedValue = DefinedValue",
+                  "M extends boolean = false"
+                ],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "trigger-trailing",
+            "type": "(() => any) | undefined",
+            "parameters": "(() => any) | undefined",
+            "required": false,
+            "description": "",
+            "sourcePath": "headless/src/components/select/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "trigger-icon",
+            "type": "(() => any) | undefined",
+            "parameters": "(() => any) | undefined",
+            "required": false,
+            "description": "",
+            "sourcePath": "headless/src/components/select/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "scroll-up-button",
+            "type": "(() => any) | undefined",
+            "parameters": "(() => any) | undefined",
+            "required": false,
+            "description": "",
+            "sourcePath": "headless/src/components/select/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "scroll-down-button",
+            "type": "(() => any) | undefined",
+            "parameters": "(() => any) | undefined",
+            "required": false,
+            "description": "",
+            "sourcePath": "headless/src/components/select/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "group-label",
+            "type": "((props: SelectCompactGroupLabelSlotProps<T>) => any) | undefined",
+            "parameters": "((props: SelectCompactGroupLabelSlotProps<T>) => any) | undefined",
+            "required": false,
+            "description": "",
+            "sourcePath": "headless/src/components/select/types.ts",
+            "referencedTypes": [
+              {
+                "name": "SelectCompactGroupLabelSlotProps",
+                "kind": "interface",
+                "type": "SelectCompactGroupLabelSlotProps<T>",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/components/select/types.ts",
+                "typeParameters": [
+                  "T extends DefinedValue = DefinedValue"
+                ],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "item-text",
+            "type": "((props: SelectCompactItemSlotProps<T>) => any) | undefined",
+            "parameters": "((props: SelectCompactItemSlotProps<T>) => any) | undefined",
+            "required": false,
+            "description": "",
+            "sourcePath": "headless/src/components/select/types.ts",
+            "referencedTypes": [
+              {
+                "name": "SelectCompactItemSlotProps",
+                "kind": "interface",
+                "type": "SelectCompactItemSlotProps<T>",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/components/select/types.ts",
+                "typeParameters": [
+                  "T extends DefinedValue = DefinedValue"
+                ],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "item-leading",
+            "type": "((props: SelectCompactItemSlotProps<T>) => any) | undefined",
+            "parameters": "((props: SelectCompactItemSlotProps<T>) => any) | undefined",
+            "required": false,
+            "description": "",
+            "sourcePath": "headless/src/components/select/types.ts",
+            "referencedTypes": [
+              {
+                "name": "SelectCompactItemSlotProps",
+                "kind": "interface",
+                "type": "SelectCompactItemSlotProps<T>",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/components/select/types.ts",
+                "typeParameters": [
+                  "T extends DefinedValue = DefinedValue"
+                ],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "item-trailing",
+            "type": "((props: SelectCompactItemSlotProps<T>) => any) | undefined",
+            "parameters": "((props: SelectCompactItemSlotProps<T>) => any) | undefined",
+            "required": false,
+            "description": "",
+            "sourcePath": "headless/src/components/select/types.ts",
+            "referencedTypes": [
+              {
+                "name": "SelectCompactItemSlotProps",
+                "kind": "interface",
+                "type": "SelectCompactItemSlotProps<T>",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/components/select/types.ts",
+                "typeParameters": [
+                  "T extends DefinedValue = DefinedValue"
+                ],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "item-indicator",
+            "type": "((props: SelectCompactItemSlotProps<T>) => any) | undefined",
+            "parameters": "((props: SelectCompactItemSlotProps<T>) => any) | undefined",
+            "required": false,
+            "description": "",
+            "sourcePath": "headless/src/components/select/types.ts",
+            "referencedTypes": [
+              {
+                "name": "SelectCompactItemSlotProps",
+                "kind": "interface",
+                "type": "SelectCompactItemSlotProps<T>",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/components/select/types.ts",
+                "typeParameters": [
+                  "T extends DefinedValue = DefinedValue"
+                ],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "referencedTypes": []
+      }
+    },
     "SelectContent": {
       "props": {
         "kind": "props",
@@ -2146,6 +3508,7 @@
         "referencedTypes": []
       }
     },
+    "SelectPortal": {},
     "SelectRoot": {
       "props": {
         "kind": "props",

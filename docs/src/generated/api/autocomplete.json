@@ -1299,6 +1299,1156 @@
         "referencedTypes": []
       }
     },
+    "AutocompleteCompact": {
+      "props": {
+        "kind": "props",
+        "name": "AutocompleteCompactProps",
+        "type": "Interface AutocompleteCompactProps<T>",
+        "resolvedType": "{ modelValue?: string; defaultValue?: string; items: AutocompleteOptionData<T>[]; placeholder?: string; clearable?: boolean; clearLabel?: string; emptyLabel?: string; fuseOptions?: UseFuseOptions<AutocompleteSearchOptionData>; anchorProps?: AutocompleteAnchorProps; inputProps?: AutocompleteInputProps; triggerProps?: AutocompleteTriggerProps; portalProps?: PortalProps; contentProps?: AutocompleteContentProps; viewportProps?: AutocompleteViewportProps; groupProps?: AutocompleteGroupProps; groupLabelProps?: AutocompleteGroupLabelProps; itemProps?: Omit<AutocompleteItemProps, 'disabled' | 'value'>; itemIndicatorProps?: AutocompleteItemIndicatorProps; separatorProps?: AutocompleteSeparatorProps; open?: boolean; defaultOpen?: boolean; disabled?: boolean; dir?: Direction; name?: string; highlightOnHover?: boolean; openOnFocus?: boolean; openOnClick?: boolean; required?: boolean }",
+        "description": "",
+        "sourcePath": "headless/src/components/autocomplete/types.ts",
+        "typeParameters": [
+          "T extends AutocompleteSingleOptionData = AutocompleteSingleOptionData"
+        ],
+        "members": [
+          {
+            "name": "modelValue",
+            "type": "string",
+            "required": false,
+            "description": "The controlled value of the autocomplete input.",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/autocomplete/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "defaultValue",
+            "type": "string",
+            "required": false,
+            "description": "The initial value of the autocomplete input.",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/autocomplete/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "items",
+            "type": "AutocompleteOptionData<T>[]",
+            "required": true,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/autocomplete/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "placeholder",
+            "type": "string",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/autocomplete/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "clearable",
+            "type": "boolean",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/autocomplete/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "clearLabel",
+            "type": "string",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/autocomplete/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "emptyLabel",
+            "type": "string",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/autocomplete/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "fuseOptions",
+            "type": "UseFuseOptions<AutocompleteSearchOptionData>",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/autocomplete/types.ts",
+            "referencedTypes": [
+              {
+                "name": "UseFuseOptions",
+                "kind": "interface",
+                "type": "UseFuseOptions<AutocompleteSearchOptionData>",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@vueuse+integrations@14.2.1_fuse.js@7.3.0_nprogress@0.2.0_vue@3.5.33_typescript@6.0.3_/node_modules/@vueuse/integrations/dist/index-CH8jSu5J.d.ts",
+                "typeParameters": [
+                  "T"
+                ],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "anchorProps",
+            "type": "AutocompleteAnchorProps",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/autocomplete/types.ts",
+            "referencedTypes": [
+              {
+                "name": "AutocompleteAnchorProps",
+                "kind": "interface",
+                "type": "AutocompleteAnchorProps",
+                "resolvedType": "{ reference?: ReferenceElement; asChild?: boolean; as?: AsTag | Component }",
+                "description": "",
+                "sourcePath": "headless/src/components/autocomplete/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "reference",
+                    "type": "ReferenceElement",
+                    "required": false,
+                    "description": "The reference (or anchor) element that is being referred to for positioning. If not provided will use the current\ncomponent as anchor.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/popper/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "asChild",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "as",
+                    "type": "AsTag | Component",
+                    "required": false,
+                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+                    "default": "'div'",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "inputProps",
+            "type": "AutocompleteInputProps",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/autocomplete/types.ts",
+            "referencedTypes": [
+              {
+                "name": "AutocompleteInputProps",
+                "kind": "interface",
+                "type": "AutocompleteInputProps",
+                "resolvedType": "{ inputRef?: ((el: HTMLInputElement) => void); controlProps?: InputControlProps; disabled?: boolean; id?: string; placeholder?: string; autofocus?: boolean; name?: string; required?: boolean; maxlength?: number; minlength?: number; pattern?: string; readonly?: boolean }",
+                "description": "",
+                "sourcePath": "headless/src/components/autocomplete/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "controlProps",
+                    "type": "InputControlProps",
+                    "required": false,
+                    "description": "",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/autocomplete/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "disabled",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "When `true`, prevents the user from interacting with the input.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/input/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "id",
+                    "type": "string",
+                    "required": false,
+                    "description": "Id of the input element",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/input/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "placeholder",
+                    "type": "string",
+                    "required": false,
+                    "description": "The placeholder of the input",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/input/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "autofocus",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "When `true`, the input is auto-focused.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/input/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "name",
+                    "type": "string",
+                    "required": false,
+                    "description": "The name of the field. Submitted with its owning form as part of a name/value pair.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/types/component.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "required",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "When `true`, indicates that the user must set the value before the owning form can be submitted.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/types/component.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "maxlength",
+                    "type": "number",
+                    "required": false,
+                    "description": "The maximum number of characters allowed in the input",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/input/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "minlength",
+                    "type": "number",
+                    "required": false,
+                    "description": "The minimum number of characters allowed in the input",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/input/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "pattern",
+                    "type": "string",
+                    "required": false,
+                    "description": "The pattern attribute of the input",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/input/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "readonly",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "When `true`, the input is read-only.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/input/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": [
+                  {
+                    "name": "inputRef",
+                    "type": "((el: HTMLInputElement) => void) | undefined",
+                    "parameters": "((el: HTMLInputElement) => void) | undefined",
+                    "required": false,
+                    "description": "",
+                    "sourcePath": "headless/src/components/autocomplete/types.ts",
+                    "referencedTypes": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "triggerProps",
+            "type": "AutocompleteTriggerProps",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/autocomplete/types.ts",
+            "referencedTypes": [
+              {
+                "name": "AutocompleteTriggerProps",
+                "kind": "interface",
+                "type": "AutocompleteTriggerProps",
+                "resolvedType": "{ asChild?: boolean; as?: AsTag | Component }",
+                "description": "",
+                "sourcePath": "headless/src/components/autocomplete/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "asChild",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "as",
+                    "type": "AsTag | Component",
+                    "required": false,
+                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+                    "default": "'div'",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "portalProps",
+            "type": "PortalProps",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/autocomplete/types.ts",
+            "referencedTypes": [
+              {
+                "name": "PortalProps",
+                "kind": "interface",
+                "type": "PortalProps",
+                "resolvedType": "{ to?: string | HTMLElement; disabled?: boolean; defer?: boolean; forceMount?: boolean }",
+                "description": "",
+                "sourcePath": "headless/src/components/portal/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "to",
+                    "type": "string | HTMLElement",
+                    "required": false,
+                    "description": "Vue native teleport component prop `:to`\n\n{@link https://vuejs.org/guide/built-ins/teleport.html#basic-usage}",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/portal/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "disabled",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Disable teleport and render the component inline\n\n{@link https://vuejs.org/guide/built-ins/teleport.html#disabling-teleport}",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/portal/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "defer",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Defer the resolving of a Teleport target until other parts of the application have mounted (requires Vue 3.5.0+)\n\n{@link https://vuejs.org/guide/built-ins/teleport.html#deferred-teleport}",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/portal/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "forceMount",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Used to force mounting when more control is needed.\n\nUseful when controlling animation with Vue animation libraries.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/types/component.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "contentProps",
+            "type": "AutocompleteContentProps",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/autocomplete/types.ts",
+            "referencedTypes": [
+              {
+                "name": "AutocompleteContentProps",
+                "kind": "interface",
+                "type": "AutocompleteContentProps",
+                "resolvedType": "{ placement?: Placement; side?: Side; sideOffset?: number; sideFlip?: boolean; align?: Align; alignOffset?: number; alignFlip?: boolean; avoidCollisions?: boolean; collisionBoundary?: Element | (Element | null)[] | null; collisionPadding?: Padding; arrowPadding?: number; hideShiftedArrow?: boolean; sticky?: 'partial' | 'always'; hideWhenDetached?: boolean; positionStrategy?: 'fixed' | 'absolute'; updatePositionStrategy?: 'always' | 'optimized'; disableUpdateOnLayoutShift?: boolean; prioritizePosition?: boolean; reference?: ReferenceElement; forceMount?: boolean }",
+                "description": "",
+                "sourcePath": "headless/src/components/autocomplete/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "placement",
+                    "type": "Placement",
+                    "required": false,
+                    "description": "The placement of the floating element.\n\nIf used, it will override the `side` and `align` props.",
+                    "default": "undefined",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/popper/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "side",
+                    "type": "Side",
+                    "required": false,
+                    "description": "The preferred side of the trigger to render against when open. Will be reversed when collisions occur and\navoidCollisions is enabled.",
+                    "default": "'bottom'",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/popper/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "sideOffset",
+                    "type": "number",
+                    "required": false,
+                    "description": "The distance in pixels from the trigger.",
+                    "default": "0",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/popper/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "sideFlip",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Flip to the opposite side when colliding with boundary.",
+                    "default": "true",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/popper/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "align",
+                    "type": "Align",
+                    "required": false,
+                    "description": "The preferred alignment against the trigger. May change when collisions occur.",
+                    "default": "'center'",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/popper/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "alignOffset",
+                    "type": "number",
+                    "required": false,
+                    "description": "An offset in pixels from the `start` or `end` alignment options.",
+                    "default": "0",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/popper/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "alignFlip",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Flip alignment when colliding with boundary.\nMay only occur when `prioritizePosition` is true.",
+                    "default": "true",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/popper/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "avoidCollisions",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "When `true`, overrides the side and align preferences to prevent collisions with boundary edges.",
+                    "default": "true",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/popper/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "collisionBoundary",
+                    "type": "Element | (Element | null)[] | null",
+                    "required": false,
+                    "description": "The element used as the collision boundary. By default this is the viewport, though you can provide additional\nelement(s) to be included in this check.",
+                    "default": "[ ]",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/popper/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "collisionPadding",
+                    "type": "Padding",
+                    "required": false,
+                    "description": "The distance in pixels from the boundary edges where collision detection should occur. Accepts a number (same for\nall sides), or a partial padding object, for example: { top: 20, left: 20 }.",
+                    "default": "0",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/popper/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "arrowPadding",
+                    "type": "number",
+                    "required": false,
+                    "description": "The padding between the arrow and the edges of the content. If your content has border-radius, this will prevent it\nfrom overflowing the corners.",
+                    "default": "0",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/popper/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "hideShiftedArrow",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "When `true`, hides the arrow when it cannot be centered\nto the reference element.",
+                    "default": "true",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/popper/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "sticky",
+                    "type": "'partial' | 'always'",
+                    "required": false,
+                    "description": "The sticky behavior on the align axis. `partial` will keep the content in the boundary as long as the trigger is at\nleast partially in the boundary whilst \"always\" will keep the content in the boundary regardless.",
+                    "default": "'partial'",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/popper/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "hideWhenDetached",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Whether to hide the content when the trigger becomes fully occluded.",
+                    "default": "false",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/popper/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "positionStrategy",
+                    "type": "'fixed' | 'absolute'",
+                    "required": false,
+                    "description": "The type of CSS position property to use.",
+                    "default": "'fixed'",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/popper/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "updatePositionStrategy",
+                    "type": "'always' | 'optimized'",
+                    "required": false,
+                    "description": "Strategy to update the position of the floating element on every animation frame.",
+                    "default": "'optimized'",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/popper/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "disableUpdateOnLayoutShift",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Whether to disable the update position for the content when the layout shifted.",
+                    "default": "false",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/popper/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "prioritizePosition",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Force content to be position within the viewport. Might overlap the reference element, which may not be desired.",
+                    "default": "false",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/popper/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "reference",
+                    "type": "ReferenceElement",
+                    "required": false,
+                    "description": "The custom element or virtual element that will be set as the reference to position the floating element. If\nprovided, it will replace the default anchor element.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/popper/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "forceMount",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Used to force mounting when more control is needed.\n\nUseful when controlling animation with Vue animation libraries.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/types/component.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "viewportProps",
+            "type": "AutocompleteViewportProps",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/autocomplete/types.ts",
+            "referencedTypes": [
+              {
+                "name": "AutocompleteViewportProps",
+                "kind": "interface",
+                "type": "AutocompleteViewportProps",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/components/autocomplete/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "groupProps",
+            "type": "AutocompleteGroupProps",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/autocomplete/types.ts",
+            "referencedTypes": [
+              {
+                "name": "AutocompleteGroupProps",
+                "kind": "interface",
+                "type": "AutocompleteGroupProps",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/components/autocomplete/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "groupLabelProps",
+            "type": "AutocompleteGroupLabelProps",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/autocomplete/types.ts",
+            "referencedTypes": [
+              {
+                "name": "AutocompleteGroupLabelProps",
+                "kind": "interface",
+                "type": "AutocompleteGroupLabelProps",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/components/autocomplete/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "itemProps",
+            "type": "Omit<AutocompleteItemProps, 'disabled' | 'value'>",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/autocomplete/types.ts",
+            "referencedTypes": [
+              {
+                "name": "AutocompleteItemProps",
+                "kind": "interface",
+                "type": "AutocompleteItemProps",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/components/autocomplete/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "itemIndicatorProps",
+            "type": "AutocompleteItemIndicatorProps",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/autocomplete/types.ts",
+            "referencedTypes": [
+              {
+                "name": "AutocompleteItemIndicatorProps",
+                "kind": "interface",
+                "type": "AutocompleteItemIndicatorProps",
+                "resolvedType": "{ asChild?: boolean; as?: AsTag | Component }",
+                "description": "",
+                "sourcePath": "headless/src/components/autocomplete/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "asChild",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "as",
+                    "type": "AsTag | Component",
+                    "required": false,
+                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+                    "default": "'div'",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "separatorProps",
+            "type": "AutocompleteSeparatorProps",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/autocomplete/types.ts",
+            "referencedTypes": [
+              {
+                "name": "AutocompleteSeparatorProps",
+                "kind": "interface",
+                "type": "AutocompleteSeparatorProps",
+                "resolvedType": "{ orientation?: DataOrientation; decorative?: boolean }",
+                "description": "",
+                "sourcePath": "headless/src/components/autocomplete/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "orientation",
+                    "type": "DataOrientation",
+                    "required": false,
+                    "description": "Orientation of the component.\n\nEither `vertical` or `horizontal`. Defaults to `horizontal`.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/separator/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "decorative",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Whether or not the component is purely decorative. <br>When `true`, accessibility-related attributes are updated so\nthat that the rendered element is removed from the accessibility tree.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/separator/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "open",
+            "type": "boolean",
+            "required": false,
+            "description": "The controlled open state of the autocomplete popup.",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/autocomplete/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "defaultOpen",
+            "type": "boolean",
+            "required": false,
+            "description": "The open state of the autocomplete popup when initially rendered.",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/autocomplete/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "disabled",
+            "type": "boolean",
+            "required": false,
+            "description": "When `true`, prevents the user from interacting with autocomplete.",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/autocomplete/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "dir",
+            "type": "Direction",
+            "required": false,
+            "description": "The reading direction of the autocomplete when applicable.",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/autocomplete/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Direction",
+                "kind": "typeAlias",
+                "type": "'ltr' | 'rtl'",
+                "resolvedType": "'ltr' | 'rtl'",
+                "description": "",
+                "sourcePath": "headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "name",
+            "type": "string",
+            "required": false,
+            "description": "The name of the field. Submitted with its owning form as part of a name/value pair.",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/types/component.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "highlightOnHover",
+            "type": "boolean",
+            "required": false,
+            "description": "When `true`, hover over item will trigger highlight.",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/autocomplete/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "openOnFocus",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether to open the autocomplete when the input is focused.",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/autocomplete/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "openOnClick",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether to open the autocomplete when the input is clicked.",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/autocomplete/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "required",
+            "type": "boolean",
+            "required": false,
+            "description": "When `true`, indicates that the user must set the value before the owning form can be submitted.",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/types/component.ts",
+            "referencedTypes": []
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      },
+      "emits": {
+        "kind": "emits",
+        "name": "AutocompleteCompactEmits",
+        "type": "TypeAlias AutocompleteCompactEmits<T>",
+        "resolvedType": "{ \"update:modelValue\": [value: string]; \"update:open\": [value: boolean]; highlight: [payload?: AutocompleteHighlightPayload | undefined]; select: [item: T] }",
+        "description": "",
+        "sourcePath": "headless/src/components/autocomplete/types.ts",
+        "typeParameters": [
+          "T extends AutocompleteSingleOptionData = AutocompleteSingleOptionData"
+        ],
+        "members": [],
+        "callables": [
+          {
+            "name": "update:modelValue",
+            "type": "[value: string]",
+            "parameters": "value: string",
+            "required": true,
+            "description": "",
+            "sourcePath": "headless/src/components/autocomplete/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "update:open",
+            "type": "[value: boolean]",
+            "parameters": "value: boolean",
+            "required": true,
+            "description": "",
+            "sourcePath": "headless/src/components/autocomplete/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "highlight",
+            "type": "[payload?: AutocompleteHighlightPayload | undefined]",
+            "parameters": "payload?: AutocompleteHighlightPayload | undefined",
+            "required": true,
+            "description": "",
+            "sourcePath": "headless/src/components/autocomplete/types.ts",
+            "referencedTypes": [
+              {
+                "name": "AutocompleteHighlightPayload",
+                "kind": "typeAlias",
+                "type": "CollectionItemData<ListboxCollectionItemData>",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/components/autocomplete/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "select",
+            "type": "[item: T]",
+            "parameters": "item: T",
+            "required": true,
+            "description": "",
+            "sourcePath": "headless/src/components/autocomplete/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "referencedTypes": []
+      },
+      "slots": {
+        "kind": "slots",
+        "name": "AutocompleteCompactSlots",
+        "type": "TypeAlias AutocompleteCompactSlots<T>",
+        "resolvedType": "{ \"input-leading\"?: (() => any); \"input-trailing\"?: (() => any); \"trigger-icon\"?: (() => any); empty?: (() => any); \"group-label\"?: ((props: { item: Extract<AutocompleteOptionData<T>, { items: T[]; }>; }) => any); \"item-leading\"?: ((props: { item: T; }) => any); \"item-label\"?: ((props: { item: T; }) => any); \"item-trailing\"?: ((props: { item: T; }) => any); \"item-indicator\"?: ((props: { item: T; }) => any) }",
+        "description": "",
+        "sourcePath": "headless/src/components/autocomplete/types.ts",
+        "typeParameters": [
+          "T extends AutocompleteSingleOptionData = AutocompleteSingleOptionData"
+        ],
+        "members": [],
+        "callables": [
+          {
+            "name": "input-leading",
+            "type": "(() => any) | undefined",
+            "parameters": "(() => any) | undefined",
+            "required": false,
+            "description": "",
+            "sourcePath": "headless/src/components/autocomplete/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "input-trailing",
+            "type": "(() => any) | undefined",
+            "parameters": "(() => any) | undefined",
+            "required": false,
+            "description": "",
+            "sourcePath": "headless/src/components/autocomplete/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "trigger-icon",
+            "type": "(() => any) | undefined",
+            "parameters": "(() => any) | undefined",
+            "required": false,
+            "description": "",
+            "sourcePath": "headless/src/components/autocomplete/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "empty",
+            "type": "(() => any) | undefined",
+            "parameters": "(() => any) | undefined",
+            "required": false,
+            "description": "",
+            "sourcePath": "headless/src/components/autocomplete/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "group-label",
+            "type": "((props: { item: Extract<AutocompleteOptionData<T>, { items: T[]; }>; }) => any) | undefined",
+            "parameters": "((props: { item: Extract<AutocompleteOptionData<T>, { items: T[]; }>; }) => any) | undefined",
+            "required": false,
+            "description": "",
+            "sourcePath": "headless/src/components/autocomplete/types.ts",
+            "referencedTypes": [
+              {
+                "name": "__type",
+                "kind": "typeLiteral",
+                "type": "{ item: Extract<AutocompleteOptionData<T>, { items: T[]; }>; }",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/components/autocomplete/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "item-leading",
+            "type": "((props: { item: T; }) => any) | undefined",
+            "parameters": "((props: { item: T; }) => any) | undefined",
+            "required": false,
+            "description": "",
+            "sourcePath": "headless/src/components/autocomplete/types.ts",
+            "referencedTypes": [
+              {
+                "name": "__type",
+                "kind": "typeLiteral",
+                "type": "{ item: T; }",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/components/autocomplete/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "item-label",
+            "type": "((props: { item: T; }) => any) | undefined",
+            "parameters": "((props: { item: T; }) => any) | undefined",
+            "required": false,
+            "description": "",
+            "sourcePath": "headless/src/components/autocomplete/types.ts",
+            "referencedTypes": [
+              {
+                "name": "__type",
+                "kind": "typeLiteral",
+                "type": "{ item: T; }",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/components/autocomplete/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "item-trailing",
+            "type": "((props: { item: T; }) => any) | undefined",
+            "parameters": "((props: { item: T; }) => any) | undefined",
+            "required": false,
+            "description": "",
+            "sourcePath": "headless/src/components/autocomplete/types.ts",
+            "referencedTypes": [
+              {
+                "name": "__type",
+                "kind": "typeLiteral",
+                "type": "{ item: T; }",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/components/autocomplete/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "item-indicator",
+            "type": "((props: { item: T; }) => any) | undefined",
+            "parameters": "((props: { item: T; }) => any) | undefined",
+            "required": false,
+            "description": "",
+            "sourcePath": "headless/src/components/autocomplete/types.ts",
+            "referencedTypes": [
+              {
+                "name": "__type",
+                "kind": "typeLiteral",
+                "type": "{ item: T; }",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/components/autocomplete/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "referencedTypes": []
+      }
+    },
     "AutocompleteContent": {
       "props": {
         "kind": "props",
@@ -1779,6 +2929,51 @@
         ],
         "callables": [],
         "referencedTypes": []
+      },
+      "emits": {
+        "kind": "emits",
+        "name": "AutocompleteInputEmits",
+        "type": "TypeAlias AutocompleteInputEmits",
+        "resolvedType": "{ \"update:modelValue\": [value: string] }",
+        "description": "",
+        "sourcePath": "headless/src/components/autocomplete/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [
+          {
+            "name": "update:modelValue",
+            "type": "[value: string]",
+            "parameters": "value: string",
+            "required": true,
+            "description": "",
+            "sourcePath": "headless/src/components/input/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "referencedTypes": [
+          {
+            "name": "InputRootEmits",
+            "kind": "typeAlias",
+            "type": "{ 'update:modelValue': [value: string]; }",
+            "resolvedType": "{ \"update:modelValue\": [value: string] }",
+            "description": "",
+            "sourcePath": "headless/src/components/input/types.ts",
+            "typeParameters": [],
+            "external": false,
+            "members": [],
+            "callables": [
+              {
+                "name": "update:modelValue",
+                "type": "[value: string]",
+                "parameters": "value: string",
+                "required": true,
+                "description": "",
+                "sourcePath": "headless/src/components/input/types.ts",
+                "referencedTypes": []
+              }
+            ]
+          }
+        ]
       }
     },
     "AutocompleteItem": {
@@ -1973,6 +3168,7 @@
         "referencedTypes": []
       }
     },
+    "AutocompletePortal": {},
     "AutocompleteRoot": {
       "props": {
         "kind": "props",

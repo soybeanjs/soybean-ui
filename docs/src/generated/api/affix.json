@@ -182,6 +182,237 @@
           }
         ]
       }
+    },
+    "AffixCompact": {
+      "props": {
+        "kind": "props",
+        "name": "AffixCompactProps",
+        "type": "Interface AffixCompactProps",
+        "resolvedType": "{ placeholderProps?: AffixPlaceholderProps; contentProps?: AffixContentProps; offsetTop?: number; offsetBottom?: number; target?: AffixTarget | null }",
+        "description": "",
+        "sourcePath": "headless/src/components/affix/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "placeholderProps",
+            "type": "AffixPlaceholderProps",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/affix/types.ts",
+            "referencedTypes": [
+              {
+                "name": "AffixPlaceholderProps",
+                "kind": "interface",
+                "type": "AffixPlaceholderProps",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/components/affix/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "contentProps",
+            "type": "AffixContentProps",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/affix/types.ts",
+            "referencedTypes": [
+              {
+                "name": "AffixContentProps",
+                "kind": "interface",
+                "type": "AffixContentProps",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/components/affix/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "offsetTop",
+            "type": "number",
+            "required": false,
+            "description": "The offset from the top of the target container when the element becomes affixed.",
+            "default": "0",
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/affix/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "offsetBottom",
+            "type": "number",
+            "required": false,
+            "description": "The offset from the bottom of the target container when the element becomes affixed.",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/affix/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "target",
+            "type": "AffixTarget | null",
+            "required": false,
+            "description": "The element that Affix listens to for scroll position updates.",
+            "default": "window",
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/affix/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      },
+      "emits": {
+        "kind": "emits",
+        "name": "AffixCompactEmits",
+        "type": "TypeAlias AffixCompactEmits",
+        "resolvedType": "{ change: [affixed: boolean] }",
+        "description": "",
+        "sourcePath": "headless/src/components/affix/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [
+          {
+            "name": "change",
+            "type": "[affixed: boolean]",
+            "parameters": "affixed: boolean",
+            "required": true,
+            "description": "",
+            "sourcePath": "headless/src/components/affix/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "referencedTypes": [
+          {
+            "name": "AffixRootEmits",
+            "kind": "typeAlias",
+            "type": "{ change: [affixed: boolean]; }",
+            "resolvedType": "{ change: [affixed: boolean] }",
+            "description": "",
+            "sourcePath": "headless/src/components/affix/types.ts",
+            "typeParameters": [],
+            "external": false,
+            "members": [],
+            "callables": [
+              {
+                "name": "change",
+                "type": "[affixed: boolean]",
+                "parameters": "affixed: boolean",
+                "required": true,
+                "description": "",
+                "sourcePath": "headless/src/components/affix/types.ts",
+                "referencedTypes": []
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "AffixContent": {
+      "props": {
+        "kind": "props",
+        "name": "AffixContentProps",
+        "type": "Interface AffixContentProps",
+        "resolvedType": null,
+        "description": "",
+        "sourcePath": "headless/src/components/affix/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "AffixPlaceholder": {
+      "props": {
+        "kind": "props",
+        "name": "AffixPlaceholderProps",
+        "type": "Interface AffixPlaceholderProps",
+        "resolvedType": null,
+        "description": "",
+        "sourcePath": "headless/src/components/affix/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "AffixRoot": {
+      "props": {
+        "kind": "props",
+        "name": "AffixRootProps",
+        "type": "Interface AffixRootProps",
+        "resolvedType": "{ offsetTop?: number; offsetBottom?: number; target?: AffixTarget | null }",
+        "description": "",
+        "sourcePath": "headless/src/components/affix/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "offsetTop",
+            "type": "number",
+            "required": false,
+            "description": "The offset from the top of the target container when the element becomes affixed.",
+            "default": "0",
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/affix/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "offsetBottom",
+            "type": "number",
+            "required": false,
+            "description": "The offset from the bottom of the target container when the element becomes affixed.",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/affix/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "target",
+            "type": "AffixTarget | null",
+            "required": false,
+            "description": "The element that Affix listens to for scroll position updates.",
+            "default": "window",
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/affix/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      },
+      "emits": {
+        "kind": "emits",
+        "name": "AffixRootEmits",
+        "type": "TypeAlias AffixRootEmits",
+        "resolvedType": "{ change: [affixed: boolean] }",
+        "description": "",
+        "sourcePath": "headless/src/components/affix/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [
+          {
+            "name": "change",
+            "type": "[affixed: boolean]",
+            "parameters": "affixed: boolean",
+            "required": true,
+            "description": "",
+            "sourcePath": "headless/src/components/affix/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "referencedTypes": []
+      }
     }
   }
 }

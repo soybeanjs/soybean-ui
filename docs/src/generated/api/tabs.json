@@ -849,6 +849,74 @@
           }
         ],
         "referencedTypes": []
+      },
+      "slots": {
+        "kind": "slots",
+        "name": "TabsCompactSlots",
+        "type": "TypeAlias TabsCompactSlots<T>",
+        "resolvedType": "{ trigger?: ((props: T & { active: boolean; }) => any); content?: ((props: T & { active: boolean; }) => any); indicator?: (() => any) }",
+        "description": "",
+        "sourcePath": "headless/src/components/tabs/types.ts",
+        "typeParameters": [
+          "T extends TabsOptionData = TabsOptionData"
+        ],
+        "members": [],
+        "callables": [
+          {
+            "name": "trigger",
+            "type": "((props: T & { active: boolean; }) => any) | undefined",
+            "parameters": "((props: T & { active: boolean; }) => any) | undefined",
+            "required": false,
+            "description": "",
+            "sourcePath": "headless/src/components/tabs/types.ts",
+            "referencedTypes": [
+              {
+                "name": "__type",
+                "kind": "typeLiteral",
+                "type": "{ active: boolean; }",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/components/tabs/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "content",
+            "type": "((props: T & { active: boolean; }) => any) | undefined",
+            "parameters": "((props: T & { active: boolean; }) => any) | undefined",
+            "required": false,
+            "description": "",
+            "sourcePath": "headless/src/components/tabs/types.ts",
+            "referencedTypes": [
+              {
+                "name": "__type",
+                "kind": "typeLiteral",
+                "type": "{ active: boolean; }",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/components/tabs/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "indicator",
+            "type": "(() => any) | undefined",
+            "parameters": "(() => any) | undefined",
+            "required": false,
+            "description": "",
+            "sourcePath": "headless/src/components/tabs/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "referencedTypes": []
       }
     },
     "TabsContent": {

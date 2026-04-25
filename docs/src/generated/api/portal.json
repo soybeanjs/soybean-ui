@@ -14,6 +14,74 @@
         "callables": [],
         "referencedTypes": []
       }
+    },
+    "Portal": {
+      "props": {
+        "kind": "props",
+        "name": "PortalProps",
+        "type": "Interface PortalProps",
+        "resolvedType": "{ to?: string | HTMLElement; disabled?: boolean; defer?: boolean; forceMount?: boolean }",
+        "description": "",
+        "sourcePath": "headless/src/components/portal/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "to",
+            "type": "string | HTMLElement",
+            "required": false,
+            "description": "Vue native teleport component prop `:to`\n\n{@link https://vuejs.org/guide/built-ins/teleport.html#basic-usage}",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/portal/types.ts",
+            "referencedTypes": [
+              {
+                "name": "HTMLElement",
+                "kind": "interface",
+                "type": "HTMLElement",
+                "resolvedType": null,
+                "description": "The **`HTMLElement`** interface represents any HTML element. Some elements directly implement this interface, while others implement it via an interface that inherits it.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement)",
+                "sourcePath": "node_modules/.pnpm/typescript@6.0.3/node_modules/typescript/lib/lib.dom.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "disabled",
+            "type": "boolean",
+            "required": false,
+            "description": "Disable teleport and render the component inline\n\n{@link https://vuejs.org/guide/built-ins/teleport.html#disabling-teleport}",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/portal/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "defer",
+            "type": "boolean",
+            "required": false,
+            "description": "Defer the resolving of a Teleport target until other parts of the application have mounted (requires Vue 3.5.0+)\n\n{@link https://vuejs.org/guide/built-ins/teleport.html#deferred-teleport}",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/portal/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "forceMount",
+            "type": "boolean",
+            "required": false,
+            "description": "Used to force mounting when more control is needed.\n\nUseful when controlling animation with Vue animation libraries.",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/types/component.ts",
+            "referencedTypes": []
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      }
     }
   }
 }
