@@ -1,6 +1,7 @@
 import {
   AccordionCompact,
   AccordionContent,
+  AccordionDescription,
   AccordionHeader,
   AccordionItem,
   AccordionRoot,
@@ -426,16 +427,18 @@ export const Accordion = {
   Compact: AccordionCompact,
   Root: AccordionRoot,
   Item: AccordionItem,
-  Trigger: AccordionTrigger,
   Header: AccordionHeader,
-  Content: AccordionContent
+  Trigger: AccordionTrigger,
+  Content: AccordionContent,
+  Description: AccordionDescription
 } as {
   Compact: typeof AccordionCompact;
   Root: typeof AccordionRoot;
   Item: typeof AccordionItem;
-  Trigger: typeof AccordionTrigger;
   Header: typeof AccordionHeader;
+  Trigger: typeof AccordionTrigger;
   Content: typeof AccordionContent;
+  Description: typeof AccordionDescription;
 };
 
 export const Affix = {
@@ -453,16 +456,16 @@ export const Affix = {
 export const Alert = {
   Compact: AlertCompact,
   Root: AlertRoot,
+  Content: AlertContent,
   Title: AlertTitle,
   Description: AlertDescription,
-  Content: AlertContent,
   Close: AlertClose
 } as {
   Compact: typeof AlertCompact;
   Root: typeof AlertRoot;
+  Content: typeof AlertContent;
   Title: typeof AlertTitle;
   Description: typeof AlertDescription;
-  Content: typeof AlertContent;
   Close: typeof AlertClose;
 };
 

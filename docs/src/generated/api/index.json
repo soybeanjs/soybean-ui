@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-24T06:03:20.668Z",
+  "generatedAt": "2026-04-25T09:01:22.349Z",
   "schemaVersion": 3,
   "components": {
     "accordion": {
@@ -9,6 +9,7 @@
         "Accordion",
         "AccordionCompact",
         "AccordionContent",
+        "AccordionDescription",
         "AccordionHeader",
         "AccordionItem",
         "AccordionRoot",

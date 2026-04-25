@@ -3,12 +3,13 @@ export const components = {
     'AccordionCompact',
     'AccordionRoot',
     'AccordionItem',
-    'AccordionTrigger',
     'AccordionHeader',
-    'AccordionContent'
+    'AccordionTrigger',
+    'AccordionContent',
+    'AccordionDescription'
   ],
   affix: ['AffixCompact', 'AffixRoot', 'AffixPlaceholder', 'AffixContent'],
-  alert: ['AlertCompact', 'AlertRoot', 'AlertTitle', 'AlertDescription', 'AlertContent', 'AlertClose'],
+  alert: ['AlertCompact', 'AlertRoot', 'AlertContent', 'AlertTitle', 'AlertDescription', 'AlertClose'],
   anchor: ['AnchorCompact', 'AnchorLink', 'AnchorRoot'],
   arrow: ['Arrow'],
   aspectRatio: ['AspectRatio'],

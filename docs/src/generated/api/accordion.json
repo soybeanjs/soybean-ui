@@ -1312,6 +1312,20 @@
         "referencedTypes": []
       }
     },
+    "AccordionDescription": {
+      "props": {
+        "kind": "props",
+        "name": "AccordionDescriptionProps",
+        "type": "Interface AccordionDescriptionProps",
+        "resolvedType": null,
+        "description": "",
+        "sourcePath": "headless/src/components/accordion/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
     "AccordionHeader": {
       "props": {
         "kind": "props",
