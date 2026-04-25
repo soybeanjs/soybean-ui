@@ -13,21 +13,23 @@ defineProps<LayoutSidebarProps>();
 
 const attrs = useAttrs();
 
-const { isMobile } = useLayoutRootContext('LayoutSidebar');
+const { sidebarVisible, isMobile } = useLayoutRootContext('LayoutSidebar');
 
 const ui = useLayoutUi();
 </script>
 
 <template>
-  <LayoutMobile v-if="isMobile" v-bind="attrs">
-    <slot />
-  </LayoutMobile>
-  <div v-else :class="ui.sidebarRoot">
-    <div :class="ui.sidebarGapHandler"></div>
-    <div :class="ui.sidebarWrapper">
-      <div v-bind="attrs" :class="ui.sidebar" data-sidebar="sidebar">
-        <slot />
+  <template v-if="sidebarVisible">
+    <LayoutMobile v-if="isMobile" v-bind="attrs">
+      <slot />
+    </LayoutMobile>
+    <div v-else :class="ui.sidebarRoot">
+      <div :class="ui.sidebarGapHandler"></div>
+      <div :class="ui.sidebarWrapper">
+        <div v-bind="attrs" :class="ui.sidebar" data-sidebar="sidebar">
+          <slot />
+        </div>
       </div>
     </div>
-  </div>
+  </template>
 </template>

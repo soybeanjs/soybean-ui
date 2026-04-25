@@ -39,7 +39,7 @@ export const components = {
   icon: ['SIcon'],
   kbd: ['SKbd'],
   label: ['SLabel'],
-  layout: ['SLayout', 'SLayoutTrigger'],
+  layout: ['SLayout', 'SLayoutClassic', 'SLayoutTrigger'],
   link: ['SLink'],
   list: ['SList', 'SListItem'],
   menu: ['SMenuOption', 'SMenuOptions', 'SMenuCheckboxOptions', 'SMenuRadioOptions'],

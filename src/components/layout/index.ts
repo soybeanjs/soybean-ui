@@ -1,18 +1,5 @@
+export { LayoutTrigger as SLayoutTrigger } from '@soybeanjs/headless';
 export { default as SLayout } from './layout.vue';
-export { default as SLayoutTrigger } from './layout-trigger.vue';
+export { default as SLayoutClassic } from './layout-classic.vue';
 
-export type {
-  LayoutFooterProps,
-  LayoutHeaderProps,
-  LayoutMainProps,
-  LayoutMobileProps,
-  LayoutRailProps,
-  LayoutRootEmits,
-  LayoutRootProps,
-  LayoutSidebarProps,
-  LayoutTabProps,
-  LayoutCollapsible,
-  LayoutSide,
-  LayoutVariant
-} from '@soybeanjs/headless/layout';
 export type * from './types';

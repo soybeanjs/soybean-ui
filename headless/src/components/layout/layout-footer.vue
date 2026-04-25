@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useLayoutUi } from './context';
+import { useLayoutUi, useLayoutRootContext } from './context';
 import type { LayoutFooterProps } from './types';
 
 defineOptions({
@@ -9,10 +9,11 @@ defineOptions({
 defineProps<LayoutFooterProps>();
 
 const cls = useLayoutUi('footer');
+const { footerVisible } = useLayoutRootContext('LayoutFooter');
 </script>
 
 <template>
-  <div :class="cls">
+  <div v-if="footerVisible" :class="cls">
     <slot />
   </div>
 </template>

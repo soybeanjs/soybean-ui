@@ -188,6 +188,7 @@ export const components = {
   kbd: ['Kbd'],
   label: ['Label'],
   layout: [
+    'LayoutCompact',
     'LayoutRoot',
     'LayoutSidebar',
     'LayoutRail',

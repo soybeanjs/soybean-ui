@@ -1,31 +1,33 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { LayoutCompact, provideLayoutUi } from '@soybeanjs/headless';
+import { LayoutClassicCompact, provideLayoutClassicUi } from '@soybeanjs/headless';
 import { useOmitProps } from '@soybeanjs/headless/composables';
 import { keysOf } from '@soybeanjs/utils';
 import { mergeBaseVariants, mergeSlotVariants, themeSizeMap, themeSizeRatio } from '@/theme';
 import { drawerVariants } from '../drawer/variants';
 import { buttonVariants } from '../button/variants';
-import { layoutVariants } from './variants';
-import type { LayoutEmits, LayoutProps, LayoutSlots } from './types';
+import { layoutClassicVariants } from './variants';
+import type { LayoutClassicProps, LayoutClassicEmits, LayoutClassicSlots } from './types';
 
 defineOptions({
-  name: 'SLayout'
+  name: 'SLayoutClassic'
 });
 
-const props = withDefaults(defineProps<LayoutProps>(), {
+const props = withDefaults(defineProps<LayoutClassicProps>(), {
   open: undefined,
   size: 'md',
   defaultOpen: true,
   sidebarVisible: true,
   headerVisible: true,
   tabVisible: true,
-  footerVisible: true
+  footerVisible: true,
+  fixedTop: true,
+  stretchFooter: true
 });
 
-const emit = defineEmits<LayoutEmits>();
+const emit = defineEmits<LayoutClassicEmits>();
 
-const slots = defineSlots<LayoutSlots>();
+const slots = defineSlots<LayoutClassicSlots>();
 
 const forwardedProps = useOmitProps(props, ['class', 'size', 'ui', 'pxToRem']);
 
@@ -40,11 +42,9 @@ const pxToRem = (px: number) => {
 };
 
 const ui = computed(() => {
-  const baseVariants = layoutVariants({
+  const baseVariants = layoutClassicVariants({
     size: props.size,
-    variant: props.variant,
     side: props.side,
-    collapsible: props.collapsible,
     fullContent: props.fullContent
   });
 
@@ -69,16 +69,16 @@ const ui = computed(() => {
   return mergeSlotVariants(variants, props.ui, { root: props.class });
 });
 
-provideLayoutUi(ui);
+provideLayoutClassicUi(ui);
 </script>
 
 <template>
-  <LayoutCompact v-bind="forwardedProps" :px-to-rem="pxToRem" @update:open="emit('update:open', $event)">
+  <LayoutClassicCompact v-bind="forwardedProps" :px-to-rem="pxToRem" @update:open="emit('update:open', $event)">
     <template #sidebar="slotProps">
       <slot name="sidebar" v-bind="slotProps" />
     </template>
     <template v-for="name in slotNames" #[name]>
       <slot :name="name" />
     </template>
-  </LayoutCompact>
+  </LayoutClassicCompact>
 </template>

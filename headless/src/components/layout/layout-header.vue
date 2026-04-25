@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useLayoutUi } from './context';
+import { useLayoutUi, useLayoutRootContext } from './context';
 import type { LayoutHeaderProps } from './types';
 
 defineOptions({
@@ -9,10 +9,12 @@ defineOptions({
 defineProps<LayoutHeaderProps>();
 
 const cls = useLayoutUi('header');
+
+const { headerVisible } = useLayoutRootContext('LayoutHeader');
 </script>
 
 <template>
-  <header :class="cls">
+  <header v-if="headerVisible" :class="cls">
     <slot />
   </header>
 </template>
