@@ -229,7 +229,7 @@ const fullContent = shallowRef(false);
             <SLayoutTrigger v-if="side === 'left'" />
             <SSeparator orientation="vertical" class="h-4" />
             <SBreadcrumb :items="breadcrumbItems" :size="size" :ui="{ list: 'gap-2' }" />
-            <SLayoutTrigger v-if="side === 'right'" class="ml-auto" />
+            <SLayoutTrigger v-if="side === 'right'" class="ms-auto" />
           </div>
         </template>
         <template #tab>
