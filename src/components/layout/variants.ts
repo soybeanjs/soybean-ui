@@ -5,7 +5,7 @@ import type { VariantProps } from 'tailwind-variants';
 export const layoutVariants = tv({
   slots: {
     root: 'group relative flex w-full h-full data-[side=right]:flex-row-reverse',
-    sidebarRoot: 'h-full hidden md:block',
+    sidebarRoot: 'h-full block lt-md:hidden',
     sidebarWrapper: `absolute inset-y-0 z-10 hidden h-full w-[--soybean-sidebar-width] transition-[left,right,width,opacity] duration-200 ease-linear md:flex`,
     sidebar: [
       `flex flex-col w-full h-full bg-sidebar`,
