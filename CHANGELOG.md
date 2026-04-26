@@ -1,5 +1,16 @@
 # Changelog
 
+## [v0.15.0-beta.4](https://github.com/soybeanjs/soybean-ui/compare/v0.15.0-beta.3...v0.15.0-beta.4) (2026-04-26)
+
+### &nbsp;&nbsp;&nbsp;🎨 Styles
+
+- **variants**: update sidebarWrapper and rail styles for responsive layout &nbsp;-&nbsp; by **soybeanfe** [<samp>(67180)</samp>](https://github.com/soybeanjs/soybean-ui/commit/6718016f)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+
+[soybeanfe](mailto:honghuangdc@gmail.com)
+
 ## [v0.15.0-beta.3](https://github.com/soybeanjs/soybean-ui/compare/v0.15.0-beta.2...v0.15.0-beta.3) (2026-04-26)
 
 ### &nbsp;&nbsp;&nbsp;🚨 Breaking Changes
