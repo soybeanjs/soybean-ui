@@ -1,5 +1,39 @@
 # Changelog
 
+## [v0.15.1](https://github.com/soybeanjs/soybean-ui/compare/v0.15.0...v0.15.1) (2026-04-27)
+
+### &nbsp;&nbsp;&nbsp;🚀 Features
+
+- **kbd**: add raised prop and update API documentation &nbsp;-&nbsp; by @soybeanjs [<samp>(d70b7)</samp>](https://github.com/soybeanjs/soybean-ui/commit/d70b7e63)
+- **toast**: add ToastProvider component and refactor Toaster integration &nbsp;-&nbsp; by @soybeanjs and **Copilot** [<samp>(e2491)</samp>](https://github.com/soybeanjs/soybean-ui/commit/e249120d)
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- **combobox**: fix group and item management with Maps &nbsp;-&nbsp; by @soybeanjs [<samp>(cb831)</samp>](https://github.com/soybeanjs/soybean-ui/commit/cb831b95)
+- **package**: update lint command to target specific directories &nbsp;-&nbsp; by @soybeanjs [<samp>(346d2)</samp>](https://github.com/soybeanjs/soybean-ui/commit/346d2c43)
+
+### &nbsp;&nbsp;&nbsp;🛠 Optimizations
+
+- **color-picker**: add miniSize computed property for size handling &nbsp;-&nbsp; by @soybeanjs and **Copilot** [<samp>(34d51)</samp>](https://github.com/soybeanjs/soybean-ui/commit/34d51524)
+- **components**: reorder LayoutClassicCompact in exports &nbsp;-&nbsp; by @soybeanjs [<samp>(a9acc)</samp>](https://github.com/soybeanjs/soybean-ui/commit/a9acc906)
+
+### &nbsp;&nbsp;&nbsp;📖 Documentation
+
+- **components**: update API documentation to use ComponentApi for multiple components &nbsp;-&nbsp; by @soybeanjs and **Copilot** [<samp>(483a4)</samp>](https://github.com/soybeanjs/soybean-ui/commit/483a4ca7)
+
+### &nbsp;&nbsp;&nbsp;🏡 Chore
+
+- **package**: update gen:api script to format generated API docs &nbsp;-&nbsp; by @soybeanjs [<samp>(1faa6)</samp>](https://github.com/soybeanjs/soybean-ui/commit/1faa6da2)
+
+### &nbsp;&nbsp;&nbsp;🎨 Styles
+
+- **projects**: format code &nbsp;-&nbsp; by @soybeanjs [<samp>(075f5)</samp>](https://github.com/soybeanjs/soybean-ui/commit/075f500e)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;
+[Copilot](mailto:copilot@github.com)
+
 ## [v0.15.0](https://github.com/soybeanjs/soybean-ui/compare/v0.14.0...v0.15.0) (2026-04-26)
 
 ### &nbsp;&nbsp;&nbsp;🚨 Breaking Changes
