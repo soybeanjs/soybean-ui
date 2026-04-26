@@ -6,7 +6,7 @@ export const layoutVariants = tv({
   slots: {
     root: 'group relative flex w-full h-full data-[side=right]:flex-row-reverse',
     sidebarRoot: 'h-full block lt-md:hidden',
-    sidebarWrapper: `absolute inset-y-0 z-10 hidden h-full w-[--soybean-sidebar-width] transition-[left,right,width,opacity] duration-200 ease-linear md:flex`,
+    sidebarWrapper: `absolute inset-y-0 z-10 flex h-full w-[--soybean-sidebar-width] transition-[left,right,width,opacity] duration-200 ease-linear lt-md:hidden`,
     sidebar: [
       `flex flex-col w-full h-full bg-sidebar`,
       `group-data-[variant=floating]:rounded-lg group-data-[variant=floating]:border group-data-[variant=floating]:border-border group-data-[variant=floating]:border-solid group-data-[variant=floating]:shadow`
@@ -24,7 +24,7 @@ export const layoutVariants = tv({
     ],
     mobile: 'flex flex-col w-full h-full',
     rail: [
-      'absolute inset-y-0 z-20 hidden w-[--soybean-layout-spacing] -translate-x-1/2 transition-all ease-linear sm:flex',
+      'absolute inset-y-0 z-20 flex w-[--soybean-layout-spacing] -translate-x-1/2 transition-all ease-linear lt-sm:hidden',
       'after:absolute after:inset-y-0 after:left-1/2 after:content-empty after:w-[calc(var(--soybean-layout-spacing)/8)] hover:after:bg-sidebar-border'
     ],
     trigger: '',
