@@ -71,11 +71,19 @@ const removeGroupItem = () => {
     return;
   }
 
-  items.delete(itemId);
+  const nextItems = new Set(items);
 
-  if (!items.size) {
-    allGroups.value.delete(groupId);
+  nextItems.delete(itemId);
+
+  const nextGroups = new Map(allGroups.value);
+
+  if (!nextItems.size) {
+    nextGroups.delete(groupId);
+  } else {
+    nextGroups.set(groupId, nextItems);
   }
+
+  allGroups.value = nextGroups;
 };
 
 const onSelect = (event: SelectEvent<string>) => {
@@ -98,20 +106,29 @@ const onSelect = (event: SelectEvent<string>) => {
 };
 
 onMounted(() => {
-  allItems.value.set(itemId, text.value);
+  const nextItems = new Map(allItems.value);
+
+  nextItems.set(itemId, text.value);
+  allItems.value = nextItems;
 
   const groupId = groupContext?.id;
 
   if (groupId) {
     const items = allGroups.value.get(groupId) ?? new Set<string>();
+    const nextGroupItems = new Set(items);
+    const nextGroups = new Map(allGroups.value);
 
-    items.add(itemId);
-    allGroups.value.set(groupId, items);
+    nextGroupItems.add(itemId);
+    nextGroups.set(groupId, nextGroupItems);
+    allGroups.value = nextGroups;
   }
 });
 
 onUnmounted(() => {
-  allItems.value.delete(itemId);
+  const nextItems = new Map(allItems.value);
+
+  nextItems.delete(itemId);
+  allItems.value = nextItems;
   removeGroupItem();
 });
 </script>

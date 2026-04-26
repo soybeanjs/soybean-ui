@@ -24,12 +24,18 @@ const visible = computed(() => {
 
 onMounted(() => {
   if (!allGroups.value.has(id)) {
-    allGroups.value.set(id, new Set());
+    const nextGroups = new Map(allGroups.value);
+
+    nextGroups.set(id, new Set());
+    allGroups.value = nextGroups;
   }
 });
 
 onUnmounted(() => {
-  allGroups.value.delete(id);
+  const nextGroups = new Map(allGroups.value);
+
+  nextGroups.delete(id);
+  allGroups.value = nextGroups;
 });
 </script>
 

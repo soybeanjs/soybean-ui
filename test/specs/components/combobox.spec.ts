@@ -51,6 +51,24 @@ describe('SCombobox', () => {
       expect(document.body.textContent).toContain('Nothing here');
       wrapper.unmount();
     });
+
+    it('does not show empty state on first open when options exist', async () => {
+      const wrapper = mount(SCombobox, {
+        props: {
+          items,
+          emptyLabel: 'Nothing here'
+        },
+        attachTo: document.body
+      });
+
+      await wrapper.get('button').trigger('click');
+      await wrapper.vm.$nextTick();
+      await wrapper.vm.$nextTick();
+
+      expect(document.body.textContent).not.toContain('Nothing here');
+      expect(document.body.querySelectorAll('[role="option"]')).toHaveLength(items.length);
+      wrapper.unmount();
+    });
   });
 
   describe('selection state', () => {
@@ -104,6 +122,28 @@ describe('SCombobox', () => {
       const input = document.body.querySelector('input[role="combobox"]') as HTMLInputElement | null;
 
       expect(input?.value).toBe('Banana');
+      wrapper.unmount();
+    });
+
+    it('does not show empty state when opened with an initial value', async () => {
+      const wrapper = mount(SCombobox, {
+        props: {
+          items,
+          modelValue: 'banana',
+          emptyLabel: 'Nothing here'
+        },
+        attachTo: document.body
+      });
+
+      await wrapper.get('button').trigger('click');
+      await wrapper.vm.$nextTick();
+      await wrapper.vm.$nextTick();
+
+      const input = document.body.querySelector('input[role="combobox"]') as HTMLInputElement | null;
+
+      expect(input?.value).toBe('Banana');
+      expect(document.body.textContent).not.toContain('Nothing here');
+      expect(document.body.querySelectorAll('[role="option"]')).toHaveLength(items.length);
       wrapper.unmount();
     });
 
