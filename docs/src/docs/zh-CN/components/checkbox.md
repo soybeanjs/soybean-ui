@@ -56,7 +56,7 @@ card-group
 ### SCheckbox Emits
 
 <DataTable preset="emits" :data="[
-  { name: 'update:modelValue', parameters: '(value: boolean | \"indeterminate\") => void', description: '选中状态变化时触发。' }
+  { name: 'update:modelValue', parameters: `(value: boolean | 'indeterminate') => void`, description: '选中状态变化时触发。' }
 ]"/>
 
 ### SCheckboxGroup Props
