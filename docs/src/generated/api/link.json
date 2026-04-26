@@ -50,9 +50,7 @@
                 "resolvedType": null,
                 "description": "Route location that can be passed to `router.push()` and other user-facing APIs.",
                 "sourcePath": "node_modules/.pnpm/vue-router@5.0.6_@vue+compiler-sfc@3.5.33_pinia@3.0.4_typescript@6.0.3_vue@3.5.33_types_5291f2364aa3c25c31ad23c437ad644c/node_modules/vue-router/dist/index-D_VEAp3P.d.ts",
-                "typeParameters": [
-                  "Name extends keyof RouteMap = keyof RouteMap"
-                ],
+                "typeParameters": ["Name extends keyof RouteMap = keyof RouteMap"],
                 "external": true,
                 "members": [],
                 "callables": []

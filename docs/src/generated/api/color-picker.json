@@ -1327,9 +1327,7 @@
                 "resolvedType": null,
                 "description": "",
                 "sourcePath": "node_modules/.pnpm/@vue+reactivity@3.5.33/node_modules/@vue/reactivity/dist/reactivity.d.ts",
-                "typeParameters": [
-                  "T = any"
-                ],
+                "typeParameters": ["T = any"],
                 "external": true,
                 "members": [],
                 "callables": []
@@ -1352,9 +1350,7 @@
                 "resolvedType": null,
                 "description": "",
                 "sourcePath": "node_modules/.pnpm/@vue+reactivity@3.5.33/node_modules/@vue/reactivity/dist/reactivity.d.ts",
-                "typeParameters": [
-                  "T = any"
-                ],
+                "typeParameters": ["T = any"],
                 "external": true,
                 "members": [],
                 "callables": []

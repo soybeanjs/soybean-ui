@@ -24,7 +24,9 @@ import type { ClassValue } from '@soybeanjs/headless';
 import type { ThemeSize } from '@/theme';
 export type CommandUi = HeadlessCommandUi;
 
-export interface CommandProps<T extends CommandSingleOptionData = CommandSingleOptionData> extends CommandCompactProps<T> {
+export interface CommandProps<
+  T extends CommandSingleOptionData = CommandSingleOptionData
+> extends CommandCompactProps<T> {
   /** Root class. */
   class?: ClassValue;
   size?: ThemeSize;

@@ -5,4 +5,5 @@ export const [provideProgressRootContext, useProgressRootContext] = useContext<P
 
 export const [provideProgressUi, useProgressUi] = useUiContext<ProgressUiSlot>('ProgressUi');
 
-export const [provideProgressProviderUi, useProgressProviderUi] = useUiContext<ProgressProviderUiSlot>('ProgressProviderUi');
+export const [provideProgressProviderUi, useProgressProviderUi] =
+  useUiContext<ProgressProviderUiSlot>('ProgressProviderUi');

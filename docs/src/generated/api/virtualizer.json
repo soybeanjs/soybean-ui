@@ -9,9 +9,7 @@
         "resolvedType": "{ contentProps?: VirtualizerContentProps; dynamicContentProps?: VirtualizerDynamicContentProps; height: string | number; items: T[]; options?: VirtualizerOptions; dynamic?: boolean; asChild?: boolean; as?: AsTag | Component }",
         "description": "",
         "sourcePath": "src/components/virtualizer/types.ts",
-        "typeParameters": [
-          "TypeParameter T"
-        ],
+        "typeParameters": ["TypeParameter T"],
         "members": [
           {
             "name": "contentProps",
@@ -379,9 +377,7 @@
         "resolvedType": "{ height: string | number; items: T[]; options?: VirtualizerOptions; dynamic?: boolean; asChild?: boolean; as?: AsTag | Component }",
         "description": "",
         "sourcePath": "headless/src/components/virtualizer/types.ts",
-        "typeParameters": [
-          "TypeParameter T"
-        ],
+        "typeParameters": ["TypeParameter T"],
         "members": [
           {
             "name": "height",

@@ -536,10 +536,7 @@
         "resolvedType": "{ name: Name; description?: string; class?: string | Record<string, boolean> | ClassValue[] | null; label?: string; size?: ThemeSize; inline?: boolean; ui?: Partial<FormFieldUi>; isFieldArray?: boolean; labelProps?: FormLabelProps; controlProps?: FormControlProps; descriptionProps?: FormDescriptionProps; errorProps?: FormErrorProps; validate?: FormFieldValidator<PathValue<Values, Name>>; reset?: (() => void) }",
         "description": "",
         "sourcePath": "src/components/form/types.ts",
-        "typeParameters": [
-          "TypeParameter Values",
-          "TypeParameter Name"
-        ],
+        "typeParameters": ["TypeParameter Values", "TypeParameter Name"],
         "members": [
           {
             "name": "name",
@@ -779,9 +776,7 @@
                 "resolvedType": "(value: Value) => string | Promise<string | undefined> | undefined",
                 "description": "",
                 "sourcePath": "headless/src/components/form/core/types.ts",
-                "typeParameters": [
-                  "Value"
-                ],
+                "typeParameters": ["Value"],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -793,10 +788,7 @@
                 "resolvedType": null,
                 "description": "",
                 "sourcePath": "headless/src/types/path.ts",
-                "typeParameters": [
-                  "T",
-                  "P extends Path<T> | ArrayPath<T>"
-                ],
+                "typeParameters": ["T", "P extends Path<T> | ArrayPath<T>"],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -824,10 +816,7 @@
         "resolvedType": "{ [SlotSymbol]?: { default: (props: FormFieldState<Values, Name>) => any; label: (props: FormFieldState<Values, Name>) => any; description: (props: FormFieldState<Values, Name>) => any; } | undefined; }",
         "description": "",
         "sourcePath": "src/components/form/types.ts",
-        "typeParameters": [
-          "TypeParameter Values",
-          "TypeParameter Name"
-        ],
+        "typeParameters": ["TypeParameter Values", "TypeParameter Name"],
         "members": [],
         "callables": [],
         "referencedTypes": []
@@ -841,10 +830,7 @@
         "resolvedType": "{ name: Name; description?: string; class?: string | Record<string, boolean> | ClassValue[] | null; label?: string; size?: ThemeSize; inline?: boolean; ui?: Partial<FormFieldUi>; isFieldArray?: boolean; labelProps?: FormLabelProps; controlProps?: FormControlProps; descriptionProps?: FormDescriptionProps; errorProps?: FormErrorProps; validate?: FormFieldValidator<PathValue<Values, Name>>; reset?: (() => void) }",
         "description": "",
         "sourcePath": "src/components/form/types.ts",
-        "typeParameters": [
-          "TypeParameter Values",
-          "TypeParameter Name"
-        ],
+        "typeParameters": ["TypeParameter Values", "TypeParameter Name"],
         "members": [
           {
             "name": "name",
@@ -1084,9 +1070,7 @@
                 "resolvedType": "(value: Value) => string | Promise<string | undefined> | undefined",
                 "description": "",
                 "sourcePath": "headless/src/components/form/core/types.ts",
-                "typeParameters": [
-                  "Value"
-                ],
+                "typeParameters": ["Value"],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -1098,10 +1082,7 @@
                 "resolvedType": null,
                 "description": "",
                 "sourcePath": "headless/src/types/path.ts",
-                "typeParameters": [
-                  "T",
-                  "P extends Path<T> | ArrayPath<T>"
-                ],
+                "typeParameters": ["T", "P extends Path<T> | ArrayPath<T>"],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -1129,10 +1110,7 @@
         "resolvedType": "{ [SlotSymbol]?: { default: (props: FormFieldArrayStates<Values, Name>) => any; label: (props: FormFieldArrayStates<Values, Name>) => any; description: (props: FormFieldArrayStates<Values, Name>) => any; } | undefined; }",
         "description": "",
         "sourcePath": "src/components/form/types.ts",
-        "typeParameters": [
-          "TypeParameter Values",
-          "TypeParameter Name"
-        ],
+        "typeParameters": ["TypeParameter Values", "TypeParameter Name"],
         "members": [],
         "callables": [],
         "referencedTypes": []

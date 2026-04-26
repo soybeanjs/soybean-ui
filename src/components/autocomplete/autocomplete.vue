@@ -5,12 +5,7 @@ import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composabl
 import { keysOf } from '@soybeanjs/utils';
 import { mergeSlotVariants } from '@/theme';
 import { autocompleteVariants } from './variants';
-import type {
-  AutocompleteEmits,
-  AutocompleteProps,
-  AutocompleteSlots,
-  AutocompleteSingleOptionData
-} from './types';
+import type { AutocompleteEmits, AutocompleteProps, AutocompleteSlots, AutocompleteSingleOptionData } from './types';
 
 defineOptions({
   name: 'SAutocomplete'

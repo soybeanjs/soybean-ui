@@ -9,9 +9,7 @@
         "resolvedType": "{ class?: string | Record<string, boolean> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<TreeMenuExtendedUi>; side?: HorizontalSide; collapsedWidth?: number; indent?: number; modelValue?: string; defaultValue?: string; expanded?: string[]; defaultExpanded?: string[]; collapsed?: boolean; defaultCollapsed?: boolean; items: TreeMenuOptionData<T>[]; groupRootProps?: TreeMenuGroupRootProps; groupProps?: TreeMenuGroupProps; groupLabelProps?: TreeMenuGroupLabelProps; showGroupIcon?: boolean; itemProps?: TreeMenuItemProps; linkProps?: LinkProps; subProps?: TreeMenuSubProps; buttonProps?: TreeMenuButtonProps; collapsibleProps?: TreeMenuCollapsibleProps }",
         "description": "",
         "sourcePath": "src/components/tree-menu/types.ts",
-        "typeParameters": [
-          "TypeParameter T"
-        ],
+        "typeParameters": ["TypeParameter T"],
         "members": [
           {
             "name": "class",
@@ -1152,9 +1150,7 @@
                 "resolvedType": "{ isGroup?: boolean; label: string; icon?: string | import(\"vue\").Component | import(\"vue\").VNode<import(\"vue\").RendererNode, import(\"vue\").RendererElement, { [key: string]: any; }> | null; hidden?: boolean; badge?: string; badgeProps?: Omit<BadgeProps, 'content'>; tag?: string; tagProps?: Omit<TagProps, 'content'>; tooltipProps?: TooltipProps; dropdownMenuProps?: Omit<DropdownMenuProps, 'items'>; actions?: MenuOptionData<import(\"@soybeanjs/headless\").DefinedValue>[]; actionMenuProps?: Omit<DropdownMenuProps, 'items'>; onActionSelect?: ((action: MenuOptionData) => void); value: string; disabled?: boolean; target?: '_blank' | '_parent' | '_self' | '_top' | (string & {}) | null; to?: string | import(\"vue-router\").RouteLocationAsRelativeGeneric | import(\"vue-router\").RouteLocationAsPathGeneric; href?: string; external?: boolean; children?: TreeMenuOptionData<T>[] }",
                 "description": "",
                 "sourcePath": "src/components/tree-menu/types.ts",
-                "typeParameters": [
-                  "T extends TreeMenuBaseOptionData = TreeMenuBaseOptionData"
-                ],
+                "typeParameters": ["T extends TreeMenuBaseOptionData = TreeMenuBaseOptionData"],
                 "external": false,
                 "members": [
                   {
@@ -1866,9 +1862,7 @@
                 "resolvedType": "{ isGroup?: boolean; label: string; icon?: string | import(\"vue\").Component | import(\"vue\").VNode<import(\"vue\").RendererNode, import(\"vue\").RendererElement, { [key: string]: any; }> | null; hidden?: boolean; badge?: string; badgeProps?: Omit<BadgeProps, 'content'>; tag?: string; tagProps?: Omit<TagProps, 'content'>; tooltipProps?: TooltipProps; dropdownMenuProps?: Omit<DropdownMenuProps, 'items'>; actions?: MenuOptionData<import(\"@soybeanjs/headless\").DefinedValue>[]; actionMenuProps?: Omit<DropdownMenuProps, 'items'>; onActionSelect?: ((action: MenuOptionData) => void); value: string; disabled?: boolean; target?: '_blank' | '_parent' | '_self' | '_top' | (string & {}) | null; to?: string | import(\"vue-router\").RouteLocationAsRelativeGeneric | import(\"vue-router\").RouteLocationAsPathGeneric; href?: string; external?: boolean; children?: TreeMenuOptionData<T>[] }",
                 "description": "",
                 "sourcePath": "src/components/tree-menu/types.ts",
-                "typeParameters": [
-                  "T extends TreeMenuBaseOptionData = TreeMenuBaseOptionData"
-                ],
+                "typeParameters": ["T extends TreeMenuBaseOptionData = TreeMenuBaseOptionData"],
                 "external": false,
                 "members": [
                   {
@@ -2551,9 +2545,7 @@
         "resolvedType": "{ items: TreeMenuOptionData<T>[]; groupRootProps?: TreeMenuGroupRootProps; groupProps?: TreeMenuGroupProps; groupLabelProps?: TreeMenuGroupLabelProps; showGroupIcon?: boolean; itemProps?: TreeMenuItemProps; linkProps?: LinkProps; subProps?: TreeMenuSubProps; buttonProps?: TreeMenuButtonProps; collapsibleProps?: TreeMenuCollapsibleProps }",
         "description": "",
         "sourcePath": "src/components/tree-menu/types.ts",
-        "typeParameters": [
-          "TypeParameter T"
-        ],
+        "typeParameters": ["TypeParameter T"],
         "members": [
           {
             "name": "items",

@@ -14,8 +14,13 @@ const props = withDefaults(defineProps<ComboboxCancelProps>(), {
 
 const cls = useComboboxUi('cancel');
 
-const { disabled: rootDisabled, inputElement, filterSearch, resetModelValueOnClear, resetModelValue } =
-  useComboboxRootContext('ComboboxCancel');
+const {
+  disabled: rootDisabled,
+  inputElement,
+  filterSearch,
+  resetModelValueOnClear,
+  resetModelValue
+} = useComboboxRootContext('ComboboxCancel');
 
 const disabled = computed(() => props.disabled || rootDisabled.value || false);
 const tag = computed(() => (props.as === 'button' ? 'button' : undefined));

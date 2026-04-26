@@ -1,8 +1,4 @@
-import type {
-  AffixCompactEmits,
-  AffixCompactProps,
-  AffixUi,
-} from '@soybeanjs/headless/affix';
+import type { AffixCompactEmits, AffixCompactProps, AffixUi } from '@soybeanjs/headless/affix';
 import type { ClassValue } from '@soybeanjs/headless';
 
 export interface AffixProps extends AffixCompactProps {

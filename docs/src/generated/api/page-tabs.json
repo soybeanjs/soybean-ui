@@ -9,9 +9,7 @@
         "resolvedType": "{ class?: string | Record<string, boolean> | ClassValue[] | null; size?: ThemeSize; variant?: PageTabsVariant; ui?: Partial<PageTabsExtendedUi>; items: T[]; menuFactory?: ((tab: T, state: PageTabsState) => PageTabsContextMenuOptionData[]); beforeClose?: ((value: string) => MaybePromise<boolean | void>); modelValue?: string; middleClickClose?: boolean }",
         "description": "",
         "sourcePath": "src/components/page-tabs/types.ts",
-        "typeParameters": [
-          "TypeParameter T"
-        ],
+        "typeParameters": ["TypeParameter T"],
         "members": [
           {
             "name": "class",
@@ -154,9 +152,7 @@
                 "resolvedType": null,
                 "description": "",
                 "sourcePath": "headless/src/types/common.ts",
-                "typeParameters": [
-                  "T"
-                ],
+                "typeParameters": ["T"],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -194,9 +190,7 @@
         "resolvedType": "(e: 'update:modelValue', value: string) => void | (e: 'update:items', items: T[]) => void | (e: 'click', tab: T) => void | (e: 'close', tab: T) => void | (e: 'pin', tab: T) => void | (e: 'contextmenu', tab: T) => void | (e: 'selectContextMenu', menu: PageTabsContextMenuOptionData, tab: T) => void",
         "description": "",
         "sourcePath": "src/components/page-tabs/types.ts",
-        "typeParameters": [
-          "TypeParameter T"
-        ],
+        "typeParameters": ["TypeParameter T"],
         "members": [],
         "callables": [],
         "referencedTypes": []

@@ -280,7 +280,6 @@
 
 ### &nbsp;&nbsp;&nbsp;❤️ Contributors
 
-
 [soybeanfe](mailto:honghuangdc@gmail.com)
 
 ## [v0.15.0-beta.3](https://github.com/soybeanjs/soybean-ui/compare/v0.15.0-beta.2...v0.15.0-beta.3) (2026-04-26)

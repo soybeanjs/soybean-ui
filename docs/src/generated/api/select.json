@@ -9,10 +9,7 @@
         "resolvedType": "{ class?: string | Record<string, boolean> | ClassValue[] | null; ui?: Partial<SelectUi>; size?: ThemeSize; items: SelectOptionData<T>[]; showArrow?: boolean; triggerProps?: SelectTriggerProps; triggerIconProps?: SelectTriggerIconProps; placeholder?: string; valueProps?: SelectValueProps; portalProps?: PortalProps; contentProps?: SelectContentProps; placement?: import(\"@/index\").Placement; popupProps?: SelectPopupProps; viewportProps?: SelectViewportProps; scrollDownButtonProps?: SelectScrollDownButtonProps; scrollUpButtonProps?: SelectScrollUpButtonProps; groupProps?: SelectGroupProps; groupLabelProps?: SelectGroupLabelProps; itemProps?: SelectItemProps; itemTextProps?: SelectItemTextProps; itemIndicatorProps?: SelectItemIndicatorProps; separatorProps?: SelectSeparatorProps; arrowProps?: PopperArrowProps; open?: boolean; defaultOpen?: boolean; dir?: Direction; autocomplete?: string; disabled?: boolean; modelValue?: (M extends true ? T[] : T); defaultValue?: (M extends true ? T[] : T); multiple?: M; clearable?: boolean; selectionBehavior?: SelectionBehavior; name?: string; required?: boolean }",
         "description": "",
         "sourcePath": "src/components/select/types.ts",
-        "typeParameters": [
-          "TypeParameter T",
-          "TypeParameter M"
-        ],
+        "typeParameters": ["TypeParameter T", "TypeParameter M"],
         "members": [
           {
             "name": "class",
@@ -1107,10 +1104,7 @@
         "resolvedType": "{ \"update:modelValue\": [value: M extends true ? T[] : T]; \"update:open\": [value: boolean]; closeAutoFocus: [event: Event]; escapeKeyDown: [event: KeyboardEvent]; pointerDownOutside: [event: PointerDownOutsideEvent]; select: [event: SelectItemEvent<T>] }",
         "description": "",
         "sourcePath": "src/components/select/types.ts",
-        "typeParameters": [
-          "TypeParameter T",
-          "TypeParameter M"
-        ],
+        "typeParameters": ["TypeParameter T", "TypeParameter M"],
         "members": [],
         "callables": [
           {
@@ -1212,9 +1206,7 @@
                 "resolvedType": null,
                 "description": "",
                 "sourcePath": "headless/src/components/select/types.ts",
-                "typeParameters": [
-                  "T extends DefinedValue = DefinedValue"
-                ],
+                "typeParameters": ["T extends DefinedValue = DefinedValue"],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -1231,10 +1223,7 @@
         "resolvedType": "{ \"trigger-leading\"?: (() => any); \"trigger-value\"?: ((props: SelectCompactTriggerValueSlotProps<T, M>) => any); \"trigger-trailing\"?: (() => any); \"trigger-icon\"?: (() => any); \"scroll-up-button\"?: (() => any); \"scroll-down-button\"?: (() => any); \"group-label\"?: ((props: SelectCompactGroupLabelSlotProps<T>) => any); \"item-text\"?: ((props: SelectCompactItemSlotProps<T>) => any); \"item-leading\"?: ((props: SelectCompactItemSlotProps<T>) => any); \"item-trailing\"?: ((props: SelectCompactItemSlotProps<T>) => any); \"item-indicator\"?: ((props: SelectCompactItemSlotProps<T>) => any) }",
         "description": "",
         "sourcePath": "src/components/select/types.ts",
-        "typeParameters": [
-          "TypeParameter T",
-          "TypeParameter M"
-        ],
+        "typeParameters": ["TypeParameter T", "TypeParameter M"],
         "members": [],
         "callables": [
           {
@@ -1261,10 +1250,7 @@
                 "resolvedType": null,
                 "description": "",
                 "sourcePath": "headless/src/components/select/types.ts",
-                "typeParameters": [
-                  "T extends DefinedValue = DefinedValue",
-                  "M extends boolean = false"
-                ],
+                "typeParameters": ["T extends DefinedValue = DefinedValue", "M extends boolean = false"],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -1322,9 +1308,7 @@
                 "resolvedType": null,
                 "description": "",
                 "sourcePath": "headless/src/components/select/types.ts",
-                "typeParameters": [
-                  "T extends DefinedValue = DefinedValue"
-                ],
+                "typeParameters": ["T extends DefinedValue = DefinedValue"],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -1346,9 +1330,7 @@
                 "resolvedType": null,
                 "description": "",
                 "sourcePath": "headless/src/components/select/types.ts",
-                "typeParameters": [
-                  "T extends DefinedValue = DefinedValue"
-                ],
+                "typeParameters": ["T extends DefinedValue = DefinedValue"],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -1370,9 +1352,7 @@
                 "resolvedType": null,
                 "description": "",
                 "sourcePath": "headless/src/components/select/types.ts",
-                "typeParameters": [
-                  "T extends DefinedValue = DefinedValue"
-                ],
+                "typeParameters": ["T extends DefinedValue = DefinedValue"],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -1394,9 +1374,7 @@
                 "resolvedType": null,
                 "description": "",
                 "sourcePath": "headless/src/components/select/types.ts",
-                "typeParameters": [
-                  "T extends DefinedValue = DefinedValue"
-                ],
+                "typeParameters": ["T extends DefinedValue = DefinedValue"],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -1418,9 +1396,7 @@
                 "resolvedType": null,
                 "description": "",
                 "sourcePath": "headless/src/components/select/types.ts",
-                "typeParameters": [
-                  "T extends DefinedValue = DefinedValue"
-                ],
+                "typeParameters": ["T extends DefinedValue = DefinedValue"],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -1440,10 +1416,7 @@
         "resolvedType": "{ items: SelectOptionData<T>[]; showArrow?: boolean; triggerProps?: SelectTriggerProps; triggerIconProps?: SelectTriggerIconProps; placeholder?: string; valueProps?: SelectValueProps; portalProps?: PortalProps; contentProps?: SelectContentProps; placement?: import(\"@/index\").Placement; popupProps?: SelectPopupProps; viewportProps?: SelectViewportProps; scrollDownButtonProps?: SelectScrollDownButtonProps; scrollUpButtonProps?: SelectScrollUpButtonProps; groupProps?: SelectGroupProps; groupLabelProps?: SelectGroupLabelProps; itemProps?: SelectItemProps; itemTextProps?: SelectItemTextProps; itemIndicatorProps?: SelectItemIndicatorProps; separatorProps?: SelectSeparatorProps; arrowProps?: PopperArrowProps; open?: boolean; defaultOpen?: boolean; dir?: Direction; autocomplete?: string; disabled?: boolean; modelValue?: (M extends true ? T[] : T); defaultValue?: (M extends true ? T[] : T); multiple?: M; clearable?: boolean; selectionBehavior?: SelectionBehavior; name?: string; required?: boolean }",
         "description": "",
         "sourcePath": "headless/src/components/select/types.ts",
-        "typeParameters": [
-          "T extends DefinedValue = DefinedValue",
-          "M extends boolean = false"
-        ],
+        "typeParameters": ["T extends DefinedValue = DefinedValue", "M extends boolean = false"],
         "members": [
           {
             "name": "items",
@@ -2469,10 +2442,7 @@
         "resolvedType": "{ \"update:modelValue\": [value: M extends true ? T[] : T]; \"update:open\": [value: boolean]; closeAutoFocus: [event: Event]; escapeKeyDown: [event: KeyboardEvent]; pointerDownOutside: [event: PointerDownOutsideEvent]; select: [event: SelectItemEvent<T>] }",
         "description": "",
         "sourcePath": "headless/src/components/select/types.ts",
-        "typeParameters": [
-          "T extends DefinedValue = DefinedValue",
-          "M extends boolean = false"
-        ],
+        "typeParameters": ["T extends DefinedValue = DefinedValue", "M extends boolean = false"],
         "members": [],
         "callables": [
           {
@@ -2574,9 +2544,7 @@
                 "resolvedType": null,
                 "description": "",
                 "sourcePath": "headless/src/components/select/types.ts",
-                "typeParameters": [
-                  "T extends DefinedValue = DefinedValue"
-                ],
+                "typeParameters": ["T extends DefinedValue = DefinedValue"],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -2593,10 +2561,7 @@
         "resolvedType": "{ \"trigger-leading\"?: (() => any); \"trigger-value\"?: ((props: SelectCompactTriggerValueSlotProps<T, M>) => any); \"trigger-trailing\"?: (() => any); \"trigger-icon\"?: (() => any); \"scroll-up-button\"?: (() => any); \"scroll-down-button\"?: (() => any); \"group-label\"?: ((props: SelectCompactGroupLabelSlotProps<T>) => any); \"item-text\"?: ((props: SelectCompactItemSlotProps<T>) => any); \"item-leading\"?: ((props: SelectCompactItemSlotProps<T>) => any); \"item-trailing\"?: ((props: SelectCompactItemSlotProps<T>) => any); \"item-indicator\"?: ((props: SelectCompactItemSlotProps<T>) => any) }",
         "description": "",
         "sourcePath": "headless/src/components/select/types.ts",
-        "typeParameters": [
-          "T extends DefinedValue = DefinedValue",
-          "M extends boolean = false"
-        ],
+        "typeParameters": ["T extends DefinedValue = DefinedValue", "M extends boolean = false"],
         "members": [],
         "callables": [
           {
@@ -2623,10 +2588,7 @@
                 "resolvedType": null,
                 "description": "",
                 "sourcePath": "headless/src/components/select/types.ts",
-                "typeParameters": [
-                  "T extends DefinedValue = DefinedValue",
-                  "M extends boolean = false"
-                ],
+                "typeParameters": ["T extends DefinedValue = DefinedValue", "M extends boolean = false"],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -2684,9 +2646,7 @@
                 "resolvedType": null,
                 "description": "",
                 "sourcePath": "headless/src/components/select/types.ts",
-                "typeParameters": [
-                  "T extends DefinedValue = DefinedValue"
-                ],
+                "typeParameters": ["T extends DefinedValue = DefinedValue"],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -2708,9 +2668,7 @@
                 "resolvedType": null,
                 "description": "",
                 "sourcePath": "headless/src/components/select/types.ts",
-                "typeParameters": [
-                  "T extends DefinedValue = DefinedValue"
-                ],
+                "typeParameters": ["T extends DefinedValue = DefinedValue"],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -2732,9 +2690,7 @@
                 "resolvedType": null,
                 "description": "",
                 "sourcePath": "headless/src/components/select/types.ts",
-                "typeParameters": [
-                  "T extends DefinedValue = DefinedValue"
-                ],
+                "typeParameters": ["T extends DefinedValue = DefinedValue"],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -2756,9 +2712,7 @@
                 "resolvedType": null,
                 "description": "",
                 "sourcePath": "headless/src/components/select/types.ts",
-                "typeParameters": [
-                  "T extends DefinedValue = DefinedValue"
-                ],
+                "typeParameters": ["T extends DefinedValue = DefinedValue"],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -2780,9 +2734,7 @@
                 "resolvedType": null,
                 "description": "",
                 "sourcePath": "headless/src/components/select/types.ts",
-                "typeParameters": [
-                  "T extends DefinedValue = DefinedValue"
-                ],
+                "typeParameters": ["T extends DefinedValue = DefinedValue"],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -3405,9 +3357,7 @@
         "resolvedType": "{ select: [event: SelectItemEvent<T>] }",
         "description": "",
         "sourcePath": "headless/src/components/select/types.ts",
-        "typeParameters": [
-          "TypeParameter T"
-        ],
+        "typeParameters": ["TypeParameter T"],
         "members": [],
         "callables": [
           {
@@ -3425,9 +3375,7 @@
                 "resolvedType": null,
                 "description": "",
                 "sourcePath": "headless/src/components/select/types.ts",
-                "typeParameters": [
-                  "T extends DefinedValue = DefinedValue"
-                ],
+                "typeParameters": ["T extends DefinedValue = DefinedValue"],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -3517,10 +3465,7 @@
         "resolvedType": "{ open?: boolean; defaultOpen?: boolean; dir?: Direction; autocomplete?: string; disabled?: boolean; modelValue?: (M extends true ? T[] : T); defaultValue?: (M extends true ? T[] : T); multiple?: M; clearable?: boolean; selectionBehavior?: SelectionBehavior; name?: string; required?: boolean }",
         "description": "",
         "sourcePath": "headless/src/components/select/types.ts",
-        "typeParameters": [
-          "TypeParameter T",
-          "TypeParameter M"
-        ],
+        "typeParameters": ["TypeParameter T", "TypeParameter M"],
         "members": [
           {
             "name": "open",
@@ -3679,10 +3624,7 @@
         "resolvedType": "{ \"update:modelValue\": [value: M extends true ? T[] : T]; \"update:open\": [value: boolean] }",
         "description": "",
         "sourcePath": "headless/src/components/select/types.ts",
-        "typeParameters": [
-          "TypeParameter T",
-          "TypeParameter M"
-        ],
+        "typeParameters": ["TypeParameter T", "TypeParameter M"],
         "members": [],
         "callables": [
           {

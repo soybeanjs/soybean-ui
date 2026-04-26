@@ -16,9 +16,8 @@ const props = withDefaults(defineProps<MenubarTriggerProps>(), {
   as: 'button'
 });
 
-const { isLinkTriggerHovered, modelValue, onMenuOpen, onMenuToggle, setTriggerLink } = useMenubarRootContext(
-  'MenubarTrigger'
-);
+const { isLinkTriggerHovered, modelValue, onMenuOpen, onMenuToggle, setTriggerLink } =
+  useMenubarRootContext('MenubarTrigger');
 const {
   value,
   triggerId,

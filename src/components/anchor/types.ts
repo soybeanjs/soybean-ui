@@ -1,9 +1,4 @@
-import type {
-  AnchorCompactEmits,
-  AnchorCompactProps,
-  AnchorItemData,
-  AnchorUiSlot,
-} from '@soybeanjs/headless/anchor';
+import type { AnchorCompactEmits, AnchorCompactProps, AnchorItemData, AnchorUiSlot } from '@soybeanjs/headless/anchor';
 import type { ClassValue, UiClass } from '@soybeanjs/headless';
 import type { ThemeColor, ThemeSize } from '@/theme';
 

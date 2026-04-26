@@ -9,9 +9,7 @@
         "resolvedType": "{ class?: string | Record<string, boolean> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<ComboboxUi>; items: ComboboxOptionData[]; placeholder?: string; searchPlaceholder?: string; clearLabel?: string; emptyLabel?: string; anchorProps?: ComboboxAnchorProps; triggerProps?: ComboboxTriggerProps; cancelProps?: ComboboxCancelProps; portalProps?: PortalProps; contentProps?: ComboboxContentProps; viewportProps?: ComboboxViewportProps; inputProps?: ComboboxInputProps; emptyProps?: ComboboxEmptyProps; groupProps?: ComboboxGroupProps; groupLabelProps?: ComboboxGroupLabelProps; itemProps?: ComboboxItemProps; itemIndicatorProps?: ComboboxItemIndicatorProps; separatorProps?: ComboboxSeparatorProps; open?: boolean; defaultOpen?: boolean; resetSearchTermOnBlur?: boolean; resetSearchTermOnSelect?: boolean; openOnFocus?: boolean; openOnClick?: boolean; ignoreFilter?: boolean; resetModelValueOnClear?: boolean; disabled?: boolean; dir?: Direction; name?: string; defaultValue?: (M extends true ? string[] : string); modelValue?: (M extends true ? string[] : string); highlightOnHover?: boolean; required?: boolean; multiple?: M; clearable?: boolean }",
         "description": "",
         "sourcePath": "src/components/combobox/types.ts",
-        "typeParameters": [
-          "TypeParameter M"
-        ],
+        "typeParameters": ["TypeParameter M"],
         "members": [
           {
             "name": "class",
@@ -1295,9 +1293,7 @@
         "resolvedType": "{ \"update:modelValue\": [value: M extends true ? string[] : string]; highlight: [payload?: CollectionItemData<ListboxCollectionItemData> | undefined]; \"update:open\": [value: boolean]; escapeKeyDown: [event: KeyboardEvent]; pointerDownOutside: [event: PointerDownOutsideEvent]; focusOutside: [event: FocusOutsideEvent]; interactOutside: [event: PointerDownOutsideEvent | FocusOutsideEvent]; openAutoFocus: [event: Event]; closeAutoFocus: [event: Event]; placed: []; select: [event: SelectEvent<string>] }",
         "description": "",
         "sourcePath": "src/components/combobox/types.ts",
-        "typeParameters": [
-          "TypeParameter M"
-        ],
+        "typeParameters": ["TypeParameter M"],
         "members": [],
         "callables": [
           {
@@ -1324,9 +1320,7 @@
                 "resolvedType": null,
                 "description": "",
                 "sourcePath": "headless/src/composables/use-collection.ts",
-                "typeParameters": [
-                  "ItemData = Record<string, any>"
-                ],
+                "typeParameters": ["ItemData = Record<string, any>"],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -1510,9 +1504,7 @@
                 "resolvedType": null,
                 "description": "",
                 "sourcePath": "headless/src/types/event.ts",
-                "typeParameters": [
-                  "T"
-                ],
+                "typeParameters": ["T"],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -1529,9 +1521,7 @@
         "resolvedType": "{ \"trigger-leading\"?: (() => any); \"trigger-value\"?: ((props: ComboboxCompactTriggerValueSlotProps<M>) => any); \"trigger-trailing\"?: (() => any); \"trigger-icon\"?: (() => any); \"input-leading\"?: ((props: ComboboxCompactInputSlotProps) => any); \"input-trailing\"?: ((props: ComboboxCompactInputSlotProps) => any); empty?: (() => any); \"group-label\"?: ((props: ComboboxCompactGroupLabelSlotProps) => any); \"item-leading\"?: ((props: ComboboxCompactItemSlotProps) => any); \"item-text\"?: ((props: ComboboxCompactItemSlotProps) => any); \"item-trailing\"?: ((props: ComboboxCompactItemSlotProps) => any); \"item-indicator\"?: ((props: ComboboxCompactItemSlotProps) => any) }",
         "description": "",
         "sourcePath": "src/components/combobox/types.ts",
-        "typeParameters": [
-          "TypeParameter M"
-        ],
+        "typeParameters": ["TypeParameter M"],
         "members": [],
         "callables": [
           {
@@ -1558,9 +1548,7 @@
                 "resolvedType": null,
                 "description": "",
                 "sourcePath": "headless/src/components/combobox/types.ts",
-                "typeParameters": [
-                  "M extends boolean = false"
-                ],
+                "typeParameters": ["M extends boolean = false"],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -1919,9 +1907,7 @@
         "resolvedType": "{ \"update:modelValue\": [value: M extends true ? string[] : string]; highlight: [payload?: CollectionItemData<ListboxCollectionItemData> | undefined]; \"update:open\": [value: boolean]; escapeKeyDown: [event: KeyboardEvent]; pointerDownOutside: [event: PointerDownOutsideEvent]; focusOutside: [event: FocusOutsideEvent]; interactOutside: [event: PointerDownOutsideEvent | FocusOutsideEvent]; openAutoFocus: [event: Event]; closeAutoFocus: [event: Event]; placed: []; select: [event: SelectEvent<string>] }",
         "description": "",
         "sourcePath": "headless/src/components/combobox/types.ts",
-        "typeParameters": [
-          "TypeParameter M"
-        ],
+        "typeParameters": ["TypeParameter M"],
         "members": [],
         "callables": [
           {
@@ -1948,9 +1934,7 @@
                 "resolvedType": null,
                 "description": "",
                 "sourcePath": "headless/src/composables/use-collection.ts",
-                "typeParameters": [
-                  "ItemData = Record<string, any>"
-                ],
+                "typeParameters": ["ItemData = Record<string, any>"],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -2134,9 +2118,7 @@
                 "resolvedType": null,
                 "description": "",
                 "sourcePath": "headless/src/types/event.ts",
-                "typeParameters": [
-                  "T"
-                ],
+                "typeParameters": ["T"],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -2153,9 +2135,7 @@
         "resolvedType": "{ items: ComboboxOptionData[]; placeholder?: string; searchPlaceholder?: string; clearLabel?: string; emptyLabel?: string; anchorProps?: ComboboxAnchorProps; triggerProps?: ComboboxTriggerProps; cancelProps?: ComboboxCancelProps; portalProps?: PortalProps; contentProps?: ComboboxContentProps; viewportProps?: ComboboxViewportProps; inputProps?: ComboboxInputProps; emptyProps?: ComboboxEmptyProps; groupProps?: ComboboxGroupProps; groupLabelProps?: ComboboxGroupLabelProps; itemProps?: ComboboxItemProps; itemIndicatorProps?: ComboboxItemIndicatorProps; separatorProps?: ComboboxSeparatorProps; open?: boolean; defaultOpen?: boolean; resetSearchTermOnBlur?: boolean; resetSearchTermOnSelect?: boolean; openOnFocus?: boolean; openOnClick?: boolean; ignoreFilter?: boolean; resetModelValueOnClear?: boolean; disabled?: boolean; dir?: Direction; name?: string; defaultValue?: (M extends true ? string[] : string); modelValue?: (M extends true ? string[] : string); highlightOnHover?: boolean; required?: boolean; multiple?: M; clearable?: boolean }",
         "description": "",
         "sourcePath": "headless/src/components/combobox/types.ts",
-        "typeParameters": [
-          "TypeParameter M"
-        ],
+        "typeParameters": ["TypeParameter M"],
         "members": [
           {
             "name": "items",
@@ -3370,9 +3350,7 @@
         "resolvedType": "{ \"trigger-leading\"?: (() => any); \"trigger-value\"?: ((props: ComboboxCompactTriggerValueSlotProps<M>) => any); \"trigger-trailing\"?: (() => any); \"trigger-icon\"?: (() => any); \"input-leading\"?: ((props: ComboboxCompactInputSlotProps) => any); \"input-trailing\"?: ((props: ComboboxCompactInputSlotProps) => any); empty?: (() => any); \"group-label\"?: ((props: ComboboxCompactGroupLabelSlotProps) => any); \"item-leading\"?: ((props: ComboboxCompactItemSlotProps) => any); \"item-text\"?: ((props: ComboboxCompactItemSlotProps) => any); \"item-trailing\"?: ((props: ComboboxCompactItemSlotProps) => any); \"item-indicator\"?: ((props: ComboboxCompactItemSlotProps) => any) }",
         "description": "",
         "sourcePath": "headless/src/components/combobox/types.ts",
-        "typeParameters": [
-          "TypeParameter M"
-        ],
+        "typeParameters": ["TypeParameter M"],
         "members": [],
         "callables": [
           {
@@ -3399,9 +3377,7 @@
                 "resolvedType": null,
                 "description": "",
                 "sourcePath": "headless/src/components/combobox/types.ts",
-                "typeParameters": [
-                  "M extends boolean = false"
-                ],
+                "typeParameters": ["M extends boolean = false"],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -4550,9 +4526,7 @@
                 "resolvedType": null,
                 "description": "",
                 "sourcePath": "headless/src/types/event.ts",
-                "typeParameters": [
-                  "T"
-                ],
+                "typeParameters": ["T"],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -4712,9 +4686,7 @@
         "resolvedType": "{ \"update:modelValue\": [value: M extends true ? string[] : string]; highlight: [payload?: CollectionItemData<ListboxCollectionItemData> | undefined]; \"update:open\": [value: boolean] }",
         "description": "",
         "sourcePath": "headless/src/components/combobox/types.ts",
-        "typeParameters": [
-          "TypeParameter M"
-        ],
+        "typeParameters": ["TypeParameter M"],
         "members": [],
         "callables": [
           {
@@ -4741,9 +4713,7 @@
                 "resolvedType": null,
                 "description": "",
                 "sourcePath": "headless/src/composables/use-collection.ts",
-                "typeParameters": [
-                  "ItemData = Record<string, any>"
-                ],
+                "typeParameters": ["ItemData = Record<string, any>"],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -4769,9 +4739,7 @@
         "resolvedType": "{ open?: boolean; defaultOpen?: boolean; resetSearchTermOnBlur?: boolean; resetSearchTermOnSelect?: boolean; openOnFocus?: boolean; openOnClick?: boolean; ignoreFilter?: boolean; resetModelValueOnClear?: boolean; disabled?: boolean; dir?: Direction; name?: string; defaultValue?: (M extends true ? string[] : string); modelValue?: (M extends true ? string[] : string); highlightOnHover?: boolean; required?: boolean; multiple?: M; clearable?: boolean }",
         "description": "",
         "sourcePath": "headless/src/components/combobox/types.ts",
-        "typeParameters": [
-          "TypeParameter M"
-        ],
+        "typeParameters": ["TypeParameter M"],
         "members": [
           {
             "name": "open",

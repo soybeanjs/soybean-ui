@@ -29,7 +29,15 @@ const props = withDefaults(defineProps<ConfigProviderProps>(), {
   })
 });
 
-const forwardedProps = useOmitProps(props, ['iconRender', 'theme', 'size', 'iconify', 'progress', 'toast', 'customToast']);
+const forwardedProps = useOmitProps(props, [
+  'iconRender',
+  'theme',
+  'size',
+  'iconify',
+  'progress',
+  'toast',
+  'customToast'
+]);
 
 const iconRender = props.iconRender ?? ((icon: IconValue) => h(Icon, { icon }));
 

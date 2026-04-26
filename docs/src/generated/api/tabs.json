@@ -9,9 +9,7 @@
         "resolvedType": "{ class?: string | Record<string, boolean> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<TabsUi>; fill?: TabsFill; items: T[]; enableIndicator?: boolean; listProps?: TabsListProps; triggerProps?: TabsTriggerProps; contentProps?: TabsContentProps; indicatorProps?: TabsIndicatorProps; modelValue?: T['value'] | null; defaultValue?: T['value'] | null; activationMode?: TabsActivationMode; unmountOnHide?: boolean; dir?: Direction; loop?: boolean; orientation?: DataOrientation }",
         "description": "",
         "sourcePath": "src/components/tabs/types.ts",
-        "typeParameters": [
-          "TypeParameter T"
-        ],
+        "typeParameters": ["TypeParameter T"],
         "members": [
           {
             "name": "class",
@@ -420,9 +418,7 @@
         "resolvedType": "{ \"update:modelValue\": [payload: NonNullable<T>] }",
         "description": "",
         "sourcePath": "src/components/tabs/types.ts",
-        "typeParameters": [
-          "TypeParameter T"
-        ],
+        "typeParameters": ["TypeParameter T"],
         "members": [],
         "callables": [
           {
@@ -444,9 +440,7 @@
         "resolvedType": "{ trigger?: ((props: T & { active: boolean; }) => any); content?: ((props: T & { active: boolean; }) => any); indicator?: (() => any) }",
         "description": "",
         "sourcePath": "src/components/tabs/types.ts",
-        "typeParameters": [
-          "TypeParameter T"
-        ],
+        "typeParameters": ["TypeParameter T"],
         "members": [],
         "callables": [
           {
@@ -514,9 +508,7 @@
         "resolvedType": "{ items: T[]; enableIndicator?: boolean; listProps?: TabsListProps; triggerProps?: TabsTriggerProps; contentProps?: TabsContentProps; indicatorProps?: TabsIndicatorProps; modelValue?: T['value'] | null; defaultValue?: T['value'] | null; activationMode?: TabsActivationMode; unmountOnHide?: boolean; dir?: Direction; loop?: boolean; orientation?: DataOrientation }",
         "description": "",
         "sourcePath": "headless/src/components/tabs/types.ts",
-        "typeParameters": [
-          "TypeParameter T"
-        ],
+        "typeParameters": ["TypeParameter T"],
         "members": [
           {
             "name": "items",
@@ -833,9 +825,7 @@
         "resolvedType": "{ \"update:modelValue\": [payload: NonNullable<T>] }",
         "description": "",
         "sourcePath": "headless/src/components/tabs/types.ts",
-        "typeParameters": [
-          "TypeParameter T"
-        ],
+        "typeParameters": ["TypeParameter T"],
         "members": [],
         "callables": [
           {
@@ -857,9 +847,7 @@
         "resolvedType": "{ trigger?: ((props: T & { active: boolean; }) => any); content?: ((props: T & { active: boolean; }) => any); indicator?: (() => any) }",
         "description": "",
         "sourcePath": "headless/src/components/tabs/types.ts",
-        "typeParameters": [
-          "T extends TabsOptionData = TabsOptionData"
-        ],
+        "typeParameters": ["T extends TabsOptionData = TabsOptionData"],
         "members": [],
         "callables": [
           {
@@ -1045,9 +1033,7 @@
         "resolvedType": "{ modelValue?: T; defaultValue?: T; activationMode?: TabsActivationMode; unmountOnHide?: boolean; dir?: Direction; loop?: boolean; orientation?: DataOrientation }",
         "description": "",
         "sourcePath": "headless/src/components/tabs/types.ts",
-        "typeParameters": [
-          "TypeParameter T"
-        ],
+        "typeParameters": ["TypeParameter T"],
         "members": [
           {
             "name": "modelValue",
@@ -1169,9 +1155,7 @@
         "resolvedType": "{ \"update:modelValue\": [payload: NonNullable<T>] }",
         "description": "",
         "sourcePath": "headless/src/components/tabs/types.ts",
-        "typeParameters": [
-          "TypeParameter T"
-        ],
+        "typeParameters": ["TypeParameter T"],
         "members": [],
         "callables": [
           {

@@ -55,5 +55,4 @@ describe('SMenubar link trigger', () => {
     expect(wrapper.find('[role="menu"][data-state="open"]').exists()).toBe(false);
     wrapper.unmount();
   });
-
 });

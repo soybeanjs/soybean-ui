@@ -9,11 +9,7 @@
         "resolvedType": "{ class?: string | Record<string, boolean> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<TableExtendedUi>; bordered?: boolean; striped?: boolean; columns: TableColumn<T>[]; data: T[]; rowKey: (row: T) => R; defaultSortState?: TableSortState; sortState?: TableSortState; defaultFilterState?: TableFilterState; filterState?: TableFilterState; defaultColumnWidths?: TableColumnWidthState; columnWidths?: TableColumnWidthState; getChildren?: TableRowChildrenResolver<T>; indent?: number; virtual?: boolean; height?: string | number; estimateSize?: number | ((index: number, row: T) => number); virtualizerOptions?: VirtualizerOptions; defaultExpanded?: R[]; expanded?: R[]; defaultExpandAll?: boolean; contentProps?: TableContentProps; headerProps?: TableHeaderProps; bodyProps?: TableBodyProps; footerProps?: TableFooterProps; headProps?: TableHeadProps; rowProps?: TableRowProps; cellProps?: TableCellProps; dir?: Direction; defaultSelected?: (M extends true ? R[] : R); selected?: (M extends true ? R[] : R); multiple?: M }",
         "description": "",
         "sourcePath": "src/components/table/types.ts",
-        "typeParameters": [
-          "TypeParameter T",
-          "TypeParameter R",
-          "TypeParameter M"
-        ],
+        "typeParameters": ["TypeParameter T", "TypeParameter R", "TypeParameter M"],
         "members": [
           {
             "name": "class",
@@ -330,9 +326,7 @@
                 "resolvedType": "(row: T) => T[] | undefined",
                 "description": "",
                 "sourcePath": "headless/src/components/table/types.ts",
-                "typeParameters": [
-                  "T extends TableBaseData = TableBaseData"
-                ],
+                "typeParameters": ["T extends TableBaseData = TableBaseData"],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -657,10 +651,7 @@
         "resolvedType": "{ \"update:sortState\": [state: TableSortState | undefined]; \"update:filterState\": [state: TableFilterState]; \"update:columnWidths\": [state: TableColumnWidthState]; \"update:expanded\": [expanded: R[]]; \"update:selected\": [selected: M extends true ? R[] : R | undefined] }",
         "description": "",
         "sourcePath": "src/components/table/types.ts",
-        "typeParameters": [
-          "TypeParameter R",
-          "TypeParameter M"
-        ],
+        "typeParameters": ["TypeParameter R", "TypeParameter M"],
         "members": [],
         "callables": [
           {
@@ -757,9 +748,7 @@
         "resolvedType": "{ bottom?: (() => any); header?: ((props: TableHeaderSlotProps<T>) => any); \"header-index\"?: ((props: { column: TableColumn<T>; }) => any); \"header-selection\"?: ((props: TableHeaderSelectionSlotProps<T>) => any); \"header-expand\"?: ((props: { column: TableColumn<T>; }) => any); \"header-filter\"?: ((props: TableHeaderFilterSlotProps<T>) => any); \"header-sort\"?: ((props: TableHeaderSortSlotProps<T>) => any); \"header-resize\"?: ((props: TableHeaderResizeSlotProps<T>) => any); index?: ((props: TableIndexSlotProps<T>) => any); selection?: ((props: TableSelectionSlotProps<T>) => any); expand?: ((props: TableExpandSlotProps<T>) => any); \"expanded-row\"?: ((props: TableExpandedRowSlotProps<T>) => any); \"tree-toggle\"?: ((props: TableTreeToggleSlotProps<T>) => any); footer?: ((props: { columnSize: number; }) => any) }",
         "description": "",
         "sourcePath": "src/components/table/types.ts",
-        "typeParameters": [
-          "TypeParameter T"
-        ],
+        "typeParameters": ["TypeParameter T"],
         "members": [],
         "callables": [
           {
@@ -786,9 +775,7 @@
                 "resolvedType": null,
                 "description": "",
                 "sourcePath": "headless/src/components/table/types.ts",
-                "typeParameters": [
-                  "T extends TableBaseData = TableBaseData"
-                ],
+                "typeParameters": ["T extends TableBaseData = TableBaseData"],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -832,9 +819,7 @@
                 "resolvedType": null,
                 "description": "",
                 "sourcePath": "headless/src/components/table/types.ts",
-                "typeParameters": [
-                  "T extends TableBaseData = TableBaseData"
-                ],
+                "typeParameters": ["T extends TableBaseData = TableBaseData"],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -878,9 +863,7 @@
                 "resolvedType": null,
                 "description": "",
                 "sourcePath": "headless/src/components/table/types.ts",
-                "typeParameters": [
-                  "T extends TableBaseData = TableBaseData"
-                ],
+                "typeParameters": ["T extends TableBaseData = TableBaseData"],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -902,9 +885,7 @@
                 "resolvedType": null,
                 "description": "",
                 "sourcePath": "headless/src/components/table/types.ts",
-                "typeParameters": [
-                  "T extends TableBaseData = TableBaseData"
-                ],
+                "typeParameters": ["T extends TableBaseData = TableBaseData"],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -926,9 +907,7 @@
                 "resolvedType": null,
                 "description": "",
                 "sourcePath": "headless/src/components/table/types.ts",
-                "typeParameters": [
-                  "T extends TableBaseData = TableBaseData"
-                ],
+                "typeParameters": ["T extends TableBaseData = TableBaseData"],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -950,9 +929,7 @@
                 "resolvedType": null,
                 "description": "",
                 "sourcePath": "headless/src/components/table/types.ts",
-                "typeParameters": [
-                  "T extends TableBaseData = TableBaseData"
-                ],
+                "typeParameters": ["T extends TableBaseData = TableBaseData"],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -974,9 +951,7 @@
                 "resolvedType": null,
                 "description": "",
                 "sourcePath": "headless/src/components/table/types.ts",
-                "typeParameters": [
-                  "T extends TableBaseData = TableBaseData"
-                ],
+                "typeParameters": ["T extends TableBaseData = TableBaseData"],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -998,9 +973,7 @@
                 "resolvedType": null,
                 "description": "",
                 "sourcePath": "headless/src/components/table/types.ts",
-                "typeParameters": [
-                  "T extends TableBaseData = TableBaseData"
-                ],
+                "typeParameters": ["T extends TableBaseData = TableBaseData"],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -1022,9 +995,7 @@
                 "resolvedType": null,
                 "description": "",
                 "sourcePath": "headless/src/components/table/types.ts",
-                "typeParameters": [
-                  "T extends TableBaseData = TableBaseData"
-                ],
+                "typeParameters": ["T extends TableBaseData = TableBaseData"],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -1046,9 +1017,7 @@
                 "resolvedType": null,
                 "description": "",
                 "sourcePath": "headless/src/components/table/types.ts",
-                "typeParameters": [
-                  "T extends TableBaseData = TableBaseData"
-                ],
+                "typeParameters": ["T extends TableBaseData = TableBaseData"],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -1115,9 +1084,7 @@
         "resolvedType": "{ index: number; column: TableTypeColumn | TableDataColumn<T> | TableGroupColumn<T>; row: T; level: number; hasChildren: boolean; expanded: boolean; toggleExpand: () => void }",
         "description": "",
         "sourcePath": "headless/src/components/table/types.ts",
-        "typeParameters": [
-          "T extends TableBaseData = TableBaseData"
-        ],
+        "typeParameters": ["T extends TableBaseData = TableBaseData"],
         "members": [
           {
             "name": "index",
@@ -1145,9 +1112,7 @@
                 "resolvedType": "{ type?: TableColumnType; dataIndex?: Path<TableRowValue<T>>; children?: TableColumn<T>[]; sorter?: boolean | ((a: T, b: T) => number); filter?: boolean | TableColumnFilter<T>; key?: string; title?: string; align?: TableAlign; width?: string; minWidth?: string; hidden?: boolean; fixed?: 'start' | 'end'; resizable?: boolean }",
                 "description": "",
                 "sourcePath": "headless/src/components/table/types.ts",
-                "typeParameters": [
-                  "T extends TableBaseData = TableBaseData"
-                ],
+                "typeParameters": ["T extends TableBaseData = TableBaseData"],
                 "external": false,
                 "members": [
                   {
@@ -1580,9 +1545,7 @@
                 "resolvedType": "(row: T) => T[] | undefined",
                 "description": "",
                 "sourcePath": "headless/src/components/table/types.ts",
-                "typeParameters": [
-                  "T extends TableBaseData = TableBaseData"
-                ],
+                "typeParameters": ["T extends TableBaseData = TableBaseData"],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -1907,10 +1870,7 @@
         "resolvedType": "{ \"update:sortState\": [state: TableSortState | undefined]; \"update:filterState\": [state: TableFilterState]; \"update:columnWidths\": [state: TableColumnWidthState]; \"update:expanded\": [expanded: R[]]; \"update:selected\": [selected: M extends true ? R[] : R | undefined] }",
         "description": "",
         "sourcePath": "headless/src/components/table/types.ts",
-        "typeParameters": [
-          "R extends TableUnifiedKey = TableUnifiedKey",
-          "M extends boolean = false"
-        ],
+        "typeParameters": ["R extends TableUnifiedKey = TableUnifiedKey", "M extends boolean = false"],
         "members": [],
         "callables": [
           {
@@ -2007,9 +1967,7 @@
         "resolvedType": "{ bottom?: (() => any); header?: ((props: TableHeaderSlotProps<T>) => any); \"header-index\"?: ((props: { column: TableColumn<T>; }) => any); \"header-selection\"?: ((props: TableHeaderSelectionSlotProps<T>) => any); \"header-expand\"?: ((props: { column: TableColumn<T>; }) => any); \"header-filter\"?: ((props: TableHeaderFilterSlotProps<T>) => any); \"header-sort\"?: ((props: TableHeaderSortSlotProps<T>) => any); \"header-resize\"?: ((props: TableHeaderResizeSlotProps<T>) => any); index?: ((props: TableIndexSlotProps<T>) => any); selection?: ((props: TableSelectionSlotProps<T>) => any); expand?: ((props: TableExpandSlotProps<T>) => any); \"expanded-row\"?: ((props: TableExpandedRowSlotProps<T>) => any); \"tree-toggle\"?: ((props: TableTreeToggleSlotProps<T>) => any); footer?: ((props: { columnSize: number; }) => any) }",
         "description": "",
         "sourcePath": "headless/src/components/table/types.ts",
-        "typeParameters": [
-          "T extends TableBaseData"
-        ],
+        "typeParameters": ["T extends TableBaseData"],
         "members": [],
         "callables": [
           {
@@ -2036,9 +1994,7 @@
                 "resolvedType": null,
                 "description": "",
                 "sourcePath": "headless/src/components/table/types.ts",
-                "typeParameters": [
-                  "T extends TableBaseData = TableBaseData"
-                ],
+                "typeParameters": ["T extends TableBaseData = TableBaseData"],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -2082,9 +2038,7 @@
                 "resolvedType": null,
                 "description": "",
                 "sourcePath": "headless/src/components/table/types.ts",
-                "typeParameters": [
-                  "T extends TableBaseData = TableBaseData"
-                ],
+                "typeParameters": ["T extends TableBaseData = TableBaseData"],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -2128,9 +2082,7 @@
                 "resolvedType": null,
                 "description": "",
                 "sourcePath": "headless/src/components/table/types.ts",
-                "typeParameters": [
-                  "T extends TableBaseData = TableBaseData"
-                ],
+                "typeParameters": ["T extends TableBaseData = TableBaseData"],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -2152,9 +2104,7 @@
                 "resolvedType": null,
                 "description": "",
                 "sourcePath": "headless/src/components/table/types.ts",
-                "typeParameters": [
-                  "T extends TableBaseData = TableBaseData"
-                ],
+                "typeParameters": ["T extends TableBaseData = TableBaseData"],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -2176,9 +2126,7 @@
                 "resolvedType": null,
                 "description": "",
                 "sourcePath": "headless/src/components/table/types.ts",
-                "typeParameters": [
-                  "T extends TableBaseData = TableBaseData"
-                ],
+                "typeParameters": ["T extends TableBaseData = TableBaseData"],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -2200,9 +2148,7 @@
                 "resolvedType": null,
                 "description": "",
                 "sourcePath": "headless/src/components/table/types.ts",
-                "typeParameters": [
-                  "T extends TableBaseData = TableBaseData"
-                ],
+                "typeParameters": ["T extends TableBaseData = TableBaseData"],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -2224,9 +2170,7 @@
                 "resolvedType": null,
                 "description": "",
                 "sourcePath": "headless/src/components/table/types.ts",
-                "typeParameters": [
-                  "T extends TableBaseData = TableBaseData"
-                ],
+                "typeParameters": ["T extends TableBaseData = TableBaseData"],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -2248,9 +2192,7 @@
                 "resolvedType": null,
                 "description": "",
                 "sourcePath": "headless/src/components/table/types.ts",
-                "typeParameters": [
-                  "T extends TableBaseData = TableBaseData"
-                ],
+                "typeParameters": ["T extends TableBaseData = TableBaseData"],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -2272,9 +2214,7 @@
                 "resolvedType": null,
                 "description": "",
                 "sourcePath": "headless/src/components/table/types.ts",
-                "typeParameters": [
-                  "T extends TableBaseData = TableBaseData"
-                ],
+                "typeParameters": ["T extends TableBaseData = TableBaseData"],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -2296,9 +2236,7 @@
                 "resolvedType": null,
                 "description": "",
                 "sourcePath": "headless/src/components/table/types.ts",
-                "typeParameters": [
-                  "T extends TableBaseData = TableBaseData"
-                ],
+                "typeParameters": ["T extends TableBaseData = TableBaseData"],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -2353,9 +2291,7 @@
         "resolvedType": "{ size?: ThemeSize; ui: { root: ClassValue; header: ClassValue; content: ClassValue; fixed: ClassValue; footer: ClassValue; body: ClassValue; row: ClassValue; head: ClassValue; cell: ClassValue; sortTrigger: ClassValue; filterInput: ClassValue; resizeHandle: ClassValue; treeCell: ClassValue; treeToggle: ClassValue; treeTogglePlaceholder: ClassValue; selection: ClassValue; filterTrigger: ClassValue; filterPopup: ClassValue; filterSearch: ClassValue; filterOptions: ClassValue; filterOption: ClassValue; filterOptionLabel: ClassValue; filterFooter: ClassValue; filterCount: ClassValue; filterAction: ClassValue; filterEmpty: ClassValue; }; filterOptions: TableColumnFilterOption[]; column: TableTypeColumn | TableDataColumn<T> | TableGroupColumn<T>; filterValue: string; filterValues: string[]; filterState?: TableFilterValue; filtered: boolean; setFilterValue: (value: string) => void; setFilterValues: (values: string[]) => void; setFilterState: (value: TableFilterValue | undefined) => void; toggleFilterOption: (value: string) => void; isFilterOptionSelected: (value: string) => boolean; clearFilter: () => void }",
         "description": "",
         "sourcePath": "src/components/table/types.ts",
-        "typeParameters": [
-          "TypeParameter T"
-        ],
+        "typeParameters": ["TypeParameter T"],
         "members": [
           {
             "name": "size",
@@ -2690,9 +2626,7 @@
                 "resolvedType": "{ type?: TableColumnType; dataIndex?: Path<TableRowValue<T>>; children?: TableColumn<T>[]; sorter?: boolean | ((a: T, b: T) => number); filter?: boolean | TableColumnFilter<T>; key?: string; title?: string; align?: TableAlign; width?: string; minWidth?: string; hidden?: boolean; fixed?: 'start' | 'end'; resizable?: boolean }",
                 "description": "",
                 "sourcePath": "headless/src/components/table/types.ts",
-                "typeParameters": [
-                  "T extends TableBaseData = TableBaseData"
-                ],
+                "typeParameters": ["T extends TableBaseData = TableBaseData"],
                 "external": false,
                 "members": [
                   {
@@ -3042,9 +2976,7 @@
         "resolvedType": "{ column: TableTypeColumn | TableDataColumn<T> | TableGroupColumn<T>; colSpan: number; rowSpan: number; sortable: boolean; filterable: boolean; filtered: boolean; resizable: boolean; sortOrder?: TableSortOrder; multiple?: boolean; checked?: CheckedState; disabled?: boolean; updateChecked?: ((value: CheckedState | null) => void); toggleSort: () => void; filterValue: string; filterValues: string[]; filterState?: TableFilterValue; filterOptions: TableColumnFilterOption[]; setFilterValue: (value: string) => void; setFilterValues: (values: string[]) => void; setFilterState: (value: TableFilterValue | undefined) => void; toggleFilterOption: (value: string) => void; isFilterOptionSelected: (value: string) => boolean; clearFilter: () => void }",
         "description": "",
         "sourcePath": "headless/src/components/table/types.ts",
-        "typeParameters": [
-          "T extends TableBaseData = TableBaseData"
-        ],
+        "typeParameters": ["T extends TableBaseData = TableBaseData"],
         "members": [
           {
             "name": "column",
@@ -3062,9 +2994,7 @@
                 "resolvedType": "{ type?: TableColumnType; dataIndex?: Path<TableRowValue<T>>; children?: TableColumn<T>[]; sorter?: boolean | ((a: T, b: T) => number); filter?: boolean | TableColumnFilter<T>; key?: string; title?: string; align?: TableAlign; width?: string; minWidth?: string; hidden?: boolean; fixed?: 'start' | 'end'; resizable?: boolean }",
                 "description": "",
                 "sourcePath": "headless/src/components/table/types.ts",
-                "typeParameters": [
-                  "T extends TableBaseData = TableBaseData"
-                ],
+                "typeParameters": ["T extends TableBaseData = TableBaseData"],
                 "external": false,
                 "members": [
                   {

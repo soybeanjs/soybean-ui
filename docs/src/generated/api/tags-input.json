@@ -9,9 +9,7 @@
         "resolvedType": "{ class?: string | Record<string, boolean> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<TagsInputUi>; id?: string; modelValue?: T[]; defaultValue?: T[]; addOnPaste?: boolean; addOnTab?: boolean; addOnBlur?: boolean; duplicate?: boolean; disabled?: boolean; delimiter?: string | RegExp; dir?: Direction; max?: number; convertValue?: ((value: string) => T); displayValue?: ((value: T) => string); name?: string; required?: boolean }",
         "description": "",
         "sourcePath": "src/components/tags-input/types.ts",
-        "typeParameters": [
-          "TypeParameter T"
-        ],
+        "typeParameters": ["TypeParameter T"],
         "members": [
           {
             "name": "class",
@@ -256,9 +254,7 @@
         "resolvedType": "{ \"update:modelValue\": [value: T[]]; invalid: [value: T]; addTag: [value: T]; removeTag: [value: T] }",
         "description": "",
         "sourcePath": "src/components/tags-input/types.ts",
-        "typeParameters": [
-          "TypeParameter T"
-        ],
+        "typeParameters": ["TypeParameter T"],
         "members": [],
         "callables": [
           {
@@ -491,9 +487,7 @@
         "resolvedType": "{ value: T; disabled?: boolean; asChild?: boolean; as?: AsTag | Component }",
         "description": "",
         "sourcePath": "headless/src/components/tags-input/types.ts",
-        "typeParameters": [
-          "TypeParameter T"
-        ],
+        "typeParameters": ["TypeParameter T"],
         "members": [
           {
             "name": "value",
@@ -681,9 +675,7 @@
         "resolvedType": "{ id?: string; modelValue?: T[]; defaultValue?: T[]; addOnPaste?: boolean; addOnTab?: boolean; addOnBlur?: boolean; duplicate?: boolean; disabled?: boolean; delimiter?: string | RegExp; dir?: Direction; max?: number; convertValue?: ((value: string) => T); displayValue?: ((value: T) => string); name?: string; required?: boolean }",
         "description": "",
         "sourcePath": "headless/src/components/tags-input/types.ts",
-        "typeParameters": [
-          "TypeParameter T"
-        ],
+        "typeParameters": ["TypeParameter T"],
         "members": [
           {
             "name": "id",
@@ -859,9 +851,7 @@
         "resolvedType": "{ \"update:modelValue\": [value: T[]]; invalid: [value: T]; addTag: [value: T]; removeTag: [value: T] }",
         "description": "",
         "sourcePath": "headless/src/components/tags-input/types.ts",
-        "typeParameters": [
-          "TypeParameter T"
-        ],
+        "typeParameters": ["TypeParameter T"],
         "members": [],
         "callables": [
           {

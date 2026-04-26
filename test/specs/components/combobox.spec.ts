@@ -176,7 +176,6 @@ describe('SCombobox', () => {
       expect(wrapper.emitted('update:open')).toBeFalsy();
       wrapper.unmount();
     });
-
   });
 
   describe('accessibility', () => {

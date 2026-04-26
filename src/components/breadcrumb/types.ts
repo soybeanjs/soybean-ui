@@ -8,7 +8,9 @@ import type {
 import type { ClassValue } from '@soybeanjs/headless';
 import type { ThemeSize } from '@/theme';
 
-export interface BreadcrumbProps<T extends BreadcrumbOptionData = BreadcrumbOptionData> extends BreadcrumbCompactProps<T> {
+export interface BreadcrumbProps<
+  T extends BreadcrumbOptionData = BreadcrumbOptionData
+> extends BreadcrumbCompactProps<T> {
   /**
    * root class
    */

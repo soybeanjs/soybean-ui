@@ -9,9 +9,7 @@
         "resolvedType": "{ class?: string | Record<string, boolean> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<HeadlessAutocompleteUi>; modelValue?: string; defaultValue?: string; items: AutocompleteOptionData<T>[]; placeholder?: string; clearable?: boolean; clearLabel?: string; emptyLabel?: string; fuseOptions?: UseFuseOptions<AutocompleteSearchOptionData>; anchorProps?: AutocompleteAnchorProps; inputProps?: AutocompleteInputProps; triggerProps?: AutocompleteTriggerProps; portalProps?: PortalProps; contentProps?: AutocompleteContentProps; viewportProps?: AutocompleteViewportProps; groupProps?: AutocompleteGroupProps; groupLabelProps?: AutocompleteGroupLabelProps; itemProps?: Omit<AutocompleteItemProps, 'disabled' | 'value'>; itemIndicatorProps?: AutocompleteItemIndicatorProps; separatorProps?: AutocompleteSeparatorProps; open?: boolean; defaultOpen?: boolean; disabled?: boolean; dir?: Direction; name?: string; highlightOnHover?: boolean; openOnFocus?: boolean; openOnClick?: boolean; required?: boolean }",
         "description": "",
         "sourcePath": "src/components/autocomplete/types.ts",
-        "typeParameters": [
-          "TypeParameter T"
-        ],
+        "typeParameters": ["TypeParameter T"],
         "members": [
           {
             "name": "class",
@@ -168,9 +166,7 @@
                 "resolvedType": null,
                 "description": "",
                 "sourcePath": "node_modules/.pnpm/@vueuse+integrations@14.2.1_fuse.js@7.3.0_nprogress@0.2.0_vue@3.5.33_typescript@6.0.3_/node_modules/@vueuse/integrations/dist/index-CH8jSu5J.d.ts",
-                "typeParameters": [
-                  "T"
-                ],
+                "typeParameters": ["T"],
                 "external": true,
                 "members": [],
                 "callables": []
@@ -1001,9 +997,7 @@
         "resolvedType": "{ \"update:modelValue\": [value: string]; \"update:open\": [value: boolean]; highlight: [payload?: AutocompleteHighlightPayload | undefined]; select: [item: T] }",
         "description": "",
         "sourcePath": "src/components/autocomplete/types.ts",
-        "typeParameters": [
-          "TypeParameter T"
-        ],
+        "typeParameters": ["TypeParameter T"],
         "members": [],
         "callables": [
           {
@@ -1065,9 +1059,7 @@
         "resolvedType": "{ \"input-leading\"?: (() => any); \"input-trailing\"?: (() => any); \"trigger-icon\"?: (() => any); empty?: (() => any); \"group-label\"?: ((props: { item: AutocompleteGroupOptionData<T> | Extract<T, { items: T[]; }>; }) => any); \"item-leading\"?: ((props: { item: T; }) => any); \"item-label\"?: ((props: { item: T; }) => any); \"item-trailing\"?: ((props: { item: T; }) => any); \"item-indicator\"?: ((props: { item: T; }) => any) }",
         "description": "",
         "sourcePath": "src/components/autocomplete/types.ts",
-        "typeParameters": [
-          "TypeParameter T"
-        ],
+        "typeParameters": ["TypeParameter T"],
         "members": [],
         "callables": [
           {
@@ -1307,9 +1299,7 @@
         "resolvedType": "{ modelValue?: string; defaultValue?: string; items: AutocompleteOptionData<T>[]; placeholder?: string; clearable?: boolean; clearLabel?: string; emptyLabel?: string; fuseOptions?: UseFuseOptions<AutocompleteSearchOptionData>; anchorProps?: AutocompleteAnchorProps; inputProps?: AutocompleteInputProps; triggerProps?: AutocompleteTriggerProps; portalProps?: PortalProps; contentProps?: AutocompleteContentProps; viewportProps?: AutocompleteViewportProps; groupProps?: AutocompleteGroupProps; groupLabelProps?: AutocompleteGroupLabelProps; itemProps?: Omit<AutocompleteItemProps, 'disabled' | 'value'>; itemIndicatorProps?: AutocompleteItemIndicatorProps; separatorProps?: AutocompleteSeparatorProps; open?: boolean; defaultOpen?: boolean; disabled?: boolean; dir?: Direction; name?: string; highlightOnHover?: boolean; openOnFocus?: boolean; openOnClick?: boolean; required?: boolean }",
         "description": "",
         "sourcePath": "headless/src/components/autocomplete/types.ts",
-        "typeParameters": [
-          "T extends AutocompleteSingleOptionData = AutocompleteSingleOptionData"
-        ],
+        "typeParameters": ["T extends AutocompleteSingleOptionData = AutocompleteSingleOptionData"],
         "members": [
           {
             "name": "modelValue",
@@ -1397,9 +1387,7 @@
                 "resolvedType": null,
                 "description": "",
                 "sourcePath": "node_modules/.pnpm/@vueuse+integrations@14.2.1_fuse.js@7.3.0_nprogress@0.2.0_vue@3.5.33_typescript@6.0.3_/node_modules/@vueuse/integrations/dist/index-CH8jSu5J.d.ts",
-                "typeParameters": [
-                  "T"
-                ],
+                "typeParameters": ["T"],
                 "external": true,
                 "members": [],
                 "callables": []
@@ -2230,9 +2218,7 @@
         "resolvedType": "{ \"update:modelValue\": [value: string]; \"update:open\": [value: boolean]; highlight: [payload?: AutocompleteHighlightPayload | undefined]; select: [item: T] }",
         "description": "",
         "sourcePath": "headless/src/components/autocomplete/types.ts",
-        "typeParameters": [
-          "T extends AutocompleteSingleOptionData = AutocompleteSingleOptionData"
-        ],
+        "typeParameters": ["T extends AutocompleteSingleOptionData = AutocompleteSingleOptionData"],
         "members": [],
         "callables": [
           {
@@ -2294,9 +2280,7 @@
         "resolvedType": "{ \"input-leading\"?: (() => any); \"input-trailing\"?: (() => any); \"trigger-icon\"?: (() => any); empty?: (() => any); \"group-label\"?: ((props: { item: Extract<AutocompleteOptionData<T>, { items: T[]; }>; }) => any); \"item-leading\"?: ((props: { item: T; }) => any); \"item-label\"?: ((props: { item: T; }) => any); \"item-trailing\"?: ((props: { item: T; }) => any); \"item-indicator\"?: ((props: { item: T; }) => any) }",
         "description": "",
         "sourcePath": "headless/src/components/autocomplete/types.ts",
-        "typeParameters": [
-          "T extends AutocompleteSingleOptionData = AutocompleteSingleOptionData"
-        ],
+        "typeParameters": ["T extends AutocompleteSingleOptionData = AutocompleteSingleOptionData"],
         "members": [],
         "callables": [
           {
@@ -3076,9 +3060,7 @@
                 "resolvedType": null,
                 "description": "",
                 "sourcePath": "headless/src/types/event.ts",
-                "typeParameters": [
-                  "T"
-                ],
+                "typeParameters": ["T"],
                 "external": false,
                 "members": [],
                 "callables": []

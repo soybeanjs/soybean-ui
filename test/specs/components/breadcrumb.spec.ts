@@ -43,8 +43,8 @@ describe('SBreadcrumb', () => {
   describe('rendering', () => {
     it('renders breadcrumb links, current page, and custom root class', () => {
       const wrapper = mountBreadcrumb({
-          class: 'custom-breadcrumb',
-          items
+        class: 'custom-breadcrumb',
+        items
       });
 
       expect(wrapper.find('nav').classes()).toContain('custom-breadcrumb');

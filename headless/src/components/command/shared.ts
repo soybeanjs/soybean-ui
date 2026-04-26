@@ -11,7 +11,9 @@ export function isGroupOption<T extends CommandSingleOptionData = CommandSingleO
   return 'items' in item;
 }
 
-export function getCommandSearchOptions<T extends CommandSingleOptionData = CommandSingleOptionData>(items: CommandOptionData<T>[]) {
+export function getCommandSearchOptions<T extends CommandSingleOptionData = CommandSingleOptionData>(
+  items: CommandOptionData<T>[]
+) {
   return items.flatMap(item => {
     if (!isGroupOption(item)) {
       return [item as CommandSearchOptionData<T>];

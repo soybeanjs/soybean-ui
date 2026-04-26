@@ -18,13 +18,7 @@ const props = withDefaults(defineProps<AnchorProps>(), {
 
 const emit = defineEmits<AnchorEmits>();
 
-const forwardedProps = useOmitProps(props, [
-  'color',
-  'size',
-  'ui',
-  'class',
-  'sticky'
-]);
+const forwardedProps = useOmitProps(props, ['color', 'size', 'ui', 'class', 'sticky']);
 
 const events = useForwardListeners(emit);
 

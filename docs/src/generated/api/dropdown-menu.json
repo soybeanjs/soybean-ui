@@ -9,9 +9,7 @@
         "resolvedType": "{ class?: string | Record<string, boolean> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<MenuUi>; disabled?: boolean; placement?: Placement; showArrow?: boolean; triggerProps?: DropdownMenuTriggerProps; portalProps?: MenuPortalProps; contentProps?: DropdownMenuContentProps; popupProps?: MenuPopupProps; arrowProps?: MenuArrowProps; trigger?: DropdownMenuTriggerType; delayDuration?: number; skipDelayDuration?: number; dir?: Direction; open?: boolean; defaultOpen?: boolean; modal?: boolean; isAlert?: boolean; alertType?: DialogAlertType; items: MenuOptionData<T>[]; activeValue?: T; itemProps?: MenuItemProps; linkProps?: LinkProps; groupProps?: MenuGroupProps; groupLabelProps?: MenuGroupLabelProps; subProps?: MenuSubProps; subTriggerProps?: MenuSubTriggerProps; subContentProps?: MenuSubContentProps; separatorProps?: MenuSeparatorProps; shortcutProps?: MenuShortcutProps }",
         "description": "",
         "sourcePath": "src/components/dropdown-menu/types.ts",
-        "typeParameters": [
-          "TypeParameter T"
-        ],
+        "typeParameters": ["TypeParameter T"],
         "members": [
           {
             "name": "class",
@@ -1458,9 +1456,7 @@
         "resolvedType": "{ \"update:open\": [value: boolean]; escapeKeyDown: [event: KeyboardEvent]; pointerDownOutside: [event: PointerDownOutsideEvent]; focusOutside: [event: FocusOutsideEvent]; interactOutside: [event: PointerDownOutsideEvent | FocusOutsideEvent]; openAutoFocus: [event: Event]; closeAutoFocus: [event: Event]; entryFocus: [event: Event]; select: [item: MenuOptionData<T>, event: Event] }",
         "description": "",
         "sourcePath": "src/components/dropdown-menu/types.ts",
-        "typeParameters": [
-          "TypeParameter T"
-        ],
+        "typeParameters": ["TypeParameter T"],
         "members": [],
         "callables": [
           {
@@ -1665,9 +1661,7 @@
                 "resolvedType": null,
                 "description": "",
                 "sourcePath": "headless/src/components/menu/types.ts",
-                "typeParameters": [
-                  "T extends DefinedValue = DefinedValue"
-                ],
+                "typeParameters": ["T extends DefinedValue = DefinedValue"],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -1684,9 +1678,7 @@
         "resolvedType": "{ item?: ((props: { item: MenuOptionData<T>; isTrigger?: boolean; }) => any); \"item-leading\"?: ((props: { item: MenuOptionData<T>; }) => any); \"item-trailing\"?: ((props: { item: MenuOptionData<T>; }) => any); \"item-trigger-icon\"?: ((props: { item: MenuOptionData<T>; }) => any); \"item-link-icon\"?: ((props: { item: MenuOptionData<T>; }) => any); trigger: () => any }",
         "description": "",
         "sourcePath": "src/components/dropdown-menu/types.ts",
-        "typeParameters": [
-          "TypeParameter T"
-        ],
+        "typeParameters": ["TypeParameter T"],
         "members": [],
         "callables": [
           {
@@ -1822,9 +1814,7 @@
         "resolvedType": "{ class?: ((string | Record<string, boolean> | ClassValue[]) & (string | false | Record<string, any> | import(\"vue\").ClassValue[])) | null; size?: ThemeSize; ui?: Partial<MenuUi>; indicatorPosition?: AlignSide; disabled?: boolean; placement?: Placement; showArrow?: boolean; triggerProps?: DropdownMenuTriggerProps; portalProps?: MenuPortalProps; contentProps?: DropdownMenuContentProps; popupProps?: MenuPopupProps; arrowProps?: MenuArrowProps; trigger?: DropdownMenuTriggerType; delayDuration?: number; skipDelayDuration?: number; dir?: Direction; open?: boolean; defaultOpen?: boolean; modal?: boolean; isAlert?: boolean; alertType?: DialogAlertType; items: MenuCheckboxOptionData<T>[]; groupLabelProps?: MenuGroupLabelProps; checkboxItemProps?: MenuCheckboxItemProps; indicatorProps?: MenuItemIndicatorProps; shortcutProps?: MenuShortcutProps; separatorProps?: MenuSeparatorProps; modelValue?: T[]; defaultValue?: T[]; asChild?: boolean; as?: AsTag | Component }",
         "description": "",
         "sourcePath": "src/components/dropdown-menu/types.ts",
-        "typeParameters": [
-          "TypeParameter T"
-        ],
+        "typeParameters": ["TypeParameter T"],
         "members": [
           {
             "name": "class",
@@ -2819,9 +2809,7 @@
         "resolvedType": "{ \"update:open\": [value: boolean]; escapeKeyDown: [event: KeyboardEvent]; pointerDownOutside: [event: PointerDownOutsideEvent]; focusOutside: [event: FocusOutsideEvent]; interactOutside: [event: PointerDownOutsideEvent | FocusOutsideEvent]; openAutoFocus: [event: Event]; closeAutoFocus: [event: Event]; entryFocus: [event: Event]; \"update:modelValue\": [value: T[]]; select: [item: MenuCheckboxOptionData<T>, event: Event] }",
         "description": "",
         "sourcePath": "src/components/dropdown-menu/types.ts",
-        "typeParameters": [
-          "TypeParameter T"
-        ],
+        "typeParameters": ["TypeParameter T"],
         "members": [],
         "callables": [
           {
@@ -3035,9 +3023,7 @@
                 "resolvedType": null,
                 "description": "",
                 "sourcePath": "headless/src/components/menu/types.ts",
-                "typeParameters": [
-                  "T extends DefinedValue = DefinedValue"
-                ],
+                "typeParameters": ["T extends DefinedValue = DefinedValue"],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -3054,9 +3040,7 @@
         "resolvedType": "{ item?: ((props: MenuCheckboxOptionData<T>) => any); \"item-leading\"?: ((props: MenuCheckboxOptionData<T>) => any); \"item-trailing\"?: ((props: MenuCheckboxOptionData<T>) => any); \"item-indicator-icon\"?: ((props: MenuCheckboxOptionData<T>) => any); trigger: () => any }",
         "description": "",
         "sourcePath": "src/components/dropdown-menu/types.ts",
-        "typeParameters": [
-          "TypeParameter T"
-        ],
+        "typeParameters": ["TypeParameter T"],
         "members": [],
         "callables": [
           {
@@ -3074,9 +3058,7 @@
                 "resolvedType": null,
                 "description": "",
                 "sourcePath": "headless/src/components/menu/types.ts",
-                "typeParameters": [
-                  "T extends DefinedValue = DefinedValue"
-                ],
+                "typeParameters": ["T extends DefinedValue = DefinedValue"],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -3098,9 +3080,7 @@
                 "resolvedType": null,
                 "description": "",
                 "sourcePath": "headless/src/components/menu/types.ts",
-                "typeParameters": [
-                  "T extends DefinedValue = DefinedValue"
-                ],
+                "typeParameters": ["T extends DefinedValue = DefinedValue"],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -3122,9 +3102,7 @@
                 "resolvedType": null,
                 "description": "",
                 "sourcePath": "headless/src/components/menu/types.ts",
-                "typeParameters": [
-                  "T extends DefinedValue = DefinedValue"
-                ],
+                "typeParameters": ["T extends DefinedValue = DefinedValue"],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -3146,9 +3124,7 @@
                 "resolvedType": null,
                 "description": "",
                 "sourcePath": "headless/src/components/menu/types.ts",
-                "typeParameters": [
-                  "T extends DefinedValue = DefinedValue"
-                ],
+                "typeParameters": ["T extends DefinedValue = DefinedValue"],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -3176,9 +3152,7 @@
         "resolvedType": "{ disabled?: boolean; placement?: Placement; showArrow?: boolean; triggerProps?: DropdownMenuTriggerProps; portalProps?: MenuPortalProps; contentProps?: DropdownMenuContentProps; popupProps?: MenuPopupProps; arrowProps?: MenuArrowProps; trigger?: DropdownMenuTriggerType; delayDuration?: number; skipDelayDuration?: number; dir?: Direction; open?: boolean; defaultOpen?: boolean; modal?: boolean; isAlert?: boolean; alertType?: DialogAlertType; items: MenuCheckboxOptionData<T>[]; groupLabelProps?: MenuGroupLabelProps; checkboxItemProps?: MenuCheckboxItemProps; indicatorProps?: MenuItemIndicatorProps; shortcutProps?: MenuShortcutProps; separatorProps?: MenuSeparatorProps; modelValue?: T[]; defaultValue?: T[]; asChild?: boolean; as?: AsTag | Component }",
         "description": "",
         "sourcePath": "headless/src/components/dropdown-menu/types.ts",
-        "typeParameters": [
-          "T extends DefinedValue = DefinedValue"
-        ],
+        "typeParameters": ["T extends DefinedValue = DefinedValue"],
         "members": [
           {
             "name": "disabled",
@@ -4081,9 +4055,7 @@
         "resolvedType": "{ \"update:open\": [value: boolean]; escapeKeyDown: [event: KeyboardEvent]; pointerDownOutside: [event: PointerDownOutsideEvent]; focusOutside: [event: FocusOutsideEvent]; interactOutside: [event: PointerDownOutsideEvent | FocusOutsideEvent]; openAutoFocus: [event: Event]; closeAutoFocus: [event: Event]; entryFocus: [event: Event]; \"update:modelValue\": [value: T[]]; select: [item: MenuCheckboxOptionData<T>, event: Event] }",
         "description": "",
         "sourcePath": "headless/src/components/dropdown-menu/types.ts",
-        "typeParameters": [
-          "T extends DefinedValue = DefinedValue"
-        ],
+        "typeParameters": ["T extends DefinedValue = DefinedValue"],
         "members": [],
         "callables": [
           {
@@ -4297,9 +4269,7 @@
                 "resolvedType": null,
                 "description": "",
                 "sourcePath": "headless/src/components/menu/types.ts",
-                "typeParameters": [
-                  "T extends DefinedValue = DefinedValue"
-                ],
+                "typeParameters": ["T extends DefinedValue = DefinedValue"],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -4316,9 +4286,7 @@
         "resolvedType": "{ item?: ((props: MenuCheckboxOptionData<T>) => any); \"item-leading\"?: ((props: MenuCheckboxOptionData<T>) => any); \"item-trailing\"?: ((props: MenuCheckboxOptionData<T>) => any); \"item-indicator-icon\"?: ((props: MenuCheckboxOptionData<T>) => any); trigger: () => any }",
         "description": "",
         "sourcePath": "headless/src/components/dropdown-menu/types.ts",
-        "typeParameters": [
-          "T extends DefinedValue = DefinedValue"
-        ],
+        "typeParameters": ["T extends DefinedValue = DefinedValue"],
         "members": [],
         "callables": [
           {
@@ -4336,9 +4304,7 @@
                 "resolvedType": null,
                 "description": "",
                 "sourcePath": "headless/src/components/menu/types.ts",
-                "typeParameters": [
-                  "T extends DefinedValue = DefinedValue"
-                ],
+                "typeParameters": ["T extends DefinedValue = DefinedValue"],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -4360,9 +4326,7 @@
                 "resolvedType": null,
                 "description": "",
                 "sourcePath": "headless/src/components/menu/types.ts",
-                "typeParameters": [
-                  "T extends DefinedValue = DefinedValue"
-                ],
+                "typeParameters": ["T extends DefinedValue = DefinedValue"],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -4384,9 +4348,7 @@
                 "resolvedType": null,
                 "description": "",
                 "sourcePath": "headless/src/components/menu/types.ts",
-                "typeParameters": [
-                  "T extends DefinedValue = DefinedValue"
-                ],
+                "typeParameters": ["T extends DefinedValue = DefinedValue"],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -4408,9 +4370,7 @@
                 "resolvedType": null,
                 "description": "",
                 "sourcePath": "headless/src/components/menu/types.ts",
-                "typeParameters": [
-                  "T extends DefinedValue = DefinedValue"
-                ],
+                "typeParameters": ["T extends DefinedValue = DefinedValue"],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -4440,9 +4400,7 @@
         "resolvedType": "{ disabled?: boolean; placement?: Placement; showArrow?: boolean; triggerProps?: DropdownMenuTriggerProps; portalProps?: MenuPortalProps; contentProps?: DropdownMenuContentProps; popupProps?: MenuPopupProps; arrowProps?: MenuArrowProps; trigger?: DropdownMenuTriggerType; delayDuration?: number; skipDelayDuration?: number; dir?: Direction; open?: boolean; defaultOpen?: boolean; modal?: boolean; isAlert?: boolean; alertType?: DialogAlertType; items: MenuOptionData<T>[]; activeValue?: T; itemProps?: MenuItemProps; linkProps?: LinkProps; groupProps?: MenuGroupProps; groupLabelProps?: MenuGroupLabelProps; subProps?: MenuSubProps; subTriggerProps?: MenuSubTriggerProps; subContentProps?: MenuSubContentProps; separatorProps?: MenuSeparatorProps; shortcutProps?: MenuShortcutProps }",
         "description": "",
         "sourcePath": "headless/src/components/dropdown-menu/types.ts",
-        "typeParameters": [
-          "T extends DefinedValue = DefinedValue"
-        ],
+        "typeParameters": ["T extends DefinedValue = DefinedValue"],
         "members": [
           {
             "name": "disabled",
@@ -5820,9 +5778,7 @@
         "resolvedType": "{ \"update:open\": [value: boolean]; escapeKeyDown: [event: KeyboardEvent]; pointerDownOutside: [event: PointerDownOutsideEvent]; focusOutside: [event: FocusOutsideEvent]; interactOutside: [event: PointerDownOutsideEvent | FocusOutsideEvent]; openAutoFocus: [event: Event]; closeAutoFocus: [event: Event]; entryFocus: [event: Event]; select: [item: MenuOptionData<T>, event: Event] }",
         "description": "",
         "sourcePath": "headless/src/components/dropdown-menu/types.ts",
-        "typeParameters": [
-          "T extends DefinedValue = DefinedValue"
-        ],
+        "typeParameters": ["T extends DefinedValue = DefinedValue"],
         "members": [],
         "callables": [
           {
@@ -6027,9 +5983,7 @@
                 "resolvedType": null,
                 "description": "",
                 "sourcePath": "headless/src/components/menu/types.ts",
-                "typeParameters": [
-                  "T extends DefinedValue = DefinedValue"
-                ],
+                "typeParameters": ["T extends DefinedValue = DefinedValue"],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -6046,9 +6000,7 @@
         "resolvedType": "{ item?: ((props: { item: MenuOptionData<T>; isTrigger?: boolean; }) => any); \"item-leading\"?: ((props: { item: MenuOptionData<T>; }) => any); \"item-trailing\"?: ((props: { item: MenuOptionData<T>; }) => any); \"item-trigger-icon\"?: ((props: { item: MenuOptionData<T>; }) => any); \"item-link-icon\"?: ((props: { item: MenuOptionData<T>; }) => any); trigger: () => any }",
         "description": "",
         "sourcePath": "headless/src/components/dropdown-menu/types.ts",
-        "typeParameters": [
-          "T extends DefinedValue = DefinedValue"
-        ],
+        "typeParameters": ["T extends DefinedValue = DefinedValue"],
         "members": [],
         "callables": [
           {
@@ -6769,9 +6721,7 @@
         "resolvedType": "{ class?: ((string | Record<string, boolean> | ClassValue[]) & (string | false | Record<string, any> | import(\"vue\").ClassValue[])) | null; size?: ThemeSize; ui?: Partial<MenuUi>; indicatorPosition?: AlignSide; disabled?: boolean; placement?: Placement; showArrow?: boolean; triggerProps?: DropdownMenuTriggerProps; portalProps?: MenuPortalProps; contentProps?: DropdownMenuContentProps; popupProps?: MenuPopupProps; arrowProps?: MenuArrowProps; trigger?: DropdownMenuTriggerType; delayDuration?: number; skipDelayDuration?: number; dir?: Direction; open?: boolean; defaultOpen?: boolean; modal?: boolean; isAlert?: boolean; alertType?: DialogAlertType; items: MenuRadioOptionData<T>[]; groupLabelProps?: MenuGroupLabelProps; radioItemProps?: MenuRadioItemProps; indicatorProps?: MenuItemIndicatorProps; shortcutProps?: MenuShortcutProps; separatorProps?: MenuSeparatorProps; modelValue?: T; defaultValue?: T; asChild?: boolean; as?: AsTag | Component }",
         "description": "",
         "sourcePath": "src/components/dropdown-menu/types.ts",
-        "typeParameters": [
-          "TypeParameter T"
-        ],
+        "typeParameters": ["TypeParameter T"],
         "members": [
           {
             "name": "class",
@@ -7756,9 +7706,7 @@
         "resolvedType": "{ \"update:open\": [value: boolean]; escapeKeyDown: [event: KeyboardEvent]; pointerDownOutside: [event: PointerDownOutsideEvent]; focusOutside: [event: FocusOutsideEvent]; interactOutside: [event: PointerDownOutsideEvent | FocusOutsideEvent]; openAutoFocus: [event: Event]; closeAutoFocus: [event: Event]; entryFocus: [event: Event]; \"update:modelValue\": [payload: NonNullable<T>]; select: [item: MenuRadioOptionData<T>, event: Event] }",
         "description": "",
         "sourcePath": "src/components/dropdown-menu/types.ts",
-        "typeParameters": [
-          "TypeParameter T"
-        ],
+        "typeParameters": ["TypeParameter T"],
         "members": [],
         "callables": [
           {
@@ -7972,9 +7920,7 @@
                 "resolvedType": null,
                 "description": "",
                 "sourcePath": "headless/src/components/menu/types.ts",
-                "typeParameters": [
-                  "T extends AcceptableBooleanValue = AcceptableBooleanValue"
-                ],
+                "typeParameters": ["T extends AcceptableBooleanValue = AcceptableBooleanValue"],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -7991,9 +7937,7 @@
         "resolvedType": "{ item?: ((props: MenuRadioOptionData<T>) => any); \"item-leading\"?: ((props: MenuRadioOptionData<T>) => any); \"item-trailing\"?: ((props: MenuRadioOptionData<T>) => any); \"item-indicator-icon\"?: ((props: MenuRadioOptionData<T>) => any); trigger: () => any }",
         "description": "",
         "sourcePath": "src/components/dropdown-menu/types.ts",
-        "typeParameters": [
-          "TypeParameter T"
-        ],
+        "typeParameters": ["TypeParameter T"],
         "members": [],
         "callables": [
           {
@@ -8011,9 +7955,7 @@
                 "resolvedType": null,
                 "description": "",
                 "sourcePath": "headless/src/components/menu/types.ts",
-                "typeParameters": [
-                  "T extends AcceptableBooleanValue = AcceptableBooleanValue"
-                ],
+                "typeParameters": ["T extends AcceptableBooleanValue = AcceptableBooleanValue"],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -8035,9 +7977,7 @@
                 "resolvedType": null,
                 "description": "",
                 "sourcePath": "headless/src/components/menu/types.ts",
-                "typeParameters": [
-                  "T extends AcceptableBooleanValue = AcceptableBooleanValue"
-                ],
+                "typeParameters": ["T extends AcceptableBooleanValue = AcceptableBooleanValue"],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -8059,9 +7999,7 @@
                 "resolvedType": null,
                 "description": "",
                 "sourcePath": "headless/src/components/menu/types.ts",
-                "typeParameters": [
-                  "T extends AcceptableBooleanValue = AcceptableBooleanValue"
-                ],
+                "typeParameters": ["T extends AcceptableBooleanValue = AcceptableBooleanValue"],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -8083,9 +8021,7 @@
                 "resolvedType": null,
                 "description": "",
                 "sourcePath": "headless/src/components/menu/types.ts",
-                "typeParameters": [
-                  "T extends AcceptableBooleanValue = AcceptableBooleanValue"
-                ],
+                "typeParameters": ["T extends AcceptableBooleanValue = AcceptableBooleanValue"],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -8113,9 +8049,7 @@
         "resolvedType": "{ disabled?: boolean; placement?: Placement; showArrow?: boolean; triggerProps?: DropdownMenuTriggerProps; portalProps?: MenuPortalProps; contentProps?: DropdownMenuContentProps; popupProps?: MenuPopupProps; arrowProps?: MenuArrowProps; trigger?: DropdownMenuTriggerType; delayDuration?: number; skipDelayDuration?: number; dir?: Direction; open?: boolean; defaultOpen?: boolean; modal?: boolean; isAlert?: boolean; alertType?: DialogAlertType; items: MenuRadioOptionData<T>[]; groupLabelProps?: MenuGroupLabelProps; radioItemProps?: MenuRadioItemProps; indicatorProps?: MenuItemIndicatorProps; shortcutProps?: MenuShortcutProps; separatorProps?: MenuSeparatorProps; modelValue?: T; defaultValue?: T; asChild?: boolean; as?: AsTag | Component }",
         "description": "",
         "sourcePath": "headless/src/components/dropdown-menu/types.ts",
-        "typeParameters": [
-          "T extends AcceptableBooleanValue = AcceptableBooleanValue"
-        ],
+        "typeParameters": ["T extends AcceptableBooleanValue = AcceptableBooleanValue"],
         "members": [
           {
             "name": "disabled",
@@ -9008,9 +8942,7 @@
         "resolvedType": "{ \"update:open\": [value: boolean]; escapeKeyDown: [event: KeyboardEvent]; pointerDownOutside: [event: PointerDownOutsideEvent]; focusOutside: [event: FocusOutsideEvent]; interactOutside: [event: PointerDownOutsideEvent | FocusOutsideEvent]; openAutoFocus: [event: Event]; closeAutoFocus: [event: Event]; entryFocus: [event: Event]; \"update:modelValue\": [payload: NonNullable<T>]; select: [item: MenuRadioOptionData<T>, event: Event] }",
         "description": "",
         "sourcePath": "headless/src/components/dropdown-menu/types.ts",
-        "typeParameters": [
-          "T extends AcceptableBooleanValue = AcceptableBooleanValue"
-        ],
+        "typeParameters": ["T extends AcceptableBooleanValue = AcceptableBooleanValue"],
         "members": [],
         "callables": [
           {
@@ -9224,9 +9156,7 @@
                 "resolvedType": null,
                 "description": "",
                 "sourcePath": "headless/src/components/menu/types.ts",
-                "typeParameters": [
-                  "T extends AcceptableBooleanValue = AcceptableBooleanValue"
-                ],
+                "typeParameters": ["T extends AcceptableBooleanValue = AcceptableBooleanValue"],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -9243,9 +9173,7 @@
         "resolvedType": "{ item?: ((props: MenuRadioOptionData<T>) => any); \"item-leading\"?: ((props: MenuRadioOptionData<T>) => any); \"item-trailing\"?: ((props: MenuRadioOptionData<T>) => any); \"item-indicator-icon\"?: ((props: MenuRadioOptionData<T>) => any); trigger: () => any }",
         "description": "",
         "sourcePath": "headless/src/components/dropdown-menu/types.ts",
-        "typeParameters": [
-          "T extends AcceptableBooleanValue = AcceptableBooleanValue"
-        ],
+        "typeParameters": ["T extends AcceptableBooleanValue = AcceptableBooleanValue"],
         "members": [],
         "callables": [
           {
@@ -9263,9 +9191,7 @@
                 "resolvedType": null,
                 "description": "",
                 "sourcePath": "headless/src/components/menu/types.ts",
-                "typeParameters": [
-                  "T extends AcceptableBooleanValue = AcceptableBooleanValue"
-                ],
+                "typeParameters": ["T extends AcceptableBooleanValue = AcceptableBooleanValue"],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -9287,9 +9213,7 @@
                 "resolvedType": null,
                 "description": "",
                 "sourcePath": "headless/src/components/menu/types.ts",
-                "typeParameters": [
-                  "T extends AcceptableBooleanValue = AcceptableBooleanValue"
-                ],
+                "typeParameters": ["T extends AcceptableBooleanValue = AcceptableBooleanValue"],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -9311,9 +9235,7 @@
                 "resolvedType": null,
                 "description": "",
                 "sourcePath": "headless/src/components/menu/types.ts",
-                "typeParameters": [
-                  "T extends AcceptableBooleanValue = AcceptableBooleanValue"
-                ],
+                "typeParameters": ["T extends AcceptableBooleanValue = AcceptableBooleanValue"],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -9335,9 +9257,7 @@
                 "resolvedType": null,
                 "description": "",
                 "sourcePath": "headless/src/components/menu/types.ts",
-                "typeParameters": [
-                  "T extends AcceptableBooleanValue = AcceptableBooleanValue"
-                ],
+                "typeParameters": ["T extends AcceptableBooleanValue = AcceptableBooleanValue"],
                 "external": false,
                 "members": [],
                 "callables": []

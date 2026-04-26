@@ -901,9 +901,7 @@
                 "resolvedType": null,
                 "description": "",
                 "sourcePath": "headless/src/types/common.ts",
-                "typeParameters": [
-                  "T"
-                ],
+                "typeParameters": ["T"],
                 "external": false,
                 "members": [],
                 "callables": []

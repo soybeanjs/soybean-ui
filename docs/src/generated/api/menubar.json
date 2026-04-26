@@ -9,9 +9,7 @@
         "resolvedType": "{ class?: string | Record<string, boolean> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<MenubarUi>; indicatorPosition?: AlignSide; disabled?: boolean; placement?: Placement; showArrow?: boolean; triggerProps?: MenubarTriggerProps; portalProps?: MenuPortalProps; contentProps?: MenubarContentProps; popupProps?: MenuPopupProps; arrowProps?: MenuArrowProps; modelValue?: T; defaultValue?: T; dir?: Direction; loop?: boolean; asChild?: boolean; as?: AsTag | Component; items: MenuOptionData<T>[]; activeValue?: T; itemProps?: MenuItemProps; linkProps?: LinkProps; groupProps?: MenuGroupProps; groupLabelProps?: MenuGroupLabelProps; subProps?: MenuSubProps; subTriggerProps?: MenuSubTriggerProps; subContentProps?: MenuSubContentProps; separatorProps?: MenuSeparatorProps; shortcutProps?: MenuShortcutProps }",
         "description": "",
         "sourcePath": "src/components/menubar/types.ts",
-        "typeParameters": [
-          "TypeParameter T"
-        ],
+        "typeParameters": ["TypeParameter T"],
         "members": [
           {
             "name": "class",
@@ -1446,9 +1444,7 @@
         "resolvedType": "{ \"update:modelValue\": [value: T]; escapeKeyDown: [event: KeyboardEvent]; pointerDownOutside: [event: PointerDownOutsideEvent]; focusOutside: [event: FocusOutsideEvent]; interactOutside: [event: PointerDownOutsideEvent | FocusOutsideEvent]; openAutoFocus: [event: Event]; closeAutoFocus: [event: Event]; entryFocus: [event: Event]; \"update:open\": [value: boolean]; select: [item: MenuOptionData<T>, event: Event] }",
         "description": "",
         "sourcePath": "src/components/menubar/types.ts",
-        "typeParameters": [
-          "TypeParameter T"
-        ],
+        "typeParameters": ["TypeParameter T"],
         "members": [],
         "callables": [
           {
@@ -1662,9 +1658,7 @@
                 "resolvedType": null,
                 "description": "",
                 "sourcePath": "headless/src/components/menu/types.ts",
-                "typeParameters": [
-                  "T extends DefinedValue = DefinedValue"
-                ],
+                "typeParameters": ["T extends DefinedValue = DefinedValue"],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -1681,9 +1675,7 @@
         "resolvedType": "{ item?: ((props: { item: MenuOptionData<T>; isTrigger?: boolean; }) => any); \"item-leading\"?: ((props: { item: MenuOptionData<T>; }) => any); \"item-trailing\"?: ((props: { item: MenuOptionData<T>; }) => any); \"item-trigger-icon\"?: ((props: { item: MenuOptionData<T>; }) => any); \"item-link-icon\"?: ((props: { item: MenuOptionData<T>; }) => any); trigger: (data: { item: MenuOptionData<T>; }) => any }",
         "description": "",
         "sourcePath": "src/components/menubar/types.ts",
-        "typeParameters": [
-          "TypeParameter T"
-        ],
+        "typeParameters": ["TypeParameter T"],
         "members": [],
         "callables": [
           {
@@ -1833,9 +1825,7 @@
         "resolvedType": "{ disabled?: boolean; placement?: Placement; showArrow?: boolean; triggerProps?: MenubarTriggerProps; portalProps?: MenuPortalProps; contentProps?: MenubarContentProps; popupProps?: MenuPopupProps; arrowProps?: MenuArrowProps; modelValue?: T; defaultValue?: T; dir?: Direction; loop?: boolean; asChild?: boolean; as?: AsTag | Component; items: MenuOptionData<T>[]; activeValue?: T; itemProps?: MenuItemProps; linkProps?: LinkProps; groupProps?: MenuGroupProps; groupLabelProps?: MenuGroupLabelProps; subProps?: MenuSubProps; subTriggerProps?: MenuSubTriggerProps; subContentProps?: MenuSubContentProps; separatorProps?: MenuSeparatorProps; shortcutProps?: MenuShortcutProps }",
         "description": "",
         "sourcePath": "headless/src/components/menubar/types.ts",
-        "typeParameters": [
-          "T extends DefinedValue = DefinedValue"
-        ],
+        "typeParameters": ["T extends DefinedValue = DefinedValue"],
         "members": [
           {
             "name": "disabled",
@@ -3178,9 +3168,7 @@
         "resolvedType": "{ \"update:modelValue\": [value: T]; escapeKeyDown: [event: KeyboardEvent]; pointerDownOutside: [event: PointerDownOutsideEvent]; focusOutside: [event: FocusOutsideEvent]; interactOutside: [event: PointerDownOutsideEvent | FocusOutsideEvent]; openAutoFocus: [event: Event]; closeAutoFocus: [event: Event]; entryFocus: [event: Event]; \"update:open\": [value: boolean]; select: [item: MenuOptionData<T>, event: Event] }",
         "description": "",
         "sourcePath": "headless/src/components/menubar/types.ts",
-        "typeParameters": [
-          "T extends DefinedValue = DefinedValue"
-        ],
+        "typeParameters": ["T extends DefinedValue = DefinedValue"],
         "members": [],
         "callables": [
           {
@@ -3394,9 +3382,7 @@
                 "resolvedType": null,
                 "description": "",
                 "sourcePath": "headless/src/components/menu/types.ts",
-                "typeParameters": [
-                  "T extends DefinedValue = DefinedValue"
-                ],
+                "typeParameters": ["T extends DefinedValue = DefinedValue"],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -3413,9 +3399,7 @@
         "resolvedType": "{ item?: ((props: { item: MenuOptionData<T>; isTrigger?: boolean; }) => any); \"item-leading\"?: ((props: { item: MenuOptionData<T>; }) => any); \"item-trailing\"?: ((props: { item: MenuOptionData<T>; }) => any); \"item-trigger-icon\"?: ((props: { item: MenuOptionData<T>; }) => any); \"item-link-icon\"?: ((props: { item: MenuOptionData<T>; }) => any); trigger: (data: { item: MenuOptionData<T>; }) => any }",
         "description": "",
         "sourcePath": "headless/src/components/menubar/types.ts",
-        "typeParameters": [
-          "T extends DefinedValue = DefinedValue"
-        ],
+        "typeParameters": ["T extends DefinedValue = DefinedValue"],
         "members": [],
         "callables": [
           {
@@ -4189,9 +4173,7 @@
         "resolvedType": "{ modelValue?: T; defaultValue?: T; dir?: Direction; loop?: boolean; asChild?: boolean; as?: AsTag | Component }",
         "description": "",
         "sourcePath": "headless/src/components/menubar/types.ts",
-        "typeParameters": [
-          "T extends DefinedValue = DefinedValue"
-        ],
+        "typeParameters": ["T extends DefinedValue = DefinedValue"],
         "members": [
           {
             "name": "modelValue",
@@ -4298,9 +4280,7 @@
         "resolvedType": "{ \"update:modelValue\": [value: T] }",
         "description": "",
         "sourcePath": "headless/src/components/menubar/types.ts",
-        "typeParameters": [
-          "T extends DefinedValue = DefinedValue"
-        ],
+        "typeParameters": ["T extends DefinedValue = DefinedValue"],
         "members": [],
         "callables": [
           {

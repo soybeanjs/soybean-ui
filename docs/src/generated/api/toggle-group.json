@@ -9,10 +9,7 @@
         "resolvedType": "{ class?: string | Record<string, boolean> | ClassValue[] | null; color?: ThemeColor; size?: ThemeSize; variant?: ToggleGroupVariant; ui?: Partial<ToggleGroupUi>; rovingFocus?: boolean; disabled?: boolean; orientation?: DataOrientation; dir?: Direction; loop?: boolean; modelValue?: (M extends true ? T[] : T); defaultValue?: (M extends true ? T[] : T); multiple?: M; clearable?: boolean; selectionBehavior?: SelectionBehavior; name?: string; required?: boolean; asChild?: boolean; as?: AsTag | Component }",
         "description": "",
         "sourcePath": "src/components/toggle-group/types.ts",
-        "typeParameters": [
-          "TypeParameter M",
-          "TypeParameter T"
-        ],
+        "typeParameters": ["TypeParameter M", "TypeParameter T"],
         "members": [
           {
             "name": "class",
@@ -340,10 +337,7 @@
         "resolvedType": "{ \"update:modelValue\": [value: M extends true ? T[] : T] }",
         "description": "",
         "sourcePath": "src/components/toggle-group/types.ts",
-        "typeParameters": [
-          "TypeParameter M",
-          "TypeParameter T"
-        ],
+        "typeParameters": ["TypeParameter M", "TypeParameter T"],
         "members": [],
         "callables": [
           {
@@ -367,9 +361,7 @@
         "resolvedType": "{ value: T; disabled?: boolean; type?: ButtonType; asChild?: boolean; as?: AsTag | Component }",
         "description": "",
         "sourcePath": "headless/src/components/toggle-group/types.ts",
-        "typeParameters": [
-          "TypeParameter T"
-        ],
+        "typeParameters": ["TypeParameter T"],
         "members": [
           {
             "name": "value",
@@ -468,10 +460,7 @@
         "resolvedType": "{ rovingFocus?: boolean; disabled?: boolean; orientation?: DataOrientation; dir?: Direction; loop?: boolean; modelValue?: (M extends true ? T[] : T); defaultValue?: (M extends true ? T[] : T); multiple?: M; clearable?: boolean; selectionBehavior?: SelectionBehavior; name?: string; required?: boolean; asChild?: boolean; as?: AsTag | Component }",
         "description": "",
         "sourcePath": "headless/src/components/toggle-group/types.ts",
-        "typeParameters": [
-          "TypeParameter M",
-          "TypeParameter T"
-        ],
+        "typeParameters": ["TypeParameter M", "TypeParameter T"],
         "members": [
           {
             "name": "rovingFocus",
@@ -684,10 +673,7 @@
         "resolvedType": "{ \"update:modelValue\": [value: M extends true ? T[] : T] }",
         "description": "",
         "sourcePath": "headless/src/components/toggle-group/types.ts",
-        "typeParameters": [
-          "TypeParameter M",
-          "TypeParameter T"
-        ],
+        "typeParameters": ["TypeParameter M", "TypeParameter T"],
         "members": [],
         "callables": [
           {

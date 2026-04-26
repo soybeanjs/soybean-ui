@@ -9,9 +9,7 @@
         "resolvedType": "{ class?: string | Record<string, boolean> | ClassValue[] | null; ui?: Partial<SegmentUi>; size?: ThemeSize; shape?: SegmentShape; fill?: SegmentFill; items: T[]; enableIndicator?: boolean; listProps?: SegmentListProps; triggerProps?: SegmentTriggerProps; indicatorProps?: SegmentIndicatorProps; modelValue?: T['value'] | null; defaultValue?: T['value'] | null; activationMode?: TabsActivationMode; unmountOnHide?: boolean; dir?: Direction; loop?: boolean; orientation?: DataOrientation }",
         "description": "",
         "sourcePath": "src/components/segment/types.ts",
-        "typeParameters": [
-          "TypeParameter T"
-        ],
+        "typeParameters": ["TypeParameter T"],
         "members": [
           {
             "name": "class",
@@ -399,9 +397,7 @@
         "resolvedType": "{ \"update:modelValue\": [payload: NonNullable<T>] }",
         "description": "",
         "sourcePath": "src/components/segment/types.ts",
-        "typeParameters": [
-          "TypeParameter T"
-        ],
+        "typeParameters": ["TypeParameter T"],
         "members": [],
         "callables": [
           {
@@ -423,9 +419,7 @@
         "resolvedType": "{ item?: ((props: T & { active: boolean; }) => any); indicator?: (() => any) }",
         "description": "",
         "sourcePath": "src/components/segment/types.ts",
-        "typeParameters": [
-          "TypeParameter T"
-        ],
+        "typeParameters": ["TypeParameter T"],
         "members": [],
         "callables": [
           {
@@ -471,9 +465,7 @@
         "resolvedType": "{ items: T[]; enableIndicator?: boolean; listProps?: SegmentListProps; triggerProps?: SegmentTriggerProps; indicatorProps?: SegmentIndicatorProps; modelValue?: T['value'] | null; defaultValue?: T['value'] | null; activationMode?: TabsActivationMode; unmountOnHide?: boolean; dir?: Direction; loop?: boolean; orientation?: DataOrientation }",
         "description": "",
         "sourcePath": "headless/src/components/segment/types.ts",
-        "typeParameters": [
-          "T extends SegmentOptionData"
-        ],
+        "typeParameters": ["T extends SegmentOptionData"],
         "members": [
           {
             "name": "items",
@@ -746,9 +738,7 @@
         "resolvedType": "{ \"update:modelValue\": [payload: NonNullable<T>] }",
         "description": "",
         "sourcePath": "headless/src/components/segment/types.ts",
-        "typeParameters": [
-          "T extends AcceptableValue = AcceptableValue"
-        ],
+        "typeParameters": ["T extends AcceptableValue = AcceptableValue"],
         "members": [],
         "callables": [
           {
@@ -770,9 +760,7 @@
         "resolvedType": "{ item?: ((props: T & { active: boolean; }) => any); indicator?: (() => any) }",
         "description": "",
         "sourcePath": "headless/src/components/segment/types.ts",
-        "typeParameters": [
-          "T extends SegmentOptionData = SegmentOptionData"
-        ],
+        "typeParameters": ["T extends SegmentOptionData = SegmentOptionData"],
         "members": [],
         "callables": [
           {

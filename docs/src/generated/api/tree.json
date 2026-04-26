@@ -131,9 +131,7 @@
                 "resolvedType": null,
                 "description": "",
                 "sourcePath": "headless/src/types/event.ts",
-                "typeParameters": [
-                  "T = AcceptableValue"
-                ],
+                "typeParameters": ["T = AcceptableValue"],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -155,9 +153,7 @@
                 "resolvedType": null,
                 "description": "",
                 "sourcePath": "headless/src/types/event.ts",
-                "typeParameters": [
-                  "T = AcceptableValue"
-                ],
+                "typeParameters": ["T = AcceptableValue"],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -176,11 +172,7 @@
         "resolvedType": "{ modelValue?: U; defaultValue?: NonNullable<U>; multiple?: IsMultiple<U, M>; items?: T[]; expanded?: string[]; defaultExpanded?: string[]; selectionBehavior?: TreeSelectBehavior; toggleBehavior?: TreeToggleBehavior; dir?: Direction; loop?: boolean; disabled?: boolean; propagateSelect?: boolean; bubbleSelect?: boolean; allowParentSelect?: boolean; asChild?: boolean; as?: AsTag | Component }",
         "description": "",
         "sourcePath": "headless/src/components/tree/types.ts",
-        "typeParameters": [
-          "TypeParameter T",
-          "TypeParameter U",
-          "TypeParameter M"
-        ],
+        "typeParameters": ["TypeParameter T", "TypeParameter U", "TypeParameter M"],
         "members": [
           {
             "name": "modelValue",
@@ -218,10 +210,7 @@
                 "resolvedType": "U extends string ? false : M extends true ? true : false",
                 "description": "",
                 "sourcePath": "headless/src/components/tree/types.ts",
-                "typeParameters": [
-                  "U extends MaybeArray<string> | undefined",
-                  "M extends boolean"
-                ],
+                "typeParameters": ["U extends MaybeArray<string> | undefined", "M extends boolean"],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -429,9 +418,7 @@
         "resolvedType": "{ \"update:modelValue\": [value: M extends true ? string[] : string]; \"update:expanded\": [value: string[]] }",
         "description": "",
         "sourcePath": "headless/src/components/tree/types.ts",
-        "typeParameters": [
-          "TypeParameter M"
-        ],
+        "typeParameters": ["TypeParameter M"],
         "members": [],
         "callables": [
           {
@@ -464,11 +451,7 @@
         "resolvedType": "{ contentProps?: VirtualizerContentProps; dynamicContentProps?: VirtualizerDynamicContentProps; modelValue?: U; defaultValue?: NonNullable<U>; multiple?: IsMultiple<U, M>; items?: T[]; expanded?: string[]; defaultExpanded?: string[]; selectionBehavior?: TreeSelectBehavior; toggleBehavior?: TreeToggleBehavior; dir?: Direction; loop?: boolean; disabled?: boolean; propagateSelect?: boolean; bubbleSelect?: boolean; allowParentSelect?: boolean; asChild?: boolean; as?: AsTag | Component; height: string | number; options?: VirtualizerOptions; dynamic?: boolean }",
         "description": "",
         "sourcePath": "src/components/tree/types.ts",
-        "typeParameters": [
-          "TypeParameter T",
-          "TypeParameter U",
-          "TypeParameter M"
-        ],
+        "typeParameters": ["TypeParameter T", "TypeParameter U", "TypeParameter M"],
         "members": [
           {
             "name": "contentProps",
@@ -583,10 +566,7 @@
                 "resolvedType": "U extends string ? false : M extends true ? true : false",
                 "description": "",
                 "sourcePath": "headless/src/components/tree/types.ts",
-                "typeParameters": [
-                  "U extends MaybeArray<string> | undefined",
-                  "M extends boolean"
-                ],
+                "typeParameters": ["U extends MaybeArray<string> | undefined", "M extends boolean"],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -837,9 +817,7 @@
         "resolvedType": "{ \"update:modelValue\": [value: M extends true ? string[] : string]; \"update:expanded\": [value: string[]] }",
         "description": "",
         "sourcePath": "src/components/tree/types.ts",
-        "typeParameters": [
-          "TypeParameter M"
-        ],
+        "typeParameters": ["TypeParameter M"],
         "members": [],
         "callables": [
           {
@@ -1027,9 +1005,7 @@
                 "resolvedType": null,
                 "description": "",
                 "sourcePath": "headless/src/types/event.ts",
-                "typeParameters": [
-                  "T = AcceptableValue"
-                ],
+                "typeParameters": ["T = AcceptableValue"],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -1051,9 +1027,7 @@
                 "resolvedType": null,
                 "description": "",
                 "sourcePath": "headless/src/types/event.ts",
-                "typeParameters": [
-                  "T = AcceptableValue"
-                ],
+                "typeParameters": ["T = AcceptableValue"],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -1104,11 +1078,7 @@
         "resolvedType": "{ modelValue?: U; defaultValue?: NonNullable<U>; multiple?: IsMultiple<U, M>; items?: T[]; expanded?: string[]; defaultExpanded?: string[]; selectionBehavior?: TreeSelectBehavior; toggleBehavior?: TreeToggleBehavior; dir?: Direction; loop?: boolean; disabled?: boolean; propagateSelect?: boolean; bubbleSelect?: boolean; allowParentSelect?: boolean; asChild?: boolean; as?: AsTag | Component; height: string | number; options?: VirtualizerOptions; dynamic?: boolean }",
         "description": "",
         "sourcePath": "headless/src/components/tree/types.ts",
-        "typeParameters": [
-          "TypeParameter T",
-          "TypeParameter U",
-          "TypeParameter M"
-        ],
+        "typeParameters": ["TypeParameter T", "TypeParameter U", "TypeParameter M"],
         "members": [
           {
             "name": "modelValue",
@@ -1146,10 +1116,7 @@
                 "resolvedType": "U extends string ? false : M extends true ? true : false",
                 "description": "",
                 "sourcePath": "headless/src/components/tree/types.ts",
-                "typeParameters": [
-                  "U extends MaybeArray<string> | undefined",
-                  "M extends boolean"
-                ],
+                "typeParameters": ["U extends MaybeArray<string> | undefined", "M extends boolean"],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -1400,9 +1367,7 @@
         "resolvedType": "{ \"update:modelValue\": [value: M extends true ? string[] : string]; \"update:expanded\": [value: string[]] }",
         "description": "",
         "sourcePath": "headless/src/components/tree/types.ts",
-        "typeParameters": [
-          "TypeParameter M"
-        ],
+        "typeParameters": ["TypeParameter M"],
         "members": [],
         "callables": [
           {

@@ -1,14 +1,11 @@
-import type {
-  SelectCompactEmits,
-  SelectCompactProps,
-  SelectCompactSlots,
-  SelectUi
-} from '@soybeanjs/headless/select';
+import type { SelectCompactEmits, SelectCompactProps, SelectCompactSlots, SelectUi } from '@soybeanjs/headless/select';
 import type { ClassValue, DefinedValue } from '@soybeanjs/headless';
 import type { ThemeSize } from '@/theme';
 
-export interface SelectProps<T extends DefinedValue = DefinedValue, M extends boolean = false>
-  extends SelectCompactProps<T, M> {
+export interface SelectProps<
+  T extends DefinedValue = DefinedValue,
+  M extends boolean = false
+> extends SelectCompactProps<T, M> {
   /**
    * the class of select trigger
    */

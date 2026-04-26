@@ -96,7 +96,9 @@ describe('shared date helpers', () => {
       endIndex: 10
     });
 
-    expect(years.map(year => year.year)).toEqual([2025, 2026, 2027, 2028, 2029, 2030, 2031, 2032, 2033, 2034, 2035, 2036]);
+    expect(years.map(year => year.year)).toEqual([
+      2025, 2026, 2027, 2028, 2029, 2030, 2031, 2032, 2033, 2034, 2035, 2036
+    ]);
   });
 
   it('keeps trailing months reachable in paged year navigation', () => {

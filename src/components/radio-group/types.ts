@@ -1,7 +1,4 @@
-import type {
-  AcceptableBooleanValue,
-  ClassValue
-} from '@soybeanjs/headless';
+import type { AcceptableBooleanValue, ClassValue } from '@soybeanjs/headless';
 import type {
   RadioGroupCompactEmits,
   RadioGroupCompactProps,

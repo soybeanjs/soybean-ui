@@ -22,13 +22,7 @@ const props = defineProps<RadioGroupProps<T, S>>();
 
 const emit = defineEmits<RadioGroupEmits<T>>();
 
-const forwardedProps = useOmitProps(props, [
-  'class',
-  'ui',
-  'variant',
-  'color',
-  'size'
-]);
+const forwardedProps = useOmitProps(props, ['class', 'ui', 'variant', 'color', 'size']);
 
 const compactItems = computed(() => props.items as RadioGroupOptionData<T>[]);
 

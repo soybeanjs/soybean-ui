@@ -19,50 +19,27 @@
     "affix": {
       "component": "affix",
       "file": "affix.json",
-      "symbols": [
-        "Affix",
-        "AffixCompact",
-        "AffixContent",
-        "AffixPlaceholder",
-        "AffixRoot"
-      ]
+      "symbols": ["Affix", "AffixCompact", "AffixContent", "AffixPlaceholder", "AffixRoot"]
     },
     "alert": {
       "component": "alert",
       "file": "alert.json",
-      "symbols": [
-        "Alert",
-        "AlertClose",
-        "AlertCompact",
-        "AlertContent",
-        "AlertDescription",
-        "AlertRoot",
-        "AlertTitle"
-      ]
+      "symbols": ["Alert", "AlertClose", "AlertCompact", "AlertContent", "AlertDescription", "AlertRoot", "AlertTitle"]
     },
     "anchor": {
       "component": "anchor",
       "file": "anchor.json",
-      "symbols": [
-        "Anchor",
-        "AnchorCompact",
-        "AnchorLink",
-        "AnchorRoot"
-      ]
+      "symbols": ["Anchor", "AnchorCompact", "AnchorLink", "AnchorRoot"]
     },
     "arrow": {
       "component": "arrow",
       "file": "arrow.json",
-      "symbols": [
-        "Arrow"
-      ]
+      "symbols": ["Arrow"]
     },
     "aspect-ratio": {
       "component": "aspect-ratio",
       "file": "aspect-ratio.json",
-      "symbols": [
-        "AspectRatio"
-      ]
+      "symbols": ["AspectRatio"]
     },
     "autocomplete": {
       "component": "autocomplete",
@@ -87,28 +64,17 @@
     "avatar": {
       "component": "avatar",
       "file": "avatar.json",
-      "symbols": [
-        "Avatar",
-        "AvatarFallback",
-        "AvatarImage",
-        "AvatarRoot"
-      ]
+      "symbols": ["Avatar", "AvatarFallback", "AvatarImage", "AvatarRoot"]
     },
     "backtop": {
       "component": "backtop",
       "file": "backtop.json",
-      "symbols": [
-        "Backtop"
-      ]
+      "symbols": ["Backtop"]
     },
     "badge": {
       "component": "badge",
       "file": "badge.json",
-      "symbols": [
-        "Badge",
-        "BadgeContent",
-        "BadgeRoot"
-      ]
+      "symbols": ["Badge", "BadgeContent", "BadgeRoot"]
     },
     "breadcrumb": {
       "component": "breadcrumb",
@@ -128,13 +94,7 @@
     "button": {
       "component": "button",
       "file": "button.json",
-      "symbols": [
-        "Button",
-        "ButtonGroup",
-        "ButtonIcon",
-        "ButtonLink",
-        "ButtonLoading"
-      ]
+      "symbols": ["Button", "ButtonGroup", "ButtonIcon", "ButtonLink", "ButtonLoading"]
     },
     "card": {
       "component": "card",
@@ -154,14 +114,7 @@
     "carousel": {
       "component": "carousel",
       "file": "carousel.json",
-      "symbols": [
-        "Carousel",
-        "CarouselContent",
-        "CarouselItem",
-        "CarouselNext",
-        "CarouselPrevious",
-        "CarouselRoot"
-      ]
+      "symbols": ["Carousel", "CarouselContent", "CarouselItem", "CarouselNext", "CarouselPrevious", "CarouselRoot"]
     },
     "checkbox": {
       "component": "checkbox",
@@ -185,64 +138,37 @@
     "clipboard": {
       "component": "clipboard",
       "file": "clipboard.json",
-      "symbols": [
-        "Clipboard"
-      ]
+      "symbols": ["Clipboard"]
     },
     "collapsible": {
       "component": "collapsible",
       "file": "collapsible.json",
-      "symbols": [
-        "Collapsible",
-        "CollapsibleContent",
-        "CollapsibleRoot",
-        "CollapsibleTrigger"
-      ]
+      "symbols": ["Collapsible", "CollapsibleContent", "CollapsibleRoot", "CollapsibleTrigger"]
     },
     "color-area": {
       "component": "color-area",
       "file": "color-area.json",
-      "symbols": [
-        "ColorArea",
-        "ColorAreaArea",
-        "ColorAreaRoot",
-        "ColorAreaThumb"
-      ]
+      "symbols": ["ColorArea", "ColorAreaArea", "ColorAreaRoot", "ColorAreaThumb"]
     },
     "color-field": {
       "component": "color-field",
       "file": "color-field.json",
-      "symbols": [
-        "ColorField",
-        "ColorFieldInput",
-        "ColorFieldRoot"
-      ]
+      "symbols": ["ColorField", "ColorFieldInput", "ColorFieldRoot"]
     },
     "color-picker": {
       "component": "color-picker",
       "file": "color-picker.json",
-      "symbols": [
-        "ColorPicker",
-        "ColorPickerRoot"
-      ]
+      "symbols": ["ColorPicker", "ColorPickerRoot"]
     },
     "color-slider": {
       "component": "color-slider",
       "file": "color-slider.json",
-      "symbols": [
-        "ColorSlider",
-        "ColorSliderRoot",
-        "ColorSliderThumb",
-        "ColorSliderTrack"
-      ]
+      "symbols": ["ColorSlider", "ColorSliderRoot", "ColorSliderThumb", "ColorSliderTrack"]
     },
     "color-swatch": {
       "component": "color-swatch",
       "file": "color-swatch.json",
-      "symbols": [
-        "ColorSwatch",
-        "HeadlessColorSwatch"
-      ]
+      "symbols": ["ColorSwatch", "HeadlessColorSwatch"]
     },
     "color-swatch-picker": {
       "component": "color-swatch-picker",
@@ -294,9 +220,7 @@
     "config-provider": {
       "component": "config-provider",
       "file": "config-provider.json",
-      "symbols": [
-        "ConfigProvider"
-      ]
+      "symbols": ["ConfigProvider"]
     },
     "context-menu": {
       "component": "context-menu",
@@ -355,9 +279,7 @@
     "drawer": {
       "component": "drawer",
       "file": "drawer.json",
-      "symbols": [
-        "Drawer"
-      ]
+      "symbols": ["Drawer"]
     },
     "dropdown-menu": {
       "component": "dropdown-menu",
@@ -408,15 +330,7 @@
     "empty": {
       "component": "empty",
       "file": "empty.json",
-      "symbols": [
-        "Empty",
-        "EmptyContent",
-        "EmptyDescription",
-        "EmptyHeader",
-        "EmptyMedia",
-        "EmptyRoot",
-        "EmptyTitle"
-      ]
+      "symbols": ["Empty", "EmptyContent", "EmptyDescription", "EmptyHeader", "EmptyMedia", "EmptyRoot", "EmptyTitle"]
     },
     "form": {
       "component": "form",
@@ -448,18 +362,12 @@
     "icon": {
       "component": "icon",
       "file": "icon.json",
-      "symbols": [
-        "Icon"
-      ]
+      "symbols": ["Icon"]
     },
     "input": {
       "component": "input",
       "file": "input.json",
-      "symbols": [
-        "Input",
-        "InputControl",
-        "InputRoot"
-      ]
+      "symbols": ["Input", "InputControl", "InputRoot"]
     },
     "input-number": {
       "component": "input-number",
@@ -475,28 +383,17 @@
     "input-otp": {
       "component": "input-otp",
       "file": "input-otp.json",
-      "symbols": [
-        "InputOtp",
-        "InputOtpCompact",
-        "InputOtpInput",
-        "InputOtpPositioner",
-        "InputOtpRoot"
-      ]
+      "symbols": ["InputOtp", "InputOtpCompact", "InputOtpInput", "InputOtpPositioner", "InputOtpRoot"]
     },
     "kbd": {
       "component": "kbd",
       "file": "kbd.json",
-      "symbols": [
-        "Kbd"
-      ]
+      "symbols": ["Kbd"]
     },
     "label": {
       "component": "label",
       "file": "label.json",
-      "symbols": [
-        "Label",
-        "RadioGroupLabel"
-      ]
+      "symbols": ["Label", "RadioGroupLabel"]
     },
     "layout": {
       "component": "layout",
@@ -519,21 +416,12 @@
     "link": {
       "component": "link",
       "file": "link.json",
-      "symbols": [
-        "Link"
-      ]
+      "symbols": ["Link"]
     },
     "list": {
       "component": "list",
       "file": "list.json",
-      "symbols": [
-        "List",
-        "ListContent",
-        "ListDescription",
-        "ListItem",
-        "ListRoot",
-        "ListTitle"
-      ]
+      "symbols": ["List", "ListContent", "ListDescription", "ListItem", "ListRoot", "ListTitle"]
     },
     "listbox": {
       "component": "listbox",
@@ -603,13 +491,7 @@
     "page-tabs": {
       "component": "page-tabs",
       "file": "page-tabs.json",
-      "symbols": [
-        "PageTabs",
-        "PageTabsClose",
-        "PageTabsItem",
-        "PageTabsPin",
-        "PageTabsRoot"
-      ]
+      "symbols": ["PageTabs", "PageTabsClose", "PageTabsItem", "PageTabsPin", "PageTabsRoot"]
     },
     "pagination": {
       "component": "pagination",
@@ -630,9 +512,7 @@
     "password": {
       "component": "password",
       "file": "password.json",
-      "symbols": [
-        "Password"
-      ]
+      "symbols": ["Password"]
     },
     "popconfirm": {
       "component": "popconfirm",
@@ -684,21 +564,12 @@
     "portal": {
       "component": "portal",
       "file": "portal.json",
-      "symbols": [
-        "AutocompletePortal",
-        "Portal"
-      ]
+      "symbols": ["AutocompletePortal", "Portal"]
     },
     "progress": {
       "component": "progress",
       "file": "progress.json",
-      "symbols": [
-        "Progress",
-        "ProgressCircle",
-        "ProgressIndicator",
-        "ProgressProvider",
-        "ProgressRoot"
-      ]
+      "symbols": ["Progress", "ProgressCircle", "ProgressIndicator", "ProgressProvider", "ProgressRoot"]
     },
     "radio-group": {
       "component": "radio-group",
@@ -732,14 +603,7 @@
     "segment": {
       "component": "segment",
       "file": "segment.json",
-      "symbols": [
-        "Segment",
-        "SegmentCompact",
-        "SegmentIndicator",
-        "SegmentList",
-        "SegmentRoot",
-        "SegmentTrigger"
-      ]
+      "symbols": ["Segment", "SegmentCompact", "SegmentIndicator", "SegmentList", "SegmentRoot", "SegmentTrigger"]
     },
     "select": {
       "component": "select",
@@ -768,45 +632,27 @@
     "separator": {
       "component": "separator",
       "file": "separator.json",
-      "symbols": [
-        "Separator",
-        "SeparatorLabel",
-        "SeparatorRoot"
-      ]
+      "symbols": ["Separator", "SeparatorLabel", "SeparatorRoot"]
     },
     "skeleton": {
       "component": "skeleton",
       "file": "skeleton.json",
-      "symbols": [
-        "Skeleton"
-      ]
+      "symbols": ["Skeleton"]
     },
     "slider": {
       "component": "slider",
       "file": "slider.json",
-      "symbols": [
-        "Slider",
-        "SliderRange",
-        "SliderRoot",
-        "SliderThumb",
-        "SliderTrack"
-      ]
+      "symbols": ["Slider", "SliderRange", "SliderRoot", "SliderThumb", "SliderTrack"]
     },
     "spinner": {
       "component": "spinner",
       "file": "spinner.json",
-      "symbols": [
-        "Spinner"
-      ]
+      "symbols": ["Spinner"]
     },
     "splitter": {
       "component": "splitter",
       "file": "splitter.json",
-      "symbols": [
-        "SplitterGroup",
-        "SplitterPanel",
-        "SplitterResizeHandle"
-      ]
+      "symbols": ["SplitterGroup", "SplitterPanel", "SplitterResizeHandle"]
     },
     "stepper": {
       "component": "stepper",
@@ -825,12 +671,7 @@
     "switch": {
       "component": "switch",
       "file": "switch.json",
-      "symbols": [
-        "Switch",
-        "SwitchControl",
-        "SwitchRoot",
-        "SwitchThumb"
-      ]
+      "symbols": ["Switch", "SwitchControl", "SwitchRoot", "SwitchThumb"]
     },
     "table": {
       "component": "table",
@@ -853,22 +694,12 @@
     "tabs": {
       "component": "tabs",
       "file": "tabs.json",
-      "symbols": [
-        "Tabs",
-        "TabsCompact",
-        "TabsContent",
-        "TabsIndicator",
-        "TabsList",
-        "TabsRoot",
-        "TabsTrigger"
-      ]
+      "symbols": ["Tabs", "TabsCompact", "TabsContent", "TabsIndicator", "TabsList", "TabsRoot", "TabsTrigger"]
     },
     "tag": {
       "component": "tag",
       "file": "tag.json",
-      "symbols": [
-        "Tag"
-      ]
+      "symbols": ["Tag"]
     },
     "tags-input": {
       "component": "tags-input",
@@ -886,35 +717,22 @@
     "textarea": {
       "component": "textarea",
       "file": "textarea.json",
-      "symbols": [
-        "Textarea",
-        "TextareaControl",
-        "TextareaCounter",
-        "TextareaRoot"
-      ]
+      "symbols": ["Textarea", "TextareaControl", "TextareaCounter", "TextareaRoot"]
     },
     "toast": {
       "component": "toast",
       "file": "toast.json",
-      "symbols": [
-        "Toaster"
-      ]
+      "symbols": ["Toaster"]
     },
     "toggle": {
       "component": "toggle",
       "file": "toggle.json",
-      "symbols": [
-        "Toggle"
-      ]
+      "symbols": ["Toggle"]
     },
     "toggle-group": {
       "component": "toggle-group",
       "file": "toggle-group.json",
-      "symbols": [
-        "ToggleGroup",
-        "ToggleGroupItem",
-        "ToggleGroupRoot"
-      ]
+      "symbols": ["ToggleGroup", "ToggleGroupItem", "ToggleGroupRoot"]
     },
     "toolbar": {
       "component": "toolbar",
@@ -946,13 +764,7 @@
     "tree": {
       "component": "tree",
       "file": "tree.json",
-      "symbols": [
-        "TreeItem",
-        "TreeRoot",
-        "TreeVirtualizer",
-        "TreeVirtualizerItem",
-        "TreeVirtualizerRoot"
-      ]
+      "symbols": ["TreeItem", "TreeRoot", "TreeVirtualizer", "TreeVirtualizerItem", "TreeVirtualizerRoot"]
     },
     "tree-menu": {
       "component": "tree-menu",

@@ -452,10 +452,7 @@
         "resolvedType": "{ ui?: Partial<RadioGroupCardUi>; items: S[]; class?: string | Record<string, boolean> | ClassValue[] | null; variant?: RadioGroupVariant; color?: ThemeColor; size?: ThemeSize; itemProps?: RadioGroupItemProps; controlProps?: RadioGroupControlProps; indicatorProps?: RadioGroupIndicatorProps; labelProps?: RadioGroupLabelProps; modelValue?: T; defaultValue?: T; disabled?: boolean; orientation?: DataOrientation; dir?: Direction; loop?: boolean; name?: string; required?: boolean }",
         "description": "",
         "sourcePath": "src/components/radio-group/types.ts",
-        "typeParameters": [
-          "TypeParameter T",
-          "TypeParameter S"
-        ],
+        "typeParameters": ["TypeParameter T", "TypeParameter S"],
         "members": [
           {
             "name": "ui",
@@ -887,10 +884,7 @@
         "resolvedType": "{ class?: string | Record<string, boolean> | ClassValue[] | null; ui?: Partial<RadioGroupUi>; variant?: RadioGroupVariant; color?: ThemeColor; size?: ThemeSize; items: S[]; itemProps?: RadioGroupItemProps; controlProps?: RadioGroupControlProps; indicatorProps?: RadioGroupIndicatorProps; labelProps?: RadioGroupLabelProps; modelValue?: T; defaultValue?: T; disabled?: boolean; orientation?: DataOrientation; dir?: Direction; loop?: boolean; name?: string; required?: boolean }",
         "description": "",
         "sourcePath": "src/components/radio-group/types.ts",
-        "typeParameters": [
-          "TypeParameter T",
-          "TypeParameter S"
-        ],
+        "typeParameters": ["TypeParameter T", "TypeParameter S"],
         "members": [
           {
             "name": "class",
@@ -1320,9 +1314,7 @@
         "resolvedType": "{ \"update:modelValue\": [payload: NonNullable<T>] }",
         "description": "",
         "sourcePath": "src/components/radio-group/types.ts",
-        "typeParameters": [
-          "TypeParameter T"
-        ],
+        "typeParameters": ["TypeParameter T"],
         "members": [],
         "callables": [
           {
@@ -1346,9 +1338,7 @@
         "resolvedType": "{ \"update:modelValue\": [payload: NonNullable<T>] }",
         "description": "",
         "sourcePath": "src/components/radio-group/types.ts",
-        "typeParameters": [
-          "TypeParameter T"
-        ],
+        "typeParameters": ["TypeParameter T"],
         "members": [],
         "callables": [
           {
@@ -1690,9 +1680,7 @@
         "resolvedType": "{ \"update:modelValue\": [payload: NonNullable<T>] }",
         "description": "",
         "sourcePath": "headless/src/components/radio-group/types.ts",
-        "typeParameters": [
-          "T extends AcceptableBooleanValue = AcceptableBooleanValue"
-        ],
+        "typeParameters": ["T extends AcceptableBooleanValue = AcceptableBooleanValue"],
         "members": [],
         "callables": [
           {
@@ -1911,9 +1899,7 @@
         "resolvedType": "{ modelValue?: T; defaultValue?: T; disabled?: boolean; orientation?: DataOrientation; dir?: Direction; loop?: boolean; name?: string; required?: boolean }",
         "description": "",
         "sourcePath": "headless/src/components/radio-group/types.ts",
-        "typeParameters": [
-          "TypeParameter T"
-        ],
+        "typeParameters": ["TypeParameter T"],
         "members": [
           {
             "name": "modelValue",
@@ -2032,9 +2018,7 @@
         "resolvedType": "{ \"update:modelValue\": [payload: NonNullable<T>] }",
         "description": "",
         "sourcePath": "headless/src/components/radio-group/types.ts",
-        "typeParameters": [
-          "TypeParameter T"
-        ],
+        "typeParameters": ["TypeParameter T"],
         "members": [],
         "callables": [
           {

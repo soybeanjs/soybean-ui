@@ -9,10 +9,7 @@
         "resolvedType": "{ class?: string | Record<string, boolean> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<AccordionUi>; items: T[]; itemProps?: AccordionItemProps; headerProps?: AccordionHeaderProps; triggerProps?: AccordionTriggerProps; contentProps?: AccordionContentProps; descriptionProps?: AccordionDescriptionProps; collapsible?: boolean; dir?: Direction; disabled?: boolean; orientation?: DataOrientation; unmountOnHide?: boolean; modelValue?: (M extends true ? string[] : string); defaultValue?: (M extends true ? string[] : string); multiple?: M; clearable?: boolean; selectionBehavior?: SelectionBehavior }",
         "description": "",
         "sourcePath": "src/components/accordion/types.ts",
-        "typeParameters": [
-          "TypeParameter T",
-          "TypeParameter M"
-        ],
+        "typeParameters": ["TypeParameter T", "TypeParameter M"],
         "members": [
           {
             "name": "class",
@@ -471,9 +468,7 @@
         "resolvedType": "{ \"update:modelValue\": [value: M extends true ? string[] : string] }",
         "description": "",
         "sourcePath": "src/components/accordion/types.ts",
-        "typeParameters": [
-          "TypeParameter M"
-        ],
+        "typeParameters": ["TypeParameter M"],
         "members": [],
         "callables": [
           {
@@ -495,10 +490,7 @@
         "resolvedType": "{ item?: ((props: AccordionCompactSlotProps<T, M>) => any); leading?: ((props: AccordionCompactSlotProps<T, M>) => any); title?: ((props: AccordionCompactSlotProps<T, M>) => any); \"trigger-icon\"?: ((props: AccordionCompactSlotProps<T, M>) => any); content?: ((props: AccordionCompactSlotProps<T, M>) => any) }",
         "description": "",
         "sourcePath": "src/components/accordion/types.ts",
-        "typeParameters": [
-          "TypeParameter T",
-          "TypeParameter M"
-        ],
+        "typeParameters": ["TypeParameter T", "TypeParameter M"],
         "members": [],
         "callables": [
           {
@@ -516,10 +508,7 @@
                 "resolvedType": null,
                 "description": "",
                 "sourcePath": "headless/src/components/accordion/types.ts",
-                "typeParameters": [
-                  "T extends AccordionOptionData = AccordionOptionData",
-                  "M extends boolean = false"
-                ],
+                "typeParameters": ["T extends AccordionOptionData = AccordionOptionData", "M extends boolean = false"],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -541,10 +530,7 @@
                 "resolvedType": null,
                 "description": "",
                 "sourcePath": "headless/src/components/accordion/types.ts",
-                "typeParameters": [
-                  "T extends AccordionOptionData = AccordionOptionData",
-                  "M extends boolean = false"
-                ],
+                "typeParameters": ["T extends AccordionOptionData = AccordionOptionData", "M extends boolean = false"],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -566,10 +552,7 @@
                 "resolvedType": null,
                 "description": "",
                 "sourcePath": "headless/src/components/accordion/types.ts",
-                "typeParameters": [
-                  "T extends AccordionOptionData = AccordionOptionData",
-                  "M extends boolean = false"
-                ],
+                "typeParameters": ["T extends AccordionOptionData = AccordionOptionData", "M extends boolean = false"],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -591,10 +574,7 @@
                 "resolvedType": null,
                 "description": "",
                 "sourcePath": "headless/src/components/accordion/types.ts",
-                "typeParameters": [
-                  "T extends AccordionOptionData = AccordionOptionData",
-                  "M extends boolean = false"
-                ],
+                "typeParameters": ["T extends AccordionOptionData = AccordionOptionData", "M extends boolean = false"],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -616,10 +596,7 @@
                 "resolvedType": null,
                 "description": "",
                 "sourcePath": "headless/src/components/accordion/types.ts",
-                "typeParameters": [
-                  "T extends AccordionOptionData = AccordionOptionData",
-                  "M extends boolean = false"
-                ],
+                "typeParameters": ["T extends AccordionOptionData = AccordionOptionData", "M extends boolean = false"],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -638,10 +615,7 @@
         "resolvedType": "{ items: T[]; itemProps?: AccordionItemProps; headerProps?: AccordionHeaderProps; triggerProps?: AccordionTriggerProps; contentProps?: AccordionContentProps; descriptionProps?: AccordionDescriptionProps; collapsible?: boolean; dir?: Direction; disabled?: boolean; orientation?: DataOrientation; unmountOnHide?: boolean; modelValue?: (M extends true ? string[] : string); defaultValue?: (M extends true ? string[] : string); multiple?: M; clearable?: boolean; selectionBehavior?: SelectionBehavior }",
         "description": "",
         "sourcePath": "headless/src/components/accordion/types.ts",
-        "typeParameters": [
-          "T extends AccordionOptionData = AccordionOptionData",
-          "M extends boolean = false"
-        ],
+        "typeParameters": ["T extends AccordionOptionData = AccordionOptionData", "M extends boolean = false"],
         "members": [
           {
             "name": "items",
@@ -1031,9 +1005,7 @@
         "resolvedType": "{ \"update:modelValue\": [value: M extends true ? string[] : string] }",
         "description": "",
         "sourcePath": "headless/src/components/accordion/types.ts",
-        "typeParameters": [
-          "M extends boolean = false"
-        ],
+        "typeParameters": ["M extends boolean = false"],
         "members": [],
         "callables": [
           {
@@ -1055,10 +1027,7 @@
         "resolvedType": "{ item?: ((props: AccordionCompactSlotProps<T, M>) => any); leading?: ((props: AccordionCompactSlotProps<T, M>) => any); title?: ((props: AccordionCompactSlotProps<T, M>) => any); \"trigger-icon\"?: ((props: AccordionCompactSlotProps<T, M>) => any); content?: ((props: AccordionCompactSlotProps<T, M>) => any) }",
         "description": "",
         "sourcePath": "headless/src/components/accordion/types.ts",
-        "typeParameters": [
-          "T extends AccordionOptionData = AccordionOptionData",
-          "M extends boolean = false"
-        ],
+        "typeParameters": ["T extends AccordionOptionData = AccordionOptionData", "M extends boolean = false"],
         "members": [],
         "callables": [
           {
@@ -1076,10 +1045,7 @@
                 "resolvedType": null,
                 "description": "",
                 "sourcePath": "headless/src/components/accordion/types.ts",
-                "typeParameters": [
-                  "T extends AccordionOptionData = AccordionOptionData",
-                  "M extends boolean = false"
-                ],
+                "typeParameters": ["T extends AccordionOptionData = AccordionOptionData", "M extends boolean = false"],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -1101,10 +1067,7 @@
                 "resolvedType": null,
                 "description": "",
                 "sourcePath": "headless/src/components/accordion/types.ts",
-                "typeParameters": [
-                  "T extends AccordionOptionData = AccordionOptionData",
-                  "M extends boolean = false"
-                ],
+                "typeParameters": ["T extends AccordionOptionData = AccordionOptionData", "M extends boolean = false"],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -1126,10 +1089,7 @@
                 "resolvedType": null,
                 "description": "",
                 "sourcePath": "headless/src/components/accordion/types.ts",
-                "typeParameters": [
-                  "T extends AccordionOptionData = AccordionOptionData",
-                  "M extends boolean = false"
-                ],
+                "typeParameters": ["T extends AccordionOptionData = AccordionOptionData", "M extends boolean = false"],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -1151,10 +1111,7 @@
                 "resolvedType": null,
                 "description": "",
                 "sourcePath": "headless/src/components/accordion/types.ts",
-                "typeParameters": [
-                  "T extends AccordionOptionData = AccordionOptionData",
-                  "M extends boolean = false"
-                ],
+                "typeParameters": ["T extends AccordionOptionData = AccordionOptionData", "M extends boolean = false"],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -1176,10 +1133,7 @@
                 "resolvedType": null,
                 "description": "",
                 "sourcePath": "headless/src/components/accordion/types.ts",
-                "typeParameters": [
-                  "T extends AccordionOptionData = AccordionOptionData",
-                  "M extends boolean = false"
-                ],
+                "typeParameters": ["T extends AccordionOptionData = AccordionOptionData", "M extends boolean = false"],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -1196,10 +1150,7 @@
         "resolvedType": "{ item: T; index: number; modelValue: (M extends true ? string[] : string) | undefined; open: boolean }",
         "description": "",
         "sourcePath": "headless/src/components/accordion/types.ts",
-        "typeParameters": [
-          "T extends AccordionOptionData = AccordionOptionData",
-          "M extends boolean = false"
-        ],
+        "typeParameters": ["T extends AccordionOptionData = AccordionOptionData", "M extends boolean = false"],
         "members": [
           {
             "name": "item",
@@ -1434,9 +1385,7 @@
         "resolvedType": "{ collapsible?: boolean; dir?: Direction; disabled?: boolean; orientation?: DataOrientation; unmountOnHide?: boolean; modelValue?: (M extends true ? string[] : string); defaultValue?: (M extends true ? string[] : string); multiple?: M; clearable?: boolean; selectionBehavior?: SelectionBehavior }",
         "description": "",
         "sourcePath": "headless/src/components/accordion/types.ts",
-        "typeParameters": [
-          "TypeParameter M"
-        ],
+        "typeParameters": ["TypeParameter M"],
         "members": [
           {
             "name": "collapsible",
@@ -1588,9 +1537,7 @@
         "resolvedType": "{ \"update:modelValue\": [value: M extends true ? string[] : string] }",
         "description": "",
         "sourcePath": "headless/src/components/accordion/types.ts",
-        "typeParameters": [
-          "TypeParameter M"
-        ],
+        "typeParameters": ["TypeParameter M"],
         "members": [],
         "callables": [
           {

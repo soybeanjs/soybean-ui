@@ -1156,9 +1156,7 @@
         "resolvedType": "{ class?: string | Record<string, boolean> | ClassValue[] | null; ui?: Partial<CheckboxCardUi>; color?: ThemeColor; size?: ThemeSize; shape?: CheckboxShape; items: T[]; rootProps?: CheckboxRootProps; controlProps?: CheckboxControlProps; indicatorProps?: CheckboxIndicatorProps; labelProps?: CheckboxLabelProps; modelValue?: T['value'][]; defaultValue?: T['value'][]; rovingFocus?: boolean; disabled?: boolean; dir?: Direction; loop?: boolean; orientation?: DataOrientation; name?: string; required?: boolean }",
         "description": "",
         "sourcePath": "src/components/checkbox/types.ts",
-        "typeParameters": [
-          "TypeParameter T"
-        ],
+        "typeParameters": ["TypeParameter T"],
         "members": [
           {
             "name": "class",
@@ -1628,9 +1626,7 @@
         "resolvedType": "{ \"update:modelValue\": [value: T[]] }",
         "description": "",
         "sourcePath": "src/components/checkbox/types.ts",
-        "typeParameters": [
-          "TypeParameter T"
-        ],
+        "typeParameters": ["TypeParameter T"],
         "members": [],
         "callables": [
           {
@@ -1654,9 +1650,7 @@
         "resolvedType": "{ items: T[]; rootProps?: CheckboxRootProps; controlProps?: CheckboxControlProps; indicatorProps?: CheckboxIndicatorProps; labelProps?: CheckboxLabelProps; modelValue?: T['value'][]; defaultValue?: T['value'][]; rovingFocus?: boolean; disabled?: boolean; dir?: Direction; loop?: boolean; orientation?: DataOrientation; name?: string; required?: boolean }",
         "description": "",
         "sourcePath": "headless/src/components/checkbox/types.ts",
-        "typeParameters": [
-          "T extends CheckboxCardGroupOptionData = CheckboxCardGroupOptionData"
-        ],
+        "typeParameters": ["T extends CheckboxCardGroupOptionData = CheckboxCardGroupOptionData"],
         "members": [
           {
             "name": "items",
@@ -2011,9 +2005,7 @@
         "resolvedType": "{ \"update:modelValue\": [value: T[]] }",
         "description": "",
         "sourcePath": "headless/src/components/checkbox/types.ts",
-        "typeParameters": [
-          "T extends DefinedValue = DefinedValue"
-        ],
+        "typeParameters": ["T extends DefinedValue = DefinedValue"],
         "members": [],
         "callables": [
           {
@@ -2350,9 +2342,7 @@
         "resolvedType": "{ class?: string | Record<string, boolean> | ClassValue[] | null; ui?: Partial<CheckboxUi>; color?: ThemeColor; size?: ThemeSize; shape?: CheckboxShape; items: T[]; rootProps?: CheckboxRootProps; controlProps?: CheckboxControlProps; indicatorProps?: CheckboxIndicatorProps; labelProps?: CheckboxLabelProps; modelValue?: T['value'][]; defaultValue?: T['value'][]; rovingFocus?: boolean; disabled?: boolean; dir?: Direction; loop?: boolean; orientation?: DataOrientation; name?: string; required?: boolean }",
         "description": "",
         "sourcePath": "src/components/checkbox/types.ts",
-        "typeParameters": [
-          "TypeParameter T"
-        ],
+        "typeParameters": ["TypeParameter T"],
         "members": [
           {
             "name": "class",
@@ -2822,9 +2812,7 @@
         "resolvedType": "{ \"update:modelValue\": [value: T[]] }",
         "description": "",
         "sourcePath": "src/components/checkbox/types.ts",
-        "typeParameters": [
-          "TypeParameter T"
-        ],
+        "typeParameters": ["TypeParameter T"],
         "members": [],
         "callables": [
           {
@@ -2848,9 +2836,7 @@
         "resolvedType": "{ items: T[]; rootProps?: CheckboxRootProps; controlProps?: CheckboxControlProps; indicatorProps?: CheckboxIndicatorProps; labelProps?: CheckboxLabelProps; modelValue?: T['value'][]; defaultValue?: T['value'][]; rovingFocus?: boolean; disabled?: boolean; dir?: Direction; loop?: boolean; orientation?: DataOrientation; name?: string; required?: boolean }",
         "description": "",
         "sourcePath": "headless/src/components/checkbox/types.ts",
-        "typeParameters": [
-          "T extends CheckboxGroupOptionData = CheckboxGroupOptionData"
-        ],
+        "typeParameters": ["T extends CheckboxGroupOptionData = CheckboxGroupOptionData"],
         "members": [
           {
             "name": "items",
@@ -3205,9 +3191,7 @@
         "resolvedType": "{ \"update:modelValue\": [value: T[]] }",
         "description": "",
         "sourcePath": "headless/src/components/checkbox/types.ts",
-        "typeParameters": [
-          "T extends DefinedValue = DefinedValue"
-        ],
+        "typeParameters": ["T extends DefinedValue = DefinedValue"],
         "members": [],
         "callables": [
           {
@@ -3231,9 +3215,7 @@
         "resolvedType": "{ modelValue?: T[]; defaultValue?: T[]; rovingFocus?: boolean; disabled?: boolean; dir?: Direction; loop?: boolean; orientation?: DataOrientation; name?: string; required?: boolean }",
         "description": "",
         "sourcePath": "headless/src/components/checkbox/types.ts",
-        "typeParameters": [
-          "T extends DefinedValue = DefinedValue"
-        ],
+        "typeParameters": ["T extends DefinedValue = DefinedValue"],
         "members": [
           {
             "name": "modelValue",
@@ -3362,9 +3344,7 @@
         "resolvedType": "{ \"update:modelValue\": [value: T[]] }",
         "description": "",
         "sourcePath": "headless/src/components/checkbox/types.ts",
-        "typeParameters": [
-          "T extends DefinedValue = DefinedValue"
-        ],
+        "typeParameters": ["T extends DefinedValue = DefinedValue"],
         "members": [],
         "callables": [
           {

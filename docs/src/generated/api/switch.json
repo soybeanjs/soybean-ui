@@ -9,9 +9,7 @@
         "resolvedType": "{ class?: string | Record<string, boolean> | ClassValue[] | null; ui?: Partial<SwitchUi>; color?: ThemeColor; size?: ThemeSize; shape?: SwitchShape; controlProps?: SwitchControlProps; thumbProps?: SwitchThumbProps; defaultValue?: NonNullable<T>; modelValue?: T; disabled?: boolean; value?: string; name?: string; required?: boolean; trueValue?: NonNullable<T>; falseValue?: NonNullable<T> }",
         "description": "",
         "sourcePath": "src/components/switch/types.ts",
-        "typeParameters": [
-          "TypeParameter T"
-        ],
+        "typeParameters": ["TypeParameter T"],
         "members": [
           {
             "name": "class",
@@ -297,9 +295,7 @@
         "resolvedType": "{ \"update:modelValue\": [payload: NonNullable<T>] }",
         "description": "",
         "sourcePath": "src/components/switch/types.ts",
-        "typeParameters": [
-          "TypeParameter T"
-        ],
+        "typeParameters": ["TypeParameter T"],
         "members": [],
         "callables": [
           {
@@ -348,9 +344,7 @@
         "resolvedType": "{ defaultValue?: NonNullable<T>; modelValue?: T; disabled?: boolean; value?: string; name?: string; required?: boolean; trueValue?: NonNullable<T>; falseValue?: NonNullable<T> }",
         "description": "",
         "sourcePath": "headless/src/components/switch/types.ts",
-        "typeParameters": [
-          "TypeParameter T"
-        ],
+        "typeParameters": ["TypeParameter T"],
         "members": [
           {
             "name": "defaultValue",
@@ -443,9 +437,7 @@
         "resolvedType": "{ \"update:modelValue\": [payload: NonNullable<T>] }",
         "description": "",
         "sourcePath": "headless/src/components/switch/types.ts",
-        "typeParameters": [
-          "TypeParameter T"
-        ],
+        "typeParameters": ["TypeParameter T"],
         "members": [],
         "callables": [
           {

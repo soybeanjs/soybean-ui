@@ -27,8 +27,9 @@ import type { ClassValue } from '@soybeanjs/headless';
 import type { ThemeSize } from '@/theme';
 export type AutocompleteUi = HeadlessAutocompleteUi;
 
-export interface AutocompleteProps<T extends AutocompleteSingleOptionData = AutocompleteSingleOptionData>
-  extends AutocompleteCompactProps<T> {
+export interface AutocompleteProps<
+  T extends AutocompleteSingleOptionData = AutocompleteSingleOptionData
+> extends AutocompleteCompactProps<T> {
   /** Root class. */
   class?: ClassValue;
   size?: ThemeSize;

@@ -82,7 +82,7 @@ export function easeInOutCubic(value: number) {
     return 4 * value * value * value;
   }
 
-  return 1 - ((-2 * value + 2) ** 3) / 2;
+  return 1 - (-2 * value + 2) ** 3 / 2;
 }
 
 export function prefersReducedMotion() {
