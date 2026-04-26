@@ -1,5 +1,5 @@
 import type { ComputedRef, HTMLAttributes, ShallowRef } from 'vue';
-import type { HorizontalSide, PropsToContext, UiClass } from '../../types';
+import type { DataOrientation, HorizontalSide, PropsToContext, UiClass } from '../../types';
 import type { PrimitiveProps } from '../primitive/types';
 
 export type LayoutVariant = 'sidebar' | 'floating' | 'inset';
@@ -25,6 +25,12 @@ export interface LayoutRootProps extends /* @vue-ignore */ HTMLAttributes {
   /** The collapsible state of the layout. */
   collapsible?: LayoutCollapsible;
   /**
+   * whether to show the sidebar.
+   *
+   * @default true
+   */
+  sidebarVisible?: boolean;
+  /**
    * The width of the sidebar. (px)
    *
    * @default 240
@@ -49,20 +55,44 @@ export interface LayoutRootProps extends /* @vue-ignore */ HTMLAttributes {
    */
   mobileSidebarWidth?: number;
   /**
+   * whether to show the header.
+   *
+   * @default true
+   */
+  headerVisible?: boolean;
+  /**
    * The height of the header. (px)
    * @default 56
    */
   headerHeight?: number;
+  /**
+   * whether to show the tab.
+   *
+   * @default true
+   */
+  tabVisible?: boolean;
   /**
    * The height of the tab. (px)
    * @default 44
    */
   tabHeight?: number;
   /**
+   * whether to show the footer.
+   *
+   * @default true
+   */
+  footerVisible?: boolean;
+  /**
    * The height of the footer. (px)
    * @default 48
    */
   footerHeight?: number;
+  /**
+   * whether the content takes the full height of the layout (include).
+   *
+   * @default false
+   */
+  fullContent?: boolean;
   /**
    * The function to convert pixels to rem.
    *
@@ -95,9 +125,109 @@ export interface LayoutTriggerProps extends PrimitiveProps, /* @vue-ignore */ HT
 
 export interface LayoutMobileProps extends /* @vue-ignore */ HTMLAttributes {}
 
+interface LayoutOthersProps {
+  sidebarProps?: LayoutSidebarProps;
+  railProps?: LayoutRailProps;
+  mainProps?: LayoutMainProps;
+  headerProps?: LayoutHeaderProps;
+  tabProps?: LayoutTabProps;
+  contentProps?: LayoutContentProps;
+  footerProps?: LayoutFooterProps;
+  mobileProps?: LayoutMobileProps;
+}
+
+export interface LayoutCompactProps extends LayoutRootProps, LayoutOthersProps {}
+
+export type LayoutCompactEmits = LayoutRootEmits;
+
+export type LayoutCompactSlots = {
+  default?: () => any;
+  sidebar?: (props: { open: boolean | undefined; collapsedSidebarWidth: number }) => any;
+  header?: () => any;
+  tab?: () => any;
+  content?: () => any;
+  footer?: () => any;
+};
+
+export type LayoutClassicScrollBehavior = 'wrapper' | 'content';
+
+export interface LayoutClassicRootProps extends Omit<LayoutRootProps, 'variant' | 'collapsible'> {
+  orientation?: DataOrientation;
+  scrollBehavior?: LayoutClassicScrollBehavior;
+  scrollId?: string;
+  /**
+   * The base z-index of the layout. The z-index of the sidebar, header, tab, footer, and their fixed versions will be calculated based on this value.
+   *
+   * @default 50
+   */
+  baseZIndex?: number;
+  /**
+   * Whether the header and tab are fixed to the top of the layout when the orientation is vertical. If true, the header and tab will be fixed to the top of the layout when the orientation is vertical, and will scroll with the content when the orientation is horizontal.
+   *
+   * @default true
+   */
+  fixedTop?: boolean;
+  /**
+   * whether the content takes the full height of the layout (include).
+   *
+   * @default false
+   */
+  fullContent?: boolean;
+  /**
+   * whether to show the sidebar.
+   *
+   * @default true
+   */
+  sidebarVisible?: boolean;
+  /**
+   * whether to show the header.
+   *
+   * @default true
+   */
+  headerVisible?: boolean;
+  /**
+   * whether to show the tab.
+   *
+   * @default true
+   */
+  tabVisible?: boolean;
+  /**
+   * whether to show the footer.
+   *
+   * @default true
+   */
+  footerVisible?: boolean;
+  /**
+   * Whether footer is fixed
+   *
+   * @default true
+   */
+  fixedFooter?: boolean;
+  /**
+   * Whether the footer should stretch to the full width of the layout or the content when layout orientation is vertical.
+   *
+   * @default true
+   */
+  stretchFooter?: boolean;
+}
+
+export type LayoutClassicRootEmits = LayoutRootEmits;
+
+export interface LayoutClassicCompactProps extends LayoutClassicRootProps, LayoutOthersProps {}
+
+export type LayoutClassicCompactEmits = LayoutClassicRootEmits;
+
+export type LayoutClassicCompactSlots = LayoutCompactSlots;
+
 export interface LayoutRootContextParams extends PropsToContext<
   LayoutRootProps,
-  'sidebarWidth' | 'collapsedSidebarWidth' | 'isMobile'
+  | 'sidebarWidth'
+  | 'collapsedSidebarWidth'
+  | 'isMobile'
+  | 'sidebarVisible'
+  | 'headerVisible'
+  | 'tabVisible'
+  | 'footerVisible'
 > {
   open: ShallowRef<boolean | undefined>;
   mobileOpen: ShallowRef<boolean>;
@@ -105,7 +235,11 @@ export interface LayoutRootContextParams extends PropsToContext<
    * The width of the sidebar in the mobile view. (rem)
    */
   mobileSidebarWidth: ComputedRef<number>;
-  sidebarState: ComputedRef<LayoutSidebarState>;
+}
+
+export interface LayoutCompactRootContextParams extends LayoutRootContextParams {
+  fixedTop: ComputedRef<boolean>;
+  fixedFooter: ComputedRef<boolean>;
 }
 
 export type LayoutUiSlot =
@@ -126,3 +260,7 @@ export type LayoutUiSlot =
   | 'mobileOverlay';
 
 export type LayoutUi = UiClass<LayoutUiSlot>;
+
+export type LayoutClassicUiSlot = LayoutUiSlot | 'headerPlaceholder' | 'tabPlaceholder' | 'footerPlaceholder';
+
+export type LayoutClassicUi = UiClass<LayoutClassicUiSlot>;

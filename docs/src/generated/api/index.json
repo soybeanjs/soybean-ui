@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-25T09:01:22.349Z",
+  "generatedAt": "2026-04-25T09:02:43.123Z",
   "schemaVersion": 3,
   "components": {
     "accordion": {
@@ -503,6 +503,7 @@
       "file": "layout.json",
       "symbols": [
         "Layout",
+        "LayoutCompact",
         "LayoutContent",
         "LayoutFooter",
         "LayoutHeader",

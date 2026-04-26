@@ -86,8 +86,8 @@
             "required": false,
             "description": "whether the content takes the full height of the layout (include).",
             "default": "false",
-            "inheritedFrom": null,
-            "sourcePath": "src/components/layout/types.ts",
+            "inheritedFrom": "LayoutCompactProps.fullContent",
+            "sourcePath": "headless/src/components/layout/types.ts",
             "referencedTypes": []
           },
           {
@@ -96,8 +96,8 @@
             "required": false,
             "description": "whether to show the tab.",
             "default": "true",
-            "inheritedFrom": null,
-            "sourcePath": "src/components/layout/types.ts",
+            "inheritedFrom": "LayoutCompactProps.tabVisible",
+            "sourcePath": "headless/src/components/layout/types.ts",
             "referencedTypes": []
           },
           {
@@ -106,8 +106,8 @@
             "required": false,
             "description": "whether to show the footer.",
             "default": "true",
-            "inheritedFrom": null,
-            "sourcePath": "src/components/layout/types.ts",
+            "inheritedFrom": "LayoutCompactProps.footerVisible",
+            "sourcePath": "headless/src/components/layout/types.ts",
             "referencedTypes": []
           },
           {
@@ -116,8 +116,8 @@
             "required": false,
             "description": "",
             "default": null,
-            "inheritedFrom": null,
-            "sourcePath": "src/components/layout/types.ts",
+            "inheritedFrom": "LayoutCompactProps.sidebarProps",
+            "sourcePath": "headless/src/components/layout/types.ts",
             "referencedTypes": [
               {
                 "name": "LayoutSidebarProps",
@@ -139,8 +139,8 @@
             "required": false,
             "description": "",
             "default": null,
-            "inheritedFrom": null,
-            "sourcePath": "src/components/layout/types.ts",
+            "inheritedFrom": "LayoutCompactProps.railProps",
+            "sourcePath": "headless/src/components/layout/types.ts",
             "referencedTypes": [
               {
                 "name": "LayoutRailProps",
@@ -162,8 +162,8 @@
             "required": false,
             "description": "",
             "default": null,
-            "inheritedFrom": null,
-            "sourcePath": "src/components/layout/types.ts",
+            "inheritedFrom": "LayoutCompactProps.mainProps",
+            "sourcePath": "headless/src/components/layout/types.ts",
             "referencedTypes": [
               {
                 "name": "LayoutMainProps",
@@ -185,8 +185,8 @@
             "required": false,
             "description": "",
             "default": null,
-            "inheritedFrom": null,
-            "sourcePath": "src/components/layout/types.ts",
+            "inheritedFrom": "LayoutCompactProps.headerProps",
+            "sourcePath": "headless/src/components/layout/types.ts",
             "referencedTypes": [
               {
                 "name": "LayoutHeaderProps",
@@ -208,8 +208,8 @@
             "required": false,
             "description": "",
             "default": null,
-            "inheritedFrom": null,
-            "sourcePath": "src/components/layout/types.ts",
+            "inheritedFrom": "LayoutCompactProps.tabProps",
+            "sourcePath": "headless/src/components/layout/types.ts",
             "referencedTypes": [
               {
                 "name": "LayoutTabProps",
@@ -231,8 +231,8 @@
             "required": false,
             "description": "",
             "default": null,
-            "inheritedFrom": null,
-            "sourcePath": "src/components/layout/types.ts",
+            "inheritedFrom": "LayoutCompactProps.contentProps",
+            "sourcePath": "headless/src/components/layout/types.ts",
             "referencedTypes": [
               {
                 "name": "LayoutContentProps",
@@ -254,8 +254,8 @@
             "required": false,
             "description": "",
             "default": null,
-            "inheritedFrom": null,
-            "sourcePath": "src/components/layout/types.ts",
+            "inheritedFrom": "LayoutCompactProps.footerProps",
+            "sourcePath": "headless/src/components/layout/types.ts",
             "referencedTypes": [
               {
                 "name": "LayoutFooterProps",
@@ -277,8 +277,8 @@
             "required": false,
             "description": "",
             "default": null,
-            "inheritedFrom": null,
-            "sourcePath": "src/components/layout/types.ts",
+            "inheritedFrom": "LayoutCompactProps.mobileProps",
+            "sourcePath": "headless/src/components/layout/types.ts",
             "referencedTypes": [
               {
                 "name": "LayoutMobileProps",
@@ -300,7 +300,7 @@
             "required": false,
             "description": "The controlled open state of the layout. Can be bound with `v-model`.",
             "default": null,
-            "inheritedFrom": "open",
+            "inheritedFrom": "LayoutCompactProps.open",
             "sourcePath": "headless/src/components/layout/types.ts",
             "referencedTypes": []
           },
@@ -310,7 +310,7 @@
             "required": false,
             "description": "The open state of the layout when it is initially rendered.\n\nUse when you do not need to control its open state.",
             "default": null,
-            "inheritedFrom": "defaultOpen",
+            "inheritedFrom": "LayoutCompactProps.defaultOpen",
             "sourcePath": "headless/src/components/layout/types.ts",
             "referencedTypes": []
           },
@@ -320,7 +320,7 @@
             "required": false,
             "description": "The side of the layout.",
             "default": null,
-            "inheritedFrom": "side",
+            "inheritedFrom": "LayoutCompactProps.side",
             "sourcePath": "headless/src/components/layout/types.ts",
             "referencedTypes": [
               {
@@ -343,7 +343,7 @@
             "required": false,
             "description": "The variant of the layout.",
             "default": null,
-            "inheritedFrom": "variant",
+            "inheritedFrom": "LayoutCompactProps.variant",
             "sourcePath": "headless/src/components/layout/types.ts",
             "referencedTypes": [
               {
@@ -366,7 +366,7 @@
             "required": false,
             "description": "The collapsible state of the layout.",
             "default": null,
-            "inheritedFrom": "collapsible",
+            "inheritedFrom": "LayoutCompactProps.collapsible",
             "sourcePath": "headless/src/components/layout/types.ts",
             "referencedTypes": [
               {
@@ -389,7 +389,7 @@
             "required": false,
             "description": "The width of the sidebar. (px)",
             "default": "240",
-            "inheritedFrom": "sidebarWidth",
+            "inheritedFrom": "LayoutCompactProps.sidebarWidth",
             "sourcePath": "headless/src/components/layout/types.ts",
             "referencedTypes": []
           },
@@ -399,7 +399,7 @@
             "required": false,
             "description": "The width of the sidebar when it is collapsed. (px)",
             "default": "50",
-            "inheritedFrom": "collapsedSidebarWidth",
+            "inheritedFrom": "LayoutCompactProps.collapsedSidebarWidth",
             "sourcePath": "headless/src/components/layout/types.ts",
             "referencedTypes": []
           },
@@ -409,7 +409,7 @@
             "required": false,
             "description": "Whether the layout is in mobile view.",
             "default": "false",
-            "inheritedFrom": "isMobile",
+            "inheritedFrom": "LayoutCompactProps.isMobile",
             "sourcePath": "headless/src/components/layout/types.ts",
             "referencedTypes": []
           },
@@ -419,7 +419,7 @@
             "required": false,
             "description": "The width of the sidebar in the mobile view. (px)",
             "default": "240",
-            "inheritedFrom": "mobileSidebarWidth",
+            "inheritedFrom": "LayoutCompactProps.mobileSidebarWidth",
             "sourcePath": "headless/src/components/layout/types.ts",
             "referencedTypes": []
           },
@@ -429,7 +429,7 @@
             "required": false,
             "description": "The height of the header. (px)",
             "default": "56",
-            "inheritedFrom": "headerHeight",
+            "inheritedFrom": "LayoutCompactProps.headerHeight",
             "sourcePath": "headless/src/components/layout/types.ts",
             "referencedTypes": []
           },
@@ -439,7 +439,7 @@
             "required": false,
             "description": "The height of the tab. (px)",
             "default": "44",
-            "inheritedFrom": "tabHeight",
+            "inheritedFrom": "LayoutCompactProps.tabHeight",
             "sourcePath": "headless/src/components/layout/types.ts",
             "referencedTypes": []
           },
@@ -449,7 +449,7 @@
             "required": false,
             "description": "The height of the footer. (px)",
             "default": "48",
-            "inheritedFrom": "footerHeight",
+            "inheritedFrom": "LayoutCompactProps.footerHeight",
             "sourcePath": "headless/src/components/layout/types.ts",
             "referencedTypes": []
           },
@@ -459,7 +459,7 @@
             "required": false,
             "description": "The function to convert pixels to rem.",
             "default": "(px: number) => px / 16 (16 is the base font size)",
-            "inheritedFrom": "pxToRem",
+            "inheritedFrom": "LayoutCompactProps.pxToRem",
             "sourcePath": "headless/src/components/layout/types.ts",
             "referencedTypes": []
           }
@@ -470,7 +470,7 @@
       "emits": {
         "kind": "emits",
         "name": "LayoutEmits",
-        "type": "TypeAlias LayoutEmits: LayoutRootEmits",
+        "type": "TypeAlias LayoutEmits: LayoutCompactEmits",
         "resolvedType": "{ \"update:open\": [open: boolean] }",
         "description": "",
         "sourcePath": "src/components/layout/types.ts",
@@ -511,6 +511,677 @@
             ]
           }
         ]
+      },
+      "slots": {
+        "kind": "slots",
+        "name": "LayoutSlots",
+        "type": "TypeAlias LayoutSlots: LayoutCompactSlots",
+        "resolvedType": "{ default?: (() => any); sidebar?: ((props: { open: boolean; collapsedSidebarWidth: number; }) => any); header?: (() => any); tab?: (() => any); content?: (() => any); footer?: (() => any) }",
+        "description": "",
+        "sourcePath": "src/components/layout/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [
+          {
+            "name": "default",
+            "type": "(() => any) | undefined",
+            "parameters": "(() => any) | undefined",
+            "required": false,
+            "description": "",
+            "sourcePath": "headless/src/components/layout/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "sidebar",
+            "type": "((props: { open: boolean | undefined; collapsedSidebarWidth: number; }) => any) | undefined",
+            "parameters": "((props: { open: boolean | undefined; collapsedSidebarWidth: number; }) => any) | undefined",
+            "required": false,
+            "description": "",
+            "sourcePath": "headless/src/components/layout/types.ts",
+            "referencedTypes": [
+              {
+                "name": "__type",
+                "kind": "typeLiteral",
+                "type": "{ open: boolean | undefined; collapsedSidebarWidth: number; }",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/components/layout/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "header",
+            "type": "(() => any) | undefined",
+            "parameters": "(() => any) | undefined",
+            "required": false,
+            "description": "",
+            "sourcePath": "headless/src/components/layout/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "tab",
+            "type": "(() => any) | undefined",
+            "parameters": "(() => any) | undefined",
+            "required": false,
+            "description": "",
+            "sourcePath": "headless/src/components/layout/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "content",
+            "type": "(() => any) | undefined",
+            "parameters": "(() => any) | undefined",
+            "required": false,
+            "description": "",
+            "sourcePath": "headless/src/components/layout/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "footer",
+            "type": "(() => any) | undefined",
+            "parameters": "(() => any) | undefined",
+            "required": false,
+            "description": "",
+            "sourcePath": "headless/src/components/layout/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "referencedTypes": [
+          {
+            "name": "LayoutCompactSlots",
+            "kind": "typeAlias",
+            "type": "{ default?: () => any; sidebar?: (props: { open: boolean | undefined; collapsedSidebarWidth: number; }) => any; header?: () => any; tab?: () => any; content?: () => any; footer?: () => any; }",
+            "resolvedType": "{ default?: (() => any); sidebar?: ((props: { open: boolean; collapsedSidebarWidth: number; }) => any); header?: (() => any); tab?: (() => any); content?: (() => any); footer?: (() => any) }",
+            "description": "",
+            "sourcePath": "headless/src/components/layout/types.ts",
+            "typeParameters": [],
+            "external": false,
+            "members": [],
+            "callables": [
+              {
+                "name": "default",
+                "type": "(() => any) | undefined",
+                "parameters": "(() => any) | undefined",
+                "required": false,
+                "description": "",
+                "sourcePath": "headless/src/components/layout/types.ts",
+                "referencedTypes": []
+              },
+              {
+                "name": "sidebar",
+                "type": "((props: { open: boolean | undefined; collapsedSidebarWidth: number; }) => any) | undefined",
+                "parameters": "((props: { open: boolean | undefined; collapsedSidebarWidth: number; }) => any) | undefined",
+                "required": false,
+                "description": "",
+                "sourcePath": "headless/src/components/layout/types.ts",
+                "referencedTypes": []
+              },
+              {
+                "name": "header",
+                "type": "(() => any) | undefined",
+                "parameters": "(() => any) | undefined",
+                "required": false,
+                "description": "",
+                "sourcePath": "headless/src/components/layout/types.ts",
+                "referencedTypes": []
+              },
+              {
+                "name": "tab",
+                "type": "(() => any) | undefined",
+                "parameters": "(() => any) | undefined",
+                "required": false,
+                "description": "",
+                "sourcePath": "headless/src/components/layout/types.ts",
+                "referencedTypes": []
+              },
+              {
+                "name": "content",
+                "type": "(() => any) | undefined",
+                "parameters": "(() => any) | undefined",
+                "required": false,
+                "description": "",
+                "sourcePath": "headless/src/components/layout/types.ts",
+                "referencedTypes": []
+              },
+              {
+                "name": "footer",
+                "type": "(() => any) | undefined",
+                "parameters": "(() => any) | undefined",
+                "required": false,
+                "description": "",
+                "sourcePath": "headless/src/components/layout/types.ts",
+                "referencedTypes": []
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "LayoutCompact": {
+      "props": {
+        "kind": "props",
+        "name": "LayoutCompactProps",
+        "type": "Interface LayoutCompactProps",
+        "resolvedType": "{ fullContent?: boolean; tabVisible?: boolean; footerVisible?: boolean; sidebarProps?: LayoutSidebarProps; railProps?: LayoutRailProps; mainProps?: LayoutMainProps; headerProps?: LayoutHeaderProps; tabProps?: LayoutTabProps; contentProps?: LayoutContentProps; footerProps?: LayoutFooterProps; mobileProps?: LayoutMobileProps; open?: boolean; defaultOpen?: boolean; side?: HorizontalSide; variant?: LayoutVariant; collapsible?: LayoutCollapsible; sidebarWidth?: number; collapsedSidebarWidth?: number; isMobile?: boolean; mobileSidebarWidth?: number; headerHeight?: number; tabHeight?: number; footerHeight?: number; pxToRem?: ((px: number) => number) }",
+        "description": "",
+        "sourcePath": "headless/src/components/layout/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "fullContent",
+            "type": "boolean",
+            "required": false,
+            "description": "whether the content takes the full height of the layout (include).",
+            "default": "false",
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/layout/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "tabVisible",
+            "type": "boolean",
+            "required": false,
+            "description": "whether to show the tab.",
+            "default": "true",
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/layout/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "footerVisible",
+            "type": "boolean",
+            "required": false,
+            "description": "whether to show the footer.",
+            "default": "true",
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/layout/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "sidebarProps",
+            "type": "LayoutSidebarProps",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/layout/types.ts",
+            "referencedTypes": [
+              {
+                "name": "LayoutSidebarProps",
+                "kind": "interface",
+                "type": "LayoutSidebarProps",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/components/layout/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "railProps",
+            "type": "LayoutRailProps",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/layout/types.ts",
+            "referencedTypes": [
+              {
+                "name": "LayoutRailProps",
+                "kind": "interface",
+                "type": "LayoutRailProps",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/components/layout/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "mainProps",
+            "type": "LayoutMainProps",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/layout/types.ts",
+            "referencedTypes": [
+              {
+                "name": "LayoutMainProps",
+                "kind": "interface",
+                "type": "LayoutMainProps",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/components/layout/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "headerProps",
+            "type": "LayoutHeaderProps",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/layout/types.ts",
+            "referencedTypes": [
+              {
+                "name": "LayoutHeaderProps",
+                "kind": "interface",
+                "type": "LayoutHeaderProps",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/components/layout/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "tabProps",
+            "type": "LayoutTabProps",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/layout/types.ts",
+            "referencedTypes": [
+              {
+                "name": "LayoutTabProps",
+                "kind": "interface",
+                "type": "LayoutTabProps",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/components/layout/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "contentProps",
+            "type": "LayoutContentProps",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/layout/types.ts",
+            "referencedTypes": [
+              {
+                "name": "LayoutContentProps",
+                "kind": "interface",
+                "type": "LayoutContentProps",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/components/layout/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "footerProps",
+            "type": "LayoutFooterProps",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/layout/types.ts",
+            "referencedTypes": [
+              {
+                "name": "LayoutFooterProps",
+                "kind": "interface",
+                "type": "LayoutFooterProps",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/components/layout/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "mobileProps",
+            "type": "LayoutMobileProps",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/layout/types.ts",
+            "referencedTypes": [
+              {
+                "name": "LayoutMobileProps",
+                "kind": "interface",
+                "type": "LayoutMobileProps",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/components/layout/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "open",
+            "type": "boolean",
+            "required": false,
+            "description": "The controlled open state of the layout. Can be bound with `v-model`.",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/layout/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "defaultOpen",
+            "type": "boolean",
+            "required": false,
+            "description": "The open state of the layout when it is initially rendered.\n\nUse when you do not need to control its open state.",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/layout/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "side",
+            "type": "HorizontalSide",
+            "required": false,
+            "description": "The side of the layout.",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/layout/types.ts",
+            "referencedTypes": [
+              {
+                "name": "HorizontalSide",
+                "kind": "typeAlias",
+                "type": "'right' | 'left'",
+                "resolvedType": "'right' | 'left'",
+                "description": "",
+                "sourcePath": "headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "variant",
+            "type": "LayoutVariant",
+            "required": false,
+            "description": "The variant of the layout.",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/layout/types.ts",
+            "referencedTypes": [
+              {
+                "name": "LayoutVariant",
+                "kind": "typeAlias",
+                "type": "'sidebar' | 'floating' | 'inset'",
+                "resolvedType": "'sidebar' | 'floating' | 'inset'",
+                "description": "",
+                "sourcePath": "headless/src/components/layout/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "collapsible",
+            "type": "LayoutCollapsible",
+            "required": false,
+            "description": "The collapsible state of the layout.",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/layout/types.ts",
+            "referencedTypes": [
+              {
+                "name": "LayoutCollapsible",
+                "kind": "typeAlias",
+                "type": "'icon' | 'offcanvas'",
+                "resolvedType": "'icon' | 'offcanvas'",
+                "description": "",
+                "sourcePath": "headless/src/components/layout/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "sidebarWidth",
+            "type": "number",
+            "required": false,
+            "description": "The width of the sidebar. (px)",
+            "default": "240",
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/layout/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "collapsedSidebarWidth",
+            "type": "number",
+            "required": false,
+            "description": "The width of the sidebar when it is collapsed. (px)",
+            "default": "50",
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/layout/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "isMobile",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether the layout is in mobile view.",
+            "default": "false",
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/layout/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "mobileSidebarWidth",
+            "type": "number",
+            "required": false,
+            "description": "The width of the sidebar in the mobile view. (px)",
+            "default": "240",
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/layout/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "headerHeight",
+            "type": "number",
+            "required": false,
+            "description": "The height of the header. (px)",
+            "default": "56",
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/layout/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "tabHeight",
+            "type": "number",
+            "required": false,
+            "description": "The height of the tab. (px)",
+            "default": "44",
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/layout/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "footerHeight",
+            "type": "number",
+            "required": false,
+            "description": "The height of the footer. (px)",
+            "default": "48",
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/layout/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "pxToRem",
+            "type": "((px: number) => number)",
+            "required": false,
+            "description": "The function to convert pixels to rem.",
+            "default": "(px: number) => px / 16 (16 is the base font size)",
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/layout/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      },
+      "emits": {
+        "kind": "emits",
+        "name": "LayoutCompactEmits",
+        "type": "TypeAlias LayoutCompactEmits",
+        "resolvedType": "{ \"update:open\": [open: boolean] }",
+        "description": "",
+        "sourcePath": "headless/src/components/layout/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [
+          {
+            "name": "update:open",
+            "type": "[open: boolean]",
+            "parameters": "open: boolean",
+            "required": true,
+            "description": "",
+            "sourcePath": "headless/src/components/layout/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "referencedTypes": [
+          {
+            "name": "LayoutRootEmits",
+            "kind": "typeAlias",
+            "type": "{ 'update:open': [open: boolean]; }",
+            "resolvedType": "{ \"update:open\": [open: boolean] }",
+            "description": "",
+            "sourcePath": "headless/src/components/layout/types.ts",
+            "typeParameters": [],
+            "external": false,
+            "members": [],
+            "callables": [
+              {
+                "name": "update:open",
+                "type": "[open: boolean]",
+                "parameters": "open: boolean",
+                "required": true,
+                "description": "",
+                "sourcePath": "headless/src/components/layout/types.ts",
+                "referencedTypes": []
+              }
+            ]
+          }
+        ]
+      },
+      "slots": {
+        "kind": "slots",
+        "name": "LayoutCompactSlots",
+        "type": "TypeAlias LayoutCompactSlots",
+        "resolvedType": "{ default?: (() => any); sidebar?: ((props: { open: boolean; collapsedSidebarWidth: number; }) => any); header?: (() => any); tab?: (() => any); content?: (() => any); footer?: (() => any) }",
+        "description": "",
+        "sourcePath": "headless/src/components/layout/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [
+          {
+            "name": "default",
+            "type": "(() => any) | undefined",
+            "parameters": "(() => any) | undefined",
+            "required": false,
+            "description": "",
+            "sourcePath": "headless/src/components/layout/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "sidebar",
+            "type": "((props: { open: boolean | undefined; collapsedSidebarWidth: number; }) => any) | undefined",
+            "parameters": "((props: { open: boolean | undefined; collapsedSidebarWidth: number; }) => any) | undefined",
+            "required": false,
+            "description": "",
+            "sourcePath": "headless/src/components/layout/types.ts",
+            "referencedTypes": [
+              {
+                "name": "__type",
+                "kind": "typeLiteral",
+                "type": "{ open: boolean | undefined; collapsedSidebarWidth: number; }",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/components/layout/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "header",
+            "type": "(() => any) | undefined",
+            "parameters": "(() => any) | undefined",
+            "required": false,
+            "description": "",
+            "sourcePath": "headless/src/components/layout/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "tab",
+            "type": "(() => any) | undefined",
+            "parameters": "(() => any) | undefined",
+            "required": false,
+            "description": "",
+            "sourcePath": "headless/src/components/layout/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "content",
+            "type": "(() => any) | undefined",
+            "parameters": "(() => any) | undefined",
+            "required": false,
+            "description": "",
+            "sourcePath": "headless/src/components/layout/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "footer",
+            "type": "(() => any) | undefined",
+            "parameters": "(() => any) | undefined",
+            "required": false,
+            "description": "",
+            "sourcePath": "headless/src/components/layout/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "referencedTypes": []
       }
     },
     "LayoutContent": {
@@ -598,28 +1269,6 @@
       }
     },
     "LayoutRoot": {
-      "emits": {
-        "kind": "emits",
-        "name": "LayoutRootEmits",
-        "type": "TypeAlias LayoutRootEmits",
-        "resolvedType": "{ \"update:open\": [open: boolean] }",
-        "description": "",
-        "sourcePath": "headless/src/components/layout/types.ts",
-        "typeParameters": [],
-        "members": [],
-        "callables": [
-          {
-            "name": "update:open",
-            "type": "[open: boolean]",
-            "parameters": "open: boolean",
-            "required": true,
-            "description": "",
-            "sourcePath": "headless/src/components/layout/types.ts",
-            "referencedTypes": []
-          }
-        ],
-        "referencedTypes": []
-      },
       "props": {
         "kind": "props",
         "name": "LayoutRootProps",
@@ -800,6 +1449,28 @@
           }
         ],
         "callables": [],
+        "referencedTypes": []
+      },
+      "emits": {
+        "kind": "emits",
+        "name": "LayoutRootEmits",
+        "type": "TypeAlias LayoutRootEmits",
+        "resolvedType": "{ \"update:open\": [open: boolean] }",
+        "description": "",
+        "sourcePath": "headless/src/components/layout/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [
+          {
+            "name": "update:open",
+            "type": "[open: boolean]",
+            "parameters": "open: boolean",
+            "required": true,
+            "description": "",
+            "sourcePath": "headless/src/components/layout/types.ts",
+            "referencedTypes": []
+          }
+        ],
         "referencedTypes": []
       }
     },
