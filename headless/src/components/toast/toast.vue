@@ -3,6 +3,7 @@ import { computed, shallowRef, useTemplateRef, watch, watchEffect, onWatcherClea
 import type { CSSProperties } from 'vue';
 import { useMounted, useDocumentVisibility, useElementSize } from '@vueuse/core';
 import type { Point, SwipeDirection } from '../../types';
+import DynamicRender from '../_common/dynamic-render.vue';
 import Icon from '../_icon/icon.vue';
 import Button from '../button/button.vue';
 import { useToasterContext, useToastUi } from './context';
@@ -15,7 +16,6 @@ import {
   setSwipeAmount,
   resetSwipeAmount
 } from './shared';
-import ToastRender from './toast-render.vue';
 import type { ToastEmits, ToastProps, ToastType } from './types';
 
 defineOptions({
@@ -396,7 +396,7 @@ watchEffect(() => {
       <template v-else>
         <h3 v-bind="titleProps" :class="[ui.title, toast.ui?.title]" data-slot="title">
           <Icon v-if="icon" v-bind="iconProps" :icon="icon" :class="[ui.icon, toast.ui?.icon]" />
-          <ToastRender :is="toast.title" />
+          <DynamicRender :is="toast.title" />
         </h3>
         <p
           v-if="toast.description"
@@ -404,7 +404,7 @@ watchEffect(() => {
           :class="[ui.description, toast.ui?.description]"
           data-slot="description"
         >
-          <ToastRender :is="toast.description" />
+          <DynamicRender :is="toast.description" />
         </p>
         <component
           v-bind="contentProps"
@@ -426,7 +426,7 @@ watchEffect(() => {
             data-slot="cancel"
             @click="onCancel"
           >
-            <ToastRender :is="toast.cancel" />
+            <DynamicRender :is="toast.cancel" />
           </Button>
           <Button
             v-if="toast.action"
@@ -435,7 +435,7 @@ watchEffect(() => {
             data-slot="action"
             @click="onAction"
           >
-            <ToastRender :is="toast.action" />
+            <DynamicRender :is="toast.action" />
           </Button>
         </div>
       </template>

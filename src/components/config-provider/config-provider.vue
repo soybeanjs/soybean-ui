@@ -11,7 +11,7 @@ import DialogProvider from '../dialog/dialog-provider.vue';
 import Icon from '../icon/icon.vue';
 import type { IconValue } from '../icon/types';
 import ProgressProvider from '../progress/progress-provider.vue';
-import Toaster from '../toast/toaster.vue';
+import ToastProvider from '../toast/toast-provider.vue';
 import { provideConfigProviderContext } from './context';
 import type { ConfigProviderProps } from './types';
 
@@ -78,8 +78,8 @@ watchEffect(() => {
       {{ cssVars }}
     </Primitive>
     <slot />
-    <ProgressProvider v-bind="props.progress" />
-    <Toaster v-if="!props.customToast" v-bind="props.toast" />
+    <ToastProvider v-if="!props.customToast" v-bind="props.toast" />
     <DialogProvider />
+    <ProgressProvider v-bind="props.progress" />
   </ConfigProvider>
 </template>

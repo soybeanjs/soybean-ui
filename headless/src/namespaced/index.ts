@@ -391,6 +391,7 @@ import {
   TextareaCounter,
   TextareaRoot,
   Toaster,
+  ToastProvider,
   Toggle,
   ToggleGroupItem,
   ToggleGroupRoot,
@@ -1415,7 +1416,13 @@ export const Textarea = {
   Counter: typeof TextareaCounter;
 };
 
-export { Toaster };
+export const Toast = {
+  Toaster: Toaster,
+  Provider: ToastProvider
+} as {
+  Toaster: typeof Toaster;
+  Provider: typeof ToastProvider;
+};
 
 export const Toolbar = {
   Root: ToolbarRoot,

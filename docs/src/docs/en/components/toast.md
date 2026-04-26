@@ -2,17 +2,17 @@
 
 ## Overview
 
-`Toaster` renders the toast viewports and `toast` is the imperative API used to create, update, dismiss, and inspect notifications.
+`SToastProvider` renders the toast viewports and `toast` is the imperative API used to create, update, dismiss, and inspect notifications.
 
 The first argument of `toast(...)` becomes the toast title/message. Use `description`, `action`, `cancel`, `icon`, `ui`, and `position` to customize each notification.
 
 ## Usage
 
-Mount one `Toaster` near your app root. If your app is already wrapped with `SConfigProvider`, a default `Toaster` is rendered automatically unless `customToast` is set to `true`.
+Mount one `SToastProvider` near your app root. If your app is already wrapped with `SConfigProvider`, a default `SToastProvider` is rendered automatically unless `customToast` is set to `true`.
 
 ```vue
 <script setup lang="ts">
-import { SButton, Toaster, toast } from '@soybeanjs/ui';
+import { SButton, SToastProvider, toast } from '@soybeanjs/ui';
 
 function openToast() {
   toast.success('Project published', {
@@ -23,7 +23,7 @@ function openToast() {
 </script>
 
 <template>
-  <Toaster />
+  <SToastProvider />
 
   <SButton @click="openToast">Show Toast</SButton>
 </template>
@@ -65,9 +65,9 @@ position
 
 <DataTable preset="props" :data="[
   { name: 'id', type: 'number | string', default: 'auto', description: 'Stable toast id. Reuse it to update an existing toast.' },
-  { name: 'toasterId', type: 'string', default: '-', description: 'Route the toast to a specific `Toaster` instance.' },
-  { name: 'position', type: 'ToastPosition', default: 'inherits `Toaster.position`', description: 'Per-toast viewport position override.' },
-  { name: 'duration', type: 'number', default: 'inherits `Toaster.duration`', description: 'Auto close duration in milliseconds. Use `0` or `Infinity` to disable auto dismiss.' },
+  { name: 'toasterId', type: 'string', default: '-', description: 'Route the toast to a specific `SToastProvider` instance.' },
+  { name: 'position', type: 'ToastPosition', default: 'inherits `SToastProvider.position`', description: 'Per-toast viewport position override.' },
+  { name: 'duration', type: 'number', default: 'inherits `SToastProvider.duration`', description: 'Auto close duration in milliseconds. Use `0` or `Infinity` to disable auto dismiss.' },
   { name: 'description', type: 'VNode | string', default: '-', description: 'Secondary content shown below the title.' },
   { name: 'icon', type: 'IconValue', default: '-', description: 'Custom leading icon. String values are resolved through `iconRender`.' },
   { name: 'content', type: 'VNode', default: '-', description: 'Extra content rendered inside the built-in layout.' },
@@ -76,7 +76,7 @@ position
   { name: 'onAction', type: '(event: MouseEvent) => void', default: '-', description: 'Called when the action button is clicked.' },
   { name: 'onCancel', type: '(event: MouseEvent) => void', default: '-', description: 'Called when the cancel button is clicked.' },
   { name: 'dismissible', type: 'boolean', default: 'true', description: 'Whether swipe and close interactions are allowed.' },
-  { name: 'showClose', type: 'boolean', default: 'inherits `Toaster.showClose`', description: 'Whether to show the close button for this toast.' },
+  { name: 'showClose', type: 'boolean', default: 'inherits `SToastProvider.showClose`', description: 'Whether to show the close button for this toast.' },
   { name: 'richColor', type: 'boolean', default: 'false', description: 'Apply semantic filled color styles for info, success, warning, and error toasts.' },
   { name: 'inverted', type: 'boolean', default: 'false', description: 'Use the inverted toast palette.' },
   { name: 'ui', type: 'Partial<ToastUi>', default: '-', description: 'Override slot class names for the current toast.' },
@@ -96,17 +96,17 @@ position
   { name: 'id / position / duration / dismissible / richColor / inverted / ui', type: 'same as Toast Options', default: '-', description: 'Common toast options also supported by `toast.promise`.' }
 ]"/>
 
-### Toaster Props
+### SToastProvider Props
 
 <DataTable preset="props" :data="[
-  { name: 'id', type: 'string', default: '-', description: 'Unique toaster id used together with `toast(..., { toasterId })`.' },
+  { name: 'id', type: 'string', default: '-', description: 'Unique provider id used together with `toast(..., { toasterId })`.' },
   { name: 'size', type: 'ThemeSize', default: '`md`', description: 'Controls width, spacing, and typography of the built-in toast UI.' },
   { name: 'ui', type: 'ToastUi', default: '-', description: 'Override slot class names for the built-in toast UI.' },
   { name: 'position', type: 'ToastPosition', default: '`top-right`', description: 'Default position for new toasts.' },
   { name: 'hotkey', type: 'string[]', default: '`[\'altKey\', \'KeyT\']`', description: 'Keyboard shortcut used to focus the first active toast position.' },
   { name: 'containerAriaLabel', type: 'string', default: '`Notifications`', description: 'Base aria label announced for the toast region.' },
   { name: 'customAriaLabel', type: 'string', default: '-', description: 'Override the generated aria label completely.' },
-  { name: 'dir', type: '`ltr` | `rtl`', default: 'inherits global direction', description: 'Direction override for the toaster.' },
+  { name: 'dir', type: '`ltr` | `rtl`', default: 'inherits global direction', description: 'Direction override for the toast provider.' },
   { name: 'duration', type: 'number', default: '`4000`', description: 'Default auto close duration in milliseconds.' },
   { name: 'gap', type: 'number', default: '`12`', description: 'Gap between stacked toasts.' },
   { name: 'offset', type: 'ToastOffset', default: '`24`', description: 'Viewport offset from screen edges. Also supports per-side values.' },

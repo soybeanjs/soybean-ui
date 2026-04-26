@@ -111,6 +111,8 @@ export interface ToasterProps extends /** @vue-ignore */ OlHTMLAttributes {
   closeProps?: HTMLAttributes;
 }
 
+export interface ToastProviderProps extends ToasterProps {}
+
 export interface ToastDismiss {
   id: number | string;
   dismiss: boolean;

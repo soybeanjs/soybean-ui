@@ -1,7 +1,7 @@
 import { nextTick } from 'vue';
 import { mount } from '@vue/test-utils';
 import { afterEach, describe, expect, it, vi } from 'vitest';
-import { SToaster, toast } from '../../../src/components/toast';
+import { SToastProvider, toast } from '../../../src/components/toast';
 
 afterEach(() => {
   vi.useRealTimers();
@@ -9,7 +9,7 @@ afterEach(() => {
 
 describe('Toaster', () => {
   it('pre-renders toast containers for all positions', () => {
-    const wrapper = mount(SToaster);
+    const wrapper = mount(SToastProvider);
 
     expect(wrapper.findAll('[data-slot=toaster]')).toHaveLength(6);
     expect(wrapper.find('[data-slot=toaster][data-y-position="top"][data-x-position="right"]').exists()).toBe(true);
@@ -25,7 +25,7 @@ describe('Toaster', () => {
   it('focuses the first active toast position when hotkey is pressed', async () => {
     vi.useFakeTimers();
 
-    const wrapper = mount(SToaster, {
+    const wrapper = mount(SToastProvider, {
       attachTo: document.body,
       props: {
         id: 'hotkey-test',

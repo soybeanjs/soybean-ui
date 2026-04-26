@@ -360,7 +360,7 @@ export const components = {
     'TagsInputClear'
   ],
   textarea: ['TextareaRoot', 'TextareaControl', 'TextareaCounter'],
-  toast: ['Toaster'],
+  toast: ['Toaster', 'ToastProvider'],
   toolbar: [
     'ToolbarRoot',
     'ToolbarButton',

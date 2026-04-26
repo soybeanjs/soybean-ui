@@ -6,7 +6,7 @@
         "kind": "props",
         "name": "ConfigProviderProps",
         "type": "Interface ConfigProviderProps",
-        "resolvedType": "{ theme?: ThemeOptions; size?: ThemeSize; iconify?: { width?: string; height?: string; }; progress?: Partial<ProgressProviderProps>; toast?: Partial<ToasterProps>; customToast?: boolean; dir?: Direction; locale?: string; nonce?: string; tooltip?: Partial<TooltipProviderProps>; nuxt?: boolean; iconRender?: ((icon: IconValue) => VNode) }",
+        "resolvedType": "{ theme?: ThemeOptions; size?: ThemeSize; iconify?: { width?: string; height?: string; }; progress?: Partial<ProgressProviderProps>; toast?: Partial<ToastProviderProps>; customToast?: boolean; dir?: Direction; locale?: string; nonce?: string; tooltip?: Partial<TooltipProviderProps>; nuxt?: boolean; iconRender?: ((icon: IconValue) => VNode) }",
         "description": "",
         "sourcePath": "src/components/config-provider/types.ts",
         "typeParameters": [],
@@ -105,7 +105,7 @@
           },
           {
             "name": "toast",
-            "type": "Partial<ToasterProps>",
+            "type": "Partial<ToastProviderProps>",
             "required": false,
             "description": "The global toast configuration of your application. This will be inherited by the related components.",
             "default": null,
@@ -113,9 +113,9 @@
             "sourcePath": "src/components/config-provider/types.ts",
             "referencedTypes": [
               {
-                "name": "ToasterProps",
+                "name": "ToastProviderProps",
                 "kind": "interface",
-                "type": "ToasterProps",
+                "type": "ToastProviderProps",
                 "resolvedType": null,
                 "description": "",
                 "sourcePath": "src/components/toast/types.ts",
@@ -130,7 +130,7 @@
             "name": "customToast",
             "type": "boolean",
             "required": false,
-            "description": "Whether to use custom toast rendering. If set to `true`, the `Toaster` will not render the default toast UI, and you can import `Toaster` component to render custom toast UI.\n\n[是否使用自定义吐司渲染。如果设置为 `true`，`Toaster` 将不会渲染默认的吐司 UI，你可以导入 `Toaster` 组件来渲染自定义的吐司 UI。]",
+            "description": "Whether to use custom toast rendering. If set to `true`, the `ToastProvider` will not render the default toast UI, and you can import `ToastProvider` component to render custom toast UI.",
             "default": "false",
             "inheritedFrom": null,
             "sourcePath": "src/components/config-provider/types.ts",

@@ -1,5 +1,5 @@
 import type {
-  ToasterProps as _ToasterProps,
+  ToastProviderProps as _ToastProviderProps,
   ToastUi,
   SwipeDirection,
   ToastPosition,
@@ -7,7 +7,7 @@ import type {
 } from '@soybeanjs/headless';
 import type { ThemeSize } from '@/theme';
 
-export interface ToasterProps extends _ToasterProps {
+export interface ToastProviderProps extends _ToastProviderProps {
   size?: ThemeSize;
   ui?: ToastUi;
 }

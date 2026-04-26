@@ -2,17 +2,17 @@
 
 ## 概述
 
-`Toaster` 负责渲染通知视口，`toast` 是用于创建、更新、关闭和查询通知的命令式 API。
+`SToastProvider` 负责渲染通知视口，`toast` 是用于创建、更新、关闭和查询通知的命令式 API。
 
 `toast(...)` 的第一个参数会作为通知的标题/主消息。你可以通过 `description`、`action`、`cancel`、`icon`、`ui` 和 `position` 来定制每条通知。
 
 ## 用法
 
-在应用根部挂载一个 `Toaster`。如果你的应用已经被 `SConfigProvider` 包裹，那么默认会自动渲染一个 `Toaster`，除非将 `customToast` 设为 `true`。
+在应用根部挂载一个 `SToastProvider`。如果你的应用已经被 `SConfigProvider` 包裹，那么默认会自动渲染一个 `SToastProvider`，除非将 `customToast` 设为 `true`。
 
 ```vue
 <script setup lang="ts">
-import { SButton, Toaster, toast } from '@soybeanjs/ui';
+import { SButton, SToastProvider, toast } from '@soybeanjs/ui';
 
 function openToast() {
   toast.success('Project published', {
@@ -23,7 +23,7 @@ function openToast() {
 </script>
 
 <template>
-  <Toaster />
+  <SToastProvider />
 
   <SButton @click="openToast">Show Toast</SButton>
 </template>
@@ -65,9 +65,9 @@ position
 
 <DataTable preset="props" :data="[
   { name: 'id', type: 'number | string', default: 'auto', description: '稳定的通知 id。复用该值可以更新已有通知。' },
-  { name: 'toasterId', type: 'string', default: '-', description: '将通知发送到指定的 `Toaster` 实例。' },
-  { name: 'position', type: 'ToastPosition', default: '继承 `Toaster.position`', description: '单条通知的显示位置覆盖。' },
-  { name: 'duration', type: 'number', default: '继承 `Toaster.duration`', description: '自动关闭时长，单位为毫秒。设置为 `0` 或 `Infinity` 可禁用自动关闭。' },
+  { name: 'toasterId', type: 'string', default: '-', description: '将通知发送到指定的 `SToastProvider` 实例。' },
+  { name: 'position', type: 'ToastPosition', default: '继承 `SToastProvider.position`', description: '单条通知的显示位置覆盖。' },
+  { name: 'duration', type: 'number', default: '继承 `SToastProvider.duration`', description: '自动关闭时长，单位为毫秒。设置为 `0` 或 `Infinity` 可禁用自动关闭。' },
   { name: 'description', type: 'VNode | string', default: '-', description: '显示在标题下方的辅助说明内容。' },
   { name: 'icon', type: 'IconValue', default: '-', description: '自定义前置图标。字符串值会通过 `iconRender` 解析。' },
   { name: 'content', type: 'VNode', default: '-', description: '在内置布局中追加渲染的自定义内容。' },
@@ -76,7 +76,7 @@ position
   { name: 'onAction', type: '(event: MouseEvent) => void', default: '-', description: '点击 action 按钮时触发。' },
   { name: 'onCancel', type: '(event: MouseEvent) => void', default: '-', description: '点击 cancel 按钮时触发。' },
   { name: 'dismissible', type: 'boolean', default: 'true', description: '是否允许滑动关闭和手动关闭。' },
-  { name: 'showClose', type: 'boolean', default: '继承 `Toaster.showClose`', description: '是否为当前通知显示关闭按钮。' },
+  { name: 'showClose', type: 'boolean', default: '继承 `SToastProvider.showClose`', description: '是否为当前通知显示关闭按钮。' },
   { name: 'richColor', type: 'boolean', default: 'false', description: '为 info、success、warning、error 通知启用语义化填充色样式。' },
   { name: 'inverted', type: 'boolean', default: 'false', description: '使用反色通知样式。' },
   { name: 'ui', type: 'Partial<ToastUi>', default: '-', description: '覆盖当前通知各个 slot 的类名。' },
@@ -96,17 +96,17 @@ position
   { name: 'id / position / duration / dismissible / richColor / inverted / ui', type: '与通知选项一致', default: '-', description: '`toast.promise` 同样支持这组通用通知选项。' }
 ]"/>
 
-### Toaster 属性
+### SToastProvider 属性
 
 <DataTable preset="props" :data="[
-  { name: 'id', type: 'string', default: '-', description: '唯一的 toaster id，可配合 `toast(..., { toasterId })` 使用。' },
+  { name: 'id', type: 'string', default: '-', description: '唯一的 provider id，可配合 `toast(..., { toasterId })` 使用。' },
   { name: 'size', type: 'ThemeSize', default: '`md`', description: '控制内置通知 UI 的宽度、间距和排版。' },
   { name: 'ui', type: 'ToastUi', default: '-', description: '覆盖内置通知 UI 各个 slot 的类名。' },
   { name: 'position', type: 'ToastPosition', default: '`top-right`', description: '新通知的默认显示位置。' },
   { name: 'hotkey', type: 'string[]', default: '`[\'altKey\', \'KeyT\']`', description: '聚焦首个活动通知分组的快捷键。' },
   { name: 'containerAriaLabel', type: 'string', default: '`Notifications`', description: '通知区域的基础 aria 标签。' },
   { name: 'customAriaLabel', type: 'string', default: '-', description: '完全覆盖自动生成的 aria 标签。' },
-  { name: 'dir', type: '`ltr` | `rtl`', default: '继承全局方向', description: 'toaster 的方向覆盖。' },
+  { name: 'dir', type: '`ltr` | `rtl`', default: '继承全局方向', description: '通知 provider 的方向覆盖。' },
   { name: 'duration', type: 'number', default: '`4000`', description: '默认自动关闭时长，单位毫秒。' },
   { name: 'gap', type: 'number', default: '`12`', description: '堆叠通知之间的间距。' },
   { name: 'offset', type: 'ToastOffset', default: '`24`', description: '通知视口距离屏幕边缘的偏移量，也支持按方向分别配置。' },
