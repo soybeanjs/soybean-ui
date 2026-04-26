@@ -3,7 +3,7 @@ import { tv } from 'tailwind-variants';
 import type { VariantProps } from 'tailwind-variants';
 
 export const kbdVariants = tv({
-  base: `inline-flex items-center justify-center w-fit text-center font-medium border border-border shadow-[0_2px_0_0] rounded-sm font-inherit`,
+  base: `inline-flex items-center justify-center w-fit text-center font-medium border border-border rounded-sm font-inherit`,
   variants: {
     variant: {
       solid: 'border-muted-foreground bg-muted-foreground text-muted shadow-muted-foreground/50',
@@ -17,11 +17,15 @@ export const kbdVariants = tv({
       lg: 'h-6 min-w-6 px-1 text-sm data-[group]:tracking-1',
       xl: 'h-7 min-w-7 px-1.25 text-base data-[group]:tracking-1.25',
       '2xl': 'h-8 min-w-8 px-1.5 text-xl data-[group]:tracking-1.5'
+    },
+    raised: {
+      true: 'shadow-[0_2px_0_0]'
     }
   },
   defaultVariants: {
     size: 'md',
-    variant: 'outline'
+    variant: 'outline',
+    raised: true
   }
 });
 

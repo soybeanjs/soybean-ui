@@ -11,16 +11,18 @@ defineOptions({
 });
 
 const props = withDefaults(defineProps<KbdProps>(), {
-  symbolize: true
+  symbolize: true,
+  raised: true
 });
 
-const delegatedProps = useOmitProps(props, ['class', 'size', 'variant']);
+const delegatedProps = useOmitProps(props, ['class', 'size', 'variant', 'raised']);
 
 const cls = computed(() =>
   cn(
     kbdVariants({
       size: props.size,
-      variant: props.variant
+      variant: props.variant,
+      raised: props.raised
     }),
     props.class
   )

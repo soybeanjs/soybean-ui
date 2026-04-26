@@ -16,6 +16,8 @@ import { SKbd } from '@soybeanjs/ui';
   +
   <SKbd>K</SKbd>
   <SKbd value="Ctrl" />
+  <SKbd value="command" />
+  <SKbd :raised="false" value="shift" />
 </template>
 ```
 
@@ -25,6 +27,7 @@ import { SKbd } from '@soybeanjs/ui';
 base
 size
 variant
+raised
 ```
 
 ## API
@@ -32,9 +35,12 @@ variant
 ### 属性
 
 <DataTable preset="props" :data="[
-  { name: 'value', type: 'string', default: '-', description: '要显示的文本值。' },
+  { name: 'class', type: 'ClassValue', default: '-', description: '自定义类名。' },
+  { name: 'value', type: 'KbdValue | KbdValue[]', default: '-', description: '要显示的按键值，支持单个按键或按键组合。' },
+  { name: 'symbolize', type: 'boolean', default: 'true', description: '是否将已知按键名称转换为符号形式。' },
   { name: 'size', type: 'ThemeSize', default: `'md'`, description: '按键尺寸。' },
-  { name: 'variant', type: `'solid' \| 'outline' \| 'dashed' \| 'soft' \| 'ghost' \| 'plain'`, default: `'solid'`, description: '视觉样式变体。' },
+  { name: 'variant', type: 'KbdVariant', default: `'outline'`, description: '视觉样式变体。' },
+  { name: 'raised', type: 'boolean', default: 'true', description: '是否启用凸起阴影效果；传入 false 可关闭。' },
   { name: 'as', type: 'string | Component', default: `'kbd'`, description: '渲染的元素。' },
   { name: 'asChild', type: 'boolean', default: 'false', description: '将属性合并到子元素。' }
 ]"/>
@@ -48,3 +54,5 @@ variant
 ### 类型
 
 <UnionType name="ThemeSize" description="主题尺寸类型" type="'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'" />
+
+<UnionType name="KbdVariant" description="按键视觉样式变体" type="'solid' | 'outline' | 'ghost'" />

@@ -6,6 +6,7 @@ export interface KbdProps extends _KbdProps {
   class?: ClassValue;
   size?: ThemeSize;
   variant?: KbdVariant;
+  raised?: boolean;
 }
 
 export type { KbdVariant, KbdValue };
