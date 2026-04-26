@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-25T09:02:43.123Z",
+  "generatedAt": "2026-04-26T16:25:36.245Z",
   "schemaVersion": 3,
   "components": {
     "accordion": {
@@ -400,6 +400,8 @@
       "file": "layout.json",
       "symbols": [
         "Layout",
+        "LayoutClassic",
+        "LayoutClassicCompact",
         "LayoutCompact",
         "LayoutContent",
         "LayoutFooter",
@@ -722,7 +724,7 @@
     "toast": {
       "component": "toast",
       "file": "toast.json",
-      "symbols": ["Toaster"]
+      "symbols": ["Toaster", "ToastProvider"]
     },
     "toggle": {
       "component": "toggle",

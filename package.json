@@ -56,7 +56,7 @@
     "dev:docs": "pnpm --filter @soybeanjs/ui-docs dev",
     "lint": "oxlint --fix && eslint --fix headless/ src/",
     "fmt": "oxfmt",
-    "gen:api": "tsx scripts/api.ts",
+    "gen:api": "tsx scripts/api.ts && oxfmt docs/src/generated/api/",
     "gen:headless": "tsx scripts/headless.ts && oxfmt headless/src/constants/components.ts headless/src/namespaced/index.ts",
     "prepare": "simple-git-hooks",
     "preview": "vite preview",

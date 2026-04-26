@@ -6,7 +6,7 @@
         "kind": "props",
         "name": "KbdProps",
         "type": "Interface KbdProps",
-        "resolvedType": "{ class?: string | Record<string, boolean> | ClassValue[] | null; size?: ThemeSize; variant?: KbdVariant; value?: KbdValue | KbdValue[]; symbolize?: boolean }",
+        "resolvedType": "{ class?: string | Record<string, boolean> | ClassValue[] | null; size?: ThemeSize; variant?: KbdVariant; raised?: boolean; value?: KbdValue | KbdValue[]; symbolize?: boolean }",
         "description": "",
         "sourcePath": "src/components/kbd/types.ts",
         "typeParameters": [],
@@ -79,6 +79,16 @@
                 "callables": []
               }
             ]
+          },
+          {
+            "name": "raised",
+            "type": "boolean",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/kbd/types.ts",
+            "referencedTypes": []
           },
           {
             "name": "value",
