@@ -121,7 +121,7 @@ const fullContent = shallowRef(false);
 
 <template>
   <div class="space-y-4">
-    <div class="text-lg font-semibold">Classic Layout</div>
+    <h3 class="playground-title">Classic Layout</h3>
     <div class="flex-y-center flex-wrap justify-end gap-4">
       <SButtonGroup>
         <SButton variant="pure" class="cursor-default">orientation</SButton>
@@ -226,10 +226,10 @@ const fullContent = shallowRef(false);
                 </STreeMenuStyledItem>
               </template>
             </SDropdownMenu>
-            <SLayoutTrigger v-if="side === 'left'" :size="size" />
+            <SLayoutTrigger v-if="side === 'left'" />
             <SSeparator orientation="vertical" class="h-4" />
             <SBreadcrumb :items="breadcrumbItems" :size="size" :ui="{ list: 'gap-2' }" />
-            <SLayoutTrigger v-if="side === 'right'" :size="size" class="ml-auto" />
+            <SLayoutTrigger v-if="side === 'right'" class="ml-auto" />
           </div>
         </template>
         <template #tab>

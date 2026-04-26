@@ -18,7 +18,15 @@ const cls = useLayoutUi('trigger');
 </script>
 
 <template>
-  <Primitive :as="as" :as-child="asChild" :class="cls" data-sidebar="trigger" @click="toggleSidebar">
+  <Primitive
+    :as="as"
+    :as-child="asChild"
+    :class="cls"
+    type="button"
+    aria-label="Toggle Sidebar"
+    data-sidebar="trigger"
+    @click="toggleSidebar"
+  >
     <slot :open="open">
       <Icon :icon="open ? 'lucide:panel-right' : 'lucide:panel-left'" />
     </slot>

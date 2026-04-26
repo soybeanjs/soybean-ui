@@ -17,7 +17,6 @@ const props = withDefaults(defineProps<LayoutClassicRootProps>(), {
   orientation: 'horizontal',
   baseZIndex: 50,
   scrollBehavior: 'content',
-  scrollId: '__SCROLL_EL_ID',
   side: 'left',
   sidebarVisible: true,
   sidebarWidth: 240,

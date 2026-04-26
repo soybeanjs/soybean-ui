@@ -27,7 +27,6 @@
     "./constants": "./src/constants/index.ts",
     "./composables": "./src/composables/index.ts",
     "./shared": "./src/shared/index.ts",
-    "./date": "./src/date/index.ts",
     "./nuxt": "./src/nuxt/index.ts",
     "./resolver": "./src/resolver/index.ts",
     "./namespaced": "./src/namespaced/index.ts",

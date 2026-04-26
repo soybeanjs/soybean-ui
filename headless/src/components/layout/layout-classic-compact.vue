@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { computed, useId } from 'vue';
 import { useOmitProps } from '@soybeanjs/headless/composables';
 import LayoutClassicRoot from './layout-classic-root.vue';
 import LayoutSidebar from './layout-sidebar.vue';
@@ -19,7 +20,6 @@ const props = withDefaults(defineProps<LayoutClassicCompactProps>(), {
   open: undefined,
   orientation: 'vertical',
   defaultOpen: true,
-  scrollId: '__SCROLL_EL_ID',
   sidebarVisible: true,
   headerVisible: true,
   tabVisible: true,
@@ -31,6 +31,9 @@ const props = withDefaults(defineProps<LayoutClassicCompactProps>(), {
 const emit = defineEmits<LayoutClassicCompactEmits>();
 
 defineSlots<LayoutClassicCompactSlots>();
+
+const _scrollIdFallback = useId();
+const resolvedScrollId = computed(() => props.scrollId ?? `soybean-layout-scroll-${_scrollIdFallback}`);
 
 const forwardedProps = useOmitProps(props, [
   'sidebarProps',
@@ -46,7 +49,7 @@ const forwardedProps = useOmitProps(props, [
 
 <template>
   <LayoutClassicRoot v-slot="slotProps" v-bind="forwardedProps" @update:open="emit('update:open', $event)">
-    <LayoutMain v-bind="mainProps" :id="scrollBehavior === 'wrapper' ? scrollId : undefined">
+    <LayoutMain v-bind="mainProps" :id="scrollBehavior === 'wrapper' ? resolvedScrollId : undefined">
       <LayoutHeader v-bind="headerProps">
         <slot name="header" />
       </LayoutHeader>
@@ -59,7 +62,7 @@ const forwardedProps = useOmitProps(props, [
         <slot v-bind="slotProps" name="sidebar" />
         <LayoutRail v-bind="railProps" />
       </LayoutSidebar>
-      <LayoutContent v-bind="contentProps" :id="scrollBehavior === 'content' ? scrollId : undefined">
+      <LayoutContent v-bind="contentProps" :id="scrollBehavior === 'content' ? resolvedScrollId : undefined">
         <slot />
       </LayoutContent>
       <LayoutFooter v-if="footerVisible" v-bind="footerProps">

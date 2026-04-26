@@ -166,7 +166,7 @@ export const layoutClassicVariants = tv({
     main: 'flex flex-col h-full group-data-[scroll-behavior=wrapper]:overflow-y-auto transition-all-300',
     sidebarRoot: 'lt-md:hidden',
     sidebarWrapper: [
-      `absolute inset-y-0 z-[--soybean-layout-sidebar-z-index] flex h-full w-[--soybean-sidebar-width] transition-[left,right,width,opacity] duration-200 ease-linear lt-md:hidden`,
+      `absolute inset-y-0 z-[--soybean-layout-sidebar-z-index] flex h-full w-[--soybean-sidebar-width] transition-[inset-inline-start,inset-inline-end,width,opacity] duration-200 ease-linear lt-md:hidden`,
       'group-data-[state=collapsed]:w-[--soybean-collapsed-sidebar-width] pt-[--soybean-layout-sidebar-top-gap] pb-[--soybean-layout-sidebar-bottom-gap]'
     ],
     sidebar: [
@@ -238,7 +238,7 @@ export const layoutClassicVariants = tv({
     },
     fullContent: {
       true: {
-        tab: 'fixed left-0 top-0 z-[--soybean-layout-base-z-index] w-full',
+        tab: 'fixed start-0 top-0 z-[--soybean-layout-base-z-index] w-full',
         content: `fixed inset-0 z-[--soybean-layout-base-z-index] group-data-[tab-visible=true]:mt-[--soybean-layout-tab-height] overflow-auto`
       },
       false: {

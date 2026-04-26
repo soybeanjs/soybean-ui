@@ -32,6 +32,7 @@ const forwardedProps = useOmitProps(props, [
   'headerProps',
   'mainProps',
   'tabProps',
+  'contentProps',
   'footerProps',
   'railProps',
   'mobileProps'
@@ -52,7 +53,9 @@ const forwardedProps = useOmitProps(props, [
         <slot name="tab" />
       </LayoutTab>
       <LayoutContent v-bind="contentProps">
-        <slot />
+        <slot name="content">
+          <slot />
+        </slot>
       </LayoutContent>
       <LayoutFooter v-if="footerVisible" v-bind="footerProps">
         <slot name="footer" />

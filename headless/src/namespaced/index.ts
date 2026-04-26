@@ -203,6 +203,7 @@ import {
   InputRoot,
   Kbd,
   Label,
+  LayoutClassicCompact,
   LayoutCompact,
   LayoutContent,
   LayoutFooter,
@@ -941,6 +942,7 @@ export { Kbd };
 export { Label };
 
 export const Layout = {
+  ClassicCompact: LayoutClassicCompact,
   Compact: LayoutCompact,
   Root: LayoutRoot,
   Sidebar: LayoutSidebar,
@@ -953,6 +955,7 @@ export const Layout = {
   Mobile: LayoutMobile,
   Trigger: LayoutTrigger
 } as {
+  ClassicCompact: typeof LayoutClassicCompact;
   Compact: typeof LayoutCompact;
   Root: typeof LayoutRoot;
   Sidebar: typeof LayoutSidebar;
