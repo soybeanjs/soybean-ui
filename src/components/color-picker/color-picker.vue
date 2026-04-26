@@ -3,7 +3,7 @@ import { computed, shallowRef, watch } from 'vue';
 import { useControllableState, usePickProps } from '@soybeanjs/headless/composables';
 import { areColorsEqual, formatColor, toColorObject } from '@soybeanjs/headless/shared';
 import type { ColorFormat, ColorSpace, ColorValue } from '@soybeanjs/headless/shared';
-import { mergeSlotVariants } from '@/theme';
+import { mergeSlotVariants, miniSizeMap } from '@/theme';
 import SButton from '../button/button.vue';
 import SColorArea from '../color-area/color-area.vue';
 import SColorField from '../color-field/color-field.vue';
@@ -56,6 +56,8 @@ const ui = computed(() => {
 
   return mergeSlotVariants(variants, props.ui, { popup: props.class });
 });
+
+const miniSize = computed(() => miniSizeMap[props.size ?? 'md']);
 
 const hexValue = computed(() => formatColor(currentColor.value, 'hex'));
 const displayFormat = computed(() => resolveColorPickerFormat(formatValue.value, currentColor.value));
@@ -141,7 +143,13 @@ function handleSwatchValueChange(value: string | string[]) {
     <template #trigger>
       <slot name="trigger" :color="currentColor" :hex="hexValue" :value="displayValue" :format="displayFormat">
         <SButton v-bind="triggerButtonProps" :size="size" :disabled="disabled" color="accent" variant="pure">
-          <SColorSwatch v-bind="swatchProps" :class="ui.triggerSwatch" :color="hexValue" :size="size" shape="circle" />
+          <SColorSwatch
+            v-bind="swatchProps"
+            :class="ui.triggerSwatch"
+            :color="hexValue"
+            :size="miniSize"
+            shape="circle"
+          />
           <span :class="ui.triggerValue">{{ displayValue }}</span>
         </SButton>
       </slot>
