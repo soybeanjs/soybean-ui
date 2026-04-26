@@ -62,6 +62,7 @@ sidebar:
   quick_start: 快速开始
   components: 组件
   theming: 主题
+  common_types: 公共类型
   general: 通用
   layout: 布局
   navigation: 导航
@@ -70,3 +71,12 @@ sidebar:
   feedback: 反馈
   overlay: 浮层
   utilities: 工具
+api:
+  ui_layer: UI 层
+  headless_layer: Headless 层
+  props: 属性
+  emits: 事件
+  slots: 插槽
+  local_types: 本地类型
+  common_types_note: 通用且重复出现的类型已集中整理到
+  common_types_link: 公共类型页。

@@ -1,4 +1,6 @@
-<script setup lang="tsx">
+<script setup lang="ts">
+import { STable } from '@soybeanjs/ui';
+import type { TableColumn } from '@soybeanjs/ui';
 import { typeToVNode } from './type-anchor';
 
 type PropsPreset = 'props' | 'emits' | 'slots';
@@ -34,6 +36,10 @@ interface Props<Row = any> {
 
 const props = defineProps<Props>();
 
+type TableRow = Record<string, unknown> & {
+  __rowKey: string;
+};
+
 const CellRenderer = defineComponent({
   name: 'DataTableCellRenderer',
   props: {
@@ -52,7 +58,7 @@ const CellRenderer = defineComponent({
 });
 
 function getCellValue(row: any, key: string) {
-  return row?.[key];
+  return row?.[key] ?? '—';
 }
 
 function buildPresetColumns(preset: PropsPreset | undefined): DataTableColumn<any>[] {
@@ -62,12 +68,7 @@ function buildPresetColumns(preset: PropsPreset | undefined): DataTableColumn<an
         key: 'name',
         title: 'Prop',
         cellWrapperClass: 'code-btn',
-        render: row => (
-          <>
-            <span>{row.name}</span>
-            {row.required && <span class="ml-1 text-destructive/80">*</span>}
-          </>
-        )
+        render: row => [row.name, row.required ? ' *' : '']
       },
       {
         key: 'type',
@@ -96,12 +97,7 @@ function buildPresetColumns(preset: PropsPreset | undefined): DataTableColumn<an
         key: 'name',
         title,
         cellWrapperClass: 'code-btn',
-        render: row => (
-          <>
-            <span>{row.name}</span>
-            {row.required && <span class="ml-1 text-destructive/80">*</span>}
-          </>
-        )
+        render: row => [row.name, row.required ? ' *' : '']
       },
       {
         key: 'parameters',
@@ -120,34 +116,42 @@ function buildPresetColumns(preset: PropsPreset | undefined): DataTableColumn<an
   return [];
 }
 
-const resolvedColumns = () => {
+const resolvedColumns = computed<DataTableColumn<any>[]>(() => {
   if (props.columns?.length) {
     return props.columns;
   }
+
   return buildPresetColumns(props.preset);
-};
+});
+
+const tableColumns = computed<TableColumn<TableRow>[]>(() => {
+  return resolvedColumns.value.map(column => ({
+    key: column.key,
+    dataIndex: column.key,
+    title: column.title,
+    minWidth: column.key === 'description' ? '320px' : '160px'
+  }));
+});
+
+const tableData = computed<TableRow[]>(() => {
+  return props.data.map((item, index) => ({
+    ...(item as Record<string, unknown>),
+    __rowKey: `${index}`
+  }));
+});
+
+function getColumnRender(column: DataTableColumn<any>) {
+  return column.render ?? ((row: TableRow) => getCellValue(row, column.key));
+}
 </script>
 
 <template>
-  <table>
-    <thead>
-      <tr>
-        <th v-for="col in resolvedColumns()" :key="col.key">{{ col.title }}</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr v-for="(item, rowIndex) in props.data" :key="rowIndex">
-        <td v-for="col in resolvedColumns()" :key="col.key">
-          <div v-if="col.cellWrapperClass" :class="col.cellWrapperClass">
-            <CellRenderer v-if="col.render" :render="col.render" :row="item" />
-            <span v-else>{{ getCellValue(item, col.key) }}</span>
-          </div>
-          <template v-else>
-            <CellRenderer v-if="col.render" :render="col.render" :row="item" />
-            <span v-else>{{ getCellValue(item, col.key) }}</span>
-          </template>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  <STable :columns="tableColumns" :data="tableData" :row-key="row => row.__rowKey" size="sm" bordered>
+    <template v-for="col in resolvedColumns" :key="col.key" #[col.key]="{ row }">
+      <div v-if="col.cellWrapperClass" :class="col.cellWrapperClass">
+        <CellRenderer :render="getColumnRender(col)" :row="row" />
+      </div>
+      <CellRenderer v-else :render="getColumnRender(col)" :row="row" />
+    </template>
+  </STable>
 </template>

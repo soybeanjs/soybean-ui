@@ -27,12 +27,4 @@ basic
 
 ## API
 
-### Props
-
-<DataTable preset="props" :data="[
-  { name: 'channel', type: 'ColorChannel', default: '-', description: 'The channel controlled by the slider' },
-  { name: 'colorSpace', type: '`hsl` | `hsv` | `oklch`', default: '`hsl`', description: 'Working color space for channel math' },
-  { name: 'format', type: '`hex` | `rgb` | `hsl` | `oklch`', default: '`hex`', description: 'Serialized output format' },
-  { name: 'size', type: 'ThemeSize', default: '`md`', description: 'Slider size' },
-  { name: 'ui', type: 'Partial<ColorSliderUi>', default: '{}', description: 'Override internal slot classes' },
-]"/>
+<ComponentApi component="color-slider" />

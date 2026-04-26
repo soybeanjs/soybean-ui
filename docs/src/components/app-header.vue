@@ -10,7 +10,7 @@ const { version } = pkg;
 
 <template>
   <header
-    class="fixed top-0 left-0 right-0 z-50 h-[--app-header] backdrop-blur-md border-b border-border transition-all duration-300"
+    class="fixed top-0 left-0 right-0 z-49 h-[--app-header] backdrop-blur-md border-b border-border transition-all duration-300"
   >
     <div class="flex items-center justify-between max-w-360 h-full mx-auto px-6 py-3">
       <div class="flex items-center gap-8">

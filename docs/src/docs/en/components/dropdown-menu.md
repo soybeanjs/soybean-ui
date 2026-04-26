@@ -42,39 +42,4 @@ mix
 
 ## API
 
-### SDropdownMenu Props
-
-<DataTable preset="props" :data="[
-  { name: 'items', type: 'MenuOptionData[]', default: '-', description: 'Menu data.', required: true },
-  { name: 'disabled', type: 'boolean', default: 'false', description: 'Whether the dropdown is disabled.' },
-  { name: 'placement', type: 'Placement', default: `'bottom'`, description: 'Preferred placement.' },
-  { name: 'showArrow', type: 'boolean', default: 'false', description: 'Whether to show the arrow.' },
-  { name: 'ui', type: 'Ui', default: '{}', description: 'Custom class names.' }
-]"/>
-
-### SDropdownMenu Emits
-
-<DataTable preset="emits" :data="[
-  { name: 'select', parameters: '(item: MenuOptionData, event: Event) => void', description: 'Triggers when an item is selected.' },
-  { name: 'update:open', parameters: '(open: boolean) => void', description: 'Triggers when open state changes.' }
-]"/>
-
-### Slots
-
-<DataTable preset="slots" :data="[
-  { name: 'trigger', parameters: '-', description: 'The element that triggers the dropdown.' },
-  { name: 'item', parameters: '{ item: MenuOptionData }', description: 'Custom item rendering.' }
-]"/>
-
-### Types
-
-<TypeTable :data="[
-  {
-    name: 'Ui',
-    description: 'Custom styling classes (inherits from Menu Ui).',
-    fields: [
-      { name: 'content', type: 'string', description: 'Dropdown content class.' },
-      { name: 'item', type: 'string', description: 'Item class.' },
-    ]
-  }
-]"/>
+<ComponentApi component="dropdown-menu" />

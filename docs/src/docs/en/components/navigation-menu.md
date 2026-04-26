@@ -37,35 +37,4 @@ vertical
 
 ## API
 
-### Props
-
-<DataTable preset="props" :data="[
-  { name: 'items', type: 'NavigationMenuOptionData[]', default: '-', description: 'Menu data.', required: true },
-  { name: 'orientation', type: `'horizontal' \| 'vertical'`, default: `'horizontal'`, description: 'Menu orientation.' },
-  { name: 'modelValue', type: 'string', default: '-', description: 'Selected value.' },
-  { name: 'size', type: 'ThemeSize', default: `'md'`, description: 'Menu size.' },
-  { name: 'ui', type: 'Ui', default: '{}', description: 'Custom class names.' }
-]"/>
-
-### Emits
-
-<DataTable preset="emits" :data="[
-  { name: 'update:modelValue', parameters: '(value: string) => void', description: 'Triggers when selection changes.' }
-]"/>
-
-### Types
-
-<TypeTable :data="[
-  {
-    name: 'NavigationMenuOptionData',
-    description: 'Data structure for menu items.',
-    fields: [
-      { name: 'label', type: 'string', description: 'Display text.' },
-      { name: 'value', type: 'string', description: 'Unique identifier.' },
-      { name: 'link', type: 'string', description: 'Navigation URL.' },
-      { name: 'children', type: 'NavigationMenuOptionData[]', description: 'Submenu items.' },
-    ]
-  }
-]"/>
-
-<UnionType name="ThemeSize" description="Theme size type" type="'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'" />
+<ComponentApi component="navigation-menu" />

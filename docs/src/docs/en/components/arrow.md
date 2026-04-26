@@ -12,11 +12,4 @@ base
 
 ## API
 
-### Props
-
-<DataTable preset="props" :data="[
-  { name: 'width', type: 'number', default: '10', description: 'Width of the arrow in pixels.' },
-  { name: 'height', type: 'number', default: '5', description: 'Height of the arrow in pixels.' },
-  { name: 'as', type: 'string | Component', default: `'svg'`, description: 'The rendered element.' },
-  { name: 'asChild', type: 'boolean', default: 'false', description: 'Merge props into child element.' }
-]"/>
+<ComponentApi component="arrow" />

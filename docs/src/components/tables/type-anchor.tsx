@@ -1,4 +1,5 @@
 import { SLink } from '@soybeanjs/ui';
+import { isCommonTypeName } from './generated-api';
 
 export function toTypeAnchorId(typeName: string) {
   const normalized = typeName
@@ -14,6 +15,10 @@ export function toTypeAnchorId(typeName: string) {
 }
 
 type TypePart = { text: string; isLink?: boolean };
+
+interface TypeRenderOptions {
+  localTypeNames?: string[];
+}
 
 const BUILTIN_TYPE_NAMES = new Set([
   'Array',
@@ -73,8 +78,10 @@ function checkFirstLetterIsUpperCase(word: string) {
   return word.charAt(0).toUpperCase() === word.charAt(0);
 }
 
-export function typeToVNode(type?: string) {
+export function typeToVNode(type?: string, options?: TypeRenderOptions) {
   if (!type) return <>-</>;
+
+  const localTypeNames = new Set(options?.localTypeNames ?? []);
 
   return (
     <>
@@ -82,7 +89,7 @@ export function typeToVNode(type?: string) {
         part.isLink ? (
           <SLink
             key={idx}
-            href={`#${toTypeAnchorId(part.text)}`}
+            href={resolveTypeHref(part.text, localTypeNames)}
             target="_self"
             class="text-primary border-b-2 border-dashed border-primary/30 hover:border-primary duration-200"
           >
@@ -94,4 +101,12 @@ export function typeToVNode(type?: string) {
       )}
     </>
   );
+}
+
+function resolveTypeHref(typeName: string, localTypeNames: Set<string>) {
+  if (!localTypeNames.has(typeName) && isCommonTypeName(typeName)) {
+    return `/overview/common-types#${toTypeAnchorId(typeName)}`;
+  }
+
+  return `#${toTypeAnchorId(typeName)}`;
 }

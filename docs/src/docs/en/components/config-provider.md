@@ -45,45 +45,4 @@ You can fully customize the theme using the `theme` prop. more details can be fo
 
 ## API
 
-### Props
-
-<DataTable preset="props" :data="[
-  { name: 'theme', type: 'ThemeOptions', default: '{}', description: 'Global theme configuration (colors, radius)' },
-  { name: 'size', type: 'ThemeSize', default: `'md'`, description: 'Global component size' },
-  { name: 'iconify', type: '{ width?: string; height?: string }', default: '-', description: 'Default configuration for SIcon' },
-  { name: 'progress', type: 'ProgressProviderProps', default: '-', description: 'Global top progress configuration' },
-  { name: 'toast', type: 'ToastProviderProps', default: '-', description: 'Global toast configuration' },
-  { name: 'dir', type: `'ltr' \| 'rtl'`, default: `'ltr'`, description: 'Text direction' },
-  { name: 'locale', type: 'string', default: `'en'`, description: 'Locale identifier' },
-  { name: 'nonce', type: 'string', default: 'false', description: 'Nonce for inline styles' },
-  { name: 'tooltip', type: 'TooltipProviderProps', default: '-', description: 'Global tooltip configuration' },
-  { name: 'nuxt', type: 'boolean', default: 'false', description: 'Nuxt.js integration flag' }
-]"/>
-
-### Slots
-
-<DataTable preset="slots" :data="[
-  { name: 'default', parameters: '-', description: 'Content to be wrapped (usually the App component)' }
-]"/>
-
-## Types
-
-### ThemeOptions
-
-<TypeTable :data="[
-  {
-    name: 'ThemeOptions',
-    description: 'Theme system configuration object.',
-    fields: [
-      { name: 'base', type: 'string', description: 'Base color preset (e.g. slate, gray, zinc)' },
-      { name: 'primary', type: 'string', description: 'Primary color preset (e.g. indigo, blue)' },
-      { name: 'feedback', type: 'string', description: 'Feedback color preset (e.g. classic, modern)' },
-      { name: 'radius', type: 'string', description: 'Global radius (e.g. 0.5rem)' },
-      { name: 'darkSelector', type: `'class' | 'media' | string`, description: 'Dark mode switching strategy.' },
-      { name: 'format', type: `'hsl' | 'oklch'`, description: 'CSS variable output format.' },
-      { name: 'preset', type: 'CustomPreset', description: 'Object to inject custom color presets.' },
-    ]
-  }
-]"/>
-
-<UnionType name="ThemeSize" description="Theme size type" type="'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'" />
+<ComponentApi component="config-provider" />

@@ -36,19 +36,4 @@ import { SIcon } from '@soybeanjs/ui';
 
 ## API
 
-### Props
-
-<DataTable preset="props" :data="[
-  { name: 'icon', type: 'IconValue', required: true, description: 'Icon name (Iconify) or component' },
-  { name: 'width', type: 'string | number', default: `'1.25em'`, description: 'Icon width' },
-  { name: 'height', type: 'string | number', default: `'1.25em'`, description: 'Icon height' },
-  { name: 'flip', type: 'string', default: '-', description: 'Flip icon (horizontal, vertical)' },
-  { name: 'rotate', type: 'number | string', default: '-', description: 'Rotate icon (degrees)' },
-  { name: 'color', type: 'string', default: '-', description: 'Icon color' }
-]"/>
-
-> Note: `SIcon` forwards all other props to the underlying [Iconify Icon](https://docs.iconify.design/icon-components/vue/props.html) component.
-
-## Types
-
-<UnionType name="IconValue" type="string | Component | VNode | IconifyIcon" />
+<ComponentApi component="icon" />

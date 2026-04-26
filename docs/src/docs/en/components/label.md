@@ -21,22 +21,4 @@ import { SLabel, SInput } from '@soybeanjs/ui';
 
 ## API
 
-### Props
-
-<DataTable preset="props" :data="[
-  { name: 'class', type: 'ClassValue', default: '-', description: 'Custom class name' },
-  { name: 'size', type: 'ThemeSize', default: `'md'`, description: 'Label size' },
-  { name: 'for', type: 'string', default: '-', description: 'ID of the associated form element' },
-  { name: 'as', type: 'string | Component', default: `'label'`, description: 'Rendered element' },
-  { name: 'asChild', type: 'boolean', default: 'false', description: 'Merge props into child element' }
-]"/>
-
-### Slots
-
-<DataTable preset="slots" :data="[
-  { name: 'default', parameters: '-', description: 'Label content' }
-]"/>
-
-### Types
-
-<UnionType name="ThemeSize" description="Theme size type" type="'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'" />
+<ComponentApi component="label" />

@@ -26,18 +26,4 @@ href
 
 ## API
 
-### Props
-
-<DataTable preset="props" :data="[
-  { name: 'to', type: 'RouteLocationRaw', default: '-', description: 'Target route.' },
-  { name: 'href', type: 'string', default: '-', description: 'Target URL.' },
-  { name: 'external', type: 'boolean', default: 'false', description: 'Force external link behavior.' },
-  { name: 'disabled', type: 'boolean', default: 'false', description: 'Whether link is disabled.' },
-  { name: 'prefetch', type: 'boolean', default: '-', description: 'Enable prefetch behavior (framework dependent).' }
-]"/>
-
-### Slots
-
-<DataTable preset="slots" :data="[
-  { name: 'default', parameters: '{ isHref: boolean }', description: 'Link content.' }
-]"/>
+<ComponentApi component="link" />

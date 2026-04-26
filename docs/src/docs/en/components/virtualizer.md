@@ -36,17 +36,4 @@ dynamic
 
 ## API
 
-### Props
-
-<DataTable preset="props" :data="[
-  { name: 'data', type: 'any[]', default: '[]', description: 'Data source.', required: true },
-  { name: 'itemSize', type: 'number', default: '-', description: 'Fixed height/width of each item.' },
-  { name: 'horizontal', type: 'boolean', default: 'false', description: 'Whether to scroll horizontally.' },
-  { name: 'overscan', type: 'number', default: '5', description: 'Number of extra items to render outside viewport.' }
-]"/>
-
-### Slots
-
-<DataTable preset="slots" :data="[
-  { name: 'default', parameters: '{ item: any, index: number }', description: 'Item rendering slot.' }
-]"/>
+<ComponentApi component="virtualizer" />

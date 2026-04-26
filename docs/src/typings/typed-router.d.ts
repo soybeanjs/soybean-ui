@@ -72,6 +72,13 @@ declare module 'vue-router/auto-routes' {
       Record<never, never>,
       | never
     >,
+    '/overview/common-types': RouteRecordInfo<
+      '/overview/common-types',
+      '/overview/common-types',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
     '/overview/introduction': RouteRecordInfo<
       '/overview/introduction',
       '/overview/introduction',
@@ -139,6 +146,12 @@ declare module 'vue-router/auto-routes' {
     'src/pages/overview/index.vue': {
       routes:
         | '/overview/'
+      views:
+        | never
+    }
+    'src/pages/overview/common-types.vue': {
+      routes:
+        | '/overview/common-types'
       views:
         | never
     }

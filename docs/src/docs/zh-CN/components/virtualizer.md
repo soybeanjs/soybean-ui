@@ -36,17 +36,4 @@ dynamic
 
 ## API
 
-### 属性
-
-<DataTable preset="props" :data="[
-  { name: 'data', type: 'any[]', default: '[]', description: '数据源。', required: true },
-  { name: 'itemSize', type: 'number', default: '-', description: '每个条目的固定高度/宽度。' },
-  { name: 'horizontal', type: 'boolean', default: 'false', description: '是否横向滚动。' },
-  { name: 'overscan', type: 'number', default: '5', description: '视口外额外渲染的条目数量。' }
-]"/>
-
-### 插槽
-
-<DataTable preset="slots" :data="[
-  { name: 'default', parameters: '{ item: any, index: number }', description: '条目渲染插槽。' }
-]"/>
+<ComponentApi component="virtualizer" />

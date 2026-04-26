@@ -42,39 +42,4 @@ mix
 
 ## API
 
-### SDropdownMenu Props
-
-<DataTable preset="props" :data="[
-  { name: 'items', type: 'MenuOptionData[]', default: '-', description: '菜单数据。', required: true },
-  { name: 'disabled', type: 'boolean', default: 'false', description: '下拉菜单是否禁用。' },
-  { name: 'placement', type: 'Placement', default: `'bottom'`, description: '首选弹出位置。' },
-  { name: 'showArrow', type: 'boolean', default: 'false', description: '是否显示箭头。' },
-  { name: 'ui', type: 'Ui', default: '{}', description: '自定义类名。' }
-]"/>
-
-### SDropdownMenu Emits
-
-<DataTable preset="emits" :data="[
-  { name: 'select', parameters: '(item: MenuOptionData, event: Event) => void', description: '选择菜单项时触发。' },
-  { name: 'update:open', parameters: '(open: boolean) => void', description: '打开状态变化时触发。' }
-]"/>
-
-### 插槽
-
-<DataTable preset="slots" :data="[
-  { name: 'trigger', parameters: '-', description: '触发下拉菜单的元素。' },
-  { name: 'item', parameters: '{ item: MenuOptionData }', description: '自定义条目渲染。' }
-]"/>
-
-### 类型
-
-<TypeTable :data="[
-  {
-    name: 'Ui',
-    description: '自定义样式类 (inherits from Menu Ui).',
-    fields: [
-      { name: 'content', type: 'string', description: '下拉菜单内容容器类名。' },
-      { name: 'item', type: 'string', description: '条目类名。' },
-    ]
-  }
-]"/>
+<ComponentApi component="dropdown-menu" />

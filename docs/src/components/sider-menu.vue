@@ -52,6 +52,11 @@ const menus = computed<TreeMenuOptionData[]>(() => [
         label: t('sidebar.theming'),
         value: 'theming',
         to: '/overview/theming'
+      },
+      {
+        label: t('sidebar.common_types'),
+        value: 'common-types',
+        to: '/overview/common-types'
       }
     ]
   },

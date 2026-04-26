@@ -37,35 +37,4 @@ vertical
 
 ## API
 
-### 属性
-
-<DataTable preset="props" :data="[
-  { name: 'items', type: 'NavigationMenuOptionData[]', default: '-', description: '菜单数据。', required: true },
-  { name: 'orientation', type: `'horizontal' \| 'vertical'`, default: `'horizontal'`, description: '菜单方向。' },
-  { name: 'modelValue', type: 'string', default: '-', description: '选中的值。' },
-  { name: 'size', type: 'ThemeSize', default: `'md'`, description: '菜单尺寸。' },
-  { name: 'ui', type: 'Ui', default: '{}', description: '自定义类名。' }
-]"/>
-
-### 事件
-
-<DataTable preset="emits" :data="[
-  { name: 'update:modelValue', parameters: '(value: string) => void', description: '选择变化时触发。' }
-]"/>
-
-### 类型
-
-<TypeTable :data="[
-  {
-    name: 'NavigationMenuOptionData',
-    description: 'Data structure for menu items.',
-    fields: [
-      { name: 'label', type: 'string', description: 'Display text.' },
-      { name: 'value', type: 'string', description: 'Unique identifier.' },
-      { name: 'link', type: 'string', description: 'Navigation URL.' },
-      { name: 'children', type: 'NavigationMenuOptionData[]', description: 'Submenu items.' },
-    ]
-  }
-]"/>
-
-<UnionType name="ThemeSize" description="主题尺寸类型" type="'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'" />
+<ComponentApi component="navigation-menu" />

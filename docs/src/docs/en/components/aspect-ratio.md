@@ -28,10 +28,4 @@ base
 
 ## API
 
-### Props
-
-<DataTable preset="props" :data="[
-  { name: 'ratio', type: 'number', default: '1', description: 'The desired aspect ratio (width / height).' },
-  { name: 'as', type: 'string | Component', default: `'div'`, description: 'The rendered element.' },
-  { name: 'asChild', type: 'boolean', default: 'false', description: 'Merge props into child element.' }
-]"/>
+<ComponentApi component="aspect-ratio" />

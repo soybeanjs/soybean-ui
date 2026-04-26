@@ -12,11 +12,4 @@ base
 
 ## API
 
-### 属性
-
-<DataTable preset="props" :data="[
-  { name: 'width', type: 'number', default: '10', description: '箭头宽度（像素）。' },
-  { name: 'height', type: 'number', default: '5', description: '箭头高度（像素）。' },
-  { name: 'as', type: 'string | Component', default: `'svg'`, description: '渲染的元素。' },
-  { name: 'asChild', type: 'boolean', default: 'false', description: '将属性合并到子元素。' }
-]"/>
+<ComponentApi component="arrow" />

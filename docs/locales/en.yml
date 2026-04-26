@@ -62,6 +62,7 @@ sidebar:
   quick_start: Quick Start
   components: Components
   theming: Theming
+  common_types: Common Types
   general: General
   layout: Layout
   navigation: Navigation
@@ -70,3 +71,12 @@ sidebar:
   feedback: Feedback
   overlay: Overlay
   utilities: Utilities
+api:
+  ui_layer: UI Layer
+  headless_layer: Headless Layer
+  props: Props
+  emits: Emits
+  slots: Slots
+  local_types: Local Types
+  common_types_note: Shared repeated types are centralized on the
+  common_types_link: Common Types page.

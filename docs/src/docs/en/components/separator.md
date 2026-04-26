@@ -39,26 +39,4 @@ border
 
 ## API
 
-### Props
-
-<DataTable preset="props" :data="[
-  { name: 'orientation', type: `'horizontal' \| 'vertical'`, default: `'horizontal'`, description: 'Separator orientation.' },
-  { name: 'decorative', type: 'boolean', default: 'true', description: 'Whether the separator is purely decorative (aria-hidden).' },
-  { name: 'label', type: 'string', default: '-', description: 'Text label displayed in the middle.' },
-  { name: 'align', type: `'start' \| 'center' \| 'end'`, default: `'center'`, description: 'Label alignment.' },
-  { name: 'border', type: `'solid' \| 'dashed' \| 'dotted'`, default: `'solid'`, description: 'Border style.' },
-  { name: 'ui', type: 'Ui', default: '{}', description: 'Custom class names.' }
-]"/>
-
-### Types
-
-<TypeTable :data="[
-  {
-    name: 'Ui',
-    description: 'Custom styling classes.',
-    fields: [
-      { name: 'root', type: 'string', description: 'Root element class.' },
-      { name: 'label', type: 'string', description: 'Label text class.' },
-    ]
-  }
-]"/>
+<ComponentApi component="separator" />

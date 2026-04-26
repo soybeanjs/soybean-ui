@@ -27,21 +27,4 @@ basic
 
 ## API
 
-### 属性
-
-<DataTable preset="props" :data="[
-  { name: 'modelValue', type: 'string | ColorValue', default: '-', description: '受控颜色值' },
-  { name: 'defaultValue', type: 'string | ColorValue', default: '`#000000`', description: '非受控初始值' },
-  { name: 'channel', type: 'ColorChannel', default: '-', description: '指定后仅编辑单个颜色通道' },
-  { name: 'colorSpace', type: '`hsl` | `hsv` | `oklch`', default: '`hsl`', description: '通道读取和写回所使用的色彩空间' },
-  { name: 'format', type: '`hex` | `rgb` | `hsl` | `oklch`', default: '`hex`', description: '颜色字符串输出格式' },
-  { name: 'size', type: 'ThemeSize', default: '`md`', description: '输入框尺寸' },
-  { name: 'ui', type: 'Partial<ColorFieldUi>', default: '{}', description: '内部 slot 样式覆盖' },
-]"/>
-
-### 事件
-
-<DataTable preset="emits" :data="[
-  { name: 'update:modelValue', parameters: '(value: string) => void', description: '字符串值变更时触发' },
-  { name: 'update:color', parameters: '(value: NormalizedColor) => void', description: '颜色对象变更时触发' },
-]"/>
+<ComponentApi component="color-field" />

@@ -27,12 +27,4 @@ basic
 
 ## API
 
-### 属性
-
-<DataTable preset="props" :data="[
-  { name: 'channel', type: 'ColorChannel', default: '-', description: '当前滑块操作的颜色通道' },
-  { name: 'colorSpace', type: '`hsl` | `hsv` | `oklch`', default: '`hsl`', description: '通道计算的色彩空间' },
-  { name: 'format', type: '`hex` | `rgb` | `hsl` | `oklch`', default: '`hex`', description: '输出格式' },
-  { name: 'size', type: 'ThemeSize', default: '`md`', description: '滑块尺寸' },
-  { name: 'ui', type: 'Partial<ColorSliderUi>', default: '{}', description: '内部 slot 样式覆盖' },
-]"/>
+<ComponentApi component="color-slider" />

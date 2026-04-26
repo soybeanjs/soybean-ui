@@ -32,38 +32,4 @@ base
 
 ## API
 
-### Props
-
-<DataTable preset="props" :data="[
-  { name: 'open', type: 'boolean', default: '-', description: 'Controlled open state.' },
-  { name: 'defaultOpen', type: 'boolean', default: 'false', description: 'Default open state.' },
-  { name: 'placement', type: 'Placement', default: `'bottom'`, description: 'Preferred placement.' },
-  { name: 'showArrow', type: 'boolean', default: 'false', description: 'Whether to show arrow.' },
-  { name: 'ui', type: 'Ui', default: '{}', description: 'Custom class names.' }
-]"/>
-
-### Emits
-
-<DataTable preset="emits" :data="[
-  { name: 'update:open', parameters: '(open: boolean) => void', description: 'Triggers when open state changes.' }
-]"/>
-
-### Slots
-
-<DataTable preset="slots" :data="[
-  { name: 'trigger', parameters: '-', description: 'The element that triggers the popover.' },
-  { name: 'default', parameters: '-', description: 'Popover content.' }
-]"/>
-
-### Types
-
-<TypeTable :data="[
-  {
-    name: 'Ui',
-    description: 'Custom styling classes.',
-    fields: [
-      { name: 'content', type: 'string', description: 'Content container class.' },
-      { name: 'arrow', type: 'string', description: 'Arrow element class.' },
-    ]
-  }
-]"/>
+<ComponentApi component="popover" />

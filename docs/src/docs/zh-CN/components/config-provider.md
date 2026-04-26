@@ -43,39 +43,4 @@ import { SConfigProvider } from '@soybeanjs/ui';
 
 ## API
 
-### 属性
-
-<DataTable preset="props" :data="[
-  { name: 'theme', type: 'ThemeOptions', default: '{}', description: '全局主题配置（颜色、圆角）' },
-  { name: 'size', type: 'ThemeSize', default: `'md'`, description: '全局组件尺寸' },
-  { name: 'iconify', type: '{ width?: string; height?: string }', default: '-', description: 'SIcon 的默认配置' },
-  { name: 'progress', type: 'ProgressProviderProps', default: '-', description: '全局顶部进度条配置' },
-  { name: 'toast', type: 'ToastProviderProps', default: '-', description: '全局通知配置' },
-  { name: 'dir', type: `'ltr' \| 'rtl'`, default: `'ltr'`, description: '文本方向' }
-]"/>
-
-### 插槽
-
-<DataTable preset="slots" :data="[
-  { name: 'default', parameters: '-', description: '需要包裹的内容（通常是 App 组件）' }
-]"/>
-
-### 类型
-
-<TypeTable :data="[
-  {
-    name: 'ThemeOptions',
-    description: '主题系统配置对象。',
-    fields: [
-      { name: 'base', type: 'string', description: '基础颜色预设（例如 slate、gray、zinc）' },
-      { name: 'primary', type: 'string', description: '主颜色预设（例如 indigo、blue）' },
-      { name: 'feedback', type: 'string', description: '反馈颜色预设（例如 classic、modern）' },
-      { name: 'radius', type: 'string', description: '全局圆角（例如 0.625rem）' },
-      { name: 'darkSelector', type: `'class' | 'media' | string`, description: '暗黑模式切换策略。' },
-      { name: 'format', type: `'hsl' | 'oklch'`, description: 'CSS 变量输出格式。' },
-      { name: 'preset', type: 'CustomPreset', description: '用于注入自定义颜色预设的对象。' },
-    ]
-  }
-]"/>
-
-<UnionType name="ThemeSize" description="主题尺寸类型" type="'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'" />
+<ComponentApi component="config-provider" />

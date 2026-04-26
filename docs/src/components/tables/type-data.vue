@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { STable } from '@soybeanjs/ui';
+import type { TableColumn } from '@soybeanjs/ui';
 import { toTypeAnchorId, typeToVNode } from './type-anchor';
 
 export type TypeFieldDef = {
@@ -17,6 +19,38 @@ interface Props {
 const props = defineProps<Props>();
 
 const anchorId = computed(() => toTypeAnchorId(props.name));
+
+type TableRow = TypeFieldDef & {
+  __rowKey: string;
+};
+
+const columns = computed<TableColumn<TableRow>[]>(() => [
+  {
+    key: 'name',
+    dataIndex: 'name',
+    title: 'Field',
+    minWidth: '180px'
+  },
+  {
+    key: 'type',
+    dataIndex: 'type',
+    title: 'Type',
+    minWidth: '200px'
+  },
+  {
+    key: 'description',
+    dataIndex: 'description',
+    title: 'Description',
+    minWidth: '320px'
+  }
+]);
+
+const tableData = computed<TableRow[]>(() => {
+  return props.fields.map((field, index) => ({
+    ...field,
+    __rowKey: `${field.name}-${index}`
+  }));
+});
 </script>
 
 <template>
@@ -28,30 +62,23 @@ const anchorId = computed(() => toTypeAnchorId(props.name));
       {{ description }}
     </p>
 
-    <table>
-      <thead>
-        <tr>
-          <th>Field</th>
-          <th>Type</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr v-for="field in fields" :key="field.name">
-          <td>
-            <div class="code-btn">
-              <span>{{ field.name }}</span>
-              <span v-if="field.required" class="ml-1 text-destructive/80">*</span>
-            </div>
-          </td>
-          <td>
-            <div class="code-btn-outline">
-              <component :is="typeToVNode(field.type)" />
-            </div>
-          </td>
-          <td>{{ field.description || '—' }}</td>
-        </tr>
-      </tbody>
-    </table>
+    <STable :columns="columns" :data="tableData" :row-key="row => row.__rowKey" size="sm" bordered>
+      <template #name="{ row }">
+        <div class="code-btn">
+          <span>{{ row.name }}</span>
+          <span v-if="row.required" class="ml-1 text-destructive/80">*</span>
+        </div>
+      </template>
+
+      <template #type="{ row }">
+        <div class="code-btn-outline">
+          <component :is="typeToVNode(row.type)" />
+        </div>
+      </template>
+
+      <template #description="{ row }">
+        {{ row.description || '—' }}
+      </template>
+    </STable>
   </div>
 </template>
