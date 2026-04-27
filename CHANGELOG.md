@@ -1,5 +1,22 @@
 # Changelog
 
+## [v0.15.2](https://github.com/soybeanjs/soybean-ui/compare/v0.15.1...v0.15.2) (2026-04-27)
+
+### &nbsp;&nbsp;&nbsp;🚀 Features
+
+- **table**:
+  - add last start and first end fixed column indicators &nbsp;-&nbsp; by **soybeanfe** and **Copilot** [<samp>(e390d)</samp>](https://github.com/soybeanjs/soybean-ui/commit/e390d598)
+  - add table scroll component, enhance table style &nbsp;-&nbsp; by **soybeanfe** and **Copilot** [<samp>(9997c)</samp>](https://github.com/soybeanjs/soybean-ui/commit/9997c1e0)
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- **table**: set default value for multiple prop in STable component &nbsp;-&nbsp; by **soybeanfe** [<samp>(1964c)</samp>](https://github.com/soybeanjs/soybean-ui/commit/1964c4c5)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+
+[soybeanfe](mailto:honghuangdc@gmail.com),&nbsp;[Copilot](mailto:copilot@github.com)
+
 ## [v0.15.1](https://github.com/soybeanjs/soybean-ui/compare/v0.15.0...v0.15.1) (2026-04-27)
 
 ### &nbsp;&nbsp;&nbsp;🚀 Features
