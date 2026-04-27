@@ -2,7 +2,7 @@
 
 ## 概述
 
-用于展示行列数据的数据表格组件。支持分组表头、排序、筛选、选择、展开、树形行、虚拟滚动等功能。
+用于展示行列数据的数据表格组件。支持分组表头、排序、筛选、选择、展开、树形行、虚拟滚动等功能，并提供 default 与 simple 两种视觉变体，以及 rounded 圆角开关。
 
 ## 用法
 
@@ -33,7 +33,7 @@ const data: TableData[] = [
 </script>
 
 <template>
-  <STable :columns="columns" :data="data" :row-key="row => row.id" />
+  <STable variant="simple" :rounded="false" :columns="columns" :data="data" :row-key="row => row.id" />
 </template>
 ```
 
@@ -41,19 +41,22 @@ const data: TableData[] = [
 
 ```playground
 base
+variant
+bordered
+rounded
+striped
 grouped
 sorting
 filtering
 fixed
 resizable
-bordered
-striped
 tree
 virtualized
-single-selection
-multiple-selection
 expandable
 footer
+bottom
+multiple-selection
+single-selection
 sizes
 ```
 

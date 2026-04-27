@@ -340,7 +340,7 @@ export function getTableColumnByKey<T extends TableBaseData>(
   return undefined;
 }
 
-export function getTableRootStyle(isVirtual: boolean, height?: number | string): CSSProperties {
+export function getTableScrollStyle(isVirtual: boolean, height?: number | string): CSSProperties {
   if (!isVirtual) {
     return {};
   }

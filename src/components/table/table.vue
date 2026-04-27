@@ -24,14 +24,15 @@ defineOptions({
 });
 
 const props = withDefaults(defineProps<TableProps<T, R, M>>(), {
-  multiple: true as any
+  multiple: true as any,
+  rounded: true
 });
 
 const emit = defineEmits<TableEmits<R, M>>();
 
 const slots = defineSlots<TableSlots<T>>();
 
-const forwardedProps = useOmitProps(props, ['class', 'ui', 'size', 'bordered', 'striped']);
+const forwardedProps = useOmitProps(props, ['class', 'ui', 'size', 'variant', 'bordered', 'rounded', 'striped']);
 
 const listeners = useForwardListeners(emit);
 
@@ -40,7 +41,9 @@ const slotNames = computed(() => Object.keys(slots) as Array<keyof TableSlots<T>
 const ui = computed(() => {
   const variants = tableVariants({
     size: props.size,
+    variant: props.variant,
     bordered: props.bordered,
+    rounded: props.rounded,
     striped: props.striped
   });
 

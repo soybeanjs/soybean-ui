@@ -19,6 +19,7 @@ import TableContent from './table-content.vue';
 import TableFooter from './table-footer.vue';
 import TableHeader from './table-header.vue';
 import TableRoot from './table-root.vue';
+import TableScroll from './table-scroll.vue';
 import TableRow from './table-row.vue';
 import TableVirtualSpacerRow from './table-virtual-spacer-row.vue';
 import type { TableBaseData, TableCompactEmits, TableCompactProps, TableCompactSlots, TableUnifiedKey } from './types';
@@ -101,7 +102,7 @@ const {
   columnWidths
 });
 
-const { isVirtual, setTableRootRef, tableRootStyle, virtualPaddingStart, virtualPaddingEnd, visibleRows } =
+const { isVirtual, setTableScrollRef, tableScrollStyle, virtualPaddingStart, virtualPaddingEnd, visibleRows } =
   useTableCompactVirtual({
     ...transformPropsToContext(contextProps, ['height', 'virtual', 'virtualizerOptions', 'estimateSize']),
     displayRows,
@@ -140,47 +141,49 @@ provideTableCompactContext({
 </script>
 
 <template>
-  <TableRoot :ref="setTableRootRef" :dir="dir" :style="tableRootStyle">
-    <TableContent :ref="setTableContentRef" v-bind="contentProps">
-      <TableHeader v-bind="headerProps">
-        <TableRow v-for="(headerRow, headerRowIndex) in headerRows" :key="headerRowIndex" v-bind="rowProps">
-          <TableCompactHead
-            v-for="headerCell in headerRow"
-            :key="headerCell.key"
-            :column="headerCell.column"
-            :col-span="headerCell.colSpan"
-            :row-span="headerCell.rowSpan"
+  <TableRoot :dir="dir">
+    <TableScroll :ref="setTableScrollRef" :style="tableScrollStyle">
+      <TableContent :ref="setTableContentRef" v-bind="contentProps">
+        <TableHeader v-bind="headerProps">
+          <TableRow v-for="(headerRow, headerRowIndex) in headerRows" :key="headerRowIndex" v-bind="rowProps">
+            <TableCompactHead
+              v-for="headerCell in headerRow"
+              :key="headerCell.key"
+              :column="headerCell.column"
+              :col-span="headerCell.colSpan"
+              :row-span="headerCell.rowSpan"
+            >
+              <template v-for="slotName in slotNames" :key="slotName" #[slotName]="slotProps">
+                <slot :name="slotName" v-bind="slotProps" />
+              </template>
+            </TableCompactHead>
+          </TableRow>
+        </TableHeader>
+        <TableBody v-bind="bodyProps">
+          <TableVirtualSpacerRow
+            :is-virtual="isVirtual"
+            :colspan="Math.max(leafColumns.length, 1)"
+            :padding-start="virtualPaddingStart"
+            :padding-end="virtualPaddingEnd"
           >
-            <template v-for="slotName in slotNames" :key="slotName" #[slotName]="slotProps">
-              <slot :name="slotName" v-bind="slotProps" />
-            </template>
-          </TableCompactHead>
-        </TableRow>
-      </TableHeader>
-      <TableBody v-bind="bodyProps">
-        <TableVirtualSpacerRow
-          :is-virtual="isVirtual"
-          :colspan="Math.max(leafColumns.length, 1)"
-          :padding-start="virtualPaddingStart"
-          :padding-end="virtualPaddingEnd"
-        >
-          <TableCompactRow
-            v-for="{ item, index } in visibleRows"
-            :key="item.key"
-            :row="item"
-            :index="index"
-            :leaf-columns="leafColumns"
-          >
-            <template v-for="slotName in slotNames" :key="slotName" #[slotName]="slotProps">
-              <slot :name="slotName" v-bind="slotProps" />
-            </template>
-          </TableCompactRow>
-        </TableVirtualSpacerRow>
-      </TableBody>
-      <TableFooter v-if="$slots.footer" v-bind="footerProps">
-        <slot name="footer" :column-size="leafColumns.length" />
-      </TableFooter>
-    </TableContent>
+            <TableCompactRow
+              v-for="{ item, index } in visibleRows"
+              :key="item.key"
+              :row="item"
+              :index="index"
+              :leaf-columns="leafColumns"
+            >
+              <template v-for="slotName in slotNames" :key="slotName" #[slotName]="slotProps">
+                <slot :name="slotName" v-bind="slotProps" />
+              </template>
+            </TableCompactRow>
+          </TableVirtualSpacerRow>
+        </TableBody>
+        <TableFooter v-if="$slots.footer" v-bind="footerProps">
+          <slot name="footer" :column-size="leafColumns.length" />
+        </TableFooter>
+      </TableContent>
+    </TableScroll>
     <slot name="bottom" />
   </TableRoot>
 </template>

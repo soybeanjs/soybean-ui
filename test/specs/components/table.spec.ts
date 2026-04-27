@@ -729,10 +729,11 @@ describe('STable', () => {
         attachTo: document.body
       });
 
-      const root = wrapper.element as HTMLElement;
+      const root = wrapper.findComponent({ name: 'TableRoot' }).element as HTMLElement;
+      const scroll = wrapper.findComponent({ name: 'TableScroll' }).element as HTMLElement;
       let scrollTop = 0;
 
-      Object.defineProperties(root, {
+      Object.defineProperties(scroll, {
         clientHeight: { configurable: true, value: 120 },
         scrollHeight: { configurable: true, value: 3000 },
         scrollTop: {
@@ -758,18 +759,20 @@ describe('STable', () => {
         }
       });
 
-      TestResizeObserver.instance?.trigger([createMockResizeObserverEntry(root, { width: 400, height: 120 })]);
+      TestResizeObserver.instance?.trigger([createMockResizeObserverEntry(scroll, { width: 400, height: 120 })]);
 
       await delay(30);
       await nextTick();
 
+      expect(root.getAttribute('style')).toBeNull();
+      expect(scroll.getAttribute('style')).toContain('height: 120px;');
       expect(wrapper.text()).toContain('User 1');
       expect(wrapper.text()).not.toContain('User 100');
       expect(wrapper.findAll('tbody tr').length).toBeLessThan(virtualizedData.length);
       expect(wrapper.find('tbody tr[aria-hidden="true"] td').attributes('style')).toContain('height: 2610px;');
 
-      root.scrollTop = 900;
-      root.dispatchEvent(new Event('scroll'));
+      scroll.scrollTop = 900;
+      scroll.dispatchEvent(new Event('scroll'));
 
       await delay(30);
       await nextTick();

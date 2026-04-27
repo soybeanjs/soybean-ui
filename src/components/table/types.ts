@@ -15,6 +15,7 @@ import {
 } from '@soybeanjs/headless/table';
 import type { ClassValue, UiClass } from '@soybeanjs/headless';
 import type { ThemeSize } from '@/theme';
+import type { TableVariant } from './variants';
 
 export type TableExtraUiSlot =
   | 'selection'
@@ -42,7 +43,9 @@ export interface TableProps<
   class?: ClassValue;
   size?: ThemeSize;
   ui?: Partial<TableExtendedUi>;
+  variant?: TableVariant;
   bordered?: boolean;
+  rounded?: boolean;
   striped?: boolean;
 }
 

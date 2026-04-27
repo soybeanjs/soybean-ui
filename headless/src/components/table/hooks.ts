@@ -57,7 +57,7 @@ import {
   getNextTablePointerResizeWidth,
   getTableColumnResizeMinWidth,
   getTableAlign,
-  getTableRootStyle,
+  getTableScrollStyle,
   isTableColumnResizable,
   isTableFilterOptionSelected,
   isTableFilterableColumn,
@@ -314,7 +314,7 @@ export function useTableCompactVirtual(options: UseTableCompactVirtualOptions) {
     virtualScrollTop.value = 0;
   }
 
-  const [tableRootTarget, setTableRootRef] = useForwardElement<HTMLElement>(element => {
+  const [tableScrollTarget, setTableScrollRef] = useForwardElement<HTMLElement>(element => {
     if (!isVirtual.value) {
       return;
     }
@@ -323,8 +323,8 @@ export function useTableCompactVirtual(options: UseTableCompactVirtualOptions) {
     virtualScrollTop.value = element.scrollTop ?? 0;
   });
 
-  const tableRootStyle = computed(() => getTableRootStyle(isVirtual.value, height.value));
-  const virtualTableRootTarget = computed(() => (isVirtual.value ? tableRootTarget.value : undefined));
+  const tableScrollStyle = computed(() => getTableScrollStyle(isVirtual.value, height.value));
+  const virtualTableScrollTarget = computed(() => (isVirtual.value ? tableScrollTarget.value : undefined));
   const virtualOverscan = computed(() => (isVirtual.value ? (virtualizerOptions.value?.overscan ?? 8) : 0));
 
   const resolvedVirtualHeight = computed(() => {
@@ -341,8 +341,8 @@ export function useTableCompactVirtual(options: UseTableCompactVirtualOptions) {
       return;
     }
 
-    virtualViewportHeight.value = tableRootTarget.value?.clientHeight ?? resolvedVirtualHeight.value;
-    virtualScrollTop.value = tableRootTarget.value?.scrollTop ?? 0;
+    virtualViewportHeight.value = tableScrollTarget.value?.clientHeight ?? resolvedVirtualHeight.value;
+    virtualScrollTop.value = tableScrollTarget.value?.scrollTop ?? 0;
   }
 
   const virtualMeasurements = computed(() => {
@@ -384,7 +384,7 @@ export function useTableCompactVirtual(options: UseTableCompactVirtualOptions) {
       }
 
       nextTick(() => {
-        virtualScrollTop.value = tableRootTarget.value?.scrollTop ?? 0;
+        virtualScrollTop.value = tableScrollTarget.value?.scrollTop ?? 0;
       });
     },
     { deep: true, flush: 'post' }
@@ -403,11 +403,11 @@ export function useTableCompactVirtual(options: UseTableCompactVirtualOptions) {
     { flush: 'post' }
   );
 
-  useResizeObserver(virtualTableRootTarget, entries => {
-    virtualViewportHeight.value = entries[0]?.contentRect.height ?? tableRootTarget.value?.clientHeight ?? 0;
+  useResizeObserver(virtualTableScrollTarget, entries => {
+    virtualViewportHeight.value = entries[0]?.contentRect.height ?? tableScrollTarget.value?.clientHeight ?? 0;
   });
 
-  useEventListener(virtualTableRootTarget, 'scroll', event => {
+  useEventListener(virtualTableScrollTarget, 'scroll', event => {
     const target = event.target;
 
     if (target instanceof HTMLElement) {
@@ -424,8 +424,8 @@ export function useTableCompactVirtual(options: UseTableCompactVirtualOptions) {
 
   return {
     isVirtual,
-    setTableRootRef,
-    tableRootStyle,
+    setTableScrollRef,
+    tableScrollStyle,
     virtualPaddingStart,
     virtualPaddingEnd,
     visibleRows

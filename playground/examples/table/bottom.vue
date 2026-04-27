@@ -1,12 +1,3 @@
-# Table
-
-## Overview
-
-A data table component for displaying row and column data. Supports grouped headers, sorting, filtering, selection, expansion, tree rows, virtualization, and more, with default and simple visual variants plus a rounded toggle.
-
-## Usage
-
-```vue
 <script setup lang="ts">
 import { STable } from '@soybeanjs/ui';
 import type { TableColumn } from '@soybeanjs/ui';
@@ -33,33 +24,12 @@ const data: TableData[] = [
 </script>
 
 <template>
-  <STable variant="simple" :rounded="false" :columns="columns" :data="data" :row-key="row => row.id" />
+  <div>
+    <h3 class="playground-title">Bottom slot</h3>
+    <STable :columns="columns" :data="data" :row-key="row => row.id">
+      <template #bottom>
+        <div class="p-4">This is the bottom slot content</div>
+      </template>
+    </STable>
+  </div>
 </template>
-```
-
-## Demos
-
-```playground
-base
-variant
-bordered
-rounded
-striped
-grouped
-sorting
-filtering
-fixed
-resizable
-tree
-virtualized
-expandable
-footer
-bottom
-multiple-selection
-single-selection
-sizes
-```
-
-## API
-
-<ComponentApi component="table" />

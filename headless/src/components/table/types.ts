@@ -13,6 +13,8 @@ export interface TableRootProps extends /** @vue-ignore */ HTMLAttributes {
   dir?: Direction;
 }
 
+export interface TableScrollProps extends /** @vue-ignore */ HTMLAttributes {}
+
 export interface TableContentProps extends /** @vue-ignore */ TableHTMLAttributes {}
 
 export interface TableHeaderProps extends /** @vue-ignore */ HTMLAttributes {}
@@ -29,6 +31,7 @@ export interface TableCellProps extends /** @vue-ignore */ TdHTMLAttributes {}
 
 export type TableUiSlot =
   | 'root'
+  | 'scroll'
   | 'content'
   | 'header'
   | 'body'

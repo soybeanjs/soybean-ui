@@ -4,17 +4,19 @@ import type { VariantProps } from 'tailwind-variants';
 
 export const tableVariants = tv({
   slots: {
-    root: 'relative overflow-auto rounded-md bg-accent',
+    root: 'relative overflow-hidden supports-[overflow:clip]:overflow-clip [--rounded:calc(var(--radius)-2px)] rounded-[--rounded]',
+    scroll: 'h-full overflow-auto',
     content: 'min-w-full w-max border-spacing-0',
     header: 'sticky top-0 start-0 z-10 [&>tr:last-child]:border-b-0',
     body: [
-      '[&>tr:first-child>td:first-child]:rounded-tl-md [&>tr:first-child>td:last-child]:rounded-tr-md',
-      '[&>tr:last-child>td:first-child]:rounded-bl-md [&>tr:last-child>td:last-child]:rounded-br-md'
+      '[&>tr:last-child]:border-b-0',
+      '[&>tr:first-child>td:first-child]:rounded-tl-[--rounded] [&>tr:first-child>td:last-child]:rounded-tr-[--rounded]',
+      '[&>tr:last-child>td:first-child]:rounded-bl-[--rounded] [&>tr:last-child>td:last-child]:rounded-br-[--rounded]'
     ],
-    footer: 'font-medium [&>tr:last-child]:border-b-0',
+    footer: `font-medium [&>tr:last-child]:border-b-0 [&>tr]:bg-transparent [&>tr]:hover:bg-transparent [&_td]:bg-transparent`,
     row: 'bg-background border-b hover:bg-primary-foreground transition-colors',
-    head: 'box-border bg-accent text-foreground relative font-medium whitespace-nowrap',
-    cell: 'box-border whitespace-nowrap data-[fixed]:bg-background',
+    head: 'box-border bg-accent text-foreground relative font-medium',
+    cell: 'box-border data-[fixed]:bg-background',
     fixed: [
       'relative',
       'data-[fixed-last-start]:after:pointer-events-none data-[fixed-last-start]:after:absolute data-[fixed-last-start]:after:bottom-0 data-[fixed-last-start]:after:end-0 data-[fixed-last-start]:after:top-0 data-[fixed-last-start]:after:w-4 data-[fixed-last-start]:after:bg-gradient-to-l data-[fixed-last-start]:after:from-foreground/8 data-[fixed-last-start]:after:to-transparent data-[fixed-last-start]:after:content-empty',
@@ -56,9 +58,9 @@ export const tableVariants = tv({
   variants: {
     size: {
       xs: {
-        root: 'px-0.75 pb-0.75 text-2xs',
+        root: 'text-2xs',
         caption: 'py-2',
-        head: 'h-8 px-1.5',
+        head: 'p-1.5',
         cell: 'p-1.5',
         radioRoot: 'w-3 h-3',
         sortTrigger: 'end-1 p-0.75',
@@ -70,9 +72,9 @@ export const tableVariants = tv({
         filterCount: 'text-3xs leading-4'
       },
       sm: {
-        root: 'px-0.875 pb-0.875 text-xs',
+        root: 'text-xs',
         caption: 'py-2.5',
-        head: 'h-9 px-1.75',
+        head: 'p-1.75',
         cell: 'p-1.75',
         radioRoot: 'w-3.5 h-3.5',
         sortTrigger: 'end-1.25 p-0.875',
@@ -84,9 +86,9 @@ export const tableVariants = tv({
         filterCount: 'text-2xs leading-5'
       },
       md: {
-        root: 'px-1 pb-1 text-sm',
+        root: 'text-sm',
         caption: 'py-3',
-        head: 'h-10 px-2',
+        head: 'p-2',
         cell: 'p-2',
         radioRoot: 'w-4 h-4',
         sortTrigger: 'end-1.5 p-1',
@@ -98,9 +100,9 @@ export const tableVariants = tv({
         filterCount: 'text-xs leading-6'
       },
       lg: {
-        root: 'px-1.25 pb-1.25 text-base',
+        root: 'text-base',
         caption: 'py-3.5',
-        head: 'h-12 px-2.5',
+        head: 'p-2.5',
         cell: 'p-2.5',
         radioRoot: 'w-4.5 h-4.5',
         sortTrigger: 'end-1.75 p-1.25',
@@ -112,9 +114,9 @@ export const tableVariants = tv({
         filterCount: 'text-sm leading-7'
       },
       xl: {
-        root: 'px-1.5 pb-1.5 text-lg',
+        root: 'text-lg',
         caption: 'py-4',
-        head: 'h-14 px-3',
+        head: 'p-3',
         cell: 'p-3',
         radioRoot: 'w-5 h-5',
         sortTrigger: 'end-2 p-1.5',
@@ -126,9 +128,9 @@ export const tableVariants = tv({
         filterCount: 'text-base leading-8'
       },
       '2xl': {
-        root: 'px-2 pb-2 text-xl',
+        root: 'text-xl',
         caption: 'py-4.5',
-        head: 'h-16 px-3.5',
+        head: 'p-3.5',
         cell: 'p-3.5',
         radioRoot: 'w-6 h-6',
         sortTrigger: 'end-2.5 p-1.75',
@@ -140,9 +142,25 @@ export const tableVariants = tv({
         filterCount: 'text-lg leading-9'
       }
     },
+    variant: {
+      default: {
+        root: 'bg-accent'
+      },
+      simple: {
+        header: [
+          '[&>tr:first-child>th:first-child]:rounded-tl-[--rounded] [&>tr:first-child>th:last-child]:rounded-tr-[--rounded]',
+          '[&>tr:last-child>th:first-child]:rounded-bl-[--rounded] [&>tr:last-child>th:last-child]:rounded-br-[--rounded]'
+        ]
+      }
+    },
     bordered: {
       true: {
         cell: 'border-l border-border first:border-l-0'
+      }
+    },
+    rounded: {
+      true: {
+        root: ''
       }
     },
     striped: {
@@ -151,10 +169,101 @@ export const tableVariants = tv({
       }
     }
   },
+  compoundVariants: [
+    {
+      size: 'xs',
+      rounded: true,
+      class: {
+        root: '[--rounded:0.75rem]'
+      }
+    },
+    {
+      size: 'sm',
+      rounded: true,
+      class: {
+        root: '[--rounded:1rem]'
+      }
+    },
+    {
+      size: 'md',
+      rounded: true,
+      class: {
+        root: '[--rounded:1.125rem]'
+      }
+    },
+    {
+      size: 'lg',
+      rounded: true,
+      class: {
+        root: '[--rounded:1.375rem]'
+      }
+    },
+    {
+      size: 'xl',
+      rounded: true,
+      class: {
+        root: '[--rounded:1.625rem]'
+      }
+    },
+    {
+      size: '2xl',
+      rounded: true,
+      class: {
+        root: '[--rounded:1.75rem]'
+      }
+    },
+    {
+      size: 'xs',
+      variant: 'default',
+      class: {
+        root: 'px-0.75 pb-0.75'
+      }
+    },
+    {
+      size: 'sm',
+      variant: 'default',
+      class: {
+        root: 'px-0.875 pb-0.875'
+      }
+    },
+    {
+      size: 'md',
+      variant: 'default',
+      class: {
+        root: 'px-1 pb-1'
+      }
+    },
+    {
+      size: 'lg',
+      variant: 'default',
+      class: {
+        root: 'px-1.25 pb-1.25'
+      }
+    },
+    {
+      size: 'xl',
+      variant: 'default',
+      class: {
+        root: 'px-1.5 pb-1.5'
+      }
+    },
+    {
+      size: '2xl',
+      variant: 'default',
+      class: {
+        root: 'px-2 pb-2'
+      }
+    }
+  ],
   defaultVariants: {
     size: 'md',
+    variant: 'default',
+    bordered: false,
+    rounded: true,
     striped: false
   }
 });
 
-export type TableVariantProps = VariantProps<typeof tableVariants>;
+type TableVariantProps = VariantProps<typeof tableVariants>;
+
+export type TableVariant = NonNullable<TableVariantProps['variant']>;
