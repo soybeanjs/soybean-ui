@@ -551,9 +551,13 @@ describe('STable', () => {
 
       expect(heads[0].attributes('style')).toContain('inset-inline-start: 0px;');
       expect(heads[1].attributes('style')).toContain('inset-inline-start: 176px;');
+      expect(heads[0].attributes('data-fixed-last-start')).toBeUndefined();
+      expect(heads[1].attributes('data-fixed-last-start')).toBe('');
       expect(wrapper.findAll('td[data-fixed-side="start"]')[1]?.attributes('style')).toContain(
         'inset-inline-start: 176px;'
       );
+      expect(wrapper.findAll('td[data-fixed-side="start"]')[0]?.attributes('data-fixed-last-start')).toBeUndefined();
+      expect(wrapper.findAll('td[data-fixed-side="start"]')[1]?.attributes('data-fixed-last-start')).toBe('');
 
       wrapper.unmount();
       cleanup();
@@ -600,12 +604,51 @@ describe('STable', () => {
 
       expect(heads[0].attributes('style')).toContain('inset-inline-start: 0px;');
       expect(heads[1].attributes('style')).toContain('inset-inline-start: 176px;');
+      expect(heads[0].attributes('data-fixed-last-start')).toBeUndefined();
+      expect(heads[1].attributes('data-fixed-last-start')).toBe('');
       expect(wrapper.findAll('td[data-fixed-side="start"]')[1]?.attributes('style')).toContain(
         'inset-inline-start: 176px;'
       );
+      expect(wrapper.findAll('td[data-fixed-side="start"]')[0]?.attributes('data-fixed-last-start')).toBeUndefined();
+      expect(wrapper.findAll('td[data-fixed-side="start"]')[1]?.attributes('data-fixed-last-start')).toBe('');
 
       wrapper.unmount();
       cleanup();
+    });
+
+    it('marks the last start fixed and first end fixed columns for styling', () => {
+      const bidirectionalFixedColumns: TableColumn<TableRowData>[] = [
+        { title: 'Name', dataIndex: 'name', width: '140px', fixed: 'start' },
+        { title: 'Age', dataIndex: 'age', width: '96px', align: 'center', fixed: 'start' },
+        { title: 'Id', dataIndex: 'id', width: '120px' },
+        { title: 'Name Copy', dataIndex: 'name', width: '140px', fixed: 'end' },
+        { title: 'Id', dataIndex: 'id', width: '120px', fixed: 'end' }
+      ];
+
+      const wrapper = mount(STable, {
+        props: {
+          columns: bidirectionalFixedColumns as TableColumn[],
+          data,
+          rowKey: row => row.id
+        },
+        attachTo: document.body
+      });
+
+      const startHeads = wrapper.findAll('th[data-fixed-side="start"]');
+      const endHeads = wrapper.findAll('th[data-fixed-side="end"]');
+      const startCells = wrapper.findAll('td[data-fixed-side="start"]');
+      const endCells = wrapper.findAll('td[data-fixed-side="end"]');
+
+      expect(startHeads[0]?.attributes('data-fixed-last-start')).toBeUndefined();
+      expect(startHeads[1]?.attributes('data-fixed-last-start')).toBe('');
+      expect(endHeads[0]?.attributes('data-fixed-first-end')).toBe('');
+      expect(endHeads[1]?.attributes('data-fixed-first-end')).toBeUndefined();
+      expect(startCells[0]?.attributes('data-fixed-last-start')).toBeUndefined();
+      expect(startCells[1]?.attributes('data-fixed-last-start')).toBe('');
+      expect(endCells[0]?.attributes('data-fixed-first-end')).toBe('');
+      expect(endCells[1]?.attributes('data-fixed-first-end')).toBeUndefined();
+
+      wrapper.unmount();
     });
 
     it('adapts pointer resizing to rtl logical direction', async () => {

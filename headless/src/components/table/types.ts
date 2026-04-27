@@ -181,11 +181,15 @@ export interface TableHeaderCell<T extends TableBaseData = TableBaseData> {
 export interface TableFixedState {
   side: 'start' | 'end';
   offset: number;
+  isLastStart: boolean;
+  isFirstEnd: boolean;
 }
 
 export interface TableFixedColumnOffsets {
   startOffsets: Record<string, number>;
   endOffsets: Record<string, number>;
+  lastStartKey?: string;
+  firstEndKey?: string;
 }
 
 export interface TableSelectionProps<R extends TableUnifiedKey = TableUnifiedKey, M extends boolean = false> {

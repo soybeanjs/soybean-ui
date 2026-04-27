@@ -17,8 +17,8 @@ export const tableVariants = tv({
     cell: 'box-border whitespace-nowrap data-[fixed]:bg-background',
     fixed: [
       'relative',
-      'data-[fixed-side=start]:after:pointer-events-none data-[fixed-side=start]:after:absolute data-[fixed-side=start]:after:bottom-0 data-[fixed-side=start]:after:end-0 data-[fixed-side=start]:after:top-0 data-[fixed-side=start]:after:w-4 data-[fixed-side=start]:after:bg-gradient-to-l data-[fixed-side=start]:after:from-foreground/8 data-[fixed-side=start]:after:to-transparent data-[fixed-side=start]:after:content-empty',
-      'data-[fixed-side=end]:before:pointer-events-none data-[fixed-side=end]:before:absolute data-[fixed-side=end]:before:bottom-0 data-[fixed-side=end]:before:start-0 data-[fixed-side=end]:before:top-0 data-[fixed-side=end]:before:w-4 data-[fixed-side=end]:before:bg-gradient-to-r data-[fixed-side=end]:before:from-foreground/8 data-[fixed-side=end]:before:to-transparent data-[fixed-side=end]:before:content-empty'
+      'data-[fixed-last-start]:after:pointer-events-none data-[fixed-last-start]:after:absolute data-[fixed-last-start]:after:bottom-0 data-[fixed-last-start]:after:end-0 data-[fixed-last-start]:after:top-0 data-[fixed-last-start]:after:w-4 data-[fixed-last-start]:after:bg-gradient-to-l data-[fixed-last-start]:after:from-foreground/8 data-[fixed-last-start]:after:to-transparent data-[fixed-last-start]:after:content-empty',
+      'data-[fixed-first-end]:before:pointer-events-none data-[fixed-first-end]:before:absolute data-[fixed-first-end]:before:bottom-0 data-[fixed-first-end]:before:start-0 data-[fixed-first-end]:before:top-0 data-[fixed-first-end]:before:w-4 data-[fixed-first-end]:before:bg-gradient-to-r data-[fixed-first-end]:before:from-foreground/8 data-[fixed-first-end]:before:to-transparent data-[fixed-first-end]:before:content-empty'
     ],
     resizeHandle: [
       'absolute end-0 top-1/2 w-3 h-2/3 -translate-y-1/2 rounded bg-transparent',

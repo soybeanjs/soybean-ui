@@ -582,7 +582,9 @@ export function useTableCompactHead(options: PropsToContext<TableCompactHeadProp
         rowspan: rowSpan.value,
         'aria-sort': headerAriaSort.value,
         'data-fixed': fixedState ? '' : undefined,
-        'data-fixed-side': fixedState?.side
+        'data-fixed-side': fixedState?.side,
+        'data-fixed-last-start': fixedState?.isLastStart ? '' : undefined,
+        'data-fixed-first-end': fixedState?.isFirstEnd ? '' : undefined
       }
     );
   });
@@ -808,7 +810,9 @@ export function useTableCompactCell(options: PropsToContext<TableCompactCellOpti
         class: fixedState ? ui.value.fixed : undefined,
         style: bodyCellStyle,
         'data-fixed': fixedState ? '' : undefined,
-        'data-fixed-side': fixedState?.side
+        'data-fixed-side': fixedState?.side,
+        'data-fixed-last-start': fixedState?.isLastStart ? '' : undefined,
+        'data-fixed-first-end': fixedState?.isFirstEnd ? '' : undefined
       }
     );
   });

@@ -664,26 +664,20 @@ export function getTableFixedColumnOffsets<T extends TableBaseData>(
   leafColumns: TableColumn<T>[],
   getWidth: (column: TableColumn<T>) => number
 ): TableFixedColumnOffsets {
+  const startFixedColumns = leafColumns.filter(column => column.fixed === 'start');
+  const endFixedColumns = leafColumns.filter(column => column.fixed === 'end');
   const startOffsets: Record<string, number> = {};
   const endOffsets: Record<string, number> = {};
   let accumulatedStart = 0;
   let accumulatedEnd = 0;
 
-  leafColumns.forEach(column => {
-    if (column.fixed !== 'start') {
-      return;
-    }
-
+  startFixedColumns.forEach(column => {
     const key = getTableColumnKey(column);
     startOffsets[key] = accumulatedStart;
     accumulatedStart += getWidth(column);
   });
 
-  [...leafColumns].reverse().forEach(column => {
-    if (column.fixed !== 'end') {
-      return;
-    }
-
+  [...endFixedColumns].reverse().forEach(column => {
     const key = getTableColumnKey(column);
     endOffsets[key] = accumulatedEnd;
     accumulatedEnd += getWidth(column);
@@ -691,7 +685,9 @@ export function getTableFixedColumnOffsets<T extends TableBaseData>(
 
   return {
     startOffsets,
-    endOffsets
+    endOffsets,
+    lastStartKey: startFixedColumns.at(-1) ? getTableColumnKey(startFixedColumns.at(-1)!) : undefined,
+    firstEndKey: endFixedColumns[0] ? getTableColumnKey(endFixedColumns[0]) : undefined
   };
 }
 
@@ -704,14 +700,18 @@ export function getTableLeafFixedState<T extends TableBaseData>(
   if (column.fixed === 'start') {
     return {
       side: 'start',
-      offset: offsets.startOffsets[key] ?? 0
+      offset: offsets.startOffsets[key] ?? 0,
+      isLastStart: offsets.lastStartKey === key,
+      isFirstEnd: false
     };
   }
 
   if (column.fixed === 'end') {
     return {
       side: 'end',
-      offset: offsets.endOffsets[key] ?? 0
+      offset: offsets.endOffsets[key] ?? 0,
+      isLastStart: false,
+      isFirstEnd: offsets.firstEndKey === key
     };
   }
 
@@ -741,7 +741,17 @@ export function getTableHeaderFixedState<T extends TableBaseData>(
     return undefined;
   }
 
-  return getTableLeafFixedState(boundaryColumn, offsets);
+  const boundaryState = getTableLeafFixedState(boundaryColumn, offsets);
+
+  if (!boundaryState) {
+    return undefined;
+  }
+
+  return {
+    ...boundaryState,
+    isLastStart: leaves.some(leaf => getTableColumnKey(leaf) === offsets.lastStartKey),
+    isFirstEnd: leaves.some(leaf => getTableColumnKey(leaf) === offsets.firstEndKey)
+  };
 }
 
 export function getTableCellStyle(params: {
