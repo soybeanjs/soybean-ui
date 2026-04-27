@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { SCard } from '@soybeanjs/ui';
 import DemoTableBase from './base.vue';
+import DemoTableEmpty from './empty.vue';
 import DemoTableVariant from './variant.vue';
 import DemoTableBordered from './bordered.vue';
 import DemoTableRounded from './rounded.vue';
@@ -27,6 +28,7 @@ import DemoTableVirtualized from './virtualized.vue';
     <DemoTableBordered />
     <DemoTableRounded />
     <DemoTableStriped />
+    <DemoTableEmpty />
     <DemoTableGrouped />
     <DemoTableSorting />
     <DemoTableFiltering />

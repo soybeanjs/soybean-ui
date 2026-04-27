@@ -13,6 +13,7 @@ import { provideTableCompactContext } from './context';
 import { useTableCompactData, useTableCompactResize, useTableCompactState, useTableCompactVirtual } from './hooks';
 import { useDirection } from '../config-provider/context';
 import TableBody from './table-body.vue';
+import TableCell from './table-cell.vue';
 import TableCompactRow from './table-compact-row.vue';
 import TableCompactHead from './table-compact-head.vue';
 import TableContent from './table-content.vue';
@@ -109,6 +110,9 @@ const { isVirtual, setTableScrollRef, tableScrollStyle, virtualPaddingStart, vir
     syncMeasuredColumnWidths
   });
 
+const columnSize = computed(() => Math.max(leafColumns.value.length, 1));
+const showEmpty = computed(() => displayRows.value.length === 0);
+
 provideTableCompactContext({
   ...transformPropsToContext(props, ['indent', 'headProps', 'cellProps', 'rowProps']),
   dir,
@@ -160,9 +164,15 @@ provideTableCompactContext({
           </TableRow>
         </TableHeader>
         <TableBody v-bind="bodyProps">
+          <TableRow v-if="showEmpty" v-bind="rowProps">
+            <TableCell :colspan="columnSize" v-bind="cellProps">
+              <slot name="empty" :column-size="columnSize" />
+            </TableCell>
+          </TableRow>
           <TableVirtualSpacerRow
+            v-else
             :is-virtual="isVirtual"
-            :colspan="Math.max(leafColumns.length, 1)"
+            :colspan="columnSize"
             :padding-start="virtualPaddingStart"
             :padding-end="virtualPaddingEnd"
           >
@@ -180,7 +190,7 @@ provideTableCompactContext({
           </TableVirtualSpacerRow>
         </TableBody>
         <TableFooter v-if="$slots.footer" v-bind="footerProps">
-          <slot name="footer" :column-size="leafColumns.length" />
+          <slot name="footer" :column-size="columnSize" />
         </TableFooter>
       </TableContent>
     </TableScroll>

@@ -2,7 +2,7 @@
 
 ## Overview
 
-A data table component for displaying row and column data. Supports grouped headers, sorting, filtering, selection, expansion, tree rows, virtualization, and more, with default and simple visual variants plus a rounded toggle.
+A data table component for displaying row and column data. Supports grouped headers, sorting, filtering, selection, expansion, tree rows, virtualization, empty states, and more, with default and simple visual variants plus a rounded toggle.
 
 ## Usage
 
@@ -45,6 +45,7 @@ variant
 bordered
 rounded
 striped
+empty
 grouped
 sorting
 filtering

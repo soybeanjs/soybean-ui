@@ -333,6 +333,10 @@ export interface TableExpandedRowSlotProps<T extends TableBaseData = TableBaseDa
   hasChildren: boolean;
 }
 
+export interface TableEmptySlotProps {
+  columnSize: number;
+}
+
 export interface TableDataCellSlotProps<
   T extends TableBaseData = TableBaseData,
   K extends Path<TableRowValue<T>> = Path<TableRowValue<T>>
@@ -399,6 +403,7 @@ export type TableCompactSlots<T extends TableBaseData> = {
   expand?: (props: TableExpandSlotProps<T>) => any;
   'expanded-row'?: (props: TableExpandedRowSlotProps<T>) => any;
   'tree-toggle'?: (props: TableTreeToggleSlotProps<T>) => any;
+  empty?: (props: TableEmptySlotProps) => any;
   footer?: (props: { columnSize: number }) => any;
 };
 

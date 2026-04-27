@@ -191,6 +191,46 @@ describe('STable', () => {
       wrapper.unmount();
     });
 
+    it('renders the default empty state when there are no rows', () => {
+      const wrapper = mount(STable, {
+        props: {
+          columns: columns as TableColumn[],
+          data: [],
+          rowKey: row => row.id
+        },
+        attachTo: document.body
+      });
+
+      expect(wrapper.text()).toContain('No data');
+      expect(wrapper.text()).toContain('There is no data to display.');
+      expect(wrapper.get('tbody td[colspan="2"]').text()).toContain('No data');
+      expect(wrapper.findAll('tbody tr')).toHaveLength(1);
+
+      wrapper.unmount();
+    });
+
+    it('allows overriding the empty state with the empty slot', () => {
+      const wrapper = mount(STable, {
+        props: {
+          columns: columns as TableColumn[],
+          data: [],
+          rowKey: row => row.id
+        },
+        slots: {
+          empty: ({ columnSize }: any) => {
+            return h('div', { 'data-testid': 'table-empty', 'data-column-size': columnSize }, 'Custom empty');
+          }
+        },
+        attachTo: document.body
+      });
+
+      expect(wrapper.get('[data-testid="table-empty"]').attributes('data-column-size')).toBe('2');
+      expect(wrapper.text()).toContain('Custom empty');
+      expect(wrapper.text()).not.toContain('No data');
+
+      wrapper.unmount();
+    });
+
     it('uses dir on the root element and css text-align for logical alignment', () => {
       const alignedColumns: TableColumn<TableRowData>[] = [
         { title: 'Name', dataIndex: 'name' },

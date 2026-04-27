@@ -13,6 +13,7 @@ import type { TableSortOrder } from '@soybeanjs/headless';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
 import { mergeSlotVariants, miniSizeMap } from '@/theme';
 import SButtonIcon from '../button/button-icon.vue';
+import SEmpty from '../empty/empty.vue';
 import SCheckbox from '../checkbox/checkbox.vue';
 import TableFilterPopover from './table-filter-popover.vue';
 import TableRadio from './table-radio.vue';
@@ -136,6 +137,10 @@ provideTableUi(ui);
         :data-expanded="expanded ? '' : undefined"
         @click="toggleExpand()"
       />
+    </template>
+
+    <template v-if="!slots.empty" #empty>
+      <SEmpty title="No data" description="There is no data to display." icon="lucide:inbox" media-variant="icon" />
     </template>
   </TableCompact>
 </template>
