@@ -1,5 +1,34 @@
 # Changelog
 
+## [v0.15.3](https://github.com/soybeanjs/soybean-ui/compare/v0.15.2...v0.15.3) (2026-04-27)
+
+### &nbsp;&nbsp;&nbsp;🚀 Features
+
+- **table**: add empty state support and update documentation &nbsp;-&nbsp; by **soybeanfe** and **Copilot** [<samp>(38ca1)</samp>](https://github.com/soybeanjs/soybean-ui/commit/38ca16c2)
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- **table**: add missing TableScroll component exports &nbsp;-&nbsp; by **soybeanfe** [<samp>(5bbd4)</samp>](https://github.com/soybeanjs/soybean-ui/commit/5bbd46c3)
+
+### &nbsp;&nbsp;&nbsp;📖 Documentation
+
+- **progress**: update progress documentation and improve structure &nbsp;-&nbsp; by **soybeanfe** and **Copilot** [<samp>(d86ac)</samp>](https://github.com/soybeanjs/soybean-ui/commit/d86acef7)
+- **table**: update table api &nbsp;-&nbsp; by **soybeanfe** [<samp>(a130d)</samp>](https://github.com/soybeanjs/soybean-ui/commit/a130d38c)
+
+### &nbsp;&nbsp;&nbsp;🏡 Chore
+
+- **deps**: update deps &nbsp;-&nbsp; by **soybeanfe** [<samp>(c7376)</samp>](https://github.com/soybeanjs/soybean-ui/commit/c7376b53)
+- **oxfmtrc**: add CHANGELOG.md to ignore patterns &nbsp;-&nbsp; by **soybeanfe** and **Copilot** [<samp>(d96d3)</samp>](https://github.com/soybeanjs/soybean-ui/commit/d96d3b63)
+
+### &nbsp;&nbsp;&nbsp;🎨 Styles
+
+- **card**: update content class for improved accessibility &nbsp;-&nbsp; by **soybeanfe** [<samp>(0160d)</samp>](https://github.com/soybeanjs/soybean-ui/commit/0160d881)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+
+[soybeanfe](mailto:honghuangdc@gmail.com),&nbsp;[Copilot](mailto:copilot@github.com)
+
 ## [v0.15.2](https://github.com/soybeanjs/soybean-ui/compare/v0.15.1...v0.15.2) (2026-04-27)
 
 ### &nbsp;&nbsp;&nbsp;🚀 Features
