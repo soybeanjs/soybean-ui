@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-26T16:25:36.245Z",
+  "generatedAt": "2026-04-27T08:53:04.926Z",
   "schemaVersion": 3,
   "components": {
     "accordion": {
@@ -690,7 +690,8 @@
         "TableHeader",
         "TableRadio",
         "TableRoot",
-        "TableRow"
+        "TableRow",
+        "TableScroll"
       ]
     },
     "tabs": {

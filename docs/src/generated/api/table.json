@@ -6,7 +6,7 @@
         "kind": "props",
         "name": "TableProps",
         "type": "Interface TableProps<T, R, M>",
-        "resolvedType": "{ class?: string | Record<string, boolean> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<TableExtendedUi>; bordered?: boolean; striped?: boolean; columns: TableColumn<T>[]; data: T[]; rowKey: (row: T) => R; defaultSortState?: TableSortState; sortState?: TableSortState; defaultFilterState?: TableFilterState; filterState?: TableFilterState; defaultColumnWidths?: TableColumnWidthState; columnWidths?: TableColumnWidthState; getChildren?: TableRowChildrenResolver<T>; indent?: number; virtual?: boolean; height?: string | number; estimateSize?: number | ((index: number, row: T) => number); virtualizerOptions?: VirtualizerOptions; defaultExpanded?: R[]; expanded?: R[]; defaultExpandAll?: boolean; contentProps?: TableContentProps; headerProps?: TableHeaderProps; bodyProps?: TableBodyProps; footerProps?: TableFooterProps; headProps?: TableHeadProps; rowProps?: TableRowProps; cellProps?: TableCellProps; dir?: Direction; defaultSelected?: (M extends true ? R[] : R); selected?: (M extends true ? R[] : R); multiple?: M }",
+        "resolvedType": "{ class?: string | Record<string, boolean> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<TableExtendedUi>; variant?: TableVariant; bordered?: boolean; rounded?: boolean; striped?: boolean; columns: TableColumn<T>[]; data: T[]; rowKey: (row: T) => R; defaultSortState?: TableSortState; sortState?: TableSortState; defaultFilterState?: TableFilterState; filterState?: TableFilterState; defaultColumnWidths?: TableColumnWidthState; columnWidths?: TableColumnWidthState; getChildren?: TableRowChildrenResolver<T>; indent?: number; virtual?: boolean; height?: string | number; estimateSize?: number | ((index: number, row: T) => number); virtualizerOptions?: VirtualizerOptions; defaultExpanded?: R[]; expanded?: R[]; defaultExpandAll?: boolean; contentProps?: TableContentProps; headerProps?: TableHeaderProps; bodyProps?: TableBodyProps; footerProps?: TableFooterProps; headProps?: TableHeadProps; rowProps?: TableRowProps; cellProps?: TableCellProps; dir?: Direction; defaultSelected?: (M extends true ? R[] : R); selected?: (M extends true ? R[] : R); multiple?: M }",
         "description": "",
         "sourcePath": "src/components/table/types.ts",
         "typeParameters": ["TypeParameter T", "TypeParameter R", "TypeParameter M"],
@@ -69,7 +69,7 @@
               {
                 "name": "TableExtendedUi",
                 "kind": "typeAlias",
-                "type": "{ root: ClassValue; header: ClassValue; content: ClassValue; fixed: ClassValue; footer: ClassValue; body: ClassValue; row: ClassValue; head: ClassValue; cell: ClassValue; sortTrigger: ClassValue; filterInput: ClassValue; resizeHandle: ClassValue; treeCell: ClassValue; treeToggle: ClassValue; treeTogglePlaceholder: ClassValue; selection: ClassValue; filterTrigger: ClassValue; filterPopup: ClassValue; filterSearch: ClassValue; filterOptions: ClassValue; filterOption: ClassValue; filterOptionLabel: ClassValue; filterFooter: ClassValue; filterCount: ClassValue; filterAction: ClassValue; filterEmpty: ClassValue; }",
+                "type": "{ root: ClassValue; header: ClassValue; content: ClassValue; fixed: ClassValue; footer: ClassValue; scroll: ClassValue; body: ClassValue; row: ClassValue; head: ClassValue; cell: ClassValue; sortTrigger: ClassValue; filterInput: ClassValue; resizeHandle: ClassValue; treeCell: ClassValue; treeToggle: ClassValue; treeTogglePlaceholder: ClassValue; selection: ClassValue; filterTrigger: ClassValue; filterPopup: ClassValue; filterSearch: ClassValue; filterOptions: ClassValue; filterOption: ClassValue; filterOptionLabel: ClassValue; filterFooter: ClassValue; filterCount: ClassValue; filterAction: ClassValue; filterEmpty: ClassValue; }",
                 "resolvedType": null,
                 "description": "",
                 "sourcePath": "src/components/table/types.ts",
@@ -81,7 +81,40 @@
             ]
           },
           {
+            "name": "variant",
+            "type": "TableVariant",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/table/types.ts",
+            "referencedTypes": [
+              {
+                "name": "TableVariant",
+                "kind": "typeAlias",
+                "type": "'default' | 'simple'",
+                "resolvedType": "'default' | 'simple'",
+                "description": "",
+                "sourcePath": "src/components/table/variants.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
             "name": "bordered",
+            "type": "boolean",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/table/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "rounded",
             "type": "boolean",
             "required": false,
             "description": "",
@@ -745,7 +778,7 @@
         "kind": "slots",
         "name": "TableSlots",
         "type": "TypeAlias TableSlots<T>: TableCompactSlots<T>",
-        "resolvedType": "{ bottom?: (() => any); header?: ((props: TableHeaderSlotProps<T>) => any); \"header-index\"?: ((props: { column: TableColumn<T>; }) => any); \"header-selection\"?: ((props: TableHeaderSelectionSlotProps<T>) => any); \"header-expand\"?: ((props: { column: TableColumn<T>; }) => any); \"header-filter\"?: ((props: TableHeaderFilterSlotProps<T>) => any); \"header-sort\"?: ((props: TableHeaderSortSlotProps<T>) => any); \"header-resize\"?: ((props: TableHeaderResizeSlotProps<T>) => any); index?: ((props: TableIndexSlotProps<T>) => any); selection?: ((props: TableSelectionSlotProps<T>) => any); expand?: ((props: TableExpandSlotProps<T>) => any); \"expanded-row\"?: ((props: TableExpandedRowSlotProps<T>) => any); \"tree-toggle\"?: ((props: TableTreeToggleSlotProps<T>) => any); footer?: ((props: { columnSize: number; }) => any) }",
+        "resolvedType": "{ bottom?: (() => any); header?: ((props: TableHeaderSlotProps<T>) => any); \"header-index\"?: ((props: { column: TableColumn<T>; }) => any); \"header-selection\"?: ((props: TableHeaderSelectionSlotProps<T>) => any); \"header-expand\"?: ((props: { column: TableColumn<T>; }) => any); \"header-filter\"?: ((props: TableHeaderFilterSlotProps<T>) => any); \"header-sort\"?: ((props: TableHeaderSortSlotProps<T>) => any); \"header-resize\"?: ((props: TableHeaderResizeSlotProps<T>) => any); index?: ((props: TableIndexSlotProps<T>) => any); selection?: ((props: TableSelectionSlotProps<T>) => any); expand?: ((props: TableExpandSlotProps<T>) => any); \"expanded-row\"?: ((props: TableExpandedRowSlotProps<T>) => any); \"tree-toggle\"?: ((props: TableTreeToggleSlotProps<T>) => any); empty?: ((props: TableEmptySlotProps) => any); footer?: ((props: { columnSize: number; }) => any) }",
         "description": "",
         "sourcePath": "src/components/table/types.ts",
         "typeParameters": ["TypeParameter T"],
@@ -1018,6 +1051,28 @@
                 "description": "",
                 "sourcePath": "headless/src/components/table/types.ts",
                 "typeParameters": ["T extends TableBaseData = TableBaseData"],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "empty",
+            "type": "((props: TableEmptySlotProps) => any) | undefined",
+            "parameters": "((props: TableEmptySlotProps) => any) | undefined",
+            "required": false,
+            "description": "",
+            "sourcePath": "headless/src/components/table/types.ts",
+            "referencedTypes": [
+              {
+                "name": "TableEmptySlotProps",
+                "kind": "interface",
+                "type": "TableEmptySlotProps",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/components/table/types.ts",
+                "typeParameters": [],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -1964,7 +2019,7 @@
         "kind": "slots",
         "name": "TableCompactSlots",
         "type": "TypeAlias TableCompactSlots<T>",
-        "resolvedType": "{ bottom?: (() => any); header?: ((props: TableHeaderSlotProps<T>) => any); \"header-index\"?: ((props: { column: TableColumn<T>; }) => any); \"header-selection\"?: ((props: TableHeaderSelectionSlotProps<T>) => any); \"header-expand\"?: ((props: { column: TableColumn<T>; }) => any); \"header-filter\"?: ((props: TableHeaderFilterSlotProps<T>) => any); \"header-sort\"?: ((props: TableHeaderSortSlotProps<T>) => any); \"header-resize\"?: ((props: TableHeaderResizeSlotProps<T>) => any); index?: ((props: TableIndexSlotProps<T>) => any); selection?: ((props: TableSelectionSlotProps<T>) => any); expand?: ((props: TableExpandSlotProps<T>) => any); \"expanded-row\"?: ((props: TableExpandedRowSlotProps<T>) => any); \"tree-toggle\"?: ((props: TableTreeToggleSlotProps<T>) => any); footer?: ((props: { columnSize: number; }) => any) }",
+        "resolvedType": "{ bottom?: (() => any); header?: ((props: TableHeaderSlotProps<T>) => any); \"header-index\"?: ((props: { column: TableColumn<T>; }) => any); \"header-selection\"?: ((props: TableHeaderSelectionSlotProps<T>) => any); \"header-expand\"?: ((props: { column: TableColumn<T>; }) => any); \"header-filter\"?: ((props: TableHeaderFilterSlotProps<T>) => any); \"header-sort\"?: ((props: TableHeaderSortSlotProps<T>) => any); \"header-resize\"?: ((props: TableHeaderResizeSlotProps<T>) => any); index?: ((props: TableIndexSlotProps<T>) => any); selection?: ((props: TableSelectionSlotProps<T>) => any); expand?: ((props: TableExpandSlotProps<T>) => any); \"expanded-row\"?: ((props: TableExpandedRowSlotProps<T>) => any); \"tree-toggle\"?: ((props: TableTreeToggleSlotProps<T>) => any); empty?: ((props: TableEmptySlotProps) => any); footer?: ((props: { columnSize: number; }) => any) }",
         "description": "",
         "sourcePath": "headless/src/components/table/types.ts",
         "typeParameters": ["T extends TableBaseData"],
@@ -2244,6 +2299,28 @@
             ]
           },
           {
+            "name": "empty",
+            "type": "((props: TableEmptySlotProps) => any) | undefined",
+            "parameters": "((props: TableEmptySlotProps) => any) | undefined",
+            "required": false,
+            "description": "",
+            "sourcePath": "headless/src/components/table/types.ts",
+            "referencedTypes": [
+              {
+                "name": "TableEmptySlotProps",
+                "kind": "interface",
+                "type": "TableEmptySlotProps",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/components/table/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
             "name": "footer",
             "type": "((props: { columnSize: number; }) => any) | undefined",
             "parameters": "((props: { columnSize: number; }) => any) | undefined",
@@ -2288,7 +2365,7 @@
         "kind": "props",
         "name": "TableFilterPopoverProps",
         "type": "Interface TableFilterPopoverProps<T>",
-        "resolvedType": "{ size?: ThemeSize; ui: { root: ClassValue; header: ClassValue; content: ClassValue; fixed: ClassValue; footer: ClassValue; body: ClassValue; row: ClassValue; head: ClassValue; cell: ClassValue; sortTrigger: ClassValue; filterInput: ClassValue; resizeHandle: ClassValue; treeCell: ClassValue; treeToggle: ClassValue; treeTogglePlaceholder: ClassValue; selection: ClassValue; filterTrigger: ClassValue; filterPopup: ClassValue; filterSearch: ClassValue; filterOptions: ClassValue; filterOption: ClassValue; filterOptionLabel: ClassValue; filterFooter: ClassValue; filterCount: ClassValue; filterAction: ClassValue; filterEmpty: ClassValue; }; filterOptions: TableColumnFilterOption[]; column: TableTypeColumn | TableDataColumn<T> | TableGroupColumn<T>; filterValue: string; filterValues: string[]; filterState?: TableFilterValue; filtered: boolean; setFilterValue: (value: string) => void; setFilterValues: (values: string[]) => void; setFilterState: (value: TableFilterValue | undefined) => void; toggleFilterOption: (value: string) => void; isFilterOptionSelected: (value: string) => boolean; clearFilter: () => void }",
+        "resolvedType": "{ size?: ThemeSize; ui: { root: ClassValue; header: ClassValue; content: ClassValue; fixed: ClassValue; footer: ClassValue; scroll: ClassValue; body: ClassValue; row: ClassValue; head: ClassValue; cell: ClassValue; sortTrigger: ClassValue; filterInput: ClassValue; resizeHandle: ClassValue; treeCell: ClassValue; treeToggle: ClassValue; treeTogglePlaceholder: ClassValue; selection: ClassValue; filterTrigger: ClassValue; filterPopup: ClassValue; filterSearch: ClassValue; filterOptions: ClassValue; filterOption: ClassValue; filterOptionLabel: ClassValue; filterFooter: ClassValue; filterCount: ClassValue; filterAction: ClassValue; filterEmpty: ClassValue; }; filterOptions: TableColumnFilterOption[]; column: TableTypeColumn | TableDataColumn<T> | TableGroupColumn<T>; filterValue: string; filterValues: string[]; filterState?: TableFilterValue; filtered: boolean; setFilterValue: (value: string) => void; setFilterValues: (values: string[]) => void; setFilterState: (value: TableFilterValue | undefined) => void; toggleFilterOption: (value: string) => void; isFilterOptionSelected: (value: string) => boolean; clearFilter: () => void }",
         "description": "",
         "sourcePath": "src/components/table/types.ts",
         "typeParameters": ["TypeParameter T"],
@@ -2318,7 +2395,7 @@
           },
           {
             "name": "ui",
-            "type": "{ root: ClassValue; header: ClassValue; content: ClassValue; fixed: ClassValue; footer: ClassValue; body: ClassValue; row: ClassValue; head: ClassValue; cell: ClassValue; sortTrigger: ClassValue; filterInput: ClassValue; resizeHandle: ClassValue; treeCell: ClassValue; treeToggle: ClassValue; treeTogglePlaceholder: ClassValue; selection: ClassValue; filterTrigger: ClassValue; filterPopup: ClassValue; filterSearch: ClassValue; filterOptions: ClassValue; filterOption: ClassValue; filterOptionLabel: ClassValue; filterFooter: ClassValue; filterCount: ClassValue; filterAction: ClassValue; filterEmpty: ClassValue; }",
+            "type": "{ root: ClassValue; header: ClassValue; content: ClassValue; fixed: ClassValue; footer: ClassValue; scroll: ClassValue; body: ClassValue; row: ClassValue; head: ClassValue; cell: ClassValue; sortTrigger: ClassValue; filterInput: ClassValue; resizeHandle: ClassValue; treeCell: ClassValue; treeToggle: ClassValue; treeTogglePlaceholder: ClassValue; selection: ClassValue; filterTrigger: ClassValue; filterPopup: ClassValue; filterSearch: ClassValue; filterOptions: ClassValue; filterOption: ClassValue; filterOptionLabel: ClassValue; filterFooter: ClassValue; filterCount: ClassValue; filterAction: ClassValue; filterEmpty: ClassValue; }",
             "required": true,
             "description": "",
             "default": null,
@@ -2328,8 +2405,8 @@
               {
                 "name": "TableExtendedUi",
                 "kind": "typeAlias",
-                "type": "{ root: ClassValue; header: ClassValue; content: ClassValue; fixed: ClassValue; footer: ClassValue; body: ClassValue; row: ClassValue; head: ClassValue; cell: ClassValue; sortTrigger: ClassValue; filterInput: ClassValue; resizeHandle: ClassValue; treeCell: ClassValue; treeToggle: ClassValue; treeTogglePlaceholder: ClassValue; selection: ClassValue; filterTrigger: ClassValue; filterPopup: ClassValue; filterSearch: ClassValue; filterOptions: ClassValue; filterOption: ClassValue; filterOptionLabel: ClassValue; filterFooter: ClassValue; filterCount: ClassValue; filterAction: ClassValue; filterEmpty: ClassValue; }",
-                "resolvedType": "{ root: string | Record<string, boolean> | ClassValue[] | null | undefined; header: string | Record<string, boolean> | ClassValue[] | null | undefined; content: string | Record<string, boolean> | ClassValue[] | null | undefined; fixed: string | Record<string, boolean> | ClassValue[] | null | undefined; footer: string | Record<string, boolean> | ClassValue[] | null | undefined; body: string | Record<string, boolean> | ClassValue[] | null | undefined; row: string | Record<string, boolean> | ClassValue[] | null | undefined; head: string | Record<string, boolean> | ClassValue[] | null | undefined; cell: string | Record<string, boolean> | ClassValue[] | null | undefined; sortTrigger: string | Record<string, boolean> | ClassValue[] | null | undefined; filterInput: string | Record<string, boolean> | ClassValue[] | null | undefined; resizeHandle: string | Record<string, boolean> | ClassValue[] | null | undefined; treeCell: string | Record<string, boolean> | ClassValue[] | null | undefined; treeToggle: string | Record<string, boolean> | ClassValue[] | null | undefined; treeTogglePlaceholder: string | Record<string, boolean> | ClassValue[] | null | undefined; selection: string | Record<string, boolean> | ClassValue[] | null | undefined; filterTrigger: string | Record<string, boolean> | ClassValue[] | null | undefined; filterPopup: string | Record<string, boolean> | ClassValue[] | null | undefined; filterSearch: string | Record<string, boolean> | ClassValue[] | null | undefined; filterOptions: string | Record<string, boolean> | ClassValue[] | null | undefined; filterOption: string | Record<string, boolean> | ClassValue[] | null | undefined; filterOptionLabel: string | Record<string, boolean> | ClassValue[] | null | undefined; filterFooter: string | Record<string, boolean> | ClassValue[] | null | undefined; filterCount: string | Record<string, boolean> | ClassValue[] | null | undefined; filterAction: string | Record<string, boolean> | ClassValue[] | null | undefined; filterEmpty: string | Record<string, boolean> | ClassValue[] | null | undefined }",
+                "type": "{ root: ClassValue; header: ClassValue; content: ClassValue; fixed: ClassValue; footer: ClassValue; scroll: ClassValue; body: ClassValue; row: ClassValue; head: ClassValue; cell: ClassValue; sortTrigger: ClassValue; filterInput: ClassValue; resizeHandle: ClassValue; treeCell: ClassValue; treeToggle: ClassValue; treeTogglePlaceholder: ClassValue; selection: ClassValue; filterTrigger: ClassValue; filterPopup: ClassValue; filterSearch: ClassValue; filterOptions: ClassValue; filterOption: ClassValue; filterOptionLabel: ClassValue; filterFooter: ClassValue; filterCount: ClassValue; filterAction: ClassValue; filterEmpty: ClassValue; }",
+                "resolvedType": "{ root: string | Record<string, boolean> | ClassValue[] | null | undefined; header: string | Record<string, boolean> | ClassValue[] | null | undefined; content: string | Record<string, boolean> | ClassValue[] | null | undefined; fixed: string | Record<string, boolean> | ClassValue[] | null | undefined; footer: string | Record<string, boolean> | ClassValue[] | null | undefined; scroll: string | Record<string, boolean> | ClassValue[] | null | undefined; body: string | Record<string, boolean> | ClassValue[] | null | undefined; row: string | Record<string, boolean> | ClassValue[] | null | undefined; head: string | Record<string, boolean> | ClassValue[] | null | undefined; cell: string | Record<string, boolean> | ClassValue[] | null | undefined; sortTrigger: string | Record<string, boolean> | ClassValue[] | null | undefined; filterInput: string | Record<string, boolean> | ClassValue[] | null | undefined; resizeHandle: string | Record<string, boolean> | ClassValue[] | null | undefined; treeCell: string | Record<string, boolean> | ClassValue[] | null | undefined; treeToggle: string | Record<string, boolean> | ClassValue[] | null | undefined; treeTogglePlaceholder: string | Record<string, boolean> | ClassValue[] | null | undefined; selection: string | Record<string, boolean> | ClassValue[] | null | undefined; filterTrigger: string | Record<string, boolean> | ClassValue[] | null | undefined; filterPopup: string | Record<string, boolean> | ClassValue[] | null | undefined; filterSearch: string | Record<string, boolean> | ClassValue[] | null | undefined; filterOptions: string | Record<string, boolean> | ClassValue[] | null | undefined; filterOption: string | Record<string, boolean> | ClassValue[] | null | undefined; filterOptionLabel: string | Record<string, boolean> | ClassValue[] | null | undefined; filterFooter: string | Record<string, boolean> | ClassValue[] | null | undefined; filterCount: string | Record<string, boolean> | ClassValue[] | null | undefined; filterAction: string | Record<string, boolean> | ClassValue[] | null | undefined; filterEmpty: string | Record<string, boolean> | ClassValue[] | null | undefined }",
                 "description": "",
                 "sourcePath": "src/components/table/types.ts",
                 "typeParameters": [],
@@ -2377,6 +2454,16 @@
                   },
                   {
                     "name": "footer",
+                    "type": "string | Record<string, boolean> | ClassValue[] | null | undefined",
+                    "required": true,
+                    "description": "",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": null,
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "scroll",
                     "type": "string | Record<string, boolean> | ClassValue[] | null | undefined",
                     "required": true,
                     "description": "",
@@ -3533,6 +3620,20 @@
         "kind": "props",
         "name": "TableRowProps",
         "type": "Interface TableRowProps",
+        "resolvedType": null,
+        "description": "",
+        "sourcePath": "headless/src/components/table/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "TableScroll": {
+      "props": {
+        "kind": "props",
+        "name": "TableScrollProps",
+        "type": "Interface TableScrollProps",
         "resolvedType": null,
         "description": "",
         "sourcePath": "headless/src/components/table/types.ts",
