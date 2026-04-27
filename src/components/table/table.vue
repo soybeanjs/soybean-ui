@@ -23,7 +23,9 @@ defineOptions({
   name: 'STable'
 });
 
-const props = defineProps<TableProps<T, R, M>>();
+const props = withDefaults(defineProps<TableProps<T, R, M>>(), {
+  multiple: true as any
+});
 
 const emit = defineEmits<TableEmits<R, M>>();
 
