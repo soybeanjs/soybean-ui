@@ -339,15 +339,16 @@ export const components = {
   ],
   switch: ['SwitchRoot', 'SwitchControl', 'SwitchThumb'],
   table: [
+    'TableCompact',
     'TableRoot',
+    'TableScroll',
     'TableContent',
     'TableHeader',
     'TableBody',
     'TableFooter',
     'TableRow',
     'TableHead',
-    'TableCell',
-    'TableCompact'
+    'TableCell'
   ],
   tabs: ['TabsRoot', 'TabsList', 'TabsTrigger', 'TabsContent', 'TabsIndicator', 'TabsCompact'],
   tag: ['Tag'],

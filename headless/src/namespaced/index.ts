@@ -374,6 +374,7 @@ import {
   TableHeader,
   TableRoot,
   TableRow,
+  TableScroll,
   TabsCompact,
   TabsContent,
   TabsIndicator,
@@ -1351,17 +1352,20 @@ export const Switch = {
 };
 
 export const Table = {
+  Compact: TableCompact,
   Root: TableRoot,
+  Scroll: TableScroll,
   Content: TableContent,
   Header: TableHeader,
   Body: TableBody,
   Footer: TableFooter,
   Row: TableRow,
   Head: TableHead,
-  Cell: TableCell,
-  Compact: TableCompact
+  Cell: TableCell
 } as {
+  Compact: typeof TableCompact;
   Root: typeof TableRoot;
+  Scroll: typeof TableScroll;
   Content: typeof TableContent;
   Header: typeof TableHeader;
   Body: typeof TableBody;
@@ -1369,7 +1373,6 @@ export const Table = {
   Row: typeof TableRow;
   Head: typeof TableHead;
   Cell: typeof TableCell;
-  Compact: typeof TableCompact;
 };
 
 export const Tabs = {
