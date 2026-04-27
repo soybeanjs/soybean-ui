@@ -6,7 +6,7 @@ export const cardVariants = tv({
     root: 'flex flex-col items-stretch rounded-md border bg-card text-card-foreground shadow-sm',
     header: 'flex items-center justify-between flex-wrap',
     content: [
-      'grow transition will-change-auto data-[state=closed]:p-0',
+      'grow transition will-change-auto outline-none data-[state=closed]:p-0',
       `data-[state=open]:animate-collapsible-down data-[state=closed]:animate-collapsible-up`
     ],
     footer: 'flex items-center justify-between',
