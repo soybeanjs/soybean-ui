@@ -28,20 +28,15 @@ circle
 provider
 ```
 
-## Progress API
+## Circle Progress
 
-### Props
+```vue
+<script setup lang="ts">
+import { SProgressCircle } from '@soybeanjs/ui';
+</script>
 
-<DataTable preset="props" :data="[
-{ name: 'modelValue', type: 'number | null | undefined', default: 'undefined', description: 'The current progress value. `null` or `undefined` renders an indeterminate state.' },
-{ name: 'max', type: 'number', default: '100', description: 'The maximum progress value.' },
-{ name: 'class', type: 'string', default: '-', description: 'Root container class name' },
-{ name: 'color', type: `'primary' | 'destructive' | 'success' | 'warning' | 'info' | 'carbon' | 'secondary' | 'accent'`, default: 'primary', description: 'Progress indicator color.' },
-{ name: 'size', type: `'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'`, default: 'md', description: 'Progress bar size.' },
-
-## API
-
-<ComponentApi component="progress" />
+<template>
+  <SProgressCircle :model-value="72" size="xl">
     <template #default="{ valuePercent }">{{ Math.round(valuePercent ?? 0) }}%</template>
   </SProgressCircle>
 </template>
@@ -95,30 +90,6 @@ const handleClick = () => {
 | `isRendered()` | Check whether a progress provider is currently mounted.                                |
 | `promise()`    | Bind the progress lifecycle to a promise or promise factory.                           |
 
-### `SProgressProvider` Props
+## API
 
-<DataTable preset="props" :data="[
-  { name: 'minimum', type: 'number', default: '0.08', description: 'Minimum raw progress value used by `progress.start()`.' },
-  { name: 'maximum', type: 'number', default: '1', description: 'Maximum raw progress value used by the provider.' },
-  { name: 'startPosition', type: 'number', default: '0.3', description: 'Default starting progress value used by `progress.start()` for page transitions.' },
-  { name: 'delay', type: 'number', default: '100', description: 'Default start delay used by `progress.start()` to avoid flashes on fast navigations.' },
-  { name: 'stopDelay', type: 'number', default: '300', description: 'Default completion delay used by `progress.stop()`.' },
-  { name: 'forcedStopDelay', type: 'number', default: '0', description: 'Additional delay applied before `progress.stop()` starts its completion delay.' },
-  { name: 'easing', type: 'string', default: `'linear'`, description: 'Transition easing used by the provider indicator.' },
-  { name: 'speed', type: 'number', default: '200', description: 'Transition duration and auto-hide delay in milliseconds.' },
-  { name: 'trickle', type: 'boolean', default: 'true', description: 'Whether `progress.start()` should keep incrementing automatically.' },
-  { name: 'trickleSpeed', type: 'number', default: '200', description: 'Delay between automatic trickle steps.' },
-  { name: 'direction', type: `'ltr' | 'rtl'`, default: `'ltr'`, description: 'Direction used to position the top progress indicator.' },
-  { name: 'indeterminate', type: 'boolean', default: 'false', description: 'Render the provider in indeterminate mode.' },
-  { name: 'class', type: 'string', default: '-', description: 'Root container class name.' },
-  { name: 'color', type: `'primary' | 'destructive' | 'success' | 'warning' | 'info' | 'carbon' | 'secondary' | 'accent'`, default: `'primary'`, description: 'Top progress indicator color.' },
-  { name: 'size', type: `'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'`, default: `'xs'`, description: 'Top progress thickness.' },
-  { name: 'ui', type: 'Partial<Ui>', default: '{}', description: 'Custom classes for the provider slots.' },
-  { name: 'indicatorProps', type: 'ProgressIndicatorProps', default: '{}', description: 'Props forwarded to the internal indicator element.' },
-]"/>
-
-### `SProgressProvider` Slots
-
-<DataTable preset="slots" :data="[
-  { name: 'default', parameters: '-', description: 'Content rendered after the provider.' },
-]"/>
+<ComponentApi component="progress" />
