@@ -40,6 +40,22 @@ import {
   Backtop,
   BadgeContent,
   BadgeRoot,
+  BottomSheetCancel,
+  BottomSheetClose,
+  BottomSheetCompact,
+  BottomSheetConfirm,
+  BottomSheetContent,
+  BottomSheetDescription,
+  BottomSheetFooter,
+  BottomSheetHandle,
+  BottomSheetHeader,
+  BottomSheetOverlay,
+  BottomSheetPopup,
+  BottomSheetPortal,
+  BottomSheetRoot,
+  BottomSheetRootNested,
+  BottomSheetTitle,
+  BottomSheetTrigger,
   BreadcrumbCompact,
   BreadcrumbEllipsis,
   BreadcrumbItem,
@@ -535,6 +551,42 @@ export const Badge = {
 } as {
   Root: typeof BadgeRoot;
   Content: typeof BadgeContent;
+};
+
+export const BottomSheet = {
+  Compact: BottomSheetCompact,
+  Root: BottomSheetRoot,
+  Trigger: BottomSheetTrigger,
+  Portal: BottomSheetPortal,
+  Header: BottomSheetHeader,
+  Content: BottomSheetContent,
+  Footer: BottomSheetFooter,
+  Title: BottomSheetTitle,
+  Description: BottomSheetDescription,
+  Close: BottomSheetClose,
+  Cancel: BottomSheetCancel,
+  Confirm: BottomSheetConfirm,
+  RootNested: BottomSheetRootNested,
+  Popup: BottomSheetPopup,
+  Overlay: BottomSheetOverlay,
+  Handle: BottomSheetHandle
+} as {
+  Compact: typeof BottomSheetCompact;
+  Root: typeof BottomSheetRoot;
+  Trigger: typeof BottomSheetTrigger;
+  Portal: typeof BottomSheetPortal;
+  Header: typeof BottomSheetHeader;
+  Content: typeof BottomSheetContent;
+  Footer: typeof BottomSheetFooter;
+  Title: typeof BottomSheetTitle;
+  Description: typeof BottomSheetDescription;
+  Close: typeof BottomSheetClose;
+  Cancel: typeof BottomSheetCancel;
+  Confirm: typeof BottomSheetConfirm;
+  RootNested: typeof BottomSheetRootNested;
+  Popup: typeof BottomSheetPopup;
+  Overlay: typeof BottomSheetOverlay;
+  Handle: typeof BottomSheetHandle;
 };
 
 export const Breadcrumb = {

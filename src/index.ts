@@ -8,6 +8,7 @@ export * from './components/avatar';
 export * from './components/backtop';
 export * from './components/autocomplete';
 export * from './components/badge';
+export * from './components/bottom-sheet';
 export * from './components/breadcrumb';
 export * from './components/button';
 export * from './components/card';

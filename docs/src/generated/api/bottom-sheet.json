@@ -1,92 +1,23 @@
 {
-  "component": "dialog",
+  "component": "bottom-sheet",
   "symbols": {
-    "Dialog": {
+    "BottomSheet": {
       "props": {
         "kind": "props",
-        "name": "DialogProps",
-        "type": "Interface DialogProps",
-        "resolvedType": "{ class?: string | Record<string, boolean> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<DialogUi>; title?: string; description?: string; icon?: string | import(\"vue\").Component | VNode<import(\"vue\").RendererNode, import(\"vue\").RendererElement, { [key: string]: any; }> | null; showClose?: boolean; pure?: boolean; showCancel?: boolean | 'onlyWarning'; cancelText?: string; showConfirm?: boolean; confirmText?: string; triggerProps?: DialogTriggerProps; overlayProps?: DialogOverlayProps; portalProps?: DialogPortalProps; popupProps?: DialogPopupProps; headerProps?: DialogHeaderProps; contentProps?: DialogContentProps; footerProps?: DialogFooterProps; titleProps?: DialogTitleProps; descriptionProps?: DialogDescriptionProps; closeProps?: DialogCloseProps; cancelProps?: DialogCancelProps; confirmProps?: DialogConfirmProps; open?: boolean; defaultOpen?: boolean; modal?: boolean; isAlert?: boolean; alertType?: DialogAlertType }",
+        "name": "BottomSheetProps",
+        "type": "TypeAlias BottomSheetProps: BottomSheetCompactProps & { class?: ClassValue; size?: ThemeSize; ui?: Partial<DialogUi> }",
+        "resolvedType": "{ title?: string; description?: string; icon?: string | import(\"vue\").Component | VNode<import(\"vue\").RendererNode, import(\"vue\").RendererElement, { [key: string]: any; }> | null; showClose?: boolean; pure?: boolean; showCancel?: boolean | 'onlyWarning'; cancelText?: string; showConfirm?: boolean; confirmText?: string; triggerProps?: DialogTriggerProps; overlayProps?: DialogOverlayProps; portalProps?: DialogPortalProps; popupProps?: DialogPopupProps; headerProps?: DialogHeaderProps; contentProps?: DialogContentProps; footerProps?: DialogFooterProps; titleProps?: DialogTitleProps; descriptionProps?: DialogDescriptionProps; closeProps?: DialogCloseProps; cancelProps?: DialogCancelProps; confirmProps?: DialogConfirmProps; open?: boolean; defaultOpen?: boolean; modal?: boolean; isAlert?: boolean; alertType?: DialogAlertType; activeSnapPoint?: string | number | null; closeThreshold?: number; shouldScaleBackground?: boolean; setBackgroundColorOnScale?: boolean; scrollLockTimeout?: number; fixed?: boolean; dismissible?: boolean; nested?: boolean; direction?: Side; noBodyStyles?: boolean; handleOnly?: boolean; preventScrollRestoration?: boolean; snapPoints?: (string | number)[]; fadeFromIndex?: number; handleProps?: BottomSheetHandleProps; class?: string | Record<string, boolean> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<DialogUi> }",
         "description": "",
-        "sourcePath": "src/components/dialog/types.ts",
+        "sourcePath": "src/components/bottom-sheet/types.ts",
         "typeParameters": [],
         "members": [
-          {
-            "name": "class",
-            "type": "string | Record<string, boolean> | ClassValue[] | null",
-            "required": false,
-            "description": "the popup class of the dialog",
-            "default": null,
-            "inheritedFrom": null,
-            "sourcePath": "src/components/dialog/types.ts",
-            "referencedTypes": [
-              {
-                "name": "ClassValue",
-                "kind": "typeAlias",
-                "type": "string | Record<string, boolean> | ClassValue[] | null | undefined",
-                "resolvedType": "string | Record<string, boolean> | ClassValue[] | null | undefined",
-                "description": "",
-                "sourcePath": "headless/src/types/common.ts",
-                "typeParameters": [],
-                "external": false,
-                "members": [],
-                "callables": []
-              }
-            ]
-          },
-          {
-            "name": "size",
-            "type": "ThemeSize",
-            "required": false,
-            "description": "",
-            "default": null,
-            "inheritedFrom": null,
-            "sourcePath": "src/components/dialog/types.ts",
-            "referencedTypes": [
-              {
-                "name": "ThemeSize",
-                "kind": "typeAlias",
-                "type": "'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'",
-                "resolvedType": "'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'",
-                "description": "",
-                "sourcePath": "src/theme/types.ts",
-                "typeParameters": [],
-                "external": false,
-                "members": [],
-                "callables": []
-              }
-            ]
-          },
-          {
-            "name": "ui",
-            "type": "Partial<DialogUi>",
-            "required": false,
-            "description": "",
-            "default": null,
-            "inheritedFrom": null,
-            "sourcePath": "src/components/dialog/types.ts",
-            "referencedTypes": [
-              {
-                "name": "DialogUi",
-                "kind": "typeAlias",
-                "type": "{ header: ClassValue; content: ClassValue; description: ClassValue; title: ClassValue; icon: ClassValue; close: ClassValue; overlay: ClassValue; popup: ClassValue; footer: ClassValue; cancel: ClassValue; confirm: ClassValue; }",
-                "resolvedType": null,
-                "description": "",
-                "sourcePath": "headless/src/components/dialog/types.ts",
-                "typeParameters": [],
-                "external": false,
-                "members": [],
-                "callables": []
-              }
-            ]
-          },
           {
             "name": "title",
             "type": "string",
             "required": false,
             "description": "The title of the dialog. This is used for accessibility purposes and will be rendered in the header of the dialog if the `title` slot is not provided.",
             "default": null,
-            "inheritedFrom": "DialogCompactProps.title",
+            "inheritedFrom": null,
             "sourcePath": "headless/src/components/dialog/types.ts",
             "referencedTypes": []
           },
@@ -96,7 +27,7 @@
             "required": false,
             "description": "The description of the dialog. This is used for accessibility purposes and will be rendered in the content of the dialog if the `description` slot is not provided.",
             "default": null,
-            "inheritedFrom": "DialogCompactProps.description",
+            "inheritedFrom": null,
             "sourcePath": "headless/src/components/dialog/types.ts",
             "referencedTypes": []
           },
@@ -106,7 +37,7 @@
             "required": false,
             "description": "The icon of the dialog. This is used for accessibility purposes and will be rendered in the header of the dialog if the `icon` slot is not provided.",
             "default": null,
-            "inheritedFrom": "DialogCompactProps.icon",
+            "inheritedFrom": null,
             "sourcePath": "headless/src/components/dialog/types.ts",
             "referencedTypes": [
               {
@@ -129,7 +60,7 @@
             "required": false,
             "description": "Whether show the close button in the header of the dialog.",
             "default": "true",
-            "inheritedFrom": "DialogCompactProps.showClose",
+            "inheritedFrom": null,
             "sourcePath": "headless/src/components/dialog/types.ts",
             "referencedTypes": []
           },
@@ -139,7 +70,7 @@
             "required": false,
             "description": "Whether to use the pure version of the dialog, which does not include the header and footer.\nThis is useful when you want to fully control the content of the dialog and do not need the built-in header and footer.",
             "default": "false",
-            "inheritedFrom": "DialogCompactProps.pure",
+            "inheritedFrom": null,
             "sourcePath": "headless/src/components/dialog/types.ts",
             "referencedTypes": []
           },
@@ -149,7 +80,7 @@
             "required": false,
             "description": "Whether to show the cancel button.\n\nWhen set to `onlyWarning`, the cancel button will only be shown when the dialog is an alert dialog with `alertType=\"warning\"`.\nWhen set to `true`, the cancel button will always be shown.",
             "default": "'onlyWarning'",
-            "inheritedFrom": "DialogCompactProps.showCancel",
+            "inheritedFrom": null,
             "sourcePath": "headless/src/components/dialog/types.ts",
             "referencedTypes": []
           },
@@ -159,7 +90,7 @@
             "required": false,
             "description": "The text of the cancel button. This is used for accessibility purposes and will be rendered in the footer of the dialog if the `cancel` slot is not provided.",
             "default": "'Cancel'",
-            "inheritedFrom": "DialogCompactProps.cancelText",
+            "inheritedFrom": null,
             "sourcePath": "headless/src/components/dialog/types.ts",
             "referencedTypes": []
           },
@@ -169,7 +100,7 @@
             "required": false,
             "description": "Whether to show the confirm button when the dialog is an alert dialog.\n\nThe default value is `true` when the dialog is an alert dialog.",
             "default": null,
-            "inheritedFrom": "DialogCompactProps.showConfirm",
+            "inheritedFrom": null,
             "sourcePath": "headless/src/components/dialog/types.ts",
             "referencedTypes": []
           },
@@ -179,7 +110,7 @@
             "required": false,
             "description": "The text of the confirm button. This is used for accessibility purposes and will be rendered in the footer of the dialog if the `confirm` slot is not provided.",
             "default": "'Confirm'",
-            "inheritedFrom": "DialogCompactProps.confirmText",
+            "inheritedFrom": null,
             "sourcePath": "headless/src/components/dialog/types.ts",
             "referencedTypes": []
           },
@@ -189,7 +120,7 @@
             "required": false,
             "description": "",
             "default": null,
-            "inheritedFrom": "DialogCompactProps.triggerProps",
+            "inheritedFrom": null,
             "sourcePath": "headless/src/components/dialog/types.ts",
             "referencedTypes": [
               {
@@ -233,7 +164,7 @@
             "required": false,
             "description": "",
             "default": null,
-            "inheritedFrom": "DialogCompactProps.overlayProps",
+            "inheritedFrom": null,
             "sourcePath": "headless/src/components/dialog/types.ts",
             "referencedTypes": [
               {
@@ -267,7 +198,7 @@
             "required": false,
             "description": "",
             "default": null,
-            "inheritedFrom": "DialogCompactProps.portalProps",
+            "inheritedFrom": null,
             "sourcePath": "headless/src/components/dialog/types.ts",
             "referencedTypes": [
               {
@@ -331,7 +262,7 @@
             "required": false,
             "description": "",
             "default": null,
-            "inheritedFrom": "DialogCompactProps.popupProps",
+            "inheritedFrom": null,
             "sourcePath": "headless/src/components/dialog/types.ts",
             "referencedTypes": [
               {
@@ -385,7 +316,7 @@
             "required": false,
             "description": "",
             "default": null,
-            "inheritedFrom": "DialogCompactProps.headerProps",
+            "inheritedFrom": null,
             "sourcePath": "headless/src/components/dialog/types.ts",
             "referencedTypes": [
               {
@@ -408,7 +339,7 @@
             "required": false,
             "description": "",
             "default": null,
-            "inheritedFrom": "DialogCompactProps.contentProps",
+            "inheritedFrom": null,
             "sourcePath": "headless/src/components/dialog/types.ts",
             "referencedTypes": [
               {
@@ -431,7 +362,7 @@
             "required": false,
             "description": "",
             "default": null,
-            "inheritedFrom": "DialogCompactProps.footerProps",
+            "inheritedFrom": null,
             "sourcePath": "headless/src/components/dialog/types.ts",
             "referencedTypes": [
               {
@@ -454,7 +385,7 @@
             "required": false,
             "description": "",
             "default": null,
-            "inheritedFrom": "DialogCompactProps.titleProps",
+            "inheritedFrom": null,
             "sourcePath": "headless/src/components/dialog/types.ts",
             "referencedTypes": [
               {
@@ -477,7 +408,7 @@
             "required": false,
             "description": "",
             "default": null,
-            "inheritedFrom": "DialogCompactProps.descriptionProps",
+            "inheritedFrom": null,
             "sourcePath": "headless/src/components/dialog/types.ts",
             "referencedTypes": [
               {
@@ -500,7 +431,7 @@
             "required": false,
             "description": "",
             "default": null,
-            "inheritedFrom": "DialogCompactProps.closeProps",
+            "inheritedFrom": null,
             "sourcePath": "headless/src/components/dialog/types.ts",
             "referencedTypes": [
               {
@@ -564,7 +495,7 @@
             "required": false,
             "description": "",
             "default": null,
-            "inheritedFrom": "DialogCompactProps.cancelProps",
+            "inheritedFrom": null,
             "sourcePath": "headless/src/components/dialog/types.ts",
             "referencedTypes": [
               {
@@ -628,7 +559,7 @@
             "required": false,
             "description": "",
             "default": null,
-            "inheritedFrom": "DialogCompactProps.confirmProps",
+            "inheritedFrom": null,
             "sourcePath": "headless/src/components/dialog/types.ts",
             "referencedTypes": [
               {
@@ -692,7 +623,7 @@
             "required": false,
             "description": "The controlled open state of the dialog. Can be bound with `v-model:open`.",
             "default": "undefined",
-            "inheritedFrom": "DialogCompactProps.open",
+            "inheritedFrom": null,
             "sourcePath": "headless/src/components/dialog/types.ts",
             "referencedTypes": []
           },
@@ -702,7 +633,7 @@
             "required": false,
             "description": "The open state of the dialog when it is initially rendered. Use when you do not need to control its open state.",
             "default": "false",
-            "inheritedFrom": "DialogCompactProps.defaultOpen",
+            "inheritedFrom": null,
             "sourcePath": "headless/src/components/dialog/types.ts",
             "referencedTypes": []
           },
@@ -712,7 +643,7 @@
             "required": false,
             "description": "The modality of the dialog. When set to `true`, interaction with outside elements will be disabled and only dialog\ncontent will be visible to screen readers.",
             "default": "true",
-            "inheritedFrom": "DialogCompactProps.modal",
+            "inheritedFrom": null,
             "sourcePath": "headless/src/components/dialog/types.ts",
             "referencedTypes": []
           },
@@ -722,7 +653,7 @@
             "required": false,
             "description": "Whether the dialog is an alert dialog. An alert dialog is a dialog that interrupts the user's workflow to communicate an important message and requires a response.\n\nWhen set to `true`, the dialog will have `role=\"alertdialog\"` and will require a `DialogTitle` to be provided. This is used for accessibility purposes.",
             "default": "false",
-            "inheritedFrom": "DialogCompactProps.isAlert",
+            "inheritedFrom": null,
             "sourcePath": "headless/src/components/dialog/types.ts",
             "referencedTypes": []
           },
@@ -732,7 +663,7 @@
             "required": false,
             "description": "The alert type of the dialog, which determines the default icon and styles when the dialog is an alert dialog.",
             "default": null,
-            "inheritedFrom": "DialogCompactProps.alertType",
+            "inheritedFrom": null,
             "sourcePath": "headless/src/components/dialog/types.ts",
             "referencedTypes": [
               {
@@ -748,6 +679,262 @@
                 "callables": []
               }
             ]
+          },
+          {
+            "name": "activeSnapPoint",
+            "type": "string | number | null",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/bottom-sheet/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "closeThreshold",
+            "type": "number",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/bottom-sheet/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "shouldScaleBackground",
+            "type": "boolean",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/bottom-sheet/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "setBackgroundColorOnScale",
+            "type": "boolean",
+            "required": false,
+            "description": "When `false` we don't change body's background color when the drawer is open.",
+            "default": "true",
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/bottom-sheet/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "scrollLockTimeout",
+            "type": "number",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/bottom-sheet/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "fixed",
+            "type": "boolean",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/bottom-sheet/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "dismissible",
+            "type": "boolean",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/bottom-sheet/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "nested",
+            "type": "boolean",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/bottom-sheet/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "direction",
+            "type": "Side",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/bottom-sheet/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Side",
+                "kind": "typeAlias",
+                "type": "'top' | 'right' | 'bottom' | 'left'",
+                "resolvedType": "'top' | 'right' | 'bottom' | 'left'",
+                "description": "",
+                "sourcePath": "headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "noBodyStyles",
+            "type": "boolean",
+            "required": false,
+            "description": "When `true` the `body` doesn't get any styles assigned from Vaul",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/bottom-sheet/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "handleOnly",
+            "type": "boolean",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/bottom-sheet/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "preventScrollRestoration",
+            "type": "boolean",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/bottom-sheet/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "snapPoints",
+            "type": "(string | number)[]",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/bottom-sheet/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "fadeFromIndex",
+            "type": "number",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/bottom-sheet/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "handleProps",
+            "type": "BottomSheetHandleProps",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/bottom-sheet/types.ts",
+            "referencedTypes": [
+              {
+                "name": "BottomSheetHandleProps",
+                "kind": "interface",
+                "type": "BottomSheetHandleProps",
+                "resolvedType": "{ preventCycle?: boolean }",
+                "description": "",
+                "sourcePath": "headless/src/components/bottom-sheet/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "preventCycle",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/bottom-sheet/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "class",
+            "type": "string | Record<string, boolean> | ClassValue[] | null",
+            "required": false,
+            "description": "the popup class of the dialog",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/bottom-sheet/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ClassValue",
+                "kind": "typeAlias",
+                "type": "string | Record<string, boolean> | ClassValue[] | null | undefined",
+                "resolvedType": "string | Record<string, boolean> | ClassValue[] | null | undefined",
+                "description": "",
+                "sourcePath": "headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "size",
+            "type": "ThemeSize",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/bottom-sheet/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ThemeSize",
+                "kind": "typeAlias",
+                "type": "'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'",
+                "resolvedType": "'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'",
+                "description": "",
+                "sourcePath": "src/theme/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "ui",
+            "type": "Partial<DialogUi>",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/bottom-sheet/types.ts",
+            "referencedTypes": [
+              {
+                "name": "DialogUi",
+                "kind": "typeAlias",
+                "type": "{ header: ClassValue; content: ClassValue; description: ClassValue; title: ClassValue; icon: ClassValue; close: ClassValue; overlay: ClassValue; popup: ClassValue; footer: ClassValue; cancel: ClassValue; confirm: ClassValue; }",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/components/dialog/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
           }
         ],
         "callables": [],
@@ -755,14 +942,58 @@
       },
       "emits": {
         "kind": "emits",
-        "name": "DialogEmits",
-        "type": "TypeAlias DialogEmits: DialogCompactEmits",
-        "resolvedType": "{ \"update:open\": [value: boolean]; escapeKeyDown: [event: KeyboardEvent]; pointerDownOutside: [event: PointerDownOutsideEvent]; focusOutside: [event: FocusOutsideEvent]; interactOutside: [event: PointerDownOutsideEvent | FocusOutsideEvent]; openAutoFocus: [event: Event]; closeAutoFocus: [event: Event]; close: [event: MouseEvent]; confirm: [event: MouseEvent]; cancel: [event: MouseEvent] }",
+        "name": "BottomSheetEmits",
+        "type": "TypeAlias BottomSheetEmits: BottomSheetCompactEmits",
+        "resolvedType": "{ cancel: [event: MouseEvent]; confirm: [event: MouseEvent]; \"update:open\": [value: boolean]; escapeKeyDown: [event: KeyboardEvent]; pointerDownOutside: [event: PointerDownOutsideEvent]; focusOutside: [event: FocusOutsideEvent]; interactOutside: [event: PointerDownOutsideEvent | FocusOutsideEvent]; openAutoFocus: [event: Event]; closeAutoFocus: [event: Event]; drag: [percentageDragged: number]; release: [open: boolean]; close: []; \"update:activeSnapPoint\": [val: string | number] }",
         "description": "",
-        "sourcePath": "src/components/dialog/types.ts",
+        "sourcePath": "src/components/bottom-sheet/types.ts",
         "typeParameters": [],
         "members": [],
         "callables": [
+          {
+            "name": "cancel",
+            "type": "[event: MouseEvent]",
+            "parameters": "event: MouseEvent",
+            "required": true,
+            "description": "Event handler called when the dialog is requested to be canceled.",
+            "sourcePath": "headless/src/components/dialog/types.ts",
+            "referencedTypes": [
+              {
+                "name": "MouseEvent",
+                "kind": "interface",
+                "type": "MouseEvent",
+                "resolvedType": null,
+                "description": "The **`MouseEvent`** interface represents events that occur due to the user interacting with a pointing device (such as a mouse). Common events using this interface include click, dblclick, mouseup, mousedown.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent)",
+                "sourcePath": "node_modules/.pnpm/typescript@6.0.3/node_modules/typescript/lib/lib.dom.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "confirm",
+            "type": "[event: MouseEvent]",
+            "parameters": "event: MouseEvent",
+            "required": true,
+            "description": "Event handler called when the dialog is requested to be closed by confirming.",
+            "sourcePath": "headless/src/components/dialog/types.ts",
+            "referencedTypes": [
+              {
+                "name": "MouseEvent",
+                "kind": "interface",
+                "type": "MouseEvent",
+                "resolvedType": null,
+                "description": "The **`MouseEvent`** interface represents events that occur due to the user interacting with a pointing device (such as a mouse). Common events using this interface include click, dblclick, mouseup, mousedown.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent)",
+                "sourcePath": "node_modules/.pnpm/typescript@6.0.3/node_modules/typescript/lib/lib.dom.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
           {
             "name": "update:open",
             "type": "[value: boolean]",
@@ -917,84 +1148,83 @@
             ]
           },
           {
+            "name": "drag",
+            "type": "[percentageDragged: number]",
+            "parameters": "percentageDragged: number",
+            "required": true,
+            "description": "",
+            "sourcePath": "headless/src/components/bottom-sheet/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "release",
+            "type": "[open: boolean]",
+            "parameters": "open: boolean",
+            "required": true,
+            "description": "",
+            "sourcePath": "headless/src/components/bottom-sheet/types.ts",
+            "referencedTypes": []
+          },
+          {
             "name": "close",
-            "type": "[event: MouseEvent]",
-            "parameters": "event: MouseEvent",
+            "type": "[]",
+            "parameters": null,
             "required": true,
-            "description": "Event handler called when the dialog is requested to be closed.",
-            "sourcePath": "headless/src/components/dialog/types.ts",
-            "referencedTypes": [
-              {
-                "name": "MouseEvent",
-                "kind": "interface",
-                "type": "MouseEvent",
-                "resolvedType": null,
-                "description": "The **`MouseEvent`** interface represents events that occur due to the user interacting with a pointing device (such as a mouse). Common events using this interface include click, dblclick, mouseup, mousedown.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent)",
-                "sourcePath": "node_modules/.pnpm/typescript@6.0.3/node_modules/typescript/lib/lib.dom.d.ts",
-                "typeParameters": [],
-                "external": true,
-                "members": [],
-                "callables": []
-              }
-            ]
+            "description": "",
+            "sourcePath": "headless/src/components/bottom-sheet/types.ts",
+            "referencedTypes": []
           },
           {
-            "name": "confirm",
-            "type": "[event: MouseEvent]",
-            "parameters": "event: MouseEvent",
+            "name": "update:activeSnapPoint",
+            "type": "[val: string | number]",
+            "parameters": "val: string | number",
             "required": true,
-            "description": "Event handler called when the dialog is requested to be closed by confirming.",
-            "sourcePath": "headless/src/components/dialog/types.ts",
-            "referencedTypes": [
-              {
-                "name": "MouseEvent",
-                "kind": "interface",
-                "type": "MouseEvent",
-                "resolvedType": null,
-                "description": "The **`MouseEvent`** interface represents events that occur due to the user interacting with a pointing device (such as a mouse). Common events using this interface include click, dblclick, mouseup, mousedown.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent)",
-                "sourcePath": "node_modules/.pnpm/typescript@6.0.3/node_modules/typescript/lib/lib.dom.d.ts",
-                "typeParameters": [],
-                "external": true,
-                "members": [],
-                "callables": []
-              }
-            ]
-          },
-          {
-            "name": "cancel",
-            "type": "[event: MouseEvent]",
-            "parameters": "event: MouseEvent",
-            "required": true,
-            "description": "Event handler called when the dialog is requested to be canceled.",
-            "sourcePath": "headless/src/components/dialog/types.ts",
-            "referencedTypes": [
-              {
-                "name": "MouseEvent",
-                "kind": "interface",
-                "type": "MouseEvent",
-                "resolvedType": null,
-                "description": "The **`MouseEvent`** interface represents events that occur due to the user interacting with a pointing device (such as a mouse). Common events using this interface include click, dblclick, mouseup, mousedown.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent)",
-                "sourcePath": "node_modules/.pnpm/typescript@6.0.3/node_modules/typescript/lib/lib.dom.d.ts",
-                "typeParameters": [],
-                "external": true,
-                "members": [],
-                "callables": []
-              }
-            ]
+            "description": "",
+            "sourcePath": "headless/src/components/bottom-sheet/types.ts",
+            "referencedTypes": []
           }
         ],
         "referencedTypes": [
           {
-            "name": "DialogCompactEmits",
+            "name": "BottomSheetCompactEmits",
             "kind": "typeAlias",
-            "type": "import(\"@soybeanjs/headless\").DialogRootEmits & import(\"@soybeanjs/headless\").DismissableLayerEmits & import(\"@soybeanjs/headless\").FocusScopeEmits & import(\"@soybeanjs/headless\").BottomSheetCloseEmits & import(\"@soybeanjs/headless\").BottomSheetConfirmEmits & import(\"@soybeanjs/headless\").BottomSheetCancelEmits",
-            "resolvedType": "{ \"update:open\": [value: boolean]; escapeKeyDown: [event: KeyboardEvent]; pointerDownOutside: [event: PointerDownOutsideEvent]; focusOutside: [event: FocusOutsideEvent]; interactOutside: [event: PointerDownOutsideEvent | FocusOutsideEvent]; openAutoFocus: [event: Event]; closeAutoFocus: [event: Event]; close: [event: MouseEvent]; confirm: [event: MouseEvent]; cancel: [event: MouseEvent] }",
+            "type": "Omit<import(\"@soybeanjs/headless\").DialogCompactEmits, 'close'> & import(\"@soybeanjs/headless\").DialogRootEmits & { drag: [percentageDragged: number]; release: [open: boolean]; close: []; 'update:activeSnapPoint': [val: string | number]; }",
+            "resolvedType": "{ cancel: [event: MouseEvent]; confirm: [event: MouseEvent]; \"update:open\": [value: boolean]; escapeKeyDown: [event: KeyboardEvent]; pointerDownOutside: [event: PointerDownOutsideEvent]; focusOutside: [event: FocusOutsideEvent]; interactOutside: [event: PointerDownOutsideEvent | FocusOutsideEvent]; openAutoFocus: [event: Event]; closeAutoFocus: [event: Event]; drag: [percentageDragged: number]; release: [open: boolean]; close: []; \"update:activeSnapPoint\": [val: string | number] }",
             "description": "",
-            "sourcePath": "headless/src/components/dialog/types.ts",
+            "sourcePath": "headless/src/components/bottom-sheet/types.ts",
             "typeParameters": [],
             "external": false,
-            "members": [],
+            "members": [
+              {
+                "name": "close",
+                "type": "[]",
+                "required": true,
+                "description": "",
+                "default": null,
+                "inheritedFrom": null,
+                "sourcePath": "headless/src/components/bottom-sheet/types.ts",
+                "referencedTypes": []
+              }
+            ],
             "callables": [
+              {
+                "name": "cancel",
+                "type": "[event: MouseEvent]",
+                "parameters": "event: MouseEvent",
+                "required": true,
+                "description": "Event handler called when the dialog is requested to be canceled.",
+                "sourcePath": "headless/src/components/dialog/types.ts",
+                "referencedTypes": []
+              },
+              {
+                "name": "confirm",
+                "type": "[event: MouseEvent]",
+                "parameters": "event: MouseEvent",
+                "required": true,
+                "description": "Event handler called when the dialog is requested to be closed by confirming.",
+                "sourcePath": "headless/src/components/dialog/types.ts",
+                "referencedTypes": []
+              },
               {
                 "name": "update:open",
                 "type": "[value: boolean]",
@@ -1059,30 +1289,30 @@
                 "referencedTypes": []
               },
               {
-                "name": "close",
-                "type": "[event: MouseEvent]",
-                "parameters": "event: MouseEvent",
+                "name": "drag",
+                "type": "[percentageDragged: number]",
+                "parameters": "percentageDragged: number",
                 "required": true,
-                "description": "Event handler called when the dialog is requested to be closed.",
-                "sourcePath": "headless/src/components/dialog/types.ts",
+                "description": "",
+                "sourcePath": "headless/src/components/bottom-sheet/types.ts",
                 "referencedTypes": []
               },
               {
-                "name": "confirm",
-                "type": "[event: MouseEvent]",
-                "parameters": "event: MouseEvent",
+                "name": "release",
+                "type": "[open: boolean]",
+                "parameters": "open: boolean",
                 "required": true,
-                "description": "Event handler called when the dialog is requested to be closed by confirming.",
-                "sourcePath": "headless/src/components/dialog/types.ts",
+                "description": "",
+                "sourcePath": "headless/src/components/bottom-sheet/types.ts",
                 "referencedTypes": []
               },
               {
-                "name": "cancel",
-                "type": "[event: MouseEvent]",
-                "parameters": "event: MouseEvent",
+                "name": "update:activeSnapPoint",
+                "type": "[val: string | number]",
+                "parameters": "val: string | number",
                 "required": true,
-                "description": "Event handler called when the dialog is requested to be canceled.",
-                "sourcePath": "headless/src/components/dialog/types.ts",
+                "description": "",
+                "sourcePath": "headless/src/components/bottom-sheet/types.ts",
                 "referencedTypes": []
               }
             ]
@@ -1091,11 +1321,11 @@
       },
       "slots": {
         "kind": "slots",
-        "name": "DialogSlots",
-        "type": "TypeAlias DialogSlots: DialogCompactSlots",
+        "name": "BottomSheetSlots",
+        "type": "TypeAlias BottomSheetSlots: BottomSheetCompactSlots",
         "resolvedType": "{ default: (props: DialogCompactBaseSlotProps) => any; trigger?: ((props: DialogCompactBaseSlotProps) => any); title?: ((props: DialogCompactBaseSlotProps) => any); description?: ((props: DialogCompactBaseSlotProps) => any); close?: ((props: DialogCompactBaseSlotProps) => any); footer?: ((props: DialogCompactBaseSlotProps) => any); cancel?: ((props: DialogCompactBaseSlotProps) => any); confirm?: ((props: DialogCompactBaseSlotProps) => any) }",
         "description": "",
-        "sourcePath": "src/components/dialog/types.ts",
+        "sourcePath": "src/components/bottom-sheet/types.ts",
         "typeParameters": [],
         "members": [],
         "callables": [
@@ -1365,262 +1595,16 @@
         ]
       }
     },
-    "DialogCancel": {
+    "BottomSheetCancel": {},
+    "BottomSheetClose": {},
+    "BottomSheetCompact": {
       "props": {
         "kind": "props",
-        "name": "DialogCancelProps",
-        "type": "Interface DialogCancelProps",
-        "resolvedType": "{ type?: ButtonType; disabled?: boolean; asChild?: boolean; as?: AsTag | Component }",
+        "name": "BottomSheetCompactProps",
+        "type": "TypeAlias BottomSheetCompactProps",
+        "resolvedType": "{ title?: string; description?: string; icon?: string | import(\"vue\").Component | VNode<import(\"vue\").RendererNode, import(\"vue\").RendererElement, { [key: string]: any; }> | null; showClose?: boolean; pure?: boolean; showCancel?: boolean | 'onlyWarning'; cancelText?: string; showConfirm?: boolean; confirmText?: string; triggerProps?: DialogTriggerProps; overlayProps?: DialogOverlayProps; portalProps?: DialogPortalProps; popupProps?: DialogPopupProps; headerProps?: DialogHeaderProps; contentProps?: DialogContentProps; footerProps?: DialogFooterProps; titleProps?: DialogTitleProps; descriptionProps?: DialogDescriptionProps; closeProps?: DialogCloseProps; cancelProps?: DialogCancelProps; confirmProps?: DialogConfirmProps; open?: boolean; defaultOpen?: boolean; modal?: boolean; isAlert?: boolean; alertType?: DialogAlertType; activeSnapPoint?: string | number | null; closeThreshold?: number; shouldScaleBackground?: boolean; setBackgroundColorOnScale?: boolean; scrollLockTimeout?: number; fixed?: boolean; dismissible?: boolean; nested?: boolean; direction?: Side; noBodyStyles?: boolean; handleOnly?: boolean; preventScrollRestoration?: boolean; snapPoints?: (string | number)[]; fadeFromIndex?: number; handleProps?: BottomSheetHandleProps }",
         "description": "",
-        "sourcePath": "headless/src/components/dialog/types.ts",
-        "typeParameters": [],
-        "members": [
-          {
-            "name": "type",
-            "type": "ButtonType",
-            "required": false,
-            "description": "The type of the button element. Can be one of 'button', 'submit', or 'reset'. [按钮元素的类型。可以是 'button'、'submit' 或 'reset' 之一。]",
-            "default": "'button'",
-            "inheritedFrom": null,
-            "sourcePath": "headless/src/components/button/types.ts",
-            "referencedTypes": [
-              {
-                "name": "ButtonType",
-                "kind": "typeAlias",
-                "type": "'button' | 'submit' | 'reset'",
-                "resolvedType": "'button' | 'submit' | 'reset'",
-                "description": "",
-                "sourcePath": "headless/src/components/button/types.ts",
-                "typeParameters": [],
-                "external": false,
-                "members": [],
-                "callables": []
-              }
-            ]
-          },
-          {
-            "name": "disabled",
-            "type": "boolean",
-            "required": false,
-            "description": "",
-            "default": null,
-            "inheritedFrom": null,
-            "sourcePath": "headless/src/components/button/types.ts",
-            "referencedTypes": []
-          },
-          {
-            "name": "asChild",
-            "type": "boolean",
-            "required": false,
-            "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
-            "default": null,
-            "inheritedFrom": null,
-            "sourcePath": "headless/src/components/primitive/types.ts",
-            "referencedTypes": []
-          },
-          {
-            "name": "as",
-            "type": "AsTag | Component",
-            "required": false,
-            "description": "The element or component this component should render as. Can be overwrite by `asChild`",
-            "default": "'div'",
-            "inheritedFrom": null,
-            "sourcePath": "headless/src/components/primitive/types.ts",
-            "referencedTypes": [
-              {
-                "name": "Component",
-                "kind": "typeAlias",
-                "type": "Component",
-                "resolvedType": null,
-                "description": "A type used in public APIs where a component type is expected.\nThe constructor type is an artificial type returned by defineComponent().",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
-                "typeParameters": [
-                  "PropsOrInstance = any",
-                  "RawBindings = any",
-                  "D = any",
-                  "C extends ComputedOptions = ComputedOptions",
-                  "M extends MethodOptions = MethodOptions",
-                  "E extends EmitsOptions | Record<string, any[]> = {}",
-                  "S extends Record<string, any> = any"
-                ],
-                "external": true,
-                "members": [],
-                "callables": []
-              }
-            ]
-          }
-        ],
-        "callables": [],
-        "referencedTypes": []
-      },
-      "emits": {
-        "kind": "emits",
-        "name": "DialogCancelEmits",
-        "type": "TypeAlias DialogCancelEmits",
-        "resolvedType": "{ cancel: [event: MouseEvent] }",
-        "description": "",
-        "sourcePath": "headless/src/components/dialog/types.ts",
-        "typeParameters": [],
-        "members": [],
-        "callables": [
-          {
-            "name": "cancel",
-            "type": "[event: MouseEvent]",
-            "parameters": "event: MouseEvent",
-            "required": true,
-            "description": "Event handler called when the dialog is requested to be canceled.",
-            "sourcePath": "headless/src/components/dialog/types.ts",
-            "referencedTypes": [
-              {
-                "name": "MouseEvent",
-                "kind": "interface",
-                "type": "MouseEvent",
-                "resolvedType": null,
-                "description": "The **`MouseEvent`** interface represents events that occur due to the user interacting with a pointing device (such as a mouse). Common events using this interface include click, dblclick, mouseup, mousedown.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent)",
-                "sourcePath": "node_modules/.pnpm/typescript@6.0.3/node_modules/typescript/lib/lib.dom.d.ts",
-                "typeParameters": [],
-                "external": true,
-                "members": [],
-                "callables": []
-              }
-            ]
-          }
-        ],
-        "referencedTypes": []
-      }
-    },
-    "DialogClose": {
-      "props": {
-        "kind": "props",
-        "name": "DialogCloseProps",
-        "type": "Interface DialogCloseProps",
-        "resolvedType": "{ type?: ButtonType; disabled?: boolean; asChild?: boolean; as?: AsTag | Component }",
-        "description": "",
-        "sourcePath": "headless/src/components/dialog/types.ts",
-        "typeParameters": [],
-        "members": [
-          {
-            "name": "type",
-            "type": "ButtonType",
-            "required": false,
-            "description": "The type of the button element. Can be one of 'button', 'submit', or 'reset'. [按钮元素的类型。可以是 'button'、'submit' 或 'reset' 之一。]",
-            "default": "'button'",
-            "inheritedFrom": null,
-            "sourcePath": "headless/src/components/button/types.ts",
-            "referencedTypes": [
-              {
-                "name": "ButtonType",
-                "kind": "typeAlias",
-                "type": "'button' | 'submit' | 'reset'",
-                "resolvedType": "'button' | 'submit' | 'reset'",
-                "description": "",
-                "sourcePath": "headless/src/components/button/types.ts",
-                "typeParameters": [],
-                "external": false,
-                "members": [],
-                "callables": []
-              }
-            ]
-          },
-          {
-            "name": "disabled",
-            "type": "boolean",
-            "required": false,
-            "description": "",
-            "default": null,
-            "inheritedFrom": null,
-            "sourcePath": "headless/src/components/button/types.ts",
-            "referencedTypes": []
-          },
-          {
-            "name": "asChild",
-            "type": "boolean",
-            "required": false,
-            "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
-            "default": null,
-            "inheritedFrom": null,
-            "sourcePath": "headless/src/components/primitive/types.ts",
-            "referencedTypes": []
-          },
-          {
-            "name": "as",
-            "type": "AsTag | Component",
-            "required": false,
-            "description": "The element or component this component should render as. Can be overwrite by `asChild`",
-            "default": "'div'",
-            "inheritedFrom": null,
-            "sourcePath": "headless/src/components/primitive/types.ts",
-            "referencedTypes": [
-              {
-                "name": "Component",
-                "kind": "typeAlias",
-                "type": "Component",
-                "resolvedType": null,
-                "description": "A type used in public APIs where a component type is expected.\nThe constructor type is an artificial type returned by defineComponent().",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
-                "typeParameters": [
-                  "PropsOrInstance = any",
-                  "RawBindings = any",
-                  "D = any",
-                  "C extends ComputedOptions = ComputedOptions",
-                  "M extends MethodOptions = MethodOptions",
-                  "E extends EmitsOptions | Record<string, any[]> = {}",
-                  "S extends Record<string, any> = any"
-                ],
-                "external": true,
-                "members": [],
-                "callables": []
-              }
-            ]
-          }
-        ],
-        "callables": [],
-        "referencedTypes": []
-      },
-      "emits": {
-        "kind": "emits",
-        "name": "DialogCloseEmits",
-        "type": "TypeAlias DialogCloseEmits",
-        "resolvedType": "{ close: [event: MouseEvent] }",
-        "description": "",
-        "sourcePath": "headless/src/components/dialog/types.ts",
-        "typeParameters": [],
-        "members": [],
-        "callables": [
-          {
-            "name": "close",
-            "type": "[event: MouseEvent]",
-            "parameters": "event: MouseEvent",
-            "required": true,
-            "description": "Event handler called when the dialog is requested to be closed.",
-            "sourcePath": "headless/src/components/dialog/types.ts",
-            "referencedTypes": [
-              {
-                "name": "MouseEvent",
-                "kind": "interface",
-                "type": "MouseEvent",
-                "resolvedType": null,
-                "description": "The **`MouseEvent`** interface represents events that occur due to the user interacting with a pointing device (such as a mouse). Common events using this interface include click, dblclick, mouseup, mousedown.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent)",
-                "sourcePath": "node_modules/.pnpm/typescript@6.0.3/node_modules/typescript/lib/lib.dom.d.ts",
-                "typeParameters": [],
-                "external": true,
-                "members": [],
-                "callables": []
-              }
-            ]
-          }
-        ],
-        "referencedTypes": []
-      }
-    },
-    "DialogCompact": {
-      "props": {
-        "kind": "props",
-        "name": "DialogCompactProps",
-        "type": "Interface DialogCompactProps",
-        "resolvedType": "{ title?: string; description?: string; icon?: string | import(\"vue\").Component | VNode<import(\"vue\").RendererNode, import(\"vue\").RendererElement, { [key: string]: any; }> | null; showClose?: boolean; pure?: boolean; showCancel?: boolean | 'onlyWarning'; cancelText?: string; showConfirm?: boolean; confirmText?: string; triggerProps?: DialogTriggerProps; overlayProps?: DialogOverlayProps; portalProps?: DialogPortalProps; popupProps?: DialogPopupProps; headerProps?: DialogHeaderProps; contentProps?: DialogContentProps; footerProps?: DialogFooterProps; titleProps?: DialogTitleProps; descriptionProps?: DialogDescriptionProps; closeProps?: DialogCloseProps; cancelProps?: DialogCancelProps; confirmProps?: DialogConfirmProps; open?: boolean; defaultOpen?: boolean; modal?: boolean; isAlert?: boolean; alertType?: DialogAlertType }",
-        "description": "",
-        "sourcePath": "headless/src/components/dialog/types.ts",
+        "sourcePath": "headless/src/components/bottom-sheet/types.ts",
         "typeParameters": [],
         "members": [
           {
@@ -2291,6 +2275,193 @@
                 "callables": []
               }
             ]
+          },
+          {
+            "name": "activeSnapPoint",
+            "type": "string | number | null",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/bottom-sheet/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "closeThreshold",
+            "type": "number",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/bottom-sheet/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "shouldScaleBackground",
+            "type": "boolean",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/bottom-sheet/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "setBackgroundColorOnScale",
+            "type": "boolean",
+            "required": false,
+            "description": "When `false` we don't change body's background color when the drawer is open.",
+            "default": "true",
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/bottom-sheet/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "scrollLockTimeout",
+            "type": "number",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/bottom-sheet/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "fixed",
+            "type": "boolean",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/bottom-sheet/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "dismissible",
+            "type": "boolean",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/bottom-sheet/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "nested",
+            "type": "boolean",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/bottom-sheet/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "direction",
+            "type": "Side",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/bottom-sheet/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Side",
+                "kind": "typeAlias",
+                "type": "'top' | 'right' | 'bottom' | 'left'",
+                "resolvedType": "'top' | 'right' | 'bottom' | 'left'",
+                "description": "",
+                "sourcePath": "headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "noBodyStyles",
+            "type": "boolean",
+            "required": false,
+            "description": "When `true` the `body` doesn't get any styles assigned from Vaul",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/bottom-sheet/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "handleOnly",
+            "type": "boolean",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/bottom-sheet/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "preventScrollRestoration",
+            "type": "boolean",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/bottom-sheet/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "snapPoints",
+            "type": "(string | number)[]",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/bottom-sheet/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "fadeFromIndex",
+            "type": "number",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/bottom-sheet/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "handleProps",
+            "type": "BottomSheetHandleProps",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/bottom-sheet/types.ts",
+            "referencedTypes": [
+              {
+                "name": "BottomSheetHandleProps",
+                "kind": "interface",
+                "type": "BottomSheetHandleProps",
+                "resolvedType": "{ preventCycle?: boolean }",
+                "description": "",
+                "sourcePath": "headless/src/components/bottom-sheet/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "preventCycle",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/bottom-sheet/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
           }
         ],
         "callables": [],
@@ -2298,14 +2469,58 @@
       },
       "emits": {
         "kind": "emits",
-        "name": "DialogCompactEmits",
-        "type": "TypeAlias DialogCompactEmits",
-        "resolvedType": "{ \"update:open\": [value: boolean]; escapeKeyDown: [event: KeyboardEvent]; pointerDownOutside: [event: PointerDownOutsideEvent]; focusOutside: [event: FocusOutsideEvent]; interactOutside: [event: PointerDownOutsideEvent | FocusOutsideEvent]; openAutoFocus: [event: Event]; closeAutoFocus: [event: Event]; close: [event: MouseEvent]; confirm: [event: MouseEvent]; cancel: [event: MouseEvent] }",
+        "name": "BottomSheetCompactEmits",
+        "type": "TypeAlias BottomSheetCompactEmits",
+        "resolvedType": "{ cancel: [event: MouseEvent]; confirm: [event: MouseEvent]; \"update:open\": [value: boolean]; escapeKeyDown: [event: KeyboardEvent]; pointerDownOutside: [event: PointerDownOutsideEvent]; focusOutside: [event: FocusOutsideEvent]; interactOutside: [event: PointerDownOutsideEvent | FocusOutsideEvent]; openAutoFocus: [event: Event]; closeAutoFocus: [event: Event]; drag: [percentageDragged: number]; release: [open: boolean]; close: []; \"update:activeSnapPoint\": [val: string | number] }",
         "description": "",
-        "sourcePath": "headless/src/components/dialog/types.ts",
+        "sourcePath": "headless/src/components/bottom-sheet/types.ts",
         "typeParameters": [],
         "members": [],
         "callables": [
+          {
+            "name": "cancel",
+            "type": "[event: MouseEvent]",
+            "parameters": "event: MouseEvent",
+            "required": true,
+            "description": "Event handler called when the dialog is requested to be canceled.",
+            "sourcePath": "headless/src/components/dialog/types.ts",
+            "referencedTypes": [
+              {
+                "name": "MouseEvent",
+                "kind": "interface",
+                "type": "MouseEvent",
+                "resolvedType": null,
+                "description": "The **`MouseEvent`** interface represents events that occur due to the user interacting with a pointing device (such as a mouse). Common events using this interface include click, dblclick, mouseup, mousedown.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent)",
+                "sourcePath": "node_modules/.pnpm/typescript@6.0.3/node_modules/typescript/lib/lib.dom.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "confirm",
+            "type": "[event: MouseEvent]",
+            "parameters": "event: MouseEvent",
+            "required": true,
+            "description": "Event handler called when the dialog is requested to be closed by confirming.",
+            "sourcePath": "headless/src/components/dialog/types.ts",
+            "referencedTypes": [
+              {
+                "name": "MouseEvent",
+                "kind": "interface",
+                "type": "MouseEvent",
+                "resolvedType": null,
+                "description": "The **`MouseEvent`** interface represents events that occur due to the user interacting with a pointing device (such as a mouse). Common events using this interface include click, dblclick, mouseup, mousedown.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent)",
+                "sourcePath": "node_modules/.pnpm/typescript@6.0.3/node_modules/typescript/lib/lib.dom.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
           {
             "name": "update:open",
             "type": "[value: boolean]",
@@ -2460,81 +2675,51 @@
             ]
           },
           {
+            "name": "drag",
+            "type": "[percentageDragged: number]",
+            "parameters": "percentageDragged: number",
+            "required": true,
+            "description": "",
+            "sourcePath": "headless/src/components/bottom-sheet/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "release",
+            "type": "[open: boolean]",
+            "parameters": "open: boolean",
+            "required": true,
+            "description": "",
+            "sourcePath": "headless/src/components/bottom-sheet/types.ts",
+            "referencedTypes": []
+          },
+          {
             "name": "close",
-            "type": "[event: MouseEvent]",
-            "parameters": "event: MouseEvent",
+            "type": "[]",
+            "parameters": null,
             "required": true,
-            "description": "Event handler called when the dialog is requested to be closed.",
-            "sourcePath": "headless/src/components/dialog/types.ts",
-            "referencedTypes": [
-              {
-                "name": "MouseEvent",
-                "kind": "interface",
-                "type": "MouseEvent",
-                "resolvedType": null,
-                "description": "The **`MouseEvent`** interface represents events that occur due to the user interacting with a pointing device (such as a mouse). Common events using this interface include click, dblclick, mouseup, mousedown.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent)",
-                "sourcePath": "node_modules/.pnpm/typescript@6.0.3/node_modules/typescript/lib/lib.dom.d.ts",
-                "typeParameters": [],
-                "external": true,
-                "members": [],
-                "callables": []
-              }
-            ]
+            "description": "",
+            "sourcePath": "headless/src/components/bottom-sheet/types.ts",
+            "referencedTypes": []
           },
           {
-            "name": "confirm",
-            "type": "[event: MouseEvent]",
-            "parameters": "event: MouseEvent",
+            "name": "update:activeSnapPoint",
+            "type": "[val: string | number]",
+            "parameters": "val: string | number",
             "required": true,
-            "description": "Event handler called when the dialog is requested to be closed by confirming.",
-            "sourcePath": "headless/src/components/dialog/types.ts",
-            "referencedTypes": [
-              {
-                "name": "MouseEvent",
-                "kind": "interface",
-                "type": "MouseEvent",
-                "resolvedType": null,
-                "description": "The **`MouseEvent`** interface represents events that occur due to the user interacting with a pointing device (such as a mouse). Common events using this interface include click, dblclick, mouseup, mousedown.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent)",
-                "sourcePath": "node_modules/.pnpm/typescript@6.0.3/node_modules/typescript/lib/lib.dom.d.ts",
-                "typeParameters": [],
-                "external": true,
-                "members": [],
-                "callables": []
-              }
-            ]
-          },
-          {
-            "name": "cancel",
-            "type": "[event: MouseEvent]",
-            "parameters": "event: MouseEvent",
-            "required": true,
-            "description": "Event handler called when the dialog is requested to be canceled.",
-            "sourcePath": "headless/src/components/dialog/types.ts",
-            "referencedTypes": [
-              {
-                "name": "MouseEvent",
-                "kind": "interface",
-                "type": "MouseEvent",
-                "resolvedType": null,
-                "description": "The **`MouseEvent`** interface represents events that occur due to the user interacting with a pointing device (such as a mouse). Common events using this interface include click, dblclick, mouseup, mousedown.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent)",
-                "sourcePath": "node_modules/.pnpm/typescript@6.0.3/node_modules/typescript/lib/lib.dom.d.ts",
-                "typeParameters": [],
-                "external": true,
-                "members": [],
-                "callables": []
-              }
-            ]
+            "description": "",
+            "sourcePath": "headless/src/components/bottom-sheet/types.ts",
+            "referencedTypes": []
           }
         ],
         "referencedTypes": []
       },
       "slots": {
         "kind": "slots",
-        "name": "DialogCompactSlots",
-        "type": "TypeAlias DialogCompactSlots",
+        "name": "BottomSheetCompactSlots",
+        "type": "TypeAlias BottomSheetCompactSlots",
         "resolvedType": "{ default: (props: DialogCompactBaseSlotProps) => any; trigger?: ((props: DialogCompactBaseSlotProps) => any); title?: ((props: DialogCompactBaseSlotProps) => any); description?: ((props: DialogCompactBaseSlotProps) => any); close?: ((props: DialogCompactBaseSlotProps) => any); footer?: ((props: DialogCompactBaseSlotProps) => any); cancel?: ((props: DialogCompactBaseSlotProps) => any); confirm?: ((props: DialogCompactBaseSlotProps) => any) }",
         "description": "",
-        "sourcePath": "headless/src/components/dialog/types.ts",
+        "sourcePath": "headless/src/components/bottom-sheet/types.ts",
         "typeParameters": [],
         "members": [],
         "callables": [
@@ -2715,440 +2900,12 @@
             ]
           }
         ],
-        "referencedTypes": []
-      }
-    },
-    "DialogConfirm": {
-      "props": {
-        "kind": "props",
-        "name": "DialogConfirmProps",
-        "type": "Interface DialogConfirmProps",
-        "resolvedType": "{ type?: ButtonType; disabled?: boolean; asChild?: boolean; as?: AsTag | Component }",
-        "description": "",
-        "sourcePath": "headless/src/components/dialog/types.ts",
-        "typeParameters": [],
-        "members": [
-          {
-            "name": "type",
-            "type": "ButtonType",
-            "required": false,
-            "description": "The type of the button element. Can be one of 'button', 'submit', or 'reset'. [按钮元素的类型。可以是 'button'、'submit' 或 'reset' 之一。]",
-            "default": "'button'",
-            "inheritedFrom": null,
-            "sourcePath": "headless/src/components/button/types.ts",
-            "referencedTypes": [
-              {
-                "name": "ButtonType",
-                "kind": "typeAlias",
-                "type": "'button' | 'submit' | 'reset'",
-                "resolvedType": "'button' | 'submit' | 'reset'",
-                "description": "",
-                "sourcePath": "headless/src/components/button/types.ts",
-                "typeParameters": [],
-                "external": false,
-                "members": [],
-                "callables": []
-              }
-            ]
-          },
-          {
-            "name": "disabled",
-            "type": "boolean",
-            "required": false,
-            "description": "",
-            "default": null,
-            "inheritedFrom": null,
-            "sourcePath": "headless/src/components/button/types.ts",
-            "referencedTypes": []
-          },
-          {
-            "name": "asChild",
-            "type": "boolean",
-            "required": false,
-            "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
-            "default": null,
-            "inheritedFrom": null,
-            "sourcePath": "headless/src/components/primitive/types.ts",
-            "referencedTypes": []
-          },
-          {
-            "name": "as",
-            "type": "AsTag | Component",
-            "required": false,
-            "description": "The element or component this component should render as. Can be overwrite by `asChild`",
-            "default": "'div'",
-            "inheritedFrom": null,
-            "sourcePath": "headless/src/components/primitive/types.ts",
-            "referencedTypes": [
-              {
-                "name": "Component",
-                "kind": "typeAlias",
-                "type": "Component",
-                "resolvedType": null,
-                "description": "A type used in public APIs where a component type is expected.\nThe constructor type is an artificial type returned by defineComponent().",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
-                "typeParameters": [
-                  "PropsOrInstance = any",
-                  "RawBindings = any",
-                  "D = any",
-                  "C extends ComputedOptions = ComputedOptions",
-                  "M extends MethodOptions = MethodOptions",
-                  "E extends EmitsOptions | Record<string, any[]> = {}",
-                  "S extends Record<string, any> = any"
-                ],
-                "external": true,
-                "members": [],
-                "callables": []
-              }
-            ]
-          }
-        ],
-        "callables": [],
-        "referencedTypes": []
-      },
-      "emits": {
-        "kind": "emits",
-        "name": "DialogConfirmEmits",
-        "type": "TypeAlias DialogConfirmEmits",
-        "resolvedType": "{ confirm: [event: MouseEvent] }",
-        "description": "",
-        "sourcePath": "headless/src/components/dialog/types.ts",
-        "typeParameters": [],
-        "members": [],
-        "callables": [
-          {
-            "name": "confirm",
-            "type": "[event: MouseEvent]",
-            "parameters": "event: MouseEvent",
-            "required": true,
-            "description": "Event handler called when the dialog is requested to be closed by confirming.",
-            "sourcePath": "headless/src/components/dialog/types.ts",
-            "referencedTypes": [
-              {
-                "name": "MouseEvent",
-                "kind": "interface",
-                "type": "MouseEvent",
-                "resolvedType": null,
-                "description": "The **`MouseEvent`** interface represents events that occur due to the user interacting with a pointing device (such as a mouse). Common events using this interface include click, dblclick, mouseup, mousedown.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent)",
-                "sourcePath": "node_modules/.pnpm/typescript@6.0.3/node_modules/typescript/lib/lib.dom.d.ts",
-                "typeParameters": [],
-                "external": true,
-                "members": [],
-                "callables": []
-              }
-            ]
-          }
-        ],
-        "referencedTypes": []
-      }
-    },
-    "DialogContent": {
-      "props": {
-        "kind": "props",
-        "name": "DialogContentProps",
-        "type": "Interface DialogContentProps",
-        "resolvedType": null,
-        "description": "",
-        "sourcePath": "headless/src/components/dialog/types.ts",
-        "typeParameters": [],
-        "members": [],
-        "callables": [],
-        "referencedTypes": []
-      }
-    },
-    "DialogDescription": {
-      "props": {
-        "kind": "props",
-        "name": "DialogDescriptionProps",
-        "type": "Interface DialogDescriptionProps",
-        "resolvedType": null,
-        "description": "",
-        "sourcePath": "headless/src/components/dialog/types.ts",
-        "typeParameters": [],
-        "members": [],
-        "callables": [],
-        "referencedTypes": []
-      }
-    },
-    "DialogFooter": {
-      "props": {
-        "kind": "props",
-        "name": "DialogFooterProps",
-        "type": "Interface DialogFooterProps",
-        "resolvedType": null,
-        "description": "",
-        "sourcePath": "headless/src/components/dialog/types.ts",
-        "typeParameters": [],
-        "members": [],
-        "callables": [],
-        "referencedTypes": []
-      }
-    },
-    "DialogHeader": {
-      "props": {
-        "kind": "props",
-        "name": "DialogHeaderProps",
-        "type": "Interface DialogHeaderProps",
-        "resolvedType": null,
-        "description": "",
-        "sourcePath": "headless/src/components/dialog/types.ts",
-        "typeParameters": [],
-        "members": [],
-        "callables": [],
-        "referencedTypes": []
-      }
-    },
-    "DialogOverlay": {
-      "props": {
-        "kind": "props",
-        "name": "DialogOverlayProps",
-        "type": "Interface DialogOverlayProps",
-        "resolvedType": "{ forceMount?: boolean }",
-        "description": "",
-        "sourcePath": "headless/src/components/dialog/types.ts",
-        "typeParameters": [],
-        "members": [
-          {
-            "name": "forceMount",
-            "type": "boolean",
-            "required": false,
-            "description": "Used to force mounting when more control is needed.\n\nUseful when controlling animation with Vue animation libraries.",
-            "default": null,
-            "inheritedFrom": null,
-            "sourcePath": "headless/src/types/component.ts",
-            "referencedTypes": []
-          }
-        ],
-        "callables": [],
-        "referencedTypes": []
-      }
-    },
-    "DialogPopup": {
-      "props": {
-        "kind": "props",
-        "name": "DialogPopupProps",
-        "type": "Interface DialogPopupProps",
-        "resolvedType": "{ asChild?: boolean; as?: AsTag | Component; forceMount?: boolean }",
-        "description": "",
-        "sourcePath": "headless/src/components/dialog/types.ts",
-        "typeParameters": [],
-        "members": [
-          {
-            "name": "asChild",
-            "type": "boolean",
-            "required": false,
-            "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
-            "default": null,
-            "inheritedFrom": null,
-            "sourcePath": "headless/src/components/primitive/types.ts",
-            "referencedTypes": []
-          },
-          {
-            "name": "as",
-            "type": "AsTag | Component",
-            "required": false,
-            "description": "The element or component this component should render as. Can be overwrite by `asChild`",
-            "default": "'div'",
-            "inheritedFrom": null,
-            "sourcePath": "headless/src/components/primitive/types.ts",
-            "referencedTypes": [
-              {
-                "name": "Component",
-                "kind": "typeAlias",
-                "type": "Component",
-                "resolvedType": null,
-                "description": "A type used in public APIs where a component type is expected.\nThe constructor type is an artificial type returned by defineComponent().",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
-                "typeParameters": [
-                  "PropsOrInstance = any",
-                  "RawBindings = any",
-                  "D = any",
-                  "C extends ComputedOptions = ComputedOptions",
-                  "M extends MethodOptions = MethodOptions",
-                  "E extends EmitsOptions | Record<string, any[]> = {}",
-                  "S extends Record<string, any> = any"
-                ],
-                "external": true,
-                "members": [],
-                "callables": []
-              }
-            ]
-          },
-          {
-            "name": "forceMount",
-            "type": "boolean",
-            "required": false,
-            "description": "Used to force mounting when more control is needed.\n\nUseful when controlling animation with Vue animation libraries.",
-            "default": null,
-            "inheritedFrom": null,
-            "sourcePath": "headless/src/types/component.ts",
-            "referencedTypes": []
-          }
-        ],
-        "callables": [],
-        "referencedTypes": []
-      },
-      "emits": {
-        "kind": "emits",
-        "name": "DialogPopupEmits",
-        "type": "TypeAlias DialogPopupEmits",
-        "resolvedType": "{ escapeKeyDown: [event: KeyboardEvent]; pointerDownOutside: [event: PointerDownOutsideEvent]; focusOutside: [event: FocusOutsideEvent]; interactOutside: [event: PointerDownOutsideEvent | FocusOutsideEvent]; openAutoFocus: [event: Event]; closeAutoFocus: [event: Event] }",
-        "description": "",
-        "sourcePath": "headless/src/components/dialog/types.ts",
-        "typeParameters": [],
-        "members": [],
-        "callables": [
-          {
-            "name": "escapeKeyDown",
-            "type": "[event: KeyboardEvent]",
-            "parameters": "event: KeyboardEvent",
-            "required": true,
-            "description": "Event handler called when the escape key is down. Can be prevented.",
-            "sourcePath": "headless/src/types/component.ts",
-            "referencedTypes": [
-              {
-                "name": "KeyboardEvent",
-                "kind": "interface",
-                "type": "KeyboardEvent",
-                "resolvedType": null,
-                "description": "**`KeyboardEvent`** objects describe a user interaction with the keyboard; each event describes a single interaction between the user and a key (or combination of a key with modifier keys) on the keyboard. The event type (keydown, keypress, or keyup) identifies what kind of keyboard activity occurred.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/KeyboardEvent)",
-                "sourcePath": "node_modules/.pnpm/typescript@6.0.3/node_modules/typescript/lib/lib.dom.d.ts",
-                "typeParameters": [],
-                "external": true,
-                "members": [],
-                "callables": []
-              }
-            ]
-          },
-          {
-            "name": "pointerDownOutside",
-            "type": "[event: PointerDownOutsideEvent]",
-            "parameters": "event: PointerDownOutsideEvent",
-            "required": true,
-            "description": "Event handler called when a `pointerdown` event happens outside of the `DismissableLayer`. Can be prevented.",
-            "sourcePath": "headless/src/types/component.ts",
-            "referencedTypes": [
-              {
-                "name": "PointerDownOutsideEvent",
-                "kind": "typeAlias",
-                "type": "CustomEvent<{ originalEvent: PointerEvent; }>",
-                "resolvedType": null,
-                "description": "",
-                "sourcePath": "headless/src/types/event.ts",
-                "typeParameters": [],
-                "external": false,
-                "members": [],
-                "callables": []
-              }
-            ]
-          },
-          {
-            "name": "focusOutside",
-            "type": "[event: FocusOutsideEvent]",
-            "parameters": "event: FocusOutsideEvent",
-            "required": true,
-            "description": "Event handler called when the focus moves outside of the `DismissableLayer`. Can be prevented.",
-            "sourcePath": "headless/src/types/component.ts",
-            "referencedTypes": [
-              {
-                "name": "FocusOutsideEvent",
-                "kind": "typeAlias",
-                "type": "CustomEvent<{ originalEvent: FocusEvent; }>",
-                "resolvedType": null,
-                "description": "",
-                "sourcePath": "headless/src/types/event.ts",
-                "typeParameters": [],
-                "external": false,
-                "members": [],
-                "callables": []
-              }
-            ]
-          },
-          {
-            "name": "interactOutside",
-            "type": "[event: PointerDownOutsideEvent | FocusOutsideEvent]",
-            "parameters": "event: PointerDownOutsideEvent | FocusOutsideEvent",
-            "required": true,
-            "description": "Event handler called when an interaction happens outside the `DismissableLayer`. Specifically, when a `pointerdown`\nevent happens outside or focus moves outside of it. Can be prevented.",
-            "sourcePath": "headless/src/types/component.ts",
-            "referencedTypes": [
-              {
-                "name": "FocusOutsideEvent",
-                "kind": "typeAlias",
-                "type": "CustomEvent<{ originalEvent: FocusEvent; }>",
-                "resolvedType": null,
-                "description": "",
-                "sourcePath": "headless/src/types/event.ts",
-                "typeParameters": [],
-                "external": false,
-                "members": [],
-                "callables": []
-              },
-              {
-                "name": "PointerDownOutsideEvent",
-                "kind": "typeAlias",
-                "type": "CustomEvent<{ originalEvent: PointerEvent; }>",
-                "resolvedType": null,
-                "description": "",
-                "sourcePath": "headless/src/types/event.ts",
-                "typeParameters": [],
-                "external": false,
-                "members": [],
-                "callables": []
-              }
-            ]
-          },
-          {
-            "name": "openAutoFocus",
-            "type": "[event: Event]",
-            "parameters": "event: Event",
-            "required": true,
-            "description": "Event handler called when auto-focusing on open. Can be prevented.",
-            "sourcePath": "headless/src/types/component.ts",
-            "referencedTypes": [
-              {
-                "name": "Event",
-                "kind": "interface",
-                "type": "Event",
-                "resolvedType": null,
-                "description": "The **`Event`** interface represents an event which takes place on an EventTarget.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event)",
-                "sourcePath": "node_modules/.pnpm/typescript@6.0.3/node_modules/typescript/lib/lib.dom.d.ts",
-                "typeParameters": [],
-                "external": true,
-                "members": [],
-                "callables": []
-              }
-            ]
-          },
-          {
-            "name": "closeAutoFocus",
-            "type": "[event: Event]",
-            "parameters": "event: Event",
-            "required": true,
-            "description": "Event handler called when auto-focusing on close. Can be prevented.",
-            "sourcePath": "headless/src/types/component.ts",
-            "referencedTypes": [
-              {
-                "name": "Event",
-                "kind": "interface",
-                "type": "Event",
-                "resolvedType": null,
-                "description": "The **`Event`** interface represents an event which takes place on an EventTarget.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event)",
-                "sourcePath": "node_modules/.pnpm/typescript@6.0.3/node_modules/typescript/lib/lib.dom.d.ts",
-                "typeParameters": [],
-                "external": true,
-                "members": [],
-                "callables": []
-              }
-            ]
-          }
-        ],
         "referencedTypes": [
           {
-            "name": "DialogPopupImplEmits",
+            "name": "DialogCompactSlots",
             "kind": "typeAlias",
-            "type": "DismissableLayerEmits & FocusScopeEmits",
-            "resolvedType": "{ escapeKeyDown: [event: KeyboardEvent]; pointerDownOutside: [event: PointerDownOutsideEvent]; focusOutside: [event: FocusOutsideEvent]; interactOutside: [event: PointerDownOutsideEvent | FocusOutsideEvent]; openAutoFocus: [event: Event]; closeAutoFocus: [event: Event] }",
+            "type": "{ default: (props: import(\"../dialog\").DialogCompactBaseSlotProps) => any; trigger?: (props: import(\"../dialog\").DialogCompactBaseSlotProps) => any; title?: (props: import(\"../dialog\").DialogCompactBaseSlotProps) => any; description?: (props: import(\"../dialog\").DialogCompactBaseSlotProps) => any; close?: (props: import(\"../dialog\").DialogCompactBaseSlotProps) => any; footer?: (props: import(\"../dialog\").DialogCompactBaseSlotProps) => any; cancel?: (props: import(\"../dialog\").DialogCompactBaseSlotProps) => any; confirm?: (props: import(\"../dialog\").DialogCompactBaseSlotProps) => any; }",
+            "resolvedType": "{ default: (props: DialogCompactBaseSlotProps) => any; trigger?: ((props: DialogCompactBaseSlotProps) => any); title?: ((props: DialogCompactBaseSlotProps) => any); description?: ((props: DialogCompactBaseSlotProps) => any); close?: ((props: DialogCompactBaseSlotProps) => any); footer?: ((props: DialogCompactBaseSlotProps) => any); cancel?: ((props: DialogCompactBaseSlotProps) => any); confirm?: ((props: DialogCompactBaseSlotProps) => any) }",
             "description": "",
             "sourcePath": "headless/src/components/dialog/types.ts",
             "typeParameters": [],
@@ -3156,57 +2913,75 @@
             "members": [],
             "callables": [
               {
-                "name": "escapeKeyDown",
-                "type": "[event: KeyboardEvent]",
-                "parameters": "event: KeyboardEvent",
+                "name": "default",
+                "type": "(props: DialogCompactBaseSlotProps) => any",
+                "parameters": "props: DialogCompactBaseSlotProps",
                 "required": true,
-                "description": "Event handler called when the escape key is down. Can be prevented.",
-                "sourcePath": "headless/src/types/component.ts",
+                "description": "",
+                "sourcePath": "headless/src/components/dialog/types.ts",
                 "referencedTypes": []
               },
               {
-                "name": "pointerDownOutside",
-                "type": "[event: PointerDownOutsideEvent]",
-                "parameters": "event: PointerDownOutsideEvent",
-                "required": true,
-                "description": "Event handler called when a `pointerdown` event happens outside of the `DismissableLayer`. Can be prevented.",
-                "sourcePath": "headless/src/types/component.ts",
+                "name": "trigger",
+                "type": "((props: DialogCompactBaseSlotProps) => any) | undefined",
+                "parameters": "((props: DialogCompactBaseSlotProps) => any) | undefined",
+                "required": false,
+                "description": "",
+                "sourcePath": "headless/src/components/dialog/types.ts",
                 "referencedTypes": []
               },
               {
-                "name": "focusOutside",
-                "type": "[event: FocusOutsideEvent]",
-                "parameters": "event: FocusOutsideEvent",
-                "required": true,
-                "description": "Event handler called when the focus moves outside of the `DismissableLayer`. Can be prevented.",
-                "sourcePath": "headless/src/types/component.ts",
+                "name": "title",
+                "type": "((props: DialogCompactBaseSlotProps) => any) | undefined",
+                "parameters": "((props: DialogCompactBaseSlotProps) => any) | undefined",
+                "required": false,
+                "description": "",
+                "sourcePath": "headless/src/components/dialog/types.ts",
                 "referencedTypes": []
               },
               {
-                "name": "interactOutside",
-                "type": "[event: PointerDownOutsideEvent | FocusOutsideEvent]",
-                "parameters": "event: PointerDownOutsideEvent | FocusOutsideEvent",
-                "required": true,
-                "description": "Event handler called when an interaction happens outside the `DismissableLayer`. Specifically, when a `pointerdown`\nevent happens outside or focus moves outside of it. Can be prevented.",
-                "sourcePath": "headless/src/types/component.ts",
+                "name": "description",
+                "type": "((props: DialogCompactBaseSlotProps) => any) | undefined",
+                "parameters": "((props: DialogCompactBaseSlotProps) => any) | undefined",
+                "required": false,
+                "description": "",
+                "sourcePath": "headless/src/components/dialog/types.ts",
                 "referencedTypes": []
               },
               {
-                "name": "openAutoFocus",
-                "type": "[event: Event]",
-                "parameters": "event: Event",
-                "required": true,
-                "description": "Event handler called when auto-focusing on open. Can be prevented.",
-                "sourcePath": "headless/src/types/component.ts",
+                "name": "close",
+                "type": "((props: DialogCompactBaseSlotProps) => any) | undefined",
+                "parameters": "((props: DialogCompactBaseSlotProps) => any) | undefined",
+                "required": false,
+                "description": "",
+                "sourcePath": "headless/src/components/dialog/types.ts",
                 "referencedTypes": []
               },
               {
-                "name": "closeAutoFocus",
-                "type": "[event: Event]",
-                "parameters": "event: Event",
-                "required": true,
-                "description": "Event handler called when auto-focusing on close. Can be prevented.",
-                "sourcePath": "headless/src/types/component.ts",
+                "name": "footer",
+                "type": "((props: DialogCompactBaseSlotProps) => any) | undefined",
+                "parameters": "((props: DialogCompactBaseSlotProps) => any) | undefined",
+                "required": false,
+                "description": "",
+                "sourcePath": "headless/src/components/dialog/types.ts",
+                "referencedTypes": []
+              },
+              {
+                "name": "cancel",
+                "type": "((props: DialogCompactBaseSlotProps) => any) | undefined",
+                "parameters": "((props: DialogCompactBaseSlotProps) => any) | undefined",
+                "required": false,
+                "description": "",
+                "sourcePath": "headless/src/components/dialog/types.ts",
+                "referencedTypes": []
+              },
+              {
+                "name": "confirm",
+                "type": "((props: DialogCompactBaseSlotProps) => any) | undefined",
+                "parameters": "((props: DialogCompactBaseSlotProps) => any) | undefined",
+                "required": false,
+                "description": "",
+                "sourcePath": "headless/src/components/dialog/types.ts",
                 "referencedTypes": []
               }
             ]
@@ -3214,16 +2989,47 @@
         ]
       }
     },
-    "DialogPortal": {},
-    "DialogProvider": {},
-    "DialogRoot": {
+    "BottomSheetConfirm": {},
+    "BottomSheetContent": {},
+    "BottomSheetDescription": {},
+    "BottomSheetFooter": {},
+    "BottomSheetHandle": {
       "props": {
         "kind": "props",
-        "name": "DialogRootProps",
-        "type": "Interface DialogRootProps",
-        "resolvedType": "{ open?: boolean; defaultOpen?: boolean; modal?: boolean; isAlert?: boolean; alertType?: DialogAlertType }",
+        "name": "BottomSheetHandleProps",
+        "type": "Interface BottomSheetHandleProps",
+        "resolvedType": "{ preventCycle?: boolean }",
         "description": "",
-        "sourcePath": "headless/src/components/dialog/types.ts",
+        "sourcePath": "headless/src/components/bottom-sheet/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "preventCycle",
+            "type": "boolean",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/bottom-sheet/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "BottomSheetHeader": {},
+    "BottomSheetOverlay": {},
+    "BottomSheetPopup": {},
+    "BottomSheetPortal": {},
+    "BottomSheetRoot": {
+      "props": {
+        "kind": "props",
+        "name": "BottomSheetRootProps",
+        "type": "TypeAlias BottomSheetRootProps",
+        "resolvedType": "{ open?: boolean; defaultOpen?: boolean; modal?: boolean; isAlert?: boolean; alertType?: DialogAlertType; activeSnapPoint?: string | number | null; closeThreshold?: number; shouldScaleBackground?: boolean; setBackgroundColorOnScale?: boolean; scrollLockTimeout?: number; fixed?: boolean; dismissible?: boolean; nested?: boolean; direction?: Side; noBodyStyles?: boolean; handleOnly?: boolean; preventScrollRestoration?: boolean; snapPoints?: (string | number)[]; fadeFromIndex?: number }",
+        "description": "",
+        "sourcePath": "headless/src/components/bottom-sheet/types.ts",
         "typeParameters": [],
         "members": [
           {
@@ -3288,6 +3094,159 @@
                 "callables": []
               }
             ]
+          },
+          {
+            "name": "activeSnapPoint",
+            "type": "string | number | null",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/bottom-sheet/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "closeThreshold",
+            "type": "number",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/bottom-sheet/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "shouldScaleBackground",
+            "type": "boolean",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/bottom-sheet/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "setBackgroundColorOnScale",
+            "type": "boolean",
+            "required": false,
+            "description": "When `false` we don't change body's background color when the drawer is open.",
+            "default": "true",
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/bottom-sheet/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "scrollLockTimeout",
+            "type": "number",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/bottom-sheet/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "fixed",
+            "type": "boolean",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/bottom-sheet/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "dismissible",
+            "type": "boolean",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/bottom-sheet/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "nested",
+            "type": "boolean",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/bottom-sheet/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "direction",
+            "type": "Side",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/bottom-sheet/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Side",
+                "kind": "typeAlias",
+                "type": "'top' | 'right' | 'bottom' | 'left'",
+                "resolvedType": "'top' | 'right' | 'bottom' | 'left'",
+                "description": "",
+                "sourcePath": "headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "noBodyStyles",
+            "type": "boolean",
+            "required": false,
+            "description": "When `true` the `body` doesn't get any styles assigned from Vaul",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/bottom-sheet/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "handleOnly",
+            "type": "boolean",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/bottom-sheet/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "preventScrollRestoration",
+            "type": "boolean",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/bottom-sheet/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "snapPoints",
+            "type": "(string | number)[]",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/bottom-sheet/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "fadeFromIndex",
+            "type": "number",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/bottom-sheet/types.ts",
+            "referencedTypes": []
           }
         ],
         "callables": [],
@@ -3295,11 +3254,11 @@
       },
       "emits": {
         "kind": "emits",
-        "name": "DialogRootEmits",
-        "type": "TypeAlias DialogRootEmits",
-        "resolvedType": "{ \"update:open\": [value: boolean] }",
+        "name": "BottomSheetRootEmits",
+        "type": "TypeAlias BottomSheetRootEmits",
+        "resolvedType": "{ \"update:open\": [value: boolean]; drag: [percentageDragged: number]; release: [open: boolean]; close: []; \"update:activeSnapPoint\": [val: string | number] }",
         "description": "",
-        "sourcePath": "headless/src/components/dialog/types.ts",
+        "sourcePath": "headless/src/components/bottom-sheet/types.ts",
         "typeParameters": [],
         "members": [],
         "callables": [
@@ -3311,80 +3270,84 @@
             "description": "Event handler called when the open state of the dialog changes.",
             "sourcePath": "headless/src/components/dialog/types.ts",
             "referencedTypes": []
-          }
-        ],
-        "referencedTypes": []
-      }
-    },
-    "DialogTitle": {
-      "props": {
-        "kind": "props",
-        "name": "DialogTitleProps",
-        "type": "Interface DialogTitleProps",
-        "resolvedType": null,
-        "description": "",
-        "sourcePath": "headless/src/components/dialog/types.ts",
-        "typeParameters": [],
-        "members": [],
-        "callables": [],
-        "referencedTypes": []
-      }
-    },
-    "DialogTrigger": {
-      "props": {
-        "kind": "props",
-        "name": "DialogTriggerProps",
-        "type": "Interface DialogTriggerProps",
-        "resolvedType": "{ asChild?: boolean; as?: AsTag | Component }",
-        "description": "",
-        "sourcePath": "headless/src/components/dialog/types.ts",
-        "typeParameters": [],
-        "members": [
+          },
           {
-            "name": "asChild",
-            "type": "boolean",
-            "required": false,
-            "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
-            "default": null,
-            "inheritedFrom": null,
-            "sourcePath": "headless/src/components/primitive/types.ts",
+            "name": "drag",
+            "type": "[percentageDragged: number]",
+            "parameters": "percentageDragged: number",
+            "required": true,
+            "description": "",
+            "sourcePath": "headless/src/components/bottom-sheet/types.ts",
             "referencedTypes": []
           },
           {
-            "name": "as",
-            "type": "AsTag | Component",
+            "name": "release",
+            "type": "[open: boolean]",
+            "parameters": "open: boolean",
+            "required": true,
+            "description": "",
+            "sourcePath": "headless/src/components/bottom-sheet/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "close",
+            "type": "[]",
+            "parameters": null,
+            "required": true,
+            "description": "",
+            "sourcePath": "headless/src/components/bottom-sheet/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "update:activeSnapPoint",
+            "type": "[val: string | number]",
+            "parameters": "val: string | number",
+            "required": true,
+            "description": "",
+            "sourcePath": "headless/src/components/bottom-sheet/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "referencedTypes": []
+      },
+      "slots": {
+        "kind": "slots",
+        "name": "BottomSheetRootSlots",
+        "type": "TypeAlias BottomSheetRootSlots",
+        "resolvedType": "{ default?: ((props: { open: boolean; }) => any) }",
+        "description": "",
+        "sourcePath": "headless/src/components/bottom-sheet/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [
+          {
+            "name": "default",
+            "type": "((props: { open: boolean; }) => any) | undefined",
+            "parameters": "((props: { open: boolean; }) => any) | undefined",
             "required": false,
-            "description": "The element or component this component should render as. Can be overwrite by `asChild`",
-            "default": "'div'",
-            "inheritedFrom": null,
-            "sourcePath": "headless/src/components/primitive/types.ts",
+            "description": "",
+            "sourcePath": "headless/src/components/bottom-sheet/types.ts",
             "referencedTypes": [
               {
-                "name": "Component",
-                "kind": "typeAlias",
-                "type": "Component",
+                "name": "__type",
+                "kind": "typeLiteral",
+                "type": "{ open: boolean; }",
                 "resolvedType": null,
-                "description": "A type used in public APIs where a component type is expected.\nThe constructor type is an artificial type returned by defineComponent().",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
-                "typeParameters": [
-                  "PropsOrInstance = any",
-                  "RawBindings = any",
-                  "D = any",
-                  "C extends ComputedOptions = ComputedOptions",
-                  "M extends MethodOptions = MethodOptions",
-                  "E extends EmitsOptions | Record<string, any[]> = {}",
-                  "S extends Record<string, any> = any"
-                ],
-                "external": true,
+                "description": "",
+                "sourcePath": "headless/src/components/bottom-sheet/types.ts",
+                "typeParameters": [],
+                "external": false,
                 "members": [],
                 "callables": []
               }
             ]
           }
         ],
-        "callables": [],
         "referencedTypes": []
       }
-    }
+    },
+    "BottomSheetRootNested": {},
+    "BottomSheetTitle": {},
+    "BottomSheetTrigger": {}
   }
 }

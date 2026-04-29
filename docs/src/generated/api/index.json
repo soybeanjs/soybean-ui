@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-27T08:53:04.926Z",
+  "generatedAt": "2026-04-29T13:41:28.066Z",
   "schemaVersion": 3,
   "components": {
     "accordion": {
@@ -75,6 +75,29 @@
       "component": "badge",
       "file": "badge.json",
       "symbols": ["Badge", "BadgeContent", "BadgeRoot"]
+    },
+    "bottom-sheet": {
+      "component": "bottom-sheet",
+      "file": "bottom-sheet.json",
+      "symbols": [
+        "BottomSheet",
+        "BottomSheetCancel",
+        "BottomSheetClose",
+        "BottomSheetCompact",
+        "BottomSheetConfirm",
+        "BottomSheetContent",
+        "BottomSheetDescription",
+        "BottomSheetFooter",
+        "BottomSheetHandle",
+        "BottomSheetHeader",
+        "BottomSheetOverlay",
+        "BottomSheetPopup",
+        "BottomSheetPortal",
+        "BottomSheetRoot",
+        "BottomSheetRootNested",
+        "BottomSheetTitle",
+        "BottomSheetTrigger"
+      ]
     },
     "breadcrumb": {
       "component": "breadcrumb",

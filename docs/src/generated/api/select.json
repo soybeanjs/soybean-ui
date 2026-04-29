@@ -46,7 +46,7 @@
               {
                 "name": "SelectUi",
                 "kind": "typeAlias",
-                "type": "{ item: ClassValue; trigger: ClassValue; triggerIcon: ClassValue; value: ClassValue; viewport: ClassValue; group: ClassValue; groupLabel: ClassValue; itemText: ClassValue; itemIndicator: ClassValue; separator: ClassValue; positioner: ClassValue; popup: ClassValue; arrow: ClassValue; scrollUpButton: ClassValue; scrollDownButton: ClassValue; }",
+                "type": "{ item: ClassValue; trigger: ClassValue; triggerIcon: ClassValue; value: ClassValue; viewport: ClassValue; group: ClassValue; groupLabel: ClassValue; itemText: ClassValue; itemIndicator: ClassValue; separator: ClassValue; popup: ClassValue; positioner: ClassValue; arrow: ClassValue; scrollUpButton: ClassValue; scrollDownButton: ClassValue; }",
                 "resolvedType": null,
                 "description": "",
                 "sourcePath": "headless/src/components/select/types.ts",
