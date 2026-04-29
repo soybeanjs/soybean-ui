@@ -3,7 +3,7 @@ import type {
   BottomSheetCompactProps,
   BottomSheetCompactEmits,
   BottomSheetCompactSlots,
-  DialogUi
+  BottomSheetUi
 } from '@soybeanjs/headless';
 import type { ThemeSize } from '@/theme';
 
@@ -13,7 +13,7 @@ export type BottomSheetProps = BottomSheetCompactProps & {
    */
   class?: ClassValue;
   size?: ThemeSize;
-  ui?: Partial<DialogUi>;
+  ui?: Partial<BottomSheetUi>;
 };
 
 export type BottomSheetEmits = BottomSheetCompactEmits;

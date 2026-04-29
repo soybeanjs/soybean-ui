@@ -8,6 +8,7 @@ A modal panel that slides in from the bottom edge of the screen. It is suited fo
 
 ```vue
 <script setup lang="ts">
+import { ref } from 'vue';
 import { SBottomSheet, SButton } from '@soybeanjs/ui';
 
 const open = ref(false);

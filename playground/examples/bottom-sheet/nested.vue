@@ -29,7 +29,11 @@ function setNestedSnapPoint(point: number | string) {
           The inner sheet uses BottomSheetRootNested so drag, release, and open state stay coordinated with the parent.
         </p>
 
-        <SBottomSheet v-model:open="nestedOpen">
+        <SBottomSheet
+          v-model:open="nestedOpen"
+          :snap-points="nestedSnapPoints"
+          v-model:active-snap-point="nestedActiveSnapPoint"
+        >
           <template #trigger>
             <SButton variant="outline" class="w-fit">Open Nested</SButton>
           </template>

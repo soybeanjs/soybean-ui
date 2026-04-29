@@ -523,7 +523,19 @@ export function useDrawer(props: BottomSheetRootContextParams): BottomSheetRootC
 }
 
 function usePropOrDefaultRef<T>(prop: Ref<T | undefined> | undefined, defaultRef: Ref<T>): Ref<T> {
-  return prop && Boolean(prop.value) ? (prop as Ref<T>) : defaultRef;
+  return computed<T>({
+    get() {
+      return prop ? (prop.value ?? defaultRef.value) : defaultRef.value;
+    },
+    set(value) {
+      if (prop) {
+        prop.value = value;
+        return;
+      }
+
+      defaultRef.value = value;
+    }
+  }) as Ref<T>;
 }
 
 export const [provideBottomSheetUi, useBottomSheetUi] = useUiContext<BottomSheetUiSlot>('BottomSheet', ui => {

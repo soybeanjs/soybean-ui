@@ -8,6 +8,7 @@
 
 ```vue
 <script setup lang="ts">
+import { ref } from 'vue';
 import { SBottomSheet, SButton } from '@soybeanjs/ui';
 
 const open = ref(false);

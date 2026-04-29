@@ -142,7 +142,7 @@ export function useSnapPoints({
   watch(
     [activeSnapPoint, snapPointsOffset, snapPoints],
     () => {
-      if (activeSnapPoint.value) {
+      if (activeSnapPoint.value !== null && activeSnapPoint.value !== undefined) {
         const newIndex = snapPoints.value?.findIndex(snapPoint => snapPoint === activeSnapPoint.value) ?? -1;
 
         if (snapPointsOffset.value && newIndex !== -1 && typeof snapPointsOffset.value[newIndex] === 'number')

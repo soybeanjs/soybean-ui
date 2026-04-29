@@ -26,8 +26,6 @@ function onDrag(p: number) {
 
 function onOpenChange(o: boolean) {
   if (o) onNestedOpenChange(o);
-
-  emit('update:open', o);
 }
 </script>
 

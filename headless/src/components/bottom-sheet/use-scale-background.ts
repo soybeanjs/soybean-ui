@@ -12,25 +12,31 @@ import {
 
 const noop = () => () => {};
 
+const isClient = typeof window !== 'undefined' && typeof document !== 'undefined';
+
 export function useScaleBackground() {
   const { direction, isOpen, shouldScaleBackground, setBackgroundColorOnScale, noBodyStyles } =
     injectDrawerRootContext('DrawerScaleBackground');
   const timeoutIdRef = ref<number | null>(null);
-  const initialBackgroundColor = ref(document.body.style.backgroundColor);
+  const initialBackgroundColor = ref(isClient ? document.body.style.backgroundColor : '');
 
   function getScale() {
+    if (!isClient) return 1;
+
     return (window.innerWidth - WINDOW_TOP_OFFSET) / window.innerWidth;
   }
 
   watchEffect(
     onCleanup => {
+      if (!isClient) return;
+
       if (isOpen.value && shouldScaleBackground.value) {
         if (timeoutIdRef.value) clearTimeout(timeoutIdRef.value);
         const wrapper = document.querySelector(`[${BOTTOM_SHEET_SCALE_SELECTOR}]`) as HTMLElement;
 
         if (!wrapper) return;
 
-        chain(
+        const cleanupChain = chain(
           setBackgroundColorOnScale.value && !noBodyStyles.value
             ? assignStyle(document.body, { background: 'black' })
             : noop,
@@ -55,6 +61,7 @@ export function useScaleBackground() {
         });
 
         onCleanup(() => {
+          cleanupChain();
           wrapperStylesCleanup();
           timeoutIdRef.value = window.setTimeout(() => {
             if (initialBackgroundColor.value) {

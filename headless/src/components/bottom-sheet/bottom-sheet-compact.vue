@@ -63,7 +63,8 @@ const forwardedProps = useOmitProps(props, [
   'descriptionProps',
   'closeProps',
   'cancelProps',
-  'confirmProps'
+  'confirmProps',
+  'handleProps'
 ]);
 
 const emit = defineEmits<BottomSheetCompactEmits>();
@@ -127,7 +128,7 @@ const showFooter = computed(() => {
     <DialogPortal v-bind="portalProps">
       <BottomSheetOverlay v-bind="overlayProps" />
       <BottomSheetPopup v-bind="popupProps" v-on="listeners">
-        <BottomSheetHandle />
+        <BottomSheetHandle v-bind="handleProps" />
         <DialogHeader v-if="!pure" v-bind="headerProps">
           <DialogTitle v-bind="titleProps">
             <Icon v-if="icon" :icon="icon" :class="ui.icon" />

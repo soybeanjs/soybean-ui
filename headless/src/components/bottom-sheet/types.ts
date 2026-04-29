@@ -115,7 +115,7 @@ export type BottomSheetRootEmits = DialogRootEmits & {
   drag: [percentageDragged: number];
   release: [open: boolean];
   close: [];
-  'update:activeSnapPoint': [val: string | number];
+  'update:activeSnapPoint': [val: string | number | null];
 };
 
 export type BottomSheetRootSlots = {
