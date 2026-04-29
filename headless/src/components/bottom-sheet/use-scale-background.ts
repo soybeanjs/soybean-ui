@@ -1,4 +1,5 @@
 import { ref, watchEffect } from 'vue';
+import { isClient } from '../../shared';
 import { injectDrawerRootContext } from './context';
 import {
   BOTTOM_SHEET_SCALE_SELECTOR,
@@ -11,8 +12,6 @@ import {
 } from './shared';
 
 const noop = () => () => {};
-
-const isClient = typeof window !== 'undefined' && typeof document !== 'undefined';
 
 export function useScaleBackground() {
   const { direction, isOpen, shouldScaleBackground, setBackgroundColorOnScale, noBodyStyles } =

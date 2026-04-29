@@ -1,7 +1,6 @@
-import type { Ref } from 'vue';
 import { computed, ref, watch, watchEffect } from 'vue';
-import { isClient } from '@vueuse/core';
 import { useContext, useUiContext, useForwardElement } from '../../composables';
+import { isClient } from '../../shared';
 import { provideDialogUi } from '../dialog/context';
 import { useSnapPoints } from './use-snap-points';
 import {
@@ -71,7 +70,7 @@ export function useDrawer(props: BottomSheetRootContextParams): BottomSheetRootC
 
   const drawerHeightRef = computed(() => drawerRef.value?.getBoundingClientRect().height || 0);
 
-  const snapPoints = usePropOrDefaultRef(props.snapPoints, ref<(number | string)[] | undefined>(undefined));
+  const snapPoints = computed(() => props.snapPoints?.value ?? []);
 
   const hasSnapPoints = computed(() => snapPoints && (snapPoints.value?.length ?? 0) > 0);
 
@@ -520,22 +519,6 @@ export function useDrawer(props: BottomSheetRootContextParams): BottomSheetRootC
     handleOnly,
     noBodyStyles
   };
-}
-
-function usePropOrDefaultRef<T>(prop: Ref<T | undefined> | undefined, defaultRef: Ref<T>): Ref<T> {
-  return computed<T>({
-    get() {
-      return prop ? (prop.value ?? defaultRef.value) : defaultRef.value;
-    },
-    set(value) {
-      if (prop) {
-        prop.value = value;
-        return;
-      }
-
-      defaultRef.value = value;
-    }
-  }) as Ref<T>;
 }
 
 export const [provideBottomSheetUi, useBottomSheetUi] = useUiContext<BottomSheetUiSlot>('BottomSheet', ui => {
