@@ -1,5 +1,24 @@
 # Changelog
 
+## [v0.15.4](https://github.com/soybeanjs/soybean-ui/compare/v0.15.3...v0.15.4) (2026-04-30)
+
+### &nbsp;&nbsp;&nbsp;🚀 Features
+
+- **components**: Implement BottomSheet component &nbsp;-&nbsp; by @soybeanjs and @MicrosoftCopilot [<samp>(fb274)</samp>](https://github.com/soybeanjs/soybean-ui/commit/fb274b91)
+
+### &nbsp;&nbsp;&nbsp;🛠 Optimizations
+
+- **headless**: add global css in config-provider &nbsp;-&nbsp; by **soybeanfe** [<samp>(b2a75)</samp>](https://github.com/soybeanjs/soybean-ui/commit/b2a75952)
+
+### &nbsp;&nbsp;&nbsp;💅 Refactors
+
+- **components**: simplify style handling in config-provider and toast-provider &nbsp;-&nbsp; by **soybeanfe** [<samp>(9ef67)</samp>](https://github.com/soybeanjs/soybean-ui/commit/9ef6782a)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;[![MicrosoftCopilot](https://github.com/MicrosoftCopilot.png?size=48)](https://github.com/MicrosoftCopilot)&nbsp;&nbsp;
+[soybeanfe](mailto:honghuangdc@gmail.com),&nbsp;
+
 ## [v0.15.3](https://github.com/soybeanjs/soybean-ui/compare/v0.15.2...v0.15.3) (2026-04-27)
 
 ### &nbsp;&nbsp;&nbsp;🚀 Features
