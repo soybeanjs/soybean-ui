@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { h, watch, watchEffect } from 'vue';
-import { useStorage } from '@vueuse/core';
-import { ConfigProvider, Primitive } from '@soybeanjs/headless';
+import { useStorage, useStyleTag } from '@vueuse/core';
+import { ConfigProvider } from '@soybeanjs/headless';
 import { useOmitProps } from '@soybeanjs/headless/composables';
 import { isClient, transformPropsToContext } from '@soybeanjs/headless/shared';
 import { createShadcnTheme } from '@soybeanjs/shadcn-theme';
@@ -51,6 +51,7 @@ const { getCss } = createShadcnTheme(props.theme);
 const generateCss = () => getCss(props.theme, props.theme.radius);
 
 const cssVars = useStorage('__SoybeanUI_themeVars', generateCss());
+useStyleTag(cssVars, { id: '__SoybeanUI_themeVars' });
 
 function addSizeClass(size: ThemeSize) {
   if (!isClient) return;
@@ -74,9 +75,6 @@ watchEffect(() => {
 
 <template>
   <ConfigProvider v-bind="forwardedProps" :icon-render="iconRender">
-    <Primitive id="__SoybeanUI_themeVars" as="style">
-      {{ cssVars }}
-    </Primitive>
     <slot />
     <ToastProvider v-if="!props.customToast" v-bind="props.toast" />
     <DialogProvider />

@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { ToastProvider, Primitive, provideToastUi } from '@soybeanjs/headless';
+import { useStyleTag } from '@vueuse/core';
+import { ToastProvider, provideToastUi } from '@soybeanjs/headless';
 import { useOmitProps } from '@soybeanjs/headless/composables';
 import { mergeBaseVariants, mergeSlotVariants, miniSizeMap } from '@/theme';
 import { buttonVariants } from '../button/variants';
@@ -47,12 +48,15 @@ const ui = computed(() => {
   return mergeSlotVariants(variants, props.ui);
 });
 
+useStyleTag(toastStyles, {
+  id: '__SoybeanUI_toastStyle'
+});
+
 provideToastUi(ui);
 </script>
 
 <template>
   <ToastProvider v-bind="forwardedProps">
     <slot />
-    <Primitive id="__SoybeanUI_toastStyle" as="style">{{ toastStyles }}</Primitive>
   </ToastProvider>
 </template>
