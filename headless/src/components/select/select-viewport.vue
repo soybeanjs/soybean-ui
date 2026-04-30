@@ -1,26 +1,21 @@
 <script setup lang="ts">
 import { useAttrs } from 'vue';
 import { useForwardElement } from '../../composables';
-import { useNonce } from '../config-provider/context';
-import { Primitive } from '../primitive';
 import { useSelectContentContext, useSelectItemAlignedPositionContext, useSelectUi } from './context';
 import { CONTENT_MARGIN } from './shared';
 import type { SelectViewportProps } from './types';
 
 defineOptions({
-  name: 'SelectViewport',
-  inheritAttrs: false
+  name: 'SelectViewport'
 });
 
-const props = defineProps<SelectViewportProps>();
+defineProps<SelectViewportProps>();
 
 const attrs = useAttrs();
 
 const { onViewportElementChange } = useSelectContentContext('SelectViewport');
 const [_, setViewportElement] = useForwardElement(onViewportElementChange);
 const alignedPositionContext = useSelectItemAlignedPositionContext();
-
-const nonce = useNonce(() => props.nonce);
 
 const cls = useSelectUi('viewport');
 
@@ -30,17 +25,6 @@ const cls = useSelectUi('viewport');
  * the offset is relative to the viewport (independent of the scrollUpButton).
  */
 const style = 'position:relative;flex:1;overflow:hidden auto;';
-
-// Hide scrollbars cross-browser and enable momentum scroll for touch devices
-const css = `
-[data-soybean-select-viewport] {
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-  -webkit-overflow-scrolling: touch;
-}
-[data-soybean-select-viewport]::-webkit-scrollbar {
-  display: none;
-}`;
 
 let prevScrollTop = 0;
 
@@ -91,5 +75,4 @@ function onScroll(event: Event) {
   >
     <slot />
   </div>
-  <Primitive as="style" :nonce="nonce">{{ css }}</Primitive>
 </template>

@@ -1,30 +1,23 @@
 <script setup lang="ts">
-import { computed, useAttrs } from 'vue';
+import { computed } from 'vue';
 import type { CSSProperties } from 'vue';
 import { useForwardElement, useOmitProps } from '../../composables';
 import { Primitive } from '../primitive';
-import { useNonce } from '../config-provider/context';
 import { useScrollAreaRootContext, useScrollAreaUi } from './context';
 import type { ScrollAreaViewportProps } from './types';
 
 defineOptions({
-  name: 'ScrollAreaViewport',
-  inheritAttrs: false
+  name: 'ScrollAreaViewport'
 });
 
-const props = withDefaults(defineProps<ScrollAreaViewportProps>(), {
-  as: 'div'
-});
-
-const attrs = useAttrs();
-const nonce = useNonce(() => props.nonce);
+const props = defineProps<ScrollAreaViewportProps>();
 
 const { scrollbarXEnabled, scrollbarYEnabled, onViewportChange, onContentChange } =
   useScrollAreaRootContext('ScrollAreaViewport');
 
 const cls = useScrollAreaUi('viewport');
 
-const forwardedProps = useOmitProps(props, ['nonce', 'as', 'asChild'], attrs);
+const forwardedProps = useOmitProps(props, ['nonce', 'as', 'asChild']);
 const viewportProps = computed(() => ({
   ...forwardedProps.value,
   tabindex: forwardedProps.value.tabindex ?? 0
@@ -49,14 +42,11 @@ const contentStyle = computed<CSSProperties>(() => ({
     data-soybean-scroll-area-viewport=""
     v-bind="viewportProps"
     :class="cls"
+    class="soybean-headless-scrollbar-hidden"
     :style="style"
   >
     <Primitive :ref="setContentElement" :as="as" :as-child="asChild" :style="contentStyle">
       <slot />
     </Primitive>
   </div>
-  <Primitive as="style" :nonce="nonce">
-    [data-soybean-scroll-area-viewport] { scrollbar-width: none; -ms-overflow-style: none; -webkit-overflow-scrolling:
-    touch; } [data-soybean-scroll-area-viewport]::-webkit-scrollbar { display: none; }
-  </Primitive>
 </template>
