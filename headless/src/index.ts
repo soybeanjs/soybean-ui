@@ -91,7 +91,6 @@ export * from './components/tree';
 export * from './components/tree-menu';
 export * from './components/virtualizer';
 export * from './components/visually-hidden';
-export * from './date';
 
 export type { IconValue } from './components/_icon';
 export type {
