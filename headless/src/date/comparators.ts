@@ -1,17 +1,24 @@
 import type { DateValue } from '@internationalized/date';
+import type { CalendarIdentifier } from '@internationalized/date';
 
-import type { Matcher } from './types';
+import type { Granularity, Matcher } from './types';
 
 import {
+  CalendarDate,
   CalendarDateTime,
+  createCalendar,
+  DateFormatter,
   getDayOfWeek,
   getLocalTimeZone,
   parseDate,
   parseDateTime,
   parseZonedDateTime,
+  Time,
   toCalendar,
   ZonedDateTime
 } from '@internationalized/date';
+
+export type TimeValue = Time | CalendarDateTime | ZonedDateTime;
 
 export function parseStringToDateValue(dateStr: string, referenceValue: DateValue): DateValue {
   let dateValue: DateValue;
@@ -31,7 +38,24 @@ export function parseStringToDateValue(dateStr: string, referenceValue: DateValu
   return dateValue;
 }
 
-export function toDate(dateValue: DateValue, tz: string = getLocalTimeZone()) {
+export function isTime(dateValue: DateValue | TimeValue): dateValue is Time {
+  return dateValue instanceof Time;
+}
+
+export function toDate(dateValue: DateValue | TimeValue, tz: string = getLocalTimeZone()) {
+  if (isTime(dateValue)) {
+    const now = new Date();
+    return new Date(
+      now.getFullYear(),
+      now.getMonth(),
+      now.getDate(),
+      dateValue.hour,
+      dateValue.minute,
+      dateValue.second,
+      dateValue.millisecond
+    );
+  }
+
   if (isZonedDateTime(dateValue)) {
     return dateValue.toDate();
   }
@@ -39,16 +63,16 @@ export function toDate(dateValue: DateValue, tz: string = getLocalTimeZone()) {
   return dateValue.toDate(tz);
 }
 
-export function isCalendarDateTime(dateValue: DateValue): dateValue is CalendarDateTime {
+export function isCalendarDateTime(dateValue: DateValue | TimeValue): dateValue is CalendarDateTime {
   return dateValue instanceof CalendarDateTime;
 }
 
-export function isZonedDateTime(dateValue: DateValue): dateValue is ZonedDateTime {
+export function isZonedDateTime(dateValue: DateValue | TimeValue): dateValue is ZonedDateTime {
   return dateValue instanceof ZonedDateTime;
 }
 
-export function hasTime(dateValue: DateValue) {
-  return isCalendarDateTime(dateValue) || isZonedDateTime(dateValue);
+export function hasTime(dateValue: DateValue | TimeValue) {
+  return isTime(dateValue) || isCalendarDateTime(dateValue) || isZonedDateTime(dateValue);
 }
 
 export function getDaysInMonth(date: Date | DateValue) {
@@ -62,20 +86,84 @@ export function getDaysInMonth(date: Date | DateValue) {
   return date.set({ day: 100 }).day;
 }
 
-export function isBefore(dateToCompare: DateValue, referenceDate: DateValue) {
-  return dateToCompare.compare(referenceDate) < 0;
+export function getDefaultDate(props: {
+  defaultValue?: DateValue | DateValue[];
+  defaultPlaceholder?: DateValue;
+  granularity?: Granularity;
+  locale?: string;
+}): DateValue {
+  const { defaultValue, defaultPlaceholder, granularity = 'day', locale = 'en' } = props;
+
+  if (Array.isArray(defaultValue) && defaultValue.length) {
+    return defaultValue.at(-1)!.copy();
+  }
+
+  if (defaultValue && !Array.isArray(defaultValue)) {
+    return defaultValue.copy();
+  }
+
+  if (defaultPlaceholder) {
+    return defaultPlaceholder.copy();
+  }
+
+  const now = new Date();
+  const formatter = new DateFormatter(locale);
+  const calendar = createCalendar(formatter.resolvedOptions().calendar as CalendarIdentifier);
+  const timeGranularities = ['hour', 'minute', 'second'];
+
+  if (timeGranularities.includes(granularity)) {
+    return toCalendar(new CalendarDateTime(now.getFullYear(), now.getMonth() + 1, now.getDate(), 0, 0, 0), calendar);
+  }
+
+  return toCalendar(new CalendarDate(now.getFullYear(), now.getMonth() + 1, now.getDate()), calendar);
 }
 
-export function isAfter(dateToCompare: DateValue, referenceDate: DateValue) {
-  return dateToCompare.compare(referenceDate) > 0;
+export function getDefaultTime(props: { defaultValue?: TimeValue; defaultPlaceholder?: TimeValue }): TimeValue {
+  if (props.defaultValue) {
+    return props.defaultValue.copy();
+  }
+
+  if (props.defaultPlaceholder) {
+    return props.defaultPlaceholder.copy();
+  }
+
+  return new Time(0, 0, 0);
 }
 
-export function isBeforeOrSame(dateToCompare: DateValue, referenceDate: DateValue) {
-  return dateToCompare.compare(referenceDate) <= 0;
+export function isBefore(dateToCompare: DateValue | TimeValue, referenceDate: DateValue | TimeValue) {
+  if (isTime(dateToCompare) && isTime(referenceDate)) {
+    return dateToCompare.compare(referenceDate) < 0;
+  }
+
+  return (dateToCompare as DateValue).compare(referenceDate as DateValue) < 0;
 }
 
-export function isAfterOrSame(dateToCompare: DateValue, referenceDate: DateValue) {
-  return dateToCompare.compare(referenceDate) >= 0;
+export function isAfter(dateToCompare: DateValue | TimeValue, referenceDate: DateValue | TimeValue) {
+  if (isTime(dateToCompare) && isTime(referenceDate)) {
+    return dateToCompare.compare(referenceDate) > 0;
+  }
+
+  return (dateToCompare as DateValue).compare(referenceDate as DateValue) > 0;
+}
+
+export function isBeforeOrSame(dateToCompare: DateValue | TimeValue, referenceDate: DateValue | TimeValue) {
+  if (isTime(dateToCompare) && isTime(referenceDate)) {
+    return dateToCompare.compare(referenceDate) <= 0;
+  }
+
+  return (dateToCompare as DateValue).compare(referenceDate as DateValue) <= 0;
+}
+
+export function isAfterOrSame(dateToCompare: DateValue | TimeValue, referenceDate: DateValue | TimeValue) {
+  if (isTime(dateToCompare) && isTime(referenceDate)) {
+    return dateToCompare.compare(referenceDate) >= 0;
+  }
+
+  return (dateToCompare as DateValue).compare(referenceDate as DateValue) >= 0;
+}
+
+export function isEqualValue(a: DateValue | TimeValue, b: DateValue | TimeValue) {
+  return a.toString() === b.toString();
 }
 
 export function isBetweenInclusive(date: DateValue, start: DateValue, end: DateValue) {
@@ -86,11 +174,7 @@ export function isBetween(date: DateValue, start: DateValue, end: DateValue) {
   return isAfter(date, start) && isBefore(date, end);
 }
 
-export function getLastFirstDayOfWeek<T extends DateValue = DateValue>(
-  date: T,
-  firstDayOfWeek: number,
-  locale: string
-): T {
+export function getLastFirstDayOfWeek<T extends DateValue = DateValue>(date: T, firstDayOfWeek: number, locale: string): T {
   const day = getDayOfWeek(date, locale, 'sun');
 
   if (firstDayOfWeek > day) {
@@ -104,11 +188,7 @@ export function getLastFirstDayOfWeek<T extends DateValue = DateValue>(
   return date.subtract({ days: day - firstDayOfWeek }) as T;
 }
 
-export function getNextLastDayOfWeek<T extends DateValue = DateValue>(
-  date: T,
-  firstDayOfWeek: number,
-  locale: string
-): T {
+export function getNextLastDayOfWeek<T extends DateValue = DateValue>(date: T, firstDayOfWeek: number, locale: string): T {
   const day = getDayOfWeek(date, locale, 'sun');
   const lastDayOfWeek = firstDayOfWeek === 0 ? 6 : firstDayOfWeek - 1;
 
@@ -174,56 +254,4 @@ export function isYearBetweenInclusive(date: DateValue, start: DateValue, end: D
 
 export function getMonthsBetween(start: DateValue, end: DateValue): number {
   return (end.year - start.year) * 12 + (end.month - start.month) + 1;
-}
-
-export function getYearsBetween(start: DateValue, end: DateValue): number {
-  return end.year - start.year + 1;
-}
-
-export function areAllMonthsBetweenValid(
-  start: DateValue,
-  end: DateValue,
-  isUnavailable: Matcher | undefined,
-  isDisabled: Matcher | undefined
-): boolean {
-  if (isUnavailable === undefined && isDisabled === undefined) {
-    return true;
-  }
-
-  let current = start.set({ day: 1 });
-  const endMonth = end.set({ day: 1 });
-
-  while (compareYearMonth(current, endMonth) <= 0) {
-    if (isDisabled?.(current) || isUnavailable?.(current)) {
-      return false;
-    }
-
-    current = current.add({ months: 1 });
-  }
-
-  return true;
-}
-
-export function areAllYearsBetweenValid(
-  start: DateValue,
-  end: DateValue,
-  isUnavailable: Matcher | undefined,
-  isDisabled: Matcher | undefined
-): boolean {
-  if (isUnavailable === undefined && isDisabled === undefined) {
-    return true;
-  }
-
-  let current = start.set({ day: 1, month: 1 });
-  const endYear = end.set({ day: 1, month: 1 });
-
-  while (current.year <= endYear.year) {
-    if (isDisabled?.(current) || isUnavailable?.(current)) {
-      return false;
-    }
-
-    current = current.add({ years: 1 });
-  }
-
-  return true;
 }
