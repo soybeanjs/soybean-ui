@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useForwardListeners } from '../../composables';
-import { injectDrawerRootContext } from './context';
+import { useDrawerRootContext } from './context';
 import BottomSheetRoot from './bottom-sheet-root.vue';
 import type { BottomSheetRootEmits, BottomSheetRootProps } from './types';
 
@@ -14,7 +14,7 @@ const emit = defineEmits<BottomSheetRootEmits>();
 
 const listeners = useForwardListeners(emit);
 
-const { onNestedDrag, onNestedOpenChange, onNestedRelease } = injectDrawerRootContext('BottomSheetRootNested');
+const { onNestedDrag, onNestedOpenChange, onNestedRelease } = useDrawerRootContext('BottomSheetRootNested');
 
 function onClose() {
   onNestedOpenChange(false);

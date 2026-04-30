@@ -2,7 +2,7 @@
 import { watchEffect } from 'vue';
 import { DialogOverlay } from '../dialog';
 import { useDialogRootContext } from '../dialog/context';
-import { injectDrawerRootContext } from './context';
+import { useDrawerRootContext } from './context';
 
 defineOptions({
   name: 'BottomSheetOverlay'
@@ -10,7 +10,7 @@ defineOptions({
 
 const { overlayElement } = useDialogRootContext('BottomSheetOverlay');
 
-const { setOverlayRef, hasSnapPoints, isOpen, shouldFade } = injectDrawerRootContext('BottomSheetOverlay');
+const { setOverlayRef, hasSnapPoints, isOpen, shouldFade } = useDrawerRootContext('BottomSheetOverlay');
 
 watchEffect(() => {
   if (overlayElement.value) {

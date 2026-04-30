@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import type { ShallowRef } from 'vue';
 import { computed, toRefs } from 'vue';
+import type { ShallowRef } from 'vue';
 import { useControllableState } from '../../composables';
 import { DialogRoot } from '../dialog';
 import { provideDrawerRootContext } from './context';

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { injectDrawerRootContext, useBottomSheetUi } from './context';
+import { useDrawerRootContext, useBottomSheetUi } from './context';
 import type { BottomSheetHandleProps } from './types';
 
 defineOptions({
@@ -27,7 +27,7 @@ const {
   isDragging,
   dismissible,
   closeDrawer
-} = injectDrawerRootContext('DrawerHandle');
+} = useDrawerRootContext('DrawerHandle');
 
 const closeTimeoutId = ref<number | null>(null);
 const shouldCancelInteraction = ref(false);

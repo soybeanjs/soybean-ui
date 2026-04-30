@@ -2,7 +2,7 @@
 import { computed, ref, watchEffect } from 'vue';
 import { DialogPopup } from '../dialog';
 import { useDialogRootContext } from '../dialog/context';
-import { injectDrawerRootContext } from './context';
+import { useDrawerRootContext } from './context';
 import { useScaleBackground } from './use-scale-background';
 
 defineOptions({
@@ -23,7 +23,7 @@ const {
   keyboardIsOpen,
   direction,
   handleOnly
-} = injectDrawerRootContext('BottomSheetPopup');
+} = useDrawerRootContext('BottomSheetPopup');
 
 const { popupElement } = useDialogRootContext('BottomSheetPopup');
 

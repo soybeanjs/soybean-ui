@@ -1,6 +1,6 @@
 import { ref, watchEffect } from 'vue';
 import { isClient } from '../../shared';
-import { injectDrawerRootContext } from './context';
+import { useDrawerRootContext } from './context';
 import {
   BOTTOM_SHEET_SCALE_SELECTOR,
   BORDER_RADIUS,
@@ -15,7 +15,7 @@ const noop = () => () => {};
 
 export function useScaleBackground() {
   const { direction, isOpen, shouldScaleBackground, setBackgroundColorOnScale, noBodyStyles } =
-    injectDrawerRootContext('DrawerScaleBackground');
+    useDrawerRootContext('DrawerScaleBackground');
   const timeoutIdRef = ref<number | null>(null);
   const initialBackgroundColor = ref(isClient ? document.body.style.backgroundColor : '');
 

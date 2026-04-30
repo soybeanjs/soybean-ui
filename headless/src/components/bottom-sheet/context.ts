@@ -20,7 +20,7 @@ import {
 } from './shared';
 import type { BottomSheetRootContext, BottomSheetRootContextParams, BottomSheetUiSlot } from './types';
 
-export const [provideDrawerRootContext, injectDrawerRootContext] = useContext(
+export const [provideDrawerRootContext, useDrawerRootContext] = useContext(
   'BottomSheetRoot',
   (params: BottomSheetRootContextParams): BottomSheetRootContext => {
     return useDrawer(params);
