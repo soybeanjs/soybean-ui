@@ -168,36 +168,6 @@ export interface LayoutClassicRootProps extends Omit<LayoutRootProps, 'variant' 
    */
   fixedTop?: boolean;
   /**
-   * whether the content takes the full height of the layout (include).
-   *
-   * @default false
-   */
-  fullContent?: boolean;
-  /**
-   * whether to show the sidebar.
-   *
-   * @default true
-   */
-  sidebarVisible?: boolean;
-  /**
-   * whether to show the header.
-   *
-   * @default true
-   */
-  headerVisible?: boolean;
-  /**
-   * whether to show the tab.
-   *
-   * @default true
-   */
-  tabVisible?: boolean;
-  /**
-   * whether to show the footer.
-   *
-   * @default true
-   */
-  footerVisible?: boolean;
-  /**
    * Whether footer is fixed
    *
    * @default true
