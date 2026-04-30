@@ -31,6 +31,24 @@ export const components = {
     'AutocompleteSeparator'
   ],
   badge: ['BadgeRoot', 'BadgeContent'],
+  bottomSheet: [
+    'BottomSheetCompact',
+    'BottomSheetRoot',
+    'BottomSheetRootNested',
+    'BottomSheetOverlay',
+    'BottomSheetPortal',
+    'BottomSheetPopup',
+    'BottomSheetTrigger',
+    'BottomSheetHeader',
+    'BottomSheetContent',
+    'BottomSheetFooter',
+    'BottomSheetTitle',
+    'BottomSheetDescription',
+    'BottomSheetClose',
+    'BottomSheetCancel',
+    'BottomSheetConfirm',
+    'BottomSheetHandle'
+  ],
   breadcrumb: [
     'BreadcrumbRoot',
     'BreadcrumbCompact',

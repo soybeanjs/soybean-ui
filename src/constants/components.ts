@@ -9,6 +9,7 @@ export const components = {
   avatar: ['SAvatar'],
   backtop: ['SBacktop'],
   badge: ['SBadge'],
+  bottomSheet: ['SBottomSheet'],
   breadcrumb: ['SBreadcrumb', 'SBreadcrumbPage', 'SBreadcrumbEllipsis'],
   button: ['SButton', 'SButtonLoading', 'SButtonIcon', 'SButtonLink', 'SButtonGroup'],
   card: ['SCard', 'SCardCollapsibleTrigger'],

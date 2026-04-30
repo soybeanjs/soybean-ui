@@ -18,10 +18,15 @@ export { provideDialogUi } from './context';
 export { dialog } from './state';
 
 export type {
+  DialogCompactProps,
+  DialogCompactEmits,
+  DialogCompactSlots,
+  DialogCompactBaseSlotProps,
   DialogRootProps,
   DialogRootEmits,
   DialogTriggerProps,
   DialogOverlayProps,
+  DialogPortalProps,
   DialogPopupProps,
   DialogPopupEmits,
   DialogHeaderProps,
@@ -31,11 +36,10 @@ export type {
   DialogDescriptionProps,
   DialogCloseProps,
   DialogCloseEmits,
-  DialogPortalProps,
-  DialogCompactProps,
-  DialogCompactEmits,
-  DialogCompactBaseSlotProps,
-  DialogCompactSlots,
+  DialogConfirmProps,
+  DialogConfirmEmits,
+  DialogCancelProps,
+  DialogCancelEmits,
   DialogUiSlot,
   DialogUi
 } from './types';

@@ -92,7 +92,7 @@
               {
                 "name": "DialogUi",
                 "kind": "typeAlias",
-                "type": "{ header: ClassValue; content: ClassValue; description: ClassValue; title: ClassValue; icon: ClassValue; close: ClassValue; footer: ClassValue; cancel: ClassValue; popup: ClassValue; overlay: ClassValue; confirm: ClassValue; }",
+                "type": "{ header: ClassValue; content: ClassValue; description: ClassValue; title: ClassValue; icon: ClassValue; close: ClassValue; overlay: ClassValue; popup: ClassValue; footer: ClassValue; cancel: ClassValue; confirm: ClassValue; }",
                 "resolvedType": null,
                 "description": "",
                 "sourcePath": "headless/src/components/dialog/types.ts",
@@ -1010,7 +1010,7 @@
           {
             "name": "DialogCompactEmits",
             "kind": "typeAlias",
-            "type": "import(\"@soybeanjs/headless\").DialogRootEmits & import(\"@soybeanjs/headless\").DismissableLayerEmits & import(\"@soybeanjs/headless\").FocusScopeEmits & import(\"@soybeanjs/headless\").DialogCloseEmits & import(\"../../../node_modules/@soybeanjs/headless/src/components/dialog/types\").DialogConfirmEmits & import(\"../../../node_modules/@soybeanjs/headless/src/components/dialog/types\").DialogCancelEmits",
+            "type": "import(\"@soybeanjs/headless\").DialogRootEmits & import(\"@soybeanjs/headless\").DismissableLayerEmits & import(\"@soybeanjs/headless\").FocusScopeEmits & import(\"@soybeanjs/headless\").BottomSheetCloseEmits & import(\"@soybeanjs/headless\").BottomSheetConfirmEmits & import(\"@soybeanjs/headless\").BottomSheetCancelEmits",
             "resolvedType": "{ \"update:open\": [value: boolean]; escapeKeyDown: [event: KeyboardEvent]; pointerDownOutside: [event: PointerDownOutsideEvent]; focusOutside: [event: FocusOutsideEvent]; interactOutside: [event: PointerDownOutsideEvent | FocusOutsideEvent]; openAutoFocus: [event: Event]; closeAutoFocus: [event: Event]; close: [event: MouseEvent]; confirm: [event: MouseEvent]; cancel: [event: MouseEvent] }",
             "description": "",
             "sourcePath": "headless/src/components/dialog/types.ts",

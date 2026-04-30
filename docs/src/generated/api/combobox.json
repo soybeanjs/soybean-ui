@@ -69,7 +69,7 @@
               {
                 "name": "ComboboxUi",
                 "kind": "typeAlias",
-                "type": "{ root: ClassValue; item: ClassValue; trigger: ClassValue; triggerIcon: ClassValue; anchor: ClassValue; inputRoot: ClassValue; inputControl: ClassValue; viewport: ClassValue; group: ClassValue; groupLabel: ClassValue; itemIndicator: ClassValue; separator: ClassValue; empty: ClassValue; cancel: ClassValue; positioner: ClassValue; popup: ClassValue; arrow: ClassValue; virtualizer: ClassValue; }",
+                "type": "{ root: ClassValue; item: ClassValue; trigger: ClassValue; triggerIcon: ClassValue; anchor: ClassValue; inputRoot: ClassValue; inputControl: ClassValue; viewport: ClassValue; group: ClassValue; groupLabel: ClassValue; itemIndicator: ClassValue; separator: ClassValue; empty: ClassValue; popup: ClassValue; cancel: ClassValue; positioner: ClassValue; arrow: ClassValue; virtualizer: ClassValue; }",
                 "resolvedType": null,
                 "description": "",
                 "sourcePath": "headless/src/components/combobox/types.ts",

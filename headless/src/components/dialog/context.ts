@@ -8,6 +8,7 @@ import type { DialogRootContextParams, DialogProviderContext, DialogCompactConte
 export const [provideDialogRootContext, useDialogRootContext] = useContext(
   'DialogRoot',
   (params: DialogRootContextParams) => {
+    const [overlayElement, setOverlayElement] = useForwardElement();
     const [triggerElement, setTriggerElement] = useForwardElement();
     const [popupElement, setPopupElement] = useForwardElement();
     const [cancelElement, setCancelElement] = useForwardElement();
@@ -54,6 +55,8 @@ export const [provideDialogRootContext, useDialogRootContext] = useContext(
       onOpenChange,
       onOpenToggle,
       dataState,
+      overlayElement,
+      setOverlayElement,
       triggerElement,
       setTriggerElement,
       popupElement,

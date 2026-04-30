@@ -163,7 +163,7 @@
               {
                 "name": "PopperUi",
                 "kind": "typeAlias",
-                "type": "{ positioner: ClassValue; popup: ClassValue; arrow: ClassValue; }",
+                "type": "{ popup: ClassValue; positioner: ClassValue; arrow: ClassValue; }",
                 "resolvedType": null,
                 "description": "",
                 "sourcePath": "headless/src/components/popper/types.ts",

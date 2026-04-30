@@ -69,7 +69,7 @@
               {
                 "name": "MenuUi",
                 "kind": "typeAlias",
-                "type": "{ item: ClassValue; group: ClassValue; groupLabel: ClassValue; itemIcon: ClassValue; itemIndicator: ClassValue; separator: ClassValue; positioner: ClassValue; popup: ClassValue; arrow: ClassValue; shortcut: ClassValue; subPositioner: ClassValue; subPopup: ClassValue; subTrigger: ClassValue; itemLink: ClassValue; itemLinkIcon: ClassValue; checkboxGroup: ClassValue; checkboxItem: ClassValue; radioGroup: ClassValue; radioItem: ClassValue; subTriggerIcon: ClassValue; }",
+                "type": "{ item: ClassValue; group: ClassValue; groupLabel: ClassValue; itemIcon: ClassValue; itemIndicator: ClassValue; separator: ClassValue; popup: ClassValue; positioner: ClassValue; arrow: ClassValue; shortcut: ClassValue; subPositioner: ClassValue; subPopup: ClassValue; subTrigger: ClassValue; itemLink: ClassValue; itemLinkIcon: ClassValue; checkboxGroup: ClassValue; checkboxItem: ClassValue; radioGroup: ClassValue; radioItem: ClassValue; subTriggerIcon: ClassValue; }",
                 "resolvedType": null,
                 "description": "",
                 "sourcePath": "headless/src/components/menu/types.ts",
@@ -1758,7 +1758,7 @@
               {
                 "name": "MenuUi",
                 "kind": "typeAlias",
-                "type": "{ item: ClassValue; group: ClassValue; groupLabel: ClassValue; itemIcon: ClassValue; itemIndicator: ClassValue; separator: ClassValue; positioner: ClassValue; popup: ClassValue; arrow: ClassValue; shortcut: ClassValue; subPositioner: ClassValue; subPopup: ClassValue; subTrigger: ClassValue; itemLink: ClassValue; itemLinkIcon: ClassValue; checkboxGroup: ClassValue; checkboxItem: ClassValue; radioGroup: ClassValue; radioItem: ClassValue; subTriggerIcon: ClassValue; }",
+                "type": "{ item: ClassValue; group: ClassValue; groupLabel: ClassValue; itemIcon: ClassValue; itemIndicator: ClassValue; separator: ClassValue; popup: ClassValue; positioner: ClassValue; arrow: ClassValue; shortcut: ClassValue; subPositioner: ClassValue; subPopup: ClassValue; subTrigger: ClassValue; itemLink: ClassValue; itemLinkIcon: ClassValue; checkboxGroup: ClassValue; checkboxItem: ClassValue; radioGroup: ClassValue; radioItem: ClassValue; subTriggerIcon: ClassValue; }",
                 "resolvedType": null,
                 "description": "",
                 "sourcePath": "headless/src/components/menu/types.ts",
@@ -6241,7 +6241,7 @@
               {
                 "name": "MenuUi",
                 "kind": "typeAlias",
-                "type": "{ item: ClassValue; group: ClassValue; groupLabel: ClassValue; itemIcon: ClassValue; itemIndicator: ClassValue; separator: ClassValue; positioner: ClassValue; popup: ClassValue; arrow: ClassValue; shortcut: ClassValue; subPositioner: ClassValue; subPopup: ClassValue; subTrigger: ClassValue; itemLink: ClassValue; itemLinkIcon: ClassValue; checkboxGroup: ClassValue; checkboxItem: ClassValue; radioGroup: ClassValue; radioItem: ClassValue; subTriggerIcon: ClassValue; }",
+                "type": "{ item: ClassValue; group: ClassValue; groupLabel: ClassValue; itemIcon: ClassValue; itemIndicator: ClassValue; separator: ClassValue; popup: ClassValue; positioner: ClassValue; arrow: ClassValue; shortcut: ClassValue; subPositioner: ClassValue; subPopup: ClassValue; subTrigger: ClassValue; itemLink: ClassValue; itemLinkIcon: ClassValue; checkboxGroup: ClassValue; checkboxItem: ClassValue; radioGroup: ClassValue; radioItem: ClassValue; subTriggerIcon: ClassValue; }",
                 "resolvedType": null,
                 "description": "",
                 "sourcePath": "headless/src/components/menu/types.ts",
@@ -8804,7 +8804,7 @@
               {
                 "name": "MenuUi",
                 "kind": "typeAlias",
-                "type": "{ item: ClassValue; group: ClassValue; groupLabel: ClassValue; itemIcon: ClassValue; itemIndicator: ClassValue; separator: ClassValue; positioner: ClassValue; popup: ClassValue; arrow: ClassValue; shortcut: ClassValue; subPositioner: ClassValue; subPopup: ClassValue; subTrigger: ClassValue; itemLink: ClassValue; itemLinkIcon: ClassValue; checkboxGroup: ClassValue; checkboxItem: ClassValue; radioGroup: ClassValue; radioItem: ClassValue; subTriggerIcon: ClassValue; }",
+                "type": "{ item: ClassValue; group: ClassValue; groupLabel: ClassValue; itemIcon: ClassValue; itemIndicator: ClassValue; separator: ClassValue; popup: ClassValue; positioner: ClassValue; arrow: ClassValue; shortcut: ClassValue; subPositioner: ClassValue; subPopup: ClassValue; subTrigger: ClassValue; itemLink: ClassValue; itemLinkIcon: ClassValue; checkboxGroup: ClassValue; checkboxItem: ClassValue; radioGroup: ClassValue; radioItem: ClassValue; subTriggerIcon: ClassValue; }",
                 "resolvedType": null,
                 "description": "",
                 "sourcePath": "headless/src/components/menu/types.ts",

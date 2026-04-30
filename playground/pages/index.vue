@@ -90,39 +90,37 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="h-full p-4">
-    <SCard title="SoybeanUI Playground" class="h-full">
-      <template #extra>
-        <div class="flex items-center gap-3">
-          <SLink href="https://github.com/soybeanjs/soybean-ui">
-            <SButtonIcon icon="lucide:github" size="lg" />
-          </SLink>
-          <DirectionToggler />
-          <ThemeConfigurator />
-          <ThemeSchemaToggler />
-        </div>
+  <SCard data-soybean-bottom-sheet-scale title="SoybeanUI Playground" class="h-full">
+    <template #extra>
+      <div class="flex items-center gap-3">
+        <SLink href="https://github.com/soybeanjs/soybean-ui">
+          <SButtonIcon icon="lucide:github" size="lg" />
+        </SLink>
+        <DirectionToggler />
+        <ThemeConfigurator />
+        <ThemeSchemaToggler />
+      </div>
+    </template>
+    <STabs
+      v-model="activeTab"
+      :items="tabs"
+      :enable-indicator="false"
+      :ui="{
+        root: 'md:h-full',
+        list: 'grid grid-cols-10 gap-y-1 lt-sm:grid-cols-3 lt-md:grid-cols-6 lt-lg:grid-cols-8',
+        content: 'overflow-auto'
+      }"
+    >
+      <template #content>
+        <Suspense>
+          <template #default>
+            <component :is="loadedComponent" v-if="loadedComponent" class="md:h-full" />
+          </template>
+          <template #fallback>
+            <div class="text-center text-gray-400">Loading...</div>
+          </template>
+        </Suspense>
       </template>
-      <STabs
-        v-model="activeTab"
-        :items="tabs"
-        :enable-indicator="false"
-        :ui="{
-          root: 'md:h-full',
-          list: 'grid grid-cols-10 gap-y-1 lt-sm:grid-cols-3 lt-md:grid-cols-6 lt-lg:grid-cols-8',
-          content: 'overflow-auto'
-        }"
-      >
-        <template #content>
-          <Suspense>
-            <template #default>
-              <component :is="loadedComponent" v-if="loadedComponent" class="md:h-full" />
-            </template>
-            <template #fallback>
-              <div class="text-center text-gray-400">Loading...</div>
-            </template>
-          </Suspense>
-        </template>
-      </STabs>
-    </SCard>
-  </div>
+    </STabs>
+  </SCard>
 </template>
