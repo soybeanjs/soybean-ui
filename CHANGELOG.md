@@ -1,5 +1,16 @@
 # Changelog
 
+## [v0.15.5](https://github.com/soybeanjs/soybean-ui/compare/v0.15.4...v0.15.5) (2026-04-30)
+
+### &nbsp;&nbsp;&nbsp;🛠 Optimizations
+
+- **layout**: remove unused properties from LayoutClassicRootProps &nbsp;-&nbsp; by **soybeanfe** [<samp>(c9233)</samp>](https://github.com/soybeanjs/soybean-ui/commit/c92330fb)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+
+[soybeanfe](mailto:honghuangdc@gmail.com)
+
 ## [v0.15.4](https://github.com/soybeanjs/soybean-ui/compare/v0.15.3...v0.15.4) (2026-04-30)
 
 ### &nbsp;&nbsp;&nbsp;🚀 Features
