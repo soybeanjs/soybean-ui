@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { Primitive } from '../primitive';
-
 import { useRangeCalendarUi } from './context';
 import type { RangeCalendarGridHeadProps } from './types';
 

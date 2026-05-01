@@ -1,12 +1,9 @@
 <script setup lang="ts">
-import type { TimeValue } from '../../date';
-
 import { nextTick, watch } from 'vue';
-
+import type { TimeValue } from '../../date';
 import { useForwardElement } from '../../composables';
 import { findClosestTimeOption } from '../../shared/time-picker';
 import { Primitive } from '../primitive';
-
 import { useTimeRangePickerRootContext, useTimeRangePickerUi } from './context';
 import type { TimeRangePickerPopupProps } from './types';
 
@@ -34,7 +31,21 @@ defineSlots<{
 const cls = useTimeRangePickerUi('popup');
 const listCls = useTimeRangePickerUi('list');
 const cellTriggerCls = useTimeRangePickerUi('cellTrigger');
-const rootContext = useTimeRangePickerRootContext('TimeRangePickerPopup');
+const {
+  focusedTime,
+  isRangeEnd,
+  isRangeStart,
+  isTimeDisabled,
+  isTimeHighlighted,
+  isTimeSelected,
+  modelValue,
+  onRangeChange,
+  open,
+  options,
+  popupId,
+  setFocusedTime,
+  setHoveredTime
+} = useTimeRangePickerRootContext('TimeRangePickerPopup');
 const [popupElement, setPopupElement] = useForwardElement();
 
 const focusTime = (key: string) => {
@@ -44,14 +55,14 @@ const focusTime = (key: string) => {
 };
 
 const focusIndex = (index: number, direction: 1 | -1) => {
-  const options = rootContext.options.value;
+  const opts = options.value;
   let nextIndex = index;
 
-  while (nextIndex >= 0 && nextIndex < options.length) {
-    const nextOption = options[nextIndex];
+  while (nextIndex >= 0 && nextIndex < opts.length) {
+    const nextOption = opts[nextIndex];
 
-    if (!rootContext.isTimeDisabled(nextOption.value)) {
-      rootContext.setFocusedTime(nextOption.value);
+    if (!isTimeDisabled(nextOption.value)) {
+      setFocusedTime(nextOption.value);
       nextTick(() => {
         focusTime(nextOption.key);
       });
@@ -66,15 +77,15 @@ const focusIndex = (index: number, direction: 1 | -1) => {
 
 const focusCurrentTime = () => {
   const matchedOption = findClosestTimeOption(
-    rootContext.options.value,
-    rootContext.modelValue.value.end ?? rootContext.modelValue.value.start ?? rootContext.focusedTime.value
+    options.value,
+    modelValue.value.end ?? modelValue.value.start ?? focusedTime.value
   );
 
   if (!matchedOption) {
     return;
   }
 
-  const matchedIndex = rootContext.options.value.findIndex(option => option.key === matchedOption.key);
+  const matchedIndex = options.value.findIndex(option => option.key === matchedOption.key);
   focusIndex(matchedIndex === -1 ? 0 : matchedIndex, 1);
 };
 
@@ -82,7 +93,7 @@ const moveFocus = (currentIndex: number, delta: number) => {
   const targetIndex = currentIndex + delta;
   const direction = delta >= 0 ? 1 : -1;
 
-  if (targetIndex < 0 || targetIndex >= rootContext.options.value.length) {
+  if (targetIndex < 0 || targetIndex >= options.value.length) {
     return;
   }
 
@@ -90,25 +101,25 @@ const moveFocus = (currentIndex: number, delta: number) => {
 };
 
 const handleTimeClick = (time: TimeValue) => {
-  if (rootContext.isTimeDisabled(time)) {
+  if (isTimeDisabled(time)) {
     return;
   }
 
-  rootContext.onRangeChange(time);
+  onRangeChange(time);
 };
 
 const handleTimeFocus = (time: TimeValue) => {
-  rootContext.setFocusedTime(time);
+  setFocusedTime(time);
 };
 
 const handleTimeHover = (time: TimeValue) => {
-  if (rootContext.modelValue.value.start && !rootContext.modelValue.value.end && !rootContext.isTimeDisabled(time)) {
-    rootContext.setHoveredTime(time);
+  if (modelValue.value.start && !modelValue.value.end && !isTimeDisabled(time)) {
+    setHoveredTime(time);
   }
 };
 
 const handleTimeKeydown = (time: TimeValue, index: number, event: KeyboardEvent) => {
-  if (rootContext.isTimeDisabled(time)) {
+  if (isTimeDisabled(time)) {
     return;
   }
 
@@ -127,12 +138,12 @@ const handleTimeKeydown = (time: TimeValue, index: number, event: KeyboardEvent)
       break;
     case 'End':
       event.preventDefault();
-      focusIndex(rootContext.options.value.length - 1, -1);
+      focusIndex(options.value.length - 1, -1);
       break;
     case 'Enter':
     case ' ': {
       event.preventDefault();
-      rootContext.onRangeChange(time);
+      onRangeChange(time);
       break;
     }
     default:
@@ -141,7 +152,7 @@ const handleTimeKeydown = (time: TimeValue, index: number, event: KeyboardEvent)
 };
 
 watch(
-  () => rootContext.open.value,
+  () => open.value,
   value => {
     if (!value) {
       return;
@@ -156,8 +167,8 @@ watch(
 
 <template>
   <Primitive
-    v-if="rootContext.open.value"
-    :id="rootContext.popupId"
+    v-if="open"
+    :id="popupId"
     :ref="setPopupElement"
     :as="as"
     :as-child="asChild"
@@ -165,25 +176,25 @@ watch(
     :class="cls"
     data-slot="popup"
     role="dialog"
-    @mouseleave="rootContext.setHoveredTime(undefined)"
+    @mouseleave="setHoveredTime(undefined)"
   >
     <div :class="listCls" data-slot="list">
       <button
-        v-for="(option, index) in rootContext.options.value"
+        v-for="(option, index) in options"
         :key="option.key"
         :aria-label="option.label"
-        :aria-pressed="rootContext.isTimeSelected(option.value) ? true : undefined"
+        :aria-pressed="isTimeSelected(option.value) ? true : undefined"
         :class="cellTriggerCls"
-        :data-disabled="rootContext.isTimeDisabled(option.value) ? '' : undefined"
-        :data-focused="option.value.toString() === rootContext.focusedTime.value.toString() ? '' : undefined"
-        :data-highlighted="rootContext.isTimeHighlighted(option.value) ? '' : undefined"
-        :data-range-end="rootContext.isRangeEnd(option.value) ? '' : undefined"
-        :data-range-start="rootContext.isRangeStart(option.value) ? '' : undefined"
-        :data-selected="rootContext.isTimeSelected(option.value) ? '' : undefined"
+        :data-disabled="isTimeDisabled(option.value) ? '' : undefined"
+        :data-focused="option.value.toString() === focusedTime.toString() ? '' : undefined"
+        :data-highlighted="isTimeHighlighted(option.value) ? '' : undefined"
+        :data-range-end="isRangeEnd(option.value) ? '' : undefined"
+        :data-range-start="isRangeStart(option.value) ? '' : undefined"
+        :data-selected="isTimeSelected(option.value) ? '' : undefined"
         data-slot="cell-trigger"
         :data-time-key="option.key"
-        :disabled="rootContext.isTimeDisabled(option.value)"
-        :tabindex="option.value.toString() === rootContext.focusedTime.value.toString() && !rootContext.isTimeDisabled(option.value) ? 0 : -1"
+        :disabled="isTimeDisabled(option.value)"
+        :tabindex="option.value.toString() === focusedTime.toString() && !isTimeDisabled(option.value) ? 0 : -1"
         type="button"
         @click="handleTimeClick(option.value)"
         @focus="handleTimeFocus(option.value)"
@@ -192,13 +203,13 @@ watch(
       >
         <slot
           name="time"
-          :disabled="rootContext.isTimeDisabled(option.value)"
-          :focused="option.value.toString() === rootContext.focusedTime.value.toString()"
-          :highlighted="rootContext.isTimeHighlighted(option.value)"
+          :disabled="isTimeDisabled(option.value)"
+          :focused="option.value.toString() === focusedTime.toString()"
+          :highlighted="isTimeHighlighted(option.value)"
           :label="option.label"
-          :range-end="rootContext.isRangeEnd(option.value)"
-          :range-start="rootContext.isRangeStart(option.value)"
-          :selected="rootContext.isTimeSelected(option.value)"
+          :range-end="isRangeEnd(option.value)"
+          :range-start="isRangeStart(option.value)"
+          :selected="isTimeSelected(option.value)"
           :time="option.value"
         >
           {{ option.label }}

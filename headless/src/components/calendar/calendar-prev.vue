@@ -1,8 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-
 import { Primitive } from '../primitive';
-
 import { useCalendarRootContext, useCalendarUi } from './context';
 import type { CalendarPrevProps } from './types';
 
@@ -20,16 +18,16 @@ defineSlots<{
 }>();
 
 const cls = useCalendarUi('prev');
-const rootContext = useCalendarRootContext('CalendarPrev');
+const { disabled: rootDisabled, isPrevButtonDisabled, prevPage } = useCalendarRootContext('CalendarPrev');
 
-const disabled = computed(() => rootContext.disabled.value || rootContext.isPrevButtonDisabled(props.prevPage));
+const disabled = computed(() => rootDisabled.value || isPrevButtonDisabled(props.prevPage));
 
 const onClick = () => {
   if (disabled.value) {
     return;
   }
 
-  rootContext.prevPage(props.prevPage);
+  prevPage(props.prevPage);
 };
 </script>
 

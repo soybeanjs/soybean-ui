@@ -1,14 +1,11 @@
 import type { DateValue } from '@internationalized/date';
 import type { ComputedRef, HTMLAttributes, ShallowRef } from 'vue';
-
 import type { DateStep, Formatter, Granularity, HourCycle, Matcher, SegmentPart } from '../../date';
 import type { Direction, FormFieldCommonProps, PropsToContext, UiClass } from '../../types';
 import type { PrimitiveProps } from '../primitive/types';
 
 export interface DatePickerRootProps
-  extends PrimitiveProps,
-    FormFieldCommonProps,
-    /** @vue-ignore */ Omit<HTMLAttributes, 'placeholder'> {
+  extends PrimitiveProps, FormFieldCommonProps, /** @vue-ignore */ Omit<HTMLAttributes, 'placeholder'> {
   defaultValue?: DateValue;
   defaultPlaceholder?: DateValue;
   placeholder?: DateValue;

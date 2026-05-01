@@ -1,15 +1,12 @@
 <script setup lang="ts">
-import type { TimeValue } from '../../date';
-
 import { computed, useId, watch } from 'vue';
-
 import { useControllableState } from '../../composables';
 import { getDefaultTime, isBefore, normalizeHourCycle, useDateFormatter } from '../../date';
+import type { TimeValue } from '../../date';
 import { isNullish } from '../../shared';
 import { createTimeOptions, formatTimeValue } from '../../shared/time-picker';
 import { useDirection, useLocale } from '../config-provider/context';
 import { Primitive } from '../primitive';
-
 import { provideTimePickerRootContext, useTimePickerUi } from './context';
 import type { TimePickerRootEmits, TimePickerRootProps } from './types';
 
@@ -36,11 +33,7 @@ const props = withDefaults(defineProps<TimePickerRootProps>(), {
 const emit = defineEmits<TimePickerRootEmits>();
 
 defineSlots<{
-  default?: (props: {
-    displayValue: string;
-    modelValue: TimeValue | undefined;
-    open: boolean;
-  }) => any;
+  default?: (props: { displayValue: string; modelValue: TimeValue | undefined; open: boolean }) => any;
 }>();
 
 const cls = useTimePickerUi('root');
@@ -138,17 +131,19 @@ const displayValue = computed(() => {
   });
 });
 
-const options = computed(() => createTimeOptions({
-  formatter,
-  granularity: granularity.value,
-  hideTimeZone: hideTimeZone.value,
-  hourCycle: props.hourCycle,
-  isTimeUnavailable: props.isTimeUnavailable,
-  maxValue: maxValue.value,
-  minValue: minValue.value,
-  reference: modelValue.value ?? placeholder.value,
-  step: props.step
-}));
+const options = computed(() =>
+  createTimeOptions({
+    formatter,
+    granularity: granularity.value,
+    hideTimeZone: hideTimeZone.value,
+    hourCycle: props.hourCycle,
+    isTimeUnavailable: props.isTimeUnavailable,
+    maxValue: maxValue.value,
+    minValue: minValue.value,
+    reference: modelValue.value ?? placeholder.value,
+    step: props.step
+  })
+);
 
 const onPlaceholderChange = (time: TimeValue) => {
   placeholder.value = time.copy();

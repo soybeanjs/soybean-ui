@@ -1,13 +1,10 @@
 <script setup lang="ts">
 import type { DateValue } from '@internationalized/date';
-
 import { computed, shallowRef, useId, watch } from 'vue';
-
 import { useControllableState } from '../../composables';
 import { compareYearMonth, getDefaultDate, toDate, useDateFormatter } from '../../date';
 import { useDirection, useLocale } from '../config-provider/context';
 import { Primitive } from '../primitive';
-
 import { provideMonthPickerRootContext, useMonthPickerUi } from './context';
 import type { MonthPickerRootEmits, MonthPickerRootProps } from './types';
 
@@ -29,11 +26,7 @@ const props = withDefaults(defineProps<MonthPickerRootProps>(), {
 const emit = defineEmits<MonthPickerRootEmits>();
 
 defineSlots<{
-  default?: (props: {
-    modelValue: DateValue | undefined;
-    displayValue: string;
-    open: boolean;
-  }) => any;
+  default?: (props: { modelValue: DateValue | undefined; displayValue: string; open: boolean }) => any;
 }>();
 
 const cls = useMonthPickerUi('root');

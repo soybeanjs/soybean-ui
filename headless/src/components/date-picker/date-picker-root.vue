@@ -1,20 +1,11 @@
 <script setup lang="ts">
-import type { DateValue } from '@internationalized/date';
-
 import { computed, watch } from 'vue';
-
 import { useControllableState, useForwardElement } from '../../composables';
-import {
-  getDefaultDate,
-  isBefore,
-  normalizeDateStep,
-  normalizeHourCycle,
-  useDateFormatter
-} from '../../date';
+import { getDefaultDate, isBefore, normalizeDateStep, normalizeHourCycle, useDateFormatter } from '../../date';
+import type { DateValue } from '../../date';
 import { isNullish } from '../../shared';
 import { useDirection, useLocale } from '../config-provider/context';
 import { Primitive } from '../primitive';
-
 import { provideDatePickerRootContext, useDatePickerUi } from './context';
 import type { DatePickerRootEmits, DatePickerRootProps } from './types';
 
@@ -41,10 +32,7 @@ const props = withDefaults(defineProps<DatePickerRootProps>(), {
 const emit = defineEmits<DatePickerRootEmits>();
 
 defineSlots<{
-  default?: (props: {
-    modelValue: DateValue | undefined;
-    open: boolean;
-  }) => any;
+  default?: (props: { modelValue: DateValue | undefined; open: boolean }) => any;
 }>();
 
 const cls = useDatePickerUi('root');

@@ -9,7 +9,9 @@ defineOptions({
   name: 'TimeRangePickerCompact'
 });
 
-const props = defineProps<TimeRangePickerCompactProps>();
+const props = withDefaults(defineProps<TimeRangePickerCompactProps>(), {
+  open: undefined
+});
 
 const emit = defineEmits<TimeRangePickerCompactEmits>();
 
@@ -23,7 +25,12 @@ const listeners = useForwardListeners(emit);
 <template>
   <TimeRangePickerRoot v-slot="slotProps" v-bind="forwardedProps" v-on="listeners">
     <TimeRangePickerTrigger v-bind="triggerProps">
-      <slot name="trigger" :display-value="slotProps.displayValue" :model-value="slotProps.modelValue" :open="slotProps.open" />
+      <slot
+        name="trigger"
+        :display-value="slotProps.displayValue"
+        :model-value="slotProps.modelValue"
+        :open="slotProps.open"
+      />
     </TimeRangePickerTrigger>
     <TimeRangePickerPopup v-bind="popupProps">
       <template #time="popupSlotProps">

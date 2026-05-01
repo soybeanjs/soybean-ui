@@ -1,13 +1,10 @@
 <script setup lang="ts">
-import type { DateValue } from '@internationalized/date';
-
-import { getLocalTimeZone, isSameDay, isSameMonth, isToday } from '@internationalized/date';
 import { computed, nextTick } from 'vue';
-
+import { getLocalTimeZone, isSameDay, isSameMonth, isToday } from '@internationalized/date';
+import type { DateValue } from '@internationalized/date';
 import { useForwardElement } from '../../composables';
 import { toDate } from '../../date';
 import { Primitive } from '../primitive';
-
 import { useCalendarRootContext, useCalendarUi } from './context';
 import type { CalendarCellTriggerProps } from './types';
 
@@ -32,76 +29,101 @@ defineSlots<{
 }>();
 
 const cls = useCalendarUi('cellTrigger');
-const rootContext = useCalendarRootContext('CalendarCellTrigger');
+const {
+  locale,
+  formatter,
+  isDateUnavailable,
+  isOutsideVisibleView: checkOutsideVisibleView,
+  isDateDisabled,
+  disableDaysOutsideCurrentView,
+  isDateSelected,
+  disabled,
+  isPlaceholderFocusable,
+  placeholder,
+  hasSelectedDate,
+  isSelectedDateDisabled,
+  firstFocusableDate,
+  readonly,
+  onDateChange,
+  minValue,
+  maxValue,
+  parentElement,
+  isNextButtonDisabled,
+  nextPage,
+  isPrevButtonDisabled,
+  prevPage,
+  onPlaceholderChange,
+  dir
+} = useCalendarRootContext('CalendarCellTrigger');
 const [_, setElement] = useForwardElement();
 
-const dayValue = computed(() => props.day.day.toLocaleString(rootContext.locale.value));
+const dayValue = computed(() => props.day.day.toLocaleString(locale.value));
 const labelText = computed(() => {
-  return rootContext.formatter.custom(toDate(props.day), {
+  return formatter.custom(toDate(props.day), {
     weekday: 'long',
     month: 'long',
     day: 'numeric',
     year: 'numeric'
   });
 });
-const isUnavailable = computed(() => rootContext.isDateUnavailable?.(props.day) ?? false);
+const isUnavailable = computed(() => isDateUnavailable?.(props.day) ?? false);
 const isDateToday = computed(() => isToday(props.day, getLocalTimeZone()));
 const isOutsideView = computed(() => !isSameMonth(props.day, props.month));
-const isOutsideVisibleView = computed(() => rootContext.isOutsideVisibleView(props.day));
+const isOutsideVisibleView = computed(() => checkOutsideVisibleView(props.day));
 const isDisabled = computed(() => {
-  return rootContext.isDateDisabled(props.day) || (rootContext.disableDaysOutsideCurrentView.value && isOutsideView.value);
+  return isDateDisabled(props.day) || (disableDaysOutsideCurrentView.value && isOutsideView.value);
 });
-const isSelectedDate = computed(() => rootContext.isDateSelected(props.day));
+const isSelectedDate = computed(() => isDateSelected(props.day));
 const isFocusedDate = computed(() => {
   if (isOutsideView.value || isDisabled.value) {
     return false;
   }
-  if (!rootContext.disabled.value && rootContext.isPlaceholderFocusable.value && isSameDay(props.day, rootContext.placeholder.value)) {
+  if (!disabled.value && isPlaceholderFocusable.value && isSameDay(props.day, placeholder.value)) {
     return true;
   }
-  if ((!rootContext.hasSelectedDate.value || rootContext.isSelectedDateDisabled.value) && !rootContext.isPlaceholderFocusable.value) {
-    return Boolean(rootContext.firstFocusableDate.value && isSameDay(props.day, rootContext.firstFocusableDate.value));
+  if ((!hasSelectedDate.value || isSelectedDateDisabled.value) && !isPlaceholderFocusable.value) {
+    return Boolean(firstFocusableDate.value && isSameDay(props.day, firstFocusableDate.value));
   }
 
   return false;
 });
 
 const changeDate = (date: DateValue) => {
-  if (rootContext.readonly.value) {
+  if (readonly.value) {
     return;
   }
-  if (rootContext.isDateDisabled(date) || rootContext.isDateUnavailable?.(date)) {
+  if (isDateDisabled(date) || isDateUnavailable?.(date)) {
     return;
   }
 
-  rootContext.onDateChange(date);
+  onDateChange(date);
 };
 
 const shiftFocus = (day: DateValue, add: number) => {
   const candidateDayValue = day.add({ days: add });
 
   if (
-    (rootContext.minValue.value && candidateDayValue.compare(rootContext.minValue.value) < 0)
-    || (rootContext.maxValue.value && candidateDayValue.compare(rootContext.maxValue.value) > 0)
+    (minValue.value && candidateDayValue.compare(minValue.value) < 0) ||
+    (maxValue.value && candidateDayValue.compare(maxValue.value) > 0)
   ) {
     return;
   }
 
-  const candidateDay = rootContext.parentElement.value?.querySelector<HTMLElement>(
+  const candidateDay = parentElement.value?.querySelector<HTMLElement>(
     `[data-value='${candidateDayValue.toString()}']:not([data-outside-view])`
   );
 
   if (!candidateDay) {
     if (add > 0) {
-      if (rootContext.isNextButtonDisabled()) {
+      if (isNextButtonDisabled()) {
         return;
       }
-      rootContext.nextPage();
+      nextPage();
     } else {
-      if (rootContext.isPrevButtonDisabled()) {
+      if (isPrevButtonDisabled()) {
         return;
       }
-      rootContext.prevPage();
+      prevPage();
     }
 
     nextTick(() => {
@@ -115,7 +137,7 @@ const shiftFocus = (day: DateValue, add: number) => {
     return;
   }
 
-  rootContext.onPlaceholderChange(candidateDayValue);
+  onPlaceholderChange(candidateDayValue);
   candidateDay.focus();
 };
 
@@ -132,7 +154,7 @@ const handleKeydown = (event: KeyboardEvent) => {
     return;
   }
 
-  const sign = rootContext.dir.value === 'rtl' ? -1 : 1;
+  const sign = dir.value === 'rtl' ? -1 : 1;
 
   switch (event.key) {
     case 'ArrowRight':

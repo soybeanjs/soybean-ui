@@ -1,18 +1,15 @@
 <script setup lang="ts">
-import type { DateRange, DateValue } from '../../date';
-
 import { isSameDay } from '@internationalized/date';
 import { computed, onMounted, shallowRef, watch } from 'vue';
-
 import { useControllableState, useForwardElement } from '../../composables';
 import { getDefaultDate, getWeekStartsOn, handleCalendarInitialFocus, isBefore, useDateFormatter } from '../../date';
+import type { DateRange, DateValue } from '../../date';
 import { transformPropsToContext } from '../../shared';
 import { useDirection, useLocale } from '../config-provider/context';
 import { Primitive } from '../primitive';
-
+import { useCalendar } from '../calendar/use-calendar';
 import { provideRangeCalendarRootContext, useRangeCalendarUi } from './context';
 import type { RangeCalendarRootEmits, RangeCalendarRootProps } from './types';
-import { useCalendar } from '../calendar/use-calendar';
 import { useRangeCalendarState } from './use-range-calendar';
 
 defineOptions({
@@ -186,7 +183,12 @@ function onDateChange(value: DateValue) {
 
     const nextRange = sortRange(start, value);
 
-    if (props.maximumDays && nextRange.start && nextRange.end && getInclusiveRangeDays(nextRange.start, nextRange.end) > props.maximumDays) {
+    if (
+      props.maximumDays &&
+      nextRange.start &&
+      nextRange.end &&
+      getInclusiveRangeDays(nextRange.start, nextRange.end) > props.maximumDays
+    ) {
       modelValue.value = { start: value.copy(), end: undefined };
       return;
     }
@@ -202,13 +204,17 @@ function onDateChange(value: DateValue) {
   }
 
   if (props.fixedDate === 'start') {
-    modelValue.value = isBefore(value, start) ? { start: value.copy(), end: start.copy() } : { start: start.copy(), end: value.copy() };
+    modelValue.value = isBefore(value, start)
+      ? { start: value.copy(), end: start.copy() }
+      : { start: start.copy(), end: value.copy() };
     hoveredDate.value = undefined;
     return;
   }
 
   if (props.fixedDate === 'end') {
-    modelValue.value = isBefore(end, value) ? { start: end.copy(), end: value.copy() } : { start: value.copy(), end: end.copy() };
+    modelValue.value = isBefore(end, value)
+      ? { start: end.copy(), end: value.copy() }
+      : { start: value.copy(), end: end.copy() };
     hoveredDate.value = undefined;
     return;
   }

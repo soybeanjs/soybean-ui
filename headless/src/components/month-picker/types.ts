@@ -1,14 +1,11 @@
 import type { DateValue } from '@internationalized/date';
 import type { ComputedRef, HTMLAttributes, ShallowRef } from 'vue';
-
 import type { Formatter } from '../../date';
 import type { Direction, FormFieldCommonProps, PropsToContext, UiClass } from '../../types';
 import type { PrimitiveProps } from '../primitive/types';
 
 export interface MonthPickerRootProps
-  extends PrimitiveProps,
-    FormFieldCommonProps,
-    /** @vue-ignore */ Omit<HTMLAttributes, 'placeholder'> {
+  extends PrimitiveProps, FormFieldCommonProps, /** @vue-ignore */ Omit<HTMLAttributes, 'placeholder'> {
   defaultValue?: DateValue;
   defaultPlaceholder?: DateValue;
   placeholder?: DateValue;
@@ -60,5 +57,14 @@ export interface MonthPickerRootContext extends PropsToContext<MonthPickerRootPr
   isNextButtonDisabled: () => boolean;
 }
 
-export type MonthPickerUiSlot = 'root' | 'trigger' | 'popup' | 'header' | 'heading' | 'prev' | 'next' | 'grid' | 'cellTrigger';
+export type MonthPickerUiSlot =
+  | 'root'
+  | 'trigger'
+  | 'popup'
+  | 'header'
+  | 'heading'
+  | 'prev'
+  | 'next'
+  | 'grid'
+  | 'cellTrigger';
 export type MonthPickerUi = UiClass<MonthPickerUiSlot>;

@@ -1,13 +1,10 @@
 import type { ComputedRef, HTMLAttributes, ShallowRef } from 'vue';
-
 import type { DateRange, DateValue, Formatter } from '../../date';
 import type { Direction, FormFieldCommonProps, PropsToContext, UiClass } from '../../types';
 import type { PrimitiveProps } from '../primitive/types';
 
 export interface MonthRangePickerRootProps
-  extends PrimitiveProps,
-    FormFieldCommonProps,
-    /** @vue-ignore */ Omit<HTMLAttributes, 'placeholder'> {
+  extends PrimitiveProps, FormFieldCommonProps, /** @vue-ignore */ Omit<HTMLAttributes, 'placeholder'> {
   defaultValue?: DateRange;
   defaultPlaceholder?: DateValue;
   placeholder?: DateValue;
@@ -35,7 +32,10 @@ export type MonthRangePickerRootEmits = {
 export interface MonthRangePickerTriggerProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {}
 export interface MonthRangePickerPopupProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {}
 
-export interface MonthRangePickerRootContext extends PropsToContext<MonthRangePickerRootProps, 'disabled' | 'readonly'> {
+export interface MonthRangePickerRootContext extends PropsToContext<
+  MonthRangePickerRootProps,
+  'disabled' | 'readonly'
+> {
   locale: ComputedRef<string>;
   dir: ComputedRef<Direction>;
   modelValue: ShallowRef<DateRange>;
@@ -67,5 +67,14 @@ export interface MonthRangePickerRootContext extends PropsToContext<MonthRangePi
   isNextButtonDisabled: () => boolean;
 }
 
-export type MonthRangePickerUiSlot = 'root' | 'trigger' | 'popup' | 'header' | 'heading' | 'prev' | 'next' | 'grid' | 'cellTrigger';
+export type MonthRangePickerUiSlot =
+  | 'root'
+  | 'trigger'
+  | 'popup'
+  | 'header'
+  | 'heading'
+  | 'prev'
+  | 'next'
+  | 'grid'
+  | 'cellTrigger';
 export type MonthRangePickerUi = UiClass<MonthRangePickerUiSlot>;

@@ -1,13 +1,21 @@
 import type { ComputedRef, HTMLAttributes, ShallowRef } from 'vue';
-
-import type { DateStep, Formatter, HourCycle, SegmentPart, SegmentValueObj, TimeGranularity, TimeInputType, TimeMatcher, TimeRange, TimeValue } from '../../date';
+import type {
+  DateStep,
+  Formatter,
+  HourCycle,
+  SegmentPart,
+  SegmentValueObj,
+  TimeGranularity,
+  TimeInputType,
+  TimeMatcher,
+  TimeRange,
+  TimeValue
+} from '../../date';
 import type { Direction, FormFieldCommonProps, PropsToContext, UiClass } from '../../types';
 import type { PrimitiveProps } from '../primitive/types';
 
 export interface TimeRangeFieldRootProps
-  extends PrimitiveProps,
-    FormFieldCommonProps,
-    /** @vue-ignore */ Omit<HTMLAttributes, 'placeholder'> {
+  extends PrimitiveProps, FormFieldCommonProps, /** @vue-ignore */ Omit<HTMLAttributes, 'placeholder'> {
   defaultValue?: TimeRange;
   defaultPlaceholder?: TimeValue;
   placeholder?: TimeValue;
@@ -87,6 +95,7 @@ export type TimeRangeFieldCompactSlots = {
     startSegments: TimeRangeFieldSegment[];
     endSegments: TimeRangeFieldSegment[];
     modelValue: TimeRange;
+    isInvalid: boolean;
   }) => any;
   separator?: () => any;
 };

@@ -1,14 +1,11 @@
 import type { DateValue } from '@internationalized/date';
 import type { ComputedRef, HTMLAttributes, ShallowRef } from 'vue';
-
 import type { Formatter, Grid } from '../../date';
 import type { Direction, FormFieldCommonProps, PropsToContext, UiClass } from '../../types';
 import type { PrimitiveProps } from '../primitive/types';
 
 export interface YearPickerRootProps
-  extends PrimitiveProps,
-    FormFieldCommonProps,
-    /** @vue-ignore */ Omit<HTMLAttributes, 'placeholder'> {
+  extends PrimitiveProps, FormFieldCommonProps, /** @vue-ignore */ Omit<HTMLAttributes, 'placeholder'> {
   defaultValue?: DateValue;
   defaultPlaceholder?: DateValue;
   placeholder?: DateValue;
@@ -61,5 +58,14 @@ export interface YearPickerRootContext extends PropsToContext<YearPickerRootProp
   isNextButtonDisabled: () => boolean;
 }
 
-export type YearPickerUiSlot = 'root' | 'trigger' | 'popup' | 'header' | 'heading' | 'prev' | 'next' | 'grid' | 'cellTrigger';
+export type YearPickerUiSlot =
+  | 'root'
+  | 'trigger'
+  | 'popup'
+  | 'header'
+  | 'heading'
+  | 'prev'
+  | 'next'
+  | 'grid'
+  | 'cellTrigger';
 export type YearPickerUi = UiClass<YearPickerUiSlot>;

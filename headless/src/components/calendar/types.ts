@@ -1,11 +1,12 @@
 import type { DateValue } from '@internationalized/date';
 import type { ButtonHTMLAttributes, ComputedRef, HTMLAttributes, ShallowRef } from 'vue';
-
 import type { Formatter, Grid, Matcher, WeekDayFormat, WeekStartsOn } from '../../date';
 import type { Direction, PropsToContext, UiClass } from '../../types';
 import type { PrimitiveProps } from '../primitive/types';
 
-export type CalendarModelValue<M extends boolean = false> = M extends true ? DateValue[] | undefined : DateValue | undefined;
+export type CalendarModelValue<M extends boolean = false> = M extends true
+  ? DateValue[] | undefined
+  : DateValue | undefined;
 
 export interface CalendarRootProps<M extends boolean = false>
   extends PrimitiveProps, /** @vue-ignore */ Omit<HTMLAttributes, 'placeholder'> {
@@ -52,7 +53,8 @@ export interface CalendarCellProps extends PrimitiveProps, /** @vue-ignore */ Om
   date: DateValue;
 }
 
-export interface CalendarCellTriggerProps extends PrimitiveProps, /** @vue-ignore */ Omit<HTMLAttributes, 'placeholder'> {
+export interface CalendarCellTriggerProps
+  extends PrimitiveProps, /** @vue-ignore */ Omit<HTMLAttributes, 'placeholder'> {
   day: DateValue;
   month: DateValue;
 }
@@ -65,18 +67,17 @@ export interface CalendarNextProps extends PrimitiveProps, /** @vue-ignore */ Bu
   nextPage?: (placeholder: DateValue) => DateValue;
 }
 
-export interface CalendarRootContext
-  extends PropsToContext<
-    CalendarRootProps,
-    | 'disableDaysOutsideCurrentView'
-    | 'disabled'
-    | 'fixedWeeks'
-    | 'initialFocus'
-    | 'numberOfMonths'
-    | 'pagedNavigation'
-    | 'preventDeselect'
-    | 'readonly'
-  > {
+export interface CalendarRootContext extends PropsToContext<
+  CalendarRootProps,
+  | 'disableDaysOutsideCurrentView'
+  | 'disabled'
+  | 'fixedWeeks'
+  | 'initialFocus'
+  | 'numberOfMonths'
+  | 'pagedNavigation'
+  | 'preventDeselect'
+  | 'readonly'
+> {
   locale: ComputedRef<string>;
   dir: ComputedRef<Direction>;
   weekStartsOn: ComputedRef<WeekStartsOn>;
@@ -134,7 +135,7 @@ export interface CalendarCompactProps<M extends boolean = false> extends Calenda
   gridBodyProps?: CalendarGridBodyProps;
   gridRowProps?: CalendarGridRowProps;
   headCellProps?: CalendarHeadCellProps;
-  cellProps?: CalendarCellProps;
+  cellProps?: Omit<CalendarCellProps, 'date'>;
   cellTriggerProps?: Omit<CalendarCellTriggerProps, 'day' | 'month'>;
 }
 
@@ -142,9 +143,9 @@ export type CalendarCompactEmits<M extends boolean = false> = CalendarRootEmits<
 
 export type CalendarCompactSlots<M extends boolean = false> = {
   default?: (props: { modelValue: CalendarModelValue<M> }) => any;
-  prev?: (props: { prevPage: () => void }) => any;
+  prev?: (props: { disabled: boolean }) => any;
   heading?: (props: { headingValue: string }) => any;
-  next?: (props: { nextPage: () => void }) => any;
+  next?: (props: { disabled: boolean }) => any;
   'head-cell'?: (props: { date: DateValue; index: number; label: string }) => any;
   day?: (props: {
     day: DateValue;

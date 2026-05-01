@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { Primitive } from '../primitive';
-
 import { useDatePickerRootContext, useDatePickerUi } from './context';
 import type { DatePickerTriggerProps } from './types';
 
@@ -13,14 +12,14 @@ withDefaults(defineProps<DatePickerTriggerProps>(), {
 });
 
 const cls = useDatePickerUi('trigger');
-const rootContext = useDatePickerRootContext('DatePickerTrigger');
+const { disabled, readonly, open, setOpen } = useDatePickerRootContext('DatePickerTrigger');
 
 const handleClick = () => {
-  if (rootContext.disabled.value || rootContext.readonly.value) {
+  if (disabled.value || readonly.value) {
     return;
   }
 
-  rootContext.setOpen(!rootContext.open.value);
+  setOpen(!open.value);
 };
 </script>
 
@@ -28,11 +27,11 @@ const handleClick = () => {
   <Primitive
     :as="as"
     :as-child="asChild"
-    :aria-disabled="rootContext.disabled.value ? true : undefined"
-    :aria-expanded="rootContext.open.value ? true : false"
+    :aria-disabled="disabled ? true : undefined"
+    :aria-expanded="open ? true : false"
     :class="cls"
-    :data-disabled="rootContext.disabled.value ? '' : undefined"
-    :data-state="rootContext.open.value ? 'open' : 'closed'"
+    :data-disabled="disabled ? '' : undefined"
+    :data-state="open ? 'open' : 'closed'"
     data-slot="trigger"
     type="button"
     @click="handleClick"

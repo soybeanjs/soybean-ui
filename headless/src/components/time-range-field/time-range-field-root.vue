@@ -1,8 +1,5 @@
 <script setup lang="ts">
-import type { SegmentPart, TimeRange, TimeValue } from '../../date';
-
 import { computed, nextTick, onMounted, shallowRef, watch } from 'vue';
-
 import { useControllableState, useForwardElement } from '../../composables';
 import {
   createContent,
@@ -17,11 +14,11 @@ import {
   syncTimeSegmentValues,
   useDateFormatter
 } from '../../date';
+import type { SegmentPart, TimeRange, TimeValue } from '../../date';
 import { isNullish } from '../../shared';
 import { useDirection, useLocale } from '../config-provider/context';
 import { Primitive } from '../primitive';
 import { VisuallyHidden } from '../visually-hidden';
-
 import { provideTimeRangeFieldRootContext, useTimeRangeFieldUi } from './context';
 import type { TimeRangeFieldRootEmits, TimeRangeFieldRootProps } from './types';
 
@@ -138,27 +135,33 @@ const endSegmentValues = shallowRef(
     : { ...syncTimeSegmentValues({ value: placeholder.value, formatter }) }
 );
 
-const startSegmentContents = computed(() => createContent({
-  granularity: inferredGranularity.value,
-  dateRef: placeholder.value,
-  formatter,
-  hideTimeZone: props.hideTimeZone,
-  hourCycle: props.hourCycle,
-  segmentValues: startSegmentValues.value,
-  locale,
-  isTimeValue: true
-}).arr);
+const startSegmentContents = computed(
+  () =>
+    createContent({
+      granularity: inferredGranularity.value,
+      dateRef: placeholder.value,
+      formatter,
+      hideTimeZone: props.hideTimeZone,
+      hourCycle: props.hourCycle,
+      segmentValues: startSegmentValues.value,
+      locale,
+      isTimeValue: true
+    }).arr
+);
 
-const endSegmentContents = computed(() => createContent({
-  granularity: inferredGranularity.value,
-  dateRef: placeholder.value,
-  formatter,
-  hideTimeZone: props.hideTimeZone,
-  hourCycle: props.hourCycle,
-  segmentValues: endSegmentValues.value,
-  locale,
-  isTimeValue: true
-}).arr);
+const endSegmentContents = computed(
+  () =>
+    createContent({
+      granularity: inferredGranularity.value,
+      dateRef: placeholder.value,
+      formatter,
+      hideTimeZone: props.hideTimeZone,
+      hourCycle: props.hourCycle,
+      segmentValues: endSegmentValues.value,
+      locale,
+      isTimeValue: true
+    }).arr
+);
 
 const startSegmentElements = shallowRef<HTMLElement[]>([]);
 const endSegmentElements = shallowRef<HTMLElement[]>([]);
@@ -221,7 +224,9 @@ const currentSegmentIndex = computed(() => {
   const elements = focusedType.value === 'start' ? startSegmentElements.value : endSegmentElements.value;
 
   return elements.findIndex(
-    element => element.getAttribute('data-soybean-date-field-segment') === focusedElement.value?.getAttribute('data-soybean-date-field-segment')
+    element =>
+      element.getAttribute('data-soybean-date-field-segment') ===
+      focusedElement.value?.getAttribute('data-soybean-date-field-segment')
   );
 });
 
@@ -245,8 +250,12 @@ const moveFocus = (type: 'start' | 'end', direction: 'next' | 'prev') => {
 const inputType = computed(() => getTimeInputType(inferredGranularity.value));
 const startInputValue = computed(() => normalizeTimeInputValue(modelValue.value.start, inferredGranularity.value));
 const endInputValue = computed(() => normalizeTimeInputValue(modelValue.value.end, inferredGranularity.value));
-const inputMaxValue = computed(() => props.maxValue ? normalizeTimeInputValue(props.maxValue, inferredGranularity.value) : undefined);
-const inputMinValue = computed(() => props.minValue ? normalizeTimeInputValue(props.minValue, inferredGranularity.value) : undefined);
+const inputMaxValue = computed(() =>
+  props.maxValue ? normalizeTimeInputValue(props.maxValue, inferredGranularity.value) : undefined
+);
+const inputMinValue = computed(() =>
+  props.minValue ? normalizeTimeInputValue(props.minValue, inferredGranularity.value) : undefined
+);
 
 const handleRootKeydown = (event: KeyboardEvent) => {
   if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') {

@@ -1,20 +1,11 @@
 <script setup lang="ts">
-import type { DateRange, DateValue } from '../../date';
-
 import { computed, shallowRef, watch } from 'vue';
-
 import { useControllableState, useForwardElement } from '../../composables';
-import {
-  getDefaultDate,
-  isBefore,
-  normalizeDateStep,
-  normalizeHourCycle,
-  useDateFormatter
-} from '../../date';
+import { getDefaultDate, isBefore, normalizeDateStep, normalizeHourCycle, useDateFormatter } from '../../date';
+import type { DateRange, DateValue } from '../../date';
 import { isNullish } from '../../shared';
 import { useDirection, useLocale } from '../config-provider/context';
 import { Primitive } from '../primitive';
-
 import { provideDateRangePickerRootContext, useDateRangePickerUi } from './context';
 import type { DateRangePickerRootEmits, DateRangePickerRootProps } from './types';
 
@@ -40,15 +31,15 @@ const props = withDefaults(defineProps<DateRangePickerRootProps>(), {
 
 const emit = defineEmits<DateRangePickerRootEmits>();
 
- defineSlots<{
-   default?: (props: {
-     modelValue: DateRange;
-     placeholder: DateValue;
-     setPlaceholder: (date: DateValue) => void;
-     setRange: (range: DateRange) => void;
-     open: boolean;
-   }) => any;
- }>();
+defineSlots<{
+  default?: (props: {
+    modelValue: DateRange;
+    placeholder: DateValue;
+    setPlaceholder: (date: DateValue) => void;
+    setRange: (range: DateRange) => void;
+    open: boolean;
+  }) => any;
+}>();
 
 const cls = useDateRangePickerUi('root');
 const [_, setRootElement] = useForwardElement();
@@ -188,10 +179,7 @@ const isDateHovered = (date: DateValue): boolean => {
     const earlierDate = isBefore(date, start) ? date : start;
     const laterDate = isBefore(date, start) ? start : date;
 
-    return (
-      !isBefore(hoveredDate.value, earlierDate)
-      && !isBefore(laterDate, hoveredDate.value)
-    );
+    return !isBefore(hoveredDate.value, earlierDate) && !isBefore(laterDate, hoveredDate.value);
   }
 
   return false;
@@ -225,11 +213,14 @@ watch(locale, value => {
   }
 });
 
-watch(() => modelValue.value.start, value => {
-  if (!isNullish(value) && placeholder.value.compare(value) !== 0) {
-    placeholder.value = value.copy();
+watch(
+  () => modelValue.value.start,
+  value => {
+    if (!isNullish(value) && placeholder.value.compare(value) !== 0) {
+      placeholder.value = value.copy();
+    }
   }
-});
+);
 
 const onRangeChange = (range: DateRange) => {
   modelValue.value = range;

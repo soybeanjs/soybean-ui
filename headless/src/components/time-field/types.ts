@@ -1,13 +1,20 @@
 import type { ComputedRef, HTMLAttributes, ShallowRef } from 'vue';
-
-import type { DateStep, Formatter, HourCycle, SegmentPart, SegmentValueObj, TimeGranularity, TimeInputType, TimeMatcher, TimeValue } from '../../date';
+import type {
+  DateStep,
+  Formatter,
+  HourCycle,
+  SegmentPart,
+  SegmentValueObj,
+  TimeGranularity,
+  TimeInputType,
+  TimeMatcher,
+  TimeValue
+} from '../../date';
 import type { Direction, FormFieldCommonProps, PropsToContext, UiClass } from '../../types';
 import type { PrimitiveProps } from '../primitive/types';
 
 export interface TimeFieldRootProps
-  extends PrimitiveProps,
-    FormFieldCommonProps,
-    /** @vue-ignore */ Omit<HTMLAttributes, 'placeholder'> {
+  extends PrimitiveProps, FormFieldCommonProps, /** @vue-ignore */ Omit<HTMLAttributes, 'placeholder'> {
   defaultValue?: TimeValue;
   defaultPlaceholder?: TimeValue;
   placeholder?: TimeValue;

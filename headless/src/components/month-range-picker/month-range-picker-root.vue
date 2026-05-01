@@ -1,14 +1,11 @@
 <script setup lang="ts">
-import type { DateRange, DateValue } from '../../date';
-
 import { computed, shallowRef, useId, watch } from 'vue';
-
 import { useControllableState } from '../../composables';
 import { compareYearMonth, getDefaultDate, isMonthBetweenInclusive, toDate, useDateFormatter } from '../../date';
+import type { DateRange, DateValue } from '../../date';
 import { isNullish } from '../../shared';
 import { useDirection, useLocale } from '../config-provider/context';
 import { Primitive } from '../primitive';
-
 import { provideMonthRangePickerRootContext, useMonthRangePickerUi } from './context';
 import type { MonthRangePickerRootEmits, MonthRangePickerRootProps } from './types';
 
@@ -30,11 +27,7 @@ const props = withDefaults(defineProps<MonthRangePickerRootProps>(), {
 const emit = defineEmits<MonthRangePickerRootEmits>();
 
 defineSlots<{
-  default?: (props: {
-    displayValue: string;
-    modelValue: DateRange;
-    open: boolean;
-  }) => any;
+  default?: (props: { displayValue: string; modelValue: DateRange; open: boolean }) => any;
 }>();
 
 const cls = useMonthRangePickerUi('root');
@@ -72,7 +65,9 @@ const open = useControllableState(
   props.defaultOpen
 );
 
-const focusedMonth = shallowRef<DateValue>((modelValue.value.end ?? modelValue.value.start ?? placeholder.value).set({ day: 1 }));
+const focusedMonth = shallowRef<DateValue>(
+  (modelValue.value.end ?? modelValue.value.start ?? placeholder.value).set({ day: 1 })
+);
 const hoveredMonth = shallowRef<DateValue | undefined>();
 
 const minValue = computed(() => props.minValue?.set({ day: 1 }));
@@ -260,17 +255,20 @@ watch(locale, value => {
   }
 });
 
-watch(() => modelValue.value.start, value => {
-  if (!value) {
-    return;
-  }
+watch(
+  () => modelValue.value.start,
+  value => {
+    if (!value) {
+      return;
+    }
 
-  const nextValue = value.set({ day: 1 });
+    const nextValue = value.set({ day: 1 });
 
-  if (compareYearMonth(placeholder.value, nextValue) !== 0) {
-    placeholder.value = nextValue.copy();
+    if (compareYearMonth(placeholder.value, nextValue) !== 0) {
+      placeholder.value = nextValue.copy();
+    }
   }
-});
+);
 
 watch(
   modelValue,

@@ -1,12 +1,9 @@
 <script setup lang="ts">
-import type { TimeValue } from '../../date';
-
 import { nextTick, watch } from 'vue';
-
+import type { TimeValue } from '../../date';
 import { useForwardElement } from '../../composables';
 import { findClosestTimeOption } from '../../shared/time-picker';
 import { Primitive } from '../primitive';
-
 import { useTimePickerRootContext, useTimePickerUi } from './context';
 import type { TimePickerPopupProps } from './types';
 
@@ -19,19 +16,23 @@ withDefaults(defineProps<TimePickerPopupProps>(), {
 });
 
 defineSlots<{
-  time?: (props: {
-    disabled: boolean;
-    focused: boolean;
-    label: string;
-    selected: boolean;
-    time: TimeValue;
-  }) => any;
+  time?: (props: { disabled: boolean; focused: boolean; label: string; selected: boolean; time: TimeValue }) => any;
 }>();
 
 const cls = useTimePickerUi('popup');
 const listCls = useTimePickerUi('list');
 const cellTriggerCls = useTimePickerUi('cellTrigger');
-const rootContext = useTimePickerRootContext('TimePickerPopup');
+const {
+  focusedTime,
+  isTimeDisabled,
+  isTimeSelected,
+  modelValue,
+  onTimeChange,
+  open,
+  options,
+  popupId,
+  setFocusedTime
+} = useTimePickerRootContext('TimePickerPopup');
 const [popupElement, setPopupElement] = useForwardElement();
 
 const focusTime = (key: string) => {
@@ -41,14 +42,14 @@ const focusTime = (key: string) => {
 };
 
 const focusIndex = (index: number, direction: 1 | -1) => {
-  const options = rootContext.options.value;
+  const opts = options.value;
   let nextIndex = index;
 
-  while (nextIndex >= 0 && nextIndex < options.length) {
-    const nextOption = options[nextIndex];
+  while (nextIndex >= 0 && nextIndex < opts.length) {
+    const nextOption = opts[nextIndex];
 
-    if (!rootContext.isTimeDisabled(nextOption.value)) {
-      rootContext.setFocusedTime(nextOption.value);
+    if (!isTimeDisabled(nextOption.value)) {
+      setFocusedTime(nextOption.value);
       nextTick(() => {
         focusTime(nextOption.key);
       });
@@ -62,13 +63,13 @@ const focusIndex = (index: number, direction: 1 | -1) => {
 };
 
 const focusCurrentTime = () => {
-  const matchedOption = findClosestTimeOption(rootContext.options.value, rootContext.modelValue.value ?? rootContext.focusedTime.value);
+  const matchedOption = findClosestTimeOption(options.value, modelValue.value ?? focusedTime.value);
 
   if (!matchedOption) {
     return;
   }
 
-  const matchedIndex = rootContext.options.value.findIndex(option => option.key === matchedOption.key);
+  const matchedIndex = options.value.findIndex(option => option.key === matchedOption.key);
   focusIndex(matchedIndex === -1 ? 0 : matchedIndex, 1);
 };
 
@@ -76,7 +77,7 @@ const moveFocus = (currentIndex: number, delta: number) => {
   const targetIndex = currentIndex + delta;
   const direction = delta >= 0 ? 1 : -1;
 
-  if (targetIndex < 0 || targetIndex >= rootContext.options.value.length) {
+  if (targetIndex < 0 || targetIndex >= options.value.length) {
     return;
   }
 
@@ -84,19 +85,19 @@ const moveFocus = (currentIndex: number, delta: number) => {
 };
 
 const handleTimeClick = (time: TimeValue) => {
-  if (rootContext.isTimeDisabled(time)) {
+  if (isTimeDisabled(time)) {
     return;
   }
 
-  rootContext.onTimeChange(time);
+  onTimeChange(time);
 };
 
 const handleTimeFocus = (time: TimeValue) => {
-  rootContext.setFocusedTime(time);
+  setFocusedTime(time);
 };
 
 const handleTimeKeydown = (time: TimeValue, index: number, event: KeyboardEvent) => {
-  if (rootContext.isTimeDisabled(time)) {
+  if (isTimeDisabled(time)) {
     return;
   }
 
@@ -115,12 +116,12 @@ const handleTimeKeydown = (time: TimeValue, index: number, event: KeyboardEvent)
       break;
     case 'End':
       event.preventDefault();
-      focusIndex(rootContext.options.value.length - 1, -1);
+      focusIndex(options.value.length - 1, -1);
       break;
     case 'Enter':
     case ' ': {
       event.preventDefault();
-      rootContext.onTimeChange(time);
+      onTimeChange(time);
       break;
     }
     default:
@@ -129,7 +130,7 @@ const handleTimeKeydown = (time: TimeValue, index: number, event: KeyboardEvent)
 };
 
 watch(
-  () => rootContext.open.value,
+  () => open.value,
   value => {
     if (!value) {
       return;
@@ -144,8 +145,8 @@ watch(
 
 <template>
   <Primitive
-    v-if="rootContext.open.value"
-    :id="rootContext.popupId"
+    v-if="open"
+    :id="popupId"
     :ref="setPopupElement"
     :as="as"
     :as-child="asChild"
@@ -156,18 +157,18 @@ watch(
   >
     <div :class="listCls" data-slot="list">
       <button
-        v-for="(option, index) in rootContext.options.value"
+        v-for="(option, index) in options"
         :key="option.key"
         :aria-label="option.label"
-        :aria-pressed="rootContext.isTimeSelected(option.value) ? true : undefined"
+        :aria-pressed="isTimeSelected(option.value) ? true : undefined"
         :class="cellTriggerCls"
-        :data-disabled="rootContext.isTimeDisabled(option.value) ? '' : undefined"
-        :data-focused="option.value.toString() === rootContext.focusedTime.value.toString() ? '' : undefined"
-        :data-selected="rootContext.isTimeSelected(option.value) ? '' : undefined"
+        :data-disabled="isTimeDisabled(option.value) ? '' : undefined"
+        :data-focused="option.value.toString() === focusedTime.toString() ? '' : undefined"
+        :data-selected="isTimeSelected(option.value) ? '' : undefined"
         data-slot="cell-trigger"
         :data-time-key="option.key"
-        :disabled="rootContext.isTimeDisabled(option.value)"
-        :tabindex="option.value.toString() === rootContext.focusedTime.value.toString() && !rootContext.isTimeDisabled(option.value) ? 0 : -1"
+        :disabled="isTimeDisabled(option.value)"
+        :tabindex="option.value.toString() === focusedTime.toString() && !isTimeDisabled(option.value) ? 0 : -1"
         type="button"
         @click="handleTimeClick(option.value)"
         @focus="handleTimeFocus(option.value)"
@@ -175,10 +176,10 @@ watch(
       >
         <slot
           name="time"
-          :disabled="rootContext.isTimeDisabled(option.value)"
-          :focused="option.value.toString() === rootContext.focusedTime.value.toString()"
+          :disabled="isTimeDisabled(option.value)"
+          :focused="option.value.toString() === focusedTime.toString()"
           :label="option.label"
-          :selected="rootContext.isTimeSelected(option.value)"
+          :selected="isTimeSelected(option.value)"
           :time="option.value"
         >
           {{ option.label }}

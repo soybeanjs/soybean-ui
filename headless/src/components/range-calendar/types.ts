@@ -1,13 +1,10 @@
 import type { DateValue } from '@internationalized/date';
 import type { ButtonHTMLAttributes, ComputedRef, HTMLAttributes, ShallowRef } from 'vue';
-
 import type { Grid, Matcher, WeekDayFormat, WeekStartsOn, DateRange, Formatter } from '../../date';
 import type { Direction, PropsToContext, UiClass } from '../../types';
 import type { PrimitiveProps } from '../primitive/types';
 
-export interface RangeCalendarRootProps
-  extends PrimitiveProps,
-    /** @vue-ignore */ Omit<HTMLAttributes, 'placeholder'> {
+export interface RangeCalendarRootProps extends PrimitiveProps, /** @vue-ignore */ Omit<HTMLAttributes, 'placeholder'> {
   defaultValue?: DateRange;
   defaultPlaceholder?: DateValue;
   placeholder?: DateValue;
@@ -43,19 +40,27 @@ export type RangeCalendarRootEmits = {
   'update:startValue': [date: DateValue | undefined];
 };
 
-export interface RangeCalendarHeaderProps extends PrimitiveProps, /** @vue-ignore */ Omit<HTMLAttributes, 'placeholder'> {}
-export interface RangeCalendarHeadingProps extends PrimitiveProps, /** @vue-ignore */ Omit<HTMLAttributes, 'placeholder'> {}
-export interface RangeCalendarGridProps extends PrimitiveProps, /** @vue-ignore */ Omit<HTMLAttributes, 'placeholder'> {}
-export interface RangeCalendarGridHeadProps extends PrimitiveProps, /** @vue-ignore */ Omit<HTMLAttributes, 'placeholder'> {}
-export interface RangeCalendarGridBodyProps extends PrimitiveProps, /** @vue-ignore */ Omit<HTMLAttributes, 'placeholder'> {}
-export interface RangeCalendarGridRowProps extends PrimitiveProps, /** @vue-ignore */ Omit<HTMLAttributes, 'placeholder'> {}
-export interface RangeCalendarHeadCellProps extends PrimitiveProps, /** @vue-ignore */ Omit<HTMLAttributes, 'placeholder'> {}
+export interface RangeCalendarHeaderProps
+  extends PrimitiveProps, /** @vue-ignore */ Omit<HTMLAttributes, 'placeholder'> {}
+export interface RangeCalendarHeadingProps
+  extends PrimitiveProps, /** @vue-ignore */ Omit<HTMLAttributes, 'placeholder'> {}
+export interface RangeCalendarGridProps
+  extends PrimitiveProps, /** @vue-ignore */ Omit<HTMLAttributes, 'placeholder'> {}
+export interface RangeCalendarGridHeadProps
+  extends PrimitiveProps, /** @vue-ignore */ Omit<HTMLAttributes, 'placeholder'> {}
+export interface RangeCalendarGridBodyProps
+  extends PrimitiveProps, /** @vue-ignore */ Omit<HTMLAttributes, 'placeholder'> {}
+export interface RangeCalendarGridRowProps
+  extends PrimitiveProps, /** @vue-ignore */ Omit<HTMLAttributes, 'placeholder'> {}
+export interface RangeCalendarHeadCellProps
+  extends PrimitiveProps, /** @vue-ignore */ Omit<HTMLAttributes, 'placeholder'> {}
 
 export interface RangeCalendarCellProps extends PrimitiveProps, /** @vue-ignore */ Omit<HTMLAttributes, 'placeholder'> {
   date: DateValue;
 }
 
-export interface RangeCalendarCellTriggerProps extends PrimitiveProps, /** @vue-ignore */ Omit<HTMLAttributes, 'placeholder'> {
+export interface RangeCalendarCellTriggerProps
+  extends PrimitiveProps, /** @vue-ignore */ Omit<HTMLAttributes, 'placeholder'> {
   day: DateValue;
   month: DateValue;
 }
@@ -68,19 +73,18 @@ export interface RangeCalendarNextProps extends PrimitiveProps, /** @vue-ignore 
   nextPage?: (placeholder: DateValue) => DateValue;
 }
 
-export interface RangeCalendarRootContext
-  extends PropsToContext<
-    RangeCalendarRootProps,
-    | 'allowNonContiguousRanges'
-    | 'disableDaysOutsideCurrentView'
-    | 'disabled'
-    | 'fixedWeeks'
-    | 'initialFocus'
-    | 'numberOfMonths'
-    | 'pagedNavigation'
-    | 'preventDeselect'
-    | 'readonly'
-  > {
+export interface RangeCalendarRootContext extends PropsToContext<
+  RangeCalendarRootProps,
+  | 'allowNonContiguousRanges'
+  | 'disableDaysOutsideCurrentView'
+  | 'disabled'
+  | 'fixedWeeks'
+  | 'initialFocus'
+  | 'numberOfMonths'
+  | 'pagedNavigation'
+  | 'preventDeselect'
+  | 'readonly'
+> {
   locale: ComputedRef<string>;
   dir: ComputedRef<Direction>;
   weekStartsOn: ComputedRef<WeekStartsOn>;
@@ -148,7 +152,7 @@ export interface RangeCalendarCompactProps extends RangeCalendarRootProps {
   gridBodyProps?: RangeCalendarGridBodyProps;
   gridRowProps?: RangeCalendarGridRowProps;
   headCellProps?: RangeCalendarHeadCellProps;
-  cellProps?: RangeCalendarCellProps;
+  cellProps?: Omit<RangeCalendarCellProps, 'date'>;
   cellTriggerProps?: Omit<RangeCalendarCellTriggerProps, 'day' | 'month'>;
 }
 
@@ -156,9 +160,9 @@ export type RangeCalendarCompactEmits = RangeCalendarRootEmits;
 
 export type RangeCalendarCompactSlots = {
   default?: (props: { modelValue: DateRange }) => any;
-  prev?: (props: { prevPage: () => void }) => any;
+  prev?: (props: { disabled: boolean }) => any;
   heading?: (props: { headingValue: string }) => any;
-  next?: (props: { nextPage: () => void }) => any;
+  next?: (props: { disabled: boolean }) => any;
   'head-cell'?: (props: { date: DateValue; index: number; label: string }) => any;
   day?: (props: {
     day: DateValue;

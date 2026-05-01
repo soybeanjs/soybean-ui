@@ -1,14 +1,11 @@
 <script setup lang="ts">
-import type { DateRange, DateValue } from '../../date';
-
 import { computed, shallowRef, useId, watch } from 'vue';
-
 import { useControllableState } from '../../composables';
 import { createYearGrid, getDefaultDate, isYearBetweenInclusive, toDate, useDateFormatter } from '../../date';
+import type { DateRange, DateValue } from '../../date';
 import { isNullish } from '../../shared';
 import { useDirection, useLocale } from '../config-provider/context';
 import { Primitive } from '../primitive';
-
 import { provideYearRangePickerRootContext, useYearRangePickerUi } from './context';
 import type { YearRangePickerRootEmits, YearRangePickerRootProps } from './types';
 
@@ -30,11 +27,7 @@ const props = withDefaults(defineProps<YearRangePickerRootProps>(), {
 const emit = defineEmits<YearRangePickerRootEmits>();
 
 defineSlots<{
-  default?: (props: {
-    displayValue: string;
-    modelValue: DateRange;
-    open: boolean;
-  }) => any;
+  default?: (props: { displayValue: string; modelValue: DateRange; open: boolean }) => any;
 }>();
 
 const cls = useYearRangePickerUi('root');
@@ -61,11 +54,13 @@ const modelValue = useControllableState<DateRange>(
     : {}
 );
 
-const defaultDate = normalizeYearDate(getDefaultDate({
-  defaultPlaceholder: props.placeholder,
-  defaultValue: modelValue.value.start,
-  locale: props.locale
-}));
+const defaultDate = normalizeYearDate(
+  getDefaultDate({
+    defaultPlaceholder: props.placeholder,
+    defaultValue: modelValue.value.start,
+    locale: props.locale
+  })
+);
 
 const placeholder = useControllableState<DateValue>(
   () => props.placeholder as DateValue,
@@ -79,17 +74,17 @@ const open = useControllableState(
   props.defaultOpen
 );
 
-const focusedYear = shallowRef<DateValue>(normalizeYearDate(modelValue.value.end ?? modelValue.value.start ?? placeholder.value));
+const focusedYear = shallowRef<DateValue>(
+  normalizeYearDate(modelValue.value.end ?? modelValue.value.start ?? placeholder.value)
+);
 const hoveredYear = shallowRef<DateValue | undefined>();
 
 const yearGrid = computed(() => createYearGrid({ dateObj: placeholder.value, yearsPerPage: 12, decadeAligned: true }));
-const minValue = computed(() => props.minValue ? normalizeYearDate(props.minValue) : undefined);
-const maxValue = computed(() => props.maxValue ? normalizeYearDate(props.maxValue) : undefined);
+const minValue = computed(() => (props.minValue ? normalizeYearDate(props.minValue) : undefined));
+const maxValue = computed(() => (props.maxValue ? normalizeYearDate(props.maxValue) : undefined));
 
 const sortRange = (start: DateValue, end: DateValue): DateRange => {
-  return start.year <= end.year
-    ? { start: start.copy(), end: end.copy() }
-    : { start: end.copy(), end: start.copy() };
+  return start.year <= end.year ? { start: start.copy(), end: end.copy() } : { start: end.copy(), end: start.copy() };
 };
 
 const isYearDisabled = (date: DateValue) => {
@@ -278,15 +273,18 @@ watch(locale, value => {
   }
 });
 
-watch(() => modelValue.value.start, value => {
-  if (!value) {
-    return;
-  }
+watch(
+  () => modelValue.value.start,
+  value => {
+    if (!value) {
+      return;
+    }
 
-  if (placeholder.value.year !== value.year) {
-    placeholder.value = value.copy();
+    if (placeholder.value.year !== value.year) {
+      placeholder.value = value.copy();
+    }
   }
-});
+);
 
 watch(
   modelValue,

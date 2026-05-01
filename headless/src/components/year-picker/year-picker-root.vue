@@ -1,13 +1,10 @@
 <script setup lang="ts">
 import type { DateValue } from '@internationalized/date';
-
 import { computed, shallowRef, useId, watch } from 'vue';
-
 import { useControllableState } from '../../composables';
 import { createYearGrid, getDefaultDate, toDate, useDateFormatter } from '../../date';
 import { useDirection, useLocale } from '../config-provider/context';
 import { Primitive } from '../primitive';
-
 import { provideYearPickerRootContext, useYearPickerUi } from './context';
 import type { YearPickerRootEmits, YearPickerRootProps } from './types';
 
@@ -29,11 +26,7 @@ const props = withDefaults(defineProps<YearPickerRootProps>(), {
 const emit = defineEmits<YearPickerRootEmits>();
 
 defineSlots<{
-  default?: (props: {
-    modelValue: DateValue | undefined;
-    displayValue: string;
-    open: boolean;
-  }) => any;
+  default?: (props: { modelValue: DateValue | undefined; displayValue: string; open: boolean }) => any;
 }>();
 
 const cls = useYearPickerUi('root');
@@ -51,11 +44,13 @@ const modelValue = useControllableState<DateValue | undefined>(
   props.defaultValue ? normalizeYearDate(props.defaultValue) : undefined
 );
 
-const defaultDate = normalizeYearDate(getDefaultDate({
-  defaultPlaceholder: props.placeholder,
-  defaultValue: modelValue.value,
-  locale: props.locale
-}));
+const defaultDate = normalizeYearDate(
+  getDefaultDate({
+    defaultPlaceholder: props.placeholder,
+    defaultValue: modelValue.value,
+    locale: props.locale
+  })
+);
 
 const placeholder = useControllableState<DateValue>(
   () => props.placeholder as DateValue,
@@ -72,8 +67,8 @@ const open = useControllableState(
 const focusedYear = shallowRef<DateValue>(normalizeYearDate(modelValue.value ?? placeholder.value));
 
 const yearGrid = computed(() => createYearGrid({ dateObj: placeholder.value, yearsPerPage: 12, decadeAligned: true }));
-const minValue = computed(() => props.minValue ? normalizeYearDate(props.minValue) : undefined);
-const maxValue = computed(() => props.maxValue ? normalizeYearDate(props.maxValue) : undefined);
+const minValue = computed(() => (props.minValue ? normalizeYearDate(props.minValue) : undefined));
+const maxValue = computed(() => (props.maxValue ? normalizeYearDate(props.maxValue) : undefined));
 
 const isYearDisabled = (date: DateValue) => {
   if (props.disabled) {

@@ -1,8 +1,5 @@
 <script setup lang="ts">
-import type { SegmentPart, TimeValue } from '../../date';
-
 import { computed, nextTick, onMounted, shallowRef, watch } from 'vue';
-
 import { useControllableState, useForwardElement } from '../../composables';
 import {
   createContent,
@@ -17,11 +14,11 @@ import {
   syncTimeSegmentValues,
   useDateFormatter
 } from '../../date';
+import type { SegmentPart, TimeValue } from '../../date';
 import { isNullish } from '../../shared';
 import { useDirection, useLocale } from '../config-provider/context';
 import { Primitive } from '../primitive';
 import { VisuallyHidden } from '../visually-hidden';
-
 import { provideTimeFieldRootContext, useTimeFieldUi } from './context';
 import type { TimeFieldRootEmits, TimeFieldRootProps } from './types';
 
@@ -107,16 +104,19 @@ const segmentValues = shallowRef(
     : { ...syncTimeSegmentValues({ value: placeholder.value, formatter }) }
 );
 
-const segmentContents = computed(() => createContent({
-  granularity: inferredGranularity.value,
-  dateRef: placeholder.value,
-  formatter,
-  hideTimeZone: props.hideTimeZone,
-  hourCycle: props.hourCycle,
-  segmentValues: segmentValues.value,
-  locale,
-  isTimeValue: true
-}).arr);
+const segmentContents = computed(
+  () =>
+    createContent({
+      granularity: inferredGranularity.value,
+      dateRef: placeholder.value,
+      formatter,
+      hideTimeZone: props.hideTimeZone,
+      hourCycle: props.hourCycle,
+      segmentValues: segmentValues.value,
+      locale,
+      isTimeValue: true
+    }).arr
+);
 
 const segmentElements = shallowRef<HTMLElement[]>([]);
 const focusedElement = shallowRef<HTMLElement | null>(null);
@@ -154,7 +154,9 @@ watch([modelValue, locale, inferredGranularity], ([value]) => {
 
 const currentSegmentIndex = computed(() => {
   return segmentElements.value.findIndex(
-    element => element.getAttribute('data-soybean-date-field-segment') === focusedElement.value?.getAttribute('data-soybean-date-field-segment')
+    element =>
+      element.getAttribute('data-soybean-date-field-segment') ===
+      focusedElement.value?.getAttribute('data-soybean-date-field-segment')
   );
 });
 
@@ -166,8 +168,12 @@ const moveFocus = (direction: 'next' | 'prev') => {
 
 const inputType = computed(() => getTimeInputType(inferredGranularity.value));
 const inputValue = computed(() => normalizeTimeInputValue(modelValue.value, inferredGranularity.value));
-const inputMaxValue = computed(() => props.maxValue ? normalizeTimeInputValue(props.maxValue, inferredGranularity.value) : undefined);
-const inputMinValue = computed(() => props.minValue ? normalizeTimeInputValue(props.minValue, inferredGranularity.value) : undefined);
+const inputMaxValue = computed(() =>
+  props.maxValue ? normalizeTimeInputValue(props.maxValue, inferredGranularity.value) : undefined
+);
+const inputMinValue = computed(() =>
+  props.minValue ? normalizeTimeInputValue(props.minValue, inferredGranularity.value) : undefined
+);
 
 const handleRootKeydown = (event: KeyboardEvent) => {
   if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') {

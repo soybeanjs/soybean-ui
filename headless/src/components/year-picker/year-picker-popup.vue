@@ -1,11 +1,8 @@
 <script setup lang="ts">
 import type { DateValue } from '@internationalized/date';
-
 import { nextTick, useId, watch } from 'vue';
-
 import { useForwardElement } from '../../composables';
 import { Primitive } from '../primitive';
-
 import { useYearPickerRootContext, useYearPickerUi } from './context';
 import type { YearPickerPopupProps } from './types';
 
@@ -21,13 +18,7 @@ defineSlots<{
   heading?: (props: { headingValue: string }) => any;
   prev?: (props: { disabled: boolean }) => any;
   next?: (props: { disabled: boolean }) => any;
-  year?: (props: {
-    date: DateValue;
-    label: string;
-    disabled: boolean;
-    focused: boolean;
-    selected: boolean;
-  }) => any;
+  year?: (props: { date: DateValue; label: string; disabled: boolean; focused: boolean; selected: boolean }) => any;
 }>();
 
 const cls = useYearPickerUi('popup');
@@ -37,11 +28,27 @@ const prevCls = useYearPickerUi('prev');
 const nextCls = useYearPickerUi('next');
 const gridCls = useYearPickerUi('grid');
 const cellTriggerCls = useYearPickerUi('cellTrigger');
-const rootContext = useYearPickerRootContext('YearPickerPopup');
+const {
+  yearGrid,
+  isYearDisabled,
+  setFocusedYear,
+  isNextButtonDisabled,
+  nextPage,
+  isPrevButtonDisabled,
+  prevPage,
+  focusedYear,
+  onYearChange,
+  dir,
+  open,
+  popupId,
+  headingValue,
+  formatter,
+  isYearSelected
+} = useYearPickerRootContext('YearPickerPopup');
 const [popupElement, setPopupElement] = useForwardElement();
 const headingId = useId();
 
-const years = rootContext.yearGrid;
+const years = yearGrid;
 
 const focusYear = (date: DateValue) => {
   const yearElement = popupElement.value?.querySelector<HTMLElement>(`[data-year-value='${date.toString()}']`);
@@ -54,8 +61,8 @@ const focusIndex = (index: number, direction: 1 | -1) => {
   while (nextIndex >= 0 && nextIndex < years.value.cells.length) {
     const nextYear = years.value.cells[nextIndex];
 
-    if (!rootContext.isYearDisabled(nextYear)) {
-      rootContext.setFocusedYear(nextYear);
+    if (!isYearDisabled(nextYear)) {
+      setFocusedYear(nextYear);
       nextTick(() => {
         focusYear(nextYear);
       });
@@ -81,17 +88,17 @@ const focusClosestYear = (date: DateValue) => {
 
 const focusAcrossPage = (targetIndex: number, direction: 1 | -1) => {
   if (direction > 0) {
-    if (rootContext.isNextButtonDisabled()) {
+    if (isNextButtonDisabled()) {
       return;
     }
 
-    rootContext.nextPage();
+    nextPage();
   } else {
-    if (rootContext.isPrevButtonDisabled()) {
+    if (isPrevButtonDisabled()) {
       return;
     }
 
-    rootContext.prevPage();
+    prevPage();
   }
 
   nextTick(() => {
@@ -108,50 +115,51 @@ const moveFocus = (currentIndex: number, delta: number) => {
     return;
   }
 
-  const wrappedIndex = targetIndex < 0 ? years.value.cells.length + targetIndex : targetIndex - years.value.cells.length;
+  const wrappedIndex =
+    targetIndex < 0 ? years.value.cells.length + targetIndex : targetIndex - years.value.cells.length;
   focusAcrossPage(wrappedIndex, direction);
 };
 
 const handlePrevClick = () => {
-  if (rootContext.isPrevButtonDisabled()) {
+  if (isPrevButtonDisabled()) {
     return;
   }
 
-  rootContext.prevPage();
+  prevPage();
   nextTick(() => {
-    focusClosestYear(rootContext.focusedYear.value);
+    focusClosestYear(focusedYear.value);
   });
 };
 
 const handleNextClick = () => {
-  if (rootContext.isNextButtonDisabled()) {
+  if (isNextButtonDisabled()) {
     return;
   }
 
-  rootContext.nextPage();
+  nextPage();
   nextTick(() => {
-    focusClosestYear(rootContext.focusedYear.value);
+    focusClosestYear(focusedYear.value);
   });
 };
 
 const handleYearFocus = (date: DateValue) => {
-  rootContext.setFocusedYear(date);
+  setFocusedYear(date);
 };
 
 const handleYearClick = (date: DateValue) => {
-  if (rootContext.isYearDisabled(date)) {
+  if (isYearDisabled(date)) {
     return;
   }
 
-  rootContext.onYearChange(date);
+  onYearChange(date);
 };
 
 const handleYearKeydown = (date: DateValue, index: number, event: KeyboardEvent) => {
-  if (rootContext.isYearDisabled(date)) {
+  if (isYearDisabled(date)) {
     return;
   }
 
-  const sign = rootContext.dir.value === 'rtl' ? -1 : 1;
+  const sign = dir.value === 'rtl' ? -1 : 1;
 
   switch (event.key) {
     case 'ArrowRight':
@@ -176,7 +184,7 @@ const handleYearKeydown = (date: DateValue, index: number, event: KeyboardEvent)
       break;
     case 'End':
       event.preventDefault();
-      focusIndex(index + (3 - index % 4), -1);
+      focusIndex(index + (3 - (index % 4)), -1);
       break;
     case 'PageUp':
       event.preventDefault();
@@ -189,7 +197,7 @@ const handleYearKeydown = (date: DateValue, index: number, event: KeyboardEvent)
     case 'Enter':
     case ' ': {
       event.preventDefault();
-      rootContext.onYearChange(date);
+      onYearChange(date);
       break;
     }
     default:
@@ -198,14 +206,14 @@ const handleYearKeydown = (date: DateValue, index: number, event: KeyboardEvent)
 };
 
 watch(
-  () => rootContext.open.value,
+  () => open.value,
   value => {
     if (!value) {
       return;
     }
 
     nextTick(() => {
-      focusClosestYear(rootContext.focusedYear.value);
+      focusClosestYear(focusedYear.value);
     });
   }
 );
@@ -213,8 +221,8 @@ watch(
 
 <template>
   <Primitive
-    v-if="rootContext.open.value"
-    :id="rootContext.popupId"
+    v-if="open"
+    :id="popupId"
     :ref="setPopupElement"
     :as="as"
     :as-child="asChild"
@@ -227,49 +235,45 @@ watch(
       <button
         aria-label="Previous years"
         :class="prevCls"
-        :data-disabled="rootContext.isPrevButtonDisabled() ? '' : undefined"
+        :data-disabled="isPrevButtonDisabled() ? '' : undefined"
         data-slot="prev"
-        :disabled="rootContext.isPrevButtonDisabled()"
+        :disabled="isPrevButtonDisabled()"
         type="button"
         @click="handlePrevClick"
       >
-        <slot name="prev" :disabled="rootContext.isPrevButtonDisabled()">
-          Prev
-        </slot>
+        <slot name="prev" :disabled="isPrevButtonDisabled()">Prev</slot>
       </button>
       <div :id="headingId" :class="headingCls" data-slot="heading">
-        <slot name="heading" :heading-value="rootContext.headingValue.value">
-          {{ rootContext.headingValue }}
+        <slot name="heading" :heading-value="headingValue">
+          {{ headingValue }}
         </slot>
       </div>
       <button
         aria-label="Next years"
         :class="nextCls"
-        :data-disabled="rootContext.isNextButtonDisabled() ? '' : undefined"
+        :data-disabled="isNextButtonDisabled() ? '' : undefined"
         data-slot="next"
-        :disabled="rootContext.isNextButtonDisabled()"
+        :disabled="isNextButtonDisabled()"
         type="button"
         @click="handleNextClick"
       >
-        <slot name="next" :disabled="rootContext.isNextButtonDisabled()">
-          Next
-        </slot>
+        <slot name="next" :disabled="isNextButtonDisabled()">Next</slot>
       </button>
     </div>
     <div :class="gridCls" data-slot="grid">
       <button
         v-for="(year, index) in years.cells"
         :key="year.toString()"
-        :aria-label="rootContext.formatter.fullYear(new Date(year.year, 0, 1))"
-        :aria-pressed="rootContext.isYearSelected(year) ? true : undefined"
+        :aria-label="formatter.fullYear(new Date(year.year, 0, 1))"
+        :aria-pressed="isYearSelected(year) ? true : undefined"
         :class="cellTriggerCls"
-        :data-disabled="rootContext.isYearDisabled(year) ? '' : undefined"
-        :data-focused="year.year === rootContext.focusedYear.value.year ? '' : undefined"
-        :data-selected="rootContext.isYearSelected(year) ? '' : undefined"
+        :data-disabled="isYearDisabled(year) ? '' : undefined"
+        :data-focused="year.year === focusedYear.year ? '' : undefined"
+        :data-selected="isYearSelected(year) ? '' : undefined"
         data-slot="cell-trigger"
         :data-year-value="year.toString()"
-        :disabled="rootContext.isYearDisabled(year)"
-        :tabindex="year.year === rootContext.focusedYear.value.year && !rootContext.isYearDisabled(year) ? 0 : -1"
+        :disabled="isYearDisabled(year)"
+        :tabindex="year.year === focusedYear.year && !isYearDisabled(year) ? 0 : -1"
         type="button"
         @click="handleYearClick(year)"
         @focus="handleYearFocus(year)"
@@ -278,10 +282,10 @@ watch(
         <slot
           name="year"
           :date="year"
-          :disabled="rootContext.isYearDisabled(year)"
-          :focused="year.year === rootContext.focusedYear.value.year"
+          :disabled="isYearDisabled(year)"
+          :focused="year.year === focusedYear.year"
           :label="String(year.year)"
-          :selected="rootContext.isYearSelected(year)"
+          :selected="isYearSelected(year)"
         >
           {{ year.year }}
         </slot>

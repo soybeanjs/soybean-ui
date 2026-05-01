@@ -1,14 +1,21 @@
 import type { DateValue } from '@internationalized/date';
 import type { ComputedRef, HTMLAttributes, ShallowRef } from 'vue';
-
-import type { DateInputType, DateRange, DateStep, Formatter, Granularity, HourCycle, Matcher, SegmentPart, SegmentValueObj } from '../../date';
+import type {
+  DateInputType,
+  DateRange,
+  DateStep,
+  Formatter,
+  Granularity,
+  HourCycle,
+  Matcher,
+  SegmentPart,
+  SegmentValueObj
+} from '../../date';
 import type { Direction, FormFieldCommonProps, PropsToContext, UiClass } from '../../types';
 import type { PrimitiveProps } from '../primitive/types';
 
 export interface DateRangeFieldRootProps
-  extends PrimitiveProps,
-    FormFieldCommonProps,
-    /** @vue-ignore */ Omit<HTMLAttributes, 'placeholder'> {
+  extends PrimitiveProps, FormFieldCommonProps, /** @vue-ignore */ Omit<HTMLAttributes, 'placeholder'> {
   defaultValue?: DateRange;
   defaultPlaceholder?: DateValue;
   placeholder?: DateValue;
@@ -88,6 +95,7 @@ export type DateRangeFieldCompactSlots = {
     startSegments: DateRangeFieldSegment[];
     endSegments: DateRangeFieldSegment[];
     modelValue: DateRange;
+    isInvalid: boolean;
   }) => any;
   separator?: () => any;
 };

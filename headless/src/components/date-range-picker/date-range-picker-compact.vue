@@ -9,7 +9,9 @@ defineOptions({
   name: 'DateRangePickerCompact'
 });
 
-const props = defineProps<DateRangePickerCompactProps>();
+const props = withDefaults(defineProps<DateRangePickerCompactProps>(), {
+  open: undefined
+});
 
 const emit = defineEmits<DateRangePickerCompactEmits>();
 

@@ -1,11 +1,8 @@
 import type { DateValue } from '@internationalized/date';
-import type { ComputedRef, ShallowRef } from 'vue';
-
-import type { DateRange, Matcher } from '../../date';
-
 import { computed } from 'vue';
-
+import type { ComputedRef, ShallowRef } from 'vue';
 import { areAllDaysBetweenValid, isBefore, isBetweenInclusive } from '../../date';
+import type { DateRange, Matcher } from '../../date';
 
 export interface UseRangeCalendarStateProps {
   start: ComputedRef<DateValue | undefined>;
@@ -56,13 +53,18 @@ export function useRangeCalendarState(props: UseRangeCalendarStateProps) {
 
   const isSelectionStart = (date: DateValue) => Boolean(props.start.value && props.start.value.compare(date) === 0);
   const isSelectionEnd = (date: DateValue) => Boolean(props.end.value && props.end.value.compare(date) === 0);
-  const isHighlightedStart = (date: DateValue) => Boolean(highlightedRange.value?.start && highlightedRange.value.start.compare(date) === 0);
-  const isHighlightedEnd = (date: DateValue) => Boolean(highlightedRange.value?.end && highlightedRange.value.end.compare(date) === 0);
+  const isHighlightedStart = (date: DateValue) =>
+    Boolean(highlightedRange.value?.start && highlightedRange.value.start.compare(date) === 0);
+  const isHighlightedEnd = (date: DateValue) =>
+    Boolean(highlightedRange.value?.end && highlightedRange.value.end.compare(date) === 0);
 
   const hasSelectedDate = computed(() => Boolean(props.start.value));
   const selectedFocusableDate = computed(() => props.start.value?.copy());
   const isSelectedDateDisabled = computed(() => {
-    return Boolean((props.start.value && props.isDateDisabled(props.start.value)) || (props.end.value && props.isDateDisabled(props.end.value)));
+    return Boolean(
+      (props.start.value && props.isDateDisabled(props.start.value)) ||
+      (props.end.value && props.isDateDisabled(props.end.value))
+    );
   });
 
   const isInvalid = computed(() => {
@@ -86,7 +88,10 @@ export function useRangeCalendarState(props: UseRangeCalendarStateProps) {
       return true;
     }
 
-    if (props.maximumDays.value && getInclusiveRangeDays(props.start.value, props.end.value) > props.maximumDays.value) {
+    if (
+      props.maximumDays.value &&
+      getInclusiveRangeDays(props.start.value, props.end.value) > props.maximumDays.value
+    ) {
       return true;
     }
 

@@ -1,12 +1,9 @@
-import type { DateFields, DateValue } from '@internationalized/date';
-import type { Ref, ShallowRef } from 'vue';
-
-import type { DateFormatterOptions, Grid, Matcher, WeekDayFormat, WeekStartsOn } from '../../date';
-
 import { isEqualMonth, isSameDay, isSameMonth } from '@internationalized/date';
+import type { DateFields, DateValue } from '@internationalized/date';
 import { computed, shallowRef, watch } from 'vue';
-
+import type { Ref, ShallowRef } from 'vue';
 import { createMonths, getDaysInMonth, isAfter, isBefore, toDate, useDateFormatter } from '../../date';
+import type { DateFormatterOptions, Grid, Matcher, WeekDayFormat, WeekStartsOn } from '../../date';
 
 export interface UseCalendarProps {
   locale: Ref<string>;
@@ -356,7 +353,11 @@ export function useCalendar(props: UseCalendarProps) {
   const fullCalendarLabel = computed(() => `${props.calendarLabel.value ?? 'Event Date'}, ${headingValue.value}`);
 
   const isPlaceholderFocusable = computed(() => {
-    return !(isDateDisabled(props.placeholder.value) || isDateUnavailable(props.placeholder.value) || isOutsideVisibleView(props.placeholder.value));
+    return !(
+      isDateDisabled(props.placeholder.value) ||
+      isDateUnavailable(props.placeholder.value) ||
+      isOutsideVisibleView(props.placeholder.value)
+    );
   });
 
   const firstFocusableDate = computed(() => {
@@ -366,7 +367,8 @@ export function useCalendar(props: UseCalendarProps) {
       }
 
       const daysInMonth = getDaysInMonth(month.value);
-      const startDay = props.minValue.value && isSameMonth(props.minValue.value, month.value) ? props.minValue.value.day : 1;
+      const startDay =
+        props.minValue.value && isSameMonth(props.minValue.value, month.value) ? props.minValue.value.day : 1;
 
       for (let day = startDay; day <= daysInMonth; day += 1) {
         const date = month.value.set({ day });

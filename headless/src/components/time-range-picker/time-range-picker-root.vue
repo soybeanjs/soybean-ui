@@ -1,14 +1,16 @@
 <script setup lang="ts">
-import type { TimeRange, TimeValue } from '../../date';
-
 import { computed, shallowRef, useId, watch } from 'vue';
-
 import { useControllableState } from '../../composables';
 import { getDefaultTime, isBefore, normalizeHourCycle, useDateFormatter } from '../../date';
-import { createTimeOptions, compareTimeValues, formatTimeValue, isTimeBetweenInclusive } from '../../shared/time-picker';
+import type { TimeRange, TimeValue } from '../../date';
+import {
+  createTimeOptions,
+  compareTimeValues,
+  formatTimeValue,
+  isTimeBetweenInclusive
+} from '../../shared/time-picker';
 import { useDirection, useLocale } from '../config-provider/context';
 import { Primitive } from '../primitive';
-
 import { provideTimeRangePickerRootContext, useTimeRangePickerUi } from './context';
 import type { TimeRangePickerRootEmits, TimeRangePickerRootProps } from './types';
 
@@ -35,11 +37,7 @@ const props = withDefaults(defineProps<TimeRangePickerRootProps>(), {
 const emit = defineEmits<TimeRangePickerRootEmits>();
 
 defineSlots<{
-  default?: (props: {
-    displayValue: string;
-    modelValue: TimeRange;
-    open: boolean;
-  }) => any;
+  default?: (props: { displayValue: string; modelValue: TimeRange; open: boolean; placeholder: TimeValue }) => any;
 }>();
 
 const cls = useTimeRangePickerUi('root');
@@ -81,7 +79,9 @@ const open = useControllableState(
   props.defaultOpen
 );
 
-const focusedTime = shallowRef<TimeValue>(modelValue.value.end?.copy() ?? modelValue.value.start?.copy() ?? placeholder.value.copy());
+const focusedTime = shallowRef<TimeValue>(
+  modelValue.value.end?.copy() ?? modelValue.value.start?.copy() ?? placeholder.value.copy()
+);
 const hoveredTime = shallowRef<TimeValue | undefined>();
 
 const minValue = computed(() => props.minValue);
@@ -208,17 +208,19 @@ const displayValue = computed(() => {
   return '';
 });
 
-const options = computed(() => createTimeOptions({
-  formatter,
-  granularity: granularity.value,
-  hideTimeZone: hideTimeZone.value,
-  hourCycle: props.hourCycle,
-  isTimeUnavailable: props.isTimeUnavailable,
-  maxValue: maxValue.value,
-  minValue: minValue.value,
-  reference: modelValue.value.start ?? placeholder.value,
-  step: props.step
-}));
+const options = computed(() =>
+  createTimeOptions({
+    formatter,
+    granularity: granularity.value,
+    hideTimeZone: hideTimeZone.value,
+    hourCycle: props.hourCycle,
+    isTimeUnavailable: props.isTimeUnavailable,
+    maxValue: maxValue.value,
+    minValue: minValue.value,
+    reference: modelValue.value.start ?? placeholder.value,
+    step: props.step
+  })
+);
 
 const onPlaceholderChange = (time: TimeValue) => {
   placeholder.value = time.copy();
@@ -262,15 +264,18 @@ watch(locale, value => {
   }
 });
 
-watch(() => modelValue.value.start, value => {
-  if (!value) {
-    return;
-  }
+watch(
+  () => modelValue.value.start,
+  value => {
+    if (!value) {
+      return;
+    }
 
-  if (placeholder.value.toString() !== value.toString()) {
-    placeholder.value = value.copy();
+    if (placeholder.value.toString() !== value.toString()) {
+      placeholder.value = value.copy();
+    }
   }
-});
+);
 
 watch(
   modelValue,
@@ -327,6 +332,6 @@ provideTimeRangePickerRootContext({
     :dir="dir"
     data-slot="root"
   >
-    <slot :display-value="displayValue" :model-value="modelValue" :open="Boolean(open)" />
+    <slot :display-value="displayValue" :model-value="modelValue" :open="Boolean(open)" :placeholder="placeholder" />
   </Primitive>
 </template>

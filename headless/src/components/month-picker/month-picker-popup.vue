@@ -1,12 +1,9 @@
 <script setup lang="ts">
 import type { DateValue } from '@internationalized/date';
-
 import { computed, nextTick, useId, watch } from 'vue';
-
 import { useForwardElement } from '../../composables';
 import { compareYearMonth, toDate } from '../../date';
 import { Primitive } from '../primitive';
-
 import { useMonthPickerRootContext, useMonthPickerUi } from './context';
 import type { MonthPickerPopupProps } from './types';
 
@@ -22,13 +19,7 @@ defineSlots<{
   heading?: (props: { headingValue: string }) => any;
   prev?: (props: { disabled: boolean }) => any;
   next?: (props: { disabled: boolean }) => any;
-  month?: (props: {
-    date: DateValue;
-    label: string;
-    disabled: boolean;
-    focused: boolean;
-    selected: boolean;
-  }) => any;
+  month?: (props: { date: DateValue; label: string; disabled: boolean; focused: boolean; selected: boolean }) => any;
 }>();
 
 const cls = useMonthPickerUi('popup');
@@ -38,12 +29,28 @@ const prevCls = useMonthPickerUi('prev');
 const nextCls = useMonthPickerUi('next');
 const gridCls = useMonthPickerUi('grid');
 const cellTriggerCls = useMonthPickerUi('cellTrigger');
-const rootContext = useMonthPickerRootContext('MonthPickerPopup');
+const {
+  placeholder,
+  isMonthDisabled,
+  setFocusedMonth,
+  isNextButtonDisabled,
+  nextPage,
+  isPrevButtonDisabled,
+  prevPage,
+  focusedMonth,
+  onMonthChange,
+  dir,
+  open,
+  popupId,
+  headingValue,
+  formatter,
+  isMonthSelected
+} = useMonthPickerRootContext('MonthPickerPopup');
 const [popupElement, setPopupElement] = useForwardElement();
 const headingId = useId();
 
 const months = computed(() => {
-  return Array.from({ length: 12 }, (_, index) => rootContext.placeholder.value.set({ month: index + 1, day: 1 }));
+  return Array.from({ length: 12 }, (_, index) => placeholder.value.set({ month: index + 1, day: 1 }));
 });
 
 const focusMonth = (date: DateValue) => {
@@ -57,8 +64,8 @@ const focusIndex = (index: number, direction: 1 | -1) => {
   while (nextIndex >= 0 && nextIndex < months.value.length) {
     const nextMonth = months.value[nextIndex];
 
-    if (!rootContext.isMonthDisabled(nextMonth)) {
-      rootContext.setFocusedMonth(nextMonth);
+    if (!isMonthDisabled(nextMonth)) {
+      setFocusedMonth(nextMonth);
       nextTick(() => {
         focusMonth(nextMonth);
       });
@@ -71,17 +78,17 @@ const focusIndex = (index: number, direction: 1 | -1) => {
 
 const focusAcrossYear = (targetIndex: number, direction: 1 | -1) => {
   if (direction > 0) {
-    if (rootContext.isNextButtonDisabled()) {
+    if (isNextButtonDisabled()) {
       return;
     }
 
-    rootContext.nextPage();
+    nextPage();
   } else {
-    if (rootContext.isPrevButtonDisabled()) {
+    if (isPrevButtonDisabled()) {
       return;
     }
 
-    rootContext.prevPage();
+    prevPage();
   }
 
   nextTick(() => {
@@ -103,45 +110,45 @@ const moveFocus = (currentIndex: number, delta: number) => {
 };
 
 const handlePrevClick = () => {
-  if (rootContext.isPrevButtonDisabled()) {
+  if (isPrevButtonDisabled()) {
     return;
   }
 
-  rootContext.prevPage();
+  prevPage();
   nextTick(() => {
-    focusMonth(rootContext.focusedMonth.value);
+    focusMonth(focusedMonth.value);
   });
 };
 
 const handleNextClick = () => {
-  if (rootContext.isNextButtonDisabled()) {
+  if (isNextButtonDisabled()) {
     return;
   }
 
-  rootContext.nextPage();
+  nextPage();
   nextTick(() => {
-    focusMonth(rootContext.focusedMonth.value);
+    focusMonth(focusedMonth.value);
   });
 };
 
 const handleMonthFocus = (date: DateValue) => {
-  rootContext.setFocusedMonth(date);
+  setFocusedMonth(date);
 };
 
 const handleMonthClick = (date: DateValue) => {
-  if (rootContext.isMonthDisabled(date)) {
+  if (isMonthDisabled(date)) {
     return;
   }
 
-  rootContext.onMonthChange(date);
+  onMonthChange(date);
 };
 
 const handleMonthKeydown = (date: DateValue, index: number, event: KeyboardEvent) => {
-  if (rootContext.isMonthDisabled(date)) {
+  if (isMonthDisabled(date)) {
     return;
   }
 
-  const sign = rootContext.dir.value === 'rtl' ? -1 : 1;
+  const sign = dir.value === 'rtl' ? -1 : 1;
 
   switch (event.key) {
     case 'ArrowRight':
@@ -166,7 +173,7 @@ const handleMonthKeydown = (date: DateValue, index: number, event: KeyboardEvent
       break;
     case 'End':
       event.preventDefault();
-      focusIndex(index + (2 - index % 3), -1);
+      focusIndex(index + (2 - (index % 3)), -1);
       break;
     case 'PageUp':
       event.preventDefault();
@@ -179,7 +186,7 @@ const handleMonthKeydown = (date: DateValue, index: number, event: KeyboardEvent
     case 'Enter':
     case ' ': {
       event.preventDefault();
-      rootContext.onMonthChange(date);
+      onMonthChange(date);
       break;
     }
     default:
@@ -188,14 +195,14 @@ const handleMonthKeydown = (date: DateValue, index: number, event: KeyboardEvent
 };
 
 watch(
-  () => rootContext.open.value,
+  () => open.value,
   value => {
     if (!value) {
       return;
     }
 
     nextTick(() => {
-      focusMonth(rootContext.focusedMonth.value);
+      focusMonth(focusedMonth.value);
     });
   }
 );
@@ -203,8 +210,8 @@ watch(
 
 <template>
   <Primitive
-    v-if="rootContext.open.value"
-    :id="rootContext.popupId"
+    v-if="open"
+    :id="popupId"
     :ref="setPopupElement"
     :as="as"
     :as-child="asChild"
@@ -217,49 +224,45 @@ watch(
       <button
         aria-label="Previous year"
         :class="prevCls"
-        :data-disabled="rootContext.isPrevButtonDisabled() ? '' : undefined"
+        :data-disabled="isPrevButtonDisabled() ? '' : undefined"
         data-slot="prev"
-        :disabled="rootContext.isPrevButtonDisabled()"
+        :disabled="isPrevButtonDisabled()"
         type="button"
         @click="handlePrevClick"
       >
-        <slot name="prev" :disabled="rootContext.isPrevButtonDisabled()">
-          Prev
-        </slot>
+        <slot name="prev" :disabled="isPrevButtonDisabled()">Prev</slot>
       </button>
       <div :id="headingId" :class="headingCls" data-slot="heading">
-        <slot name="heading" :heading-value="rootContext.headingValue.value">
-          {{ rootContext.headingValue }}
+        <slot name="heading" :heading-value="headingValue">
+          {{ headingValue }}
         </slot>
       </div>
       <button
         aria-label="Next year"
         :class="nextCls"
-        :data-disabled="rootContext.isNextButtonDisabled() ? '' : undefined"
+        :data-disabled="isNextButtonDisabled() ? '' : undefined"
         data-slot="next"
-        :disabled="rootContext.isNextButtonDisabled()"
+        :disabled="isNextButtonDisabled()"
         type="button"
         @click="handleNextClick"
       >
-        <slot name="next" :disabled="rootContext.isNextButtonDisabled()">
-          Next
-        </slot>
+        <slot name="next" :disabled="isNextButtonDisabled()">Next</slot>
       </button>
     </div>
     <div :class="gridCls" data-slot="grid">
       <button
         v-for="(month, index) in months"
         :key="month.toString()"
-        :aria-label="rootContext.formatter.fullMonthAndYear(toDate(month))"
-        :aria-pressed="rootContext.isMonthSelected(month) ? true : undefined"
+        :aria-label="formatter.fullMonthAndYear(toDate(month))"
+        :aria-pressed="isMonthSelected(month) ? true : undefined"
         :class="cellTriggerCls"
-        :data-disabled="rootContext.isMonthDisabled(month) ? '' : undefined"
-        :data-focused="compareYearMonth(month, rootContext.focusedMonth.value) === 0 ? '' : undefined"
+        :data-disabled="isMonthDisabled(month) ? '' : undefined"
+        :data-focused="compareYearMonth(month, focusedMonth) === 0 ? '' : undefined"
         :data-month-value="month.toString()"
-        :data-selected="rootContext.isMonthSelected(month) ? '' : undefined"
+        :data-selected="isMonthSelected(month) ? '' : undefined"
         data-slot="cell-trigger"
-        :disabled="rootContext.isMonthDisabled(month)"
-        :tabindex="compareYearMonth(month, rootContext.focusedMonth.value) === 0 && !rootContext.isMonthDisabled(month) ? 0 : -1"
+        :disabled="isMonthDisabled(month)"
+        :tabindex="compareYearMonth(month, focusedMonth) === 0 && !isMonthDisabled(month) ? 0 : -1"
         type="button"
         @click="handleMonthClick(month)"
         @focus="handleMonthFocus(month)"
@@ -268,12 +271,12 @@ watch(
         <slot
           name="month"
           :date="month"
-          :disabled="rootContext.isMonthDisabled(month)"
-          :focused="compareYearMonth(month, rootContext.focusedMonth.value) === 0"
-          :label="rootContext.formatter.custom(toDate(month), { month: 'short' })"
-          :selected="rootContext.isMonthSelected(month)"
+          :disabled="isMonthDisabled(month)"
+          :focused="compareYearMonth(month, focusedMonth) === 0"
+          :label="formatter.custom(toDate(month), { month: 'short' })"
+          :selected="isMonthSelected(month)"
         >
-          {{ rootContext.formatter.custom(toDate(month), { month: 'short' }) }}
+          {{ formatter.custom(toDate(month), { month: 'short' }) }}
         </slot>
       </button>
     </div>

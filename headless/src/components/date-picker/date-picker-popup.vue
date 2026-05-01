@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { Primitive } from '../primitive';
-
 import { useDatePickerRootContext, useDatePickerUi } from './context';
 import type { DatePickerPopupProps } from './types';
 
@@ -13,12 +12,12 @@ withDefaults(defineProps<DatePickerPopupProps>(), {
 });
 
 const cls = useDatePickerUi('popup');
-const rootContext = useDatePickerRootContext('DatePickerPopup');
+const { open } = useDatePickerRootContext('DatePickerPopup');
 </script>
 
 <template>
   <Primitive
-    v-if="rootContext.open.value"
+    v-if="open"
     :as="as"
     :as-child="asChild"
     aria-label="Date picker"

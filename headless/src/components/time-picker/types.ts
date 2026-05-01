@@ -1,14 +1,11 @@
 import type { ComputedRef, HTMLAttributes, ShallowRef } from 'vue';
-
 import type { DateStep, Formatter, HourCycle, TimeGranularity, TimeMatcher, TimeValue } from '../../date';
 import type { Direction, FormFieldCommonProps, PropsToContext, UiClass } from '../../types';
 import type { TimePickerOption } from '../../shared/time-picker';
 import type { PrimitiveProps } from '../primitive/types';
 
 export interface TimePickerRootProps
-  extends PrimitiveProps,
-    FormFieldCommonProps,
-    /** @vue-ignore */ Omit<HTMLAttributes, 'placeholder'> {
+  extends PrimitiveProps, FormFieldCommonProps, /** @vue-ignore */ Omit<HTMLAttributes, 'placeholder'> {
   defaultValue?: TimeValue;
   defaultPlaceholder?: TimeValue;
   placeholder?: TimeValue;

@@ -1,14 +1,11 @@
 import type { ComputedRef, HTMLAttributes, ShallowRef } from 'vue';
-
 import type { DateStep, Formatter, HourCycle, TimeGranularity, TimeMatcher, TimeRange, TimeValue } from '../../date';
 import type { Direction, FormFieldCommonProps, PropsToContext, UiClass } from '../../types';
 import type { TimePickerOption } from '../../shared/time-picker';
 import type { PrimitiveProps } from '../primitive/types';
 
 export interface TimeRangePickerRootProps
-  extends PrimitiveProps,
-    FormFieldCommonProps,
-    /** @vue-ignore */ Omit<HTMLAttributes, 'placeholder'> {
+  extends PrimitiveProps, FormFieldCommonProps, /** @vue-ignore */ Omit<HTMLAttributes, 'placeholder'> {
   defaultValue?: TimeRange;
   defaultPlaceholder?: TimeValue;
   placeholder?: TimeValue;
@@ -83,12 +80,7 @@ export interface TimeRangePickerCompactProps extends TimeRangePickerRootProps {
 export type TimeRangePickerCompactEmits = TimeRangePickerRootEmits;
 
 export type TimeRangePickerCompactSlots = {
-  default?: (props: {
-    modelValue: TimeRange;
-    placeholder: TimeValue;
-    displayValue: string;
-    open: boolean;
-  }) => any;
+  default?: (props: { modelValue: TimeRange; placeholder: TimeValue; displayValue: string; open: boolean }) => any;
   trigger?: (props: { displayValue: string; modelValue: TimeRange; open: boolean }) => any;
   time?: (props: {
     label: string;

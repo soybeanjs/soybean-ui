@@ -1,8 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-
 import { Primitive } from '../primitive';
-
 import { useCalendarRootContext, useCalendarUi } from './context';
 import type { CalendarNextProps } from './types';
 
@@ -20,16 +18,16 @@ defineSlots<{
 }>();
 
 const cls = useCalendarUi('next');
-const rootContext = useCalendarRootContext('CalendarNext');
+const { disabled: rootDisabled, isNextButtonDisabled, nextPage } = useCalendarRootContext('CalendarNext');
 
-const disabled = computed(() => rootContext.disabled.value || rootContext.isNextButtonDisabled(props.nextPage));
+const disabled = computed(() => rootDisabled.value || isNextButtonDisabled(props.nextPage));
 
 const onClick = () => {
   if (disabled.value) {
     return;
   }
 
-  rootContext.nextPage(props.nextPage);
+  nextPage(props.nextPage);
 };
 </script>
 

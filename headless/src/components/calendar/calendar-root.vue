@@ -1,16 +1,13 @@
 <script setup lang="ts" generic="M extends boolean = false">
-import type { DateValue } from '@internationalized/date';
-
 import { isEqualDay, isSameDay } from '@internationalized/date';
+import type { DateValue } from '@internationalized/date';
 import { computed, onMounted, watch } from 'vue';
-
 import { useControllableState, useForwardElement } from '../../composables';
 import { getDefaultDate, getWeekStartsOn, handleCalendarInitialFocus } from '../../date';
 import { transformPropsToContext } from '../../shared';
 import { useDirection, useLocale } from '../config-provider/context';
 import { Primitive } from '../primitive';
 import { VisuallyHidden } from '../visually-hidden';
-
 import { provideCalendarRootContext, useCalendarUi } from './context';
 import type { CalendarModelValue, CalendarRootEmits, CalendarRootProps } from './types';
 import { useCalendar, useCalendarState } from './use-calendar';

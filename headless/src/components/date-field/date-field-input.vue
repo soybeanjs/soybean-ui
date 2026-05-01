@@ -1,9 +1,7 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue';
-
 import { useDateField } from '../../date';
 import { Primitive } from '../primitive';
-
 import { useDateFieldRootContext, useDateFieldUi } from './context';
 import type { DateFieldInputProps } from './types';
 
@@ -16,26 +14,38 @@ const props = withDefaults(defineProps<DateFieldInputProps>(), {
 });
 
 const cls = useDateFieldUi('input');
-const rootContext = useDateFieldRootContext('DateFieldInput');
+const {
+  disabled: rootDisabled,
+  readonly: rootReadonly,
+  placeholder,
+  hourCycle,
+  step,
+  segmentValues,
+  formatter,
+  focusNext,
+  modelValue,
+  isInvalid,
+  setFocusedElement
+} = useDateFieldRootContext('DateFieldInput');
 
 const hasLeftFocus = ref(true);
 const lastKeyZero = ref(false);
-const disabled = computed(() => Boolean(rootContext.disabled.value));
-const readonly = computed(() => Boolean(rootContext.readonly.value));
+const disabled = computed(() => Boolean(rootDisabled.value));
+const readonly = computed(() => Boolean(rootReadonly.value));
 
 const { attributes, handleSegmentClick, handleSegmentFocusOut, handleSegmentKeydown } = useDateField({
   hasLeftFocus,
   lastKeyZero,
-  placeholder: rootContext.placeholder,
-  hourCycle: rootContext.hourCycle,
-  step: rootContext.step,
-  segmentValues: rootContext.segmentValues,
-  formatter: rootContext.formatter,
+  placeholder,
+  hourCycle,
+  step,
+  segmentValues,
+  formatter,
   part: props.part,
   disabled,
   readonly,
-  focusNext: rootContext.focusNext,
-  modelValue: rootContext.modelValue
+  focusNext,
+  modelValue
 });
 
 const contentEditable = computed(() => {
@@ -45,6 +55,24 @@ const contentEditable = computed(() => {
 
   return props.part !== 'literal' && props.part !== 'timeZoneName';
 });
+
+const listeners = computed(() => {
+  if (props.part === 'literal') {
+    return {};
+  }
+
+  return {
+    mousedown: handleSegmentClick,
+    keydown: handleSegmentKeydown,
+    focusout: () => {
+      hasLeftFocus.value = true;
+      handleSegmentFocusOut();
+    },
+    focusin: (event: FocusEvent) => {
+      setFocusedElement(event.target as HTMLElement);
+    }
+  };
+});
 </script>
 
 <template>
@@ -53,29 +81,17 @@ const contentEditable = computed(() => {
     :as-child="asChild"
     v-bind="attributes"
     :aria-disabled="disabled ? true : undefined"
-    :aria-invalid="rootContext.isInvalid ? true : undefined"
+    :aria-invalid="isInvalid ? true : undefined"
     :aria-readonly="readonly || part === 'timeZoneName' ? true : undefined"
     :class="cls"
     :contenteditable="contentEditable"
     :data-disabled="disabled ? '' : undefined"
-    :data-invalid="rootContext.isInvalid ? '' : undefined"
+    :data-invalid="isInvalid ? '' : undefined"
     :data-readonly="readonly || part === 'timeZoneName' ? '' : undefined"
     :data-segment="part"
     :data-soybean-date-field-segment="part"
     data-slot="input"
-    v-on="part !== 'literal'
-      ? {
-        mousedown: handleSegmentClick,
-        keydown: handleSegmentKeydown,
-        focusout: () => {
-          hasLeftFocus = true;
-          handleSegmentFocusOut();
-        },
-        focusin: (event: FocusEvent) => {
-          rootContext.setFocusedElement(event.target as HTMLElement);
-        }
-      }
-      : {}"
+    v-on="listeners"
   >
     <slot />
   </Primitive>

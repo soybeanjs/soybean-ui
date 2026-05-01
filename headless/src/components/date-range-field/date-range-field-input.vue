@@ -1,11 +1,8 @@
 <script setup lang="ts">
-import type { DateValue } from '../../date';
-
 import { computed, ref } from 'vue';
-
 import { useDateField } from '../../date';
+import type { DateValue } from '../../date';
 import { Primitive } from '../primitive';
-
 import { useDateRangeFieldRootContext, useDateRangeFieldUi } from './context';
 import type { DateRangeFieldInputProps } from './types';
 
@@ -19,36 +16,49 @@ const props = withDefaults(defineProps<DateRangeFieldInputProps>(), {
 });
 
 const cls = useDateRangeFieldUi('input');
-const rootContext = useDateRangeFieldRootContext('DateRangeFieldInput');
+const {
+  disabled: rootDisabled,
+  readonly: rootReadonly,
+  placeholder,
+  hourCycle,
+  step,
+  startSegmentValues,
+  endSegmentValues,
+  formatter,
+  focusNext,
+  modelValue,
+  isInvalid,
+  setFocusedElement
+} = useDateRangeFieldRootContext('DateRangeFieldInput');
 
 const hasLeftFocus = ref(true);
 const lastKeyZero = ref(false);
-const disabled = computed(() => Boolean(rootContext.disabled.value));
-const readonly = computed(() => Boolean(rootContext.readonly.value));
+const disabled = computed(() => Boolean(rootDisabled.value));
+const readonly = computed(() => Boolean(rootReadonly.value));
 
 const segmentValues = computed(() => {
-  return props.type === 'start' ? rootContext.startSegmentValues.value : rootContext.endSegmentValues.value;
+  return props.type === 'start' ? startSegmentValues.value : endSegmentValues.value;
 });
 
 const { attributes, handleSegmentClick, handleSegmentFocusOut, handleSegmentKeydown } = useDateField({
   hasLeftFocus,
   lastKeyZero,
-  placeholder: rootContext.placeholder,
-  hourCycle: rootContext.hourCycle,
-  step: rootContext.step,
+  placeholder,
+  hourCycle,
+  step,
   segmentValues,
-  formatter: rootContext.formatter,
+  formatter,
   part: props.part,
   disabled,
   readonly,
-  focusNext: () => rootContext.focusNext(props.type),
+  focusNext: () => focusNext(props.type),
   modelValue: computed({
-    get: () => props.type === 'start' ? rootContext.modelValue.value.start : rootContext.modelValue.value.end,
+    get: () => (props.type === 'start' ? modelValue.value.start : modelValue.value.end),
     set: (value: DateValue | undefined) => {
       if (props.type === 'start') {
-        rootContext.modelValue.value = { ...rootContext.modelValue.value, start: value };
+        modelValue.value = { ...modelValue.value, start: value };
       } else {
-        rootContext.modelValue.value = { ...rootContext.modelValue.value, end: value };
+        modelValue.value = { ...modelValue.value, end: value };
       }
     }
   })
@@ -61,6 +71,24 @@ const contentEditable = computed(() => {
 
   return props.part !== 'literal' && props.part !== 'timeZoneName';
 });
+
+const listeners = computed(() => {
+  if (props.part === 'literal') {
+    return {};
+  }
+
+  return {
+    mousedown: handleSegmentClick,
+    keydown: handleSegmentKeydown,
+    focusout: () => {
+      hasLeftFocus.value = true;
+      handleSegmentFocusOut();
+    },
+    focusin: (event: FocusEvent) => {
+      setFocusedElement(event.target as HTMLElement, props.type);
+    }
+  };
+});
 </script>
 
 <template>
@@ -69,29 +97,17 @@ const contentEditable = computed(() => {
     :as-child="asChild"
     v-bind="attributes"
     :aria-disabled="disabled ? true : undefined"
-    :aria-invalid="rootContext.isInvalid ? true : undefined"
+    :aria-invalid="isInvalid ? true : undefined"
     :aria-readonly="readonly || part === 'timeZoneName' ? true : undefined"
     :class="cls"
     :contenteditable="contentEditable"
     :data-disabled="disabled ? '' : undefined"
-    :data-invalid="rootContext.isInvalid ? '' : undefined"
+    :data-invalid="isInvalid ? '' : undefined"
     :data-readonly="readonly || part === 'timeZoneName' ? '' : undefined"
     :data-segment="part"
     :data-soybean-date-field-segment="part"
     data-slot="input"
-    v-on="part !== 'literal'
-      ? {
-        mousedown: handleSegmentClick,
-        keydown: handleSegmentKeydown,
-        focusout: () => {
-          hasLeftFocus = true;
-          handleSegmentFocusOut();
-        },
-        focusin: (event: FocusEvent) => {
-          rootContext.setFocusedElement(event.target as HTMLElement, type);
-        }
-      }
-      : {}"
+    v-on="listeners"
   >
     <slot />
   </Primitive>
