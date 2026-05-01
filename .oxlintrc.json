@@ -10,6 +10,7 @@
     "unicorn/no-array-sort": "off",
     "unicorn/consistent-function-scoping": "off",
     "unicorn/require-module-specifiers": "off",
-    "vue/prefer-import-from-vue": "off"
+    "vue/prefer-import-from-vue": "off",
+    "eslint/no-underscore-dangle": "off"
   }
 }

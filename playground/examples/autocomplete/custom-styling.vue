@@ -18,7 +18,7 @@ const items: AutocompleteOptionData[] = [
         placeholder="Custom styled"
         :ui="{
           anchor: 'border-primary/40 bg-primary/5',
-          content: 'border-primary/30',
+          popup: 'border-primary/30',
           item: 'data-[highlighted]:bg-primary data-[highlighted]:text-primary-foreground'
         }"
       />

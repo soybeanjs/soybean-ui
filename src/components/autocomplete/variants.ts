@@ -19,7 +19,7 @@ export const autocompleteVariants = tv({
     ],
     trigger: 'flex shrink-0 items-center justify-center text-muted-foreground outline-none disabled:cursor-not-allowed',
     triggerIcon: 'size-1em',
-    content: [
+    popup: [
       'relative z-50 min-w-[--soybean-popper-anchor-width] overflow-hidden rounded-md border bg-popover text-popover-foreground shadow-md',
       'data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95',
       'data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95',
@@ -43,7 +43,7 @@ export const autocompleteVariants = tv({
       xs: {
         anchor: 'min-h-6 gap-1 px-1.5 text-2xs',
         inputRoot: 'gap-1',
-        content: 'text-2xs',
+        popup: 'text-2xs',
         viewport: 'max-h-70 p-0.75',
         groupLabel: 'px-1 py-1 text-3xs',
         item: 'gap-1 px-1 py-1',
@@ -52,7 +52,7 @@ export const autocompleteVariants = tv({
       sm: {
         anchor: 'min-h-7 gap-1.5 px-2 text-xs',
         inputRoot: 'gap-1.5',
-        content: 'text-xs',
+        popup: 'text-xs',
         viewport: 'max-h-75 p-0.875',
         groupLabel: 'px-1.5 py-1.25 text-2xs',
         item: 'gap-1.5 px-1.5 py-1.25',
@@ -61,7 +61,7 @@ export const autocompleteVariants = tv({
       md: {
         anchor: 'min-h-8 gap-2 px-2.5 text-sm',
         inputRoot: 'gap-2',
-        content: 'text-sm',
+        popup: 'text-sm',
         viewport: 'max-h-80 p-1',
         groupLabel: 'px-2 py-1.5 text-xs',
         item: 'gap-2 px-2 py-1.5',
@@ -70,7 +70,7 @@ export const autocompleteVariants = tv({
       lg: {
         anchor: 'min-h-9 gap-2.5 px-3 text-base',
         inputRoot: 'gap-2.5',
-        content: 'text-base',
+        popup: 'text-base',
         viewport: 'max-h-90 p-1.25',
         groupLabel: 'px-2.5 py-1.75 text-sm',
         item: 'gap-2.5 px-2.5 py-1.75',
@@ -79,7 +79,7 @@ export const autocompleteVariants = tv({
       xl: {
         anchor: 'min-h-10 gap-3 px-3.5 text-lg',
         inputRoot: 'gap-3',
-        content: 'text-lg',
+        popup: 'text-lg',
         viewport: 'max-h-100 p-1.5',
         groupLabel: 'px-3 py-2 text-base',
         item: 'gap-3 px-3 py-2',
@@ -88,7 +88,7 @@ export const autocompleteVariants = tv({
       '2xl': {
         anchor: 'min-h-12 gap-3.5 px-4 text-xl',
         inputRoot: 'gap-3.5',
-        content: 'text-xl',
+        popup: 'text-xl',
         viewport: 'max-h-115 p-1.75',
         groupLabel: 'px-3.5 py-2.5 text-lg',
         item: 'gap-3.5 px-3.5 py-2.5',

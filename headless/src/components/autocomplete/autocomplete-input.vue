@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import { computed, nextTick, onMounted, onUnmounted, shallowRef, watchSyncEffect } from 'vue';
+import { computed, nextTick, onMounted, onUnmounted, shallowRef, useId, watchSyncEffect } from 'vue';
 import { useForwardElement, useOmitProps } from '../../composables';
+import { useComboboxRootContext } from '../combobox/context';
 import { InputControl, InputRoot } from '../input';
 import { useListboxRootContext } from '../listbox/context';
 import { useAutocompleteRootContext } from './context';
@@ -28,68 +29,100 @@ const {
 } = useListboxRootContext('AutocompleteInput');
 
 const {
-  modelValue,
   open,
-  disabled: autocompleteDisabled,
+  contentId,
+  inputElement: comboboxInputElement,
+  triggerElement,
+  disabled: comboboxDisabled,
   openOnClick,
   openOnFocus,
-  onModelValueChange,
+  filterSearch,
+  isUserInputted,
   onOpenChange,
-  contentId,
-  inputId: generatedInputId,
-  initInputId,
-  setInputElement
-} = useAutocompleteRootContext('AutocompleteInput');
+  onInputElementChange
+} = useComboboxRootContext('AutocompleteInput');
 
-const [inputElement, setLocalInputElement] = useForwardElement(el => {
+const { modelValue } = useAutocompleteRootContext('AutocompleteInput');
+
+const generatedInputId = useId();
+
+const [localInputElement, setLocalInputElement] = useForwardElement(el => {
   const input = el as HTMLInputElement;
 
-  setInputElement(input);
+  onInputElementChange(input);
   props.inputRef?.(input);
 });
 
-const disabled = computed(() => props.disabled || listboxDisabled.value || autocompleteDisabled.value || false);
+const disabled = computed(() => props.disabled || listboxDisabled.value || comboboxDisabled.value || false);
 const activedescendant = shallowRef<string>();
-const resolvedInputId = computed(() => props.id ?? props.controlProps?.id ?? generatedInputId.value);
+const resolvedInputId = computed(
+  () => props.id ?? props.controlProps?.id ?? `soybean-autocomplete-input-${generatedInputId}`
+);
 
 const onUpdateModelValue = (value: string) => {
-  onModelValueChange(value);
+  modelValue.value = value;
   emit('update:modelValue', value);
 };
 
-const openAndHighlight = () => {
+const onInput = (event: Event) => {
+  const target = event.target as HTMLInputElement;
+
+  isUserInputted.value = true;
+
   if (!open.value) {
     onOpenChange(true);
+
+    nextTick(() => {
+      if (target.value) {
+        filterSearch.value = target.value;
+        highlightFirstItem();
+      }
+    });
+
+    return;
   }
 
-  nextTick(() => {
-    highlightFirstItem();
-  });
-};
-
-const onInput = () => {
-  openAndHighlight();
+  filterSearch.value = target.value;
 };
 
 const onFocus = () => {
   if (!openOnFocus.value || open.value) return;
 
-  openAndHighlight();
+  onOpenChange(true);
 };
 
 const onClick = () => {
   if (!openOnClick.value || open.value) return;
 
-  openAndHighlight();
+  onOpenChange(true);
 };
 
 const onKeydown = (event: KeyboardEvent) => {
   if (!open.value) {
-    openAndHighlight();
+    onOpenChange(true);
     return;
   }
 
   onKeydownNavigation(event);
+};
+
+const onBlur = (event: FocusEvent) => {
+  if (!open.value) {
+    return;
+  }
+
+  const nextFocus = event.relatedTarget as Element | null;
+
+  if (!nextFocus) {
+    return;
+  }
+
+  const isInsideTrigger = triggerElement.value?.contains(nextFocus);
+  const isInsideContent = document.getElementById(contentId.value)?.contains(nextFocus);
+
+  if (!isInsideTrigger && !isInsideContent) {
+    onOpenChange(false);
+  }
 };
 
 watchSyncEffect(() => {
@@ -101,17 +134,15 @@ onMounted(() => {
 
   setTimeout(() => {
     if (props.autofocus) {
-      inputElement.value?.focus();
+      localInputElement.value?.focus();
     }
   }, 1);
 });
 
 onUnmounted(() => {
   focusable.value = true;
-  setInputElement(undefined);
+  comboboxInputElement.value = undefined;
 });
-
-initInputId();
 </script>
 
 <template>
@@ -135,6 +166,7 @@ initInputId();
       role="combobox"
       spellcheck="false"
       type="text"
+      @blur="onBlur"
       @click="onClick"
       @compositionend="onCompositionEnd"
       @compositionstart="onCompositionStart"

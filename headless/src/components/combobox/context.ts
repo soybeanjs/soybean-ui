@@ -12,12 +12,6 @@ export const [provideComboboxContentContext, useComboboxContentContext] = useCon
 }>('ComboboxContent');
 
 export const [provideComboboxUi, useComboboxUi] = useUiContext<ComboboxUiSlot>('ComboboxUi', ui => {
-  const popperUi = computed(() => ({
-    positioner: ui.value?.positioner,
-    popup: ui.value?.popup,
-    arrow: ui.value?.arrow
-  }));
-
   const listboxUi = computed(() => ({
     ...ui.value,
     content: ui.value?.viewport,
@@ -25,7 +19,7 @@ export const [provideComboboxUi, useComboboxUi] = useUiContext<ComboboxUiSlot>('
     filterControl: ui.value?.inputControl
   }));
 
-  providePopperUi(popperUi);
+  providePopperUi(ui);
   provideListboxUi(listboxUi);
 
   return ui;

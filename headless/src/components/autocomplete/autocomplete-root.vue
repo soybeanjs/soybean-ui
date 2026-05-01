@@ -1,15 +1,18 @@
 <script setup lang="ts">
-import { computed, shallowRef, useId } from 'vue';
-import { useControllableState } from '../../composables';
+import { computed, nextTick, onUnmounted, shallowRef, useAttrs, useId, useTemplateRef } from 'vue';
+import type { ComponentPublicInstance } from 'vue';
+import { createEventHook } from '@vueuse/core';
+import { useControllableState, useOmitProps } from '../../composables';
 import { transformPropsToContext } from '../../shared';
-import { ListboxRoot, provideListboxUi } from '../listbox';
+import { ListboxRoot } from '../listbox';
+import { provideComboboxRootContext } from '../combobox/context';
 import { PopperRoot } from '../popper';
-import { providePopoverRootContext } from '../popover/context';
-import { provideAutocompleteRootContext, useAutocompleteUi } from './context';
+import { provideAutocompleteRootContext } from './context';
 import type { AutocompleteRootEmits, AutocompleteRootProps } from './types';
 
 defineOptions({
-  name: 'AutocompleteRoot'
+  name: 'AutocompleteRoot',
+  inheritAttrs: false
 });
 
 const props = withDefaults(defineProps<AutocompleteRootProps>(), {
@@ -23,9 +26,17 @@ const props = withDefaults(defineProps<AutocompleteRootProps>(), {
 
 const emit = defineEmits<AutocompleteRootEmits>();
 
+const attrs = useAttrs();
+
 defineSlots<{
   default?: (props: { open: boolean | undefined; modelValue: string | undefined }) => any;
 }>();
+
+const forwardedProps = useOmitProps(
+  props,
+  ['modelValue', 'defaultValue', 'open', 'defaultOpen', 'openOnClick', 'openOnFocus'],
+  attrs
+);
 
 const modelValue = useControllableState(
   () => props.modelValue,
@@ -43,29 +54,33 @@ const open = useControllableState(
   props.defaultOpen
 );
 
-const ui = useAutocompleteUi();
+const listboxElement = useTemplateRef('listboxElement');
+const parentElement = computed(() => {
+  return (listboxElement.value as ComponentPublicInstance | null)?.$el as HTMLElement | undefined;
+});
 
-const listboxUi = computed(() => ({
-  root: ui.value?.root,
-  filterRoot: ui.value?.inputRoot,
-  filterControl: ui.value?.inputControl,
-  content: ui.value?.viewport,
-  item: ui.value?.item,
-  itemIndicator: ui.value?.itemIndicator,
-  group: ui.value?.group,
-  groupLabel: ui.value?.groupLabel,
-  virtualizer: ''
-}));
+const isMultiple = computed(() => false);
+const isUserInputted = shallowRef(false);
+const isVirtual = shallowRef(false);
+
+const resetSearchTermOnBlur = computed(() => false);
+const resetSearchTermOnSelect = computed(() => false);
+const ignoreFilter = computed(() => true);
+const resetModelValueOnClear = computed(() => true);
 
 const inputElement = shallowRef<HTMLInputElement>();
-const inputId = shallowRef('');
+const triggerElement = shallowRef<HTMLElement>();
+const popupElement = shallowRef<HTMLElement>();
 const contentId = shallowRef('');
 
-const initInputId = () => {
-  if (inputId.value) return;
+const highlightedElement = computed(() => listboxElement.value?.highlightedElement ?? undefined);
 
-  inputId.value = `soybean-autocomplete-input-${useId()}`;
-};
+const resetSearchTerm = createEventHook<undefined>();
+
+const filterSearch = shallowRef('');
+const allItems = shallowRef<Map<string, string>>(new Map());
+const allGroups = shallowRef<Map<string, Set<string>>>(new Map());
+let resetSearchTermTimer: ReturnType<typeof setTimeout> | undefined;
 
 const initContentId = () => {
   if (contentId.value) return;
@@ -73,45 +88,154 @@ const initContentId = () => {
   contentId.value = `soybean-autocomplete-content-${useId()}`;
 };
 
-const onOpenChange = (value: boolean) => {
+const filterState = computed<{
+  count: number;
+  items: Map<string, number>;
+  groups: Set<string>;
+}>(previous => {
+  if (!filterSearch.value || ignoreFilter.value || isVirtual.value) {
+    return {
+      count: allItems.value.size,
+      items: previous?.items ?? new Map(),
+      groups: new Set(allGroups.value.keys())
+    };
+  }
+
+  const keyword = filterSearch.value.trim().toLowerCase();
+  const items = new Map<string, number>();
+  const groups = new Set<string>();
+  let count = 0;
+
+  for (const [id, text] of allItems.value) {
+    const matched = text.toLowerCase().includes(keyword) ? 1 : 0;
+
+    items.set(id, matched);
+
+    if (matched) {
+      count += 1;
+    }
+  }
+
+  for (const [groupId, itemIds] of allGroups.value) {
+    for (const itemId of itemIds) {
+      if ((items.get(itemId) ?? 0) > 0) {
+        groups.add(groupId);
+        break;
+      }
+    }
+  }
+
+  return {
+    count,
+    items,
+    groups
+  };
+});
+
+const onOpenChange = async (value: boolean) => {
+  if (resetSearchTermTimer) {
+    clearTimeout(resetSearchTermTimer);
+    resetSearchTermTimer = undefined;
+  }
+
   open.value = value;
+
+  if (value) {
+    filterSearch.value = modelValue.value ?? '';
+    await nextTick();
+    await listboxElement.value?.highlightSelected?.();
+    isUserInputted.value = true;
+    inputElement.value?.focus();
+
+    return;
+  }
+
+  isUserInputted.value = false;
+  filterSearch.value = '';
+
+  resetSearchTermTimer = setTimeout(() => {
+    if (!value && resetSearchTermOnBlur.value) {
+      resetSearchTerm.trigger(undefined);
+    }
+  }, 1);
 };
 
 const onModelValueChange = (value: string) => {
   modelValue.value = value;
 };
 
-provideListboxUi(listboxUi);
-providePopoverRootContext({
-  modal: computed(() => false),
-  open
+const resetModelValue = () => {
+  modelValue.value = '';
+};
+
+onUnmounted(() => {
+  if (resetSearchTermTimer) {
+    clearTimeout(resetSearchTermTimer);
+  }
 });
-provideAutocompleteRootContext({
-  ...transformPropsToContext(props, ['dir', 'disabled', 'highlightOnHover', 'openOnClick', 'openOnFocus']),
+
+provideComboboxRootContext({
+  ...transformPropsToContext(props, ['dir', 'disabled', 'openOnClick', 'openOnFocus']),
+  ignoreFilter,
+  resetSearchTermOnBlur,
+  resetSearchTermOnSelect,
+  resetModelValueOnClear,
+  isMultiple,
   modelValue,
+  onModelValueChange,
+  resetModelValue,
   open,
-  inputElement,
-  setInputElement(element) {
-    inputElement.value = element;
-  },
-  inputId,
-  initInputId,
+  onOpenChange,
+  isUserInputted,
+  isVirtual,
+  parentElement,
   contentId,
   initContentId,
-  onOpenChange,
-  onModelValueChange
+  inputElement,
+  onInputElementChange(node) {
+    inputElement.value = node;
+  },
+  triggerElement,
+  onTriggerElementChange(node) {
+    triggerElement.value = node;
+  },
+  popupElement,
+  onPopupElementChange(node) {
+    popupElement.value = node;
+  },
+  highlightedElement,
+  onResetSearchTerm: resetSearchTerm.on,
+  filterSearch,
+  allItems,
+  allGroups,
+  filterState
+});
+provideAutocompleteRootContext({
+  modelValue
+});
+
+defineExpose({
+  filtered: filterState,
+  highlightedElement,
+  highlightItem: (value: string) => {
+    listboxElement.value?.highlightItem(value);
+  },
+  highlightFirstItem: () => {
+    listboxElement.value?.highlightFirstItem();
+  },
+  highlightSelected: (event?: Event) => {
+    return listboxElement.value?.highlightSelected(event);
+  }
 });
 </script>
 
 <template>
   <PopperRoot>
     <ListboxRoot
+      ref="listboxElement"
+      v-bind="forwardedProps"
       :model-value="modelValue"
-      :dir="dir"
-      :disabled="disabled"
       :highlight-on-hover="highlightOnHover"
-      :name="name"
-      :required="required"
       selection-behavior="replace"
       @update:model-value="onModelValueChange(Array.isArray($event) ? ($event[0] ?? '') : ($event ?? ''))"
       @highlight="emit('highlight', $event)"

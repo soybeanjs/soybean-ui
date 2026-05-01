@@ -33,13 +33,6 @@ onMounted(() => {
 
 const disabled = computed(() => props.disabled || rootDisabled.value || false);
 const tag = computed(() => (props.as === 'button' ? 'button' : undefined));
-const tabindex = computed(() => {
-  if (disabled.value) {
-    return -1;
-  }
-
-  return props.as === 'button' ? undefined : 0;
-});
 const onClick = () => {
   if (disabled.value) {
     return;
@@ -63,7 +56,7 @@ const onClick = () => {
     :data-state="open ? 'open' : 'closed'"
     :data-disabled="disabled ? '' : undefined"
     :disabled="disabled"
-    :tabindex="tabindex"
+    tabindex="-1"
     data-slot="trigger"
     @click="onClick"
   >

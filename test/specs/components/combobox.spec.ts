@@ -1,5 +1,5 @@
 import { mount } from '@vue/test-utils';
-import { describe, expect, it } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
 import SCombobox from '../../../src/components/combobox/combobox.vue';
 import { getA11yViolations } from '../../shared/a11y';
 
@@ -219,6 +219,41 @@ describe('SCombobox', () => {
   });
 
   describe('accessibility', () => {
+    it('does not hide the trigger tree or popup tree when opened', async () => {
+      vi.stubEnv('MODE', 'development');
+
+      const host = document.createElement('div');
+      const sibling = document.createElement('div');
+
+      sibling.textContent = 'Outside content';
+
+      document.body.append(host, sibling);
+
+      const wrapper = mount(SCombobox, {
+        props: {
+          items,
+          placeholder: 'Select a fruit'
+        },
+        attachTo: host
+      });
+
+      await wrapper.get('button').trigger('click');
+      await wrapper.vm.$nextTick();
+      await wrapper.vm.$nextTick();
+
+      const popup = document.body.querySelector('[role="listbox"]');
+
+      expect(wrapper.get('button').element.closest('[aria-hidden="true"]')).toBeNull();
+      expect(popup?.closest('[aria-hidden="true"]')).toBeNull();
+      expect(host.getAttribute('aria-hidden')).not.toBe('true');
+      expect(sibling.getAttribute('aria-hidden')).toBe('true');
+
+      wrapper.unmount();
+      host.remove();
+      sibling.remove();
+      vi.unstubAllEnvs();
+    });
+
     it('has no a11y violations', async () => {
       const wrapper = mount(SCombobox, {
         props: {

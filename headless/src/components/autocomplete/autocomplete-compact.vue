@@ -5,19 +5,22 @@ import { useFuse } from '@vueuse/integrations/useFuse';
 import { defu } from 'defu';
 import { useControllableState, useOmitProps } from '../../composables';
 import Icon from '../_icon/icon.vue';
-import AutocompleteAnchor from './autocomplete-anchor.vue';
-import AutocompleteContent from './autocomplete-content.vue';
-import AutocompleteGroup from './autocomplete-group.vue';
-import AutocompleteGroupLabel from './autocomplete-group-label.vue';
-import AutocompleteInput from './autocomplete-input.vue';
-import AutocompleteItem from './autocomplete-item.vue';
-import AutocompleteItemIndicator from './autocomplete-item-indicator.vue';
+import {
+  ComboboxAnchor as AutocompleteAnchor,
+  ComboboxContent as AutocompleteContent,
+  ComboboxGroup as AutocompleteGroup,
+  ComboboxGroupLabel as AutocompleteGroupLabel,
+  ComboboxItem as AutocompleteItem,
+  ComboboxItemIndicator as AutocompleteItemIndicator,
+  ComboboxSeparator as AutocompleteSeparator,
+  ComboboxTrigger as AutocompleteTrigger,
+  ComboboxViewport as AutocompleteViewport,
+  ComboboxEmpty as AutocompleteEmpty,
+  ComboboxCancel as AutocompleteCancel
+} from '../combobox';
 import { Portal } from '../portal';
 import AutocompleteRoot from './autocomplete-root.vue';
-import AutocompleteSeparator from './autocomplete-separator.vue';
-import AutocompleteTrigger from './autocomplete-trigger.vue';
-import AutocompleteViewport from './autocomplete-viewport.vue';
-import { useAutocompleteUi } from './context';
+import AutocompleteInput from './autocomplete-input.vue';
 import { getAutocompleteItemOptions, getAutocompleteSearchOptions, isGroupOption } from './shared';
 import type {
   AutocompleteCompactEmits,
@@ -96,8 +99,6 @@ const filteredItems = computed(() =>
   getAutocompleteItemOptions<T>(results.value.map(result => result.item as AutocompleteSearchOptionData))
 );
 
-const ui = useAutocompleteUi();
-
 const inputProps = computed(() => ({
   ...props.inputProps,
   id: props.inputProps?.id ?? props.id,
@@ -129,34 +130,28 @@ const handleSelect = (item: T) => {
       <AutocompleteInput v-bind="inputProps">
         <template #leading>
           <slot name="input-leading">
-            <Icon icon="lucide:search" :class="ui.inputIcon" />
+            <Icon icon="lucide:search" />
           </slot>
         </template>
         <template #trailing="{ clear }">
-          <button
-            v-if="clearable && modelValue"
-            type="button"
-            :class="ui.inputClearable"
-            :aria-label="clearLabel"
-            @click="clear"
-          >
+          <AutocompleteCancel v-if="clearable && modelValue" :aria-label="clearLabel" @click="clear">
             <Icon icon="lucide:x" />
-          </button>
+          </AutocompleteCancel>
           <slot name="input-trailing" />
         </template>
       </AutocompleteInput>
-      <AutocompleteTrigger v-bind="triggerProps" aria-label="Toggle suggestions">
+      <AutocompleteTrigger v-slot="{ triggerIconClass }" v-bind="triggerProps" aria-label="Toggle suggestions">
         <slot name="trigger-icon">
-          <Icon icon="lucide:chevrons-up-down" :class="ui.triggerIcon" />
+          <Icon icon="lucide:chevrons-up-down" :class="triggerIconClass" />
         </slot>
       </AutocompleteTrigger>
     </AutocompleteAnchor>
     <Portal v-bind="portalProps">
       <AutocompleteContent v-bind="contentProps">
         <AutocompleteViewport v-bind="viewportProps">
-          <div v-if="!filteredItems.length" :class="ui.empty">
+          <AutocompleteEmpty v-if="!filteredItems.length">
             <slot name="empty">{{ emptyLabel }}</slot>
-          </div>
+          </AutocompleteEmpty>
           <template v-for="item in filteredItems" :key="getItemKey(item)">
             <template v-if="isGroupOption(item)">
               <AutocompleteGroup v-bind="groupProps">
@@ -171,11 +166,9 @@ const handleSelect = (item: T) => {
                     @select="handleSelect(child)"
                   >
                     <slot name="item-leading" :item="child">
-                      <Icon v-if="child.icon" :icon="child.icon" :class="ui.itemIcon" />
+                      <Icon v-if="child.icon" :icon="child.icon" />
                     </slot>
-                    <span :class="ui.itemText">
-                      <slot name="item-label" :item="child">{{ child.label ?? child.value }}</slot>
-                    </span>
+                    <slot name="item-text" :item="child">{{ child.label ?? child.value }}</slot>
                     <slot name="item-trailing" :item="child" />
                     <AutocompleteItemIndicator v-bind="itemIndicatorProps">
                       <slot name="item-indicator" :item="child">
@@ -196,11 +189,9 @@ const handleSelect = (item: T) => {
                 @select="handleSelect(item)"
               >
                 <slot name="item-leading" :item="item">
-                  <Icon v-if="item.icon" :icon="item.icon" :class="ui.itemIcon" />
+                  <Icon v-if="item.icon" :icon="item.icon" />
                 </slot>
-                <span :class="ui.itemText">
-                  <slot name="item-label" :item="item">{{ item.label ?? item.value }}</slot>
-                </span>
+                <slot name="item-text" :item="item">{{ item.label ?? item.value }}</slot>
                 <slot name="item-trailing" :item="item" />
                 <AutocompleteItemIndicator v-bind="itemIndicatorProps">
                   <slot name="item-indicator" :item="item">

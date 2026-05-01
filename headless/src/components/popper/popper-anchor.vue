@@ -2,7 +2,7 @@
 import { watchEffect } from 'vue';
 import { useForwardElement, useOmitProps } from '../../composables';
 import { Primitive } from '../primitive';
-import { usePopperRootContext } from './context';
+import { usePopperRootContext, usePopperUi } from './context';
 import type { PopperAnchorProps } from './types';
 
 defineOptions({
@@ -12,6 +12,8 @@ defineOptions({
 const props = defineProps<PopperAnchorProps>();
 
 const forwardedProps = useOmitProps(props, ['reference']);
+
+const cls = usePopperUi('anchor');
 
 const { onAnchorElementChange } = usePopperRootContext('PopperAnchor');
 const [_, setAnchorElement] = useForwardElement(el => {
@@ -28,7 +30,7 @@ watchEffect(() => {
 </script>
 
 <template>
-  <Primitive v-bind="forwardedProps" :ref="setAnchorElement">
+  <Primitive v-bind="forwardedProps" :ref="setAnchorElement" :class="cls">
     <slot />
   </Primitive>
 </template>

@@ -163,6 +163,6 @@ export interface PopperPositionerContextParams {
   isPositioned: ComputedRef<boolean>;
 }
 
-export type PopperUiSlot = 'positioner' | 'popup' | 'arrow';
+export type PopperUiSlot = 'positioner' | 'popup' | 'arrow' | 'anchor';
 
 export type PopperUi = UiClass<PopperUiSlot>;

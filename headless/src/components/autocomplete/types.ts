@@ -1,22 +1,25 @@
-import type { ButtonHTMLAttributes, HTMLAttributes, ShallowRef } from 'vue';
+import type { HTMLAttributes, ShallowRef } from 'vue';
 import type { UseFuseOptions } from '@vueuse/integrations/useFuse';
 import type { CollectionItemData } from '../../composables';
-import type { Direction, ForceMountProps, FormFieldCommonProps, PropsToContext, UiClass } from '../../types';
-import type { InputControlProps, InputRootEmits, InputRootProps } from '../input/types';
-import type { IconValue } from '../_icon/types';
+import type { Direction, FormFieldCommonProps } from '../../types';
 import type {
-  ListboxCollectionItemData,
-  ListboxContentProps,
-  ListboxGroupLabelProps,
-  ListboxGroupProps,
-  ListboxItemEmits,
-  ListboxItemIndicatorProps,
-  ListboxItemProps
-} from '../listbox/types';
-import type { PopperAnchorProps, PopperPositionerProps } from '../popper/types';
-import type { PrimitiveProps } from '../primitive/types';
-import type { PortalProps } from '../portal/types';
-import type { SeparatorRootProps } from '../separator/types';
+  ComboboxAnchorProps as AutocompleteAnchorProps,
+  ComboboxContentProps as AutocompleteContentProps,
+  ComboboxGroupLabelProps as AutocompleteGroupLabelProps,
+  ComboboxGroupProps as AutocompleteGroupProps,
+  ComboboxItemEmits as AutocompleteItemEmits,
+  ComboboxItemIndicatorProps as AutocompleteItemIndicatorProps,
+  ComboboxItemProps as AutocompleteItemProps,
+  ComboboxSeparatorProps as AutocompleteSeparatorProps,
+  ComboboxTriggerProps as AutocompleteTriggerProps,
+  ComboboxViewportProps as AutocompleteViewportProps,
+  ComboboxUiSlot as AutocompleteUiSlot,
+  ComboboxUi as AutocompleteUi
+} from '../combobox/types';
+import type { InputControlProps, InputRootEmits as AutocompleteInputEmits, InputRootProps } from '../input/types';
+import type { IconValue } from '../_icon/types';
+import type { ListboxCollectionItemData } from '../listbox/types';
+import type { PortalProps as AutocompletePortalProps } from '../portal/types';
 
 export interface AutocompleteRootProps extends FormFieldCommonProps, /** @vue-ignore */ HTMLAttributes {
   /** The controlled value of the autocomplete input. */
@@ -47,48 +50,14 @@ export type AutocompleteRootEmits = {
   highlight: [payload?: AutocompleteHighlightPayload];
 };
 
-export interface AutocompleteRootContext extends PropsToContext<
-  AutocompleteRootProps,
-  'dir' | 'disabled' | 'highlightOnHover' | 'openOnClick' | 'openOnFocus'
-> {
+export interface AutocompleteRootContext {
   modelValue: ShallowRef<string | undefined>;
-  open: ShallowRef<boolean | undefined>;
-  inputElement: ShallowRef<HTMLInputElement | undefined>;
-  setInputElement: (element?: HTMLInputElement) => void;
-  inputId: ShallowRef<string>;
-  initInputId: () => void;
-  contentId: ShallowRef<string>;
-  initContentId: () => void;
-  onOpenChange: (value: boolean) => void;
-  onModelValueChange: (value: string) => void;
 }
-
-export interface AutocompleteAnchorProps extends PopperAnchorProps {}
 
 export interface AutocompleteInputProps extends Omit<InputRootProps, 'defaultValue' | 'modelValue'> {
   inputRef?: (el: HTMLInputElement) => void;
   controlProps?: InputControlProps;
 }
-
-export type AutocompleteInputEmits = InputRootEmits;
-
-export interface AutocompleteTriggerProps extends PrimitiveProps, /** @vue-ignore */ ButtonHTMLAttributes {}
-
-export interface AutocompleteContentProps extends PopperPositionerProps, ForceMountProps {}
-
-export interface AutocompleteViewportProps extends ListboxContentProps {}
-
-export interface AutocompleteGroupProps extends ListboxGroupProps {}
-
-export interface AutocompleteGroupLabelProps extends ListboxGroupLabelProps {}
-
-export interface AutocompleteItemProps extends ListboxItemProps {}
-
-export type AutocompleteItemEmits = ListboxItemEmits;
-
-export interface AutocompleteItemIndicatorProps extends ListboxItemIndicatorProps {}
-
-export interface AutocompleteSeparatorProps extends SeparatorRootProps {}
 
 export interface AutocompleteSingleOptionData extends Pick<AutocompleteItemProps, 'disabled' | 'value'> {
   /** Display label in the option list. */
@@ -135,7 +104,7 @@ export interface AutocompleteCompactProps<
   anchorProps?: AutocompleteAnchorProps;
   inputProps?: AutocompleteInputProps;
   triggerProps?: AutocompleteTriggerProps;
-  portalProps?: PortalProps;
+  portalProps?: AutocompletePortalProps;
   contentProps?: AutocompleteContentProps;
   viewportProps?: AutocompleteViewportProps;
   groupProps?: AutocompleteGroupProps;
@@ -157,31 +126,24 @@ export type AutocompleteCompactSlots<T extends AutocompleteSingleOptionData = Au
   empty?: () => any;
   'group-label'?: (props: { item: Extract<AutocompleteOptionData<T>, { items: T[] }> }) => any;
   'item-leading'?: (props: { item: T }) => any;
-  'item-label'?: (props: { item: T }) => any;
+  'item-text'?: (props: { item: T }) => any;
   'item-trailing'?: (props: { item: T }) => any;
   'item-indicator'?: (props: { item: T }) => any;
 };
 
-export type AutocompleteUiSlot =
-  | 'root'
-  | 'anchor'
-  | 'inputRoot'
-  | 'inputControl'
-  | 'inputIcon'
-  | 'inputClearable'
-  | 'trigger'
-  | 'triggerIcon'
-  | 'content'
-  | 'viewport'
-  | 'group'
-  | 'groupLabel'
-  | 'item'
-  | 'itemText'
-  | 'itemIcon'
-  | 'itemIndicator'
-  | 'separator'
-  | 'empty';
-
-export type AutocompleteUi = UiClass<AutocompleteUiSlot>;
-
-export type { PortalProps as AutocompletePortalProps };
+export type {
+  AutocompleteAnchorProps,
+  AutocompleteContentProps,
+  AutocompleteGroupLabelProps,
+  AutocompleteGroupProps,
+  AutocompleteInputEmits,
+  AutocompleteItemEmits,
+  AutocompleteItemIndicatorProps,
+  AutocompleteItemProps,
+  AutocompletePortalProps,
+  AutocompleteSeparatorProps,
+  AutocompleteTriggerProps,
+  AutocompleteViewportProps,
+  AutocompleteUiSlot,
+  AutocompleteUi
+};

@@ -128,6 +128,48 @@ describe('SAutocomplete', () => {
       wrapper.unmount();
     });
 
+    it('opens the popup when clicking the trigger', async () => {
+      const wrapper = mount(SAutocomplete, {
+        props: { items },
+        attachTo: document.body
+      });
+
+      const buttons = wrapper.findAll('button');
+      const trigger = buttons.at(-1);
+
+      expect(trigger).toBeTruthy();
+
+      await trigger!.trigger('click');
+      await flushPromises();
+      await nextTick();
+
+      expect(wrapper.emitted('update:open')?.at(-1)).toEqual([true]);
+      expect(document.body.querySelector('[role="listbox"]')).toBeTruthy();
+
+      wrapper.unmount();
+    });
+
+    it('keeps the popup open after focus when openOnFocus is enabled', async () => {
+      const wrapper = mount(SAutocomplete, {
+        props: { items, openOnFocus: true },
+        attachTo: document.body
+      });
+
+      const input = wrapper.find('input');
+
+      await input.trigger('focus');
+      await flushPromises();
+      await nextTick();
+
+      const openEvents = wrapper.emitted('update:open') ?? [];
+
+      expect(openEvents[0]).toEqual([true]);
+      expect(openEvents).not.toContainEqual([false]);
+      expect(document.body.querySelector('[role="listbox"]')).toBeTruthy();
+
+      wrapper.unmount();
+    });
+
     it('emits select with the selected item', async () => {
       const wrapper = mount(SAutocomplete, {
         props: { items, open: true },

@@ -1,8 +1,9 @@
 <script setup lang="ts" generic="M extends boolean = false">
 import { computed, nextTick, onUnmounted, shallowRef, useId, useTemplateRef, useAttrs } from 'vue';
+import type { ComponentPublicInstance } from 'vue';
 import { createEventHook } from '@vueuse/core';
 import { useControllableState, useOmitProps, useSelection } from '../../composables';
-import { transformPropsToContext } from '../../shared';
+import { transformPropsToContext, getElFromTemplateRef } from '../../shared';
 import { ListboxRoot } from '../listbox';
 import { PopperRoot } from '../popper';
 import { provideComboboxRootContext } from './context';
@@ -50,6 +51,7 @@ const { modelValue, isMultiple, onModelValueChange, resetModelValue } = useSelec
 });
 
 const listboxElement = useTemplateRef('listboxElement');
+const parentElement = computed(() => getElFromTemplateRef(listboxElement.value as ComponentPublicInstance | null));
 
 const open = useControllableState(
   () => props.open,
@@ -141,6 +143,7 @@ const onOpenChange = async (value: boolean) => {
     await nextTick();
     await listboxElement.value?.highlightSelected?.();
 
+    isUserInputted.value = true;
     inputElement.value?.focus();
 
     return;
@@ -180,6 +183,7 @@ provideComboboxRootContext({
   onOpenChange,
   isUserInputted,
   isVirtual,
+  parentElement,
   contentId,
   initContentId,
   inputElement,
