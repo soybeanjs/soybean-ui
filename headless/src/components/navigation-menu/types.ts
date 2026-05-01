@@ -9,7 +9,7 @@ import type {
   PropsToContext,
   UiClass
 } from '../../types';
-import type { LinkProps } from '../link/types';
+import type { LinkProps, LinkBaseProps } from '../link/types';
 import type { PrimitiveProps } from '../primitive/types';
 
 export interface NavigationMenuRootProps extends /** @vue-ignore */ HTMLAttributes {
@@ -159,17 +159,6 @@ export type NavigationMenuUiSlot =
   | 'subLink';
 
 export type NavigationMenuUi = UiClass<NavigationMenuUiSlot>;
-
-export interface LinkBaseProps {
-  /** Navigation target. Can be a router link object or href string. */
-  to?: any;
-  /** External URL string. */
-  href?: string;
-  /** Link target attribute (e.g., '_blank' for new window/tab). */
-  target?: string;
-  /** Whether the link is external. */
-  external?: boolean;
-}
 
 export interface NavigationMenuItemData extends LinkBaseProps {
   /** The value of the item. */

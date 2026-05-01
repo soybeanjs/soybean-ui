@@ -28,7 +28,6 @@ export type {
   NavigationMenuSubListProps,
   NavigationMenuUiSlot,
   NavigationMenuUi,
-  LinkBaseProps,
   NavigationMenuItemData,
   NavigationMenuCompactProps,
   NavigationMenuCompactEmits,

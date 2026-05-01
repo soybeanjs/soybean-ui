@@ -75,7 +75,16 @@ export interface StepperItemContext extends StepperItemContextParams {
   descriptionId: ShallowRef<string>;
 }
 
-export type StepperUiSlot = 'root' | 'item' | 'trigger' | 'indicator' | 'separator' | 'title' | 'description';
+export type StepperUiSlot =
+  | 'root'
+  | 'item'
+  | 'trigger'
+  | 'indicator'
+  | 'indicatorIcon'
+  | 'itemContent'
+  | 'separator'
+  | 'title'
+  | 'description';
 
 export type StepperUi = UiClass<StepperUiSlot>;
 
