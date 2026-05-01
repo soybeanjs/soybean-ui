@@ -5,6 +5,7 @@ export { default as StepperIndicator } from './stepper-indicator.vue';
 export { default as StepperSeparator } from './stepper-separator.vue';
 export { default as StepperTitle } from './stepper-title.vue';
 export { default as StepperDescription } from './stepper-description.vue';
+export { default as StepperCompact } from './stepper-compact.vue';
 
 export { provideStepperUi } from './context';
 
@@ -19,5 +20,9 @@ export type {
   StepperDescriptionProps,
   StepperState,
   StepperUiSlot,
-  StepperUi
+  StepperUi,
+  StepperItemData,
+  StepperCompactProps,
+  StepperCompactEmits,
+  StepperCompactSlots
 } from './types';

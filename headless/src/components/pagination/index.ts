@@ -6,6 +6,7 @@ export { default as PaginationPrev } from './pagination-prev.vue';
 export { default as PaginationNext } from './pagination-next.vue';
 export { default as PaginationLast } from './pagination-last.vue';
 export { default as PaginationEllipsis } from './pagination-ellipsis.vue';
+export { default as PaginationCompact } from './pagination-compact.vue';
 
 export { providePaginationUi } from './context';
 
@@ -17,5 +18,8 @@ export type {
   PaginationEllipsisProps,
   PaginationButtonProps,
   PaginationUiSlot,
-  PaginationUi
+  PaginationUi,
+  PaginationCompactProps,
+  PaginationCompactEmits,
+  PaginationCompactSlots
 } from './types';

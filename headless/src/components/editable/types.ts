@@ -105,3 +105,23 @@ export interface EditableRootContext extends Omit<EditableRootContextParams, 'di
 export type EditableUiSlot = 'root' | 'area' | 'preview' | 'input' | 'editTrigger' | 'submitTrigger' | 'cancelTrigger';
 
 export type EditableUi = UiClass<EditableUiSlot>;
+
+export interface EditableCompactProps extends EditableRootProps {
+  areaProps?: EditableAreaProps;
+  previewProps?: EditablePreviewProps;
+  inputProps?: EditableInputProps;
+  editTriggerProps?: EditableEditTriggerProps;
+  submitTriggerProps?: EditableSubmitTriggerProps;
+  cancelTriggerProps?: EditableCancelTriggerProps;
+}
+
+export type EditableCompactEmits = EditableRootEmits;
+
+export interface EditableCompactSlots {
+  default?: (props: { state: EditableViewState; isEmpty: boolean; isEditing: boolean }) => any;
+  preview?: (props: { state: EditableViewState; isEmpty: boolean; isEditing: boolean }) => any;
+  input?: (props: { state: EditableViewState; isEmpty: boolean; isEditing: boolean }) => any;
+  'edit-trigger'?: (props: { state: EditableViewState; isEmpty: boolean; isEditing: boolean }) => any;
+  'submit-trigger'?: (props: { state: EditableViewState; isEmpty: boolean; isEditing: boolean }) => any;
+  'cancel-trigger'?: (props: { state: EditableViewState; isEmpty: boolean; isEditing: boolean }) => any;
+}

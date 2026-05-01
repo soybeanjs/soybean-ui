@@ -1,25 +1,17 @@
 import type {
-  CardContentProps,
-  CardDescriptionProps,
-  CardFooterProps,
-  CardHeaderProps,
-  CardRootProps,
-  CardTitleProps,
-  CardTitleRootProps,
+  CardCompactProps,
   CardUi,
   ClassValue
 } from '@soybeanjs/headless';
 import type { ThemeSize } from '@/theme';
 
-export interface CardProps extends CardRootProps {
+export interface CardProps extends CardCompactProps {
   /**
    * root class
    */
   class?: ClassValue;
   size?: ThemeSize;
   ui?: Partial<CardUi>;
-  title?: string;
-  description?: string;
   /**
    * If true, the content will be scrollable when the root has height and content is taller than the root
    *
@@ -32,10 +24,4 @@ export interface CardProps extends CardRootProps {
    * @default false
    */
   split?: boolean;
-  headerProps?: CardHeaderProps;
-  contentProps?: CardContentProps;
-  footerProps?: CardFooterProps;
-  titleRootProps?: CardTitleRootProps;
-  titleProps?: CardTitleProps;
-  descriptionProps?: CardDescriptionProps;
 }

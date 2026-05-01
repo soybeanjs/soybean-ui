@@ -66,6 +66,7 @@ import {
   BreadcrumbSeparator,
   Button,
   CardCollapsibleTrigger,
+  CardCompact,
   CardContent,
   CardDescription,
   CardFooter,
@@ -185,6 +186,7 @@ import {
   DropdownMenuWrapperCompact,
   EditableArea,
   EditableCancelTrigger,
+  EditableCompact,
   EditableEditTrigger,
   EditableInput,
   EditablePreview,
@@ -202,6 +204,7 @@ import {
   FormField,
   FormLabel,
   HoverCardArrow,
+  HoverCardCompact,
   HoverCardPopup,
   HoverCardPortal,
   HoverCardPositioner,
@@ -285,6 +288,7 @@ import {
   MenuSub,
   MenuSubContent,
   MenuSubTrigger,
+  NavigationMenuCompact,
   NavigationMenuContent,
   NavigationMenuIndicator,
   NavigationMenuItem,
@@ -298,6 +302,7 @@ import {
   PageTabsItem,
   PageTabsPin,
   PageTabsRoot,
+  PaginationCompact,
   PaginationEllipsis,
   PaginationFirst,
   PaginationLast,
@@ -309,6 +314,7 @@ import {
   PopoverAnchor,
   PopoverArrow,
   PopoverClose,
+  PopoverCompact,
   PopoverPopup,
   PopoverPortal,
   PopoverPositioner,
@@ -371,6 +377,7 @@ import {
   SplitterGroup,
   SplitterPanel,
   SplitterResizeHandle,
+  StepperCompact,
   StepperDescription,
   StepperIndicator,
   StepperItem,
@@ -612,6 +619,7 @@ export const Breadcrumb = {
 export { Button };
 
 export const Card = {
+  Compact: CardCompact,
   Root: CardRoot,
   Header: CardHeader,
   Title: CardTitle,
@@ -621,6 +629,7 @@ export const Card = {
   Footer: CardFooter,
   CollapsibleTrigger: CardCollapsibleTrigger
 } as {
+  Compact: typeof CardCompact;
   Root: typeof CardRoot;
   Header: typeof CardHeader;
   Title: typeof CardTitle;
@@ -896,6 +905,7 @@ export const DropdownMenu = {
 };
 
 export const Editable = {
+  Compact: EditableCompact,
   Area: EditableArea,
   CancelTrigger: EditableCancelTrigger,
   EditTrigger: EditableEditTrigger,
@@ -904,6 +914,7 @@ export const Editable = {
   Root: EditableRoot,
   SubmitTrigger: EditableSubmitTrigger
 } as {
+  Compact: typeof EditableCompact;
   Area: typeof EditableArea;
   CancelTrigger: typeof EditableCancelTrigger;
   EditTrigger: typeof EditableEditTrigger;
@@ -944,6 +955,7 @@ export const Form = {
 };
 
 export const HoverCard = {
+  Compact: HoverCardCompact,
   Root: HoverCardRoot,
   Trigger: HoverCardTrigger,
   Portal: HoverCardPortal,
@@ -951,6 +963,7 @@ export const HoverCard = {
   Popup: HoverCardPopup,
   Arrow: HoverCardArrow
 } as {
+  Compact: typeof HoverCardCompact;
   Root: typeof HoverCardRoot;
   Trigger: typeof HoverCardTrigger;
   Portal: typeof HoverCardPortal;
@@ -1148,6 +1161,7 @@ export const Menubar = {
 };
 
 export const NavigationMenu = {
+  Compact: NavigationMenuCompact,
   Root: NavigationMenuRoot,
   List: NavigationMenuList,
   Item: NavigationMenuItem,
@@ -1158,6 +1172,7 @@ export const NavigationMenu = {
   Viewport: NavigationMenuViewport,
   Indicator: NavigationMenuIndicator
 } as {
+  Compact: typeof NavigationMenuCompact;
   Root: typeof NavigationMenuRoot;
   List: typeof NavigationMenuList;
   Item: typeof NavigationMenuItem;
@@ -1182,6 +1197,7 @@ export const PageTabs = {
 };
 
 export const Pagination = {
+  Compact: PaginationCompact,
   Root: PaginationRoot,
   List: PaginationList,
   ListItem: PaginationListItem,
@@ -1191,6 +1207,7 @@ export const Pagination = {
   Last: PaginationLast,
   Ellipsis: PaginationEllipsis
 } as {
+  Compact: typeof PaginationCompact;
   Root: typeof PaginationRoot;
   List: typeof PaginationList;
   ListItem: typeof PaginationListItem;
@@ -1202,6 +1219,7 @@ export const Pagination = {
 };
 
 export const Popover = {
+  Compact: PopoverCompact,
   Root: PopoverRoot,
   Trigger: PopoverTrigger,
   Anchor: PopoverAnchor,
@@ -1211,6 +1229,7 @@ export const Popover = {
   Arrow: PopoverArrow,
   Close: PopoverClose
 } as {
+  Compact: typeof PopoverCompact;
   Root: typeof PopoverRoot;
   Trigger: typeof PopoverTrigger;
   Anchor: typeof PopoverAnchor;
@@ -1376,6 +1395,7 @@ export const Slider = {
 export { Slot };
 
 export const Stepper = {
+  Compact: StepperCompact,
   Root: StepperRoot,
   Item: StepperItem,
   Trigger: StepperTrigger,
@@ -1384,6 +1404,7 @@ export const Stepper = {
   Title: StepperTitle,
   Description: StepperDescription
 } as {
+  Compact: typeof StepperCompact;
   Root: typeof StepperRoot;
   Item: typeof StepperItem;
   Trigger: typeof StepperTrigger;

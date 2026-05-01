@@ -67,3 +67,26 @@ export interface PageItem {
 }
 
 export type Pages = Array<PageEllipsis | PageItem>;
+
+export interface PaginationCompactProps extends PaginationRootProps {
+  showFirstOrLast?: boolean;
+  listProps?: PaginationListProps;
+  listItemProps?: PaginationListItemProps;
+  ellipsisProps?: PaginationEllipsisProps;
+  firstProps?: PaginationButtonProps;
+  prevProps?: PaginationButtonProps;
+  nextProps?: PaginationButtonProps;
+  lastProps?: PaginationButtonProps;
+}
+
+export type PaginationCompactEmits = PaginationRootEmits;
+
+export interface PaginationCompactSlots {
+  leading?: () => any;
+  trailing?: () => any;
+  first?: () => any;
+  prev?: () => any;
+  next?: () => any;
+  last?: () => any;
+  ellipsis?: () => any;
+}

@@ -4,6 +4,7 @@ export { default as HoverCardPortal } from '../portal/portal.vue';
 export { default as HoverCardPositioner } from './hover-card-positioner.vue';
 export { default as HoverCardPopup } from './hover-card-popup.vue';
 export { default as HoverCardArrow } from '../popper/popper-arrow.vue';
+export { default as HoverCardCompact } from './hover-card-compact.vue';
 
 export { providePopperUi as provideHoverCardUi } from '../popper/context';
 
@@ -13,7 +14,10 @@ export type {
   HoverCardTriggerProps,
   HoverCardPopupProps,
   HoverCardPositionerProps,
-  HoverCardPositionerEmits
+  HoverCardPositionerEmits,
+  HoverCardCompactProps,
+  HoverCardCompactEmits,
+  HoverCardCompactSlots
 } from './types';
 export type {
   PopperArrowProps as HoverCardArrowProps,

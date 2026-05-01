@@ -54,3 +54,20 @@ export type {
 } from '../popper/types';
 export type { PortalProps as HoverCardPortalProps } from '../portal/types';
 export type { PopperAnchorProps as HoverCardTriggerProps } from '../popper/types';
+
+export interface HoverCardCompactProps extends HoverCardRootProps {
+  placement?: PopperPositionerProps['placement'];
+  showArrow?: boolean;
+  triggerProps?: HoverCardTriggerProps;
+  portalProps?: HoverCardPortalProps;
+  positionerProps?: HoverCardPositionerProps;
+  popupProps?: HoverCardPopupProps;
+  arrowProps?: HoverCardArrowProps;
+}
+
+export type HoverCardCompactEmits = HoverCardRootEmits & HoverCardPositionerEmits;
+
+export interface HoverCardCompactSlots {
+  default?: () => any;
+  trigger?: () => any;
+}

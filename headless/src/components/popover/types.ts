@@ -9,7 +9,8 @@ import type {
 } from '../../types';
 import type { PrimitiveProps } from '../primitive/types';
 import type { DialogRootEmits, DialogRootProps } from '../dialog/types';
-import type { PopperPopupProps, PopperPositionerProps } from '../popper/types';
+import type { PopperPopupProps, PopperPositionerProps, PopperArrowProps } from '../popper/types';
+import type { PortalProps } from '../portal/types';
 
 export interface PopoverRootProps extends DialogRootProps {}
 
@@ -38,3 +39,24 @@ export interface PopoverRootContextParams {
 }
 
 export type { PopperAnchorProps as PopoverAnchorProps } from '../popper/types';
+
+export interface PopoverCompactProps extends PopoverRootProps {
+  placement?: PopperPositionerProps['placement'];
+  showArrow?: boolean;
+  triggerProps?: PopoverTriggerProps;
+  portalProps?: PortalProps;
+  positionerProps?: PopoverPositionerProps;
+  popupProps?: PopoverPopupProps;
+  arrowProps?: PopperArrowProps;
+  closeProps?: PopoverCloseProps;
+}
+
+export type PopoverCompactEmits = PopoverRootEmits & PopoverPositionerEmits;
+
+export interface PopoverCompactSlots {
+  default?: () => any;
+  trigger?: () => any;
+  close?: () => any;
+}
+
+export type { PopperUiSlot as PopoverUiSlot, PopperUi as PopoverUi } from '../popper/types';

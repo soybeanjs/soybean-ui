@@ -5,6 +5,7 @@ export { default as EditableInput } from './editable-input.vue';
 export { default as EditablePreview } from './editable-preview.vue';
 export { default as EditableRoot } from './editable-root.vue';
 export { default as EditableSubmitTrigger } from './editable-submit-trigger.vue';
+export { default as EditableCompact } from './editable-compact.vue';
 
 export { provideEditableUi } from './context';
 
@@ -23,5 +24,8 @@ export type {
   EditableSubmitTriggerProps,
   EditableUi,
   EditableUiSlot,
-  EditableViewState
+  EditableViewState,
+  EditableCompactProps,
+  EditableCompactEmits,
+  EditableCompactSlots
 } from './types';

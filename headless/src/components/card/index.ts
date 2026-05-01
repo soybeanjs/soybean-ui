@@ -6,6 +6,7 @@ export { default as CardDescription } from './card-description.vue';
 export { default as CardContent } from './card-content.vue';
 export { default as CardFooter } from './card-footer.vue';
 export { default as CardCollapsibleTrigger } from './card-collapsible-trigger.vue';
+export { default as CardCompact } from './card-compact.vue';
 
 export { provideCardUi } from './context';
 
@@ -20,5 +21,8 @@ export type {
   CardDescriptionProps,
   CardCollapsibleTriggerProps,
   CardUiSlot,
-  CardUi
+  CardUi,
+  CardCompactProps,
+  CardCompactEmits,
+  CardCompactSlots
 } from './types';
