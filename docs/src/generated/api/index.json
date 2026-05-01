@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-05-01T18:08:53.880Z",
-  "schemaVersion": 3,
+  "generatedAt": "2026-05-01T19:04:15.916Z",
+  "schemaVersion": 4,
   "components": {
     "accordion": {
       "component": "accordion",
