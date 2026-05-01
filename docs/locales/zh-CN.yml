@@ -77,6 +77,17 @@ api:
   props: 属性
   emits: 事件
   slots: 插槽
+  columns:
+    prop_name: 属性名
+    emit_name: 事件名
+    slot_name: 插槽名
+    field_name: 字段名
+    type: 类型
+    default: 默认值
+    parameters: 参数
+    description: 描述
+  actions:
+    open_full_type: 查看完整类型
   local_types: 本地类型
   common_types_note: 通用且重复出现的类型已集中整理到
   common_types_link: 公共类型页。

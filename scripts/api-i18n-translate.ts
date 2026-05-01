@@ -41,6 +41,9 @@ type OpenAiCompletionResponse = {
 
 const rootDir = process.cwd();
 const localeDir = path.join(rootDir, 'docs/src/generated/api-locales');
+const defaultBaseUrl = 'https://api.openai.com/v1';
+const defaultRetryCount = 3;
+const defaultRetryDelayMs = 1500;
 
 function printUsage() {
   console.log(`Usage: pnpm translate:api:i18n -- --locale <locale> [options]
@@ -224,6 +227,36 @@ function getRequiredEnv(name: string): string {
   return value;
 }
 
+function getEnvNumber(name: string, fallback: number): number {
+  const value = Number(process.env[name]?.trim());
+
+  if (!Number.isFinite(value) || value < 0) {
+    return fallback;
+  }
+
+  return value;
+}
+
+function shouldRetryRequest(status: number): boolean {
+  return status === 429 || status >= 500;
+}
+
+function getRetryDelay(attempt: number, retryDelayMs: number): number {
+  return retryDelayMs * 2 ** attempt;
+}
+
+async function wait(ms: number): Promise<void> {
+  await new Promise(resolve => setTimeout(resolve, ms));
+}
+
+async function readResponseText(response: Response): Promise<string> {
+  try {
+    return (await response.text()).trim();
+  } catch {
+    return '';
+  }
+}
+
 function buildPrompt(entries: TranslationEntry[], locale: string): OpenAiMessage[] {
   const payload = Object.fromEntries(entries.map(entry => [entry.key, entry.source]));
 
@@ -270,25 +303,50 @@ function extractJsonObject(content: string): JsonObject {
 async function requestTranslations(entries: TranslationEntry[], locale: string): Promise<Map<string, string>> {
   const apiKey = getRequiredEnv('TRANSLATE_API_KEY');
   const model = getRequiredEnv('TRANSLATE_MODEL');
-  const baseUrl = (process.env.TRANSLATE_BASE_URL?.trim() || 'https://api.openai.com/v1').replace(/\/$/u, '');
-  const response = await fetch(`${baseUrl}/chat/completions`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${apiKey}`
-    },
-    body: JSON.stringify({
-      model,
-      temperature: 0,
-      messages: buildPrompt(entries, locale)
-    })
-  });
+  const baseUrl = (process.env.TRANSLATE_BASE_URL?.trim() || defaultBaseUrl).replace(/\/$/u, '');
+  const retryCount = getEnvNumber('TRANSLATE_RETRY_COUNT', defaultRetryCount);
+  const retryDelayMs = getEnvNumber('TRANSLATE_RETRY_DELAY_MS', defaultRetryDelayMs);
 
-  if (!response.ok) {
-    throw new Error(`Translation request failed: ${response.status} ${response.statusText}`);
+  let payload: OpenAiCompletionResponse | null = null;
+
+  for (let attempt = 0; attempt <= retryCount; attempt += 1) {
+    const response = await fetch(`${baseUrl}/chat/completions`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${apiKey}`
+      },
+      body: JSON.stringify({
+        model,
+        temperature: 0,
+        messages: buildPrompt(entries, locale)
+      })
+    });
+
+    if (response.ok) {
+      payload = (await response.json()) as OpenAiCompletionResponse;
+      break;
+    }
+
+    const responseText = await readResponseText(response);
+
+    if (attempt < retryCount && shouldRetryRequest(response.status)) {
+      const delayMs = getRetryDelay(attempt, retryDelayMs);
+      console.log(
+        `Translation request failed with ${response.status}. Retrying in ${delayMs}ms (${attempt + 1}/${retryCount})...`
+      );
+      await wait(delayMs);
+      continue;
+    }
+
+    const details = responseText ? `\n${responseText}` : '';
+    throw new Error(`Translation request failed: ${response.status} ${response.statusText}${details}`);
   }
 
-  const payload = (await response.json()) as OpenAiCompletionResponse;
+  if (!payload) {
+    throw new Error('Translation request failed without a response payload.');
+  }
+
   const content = payload.choices?.[0]?.message?.content;
 
   if (!content) {

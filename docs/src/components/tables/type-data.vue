@@ -2,23 +2,27 @@
 import { STable } from '@soybeanjs/ui';
 import type { TableColumn } from '@soybeanjs/ui';
 import { toTypeAnchorId, typeToVNode } from './type-anchor';
+import { useApiI18n } from './use-api-i18n';
 
 export type TypeFieldDef = {
   name: string;
   required?: boolean;
   type: string;
   description?: string;
+  descriptionKey?: string | null;
 };
 
 interface Props {
   name: string;
   displayName?: string;
   description?: string;
+  descriptionKey?: string | null;
   fields: TypeFieldDef[];
   hideHeader?: boolean;
 }
 
 const props = defineProps<Props>();
+const { resolveApiText, t } = useApiI18n();
 
 const anchorId = computed(() => toTypeAnchorId(props.name));
 
@@ -30,19 +34,19 @@ const columns = computed<TableColumn<TableRow>[]>(() => [
   {
     key: 'name',
     dataIndex: 'name',
-    title: 'Field',
+    title: t('api.columns.field_name'),
     minWidth: '144px'
   },
   {
     key: 'type',
     dataIndex: 'type',
-    title: 'Type',
+    title: t('api.columns.type'),
     minWidth: '176px'
   },
   {
     key: 'description',
     dataIndex: 'description',
-    title: 'Description',
+    title: t('api.columns.description'),
     minWidth: '240px'
   }
 ]);
@@ -53,6 +57,12 @@ const tableData = computed<TableRow[]>(() => {
     __rowKey: `${field.name}-${index}`
   }));
 });
+
+const resolvedDescription = computed(() => resolveApiText(props.description, props.descriptionKey));
+
+function getFieldDescription(field: TypeFieldDef) {
+  return resolveApiText(field.description, field.descriptionKey) || '—';
+}
 </script>
 
 <template>
@@ -60,8 +70,8 @@ const tableData = computed<TableRow[]>(() => {
     <h4 v-if="!hideHeader" :id="anchorId" class="text-lg font-semibold my-3 scroll-mt-24">
       <component :is="typeToVNode(displayName || name)" />
     </h4>
-    <p v-if="description && !hideHeader" class="text-sm text-muted-foreground">
-      {{ description }}
+    <p v-if="resolvedDescription && !hideHeader" class="text-sm text-muted-foreground">
+      {{ resolvedDescription }}
     </p>
 
     <div class="min-w-0 overflow-x-auto">
@@ -81,7 +91,7 @@ const tableData = computed<TableRow[]>(() => {
 
         <template #description="{ row }">
           <div class="max-w-[20rem] whitespace-pre-wrap break-words">
-            {{ row.description || '—' }}
+            {{ getFieldDescription(row) }}
           </div>
         </template>
       </STable>

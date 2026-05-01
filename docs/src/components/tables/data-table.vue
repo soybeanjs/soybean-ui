@@ -2,6 +2,7 @@
 import { STable } from '@soybeanjs/ui';
 import type { TableColumn } from '@soybeanjs/ui';
 import { typeToVNode } from './type-anchor';
+import { useApiI18n } from './use-api-i18n';
 
 type PropsPreset = 'props' | 'emits' | 'slots';
 
@@ -19,12 +20,14 @@ type PropsRow = {
   type: string;
   typeSimple?: string;
   description: string;
+  descriptionKey?: string | null;
 };
 
 type EmitsOrSlotsRow = {
   name: string;
   parameters?: string;
   description: string;
+  descriptionKey?: string | null;
   required?: boolean;
 };
 
@@ -35,6 +38,7 @@ interface Props<Row = any> {
 }
 
 const props = defineProps<Props>();
+const { resolveApiText, t } = useApiI18n();
 
 type TableRow = Record<string, unknown> & {
   __rowKey: string;
@@ -66,24 +70,24 @@ function buildPresetColumns(preset: PropsPreset | undefined): DataTableColumn<an
     const cols: DataTableColumn<PropsRow>[] = [
       {
         key: 'name',
-        title: 'Prop',
+        title: t('api.columns.prop_name'),
         cellWrapperClass: 'code-btn',
         render: row => [row.name, row.required ? ' *' : '']
       },
       {
         key: 'type',
-        title: 'Type',
+        title: t('api.columns.type'),
         cellWrapperClass: 'code-btn-outline',
         render: row => typeToVNode(row.type)
       },
       {
         key: 'default',
-        title: 'Default',
+        title: t('api.columns.default'),
         cellWrapperClass: 'code-btn-outline'
       },
       {
         key: 'description',
-        title: 'Description',
+        title: t('api.columns.description'),
         cellWrapperClass: 'max-w-[20rem] whitespace-pre-wrap break-words'
       }
     ];
@@ -92,7 +96,7 @@ function buildPresetColumns(preset: PropsPreset | undefined): DataTableColumn<an
   }
 
   if (preset === 'emits' || preset === 'slots') {
-    const title = preset === 'emits' ? 'Emit Name' : 'Slot Name';
+    const title = preset === 'emits' ? t('api.columns.emit_name') : t('api.columns.slot_name');
     const cols: DataTableColumn<EmitsOrSlotsRow>[] = [
       {
         key: 'name',
@@ -102,13 +106,13 @@ function buildPresetColumns(preset: PropsPreset | undefined): DataTableColumn<an
       },
       {
         key: 'parameters',
-        title: 'Parameters',
+        title: t('api.columns.parameters'),
         cellWrapperClass: 'code-btn-outline',
         render: row => typeToVNode(row.parameters)
       },
       {
         key: 'description',
-        title: 'Description',
+        title: t('api.columns.description'),
         cellWrapperClass: 'max-w-[20rem] whitespace-pre-wrap break-words'
       }
     ];
@@ -153,6 +157,10 @@ const tableData = computed<TableRow[]>(() => {
 function getColumnRender(column: DataTableColumn<any>) {
   return column.render ?? ((row: TableRow) => getCellValue(row, column.key));
 }
+
+function getDescriptionText(row: { description?: string; descriptionKey?: string | null }) {
+  return resolveApiText(row.description, row.descriptionKey) || '—';
+}
 </script>
 
 <template>
@@ -163,6 +171,12 @@ function getColumnRender(column: DataTableColumn<any>) {
           <CellRenderer :render="getColumnRender(col)" :row="row" />
         </div>
         <CellRenderer v-else :render="getColumnRender(col)" :row="row" />
+      </template>
+
+      <template #description="{ row }">
+        <div class="max-w-[20rem] whitespace-pre-wrap break-words">
+          {{ getDescriptionText(row) }}
+        </div>
       </template>
     </STable>
   </div>

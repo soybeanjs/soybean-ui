@@ -6,6 +6,7 @@ export interface GeneratedApiReferencedType {
   type: string;
   resolvedType: string | null;
   description: string;
+  descriptionKey: string | null;
   sourcePath: string;
   typeParameters: string[];
   external: boolean;
@@ -18,6 +19,7 @@ export interface GeneratedApiMember {
   type: string;
   required: boolean;
   description: string;
+  descriptionKey: string | null;
   default: string | boolean | number | null;
   inheritedFrom: string | null;
   sourcePath: string;
@@ -30,6 +32,7 @@ export interface GeneratedApiCallable {
   parameters: string;
   required: boolean;
   description: string;
+  descriptionKey: string | null;
   sourcePath: string;
   referencedTypes: GeneratedApiReferencedType[];
 }
@@ -40,6 +43,7 @@ export interface GeneratedApiEntity {
   type: string;
   resolvedType: string | null;
   description: string;
+  descriptionKey: string | null;
   sourcePath: string;
   typeParameters: string[];
   members: GeneratedApiMember[];
@@ -66,6 +70,7 @@ export interface GeneratedApiRow {
   type?: string;
   parameters?: string;
   description: string;
+  descriptionKey?: string | null;
 }
 
 export interface GeneratedApiTypeField {
@@ -73,12 +78,14 @@ export interface GeneratedApiTypeField {
   required?: boolean;
   type: string;
   description?: string;
+  descriptionKey?: string | null;
 }
 
 export interface GeneratedApiTypeTable {
   name: string;
   displayName?: string;
   description?: string;
+  descriptionKey?: string | null;
   fields: GeneratedApiTypeField[];
 }
 
@@ -86,6 +93,7 @@ export interface GeneratedApiUnionType {
   name: string;
   displayName?: string;
   description?: string;
+  descriptionKey?: string | null;
   type: string;
   code?: string;
 }
@@ -94,6 +102,7 @@ export interface GeneratedApiCallableType {
   name: string;
   displayName?: string;
   description?: string;
+  descriptionKey?: string | null;
   preset: 'emits' | 'slots';
   rows: GeneratedApiRow[];
 }
@@ -260,6 +269,7 @@ function toReferencedType(entity: GeneratedApiEntity): GeneratedApiReferencedTyp
     type: entity.type,
     resolvedType: entity.resolvedType,
     description: entity.description,
+    descriptionKey: entity.descriptionKey,
     sourcePath: entity.sourcePath,
     typeParameters: entity.typeParameters,
     external: false,
@@ -313,7 +323,8 @@ function createEntityRows(entity: GeneratedApiEntity | undefined): GeneratedApiR
       required: member.required,
       default: formatDefaultValue(member.default),
       type: getDisplayMemberType(entity, member),
-      description: member.description || '—'
+      description: member.description || '—',
+      descriptionKey: member.descriptionKey
     }));
   }
 
@@ -321,7 +332,8 @@ function createEntityRows(entity: GeneratedApiEntity | undefined): GeneratedApiR
     name: callable.name,
     required: callable.required,
     parameters: getDisplayCallableParameters(entity, callable),
-    description: callable.description || '—'
+    description: callable.description || '—',
+    descriptionKey: callable.descriptionKey
   }));
 }
 
@@ -546,7 +558,8 @@ function createIgnoredExtendsSummaryRow(typeName: string): GeneratedApiRow {
     required: false,
     default: '—',
     type: typeName,
-    description: `Inherited from ${typeName}.`
+    description: `Inherited from ${typeName}.`,
+    descriptionKey: null
   };
 }
 
@@ -793,6 +806,7 @@ function extractSourceTypePreview(sourcePath: string, source: string, typeName: 
     type: typeAliasValue,
     resolvedType: typeAliasValue,
     description: '',
+    descriptionKey: null,
     sourcePath,
     typeParameters,
     external: false,
@@ -1063,6 +1077,7 @@ function toTypeTable(type: GeneratedApiReferencedType): GeneratedApiTypeTable | 
     name: type.name,
     displayName: formatDisplayName(type.name, resolveTypeParameters(type.sourcePath, type.name, type.typeParameters)),
     description: type.description,
+    descriptionKey: type.descriptionKey,
     fields
   };
 }
@@ -1072,7 +1087,8 @@ function toMemberFields(members: GeneratedApiMember[]): GeneratedApiTypeField[] 
     name: member.name,
     required: member.required,
     type: member.type,
-    description: member.description
+    description: member.description,
+    descriptionKey: member.descriptionKey
   }));
 }
 
@@ -1192,7 +1208,8 @@ function parseObjectLiteralField(segment: string): GeneratedApiTypeField | null 
     name: match.groups.name.replace(/^['"]|['"]$/gu, '').trim(),
     required: !match.groups.optional,
     type: match.groups.type.trim(),
-    description: ''
+    description: '',
+    descriptionKey: null
   };
 }
 
@@ -1207,12 +1224,14 @@ function toCallableType(type: GeneratedApiReferencedType): GeneratedApiCallableT
     name: type.name,
     displayName: formatDisplayName(type.name, resolveTypeParameters(type.sourcePath, type.name, type.typeParameters)),
     description: type.description,
+    descriptionKey: type.descriptionKey,
     preset,
     rows: type.callables.map(callable => ({
       name: callable.name,
       required: callable.required,
       parameters: formatCallableParameters(preset, callable.parameters),
-      description: callable.description || '—'
+      description: callable.description || '—',
+      descriptionKey: callable.descriptionKey
     }))
   };
 }
@@ -1260,6 +1279,7 @@ function toTypePreview(type: GeneratedApiReferencedType): GeneratedApiTypePrevie
       name: type.name,
       displayName: formatDisplayName(type.name, resolveTypeParameters(type.sourcePath, type.name, type.typeParameters)),
       description: type.description,
+      descriptionKey: type.descriptionKey,
       type: ignoredExtendsType,
       code: interfaceDeclaration
     };
@@ -1312,6 +1332,7 @@ function toUnionType(type: GeneratedApiReferencedType): GeneratedApiUnionType | 
     name: type.name,
     displayName: formatDisplayName(type.name, resolveTypeParameters(type.sourcePath, type.name, type.typeParameters)),
     description: type.description,
+    descriptionKey: type.descriptionKey,
     type: resolvedType
   };
 }

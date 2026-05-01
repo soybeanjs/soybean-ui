@@ -77,6 +77,17 @@ api:
   props: Props
   emits: Emits
   slots: Slots
+  columns:
+    prop_name: Prop
+    emit_name: Emit Name
+    slot_name: Slot Name
+    field_name: Field
+    type: Type
+    default: Default
+    parameters: Parameters
+    description: Description
+  actions:
+    open_full_type: Open full type
   local_types: Local Types
   common_types_note: Shared repeated types are centralized on the
   common_types_link: Common Types page.
