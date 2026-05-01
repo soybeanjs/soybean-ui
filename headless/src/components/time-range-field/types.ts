@@ -74,3 +74,19 @@ export interface TimeRangeFieldRootContext extends PropsToContext<TimeRangeField
 
 export type TimeRangeFieldUiSlot = 'root' | 'input' | 'separator';
 export type TimeRangeFieldUi = UiClass<TimeRangeFieldUiSlot>;
+
+export interface TimeRangeFieldCompactProps extends TimeRangeFieldRootProps {
+  inputProps?: Omit<TimeRangeFieldInputProps, 'part' | 'type'>;
+  separator?: string;
+}
+
+export type TimeRangeFieldCompactEmits = TimeRangeFieldRootEmits;
+
+export type TimeRangeFieldCompactSlots = {
+  default?: (props: {
+    startSegments: TimeRangeFieldSegment[];
+    endSegments: TimeRangeFieldSegment[];
+    modelValue: TimeRange;
+  }) => any;
+  separator?: () => any;
+};

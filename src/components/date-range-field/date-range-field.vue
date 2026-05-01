@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { DateRangeFieldInput, DateRangeFieldRoot, provideDateRangeFieldUi } from '@soybeanjs/headless/date-range-field';
+import { DateRangeFieldCompact, provideDateRangeFieldUi } from '@soybeanjs/headless/date-range-field';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
 import { mergeSlotVariants } from '@/theme';
 
@@ -33,36 +33,12 @@ provideDateRangeFieldUi(ui);
 </script>
 
 <template>
-  <DateRangeFieldRoot v-slot="slotProps" v-bind="forwardedProps" v-on="listeners">
-    <slot v-if="$slots.default" v-bind="slotProps" />
-    <template v-else>
-      <div data-date-range-field-part="start">
-        <DateRangeFieldInput
-          v-for="(segment, index) in slotProps.startSegments"
-          :key="`start-${segment.part}-${index}`"
-          :part="segment.part"
-          type="start"
-          v-bind="inputProps"
-        >
-          {{ segment.value }}
-        </DateRangeFieldInput>
-      </div>
-      <div :class="ui.separator">
-        <slot name="separator">
-          {{ separator }}
-        </slot>
-      </div>
-      <div data-date-range-field-part="end">
-        <DateRangeFieldInput
-          v-for="(segment, index) in slotProps.endSegments"
-          :key="`end-${segment.part}-${index}`"
-          :part="segment.part"
-          type="end"
-          v-bind="inputProps"
-        >
-          {{ segment.value }}
-        </DateRangeFieldInput>
-      </div>
+  <DateRangeFieldCompact v-bind="{ ...forwardedProps, inputProps, separator }" v-on="listeners">
+    <template v-if="$slots.default" #default="slotProps">
+      <slot v-bind="slotProps" />
     </template>
-  </DateRangeFieldRoot>
+    <template #separator>
+      <slot name="separator">{{ separator }}</slot>
+    </template>
+  </DateRangeFieldCompact>
 </template>

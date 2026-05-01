@@ -67,6 +67,7 @@ import {
   Button,
   CalendarCell,
   CalendarCellTrigger,
+  CalendarCompact,
   CalendarGrid,
   CalendarGridBody,
   CalendarGridHead,
@@ -164,8 +165,10 @@ import {
   DatePickerPopup,
   DatePickerRoot,
   DatePickerTrigger,
+  DateRangeFieldCompact,
   DateRangeFieldRoot,
   DateRangeFieldInput,
+  DateRangePickerCompact,
   DateRangePickerPopup,
   DateRangePickerRoot,
   DateRangePickerTrigger,
@@ -367,6 +370,7 @@ import {
   RadioGroupRoot,
   RangeCalendarCell,
   RangeCalendarCellTrigger,
+  RangeCalendarCompact,
   RangeCalendarGrid,
   RangeCalendarGridBody,
   RangeCalendarGridHead,
@@ -459,8 +463,10 @@ import {
   TimePickerPopup,
   TimePickerRoot,
   TimePickerTrigger,
+  TimeRangeFieldCompact,
   TimeRangeFieldRoot,
   TimeRangeFieldInput,
+  TimeRangePickerCompact,
   TimeRangePickerPopup,
   TimeRangePickerRoot,
   TimeRangePickerTrigger,
@@ -675,6 +681,7 @@ export const Breadcrumb = {
 export { Button };
 
 export const Calendar = {
+  Compact: CalendarCompact,
   Root: CalendarRoot,
   Header: CalendarHeader,
   Heading: CalendarHeading,
@@ -688,6 +695,7 @@ export const Calendar = {
   Cell: CalendarCell,
   CellTrigger: CalendarCellTrigger
 } as {
+  Compact: typeof CalendarCompact;
   Root: typeof CalendarRoot;
   Header: typeof CalendarHeader;
   Heading: typeof CalendarHeading;
@@ -925,18 +933,22 @@ export const DatePicker = {
 };
 
 export const DateRangeField = {
+  Compact: DateRangeFieldCompact,
   Root: DateRangeFieldRoot,
   Input: DateRangeFieldInput
 } as {
+  Compact: typeof DateRangeFieldCompact;
   Root: typeof DateRangeFieldRoot;
   Input: typeof DateRangeFieldInput;
 };
 
 export const DateRangePicker = {
+  Compact: DateRangePickerCompact,
   Root: DateRangePickerRoot,
   Trigger: DateRangePickerTrigger,
   Popup: DateRangePickerPopup
 } as {
+  Compact: typeof DateRangePickerCompact;
   Root: typeof DateRangePickerRoot;
   Trigger: typeof DateRangePickerTrigger;
   Popup: typeof DateRangePickerPopup;
@@ -1427,6 +1439,7 @@ export const RadioGroup = {
 };
 
 export const RangeCalendar = {
+  Compact: RangeCalendarCompact,
   Root: RangeCalendarRoot,
   Header: RangeCalendarHeader,
   Heading: RangeCalendarHeading,
@@ -1440,6 +1453,7 @@ export const RangeCalendar = {
   Cell: RangeCalendarCell,
   CellTrigger: RangeCalendarCellTrigger
 } as {
+  Compact: typeof RangeCalendarCompact;
   Root: typeof RangeCalendarRoot;
   Header: typeof RangeCalendarHeader;
   Heading: typeof RangeCalendarHeading;
@@ -1679,18 +1693,22 @@ export const TimePicker = {
 };
 
 export const TimeRangeField = {
+  Compact: TimeRangeFieldCompact,
   Root: TimeRangeFieldRoot,
   Input: TimeRangeFieldInput
 } as {
+  Compact: typeof TimeRangeFieldCompact;
   Root: typeof TimeRangeFieldRoot;
   Input: typeof TimeRangeFieldInput;
 };
 
 export const TimeRangePicker = {
+  Compact: TimeRangePickerCompact,
   Root: TimeRangePickerRoot,
   Trigger: TimeRangePickerTrigger,
   Popup: TimeRangePickerPopup
 } as {
+  Compact: typeof TimeRangePickerCompact;
   Root: typeof TimeRangePickerRoot;
   Trigger: typeof TimeRangePickerTrigger;
   Popup: typeof TimeRangePickerPopup;

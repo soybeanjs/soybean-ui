@@ -74,3 +74,27 @@ export interface DateRangePickerRootContext extends PropsToContext<DateRangePick
 
 export type DateRangePickerUiSlot = 'root' | 'trigger' | 'popup' | 'input' | 'calendar';
 export type DateRangePickerUi = UiClass<DateRangePickerUiSlot>;
+
+export interface DateRangePickerCompactProps extends DateRangePickerRootProps {
+  triggerProps?: DateRangePickerTriggerProps;
+  popupProps?: DateRangePickerPopupProps;
+}
+
+export type DateRangePickerCompactEmits = DateRangePickerRootEmits;
+
+export type DateRangePickerCompactSlots = {
+  default?: (props: {
+    modelValue: DateRange;
+    placeholder: DateValue;
+    setPlaceholder: (date: DateValue) => void;
+    setRange: (range: DateRange) => void;
+    open: boolean;
+  }) => any;
+  trigger?: (props: { modelValue: DateRange; open: boolean }) => any;
+  calendar?: (props: {
+    modelValue: DateRange;
+    placeholder: DateValue;
+    setPlaceholder: (date: DateValue) => void;
+    setRange: (range: DateRange) => void;
+  }) => any;
+};

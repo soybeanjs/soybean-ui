@@ -1,3 +1,4 @@
+export { default as RangeCalendarCompact } from './range-calendar-compact.vue';
 export { default as RangeCalendarRoot } from './range-calendar-root.vue';
 export { default as RangeCalendarHeader } from './range-calendar-header.vue';
 export { default as RangeCalendarHeading } from './range-calendar-heading.vue';
@@ -16,6 +17,9 @@ export { provideRangeCalendarUi } from './context';
 export type {
   RangeCalendarCellProps,
   RangeCalendarCellTriggerProps,
+  RangeCalendarCompactEmits,
+  RangeCalendarCompactProps,
+  RangeCalendarCompactSlots,
   RangeCalendarGridBodyProps,
   RangeCalendarGridHeadProps,
   RangeCalendarGridProps,

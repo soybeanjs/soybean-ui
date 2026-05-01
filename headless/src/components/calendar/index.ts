@@ -1,3 +1,4 @@
+export { default as CalendarCompact } from './calendar-compact.vue';
 export { default as CalendarRoot } from './calendar-root.vue';
 export { default as CalendarHeader } from './calendar-header.vue';
 export { default as CalendarHeading } from './calendar-heading.vue';
@@ -16,6 +17,9 @@ export { provideCalendarUi } from './context';
 export type {
   CalendarCellProps,
   CalendarCellTriggerProps,
+  CalendarCompactEmits,
+  CalendarCompactProps,
+  CalendarCompactSlots,
   CalendarGridBodyProps,
   CalendarGridHeadProps,
   CalendarGridProps,

@@ -2,7 +2,7 @@
 import { computed } from 'vue';
 
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
-import { TimeRangePickerPopup, TimeRangePickerRoot, TimeRangePickerTrigger, provideTimeRangePickerUi } from '@soybeanjs/headless/time-range-picker';
+import { TimeRangePickerCompact, provideTimeRangePickerUi } from '@soybeanjs/headless/time-range-picker';
 
 import { mergeSlotVariants } from '@/theme';
 
@@ -35,21 +35,28 @@ provideTimeRangePickerUi(ui);
 </script>
 
 <template>
-  <TimeRangePickerRoot v-slot="slotProps" v-bind="forwardedProps" v-on="listeners">
-    <TimeRangePickerTrigger v-bind="triggerProps">
-      <slot name="trigger" :display-value="slotProps.displayValue" :model-value="slotProps.modelValue" :open="slotProps.open">
+  <TimeRangePickerCompact
+    v-bind="{
+      ...forwardedProps,
+      triggerProps,
+      popupProps
+    }"
+    v-on="listeners"
+  >
+    <template #trigger="slotProps">
+      <slot name="trigger" v-bind="slotProps">
         <Icon class="size-4" icon="lucide:clock-3" />
         <span v-if="slotProps.displayValue">{{ slotProps.displayValue }}</span>
         <span v-else class="text-muted-foreground">Pick a time range</span>
       </slot>
-    </TimeRangePickerTrigger>
-    <TimeRangePickerPopup v-bind="popupProps">
-      <template #time="popupSlotProps">
-        <slot name="time" v-bind="popupSlotProps">
-          {{ popupSlotProps.label }}
-        </slot>
-      </template>
-    </TimeRangePickerPopup>
-    <slot v-bind="slotProps" />
-  </TimeRangePickerRoot>
+    </template>
+    <template #time="slotProps">
+      <slot name="time" v-bind="slotProps">
+        {{ slotProps.label }}
+      </slot>
+    </template>
+    <template #default="slotProps">
+      <slot v-bind="slotProps" />
+    </template>
+  </TimeRangePickerCompact>
 </template>

@@ -61,6 +61,7 @@ export const components = {
   ],
   button: ['Button'],
   calendar: [
+    'CalendarCompact',
     'CalendarRoot',
     'CalendarHeader',
     'CalendarHeading',
@@ -157,8 +158,8 @@ export const components = {
   ],
   dateField: ['DateFieldRoot', 'DateFieldInput'],
   datePicker: ['DatePickerRoot', 'DatePickerTrigger', 'DatePickerPopup'],
-  dateRangeField: ['DateRangeFieldRoot', 'DateRangeFieldInput'],
-  dateRangePicker: ['DateRangePickerRoot', 'DateRangePickerTrigger', 'DateRangePickerPopup'],
+  dateRangeField: ['DateRangeFieldCompact', 'DateRangeFieldRoot', 'DateRangeFieldInput'],
+  dateRangePicker: ['DateRangePickerCompact', 'DateRangePickerRoot', 'DateRangePickerTrigger', 'DateRangePickerPopup'],
   dialog: [
     'DialogCompact',
     'DialogProvider',
@@ -346,6 +347,7 @@ export const components = {
     'RadioGroupLabel'
   ],
   rangeCalendar: [
+    'RangeCalendarCompact',
     'RangeCalendarRoot',
     'RangeCalendarHeader',
     'RangeCalendarHeading',
@@ -422,8 +424,8 @@ export const components = {
   textarea: ['TextareaRoot', 'TextareaControl', 'TextareaCounter'],
   timeField: ['TimeFieldRoot', 'TimeFieldInput'],
   timePicker: ['TimePickerRoot', 'TimePickerTrigger', 'TimePickerPopup'],
-  timeRangeField: ['TimeRangeFieldRoot', 'TimeRangeFieldInput'],
-  timeRangePicker: ['TimeRangePickerRoot', 'TimeRangePickerTrigger', 'TimeRangePickerPopup'],
+  timeRangeField: ['TimeRangeFieldCompact', 'TimeRangeFieldRoot', 'TimeRangeFieldInput'],
+  timeRangePicker: ['TimeRangePickerCompact', 'TimeRangePickerRoot', 'TimeRangePickerTrigger', 'TimeRangePickerPopup'],
   toast: ['Toaster', 'ToastProvider'],
   toolbar: [
     'ToolbarRoot',

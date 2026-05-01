@@ -75,3 +75,19 @@ export interface DateRangeFieldRootContext extends PropsToContext<DateRangeField
 
 export type DateRangeFieldUiSlot = 'root' | 'input' | 'separator';
 export type DateRangeFieldUi = UiClass<DateRangeFieldUiSlot>;
+
+export interface DateRangeFieldCompactProps extends DateRangeFieldRootProps {
+  inputProps?: Omit<DateRangeFieldInputProps, 'part' | 'type'>;
+  separator?: string;
+}
+
+export type DateRangeFieldCompactEmits = DateRangeFieldRootEmits;
+
+export type DateRangeFieldCompactSlots = {
+  default?: (props: {
+    startSegments: DateRangeFieldSegment[];
+    endSegments: DateRangeFieldSegment[];
+    modelValue: DateRange;
+  }) => any;
+  separator?: () => any;
+};

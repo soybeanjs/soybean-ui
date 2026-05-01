@@ -123,3 +123,38 @@ export type CalendarUiSlot =
   | 'cellTrigger';
 
 export type CalendarUi = UiClass<CalendarUiSlot>;
+
+export interface CalendarCompactProps<M extends boolean = false> extends CalendarRootProps<M> {
+  headerProps?: CalendarHeaderProps;
+  headingProps?: CalendarHeadingProps;
+  prevProps?: CalendarPrevProps;
+  nextProps?: CalendarNextProps;
+  gridProps?: CalendarGridProps;
+  gridHeadProps?: CalendarGridHeadProps;
+  gridBodyProps?: CalendarGridBodyProps;
+  gridRowProps?: CalendarGridRowProps;
+  headCellProps?: CalendarHeadCellProps;
+  cellProps?: CalendarCellProps;
+  cellTriggerProps?: Omit<CalendarCellTriggerProps, 'day' | 'month'>;
+}
+
+export type CalendarCompactEmits<M extends boolean = false> = CalendarRootEmits<M>;
+
+export type CalendarCompactSlots<M extends boolean = false> = {
+  default?: (props: { modelValue: CalendarModelValue<M> }) => any;
+  prev?: (props: { prevPage: () => void }) => any;
+  heading?: (props: { headingValue: string }) => any;
+  next?: (props: { nextPage: () => void }) => any;
+  'head-cell'?: (props: { date: DateValue; index: number; label: string }) => any;
+  day?: (props: {
+    day: DateValue;
+    month: DateValue;
+    dayValue: string;
+    disabled: boolean;
+    selected: boolean;
+    unavailable: boolean;
+    today: boolean;
+    outsideView: boolean;
+    outsideVisibleView: boolean;
+  }) => any;
+};

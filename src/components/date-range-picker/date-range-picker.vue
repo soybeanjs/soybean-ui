@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 
-import { DateRangePickerPopup, DateRangePickerRoot, DateRangePickerTrigger, provideDateRangePickerUi } from '@soybeanjs/headless/date-range-picker';
+import { DateRangePickerCompact, provideDateRangePickerUi } from '@soybeanjs/headless/date-range-picker';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
 
 import { mergeSlotVariants } from '@/theme';
@@ -45,16 +45,23 @@ const formatDateRange = (range: { start?: any; end?: any }) => {
 </script>
 
 <template>
-  <DateRangePickerRoot v-slot="slotProps" v-bind="forwardedProps" v-on="listeners">
-    <DateRangePickerTrigger v-bind="triggerProps">
-      <slot name="trigger" :open="slotProps.open">
+  <DateRangePickerCompact
+    v-bind="{
+      ...forwardedProps,
+      triggerProps,
+      popupProps
+    }"
+    v-on="listeners"
+  >
+    <template #trigger="slotProps">
+      <slot name="trigger" v-bind="slotProps">
         <Icon class="size-4" icon="lucide:calendar" />
         <span v-if="formatDateRange(slotProps.modelValue)">{{ formatDateRange(slotProps.modelValue) }}</span>
         <span v-else class="text-muted-foreground">Pick a date range</span>
       </slot>
-    </DateRangePickerTrigger>
-    <DateRangePickerPopup v-bind="popupProps">
-      <slot name="calendar" :model-value="slotProps.modelValue" :placeholder="slotProps.placeholder">
+    </template>
+    <template #calendar="slotProps">
+      <slot name="calendar" v-bind="slotProps">
         <SRangeCalendar
           :class="ui.calendar"
           :model-value="slotProps.modelValue"
@@ -71,7 +78,9 @@ const formatDateRange = (range: { start?: any; end?: any }) => {
           @update:placeholder="slotProps.setPlaceholder"
         />
       </slot>
-    </DateRangePickerPopup>
-    <slot v-bind="slotProps" />
-  </DateRangePickerRoot>
+    </template>
+    <template #default="slotProps">
+      <slot v-bind="slotProps" />
+    </template>
+  </DateRangePickerCompact>
 </template>

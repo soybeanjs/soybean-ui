@@ -137,3 +137,43 @@ export type RangeCalendarUiSlot =
   | 'cellTrigger';
 
 export type RangeCalendarUi = UiClass<RangeCalendarUiSlot>;
+
+export interface RangeCalendarCompactProps extends RangeCalendarRootProps {
+  headerProps?: RangeCalendarHeaderProps;
+  headingProps?: RangeCalendarHeadingProps;
+  prevProps?: RangeCalendarPrevProps;
+  nextProps?: RangeCalendarNextProps;
+  gridProps?: RangeCalendarGridProps;
+  gridHeadProps?: RangeCalendarGridHeadProps;
+  gridBodyProps?: RangeCalendarGridBodyProps;
+  gridRowProps?: RangeCalendarGridRowProps;
+  headCellProps?: RangeCalendarHeadCellProps;
+  cellProps?: RangeCalendarCellProps;
+  cellTriggerProps?: Omit<RangeCalendarCellTriggerProps, 'day' | 'month'>;
+}
+
+export type RangeCalendarCompactEmits = RangeCalendarRootEmits;
+
+export type RangeCalendarCompactSlots = {
+  default?: (props: { modelValue: DateRange }) => any;
+  prev?: (props: { prevPage: () => void }) => any;
+  heading?: (props: { headingValue: string }) => any;
+  next?: (props: { nextPage: () => void }) => any;
+  'head-cell'?: (props: { date: DateValue; index: number; label: string }) => any;
+  day?: (props: {
+    day: DateValue;
+    month: DateValue;
+    dayValue: string;
+    disabled: boolean;
+    selected: boolean;
+    selectionStart: boolean;
+    selectionEnd: boolean;
+    highlighted: boolean;
+    highlightedStart: boolean;
+    highlightedEnd: boolean;
+    unavailable: boolean;
+    today: boolean;
+    outsideView: boolean;
+    outsideVisibleView: boolean;
+  }) => any;
+};
