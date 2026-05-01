@@ -2,14 +2,29 @@ import type { ComputedRef, HTMLAttributes, ShallowRef } from 'vue';
 import type { DataOrientation, HorizontalSide, PropsToContext, UiClass } from '../../types';
 import type { PrimitiveProps } from '../primitive/types';
 
+/**
+ * Type information for the layout variant component.
+ */
 export type LayoutVariant = 'sidebar' | 'floating' | 'inset';
 
+/**
+ * Type information for the layout side component.
+ */
 export type LayoutSide = HorizontalSide;
 
+/**
+ * Type information for the layout collapsible component.
+ */
 export type LayoutCollapsible = 'offcanvas' | 'icon';
 
+/**
+ * State values for the layout component.
+ */
 export type LayoutSidebarState = 'expanded' | 'collapsed';
 
+/**
+ * Props for the layout root component.
+ */
 export interface LayoutRootProps extends /* @vue-ignore */ HTMLAttributes {
   /** The controlled open state of the layout. Can be bound with `v-model`. */
   open?: boolean;
@@ -103,26 +118,59 @@ export interface LayoutRootProps extends /* @vue-ignore */ HTMLAttributes {
   pxToRem?: (px: number) => number;
 }
 
+/**
+ * Emits for the layout root component.
+ */
 export type LayoutRootEmits = {
+  /**
+   * Emitted when the open state changes.
+   */
   'update:open': [open: boolean];
 };
 
+/**
+ * Props for the layout sidebar component.
+ */
 export interface LayoutSidebarProps extends /* @vue-ignore */ HTMLAttributes {}
 
+/**
+ * Props for the layout rail component.
+ */
 export interface LayoutRailProps extends /* @vue-ignore */ HTMLAttributes {}
 
+/**
+ * Props for the layout main component.
+ */
 export interface LayoutMainProps extends /* @vue-ignore */ HTMLAttributes {}
 
+/**
+ * Props for the layout header component.
+ */
 export interface LayoutHeaderProps extends /* @vue-ignore */ HTMLAttributes {}
 
+/**
+ * Props for the layout tab component.
+ */
 export interface LayoutTabProps extends /* @vue-ignore */ HTMLAttributes {}
 
+/**
+ * Props for the layout content component.
+ */
 export interface LayoutContentProps extends /* @vue-ignore */ HTMLAttributes {}
 
+/**
+ * Props for the layout footer component.
+ */
 export interface LayoutFooterProps extends /* @vue-ignore */ HTMLAttributes {}
 
+/**
+ * Props for the layout trigger component.
+ */
 export interface LayoutTriggerProps extends PrimitiveProps, /* @vue-ignore */ HTMLAttributes {}
 
+/**
+ * Props for the layout mobile component.
+ */
 export interface LayoutMobileProps extends /* @vue-ignore */ HTMLAttributes {}
 
 interface LayoutOthersProps {
@@ -136,24 +184,66 @@ interface LayoutOthersProps {
   mobileProps?: LayoutMobileProps;
 }
 
+/**
+ * Props for the layout compact component.
+ */
 export interface LayoutCompactProps extends LayoutRootProps, LayoutOthersProps {}
 
+/**
+ * Emits for the layout compact component.
+ */
 export type LayoutCompactEmits = LayoutRootEmits;
 
+/**
+ * Slots for the layout compact component.
+ */
 export type LayoutCompactSlots = {
+  /**
+   * Custom content for the default slot.
+   */
   default?: () => any;
+  /**
+   * Custom content for the sidebar slot.
+   */
   sidebar?: (props: { open: boolean | undefined; collapsedSidebarWidth: number }) => any;
+  /**
+   * Custom content for the header slot.
+   */
   header?: () => any;
+  /**
+   * Custom content for the tab slot.
+   */
   tab?: () => any;
+  /**
+   * Custom content for the content slot.
+   */
   content?: () => any;
+  /**
+   * Custom content for the footer slot.
+   */
   footer?: () => any;
 };
 
+/**
+ * Type information for the layout classic scroll behavior component.
+ */
 export type LayoutClassicScrollBehavior = 'wrapper' | 'content';
 
+/**
+ * Props for the layout classic root component.
+ */
 export interface LayoutClassicRootProps extends Omit<LayoutRootProps, 'variant' | 'collapsible'> {
+  /**
+   * Orientation of the component.
+   */
   orientation?: DataOrientation;
+  /**
+   * Scroll behavior.
+   */
   scrollBehavior?: LayoutClassicScrollBehavior;
+  /**
+   * Scroll id.
+   */
   scrollId?: string;
   /**
    * The base z-index of the layout. The z-index of the sidebar, header, tab, footer, and their fixed versions will be calculated based on this value.
@@ -181,14 +271,29 @@ export interface LayoutClassicRootProps extends Omit<LayoutRootProps, 'variant' 
   stretchFooter?: boolean;
 }
 
+/**
+ * Emits for the layout classic root component.
+ */
 export type LayoutClassicRootEmits = LayoutRootEmits;
 
+/**
+ * Props for the layout classic compact component.
+ */
 export interface LayoutClassicCompactProps extends LayoutClassicRootProps, LayoutOthersProps {}
 
+/**
+ * Emits for the layout classic compact component.
+ */
 export type LayoutClassicCompactEmits = LayoutClassicRootEmits;
 
+/**
+ * Slots for the layout classic compact component.
+ */
 export type LayoutClassicCompactSlots = LayoutCompactSlots;
 
+/**
+ * Parameters used to create the layout root context.
+ */
 export interface LayoutRootContextParams extends PropsToContext<
   LayoutRootProps,
   | 'sidebarWidth'
@@ -199,7 +304,13 @@ export interface LayoutRootContextParams extends PropsToContext<
   | 'tabVisible'
   | 'footerVisible'
 > {
+  /**
+   * Whether the component is open.
+   */
   open: ShallowRef<boolean | undefined>;
+  /**
+   * Whether mobile open.
+   */
   mobileOpen: ShallowRef<boolean>;
   /**
    * The width of the sidebar in the mobile view. (rem)
@@ -207,11 +318,23 @@ export interface LayoutRootContextParams extends PropsToContext<
   mobileSidebarWidth: ComputedRef<number>;
 }
 
+/**
+ * Parameters used to create the layout compact root context.
+ */
 export interface LayoutCompactRootContextParams extends LayoutRootContextParams {
+  /**
+   * Whether fixed top.
+   */
   fixedTop: ComputedRef<boolean>;
+  /**
+   * Whether fixed footer.
+   */
   fixedFooter: ComputedRef<boolean>;
 }
 
+/**
+ * Available UI slots for the layout component.
+ */
 export type LayoutUiSlot =
   | 'root'
   | 'sidebar'
@@ -229,8 +352,17 @@ export type LayoutUiSlot =
   | 'mobileDrawer'
   | 'mobileOverlay';
 
+/**
+ * UI class overrides for the layout component.
+ */
 export type LayoutUi = UiClass<LayoutUiSlot>;
 
+/**
+ * Available UI slots for the layout component.
+ */
 export type LayoutClassicUiSlot = LayoutUiSlot | 'headerPlaceholder' | 'tabPlaceholder' | 'footerPlaceholder';
 
+/**
+ * UI class overrides for the layout component.
+ */
 export type LayoutClassicUi = UiClass<LayoutClassicUiSlot>;

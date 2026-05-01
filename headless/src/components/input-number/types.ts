@@ -3,6 +3,9 @@ import type { FormFieldCommonProps, PropsToContext, UiClass } from '../../types'
 import type { PrimitiveProps } from '../primitive/types';
 import type { InputBaseProps } from '../input/types';
 
+/**
+ * Props for the input number root component.
+ */
 export interface InputNumberRootProps extends InputBaseProps, FormFieldCommonProps, /** @vue-ignore */ HTMLAttributes {
   /** The default value of the input */
   defaultValue?: number;
@@ -31,20 +34,44 @@ export interface InputNumberRootProps extends InputBaseProps, FormFieldCommonPro
   invertWheelChange?: boolean;
 }
 
+/**
+ * Emits for the input number root component.
+ */
 export type InputNumberRootEmits = {
+  /**
+   * Emitted when the model value changes.
+   */
   'update:modelValue': [val: number];
 };
 
+/**
+ * Props for the input number control component.
+ */
 export interface InputNumberControlProps extends /** @vue-ignore */ InputHTMLAttributes {}
 
+/**
+ * Props for the input number increment component.
+ */
 export interface InputNumberIncrementProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {
+  /**
+   * Whether the component is disabled.
+   */
   disabled?: boolean;
 }
 
+/**
+ * Props for the input number decrement component.
+ */
 export interface InputNumberDecrementProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {
+  /**
+   * Whether the component is disabled.
+   */
   disabled?: boolean;
 }
 
+/**
+ * Parameters used to create the input number root context.
+ */
 export interface InputNumberRootContextParams extends PropsToContext<
   InputNumberRootProps,
   | 'id'
@@ -65,9 +92,18 @@ export interface InputNumberRootContextParams extends PropsToContext<
   | 'disableWheelChange'
   | 'invertWheelChange'
 > {
+  /**
+   * Current model value.
+   */
   modelValue: ShallowRef<number | null | undefined>;
 }
 
+/**
+ * Available UI slots for the input number component.
+ */
 export type InputNumberUiSlot = 'root' | 'increment' | 'decrement' | 'control';
 
+/**
+ * UI class overrides for the input number component.
+ */
 export type InputNumberUi = UiClass<InputNumberUiSlot>;

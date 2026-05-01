@@ -4,6 +4,9 @@ import type { ThemeSize } from '@/theme';
 import type { ProgressProviderProps } from '../progress/types';
 import type { ToastProviderProps } from '../toast/types';
 
+/**
+ * Props for the config provider component.
+ */
 export interface ConfigProviderProps extends _ConfigProviderProps {
   /** The theme options. */
   theme?: ThemeOptions;
@@ -36,6 +39,9 @@ export interface ConfigProviderProps extends _ConfigProviderProps {
   customToast?: boolean;
 }
 
+/**
+ * Context for the config provider component.
+ */
 export interface ConfigProviderContext
   extends PropsToContext<Omit<ConfigProviderProps, 'iconRender'>>, Pick<ConfigProviderProps, 'iconRender'> {}
 

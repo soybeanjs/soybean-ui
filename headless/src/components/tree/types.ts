@@ -5,6 +5,9 @@ import type { CollectionItemData } from '../../composables/use-collection';
 import type { PrimitiveProps } from '../primitive/types';
 import type { VirtualizerItemProps, VirtualizerRootProps } from '../virtualizer/types';
 
+/**
+ * Type information for the tree item base data component.
+ */
 export interface TreeItemBaseData {
   /** Value given to this item */
   value: string;
@@ -12,13 +15,22 @@ export interface TreeItemBaseData {
   disabled?: boolean;
 }
 
+/**
+ * Type information for the tree item data component.
+ */
 export type TreeItemData<T extends TreeItemBaseData = TreeItemBaseData> = T & {
   /** List of children items */
   children?: TreeItemData<T>[];
 };
 
+/**
+ * Type information for the tree select behavior component.
+ */
 export type TreeSelectBehavior = 'toggle' | 'replace';
 
+/**
+ * Type information for the tree toggle behavior component.
+ */
 export type TreeToggleBehavior = 'single' | 'multiple';
 
 type IsMultiple<U extends MaybeArray<string> | undefined, M extends boolean> = U extends string
@@ -27,6 +39,9 @@ type IsMultiple<U extends MaybeArray<string> | undefined, M extends boolean> = U
     ? true
     : false;
 
+/**
+ * Props for the tree root component.
+ */
 export interface TreeRootProps<
   T extends TreeItemData = TreeItemData,
   U extends MaybeArray<string> | undefined = MaybeArray<string> | undefined,
@@ -71,19 +86,55 @@ export interface TreeRootProps<
   allowParentSelect?: boolean;
 }
 
+/**
+ * Emits for the tree root component.
+ */
 export type TreeRootEmits<M extends boolean | undefined> = {
+  /**
+   * Emitted when the model value changes.
+   */
   'update:modelValue': [value: M extends true ? string[] : string];
+  /**
+   * Emitted when the expanded state changes.
+   */
   'update:expanded': [value: string[]];
 };
 
+/**
+ * Type information for the flattened item component.
+ */
 export type FlattenedItem<T extends TreeItemData> = {
+  /**
+   * Id.
+   */
   _id: string;
+  /**
+   * Index of the current item.
+   */
   index: number;
+  /**
+   * Value associated with the current item.
+   */
   value: string;
+  /**
+   * Data.
+   */
   data: T;
+  /**
+   * Level.
+   */
   level: number;
+  /**
+   * Whether the component has children.
+   */
   hasChildren: boolean;
+  /**
+   * Parent.
+   */
   parent?: T;
+  /**
+   * Bind.
+   */
   bind: {
     data: T;
     level: number;
@@ -91,9 +142,18 @@ export type FlattenedItem<T extends TreeItemData> = {
   };
 };
 
+/**
+ * Props for the tree item component.
+ */
 export interface TreeItemProps
   extends PrimitiveProps, /** @vue-ignore */ Omit<HTMLAttributes, 'onSelect' | 'onToggle'> {
+  /**
+   * Value associated with the current item.
+   */
   value: string;
+  /**
+   * Level.
+   */
   level: number;
   /** When `true`, prevents the user from selecting or toggling the item. */
   disabled?: boolean;
@@ -103,6 +163,9 @@ export interface TreeItemProps
   disabledToggle?: boolean;
 }
 
+/**
+ * Emits for the tree item component.
+ */
 export type TreeItemEmits = {
   /** Event handler called when selecting item. */
   select: [event: TreeSelectEvent<string>];
@@ -110,6 +173,9 @@ export type TreeItemEmits = {
   toggle: [event: TreeToggleEvent<string>];
 };
 
+/**
+ * Props for the tree virtualizer root component.
+ */
 export interface TreeVirtualizerRootProps<
   T extends TreeItemData = TreeItemData,
   U extends MaybeArray<string> | undefined = MaybeArray<string> | undefined,
@@ -117,25 +183,67 @@ export interface TreeVirtualizerRootProps<
 >
   extends TreeRootProps<T, U, M>, Omit<VirtualizerRootProps<FlattenedItem<T>>, 'dir' | 'items'> {}
 
+/**
+ * Emits for the tree virtualizer root component.
+ */
 export type TreeVirtualizerRootEmits<M extends boolean | undefined> = TreeRootEmits<M>;
 
+/**
+ * Props for the tree virtualizer item component.
+ */
 export interface TreeVirtualizerItemProps extends TreeItemProps, VirtualizerItemProps {}
 
+/**
+ * Emits for the tree virtualizer item component.
+ */
 export type TreeVirtualizerItemEmits = TreeItemEmits;
 
+/**
+ * Parameters used to create the tree root context.
+ */
 export interface TreeRootContextParams extends PropsToContext<
   TreeRootProps,
   'items' | 'dir' | 'multiple' | 'disabled' | 'selectionBehavior' | 'propagateSelect' | 'bubbleSelect'
 > {
+  /**
+   * Current model value.
+   */
   modelValue: ShallowRef<MaybeArray<string> | undefined>;
+  /**
+   * Expanded used by the component context.
+   */
   expanded: ShallowRef<string[]>;
+  /**
+   * Selected keys used by the component context.
+   */
   selectedKeys: ComputedRef<string[]>;
+  /**
+   * Callback invoked when the select event fires.
+   */
   onSelect: (value: string) => void;
+  /**
+   * Callback invoked when the toggle event fires.
+   */
   onToggle: (value: string) => void;
+  /**
+   * Expanded items used by the component context.
+   */
   expandedItems: ComputedRef<FlattenedItem<TreeItemData>[]>;
+  /**
+   * Whether virtualization is enabled.
+   */
   isVirtual: ShallowRef<boolean>;
+  /**
+   * Virtual keydown hook used by the component context.
+   */
   virtualKeydownHook: EventHook<KeyboardEvent>;
+  /**
+   * Get items used by the component context.
+   */
   getItems?: () => CollectionItemData[] | undefined;
+  /**
+   * Handle multiple replace used by the component context.
+   */
   handleMultipleReplace: (
     intent: FocusIntent,
     element: HTMLElement | null,

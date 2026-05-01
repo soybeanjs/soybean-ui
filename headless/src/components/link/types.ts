@@ -2,6 +2,9 @@ import type { HTMLAttributes } from 'vue';
 import type { RouteLocationRaw } from 'vue-router';
 import type { PrimitiveProps } from '../primitive/types';
 
+/**
+ * Props for the link component.
+ */
 export interface LinkProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {
   /**
    * Route Location the link should navigate to when clicked on.
@@ -88,8 +91,17 @@ export interface LinkProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttrib
   trailingSlash?: 'append' | 'remove';
 }
 
+/**
+ * Type information for the link base props key component.
+ */
 export type LinkBasePropsKey = Extract<keyof LinkProps, 'to' | 'href' | 'external' | 'target'>;
 
+/**
+ * Props for the link base component.
+ */
 export interface LinkBaseProps extends Pick<LinkProps, LinkBasePropsKey> {}
 
+/**
+ * Props for the link extra component.
+ */
 export interface LinkExtraProps extends Omit<LinkProps, LinkBasePropsKey> {}

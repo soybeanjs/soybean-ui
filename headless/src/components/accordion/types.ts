@@ -12,6 +12,9 @@ import type { CollapsibleContentProps, CollapsibleTriggerProps } from '../collap
 import type { CollapsibleRootProps } from '../collapsible/types';
 import type { IconValue } from '../_icon/types';
 
+/**
+ * Props for the accordion root component.
+ */
 export interface AccordionRootProps<M extends boolean = false>
   extends SelectionProps<M>, /** @vue-ignore */ HTMLAttributes {
   /**
@@ -48,21 +51,42 @@ export interface AccordionRootProps<M extends boolean = false>
   unmountOnHide?: boolean;
 }
 
+/**
+ * Emits for the accordion root component.
+ */
 export type AccordionRootEmits<M extends boolean = false> = SelectionEmits<M>;
 
+/**
+ * Props for the accordion item component.
+ */
 export interface AccordionItemProps extends Omit<CollapsibleRootProps, 'open' | 'defaultOpen' | 'onOpenChange'> {
   /** Value of the accordion item. All items within an accordion should use a unique value. */
   value: string;
 }
 
+/**
+ * Props for the accordion header component.
+ */
 export interface AccordionHeaderProps extends /** @vue-ignore */ HTMLAttributes {}
 
+/**
+ * Props for the accordion trigger component.
+ */
 export interface AccordionTriggerProps extends CollapsibleTriggerProps {}
 
+/**
+ * Props for the accordion content component.
+ */
 export interface AccordionContentProps extends CollapsibleContentProps {}
 
+/**
+ * Props for the accordion description component.
+ */
 export interface AccordionDescriptionProps extends /** @vue-ignore */ HTMLAttributes {}
 
+/**
+ * Option data for the accordion component.
+ */
 export interface AccordionOptionData extends Pick<AccordionItemProps, 'value' | 'disabled'> {
   /** The title of the accordion item. */
   title?: string;
@@ -74,54 +98,141 @@ export interface AccordionOptionData extends Pick<AccordionItemProps, 'value' | 
   icon?: IconValue;
 }
 
+/**
+ * Props for the accordion compact component.
+ */
 export interface AccordionCompactProps<
   T extends AccordionOptionData = AccordionOptionData,
   M extends boolean = false
 > extends AccordionRootProps<M> {
+  /**
+   * Items rendered by the component.
+   */
   items: T[];
+  /**
+   * Props forwarded to the item element.
+   */
   itemProps?: AccordionItemProps;
+  /**
+   * Props forwarded to the header element.
+   */
   headerProps?: AccordionHeaderProps;
+  /**
+   * Props forwarded to the trigger element.
+   */
   triggerProps?: AccordionTriggerProps;
+  /**
+   * Props forwarded to the content element.
+   */
   contentProps?: AccordionContentProps;
+  /**
+   * Props forwarded to the description element.
+   */
   descriptionProps?: AccordionDescriptionProps;
 }
 
+/**
+ * Emits for the accordion compact component.
+ */
 export type AccordionCompactEmits<M extends boolean = false> = AccordionRootEmits<M>;
 
+/**
+ * Slot props for the accordion compact component.
+ */
 export interface AccordionCompactSlotProps<
   T extends AccordionOptionData = AccordionOptionData,
   M extends boolean = false
 > {
+  /**
+   * Current item data.
+   */
   item: T;
+  /**
+   * Index of the current item.
+   */
   index: number;
+  /**
+   * Current model value.
+   */
   modelValue: (M extends true ? string[] : string) | undefined;
+  /**
+   * Whether the component is open.
+   */
   open: boolean;
 }
 
+/**
+ * Slots for the accordion compact component.
+ */
 export type AccordionCompactSlots<T extends AccordionOptionData = AccordionOptionData, M extends boolean = false> = {
+  /**
+   * Custom content for the item slot.
+   */
   item?: (props: AccordionCompactSlotProps<T, M>) => any;
+  /**
+   * Custom content for the leading slot.
+   */
   leading?: (props: AccordionCompactSlotProps<T, M>) => any;
+  /**
+   * Custom content for the title slot.
+   */
   title?: (props: AccordionCompactSlotProps<T, M>) => any;
+  /**
+   * Custom content for the trigger icon slot.
+   */
   'trigger-icon'?: (props: AccordionCompactSlotProps<T, M>) => any;
+  /**
+   * Custom content for the content slot.
+   */
   content?: (props: AccordionCompactSlotProps<T, M>) => any;
 };
 
+/**
+ * Context for the accordion root component.
+ */
 export interface AccordionRootContext extends PropsToContext<
   AccordionRootProps,
   'collapsible' | 'disabled' | 'orientation' | 'unmountOnHide'
 > {
+  /**
+   * Reading direction of the component.
+   */
   dir: ComputedRef<Direction>;
+  /**
+   * Reference to the root element.
+   */
   rootElement: ShallowRef<HTMLElement | undefined>;
+  /**
+   * Current model value.
+   */
   modelValue: ShallowRef<MaybeArray<string> | undefined>;
+  /**
+   * Whether multiple values are supported.
+   */
   isMultiple: ComputedRef<boolean>;
+  /**
+   * Handler used to update the model value.
+   */
   onModelValueChange: (value: string) => void;
 }
 
+/**
+ * Parameters used to create the accordion item context.
+ */
 export interface AccordionItemContextParams extends PropsToContext<AccordionItemProps, 'value'> {
+  /**
+   * Whether the component is open.
+   */
   open: ComputedRef<boolean>;
+  /**
+   * Whether the component is disabled.
+   */
   disabled: ComputedRef<boolean>;
 }
 
+/**
+ * Available UI slots for the accordion component.
+ */
 export type AccordionUiSlot =
   | 'root'
   | 'item'
@@ -132,4 +243,7 @@ export type AccordionUiSlot =
   | 'triggerLeadingIcon'
   | 'triggerIcon';
 
+/**
+ * UI class overrides for the accordion component.
+ */
 export type AccordionUi = UiClass<AccordionUiSlot>;

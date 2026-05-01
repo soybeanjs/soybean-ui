@@ -15,6 +15,7 @@ type ApiMember = {
   type: string;
   required: boolean;
   description: string;
+  descriptionKey: string | null;
   default: string | null;
   inheritedFrom: string | null;
   sourcePath: string | null;
@@ -27,6 +28,7 @@ type ApiCallable = {
   parameters: string | null;
   required: boolean;
   description: string;
+  descriptionKey: string | null;
   sourcePath: string | null;
   referencedTypes: ApiTypeReference[];
 };
@@ -37,6 +39,7 @@ type ApiTypeReference = {
   type: string;
   resolvedType: string | null;
   description: string;
+  descriptionKey: string | null;
   sourcePath: string | null;
   typeParameters: string[];
   external: boolean;
@@ -50,6 +53,7 @@ type ApiSection = {
   type: string;
   resolvedType: string | null;
   description: string;
+  descriptionKey: string | null;
   sourcePath: string | null;
   typeParameters: string[];
   members: ApiMember[];
@@ -72,7 +76,7 @@ type ComponentApiIndexEntry = {
 
 type ComponentApiIndex = {
   generatedAt: string;
-  schemaVersion: 3;
+  schemaVersion: 4;
   components: Record<string, ComponentApiIndexEntry>;
 };
 
@@ -179,6 +183,28 @@ function toSourcePath(filePath: string): string {
   const relativePath = toRelativePath(filePath);
 
   return relativePath.startsWith('..') ? toPosixPath(filePath) : relativePath;
+}
+
+function toDescriptionKeySegment(value: string): string {
+  return value
+    .replace(/\.[^.]+$/u, '')
+    .replace(/[^a-zA-Z0-9]+/gu, '_')
+    .replace(/^_+|_+$/gu, '')
+    .replace(/_{2,}/gu, '_')
+    .toLowerCase();
+}
+
+function createDescriptionKey(...segments: Array<string | null | undefined>): string | null {
+  const normalizedSegments = segments
+    .map(segment => segment?.trim())
+    .filter((segment): segment is string => Boolean(segment))
+    .map(toDescriptionKeySegment);
+
+  if (!normalizedSegments.length) {
+    return null;
+  }
+
+  return `api.generated.${normalizedSegments.join('.')}`;
 }
 
 function getCommentText(comment?: Comment): string {
@@ -646,6 +672,7 @@ function createApiTypeReference(
     type: typeText,
     resolvedType: null,
     description: getSymbolDescription(symbol, checker),
+    descriptionKey: createDescriptionKey(sourcePath, name),
     sourcePath,
     typeParameters: getTsDeclarationTypeParameters(declaration),
     external: isDependencySourcePath(sourcePath),
@@ -687,7 +714,6 @@ function collectDirectDependencyReferencedTypes(
     if (!symbol) {
       return;
     }
-
     const resolvedSymbol = getResolvedSymbol(symbol, checker);
     const declaration = getTypeDeclaration(resolvedSymbol);
     const sourcePath = getDeclarationSourcePath(declaration);
@@ -927,6 +953,12 @@ function toApiMember(
     type: getTsTypeText(type, context.checker, declaration ?? context.declaration, optional),
     required: !optional,
     description: getSymbolDescription(symbol, context.checker, reflection),
+    descriptionKey: createDescriptionKey(
+      getDeclarationSourcePath(context.declaration),
+      context.declaration.name.text,
+      'members',
+      symbol.name
+    ),
     default: getSymbolDefaultValue(symbol, reflection),
     inheritedFrom: reflection?.inheritedFrom?.toString() ?? null,
     sourcePath: reflection ? getSourcePath(reflection) : getDeclarationSourcePath(declaration),
@@ -955,6 +987,12 @@ function toApiCallable(
     parameters: getCallableParameters(type, context.checker, declaration ?? context.declaration),
     required: !isOptionalSymbol(symbol, declaration),
     description: getSymbolDescription(symbol, context.checker, reflection),
+    descriptionKey: createDescriptionKey(
+      getDeclarationSourcePath(context.declaration),
+      context.declaration.name.text,
+      'callables',
+      symbol.name
+    ),
     sourcePath: reflection ? getSourcePath(reflection) : getDeclarationSourcePath(declaration),
     referencedTypes: includeReferencedTypes
       ? mergeReferencedTypes(
@@ -970,6 +1008,7 @@ function buildSection(kind: ApiSectionKind, reflection: DeclarationReflection): 
   const symbols = typeContext ? getSectionPropertySymbols(typeContext) : [];
   const seenTypeKeys = new Set<string>([createTypeKey(reflection.name, getSourcePath(reflection))]);
   const sectionType = typeContext?.type;
+  const sourcePath = getSourcePath(reflection);
 
   return {
     kind,
@@ -977,7 +1016,8 @@ function buildSection(kind: ApiSectionKind, reflection: DeclarationReflection): 
     type: reflection.toString(),
     resolvedType: typeContext ? buildResolvedType(typeContext) : null,
     description: getCommentText(reflection.comment),
-    sourcePath: getSourcePath(reflection),
+    descriptionKey: createDescriptionKey(sourcePath, reflection.name, kind),
+    sourcePath,
     typeParameters: getTypeParameters(reflection),
     members:
       (kind === 'props' || kind === 'slotProps') && typeContext
@@ -1026,6 +1066,7 @@ function buildSectionFromDeclaration(kind: ApiSectionKind, declaration: TsDeclar
     type: getDeclarationDisplayText(declaration),
     resolvedType: buildResolvedType(typeContext),
     description: getDeclarationCommentText(declaration, checker),
+    descriptionKey: createDescriptionKey(sourcePath, declaration.name.text, kind),
     sourcePath,
     typeParameters: getTsDeclarationTypeParameters(declaration),
     members:
@@ -1152,7 +1193,7 @@ function collectComponentApis(project: ProjectReflection): Record<string, Compon
 function createComponentApiIndex(generatedAt: string, components: Record<string, ComponentApi>): ComponentApiIndex {
   return {
     generatedAt,
-    schemaVersion: 3,
+    schemaVersion: 4,
     components: Object.fromEntries(
       Object.entries(components).map(([componentKey, componentApi]) => [
         componentKey,

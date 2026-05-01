@@ -2,19 +2,43 @@ import type { ButtonHTMLAttributes, ComputedRef, HTMLAttributes, InputHTMLAttrib
 import type { Direction, FormFieldCommonProps, PropsToContext, UiClass, VNodeRef } from '../../types';
 import type { PrimitiveProps } from '../primitive/types';
 
+/**
+ * Type information for the editable activation mode component.
+ */
 export type EditableActivationMode = 'focus' | 'dblclick' | 'none';
 
+/**
+ * Type information for the editable submit mode component.
+ */
 export type EditableSubmitMode = 'blur' | 'enter' | 'none' | 'both';
 
+/**
+ * State values for the editable component.
+ */
 export type EditableEventState = 'edit' | 'submit' | 'cancel';
 
+/**
+ * State values for the editable component.
+ */
 export type EditableViewState = 'preview' | 'edit';
 
+/**
+ * Type information for the editable placeholder component.
+ */
 export interface EditablePlaceholder {
+  /**
+   * Edit.
+   */
   edit?: string;
+  /**
+   * Preview.
+   */
   preview?: string;
 }
 
+/**
+ * Props for the editable root component.
+ */
 export interface EditableRootProps
   extends PrimitiveProps, FormFieldCommonProps, /** @vue-ignore */ Omit<HTMLAttributes, 'onSubmit' | 'placeholder'> {
   /** The default value of the editable field. */
@@ -45,6 +69,9 @@ export interface EditableRootProps
   id?: string;
 }
 
+/**
+ * Emits for the editable root component.
+ */
 export type EditableRootEmits = {
   /** Event handler called whenever the model value changes. */
   'update:modelValue': [value: string];
@@ -54,20 +81,44 @@ export type EditableRootEmits = {
   'update:state': [state: EditableEventState];
 };
 
+/**
+ * Props for the editable area component.
+ */
 export interface EditableAreaProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {}
 
+/**
+ * Props for the editable preview component.
+ */
 export interface EditablePreviewProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {}
 
+/**
+ * Props for the editable input component.
+ */
 export interface EditableInputProps extends PrimitiveProps, /** @vue-ignore */ Omit<InputHTMLAttributes, 'id'> {
+  /**
+   * Id.
+   */
   id?: string;
 }
 
+/**
+ * Props for the editable edit trigger component.
+ */
 export interface EditableEditTriggerProps extends PrimitiveProps, /** @vue-ignore */ ButtonHTMLAttributes {}
 
+/**
+ * Props for the editable submit trigger component.
+ */
 export interface EditableSubmitTriggerProps extends PrimitiveProps, /** @vue-ignore */ ButtonHTMLAttributes {}
 
+/**
+ * Props for the editable cancel trigger component.
+ */
 export interface EditableCancelTriggerProps extends PrimitiveProps, /** @vue-ignore */ ButtonHTMLAttributes {}
 
+/**
+ * Parameters used to create the editable root context.
+ */
 export interface EditableRootContextParams extends PropsToContext<
   EditableRootProps,
   | 'id'
@@ -83,25 +134,73 @@ export interface EditableRootContextParams extends PropsToContext<
   | 'required'
   | 'autoResize'
 > {
+  /**
+   * Current model value.
+   */
   modelValue: ShallowRef<string | undefined>;
+  /**
+   * Input value used by the component context.
+   */
   inputValue: ShallowRef<string | undefined>;
+  /**
+   * Placeholder used by the component context.
+   */
   placeholder: ComputedRef<EditablePlaceholder>;
+  /**
+   * Whether an editing.
+   */
   isEditing: ShallowRef<boolean>;
+  /**
+   * Whether an empty.
+   */
   isEmpty: ComputedRef<boolean>;
+  /**
+   * Edit used by the component context.
+   */
   edit: () => void;
+  /**
+   * Whether the component can cel.
+   */
   cancel: () => void;
+  /**
+   * Submit used by the component context.
+   */
   submit: () => void;
 }
 
+/**
+ * Context for the editable root component.
+ */
 export interface EditableRootContext extends Omit<EditableRootContextParams, 'dir'> {
+  /**
+   * Reading direction of the component.
+   */
   dir: ComputedRef<Direction>;
+  /**
+   * Input element used by the component context.
+   */
   inputElement: ShallowRef<HTMLInputElement | undefined>;
+  /**
+   * Set input element used by the component context.
+   */
   setInputElement: (nodeRef: VNodeRef) => void;
+  /**
+   * Data disabled used by the component context.
+   */
   dataDisabled: ComputedRef<string | undefined>;
+  /**
+   * Data readonly used by the component context.
+   */
   dataReadonly: ComputedRef<string | undefined>;
+  /**
+   * Data state used by the component context.
+   */
   dataState: ComputedRef<EditableViewState>;
 }
 
+/**
+ * Available UI slots for the editable component.
+ */
 export type EditableUiSlot =
   | 'root'
   | 'area'
@@ -112,34 +211,106 @@ export type EditableUiSlot =
   | 'submitTrigger'
   | 'cancelTrigger';
 
+/**
+ * UI class overrides for the editable component.
+ */
 export type EditableUi = UiClass<EditableUiSlot>;
 
+/**
+ * Props for the editable compact component.
+ */
 export interface EditableCompactProps extends EditableRootProps {
+  /**
+   * Props forwarded to the area element.
+   */
   areaProps?: EditableAreaProps;
+  /**
+   * Props forwarded to the preview element.
+   */
   previewProps?: EditablePreviewProps;
+  /**
+   * Props forwarded to the input element.
+   */
   inputProps?: EditableInputProps;
+  /**
+   * Props forwarded to the edit trigger element.
+   */
   editTriggerProps?: EditableEditTriggerProps;
+  /**
+   * Props forwarded to the submit trigger element.
+   */
   submitTriggerProps?: EditableSubmitTriggerProps;
+  /**
+   * Props forwarded to the cancel trigger element.
+   */
   cancelTriggerProps?: EditableCancelTriggerProps;
 }
 
+/**
+ * Emits for the editable compact component.
+ */
 export type EditableCompactEmits = EditableRootEmits;
 
+/**
+ * Slot props for the editable compact component.
+ */
 export interface EditableCompactSlotProps {
+  /**
+   * Current model value.
+   */
   modelValue: string | undefined;
+  /**
+   * Input value exposed in the slot scope.
+   */
   inputValue: string;
+  /**
+   * Whether an editing.
+   */
   isEditing: boolean;
+  /**
+   * Whether an empty.
+   */
   isEmpty: boolean;
+  /**
+   * Edit exposed in the slot scope.
+   */
   edit: () => void;
+  /**
+   * Whether the component can cel.
+   */
   cancel: () => void;
+  /**
+   * Submit exposed in the slot scope.
+   */
   submit: () => void;
 }
 
+/**
+ * Slots for the editable compact component.
+ */
 export interface EditableCompactSlots {
+  /**
+   * Custom content for the default slot.
+   */
   default?: (props: EditableCompactSlotProps) => any;
+  /**
+   * Custom content for the preview slot.
+   */
   preview?: (props: EditableCompactSlotProps) => any;
+  /**
+   * Custom content for the input slot.
+   */
   input?: (props: EditableCompactSlotProps) => any;
+  /**
+   * Custom content for the edit trigger slot.
+   */
   'edit-trigger'?: (props: EditableCompactSlotProps) => any;
+  /**
+   * Custom content for the submit trigger slot.
+   */
   'submit-trigger'?: (props: EditableCompactSlotProps) => any;
+  /**
+   * Custom content for the cancel trigger slot.
+   */
   'cancel-trigger'?: (props: EditableCompactSlotProps) => any;
 }

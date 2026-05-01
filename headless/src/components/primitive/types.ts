@@ -1,5 +1,8 @@
 import type { Component } from 'vue';
 
+/**
+ * Type information for the as tag component.
+ */
 export type AsTag =
   | 'a'
   | 'button'
@@ -20,6 +23,9 @@ export type AsTag =
   | 'template'
   | ({} & string);
 
+/**
+ * Props for the primitive component.
+ */
 export interface PrimitiveProps {
   /** Change the default rendered element for the one passed as a child, merging their props and behavior. */
   asChild?: boolean;

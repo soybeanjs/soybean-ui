@@ -1,6 +1,9 @@
 import type { HTMLAttributes, InputHTMLAttributes, ShallowRef } from 'vue';
 import type { FormFieldCommonProps, PropsToContext, UiClass } from '../../types';
 
+/**
+ * Props for the input base component.
+ */
 export interface InputBaseProps {
   /** Id of the input element */
   id?: string;
@@ -20,6 +23,9 @@ export interface InputBaseProps {
   readonly?: boolean;
 }
 
+/**
+ * Props for the input root component.
+ */
 export interface InputRootProps extends InputBaseProps, FormFieldCommonProps, /** @vue-ignore */ HTMLAttributes {
   /** The default value of the input */
   defaultValue?: string;
@@ -27,16 +33,37 @@ export interface InputRootProps extends InputBaseProps, FormFieldCommonProps, /*
   modelValue?: string;
 }
 
+/**
+ * Emits for the input root component.
+ */
 export type InputRootEmits = {
+  /**
+   * Emitted when the model value changes.
+   */
   'update:modelValue': [value: string];
 };
 
+/**
+ * Props for the input control component.
+ */
 export interface InputControlProps extends /** @vue-ignore */ InputHTMLAttributes {}
 
+/**
+ * Context for the input root component.
+ */
 export interface InputRootContext extends PropsToContext<InputBaseProps & FormFieldCommonProps> {
+  /**
+   * Current model value.
+   */
   modelValue: ShallowRef<string | undefined>;
 }
 
+/**
+ * Available UI slots for the input component.
+ */
 export type InputUiSlot = 'root' | 'control';
 
+/**
+ * UI class overrides for the input component.
+ */
 export type InputUi = UiClass<InputUiSlot>;

@@ -11,8 +11,17 @@ import type { IconValue } from '../icon/types';
 import type { MenuOptionData } from '../menu';
 import type { PageTabsVariant } from './variants';
 
+/**
+ * Option data for the page tabs component.
+ */
 export interface PageTabsOptionData extends PageTabsItemProps {
+  /**
+   * Label text rendered by the component.
+   */
   label: string;
+  /**
+   * Icon rendered by the component.
+   */
   icon?: IconValue;
   /**
    * Whether to hide the pinned icon on the tab
@@ -20,25 +29,73 @@ export interface PageTabsOptionData extends PageTabsItemProps {
   hidePinnedIcon?: boolean;
 }
 
+/**
+ * Additional UI slots for the page tabs component.
+ */
 export type PageTabsExtraUiSlot = 'itemText' | 'chromeBgLeft' | 'chromeBgRight' | 'sliderIndicator';
 
+/**
+ * Extended UI class overrides for the page tabs component.
+ */
 export type PageTabsExtendedUi = Record<PageTabsUiSlot | PageTabsExtraUiSlot, ClassValue>;
 
+/**
+ * State values for the page tabs component.
+ */
 export interface PageTabsState {
+  /**
+   * Pin.
+   */
   pin: () => void;
+  /**
+   * Unpin.
+   */
   unpin: () => void;
+  /**
+   * Whether the component can be closed.
+   */
   closable: boolean;
+  /**
+   * Close.
+   */
   close: () => Promise<void>;
+  /**
+   * Whether left closable.
+   */
   leftClosable: boolean;
+  /**
+   * Close left.
+   */
   closeLeft: () => void;
+  /**
+   * Whether right closable.
+   */
   rightClosable: boolean;
+  /**
+   * Close right.
+   */
   closeRight: () => void;
+  /**
+   * Whether other closable.
+   */
   otherClosable: boolean;
+  /**
+   * Close other.
+   */
   closeOther: () => void;
+  /**
+   * Whether all closable.
+   */
   allClosable: boolean;
+  /**
+   * Close all.
+   */
   closeAll: () => void;
 }
 
+/**
+ * Option data for the page tabs context menu component.
+ */
 export interface PageTabsContextMenuOptionData extends MenuOptionData<string> {
   /**
    * Action to perform when the menu item is selected.
@@ -46,14 +103,29 @@ export interface PageTabsContextMenuOptionData extends MenuOptionData<string> {
   action?: () => MaybePromise<void>;
 }
 
+/**
+ * Props for the page tabs component.
+ */
 export interface PageTabsProps<T extends PageTabsOptionData> extends PageTabsRootProps {
   /**
    * root element class
    */
   class?: ClassValue;
+  /**
+   * Visual size of the component.
+   */
   size?: ThemeSize;
+  /**
+   * Visual variant of the component.
+   */
   variant?: PageTabsVariant;
+  /**
+   * Per-slot class overrides for the component.
+   */
   ui?: Partial<PageTabsExtendedUi>;
+  /**
+   * Items rendered by the component.
+   */
   items: T[];
   /**
    * A factory function to generate context menu options for each tab.
@@ -68,6 +140,9 @@ export interface PageTabsProps<T extends PageTabsOptionData> extends PageTabsRoo
   beforeClose?: (value: string) => MaybePromise<boolean | void>;
 }
 
+/**
+ * Emits for the page tabs component.
+ */
 export type PageTabsEmits<T> = PageTabsRootEmits & {
   (e: 'update:items', items: T[]): void;
   (e: 'click', tab: T): void;

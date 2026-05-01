@@ -3,6 +3,9 @@ import type { Direction, PropsToContext } from '../../types';
 import type { TooltipProviderProps } from '../tooltip/types';
 import type { IconValue } from '../_icon/types';
 
+/**
+ * Props for the config provider component.
+ */
 export interface ConfigProviderProps {
   /**
    * The global reading direction of your application. This will be inherited by all components.
@@ -42,5 +45,8 @@ export interface ConfigProviderProps {
   iconRender?: (icon: IconValue) => VNode;
 }
 
+/**
+ * Context for the config provider component.
+ */
 export interface ConfigProviderContext
   extends PropsToContext<Omit<ConfigProviderProps, 'iconRender'>>, Pick<ConfigProviderProps, 'iconRender'> {}

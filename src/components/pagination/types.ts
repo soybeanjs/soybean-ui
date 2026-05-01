@@ -11,7 +11,13 @@ import type {
 import type { ThemeSize } from '@/theme';
 import type { PaginationShape, PaginationVariant } from './variants';
 
+/**
+ * Props for the pagination component.
+ */
 export interface PaginationProps extends PaginationRootProps {
+  /**
+   * Additional class names applied to the root element.
+   */
   class?: ClassValue;
   /** The custom ui class names */
   ui?: Partial<PaginationUi>;
@@ -41,4 +47,7 @@ export interface PaginationProps extends PaginationRootProps {
   lastProps?: PaginationButtonProps;
 }
 
+/**
+ * Emits for the pagination component.
+ */
 export type PaginationEmits = PaginationRootEmits;

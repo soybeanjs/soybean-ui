@@ -20,8 +20,14 @@ import type {
   MenuRadioOptionsCompactSlots
 } from '../menu';
 
+/**
+ * Supported dropdown menu trigger values.
+ */
 export type DropdownMenuTriggerType = 'click' | 'hover';
 
+/**
+ * Props for the dropdown menu root component.
+ */
 export interface DropdownMenuRootProps extends MenuRootProps {
   /**
    * The trigger type of the dropdown menu.
@@ -45,70 +51,163 @@ export interface DropdownMenuRootProps extends MenuRootProps {
    */
   skipDelayDuration?: number;
 }
+/**
+ * Emits for the dropdown menu root component.
+ */
 export type DropdownMenuRootEmits = MenuRootEmits;
 
 // Context
+/**
+ * Parameters used to create the dropdown menu root context.
+ */
 export interface DropdownMenuRootContextParams extends PropsToContext<DropdownMenuRootProps, 'dir' | 'modal'> {
+  /**
+   * Whether the component is open.
+   */
   open: ShallowRef<boolean | undefined>;
 }
 
+/**
+ * Parameters used to create the dropdown menu hover context.
+ */
 export interface DropdownMenuHoverContextParams extends PropsToContext<
   DropdownMenuRootProps,
   'delayDuration' | 'skipDelayDuration'
 > {
+  /**
+   * Whether hoverable.
+   */
   hoverable: ComputedRef<boolean>;
+  /**
+   * Whether the component is open.
+   */
   open: ShallowRef<boolean | undefined>;
 }
 
+/**
+ * Props for the dropdown menu content component.
+ */
 export interface DropdownMenuContentProps extends MenuContentProps {}
 
+/**
+ * Emits for the dropdown menu content component.
+ */
 export type DropdownMenuContentEmits = MenuContentEmits;
 
+/**
+ * Props for the dropdown menu trigger component.
+ */
 export interface DropdownMenuTriggerProps extends MenuTriggerProps {}
 
+/**
+ * Props for the dropdown menu wrapper compact component.
+ */
 export interface DropdownMenuWrapperCompactProps extends DropdownMenuRootProps {
+  /**
+   * Whether the component is disabled.
+   */
   disabled?: boolean;
+  /**
+   * Placement.
+   */
   placement?: Placement;
+  /**
+   * Whether to show an arrow.
+   */
   showArrow?: boolean;
+  /**
+   * Props forwarded to the trigger element.
+   */
   triggerProps?: DropdownMenuTriggerProps;
+  /**
+   * Props forwarded to the portal element.
+   */
   portalProps?: MenuPortalProps;
+  /**
+   * Props forwarded to the content element.
+   */
   contentProps?: DropdownMenuContentProps;
+  /**
+   * Props forwarded to the popup element.
+   */
   popupProps?: MenuPopupProps;
+  /**
+   * Props forwarded to the arrow element.
+   */
   arrowProps?: MenuArrowProps;
 }
 
+/**
+ * Emits for the dropdown menu wrapper compact component.
+ */
 export type DropdownMenuWrapperCompactEmits = MenuRootEmits & MenuContentEmits;
 
+/**
+ * Props for the dropdown menu compact component.
+ */
 export interface DropdownMenuCompactProps<T extends DefinedValue = DefinedValue>
   extends DropdownMenuWrapperCompactProps, MenuOptionsCompactProps<T> {}
 
+/**
+ * Emits for the dropdown menu compact component.
+ */
 export type DropdownMenuCompactEmits<T extends DefinedValue = DefinedValue> = DropdownMenuWrapperCompactEmits &
   MenuOptionsCompactEmits<T>;
 
+/**
+ * Slots for the dropdown menu compact component.
+ */
 export type DropdownMenuCompactSlots<T extends DefinedValue = DefinedValue> = MenuOptionsCompactSlots<T> & {
+  /**
+   * Custom content for the trigger slot.
+   */
   trigger: () => any;
 };
 
 // Menu Checkbox
+/**
+ * Props for the dropdown menu checkbox compact component.
+ */
 export interface DropdownMenuCheckboxCompactProps<T extends DefinedValue = DefinedValue>
   extends DropdownMenuWrapperCompactProps, MenuCheckboxOptionsCompactProps<T> {}
 
+/**
+ * Emits for the dropdown menu checkbox compact component.
+ */
 export type DropdownMenuCheckboxCompactEmits<T extends DefinedValue = DefinedValue> = DropdownMenuWrapperCompactEmits &
   MenuCheckboxOptionsCompactEmits<T>;
 
+/**
+ * Slots for the dropdown menu checkbox compact component.
+ */
 export type DropdownMenuCheckboxCompactSlots<T extends DefinedValue = DefinedValue> =
   MenuCheckboxOptionsCompactSlots<T> & {
+    /**
+     * Custom content for the trigger slot.
+     */
     trigger: () => any;
   };
 
 // Menu Radio
+/**
+ * Props for the dropdown menu radio compact component.
+ */
 export interface DropdownMenuRadioCompactProps<T extends AcceptableBooleanValue = AcceptableBooleanValue>
   extends DropdownMenuWrapperCompactProps, MenuRadioOptionsCompactProps<T> {}
 
+/**
+ * Emits for the dropdown menu radio compact component.
+ */
 export type DropdownMenuRadioCompactEmits<T extends AcceptableBooleanValue = AcceptableBooleanValue> =
   DropdownMenuWrapperCompactEmits & MenuRadioOptionsCompactEmits<T>;
 
+/**
+ * Slots for the dropdown menu radio compact component.
+ */
 export type DropdownMenuRadioCompactSlots<T extends AcceptableBooleanValue = AcceptableBooleanValue> =
   MenuRadioOptionsCompactSlots<T> & {
+    /**
+     * Custom content for the trigger slot.
+     */
     trigger: () => any;
   };

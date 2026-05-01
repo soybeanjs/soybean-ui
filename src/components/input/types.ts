@@ -5,12 +5,21 @@ type InputExtraUiSlot = 'clearable';
 
 type InputExtendedUi = InputUi & Record<InputExtraUiSlot, ClassValue>;
 
+/**
+ * Props for the input component.
+ */
 export interface InputProps extends InputRootProps {
   /**
    * root class
    */
   class?: ClassValue;
+  /**
+   * Visual size of the component.
+   */
   size?: ThemeSize;
+  /**
+   * Per-slot class overrides for the component.
+   */
   ui?: Partial<InputExtendedUi>;
   /** Whether to show the clear icon */
   clearable?: boolean;
@@ -26,4 +35,7 @@ export interface InputProps extends InputRootProps {
   controlProps?: InputControlProps;
 }
 
+/**
+ * Emits for the input component.
+ */
 export type InputEmits = InputRootEmits;

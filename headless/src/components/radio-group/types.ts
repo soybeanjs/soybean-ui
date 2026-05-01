@@ -12,6 +12,9 @@ import type {
 import type { PrimitiveProps } from '../primitive/types';
 import type { LabelProps as RadioGroupLabelProps } from '../label/types';
 
+/**
+ * Props for the radio group root component.
+ */
 export interface RadioGroupRootProps<T extends AcceptableBooleanValue = AcceptableBooleanValue>
   extends FormFieldCommonProps, /** @vue-ignore */ HTMLAttributes {
   /** The controlled value of the radio item to check. Can be bound as `v-model`. */
@@ -31,18 +34,30 @@ export interface RadioGroupRootProps<T extends AcceptableBooleanValue = Acceptab
   loop?: boolean;
 }
 
+/**
+ * Emits for the radio group root component.
+ */
 export type RadioGroupRootEmits<T extends AcceptableBooleanValue = AcceptableBooleanValue> = {
   /** Event handler called when the radio group value changes */
   'update:modelValue': [payload: NonNullable<T>];
 };
 
+/**
+ * Context for the radio group root component.
+ */
 export type RadioGroupRootContext = PropsToContext<
   RadioGroupRootProps,
   'disabled' | 'orientation' | 'dir' | 'loop' | 'name' | 'required'
 > & {
+  /**
+   * Current model value.
+   */
   modelValue: ShallowRef<AcceptableBooleanValue>;
 };
 
+/**
+ * Props for the radio group item component.
+ */
 export interface RadioGroupItemProps extends FormFieldCommonProps, /** @vue-ignore */ HTMLAttributes {
   /** The value given as data when submitted with a `name`. */
   value: NonNullable<AcceptableBooleanValue>;
@@ -50,42 +65,96 @@ export interface RadioGroupItemProps extends FormFieldCommonProps, /** @vue-igno
   disabled?: boolean;
 }
 
+/**
+ * Type information for the radio select event component.
+ */
 export type RadioSelectEvent = CustomEvent<{
+  /**
+   * Original event.
+   */
   originalEvent: MouseEvent;
+  /**
+   * Value associated with the current item.
+   */
   value: NonNullable<AcceptableBooleanValue>;
 }>;
 
+/**
+ * Emits for the radio group item component.
+ */
 export type RadioGroupItemEmits = {
   /** Event handler called when the radio item is selected */
   select: [event: RadioSelectEvent];
 };
 
+/**
+ * Props for the radio group control component.
+ */
 export interface RadioGroupControlProps extends /** @vue-ignore */ ButtonHTMLAttributes {
   /** Id of the element */
   id?: string;
 }
 
+/**
+ * Props for the radio group indicator component.
+ */
 export interface RadioGroupIndicatorProps extends PrimitiveProps, ForceMountProps, /** @vue-ignore */ HTMLAttributes {}
 
+/**
+ * Option data for the radio group component.
+ */
 export interface RadioGroupOptionData<T extends AcceptableBooleanValue = AcceptableBooleanValue> {
+  /**
+   * Value associated with the current item.
+   */
   value: NonNullable<T>;
+  /**
+   * Label text rendered by the component.
+   */
   label: string;
+  /**
+   * Whether the component is disabled.
+   */
   disabled?: boolean;
 }
 
+/**
+ * Props for the radio group compact component.
+ */
 export interface RadioGroupCompactProps<
   T extends AcceptableBooleanValue = AcceptableBooleanValue,
   S extends RadioGroupOptionData<T> = RadioGroupOptionData<T>
 > extends RadioGroupRootProps<T> {
+  /**
+   * Items rendered by the component.
+   */
   items: S[];
+  /**
+   * Props forwarded to the item element.
+   */
   itemProps?: RadioGroupItemProps;
+  /**
+   * Props forwarded to the control element.
+   */
   controlProps?: RadioGroupControlProps;
+  /**
+   * Props forwarded to the indicator element.
+   */
   indicatorProps?: RadioGroupIndicatorProps;
+  /**
+   * Props forwarded to the label element.
+   */
   labelProps?: RadioGroupLabelProps;
 }
 
+/**
+ * Emits for the radio group compact component.
+ */
 export type RadioGroupCompactEmits<T extends AcceptableBooleanValue = AcceptableBooleanValue> = RadioGroupRootEmits<T>;
 
+/**
+ * Parameters used to create the radio group item context.
+ */
 export type RadioGroupItemContextParams = PropsToContext<
   Pick<RadioGroupItemProps, 'name' | 'required' | 'value' | 'disabled'>
 > &
@@ -100,8 +169,14 @@ export type RadioGroupItemContextParams = PropsToContext<
     onSelect: (event: RadioSelectEvent) => void;
   };
 
+/**
+ * Available UI slots for the radio group component.
+ */
 export type RadioGroupUiSlot = 'root' | 'item' | 'indicator' | 'label' | 'control';
 
+/**
+ * UI class overrides for the radio group component.
+ */
 export type RadioGroupUi = UiClass<RadioGroupUiSlot>;
 
 export type { RadioGroupLabelProps };

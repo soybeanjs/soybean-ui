@@ -2,6 +2,9 @@ import type { HTMLAttributes } from 'vue';
 import type { DataOrientation, Direction, EmitsToHookProps, PropsToContext } from '../../types';
 import type { PrimitiveProps } from '../primitive/types';
 
+/**
+ * Props for the roving focus group component.
+ */
 export interface RovingFocusGroupProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {
   /** The orientation of the group. Mainly so arrow navigation is done accordingly (left & right vs. up & down) */
   orientation?: DataOrientation;
@@ -25,12 +28,27 @@ export interface RovingFocusGroupProps extends PrimitiveProps, /** @vue-ignore *
   preventScrollOnEntryFocus?: boolean;
 }
 
+/**
+ * Emits for the roving focus group component.
+ */
 export type RovingFocusGroupEmits = {
+  /**
+   * Emitted when entry focus occurs.
+   */
   entryFocus: [event: Event];
+  /**
+   * Emitted when the current tab stop id value changes.
+   */
   'update:currentTabStopId': [value: string | null | undefined];
 };
 
+/**
+ * Props for the roving focus item component.
+ */
 export interface RovingFocusItemProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {
+  /**
+   * Tab stop id.
+   */
   tabStopId?: string;
   /**
    * When `false`, item will not be focusable.
@@ -46,12 +64,18 @@ export interface RovingFocusItemProps extends PrimitiveProps, /** @vue-ignore */
   itemData?: Record<string, any>;
 }
 
+/**
+ * Parameters used to create the roving focus group context.
+ */
 export type RovingFocusGroupContextParams = PropsToContext<
   RovingFocusGroupProps,
   'orientation' | 'dir' | 'loop' | 'currentTabStopId' | 'defaultCurrentTabStopId' | 'preventScrollOnEntryFocus'
 > &
   EmitsToHookProps<RovingFocusGroupEmits>;
 
+/**
+ * Type information for the use roving focus item options component.
+ */
 export type UseRovingFocusItemOptions = Partial<
   PropsToContext<RovingFocusItemProps, 'tabStopId' | 'focusable' | 'active' | 'allowShiftKey' | 'itemData'>
 >;

@@ -1,8 +1,14 @@
 import type { ButtonProps as _ButtonProps } from '../button/types';
 import type { IconValue } from '../_icon/types';
 
+/**
+ * State values for the clipboard component.
+ */
 export type ClipboardState = 'ready' | 'copied' | 'unsupported';
 
+/**
+ * Props for the clipboard component.
+ */
 export interface ClipboardProps extends _ButtonProps {
   /**
    * The text value to copy.
@@ -46,18 +52,54 @@ export interface ClipboardProps extends _ButtonProps {
   copiedText?: string;
 }
 
+/**
+ * Slot props for the clipboard component.
+ */
 export interface ClipboardSlotProps {
+  /**
+   * Whether copied.
+   */
   copied: boolean;
+  /**
+   * Whether the component is disabled.
+   */
   disabled: boolean;
+  /**
+   * Icon rendered by the component.
+   */
   icon: IconValue;
+  /**
+   * Whether supported.
+   */
   supported: boolean;
+  /**
+   * State exposed in the slot scope.
+   */
   state: ClipboardState;
+  /**
+   * Text exposed in the slot scope.
+   */
   text: string;
+  /**
+   * Copy exposed in the slot scope.
+   */
   copy: () => Promise<void>;
 }
 
+/**
+ * Emits for the clipboard component.
+ */
 export type ClipboardEmits = {
+  /**
+   * Emitted when click occurs.
+   */
   click: [event: MouseEvent];
+  /**
+   * Emitted when copied occurs.
+   */
   copied: [value: string];
+  /**
+   * Emitted when copy error occurs.
+   */
   copyError: [error: unknown];
 };

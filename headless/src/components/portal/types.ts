@@ -1,5 +1,8 @@
 import type { ForceMountProps } from '../../types';
 
+/**
+ * Props for the portal component.
+ */
 export interface PortalProps extends ForceMountProps {
   /**
    * Vue native teleport component prop `:to`

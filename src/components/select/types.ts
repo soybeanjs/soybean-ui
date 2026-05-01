@@ -2,6 +2,9 @@ import type { SelectCompactEmits, SelectCompactProps, SelectCompactSlots, Select
 import type { ClassValue, DefinedValue } from '@soybeanjs/headless';
 import type { ThemeSize } from '@/theme';
 
+/**
+ * Props for the select component.
+ */
 export interface SelectProps<
   T extends DefinedValue = DefinedValue,
   M extends boolean = false
@@ -10,12 +13,24 @@ export interface SelectProps<
    * the class of select trigger
    */
   class?: ClassValue;
+  /**
+   * Per-slot class overrides for the component.
+   */
   ui?: Partial<SelectUi>;
+  /**
+   * Visual size of the component.
+   */
   size?: ThemeSize;
 }
 
+/**
+ * Emits for the select component.
+ */
 export type SelectEmits<T extends DefinedValue = DefinedValue, M extends boolean = false> = SelectCompactEmits<T, M>;
 
+/**
+ * Slots for the select component.
+ */
 export type SelectSlots<T extends DefinedValue = DefinedValue, M extends boolean = false> = SelectCompactSlots<T, M>;
 
 export type {

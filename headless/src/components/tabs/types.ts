@@ -3,8 +3,14 @@ import type { AcceptableValue, DefinedValue, ForceMountProps, PropsToContext, Ui
 import type { PrimitiveProps } from '../primitive/types';
 import type { RovingFocusGroupProps } from '../roving-focus/types';
 
+/**
+ * Type information for the tabs activation mode component.
+ */
 export type TabsActivationMode = 'automatic' | 'manual';
 
+/**
+ * Props for the tabs root component.
+ */
 export interface TabsRootProps<T extends AcceptableValue = AcceptableValue> extends Omit<
   RovingFocusGroupProps,
   'as' | 'asChild' | 'currentTabStopId' | 'defaultCurrentTabStopId' | 'preventScrollOnEntryFocus'
@@ -30,18 +36,30 @@ export interface TabsRootProps<T extends AcceptableValue = AcceptableValue> exte
   unmountOnHide?: boolean;
 }
 
+/**
+ * Emits for the tabs root component.
+ */
 export type TabsRootEmits<T = AcceptableValue> = {
   /** Event handler called when the value changes */
   'update:modelValue': [payload: NonNullable<T>];
 };
 
+/**
+ * Props for the tabs list component.
+ */
 export interface TabsListProps extends /** @vue-ignore */ HTMLAttributes {}
 
+/**
+ * Props for the tabs content component.
+ */
 export interface TabsContentProps extends ForceMountProps, /** @vue-ignore */ HTMLAttributes {
   /** A unique value that associates the content with a trigger. */
   value: DefinedValue;
 }
 
+/**
+ * Props for the tabs trigger component.
+ */
 export interface TabsTriggerProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {
   /** A unique value that associates the trigger with a content. */
   value: DefinedValue;
@@ -49,38 +67,101 @@ export interface TabsTriggerProps extends PrimitiveProps, /** @vue-ignore */ HTM
   disabled?: boolean;
 }
 
+/**
+ * Props for the tabs indicator component.
+ */
 export interface TabsIndicatorProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {}
 
+/**
+ * Option data for the tabs component.
+ */
 export interface TabsOptionData<T extends DefinedValue = DefinedValue> {
+  /**
+   * Value associated with the current item.
+   */
   value: T;
+  /**
+   * Label text rendered by the component.
+   */
   label: string;
+  /**
+   * Whether the component is disabled.
+   */
   disabled?: boolean;
 }
 
+/**
+ * Props for the tabs compact component.
+ */
 export interface TabsCompactProps<T extends TabsOptionData = TabsOptionData> extends TabsRootProps<T['value'] | null> {
+  /**
+   * Items rendered by the component.
+   */
   items: T[];
+  /**
+   * Whether to enable indicator.
+   */
   enableIndicator?: boolean;
+  /**
+   * Props forwarded to the list element.
+   */
   listProps?: TabsListProps;
+  /**
+   * Props forwarded to the trigger element.
+   */
   triggerProps?: TabsTriggerProps;
+  /**
+   * Props forwarded to the content element.
+   */
   contentProps?: TabsContentProps;
+  /**
+   * Props forwarded to the indicator element.
+   */
   indicatorProps?: TabsIndicatorProps;
 }
 
+/**
+ * Emits for the tabs compact component.
+ */
 export type TabsCompactEmits<T extends AcceptableValue = AcceptableValue> = TabsRootEmits<T>;
 
+/**
+ * Slots for the tabs compact component.
+ */
 export type TabsCompactSlots<T extends TabsOptionData = TabsOptionData> = {
+  /**
+   * Custom content for the trigger slot.
+   */
   trigger?: (props: T & { active: boolean }) => any;
+  /**
+   * Custom content for the content slot.
+   */
   content?: (props: T & { active: boolean }) => any;
+  /**
+   * Custom content for the indicator slot.
+   */
   indicator?: () => any;
 };
 
+/**
+ * Parameters used to create the tabs root context.
+ */
 export interface TabsRootContextParams extends PropsToContext<
   TabsRootProps,
   'orientation' | 'dir' | 'loop' | 'unmountOnHide' | 'activationMode'
 > {
+  /**
+   * Current model value.
+   */
   modelValue: ShallowRef<AcceptableValue>;
 }
 
+/**
+ * Available UI slots for the tabs component.
+ */
 export type TabsUiSlot = 'root' | 'list' | 'trigger' | 'content' | 'indicator' | 'indicatorContent';
 
+/**
+ * UI class overrides for the tabs component.
+ */
 export type TabsUi = UiClass<TabsUiSlot>;

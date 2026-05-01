@@ -15,32 +15,65 @@ import type {
 } from '@soybeanjs/headless';
 import type { MenuUiBaseProps } from '../menu/types';
 
+/**
+ * Props for the context menu wrapper component.
+ */
 export interface ContextMenuWrapperProps extends MenuUiBaseProps, ContextMenuWrapperCompactProps {}
 
+/**
+ * Emits for the context menu wrapper component.
+ */
 export type ContextMenuWrapperEmits = ContextMenuWrapperCompactEmits;
 
 // Menu
+/**
+ * Props for the context menu component.
+ */
 export type ContextMenuProps<T extends DefinedValue = DefinedValue> = Omit<MenuUiBaseProps, 'indicatorPosition'> &
   ContextMenuCompactProps<T>;
 
+/**
+ * Emits for the context menu component.
+ */
 export type ContextMenuEmits<T extends DefinedValue = DefinedValue> = ContextMenuCompactEmits<T>;
 
+/**
+ * Slots for the context menu component.
+ */
 export type ContextMenuSlots<T extends DefinedValue = DefinedValue> = ContextMenuCompactSlots<T>;
 
 // Menu Checkbox
+/**
+ * Props for the context menu checkbox component.
+ */
 export type ContextMenuCheckboxProps<T extends DefinedValue = DefinedValue> = MenuUiBaseProps &
   ContextMenuCheckboxCompactProps<T>;
 
+/**
+ * Emits for the context menu checkbox component.
+ */
 export type ContextMenuCheckboxEmits<T extends DefinedValue = DefinedValue> = ContextMenuCheckboxCompactEmits<T>;
 
+/**
+ * Slots for the context menu checkbox component.
+ */
 export type ContextMenuCheckboxSlots<T extends DefinedValue = DefinedValue> = ContextMenuCheckboxCompactSlots<T>;
 
 // Menu Radio
+/**
+ * Props for the context menu radio component.
+ */
 export type ContextMenuRadioProps<T extends AcceptableBooleanValue = AcceptableBooleanValue> = MenuUiBaseProps &
   ContextMenuRadioCompactProps<T>;
 
+/**
+ * Emits for the context menu radio component.
+ */
 export type ContextMenuRadioEmits<T extends AcceptableBooleanValue = AcceptableBooleanValue> =
   ContextMenuRadioCompactEmits<T>;
 
+/**
+ * Slots for the context menu radio component.
+ */
 export type ContextMenuRadioSlots<T extends AcceptableBooleanValue = AcceptableBooleanValue> =
   ContextMenuRadioCompactSlots<T>;

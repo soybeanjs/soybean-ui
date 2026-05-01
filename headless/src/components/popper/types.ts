@@ -3,6 +3,9 @@ import type { Padding, ReferenceElement, Side } from '@floating-ui/dom';
 import type { Align, Placement, UiClass, VNodeRef } from '../../types';
 import type { PrimitiveProps } from '../primitive/types';
 
+/**
+ * Props for the popper anchor component.
+ */
 export interface PopperAnchorProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {
   /**
    * The reference (or anchor) element that is being referred to for positioning. If not provided will use the current
@@ -11,6 +14,9 @@ export interface PopperAnchorProps extends PrimitiveProps, /** @vue-ignore */ HT
   reference?: ReferenceElement;
 }
 
+/**
+ * Props for the popper positioner component.
+ */
 export interface PopperPositionerProps extends /** @vue-ignore */ HTMLAttributes {
   /**
    * The placement of the floating element.
@@ -136,13 +142,22 @@ export interface PopperPositionerProps extends /** @vue-ignore */ HTMLAttributes
   reference?: ReferenceElement;
 }
 
+/**
+ * Emits for the popper positioner component.
+ */
 export interface PopperPositionerEmits {
   /** Event handler called when the positioner is placed */
   placed: [];
 }
 
+/**
+ * Props for the popper popup component.
+ */
 export interface PopperPopupProps extends /** @vue-ignore */ HTMLAttributes {}
 
+/**
+ * Props for the popper arrow component.
+ */
 export interface PopperArrowProps extends /** @vue-ignore */ HTMLAttributes {}
 
 /** Context interface for PopperPositioner */
@@ -163,6 +178,12 @@ export interface PopperPositionerContextParams {
   isPositioned: ComputedRef<boolean>;
 }
 
+/**
+ * Available UI slots for the popper component.
+ */
 export type PopperUiSlot = 'positioner' | 'popup' | 'arrow' | 'anchor';
 
+/**
+ * UI class overrides for the popper component.
+ */
 export type PopperUi = UiClass<PopperUiSlot>;

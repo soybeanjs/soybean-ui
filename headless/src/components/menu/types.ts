@@ -23,6 +23,9 @@ import type { RovingFocusGroupEmits, RovingFocusGroupProps } from '../roving-foc
 import type { SeparatorRootProps as MenuSeparatorProps } from '../separator/types';
 
 // MenuRoot
+/**
+ * Props for the menu root component.
+ */
 export interface MenuRootProps extends DialogBaseProps {
   /**
    * The reading direction of the combobox when applicable.
@@ -31,43 +34,91 @@ export interface MenuRootProps extends DialogBaseProps {
    */
   dir?: Direction;
 }
+/**
+ * Emits for the menu root component.
+ */
 export type MenuRootEmits = DialogRootEmits;
 
+/**
+ * Props for the menu popup component.
+ */
 export interface MenuPopupProps extends PopperPopupProps {}
 
 // MenuContentImpl
+/**
+ * Props for the menu content impl component.
+ */
 export interface MenuContentImplProps
   extends PopperPositionerProps, TrapFocusProps, DismissableLayerProps, Pick<RovingFocusGroupProps, 'loop'> {
+  /**
+   * Props forwarded to the popup element.
+   */
   popupProps?: MenuPopupProps;
 }
+/**
+ * Emits for the menu content impl component.
+ */
 export type MenuContentImplEmits = DismissableLayerEmits & FocusScopeEmits & Pick<RovingFocusGroupEmits, 'entryFocus'>;
 
 // MenuContent
+/**
+ * Props for the menu content component.
+ */
 export interface MenuContentProps extends PopperPositionerProps, ForceMountProps, Pick<RovingFocusGroupProps, 'loop'> {
+  /**
+   * Props forwarded to the popup element.
+   */
   popupProps?: MenuPopupProps;
 }
+/**
+ * Emits for the menu content component.
+ */
 export type MenuContentEmits = MenuContentImplEmits;
 
+/**
+ * Props for the menu trigger component.
+ */
 export interface MenuTriggerProps extends PrimitiveProps, /** @vue-ignore */ ButtonHTMLAttributes {
   /** When `true`, the menu would not open when triggered. */
   disabled?: boolean;
 }
 
 // MenuSub
+/**
+ * Props for the menu sub component.
+ */
 export interface MenuSubProps extends Pick<MenuRootProps, 'open' | 'defaultOpen'> {}
+/**
+ * Emits for the menu sub component.
+ */
 export type MenuSubEmits = MenuRootEmits;
 
 // MenuSubContent
+/**
+ * Props for the menu sub content component.
+ */
 export interface MenuSubContentProps extends Omit<MenuContentProps, 'side' | 'align'> {}
+/**
+ * Emits for the menu sub content component.
+ */
 export type MenuSubContentEmits = MenuContentEmits;
 
 // MenuGroup
+/**
+ * Props for the menu group component.
+ */
 export interface MenuGroupProps extends PrimitiveProps, /** @vue-ignore */ Omit<HTMLAttributes, 'dir' | 'onSelect'> {}
 
 // MenuGroupLabel
+/**
+ * Props for the menu group label component.
+ */
 export interface MenuGroupLabelProps extends /** @vue-ignore */ HTMLAttributes {}
 
 // MenuItemImpl
+/**
+ * Props for the menu item impl component.
+ */
 export interface MenuItemImplProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {
   /** When `true`, prevents the user from interacting with the item. */
   disabled?: boolean;
@@ -79,7 +130,13 @@ export interface MenuItemImplProps extends PrimitiveProps, /** @vue-ignore */ HT
 }
 
 // MenuItem
+/**
+ * Props for the menu item component.
+ */
 export interface MenuItemProps extends MenuItemImplProps {}
+/**
+ * Emits for the menu item component.
+ */
 export type MenuItemEmits = {
   /**
    * Event handler called when the user selects an item (via mouse or keyboard). <br> Calling `event.preventDefault` in
@@ -89,6 +146,9 @@ export type MenuItemEmits = {
 };
 
 // MenuCheckboxItem
+/**
+ * Props for the menu checkbox item component.
+ */
 export interface MenuCheckboxItemProps extends MenuItemImplProps {
   /** The controlled checked state of the item. Can be used as `v-model`. */
   modelValue?: CheckedState;
@@ -99,12 +159,18 @@ export interface MenuCheckboxItemProps extends MenuItemImplProps {
    */
   value?: DefinedValue;
 }
+/**
+ * Emits for the menu checkbox item component.
+ */
 export type MenuCheckboxItemEmits = MenuItemEmits & {
   /** Event handler called when the checked state of the item changes. */
   'update:modelValue': [value: CheckedState];
 };
 
 // MenuCheckboxGroup
+/**
+ * Props for the menu checkbox group component.
+ */
 export interface MenuCheckboxGroupProps<T extends DefinedValue = DefinedValue> extends MenuGroupProps {
   /** The controlled value of the checkbox. Can be bound with v-model. */
   modelValue?: T[];
@@ -117,19 +183,31 @@ export interface MenuCheckboxGroupProps<T extends DefinedValue = DefinedValue> e
    */
   disabled?: boolean;
 }
+/**
+ * Emits for the menu checkbox group component.
+ */
 export type MenuCheckboxGroupEmits<T extends DefinedValue = DefinedValue> = {
   /** Event handler called when the value of the checkbox group changes. */
   'update:modelValue': [value: T[]];
 };
 
 // MenuRadioItem
+/**
+ * Props for the menu radio item component.
+ */
 export interface MenuRadioItemProps extends MenuItemImplProps {
   /** The value given as data when submitted with a `name`. */
   value: NonNullable<AcceptableBooleanValue>;
 }
+/**
+ * Emits for the menu radio item component.
+ */
 export type MenuRadioItemEmits = MenuItemEmits;
 
 // MenuRadioGroup
+/**
+ * Props for the menu radio group component.
+ */
 export interface MenuRadioGroupProps<T = AcceptableBooleanValue> extends MenuGroupProps {
   /** The controlled value of the radio item to check. Can be bound as `v-model`. */
   modelValue?: T;
@@ -141,19 +219,34 @@ export interface MenuRadioGroupProps<T = AcceptableBooleanValue> extends MenuGro
   /** When `true`, prevents the user from interacting with radio items. */
   disabled?: boolean;
 }
+/**
+ * Emits for the menu radio group component.
+ */
 export type MenuRadioGroupEmits<T = AcceptableBooleanValue> = {
   /** Event handler called when the radio group value changes */
   'update:modelValue': [payload: NonNullable<T>];
 };
 
 // MenuSubTrigger
+/**
+ * Props for the menu sub trigger component.
+ */
 export interface MenuSubTriggerProps extends MenuItemImplProps {}
 
 // MenuItemIndicator
+/**
+ * Props for the menu item indicator component.
+ */
 export interface MenuItemIndicatorProps extends PrimitiveProps, ForceMountProps, /** @vue-ignore */ HTMLAttributes {}
 
+/**
+ * Type information for the menu collection item data component.
+ */
 export type MenuCollectionItemData = Pick<MenuItemImplProps, 'textValue'>;
 
+/**
+ * Option data for the menu component.
+ */
 export interface MenuOptionData<T extends DefinedValue = DefinedValue>
   extends Pick<MenuItemProps, 'disabled' | 'textValue'>, LinkBaseProps {
   /** The label to display in the menu. */
@@ -172,81 +265,210 @@ export interface MenuOptionData<T extends DefinedValue = DefinedValue>
   children?: MenuOptionData<T>[];
 }
 
+/**
+ * Props for the menu shortcut component.
+ */
 export interface MenuShortcutProps extends Omit<KbdProps, 'value'> {}
 
+/**
+ * Props for the menu option compact component.
+ */
 export interface MenuOptionCompactProps<T extends DefinedValue = DefinedValue> {
+  /**
+   * Current item data.
+   */
   item: MenuOptionData<T>;
+  /**
+   * Props forwarded to the item element.
+   */
   itemProps?: MenuItemProps;
+  /**
+   * Props forwarded to the link element.
+   */
   linkProps?: LinkProps;
+  /**
+   * Props forwarded to the group element.
+   */
   groupProps?: MenuGroupProps;
+  /**
+   * Props forwarded to the group label element.
+   */
   groupLabelProps?: MenuGroupLabelProps;
+  /**
+   * Props forwarded to the sub element.
+   */
   subProps?: MenuSubProps;
+  /**
+   * Props forwarded to the sub trigger element.
+   */
   subTriggerProps?: MenuSubTriggerProps;
+  /**
+   * Props forwarded to the portal element.
+   */
   portalProps?: MenuPortalProps;
+  /**
+   * Props forwarded to the sub content element.
+   */
   subContentProps?: MenuSubContentProps;
+  /**
+   * Props forwarded to the separator element.
+   */
   separatorProps?: MenuSeparatorProps;
+  /**
+   * Props forwarded to the shortcut element.
+   */
   shortcutProps?: MenuShortcutProps;
 }
 
+/**
+ * Emits for the menu option compact select component.
+ */
 export type MenuOptionCompactSelectEmits<T extends DefinedValue = DefinedValue> = {
+  /**
+   * Emitted when select occurs.
+   */
   select: [item: MenuOptionData<T>, event: Event];
 };
 
+/**
+ * Emits for the menu option compact component.
+ */
 export type MenuOptionCompactEmits<T extends DefinedValue = DefinedValue> = MenuSubEmits &
   MenuSubContentEmits &
   MenuOptionCompactSelectEmits<T>;
 
+/**
+ * Slots for the menu option compact component.
+ */
 export type MenuOptionCompactSlots<T extends DefinedValue = DefinedValue> = {
+  /**
+   * Custom content for the item slot.
+   */
   item?: (props: { item: MenuOptionData<T>; isTrigger?: boolean }) => any;
+  /**
+   * Custom content for the item leading slot.
+   */
   'item-leading'?: (props: { item: MenuOptionData<T> }) => any;
+  /**
+   * Custom content for the item trailing slot.
+   */
   'item-trailing'?: (props: { item: MenuOptionData<T> }) => any;
+  /**
+   * Custom content for the item trigger icon slot.
+   */
   'item-trigger-icon'?: (props: { item: MenuOptionData<T> }) => any;
+  /**
+   * Custom content for the item link icon slot.
+   */
   'item-link-icon'?: (props: { item: MenuOptionData<T> }) => any;
 };
 
+/**
+ * Props for the menu options compact component.
+ */
 export interface MenuOptionsCompactProps<T extends DefinedValue = DefinedValue> extends Omit<
   MenuOptionCompactProps<T>,
   'item'
 > {
+  /**
+   * Items rendered by the component.
+   */
   items: MenuOptionData<T>[];
   /** The active value of the menu. */
   activeValue?: T;
 }
 
+/**
+ * Emits for the menu options compact component.
+ */
 export type MenuOptionsCompactEmits<T extends DefinedValue = DefinedValue> = MenuOptionCompactEmits<T>;
 
+/**
+ * Slots for the menu options compact component.
+ */
 export type MenuOptionsCompactSlots<T extends DefinedValue = DefinedValue> = MenuOptionCompactSlots<T>;
 
+/**
+ * Option data for the menu checkbox component.
+ */
 export interface MenuCheckboxOptionData<T extends DefinedValue = DefinedValue> extends Omit<
   MenuOptionData<T>,
   'children'
 > {}
 
+/**
+ * Props for the menu checkbox options compact component.
+ */
 export interface MenuCheckboxOptionsCompactProps<
   T extends DefinedValue = DefinedValue
 > extends MenuCheckboxGroupProps<T> {
+  /**
+   * Items rendered by the component.
+   */
   items: MenuCheckboxOptionData<T>[];
+  /**
+   * Props forwarded to the group label element.
+   */
   groupLabelProps?: MenuGroupLabelProps;
+  /**
+   * Props forwarded to the checkbox item element.
+   */
   checkboxItemProps?: MenuCheckboxItemProps;
+  /**
+   * Props forwarded to the indicator element.
+   */
   indicatorProps?: MenuItemIndicatorProps;
+  /**
+   * Props forwarded to the shortcut element.
+   */
   shortcutProps?: MenuShortcutProps;
+  /**
+   * Props forwarded to the separator element.
+   */
   separatorProps?: MenuSeparatorProps;
 }
 
+/**
+ * Emits for the menu checkbox options compact select component.
+ */
 export type MenuCheckboxOptionsCompactSelectEmits<T extends DefinedValue = DefinedValue> = {
+  /**
+   * Emitted when select occurs.
+   */
   select: [item: MenuCheckboxOptionData<T>, event: Event];
 };
 
+/**
+ * Emits for the menu checkbox options compact component.
+ */
 export type MenuCheckboxOptionsCompactEmits<T extends DefinedValue = DefinedValue> = MenuCheckboxGroupEmits<T> &
   MenuCheckboxOptionsCompactSelectEmits<T>;
 
+/**
+ * Slots for the menu checkbox options compact component.
+ */
 export type MenuCheckboxOptionsCompactSlots<T extends DefinedValue = DefinedValue> = {
+  /**
+   * Custom content for the item slot.
+   */
   item?: (props: MenuCheckboxOptionData<T>) => any;
+  /**
+   * Custom content for the item leading slot.
+   */
   'item-leading'?: (props: MenuCheckboxOptionData<T>) => any;
+  /**
+   * Custom content for the item trailing slot.
+   */
   'item-trailing'?: (props: MenuCheckboxOptionData<T>) => any;
+  /**
+   * Custom content for the item indicator icon slot.
+   */
   'item-indicator-icon'?: (props: MenuCheckboxOptionData<T>) => any;
 };
 
+/**
+ * Option data for the menu radio component.
+ */
 export interface MenuRadioOptionData<T extends AcceptableBooleanValue = AcceptableBooleanValue>
   extends Pick<MenuItemProps, 'disabled' | 'textValue'>, LinkBaseProps {
   /** The label to display in the menu. */
@@ -263,67 +485,184 @@ export interface MenuRadioOptionData<T extends AcceptableBooleanValue = Acceptab
   shortcut?: KbdValue | KbdValue[];
 }
 
+/**
+ * Props for the menu radio options compact component.
+ */
 export interface MenuRadioOptionsCompactProps<
   T extends AcceptableBooleanValue = AcceptableBooleanValue
 > extends MenuRadioGroupProps<T> {
+  /**
+   * Items rendered by the component.
+   */
   items: MenuRadioOptionData<T>[];
+  /**
+   * Props forwarded to the group label element.
+   */
   groupLabelProps?: MenuGroupLabelProps;
+  /**
+   * Props forwarded to the radio item element.
+   */
   radioItemProps?: MenuRadioItemProps;
+  /**
+   * Props forwarded to the indicator element.
+   */
   indicatorProps?: MenuItemIndicatorProps;
+  /**
+   * Props forwarded to the shortcut element.
+   */
   shortcutProps?: MenuShortcutProps;
+  /**
+   * Props forwarded to the separator element.
+   */
   separatorProps?: MenuSeparatorProps;
 }
 
+/**
+ * Emits for the menu radio options compact select component.
+ */
 export type MenuRadioOptionsCompactSelectEmits<T extends AcceptableBooleanValue = AcceptableBooleanValue> = {
+  /**
+   * Emitted when select occurs.
+   */
   select: [item: MenuRadioOptionData<T>, event: Event];
 };
 
+/**
+ * Emits for the menu radio options compact component.
+ */
 export type MenuRadioOptionsCompactEmits<T extends AcceptableBooleanValue = AcceptableBooleanValue> =
   MenuRadioGroupEmits<T> & MenuRadioOptionsCompactSelectEmits<T>;
 
+/**
+ * Slots for the menu radio options compact component.
+ */
 export type MenuRadioOptionsCompactSlots<T extends AcceptableBooleanValue = AcceptableBooleanValue> = {
+  /**
+   * Custom content for the item slot.
+   */
   item?: (props: MenuRadioOptionData<T>) => any;
+  /**
+   * Custom content for the item leading slot.
+   */
   'item-leading'?: (props: MenuRadioOptionData<T>) => any;
+  /**
+   * Custom content for the item trailing slot.
+   */
   'item-trailing'?: (props: MenuRadioOptionData<T>) => any;
+  /**
+   * Custom content for the item indicator icon slot.
+   */
   'item-indicator-icon'?: (props: MenuRadioOptionData<T>) => any;
 };
 
 // Context
+/**
+ * Context for the menu root component.
+ */
 export interface MenuRootContext extends PropsToContext<MenuRootProps, 'modal'> {
+  /**
+   * Reading direction of the component.
+   */
   dir: ComputedRef<Direction>;
+  /**
+   * Whether an using keyboard.
+   */
   isUsingKeyboard: ComputedRef<boolean>;
+  /**
+   * Callback invoked when the close event fires.
+   */
   onClose: () => void;
 }
+/**
+ * Parameters used to create the menu context.
+ */
 export interface MenuContextParams {
+  /**
+   * Whether this context is the root.
+   */
   isRoot?: boolean;
+  /**
+   * Whether the component is open.
+   */
   open: ShallowRef<boolean | undefined>;
 }
+/**
+ * Parameters used to create the menu content context.
+ */
 export interface MenuContentContextParams {
+  /**
+   * Popup element used by the component context.
+   */
   popupElement: ShallowRef<HTMLElement | undefined>;
 }
 
+/**
+ * Parameters used to create the menu checkbox group context.
+ */
 export interface MenuCheckboxGroupContextParams {
+  /**
+   * Current model value.
+   */
   modelValue: ShallowRef<DefinedValue[] | undefined>;
+  /**
+   * Whether the component is disabled.
+   */
   disabled: ComputedRef<boolean>;
 }
+/**
+ * Parameters used to create the menu radio group context.
+ */
 export interface MenuRadioGroupContextParams {
+  /**
+   * Current model value.
+   */
   modelValue: ShallowRef<AcceptableBooleanValue>;
+  /**
+   * Whether the component is disabled.
+   */
   disabled: ComputedRef<boolean>;
 }
+/**
+ * Context for the menu item indicator component.
+ */
 export interface MenuItemIndicatorContext {
+  /**
+   * Current model value.
+   */
   modelValue: ComputedRef<CheckedState | undefined>;
 }
 
+/**
+ * Context for the menu sub attribute component.
+ */
 export interface MenuSubAttributeContext {
+  /**
+   * Sub trigger used by the component context.
+   */
   subTrigger: ComputedRef<Record<string, any>>;
+  /**
+   * Sub content used by the component context.
+   */
   subContent: ComputedRef<Record<string, any>>;
 }
 
+/**
+ * Context for the menu options compact component.
+ */
 export interface MenuOptionsCompactContext<T extends DefinedValue = DefinedValue> {
+  /**
+   * Active value used by the component context.
+   */
   activeValue: ComputedRef<T | undefined>;
+  /**
+   * Active paths tracked by the component context.
+   */
   activePaths: ComputedRef<T[]>;
 }
 
+/**
+ * Available UI slots for the menu component.
+ */
 export type MenuUiSlot =
   | 'positioner'
   | 'popup'
@@ -346,4 +685,7 @@ export type MenuUiSlot =
   | 'shortcut'
   | 'separator';
 
+/**
+ * UI class overrides for the menu component.
+ */
 export type MenuUi = UiClass<MenuUiSlot>;

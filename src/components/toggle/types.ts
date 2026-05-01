@@ -2,11 +2,29 @@ import type { ClassValue, ToggleEmits, ToggleProps as _ToggleProps } from '@soyb
 import type { ThemeSize, ThemeColor } from '@/theme';
 import type { ToggleVariant, ToggleShape } from './variants';
 
+/**
+ * Props for the toggle component.
+ */
 export interface ToggleProps extends _ToggleProps {
+  /**
+   * Additional class names applied to the root element.
+   */
   class?: ClassValue;
+  /**
+   * Theme color of the component.
+   */
   color?: ThemeColor;
+  /**
+   * Visual size of the component.
+   */
   size?: ThemeSize;
+  /**
+   * Visual variant of the component.
+   */
   variant?: ToggleVariant;
+  /**
+   * Shape of the component.
+   */
   shape?: ToggleShape;
 }
 

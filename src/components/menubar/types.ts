@@ -9,16 +9,34 @@ import type {
 } from '@soybeanjs/headless';
 import type { ThemeSize } from '@/theme';
 
+/**
+ * Props for the menubar component.
+ */
 export interface MenubarProps<T extends DefinedValue = DefinedValue> extends MenubarCompactProps<T> {
   /**
    * class of menubar root
    */
   class?: ClassValue;
+  /**
+   * Visual size of the component.
+   */
   size?: ThemeSize;
+  /**
+   * Per-slot class overrides for the component.
+   */
   ui?: Partial<MenubarUi>;
+  /**
+   * Indicator position.
+   */
   indicatorPosition?: AlignSide;
 }
 
+/**
+ * Emits for the menubar component.
+ */
 export type MenubarEmits<T extends DefinedValue = DefinedValue> = MenubarCompactEmits<T>;
 
+/**
+ * Slots for the menubar component.
+ */
 export type MenubarSlots<T extends DefinedValue = DefinedValue> = MenubarCompactSlots<T>;

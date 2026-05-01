@@ -1,10 +1,19 @@
 import type { ComputedRef, HTMLAttributes, InputHTMLAttributes, ShallowRef } from 'vue';
 import type { FormFieldCommonProps, UiClass } from '../../types';
 
+/**
+ * Type information for the input otp input mode component.
+ */
 export type InputOtpInputMode = 'numeric' | 'text';
 
+/**
+ * Type information for the input otp push password manager strategy component.
+ */
 export type InputOtpPushPasswordManagerStrategy = 'increase-width' | 'none';
 
+/**
+ * Props for the input otp root component.
+ */
 export interface InputOtpRootProps extends FormFieldCommonProps, /** @vue-ignore */ Omit<HTMLAttributes, 'onInput'> {
   /** The id of the native input element. */
   id?: string;
@@ -38,31 +47,85 @@ export interface InputOtpRootProps extends FormFieldCommonProps, /** @vue-ignore
   pasteTransformer?: (pasted: string | undefined) => string;
 }
 
+/**
+ * Emits for the input otp root component.
+ */
 export type InputOtpRootEmits = {
+  /**
+   * Emitted when the model value changes.
+   */
   'update:modelValue': [value: string];
+  /**
+   * Emitted when complete occurs.
+   */
   complete: [value: string];
+  /**
+   * Emitted when input occurs.
+   */
   input: [value: string];
+  /**
+   * Emitted when change occurs.
+   */
   change: [event: Event];
+  /**
+   * Emitted when select occurs.
+   */
   select: [event: Event];
+  /**
+   * Emitted when focus occurs.
+   */
   focus: [event: FocusEvent];
+  /**
+   * Emitted when blur occurs.
+   */
   blur: [event: FocusEvent];
+  /**
+   * Emitted when mouseover occurs.
+   */
   mouseover: [event: MouseEvent];
+  /**
+   * Emitted when mouseleave occurs.
+   */
   mouseleave: [event: MouseEvent];
+  /**
+   * Emitted when paste occurs.
+   */
   paste: [event: ClipboardEvent];
 };
 
+/**
+ * Props for the input otp positioner component.
+ */
 export interface InputOtpPositionerProps extends /** @vue-ignore */ HTMLAttributes {}
 
+/**
+ * Props for the input otp input component.
+ */
 export interface InputOtpInputProps extends /** @vue-ignore */ InputHTMLAttributes {}
 
+/**
+ * Props for the input otp compact component.
+ */
 export interface InputOtpCompactProps extends InputOtpRootProps {}
 
+/**
+ * Emits for the input otp compact component.
+ */
 export type InputOtpCompactEmits = InputOtpRootEmits;
 
+/**
+ * Slots for the input otp compact component.
+ */
 export type InputOtpCompactSlots = {
+  /**
+   * Custom content for the default slot.
+   */
   default?: (props: InputOtpRootSlotProps) => any;
 };
 
+/**
+ * Slot props for the input otp component.
+ */
 export interface InputOtpSlotProps {
   /** The typed character at the current slot. */
   char: string | null;
@@ -74,49 +137,172 @@ export interface InputOtpSlotProps {
   hasFakeCaret: boolean;
 }
 
+/**
+ * Slot props for the input otp root component.
+ */
 export interface InputOtpRootSlotProps {
+  /**
+   * Slots exposed in the slot scope.
+   */
   slots: InputOtpSlotProps[];
+  /**
+   * Whether the item is focused.
+   */
   isFocused: boolean;
+  /**
+   * Whether the item is hovered.
+   */
   isHovering: boolean;
 }
 
+/**
+ * Context for the input otp root component.
+ */
 export interface InputOtpRootContext {
+  /**
+   * Autocomplete used by the component context.
+   */
   autocomplete: ComputedRef<string | undefined>;
+  /**
+   * Autofocus used by the component context.
+   */
   autofocus: ComputedRef<boolean | undefined>;
+  /**
+   * Whether the component is disabled.
+   */
   disabled: ComputedRef<boolean | undefined>;
+  /**
+   * Input attrs used by the component context.
+   */
   inputAttrs: ComputedRef<Record<string, unknown>>;
+  /**
+   * Current model value.
+   */
   modelValue: ComputedRef<string>;
+  /**
+   * Slots used by the component context.
+   */
   slots: ComputedRef<InputOtpSlotProps[]>;
+  /**
+   * Whether will push pwmbadge.
+   */
   willPushPWMBadge: ComputedRef<boolean>;
+  /**
+   * Whether the item is focused.
+   */
   isFocused: ShallowRef<boolean>;
+  /**
+   * Whether the item is hovered.
+   */
   isHovering: ShallowRef<boolean>;
+  /**
+   * Input element used by the component context.
+   */
   inputElement: ShallowRef<HTMLInputElement | null>;
+  /**
+   * Inputmode used by the component context.
+   */
   inputmode: ComputedRef<InputOtpInputMode | undefined>;
+  /**
+   * Maxlength used by the component context.
+   */
   maxlength: ComputedRef<number>;
+  /**
+   * Minlength used by the component context.
+   */
   minlength: ComputedRef<number | undefined>;
+  /**
+   * Mirror selection start used by the component context.
+   */
   mirrorSelectionStart: ShallowRef<number | null>;
+  /**
+   * Mirror selection end used by the component context.
+   */
   mirrorSelectionEnd: ShallowRef<number | null>;
+  /**
+   * Name used by the component context.
+   */
   name: ComputedRef<string | undefined>;
+  /**
+   * Pattern used by the component context.
+   */
   pattern: ComputedRef<string | undefined>;
+  /**
+   * Whether the component is readonly.
+   */
   readonly: ComputedRef<boolean | undefined>;
+  /**
+   * Whether the value is required.
+   */
   required: ComputedRef<boolean | undefined>;
+  /**
+   * Resolved accessible label used by the component context.
+   */
   resolvedAccessibleLabel: ComputedRef<string>;
+  /**
+   * Resolved id used by the component context.
+   */
   resolvedId: ComputedRef<string | undefined>;
+  /**
+   * Resolved placeholder used by the component context.
+   */
   resolvedPlaceholder: ComputedRef<string | undefined>;
+  /**
+   * Focus used by the component context.
+   */
   focus: () => void;
+  /**
+   * Blur used by the component context.
+   */
   blur: () => void;
+  /**
+   * Select used by the component context.
+   */
   select: () => void;
+  /**
+   * Callback invoked when the before input event fires.
+   */
   onBeforeInput: (event: InputEvent) => void;
+  /**
+   * Callback invoked when the native changes.
+   */
   onNativeChange: (event: Event) => void;
+  /**
+   * Callback invoked when the native select event fires.
+   */
   onNativeSelect: (event: Event) => void;
+  /**
+   * Callback invoked when the mouse over event fires.
+   */
   onMouseOver: (event: MouseEvent) => void;
+  /**
+   * Callback invoked when the mouse leave event fires.
+   */
   onMouseLeave: (event: MouseEvent) => void;
+  /**
+   * Callback invoked when the paste event fires.
+   */
   onPaste: (event: ClipboardEvent) => void;
+  /**
+   * Callback invoked when the input event fires.
+   */
   onInput: (event: Event) => void;
+  /**
+   * Callback invoked when the focus event fires.
+   */
   onFocus: (event: FocusEvent) => void;
+  /**
+   * Callback invoked when the blur event fires.
+   */
   onBlur: (event: FocusEvent) => void;
 }
 
+/**
+ * Available UI slots for the input otp component.
+ */
 export type InputOtpUiSlot = 'root' | 'positioner' | 'input' | 'group' | 'slot' | 'char' | 'placeholder' | 'caret';
 
+/**
+ * UI class overrides for the input otp component.
+ */
 export type InputOtpUi = UiClass<InputOtpUiSlot>;

@@ -12,16 +12,43 @@ import type { IconProps } from '../icon/types';
 import type { LinkProps } from '../link/types';
 import type { ButtonShadow, ButtonShape, ButtonVariant } from './variants';
 
+/**
+ * Props for the button component.
+ */
 export interface ButtonProps extends _ButtonProps {
+  /**
+   * Additional class names applied to the root element.
+   */
   class?: ClassValue;
+  /**
+   * Theme color of the component.
+   */
   color?: ThemeColor;
+  /**
+   * Visual size of the component.
+   */
   size?: ThemeSize;
+  /**
+   * Visual variant of the component.
+   */
   variant?: ButtonVariant;
+  /**
+   * Shape of the component.
+   */
   shape?: ButtonShape;
+  /**
+   * Shadow style of the component.
+   */
   shadow?: ButtonShadow;
+  /**
+   * Whether the component should fit its content width.
+   */
   fitContent?: boolean;
 }
 
+/**
+ * Props for the button icon component.
+ */
 export interface ButtonIconProps extends ButtonProps {
   /** The icon name of iconify. */
   icon: string;
@@ -33,6 +60,9 @@ export interface ButtonIconProps extends ButtonProps {
   iconProps?: Partial<IconProps>;
 }
 
+/**
+ * Props for the button loading component.
+ */
 export interface ButtonLoadingProps extends ButtonProps {
   /**
    * Whether the button is loading.
@@ -75,8 +105,14 @@ export interface ButtonLoadingProps extends ButtonProps {
   loadingPosition?: Align;
 }
 
+/**
+ * Props for the button link component.
+ */
 export type ButtonLinkProps = ButtonProps & LinkProps;
 
+/**
+ * Props for the button group component.
+ */
 export interface ButtonGroupProps extends ButtonProps {
   /**
    * The orientation of the button group.
@@ -92,6 +128,9 @@ export interface ButtonGroupProps extends ButtonProps {
   dir?: Direction;
 }
 
+/**
+ * Context for the button group component.
+ */
 export interface ButtonGroupContext extends PropsToContext<
   ButtonGroupProps,
   'color' | 'size' | 'variant' | 'shape' | 'shadow' | 'disabled' | 'fitContent'

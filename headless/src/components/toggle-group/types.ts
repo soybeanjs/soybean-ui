@@ -12,6 +12,9 @@ import type {
 import type { PrimitiveProps } from '../primitive/types';
 import type { ButtonProps } from '../button/types';
 
+/**
+ * Props for the toggle group root component.
+ */
 export interface ToggleGroupRootProps<M extends boolean = false, T extends DefinedValue = string>
   extends SelectionProps<M, T>, FormFieldCommonProps, PrimitiveProps, /** @vue-ignore */ HTMLAttributes {
   /** When `false`, navigating through items with arrow keys is disabled. */
@@ -26,18 +29,39 @@ export interface ToggleGroupRootProps<M extends boolean = false, T extends Defin
   loop?: boolean;
 }
 
+/**
+ * Emits for the toggle group root component.
+ */
 export type ToggleGroupRootEmits<M extends boolean = false, T extends DefinedValue = string> = SelectionEmits<M, T>;
 
+/**
+ * Parameters used to create the toggle group root context.
+ */
 export type ToggleGroupRootContextParams = PropsToContext<
   ToggleGroupRootProps<boolean, DefinedValue>,
   'disabled' | 'rovingFocus' | 'orientation' | 'dir' | 'loop' | 'name' | 'required'
 > & {
+  /**
+   * Current model value.
+   */
   modelValue: ShallowRef<SelectionProps<boolean, DefinedValue>['modelValue']>;
+  /**
+   * Handler used to update the model value.
+   */
   onModelValueChange: (value: DefinedValue) => void;
+  /**
+   * Whether the value is selected.
+   */
   isValueSelected: (value: DefinedValue) => boolean;
+  /**
+   * Whether multiple values are supported.
+   */
   isMultiple: ComputedRef<boolean>;
 };
 
+/**
+ * Props for the toggle group item component.
+ */
 export interface ToggleGroupItemProps<T extends DefinedValue = string> extends ButtonProps {
   /** A unique value that identifies the item inside the group. */
   value: T;
@@ -45,6 +69,12 @@ export interface ToggleGroupItemProps<T extends DefinedValue = string> extends B
   disabled?: boolean;
 }
 
+/**
+ * Available UI slots for the toggle group component.
+ */
 export type ToggleGroupUiSlot = 'root' | 'item';
 
+/**
+ * UI class overrides for the toggle group component.
+ */
 export type ToggleGroupUi = UiClass<ToggleGroupUiSlot>;

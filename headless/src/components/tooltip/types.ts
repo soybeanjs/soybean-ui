@@ -2,6 +2,9 @@ import type { Ref, ShallowRef } from 'vue';
 import type { DismissableLayerEmits, ForceMountProps, PropsToContext } from '../../types';
 import type { PopperPopupProps, PopperPositionerProps } from '../popper/types';
 
+/**
+ * Props for the tooltip provider component.
+ */
 export interface TooltipProviderProps {
   /**
    * The duration from when the pointer enters the trigger until the tooltip gets opened.
@@ -52,27 +55,54 @@ export interface TooltipProviderProps {
   positionerProps?: TooltipPositionerProps;
 }
 
+/**
+ * Parameters used to create the tooltip open delayed context.
+ */
 export type TooltipOpenDelayedContextParams = PropsToContext<TooltipProviderProps, 'skipDelayDuration'>;
 
+/**
+ * Props for the tooltip root component.
+ */
 export interface TooltipRootProps extends TooltipProviderProps {
   /** The open state of the tooltip when it is initially rendered. Use when you do not need to control its open state. */
   defaultOpen?: boolean;
   /** The controlled open state of the tooltip. */
   open?: boolean;
 }
+/**
+ * Emits for the tooltip root component.
+ */
 export interface TooltipRootEmits {
   /** Event handler called when the open state of the tooltip changes. */
   'update:open': [value: boolean];
 }
 
+/**
+ * State values for the tooltip component.
+ */
 export type TooltipDataState = 'closed' | 'delayed-open' | 'instant-open';
 
+/**
+ * Props for the tooltip positioner impl component.
+ */
 export interface TooltipPositionerImplProps extends PopperPositionerProps {}
+/**
+ * Emits for the tooltip positioner impl component.
+ */
 export type TooltipPositionerImplEmits = Pick<DismissableLayerEmits, 'escapeKeyDown' | 'pointerDownOutside'>;
 
+/**
+ * Props for the tooltip positioner component.
+ */
 export interface TooltipPositionerProps extends TooltipPositionerImplProps, ForceMountProps {}
+/**
+ * Emits for the tooltip positioner component.
+ */
 export type TooltipPositionerEmits = TooltipPositionerImplEmits;
 
+/**
+ * Props for the tooltip popup component.
+ */
 export interface TooltipPopupProps extends PopperPopupProps {
   /**
    * By default, screen readers will announce the content inside the component.
@@ -83,6 +113,9 @@ export interface TooltipPopupProps extends PopperPopupProps {
   ariaLabel?: string;
 }
 
+/**
+ * Parameters used to create the tooltip root context.
+ */
 export interface TooltipRootContextParams extends PropsToContext<
   TooltipProviderProps,
   | 'delayDuration'
@@ -92,7 +125,13 @@ export interface TooltipRootContextParams extends PropsToContext<
   | 'ignoreNonKeyboardFocus'
   | 'positionerProps'
 > {
+  /**
+   * Whether the component is open.
+   */
   open: ShallowRef<boolean | undefined>;
+  /**
+   * Whether opening is delayed.
+   */
   isOpenDelayed: Ref<boolean>;
 }
 
