@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { useForwardListeners, useOmitProps } from '../../composables';
-import { useCardUi } from './context';
 import CardRoot from './card-root.vue';
 import CardHeader from './card-header.vue';
 import CardContent from './card-content.vue';
@@ -33,8 +32,6 @@ const forwardedProps = useOmitProps(props, [
 ]);
 
 const listeners = useForwardListeners(emit);
-
-const ui = useCardUi();
 
 const showHeader = computed(() => {
   return Boolean(slots.header || slots.title || slots.description || slots.extra || props.title || props.description);

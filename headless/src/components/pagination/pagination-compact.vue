@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { useForwardListeners, useOmitProps } from '../../composables';
 import Icon from '../_icon/icon.vue';
-import { usePaginationUi } from './context';
 import PaginationRoot from './pagination-root.vue';
 import PaginationList from './pagination-list.vue';
 import PaginationListItem from './pagination-list-item.vue';
@@ -22,7 +21,7 @@ const props = withDefaults(defineProps<PaginationCompactProps>(), {
 
 const emit = defineEmits<PaginationCompactEmits>();
 
-const slots = defineSlots<PaginationCompactSlots>();
+defineSlots<PaginationCompactSlots>();
 
 const forwardedProps = useOmitProps(props, [
   'showFirstOrLast',
@@ -36,8 +35,6 @@ const forwardedProps = useOmitProps(props, [
 ]);
 
 const listeners = useForwardListeners(emit);
-
-const ui = usePaginationUi();
 </script>
 
 <template>

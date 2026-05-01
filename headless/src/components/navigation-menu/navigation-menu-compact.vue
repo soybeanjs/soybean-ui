@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { computed } from 'vue';
 import { useOmitProps } from '../../composables';
 import Icon from '../_icon/icon.vue';
 import NavigationMenuContent from './navigation-menu-content.vue';
@@ -26,7 +25,7 @@ const props = defineProps<NavigationMenuCompactProps>();
 
 const emit = defineEmits<NavigationMenuCompactEmits>();
 
-const slots = defineSlots<NavigationMenuCompactSlots>();
+defineSlots<NavigationMenuCompactSlots>();
 
 const forwardedRootProps = useOmitProps(props, [
   'items',
