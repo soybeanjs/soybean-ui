@@ -6,7 +6,8 @@ import { provideTypeRenderContext } from './tables/type-anchor';
 const commonTypes = computed(() => getCommonTypes());
 
 provideTypeRenderContext({
-  component: null
+  component: null,
+  activePreviewNames: []
 });
 </script>
 

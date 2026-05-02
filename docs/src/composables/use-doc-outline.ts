@@ -1,12 +1,12 @@
-import type { AnchorItemData } from '@soybeanjs/headless/anchor';
+import type { AnchorOptionData } from '@soybeanjs/headless/anchor';
 
-const docOutlineItems = shallowRef<AnchorItemData[]>([]);
+const docOutlineItems = shallowRef<AnchorOptionData[]>([]);
 
 export function useDocOutline() {
   return docOutlineItems;
 }
 
-export function setDocOutline(items: AnchorItemData[]) {
+export function setDocOutline(items: AnchorOptionData[]) {
   docOutlineItems.value = items;
 }
 

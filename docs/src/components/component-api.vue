@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import CallableTypeTable from './tables/callable-type-table.vue';
 import { getComponentApiSections } from './tables/generated-api';
 import { provideTypeRenderContext, typeToVNode } from './tables/type-anchor';
 
@@ -14,7 +13,8 @@ const { t } = useI18n();
 const apiLayers = computed(() => getComponentApiSections(props.component));
 
 provideTypeRenderContext(() => ({
-  component: props.component
+  component: props.component,
+  activePreviewNames: []
 }));
 
 const layerTitleMap: Record<'ui' | 'headless', string> = {
