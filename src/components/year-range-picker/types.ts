@@ -14,7 +14,7 @@ import type { ThemeSize } from '@/theme';
 /**
  * Props for the year range picker component.
  */
-export interface YearRangePickerProps extends /* @vue-ignore */ YearRangePickerRootProps {
+export interface YearRangePickerProps extends /** @vue-ignore */ YearRangePickerRootProps {
   /**
    * Additional class names applied to the root element.
    */

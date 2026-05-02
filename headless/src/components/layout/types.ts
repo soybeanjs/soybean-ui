@@ -25,7 +25,7 @@ export type LayoutSidebarState = 'expanded' | 'collapsed';
 /**
  * Props for the layout root component.
  */
-export interface LayoutRootProps extends /* @vue-ignore */ HTMLAttributes {
+export interface LayoutRootProps extends /** @vue-ignore */ HTMLAttributes {
   /** The controlled open state of the layout. Can be bound with `v-model`. */
   open?: boolean;
   /** The open state of the layout when it is initially rendered.
@@ -131,47 +131,47 @@ export type LayoutRootEmits = {
 /**
  * Props for the layout sidebar component.
  */
-export interface LayoutSidebarProps extends /* @vue-ignore */ HTMLAttributes {}
+export interface LayoutSidebarProps extends /** @vue-ignore */ HTMLAttributes {}
 
 /**
  * Props for the layout rail component.
  */
-export interface LayoutRailProps extends /* @vue-ignore */ HTMLAttributes {}
+export interface LayoutRailProps extends /** @vue-ignore */ HTMLAttributes {}
 
 /**
  * Props for the layout main component.
  */
-export interface LayoutMainProps extends /* @vue-ignore */ HTMLAttributes {}
+export interface LayoutMainProps extends /** @vue-ignore */ HTMLAttributes {}
 
 /**
  * Props for the layout header component.
  */
-export interface LayoutHeaderProps extends /* @vue-ignore */ HTMLAttributes {}
+export interface LayoutHeaderProps extends /** @vue-ignore */ HTMLAttributes {}
 
 /**
  * Props for the layout tab component.
  */
-export interface LayoutTabProps extends /* @vue-ignore */ HTMLAttributes {}
+export interface LayoutTabProps extends /** @vue-ignore */ HTMLAttributes {}
 
 /**
  * Props for the layout content component.
  */
-export interface LayoutContentProps extends /* @vue-ignore */ HTMLAttributes {}
+export interface LayoutContentProps extends /** @vue-ignore */ HTMLAttributes {}
 
 /**
  * Props for the layout footer component.
  */
-export interface LayoutFooterProps extends /* @vue-ignore */ HTMLAttributes {}
+export interface LayoutFooterProps extends /** @vue-ignore */ HTMLAttributes {}
 
 /**
  * Props for the layout trigger component.
  */
-export interface LayoutTriggerProps extends PrimitiveProps, /* @vue-ignore */ HTMLAttributes {}
+export interface LayoutTriggerProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {}
 
 /**
  * Props for the layout mobile component.
  */
-export interface LayoutMobileProps extends /* @vue-ignore */ HTMLAttributes {}
+export interface LayoutMobileProps extends /** @vue-ignore */ HTMLAttributes {}
 
 interface LayoutOthersProps {
   sidebarProps?: LayoutSidebarProps;

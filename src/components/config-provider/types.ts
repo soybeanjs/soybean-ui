@@ -5,6 +5,21 @@ import type { ThemeSize } from '@/theme';
 import type { ProgressProviderProps } from '../progress/types';
 import type { ToastProviderProps } from '../toast/types';
 
+interface IconifyOptions {
+  /**
+   * The default width of the icon.
+   *
+   * @defaultValue '1.25em'
+   */
+  width?: string;
+  /**
+   * The default height of the icon.
+   *
+   * @defaultValue '1.25em'
+   */
+  height?: string;
+}
+
 /**
  * Props for the config provider component.
  */
@@ -14,20 +29,7 @@ export interface ConfigProviderProps extends _ConfigProviderProps {
   /** The size options. */
   size?: ThemeSize;
   /** The iconify options. */
-  iconify?: {
-    /**
-     * The default width of the icon.
-     *
-     * @defaultValue '1.25em'
-     */
-    width?: string;
-    /**
-     * The default height of the icon.
-     *
-     * @defaultValue '1.25em'
-     */
-    height?: string;
-  };
+  iconify?: IconifyOptions;
   /** The global top progress configuration of your application. */
   progress?: Partial<ProgressProviderProps>;
   /** The global toast configuration of your application. This will be inherited by the related components. */

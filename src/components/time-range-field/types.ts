@@ -32,7 +32,7 @@ export interface TimeRangeFieldSlotProps {
 /**
  * Props for the time range field component.
  */
-export interface TimeRangeFieldProps extends /* @vue-ignore */ TimeRangeFieldRootProps {
+export interface TimeRangeFieldProps extends /** @vue-ignore */ TimeRangeFieldRootProps {
   /**
    * Additional class names applied to the root element.
    */

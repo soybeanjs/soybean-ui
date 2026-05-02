@@ -32,7 +32,7 @@ export interface DateRangeFieldSlotProps {
 /**
  * Props for the date range field component.
  */
-export interface DateRangeFieldProps extends /* @vue-ignore */ DateRangeFieldRootProps {
+export interface DateRangeFieldProps extends /** @vue-ignore */ DateRangeFieldRootProps {
   /**
    * Additional class names applied to the root element.
    */

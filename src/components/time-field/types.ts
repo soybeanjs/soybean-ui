@@ -28,7 +28,7 @@ export interface TimeFieldSlotProps {
 /**
  * Props for the time field component.
  */
-export interface TimeFieldProps extends /* @vue-ignore */ TimeFieldRootProps {
+export interface TimeFieldProps extends /** @vue-ignore */ TimeFieldRootProps {
   /**
    * Additional class names applied to the root element.
    */
