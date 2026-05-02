@@ -31,6 +31,7 @@
     "./nuxt": "./src/nuxt/index.ts",
     "./resolver": "./src/resolver/index.ts",
     "./namespaced": "./src/namespaced/index.ts",
+    "./types": "./src/types/index.ts",
     "./*": "./src/components/*/index.ts"
   },
   "publishConfig": {
@@ -74,6 +75,11 @@
         "types": "./dist/namespaced/index.d.ts",
         "import": "./dist/namespaced/index.js",
         "require": "./dist/namespaced/index.js"
+      },
+      "./types": {
+        "types": "./dist/types/index.d.ts",
+        "import": "./dist/types/index.js",
+        "require": "./dist/types/index.js"
       },
       "./*": {
         "types": "./dist/components/*/index.d.ts",
