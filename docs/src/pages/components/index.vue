@@ -80,7 +80,7 @@ onBeforeUnmount(() => {
           <div
             v-for="stat in summaryStats"
             :key="stat.label"
-            class="rounded-2xl border border-border/70 bg-background/75 p-3.5 backdrop-blur"
+            class="rounded-2xl border border-border bg-background/75 p-3.5 backdrop-blur"
           >
             <div class="text-2xl font-semibold text-foreground">{{ stat.value }}</div>
             <div class="mt-1 text-xs text-muted-foreground sm:text-sm">{{ stat.label }}</div>
@@ -99,7 +99,7 @@ onBeforeUnmount(() => {
       :aria-labelledby="`${group.value}-heading`"
       class="space-y-2.5"
     >
-      <div class="flex flex-wrap items-end justify-between gap-3 border-b border-border/70 pb-2.5">
+      <div class="flex flex-wrap items-end justify-between gap-3 border-b border-border pb-2.5">
         <div class="space-y-1">
           <h2 :id="`${group.value}-heading`" class="text-xl font-semibold text-foreground sm:text-[1.35rem]">
             {{ group.label }}
@@ -115,7 +115,7 @@ onBeforeUnmount(() => {
           v-for="component in group.items"
           :key="component.key"
           :to="component.path"
-          class="group flex items-center justify-between gap-3 rounded-lg border border-border/70 bg-card/70 px-3.5 py-3 transition-all duration-200 hover:-translate-y-0.5 hover:border-primary/40 hover:bg-card hover:shadow-sm"
+          class="group flex items-center justify-between gap-3 rounded-lg border border-border bg-card/70 px-3.5 py-3 transition-all duration-200 hover:-translate-y-0.5 hover:border-primary/40 hover:bg-card hover:shadow-sm"
         >
           <div class="min-w-0 flex items-center gap-2.5">
             <h3 class="truncate text-sm font-medium text-foreground transition-colors group-hover:text-primary">
