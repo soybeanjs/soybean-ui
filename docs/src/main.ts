@@ -3,6 +3,8 @@ import { setupLayouts } from 'virtual:meta-layouts';
 import { routes } from 'vue-router/auto-routes';
 import '@unocss/reset/tailwind.css';
 import 'uno.css';
+// @ts-expect-error - no types for fontsource-variable yet
+import '@fontsource-variable/manrope';
 import '@soybeanjs/ui/styles.css';
 import './styles/global.css';
 import App from './App.vue';

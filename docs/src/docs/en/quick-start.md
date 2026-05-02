@@ -194,46 +194,7 @@ const items = [
 </style>
 ```
 
-Compact components are managed by the headless layer for data iteration and default content rendering, letting you accomplish common tasks with less code. Currently supported Compact components include:
-
-- `AccordionCompact` - Accordion
-- `AffixCompact` - Affix
-- `AlertCompact` - Alert
-- `AnchorCompact` - Anchor
-- `AutocompleteCompact` - Autocomplete
-- `BottomSheetCompact` - Bottom Sheet
-- `BreadcrumbCompact` - Breadcrumb
-- `CalendarCompact` - Calendar
-- `CardCompact` - Card
-- `CheckboxCompact` / `CheckboxGroupCompact` / `CheckboxCardCompact` / `CheckboxCardGroupCompact` - Checkbox
-- `ComboboxCompact` - Combobox
-- `CommandCompact` - Command
-- `ContextMenuCompact` / `ContextMenuCheckboxCompact` / `ContextMenuRadioCompact` - Context Menu
-- `DateFieldCompact` - Date Field
-- `DateRangeFieldCompact` - Date Range Field
-- `DateRangePickerCompact` - Date Range Picker
-- `DialogCompact` - Dialog
-- `DropdownMenuCompact` / `DropdownMenuCheckboxCompact` / `DropdownMenuRadioCompact` - Dropdown Menu
-- `EditableCompact` - Editable
-- `HoverCardCompact` - Hover Card
-- `InputOtpCompact` - Input OTP
-- `LayoutCompact` / `LayoutClassicCompact` - Layout
-- `MenuOptionCompact` / `MenuOptionsCompact` / `MenuCheckboxOptionsCompact` / `MenuRadioOptionsCompact` - Menu
-- `MenubarCompact` - Menubar
-- `NavigationMenuCompact` - Navigation Menu
-- `PaginationCompact` - Pagination
-- `PopoverCompact` - Popover
-- `RadioGroupCompact` - Radio Group
-- `RangeCalendarCompact` - Range Calendar
-- `SegmentCompact` - Segment
-- `SelectCompact` - Select
-- `StepperCompact` - Stepper
-- `TableCompact` - Table
-- `TabsCompact` - Tabs
-- `TimeRangeFieldCompact` - Time Range Field
-- `TimeRangePickerCompact` - Time Range Picker
-
-A total of 36 components support Compact mode, covering most data-driven usage scenarios.
+> Compact components are managed by the headless layer for data iteration and default content rendering, letting you accomplish common tasks with less code.
 
 ## Theme configuration
 

@@ -111,9 +111,7 @@ watch(
 </script>
 
 <template>
-  <div
-    class="my-8 overflow-hidden rounded-[1.5rem] border border-border/60 bg-background/82 shadow-[0_16px_44px_-32px_rgba(15,23,42,0.2)] backdrop-blur-sm"
-  >
+  <div class="glass-panel my-8 overflow-hidden">
     <div class="flex items-center justify-between border-b border-border/60 px-5 py-4">
       <div class="text-[11px] font-semibold uppercase tracking-[0.18em] text-muted-foreground">Diagram</div>
       <div class="code-btn-outline">Mermaid</div>
@@ -122,7 +120,7 @@ watch(
     <div v-if="renderError" class="space-y-4 p-5">
       <SAlert color="destructive" variant="soft" icon="lucide:triangle-alert" :title="errorMessage" />
       <pre
-        class="overflow-x-auto rounded-4 border border-border/60 bg-muted/20 p-4 text-[13px] leading-6 text-foreground"
+        class="docs-code-fallback overflow-x-auto rounded-4 border p-4 text-[13px] leading-6 text-foreground"
       ><code>{{ decodedCode }}</code></pre>
     </div>
 

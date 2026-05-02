@@ -11,9 +11,12 @@ const props = defineProps<Props>();
 
 const { t } = useI18n();
 
+const componentTitlePrefix = computed(() => `${props.component.toLowerCase()}-`);
+
 const components = computed(() =>
   props.files.map(file => ({
     file,
+    title: file.replace(componentTitlePrefix.value, ''),
     component: getPlaygroundComponent(props.component, file),
     code: getPlaygroundComponentCode(props.component, file)
   }))
@@ -30,25 +33,12 @@ const tabs = computed<TabsOptionData<TabValue>[]>(() => [
 <template>
   <div class="space-y-5">
     <template v-for="(item, index) in components" :key="index">
-      <SCard
-        size="sm"
-        split
-        class="overflow-hidden border-border/60 bg-background/78 shadow-[0_16px_44px_-32px_rgba(15,23,42,0.2)] backdrop-blur-sm"
-      >
-        <template #title>{{ item.file }}</template>
-        <template #description>{{ component }}</template>
-        <template #extra>
-          <SBadge size="xs" color="primary">{{ t('components.common.demo') }}</SBadge>
-        </template>
-
+      <SCard :title="item.title" split class="glass-shell overflow-hidden">
         <template #default>
           <STabs :items="tabs" :default-value="'preview' as TabValue" fill="auto">
             <template #content="{ value }">
               <template v-if="item.component">
-                <div
-                  v-if="value === 'preview'"
-                  class="min-h-36 rounded-4 border border-dashed border-border/70 bg-linear-to-br from-background via-background to-muted/18 p-4 sm:p-5"
-                >
+                <div v-if="value === 'preview'" class="docs-preview-surface min-h-36 border border-dashed p-4 sm:p-5">
                   <component :is="item.component" />
                 </div>
                 <CodeBlock v-else :code="item.code" lang="vue" />

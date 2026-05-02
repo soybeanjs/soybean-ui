@@ -30,7 +30,7 @@ const layerTitleMap: Record<'ui' | 'headless', string> = {
         <h3 class="scroll-mt-24 text-2xl font-bold tracking-[-0.03em] text-foreground">
           {{ t(layerTitleMap[layer.key]) }}
         </h3>
-        <SBadge size="xs" color="primary">{{ layer.symbols.length }}</SBadge>
+        <span class="text-sm font-medium text-muted-foreground">{{ layer.symbols.length }}</span>
       </div>
 
       <SCard
@@ -38,7 +38,7 @@ const layerTitleMap: Record<'ui' | 'headless', string> = {
         :key="symbol.key"
         size="sm"
         split
-        class="overflow-hidden border-border/60 bg-background/78 shadow-[0_16px_44px_-32px_rgba(15,23,42,0.2)] backdrop-blur-sm"
+        class="docs-home-card-shell glass-shell docs-home-soft-shell overflow-hidden"
       >
         <template #title>
           <h4 class="scroll-mt-24 text-lg font-semibold tracking-[-0.02em] text-foreground">
@@ -47,16 +47,12 @@ const layerTitleMap: Record<'ui' | 'headless', string> = {
         </template>
 
         <template #extra>
-          <div class="flex flex-wrap items-center gap-2">
-            <SBadge v-if="symbol.propsRows.length" size="xs" color="primary">
-              {{ symbol.propsRows.length }} {{ t('api.props') }}
-            </SBadge>
-            <SBadge v-if="symbol.emitsRows.length" size="xs" color="warning">
-              {{ symbol.emitsRows.length }} {{ t('api.emits') }}
-            </SBadge>
-            <SBadge v-if="symbol.slotsRows.length" size="xs" color="success">
-              {{ symbol.slotsRows.length }} {{ t('api.slots') }}
-            </SBadge>
+          <div
+            class="flex flex-wrap items-center gap-3 text-[11px] font-semibold uppercase tracking-[0.14em] text-muted-foreground"
+          >
+            <span v-if="symbol.propsRows.length">{{ symbol.propsRows.length }} {{ t('api.props') }}</span>
+            <span v-if="symbol.emitsRows.length">{{ symbol.emitsRows.length }} {{ t('api.emits') }}</span>
+            <span v-if="symbol.slotsRows.length">{{ symbol.slotsRows.length }} {{ t('api.slots') }}</span>
           </div>
         </template>
 

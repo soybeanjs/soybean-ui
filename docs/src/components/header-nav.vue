@@ -9,35 +9,53 @@ withDefaults(defineProps<Props>(), {
   orientation: 'horizontal'
 });
 
+const route = useRoute();
 const { t } = useI18n();
 
-const menus = computed<NavigationMenuOptionData[]>(() => [
+interface HeaderNavItem extends NavigationMenuOptionData {
+  isActive: boolean;
+}
+
+const menus = computed<HeaderNavItem[]>(() => [
   {
     value: 'getting-started',
     label: t('layout.header.getting_started'),
     icon: 'lucide:rocket',
-    to: '/overview/quick-start'
+    to: '/overview/quick-start',
+    isActive: route.path.startsWith('/overview')
   },
   {
     value: 'components',
     label: t('layout.header.components'),
     icon: 'lucide:layout-grid',
-    to: '/components'
+    to: '/components',
+    isActive: route.path.startsWith('/components')
   },
   {
     value: 'releases',
     label: t('layout.header.releases'),
     icon: 'lucide:git-commit-horizontal',
-    to: '/releases'
+    to: '/releases',
+    isActive: route.path.startsWith('/releases')
   }
 ]);
 </script>
 
 <template>
-  <SNavigationMenu
-    :items="menus"
-    :orientation="orientation"
-    :link-props="{ activeClass: 'text-primary! font-semibold dark:text-primary! bg-transparent!' }"
-    class="w-fit"
-  />
+  <nav
+    class="docs-header-nav"
+    :class="orientation === 'vertical' ? 'flex flex-col items-stretch gap-2' : 'flex w-fit items-center gap-2'"
+  >
+    <SLink
+      v-for="item in menus"
+      :key="item.value"
+      :to="item.to"
+      :aria-current="item.isActive ? 'page' : undefined"
+      class="docs-header-nav-link flex items-center gap-2 rounded-md px-2 py-1.5 font-medium outline-none decoration-none"
+      :class="item.isActive ? 'docs-header-nav-link-active text-primary! font-semibold dark:text-primary!' : ''"
+    >
+      <SIcon :icon="item.icon" class="text-base" />
+      <span>{{ item.label }}</span>
+    </SLink>
+  </nav>
 </template>

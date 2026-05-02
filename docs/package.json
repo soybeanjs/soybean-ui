@@ -16,6 +16,7 @@
     "typecheck": "vue-tsc --noEmit --skipLibCheck"
   },
   "dependencies": {
+    "@fontsource-variable/manrope": "^5.2.8",
     "@soybeanjs/ui": "workspace:^",
     "@unocss/reset": "^66.6.8",
     "es-toolkit": "^1.46.1",

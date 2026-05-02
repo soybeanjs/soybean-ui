@@ -31,18 +31,21 @@ const sectionLinks = computed(() => {
 
   return labels.map(label => ({
     label,
-    href: `#${toHeadingId(label)}`
+    href: `#${toHeadingId(label)}`,
+    target: '_self' as const
   }));
 });
 
 const actionLinks = computed(() => [
   {
     label: t('component_detail.actions.demos'),
-    href: `#${toHeadingId(t('component_detail.sections.demos'))}`
+    href: `#${toHeadingId(t('component_detail.sections.demos'))}`,
+    target: '_self' as const
   },
   {
     label: t('component_detail.actions.api'),
-    href: `#${toHeadingId(t('component_detail.sections.api'))}`
+    href: `#${toHeadingId(t('component_detail.sections.api'))}`,
+    target: '_self' as const
   },
   {
     label: t('component_detail.actions.catalog'),
@@ -90,9 +93,7 @@ function onLoaded(isSuccess: boolean) {
 
 <template>
   <div class="mx-auto max-w-screen-2xl space-y-6 pb-8">
-    <section
-      class="relative overflow-hidden rounded-[2rem] border border-border/70 bg-background/82 px-6 py-7 shadow-[0_18px_52px_-34px_rgba(15,23,42,0.24)] backdrop-blur-md sm:px-8 sm:py-9 xl:px-10"
-    >
+    <section class="docs-hero-shell glass-shell relative overflow-hidden px-6 py-7 sm:px-8 sm:py-9 xl:px-10">
       <div
         class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,hsl(var(--primary)/0.16),transparent_30%),radial-gradient(circle_at_bottom_left,hsl(var(--warning)/0.12),transparent_28%)]"
       />
@@ -100,7 +101,7 @@ function onLoaded(isSuccess: boolean) {
       <div class="relative grid gap-8 xl:grid-cols-[minmax(0,1.12fr)_22rem] xl:items-start">
         <div class="space-y-5">
           <div
-            class="inline-flex items-center gap-2 rounded-full border border-border/70 bg-background/70 px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.18em] text-muted-foreground"
+            class="glass-chip inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.18em] text-muted-foreground"
           >
             <SIcon icon="lucide:component" class="text-sm text-primary" />
             <span>{{ t('component_detail.kicker') }}</span>
@@ -108,13 +109,13 @@ function onLoaded(isSuccess: boolean) {
 
           <div class="space-y-4">
             <div class="flex flex-wrap items-center gap-2.5">
-              <SBadge size="xs" color="primary">{{ currentGroupLabel }}</SBadge>
+              <span class="text-sm font-medium text-muted-foreground">{{ currentGroupLabel }}</span>
               <div class="code-btn-outline">@soybeanjs/ui</div>
               <div class="code-btn-outline">{{ importName }}</div>
             </div>
 
             <div class="space-y-3">
-              <p class="text-[clamp(2.2rem,5vw,4.25rem)] font-black leading-[0.96] tracking-[-0.05em] text-foreground">
+              <p class="text-3xl font-black tracking-[-0.05em] text-foreground">
                 {{ componentName }}
               </p>
               <p class="max-w-3xl text-sm leading-7 text-muted-foreground sm:text-base">
@@ -125,24 +126,18 @@ function onLoaded(isSuccess: boolean) {
               </p>
             </div>
 
-            <div class="grid gap-3 sm:grid-cols-3 xl:max-w-3xl">
-              <div class="rounded-2xl border border-border/60 bg-background/84 px-4 py-3">
+            <div class="grid gap-3 sm:grid-cols-2 xl:max-w-2xl">
+              <div class="glass-panel px-4 py-3">
                 <div class="text-[11px] font-semibold uppercase tracking-[0.16em] text-muted-foreground">
                   {{ t('component_detail.meta.category') }}
                 </div>
                 <div class="mt-2 text-sm font-medium text-foreground">{{ currentGroupLabel }}</div>
               </div>
-              <div class="rounded-2xl border border-border/60 bg-background/84 px-4 py-3">
+              <div class="glass-panel px-4 py-3">
                 <div class="text-[11px] font-semibold uppercase tracking-[0.16em] text-muted-foreground">
                   {{ t('component_detail.meta.import') }}
                 </div>
                 <div class="mt-2 text-sm font-medium text-foreground">{{ importName }}</div>
-              </div>
-              <div class="rounded-2xl border border-border/60 bg-background/84 px-4 py-3">
-                <div class="text-[11px] font-semibold uppercase tracking-[0.16em] text-muted-foreground">
-                  {{ t('component_detail.meta.route') }}
-                </div>
-                <div class="mt-2 text-sm font-medium text-foreground">/components/{{ name }}</div>
               </div>
             </div>
           </div>
@@ -151,24 +146,30 @@ function onLoaded(isSuccess: boolean) {
             <SButtonLink
               v-for="action in actionLinks"
               :key="action.label"
-              v-bind="action.to ? { to: action.to } : { href: action.href }"
+              v-bind="action.to ? { to: action.to } : { href: action.href, target: action.target }"
               size="lg"
-              :variant="action.to ? 'soft' : 'solid'"
+              variant="ghost"
               shape="rounded"
+              :class="
+                action.to
+                  ? 'docs-home-button docs-home-button-subtle group min-w-36'
+                  : 'docs-home-button docs-home-button-primary group min-w-36'
+              "
             >
               {{ action.label }}
+              <SIcon
+                :icon="action.to ? 'lucide:layout-grid' : 'lucide:arrow-right'"
+                class="transition-transform duration-200 group-hover:translate-x-1"
+              />
             </SButtonLink>
           </div>
         </div>
 
         <SCard
-          size="sm"
+          :title="t('component_detail.quick_jump.title')"
           split
-          class="border-border/60 bg-background/72 shadow-[0_16px_44px_-32px_rgba(15,23,42,0.2)] backdrop-blur-sm"
+          class="glass-shell docs-home-soft-shell docs-home-soft-shell docs-home-card-shell overflow-hidden"
         >
-          <template #title>{{ t('component_detail.quick_jump.title') }}</template>
-          <template #description>{{ t('component_detail.quick_jump.desc') }}</template>
-
           <template #default>
             <div class="space-y-5">
               <div class="grid gap-2.5">
@@ -176,7 +177,8 @@ function onLoaded(isSuccess: boolean) {
                   v-for="link in sectionLinks"
                   :key="link.label"
                   :href="link.href"
-                  class="group flex items-center justify-between rounded-xl border border-border/60 bg-background/84 px-3.5 py-3 text-sm font-medium text-foreground transition-all duration-200 hover:-translate-y-0.5 hover:border-primary/35 hover:text-primary"
+                  :target="link.target"
+                  class="glass-panel glass-hover-lift group flex items-center justify-between rounded-xl px-3.5 py-3 text-sm font-medium text-foreground hover:border-primary/35 hover:text-primary"
                 >
                   <span>{{ link.label }}</span>
                   <SIcon
@@ -201,7 +203,7 @@ function onLoaded(isSuccess: boolean) {
                     v-for="component in relatedComponents"
                     :key="component.key"
                     :to="component.to"
-                    class="rounded-full border border-border/70 bg-background px-3 py-1.5 text-sm text-foreground transition-colors duration-200 hover:border-primary/35 hover:text-primary"
+                    class="docs-home-name-pill rounded-full px-3 py-1.5 text-sm text-foreground transition-colors duration-200 hover:border-primary/35 hover:text-primary"
                   >
                     {{ component.label }}
                   </SLink>

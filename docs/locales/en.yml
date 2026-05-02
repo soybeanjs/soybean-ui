@@ -54,7 +54,6 @@ components:
       featured: Featured
       new: New components
     stats_title: Catalog at a glance
-    stats_description: Find the right component path faster for the screen you are building.
     quick_actions:
       quick_start:
         title: Set up first
@@ -74,97 +73,82 @@ components:
       form: The entry point for aligning validation, inputs, and submission feedback.
     sections:
       featured:
-        title: Start with these high-signal components
+        title: High-signal components
         desc: If you are unsure where to begin, these components best represent the system in real work.
-      groups:
-        title: All categories
-        desc: Browse the full landscape by intent instead of hopping between isolated pages.
   button:
     title: Button
     desc: Button component
   home:
-    title: Soybean UI
-    description: A modern, headless-first UI component library for Vue 3. Crafted for performance, accessibility, and developer experience.
-    kicker: Vue 3 Documentation Hub
-    helper: Start with the quick-start path, jump into component categories, and use the docs as a working reference for implementation, theming, and API decisions.
+    title: SoybeanUI
+    description: "A powerful, elegant component library for Vue 3: {'@'}soybeanjs/headless delivers unstyled interaction primitives, while {'@'}soybeanjs/ui ships styled components that help teams establish a consistent interaction model, high-quality interface experiences, and a scalable foundation for design systems."
+    kicker: Vue 3 Component System
     actions:
       start: Get Started
       browse: Browse Components
       github: GitHub
-    stats_title: Library at a glance
+    stats_title: Library overview
     stats:
       components: Components
       categories: Categories
       packages: Packages
       guides: Guides
     features:
+      headless_first:
+        title: Headless First
+        desc: "{'@'}soybeanjs/headless focuses on state, behavior, and accessibility semantics without shipping any visual styling."
+      styled_wrappers:
+        title: Styled Wrappers
+        desc: "{'@'}soybeanjs/ui ships S-prefixed styled components so common product surfaces can be delivered without rebuilding presentation from scratch."
       accessible:
-        title: Accessible
-        desc: Follows WAI-ARIA patterns for accessibility.
-      headless:
-        title: Headless
-        desc: Logic and styles are separated.
+        title: Accessibility Built In
+        desc: Follows WAI-ARIA patterns with keyboard navigation, focus management, and semantic state handling included.
       type_safe:
-        title: Type Safe
-        desc: Written in TypeScript with full type support.
-      customizable:
-        title: Customizable
-        desc: Built with UnoCSS and tailwind-variants for easy theming.
+        title: Type-safe APIs
+        desc: Built with TypeScript so components, slots, and configuration surfaces stay explicit during implementation.
+      slot_overrides:
+        title: Slot-level Overrides
+        desc: Override local styling precisely through ui slot maps instead of rewriting entire components.
+      theme_ready:
+        title: Theme-ready Variants
+        desc: Variants are organized with UnoCSS and tailwind-variants so design tokens and themes stay scalable.
+      component_coverage:
+        title: Broad Component Coverage
+        desc: Covers general UI, forms, navigation, overlays, and data display for the screens teams build most often.
+      ecosystem:
+        title: Vue Ecosystem Friendly
+        desc: Works smoothly with Nuxt, auto-import workflows, and living examples that shorten adoption time.
     quick_links:
       get_started:
-        title: Quick Start
-        desc: Install the package, wire the config provider, and ship your first screen faster.
+        title: Quick Setup
+        desc: Install the package, wire the styling layer, and get the first screen rendering end to end.
       introduction:
-        title: Architecture Intro
-        desc: Understand the headless-first layering model before you compose real interfaces.
+        title: Understand the Split
+        desc: Review how the unstyled headless layer and the styled UI layer divide responsibility before choosing an integration strategy.
       components:
-        title: Component Catalog
-        desc: Browse the full set of primitives, patterns, and utility building blocks by category.
+        title: Browse the Catalog
+        desc: Narrow the component choice set quickly by scanning primitives, patterns, and utilities by category.
       theming:
-        title: Theming Guide
-        desc: Learn how design tokens, variants, and UI slot overrides fit together.
-    workflow:
-      explore:
-        title: Explore the API surface
-        desc: Start from docs pages that combine overview, examples, and API tables in one place.
-      compose:
-        title: Compose with headless + styled layers
-        desc: Use headless logic where you need control, then adopt Soybean UI wrappers for fast delivery.
-      ship:
-        title: Validate and ship confidently
-        desc: Follow the same docs pages for props, slots, emits, and usage constraints during implementation.
-    architecture:
-      headless:
-        title: Headless foundation
-        desc: "State, behavior, accessibility, and semantic structure live in {'@'}soybeanjs/headless."
-        badge: Logic
-      ui:
-        title: Styled wrapper layer
-        desc: "{'@'}soybeanjs/ui applies variants, slot styling, and polished defaults without breaking composition."
-        badge: Visuals
-      docs:
-        title: Documentation layer
-        desc: The docs site aligns demos, API tables, and navigation so design and engineering can read from one source.
-        badge: Reference
+        title: Configure Theming
+        desc: Learn how tokens, variants, and ui slot overrides work together before deeper customization.
     sections:
       highlights:
-        title: Why teams start here
+        title: Core Features
       featured:
-        title: Featured components
-      workflow:
-        title: Recommended workflow
+        title: High-signal Components
+        desc: If you want to feel the system quickly, these components show the most representative interaction surfaces.
       categories:
-        title: Browse the component landscape
+        title: Browse by Scenario
         unit: components
       architecture:
-        title: Layered system overview
+        title: Core Architecture
+        desc: The two-layer split lets logic reuse and visual expression evolve independently without breaking composition.
     featured:
-      button: A high-frequency entry point for actions, state transitions, and forward flow.
-      input: A practical base for everything from simple entry to richer form composition.
-      select: Useful for filtering, option picking, and structured data selection flows.
-      dialog: A strong fit for confirmation, editing, and multi-step overlay experiences.
-      table: One of the core components for data reading, comparison, and structured display.
-      form: A stable way to align fields, validation, and submission behavior.
+      button: A foundational entry point for actions, state transitions, and forward motion in a flow.
+      input: A reliable starting point for entry, search, and richer form composition.
+      select: Covers filtering, mapping, and structured option selection in frequent product scenarios.
+      dialog: A core overlay capability for confirmations, editing flows, and interruptive tasks.
+      table: A key component for dense data reading, comparison, and structured presentation.
+      form: Aligns field composition, validation, and submission feedback inside one workflow.
 sidebar:
   overview: Overview
   introduction: Introduction
@@ -186,9 +170,6 @@ api:
   props: Props
   emits: Emits
   slots: Slots
-  badges:
-    required: Required
-    default: Default
   columns:
     prop_name: Prop
     emit_name: Emit Name

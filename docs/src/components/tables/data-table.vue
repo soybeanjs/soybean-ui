@@ -171,14 +171,13 @@ function getDescriptionText(row: TableRow) {
 </script>
 
 <template>
-  <div
-    class="min-w-0 overflow-x-auto rounded-5 border border-border/60 bg-background/74 shadow-[0_14px_38px_-30px_rgba(15,23,42,0.18)] backdrop-blur-sm"
-  >
+  <div class="docs-data-table glass-panel min-w-0 overflow-x-auto">
     <STable :columns="tableColumns" :data="tableData" :row-key="row => row.__rowKey" size="sm" bordered>
       <template #name="{ row: tableRow }">
         <div class="flex flex-wrap items-center gap-2">
-          <div class="code-btn">{{ getCellValue(tableRow, 'name') }}</div>
-          <SBadge v-if="tableRow.required" size="xs" color="destructive">{{ t('api.badges.required') }}</SBadge>
+          <SBadge size="xs" color="destructive" :open="Boolean(tableRow.required)">
+            <div class="code-btn">{{ getCellValue(tableRow, 'name') }}</div>
+          </SBadge>
         </div>
       </template>
 
@@ -206,9 +205,6 @@ function getDescriptionText(row: TableRow) {
             {{ getCellValue(tableRow, 'default') }}
           </div>
           <span v-else class="text-sm text-muted-foreground">—</span>
-          <SBadge v-if="getCellValue(tableRow, 'default') !== '—'" size="xs" color="primary">
-            {{ t('api.badges.default') }}
-          </SBadge>
         </div>
       </template>
 

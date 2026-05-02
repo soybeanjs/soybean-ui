@@ -173,11 +173,7 @@ watchEffect(() => {
 
 <template>
   <div ref="contentRef" class="min-w-0">
-    <article
-      v-if="cp"
-      :data-doc-path="path"
-      class="docs-page-shell relative min-w-0 overflow-hidden rounded-6 border border-border/60 bg-background/90 shadow-[0_18px_52px_-34px_rgba(15,23,42,0.24)] backdrop-blur-sm"
-    >
+    <article v-if="cp" :data-doc-path="path" class="docs-page-shell glass-shell relative min-w-0 overflow-hidden">
       <div
         aria-hidden="true"
         class="pointer-events-none absolute inset-x-0 top-0 h-36 bg-linear-to-r from-primary/8 via-warning/6 to-info/8 opacity-80"

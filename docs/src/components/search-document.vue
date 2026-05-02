@@ -79,11 +79,16 @@ function handleSelect(item: SelectEvent<string>) {
 </script>
 
 <template>
-  <SDialog v-model:open="searchOpen" pure :show-close="false">
+  <SDialog
+    v-model:open="searchOpen"
+    pure
+    :show-close="false"
+    :ui="{ overlay: 'docs-floating-overlay', popup: 'docs-command-dialog' }"
+  >
     <template #trigger>
       <div
         v-bind="attrs"
-        class="flex items-center gap-2 px-3 py-1.5 bg-gray-100 dark:bg-gray-800 rounded-lg text-gray-400 dark:text-gray-500 text-sm cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+        class="docs-search-trigger flex items-center gap-2 px-3 py-1.5 rounded-lg text-sm cursor-pointer transition-colors"
       >
         <SIcon icon="lucide:search" class="text-base" />
         <span class="placeholder">{{ t('layout.header.search') }}</span>
@@ -93,7 +98,17 @@ function handleSelect(item: SelectEvent<string>) {
 
     <SCommand
       v-model:search-term="search"
-      class="border rounded-lg shadow-md"
+      class="docs-command-surface border rounded-lg shadow-md"
+      :ui="{
+        root: 'docs-command-root',
+        list: 'docs-command-list',
+        inputRoot: 'docs-command-input-root',
+        inputControl: 'docs-command-input-control',
+        item: 'docs-command-item',
+        group: 'docs-command-group',
+        groupLabel: 'docs-command-group-label',
+        empty: 'docs-command-empty'
+      }"
       :items="searched"
       :input-props="{ placeholder: t('layout.header.search') }"
       :empty-label="t('layout.header.search_empty')"
@@ -103,7 +118,7 @@ function handleSelect(item: SelectEvent<string>) {
         <SIcon icon="lucide:arrow-right" />
       </template>
       <template #bottom>
-        <div class="flex-y-center gap-2 h-10 px-4 bg-accent text-accent-foreground border-t border-solid border-border">
+        <div class="docs-command-footer flex-y-center gap-2 h-10 px-4 border-t border-solid">
           <SKbd value="enter" />
           <span>Go to Page</span>
         </div>

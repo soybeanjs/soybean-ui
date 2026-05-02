@@ -24,7 +24,7 @@ layout:
     search: 搜索文档
     search_empty: 没有找到相关文档
     docs: 文档
-    getting_started: 快速开始
+    getting_started: 入门指南
     components: 组件
     releases: 发布记录
     version: 版本
@@ -54,7 +54,6 @@ components:
       featured: 精选组件
       new: 新增组件
     stats_title: 目录速览
-    stats_description: 用更短路径找到适合当前页面和场景的组件。
     quick_actions:
       quick_start:
         title: 先跑通接入
@@ -74,97 +73,78 @@ components:
       form: 统一表单组织、校验和交互反馈的组合入口。
     sections:
       featured:
-        title: 先看这些高频组件
-        desc: 如果你还不确定从哪里切入，先看这批最常用、最能代表体系能力的组件。
-      groups:
-        title: 全部分类
-        desc: 按业务意图浏览完整组件版图，减少在文档里来回跳转。
+        title: 高频组件
   button:
     title: 按钮
     desc: 按钮组件
   home:
-    title: Soybean UI
-    description: 一个现代化的、无头优先的 Vue 3 UI 组件库。专为性能、可访问性和开发体验而打造。
-    kicker: Vue 3 文档总览
-    helper: 从快速开始进入，再按组件分类深入，把这套文档当作实现、换肤和 API 决策时的统一参考面。
+    title: SoybeanUI
+    description: "面向 Vue 3 的强大而优雅的现代组件库：{'@'}soybeanjs/headless 提供无头交互能力，{'@'}soybeanjs/ui 提供带默认样式的组件封装，为团队建立一致的交互范式、高质量的界面体验与可扩展的设计系统基础。"
+    kicker: Vue 3 组件系统
     actions:
       start: 开始使用
       browse: 浏览组件
       github: GitHub
-    stats_title: 文档速览
+    stats_title: 库概览
     stats:
       components: 组件数
       categories: 分类数
       packages: 包数
       guides: 指南数
     features:
+      headless_first:
+        title: Headless First
+        desc: "{'@'}soybeanjs/headless 只提供状态、行为与可访问性语义，便于直接复用到自定义设计系统。"
+      styled_wrappers:
+        title: 样式包装层
+        desc: "{'@'}soybeanjs/ui 提供带默认样式的 S 前缀组件，让常见界面可以直接交付而不必从零包样式。"
       accessible:
-        title: 可访问性
-        desc: 遵循 WAI-ARIA 模式，确保无障碍访问。
-      headless:
-        title: 无头组件
-        desc: 逻辑与样式分离，提供最大的灵活性。
+        title: 内建可访问性
+        desc: 遵循 WAI-ARIA 模式，覆盖键盘导航、焦点管理与语义状态同步。
       type_safe:
-        title: 类型安全
-        desc: 使用 TypeScript 编写，提供完整的类型支持。
-      customizable:
-        title: 高度可定制
-        desc: 基于 UnoCSS 和 tailwind-variants 构建，轻松定制主题。
+        title: 类型安全 API
+        desc: 基于 TypeScript 构建，组件、插槽与配置项都有清晰的类型反馈。
+      slot_overrides:
+        title: Slot 级样式覆盖
+        desc: 通过 ui prop 和 slot 映射精确覆盖局部样式，而不是整体重写组件。
+      theme_ready:
+        title: Theme-ready Variants
+        desc: 基于 UnoCSS 与 tailwind-variants 组织变体，便于统一令牌和主题扩展。
+      component_coverage:
+        title: 完整组件版图
+        desc: 覆盖通用、表单、导航、浮层与数据展示等核心界面场景。
+      ecosystem:
+        title: Vue 生态友好
+        desc: 提供 Nuxt、自动导入与文档示例支持，让接入、演示和维护更顺手。
     quick_links:
       get_started:
-        title: 快速开始
-        desc: 先完成安装、配置和首个页面接入，最快进入可用状态。
+        title: 快速接入
+        desc: 完成安装、样式接入与首个页面渲染，先把基础链路跑通。
       introduction:
-        title: 架构介绍
-        desc: 在正式组合组件前，先理解 headless-first 的分层模型。
+        title: 理解双层分工
+        desc: 先看无头能力与带样式封装如何分工，再决定接入深度与样式策略。
       components:
-        title: 组件目录
-        desc: 按分类浏览全部基础组件、模式组件和工具组件。
+        title: 浏览组件版图
+        desc: 按类别查看基础组件、模式组件与工具组件，快速收敛选型范围。
       theming:
-        title: 主题指南
-        desc: 了解设计令牌、variants 与 ui slot 覆盖如何协同工作。
-    workflow:
-      explore:
-        title: 先看清 API 面
-        desc: 每个文档页都把概述、演示和 API 表格放在同一阅读流里。
-      compose:
-        title: 组合 headless 与 UI 层
-        desc: 需要控制力时使用 headless，需要交付速度时直接使用 Soybean UI 包装层。
-      ship:
-        title: 实现与校验同步完成
-        desc: 开发时直接对照 props、slots、emits 与使用约束，减少返工。
-    architecture:
-      headless:
-        title: Headless 基础层
-        desc: "状态、行为、可访问性与语义结构由 {'@'}soybeanjs/headless 提供。"
-        badge: 逻辑
-      ui:
-        title: UI 样式层
-        desc: "{'@'}soybeanjs/ui 负责 variants、slot 样式注入与更完整的默认外观。"
-        badge: 视觉
-      docs:
-        title: 文档参考层
-        desc: 文档站把示例、API 表格和导航整合在一起，让设计与研发共享同一份信息源。
-        badge: 参考
+        title: 配置主题系统
+        desc: 理解 tokens、variants 与 ui slot 覆盖的关系，避免后续返工。
     sections:
       highlights:
-        title: 为什么从这里开始
+        title: 核心特性
       featured:
-        title: 精选组件展示
-      workflow:
-        title: 推荐阅读路径
+        title: 高频组件入口
+        desc: 如果你想先感受体系能力，这些组件最能代表 SoybeanUI 的常用交互面。
       categories:
-        title: 快速浏览组件版图
+        title: 按场景浏览组件
         unit: 个组件
-      architecture:
-        title: 分层系统概览
     featured:
-      button: 面向基础操作、状态切换与流程推进的高频入口。
-      input: 从单行输入到复杂表单拼装都可以把它作为起点。
-      select: 适合筛选、选项映射和结构化数据输入的常见场景。
-      dialog: 适合确认、编辑与分步流程中的强交互浮层场景。
-      table: 面向数据阅读、对比和结构化展示的核心组件之一。
-      form: 把输入、校验与提交反馈统一进一个稳定工作流。
+      button: 用于操作触发、状态切换与主要流程推进的基础入口。
+      input: 适合作为输入、搜索与复杂表单编排的通用起点。
+      select: 覆盖筛选、映射与结构化选项选择等高频场景。
+      dialog: 承载确认、编辑与强打断流程的核心浮层能力。
+      table: 面向复杂数据阅读、对比与结构化展示的关键组件。
+      form: 把字段组织、校验与提交反馈统一到同一工作流。
 sidebar:
   overview: 概览
   introduction: 介绍
@@ -186,9 +166,6 @@ api:
   props: 属性
   emits: 事件
   slots: 插槽
-  badges:
-    required: 必填
-    default: 默认
   columns:
     prop_name: 属性名
     emit_name: 事件名

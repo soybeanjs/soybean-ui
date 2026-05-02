@@ -19,6 +19,8 @@ const selected = ref<string>('');
 const newlyComponents = ['pageTabs'];
 const componentsOverviewValue = 'components-overview';
 
+const section = computed(() => route.path.split('/').filter(Boolean)[0] ?? '');
+
 const componentMenus = computed<TreeMenuOptionData[]>(() =>
   menuData.map(group => ({
     label: t(`${group.i18n}`),
@@ -32,12 +34,12 @@ const componentMenus = computed<TreeMenuOptionData[]>(() =>
   }))
 );
 
-const menus = computed<TreeMenuOptionData[]>(() => [
+const overviewMenus = computed<TreeMenuOptionData[]>(() => [
   {
     isGroup: true,
-    label: t('sidebar.overview'),
+    label: t('layout.header.getting_started'),
     value: 'overview',
-    icon: 'lucide:home',
+    icon: 'lucide:rocket',
     children: [
       {
         label: t('sidebar.introduction'),
@@ -55,10 +57,13 @@ const menus = computed<TreeMenuOptionData[]>(() => [
         to: '/overview/theming'
       }
     ]
-  },
+  }
+]);
+
+const componentsMenus = computed<TreeMenuOptionData[]>(() => [
   {
     isGroup: true,
-    label: t('sidebar.components'),
+    label: t('layout.header.components'),
     value: 'components',
     icon: 'lucide:layout-grid',
     children: [
@@ -71,6 +76,18 @@ const menus = computed<TreeMenuOptionData[]>(() => [
     ]
   }
 ]);
+
+const menus = computed<TreeMenuOptionData[]>(() => {
+  if (section.value === 'overview') {
+    return overviewMenus.value;
+  }
+
+  if (section.value === 'components') {
+    return componentsMenus.value;
+  }
+
+  return [];
+});
 
 watchEffect(() => {
   const [dir, value] = route.path.split('/').filter(Boolean);
@@ -100,5 +117,13 @@ watchEffect(() => {
 </script>
 
 <template>
-  <STreeMenu v-model:expanded="expanded" :model-value="selected" :items="menus" @update:model-value="emit('select')" />
+  <div class="docs-sidebar-shell">
+    <STreeMenu
+      v-model:expanded="expanded"
+      class="docs-sidebar-menu"
+      :model-value="selected"
+      :items="menus"
+      @update:model-value="emit('select')"
+    />
+  </div>
 </template>
