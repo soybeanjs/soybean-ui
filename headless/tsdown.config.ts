@@ -5,11 +5,7 @@ import fg from 'fast-glob';
 import pkg from './package.json' with { type: 'json' };
 
 export default defineConfig({
-  entry: [
-    ...fg.sync('src/components/**/index.ts'),
-    ...fg.sync('src/*/index.ts').filter(glob => glob !== 'src/types/index.ts'),
-    'src/index.ts'
-  ],
+  entry: [...fg.sync('src/components/**/index.ts'), ...fg.sync('src/*/index.ts'), 'src/index.ts'],
   platform: 'browser',
   target: 'es2020',
   deps: {
