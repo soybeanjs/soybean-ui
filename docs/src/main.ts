@@ -13,7 +13,7 @@ export const createApp = ViteSSG(
   {
     routes: setupLayouts(routes),
     base: import.meta.env.BASE_URL,
-    scrollBehavior: () => ({ left: 0, top: 0, behavior: 'smooth' })
+    scrollBehavior: to => ({ left: 0, top: 0, behavior: to.hash ? 'smooth' : 'auto' })
   },
   ctx => {
     const modules = import.meta.glob<{ install: UserModule }>('./modules/*.ts', { eager: true });
