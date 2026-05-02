@@ -3,6 +3,12 @@ import { kebabCase, pascalCase } from '@soybeanjs/utils';
 import type { TreeMenuOptionData } from '@soybeanjs/ui';
 import { menuData } from '../constants/menus';
 
+interface Props {
+  shellClass?: string;
+}
+
+const props = defineProps<Props>();
+
 type Emits = {
   select: [];
 };
@@ -117,7 +123,7 @@ watchEffect(() => {
 </script>
 
 <template>
-  <div class="docs-sidebar-shell">
+  <div class="docs-sidebar-shell" :class="[props.shellClass]">
     <STreeMenu
       v-model:expanded="expanded"
       class="docs-sidebar-menu"

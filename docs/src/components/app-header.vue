@@ -11,6 +11,10 @@ let bodyObserver: MutationObserver | null = null;
 const { version } = pkg;
 const showTopBar = computed(() => route.path !== '/');
 
+const headerMenuPopoverUi = {
+  popup: 'docs-header-popover'
+} as const;
+
 function getScrollOffset() {
   if (document.body.hasAttribute('data-scroll-lock')) {
     const top = Number.parseFloat(document.body.style.top || '0');
@@ -66,7 +70,7 @@ onUnmounted(() => {
         <SSeparator orientation="vertical" class="h-8 lt-xl:!hidden" />
         <ToolBar class="lt-xl:!hidden" />
 
-        <SPopover placement="bottom-end">
+        <SPopover placement="bottom-end" :ui="headerMenuPopoverUi">
           <template #trigger>
             <SButtonIcon icon="lucide:menu" class="xl:!hidden text-xl" />
           </template>
