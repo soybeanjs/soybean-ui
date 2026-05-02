@@ -16,7 +16,7 @@ const menus = computed<NavigationMenuOptionData[]>(() => [
     value: 'docs',
     label: t('layout.header.docs'),
     icon: 'lucide:book-open',
-    to: '/overview'
+    to: '/overview/introduction'
   },
   {
     value: 'components',

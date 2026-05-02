@@ -82,9 +82,7 @@ watchEffect(() => {
     }
   }
 
-  if (value) {
-    selected.value = value;
-  }
+  selected.value = value || '';
 });
 </script>
 

@@ -176,6 +176,7 @@ const componentScopedTypePathPattern = /^(headless|src)\/src\/components\//u;
 const commonTypeRegistry = buildCommonTypeRegistry();
 const componentLocalTypePreviewRegistry = buildComponentLocalTypePreviewRegistry();
 const commonTypePreviewRegistry = buildTypePreviewRegistry(Array.from(commonTypeRegistry.values()));
+const generatedTypePreviewRegistry = buildGeneratedTypePreviewRegistry();
 
 function buildCommonTypeRegistry() {
   const usage = new Map<string, { type: GeneratedApiReferencedType; components: Set<string> }>();
@@ -1321,6 +1322,20 @@ function buildComponentLocalTypePreviewRegistry() {
   return registry;
 }
 
+function buildGeneratedTypePreviewRegistry() {
+  const collected = new Map<string, GeneratedApiReferencedType>();
+
+  for (const document of Object.values(componentApiDocuments)) {
+    for (const symbol of Object.values(document.symbols)) {
+      for (const type of collectSymbolTypes(symbol)) {
+        setCollectedType(collected, type);
+      }
+    }
+  }
+
+  return buildTypePreviewRegistry(Array.from(collected.values()));
+}
+
 function toUnionType(type: GeneratedApiReferencedType): GeneratedApiUnionType | null {
   const resolvedType = type.resolvedType ?? type.type;
 
@@ -1431,9 +1446,20 @@ export function getExternalTypeImportSignature(typeName: string) {
 }
 
 export function getComponentTypePreview(component: string, typeName: string) {
-  return componentLocalTypePreviewRegistry.get(component)?.get(typeName) ?? getSourceTypePreview(typeName) ?? null;
+  return (
+    componentLocalTypePreviewRegistry.get(component)?.get(typeName) ??
+    commonTypePreviewRegistry.get(typeName) ??
+    generatedTypePreviewRegistry.get(typeName) ??
+    getSourceTypePreview(typeName) ??
+    null
+  );
 }
 
 export function getCommonTypePreview(typeName: string) {
-  return commonTypePreviewRegistry.get(typeName) ?? getSourceTypePreview(typeName) ?? null;
+  return (
+    commonTypePreviewRegistry.get(typeName) ??
+    generatedTypePreviewRegistry.get(typeName) ??
+    getSourceTypePreview(typeName) ??
+    null
+  );
 }

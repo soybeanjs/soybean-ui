@@ -19,6 +19,16 @@ type TypePart = { text: string; hasPreview?: boolean };
 
 export interface TypeRenderContext {
   component: string | null;
+  activePreviewNames: string[];
+}
+
+type TypeRenderContextLike = Partial<TypeRenderContext> | null | undefined;
+
+export function normalizeTypeRenderContext(context?: TypeRenderContextLike): TypeRenderContext {
+  return {
+    component: context?.component ?? null,
+    activePreviewNames: Array.isArray(context?.activePreviewNames) ? context.activePreviewNames : []
+  };
 }
 
 export const typeRenderContextKey: InjectionKey<ComputedRef<TypeRenderContext>> = Symbol('type-render-context');
@@ -26,7 +36,7 @@ export const typeRenderContextKey: InjectionKey<ComputedRef<TypeRenderContext>> 
 export function provideTypeRenderContext(context: MaybeRefOrGetter<TypeRenderContext>) {
   provide(
     typeRenderContextKey,
-    computed(() => toValue(context))
+    computed(() => normalizeTypeRenderContext(toValue(context)))
   );
 }
 

@@ -2,7 +2,7 @@
 import { SHoverCard } from '@soybeanjs/ui';
 import { getCommonTypePreview, getComponentTypePreview, getExternalTypeImportSignature } from './generated-api';
 import TypePreviewCard from './type-preview-card.vue';
-import { typeRenderContextKey } from './type-anchor';
+import { normalizeTypeRenderContext, typeRenderContextKey } from './type-anchor';
 
 interface Props {
   name: string;
@@ -12,9 +12,7 @@ const props = defineProps<Props>();
 
 const typeRenderContext = inject(
   typeRenderContextKey,
-  computed(() => ({
-    component: null
-  }))
+  computed(() => normalizeTypeRenderContext())
 );
 
 const localPreview = computed(() => {
@@ -31,11 +29,14 @@ const commonPreview = computed(() => getCommonTypePreview(props.name));
 
 const preview = computed(() => localPreview.value ?? commonPreview.value);
 const externalImportSignature = computed(() => getExternalTypeImportSignature(props.name));
-const hasHoverContent = computed(() => Boolean(preview.value || externalImportSignature.value));
+const isActivePreviewType = computed(() => typeRenderContext.value.activePreviewNames?.includes(props.name));
+const hasHoverContent = computed(
+  () => !isActivePreviewType.value && Boolean(preview.value || externalImportSignature.value)
+);
 </script>
 
 <template>
-  <SHoverCard v-if="hasHoverContent" :open-delay="180" :close-delay="120" class="w-max">
+  <SHoverCard v-if="hasHoverContent" :open-delay="180" :close-delay="120" class="w-max p-0">
     <template #trigger>
       <button
         type="button"

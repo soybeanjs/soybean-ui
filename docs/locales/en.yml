@@ -34,6 +34,18 @@ layout:
 components:
   common:
     demo: Demos
+  catalog:
+    title: Component Catalog
+    description: Browse every Soybean UI component by category and jump straight into the dedicated docs page for each one.
+    helper: Use the category view below or press Command + K to jump to a component directly.
+    group_count: '{count} components'
+    actions:
+      open: Open documentation
+    badges:
+      new: New
+    stats:
+      total: Total components
+      categories: Categories
   button:
     title: Button
     desc: Button component

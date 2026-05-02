@@ -30,20 +30,15 @@ watch(
     renderCode();
   },
   {
+    flush: 'post',
     immediate: true
   }
 );
-
-onMounted(() => {
-  renderCode();
-});
 </script>
 
 <template>
-  <div class="border rounded-md overflow-hidden">
-    <div
-      ref="wrapper"
-      class="px-3 py-2 text-xs leading-5 [&_pre]:my-0 [&_pre]:rounded-none [&_.shiki]:overflow-x-auto"
-    />
-  </div>
+  <div
+    ref="wrapper"
+    class="text-xs leading-5 [&_pre]:p-2 [&_pre]:my-0 [&_pre]:rounded-md [&_code]:whitespace-pre-wrap"
+  ></div>
 </template>

@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import { SLink } from '@soybeanjs/ui';
 import type { GeneratedApiTypePreview } from './generated-api';
+import { normalizeTypeRenderContext, provideTypeRenderContext, typeRenderContextKey } from './type-anchor';
 import CallableTypeTable from './callable-type-table.vue';
 import TypeData from './type-data.vue';
-import UnionType from './union-type.vue';
+import TypePreviewCode from './type-preview-code.vue';
 import { useApiI18n } from './use-api-i18n';
 
 interface Props {
@@ -11,18 +12,31 @@ interface Props {
   preview: GeneratedApiTypePreview;
 }
 
-defineProps<Props>();
+const props = defineProps<Props>();
 
 const { resolveApiText, t } = useApiI18n();
+
+const parentTypeRenderContext = inject(
+  typeRenderContextKey,
+  computed(() => normalizeTypeRenderContext())
+);
+
+provideTypeRenderContext(() => {
+  const normalizedParentContext = normalizeTypeRenderContext(parentTypeRenderContext.value);
+
+  return {
+    ...normalizedParentContext,
+    activePreviewNames: [...normalizedParentContext.activePreviewNames, props.preview.name]
+  };
+});
+
+const description = computed(() => resolveApiText(props.preview.description, props.preview.descriptionKey));
 </script>
 
 <template>
-  <div class="min-w-80 w-fit max-w-[calc(100vw-2rem)] max-h-96 overflow-auto p-1 space-y-3">
-    <p
-      v-if="resolveApiText(preview.description, preview.descriptionKey)"
-      class="text-xs leading-5 text-muted-foreground"
-    >
-      {{ resolveApiText(preview.description, preview.descriptionKey) }}
+  <div class="min-w-80 max-w-xl max-h-96 overflow-auto p-2 space-y-3">
+    <p v-if="description" class="text-xs leading-5 text-muted-foreground">
+      {{ description }}
     </p>
 
     <TypeData
@@ -46,14 +60,7 @@ const { resolveApiText, t } = useApiI18n();
       hide-header
     />
 
-    <UnionType
-      v-else
-      :name="preview.name"
-      :display-name="preview.displayName"
-      :description="preview.description"
-      :description-key="preview.descriptionKey"
-      :type="preview.code || `type ${preview.displayName || preview.name} = ${preview.type}`"
-    />
+    <TypePreviewCode v-else :code="preview.code || `type ${preview.displayName || preview.name} = ${preview.type}`" />
 
     <div v-if="href" class="border-t pt-2">
       <SLink :href="href" target="_self" class="text-xs text-primary hover:underline underline-offset-4">

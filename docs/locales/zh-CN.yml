@@ -34,6 +34,18 @@ layout:
 components:
   common:
     demo: 演示
+  catalog:
+    title: 组件总览
+    description: 按分类浏览 Soybean UI 的全部组件，并直接跳转到每个组件对应的文档页面。
+    helper: 你可以先按下面的分类浏览，也可以按 Command + K 直接搜索组件。
+    group_count: '{count} 个组件'
+    actions:
+      open: 打开文档
+    badges:
+      new: 新增
+    stats:
+      total: 组件总数
+      categories: 分类数
   button:
     title: 按钮
     desc: 按钮组件
