@@ -39,21 +39,6 @@ html.dark {
   border-radius: 0;
 }
 
-#nprogress {
-  pointer-events: none;
-}
-
-#nprogress .bar {
-  background: hsl(var(--primary));
-  opacity: 0.75;
-  position: fixed;
-  z-index: 1031;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 2px;
-}
-
 .shiki,
 .shiki span {
   color: var(--shiki-light);
