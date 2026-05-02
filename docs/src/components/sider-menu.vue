@@ -17,6 +17,7 @@ const expanded = ref<string[]>([]);
 const selected = ref<string>('');
 
 const newlyComponents = ['pageTabs'];
+const componentsOverviewValue = 'components-overview';
 
 const componentMenus = computed<TreeMenuOptionData[]>(() =>
   menuData.map(group => ({
@@ -60,7 +61,14 @@ const menus = computed<TreeMenuOptionData[]>(() => [
     label: t('sidebar.components'),
     value: 'components',
     icon: 'lucide:layout-grid',
-    children: componentMenus.value
+    children: [
+      {
+        label: t('components.catalog.title'),
+        value: componentsOverviewValue,
+        to: '/components'
+      },
+      ...componentMenus.value
+    ]
   }
 ]);
 
@@ -80,6 +88,11 @@ watchEffect(() => {
     } else {
       expanded.value = [dir];
     }
+  }
+
+  if (dir === 'components' && !value) {
+    selected.value = componentsOverviewValue;
+    return;
   }
 
   selected.value = value || '';
