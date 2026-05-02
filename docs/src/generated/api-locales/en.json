@@ -1006,7 +1006,7 @@
             "as": "The element or component this component should render as. Can be overwrite by `asChild`",
             "aschild": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
             "disabled": "Whether the component is disabled.",
-            "type": "The type of the button element. Can be one of 'button', 'submit', or 'reset'. [按钮元素的类型。可以是 'button'、'submit' 或 'reset' 之一。]"
+            "type": "The type of the button element. Can be one of 'button', 'submit', or 'reset'. "
           },
           "props": "Props for the carousel next component."
         },
@@ -1015,7 +1015,7 @@
             "as": "The element or component this component should render as. Can be overwrite by `asChild`",
             "aschild": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
             "disabled": "Whether the component is disabled.",
-            "type": "The type of the button element. Can be one of 'button', 'submit', or 'reset'. [按钮元素的类型。可以是 'button'、'submit' 或 'reset' 之一。]"
+            "type": "The type of the button element. Can be one of 'button', 'submit', or 'reset'. "
           },
           "props": "Props for the carousel previous component."
         },
@@ -2529,7 +2529,7 @@
             "as": "The element or component this component should render as. Can be overwrite by `asChild`",
             "aschild": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
             "disabled": "Whether the component is disabled.",
-            "type": "The type of the button element. Can be one of 'button', 'submit', or 'reset'. [按钮元素的类型。可以是 'button'、'submit' 或 'reset' 之一。]"
+            "type": "The type of the button element. Can be one of 'button', 'submit', or 'reset'. "
           },
           "props": "Props for the dialog cancel component."
         },
@@ -2544,7 +2544,7 @@
             "as": "The element or component this component should render as. Can be overwrite by `asChild`",
             "aschild": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
             "disabled": "Whether the component is disabled.",
-            "type": "The type of the button element. Can be one of 'button', 'submit', or 'reset'. [按钮元素的类型。可以是 'button'、'submit' 或 'reset' 之一。]"
+            "type": "The type of the button element. Can be one of 'button', 'submit', or 'reset'. "
           },
           "props": "Props for the dialog close component."
         },
@@ -2625,7 +2625,7 @@
             "as": "The element or component this component should render as. Can be overwrite by `asChild`",
             "aschild": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
             "disabled": "Whether the component is disabled.",
-            "type": "The type of the button element. Can be one of 'button', 'submit', or 'reset'. [按钮元素的类型。可以是 'button'、'submit' 或 'reset' 之一。]"
+            "type": "The type of the button element. Can be one of 'button', 'submit', or 'reset'. "
           },
           "props": "Props for the dialog confirm component."
         },
@@ -6805,16 +6805,16 @@
             "defaultexpanded": "Whether default expanded.",
             "descriptionprops": "Props forwarded to the description element.",
             "dir": "Reading direction of the component.",
-            "duration": "The duration (in milliseconds) before the toast automatically closes. Set to `0` or `Infinity` to disable auto-dismissal.\n\n[自动关闭前的持续时间（以毫秒为单位）。设置为 `0` 或 `Infinity` 可禁用自动关闭。]",
+            "duration": "The duration (in milliseconds) before the toast automatically closes. Set to `0` or `Infinity` to disable auto-dismissal.",
             "footerprops": "Props forwarded to the footer element.",
             "gap": "Gap.",
             "hotkey": "Hotkey.",
             "iconprops": "Props forwarded to the icon component.",
             "icons": "Icons.",
             "id": "Id.",
-            "offset": "The maximum number of visible toasts per position. [每个位置可见的最大吐司数量。]",
+            "offset": "The maximum number of visible toasts per position. ",
             "position": "Position.",
-            "showclose": "Whether to show the close button on the toast. [是否在吐司上显示关闭图标。]",
+            "showclose": "Whether to show the close button on the toast.",
             "showicon": "Whether to show an icon.",
             "swipedirections": "Swipe directions.",
             "titleprops": "Props forwarded to the title element.",
@@ -6849,7 +6849,7 @@
             "as": "The element or component this component should render as. Can be overwrite by `asChild`",
             "aschild": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
             "disabled": "When `true`, prevents interaction with the item.",
-            "type": "The type of the button element. Can be one of 'button', 'submit', or 'reset'. [按钮元素的类型。可以是 'button'、'submit' 或 'reset' 之一。]",
+            "type": "The type of the button element. Can be one of 'button', 'submit', or 'reset'. ",
             "value": "A unique value that identifies the item inside the group."
           },
           "props": "Props for the toggle group item component."
@@ -6901,7 +6901,7 @@
             "as": "The element or component this component should render as. Can be overwrite by `asChild`",
             "aschild": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
             "disabled": "Whether the component is disabled.",
-            "type": "The type of the button element. Can be one of 'button', 'submit', or 'reset'. [按钮元素的类型。可以是 'button'、'submit' 或 'reset' 之一。]"
+            "type": "The type of the button element. Can be one of 'button', 'submit', or 'reset'. "
           },
           "props": "Props for the toolbar button component."
         },
@@ -6976,7 +6976,7 @@
             "as": "The element or component this component should render as. Can be overwrite by `asChild`",
             "aschild": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
             "disabled": "When `true`, prevents interaction with the item.",
-            "type": "The type of the button element. Can be one of 'button', 'submit', or 'reset'. [按钮元素的类型。可以是 'button'、'submit' 或 'reset' 之一。]",
+            "type": "The type of the button element. Can be one of 'button', 'submit', or 'reset'. ",
             "value": "A unique value that identifies the item inside the group."
           },
           "props": "Props for the toolbar toggle item component."
@@ -7777,7 +7777,7 @@
             "shape": "Shape of the component.",
             "size": "Visual size of the component.",
             "target": "Scroll target that Backtop listens to and scrolls.",
-            "type": "The type of the button element. Can be one of 'button', 'submit', or 'reset'. [按钮元素的类型。可以是 'button'、'submit' 或 'reset' 之一。]",
+            "type": "The type of the button element. Can be one of 'button', 'submit', or 'reset'. ",
             "variant": "Visual variant of the component.",
             "visibilityheight": "Scroll distance that must be reached before the Backtop button becomes visible."
           },
@@ -7941,7 +7941,7 @@
             "shadow": "Shadow style of the component.",
             "shape": "Shape of the component.",
             "size": "Visual size of the component.",
-            "type": "The type of the button element. Can be one of 'button', 'submit', or 'reset'. [按钮元素的类型。可以是 'button'、'submit' 或 'reset' 之一。]",
+            "type": "The type of the button element. Can be one of 'button', 'submit', or 'reset'. ",
             "variant": "Visual variant of the component."
           },
           "props": "Props for the button group component."
@@ -7960,7 +7960,7 @@
             "shadow": "Shadow style of the component.",
             "shape": "Shape of the component.",
             "size": "Visual size of the component.",
-            "type": "The type of the button element. Can be one of 'button', 'submit', or 'reset'. [按钮元素的类型。可以是 'button'、'submit' 或 'reset' 之一。]",
+            "type": "The type of the button element. Can be one of 'button', 'submit', or 'reset'. ",
             "variant": "Visual variant of the component."
           },
           "props": "Props for the button icon component."
@@ -7992,7 +7992,7 @@
             "target": "Where to display the linked URL, as the name for a browsing context.",
             "to": "Route Location the link should navigate to when clicked on.",
             "trailingslash": "An option to either add or remove trailing slashes in the `href` for this specific link.\nOverrides the global `trailingSlash` option if provided.",
-            "type": "The type of the button element. Can be one of 'button', 'submit', or 'reset'. [按钮元素的类型。可以是 'button'、'submit' 或 'reset' 之一。]",
+            "type": "The type of the button element. Can be one of 'button', 'submit', or 'reset'. ",
             "variant": "Visual variant of the component.",
             "viewtransition": "Pass the returned promise of `router.push()` to `document.startViewTransition()` if supported."
           },
@@ -8016,7 +8016,7 @@
             "shadow": "Shadow style of the component.",
             "shape": "Shape of the component.",
             "size": "Visual size of the component.",
-            "type": "The type of the button element. Can be one of 'button', 'submit', or 'reset'. [按钮元素的类型。可以是 'button'、'submit' 或 'reset' 之一。]",
+            "type": "The type of the button element. Can be one of 'button', 'submit', or 'reset'. ",
             "variant": "Visual variant of the component."
           },
           "props": "Props for the button loading component."
@@ -8032,7 +8032,7 @@
             "shadow": "Shadow style of the component.",
             "shape": "Shape of the component.",
             "size": "Visual size of the component.",
-            "type": "The type of the button element. Can be one of 'button', 'submit', or 'reset'. [按钮元素的类型。可以是 'button'、'submit' 或 'reset' 之一。]",
+            "type": "The type of the button element. Can be one of 'button', 'submit', or 'reset'. ",
             "variant": "Visual variant of the component."
           },
           "props": "Props for the button component."
@@ -8291,7 +8291,7 @@
             "legacy": "Whether to enable the legacy `execCommand` fallback.",
             "shape": "Shape of the component.",
             "size": "Visual size of the component.",
-            "type": "The type of the button element. Can be one of 'button', 'submit', or 'reset'. [按钮元素的类型。可以是 'button'、'submit' 或 'reset' 之一。]",
+            "type": "The type of the button element. Can be one of 'button', 'submit', or 'reset'. ",
             "value": "The text value to copy.",
             "variant": "Visual variant of the component."
           },
@@ -10187,7 +10187,7 @@
             "shape": "Shape of the component.",
             "size": "Visual size of the component.",
             "text": "Text.",
-            "type": "The type of the button element. Can be one of 'button', 'submit', or 'reset'. [按钮元素的类型。可以是 'button'、'submit' 或 'reset' 之一。]",
+            "type": "The type of the button element. Can be one of 'button', 'submit', or 'reset'. ",
             "variant": "Visual variant of the component."
           },
           "props": "Props for the popconfirm cancel component."
@@ -10214,7 +10214,7 @@
             "shape": "Shape of the component.",
             "size": "Visual size of the component.",
             "text": "Text.",
-            "type": "The type of the button element. Can be one of 'button', 'submit', or 'reset'. [按钮元素的类型。可以是 'button'、'submit' 或 'reset' 之一。]",
+            "type": "The type of the button element. Can be one of 'button', 'submit', or 'reset'. ",
             "variant": "Visual variant of the component."
           },
           "props": "Props for the popconfirm confirm component."
@@ -11301,16 +11301,16 @@
             "defaultexpanded": "Whether default expanded.",
             "descriptionprops": "Props forwarded to the description element.",
             "dir": "Reading direction of the component.",
-            "duration": "The duration (in milliseconds) before the toast automatically closes. Set to `0` or `Infinity` to disable auto-dismissal.\n\n[自动关闭前的持续时间（以毫秒为单位）。设置为 `0` 或 `Infinity` 可禁用自动关闭。]",
+            "duration": "The duration (in milliseconds) before the toast automatically closes. Set to `0` or `Infinity` to disable auto-dismissal.",
             "footerprops": "Props forwarded to the footer element.",
             "gap": "Gap.",
             "hotkey": "Hotkey.",
             "iconprops": "Props forwarded to the icon component.",
             "icons": "Icons.",
             "id": "Id.",
-            "offset": "The maximum number of visible toasts per position. [每个位置可见的最大吐司数量。]",
+            "offset": "The maximum number of visible toasts per position. ",
             "position": "Position.",
-            "showclose": "Whether to show the close button on the toast. [是否在吐司上显示关闭图标。]",
+            "showclose": "Whether to show the close button on the toast.",
             "showicon": "Whether to show an icon.",
             "size": "Visual size of the component.",
             "swipedirections": "Swipe directions.",

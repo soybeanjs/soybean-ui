@@ -154,28 +154,37 @@ const tableData = computed<TableRow[]>(() => {
   }));
 });
 
+const customRenderedColumns = computed(() => {
+  return resolvedColumns.value.filter(column => column.key !== 'description');
+});
+
 function getColumnRender(column: DataTableColumn<any>) {
   return column.render ?? ((row: TableRow) => getCellValue(row, column.key));
 }
 
-function getDescriptionText(row: { description?: string; descriptionKey?: string | null }) {
-  return resolveApiText(row.description, row.descriptionKey) || '—';
+function getDescriptionText(row: TableRow) {
+  return (
+    resolveApiText(
+      typeof row.description === 'string' ? row.description : undefined,
+      typeof row.descriptionKey === 'string' || row.descriptionKey === null ? row.descriptionKey : undefined
+    ) || '—'
+  );
 }
 </script>
 
 <template>
   <div class="min-w-0 overflow-x-auto">
     <STable :columns="tableColumns" :data="tableData" :row-key="row => row.__rowKey" size="sm" bordered>
-      <template v-for="col in resolvedColumns" :key="col.key" #[col.key]="{ row }">
+      <template v-for="col in customRenderedColumns" :key="col.key" #[col.key]="{ row: tableRow }">
         <div v-if="col.cellWrapperClass" :class="col.cellWrapperClass">
-          <CellRenderer :render="getColumnRender(col)" :row="row" />
+          <CellRenderer :render="getColumnRender(col)" :row="tableRow" />
         </div>
-        <CellRenderer v-else :render="getColumnRender(col)" :row="row" />
+        <CellRenderer v-else :render="getColumnRender(col)" :row="tableRow" />
       </template>
 
-      <template #description="{ row }">
+      <template #description="{ row: tableRow }">
         <div class="max-w-[20rem] whitespace-pre-wrap break-words">
-          {{ getDescriptionText(row) }}
+          {{ getDescriptionText(tableRow) }}
         </div>
       </template>
     </STable>

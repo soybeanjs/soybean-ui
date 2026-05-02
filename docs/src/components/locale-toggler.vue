@@ -6,8 +6,8 @@ import { availableLocales, loadLanguageAsync } from '@/modules/i18n';
 const { t, locale } = useI18n();
 
 const iconMap: Record<string, string> = {
-  en: 'twemoji:flag-united-states',
-  'zh-CN': 'twemoji:flag-china'
+  en: 'lucide:spell-check-2',
+  'zh-CN': 'lucide:languages'
 };
 const locales = [...availableLocales].sort((a, b) => {
   if (a === 'zh-CN') return -1;

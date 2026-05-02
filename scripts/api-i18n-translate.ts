@@ -26,24 +26,63 @@ type TranslationEntry = {
   source: string;
 };
 
-type OpenAiMessage = {
-  role: 'system' | 'user';
-  content: string;
+type DeepLTranslation = {
+  detected_source_language?: string;
+  text?: string;
 };
 
-type OpenAiCompletionResponse = {
-  choices?: Array<{
-    message?: {
-      content?: string;
-    };
-  }>;
+type DeepLTranslateResponse = {
+  message?: string;
+  detail?: string;
+  translations?: DeepLTranslation[];
 };
 
 const rootDir = process.cwd();
 const localeDir = path.join(rootDir, 'docs/src/generated/api-locales');
-const defaultBaseUrl = 'https://api.openai.com/v1';
+const defaultBaseUrl = 'https://api-free.deepl.com/v2';
 const defaultRetryCount = 3;
 const defaultRetryDelayMs = 1500;
+const deepLLanguageMap = new Map<string, string>([
+  ['bg', 'BG'],
+  ['cs', 'CS'],
+  ['da', 'DA'],
+  ['de', 'DE'],
+  ['el', 'EL'],
+  ['en', 'EN'],
+  ['en-gb', 'EN-GB'],
+  ['en-us', 'EN-US'],
+  ['es', 'ES'],
+  ['et', 'ET'],
+  ['fi', 'FI'],
+  ['fr', 'FR'],
+  ['hu', 'HU'],
+  ['id', 'ID'],
+  ['it', 'IT'],
+  ['ja', 'JA'],
+  ['ko', 'KO'],
+  ['lt', 'LT'],
+  ['lv', 'LV'],
+  ['nb', 'NB'],
+  ['nl', 'NL'],
+  ['pl', 'PL'],
+  ['pt', 'PT-PT'],
+  ['pt-br', 'PT-BR'],
+  ['pt-pt', 'PT-PT'],
+  ['ro', 'RO'],
+  ['ru', 'RU'],
+  ['sk', 'SK'],
+  ['sl', 'SL'],
+  ['sv', 'SV'],
+  ['tr', 'TR'],
+  ['uk', 'UK'],
+  ['zh', 'ZH'],
+  ['zh-cn', 'ZH'],
+  ['zh-hans', 'ZH'],
+  ['zh-sg', 'ZH'],
+  ['zh-tw', 'ZH'],
+  ['zh-hant', 'ZH'],
+  ['zh-hk', 'ZH']
+]);
 
 function printUsage() {
   console.log(`Usage: pnpm translate:api:i18n -- --locale <locale> [options]
@@ -58,9 +97,10 @@ Options:
   --help                    Show this help message
 
 Environment:
-  TRANSLATE_API_KEY         Required. API key for an OpenAI-compatible translation endpoint
-  TRANSLATE_MODEL           Required. Model name, for example gpt-4.1-mini or gpt-5-mini
-  TRANSLATE_BASE_URL        Optional. Defaults to https://api.openai.com/v1
+  DEEPL_API_KEY             Required. DeepL API key
+  DEEPL_BASE_URL            Optional. Defaults to https://api-free.deepl.com/v2
+  TRANSLATE_API_KEY         Optional fallback for DEEPL_API_KEY
+  TRANSLATE_BASE_URL        Optional fallback for DEEPL_BASE_URL
 `);
 }
 
@@ -217,16 +257,6 @@ function getPendingEntries(
   return limit ? pendingEntries.slice(0, limit) : pendingEntries;
 }
 
-function getRequiredEnv(name: string): string {
-  const value = process.env[name]?.trim();
-
-  if (!value) {
-    throw new Error(`Missing required environment variable: ${name}`);
-  }
-
-  return value;
-}
-
 function getEnvNumber(name: string, fallback: number): number {
   const value = Number(process.env[name]?.trim());
 
@@ -257,78 +287,104 @@ async function readResponseText(response: Response): Promise<string> {
   }
 }
 
-function buildPrompt(entries: TranslationEntry[], locale: string): OpenAiMessage[] {
-  const payload = Object.fromEntries(entries.map(entry => [entry.key, entry.source]));
+function toDeepLLanguage(locale: string): string {
+  const normalizedLocale = locale.trim().replace(/_/gu, '-').toLowerCase();
 
-  return [
-    {
-      role: 'system',
-      content:
-        'You are translating technical component API documentation. Translate from English into the requested target locale. Preserve Markdown, punctuation, line breaks, code fences, and inline code. Do not translate identifiers inside backticks, component names, type names, prop keys, or event names unless they are ordinary prose. Return only a JSON object mapping the same keys to translated strings.'
-    },
-    {
-      role: 'user',
-      content: `Target locale: ${locale}\n\nTranslate this JSON object:\n${JSON.stringify(payload, null, 2)}`
-    }
-  ];
+  const mappedLanguage = deepLLanguageMap.get(normalizedLocale);
+
+  if (mappedLanguage) {
+    return mappedLanguage;
+  }
+
+  const [language, region] = normalizedLocale.split('-');
+
+  if (!region) {
+    return language.toUpperCase();
+  }
+
+  return `${language.toUpperCase()}-${region.toUpperCase()}`;
 }
 
-function extractJsonObject(content: string): JsonObject {
-  const trimmedContent = content.trim();
+function createTranslationContext(locale: string): string {
+  return [
+    `Target locale: ${locale}.`,
+    'Translate technical component API documentation.',
+    'Preserve Markdown, punctuation, line breaks, code fences, and inline code.',
+    'Do not translate identifiers inside backticks, component names, type names, prop keys, event names, or enum-like string literals unless they are ordinary prose.',
+    'Keep the output natural for software documentation.'
+  ].join(' ');
+}
+
+function getTranslateApiKey(): string {
+  const apiKey = process.env.DEEPL_API_KEY?.trim() || process.env.TRANSLATE_API_KEY?.trim();
+
+  if (!apiKey) {
+    throw new Error('Missing required environment variable: DEEPL_API_KEY');
+  }
+
+  return apiKey;
+}
+
+function getTranslateBaseUrl(): string {
+  return (process.env.DEEPL_BASE_URL?.trim() || process.env.TRANSLATE_BASE_URL?.trim() || defaultBaseUrl).replace(
+    /\/$/u,
+    ''
+  );
+}
+
+function getDeepLErrorMessage(payload: DeepLTranslateResponse | null, fallback: string): string {
+  return payload?.message?.trim() || payload?.detail?.trim() || fallback;
+}
+
+function parseDeepLErrorResponse(responseText: string): DeepLTranslateResponse | null {
+  if (!responseText) {
+    return null;
+  }
 
   try {
-    const parsed = JSON.parse(trimmedContent) as unknown;
-
-    if (isJsonObject(parsed)) {
-      return parsed;
-    }
-  } catch {}
-
-  const startIndex = trimmedContent.indexOf('{');
-  const endIndex = trimmedContent.lastIndexOf('}');
-
-  if (startIndex === -1 || endIndex === -1 || endIndex <= startIndex) {
-    throw new Error('Unable to parse translation response as JSON object.');
+    return JSON.parse(responseText) as DeepLTranslateResponse;
+  } catch {
+    return null;
   }
-
-  const parsed = JSON.parse(trimmedContent.slice(startIndex, endIndex + 1)) as unknown;
-
-  if (!isJsonObject(parsed)) {
-    throw new Error('Translation response is not a JSON object.');
-  }
-
-  return parsed;
 }
 
-async function requestTranslations(entries: TranslationEntry[], locale: string): Promise<Map<string, string>> {
-  const apiKey = getRequiredEnv('TRANSLATE_API_KEY');
-  const model = getRequiredEnv('TRANSLATE_MODEL');
-  const baseUrl = (process.env.TRANSLATE_BASE_URL?.trim() || defaultBaseUrl).replace(/\/$/u, '');
+async function requestTranslations(
+  entries: TranslationEntry[],
+  locale: string,
+  sourceLocale: string
+): Promise<Map<string, string>> {
+  const apiKey = getTranslateApiKey();
+  const baseUrl = getTranslateBaseUrl();
   const retryCount = getEnvNumber('TRANSLATE_RETRY_COUNT', defaultRetryCount);
   const retryDelayMs = getEnvNumber('TRANSLATE_RETRY_DELAY_MS', defaultRetryDelayMs);
+  const sourceLanguage = toDeepLLanguage(process.env.DEEPL_SOURCE_LANG?.trim() || sourceLocale);
+  const targetLanguage = toDeepLLanguage(locale);
 
-  let payload: OpenAiCompletionResponse | null = null;
+  let payload: DeepLTranslateResponse | null = null;
 
   for (let attempt = 0; attempt <= retryCount; attempt += 1) {
-    const response = await fetch(`${baseUrl}/chat/completions`, {
+    const response = await fetch(`${baseUrl}/translate`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${apiKey}`
+        Authorization: `DeepL-Auth-Key ${apiKey}`
       },
       body: JSON.stringify({
-        model,
-        temperature: 0,
-        messages: buildPrompt(entries, locale)
+        source_lang: sourceLanguage,
+        target_lang: targetLanguage,
+        text: entries.map(entry => entry.source),
+        context: createTranslationContext(locale),
+        preserve_formatting: true
       })
     });
 
     if (response.ok) {
-      payload = (await response.json()) as OpenAiCompletionResponse;
+      payload = (await response.json()) as DeepLTranslateResponse;
       break;
     }
 
     const responseText = await readResponseText(response);
+    const parsedError = parseDeepLErrorResponse(responseText);
 
     if (attempt < retryCount && shouldRetryRequest(response.status)) {
       const delayMs = getRetryDelay(attempt, retryDelayMs);
@@ -339,32 +395,31 @@ async function requestTranslations(entries: TranslationEntry[], locale: string):
       continue;
     }
 
-    const details = responseText ? `\n${responseText}` : '';
-    throw new Error(`Translation request failed: ${response.status} ${response.statusText}${details}`);
+    const details = getDeepLErrorMessage(parsedError, responseText || response.statusText);
+    throw new Error(`Translation request failed: ${response.status} ${details}`);
   }
 
   if (!payload) {
     throw new Error('Translation request failed without a response payload.');
   }
 
-  const content = payload.choices?.[0]?.message?.content;
+  const translations = payload.translations;
 
-  if (!content) {
-    throw new Error('Translation response did not include message content.');
+  if (!translations?.length) {
+    throw new Error('Translation response did not include translations.');
   }
 
-  const translatedObject = extractJsonObject(content);
   const translatedEntries = new Map<string, string>();
 
-  for (const entry of entries) {
-    const translatedValue = translatedObject[entry.key];
+  entries.forEach((entry, index) => {
+    const translatedValue = translations[index]?.text;
 
     if (typeof translatedValue !== 'string') {
       throw new Error(`Missing translated value for key: ${entry.key}`);
     }
 
     translatedEntries.set(entry.key, translatedValue);
-  }
+  });
 
   return translatedEntries;
 }
@@ -426,7 +481,7 @@ async function main(): Promise<void> {
 
     if (uncachedEntries.length) {
       console.log(`Translating batch ${chunkIndex + 1}/${entryChunks.length} (${uncachedEntries.length} entries)...`);
-      const translatedEntries = await requestTranslations(uncachedEntries, options.locale);
+      const translatedEntries = await requestTranslations(uncachedEntries, options.locale, options.sourceLocale);
 
       uncachedEntries.forEach(entry => {
         translatedTextCache.set(entry.source, translatedEntries.get(entry.key) ?? '');
