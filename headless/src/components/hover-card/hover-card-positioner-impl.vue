@@ -22,6 +22,7 @@ const [positionerElement, setPositionerElement] = useForwardElement();
 useGraceArea({
   triggerElement,
   areaElement: positionerElement,
+  subAreaAttribute: 'data-soybean-hover-card-sub-popup',
   onPointerInTransitChange: value => {
     isPointerInTransitRef.value = value;
   },

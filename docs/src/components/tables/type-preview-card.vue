@@ -34,7 +34,7 @@ const description = computed(() => resolveApiText(props.preview.description, pro
 </script>
 
 <template>
-  <div class="min-w-80 max-w-xl max-h-96 overflow-auto p-2 space-y-3">
+  <div data-soybean-hover-card-sub-popup class="min-w-80 max-w-xl max-h-96 overflow-auto p-2 space-y-3">
     <p v-if="description" class="text-xs leading-5 text-muted-foreground">
       {{ description }}
     </p>
