@@ -594,14 +594,25 @@
         "type": ""
       },
       "headless_src_components_breadcrumb_types": {
-        "breadcrumbcompactellipsisslotprops": "为面包屑紧凑型省略号组件提供插槽道具。",
+        "breadcrumbcompactellipsisslotprops": {
+          "members": {
+            "ellipsisitems": "当前显示的省略号项目数组。"
+          },
+          "slotprops": "为面包屑紧凑省略号插槽提供道具。"
+        },
         "breadcrumbcompactemits": {
           "callables": {
             "click": "点击时发出。"
           },
           "emits": "面包屑紧凑组件的输出。"
         },
-        "breadcrumbcompactitemslotprops": "为面包屑紧凑型项目组件提供插槽道具。",
+        "breadcrumbcompactitemslotprops": {
+          "members": {
+            "index": "当前项目的索引。",
+            "item": "当前项目的数据。"
+          },
+          "slotprops": "为面包屑紧凑项目插槽提供道具。"
+        },
         "breadcrumbcompactprops": {
           "members": {
             "ellipsis": "显示省略号的项目范围。\n\n当项目数大于 4 时，我们将显示省略号。",
@@ -8687,7 +8698,12 @@
           },
           "props": "感谢配置提供者组件。"
         },
-        "type": ""
+        "iconifyoptions": {
+          "members": {
+            "height": "图标的默认高度。",
+            "width": "图标的默认宽度。"
+          }
+        }
       },
       "src_components_context_menu_types": {
         "contextmenucheckboxemits": {

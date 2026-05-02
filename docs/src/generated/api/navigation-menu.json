@@ -75,7 +75,7 @@
               {
                 "name": "NavigationMenuExtendedUi",
                 "kind": "typeAlias",
-                "type": "NavigationMenuUi & NavigationMenuExtraUi",
+                "type": "{ root: ClassValue; item: ClassValue; trigger: ClassValue; content: ClassValue; triggerIcon: ClassValue; link: ClassValue; indicator: ClassValue; arrow: ClassValue; viewport: ClassValue; list: ClassValue; subList: ClassValue; subItem: ClassValue; subLink: ClassValue; linkIcon: ClassValue; viewportRoot: ClassValue; subItemContent: ClassValue; subLinkContent: ClassValue; subLinkLabel: ClassValue; subLinkDescription: ClassValue; }",
                 "resolvedType": null,
                 "description": "Extended UI class overrides for the navigation menu component.",
                 "descriptionKey": "api.generated.src_components_navigation_menu_types.navigationmenuextendedui",

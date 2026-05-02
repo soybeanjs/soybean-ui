@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-02T06:56:08.580Z",
+  "generatedAt": "2026-05-02T09:09:58.888Z",
   "schemaVersion": 4,
   "components": {
     "accordion": {
@@ -105,6 +105,8 @@
       "symbols": [
         "Breadcrumb",
         "BreadcrumbCompact",
+        "BreadcrumbCompactEllipsis",
+        "BreadcrumbCompactItem",
         "BreadcrumbEllipsis",
         "BreadcrumbItem",
         "BreadcrumbLink",

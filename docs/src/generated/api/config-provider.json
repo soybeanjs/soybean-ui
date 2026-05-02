@@ -6,7 +6,7 @@
         "kind": "props",
         "name": "ConfigProviderProps",
         "type": "Interface ConfigProviderProps",
-        "resolvedType": "{ theme?: ThemeOptions; size?: ThemeSize; iconify?: { width?: string; height?: string; }; progress?: Partial<ProgressProviderProps>; toast?: Partial<ToastProviderProps>; customToast?: boolean; dir?: Direction; locale?: string; nonce?: string; tooltip?: Partial<TooltipProviderProps>; nuxt?: boolean; iconRender?: ((icon: IconValue) => VNode) }",
+        "resolvedType": "{ theme?: ThemeOptions; size?: ThemeSize; iconify?: IconifyOptions; progress?: Partial<ProgressProviderProps>; toast?: Partial<ToastProviderProps>; customToast?: boolean; dir?: Direction; locale?: string; nonce?: string; tooltip?: Partial<TooltipProviderProps>; nuxt?: boolean; iconRender?: ((icon: IconValue) => VNode) }",
         "description": "Props for the config provider component.",
         "descriptionKey": "api.generated.src_components_config_provider_types.configproviderprops.props",
         "sourcePath": "src/components/config-provider/types.ts",
@@ -64,7 +64,7 @@
           },
           {
             "name": "iconify",
-            "type": "{ width?: string; height?: string; }",
+            "type": "IconifyOptions",
             "required": false,
             "description": "The iconify options.",
             "descriptionKey": "api.generated.src_components_config_provider_types.configproviderprops.members.iconify",
@@ -73,16 +73,39 @@
             "sourcePath": "src/components/config-provider/types.ts",
             "referencedTypes": [
               {
-                "name": "__type",
-                "kind": "typeLiteral",
-                "type": "{ width?: string; height?: string; }",
-                "resolvedType": null,
+                "name": "IconifyOptions",
+                "kind": "interface",
+                "type": "IconifyOptions",
+                "resolvedType": "{ width?: string; height?: string }",
                 "description": "",
-                "descriptionKey": "api.generated.src_components_config_provider_types.type",
+                "descriptionKey": "api.generated.src_components_config_provider_types.iconifyoptions",
                 "sourcePath": "src/components/config-provider/types.ts",
                 "typeParameters": [],
                 "external": false,
-                "members": [],
+                "members": [
+                  {
+                    "name": "width",
+                    "type": "string",
+                    "required": false,
+                    "description": "The default width of the icon.",
+                    "descriptionKey": "api.generated.src_components_config_provider_types.iconifyoptions.members.width",
+                    "default": "'1.25em'",
+                    "inheritedFrom": null,
+                    "sourcePath": "src/components/config-provider/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "height",
+                    "type": "string",
+                    "required": false,
+                    "description": "The default height of the icon.",
+                    "descriptionKey": "api.generated.src_components_config_provider_types.iconifyoptions.members.height",
+                    "default": "'1.25em'",
+                    "inheritedFrom": null,
+                    "sourcePath": "src/components/config-provider/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
                 "callables": []
               }
             ]

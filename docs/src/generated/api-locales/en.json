@@ -594,14 +594,25 @@
         "type": ""
       },
       "headless_src_components_breadcrumb_types": {
-        "breadcrumbcompactellipsisslotprops": "Slot props for the breadcrumb compact ellipsis component.",
+        "breadcrumbcompactellipsisslotprops": {
+          "members": {
+            "ellipsisitems": "Ellipsis items exposed in the slot scope."
+          },
+          "slotprops": "Slot props for the breadcrumb compact ellipsis component."
+        },
         "breadcrumbcompactemits": {
           "callables": {
             "click": "Emitted when click occurs."
           },
           "emits": "Emits for the breadcrumb compact component."
         },
-        "breadcrumbcompactitemslotprops": "Slot props for the breadcrumb compact item component.",
+        "breadcrumbcompactitemslotprops": {
+          "members": {
+            "index": "Index of the current item.",
+            "item": "Current item data."
+          },
+          "slotprops": "Slot props for the breadcrumb compact item component."
+        },
         "breadcrumbcompactprops": {
           "members": {
             "ellipsis": "The range of items to show ellipsis.\n\nWhen the item count is greater than 4, we will show ellipsis.",
@@ -8687,7 +8698,12 @@
           },
           "props": "Props for the config provider component."
         },
-        "type": ""
+        "iconifyoptions": {
+          "members": {
+            "height": "The default height of the icon.",
+            "width": "The default width of the icon."
+          }
+        }
       },
       "src_components_context_menu_types": {
         "contextmenucheckboxemits": {

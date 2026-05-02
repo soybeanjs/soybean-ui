@@ -13,6 +13,8 @@ export type {
   BreadcrumbCompactProps,
   BreadcrumbCompactEmits,
   BreadcrumbCompactSlots,
+  BreadcrumbCompactItemSlotProps,
+  BreadcrumbCompactEllipsisSlotProps,
   BreadcrumbRootProps,
   BreadcrumbListProps,
   BreadcrumbItemProps,

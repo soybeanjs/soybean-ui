@@ -10,7 +10,7 @@ import type {
   NavigationMenuRootProps,
   NavigationMenuSubEmits,
   NavigationMenuTriggerProps,
-  NavigationMenuUi,
+  NavigationMenuUiSlot,
   NavigationMenuViewportProps
 } from '@soybeanjs/headless/navigation-menu';
 import type { LinkBaseProps } from '@soybeanjs/headless/link';
@@ -61,7 +61,7 @@ export type NavigationMenuExtraUi = UiClass<NavigationMenuExtraUiSlot>;
 /**
  * Extended UI class overrides for the navigation menu component.
  */
-export type NavigationMenuExtendedUi = NavigationMenuUi & NavigationMenuExtraUi;
+export type NavigationMenuExtendedUi = UiClass<NavigationMenuUiSlot | NavigationMenuExtraUiSlot>;
 
 /**
  * Props for the navigation menu sub option component.

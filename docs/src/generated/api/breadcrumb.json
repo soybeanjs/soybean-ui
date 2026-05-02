@@ -1298,6 +1298,71 @@
         "referencedTypes": []
       }
     },
+    "BreadcrumbCompactEllipsis": {
+      "slotProps": {
+        "kind": "slotProps",
+        "name": "BreadcrumbCompactEllipsisSlotProps",
+        "type": "Interface BreadcrumbCompactEllipsisSlotProps<T>",
+        "resolvedType": "{ ellipsisItems: T[] }",
+        "description": "Slot props for the breadcrumb compact ellipsis component.",
+        "descriptionKey": "api.generated.headless_src_components_breadcrumb_types.breadcrumbcompactellipsisslotprops.slotprops",
+        "sourcePath": "headless/src/components/breadcrumb/types.ts",
+        "typeParameters": ["TypeParameter T"],
+        "members": [
+          {
+            "name": "ellipsisItems",
+            "type": "T[]",
+            "required": true,
+            "description": "Ellipsis items exposed in the slot scope.",
+            "descriptionKey": "api.generated.headless_src_components_breadcrumb_types.breadcrumbcompactellipsisslotprops.members.ellipsisitems",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/breadcrumb/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "BreadcrumbCompactItem": {
+      "slotProps": {
+        "kind": "slotProps",
+        "name": "BreadcrumbCompactItemSlotProps",
+        "type": "Interface BreadcrumbCompactItemSlotProps<T>",
+        "resolvedType": "{ item: T; index: number }",
+        "description": "Slot props for the breadcrumb compact item component.",
+        "descriptionKey": "api.generated.headless_src_components_breadcrumb_types.breadcrumbcompactitemslotprops.slotprops",
+        "sourcePath": "headless/src/components/breadcrumb/types.ts",
+        "typeParameters": ["TypeParameter T"],
+        "members": [
+          {
+            "name": "item",
+            "type": "T",
+            "required": true,
+            "description": "Current item data.",
+            "descriptionKey": "api.generated.headless_src_components_breadcrumb_types.breadcrumbcompactitemslotprops.members.item",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/breadcrumb/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "index",
+            "type": "number",
+            "required": true,
+            "description": "Index of the current item.",
+            "descriptionKey": "api.generated.headless_src_components_breadcrumb_types.breadcrumbcompactitemslotprops.members.index",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/breadcrumb/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
     "BreadcrumbEllipsis": {
       "props": {
         "kind": "props",
