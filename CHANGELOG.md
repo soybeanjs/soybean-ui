@@ -1,5 +1,96 @@
 # Changelog
 
+## [v0.17.0](https://github.com/soybeanjs/soybean-ui/compare/v0.16.0...v0.17.0) (2026-05-03)
+
+### &nbsp;&nbsp;&nbsp;🚀 Features
+
+- **docs**:
+  - integrate DeepL translation API and update environment variables &nbsp;-&nbsp; by @soybeanjs and **Copilot** [<samp>(d8463)</samp>](https://github.com/soybeanjs/soybean-ui/commit/d84637cf)
+  - add components overview to sidebar menu and update selection logic &nbsp;-&nbsp; by @soybeanjs and **Copilot** [<samp>(0c680)</samp>](https://github.com/soybeanjs/soybean-ui/commit/0c6805a4)
+- **i18n**:
+  - add internationalization support for API descriptions and actions &nbsp;-&nbsp; by @soybeanjs and **Copilot** [<samp>(bde9f)</samp>](https://github.com/soybeanjs/soybean-ui/commit/bde9fa5d)
+- **types**:
+  - enhance component props with additional documentation and properties &nbsp;-&nbsp; by @soybeanjs and **Copilot** [<samp>(a177b)</samp>](https://github.com/soybeanjs/soybean-ui/commit/a177bbbd)
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- **api**:
+  - update button type descriptions to remove redundant translations &nbsp;-&nbsp; by @soybeanjs [<samp>(750b5)</samp>](https://github.com/soybeanjs/soybean-ui/commit/750b58ed)
+- **config-provider**:
+  - remove unused useStyleTag and integrate cssVars in Primitive &nbsp;-&nbsp; by @soybeanjs [<samp>(3996e)</samp>](https://github.com/soybeanjs/soybean-ui/commit/3996ea3b)
+- **date-picker**:
+  - add disabled prop to PopoverRoot and update test selectors &nbsp;-&nbsp; by @soybeanjs and **Copilot** [<samp>(1cce9)</samp>](https://github.com/soybeanjs/soybean-ui/commit/1cce97ae)
+- **docs**:
+  - update scrollBehavior to handle hash navigation smoothly &nbsp;-&nbsp; by @soybeanjs [<samp>(8a8db)</samp>](https://github.com/soybeanjs/soybean-ui/commit/8a8dbc3b)
+  - update type references from AnchorItemData to AnchorOptionData &nbsp;-&nbsp; by @soybeanjs [<samp>(d064f)</samp>](https://github.com/soybeanjs/soybean-ui/commit/d064f6b5)
+  - fix ts error &nbsp;-&nbsp; by @soybeanjs [<samp>(5c27a)</samp>](https://github.com/soybeanjs/soybean-ui/commit/5c27a054)
+- **hover-card**:
+  - add sub-area attribute for hover card positioning &nbsp;-&nbsp; by @soybeanjs [<samp>(130a3)</samp>](https://github.com/soybeanjs/soybean-ui/commit/130a35b1)
+- **types**:
+  - fix vue ignore comments &nbsp;-&nbsp; by @soybeanjs and **Copilot** [<samp>(c65a5)</samp>](https://github.com/soybeanjs/soybean-ui/commit/c65a5d0c)
+
+### &nbsp;&nbsp;&nbsp;🛠 Optimizations
+
+- **calendar**:
+  - remove unused props and update readonly binding &nbsp;-&nbsp; by @soybeanjs [<samp>(aed69)</samp>](https://github.com/soybeanjs/soybean-ui/commit/aed69d38)
+- **comment**:
+  - remove redundant translation comments &nbsp;-&nbsp; by @soybeanjs [<samp>(c82ee)</samp>](https://github.com/soybeanjs/soybean-ui/commit/c82eea60)
+- **date-picker**:
+  - refactor date-picker components and integrate popover functionality &nbsp;-&nbsp; by @soybeanjs and **Copilot** [<samp>(7ae41)</samp>](https://github.com/soybeanjs/soybean-ui/commit/7ae413ff)
+- **dialog**:
+  - rename DialogRootProps to extend DialogBaseProps for consistency &nbsp;-&nbsp; by @soybeanjs [<samp>(7b052)</samp>](https://github.com/soybeanjs/soybean-ui/commit/7b052f99)
+- **docs**:
+  - enhance locale message resolution in useApiI18n &nbsp;-&nbsp; by @soybeanjs [<samp>(aacda)</samp>](https://github.com/soybeanjs/soybean-ui/commit/aacda41f)
+  - replace nprogress with progress of ui &nbsp;-&nbsp; by @soybeanjs [<samp>(1e3b1)</samp>](https://github.com/soybeanjs/soybean-ui/commit/1e3b1644)
+  - update docs api &nbsp;-&nbsp; by @soybeanjs and **Copilot** [<samp>(66c57)</samp>](https://github.com/soybeanjs/soybean-ui/commit/66c57138)
+- **popover**:
+  - enhance context and props for popover components &nbsp;-&nbsp; by @soybeanjs [<samp>(f6666)</samp>](https://github.com/soybeanjs/soybean-ui/commit/f666662e)
+
+### &nbsp;&nbsp;&nbsp;💅 Refactors
+
+- **anchor**:
+  - rename AnchorItemCompact component and update types &nbsp;-&nbsp; by @soybeanjs [<samp>(11966)</samp>](https://github.com/soybeanjs/soybean-ui/commit/1196658c)
+- **components**:
+  - simplify exports by removing redundant type definitions &nbsp;-&nbsp; by @soybeanjs [<samp>(e1c69)</samp>](https://github.com/soybeanjs/soybean-ui/commit/e1c69ab4)
+  - change export statements to export types from headless components &nbsp;-&nbsp; by @soybeanjs [<samp>(0a009)</samp>](https://github.com/soybeanjs/soybean-ui/commit/0a0090e8)
+  - update imports to use specific module paths for better clarity &nbsp;-&nbsp; by @soybeanjs [<samp>(1adad)</samp>](https://github.com/soybeanjs/soybean-ui/commit/1adad9b9)
+- **constants**:
+  - reorganize regex exports and improve import structure &nbsp;-&nbsp; by @soybeanjs [<samp>(a4045)</samp>](https://github.com/soybeanjs/soybean-ui/commit/a4045d45)
+- **docs**:
+  - refactor docs with glass style &nbsp;-&nbsp; by @soybeanjs [<samp>(4f91b)</samp>](https://github.com/soybeanjs/soybean-ui/commit/4f91bad2)
+- **projects**:
+  - refactor docs style &nbsp;-&nbsp; by @soybeanjs [<samp>(46177)</samp>](https://github.com/soybeanjs/soybean-ui/commit/46177a29)
+- **utils**:
+  - replace toKebabCase and toPascalCase with kebabCase and pascalCase &nbsp;-&nbsp; by @soybeanjs [<samp>(00acc)</samp>](https://github.com/soybeanjs/soybean-ui/commit/00acc184)
+
+### &nbsp;&nbsp;&nbsp;📖 Documentation
+
+- **api**:
+  - add descriptions and keys for year range picker props and emits &nbsp;-&nbsp; by @soybeanjs [<samp>(ff4e8)</samp>](https://github.com/soybeanjs/soybean-ui/commit/ff4e8ea1)
+- **components**:
+  - add component catalog with descriptions and statistics &nbsp;-&nbsp; by @soybeanjs and **Copilot** [<samp>(b02ea)</samp>](https://github.com/soybeanjs/soybean-ui/commit/b02ea462)
+- **projects**:
+  - update documentation with Compact components and current architecture &nbsp;-&nbsp; by @soybeanjs [<samp>(15133)</samp>](https://github.com/soybeanjs/soybean-ui/commit/151333af)
+  - replace markdown-it with markdown-exit and clean up unused dependencies &nbsp;-&nbsp; by @soybeanjs and **Copilot** [<samp>(3a25c)</samp>](https://github.com/soybeanjs/soybean-ui/commit/3a25c53a)
+- **styles**:
+  - remove unused table styles from global.css &nbsp;-&nbsp; by **soybeanfe** [<samp>(f7d10)</samp>](https://github.com/soybeanjs/soybean-ui/commit/f7d1056f)
+
+### &nbsp;&nbsp;&nbsp;🏡 Chore
+
+- **deps**: update deps &nbsp;-&nbsp; by @soybeanjs [<samp>(d6526)</samp>](https://github.com/soybeanjs/soybean-ui/commit/d652684a)
+- **headless**: add types export for types module and components &nbsp;-&nbsp; by @soybeanjs [<samp>(c9b19)</samp>](https://github.com/soybeanjs/soybean-ui/commit/c9b1904f)
+- **tsdown**: simplify entry configuration by removing unnecessary filter &nbsp;-&nbsp; by @soybeanjs [<samp>(26f1d)</samp>](https://github.com/soybeanjs/soybean-ui/commit/26f1d447)
+
+### &nbsp;&nbsp;&nbsp;🎨 Styles
+
+- **components**: remove unused border opacity classes for cleaner styling &nbsp;-&nbsp; by @soybeanjs [<samp>(7f6a0)</samp>](https://github.com/soybeanjs/soybean-ui/commit/7f6a0be1)
+- **docs**: update pre styles for better responsiveness &nbsp;-&nbsp; by @soybeanjs [<samp>(bc382)</samp>](https://github.com/soybeanjs/soybean-ui/commit/bc382e08)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;
+[Copilot](mailto:copilot@github.com),&nbsp;[soybeanfe](mailto:honghuangdc@gmail.com)
+
 ## [v0.16.0](https://github.com/soybeanjs/soybean-ui/compare/v0.15.5...v0.16.0) (2026-05-01)
 
 ### &nbsp;&nbsp;&nbsp;🚀 Features
