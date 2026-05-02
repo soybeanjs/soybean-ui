@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { defaultDocument, defaultWindow, useEventListener, usePrevious } from '@vueuse/core';
 import { computed, onBeforeUnmount, onMounted, shallowRef, useAttrs, watch, watchEffect } from 'vue';
+import { defaultDocument, defaultWindow, useEventListener, usePrevious } from '@vueuse/core';
 import { useControllableState } from '../../composables';
 import { omit, transformPropsToContext } from '../../shared';
 import { provideInputOtpRootContext, useInputOtpUi } from './context';
@@ -12,8 +12,8 @@ import {
   resolveInputOtpSelection,
   syncTimeouts
 } from './shared';
-import type { InputOtpRootEmits, InputOtpRootProps, InputOtpRootSlotProps } from './types';
 import { usePasswordManagerBadge } from './use-password-manager-badge';
+import type { InputOtpRootEmits, InputOtpRootProps, InputOtpRootSlotProps } from './types';
 
 defineOptions({
   name: 'InputOtpRoot',
