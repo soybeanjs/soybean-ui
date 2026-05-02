@@ -21,17 +21,10 @@ const props = withDefaults(defineProps<CalendarRootProps<M>>(), {
   defaultValue: undefined,
   defaultPlaceholder: undefined,
   placeholder: undefined,
-  pagedNavigation: false,
-  preventDeselect: false,
   weekdayFormat: 'narrow',
-  fixedWeeks: false,
   numberOfMonths: 1,
-  disabled: false,
-  readonly: false,
-  initialFocus: false,
   isDateDisabled: undefined,
-  isDateUnavailable: undefined,
-  disableDaysOutsideCurrentView: false
+  isDateUnavailable: undefined
 });
 
 const emit = defineEmits<CalendarRootEmits<M>>();
@@ -242,7 +235,7 @@ onMounted(() => {
     :class="cls"
     :data-disabled="disabled ? '' : undefined"
     :data-invalid="isInvalid ? '' : undefined"
-    :data-readonly="readonly ? '' : undefined"
+    :data-readonly="props.readonly ? '' : undefined"
     :dir="dir"
     data-slot="root"
   >
