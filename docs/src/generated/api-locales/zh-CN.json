@@ -5009,7 +5009,8 @@
             "aschild": ""
           },
           "props": ""
-        }
+        },
+        "popoverui": ""
       },
       "headless_src_components_popper_types": {
         "autocompleteanchorprops": {

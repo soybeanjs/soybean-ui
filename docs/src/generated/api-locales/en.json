@@ -5009,7 +5009,8 @@
             "aschild": "Change the default rendered element for the one passed as a child, merging their props and behavior."
           },
           "props": "Props for the popover trigger component."
-        }
+        },
+        "popoverui": "UI class overrides for the popover component."
       },
       "headless_src_components_popper_types": {
         "autocompleteanchorprops": {

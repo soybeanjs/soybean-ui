@@ -10,7 +10,7 @@ export const components = {
   ],
   affix: ['AffixCompact', 'AffixRoot', 'AffixPlaceholder', 'AffixContent'],
   alert: ['AlertCompact', 'AlertRoot', 'AlertContent', 'AlertTitle', 'AlertDescription', 'AlertClose'],
-  anchor: ['AnchorCompact', 'AnchorLink', 'AnchorRoot'],
+  anchor: ['AnchorCompact', 'AnchorItemCompact', 'AnchorLink', 'AnchorRoot'],
   arrow: ['Arrow'],
   aspectRatio: ['AspectRatio'],
   autocomplete: [

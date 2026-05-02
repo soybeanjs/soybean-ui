@@ -257,7 +257,7 @@
             "name": "type",
             "type": "ButtonType",
             "required": false,
-            "description": "The type of the button element. Can be one of 'button', 'submit', or 'reset'. [按钮元素的类型。可以是 'button'、'submit' 或 'reset' 之一。]",
+            "description": "The type of the button element. Can be one of 'button', 'submit', or 'reset'.",
             "descriptionKey": "api.generated.src_components_clipboard_types.clipboardprops.members.type",
             "default": "'button'",
             "inheritedFrom": "_ClipboardProps.type",

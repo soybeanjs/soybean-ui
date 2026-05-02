@@ -17,6 +17,7 @@ import {
   AlertRoot,
   AlertTitle,
   AnchorCompact,
+  AnchorItemCompact,
   AnchorLink,
   AnchorRoot,
   Arrow,
@@ -562,10 +563,12 @@ export const Alert = {
 
 export const Anchor = {
   Compact: AnchorCompact,
+  ItemCompact: AnchorItemCompact,
   Link: AnchorLink,
   Root: AnchorRoot
 } as {
   Compact: typeof AnchorCompact;
+  ItemCompact: typeof AnchorItemCompact;
   Link: typeof AnchorLink;
   Root: typeof AnchorRoot;
 };
