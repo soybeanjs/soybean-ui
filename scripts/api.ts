@@ -1,11 +1,10 @@
 import { mkdir, rm, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import process from 'node:process';
-
+import ts from 'typescript';
 import { Application, ReflectionKind } from 'typedoc';
 import type { Comment, DeclarationReflection, ProjectReflection, Reflection, SignatureReflection } from 'typedoc';
-import ts from 'typescript';
-
+import { kebabCase } from '@soybeanjs/utils';
 import { components as headlessComponents } from '../headless/src/constants/components';
 
 type ApiSectionKind = 'props' | 'emits' | 'slots' | 'slotProps';
@@ -164,15 +163,11 @@ const apiSectionSuffixes = {
   slotProps: 'SlotProps'
 } satisfies Record<ApiSectionKind, string>;
 const componentSymbolsByKey = Object.fromEntries(
-  Object.entries(headlessComponents).map(([componentKey, symbols]) => [toKebabCase(componentKey), symbols])
+  Object.entries(headlessComponents).map(([componentKey, symbols]) => [kebabCase(componentKey), symbols])
 ) as Record<string, string[]>;
 
 function toPosixPath(filePath: string): string {
   return filePath.split(path.sep).join('/');
-}
-
-function toKebabCase(value: string): string {
-  return value.replace(/([a-z0-9])([A-Z])/g, '$1-$2').toLowerCase();
 }
 
 function toRelativePath(filePath: string): string {

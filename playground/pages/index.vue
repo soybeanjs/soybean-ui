@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { shallowRef, watch, watchPostEffect, onMounted } from 'vue';
 import type { Component } from 'vue';
-import { toKebabCase, toPascalCase } from '@soybeanjs/headless/shared';
+import { kebabCase, pascalCase } from '@soybeanjs/utils';
 import { SButtonIcon, SCard, SLink, STabs } from '@soybeanjs/ui';
 import type { TabsOptionData } from '@soybeanjs/ui';
 import ThemeConfigurator from '../components/theme-configurator.vue';
@@ -26,10 +26,10 @@ function getTabs() {
     const match = path.match(/examples\/([^/]+)\/index\.vue$/);
     if (match && match[1] && !match[1].startsWith('_')) {
       const componentName = match[1];
-      const label = toPascalCase(componentName);
+      const label = pascalCase(componentName);
       componentTabs.push({
         label,
-        value: toKebabCase(componentName),
+        value: kebabCase(componentName),
         component: demoModules[path] as () => Promise<Record<string, Component>>
       });
     }

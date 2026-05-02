@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { toKebabCase, toPascalCase } from '@soybeanjs/headless/shared';
+import { kebabCase, pascalCase } from '@soybeanjs/utils';
 import { resetDocOutline, setDocOutline } from '@/composables/use-doc-outline';
 import { menuData } from '../../constants/menus';
 
@@ -13,8 +13,8 @@ const componentGroups = computed(() =>
     label: t(group.i18n),
     items: group.items.map(item => ({
       key: item,
-      label: toPascalCase(item),
-      path: `/components/${toKebabCase(item)}`,
+      label: pascalCase(item),
+      path: `/components/${kebabCase(item)}`,
       isNew: newlyComponents.includes(item)
     }))
   }))

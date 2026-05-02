@@ -1,6 +1,6 @@
 import type { ComponentResolver } from 'unplugin-vue-components';
+import { kebabCase, pascalCase } from '@soybeanjs/utils';
 import { components } from '../constants';
-import { toKebabCase, toPascalCase } from '../shared';
 
 export interface ResolverOptions {
   /**
@@ -20,10 +20,10 @@ function createResolver(options: ResolverOptions = {}) {
     type: 'component',
     resolve: (name: string) => {
       const values = Object.values(components).flat();
-      const $name = toPascalCase(name);
+      const $name = pascalCase(name);
 
       if (values.includes($name)) {
-        const moduleName = toKebabCase($name).split('-')[0];
+        const moduleName = kebabCase($name).split('-')[0];
 
         const $from = options.standalone ? `@soybeanjs/headless/${moduleName}` : `@soybeanjs/headless`;
 

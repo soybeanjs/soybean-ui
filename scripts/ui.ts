@@ -1,8 +1,8 @@
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import process from 'node:process';
-
 import ts from 'typescript';
+import { camelCase } from '@soybeanjs/utils';
 
 type ComponentGroup = {
   key: string;
@@ -14,20 +14,6 @@ const uiSrcDir = path.join(rootDir, 'src');
 const uiIndexPath = path.join(uiSrcDir, 'index.ts');
 const componentsDir = path.join(uiSrcDir, 'components');
 const componentsOutputPath = path.join(uiSrcDir, 'constants/components.ts');
-
-function toPascalCase(value: string): string {
-  return value
-    .split('-')
-    .filter(Boolean)
-    .map(part => `${part.charAt(0).toUpperCase()}${part.slice(1)}`)
-    .join('');
-}
-
-function toCamelCase(value: string): string {
-  const pascalName = toPascalCase(value);
-
-  return `${pascalName.charAt(0).toLowerCase()}${pascalName.slice(1)}`;
-}
 
 function getStringModuleSpecifier(moduleSpecifier: ts.Expression | undefined): string | null {
   if (!moduleSpecifier || !ts.isStringLiteral(moduleSpecifier)) {
@@ -94,7 +80,7 @@ async function collectComponentGroups(): Promise<ComponentGroup[]> {
     const exports = getComponentExportNames(sourceFile);
 
     if (exports.length) {
-      groups.push({ key: toCamelCase(componentDir), exports });
+      groups.push({ key: camelCase(componentDir), exports });
     }
   }
 

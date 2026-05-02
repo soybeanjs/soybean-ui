@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { toKebabCase, toPascalCase } from '@soybeanjs/headless/shared';
+import { kebabCase, pascalCase } from '@soybeanjs/utils';
 import type { TreeMenuOptionData } from '@soybeanjs/ui';
 import { menuData } from '../constants/menus';
 
@@ -24,9 +24,9 @@ const componentMenus = computed<TreeMenuOptionData[]>(() =>
     label: t(`${group.i18n}`),
     value: group.value,
     children: group.items.map(item => ({
-      label: toPascalCase(item),
-      value: toKebabCase(item),
-      to: `/components/${toKebabCase(item)}`,
+      label: pascalCase(item),
+      value: kebabCase(item),
+      to: `/components/${kebabCase(item)}`,
       tag: newlyComponents.includes(item) ? '🎉new' : undefined
     }))
   }))
@@ -78,7 +78,7 @@ watchEffect(() => {
   if (dir) {
     if (dir === 'components') {
       // Find which group the current component belongs to
-      const group = menuData.find(g => g.items.some(item => toKebabCase(item) === value));
+      const group = menuData.find(g => g.items.some(item => kebabCase(item) === value));
 
       if (group) {
         expanded.value = ['components', group.value];

@@ -1,6 +1,7 @@
 import { onBeforeUnmount, onWatcherCleanup, ref, shallowRef, toValue, watchPostEffect } from 'vue';
 import type { MaybeRefOrGetter, Ref } from 'vue';
-import { getCollectionItemElements, getElFromTemplateRef, isElementHasAttribute, toPascalCase } from '../shared';
+import { pascalCase } from '@soybeanjs/utils';
+import { getCollectionItemElements, getElFromTemplateRef, isElementHasAttribute } from '../shared';
 import { COLLECTION_ITEM_ATTRIBUTE } from '../constants';
 import type { VNodeRef } from '../types';
 import { useContext } from './use-context';
@@ -17,7 +18,7 @@ export interface CollectionItemData<ItemData = Record<string, any>> {
  * @returns Collection management functions and hooks
  */
 export function useCollection<ItemData = Record<string, any>>(collectionName: string) {
-  const contextName = toPascalCase(`${collectionName}Collection`);
+  const contextName = pascalCase(`${collectionName}Collection`);
 
   const [provideCollectionContext, useCollectionContext] = useContext(contextName, () => {
     const containerElement = shallowRef<HTMLElement>();
@@ -84,7 +85,7 @@ export function useCollection<ItemData = Record<string, any>>(collectionName: st
    * @returns Item element reference and props for registration
    */
   const useCollectionItem = (itemData: MaybeRefOrGetter<ItemData> = {} as ItemData) => {
-    const consumerName = toPascalCase(`${collectionName}Item`);
+    const consumerName = pascalCase(`${collectionName}Item`);
     const { itemRegistry } = useCollectionContext(consumerName);
 
     const itemElement = shallowRef<HTMLElement>();

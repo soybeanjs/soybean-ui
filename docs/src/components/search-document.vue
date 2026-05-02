@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useMagicKeys } from '@vueuse/core';
 import type { CommandOptionData, SelectEvent } from '@soybeanjs/ui';
-import { toKebabCase, toPascalCase } from '@soybeanjs/headless/shared';
+import { kebabCase, pascalCase } from '@soybeanjs/utils';
 import { components } from '../../../src/constants/components';
 
 defineOptions({
@@ -23,8 +23,8 @@ const componentMenus = Object.keys(components)
   .map(
     key =>
       ({
-        label: toPascalCase(key),
-        value: `components_${toKebabCase(key)}`
+        label: pascalCase(key),
+        value: `components_${kebabCase(key)}`
       }) satisfies CommandOptionData
   );
 
