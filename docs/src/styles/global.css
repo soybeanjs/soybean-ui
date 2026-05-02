@@ -114,7 +114,7 @@ html.dark .shiki span {
   }
 
   pre {
-    --uno: my-6 px-4 py-3 text-sm rounded-lg;
+    --uno: my-6 max-w-full overflow-x-auto px-4 py-3 text-sm rounded-lg;
   }
 
   a:not([data-link]) {
