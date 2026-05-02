@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { Component } from 'vue';
-import type { AnchorItemData } from '@soybeanjs/headless/anchor';
+import type { AnchorOptionData } from '@soybeanjs/headless/anchor';
 import { resetDocOutline, setDocOutline } from '@/composables/use-doc-outline';
 
 interface Props {
@@ -119,16 +119,16 @@ function updateDocOutline() {
       item: {
         href: `#${heading.id}`,
         title
-      } satisfies AnchorItemData
+      } satisfies AnchorOptionData
     };
   });
 
   setDocOutline(buildAnchorItems(nodes));
 }
 
-function buildAnchorItems(nodes: Array<{ level: number; item: AnchorItemData }>) {
-  const root: AnchorItemData[] = [];
-  const stack: Array<{ level: number; item: AnchorItemData }> = [];
+function buildAnchorItems(nodes: Array<{ level: number; item: AnchorOptionData }>) {
+  const root: AnchorOptionData[] = [];
+  const stack: Array<{ level: number; item: AnchorOptionData }> = [];
 
   for (const node of nodes) {
     while (stack.length && stack[stack.length - 1].level >= node.level) {
