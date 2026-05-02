@@ -89,7 +89,7 @@
     "tailwind-merge": "^3.5.0",
     "tailwind-variants": "^3.2.2",
     "valibot": "^1.3.1",
-    "zod": "^4.4.1"
+    "zod": "^4.4.2"
   },
   "devDependencies": {
     "@soybeanjs/cli": "^1.7.2",
@@ -101,7 +101,7 @@
     "@vitest/coverage-v8": "^4.1.5",
     "@vue/test-utils": "^2.4.10",
     "axe-core": "^4.11.4",
-    "eslint": "^10.2.1",
+    "eslint": "^10.3.0",
     "happy-dom": "^20.9.0",
     "lint-staged": "^16.4.0",
     "oxfmt": "^0.47.0",
