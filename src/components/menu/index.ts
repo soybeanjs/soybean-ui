@@ -1,4 +1,4 @@
-export * from '@soybeanjs/headless/menu';
+export type * from '@soybeanjs/headless/menu';
 export {
   MenuOptionsCompact as SMenuOptions,
   MenuCheckboxOptionsCompact as SMenuCheckboxOptions,

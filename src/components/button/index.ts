@@ -1,4 +1,3 @@
-export { Button } from '@soybeanjs/headless/button';
 export { default as SButton } from './button.vue';
 export { default as SButtonLoading } from './button-loading.vue';
 export { default as SButtonIcon } from './button-icon.vue';

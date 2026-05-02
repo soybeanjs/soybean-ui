@@ -1,4 +1,4 @@
-export * from '@soybeanjs/headless/carousel';
+export type * from '@soybeanjs/headless/carousel';
 export { default as SCarousel } from './carousel.vue';
 export { default as SCarouselContent } from './carousel-content.vue';
 export { default as SCarouselItem } from './carousel-item.vue';

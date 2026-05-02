@@ -1,4 +1,4 @@
-export * from '@soybeanjs/headless/breadcrumb';
+export type * from '@soybeanjs/headless/breadcrumb';
 export {
   BreadcrumbPage as SBreadcrumbPage,
   BreadcrumbEllipsis as SBreadcrumbEllipsis

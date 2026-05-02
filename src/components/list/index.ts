@@ -1,4 +1,3 @@
-export { ListRoot, ListItem, ListTitle, ListDescription, ListContent } from '@soybeanjs/headless/list';
 export type {
   ListRootProps,
   ListContentProps,

@@ -1,4 +1,4 @@
-export * from '@soybeanjs/headless/context-menu';
+export type * from '@soybeanjs/headless/context-menu';
 export { default as SContextMenuWrapper } from './context-menu-wrapper.vue';
 export { default as SContextMenu } from './context-menu.vue';
 export { default as SContextMenuCheckbox } from './context-menu-checkbox.vue';

@@ -1,4 +1,4 @@
-export * from '@soybeanjs/headless/dropdown-menu';
+export type * from '@soybeanjs/headless/dropdown-menu';
 export { default as SDropdownMenu } from './dropdown-menu.vue';
 export { default as SDropdownMenuCheckbox } from './dropdown-menu-checkbox.vue';
 export { default as SDropdownMenuRadio } from './dropdown-menu-radio.vue';

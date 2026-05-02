@@ -1,4 +1,4 @@
-export { toast, Toaster, ToastProvider } from '@soybeanjs/headless/toast';
+export { toast } from '@soybeanjs/headless/toast';
 export type {
   ToastType,
   ToastIconType,

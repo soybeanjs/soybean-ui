@@ -1,4 +1,4 @@
-export * from '@soybeanjs/headless/toolbar';
+export type * from '@soybeanjs/headless/toolbar';
 export {
   ToolbarButton as SToolbarButton,
   ToolbarLink as SToolbarLink,

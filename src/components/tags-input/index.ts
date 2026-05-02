@@ -1,4 +1,4 @@
-export * from '@soybeanjs/headless/tags-input';
+export type * from '@soybeanjs/headless/tags-input';
 export {
   TagsInputClear as STagsInputClear,
   TagsInputInput as STagsInputInput,

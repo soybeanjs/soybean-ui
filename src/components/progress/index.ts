@@ -1,10 +1,4 @@
-export {
-  progress,
-  ProgressProvider,
-  ProgressRoot,
-  ProgressIndicator,
-  ProgressCircle
-} from '@soybeanjs/headless/progress';
+export { progress } from '@soybeanjs/headless/progress';
 export type {
   ProgressRootProps,
   ProgressRootEmits,

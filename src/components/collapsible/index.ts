@@ -1,4 +1,4 @@
-export * from '@soybeanjs/headless/collapsible';
+export type * from '@soybeanjs/headless/collapsible';
 export {
   CollapsibleContent as SCollapsibleContent,
   CollapsibleTrigger as SCollapsibleTrigger
