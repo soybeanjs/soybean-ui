@@ -240,8 +240,6 @@ export interface ToasterProps extends /** @vue-ignore */ OlHTMLAttributes {
   defaultExpanded?: boolean;
   /**
    * The duration (in milliseconds) before the toast automatically closes. Set to `0` or `Infinity` to disable auto-dismissal.
-   *
-   * [自动关闭前的持续时间（以毫秒为单位）。设置为 `0` 或 `Infinity` 可禁用自动关闭。]
    */
   duration?: number;
   /**
@@ -249,7 +247,7 @@ export interface ToasterProps extends /** @vue-ignore */ OlHTMLAttributes {
    */
   gap?: number;
   /**
-   *  The maximum number of visible toasts per position. [每个位置可见的最大吐司数量。]
+   *  The maximum number of visible toasts per position.
    *
    * @default 3
    */
@@ -267,7 +265,7 @@ export interface ToasterProps extends /** @vue-ignore */ OlHTMLAttributes {
    */
   showIcon?: boolean;
   /**
-   * Whether to show the close button on the toast. [是否在吐司上显示关闭图标。]
+   * Whether to show the close button on the toast.
    *
    * @default true
    */

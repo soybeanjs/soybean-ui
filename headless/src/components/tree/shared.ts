@@ -53,11 +53,11 @@ export function recurseCheckChildren(selected: string[], items?: TreeItemData[])
 }
 
 /**
- * 查找指定节点的所有父节点的 value 数组（从根到目标节点的父节点）
- * @param targetValue 目标节点的 value
- * @param items 树节点数组
- * @param parentPath 当前路径（用于递归）
- * @returns 父节点的 value 数组，如果找不到则返回 null
+ *  Find the array of values of all parent nodes of the specified node (from the root to the parent of the target node)
+ * @param targetValue The value of the target node
+ * @param items The array of tree nodes
+ * @param parentPath The current path (used for recursion)
+ * @returns An array of parent node values, or null if not found
  */
 export function findParentPath<T extends TreeItemData>(
   targetValue: string,
