@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { ToolbarRoot, provideToolbarUi } from '@soybeanjs/headless';
+import { ToolbarRoot, provideToolbarUi } from '@soybeanjs/headless/toolbar';
 import { useOmitProps } from '@soybeanjs/headless/composables';
 import { mergeSlotVariants } from '@/theme';
 import { toolbarVariants } from './variants';

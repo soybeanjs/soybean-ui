@@ -1,6 +1,7 @@
 <script setup lang="ts" generic="T extends SegmentOptionData = SegmentOptionData">
 import { computed } from 'vue';
-import { SegmentCompact, provideTabsUi } from '@soybeanjs/headless';
+import { SegmentCompact } from '@soybeanjs/headless/segment';
+import { provideTabsUi } from '@soybeanjs/headless/tabs';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
 import { mergeSlotVariants } from '@/theme';
 import { tabsVariants } from '../tabs/variants';

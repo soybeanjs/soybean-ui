@@ -1,4 +1,5 @@
-import type { ClassValue, CarouselRootEmits, CarouselRootProps, CarouselUi } from '@soybeanjs/headless';
+import type { CarouselRootEmits, CarouselRootProps, CarouselUi } from '@soybeanjs/headless/carousel';
+import type { ClassValue } from '@soybeanjs/headless/types';
 
 /**
  * Props for the carousel component.

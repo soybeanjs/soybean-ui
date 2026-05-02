@@ -3,9 +3,9 @@ import type {
   AccordionCompactEmits,
   AccordionCompactSlots,
   AccordionOptionData,
-  AccordionUi,
-  ClassValue
-} from '@soybeanjs/headless';
+  AccordionUi
+} from '@soybeanjs/headless/accordion';
+import type { ClassValue } from '@soybeanjs/headless/types';
 import type { ThemeSize } from '@/theme';
 
 /**

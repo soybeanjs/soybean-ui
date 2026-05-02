@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import type { CSSProperties } from 'vue';
-import { AnchorCompact, provideAnchorUi } from '@soybeanjs/headless';
+import { AnchorCompact, provideAnchorUi } from '@soybeanjs/headless/anchor';
 import { useOmitProps, useForwardListeners } from '@soybeanjs/headless/composables';
 import { mergeSlotVariants } from '@/theme';
 import { anchorVariants } from './variants';

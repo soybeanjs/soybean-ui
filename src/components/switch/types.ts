@@ -1,12 +1,11 @@
 import type {
-  AcceptableBooleanValue,
-  ClassValue,
   SwitchControlProps,
   SwitchRootEmits,
   SwitchRootProps,
   SwitchThumbProps,
   SwitchUi
-} from '@soybeanjs/headless';
+} from '@soybeanjs/headless/switch';
+import type { AcceptableBooleanValue, ClassValue } from '@soybeanjs/headless/types';
 import type { ThemeColor, ThemeSize } from '@/theme';
 import type { SwitchShape } from './variants';
 

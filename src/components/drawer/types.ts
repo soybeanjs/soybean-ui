@@ -1,4 +1,4 @@
-import type { Side } from '@soybeanjs/headless';
+import type { Side } from '@soybeanjs/headless/types';
 import type { DialogEmits, DialogProps, DialogSlots } from '../dialog/types';
 
 /**

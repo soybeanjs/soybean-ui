@@ -1,4 +1,4 @@
-import type { ClassValue, UiClass } from '@soybeanjs/headless';
+import type { ClassValue, UiClass } from '@soybeanjs/headless/types';
 import type { ColorSwatchProps as HeadlessColorSwatchProps } from '@soybeanjs/headless/color-swatch';
 import type { ThemeSize } from '@/theme';
 import type { ColorSwatchShape } from './variants';

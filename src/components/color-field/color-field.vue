@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, useAttrs } from 'vue';
-import { ColorFieldInput, ColorFieldRoot, provideColorFieldUi } from '@soybeanjs/headless';
+import { ColorFieldInput, ColorFieldRoot, provideColorFieldUi } from '@soybeanjs/headless/color-field';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
 import { mergeSlotVariants } from '@/theme';
 import { colorFieldVariants } from './variants';

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { InputOtpCompact, provideInputOtpUi } from '@soybeanjs/headless';
+import { InputOtpCompact, provideInputOtpUi } from '@soybeanjs/headless/input-otp';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
 import { mergeSlotVariants } from '@/theme';
 import { inputOtpVariants } from './variants';

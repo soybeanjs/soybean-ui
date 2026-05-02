@@ -1,14 +1,13 @@
 import type {
-  ClassValue,
   ColorSwatchPickerItemEmits,
   ColorSwatchPickerItemIndicatorProps,
   ColorSwatchPickerItemProps,
   ColorSwatchPickerItemSwatchProps,
   ColorSwatchPickerRootEmits,
   ColorSwatchPickerRootProps,
-  ColorSwatchPickerUiSlot,
-  UiClass
-} from '@soybeanjs/headless';
+  ColorSwatchPickerUiSlot
+} from '@soybeanjs/headless/color-swatch-picker';
+import type { ClassValue, UiClass } from '@soybeanjs/headless/types';
 import type { ThemeSize } from '@/theme';
 import type { ColorSwatchPickerShape } from './variants';
 

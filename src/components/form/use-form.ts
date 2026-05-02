@@ -1,6 +1,8 @@
 import { defineComponent, h } from 'vue';
-import { Slot, useForm as useHeadlessForm } from '@soybeanjs/headless';
-import type { FormValues, InferStandardSchemaInput, Path, StandardSchemaV1, UseFormOptions } from '@soybeanjs/headless';
+import { useForm as useHeadlessForm } from '@soybeanjs/headless/form';
+import type { FormValues, InferStandardSchemaInput, StandardSchemaV1, UseFormOptions } from '@soybeanjs/headless/form';
+import { Slot } from '@soybeanjs/headless/slot';
+import type { Path } from '@soybeanjs/headless/types';
 import FormFieldBase from './form-field-base.vue';
 import type {
   FormFieldArrayComponent,

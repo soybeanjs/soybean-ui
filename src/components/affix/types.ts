@@ -1,5 +1,5 @@
 import type { AffixCompactEmits, AffixCompactProps, AffixUi } from '@soybeanjs/headless/affix';
-import type { ClassValue } from '@soybeanjs/headless';
+import type { ClassValue } from '@soybeanjs/headless/types';
 
 /**
  * Props for the affix component.

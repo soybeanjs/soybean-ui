@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { PopoverClose } from '@soybeanjs/headless';
+import { PopoverClose } from '@soybeanjs/headless/popover';
 import { useOmitProps } from '@soybeanjs/headless/composables';
 import { miniSizeMap } from '@/theme';
 import Button from '../button/button.vue';

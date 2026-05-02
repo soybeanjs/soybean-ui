@@ -1,7 +1,7 @@
 <script setup lang="ts" generic="T extends DefinedValue, M extends boolean = false">
 import { computed } from 'vue';
-import { SelectCompact, provideSelectUi } from '@soybeanjs/headless';
-import type { DefinedValue } from '@soybeanjs/headless';
+import { SelectCompact, provideSelectUi } from '@soybeanjs/headless/select';
+import type { DefinedValue } from '@soybeanjs/headless/types';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
 import { keysOf } from '@soybeanjs/utils';
 import { mergeSlotVariants } from '@/theme';

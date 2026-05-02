@@ -1,7 +1,7 @@
 <script setup lang="ts" generic="T extends DefinedValue = DefinedValue">
 import { computed } from 'vue';
-import { DropdownMenuCheckboxCompact } from '@soybeanjs/headless';
-import type { DefinedValue } from '@soybeanjs/headless';
+import { DropdownMenuCheckboxCompact } from '@soybeanjs/headless/dropdown-menu';
+import type { DefinedValue } from '@soybeanjs/headless/types';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
 import { keysOf } from '@soybeanjs/utils';
 import { provideMenuUi } from '../menu/context';

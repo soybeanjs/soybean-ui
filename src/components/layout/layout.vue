@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { LayoutCompact, provideLayoutUi } from '@soybeanjs/headless';
+import { LayoutCompact, provideLayoutUi } from '@soybeanjs/headless/layout';
 import { useOmitProps } from '@soybeanjs/headless/composables';
 import { keysOf } from '@soybeanjs/utils';
 import { mergeBaseVariants, mergeSlotVariants, themeSizeMap, themeSizeRatio } from '@/theme';

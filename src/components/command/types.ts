@@ -5,7 +5,7 @@ import type {
   CommandSingleOptionData,
   CommandUi
 } from '@soybeanjs/headless/command';
-import type { ClassValue } from '@soybeanjs/headless';
+import type { ClassValue } from '@soybeanjs/headless/types';
 import type { ThemeSize } from '@/theme';
 
 /**

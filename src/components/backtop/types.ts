@@ -1,4 +1,4 @@
-import type { ClassValue } from '@soybeanjs/headless';
+import type { ClassValue } from '@soybeanjs/headless/types';
 import type { BacktopEmits as _BacktopEmits, BacktopProps as _BacktopProps } from '@soybeanjs/headless/backtop';
 import type { ThemeColor, ThemeSize } from '@/theme';
 import type { IconProps } from '../icon/types';

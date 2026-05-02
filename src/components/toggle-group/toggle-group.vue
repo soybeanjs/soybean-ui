@@ -1,7 +1,7 @@
 <script setup lang="ts" generic="M extends boolean = false, T extends DefinedValue = string">
 import { computed } from 'vue';
-import { ToggleGroupRoot, provideToggleGroupUi } from '@soybeanjs/headless';
-import type { DefinedValue } from '@soybeanjs/headless';
+import { ToggleGroupRoot, provideToggleGroupUi } from '@soybeanjs/headless/toggle-group';
+import type { DefinedValue } from '@soybeanjs/headless/types';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
 import { mergeSlotVariants } from '@/theme';
 import { toggleGroupVariants } from './variants';

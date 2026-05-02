@@ -7,9 +7,9 @@
   "
 >
 import { computed } from 'vue';
-import { RadioGroupCompact, provideRadioGroupUi } from '@soybeanjs/headless';
-import type { AcceptableBooleanValue } from '@soybeanjs/headless';
+import { RadioGroupCompact, provideRadioGroupUi } from '@soybeanjs/headless/radio-group';
 import { useOmitProps } from '@soybeanjs/headless/composables';
+import type { AcceptableBooleanValue } from '@soybeanjs/headless/types';
 import { mergeSlotVariants } from '@/theme';
 import { radioGroupVariants } from './variants';
 import type { RadioGroupEmits, RadioGroupOptionData, RadioGroupProps } from './types';

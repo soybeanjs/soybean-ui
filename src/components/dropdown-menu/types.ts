@@ -1,6 +1,4 @@
 import type {
-  AcceptableBooleanValue,
-  DefinedValue,
   DropdownMenuWrapperCompactProps,
   DropdownMenuWrapperCompactEmits,
   DropdownMenuCompactProps,
@@ -12,7 +10,8 @@ import type {
   DropdownMenuRadioCompactProps,
   DropdownMenuRadioCompactEmits,
   DropdownMenuRadioCompactSlots
-} from '@soybeanjs/headless';
+} from '@soybeanjs/headless/dropdown-menu';
+import type { AcceptableBooleanValue, DefinedValue } from '@soybeanjs/headless/types';
 import type { MenuUiBaseProps } from '../menu/types';
 
 /**

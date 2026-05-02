@@ -8,7 +8,7 @@ import {
   HoverCardRoot,
   HoverCardTrigger,
   provideHoverCardUi
-} from '@soybeanjs/headless';
+} from '@soybeanjs/headless/hover-card';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
 import { mergeSlotVariants } from '@/theme';
 import { hoverCardVariants } from './variants';

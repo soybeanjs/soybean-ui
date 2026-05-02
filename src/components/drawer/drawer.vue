@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { DialogCompact, provideDialogUi } from '@soybeanjs/headless';
+import { DialogCompact, provideDialogUi } from '@soybeanjs/headless/dialog';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
 import { keysOf } from '@soybeanjs/utils';
 import { mergeSlotVariants, mergeBaseVariants, miniSizeMap } from '@/theme';

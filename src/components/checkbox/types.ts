@@ -10,10 +10,9 @@ import type {
   CheckboxGroupOptionData,
   CheckboxCardGroupOptionData,
   CheckboxUi,
-  CheckboxCardUi,
-  ClassValue,
-  DefinedValue
-} from '@soybeanjs/headless';
+  CheckboxCardUi
+} from '@soybeanjs/headless/checkbox';
+import type { ClassValue, DefinedValue } from '@soybeanjs/headless/types';
 import type { ThemeColor, ThemeSize } from '@/theme';
 import type { CheckboxShape } from './variants';
 

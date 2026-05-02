@@ -1,6 +1,13 @@
 <script setup lang="ts">
 import { computed, useSlots } from 'vue';
-import { FormField, FormLabel, FormControl, FormDescription, FormError, provideFormFieldUi } from '@soybeanjs/headless';
+import {
+  FormField,
+  FormLabel,
+  FormControl,
+  FormDescription,
+  FormError,
+  provideFormFieldUi
+} from '@soybeanjs/headless/form';
 import { useOmitProps } from '@soybeanjs/headless/composables';
 import { vAutoAnimate } from '@formkit/auto-animate';
 import { mergeSlotVariants } from '@/theme';

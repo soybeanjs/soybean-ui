@@ -1,6 +1,6 @@
 import { computed } from 'vue';
 import type { Ref } from 'vue';
-import type { MaybePromise } from '@soybeanjs/headless';
+import type { MaybePromise } from '@soybeanjs/headless/types';
 import type { PageTabsOptionData, PageTabsState } from './types';
 
 interface UsePageStateOptions<T extends PageTabsOptionData> {

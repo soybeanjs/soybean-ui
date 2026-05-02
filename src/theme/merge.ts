@@ -1,4 +1,4 @@
-import type { ClassValue } from '@soybeanjs/headless';
+import type { ClassValue } from '@soybeanjs/headless/types';
 import { clsx } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 

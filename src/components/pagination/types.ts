@@ -1,5 +1,4 @@
 import type {
-  ClassValue,
   PaginationButtonProps,
   PaginationEllipsisProps,
   PaginationListItemProps,
@@ -7,7 +6,8 @@ import type {
   PaginationRootEmits,
   PaginationRootProps,
   PaginationUi
-} from '@soybeanjs/headless';
+} from '@soybeanjs/headless/pagination';
+import type { ClassValue } from '@soybeanjs/headless/types';
 import type { ThemeSize } from '@/theme';
 import type { PaginationShape, PaginationVariant } from './variants';
 

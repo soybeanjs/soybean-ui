@@ -1,4 +1,3 @@
-import type { AcceptableBooleanValue, ClassValue } from '@soybeanjs/headless';
 import type {
   RadioGroupCompactEmits,
   RadioGroupCompactProps,
@@ -9,6 +8,7 @@ import type {
   RadioGroupOptionData,
   RadioGroupUi
 } from '@soybeanjs/headless/radio-group';
+import type { AcceptableBooleanValue, ClassValue } from '@soybeanjs/headless/types';
 import type { ThemeColor, ThemeSize } from '@/theme';
 import type { RadioGroupVariant } from './variants';
 

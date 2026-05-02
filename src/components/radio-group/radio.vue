@@ -1,6 +1,11 @@
 <script setup lang="ts">
 import { computed, useId } from 'vue';
-import { RadioGroupControl, RadioGroupIndicator, RadioGroupItem, RadioGroupLabel } from '@soybeanjs/headless';
+import {
+  RadioGroupControl,
+  RadioGroupIndicator,
+  RadioGroupItem,
+  RadioGroupLabel
+} from '@soybeanjs/headless/radio-group';
 import { useOmitProps } from '@soybeanjs/headless/composables';
 import type { RadioProps } from './types';
 

@@ -1,6 +1,6 @@
 <script setup lang="ts" generic="M extends boolean = false">
 import { computed } from 'vue';
-import { CalendarCompact, provideCalendarUi } from '@soybeanjs/headless';
+import { CalendarCompact, provideCalendarUi } from '@soybeanjs/headless/calendar';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
 import { mergeBaseVariants, mergeSlotVariants, miniSizeMap } from '@/theme';
 import { buttonVariants } from '../button/variants';

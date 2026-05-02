@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, useSlots } from 'vue';
-import { SeparatorLabel, SeparatorRoot, provideSeparatorUi } from '@soybeanjs/headless';
+import { SeparatorLabel, SeparatorRoot, provideSeparatorUi } from '@soybeanjs/headless/separator';
 import { useOmitProps } from '@soybeanjs/headless/composables';
 import { mergeSlotVariants } from '@/theme';
 import { separatorVariants } from './variants';

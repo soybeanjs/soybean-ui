@@ -1,7 +1,7 @@
 <script setup lang="ts" generic="T extends TreeMenuBaseOptionData = TreeMenuBaseOptionData">
 import { computed } from 'vue';
 import type { CSSProperties } from 'vue';
-import { TreeMenuRoot, provideTreeMenuUi } from '@soybeanjs/headless';
+import { TreeMenuRoot, provideTreeMenuUi } from '@soybeanjs/headless/tree-menu';
 import { useForwardListeners, usePickProps } from '@soybeanjs/headless/composables';
 import { transformPropsToContext } from '@soybeanjs/headless/shared';
 import { mergeSlotVariants, themeSizeMap, themeSizeRatio } from '@/theme';

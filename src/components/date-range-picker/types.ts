@@ -1,13 +1,12 @@
 import type { DateRange, DateValue } from '@soybeanjs/headless/date';
-
 import type {
-  ClassValue,
   DateRangePickerPopupProps,
   DateRangePickerRootEmits,
   DateRangePickerRootProps,
   DateRangePickerTriggerProps,
   DateRangePickerUi
-} from '@soybeanjs/headless';
+} from '@soybeanjs/headless/date-range-picker';
+import type { ClassValue } from '@soybeanjs/headless/types';
 import type { ThemeSize } from '@/theme';
 
 /**

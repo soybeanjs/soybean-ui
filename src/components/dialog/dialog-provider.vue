@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { DialogProvider, provideDialogUi } from '@soybeanjs/headless';
+import { DialogProvider, provideDialogUi } from '@soybeanjs/headless/dialog';
 import { mergeSlotVariants, mergeBaseVariants, miniSizeMap } from '@/theme';
 import { buttonVariants } from '../button/variants';
 import { dialogVariants } from './variants';

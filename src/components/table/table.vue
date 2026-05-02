@@ -8,8 +8,8 @@
   "
 >
 import { computed } from 'vue';
-import { provideTableUi, TableCompact } from '@soybeanjs/headless';
-import type { TableSortOrder } from '@soybeanjs/headless';
+import { provideTableUi, TableCompact } from '@soybeanjs/headless/table';
+import type { TableSortOrder } from '@soybeanjs/headless/table';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
 import { mergeSlotVariants, miniSizeMap } from '@/theme';
 import SButtonIcon from '../button/button-icon.vue';

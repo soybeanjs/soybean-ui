@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, useAttrs } from 'vue';
-import { InputControl, InputRoot, provideInputUi } from '@soybeanjs/headless';
+import { InputControl, InputRoot, provideInputUi } from '@soybeanjs/headless/input';
 import { useForwardElement, useOmitProps } from '@soybeanjs/headless/composables';
 import { mergeSlotVariants } from '@/theme';
 import Icon from '../icon/icon.vue';

@@ -13,7 +13,7 @@ import {
   TableSortOrder,
   TableUiSlot
 } from '@soybeanjs/headless/table';
-import type { ClassValue, UiClass } from '@soybeanjs/headless';
+import type { ClassValue, UiClass } from '@soybeanjs/headless/types';
 import type { ThemeSize } from '@/theme';
 import type { TableVariant } from './variants';
 

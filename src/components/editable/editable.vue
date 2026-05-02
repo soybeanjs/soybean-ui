@@ -9,7 +9,7 @@ import {
   EditableRoot,
   EditableSubmitTrigger,
   provideEditableUi
-} from '@soybeanjs/headless';
+} from '@soybeanjs/headless/editable';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
 import { mergeSlotVariants } from '@/theme';
 import Icon from '../icon/icon.vue';

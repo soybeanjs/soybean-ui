@@ -1,7 +1,7 @@
 <script setup lang="ts" generic="M extends boolean = false">
 import { computed } from 'vue';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
-import { ComboboxCompact, provideComboboxUi } from '@soybeanjs/headless';
+import { ComboboxCompact, provideComboboxUi } from '@soybeanjs/headless/combobox';
 import { keysOf } from '@soybeanjs/utils';
 import { mergeSlotVariants } from '@/theme';
 import { comboboxVariants } from './variants';

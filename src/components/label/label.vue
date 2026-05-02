@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { Label } from '@soybeanjs/headless';
+import { Label } from '@soybeanjs/headless/label';
 import { cn } from '@/theme';
 import { labelVariants } from './variants';
 import type { LabelProps } from './types';

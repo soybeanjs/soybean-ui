@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import { CarouselNext } from '@soybeanjs/headless';
-import type { CarouselNextProps, DataOrientation, Direction } from '@soybeanjs/headless';
+import { CarouselNext } from '@soybeanjs/headless/carousel';
+import type { CarouselNextProps } from '@soybeanjs/headless/carousel';
+import type { DataOrientation, Direction } from '@soybeanjs/headless/types';
 import Icon from '../icon/icon.vue';
 
 defineOptions({

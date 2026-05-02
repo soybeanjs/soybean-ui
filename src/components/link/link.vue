@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { Link } from '@soybeanjs/headless';
+import { Link } from '@soybeanjs/headless/link';
 import { cn } from '@/theme';
 import { linkVariants } from './variants';
 import type { LinkProps } from './types';

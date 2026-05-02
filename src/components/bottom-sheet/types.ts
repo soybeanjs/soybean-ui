@@ -1,10 +1,10 @@
 import type {
-  ClassValue,
   BottomSheetCompactProps,
   BottomSheetCompactEmits,
   BottomSheetCompactSlots,
   BottomSheetUi
-} from '@soybeanjs/headless';
+} from '@soybeanjs/headless/bottom-sheet';
+import type { ClassValue } from '@soybeanjs/headless/types';
 import type { ThemeSize } from '@/theme';
 
 /**

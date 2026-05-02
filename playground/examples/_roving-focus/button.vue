@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { RovingFocusItem } from '@soybeanjs/headless';
+import { RovingFocusItem } from '@soybeanjs/headless/roving-focus';
 import { SButton } from '@soybeanjs/ui';
 import { useButtonRovingFocusContext } from './context';
 

@@ -2,10 +2,9 @@ import type {
   PageTabsRootProps,
   PageTabsRootEmits,
   PageTabsItemProps,
-  PageTabsUiSlot,
-  ClassValue,
-  MaybePromise
-} from '@soybeanjs/headless';
+  PageTabsUiSlot
+} from '@soybeanjs/headless/page-tabs';
+import type { ClassValue, MaybePromise } from '@soybeanjs/headless/types';
 import type { ThemeSize } from '@/theme';
 import type { IconValue } from '../icon/types';
 import type { MenuOptionData } from '../menu';

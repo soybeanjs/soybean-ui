@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { CarouselRoot, provideCarouselUi } from '@soybeanjs/headless';
+import { CarouselRoot, provideCarouselUi } from '@soybeanjs/headless/carousel';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
 import { mergeSlotVariants } from '@/theme';
 import { carouselVariants } from './variants';

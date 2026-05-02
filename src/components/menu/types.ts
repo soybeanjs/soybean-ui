@@ -1,4 +1,5 @@
-import type { ClassValue, AlignSide, MenuUi } from '@soybeanjs/headless';
+import type { MenuUi } from '@soybeanjs/headless/menu';
+import type { ClassValue, AlignSide } from '@soybeanjs/headless/types';
 import type { ThemeSize } from '@/theme';
 
 /**

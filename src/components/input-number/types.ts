@@ -1,12 +1,12 @@
 import type {
-  ClassValue,
   InputNumberControlProps,
   InputNumberDecrementProps,
   InputNumberIncrementProps,
   InputNumberRootEmits,
   InputNumberRootProps,
   InputNumberUi
-} from '@soybeanjs/headless';
+} from '@soybeanjs/headless/input-number';
+import type { ClassValue } from '@soybeanjs/headless/types';
 import type { ThemeSize } from '@/theme';
 
 /**

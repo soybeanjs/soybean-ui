@@ -1,5 +1,4 @@
 import type {
-  ClassValue,
   EditableAreaProps,
   EditableCancelTriggerProps,
   EditableEditTriggerProps,
@@ -9,9 +8,9 @@ import type {
   EditableRootProps,
   EditableUi,
   EditableUiSlot,
-  EditableSubmitTriggerProps,
-  UiClass
-} from '@soybeanjs/headless';
+  EditableSubmitTriggerProps
+} from '@soybeanjs/headless/editable';
+import type { ClassValue, UiClass } from '@soybeanjs/headless/types';
 import type { ThemeSize } from '@/theme';
 
 /**

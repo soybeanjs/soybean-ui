@@ -1,5 +1,5 @@
 <script setup lang="ts" generic="T extends Record<string, any>">
-import { VirtualizerContent, VirtualizerRoot } from '@soybeanjs/headless';
+import { VirtualizerContent, VirtualizerRoot } from '@soybeanjs/headless/virtualizer';
 import { useOmitProps } from '@soybeanjs/headless/composables';
 import type { VirtualizerProps } from './types';
 

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { useStyleTag } from '@vueuse/core';
-import { ToastProvider, provideToastUi } from '@soybeanjs/headless';
+import { ToastProvider, provideToastUi } from '@soybeanjs/headless/toast';
 import { useOmitProps } from '@soybeanjs/headless/composables';
 import { mergeBaseVariants, mergeSlotVariants, miniSizeMap } from '@/theme';
 import { buttonVariants } from '../button/variants';

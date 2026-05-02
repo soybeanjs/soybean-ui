@@ -1,6 +1,6 @@
 <script setup lang="ts" generic="T extends BreadcrumbOptionData = BreadcrumbOptionData">
 import { computed } from 'vue';
-import { BreadcrumbCompact, provideBreadcrumbUi } from '@soybeanjs/headless';
+import { BreadcrumbCompact, provideBreadcrumbUi } from '@soybeanjs/headless/breadcrumb';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
 import { keysOf } from '@soybeanjs/utils';
 import { mergeSlotVariants } from '@/theme';

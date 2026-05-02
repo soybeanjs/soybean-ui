@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { Clipboard } from '@soybeanjs/headless';
+import { Clipboard } from '@soybeanjs/headless/clipboard';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
 import { cn } from '@/theme';
 import { buttonVariants } from '../button/variants';

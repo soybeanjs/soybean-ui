@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { Button } from '@soybeanjs/headless';
+import { Button } from '@soybeanjs/headless/button';
 import { useOmitProps } from '@soybeanjs/headless/composables';
 import { cn } from '@/theme';
 import { useButtonGroupContext } from './context';

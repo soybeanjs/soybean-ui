@@ -9,7 +9,7 @@ import {
   PopoverRoot,
   PopoverTrigger,
   providePopoverUi
-} from '@soybeanjs/headless';
+} from '@soybeanjs/headless/popover';
 import { useForwardListeners, usePickProps } from '@soybeanjs/headless/composables';
 import { transformPropsToContext } from '@soybeanjs/headless/shared';
 import { mergeSlotVariants } from '@/theme';

@@ -5,7 +5,7 @@ import type {
   AutocompleteSingleOptionData,
   AutocompleteUi
 } from '@soybeanjs/headless/autocomplete';
-import type { ClassValue } from '@soybeanjs/headless';
+import type { ClassValue } from '@soybeanjs/headless/types';
 import type { ThemeSize } from '@/theme';
 
 /**

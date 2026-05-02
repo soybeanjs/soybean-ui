@@ -1,12 +1,12 @@
 import type {
-  ClassValue,
   ListContentProps,
   ListDescriptionProps,
   ListRootProps,
   ListTitleProps,
   ListUi,
   ListItemProps as _ListItemProps
-} from '@soybeanjs/headless';
+} from '@soybeanjs/headless/list';
+import type { ClassValue } from '@soybeanjs/headless/types';
 import type { ThemeSize } from '@/theme';
 
 /**

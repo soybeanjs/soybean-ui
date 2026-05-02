@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ContextMenuWrapperCompact } from '@soybeanjs/headless';
+import { ContextMenuWrapperCompact } from '@soybeanjs/headless/context-menu';
 import { useOmitProps, useForwardListeners } from '@soybeanjs/headless/composables';
 import { provideMenuUi } from '../menu/context';
 import type { ContextMenuWrapperProps, ContextMenuWrapperEmits } from './types';

@@ -1,5 +1,5 @@
 import type { SelectCompactEmits, SelectCompactProps, SelectCompactSlots, SelectUi } from '@soybeanjs/headless/select';
-import type { ClassValue, DefinedValue } from '@soybeanjs/headless';
+import type { ClassValue, DefinedValue } from '@soybeanjs/headless/types';
 import type { ThemeSize } from '@/theme';
 
 /**

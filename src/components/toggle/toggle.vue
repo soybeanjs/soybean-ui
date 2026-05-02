@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { Toggle } from '@soybeanjs/headless';
+import { Toggle } from '@soybeanjs/headless/toggle';
 import { useOmitProps } from '@soybeanjs/headless/composables';
 import { cn } from '@/theme';
 import { toggleVariants } from './variants';

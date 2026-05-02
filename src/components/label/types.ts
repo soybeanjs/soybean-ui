@@ -1,4 +1,5 @@
-import type { ClassValue, LabelProps as _LabelProps } from '@soybeanjs/headless';
+import type { LabelProps as _LabelProps } from '@soybeanjs/headless/label';
+import type { ClassValue } from '@soybeanjs/headless/types';
 import type { ThemeSize } from '@/theme';
 
 /**

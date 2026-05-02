@@ -5,7 +5,7 @@ import type {
   ColorSliderTrackProps,
   ColorSliderUi
 } from '@soybeanjs/headless/color-slider';
-import type { ClassValue } from '@soybeanjs/headless';
+import type { ClassValue } from '@soybeanjs/headless/types';
 import type { ThemeColor, ThemeSize } from '@/theme';
 
 /**

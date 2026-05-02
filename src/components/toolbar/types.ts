@@ -1,4 +1,5 @@
-import type { ClassValue, ToolbarRootProps as HeadlessToolbarRootProps, ToolbarUi } from '@soybeanjs/headless';
+import type { ToolbarRootProps as HeadlessToolbarRootProps, ToolbarUi } from '@soybeanjs/headless/toolbar';
+import type { ClassValue } from '@soybeanjs/headless/types';
 
 /**
  * Props for the toolbar component.

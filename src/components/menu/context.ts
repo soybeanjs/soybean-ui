@@ -1,6 +1,6 @@
 import { computed, toValue } from 'vue';
 import type { MaybeRefOrGetter } from 'vue';
-import { provideMenuUi as _provideMenuUi } from '@soybeanjs/headless';
+import { provideMenuUi as _provideMenuUi } from '@soybeanjs/headless/menu';
 import { mergeSlotVariants } from '@/theme';
 import { menuVariants } from '../menu/variants';
 import { kbdVariants } from '../kbd/variants';

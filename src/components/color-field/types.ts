@@ -1,10 +1,10 @@
 import type {
-  ClassValue,
   ColorFieldInputProps,
   ColorFieldRootEmits,
   ColorFieldRootProps,
   ColorFieldUi
-} from '@soybeanjs/headless';
+} from '@soybeanjs/headless/color-field';
+import type { ClassValue } from '@soybeanjs/headless/types';
 import type { ThemeSize } from '@/theme';
 
 /**

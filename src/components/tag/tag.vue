@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { Tag } from '@soybeanjs/headless';
+import { Tag } from '@soybeanjs/headless/tag';
 import { cn } from '@/theme';
 import Icon from '../icon/icon.vue';
 import { tagVariants } from './variants';

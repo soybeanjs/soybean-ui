@@ -1,12 +1,10 @@
 import type {
-  ClassValue,
-  AlignSide,
-  DefinedValue,
   MenubarCompactProps,
   MenubarCompactEmits,
   MenubarCompactSlots,
   MenubarUi
-} from '@soybeanjs/headless';
+} from '@soybeanjs/headless/menubar';
+import type { ClassValue, AlignSide, DefinedValue } from '@soybeanjs/headless/types';
 import type { ThemeSize } from '@/theme';
 
 /**

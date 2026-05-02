@@ -6,7 +6,7 @@ import {
   ColorSwatchPickerItemSwatch,
   ColorSwatchPickerRoot,
   provideColorSwatchPickerUi
-} from '@soybeanjs/headless';
+} from '@soybeanjs/headless/color-swatch-picker';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
 import { mergeSlotVariants } from '@/theme';
 import Icon from '../icon/icon.vue';

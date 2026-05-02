@@ -8,7 +8,7 @@ import {
   EmptyRoot,
   EmptyTitle,
   provideEmptyUi
-} from '@soybeanjs/headless';
+} from '@soybeanjs/headless/empty';
 import { useOmitProps } from '@soybeanjs/headless/composables';
 import { mergeSlotVariants } from '@/theme';
 import Icon from '../icon/icon.vue';

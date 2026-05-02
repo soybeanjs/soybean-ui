@@ -1,4 +1,4 @@
-import type { ClassValue } from '@soybeanjs/headless';
+import type { ClassValue } from '@soybeanjs/headless/types';
 import type { TimeRange, TimeValue } from '@soybeanjs/headless/date';
 
 import type {

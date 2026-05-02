@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { ProgressCircle, ProgressRoot, provideProgressUi } from '@soybeanjs/headless';
+import { ProgressCircle, ProgressRoot, provideProgressUi } from '@soybeanjs/headless/progress';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
 import { mergeSlotVariants } from '@/theme';
 import { circleProgressVariants } from './variants';

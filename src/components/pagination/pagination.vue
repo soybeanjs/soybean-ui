@@ -10,7 +10,7 @@ import {
   PaginationPrev,
   PaginationRoot,
   providePaginationUi
-} from '@soybeanjs/headless';
+} from '@soybeanjs/headless/pagination';
 import { useOmitProps } from '@soybeanjs/headless/composables';
 import { mergeSlotVariants } from '@/theme';
 import Icon from '../icon/icon.vue';

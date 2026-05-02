@@ -6,9 +6,9 @@ import {
   TreeMenuItem,
   TreeMenuSub,
   useTreeMenuRootContext
-} from '@soybeanjs/headless';
+} from '@soybeanjs/headless/tree-menu';
 import { useOmitProps } from '@soybeanjs/headless/composables';
-import type { Placement } from '@soybeanjs/headless';
+import type { Placement } from '@soybeanjs/headless/types';
 import Link from '../link/link.vue';
 import Tooltip from '../tooltip/tooltip.vue';
 import DropdownMenu from '../dropdown-menu/dropdown-menu.vue';

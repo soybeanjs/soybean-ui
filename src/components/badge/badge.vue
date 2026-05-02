@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { BadgeContent, BadgeRoot, provideBadgeUi } from '@soybeanjs/headless';
+import { BadgeContent, BadgeRoot, provideBadgeUi } from '@soybeanjs/headless/badge';
 import { mergeSlotVariants } from '@/theme';
 import { badgeVariants } from './variants';
 import type { BadgeEmits, BadgeProps } from './types';

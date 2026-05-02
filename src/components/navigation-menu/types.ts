@@ -1,6 +1,4 @@
 import type {
-  ClassValue,
-  LinkBaseProps,
   NavigationMenuContentEmits,
   NavigationMenuContentProps,
   NavigationMenuIndicatorProps,
@@ -13,9 +11,10 @@ import type {
   NavigationMenuSubEmits,
   NavigationMenuTriggerProps,
   NavigationMenuUi,
-  NavigationMenuViewportProps,
-  UiClass
-} from '@soybeanjs/headless';
+  NavigationMenuViewportProps
+} from '@soybeanjs/headless/navigation-menu';
+import type { LinkBaseProps } from '@soybeanjs/headless/link';
+import type { ClassValue, UiClass } from '@soybeanjs/headless/types';
 import type { ThemeSize } from '@/theme';
 import type { IconValue } from '../icon/types';
 

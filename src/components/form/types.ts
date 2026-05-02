@@ -7,7 +7,6 @@ import type {
   SlotsType
 } from 'vue';
 import type {
-  ClassValue,
   FormDescriptionProps,
   FormErrorProps,
   FormFieldArrayStates,
@@ -17,11 +16,9 @@ import type {
   FormControlProps,
   FormRegisterOptions,
   FormValues,
-  Path,
-  PathValue,
-  PropsToContext,
   FormFieldProps as _FormFieldProps
-} from '@soybeanjs/headless';
+} from '@soybeanjs/headless/form';
+import type { ClassValue, Path, PathValue, PropsToContext } from '@soybeanjs/headless/types';
 import type { ThemeSize } from '@/theme';
 
 /**

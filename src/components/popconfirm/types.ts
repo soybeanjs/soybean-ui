@@ -1,8 +1,5 @@
 import type { HTMLAttributes } from 'vue';
 import type {
-  ClassValue,
-  MaybePromise,
-  Placement,
   PopoverArrowProps,
   PopoverCloseProps,
   PopoverPopupProps,
@@ -12,10 +9,9 @@ import type {
   PopoverRootEmits,
   PopoverRootProps,
   PopoverTriggerProps,
-  PopoverUiSlot,
-  PropsToContext,
-  UiClass
-} from '@soybeanjs/headless';
+  PopoverUiSlot
+} from '@soybeanjs/headless/popover';
+import type { ClassValue, MaybePromise, Placement, PropsToContext, UiClass } from '@soybeanjs/headless/types';
 import type { ThemeColor, ThemeSize } from '@/theme';
 import type { ButtonProps } from '../button/types';
 

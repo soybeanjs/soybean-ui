@@ -1,6 +1,4 @@
 import type {
-  AcceptableBooleanValue,
-  DefinedValue,
   ContextMenuWrapperCompactProps,
   ContextMenuWrapperCompactEmits,
   ContextMenuCompactProps,
@@ -12,7 +10,8 @@ import type {
   ContextMenuRadioCompactProps,
   ContextMenuRadioCompactEmits,
   ContextMenuRadioCompactSlots
-} from '@soybeanjs/headless';
+} from '@soybeanjs/headless/context-menu';
+import type { AcceptableBooleanValue, DefinedValue } from '@soybeanjs/headless/types';
 import type { MenuUiBaseProps } from '../menu/types';
 
 /**

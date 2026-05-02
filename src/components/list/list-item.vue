@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useSlots } from 'vue';
-import { ListContent, ListDescription, ListItem, ListTitle } from '@soybeanjs/headless';
+import { ListContent, ListDescription, ListItem, ListTitle } from '@soybeanjs/headless/list';
 import type { ListItemProps } from './types';
 
 defineOptions({

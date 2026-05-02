@@ -1,7 +1,7 @@
 <script setup lang="ts" generic="T extends TagsInputAcceptableValue = string">
 import { computed } from 'vue';
-import { TagsInputRoot, provideTagsInputUi } from '@soybeanjs/headless';
-import type { TagsInputAcceptableValue } from '@soybeanjs/headless';
+import { TagsInputRoot, provideTagsInputUi } from '@soybeanjs/headless/tags-input';
+import type { TagsInputAcceptableValue } from '@soybeanjs/headless/tags-input';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
 import { mergeSlotVariants } from '@/theme';
 import { tagsInputVariants } from './variants';

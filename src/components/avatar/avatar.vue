@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { AvatarFallback, AvatarImage, AvatarRoot, provideAvatarUi } from '@soybeanjs/headless';
+import { AvatarFallback, AvatarImage, AvatarRoot, provideAvatarUi } from '@soybeanjs/headless/avatar';
 import { useOmitProps } from '@soybeanjs/headless/composables';
 import { mergeSlotVariants } from '@/theme';
 import { avatarVariants } from './variants';

@@ -1,7 +1,7 @@
 <script setup lang="ts" generic="T extends DefinedValue = DefinedValue">
 import { computed } from 'vue';
-import { ContextMenuCompact } from '@soybeanjs/headless';
-import type { DefinedValue } from '@soybeanjs/headless';
+import { ContextMenuCompact } from '@soybeanjs/headless/context-menu';
+import type { DefinedValue } from '@soybeanjs/headless/types';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
 import { keysOf } from '@soybeanjs/utils';
 import { provideMenuUi } from '../menu/context';

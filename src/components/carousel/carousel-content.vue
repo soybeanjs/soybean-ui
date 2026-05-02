@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { CarouselContent } from '@soybeanjs/headless';
-import type { CarouselContentProps } from '@soybeanjs/headless';
+import { CarouselContent } from '@soybeanjs/headless/carousel';
+import type { CarouselContentProps } from '@soybeanjs/headless/carousel';
 
 defineOptions({
   name: 'SCarouselContent'

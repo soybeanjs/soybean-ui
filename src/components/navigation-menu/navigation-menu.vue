@@ -6,7 +6,7 @@ import {
   NavigationMenuRoot,
   NavigationMenuViewport,
   provideNavigationMenuUi
-} from '@soybeanjs/headless';
+} from '@soybeanjs/headless/navigation-menu';
 import { useForwardListeners, useOmitProps, usePickProps } from '@soybeanjs/headless/composables';
 import { mergeSlotVariants } from '@/theme';
 import { provideNavigationMenuExtraUi } from './context';

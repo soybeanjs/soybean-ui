@@ -1,4 +1,5 @@
-import type { ClassValue, SkeletonProps as _SkeletonProps } from '@soybeanjs/headless';
+import type { SkeletonProps as _SkeletonProps } from '@soybeanjs/headless/skeleton';
+import type { ClassValue } from '@soybeanjs/headless/types';
 import type { ThemeSize } from '@/theme';
 import type { SkeletonShape } from './variants';
 

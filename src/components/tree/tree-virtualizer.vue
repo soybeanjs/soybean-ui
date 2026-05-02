@@ -1,6 +1,8 @@
 <script setup lang="ts" generic="T extends TreeItemData, U extends MaybeArray<string> | undefined, M extends boolean">
-import { TreeVirtualizerRoot, VirtualizerContent } from '@soybeanjs/headless';
-import type { MaybeArray, TreeItemData } from '@soybeanjs/headless';
+import { TreeVirtualizerRoot } from '@soybeanjs/headless/tree';
+import type { TreeItemData } from '@soybeanjs/headless/tree';
+import { VirtualizerContent } from '@soybeanjs/headless/virtualizer';
+import type { MaybeArray } from '@soybeanjs/headless/types';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
 import type { TreeVirtualizerEmits, TreeVirtualizerProps } from './types';
 

@@ -6,7 +6,7 @@ import type {
   ProgressState,
   ProgressUi
 } from '@soybeanjs/headless/progress';
-import type { ClassValue } from '@soybeanjs/headless';
+import type { ClassValue } from '@soybeanjs/headless/types';
 import type { ThemeColor, ThemeSize } from '@/theme';
 
 /**

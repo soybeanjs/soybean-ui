@@ -16,7 +16,7 @@ import type {
   RangeCalendarRootProps,
   RangeCalendarUi
 } from '@soybeanjs/headless/range-calendar';
-import type { ClassValue } from '@soybeanjs/headless';
+import type { ClassValue } from '@soybeanjs/headless/types';
 import type { ThemeSize } from '@/theme';
 
 /**

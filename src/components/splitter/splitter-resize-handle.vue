@@ -1,7 +1,7 @@
 <script lang="ts">
 import { computed, defineComponent, h } from 'vue';
 import type { PropType } from 'vue';
-import { SplitterResizeHandle } from '@soybeanjs/headless';
+import { SplitterResizeHandle } from '@soybeanjs/headless/splitter';
 import type { SplitterResizeHandleProps } from './types';
 
 export default defineComponent({

@@ -7,9 +7,10 @@
   "
 >
 import { computed } from 'vue';
-import { RadioGroupRoot, provideRadioGroupUi } from '@soybeanjs/headless';
-import type { AcceptableBooleanValue, RadioGroupRootEmits } from '@soybeanjs/headless';
+import { RadioGroupRoot, provideRadioGroupUi } from '@soybeanjs/headless/radio-group';
+import type { RadioGroupRootEmits } from '@soybeanjs/headless/radio-group';
 import { useOmitProps } from '@soybeanjs/headless/composables';
+import type { AcceptableBooleanValue } from '@soybeanjs/headless/types';
 import { mergeSlotVariants } from '@/theme';
 import { radioCardGroupVariants } from './variants';
 import RadioCard from './radio-card.vue';

@@ -9,7 +9,7 @@ import {
   StepperTitle,
   StepperTrigger,
   provideStepperUi
-} from '@soybeanjs/headless';
+} from '@soybeanjs/headless/stepper';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
 import { mergeSlotVariants } from '@/theme';
 import Icon from '../icon/icon.vue';

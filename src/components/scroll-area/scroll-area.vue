@@ -7,7 +7,7 @@ import {
   ScrollAreaThumb,
   ScrollAreaViewport,
   provideScrollAreaUi
-} from '@soybeanjs/headless';
+} from '@soybeanjs/headless/scroll-area';
 import { useOmitProps } from '@soybeanjs/headless/composables';
 import { mergeSlotVariants } from '@/theme';
 import { scrollAreaVariants } from './variants';

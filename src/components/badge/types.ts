@@ -1,4 +1,5 @@
-import type { BadgeContentProps, BadgeRootEmits, BadgeRootProps, BadgeUi, ClassValue } from '@soybeanjs/headless';
+import type { BadgeContentProps, BadgeRootEmits, BadgeRootProps, BadgeUi } from '@soybeanjs/headless/badge';
+import type { ClassValue } from '@soybeanjs/headless/types';
 import type { ThemeColor, ThemeSize } from '@/theme';
 import type { BadgePosition } from './variants';
 

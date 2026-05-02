@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { SliderRange, SliderRoot, SliderThumb, SliderTrack, provideSliderUi } from '@soybeanjs/headless';
+import { SliderRange, SliderRoot, SliderThumb, SliderTrack, provideSliderUi } from '@soybeanjs/headless/slider';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
 import { mergeSlotVariants } from '@/theme';
 import { sliderVariants } from './variants';

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { useTreeMenuRootContext } from '@soybeanjs/headless';
+import { useTreeMenuRootContext } from '@soybeanjs/headless/tree-menu';
 import Icon from '../icon/icon.vue';
 import Badge from '../badge/badge.vue';
 import Tag from '../tag/tag.vue';

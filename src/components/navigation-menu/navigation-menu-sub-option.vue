@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { NavigationMenuItem, NavigationMenuLink } from '@soybeanjs/headless';
+import { NavigationMenuItem, NavigationMenuLink } from '@soybeanjs/headless/navigation-menu';
 import Icon from '../icon/icon.vue';
 import SNavigationMenuItemSlot from './navigation-menu-item-slot.vue';
 import { useNavigationMenuExtraUi } from './context';

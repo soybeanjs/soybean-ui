@@ -1,8 +1,8 @@
 <script setup lang="ts" generic="T extends AcceptableBooleanValue = AcceptableBooleanValue">
 import { computed } from 'vue';
-import { ContextMenuRadioCompact } from '@soybeanjs/headless';
-import type { AcceptableBooleanValue } from '@soybeanjs/headless';
+import { ContextMenuRadioCompact } from '@soybeanjs/headless/context-menu';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
+import type { AcceptableBooleanValue } from '@soybeanjs/headless/types';
 import { keysOf } from '@soybeanjs/utils';
 import { provideMenuUi } from '../menu/context';
 import type { ContextMenuRadioProps, ContextMenuRadioEmits, ContextMenuRadioSlots } from './types';

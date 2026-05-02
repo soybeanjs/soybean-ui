@@ -1,10 +1,10 @@
 import type {
-  ClassValue,
   CalendarCompactProps,
   CalendarCompactEmits,
   CalendarCompactSlots,
   CalendarUi
-} from '@soybeanjs/headless';
+} from '@soybeanjs/headless/calendar';
+import type { ClassValue } from '@soybeanjs/headless/types';
 import type { ThemeSize } from '@/theme';
 
 /**

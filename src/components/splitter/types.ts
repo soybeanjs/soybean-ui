@@ -1,5 +1,4 @@
 import type {
-  ClassValue,
   SplitterGroupEmits as HeadlessSplitterGroupEmits,
   SplitterGroupProps as HeadlessSplitterGroupProps,
   SplitterPanelEmits as HeadlessSplitterPanelEmits,
@@ -7,7 +6,8 @@ import type {
   SplitterResizeHandleEmits as HeadlessSplitterResizeHandleEmits,
   SplitterResizeHandleProps as HeadlessSplitterResizeHandleProps,
   SplitterUi
-} from '@soybeanjs/headless';
+} from '@soybeanjs/headless/splitter';
+import type { ClassValue } from '@soybeanjs/headless/types';
 
 /**
  * Props for the splitter group component.

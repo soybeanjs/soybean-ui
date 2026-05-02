@@ -1,4 +1,5 @@
-import type { ClassValue, TagsInputRootEmits, TagsInputRootProps, TagsInputUi } from '@soybeanjs/headless';
+import type { TagsInputRootEmits, TagsInputRootProps, TagsInputUi } from '@soybeanjs/headless/tags-input';
+import type { ClassValue } from '@soybeanjs/headless/types';
 import type { ThemeSize } from '@/theme';
 
 /**

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { TagsInputItemDelete } from '@soybeanjs/headless';
+import { TagsInputItemDelete } from '@soybeanjs/headless/tags-input';
 import Icon from '../icon/icon.vue';
 import type { TagsInputItemDeleteProps } from '@soybeanjs/headless/tags-input';
 

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { SplitterGroup, provideSplitterUi } from '@soybeanjs/headless';
+import { SplitterGroup, provideSplitterUi } from '@soybeanjs/headless/splitter';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
 import { mergeSlotVariants } from '@/theme';
 import { splitterVariants } from './variants';

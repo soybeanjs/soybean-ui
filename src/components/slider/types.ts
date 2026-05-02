@@ -1,12 +1,12 @@
 import type {
-  ClassValue,
   SliderRangeProps,
   SliderRootEmits,
   SliderRootProps,
   SliderThumbProps,
   SliderTrackProps,
   SliderUi
-} from '@soybeanjs/headless';
+} from '@soybeanjs/headless/slider';
+import type { ClassValue } from '@soybeanjs/headless/types';
 import type { ThemeColor, ThemeSize } from '@/theme';
 
 /**

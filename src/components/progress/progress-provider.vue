@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { ProgressProvider, provideProgressProviderUi } from '@soybeanjs/headless';
+import { ProgressProvider, provideProgressProviderUi } from '@soybeanjs/headless/progress';
 import { mergeSlotVariants } from '@/theme';
 import { progressProviderVariants } from './variants';
 import type { ProgressProviderProps } from './types';

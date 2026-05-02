@@ -1,4 +1,4 @@
-import type { ClassValue } from '@soybeanjs/headless';
+import type { ClassValue } from '@soybeanjs/headless/types';
 import type {
   ClipboardEmits,
   ClipboardProps as _ClipboardProps,

@@ -1,4 +1,5 @@
-import type { CardCompactProps, CardUi, ClassValue } from '@soybeanjs/headless';
+import type { CardCompactProps, CardUi } from '@soybeanjs/headless/card';
+import type { ClassValue } from '@soybeanjs/headless/types';
 import type { ThemeSize } from '@/theme';
 
 /**

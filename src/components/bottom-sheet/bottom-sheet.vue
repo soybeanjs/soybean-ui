@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { BottomSheetCompact, provideBottomSheetUi } from '@soybeanjs/headless';
+import { BottomSheetCompact, provideBottomSheetUi } from '@soybeanjs/headless/bottom-sheet';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
 import { keysOf } from '@soybeanjs/utils';
 import { mergeSlotVariants, mergeBaseVariants, miniSizeMap } from '@/theme';

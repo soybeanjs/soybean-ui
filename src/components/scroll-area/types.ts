@@ -1,5 +1,4 @@
 import type {
-  ClassValue,
   ScrollAreaCornerProps,
   ScrollAreaRootEmits,
   ScrollAreaRootProps,
@@ -7,7 +6,8 @@ import type {
   ScrollAreaThumbProps,
   ScrollAreaUi,
   ScrollAreaViewportProps
-} from '@soybeanjs/headless';
+} from '@soybeanjs/headless/scroll-area';
+import type { ClassValue } from '@soybeanjs/headless/types';
 
 /**
  * Props for the scroll area component.

@@ -1,12 +1,11 @@
 import type {
-  AcceptableValue,
-  ClassValue,
   SegmentCompactEmits,
   SegmentCompactProps,
   SegmentCompactSlots,
   SegmentUi,
   SegmentOptionData
-} from '@soybeanjs/headless';
+} from '@soybeanjs/headless/segment';
+import type { AcceptableValue, ClassValue } from '@soybeanjs/headless/types';
 import type { ThemeSize } from '@/theme';
 import type { TabsFill as SegmentFill, TabsShape as SegmentShape } from '../tabs/variants';
 

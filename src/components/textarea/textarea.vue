@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { TextareaControl, TextareaCounter, TextareaRoot, provideTextareaUi } from '@soybeanjs/headless';
+import { TextareaControl, TextareaCounter, TextareaRoot, provideTextareaUi } from '@soybeanjs/headless/textarea';
 import { useForwardElement, useOmitProps } from '@soybeanjs/headless/composables';
 import { mergeSlotVariants } from '@/theme';
 import Icon from '../icon/icon.vue';

@@ -1,5 +1,4 @@
 import type {
-  ClassValue,
   LayoutCompactProps,
   LayoutCompactEmits,
   LayoutCompactSlots,
@@ -12,7 +11,8 @@ import type {
   LayoutCollapsible,
   LayoutSide,
   LayoutClassicScrollBehavior
-} from '@soybeanjs/headless';
+} from '@soybeanjs/headless/layout';
+import type { ClassValue } from '@soybeanjs/headless/types';
 import type { ThemeSize } from '@/theme';
 
 /**

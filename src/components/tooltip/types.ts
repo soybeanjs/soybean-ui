@@ -1,6 +1,4 @@
 import type {
-  ClassValue,
-  Placement,
   TooltipArrowProps,
   TooltipPopupProps,
   TooltipPortalProps,
@@ -10,7 +8,8 @@ import type {
   TooltipRootProps,
   TooltipTriggerProps,
   TooltipUi
-} from '@soybeanjs/headless';
+} from '@soybeanjs/headless/tooltip';
+import type { ClassValue, Placement } from '@soybeanjs/headless/types';
 import type { ThemeSize } from '@/theme';
 
 /**

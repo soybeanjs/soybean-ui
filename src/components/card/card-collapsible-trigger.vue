@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { CardCollapsibleTrigger } from '@soybeanjs/headless';
-import type { CardCollapsibleTriggerProps } from '@soybeanjs/headless';
+import { CardCollapsibleTrigger } from '@soybeanjs/headless/card';
+import type { CardCollapsibleTriggerProps } from '@soybeanjs/headless/card';
 import ButtonIcon from '../button/button-icon.vue';
 
 defineOptions({

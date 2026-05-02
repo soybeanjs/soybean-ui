@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { RovingFocusGroup } from '@soybeanjs/headless';
-import type { RovingFocusGroupProps } from '@soybeanjs/headless';
+import { RovingFocusGroup } from '@soybeanjs/headless/roving-focus';
+import type { RovingFocusGroupProps } from '@soybeanjs/headless/roving-focus';
 import { SButtonGroup } from '@soybeanjs/ui';
 import type { ButtonGroupProps } from '@soybeanjs/ui';
 import { provideButtonRovingFocusContext } from './context';

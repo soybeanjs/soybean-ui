@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { Skeleton } from '@soybeanjs/headless';
+import { Skeleton } from '@soybeanjs/headless/skeleton';
 import { useOmitProps } from '@soybeanjs/headless/composables';
 import { cn } from '@/theme';
 import { skeletonVariants } from './variants';

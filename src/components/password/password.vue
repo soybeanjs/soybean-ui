@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { InputControl, InputRoot, provideInputUi } from '@soybeanjs/headless';
+import { InputControl, InputRoot, provideInputUi } from '@soybeanjs/headless/input';
 import { useControllableState, useForwardElement, useOmitProps } from '@soybeanjs/headless/composables';
 import { mergeSlotVariants } from '@/theme';
 import { inputVariants } from '../input/variants';

@@ -1,4 +1,5 @@
-import type { ClassValue, InputControlProps, InputRootEmits, InputRootProps, InputUi } from '@soybeanjs/headless';
+import type { InputControlProps, InputRootEmits, InputRootProps, InputUi } from '@soybeanjs/headless/input';
+import type { ClassValue } from '@soybeanjs/headless/types';
 import type { ThemeSize } from '@/theme';
 
 type PasswordUiSlot = 'clearable' | 'visible';

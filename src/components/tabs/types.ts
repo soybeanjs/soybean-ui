@@ -1,4 +1,4 @@
-import type { AcceptableValue, ClassValue } from '@soybeanjs/headless';
+import type { AcceptableValue, ClassValue } from '@soybeanjs/headless/types';
 import type {
   TabsCompactEmits,
   TabsCompactProps,

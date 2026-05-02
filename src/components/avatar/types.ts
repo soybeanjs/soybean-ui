@@ -3,9 +3,9 @@ import type {
   AvatarImageEmits,
   AvatarImageProps,
   AvatarRootProps,
-  AvatarUi,
-  ClassValue
-} from '@soybeanjs/headless';
+  AvatarUi
+} from '@soybeanjs/headless/avatar';
+import type { ClassValue } from '@soybeanjs/headless/types';
 import type { ThemeSize } from '@/theme';
 
 /**

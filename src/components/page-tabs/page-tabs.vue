@@ -1,7 +1,13 @@
 <script setup lang="ts" generic="T extends PageTabsOptionData">
 import { computed, shallowRef, watchEffect } from 'vue';
 import type { ShallowRef } from 'vue';
-import { PageTabsRoot, PageTabsItem, PageTabsClose, PageTabsPin, providePageTabsUi } from '@soybeanjs/headless';
+import {
+  PageTabsRoot,
+  PageTabsItem,
+  PageTabsClose,
+  PageTabsPin,
+  providePageTabsUi
+} from '@soybeanjs/headless/page-tabs';
 import { useOmitProps, useControllableState } from '@soybeanjs/headless/composables';
 import { mergeSlotVariants } from '@/theme';
 import Icon from '../icon/icon.vue';

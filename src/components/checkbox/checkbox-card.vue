@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { CheckboxCardCompact, provideCheckboxCardUi } from '@soybeanjs/headless';
+import { CheckboxCardCompact, provideCheckboxCardUi } from '@soybeanjs/headless/checkbox';
 import { useOmitProps } from '@soybeanjs/headless/composables';
 import { mergeSlotVariants } from '@/theme';
 import { checkboxCardVariants } from './variants';

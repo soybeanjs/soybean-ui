@@ -1,4 +1,5 @@
-import type { ClassValue, LinkProps as _LinkProps } from '@soybeanjs/headless';
+import type { LinkProps as _LinkProps } from '@soybeanjs/headless/link';
+import type { ClassValue } from '@soybeanjs/headless/types';
 
 /**
  * Props for the link component.

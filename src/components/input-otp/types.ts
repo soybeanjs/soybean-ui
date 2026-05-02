@@ -1,10 +1,10 @@
-import type { ClassValue, Align } from '@soybeanjs/headless';
 import type {
   InputOtpCompactEmits,
   InputOtpCompactProps,
   InputOtpCompactSlots,
   InputOtpUi
 } from '@soybeanjs/headless/input-otp';
+import type { ClassValue, Align } from '@soybeanjs/headless/types';
 import type { ThemeSize } from '@/theme';
 
 /**

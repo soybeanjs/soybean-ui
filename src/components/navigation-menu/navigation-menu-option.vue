@@ -6,7 +6,7 @@ import {
   NavigationMenuLink,
   NavigationMenuSubList,
   NavigationMenuTrigger
-} from '@soybeanjs/headless';
+} from '@soybeanjs/headless/navigation-menu';
 import { useForwardListeners } from '@soybeanjs/headless/composables';
 import Icon from '../icon/icon.vue';
 import NavigationMenuItemSlot from './navigation-menu-item-slot.vue';

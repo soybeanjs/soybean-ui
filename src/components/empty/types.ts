@@ -1,5 +1,4 @@
 import type {
-  ClassValue,
   EmptyContentProps,
   EmptyDescriptionProps,
   EmptyHeaderProps,
@@ -7,7 +6,8 @@ import type {
   EmptyRootProps,
   EmptyTitleProps,
   EmptyUi
-} from '@soybeanjs/headless';
+} from '@soybeanjs/headless/empty';
+import type { ClassValue } from '@soybeanjs/headless/types';
 import type { IconValue } from '../icon/types';
 import type { EmptyMediaVariant } from './variants';
 

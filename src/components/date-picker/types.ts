@@ -1,10 +1,10 @@
 import type {
-  ClassValue,
   DatePickerUi,
   DatePickerCompactProps,
   DatePickerCompactEmits,
   DatePickerCompactSlots
-} from '@soybeanjs/headless';
+} from '@soybeanjs/headless/date-picker';
+import type { ClassValue } from '@soybeanjs/headless/types';
 import type { ThemeSize } from '@/theme';
 
 /**

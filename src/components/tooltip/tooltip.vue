@@ -8,7 +8,7 @@ import {
   TooltipRoot,
   TooltipTrigger,
   provideTooltipUi
-} from '@soybeanjs/headless';
+} from '@soybeanjs/headless/tooltip';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
 import { mergeSlotVariants } from '@/theme';
 import { tooltipVariants } from './variants';

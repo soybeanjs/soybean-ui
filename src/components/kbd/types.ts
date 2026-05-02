@@ -1,4 +1,5 @@
-import type { ClassValue, KbdProps as _KbdProps } from '@soybeanjs/headless';
+import type { KbdProps as _KbdProps } from '@soybeanjs/headless/kbd';
+import type { ClassValue } from '@soybeanjs/headless/types';
 import type { ThemeSize } from '@/theme';
 import type { KbdVariant } from './variants';
 

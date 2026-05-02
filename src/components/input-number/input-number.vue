@@ -6,7 +6,7 @@ import {
   InputNumberIncrement,
   InputNumberRoot,
   provideInputNumberUi
-} from '@soybeanjs/headless';
+} from '@soybeanjs/headless/input-number';
 import { useForwardElement, useOmitProps } from '@soybeanjs/headless/composables';
 import { mergeSlotVariants } from '@/theme';
 import Icon from '../icon/icon.vue';

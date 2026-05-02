@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { CardCompact, provideCardUi } from '@soybeanjs/headless';
+import { CardCompact, provideCardUi } from '@soybeanjs/headless/card';
 import { useOmitProps } from '@soybeanjs/headless/composables';
 import { mergeSlotVariants } from '@/theme';
 import { cardVariants } from './variants';
@@ -16,13 +16,7 @@ const props = withDefaults(defineProps<CardProps>(), {
   scrollable: true
 });
 
-const forwardedProps = useOmitProps(props, [
-  'class',
-  'size',
-  'ui',
-  'scrollable',
-  'split'
-]);
+const forwardedProps = useOmitProps(props, ['class', 'size', 'ui', 'scrollable', 'split']);
 
 type Slots = {
   default: () => any;

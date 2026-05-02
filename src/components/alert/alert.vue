@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { AlertCompact, provideAlertUi } from '@soybeanjs/headless';
+import { AlertCompact, provideAlertUi } from '@soybeanjs/headless/alert';
 import { useOmitProps } from '@soybeanjs/headless/composables';
 import { keysOf } from '@soybeanjs/utils';
 import { mergeBaseVariants, mergeSlotVariants, miniSizeMap } from '@/theme';

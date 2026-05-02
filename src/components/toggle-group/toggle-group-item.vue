@@ -1,6 +1,6 @@
 <script setup lang="ts" generic="T extends DefinedValue = string">
-import type { DefinedValue } from '@soybeanjs/headless';
-import { ToggleGroupItem } from '@soybeanjs/headless';
+import type { DefinedValue } from '@soybeanjs/headless/types';
+import { ToggleGroupItem } from '@soybeanjs/headless/toggle-group';
 import type { ToggleGroupItemProps } from '@soybeanjs/headless/toggle-group';
 import { useOmitProps } from '@soybeanjs/headless/composables';
 

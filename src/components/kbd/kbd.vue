@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { Kbd } from '@soybeanjs/headless';
+import { Kbd } from '@soybeanjs/headless/kbd';
 import { useOmitProps } from '@soybeanjs/headless/composables';
 import { cn } from '@/theme';
 import { kbdVariants } from './variants';

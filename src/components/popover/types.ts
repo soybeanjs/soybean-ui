@@ -1,6 +1,4 @@
 import type {
-  ClassValue,
-  Placement,
   PopoverArrowProps,
   PopoverCloseProps,
   PopoverPopupProps,
@@ -10,8 +8,9 @@ import type {
   PopoverRootEmits,
   PopoverRootProps,
   PopoverTriggerProps,
-  PopperUi
-} from '@soybeanjs/headless';
+  PopoverUi
+} from '@soybeanjs/headless/popover';
+import type { ClassValue, Placement } from '@soybeanjs/headless/types';
 import type { ThemeSize } from '@/theme';
 
 /**
@@ -29,7 +28,7 @@ export interface PopoverProps extends PopoverRootProps {
   /**
    * Per-slot class overrides for the component.
    */
-  ui?: Partial<PopperUi>;
+  ui?: Partial<PopoverUi>;
   /**
    * Placement.
    */

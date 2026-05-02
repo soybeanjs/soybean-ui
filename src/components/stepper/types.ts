@@ -1,5 +1,4 @@
 import type {
-  ClassValue,
   StepperDescriptionProps,
   StepperIndicatorProps,
   StepperItemProps,
@@ -8,9 +7,9 @@ import type {
   StepperSeparatorProps,
   StepperTitleProps,
   StepperTriggerProps,
-  StepperUiSlot,
-  UiClass
-} from '@soybeanjs/headless';
+  StepperUiSlot
+} from '@soybeanjs/headless/stepper';
+import type { ClassValue, UiClass } from '@soybeanjs/headless/types';
 import type { ThemeColor, ThemeSize } from '@/theme';
 
 /**

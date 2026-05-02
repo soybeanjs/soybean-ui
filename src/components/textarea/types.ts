@@ -1,11 +1,11 @@
 import type {
-  ClassValue,
   TextareaControlProps,
   TextareaCounterProps,
   TextareaRootEmits,
   TextareaRootProps,
   TextareaUi
-} from '@soybeanjs/headless';
+} from '@soybeanjs/headless/textarea';
+import type { ClassValue } from '@soybeanjs/headless/types';
 import type { ThemeSize } from '@/theme';
 import type { TextareaResize } from './variants';
 

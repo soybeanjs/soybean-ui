@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { Primitive } from '@soybeanjs/headless';
+import { Primitive } from '@soybeanjs/headless/primitive';
 import { useOmitProps } from '@soybeanjs/headless/composables';
 import { transformPropsToContext } from '@soybeanjs/headless/shared';
 import { cn } from '@/theme';

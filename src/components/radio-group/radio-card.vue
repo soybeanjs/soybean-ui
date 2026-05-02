@@ -1,6 +1,12 @@
 <script setup lang="ts">
 import { computed, useId, useSlots } from 'vue';
-import { RadioGroupControl, RadioGroupIndicator, RadioGroupItem, RadioGroupLabel, Slot } from '@soybeanjs/headless';
+import {
+  RadioGroupControl,
+  RadioGroupIndicator,
+  RadioGroupItem,
+  RadioGroupLabel
+} from '@soybeanjs/headless/radio-group';
+import { Slot } from '@soybeanjs/headless/slot';
 import { useOmitProps } from '@soybeanjs/headless/composables';
 import Icon from '../icon/icon.vue';
 import type { RadioCardProps } from './types';

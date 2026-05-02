@@ -1,10 +1,5 @@
-import type {
-  ClassValue,
-  DialogCompactProps,
-  DialogCompactEmits,
-  DialogCompactSlots,
-  DialogUi
-} from '@soybeanjs/headless';
+import type { DialogCompactProps, DialogCompactEmits, DialogCompactSlots, DialogUi } from '@soybeanjs/headless/dialog';
+import type { ClassValue } from '@soybeanjs/headless/types';
 import type { ThemeSize } from '@/theme';
 
 /**

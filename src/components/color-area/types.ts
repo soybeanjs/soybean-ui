@@ -1,11 +1,11 @@
 import type {
-  ClassValue,
   ColorAreaAreaProps,
   ColorAreaRootEmits,
   ColorAreaRootProps,
   ColorAreaThumbProps,
   ColorAreaUi
-} from '@soybeanjs/headless';
+} from '@soybeanjs/headless/color-area';
+import type { ClassValue } from '@soybeanjs/headless/types';
 import type { ThemeSize } from '@/theme';
 
 /**

@@ -1,4 +1,4 @@
-import type { ClassValue, UiClass } from '@soybeanjs/headless';
+import type { ClassValue, UiClass } from '@soybeanjs/headless/types';
 import type { ColorFormat, ColorSpace, ColorValue, NormalizedColor } from '@soybeanjs/headless/shared';
 import type { ColorAreaProps } from '@/components/color-area/types';
 import type { ColorFieldProps } from '@/components/color-field/types';

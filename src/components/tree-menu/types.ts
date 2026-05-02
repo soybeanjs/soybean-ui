@@ -1,11 +1,8 @@
 import type { ComputedRef, HTMLAttributes } from 'vue';
+import type { ClassValue, HorizontalSide, PropsToContext, UiClass } from '@soybeanjs/headless/types';
+import type { AsTag } from '@soybeanjs/headless/primitive';
+import type { LinkBaseProps, LinkProps } from '@soybeanjs/headless/link';
 import type {
-  AsTag,
-  ClassValue,
-  HorizontalSide,
-  LinkBaseProps,
-  LinkProps,
-  PropsToContext,
   TreeMenuBaseItemProps,
   TreeMenuButtonProps,
   TreeMenuCollapsibleProps,
@@ -16,9 +13,8 @@ import type {
   TreeMenuRootEmits,
   TreeMenuRootProps,
   TreeMenuSubProps,
-  TreeMenuUiSlot,
-  UiClass
-} from '@soybeanjs/headless';
+  TreeMenuUiSlot
+} from '@soybeanjs/headless/tree-menu';
 import type { ThemeSize } from '@/theme';
 import type { IconValue } from '../icon/types';
 import type { TooltipProps } from '../tooltip/types';

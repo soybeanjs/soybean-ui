@@ -1,5 +1,4 @@
 import type {
-  ClassValue,
   HoverCardArrowProps,
   HoverCardPopupProps,
   HoverCardPortalProps,
@@ -8,9 +7,9 @@ import type {
   HoverCardRootEmits,
   HoverCardRootProps,
   HoverCardTriggerProps,
-  HoverCardUi,
-  Placement
-} from '@soybeanjs/headless';
+  HoverCardUi
+} from '@soybeanjs/headless/hover-card';
+import type { ClassValue, Placement } from '@soybeanjs/headless/types';
 import type { ThemeSize } from '@/theme';
 
 /**
