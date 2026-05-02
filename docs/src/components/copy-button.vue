@@ -25,7 +25,7 @@ const { copy, copied } = useClipboard({
   <SButtonIcon
     :icon="copied ? 'lucide:check' : 'lucide:copy'"
     :fit-content="false"
-    class="absolute right-1 top-1 z-10"
+    class="absolute right-3 top-3 z-10 opacity-78 transition-opacity duration-200 hover:opacity-100"
     @click="copy(code)"
   />
 </template>

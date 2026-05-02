@@ -93,6 +93,13 @@ declare module 'vue-router/auto-routes' {
       Record<never, never>,
       | never
     >,
+    '/releases': RouteRecordInfo<
+      '/releases',
+      '/releases',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
   }
 
   /**
@@ -157,6 +164,12 @@ declare module 'vue-router/auto-routes' {
     'src/pages/overview/theming.vue': {
       routes:
         | '/overview/theming'
+      views:
+        | never
+    }
+    'src/pages/releases.vue': {
+      routes:
+        | '/releases'
       views:
         | never
     }

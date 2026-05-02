@@ -13,16 +13,22 @@ const { t } = useI18n();
 
 const menus = computed<NavigationMenuOptionData[]>(() => [
   {
-    value: 'docs',
-    label: t('layout.header.docs'),
-    icon: 'lucide:book-open',
-    to: '/overview/introduction'
+    value: 'getting-started',
+    label: t('layout.header.getting_started'),
+    icon: 'lucide:rocket',
+    to: '/overview/quick-start'
   },
   {
     value: 'components',
     label: t('layout.header.components'),
     icon: 'lucide:layout-grid',
     to: '/components'
+  },
+  {
+    value: 'releases',
+    label: t('layout.header.releases'),
+    icon: 'lucide:git-commit-horizontal',
+    to: '/releases'
   }
 ]);
 </script>
@@ -32,5 +38,6 @@ const menus = computed<NavigationMenuOptionData[]>(() => [
     :items="menus"
     :orientation="orientation"
     :link-props="{ activeClass: 'text-primary! font-semibold dark:text-primary! bg-transparent!' }"
+    class="w-fit"
   />
 </template>

@@ -24,7 +24,9 @@ layout:
     search: Search documentation
     search_empty: No related documents found
     docs: Docs
+    getting_started: Getting Started
     components: Components
+    releases: Releases
     version: Version
     github: GitHub
     theme: Theme
@@ -38,23 +40,63 @@ components:
     title: Component Catalog
     description: Browse every Soybean UI component by category and jump straight into the dedicated docs page for each one.
     helper: Use the category view below or press Command + K to jump to a component directly.
+    kicker: Component catalog and entry points
     group_count: '{count} components'
     actions:
       open: Open documentation
+      start: Quick Start
+      learn: Learn the architecture
     badges:
       new: New
     stats:
       total: Total components
       categories: Categories
+      featured: Featured
+      new: New components
+    stats_title: Catalog at a glance
+    stats_description: Find the right component path faster for the screen you are building.
+    quick_actions:
+      quick_start:
+        title: Set up first
+        desc: If the package is not installed yet, start from the quick-start guide before browsing deeper.
+      introduction:
+        title: Understand the layers
+        desc: Learn the headless and UI split first so component choices stay intentional.
+      theming:
+        title: Review theming early
+        desc: If styling and slot overrides matter, the theming guide saves time before implementation.
+    featured:
+      button: The starting point for actions, decisions, and primary user flows.
+      input: A reliable base for plain text entry and more complex form composition.
+      select: A high-frequency choice for filtering, picking, and structured input flows.
+      dialog: The core overlay for confirmations, editing, and interruptive flows.
+      table: A key surface for dense data reading, comparison, and structured display.
+      form: The entry point for aligning validation, inputs, and submission feedback.
+    sections:
+      featured:
+        title: Start with these high-signal components
+        desc: If you are unsure where to begin, these components best represent the system in real work.
+      groups:
+        title: All categories
+        desc: Browse the full landscape by intent instead of hopping between isolated pages.
   button:
     title: Button
     desc: Button component
   home:
     title: Soybean UI
     description: A modern, headless-first UI component library for Vue 3. Crafted for performance, accessibility, and developer experience.
+    kicker: Vue 3 Documentation Hub
+    helper: Start with the quick-start path, jump into component categories, and use the docs as a working reference for implementation, theming, and API decisions.
     actions:
       start: Get Started
+      browse: Browse Components
       github: GitHub
+    stats_title: Library at a glance
+    stats:
+      components: Components
+      categories: Categories
+      packages: Packages
+      guides: Guides
     features:
       accessible:
         title: Accessible
@@ -68,6 +110,61 @@ components:
       customizable:
         title: Customizable
         desc: Built with UnoCSS and tailwind-variants for easy theming.
+    quick_links:
+      get_started:
+        title: Quick Start
+        desc: Install the package, wire the config provider, and ship your first screen faster.
+      introduction:
+        title: Architecture Intro
+        desc: Understand the headless-first layering model before you compose real interfaces.
+      components:
+        title: Component Catalog
+        desc: Browse the full set of primitives, patterns, and utility building blocks by category.
+      theming:
+        title: Theming Guide
+        desc: Learn how design tokens, variants, and UI slot overrides fit together.
+    workflow:
+      explore:
+        title: Explore the API surface
+        desc: Start from docs pages that combine overview, examples, and API tables in one place.
+      compose:
+        title: Compose with headless + styled layers
+        desc: Use headless logic where you need control, then adopt Soybean UI wrappers for fast delivery.
+      ship:
+        title: Validate and ship confidently
+        desc: Follow the same docs pages for props, slots, emits, and usage constraints during implementation.
+    architecture:
+      headless:
+        title: Headless foundation
+        desc: "State, behavior, accessibility, and semantic structure live in {'@'}soybeanjs/headless."
+        badge: Logic
+      ui:
+        title: Styled wrapper layer
+        desc: "{'@'}soybeanjs/ui applies variants, slot styling, and polished defaults without breaking composition."
+        badge: Visuals
+      docs:
+        title: Documentation layer
+        desc: The docs site aligns demos, API tables, and navigation so design and engineering can read from one source.
+        badge: Reference
+    sections:
+      highlights:
+        title: Why teams start here
+      featured:
+        title: Featured components
+      workflow:
+        title: Recommended workflow
+      categories:
+        title: Browse the component landscape
+        unit: components
+      architecture:
+        title: Layered system overview
+    featured:
+      button: A high-frequency entry point for actions, state transitions, and forward flow.
+      input: A practical base for everything from simple entry to richer form composition.
+      select: Useful for filtering, option picking, and structured data selection flows.
+      dialog: A strong fit for confirmation, editing, and multi-step overlay experiences.
+      table: One of the core components for data reading, comparison, and structured display.
+      form: A stable way to align fields, validation, and submission behavior.
 sidebar:
   overview: Overview
   introduction: Introduction
@@ -89,6 +186,9 @@ api:
   props: Props
   emits: Emits
   slots: Slots
+  badges:
+    required: Required
+    default: Default
   columns:
     prop_name: Prop
     emit_name: Emit Name
@@ -103,3 +203,26 @@ api:
   local_types: Local Types
   common_types_note: Shared repeated types are centralized on the
   common_types_link: Common Types page.
+component_detail:
+  kicker: Component detail entry
+  helper: Use the top shortcuts to reach overview, usage, demos, and API first, then continue through the full page.
+  summary: '{component} belongs to the {category} category. Start with demos and usage, then use the API tables to finish integration and styling decisions.'
+  meta:
+    category: Category
+    import: Import
+    route: Route
+  actions:
+    demos: View demos
+    api: View API
+    catalog: Back to catalog
+  sections:
+    overview: Overview
+    usage: Usage
+    demos: Demos
+    api: API
+  quick_jump:
+    title: Quick jump
+    desc: Jump straight to the sections most people use first.
+  related:
+    title: Related components
+    desc: If you are composing interactions in the same family, these components usually pair well together.

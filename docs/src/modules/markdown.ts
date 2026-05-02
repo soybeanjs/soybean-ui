@@ -14,6 +14,7 @@ export function encodeBase64Utf8(raw: string): string {
 
 export const customMarkdownPlugin: PluginSimple = md => {
   playgroundPlugin(md);
+  mermaidPlugin(md);
   copyCodePlugin(md);
   tooltipPlugin(md);
 };
@@ -47,6 +48,23 @@ function playgroundPlugin(md: MarkdownExit) {
     const rendered = origFence ? origFence(tokens, idx, options, env, slf) : slf.renderToken(tokens, idx, options);
 
     return rendered;
+  };
+}
+
+function mermaidPlugin(md: MarkdownExit) {
+  const origFence = md.renderer.rules.fence?.bind(md.renderer.rules);
+
+  md.renderer.rules.fence = (tokens, idx, options, env, slf) => {
+    const token = tokens[idx];
+    const info = (token.info || '').trim();
+
+    if (info === 'mermaid') {
+      const codeBase64 = encodeBase64Utf8(token.content);
+
+      return `<MermaidDiagram code-base64="${codeBase64}" />`;
+    }
+
+    return origFence ? origFence(tokens, idx, options, env, slf) : slf.renderToken(tokens, idx, options);
   };
 }
 
@@ -84,8 +102,8 @@ function copyCodePlugin(md: MarkdownExit) {
 
     const rendered = origFence ? origFence(tokens, idx, options, env, slf) : slf.renderToken(tokens, idx, options);
 
-    // Let playgroundPlugin fully control ```playground blocks
-    if (info === 'playground') {
+    // Let specialized fence plugins fully control their own blocks
+    if (info === 'playground' || info === 'mermaid') {
       return rendered;
     }
 

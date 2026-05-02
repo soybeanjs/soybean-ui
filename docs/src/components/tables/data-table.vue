@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { STable } from '@soybeanjs/ui';
+import { SBadge, STable } from '@soybeanjs/ui';
 import type { TableColumn } from '@soybeanjs/ui';
 import { typeToVNode } from './type-anchor';
 import { useApiI18n } from './use-api-i18n';
@@ -71,19 +71,17 @@ function buildPresetColumns(preset: PropsPreset | undefined): DataTableColumn<an
       {
         key: 'name',
         title: t('api.columns.prop_name'),
-        cellWrapperClass: 'code-btn',
-        render: row => [row.name, row.required ? ' *' : '']
+        render: row => row.name
       },
       {
         key: 'type',
         title: t('api.columns.type'),
-        cellWrapperClass: 'code-btn-outline',
         render: row => typeToVNode(row.type)
       },
       {
-        key: 'default',
+        key: 'defaultValue',
         title: t('api.columns.default'),
-        cellWrapperClass: 'code-btn-outline'
+        render: row => row.default ?? '—'
       },
       {
         key: 'description',
@@ -101,13 +99,11 @@ function buildPresetColumns(preset: PropsPreset | undefined): DataTableColumn<an
       {
         key: 'name',
         title,
-        cellWrapperClass: 'code-btn',
-        render: row => [row.name, row.required ? ' *' : '']
+        render: row => row.name
       },
       {
         key: 'parameters',
         title: t('api.columns.parameters'),
-        cellWrapperClass: 'code-btn-outline',
         render: row => typeToVNode(row.parameters)
       },
       {
@@ -134,7 +130,7 @@ const columnMinWidthMap: Record<string, string> = {
   name: '144px',
   type: '176px',
   parameters: '176px',
-  default: '136px',
+  defaultValue: '136px',
   description: '240px'
 };
 
@@ -155,7 +151,9 @@ const tableData = computed<TableRow[]>(() => {
 });
 
 const customRenderedColumns = computed(() => {
-  return resolvedColumns.value.filter(column => column.key !== 'description');
+  return resolvedColumns.value.filter(
+    column => !['name', 'type', 'parameters', 'defaultValue', 'description'].includes(column.key)
+  );
 });
 
 function getColumnRender(column: DataTableColumn<any>) {
@@ -173,8 +171,47 @@ function getDescriptionText(row: TableRow) {
 </script>
 
 <template>
-  <div class="min-w-0 overflow-x-auto">
+  <div
+    class="min-w-0 overflow-x-auto rounded-5 border border-border/60 bg-background/74 shadow-[0_14px_38px_-30px_rgba(15,23,42,0.18)] backdrop-blur-sm"
+  >
     <STable :columns="tableColumns" :data="tableData" :row-key="row => row.__rowKey" size="sm" bordered>
+      <template #name="{ row: tableRow }">
+        <div class="flex flex-wrap items-center gap-2">
+          <div class="code-btn">{{ getCellValue(tableRow, 'name') }}</div>
+          <SBadge v-if="tableRow.required" size="xs" color="destructive">{{ t('api.badges.required') }}</SBadge>
+        </div>
+      </template>
+
+      <template #type="{ row: tableRow }">
+        <div class="code-btn-outline">
+          <CellRenderer
+            :render="getColumnRender(resolvedColumns.find(column => column.key === 'type')!)"
+            :row="tableRow"
+          />
+        </div>
+      </template>
+
+      <template #parameters="{ row: tableRow }">
+        <div class="code-btn-outline">
+          <CellRenderer
+            :render="getColumnRender(resolvedColumns.find(column => column.key === 'parameters')!)"
+            :row="tableRow"
+          />
+        </div>
+      </template>
+
+      <template #defaultValue="{ row: tableRow }">
+        <div class="flex flex-wrap items-center gap-2">
+          <div v-if="getCellValue(tableRow, 'default') !== '—'" class="code-btn-outline">
+            {{ getCellValue(tableRow, 'default') }}
+          </div>
+          <span v-else class="text-sm text-muted-foreground">—</span>
+          <SBadge v-if="getCellValue(tableRow, 'default') !== '—'" size="xs" color="primary">
+            {{ t('api.badges.default') }}
+          </SBadge>
+        </div>
+      </template>
+
       <template v-for="col in customRenderedColumns" :key="col.key" #[col.key]="{ row: tableRow }">
         <div v-if="col.cellWrapperClass" :class="col.cellWrapperClass">
           <CellRenderer :render="getColumnRender(col)" :row="tableRow" />
@@ -183,7 +220,7 @@ function getDescriptionText(row: TableRow) {
       </template>
 
       <template #description="{ row: tableRow }">
-        <div class="max-w-[20rem] whitespace-pre-wrap break-words">
+        <div class="max-w-[22rem] whitespace-pre-wrap break-words py-1 text-sm leading-6 text-muted-foreground">
           {{ getDescriptionText(tableRow) }}
         </div>
       </template>
