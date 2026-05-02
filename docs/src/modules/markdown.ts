@@ -1,6 +1,5 @@
-import type { MarkdownItAsync, PluginSimple } from 'markdown-it-async';
-import type { RenderRule } from 'markdown-it/lib/renderer.mjs';
-import type { MarkdownEnv } from 'unplugin-vue-markdown/dist/types.js';
+import type { MarkdownExit, PluginSimple } from 'markdown-exit';
+import type { MarkdownEnv } from 'unplugin-vue-markdown/types';
 
 export function encodeBase64Utf8(raw: string): string {
   if (typeof btoa === 'function' && typeof TextEncoder !== 'undefined') {
@@ -19,8 +18,8 @@ export const customMarkdownPlugin: PluginSimple = md => {
   tooltipPlugin(md);
 };
 
-function playgroundPlugin(md: MarkdownItAsync) {
-  const origFence = md.renderer.rules.fence?.bind(md.renderer.rules) as RenderRule | undefined;
+function playgroundPlugin(md: MarkdownExit) {
+  const origFence = md.renderer.rules.fence?.bind(md.renderer.rules);
 
   md.renderer.rules.fence = (tokens, idx, options, env, slf) => {
     const token = tokens[idx];
@@ -51,8 +50,28 @@ function playgroundPlugin(md: MarkdownItAsync) {
   };
 }
 
-function copyCodePlugin(md: MarkdownItAsync) {
-  const origFence = md.renderer.rules.fence?.bind(md.renderer.rules) as RenderRule | undefined;
+function copyCodePlugin(md: MarkdownExit) {
+  const origFence = md.renderer.rules.fence?.bind(md.renderer.rules);
+
+  const wrapRenderedHtml = (renderedHtml: string, tokenInfo: string, rawCode: string) => {
+    if (!renderedHtml) return renderedHtml;
+
+    // Avoid double-wrapping
+    if (renderedHtml.includes('md-code-block') || renderedHtml.includes('md-code-copy')) return renderedHtml;
+
+    const lang = (tokenInfo || '').trim().split(/\s+/)[0] || '';
+    const codeBase64 = encodeBase64Utf8(rawCode);
+
+    return `\n<div class="md-code-block" data-lang="${lang}">\n  <CopyButton code-base64="${codeBase64}" />\n  ${renderedHtml}\n</div>\n`;
+  };
+
+  const wrapWithCopyButton = (renderedHtml: string | Promise<string>, tokenInfo: string, rawCode: string) => {
+    if (typeof renderedHtml === 'string') {
+      return wrapRenderedHtml(renderedHtml, tokenInfo, rawCode);
+    }
+
+    return renderedHtml.then(html => wrapRenderedHtml(html, tokenInfo, rawCode));
+  };
 
   md.renderer.rules.fence = (tokens, idx, options, env, slf) => {
     const token = tokens[idx];
@@ -62,18 +81,6 @@ function copyCodePlugin(md: MarkdownItAsync) {
     if (token.markup !== '```') {
       return origFence ? origFence(tokens, idx, options, env, slf) : slf.renderToken(tokens, idx, options);
     }
-
-    const wrapWithCopyButton = (renderedHtml: string, tokenInfo: string, rawCode: string) => {
-      if (!renderedHtml) return renderedHtml;
-
-      // Avoid double-wrapping
-      if (renderedHtml.includes('md-code-block') || renderedHtml.includes('md-code-copy')) return renderedHtml;
-
-      const lang = (tokenInfo || '').trim().split(/\s+/)[0] || '';
-      const codeBase64 = encodeBase64Utf8(rawCode);
-
-      return `\n<div class="md-code-block" data-lang="${lang}">\n  <CopyButton code-base64="${codeBase64}" />\n  ${renderedHtml}\n</div>\n`;
-    };
 
     const rendered = origFence ? origFence(tokens, idx, options, env, slf) : slf.renderToken(tokens, idx, options);
 
@@ -90,7 +97,7 @@ function copyCodePlugin(md: MarkdownItAsync) {
  * replaces the syntax {? tooltip content } with a PlaygroundTooltip component.
  * @param md
  */
-function tooltipPlugin(md: MarkdownItAsync) {
+function tooltipPlugin(md: MarkdownExit) {
   const defaultRule = md.renderer.rules.text;
 
   md.renderer.rules.text = (tokens, idx, options, env, self) => {

@@ -10,9 +10,8 @@ import MetaLayouts from 'vite-plugin-vue-meta-layouts';
 import Unocss from 'unocss/vite';
 import AutoImport from 'unplugin-auto-import/vite';
 import Components from 'unplugin-vue-components/vite';
-import LinkAttributes from 'markdown-it-link-attributes';
 import Markdown from 'unplugin-vue-markdown/vite';
-import Shiki from '@shikijs/markdown-it';
+import Shiki from '@shikijs/markdown-exit';
 import VueI18n from '@intlify/unplugin-vue-i18n/vite';
 import generateSitemap from 'vite-ssg-sitemap';
 import { customMarkdownPlugin } from './src/modules/markdown';
@@ -60,15 +59,8 @@ export default defineConfig({
       wrapperClasses: 'markdown-wrapper',
       headEnabled: true,
       async markdownItSetup(md) {
-        md.use(LinkAttributes, {
-          matcher: (link: string) => /^https?:\/\//.test(link),
-          attrs: {
-            target: '_blank',
-            rel: 'noopener'
-          }
-        });
         md.use(
-          await Shiki({
+          Shiki({
             defaultColor: false,
             themes: {
               light: 'one-light',
