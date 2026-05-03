@@ -4,6 +4,7 @@ html {
   --scrollbar-color-dark: rgba(255, 255, 255, 0.5);
   --scrollbar-size: 8px;
   --scrollbar-color: var(--scrollbar-color-light);
+  --docs-page-bg-solid: rgb(244, 247, 255);
   --docs-page-bg: linear-gradient(
     180deg,
     rgba(244, 247, 255, 0.96) 0%,
@@ -40,6 +41,7 @@ html {
 
 html.dark {
   --scrollbar-color: var(--scrollbar-color-dark);
+  --docs-page-bg-solid: rgb(9, 12, 22);
   --docs-page-bg: linear-gradient(
     180deg,
     rgba(10, 13, 24, 0.98) 0%,
@@ -77,8 +79,15 @@ body,
   min-height: 100%;
 }
 
+html,
 body {
-  background: var(--docs-page-bg);
+  background-color: var(--docs-page-bg-solid);
+}
+
+body {
+  background-color: var(--docs-page-bg-solid);
+  background-image: var(--docs-page-bg);
+  background-repeat: no-repeat;
   font-family: var(--docs-font-sans);
   font-optical-sizing: auto;
   text-rendering: optimizeLegibility;
