@@ -6,20 +6,11 @@ Displays a menu to the user—such as a set of actions or functions—triggered 
 
 ## Usage
 
-```usage
-basic
-```
+<UsageCode component="dropdown-menu" />
 
 ## Demos
 
-```playground
-basic
-trigger
-arrow
-checkbox
-radio
-mix
-```
+<PlaygroundGallery component="dropdown-menu" />
 
 ## API
 

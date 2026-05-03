@@ -12,9 +12,7 @@
 
 ### 声明式用法
 
-```usage
-basic
-```
+<UsageCode component="dialog" />
 
 ### 命令式 API
 
@@ -41,14 +39,7 @@ function openWarningDialog() {
 
 ## 演示
 
-```playground
-basic
-footer
-state
-prevent
-pure
-dialog-api
-```
+<PlaygroundGallery component="dialog" />
 
 ## API
 

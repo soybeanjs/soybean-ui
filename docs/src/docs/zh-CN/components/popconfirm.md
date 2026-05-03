@@ -6,15 +6,11 @@
 
 ## 用法
 
-```usage
-basic
-```
+<UsageCode component="popconfirm" />
 
 ## 演示
 
-```playground
-basic
-```
+<PlaygroundGallery component="popconfirm" />
 
 ## API
 

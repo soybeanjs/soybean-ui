@@ -6,15 +6,11 @@ Displays rich content in a portal, triggered by a button.
 
 ## Usage
 
-```usage
-basic
-```
+<UsageCode component="popover" />
 
 ## Demos
 
-```playground
-basic
-```
+<PlaygroundGallery component="popover" />
 
 ## API
 

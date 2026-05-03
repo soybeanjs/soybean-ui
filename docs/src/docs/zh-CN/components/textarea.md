@@ -6,20 +6,11 @@
 
 ## 用法
 
-```usage
-basic
-```
+<UsageCode component="textarea" />
 
 ## 演示
 
-```playground
-basic
-autosize
-clearable
-disabled
-counter
-footer
-```
+<PlaygroundGallery component="textarea" />
 
 ## API
 

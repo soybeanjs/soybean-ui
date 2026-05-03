@@ -6,15 +6,11 @@
 
 ## 用法
 
-```usage
-basic
-```
+<UsageCode component="aspect-ratio" />
 
 ## 演示
 
-```playground
-basic
-```
+<PlaygroundGallery component="aspect-ratio" />
 
 ## API
 

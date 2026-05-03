@@ -4,18 +4,11 @@ A date picker component that combines a text input with a calendar popup for sel
 
 ## Usage
 
-```usage
-basic
-```
+<UsageCode component="date-picker" />
 
 ## Examples
 
-```playground
-basic
-disabled
-size
-custom-styling
-```
+<PlaygroundGallery component="date-picker" />
 
 ## API
 

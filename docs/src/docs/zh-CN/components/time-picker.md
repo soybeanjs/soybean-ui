@@ -6,18 +6,11 @@ TimePicker 用于在弹层时间列表中选择单个时间，并将结果保留
 
 ## 用法
 
-```usage
-basic
-```
+<UsageCode component="time-picker" />
 
 ## 演示
 
-```playground
-basic
-size
-disabled
-custom-styling
-```
+<PlaygroundGallery component="time-picker" />
 
 ## API
 

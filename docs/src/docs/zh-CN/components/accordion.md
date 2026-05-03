@@ -6,20 +6,11 @@
 
 ## 用法
 
-```usage
-basic
-```
+<UsageCode component="accordion" />
 
 ## 演示
 
-```playground
-basic
-single
-always-one
-multiple
-custom-icon
-custom-styling
-```
+<PlaygroundGallery component="accordion" />
 
 ## API
 

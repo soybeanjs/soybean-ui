@@ -6,9 +6,7 @@
 
 ## Usage
 
-```usage
-basic
-```
+<UsageCode component="label" />
 
 ## API
 

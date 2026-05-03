@@ -8,18 +8,11 @@ Backtop 会在滚动目标超过阈值后显示一个浮动按钮，并在触发
 
 ## 用法
 
-```usage
-basic
-```
+<UsageCode component="backtop" />
 
 ## 演示
 
-```playground
-basic
-target
-disabled
-custom-styling
-```
+<PlaygroundGallery component="backtop" />
 
 ## API
 

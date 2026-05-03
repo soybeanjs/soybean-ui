@@ -6,18 +6,11 @@
 
 ## 用法
 
-```usage
-basic
-```
+<UsageCode component="tags-input" />
 
 ## 演示
 
-```playground
-basic
-disabled
-object-value
-clear
-```
+<PlaygroundGallery component="tags-input" />
 
 ## API
 

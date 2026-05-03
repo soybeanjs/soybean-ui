@@ -6,15 +6,11 @@
 
 ## 用法
 
-```usage
-basic
-```
+<UsageCode component="tree-menu" />
 
 ## 演示
 
-```playground
-basic
-```
+<PlaygroundGallery component="tree-menu" />
 
 ## API
 

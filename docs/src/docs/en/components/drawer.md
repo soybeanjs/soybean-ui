@@ -6,17 +6,11 @@ A panel that slides out from the edge of the screen. It reuses the declarative A
 
 ## Usage
 
-```usage
-basic
-```
+<UsageCode component="drawer" />
 
 ## Demos
 
-```playground
-basic
-side
-scroll
-```
+<PlaygroundGallery component="drawer" />
 
 ## API
 

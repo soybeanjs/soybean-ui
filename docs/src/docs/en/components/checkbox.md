@@ -6,25 +6,13 @@ A control that allows the user to select one or more items from a set.
 
 ## Usage
 
-```usage
-basic
-```
+<UsageCode component="checkbox" />
 
 > `SCheckboxGroup` and `SCheckboxCardGroup` now delegate list iteration and default checkbox/card composition to headless `CheckboxGroupCompact` and `CheckboxCardGroupCompact`. For unstyled, data-driven usage, import them from `@soybeanjs/headless/checkbox`.
 
 ## Demos
 
-```playground
-basic
-single
-color
-size
-shape
-icon
-group
-card
-card-group
-```
+<PlaygroundGallery component="checkbox" />
 
 ## API
 

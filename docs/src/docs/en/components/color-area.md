@@ -6,16 +6,11 @@ A two-dimensional color editor for saturation/lightness, saturation/brightness, 
 
 ## Usage
 
-```usage
-basic
-```
+<UsageCode component="color-area" />
 
 ## Demo
 
-```playground
-basic
-oklch
-```
+<PlaygroundGallery component="color-area" />
 
 ## API
 

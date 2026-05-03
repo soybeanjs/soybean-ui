@@ -6,17 +6,11 @@
 
 ## 用法
 
-```usage
-basic
-```
+<UsageCode component="virtualizer" />
 
 ## 演示
 
-```playground
-basic
-horizontal
-dynamic
-```
+<PlaygroundGallery component="virtualizer" />
 
 ## API
 

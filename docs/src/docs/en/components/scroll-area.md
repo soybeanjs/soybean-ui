@@ -6,18 +6,11 @@ A custom scroll container that keeps native scrolling behavior while rendering s
 
 ## Usage
 
-```usage
-basic
-```
+<UsageCode component="scroll-area" />
 
 ## Demos
 
-```playground
-basic
-horizontal
-type
-custom-styling
-```
+<PlaygroundGallery component="scroll-area" />
 
 ## API
 

@@ -6,18 +6,11 @@ RangeCalendar displays one or more month grids and lets users choose a start and
 
 ## Usage
 
-```usage
-basic
-```
+<UsageCode component="range-calendar" />
 
 ## Demos
 
-```playground
-basic
-two-months
-disabled
-custom-styling
-```
+<PlaygroundGallery component="range-calendar" />
 
 ## API
 

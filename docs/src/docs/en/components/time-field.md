@@ -6,18 +6,11 @@ TimeField is a segmented time input for hour, minute, optional second, and local
 
 ## Usage
 
-```usage
-basic
-```
+<UsageCode component="time-field" />
 
 ## Demo
 
-```playground
-basic
-seconds
-disabled
-custom-styling
-```
+<PlaygroundGallery component="time-field" />
 
 ## API
 

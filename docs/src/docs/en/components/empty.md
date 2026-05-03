@@ -6,18 +6,11 @@ A lightweight empty state component for highlighting missing content, actions, a
 
 ## Usage
 
-```usage
-basic
-```
+<UsageCode component="empty" />
 
 ## Demos
 
-```playground
-basic
-icon
-slot
-custom-styling
-```
+<PlaygroundGallery component="empty" />
 
 ## API
 

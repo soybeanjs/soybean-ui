@@ -10,22 +10,11 @@ The first argument of `toast(...)` becomes the toast title/message. Use `descrip
 
 Mount one `SToastProvider` near your app root. If your app is already wrapped with `SConfigProvider`, a default `SToastProvider` is rendered automatically unless `customToast` is set to `true`.
 
-```usage
-basic
-```
+<UsageCode component="toast" />
 
 ## Demos
 
-```playground
-basic
-types
-promise
-action
-control
-appearance
-stack
-position
-```
+<PlaygroundGallery component="toast" />
 
 ## API
 

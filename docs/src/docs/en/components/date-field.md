@@ -6,18 +6,11 @@ DateField is a segmented date input that keeps keyboard-editable parts for day, 
 
 ## Usage
 
-```usage
-basic
-```
+<UsageCode component="date-field" />
 
 ## Demo
 
-```playground
-basic
-with-time
-disabled
-custom-styling
-```
+<PlaygroundGallery component="date-field" />
 
 ## API
 

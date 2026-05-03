@@ -6,15 +6,11 @@ A single-channel color slider for hue, alpha, and individual RGB/HSL/HSV/OKLCH c
 
 ## Usage
 
-```usage
-basic
-```
+<UsageCode component="color-slider" />
 
 ## Demo
 
-```playground
-basic
-```
+<PlaygroundGallery component="color-slider" />
 
 ## API
 

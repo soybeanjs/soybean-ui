@@ -6,18 +6,11 @@
 
 ## 用法
 
-```usage
-basic
-```
+<UsageCode component="input" />
 
 ## 演示
 
-```playground
-basic
-disabled
-slot
-clearable
-```
+<PlaygroundGallery component="input" />
 
 ## API
 

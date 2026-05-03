@@ -6,17 +6,11 @@ A collection of links for navigating websites. Supports submenus and responsive 
 
 ## Usage
 
-```usage
-basic
-```
+<UsageCode component="navigation-menu" />
 
 ## Demos
 
-```playground
-basic
-horizontal
-vertical
-```
+<PlaygroundGallery component="navigation-menu" />
 
 ## API
 

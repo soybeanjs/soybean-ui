@@ -6,18 +6,11 @@
 
 ## 用法
 
-```usage
-basic
-```
+<UsageCode component="toolbar" />
 
 ## 演示
 
-```playground
-basic
-link
-toggle-group
-vertical
-```
+<PlaygroundGallery component="toolbar" />
 
 ## API
 

@@ -6,16 +6,11 @@ A component used to display hierarchical data.
 
 ## Usage
 
-```usage
-basic
-```
+<UsageCode component="tree" />
 
 ## Demos
 
-```playground
-basic
-virtualizer
-```
+<PlaygroundGallery component="tree" />
 
 ## API
 

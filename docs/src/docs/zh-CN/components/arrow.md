@@ -6,9 +6,7 @@
 
 ## 演示
 
-```playground
-basic
-```
+<PlaygroundGallery component="arrow" />
 
 ## API
 

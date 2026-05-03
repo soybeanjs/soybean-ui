@@ -6,16 +6,11 @@ A modal panel that slides in from the bottom edge of the screen. It is suited fo
 
 ## Usage
 
-```usage
-basic
-```
+<UsageCode component="bottom-sheet" />
 
 ## Demos
 
-```playground
-basic
-nested
-```
+<PlaygroundGallery component="bottom-sheet" />
 
 ## API
 

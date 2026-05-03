@@ -6,15 +6,11 @@
 
 ## 用法
 
-```usage
-basic
-```
+<UsageCode component="tooltip" />
 
 ## 演示
 
-```playground
-basic
-```
+<PlaygroundGallery component="tooltip" />
 
 ## API
 

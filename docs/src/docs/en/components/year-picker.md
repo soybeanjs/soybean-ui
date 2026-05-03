@@ -6,18 +6,11 @@ YearPicker lets users choose a single year from a paged year grid while preservi
 
 ## Usage
 
-```usage
-basic
-```
+<UsageCode component="year-picker" />
 
 ## Demo
 
-```playground
-basic
-size
-disabled
-custom-styling
-```
+<PlaygroundGallery component="year-picker" />
 
 ## API
 

@@ -6,9 +6,7 @@
 
 ## 用法
 
-```usage
-basic
-```
+<UsageCode component="button" />
 
 ## 特性
 
@@ -31,20 +29,7 @@ basic
 
 ## 演示
 
-```playground
-basic
-color
-variant
-size
-shape
-shadow
-slot
-disabled
-loading
-icon
-link
-group
-```
+<PlaygroundGallery component="button" />
 
 ## API
 

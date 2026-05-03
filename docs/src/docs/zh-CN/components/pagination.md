@@ -6,21 +6,11 @@
 
 ## 用法
 
-```usage
-basic
-```
+<UsageCode component="pagination" />
 
 ## 演示
 
-```playground
-basic
-variant
-size
-shape
-slot
-action
-show
-```
+<PlaygroundGallery component="pagination" />
 
 ## API
 

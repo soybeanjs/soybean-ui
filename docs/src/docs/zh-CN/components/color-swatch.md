@@ -6,12 +6,8 @@
 
 ## 用法
 
-```usage
-basic
-```
+<UsageCode component="color-swatch" />
 
 ## 演示
 
-```playground
-basic
-```
+<PlaygroundGallery component="color-swatch" />

@@ -6,18 +6,11 @@ DateRangeField is a segmented date range input that provides two sets of editabl
 
 ## Usage
 
-```usage
-basic
-```
+<UsageCode component="date-range-field" />
 
 ## Demo
 
-```playground
-basic
-with-time
-disabled
-custom-styling
-```
+<PlaygroundGallery component="date-range-field" />
 
 ## API
 

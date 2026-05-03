@@ -6,33 +6,11 @@
 
 ## 用法
 
-```usage
-basic
-```
+<UsageCode component="table" />
 
 ## 演示
 
-```playground
-basic
-variant
-bordered
-rounded
-striped
-empty
-grouped
-sorting
-filtering
-fixed
-resizable
-tree
-virtualized
-expandable
-footer
-bottom
-multiple-selection
-single-selection
-sizes
-```
+<PlaygroundGallery component="table" />
 
 ## API
 

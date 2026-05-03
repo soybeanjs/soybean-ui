@@ -6,18 +6,11 @@ Represents a keyboard input element. Useful for displaying keyboard shortcuts.
 
 ## Usage
 
-```usage
-basic
-```
+<UsageCode component="kbd" />
 
 ## Demos
 
-```playground
-basic
-size
-variant
-raised
-```
+<PlaygroundGallery component="kbd" />
 
 ## API
 

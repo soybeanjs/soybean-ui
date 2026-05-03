@@ -6,18 +6,11 @@
 
 ## 用法
 
-```usage
-basic
-```
+<UsageCode component="number-input" />
 
 ## 演示
 
-```playground
-basic
-center
-slot
-clearable
-```
+<PlaygroundGallery component="number-input" />
 
 ## API
 

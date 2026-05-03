@@ -6,18 +6,11 @@
 
 ## 用法
 
-```usage
-basic
-```
+<UsageCode component="kbd" />
 
 ## 演示
 
-```playground
-basic
-size
-variant
-raised
-```
+<PlaygroundGallery component="kbd" />
 
 ## API
 

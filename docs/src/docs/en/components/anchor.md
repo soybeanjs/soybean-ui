@@ -12,19 +12,11 @@ If the current URL already contains a hash on initial render, Anchor will scroll
 
 ## Usage
 
-```usage
-basic
-```
+<UsageCode component="anchor" />
 
 ## Demos
 
-```playground
-basic
-color
-size
-sticky
-custom-styling
-```
+<PlaygroundGallery component="anchor" />
 
 ## API
 

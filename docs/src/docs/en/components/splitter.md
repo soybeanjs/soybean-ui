@@ -6,19 +6,11 @@ A composable layout component that divides an area into resizable panels.
 
 ## Usage
 
-```usage
-basic
-```
+<UsageCode component="splitter" />
 
 ## Demo
 
-```playground
-basic
-vertical
-collapsible
-disabled
-custom-handle
-```
+<PlaygroundGallery component="splitter" />
 
 ## API
 

@@ -6,18 +6,11 @@ An image element with a fallback for representing the user.
 
 ## Usage
 
-```usage
-basic
-```
+<UsageCode component="avatar" />
 
 ## Demos
 
-```playground
-basic
-fallback
-delay
-size
-```
+<PlaygroundGallery component="avatar" />
 
 ## API
 

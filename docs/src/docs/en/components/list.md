@@ -6,15 +6,11 @@ A container for displaying a list of items.
 
 ## Usage
 
-```usage
-basic
-```
+<UsageCode component="list" />
 
 ## Demos
 
-```playground
-basic
-```
+<PlaygroundGallery component="list" />
 
 ## API
 

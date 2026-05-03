@@ -6,17 +6,11 @@ Displays a richer preview card when the trigger is hovered or receives focus.
 
 ## Usage
 
-```usage
-basic
-```
+<UsageCode component="hover-card" />
 
 ## Demo
 
-```playground
-basic
-delay
-custom-styling
-```
+<PlaygroundGallery component="hover-card" />
 
 ## API
 

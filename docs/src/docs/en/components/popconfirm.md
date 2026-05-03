@@ -6,15 +6,11 @@ A confirmation box component based on Popover, used for lightweight secondary co
 
 ## Usage
 
-```usage
-basic
-```
+<UsageCode component="popconfirm" />
 
 ## Playground
 
-```playground
-basic
-```
+<PlaygroundGallery component="popconfirm" />
 
 ## API
 

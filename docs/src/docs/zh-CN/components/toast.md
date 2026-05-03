@@ -10,22 +10,11 @@
 
 在应用根部挂载一个 `SToastProvider`。如果你的应用已经被 `SConfigProvider` 包裹，那么默认会自动渲染一个 `SToastProvider`，除非将 `customToast` 设为 `true`。
 
-```usage
-basic
-```
+<UsageCode component="toast" />
 
 ## 演示
 
-```playground
-basic
-types
-promise
-action
-control
-appearance
-stack
-position
-```
+<PlaygroundGallery component="toast" />
 
 ## API
 

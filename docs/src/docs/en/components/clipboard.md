@@ -6,9 +6,7 @@ A clipboard action component for copying text values with accessible button sema
 
 ## Usage
 
-```usage
-basic
-```
+<UsageCode component="clipboard" />
 
 ## Features
 
@@ -21,14 +19,7 @@ basic
 
 ## Demos
 
-```playground
-basic
-color
-variant
-size
-disabled
-custom-styling
-```
+<PlaygroundGallery component="clipboard" />
 
 ## API
 

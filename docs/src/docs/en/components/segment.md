@@ -6,20 +6,13 @@ A linear set of two or more segments, each of which functions as a mutually excl
 
 ## Usage
 
-```usage
-basic
-```
+<UsageCode component="segment" />
 
 > `SSegment` now delegates item iteration and indicator composition to headless `SegmentCompact`. For unstyled, data-driven usage, import `SegmentCompact` from `@soybeanjs/headless/tabs`.
 
 ## Demos
 
-```playground
-basic
-vertical
-shape
-icon
-```
+<PlaygroundGallery component="segment" />
 
 ## API
 

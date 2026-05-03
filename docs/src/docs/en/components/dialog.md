@@ -12,9 +12,7 @@ Mount `SDialogProvider` once near your app root before calling the imperative `d
 
 ### Declarative
 
-```usage
-basic
-```
+<UsageCode component="dialog" />
 
 ### Imperative API
 
@@ -41,14 +39,7 @@ function openWarningDialog() {
 
 ## Demos
 
-```playground
-basic
-footer
-state
-prevent
-pure
-dialog-api
-```
+<PlaygroundGallery component="dialog" />
 
 ## API
 

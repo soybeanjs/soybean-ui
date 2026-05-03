@@ -6,19 +6,11 @@
 
 ## 用法
 
-```usage
-basic
-```
+<UsageCode component="card" />
 
 ## 演示
 
-```playground
-basic
-only-content
-split
-title-slot
-collapsible
-```
+<PlaygroundGallery component="card" />
 
 ## API
 

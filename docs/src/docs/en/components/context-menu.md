@@ -6,18 +6,11 @@ Displays a menu located at the pointer, triggered by a right-click.
 
 ## Usage
 
-```usage
-basic
-```
+<UsageCode component="context-menu" />
 
 ## Demos
 
-```playground
-basic
-checkbox
-radio
-mix
-```
+<PlaygroundGallery component="context-menu" />
 
 ## API
 

@@ -6,20 +6,11 @@ Multi-line text input field. Supports auto-resizing and character count.
 
 ## Usage
 
-```usage
-basic
-```
+<UsageCode component="textarea" />
 
 ## Demos
 
-```playground
-basic
-autosize
-clearable
-disabled
-counter
-footer
-```
+<PlaygroundGallery component="textarea" />
 
 ## API
 

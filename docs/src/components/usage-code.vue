@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { getPlaygroundComponentCode } from '../constants/globs';
+import { allPlaygroundComponents } from '../constants/globs';
 
 interface Props {
   component: string;
@@ -10,7 +10,7 @@ const props = withDefaults(defineProps<Props>(), {
   file: 'basic'
 });
 
-const code = computed(() => getPlaygroundComponentCode(props.component, props.file));
+const code = computed(() => allPlaygroundComponents[props.component]?.[props.file]?.code);
 const missingTitle = computed(() => `${props.component}/${props.file} not found`);
 </script>
 

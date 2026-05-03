@@ -6,18 +6,11 @@
 
 ## 用法
 
-```usage
-basic
-```
+<UsageCode component="switch" />
 
 ## 演示
 
-```playground
-basic
-size
-shape
-slot
-```
+<PlaygroundGallery component="switch" />
 
 ## API
 

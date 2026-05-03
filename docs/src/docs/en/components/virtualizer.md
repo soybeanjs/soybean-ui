@@ -6,17 +6,11 @@ A virtual scrolling component that efficiently renders large lists by only rende
 
 ## Usage
 
-```usage
-basic
-```
+<UsageCode component="virtualizer" />
 
 ## Demos
 
-```playground
-basic
-horizontal
-dynamic
-```
+<PlaygroundGallery component="virtualizer" />
 
 ## API
 

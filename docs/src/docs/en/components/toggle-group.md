@@ -6,18 +6,11 @@ A set of two-state buttons that can be toggled on or off as a single or multiple
 
 ## Usage
 
-```usage
-basic
-```
+<UsageCode component="toggle-group" />
 
 ## Demos
 
-```playground
-basic
-multiple
-variant
-vertical
-```
+<PlaygroundGallery component="toggle-group" />
 
 ## API
 

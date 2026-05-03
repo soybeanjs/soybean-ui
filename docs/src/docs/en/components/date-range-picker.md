@@ -4,18 +4,11 @@ A date range picker component that allows users to select a start and end date f
 
 ## Usage
 
-```usage
-basic
-```
+<UsageCode component="date-range-picker" />
 
 ## Examples
 
-```playground
-basic
-disabled
-size
-custom-styling
-```
+<PlaygroundGallery component="date-range-picker" />
 
 ## API
 

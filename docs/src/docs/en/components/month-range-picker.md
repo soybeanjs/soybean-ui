@@ -6,18 +6,11 @@ MonthRangePicker lets users select a start and end month from a year-based popup
 
 ## Usage
 
-```usage
-basic
-```
+<UsageCode component="month-range-picker" />
 
 ## Demo
 
-```playground
-basic
-size
-disabled
-custom-styling
-```
+<PlaygroundGallery component="month-range-picker" />
 
 ## API
 

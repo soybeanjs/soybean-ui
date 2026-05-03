@@ -6,12 +6,8 @@ A read-only color preview block with support for transparent and OKLCH values.
 
 ## Usage
 
-```usage
-basic
-```
+<UsageCode component="color-swatch" />
 
 ## Demo
 
-```playground
-basic
-```
+<PlaygroundGallery component="color-swatch" />

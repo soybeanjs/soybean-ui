@@ -6,18 +6,13 @@ Fast, composable, command menu for Vue.
 
 ## Usage
 
-```usage
-basic
-```
+<UsageCode component="command" />
 
 > `SCommand` now delegates filtering, grouped item aggregation, and default item composition to headless `CommandCompact`. For unstyled, data-driven usage, import `CommandCompact` from `@soybeanjs/headless/command`.
 
 ## Demos
 
-```playground
-basic
-dialog
-```
+<PlaygroundGallery component="command" />
 
 ## API
 

@@ -6,16 +6,11 @@
 
 ## 用法
 
-```usage
-basic
-```
+<UsageCode component="tree" />
 
 ## 演示
 
-```playground
-basic
-virtualizer
-```
+<PlaygroundGallery component="tree" />
 
 ## API
 

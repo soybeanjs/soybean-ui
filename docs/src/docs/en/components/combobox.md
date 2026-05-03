@@ -6,20 +6,11 @@ A combobox component for searching and selecting values from an option list, wit
 
 ## Usage
 
-```usage
-basic
-```
+<UsageCode component="combobox" />
 
 ## Demos
 
-```playground
-basic
-clearable
-disabled
-group
-multiple
-custom-styling
-```
+<PlaygroundGallery component="combobox" />
 
 ## API
 

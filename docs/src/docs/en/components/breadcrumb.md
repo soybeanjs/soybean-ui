@@ -6,21 +6,13 @@ Breadcrumbs allow users to navigate through the hierarchy of pages. It displays 
 
 ## Usage
 
-```usage
-basic
-```
+<UsageCode component="breadcrumb" />
 
 > `SBreadcrumb` delegates its list aggregation to headless `BreadcrumbCompact`. For unstyled, data-driven composition, import `BreadcrumbCompact` from `@soybeanjs/headless/breadcrumb`.
 
 ## Demos
 
-```playground
-basic
-separator
-link
-item-dropdown
-ellipsis-dropdown
-```
+<PlaygroundGallery component="breadcrumb" />
 
 ## API
 

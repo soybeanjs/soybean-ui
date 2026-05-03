@@ -7,19 +7,11 @@ collection and is suitable for inline loading states.
 
 ## Usage
 
-```usage
-basic
-```
+<UsageCode component="spinner" />
 
 ## Demos
 
-```playground
-basic
-color
-size
-icon
-custom-styling
-```
+<PlaygroundGallery component="spinner" />
 
 ## API
 

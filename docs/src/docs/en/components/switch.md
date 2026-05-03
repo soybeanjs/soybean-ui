@@ -6,18 +6,11 @@ A control that allows the user to toggle between checked and not checked.
 
 ## Usage
 
-```usage
-basic
-```
+<UsageCode component="switch" />
 
 ## Demos
 
-```playground
-basic
-size
-shape
-slot
-```
+<PlaygroundGallery component="switch" />
 
 ## API
 

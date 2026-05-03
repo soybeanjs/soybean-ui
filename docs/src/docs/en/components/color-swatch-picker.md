@@ -6,13 +6,8 @@ Choose a color quickly from a preset palette, useful for theme panels and sugges
 
 ## Usage
 
-```usage
-basic
-```
+<UsageCode component="color-swatch-picker" />
 
 ## Demo
 
-```playground
-basic
-shape
-```
+<PlaygroundGallery component="color-swatch-picker" />

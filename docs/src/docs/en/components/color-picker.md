@@ -6,16 +6,11 @@ A composite color picker that combines a color area, hue/alpha sliders, formatte
 
 ## Usage
 
-```usage
-basic
-```
+<UsageCode component="color-picker" />
 
 ## Demo
 
-```playground
-basic
-oklch
-```
+<PlaygroundGallery component="color-picker" />
 
 ## API
 

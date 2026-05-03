@@ -6,12 +6,8 @@ A tabbed interface designed for navigating between different pages or views. It 
 
 ## Usage
 
-```usage
-basic
-```
+<UsageCode component="page-tabs" />
 
 ## Demos
 
-```playground
-basic
-```
+<PlaygroundGallery component="page-tabs" />

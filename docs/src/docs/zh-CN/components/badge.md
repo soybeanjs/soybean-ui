@@ -6,20 +6,11 @@
 
 ## 用法
 
-```usage
-basic
-```
+<UsageCode component="badge" />
 
 ## 演示
 
-```playground
-basic
-color
-content
-position
-slot
-open
-```
+<PlaygroundGallery component="badge" />
 
 ## API
 

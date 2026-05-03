@@ -6,17 +6,11 @@
 
 ## 用法
 
-```usage
-basic
-```
+<UsageCode component="drawer" />
 
 ## 演示
 
-```playground
-basic
-side
-scroll
-```
+<PlaygroundGallery component="drawer" />
 
 ## API
 

@@ -6,18 +6,11 @@ Visually or semantically separates content.
 
 ## Usage
 
-```usage
-basic
-```
+<UsageCode component="separator" />
 
 ## Demos
 
-```playground
-basic
-orientation
-align
-border
-```
+<PlaygroundGallery component="separator" />
 
 ## API
 

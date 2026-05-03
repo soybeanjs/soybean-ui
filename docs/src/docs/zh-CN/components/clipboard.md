@@ -6,9 +6,7 @@
 
 ## 用法
 
-```usage
-basic
-```
+<UsageCode component="clipboard" />
 
 ## 特性
 
@@ -21,14 +19,7 @@ basic
 
 ## 演示
 
-```playground
-basic
-color
-variant
-size
-disabled
-custom-styling
-```
+<PlaygroundGallery component="clipboard" />
 
 ## API
 

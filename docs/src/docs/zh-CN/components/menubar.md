@@ -6,17 +6,11 @@
 
 ## 用法
 
-```usage
-basic
-```
+<UsageCode component="menubar" />
 
 ## 演示
 
-```playground
-basic
-controlled
-rtl
-```
+<PlaygroundGallery component="menubar" />
 
 ## API
 

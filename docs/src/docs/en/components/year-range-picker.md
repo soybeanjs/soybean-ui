@@ -6,18 +6,11 @@ YearRangePicker lets users select a start and end year from a paged year grid wh
 
 ## Usage
 
-```usage
-basic
-```
+<UsageCode component="year-range-picker" />
 
 ## Demo
 
-```playground
-basic
-size
-disabled
-custom-styling
-```
+<PlaygroundGallery component="year-range-picker" />
 
 ## API
 

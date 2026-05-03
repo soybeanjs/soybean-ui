@@ -6,15 +6,11 @@ An interactive component which expands/collapses a panel.
 
 ## Usage
 
-```usage
-basic
-```
+<UsageCode component="collapsible" />
 
 ## Demos
 
-```playground
-basic
-```
+<PlaygroundGallery component="collapsible" />
 
 ## API
 

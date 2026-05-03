@@ -6,17 +6,11 @@ Building forms with validation and error handling. Supports schema validation vi
 
 ## Usage
 
-```usage
-basic
-```
+<UsageCode component="form" />
 
 ## Demos
 
-```playground
-basic
-valibot
-zod
-```
+<PlaygroundGallery component="form" />
 
 ## API
 

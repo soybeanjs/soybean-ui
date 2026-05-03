@@ -6,20 +6,11 @@
 
 ## 用法
 
-```usage
-basic
-```
+<UsageCode component="combobox" />
 
 ## 演示
 
-```playground
-basic
-clearable
-disabled
-group
-multiple
-custom-styling
-```
+<PlaygroundGallery component="combobox" />
 
 ## API
 

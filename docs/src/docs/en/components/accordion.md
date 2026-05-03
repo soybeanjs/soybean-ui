@@ -6,20 +6,11 @@ A vertically stacked set of interactive headings that each reveal a section of c
 
 ## Usage
 
-```usage
-basic
-```
+<UsageCode component="accordion" />
 
 ## Demos
 
-```playground
-basic
-single
-always-one
-multiple
-custom-icon
-custom-styling
-```
+<PlaygroundGallery component="accordion" />
 
 ## API
 

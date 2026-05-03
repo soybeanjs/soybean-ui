@@ -6,18 +6,11 @@ RangeCalendar 会渲染一个或多个按月排列的日期网格，用于直接
 
 ## 用法
 
-```usage
-basic
-```
+<UsageCode component="range-calendar" />
 
 ## 演示
 
-```playground
-basic
-two-months
-disabled
-custom-styling
-```
+<PlaygroundGallery component="range-calendar" />
 
 ## API
 

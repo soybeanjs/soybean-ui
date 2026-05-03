@@ -6,15 +6,11 @@ Displays content within a desired ratio.
 
 ## Usage
 
-```usage
-basic
-```
+<UsageCode component="aspect-ratio" />
 
 ## Demos
 
-```playground
-basic
-```
+<PlaygroundGallery component="aspect-ratio" />
 
 ## API
 

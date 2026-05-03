@@ -6,18 +6,11 @@ MonthPicker lets users pick a month from a year-based popup while keeping the se
 
 ## Usage
 
-```usage
-basic
-```
+<UsageCode component="month-picker" />
 
 ## Demo
 
-```playground
-basic
-size
-disabled
-custom-styling
-```
+<PlaygroundGallery component="month-picker" />
 
 ## API
 

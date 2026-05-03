@@ -6,21 +6,13 @@ A set of layered sections of content—known as tab panels—that are displayed 
 
 ## Usage
 
-```usage
-basic
-```
+<UsageCode component="tabs" />
 
 > `STabs` now delegates item iteration, default trigger/content composition, and indicator rendering to headless `TabsCompact`. For unstyled, data-driven usage, import `TabsCompact` from `@soybeanjs/headless/tabs`.
 
 ## Demos
 
-```playground
-basic
-horizontal
-vertical
-fill
-custom
-```
+<PlaygroundGallery component="tabs" />
 
 ## API
 

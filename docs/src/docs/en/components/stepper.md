@@ -6,18 +6,11 @@ Displays progress through a multi-step workflow.
 
 ## Usage
 
-```usage
-basic
-```
+<UsageCode component="stepper" />
 
 ## Demo
 
-```playground
-basic
-vertical
-linear
-custom-styling
-```
+<PlaygroundGallery component="stepper" />
 
 ## API
 

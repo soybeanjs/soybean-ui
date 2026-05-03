@@ -6,9 +6,7 @@ A primitive component used to render an arrow for popovers, tooltips, and other 
 
 ## Demos
 
-```playground
-basic
-```
+<PlaygroundGallery component="arrow" />
 
 ## API
 

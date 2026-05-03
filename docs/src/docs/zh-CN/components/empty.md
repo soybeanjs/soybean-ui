@@ -6,18 +6,11 @@
 
 ## 用法
 
-```usage
-basic
-```
+<UsageCode component="empty" />
 
 ## 演示
 
-```playground
-basic
-icon
-slot
-custom-styling
-```
+<PlaygroundGallery component="empty" />
 
 ## API
 

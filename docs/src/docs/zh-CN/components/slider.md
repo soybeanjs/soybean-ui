@@ -6,20 +6,11 @@
 
 ## 用法
 
-```usage
-basic
-```
+<UsageCode component="slider" />
 
 ## 演示
 
-```playground
-basic
-range
-size
-color
-disabled
-orientation
-```
+<PlaygroundGallery component="slider" />
 
 ## API
 

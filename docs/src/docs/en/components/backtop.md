@@ -8,18 +8,11 @@ Backtop reveals a floating button after the scroll target passes a threshold and
 
 ## Usage
 
-```usage
-basic
-```
+<UsageCode component="backtop" />
 
 ## Demos
 
-```playground
-basic
-target
-disabled
-custom-styling
-```
+<PlaygroundGallery component="backtop" />
 
 ## API
 

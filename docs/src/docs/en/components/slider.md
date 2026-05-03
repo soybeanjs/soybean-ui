@@ -6,20 +6,11 @@ A slider component for selecting one or more numeric values within a continuous 
 
 ## Usage
 
-```usage
-basic
-```
+<UsageCode component="slider" />
 
 ## Demo
 
-```playground
-basic
-range
-size
-color
-disabled
-orientation
-```
+<PlaygroundGallery component="slider" />
 
 ## API
 

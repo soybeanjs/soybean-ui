@@ -6,21 +6,13 @@
 
 ## 用法
 
-```usage
-basic
-```
+<UsageCode component="radio-group" />
 
 > `SRadioGroup` 现在会把条目遍历和默认单选项结构组合委托给 headless `RadioGroupCompact`。如果需要无样式、数据驱动的组合入口，可从 `@soybeanjs/headless/radio-group` 直接导入 `RadioGroupCompact`。
 
 ## 演示
 
-```playground
-basic
-color
-size
-variant
-card
-```
+<PlaygroundGallery component="radio-group" />
 
 ## API
 

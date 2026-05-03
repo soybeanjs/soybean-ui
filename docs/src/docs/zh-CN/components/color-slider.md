@@ -6,15 +6,11 @@
 
 ## 用法
 
-```usage
-basic
-```
+<UsageCode component="color-slider" />
 
 ## 演示
 
-```playground
-basic
-```
+<PlaygroundGallery component="color-slider" />
 
 ## API
 

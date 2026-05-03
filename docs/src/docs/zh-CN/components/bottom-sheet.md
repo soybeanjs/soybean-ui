@@ -6,16 +6,11 @@
 
 ## 用法
 
-```usage
-basic
-```
+<UsageCode component="bottom-sheet" />
 
 ## 演示
 
-```playground
-basic
-nested
-```
+<PlaygroundGallery component="bottom-sheet" />
 
 ## API
 

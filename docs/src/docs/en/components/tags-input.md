@@ -6,18 +6,11 @@ A composable multi-value input for adding, displaying, and removing tags, with s
 
 ## Usage
 
-```usage
-basic
-```
+<UsageCode component="tags-input" />
 
 ## Demo
 
-```playground
-basic
-disabled
-object-value
-clear
-```
+<PlaygroundGallery component="tags-input" />
 
 ## API
 

@@ -6,18 +6,11 @@
 
 ## 用法
 
-```usage
-basic
-```
+<UsageCode component="stepper" />
 
 ## 演示
 
-```playground
-basic
-vertical
-linear
-custom-styling
-```
+<PlaygroundGallery component="stepper" />
 
 ## API
 

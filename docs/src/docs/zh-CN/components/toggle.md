@@ -6,19 +6,11 @@
 
 ## 用法
 
-```usage
-basic
-```
+<UsageCode component="toggle" />
 
 ## 演示
 
-```playground
-basic
-variant
-shape
-size
-disabled
-```
+<PlaygroundGallery component="toggle" />
 
 ## API
 

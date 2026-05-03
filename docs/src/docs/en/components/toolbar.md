@@ -6,18 +6,11 @@ A compact container that groups related actions, links, and toggle controls into
 
 ## Usage
 
-```usage
-basic
-```
+<UsageCode component="toolbar" />
 
 ## Demos
 
-```playground
-basic
-link
-toggle-group
-vertical
-```
+<PlaygroundGallery component="toolbar" />
 
 ## API
 

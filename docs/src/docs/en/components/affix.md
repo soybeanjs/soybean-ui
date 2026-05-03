@@ -8,18 +8,11 @@ Affix keeps content pinned to the top or bottom edge of the viewport or a custom
 
 ## Usage
 
-```usage
-basic
-```
+<UsageCode component="affix" />
 
 ## Demos
 
-```playground
-basic
-target
-offset-bottom
-custom-styling
-```
+<PlaygroundGallery component="affix" />
 
 ## API
 

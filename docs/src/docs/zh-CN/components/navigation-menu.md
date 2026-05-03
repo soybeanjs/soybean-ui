@@ -6,17 +6,11 @@
 
 ## 用法
 
-```usage
-basic
-```
+<UsageCode component="navigation-menu" />
 
 ## 演示
 
-```playground
-basic
-horizontal
-vertical
-```
+<PlaygroundGallery component="navigation-menu" />
 
 ## API
 

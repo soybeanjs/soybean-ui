@@ -6,21 +6,11 @@
 
 ## 用法
 
-```usage
-basic
-```
+<UsageCode component="progress" />
 
 ## 演示
 
-```playground
-basic
-size
-color
-state
-slot
-circle
-provider
-```
+<PlaygroundGallery component="progress" />
 
 ## 环形进度
 

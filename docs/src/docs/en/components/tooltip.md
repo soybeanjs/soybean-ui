@@ -6,15 +6,11 @@ A popup that displays information related to an element when the element receive
 
 ## Usage
 
-```usage
-basic
-```
+<UsageCode component="tooltip" />
 
 ## Demos
 
-```playground
-basic
-```
+<PlaygroundGallery component="tooltip" />
 
 ## API
 

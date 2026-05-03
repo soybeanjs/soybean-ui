@@ -6,20 +6,11 @@
 
 ## 用法
 
-```usage
-basic
-```
+<UsageCode component="dropdown-menu" />
 
 ## 演示
 
-```playground
-basic
-trigger
-arrow
-checkbox
-radio
-mix
-```
+<PlaygroundGallery component="dropdown-menu" />
 
 ## API
 

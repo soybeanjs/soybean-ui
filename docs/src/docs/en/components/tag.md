@@ -6,21 +6,11 @@ A small, interactive component used to categorize or label content.
 
 ## Usage
 
-```usage
-basic
-```
+<UsageCode component="tag" />
 
 ## Demos
 
-```playground
-basic
-color
-variant
-shape
-size
-closable
-slot
-```
+<PlaygroundGallery component="tag" />
 
 ## API
 

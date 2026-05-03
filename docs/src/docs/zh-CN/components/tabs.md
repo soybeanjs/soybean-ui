@@ -6,21 +6,13 @@
 
 ## 用法
 
-```usage
-basic
-```
+<UsageCode component="tabs" />
 
 > `STabs` 现在会把条目遍历、默认 trigger/content 组合与 indicator 渲染委托给 headless `TabsCompact`。如果需要无样式、数据驱动的组合入口，可从 `@soybeanjs/headless/tabs` 直接导入 `TabsCompact`。
 
 ## 演示
 
-```playground
-basic
-horizontal
-vertical
-fill
-custom
-```
+<PlaygroundGallery component="tabs" />
 
 ## API
 

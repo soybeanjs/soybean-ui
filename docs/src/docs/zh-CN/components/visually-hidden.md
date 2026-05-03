@@ -8,9 +8,7 @@
 
 ## 用法
 
-```usage
-basic
-```
+<UsageCode component="visually-hidden" />
 
 ## API
 

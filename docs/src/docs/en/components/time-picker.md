@@ -6,18 +6,11 @@ TimePicker lets users choose a single time from a popup list while preserving th
 
 ## Usage
 
-```usage
-basic
-```
+<UsageCode component="time-picker" />
 
 ## Demo
 
-```playground
-basic
-size
-disabled
-custom-styling
-```
+<PlaygroundGallery component="time-picker" />
 
 ## API
 

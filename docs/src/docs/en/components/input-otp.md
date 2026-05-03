@@ -6,18 +6,11 @@ InputOtp is a one-time-password input built around a real native input. It keeps
 
 ## Usage
 
-```usage
-basic
-```
+<UsageCode component="input-otp" />
 
 ## Demo
 
-```playground
-basic
-placeholder
-custom-slot
-disabled
-```
+<PlaygroundGallery component="input-otp" />
 
 ## API
 

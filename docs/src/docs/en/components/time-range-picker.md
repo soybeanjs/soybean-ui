@@ -6,18 +6,11 @@ TimeRangePicker lets users select a start and end time from a popup list while p
 
 ## Usage
 
-```usage
-basic
-```
+<UsageCode component="time-range-picker" />
 
 ## Demo
 
-```playground
-basic
-size
-disabled
-custom-styling
-```
+<PlaygroundGallery component="time-range-picker" />
 
 ## API
 

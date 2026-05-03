@@ -6,19 +6,11 @@
 
 ## 用法
 
-```usage
-basic
-```
+<UsageCode component="editable" />
 
 ## 演示
 
-```playground
-basic
-size
-disabled
-activation-mode
-custom-styling
-```
+<PlaygroundGallery component="editable" />
 
 ## API
 

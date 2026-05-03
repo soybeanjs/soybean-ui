@@ -6,18 +6,11 @@ Displays a form input field or a component that looks like an input field. It su
 
 ## Usage
 
-```usage
-basic
-```
+<UsageCode component="input" />
 
 ## Demos
 
-```playground
-basic
-disabled
-slot
-clearable
-```
+<PlaygroundGallery component="input" />
 
 ## API
 

@@ -6,18 +6,11 @@
 
 ## 用法
 
-```usage
-basic
-```
+<UsageCode component="scroll-area" />
 
 ## 演示
 
-```playground
-basic
-horizontal
-type
-custom-styling
-```
+<PlaygroundGallery component="scroll-area" />
 
 ## API
 

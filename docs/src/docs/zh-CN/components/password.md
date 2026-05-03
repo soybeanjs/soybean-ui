@@ -6,18 +6,11 @@
 
 ## 用法
 
-```usage
-basic
-```
+<UsageCode component="password" />
 
 ## 演示
 
-```playground
-basic
-disabled
-clearable
-icon
-```
+<PlaygroundGallery component="password" />
 
 ## API
 

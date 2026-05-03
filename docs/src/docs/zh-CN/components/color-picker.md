@@ -6,16 +6,11 @@
 
 ## 用法
 
-```usage
-basic
-```
+<UsageCode component="color-picker" />
 
 ## 演示
 
-```playground
-basic
-oklch
-```
+<PlaygroundGallery component="color-picker" />
 
 ## API
 

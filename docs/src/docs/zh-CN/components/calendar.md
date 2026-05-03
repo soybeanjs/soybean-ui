@@ -6,18 +6,11 @@
 
 ## 用法
 
-```usage
-basic
-```
+<UsageCode component="calendar" />
 
 ## 演示
 
-```playground
-basic
-multiple
-disabled
-custom-styling
-```
+<PlaygroundGallery component="calendar" />
 
 ## API
 

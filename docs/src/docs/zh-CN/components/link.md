@@ -6,16 +6,11 @@
 
 ## 用法
 
-```usage
-basic
-```
+<UsageCode component="link" />
 
 ## 演示
 
-```playground
-basic
-href
-```
+<PlaygroundGallery component="link" />
 
 ## API
 

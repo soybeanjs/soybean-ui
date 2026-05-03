@@ -6,22 +6,13 @@
 
 ## 用法
 
-```usage
-basic
-```
+<UsageCode component="select" />
 
 > `SSelect` 现在会把选项聚合与默认条目组合逻辑委托给 headless `SelectCompact`。如果需要无样式、数据驱动的组合入口，可从 `@soybeanjs/headless/select` 直接导入 `SelectCompact`。
 
 ## 演示
 
-```playground
-basic
-default-value
-disabled
-separator
-group
-multiple
-```
+<PlaygroundGallery component="select" />
 
 ## API
 

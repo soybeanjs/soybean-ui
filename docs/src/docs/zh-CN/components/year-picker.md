@@ -6,18 +6,11 @@ YearPicker 用于在分页年份网格中选择单个年份，并将结果保留
 
 ## 用法
 
-```usage
-basic
-```
+<UsageCode component="year-picker" />
 
 ## 演示
 
-```playground
-basic
-size
-disabled
-custom-styling
-```
+<PlaygroundGallery component="year-picker" />
 
 ## API
 

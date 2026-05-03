@@ -6,9 +6,7 @@ A button component that can be used to trigger an action.
 
 ## Usage
 
-```usage
-basic
-```
+<UsageCode component="button" />
 
 ## Features
 
@@ -31,20 +29,7 @@ basic
 
 ## Demos
 
-```playground
-basic
-color
-variant
-size
-shape
-shadow
-slot
-disabled
-loading
-icon
-link
-group
-```
+<PlaygroundGallery component="button" />
 
 ## API
 

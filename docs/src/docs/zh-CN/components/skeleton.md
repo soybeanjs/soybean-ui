@@ -6,19 +6,11 @@
 
 ## 用法
 
-```usage
-basic
-```
+<UsageCode component="skeleton" />
 
 ## 演示
 
-```playground
-basic
-size
-shape
-animated
-custom-size
-```
+<PlaygroundGallery component="skeleton" />
 
 ## API
 

@@ -6,18 +6,11 @@
 
 ## 用法
 
-```usage
-basic
-```
+<UsageCode component="context-menu" />
 
 ## 演示
 
-```playground
-basic
-checkbox
-radio
-mix
-```
+<PlaygroundGallery component="context-menu" />
 
 ## API
 

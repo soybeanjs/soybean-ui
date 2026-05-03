@@ -6,18 +6,11 @@
 
 ## 用法
 
-```usage
-basic
-```
+<UsageCode component="separator" />
 
 ## 演示
 
-```playground
-basic
-orientation
-align
-border
-```
+<PlaygroundGallery component="separator" />
 
 ## API
 

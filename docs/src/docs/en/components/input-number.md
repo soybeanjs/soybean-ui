@@ -6,18 +6,11 @@ A text input field that only accepts numeric input. Supports increment/decrement
 
 ## Usage
 
-```usage
-basic
-```
+<UsageCode component="input-number" />
 
 ## Demos
 
-```playground
-basic
-center
-slot
-clearable
-```
+<PlaygroundGallery component="input-number" />
 
 ## API
 

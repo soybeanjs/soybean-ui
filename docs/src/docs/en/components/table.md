@@ -6,33 +6,11 @@ A data table component for displaying row and column data. Supports grouped head
 
 ## Usage
 
-```usage
-basic
-```
+<UsageCode component="table" />
 
 ## Demos
 
-```playground
-basic
-variant
-bordered
-rounded
-striped
-empty
-grouped
-sorting
-filtering
-fixed
-resizable
-tree
-virtualized
-expandable
-footer
-bottom
-multiple-selection
-single-selection
-sizes
-```
+<PlaygroundGallery component="table" />
 
 ## API
 

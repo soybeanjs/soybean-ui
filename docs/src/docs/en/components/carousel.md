@@ -6,21 +6,11 @@ Carousel is built on top of Embla Carousel and lets users browse a sequence of c
 
 ## Usage
 
-```usage
-basic
-```
+<UsageCode component="carousel" />
 
 ## Demos
 
-```playground
-basic
-vertical
-float
-multi
-snap
-progress
-dot
-```
+<PlaygroundGallery component="carousel" />
 
 ## API
 

@@ -6,21 +6,11 @@
 
 ## 用法
 
-```usage
-basic
-```
+<UsageCode component="tag" />
 
 ## 演示
 
-```playground
-basic
-color
-variant
-shape
-size
-closable
-slot
-```
+<PlaygroundGallery component="tag" />
 
 ## API
 

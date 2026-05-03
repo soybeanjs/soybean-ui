@@ -6,19 +6,11 @@ An inline text editor that switches between preview and edit states.
 
 ## Usage
 
-```usage
-basic
-```
+<UsageCode component="editable" />
 
 ## Demo
 
-```playground
-basic
-size
-disabled
-activation-mode
-custom-styling
-```
+<PlaygroundGallery component="editable" />
 
 ## API
 

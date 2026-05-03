@@ -15,9 +15,7 @@ Menu 组件家族可用于构建复杂的嵌套菜单（包含下拉菜单与右
 
 ### 数据驱动菜单
 
-```usage
-basic
-```
+<UsageCode component="menu" />
 
 ## API
 

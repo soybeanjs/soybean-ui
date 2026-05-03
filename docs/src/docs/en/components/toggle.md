@@ -6,19 +6,11 @@ A two-state button that toggles between pressed and unpressed.
 
 ## Usage
 
-```usage
-basic
-```
+<UsageCode component="toggle" />
 
 ## Demos
 
-```playground
-basic
-variant
-shape
-size
-disabled
-```
+<PlaygroundGallery component="toggle" />
 
 ## API
 

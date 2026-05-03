@@ -6,15 +6,11 @@ A hierarchical menu component commonly used for sidebar navigation. It supports 
 
 ## Usage
 
-```usage
-basic
-```
+<UsageCode component="tree-menu" />
 
 ## Demos
 
-```playground
-basic
-```
+<PlaygroundGallery component="tree-menu" />
 
 ## API
 

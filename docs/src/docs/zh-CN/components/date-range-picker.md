@@ -4,18 +4,11 @@
 
 ## 用法
 
-```usage
-basic
-```
+<UsageCode component="date-range-picker" />
 
 ## 示例
 
-```playground
-basic
-disabled
-size
-custom-styling
-```
+<PlaygroundGallery component="date-range-picker" />
 
 ## API
 

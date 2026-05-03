@@ -6,19 +6,11 @@
 
 ## 用法
 
-```usage
-basic
-```
+<UsageCode component="spinner" />
 
 ## 演示
 
-```playground
-basic
-color
-size
-icon
-custom-styling
-```
+<PlaygroundGallery component="spinner" />
 
 ## API
 

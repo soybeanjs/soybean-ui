@@ -6,15 +6,11 @@ The layout component structure for admin dashboards or complex applications. It 
 
 ## Usage
 
-```usage
-basic
-```
+<UsageCode component="layout" />
 
 ## Demos
 
-```playground
-basic
-```
+<PlaygroundGallery component="layout" />
 
 ## API
 

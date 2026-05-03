@@ -6,9 +6,7 @@
 
 ## 用法
 
-```usage
-basic
-```
+<UsageCode component="label" />
 
 ## API
 

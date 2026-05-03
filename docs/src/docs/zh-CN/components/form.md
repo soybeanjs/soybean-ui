@@ -6,17 +6,11 @@
 
 ## 用法
 
-```usage
-basic
-```
+<UsageCode component="form" />
 
 ## 演示
 
-```playground
-basic
-valibot
-zod
-```
+<PlaygroundGallery component="form" />
 
 ## API
 

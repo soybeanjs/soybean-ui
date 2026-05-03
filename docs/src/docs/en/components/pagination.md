@@ -6,21 +6,11 @@ Pagination is used for splitting up content or data into several pages, with a c
 
 ## Usage
 
-```usage
-basic
-```
+<UsageCode component="pagination" />
 
 ## Demos
 
-```playground
-basic
-variant
-size
-shape
-slot
-action
-show
-```
+<PlaygroundGallery component="pagination" />
 
 ## API
 

@@ -6,25 +6,13 @@
 
 ## 用法
 
-```usage
-basic
-```
+<UsageCode component="checkbox" />
 
 > `SCheckboxGroup` 和 `SCheckboxCardGroup` 现在会把列表遍历和默认复选框/卡片结构组合委托给 headless `CheckboxGroupCompact` 与 `CheckboxCardGroupCompact`。如果需要无样式、数据驱动的组合入口，可从 `@soybeanjs/headless/checkbox` 直接导入。
 
 ## 演示
 
-```playground
-basic
-single
-color
-size
-shape
-icon
-group
-card
-card-group
-```
+<PlaygroundGallery component="checkbox" />
 
 ## API
 

@@ -15,9 +15,7 @@ The Menu component family allows you to build complex nested menus, including dr
 
 ### Data Driven Menu
 
-```usage
-basic
-```
+<UsageCode component="menu" />
 
 ## API
 

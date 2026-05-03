@@ -6,16 +6,11 @@ A styled anchor tag or router link component.
 
 ## Usage
 
-```usage
-basic
-```
+<UsageCode component="link" />
 
 ## Demos
 
-```playground
-basic
-href
-```
+<PlaygroundGallery component="link" />
 
 ## API
 

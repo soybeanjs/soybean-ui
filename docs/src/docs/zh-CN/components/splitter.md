@@ -6,19 +6,11 @@
 
 ## 用法
 
-```usage
-basic
-```
+<UsageCode component="splitter" />
 
 ## 演示
 
-```playground
-basic
-vertical
-collapsible
-disabled
-custom-handle
-```
+<PlaygroundGallery component="splitter" />
 
 ## API
 

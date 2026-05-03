@@ -6,17 +6,11 @@
 
 ## 用法
 
-```usage
-basic
-```
+<UsageCode component="hover-card" />
 
 ## 演示
 
-```playground
-basic
-delay
-custom-styling
-```
+<PlaygroundGallery component="hover-card" />
 
 ## API
 

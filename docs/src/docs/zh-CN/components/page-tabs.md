@@ -6,12 +6,8 @@
 
 ## 用法
 
-```usage
-basic
-```
+<UsageCode component="page-tabs" />
 
 ## 演示
 
-```playground
-basic
-```
+<PlaygroundGallery component="page-tabs" />

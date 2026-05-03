@@ -6,18 +6,11 @@ Browse and select dates by month with support for single or multiple selection, 
 
 ## Usage
 
-```usage
-basic
-```
+<UsageCode component="calendar" />
 
 ## Demos
 
-```playground
-basic
-multiple
-disabled
-custom-styling
-```
+<PlaygroundGallery component="calendar" />
 
 ## API
 

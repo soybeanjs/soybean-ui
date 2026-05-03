@@ -6,18 +6,11 @@ MonthRangePicker 用于在按年份切换的弹层中选择开始和结束月份
 
 ## 用法
 
-```usage
-basic
-```
+<UsageCode component="month-range-picker" />
 
 ## 演示
 
-```playground
-basic
-size
-disabled
-custom-styling
-```
+<PlaygroundGallery component="month-range-picker" />
 
 ## API
 

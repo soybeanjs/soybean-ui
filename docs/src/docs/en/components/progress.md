@@ -6,21 +6,11 @@ A progress bar component for displaying determinate or indeterminate task comple
 
 ## Usage
 
-```usage
-basic
-```
+<UsageCode component="progress" />
 
 ## Demos
 
-```playground
-basic
-size
-color
-state
-slot
-circle
-provider
-```
+<PlaygroundGallery component="progress" />
 
 ## Circle Progress
 

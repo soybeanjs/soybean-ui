@@ -6,17 +6,11 @@ Displays a persistent application-style menu bar with horizontal trigger navigat
 
 ## Usage
 
-```usage
-basic
-```
+<UsageCode component="menubar" />
 
 ## Demos
 
-```playground
-basic
-controlled
-rtl
-```
+<PlaygroundGallery component="menubar" />
 
 ## API
 

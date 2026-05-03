@@ -6,18 +6,11 @@
 
 ## 用法
 
-```usage
-basic
-```
+<UsageCode component="avatar" />
 
 ## 演示
 
-```playground
-basic
-fallback
-delay
-size
-```
+<PlaygroundGallery component="avatar" />
 
 ## API
 

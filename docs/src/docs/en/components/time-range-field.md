@@ -6,18 +6,11 @@ TimeRangeField is a segmented time range input with independent editable start a
 
 ## Usage
 
-```usage
-basic
-```
+<UsageCode component="time-range-field" />
 
 ## Demo
 
-```playground
-basic
-seconds
-disabled
-custom-styling
-```
+<PlaygroundGallery component="time-range-field" />
 
 ## API
 

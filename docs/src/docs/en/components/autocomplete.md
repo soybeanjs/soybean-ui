@@ -6,21 +6,13 @@ Autocomplete filters suggestion items from text input and quickly fills the inpu
 
 ## Usage
 
-```usage
-basic
-```
+<UsageCode component="autocomplete" />
 
 > `SAutocomplete` now delegates its filtering and option aggregation to headless `AutocompleteCompact`. For unstyled, data-driven composition, import `AutocompleteCompact` from `@soybeanjs/headless/autocomplete`.
 
 ## Demos
 
-```playground
-basic
-grouped
-open-on-focus
-disabled
-custom-styling
-```
+<PlaygroundGallery component="autocomplete" />
 
 ## API
 

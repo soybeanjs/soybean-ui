@@ -6,21 +6,13 @@
 
 ## 用法
 
-```usage
-basic
-```
+<UsageCode component="breadcrumb" />
 
 > `SBreadcrumb` 现在会把列表聚合逻辑委托给 headless `BreadcrumbCompact`。如果需要无样式、数据驱动的组合入口，可从 `@soybeanjs/headless/breadcrumb` 直接导入 `BreadcrumbCompact`。
 
 ## 演示
 
-```playground
-basic
-separator
-link
-item-dropdown
-ellipsis-dropdown
-```
+<PlaygroundGallery component="breadcrumb" />
 
 ## API
 

@@ -6,19 +6,11 @@ A skeleton placeholder component for loading states.
 
 ## Usage
 
-```usage
-basic
-```
+<UsageCode component="skeleton" />
 
 ## Demos
 
-```playground
-basic
-size
-shape
-animated
-custom-size
-```
+<PlaygroundGallery component="skeleton" />
 
 ## API
 

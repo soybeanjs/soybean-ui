@@ -6,15 +6,11 @@ An input for editing either a full color string or a single channel, with suppor
 
 ## Usage
 
-```usage
-basic
-```
+<UsageCode component="color-field" />
 
 ## Demo
 
-```playground
-basic
-```
+<PlaygroundGallery component="color-field" />
 
 ## API
 

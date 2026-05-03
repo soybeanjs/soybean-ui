@@ -6,19 +6,11 @@ A container component that groups related content and actions. It supports heade
 
 ## Usage
 
-```usage
-basic
-```
+<UsageCode component="card" />
 
 ## Demos
 
-```playground
-basic
-only-content
-split
-title-slot
-collapsible
-```
+<PlaygroundGallery component="card" />
 
 ## API
 
