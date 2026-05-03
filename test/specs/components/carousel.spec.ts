@@ -2,13 +2,7 @@ import { nextTick, toValue } from 'vue';
 import { mount } from '@vue/test-utils';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { getA11yViolations } from '../../shared/a11y';
-import {
-  SCarousel,
-  SCarouselContent,
-  SCarouselItem,
-  SCarouselNext,
-  SCarouselPrevious
-} from '../../../src/components/carousel';
+import { SCarousel } from '../../../src/components/carousel';
 
 const emblaMock = vi.hoisted(() => {
   const listeners = new Map<string, Set<(api: any) => void>>();
@@ -92,29 +86,11 @@ vi.mock('embla-carousel-vue', async () => {
 function mountCarousel(props: Record<string, unknown> = {}) {
   return mount(SCarousel, {
     props: {
+      slides: ['Slide 1', 'Slide 2', 'Slide 3'],
       'aria-label': 'Demo carousel',
       ...props
     },
-    slots: {
-      default: `
-        <SCarouselContent>
-          <SCarouselItem>Slide 1</SCarouselItem>
-          <SCarouselItem>Slide 2</SCarouselItem>
-          <SCarouselItem>Slide 3</SCarouselItem>
-        </SCarouselContent>
-        <SCarouselPrevious />
-        <SCarouselNext />
-      `
-    },
-    attachTo: document.body,
-    global: {
-      components: {
-        SCarouselContent,
-        SCarouselItem,
-        SCarouselNext,
-        SCarouselPrevious
-      }
-    }
+    attachTo: document.body
   });
 }
 
@@ -201,28 +177,10 @@ describe('SCarousel', () => {
     it('does not intercept arrow keys from descendant inputs', async () => {
       const wrapper = mount(SCarousel, {
         props: {
+          slides: ['Slide 1', 'Slide 2', 'Slide 3'],
           'aria-label': 'Interactive carousel'
         },
-        slots: {
-          default: `
-            <SCarouselContent>
-              <SCarouselItem>
-                <input data-test-input />
-              </SCarouselItem>
-            </SCarouselContent>
-            <SCarouselPrevious />
-            <SCarouselNext />
-          `
-        },
-        attachTo: document.body,
-        global: {
-          components: {
-            SCarouselContent,
-            SCarouselItem,
-            SCarouselNext,
-            SCarouselPrevious
-          }
-        }
+        attachTo: document.body
       });
       await nextTick();
 

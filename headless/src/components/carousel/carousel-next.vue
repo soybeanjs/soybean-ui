@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import { computed } from 'vue';
+import { computed, useAttrs } from 'vue';
 import { useOmitProps } from '../../composables';
-import { Button } from '../button';
+import Button from '../button/button.vue';
+import Icon from '../_icon/icon.vue';
 import { useCarouselRootContext, useCarouselUi } from './context';
 import type { CarouselNextProps } from './types';
 
@@ -9,19 +10,18 @@ defineOptions({
   name: 'CarouselNext'
 });
 
-const props = withDefaults(defineProps<CarouselNextProps>(), {
-  as: 'button',
-  type: 'button'
-});
+const props = defineProps<CarouselNextProps>();
+
+const attrs = useAttrs();
 
 const forwardedProps = useOmitProps(props, ['disabled']);
 
 const cls = useCarouselUi('next');
 
-const { canScrollNext, contentId, dir, orientation, scrollNext } = useCarouselRootContext('CarouselNext');
+const { canScrollNext, contentId, scrollNext } = useCarouselRootContext('CarouselNext');
 
 const disabled = computed(() => props.disabled || !canScrollNext.value);
-const ariaLabel = computed(() => props['aria-label'] ?? 'Next slide');
+const ariaLabel = computed(() => (attrs['aria-label'] as string) ?? 'Next slide');
 </script>
 
 <template>
@@ -34,6 +34,9 @@ const ariaLabel = computed(() => props['aria-label'] ?? 'Next slide');
     data-soybean-carousel-next
     @click="scrollNext"
   >
-    <slot :dir="dir" :orientation="orientation" :disabled="disabled" />
+    <slot>
+      <Icon icon="lucide:arrow-right" :aria-hidden="true" />
+      <span class="soybean-headless-sr-only">Next slide</span>
+    </slot>
   </Button>
 </template>

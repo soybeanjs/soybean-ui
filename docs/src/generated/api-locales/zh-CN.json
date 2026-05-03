@@ -1006,11 +1006,52 @@
         "cardui": "卡片组件的 UI 类重载。"
       },
       "headless_src_components_carousel_types": {
+        "carouselcompactemits": {
+          "callables": {
+            "init": "发生 init 时发出。"
+          },
+          "emits": "Emits for the carousel compact component, which combines all sub components into a single component for ease of use."
+        },
+        "carouselcompactprops": {
+          "members": {
+            "containerprops": "组件的每个插槽道具，允许你直接向子组件传递道具，而无需使用 `v-slot` API。这对快速定制子组件非常有用，无需使用插槽的全部灵活性。",
+            "contentprops": "组件的每个插槽道具，允许你直接向子组件传递道具，而无需使用 `v-slot` API。这对快速定制子组件非常有用，无需使用插槽的全部灵活性。",
+            "controlprops": "组件的每个插槽道具，允许你直接向子组件传递道具，而无需使用 `v-slot` API。这对快速定制子组件非常有用，无需使用插槽的全部灵活性。",
+            "dir": "组件的阅读方向。",
+            "itemprops": "组件的每个插槽道具，允许你直接向子组件传递道具，而无需使用 `v-slot` API。这对快速定制子组件非常有用，无需使用插槽的全部灵活性。",
+            "navigationprops": "组件的每个插槽道具，允许你直接向子组件传递道具，而无需使用 `v-slot` API。这对快速定制子组件非常有用，无需使用插槽的全部灵活性。",
+            "nextprops": "组件的每个插槽道具，允许你直接向子组件传递道具，而无需使用 `v-slot` API。这对快速定制子组件非常有用，无需使用插槽的全部灵活性。",
+            "options": "选项",
+            "orientation": "组件的方向。",
+            "plugins": "插件。",
+            "previousprops": "组件的每个插槽道具，允许你直接向子组件传递道具，而无需使用 `v-slot` API。这对快速定制子组件非常有用，无需使用插槽的全部灵活性。",
+            "slides": "在旋转木马中渲染的幻灯片。"
+          },
+          "props": "感谢旋转木马根组件。"
+        },
+        "carouselcompactslots": {
+          "callables": {
+            "control": "旋转木马组件的控制槽，可用于呈现旋转木马的自定义控件。槽道具包括控制旋转木马的所有必要信息和方法，如旋转木马实例、是否可以滚动下一个或上一个、所选索引、滚动快照、进度以及滚动下一个、上一个或到特定索引的方法。",
+            "item": "旋转木马组件的默认插槽，可用于在旋转木马中呈现自定义内容。槽道具包括控制旋转木马的所有必要信息和方法，如旋转木马实例、是否可以滚动下一个或上一个、所选索引、滚动快照、进度以及滚动下一个、上一个或特定索引的方法。",
+            "next": "旋转木马组件的下一个槽，可用于呈现旋转木马的自定义下一个控件。槽道具包括控制旋转木马的所有必要信息和方法，如旋转木马实例、是否可以滚动下一步或上一步、所选索引、滚动快照、进度以及滚动下一步、上一步或到特定索引的方法。",
+            "previous": "旋转木马组件的导航槽，可用于呈现旋转木马的自定义导航。槽道具包括控制旋转木马的所有必要信息和方法，如旋转木马实例、是否可以滚动下一个或上一个、所选索引、滚动快照、进度以及滚动下一个、上一个或特定索引的方法。"
+          },
+          "slots": "为旋转木马紧凑组件提供插槽，该组件将所有子组件合并为一个组件，便于使用。"
+        },
+        "carouselcontainerprops": {
+          "props": "感谢旋转木马容器组件。"
+        },
         "carouselcontentprops": {
           "props": "为旋转木马内容组件点赞。"
         },
+        "carouselcontrolprops": {
+          "props": "为旋转木马控制组件（下一个和上一个）提供支持。"
+        },
         "carouselitemprops": {
           "props": "感谢旋转木马项目组件。"
+        },
+        "carouselnavigationprops": {
+          "props": "感谢旋转木马导航组件。"
         },
         "carouselnextprops": {
           "members": {
@@ -1032,20 +1073,41 @@
         },
         "carouselrootemits": {
           "callables": {
-            "initapi": "发生 init api 时发出。"
+            "init": "发生 init 时发出。"
           },
           "emits": "旋转木马根组件的输出。"
         },
         "carouselrootprops": {
           "members": {
             "dir": "组件的阅读方向。",
-            "opts": "选项",
+            "options": "选项",
             "orientation": "组件的方向。",
             "plugins": "插件。"
           },
           "props": "感谢旋转木马根组件。"
         },
-        "carouselui": "旋转木马组件的 UI 类重载。"
+        "carouselrootslotprops": {
+          "members": {
+            "canscrollnext": "",
+            "canscrollprev": "",
+            "carousel": "",
+            "progress": "",
+            "scrollnext": "",
+            "scrollprev": "",
+            "scrollsnaps": "",
+            "scrollto": "",
+            "selectedindex": ""
+          },
+          "slotprops": "为旋转木马组件点赞，它将所有子组件合并为一个组件，方便使用。"
+        },
+        "carouselrootslots": {
+          "callables": {
+            "default": ""
+          },
+          "slots": "旋转木马组件的插槽，它将所有子组件合并为一个组件，方便使用。"
+        },
+        "carouselui": "旋转木马组件的 UI 类重载。",
+        "type": ""
       },
       "headless_src_components_checkbox_types": {
         "checkboxcardcompactemits": {
@@ -7486,11 +7548,14 @@
       "headless_src_types_path": {
         "pathvalue": ""
       },
+      "node_modules_pnpm_embla_carousel_8_6_0_node_modules_embla_carousel_esm_components_emblacarousel_d": {
+        "emblacarouseltype": ""
+      },
       "node_modules_pnpm_embla_carousel_8_6_0_node_modules_embla_carousel_esm_components_options_d": {
-        "carouseloptions": ""
+        "emblaoptionstype": ""
       },
       "node_modules_pnpm_embla_carousel_8_6_0_node_modules_embla_carousel_esm_components_plugins_d": {
-        "carouselplugin": ""
+        "emblaplugintype": ""
       },
       "node_modules_pnpm_floating_ui_dom_1_7_6_node_modules_floating_ui_dom_dist_floating_ui_dom_d": {
         "referenceelement": ""
@@ -7539,7 +7604,7 @@
         "imghtmlattributes": "",
         "lihtmlattributes": ""
       },
-      "node_modules_pnpm_vueuse_integrations_14_3_0_fuse_js_7_3_0_nprogress_0_2_0_vue_3_5_33_typescript_6_0_3_node_modules_vueuse_integrations_dist_usefuse_d": {
+      "node_modules_pnpm_vueuse_integrations_14_3_0_fuse_js_7_3_0_vue_3_5_33_typescript_6_0_3_node_modules_vueuse_integrations_dist_usefuse_d": {
         "usefuseoptions": ""
       },
       "src_components_accordion_types": {
@@ -8148,20 +8213,39 @@
       "src_components_carousel_types": {
         "carouselemits": {
           "callables": {
-            "initapi": "发生 init api 时发出。"
+            "init": "发生 init 时发出。"
           },
           "emits": "旋转木马组件的输出。"
         },
         "carouselprops": {
           "members": {
             "class": "应用于根元素的附加类名。",
+            "containerprops": "组件的每个插槽道具，允许你直接向子组件传递道具，而无需使用 `v-slot` API。这对快速定制子组件非常有用，无需使用插槽的全部灵活性。",
+            "contentprops": "组件的每个插槽道具，允许你直接向子组件传递道具，而无需使用 `v-slot` API。这对快速定制子组件非常有用，无需使用插槽的全部灵活性。",
+            "controlprops": "组件的每个插槽道具，允许你直接向子组件传递道具，而无需使用 `v-slot` API。这对快速定制子组件非常有用，无需使用插槽的全部灵活性。",
             "dir": "组件的阅读方向。",
-            "opts": "选项",
+            "floatnav": "旋转木马的方向决定了滚动的布局和方向。",
+            "itemprops": "组件的每个插槽道具，允许你直接向子组件传递道具，而无需使用 `v-slot` API。这对快速定制子组件非常有用，无需使用插槽的全部灵活性。",
+            "navigationprops": "组件的每个插槽道具，允许你直接向子组件传递道具，而无需使用 `v-slot` API。这对快速定制子组件非常有用，无需使用插槽的全部灵活性。",
+            "nextprops": "组件的每个插槽道具，允许你直接向子组件传递道具，而无需使用 `v-slot` API。这对快速定制子组件非常有用，无需使用插槽的全部灵活性。",
+            "options": "选项",
             "orientation": "组件的方向。",
             "plugins": "插件。",
+            "previousprops": "组件的每个插槽道具，允许你直接向子组件传递道具，而无需使用 `v-slot` API。这对快速定制子组件非常有用，无需使用插槽的全部灵活性。",
+            "size": "旋转木马的大小决定了其元素的间距和大小。",
+            "slides": "在旋转木马中渲染的幻灯片。",
             "ui": "组件的每个插槽类重写。"
           },
           "props": "为旋转木马组件点赞"
+        },
+        "carouselslots": {
+          "callables": {
+            "control": "旋转木马组件的控制槽，可用于呈现旋转木马的自定义控件。槽道具包括控制旋转木马的所有必要信息和方法，如旋转木马实例、是否可以滚动下一个或上一个、所选索引、滚动快照、进度以及滚动下一个、上一个或到特定索引的方法。",
+            "item": "旋转木马组件的默认插槽，可用于在旋转木马中呈现自定义内容。槽道具包括控制旋转木马的所有必要信息和方法，如旋转木马实例、是否可以滚动下一个或上一个、所选索引、滚动快照、进度以及滚动下一个、上一个或特定索引的方法。",
+            "next": "旋转木马组件的下一个槽，可用于呈现旋转木马的自定义下一个控件。槽道具包括控制旋转木马的所有必要信息和方法，如旋转木马实例、是否可以滚动下一步或上一步、所选索引、滚动快照、进度以及滚动下一步、上一步或到特定索引的方法。",
+            "previous": "旋转木马组件的导航槽，可用于呈现旋转木马的自定义导航。槽道具包括控制旋转木马的所有必要信息和方法，如旋转木马实例、是否可以滚动下一个或上一个、所选索引、滚动快照、进度以及滚动下一个、上一个或特定索引的方法。"
+          },
+          "slots": "旋转木马组件的插槽。"
         }
       },
       "src_components_checkbox_types": {

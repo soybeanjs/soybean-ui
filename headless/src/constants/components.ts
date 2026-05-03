@@ -86,7 +86,17 @@ export const components = {
     'CardCollapsibleTrigger',
     'CardCompact'
   ],
-  carousel: ['CarouselContent', 'CarouselItem', 'CarouselNext', 'CarouselPrevious', 'CarouselRoot'],
+  carousel: [
+    'CarouselCompact',
+    'CarouselRoot',
+    'CarouselContent',
+    'CarouselContainer',
+    'CarouselItem',
+    'CarouselControl',
+    'CarouselNavigation',
+    'CarouselNext',
+    'CarouselPrevious'
+  ],
   checkbox: [
     'CheckboxCompact',
     'CheckboxCardCompact',

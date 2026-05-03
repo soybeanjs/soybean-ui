@@ -50,7 +50,7 @@
               {
                 "name": "CheckboxUi",
                 "kind": "typeAlias",
-                "type": "{ root: ClassValue; label: ClassValue; indicator: ClassValue; groupRoot: ClassValue; \"indicator-icon\": ClassValue; control: ClassValue; }",
+                "type": "{ root: ClassValue; label: ClassValue; indicator: ClassValue; control: ClassValue; groupRoot: ClassValue; \"indicator-icon\": ClassValue; }",
                 "resolvedType": null,
                 "description": "UI class overrides for the checkbox component.",
                 "descriptionKey": "api.generated.headless_src_components_checkbox_types.checkboxui",
@@ -489,7 +489,7 @@
               {
                 "name": "CheckboxCardUi",
                 "kind": "typeAlias",
-                "type": "{ root: ClassValue; content: ClassValue; description: ClassValue; label: ClassValue; icon: ClassValue; indicator: ClassValue; groupRoot: ClassValue; \"indicator-icon\": ClassValue; control: ClassValue; textContent: ClassValue; }",
+                "type": "{ root: ClassValue; content: ClassValue; description: ClassValue; label: ClassValue; icon: ClassValue; indicator: ClassValue; control: ClassValue; groupRoot: ClassValue; \"indicator-icon\": ClassValue; textContent: ClassValue; }",
                 "resolvedType": null,
                 "description": "UI class overrides for the checkbox component.",
                 "descriptionKey": "api.generated.headless_src_components_checkbox_types.checkboxcardui",
@@ -1300,7 +1300,7 @@
               {
                 "name": "CheckboxCardUi",
                 "kind": "typeAlias",
-                "type": "{ root: ClassValue; content: ClassValue; description: ClassValue; label: ClassValue; icon: ClassValue; indicator: ClassValue; groupRoot: ClassValue; \"indicator-icon\": ClassValue; control: ClassValue; textContent: ClassValue; }",
+                "type": "{ root: ClassValue; content: ClassValue; description: ClassValue; label: ClassValue; icon: ClassValue; indicator: ClassValue; control: ClassValue; groupRoot: ClassValue; \"indicator-icon\": ClassValue; textContent: ClassValue; }",
                 "resolvedType": null,
                 "description": "UI class overrides for the checkbox component.",
                 "descriptionKey": "api.generated.headless_src_components_checkbox_types.checkboxcardui",
@@ -2594,7 +2594,7 @@
               {
                 "name": "CheckboxUi",
                 "kind": "typeAlias",
-                "type": "{ root: ClassValue; label: ClassValue; indicator: ClassValue; groupRoot: ClassValue; \"indicator-icon\": ClassValue; control: ClassValue; }",
+                "type": "{ root: ClassValue; label: ClassValue; indicator: ClassValue; control: ClassValue; groupRoot: ClassValue; \"indicator-icon\": ClassValue; }",
                 "resolvedType": null,
                 "description": "UI class overrides for the checkbox component.",
                 "descriptionKey": "api.generated.headless_src_components_checkbox_types.checkboxui",

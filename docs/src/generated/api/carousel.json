@@ -5,12 +5,12 @@
       "props": {
         "kind": "props",
         "name": "CarouselProps",
-        "type": "Interface CarouselProps",
-        "resolvedType": "{ class?: string | Record<string, boolean> | ClassValue[] | null; ui?: Partial<CarouselUi>; opts?: Partial<import(\"../../../../node_modules/embla-carousel/esm/components/Options\").OptionsType>; plugins?: import(\"embla-carousel\").CreatePluginType<import(\"../../../../node_modules/embla-carousel/esm/components/Plugins\").LoosePluginType, {}>[]; orientation?: DataOrientation; dir?: Direction }",
+        "type": "Interface CarouselProps<T>",
+        "resolvedType": "{ class?: string | Record<string, boolean> | ClassValue[] | null; ui?: Partial<CarouselUi>; size?: ThemeSize; floatNav?: boolean; slides: T[]; contentProps?: CarouselContentProps; containerProps?: CarouselContainerProps; itemProps?: CarouselItemProps; controlProps?: CarouselControlProps; navigationProps?: CarouselNavigationProps; previousProps?: CarouselPreviousProps; nextProps?: CarouselNextProps; dir?: Direction; orientation?: DataOrientation; options?: Partial<import(\"../../../node_modules/embla-carousel/esm/components/Options\").OptionsType>; plugins?: import(\"embla-carousel\").CreatePluginType<import(\"../../../node_modules/embla-carousel/esm/components/Plugins\").LoosePluginType, {}>[] }",
         "description": "Props for the carousel component.",
         "descriptionKey": "api.generated.src_components_carousel_types.carouselprops.props",
         "sourcePath": "src/components/carousel/types.ts",
-        "typeParameters": [],
+        "typeParameters": ["TypeParameter T"],
         "members": [
           {
             "name": "class",
@@ -50,7 +50,7 @@
               {
                 "name": "CarouselUi",
                 "kind": "typeAlias",
-                "type": "{ root: ClassValue; item: ClassValue; content: ClassValue; next: ClassValue; container: ClassValue; previous: ClassValue; }",
+                "type": "{ root: ClassValue; item: ClassValue; content: ClassValue; next: ClassValue; container: ClassValue; control: ClassValue; navigation: ClassValue; previous: ClassValue; }",
                 "resolvedType": null,
                 "description": "UI class overrides for the carousel component.",
                 "descriptionKey": "api.generated.headless_src_components_carousel_types.carouselui",
@@ -63,50 +63,337 @@
             ]
           },
           {
-            "name": "opts",
-            "type": "Partial<import(\"../../../../node_modules/embla-carousel/esm/components/Options\").OptionsType>",
+            "name": "size",
+            "type": "ThemeSize",
             "required": false,
-            "description": "Opts.",
-            "descriptionKey": "api.generated.src_components_carousel_types.carouselprops.members.opts",
+            "description": "The size of the carousel, which determines the spacing and sizing of its elements.",
+            "descriptionKey": "api.generated.src_components_carousel_types.carouselprops.members.size",
             "default": null,
-            "inheritedFrom": "opts",
-            "sourcePath": "headless/src/components/carousel/types.ts",
+            "inheritedFrom": null,
+            "sourcePath": "src/components/carousel/types.ts",
             "referencedTypes": [
               {
-                "name": "CarouselOptions",
+                "name": "ThemeSize",
                 "kind": "typeAlias",
-                "type": "CarouselOptions",
-                "resolvedType": null,
+                "type": "'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'",
+                "resolvedType": "'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'",
                 "description": "",
-                "descriptionKey": "api.generated.node_modules_pnpm_embla_carousel_8_6_0_node_modules_embla_carousel_esm_components_options_d.carouseloptions",
-                "sourcePath": "node_modules/.pnpm/embla-carousel@8.6.0/node_modules/embla-carousel/esm/components/Options.d.ts",
+                "descriptionKey": "api.generated.src_theme_types.themesize",
+                "sourcePath": "src/theme/types.ts",
                 "typeParameters": [],
-                "external": true,
+                "external": false,
                 "members": [],
                 "callables": []
               }
             ]
           },
           {
-            "name": "plugins",
-            "type": "import(\"embla-carousel\").CreatePluginType<import(\"../../../../node_modules/embla-carousel/esm/components/Plugins\").LoosePluginType, {}>[]",
+            "name": "floatNav",
+            "type": "boolean",
             "required": false,
-            "description": "Plugins.",
-            "descriptionKey": "api.generated.src_components_carousel_types.carouselprops.members.plugins",
+            "description": "The orientation of the carousel, which determines the layout and direction of scrolling.",
+            "descriptionKey": "api.generated.src_components_carousel_types.carouselprops.members.floatnav",
             "default": null,
-            "inheritedFrom": "plugins",
+            "inheritedFrom": null,
+            "sourcePath": "src/components/carousel/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "slides",
+            "type": "T[]",
+            "required": true,
+            "description": "Slides to be rendered in the carousel.",
+            "descriptionKey": "api.generated.src_components_carousel_types.carouselprops.members.slides",
+            "default": null,
+            "inheritedFrom": "slides",
+            "sourcePath": "headless/src/components/carousel/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "contentProps",
+            "type": "CarouselContentProps",
+            "required": false,
+            "description": "Per-slot props for the component, allowing you to pass props directly to the sub components without needing to use the `v-slot` API. This is useful for quickly customizing the sub components without needing to use the full flexibility of slots.",
+            "descriptionKey": "api.generated.src_components_carousel_types.carouselprops.members.contentprops",
+            "default": null,
+            "inheritedFrom": "contentProps",
             "sourcePath": "headless/src/components/carousel/types.ts",
             "referencedTypes": [
               {
-                "name": "CarouselPlugin",
-                "kind": "typeAlias",
-                "type": "CarouselPlugin",
+                "name": "CarouselContentProps",
+                "kind": "interface",
+                "type": "CarouselContentProps",
                 "resolvedType": null,
-                "description": "",
-                "descriptionKey": "api.generated.node_modules_pnpm_embla_carousel_8_6_0_node_modules_embla_carousel_esm_components_plugins_d.carouselplugin",
-                "sourcePath": "node_modules/.pnpm/embla-carousel@8.6.0/node_modules/embla-carousel/esm/components/Plugins.d.ts",
+                "description": "Props for the carousel content component.",
+                "descriptionKey": "api.generated.headless_src_components_carousel_types.carouselcontentprops",
+                "sourcePath": "headless/src/components/carousel/types.ts",
                 "typeParameters": [],
-                "external": true,
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "containerProps",
+            "type": "CarouselContainerProps",
+            "required": false,
+            "description": "Per-slot props for the component, allowing you to pass props directly to the sub components without needing to use the `v-slot` API. This is useful for quickly customizing the sub components without needing to use the full flexibility of slots.",
+            "descriptionKey": "api.generated.src_components_carousel_types.carouselprops.members.containerprops",
+            "default": null,
+            "inheritedFrom": "containerProps",
+            "sourcePath": "headless/src/components/carousel/types.ts",
+            "referencedTypes": [
+              {
+                "name": "CarouselContainerProps",
+                "kind": "interface",
+                "type": "CarouselContainerProps",
+                "resolvedType": null,
+                "description": "Props for the carousel container component.",
+                "descriptionKey": "api.generated.headless_src_components_carousel_types.carouselcontainerprops",
+                "sourcePath": "headless/src/components/carousel/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "itemProps",
+            "type": "CarouselItemProps",
+            "required": false,
+            "description": "Per-slot props for the component, allowing you to pass props directly to the sub components without needing to use the `v-slot` API. This is useful for quickly customizing the sub components without needing to use the full flexibility of slots.",
+            "descriptionKey": "api.generated.src_components_carousel_types.carouselprops.members.itemprops",
+            "default": null,
+            "inheritedFrom": "itemProps",
+            "sourcePath": "headless/src/components/carousel/types.ts",
+            "referencedTypes": [
+              {
+                "name": "CarouselItemProps",
+                "kind": "interface",
+                "type": "CarouselItemProps",
+                "resolvedType": null,
+                "description": "Props for the carousel item component.",
+                "descriptionKey": "api.generated.headless_src_components_carousel_types.carouselitemprops",
+                "sourcePath": "headless/src/components/carousel/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "controlProps",
+            "type": "CarouselControlProps",
+            "required": false,
+            "description": "Per-slot props for the component, allowing you to pass props directly to the sub components without needing to use the `v-slot` API. This is useful for quickly customizing the sub components without needing to use the full flexibility of slots.",
+            "descriptionKey": "api.generated.src_components_carousel_types.carouselprops.members.controlprops",
+            "default": null,
+            "inheritedFrom": "controlProps",
+            "sourcePath": "headless/src/components/carousel/types.ts",
+            "referencedTypes": [
+              {
+                "name": "CarouselControlProps",
+                "kind": "interface",
+                "type": "CarouselControlProps",
+                "resolvedType": null,
+                "description": "Props for the carousel control components (next and previous).",
+                "descriptionKey": "api.generated.headless_src_components_carousel_types.carouselcontrolprops",
+                "sourcePath": "headless/src/components/carousel/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "navigationProps",
+            "type": "CarouselNavigationProps",
+            "required": false,
+            "description": "Per-slot props for the component, allowing you to pass props directly to the sub components without needing to use the `v-slot` API. This is useful for quickly customizing the sub components without needing to use the full flexibility of slots.",
+            "descriptionKey": "api.generated.src_components_carousel_types.carouselprops.members.navigationprops",
+            "default": null,
+            "inheritedFrom": "navigationProps",
+            "sourcePath": "headless/src/components/carousel/types.ts",
+            "referencedTypes": [
+              {
+                "name": "CarouselNavigationProps",
+                "kind": "interface",
+                "type": "CarouselNavigationProps",
+                "resolvedType": null,
+                "description": "Props for the carousel navigation component.",
+                "descriptionKey": "api.generated.headless_src_components_carousel_types.carouselnavigationprops",
+                "sourcePath": "headless/src/components/carousel/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "previousProps",
+            "type": "CarouselPreviousProps",
+            "required": false,
+            "description": "Per-slot props for the component, allowing you to pass props directly to the sub components without needing to use the `v-slot` API. This is useful for quickly customizing the sub components without needing to use the full flexibility of slots.",
+            "descriptionKey": "api.generated.src_components_carousel_types.carouselprops.members.previousprops",
+            "default": null,
+            "inheritedFrom": "previousProps",
+            "sourcePath": "headless/src/components/carousel/types.ts",
+            "referencedTypes": [
+              {
+                "name": "CarouselPreviousProps",
+                "kind": "interface",
+                "type": "CarouselPreviousProps",
+                "resolvedType": "{ type?: ButtonType; disabled?: boolean; asChild?: boolean; as?: AsTag | Component }",
+                "description": "Props for the carousel previous component.",
+                "descriptionKey": "api.generated.headless_src_components_carousel_types.carouselpreviousprops",
+                "sourcePath": "headless/src/components/carousel/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "type",
+                    "type": "ButtonType",
+                    "required": false,
+                    "description": "The type of the button element. Can be one of 'button', 'submit', or 'reset'.",
+                    "descriptionKey": "api.generated.headless_src_components_carousel_types.carouselpreviousprops.members.type",
+                    "default": "'button'",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/button/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "disabled",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Whether the component is disabled.",
+                    "descriptionKey": "api.generated.headless_src_components_carousel_types.carouselpreviousprops.members.disabled",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/button/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "asChild",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+                    "descriptionKey": "api.generated.headless_src_components_carousel_types.carouselpreviousprops.members.aschild",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "as",
+                    "type": "AsTag | Component",
+                    "required": false,
+                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+                    "descriptionKey": "api.generated.headless_src_components_carousel_types.carouselpreviousprops.members.as",
+                    "default": "'div'",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "nextProps",
+            "type": "CarouselNextProps",
+            "required": false,
+            "description": "Per-slot props for the component, allowing you to pass props directly to the sub components without needing to use the `v-slot` API. This is useful for quickly customizing the sub components without needing to use the full flexibility of slots.",
+            "descriptionKey": "api.generated.src_components_carousel_types.carouselprops.members.nextprops",
+            "default": null,
+            "inheritedFrom": "nextProps",
+            "sourcePath": "headless/src/components/carousel/types.ts",
+            "referencedTypes": [
+              {
+                "name": "CarouselNextProps",
+                "kind": "interface",
+                "type": "CarouselNextProps",
+                "resolvedType": "{ type?: ButtonType; disabled?: boolean; asChild?: boolean; as?: AsTag | Component }",
+                "description": "Props for the carousel next component.",
+                "descriptionKey": "api.generated.headless_src_components_carousel_types.carouselnextprops",
+                "sourcePath": "headless/src/components/carousel/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "type",
+                    "type": "ButtonType",
+                    "required": false,
+                    "description": "The type of the button element. Can be one of 'button', 'submit', or 'reset'.",
+                    "descriptionKey": "api.generated.headless_src_components_carousel_types.carouselnextprops.members.type",
+                    "default": "'button'",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/button/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "disabled",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Whether the component is disabled.",
+                    "descriptionKey": "api.generated.headless_src_components_carousel_types.carouselnextprops.members.disabled",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/button/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "asChild",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+                    "descriptionKey": "api.generated.headless_src_components_carousel_types.carouselnextprops.members.aschild",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "as",
+                    "type": "AsTag | Component",
+                    "required": false,
+                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+                    "descriptionKey": "api.generated.headless_src_components_carousel_types.carouselnextprops.members.as",
+                    "default": "'div'",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "dir",
+            "type": "Direction",
+            "required": false,
+            "description": "Reading direction of the component.",
+            "descriptionKey": "api.generated.src_components_carousel_types.carouselprops.members.dir",
+            "default": null,
+            "inheritedFrom": "dir",
+            "sourcePath": "headless/src/components/carousel/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Direction",
+                "kind": "typeAlias",
+                "type": "'ltr' | 'rtl'",
+                "resolvedType": "'ltr' | 'rtl'",
+                "description": "",
+                "descriptionKey": "api.generated.headless_src_types_common.direction",
+                "sourcePath": "headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
                 "members": [],
                 "callables": []
               }
@@ -138,11 +425,539 @@
             ]
           },
           {
+            "name": "options",
+            "type": "Partial<import(\"../../../node_modules/embla-carousel/esm/components/Options\").OptionsType>",
+            "required": false,
+            "description": "Options.",
+            "descriptionKey": "api.generated.src_components_carousel_types.carouselprops.members.options",
+            "default": null,
+            "inheritedFrom": "options",
+            "sourcePath": "headless/src/components/carousel/types.ts",
+            "referencedTypes": [
+              {
+                "name": "EmblaOptionsType",
+                "kind": "typeAlias",
+                "type": "EmblaOptionsType",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": "api.generated.node_modules_pnpm_embla_carousel_8_6_0_node_modules_embla_carousel_esm_components_options_d.emblaoptionstype",
+                "sourcePath": "node_modules/.pnpm/embla-carousel@8.6.0/node_modules/embla-carousel/esm/components/Options.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "plugins",
+            "type": "import(\"embla-carousel\").CreatePluginType<import(\"../../../node_modules/embla-carousel/esm/components/Plugins\").LoosePluginType, {}>[]",
+            "required": false,
+            "description": "Plugins.",
+            "descriptionKey": "api.generated.src_components_carousel_types.carouselprops.members.plugins",
+            "default": null,
+            "inheritedFrom": "plugins",
+            "sourcePath": "headless/src/components/carousel/types.ts",
+            "referencedTypes": [
+              {
+                "name": "EmblaPluginType",
+                "kind": "typeAlias",
+                "type": "EmblaPluginType",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": "api.generated.node_modules_pnpm_embla_carousel_8_6_0_node_modules_embla_carousel_esm_components_plugins_d.emblaplugintype",
+                "sourcePath": "node_modules/.pnpm/embla-carousel@8.6.0/node_modules/embla-carousel/esm/components/Plugins.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      },
+      "emits": {
+        "kind": "emits",
+        "name": "CarouselEmits",
+        "type": "TypeAlias CarouselEmits: CarouselCompactEmits",
+        "resolvedType": "{ init: [carousel: EmblaCarouselType] }",
+        "description": "Emits for the carousel component.",
+        "descriptionKey": "api.generated.src_components_carousel_types.carouselemits.emits",
+        "sourcePath": "src/components/carousel/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [
+          {
+            "name": "init",
+            "type": "[carousel: EmblaCarouselType]",
+            "parameters": "carousel: EmblaCarouselType",
+            "required": true,
+            "description": "Emitted when init occurs.",
+            "descriptionKey": "api.generated.src_components_carousel_types.carouselemits.callables.init",
+            "sourcePath": "headless/src/components/carousel/types.ts",
+            "referencedTypes": [
+              {
+                "name": "EmblaCarouselType",
+                "kind": "typeAlias",
+                "type": "EmblaCarouselType",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": "api.generated.node_modules_pnpm_embla_carousel_8_6_0_node_modules_embla_carousel_esm_components_emblacarousel_d.emblacarouseltype",
+                "sourcePath": "node_modules/.pnpm/embla-carousel@8.6.0/node_modules/embla-carousel/esm/components/EmblaCarousel.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "referencedTypes": [
+          {
+            "name": "CarouselRootEmits",
+            "kind": "typeAlias",
+            "type": "{ init: [carousel: import(\"embla-carousel\").EmblaCarouselType]; }",
+            "resolvedType": "{ init: [carousel: EmblaCarouselType] }",
+            "description": "Emits for the carousel root component.",
+            "descriptionKey": "api.generated.headless_src_components_carousel_types.carouselrootemits",
+            "sourcePath": "headless/src/components/carousel/types.ts",
+            "typeParameters": [],
+            "external": false,
+            "members": [],
+            "callables": [
+              {
+                "name": "init",
+                "type": "[carousel: EmblaCarouselType]",
+                "parameters": "carousel: EmblaCarouselType",
+                "required": true,
+                "description": "Emitted when init occurs.",
+                "descriptionKey": "api.generated.headless_src_components_carousel_types.carouselrootemits.callables.init",
+                "sourcePath": "headless/src/components/carousel/types.ts",
+                "referencedTypes": []
+              }
+            ]
+          }
+        ]
+      },
+      "slots": {
+        "kind": "slots",
+        "name": "CarouselSlots",
+        "type": "TypeAlias CarouselSlots<T>: CarouselCompactSlots<T>",
+        "resolvedType": "{ item?: ((props: CarouselRootSlotProps & { slide: T; index: number; selected: boolean; }) => any); control?: ((props: CarouselRootSlotProps) => any); previous?: ((props: CarouselRootSlotProps) => any); next?: ((props: CarouselRootSlotProps) => any) }",
+        "description": "Slots for the carousel component.",
+        "descriptionKey": "api.generated.src_components_carousel_types.carouselslots.slots",
+        "sourcePath": "src/components/carousel/types.ts",
+        "typeParameters": ["TypeParameter T"],
+        "members": [],
+        "callables": [
+          {
+            "name": "item",
+            "type": "((props: CarouselRootSlotProps & { slide: T; index: number; selected: boolean; }) => any) | undefined",
+            "parameters": "((props: CarouselRootSlotProps & { slide: T; index: number; selected: boolean; }) => any) | undefined",
+            "required": false,
+            "description": "Default slot for the carousel component, which can be used to render custom content in the carousel. The slot props include all the necessary information and methods to control the carousel, such as the carousel instance, whether it can scroll next or prev, the selected index, scroll snaps, progress, and methods to scroll next, prev, or to a specific index.",
+            "descriptionKey": "api.generated.src_components_carousel_types.carouselslots.callables.item",
+            "sourcePath": "headless/src/components/carousel/types.ts",
+            "referencedTypes": [
+              {
+                "name": "__type",
+                "kind": "typeLiteral",
+                "type": "{ slide: T; index: number; selected: boolean; }",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": "api.generated.headless_src_components_carousel_types.type",
+                "sourcePath": "headless/src/components/carousel/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "CarouselRootSlotProps",
+                "kind": "interface",
+                "type": "CarouselRootSlotProps",
+                "resolvedType": null,
+                "description": "Props for the carousel component, which combines all sub components into a single component for ease of use.",
+                "descriptionKey": "api.generated.headless_src_components_carousel_types.carouselrootslotprops",
+                "sourcePath": "headless/src/components/carousel/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "control",
+            "type": "((props: CarouselRootSlotProps) => any) | undefined",
+            "parameters": "((props: CarouselRootSlotProps) => any) | undefined",
+            "required": false,
+            "description": "Control slot for the carousel component, which can be used to render custom controls for the carousel. The slot props include all the necessary information and methods to control the carousel, such as the carousel instance, whether it can scroll next or prev, the selected index, scroll snaps, progress, and methods to scroll next, prev, or to a specific index.",
+            "descriptionKey": "api.generated.src_components_carousel_types.carouselslots.callables.control",
+            "sourcePath": "headless/src/components/carousel/types.ts",
+            "referencedTypes": [
+              {
+                "name": "CarouselRootSlotProps",
+                "kind": "interface",
+                "type": "CarouselRootSlotProps",
+                "resolvedType": null,
+                "description": "Props for the carousel component, which combines all sub components into a single component for ease of use.",
+                "descriptionKey": "api.generated.headless_src_components_carousel_types.carouselrootslotprops",
+                "sourcePath": "headless/src/components/carousel/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "previous",
+            "type": "((props: CarouselRootSlotProps) => any) | undefined",
+            "parameters": "((props: CarouselRootSlotProps) => any) | undefined",
+            "required": false,
+            "description": "Navigation slot for the carousel component, which can be used to render custom navigation for the carousel. The slot props include all the necessary information and methods to control the carousel, such as the carousel instance, whether it can scroll next or prev, the selected index, scroll snaps, progress, and methods to scroll next, prev, or to a specific index.",
+            "descriptionKey": "api.generated.src_components_carousel_types.carouselslots.callables.previous",
+            "sourcePath": "headless/src/components/carousel/types.ts",
+            "referencedTypes": [
+              {
+                "name": "CarouselRootSlotProps",
+                "kind": "interface",
+                "type": "CarouselRootSlotProps",
+                "resolvedType": null,
+                "description": "Props for the carousel component, which combines all sub components into a single component for ease of use.",
+                "descriptionKey": "api.generated.headless_src_components_carousel_types.carouselrootslotprops",
+                "sourcePath": "headless/src/components/carousel/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "next",
+            "type": "((props: CarouselRootSlotProps) => any) | undefined",
+            "parameters": "((props: CarouselRootSlotProps) => any) | undefined",
+            "required": false,
+            "description": "Next slot for the carousel component, which can be used to render custom next controls for the carousel. The slot props include all the necessary information and methods to control the carousel, such as the carousel instance, whether it can scroll next or prev, the selected index, scroll snaps, progress, and methods to scroll next, prev, or to a specific index.",
+            "descriptionKey": "api.generated.src_components_carousel_types.carouselslots.callables.next",
+            "sourcePath": "headless/src/components/carousel/types.ts",
+            "referencedTypes": [
+              {
+                "name": "CarouselRootSlotProps",
+                "kind": "interface",
+                "type": "CarouselRootSlotProps",
+                "resolvedType": null,
+                "description": "Props for the carousel component, which combines all sub components into a single component for ease of use.",
+                "descriptionKey": "api.generated.headless_src_components_carousel_types.carouselrootslotprops",
+                "sourcePath": "headless/src/components/carousel/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "referencedTypes": []
+      }
+    },
+    "CarouselCompact": {
+      "props": {
+        "kind": "props",
+        "name": "CarouselCompactProps",
+        "type": "Interface CarouselCompactProps<T>",
+        "resolvedType": "{ slides: T[]; contentProps?: CarouselContentProps; containerProps?: CarouselContainerProps; itemProps?: CarouselItemProps; controlProps?: CarouselControlProps; navigationProps?: CarouselNavigationProps; previousProps?: CarouselPreviousProps; nextProps?: CarouselNextProps; dir?: Direction; orientation?: DataOrientation; options?: Partial<import(\"../../../node_modules/embla-carousel/esm/components/Options\").OptionsType>; plugins?: import(\"embla-carousel\").CreatePluginType<import(\"../../../node_modules/embla-carousel/esm/components/Plugins\").LoosePluginType, {}>[] }",
+        "description": "Props for the carousel compact component, which combines all sub components into a single component for ease of use.",
+        "descriptionKey": "api.generated.headless_src_components_carousel_types.carouselcompactprops.props",
+        "sourcePath": "headless/src/components/carousel/types.ts",
+        "typeParameters": ["TypeParameter T"],
+        "members": [
+          {
+            "name": "slides",
+            "type": "T[]",
+            "required": true,
+            "description": "Slides to be rendered in the carousel.",
+            "descriptionKey": "api.generated.headless_src_components_carousel_types.carouselcompactprops.members.slides",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/carousel/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "contentProps",
+            "type": "CarouselContentProps",
+            "required": false,
+            "description": "Per-slot props for the component, allowing you to pass props directly to the sub components without needing to use the `v-slot` API. This is useful for quickly customizing the sub components without needing to use the full flexibility of slots.",
+            "descriptionKey": "api.generated.headless_src_components_carousel_types.carouselcompactprops.members.contentprops",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/carousel/types.ts",
+            "referencedTypes": [
+              {
+                "name": "CarouselContentProps",
+                "kind": "interface",
+                "type": "CarouselContentProps",
+                "resolvedType": null,
+                "description": "Props for the carousel content component.",
+                "descriptionKey": "api.generated.headless_src_components_carousel_types.carouselcontentprops",
+                "sourcePath": "headless/src/components/carousel/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "containerProps",
+            "type": "CarouselContainerProps",
+            "required": false,
+            "description": "Per-slot props for the component, allowing you to pass props directly to the sub components without needing to use the `v-slot` API. This is useful for quickly customizing the sub components without needing to use the full flexibility of slots.",
+            "descriptionKey": "api.generated.headless_src_components_carousel_types.carouselcompactprops.members.containerprops",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/carousel/types.ts",
+            "referencedTypes": [
+              {
+                "name": "CarouselContainerProps",
+                "kind": "interface",
+                "type": "CarouselContainerProps",
+                "resolvedType": null,
+                "description": "Props for the carousel container component.",
+                "descriptionKey": "api.generated.headless_src_components_carousel_types.carouselcontainerprops",
+                "sourcePath": "headless/src/components/carousel/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "itemProps",
+            "type": "CarouselItemProps",
+            "required": false,
+            "description": "Per-slot props for the component, allowing you to pass props directly to the sub components without needing to use the `v-slot` API. This is useful for quickly customizing the sub components without needing to use the full flexibility of slots.",
+            "descriptionKey": "api.generated.headless_src_components_carousel_types.carouselcompactprops.members.itemprops",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/carousel/types.ts",
+            "referencedTypes": [
+              {
+                "name": "CarouselItemProps",
+                "kind": "interface",
+                "type": "CarouselItemProps",
+                "resolvedType": null,
+                "description": "Props for the carousel item component.",
+                "descriptionKey": "api.generated.headless_src_components_carousel_types.carouselitemprops",
+                "sourcePath": "headless/src/components/carousel/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "controlProps",
+            "type": "CarouselControlProps",
+            "required": false,
+            "description": "Per-slot props for the component, allowing you to pass props directly to the sub components without needing to use the `v-slot` API. This is useful for quickly customizing the sub components without needing to use the full flexibility of slots.",
+            "descriptionKey": "api.generated.headless_src_components_carousel_types.carouselcompactprops.members.controlprops",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/carousel/types.ts",
+            "referencedTypes": [
+              {
+                "name": "CarouselControlProps",
+                "kind": "interface",
+                "type": "CarouselControlProps",
+                "resolvedType": null,
+                "description": "Props for the carousel control components (next and previous).",
+                "descriptionKey": "api.generated.headless_src_components_carousel_types.carouselcontrolprops",
+                "sourcePath": "headless/src/components/carousel/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "navigationProps",
+            "type": "CarouselNavigationProps",
+            "required": false,
+            "description": "Per-slot props for the component, allowing you to pass props directly to the sub components without needing to use the `v-slot` API. This is useful for quickly customizing the sub components without needing to use the full flexibility of slots.",
+            "descriptionKey": "api.generated.headless_src_components_carousel_types.carouselcompactprops.members.navigationprops",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/carousel/types.ts",
+            "referencedTypes": [
+              {
+                "name": "CarouselNavigationProps",
+                "kind": "interface",
+                "type": "CarouselNavigationProps",
+                "resolvedType": null,
+                "description": "Props for the carousel navigation component.",
+                "descriptionKey": "api.generated.headless_src_components_carousel_types.carouselnavigationprops",
+                "sourcePath": "headless/src/components/carousel/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "previousProps",
+            "type": "CarouselPreviousProps",
+            "required": false,
+            "description": "Per-slot props for the component, allowing you to pass props directly to the sub components without needing to use the `v-slot` API. This is useful for quickly customizing the sub components without needing to use the full flexibility of slots.",
+            "descriptionKey": "api.generated.headless_src_components_carousel_types.carouselcompactprops.members.previousprops",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/carousel/types.ts",
+            "referencedTypes": [
+              {
+                "name": "CarouselPreviousProps",
+                "kind": "interface",
+                "type": "CarouselPreviousProps",
+                "resolvedType": "{ type?: ButtonType; disabled?: boolean; asChild?: boolean; as?: AsTag | Component }",
+                "description": "Props for the carousel previous component.",
+                "descriptionKey": "api.generated.headless_src_components_carousel_types.carouselpreviousprops",
+                "sourcePath": "headless/src/components/carousel/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "type",
+                    "type": "ButtonType",
+                    "required": false,
+                    "description": "The type of the button element. Can be one of 'button', 'submit', or 'reset'.",
+                    "descriptionKey": "api.generated.headless_src_components_carousel_types.carouselpreviousprops.members.type",
+                    "default": "'button'",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/button/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "disabled",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Whether the component is disabled.",
+                    "descriptionKey": "api.generated.headless_src_components_carousel_types.carouselpreviousprops.members.disabled",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/button/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "asChild",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+                    "descriptionKey": "api.generated.headless_src_components_carousel_types.carouselpreviousprops.members.aschild",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "as",
+                    "type": "AsTag | Component",
+                    "required": false,
+                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+                    "descriptionKey": "api.generated.headless_src_components_carousel_types.carouselpreviousprops.members.as",
+                    "default": "'div'",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "nextProps",
+            "type": "CarouselNextProps",
+            "required": false,
+            "description": "Per-slot props for the component, allowing you to pass props directly to the sub components without needing to use the `v-slot` API. This is useful for quickly customizing the sub components without needing to use the full flexibility of slots.",
+            "descriptionKey": "api.generated.headless_src_components_carousel_types.carouselcompactprops.members.nextprops",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/carousel/types.ts",
+            "referencedTypes": [
+              {
+                "name": "CarouselNextProps",
+                "kind": "interface",
+                "type": "CarouselNextProps",
+                "resolvedType": "{ type?: ButtonType; disabled?: boolean; asChild?: boolean; as?: AsTag | Component }",
+                "description": "Props for the carousel next component.",
+                "descriptionKey": "api.generated.headless_src_components_carousel_types.carouselnextprops",
+                "sourcePath": "headless/src/components/carousel/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "type",
+                    "type": "ButtonType",
+                    "required": false,
+                    "description": "The type of the button element. Can be one of 'button', 'submit', or 'reset'.",
+                    "descriptionKey": "api.generated.headless_src_components_carousel_types.carouselnextprops.members.type",
+                    "default": "'button'",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/button/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "disabled",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Whether the component is disabled.",
+                    "descriptionKey": "api.generated.headless_src_components_carousel_types.carouselnextprops.members.disabled",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/button/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "asChild",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+                    "descriptionKey": "api.generated.headless_src_components_carousel_types.carouselnextprops.members.aschild",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "as",
+                    "type": "AsTag | Component",
+                    "required": false,
+                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+                    "descriptionKey": "api.generated.headless_src_components_carousel_types.carouselnextprops.members.as",
+                    "default": "'div'",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
             "name": "dir",
             "type": "Direction",
             "required": false,
             "description": "Reading direction of the component.",
-            "descriptionKey": "api.generated.src_components_carousel_types.carouselprops.members.dir",
+            "descriptionKey": "api.generated.headless_src_components_carousel_types.carouselcompactprops.members.dir",
             "default": null,
             "inheritedFrom": "dir",
             "sourcePath": "headless/src/components/carousel/types.ts",
@@ -161,6 +976,81 @@
                 "callables": []
               }
             ]
+          },
+          {
+            "name": "orientation",
+            "type": "DataOrientation",
+            "required": false,
+            "description": "Orientation of the component.",
+            "descriptionKey": "api.generated.headless_src_components_carousel_types.carouselcompactprops.members.orientation",
+            "default": null,
+            "inheritedFrom": "orientation",
+            "sourcePath": "headless/src/components/carousel/types.ts",
+            "referencedTypes": [
+              {
+                "name": "DataOrientation",
+                "kind": "typeAlias",
+                "type": "'vertical' | 'horizontal'",
+                "resolvedType": "'vertical' | 'horizontal'",
+                "description": "",
+                "descriptionKey": "api.generated.headless_src_types_common.dataorientation",
+                "sourcePath": "headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "options",
+            "type": "Partial<import(\"../../../node_modules/embla-carousel/esm/components/Options\").OptionsType>",
+            "required": false,
+            "description": "Options.",
+            "descriptionKey": "api.generated.headless_src_components_carousel_types.carouselcompactprops.members.options",
+            "default": null,
+            "inheritedFrom": "options",
+            "sourcePath": "headless/src/components/carousel/types.ts",
+            "referencedTypes": [
+              {
+                "name": "EmblaOptionsType",
+                "kind": "typeAlias",
+                "type": "EmblaOptionsType",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": "api.generated.node_modules_pnpm_embla_carousel_8_6_0_node_modules_embla_carousel_esm_components_options_d.emblaoptionstype",
+                "sourcePath": "node_modules/.pnpm/embla-carousel@8.6.0/node_modules/embla-carousel/esm/components/Options.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "plugins",
+            "type": "import(\"embla-carousel\").CreatePluginType<import(\"../../../node_modules/embla-carousel/esm/components/Plugins\").LoosePluginType, {}>[]",
+            "required": false,
+            "description": "Plugins.",
+            "descriptionKey": "api.generated.headless_src_components_carousel_types.carouselcompactprops.members.plugins",
+            "default": null,
+            "inheritedFrom": "plugins",
+            "sourcePath": "headless/src/components/carousel/types.ts",
+            "referencedTypes": [
+              {
+                "name": "EmblaPluginType",
+                "kind": "typeAlias",
+                "type": "EmblaPluginType",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": "api.generated.node_modules_pnpm_embla_carousel_8_6_0_node_modules_embla_carousel_esm_components_plugins_d.emblaplugintype",
+                "sourcePath": "node_modules/.pnpm/embla-carousel@8.6.0/node_modules/embla-carousel/esm/components/Plugins.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
           }
         ],
         "callables": [],
@@ -168,32 +1058,46 @@
       },
       "emits": {
         "kind": "emits",
-        "name": "CarouselEmits",
-        "type": "TypeAlias CarouselEmits: CarouselRootEmits",
-        "resolvedType": "{ initApi: [api: import(\"embla-carousel\").EmblaCarouselType] }",
-        "description": "Emits for the carousel component.",
-        "descriptionKey": "api.generated.src_components_carousel_types.carouselemits.emits",
-        "sourcePath": "src/components/carousel/types.ts",
+        "name": "CarouselCompactEmits",
+        "type": "TypeAlias CarouselCompactEmits: CarouselRootEmits",
+        "resolvedType": "{ init: [carousel: EmblaCarouselType] }",
+        "description": "Emits for the carousel compact component, which combines all sub components into a single component for ease of use.",
+        "descriptionKey": "api.generated.headless_src_components_carousel_types.carouselcompactemits.emits",
+        "sourcePath": "headless/src/components/carousel/types.ts",
         "typeParameters": [],
         "members": [],
         "callables": [
           {
-            "name": "initApi",
-            "type": "[api: import(\"embla-carousel\").EmblaCarouselType]",
-            "parameters": "api: import(\"embla-carousel\").EmblaCarouselType",
+            "name": "init",
+            "type": "[carousel: EmblaCarouselType]",
+            "parameters": "carousel: EmblaCarouselType",
             "required": true,
-            "description": "Emitted when init api occurs.",
-            "descriptionKey": "api.generated.src_components_carousel_types.carouselemits.callables.initapi",
+            "description": "Emitted when init occurs.",
+            "descriptionKey": "api.generated.headless_src_components_carousel_types.carouselcompactemits.callables.init",
             "sourcePath": "headless/src/components/carousel/types.ts",
-            "referencedTypes": []
+            "referencedTypes": [
+              {
+                "name": "EmblaCarouselType",
+                "kind": "typeAlias",
+                "type": "EmblaCarouselType",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": "api.generated.node_modules_pnpm_embla_carousel_8_6_0_node_modules_embla_carousel_esm_components_emblacarousel_d.emblacarouseltype",
+                "sourcePath": "node_modules/.pnpm/embla-carousel@8.6.0/node_modules/embla-carousel/esm/components/EmblaCarousel.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
           }
         ],
         "referencedTypes": [
           {
             "name": "CarouselRootEmits",
             "kind": "typeAlias",
-            "type": "{ initApi: [api: import(\"@soybeanjs/headless\").CarouselApi]; }",
-            "resolvedType": "{ initApi: [api: import(\"embla-carousel\").EmblaCarouselType] }",
+            "type": "{ init: [carousel: EmblaCarouselType]; }",
+            "resolvedType": "{ init: [carousel: EmblaCarouselType] }",
             "description": "Emits for the carousel root component.",
             "descriptionKey": "api.generated.headless_src_components_carousel_types.carouselrootemits",
             "sourcePath": "headless/src/components/carousel/types.ts",
@@ -202,18 +1106,156 @@
             "members": [],
             "callables": [
               {
-                "name": "initApi",
-                "type": "[api: import(\"embla-carousel\").EmblaCarouselType]",
-                "parameters": "api: import(\"embla-carousel\").EmblaCarouselType",
+                "name": "init",
+                "type": "[carousel: EmblaCarouselType]",
+                "parameters": "carousel: EmblaCarouselType",
                 "required": true,
-                "description": "Emitted when init api occurs.",
-                "descriptionKey": "api.generated.headless_src_components_carousel_types.carouselrootemits.callables.initapi",
+                "description": "Emitted when init occurs.",
+                "descriptionKey": "api.generated.headless_src_components_carousel_types.carouselrootemits.callables.init",
                 "sourcePath": "headless/src/components/carousel/types.ts",
                 "referencedTypes": []
               }
             ]
           }
         ]
+      },
+      "slots": {
+        "kind": "slots",
+        "name": "CarouselCompactSlots",
+        "type": "TypeAlias CarouselCompactSlots<T>",
+        "resolvedType": "{ item?: ((props: CarouselRootSlotProps & { slide: T; index: number; selected: boolean; }) => any); control?: ((props: CarouselRootSlotProps) => any); previous?: ((props: CarouselRootSlotProps) => any); next?: ((props: CarouselRootSlotProps) => any) }",
+        "description": "Slots for the carousel compact component, which combines all sub components into a single component for ease of use.",
+        "descriptionKey": "api.generated.headless_src_components_carousel_types.carouselcompactslots.slots",
+        "sourcePath": "headless/src/components/carousel/types.ts",
+        "typeParameters": ["TypeParameter T"],
+        "members": [],
+        "callables": [
+          {
+            "name": "item",
+            "type": "((props: CarouselRootSlotProps & { slide: T; index: number; selected: boolean; }) => any) | undefined",
+            "parameters": "((props: CarouselRootSlotProps & { slide: T; index: number; selected: boolean; }) => any) | undefined",
+            "required": false,
+            "description": "Default slot for the carousel component, which can be used to render custom content in the carousel. The slot props include all the necessary information and methods to control the carousel, such as the carousel instance, whether it can scroll next or prev, the selected index, scroll snaps, progress, and methods to scroll next, prev, or to a specific index.",
+            "descriptionKey": "api.generated.headless_src_components_carousel_types.carouselcompactslots.callables.item",
+            "sourcePath": "headless/src/components/carousel/types.ts",
+            "referencedTypes": [
+              {
+                "name": "__type",
+                "kind": "typeLiteral",
+                "type": "{ slide: T; index: number; selected: boolean; }",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": "api.generated.headless_src_components_carousel_types.type",
+                "sourcePath": "headless/src/components/carousel/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "CarouselRootSlotProps",
+                "kind": "interface",
+                "type": "CarouselRootSlotProps",
+                "resolvedType": null,
+                "description": "Props for the carousel component, which combines all sub components into a single component for ease of use.",
+                "descriptionKey": "api.generated.headless_src_components_carousel_types.carouselrootslotprops",
+                "sourcePath": "headless/src/components/carousel/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "control",
+            "type": "((props: CarouselRootSlotProps) => any) | undefined",
+            "parameters": "((props: CarouselRootSlotProps) => any) | undefined",
+            "required": false,
+            "description": "Control slot for the carousel component, which can be used to render custom controls for the carousel. The slot props include all the necessary information and methods to control the carousel, such as the carousel instance, whether it can scroll next or prev, the selected index, scroll snaps, progress, and methods to scroll next, prev, or to a specific index.",
+            "descriptionKey": "api.generated.headless_src_components_carousel_types.carouselcompactslots.callables.control",
+            "sourcePath": "headless/src/components/carousel/types.ts",
+            "referencedTypes": [
+              {
+                "name": "CarouselRootSlotProps",
+                "kind": "interface",
+                "type": "CarouselRootSlotProps",
+                "resolvedType": null,
+                "description": "Props for the carousel component, which combines all sub components into a single component for ease of use.",
+                "descriptionKey": "api.generated.headless_src_components_carousel_types.carouselrootslotprops",
+                "sourcePath": "headless/src/components/carousel/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "previous",
+            "type": "((props: CarouselRootSlotProps) => any) | undefined",
+            "parameters": "((props: CarouselRootSlotProps) => any) | undefined",
+            "required": false,
+            "description": "Navigation slot for the carousel component, which can be used to render custom navigation for the carousel. The slot props include all the necessary information and methods to control the carousel, such as the carousel instance, whether it can scroll next or prev, the selected index, scroll snaps, progress, and methods to scroll next, prev, or to a specific index.",
+            "descriptionKey": "api.generated.headless_src_components_carousel_types.carouselcompactslots.callables.previous",
+            "sourcePath": "headless/src/components/carousel/types.ts",
+            "referencedTypes": [
+              {
+                "name": "CarouselRootSlotProps",
+                "kind": "interface",
+                "type": "CarouselRootSlotProps",
+                "resolvedType": null,
+                "description": "Props for the carousel component, which combines all sub components into a single component for ease of use.",
+                "descriptionKey": "api.generated.headless_src_components_carousel_types.carouselrootslotprops",
+                "sourcePath": "headless/src/components/carousel/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "next",
+            "type": "((props: CarouselRootSlotProps) => any) | undefined",
+            "parameters": "((props: CarouselRootSlotProps) => any) | undefined",
+            "required": false,
+            "description": "Next slot for the carousel component, which can be used to render custom next controls for the carousel. The slot props include all the necessary information and methods to control the carousel, such as the carousel instance, whether it can scroll next or prev, the selected index, scroll snaps, progress, and methods to scroll next, prev, or to a specific index.",
+            "descriptionKey": "api.generated.headless_src_components_carousel_types.carouselcompactslots.callables.next",
+            "sourcePath": "headless/src/components/carousel/types.ts",
+            "referencedTypes": [
+              {
+                "name": "CarouselRootSlotProps",
+                "kind": "interface",
+                "type": "CarouselRootSlotProps",
+                "resolvedType": null,
+                "description": "Props for the carousel component, which combines all sub components into a single component for ease of use.",
+                "descriptionKey": "api.generated.headless_src_components_carousel_types.carouselrootslotprops",
+                "sourcePath": "headless/src/components/carousel/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "referencedTypes": []
+      }
+    },
+    "CarouselContainer": {
+      "props": {
+        "kind": "props",
+        "name": "CarouselContainerProps",
+        "type": "Interface CarouselContainerProps",
+        "resolvedType": null,
+        "description": "Props for the carousel container component.",
+        "descriptionKey": "api.generated.headless_src_components_carousel_types.carouselcontainerprops.props",
+        "sourcePath": "headless/src/components/carousel/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [],
+        "referencedTypes": []
       }
     },
     "CarouselContent": {
@@ -231,6 +1273,21 @@
         "referencedTypes": []
       }
     },
+    "CarouselControl": {
+      "props": {
+        "kind": "props",
+        "name": "CarouselControlProps",
+        "type": "Interface CarouselControlProps",
+        "resolvedType": null,
+        "description": "Props for the carousel control components (next and previous).",
+        "descriptionKey": "api.generated.headless_src_components_carousel_types.carouselcontrolprops.props",
+        "sourcePath": "headless/src/components/carousel/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
     "CarouselItem": {
       "props": {
         "kind": "props",
@@ -239,6 +1296,21 @@
         "resolvedType": null,
         "description": "Props for the carousel item component.",
         "descriptionKey": "api.generated.headless_src_components_carousel_types.carouselitemprops.props",
+        "sourcePath": "headless/src/components/carousel/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "CarouselNavigation": {
+      "props": {
+        "kind": "props",
+        "name": "CarouselNavigationProps",
+        "type": "Interface CarouselNavigationProps",
+        "resolvedType": null,
+        "description": "Props for the carousel navigation component.",
+        "descriptionKey": "api.generated.headless_src_components_carousel_types.carouselnavigationprops.props",
         "sourcePath": "headless/src/components/carousel/types.ts",
         "typeParameters": [],
         "members": [],
@@ -439,85 +1511,36 @@
       }
     },
     "CarouselRoot": {
-      "emits": {
-        "kind": "emits",
-        "name": "CarouselRootEmits",
-        "type": "TypeAlias CarouselRootEmits",
-        "resolvedType": "{ initApi: [api: import(\"embla-carousel\").EmblaCarouselType] }",
-        "description": "Emits for the carousel root component.",
-        "descriptionKey": "api.generated.headless_src_components_carousel_types.carouselrootemits.emits",
-        "sourcePath": "headless/src/components/carousel/types.ts",
-        "typeParameters": [],
-        "members": [],
-        "callables": [
-          {
-            "name": "initApi",
-            "type": "[api: import(\"embla-carousel\").EmblaCarouselType]",
-            "parameters": "api: import(\"embla-carousel\").EmblaCarouselType",
-            "required": true,
-            "description": "Emitted when init api occurs.",
-            "descriptionKey": "api.generated.headless_src_components_carousel_types.carouselrootemits.callables.initapi",
-            "sourcePath": "headless/src/components/carousel/types.ts",
-            "referencedTypes": []
-          }
-        ],
-        "referencedTypes": []
-      },
       "props": {
         "kind": "props",
         "name": "CarouselRootProps",
         "type": "Interface CarouselRootProps",
-        "resolvedType": "{ opts?: Partial<import(\"../../../../node_modules/embla-carousel/esm/components/Options\").OptionsType>; plugins?: import(\"embla-carousel\").CreatePluginType<import(\"../../../../node_modules/embla-carousel/esm/components/Plugins\").LoosePluginType, {}>[]; orientation?: DataOrientation; dir?: Direction }",
+        "resolvedType": "{ dir?: Direction; orientation?: DataOrientation; options?: Partial<import(\"../../../node_modules/embla-carousel/esm/components/Options\").OptionsType>; plugins?: import(\"embla-carousel\").CreatePluginType<import(\"../../../node_modules/embla-carousel/esm/components/Plugins\").LoosePluginType, {}>[] }",
         "description": "Props for the carousel root component.",
         "descriptionKey": "api.generated.headless_src_components_carousel_types.carouselrootprops.props",
         "sourcePath": "headless/src/components/carousel/types.ts",
         "typeParameters": [],
         "members": [
           {
-            "name": "opts",
-            "type": "Partial<import(\"../../../../node_modules/embla-carousel/esm/components/Options\").OptionsType>",
+            "name": "dir",
+            "type": "Direction",
             "required": false,
-            "description": "Opts.",
-            "descriptionKey": "api.generated.headless_src_components_carousel_types.carouselrootprops.members.opts",
+            "description": "Reading direction of the component.",
+            "descriptionKey": "api.generated.headless_src_components_carousel_types.carouselrootprops.members.dir",
             "default": null,
             "inheritedFrom": null,
             "sourcePath": "headless/src/components/carousel/types.ts",
             "referencedTypes": [
               {
-                "name": "CarouselOptions",
+                "name": "Direction",
                 "kind": "typeAlias",
-                "type": "CarouselOptions",
-                "resolvedType": null,
+                "type": "'ltr' | 'rtl'",
+                "resolvedType": "'ltr' | 'rtl'",
                 "description": "",
-                "descriptionKey": "api.generated.node_modules_pnpm_embla_carousel_8_6_0_node_modules_embla_carousel_esm_components_options_d.carouseloptions",
-                "sourcePath": "node_modules/.pnpm/embla-carousel@8.6.0/node_modules/embla-carousel/esm/components/Options.d.ts",
+                "descriptionKey": "api.generated.headless_src_types_common.direction",
+                "sourcePath": "headless/src/types/common.ts",
                 "typeParameters": [],
-                "external": true,
-                "members": [],
-                "callables": []
-              }
-            ]
-          },
-          {
-            "name": "plugins",
-            "type": "import(\"embla-carousel\").CreatePluginType<import(\"../../../../node_modules/embla-carousel/esm/components/Plugins\").LoosePluginType, {}>[]",
-            "required": false,
-            "description": "Plugins.",
-            "descriptionKey": "api.generated.headless_src_components_carousel_types.carouselrootprops.members.plugins",
-            "default": null,
-            "inheritedFrom": null,
-            "sourcePath": "headless/src/components/carousel/types.ts",
-            "referencedTypes": [
-              {
-                "name": "CarouselPlugin",
-                "kind": "typeAlias",
-                "type": "CarouselPlugin",
-                "resolvedType": null,
-                "description": "",
-                "descriptionKey": "api.generated.node_modules_pnpm_embla_carousel_8_6_0_node_modules_embla_carousel_esm_components_plugins_d.carouselplugin",
-                "sourcePath": "node_modules/.pnpm/embla-carousel@8.6.0/node_modules/embla-carousel/esm/components/Plugins.d.ts",
-                "typeParameters": [],
-                "external": true,
+                "external": false,
                 "members": [],
                 "callables": []
               }
@@ -549,29 +1572,257 @@
             ]
           },
           {
-            "name": "dir",
-            "type": "Direction",
+            "name": "options",
+            "type": "Partial<import(\"../../../node_modules/embla-carousel/esm/components/Options\").OptionsType>",
             "required": false,
-            "description": "Reading direction of the component.",
-            "descriptionKey": "api.generated.headless_src_components_carousel_types.carouselrootprops.members.dir",
+            "description": "Options.",
+            "descriptionKey": "api.generated.headless_src_components_carousel_types.carouselrootprops.members.options",
             "default": null,
             "inheritedFrom": null,
             "sourcePath": "headless/src/components/carousel/types.ts",
             "referencedTypes": [
               {
-                "name": "Direction",
+                "name": "EmblaOptionsType",
                 "kind": "typeAlias",
-                "type": "'ltr' | 'rtl'",
-                "resolvedType": "'ltr' | 'rtl'",
+                "type": "EmblaOptionsType",
+                "resolvedType": null,
                 "description": "",
-                "descriptionKey": "api.generated.headless_src_types_common.direction",
-                "sourcePath": "headless/src/types/common.ts",
+                "descriptionKey": "api.generated.node_modules_pnpm_embla_carousel_8_6_0_node_modules_embla_carousel_esm_components_options_d.emblaoptionstype",
+                "sourcePath": "node_modules/.pnpm/embla-carousel@8.6.0/node_modules/embla-carousel/esm/components/Options.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "plugins",
+            "type": "import(\"embla-carousel\").CreatePluginType<import(\"../../../node_modules/embla-carousel/esm/components/Plugins\").LoosePluginType, {}>[]",
+            "required": false,
+            "description": "Plugins.",
+            "descriptionKey": "api.generated.headless_src_components_carousel_types.carouselrootprops.members.plugins",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/carousel/types.ts",
+            "referencedTypes": [
+              {
+                "name": "EmblaPluginType",
+                "kind": "typeAlias",
+                "type": "EmblaPluginType",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": "api.generated.node_modules_pnpm_embla_carousel_8_6_0_node_modules_embla_carousel_esm_components_plugins_d.emblaplugintype",
+                "sourcePath": "node_modules/.pnpm/embla-carousel@8.6.0/node_modules/embla-carousel/esm/components/Plugins.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      },
+      "emits": {
+        "kind": "emits",
+        "name": "CarouselRootEmits",
+        "type": "TypeAlias CarouselRootEmits",
+        "resolvedType": "{ init: [carousel: EmblaCarouselType] }",
+        "description": "Emits for the carousel root component.",
+        "descriptionKey": "api.generated.headless_src_components_carousel_types.carouselrootemits.emits",
+        "sourcePath": "headless/src/components/carousel/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [
+          {
+            "name": "init",
+            "type": "[carousel: EmblaCarouselType]",
+            "parameters": "carousel: EmblaCarouselType",
+            "required": true,
+            "description": "Emitted when init occurs.",
+            "descriptionKey": "api.generated.headless_src_components_carousel_types.carouselrootemits.callables.init",
+            "sourcePath": "headless/src/components/carousel/types.ts",
+            "referencedTypes": [
+              {
+                "name": "EmblaCarouselType",
+                "kind": "typeAlias",
+                "type": "EmblaCarouselType",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": "api.generated.node_modules_pnpm_embla_carousel_8_6_0_node_modules_embla_carousel_esm_components_emblacarousel_d.emblacarouseltype",
+                "sourcePath": "node_modules/.pnpm/embla-carousel@8.6.0/node_modules/embla-carousel/esm/components/EmblaCarousel.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "referencedTypes": []
+      },
+      "slots": {
+        "kind": "slots",
+        "name": "CarouselRootSlots",
+        "type": "TypeAlias CarouselRootSlots",
+        "resolvedType": "{ default?: ((props: CarouselRootSlotProps) => any) }",
+        "description": "Slots for the carousel component, which combines all sub components into a single component for ease of use.",
+        "descriptionKey": "api.generated.headless_src_components_carousel_types.carouselrootslots.slots",
+        "sourcePath": "headless/src/components/carousel/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [
+          {
+            "name": "default",
+            "type": "((props: CarouselRootSlotProps) => any) | undefined",
+            "parameters": "((props: CarouselRootSlotProps) => any) | undefined",
+            "required": false,
+            "description": "",
+            "descriptionKey": "api.generated.headless_src_components_carousel_types.carouselrootslots.callables.default",
+            "sourcePath": "headless/src/components/carousel/types.ts",
+            "referencedTypes": [
+              {
+                "name": "CarouselRootSlotProps",
+                "kind": "interface",
+                "type": "CarouselRootSlotProps",
+                "resolvedType": null,
+                "description": "Props for the carousel component, which combines all sub components into a single component for ease of use.",
+                "descriptionKey": "api.generated.headless_src_components_carousel_types.carouselrootslotprops",
+                "sourcePath": "headless/src/components/carousel/types.ts",
                 "typeParameters": [],
                 "external": false,
                 "members": [],
                 "callables": []
               }
             ]
+          }
+        ],
+        "referencedTypes": []
+      },
+      "slotProps": {
+        "kind": "slotProps",
+        "name": "CarouselRootSlotProps",
+        "type": "Interface CarouselRootSlotProps",
+        "resolvedType": "{ carousel: EmblaCarouselType | undefined; canScrollNext: boolean; canScrollPrev: boolean; selectedIndex: number; scrollSnaps: number[]; progress: number; scrollNext: () => void; scrollPrev: () => void; scrollTo: (index: number, jump?: boolean) => void }",
+        "description": "Props for the carousel component, which combines all sub components into a single component for ease of use.",
+        "descriptionKey": "api.generated.headless_src_components_carousel_types.carouselrootslotprops.slotprops",
+        "sourcePath": "headless/src/components/carousel/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "carousel",
+            "type": "EmblaCarouselType | undefined",
+            "required": true,
+            "description": "",
+            "descriptionKey": "api.generated.headless_src_components_carousel_types.carouselrootslotprops.members.carousel",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/carousel/types.ts",
+            "referencedTypes": [
+              {
+                "name": "EmblaCarouselType",
+                "kind": "typeAlias",
+                "type": "EmblaCarouselType",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": "api.generated.node_modules_pnpm_embla_carousel_8_6_0_node_modules_embla_carousel_esm_components_emblacarousel_d.emblacarouseltype",
+                "sourcePath": "node_modules/.pnpm/embla-carousel@8.6.0/node_modules/embla-carousel/esm/components/EmblaCarousel.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "canScrollNext",
+            "type": "boolean",
+            "required": true,
+            "description": "",
+            "descriptionKey": "api.generated.headless_src_components_carousel_types.carouselrootslotprops.members.canscrollnext",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/carousel/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "canScrollPrev",
+            "type": "boolean",
+            "required": true,
+            "description": "",
+            "descriptionKey": "api.generated.headless_src_components_carousel_types.carouselrootslotprops.members.canscrollprev",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/carousel/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "selectedIndex",
+            "type": "number",
+            "required": true,
+            "description": "",
+            "descriptionKey": "api.generated.headless_src_components_carousel_types.carouselrootslotprops.members.selectedindex",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/carousel/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "scrollSnaps",
+            "type": "number[]",
+            "required": true,
+            "description": "",
+            "descriptionKey": "api.generated.headless_src_components_carousel_types.carouselrootslotprops.members.scrollsnaps",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/carousel/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "progress",
+            "type": "number",
+            "required": true,
+            "description": "",
+            "descriptionKey": "api.generated.headless_src_components_carousel_types.carouselrootslotprops.members.progress",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/carousel/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "scrollNext",
+            "type": "() => void",
+            "required": true,
+            "description": "",
+            "descriptionKey": "api.generated.headless_src_components_carousel_types.carouselrootslotprops.members.scrollnext",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/carousel/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "scrollPrev",
+            "type": "() => void",
+            "required": true,
+            "description": "",
+            "descriptionKey": "api.generated.headless_src_components_carousel_types.carouselrootslotprops.members.scrollprev",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/carousel/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "scrollTo",
+            "type": "(index: number, jump?: boolean) => void",
+            "required": true,
+            "description": "",
+            "descriptionKey": "api.generated.headless_src_components_carousel_types.carouselrootslotprops.members.scrollto",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/carousel/types.ts",
+            "referencedTypes": []
           }
         ],
         "callables": [],

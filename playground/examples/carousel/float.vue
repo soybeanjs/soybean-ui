@@ -6,8 +6,14 @@ const slides = [1, 2, 3, 4, 5];
 
 <template>
   <div>
-    <h3 class="playground-title">Basic</h3>
-    <SCarousel :slides="slides" aria-label="Basic carousel" class="mx-auto w-full max-w-60" :options="{ loop: true }">
+    <h3 class="playground-title">Float Navigation</h3>
+    <SCarousel
+      :slides="slides"
+      aria-label="Float navigation carousel"
+      class="mx-auto w-full max-w-60"
+      :options="{ loop: true }"
+      :float-nav="true"
+    >
       <template #item="{ slide }">
         <SCard :ui="{ content: 'aspect-square flex items-center justify-center' }">
           <span class="text-4xl font-semibold">{{ slide }}</span>

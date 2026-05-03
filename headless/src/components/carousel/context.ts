@@ -1,9 +1,22 @@
-import { computed } from 'vue';
+import { shallowRef } from 'vue';
 import { useContext, useUiContext } from '../../composables';
 import type { CarouselRootContext, CarouselUiSlot } from './types';
 
-export const [provideCarouselRootContext, useCarouselRootContext] = useContext<CarouselRootContext>('CarouselRoot');
+export const [provideCarouselRootContext, useCarouselRootContext] = useContext(
+  'CarouselRoot',
+  (params: CarouselRootContext) => {
+    const contentId = shallowRef('');
 
-export const [provideCarouselUi, useCarouselUi] = useUiContext<CarouselUiSlot>('CarouselUi', ui =>
-  computed(() => ui.value ?? {})
+    const setContentId = (id: string) => {
+      contentId.value = id;
+    };
+
+    return {
+      ...params,
+      contentId,
+      setContentId
+    };
+  }
 );
+
+export const [provideCarouselUi, useCarouselUi] = useUiContext<CarouselUiSlot>('CarouselUi');

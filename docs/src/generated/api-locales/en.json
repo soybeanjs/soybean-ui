@@ -1006,11 +1006,52 @@
         "cardui": "UI class overrides for the card component."
       },
       "headless_src_components_carousel_types": {
+        "carouselcompactemits": {
+          "callables": {
+            "init": "Emitted when init occurs."
+          },
+          "emits": "Emits for the carousel compact component, which combines all sub components into a single component for ease of use."
+        },
+        "carouselcompactprops": {
+          "members": {
+            "containerprops": "Per-slot props for the component, allowing you to pass props directly to the sub components without needing to use the `v-slot` API. This is useful for quickly customizing the sub components without needing to use the full flexibility of slots.",
+            "contentprops": "Per-slot props for the component, allowing you to pass props directly to the sub components without needing to use the `v-slot` API. This is useful for quickly customizing the sub components without needing to use the full flexibility of slots.",
+            "controlprops": "Per-slot props for the component, allowing you to pass props directly to the sub components without needing to use the `v-slot` API. This is useful for quickly customizing the sub components without needing to use the full flexibility of slots.",
+            "dir": "Reading direction of the component.",
+            "itemprops": "Per-slot props for the component, allowing you to pass props directly to the sub components without needing to use the `v-slot` API. This is useful for quickly customizing the sub components without needing to use the full flexibility of slots.",
+            "navigationprops": "Per-slot props for the component, allowing you to pass props directly to the sub components without needing to use the `v-slot` API. This is useful for quickly customizing the sub components without needing to use the full flexibility of slots.",
+            "nextprops": "Per-slot props for the component, allowing you to pass props directly to the sub components without needing to use the `v-slot` API. This is useful for quickly customizing the sub components without needing to use the full flexibility of slots.",
+            "options": "Options.",
+            "orientation": "Orientation of the component.",
+            "plugins": "Plugins.",
+            "previousprops": "Per-slot props for the component, allowing you to pass props directly to the sub components without needing to use the `v-slot` API. This is useful for quickly customizing the sub components without needing to use the full flexibility of slots.",
+            "slides": "Slides to be rendered in the carousel."
+          },
+          "props": "Props for the carousel root component."
+        },
+        "carouselcompactslots": {
+          "callables": {
+            "control": "Control slot for the carousel component, which can be used to render custom controls for the carousel. The slot props include all the necessary information and methods to control the carousel, such as the carousel instance, whether it can scroll next or prev, the selected index, scroll snaps, progress, and methods to scroll next, prev, or to a specific index.",
+            "item": "Default slot for the carousel component, which can be used to render custom content in the carousel. The slot props include all the necessary information and methods to control the carousel, such as the carousel instance, whether it can scroll next or prev, the selected index, scroll snaps, progress, and methods to scroll next, prev, or to a specific index.",
+            "next": "Next slot for the carousel component, which can be used to render custom next controls for the carousel. The slot props include all the necessary information and methods to control the carousel, such as the carousel instance, whether it can scroll next or prev, the selected index, scroll snaps, progress, and methods to scroll next, prev, or to a specific index.",
+            "previous": "Navigation slot for the carousel component, which can be used to render custom navigation for the carousel. The slot props include all the necessary information and methods to control the carousel, such as the carousel instance, whether it can scroll next or prev, the selected index, scroll snaps, progress, and methods to scroll next, prev, or to a specific index."
+          },
+          "slots": "Slots for the carousel compact component, which combines all sub components into a single component for ease of use."
+        },
+        "carouselcontainerprops": {
+          "props": "Props for the carousel container component."
+        },
         "carouselcontentprops": {
           "props": "Props for the carousel content component."
         },
+        "carouselcontrolprops": {
+          "props": "Props for the carousel control components (next and previous)."
+        },
         "carouselitemprops": {
           "props": "Props for the carousel item component."
+        },
+        "carouselnavigationprops": {
+          "props": "Props for the carousel navigation component."
         },
         "carouselnextprops": {
           "members": {
@@ -1032,20 +1073,41 @@
         },
         "carouselrootemits": {
           "callables": {
-            "initapi": "Emitted when init api occurs."
+            "init": "Emitted when init occurs."
           },
           "emits": "Emits for the carousel root component."
         },
         "carouselrootprops": {
           "members": {
             "dir": "Reading direction of the component.",
-            "opts": "Opts.",
+            "options": "Options.",
             "orientation": "Orientation of the component.",
             "plugins": "Plugins."
           },
           "props": "Props for the carousel root component."
         },
-        "carouselui": "UI class overrides for the carousel component."
+        "carouselrootslotprops": {
+          "members": {
+            "canscrollnext": "",
+            "canscrollprev": "",
+            "carousel": "",
+            "progress": "",
+            "scrollnext": "",
+            "scrollprev": "",
+            "scrollsnaps": "",
+            "scrollto": "",
+            "selectedindex": ""
+          },
+          "slotprops": "Props for the carousel component, which combines all sub components into a single component for ease of use."
+        },
+        "carouselrootslots": {
+          "callables": {
+            "default": ""
+          },
+          "slots": "Slots for the carousel component, which combines all sub components into a single component for ease of use."
+        },
+        "carouselui": "UI class overrides for the carousel component.",
+        "type": ""
       },
       "headless_src_components_checkbox_types": {
         "checkboxcardcompactemits": {
@@ -7486,11 +7548,14 @@
       "headless_src_types_path": {
         "pathvalue": ""
       },
+      "node_modules_pnpm_embla_carousel_8_6_0_node_modules_embla_carousel_esm_components_emblacarousel_d": {
+        "emblacarouseltype": ""
+      },
       "node_modules_pnpm_embla_carousel_8_6_0_node_modules_embla_carousel_esm_components_options_d": {
-        "carouseloptions": ""
+        "emblaoptionstype": ""
       },
       "node_modules_pnpm_embla_carousel_8_6_0_node_modules_embla_carousel_esm_components_plugins_d": {
-        "carouselplugin": ""
+        "emblaplugintype": ""
       },
       "node_modules_pnpm_floating_ui_dom_1_7_6_node_modules_floating_ui_dom_dist_floating_ui_dom_d": {
         "referenceelement": ""
@@ -7539,7 +7604,7 @@
         "imghtmlattributes": "",
         "lihtmlattributes": ""
       },
-      "node_modules_pnpm_vueuse_integrations_14_3_0_fuse_js_7_3_0_nprogress_0_2_0_vue_3_5_33_typescript_6_0_3_node_modules_vueuse_integrations_dist_usefuse_d": {
+      "node_modules_pnpm_vueuse_integrations_14_3_0_fuse_js_7_3_0_vue_3_5_33_typescript_6_0_3_node_modules_vueuse_integrations_dist_usefuse_d": {
         "usefuseoptions": ""
       },
       "src_components_accordion_types": {
@@ -8148,20 +8213,39 @@
       "src_components_carousel_types": {
         "carouselemits": {
           "callables": {
-            "initapi": "Emitted when init api occurs."
+            "init": "Emitted when init occurs."
           },
           "emits": "Emits for the carousel component."
         },
         "carouselprops": {
           "members": {
             "class": "Additional class names applied to the root element.",
+            "containerprops": "Per-slot props for the component, allowing you to pass props directly to the sub components without needing to use the `v-slot` API. This is useful for quickly customizing the sub components without needing to use the full flexibility of slots.",
+            "contentprops": "Per-slot props for the component, allowing you to pass props directly to the sub components without needing to use the `v-slot` API. This is useful for quickly customizing the sub components without needing to use the full flexibility of slots.",
+            "controlprops": "Per-slot props for the component, allowing you to pass props directly to the sub components without needing to use the `v-slot` API. This is useful for quickly customizing the sub components without needing to use the full flexibility of slots.",
             "dir": "Reading direction of the component.",
-            "opts": "Opts.",
+            "floatnav": "The orientation of the carousel, which determines the layout and direction of scrolling.",
+            "itemprops": "Per-slot props for the component, allowing you to pass props directly to the sub components without needing to use the `v-slot` API. This is useful for quickly customizing the sub components without needing to use the full flexibility of slots.",
+            "navigationprops": "Per-slot props for the component, allowing you to pass props directly to the sub components without needing to use the `v-slot` API. This is useful for quickly customizing the sub components without needing to use the full flexibility of slots.",
+            "nextprops": "Per-slot props for the component, allowing you to pass props directly to the sub components without needing to use the `v-slot` API. This is useful for quickly customizing the sub components without needing to use the full flexibility of slots.",
+            "options": "Options.",
             "orientation": "Orientation of the component.",
             "plugins": "Plugins.",
+            "previousprops": "Per-slot props for the component, allowing you to pass props directly to the sub components without needing to use the `v-slot` API. This is useful for quickly customizing the sub components without needing to use the full flexibility of slots.",
+            "size": "The size of the carousel, which determines the spacing and sizing of its elements.",
+            "slides": "Slides to be rendered in the carousel.",
             "ui": "Per-slot class overrides for the component."
           },
           "props": "Props for the carousel component."
+        },
+        "carouselslots": {
+          "callables": {
+            "control": "Control slot for the carousel component, which can be used to render custom controls for the carousel. The slot props include all the necessary information and methods to control the carousel, such as the carousel instance, whether it can scroll next or prev, the selected index, scroll snaps, progress, and methods to scroll next, prev, or to a specific index.",
+            "item": "Default slot for the carousel component, which can be used to render custom content in the carousel. The slot props include all the necessary information and methods to control the carousel, such as the carousel instance, whether it can scroll next or prev, the selected index, scroll snaps, progress, and methods to scroll next, prev, or to a specific index.",
+            "next": "Next slot for the carousel component, which can be used to render custom next controls for the carousel. The slot props include all the necessary information and methods to control the carousel, such as the carousel instance, whether it can scroll next or prev, the selected index, scroll snaps, progress, and methods to scroll next, prev, or to a specific index.",
+            "previous": "Navigation slot for the carousel component, which can be used to render custom navigation for the carousel. The slot props include all the necessary information and methods to control the carousel, such as the carousel instance, whether it can scroll next or prev, the selected index, scroll snaps, progress, and methods to scroll next, prev, or to a specific index."
+          },
+          "slots": "Slots for the carousel component."
         }
       },
       "src_components_checkbox_types": {
