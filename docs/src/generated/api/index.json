@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-02T09:09:58.888Z",
+  "generatedAt": "2026-05-03T14:03:35.617Z",
   "schemaVersion": 4,
   "components": {
     "accordion": {
@@ -160,7 +160,18 @@
     "carousel": {
       "component": "carousel",
       "file": "carousel.json",
-      "symbols": ["Carousel", "CarouselContent", "CarouselItem", "CarouselNext", "CarouselPrevious", "CarouselRoot"]
+      "symbols": [
+        "Carousel",
+        "CarouselCompact",
+        "CarouselContainer",
+        "CarouselContent",
+        "CarouselControl",
+        "CarouselItem",
+        "CarouselNavigation",
+        "CarouselNext",
+        "CarouselPrevious",
+        "CarouselRoot"
+      ]
     },
     "checkbox": {
       "component": "checkbox",

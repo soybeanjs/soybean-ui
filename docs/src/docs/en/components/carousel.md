@@ -8,19 +8,22 @@ Carousel is built on top of Embla Carousel and lets users browse a sequence of c
 
 ```vue
 <script setup lang="ts">
-import { SCarousel, SCarouselContent, SCarouselItem, SCarouselNext, SCarouselPrevious } from '@soybeanjs/ui';
+import { SCard, SCarousel } from '@soybeanjs/ui';
+
+const slides = [1, 2, 3, 4, 5];
 </script>
 
 <template>
-  <SCarousel aria-label="Example carousel" class="max-w-xs">
-    <SCarouselContent>
-      <SCarouselItem>Slide 1</SCarouselItem>
-      <SCarouselItem>Slide 2</SCarouselItem>
-      <SCarouselItem>Slide 3</SCarouselItem>
-    </SCarouselContent>
-    <SCarouselPrevious />
-    <SCarouselNext />
-  </SCarousel>
+  <div>
+    <h3 class="playground-title">Basic</h3>
+    <SCarousel :slides="slides" aria-label="Basic carousel" class="mx-auto w-full max-w-60" :options="{ loop: true }">
+      <template #item="{ slide }">
+        <SCard :ui="{ content: 'aspect-square flex items-center justify-center' }">
+          <span class="text-4xl font-semibold">{{ slide }}</span>
+        </SCard>
+      </template>
+    </SCarousel>
+  </div>
 </template>
 ```
 
@@ -29,8 +32,11 @@ import { SCarousel, SCarouselContent, SCarouselItem, SCarouselNext, SCarouselPre
 ```playground
 basic
 vertical
-rtl
-custom-styling
+float
+multi
+snap
+progress
+dot
 ```
 
 ## API

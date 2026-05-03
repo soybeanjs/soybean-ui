@@ -1,10 +1,17 @@
 <script setup lang="ts">
-import emblaCarouselVue from 'embla-carousel-vue';
-import { computed, shallowRef, watch, watchEffect } from 'vue';
-import { useOmitProps } from '../../composables';
+import { computed, shallowRef, watch, watchEffect, onWatcherCleanup, useAttrs } from 'vue';
+import { useForwardElement } from '../../composables';
 import { useDirection } from '../config-provider/context';
 import { provideCarouselRootContext, useCarouselUi } from './context';
-import type { CarouselApi, CarouselOptions, CarouselPlugin, CarouselRootEmits, CarouselRootProps } from './types';
+import { useEmblaCarousel } from './hooks';
+import type {
+  CarouselRootEmits,
+  CarouselRootProps,
+  CarouselRootSlots,
+  EmblaCarouselType,
+  EmblaOptionsType,
+  EmblaPluginType
+} from './types';
 
 defineOptions({
   name: 'CarouselRoot'
@@ -16,57 +23,54 @@ const props = withDefaults(defineProps<CarouselRootProps>(), {
 
 const emit = defineEmits<CarouselRootEmits>();
 
-const forwardedProps = useOmitProps(props, ['opts', 'plugins', 'orientation', 'dir']);
+defineSlots<CarouselRootSlots>();
+
+const attrs = useAttrs();
 
 const cls = useCarouselUi('root');
+
+const [carouselRef, setCarouselRef] = useForwardElement();
+
+const emblaOptions = shallowRef<EmblaOptionsType>({});
+const emblaPlugins = shallowRef<EmblaPluginType[]>([]);
+const carousel = useEmblaCarousel(carouselRef, emblaOptions, emblaPlugins);
+
 const dir = useDirection(() => props.dir);
-const orientation = computed(() => props.orientation);
-const ariaLabel = computed(() => (props['aria-labelledby'] ? undefined : (props['aria-label'] ?? 'Carousel')));
+
+const ariaLabel = computed(() =>
+  attrs['aria-labelledby'] ? undefined : ((attrs['aria-label'] ?? 'Carousel') as string)
+);
 const resolvedTabindex = computed(() => props.tabindex ?? 0);
-const emblaOptions = shallowRef<CarouselOptions>({});
-const emblaPlugins = shallowRef<CarouselPlugin[]>([]);
-
-watchEffect(() => {
-  emblaOptions.value = {
-    ...props.opts,
-    axis: props.orientation === 'horizontal' ? 'x' : 'y',
-    direction: dir.value
-  };
-});
-
-watchEffect(() => {
-  emblaPlugins.value = props.plugins ?? [];
-});
-
-const [carouselRef, carouselApi] = emblaCarouselVue(emblaOptions, emblaPlugins);
-
-const contentId = shallowRef('');
 const canScrollNext = shallowRef(false);
 const canScrollPrev = shallowRef(false);
 const selectedIndex = shallowRef(0);
 const scrollSnaps = shallowRef<number[]>([]);
+const progress = shallowRef(0);
 
-function updateScrollState(api?: CarouselApi) {
+function updateScrollState(api?: EmblaCarouselType) {
   canScrollNext.value = api?.canScrollNext() ?? false;
   canScrollPrev.value = api?.canScrollPrev() ?? false;
   selectedIndex.value = api?.selectedScrollSnap() ?? 0;
   scrollSnaps.value = api?.scrollSnapList() ?? [];
+  progress.value = getProgressValue();
+}
+
+function getProgressValue() {
+  if (scrollSnaps.value.length <= 1) return 0;
+
+  return (selectedIndex.value / (scrollSnaps.value.length - 1)) * 100;
 }
 
 function scrollNext() {
-  carouselApi.value?.scrollNext();
+  carousel.value?.scrollNext();
 }
 
 function scrollPrev() {
-  carouselApi.value?.scrollPrev();
+  carousel.value?.scrollPrev();
 }
 
 function scrollTo(index: number, jump?: boolean) {
-  carouselApi.value?.scrollTo(index, jump);
-}
-
-function setContentId(id: string) {
-  contentId.value = id;
+  carousel.value?.scrollTo(index, jump);
 }
 
 function onKeydown(event: KeyboardEvent) {
@@ -89,28 +93,38 @@ function onKeydown(event: KeyboardEvent) {
   }
 }
 
+watchEffect(() => {
+  emblaOptions.value = {
+    ...props.options,
+    axis: props.orientation === 'horizontal' ? 'x' : 'y',
+    direction: dir.value
+  };
+});
+
+watchEffect(() => {
+  emblaPlugins.value = props.plugins ?? [];
+});
+
 watch(
-  carouselApi,
-  (api, _, onCleanup) => {
+  carousel,
+  api => {
     updateScrollState(api);
 
-    if (!api) {
-      return;
-    }
+    if (!api) return;
 
-    const onSelect = (emblaApi: CarouselApi) => {
+    const onSelect = (emblaApi: EmblaCarouselType) => {
       updateScrollState(emblaApi);
     };
-    const onReInit = (emblaApi: CarouselApi) => {
+    const onReInit = (emblaApi: EmblaCarouselType) => {
       updateScrollState(emblaApi);
     };
 
     api.on('select', onSelect);
     api.on('reInit', onReInit);
 
-    emit('initApi', api);
+    emit('init', api);
 
-    onCleanup(() => {
+    onWatcherCleanup(() => {
       api.off('select', onSelect);
       api.off('reInit', onReInit);
     });
@@ -119,30 +133,20 @@ watch(
 );
 
 provideCarouselRootContext({
-  dir,
-  orientation,
-  carouselRef,
-  carouselApi,
-  contentId,
+  carousel,
   canScrollNext,
   canScrollPrev,
   selectedIndex,
   scrollSnaps,
+  progress,
+  setCarouselRef,
   scrollNext,
   scrollPrev,
-  scrollTo,
-  setContentId
+  scrollTo
 });
 
 defineExpose({
-  dir,
-  orientation,
-  carouselApi,
-  carouselRef,
-  canScrollNext,
-  canScrollPrev,
-  selectedIndex,
-  scrollSnaps,
+  carousel,
   scrollNext,
   scrollPrev,
   scrollTo
@@ -151,7 +155,6 @@ defineExpose({
 
 <template>
   <div
-    v-bind="forwardedProps"
     :class="cls"
     :dir="dir"
     :data-orientation="orientation"
@@ -163,16 +166,15 @@ defineExpose({
     @keydown="onKeydown"
   >
     <slot
-      :carousel-api="carouselApi"
+      :carousel="carousel"
       :can-scroll-next="canScrollNext"
       :can-scroll-prev="canScrollPrev"
       :selected-index="selectedIndex"
       :scroll-snaps="scrollSnaps"
+      :progress="progress"
       :scroll-next="scrollNext"
       :scroll-prev="scrollPrev"
       :scroll-to="scrollTo"
-      :orientation="orientation"
-      :dir="dir"
     />
   </div>
 </template>

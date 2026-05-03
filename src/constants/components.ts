@@ -27,7 +27,7 @@ export const components = {
   timeRangePicker: ['STimeRangePicker'],
   rangeCalendar: ['SRangeCalendar'],
   card: ['SCard', 'SCardCollapsibleTrigger'],
-  carousel: ['SCarousel', 'SCarouselContent', 'SCarouselItem', 'SCarouselPrevious', 'SCarouselNext'],
+  carousel: ['SCarousel'],
   checkbox: ['SCheckboxGroup', 'SCheckbox', 'SCheckboxCardGroup', 'SCheckboxCard'],
   clipboard: ['SClipboard'],
   collapsible: ['SCollapsible', 'SCollapsibleContent', 'SCollapsibleTrigger'],

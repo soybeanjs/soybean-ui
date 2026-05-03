@@ -1,29 +1,25 @@
 <script setup lang="ts">
-import { SCard, SCarousel, SCarouselContent, SCarouselItem, SCarouselNext, SCarouselPrevious } from '@soybeanjs/ui';
+import { SCard, SCarousel } from '@soybeanjs/ui';
 
-const slides = ['Vertical 1', 'Vertical 2', 'Vertical 3'];
+const slides = [1, 2, 3, 4, 5];
 </script>
 
 <template>
   <div>
     <h3 class="playground-title">Vertical</h3>
     <SCarousel
+      :slides="slides"
       aria-label="Vertical carousel"
       orientation="vertical"
-      class="mx-auto h-80 w-full max-w-xs"
-      :opts="{ loop: true }"
+      :options="{ loop: true }"
+      :ui="{ container: 'h-60' }"
+      class="mx-auto w-full max-w-60"
     >
-      <SCarouselContent class="h-full">
-        <SCarouselItem v-for="slide in slides" :key="slide">
-          <div class="p-1 h-full">
-            <SCard :ui="{ content: 'h-full min-h-24 flex items-center justify-center p-6' }" class="h-full">
-              <span class="text-xl font-semibold">{{ slide }}</span>
-            </SCard>
-          </div>
-        </SCarouselItem>
-      </SCarouselContent>
-      <SCarouselPrevious />
-      <SCarouselNext />
+      <template #item="{ slide }">
+        <SCard class="h-full" :ui="{ content: 'flex-center' }">
+          <span class="text-4xl font-semibold">{{ slide }}</span>
+        </SCard>
+      </template>
     </SCarousel>
   </div>
 </template>

@@ -1,14 +1,8 @@
-import { nextTick, toValue } from 'vue';
+import { h, nextTick } from 'vue';
 import { mount } from '@vue/test-utils';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { getA11yViolations } from '../../shared/a11y';
-import {
-  SCarousel,
-  SCarouselContent,
-  SCarouselItem,
-  SCarouselNext,
-  SCarouselPrevious
-} from '../../../src/components/carousel';
+import { SCarousel } from '../../../src/components/carousel';
 
 const emblaMock = vi.hoisted(() => {
   const listeners = new Map<string, Set<(api: any) => void>>();
@@ -76,45 +70,31 @@ const emblaMock = vi.hoisted(() => {
   };
 });
 
-vi.mock('embla-carousel-vue', async () => {
-  const { ref } = await import('vue');
+vi.mock('embla-carousel', () => ({
+  default: vi.fn((_: HTMLElement, options: unknown, plugins: unknown) => {
+    emblaMock.options.current = options;
+    emblaMock.plugins.current = plugins;
 
-  return {
-    default: (options: unknown, plugins: unknown) => {
-      emblaMock.options.current = options;
-      emblaMock.plugins.current = plugins;
+    return emblaMock.api;
+  })
+}));
 
-      return [ref<HTMLElement>(), ref(emblaMock.api)];
-    }
-  };
-});
+vi.mock('embla-carousel-reactive-utils', () => ({
+  areOptionsEqual: vi.fn(() => false),
+  arePluginsEqual: vi.fn(() => false)
+}));
 
 function mountCarousel(props: Record<string, unknown> = {}) {
   return mount(SCarousel, {
     props: {
+      slides: ['Slide 1', 'Slide 2', 'Slide 3'],
       'aria-label': 'Demo carousel',
       ...props
     },
     slots: {
-      default: `
-        <SCarouselContent>
-          <SCarouselItem>Slide 1</SCarouselItem>
-          <SCarouselItem>Slide 2</SCarouselItem>
-          <SCarouselItem>Slide 3</SCarouselItem>
-        </SCarouselContent>
-        <SCarouselPrevious />
-        <SCarouselNext />
-      `
+      item: ({ slide }) => slide
     },
-    attachTo: document.body,
-    global: {
-      components: {
-        SCarouselContent,
-        SCarouselItem,
-        SCarouselNext,
-        SCarouselPrevious
-      }
-    }
+    attachTo: document.body
   });
 }
 
@@ -131,7 +111,7 @@ describe('SCarousel', () => {
       expect(wrapper.text()).toContain('Slide 1');
       expect(wrapper.findAll('[data-soybean-carousel-item]')).toHaveLength(3);
       expect(wrapper.find('[data-soybean-carousel-root]').attributes('role')).toBe('region');
-      expect(wrapper.emitted('initApi')?.[0]?.[0]).toStrictEqual(emblaMock.api);
+      expect(wrapper.emitted('init')?.[0]?.[0]).toStrictEqual(emblaMock.api);
       wrapper.unmount();
     });
 
@@ -139,20 +119,20 @@ describe('SCarousel', () => {
       const wrapper = mountCarousel({ dir: 'rtl', orientation: 'vertical' });
       await nextTick();
 
-      const options = toValue(emblaMock.options.current) as Record<string, unknown>;
+      const options = emblaMock.options.current as Record<string, unknown>;
       const container = wrapper.find('[data-soybean-carousel-container]');
+      const root = wrapper.find('[data-soybean-carousel-root]');
       const previousButton = wrapper.find('[data-soybean-carousel-previous]');
       const nextButton = wrapper.find('[data-soybean-carousel-next]');
 
       expect(options.axis).toBe('y');
       expect(options.direction).toBe('rtl');
-      expect(wrapper.find('[data-soybean-carousel-content]').attributes('data-orientation')).toBe('vertical');
+      expect(root.attributes('data-orientation')).toBe('vertical');
+      expect(root.attributes('dir')).toBe('rtl');
       expect(container.classes()).toContain('h-full');
-      expect(previousButton.classes()).not.toContain('rotate-90');
-      expect(previousButton.classes()).toContain('right-auto');
-      expect(nextButton.classes()).not.toContain('rotate-90');
-      expect(nextButton.classes()).toContain('top-auto');
-      expect(nextButton.classes()).toContain('right-auto');
+      expect(container.classes()).toContain('flex-col');
+      expect(previousButton.exists()).toBe(true);
+      expect(nextButton.exists()).toBe(true);
       wrapper.unmount();
     });
   });
@@ -201,28 +181,13 @@ describe('SCarousel', () => {
     it('does not intercept arrow keys from descendant inputs', async () => {
       const wrapper = mount(SCarousel, {
         props: {
+          slides: ['Slide 1', 'Slide 2', 'Slide 3'],
           'aria-label': 'Interactive carousel'
         },
         slots: {
-          default: `
-            <SCarouselContent>
-              <SCarouselItem>
-                <input data-test-input />
-              </SCarouselItem>
-            </SCarouselContent>
-            <SCarouselPrevious />
-            <SCarouselNext />
-          `
+          item: () => h('input', { 'data-test-input': true })
         },
-        attachTo: document.body,
-        global: {
-          components: {
-            SCarouselContent,
-            SCarouselItem,
-            SCarouselNext,
-            SCarouselPrevious
-          }
-        }
+        attachTo: document.body
       });
       await nextTick();
 
