@@ -643,6 +643,13 @@ html:not(.dark) .docs-home-name-pill.docs-home-name-pill:focus-visible {
 .docs-theme-configurator-popup.docs-theme-configurator-popup {
   width: min(26rem, calc(100vw - 1rem));
   max-width: calc(100vw - 1rem);
+  overflow: hidden;
+  background: var(--docs-shell-bg);
+  border: 1px solid var(--docs-shell-border);
+  border-radius: calc(var(--docs-shell-radius) - 2px);
+  box-shadow: var(--docs-shell-shadow), var(--docs-shell-inset);
+  -webkit-backdrop-filter: saturate(170%) blur(var(--docs-shell-blur));
+  backdrop-filter: saturate(170%) blur(var(--docs-shell-blur));
 }
 
 .docs-theme-configurator-panel {
@@ -789,6 +796,12 @@ html.dark .docs-theme-schema-switch-thumb.docs-theme-schema-switch-thumb {
 }
 
 html.dark .docs-header-popover.docs-header-popover {
+  background: var(--docs-shell-bg);
+  border-color: var(--docs-shell-border);
+  box-shadow: var(--docs-shell-shadow), var(--docs-shell-inset);
+}
+
+html.dark .docs-theme-configurator-popup.docs-theme-configurator-popup {
   background: var(--docs-shell-bg);
   border-color: var(--docs-shell-border);
   box-shadow: var(--docs-shell-shadow), var(--docs-shell-inset);
