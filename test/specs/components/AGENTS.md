@@ -15,3 +15,9 @@ Before editing files here, read and obey these `.github` sources:
 If the task is part of component delivery, also apply the relevant checklist file at the end.
 
 Use this file only as routing and local path context. Normative rules stay in `.github/`.
+
+## LOCAL CONTEXT
+
+- Component tests should track the current delivery model: implementation changes often require synchronized updates across docs, playground examples, generated API data, and tests
+- When a public API or behavior changes, verify that the corresponding docs page now uses `UsageCode`, `PlaygroundGallery`, and `ComponentApi`, and that generated API data has been refreshed via `pnpm gen:api` when needed
+- For demo-driven assertions, remember that `playground/examples/{component}/index.vue` is now a thin `PlaygroundGallery` entry point and child demos no longer carry local title headings by default

@@ -35,13 +35,16 @@ The remaining content in this file is repository knowledge and project context. 
 ### Scoped AGENTS map
 
 - `headless/src/components/AGENTS.md` routes headless component work to the relevant `.github` rules
+- `headless/src/composables/AGENTS.md` routes headless composable work to the relevant `.github` rules
+- `headless/src/shared/AGENTS.md` routes headless shared utility work to the relevant `.github` rules
 - `src/components/AGENTS.md` routes styled wrapper work to the relevant `.github` rules
+- `src/theme/AGENTS.md` routes theme-layer work to the relevant `.github` rules
 - `playground/examples/AGENTS.md` routes playground demo work to the relevant `.github` rules
 - `docs/src/docs/AGENTS.md` routes component docs work to the relevant `.github` rules
 - `test/specs/components/AGENTS.md` routes component test work to the relevant `.github` rules
 
-**Generated:** 2026-04-16
-**Version:** 0.14.0
+**Generated:** 2026-05-04
+**Version:** 0.17.0
 **Monorepo:** pnpm workspaces (`headless/`, `docs/`; root = `@soybeanjs/ui`)
 **Stack:** Vue 3 + TypeScript (strict) + UnoCSS + tailwind-variants ^3.2.2
 
@@ -49,9 +52,9 @@ The remaining content in this file is repository knowledge and project context. 
 
 Headless/Styled separation. Two packages ship independently:
 
-- **@soybeanjs/headless** (`headless/`): Logic, state, a11y. Zero styles. 74 component directories, 26 composables. Includes base primitives and Compact aggregations.
-- **@soybeanjs/ui** (`src/`): Styled wrappers. UnoCSS + `tv()`. 74 components, `S`-prefixed.
-- **@soybeanjs/ui-docs** (`docs/`): Vite + vite-ssg + unplugin-vue-markdown. NOT VitePress.
+- **@soybeanjs/headless** (`headless/`): Logic, state, a11y. Zero styles. 95 component directories, 25 composables. Includes base primitives, date utilities, and Compact aggregations.
+- **@soybeanjs/ui** (`src/`): Styled wrappers. UnoCSS + `tv()`. 91 components, `S`-prefixed.
+- **@soybeanjs/ui-docs** (`docs/`): Vite + vite-ssg + unplugin-vue-markdown + markdown-exit. NOT VitePress.
 
 Data flow: `headless` → `src` (never reverse). UI injects styles via `provideXUi(ui)` → headless reads via `useUiContext`.
 
@@ -66,7 +69,8 @@ Data flow: `headless` → `src` (never reverse). UI injects styles via `provideX
 | Theme/sizing           | `src/theme/`                        | `cn()`, `provideSizeContext`, `ThemeColor` (8), `ThemeSize` (xs…2xl)         |
 | Utility functions      | `headless/src/shared/`              | Pure TS helpers (DOM, focus, tree, form, guard, comparison)                  |
 | Global types           | `headless/src/types/`               | `ClassValue`, `UiClass<S>`, `PropsToContext<T,K>`, `PrimitiveProps`          |
-| Docs content           | `docs/src/docs/[en\|zh-CN]/`        | Markdown with ` ```playground ` blocks                                       |
+| Generated API data     | `docs/src/generated/api/`           | `pnpm gen:api` baseline + `pnpm translate:api:i18n` locale descriptions      |
+| Docs content           | `docs/src/docs/[en\|zh-CN]/`        | Markdown rendering `<UsageCode>`, `<PlaygroundGallery>`, `<ComponentApi>`    |
 | Demo source            | `playground/examples/[component]/`  | Vue SFCs referenced by docs                                                  |
 
 ## BUILD & CI
@@ -82,6 +86,9 @@ pnpm release          # Publish packages (soy release)
 pnpm stub             # tsx scripts/stub.ts — link src to dist for local dev
 pnpm gen:headless     # Regenerate headless/src/constants/components.ts + headless/src/namespaced/index.ts from headless/src/index.ts
 pnpm gen:ui           # Regenerate src/constants/components.ts from src/index.ts
+pnpm gen:api          # Regenerate docs/src/generated/api/*.json and docs/src/generated/api-locales/*.json base data
+pnpm gen:api:i18n     # Regenerate API i18n locale template data without re-running type extraction
+pnpm translate:api:i18n -- --locale <locale>  # Translate generated English API descriptions into a non-English locale
 ```
 
 - **Pre-commit hook** (simple-git-hooks): `pnpm typecheck && pnpm lint-staged`
@@ -93,10 +100,12 @@ pnpm gen:ui           # Regenerate src/constants/components.ts from src/index.ts
 **@soybeanjs/headless** sub-path exports:
 
 - `.` → all components + types
-- `./composables` → 26 composables (useContext, useControllableState, useUiContext, …)
+- `./composables` → 25 composables (useContext, useControllableState, useUiContext, …)
 - `./shared` → pure TS utilities
 - `./constants` → ARIA constants, component keys
+- `./date` → shared date utilities and calendar helpers
 - `./namespaced` → named-export namespace (e.g. `Headless.AccordionRoot`)
+- `./types` → shared type surface for component, DOM, and utility types
 - `./*` → `./components/*/index.ts` (per-component sub-path: `@soybeanjs/headless/accordion`)
 
 **@soybeanjs/ui** sub-path exports:
@@ -120,9 +129,10 @@ pnpm gen:ui           # Regenerate src/constants/components.ts from src/index.ts
 - **ui() two forms**: `use{Name}Ui('root')` → `ComputedRef<ClassValue>` (single slot); `use{Name}Ui()` → full map
 - **mergeSlotVariants**: Always pass `{ root: props.class }` as third arg to merge the `class` prop
 - **Multi-slot**: `provide{Name}Ui(ui)` pattern; only export `provide`, not `use`
-- **Compact aggregations**: For stable, data-driven composites (currently `AccordionCompact`, `TableCompact`), headless owns iteration, default content, and internal composition; UI wrappers stay thin and only handle variants, class injection, and prop/slot forwarding
+- **Compact aggregations**: For stable, data-driven composites, headless owns iteration, default content, and internal composition; UI wrappers stay thin and only handle variants, class injection, and prop/slot forwarding. Current examples span accordion, card, date-field, dialog, editable, hover-card, layout, navigation-menu, pagination, popover, stepper, and table flows.
 - **Single-class**: No UiContext; use `cn(variants({...}), props.class)` directly
 - **index.ts re-exports**: UI component barrels re-export headless types from sub-path `@soybeanjs/headless/{component}`; `types.ts` should follow the established import style of neighboring components instead of mixing arbitrary paths
+- **Generated metadata**: after public export or API changes, rerun `pnpm gen:headless`, `pnpm gen:ui`, and `pnpm gen:api`; for non-English API descriptions, also run `pnpm translate:api:i18n -- --locale <locale>`
 
 ## ANTI-PATTERNS
 

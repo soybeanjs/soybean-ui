@@ -13,6 +13,8 @@
 
 部分多插槽组件还会暴露 `Compact` 聚合层，例如 `AccordionCompact` 和 `TableCompact`。这些 headless 入口负责条目遍历以及默认内容 / 图标组合，而样式包装层只专注于类名和 props 转发。
 
+目前这类 Compact 约定式组合还覆盖了 card、date-field、dialog、editable、hover-card、layout、navigation-menu、pagination、popover、stepper 等稳定结构。
+
 ## 📦 安装
 
 ```bash
@@ -63,27 +65,30 @@ import {
 
 ```
 headless/src/
-├── components/    # 50 个原语组件（accordion、dialog、select…）
-├── composables/   # 26 个共享 hook（状态、焦点、浮层、选择…）
+├── components/    # 95 个组件目录（accordion、dialog、select…）
+├── composables/   # 25 个共享 hook（状态、焦点、浮层、选择…）
 ├── shared/        # 纯 TS 工具函数（DOM、焦点、树、表单、守卫）
 ├── constants/     # ARIA 属性常量、组件标识键
+├── date/          # 共享日期与日历工具
 ├── types/         # 全局类型（ClassValue、UiClass、PropsToContext…）
-└── index.ts        # 主 barrel 导出
+└── index.ts       # 主 barrel 导出
 ```
 
 ### 子路径导出
 
 ```ts
 import { AccordionRoot } from '@soybeanjs/headless'; // 组件 + 类型
-import { useControllableState } from '@soybeanjs/headless/composables'; // 26 个 composable
+import { useControllableState } from '@soybeanjs/headless/composables'; // 25 个 composable
 import { transformPropsToContext } from '@soybeanjs/headless/shared'; // 纯 TS 工具
+import { createMonth } from '@soybeanjs/headless/date'; // 日期工具
 import * as H from '@soybeanjs/headless/namespaced'; // 命名空间导入
 import type { AccordionUiSlot } from '@soybeanjs/headless/accordion'; // 单组件类型
+import type { UiClass } from '@soybeanjs/headless/types'; // 共享类型导出
 ```
 
 ## 🧩 Composables
 
-26 个 hook，按功能分类：
+25 个 hook，按功能分类：
 
 | 分类     | Composables                                                    |
 | -------- | -------------------------------------------------------------- |

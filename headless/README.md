@@ -13,6 +13,8 @@ A collection of unstyled, accessible UI primitives for Vue 3.
 
 Some multi-slot components also expose `Compact` aggregators, such as `AccordionCompact` and `TableCompact`. These headless entry points own item iteration and default content/icon composition, while styled wrappers stay focused on classes and prop forwarding.
 
+Current Compact coverage also includes stable structures such as card, date-field, dialog, editable, hover-card, layout, navigation-menu, pagination, popover, and stepper.
+
 ## 📦 Installation
 
 ```bash
@@ -63,27 +65,30 @@ import {
 
 ```
 headless/src/
-├── components/    # 50 primitives (accordion, dialog, select…)
-├── composables/   # 26 shared hooks (state, focus, floating, selection…)
+├── components/    # 95 component dirs (accordion, dialog, select…)
+├── composables/   # 25 shared hooks (state, focus, floating, selection…)
 ├── shared/        # Pure TS utilities (DOM, focus, tree, form, guard)
 ├── constants/     # ARIA attributes, component keys
+├── date/          # Shared date and calendar helpers
 ├── types/         # Global types (ClassValue, UiClass, PropsToContext…)
-└── index.ts        # Main barrel export
+└── index.ts       # Main barrel export
 ```
 
 ### Sub-path Exports
 
 ```ts
 import { AccordionRoot } from '@soybeanjs/headless'; // components + types
-import { useControllableState } from '@soybeanjs/headless/composables'; // 26 composables
+import { useControllableState } from '@soybeanjs/headless/composables'; // 25 composables
 import { transformPropsToContext } from '@soybeanjs/headless/shared'; // pure TS utils
+import { createMonth } from '@soybeanjs/headless/date'; // shared date helpers
 import * as H from '@soybeanjs/headless/namespaced'; // namespace object
 import type { AccordionUiSlot } from '@soybeanjs/headless/accordion'; // per-component
+import type { UiClass } from '@soybeanjs/headless/types'; // shared type surface
 ```
 
 ## 🧩 Composables
 
-26 hooks organized by category:
+25 hooks organized by category:
 
 | Category      | Composables                                                    |
 | ------------- | -------------------------------------------------------------- |

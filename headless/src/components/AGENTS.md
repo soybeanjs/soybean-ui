@@ -16,3 +16,10 @@ Before editing files here, read and obey these `.github` sources:
 If the task affects public delivery surfaces, also apply the relevant docs, playground, testing, and checklist files under `.github/instructions/`.
 
 Use this file only as routing and local path context. Normative rules stay in `.github/`.
+
+## LOCAL CONTEXT
+
+- Public component export changes must be reflected in `headless/src/index.ts`, then synced via `pnpm gen:headless` to update `headless/src/constants/components.ts` and `headless/src/namespaced/index.ts`
+- Headless component barrels are the source for per-component sub-path exports such as `@soybeanjs/headless/dialog`; keep this surface aligned when adding or renaming components
+- Stable, data-driven composite structure should prefer headless `*Compact` implementations instead of pushing iteration and default content up into the UI layer
+- If a headless change affects public docs, demos, or tests, also sync `docs/src/generated/api/`, `docs/src/generated/api-locales/`, and the related delivery surfaces rather than stopping at implementation files

@@ -10,3 +10,5 @@ globs: '**/*.{ts,vue}'
 - `.github/instructions/soybean-ui-component-overview.instructions.md`
 - `.github/instructions/soybean-ui-ui-layer.instructions.md`
 - `.github/instructions/soybean-ui-accessibility-rtl.instructions.md`
+
+If the task affects public delivery surfaces, also read the matching docs, playground, testing, and checklist instruction files under `.github/instructions/`.

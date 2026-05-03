@@ -23,3 +23,5 @@ Design tokens, class merging, and size context for the styled layer.
 
 - Size ratio is relative to `md` (16px = 1.0). Use `themeSizeRatio` for proportional scaling.
 - `ThemeColor` and `ThemeSize` are the canonical variant axis types — variant definitions in components must use these.
+- Slot-based wrappers should prefer `mergeSlotVariants`, while single-class wrappers should use `cn()` directly with `props.class`.
+- Theme-layer changes can cascade into most UI wrappers; if they alter public class contracts or variant axes, also verify generated UI component metadata and affected docs/playground surfaces.

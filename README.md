@@ -35,14 +35,16 @@ SoybeanUI is built on a strict **two-layer separation** model:
 
 ### Packages
 
-| Package                 | Role                              | Components                    |
-| ----------------------- | --------------------------------- | ----------------------------- |
-| **@soybeanjs/headless** | Logic, state, a11y. Zero styles.  | 50 primitives, 26 composables |
-| **@soybeanjs/ui**       | Styled wrappers. UnoCSS + `tv()`. | 48 `S`-prefixed components    |
+| Package                 | Role                              | Components                        |
+| ----------------------- | --------------------------------- | --------------------------------- |
+| **@soybeanjs/headless** | Logic, state, a11y. Zero styles.  | 95 component dirs, 25 composables |
+| **@soybeanjs/ui**       | Styled wrappers. UnoCSS + `tv()`. | 91 `S`-prefixed components        |
 
 **Data flow is strictly one-way**: `headless` → `src`. The styled layer never imports from headless's internals — it injects style tokens via `provideXUi(computedUi)` which headless components read through `useUiContext()`.
 
 Some multi-slot headless components also expose `Compact` aggregators, such as `AccordionCompact` and `TableCompact`. They keep item iteration and default content/icon composition inside headless, while the UI layer stays focused on styling and prop forwarding.
+
+Current Compact-style coverage also includes flows such as card, date-field, dialog, editable, hover-card, layout, navigation-menu, pagination, popover, and stepper, when those structures are stable enough to live in headless.
 
 ### Style Injection
 
@@ -73,10 +75,12 @@ provideAccordionUi(ui); // headless reads this via useAccordionUi()
 
 ```ts
 import { AccordionRoot } from '@soybeanjs/headless'; // all components
-import { useControllableState } from '@soybeanjs/headless/composables'; // 26 composables
+import { useControllableState } from '@soybeanjs/headless/composables'; // 25 composables
 import { transformPropsToContext } from '@soybeanjs/headless/shared'; // pure TS utils
+import { createMonth } from '@soybeanjs/headless/date'; // shared date helpers
 import * as Headless from '@soybeanjs/headless/namespaced'; // namespace object
 import type { AccordionUiSlot } from '@soybeanjs/headless/accordion'; // per-component
+import type { UiClass } from '@soybeanjs/headless/types'; // shared type surface
 ```
 
 **@soybeanjs/ui** exports:
@@ -86,6 +90,20 @@ import { SButton, SAccordion } from '@soybeanjs/ui'; // all components
 import '@soybeanjs/ui/styles.css'; // pre-built UnoCSS stylesheet
 // Also: @soybeanjs/ui/nuxt · @soybeanjs/ui/resolver
 ```
+
+## 🛠 Development Workflow
+
+If you contribute new public components, exports, or API descriptions, keep generated surfaces in sync through the official scripts instead of editing generated files by hand.
+
+```bash
+pnpm gen:headless     # sync headless component names and namespaced exports
+pnpm gen:ui           # sync ui component names
+pnpm gen:api          # regenerate docs api json and locale baseline data
+pnpm gen:api:i18n     # refresh api locale template data only
+pnpm translate:api:i18n -- --locale zh-CN
+```
+
+The docs site now renders component docs through `UsageCode`, `PlaygroundGallery`, and `ComponentApi`, so public API or demo delivery changes should keep docs, playground examples, and generated API data aligned.
 
 ## 📦 Installation
 

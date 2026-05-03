@@ -17,7 +17,9 @@ The remaining content in this file is package knowledge and local context. Norma
 ## EXPORTS
 
 Dev mode resolves to `./src/...` (source); publishConfig switches to `./dist/...`.
-Core exports include root, `/constants`, `/composables`, `/shared`, `/nuxt`, `/resolver`, `/namespaced`, plus per-component sub-paths under `./*`.
+Core exports include root, `/constants`, `/composables`, `/date`, `/shared`, `/nuxt`, `/resolver`, `/namespaced`, `/types`, plus per-component sub-paths under `./*`.
+
+After public export changes, rerun `pnpm gen:headless` so `headless/src/constants/components.ts` and `headless/src/namespaced/index.ts` stay aligned with `headless/src/index.ts`.
 
 ## KEY PATTERNS
 
@@ -25,16 +27,18 @@ Core exports include root, `/constants`, `/composables`, `/shared`, `/nuxt`, `/r
 - **useUiContext**: Bridge to UI layer. Returns `[provideXUi, useUi]`. Headless reads class tokens injected by UI layer. Only file with `@ts-expect-error`.
 - **useControllableState**: Controlled/uncontrolled prop pattern. If initial prop is `undefined`, uses internal `shallowRef`; otherwise returns computed proxy.
 - **useForwardElement**: Exposes inner DOM element via `defineExpose`. Prefer over direct DOM access.
-- **Compact components**: Stable, data-driven compositions can live in headless as `{Name}Compact`, reusing base parts while centralizing iteration, slot props, and default content. Current examples: `AccordionCompact`, `TableCompact`.
+- **Compact components**: Stable, data-driven compositions can live in headless as `{Name}Compact`, reusing base parts while centralizing iteration, slot props, and default content. Current examples span accordion, card, date-field, dialog, editable, hover-card, layout, navigation-menu, pagination, popover, stepper, and table.
+- **Type export surface**: UI wrappers should prefer per-component sub-path type re-exports such as `@soybeanjs/headless/dialog`, not ad hoc deep imports.
 
 ## STRUCTURE
 
 ```
 headless/src/
-├── components/   # 74 component dirs. Base primitives plus Compact aggregations. See components/AGENTS.md
-├── composables/  # 26 reusable hooks. See composables/AGENTS.md
+├── components/   # 95 component dirs. Base primitives plus Compact aggregations. See components/AGENTS.md
+├── composables/  # 25 reusable hooks. See composables/AGENTS.md
 ├── shared/       # Pure TS utilities (no Vue). See shared/AGENTS.md
 ├── constants/    # ARIA attrs, collection markers, component constants
+├── date/         # Shared date and calendar helpers
 ├── types/        # Global types: ClassValue, UiClass, component/DOM/event types
 └── index.ts      # Barrel: re-exports components + composables + shared + types
 ```

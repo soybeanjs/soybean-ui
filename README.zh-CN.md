@@ -35,14 +35,16 @@ SoybeanUI 采用严格的**双层分离**设计：
 
 ### 包结构
 
-| 包                      | 职责                        | 组件数量                      |
-| ----------------------- | --------------------------- | ----------------------------- |
-| **@soybeanjs/headless** | 逻辑、状态、a11y，零样式    | 50 个原语件，26 个 composable |
-| **@soybeanjs/ui**       | 样式包装层。UnoCSS + `tv()` | 48 个带 `S` 前缀的组件        |
+| 包                      | 职责                        | 组件数量                        |
+| ----------------------- | --------------------------- | ------------------------------- |
+| **@soybeanjs/headless** | 逻辑、状态、a11y，零样式    | 95 个组件目录，25 个 composable |
+| **@soybeanjs/ui**       | 样式包装层。UnoCSS + `tv()` | 91 个带 `S` 前缀的组件          |
 
 **数据流严格单向**：`headless` → `src`。样式层不会导入 headless 的内部实现，而是通过 `provideXUi(computedUi)` 注入样式 token，headless 组件再通过 `useUiContext()` 读取。
 
 部分多插槽 headless 组件还会暴露 `Compact` 聚合层，例如 `AccordionCompact` 和 `TableCompact`。它们把条目遍历以及默认内容 / 图标组合放在 headless 层完成，而 UI 层只负责样式和 props 转发。
+
+目前采用这类 Compact 约定式组合的能力还覆盖了 card、date-field、dialog、editable、hover-card、layout、navigation-menu、pagination、popover、stepper 等稳定结构场景。
 
 ### 样式注入机制
 
@@ -73,10 +75,12 @@ provideAccordionUi(ui); // headless 通过 useAccordionUi() 读取
 
 ```ts
 import { AccordionRoot } from '@soybeanjs/headless'; // 所有组件
-import { useControllableState } from '@soybeanjs/headless/composables'; // 26 个 composable
+import { useControllableState } from '@soybeanjs/headless/composables'; // 25 个 composable
 import { transformPropsToContext } from '@soybeanjs/headless/shared'; // 纯 TS 工具
+import { createMonth } from '@soybeanjs/headless/date'; // 日期工具
 import * as Headless from '@soybeanjs/headless/namespaced'; // 命名空间导入
 import type { AccordionUiSlot } from '@soybeanjs/headless/accordion'; // 单组件类型
+import type { UiClass } from '@soybeanjs/headless/types'; // 共享类型导出
 ```
 
 **@soybeanjs/ui** 导出：
@@ -86,6 +90,20 @@ import { SButton, SAccordion } from '@soybeanjs/ui'; // 所有组件
 import '@soybeanjs/ui/styles.css'; // 预构建的 UnoCSS 样式表
 // 同时提供：@soybeanjs/ui/nuxt · @soybeanjs/ui/resolver
 ```
+
+## 🛠 开发工作流
+
+如果您在仓库内新增公共组件、调整导出入口或修改 API 描述，请通过官方脚本同步生成产物，而不是手动编辑生成文件。
+
+```bash
+pnpm gen:headless     # 同步 headless 组件名称与命名空间导出
+pnpm gen:ui           # 同步 ui 组件名称
+pnpm gen:api          # 重新生成 docs api json 与 locale 英文基线数据
+pnpm gen:api:i18n     # 仅刷新 api locale 模板数据
+pnpm translate:api:i18n -- --locale zh-CN
+```
+
+当前文档站默认通过 `UsageCode`、`PlaygroundGallery` 与 `ComponentApi` 渲染组件文档，所以一旦公共 API 或示例交付面变化，也要同步维护 docs、playground 示例和 API 生成数据。
 
 ## 📦 安装
 

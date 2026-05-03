@@ -1,6 +1,6 @@
 # HEADLESS COMPOSABLES
 
-**26 hooks** shared across all headless primitives. Pure Vue Composition API.
+**25 hooks** shared across all headless primitives. Pure Vue Composition API.
 
 ## CATEGORIES
 

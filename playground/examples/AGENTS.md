@@ -15,3 +15,10 @@ Before editing files here, read and obey these `.github` sources:
 If the task is part of component delivery, also apply the relevant checklist file at the end.
 
 Use this file only as routing and local path context. Normative rules stay in `.github/`.
+
+## LOCAL CONTEXT
+
+- `playground/examples/{component}/index.vue` now acts as a thin entry and should normally render only `<PlaygroundGallery component="{component}" />`
+- `PlaygroundGallery` auto-discovers sibling demo files except `index.vue`, sorts `basic` first, and resolves titles from `playground.examples.{component}.{file}` locale keys
+- Child demo files should not render local `h3.playground-title` headings
+- Remove meaningless outer `<div>` wrappers; keep a container only when layout, width, scroll, or multi-node grouping actually requires it

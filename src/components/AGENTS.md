@@ -16,3 +16,11 @@ Before editing files here, read and obey these `.github` sources:
 If the task affects public delivery surfaces, also apply the relevant docs, playground, testing, and checklist files under `.github/instructions/`.
 
 Use this file only as routing and local path context. Normative rules stay in `.github/`.
+
+## LOCAL CONTEXT
+
+- UI component barrels should re-export wrapper-facing types with `export type` from `@soybeanjs/headless/{component}` sub-paths, matching the newer export constraint used across the repo
+- In UI-layer `types.ts`, component-specific headless types should come from `@soybeanjs/headless/{component}`, while headless global types such as `ClassValue` should come from `@soybeanjs/headless/types`
+- Public UI export changes must be reflected in `src/index.ts`, then synced via `pnpm gen:ui` to update `src/constants/components.ts`
+- Multi-slot wrappers should continue to inject class tokens through `provide{Name}Ui(ui)` and leave ARIA, keyboard, and state logic in headless
+- If wrapper changes affect component delivery, also update the matching playground examples, docs pages, API generated data, and tests instead of treating UI files as the only required surface

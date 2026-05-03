@@ -12,23 +12,19 @@ For any AI assistant editing files under `docs/`:
 The remaining content in this file is package knowledge and local context. Normative rules still live in `.github/`.
 
 **Package:** `docs/` → NOT published to npm
-**Stack:** Vite + vite-ssg + unplugin-vue-markdown (NOT VitePress)
+**Stack:** Vite + vite-ssg + unplugin-vue-markdown + markdown-exit (NOT VitePress)
 
 ## HOW DOCS WORK
 
-Markdown files in `docs/src/docs/[lang]/` → auto-converted to Vue pages via `unplugin-vue-markdown`. Routing is file-based via `vite-ssg` + `unplugin-vue-router`.
+Markdown files in `docs/src/docs/[lang]/` → auto-converted to Vue pages via `unplugin-vue-markdown`. Routing is file-based via `vite-ssg` + `unplugin-vue-router`, and markdown rendering now goes through `@shikijs/markdown-exit`.
 
 ## PLAYGROUND SYSTEM
 
-Demos live in `playground/examples/[component]/` (separate workspace). Referenced in markdown via:
+Demos live in `playground/examples/[component]/` (separate workspace). Component markdown now references them through direct Vue tags such as `<UsageCode component="button" />` and `<PlaygroundGallery component="button" />`, rather than fenced `playground` blocks.
 
-````markdown
-```playground
-demo-file-name
-```
-````
+`playground/examples/{component}/index.vue` is now just a `PlaygroundGallery` entry point; the gallery auto-discovers sibling demo files, prioritizes `basic`, and resolves demo titles from `playground.examples.{component}.{file}` locale keys.
 
-Rendered by `PlaygroundGallery` component. Each demo is a standalone `.vue` SFC.
+API sections are rendered through `<ComponentApi component="button" />`, backed by generated json data under `docs/src/generated/api/` and `docs/src/generated/api-locales/`. After public API changes, run `pnpm gen:api`; if only locale template data needs refresh, `pnpm gen:api:i18n`; then translate non-English locales with `pnpm translate:api:i18n -- --locale <locale>`.
 
 ## STRUCTURE
 
@@ -47,5 +43,7 @@ docs/src/
 - **FrontMatter required**: Every `.md` needs at minimum `title: ComponentName`
 - **Language parity**: `en/` and `zh-CN/` must have identical file structure
 - **Demo isolation**: Demos in `playground/`, never inline in markdown
-- **Component docs**: Must document props, events, slots, and types
+- **Component docs**: Prefer `<UsageCode>`, `<PlaygroundGallery>`, and `<ComponentApi>` as the default rendering surfaces
+- **Demo titles**: Titles come from locale keys under `playground.examples.{component}.{file}`, not local `h3` headings inside demo files
+- **Generated API data**: Public API changes require regenerating `docs/src/generated/api/` and `docs/src/generated/api-locales/`, then translating non-English locales
 - **Auto-generated**: `typed-router.d.ts` — DO NOT edit manually

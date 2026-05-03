@@ -156,7 +156,7 @@ headless 稳定后，再完成 UI 层。默认顺序：
 
 进入 Phase 4 前，UI wrapper、variants、类型导出必须已经稳定。
 
-## Phase 4：补齐出口面
+## Phase 4：补齐出口面与名称数据
 
 代码主体完成后，接入所有正式出口：
 
@@ -165,19 +165,23 @@ headless 稳定后，再完成 UI 层。默认顺序：
 - 运行 `pnpm gen:headless` → 自动更新 `headless/src/constants/components.ts` 与 `headless/src/namespaced/index.ts`
 - 运行 `pnpm gen:ui` → 自动更新 `src/constants/components.ts`
 
+这些命令生成的组件名称数据和命名空间数据属于正式交付面的一部分；不要手动编辑生成文件，修改源入口后重新运行脚本。
+
 不要把这些出口面留到最后忘记补。
 
 场景 B 与场景 C 中，只要组件已经是正式公开组件，就要同时校对这些出口面，而不是只修实现文件。
 
 进入 Phase 5 前，正式导出面必须已经可用。
 
-## Phase 5：补 playground、docs、tests
+## Phase 5：补 playground、docs、tests 与 API 文档数据
 
 实现完成并接入出口后，再补外围交付面：
 
 - playground
 - 中英文 docs
 - menus 注册
+- API json 数据
+- API 多语言描述
 - tests
 
 对应细节见：
@@ -185,6 +189,15 @@ headless 稳定后，再完成 UI 层。默认顺序：
 - `soybean-ui-playground.instructions.md`
 - `soybean-ui-docs.instructions.md`
 - `soybean-ui-testing.instructions.md`
+
+最新交付形态约束：
+
+- `playground/examples/{component}/index.vue` 统一只负责渲染 `<PlaygroundGallery component="{component}" />`
+- `playground/examples/{component}/*.vue` 子示例默认不再自带标题；标题由 gallery 基于文件名国际化 key 统一生成
+- `docs/src/docs/{locale}/components/{component}.md` 中的 Usage 和 Demos 统一直接写 `<UsageCode>` 与 `<PlaygroundGallery>`，不再写 fenced 演示代码块
+- 组件文档中的 API 段默认统一写 `<ComponentApi component="{component}" />`，手写 `DataTable` / `TypeTable` 只作为特殊例外
+- 公共 API 或类型描述发生变化后，要运行 `pnpm gen:api` 生成 `docs/src/generated/api/` 与 `docs/src/generated/api-locales/` 基础数据
+- `gen:api` 生成英文 API 描述后，要对仓库内除 `en` 之外的 locale 逐个运行 `pnpm translate:api:i18n -- --locale <locale>` 补齐翻译
 
 进入 Phase 6 前，playground、docs、tests 这些外围交付面必须已经补齐或明确记录暂不交付的原因。
 
@@ -214,6 +227,8 @@ headless 稳定后，再完成 UI 层。默认顺序：
 - `docs/src/docs/zh-CN/components/{component}.md`
 - `docs/src/docs/en/components/{component}.md`
 - `docs/src/constants/menus.ts`
+- `docs/src/generated/api/`（通过 `pnpm gen:api` 更新）
+- `docs/src/generated/api-locales/`（先通过 `pnpm gen:api` 更新英文基线，再通过 `pnpm translate:api:i18n -- --locale <locale>` 更新非英文）
 - `test/specs/components/{component}.spec.ts`
 
 为现有组件加功能或修 bug 时，也要同步检查这些出口面是否受影响，不要只改单个目录。
@@ -224,6 +239,7 @@ headless 稳定后，再完成 UI 层。默认顺序：
 
 - `headless/src/index.ts` 与 `src/index.ts` 必须 re-export 新组件
 - `headless/src/constants/components.ts`、`src/constants/components.ts`、`headless/src/namespaced/index.ts` 均为脚本生成文件，不要手动编辑；更新 index.ts 后运行对应命令：`pnpm gen:headless`（headless 侧）、`pnpm gen:ui`（UI 侧）
+- `docs/src/generated/api/*.json` 与 `docs/src/generated/api-locales/*.json` 属于生成产物；公共 API 或描述变更后运行 `pnpm gen:api`，再为非英文 locale 运行 `pnpm translate:api:i18n -- --locale <locale>`，不要靠手改生成文件维持同步
 
 ## 结果说明
 

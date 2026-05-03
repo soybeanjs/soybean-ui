@@ -52,7 +52,8 @@ headless 稳定后，再按下面顺序做 UI：
 
 - Props 用 `interface`，不要用 `type` 作为主 props 声明
 - UI 组件 props 标准包含 `class?: ClassValue`
-- headless 类型通过组件子路径导入或 re-export，保持与邻近同模式组件一致
+- 与当前 UI 组件对应的 headless 组件类型，统一从 `@soybeanjs/headless/{name}` 子路径导入或 re-export
+- `ClassValue`、`UiClass` 等 headless 全局类型，统一从 `@soybeanjs/headless/types` 导入
 - UI 层新增了 headless 没有的结构元素，且该元素也要对外暴露 `ui` 覆盖能力时，必须扩展 `ExtraUiSlot` / `ExtendedUi`
 
 ## Step 3：wrapper `.vue`
@@ -102,7 +103,8 @@ headless 稳定后，再按下面顺序做 UI：
 ## Step 4：index.ts
 
 - UI 组件 barrel 导出默认组件
-- 相关 headless 类型从 `@soybeanjs/headless/{component}` 子路径 re-export
+- 相关 headless 组件类型从 `@soybeanjs/headless/{component}` 子路径 re-export
+- 不要从 `@soybeanjs/headless` 根路径 re-export 组件类型；headless 全局类型继续从 `@soybeanjs/headless/types` 导入
 - 再导出 UI 层自身的 `types.ts`
 
 ## Step 5：注册到 UI 出口
@@ -123,3 +125,4 @@ headless 稳定后，再按下面顺序做 UI：
 - 在模板里写 `props.xxx`
 - 组件名缺少 `S` 前缀
 - 从 `@soybeanjs/headless` 根路径粗暴 re-export 所有类型
+- 在 UI 层 `types.ts` 或 `index.ts` 中混用组件子路径类型与 headless 全局类型的导入来源

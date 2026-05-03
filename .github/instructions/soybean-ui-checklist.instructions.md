@@ -27,6 +27,8 @@ applyTo: '{headless/src/components,src/components}/**/*.{ts,vue}'
 - playground 示例可以说明主要公开能力
 - 中英文文档结构同步
 - `docs/src/constants/menus.ts` 已更新
+- `pnpm gen:api` 已运行，`docs/src/generated/api/` 与 `docs/src/generated/api-locales/` 已同步到当前公开 API
+- 已对仓库内除 `en` 之外的 locale 运行 `pnpm translate:api:i18n -- --locale <locale>`，或已明确说明为何暂未翻译
 - 组件测试覆盖 rendering、state、disabled、accessibility 核心场景
 - 场景 B 中，即使外部代码没有自带 docs / tests，也已按仓库规范补齐
 - 场景 C 中，只要本轮改动影响公开行为或结构语义，就已同步更新 docs / tests
@@ -36,6 +38,7 @@ applyTo: '{headless/src/components,src/components}/**/*.{ts,vue}'
 - `headless/src/index.ts` 与 `src/index.ts` 已更新
 - `pnpm gen:headless` 已运行（更新 `headless/src/constants/components.ts` 与 `headless/src/namespaced/index.ts`）
 - `pnpm gen:ui` 已运行（更新 `src/constants/components.ts`）
+- 组件名称数据、命名空间数据与 API 生成产物都来自脚本，未手动改生成文件
 
 - 新建组件时，已检查并补齐完整交付面的其余入口
 - 为现有组件加功能或修 bug 时，已同步更新所有受影响层和出口面
