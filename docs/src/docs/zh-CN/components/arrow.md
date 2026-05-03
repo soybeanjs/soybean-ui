@@ -7,7 +7,7 @@
 ## 演示
 
 ```playground
-base
+basic
 ```
 
 ## API

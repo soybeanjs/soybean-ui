@@ -6,22 +6,14 @@ A text input field that only accepts numeric input. Supports increment/decrement
 
 ## Usage
 
-```vue
-<script setup lang="ts">
-import { SInputNumber } from '@soybeanjs/ui';
-
-const value = ref(0);
-</script>
-
-<template>
-  <SInputNumber v-model="value" :min="0" :max="100" />
-</template>
+```usage
+basic
 ```
 
 ## Demos
 
 ```playground
-base
+basic
 center
 slot
 clearable

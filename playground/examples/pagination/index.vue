@@ -6,10 +6,12 @@ import DemoPaginationShape from './shape.vue';
 import DemoPaginationSlot from './slot.vue';
 import DemoPaginationAction from './action.vue';
 import DemoPaginationShow from './show.vue';
+import DemoPaginationBasic from './basic.vue';
 </script>
 
 <template>
   <SCard title="Pagination" split :ui="{ content: 'flex-c gap-4' }">
+    <DemoPaginationBasic />
     <DemoPaginationVariant />
     <DemoPaginationSize />
     <DemoPaginationShape />

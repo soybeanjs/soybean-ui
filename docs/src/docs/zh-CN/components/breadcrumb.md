@@ -6,16 +6,8 @@
 
 ## 用法
 
-```vue
-<script setup lang="ts">
-import { SBreadcrumb } from '@soybeanjs/ui';
-
-const items = [{ label: 'Home', link: '/' }, { label: 'Components', link: '/components' }, { label: 'Breadcrumb' }];
-</script>
-
-<template>
-  <SBreadcrumb :items="items" />
-</template>
+```usage
+basic
 ```
 
 > `SBreadcrumb` 现在会把列表聚合逻辑委托给 headless `BreadcrumbCompact`。如果需要无样式、数据驱动的组合入口，可从 `@soybeanjs/headless/breadcrumb` 直接导入 `BreadcrumbCompact`。
@@ -23,7 +15,7 @@ const items = [{ label: 'Home', link: '/' }, { label: 'Components', link: '/comp
 ## 演示
 
 ```playground
-base
+basic
 separator
 link
 item-dropdown

@@ -6,20 +6,14 @@
 
 ## 用法
 
-```vue
-<script setup lang="ts">
-import { STag } from '@soybeanjs/ui';
-</script>
-
-<template>
-  <STag>默认</STag>
-  <STag color="primary" variant="soft">Primary</STag>
-</template>
+```usage
+basic
 ```
 
 ## 演示
 
 ```playground
+basic
 color
 variant
 shape

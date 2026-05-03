@@ -12,30 +12,8 @@ If the current URL already contains a hash on initial render, Anchor will scroll
 
 ## Usage
 
-```vue
-<script setup lang="ts">
-import { shallowRef } from 'vue';
-import { SAnchor } from '@soybeanjs/ui';
-
-const containerRef = shallowRef<HTMLElement>();
-
-const items = [
-  { href: '#overview', title: 'Overview' },
-  { href: '#api', title: 'API' }
-];
-
-const getContainer = () => containerRef.value ?? window;
-</script>
-
-<template>
-  <div class="grid gap-4 md:grid-cols-[220px_minmax(0,1fr)]">
-    <SAnchor :items="items" :get-container="getContainer" />
-    <div ref="containerRef" class="max-h-80 overflow-auto">
-      <section id="overview" class="min-h-60">...</section>
-      <section id="api" class="min-h-60">...</section>
-    </div>
-  </div>
-</template>
+```usage
+basic
 ```
 
 ## Demos

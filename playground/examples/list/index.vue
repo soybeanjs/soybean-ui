@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { SCard } from '@soybeanjs/ui';
-import DemoListBase from './base.vue';
+import DemoListBasic from './basic.vue';
 </script>
 
 <template>
   <SCard title="List" split>
-    <DemoListBase />
+    <DemoListBasic />
   </SCard>
 </template>

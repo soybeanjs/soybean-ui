@@ -6,22 +6,14 @@
 
 ## 用法
 
-```vue
-<script setup lang="ts">
-import { SInput } from '@soybeanjs/ui';
-
-const value = ref('');
-</script>
-
-<template>
-  <SInput v-model="value" placeholder="Type something..." />
-</template>
+```usage
+basic
 ```
 
 ## 演示
 
 ```playground
-base
+basic
 disabled
 slot
 clearable

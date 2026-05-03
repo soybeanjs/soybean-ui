@@ -119,7 +119,7 @@ const menuFactory = (tab: PageTabsOptionData, state: PageTabsState) => {
 <template>
   <div>
     <div class="flex-y-center justify-between">
-      <h3 class="playground-title">Base</h3>
+      <h3 class="playground-title">Basic</h3>
       <SSelect v-model="variant" :items="variants" class="w-30" />
     </div>
     <SPageTabs

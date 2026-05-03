@@ -6,22 +6,14 @@
 
 ## 用法
 
-```vue
-<script setup lang="ts">
-import { STextarea } from '@soybeanjs/ui';
-
-const value = ref('');
-</script>
-
-<template>
-  <STextarea v-model="value" placeholder="Type your message here." />
-</template>
+```usage
+basic
 ```
 
 ## 演示
 
 ```playground
-base
+basic
 autosize
 clearable
 disabled

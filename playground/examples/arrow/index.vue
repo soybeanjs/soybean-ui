@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { SCard } from '@soybeanjs/ui';
-import DemoArrowBase from './base.vue';
+import DemoArrowBasic from './basic.vue';
 </script>
 
 <template>
   <SCard title="Arrow" split>
-    <DemoArrowBase />
+    <DemoArrowBasic />
   </SCard>
 </template>

@@ -6,22 +6,14 @@ Displays a form input field or a component that looks like an input field. It su
 
 ## Usage
 
-```vue
-<script setup lang="ts">
-import { SInput } from '@soybeanjs/ui';
-
-const value = ref('');
-</script>
-
-<template>
-  <SInput v-model="value" placeholder="Type something..." />
-</template>
+```usage
+basic
 ```
 
 ## Demos
 
 ```playground
-base
+basic
 disabled
 slot
 clearable

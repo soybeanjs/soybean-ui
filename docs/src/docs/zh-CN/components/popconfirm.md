@@ -6,38 +6,14 @@
 
 ## 用法
 
-```vue
-<script setup lang="ts">
-import { SPopconfirm, SButton } from '@soybeanjs/ui';
-
-function handleConfirm() {
-  console.log('Confirmed!');
-}
-
-function handleCancel() {
-  console.log('Cancelled!');
-}
-</script>
-
-<template>
-  <SPopconfirm
-    title="删除项目?"
-    description="此操作无法撤销。您确定要删除此项目吗?"
-    type="destructive"
-    :before-confirm="handleConfirm"
-    :before-cancel="handleCancel"
-  >
-    <template #trigger>
-      <SButton color="destructive">删除</SButton>
-    </template>
-  </SPopconfirm>
-</template>
+```usage
+basic
 ```
 
 ## 演示
 
 ```playground
-base
+basic
 ```
 
 ## API

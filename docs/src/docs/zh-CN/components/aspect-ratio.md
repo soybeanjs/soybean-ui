@@ -6,24 +6,14 @@
 
 ## 用法
 
-```vue
-<script setup lang="ts">
-import { SAspectRatio } from '@soybeanjs/ui';
-</script>
-
-<template>
-  <div class="w-[300px]">
-    <SAspectRatio :ratio="16 / 9">
-      <img src="..." alt="Image" class="object-cover w-full h-full rounded-md" />
-    </SAspectRatio>
-  </div>
-</template>
+```usage
+basic
 ```
 
 ## 演示
 
 ```playground
-base
+basic
 ```
 
 ## API

@@ -6,28 +6,14 @@
 
 ## 用法
 
-```vue
-<script setup lang="ts">
-import { SDrawer, SButton } from '@soybeanjs/ui';
-
-const open = ref(false);
-</script>
-
-<template>
-  <SDrawer v-model:open="open" title="Menu" side="left">
-    <template #trigger>
-      <SButton variant="outline">Open Drawer</SButton>
-    </template>
-    <div class="py-4">
-      <p>Navigation links...</p>
-    </div>
-  </SDrawer>
-</template>
+```usage
+basic
 ```
 
 ## 演示
 
 ```playground
+basic
 side
 scroll
 ```

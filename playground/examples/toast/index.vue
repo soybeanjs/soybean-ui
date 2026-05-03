@@ -2,7 +2,7 @@
 import { SCard } from '@soybeanjs/ui';
 import DemoToastAction from './action.vue';
 import DemoToastAppearance from './appearance.vue';
-import DemoToastBase from './base.vue';
+import DemoToastBasic from './basic.vue';
 import DemoToastControl from './control.vue';
 import DemoToastPosition from './position.vue';
 import DemoToastPromise from './promise.vue';
@@ -12,7 +12,7 @@ import DemoToastTypes from './types.vue';
 
 <template>
   <SCard title="Toast" split :ui="{ content: 'flex-c gap-4' }">
-    <DemoToastBase />
+    <DemoToastBasic />
     <DemoToastTypes />
     <DemoToastPromise />
     <DemoToastAction />

@@ -6,21 +6,8 @@ RangeCalendar displays one or more month grids and lets users choose a start and
 
 ## Usage
 
-```vue
-<script setup lang="ts">
-import { CalendarDate } from '@internationalized/date';
-import { shallowRef } from 'vue';
-import { SRangeCalendar } from '@soybeanjs/ui';
-
-const value = shallowRef({
-  start: new CalendarDate(2026, 4, 18),
-  end: new CalendarDate(2026, 4, 22)
-});
-</script>
-
-<template>
-  <SRangeCalendar v-model="value" :default-placeholder="value.start" />
-</template>
+```usage
+basic
 ```
 
 ## Demos

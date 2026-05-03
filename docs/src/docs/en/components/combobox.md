@@ -6,22 +6,8 @@ A combobox component for searching and selecting values from an option list, wit
 
 ## Usage
 
-```vue
-<script setup lang="ts">
-import { ref } from 'vue';
-import { SCombobox } from '@soybeanjs/ui';
-
-const value = ref<string>();
-const items = [
-  { label: 'Apple', value: 'apple' },
-  { label: 'Banana', value: 'banana' },
-  { label: 'Orange', value: 'orange' }
-];
-</script>
-
-<template>
-  <SCombobox v-model="value" :items="items" placeholder="Select a fruit" />
-</template>
+```usage
+basic
 ```
 
 ## Demos

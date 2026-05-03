@@ -6,14 +6,8 @@ A button component that can be used to trigger an action.
 
 ## Usage
 
-```vue
-<script setup lang="ts">
-import { SButton } from '@soybeanjs/ui';
-</script>
-
-<template>
-  <SButton>Default Button</SButton>
-</template>
+```usage
+basic
 ```
 
 ## Features
@@ -38,6 +32,7 @@ import { SButton } from '@soybeanjs/ui';
 ## Demos
 
 ```playground
+basic
 color
 variant
 size

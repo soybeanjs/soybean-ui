@@ -6,14 +6,8 @@
 
 ## 用法
 
-```vue
-<script setup lang="ts">
-import { SSpinner } from '@soybeanjs/ui';
-</script>
-
-<template>
-  <SSpinner />
-</template>
+```usage
+basic
 ```
 
 ## 演示

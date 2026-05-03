@@ -8,14 +8,8 @@ Backtop 会在滚动目标超过阈值后显示一个浮动按钮，并在触发
 
 ## 用法
 
-```vue
-<script setup lang="ts">
-import { SBacktop } from '@soybeanjs/ui';
-</script>
-
-<template>
-  <SBacktop />
-</template>
+```usage
+basic
 ```
 
 ## 演示

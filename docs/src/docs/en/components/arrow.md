@@ -7,7 +7,7 @@ A primitive component used to render an arrow for popovers, tooltips, and other 
 ## Demos
 
 ```playground
-base
+basic
 ```
 
 ## API

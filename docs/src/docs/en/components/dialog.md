@@ -12,26 +12,8 @@ Mount `SDialogProvider` once near your app root before calling the imperative `d
 
 ### Declarative
 
-```vue
-<script setup lang="ts">
-import { SDialog, SButton } from '@soybeanjs/ui';
-
-const open = ref(false);
-</script>
-
-<template>
-  <SDialog v-model:open="open" title="Edit Profile" description="Make changes to your profile here.">
-    <template #trigger>
-      <SButton variant="outline">Edit Profile</SButton>
-    </template>
-    <div class="grid gap-4 py-4">
-      <!-- Form content -->
-    </div>
-    <template #footer>
-      <SButton @click="open = false">Save changes</SButton>
-    </template>
-  </SDialog>
-</template>
+```usage
+basic
 ```
 
 ### Imperative API
@@ -60,7 +42,7 @@ function openWarningDialog() {
 ## Demos
 
 ```playground
-base
+basic
 footer
 state
 prevent

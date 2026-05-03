@@ -6,21 +6,14 @@
 
 ## 用法
 
-```vue
-<script setup lang="ts">
-import { SLink } from '@soybeanjs/ui';
-</script>
-
-<template>
-  <SLink href="https://github.com" target="_blank">External Link</SLink>
-  <SLink to="/home">Internal Link</SLink>
-</template>
+```usage
+basic
 ```
 
 ## 演示
 
 ```playground
-base
+basic
 href
 ```
 

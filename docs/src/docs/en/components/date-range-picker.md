@@ -4,17 +4,8 @@ A date range picker component that allows users to select a start and end date f
 
 ## Usage
 
-```vue
-<script setup lang="ts">
-import { shallowRef } from 'vue';
-import { SDateRangePicker } from '@soybeanjs/ui';
-
-const range = shallowRef();
-</script>
-
-<template>
-  <SDateRangePicker v-model="range" />
-</template>
+```usage
+basic
 ```
 
 ## Examples

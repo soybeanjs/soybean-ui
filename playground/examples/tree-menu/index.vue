@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { SCard } from '@soybeanjs/ui';
-import DemoTreeMenuBase from './base.vue';
+import DemoTreeMenuBasic from './basic.vue';
 </script>
 
 <template>
   <SCard title="Tree Menu" split>
-    <DemoTreeMenuBase />
+    <DemoTreeMenuBasic />
   </SCard>
 </template>

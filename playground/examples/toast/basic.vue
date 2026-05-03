@@ -42,7 +42,7 @@ function openLoadingToast() {
 
 <template>
   <div class="flex-c gap-3">
-    <h3 class="playground-title">Base</h3>
+    <h3 class="playground-title">Basic</h3>
 
     <div class="flex flex-wrap gap-2">
       <SButton variant="pure" @click="openDefaultToast">Default</SButton>

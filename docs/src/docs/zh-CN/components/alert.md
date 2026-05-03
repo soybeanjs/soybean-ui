@@ -6,15 +6,8 @@
 
 ## 用法
 
-```vue
-<script setup lang="ts">
-import { SAlert } from '@soybeanjs/ui';
-</script>
-
-<template>
-  <SAlert title="Info" description="This is an info alert" />
-  <SAlert title="Error" description="Something went wrong" color="destructive" variant="soft" />
-</template>
+```usage
+basic
 ```
 
 > `SAlert` 现在会把默认的图标、标题、描述和关闭按钮结构组合委托给 headless `AlertCompact`。如果需要直接使用无样式的组合入口，可从 `@soybeanjs/headless/alert` 导入。
@@ -22,6 +15,7 @@ import { SAlert } from '@soybeanjs/ui';
 ## 演示
 
 ```playground
+basic
 color
 variant
 description

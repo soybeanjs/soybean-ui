@@ -6,17 +6,8 @@
 
 ## Usage
 
-```vue
-<script setup lang="ts">
-import { SLabel, SInput } from '@soybeanjs/ui';
-</script>
-
-<template>
-  <div class="grid gap-1.5">
-    <SLabel htmlFor="email">Email</SLabel>
-    <SInput id="email" type="email" placeholder="Email" />
-  </div>
-</template>
+```usage
+basic
 ```
 
 ## API

@@ -6,22 +6,8 @@
 
 ## 用法
 
-```vue
-<script setup lang="ts">
-import { SButton, SHoverCard } from '@soybeanjs/ui';
-</script>
-
-<template>
-  <SHoverCard>
-    <template #trigger>
-      <SButton variant="outline">Hover me</SButton>
-    </template>
-    <div class="space-y-1.5">
-      <p class="font-medium">Hover card</p>
-      <p class="text-sm text-muted-foreground">Use it to show richer preview content.</p>
-    </div>
-  </SHoverCard>
-</template>
+```usage
+basic
 ```
 
 ## 演示

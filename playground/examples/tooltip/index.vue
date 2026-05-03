@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { SCard } from '@soybeanjs/ui';
-import DemoTooltipBase from './base.vue';
+import DemoTooltipBasic from './basic.vue';
 </script>
 
 <template>
   <SCard title="Tooltip" split>
-    <DemoTooltipBase />
+    <DemoTooltipBasic />
   </SCard>
 </template>

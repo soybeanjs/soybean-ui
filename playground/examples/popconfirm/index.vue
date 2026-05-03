@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { SCard } from '@soybeanjs/ui';
-import DemoPopconfirmBase from './base.vue';
+import DemoPopconfirmBasic from './basic.vue';
 </script>
 
 <template>
   <SCard title="Popconfirm" split>
-    <DemoPopconfirmBase />
+    <DemoPopconfirmBasic />
   </SCard>
 </template>

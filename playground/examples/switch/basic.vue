@@ -4,7 +4,7 @@ import { SSwitch } from '@soybeanjs/ui';
 
 <template>
   <div>
-    <h3 class="playground-title">Base</h3>
+    <h3 class="playground-title">Basic</h3>
     <SSwitch :default-value="true" />
   </div>
 </template>

@@ -6,17 +6,8 @@
 
 ## 用法
 
-```vue
-<script setup lang="ts">
-import { ref } from 'vue';
-import { SToggle } from '@soybeanjs/ui';
-
-const pressed = ref(false);
-</script>
-
-<template>
-  <SToggle v-model="pressed">Bold</SToggle>
-</template>
+```usage
+basic
 ```
 
 ## 演示

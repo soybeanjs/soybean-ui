@@ -14,10 +14,23 @@ export function encodeBase64Utf8(raw: string): string {
 
 export const customMarkdownPlugin: PluginSimple = md => {
   playgroundPlugin(md);
+  usagePlugin(md);
   mermaidPlugin(md);
   copyCodePlugin(md);
   tooltipPlugin(md);
 };
+
+function resolveMarkdownDocComponent(env: Partial<MarkdownEnv>) {
+  const id = env.id;
+
+  if (typeof id !== 'string') {
+    return '';
+  }
+
+  const match = id.match(/\/src\/docs\/(.+)\/components\/(.+)$/);
+
+  return match?.[2]?.replace('.md', '') ?? '';
+}
 
 function playgroundPlugin(md: MarkdownExit) {
   const origFence = md.renderer.rules.fence?.bind(md.renderer.rules);
@@ -32,15 +45,7 @@ function playgroundPlugin(md: MarkdownExit) {
         .map((l: string) => l.trim())
         .filter(Boolean);
 
-      const id = (env as Partial<MarkdownEnv>)?.id;
-
-      let component = '';
-      if (typeof id === 'string') {
-        const match = id.match(/\/src\/docs\/(.+)\/components\/(.+)$/);
-        if (match?.[2]) {
-          component = match[2].replace('.md', '') ?? '';
-        }
-      }
+      const component = resolveMarkdownDocComponent(env as Partial<MarkdownEnv>);
 
       return `<PlaygroundGallery :component="'${component}'" :files='${JSON.stringify(files)}' />`;
     }
@@ -48,6 +53,28 @@ function playgroundPlugin(md: MarkdownExit) {
     const rendered = origFence ? origFence(tokens, idx, options, env, slf) : slf.renderToken(tokens, idx, options);
 
     return rendered;
+  };
+}
+
+function usagePlugin(md: MarkdownExit) {
+  const origFence = md.renderer.rules.fence?.bind(md.renderer.rules);
+
+  md.renderer.rules.fence = (tokens, idx, options, env, slf) => {
+    const token = tokens[idx];
+    const info = (token.info || '').trim();
+
+    if (info === 'usage') {
+      const [file = 'basic'] = token.content
+        .split('\n')
+        .map((line: string) => line.trim())
+        .filter(Boolean);
+
+      const component = resolveMarkdownDocComponent(env as Partial<MarkdownEnv>);
+
+      return `<UsageCode component="${component}" file="${file}" />`;
+    }
+
+    return origFence ? origFence(tokens, idx, options, env, slf) : slf.renderToken(tokens, idx, options);
   };
 }
 
@@ -103,7 +130,7 @@ function copyCodePlugin(md: MarkdownExit) {
     const rendered = origFence ? origFence(tokens, idx, options, env, slf) : slf.renderToken(tokens, idx, options);
 
     // Let specialized fence plugins fully control their own blocks
-    if (info === 'playground' || info === 'mermaid') {
+    if (info === 'playground' || info === 'usage' || info === 'mermaid') {
       return rendered;
     }
 

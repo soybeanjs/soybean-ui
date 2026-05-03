@@ -4,7 +4,7 @@ import { SKbd } from '@soybeanjs/ui';
 
 <template>
   <div>
-    <h3 class="playground-title">Base</h3>
+    <h3 class="playground-title">Basic</h3>
     <div class="flex flex-wrap gap-3">
       <SKbd value="command" />
       <SKbd value="K" />

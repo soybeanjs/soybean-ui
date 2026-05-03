@@ -12,7 +12,7 @@ const items: SelectOptionData[] = fruits.map(fruit => ({
 
 <template>
   <div>
-    <h3 class="playground-title">Base</h3>
+    <h3 class="playground-title">Basic</h3>
     <div class="w-60 lt-md:w-auto">
       <SSelect :items="items" placeholder="Please select a fruit" />
     </div>

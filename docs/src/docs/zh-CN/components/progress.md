@@ -6,14 +6,8 @@
 
 ## 用法
 
-```vue
-<script setup lang="ts">
-import { SProgress } from '@soybeanjs/ui';
-</script>
-
-<template>
-  <SProgress :model-value="45" />
-</template>
+```usage
+basic
 ```
 
 ## 演示

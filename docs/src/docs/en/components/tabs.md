@@ -6,25 +6,8 @@ A set of layered sections of content—known as tab panels—that are displayed 
 
 ## Usage
 
-```vue
-<script setup lang="ts">
-import { STabs } from '@soybeanjs/ui';
-
-const value = ref('account');
-const items = [
-  { label: 'Account', value: 'account' },
-  { label: 'Password', value: 'password' }
-];
-</script>
-
-<template>
-  <STabs v-model="value" :items="items">
-    <template #content="{ value }">
-      <div v-if="value === 'account'">Make changes to your account here.</div>
-      <div v-else-if="value === 'password'">Change your password here.</div>
-    </template>
-  </STabs>
-</template>
+```usage
+basic
 ```
 
 > `STabs` now delegates item iteration, default trigger/content composition, and indicator rendering to headless `TabsCompact`. For unstyled, data-driven usage, import `TabsCompact` from `@soybeanjs/headless/tabs`.
@@ -32,6 +15,7 @@ const items = [
 ## Demos
 
 ```playground
+basic
 horizontal
 vertical
 fill

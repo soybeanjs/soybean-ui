@@ -6,14 +6,8 @@
 
 ## 用法
 
-```vue
-<script setup lang="ts">
-import { SColorSwatch } from '@soybeanjs/ui';
-</script>
-
-<template>
-  <SColorSwatch color="oklch(62% 0.22 312)" />
-</template>
+```usage
+basic
 ```
 
 ## 演示

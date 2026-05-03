@@ -6,14 +6,8 @@
 
 ## 用法
 
-```vue
-<script setup lang="ts">
-import { SButton } from '@soybeanjs/ui';
-</script>
-
-<template>
-  <SButton>默认按钮</SButton>
-</template>
+```usage
+basic
 ```
 
 ## 特性
@@ -38,6 +32,7 @@ import { SButton } from '@soybeanjs/ui';
 ## 演示
 
 ```playground
+basic
 color
 variant
 size

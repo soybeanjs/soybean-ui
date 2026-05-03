@@ -6,17 +6,8 @@
 
 ## 用法
 
-```vue
-<script setup lang="ts">
-import { ref } from 'vue';
-import { SColorArea } from '@soybeanjs/ui';
-
-const color = ref('#7c3aed');
-</script>
-
-<template>
-  <SColorArea v-model="color" />
-</template>
+```usage
+basic
 ```
 
 ## 演示

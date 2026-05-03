@@ -4,7 +4,7 @@ import { SButton, SBottomSheet } from '@soybeanjs/ui';
 
 <template>
   <div>
-    <h3 class="playground-title">Base</h3>
+    <h3 class="playground-title">Basic</h3>
     <SBottomSheet title="Bottom Sheet Title" description="Bottom Sheet Description">
       <template #trigger>
         <SButton variant="pure">Open</SButton>

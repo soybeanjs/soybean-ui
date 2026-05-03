@@ -6,18 +6,8 @@
 
 ## 用法
 
-```vue
-<script setup lang="ts">
-import { SSplitterGroup, SSplitterPanel, SSplitterResizeHandle } from '@soybeanjs/ui';
-</script>
-
-<template>
-  <SSplitterGroup>
-    <SSplitterPanel :default-size="30">侧边栏</SSplitterPanel>
-    <SSplitterResizeHandle with-handle aria-label="调整面板尺寸" />
-    <SSplitterPanel>主内容</SSplitterPanel>
-  </SSplitterGroup>
-</template>
+```usage
+basic
 ```
 
 ## 演示

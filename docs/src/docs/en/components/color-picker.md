@@ -6,17 +6,8 @@ A composite color picker that combines a color area, hue/alpha sliders, formatte
 
 ## Usage
 
-```vue
-<script setup lang="ts">
-import { ref } from 'vue';
-import { SColorPicker } from '@soybeanjs/ui';
-
-const color = ref('oklch(62% 0.22 312)');
-</script>
-
-<template>
-  <SColorPicker v-model="color" color-space="oklch" format="oklch" />
-</template>
+```usage
+basic
 ```
 
 ## Demo

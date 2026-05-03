@@ -4,7 +4,7 @@ import { SCard } from '@soybeanjs/ui';
 
 <template>
   <div>
-    <h3 class="playground-title">Base</h3>
+    <h3 class="playground-title">Basic</h3>
     <SCard title="Title" description="Card description">
       <template #extra>
         <div>extra slot</div>

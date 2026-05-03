@@ -6,20 +6,14 @@ An image element with a fallback for representing the user.
 
 ## Usage
 
-```vue
-<script setup lang="ts">
-import { SAvatar } from '@soybeanjs/ui';
-</script>
-
-<template>
-  <SAvatar src="https://github.com/soybeanjs.png" fallback-label="SB" />
-</template>
+```usage
+basic
 ```
 
 ## Demos
 
 ```playground
-base
+basic
 fallback
 delay
 size

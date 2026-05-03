@@ -4,7 +4,7 @@ import { SLink } from '@soybeanjs/ui';
 
 <template>
   <div>
-    <h3 class="playground-title">Router Link or Nuxt Link</h3>
+    <h3 class="playground-title">Basic</h3>
     <div class="flex flex-wrap gap-3">
       <SLink to="/about" disabled>Disabled</SLink>
       <SLink to="/about" external target="_blank">External</SLink>

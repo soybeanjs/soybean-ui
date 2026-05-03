@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { SCard } from '@soybeanjs/ui';
-import DemoAspectRatioBase from './base.vue';
+import DemoAspectRatioBasic from './basic.vue';
 </script>
 
 <template>
   <SCard title="AspectRatio" split>
-    <DemoAspectRatioBase />
+    <DemoAspectRatioBasic />
   </SCard>
 </template>

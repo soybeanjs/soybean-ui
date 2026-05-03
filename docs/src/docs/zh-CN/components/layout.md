@@ -6,26 +6,14 @@
 
 ## 用法
 
-```vue
-<script setup lang="ts">
-import { SLayout } from '@soybeanjs/ui';
-</script>
-
-<template>
-  <SLayout>
-    <template #sidebar>侧边栏内容</template>
-    <template #header>头部内容</template>
-    <template #tab>标签栏内容</template>
-    主内容
-    <template #footer>底部内容</template>
-  </SLayout>
-</template>
+```usage
+basic
 ```
 
 ## 演示
 
 ```playground
-base
+basic
 ```
 
 ## API

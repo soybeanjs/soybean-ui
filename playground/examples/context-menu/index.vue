@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { SCard } from '@soybeanjs/ui';
-import DemoContextMenuBase from './base.vue';
+import DemoContextMenuBasic from './basic.vue';
 import DemoContextMenuCheckbox from './checkbox.vue';
 import DemoContextMenuRadio from './radio.vue';
 import DemoContextMenuMix from './mix.vue';
@@ -8,7 +8,7 @@ import DemoContextMenuMix from './mix.vue';
 
 <template>
   <SCard title="Context Menu" split :ui="{ content: 'flex-c gap-4' }">
-    <DemoContextMenuBase />
+    <DemoContextMenuBasic />
     <DemoContextMenuCheckbox />
     <DemoContextMenuRadio />
     <DemoContextMenuMix />

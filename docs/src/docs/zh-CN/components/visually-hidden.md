@@ -8,17 +8,8 @@
 
 ## 用法
 
-```vue
-<script setup lang="ts">
-import { VisuallyHidden } from '@soybeanjs/headless';
-</script>
-
-<template>
-  <button>
-    <Icon icon="lucide:save" />
-    <VisuallyHidden>保存文件</VisuallyHidden>
-  </button>
-</template>
+```usage
+basic
 ```
 
 ## API

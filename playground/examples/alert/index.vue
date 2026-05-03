@@ -8,10 +8,12 @@ import DemoAlertDescIcon from './desc-icon.vue';
 import DemoAlertClosable from './closable.vue';
 import DemoAlertSlot from './slot.vue';
 import DemoAlertSize from './size.vue';
+import DemoAlertBasic from './basic.vue';
 </script>
 
 <template>
   <SCard title="Alert" split :ui="{ content: 'flex-c gap-4' }">
+    <DemoAlertBasic />
     <DemoAlertColor />
     <DemoAlertVariant />
     <DemoAlertDescription />

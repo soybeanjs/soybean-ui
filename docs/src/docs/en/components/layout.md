@@ -6,26 +6,14 @@ The layout component structure for admin dashboards or complex applications. It 
 
 ## Usage
 
-```vue
-<script setup lang="ts">
-import { SLayout } from '@soybeanjs/ui';
-</script>
-
-<template>
-  <SLayout>
-    <template #sidebar>Sidebar Content</template>
-    <template #header>Header Content</template>
-    <template #tab>Tabs Content</template>
-    Main Content
-    <template #footer>Footer Content</template>
-  </SLayout>
-</template>
+```usage
+basic
 ```
 
 ## Demos
 
 ```playground
-base
+basic
 ```
 
 ## API

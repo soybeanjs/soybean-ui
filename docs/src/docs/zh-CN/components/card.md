@@ -6,27 +6,14 @@
 
 ## 用法
 
-```vue
-<script setup lang="ts">
-import { SCard, SButton } from '@soybeanjs/ui';
-</script>
-
-<template>
-  <SCard title="Notifications" description="You have 3 unread messages.">
-    <div class="py-4">
-      <p>Your subscription expires soon.</p>
-    </div>
-    <template #footer>
-      <SButton class="w-full">Mark all as read</SButton>
-    </template>
-  </SCard>
-</template>
+```usage
+basic
 ```
 
 ## 演示
 
 ```playground
-base
+basic
 only-content
 split
 title-slot

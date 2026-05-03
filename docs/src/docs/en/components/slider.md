@@ -6,17 +6,8 @@ A slider component for selecting one or more numeric values within a continuous 
 
 ## Usage
 
-```vue
-<script setup lang="ts">
-import { ref } from 'vue';
-import { SSlider } from '@soybeanjs/ui';
-
-const value = ref([40]);
-</script>
-
-<template>
-  <SSlider v-model="value" :thumb-props="{ 'aria-label': 'Volume' }" />
-</template>
+```usage
+basic
 ```
 
 ## Demo

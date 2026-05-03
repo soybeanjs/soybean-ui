@@ -7,14 +7,8 @@ collection and is suitable for inline loading states.
 
 ## Usage
 
-```vue
-<script setup lang="ts">
-import { SSpinner } from '@soybeanjs/ui';
-</script>
-
-<template>
-  <SSpinner />
-</template>
+```usage
+basic
 ```
 
 ## Demos

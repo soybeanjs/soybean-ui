@@ -8,17 +8,8 @@
 
 ## Usage
 
-```vue
-<script setup lang="ts">
-import { VisuallyHidden } from '@soybeanjs/headless';
-</script>
-
-<template>
-  <button>
-    <Icon icon="lucide:save" />
-    <VisuallyHidden>Save File</VisuallyHidden>
-  </button>
-</template>
+```usage
+basic
 ```
 
 ## API

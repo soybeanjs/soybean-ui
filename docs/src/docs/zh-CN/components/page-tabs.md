@@ -6,26 +6,12 @@
 
 ## 用法
 
-```vue
-<script setup lang="ts">
-import { SPageTabs } from '@soybeanjs/ui';
-import { ref } from 'vue';
-
-const tabs = ref([
-  { label: 'Home', value: 'home', closable: false },
-  { label: 'Profile', value: 'profile' },
-  { label: 'Settings', value: 'settings' }
-]);
-const activeKey = ref('home');
-</script>
-
-<template>
-  <SPageTabs v-model="activeKey" :tabs="tabs" />
-</template>
+```usage
+basic
 ```
 
 ## 演示
 
 ```playground
-base
+basic
 ```

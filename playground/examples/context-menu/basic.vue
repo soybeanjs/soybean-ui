@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import { SButton, SDropdownMenu } from '@soybeanjs/ui';
+import { SContextMenu } from '@soybeanjs/ui';
 import type { MenuOptionData } from '@soybeanjs/ui';
+import ContextMenuTrigger from './trigger.vue';
 
 const menus: MenuOptionData<string>[] = [
   {
@@ -44,11 +45,11 @@ const menus: MenuOptionData<string>[] = [
 
 <template>
   <div>
-    <h3 class="playground-title">Base</h3>
-    <SDropdownMenu :items="menus">
+    <h3 class="playground-title">Basic</h3>
+    <SContextMenu :items="menus">
       <template #trigger>
-        <SButton variant="pure">Open Dropdown</SButton>
+        <ContextMenuTrigger />
       </template>
-    </SDropdownMenu>
+    </SContextMenu>
   </div>
 </template>

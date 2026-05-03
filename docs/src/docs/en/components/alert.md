@@ -6,15 +6,8 @@ Displays a callout for user attention. Useful for warnings, errors, or informati
 
 ## Usage
 
-```vue
-<script setup lang="ts">
-import { SAlert } from '@soybeanjs/ui';
-</script>
-
-<template>
-  <SAlert title="Info" description="This is an info alert" />
-  <SAlert title="Error" description="Something went wrong" color="destructive" variant="soft" />
-</template>
+```usage
+basic
 ```
 
 > `SAlert` now delegates the default icon/title/description/close composition to headless `AlertCompact`. When you need the unstyled composition entrypoint directly, import it from `@soybeanjs/headless/alert`.
@@ -22,6 +15,7 @@ import { SAlert } from '@soybeanjs/ui';
 ## Demos
 
 ```playground
+basic
 color
 variant
 description

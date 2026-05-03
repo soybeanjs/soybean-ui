@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { SCard } from '@soybeanjs/ui';
-import DemoInputNumberBase from './base.vue';
+import DemoInputNumberBasic from './basic.vue';
 import DemoInputNumberCenter from './center.vue';
 import DemoInputNumberSlot from './slot.vue';
 import DemoInputNumberClearable from './clearable.vue';
@@ -8,7 +8,7 @@ import DemoInputNumberClearable from './clearable.vue';
 
 <template>
   <SCard title="Number Input" split :ui="{ content: 'flex-c gap-4' }">
-    <DemoInputNumberBase />
+    <DemoInputNumberBasic />
     <DemoInputNumberCenter />
     <DemoInputNumberSlot />
     <DemoInputNumberClearable />

@@ -65,7 +65,7 @@ function handleSelect(item: SelectEvent<string>) {
 
 <template>
   <div>
-    <h3 class="playground-title">Base</h3>
+    <h3 class="playground-title">Basic</h3>
     <div class="w-80 lt-md:w-auto">
       <SCommand class="border rounded-lg shadow-md" :items="items" @select="handleSelect" />
     </div>

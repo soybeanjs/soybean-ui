@@ -7,7 +7,7 @@ const modelValue = ref('');
 
 <template>
   <div>
-    <h3 class="playground-title">Base</h3>
+    <h3 class="playground-title">Basic</h3>
     <div class="w-80 lt-md:w-auto">
       <STextarea v-model="modelValue" placeholder="Please input" />
     </div>

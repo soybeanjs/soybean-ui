@@ -15,34 +15,8 @@ The Menu component family allows you to build complex nested menus, including dr
 
 ### Data Driven Menu
 
-```vue
-<script setup lang="ts">
-import { SMenuOptions } from '@soybeanjs/ui';
-import type { MenuOptionData } from '@soybeanjs/ui';
-
-const items: MenuOptionData[] = [
-  { label: 'My Account', isGroupLabel: true },
-  { label: 'Profile', value: 'profile', icon: 'lucide:user', shortcut: '⇧⌘P' },
-  { label: 'Settings', value: 'settings', icon: 'lucide:settings', shortcut: '⌘S' },
-  { separator: true },
-  {
-    label: 'Theme',
-    value: 'theme',
-    children: [
-      { label: 'Light', value: 'light' },
-      { label: 'Dark', value: 'dark' }
-    ]
-  }
-];
-
-function handleSelect(item: MenuOptionData) {
-  console.log('Selected:', item.value);
-}
-</script>
-
-<template>
-  <SMenuOptions :items="items" @select="handleSelect" />
-</template>
+```usage
+basic
 ```
 
 ## API

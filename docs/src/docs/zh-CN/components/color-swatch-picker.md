@@ -6,18 +6,8 @@
 
 ## 用法
 
-```vue
-<script setup lang="ts">
-import { ref } from 'vue';
-import { SColorSwatchPicker } from '@soybeanjs/ui';
-
-const value = ref('#7c3aed');
-const colors = ['#7c3aed', '#06b6d4', '#10b981'];
-</script>
-
-<template>
-  <SColorSwatchPicker v-model="value" :colors="colors" />
-</template>
+```usage
+basic
 ```
 
 ## 演示

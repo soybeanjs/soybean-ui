@@ -6,16 +6,8 @@
 
 ## 用法
 
-```vue
-<script setup lang="ts">
-import { SClipboard } from '@soybeanjs/ui';
-
-const value = 'pnpm add @soybeanjs/ui';
-</script>
-
-<template>
-  <SClipboard :value="value" color="accent" variant="soft" copy-text="复制命令" copied-text="已复制" />
-</template>
+```usage
+basic
 ```
 
 ## 特性

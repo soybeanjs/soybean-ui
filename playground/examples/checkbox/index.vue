@@ -8,10 +8,12 @@ import CheckboxIcon from './icon.vue';
 import CheckboxGroup from './group.vue';
 import CheckboxCard from './card.vue';
 import CheckboxCardGroup from './card-group.vue';
+import DemoCheckboxBasic from './basic.vue';
 </script>
 
 <template>
   <SCard title="Checkbox" split :ui="{ content: 'flex-c gap-4' }">
+    <DemoCheckboxBasic />
     <CheckboxSingle />
     <CheckboxColor />
     <CheckboxSize />

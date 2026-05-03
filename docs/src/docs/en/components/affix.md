@@ -8,16 +8,8 @@ Affix keeps content pinned to the top or bottom edge of the viewport or a custom
 
 ## Usage
 
-```vue
-<script setup lang="ts">
-import { SAffix, SButton } from '@soybeanjs/ui';
-</script>
-
-<template>
-  <SAffix :offset-top="24">
-    <SButton>Back to top</SButton>
-  </SAffix>
-</template>
+```usage
+basic
 ```
 
 ## Demos

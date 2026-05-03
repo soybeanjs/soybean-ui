@@ -11,10 +11,12 @@ import DemoButtonLoading from './loading.vue';
 import DemoButtonIcon from './icon.vue';
 import DemoButtonLink from './link.vue';
 import DemoButtonGroup from './group.vue';
+import DemoButtonBasic from './basic.vue';
 </script>
 
 <template>
   <SCard title="Button" split :ui="{ content: 'flex-c gap-4' }">
+    <DemoButtonBasic />
     <DemoButtonColor />
     <DemoButtonVariant />
     <DemoButtonSize />

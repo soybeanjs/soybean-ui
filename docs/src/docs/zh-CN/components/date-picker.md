@@ -4,18 +4,8 @@
 
 ## 用法
 
-```vue
-<script setup lang="ts">
-import { ref } from 'vue';
-import { CalendarDate } from '@internationalized/date';
-import { SDatePicker } from '@soybeanjs/ui';
-
-const date = ref<DateValue>();
-</script>
-
-<template>
-  <SDatePicker v-model="date" :default-placeholder="new CalendarDate(2024, 1, 1)" />
-</template>
+```usage
+basic
 ```
 
 ## 示例

@@ -15,34 +15,8 @@ Menu 组件家族可用于构建复杂的嵌套菜单（包含下拉菜单与右
 
 ### 数据驱动菜单
 
-```vue
-<script setup lang="ts">
-import { SMenuOptions } from '@soybeanjs/ui';
-import type { MenuOptionData } from '@soybeanjs/ui';
-
-const items: MenuOptionData[] = [
-  { label: 'My Account', isGroupLabel: true },
-  { label: 'Profile', value: 'profile', icon: 'lucide:user', shortcut: '⇧⌘P' },
-  { label: 'Settings', value: 'settings', icon: 'lucide:settings', shortcut: '⌘S' },
-  { separator: true },
-  {
-    label: 'Theme',
-    value: 'theme',
-    children: [
-      { label: 'Light', value: 'light' },
-      { label: 'Dark', value: 'dark' }
-    ]
-  }
-];
-
-function handleSelect(item: MenuOptionData) {
-  console.log('Selected:', item.value);
-}
-</script>
-
-<template>
-  <SMenuOptions :items="items" @select="handleSelect" />
-</template>
+```usage
+basic
 ```
 
 ## API

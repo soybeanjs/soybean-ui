@@ -4,7 +4,7 @@ import { SButton, SDialog } from '@soybeanjs/ui';
 
 <template>
   <div>
-    <h3 class="playground-title">Base</h3>
+    <h3 class="playground-title">Basic</h3>
     <SDialog title="Dialog Title" description="Dialog Description">
       <template #trigger>
         <SButton variant="pure">Open</SButton>

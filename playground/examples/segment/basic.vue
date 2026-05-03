@@ -39,7 +39,7 @@ const weekends = [
 
 <template>
   <div>
-    <h3 class="playground-title">Base</h3>
+    <h3 class="playground-title">Basic</h3>
     <SSegment v-model="day" :items="weekends" />
   </div>
 </template>

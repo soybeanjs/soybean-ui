@@ -9,7 +9,7 @@ const items = Array.from({ length: 1000 }, (_, index) => ({
 
 <template>
   <div>
-    <h3 class="playground-title">Base</h3>
+    <h3 class="playground-title">Basic</h3>
     <div class="w-80 lt-md:w-auto border rounded-md">
       <SVirtualizer :items="items" height="240px">
         <template #item="{ virtualItem, item }">

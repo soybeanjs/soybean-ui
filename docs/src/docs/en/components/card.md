@@ -6,27 +6,14 @@ A container component that groups related content and actions. It supports heade
 
 ## Usage
 
-```vue
-<script setup lang="ts">
-import { SCard, SButton } from '@soybeanjs/ui';
-</script>
-
-<template>
-  <SCard title="Notifications" description="You have 3 unread messages.">
-    <div class="py-4">
-      <p>Your subscription expires soon.</p>
-    </div>
-    <template #footer>
-      <SButton class="w-full">Mark all as read</SButton>
-    </template>
-  </SCard>
-</template>
+```usage
+basic
 ```
 
 ## Demos
 
 ```playground
-base
+basic
 only-content
 split
 title-slot

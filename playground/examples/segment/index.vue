@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { SCard } from '@soybeanjs/ui';
-import DemoSegmentBase from './base.vue';
+import DemoSegmentBasic from './basic.vue';
 import DemoSegmentVertical from './vertical.vue';
 import DemoSegmentShape from './shape.vue';
 import DemoSegmentIcon from './icon.vue';
@@ -8,7 +8,7 @@ import DemoSegmentIcon from './icon.vue';
 
 <template>
   <SCard title="Segment" split :ui="{ content: 'flex-c gap-4' }">
-    <DemoSegmentBase />
+    <DemoSegmentBasic />
     <DemoSegmentVertical />
     <DemoSegmentShape />
     <DemoSegmentIcon />

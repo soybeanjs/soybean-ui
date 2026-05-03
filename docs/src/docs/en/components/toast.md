@@ -10,29 +10,14 @@ The first argument of `toast(...)` becomes the toast title/message. Use `descrip
 
 Mount one `SToastProvider` near your app root. If your app is already wrapped with `SConfigProvider`, a default `SToastProvider` is rendered automatically unless `customToast` is set to `true`.
 
-```vue
-<script setup lang="ts">
-import { SButton, SToastProvider, toast } from '@soybeanjs/ui';
-
-function openToast() {
-  toast.success('Project published', {
-    description: 'The package has been pushed to the registry.',
-    richColor: true
-  });
-}
-</script>
-
-<template>
-  <SToastProvider />
-
-  <SButton @click="openToast">Show Toast</SButton>
-</template>
+```usage
+basic
 ```
 
 ## Demos
 
 ```playground
-base
+basic
 types
 promise
 action

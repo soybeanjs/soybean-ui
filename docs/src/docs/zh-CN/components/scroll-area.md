@@ -6,16 +6,8 @@
 
 ## 用法
 
-```vue
-<script setup lang="ts">
-import { SScrollArea } from '@soybeanjs/ui';
-</script>
-
-<template>
-  <SScrollArea class="h-64 rounded-md border">
-    <div class="p-4">可滚动内容</div>
-  </SScrollArea>
-</template>
+```usage
+basic
 ```
 
 ## 演示

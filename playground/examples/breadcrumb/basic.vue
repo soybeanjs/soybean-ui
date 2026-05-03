@@ -27,7 +27,7 @@ function handleClick(item: BreadcrumbOptionData) {
 
 <template>
   <div>
-    <h3 class="playground-title">Base</h3>
+    <h3 class="playground-title">Basic</h3>
     <SBreadcrumb :items="items" @click="handleClick" />
   </div>
 </template>

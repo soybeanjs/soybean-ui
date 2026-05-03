@@ -6,17 +6,8 @@
 
 ## 用法
 
-```vue
-<script setup lang="ts">
-import { ref } from 'vue';
-import { SColorSlider } from '@soybeanjs/ui';
-
-const color = ref('#ec4899');
-</script>
-
-<template>
-  <SColorSlider v-model="color" channel="hue" color-space="hsl" />
-</template>
+```usage
+basic
 ```
 
 ## 演示

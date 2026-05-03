@@ -6,14 +6,8 @@ A progress bar component for displaying determinate or indeterminate task comple
 
 ## Usage
 
-```vue
-<script setup lang="ts">
-import { SProgress } from '@soybeanjs/ui';
-</script>
-
-<template>
-  <SProgress :model-value="45" />
-</template>
+```usage
+basic
 ```
 
 ## Demos

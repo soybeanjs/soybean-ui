@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { SCard } from '@soybeanjs/ui';
-import DemoTextareaBase from './base.vue';
+import DemoTextareaBasic from './basic.vue';
 import DemoTextareaAutosize from './autosize.vue';
 import DemoTextareaClearable from './clearable.vue';
 import DemoTextareaDisabled from './disabled.vue';
@@ -10,7 +10,7 @@ import DemoTextareaFooter from './footer.vue';
 
 <template>
   <SCard title="Textarea" split :ui="{ content: 'flex-c gap-4' }">
-    <DemoTextareaBase />
+    <DemoTextareaBasic />
     <DemoTextareaAutosize />
     <DemoTextareaClearable />
     <DemoTextareaDisabled />

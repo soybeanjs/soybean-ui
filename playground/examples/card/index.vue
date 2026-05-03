@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { SCard } from '@soybeanjs/ui';
-import DemoCardBase from './base.vue';
+import DemoCardBasic from './basic.vue';
 import DemoCardSplit from './split.vue';
 import DemoCardTitleSlot from './title-slot.vue';
 import DemoCardOnlyContent from './only-content.vue';
@@ -9,7 +9,7 @@ import DemoCardCollapsible from './collapsible.vue';
 
 <template>
   <SCard title="Card" split :ui="{ content: 'flex-c gap-4' }">
-    <DemoCardBase />
+    <DemoCardBasic />
     <DemoCardSplit />
     <DemoCardTitleSlot />
     <DemoCardOnlyContent />

@@ -6,31 +6,14 @@
 
 ## 用法
 
-```vue
-<script setup lang="ts">
-import { ref } from 'vue';
-import { SBottomSheet, SButton } from '@soybeanjs/ui';
-
-const open = ref(false);
-</script>
-
-<template>
-  <SBottomSheet v-model:open="open" title="Bottom Sheet Title" description="Bottom Sheet Description">
-    <template #trigger>
-      <SButton variant="outline">Open Bottom Sheet</SButton>
-    </template>
-
-    <div class="py-4">
-      <p>Bottom Sheet Content</p>
-    </div>
-  </SBottomSheet>
-</template>
+```usage
+basic
 ```
 
 ## 演示
 
 ```playground
-base
+basic
 nested
 ```
 

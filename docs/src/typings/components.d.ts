@@ -67,6 +67,7 @@ declare module 'vue' {
     TypeReference: typeof import('./../components/tables/type-reference.vue')['default']
     TypeTable: typeof import('./../components/tables/type-table.vue')['default']
     UnionType: typeof import('./../components/tables/union-type.vue')['default']
+    UsageCode: typeof import('./../components/usage-code.vue')['default']
   }
 }
 
@@ -127,4 +128,5 @@ declare global {
   const TypeReference: typeof import('./../components/tables/type-reference.vue')['default']
   const TypeTable: typeof import('./../components/tables/type-table.vue')['default']
   const UnionType: typeof import('./../components/tables/union-type.vue')['default']
+  const UsageCode: typeof import('./../components/usage-code.vue')['default']
 }

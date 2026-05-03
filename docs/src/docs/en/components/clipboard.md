@@ -6,16 +6,8 @@ A clipboard action component for copying text values with accessible button sema
 
 ## Usage
 
-```vue
-<script setup lang="ts">
-import { SClipboard } from '@soybeanjs/ui';
-
-const value = 'pnpm add @soybeanjs/ui';
-</script>
-
-<template>
-  <SClipboard :value="value" color="accent" variant="soft" copy-text="Copy command" copied-text="Copied" />
-</template>
+```usage
+basic
 ```
 
 ## Features

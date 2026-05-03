@@ -6,22 +6,14 @@
 
 ## 用法
 
-```vue
-<script setup lang="ts">
-import { SSwitch } from '@soybeanjs/ui';
-
-const checked = ref(false);
-</script>
-
-<template>
-  <SSwitch v-model="checked" />
-</template>
+```usage
+basic
 ```
 
 ## 演示
 
 ```playground
-base
+basic
 size
 shape
 slot

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { SCard } from '@soybeanjs/ui';
-import DemoTableBase from './base.vue';
+import DemoTableBasic from './basic.vue';
 import DemoTableEmpty from './empty.vue';
 import DemoTableVariant from './variant.vue';
 import DemoTableBordered from './bordered.vue';
@@ -23,7 +23,7 @@ import DemoTableVirtualized from './virtualized.vue';
 
 <template>
   <SCard title="Table" split :ui="{ content: 'flex-c gap-4' }">
-    <DemoTableBase />
+    <DemoTableBasic />
     <DemoTableVariant />
     <DemoTableBordered />
     <DemoTableRounded />

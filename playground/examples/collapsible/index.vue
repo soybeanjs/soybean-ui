@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { SCard } from '@soybeanjs/ui';
-import DemoCollapsibleBase from './base.vue';
+import DemoCollapsibleBasic from './basic.vue';
 </script>
 
 <template>
   <SCard title="Collapsible" split>
-    <DemoCollapsibleBase />
+    <DemoCollapsibleBasic />
   </SCard>
 </template>

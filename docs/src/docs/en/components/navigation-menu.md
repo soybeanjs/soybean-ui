@@ -6,31 +6,14 @@ A collection of links for navigating websites. Supports submenus and responsive 
 
 ## Usage
 
-```vue
-<script setup lang="ts">
-import { SNavigationMenu } from '@soybeanjs/ui';
-
-const items = [
-  { label: 'Home', value: 'home', link: '/' },
-  {
-    label: 'Products',
-    value: 'products',
-    children: [
-      { label: 'New Arrivals', value: 'new', link: '/new' },
-      { label: 'Best Sellers', value: 'best', link: '/best' }
-    ]
-  }
-];
-</script>
-
-<template>
-  <SNavigationMenu :items="items" />
-</template>
+```usage
+basic
 ```
 
 ## Demos
 
 ```playground
+basic
 horizontal
 vertical
 ```

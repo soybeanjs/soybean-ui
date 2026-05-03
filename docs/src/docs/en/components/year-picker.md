@@ -6,18 +6,8 @@ YearPicker lets users choose a single year from a paged year grid while preservi
 
 ## Usage
 
-```vue
-<script setup lang="ts">
-import { CalendarDate } from '@internationalized/date';
-import { shallowRef } from 'vue';
-import { SYearPicker } from '@soybeanjs/ui';
-
-const value = shallowRef(new CalendarDate(2026, 1, 1));
-</script>
-
-<template>
-  <SYearPicker v-model="value" aria-label="Fiscal year" />
-</template>
+```usage
+basic
 ```
 
 ## Demo

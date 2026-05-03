@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { SCard } from '@soybeanjs/ui';
-import DemoAvatarBase from './base.vue';
+import DemoAvatarBasic from './basic.vue';
 import DemoAvatarFallback from './fallback.vue';
 import DemoAvatarDelay from './delay.vue';
 import DemoAvatarSize from './size.vue';
@@ -8,7 +8,7 @@ import DemoAvatarSize from './size.vue';
 
 <template>
   <SCard title="Avatar" split :ui="{ content: 'flex-c gap-4' }">
-    <DemoAvatarBase />
+    <DemoAvatarBasic />
     <DemoAvatarFallback />
     <DemoAvatarDelay />
     <DemoAvatarSize />

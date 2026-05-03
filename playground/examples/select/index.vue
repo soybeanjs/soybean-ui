@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { SCard } from '@soybeanjs/ui';
-import DemoSelectBase from './base.vue';
+import DemoSelectBasic from './basic.vue';
 import DemoSelectDefaultValue from './default-value.vue';
 import DemoSelectDisabled from './disabled.vue';
 import DemoSelectSeparator from './separator.vue';
@@ -11,7 +11,7 @@ import DemoSelectSingleClearable from './single-clearable.vue';
 
 <template>
   <SCard title="Select" split :ui="{ content: 'flex-c gap-4' }">
-    <DemoSelectBase />
+    <DemoSelectBasic />
     <DemoSelectDefaultValue />
     <DemoSelectDisabled />
     <DemoSelectSeparator />

@@ -12,26 +12,8 @@
 
 ### 声明式用法
 
-```vue
-<script setup lang="ts">
-import { SButton, SDialog } from '@soybeanjs/ui';
-
-const open = ref(false);
-</script>
-
-<template>
-  <SDialog v-model:open="open" title="Edit Profile" description="Make changes to your profile here.">
-    <template #trigger>
-      <SButton variant="outline">Edit Profile</SButton>
-    </template>
-    <div class="grid gap-4 py-4">
-      <!-- Form content -->
-    </div>
-    <template #footer>
-      <SButton @click="open = false">Save changes</SButton>
-    </template>
-  </SDialog>
-</template>
+```usage
+basic
 ```
 
 ### 命令式 API
@@ -60,7 +42,7 @@ function openWarningDialog() {
 ## 演示
 
 ```playground
-base
+basic
 footer
 state
 prevent

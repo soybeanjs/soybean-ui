@@ -6,37 +6,14 @@
 
 ## 用法
 
-```vue
-<script setup lang="ts">
-import { STreeMenu } from '@soybeanjs/ui';
-
-const items = [
-  {
-    label: 'Dashboard',
-    value: 'dashboard',
-    icon: 'lucide:layout-dashboard',
-    children: [
-      { label: 'Analytics', value: 'analytics' },
-      { label: 'Reports', value: 'reports' }
-    ]
-  },
-  {
-    label: 'Settings',
-    value: 'settings',
-    icon: 'lucide:settings'
-  }
-];
-</script>
-
-<template>
-  <STreeMenu :items="items" />
-</template>
+```usage
+basic
 ```
 
 ## 演示
 
 ```playground
-base
+basic
 ```
 
 ## API

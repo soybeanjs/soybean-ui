@@ -6,24 +6,14 @@
 
 ## 用法
 
-```vue
-<script setup lang="ts">
-import { STooltip, SButton } from '@soybeanjs/ui';
-</script>
-
-<template>
-  <STooltip content="添加到库">
-    <template #trigger>
-      <SButton variant="outline">悬停查看</SButton>
-    </template>
-  </STooltip>
-</template>
+```usage
+basic
 ```
 
 ## 演示
 
 ```playground
-base
+basic
 ```
 
 ## API

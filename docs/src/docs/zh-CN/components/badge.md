@@ -6,20 +6,14 @@
 
 ## 用法
 
-```vue
-<script setup lang="ts">
-import { SBadge } from '@soybeanjs/ui';
-</script>
-
-<template>
-  <SBadge>默认</SBadge>
-  <SBadge color="primary" variant="soft">Primary</SBadge>
-</template>
+```usage
+basic
 ```
 
 ## 演示
 
 ```playground
+basic
 color
 content
 position

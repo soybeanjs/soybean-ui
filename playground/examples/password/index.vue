@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { SCard } from '@soybeanjs/ui';
-import DemoPasswordBase from './base.vue';
+import DemoPasswordBasic from './basic.vue';
 import DemoPasswordDisabled from './disabled.vue';
 import DemoPasswordClearable from './clearable.vue';
 import DemoPasswordVisibleIcon from './icon.vue';
@@ -8,7 +8,7 @@ import DemoPasswordVisibleIcon from './icon.vue';
 
 <template>
   <SCard title="Password" split :ui="{ content: 'flex-c gap-4' }">
-    <DemoPasswordBase />
+    <DemoPasswordBasic />
     <DemoPasswordDisabled />
     <DemoPasswordClearable />
     <DemoPasswordVisibleIcon />

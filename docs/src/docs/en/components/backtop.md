@@ -8,14 +8,8 @@ Backtop reveals a floating button after the scroll target passes a threshold and
 
 ## Usage
 
-```vue
-<script setup lang="ts">
-import { SBacktop } from '@soybeanjs/ui';
-</script>
-
-<template>
-  <SBacktop />
-</template>
+```usage
+basic
 ```
 
 ## Demos

@@ -6,16 +6,8 @@ Breadcrumbs allow users to navigate through the hierarchy of pages. It displays 
 
 ## Usage
 
-```vue
-<script setup lang="ts">
-import { SBreadcrumb } from '@soybeanjs/ui';
-
-const items = [{ label: 'Home', link: '/' }, { label: 'Components', link: '/components' }, { label: 'Breadcrumb' }];
-</script>
-
-<template>
-  <SBreadcrumb :items="items" />
-</template>
+```usage
+basic
 ```
 
 > `SBreadcrumb` delegates its list aggregation to headless `BreadcrumbCompact`. For unstyled, data-driven composition, import `BreadcrumbCompact` from `@soybeanjs/headless/breadcrumb`.
@@ -23,7 +15,7 @@ const items = [{ label: 'Home', link: '/' }, { label: 'Components', link: '/comp
 ## Demos
 
 ```playground
-base
+basic
 separator
 link
 item-dropdown

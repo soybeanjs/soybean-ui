@@ -6,18 +6,8 @@ TimePicker lets users choose a single time from a popup list while preserving th
 
 ## Usage
 
-```vue
-<script setup lang="ts">
-import { Time } from '@internationalized/date';
-import { shallowRef } from 'vue';
-import { STimePicker } from '@soybeanjs/ui';
-
-const value = shallowRef(new Time(9, 30, 0));
-</script>
-
-<template>
-  <STimePicker v-model="value" aria-label="Meeting time" />
-</template>
+```usage
+basic
 ```
 
 ## Demo

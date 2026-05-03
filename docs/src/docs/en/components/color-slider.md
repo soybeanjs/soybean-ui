@@ -6,17 +6,8 @@ A single-channel color slider for hue, alpha, and individual RGB/HSL/HSV/OKLCH c
 
 ## Usage
 
-```vue
-<script setup lang="ts">
-import { ref } from 'vue';
-import { SColorSlider } from '@soybeanjs/ui';
-
-const color = ref('#ec4899');
-</script>
-
-<template>
-  <SColorSlider v-model="color" channel="hue" color-space="hsl" />
-</template>
+```usage
+basic
 ```
 
 ## Demo

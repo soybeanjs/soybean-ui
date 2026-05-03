@@ -6,16 +6,8 @@
 
 ## 用法
 
-```vue
-<script setup lang="ts">
-import { SCheckbox } from '@soybeanjs/ui';
-
-const checked = ref(false);
-</script>
-
-<template>
-  <SCheckbox v-model="checked" label="Accept terms" />
-</template>
+```usage
+basic
 ```
 
 > `SCheckboxGroup` 和 `SCheckboxCardGroup` 现在会把列表遍历和默认复选框/卡片结构组合委托给 headless `CheckboxGroupCompact` 与 `CheckboxCardGroupCompact`。如果需要无样式、数据驱动的组合入口，可从 `@soybeanjs/headless/checkbox` 直接导入。
@@ -23,6 +15,7 @@ const checked = ref(false);
 ## 演示
 
 ```playground
+basic
 single
 color
 size
