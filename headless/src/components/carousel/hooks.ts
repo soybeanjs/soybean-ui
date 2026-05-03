@@ -43,6 +43,7 @@ export function useEmblaCarousel(
   watch(optionsRef, newOptions => {
     if (areOptionsEqual(storedOptions, newOptions)) return;
     storedOptions = newOptions;
+
     reInit();
   });
 

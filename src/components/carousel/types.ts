@@ -24,7 +24,9 @@ export interface CarouselProps<T extends DefinedValue = DefinedValue> extends Ca
    */
   size?: ThemeSize;
   /**
-   * The orientation of the carousel, which determines the layout and direction of scrolling.
+   * Whether to use floating navigation, which positions the navigation controls outside of the carousel content and allows them to float over the content.
+   *
+   * This is useful for carousels with a lot of content or when you want to maximize the space available for the slides.
    */
   floatNav?: boolean;
 }

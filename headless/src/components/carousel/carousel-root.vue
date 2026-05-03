@@ -52,7 +52,13 @@ function updateScrollState(api?: EmblaCarouselType) {
   canScrollPrev.value = api?.canScrollPrev() ?? false;
   selectedIndex.value = api?.selectedScrollSnap() ?? 0;
   scrollSnaps.value = api?.scrollSnapList() ?? [];
-  progress.value = (selectedIndex.value / (scrollSnaps.value.length - 1)) * 100;
+  progress.value = getProgressValue();
+}
+
+function getProgressValue() {
+  if (scrollSnaps.value.length <= 1) return 0;
+
+  return (selectedIndex.value / (scrollSnaps.value.length - 1)) * 100;
 }
 
 function scrollNext() {
