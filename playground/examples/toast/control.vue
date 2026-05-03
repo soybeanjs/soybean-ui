@@ -41,14 +41,10 @@ function dismissAllToasts() {
 </script>
 
 <template>
-  <div class="flex-c gap-3">
-    <h3 class="playground-title">Update And Dismiss</h3>
-
-    <div class="flex flex-wrap gap-2">
-      <SButton variant="pure" @click="createUpdatableToast">Create Updatable Toast</SButton>
-      <SButton color="success" variant="outline" @click="updateExistingToast">Update Existing Toast</SButton>
-      <SButton color="warning" variant="outline" @click="dismissActiveToast">Dismiss Current</SButton>
-      <SButton color="destructive" variant="outline" @click="dismissAllToasts">Dismiss All</SButton>
-    </div>
+  <div class="flex flex-wrap gap-2">
+    <SButton variant="pure" @click="createUpdatableToast">Create Updatable Toast</SButton>
+    <SButton color="success" variant="outline" @click="updateExistingToast">Update Existing Toast</SButton>
+    <SButton color="warning" variant="outline" @click="dismissActiveToast">Dismiss Current</SButton>
+    <SButton color="destructive" variant="outline" @click="dismissAllToasts">Dismiss All</SButton>
   </div>
 </template>

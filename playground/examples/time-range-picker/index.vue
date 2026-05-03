@@ -1,17 +1,7 @@
 <script setup lang="ts">
-import { SCard } from '@soybeanjs/ui';
-
-import DemoTimeRangePickerBasic from './basic.vue';
-import DemoTimeRangePickerSize from './size.vue';
-import DemoTimeRangePickerDisabled from './disabled.vue';
-import DemoTimeRangePickerCustomStyling from './custom-styling.vue';
+import PlaygroundGallery from '../../components/playground-gallery.vue';
 </script>
 
 <template>
-  <SCard title="TimeRangePicker" split :ui="{ content: 'flex-c gap-4' }">
-    <DemoTimeRangePickerBasic />
-    <DemoTimeRangePickerSize />
-    <DemoTimeRangePickerDisabled />
-    <DemoTimeRangePickerCustomStyling />
-  </SCard>
+  <PlaygroundGallery component="time-range-picker" />
 </template>

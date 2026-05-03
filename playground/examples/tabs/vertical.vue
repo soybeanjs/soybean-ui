@@ -11,19 +11,16 @@ const tabs = [
 </script>
 
 <template>
-  <div>
-    <h3 class="playground-title">Vertical</h3>
-    <div class="w-320px lt-md:w-auto">
-      <STabs
-        v-model="tabValue"
-        orientation="vertical"
-        :items="tabs"
-        :ui="{ content: 'p-4 border border-border rounded-1' }"
-      >
-        <template #content="{ value }">
-          <div>The Tab Content: {{ value }}</div>
-        </template>
-      </STabs>
-    </div>
+  <div class="w-320px lt-md:w-auto">
+    <STabs
+      v-model="tabValue"
+      orientation="vertical"
+      :items="tabs"
+      :ui="{ content: 'p-4 border border-border rounded-1' }"
+    >
+      <template #content="{ value }">
+        <div>The Tab Content: {{ value }}</div>
+      </template>
+    </STabs>
   </div>
 </template>

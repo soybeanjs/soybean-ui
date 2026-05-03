@@ -149,10 +149,5 @@ const menus: NavigationMenuOptionData[] = [
 </script>
 
 <template>
-  <div>
-    <h3 class="playground-title">Horizontal</h3>
-    <div class="w-max">
-      <SNavigationMenu :items="menus" :ui="{ root: 'z-10', subLink: 'w-60' }" />
-    </div>
-  </div>
+  <SNavigationMenu :items="menus" :ui="{ root: 'z-10', subLink: 'w-60' }" class="w-max" />
 </template>

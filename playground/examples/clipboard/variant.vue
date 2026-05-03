@@ -6,16 +6,13 @@ const variants: ClipboardVariant[] = ['solid', 'outline', 'dashed', 'soft', 'gho
 </script>
 
 <template>
-  <h3 class="playground-title">Variant</h3>
-  <div class="flex flex-wrap gap-3">
-    <SClipboard
-      v-for="variant in variants"
-      :key="variant"
-      :value="`copy-${variant}`"
-      :variant="variant"
-      color="accent"
-      :copy-text="variant"
-      :copied-text="`${variant} copied`"
-    />
-  </div>
+  <SClipboard
+    v-for="variant in variants"
+    :key="variant"
+    :value="`copy-${variant}`"
+    :variant="variant"
+    color="accent"
+    :copy-text="variant"
+    :copied-text="`${variant} copied`"
+  />
 </template>

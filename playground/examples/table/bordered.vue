@@ -24,8 +24,5 @@ const data: TableData[] = [
 </script>
 
 <template>
-  <div>
-    <h3 class="playground-title">Bordered</h3>
-    <STable :columns="columns" :data="data" :row-key="row => row.id" bordered />
-  </div>
+  <STable :columns="columns" :data="data" :row-key="row => row.id" bordered />
 </template>

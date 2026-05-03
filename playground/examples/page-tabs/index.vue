@@ -1,10 +1,7 @@
 <script setup lang="ts">
-import { SCard } from '@soybeanjs/ui';
-import DemoPageTabsBasic from './basic.vue';
+import PlaygroundGallery from '../../components/playground-gallery.vue';
 </script>
 
 <template>
-  <SCard title="Page Tabs" split :ui="{ content: 'flex-c gap-4' }">
-    <DemoPageTabsBasic />
-  </SCard>
+  <PlaygroundGallery component="page-tabs" />
 </template>

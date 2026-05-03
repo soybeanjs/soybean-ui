@@ -16,24 +16,22 @@ const menuWidth = computed(() => `${(BASE_WIDTH * themeSizeRatioMap[size.value])
 </script>
 
 <template>
-  <div>
-    <div class="flex justify-end">
-      <SSelect v-model="size" :items="themeSizeOptions" :ui="{ trigger: 'w-25' }" />
-    </div>
-    <div class="relative h-120" :style="{ width: menuWidth }">
-      <SButtonIcon
-        icon="lucide:panel-left"
-        :size="size"
-        class="absolute right-2 top-2 z-2"
-        @click="() => toggleCollapsible()"
-      />
-      <STreeMenu
-        v-model:collapsed="collapsed"
-        :size="size"
-        toggle-behavior="single"
-        :items="treeMenuItems"
-        class="bg-sidebar border rounded-md"
-      />
-    </div>
+  <div class="flex justify-end">
+    <SSelect v-model="size" :items="themeSizeOptions" :ui="{ trigger: 'w-25' }" />
+  </div>
+  <div class="relative h-120" :style="{ width: menuWidth }">
+    <SButtonIcon
+      icon="lucide:panel-left"
+      :size="size"
+      class="absolute right-2 top-2 z-2"
+      @click="() => toggleCollapsible()"
+    />
+    <STreeMenu
+      v-model:collapsed="collapsed"
+      :size="size"
+      toggle-behavior="single"
+      :items="treeMenuItems"
+      class="bg-sidebar border rounded-md"
+    />
   </div>
 </template>

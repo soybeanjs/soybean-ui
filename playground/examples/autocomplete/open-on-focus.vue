@@ -11,10 +11,5 @@ const items: AutocompleteOptionData[] = [
 </script>
 
 <template>
-  <div>
-    <h3 class="playground-title">Open On Focus</h3>
-    <div class="w-72 lt-md:w-auto">
-      <SAutocomplete :items="items" open-on-focus placeholder="Focus to browse frameworks" />
-    </div>
-  </div>
+  <SAutocomplete :items="items" open-on-focus placeholder="Focus to browse frameworks" class="w-72 lt-md:w-auto" />
 </template>

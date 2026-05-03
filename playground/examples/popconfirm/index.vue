@@ -1,10 +1,7 @@
 <script setup lang="ts">
-import { SCard } from '@soybeanjs/ui';
-import DemoPopconfirmBasic from './basic.vue';
+import PlaygroundGallery from '../../components/playground-gallery.vue';
 </script>
 
 <template>
-  <SCard title="Popconfirm" split>
-    <DemoPopconfirmBasic />
-  </SCard>
+  <PlaygroundGallery component="popconfirm" />
 </template>

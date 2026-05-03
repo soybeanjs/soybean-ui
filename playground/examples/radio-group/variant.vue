@@ -14,8 +14,5 @@ const items: RadioGroupOptionData<string>[] = [
 </script>
 
 <template>
-  <div>
-    <h3 class="playground-title">Variant: outline</h3>
-    <SRadioGroup v-model="selected" :items="items" variant="outline" />
-  </div>
+  <SRadioGroup v-model="selected" :items="items" variant="outline" />
 </template>

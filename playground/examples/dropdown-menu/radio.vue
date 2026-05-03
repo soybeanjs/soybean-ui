@@ -25,12 +25,9 @@ const activeLabel = computed(() => placements.find(item => item.value === placem
 </script>
 
 <template>
-  <div>
-    <h3 class="playground-title">Radio</h3>
-    <SDropdownMenuRadio v-model="placement" :items="placements">
-      <template #trigger>
-        <SButton variant="pure" class="w-30">{{ activeLabel }}</SButton>
-      </template>
-    </SDropdownMenuRadio>
-  </div>
+  <SDropdownMenuRadio v-model="placement" :items="placements">
+    <template #trigger>
+      <SButton variant="pure" class="w-30">{{ activeLabel }}</SButton>
+    </template>
+  </SDropdownMenuRadio>
 </template>

@@ -1,14 +1,7 @@
 <script setup lang="ts">
-import { SCard } from '@soybeanjs/ui';
-import DemoNavigationMenuHorizontal from './horizontal.vue';
-import DemoNavigationMenuVertical from './vertical.vue';
-import DemoNavigationMenuBasic from './basic.vue';
+import PlaygroundGallery from '../../components/playground-gallery.vue';
 </script>
 
 <template>
-  <SCard title="Navigation Menu" split :ui="{ content: 'flex-c gap-4' }">
-    <DemoNavigationMenuBasic />
-    <DemoNavigationMenuHorizontal />
-    <DemoNavigationMenuVertical />
-  </SCard>
+  <PlaygroundGallery component="navigation-menu" />
 </template>

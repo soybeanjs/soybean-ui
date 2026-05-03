@@ -1,26 +1,7 @@
 <script setup lang="ts">
-import { SCard } from '@soybeanjs/ui';
-import CheckboxSingle from './single.vue';
-import CheckboxColor from './color.vue';
-import CheckboxSize from './size.vue';
-import CheckboxShape from './shape.vue';
-import CheckboxIcon from './icon.vue';
-import CheckboxGroup from './group.vue';
-import CheckboxCard from './card.vue';
-import CheckboxCardGroup from './card-group.vue';
-import DemoCheckboxBasic from './basic.vue';
+import PlaygroundGallery from '../../components/playground-gallery.vue';
 </script>
 
 <template>
-  <SCard title="Checkbox" split :ui="{ content: 'flex-c gap-4' }">
-    <DemoCheckboxBasic />
-    <CheckboxSingle />
-    <CheckboxColor />
-    <CheckboxSize />
-    <CheckboxShape />
-    <CheckboxIcon />
-    <CheckboxGroup />
-    <CheckboxCard />
-    <CheckboxCardGroup />
-  </SCard>
+  <PlaygroundGallery component="checkbox" />
 </template>

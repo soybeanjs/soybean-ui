@@ -38,8 +38,5 @@ const weekends = [
 </script>
 
 <template>
-  <div>
-    <h3 class="playground-title">Orientation: vertical</h3>
-    <SSegment v-model="day" :items="weekends" orientation="vertical" />
-  </div>
+  <SSegment v-model="day" :items="weekends" orientation="vertical" />
 </template>

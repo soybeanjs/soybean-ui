@@ -32,18 +32,15 @@ const items = [
 </script>
 
 <template>
-  <div>
-    <h3 class="playground-title">Ellipsis Dropdown</h3>
-    <SBreadcrumb :items="items" ellipsis>
-      <template #ellipsis="{ ellipsisItems }">
-        <SDropdownMenu :items="ellipsisItems" :modal="false" trigger="hover">
-          <template #trigger>
-            <SBreadcrumbEllipsis class="cursor-pointer">
-              <SIcon icon="lucide:ellipsis" />
-            </SBreadcrumbEllipsis>
-          </template>
-        </SDropdownMenu>
-      </template>
-    </SBreadcrumb>
-  </div>
+  <SBreadcrumb :items="items" ellipsis>
+    <template #ellipsis="{ ellipsisItems }">
+      <SDropdownMenu :items="ellipsisItems" :modal="false" trigger="hover">
+        <template #trigger>
+          <SBreadcrumbEllipsis class="cursor-pointer">
+            <SIcon icon="lucide:ellipsis" />
+          </SBreadcrumbEllipsis>
+        </template>
+      </SDropdownMenu>
+    </template>
+  </SBreadcrumb>
 </template>

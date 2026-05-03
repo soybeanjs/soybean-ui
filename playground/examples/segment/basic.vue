@@ -38,8 +38,5 @@ const weekends = [
 </script>
 
 <template>
-  <div>
-    <h3 class="playground-title">Basic</h3>
-    <SSegment v-model="day" :items="weekends" />
-  </div>
+  <SSegment v-model="day" :items="weekends" />
 </template>

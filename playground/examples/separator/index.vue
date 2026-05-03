@@ -1,16 +1,7 @@
 <script setup lang="ts">
-import { SCard } from '@soybeanjs/ui';
-import DemoSeparatorOrientation from './orientation.vue';
-import DemoSeparatorAlign from './align.vue';
-import DemoSeparatorBorder from './border.vue';
-import DemoSeparatorBasic from './basic.vue';
+import PlaygroundGallery from '../../components/playground-gallery.vue';
 </script>
 
 <template>
-  <SCard title="Separator" split :ui="{ content: 'flex-c gap-4' }">
-    <DemoSeparatorBasic />
-    <DemoSeparatorOrientation />
-    <DemoSeparatorAlign />
-    <DemoSeparatorBorder />
-  </SCard>
+  <PlaygroundGallery component="separator" />
 </template>

@@ -11,8 +11,5 @@ const items = [
 </script>
 
 <template>
-  <div>
-    <h3 class="playground-title">Basic</h3>
-    <SRadioGroup v-model="value" :items="items" />
-  </div>
+  <SRadioGroup v-model="value" :items="items" />
 </template>

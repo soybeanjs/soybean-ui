@@ -7,9 +7,6 @@ const value = shallowRef(new CalendarDate(2026, 4, 19));
 </script>
 
 <template>
-  <div class="flex-c gap-3">
-    <h3 class="playground-title">Basic</h3>
-    <SDateField v-model="value" aria-label="Event date" />
-    <p class="text-sm text-muted-foreground">Value: {{ value?.toString() ?? '-' }}</p>
-  </div>
+  <SDateField v-model="value" aria-label="Event date" />
+  <p class="text-sm text-muted-foreground">Value: {{ value?.toString() ?? '-' }}</p>
 </template>

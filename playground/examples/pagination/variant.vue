@@ -3,13 +3,10 @@ import { SPagination } from '@soybeanjs/ui';
 </script>
 
 <template>
-  <div>
-    <h3 class="playground-title">Variant</h3>
-    <div class="flex-c gap-3">
-      <SPagination show-edges :sibling-count="1" :items-per-page="10" :total="200" variant="pure" />
-      <SPagination show-edges :sibling-count="1" :items-per-page="10" :total="200" variant="solid" />
-      <SPagination show-edges :sibling-count="1" :items-per-page="10" :total="200" variant="outline" />
-      <SPagination show-edges :sibling-count="1" :items-per-page="10" :total="200" variant="soft" />
-    </div>
+  <div class="flex-c gap-3">
+    <SPagination show-edges :sibling-count="1" :items-per-page="10" :total="200" variant="pure" />
+    <SPagination show-edges :sibling-count="1" :items-per-page="10" :total="200" variant="solid" />
+    <SPagination show-edges :sibling-count="1" :items-per-page="10" :total="200" variant="outline" />
+    <SPagination show-edges :sibling-count="1" :items-per-page="10" :total="200" variant="soft" />
   </div>
 </template>

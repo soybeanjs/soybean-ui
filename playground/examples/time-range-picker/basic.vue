@@ -11,8 +11,5 @@ const value = shallowRef({
 </script>
 
 <template>
-  <div class="flex-c gap-3">
-    <h3 class="playground-title">Basic</h3>
-    <STimeRangePicker v-model="value" class="w-90 lt-md:w-auto" aria-label="Working hours" />
-  </div>
+  <STimeRangePicker v-model="value" class="w-90 lt-md:w-auto" aria-label="Working hours" />
 </template>

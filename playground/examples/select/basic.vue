@@ -11,10 +11,5 @@ const items: SelectOptionData[] = fruits.map(fruit => ({
 </script>
 
 <template>
-  <div>
-    <h3 class="playground-title">Basic</h3>
-    <div class="w-60 lt-md:w-auto">
-      <SSelect :items="items" placeholder="Please select a fruit" />
-    </div>
-  </div>
+  <SSelect :items="items" placeholder="Please select a fruit" class="w-60 lt-md:w-auto" />
 </template>

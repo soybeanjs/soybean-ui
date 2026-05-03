@@ -1,14 +1,7 @@
 <script setup lang="ts">
-import { SCard } from '@soybeanjs/ui';
-import DemoHoverCardBasic from './basic.vue';
-import DemoHoverCardCustomStyling from './custom-styling.vue';
-import DemoHoverCardDelay from './delay.vue';
+import PlaygroundGallery from '../../components/playground-gallery.vue';
 </script>
 
 <template>
-  <SCard title="HoverCard" split :ui="{ content: 'flex-c gap-4' }">
-    <DemoHoverCardBasic />
-    <DemoHoverCardDelay />
-    <DemoHoverCardCustomStyling />
-  </SCard>
+  <PlaygroundGallery component="hover-card" />
 </template>

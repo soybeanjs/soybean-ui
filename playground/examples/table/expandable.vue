@@ -24,25 +24,22 @@ const data: TableData[] = [
 </script>
 
 <template>
-  <div>
-    <h3 class="playground-title">Expandable</h3>
-    <STable :columns="columns" :data="data" :row-key="row => row.id">
-      <template #expanded-row="{ row }">
-        <div class="p-4 bg-accent">
-          <p>
-            <strong>Name:</strong>
-            {{ row.name }}
-          </p>
-          <p>
-            <strong>Age:</strong>
-            {{ row.age }}
-          </p>
-          <p>
-            <strong>Address:</strong>
-            {{ row.address }}
-          </p>
-        </div>
-      </template>
-    </STable>
-  </div>
+  <STable :columns="columns" :data="data" :row-key="row => row.id">
+    <template #expanded-row="{ row }">
+      <div class="p-4 bg-accent">
+        <p>
+          <strong>Name:</strong>
+          {{ row.name }}
+        </p>
+        <p>
+          <strong>Age:</strong>
+          {{ row.age }}
+        </p>
+        <p>
+          <strong>Address:</strong>
+          {{ row.address }}
+        </p>
+      </div>
+    </template>
+  </STable>
 </template>

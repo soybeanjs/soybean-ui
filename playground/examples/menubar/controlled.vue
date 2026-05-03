@@ -42,11 +42,8 @@ const items: MenuOptionData<string>[] = [
 </script>
 
 <template>
-  <div class="flex-c gap-3">
-    <h3 class="playground-title">Controlled</h3>
-    <div class="flex items-center gap-2">
-      <span class="text-sm text-muted-foreground">Active menu: {{ currentMenu }}</span>
-    </div>
-    <SMenubar v-model="currentMenu" :items="items" />
+  <div class="flex items-center gap-2">
+    <span class="text-sm text-muted-foreground">Active menu: {{ currentMenu }}</span>
   </div>
+  <SMenubar v-model="currentMenu" :items="items" />
 </template>

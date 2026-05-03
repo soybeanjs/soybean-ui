@@ -6,11 +6,8 @@ const open = shallowRef(true);
 </script>
 
 <template>
-  <div>
-    <h3 class="playground-title">Open</h3>
-    <SBadge v-model:open="open">
-      <SButton variant="pure">Open</SButton>
-    </SBadge>
-    <SSwitch v-model="open" class="ml-3" />
-  </div>
+  <SBadge v-model:open="open">
+    <SButton variant="pure">Open</SButton>
+  </SBadge>
+  <SSwitch v-model="open" class="ml-3" />
 </template>

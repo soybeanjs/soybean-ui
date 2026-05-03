@@ -7,13 +7,10 @@ const colors: ThemeColor[] = ['primary', 'destructive', 'success', 'warning', 'i
 </script>
 
 <template>
-  <div>
-    <h3 class="playground-title">Color</h3>
-    <div class="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-      <div v-for="color in colors" :key="color" class="rounded-lg border border-border bg-card p-4">
-        <p class="mb-3 text-sm font-medium capitalize">{{ color }}</p>
-        <SAnchor :items="anchorItems" :color="color" model-value="#overview" :sticky="false" />
-      </div>
+  <div class="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+    <div v-for="color in colors" :key="color" class="rounded-lg border border-border bg-card p-4">
+      <p class="mb-3 text-sm font-medium capitalize">{{ color }}</p>
+      <SAnchor :items="anchorItems" :color="color" model-value="#overview" :sticky="false" />
     </div>
   </div>
 </template>

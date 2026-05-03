@@ -1,26 +1,7 @@
 <script setup lang="ts">
-import { SCard } from '@soybeanjs/ui';
-import DemoAlertColor from './color.vue';
-import DemoAlertVariant from './variant.vue';
-import DemoAlertDescription from './description.vue';
-import DemoAlertIcon from './icon.vue';
-import DemoAlertDescIcon from './desc-icon.vue';
-import DemoAlertClosable from './closable.vue';
-import DemoAlertSlot from './slot.vue';
-import DemoAlertSize from './size.vue';
-import DemoAlertBasic from './basic.vue';
+import PlaygroundGallery from '../../components/playground-gallery.vue';
 </script>
 
 <template>
-  <SCard title="Alert" split :ui="{ content: 'flex-c gap-4' }">
-    <DemoAlertBasic />
-    <DemoAlertColor />
-    <DemoAlertVariant />
-    <DemoAlertDescription />
-    <DemoAlertIcon />
-    <DemoAlertDescIcon />
-    <DemoAlertClosable />
-    <DemoAlertSlot />
-    <DemoAlertSize />
-  </SCard>
+  <PlaygroundGallery component="alert" />
 </template>

@@ -27,9 +27,6 @@ const selected = ref<number | undefined>(1);
 </script>
 
 <template>
-  <div>
-    <h3 class="playground-title">Single Selection</h3>
-    <STable v-model:selected="selected" :columns="columns" :data="data" :row-key="row => row.id" :multiple="false" />
-    <div class="mt-4">Selected: {{ selected }}</div>
-  </div>
+  <STable v-model:selected="selected" :columns="columns" :data="data" :row-key="row => row.id" :multiple="false" />
+  <div class="mt-4">Selected: {{ selected }}</div>
 </template>

@@ -121,7 +121,6 @@ const fullContent = shallowRef(false);
 
 <template>
   <div class="space-y-4">
-    <h3 class="playground-title">Classic Layout</h3>
     <div class="flex-y-center flex-wrap justify-end gap-4">
       <SButtonGroup>
         <SButton variant="pure" class="cursor-default">orientation</SButton>

@@ -10,10 +10,5 @@ const items: ComboboxOptionData[] = [
 </script>
 
 <template>
-  <div>
-    <h3 class="playground-title">Disabled</h3>
-    <div class="w-80 lt-md:w-auto">
-      <SCombobox disabled :items="items" model-value="processing" placeholder="Status" />
-    </div>
-  </div>
+  <SCombobox disabled :items="items" model-value="processing" placeholder="Status" class="w-80 lt-md:w-auto" />
 </template>

@@ -24,8 +24,5 @@ const sortableColumns: TableColumn<GroupedTableData>[] = [
 </script>
 
 <template>
-  <div>
-    <h3 class="playground-title">Sorting</h3>
-    <STable :columns="sortableColumns" :data="groupedTableData" :row-key="row => row.id" />
-  </div>
+  <STable :columns="sortableColumns" :data="groupedTableData" :row-key="row => row.id" />
 </template>

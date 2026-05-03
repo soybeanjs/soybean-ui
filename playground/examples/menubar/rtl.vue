@@ -31,8 +31,5 @@ const items: MenuOptionData<string>[] = [
 </script>
 
 <template>
-  <div class="flex-c gap-3">
-    <h3 class="playground-title">RTL</h3>
-    <SMenubar dir="rtl" :items="items" />
-  </div>
+  <SMenubar dir="rtl" :items="items" />
 </template>

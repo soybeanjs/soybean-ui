@@ -6,10 +6,5 @@ const modelValue = ref('');
 </script>
 
 <template>
-  <div>
-    <h3 class="playground-title">Basic</h3>
-    <div class="w-80 lt-md:w-auto">
-      <STextarea v-model="modelValue" placeholder="Please input" />
-    </div>
-  </div>
+  <STextarea v-model="modelValue" placeholder="Please input" class="w-80 lt-md:w-auto" />
 </template>

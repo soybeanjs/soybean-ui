@@ -6,11 +6,8 @@ const modelValue = ref('');
 </script>
 
 <template>
-  <div>
-    <h3 class="playground-title">Basic</h3>
-    <div class="leading-loose text-sm text-gray-500">modelValue: {{ modelValue }}</div>
-    <div class="w-60 lt-md:w-auto">
-      <SInput v-model="modelValue" placeholder="Please input" />
-    </div>
+  <div class="leading-loose text-sm text-gray-500">modelValue: {{ modelValue }}</div>
+  <div class="w-60 lt-md:w-auto">
+    <SInput v-model="modelValue" placeholder="Please input" />
   </div>
 </template>

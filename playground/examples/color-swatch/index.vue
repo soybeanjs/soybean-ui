@@ -1,10 +1,7 @@
 <script setup lang="ts">
-import { SCard } from '@soybeanjs/ui';
-import DemoColorSwatchBasic from './basic.vue';
+import PlaygroundGallery from '../../components/playground-gallery.vue';
 </script>
 
 <template>
-  <SCard title="ColorSwatch" split :ui="{ content: 'flex-c gap-4' }">
-    <DemoColorSwatchBasic />
-  </SCard>
+  <PlaygroundGallery component="color-swatch" />
 </template>

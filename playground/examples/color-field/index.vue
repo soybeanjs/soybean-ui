@@ -1,10 +1,7 @@
 <script setup lang="ts">
-import { SCard } from '@soybeanjs/ui';
-import DemoColorFieldBasic from './basic.vue';
+import PlaygroundGallery from '../../components/playground-gallery.vue';
 </script>
 
 <template>
-  <SCard title="ColorField" split :ui="{ content: 'flex-c gap-4' }">
-    <DemoColorFieldBasic />
-  </SCard>
+  <PlaygroundGallery component="color-field" />
 </template>

@@ -7,18 +7,15 @@ const colors: ThemeColor[] = ['primary', 'destructive', 'success', 'warning', 'i
 </script>
 
 <template>
-  <div>
-    <h3 class="playground-title">Variant</h3>
-    <div class="flex flex-wrap gap-3">
-      <SAlert
-        v-for="(variant, index) in variants"
-        :key="variant"
-        :color="colors[index]"
-        :variant="variant"
-        :title="variant"
-        icon="lucide:terminal"
-        closable
-      />
-    </div>
+  <div class="flex flex-wrap gap-3">
+    <SAlert
+      v-for="(variant, index) in variants"
+      :key="variant"
+      :color="colors[index]"
+      :variant="variant"
+      :title="variant"
+      icon="lucide:terminal"
+      closable
+    />
   </div>
 </template>

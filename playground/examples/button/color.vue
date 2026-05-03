@@ -6,10 +6,7 @@ const colors: ThemeColor[] = ['primary', 'destructive', 'success', 'warning', 'i
 </script>
 
 <template>
-  <div>
-    <h3 class="playground-title">Color</h3>
-    <div class="flex flex-wrap gap-3">
-      <SButton v-for="color in colors" :key="color" :color="color">{{ color }}</SButton>
-    </div>
+  <div class="flex flex-wrap gap-3">
+    <SButton v-for="color in colors" :key="color" :color="color">{{ color }}</SButton>
   </div>
 </template>

@@ -10,8 +10,5 @@ const value = shallowRef({
 </script>
 
 <template>
-  <div class="flex-c gap-3">
-    <h3 class="playground-title">With seconds</h3>
-    <STimeRangeField v-model="value" class="w-100 lt-md:w-auto" granularity="second" aria-label="Precise range" />
-  </div>
+  <STimeRangeField v-model="value" class="w-100 lt-md:w-auto" granularity="second" aria-label="Precise range" />
 </template>

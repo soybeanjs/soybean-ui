@@ -7,15 +7,12 @@ const value = shallowRef(new CalendarDate(2026, 4, 19));
 </script>
 
 <template>
-  <div class="flex-c gap-3">
-    <h3 class="playground-title">Custom styling</h3>
-    <SDateField
-      v-model="value"
-      aria-label="Custom styled date"
-      :ui="{
-        root: 'rounded-xl border-primary/50 bg-primary/5',
-        input: 'font-semibold data-[segment=literal]:font-normal data-[placeholder]:text-primary/50'
-      }"
-    />
-  </div>
+  <SDateField
+    v-model="value"
+    aria-label="Custom styled date"
+    :ui="{
+      root: 'rounded-xl border-primary/50 bg-primary/5',
+      input: 'font-semibold data-[segment=literal]:font-normal data-[placeholder]:text-primary/50'
+    }"
+  />
 </template>

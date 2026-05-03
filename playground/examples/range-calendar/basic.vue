@@ -10,9 +10,6 @@ const value = shallowRef({
 </script>
 
 <template>
-  <div class="flex-c gap-3">
-    <h3 class="playground-title">Basic</h3>
-    <SRangeCalendar v-model="value" :default-placeholder="value.start" />
-    <p class="text-sm text-muted-foreground">Range: {{ value.start?.toString() ?? '-' }} ~ {{ value.end?.toString() ?? '-' }}</p>
-  </div>
+  <SRangeCalendar v-model="value" :default-placeholder="value.start" />
+  <p class="text-sm text-muted-foreground">Range: {{ value.start?.toString() ?? '-' }} ~ {{ value.end?.toString() ?? '-' }}</p>
 </template>

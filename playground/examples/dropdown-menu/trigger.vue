@@ -43,12 +43,9 @@ const menus: MenuOptionData<string>[] = [
 </script>
 
 <template>
-  <div>
-    <h3 class="playground-title">Trigger</h3>
-    <SDropdownMenu :items="menus" trigger="hover">
-      <template #trigger>
-        <SButton variant="pure">Hover</SButton>
-      </template>
-    </SDropdownMenu>
-  </div>
+  <SDropdownMenu :items="menus" trigger="hover">
+    <template #trigger>
+      <SButton variant="pure">Hover</SButton>
+    </template>
+  </SDropdownMenu>
 </template>

@@ -1,18 +1,7 @@
 <script setup lang="ts">
-import { SCard } from '@soybeanjs/ui';
-import BreadcrumbBasic from './basic.vue';
-import BreadcrumbSeparator from './separator.vue';
-import BreadcrumbLink from './link.vue';
-import BreadcrumbItemDropdown from './item-dropdown.vue';
-import BreadcrumbEllipsis from './ellipsis-dropdown.vue';
+import PlaygroundGallery from '../../components/playground-gallery.vue';
 </script>
 
 <template>
-  <SCard title="Breadcrumb" split :ui="{ content: 'flex-c gap-4' }">
-    <BreadcrumbBasic />
-    <BreadcrumbSeparator />
-    <BreadcrumbLink />
-    <BreadcrumbItemDropdown />
-    <BreadcrumbEllipsis />
-  </SCard>
+  <PlaygroundGallery component="breadcrumb" />
 </template>

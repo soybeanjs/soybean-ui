@@ -18,12 +18,9 @@ const items = ref<MenuCheckboxOptionData<string>[]>([
 </script>
 
 <template>
-  <div>
-    <h3 class="playground-title">Checkbox</h3>
-    <SContextMenuCheckbox v-model="modelValue" :items="items">
-      <template #trigger>
-        <ContextMenuTrigger />
-      </template>
-    </SContextMenuCheckbox>
-  </div>
+  <SContextMenuCheckbox v-model="modelValue" :items="items">
+    <template #trigger>
+      <ContextMenuTrigger />
+    </template>
+  </SContextMenuCheckbox>
 </template>

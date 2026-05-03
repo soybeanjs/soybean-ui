@@ -12,18 +12,15 @@ const items = [
 </script>
 
 <template>
-  <div>
-    <h3 class="playground-title">Custom Styling</h3>
-    <SStepper
-      v-model="value"
-      color="success"
-      :items="items"
-      :ui="{
-        root: 'rounded-lg border p-4',
-        indicator: 'shadow-sm',
-        itemContent: 'gap-1',
-        title: 'uppercase tracking-wide'
-      }"
-    />
-  </div>
+  <SStepper
+    v-model="value"
+    color="success"
+    :items="items"
+    :ui="{
+      root: 'rounded-lg border p-4',
+      indicator: 'shadow-sm',
+      itemContent: 'gap-1',
+      title: 'uppercase tracking-wide'
+    }"
+  />
 </template>

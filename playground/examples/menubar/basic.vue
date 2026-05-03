@@ -55,8 +55,5 @@ const items: MenuOptionData<string>[] = [
 </script>
 
 <template>
-  <div class="flex-c gap-3">
-    <h3 class="playground-title">Basic</h3>
-    <SMenubar :items="items" show-arrow />
-  </div>
+  <SMenubar :items="items" show-arrow />
 </template>

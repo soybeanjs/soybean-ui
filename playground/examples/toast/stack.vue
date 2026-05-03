@@ -24,12 +24,8 @@ function openBurstSuccess() {
 </script>
 
 <template>
-  <div class="flex-c gap-3">
-    <h3 class="playground-title">Stack</h3>
-
-    <div class="flex flex-wrap gap-2">
-      <SButton variant="pure" @click="openStackedToasts">Push 4 Toasts</SButton>
-      <SButton color="success" variant="outline" @click="openBurstSuccess">Push 4 Success Toasts</SButton>
-    </div>
+  <div class="flex flex-wrap gap-2">
+    <SButton variant="pure" @click="openStackedToasts">Push 4 Toasts</SButton>
+    <SButton color="success" variant="outline" @click="openBurstSuccess">Push 4 Success Toasts</SButton>
   </div>
 </template>

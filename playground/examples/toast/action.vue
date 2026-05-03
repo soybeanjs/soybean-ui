@@ -27,12 +27,8 @@ function openCustomToast() {
 </script>
 
 <template>
-  <div class="flex-c gap-3">
-    <h3 class="playground-title">Action And Custom Content</h3>
-
-    <div class="flex flex-wrap gap-2">
-      <SButton variant="pure" @click="openActionToast">Action Toast</SButton>
-      <SButton color="primary" variant="outline" @click="openCustomToast">Custom Content</SButton>
-    </div>
+  <div class="flex flex-wrap gap-2">
+    <SButton variant="pure" @click="openActionToast">Action Toast</SButton>
+    <SButton color="primary" variant="outline" @click="openCustomToast">Custom Content</SButton>
   </div>
 </template>

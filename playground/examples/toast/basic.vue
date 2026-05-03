@@ -41,14 +41,10 @@ function openLoadingToast() {
 </script>
 
 <template>
-  <div class="flex-c gap-3">
-    <h3 class="playground-title">Basic</h3>
-
-    <div class="flex flex-wrap gap-2">
-      <SButton variant="pure" @click="openDefaultToast">Default</SButton>
-      <SButton color="success" variant="outline" @click="openSuccessToast">Success</SButton>
-      <SButton color="destructive" variant="outline" @click="openErrorToast">Error</SButton>
-      <SButton color="warning" variant="outline" @click="openLoadingToast">Loading</SButton>
-    </div>
+  <div class="flex flex-wrap gap-2">
+    <SButton variant="pure" @click="openDefaultToast">Default</SButton>
+    <SButton color="success" variant="outline" @click="openSuccessToast">Success</SButton>
+    <SButton color="destructive" variant="outline" @click="openErrorToast">Error</SButton>
+    <SButton color="warning" variant="outline" @click="openLoadingToast">Loading</SButton>
   </div>
 </template>

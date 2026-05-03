@@ -1,10 +1,7 @@
 <script setup lang="ts">
-import { SCard } from '@soybeanjs/ui';
-import DemoAspectRatioBasic from './basic.vue';
+import PlaygroundGallery from '../../components/playground-gallery.vue';
 </script>
 
 <template>
-  <SCard title="AspectRatio" split>
-    <DemoAspectRatioBasic />
-  </SCard>
+  <PlaygroundGallery component="aspect-ratio" />
 </template>

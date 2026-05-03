@@ -29,8 +29,5 @@ const data: TableData[] = [
 </script>
 
 <template>
-  <div>
-    <h3 class="playground-title">Variants: simple</h3>
-    <STable variant="simple" :columns="columns" :data="data" :row-key="row => row.id" />
-  </div>
+  <STable variant="simple" :columns="columns" :data="data" :row-key="row => row.id" />
 </template>

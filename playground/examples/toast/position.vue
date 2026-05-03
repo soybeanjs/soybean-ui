@@ -21,13 +21,9 @@ function openToastAt(position: ToastPosition) {
 </script>
 
 <template>
-  <div class="flex-c gap-3">
-    <h3 class="playground-title">Position</h3>
-
-    <div class="flex flex-wrap gap-2">
-      <SButton v-for="position in positions" :key="position" variant="outline" @click="openToastAt(position)">
-        {{ position }}
-      </SButton>
-    </div>
+  <div class="flex flex-wrap gap-2">
+    <SButton v-for="position in positions" :key="position" variant="outline" @click="openToastAt(position)">
+      {{ position }}
+    </SButton>
   </div>
 </template>

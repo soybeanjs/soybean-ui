@@ -13,18 +13,15 @@ const items: ComboboxOptionData[] = [
 </script>
 
 <template>
-  <div>
-    <h3 class="playground-title">Clearable</h3>
-    <div class="w-80 lt-md:w-auto flex-c gap-2">
-      <SCombobox
-        v-model="value"
-        clearable
-        reset-model-value-on-clear
-        :items="items"
-        placeholder="Select a fruit"
-        search-placeholder="Search fruits"
-      />
-      <p class="text-sm text-muted-foreground">Selected: {{ value || 'None' }}</p>
-    </div>
+  <div class="w-80 lt-md:w-auto flex-c gap-2">
+    <SCombobox
+      v-model="value"
+      clearable
+      reset-model-value-on-clear
+      :items="items"
+      placeholder="Select a fruit"
+      search-placeholder="Search fruits"
+    />
+    <p class="text-sm text-muted-foreground">Selected: {{ value || 'None' }}</p>
   </div>
 </template>

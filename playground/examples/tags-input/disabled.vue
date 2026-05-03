@@ -6,16 +6,13 @@ const tags = ref(['Disabled', 'Readonly']);
 </script>
 
 <template>
-  <div>
-    <h3 class="playground-title">Disabled</h3>
-    <STagsInput v-model="tags" disabled>
-      <template #default>
-        <STagsInputItem v-for="tag in tags" :key="tag" :value="tag">
-          <STagsInputItemText />
-          <STagsInputItemDelete />
-        </STagsInputItem>
-        <STagsInputInput aria-label="Disabled tags input" placeholder="Disabled" />
-      </template>
-    </STagsInput>
-  </div>
+  <STagsInput v-model="tags" disabled>
+    <template #default>
+      <STagsInputItem v-for="tag in tags" :key="tag" :value="tag">
+        <STagsInputItemText />
+        <STagsInputItemDelete />
+      </STagsInputItem>
+      <STagsInputInput aria-label="Disabled tags input" placeholder="Disabled" />
+    </template>
+  </STagsInput>
 </template>

@@ -6,12 +6,9 @@ const colors: ThemeColor[] = ['primary', 'destructive', 'success', 'warning', 'i
 </script>
 
 <template>
-  <div>
-    <h3 class="playground-title">Content</h3>
-    <div class="flex flex-wrap gap-6">
-      <SBadge v-for="color in colors" :key="color" :color="color" content="99+">
-        <SButton variant="pure">{{ color }}</SButton>
-      </SBadge>
-    </div>
+  <div class="flex flex-wrap gap-6">
+    <SBadge v-for="color in colors" :key="color" :color="color" content="99+">
+      <SButton variant="pure">{{ color }}</SButton>
+    </SBadge>
   </div>
 </template>

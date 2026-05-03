@@ -14,9 +14,6 @@ const formattedValue = computed(() => {
 </script>
 
 <template>
-  <div class="flex-c gap-3">
-    <h3 class="playground-title">With time</h3>
-    <SDateField v-model="value" granularity="second" aria-label="Meeting time" />
-    <p class="text-sm text-muted-foreground">Value: {{ formattedValue }}</p>
-  </div>
+  <SDateField v-model="value" granularity="second" aria-label="Meeting time" />
+  <p class="text-sm text-muted-foreground">Value: {{ formattedValue }}</p>
 </template>

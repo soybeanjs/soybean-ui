@@ -120,9 +120,6 @@ const resizableColumns: TableColumn<EmployeeTableData>[] = [
 </script>
 
 <template>
-  <div>
-    <h3 class="playground-title">Resizable Columns</h3>
-    <p class="mb-3 text-sm text-muted-foreground">Drag any header handle to adjust the column width.</p>
-    <STable :columns="resizableColumns" :data="employeeTableData" :row-key="row => row.id" />
-  </div>
+  <p class="mb-3 text-sm text-muted-foreground">Drag any header handle to adjust the column width.</p>
+  <STable :columns="resizableColumns" :data="employeeTableData" :row-key="row => row.id" />
 </template>

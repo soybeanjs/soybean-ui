@@ -22,10 +22,5 @@ function handleSelect(item: MenuOptionData<string>) {
 </script>
 
 <template>
-  <div>
-    <h3 class="playground-title">Basic</h3>
-    <div class="w-72">
-      <SMenuOptions :items="items" @select="handleSelect" />
-    </div>
-  </div>
+  <SMenuOptions :items="items" class="w-72" @select="handleSelect" />
 </template>

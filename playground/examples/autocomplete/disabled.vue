@@ -10,10 +10,5 @@ const items: AutocompleteOptionData[] = [
 </script>
 
 <template>
-  <div>
-    <h3 class="playground-title">Disabled</h3>
-    <div class="w-72 lt-md:w-auto">
-      <SAutocomplete disabled :items="items" placeholder="Disabled autocomplete" />
-    </div>
-  </div>
+  <SAutocomplete disabled :items="items" placeholder="Disabled autocomplete" class="w-72 lt-md:w-auto" />
 </template>

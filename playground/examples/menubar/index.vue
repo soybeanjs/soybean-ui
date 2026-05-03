@@ -1,14 +1,7 @@
 <script setup lang="ts">
-import { SCard } from '@soybeanjs/ui';
-import DemoMenubarBasic from './basic.vue';
-import DemoMenubarControlled from './controlled.vue';
-import DemoMenubarRtl from './rtl.vue';
+import PlaygroundGallery from '../../components/playground-gallery.vue';
 </script>
 
 <template>
-  <SCard title="Menubar" split :ui="{ content: 'flex-c gap-4' }">
-    <DemoMenubarBasic />
-    <DemoMenubarControlled />
-    <DemoMenubarRtl />
-  </SCard>
+  <PlaygroundGallery component="menubar" />
 </template>

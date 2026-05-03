@@ -6,10 +6,7 @@ const colors: ThemeColor[] = ['primary', 'destructive', 'success', 'warning', 'i
 </script>
 
 <template>
-  <div>
-    <h3 class="playground-title">Color</h3>
-    <div class="flex flex-wrap gap-3">
-      <SCheckbox v-for="color in colors" :key="color" :default-value="true" :color="color" :label="color" />
-    </div>
+  <div class="flex flex-wrap gap-3">
+    <SCheckbox v-for="color in colors" :key="color" :default-value="true" :color="color" :label="color" />
   </div>
 </template>

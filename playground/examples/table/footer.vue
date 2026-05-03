@@ -24,22 +24,19 @@ const data: TableData[] = [
 </script>
 
 <template>
-  <div>
-    <h3 class="playground-title">With Footer</h3>
-    <STable :columns="columns" :data="data" :row-key="row => row.id">
-      <template #footer="{ columnSize }">
-        <STableRow>
-          <STableCell :colspan="columnSize" align="center">
-            <div class="flex justify-between items-center p-4">
-              <span>Total: {{ data.length }} items</span>
-              <div class="flex gap-2">
-                <SButton size="sm" variant="pure">Previous</SButton>
-                <SButton size="sm" variant="pure">Next</SButton>
-              </div>
+  <STable :columns="columns" :data="data" :row-key="row => row.id">
+    <template #footer="{ columnSize }">
+      <STableRow>
+        <STableCell :colspan="columnSize" align="center">
+          <div class="flex justify-between items-center p-4">
+            <span>Total: {{ data.length }} items</span>
+            <div class="flex gap-2">
+              <SButton size="sm" variant="pure">Previous</SButton>
+              <SButton size="sm" variant="pure">Next</SButton>
             </div>
-          </STableCell>
-        </STableRow>
-      </template>
-    </STable>
-  </div>
+          </div>
+        </STableCell>
+      </STableRow>
+    </template>
+  </STable>
 </template>

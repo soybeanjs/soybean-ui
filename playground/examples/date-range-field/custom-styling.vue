@@ -10,19 +10,16 @@ const value = shallowRef({
 </script>
 
 <template>
-  <div class="flex-c gap-2">
-    <h3 class="playground-title">Custom Styling</h3>
-    <SDateRangeField
-      v-model="value"
-      class="w-100 lt-md:w-auto"
-      size="lg"
-      separator="→"
-      aria-label="Styled date range"
-      :ui="{
-        root: 'border-2 border-primary/30',
-        input: 'text-primary',
-        separator: 'text-primary'
-      }"
-    />
-  </div>
+  <SDateRangeField
+    v-model="value"
+    class="w-100 lt-md:w-auto"
+    size="lg"
+    separator="→"
+    aria-label="Styled date range"
+    :ui="{
+      root: 'border-2 border-primary/30',
+      input: 'text-primary',
+      separator: 'text-primary'
+    }"
+  />
 </template>

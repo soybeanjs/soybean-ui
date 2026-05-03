@@ -10,8 +10,5 @@ const value = shallowRef({
 </script>
 
 <template>
-  <div class="flex-c gap-3">
-    <h3 class="playground-title">Two months</h3>
-    <SRangeCalendar v-model="value" :default-placeholder="value.start" :number-of-months="2" />
-  </div>
+  <SRangeCalendar v-model="value" :default-placeholder="value.start" :number-of-months="2" />
 </template>

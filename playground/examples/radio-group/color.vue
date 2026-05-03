@@ -12,10 +12,7 @@ const items: RadioGroupOptionData<string>[] = [
 </script>
 
 <template>
-  <div>
-    <h3 class="playground-title">Color</h3>
-    <div class="flex-c gap-3">
-      <SRadioGroup v-for="color in colors" :key="color" :items="items" :color="color" />
-    </div>
+  <div class="flex-c gap-3">
+    <SRadioGroup v-for="color in colors" :key="color" :items="items" :color="color" />
   </div>
 </template>

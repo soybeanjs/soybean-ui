@@ -28,8 +28,5 @@ const items: AccordionOptionData[] = [
 </script>
 
 <template>
-  <div>
-    <h3 class="playground-title">Always open one</h3>
-    <SAccordion v-model="alwaysOne" :items="items" />
-  </div>
+  <SAccordion v-model="alwaysOne" :items="items" />
 </template>

@@ -7,14 +7,11 @@ const value = ref(colors[0]);
 </script>
 
 <template>
-  <div>
-    <h3 class="playground-title">Basic</h3>
-    <div class="flex flex-col gap-3">
-      <SColorSwatchPicker v-model="value" :colors="colors" />
-      <div class="flex items-center gap-2 text-sm text-muted-foreground">
-        <SColorSwatch :color="value" />
-        <span>{{ value }}</span>
-      </div>
+  <div class="flex flex-col gap-3">
+    <SColorSwatchPicker v-model="value" :colors="colors" />
+    <div class="flex items-center gap-2 text-sm text-muted-foreground">
+      <SColorSwatch :color="value" />
+      <span>{{ value }}</span>
     </div>
   </div>
 </template>

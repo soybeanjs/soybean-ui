@@ -6,10 +6,5 @@ const modelValue = ref('abc123');
 </script>
 
 <template>
-  <div>
-    <h3 class="playground-title">Basic</h3>
-    <div class="w-60 lt-md:w-auto">
-      <SPassword v-model="modelValue" placeholder="Please input" />
-    </div>
-  </div>
+  <SPassword v-model="modelValue" placeholder="Please input" class="w-60 lt-md:w-auto" />
 </template>

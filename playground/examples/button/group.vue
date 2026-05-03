@@ -3,13 +3,10 @@ import { SButton, SButtonGroup } from '@soybeanjs/ui';
 </script>
 
 <template>
-  <div>
-    <h3 class="playground-title">Button Group</h3>
-    <SButtonGroup variant="pure" color="accent" class="whitespace-nowrap">
-      <SButton v-for="i in 3" :key="i">Button {{ i }}</SButton>
-    </SButtonGroup>
-    <SButtonGroup orientation="vertical" class="w-30 mt-4" variant="outline" color="warning">
-      <SButton v-for="i in 3" :key="i">Button {{ i }}</SButton>
-    </SButtonGroup>
-  </div>
+  <SButtonGroup variant="pure" color="accent" class="whitespace-nowrap">
+    <SButton v-for="i in 3" :key="i">Button {{ i }}</SButton>
+  </SButtonGroup>
+  <SButtonGroup orientation="vertical" class="w-30 mt-4" variant="outline" color="warning">
+    <SButton v-for="i in 3" :key="i">Button {{ i }}</SButton>
+  </SButtonGroup>
 </template>

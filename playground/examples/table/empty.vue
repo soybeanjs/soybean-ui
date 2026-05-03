@@ -20,20 +20,17 @@ const data: TableData[] = [];
 </script>
 
 <template>
-  <div>
-    <h3 class="playground-title">Empty State</h3>
-    <div class="space-y-4">
-      <STable :columns="columns" :data="data" :row-key="row => row.id" />
-      <STable :columns="columns" :data="data" :row-key="row => row.id">
-        <template #empty>
-          <SEmpty
-            title="No matching records"
-            description="Try adjusting filters or create the first record from here."
-            icon="lucide:file-search"
-            media-variant="icon"
-          />
-        </template>
-      </STable>
-    </div>
+  <div class="space-y-4">
+    <STable :columns="columns" :data="data" :row-key="row => row.id" />
+    <STable :columns="columns" :data="data" :row-key="row => row.id">
+      <template #empty>
+        <SEmpty
+          title="No matching records"
+          description="Try adjusting filters or create the first record from here."
+          icon="lucide:file-search"
+          media-variant="icon"
+        />
+      </template>
+    </STable>
   </div>
 </template>

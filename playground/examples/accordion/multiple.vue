@@ -28,8 +28,5 @@ const items: AccordionOptionData[] = [
 </script>
 
 <template>
-  <div>
-    <h3 class="playground-title">Multi Collapse</h3>
-    <SAccordion v-model="multi" multiple :items="items" />
-  </div>
+  <SAccordion v-model="multi" multiple :items="items" />
 </template>

@@ -23,10 +23,5 @@ const items: AutocompleteOptionData[] = [
 </script>
 
 <template>
-  <div>
-    <h3 class="playground-title">Grouped</h3>
-    <div class="w-72 lt-md:w-auto">
-      <SAutocomplete :items="items" placeholder="Search foods" />
-    </div>
-  </div>
+  <SAutocomplete :items="items" placeholder="Search foods" class="w-72 lt-md:w-auto" />
 </template>

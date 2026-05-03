@@ -10,16 +10,13 @@ const items = [
 </script>
 
 <template>
-  <div>
-    <h3 class="playground-title">Circle</h3>
-    <div class="flex flex-wrap gap-4">
-      <SProgressCircle v-for="item in items" :key="item.color" :model-value="item.value" :color="item.color" size="xl">
-        <template #default="{ progressState, valuePercent }">
-          <span class="text-center text-sm font-medium">
-            {{ progressState === 'indeterminate' ? '...' : `${Math.round(valuePercent ?? 0)}%` }}
-          </span>
-        </template>
-      </SProgressCircle>
-    </div>
+  <div class="flex flex-wrap gap-4">
+    <SProgressCircle v-for="item in items" :key="item.color" :model-value="item.value" :color="item.color" size="xl">
+      <template #default="{ progressState, valuePercent }">
+        <span class="text-center text-sm font-medium">
+          {{ progressState === 'indeterminate' ? '...' : `${Math.round(valuePercent ?? 0)}%` }}
+        </span>
+      </template>
+    </SProgressCircle>
   </div>
 </template>

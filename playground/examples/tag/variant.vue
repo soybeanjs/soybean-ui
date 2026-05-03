@@ -6,12 +6,9 @@ const variants: TagVariant[] = ['solid', 'pure', 'outline', 'soft', 'ghost', 'ra
 </script>
 
 <template>
-  <div>
-    <h3 class="playground-title">Variant</h3>
-    <div class="flex flex-wrap gap-3">
-      <STag v-for="variant in variants" :key="variant" :variant="variant">
-        {{ variant }}
-      </STag>
-    </div>
+  <div class="flex flex-wrap gap-3">
+    <STag v-for="variant in variants" :key="variant" :variant="variant">
+      {{ variant }}
+    </STag>
   </div>
 </template>

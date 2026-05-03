@@ -5,21 +5,18 @@ const slides = [1, 2, 3, 4, 5];
 </script>
 
 <template>
-  <div>
-    <h3 class="playground-title">Vertical</h3>
-    <SCarousel
-      :slides="slides"
-      aria-label="Vertical carousel"
-      orientation="vertical"
-      :options="{ loop: true }"
-      :ui="{ container: 'h-60' }"
-      class="mx-auto w-full max-w-60"
-    >
-      <template #item="{ slide }">
-        <SCard class="h-full" :ui="{ content: 'flex-center' }">
-          <span class="text-4xl font-semibold">{{ slide }}</span>
-        </SCard>
-      </template>
-    </SCarousel>
-  </div>
+  <SCarousel
+    :slides="slides"
+    aria-label="Vertical carousel"
+    orientation="vertical"
+    :options="{ loop: true }"
+    :ui="{ container: 'h-60' }"
+    class="mx-auto w-full max-w-60"
+  >
+    <template #item="{ slide }">
+      <SCard class="h-full" :ui="{ content: 'flex-center' }">
+        <span class="text-4xl font-semibold">{{ slide }}</span>
+      </SCard>
+    </template>
+  </SCarousel>
 </template>

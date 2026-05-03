@@ -6,13 +6,10 @@ const open = ref(false);
 </script>
 
 <template>
-  <div>
-    <h3 class="playground-title">State: {{ open }}</h3>
-    <SDialog v-model:open="open" title="Dialog Title">
-      <template #trigger>
-        <SButton variant="pure">Open</SButton>
-      </template>
-      <div>Dialog Content</div>
-    </SDialog>
-  </div>
+  <SDialog v-model:open="open" title="Dialog Title">
+    <template #trigger>
+      <SButton variant="pure">Open</SButton>
+    </template>
+    <div>Dialog Content</div>
+  </SDialog>
 </template>

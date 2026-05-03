@@ -44,12 +44,9 @@ const menus: MenuOptionData<string>[] = [
 </script>
 
 <template>
-  <div>
-    <h3 class="playground-title">Basic</h3>
-    <SContextMenu :items="menus">
-      <template #trigger>
-        <ContextMenuTrigger />
-      </template>
-    </SContextMenu>
-  </div>
+  <SContextMenu :items="menus">
+    <template #trigger>
+      <ContextMenuTrigger />
+    </template>
+  </SContextMenu>
 </template>

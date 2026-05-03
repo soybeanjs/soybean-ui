@@ -38,8 +38,5 @@ const weekends = [
 </script>
 
 <template>
-  <div>
-    <h3 class="playground-title">Shape: rounded</h3>
-    <SSegment v-model="day" :items="weekends" shape="rounded" />
-  </div>
+  <SSegment v-model="day" :items="weekends" shape="rounded" />
 </template>

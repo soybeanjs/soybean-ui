@@ -3,10 +3,5 @@ import { SInputNumber } from '@soybeanjs/ui';
 </script>
 
 <template>
-  <div>
-    <h3 class="playground-title">Center</h3>
-    <div class="w-60 lt-md:w-auto">
-      <SInputNumber center />
-    </div>
-  </div>
+  <SInputNumber center class="w-60 lt-md:w-auto" />
 </template>

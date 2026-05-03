@@ -46,14 +46,10 @@ function openLayoutOverrideToast() {
 </script>
 
 <template>
-  <div class="flex-c gap-3">
-    <h3 class="playground-title">Appearance</h3>
-
-    <div class="flex flex-wrap gap-2">
-      <SButton variant="pure" @click="openInvertToast">Invert</SButton>
-      <SButton color="primary" variant="outline" @click="openCustomIconToast">Custom Icon</SButton>
-      <SButton color="success" variant="outline" @click="openClassNamesToast">ClassNames</SButton>
-      <SButton color="warning" variant="outline" @click="openLayoutOverrideToast">Layout Override</SButton>
-    </div>
+  <div class="flex flex-wrap gap-2">
+    <SButton variant="pure" @click="openInvertToast">Invert</SButton>
+    <SButton color="primary" variant="outline" @click="openCustomIconToast">Custom Icon</SButton>
+    <SButton color="success" variant="outline" @click="openClassNamesToast">ClassNames</SButton>
+    <SButton color="warning" variant="outline" @click="openLayoutOverrideToast">Layout Override</SButton>
   </div>
 </template>

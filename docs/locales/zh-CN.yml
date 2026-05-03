@@ -13,6 +13,470 @@ not_found_page: 未找到页面
 playground:
   preview: 预览
   code: 代码
+  examples:
+    accordion:
+      always-one: 始终展开一项
+      basic: 基础
+      custom-icon: 自定义图标
+      custom-styling: 自定义样式
+      multiple: 多选
+      single: 单项
+    affix:
+      basic: 基础
+      custom-styling: 自定义样式
+      offset-bottom: 底部偏移
+      target: 目标容器
+    alert:
+      basic: 基础
+      closable: 可关闭
+      color: 颜色
+      desc-icon: 描述图标
+      description: 描述
+      icon: 图标
+      size: 尺寸
+      slot: 插槽
+      variant: 变体
+    anchor:
+      basic: 基础
+      color: 颜色
+      custom-styling: 自定义样式
+      size: 尺寸
+      sticky: 吸附
+    arrow:
+      basic: 基础
+    aspect-ratio:
+      basic: 基础
+    autocomplete:
+      basic: 基础
+      custom-styling: 自定义样式
+      disabled: 禁用
+      grouped: 分组
+      open-on-focus: 聚焦即打开
+    avatar:
+      basic: 基础
+      delay: 延迟
+      fallback: 后备内容
+      size: 尺寸
+    backtop:
+      basic: 基础
+      custom-styling: 自定义样式
+      disabled: 禁用
+      target: 目标容器
+    badge:
+      basic: 基础
+      color: 颜色
+      content: 内容
+      open: 打开
+      position: 位置
+      slot: 插槽
+    bottom-sheet:
+      basic: 基础
+      nested: 嵌套
+    breadcrumb:
+      basic: 基础
+      ellipsis-dropdown: 省略下拉
+      item-dropdown: 条目下拉
+      link: 链接
+      separator: 分隔符
+    button:
+      basic: 基础
+      color: 颜色
+      disabled: 禁用
+      group: 分组
+      icon: 图标
+      link: 链接
+      loading: 加载中
+      shadow: 阴影
+      shape: 形状
+      size: 尺寸
+      slot: 插槽
+      variant: 变体
+    calendar:
+      basic: 基础
+      custom-styling: 自定义样式
+      disabled: 禁用
+      multiple: 多选
+    card:
+      basic: 基础
+      collapsible: 可折叠
+      only-content: 仅内容
+      split: 分隔
+      title-slot: 标题插槽
+    carousel:
+      basic: 基础
+      dot: 圆点
+      float: 浮动
+      multi: 多项
+      progress: 进度
+      snap: 对齐
+      vertical: 垂直
+    checkbox:
+      basic: 基础
+      card: 卡片
+      card-group: 卡片组
+      color: 颜色
+      group: 分组
+      icon: 图标
+      shape: 形状
+      single: 单项
+      size: 尺寸
+    clipboard:
+      basic: 基础
+      color: 颜色
+      custom-styling: 自定义样式
+      disabled: 禁用
+      size: 尺寸
+      variant: 变体
+    collapsible:
+      basic: 基础
+    color-area:
+      basic: 基础
+      oklch: OKLCH
+    color-field:
+      basic: 基础
+    color-picker:
+      basic: 基础
+      oklch: OKLCH
+    color-slider:
+      basic: 基础
+    color-swatch:
+      basic: 基础
+    color-swatch-picker:
+      basic: 基础
+      shape: 形状
+    combobox:
+      basic: 基础
+      clearable: 可清空
+      custom-styling: 自定义样式
+      disabled: 禁用
+      group: 分组
+      multiple: 多选
+    command:
+      basic: 基础
+      dialog: 对话框
+    context-menu:
+      basic: 基础
+      checkbox: 复选
+      mix: 混合
+      radio: 单选
+      trigger: 触发方式
+    date-field:
+      basic: 基础
+      custom-styling: 自定义样式
+      disabled: 禁用
+      with-time: 含时间
+    date-picker:
+      basic: 基础
+      custom-styling: 自定义样式
+      disabled: 禁用
+      size: 尺寸
+    date-range-field:
+      basic: 基础
+      custom-styling: 自定义样式
+      disabled: 禁用
+      with-time: 含时间
+    date-range-picker:
+      basic: 基础
+      custom-styling: 自定义样式
+      disabled: 禁用
+      size: 尺寸
+    dialog:
+      basic: 基础
+      dialog-api: Dialog API
+      footer: 底部
+      prevent: 阻止关闭
+      pure: 纯净
+      state: 状态
+    drawer:
+      basic: 基础
+      scroll: 滚动
+      side: 侧边
+    dropdown-menu:
+      arrow: 箭头
+      basic: 基础
+      checkbox: 复选
+      mix: 混合
+      radio: 单选
+      trigger: 触发方式
+    editable:
+      activation-mode: 激活模式
+      basic: 基础
+      custom-styling: 自定义样式
+      disabled: 禁用
+      size: 尺寸
+    empty:
+      basic: 基础
+      custom-styling: 自定义样式
+      icon: 图标
+      slot: 插槽
+    form:
+      basic: 基础
+      valibot: Valibot
+      zod: Zod
+    hover-card:
+      basic: 基础
+      custom-styling: 自定义样式
+      delay: 延迟
+    input:
+      basic: 基础
+      clearable: 可清空
+      disabled: 禁用
+      slot: 插槽
+    input-number:
+      basic: 基础
+      center: 居中
+      clearable: 可清空
+      slot: 插槽
+    input-otp:
+      basic: 基础
+      custom-slot: 自定义插槽
+      disabled: 禁用
+      placeholder: 占位
+    kbd:
+      basic: 基础
+      raised: 凸起
+      size: 尺寸
+      variant: 变体
+    label:
+      basic: 基础
+    layout:
+      basic: 基础
+      classic: 经典
+    link:
+      basic: 基础
+      href: 链接地址
+    list:
+      basic: 基础
+    menu:
+      basic: 基础
+    menubar:
+      basic: 基础
+      controlled: 受控
+      rtl: RTL
+    month-picker:
+      basic: 基础
+      custom-styling: 自定义样式
+      disabled: 禁用
+      size: 尺寸
+    month-range-picker:
+      basic: 基础
+      custom-styling: 自定义样式
+      disabled: 禁用
+      size: 尺寸
+    navigation-menu:
+      basic: 基础
+      horizontal: 水平
+      vertical: 垂直
+    page-tabs:
+      basic: 基础
+    pagination:
+      action: 操作
+      basic: 基础
+      shape: 形状
+      show: 显示
+      size: 尺寸
+      slot: 插槽
+      variant: 变体
+    password:
+      basic: 基础
+      clearable: 可清空
+      disabled: 禁用
+      icon: 图标
+    popconfirm:
+      basic: 基础
+    popover:
+      basic: 基础
+    progress:
+      basic: 基础
+      circle: 环形
+      color: 颜色
+      provider: Provider
+      size: 尺寸
+      slot: 插槽
+      state: 状态
+    radio-group:
+      basic: 基础
+      card: 卡片
+      color: 颜色
+      size: 尺寸
+      variant: 变体
+    range-calendar:
+      basic: 基础
+      custom-styling: 自定义样式
+      disabled: 禁用
+      two-months: 双月
+    scroll-area:
+      basic: 基础
+      custom-styling: 自定义样式
+      horizontal: 水平
+      type: 类型
+    segment:
+      basic: 基础
+      icon: 图标
+      shape: 形状
+      vertical: 垂直
+    select:
+      basic: 基础
+      default-value: 默认值
+      disabled: 禁用
+      group: 分组
+      multiple: 多选
+      separator: 分隔符
+      single-clearable: 单选可清空
+    separator:
+      align: 对齐
+      basic: 基础
+      border: 边框
+      orientation: 方向
+    skeleton:
+      animated: 动画
+      basic: 基础
+      custom-size: 自定义尺寸
+      shape: 形状
+      size: 尺寸
+    slider:
+      basic: 基础
+      color: 颜色
+      disabled: 禁用
+      orientation: 方向
+      range: 范围
+      size: 尺寸
+    spinner:
+      basic: 基础
+      color: 颜色
+      custom-styling: 自定义样式
+      icon: 图标
+      size: 尺寸
+    splitter:
+      basic: 基础
+      collapsible: 可折叠
+      custom-handle: 自定义拖拽柄
+      disabled: 禁用
+      vertical: 垂直
+    stepper:
+      basic: 基础
+      custom-styling: 自定义样式
+      linear: 线性
+      vertical: 垂直
+    switch:
+      basic: 基础
+      shape: 形状
+      size: 尺寸
+      slot: 插槽
+    table:
+      basic: 基础
+      bordered: 带边框
+      bottom: 底部
+      empty: 空状态
+      expandable: 可展开
+      filtering: 过滤
+      fixed: 固定
+      footer: 底部
+      grouped: 分组
+      multiple-selection: 多选
+      resizable: 可调整列宽
+      rounded: 圆角
+      single-selection: 单选
+      sizes: 尺寸组
+      sorting: 排序
+      striped: 斑马纹
+      tree: 树形
+      variant: 变体
+      virtualized: 虚拟滚动
+    tabs:
+      basic: 基础
+      custom: 自定义
+      fill: 填充
+      horizontal: 水平
+      vertical: 垂直
+    tag:
+      basic: 基础
+      closable: 可关闭
+      color: 颜色
+      shape: 形状
+      size: 尺寸
+      slot: 插槽
+      variant: 变体
+    tags-input:
+      basic: 基础
+      clear: 清空
+      disabled: 禁用
+      object-value: 对象值
+    textarea:
+      autosize: 自动高度
+      basic: 基础
+      clearable: 可清空
+      counter: 计数
+      disabled: 禁用
+      footer: 底部
+    time-field:
+      basic: 基础
+      custom-styling: 自定义样式
+      disabled: 禁用
+      seconds: 秒
+    time-picker:
+      basic: 基础
+      custom-styling: 自定义样式
+      disabled: 禁用
+      size: 尺寸
+    time-range-field:
+      basic: 基础
+      custom-styling: 自定义样式
+      disabled: 禁用
+      seconds: 秒
+    time-range-picker:
+      basic: 基础
+      custom-styling: 自定义样式
+      disabled: 禁用
+      size: 尺寸
+    toast:
+      action: 操作
+      appearance: 外观
+      basic: 基础
+      control: 控制
+      position: 位置
+      promise: Promise
+      stack: 堆叠
+      types: 类型变体
+    toggle:
+      basic: 基础
+      disabled: 禁用
+      shape: 形状
+      size: 尺寸
+      variant: 变体
+    toggle-group:
+      basic: 基础
+      multiple: 多选
+      variant: 变体
+      vertical: 垂直
+    toolbar:
+      basic: 基础
+      link: 链接
+      toggle-group: 切换组
+      vertical: 垂直
+    tooltip:
+      basic: 基础
+    tree:
+      basic: 基础
+      virtualizer: 虚拟列表
+    tree-menu:
+      basic: 基础
+    virtualizer:
+      basic: 基础
+      dynamic: 动态
+      horizontal: 水平
+    visually-hidden:
+      basic: 基础
+    year-picker:
+      basic: 基础
+      custom-styling: 自定义样式
+      disabled: 禁用
+      size: 尺寸
+    year-range-picker:
+      basic: 基础
+      custom-styling: 自定义样式
+      disabled: 禁用
+      size: 尺寸
 locale:
   en: 英语
   zh_cn: 中文

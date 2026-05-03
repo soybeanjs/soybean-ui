@@ -6,16 +6,13 @@ const tags = ref(['Vue', 'TypeScript']);
 </script>
 
 <template>
-  <div>
-    <h3 class="playground-title">Basic</h3>
-    <STagsInput v-model="tags">
-      <template #default>
-        <STagsInputItem v-for="tag in tags" :key="tag" :value="tag">
-          <STagsInputItemText />
-          <STagsInputItemDelete />
-        </STagsInputItem>
-        <STagsInputInput aria-label="Add tag" placeholder="Add a tag" />
-      </template>
-    </STagsInput>
-  </div>
+  <STagsInput v-model="tags">
+    <template #default>
+      <STagsInputItem v-for="tag in tags" :key="tag" :value="tag">
+        <STagsInputItemText />
+        <STagsInputItemDelete />
+      </STagsInputItem>
+      <STagsInputInput aria-label="Add tag" placeholder="Add a tag" />
+    </template>
+  </STagsInput>
 </template>

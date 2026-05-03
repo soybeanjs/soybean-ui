@@ -10,15 +10,12 @@ const value = shallowRef({
 </script>
 
 <template>
-  <div class="flex-c gap-3">
-    <h3 class="playground-title">Custom styling</h3>
-    <SRangeCalendar
-      v-model="value"
-      :default-placeholder="value.start"
-      :ui="{
-        root: 'rounded-xl border border-primary/30 p-4',
-        cellTrigger: 'data-[selection-start]:bg-primary data-[selection-end]:bg-primary data-[highlighted]:bg-primary/15'
-      }"
-    />
-  </div>
+  <SRangeCalendar
+    v-model="value"
+    :default-placeholder="value.start"
+    :ui="{
+      root: 'rounded-xl border border-primary/30 p-4',
+      cellTrigger: 'data-[selection-start]:bg-primary data-[selection-end]:bg-primary data-[highlighted]:bg-primary/15'
+    }"
+  />
 </template>

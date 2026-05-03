@@ -31,12 +31,9 @@ const themeSchemas: ThemeSchema[] = [
 </script>
 
 <template>
-  <div>
-    <h3 class="playground-title">Icon</h3>
-    <SSegment v-model="themeSchema" :items="themeSchemas" shape="rounded">
-      <template #item="{ icon }">
-        <SIcon :icon="icon" />
-      </template>
-    </SSegment>
-  </div>
+  <SSegment v-model="themeSchema" :items="themeSchemas" shape="rounded">
+    <template #item="{ icon }">
+      <SIcon :icon="icon" />
+    </template>
+  </SSegment>
 </template>

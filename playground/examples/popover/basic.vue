@@ -19,14 +19,12 @@ const placements: Placement[] = [
 </script>
 
 <template>
-  <div>
-    <div class="flex flex-wrap gap-3">
-      <SPopover v-for="placement in placements" :key="placement" :placement="placement">
-        <template #trigger>
-          <SButton variant="pure">{{ placement }}</SButton>
-        </template>
-        <p>Popover content</p>
-      </SPopover>
-    </div>
+  <div class="flex flex-wrap gap-3">
+    <SPopover v-for="placement in placements" :key="placement" :placement="placement">
+      <template #trigger>
+        <SButton variant="pure">{{ placement }}</SButton>
+      </template>
+      <p>Popover content</p>
+    </SPopover>
   </div>
 </template>

@@ -1,11 +1,13 @@
 /// <reference types="vitest/config" />
 import { URL, fileURLToPath } from 'node:url';
+import path from 'node:path';
 import { defineConfig } from 'vite';
 import Vue from 'unplugin-vue/vite';
 import Unocss from 'unocss/vite';
 import VueRouter from 'vue-router/vite';
 import MetaLayouts from 'vite-plugin-vue-meta-layouts';
 import Components from 'unplugin-vue-components/vite';
+import VueI18n from '@intlify/unplugin-vue-i18n/vite';
 import VueDevtools from 'vite-plugin-vue-devtools';
 import UiResolver from './src/resolver/index';
 
@@ -30,6 +32,12 @@ export default defineConfig({
       dirs: ['playground/components'],
       dts: 'playground/typings/components.d.ts',
       resolvers: [UiResolver()]
+    }),
+    VueI18n({
+      runtimeOnly: true,
+      compositionOnly: true,
+      fullInstall: true,
+      include: [path.resolve(__dirname, 'docs/locales/**')]
     }),
     VueDevtools()
   ],

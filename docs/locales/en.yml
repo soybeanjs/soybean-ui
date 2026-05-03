@@ -13,6 +13,470 @@ not_found_page: Not found page
 playground:
   preview: Preview
   code: Code
+  examples:
+    accordion:
+      always-one: Always One
+      basic: Basic
+      custom-icon: Custom Icon
+      custom-styling: Custom Styling
+      multiple: Multiple
+      single: Single
+    affix:
+      basic: Basic
+      custom-styling: Custom Styling
+      offset-bottom: Offset Bottom
+      target: Target
+    alert:
+      basic: Basic
+      closable: Closable
+      color: Color
+      desc-icon: Description Icon
+      description: Description
+      icon: Icon
+      size: Size
+      slot: Slot
+      variant: Variant
+    anchor:
+      basic: Basic
+      color: Color
+      custom-styling: Custom Styling
+      size: Size
+      sticky: Sticky
+    arrow:
+      basic: Basic
+    aspect-ratio:
+      basic: Basic
+    autocomplete:
+      basic: Basic
+      custom-styling: Custom Styling
+      disabled: Disabled
+      grouped: Grouped
+      open-on-focus: Open On Focus
+    avatar:
+      basic: Basic
+      delay: Delay
+      fallback: Fallback
+      size: Size
+    backtop:
+      basic: Basic
+      custom-styling: Custom Styling
+      disabled: Disabled
+      target: Target
+    badge:
+      basic: Basic
+      color: Color
+      content: Content
+      open: Open
+      position: Position
+      slot: Slot
+    bottom-sheet:
+      basic: Basic
+      nested: Nested
+    breadcrumb:
+      basic: Basic
+      ellipsis-dropdown: Ellipsis Dropdown
+      item-dropdown: Item Dropdown
+      link: Link
+      separator: Separator
+    button:
+      basic: Basic
+      color: Color
+      disabled: Disabled
+      group: Group
+      icon: Icon
+      link: Link
+      loading: Loading
+      shadow: Shadow
+      shape: Shape
+      size: Size
+      slot: Slot
+      variant: Variant
+    calendar:
+      basic: Basic
+      custom-styling: Custom Styling
+      disabled: Disabled
+      multiple: Multiple
+    card:
+      basic: Basic
+      collapsible: Collapsible
+      only-content: Only Content
+      split: Split
+      title-slot: Title Slot
+    carousel:
+      basic: Basic
+      dot: Dot
+      float: Float
+      multi: Multi
+      progress: Progress
+      snap: Snap
+      vertical: Vertical
+    checkbox:
+      basic: Basic
+      card: Card
+      card-group: Card Group
+      color: Color
+      group: Group
+      icon: Icon
+      shape: Shape
+      single: Single
+      size: Size
+    clipboard:
+      basic: Basic
+      color: Color
+      custom-styling: Custom Styling
+      disabled: Disabled
+      size: Size
+      variant: Variant
+    collapsible:
+      basic: Basic
+    color-area:
+      basic: Basic
+      oklch: OKLCH
+    color-field:
+      basic: Basic
+    color-picker:
+      basic: Basic
+      oklch: OKLCH
+    color-slider:
+      basic: Basic
+    color-swatch:
+      basic: Basic
+    color-swatch-picker:
+      basic: Basic
+      shape: Shape
+    combobox:
+      basic: Basic
+      clearable: Clearable
+      custom-styling: Custom Styling
+      disabled: Disabled
+      group: Group
+      multiple: Multiple
+    command:
+      basic: Basic
+      dialog: Dialog
+    context-menu:
+      basic: Basic
+      checkbox: Checkbox
+      mix: Mixed
+      radio: Radio
+      trigger: Trigger
+    date-field:
+      basic: Basic
+      custom-styling: Custom Styling
+      disabled: Disabled
+      with-time: With Time
+    date-picker:
+      basic: Basic
+      custom-styling: Custom Styling
+      disabled: Disabled
+      size: Size
+    date-range-field:
+      basic: Basic
+      custom-styling: Custom Styling
+      disabled: Disabled
+      with-time: With Time
+    date-range-picker:
+      basic: Basic
+      custom-styling: Custom Styling
+      disabled: Disabled
+      size: Size
+    dialog:
+      basic: Basic
+      dialog-api: Dialog API
+      footer: Footer
+      prevent: Prevent
+      pure: Pure
+      state: State
+    drawer:
+      basic: Basic
+      scroll: Scroll
+      side: Side
+    dropdown-menu:
+      arrow: Arrow
+      basic: Basic
+      checkbox: Checkbox
+      mix: Mixed
+      radio: Radio
+      trigger: Trigger
+    editable:
+      activation-mode: Activation Mode
+      basic: Basic
+      custom-styling: Custom Styling
+      disabled: Disabled
+      size: Size
+    empty:
+      basic: Basic
+      custom-styling: Custom Styling
+      icon: Icon
+      slot: Slot
+    form:
+      basic: Basic
+      valibot: Valibot
+      zod: Zod
+    hover-card:
+      basic: Basic
+      custom-styling: Custom Styling
+      delay: Delay
+    input:
+      basic: Basic
+      clearable: Clearable
+      disabled: Disabled
+      slot: Slot
+    input-number:
+      basic: Basic
+      center: Center
+      clearable: Clearable
+      slot: Slot
+    input-otp:
+      basic: Basic
+      custom-slot: Custom Slot
+      disabled: Disabled
+      placeholder: Placeholder
+    kbd:
+      basic: Basic
+      raised: Raised
+      size: Size
+      variant: Variant
+    label:
+      basic: Basic
+    layout:
+      basic: Basic
+      classic: Classic
+    link:
+      basic: Basic
+      href: Href
+    list:
+      basic: Basic
+    menu:
+      basic: Basic
+    menubar:
+      basic: Basic
+      controlled: Controlled
+      rtl: RTL
+    month-picker:
+      basic: Basic
+      custom-styling: Custom Styling
+      disabled: Disabled
+      size: Size
+    month-range-picker:
+      basic: Basic
+      custom-styling: Custom Styling
+      disabled: Disabled
+      size: Size
+    navigation-menu:
+      basic: Basic
+      horizontal: Horizontal
+      vertical: Vertical
+    page-tabs:
+      basic: Basic
+    pagination:
+      action: Action
+      basic: Basic
+      shape: Shape
+      show: Show
+      size: Size
+      slot: Slot
+      variant: Variant
+    password:
+      basic: Basic
+      clearable: Clearable
+      disabled: Disabled
+      icon: Icon
+    popconfirm:
+      basic: Basic
+    popover:
+      basic: Basic
+    progress:
+      basic: Basic
+      circle: Circle
+      color: Color
+      provider: Provider
+      size: Size
+      slot: Slot
+      state: State
+    radio-group:
+      basic: Basic
+      card: Card
+      color: Color
+      size: Size
+      variant: Variant
+    range-calendar:
+      basic: Basic
+      custom-styling: Custom Styling
+      disabled: Disabled
+      two-months: Two Months
+    scroll-area:
+      basic: Basic
+      custom-styling: Custom Styling
+      horizontal: Horizontal
+      type: Type
+    segment:
+      basic: Basic
+      icon: Icon
+      shape: Shape
+      vertical: Vertical
+    select:
+      basic: Basic
+      default-value: Default Value
+      disabled: Disabled
+      group: Group
+      multiple: Multiple
+      separator: Separator
+      single-clearable: Single Clearable
+    separator:
+      align: Align
+      basic: Basic
+      border: Border
+      orientation: Orientation
+    skeleton:
+      animated: Animated
+      basic: Basic
+      custom-size: Custom Size
+      shape: Shape
+      size: Size
+    slider:
+      basic: Basic
+      color: Color
+      disabled: Disabled
+      orientation: Orientation
+      range: Range
+      size: Size
+    spinner:
+      basic: Basic
+      color: Color
+      custom-styling: Custom Styling
+      icon: Icon
+      size: Size
+    splitter:
+      basic: Basic
+      collapsible: Collapsible
+      custom-handle: Custom Handle
+      disabled: Disabled
+      vertical: Vertical
+    stepper:
+      basic: Basic
+      custom-styling: Custom Styling
+      linear: Linear
+      vertical: Vertical
+    switch:
+      basic: Basic
+      shape: Shape
+      size: Size
+      slot: Slot
+    table:
+      basic: Basic
+      bordered: Bordered
+      bottom: Bottom
+      empty: Empty
+      expandable: Expandable
+      filtering: Filtering
+      fixed: Fixed
+      footer: Footer
+      grouped: Grouped
+      multiple-selection: Multiple Selection
+      resizable: Resizable
+      rounded: Rounded
+      single-selection: Single Selection
+      sizes: Sizes
+      sorting: Sorting
+      striped: Striped
+      tree: Tree
+      variant: Variant
+      virtualized: Virtualized
+    tabs:
+      basic: Basic
+      custom: Custom
+      fill: Fill
+      horizontal: Horizontal
+      vertical: Vertical
+    tag:
+      basic: Basic
+      closable: Closable
+      color: Color
+      shape: Shape
+      size: Size
+      slot: Slot
+      variant: Variant
+    tags-input:
+      basic: Basic
+      clear: Clear
+      disabled: Disabled
+      object-value: Object Value
+    textarea:
+      autosize: Autosize
+      basic: Basic
+      clearable: Clearable
+      counter: Counter
+      disabled: Disabled
+      footer: Footer
+    time-field:
+      basic: Basic
+      custom-styling: Custom Styling
+      disabled: Disabled
+      seconds: Seconds
+    time-picker:
+      basic: Basic
+      custom-styling: Custom Styling
+      disabled: Disabled
+      size: Size
+    time-range-field:
+      basic: Basic
+      custom-styling: Custom Styling
+      disabled: Disabled
+      seconds: Seconds
+    time-range-picker:
+      basic: Basic
+      custom-styling: Custom Styling
+      disabled: Disabled
+      size: Size
+    toast:
+      action: Action
+      appearance: Appearance
+      basic: Basic
+      control: Control
+      position: Position
+      promise: Promise
+      stack: Stack
+      types: Types
+    toggle:
+      basic: Basic
+      disabled: Disabled
+      shape: Shape
+      size: Size
+      variant: Variant
+    toggle-group:
+      basic: Basic
+      multiple: Multiple
+      variant: Variant
+      vertical: Vertical
+    toolbar:
+      basic: Basic
+      link: Link
+      toggle-group: Toggle Group
+      vertical: Vertical
+    tooltip:
+      basic: Basic
+    tree:
+      basic: Basic
+      virtualizer: Virtualizer
+    tree-menu:
+      basic: Basic
+    virtualizer:
+      basic: Basic
+      dynamic: Dynamic
+      horizontal: Horizontal
+    visually-hidden:
+      basic: Basic
+    year-picker:
+      basic: Basic
+      custom-styling: Custom Styling
+      disabled: Disabled
+      size: Size
+    year-range-picker:
+      basic: Basic
+      custom-styling: Custom Styling
+      disabled: Disabled
+      size: Size
 locale:
   en: English
   zh_cn: Chinese

@@ -24,24 +24,21 @@ const activeLabel = computed(() => modes.find(item => item.value === mode.value)
 </script>
 
 <template>
-  <div>
-    <h3 class="playground-title">Footer Slot</h3>
-    <div class="w-80 lt-md:w-auto">
-      <STextarea :maxlength="200" placeholder="Ask, Search or Chat..." autosize>
-        <template #footer>
-          <div class="flex-y-center justify-between gap-2 px-2 py-1">
-            <div class="flex-y-center gap-2">
-              <SButtonIcon icon="lucide:plus" color="accent" variant="pure" shape="circle" />
-              <SDropdownMenuRadio v-model="mode" :items="modes" :content-props="{ placement: 'top' }">
-                <template #trigger>
-                  <SButton color="accent" variant="ghost">{{ activeLabel }}</SButton>
-                </template>
-              </SDropdownMenuRadio>
-            </div>
-            <SButtonIcon icon="lucide:arrow-up" color="primary" variant="solid" shape="circle" />
+  <div class="w-80 lt-md:w-auto">
+    <STextarea :maxlength="200" placeholder="Ask, Search or Chat..." autosize>
+      <template #footer>
+        <div class="flex-y-center justify-between gap-2 px-2 py-1">
+          <div class="flex-y-center gap-2">
+            <SButtonIcon icon="lucide:plus" color="accent" variant="pure" shape="circle" />
+            <SDropdownMenuRadio v-model="mode" :items="modes" :content-props="{ placement: 'top' }">
+              <template #trigger>
+                <SButton color="accent" variant="ghost">{{ activeLabel }}</SButton>
+              </template>
+            </SDropdownMenuRadio>
           </div>
-        </template>
-      </STextarea>
-    </div>
+          <SButtonIcon icon="lucide:arrow-up" color="primary" variant="solid" shape="circle" />
+        </div>
+      </template>
+    </STextarea>
   </div>
 </template>

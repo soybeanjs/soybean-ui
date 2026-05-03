@@ -1,19 +1,15 @@
 <template>
-  <div>
-    <h3 class="playground-title">Custom Styling</h3>
-    <div class="flex-c gap-3 w-100 lt-md:w-auto">
-      <SEditable
-        default-value="Custom editable surface"
-        :ui="{
-          area: 'border-primary/40 bg-primary/5',
-          preview: 'font-medium text-primary',
-          input: 'font-medium text-primary',
-          controls: 'gap-0.5',
-          editTrigger: 'text-primary',
-          submitTrigger: 'text-success',
-          cancelTrigger: 'text-destructive'
-        }"
-      />
-    </div>
-  </div>
+  <SEditable
+    default-value="Custom editable surface"
+    :ui="{
+      area: 'border-primary/40 bg-primary/5',
+      preview: 'font-medium text-primary',
+      input: 'font-medium text-primary',
+      controls: 'gap-0.5',
+      editTrigger: 'text-primary',
+      submitTrigger: 'text-success',
+      cancelTrigger: 'text-destructive'
+    }"
+    class="flex-c gap-3 w-100 lt-md:w-auto"
+  />
 </template>

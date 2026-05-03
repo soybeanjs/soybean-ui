@@ -11,10 +11,7 @@ const items: RadioGroupOptionData<string>[] = [
 </script>
 
 <template>
-  <div>
-    <h3 class="playground-title">Size</h3>
-    <div class="flex-c gap-3">
-      <SRadioGroup v-for="size in themeSizeOptions" :key="size.value" :items="items" :size="size.value" />
-    </div>
+  <div class="flex-c gap-3">
+    <SRadioGroup v-for="size in themeSizeOptions" :key="size.value" :items="items" :size="size.value" />
   </div>
 </template>

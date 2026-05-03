@@ -33,12 +33,8 @@ function openPromiseToast(shouldFail: boolean) {
 </script>
 
 <template>
-  <div class="flex-c gap-3">
-    <h3 class="playground-title">Promise</h3>
-
-    <div class="flex flex-wrap gap-2">
-      <SButton variant="pure" @click="openPromiseToast(false)">Resolve Promise</SButton>
-      <SButton color="destructive" variant="outline" @click="openPromiseToast(true)">Reject Promise</SButton>
-    </div>
+  <div class="flex flex-wrap gap-2">
+    <SButton variant="pure" @click="openPromiseToast(false)">Resolve Promise</SButton>
+    <SButton color="destructive" variant="outline" @click="openPromiseToast(true)">Reject Promise</SButton>
   </div>
 </template>

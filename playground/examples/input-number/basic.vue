@@ -3,10 +3,5 @@ import { SInputNumber } from '@soybeanjs/ui';
 </script>
 
 <template>
-  <div>
-    <h3 class="playground-title">Basic</h3>
-    <div class="w-60 lt-md:w-auto">
-      <SInputNumber placeholder="Please input" />
-    </div>
-  </div>
+  <SInputNumber placeholder="Please input" class="w-60 lt-md:w-auto" />
 </template>

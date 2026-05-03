@@ -33,14 +33,10 @@ function openMessageToast() {
 </script>
 
 <template>
-  <div class="flex-c gap-3">
-    <h3 class="playground-title">Type Variants</h3>
-
-    <div class="flex flex-wrap gap-2">
-      <SButton color="info" variant="outline" @click="openInfoToast">Info</SButton>
-      <SButton color="warning" variant="outline" @click="openWarningToast">Warning + Rich Colors</SButton>
-      <SButton color="primary" variant="outline" @click="openLoadingToast">Loading + Non-dismissible</SButton>
-      <SButton variant="pure" @click="openMessageToast">Message Alias</SButton>
-    </div>
+  <div class="flex flex-wrap gap-2">
+    <SButton color="info" variant="outline" @click="openInfoToast">Info</SButton>
+    <SButton color="warning" variant="outline" @click="openWarningToast">Warning + Rich Colors</SButton>
+    <SButton color="primary" variant="outline" @click="openLoadingToast">Loading + Non-dismissible</SButton>
+    <SButton variant="pure" @click="openMessageToast">Message Alias</SButton>
   </div>
 </template>

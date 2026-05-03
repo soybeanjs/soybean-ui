@@ -25,16 +25,13 @@ const data: TableRowData[] = Array.from({ length: 1000 }, (_, index) => ({
 </script>
 
 <template>
-  <div>
-    <h3 class="playground-title">Virtualized</h3>
-    <STable
-      virtual
-      height="280px"
-      bordered
-      :estimate-size="40"
-      :columns="columns"
-      :data="data"
-      :row-key="row => row.id"
-    />
-  </div>
+  <STable
+    virtual
+    height="280px"
+    bordered
+    :estimate-size="40"
+    :columns="columns"
+    :data="data"
+    :row-key="row => row.id"
+  />
 </template>

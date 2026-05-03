@@ -29,13 +29,10 @@ const items: AccordionOptionData[] = [
 </script>
 
 <template>
-  <div>
-    <h3 class="playground-title">Custom Icon</h3>
-    <SAccordion v-model="multi" multiple :items="items">
-      <template #trigger-icon="{ open }">
-        <Icon v-if="open" icon="lucide:minus" class="ml-auto" />
-        <Icon v-else icon="lucide:plus" class="ml-auto" />
-      </template>
-    </SAccordion>
-  </div>
+  <SAccordion v-model="multi" multiple :items="items">
+    <template #trigger-icon="{ open }">
+      <Icon v-if="open" icon="lucide:minus" class="ml-auto" />
+      <Icon v-else icon="lucide:plus" class="ml-auto" />
+    </template>
+  </SAccordion>
 </template>

@@ -117,18 +117,15 @@ const menuFactory = (tab: PageTabsOptionData, state: PageTabsState) => {
 </script>
 
 <template>
-  <div>
-    <div class="flex-y-center justify-between">
-      <h3 class="playground-title">Basic</h3>
-      <SSelect v-model="variant" :items="variants" class="w-30" />
-    </div>
-    <SPageTabs
-      v-model="modelValue"
-      v-model:items="items"
-      :variant="variant"
-      :menu-factory="menuFactory"
-      class="h-12 px-2 border rounded-sm"
-    />
-    <SButton variant="pure" class="mt-4" @click="addTab">Add Tab</SButton>
+  <div class="flex-y-center justify-between">
+    <SSelect v-model="variant" :items="variants" class="w-30" />
   </div>
+  <SPageTabs
+    v-model="modelValue"
+    v-model:items="items"
+    :variant="variant"
+    :menu-factory="menuFactory"
+    class="h-12 px-2 border rounded-sm"
+  />
+  <SButton variant="pure" class="mt-4" @click="addTab">Add Tab</SButton>
 </template>

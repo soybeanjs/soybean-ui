@@ -12,8 +12,5 @@ const items = [
 </script>
 
 <template>
-  <div>
-    <h3 class="playground-title">Vertical</h3>
-    <SStepper v-model="value" orientation="vertical" :items="items" class="max-w-md" />
-  </div>
+  <SStepper v-model="value" orientation="vertical" :items="items" class="max-w-md" />
 </template>

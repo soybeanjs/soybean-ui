@@ -44,8 +44,5 @@ const data: DepartmentRow[] = [
 </script>
 
 <template>
-  <div>
-    <h3 class="playground-title">Tree</h3>
-    <STable v-model:expanded="expanded" bordered :columns="columns" :data="data" :row-key="row => row.id" />
-  </div>
+  <STable v-model:expanded="expanded" bordered :columns="columns" :data="data" :row-key="row => row.id" />
 </template>

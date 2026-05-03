@@ -19,8 +19,5 @@ const items = [
 </script>
 
 <template>
-  <div>
-    <h3 class="playground-title">Link</h3>
-    <SBreadcrumb :items="items" />
-  </div>
+  <SBreadcrumb :items="items" />
 </template>

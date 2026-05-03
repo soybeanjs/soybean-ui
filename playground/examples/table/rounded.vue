@@ -29,8 +29,5 @@ const data: TableData[] = [
 </script>
 
 <template>
-  <div>
-    <h3 class="playground-title">Rounded: false</h3>
-    <STable :rounded="false" :columns="columns" :data="data" :row-key="row => row.id" />
-  </div>
+  <STable :rounded="false" :columns="columns" :data="data" :row-key="row => row.id" />
 </template>

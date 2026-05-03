@@ -24,12 +24,9 @@ const data: TableData[] = [
 </script>
 
 <template>
-  <div>
-    <h3 class="playground-title">Bottom slot</h3>
-    <STable :columns="columns" :data="data" :row-key="row => row.id">
-      <template #bottom>
-        <div class="p-4">This is the bottom slot content</div>
-      </template>
-    </STable>
-  </div>
+  <STable :columns="columns" :data="data" :row-key="row => row.id">
+    <template #bottom>
+      <div class="p-4">This is the bottom slot content</div>
+    </template>
+  </STable>
 </template>

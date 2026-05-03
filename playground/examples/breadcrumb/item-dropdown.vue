@@ -44,17 +44,14 @@ const dropdownItems: DropdownItem[] = [
 </script>
 
 <template>
-  <div>
-    <h3 class="playground-title">Item Dropdown</h3>
-    <SBreadcrumb :items="dropdownItems">
-      <template #default="{ item }">
-        <SDropdownMenu v-if="item.items" :items="item.items" :modal="false" trigger="hover">
-          <template #trigger>
-            <SBreadcrumbPage class="cursor-pointer">{{ item.label }}</SBreadcrumbPage>
-          </template>
-        </SDropdownMenu>
-        <SBreadcrumbPage v-else>{{ item.label }}</SBreadcrumbPage>
-      </template>
-    </SBreadcrumb>
-  </div>
+  <SBreadcrumb :items="dropdownItems">
+    <template #default="{ item }">
+      <SDropdownMenu v-if="item.items" :items="item.items" :modal="false" trigger="hover">
+        <template #trigger>
+          <SBreadcrumbPage class="cursor-pointer">{{ item.label }}</SBreadcrumbPage>
+        </template>
+      </SDropdownMenu>
+      <SBreadcrumbPage v-else>{{ item.label }}</SBreadcrumbPage>
+    </template>
+  </SBreadcrumb>
 </template>

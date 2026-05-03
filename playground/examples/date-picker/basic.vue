@@ -8,9 +8,6 @@ const selectedDate = ref<any>();
 </script>
 
 <template>
-  <div>
-    <h3 class="playground-title">Basic</h3>
-    <SDatePicker v-model="selectedDate" :default-placeholder="new CalendarDate(2024, 1, 1)" />
-    <p v-if="selectedDate" class="mt-2 text-sm text-muted-foreground">Selected: {{ selectedDate.toString() }}</p>
-  </div>
+  <SDatePicker v-model="selectedDate" :default-placeholder="new CalendarDate(2024, 1, 1)" />
+  <p v-if="selectedDate" class="mt-2 text-sm text-muted-foreground">Selected: {{ selectedDate.toString() }}</p>
 </template>

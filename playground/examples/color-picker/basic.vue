@@ -20,8 +20,5 @@ const swatches = [
 </script>
 
 <template>
-  <div>
-    <h3 class="playground-title">Basic</h3>
-    <SColorPicker v-model="color" :swatches="swatches" placement="bottom-start" />
-  </div>
+  <SColorPicker v-model="color" :swatches="swatches" placement="bottom-start" />
 </template>

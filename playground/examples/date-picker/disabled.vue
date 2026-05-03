@@ -8,8 +8,5 @@ const selectedDate = ref<any>();
 </script>
 
 <template>
-  <div>
-    <h3 class="playground-title">Disabled</h3>
-    <SDatePicker v-model="selectedDate" :default-placeholder="new CalendarDate(2024, 1, 1)" disabled />
-  </div>
+  <SDatePicker v-model="selectedDate" :default-placeholder="new CalendarDate(2024, 1, 1)" disabled />
 </template>

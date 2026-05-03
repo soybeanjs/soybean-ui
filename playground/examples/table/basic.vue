@@ -36,16 +36,15 @@ const data: TableData[] = [
 </script>
 
 <template>
-  <div>
-    <h3 class="playground-title">Basic</h3>
-    <STable caption="Table Caption" :columns="columns" :data="data" :row-key="row => row.id" class="h-60">
-      <template #header-address>Header Address</template>
-      <template #address="{ value }">
-        <span class="text-red">{{ value }}</span>
-      </template>
-      <template #details.description="{ value }">
-        <span class="text-blue">{{ value }}</span>
-      </template>
-    </STable>
-  </div>
+  <STable caption="Table Caption" :columns="columns" :data="data" :row-key="row => row.id" class="h-60">
+    <template #header-address>
+      Header Address
+    </template>
+    <template #address="{ value }">
+      <span class="text-red">{{ value }}</span>
+    </template>
+    <template #details.description="{ value }">
+      <span class="text-blue">{{ value }}</span>
+    </template>
+  </STable>
 </template>

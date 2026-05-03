@@ -1,6 +1,6 @@
 import type { Locale } from 'vue-i18n';
 import { createI18n } from 'vue-i18n';
-import type { UserModule } from '@/types';
+import type { UserModule } from '../types';
 
 type LocaleMessages = Record<string, unknown>;
 type LocaleMessageLoader = () => Promise<{ default: LocaleMessages }>;

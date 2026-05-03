@@ -7,7 +7,6 @@ const otp = ref('12');
 
 <template>
   <div class="flex-c gap-3">
-    <h3 class="playground-title">Custom Slot</h3>
     <div class="w-70 lt-md:w-auto">
       <SInputOtp v-model="otp" :maxlength="6" aria-label="Security code">
         <template #default="{ slots }">

@@ -22,10 +22,9 @@ const items = [
 </script>
 
 <template>
-  <div>
-    <h3 class="playground-title">Custom Separator</h3>
-    <SBreadcrumb :items="items">
-      <template #separator>&nbsp;/&nbsp;</template>
-    </SBreadcrumb>
-  </div>
+  <SBreadcrumb :items="items">
+    <template #separator>
+      &nbsp;/&nbsp;
+    </template>
+  </SBreadcrumb>
 </template>

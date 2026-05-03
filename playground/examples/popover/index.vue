@@ -1,10 +1,7 @@
 <script setup lang="ts">
-import { SCard } from '@soybeanjs/ui';
-import DemoPopoverBasic from './basic.vue';
+import PlaygroundGallery from '../../components/playground-gallery.vue';
 </script>
 
 <template>
-  <SCard title="Popover" split>
-    <DemoPopoverBasic />
-  </SCard>
+  <PlaygroundGallery component="popover" />
 </template>

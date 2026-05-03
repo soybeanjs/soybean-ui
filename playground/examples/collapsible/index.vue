@@ -1,10 +1,7 @@
 <script setup lang="ts">
-import { SCard } from '@soybeanjs/ui';
-import DemoCollapsibleBasic from './basic.vue';
+import PlaygroundGallery from '../../components/playground-gallery.vue';
 </script>
 
 <template>
-  <SCard title="Collapsible" split>
-    <DemoCollapsibleBasic />
-  </SCard>
+  <PlaygroundGallery component="collapsible" />
 </template>

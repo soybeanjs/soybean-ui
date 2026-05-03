@@ -12,8 +12,5 @@ const items = [
 </script>
 
 <template>
-  <div>
-    <h3 class="playground-title">Basic</h3>
-    <SStepper v-model="value" :items="items" />
-  </div>
+  <SStepper v-model="value" :items="items" />
 </template>

@@ -11,8 +11,5 @@ const value = shallowRef({
 </script>
 
 <template>
-  <div class="flex-c gap-3">
-    <h3 class="playground-title">Basic</h3>
-    <SYearRangePicker v-model="value" class="w-90 lt-md:w-auto" aria-label="Project year range" />
-  </div>
+  <SYearRangePicker v-model="value" class="w-90 lt-md:w-auto" aria-label="Project year range" />
 </template>

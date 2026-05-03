@@ -10,17 +10,14 @@ const onComplete = () => {
 </script>
 
 <template>
-  <div class="flex-c gap-3">
-    <h3 class="playground-title">Basic</h3>
-    <div class="w-70 lt-md:w-auto">
-      <SInputOtp
-        v-model="otp"
-        :maxlength="6"
-        placeholder="000000"
-        aria-label="Verification code"
-        @complete="onComplete"
-      />
-    </div>
-    <p class="text-sm text-muted-foreground">Value: {{ otp || '-' }}</p>
+  <div class="w-70 lt-md:w-auto">
+    <SInputOtp
+      v-model="otp"
+      :maxlength="6"
+      placeholder="000000"
+      aria-label="Verification code"
+      @complete="onComplete"
+    />
   </div>
+  <p class="text-sm text-muted-foreground">Value: {{ otp || '-' }}</p>
 </template>

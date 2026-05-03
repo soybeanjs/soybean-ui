@@ -3,13 +3,10 @@ import { SButton, SBottomSheet } from '@soybeanjs/ui';
 </script>
 
 <template>
-  <div>
-    <h3 class="playground-title">Basic</h3>
-    <SBottomSheet title="Bottom Sheet Title" description="Bottom Sheet Description">
-      <template #trigger>
-        <SButton variant="pure">Open</SButton>
-      </template>
-      <div>Bottom Sheet Content</div>
-    </SBottomSheet>
-  </div>
+  <SBottomSheet title="Bottom Sheet Title" description="Bottom Sheet Description">
+    <template #trigger>
+      <SButton variant="pure">Open</SButton>
+    </template>
+    <div>Bottom Sheet Content</div>
+  </SBottomSheet>
 </template>

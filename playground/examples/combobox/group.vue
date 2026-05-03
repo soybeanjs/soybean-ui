@@ -26,10 +26,5 @@ const items: ComboboxOptionData[] = [
 </script>
 
 <template>
-  <div>
-    <h3 class="playground-title">Group</h3>
-    <div class="w-80 lt-md:w-auto">
-      <SCombobox v-model="value" :items="items" placeholder="Choose a stack" search-placeholder="Search stacks" />
-    </div>
-  </div>
+  <SCombobox v-model="value" :items="items" placeholder="Choose a stack" search-placeholder="Search stacks" class="w-80 lt-md:w-auto" />
 </template>

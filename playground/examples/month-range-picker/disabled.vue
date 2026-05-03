@@ -10,8 +10,5 @@ const value = {
 </script>
 
 <template>
-  <div class="flex-c gap-3">
-    <h3 class="playground-title">Disabled</h3>
-    <SMonthRangePicker class="w-90 lt-md:w-auto" :model-value="value" disabled aria-label="Disabled billing quarter" />
-  </div>
+  <SMonthRangePicker class="w-90 lt-md:w-auto" :model-value="value" disabled aria-label="Disabled billing quarter" />
 </template>

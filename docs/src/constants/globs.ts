@@ -34,10 +34,12 @@ function getAllPlaygroundComponents() {
         components[componentName] = {};
       }
 
-      components[componentName][fileName] = {
-        component: playgroundComponents[key].default,
-        code: playgroundComponentCodes[key]?.default || ''
-      };
+      if (fileName !== 'index') {
+        components[componentName][fileName] = {
+          component: playgroundComponents[key].default,
+          code: playgroundComponentCodes[key]?.default || ''
+        };
+      }
     }
   }
 

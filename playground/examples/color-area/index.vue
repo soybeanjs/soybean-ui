@@ -1,12 +1,7 @@
 <script setup lang="ts">
-import { SCard } from '@soybeanjs/ui';
-import DemoColorAreaBasic from './basic.vue';
-import DemoColorAreaOklch from './oklch.vue';
+import PlaygroundGallery from '../../components/playground-gallery.vue';
 </script>
 
 <template>
-  <SCard title="ColorArea" split :ui="{ content: 'flex-c gap-4' }">
-    <DemoColorAreaBasic />
-    <DemoColorAreaOklch />
-  </SCard>
+  <PlaygroundGallery component="color-area" />
 </template>

@@ -1,7 +1,10 @@
 <script setup lang="ts">
+import { computed } from 'vue';
+import { useI18n } from 'vue-i18n';
 import type { TabsOptionData } from '@soybeanjs/ui';
 import { pascalCase } from '@soybeanjs/utils';
 import { allPlaygroundComponents } from '../constants/globs';
+import CodeBlock from './code-block.vue';
 
 interface Props {
   component: string;
@@ -9,17 +12,25 @@ interface Props {
 
 const props = defineProps<Props>();
 
-const { t } = useI18n();
+const { te, t } = useI18n();
+
+function resolveExampleTitle(file: string) {
+  const key = `playground.examples.${props.component}.${file}`;
+
+  return te(key) ? t(key) : pascalCase(file);
+}
 
 const components = computed(() => {
   const map = allPlaygroundComponents[props.component];
   if (!map) return [];
 
-  return Object.keys(map).map(file => {
+  const files = ['basic', ...Object.keys(map).filter(file => file !== 'basic')];
+
+  return files.map(file => {
     const { code = '', component = null } = map[file] || {};
 
     return {
-      title: pascalCase(file),
+      title: resolveExampleTitle(file),
       file,
       code,
       component

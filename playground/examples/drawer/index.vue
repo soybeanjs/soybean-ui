@@ -1,14 +1,7 @@
 <script setup lang="ts">
-import { SCard } from '@soybeanjs/ui';
-import DemoDrawerSide from './side.vue';
-import DemoDrawerScroll from './scroll.vue';
-import DemoDrawerBasic from './basic.vue';
+import PlaygroundGallery from '../../components/playground-gallery.vue';
 </script>
 
 <template>
-  <SCard title="Drawer" split :ui="{ content: 'flex-c gap-4' }">
-    <DemoDrawerBasic />
-    <DemoDrawerSide />
-    <DemoDrawerScroll />
-  </SCard>
+  <PlaygroundGallery component="drawer" />
 </template>
