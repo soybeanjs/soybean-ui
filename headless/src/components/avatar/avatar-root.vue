@@ -14,7 +14,7 @@ provideAvatarRootContext();
 </script>
 
 <template>
-  <span :class="cls">
+  <span data-slot="root" :class="cls">
     <slot />
   </span>
 </template>

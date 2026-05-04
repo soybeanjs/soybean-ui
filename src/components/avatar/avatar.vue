@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import { computed } from 'vue';
-import { AvatarFallback, AvatarImage, AvatarRoot, provideAvatarUi } from '@soybeanjs/headless/avatar';
+import { computed, useSlots } from 'vue';
+import { AvatarCompact, provideAvatarUi } from '@soybeanjs/headless/avatar';
 import { useOmitProps } from '@soybeanjs/headless/composables';
+import { keysOf } from '@soybeanjs/utils';
 import { mergeSlotVariants } from '@/theme';
 import { avatarVariants } from './variants';
 import type { AvatarEmits, AvatarProps } from './types';
@@ -14,7 +15,11 @@ const props = defineProps<AvatarProps>();
 
 const emit = defineEmits<AvatarEmits>();
 
-const forwardedProps = useOmitProps(props, ['class', 'size', 'ui', 'fallbackLabel', 'imageProps', 'fallbackProps']);
+const slots = useSlots();
+
+const forwardedProps = useOmitProps(props, ['class', 'size', 'ui']);
+
+const slotNames = computed(() => keysOf(slots));
 
 const ui = computed(() => {
   const variants = avatarVariants({ size: props.size });
@@ -23,27 +28,12 @@ const ui = computed(() => {
 });
 
 provideAvatarUi(ui);
-
-const imageProps = computed(() => ({
-  ...props.imageProps,
-  src: props.src
-}));
-
-const fallbackProps = computed(() => ({
-  ...props.fallbackProps,
-  delayMs: props.delayMs
-}));
 </script>
 
 <template>
-  <AvatarRoot v-bind="forwardedProps">
-    <slot>
-      <slot name="image">
-        <AvatarImage v-bind="imageProps" @loading-status-change="emit('loadingStatusChange', $event)" />
-      </slot>
-      <AvatarFallback v-bind="fallbackProps">
-        <slot name="fallback">{{ fallbackLabel }}</slot>
-      </AvatarFallback>
-    </slot>
-  </AvatarRoot>
+  <AvatarCompact v-bind="forwardedProps" @loading-status-change="emit('loadingStatusChange', $event)">
+    <template v-for="slotName in slotNames" #[slotName]>
+      <slot :name="slotName" />
+    </template>
+  </AvatarCompact>
 </template>

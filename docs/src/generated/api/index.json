@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-03T14:03:35.617Z",
+  "generatedAt": "2026-05-04T04:05:41.321Z",
   "schemaVersion": 4,
   "components": {
     "accordion": {
@@ -64,7 +64,7 @@
     "avatar": {
       "component": "avatar",
       "file": "avatar.json",
-      "symbols": ["Avatar", "AvatarFallback", "AvatarImage", "AvatarRoot"]
+      "symbols": ["Avatar", "AvatarCompact", "AvatarFallback", "AvatarImage", "AvatarRoot"]
     },
     "backtop": {
       "component": "backtop",

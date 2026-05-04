@@ -28,7 +28,7 @@ export const components = {
     'AutocompleteItemIndicator',
     'AutocompleteSeparator'
   ],
-  avatar: ['AvatarRoot', 'AvatarImage', 'AvatarFallback'],
+  avatar: ['AvatarCompact', 'AvatarRoot', 'AvatarImage', 'AvatarFallback'],
   backtop: ['Backtop'],
   badge: ['BadgeRoot', 'BadgeContent'],
   bottomSheet: [

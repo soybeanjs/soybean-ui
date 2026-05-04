@@ -412,6 +412,30 @@
         "type": ""
       },
       "headless_src_components_avatar_types": {
+        "avatarcompactemits": {
+          "callables": {
+            "loadingstatuschange": "当图片加载状态发生变化时，调用事件处理程序。这对控制图片加载过程中的渲染非常有用。\n图像加载时的渲染内容。"
+          },
+          "emits": "头像紧凑组件的输出。"
+        },
+        "avatarcompactprops": {
+          "members": {
+            "delayms": "可用于延迟回退呈现，这样只有连接速度较慢的用户才会看到。",
+            "fallbacklabel": "在未提供自定义回退槽时渲染回退文本。",
+            "fallbackprops": "道具转发到后备元素。",
+            "imageprops": "将道具转发到图像元素。",
+            "src": "图片源 URL。"
+          },
+          "props": "感谢头像紧凑组件。"
+        },
+        "avatarcompactslots": {
+          "callables": {
+            "default": "默认插槽的自定义内容。",
+            "fallback": "后备槽的自定义内容。",
+            "image": "图像插槽的自定义内容。"
+          },
+          "slots": "头像紧凑组件的插槽。"
+        },
         "avatarfallbackprops": {
           "members": {
             "delayms": "可延迟渲染，以便只显示给连接速度较慢的用户。"

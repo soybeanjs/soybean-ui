@@ -41,6 +41,43 @@ export interface AvatarFallbackProps extends /** @vue-ignore */ HTMLAttributes {
 }
 
 /**
+ * Props for the avatar compact component.
+ */
+export interface AvatarCompactProps extends AvatarRootProps {
+  /** The image source URL. */
+  src: string;
+  /**
+   * Useful for delaying fallback rendering so it only appears for those with slower connections.
+   *
+   * @defaultValue undefined
+   */
+  delayMs?: number;
+  /** Fallback text rendered when no custom fallback slot is provided. */
+  fallbackLabel?: string;
+  /** Props forwarded to the image element. */
+  imageProps?: AvatarImageProps;
+  /** Props forwarded to the fallback element. */
+  fallbackProps?: AvatarFallbackProps;
+}
+
+/**
+ * Emits for the avatar compact component.
+ */
+export type AvatarCompactEmits = AvatarImageEmits;
+
+/**
+ * Slots for the avatar compact component.
+ */
+export type AvatarCompactSlots = {
+  /** Custom content for the default slot. */
+  default?: () => any;
+  /** Custom content for the image slot. */
+  image?: () => any;
+  /** Custom content for the fallback slot. */
+  fallback?: () => any;
+};
+
+/**
  * Available UI slots for the avatar component.
  */
 export type AvatarUiSlot = 'root' | 'image' | 'fallback';

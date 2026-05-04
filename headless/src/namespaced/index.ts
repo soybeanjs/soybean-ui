@@ -35,6 +35,7 @@ import {
   AutocompleteSeparator,
   AutocompleteTrigger,
   AutocompleteViewport,
+  AvatarCompact,
   AvatarFallback,
   AvatarImage,
   AvatarRoot,
@@ -582,10 +583,12 @@ export { Arrow };
 export { AspectRatio };
 
 export const Avatar = {
+  Compact: AvatarCompact,
   Root: AvatarRoot,
   Image: AvatarImage,
   Fallback: AvatarFallback
 } as {
+  Compact: typeof AvatarCompact;
   Root: typeof AvatarRoot;
   Image: typeof AvatarImage;
   Fallback: typeof AvatarFallback;

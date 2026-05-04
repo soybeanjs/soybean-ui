@@ -34,6 +34,7 @@ watch(
 <template>
   <img
     v-show="imageLoadingStatus === 'loaded'"
+    data-slot="image"
     :class="cls"
     :src="src"
     :referrerpolicy="referrerpolicy"

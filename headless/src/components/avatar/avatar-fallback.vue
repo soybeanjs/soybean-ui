@@ -31,7 +31,7 @@ watchEffect(() => {
 </script>
 
 <template>
-  <span v-if="visible" :class="cls">
+  <span v-if="visible" data-slot="fallback" :class="cls">
     <slot />
   </span>
 </template>

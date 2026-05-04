@@ -412,6 +412,30 @@
         "type": ""
       },
       "headless_src_components_avatar_types": {
+        "avatarcompactemits": {
+          "callables": {
+            "loadingstatuschange": "Event handler called when the image loading status changes. This is useful for controlling what to render as the\nimage is loading."
+          },
+          "emits": "Emits for the avatar compact component."
+        },
+        "avatarcompactprops": {
+          "members": {
+            "delayms": "Useful for delaying fallback rendering so it only appears for those with slower connections.",
+            "fallbacklabel": "Fallback text rendered when no custom fallback slot is provided.",
+            "fallbackprops": "Props forwarded to the fallback element.",
+            "imageprops": "Props forwarded to the image element.",
+            "src": "The image source URL."
+          },
+          "props": "Props for the avatar compact component."
+        },
+        "avatarcompactslots": {
+          "callables": {
+            "default": "Custom content for the default slot.",
+            "fallback": "Custom content for the fallback slot.",
+            "image": "Custom content for the image slot."
+          },
+          "slots": "Slots for the avatar compact component."
+        },
         "avatarfallbackprops": {
           "members": {
             "delayms": "Useful for delaying rendering so it only appears for those with slower connections."
