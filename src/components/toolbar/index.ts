@@ -1,4 +1,4 @@
-export type * from '@soybeanjs/headless/toolbar';
+export { default as SToolbar } from './toolbar.vue';
 export {
   ToolbarButton as SToolbarButton,
   ToolbarLink as SToolbarLink,
@@ -6,6 +6,6 @@ export {
   ToolbarToggleGroup as SToolbarToggleGroup,
   ToolbarToggleItem as SToolbarToggleItem
 } from '@soybeanjs/headless/toolbar';
-export { default as SToolbar } from './toolbar.vue';
 
+export type * from '@soybeanjs/headless/toolbar';
 export type * from './types';

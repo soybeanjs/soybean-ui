@@ -43,3 +43,5 @@ export type ToggleGroupEmits<M extends boolean = false, T extends DefinedValue =
   M,
   T
 >;
+
+export type { ToggleGroupVariant };
