@@ -3233,6 +3233,29 @@
         }
       },
       "headless_src_components_empty_types": {
+        "emptycompactprops": {
+          "members": {
+            "contentprops": "Properties forwarded to the content element.",
+            "description": "Description text rendered by the component.",
+            "descriptionprops": "Properties forwarded to the description element.",
+            "headerprops": "Properties forwarded to the header element.",
+            "icon": "Icon rendered by the component.",
+            "mediaprops": "Properties forwarded to the media element.",
+            "title": "Title text rendered by the component.",
+            "titleprops": "Properties forwarded to the title element."
+          },
+          "props": "Properties for the empty compact component."
+        },
+        "emptycompactslots": {
+          "callables": {
+            "content": "Custom content for the content slot.",
+            "default": "Custom content for the default slot.",
+            "description": "Custom content for the description slot.",
+            "media": "Custom content for the media slot.",
+            "title": "Custom content for the title slot."
+          },
+          "slots": "Slots for the empty compact component."
+        },
         "emptycontentprops": {
           "props": "Properties for the empty content component."
         },
@@ -9586,16 +9609,23 @@
             "headerprops": "Properties forwarded to the header element.",
             "icon": "Icon rendered by the component.",
             "mediaprops": "Properties forwarded to the media element.",
-            "mediavariant": "Media variant.",
+            "size": "Size variant of the component.",
             "title": "Title text rendered by the component.",
             "titleprops": "Properties forwarded to the title element.",
             "ui": "Per-slot class overrides for the component."
           },
           "props": "Properties for the empty component."
+        },
+        "emptyslots": {
+          "callables": {
+            "content": "Custom content for the content slot.",
+            "default": "Custom content for the default slot.",
+            "description": "Custom content for the description slot.",
+            "media": "Custom content for the media slot.",
+            "title": "Custom content for the title slot."
+          },
+          "slots": "Slots for the empty component."
         }
-      },
-      "src_components_empty_variants": {
-        "emptymediavariant": ""
       },
       "src_components_form_types": {
         "formfieldbaseprops": {

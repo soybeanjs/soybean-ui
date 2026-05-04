@@ -226,6 +226,7 @@ import {
   EditablePreview,
   EditableRoot,
   EditableSubmitTrigger,
+  EmptyCompact,
   EmptyContent,
   EmptyDescription,
   EmptyHeader,
@@ -1154,6 +1155,7 @@ export const Editable = {
 };
 
 export const Empty = {
+  Compact: EmptyCompact,
   Root: EmptyRoot,
   Header: EmptyHeader,
   Media: EmptyMedia,
@@ -1161,6 +1163,7 @@ export const Empty = {
   Title: EmptyTitle,
   Description: EmptyDescription
 } as {
+  Compact: typeof EmptyCompact;
   Root: typeof EmptyRoot;
   Header: typeof EmptyHeader;
   Media: typeof EmptyMedia;

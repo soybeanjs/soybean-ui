@@ -6,7 +6,7 @@
         "kind": "props",
         "name": "EmptyProps",
         "type": "Interface EmptyProps",
-        "resolvedType": "{ class?: string | Record<string, boolean> | ClassValue[] | null; ui?: Partial<EmptyUi>; title?: string; description?: string; icon?: string | import(\"vue\").Component | import(\"vue\").VNode<import(\"vue\").RendererNode, import(\"vue\").RendererElement, { [key: string]: any; }> | null; mediaVariant?: EmptyMediaVariant; headerProps?: EmptyHeaderProps; mediaProps?: EmptyMediaProps; contentProps?: EmptyContentProps; titleProps?: EmptyTitleProps; descriptionProps?: EmptyDescriptionProps }",
+        "resolvedType": "{ class?: string | Record<string, boolean> | ClassValue[] | null; ui?: Partial<EmptyUi>; size?: ThemeSize; title?: string; description?: string; icon?: string | import(\"vue\").Component | import(\"vue\").VNode<import(\"vue\").RendererNode, import(\"vue\").RendererElement, { [key: string]: any; }> | null; headerProps?: EmptyHeaderProps; mediaProps?: EmptyMediaProps; contentProps?: EmptyContentProps; titleProps?: EmptyTitleProps; descriptionProps?: EmptyDescriptionProps }",
         "description": "Properties for the empty component.",
         "descriptionKey": "api.generated.src_components_empty_types.emptyprops.props",
         "sourcePath": "src/components/empty/types.ts",
@@ -63,14 +63,39 @@
             ]
           },
           {
+            "name": "size",
+            "type": "ThemeSize",
+            "required": false,
+            "description": "Size variant of the component.",
+            "descriptionKey": "api.generated.src_components_empty_types.emptyprops.members.size",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/empty/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ThemeSize",
+                "kind": "typeAlias",
+                "type": "'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'",
+                "resolvedType": "'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'",
+                "description": "",
+                "descriptionKey": "api.generated.src_theme_types.themesize",
+                "sourcePath": "src/theme/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
             "name": "title",
             "type": "string",
             "required": false,
             "description": "Title text rendered by the component.",
             "descriptionKey": "api.generated.src_components_empty_types.emptyprops.members.title",
             "default": null,
-            "inheritedFrom": null,
-            "sourcePath": "src/components/empty/types.ts",
+            "inheritedFrom": "title",
+            "sourcePath": "headless/src/components/empty/types.ts",
             "referencedTypes": []
           },
           {
@@ -80,8 +105,8 @@
             "description": "Description text rendered by the component.",
             "descriptionKey": "api.generated.src_components_empty_types.emptyprops.members.description",
             "default": null,
-            "inheritedFrom": null,
-            "sourcePath": "src/components/empty/types.ts",
+            "inheritedFrom": "description",
+            "sourcePath": "headless/src/components/empty/types.ts",
             "referencedTypes": []
           },
           {
@@ -91,8 +116,8 @@
             "description": "Icon rendered by the component.",
             "descriptionKey": "api.generated.src_components_empty_types.emptyprops.members.icon",
             "default": null,
-            "inheritedFrom": null,
-            "sourcePath": "src/components/empty/types.ts",
+            "inheritedFrom": "icon",
+            "sourcePath": "headless/src/components/empty/types.ts",
             "referencedTypes": [
               {
                 "name": "IconValue",
@@ -110,39 +135,14 @@
             ]
           },
           {
-            "name": "mediaVariant",
-            "type": "EmptyMediaVariant",
-            "required": false,
-            "description": "Media variant.",
-            "descriptionKey": "api.generated.src_components_empty_types.emptyprops.members.mediavariant",
-            "default": null,
-            "inheritedFrom": null,
-            "sourcePath": "src/components/empty/types.ts",
-            "referencedTypes": [
-              {
-                "name": "EmptyMediaVariant",
-                "kind": "typeAlias",
-                "type": "'icon' | 'default'",
-                "resolvedType": "'icon' | 'default'",
-                "description": "",
-                "descriptionKey": "api.generated.src_components_empty_variants.emptymediavariant",
-                "sourcePath": "src/components/empty/variants.ts",
-                "typeParameters": [],
-                "external": false,
-                "members": [],
-                "callables": []
-              }
-            ]
-          },
-          {
             "name": "headerProps",
             "type": "EmptyHeaderProps",
             "required": false,
             "description": "Properties forwarded to the header element.",
             "descriptionKey": "api.generated.src_components_empty_types.emptyprops.members.headerprops",
             "default": null,
-            "inheritedFrom": null,
-            "sourcePath": "src/components/empty/types.ts",
+            "inheritedFrom": "headerProps",
+            "sourcePath": "headless/src/components/empty/types.ts",
             "referencedTypes": [
               {
                 "name": "EmptyHeaderProps",
@@ -166,8 +166,8 @@
             "description": "Properties forwarded to the media element.",
             "descriptionKey": "api.generated.src_components_empty_types.emptyprops.members.mediaprops",
             "default": null,
-            "inheritedFrom": null,
-            "sourcePath": "src/components/empty/types.ts",
+            "inheritedFrom": "mediaProps",
+            "sourcePath": "headless/src/components/empty/types.ts",
             "referencedTypes": [
               {
                 "name": "EmptyMediaProps",
@@ -191,8 +191,8 @@
             "description": "Properties forwarded to the content element.",
             "descriptionKey": "api.generated.src_components_empty_types.emptyprops.members.contentprops",
             "default": null,
-            "inheritedFrom": null,
-            "sourcePath": "src/components/empty/types.ts",
+            "inheritedFrom": "contentProps",
+            "sourcePath": "headless/src/components/empty/types.ts",
             "referencedTypes": [
               {
                 "name": "EmptyContentProps",
@@ -216,8 +216,8 @@
             "description": "Properties forwarded to the title element.",
             "descriptionKey": "api.generated.src_components_empty_types.emptyprops.members.titleprops",
             "default": null,
-            "inheritedFrom": null,
-            "sourcePath": "src/components/empty/types.ts",
+            "inheritedFrom": "titleProps",
+            "sourcePath": "headless/src/components/empty/types.ts",
             "referencedTypes": [
               {
                 "name": "EmptyTitleProps",
@@ -241,8 +241,8 @@
             "description": "Properties forwarded to the description element.",
             "descriptionKey": "api.generated.src_components_empty_types.emptyprops.members.descriptionprops",
             "default": null,
-            "inheritedFrom": null,
-            "sourcePath": "src/components/empty/types.ts",
+            "inheritedFrom": "descriptionProps",
+            "sourcePath": "headless/src/components/empty/types.ts",
             "referencedTypes": [
               {
                 "name": "EmptyDescriptionProps",
@@ -261,6 +261,387 @@
           }
         ],
         "callables": [],
+        "referencedTypes": []
+      },
+      "slots": {
+        "kind": "slots",
+        "name": "EmptySlots",
+        "type": "TypeAlias EmptySlots: EmptyCompactSlots",
+        "resolvedType": "{ default?: (() => any); media?: (() => any); title?: (() => any); description?: (() => any); content?: (() => any) }",
+        "description": "Slots for the empty component.",
+        "descriptionKey": "api.generated.src_components_empty_types.emptyslots.slots",
+        "sourcePath": "src/components/empty/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [
+          {
+            "name": "default",
+            "type": "(() => any) | undefined",
+            "parameters": "(() => any) | undefined",
+            "required": false,
+            "description": "Custom content for the default slot.",
+            "descriptionKey": "api.generated.src_components_empty_types.emptyslots.callables.default",
+            "sourcePath": "headless/src/components/empty/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "media",
+            "type": "(() => any) | undefined",
+            "parameters": "(() => any) | undefined",
+            "required": false,
+            "description": "Custom content for the media slot.",
+            "descriptionKey": "api.generated.src_components_empty_types.emptyslots.callables.media",
+            "sourcePath": "headless/src/components/empty/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "title",
+            "type": "(() => any) | undefined",
+            "parameters": "(() => any) | undefined",
+            "required": false,
+            "description": "Custom content for the title slot.",
+            "descriptionKey": "api.generated.src_components_empty_types.emptyslots.callables.title",
+            "sourcePath": "headless/src/components/empty/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "description",
+            "type": "(() => any) | undefined",
+            "parameters": "(() => any) | undefined",
+            "required": false,
+            "description": "Custom content for the description slot.",
+            "descriptionKey": "api.generated.src_components_empty_types.emptyslots.callables.description",
+            "sourcePath": "headless/src/components/empty/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "content",
+            "type": "(() => any) | undefined",
+            "parameters": "(() => any) | undefined",
+            "required": false,
+            "description": "Custom content for the content slot.",
+            "descriptionKey": "api.generated.src_components_empty_types.emptyslots.callables.content",
+            "sourcePath": "headless/src/components/empty/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "referencedTypes": [
+          {
+            "name": "EmptyCompactSlots",
+            "kind": "typeAlias",
+            "type": "{ default?: () => any; media?: () => any; title?: () => any; description?: () => any; content?: () => any; }",
+            "resolvedType": "{ default?: (() => any); media?: (() => any); title?: (() => any); description?: (() => any); content?: (() => any) }",
+            "description": "Slots for the empty compact component.",
+            "descriptionKey": "api.generated.headless_src_components_empty_types.emptycompactslots",
+            "sourcePath": "headless/src/components/empty/types.ts",
+            "typeParameters": [],
+            "external": false,
+            "members": [],
+            "callables": [
+              {
+                "name": "default",
+                "type": "(() => any) | undefined",
+                "parameters": "(() => any) | undefined",
+                "required": false,
+                "description": "Custom content for the default slot.",
+                "descriptionKey": "api.generated.headless_src_components_empty_types.emptycompactslots.callables.default",
+                "sourcePath": "headless/src/components/empty/types.ts",
+                "referencedTypes": []
+              },
+              {
+                "name": "media",
+                "type": "(() => any) | undefined",
+                "parameters": "(() => any) | undefined",
+                "required": false,
+                "description": "Custom content for the media slot.",
+                "descriptionKey": "api.generated.headless_src_components_empty_types.emptycompactslots.callables.media",
+                "sourcePath": "headless/src/components/empty/types.ts",
+                "referencedTypes": []
+              },
+              {
+                "name": "title",
+                "type": "(() => any) | undefined",
+                "parameters": "(() => any) | undefined",
+                "required": false,
+                "description": "Custom content for the title slot.",
+                "descriptionKey": "api.generated.headless_src_components_empty_types.emptycompactslots.callables.title",
+                "sourcePath": "headless/src/components/empty/types.ts",
+                "referencedTypes": []
+              },
+              {
+                "name": "description",
+                "type": "(() => any) | undefined",
+                "parameters": "(() => any) | undefined",
+                "required": false,
+                "description": "Custom content for the description slot.",
+                "descriptionKey": "api.generated.headless_src_components_empty_types.emptycompactslots.callables.description",
+                "sourcePath": "headless/src/components/empty/types.ts",
+                "referencedTypes": []
+              },
+              {
+                "name": "content",
+                "type": "(() => any) | undefined",
+                "parameters": "(() => any) | undefined",
+                "required": false,
+                "description": "Custom content for the content slot.",
+                "descriptionKey": "api.generated.headless_src_components_empty_types.emptycompactslots.callables.content",
+                "sourcePath": "headless/src/components/empty/types.ts",
+                "referencedTypes": []
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "EmptyCompact": {
+      "props": {
+        "kind": "props",
+        "name": "EmptyCompactProps",
+        "type": "Interface EmptyCompactProps",
+        "resolvedType": "{ title?: string; description?: string; icon?: string | import(\"vue\").Component | import(\"vue\").VNode<import(\"vue\").RendererNode, import(\"vue\").RendererElement, { [key: string]: any; }> | null; headerProps?: EmptyHeaderProps; mediaProps?: EmptyMediaProps; contentProps?: EmptyContentProps; titleProps?: EmptyTitleProps; descriptionProps?: EmptyDescriptionProps }",
+        "description": "Properties for the empty compact component.",
+        "descriptionKey": "api.generated.headless_src_components_empty_types.emptycompactprops.props",
+        "sourcePath": "headless/src/components/empty/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "title",
+            "type": "string",
+            "required": false,
+            "description": "Title text rendered by the component.",
+            "descriptionKey": "api.generated.headless_src_components_empty_types.emptycompactprops.members.title",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/empty/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "description",
+            "type": "string",
+            "required": false,
+            "description": "Description text rendered by the component.",
+            "descriptionKey": "api.generated.headless_src_components_empty_types.emptycompactprops.members.description",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/empty/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "icon",
+            "type": "string | import(\"vue\").Component | import(\"vue\").VNode<import(\"vue\").RendererNode, import(\"vue\").RendererElement, { [key: string]: any; }> | null",
+            "required": false,
+            "description": "Icon rendered by the component.",
+            "descriptionKey": "api.generated.headless_src_components_empty_types.emptycompactprops.members.icon",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/empty/types.ts",
+            "referencedTypes": [
+              {
+                "name": "IconValue",
+                "kind": "typeAlias",
+                "type": "string | import(\"vue\").Component | import(\"vue\").VNode<import(\"vue\").RendererNode, import(\"vue\").RendererElement, { [key: string]: any; }> | null | undefined",
+                "resolvedType": "string | Component | VNode<import(\"vue\").RendererNode, import(\"vue\").RendererElement, { [key: string]: any; }> | null | undefined",
+                "description": "Type information for the icon value component.",
+                "descriptionKey": "api.generated.headless_src_components_icon_types.iconvalue",
+                "sourcePath": "headless/src/components/_icon/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "headerProps",
+            "type": "EmptyHeaderProps",
+            "required": false,
+            "description": "Properties forwarded to the header element.",
+            "descriptionKey": "api.generated.headless_src_components_empty_types.emptycompactprops.members.headerprops",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/empty/types.ts",
+            "referencedTypes": [
+              {
+                "name": "EmptyHeaderProps",
+                "kind": "interface",
+                "type": "EmptyHeaderProps",
+                "resolvedType": null,
+                "description": "Properties for the empty header component.",
+                "descriptionKey": "api.generated.headless_src_components_empty_types.emptyheaderprops",
+                "sourcePath": "headless/src/components/empty/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "mediaProps",
+            "type": "EmptyMediaProps",
+            "required": false,
+            "description": "Properties forwarded to the media element.",
+            "descriptionKey": "api.generated.headless_src_components_empty_types.emptycompactprops.members.mediaprops",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/empty/types.ts",
+            "referencedTypes": [
+              {
+                "name": "EmptyMediaProps",
+                "kind": "interface",
+                "type": "EmptyMediaProps",
+                "resolvedType": null,
+                "description": "Properties for the empty media component.",
+                "descriptionKey": "api.generated.headless_src_components_empty_types.emptymediaprops",
+                "sourcePath": "headless/src/components/empty/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "contentProps",
+            "type": "EmptyContentProps",
+            "required": false,
+            "description": "Properties forwarded to the content element.",
+            "descriptionKey": "api.generated.headless_src_components_empty_types.emptycompactprops.members.contentprops",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/empty/types.ts",
+            "referencedTypes": [
+              {
+                "name": "EmptyContentProps",
+                "kind": "interface",
+                "type": "EmptyContentProps",
+                "resolvedType": null,
+                "description": "Properties for the empty content component.",
+                "descriptionKey": "api.generated.headless_src_components_empty_types.emptycontentprops",
+                "sourcePath": "headless/src/components/empty/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "titleProps",
+            "type": "EmptyTitleProps",
+            "required": false,
+            "description": "Properties forwarded to the title element.",
+            "descriptionKey": "api.generated.headless_src_components_empty_types.emptycompactprops.members.titleprops",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/empty/types.ts",
+            "referencedTypes": [
+              {
+                "name": "EmptyTitleProps",
+                "kind": "interface",
+                "type": "EmptyTitleProps",
+                "resolvedType": null,
+                "description": "Properties for the empty title component.",
+                "descriptionKey": "api.generated.headless_src_components_empty_types.emptytitleprops",
+                "sourcePath": "headless/src/components/empty/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "descriptionProps",
+            "type": "EmptyDescriptionProps",
+            "required": false,
+            "description": "Properties forwarded to the description element.",
+            "descriptionKey": "api.generated.headless_src_components_empty_types.emptycompactprops.members.descriptionprops",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/empty/types.ts",
+            "referencedTypes": [
+              {
+                "name": "EmptyDescriptionProps",
+                "kind": "interface",
+                "type": "EmptyDescriptionProps",
+                "resolvedType": null,
+                "description": "Properties for the empty description component.",
+                "descriptionKey": "api.generated.headless_src_components_empty_types.emptydescriptionprops",
+                "sourcePath": "headless/src/components/empty/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      },
+      "slots": {
+        "kind": "slots",
+        "name": "EmptyCompactSlots",
+        "type": "TypeAlias EmptyCompactSlots",
+        "resolvedType": "{ default?: (() => any); media?: (() => any); title?: (() => any); description?: (() => any); content?: (() => any) }",
+        "description": "Slots for the empty compact component.",
+        "descriptionKey": "api.generated.headless_src_components_empty_types.emptycompactslots.slots",
+        "sourcePath": "headless/src/components/empty/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [
+          {
+            "name": "default",
+            "type": "(() => any) | undefined",
+            "parameters": "(() => any) | undefined",
+            "required": false,
+            "description": "Custom content for the default slot.",
+            "descriptionKey": "api.generated.headless_src_components_empty_types.emptycompactslots.callables.default",
+            "sourcePath": "headless/src/components/empty/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "media",
+            "type": "(() => any) | undefined",
+            "parameters": "(() => any) | undefined",
+            "required": false,
+            "description": "Custom content for the media slot.",
+            "descriptionKey": "api.generated.headless_src_components_empty_types.emptycompactslots.callables.media",
+            "sourcePath": "headless/src/components/empty/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "title",
+            "type": "(() => any) | undefined",
+            "parameters": "(() => any) | undefined",
+            "required": false,
+            "description": "Custom content for the title slot.",
+            "descriptionKey": "api.generated.headless_src_components_empty_types.emptycompactslots.callables.title",
+            "sourcePath": "headless/src/components/empty/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "description",
+            "type": "(() => any) | undefined",
+            "parameters": "(() => any) | undefined",
+            "required": false,
+            "description": "Custom content for the description slot.",
+            "descriptionKey": "api.generated.headless_src_components_empty_types.emptycompactslots.callables.description",
+            "sourcePath": "headless/src/components/empty/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "content",
+            "type": "(() => any) | undefined",
+            "parameters": "(() => any) | undefined",
+            "required": false,
+            "description": "Custom content for the content slot.",
+            "descriptionKey": "api.generated.headless_src_components_empty_types.emptycompactslots.callables.content",
+            "sourcePath": "headless/src/components/empty/types.ts",
+            "referencedTypes": []
+          }
+        ],
         "referencedTypes": []
       }
     },

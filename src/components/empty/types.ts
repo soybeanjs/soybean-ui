@@ -1,20 +1,11 @@
-import type {
-  EmptyContentProps,
-  EmptyDescriptionProps,
-  EmptyHeaderProps,
-  EmptyMediaProps,
-  EmptyRootProps,
-  EmptyTitleProps,
-  EmptyUi
-} from '@soybeanjs/headless/empty';
+import type { EmptyCompactProps, EmptyCompactSlots, EmptyUi } from '@soybeanjs/headless/empty';
 import type { ClassValue } from '@soybeanjs/headless/types';
-import type { IconValue } from '../icon/types';
-import type { EmptyMediaVariant } from './variants';
+import type { ThemeSize } from '@/theme';
 
 /**
  * Properties for the empty component.
  */
-export interface EmptyProps extends EmptyRootProps {
+export interface EmptyProps extends EmptyCompactProps {
   /**
    * Additional class names applied to the root element.
    */
@@ -24,41 +15,12 @@ export interface EmptyProps extends EmptyRootProps {
    */
   ui?: Partial<EmptyUi>;
   /**
-   * Title text rendered by the component.
+   * Size variant of the component.
    */
-  title?: string;
-  /**
-   * Description text rendered by the component.
-   */
-  description?: string;
-  /**
-   * Icon rendered by the component.
-   */
-  icon?: IconValue;
-  /**
-   * Media variant.
-   */
-  mediaVariant?: EmptyMediaVariant;
-  /**
-   * Properties forwarded to the header element.
-   */
-  headerProps?: EmptyHeaderProps;
-  /**
-   * Properties forwarded to the media element.
-   */
-  mediaProps?: EmptyMediaProps;
-  /**
-   * Properties forwarded to the content element.
-   */
-  contentProps?: EmptyContentProps;
-  /**
-   * Properties forwarded to the title element.
-   */
-  titleProps?: EmptyTitleProps;
-  /**
-   * Properties forwarded to the description element.
-   */
-  descriptionProps?: EmptyDescriptionProps;
+  size?: ThemeSize;
 }
 
-export type { EmptyMediaVariant };
+/**
+ * Slots for the empty component.
+ */
+export type EmptySlots = EmptyCompactSlots;

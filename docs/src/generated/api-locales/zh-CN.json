@@ -3233,6 +3233,29 @@
         }
       },
       "headless_src_components_empty_types": {
+        "emptycompactprops": {
+          "members": {
+            "contentprops": "转发到内容元素的属性。",
+            "description": "组件呈现的描述文本。",
+            "descriptionprops": "转发到描述元素的属性。",
+            "headerprops": "转发到标题元素的属性。",
+            "icon": "组件呈现的图标。",
+            "mediaprops": "转发到媒体元素的属性。",
+            "title": "组件呈现的标题文本。",
+            "titleprops": "属性转发到标题元素。"
+          },
+          "props": "空紧凑组件的属性"
+        },
+        "emptycompactslots": {
+          "callables": {
+            "content": "为内容槽定制内容。",
+            "default": "默认插槽的自定义内容。",
+            "description": "自定义描述槽的内容。",
+            "media": "为媒体槽定制内容。",
+            "title": "标题槽的自定义内容。"
+          },
+          "slots": "空紧凑组件的插槽。"
+        },
         "emptycontentprops": {
           "props": "空内容组件的属性"
         },
@@ -9586,16 +9609,23 @@
             "headerprops": "转发到标题元素的属性。",
             "icon": "组件呈现的图标。",
             "mediaprops": "转发到媒体元素的属性。",
-            "mediavariant": "媒体变体。",
+            "size": "组件的大小变量。",
             "title": "组件呈现的标题文本。",
             "titleprops": "属性转发到标题元素。",
             "ui": "组件的每个插槽类重写。"
           },
           "props": "空组件的属性"
+        },
+        "emptyslots": {
+          "callables": {
+            "content": "为内容槽定制内容。",
+            "default": "默认插槽的自定义内容。",
+            "description": "自定义描述槽的内容。",
+            "media": "为媒体槽定制内容。",
+            "title": "标题槽的自定义内容。"
+          },
+          "slots": "空组件插槽"
         }
-      },
-      "src_components_empty_variants": {
-        "emptymediavariant": ""
       },
       "src_components_form_types": {
         "formfieldbaseprops": {

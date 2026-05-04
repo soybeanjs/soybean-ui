@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-04T04:45:55.298Z",
+  "generatedAt": "2026-05-04T06:19:16.683Z",
   "schemaVersion": 4,
   "components": {
     "accordion": {
@@ -431,7 +431,16 @@
     "empty": {
       "component": "empty",
       "file": "empty.json",
-      "symbols": ["Empty", "EmptyContent", "EmptyDescription", "EmptyHeader", "EmptyMedia", "EmptyRoot", "EmptyTitle"]
+      "symbols": [
+        "Empty",
+        "EmptyCompact",
+        "EmptyContent",
+        "EmptyDescription",
+        "EmptyHeader",
+        "EmptyMedia",
+        "EmptyRoot",
+        "EmptyTitle"
+      ]
     },
     "form": {
       "component": "form",

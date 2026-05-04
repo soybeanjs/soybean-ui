@@ -12,7 +12,7 @@ const cls = useEmptyUi('description');
 </script>
 
 <template>
-  <p :class="cls">
+  <p data-slot="description" :class="cls">
     <slot />
   </p>
 </template>

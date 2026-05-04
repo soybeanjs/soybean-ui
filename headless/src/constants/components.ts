@@ -221,7 +221,7 @@ export const components = {
     'EditableSubmitTrigger',
     'EditableCompact'
   ],
-  empty: ['EmptyRoot', 'EmptyHeader', 'EmptyMedia', 'EmptyContent', 'EmptyTitle', 'EmptyDescription'],
+  empty: ['EmptyCompact', 'EmptyRoot', 'EmptyHeader', 'EmptyMedia', 'EmptyContent', 'EmptyTitle', 'EmptyDescription'],
   form: ['FormField', 'FormLabel', 'FormControl', 'FormDescription', 'FormError'],
   hoverCard: [
     'HoverCardRoot',

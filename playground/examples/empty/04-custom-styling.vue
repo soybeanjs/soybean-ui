@@ -8,7 +8,6 @@ import { SButton, SEmpty } from '@soybeanjs/ui';
     title="No activity"
     description="Custom styles can adapt the empty state to different scenes."
     icon="lucide:activity"
-    media-variant="icon"
     :ui="{
       media: 'bg-primary/10 text-primary',
       title: 'text-primary'

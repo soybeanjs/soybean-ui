@@ -12,7 +12,7 @@ const cls = useEmptyUi('header');
 </script>
 
 <template>
-  <div :class="cls">
+  <div data-slot="header" :class="cls">
     <slot />
   </div>
 </template>

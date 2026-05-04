@@ -1,3 +1,4 @@
+export { default as EmptyCompact } from './empty-compact.vue';
 export { default as EmptyRoot } from './empty-root.vue';
 export { default as EmptyHeader } from './empty-header.vue';
 export { default as EmptyMedia } from './empty-media.vue';
@@ -8,6 +9,8 @@ export { default as EmptyDescription } from './empty-description.vue';
 export { provideEmptyUi } from './context';
 
 export type {
+  EmptyCompactProps,
+  EmptyCompactSlots,
   EmptyRootProps,
   EmptyHeaderProps,
   EmptyMediaProps,

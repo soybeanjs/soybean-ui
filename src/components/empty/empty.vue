@@ -1,19 +1,11 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import {
-  EmptyContent,
-  EmptyDescription,
-  EmptyHeader,
-  EmptyMedia,
-  EmptyRoot,
-  EmptyTitle,
-  provideEmptyUi
-} from '@soybeanjs/headless/empty';
+import { EmptyCompact, provideEmptyUi } from '@soybeanjs/headless/empty';
 import { useOmitProps } from '@soybeanjs/headless/composables';
+import { keysOf } from '@soybeanjs/utils';
 import { mergeSlotVariants } from '@/theme';
-import Icon from '../icon/icon.vue';
 import { emptyVariants } from './variants';
-import type { EmptyProps } from './types';
+import type { EmptyProps, EmptySlots } from './types';
 
 defineOptions({
   name: 'SEmpty'
@@ -21,36 +13,15 @@ defineOptions({
 
 const props = defineProps<EmptyProps>();
 
-const forwardedProps = useOmitProps(props, [
-  'class',
-  'ui',
-  'title',
-  'description',
-  'icon',
-  'mediaVariant',
-  'headerProps',
-  'mediaProps',
-  'contentProps',
-  'titleProps',
-  'descriptionProps'
-]);
+const forwardedProps = useOmitProps(props, ['class', 'ui', 'size']);
 
-type Slots = {
-  default?: () => any;
-  media?: () => any;
-  title?: () => any;
-  description?: () => any;
-};
+const slots = defineSlots<EmptySlots>();
 
-const slots = defineSlots<Slots>();
-
-const showHeader = computed(() => Boolean(slots.title || slots.description || props.title || props.description));
-
-const showMedia = computed(() => Boolean(slots.media || props.icon));
+const slotNames = computed(() => keysOf(slots));
 
 const ui = computed(() => {
   const variants = emptyVariants({
-    mediaVariant: props.mediaVariant
+    size: props.size
   });
 
   return mergeSlotVariants(variants, props.ui, { root: props.class });
@@ -60,22 +31,9 @@ provideEmptyUi(ui);
 </script>
 
 <template>
-  <EmptyRoot v-bind="forwardedProps">
-    <EmptyMedia v-if="showMedia" v-bind="mediaProps">
-      <slot name="media">
-        <Icon :icon="icon" />
-      </slot>
-    </EmptyMedia>
-    <EmptyContent v-bind="contentProps">
-      <EmptyHeader v-if="showHeader" v-bind="headerProps">
-        <EmptyTitle v-if="slots.title || title" v-bind="titleProps">
-          <slot name="title">{{ title }}</slot>
-        </EmptyTitle>
-        <EmptyDescription v-if="slots.description || description" v-bind="descriptionProps">
-          <slot name="description">{{ description }}</slot>
-        </EmptyDescription>
-      </EmptyHeader>
-      <slot />
-    </EmptyContent>
-  </EmptyRoot>
+  <EmptyCompact v-bind="forwardedProps">
+    <template v-for="slotName in slotNames" :key="slotName" #[slotName]>
+      <slot :name="slotName" />
+    </template>
+  </EmptyCompact>
 </template>
