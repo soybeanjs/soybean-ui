@@ -46,5 +46,5 @@ export type BacktopEmits = {
   /**
    * Emitted when click occurs.
    */
-  click: [event: MouseEvent];
+  click: [event: PointerEvent];
 };

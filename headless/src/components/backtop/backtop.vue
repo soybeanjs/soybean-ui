@@ -114,7 +114,7 @@ function scrollToTop() {
   scrollAnimationFrameId = requestAnimationFrame(step);
 }
 
-function onClick(event: MouseEvent) {
+function onClick(event: PointerEvent) {
   emit('click', event);
   scrollToTop();
 }
