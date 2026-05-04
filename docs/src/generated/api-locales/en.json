@@ -3289,8 +3289,8 @@
             "errorprops": "Properties forwarded to the error element.",
             "fieldarrayprops": "",
             "fieldprops": "",
-            "inline": "Whether the label is inline with the control.",
-            "labelprops": "Properties forwarded to the label element."
+            "labelprops": "Properties forwarded to the label element.",
+            "orientation": "Orientation of the form field."
           },
           "props": "Properties for the FormCompact component"
         },
@@ -3318,10 +3318,10 @@
             "descriptionprops": "Properties forwarded to the description element.",
             "error": "Error.",
             "errorprops": "Properties forwarded to the error element.",
-            "inline": "Whether the label is inline with the control.",
             "isfieldarray": "Whether the field is an array.",
             "label": "Label text rendered by the component.",
-            "labelprops": "Properties forwarded to the label element."
+            "labelprops": "Properties forwarded to the label element.",
+            "orientation": "Orientation of the form field."
           },
           "props": "Properties for the FormFieldBaseCompact component"
         },
@@ -3339,10 +3339,10 @@
             "description": "Description text rendered by the component.",
             "descriptionprops": "Properties forwarded to the description element.",
             "errorprops": "Properties forwarded to the error element.",
-            "inline": "Whether the label is inline with the control.",
             "label": "Label text rendered by the component.",
             "labelprops": "Properties forwarded to the label element.",
             "name": "The name of the form field, used for registration and value retrieval.",
+            "orientation": "Orientation of the form field.",
             "reset": "Reset.",
             "validate": "Validate."
           },
@@ -9773,8 +9773,8 @@
             "errorprops": "Properties forwarded to the error element.",
             "fieldarrayprops": "",
             "fieldprops": "",
-            "inline": "Whether the label is inline with the control.",
             "labelprops": "Properties forwarded to the label element.",
+            "orientation": "Orientation of the form field.",
             "size": "Visual size of the component.",
             "ui": "Per-slot class overrides for the component."
           },

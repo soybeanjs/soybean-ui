@@ -19,7 +19,7 @@ const props = defineProps<FormFieldBaseCompactProps>();
 const slots = useSlots();
 
 const forwardedProps = useOmitProps(props, [
-  'inline',
+  'orientation',
   'label',
   'description',
   'error',
@@ -31,7 +31,7 @@ const forwardedProps = useOmitProps(props, [
 
 const context = useFormCompactContext('FormFieldCompact');
 
-const inline = computed(() => props.inline || context.inline.value);
+const orientation = computed(() => props.orientation ?? context.orientation.value ?? 'vertical');
 
 const fieldProps = computed(() => {
   const p = props.isFieldArray ? context.fieldArrayProps.value : context.fieldProps.value;
@@ -50,7 +50,7 @@ const errorProps = computed(() => mergeProps({ ...context.errorProps.value }, { 
   <FormField
     v-slot="slotProps"
     v-bind="fieldProps"
-    :data-inline="inline ? '' : undefined"
+    :data-orientation="orientation"
     :data-error="error ? '' : undefined"
   >
     <FormLabel v-if="slots.label || label" v-bind="labelProps">

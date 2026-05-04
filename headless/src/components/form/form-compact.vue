@@ -8,13 +8,15 @@ defineOptions({
   name: 'SFormCompact'
 });
 
-const props = defineProps<FormCompactProps>();
+const props = withDefaults(defineProps<FormCompactProps>(), {
+  orientation: 'vertical'
+});
 
 const cls = useFormUi('form');
 
 provideFormCompactContext({
   ...transformPropsToContext(props, [
-    'inline',
+    'orientation',
     'fieldProps',
     'fieldArrayProps',
     'labelProps',
@@ -28,7 +30,7 @@ provideFormSub();
 </script>
 
 <template>
-  <form :class="cls" :data-inline="inline ? '' : undefined">
+  <form :class="cls" :data-orientation="orientation">
     <slot />
   </form>
 </template>

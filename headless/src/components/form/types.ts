@@ -8,7 +8,7 @@ import type {
   PublicProps,
   SlotsType
 } from 'vue';
-import type { Path, PathValue, PropsToContext, UiClass } from '../../types';
+import type { DataOrientation, Path, PathValue, PropsToContext, UiClass } from '../../types';
 import type { LabelProps } from '../label/types';
 import type {
   UseHeadlessFormReturn,
@@ -67,9 +67,11 @@ export interface FormFieldContext {
  */
 export interface FormFieldCommonProps {
   /**
-   * Whether the label is inline with the control.
+   * Orientation of the form field.
+   *
+   * @default 'vertical'
    */
-  inline?: boolean;
+  orientation?: DataOrientation;
   /**
    * Label text rendered by the component.
    */
@@ -220,7 +222,7 @@ export type FormFieldArrayComponent<Values extends FormValues, ExtraProps extend
  */
 export interface FormCompactProps
   extends
-    Pick<FormFieldCommonProps, 'inline' | 'labelProps' | 'controlProps' | 'descriptionProps' | 'errorProps'>,
+    Pick<FormFieldCommonProps, 'orientation' | 'labelProps' | 'controlProps' | 'descriptionProps' | 'errorProps'>,
     /** @vue-ignore */ FormHTMLAttributes {
   fieldProps?: FormFieldProps;
   fieldArrayProps?: FormFieldProps;
@@ -231,7 +233,7 @@ export interface FormCompactProps
  */
 export interface FormCompactContext extends PropsToContext<
   FormCompactProps,
-  'inline' | 'fieldProps' | 'fieldArrayProps' | 'labelProps' | 'controlProps' | 'descriptionProps' | 'errorProps'
+  'orientation' | 'fieldProps' | 'fieldArrayProps' | 'labelProps' | 'controlProps' | 'descriptionProps' | 'errorProps'
 > {}
 
 export type UseFormReturn<

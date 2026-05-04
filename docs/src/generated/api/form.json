@@ -6,7 +6,7 @@
         "kind": "props",
         "name": "FormProps",
         "type": "Interface FormProps",
-        "resolvedType": "{ class?: string | Record<string, boolean> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<FormUi>; fieldProps?: FormFieldProps; fieldArrayProps?: FormFieldProps; inline?: boolean; labelProps?: FormLabelProps; controlProps?: FormControlProps; descriptionProps?: FormDescriptionProps; errorProps?: FormErrorProps }",
+        "resolvedType": "{ class?: string | Record<string, boolean> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<FormUi>; fieldProps?: FormFieldProps; fieldArrayProps?: FormFieldProps; orientation?: DataOrientation; labelProps?: FormLabelProps; controlProps?: FormControlProps; descriptionProps?: FormDescriptionProps; errorProps?: FormErrorProps }",
         "description": "Properties for the FormCompact component",
         "descriptionKey": "api.generated.src_components_form_types.formprops.props",
         "sourcePath": "src/components/form/types.ts",
@@ -184,15 +184,29 @@
             ]
           },
           {
-            "name": "inline",
-            "type": "boolean",
+            "name": "orientation",
+            "type": "DataOrientation",
             "required": false,
-            "description": "Whether the label is inline with the control.",
-            "descriptionKey": "api.generated.src_components_form_types.formprops.members.inline",
-            "default": null,
-            "inheritedFrom": "inline",
+            "description": "Orientation of the form field.",
+            "descriptionKey": "api.generated.src_components_form_types.formprops.members.orientation",
+            "default": "'vertical'",
+            "inheritedFrom": "orientation",
             "sourcePath": "headless/src/components/form/types.ts",
-            "referencedTypes": []
+            "referencedTypes": [
+              {
+                "name": "DataOrientation",
+                "kind": "typeAlias",
+                "type": "'vertical' | 'horizontal'",
+                "resolvedType": "'vertical' | 'horizontal'",
+                "description": "",
+                "descriptionKey": "api.generated.headless_src_types_common.dataorientation",
+                "sourcePath": "headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
           },
           {
             "name": "labelProps",
@@ -316,7 +330,7 @@
         "kind": "props",
         "name": "FormCompactProps",
         "type": "Interface FormCompactProps",
-        "resolvedType": "{ fieldProps?: FormFieldProps; fieldArrayProps?: FormFieldProps; inline?: boolean; labelProps?: FormLabelProps; controlProps?: FormControlProps; descriptionProps?: FormDescriptionProps; errorProps?: FormErrorProps }",
+        "resolvedType": "{ fieldProps?: FormFieldProps; fieldArrayProps?: FormFieldProps; orientation?: DataOrientation; labelProps?: FormLabelProps; controlProps?: FormControlProps; descriptionProps?: FormDescriptionProps; errorProps?: FormErrorProps }",
         "description": "Properties for the FormCompact component",
         "descriptionKey": "api.generated.headless_src_components_form_types.formcompactprops.props",
         "sourcePath": "headless/src/components/form/types.ts",
@@ -419,15 +433,29 @@
             ]
           },
           {
-            "name": "inline",
-            "type": "boolean",
+            "name": "orientation",
+            "type": "DataOrientation",
             "required": false,
-            "description": "Whether the label is inline with the control.",
-            "descriptionKey": "api.generated.headless_src_components_form_types.formcompactprops.members.inline",
-            "default": null,
-            "inheritedFrom": "inline",
+            "description": "Orientation of the form field.",
+            "descriptionKey": "api.generated.headless_src_components_form_types.formcompactprops.members.orientation",
+            "default": "'vertical'",
+            "inheritedFrom": "orientation",
             "sourcePath": "headless/src/components/form/types.ts",
-            "referencedTypes": []
+            "referencedTypes": [
+              {
+                "name": "DataOrientation",
+                "kind": "typeAlias",
+                "type": "'vertical' | 'horizontal'",
+                "resolvedType": "'vertical' | 'horizontal'",
+                "description": "",
+                "descriptionKey": "api.generated.headless_src_types_common.dataorientation",
+                "sourcePath": "headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
           },
           {
             "name": "labelProps",
@@ -808,7 +836,7 @@
         "kind": "props",
         "name": "FormFieldBaseCompactProps",
         "type": "Interface FormFieldBaseCompactProps",
-        "resolvedType": "{ error?: string; isFieldArray?: boolean; inline?: boolean; label?: string; description?: string; labelProps?: FormLabelProps; controlProps?: FormControlProps; descriptionProps?: FormDescriptionProps; errorProps?: FormErrorProps }",
+        "resolvedType": "{ error?: string; isFieldArray?: boolean; orientation?: DataOrientation; label?: string; description?: string; labelProps?: FormLabelProps; controlProps?: FormControlProps; descriptionProps?: FormDescriptionProps; errorProps?: FormErrorProps }",
         "description": "Properties for the FormFieldBaseCompact component",
         "descriptionKey": "api.generated.headless_src_components_form_types.formfieldbasecompactprops.props",
         "sourcePath": "headless/src/components/form/types.ts",
@@ -837,15 +865,29 @@
             "referencedTypes": []
           },
           {
-            "name": "inline",
-            "type": "boolean",
+            "name": "orientation",
+            "type": "DataOrientation",
             "required": false,
-            "description": "Whether the label is inline with the control.",
-            "descriptionKey": "api.generated.headless_src_components_form_types.formfieldbasecompactprops.members.inline",
-            "default": null,
-            "inheritedFrom": "FormFieldCommonProps.inline",
+            "description": "Orientation of the form field.",
+            "descriptionKey": "api.generated.headless_src_components_form_types.formfieldbasecompactprops.members.orientation",
+            "default": "'vertical'",
+            "inheritedFrom": "FormFieldCommonProps.orientation",
             "sourcePath": "headless/src/components/form/types.ts",
-            "referencedTypes": []
+            "referencedTypes": [
+              {
+                "name": "DataOrientation",
+                "kind": "typeAlias",
+                "type": "'vertical' | 'horizontal'",
+                "resolvedType": "'vertical' | 'horizontal'",
+                "description": "",
+                "descriptionKey": "api.generated.headless_src_types_common.dataorientation",
+                "sourcePath": "headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
           },
           {
             "name": "label",
@@ -1035,7 +1077,7 @@
         "kind": "props",
         "name": "FormFieldCompactProps",
         "type": "Interface FormFieldCompactProps<Values, Name>",
-        "resolvedType": "{ name: Name; inline?: boolean; label?: string; description?: string; labelProps?: FormLabelProps; controlProps?: FormControlProps; descriptionProps?: FormDescriptionProps; errorProps?: FormErrorProps; validate?: FormFieldValidator<PathValue<Values, Name>>; reset?: (() => void) }",
+        "resolvedType": "{ name: Name; orientation?: DataOrientation; label?: string; description?: string; labelProps?: FormLabelProps; controlProps?: FormControlProps; descriptionProps?: FormDescriptionProps; errorProps?: FormErrorProps; validate?: FormFieldValidator<PathValue<Values, Name>>; reset?: (() => void) }",
         "description": "State and methods provided by the form field context.",
         "descriptionKey": "api.generated.headless_src_components_form_types.formfieldcompactprops.props",
         "sourcePath": "headless/src/components/form/types.ts",
@@ -1053,15 +1095,29 @@
             "referencedTypes": []
           },
           {
-            "name": "inline",
-            "type": "boolean",
+            "name": "orientation",
+            "type": "DataOrientation",
             "required": false,
-            "description": "Whether the label is inline with the control.",
-            "descriptionKey": "api.generated.headless_src_components_form_types.formfieldcompactprops.members.inline",
-            "default": null,
-            "inheritedFrom": "FormFieldCommonProps.inline",
+            "description": "Orientation of the form field.",
+            "descriptionKey": "api.generated.headless_src_components_form_types.formfieldcompactprops.members.orientation",
+            "default": "'vertical'",
+            "inheritedFrom": "FormFieldCommonProps.orientation",
             "sourcePath": "headless/src/components/form/types.ts",
-            "referencedTypes": []
+            "referencedTypes": [
+              {
+                "name": "DataOrientation",
+                "kind": "typeAlias",
+                "type": "'vertical' | 'horizontal'",
+                "resolvedType": "'vertical' | 'horizontal'",
+                "description": "",
+                "descriptionKey": "api.generated.headless_src_types_common.dataorientation",
+                "sourcePath": "headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
           },
           {
             "name": "label",

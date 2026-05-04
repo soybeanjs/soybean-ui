@@ -35,15 +35,13 @@ export function useFormSub() {
 }
 
 export function provideFormSub() {
-  const context = {} as FormContext;
-
   const parentContext = inject<FormContext | null>(USE_FORM_CONTEXT_KEY, null);
 
-  if (parentContext) {
-    Object.assign(context, parentContext);
+  if (!parentContext) {
+    throw new Error('useFormContext must be used within a useForm provider');
   }
 
-  provide(USE_FORM_SUB_CONTEXT_KEY, context);
+  provide(USE_FORM_SUB_CONTEXT_KEY, parentContext);
 
-  return context;
+  return parentContext;
 }

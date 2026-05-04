@@ -3289,8 +3289,8 @@
             "errorprops": "属性转发到错误元素。",
             "fieldarrayprops": "",
             "fieldprops": "",
-            "inline": "标签是否与控件内联。",
-            "labelprops": "转发到标签元素的属性。"
+            "labelprops": "转发到标签元素的属性。",
+            "orientation": ""
           },
           "props": "FormCompact 组件的属性"
         },
@@ -3318,10 +3318,10 @@
             "descriptionprops": "转发到描述元素的属性。",
             "error": "错误。",
             "errorprops": "属性转发到错误元素。",
-            "inline": "标签是否与控件内联。",
             "isfieldarray": "字段是否为数组。",
             "label": "为组件呈现的文本添加标签。",
-            "labelprops": "转发到标签元素的属性。"
+            "labelprops": "转发到标签元素的属性。",
+            "orientation": ""
           },
           "props": "FormFieldBaseCompact 组件的属性"
         },
@@ -3339,10 +3339,10 @@
             "description": "组件呈现的描述文本。",
             "descriptionprops": "转发到描述元素的属性。",
             "errorprops": "属性转发到错误元素。",
-            "inline": "标签是否与控件内联。",
             "label": "为组件呈现的文本添加标签。",
             "labelprops": "转发到标签元素的属性。",
             "name": "表单字段的名称，用于注册和数值检索。",
+            "orientation": "",
             "reset": "重置。",
             "validate": "验证。"
           },
@@ -9773,8 +9773,8 @@
             "errorprops": "属性转发到错误元素。",
             "fieldarrayprops": "",
             "fieldprops": "",
-            "inline": "标签是否与控件内联。",
             "labelprops": "转发到标签元素的属性。",
+            "orientation": "",
             "size": "组件的可视化尺寸。",
             "ui": "组件的每个插槽类重写。"
           },

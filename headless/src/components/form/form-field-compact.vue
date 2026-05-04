@@ -21,17 +21,23 @@ const state = useField(props.name, {
 });
 
 const error = computed(() => state.value.meta.error);
+
+function handleUpdateModelValue(value: unknown) {
+  setFieldValue(props.name, value);
+}
 </script>
 
 <template>
   <FormFieldBaseCompact v-bind="props" :error="error">
     <template #default="slotProps">
       <Slot
-        v-bind="slotProps"
+        :id="slotProps.formFieldId"
+        :aria-describedby="slotProps.ariaDescribedBy"
+        :aria-invalid="slotProps.ariaInvalid"
         :name="name"
         :model-value="state.value"
-        @update:model-value="(value: unknown) => setFieldValue(props.name, value)"
-        @blur="state.onBlur"
+        @update:model-value="handleUpdateModelValue"
+        @blur="state.onBlur($event, props.name)"
         @change="state.onChange"
         @input="state.onInput"
       >

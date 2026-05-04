@@ -211,7 +211,7 @@ playground:
       slot: 插槽
     form:
       basic: 基础
-      inline: 内联
+      horizontal: 水平方向
       zod: Zod
     hover-card:
       basic: 基础

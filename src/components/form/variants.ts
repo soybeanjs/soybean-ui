@@ -5,14 +5,23 @@ export const formVariants = tv({
   slots: {
     form: 'grid',
     field: [
-      'group flex flex-col',
-      'data-[inline]:flex-row data-[inline]:flex-wrap data-[inline]:justify-between data-[inline]:items-center'
+      'group flex data-[orientation=vertical]:flex-col',
+      'data-[orientation=horizontal]:flex-row data-[orientation=horizontal]:flex-wrap data-[orientation=horizontal]:justify-between data-[orientation=horizontal]:items-center'
     ],
-    fieldArray: ['group flex flex-col', 'data-[inline]:flex-row data-[inline]:flex-wrap data-[inline]:justify-between'],
-    label: 'flex items-center whitespace-nowrap group-data-[inline]:justify-end group-data-[inline]:shrink-0',
-    control: 'group-data-[inline]:flex-1 group-data-[inline]:min-w-0',
-    description: `text-muted-foreground m-0 group-data-[inline]:w-full`,
-    error: `font-medium text-destructive m-0 group-data-[inline]:absolute group-data-[inline]:start-0 group-data-[inline]:top-full group-data-[inline]:w-full`
+    fieldArray: [
+      'group flex data-[orientation=vertical]:flex-col',
+      'data-[orientation=horizontal]:flex-row data-[orientation=horizontal]:flex-wrap data-[orientation=horizontal]:justify-between'
+    ],
+    label: [
+      'flex items-center whitespace-nowrap',
+      'group-data-[orientation=horizontal]:justify-end group-data-[orientation=horizontal]:shrink-0'
+    ],
+    control: 'group-data-[orientation=horizontal]:flex-1 group-data-[orientation=horizontal]:min-w-0',
+    description: `text-muted-foreground m-0 group-data-[orientation=horizontal]:w-full`,
+    error: [
+      'font-medium text-destructive m-0',
+      'group-data-[orientation=horizontal]:absolute group-data-[orientation=horizontal]:start-0 group-data-[orientation=horizontal]:top-full group-data-[orientation=horizontal]:w-full'
+    ]
   },
   variants: {
     size: {

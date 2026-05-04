@@ -211,7 +211,7 @@ playground:
       slot: Slot
     form:
       basic: Basic
-      inline: Inline
+      horizontal: Horizontal
       zod: Zod
     hover-card:
       basic: Basic

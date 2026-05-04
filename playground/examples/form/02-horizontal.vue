@@ -67,7 +67,12 @@ const citiesItems: SelectOptionData<string>[] = [
 </script>
 
 <template>
-  <SForm inline :ui="{ label: 'w-25', description: 'ps-30' }" class="w-150 gap-7" @submit="handleSubmit">
+  <SForm
+    orientation="horizontal"
+    :ui="{ label: 'w-25', description: 'ps-30' }"
+    class="w-150 gap-7"
+    @submit="handleSubmit"
+  >
     <SFormField name="username" label="Username" description="This is FormField description">
       <SInput placeholder="Please input username" />
     </SFormField>
