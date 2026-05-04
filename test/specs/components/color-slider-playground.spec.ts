@@ -1,7 +1,7 @@
 import { mount } from '@vue/test-utils';
 import { describe, expect, it } from 'vitest';
 import { nextTick } from 'vue';
-import DemoColorSliderBasic from '../../../playground/examples/color-slider/basic.vue';
+import DemoColorSliderBasic from '../../../playground/examples/color-slider/01-basic.vue';
 import SColorSlider from '../../../src/components/color-slider/color-slider.vue';
 
 describe('ColorSlider playground demo', () => {

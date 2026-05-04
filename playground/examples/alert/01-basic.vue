@@ -4,5 +4,4 @@ import { SAlert } from '@soybeanjs/ui';
 
 <template>
   <SAlert title="Info" description="This is an info alert" />
-  <SAlert title="Error" description="Something went wrong" color="destructive" variant="soft" />
 </template>

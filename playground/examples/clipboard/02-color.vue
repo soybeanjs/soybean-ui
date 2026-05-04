@@ -6,13 +6,15 @@ const colors: ThemeColor[] = ['primary', 'destructive', 'success', 'warning', 'i
 </script>
 
 <template>
-  <SClipboard
-    v-for="color in colors"
-    :key="color"
-    :value="`copy-${color}`"
-    :color="color"
-    variant="soft"
-    :copy-text="color"
-    :copied-text="`${color} copied`"
-  />
+  <div class="flex flex-wrap gap-3">
+    <SClipboard
+      v-for="color in colors"
+      :key="color"
+      :value="`copy-${color}`"
+      :color="color"
+      variant="soft"
+      :copy-text="color"
+      :copied-text="`${color} copied`"
+    />
+  </div>
 </template>

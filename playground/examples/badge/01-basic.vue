@@ -4,5 +4,4 @@ import { SBadge } from '@soybeanjs/ui';
 
 <template>
   <SBadge>Default</SBadge>
-  <SBadge color="primary" variant="soft">Primary</SBadge>
 </template>

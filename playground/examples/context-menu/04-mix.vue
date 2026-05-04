@@ -2,7 +2,7 @@
 import { ref } from 'vue';
 import { SContextMenuWrapper, SMenuCheckboxOptions, SMenuOptions, SMenuRadioOptions } from '@soybeanjs/ui';
 import type { MenuCheckboxOptionData, MenuOptionData, MenuRadioOptionData } from '@soybeanjs/ui';
-import ContextMenuTrigger from './trigger.vue';
+import ContextMenuTrigger from './_trigger.vue';
 
 const menus: MenuOptionData<string>[] = [
   {

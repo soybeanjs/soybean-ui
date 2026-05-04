@@ -41,6 +41,7 @@ applyTo: 'docs/src/docs/**/*.md'
 - `Usage` 段统一使用 `<UsageCode component="{component}" />`
 - `Demos` 段统一使用 `<PlaygroundGallery component="{component}" />`
 - 只有在确实需要限制展示子集时，才给 `<PlaygroundGallery>` 传 `files`
+- playground 子示例即使采用 `NN-name.vue` 文件名，`<UsageCode>` 与 `<PlaygroundGallery>` 传入的示例 key 仍然使用去前缀后的 `name`，例如 `basic`、`size`
 - 组件文档中的 `API` 段默认统一使用 `<ComponentApi component="{component}" />`
 - `<ComponentApi>` 的 `component` 值默认与组件目录名一致；如果文档文件名与组件导出名不同，也要传真实组件名，例如 `input-number`
 - 不要在普通组件文档里手写 `DataTable` / `TypeTable` 来替代 `<ComponentApi>`
@@ -72,6 +73,7 @@ applyTo: 'docs/src/docs/**/*.md'
 
 - 文档内容要和实际组件实现同步
 - `<UsageCode>` 和 `<PlaygroundGallery>` 的 `component` 值要与组件目录名保持一致
+- 若 playground 子示例文件带有顺序前缀，文档层仍要使用去前缀后的示例 key，不要把 `01-basic` 这类原始文件名写进文档
 - `<ComponentApi>` 的 `component` 值要与真实 API 数据源保持一致
 - 文档中的演示展示面要和 `playground/examples/{component}/` 真实文件保持一致
 - `docs/src/generated/api/` 与 `docs/src/generated/api-locales/` 的内容要和当前公开导出、类型描述、locale 列表同步

@@ -2,7 +2,7 @@
 import { computed } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { pascalCase } from '@soybeanjs/utils';
-import { allPlaygroundComponents } from '../../docs/src/constants/globs';
+import { getOrderedPlaygroundExamples } from '../../docs/src/constants/globs';
 
 interface Props {
   component: string;
@@ -18,23 +18,15 @@ function resolveExampleTitle(file: string) {
   return te(key) ? t(key) : pascalCase(file);
 }
 
-const components = computed(() => {
-  const map = allPlaygroundComponents[props.component];
-  if (!map) return [];
-
-  const files = ['basic', ...Object.keys(map).filter(file => file !== 'basic')];
-
-  return files.map(file => {
-    const { code = '', component = null } = map[file] || {};
-
-    return {
-      title: resolveExampleTitle(file),
-      file,
-      code,
-      component
-    };
-  });
-});
+const components = computed(() =>
+  getOrderedPlaygroundExamples(props.component).map(item => ({
+    title: resolveExampleTitle(item.name),
+    file: item.name,
+    rawFileName: item.rawFileName,
+    code: item.code,
+    component: item.component
+  }))
+);
 </script>
 
 <template>
@@ -45,7 +37,7 @@ const components = computed(() => {
         <SAlert
           v-else
           color="destructive"
-          :title="`${component}/${item.file} ${t('not_found')}`"
+          :title="`${component}/${item.rawFileName} ${t('not_found')}`"
           icon="lucide:alert-circle"
         />
       </SCard>
