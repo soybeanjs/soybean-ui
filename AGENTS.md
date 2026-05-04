@@ -60,18 +60,19 @@ Data flow: `headless` → `src` (never reverse). UI injects styles via `provideX
 
 ## WHERE TO LOOK
 
-| Task                   | Location                            | Key Pattern                                                                  |
-| ---------------------- | ----------------------------------- | ---------------------------------------------------------------------------- |
-| New component (logic)  | `headless/src/components/[name]/`   | types.ts → context.ts → base \*.vue → optional compact/hook files → index.ts |
-| New component (styled) | `src/components/[name]/`            | variants.ts → types.ts → `*.vue` → index.ts                                  |
-| Variant definitions    | `src/components/[name]/variants.ts` | `tv()` with `// @unocss-include` at top                                      |
-| Shared hooks           | `headless/src/composables/`         | `use-*.ts`, pure Vue composables (26 total)                                  |
-| Theme/sizing           | `src/theme/`                        | `cn()`, `provideSizeContext`, `ThemeColor` (8), `ThemeSize` (xs…2xl)         |
-| Utility functions      | `headless/src/shared/`              | Pure TS helpers (DOM, focus, tree, form, guard, comparison)                  |
-| Global types           | `headless/src/types/`               | `ClassValue`, `UiClass<S>`, `PropsToContext<T,K>`, `PrimitiveProps`          |
-| Generated API data     | `docs/src/generated/api/`           | `pnpm gen:api` baseline + `pnpm translate:api:i18n` locale descriptions      |
-| Docs content           | `docs/src/docs/[en\|zh-CN]/`        | Markdown rendering `<UsageCode>`, `<PlaygroundGallery>`, `<ComponentApi>`    |
-| Demo source            | `playground/examples/[component]/`  | Vue SFCs referenced by docs                                                  |
+| Task                     | Location                            | Key Pattern                                                                      |
+| ------------------------ | ----------------------------------- | -------------------------------------------------------------------------------- |
+| New component (logic)    | `headless/src/components/[name]/`   | types.ts → context.ts → base \*.vue → optional compact/hook files → index.ts     |
+| New component (styled)   | `src/components/[name]/`            | variants.ts → types.ts → `*.vue` → index.ts                                      |
+| Variant definitions      | `src/components/[name]/variants.ts` | `tv()` with `// @unocss-include` at top                                          |
+| Shared hooks             | `headless/src/composables/`         | `use-*.ts`, pure Vue composables (26 total)                                      |
+| Theme/sizing             | `src/theme/`                        | `cn()`, `provideSizeContext`, `ThemeColor` (8), `ThemeSize` (xs…2xl)             |
+| Utility functions        | `headless/src/shared/`              | Pure TS helpers (DOM, focus, tree, form, guard, comparison)                      |
+| Global types             | `headless/src/types/`               | `ClassValue`, `UiClass<S>`, `PropsToContext<T,K>`, `PrimitiveProps`              |
+| Generated API data       | `docs/src/generated/api/`           | `pnpm gen:api` baseline + `pnpm translate:api:i18n` locale descriptions          |
+| Generated changelog data | `docs/src/generated/changelog/`     | `pnpm gen:changelog` baseline + `pnpm translate:changelog:i18n` locale summaries |
+| Docs content             | `docs/src/docs/[en\|zh-CN]/`        | Markdown rendering `<UsageCode>`, `<PlaygroundGallery>`, `<ComponentApi>`        |
+| Demo source              | `playground/examples/[component]/`  | Vue SFCs referenced by docs                                                      |
 
 ## BUILD & CI
 
@@ -89,6 +90,8 @@ pnpm gen:ui           # Regenerate src/constants/components.ts from src/index.ts
 pnpm gen:api          # Regenerate docs/src/generated/api/*.json and docs/src/generated/api-locales/*.json base data
 pnpm gen:api:i18n     # Regenerate API i18n locale template data without re-running type extraction
 pnpm translate:api:i18n -- --locale <locale>  # Translate generated English API descriptions into a non-English locale
+pnpm gen:changelog    # Regenerate docs/src/generated/changelog/*.json and docs/src/generated/changelog-locales/*.json base data
+pnpm translate:changelog:i18n -- --locale <locale>  # Translate generated English changelog summaries into a non-English locale
 ```
 
 - **Pre-commit hook** (simple-git-hooks): `pnpm typecheck && pnpm lint-staged`
@@ -132,7 +135,7 @@ pnpm translate:api:i18n -- --locale <locale>  # Translate generated English API 
 - **Compact aggregations**: For stable, data-driven composites, headless owns iteration, default content, and internal composition; UI wrappers stay thin and only handle variants, class injection, and prop/slot forwarding. Current examples span accordion, card, date-field, dialog, editable, hover-card, layout, navigation-menu, pagination, popover, stepper, and table flows.
 - **Single-class**: No UiContext; use `cn(variants({...}), props.class)` directly
 - **index.ts re-exports**: UI component barrels re-export headless types from sub-path `@soybeanjs/headless/{component}`; `types.ts` should follow the established import style of neighboring components instead of mixing arbitrary paths
-- **Generated metadata**: after public export or API changes, rerun `pnpm gen:headless`, `pnpm gen:ui`, and `pnpm gen:api`; for non-English API descriptions, also run `pnpm translate:api:i18n -- --locale <locale>`
+- **Generated metadata**: after public export, API, or changelog mapping/docs-surface changes, rerun `pnpm gen:headless`, `pnpm gen:ui`, `pnpm gen:api`, and `pnpm gen:changelog` as needed; for non-English generated text, also run `pnpm translate:api:i18n -- --locale <locale>` and `pnpm translate:changelog:i18n -- --locale <locale>`
 
 ## ANTI-PATTERNS
 

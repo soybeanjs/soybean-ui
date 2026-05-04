@@ -19,3 +19,5 @@ Use this file only as routing and local path context. Normative rules stay in `.
 - Even when playground example files use `NN-name.vue`, docs still reference the de-prefixed example key such as `basic` or `size`
 - `ComponentApi` reads generated data from `docs/src/generated/api/` and `docs/src/generated/api-locales/`
 - Public API or type description changes require `pnpm gen:api`; if only locale template data needs refresh, use `pnpm gen:api:i18n`; non-English API descriptions are then filled via `pnpm translate:api:i18n -- --locale <locale>`
+- Component detail pages also inject a generated changelog section when version data exists; do not handwrite per-version release history in markdown
+- Generated changelog data lives in `docs/src/generated/changelog/` and `docs/src/generated/changelog-locales/`; changelog mapping, release presentation, or locale template changes require `pnpm gen:changelog` and, for non-English locales, `pnpm translate:changelog:i18n -- --locale <locale>`

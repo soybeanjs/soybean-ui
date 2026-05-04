@@ -31,6 +31,7 @@ applyTo: 'docs/src/docs/**/*.md'
 3. 接入 `<ComponentApi component="{component}" />`
 4. 更新 `docs/src/constants/menus.ts`
 5. 若公开 API 有变化，运行 `pnpm gen:api`，并为非英文 locale 运行 `pnpm translate:api:i18n -- --locale <locale>`
+6. 若调整了 changelog 映射、release 展示或 changelog locale 模板，运行 `pnpm gen:changelog`，并为非英文 locale 运行 `pnpm translate:changelog:i18n -- --locale <locale>`
 
 ## 关键规则
 
@@ -42,8 +43,10 @@ applyTo: 'docs/src/docs/**/*.md'
 - 组件文档中的 `API` 段默认统一使用 `<ComponentApi component="{component}" />`
 - `<ComponentApi>` 的 `component` 值默认与组件目录名一致；如果文档文件名与组件导出名不同，也要传真实组件名，例如 `input-number`
 - 只有生成式 API 无法覆盖的特殊页面，才允许手写 `DataTable` / `TypeTable` 作为例外
+- 组件详情页中的版本日志区块由生成式 changelog 数据提供，不要在 markdown 中手写逐版本更新记录
 - 公开 API、类型描述或导出面变化后，必须运行 `pnpm gen:api`
 - API 生成产物以脚本输出为准，不要手改 `docs/src/generated/api/` 或 `docs/src/generated/api-locales/`
+- changelog 生成产物以脚本输出为准，不要手改 `docs/src/generated/changelog/` 或 `docs/src/generated/changelog-locales/`
 
 ## 菜单注册
 

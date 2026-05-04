@@ -95,6 +95,7 @@ applyTo: '{headless/src/components,src/components,playground/examples,test/specs
 - docs：见 `soybean-ui-docs.instructions.md`
 - tests：见 `soybean-ui-testing.instructions.md`
 - 如果公开 API 变化，运行 `pnpm gen:api`，并为非英文 locale 运行 `pnpm translate:api:i18n -- --locale <locale>`
+- 如果本轮改动触达 changelog 映射、组件版本日志展示或 release 页面，运行 `pnpm gen:changelog`，并为非英文 locale 运行 `pnpm translate:changelog:i18n -- --locale <locale>`
 
 ### Phase 6：验证与收尾
 

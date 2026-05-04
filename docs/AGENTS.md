@@ -26,6 +26,8 @@ Demos live in `playground/examples/[component]/` (separate workspace). Component
 
 API sections are rendered through `<ComponentApi component="button" />`, backed by generated json data under `docs/src/generated/api/` and `docs/src/generated/api-locales/`. After public API changes, run `pnpm gen:api`; if only locale template data needs refresh, `pnpm gen:api:i18n`; then translate non-English locales with `pnpm translate:api:i18n -- --locale <locale>`.
 
+Component detail pages and `/releases` also consume generated changelog data under `docs/src/generated/changelog/` and `docs/src/generated/changelog-locales/`. When changelog mapping, release presentation, or generated changelog locale templates change, run `pnpm gen:changelog`; then translate non-English locales with `pnpm translate:changelog:i18n -- --locale <locale>`.
+
 ## STRUCTURE
 
 ```
@@ -46,4 +48,5 @@ docs/src/
 - **Component docs**: Prefer `<UsageCode>`, `<PlaygroundGallery>`, and `<ComponentApi>` as the default rendering surfaces
 - **Demo titles**: Titles come from locale keys under `playground.examples.{component}.{file}`, not local `h3` headings inside demo files
 - **Generated API data**: Public API changes require regenerating `docs/src/generated/api/` and `docs/src/generated/api-locales/`, then translating non-English locales
+- **Generated changelog data**: Component changelog sections and the releases page rely on `docs/src/generated/changelog/` and `docs/src/generated/changelog-locales/`; do not hand-edit generated changelog files
 - **Auto-generated**: `typed-router.d.ts` — DO NOT edit manually

@@ -24,6 +24,8 @@ applyTo: '{headless/src/components,src/components}/**/*.{ts,vue}'
 - `docs/src/constants/menus.ts` 已更新
 - 若公开 API 有变化，已运行 `pnpm gen:api`
 - 非英文 API 描述已通过 `pnpm translate:api:i18n -- --locale <locale>` 同步，或已说明暂未翻译原因
+- 若本轮改动触达 changelog 映射、组件版本日志展示或 release 页面，已运行 `pnpm gen:changelog`
+- 非英文 changelog 文案已通过 `pnpm translate:changelog:i18n -- --locale <locale>` 同步，或已说明暂未翻译原因
 - 组件测试覆盖 rendering、state、disabled、accessibility 核心场景
 
 ## 出口与生成文件

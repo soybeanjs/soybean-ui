@@ -100,10 +100,14 @@ pnpm gen:headless     # 同步 headless 组件名称与命名空间导出
 pnpm gen:ui           # 同步 ui 组件名称
 pnpm gen:api          # 重新生成 docs api json 与 locale 英文基线数据
 pnpm gen:api:i18n     # 仅刷新 api locale 模板数据
+pnpm gen:changelog    # 重新生成 docs changelog json 与 locale 英文基线数据
 pnpm translate:api:i18n -- --locale zh-CN
+pnpm translate:changelog:i18n -- --locale zh-CN
 ```
 
-当前文档站默认通过 `UsageCode`、`PlaygroundGallery` 与 `ComponentApi` 渲染组件文档，所以一旦公共 API 或示例交付面变化，也要同步维护 docs、playground 示例和 API 生成数据。
+当前文档站默认通过 `UsageCode`、`PlaygroundGallery` 与 `ComponentApi` 渲染组件文档；组件详情页与 `/releases` 还会消费 `docs/src/generated/changelog/` 和 `docs/src/generated/changelog-locales/` 下的版本日志生成数据。
+
+因此，一旦公共 API 或示例交付面变化，也要同步维护 docs、playground 示例和 API 生成数据；如果调整了 changelog 映射、发布页展示或 changelog locale 模板，也要同步更新 changelog 生成数据。
 
 ## 📦 安装
 

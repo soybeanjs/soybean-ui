@@ -45,3 +45,4 @@ If a component task changes public exports, docs rendering, playground delivery,
 - Use `pnpm gen:headless` for `headless/src/constants/components.ts` and `headless/src/namespaced/index.ts`.
 - Use `pnpm gen:ui` for `src/constants/components.ts`.
 - Use `pnpm gen:api` and, when needed, `pnpm gen:api:i18n` for `docs/src/generated/api/` and `docs/src/generated/api-locales/`, then `pnpm translate:api:i18n -- --locale <locale>` for non-English API descriptions.
+- Use `pnpm gen:changelog` for `docs/src/generated/changelog/` and `docs/src/generated/changelog-locales/`, then `pnpm translate:changelog:i18n -- --locale <locale>` for non-English changelog summaries.

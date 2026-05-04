@@ -100,10 +100,14 @@ pnpm gen:headless     # sync headless component names and namespaced exports
 pnpm gen:ui           # sync ui component names
 pnpm gen:api          # regenerate docs api json and locale baseline data
 pnpm gen:api:i18n     # refresh api locale template data only
+pnpm gen:changelog    # regenerate docs changelog json and locale baseline data
 pnpm translate:api:i18n -- --locale zh-CN
+pnpm translate:changelog:i18n -- --locale zh-CN
 ```
 
-The docs site now renders component docs through `UsageCode`, `PlaygroundGallery`, and `ComponentApi`, so public API or demo delivery changes should keep docs, playground examples, and generated API data aligned.
+The docs site now renders component docs through `UsageCode`, `PlaygroundGallery`, and `ComponentApi`. Component detail pages and `/releases` also read generated changelog data from `docs/src/generated/changelog/` and `docs/src/generated/changelog-locales/`.
+
+Public API or demo delivery changes should keep docs, playground examples, and generated API data aligned. Changelog mapping, release presentation, and changelog locale template changes should keep generated changelog data aligned as well.
 
 ## 📦 Installation
 
