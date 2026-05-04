@@ -65,43 +65,43 @@ const commonBooleanNames = new Set([
   'visible'
 ]);
 const genericMemberDescriptions = new Map<string, string>([
-  ['actionMenuProps', 'Props forwarded to the action menu component.'],
+  ['actionMenuProps', 'Properties forwarded to the action menu component.'],
   ['actions', 'Action items rendered by the component.'],
   ['activePaths', 'Active paths tracked by the component context.'],
   ['as', 'Rendered element tag.'],
   ['autoLoading', 'Whether loading state is handled automatically.'],
   ['badge', 'Badge content rendered by the component.'],
-  ['badgeProps', 'Props forwarded to the badge component.'],
-  ['buttonProps', 'Props forwarded to the button element.'],
+  ['badgeProps', 'Properties forwarded to the badge component.'],
+  ['buttonProps', 'Properties forwarded to the button element.'],
   ['children', 'Nested child items.'],
   ['class', 'Additional class names applied to the root element.'],
-  ['closeProps', 'Props forwarded to the close element.'],
+  ['closeProps', 'Properties forwarded to the close element.'],
   ['collapsedWidth', 'Width of the collapsed state.'],
-  ['collapsibleProps', 'Props forwarded to the collapsible element.'],
+  ['collapsibleProps', 'Properties forwarded to the collapsible element.'],
   ['color', 'Theme color of the component.'],
-  ['contentProps', 'Props forwarded to the content element.'],
+  ['contentProps', 'Properties forwarded to the content element.'],
   ['description', 'Description text rendered by the component.'],
-  ['descriptionProps', 'Props forwarded to the description element.'],
+  ['descriptionProps', 'Properties forwarded to the description element.'],
   ['dir', 'Reading direction of the component.'],
-  ['dropdownMenuProps', 'Props forwarded to the dropdown menu component.'],
+  ['dropdownMenuProps', 'Properties forwarded to the dropdown menu component.'],
   ['fitContent', 'Whether the component should fit its content width.'],
-  ['groupLabelProps', 'Props forwarded to the group label element.'],
-  ['groupProps', 'Props forwarded to the group element.'],
-  ['groupRootProps', 'Props forwarded to the group root element.'],
-  ['headerProps', 'Props forwarded to the header element.'],
+  ['groupLabelProps', 'Properties forwarded to the group label element.'],
+  ['groupProps', 'Properties forwarded to the group element.'],
+  ['groupRootProps', 'Properties forwarded to the group root element.'],
+  ['headerProps', 'Properties forwarded to the header element.'],
   ['icon', 'Icon rendered by the component.'],
   ['iconClass', 'Additional class names applied to the icon element.'],
-  ['iconProps', 'Props forwarded to the icon component.'],
+  ['iconProps', 'Properties forwarded to the icon component.'],
   ['indent', 'Indent width applied to nested items.'],
   ['index', 'Index of the current item.'],
   ['item', 'Current item data.'],
-  ['itemProps', 'Props forwarded to the item element.'],
+  ['itemProps', 'Properties forwarded to the item element.'],
   ['items', 'Items rendered by the component.'],
   ['label', 'Label text rendered by the component.'],
-  ['linkProps', 'Props forwarded to the link element.'],
+  ['linkProps', 'Properties forwarded to the link element.'],
   ['loadingDuration', 'Duration of the loading state in milliseconds.'],
   ['loadingIcon', 'Icon rendered for the loading state.'],
-  ['loadingIconProps', 'Props forwarded to the loading icon component.'],
+  ['loadingIconProps', 'Properties forwarded to the loading icon component.'],
   ['loadingPosition', 'Placement of the loading indicator.'],
   ['loadingText', 'Text rendered during the loading state.'],
   ['modelValue', 'Current model value.'],
@@ -117,13 +117,13 @@ const genericMemberDescriptions = new Map<string, string>([
   ['showLinkIcon', 'Whether to show the link icon.'],
   ['side', 'Side placement of the component.'],
   ['size', 'Visual size of the component.'],
-  ['subProps', 'Props forwarded to the sub element.'],
+  ['subProps', 'Properties forwarded to the sub element.'],
   ['tag', 'Tag content rendered by the component.'],
-  ['tagProps', 'Props forwarded to the tag component.'],
+  ['tagProps', 'Properties forwarded to the tag component.'],
   ['title', 'Title text rendered by the component.'],
-  ['titleProps', 'Props forwarded to the title element.'],
-  ['tooltipProps', 'Props forwarded to the tooltip component.'],
-  ['triggerProps', 'Props forwarded to the trigger element.'],
+  ['titleProps', 'Properties forwarded to the title element.'],
+  ['tooltipProps', 'Properties forwarded to the tooltip component.'],
+  ['triggerProps', 'Properties forwarded to the trigger element.'],
   ['ui', 'Per-slot class overrides for the component.'],
   ['value', 'Value associated with the current item.'],
   ['variant', 'Visual variant of the component.']
@@ -339,13 +339,13 @@ function createDeclarationDescription(name: string, category: DeclarationCategor
 
   switch (category) {
     case 'props':
-      return `Props for the ${subject} component.`;
+      return `Properties for the ${subject} component.`;
     case 'emits':
-      return `Emits for the ${subject} component.`;
+      return `Events for the ${subject} component.`;
     case 'slots':
       return `Slots for the ${subject} component.`;
     case 'slotProps':
-      return `Slot props for the ${subject} component.`;
+      return `Slot properties for the ${subject} component.`;
     case 'context':
       return `Context for the ${subject} component.`;
     case 'contextParams':
@@ -436,7 +436,7 @@ function createMemberDescription(
   }
 
   if (memberName.endsWith('Props')) {
-    return `Props forwarded to the ${toReadablePhrase(memberName.slice(0, -'Props'.length))} element.`;
+    return `Properties forwarded to the ${toReadablePhrase(memberName.slice(0, -'Props'.length))} element.`;
   }
 
   if (memberName.endsWith('Class')) {

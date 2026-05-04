@@ -99,21 +99,54 @@ function sortJsonValue(value: JsonValue): JsonValue {
   );
 }
 
-function resolveLocaleValue(locale: string, existingValue: string | null, description: string): string {
+function collectChangedSourceKeys(entries: Map<string, string>, previousDefaultMessages: JsonObject): Set<string> {
+  const changedKeys = new Set<string>();
+
+  entries.forEach((description, key) => {
+    const previousValue = getNestedString(previousDefaultMessages, key);
+
+    if (previousValue !== null && previousValue !== description) {
+      changedKeys.add(key);
+    }
+  });
+
+  return changedKeys;
+}
+
+function resolveLocaleValue(
+  locale: string,
+  existingValue: string | null,
+  description: string,
+  changedSourceKeys: Set<string>,
+  key: string
+): string {
   if (locale === defaultLocale) {
-    return existingValue?.trim() ? existingValue : description;
+    return description;
+  }
+
+  if (changedSourceKeys.has(key)) {
+    return '';
   }
 
   return existingValue ?? '';
 }
 
-function createLocaleMessages(locale: string, entries: Map<string, string>, existingMessages: JsonObject): JsonObject {
+function createLocaleMessages(
+  locale: string,
+  entries: Map<string, string>,
+  existingMessages: JsonObject,
+  changedSourceKeys: Set<string>
+): JsonObject {
   const messages: JsonObject = {};
 
   Array.from(entries.entries())
     .sort(([leftKey], [rightKey]) => leftKey.localeCompare(rightKey))
     .forEach(([key, description]) => {
-      setNestedValue(messages, key, resolveLocaleValue(locale, getNestedString(existingMessages, key), description));
+      setNestedValue(
+        messages,
+        key,
+        resolveLocaleValue(locale, getNestedString(existingMessages, key), description, changedSourceKeys, key)
+      );
     });
 
   return sortJsonValue(messages) as JsonObject;
@@ -168,14 +201,20 @@ async function main(): Promise<void> {
 
   await mkdir(outputDir, { recursive: true });
 
+  const previousDefaultMessages = await readJsonObject(path.join(outputDir, `${defaultLocale}.json`));
+  const changedSourceKeys = collectChangedSourceKeys(entries, previousDefaultMessages);
+
   for (const locale of locales) {
     const existingMessages = await readJsonObject(path.join(outputDir, `${locale}.json`));
-    const localeMessages = createLocaleMessages(locale, entries, existingMessages);
+    const localeMessages = createLocaleMessages(locale, entries, existingMessages, changedSourceKeys);
 
     await writeLocaleMessages(locale, localeMessages);
   }
 
-  console.log(`Generated API locale templates for ${locales.join(', ')} with ${entries.size} translation keys.`);
+  console.log(
+    `Generated API locale templates for ${locales.join(', ')} with ${entries.size} translation keys.` +
+      ` Reset ${changedSourceKeys.size} changed source keys for non-default locales.`
+  );
 }
 
 await main();

@@ -1,4 +1,4 @@
-import { readFile, writeFile } from 'node:fs/promises';
+import { readdir, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import process from 'node:process';
 
@@ -39,6 +39,7 @@ type DeepLTranslateResponse = {
 
 const rootDir = process.cwd();
 const localeDir = path.join(rootDir, 'docs/src/generated/api-locales');
+const i18nModulePath = path.join(rootDir, 'docs/src/modules/i18n.ts');
 const defaultBaseUrl = 'https://api-free.deepl.com/v2';
 const defaultRetryCount = 3;
 const defaultRetryDelayMs = 1500;
@@ -85,10 +86,10 @@ const deepLLanguageMap = new Map<string, string>([
 ]);
 
 function printUsage() {
-  console.log(`Usage: pnpm translate:api:i18n -- --locale <locale> [options]
+  console.log(`Usage: pnpm translate:api:i18n -- [--locale <locale>] [options]
 
 Options:
-  --locale <locale>         Target locale, for example zh-CN or ja
+  --locale <locale>         Target locale, for example zh-CN or ja. If omitted, translates all available locales except the source locale.
   --source-locale <locale>  Source locale file, default: en
   --batch-size <number>     Number of entries per translation request, default: 20
   --limit <number>          Only translate the first N pending entries
@@ -156,6 +157,24 @@ function parseCliOptions(argv: string[]): CliOptions {
 
 function isJsonObject(value: unknown): value is JsonObject {
   return typeof value === 'object' && value !== null && !Array.isArray(value);
+}
+
+async function resolveAvailableLocales(): Promise<string[]> {
+  const moduleContent = await readFile(i18nModulePath, 'utf8');
+  const localesGlobMatch = moduleContent.match(/import\.meta\.glob\('([^']*locales\/\*\.yml)'\)/u);
+
+  if (!localesGlobMatch) {
+    throw new Error(`Unable to resolve availableLocales from ${path.relative(rootDir, i18nModulePath)}.`);
+  }
+
+  const localesGlobPath = localesGlobMatch[1];
+  const localesDirectory = path.resolve(path.dirname(i18nModulePath), path.dirname(localesGlobPath));
+  const fileNames = await readdir(localesDirectory);
+
+  return fileNames
+    .filter(fileName => fileName.endsWith('.yml'))
+    .map(fileName => fileName.replace(/\.yml$/u, ''))
+    .sort((left, right) => left.localeCompare(right));
 }
 
 async function readJsonObject(filePath: string): Promise<JsonObject> {
@@ -429,28 +448,9 @@ async function writeJsonObject(filePath: string, messages: JsonObject): Promise<
   await writeFile(filePath, content, 'utf8');
 }
 
-async function main(): Promise<void> {
-  const options = parseCliOptions(process.argv.slice(2));
-
-  if (options.help) {
-    printUsage();
-    return;
-  }
-
-  if (!options.locale) {
-    throw new Error('Missing required argument: --locale');
-  }
-
-  if (options.locale === options.sourceLocale) {
-    throw new Error('Target locale must be different from source locale.');
-  }
-
-  if (options.batchSize <= 0) {
-    throw new Error('--batch-size must be greater than 0.');
-  }
-
+async function translateLocale(locale: string, options: CliOptions): Promise<void> {
   const sourcePath = path.join(localeDir, `${options.sourceLocale}.json`);
-  const targetPath = path.join(localeDir, `${options.locale}.json`);
+  const targetPath = path.join(localeDir, `${locale}.json`);
   const [sourceMessages, targetMessages] = await Promise.all([readJsonObject(sourcePath), readJsonObject(targetPath)]);
   const flattenedSourceMessages = flattenLocaleMessages(sourceMessages);
   const flattenedTargetMessages = flattenLocaleMessages(targetMessages);
@@ -462,11 +462,11 @@ async function main(): Promise<void> {
   );
 
   if (!pendingEntries.length) {
-    console.log(`No pending translations for ${options.locale}.`);
+    console.log(`No pending translations for ${locale}.`);
     return;
   }
 
-  console.log(`Found ${pendingEntries.length} pending translations for ${options.locale}.`);
+  console.log(`Found ${pendingEntries.length} pending translations for ${locale}.`);
 
   if (options.dryRun) {
     return;
@@ -480,8 +480,10 @@ async function main(): Promise<void> {
     const uncachedEntries = entryChunk.filter(entry => !translatedTextCache.has(entry.source));
 
     if (uncachedEntries.length) {
-      console.log(`Translating batch ${chunkIndex + 1}/${entryChunks.length} (${uncachedEntries.length} entries)...`);
-      const translatedEntries = await requestTranslations(uncachedEntries, options.locale, options.sourceLocale);
+      console.log(
+        `Translating ${locale} batch ${chunkIndex + 1}/${entryChunks.length} (${uncachedEntries.length} entries)...`
+      );
+      const translatedEntries = await requestTranslations(uncachedEntries, locale, options.sourceLocale);
 
       uncachedEntries.forEach(entry => {
         translatedTextCache.set(entry.source, translatedEntries.get(entry.key) ?? '');
@@ -501,6 +503,48 @@ async function main(): Promise<void> {
 
   await writeJsonObject(targetPath, targetDocument);
   console.log(`Updated ${path.relative(rootDir, targetPath)} with ${pendingEntries.length} translations.`);
+}
+
+async function main(): Promise<void> {
+  const options = parseCliOptions(process.argv.slice(2));
+
+  if (options.help) {
+    printUsage();
+    return;
+  }
+
+  if (options.batchSize <= 0) {
+    throw new Error('--batch-size must be greater than 0.');
+  }
+
+  const availableLocales = await resolveAvailableLocales();
+  const targetLocales = (
+    options.locale ? [options.locale] : availableLocales.filter(locale => locale !== options.sourceLocale)
+  )
+    .filter((locale, index, locales) => locales.indexOf(locale) === index)
+    .sort((left, right) => left.localeCompare(right));
+
+  if (!targetLocales.length) {
+    throw new Error('No target locales available for translation.');
+  }
+
+  const invalidLocale = targetLocales.find(locale => locale === options.sourceLocale);
+
+  if (invalidLocale) {
+    throw new Error('Target locale must be different from source locale.');
+  }
+
+  const unsupportedLocale = targetLocales.find(locale => !availableLocales.includes(locale));
+
+  if (unsupportedLocale) {
+    throw new Error(`Unsupported locale: ${unsupportedLocale}`);
+  }
+
+  console.log(`Target locales: ${targetLocales.join(', ')}`);
+
+  for (const locale of targetLocales) {
+    await translateLocale(locale, options);
+  }
 }
 
 await main();
