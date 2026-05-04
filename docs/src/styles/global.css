@@ -41,33 +41,33 @@ html {
 
 html.dark {
   --scrollbar-color: var(--scrollbar-color-dark);
-  --docs-page-bg-solid: rgb(9, 12, 22);
+  --docs-page-bg-solid: rgb(14, 12, 18);
   --docs-page-bg: linear-gradient(
     180deg,
-    rgba(10, 13, 24, 0.98) 0%,
-    rgba(13, 18, 30, 0.98) 48%,
-    rgba(9, 12, 22, 1) 100%
+    rgba(18, 15, 22, 0.985) 0%,
+    rgba(24, 19, 26, 0.985) 40%,
+    rgba(14, 12, 18, 1) 100%
   );
-  --docs-grid-line: rgba(148, 163, 184, 0.06);
-  --docs-shell-bg: rgba(20, 20, 30, 0.28);
-  --docs-shell-border: rgba(255, 255, 255, 0.08);
-  --docs-shell-shadow: 0 38px 90px -50px rgba(0, 0, 0, 0.6);
-  --docs-shell-shadow-hover: 0 42px 110px -50px rgba(0, 0, 0, 0.68);
-  --docs-shell-inset: inset 1px 1px 0 rgba(255, 255, 255, 0.08), inset 0 0 0 1px rgba(255, 255, 255, 0.04);
+  --docs-grid-line: rgba(255, 255, 255, 0.028);
+  --docs-shell-bg: rgba(27, 22, 30, 0.32);
+  --docs-shell-border: rgba(255, 255, 255, 0.075);
+  --docs-shell-shadow: 0 42px 96px -52px rgba(0, 0, 0, 0.68);
+  --docs-shell-shadow-hover: 0 48px 120px -52px rgba(0, 0, 0, 0.76);
+  --docs-shell-inset: inset 1px 1px 0 rgba(255, 255, 255, 0.08), inset 0 0 0 1px rgba(255, 255, 255, 0.025);
   --docs-shell-blur: 20px;
-  --docs-panel-bg: rgba(26, 28, 38, 0.62);
-  --docs-panel-bg-strong: rgba(30, 32, 44, 0.74);
+  --docs-panel-bg: rgba(31, 25, 34, 0.62);
+  --docs-panel-bg-strong: rgba(38, 29, 40, 0.76);
   --docs-panel-border: rgba(255, 255, 255, 0.06);
-  --docs-panel-shadow: 0 24px 52px -36px rgba(0, 0, 0, 0.48);
-  --docs-panel-shadow-hover: 0 30px 58px -34px rgba(0, 0, 0, 0.54);
+  --docs-panel-shadow: 0 28px 58px -38px rgba(0, 0, 0, 0.5);
+  --docs-panel-shadow-hover: 0 34px 70px -38px rgba(0, 0, 0, 0.58);
   --docs-panel-inset: inset 0 1px 0 rgba(255, 255, 255, 0.04), inset 0 0 0 1px rgba(0, 0, 0, 0.18);
-  --docs-chip-bg: rgba(40, 40, 52, 0.62);
-  --docs-chip-bg-strong: rgba(46, 46, 58, 0.76);
-  --docs-chip-border: rgba(255, 255, 255, 0.08);
-  --docs-code-bg: rgba(23, 23, 33, 0.72);
-  --docs-code-border: rgba(255, 255, 255, 0.08);
-  --docs-table-head-bg: rgba(255, 255, 255, 0.04);
-  --docs-table-row-border: rgba(255, 255, 255, 0.06);
+  --docs-chip-bg: rgba(41, 32, 43, 0.66);
+  --docs-chip-bg-strong: rgba(50, 38, 52, 0.78);
+  --docs-chip-border: rgba(255, 255, 255, 0.075);
+  --docs-code-bg: rgba(23, 19, 26, 0.8);
+  --docs-code-border: rgba(255, 255, 255, 0.075);
+  --docs-table-head-bg: rgba(255, 255, 255, 0.045);
+  --docs-table-row-border: rgba(255, 255, 255, 0.055);
   --docs-surface: var(--docs-panel-bg);
   --docs-surface-strong: var(--docs-panel-bg-strong);
   --docs-shadow: var(--docs-panel-shadow);
@@ -179,12 +179,23 @@ html.dark .shiki span {
   height: 72vh;
   pointer-events: none;
   background:
-    radial-gradient(circle at 14% 18%, hsl(var(--primary) / 0.18), transparent 24%),
-    radial-gradient(circle at 84% 12%, hsl(var(--info) / 0.16), transparent 22%),
-    radial-gradient(circle at 55% 82%, hsl(var(--warning) / 0.12), transparent 26%);
+    radial-gradient(circle at 14% 18%, hsl(var(--primary-400) / 0.11), transparent 24%),
+    radial-gradient(circle at 84% 12%, hsl(var(--primary-500) / 0.13), transparent 22%),
+    radial-gradient(circle at 55% 82%, hsl(var(--primary-700) / 0.09), transparent 26%),
+    radial-gradient(circle at 92% 68%, hsl(var(--primary-600) / 0.07), transparent 22%);
   filter: blur(22px);
   opacity: 0.95;
   z-index: -1;
+}
+
+html.dark .docs-frosted-app::after {
+  background:
+    radial-gradient(circle at 18% 12%, hsl(var(--primary-400) / 0.06), transparent 24%),
+    radial-gradient(circle at 86% 14%, hsl(var(--primary-500) / 0.07), transparent 22%),
+    radial-gradient(circle at 22% 88%, hsl(var(--primary-700) / 0.045), transparent 22%),
+    radial-gradient(circle at 58% 92%, hsl(var(--primary-600) / 0.04), transparent 26%);
+  filter: blur(42px);
+  opacity: 0.52;
 }
 
 .glass-shell,
@@ -325,16 +336,17 @@ html:not(.dark) .docs-home-button-subtle.docs-home-button-subtle {
 html.dark .docs-home-soft-shell.docs-home-soft-shell {
   background: linear-gradient(
     135deg,
-    color-mix(in srgb, hsl(var(--primary) / 0.07) 22%, var(--docs-shell-bg)) 0%,
-    color-mix(in srgb, hsl(var(--info) / 0.05) 18%, transparent) 100%
+    color-mix(in srgb, rgba(45, 112, 255, 0.14) 18%, var(--docs-shell-bg)) 0%,
+    color-mix(in srgb, rgba(255, 99, 126, 0.16) 16%, transparent) 58%,
+    color-mix(in srgb, rgba(245, 158, 11, 0.14) 14%, transparent) 100%
   );
 }
 
 html.dark .docs-home-stat-panel.docs-home-stat-panel {
   background: linear-gradient(
     180deg,
-    color-mix(in srgb, hsl(var(--primary) / 0.06) 28%, var(--docs-panel-bg-strong)) 0%,
-    color-mix(in srgb, hsl(var(--info) / 0.04) 20%, var(--docs-panel-bg)) 100%
+    color-mix(in srgb, rgba(255, 99, 126, 0.14) 26%, var(--docs-panel-bg-strong)) 0%,
+    color-mix(in srgb, rgba(245, 158, 11, 0.12) 20%, var(--docs-panel-bg)) 100%
   );
 }
 
@@ -978,10 +990,57 @@ html.dark .docs-theme-configurator-option-button-active.docs-theme-configurator-
 }
 
 .docs-topbar-frame {
-  background: color-mix(in srgb, var(--docs-shell-bg) 42%, transparent);
-  border-bottom: 1px solid color-mix(in srgb, var(--docs-shell-border) 74%, transparent);
+  transition:
+    background-color 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease,
+    -webkit-backdrop-filter 0.3s ease,
+    backdrop-filter 0.3s ease;
+  border-bottom-left-radius: 1.25rem;
+  border-bottom-right-radius: 1.25rem;
+  overflow: hidden;
+}
+
+.docs-topbar-shell[data-scrolled='false'] .docs-topbar-frame {
+  background: color-mix(in srgb, var(--docs-shell-bg) 44%, transparent);
+  border-inline: 1px solid transparent;
+  border-bottom: 1px solid color-mix(in srgb, var(--docs-shell-border) 42%, transparent);
+  box-shadow: none;
+  -webkit-backdrop-filter: saturate(125%) blur(6px);
+  backdrop-filter: saturate(125%) blur(6px);
+}
+
+html.dark .docs-topbar-shell[data-scrolled='false'] .docs-topbar-frame {
+  background: color-mix(in srgb, var(--docs-shell-bg) 54%, rgba(12, 12, 18, 0.16));
+  border-bottom-color: color-mix(in srgb, var(--docs-shell-border) 36%, rgba(255, 255, 255, 0.018));
+  -webkit-backdrop-filter: saturate(130%) blur(8px);
+  backdrop-filter: saturate(130%) blur(8px);
+}
+
+.docs-topbar-shell[data-scrolled='true'] .docs-topbar-frame {
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, rgba(236, 240, 246, 0.96) 72%, var(--docs-panel-bg-strong)) 0%,
+    color-mix(in srgb, rgba(224, 230, 238, 0.92) 76%, var(--docs-panel-bg)) 100%
+  );
+  border-inline: 1px solid color-mix(in srgb, rgba(148, 163, 184, 0.22) 68%, var(--docs-shell-border));
+  border-bottom: 1px solid color-mix(in srgb, rgba(148, 163, 184, 0.26) 72%, var(--docs-shell-border));
+  box-shadow: 0 10px 24px -20px rgba(15, 23, 42, 0.08);
   -webkit-backdrop-filter: saturate(155%) blur(10px);
   backdrop-filter: saturate(155%) blur(10px);
+}
+
+html.dark .docs-topbar-shell[data-scrolled='true'] .docs-topbar-frame {
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, rgba(68, 66, 86, 0.9) 70%, var(--docs-chip-bg-strong)) 0%,
+    color-mix(in srgb, rgba(48, 46, 62, 0.88) 76%, var(--docs-panel-bg)) 100%
+  );
+  border-inline-color: color-mix(in srgb, rgba(255, 255, 255, 0.08) 58%, var(--docs-shell-border));
+  border-bottom-color: color-mix(in srgb, rgba(255, 255, 255, 0.1) 62%, var(--docs-shell-border));
+  box-shadow: 0 12px 28px -22px rgba(0, 0, 0, 0.32);
+  -webkit-backdrop-filter: saturate(145%) blur(12px);
+  backdrop-filter: saturate(145%) blur(12px);
 }
 
 .docs-header-shell[data-scrolled='false'] .docs-header-frame {
@@ -998,22 +1057,34 @@ html.dark .docs-theme-configurator-option-button-active.docs-theme-configurator-
 }
 
 .docs-header-shell[data-scrolled='true'] .docs-header-frame {
-  background: color-mix(in srgb, var(--docs-shell-bg) 76%, transparent);
-  border: 1px solid color-mix(in srgb, var(--docs-shell-border) 74%, transparent);
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, rgba(238, 242, 247, 0.98) 76%, var(--docs-panel-bg-strong)) 0%,
+    color-mix(in srgb, rgba(223, 229, 237, 0.94) 80%, var(--docs-panel-bg)) 100%
+  );
+  border: 1px solid color-mix(in srgb, rgba(148, 163, 184, 0.24) 74%, var(--docs-shell-border));
   border-radius: 999px;
   box-shadow:
-    0 20px 44px -30px rgba(15, 23, 42, 0.18),
-    var(--docs-shell-inset);
+    0 20px 44px -30px rgba(15, 23, 42, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.48),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.12);
   -webkit-backdrop-filter: saturate(170%) blur(calc(var(--docs-shell-blur) - 4px));
   backdrop-filter: saturate(170%) blur(calc(var(--docs-shell-blur) - 4px));
 }
 
 html.dark .docs-header-shell[data-scrolled='true'] .docs-header-frame {
-  background: color-mix(in srgb, var(--docs-shell-bg) 88%, rgba(8, 10, 18, 0.3));
-  border-color: color-mix(in srgb, var(--docs-shell-border) 88%, rgba(255, 255, 255, 0.04));
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, rgba(72, 70, 90, 0.92) 72%, var(--docs-chip-bg-strong)) 0%,
+    color-mix(in srgb, rgba(44, 41, 58, 0.9) 78%, var(--docs-panel-bg)) 100%
+  );
+  border-color: color-mix(in srgb, rgba(255, 255, 255, 0.1) 64%, var(--docs-shell-border));
   box-shadow:
-    0 24px 52px -32px rgba(0, 0, 0, 0.42),
-    var(--docs-shell-inset);
+    0 24px 52px -32px rgba(0, 0, 0, 0.38),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.04);
+  -webkit-backdrop-filter: saturate(145%) blur(calc(var(--docs-shell-blur) - 3px));
+  backdrop-filter: saturate(145%) blur(calc(var(--docs-shell-blur) - 3px));
 }
 
 .docs-mobile-nav-shell {

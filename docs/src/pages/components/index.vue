@@ -124,7 +124,7 @@ onBeforeUnmount(() => {
   <div class="mx-auto max-w-screen-2xl space-y-8 pb-10">
     <section class="docs-hero-shell glass-shell relative overflow-hidden px-6 py-7 sm:px-8 sm:py-9 xl:px-10">
       <div
-        class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,hsl(var(--primary)/0.16),transparent_30%),radial-gradient(circle_at_bottom_left,hsl(var(--warning)/0.12),transparent_28%)]"
+        class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,hsl(var(--primary-400)/0.12),transparent_30%),radial-gradient(circle_at_bottom_left,hsl(var(--primary-700)/0.07),transparent_28%)]"
       />
       <div class="relative grid gap-8 xl:grid-cols-[minmax(0,1.12fr)_22rem] xl:items-start">
         <div class="space-y-5">

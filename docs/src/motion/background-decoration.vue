@@ -1,38 +1,34 @@
 <script setup lang="ts">
+type PrimaryTone = 'primary' | '50' | '100' | '200' | '300' | '400' | '500' | '600' | '700' | '800' | '900' | '950';
+
+function resolvePrimaryTone(tone: PrimaryTone, alpha: number) {
+  const variable = tone === 'primary' ? '--primary' : `--primary-${tone}`;
+
+  return `hsl(var(${variable}) / ${alpha})`;
+}
+
 const orbs = [
   {
     size: 'w-[500px] h-[500px]',
-    color: 'bg-blue-400/20 dark:bg-blue-600/20'
+    color: resolvePrimaryTone('400', 0.06)
   },
   {
     size: 'w-[400px] h-[400px]',
-    color: 'bg-purple-400/20 dark:bg-purple-600/20'
+    color: resolvePrimaryTone('500', 0.055)
   },
   {
     size: 'w-[300px] h-[300px]',
-    color: 'bg-cyan-400/20 dark:bg-cyan-600/20'
+    color: resolvePrimaryTone('700', 0.05)
   }
 ];
 
-// Tech Particles 配置
-const particleColors = [
-  'bg-primary',
-  'bg-purple-500',
-  'bg-cyan-500',
-  'bg-pink-500',
-  'bg-indigo-500',
-  'bg-teal-500',
-  'bg-rose-500',
-  'bg-amber-500',
-  'bg-emerald-500'
-];
+const particleTones: PrimaryTone[] = ['400', '500', '600', '700', '500', '600', '400', '700', '600', '500', '400'];
 
 const particleSizes = ['w-1 h-1', 'w-1.5 h-1.5', 'w-2 h-2'];
 
-// 生成9个粒子，使用3x3网格均匀分布
-const gridCols = 3;
+const gridCols = 4;
 const gridRows = 3;
-const totalParticles = gridCols * gridRows;
+const totalParticles = particleTones.length;
 
 const particles = computed(() => {
   return Array.from({ length: totalParticles }, (_, index) => {
@@ -43,15 +39,14 @@ const particles = computed(() => {
     const leftPercent = 10 + col * (80 / (gridCols - 1));
     const topPercent = 10 + row * (80 / (gridRows - 1));
 
-    // 随机选择颜色和大小
-    const color = particleColors[index % particleColors.length];
+    const tone = particleTones[index % particleTones.length];
     const size = particleSizes[index % particleSizes.length];
 
     // 延迟时间（0-2000ms之间，每个粒子间隔约200ms）
     const delay = index * 200;
 
     return {
-      color,
+      background: resolvePrimaryTone(tone, 0.22),
       size,
       left: leftPercent,
       top: topPercent,
@@ -73,25 +68,27 @@ const particles = computed(() => {
       v-for="(orb, index) in orbs"
       :key="index"
       class="absolute rounded-full blur-[100px] will-change-transform"
-      :class="[orb.size, orb.color]"
+      :class="orb.size"
       :style="{
+        background: orb.color,
         left: `${(index + 1) * 20}%`,
         top: `${(index + 1) * 10}%`
       }"
     />
 
     <!-- Tech Particles / Accents -->
-    <div class="absolute inset-0 opacity-30 dark:opacity-50">
+    <div class="absolute inset-0 opacity-30 dark:opacity-20">
       <div
         v-for="(particle, index) in particles"
         :key="index"
         :style="{
+          background: particle.background,
           left: `${particle.left}%`,
           top: `${particle.top}%`,
           animationDelay: `${particle.delay}ms`
         }"
         class="absolute rounded-full animate-ping will-change-transform"
-        :class="[particle.color, particle.size]"
+        :class="particle.size"
       />
     </div>
   </div>
