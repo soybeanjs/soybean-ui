@@ -93,7 +93,7 @@ export type ClipboardEmits = {
   /**
    * Emitted when click occurs.
    */
-  click: [event: MouseEvent];
+  click: [event: PointerEvent];
   /**
    * Emitted when copied occurs.
    */

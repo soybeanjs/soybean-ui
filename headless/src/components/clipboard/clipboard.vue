@@ -74,7 +74,7 @@ const slotProps = computed<ClipboardSlotProps>(() => ({
   copy: copyValue
 }));
 
-const onClick = async (event: MouseEvent) => {
+const onClick = async (event: PointerEvent) => {
   emit('click', event);
 
   await copyValue();
