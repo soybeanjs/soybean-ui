@@ -2,14 +2,19 @@
 import { ref } from 'vue';
 import { CalendarDate } from '@internationalized/date';
 import { SDatePicker } from '@soybeanjs/ui';
+import { themeSizeOptions } from '../../constants/theme';
 
-const selectedDate1 = ref<any>();
-const selectedDate2 = ref<any>();
-const selectedDate3 = ref<any>();
+const selectedDate = ref<any>();
 </script>
 
 <template>
-  <SDatePicker v-model="selectedDate1" :default-placeholder="new CalendarDate(2024, 1, 1)" size="sm" />
-  <SDatePicker v-model="selectedDate2" :default-placeholder="new CalendarDate(2024, 1, 1)" size="md" />
-  <SDatePicker v-model="selectedDate3" :default-placeholder="new CalendarDate(2024, 1, 1)" size="lg" />
+  <div class="flex flex-wrap gap-3">
+    <SDatePicker
+      v-for="item in themeSizeOptions"
+      :key="item.value"
+      v-model="selectedDate"
+      :size="item.value"
+      :default-placeholder="new CalendarDate(2024, 1, 1)"
+    />
+  </div>
 </template>

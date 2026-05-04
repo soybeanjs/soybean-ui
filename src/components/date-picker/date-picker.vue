@@ -50,6 +50,7 @@ provideDatePickerUi(ui);
     <template #default="slotProps">
       <SCalendar
         v-bind="calendarProps"
+        :size="size"
         :model-value="slotProps.modelValue"
         :placeholder="slotProps.placeholder"
         data-slot="calendar"
