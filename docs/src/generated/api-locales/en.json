@@ -3276,30 +3276,100 @@
         },
         "emptyui": "UI class overrides for the empty component."
       },
+      "headless_src_components_form_core_types": {
+        "formfieldarraystates": "Type information for the form field array states component.",
+        "formfieldstate": "State values for the form core component.",
+        "formfieldvalidator": "Type information for the form field validator component."
+      },
       "headless_src_components_form_types": {
+        "formcompactprops": {
+          "members": {
+            "controlprops": "Properties forwarded to the control element.",
+            "descriptionprops": "Properties forwarded to the description element.",
+            "errorprops": "Properties forwarded to the error element.",
+            "fieldarrayprops": "",
+            "fieldprops": "",
+            "inline": "Whether the label is inline with the control.",
+            "labelprops": "Properties forwarded to the label element."
+          },
+          "props": "Properties for the FormCompact component"
+        },
         "formcontrolprops": {
-          "props": "Properties for the form control component."
+          "props": "Properties for the FormControl component."
         },
         "formdescriptionprops": {
-          "props": "Properties for the form description component."
+          "props": "Properties for the FormDescription component."
         },
         "formerrorprops": {
-          "props": "Properties for the form error component."
+          "props": "Properties for the FormError component."
+        },
+        "formfieldarraycompactslots": {
+          "callables": {
+            "default": "Custom content for the default slot.",
+            "description": "Custom content for the description slot.",
+            "label": "Custom content for the label slot."
+          },
+          "slots": "Properties for the form field array component."
+        },
+        "formfieldbasecompactprops": {
+          "members": {
+            "controlprops": "Properties forwarded to the control element.",
+            "description": "Description text rendered by the component.",
+            "descriptionprops": "Properties forwarded to the description element.",
+            "error": "Error.",
+            "errorprops": "Properties forwarded to the error element.",
+            "inline": "Whether the label is inline with the control.",
+            "isfieldarray": "Whether the field is an array.",
+            "label": "Label text rendered by the component.",
+            "labelprops": "Properties forwarded to the label element."
+          },
+          "props": "Properties for the FormFieldBaseCompact component"
+        },
+        "formfieldbasecompactslots": {
+          "callables": {
+            "default": "Custom content for the default slot.",
+            "description": "Custom content for the description slot.",
+            "label": "Custom content for the label slot."
+          },
+          "slots": "Slots for the FormFieldBaseCompact component."
+        },
+        "formfieldcompactprops": {
+          "members": {
+            "controlprops": "Properties forwarded to the control element.",
+            "description": "Description text rendered by the component.",
+            "descriptionprops": "Properties forwarded to the description element.",
+            "errorprops": "Properties forwarded to the error element.",
+            "inline": "Whether the label is inline with the control.",
+            "label": "Label text rendered by the component.",
+            "labelprops": "Properties forwarded to the label element.",
+            "name": "The name of the form field, used for registration and value retrieval.",
+            "reset": "Reset.",
+            "validate": "Validate."
+          },
+          "props": "State and methods provided by the form field context."
+        },
+        "formfieldcompactslots": {
+          "callables": {
+            "default": "Custom content for the default slot.",
+            "description": "Custom content for the description slot.",
+            "label": "Custom content for the label slot."
+          },
+          "slots": "Slots for the form field component."
         },
         "formfieldprops": {
           "members": {
             "error": "Error.",
             "isfieldarray": "Whether the field is an array."
           },
-          "props": "Properties for the form field component."
+          "props": "Properties for the FormField component."
         },
-        "formfieldui": "UI class overrides for the form component.",
         "formlabelprops": {
           "members": {
             "for": "The id of the element the label is associated with."
           },
-          "props": "Properties for the form label component."
-        }
+          "props": "Properties for the FormLabel component."
+        },
+        "formui": ""
       },
       "headless_src_components_hover_card_types": {
         "hovercardcompactemits": {
@@ -9687,48 +9757,28 @@
         }
       },
       "src_components_form_types": {
-        "formfieldbaseprops": {
-          "members": {
-            "class": "Additional class names applied to the root element.",
-            "controlprops": "Properties forwarded to the control element.",
-            "description": "Description text rendered by the component.",
-            "descriptionprops": "Properties forwarded to the description element.",
-            "error": "Error.",
-            "errorprops": "Properties forwarded to the error element.",
-            "inline": "Whether the label is inline with the control.",
-            "isfieldarray": "Whether the field is an array.",
-            "label": "Label text rendered by the component.",
-            "labelprops": "Properties forwarded to the label element.",
-            "size": "Visual size of the component.",
-            "ui": "Per-slot class overrides for the component."
-          },
-          "props": "Properties for the form field base component."
-        },
-        "formfieldbaseslotprops": {
-          "members": {
-            "ariadescribedby": "Aria described by exposed in the slot scope.",
-            "ariainvalid": "Whether aria invalid.",
-            "formfieldid": "Form field id exposed in the slot scope."
-          },
-          "slotprops": "Slot properties for the form field base component."
-        },
         "formfieldslots": {
-          "slots": "Slots for the form field component."
+          "callables": {
+            "default": "Custom content for the default slot.",
+            "description": "Custom content for the description slot.",
+            "label": "Custom content for the label slot."
+          },
+          "slots": "Slots for the FormField component"
         },
         "formprops": {
           "members": {
-            "class": "Additional class names applied to the root element.",
+            "class": "Additional class names applied to the form element.",
             "controlprops": "Properties forwarded to the control element.",
             "descriptionprops": "Properties forwarded to the description element.",
             "errorprops": "Properties forwarded to the error element.",
-            "fieldarrayprops": "Properties forwarded to the field array element.",
-            "fieldprops": "Properties forwarded to the field element.",
+            "fieldarrayprops": "",
+            "fieldprops": "",
             "inline": "Whether the label is inline with the control.",
             "labelprops": "Properties forwarded to the label element.",
             "size": "Visual size of the component.",
             "ui": "Per-slot class overrides for the component."
           },
-          "props": "Properties for the form component."
+          "props": "Properties for the FormCompact component"
         }
       },
       "src_components_hover_card_types": {

@@ -12,34 +12,38 @@ import {
   useForm
 } from '@soybeanjs/ui';
 import type { CheckboxGroupOptionData, RadioGroupOptionData, SelectOptionData } from '@soybeanjs/ui';
-import { z } from 'zod';
+import * as v from 'valibot';
 
-const user = z.object({
-  username: z.string('Username is required').nonempty('Username is required'),
-  gender: z.enum(['male', 'female'], 'Gender is required'),
-  remember: z.boolean('Remember is required'),
-  hobbies: z.array(z.string(), 'Hobbies is required').min(1, 'Hobbies is required'),
-  city: z.string('City is required'),
-  social: z
-    .array(
-      z.object({
-        name: z.string('Name is required').nonempty('Name is required'),
-        url: z.string('URL is required').nonempty('URL is required')
+const user = v.object({
+  username: v.pipe(v.string('Username is required'), v.nonEmpty('Username is required')),
+  gender: v.picklist(['male', 'female'], 'Gender is required'),
+  remember: v.boolean('Remember is required'),
+  hobbies: v.pipe(v.array(v.string(), 'Hobbies is required'), v.minLength(1, 'Hobbies is required')),
+  city: v.string('City is required'),
+  social: v.pipe(
+    v.array(
+      v.object({
+        name: v.pipe(v.string('Name is required'), v.nonEmpty('Name is required')),
+        url: v.pipe(v.string('URL is required'), v.nonEmpty('URL is required'))
       }),
       'Social is required'
-    )
-    .min(1, 'Social is required')
+    ),
+    v.minLength(1, 'Social is required')
+  )
 });
 
-const { handleSubmit, SFormField, SFormFieldArray } = useForm({
+const state = useForm({
   schema: user,
-  onSubmit: async vals => {
-    console.log(vals);
+  onSubmit: async values => {
+    console.log(values);
   },
   onInvalid: errors => {
     console.log(errors);
+    console.log(state);
   }
 });
+
+const { handleSubmit, SFormField, SFormFieldArray } = state;
 
 type Gender = 'male' | 'female';
 
@@ -63,8 +67,8 @@ const citiesItems: SelectOptionData<string>[] = [
 </script>
 
 <template>
-  <SForm class="w-90 gap-3" @submit="handleSubmit">
-    <SFormField name="username" label="Username">
+  <SForm class="w-90 gap-7" @submit="handleSubmit">
+    <SFormField name="username" label="Username" description="This is FormField description">
       <SInput placeholder="Please input username" />
     </SFormField>
     <SFormField name="gender" label="Gender">
@@ -79,7 +83,7 @@ const citiesItems: SelectOptionData<string>[] = [
     <SFormField name="city" label="City">
       <SSelect :items="citiesItems" />
     </SFormField>
-    <SFormFieldArray name="social">
+    <SFormFieldArray name="social" :ui="{ control: 'flex-c gap-6' }">
       <template #label="{ fields, append }">
         <span>Social</span>
         <SButtonIcon v-if="!fields.length" icon="lucide:plus" @click="append({ name: '', url: '' })" />

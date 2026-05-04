@@ -1,6 +1,6 @@
 export type PrimitiveType = null | undefined | string | number | boolean | symbol | bigint;
 
-export type ClassValue = string | null | undefined | Record<string, boolean> | ClassValue[];
+export type ClassValue = false | null | undefined | string | Record<string, any> | Array<ClassValue>;
 
 export type UiClass<UiSlot extends string> = Record<UiSlot, ClassValue>;
 

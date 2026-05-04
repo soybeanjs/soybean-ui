@@ -5,9 +5,17 @@ import type { Path, PathValue } from '../../../types';
 import { updateFormState } from './shared';
 import { useFormState } from './use-form-state';
 import { useRegisterFieldArray } from './use-field-array';
-import type { FormContext, FormRegisterOptions, FormValues, InferStandardSchemaInput, UseFormOptions } from './types';
+import type {
+  UseHeadlessFormReturn,
+  FormRegisterOptions,
+  FormValues,
+  InferStandardSchemaInput,
+  UseHeadlessFormOptions
+} from './types';
 
-export function useForm<S extends StandardSchemaV1<FormValues, FormValues>>(options: UseFormOptions<S>) {
+export function useHeadlessForm<S extends StandardSchemaV1<FormValues, FormValues>>(
+  options: UseHeadlessFormOptions<S>
+) {
   type Values = InferStandardSchemaInput<S>;
 
   const { onSubmit = () => Promise.resolve(), onInvalid } = options;
@@ -66,7 +74,7 @@ export function useForm<S extends StandardSchemaV1<FormValues, FormValues>>(opti
     resetForm();
   }
 
-  const context: Readonly<FormContext<Values>> = {
+  const context: Readonly<UseHeadlessFormReturn<Values>> = {
     ...formState,
     handleSubmit,
     handleReset,

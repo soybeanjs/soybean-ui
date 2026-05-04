@@ -1,19 +1,19 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { FormFieldBaseCompact, provideFormFieldUi } from '@soybeanjs/headless/form';
+import { FormFieldArrayCompact, provideFormFieldUi } from '@soybeanjs/headless/form';
 import { useOmitProps } from '@soybeanjs/headless/composables';
 import { keysOf } from '@soybeanjs/utils';
 import { mergeSlotVariants } from '@/theme';
 import { formVariants } from './variants';
-import type { FormFieldBaseProps, FormFieldBaseSlots } from './types';
+import type { FormFieldArrayProps, FormFieldArraySlots } from './types';
 
 defineOptions({
-  name: 'SFormFieldBase'
+  name: 'SFormFieldArray'
 });
 
-const props = defineProps<FormFieldBaseProps>();
+const props = defineProps<FormFieldArrayProps>();
 
-const slots = defineSlots<FormFieldBaseSlots>();
+const slots = defineSlots<FormFieldArraySlots>();
 
 const forwardedProps = useOmitProps(props, ['class', 'ui', 'size']);
 
@@ -31,9 +31,9 @@ provideFormFieldUi(ui);
 </script>
 
 <template>
-  <FormFieldBaseCompact v-bind="forwardedProps">
-    <template v-for="slotName in slotNames" :key="slotName" #[slotName]>
-      <slot :name="slotName" />
+  <FormFieldArrayCompact v-bind="forwardedProps">
+    <template v-for="slotName in slotNames" :key="slotName" #[slotName]="slotProps">
+      <slot :name="slotName" v-bind="slotProps" />
     </template>
-  </FormFieldBaseCompact>
+  </FormFieldArrayCompact>
 </template>

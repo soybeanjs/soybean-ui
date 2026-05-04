@@ -1,6 +1,8 @@
 <script setup lang="ts">
+import { computed } from 'vue';
 import { Label } from '../label';
-import { useFormFieldContext, useFormFieldUi } from './context';
+import { useFormFieldContext, useFormUi, useFormFieldUi } from './context';
+import { mergeClasses } from './shared';
 import type { FormLabelProps } from './types';
 
 defineOptions({
@@ -11,7 +13,10 @@ defineProps<FormLabelProps>();
 
 const { formFieldId } = useFormFieldContext('FormLabel');
 
-const cls = useFormFieldUi('label');
+const formCls = useFormUi('label');
+const fieldCls = useFormFieldUi('label');
+
+const cls = computed(() => mergeClasses(formCls.value, fieldCls.value));
 </script>
 
 <template>

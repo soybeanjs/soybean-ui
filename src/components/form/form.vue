@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { transformPropsToContext } from '@soybeanjs/headless/shared';
-import { cn } from '@/theme';
+import { FormCompact, provideFormUi } from '@soybeanjs/headless/form';
+import { useOmitProps } from '@soybeanjs/headless/composables';
+import { mergeSlotVariants } from '@/theme';
 import { formVariants } from './variants';
-import { provideFormContext } from './context';
 import type { FormProps } from './types';
 
 defineOptions({
@@ -12,19 +12,21 @@ defineOptions({
 
 const props = defineProps<FormProps>();
 
-const cls = computed(() => {
-  const { form } = formVariants({
+const forwardedProps = useOmitProps(props, ['ui', 'class', 'size']);
+
+const ui = computed(() => {
+  const variants = formVariants({
     size: props.size
   });
 
-  return cn(form(), props.class);
+  return mergeSlotVariants(variants, props.ui, { form: props.class });
 });
 
-provideFormContext(transformPropsToContext(props));
+provideFormUi(ui);
 </script>
 
 <template>
-  <form :data-inline="inline ? '' : undefined" :class="cls">
+  <FormCompact v-bind="forwardedProps">
     <slot />
-  </form>
+  </FormCompact>
 </template>

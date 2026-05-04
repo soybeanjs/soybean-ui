@@ -67,8 +67,8 @@ const citiesItems: SelectOptionData<string>[] = [
 </script>
 
 <template>
-  <SForm inline :ui="{ label: 'w-25' }" class="w-120 gap-7" @submit="handleSubmit">
-    <SFormField name="username" label="Username">
+  <SForm inline :ui="{ label: 'w-25', description: 'ps-30' }" class="w-150 gap-7" @submit="handleSubmit">
+    <SFormField name="username" label="Username" description="This is FormField description">
       <SInput placeholder="Please input username" />
     </SFormField>
     <SFormField name="gender" label="Gender">
@@ -83,7 +83,7 @@ const citiesItems: SelectOptionData<string>[] = [
     <SFormField name="city" label="City">
       <SSelect :items="citiesItems" />
     </SFormField>
-    <SFormFieldArray name="social">
+    <SFormFieldArray name="social" :ui="{ control: 'flex-c gap-6' }">
       <template #label="{ fields, append }">
         <span>Social</span>
         <SButtonIcon v-if="!fields.length" icon="lucide:plus" @click="append({ name: '', url: '' })" />
@@ -96,8 +96,8 @@ const citiesItems: SelectOptionData<string>[] = [
           <SFormField :name="`${field.name}.${index}.url`" label="URL">
             <SInput />
           </SFormField>
-          <SButtonIcon icon="lucide:minus" class="mt-7 flex-shrink-0" @click="remove(index)" />
-          <SButtonIcon icon="lucide:plus" class="mt-7 flex-shrink-0" @click="append({ name: '', url: '' })" />
+          <SButtonIcon icon="lucide:minus" class="flex-shrink-0" @click="remove(index)" />
+          <SButtonIcon icon="lucide:plus" class="flex-shrink-0" @click="append({ name: '', url: '' })" />
         </div>
       </template>
     </SFormFieldArray>

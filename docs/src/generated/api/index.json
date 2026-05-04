@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-04T08:44:40.910Z",
+  "generatedAt": "2026-05-04T16:36:23.243Z",
   "schemaVersion": 4,
   "components": {
     "accordion": {
@@ -445,7 +445,18 @@
     "form": {
       "component": "form",
       "file": "form.json",
-      "symbols": ["Form", "FormControl", "FormDescription", "FormError", "FormField", "FormFieldBase", "FormLabel"]
+      "symbols": [
+        "Form",
+        "FormCompact",
+        "FormControl",
+        "FormDescription",
+        "FormError",
+        "FormField",
+        "FormFieldArrayCompact",
+        "FormFieldBaseCompact",
+        "FormFieldCompact",
+        "FormLabel"
+      ]
     },
     "hover-card": {
       "component": "hover-card",

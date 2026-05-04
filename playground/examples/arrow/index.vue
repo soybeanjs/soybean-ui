@@ -3,5 +3,7 @@ import PlaygroundGallery from '../../components/playground-gallery.vue';
 </script>
 
 <template>
-  <PlaygroundGallery component="arrow" />
+  <div>
+    <PlaygroundGallery component="arrow" />
+  </div>
 </template>

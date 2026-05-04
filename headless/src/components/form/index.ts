@@ -1,21 +1,36 @@
+export { default as FormCompact } from './form-compact.vue';
+export { default as FormFieldCompact } from './form-field-compact.vue';
+export { default as FormFieldArrayCompact } from './form-field-array-compact.vue';
+export { default as FormFieldBaseCompact } from './form-field-base-compact.vue';
 export { default as FormField } from './form-field.vue';
 export { default as FormLabel } from './form-label.vue';
 export { default as FormControl } from './form-control.vue';
 export { default as FormDescription } from './form-description.vue';
 export { default as FormError } from './form-error.vue';
 
-export { provideFormFieldUi } from './context';
-export { useForm } from './core/use-form';
+export { provideFormUi, provideFormFieldUi } from './context';
+export { useForm } from './use-form';
 
 export type { StandardSchemaV1 } from '@standard-schema/spec';
 export type {
+  FormCompactProps,
+  FormFieldCompactProps,
+  FormFieldCompactSlots,
+  FormFieldArrayCompactSlots,
+  FormFieldBaseCompactProps,
+  FormFieldBaseCompactSlots,
   FormFieldProps,
   FormLabelProps,
   FormControlProps,
   FormDescriptionProps,
   FormErrorProps,
   FormFieldUiSlot,
-  FormFieldUi
+  FormFieldUi,
+  FormUiSlot,
+  FormUi,
+  FormFieldComponent,
+  FormFieldArrayComponent,
+  UseFormReturn
 } from './types';
 export type {
   InferStandardSchemaInput,
@@ -24,7 +39,6 @@ export type {
   FormFieldState,
   FormRegisterOptions,
   FormResetState,
-  FormContext,
   FormValidateMode,
   FormErrors,
   FormTouched,
@@ -35,7 +49,8 @@ export type {
   FormSubmitHelper,
   FormFieldValidator,
   FormEventHandler,
-  UseFormOptions,
   UseFormStateReturn,
-  UseRegisterFieldArrayOptions
+  UseRegisterFieldArrayOptions,
+  UseHeadlessFormOptions,
+  UseHeadlessFormReturn
 } from './core/types';
