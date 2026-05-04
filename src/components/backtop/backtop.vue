@@ -40,7 +40,8 @@ const forwardedProps = useOmitProps(props, [
 const listeners = useForwardListeners(emit);
 
 const cls = computed(() => {
-  const fixed = backtopVariants();
+  const fixed = backtopVariants({ size: props.size });
+
   const button = buttonVariants({
     color: props.color,
     size: props.size,
@@ -50,7 +51,7 @@ const cls = computed(() => {
     fitContent: props.fitContent
   });
 
-  return cn(fixed, button, props.class);
+  return cn(button, fixed, props.class);
 });
 </script>
 
