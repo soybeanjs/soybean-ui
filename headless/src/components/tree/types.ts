@@ -6,7 +6,7 @@ import type { PrimitiveProps } from '../primitive/types';
 import type { VirtualizerItemProps, VirtualizerRootProps } from '../virtualizer/types';
 
 /**
- * Type information for the tree item base data component.
+ * Type information for TreeItemBaseData.
  */
 export interface TreeItemBaseData {
   /** Value given to this item */
@@ -16,7 +16,7 @@ export interface TreeItemBaseData {
 }
 
 /**
- * Type information for the tree item data component.
+ * Type information for TreeItemData.
  */
 export type TreeItemData<T extends TreeItemBaseData = TreeItemBaseData> = T & {
   /** List of children items */
@@ -24,12 +24,12 @@ export type TreeItemData<T extends TreeItemBaseData = TreeItemBaseData> = T & {
 };
 
 /**
- * Type information for the tree select behavior component.
+ * Type information for TreeSelectBehavior.
  */
 export type TreeSelectBehavior = 'toggle' | 'replace';
 
 /**
- * Type information for the tree toggle behavior component.
+ * Type information for TreeToggleBehavior.
  */
 export type TreeToggleBehavior = 'single' | 'multiple';
 
@@ -40,7 +40,7 @@ type IsMultiple<U extends MaybeArray<string> | undefined, M extends boolean> = U
     : false;
 
 /**
- * Properties for the tree root component.
+ * Properties for the TreeRoot component.
  */
 export interface TreeRootProps<
   T extends TreeItemData = TreeItemData,
@@ -87,7 +87,7 @@ export interface TreeRootProps<
 }
 
 /**
- * Events for the tree root component.
+ * Events for the TreeRoot component.
  */
 export type TreeRootEmits<M extends boolean | undefined> = {
   /**
@@ -101,7 +101,7 @@ export type TreeRootEmits<M extends boolean | undefined> = {
 };
 
 /**
- * Type information for the flattened item component.
+ * Type information for FlattenedItem.
  */
 export type FlattenedItem<T extends TreeItemData> = {
   /**
@@ -143,7 +143,7 @@ export type FlattenedItem<T extends TreeItemData> = {
 };
 
 /**
- * Properties for the tree item component.
+ * Properties for the TreeItem component.
  */
 export interface TreeItemProps
   extends PrimitiveProps, /** @vue-ignore */ Omit<HTMLAttributes, 'onSelect' | 'onToggle'> {
@@ -164,7 +164,7 @@ export interface TreeItemProps
 }
 
 /**
- * Events for the tree item component.
+ * Events for the TreeItem component.
  */
 export type TreeItemEmits = {
   /** Event handler called when selecting item. */
@@ -174,7 +174,7 @@ export type TreeItemEmits = {
 };
 
 /**
- * Properties for the tree virtualizer root component.
+ * Properties for the TreeVirtualizerRoot component.
  */
 export interface TreeVirtualizerRootProps<
   T extends TreeItemData = TreeItemData,
@@ -184,22 +184,22 @@ export interface TreeVirtualizerRootProps<
   extends TreeRootProps<T, U, M>, Omit<VirtualizerRootProps<FlattenedItem<T>>, 'dir' | 'items'> {}
 
 /**
- * Events for the tree virtualizer root component.
+ * Events for the TreeVirtualizerRoot component.
  */
 export type TreeVirtualizerRootEmits<M extends boolean | undefined> = TreeRootEmits<M>;
 
 /**
- * Properties for the tree virtualizer item component.
+ * Properties for the TreeVirtualizerItem component.
  */
 export interface TreeVirtualizerItemProps extends TreeItemProps, VirtualizerItemProps {}
 
 /**
- * Events for the tree virtualizer item component.
+ * Events for the TreeVirtualizerItem component.
  */
 export type TreeVirtualizerItemEmits = TreeItemEmits;
 
 /**
- * Parameters used to create the tree root context.
+ * Parameters used to create the TreeRoot context.
  */
 export interface TreeRootContextParams extends PropsToContext<
   TreeRootProps,

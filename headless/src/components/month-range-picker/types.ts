@@ -4,7 +4,7 @@ import type { Direction, FormFieldCommonProps, PropsToContext, UiClass } from '.
 import type { PrimitiveProps } from '../primitive/types';
 
 /**
- * Properties for the month range picker root component.
+ * Properties for the MonthRangePickerRoot component.
  */
 export interface MonthRangePickerRootProps
   extends PrimitiveProps, FormFieldCommonProps, /** @vue-ignore */ Omit<HTMLAttributes, 'placeholder'> {
@@ -67,7 +67,7 @@ export interface MonthRangePickerRootProps
 }
 
 /**
- * Events for the month range picker root component.
+ * Events for the MonthRangePickerRoot component.
  */
 export type MonthRangePickerRootEmits = {
   /**
@@ -93,16 +93,16 @@ export type MonthRangePickerRootEmits = {
 };
 
 /**
- * Properties for the month range picker trigger component.
+ * Properties for the MonthRangePickerTrigger component.
  */
 export interface MonthRangePickerTriggerProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {}
 /**
- * Properties for the month range picker popup component.
+ * Properties for the MonthRangePickerPopup component.
  */
 export interface MonthRangePickerPopupProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Context for the month range picker root component.
+ * Context for the MonthRangePickerRoot component.
  */
 export interface MonthRangePickerRootContext extends PropsToContext<
   MonthRangePickerRootProps,
@@ -227,7 +227,7 @@ export interface MonthRangePickerRootContext extends PropsToContext<
 }
 
 /**
- * Available UI slots for the month range picker component.
+ * Available UI slots for the MonthRangePicker component.
  */
 export type MonthRangePickerUiSlot =
   | 'root'
@@ -240,6 +240,6 @@ export type MonthRangePickerUiSlot =
   | 'grid'
   | 'cellTrigger';
 /**
- * UI class overrides for the month range picker component.
+ * UI class overrides for the MonthRangePicker component.
  */
 export type MonthRangePickerUi = UiClass<MonthRangePickerUiSlot>;

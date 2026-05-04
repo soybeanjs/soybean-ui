@@ -5,12 +5,12 @@ import type { ThemeColor, ThemeSize } from '@/theme';
 import type { AlertVariant } from './variants';
 
 /**
- * Extended UI class overrides for the alert component.
+ * Extended UI class overrides for the Alert component.
  */
 export type AlertExtendedUi = AlertUi;
 
 /**
- * Properties for the alert component.
+ * Properties for the Alert component.
  */
 export interface AlertProps extends AlertCompactProps {
   /**
@@ -36,12 +36,12 @@ export interface AlertProps extends AlertCompactProps {
 }
 
 /**
- * Events for the alert component.
+ * Events for the Alert component.
  */
 export type AlertEmits = AlertCompactEmits;
 
 /**
- * Slots for the alert component.
+ * Slots for the Alert component.
  */
 export type AlertSlots = AlertCompactSlots;
 

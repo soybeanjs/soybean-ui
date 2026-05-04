@@ -14,7 +14,7 @@ import type { ClassValue, Placement } from '@soybeanjs/headless/types';
 import type { ThemeSize } from '@/theme';
 
 /**
- * Properties for the popover component.
+ * Properties for the Popover component.
  */
 export interface PopoverProps extends PopoverRootProps {
   /**
@@ -64,6 +64,6 @@ export interface PopoverProps extends PopoverRootProps {
 }
 
 /**
- * Events for the popover component.
+ * Events for the Popover component.
  */
 export type PopoverEmits = PopoverRootEmits & PopoverPositionerEmits;

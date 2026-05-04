@@ -8,7 +8,7 @@ import type { ThemeColor, ThemeSize } from '@/theme';
 import type { ToggleGroupVariant } from './variants';
 
 /**
- * Properties for the toggle group component.
+ * Properties for the ToggleGroup component.
  */
 export interface ToggleGroupProps<
   M extends boolean = false,
@@ -37,7 +37,7 @@ export interface ToggleGroupProps<
 }
 
 /**
- * Events for the toggle group component.
+ * Events for the ToggleGroup component.
  */
 export type ToggleGroupEmits<M extends boolean = false, T extends DefinedValue = string> = HeadlessToggleGroupRootEmits<
   M,

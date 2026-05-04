@@ -4,12 +4,12 @@ import type { PrimitiveProps } from '../primitive/types';
 import type { RovingFocusGroupProps } from '../roving-focus/types';
 
 /**
- * Type information for the tabs activation mode component.
+ * Type information for TabsActivationMode.
  */
 export type TabsActivationMode = 'automatic' | 'manual';
 
 /**
- * Properties for the tabs root component.
+ * Properties for the TabsRoot component.
  */
 export interface TabsRootProps<T extends AcceptableValue = AcceptableValue> extends Omit<
   RovingFocusGroupProps,
@@ -37,7 +37,7 @@ export interface TabsRootProps<T extends AcceptableValue = AcceptableValue> exte
 }
 
 /**
- * Events for the tabs root component.
+ * Events for the TabsRoot component.
  */
 export type TabsRootEmits<T = AcceptableValue> = {
   /** Event handler called when the value changes */
@@ -45,12 +45,12 @@ export type TabsRootEmits<T = AcceptableValue> = {
 };
 
 /**
- * Properties for the tabs list component.
+ * Properties for the TabsList component.
  */
 export interface TabsListProps extends /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Properties for the tabs content component.
+ * Properties for the TabsContent component.
  */
 export interface TabsContentProps extends ForceMountProps, /** @vue-ignore */ HTMLAttributes {
   /** A unique value that associates the content with a trigger. */
@@ -58,7 +58,7 @@ export interface TabsContentProps extends ForceMountProps, /** @vue-ignore */ HT
 }
 
 /**
- * Properties for the tabs trigger component.
+ * Properties for the TabsTrigger component.
  */
 export interface TabsTriggerProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {
   /** A unique value that associates the trigger with a content. */
@@ -68,12 +68,12 @@ export interface TabsTriggerProps extends PrimitiveProps, /** @vue-ignore */ HTM
 }
 
 /**
- * Properties for the tabs indicator component.
+ * Properties for the TabsIndicator component.
  */
 export interface TabsIndicatorProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Option data for the tabs component.
+ * Option data for the Tabs component.
  */
 export interface TabsOptionData<T extends DefinedValue = DefinedValue> {
   /**
@@ -91,7 +91,7 @@ export interface TabsOptionData<T extends DefinedValue = DefinedValue> {
 }
 
 /**
- * Properties for the tabs compact component.
+ * Properties for the TabsCompact component.
  */
 export interface TabsCompactProps<T extends TabsOptionData = TabsOptionData> extends TabsRootProps<T['value'] | null> {
   /**
@@ -121,12 +121,12 @@ export interface TabsCompactProps<T extends TabsOptionData = TabsOptionData> ext
 }
 
 /**
- * Events for the tabs compact component.
+ * Events for the TabsCompact component.
  */
 export type TabsCompactEmits<T extends AcceptableValue = AcceptableValue> = TabsRootEmits<T>;
 
 /**
- * Slots for the tabs compact component.
+ * Slots for the TabsCompact component.
  */
 export type TabsCompactSlots<T extends TabsOptionData = TabsOptionData> = {
   /**
@@ -144,7 +144,7 @@ export type TabsCompactSlots<T extends TabsOptionData = TabsOptionData> = {
 };
 
 /**
- * Parameters used to create the tabs root context.
+ * Parameters used to create the TabsRoot context.
  */
 export interface TabsRootContextParams extends PropsToContext<
   TabsRootProps,
@@ -157,11 +157,11 @@ export interface TabsRootContextParams extends PropsToContext<
 }
 
 /**
- * Available UI slots for the tabs component.
+ * Available UI slots for the Tabs component.
  */
 export type TabsUiSlot = 'root' | 'list' | 'trigger' | 'content' | 'indicator' | 'indicatorContent';
 
 /**
- * UI class overrides for the tabs component.
+ * UI class overrides for the Tabs component.
  */
 export type TabsUi = UiClass<TabsUiSlot>;

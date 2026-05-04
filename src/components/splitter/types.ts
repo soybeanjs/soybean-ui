@@ -10,7 +10,7 @@ import type {
 import type { ClassValue } from '@soybeanjs/headless/types';
 
 /**
- * Properties for the splitter group component.
+ * Properties for the SplitterGroup component.
  */
 export interface SplitterGroupProps extends HeadlessSplitterGroupProps {
   /**
@@ -24,12 +24,12 @@ export interface SplitterGroupProps extends HeadlessSplitterGroupProps {
 }
 
 /**
- * Events for the splitter group component.
+ * Events for the SplitterGroup component.
  */
 export type SplitterGroupEmits = HeadlessSplitterGroupEmits;
 
 /**
- * Properties for the splitter panel component.
+ * Properties for the SplitterPanel component.
  */
 export interface SplitterPanelProps extends HeadlessSplitterPanelProps {
   /**
@@ -39,12 +39,12 @@ export interface SplitterPanelProps extends HeadlessSplitterPanelProps {
 }
 
 /**
- * Events for the splitter panel component.
+ * Events for the SplitterPanel component.
  */
 export type SplitterPanelEmits = HeadlessSplitterPanelEmits;
 
 /**
- * Properties for the splitter resize handle component.
+ * Properties for the SplitterResizeHandle component.
  */
 export interface SplitterResizeHandleProps extends HeadlessSplitterResizeHandleProps {
   /**
@@ -58,6 +58,6 @@ export interface SplitterResizeHandleProps extends HeadlessSplitterResizeHandleP
 }
 
 /**
- * Events for the splitter resize handle component.
+ * Events for the SplitterResizeHandle component.
  */
 export type SplitterResizeHandleEmits = HeadlessSplitterResizeHandleEmits;

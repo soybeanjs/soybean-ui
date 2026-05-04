@@ -19,7 +19,7 @@ import type { PrimitiveProps } from '../primitive/types';
 export type DialogAlertType = 'default' | 'info' | 'success' | 'warning' | 'error';
 
 /**
- * Properties for the dialog base component.
+ * Properties for the DialogBase component.
  */
 export interface DialogBaseProps {
   /**
@@ -44,7 +44,7 @@ export interface DialogBaseProps {
 }
 
 /**
- * Properties for the dialog root component.
+ * Properties for the DialogRoot component.
  */
 export interface DialogRootProps extends DialogBaseProps {
   /**
@@ -61,7 +61,7 @@ export interface DialogRootProps extends DialogBaseProps {
   alertType?: DialogAlertType;
 }
 /**
- * Events for the dialog root component.
+ * Events for the DialogRoot component.
  */
 export type DialogRootEmits = {
   /** Event handler called when the open state of the dialog changes. */
@@ -69,51 +69,51 @@ export type DialogRootEmits = {
 };
 
 /**
- * Properties for the dialog trigger component.
+ * Properties for the DialogTrigger component.
  */
 export interface DialogTriggerProps extends PrimitiveProps, /** @vue-ignore */ ButtonHTMLAttributes {}
 
 /**
- * Properties for the dialog overlay component.
+ * Properties for the DialogOverlay component.
  */
 export interface DialogOverlayProps extends ForceMountProps, /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Properties for the dialog popup impl component.
+ * Properties for the DialogPopupImpl component.
  */
 export interface DialogPopupImplProps
   extends PrimitiveProps, TrapFocusProps, DismissableLayerProps, /** @vue-ignore */ HTMLAttributes {}
 /**
- * Events for the dialog popup impl component.
+ * Events for the DialogPopupImpl component.
  */
 export type DialogPopupImplEmits = DismissableLayerEmits & FocusScopeEmits;
 
 /**
- * Properties for the dialog popup component.
+ * Properties for the DialogPopup component.
  */
 export interface DialogPopupProps
   extends Omit<DialogPopupImplProps, 'trapFocus' | 'disableOutsidePointerEvents'>, ForceMountProps {}
 /**
- * Events for the dialog popup component.
+ * Events for the DialogPopup component.
  */
 export type DialogPopupEmits = DialogPopupImplEmits;
 
 /**
- * Properties for the dialog title component.
+ * Properties for the DialogTitle component.
  */
 export interface DialogTitleProps extends /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Properties for the dialog description component.
+ * Properties for the DialogDescription component.
  */
 export interface DialogDescriptionProps extends /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Properties for the dialog close component.
+ * Properties for the DialogClose component.
  */
 export interface DialogCloseProps extends ButtonProps {}
 /**
- * Events for the dialog close component.
+ * Events for the DialogClose component.
  */
 export type DialogCloseEmits = {
   /** Event handler called when the dialog is requested to be closed. */
@@ -121,11 +121,11 @@ export type DialogCloseEmits = {
 };
 
 /**
- * Properties for the dialog cancel component.
+ * Properties for the DialogCancel component.
  */
 export interface DialogCancelProps extends ButtonProps {}
 /**
- * Events for the dialog cancel component.
+ * Events for the DialogCancel component.
  */
 export type DialogCancelEmits = {
   /** Event handler called when the dialog is requested to be canceled. */
@@ -133,11 +133,11 @@ export type DialogCancelEmits = {
 };
 
 /**
- * Properties for the dialog confirm component.
+ * Properties for the DialogConfirm component.
  */
 export interface DialogConfirmProps extends ButtonProps {}
 /**
- * Events for the dialog confirm component.
+ * Events for the DialogConfirm component.
  */
 export type DialogConfirmEmits = {
   /** Event handler called when the dialog is requested to be closed by confirming. */
@@ -145,22 +145,22 @@ export type DialogConfirmEmits = {
 };
 
 /**
- * Properties for the dialog header component.
+ * Properties for the DialogHeader component.
  */
 export interface DialogHeaderProps extends /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Properties for the dialog content component.
+ * Properties for the DialogContent component.
  */
 export interface DialogContentProps extends /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Properties for the dialog footer component.
+ * Properties for the DialogFooter component.
  */
 export interface DialogFooterProps extends /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Properties for the dialog compact component.
+ * Properties for the DialogCompact component.
  */
 export interface DialogCompactProps extends DialogRootProps {
   /**
@@ -266,7 +266,7 @@ export interface DialogCompactProps extends DialogRootProps {
 }
 
 /**
- * Events for the dialog compact component.
+ * Events for the DialogCompact component.
  */
 export type DialogCompactEmits = DialogRootEmits &
   DialogPopupEmits &
@@ -275,7 +275,7 @@ export type DialogCompactEmits = DialogRootEmits &
   DialogCancelEmits;
 
 /**
- * Slot properties for the dialog compact base component.
+ * Slot properties for the DialogCompactBase component.
  */
 export interface DialogCompactBaseSlotProps {
   /**
@@ -289,7 +289,7 @@ export interface DialogCompactBaseSlotProps {
 }
 
 /**
- * Slots for the dialog compact component.
+ * Slots for the DialogCompact component.
  */
 export type DialogCompactSlots = {
   /**
@@ -327,7 +327,7 @@ export type DialogCompactSlots = {
 };
 
 /**
- * Parameters used to create the dialog root context.
+ * Parameters used to create the DialogRoot context.
  */
 export interface DialogRootContextParams extends PropsToContext<DialogRootProps, 'modal' | 'isAlert' | 'alertType'> {
   /**
@@ -337,7 +337,7 @@ export interface DialogRootContextParams extends PropsToContext<DialogRootProps,
 }
 
 /**
- * Context for the dialog provider component.
+ * Context for the DialogProvider component.
  */
 export interface DialogProviderContext {
   /**
@@ -347,7 +347,7 @@ export interface DialogProviderContext {
 }
 
 /**
- * Context for the dialog compact component.
+ * Context for the DialogCompact component.
  */
 export interface DialogCompactContext {
   /**
@@ -357,7 +357,7 @@ export interface DialogCompactContext {
 }
 
 /**
- * Available UI slots for the dialog component.
+ * Available UI slots for the Dialog component.
  */
 export type DialogUiSlot =
   | 'overlay'
@@ -373,14 +373,14 @@ export type DialogUiSlot =
   | 'confirm';
 
 /**
- * UI class overrides for the dialog component.
+ * UI class overrides for the Dialog component.
  */
 export type DialogUi = UiClass<DialogUiSlot>;
 
 export type { DialogPortalProps };
 
 /**
- * Type information for the dialog t component.
+ * Type information for DialogT.
  */
 export interface DialogT extends Pick<DialogCompactProps, 'open' | 'icon' | 'showCancel' | 'showConfirm'> {
   /**
@@ -434,7 +434,7 @@ export interface DialogT extends Pick<DialogCompactProps, 'open' | 'icon' | 'sho
 }
 
 /**
- * Type information for the dialog external component.
+ * Type information for DialogExternal.
  */
 export interface DialogExternal extends Omit<DialogT, 'id' | 'type' | 'title'> {
   /**
@@ -444,7 +444,7 @@ export interface DialogExternal extends Omit<DialogT, 'id' | 'type' | 'title'> {
 }
 
 /**
- * Type information for the dialog create options component.
+ * Type information for DialogCreateOptions.
  */
 export interface DialogCreateOptions extends Omit<DialogT, 'id'> {
   /**
@@ -454,6 +454,6 @@ export interface DialogCreateOptions extends Omit<DialogT, 'id'> {
 }
 
 /**
- * Type information for the dialog subscriber component.
+ * Type information for DialogSubscriber.
  */
 export type DialogSubscriber = (dialog: DialogT) => void;

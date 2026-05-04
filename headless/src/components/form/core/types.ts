@@ -3,45 +3,45 @@ import type { StandardSchemaV1 } from '@standard-schema/spec';
 import type { ArrayElement, MaybePromise, Path, PathValue } from '../../../types';
 
 /**
- * Type information for the infer standard schema input component.
+ * Type information for InferStandardSchemaInput.
  */
 export type InferStandardSchemaInput<S extends StandardSchemaV1<FormValues, FormValues>> = NonNullable<
   S['~standard']['types']
 >['input'];
 
 /**
- * Type information for the infer standard schema output component.
+ * Type information for InferStandardSchemaOutput.
  */
 export type InferStandardSchemaOutput<S extends StandardSchemaV1<FormValues, FormValues>> = NonNullable<
   S['~standard']['types']
 >['output'];
 
 /**
- * Type information for the form validate mode component.
+ * Type information for FormValidateMode.
  */
 export type FormValidateMode = 'blur' | 'input' | 'change' | 'submit';
 
 /**
- * Type information for the form values component.
+ * Type information for FormValues.
  */
 export type FormValues = Record<string, any>;
 
 /**
- * Type information for the form errors component.
+ * Type information for FormErrors.
  */
 export type FormErrors<Values extends FormValues> = {
   [K in keyof Path<Values>]?: string;
 };
 
 /**
- * Type information for the form touched component.
+ * Type information for FormTouched.
  */
 export type FormTouched<Values extends FormValues> = {
   [K in keyof Path<Values>]?: boolean;
 };
 
 /**
- * Type information for the form field meta component.
+ * Type information for FormFieldMeta.
  */
 export type FormFieldMeta = {
   /**
@@ -59,7 +59,7 @@ export type FormFieldMeta = {
 };
 
 /**
- * Type information for the form submit helper component.
+ * Type information for FormSubmitHelper.
  */
 export interface FormSubmitHelper<Values extends FormValues> {
   /**
@@ -73,7 +73,7 @@ export interface FormSubmitHelper<Values extends FormValues> {
 }
 
 /**
- * State values for the form core component.
+ * State values for FormResetState.
  */
 export interface FormResetState<Values extends FormValues = FormValues> {
   /**
@@ -95,7 +95,7 @@ export interface FormResetState<Values extends FormValues = FormValues> {
 }
 
 /**
- * Type information for the form message component.
+ * Type information for FormMessage.
  */
 export type FormMessage<Values extends FormValues = FormValues, Name extends Path<Values> = Path<Values>> =
   /**
@@ -239,7 +239,7 @@ export type FormMessage<Values extends FormValues = FormValues, Name extends Pat
 export type FormMessageType = FormMessage['type'];
 
 /**
- * State values for the form core component.
+ * State values for FormState.
  */
 export interface FormState<Values extends FormValues> {
   /**
@@ -269,7 +269,7 @@ export interface FormState<Values extends FormValues> {
 }
 
 /**
- * Type information for the use form options component.
+ * Type information for UseHeadlessFormOptions.
  */
 export interface UseHeadlessFormOptions<S extends StandardSchemaV1<FormValues, FormValues>> {
   /**
@@ -314,12 +314,12 @@ export interface UseHeadlessFormOptions<S extends StandardSchemaV1<FormValues, F
 }
 
 /**
- * Type information for the form field validator component.
+ * Type information for FormFieldValidator.
  */
 export type FormFieldValidator<Value> = (value: Value) => MaybePromise<string | undefined>;
 
 /**
- * Type information for the form register options component.
+ * Type information for FormRegisterOptions.
  */
 export interface FormRegisterOptions<Value> {
   /**
@@ -333,7 +333,7 @@ export interface FormRegisterOptions<Value> {
 }
 
 /**
- * Type information for the form field registry component.
+ * Type information for FormFieldRegistry.
  */
 export type FormFieldRegistry<Values> = {
   [K in Path<Values>]?: {
@@ -345,7 +345,7 @@ export type FormFieldRegistry<Values> = {
 };
 
 /**
- * Type information for the form field array registry component.
+ * Type information for FormFieldArrayRegistry.
  */
 export type FormFieldArrayRegistry<Values> = {
   [K in Path<Values>]?: {
@@ -357,7 +357,7 @@ export type FormFieldArrayRegistry<Values> = {
 };
 
 /**
- * Type information for the form event handler component.
+ * Type information for FormEventHandler.
  */
 export interface FormEventHandler<S = string> {
   /**
@@ -375,7 +375,7 @@ export interface FormEventHandler<S = string> {
 }
 
 /**
- * State values for the form core component.
+ * State values for FormFieldState.
  */
 export interface FormFieldState<Values extends FormValues, Name extends Path<Values>> extends FormEventHandler<Name> {
   /**
@@ -393,7 +393,7 @@ export interface FormFieldState<Values extends FormValues, Name extends Path<Val
 }
 
 /**
- * State values for the form core component.
+ * State values for FormFieldArrayState.
  */
 export interface FormFieldArrayState<
   Values extends FormValues,
@@ -414,7 +414,7 @@ export interface FormFieldArrayState<
 }
 
 /**
- * Type information for the use form state return component.
+ * Type information for UseFormStateReturn.
  */
 export interface UseFormStateReturn<Values extends FormValues> {
   /**
@@ -523,7 +523,7 @@ export interface UseFormStateReturn<Values extends FormValues> {
 }
 
 /**
- * Context for the form component.
+ * Context for UseHeadlessFormReturn.
  */
 export interface UseHeadlessFormReturn<Values extends FormValues>
   extends Omit<UseFormStateReturn<Values>, 'formState' | 'submitHelper'>, FormState<Values> {
@@ -552,7 +552,7 @@ export interface UseHeadlessFormReturn<Values extends FormValues>
 }
 
 /**
- * Type information for the use register field array options component.
+ * Type information for UseRegisterFieldArrayOptions.
  */
 export interface UseRegisterFieldArrayOptions<Values extends FormValues> extends Pick<
   UseFormStateReturn<Values>,
@@ -560,7 +560,7 @@ export interface UseRegisterFieldArrayOptions<Values extends FormValues> extends
 > {}
 
 /**
- * Type information for the form field array states component.
+ * Type information for FormFieldArrayStates.
  */
 export interface FormFieldArrayStates<Values extends FormValues, Name extends Path<Values>> {
   /**

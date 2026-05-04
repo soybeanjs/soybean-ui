@@ -15,7 +15,7 @@ import type { Direction, FormFieldCommonProps, PropsToContext, UiClass } from '.
 import type { PrimitiveProps } from '../primitive/types';
 
 /**
- * Properties for the date range field root component.
+ * Properties for the DateRangeFieldRoot component.
  */
 export interface DateRangeFieldRootProps
   extends PrimitiveProps, FormFieldCommonProps, /** @vue-ignore */ Omit<HTMLAttributes, 'placeholder'> {
@@ -94,7 +94,7 @@ export interface DateRangeFieldRootProps
 }
 
 /**
- * Events for the date range field root component.
+ * Events for the DateRangeFieldRoot component.
  */
 export type DateRangeFieldRootEmits = {
   /**
@@ -116,7 +116,7 @@ export type DateRangeFieldRootEmits = {
 };
 
 /**
- * Properties for the date range field input component.
+ * Properties for the DateRangeFieldInput component.
  */
 export interface DateRangeFieldInputProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {
   /**
@@ -130,7 +130,7 @@ export interface DateRangeFieldInputProps extends PrimitiveProps, /** @vue-ignor
 }
 
 /**
- * Type information for the date range field segment component.
+ * Type information for DateRangeFieldSegment.
  */
 export interface DateRangeFieldSegment {
   /**
@@ -144,7 +144,7 @@ export interface DateRangeFieldSegment {
 }
 
 /**
- * Context for the date range field root component.
+ * Context for the DateRangeFieldRoot component.
  */
 export interface DateRangeFieldRootContext extends PropsToContext<DateRangeFieldRootProps, 'disabled' | 'readonly'> {
   /**
@@ -246,16 +246,16 @@ export interface DateRangeFieldRootContext extends PropsToContext<DateRangeField
 }
 
 /**
- * Available UI slots for the date range field component.
+ * Available UI slots for the DateRangeField component.
  */
 export type DateRangeFieldUiSlot = 'root' | 'input' | 'separator';
 /**
- * UI class overrides for the date range field component.
+ * UI class overrides for the DateRangeField component.
  */
 export type DateRangeFieldUi = UiClass<DateRangeFieldUiSlot>;
 
 /**
- * Properties for the date range field compact component.
+ * Properties for the DateRangeFieldCompact component.
  */
 export interface DateRangeFieldCompactProps extends DateRangeFieldRootProps {
   /**
@@ -269,12 +269,12 @@ export interface DateRangeFieldCompactProps extends DateRangeFieldRootProps {
 }
 
 /**
- * Events for the date range field compact component.
+ * Events for the DateRangeFieldCompact component.
  */
 export type DateRangeFieldCompactEmits = DateRangeFieldRootEmits;
 
 /**
- * Slots for the date range field compact component.
+ * Slots for the DateRangeFieldCompact component.
  */
 export type DateRangeFieldCompactSlots = {
   /**

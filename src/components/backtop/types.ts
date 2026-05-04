@@ -5,7 +5,7 @@ import type { IconProps } from '../icon/types';
 import type { ButtonShadow, ButtonShape, ButtonVariant } from '../button/types';
 
 /**
- * Properties for the backtop component.
+ * Properties for the Backtop component.
  */
 export interface BacktopProps extends _BacktopProps {
   /**
@@ -53,6 +53,6 @@ export interface BacktopProps extends _BacktopProps {
 }
 
 /**
- * Events for the backtop component.
+ * Events for the Backtop component.
  */
 export type BacktopEmits = _BacktopEmits;

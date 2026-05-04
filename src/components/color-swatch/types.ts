@@ -9,12 +9,12 @@ import type { ColorSwatchShape } from './variants';
 export type ColorExtraUiSlot = 'checker' | 'fill';
 
 /**
- * Extended UI class overrides for the color swatch component.
+ * Extended UI class overrides for the ColorSwatch component.
  */
 export type ColorSwatchExtendedUi = UiClass<ColorExtraUiSlot>;
 
 /**
- * Properties for the color swatch component.
+ * Properties for the ColorSwatch component.
  */
 export interface ColorSwatchProps extends HeadlessColorSwatchProps {
   /**

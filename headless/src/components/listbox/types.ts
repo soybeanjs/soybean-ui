@@ -16,7 +16,7 @@ import type { PrimitiveProps } from '../primitive/types';
 import type { InputControlProps, InputRootEmits, InputRootProps } from '../input/types';
 
 /**
- * Properties for the listbox root component.
+ * Properties for the ListboxRoot component.
  */
 export interface ListboxRootProps<M extends boolean = false>
   extends SelectionProps<M>, FormFieldCommonProps, /** @vue-ignore */ HTMLAttributes {
@@ -37,7 +37,7 @@ export interface ListboxRootProps<M extends boolean = false>
  * Value associated with the current item.
  */
 /**
- * Type information for the listbox collection item data component.
+ * Type information for ListboxCollectionItemData.
  */
 /**
  * Value associated with the current item.
@@ -45,7 +45,7 @@ export interface ListboxRootProps<M extends boolean = false>
 export type ListboxCollectionItemData = { value: string };
 
 /**
- * Events for the listbox root component.
+ * Events for the ListboxRoot component.
  */
 export type ListboxRootEmits<M extends boolean = false> = SelectionEmits<M> & {
   /** Event handler when highlighted element changes. */
@@ -57,7 +57,7 @@ export type ListboxRootEmits<M extends boolean = false> = SelectionEmits<M> & {
 };
 
 /**
- * Properties for the listbox item component.
+ * Properties for the ListboxItem component.
  */
 export interface ListboxItemProps extends PrimitiveProps, /** @vue-ignore */ Omit<HTMLAttributes, 'onSelect'> {
   /** The value given as data when submitted with a `name`. */
@@ -67,7 +67,7 @@ export interface ListboxItemProps extends PrimitiveProps, /** @vue-ignore */ Omi
 }
 
 /**
- * Events for the listbox item component.
+ * Events for the ListboxItem component.
  */
 export type ListboxItemEmits = {
   /** Event handler called when the selecting item. <br> It can be prevented by calling `event.preventDefault`. */
@@ -75,22 +75,22 @@ export type ListboxItemEmits = {
 };
 
 /**
- * Properties for the listbox item indicator component.
+ * Properties for the ListboxItemIndicator component.
  */
 export interface ListboxItemIndicatorProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Properties for the listbox group component.
+ * Properties for the ListboxGroup component.
  */
 export interface ListboxGroupProps extends /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Properties for the listbox group label component.
+ * Properties for the ListboxGroupLabel component.
  */
 export interface ListboxGroupLabelProps extends /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Properties for the listbox filter component.
+ * Properties for the ListboxFilter component.
  */
 export interface ListboxFilterProps extends InputRootProps {
   /**
@@ -106,17 +106,17 @@ export interface ListboxFilterProps extends InputRootProps {
 }
 
 /**
- * Events for the listbox filter component.
+ * Events for the ListboxFilter component.
  */
 export type ListboxFilterEmits = InputRootEmits;
 
 /**
- * Properties for the listbox content component.
+ * Properties for the ListboxContent component.
  */
 export interface ListboxContentProps extends /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Properties for the listbox virtualizer component.
+ * Properties for the ListboxVirtualizer component.
  */
 export interface ListboxVirtualizerProps {
   /** List of items */
@@ -130,7 +130,7 @@ export interface ListboxVirtualizerProps {
 }
 
 /**
- * Properties for the listbox virtualizer slots component.
+ * Properties for the ListboxVirtualizerSlots component.
  */
 export type ListboxVirtualizerSlotsProps = {
   /**
@@ -148,7 +148,7 @@ export type ListboxVirtualizerSlotsProps = {
 };
 
 /**
- * Slots for the listbox virtualizer component.
+ * Slots for the ListboxVirtualizer component.
  */
 export type ListboxVirtualizerSlots = {
   /**
@@ -158,7 +158,7 @@ export type ListboxVirtualizerSlots = {
 };
 
 /**
- * Parameters used to create the listbox root context.
+ * Parameters used to create the ListboxRoot context.
  */
 export interface ListboxRootContextParams extends PropsToContext<
   ListboxRootProps,
@@ -191,7 +191,7 @@ export interface ListboxRootContextParams extends PropsToContext<
 }
 
 /**
- * Parameters used to create the listbox group context.
+ * Parameters used to create the ListboxGroup context.
  */
 export interface ListboxGroupContextParams {
   /**
@@ -201,7 +201,7 @@ export interface ListboxGroupContextParams {
 }
 
 /**
- * Parameters used to create the listbox item context.
+ * Parameters used to create the ListboxItem context.
  */
 export interface ListboxItemContextParams {
   /**
@@ -211,7 +211,7 @@ export interface ListboxItemContextParams {
 }
 
 /**
- * Available UI slots for the listbox component.
+ * Available UI slots for the Listbox component.
  */
 export type ListboxUiSlot =
   | 'root'
@@ -225,6 +225,6 @@ export type ListboxUiSlot =
   | 'virtualizer';
 
 /**
- * UI class overrides for the listbox component.
+ * UI class overrides for the Listbox component.
  */
 export type ListboxUi = UiClass<ListboxUiSlot>;

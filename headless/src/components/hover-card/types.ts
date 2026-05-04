@@ -4,7 +4,7 @@ import type { PopperAnchorProps, PopperArrowProps, PopperPopupProps, PopperPosit
 import type { PortalProps } from '../portal/types';
 
 /**
- * Properties for the hover card root component.
+ * Properties for the HoverCardRoot component.
  */
 export interface HoverCardRootProps {
   /** The open state of the hover card when it is initially rendered. Use when you do not need to control its open state. */
@@ -18,7 +18,7 @@ export interface HoverCardRootProps {
 }
 
 /**
- * Events for the hover card root component.
+ * Events for the HoverCardRoot component.
  */
 export interface HoverCardRootEmits {
   /** Event handler called when the open state of the hover card changes. */
@@ -26,11 +26,11 @@ export interface HoverCardRootEmits {
 }
 
 /**
- * Properties for the hover card positioner impl component.
+ * Properties for the HoverCardPositionerImpl component.
  */
 export interface HoverCardPositionerImplProps extends PopperPositionerProps {}
 /**
- * Events for the hover card positioner impl component.
+ * Events for the HoverCardPositionerImpl component.
  */
 export type HoverCardPositionerImplEmits = Pick<
   DismissableLayerEmits,
@@ -38,21 +38,21 @@ export type HoverCardPositionerImplEmits = Pick<
 >;
 
 /**
- * Properties for the hover card positioner component.
+ * Properties for the HoverCardPositioner component.
  */
 export interface HoverCardPositionerProps extends HoverCardPositionerImplProps, ForceMountProps {}
 /**
- * Events for the hover card positioner component.
+ * Events for the HoverCardPositioner component.
  */
 export type HoverCardPositionerEmits = HoverCardPositionerImplEmits;
 
 /**
- * Properties for the hover card popup component.
+ * Properties for the HoverCardPopup component.
  */
 export interface HoverCardPopupProps extends PopperPopupProps {}
 
 /**
- * Parameters used to create the hover card root context.
+ * Parameters used to create the HoverCardRoot context.
  */
 export interface HoverCardRootContextParams extends PropsToContext<HoverCardRootProps, 'openDelay' | 'closeDelay'> {
   /**
@@ -62,7 +62,7 @@ export interface HoverCardRootContextParams extends PropsToContext<HoverCardRoot
 }
 
 /**
- * Context for the hover card root component.
+ * Context for the HoverCardRoot component.
  */
 export interface HoverCardRootContext extends HoverCardRootContextParams {
   /**
@@ -120,7 +120,7 @@ export type { PortalProps as HoverCardPortalProps } from '../portal/types';
 export type { PopperAnchorProps as HoverCardTriggerProps } from '../popper/types';
 
 /**
- * Properties for the hover card compact component.
+ * Properties for the HoverCardCompact component.
  */
 export interface HoverCardCompactProps extends HoverCardRootProps {
   /**
@@ -154,12 +154,12 @@ export interface HoverCardCompactProps extends HoverCardRootProps {
 }
 
 /**
- * Events for the hover card compact component.
+ * Events for the HoverCardCompact component.
  */
 export type HoverCardCompactEmits = HoverCardRootEmits & HoverCardPositionerEmits;
 
 /**
- * Slots for the hover card compact component.
+ * Slots for the HoverCardCompact component.
  */
 export interface HoverCardCompactSlots {
   /**

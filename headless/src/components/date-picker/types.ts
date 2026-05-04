@@ -14,7 +14,7 @@ import type { PortalProps as DatePickerPortalProps } from '../portal/types';
 import type { PrimitiveProps } from '../primitive/types';
 
 /**
- * Properties for the date picker root component.
+ * Properties for the DatePickerRoot component.
  */
 export interface DatePickerRootProps
   extends
@@ -89,7 +89,7 @@ export interface DatePickerRootProps
 }
 
 /**
- * Events for the date picker root component.
+ * Events for the DatePickerRoot component.
  */
 export type DatePickerRootEmits = {
   /**
@@ -107,7 +107,7 @@ export type DatePickerRootEmits = {
 };
 
 /**
- * Slot properties for the date picker component.
+ * Slot properties for the DatePicker component.
  */
 export interface DatePickerSlotProps {
   /**
@@ -133,7 +133,7 @@ export interface DatePickerSlotProps {
 }
 
 /**
- * Slots for the date picker root component.
+ * Slots for the DatePickerRoot component.
  */
 export type DatePickerRootSlots = {
   /**
@@ -143,7 +143,7 @@ export type DatePickerRootSlots = {
 };
 
 /**
- * Properties for the date picker input component.
+ * Properties for the DatePickerInput component.
  */
 export interface DatePickerInputProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {
   /**
@@ -153,7 +153,7 @@ export interface DatePickerInputProps extends PrimitiveProps, /** @vue-ignore */
 }
 
 /**
- * Context for the date picker root component.
+ * Context for the DatePickerRoot component.
  */
 export interface DatePickerRootContext extends PropsToContext<DatePickerRootProps, 'disabled' | 'readonly'> {
   /**
@@ -239,7 +239,7 @@ export interface DatePickerRootContext extends PropsToContext<DatePickerRootProp
 }
 
 /**
- * Properties for the date picker content component.
+ * Properties for the DatePickerContent component.
  */
 export interface DatePickerContentProps extends DatePickerPositionerProps {
   /**
@@ -253,12 +253,12 @@ export interface DatePickerContentProps extends DatePickerPositionerProps {
 }
 
 /**
- * Events for the date picker content component.
+ * Events for the DatePickerContent component.
  */
 export type DatePickerContentEmits = DatePickerPositionerEmits;
 
 /**
- * Slots for the date picker content component.
+ * Slots for the DatePickerContent component.
  */
 export type DatePickerContentSlots = {
   /**
@@ -268,7 +268,7 @@ export type DatePickerContentSlots = {
 };
 
 /**
- * Properties for the date picker compact component.
+ * Properties for the DatePickerCompact component.
  */
 export interface DatePickerCompactProps extends DatePickerRootProps {
   /**
@@ -294,12 +294,12 @@ export interface DatePickerCompactProps extends DatePickerRootProps {
 }
 
 /**
- * Events for the date picker compact component.
+ * Events for the DatePickerCompact component.
  */
 export type DatePickerCompactEmits = DatePickerRootEmits;
 
 /**
- * Slots for the date picker compact component.
+ * Slots for the DatePickerCompact component.
  */
 export type DatePickerCompactSlots = DatePickerContentSlots & {
   /**
@@ -309,12 +309,12 @@ export type DatePickerCompactSlots = DatePickerContentSlots & {
 };
 
 /**
- * Available UI slots for the date picker component.
+ * Available UI slots for the DatePicker component.
  */
 export type DatePickerUiSlot = PopoverUiSlot | 'root';
 
 /**
- * UI class overrides for the date picker component.
+ * UI class overrides for the DatePicker component.
  */
 export type DatePickerUi = UiClass<DatePickerUiSlot>;
 

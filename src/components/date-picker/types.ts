@@ -8,7 +8,7 @@ import type { ClassValue } from '@soybeanjs/headless/types';
 import type { ThemeSize } from '@/theme';
 
 /**
- * Properties for the date picker component.
+ * Properties for the DatePicker component.
  */
 export interface DatePickerProps extends DatePickerCompactProps {
   /**
@@ -26,11 +26,11 @@ export interface DatePickerProps extends DatePickerCompactProps {
 }
 
 /**
- * Events for the date picker component.
+ * Events for the DatePicker component.
  */
 export type DatePickerEmits = DatePickerCompactEmits;
 
 /**
- * Slots for the date picker component.
+ * Slots for the DatePicker component.
  */
 export type DatePickerSlots = DatePickerCompactSlots;

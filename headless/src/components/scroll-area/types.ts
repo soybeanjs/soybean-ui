@@ -7,16 +7,16 @@ import type { PrimitiveProps } from '../primitive/types';
  */
 export type ScrollAreaType = 'auto' | 'always' | 'hover' | 'scroll' | 'glimpse';
 /**
- * Type information for the scroll area orientation component.
+ * Type information for ScrollAreaOrientation.
  */
 export type ScrollAreaOrientation = 'horizontal' | 'vertical';
 /**
- * State values for the scroll area component.
+ * State values for ScrollAreaState.
  */
 export type ScrollAreaState = 'hidden' | 'visible';
 
 /**
- * Properties for the scroll area root component.
+ * Properties for the ScrollAreaRoot component.
  */
 export interface ScrollAreaRootProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {
   /** Controls scrollbar visibility behavior. */
@@ -28,7 +28,7 @@ export interface ScrollAreaRootProps extends PrimitiveProps, /** @vue-ignore */ 
 }
 
 /**
- * Properties for the scroll area viewport component.
+ * Properties for the ScrollAreaViewport component.
  */
 export interface ScrollAreaViewportProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {
   /** Adds a nonce to the injected style tag. */
@@ -36,7 +36,7 @@ export interface ScrollAreaViewportProps extends PrimitiveProps, /** @vue-ignore
 }
 
 /**
- * Properties for the scroll area scrollbar component.
+ * Properties for the ScrollAreaScrollbar component.
  */
 export interface ScrollAreaScrollbarProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {
   /** The scrollbar orientation. */
@@ -44,22 +44,22 @@ export interface ScrollAreaScrollbarProps extends PrimitiveProps, /** @vue-ignor
 }
 
 /**
- * Properties for the scroll area thumb component.
+ * Properties for the ScrollAreaThumb component.
  */
 export interface ScrollAreaThumbProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Properties for the scroll area corner component.
+ * Properties for the ScrollAreaCorner component.
  */
 export interface ScrollAreaCornerProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Events for the scroll area root component.
+ * Events for the ScrollAreaRoot component.
  */
 export type ScrollAreaRootEmits = {};
 
 /**
- * Context for the scroll area root component.
+ * Context for the ScrollAreaRoot component.
  */
 export interface ScrollAreaRootContext extends PropsToContext<ScrollAreaRootProps, 'scrollHideDelay' | 'type'> {
   /**
@@ -129,7 +129,7 @@ export interface ScrollAreaRootContext extends PropsToContext<ScrollAreaRootProp
 }
 
 /**
- * Context for the scroll area scrollbar component.
+ * Context for the ScrollAreaScrollbar component.
  */
 export interface ScrollAreaScrollbarContext {
   /**
@@ -159,11 +159,11 @@ export interface ScrollAreaScrollbarContext {
 }
 
 /**
- * Available UI slots for the scroll area component.
+ * Available UI slots for the ScrollArea component.
  */
 export type ScrollAreaUiSlot = 'root' | 'viewport' | 'scrollbar' | 'thumb' | 'corner';
 
 /**
- * UI class overrides for the scroll area component.
+ * UI class overrides for the ScrollArea component.
  */
 export type ScrollAreaUi = UiClass<ScrollAreaUiSlot>;

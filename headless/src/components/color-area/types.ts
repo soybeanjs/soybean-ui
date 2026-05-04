@@ -11,12 +11,12 @@ import type { FormFieldCommonProps, PropsToContext, UiClass } from '../../types'
 import type { PrimitiveProps } from '../primitive/types';
 
 /**
- * Type information for the color area axis channel component.
+ * Type information for ColorAreaAxisChannel.
  */
 export type ColorAreaAxisChannel = Extract<ColorChannel, 'hue' | 'saturation' | 'lightness' | 'brightness' | 'chroma'>;
 
 /**
- * Properties for the color area root component.
+ * Properties for the ColorAreaRoot component.
  */
 export interface ColorAreaRootProps extends PrimitiveProps, FormFieldCommonProps, /** @vue-ignore */ HTMLAttributes {
   /**
@@ -58,7 +58,7 @@ export interface ColorAreaRootProps extends PrimitiveProps, FormFieldCommonProps
 }
 
 /**
- * Events for the color area root component.
+ * Events for the ColorAreaRoot component.
  */
 export type ColorAreaRootEmits = {
   /**
@@ -80,17 +80,17 @@ export type ColorAreaRootEmits = {
 };
 
 /**
- * Properties for the color area area component.
+ * Properties for the ColorAreaArea component.
  */
 export interface ColorAreaAreaProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Properties for the color area thumb component.
+ * Properties for the ColorAreaThumb component.
  */
 export interface ColorAreaThumbProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Context for the color area root component.
+ * Context for the ColorAreaRoot component.
  */
 export interface ColorAreaRootContext extends PropsToContext<
   ColorAreaRootProps,
@@ -139,11 +139,11 @@ export interface ColorAreaRootContext extends PropsToContext<
 }
 
 /**
- * Available UI slots for the color area component.
+ * Available UI slots for the ColorArea component.
  */
 export type ColorAreaUiSlot = 'root' | 'area' | 'thumb';
 
 /**
- * UI class overrides for the color area component.
+ * UI class overrides for the ColorArea component.
  */
 export type ColorAreaUi = UiClass<ColorAreaUiSlot>;

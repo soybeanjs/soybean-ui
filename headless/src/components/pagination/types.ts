@@ -2,7 +2,7 @@ import type { ButtonHTMLAttributes, HTMLAttributes, ShallowRef } from 'vue';
 import type { PropsToContext, UiClass } from '../../types';
 
 /**
- * Properties for the pagination root component.
+ * Properties for the PaginationRoot component.
  */
 export interface PaginationRootProps extends /** @vue-ignore */ HTMLAttributes {
   /** The controlled value of the current page. Can be bound as `v-model:page`. */
@@ -31,7 +31,7 @@ export interface PaginationRootProps extends /** @vue-ignore */ HTMLAttributes {
 }
 
 /**
- * Events for the pagination root component.
+ * Events for the PaginationRoot component.
  */
 export type PaginationRootEmits = {
   /** Event handler called when the page value changes */
@@ -41,12 +41,12 @@ export type PaginationRootEmits = {
 };
 
 /**
- * Properties for the pagination list component.
+ * Properties for the PaginationList component.
  */
 export interface PaginationListProps extends /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Properties for the pagination list item component.
+ * Properties for the PaginationListItem component.
  */
 export interface PaginationListItemProps extends /** @vue-ignore */ ButtonHTMLAttributes {
   /** Value for the page */
@@ -54,17 +54,17 @@ export interface PaginationListItemProps extends /** @vue-ignore */ ButtonHTMLAt
 }
 
 /**
- * Properties for the pagination ellipsis component.
+ * Properties for the PaginationEllipsis component.
  */
 export interface PaginationEllipsisProps extends /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Properties for the pagination button component.
+ * Properties for the PaginationButton component.
  */
 export interface PaginationButtonProps extends /** @vue-ignore */ ButtonHTMLAttributes {}
 
 /**
- * Parameters used to create the pagination root context.
+ * Parameters used to create the PaginationRoot context.
  */
 export interface PaginationRootContextParams extends PropsToContext<
   Required<PaginationRootProps>,
@@ -81,17 +81,17 @@ export interface PaginationRootContextParams extends PropsToContext<
 }
 
 /**
- * Available UI slots for the pagination component.
+ * Available UI slots for the Pagination component.
  */
 export type PaginationUiSlot = 'root' | 'list' | 'listItem' | 'ellipsis' | 'first' | 'prev' | 'next' | 'last';
 
 /**
- * UI class overrides for the pagination component.
+ * UI class overrides for the Pagination component.
  */
 export type PaginationUi = UiClass<PaginationUiSlot>;
 
 /**
- * Type information for the page ellipsis component.
+ * Type information for PageEllipsis.
  */
 export interface PageEllipsis {
   /**
@@ -101,7 +101,7 @@ export interface PageEllipsis {
 }
 
 /**
- * Type information for the page item component.
+ * Type information for PageItem.
  */
 export interface PageItem {
   /**
@@ -115,12 +115,12 @@ export interface PageItem {
 }
 
 /**
- * Type information for the pages component.
+ * Type information for Pages.
  */
 export type Pages = Array<PageEllipsis | PageItem>;
 
 /**
- * Properties for the pagination compact component.
+ * Properties for the PaginationCompact component.
  */
 export interface PaginationCompactProps extends PaginationRootProps {
   /**
@@ -158,12 +158,12 @@ export interface PaginationCompactProps extends PaginationRootProps {
 }
 
 /**
- * Events for the pagination compact component.
+ * Events for the PaginationCompact component.
  */
 export type PaginationCompactEmits = PaginationRootEmits;
 
 /**
- * Slots for the pagination compact component.
+ * Slots for the PaginationCompact component.
  */
 export interface PaginationCompactSlots {
   /**

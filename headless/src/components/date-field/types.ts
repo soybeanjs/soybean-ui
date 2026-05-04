@@ -14,7 +14,7 @@ import type { Direction, FormFieldCommonProps, PropsToContext, UiClass } from '.
 import type { PrimitiveProps } from '../primitive/types';
 
 /**
- * Properties for the date field root component.
+ * Properties for the DateFieldRoot component.
  */
 export interface DateFieldRootProps
   extends PrimitiveProps, FormFieldCommonProps, /** @vue-ignore */ Omit<HTMLAttributes, 'placeholder'> {
@@ -85,7 +85,7 @@ export interface DateFieldRootProps
 }
 
 /**
- * Events for the date field root component.
+ * Events for the DateFieldRoot component.
  */
 export type DateFieldRootEmits = {
   /**
@@ -99,7 +99,7 @@ export type DateFieldRootEmits = {
 };
 
 /**
- * Properties for the date field input component.
+ * Properties for the DateFieldInput component.
  */
 export interface DateFieldInputProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {
   /**
@@ -109,7 +109,7 @@ export interface DateFieldInputProps extends PrimitiveProps, /** @vue-ignore */ 
 }
 
 /**
- * Type information for the date field segment component.
+ * Type information for DateFieldSegment.
  */
 export interface DateFieldSegment {
   /**
@@ -123,7 +123,7 @@ export interface DateFieldSegment {
 }
 
 /**
- * Properties for the date field compact component.
+ * Properties for the DateFieldCompact component.
  */
 export interface DateFieldCompactProps extends DateFieldRootProps {
   /**
@@ -133,12 +133,12 @@ export interface DateFieldCompactProps extends DateFieldRootProps {
 }
 
 /**
- * Events for the date field compact component.
+ * Events for the DateFieldCompact component.
  */
 export type DateFieldCompactEmits = DateFieldRootEmits;
 
 /**
- * Context for the date field root component.
+ * Context for the DateFieldRoot component.
  */
 export interface DateFieldRootContext extends PropsToContext<DateFieldRootProps, 'disabled' | 'readonly'> {
   /**
@@ -216,10 +216,10 @@ export interface DateFieldRootContext extends PropsToContext<DateFieldRootProps,
 }
 
 /**
- * Available UI slots for the date field component.
+ * Available UI slots for the DateField component.
  */
 export type DateFieldUiSlot = 'root' | 'input';
 /**
- * UI class overrides for the date field component.
+ * UI class overrides for the DateField component.
  */
 export type DateFieldUi = UiClass<DateFieldUiSlot>;

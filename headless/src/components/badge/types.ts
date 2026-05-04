@@ -2,7 +2,7 @@ import type { HTMLAttributes, ShallowRef } from 'vue';
 import type { UiClass } from '../../types';
 
 /**
- * Properties for the badge root component.
+ * Properties for the BadgeRoot component.
  */
 export interface BadgeRootProps extends /** @vue-ignore */ HTMLAttributes {
   /**
@@ -12,7 +12,7 @@ export interface BadgeRootProps extends /** @vue-ignore */ HTMLAttributes {
 }
 
 /**
- * Events for the badge root component.
+ * Events for the BadgeRoot component.
  */
 export type BadgeRootEmits = {
   /**
@@ -22,12 +22,12 @@ export type BadgeRootEmits = {
 };
 
 /**
- * Properties for the badge content component.
+ * Properties for the BadgeContent component.
  */
 export interface BadgeContentProps extends /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Properties for the badge compact component.
+ * Properties for the BadgeCompact component.
  */
 export interface BadgeCompactProps extends BadgeRootProps {
   /** Content rendered inside the badge bubble when no content slot is provided. */
@@ -37,12 +37,12 @@ export interface BadgeCompactProps extends BadgeRootProps {
 }
 
 /**
- * Events for the badge compact component.
+ * Events for the BadgeCompact component.
  */
 export type BadgeCompactEmits = BadgeRootEmits;
 
 /**
- * Slots for the badge compact component.
+ * Slots for the BadgeCompact component.
  */
 export type BadgeCompactSlots = {
   /** Custom content for the default slot. */
@@ -52,7 +52,7 @@ export type BadgeCompactSlots = {
 };
 
 /**
- * Context for the badge root component.
+ * Context for the BadgeRoot component.
  */
 export interface BadgeRootContext {
   /**
@@ -62,11 +62,11 @@ export interface BadgeRootContext {
 }
 
 /**
- * Available UI slots for the badge component.
+ * Available UI slots for the Badge component.
  */
 export type BadgeUiSlot = 'root' | 'content';
 
 /**
- * UI class overrides for the badge component.
+ * UI class overrides for the Badge component.
  */
 export type BadgeUi = UiClass<BadgeUiSlot>;

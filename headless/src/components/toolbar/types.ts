@@ -11,7 +11,7 @@ import type { SeparatorRootProps } from '../separator/types';
 import type { PrimitiveProps } from '../primitive/types';
 
 /**
- * Properties for the toolbar root component.
+ * Properties for the ToolbarRoot component.
  */
 export interface ToolbarRootProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {
   /** The orientation of the toolbar. */
@@ -23,7 +23,7 @@ export interface ToolbarRootProps extends PrimitiveProps, /** @vue-ignore */ HTM
 }
 
 /**
- * Context for the toolbar root component.
+ * Context for the ToolbarRoot component.
  */
 export interface ToolbarRootContext {
   /**
@@ -37,7 +37,7 @@ export interface ToolbarRootContext {
 }
 
 /**
- * Parameters used to create the toolbar root context.
+ * Parameters used to create the ToolbarRoot context.
  */
 export interface ToolbarRootContextParams {
   /**
@@ -51,37 +51,37 @@ export interface ToolbarRootContextParams {
 }
 
 /**
- * Available UI slots for the toolbar component.
+ * Available UI slots for the Toolbar component.
  */
 export type ToolbarUiSlot = 'root' | 'button' | 'link' | 'separator' | 'toggleGroup' | 'toggleItem';
 
 /**
- * UI class overrides for the toolbar component.
+ * UI class overrides for the Toolbar component.
  */
 export type ToolbarUi = UiClass<ToolbarUiSlot>;
 
 /**
- * Properties for the toolbar button component.
+ * Properties for the ToolbarButton component.
  */
 export interface ToolbarButtonProps extends ButtonProps {}
 
 /**
- * Events for the toolbar button component.
+ * Events for the ToolbarButton component.
  */
 export type ToolbarButtonEmits = ButtonEmits;
 
 /**
- * Properties for the toolbar link component.
+ * Properties for the ToolbarLink component.
  */
 export interface ToolbarLinkProps extends LinkProps {}
 
 /**
- * Properties for the toolbar separator component.
+ * Properties for the ToolbarSeparator component.
  */
 export interface ToolbarSeparatorProps extends Omit<SeparatorRootProps, 'orientation'> {}
 
 /**
- * Properties for the toolbar toggle group component.
+ * Properties for the ToolbarToggleGroup component.
  */
 export interface ToolbarToggleGroupProps<
   M extends boolean = false,
@@ -89,7 +89,7 @@ export interface ToolbarToggleGroupProps<
 > extends BaseToggleGroupRootProps<M, T> {}
 
 /**
- * Events for the toolbar toggle group component.
+ * Events for the ToolbarToggleGroup component.
  */
 export type ToolbarToggleGroupEmits<
   M extends boolean = false,
@@ -97,6 +97,6 @@ export type ToolbarToggleGroupEmits<
 > = BaseToggleGroupRootEmits<M, T>;
 
 /**
- * Properties for the toolbar toggle item component.
+ * Properties for the ToolbarToggleItem component.
  */
 export interface ToolbarToggleItemProps<T extends DefinedValue = string> extends BaseToggleGroupItemProps<T> {}

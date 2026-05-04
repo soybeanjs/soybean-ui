@@ -3,7 +3,7 @@ import type { ClassValue } from '@soybeanjs/headless/types';
 import type { ThemeSize } from '@/theme';
 
 /**
- * Properties for the input component.
+ * Properties for the Input component.
  */
 export interface InputProps extends InputCompactProps {
   /**
@@ -21,11 +21,11 @@ export interface InputProps extends InputCompactProps {
 }
 
 /**
- * Events for the input component.
+ * Events for the Input component.
  */
 export type InputEmits = InputRootEmits;
 
 /**
- * Slots for the input component.
+ * Slots for the Input component.
  */
 export type InputSlots = InputCompactSlots;

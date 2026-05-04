@@ -2,7 +2,7 @@ import type { ComputedRef, HTMLAttributes, ShallowRef, TextareaHTMLAttributes } 
 import type { FormFieldCommonProps, PropsToContext, UiClass } from '../../types';
 
 /**
- * Type information for the textarea autosize options component.
+ * Type information for TextareaAutosizeOptions.
  */
 export interface TextareaAutosizeOptions {
   /** The minimum number of rows to display */
@@ -12,7 +12,7 @@ export interface TextareaAutosizeOptions {
 }
 
 /**
- * Properties for the textarea base component.
+ * Properties for the TextareaBase component.
  */
 export interface TextareaBaseProps {
   /** Id of the textarea element */
@@ -32,7 +32,7 @@ export interface TextareaBaseProps {
 }
 
 /**
- * Properties for the textarea root component.
+ * Properties for the TextareaRoot component.
  */
 export interface TextareaRootProps extends TextareaBaseProps, FormFieldCommonProps, /** @vue-ignore */ HTMLAttributes {
   /** The default value of the textarea */
@@ -44,7 +44,7 @@ export interface TextareaRootProps extends TextareaBaseProps, FormFieldCommonPro
 }
 
 /**
- * Events for the textarea root component.
+ * Events for the TextareaRoot component.
  */
 export type TextareaRootEmits = {
   /**
@@ -54,17 +54,17 @@ export type TextareaRootEmits = {
 };
 
 /**
- * Properties for the textarea control component.
+ * Properties for the TextareaControl component.
  */
 export interface TextareaControlProps extends /** @vue-ignore */ TextareaHTMLAttributes {}
 
 /**
- * Properties for the textarea counter component.
+ * Properties for the TextareaCounter component.
  */
 export interface TextareaCounterProps extends /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Context for the textarea root component.
+ * Context for the TextareaRoot component.
  */
 export interface TextareaRootContext extends PropsToContext<TextareaBaseProps> {
   /**
@@ -82,11 +82,11 @@ export interface TextareaRootContext extends PropsToContext<TextareaBaseProps> {
 }
 
 /**
- * Available UI slots for the textarea component.
+ * Available UI slots for the Textarea component.
  */
 export type TextareaUiSlot = 'root' | 'control' | 'counter';
 
 /**
- * UI class overrides for the textarea component.
+ * UI class overrides for the Textarea component.
  */
 export type TextareaUi = UiClass<TextareaUiSlot>;

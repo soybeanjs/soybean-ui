@@ -13,7 +13,7 @@ import type { ThemeColor, ThemeSize } from '@/theme';
 import type { RadioGroupVariant } from './variants';
 
 /**
- * Properties for the radio component.
+ * Properties for the Radio component.
  */
 export interface RadioProps extends RadioGroupItemProps {
   /**
@@ -35,7 +35,7 @@ export interface RadioProps extends RadioGroupItemProps {
 }
 
 /**
- * Properties for the radio group component.
+ * Properties for the RadioGroup component.
  */
 export interface RadioGroupProps<
   T extends AcceptableBooleanValue = AcceptableBooleanValue,
@@ -64,22 +64,22 @@ export interface RadioGroupProps<
 }
 
 /**
- * Events for the radio group component.
+ * Events for the RadioGroup component.
  */
 export type RadioGroupEmits<T extends AcceptableBooleanValue = AcceptableBooleanValue> = RadioGroupCompactEmits<T>;
 
 /**
- * Available UI slots for the radio group component.
+ * Available UI slots for the RadioGroupCard component.
  */
 export type RadioGroupCardUiSlot = 'content' | 'textContent' | 'icon' | 'description';
 
 /**
- * UI class overrides for the radio group component.
+ * UI class overrides for the RadioGroupCard component.
  */
 export type RadioGroupCardUi = RadioGroupUi & Record<RadioGroupCardUiSlot, ClassValue>;
 
 /**
- * Properties for the radio card component.
+ * Properties for the RadioCard component.
  */
 export interface RadioCardProps extends RadioProps {
   /**
@@ -97,7 +97,7 @@ export interface RadioCardProps extends RadioProps {
 }
 
 /**
- * Option data for the radio card group component.
+ * Option data for the RadioCardGroup component.
  */
 export interface RadioCardGroupOptionData<
   T extends AcceptableBooleanValue = AcceptableBooleanValue
@@ -113,7 +113,7 @@ export interface RadioCardGroupOptionData<
 }
 
 /**
- * Properties for the radio card group component.
+ * Properties for the RadioCardGroup component.
  */
 export interface RadioCardGroupProps<
   T extends AcceptableBooleanValue = AcceptableBooleanValue,
@@ -130,7 +130,7 @@ export interface RadioCardGroupProps<
 }
 
 /**
- * Events for the radio group card component.
+ * Events for the RadioGroupCard component.
  */
 export type RadioGroupCardEmits<T extends AcceptableBooleanValue = AcceptableBooleanValue> = RadioGroupEmits<T>;
 

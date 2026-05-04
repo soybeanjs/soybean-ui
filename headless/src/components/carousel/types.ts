@@ -4,7 +4,7 @@ import type { DefinedValue, DataOrientation, Direction, VNodeRef, UiClass } from
 import type { ButtonProps } from '../button/types';
 
 /**
- * Properties for the carousel root component.
+ * Properties for the CarouselRoot component.
  */
 export interface CarouselRootProps extends /** @vue-ignore */ Omit<HTMLAttributes, 'onSelect'> {
   /**
@@ -26,7 +26,7 @@ export interface CarouselRootProps extends /** @vue-ignore */ Omit<HTMLAttribute
 }
 
 /**
- * Events for the carousel root component.
+ * Events for the CarouselRoot component.
  */
 export type CarouselRootEmits = {
   /**
@@ -36,7 +36,7 @@ export type CarouselRootEmits = {
 };
 
 /**
- * Properties for the carousel component, which combines all sub components into a single component for ease of use.
+ * Slot properties for the CarouselRoot component.
  */
 export interface CarouselRootSlotProps {
   carousel: EmblaCarouselType | undefined;
@@ -51,49 +51,49 @@ export interface CarouselRootSlotProps {
 }
 
 /**
- * Slots for the carousel component, which combines all sub components into a single component for ease of use.
+ * Slots for the CarouselRoot component.
  */
 export type CarouselRootSlots = {
   default?: (props: CarouselRootSlotProps) => any;
 };
 
 /**
- * Properties for the carousel content component.
+ * Properties for the CarouselContent component.
  */
 export interface CarouselContentProps extends /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Properties for the carousel container component.
+ * Properties for the CarouselContainer component.
  */
 export interface CarouselContainerProps extends /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Properties for the carousel item component.
+ * Properties for the CarouselItem component.
  */
 export interface CarouselItemProps extends /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Properties for the carousel control components (next and previous).
+ * Properties for the CarouselControl component.
  */
 export interface CarouselControlProps extends /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Properties for the carousel navigation component.
+ * Properties for the CarouselNavigation component.
  */
 export interface CarouselNavigationProps extends /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Properties for the carousel previous component.
+ * Properties for the CarouselPrevious component.
  */
 export interface CarouselPreviousProps extends ButtonProps {}
 
 /**
- * Properties for the carousel next component.
+ * Properties for the CarouselNext component.
  */
 export interface CarouselNextProps extends ButtonProps {}
 
 /**
- * Context for the carousel root component.
+ * Context for the CarouselRoot component.
  */
 export interface CarouselRootContext {
   /**
@@ -141,7 +141,7 @@ export interface CarouselRootContext {
 }
 
 /**
- * Properties for the carousel compact component, which combines all sub components into a single component for ease of use.
+ * Properties for the CarouselCompact component.
  */
 export interface CarouselCompactProps<T extends DefinedValue = DefinedValue> extends CarouselRootProps {
   /**
@@ -179,12 +179,12 @@ export interface CarouselCompactProps<T extends DefinedValue = DefinedValue> ext
 }
 
 /**
- * Events for the carousel compact component, which combines all sub components into a single component for ease of use.
+ * Events for the CarouselCompact component.
  */
 export type CarouselCompactEmits = CarouselRootEmits;
 
 /**
- * Slots for the carousel compact component, which combines all sub components into a single component for ease of use.
+ * Slots for the CarouselCompact component.
  */
 export type CarouselCompactSlots<T extends DefinedValue = DefinedValue> = {
   /**
@@ -206,12 +206,12 @@ export type CarouselCompactSlots<T extends DefinedValue = DefinedValue> = {
 };
 
 /**
- * Available UI slots for the carousel component.
+ * Available UI slots for the Carousel component.
  */
 export type CarouselUiSlot = 'root' | 'content' | 'container' | 'item' | 'control' | 'navigation' | 'previous' | 'next';
 
 /**
- * UI class overrides for the carousel component.
+ * UI class overrides for the Carousel component.
  */
 export type CarouselUi = UiClass<CarouselUiSlot>;
 

@@ -8,12 +8,12 @@ import type { ThemeColor, ThemeSize } from '@/theme';
 export type AnchorExtraUiSlot = Exclude<AnchorUiSlot, 'root' | 'link'>;
 
 /**
- * Extended UI class overrides for the anchor component.
+ * Extended UI class overrides for the Anchor component.
  */
 export type AnchorExtendedUi = UiClass<AnchorUiSlot>;
 
 /**
- * Properties for the anchor component.
+ * Properties for the Anchor component.
  */
 export interface AnchorProps extends AnchorCompactProps {
   /**
@@ -39,6 +39,6 @@ export interface AnchorProps extends AnchorCompactProps {
 }
 
 /**
- * Events for the anchor component.
+ * Events for the Anchor component.
  */
 export type AnchorEmits = AnchorCompactEmits;

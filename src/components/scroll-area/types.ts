@@ -10,7 +10,7 @@ import type {
 import type { ClassValue } from '@soybeanjs/headless/types';
 
 /**
- * Properties for the scroll area component.
+ * Properties for the ScrollArea component.
  */
 export interface ScrollAreaProps extends ScrollAreaRootProps {
   /**
@@ -44,6 +44,6 @@ export interface ScrollAreaProps extends ScrollAreaRootProps {
 }
 
 /**
- * Events for the scroll area component.
+ * Events for the ScrollArea component.
  */
 export type ScrollAreaEmits = ScrollAreaRootEmits;

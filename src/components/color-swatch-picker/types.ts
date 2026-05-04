@@ -17,12 +17,12 @@ import type { ColorSwatchPickerShape } from './variants';
 export type ColorSwatchPickerExtraUiSlot = 'checker' | 'fill';
 
 /**
- * Extended UI class overrides for the color swatch picker component.
+ * Extended UI class overrides for the ColorSwatchPicker component.
  */
 export type ColorSwatchPickerExtendedUi = UiClass<ColorSwatchPickerUiSlot | ColorSwatchPickerExtraUiSlot>;
 
 /**
- * Properties for the color swatch picker component.
+ * Properties for the ColorSwatchPicker component.
  */
 export interface ColorSwatchPickerProps extends ColorSwatchPickerRootProps<boolean> {
   /**
@@ -60,7 +60,7 @@ export interface ColorSwatchPickerProps extends ColorSwatchPickerRootProps<boole
 }
 
 /**
- * Events for the color swatch picker component.
+ * Events for the ColorSwatchPicker component.
  */
 export type ColorSwatchPickerEmits = ColorSwatchPickerRootEmits<boolean> & ColorSwatchPickerItemEmits;
 

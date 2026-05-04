@@ -3,47 +3,47 @@ import type { UiClass } from '../../types';
 import type { IconValue } from '../_icon/types';
 
 /**
- * Properties for the empty root component.
+ * Properties for the EmptyRoot component.
  */
 export interface EmptyRootProps extends /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Properties for the empty header component.
+ * Properties for the EmptyHeader component.
  */
 export interface EmptyHeaderProps extends /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Properties for the empty media component.
+ * Properties for the EmptyMedia component.
  */
 export interface EmptyMediaProps extends /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Properties for the empty content component.
+ * Properties for the EmptyContent component.
  */
 export interface EmptyContentProps extends /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Properties for the empty title component.
+ * Properties for the EmptyTitle component.
  */
 export interface EmptyTitleProps extends /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Properties for the empty description component.
+ * Properties for the EmptyDescription component.
  */
 export interface EmptyDescriptionProps extends /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Available UI slots for the empty component.
+ * Available UI slots for the Empty component.
  */
 export type EmptyUiSlot = 'root' | 'header' | 'media' | 'content' | 'title' | 'description';
 
 /**
- * UI class overrides for the empty component.
+ * UI class overrides for the Empty component.
  */
 export type EmptyUi = UiClass<EmptyUiSlot>;
 
 /**
- * Properties for the empty compact component.
+ * Properties for the EmptyCompact component.
  */
 export interface EmptyCompactProps extends EmptyRootProps {
   /**
@@ -81,7 +81,7 @@ export interface EmptyCompactProps extends EmptyRootProps {
 }
 
 /**
- * Slots for the empty compact component.
+ * Slots for the EmptyCompact component.
  */
 export type EmptyCompactSlots = {
   /**

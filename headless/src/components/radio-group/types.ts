@@ -13,7 +13,7 @@ import type { PrimitiveProps } from '../primitive/types';
 import type { LabelProps as RadioGroupLabelProps } from '../label/types';
 
 /**
- * Properties for the radio group root component.
+ * Properties for the RadioGroupRoot component.
  */
 export interface RadioGroupRootProps<T extends AcceptableBooleanValue = AcceptableBooleanValue>
   extends FormFieldCommonProps, /** @vue-ignore */ HTMLAttributes {
@@ -35,7 +35,7 @@ export interface RadioGroupRootProps<T extends AcceptableBooleanValue = Acceptab
 }
 
 /**
- * Events for the radio group root component.
+ * Events for the RadioGroupRoot component.
  */
 export type RadioGroupRootEmits<T extends AcceptableBooleanValue = AcceptableBooleanValue> = {
   /** Event handler called when the radio group value changes */
@@ -43,7 +43,7 @@ export type RadioGroupRootEmits<T extends AcceptableBooleanValue = AcceptableBoo
 };
 
 /**
- * Context for the radio group root component.
+ * Context for the RadioGroupRoot component.
  */
 export type RadioGroupRootContext = PropsToContext<
   RadioGroupRootProps,
@@ -56,7 +56,7 @@ export type RadioGroupRootContext = PropsToContext<
 };
 
 /**
- * Properties for the radio group item component.
+ * Properties for the RadioGroupItem component.
  */
 export interface RadioGroupItemProps extends FormFieldCommonProps, /** @vue-ignore */ HTMLAttributes {
   /** The value given as data when submitted with a `name`. */
@@ -66,7 +66,7 @@ export interface RadioGroupItemProps extends FormFieldCommonProps, /** @vue-igno
 }
 
 /**
- * Type information for the radio select event component.
+ * Type information for RadioSelectEvent.
  */
 export type RadioSelectEvent = CustomEvent<{
   /**
@@ -80,7 +80,7 @@ export type RadioSelectEvent = CustomEvent<{
 }>;
 
 /**
- * Events for the radio group item component.
+ * Events for the RadioGroupItem component.
  */
 export type RadioGroupItemEmits = {
   /** Event handler called when the radio item is selected */
@@ -88,7 +88,7 @@ export type RadioGroupItemEmits = {
 };
 
 /**
- * Properties for the radio group control component.
+ * Properties for the RadioGroupControl component.
  */
 export interface RadioGroupControlProps extends /** @vue-ignore */ ButtonHTMLAttributes {
   /** Id of the element */
@@ -96,12 +96,12 @@ export interface RadioGroupControlProps extends /** @vue-ignore */ ButtonHTMLAtt
 }
 
 /**
- * Properties for the radio group indicator component.
+ * Properties for the RadioGroupIndicator component.
  */
 export interface RadioGroupIndicatorProps extends PrimitiveProps, ForceMountProps, /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Option data for the radio group component.
+ * Option data for the RadioGroup component.
  */
 export interface RadioGroupOptionData<T extends AcceptableBooleanValue = AcceptableBooleanValue> {
   /**
@@ -119,7 +119,7 @@ export interface RadioGroupOptionData<T extends AcceptableBooleanValue = Accepta
 }
 
 /**
- * Properties for the radio group compact component.
+ * Properties for the RadioGroupCompact component.
  */
 export interface RadioGroupCompactProps<
   T extends AcceptableBooleanValue = AcceptableBooleanValue,
@@ -148,12 +148,12 @@ export interface RadioGroupCompactProps<
 }
 
 /**
- * Events for the radio group compact component.
+ * Events for the RadioGroupCompact component.
  */
 export type RadioGroupCompactEmits<T extends AcceptableBooleanValue = AcceptableBooleanValue> = RadioGroupRootEmits<T>;
 
 /**
- * Parameters used to create the radio group item context.
+ * Parameters used to create the RadioGroupItem context.
  */
 export type RadioGroupItemContextParams = PropsToContext<
   Pick<RadioGroupItemProps, 'name' | 'required' | 'value' | 'disabled'>
@@ -170,12 +170,12 @@ export type RadioGroupItemContextParams = PropsToContext<
   };
 
 /**
- * Available UI slots for the radio group component.
+ * Available UI slots for the RadioGroup component.
  */
 export type RadioGroupUiSlot = 'root' | 'item' | 'indicator' | 'label' | 'control';
 
 /**
- * UI class overrides for the radio group component.
+ * UI class overrides for the RadioGroup component.
  */
 export type RadioGroupUi = UiClass<RadioGroupUiSlot>;
 

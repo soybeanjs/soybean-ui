@@ -34,12 +34,12 @@ export type TableExtraUiSlot =
   | 'filterEmpty';
 
 /**
- * Extended UI class overrides for the table component.
+ * Extended UI class overrides for the Table component.
  */
 export type TableExtendedUi = UiClass<TableUiSlot | TableExtraUiSlot>;
 
 /**
- * Properties for the table component.
+ * Properties for the Table component.
  */
 export interface TableProps<
   T extends TableBaseData = TableBaseData,
@@ -77,7 +77,7 @@ export interface TableProps<
 }
 
 /**
- * Events for the table component.
+ * Events for the Table component.
  */
 export type TableEmits<R extends TableUnifiedKey = TableUnifiedKey, M extends boolean = false> = TableCompactEmits<
   R,
@@ -85,12 +85,12 @@ export type TableEmits<R extends TableUnifiedKey = TableUnifiedKey, M extends bo
 >;
 
 /**
- * Slots for the table component.
+ * Slots for the Table component.
  */
 export type TableSlots<T extends TableBaseData = TableBaseData> = TableCompactSlots<T>;
 
 /**
- * Properties for the table radio component.
+ * Properties for the TableRadio component.
  */
 export interface TableRadioProps {
   /**
@@ -104,7 +104,7 @@ export interface TableRadioProps {
 }
 
 /**
- * Type information for the table filter popover column meta component.
+ * Type information for TableFilterPopoverColumnMeta.
  */
 export interface TableFilterPopoverColumnMeta {
   /**
@@ -122,7 +122,7 @@ export interface TableFilterPopoverColumnMeta {
 }
 
 /**
- * Type information for the table filter popover option component.
+ * Type information for TableFilterPopoverOption.
  */
 export interface TableFilterPopoverOption {
   /**
@@ -140,7 +140,7 @@ export interface TableFilterPopoverOption {
 }
 
 /**
- * Properties for the table filter popover component.
+ * Properties for the TableFilterPopover component.
  */
 export interface TableFilterPopoverProps<
   T extends TableBaseData = TableBaseData

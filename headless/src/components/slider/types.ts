@@ -3,12 +3,12 @@ import type { DataOrientation, Direction, FormFieldCommonProps, PropsToContext, 
 import type { PrimitiveProps } from '../primitive/types';
 
 /**
- * Type information for the slider thumb alignment component.
+ * Type information for SliderThumbAlignment.
  */
 export type SliderThumbAlignment = 'contain' | 'overflow';
 
 /**
- * Properties for the slider root component.
+ * Properties for the SliderRoot component.
  */
 export interface SliderRootProps extends PrimitiveProps, FormFieldCommonProps, /** @vue-ignore */ HTMLAttributes {
   /** The controlled value of the slider. Can be bind as `v-model`. */
@@ -36,7 +36,7 @@ export interface SliderRootProps extends PrimitiveProps, FormFieldCommonProps, /
 }
 
 /**
- * Events for the slider root component.
+ * Events for the SliderRoot component.
  */
 export type SliderRootEmits = {
   /** Event handler called when the slider value changes. */
@@ -46,17 +46,17 @@ export type SliderRootEmits = {
 };
 
 /**
- * Properties for the slider track component.
+ * Properties for the SliderTrack component.
  */
 export interface SliderTrackProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Properties for the slider range component.
+ * Properties for the SliderRange component.
  */
 export interface SliderRangeProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Properties for the slider thumb component.
+ * Properties for the SliderThumb component.
  */
 export interface SliderThumbProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {
   /** The thumb index in the current slider value array. */
@@ -64,12 +64,12 @@ export interface SliderThumbProps extends PrimitiveProps, /** @vue-ignore */ HTM
 }
 
 /**
- * Type information for the slider slide direction component.
+ * Type information for SliderSlideDirection.
  */
 export type SliderSlideDirection = 'from-left' | 'from-right' | 'from-bottom' | 'from-top';
 
 /**
- * Context for the slider root component.
+ * Context for the SliderRoot component.
  */
 export interface SliderRootContext extends PropsToContext<
   SliderRootProps,
@@ -158,11 +158,11 @@ export interface SliderRootContext extends PropsToContext<
 }
 
 /**
- * Available UI slots for the slider component.
+ * Available UI slots for the Slider component.
  */
 export type SliderUiSlot = 'root' | 'track' | 'range' | 'thumb';
 
 /**
- * UI class overrides for the slider component.
+ * UI class overrides for the Slider component.
  */
 export type SliderUi = UiClass<SliderUiSlot>;

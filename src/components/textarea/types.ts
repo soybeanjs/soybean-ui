@@ -17,7 +17,7 @@ export type TextareaExtraUiSlot = 'clearable';
 type TextareaExtendedUi = TextareaUi & Record<TextareaExtraUiSlot, ClassValue>;
 
 /**
- * Properties for the textarea component.
+ * Properties for the Textarea component.
  */
 export interface TextareaProps extends TextareaRootProps {
   /**
@@ -59,7 +59,7 @@ export interface TextareaProps extends TextareaRootProps {
 }
 
 /**
- * Events for the textarea component.
+ * Events for the Textarea component.
  */
 export type TextareaEmits = TextareaRootEmits;
 

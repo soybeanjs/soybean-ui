@@ -3,7 +3,7 @@ import type { RouteLocationRaw } from 'vue-router';
 import type { PrimitiveProps } from '../primitive/types';
 
 /**
- * Properties for the link component.
+ * Properties for the Link component.
  */
 export interface LinkProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {
   /**
@@ -92,16 +92,16 @@ export interface LinkProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttrib
 }
 
 /**
- * Type information for the link base props key component.
+ * Type information for LinkBasePropsKey.
  */
 export type LinkBasePropsKey = Extract<keyof LinkProps, 'to' | 'href' | 'external' | 'target'>;
 
 /**
- * Properties for the link base component.
+ * Properties for the LinkBase component.
  */
 export interface LinkBaseProps extends Pick<LinkProps, LinkBasePropsKey> {}
 
 /**
- * Properties for the link extra component.
+ * Properties for the LinkExtra component.
  */
 export interface LinkExtraProps extends Omit<LinkProps, LinkBasePropsKey> {}

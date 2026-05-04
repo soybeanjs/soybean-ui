@@ -19,7 +19,7 @@ import type { ThemeSize } from '@/theme';
 import type { IconValue } from '../icon/types';
 
 /**
- * Option data for the navigation menu component.
+ * Option data for the NavigationMenu component.
  */
 export interface NavigationMenuOptionData extends LinkBaseProps {
   /** The value of the option. */
@@ -54,17 +54,17 @@ export type NavigationMenuExtraUiSlot =
   | 'subLinkDescription';
 
 /**
- * UI class overrides for the navigation menu component.
+ * UI class overrides for the NavigationMenuExtra component.
  */
 export type NavigationMenuExtraUi = UiClass<NavigationMenuExtraUiSlot>;
 
 /**
- * Extended UI class overrides for the navigation menu component.
+ * Extended UI class overrides for the NavigationMenu component.
  */
 export type NavigationMenuExtendedUi = UiClass<NavigationMenuUiSlot | NavigationMenuExtraUiSlot>;
 
 /**
- * Properties for the navigation menu sub option component.
+ * Properties for the NavigationMenuSubOption component.
  */
 export interface NavigationMenuSubOptionProps {
   /**
@@ -82,12 +82,12 @@ export interface NavigationMenuSubOptionProps {
 }
 
 /**
- * Events for the navigation menu sub option component.
+ * Events for the NavigationMenuSubOption component.
  */
 export type NavigationMenuSubOptionEmits = NavigationMenuLinkEmits;
 
 /**
- * Properties for the navigation menu option component.
+ * Properties for the NavigationMenuOption component.
  */
 export interface NavigationMenuOptionProps {
   /**
@@ -133,12 +133,12 @@ export interface NavigationMenuOptionProps {
 }
 
 /**
- * Events for the navigation menu option component.
+ * Events for the NavigationMenuOption component.
  */
 export type NavigationMenuOptionEmits = NavigationMenuSubEmits & NavigationMenuContentEmits & NavigationMenuLinkEmits;
 
 /**
- * Properties for the navigation menu component.
+ * Properties for the NavigationMenu component.
  */
 export interface NavigationMenuProps extends NavigationMenuRootProps, Omit<NavigationMenuOptionProps, 'item'> {
   /**
@@ -160,6 +160,6 @@ export interface NavigationMenuProps extends NavigationMenuRootProps, Omit<Navig
 }
 
 /**
- * Events for the navigation menu component.
+ * Events for the NavigationMenu component.
  */
 export type NavigationMenuEmits = NavigationMenuRootEmits & NavigationMenuOptionEmits;

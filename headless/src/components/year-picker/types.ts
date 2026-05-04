@@ -5,7 +5,7 @@ import type { Direction, FormFieldCommonProps, PropsToContext, UiClass } from '.
 import type { PrimitiveProps } from '../primitive/types';
 
 /**
- * Properties for the year picker root component.
+ * Properties for the YearPickerRoot component.
  */
 export interface YearPickerRootProps
   extends PrimitiveProps, FormFieldCommonProps, /** @vue-ignore */ Omit<HTMLAttributes, 'placeholder'> {
@@ -68,7 +68,7 @@ export interface YearPickerRootProps
 }
 
 /**
- * Events for the year picker root component.
+ * Events for the YearPickerRoot component.
  */
 export type YearPickerRootEmits = {
   /**
@@ -86,16 +86,16 @@ export type YearPickerRootEmits = {
 };
 
 /**
- * Properties for the year picker trigger component.
+ * Properties for the YearPickerTrigger component.
  */
 export interface YearPickerTriggerProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {}
 /**
- * Properties for the year picker popup component.
+ * Properties for the YearPickerPopup component.
  */
 export interface YearPickerPopupProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Context for the year picker root component.
+ * Context for the YearPickerRoot component.
  */
 export interface YearPickerRootContext extends PropsToContext<YearPickerRootProps, 'disabled' | 'readonly'> {
   /**
@@ -197,7 +197,7 @@ export interface YearPickerRootContext extends PropsToContext<YearPickerRootProp
 }
 
 /**
- * Available UI slots for the year picker component.
+ * Available UI slots for the YearPicker component.
  */
 export type YearPickerUiSlot =
   | 'root'
@@ -210,6 +210,6 @@ export type YearPickerUiSlot =
   | 'grid'
   | 'cellTrigger';
 /**
- * UI class overrides for the year picker component.
+ * UI class overrides for the YearPicker component.
  */
 export type YearPickerUi = UiClass<YearPickerUiSlot>;

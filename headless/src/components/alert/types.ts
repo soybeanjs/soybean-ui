@@ -4,7 +4,7 @@ import type { IconValue } from '../_icon/types';
 import type { PrimitiveProps } from '../primitive/types';
 
 /**
- * Properties for the alert root component.
+ * Properties for the AlertRoot component.
  */
 export interface AlertRootProps extends /** @vue-ignore */ HTMLAttributes {
   /**
@@ -16,7 +16,7 @@ export interface AlertRootProps extends /** @vue-ignore */ HTMLAttributes {
 }
 
 /**
- * Events for the alert root component.
+ * Events for the AlertRoot component.
  */
 export type AlertRootEmits = {
   /**
@@ -26,27 +26,27 @@ export type AlertRootEmits = {
 };
 
 /**
- * Properties for the alert content component.
+ * Properties for the AlertContent component.
  */
 export interface AlertContentProps extends /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Properties for the alert title component.
+ * Properties for the AlertTitle component.
  */
 export interface AlertTitleProps extends /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Properties for the alert description component.
+ * Properties for the AlertDescription component.
  */
 export interface AlertDescriptionProps extends /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Properties for the alert close component.
+ * Properties for the AlertClose component.
  */
 export interface AlertCloseProps extends PrimitiveProps, /** @vue-ignore */ ButtonHTMLAttributes {}
 
 /**
- * Properties for the alert compact component.
+ * Properties for the AlertCompact component.
  */
 export interface AlertCompactProps extends AlertRootProps {
   /**
@@ -84,12 +84,12 @@ export interface AlertCompactProps extends AlertRootProps {
 }
 
 /**
- * Events for the alert compact component.
+ * Events for the AlertCompact component.
  */
 export type AlertCompactEmits = AlertRootEmits;
 
 /**
- * Slots for the alert compact component.
+ * Slots for the AlertCompact component.
  */
 export type AlertCompactSlots = {
   /**
@@ -119,7 +119,7 @@ export type AlertCompactSlots = {
 };
 
 /**
- * Parameters used to create the alert root context.
+ * Parameters used to create the AlertRoot context.
  */
 export interface AlertRootContextParams {
   /**
@@ -129,11 +129,11 @@ export interface AlertRootContextParams {
 }
 
 /**
- * Available UI slots for the alert component.
+ * Available UI slots for the Alert component.
  */
 export type AlertUiSlot = 'root' | 'icon' | 'title' | 'description' | 'content' | 'close';
 
 /**
- * UI class overrides for the alert component.
+ * UI class overrides for the Alert component.
  */
 export type AlertUi = UiClass<AlertUiSlot>;

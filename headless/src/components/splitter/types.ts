@@ -3,7 +3,7 @@ import type { DataOrientation, Direction, PropsToContext, UiClass } from '../../
 import type { PrimitiveProps } from '../primitive/types';
 
 /**
- * Properties for the splitter group component.
+ * Properties for the SplitterGroup component.
  */
 export interface SplitterGroupProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {
   /**
@@ -27,7 +27,7 @@ export interface SplitterGroupProps extends PrimitiveProps, /** @vue-ignore */ H
 }
 
 /**
- * Events for the splitter group component.
+ * Events for the SplitterGroup component.
  */
 export type SplitterGroupEmits = {
   /**
@@ -37,7 +37,7 @@ export type SplitterGroupEmits = {
 };
 
 /**
- * Properties for the splitter panel component.
+ * Properties for the SplitterPanel component.
  */
 export interface SplitterPanelProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {
   /**
@@ -67,7 +67,7 @@ export interface SplitterPanelProps extends PrimitiveProps, /** @vue-ignore */ H
 }
 
 /**
- * Events for the splitter panel component.
+ * Events for the SplitterPanel component.
  */
 export type SplitterPanelEmits = {
   /**
@@ -85,7 +85,7 @@ export type SplitterPanelEmits = {
 };
 
 /**
- * Properties for the splitter resize handle component.
+ * Properties for the SplitterResizeHandle component.
  */
 export interface SplitterResizeHandleProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {
   /**
@@ -99,7 +99,7 @@ export interface SplitterResizeHandleProps extends PrimitiveProps, /** @vue-igno
 }
 
 /**
- * Events for the splitter resize handle component.
+ * Events for the SplitterResizeHandle component.
  */
 export type SplitterResizeHandleEmits = {
   /**
@@ -109,7 +109,7 @@ export type SplitterResizeHandleEmits = {
 };
 
 /**
- * Type information for the splitter panel record component.
+ * Type information for SplitterPanelRecord.
  */
 export interface SplitterPanelRecord {
   /**
@@ -159,12 +159,12 @@ export interface SplitterPanelRecord {
 }
 
 /**
- * Type information for the splitter panel registration component.
+ * Type information for SplitterPanelRegistration.
  */
 export type SplitterPanelRegistration = Omit<SplitterPanelRecord, 'registrationIndex'>;
 
 /**
- * Context for the splitter group component.
+ * Context for the SplitterGroup component.
  */
 export interface SplitterGroupContext extends PropsToContext<
   SplitterGroupProps,
@@ -237,11 +237,11 @@ export interface SplitterGroupContext extends PropsToContext<
 }
 
 /**
- * Available UI slots for the splitter component.
+ * Available UI slots for the Splitter component.
  */
 export type SplitterUiSlot = 'root' | 'panel' | 'resizeHandle';
 
 /**
- * UI class overrides for the splitter component.
+ * UI class overrides for the Splitter component.
  */
 export type SplitterUi = UiClass<SplitterUiSlot>;

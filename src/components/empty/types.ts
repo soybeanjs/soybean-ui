@@ -3,7 +3,7 @@ import type { ClassValue } from '@soybeanjs/headless/types';
 import type { ThemeSize } from '@/theme';
 
 /**
- * Properties for the empty component.
+ * Properties for the Empty component.
  */
 export interface EmptyProps extends EmptyCompactProps {
   /**
@@ -21,6 +21,6 @@ export interface EmptyProps extends EmptyCompactProps {
 }
 
 /**
- * Slots for the empty component.
+ * Slots for the Empty component.
  */
 export type EmptySlots = EmptyCompactSlots;

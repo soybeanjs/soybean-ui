@@ -4,7 +4,7 @@ import type { ThemeColor, ThemeSize } from '@/theme';
 import type { TagShape, TagVariant } from './variants';
 
 /**
- * Properties for the tag component.
+ * Properties for the Tag component.
  */
 export interface TagProps extends _TagProps {
   /**

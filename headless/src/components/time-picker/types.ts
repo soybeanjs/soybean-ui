@@ -5,7 +5,7 @@ import type { TimePickerOption } from '../../shared/time-picker';
 import type { PrimitiveProps } from '../primitive/types';
 
 /**
- * Properties for the time picker root component.
+ * Properties for the TimePickerRoot component.
  */
 export interface TimePickerRootProps
   extends PrimitiveProps, FormFieldCommonProps, /** @vue-ignore */ Omit<HTMLAttributes, 'placeholder'> {
@@ -88,7 +88,7 @@ export interface TimePickerRootProps
 }
 
 /**
- * Events for the time picker root component.
+ * Events for the TimePickerRoot component.
  */
 export type TimePickerRootEmits = {
   /**
@@ -106,16 +106,16 @@ export type TimePickerRootEmits = {
 };
 
 /**
- * Properties for the time picker trigger component.
+ * Properties for the TimePickerTrigger component.
  */
 export interface TimePickerTriggerProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {}
 /**
- * Properties for the time picker popup component.
+ * Properties for the TimePickerPopup component.
  */
 export interface TimePickerPopupProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Context for the time picker root component.
+ * Context for the TimePickerRoot component.
  */
 export interface TimePickerRootContext extends PropsToContext<TimePickerRootProps, 'disabled' | 'readonly'> {
   /**
@@ -213,10 +213,10 @@ export interface TimePickerRootContext extends PropsToContext<TimePickerRootProp
 }
 
 /**
- * Available UI slots for the time picker component.
+ * Available UI slots for the TimePicker component.
  */
 export type TimePickerUiSlot = 'root' | 'trigger' | 'popup' | 'list' | 'cellTrigger';
 /**
- * UI class overrides for the time picker component.
+ * UI class overrides for the TimePicker component.
  */
 export type TimePickerUi = UiClass<TimePickerUiSlot>;

@@ -3,7 +3,7 @@ import type { PrimitiveProps } from '../primitive/types';
 import type { PropsToContext, UiClass } from '../../types';
 
 /**
- * Properties for the page tabs root component.
+ * Properties for the PageTabsRoot component.
  */
 export interface PageTabsRootProps extends /** @vue-ignore */ HTMLAttributes {
   /**
@@ -17,7 +17,7 @@ export interface PageTabsRootProps extends /** @vue-ignore */ HTMLAttributes {
 }
 
 /**
- * Events for the page tabs root component.
+ * Events for the PageTabsRoot component.
  */
 export type PageTabsRootEmits = {
   /**
@@ -27,7 +27,7 @@ export type PageTabsRootEmits = {
 };
 
 /**
- * Properties for the page tabs item component.
+ * Properties for the PageTabsItem component.
  */
 export interface PageTabsItemProps extends /** @vue-ignore */ Omit<HTMLAttributes, 'onClick'> {
   /**
@@ -41,7 +41,7 @@ export interface PageTabsItemProps extends /** @vue-ignore */ Omit<HTMLAttribute
 }
 
 /**
- * Events for the page tabs item component.
+ * Events for the PageTabsItem component.
  */
 export type PageTabsItemEmits = {
   /**
@@ -59,17 +59,17 @@ export type PageTabsItemEmits = {
 };
 
 /**
- * Properties for the page tabs close component.
+ * Properties for the PageTabsClose component.
  */
 export interface PageTabsCloseProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Properties for the page tabs pin component.
+ * Properties for the PageTabsPin component.
  */
 export interface PageTabsPinProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Context for the page tabs root component.
+ * Context for the PageTabsRoot component.
  */
 export interface PageTabsRootContext extends PropsToContext<PageTabsRootProps, 'middleClickClose'> {
   /**
@@ -79,7 +79,7 @@ export interface PageTabsRootContext extends PropsToContext<PageTabsRootProps, '
 }
 
 /**
- * Context for the page tabs item component.
+ * Context for the PageTabsItem component.
  */
 export interface PageTabsItemContext extends PropsToContext<PageTabsItemProps, 'pinned'> {
   /**
@@ -97,11 +97,11 @@ export interface PageTabsItemContext extends PropsToContext<PageTabsItemProps, '
 }
 
 /**
- * Available UI slots for the page tabs component.
+ * Available UI slots for the PageTabs component.
  */
 export type PageTabsUiSlot = 'root' | 'item' | 'close' | 'pin';
 
 /**
- * UI class overrides for the page tabs component.
+ * UI class overrides for the PageTabs component.
  */
 export type PageTabsUi = UiClass<PageTabsUiSlot>;

@@ -16,7 +16,7 @@ import type { ClassValue } from '@soybeanjs/headless/types';
 import type { ThemeSize } from '@/theme';
 
 /**
- * Properties for the layout component.
+ * Properties for the Layout component.
  */
 export interface LayoutProps extends LayoutCompactProps {
   /**
@@ -34,17 +34,17 @@ export interface LayoutProps extends LayoutCompactProps {
 }
 
 /**
- * Events for the layout component.
+ * Events for the Layout component.
  */
 export type LayoutEmits = LayoutCompactEmits;
 
 /**
- * Slots for the layout component.
+ * Slots for the Layout component.
  */
 export type LayoutSlots = LayoutCompactSlots;
 
 /**
- * Properties for the layout classic component.
+ * Properties for the LayoutClassic component.
  */
 export interface LayoutClassicProps extends LayoutClassicCompactProps {
   /**
@@ -62,12 +62,12 @@ export interface LayoutClassicProps extends LayoutClassicCompactProps {
 }
 
 /**
- * Events for the layout classic component.
+ * Events for the LayoutClassic component.
  */
 export type LayoutClassicEmits = LayoutClassicCompactEmits;
 
 /**
- * Slots for the layout classic component.
+ * Slots for the LayoutClassic component.
  */
 export type LayoutClassicSlots = LayoutClassicCompactSlots;
 

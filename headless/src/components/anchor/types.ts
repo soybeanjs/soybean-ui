@@ -4,17 +4,17 @@ import type { LinkBaseProps } from '../link/types';
 import type { DataOrientation, Direction, PropsToContext, UiClass } from '../../types';
 
 /**
- * Type information for the anchor container component.
+ * Type information for AnchorContainer.
  */
 export type AnchorContainer = HTMLElement | Window;
 
 /**
- * Type information for the anchor history mode component.
+ * Type information for AnchorHistoryMode.
  */
 export type AnchorHistoryMode = 'push' | 'replace';
 
 /**
- * Type information for the anchor section component.
+ * Type information for AnchorSection.
  */
 export interface AnchorSection {
   /**
@@ -28,7 +28,7 @@ export interface AnchorSection {
 }
 
 /**
- * Properties for the anchor root component.
+ * Properties for the AnchorRoot component.
  */
 export interface AnchorRootProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {
   /**
@@ -70,7 +70,7 @@ export interface AnchorRootProps extends PrimitiveProps, /** @vue-ignore */ HTML
 }
 
 /**
- * Events for the anchor root component.
+ * Events for the AnchorRoot component.
  */
 export type AnchorRootEmits = {
   /**
@@ -102,7 +102,7 @@ export interface AnchorLinkProps extends PrimitiveProps, LinkBaseProps, /** @vue
 }
 
 /**
- * Option data for the anchor component.
+ * Option data for the Anchor component.
  */
 export interface AnchorOptionData extends Pick<AnchorLinkProps, 'disabled' | 'href' | 'target'> {
   /**
@@ -116,7 +116,7 @@ export interface AnchorOptionData extends Pick<AnchorLinkProps, 'disabled' | 'hr
 }
 
 /**
- * Properties for the anchor item compact component.
+ * Properties for the AnchorItemCompact component.
  */
 export interface AnchorItemCompactProps extends /** @vue-ignore */ HTMLAttributes {
   /**
@@ -146,7 +146,7 @@ export interface AnchorItemCompactProps extends /** @vue-ignore */ HTMLAttribute
 }
 
 /**
- * Properties for the anchor compact component.
+ * Properties for the AnchorCompact component.
  */
 export interface AnchorCompactProps extends AnchorRootProps {
   /**
@@ -172,12 +172,12 @@ export interface AnchorCompactProps extends AnchorRootProps {
 }
 
 /**
- * Events for the anchor compact component.
+ * Events for the AnchorCompact component.
  */
 export type AnchorCompactEmits = AnchorRootEmits;
 
 /**
- * Parameters used to create the anchor root context.
+ * Parameters used to create the AnchorRoot context.
  */
 export interface AnchorRootContextParams extends PropsToContext<AnchorRootProps, 'dir'> {
   /**
@@ -203,11 +203,11 @@ export interface AnchorRootContextParams extends PropsToContext<AnchorRootProps,
 }
 
 /**
- * Available UI slots for the anchor component.
+ * Available UI slots for the Anchor component.
  */
 export type AnchorUiSlot = 'root' | 'link' | 'sub' | 'item' | 'indicator' | 'title';
 
 /**
- * UI class overrides for the anchor component.
+ * UI class overrides for the Anchor component.
  */
 export type AnchorUi = UiClass<AnchorUiSlot>;

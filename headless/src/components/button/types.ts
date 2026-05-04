@@ -7,7 +7,7 @@ import type { PrimitiveProps } from '../primitive/types';
 export type ButtonType = 'button' | 'submit' | 'reset';
 
 /**
- * Properties for the button component.
+ * Properties for the Button component.
  */
 export interface ButtonProps extends PrimitiveProps, /** @vue-ignore */ ButtonHTMLAttributes {
   /**
@@ -22,7 +22,7 @@ export interface ButtonProps extends PrimitiveProps, /** @vue-ignore */ ButtonHT
 }
 
 /**
- * Events for the button component.
+ * Events for the Button component.
  */
 export type ButtonEmits = {
   /**

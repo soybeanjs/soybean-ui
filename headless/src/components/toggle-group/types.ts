@@ -13,7 +13,7 @@ import type { PrimitiveProps } from '../primitive/types';
 import type { ButtonProps } from '../button/types';
 
 /**
- * Properties for the toggle group root component.
+ * Properties for the ToggleGroupRoot component.
  */
 export interface ToggleGroupRootProps<M extends boolean = false, T extends DefinedValue = string>
   extends SelectionProps<M, T>, FormFieldCommonProps, PrimitiveProps, /** @vue-ignore */ HTMLAttributes {
@@ -30,12 +30,12 @@ export interface ToggleGroupRootProps<M extends boolean = false, T extends Defin
 }
 
 /**
- * Events for the toggle group root component.
+ * Events for the ToggleGroupRoot component.
  */
 export type ToggleGroupRootEmits<M extends boolean = false, T extends DefinedValue = string> = SelectionEmits<M, T>;
 
 /**
- * Parameters used to create the toggle group root context.
+ * Parameters used to create the ToggleGroupRoot context.
  */
 export type ToggleGroupRootContextParams = PropsToContext<
   ToggleGroupRootProps<boolean, DefinedValue>,
@@ -60,7 +60,7 @@ export type ToggleGroupRootContextParams = PropsToContext<
 };
 
 /**
- * Properties for the toggle group item component.
+ * Properties for the ToggleGroupItem component.
  */
 export interface ToggleGroupItemProps<T extends DefinedValue = string> extends ButtonProps {
   /** A unique value that identifies the item inside the group. */
@@ -70,11 +70,11 @@ export interface ToggleGroupItemProps<T extends DefinedValue = string> extends B
 }
 
 /**
- * Available UI slots for the toggle group component.
+ * Available UI slots for the ToggleGroup component.
  */
 export type ToggleGroupUiSlot = 'root' | 'item';
 
 /**
- * UI class overrides for the toggle group component.
+ * UI class overrides for the ToggleGroup component.
  */
 export type ToggleGroupUi = UiClass<ToggleGroupUiSlot>;

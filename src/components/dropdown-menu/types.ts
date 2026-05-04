@@ -15,64 +15,64 @@ import type { AcceptableBooleanValue, DefinedValue } from '@soybeanjs/headless/t
 import type { MenuUiBaseProps } from '../menu/types';
 
 /**
- * Properties for the dropdown menu wrapper component.
+ * Properties for the DropdownMenuWrapper component.
  */
 export interface DropdownMenuWrapperProps extends MenuUiBaseProps, DropdownMenuWrapperCompactProps {}
 
 /**
- * Events for the dropdown menu wrapper component.
+ * Events for the DropdownMenuWrapper component.
  */
 export type DropdownMenuWrapperEmits = DropdownMenuWrapperCompactEmits;
 
 // Menu
 /**
- * Properties for the dropdown menu component.
+ * Properties for the DropdownMenu component.
  */
 export type DropdownMenuProps<T extends DefinedValue = DefinedValue> = Omit<MenuUiBaseProps, 'indicatorPosition'> &
   DropdownMenuCompactProps<T>;
 
 /**
- * Events for the dropdown menu component.
+ * Events for the DropdownMenu component.
  */
 export type DropdownMenuEmits<T extends DefinedValue = DefinedValue> = DropdownMenuCompactEmits<T>;
 
 /**
- * Slots for the dropdown menu component.
+ * Slots for the DropdownMenu component.
  */
 export type DropdownMenuSlots<T extends DefinedValue = DefinedValue> = DropdownMenuCompactSlots<T>;
 
 // Menu Checkbox
 /**
- * Properties for the dropdown menu checkbox component.
+ * Properties for the DropdownMenuCheckbox component.
  */
 export type DropdownMenuCheckboxProps<T extends DefinedValue = DefinedValue> = MenuUiBaseProps &
   DropdownMenuCheckboxCompactProps<T>;
 
 /**
- * Events for the dropdown menu checkbox component.
+ * Events for the DropdownMenuCheckbox component.
  */
 export type DropdownMenuCheckboxEmits<T extends DefinedValue = DefinedValue> = DropdownMenuCheckboxCompactEmits<T>;
 
 /**
- * Slots for the dropdown menu checkbox component.
+ * Slots for the DropdownMenuCheckbox component.
  */
 export type DropdownMenuCheckboxSlots<T extends DefinedValue = DefinedValue> = DropdownMenuCheckboxCompactSlots<T>;
 
 // Menu Radio
 /**
- * Properties for the dropdown menu radio component.
+ * Properties for the DropdownMenuRadio component.
  */
 export type DropdownMenuRadioProps<T extends AcceptableBooleanValue = AcceptableBooleanValue> = MenuUiBaseProps &
   DropdownMenuRadioCompactProps<T>;
 
 /**
- * Events for the dropdown menu radio component.
+ * Events for the DropdownMenuRadio component.
  */
 export type DropdownMenuRadioEmits<T extends AcceptableBooleanValue = AcceptableBooleanValue> =
   DropdownMenuRadioCompactEmits<T>;
 
 /**
- * Slots for the dropdown menu radio component.
+ * Slots for the DropdownMenuRadio component.
  */
 export type DropdownMenuRadioSlots<T extends AcceptableBooleanValue = AcceptableBooleanValue> =
   DropdownMenuRadioCompactSlots<T>;

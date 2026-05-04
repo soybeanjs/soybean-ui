@@ -21,7 +21,7 @@ interface IconifyOptions {
 }
 
 /**
- * Properties for the config provider component.
+ * Properties for the ConfigProvider component.
  */
 export interface ConfigProviderProps extends _ConfigProviderProps {
   /** The theme options. */
@@ -43,7 +43,7 @@ export interface ConfigProviderProps extends _ConfigProviderProps {
 }
 
 /**
- * Context for the config provider component.
+ * Context for the ConfigProvider component.
  */
 export interface ConfigProviderContext
   extends PropsToContext<Omit<ConfigProviderProps, 'iconRender'>>, Pick<ConfigProviderProps, 'iconRender'> {}

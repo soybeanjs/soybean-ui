@@ -19,12 +19,12 @@ import type { ThemeSize } from '@/theme';
 export type EditableExtraUiSlot = 'controls';
 
 /**
- * Extended UI class overrides for the editable component.
+ * Extended UI class overrides for the Editable component.
  */
 export type EditableExtendedUi = UiClass<EditableUiSlot | EditableExtraUiSlot>;
 
 /**
- * Properties for the editable component.
+ * Properties for the Editable component.
  */
 export interface EditableProps extends EditableRootProps {
   /**
@@ -66,7 +66,7 @@ export interface EditableProps extends EditableRootProps {
 }
 
 /**
- * Events for the editable component.
+ * Events for the Editable component.
  */
 export type EditableEmits = EditableRootEmits;
 

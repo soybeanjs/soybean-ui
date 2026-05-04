@@ -3,7 +3,7 @@ import type { ClassValue, AlignSide } from '@soybeanjs/headless/types';
 import type { ThemeSize } from '@/theme';
 
 /**
- * Properties for the menu ui base component.
+ * Properties for the MenuUiBase component.
  */
 export interface MenuUiBaseProps {
   /**

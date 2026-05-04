@@ -4,7 +4,7 @@ import type { FormFieldCommonProps } from '../../types';
 import type { PrimitiveProps } from '../primitive/types';
 
 /**
- * Properties for the color picker root component.
+ * Properties for the ColorPickerRoot component.
  */
 export interface ColorPickerRootProps extends PrimitiveProps, FormFieldCommonProps, /** @vue-ignore */ HTMLAttributes {
   /**
@@ -26,7 +26,7 @@ export interface ColorPickerRootProps extends PrimitiveProps, FormFieldCommonPro
 }
 
 /**
- * Events for the color picker root component.
+ * Events for the ColorPickerRoot component.
  */
 export type ColorPickerRootEmits = {
   /**
@@ -44,7 +44,7 @@ export type ColorPickerRootEmits = {
 };
 
 /**
- * Slot properties for the color picker root component.
+ * Slot properties for the ColorPickerRoot component.
  */
 export interface ColorPickerRootSlotProps {
   /**

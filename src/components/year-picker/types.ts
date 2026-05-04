@@ -11,7 +11,7 @@ import type {
 import type { ThemeSize } from '@/theme';
 
 /**
- * Properties for the year picker component.
+ * Properties for the YearPicker component.
  */
 export interface YearPickerProps extends /** @vue-ignore */ YearPickerRootProps {
   /**
@@ -37,12 +37,12 @@ export interface YearPickerProps extends /** @vue-ignore */ YearPickerRootProps 
 }
 
 /**
- * Events for the year picker component.
+ * Events for the YearPicker component.
  */
 export type YearPickerEmits = YearPickerRootEmits;
 
 /**
- * Slots for the year picker component.
+ * Slots for the YearPicker component.
  */
 export interface YearPickerSlots {
   /**

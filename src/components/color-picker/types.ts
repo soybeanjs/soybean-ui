@@ -10,7 +10,7 @@ import type { ButtonProps } from '../button/types';
 import type { PopoverProps } from '../popover/types';
 
 /**
- * Available UI slots for the color picker component.
+ * Available UI slots for the ColorPicker component.
  */
 export type ColorPickerUiSlot =
   | 'popup'
@@ -30,12 +30,12 @@ export type ColorPickerUiSlot =
   | 'swatches';
 
 /**
- * UI class overrides for the color picker component.
+ * UI class overrides for the ColorPicker component.
  */
 export type ColorPickerUi = UiClass<ColorPickerUiSlot>;
 
 /**
- * Properties for the color picker component.
+ * Properties for the ColorPicker component.
  */
 export interface ColorPickerProps extends Pick<
   PopoverProps,
@@ -165,7 +165,7 @@ export interface ColorPickerProps extends Pick<
 }
 
 /**
- * Events for the color picker component.
+ * Events for the ColorPicker component.
  */
 export type ColorPickerEmits = {
   /**

@@ -5,7 +5,7 @@ import type { TimePickerOption } from '../../shared/time-picker';
 import type { PrimitiveProps } from '../primitive/types';
 
 /**
- * Properties for the time range picker root component.
+ * Properties for the TimeRangePickerRoot component.
  */
 export interface TimeRangePickerRootProps
   extends PrimitiveProps, FormFieldCommonProps, /** @vue-ignore */ Omit<HTMLAttributes, 'placeholder'> {
@@ -88,7 +88,7 @@ export interface TimeRangePickerRootProps
 }
 
 /**
- * Events for the time range picker root component.
+ * Events for the TimeRangePickerRoot component.
  */
 export type TimeRangePickerRootEmits = {
   /**
@@ -114,16 +114,16 @@ export type TimeRangePickerRootEmits = {
 };
 
 /**
- * Properties for the time range picker trigger component.
+ * Properties for the TimeRangePickerTrigger component.
  */
 export interface TimeRangePickerTriggerProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {}
 /**
- * Properties for the time range picker popup component.
+ * Properties for the TimeRangePickerPopup component.
  */
 export interface TimeRangePickerPopupProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Context for the time range picker root component.
+ * Context for the TimeRangePickerRoot component.
  */
 export interface TimeRangePickerRootContext extends PropsToContext<TimeRangePickerRootProps, 'disabled' | 'readonly'> {
   /**
@@ -241,16 +241,16 @@ export interface TimeRangePickerRootContext extends PropsToContext<TimeRangePick
 }
 
 /**
- * Available UI slots for the time range picker component.
+ * Available UI slots for the TimeRangePicker component.
  */
 export type TimeRangePickerUiSlot = 'root' | 'trigger' | 'popup' | 'list' | 'cellTrigger';
 /**
- * UI class overrides for the time range picker component.
+ * UI class overrides for the TimeRangePicker component.
  */
 export type TimeRangePickerUi = UiClass<TimeRangePickerUiSlot>;
 
 /**
- * Properties for the time range picker compact component.
+ * Properties for the TimeRangePickerCompact component.
  */
 export interface TimeRangePickerCompactProps extends TimeRangePickerRootProps {
   /**
@@ -264,12 +264,12 @@ export interface TimeRangePickerCompactProps extends TimeRangePickerRootProps {
 }
 
 /**
- * Events for the time range picker compact component.
+ * Events for the TimeRangePickerCompact component.
  */
 export type TimeRangePickerCompactEmits = TimeRangePickerRootEmits;
 
 /**
- * Slots for the time range picker compact component.
+ * Slots for the TimeRangePickerCompact component.
  */
 export type TimeRangePickerCompactSlots = {
   /**

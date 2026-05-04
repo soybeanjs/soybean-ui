@@ -2,17 +2,17 @@ import type { ComputedRef, HTMLAttributes, ShallowRef } from 'vue';
 import type { UiClass } from '../../types';
 
 /**
- * Type information for the affix target component.
+ * Type information for AffixTarget.
  */
 export type AffixTarget = string | Window | HTMLElement | (() => HTMLElement);
 
 /**
- * State values for the affix component.
+ * State values for AffixState.
  */
 export type AffixState = 'fixed' | 'static';
 
 /**
- * Properties for the affix root component.
+ * Properties for the AffixRoot component.
  */
 export interface AffixRootProps extends /** @vue-ignore */ Omit<HTMLAttributes, 'onChange'> {
   /**
@@ -34,7 +34,7 @@ export interface AffixRootProps extends /** @vue-ignore */ Omit<HTMLAttributes, 
 }
 
 /**
- * Events for the affix root component.
+ * Events for the AffixRoot component.
  */
 export type AffixRootEmits = {
   /**
@@ -44,17 +44,17 @@ export type AffixRootEmits = {
 };
 
 /**
- * Properties for the affix placeholder component.
+ * Properties for the AffixPlaceholder component.
  */
 export interface AffixPlaceholderProps extends /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Properties for the affix content component.
+ * Properties for the AffixContent component.
  */
 export interface AffixContentProps extends /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Properties for the affix compact component.
+ * Properties for the AffixCompact component.
  */
 export interface AffixCompactProps extends AffixRootProps {
   /**
@@ -68,12 +68,12 @@ export interface AffixCompactProps extends AffixRootProps {
 }
 
 /**
- * Events for the affix compact component.
+ * Events for the AffixCompact component.
  */
 export type AffixCompactEmits = AffixRootEmits;
 
 /**
- * Context for the affix root component.
+ * Context for the AffixRoot component.
  */
 export interface AffixRootContext {
   /**
@@ -99,11 +99,11 @@ export interface AffixRootContext {
 }
 
 /**
- * Available UI slots for the affix component.
+ * Available UI slots for the Affix component.
  */
 export type AffixUiSlot = 'root' | 'placeholder' | 'content';
 
 /**
- * UI class overrides for the affix component.
+ * UI class overrides for the Affix component.
  */
 export type AffixUi = UiClass<AffixUiSlot>;

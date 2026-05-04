@@ -8,7 +8,7 @@ import type { ThemeColor, ThemeSize } from '@/theme';
 import type { ClipboardShape, ClipboardVariant } from './variants';
 
 /**
- * Properties for the clipboard component.
+ * Properties for the Clipboard component.
  */
 export interface ClipboardProps extends _ClipboardProps {
   /**

@@ -50,12 +50,12 @@ export interface FormFieldExtraProps {
 }
 
 /**
- * Properties for the FormField component
+ * Properties for the FormField component.
  */
 export interface FormFieldProps extends FormFieldCompactProps<any, any>, FormFieldExtraProps {}
 
 /**
- * Slots for the FormField component
+ * Slots for the FormField component.
  */
 export type FormFieldSlots = FormFieldCompactSlots<any, any>;
 
@@ -65,7 +65,7 @@ export type FormFieldSlots = FormFieldCompactSlots<any, any>;
 export interface FormFieldArrayProps extends FormFieldCompactProps<any, any>, FormFieldExtraProps {}
 
 /**
- * Slots for the FormFieldArray component
+ * Slots for the FormFieldArray component.
  */
 export type FormFieldArraySlots = FormFieldArrayCompactSlots<any, any>;
 

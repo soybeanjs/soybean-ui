@@ -20,7 +20,7 @@ import type { ClassValue } from '@soybeanjs/headless/types';
 import type { ThemeSize } from '@/theme';
 
 /**
- * Properties for the range calendar component.
+ * Properties for the RangeCalendar component.
  */
 export interface RangeCalendarProps extends RangeCalendarRootProps {
   /**
@@ -82,12 +82,12 @@ export interface RangeCalendarProps extends RangeCalendarRootProps {
 }
 
 /**
- * Events for the range calendar component.
+ * Events for the RangeCalendar component.
  */
 export type RangeCalendarEmits = RangeCalendarRootEmits;
 
 /**
- * Slot properties for the range calendar head cell component.
+ * Slot properties for the RangeCalendarHeadCell component.
  */
 export interface RangeCalendarHeadCellSlotProps {
   /**
@@ -105,7 +105,7 @@ export interface RangeCalendarHeadCellSlotProps {
 }
 
 /**
- * Slot properties for the range calendar day component.
+ * Slot properties for the RangeCalendarDay component.
  */
 export interface RangeCalendarDaySlotProps {
   /**
@@ -167,7 +167,7 @@ export interface RangeCalendarDaySlotProps {
 }
 
 /**
- * Slots for the range calendar component.
+ * Slots for the RangeCalendar component.
  */
 export type RangeCalendarSlots = {
   /**

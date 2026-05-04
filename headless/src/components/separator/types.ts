@@ -2,12 +2,12 @@ import type { HTMLAttributes } from 'vue';
 import type { DataOrientation, UiClass } from '../../types';
 
 /**
- * Properties for the separator label component.
+ * Properties for the SeparatorLabel component.
  */
 export interface SeparatorLabelProps extends /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Properties for the separator root component.
+ * Properties for the SeparatorRoot component.
  */
 export interface SeparatorRootProps extends /** @vue-ignore */ HTMLAttributes {
   /**
@@ -24,11 +24,11 @@ export interface SeparatorRootProps extends /** @vue-ignore */ HTMLAttributes {
 }
 
 /**
- * Available UI slots for the separator component.
+ * Available UI slots for the Separator component.
  */
 export type SeparatorUiSlot = 'root' | 'label';
 
 /**
- * UI class overrides for the separator component.
+ * UI class overrides for the Separator component.
  */
 export type SeparatorUi = UiClass<SeparatorUiSlot>;

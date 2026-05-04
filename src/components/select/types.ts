@@ -3,7 +3,7 @@ import type { ClassValue, DefinedValue } from '@soybeanjs/headless/types';
 import type { ThemeSize } from '@/theme';
 
 /**
- * Properties for the select component.
+ * Properties for the Select component.
  */
 export interface SelectProps<
   T extends DefinedValue = DefinedValue,
@@ -24,12 +24,12 @@ export interface SelectProps<
 }
 
 /**
- * Events for the select component.
+ * Events for the Select component.
  */
 export type SelectEmits<T extends DefinedValue = DefinedValue, M extends boolean = false> = SelectCompactEmits<T, M>;
 
 /**
- * Slots for the select component.
+ * Slots for the Select component.
  */
 export type SelectSlots<T extends DefinedValue = DefinedValue, M extends boolean = false> = SelectCompactSlots<T, M>;
 

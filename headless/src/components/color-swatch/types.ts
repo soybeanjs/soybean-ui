@@ -3,7 +3,7 @@ import type { ColorValue } from '../../shared';
 import type { PrimitiveProps } from '../primitive/types';
 
 /**
- * Properties for the color swatch component.
+ * Properties for the ColorSwatch component.
  */
 export interface ColorSwatchProps extends PrimitiveProps, /** @vue-ignore */ Omit<HTMLAttributes, 'color'> {
   /**

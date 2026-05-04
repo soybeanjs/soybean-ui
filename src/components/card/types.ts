@@ -3,7 +3,7 @@ import type { ClassValue } from '@soybeanjs/headless/types';
 import type { ThemeSize } from '@/theme';
 
 /**
- * Properties for the card component.
+ * Properties for the Card component.
  */
 export interface CardProps extends CardCompactProps {
   /**

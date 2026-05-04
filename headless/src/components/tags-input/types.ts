@@ -4,12 +4,12 @@ import type { Direction, FormFieldCommonProps, PropsToContext, UiClass } from '.
 import type { PrimitiveProps } from '../primitive/types';
 
 /**
- * Type information for the tags input acceptable value component.
+ * Type information for TagsInputAcceptableValue.
  */
 export type TagsInputAcceptableValue = string | number | bigint | Record<string, unknown>;
 
 /**
- * Properties for the tags input root component.
+ * Properties for the TagsInputRoot component.
  */
 export interface TagsInputRootProps<T = TagsInputAcceptableValue>
   extends FormFieldCommonProps, /** @vue-ignore */ HTMLAttributes {
@@ -42,7 +42,7 @@ export interface TagsInputRootProps<T = TagsInputAcceptableValue>
 }
 
 /**
- * Events for the tags input root component.
+ * Events for the TagsInputRoot component.
  */
 export type TagsInputRootEmits<T = TagsInputAcceptableValue> = {
   /**
@@ -64,7 +64,7 @@ export type TagsInputRootEmits<T = TagsInputAcceptableValue> = {
 };
 
 /**
- * Properties for the tags input input component.
+ * Properties for the TagsInputInput component.
  */
 export interface TagsInputInputProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {
   /**
@@ -98,7 +98,7 @@ export interface TagsInputInputProps extends PrimitiveProps, /** @vue-ignore */ 
 }
 
 /**
- * Properties for the tags input item component.
+ * Properties for the TagsInputItem component.
  */
 export interface TagsInputItemProps<T = TagsInputAcceptableValue>
   extends PrimitiveProps, /** @vue-ignore */ Omit<HTMLAttributes, 'value'> {
@@ -109,22 +109,22 @@ export interface TagsInputItemProps<T = TagsInputAcceptableValue>
 }
 
 /**
- * Properties for the tags input item text component.
+ * Properties for the TagsInputItemText component.
  */
 export interface TagsInputItemTextProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Properties for the tags input item delete component.
+ * Properties for the TagsInputItemDelete component.
  */
 export interface TagsInputItemDeleteProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Properties for the tags input clear component.
+ * Properties for the TagsInputClear component.
  */
 export interface TagsInputClearProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Type information for the tags input collection item data component.
+ * Type information for TagsInputCollectionItemData.
  */
 export type TagsInputCollectionItemData = {
   /**
@@ -134,7 +134,7 @@ export type TagsInputCollectionItemData = {
 };
 
 /**
- * Context for the tags input root component.
+ * Context for the TagsInputRoot component.
  */
 export interface TagsInputRootContext extends PropsToContext<
   TagsInputRootProps,
@@ -183,7 +183,7 @@ export interface TagsInputRootContext extends PropsToContext<
 }
 
 /**
- * Context for the tags input item component.
+ * Context for the TagsInputItem component.
  */
 export interface TagsInputItemContext {
   /**
@@ -213,11 +213,11 @@ export interface TagsInputItemContext {
 }
 
 /**
- * Available UI slots for the tags input component.
+ * Available UI slots for the TagsInput component.
  */
 export type TagsInputUiSlot = 'root' | 'item' | 'itemText' | 'itemDelete' | 'input' | 'clear';
 
 /**
- * UI class overrides for the tags input component.
+ * UI class overrides for the TagsInput component.
  */
 export type TagsInputUi = UiClass<TagsInputUiSlot>;

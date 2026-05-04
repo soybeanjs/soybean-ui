@@ -3,12 +3,12 @@ import type { Direction, UiClass } from '../../types';
 import type { PrimitiveProps } from '../primitive/types';
 
 /**
- * State values for the progress component.
+ * State values for ProgressState.
  */
 export type ProgressState = 'indeterminate' | 'loading' | 'complete';
 
 /**
- * Properties for the progress root component.
+ * Properties for the ProgressRoot component.
  */
 export interface ProgressRootProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {
   /**
@@ -26,7 +26,7 @@ export interface ProgressRootProps extends PrimitiveProps, /** @vue-ignore */ HT
 }
 
 /**
- * Events for the progress root component.
+ * Events for the ProgressRoot component.
  */
 export type ProgressRootEmits = {
   /**
@@ -40,12 +40,12 @@ export type ProgressRootEmits = {
 };
 
 /**
- * Properties for the progress indicator component.
+ * Properties for the ProgressIndicator component.
  */
 export interface ProgressIndicatorProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Properties for the progress circle component.
+ * Properties for the ProgressCircle component.
  */
 export interface ProgressCircleProps extends /** @vue-ignore */ SVGAttributes {
   /**
@@ -55,12 +55,12 @@ export interface ProgressCircleProps extends /** @vue-ignore */ SVGAttributes {
 }
 
 /**
- * Properties for the progress provider component.
+ * Properties for the ProgressProvider component.
  */
 export interface ProgressProviderProps extends ProgressOptions {}
 
 /**
- * Context for the progress root component.
+ * Context for the ProgressRoot component.
  */
 export interface ProgressRootContext {
   /**
@@ -86,27 +86,27 @@ export interface ProgressRootContext {
 }
 
 /**
- * Available UI slots for the progress component.
+ * Available UI slots for the Progress component.
  */
 export type ProgressUiSlot = 'root' | 'indicator' | 'circle' | 'track' | 'label';
 
 /**
- * UI class overrides for the progress component.
+ * UI class overrides for the Progress component.
  */
 export type ProgressUi = UiClass<ProgressUiSlot>;
 
 /**
- * Available UI slots for the progress component.
+ * Available UI slots for the ProgressProvider component.
  */
 export type ProgressProviderUiSlot = 'root' | 'indicator';
 
 /**
- * UI class overrides for the progress component.
+ * UI class overrides for the ProgressProvider component.
  */
 export type ProgressProviderUi = UiClass<ProgressProviderUiSlot>;
 
 /**
- * Type information for the progress options component.
+ * Type information for ProgressOptions.
  */
 export interface ProgressOptions {
   /**

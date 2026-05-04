@@ -13,7 +13,7 @@ export type CalendarModelValue<M extends boolean = false> = M extends true
   : DateValue | undefined;
 
 /**
- * Properties for the calendar root component.
+ * Properties for the CalendarRoot component.
  */
 export interface CalendarRootProps<M extends boolean = false>
   extends PrimitiveProps, /** @vue-ignore */ Omit<HTMLAttributes, 'placeholder'> {
@@ -116,7 +116,7 @@ export interface CalendarRootProps<M extends boolean = false>
 }
 
 /**
- * Events for the calendar root component.
+ * Events for the CalendarRoot component.
  */
 export type CalendarRootEmits<M extends boolean = false> = {
   /**
@@ -130,36 +130,36 @@ export type CalendarRootEmits<M extends boolean = false> = {
 };
 
 /**
- * Properties for the calendar header component.
+ * Properties for the CalendarHeader component.
  */
 export interface CalendarHeaderProps extends PrimitiveProps, /** @vue-ignore */ Omit<HTMLAttributes, 'placeholder'> {}
 /**
- * Properties for the calendar heading component.
+ * Properties for the CalendarHeading component.
  */
 export interface CalendarHeadingProps extends PrimitiveProps, /** @vue-ignore */ Omit<HTMLAttributes, 'placeholder'> {}
 /**
- * Properties for the calendar grid component.
+ * Properties for the CalendarGrid component.
  */
 export interface CalendarGridProps extends PrimitiveProps, /** @vue-ignore */ Omit<HTMLAttributes, 'placeholder'> {}
 /**
- * Properties for the calendar grid head component.
+ * Properties for the CalendarGridHead component.
  */
 export interface CalendarGridHeadProps extends PrimitiveProps, /** @vue-ignore */ Omit<HTMLAttributes, 'placeholder'> {}
 /**
- * Properties for the calendar grid body component.
+ * Properties for the CalendarGridBody component.
  */
 export interface CalendarGridBodyProps extends PrimitiveProps, /** @vue-ignore */ Omit<HTMLAttributes, 'placeholder'> {}
 /**
- * Properties for the calendar grid row component.
+ * Properties for the CalendarGridRow component.
  */
 export interface CalendarGridRowProps extends PrimitiveProps, /** @vue-ignore */ Omit<HTMLAttributes, 'placeholder'> {}
 /**
- * Properties for the calendar head cell component.
+ * Properties for the CalendarHeadCell component.
  */
 export interface CalendarHeadCellProps extends PrimitiveProps, /** @vue-ignore */ Omit<HTMLAttributes, 'placeholder'> {}
 
 /**
- * Properties for the calendar cell component.
+ * Properties for the CalendarCell component.
  */
 export interface CalendarCellProps extends PrimitiveProps, /** @vue-ignore */ Omit<HTMLAttributes, 'placeholder'> {
   /**
@@ -169,7 +169,7 @@ export interface CalendarCellProps extends PrimitiveProps, /** @vue-ignore */ Om
 }
 
 /**
- * Properties for the calendar cell trigger component.
+ * Properties for the CalendarCellTrigger component.
  */
 export interface CalendarCellTriggerProps
   extends PrimitiveProps, /** @vue-ignore */ Omit<HTMLAttributes, 'placeholder'> {
@@ -184,7 +184,7 @@ export interface CalendarCellTriggerProps
 }
 
 /**
- * Properties for the calendar prev component.
+ * Properties for the CalendarPrev component.
  */
 export interface CalendarPrevProps extends PrimitiveProps, /** @vue-ignore */ ButtonHTMLAttributes {
   /**
@@ -194,7 +194,7 @@ export interface CalendarPrevProps extends PrimitiveProps, /** @vue-ignore */ Bu
 }
 
 /**
- * Properties for the calendar next component.
+ * Properties for the CalendarNext component.
  */
 export interface CalendarNextProps extends PrimitiveProps, /** @vue-ignore */ ButtonHTMLAttributes {
   /**
@@ -204,7 +204,7 @@ export interface CalendarNextProps extends PrimitiveProps, /** @vue-ignore */ Bu
 }
 
 /**
- * Context for the calendar root component.
+ * Context for the CalendarRoot component.
  */
 export interface CalendarRootContext extends PropsToContext<
   CalendarRootProps,
@@ -336,7 +336,7 @@ export interface CalendarRootContext extends PropsToContext<
 }
 
 /**
- * Slot properties for the calendar root component.
+ * Slot properties for the CalendarRoot component.
  */
 export interface CalendarRootSlotProps<M extends boolean = false> {
   /**
@@ -394,7 +394,7 @@ export interface CalendarRootSlotProps<M extends boolean = false> {
 }
 
 /**
- * Slot properties for the calendar heading component.
+ * Slot properties for the CalendarHeading component.
  */
 export interface CalendarHeadingSlotProps {
   /**
@@ -436,7 +436,7 @@ export interface CalendarHeadingSlotProps {
 }
 
 /**
- * Available UI slots for the calendar component.
+ * Available UI slots for the Calendar component.
  */
 export type CalendarUiSlot =
   | 'root'
@@ -453,12 +453,12 @@ export type CalendarUiSlot =
   | 'cellTrigger';
 
 /**
- * UI class overrides for the calendar component.
+ * UI class overrides for the Calendar component.
  */
 export type CalendarUi = UiClass<CalendarUiSlot>;
 
 /**
- * Properties for the calendar compact component.
+ * Properties for the CalendarCompact component.
  */
 export interface CalendarCompactProps<M extends boolean = false> extends CalendarRootProps<M> {
   /**
@@ -508,12 +508,12 @@ export interface CalendarCompactProps<M extends boolean = false> extends Calenda
 }
 
 /**
- * Events for the calendar compact component.
+ * Events for the CalendarCompact component.
  */
 export type CalendarCompactEmits<M extends boolean = false> = CalendarRootEmits<M>;
 
 /**
- * Slots for the calendar compact component.
+ * Slots for the CalendarCompact component.
  */
 export type CalendarCompactSlots<M extends boolean = false> = {
   /**

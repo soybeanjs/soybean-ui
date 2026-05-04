@@ -2,17 +2,17 @@ import type { AffixTarget } from '../affix/types';
 import type { ButtonProps } from '../button/types';
 
 /**
- * Type information for the backtop target component.
+ * Type information for BacktopTarget.
  */
 export type BacktopTarget = AffixTarget;
 
 /**
- * State values for the backtop component.
+ * State values for BacktopState.
  */
 export type BacktopState = 'visible' | 'hidden';
 
 /**
- * Properties for the backtop component.
+ * Properties for the Backtop component.
  */
 export interface BacktopProps extends /** @vue-ignore */ Omit<ButtonProps, 'onChange'> {
   /**
@@ -36,7 +36,7 @@ export interface BacktopProps extends /** @vue-ignore */ Omit<ButtonProps, 'onCh
 }
 
 /**
- * Events for the backtop component.
+ * Events for the Backtop component.
  */
 export type BacktopEmits = {
   /**

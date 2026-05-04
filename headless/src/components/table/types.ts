@@ -10,7 +10,7 @@ import type { CheckedState, Direction, Path, PathValue, PropsToContext, UiClass 
 import type { VirtualizerOptions } from '../virtualizer/types';
 
 /**
- * Properties for the table root component.
+ * Properties for the TableRoot component.
  */
 export interface TableRootProps extends /** @vue-ignore */ HTMLAttributes {
   /**
@@ -20,47 +20,47 @@ export interface TableRootProps extends /** @vue-ignore */ HTMLAttributes {
 }
 
 /**
- * Properties for the table scroll component.
+ * Properties for the TableScroll component.
  */
 export interface TableScrollProps extends /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Properties for the table content component.
+ * Properties for the TableContent component.
  */
 export interface TableContentProps extends /** @vue-ignore */ TableHTMLAttributes {}
 
 /**
- * Properties for the table header component.
+ * Properties for the TableHeader component.
  */
 export interface TableHeaderProps extends /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Properties for the table body component.
+ * Properties for the TableBody component.
  */
 export interface TableBodyProps extends /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Properties for the table footer component.
+ * Properties for the TableFooter component.
  */
 export interface TableFooterProps extends /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Properties for the table row component.
+ * Properties for the TableRow component.
  */
 export interface TableRowProps extends /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Properties for the table head component.
+ * Properties for the TableHead component.
  */
 export interface TableHeadProps extends /** @vue-ignore */ ThHTMLAttributes {}
 
 /**
- * Properties for the table cell component.
+ * Properties for the TableCell component.
  */
 export interface TableCellProps extends /** @vue-ignore */ TdHTMLAttributes {}
 
 /**
- * Available UI slots for the table component.
+ * Available UI slots for the Table component.
  */
 export type TableUiSlot =
   | 'root'
@@ -81,22 +81,22 @@ export type TableUiSlot =
   | 'treeTogglePlaceholder';
 
 /**
- * UI class overrides for the table component.
+ * UI class overrides for the Table component.
  */
 export type TableUi = UiClass<TableUiSlot>;
 
 /**
- * Type information for the table base data component.
+ * Type information for TableBaseData.
  */
 export type TableBaseData = Record<string, any>;
 
 /**
- * Type information for the table row value component.
+ * Type information for TableRowValue.
  */
 export type TableRowValue<T extends TableBaseData = TableBaseData> = Omit<T, 'children'>;
 
 /**
- * Type information for the table align component.
+ * Type information for TableAlign.
  */
 export type TableAlign = 'start' | 'center' | 'end';
 
@@ -106,17 +106,17 @@ export type TableAlign = 'start' | 'center' | 'end';
 export type TableColumnType = 'index' | 'selection' | 'expand';
 
 /**
- * Type information for the table sort order component.
+ * Type information for TableSortOrder.
  */
 export type TableSortOrder = 'asc' | 'desc';
 
 /**
- * Type information for the table unified key component.
+ * Type information for TableUnifiedKey.
  */
 export type TableUnifiedKey = string | number;
 
 /**
- * State values for the table component.
+ * State values for TableSortState.
  */
 export interface TableSortState {
   /**
@@ -130,7 +130,7 @@ export interface TableSortState {
 }
 
 /**
- * Type information for the table column filter value component.
+ * Type information for TableColumnFilterValue.
  */
 export interface TableColumnFilterValue {
   /**
@@ -144,27 +144,27 @@ export interface TableColumnFilterValue {
 }
 
 /**
- * Type information for the table filter value component.
+ * Type information for TableFilterValue.
  */
 export type TableFilterValue = string | TableColumnFilterValue;
 
 /**
- * State values for the table component.
+ * State values for TableFilterState.
  */
 export type TableFilterState = Record<string, TableFilterValue>;
 
 /**
- * State values for the table component.
+ * State values for TableColumnWidthState.
  */
 export type TableColumnWidthState = Record<string, string>;
 
 /**
- * Type information for the table row children resolver component.
+ * Type information for TableRowChildrenResolver.
  */
 export type TableRowChildrenResolver<T extends TableBaseData = TableBaseData> = (row: T) => T[] | undefined;
 
 /**
- * Type information for the table virtual measurement component.
+ * Type information for TableVirtualMeasurement.
  */
 export interface TableVirtualMeasurement {
   /**
@@ -182,7 +182,7 @@ export interface TableVirtualMeasurement {
 }
 
 /**
- * Type information for the table virtual range component.
+ * Type information for TableVirtualRange.
  */
 export interface TableVirtualRange {
   /**
@@ -196,7 +196,7 @@ export interface TableVirtualRange {
 }
 
 /**
- * Type information for the table tree node component.
+ * Type information for TableTreeNode.
  */
 export interface TableTreeNode<T extends TableBaseData = TableBaseData, R extends TableUnifiedKey = TableUnifiedKey> {
   /**
@@ -226,7 +226,7 @@ export interface TableTreeNode<T extends TableBaseData = TableBaseData, R extend
 }
 
 /**
- * Type information for the table tree row component.
+ * Type information for TableTreeRow.
  */
 export interface TableTreeRow<T extends TableBaseData = TableBaseData, R extends TableUnifiedKey = TableUnifiedKey> {
   /**
@@ -252,7 +252,7 @@ export interface TableTreeRow<T extends TableBaseData = TableBaseData, R extends
 }
 
 /**
- * Type information for the table visible row component.
+ * Type information for TableVisibleRow.
  */
 export interface TableVisibleRow<T extends TableBaseData = TableBaseData, R extends TableUnifiedKey = TableUnifiedKey> {
   /**
@@ -266,7 +266,7 @@ export interface TableVisibleRow<T extends TableBaseData = TableBaseData, R exte
 }
 
 /**
- * Type information for the table column filter component.
+ * Type information for TableColumnFilter.
  */
 export interface TableColumnFilter<T extends TableBaseData = TableBaseData> {
   /**
@@ -293,7 +293,7 @@ export interface TableColumnFilter<T extends TableBaseData = TableBaseData> {
 }
 
 /**
- * Type information for the table column filter option component.
+ * Type information for TableColumnFilterOption.
  */
 export interface TableColumnFilterOption {
   /**
@@ -311,7 +311,7 @@ export interface TableColumnFilterOption {
 }
 
 /**
- * Type information for the table column base component.
+ * Type information for TableColumnBase.
  */
 export interface TableColumnBase {
   /**
@@ -353,7 +353,7 @@ export interface TableColumnBase {
 }
 
 /**
- * Type information for the table type column component.
+ * Type information for TableTypeColumn.
  */
 export interface TableTypeColumn extends TableColumnBase {
   /**
@@ -379,7 +379,7 @@ export interface TableTypeColumn extends TableColumnBase {
 }
 
 /**
- * Type information for the table data column component.
+ * Type information for TableDataColumn.
  */
 export interface TableDataColumn<T extends TableBaseData = TableBaseData> extends TableColumnBase {
   /**
@@ -405,7 +405,7 @@ export interface TableDataColumn<T extends TableBaseData = TableBaseData> extend
 }
 
 /**
- * Type information for the table group column component.
+ * Type information for TableGroupColumn.
  */
 export interface TableGroupColumn<T extends TableBaseData = TableBaseData> extends TableColumnBase {
   /**
@@ -431,7 +431,7 @@ export interface TableGroupColumn<T extends TableBaseData = TableBaseData> exten
 }
 
 /**
- * Type information for the table column component.
+ * Type information for TableColumn.
  */
 export type TableColumn<T extends TableBaseData = TableBaseData> =
   | TableTypeColumn
@@ -439,7 +439,7 @@ export type TableColumn<T extends TableBaseData = TableBaseData> =
   | TableGroupColumn<T>;
 
 /**
- * Type information for the table header cell component.
+ * Type information for TableHeaderCell.
  */
 export interface TableHeaderCell<T extends TableBaseData = TableBaseData> {
   /**
@@ -461,7 +461,7 @@ export interface TableHeaderCell<T extends TableBaseData = TableBaseData> {
 }
 
 /**
- * State values for the table component.
+ * State values for TableFixedState.
  */
 export interface TableFixedState {
   /**
@@ -483,7 +483,7 @@ export interface TableFixedState {
 }
 
 /**
- * Type information for the table fixed column offsets component.
+ * Type information for TableFixedColumnOffsets.
  */
 export interface TableFixedColumnOffsets {
   /**
@@ -505,7 +505,7 @@ export interface TableFixedColumnOffsets {
 }
 
 /**
- * Properties for the table selection component.
+ * Properties for the TableSelection component.
  */
 export interface TableSelectionProps<R extends TableUnifiedKey = TableUnifiedKey, M extends boolean = false> {
   /**
@@ -523,7 +523,7 @@ export interface TableSelectionProps<R extends TableUnifiedKey = TableUnifiedKey
 }
 
 /**
- * Properties for the table compact cell component.
+ * Properties for the TableCompactCell component.
  */
 export interface TableCompactCellProps {
   /**
@@ -541,7 +541,7 @@ export interface TableCompactCellProps {
 }
 
 /**
- * Properties for the table compact expanded row component.
+ * Properties for the TableCompactExpandedRow component.
  */
 export interface TableCompactExpandedRowProps {
   /**
@@ -559,12 +559,12 @@ export interface TableCompactExpandedRowProps {
 }
 
 /**
- * Properties for the table compact head component.
+ * Properties for the TableCompactHead component.
  */
 export interface TableCompactHeadProps extends Omit<TableHeaderCell, 'key'> {}
 
 /**
- * Properties for the table compact row component.
+ * Properties for the TableCompactRow component.
  */
 export interface TableCompactRowProps {
   /**
@@ -582,7 +582,7 @@ export interface TableCompactRowProps {
 }
 
 /**
- * Slots for the table compact cell component.
+ * Slots for the TableCompactCell component.
  */
 export type TableCompactCellSlots<T extends TableBaseData> = {
   [K in Path<TableRowValue<T>>]?: (props: TableDataCellSlotProps<T, K>) => any;
@@ -606,7 +606,7 @@ export type TableCompactCellSlots<T extends TableBaseData> = {
 };
 
 /**
- * Slot properties for the table header component.
+ * Slot properties for the TableHeader component.
  */
 export interface TableHeaderSlotProps<T extends TableBaseData = TableBaseData> {
   /**
@@ -704,7 +704,7 @@ export interface TableHeaderSlotProps<T extends TableBaseData = TableBaseData> {
 }
 
 /**
- * Slot properties for the table header selection component.
+ * Slot properties for the TableHeaderSelection component.
  */
 export interface TableHeaderSelectionSlotProps<T extends TableBaseData = TableBaseData> {
   /**
@@ -730,7 +730,7 @@ export interface TableHeaderSelectionSlotProps<T extends TableBaseData = TableBa
 }
 
 /**
- * Slot properties for the table header filter component.
+ * Slot properties for the TableHeaderFilter component.
  */
 export interface TableHeaderFilterSlotProps<T extends TableBaseData = TableBaseData> extends Pick<
   TableHeaderSlotProps<T>,
@@ -749,7 +749,7 @@ export interface TableHeaderFilterSlotProps<T extends TableBaseData = TableBaseD
 > {}
 
 /**
- * Slot properties for the table header sort component.
+ * Slot properties for the TableHeaderSort component.
  */
 export interface TableHeaderSortSlotProps<T extends TableBaseData = TableBaseData> {
   /**
@@ -771,7 +771,7 @@ export interface TableHeaderSortSlotProps<T extends TableBaseData = TableBaseDat
 }
 
 /**
- * Slot properties for the table header resize component.
+ * Slot properties for the TableHeaderResize component.
  */
 export interface TableHeaderResizeSlotProps<T extends TableBaseData = TableBaseData> {
   /**
@@ -797,7 +797,7 @@ export interface TableHeaderResizeSlotProps<T extends TableBaseData = TableBaseD
 }
 
 /**
- * Slot properties for the table index component.
+ * Slot properties for the TableIndex component.
  */
 export interface TableIndexSlotProps<T extends TableBaseData = TableBaseData> {
   /**
@@ -823,7 +823,7 @@ export interface TableIndexSlotProps<T extends TableBaseData = TableBaseData> {
 }
 
 /**
- * Slot properties for the table cell component.
+ * Slot properties for the TableCell component.
  */
 export interface TableCellSlotProps<T extends TableBaseData = TableBaseData> {
   /**
@@ -857,7 +857,7 @@ export interface TableCellSlotProps<T extends TableBaseData = TableBaseData> {
 }
 
 /**
- * Slot properties for the table selection component.
+ * Slot properties for the TableSelection component.
  */
 export interface TableSelectionSlotProps<T extends TableBaseData = TableBaseData> extends TableCellSlotProps<T> {
   /**
@@ -879,7 +879,7 @@ export interface TableSelectionSlotProps<T extends TableBaseData = TableBaseData
 }
 
 /**
- * Slot properties for the table expand component.
+ * Slot properties for the TableExpand component.
  */
 export interface TableExpandSlotProps<T extends TableBaseData = TableBaseData> extends TableCellSlotProps<T> {
   /**
@@ -889,12 +889,12 @@ export interface TableExpandSlotProps<T extends TableBaseData = TableBaseData> e
 }
 
 /**
- * Slot properties for the table tree toggle component.
+ * Slot properties for the TableTreeToggle component.
  */
 export type TableTreeToggleSlotProps<T extends TableBaseData = TableBaseData> = TableExpandSlotProps<T>;
 
 /**
- * Slot properties for the table expanded row component.
+ * Slot properties for the TableExpandedRow component.
  */
 export interface TableExpandedRowSlotProps<T extends TableBaseData = TableBaseData> {
   /**
@@ -916,7 +916,7 @@ export interface TableExpandedRowSlotProps<T extends TableBaseData = TableBaseDa
 }
 
 /**
- * Slot properties for the table empty component.
+ * Slot properties for the TableEmpty component.
  */
 export interface TableEmptySlotProps {
   /**
@@ -926,7 +926,7 @@ export interface TableEmptySlotProps {
 }
 
 /**
- * Slot properties for the table data cell component.
+ * Slot properties for the TableDataCell component.
  */
 export interface TableDataCellSlotProps<
   T extends TableBaseData = TableBaseData,
@@ -939,7 +939,7 @@ export interface TableDataCellSlotProps<
 }
 
 /**
- * Properties for the table compact component.
+ * Properties for the TableCompact component.
  */
 export interface TableCompactProps<
   T extends TableBaseData = TableBaseData,
@@ -1050,7 +1050,7 @@ export interface TableCompactProps<
 }
 
 /**
- * Events for the table compact component.
+ * Events for the TableCompact component.
  */
 export type TableCompactEmits<R extends TableUnifiedKey = TableUnifiedKey, M extends boolean = false> = {
   /**
@@ -1076,7 +1076,7 @@ export type TableCompactEmits<R extends TableUnifiedKey = TableUnifiedKey, M ext
 };
 
 /**
- * Slots for the table compact component.
+ * Slots for the TableCompact component.
  */
 export type TableCompactSlots<T extends TableBaseData> = {
   [K in `header-${Path<TableRowValue<T>>}`]?: (props: TableHeaderSlotProps<T>) => any;
@@ -1146,7 +1146,7 @@ export type TableCompactSlots<T extends TableBaseData> = {
 };
 
 /**
- * Context for the table compact component.
+ * Context for the TableCompact component.
  */
 export interface TableCompactContext extends PropsToContext<
   TableCompactProps,

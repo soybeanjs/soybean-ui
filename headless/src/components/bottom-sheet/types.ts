@@ -10,12 +10,12 @@ import type {
 } from '../dialog/types';
 
 /**
- * Type information for the drawer direction component.
+ * Type information for DrawerDirection.
  */
 export type DrawerDirection = Side;
 
 /**
- * Type information for the snap point component.
+ * Type information for SnapPoint.
  */
 export interface SnapPoint {
   /**
@@ -29,7 +29,7 @@ export interface SnapPoint {
 }
 
 /**
- * Properties for the use drawer component.
+ * Properties for the UseDrawer component.
  */
 export interface UseDrawerProps {
   /**
@@ -99,12 +99,12 @@ export interface UseDrawerProps {
 }
 
 /**
- * Parameters used to create the bottom sheet root context.
+ * Parameters used to create the BottomSheetRoot context.
  */
 export type BottomSheetRootContextParams = UseDrawerProps & BottomSheetEmitHandlers;
 
 /**
- * Context for the bottom sheet root component.
+ * Context for the BottomSheetRoot component.
  */
 export interface BottomSheetRootContext {
   /**
@@ -270,7 +270,7 @@ export interface BottomSheetRootContext {
 }
 
 /**
- * Properties for the with fade from component.
+ * Properties for the WithFadeFrom component.
  */
 export interface WithFadeFromProps {
   /**
@@ -284,7 +284,7 @@ export interface WithFadeFromProps {
 }
 
 /**
- * Properties for the without fade from component.
+ * Properties for the WithoutFadeFrom component.
  */
 export interface WithoutFadeFromProps {
   /**
@@ -298,7 +298,7 @@ export interface WithoutFadeFromProps {
 }
 
 /**
- * Properties for the bottom sheet root component.
+ * Properties for the BottomSheetRoot component.
  */
 export type BottomSheetRootProps = DialogRootProps & {
   /**
@@ -352,7 +352,7 @@ export type BottomSheetRootProps = DialogRootProps & {
 } & (WithFadeFromProps | WithoutFadeFromProps);
 
 /**
- * Events for the bottom sheet root component.
+ * Events for the BottomSheetRoot component.
  */
 export type BottomSheetRootEmits = DialogRootEmits & {
   /**
@@ -374,7 +374,7 @@ export type BottomSheetRootEmits = DialogRootEmits & {
 };
 
 /**
- * Slots for the bottom sheet root component.
+ * Slots for the BottomSheetRoot component.
  */
 export type BottomSheetRootSlots = {
   /**
@@ -384,7 +384,7 @@ export type BottomSheetRootSlots = {
 };
 
 /**
- * Type information for the bottom sheet emit handlers component.
+ * Type information for BottomSheetEmitHandlers.
  */
 export interface BottomSheetEmitHandlers {
   /**
@@ -406,7 +406,7 @@ export interface BottomSheetEmitHandlers {
 }
 
 /**
- * Properties for the bottom sheet handle component.
+ * Properties for the BottomSheetHandle component.
  */
 export interface BottomSheetHandleProps extends /** @vue-ignore */ HTMLAttributes {
   /**
@@ -416,7 +416,7 @@ export interface BottomSheetHandleProps extends /** @vue-ignore */ HTMLAttribute
 }
 
 /**
- * Properties for the bottom sheet compact component.
+ * Properties for the BottomSheetCompact component.
  */
 export type BottomSheetCompactProps = DialogCompactProps &
   BottomSheetRootProps & {
@@ -427,21 +427,21 @@ export type BottomSheetCompactProps = DialogCompactProps &
   };
 
 /**
- * Events for the bottom sheet compact component.
+ * Events for the BottomSheetCompact component.
  */
 export type BottomSheetCompactEmits = Omit<DialogCompactEmits, 'close'> & BottomSheetRootEmits;
 
 /**
- * Slots for the bottom sheet compact component.
+ * Slots for the BottomSheetCompact component.
  */
 export type BottomSheetCompactSlots = DialogCompactSlots;
 
 /**
- * Available UI slots for the bottom sheet component.
+ * Available UI slots for the BottomSheet component.
  */
 export type BottomSheetUiSlot = DialogUiSlot | 'handle';
 
 /**
- * UI class overrides for the bottom sheet component.
+ * UI class overrides for the BottomSheet component.
  */
 export type BottomSheetUi = UiClass<BottomSheetUiSlot>;

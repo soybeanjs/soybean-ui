@@ -11,7 +11,7 @@ import type { MenuOptionData } from '../menu';
 import type { PageTabsVariant } from './variants';
 
 /**
- * Option data for the page tabs component.
+ * Option data for the PageTabs component.
  */
 export interface PageTabsOptionData extends PageTabsItemProps {
   /**
@@ -34,12 +34,12 @@ export interface PageTabsOptionData extends PageTabsItemProps {
 export type PageTabsExtraUiSlot = 'itemText' | 'chromeBgLeft' | 'chromeBgRight' | 'sliderIndicator';
 
 /**
- * Extended UI class overrides for the page tabs component.
+ * Extended UI class overrides for the PageTabs component.
  */
 export type PageTabsExtendedUi = Record<PageTabsUiSlot | PageTabsExtraUiSlot, ClassValue>;
 
 /**
- * State values for the page tabs component.
+ * State values for PageTabsState.
  */
 export interface PageTabsState {
   /**
@@ -93,7 +93,7 @@ export interface PageTabsState {
 }
 
 /**
- * Option data for the page tabs context menu component.
+ * Option data for the PageTabsContextMenu component.
  */
 export interface PageTabsContextMenuOptionData extends MenuOptionData<string> {
   /**
@@ -103,7 +103,7 @@ export interface PageTabsContextMenuOptionData extends MenuOptionData<string> {
 }
 
 /**
- * Properties for the page tabs component.
+ * Properties for the PageTabs component.
  */
 export interface PageTabsProps<T extends PageTabsOptionData> extends PageTabsRootProps {
   /**
@@ -140,7 +140,7 @@ export interface PageTabsProps<T extends PageTabsOptionData> extends PageTabsRoo
 }
 
 /**
- * Events for the page tabs component.
+ * Events for the PageTabs component.
  */
 export type PageTabsEmits<T> = PageTabsRootEmits & {
   (e: 'update:items', items: T[]): void;

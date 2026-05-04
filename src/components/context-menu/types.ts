@@ -15,64 +15,64 @@ import type { AcceptableBooleanValue, DefinedValue } from '@soybeanjs/headless/t
 import type { MenuUiBaseProps } from '../menu/types';
 
 /**
- * Properties for the context menu wrapper component.
+ * Properties for the ContextMenuWrapper component.
  */
 export interface ContextMenuWrapperProps extends MenuUiBaseProps, ContextMenuWrapperCompactProps {}
 
 /**
- * Events for the context menu wrapper component.
+ * Events for the ContextMenuWrapper component.
  */
 export type ContextMenuWrapperEmits = ContextMenuWrapperCompactEmits;
 
 // Menu
 /**
- * Properties for the context menu component.
+ * Properties for the ContextMenu component.
  */
 export type ContextMenuProps<T extends DefinedValue = DefinedValue> = Omit<MenuUiBaseProps, 'indicatorPosition'> &
   ContextMenuCompactProps<T>;
 
 /**
- * Events for the context menu component.
+ * Events for the ContextMenu component.
  */
 export type ContextMenuEmits<T extends DefinedValue = DefinedValue> = ContextMenuCompactEmits<T>;
 
 /**
- * Slots for the context menu component.
+ * Slots for the ContextMenu component.
  */
 export type ContextMenuSlots<T extends DefinedValue = DefinedValue> = ContextMenuCompactSlots<T>;
 
 // Menu Checkbox
 /**
- * Properties for the context menu checkbox component.
+ * Properties for the ContextMenuCheckbox component.
  */
 export type ContextMenuCheckboxProps<T extends DefinedValue = DefinedValue> = MenuUiBaseProps &
   ContextMenuCheckboxCompactProps<T>;
 
 /**
- * Events for the context menu checkbox component.
+ * Events for the ContextMenuCheckbox component.
  */
 export type ContextMenuCheckboxEmits<T extends DefinedValue = DefinedValue> = ContextMenuCheckboxCompactEmits<T>;
 
 /**
- * Slots for the context menu checkbox component.
+ * Slots for the ContextMenuCheckbox component.
  */
 export type ContextMenuCheckboxSlots<T extends DefinedValue = DefinedValue> = ContextMenuCheckboxCompactSlots<T>;
 
 // Menu Radio
 /**
- * Properties for the context menu radio component.
+ * Properties for the ContextMenuRadio component.
  */
 export type ContextMenuRadioProps<T extends AcceptableBooleanValue = AcceptableBooleanValue> = MenuUiBaseProps &
   ContextMenuRadioCompactProps<T>;
 
 /**
- * Events for the context menu radio component.
+ * Events for the ContextMenuRadio component.
  */
 export type ContextMenuRadioEmits<T extends AcceptableBooleanValue = AcceptableBooleanValue> =
   ContextMenuRadioCompactEmits<T>;
 
 /**
- * Slots for the context menu radio component.
+ * Slots for the ContextMenuRadio component.
  */
 export type ContextMenuRadioSlots<T extends AcceptableBooleanValue = AcceptableBooleanValue> =
   ContextMenuRadioCompactSlots<T>;

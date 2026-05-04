@@ -10,32 +10,32 @@ import type { UiClass } from '../../types';
 import type { PrimitiveProps } from '../primitive/types';
 
 /**
- * Properties for the color swatch picker root component.
+ * Properties for the ColorSwatchPickerRoot component.
  */
 export interface ColorSwatchPickerRootProps<M extends boolean = false> extends PrimitiveProps, ListboxRootProps<M> {}
 
 /**
- * Events for the color swatch picker root component.
+ * Events for the ColorSwatchPickerRoot component.
  */
 export type ColorSwatchPickerRootEmits<M extends boolean = false> = ListboxRootEmits<M>;
 
 /**
- * Properties for the color swatch picker item component.
+ * Properties for the ColorSwatchPickerItem component.
  */
 export interface ColorSwatchPickerItemProps extends ListboxItemProps {}
 
 /**
- * Events for the color swatch picker item component.
+ * Events for the ColorSwatchPickerItem component.
  */
 export type ColorSwatchPickerItemEmits = ListboxItemEmits;
 
 /**
- * Properties for the color swatch picker item indicator component.
+ * Properties for the ColorSwatchPickerItemIndicator component.
  */
 export interface ColorSwatchPickerItemIndicatorProps extends ListboxItemIndicatorProps {}
 
 /**
- * Properties for the color swatch picker item swatch component.
+ * Properties for the ColorSwatchPickerItemSwatch component.
  */
 export interface ColorSwatchPickerItemSwatchProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {
   /**
@@ -45,7 +45,7 @@ export interface ColorSwatchPickerItemSwatchProps extends PrimitiveProps, /** @v
 }
 
 /**
- * Context for the color swatch picker item component.
+ * Context for the ColorSwatchPickerItem component.
  */
 export interface ColorSwatchPickerItemContext {
   /**
@@ -55,11 +55,11 @@ export interface ColorSwatchPickerItemContext {
 }
 
 /**
- * Available UI slots for the color swatch picker component.
+ * Available UI slots for the ColorSwatchPicker component.
  */
 export type ColorSwatchPickerUiSlot = 'root' | 'item' | 'itemIndicator' | 'swatch';
 
 /**
- * UI class overrides for the color swatch picker component.
+ * UI class overrides for the ColorSwatchPicker component.
  */
 export type ColorSwatchPickerUi = UiClass<ColorSwatchPickerUiSlot>;

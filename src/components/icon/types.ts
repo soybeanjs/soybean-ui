@@ -2,7 +2,7 @@ import type { IconProps as IconifyIconProps } from '@iconify/vue';
 import type { IconValue } from '@soybeanjs/headless/_icon';
 
 /**
- * Properties for the icon component.
+ * Properties for the Icon component.
  */
 export interface IconProps extends Omit<IconifyIconProps, 'icon'> {
   /**

@@ -3,7 +3,7 @@ import type { FormFieldCommonProps, PropsToContext, UiClass } from '../../types'
 import type { ButtonProps } from '../button/types';
 
 /**
- * Properties for the input base component.
+ * Properties for the InputBase component.
  */
 export interface InputBaseProps {
   /** Id of the input element */
@@ -25,7 +25,7 @@ export interface InputBaseProps {
 }
 
 /**
- * Properties for the input root component.
+ * Properties for the InputRoot component.
  */
 export interface InputRootProps extends InputBaseProps, FormFieldCommonProps, /** @vue-ignore */ HTMLAttributes {
   /** The default value of the input */
@@ -35,7 +35,7 @@ export interface InputRootProps extends InputBaseProps, FormFieldCommonProps, /*
 }
 
 /**
- * Events for the input root component.
+ * Events for the InputRoot component.
  */
 export type InputRootEmits = {
   /**
@@ -45,12 +45,12 @@ export type InputRootEmits = {
 };
 
 /**
- * Properties for the input control component.
+ * Properties for the InputControl component.
  */
 export interface InputControlProps extends /** @vue-ignore */ InputHTMLAttributes {}
 
 /**
- * Context for the input root component.
+ * Context for the InputRoot component.
  */
 export interface InputRootContext extends PropsToContext<InputBaseProps & FormFieldCommonProps> {
   /**
@@ -64,12 +64,12 @@ export interface InputRootContext extends PropsToContext<InputBaseProps & FormFi
 }
 
 /**
- * Properties for the input clear component.
+ * Properties for the InputClear component.
  */
 export interface InputClearProps extends ButtonProps, /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Events for the input clear component.
+ * Events for the InputClear component.
  */
 export type InputClearEmits = {
   /**
@@ -79,17 +79,17 @@ export type InputClearEmits = {
 };
 
 /**
- * Available UI slots for the input component.
+ * Available UI slots for the Input component.
  */
 export type InputUiSlot = 'root' | 'control' | 'clearable';
 
 /**
- * UI class overrides for the input component.
+ * UI class overrides for the Input component.
  */
 export type InputUi = UiClass<InputUiSlot>;
 
 /**
- * Slot properties for the input compact component.
+ * Slot properties for the InputCompact component.
  */
 export interface InputCompactSlotProps {
   /**
@@ -103,7 +103,7 @@ export interface InputCompactSlotProps {
 }
 
 /**
- * Properties for the input compact component.
+ * Properties for the InputCompact component.
  */
 export interface InputCompactProps extends InputRootProps {
   /**
@@ -127,12 +127,12 @@ export interface InputCompactProps extends InputRootProps {
 }
 
 /**
- * Events for the input compact component.
+ * Events for the InputCompact component.
  */
 export type InputCompactEmits = InputRootEmits & InputClearEmits;
 
 /**
- * Slots for the input compact component.
+ * Slots for the InputCompact component.
  */
 export type InputCompactSlots = {
   /**

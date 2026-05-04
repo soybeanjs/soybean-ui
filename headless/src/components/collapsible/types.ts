@@ -3,7 +3,7 @@ import type { ForceMountProps, PropsToContext, UiClass } from '../../types';
 import type { PrimitiveProps } from '../primitive/types';
 
 /**
- * Properties for the collapsible root component.
+ * Properties for the CollapsibleRoot component.
  */
 export interface CollapsibleRootProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {
   /**
@@ -21,7 +21,7 @@ export interface CollapsibleRootProps extends PrimitiveProps, /** @vue-ignore */
 }
 
 /**
- * Events for the collapsible root component.
+ * Events for the CollapsibleRoot component.
  */
 export type CollapsibleRootEmits = {
   /** Event handler called when the open state of the collapsible changes. */
@@ -29,12 +29,12 @@ export type CollapsibleRootEmits = {
 };
 
 /**
- * Properties for the collapsible content component.
+ * Properties for the CollapsibleContent component.
  */
 export interface CollapsibleContentProps extends PrimitiveProps, ForceMountProps, /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Properties for the collapsible trigger component.
+ * Properties for the CollapsibleTrigger component.
  */
 export interface CollapsibleTriggerProps extends PrimitiveProps, /** @vue-ignore */ ButtonHTMLAttributes {
   /** When `true`, prevents the user from toggling the collapsible. */
@@ -42,7 +42,7 @@ export interface CollapsibleTriggerProps extends PrimitiveProps, /** @vue-ignore
 }
 
 /**
- * Parameters used to create the collapsible root context.
+ * Parameters used to create the CollapsibleRoot context.
  */
 export interface CollapsibleRootContextParams extends PropsToContext<
   CollapsibleRootProps,
@@ -55,11 +55,11 @@ export interface CollapsibleRootContextParams extends PropsToContext<
 }
 
 /**
- * Available UI slots for the collapsible component.
+ * Available UI slots for the Collapsible component.
  */
 export type CollapsibleUiSlot = 'root' | 'trigger' | 'content';
 
 /**
- * UI class overrides for the collapsible component.
+ * UI class overrides for the Collapsible component.
  */
 export type CollapsibleUi = UiClass<CollapsibleUiSlot>;

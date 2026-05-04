@@ -19,7 +19,7 @@ import type { PortalProps } from '../portal/types';
 
 // SelectRoot
 /**
- * Properties for the select root component.
+ * Properties for the SelectRoot component.
  */
 export interface SelectRootProps<T extends DefinedValue = DefinedValue, M extends boolean = false>
   extends SelectionProps<M, T>, FormFieldCommonProps {
@@ -39,7 +39,7 @@ export interface SelectRootProps<T extends DefinedValue = DefinedValue, M extend
 }
 
 /**
- * Events for the select root component.
+ * Events for the SelectRoot component.
  */
 export type SelectRootEmits<T extends DefinedValue = DefinedValue, M extends boolean = false> = SelectionEmits<M, T> & {
   /** Event handler called when the open state of the context menu changes. */
@@ -47,7 +47,7 @@ export type SelectRootEmits<T extends DefinedValue = DefinedValue, M extends boo
 };
 
 /**
- * Type information for the select option component.
+ * Type information for SelectOption.
  */
 export interface SelectOption {
   /**
@@ -65,24 +65,24 @@ export interface SelectOption {
 }
 
 /**
- * Properties for the select popup component.
+ * Properties for the SelectPopup component.
  */
 export interface SelectPopupProps extends /** @vue-ignore */ HTMLAttributes {}
 
 // SelectItemAlignedPosition
 /**
- * Properties for the select item aligned position component.
+ * Properties for the SelectItemAlignedPosition component.
  */
 export interface SelectItemAlignedPositionProps extends /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Type information for the select position component.
+ * Type information for SelectPosition.
  */
 export type SelectPosition = 'item-aligned' | 'popper';
 
 // SelectContentImpl
 /**
- * Properties for the select content impl component.
+ * Properties for the SelectContentImpl component.
  */
 export interface SelectContentImplProps extends PopperPositionerProps, DismissableLayerProps {
   /**
@@ -106,7 +106,7 @@ export interface SelectContentImplProps extends PopperPositionerProps, Dismissab
 }
 
 /**
- * Events for the select content impl component.
+ * Events for the SelectContentImpl component.
  */
 export type SelectContentImplEmits = {
   /**
@@ -121,17 +121,17 @@ export type SelectContentImplEmits = {
 
 // SelectContent
 /**
- * Properties for the select content component.
+ * Properties for the SelectContent component.
  */
 export interface SelectContentProps extends SelectContentImplProps, ForceMountProps {}
 
 /**
- * Events for the select content component.
+ * Events for the SelectContent component.
  */
 export type SelectContentEmits = SelectContentImplEmits;
 
 /**
- * Properties for the select teleport provider component.
+ * Properties for the SelectTeleportProvider component.
  */
 export interface SelectTeleportProviderProps extends Pick<SelectContentImplProps, 'position'> {
   /**
@@ -142,7 +142,7 @@ export interface SelectTeleportProviderProps extends Pick<SelectContentImplProps
 
 // Viewport
 /**
- * Properties for the select viewport component.
+ * Properties for the SelectViewport component.
  */
 export interface SelectViewportProps extends /** @vue-ignore */ HTMLAttributes {
   /**
@@ -154,19 +154,19 @@ export interface SelectViewportProps extends /** @vue-ignore */ HTMLAttributes {
 
 // SelectGroup
 /**
- * Properties for the select group component.
+ * Properties for the SelectGroup component.
  */
 export interface SelectGroupProps extends /** @vue-ignore */ Omit<HTMLAttributes, 'onSelect'> {}
 
 // SelectGroupLabel
 /**
- * Properties for the select group label component.
+ * Properties for the SelectGroupLabel component.
  */
 export interface SelectGroupLabelProps extends /** @vue-ignore */ HTMLAttributes {}
 
 // SelectTrigger
 /**
- * Properties for the select trigger component.
+ * Properties for the SelectTrigger component.
  */
 export interface SelectTriggerProps extends PopperAnchorProps {
   /**
@@ -177,13 +177,13 @@ export interface SelectTriggerProps extends PopperAnchorProps {
 
 // SelectTriggerIcon
 /**
- * Properties for the select trigger icon component.
+ * Properties for the SelectTriggerIcon component.
  */
 export interface SelectTriggerIconProps extends /** @vue-ignore */ HTMLAttributes {}
 
 // SelectItem
 /**
- * Properties for the select item component.
+ * Properties for the SelectItem component.
  */
 export interface SelectItemProps extends PrimitiveProps, /** @vue-ignore */ Omit<HTMLAttributes, 'onSelect'> {
   /** The value given as data when submitted with a `name`. */
@@ -198,7 +198,7 @@ export interface SelectItemProps extends PrimitiveProps, /** @vue-ignore */ Omit
 }
 
 /**
- * Type information for the select item event component.
+ * Type information for SelectItemEvent.
  */
 export type SelectItemEvent<T extends DefinedValue = DefinedValue> = CustomEvent<{
   /**
@@ -211,7 +211,7 @@ export type SelectItemEvent<T extends DefinedValue = DefinedValue> = CustomEvent
   value: T;
 }>;
 /**
- * Events for the select item component.
+ * Events for the SelectItem component.
  */
 export type SelectItemEmits<T extends DefinedValue = DefinedValue> = {
   /** Event handler called when the selecting item. <br> It can be prevented by calling `event.preventDefault`. */
@@ -220,18 +220,18 @@ export type SelectItemEmits<T extends DefinedValue = DefinedValue> = {
 
 // SelectItemText
 /**
- * Properties for the select item text component.
+ * Properties for the SelectItemText component.
  */
 export interface SelectItemTextProps extends /** @vue-ignore */ HTMLAttributes {}
 
 // SelectItemIndicator
 /**
- * Properties for the select item indicator component.
+ * Properties for the SelectItemIndicator component.
  */
 export interface SelectItemIndicatorProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Events for the select item aligned position component.
+ * Events for the SelectItemAlignedPosition component.
  */
 export type SelectItemAlignedPositionEmits = {
   /**
@@ -241,7 +241,7 @@ export type SelectItemAlignedPositionEmits = {
 };
 
 /**
- * Option data for the select single component.
+ * Option data for the SelectSingle component.
  */
 export interface SelectSingleOptionData<T extends DefinedValue = DefinedValue> extends Pick<
   SelectItemProps,
@@ -266,7 +266,7 @@ export interface SelectSingleOptionData<T extends DefinedValue = DefinedValue> e
 }
 
 /**
- * Option data for the select group component.
+ * Option data for the SelectGroup component.
  */
 export interface SelectGroupOptionData<T extends DefinedValue = DefinedValue> extends Pick<
   SelectSingleOptionData<T>,
@@ -279,14 +279,14 @@ export interface SelectGroupOptionData<T extends DefinedValue = DefinedValue> ex
 }
 
 /**
- * Option data for the select component.
+ * Option data for the Select component.
  */
 export type SelectOptionData<T extends DefinedValue = DefinedValue> =
   | SelectSingleOptionData<T>
   | SelectGroupOptionData<T>;
 
 /**
- * Properties for the select compact component.
+ * Properties for the SelectCompact component.
  */
 export interface SelectCompactProps<
   T extends DefinedValue = DefinedValue,
@@ -375,7 +375,7 @@ export interface SelectCompactProps<
 }
 
 /**
- * Events for the select compact component.
+ * Events for the SelectCompact component.
  */
 export type SelectCompactEmits<T extends DefinedValue = DefinedValue, M extends boolean = false> = SelectRootEmits<
   T,
@@ -389,7 +389,7 @@ type SelectCompactModelValue<T extends DefinedValue = DefinedValue, M extends bo
   | undefined;
 
 /**
- * Slot properties for the select compact trigger value component.
+ * Slot properties for the SelectCompactTriggerValue component.
  */
 export interface SelectCompactTriggerValueSlotProps<T extends DefinedValue = DefinedValue, M extends boolean = false> {
   /**
@@ -407,7 +407,7 @@ export interface SelectCompactTriggerValueSlotProps<T extends DefinedValue = Def
 }
 
 /**
- * Slot properties for the select compact group label component.
+ * Slot properties for the SelectCompactGroupLabel component.
  */
 export interface SelectCompactGroupLabelSlotProps<T extends DefinedValue = DefinedValue> {
   /**
@@ -417,7 +417,7 @@ export interface SelectCompactGroupLabelSlotProps<T extends DefinedValue = Defin
 }
 
 /**
- * Slot properties for the select compact item component.
+ * Slot properties for the SelectCompactItem component.
  */
 export interface SelectCompactItemSlotProps<T extends DefinedValue = DefinedValue> {
   /**
@@ -427,7 +427,7 @@ export interface SelectCompactItemSlotProps<T extends DefinedValue = DefinedValu
 }
 
 /**
- * Slots for the select compact component.
+ * Slots for the SelectCompact component.
  */
 export type SelectCompactSlots<T extends DefinedValue = DefinedValue, M extends boolean = false> = {
   /**
@@ -478,7 +478,7 @@ export type SelectCompactSlots<T extends DefinedValue = DefinedValue, M extends 
 
 // SelectValue
 /**
- * Properties for the select value component.
+ * Properties for the SelectValue component.
  */
 export interface SelectValueProps extends /** @vue-ignore */ HTMLAttributes {
   /** The content that will be rendered inside the `SelectValue` when no `value` or `defaultValue` is set. */
@@ -487,18 +487,18 @@ export interface SelectValueProps extends /** @vue-ignore */ HTMLAttributes {
 
 // SelectSeparator
 /**
- * Properties for the select separator component.
+ * Properties for the SelectSeparator component.
  */
 export interface SelectSeparatorProps extends /** @vue-ignore */ HTMLAttributes {}
 
 // SelectScrollButtonImpl
 /**
- * Properties for the select scroll button impl component.
+ * Properties for the SelectScrollButtonImpl component.
  */
 export interface SelectScrollButtonImplProps extends PrimitiveProps, /** @vue-ignore */ ButtonHTMLAttributes {}
 
 /**
- * Events for the select scroll button impl component.
+ * Events for the SelectScrollButtonImpl component.
  */
 export type SelectScrollButtonImplEmits = {
   /**
@@ -509,19 +509,19 @@ export type SelectScrollButtonImplEmits = {
 
 // SelectScrollDownButton
 /**
- * Properties for the select scroll down button component.
+ * Properties for the SelectScrollDownButton component.
  */
 export interface SelectScrollDownButtonProps extends SelectScrollButtonImplProps {}
 
 // SelectScrollUpButton
 /**
- * Properties for the select scroll up button component.
+ * Properties for the SelectScrollUpButton component.
  */
 export interface SelectScrollUpButtonProps extends SelectScrollButtonImplProps {}
 
 // BubbleSelect
 /**
- * Properties for the select bubble select component.
+ * Properties for the SelectBubbleSelect component.
  */
 export interface SelectBubbleSelectProps {
   /**
@@ -563,7 +563,7 @@ export interface SelectBubbleSelectProps {
 }
 
 /**
- * Parameters used to create the select root context.
+ * Parameters used to create the SelectRoot context.
  */
 export interface SelectRootContextParams extends PropsToContext<
   SelectRootProps,
@@ -592,7 +592,7 @@ export interface SelectRootContextParams extends PropsToContext<
 }
 
 /**
- * Parameters used to create the select content context.
+ * Parameters used to create the SelectContent context.
  */
 export interface SelectContentContextParams
   extends PropsToContext<SelectContentProps, 'position'>, Pick<SelectRootContextParams, 'modelValue' | 'isMultiple'> {
@@ -607,7 +607,7 @@ export interface SelectContentContextParams
 }
 
 /**
- * Context for the select item aligned position component.
+ * Context for the SelectItemAlignedPosition component.
  */
 export interface SelectItemAlignedPositionContext {
   /**
@@ -625,7 +625,7 @@ export interface SelectItemAlignedPositionContext {
 }
 
 /**
- * Parameters used to create the select item context.
+ * Parameters used to create the SelectItem context.
  */
 export interface SelectItemContextParams extends PropsToContext<SelectItemProps, 'textValue' | 'disabled'> {
   /**
@@ -639,7 +639,7 @@ export interface SelectItemContextParams extends PropsToContext<SelectItemProps,
 }
 
 /**
- * Type information for the select item collection item data component.
+ * Type information for SelectItemCollectionItemData.
  */
 export interface SelectItemCollectionItemData {
   /**
@@ -650,7 +650,7 @@ export interface SelectItemCollectionItemData {
 
 // Theme Context
 /**
- * Available UI slots for the select component.
+ * Available UI slots for the Select component.
  */
 export type SelectUiSlot =
   | 'trigger'
@@ -670,7 +670,7 @@ export type SelectUiSlot =
   | 'arrow';
 
 /**
- * UI class overrides for the select component.
+ * UI class overrides for the Select component.
  */
 export type SelectUi = UiClass<SelectUiSlot>;
 

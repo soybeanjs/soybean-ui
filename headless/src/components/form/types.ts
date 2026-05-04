@@ -53,7 +53,7 @@ export interface FormDescriptionProps extends /** @vue-ignore */ HTMLAttributes 
 export interface FormErrorProps extends /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Parameters used to create the form field context.
+ * Context for the FormField component.
  */
 export interface FormFieldContext {
   /**
@@ -99,7 +99,7 @@ export interface FormFieldCommonProps {
 }
 
 /**
- * Properties for the FormFieldBaseCompact component
+ * Properties for the FormFieldBaseCompact component.
  */
 export interface FormFieldBaseCompactProps extends FormFieldProps, FormFieldCommonProps {}
 
@@ -136,7 +136,7 @@ export interface FormFieldCompactProps<Values extends FormValues, Name extends P
 }
 
 /**
- * Slots for the form field component.
+ * Slots for the FormFieldCompact component.
  */
 export type FormFieldCompactSlots<Values extends FormValues, Name extends Path<Values>> = {
   /**
@@ -154,7 +154,7 @@ export type FormFieldCompactSlots<Values extends FormValues, Name extends Path<V
 };
 
 /**
- * Type information for the FormField component.
+ * Type information for FormFieldComponent.
  */
 export type FormFieldComponent<Values extends FormValues, ExtraProps extends Record<string, any> = {}> = new <
   Name extends Path<Values>
@@ -177,7 +177,7 @@ export type FormFieldComponent<Values extends FormValues, ExtraProps extends Rec
 >;
 
 /**
- * Properties for the form field array component.
+ * Slots for the FormFieldArrayCompact component.
  */
 export type FormFieldArrayCompactSlots<Values extends FormValues, Name extends Path<Values>> = {
   /**
@@ -195,7 +195,7 @@ export type FormFieldArrayCompactSlots<Values extends FormValues, Name extends P
 };
 
 /**
- * Type information for the FormFieldArray component.
+ * Type information for FormFieldArrayComponent.
  */
 export type FormFieldArrayComponent<Values extends FormValues, ExtraProps extends Record<string, any> = {}> = new <
   Name extends Path<Values>
@@ -218,7 +218,7 @@ export type FormFieldArrayComponent<Values extends FormValues, ExtraProps extend
 >;
 
 /**
- * Properties for the FormCompact component
+ * Properties for the FormCompact component.
  */
 export interface FormCompactProps
   extends
@@ -229,7 +229,7 @@ export interface FormCompactProps
 }
 
 /**
- * Context provided by the form component to its descendants.
+ * Context for the FormCompact component.
  */
 export interface FormCompactContext extends PropsToContext<
   FormCompactProps,
@@ -247,12 +247,12 @@ export type UseFormReturn<
 ];
 
 /**
- * Available UI slots for the form component.
+ * Available UI slots for the FormField component.
  */
 export type FormFieldUiSlot = 'field' | 'fieldArray' | 'label' | 'control' | 'description' | 'error';
 
 /**
- * UI class overrides for the form component.
+ * UI class overrides for the FormField component.
  */
 export type FormFieldUi = UiClass<FormFieldUiSlot>;
 

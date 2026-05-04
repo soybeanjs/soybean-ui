@@ -15,7 +15,7 @@ import type { Direction, FormFieldCommonProps, PropsToContext, UiClass } from '.
 import type { PrimitiveProps } from '../primitive/types';
 
 /**
- * Properties for the time range field root component.
+ * Properties for the TimeRangeFieldRoot component.
  */
 export interface TimeRangeFieldRootProps
   extends PrimitiveProps, FormFieldCommonProps, /** @vue-ignore */ Omit<HTMLAttributes, 'placeholder'> {
@@ -94,7 +94,7 @@ export interface TimeRangeFieldRootProps
 }
 
 /**
- * Events for the time range field root component.
+ * Events for the TimeRangeFieldRoot component.
  */
 export type TimeRangeFieldRootEmits = {
   /**
@@ -116,7 +116,7 @@ export type TimeRangeFieldRootEmits = {
 };
 
 /**
- * Properties for the time range field input component.
+ * Properties for the TimeRangeFieldInput component.
  */
 export interface TimeRangeFieldInputProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {
   /**
@@ -130,7 +130,7 @@ export interface TimeRangeFieldInputProps extends PrimitiveProps, /** @vue-ignor
 }
 
 /**
- * Type information for the time range field segment component.
+ * Type information for TimeRangeFieldSegment.
  */
 export interface TimeRangeFieldSegment {
   /**
@@ -144,7 +144,7 @@ export interface TimeRangeFieldSegment {
 }
 
 /**
- * Context for the time range field root component.
+ * Context for the TimeRangeFieldRoot component.
  */
 export interface TimeRangeFieldRootContext extends PropsToContext<TimeRangeFieldRootProps, 'disabled' | 'readonly'> {
   /**
@@ -246,16 +246,16 @@ export interface TimeRangeFieldRootContext extends PropsToContext<TimeRangeField
 }
 
 /**
- * Available UI slots for the time range field component.
+ * Available UI slots for the TimeRangeField component.
  */
 export type TimeRangeFieldUiSlot = 'root' | 'input' | 'separator';
 /**
- * UI class overrides for the time range field component.
+ * UI class overrides for the TimeRangeField component.
  */
 export type TimeRangeFieldUi = UiClass<TimeRangeFieldUiSlot>;
 
 /**
- * Properties for the time range field compact component.
+ * Properties for the TimeRangeFieldCompact component.
  */
 export interface TimeRangeFieldCompactProps extends TimeRangeFieldRootProps {
   /**
@@ -269,12 +269,12 @@ export interface TimeRangeFieldCompactProps extends TimeRangeFieldRootProps {
 }
 
 /**
- * Events for the time range field compact component.
+ * Events for the TimeRangeFieldCompact component.
  */
 export type TimeRangeFieldCompactEmits = TimeRangeFieldRootEmits;
 
 /**
- * Slots for the time range field compact component.
+ * Slots for the TimeRangeFieldCompact component.
  */
 export type TimeRangeFieldCompactSlots = {
   /**

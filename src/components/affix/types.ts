@@ -2,7 +2,7 @@ import type { AffixCompactEmits, AffixCompactProps, AffixUi } from '@soybeanjs/h
 import type { ClassValue } from '@soybeanjs/headless/types';
 
 /**
- * Properties for the affix component.
+ * Properties for the Affix component.
  */
 export interface AffixProps extends AffixCompactProps {
   /**
@@ -16,6 +16,6 @@ export interface AffixProps extends AffixCompactProps {
 }
 
 /**
- * Events for the affix component.
+ * Events for the Affix component.
  */
 export type AffixEmits = AffixCompactEmits;

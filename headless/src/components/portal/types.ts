@@ -1,7 +1,7 @@
 import type { ForceMountProps } from '../../types';
 
 /**
- * Properties for the portal component.
+ * Properties for the Portal component.
  */
 export interface PortalProps extends ForceMountProps {
   /**

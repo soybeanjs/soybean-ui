@@ -12,7 +12,7 @@ import type { ThemeSize } from '@/theme';
 import type { PaginationShape, PaginationVariant } from './variants';
 
 /**
- * Properties for the pagination component.
+ * Properties for the Pagination component.
  */
 export interface PaginationProps extends PaginationRootProps {
   /**
@@ -48,6 +48,6 @@ export interface PaginationProps extends PaginationRootProps {
 }
 
 /**
- * Events for the pagination component.
+ * Events for the Pagination component.
  */
 export type PaginationEmits = PaginationRootEmits;

@@ -9,7 +9,7 @@ import type { ClassValue } from '@soybeanjs/headless/types';
 import type { ThemeSize } from '@/theme';
 
 /**
- * Properties for the accordion component.
+ * Properties for the Accordion component.
  */
 export interface AccordionProps<
   T extends AccordionOptionData = AccordionOptionData,
@@ -30,12 +30,12 @@ export interface AccordionProps<
 }
 
 /**
- * Events for the accordion component.
+ * Events for the Accordion component.
  */
 export type AccordionEmits<M extends boolean = false> = AccordionCompactEmits<M>;
 
 /**
- * Slots for the accordion component.
+ * Slots for the Accordion component.
  */
 export type AccordionSlots<
   T extends AccordionOptionData = AccordionOptionData,

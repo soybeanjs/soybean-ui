@@ -13,7 +13,7 @@ import type { ClassValue, Placement } from '@soybeanjs/headless/types';
 import type { ThemeSize } from '@/theme';
 
 /**
- * Properties for the hover card component.
+ * Properties for the HoverCard component.
  */
 export interface HoverCardProps extends HoverCardRootProps {
   /**
@@ -59,6 +59,6 @@ export interface HoverCardProps extends HoverCardRootProps {
 }
 
 /**
- * Events for the hover card component.
+ * Events for the HoverCard component.
  */
 export type HoverCardEmits = HoverCardRootEmits & HoverCardPositionerEmits;

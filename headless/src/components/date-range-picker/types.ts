@@ -13,7 +13,7 @@ import type { Direction, FormFieldCommonProps, PropsToContext, UiClass } from '.
 import type { PrimitiveProps } from '../primitive/types';
 
 /**
- * Properties for the date range picker root component.
+ * Properties for the DateRangePickerRoot component.
  */
 export interface DateRangePickerRootProps
   extends PrimitiveProps, FormFieldCommonProps, /** @vue-ignore */ Omit<HTMLAttributes, 'placeholder'> {
@@ -96,7 +96,7 @@ export interface DateRangePickerRootProps
 }
 
 /**
- * Events for the date range picker root component.
+ * Events for the DateRangePickerRoot component.
  */
 export type DateRangePickerRootEmits = {
   /**
@@ -122,7 +122,7 @@ export type DateRangePickerRootEmits = {
 };
 
 /**
- * Properties for the date range picker input component.
+ * Properties for the DateRangePickerInput component.
  */
 export interface DateRangePickerInputProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {
   /**
@@ -132,17 +132,17 @@ export interface DateRangePickerInputProps extends PrimitiveProps, /** @vue-igno
 }
 
 /**
- * Properties for the date range picker trigger component.
+ * Properties for the DateRangePickerTrigger component.
  */
 export interface DateRangePickerTriggerProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Properties for the date range picker popup component.
+ * Properties for the DateRangePickerPopup component.
  */
 export interface DateRangePickerPopupProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Context for the date range picker root component.
+ * Context for the DateRangePickerRoot component.
  */
 export interface DateRangePickerRootContext extends PropsToContext<DateRangePickerRootProps, 'disabled' | 'readonly'> {
   /**
@@ -244,16 +244,16 @@ export interface DateRangePickerRootContext extends PropsToContext<DateRangePick
 }
 
 /**
- * Available UI slots for the date range picker component.
+ * Available UI slots for the DateRangePicker component.
  */
 export type DateRangePickerUiSlot = 'root' | 'trigger' | 'popup' | 'input' | 'calendar';
 /**
- * UI class overrides for the date range picker component.
+ * UI class overrides for the DateRangePicker component.
  */
 export type DateRangePickerUi = UiClass<DateRangePickerUiSlot>;
 
 /**
- * Properties for the date range picker compact component.
+ * Properties for the DateRangePickerCompact component.
  */
 export interface DateRangePickerCompactProps extends DateRangePickerRootProps {
   /**
@@ -267,12 +267,12 @@ export interface DateRangePickerCompactProps extends DateRangePickerRootProps {
 }
 
 /**
- * Events for the date range picker compact component.
+ * Events for the DateRangePickerCompact component.
  */
 export type DateRangePickerCompactEmits = DateRangePickerRootEmits;
 
 /**
- * Slots for the date range picker compact component.
+ * Slots for the DateRangePickerCompact component.
  */
 export type DateRangePickerCompactSlots = {
   /**

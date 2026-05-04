@@ -10,7 +10,7 @@ import type { ClassValue } from '@soybeanjs/headless/types';
 import type { ThemeSize } from '@/theme';
 
 /**
- * Properties for the list component.
+ * Properties for the List component.
  */
 export interface ListProps extends ListRootProps {
   /**
@@ -28,7 +28,7 @@ export interface ListProps extends ListRootProps {
 }
 
 /**
- * Properties for the list item component.
+ * Properties for the ListItem component.
  */
 export interface ListItemProps extends _ListItemProps {
   /**

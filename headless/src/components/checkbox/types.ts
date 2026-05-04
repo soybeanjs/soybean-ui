@@ -13,7 +13,7 @@ import type { IconValue } from '../_icon/types';
 import type { RovingFocusGroupProps } from '../roving-focus/types';
 
 /**
- * Properties for the checkbox root component.
+ * Properties for the CheckboxRoot component.
  */
 export interface CheckboxRootProps extends FormFieldCommonProps, /** @vue-ignore */ HTMLAttributes {
   /**
@@ -39,7 +39,7 @@ export interface CheckboxRootProps extends FormFieldCommonProps, /** @vue-ignore
 }
 
 /**
- * Events for the checkbox root component.
+ * Events for the CheckboxRoot component.
  */
 export type CheckboxRootEmits = {
   /** Event handler called when the value of the checkbox changes. */
@@ -47,7 +47,7 @@ export type CheckboxRootEmits = {
 };
 
 /**
- * Properties for the checkbox control component.
+ * Properties for the CheckboxControl component.
  */
 export interface CheckboxControlProps extends /** @vue-ignore */ ButtonHTMLAttributes {
   /** Id of the element */
@@ -55,12 +55,12 @@ export interface CheckboxControlProps extends /** @vue-ignore */ ButtonHTMLAttri
 }
 
 /**
- * Properties for the checkbox indicator component.
+ * Properties for the CheckboxIndicator component.
  */
 export interface CheckboxIndicatorProps extends PrimitiveProps, ForceMountProps, /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Option data for the checkbox group component.
+ * Option data for the CheckboxGroup component.
  */
 export type CheckboxGroupOptionData<T extends DefinedValue = DefinedValue> = {
   /**
@@ -78,7 +78,7 @@ export type CheckboxGroupOptionData<T extends DefinedValue = DefinedValue> = {
 };
 
 /**
- * Option data for the checkbox card group component.
+ * Option data for the CheckboxCardGroup component.
  */
 export type CheckboxCardGroupOptionData<T extends DefinedValue = DefinedValue> = CheckboxGroupOptionData<T> & {
   /**
@@ -92,7 +92,7 @@ export type CheckboxCardGroupOptionData<T extends DefinedValue = DefinedValue> =
 };
 
 /**
- * Properties for the checkbox group root component.
+ * Properties for the CheckboxGroupRoot component.
  */
 export interface CheckboxGroupRootProps<T extends DefinedValue = DefinedValue>
   extends
@@ -120,7 +120,7 @@ export interface CheckboxGroupRootProps<T extends DefinedValue = DefinedValue>
 }
 
 /**
- * Events for the checkbox group root component.
+ * Events for the CheckboxGroupRoot component.
  */
 export type CheckboxGroupRootEmits<T extends DefinedValue = DefinedValue> = {
   /** Event handler called when the value of the checkbox group changes. */
@@ -128,7 +128,7 @@ export type CheckboxGroupRootEmits<T extends DefinedValue = DefinedValue> = {
 };
 
 /**
- * Properties for the checkbox compact component.
+ * Properties for the CheckboxCompact component.
  */
 export interface CheckboxCompactProps extends CheckboxRootProps {
   /**
@@ -150,12 +150,12 @@ export interface CheckboxCompactProps extends CheckboxRootProps {
 }
 
 /**
- * Events for the checkbox compact component.
+ * Events for the CheckboxCompact component.
  */
 export type CheckboxCompactEmits = CheckboxRootEmits;
 
 /**
- * Properties for the checkbox card compact component.
+ * Properties for the CheckboxCardCompact component.
  */
 export interface CheckboxCardCompactProps extends CheckboxCompactProps {
   /**
@@ -169,12 +169,12 @@ export interface CheckboxCardCompactProps extends CheckboxCompactProps {
 }
 
 /**
- * Events for the checkbox card compact component.
+ * Events for the CheckboxCardCompact component.
  */
 export type CheckboxCardCompactEmits = CheckboxCompactEmits;
 
 /**
- * Properties for the checkbox group compact component.
+ * Properties for the CheckboxGroupCompact component.
  */
 export interface CheckboxGroupCompactProps<
   T extends CheckboxGroupOptionData = CheckboxGroupOptionData
@@ -202,24 +202,24 @@ export interface CheckboxGroupCompactProps<
 }
 
 /**
- * Properties for the checkbox card group compact component.
+ * Properties for the CheckboxCardGroupCompact component.
  */
 export interface CheckboxCardGroupCompactProps<
   T extends CheckboxCardGroupOptionData = CheckboxCardGroupOptionData
 > extends CheckboxGroupCompactProps<T> {}
 
 /**
- * Events for the checkbox group compact component.
+ * Events for the CheckboxGroupCompact component.
  */
 export type CheckboxGroupCompactEmits<T extends DefinedValue = DefinedValue> = CheckboxGroupRootEmits<T>;
 
 /**
- * Events for the checkbox card group compact component.
+ * Events for the CheckboxCardGroupCompact component.
  */
 export type CheckboxCardGroupCompactEmits<T extends DefinedValue = DefinedValue> = CheckboxGroupRootEmits<T>;
 
 /**
- * Parameters used to create the checkbox group root context.
+ * Parameters used to create the CheckboxGroupRoot context.
  */
 export type CheckboxGroupRootContextParams = PropsToContext<CheckboxGroupRootProps, 'rovingFocus' | 'disabled'> & {
   /**
@@ -229,7 +229,7 @@ export type CheckboxGroupRootContextParams = PropsToContext<CheckboxGroupRootPro
 };
 
 /**
- * Parameters used to create the checkbox root context.
+ * Parameters used to create the CheckboxRoot context.
  */
 export type CheckboxRootContextParams = PropsToContext<
   CheckboxRootProps,
@@ -246,22 +246,22 @@ export type CheckboxRootContextParams = PropsToContext<
 };
 
 /**
- * Available UI slots for the checkbox component.
+ * Available UI slots for the Checkbox component.
  */
 export type CheckboxUiSlot = 'groupRoot' | 'root' | 'indicator' | 'indicator-icon' | 'label' | 'control';
 
 /**
- * Available UI slots for the checkbox component.
+ * Available UI slots for the CheckboxCard component.
  */
 export type CheckboxCardUiSlot = CheckboxUiSlot | 'content' | 'icon' | 'textContent' | 'description';
 
 /**
- * UI class overrides for the checkbox component.
+ * UI class overrides for the Checkbox component.
  */
 export type CheckboxUi = UiClass<CheckboxUiSlot>;
 
 /**
- * UI class overrides for the checkbox component.
+ * UI class overrides for the CheckboxCard component.
  */
 export type CheckboxCardUi = UiClass<CheckboxCardUiSlot>;
 

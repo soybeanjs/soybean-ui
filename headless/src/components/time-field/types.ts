@@ -14,7 +14,7 @@ import type { Direction, FormFieldCommonProps, PropsToContext, UiClass } from '.
 import type { PrimitiveProps } from '../primitive/types';
 
 /**
- * Properties for the time field root component.
+ * Properties for the TimeFieldRoot component.
  */
 export interface TimeFieldRootProps
   extends PrimitiveProps, FormFieldCommonProps, /** @vue-ignore */ Omit<HTMLAttributes, 'placeholder'> {
@@ -85,7 +85,7 @@ export interface TimeFieldRootProps
 }
 
 /**
- * Events for the time field root component.
+ * Events for the TimeFieldRoot component.
  */
 export type TimeFieldRootEmits = {
   /**
@@ -99,7 +99,7 @@ export type TimeFieldRootEmits = {
 };
 
 /**
- * Properties for the time field input component.
+ * Properties for the TimeFieldInput component.
  */
 export interface TimeFieldInputProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {
   /**
@@ -109,7 +109,7 @@ export interface TimeFieldInputProps extends PrimitiveProps, /** @vue-ignore */ 
 }
 
 /**
- * Type information for the time field segment component.
+ * Type information for TimeFieldSegment.
  */
 export interface TimeFieldSegment {
   /**
@@ -123,7 +123,7 @@ export interface TimeFieldSegment {
 }
 
 /**
- * Context for the time field root component.
+ * Context for the TimeFieldRoot component.
  */
 export interface TimeFieldRootContext extends PropsToContext<TimeFieldRootProps, 'disabled' | 'readonly'> {
   /**
@@ -201,10 +201,10 @@ export interface TimeFieldRootContext extends PropsToContext<TimeFieldRootProps,
 }
 
 /**
- * Available UI slots for the time field component.
+ * Available UI slots for the TimeField component.
  */
 export type TimeFieldUiSlot = 'root' | 'input';
 /**
- * UI class overrides for the time field component.
+ * UI class overrides for the TimeField component.
  */
 export type TimeFieldUi = UiClass<TimeFieldUiSlot>;

@@ -17,7 +17,7 @@ import type {
 import type { SeparatorRootProps } from '../separator/types';
 
 /**
- * Option data for the command single component.
+ * Option data for the CommandSingle component.
  */
 export interface CommandSingleOptionData extends Pick<CommandItemProps, 'value' | 'disabled'> {
   /**
@@ -39,7 +39,7 @@ export interface CommandSingleOptionData extends Pick<CommandItemProps, 'value' 
 }
 
 /**
- * Option data for the command group component.
+ * Option data for the CommandGroup component.
  */
 export interface CommandGroupOptionData<T extends CommandSingleOptionData = CommandSingleOptionData> extends Pick<
   CommandSingleOptionData,
@@ -52,29 +52,29 @@ export interface CommandGroupOptionData<T extends CommandSingleOptionData = Comm
 }
 
 /**
- * Option data for the command component.
+ * Option data for the Command component.
  */
 export type CommandOptionData<T extends CommandSingleOptionData = CommandSingleOptionData> =
   | T
   | CommandGroupOptionData<T>;
 
 /**
- * Properties for the command item label component.
+ * Properties for the CommandItemLabel component.
  */
 export interface CommandItemLabelProps extends /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Properties for the command shortcut component.
+ * Properties for the CommandShortcut component.
  */
 export interface CommandShortcutProps extends Omit<KbdProps, 'value'> {}
 
 /**
- * Properties for the command separator component.
+ * Properties for the CommandSeparator component.
  */
 export interface CommandSeparatorProps extends SeparatorRootProps {}
 
 /**
- * Option data for the command search component.
+ * Option data for the CommandSearch component.
  */
 export type CommandSearchOptionData<T extends CommandSingleOptionData = CommandSingleOptionData> = T & {
   /**
@@ -92,12 +92,12 @@ export type CommandSearchOptionData<T extends CommandSingleOptionData = CommandS
 };
 
 /**
- * Properties for the command empty component.
+ * Properties for the CommandEmpty component.
  */
 export interface CommandEmptyProps extends /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Available UI slots for the command component.
+ * Available UI slots for the Command component.
  */
 export type CommandUiSlot =
   | Extract<ListboxUiSlot, 'root' | 'item' | 'group' | 'groupLabel'>
@@ -111,12 +111,12 @@ export type CommandUiSlot =
   | 'empty';
 
 /**
- * UI class overrides for the command component.
+ * UI class overrides for the Command component.
  */
 export type CommandUi = UiClass<CommandUiSlot>;
 
 /**
- * Properties for the command compact component.
+ * Properties for the CommandCompact component.
  */
 export interface CommandCompactProps<T extends CommandSingleOptionData = CommandSingleOptionData> extends Omit<
   CommandRootProps,
@@ -185,7 +185,7 @@ export interface CommandCompactProps<T extends CommandSingleOptionData = Command
 }
 
 /**
- * Events for the command search term component.
+ * Events for the CommandSearchTerm component.
  */
 export type CommandSearchTermEmits = {
   /**
@@ -195,12 +195,12 @@ export type CommandSearchTermEmits = {
 };
 
 /**
- * Events for the command compact component.
+ * Events for the CommandCompact component.
  */
 export type CommandCompactEmits = CommandRootEmits & CommandItemEmits & CommandSearchTermEmits;
 
 /**
- * Slot properties for the command compact input component.
+ * Slot properties for the CommandCompactInput component.
  */
 export interface CommandCompactInputSlotProps {
   /**
@@ -210,7 +210,7 @@ export interface CommandCompactInputSlotProps {
 }
 
 /**
- * Slot properties for the command compact item component.
+ * Slot properties for the CommandCompactItem component.
  */
 export interface CommandCompactItemSlotProps<T extends CommandSingleOptionData = CommandSingleOptionData> {
   /**
@@ -220,7 +220,7 @@ export interface CommandCompactItemSlotProps<T extends CommandSingleOptionData =
 }
 
 /**
- * Slots for the command compact component.
+ * Slots for the CommandCompact component.
  */
 export type CommandCompactSlots<T extends CommandSingleOptionData = CommandSingleOptionData> = {
   /**

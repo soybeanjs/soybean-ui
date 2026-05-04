@@ -9,7 +9,7 @@ import type { ClassValue } from '@soybeanjs/headless/types';
 import type { ThemeSize } from '@/theme';
 
 /**
- * Properties for the breadcrumb component.
+ * Properties for the Breadcrumb component.
  */
 export interface BreadcrumbProps<
   T extends BreadcrumbOptionData = BreadcrumbOptionData
@@ -29,12 +29,12 @@ export interface BreadcrumbProps<
 }
 
 /**
- * Events for the breadcrumb component.
+ * Events for the Breadcrumb component.
  */
 export type BreadcrumbEmits<T extends BreadcrumbOptionData = BreadcrumbOptionData> = BreadcrumbCompactEmits<T>;
 
 /**
- * Slots for the breadcrumb component.
+ * Slots for the Breadcrumb component.
  */
 export type BreadcrumbSlots<T extends BreadcrumbOptionData = BreadcrumbOptionData> = BreadcrumbCompactSlots<T>;
 

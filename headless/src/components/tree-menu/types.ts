@@ -3,12 +3,12 @@ import type { UiClass } from '../../types';
 import type { PrimitiveProps } from '../primitive/types';
 
 /**
- * State values for the tree menu component.
+ * State values for TreeMenuCollapsedState.
  */
 export type TreeMenuCollapsedState = 'expanded' | 'collapsed';
 
 /**
- * Properties for the tree menu root component.
+ * Properties for the TreeMenuRoot component.
  */
 export interface TreeMenuRootProps {
   /**
@@ -40,7 +40,7 @@ export interface TreeMenuRootProps {
 }
 
 /**
- * Events for the tree menu root component.
+ * Events for the TreeMenuRoot component.
  */
 export type TreeMenuRootEmits = {
   /**
@@ -58,22 +58,22 @@ export type TreeMenuRootEmits = {
 };
 
 /**
- * Properties for the tree menu group root component.
+ * Properties for the TreeMenuGroupRoot component.
  */
 export interface TreeMenuGroupRootProps extends /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Properties for the tree menu group component.
+ * Properties for the TreeMenuGroup component.
  */
 export interface TreeMenuGroupProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Properties for the tree menu group label component.
+ * Properties for the TreeMenuGroupLabel component.
  */
 export interface TreeMenuGroupLabelProps extends /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Properties for the tree menu base item component.
+ * Properties for the TreeMenuBaseItem component.
  */
 export interface TreeMenuBaseItemProps {
   /**
@@ -87,12 +87,12 @@ export interface TreeMenuBaseItemProps {
 }
 
 /**
- * Properties for the tree menu item component.
+ * Properties for the TreeMenuItem component.
  */
 export interface TreeMenuItemProps extends TreeMenuBaseItemProps, PrimitiveProps, /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Properties for the tree menu button component.
+ * Properties for the TreeMenuButton component.
  */
 export interface TreeMenuButtonProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {
   /**
@@ -104,7 +104,7 @@ export interface TreeMenuButtonProps extends PrimitiveProps, /** @vue-ignore */ 
 }
 
 /**
- * Properties for the tree menu collapsible component.
+ * Properties for the TreeMenuCollapsible component.
  */
 export interface TreeMenuCollapsibleProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {
   /**
@@ -114,12 +114,12 @@ export interface TreeMenuCollapsibleProps extends PrimitiveProps, /** @vue-ignor
 }
 
 /**
- * Properties for the tree menu sub component.
+ * Properties for the TreeMenuSub component.
  */
 export interface TreeMenuSubProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Parameters used to create the tree menu root context.
+ * Parameters used to create the TreeMenuRoot context.
  */
 export interface TreeMenuRootContextParams {
   /**
@@ -137,7 +137,7 @@ export interface TreeMenuRootContextParams {
 }
 
 /**
- * Context for the tree menu item component.
+ * Context for the TreeMenuItem component.
  */
 export interface TreeMenuItemContext {
   /**
@@ -163,7 +163,7 @@ export interface TreeMenuItemContext {
 }
 
 /**
- * Parameters used to create the tree menu sub context.
+ * Parameters used to create the TreeMenuSub context.
  */
 export interface TreeMenuSubContextParams {
   /**
@@ -173,7 +173,7 @@ export interface TreeMenuSubContextParams {
 }
 
 /**
- * Available UI slots for the tree menu component.
+ * Available UI slots for the TreeMenu component.
  */
 export type TreeMenuUiSlot =
   | 'root'
@@ -190,6 +190,6 @@ export type TreeMenuUiSlot =
   | 'collapsibleContent';
 
 /**
- * UI class overrides for the tree menu component.
+ * UI class overrides for the TreeMenu component.
  */
 export type TreeMenuUi = UiClass<TreeMenuUiSlot>;

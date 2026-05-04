@@ -24,7 +24,7 @@ import type { MenuOptionData } from '../menu';
 import type { DropdownMenuProps } from '../dropdown-menu/types';
 
 /**
- * Option data for the tree menu component.
+ * Option data for the TreeMenuBase component.
  */
 export interface TreeMenuBaseOptionData extends TreeMenuBaseItemProps, LinkBaseProps {
   /**
@@ -82,7 +82,7 @@ export interface TreeMenuBaseOptionData extends TreeMenuBaseItemProps, LinkBaseP
 }
 
 /**
- * Option data for the tree menu component.
+ * Option data for the TreeMenu component.
  */
 export type TreeMenuOptionData<T extends TreeMenuBaseOptionData = TreeMenuBaseOptionData> = T & {
   /**
@@ -92,7 +92,7 @@ export type TreeMenuOptionData<T extends TreeMenuBaseOptionData = TreeMenuBaseOp
 };
 
 /**
- * Slot properties for the tree menu component.
+ * Slot properties for the TreeMenuOption component.
  */
 export interface TreeMenuOptionSlotProps extends TreeMenuOptionProps {
   /**
@@ -102,7 +102,7 @@ export interface TreeMenuOptionSlotProps extends TreeMenuOptionProps {
 }
 
 /**
- * Properties for the tree menu option component.
+ * Properties for the TreeMenuOption component.
  */
 export interface TreeMenuOptionProps {
   /**
@@ -136,7 +136,7 @@ export interface TreeMenuOptionProps {
 }
 
 /**
- * Events for the tree menu option component.
+ * Events for the TreeMenuOption component.
  */
 export type TreeMenuOptionEmits = {
   /**
@@ -146,7 +146,7 @@ export type TreeMenuOptionEmits = {
 };
 
 /**
- * Properties for the tree menu options component.
+ * Properties for the TreeMenuOptions component.
  */
 export interface TreeMenuOptionsProps<T extends TreeMenuBaseOptionData = TreeMenuBaseOptionData> extends Omit<
   TreeMenuOptionProps,
@@ -177,7 +177,7 @@ export interface TreeMenuOptionsProps<T extends TreeMenuBaseOptionData = TreeMen
 }
 
 /**
- * Events for the tree menu options component.
+ * Events for the TreeMenuOptions component.
  */
 export type TreeMenuOptionsEmits = TreeMenuOptionEmits;
 
@@ -194,12 +194,12 @@ export type TreeMenuExtraUiSlot =
   | 'collapsibleIcon';
 
 /**
- * Extended UI class overrides for the tree menu component.
+ * Extended UI class overrides for the TreeMenu component.
  */
 export type TreeMenuExtendedUi = UiClass<TreeMenuUiSlot | TreeMenuExtraUiSlot>;
 
 /**
- * Properties for the tree menu component.
+ * Properties for the TreeMenu component.
  */
 export interface TreeMenuProps<T extends TreeMenuBaseOptionData = TreeMenuBaseOptionData>
   extends TreeMenuRootProps, TreeMenuOptionsProps<T> {
@@ -236,12 +236,12 @@ export interface TreeMenuProps<T extends TreeMenuBaseOptionData = TreeMenuBaseOp
 }
 
 /**
- * Events for the tree menu component.
+ * Events for the TreeMenu component.
  */
 export type TreeMenuEmits = TreeMenuRootEmits & TreeMenuOptionEmits;
 
 /**
- * Properties for the tree menu styled item component.
+ * Properties for the TreeMenuStyledItem component.
  */
 export interface TreeMenuStyledItemProps extends /** @vue-ignore */ HTMLAttributes {
   /**
@@ -259,12 +259,12 @@ export interface TreeMenuStyledItemProps extends /** @vue-ignore */ HTMLAttribut
 }
 
 /**
- * Context for the tree menu component.
+ * Context for the TreeMenu component.
  */
 export interface TreeMenuContext extends PropsToContext<TreeMenuProps, 'size' | 'side'> {}
 
 /**
- * Context for the tree menu options component.
+ * Context for the TreeMenuOptions component.
  */
 export interface TreeMenuOptionsContext {
   /**

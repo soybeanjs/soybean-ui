@@ -3,7 +3,7 @@ import type { DataOrientation, Direction, EmitsToHookProps, PropsToContext } fro
 import type { PrimitiveProps } from '../primitive/types';
 
 /**
- * Properties for the roving focus group component.
+ * Properties for the RovingFocusGroup component.
  */
 export interface RovingFocusGroupProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {
   /** The orientation of the group. Mainly so arrow navigation is done accordingly (left & right vs. up & down) */
@@ -29,7 +29,7 @@ export interface RovingFocusGroupProps extends PrimitiveProps, /** @vue-ignore *
 }
 
 /**
- * Events for the roving focus group component.
+ * Events for the RovingFocusGroup component.
  */
 export type RovingFocusGroupEmits = {
   /**
@@ -43,7 +43,7 @@ export type RovingFocusGroupEmits = {
 };
 
 /**
- * Properties for the roving focus item component.
+ * Properties for the RovingFocusItem component.
  */
 export interface RovingFocusItemProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {
   /**
@@ -65,7 +65,7 @@ export interface RovingFocusItemProps extends PrimitiveProps, /** @vue-ignore */
 }
 
 /**
- * Parameters used to create the roving focus group context.
+ * Parameters used to create the RovingFocusGroup context.
  */
 export type RovingFocusGroupContextParams = PropsToContext<
   RovingFocusGroupProps,
@@ -74,7 +74,7 @@ export type RovingFocusGroupContextParams = PropsToContext<
   EmitsToHookProps<RovingFocusGroupEmits>;
 
 /**
- * Type information for the use roving focus item options component.
+ * Type information for UseRovingFocusItemOptions.
  */
 export type UseRovingFocusItemOptions = Partial<
   PropsToContext<RovingFocusItemProps, 'tabStopId' | 'focusable' | 'active' | 'allowShiftKey' | 'itemData'>

@@ -2,12 +2,12 @@ import type { HTMLAttributes, ImgHTMLAttributes } from 'vue';
 import type { ImageLoadingStatus, UiClass } from '../../types';
 
 /**
- * Properties for the avatar root component.
+ * Properties for the AvatarRoot component.
  */
 export interface AvatarRootProps extends /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Properties for the avatar image component.
+ * Properties for the AvatarImage component.
  */
 export interface AvatarImageProps extends /** @vue-ignore */ ImgHTMLAttributes {
   /** The image source URL */
@@ -18,7 +18,7 @@ export interface AvatarImageProps extends /** @vue-ignore */ ImgHTMLAttributes {
   crossorigin?: ImgHTMLAttributes['crossorigin'];
 }
 /**
- * Events for the avatar image component.
+ * Events for the AvatarImage component.
  */
 export type AvatarImageEmits = {
   /**
@@ -29,7 +29,7 @@ export type AvatarImageEmits = {
 };
 
 /**
- * Properties for the avatar fallback component.
+ * Properties for the AvatarFallback component.
  */
 export interface AvatarFallbackProps extends /** @vue-ignore */ HTMLAttributes {
   /**
@@ -41,7 +41,7 @@ export interface AvatarFallbackProps extends /** @vue-ignore */ HTMLAttributes {
 }
 
 /**
- * Properties for the avatar compact component.
+ * Properties for the AvatarCompact component.
  */
 export interface AvatarCompactProps extends AvatarRootProps {
   /** The image source URL. */
@@ -61,12 +61,12 @@ export interface AvatarCompactProps extends AvatarRootProps {
 }
 
 /**
- * Events for the avatar compact component.
+ * Events for the AvatarCompact component.
  */
 export type AvatarCompactEmits = AvatarImageEmits;
 
 /**
- * Slots for the avatar compact component.
+ * Slots for the AvatarCompact component.
  */
 export type AvatarCompactSlots = {
   /** Custom content for the default slot. */
@@ -78,11 +78,11 @@ export type AvatarCompactSlots = {
 };
 
 /**
- * Available UI slots for the avatar component.
+ * Available UI slots for the Avatar component.
  */
 export type AvatarUiSlot = 'root' | 'image' | 'fallback';
 
 /**
- * UI class overrides for the avatar component.
+ * UI class overrides for the Avatar component.
  */
 export type AvatarUi = UiClass<AvatarUiSlot>;

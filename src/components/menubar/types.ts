@@ -8,7 +8,7 @@ import type { ClassValue, AlignSide, DefinedValue } from '@soybeanjs/headless/ty
 import type { ThemeSize } from '@/theme';
 
 /**
- * Properties for the menubar component.
+ * Properties for the Menubar component.
  */
 export interface MenubarProps<T extends DefinedValue = DefinedValue> extends MenubarCompactProps<T> {
   /**
@@ -30,11 +30,11 @@ export interface MenubarProps<T extends DefinedValue = DefinedValue> extends Men
 }
 
 /**
- * Events for the menubar component.
+ * Events for the Menubar component.
  */
 export type MenubarEmits<T extends DefinedValue = DefinedValue> = MenubarCompactEmits<T>;
 
 /**
- * Slots for the menubar component.
+ * Slots for the Menubar component.
  */
 export type MenubarSlots<T extends DefinedValue = DefinedValue> = MenubarCompactSlots<T>;

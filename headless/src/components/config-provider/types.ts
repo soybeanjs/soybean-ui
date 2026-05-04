@@ -4,7 +4,7 @@ import type { TooltipProviderProps } from '../tooltip/types';
 import type { IconValue } from '../_icon/types';
 
 /**
- * Properties for the config provider component.
+ * Properties for the ConfigProvider component.
  */
 export interface ConfigProviderProps {
   /**
@@ -46,7 +46,7 @@ export interface ConfigProviderProps {
 }
 
 /**
- * Context for the config provider component.
+ * Context for the ConfigProvider component.
  */
 export interface ConfigProviderContext
   extends PropsToContext<Omit<ConfigProviderProps, 'iconRender'>>, Pick<ConfigProviderProps, 'iconRender'> {}

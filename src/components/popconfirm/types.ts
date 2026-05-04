@@ -16,7 +16,7 @@ import type { ThemeColor, ThemeSize } from '@/theme';
 import type { ButtonProps } from '../button/types';
 
 /**
- * Properties for the popconfirm confirm component.
+ * Properties for the PopconfirmConfirm component.
  */
 export interface PopconfirmConfirmProps extends ButtonProps {
   /**
@@ -30,7 +30,7 @@ export interface PopconfirmConfirmProps extends ButtonProps {
   beforeClose?: () => MaybePromise<boolean | void>;
 }
 /**
- * Events for the popconfirm confirm component.
+ * Events for the PopconfirmConfirm component.
  */
 export type PopconfirmConfirmEmits = {
   /**
@@ -40,7 +40,7 @@ export type PopconfirmConfirmEmits = {
 };
 
 /**
- * Properties for the popconfirm cancel component.
+ * Properties for the PopconfirmCancel component.
  */
 export interface PopconfirmCancelProps extends ButtonProps {
   /**
@@ -54,7 +54,7 @@ export interface PopconfirmCancelProps extends ButtonProps {
   beforeClose?: () => MaybePromise<boolean | void>;
 }
 /**
- * Events for the popconfirm cancel component.
+ * Events for the PopconfirmCancel component.
  */
 export type PopconfirmCancelEmits = {
   /**
@@ -64,27 +64,27 @@ export type PopconfirmCancelEmits = {
 };
 
 /**
- * Properties for the popconfirm header component.
+ * Properties for the PopconfirmHeader component.
  */
 export interface PopconfirmHeaderProps extends /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Properties for the popconfirm title component.
+ * Properties for the PopconfirmTitle component.
  */
 export interface PopconfirmTitleProps extends /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Properties for the popconfirm description component.
+ * Properties for the PopconfirmDescription component.
  */
 export interface PopconfirmDescriptionProps extends /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Properties for the popconfirm content component.
+ * Properties for the PopconfirmContent component.
  */
 export interface PopconfirmContentProps extends /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Properties for the popconfirm footer component.
+ * Properties for the PopconfirmFooter component.
  */
 export interface PopconfirmFooterProps extends /** @vue-ignore */ HTMLAttributes {}
 
@@ -96,12 +96,12 @@ export type PopconfirmType = Extract<ThemeColor, 'destructive' | 'success' | 'wa
 type PopconfirmUiSlot = PopoverUiSlot | 'header' | 'icon' | 'header' | 'title' | 'description' | 'content' | 'footer';
 
 /**
- * UI class overrides for the popconfirm component.
+ * UI class overrides for the Popconfirm component.
  */
 export type PopconfirmUi = UiClass<PopconfirmUiSlot>;
 
 /**
- * Properties for the popconfirm component.
+ * Properties for the Popconfirm component.
  */
 export interface PopconfirmProps extends PopoverRootProps {
   /**
@@ -225,7 +225,7 @@ export interface PopconfirmProps extends PopoverRootProps {
 }
 
 /**
- * Events for the popconfirm component.
+ * Events for the Popconfirm component.
  */
 export type PopconfirmEmits = PopoverRootEmits &
   PopoverPositionerEmits & {
@@ -236,7 +236,7 @@ export type PopconfirmEmits = PopoverRootEmits &
   };
 
 /**
- * Context for the popconfirm component.
+ * Context for the Popconfirm component.
  */
 export interface PopconfirmContext extends PropsToContext<
   PopconfirmProps,

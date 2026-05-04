@@ -11,7 +11,7 @@ import type {
 import type { ThemeSize } from '@/theme';
 
 /**
- * Properties for the time range picker component.
+ * Properties for the TimeRangePicker component.
  */
 export interface TimeRangePickerProps extends /** @vue-ignore */ TimeRangePickerRootProps {
   /**
@@ -37,12 +37,12 @@ export interface TimeRangePickerProps extends /** @vue-ignore */ TimeRangePicker
 }
 
 /**
- * Events for the time range picker component.
+ * Events for the TimeRangePicker component.
  */
 export type TimeRangePickerEmits = TimeRangePickerRootEmits;
 
 /**
- * Slots for the time range picker component.
+ * Slots for the TimeRangePicker component.
  */
 export interface TimeRangePickerSlots {
   /**

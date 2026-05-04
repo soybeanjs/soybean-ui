@@ -10,7 +10,7 @@ import type { ClassValue } from '@soybeanjs/headless/types';
 import type { ThemeSize } from '@/theme';
 
 /**
- * Properties for the input number component.
+ * Properties for the InputNumber component.
  */
 export interface InputNumberProps extends InputNumberRootProps {
   /**
@@ -54,6 +54,6 @@ export interface InputNumberProps extends InputNumberRootProps {
 }
 
 /**
- * Events for the input number component.
+ * Events for the InputNumber component.
  */
 export type InputNumberEmits = InputNumberRootEmits;

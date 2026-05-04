@@ -11,7 +11,7 @@ import type { DataOrientation, Direction, FormFieldCommonProps, PropsToContext, 
 import type { PrimitiveProps } from '../primitive/types';
 
 /**
- * Properties for the color slider root component.
+ * Properties for the ColorSliderRoot component.
  */
 export interface ColorSliderRootProps extends PrimitiveProps, FormFieldCommonProps, /** @vue-ignore */ HTMLAttributes {
   /**
@@ -57,7 +57,7 @@ export interface ColorSliderRootProps extends PrimitiveProps, FormFieldCommonPro
 }
 
 /**
- * Events for the color slider root component.
+ * Events for the ColorSliderRoot component.
  */
 export type ColorSliderRootEmits = {
   /**
@@ -79,17 +79,17 @@ export type ColorSliderRootEmits = {
 };
 
 /**
- * Properties for the color slider track component.
+ * Properties for the ColorSliderTrack component.
  */
 export interface ColorSliderTrackProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Properties for the color slider thumb component.
+ * Properties for the ColorSliderThumb component.
  */
 export interface ColorSliderThumbProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Context for the color slider root component.
+ * Context for the ColorSliderRoot component.
  */
 export interface ColorSliderRootContext extends PropsToContext<
   ColorSliderRootProps,
@@ -110,11 +110,11 @@ export interface ColorSliderRootContext extends PropsToContext<
 }
 
 /**
- * Available UI slots for the color slider component.
+ * Available UI slots for the ColorSlider component.
  */
 export type ColorSliderUiSlot = 'root' | 'track' | 'thumb';
 
 /**
- * UI class overrides for the color slider component.
+ * UI class overrides for the ColorSlider component.
  */
 export type ColorSliderUi = UiClass<ColorSliderUiSlot>;

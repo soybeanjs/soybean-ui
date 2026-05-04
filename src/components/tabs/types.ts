@@ -10,7 +10,7 @@ import type { ThemeSize } from '@/theme';
 import type { TabsFill } from './variants';
 
 /**
- * Properties for the tabs component.
+ * Properties for the Tabs component.
  */
 export interface TabsProps<T extends TabsOptionData = TabsOptionData> extends TabsCompactProps<T> {
   /**
@@ -30,12 +30,12 @@ export interface TabsProps<T extends TabsOptionData = TabsOptionData> extends Ta
 }
 
 /**
- * Events for the tabs component.
+ * Events for the Tabs component.
  */
 export type TabsEmits<T extends AcceptableValue = AcceptableValue> = TabsCompactEmits<T>;
 
 /**
- * Slots for the tabs component.
+ * Slots for the Tabs component.
  */
 export type TabsSlots<T extends TabsOptionData = TabsOptionData> = TabsCompactSlots<T>;
 

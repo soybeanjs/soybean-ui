@@ -10,7 +10,7 @@ import type { ThemeSize } from '@/theme';
 import type { TabsFill as SegmentFill, TabsShape as SegmentShape } from '../tabs/variants';
 
 /**
- * Properties for the segment component.
+ * Properties for the Segment component.
  */
 export interface SegmentProps<T extends SegmentOptionData> extends SegmentCompactProps<T> {
   /**
@@ -36,12 +36,12 @@ export interface SegmentProps<T extends SegmentOptionData> extends SegmentCompac
 }
 
 /**
- * Events for the segment component.
+ * Events for the Segment component.
  */
 export type SegmentEmits<T extends AcceptableValue = AcceptableValue> = SegmentCompactEmits<T>;
 
 /**
- * Slots for the segment component.
+ * Slots for the Segment component.
  */
 export type SegmentSlots<T extends SegmentOptionData = SegmentOptionData> = SegmentCompactSlots<T>;
 

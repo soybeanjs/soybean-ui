@@ -13,7 +13,7 @@ import type { CollapsibleRootProps } from '../collapsible/types';
 import type { IconValue } from '../_icon/types';
 
 /**
- * Properties for the accordion root component.
+ * Properties for the AccordionRoot component.
  */
 export interface AccordionRootProps<M extends boolean = false>
   extends SelectionProps<M>, /** @vue-ignore */ HTMLAttributes {
@@ -52,12 +52,12 @@ export interface AccordionRootProps<M extends boolean = false>
 }
 
 /**
- * Events for the accordion root component.
+ * Events for the AccordionRoot component.
  */
 export type AccordionRootEmits<M extends boolean = false> = SelectionEmits<M>;
 
 /**
- * Properties for the accordion item component.
+ * Properties for the AccordionItem component.
  */
 export interface AccordionItemProps extends Omit<CollapsibleRootProps, 'open' | 'defaultOpen' | 'onOpenChange'> {
   /** Value of the accordion item. All items within an accordion should use a unique value. */
@@ -65,27 +65,27 @@ export interface AccordionItemProps extends Omit<CollapsibleRootProps, 'open' | 
 }
 
 /**
- * Properties for the accordion header component.
+ * Properties for the AccordionHeader component.
  */
 export interface AccordionHeaderProps extends /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Properties for the accordion trigger component.
+ * Properties for the AccordionTrigger component.
  */
 export interface AccordionTriggerProps extends CollapsibleTriggerProps {}
 
 /**
- * Properties for the accordion content component.
+ * Properties for the AccordionContent component.
  */
 export interface AccordionContentProps extends CollapsibleContentProps {}
 
 /**
- * Properties for the accordion description component.
+ * Properties for the AccordionDescription component.
  */
 export interface AccordionDescriptionProps extends /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Option data for the accordion component.
+ * Option data for the Accordion component.
  */
 export interface AccordionOptionData extends Pick<AccordionItemProps, 'value' | 'disabled'> {
   /** The title of the accordion item. */
@@ -99,7 +99,7 @@ export interface AccordionOptionData extends Pick<AccordionItemProps, 'value' | 
 }
 
 /**
- * Properties for the accordion compact component.
+ * Properties for the AccordionCompact component.
  */
 export interface AccordionCompactProps<
   T extends AccordionOptionData = AccordionOptionData,
@@ -132,12 +132,12 @@ export interface AccordionCompactProps<
 }
 
 /**
- * Events for the accordion compact component.
+ * Events for the AccordionCompact component.
  */
 export type AccordionCompactEmits<M extends boolean = false> = AccordionRootEmits<M>;
 
 /**
- * Slot properties for the accordion compact component.
+ * Slot properties for the AccordionCompact component.
  */
 export interface AccordionCompactSlotProps<
   T extends AccordionOptionData = AccordionOptionData,
@@ -162,7 +162,7 @@ export interface AccordionCompactSlotProps<
 }
 
 /**
- * Slots for the accordion compact component.
+ * Slots for the AccordionCompact component.
  */
 export type AccordionCompactSlots<T extends AccordionOptionData = AccordionOptionData, M extends boolean = false> = {
   /**
@@ -188,7 +188,7 @@ export type AccordionCompactSlots<T extends AccordionOptionData = AccordionOptio
 };
 
 /**
- * Context for the accordion root component.
+ * Context for the AccordionRoot component.
  */
 export interface AccordionRootContext extends PropsToContext<
   AccordionRootProps,
@@ -217,7 +217,7 @@ export interface AccordionRootContext extends PropsToContext<
 }
 
 /**
- * Parameters used to create the accordion item context.
+ * Parameters used to create the AccordionItem context.
  */
 export interface AccordionItemContextParams extends PropsToContext<AccordionItemProps, 'value'> {
   /**
@@ -231,7 +231,7 @@ export interface AccordionItemContextParams extends PropsToContext<AccordionItem
 }
 
 /**
- * Available UI slots for the accordion component.
+ * Available UI slots for the Accordion component.
  */
 export type AccordionUiSlot =
   | 'root'
@@ -244,6 +244,6 @@ export type AccordionUiSlot =
   | 'triggerIcon';
 
 /**
- * UI class overrides for the accordion component.
+ * UI class overrides for the Accordion component.
  */
 export type AccordionUi = UiClass<AccordionUiSlot>;

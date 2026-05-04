@@ -8,7 +8,7 @@ import type { ClassValue } from '@soybeanjs/headless/types';
 import type { ThemeSize } from '@/theme';
 
 /**
- * Properties for the color field component.
+ * Properties for the ColorField component.
  */
 export interface ColorFieldProps extends ColorFieldRootProps {
   /**
@@ -30,6 +30,6 @@ export interface ColorFieldProps extends ColorFieldRootProps {
 }
 
 /**
- * Events for the color field component.
+ * Events for the ColorField component.
  */
 export type ColorFieldEmits = ColorFieldRootEmits;

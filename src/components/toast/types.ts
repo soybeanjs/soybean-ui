@@ -2,7 +2,7 @@ import type { ToastProviderProps as _ToastProviderProps, ToastUi } from '@soybea
 import type { ThemeSize } from '@/theme';
 
 /**
- * Properties for the toast provider component.
+ * Properties for the ToastProvider component.
  */
 export interface ToastProviderProps extends _ToastProviderProps {
   /**

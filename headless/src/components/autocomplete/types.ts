@@ -22,7 +22,7 @@ import type { ListboxCollectionItemData } from '../listbox/types';
 import type { PortalProps as AutocompletePortalProps } from '../portal/types';
 
 /**
- * Properties for the autocomplete root component.
+ * Properties for the AutocompleteRoot component.
  */
 export interface AutocompleteRootProps extends FormFieldCommonProps, /** @vue-ignore */ HTMLAttributes {
   /** The controlled value of the autocomplete input. */
@@ -46,12 +46,12 @@ export interface AutocompleteRootProps extends FormFieldCommonProps, /** @vue-ig
 }
 
 /**
- * Type information for the autocomplete highlight payload component.
+ * Type information for AutocompleteHighlightPayload.
  */
 export type AutocompleteHighlightPayload = CollectionItemData<ListboxCollectionItemData>;
 
 /**
- * Events for the autocomplete root component.
+ * Events for the AutocompleteRoot component.
  */
 export type AutocompleteRootEmits = {
   /**
@@ -69,7 +69,7 @@ export type AutocompleteRootEmits = {
 };
 
 /**
- * Context for the autocomplete root component.
+ * Context for the AutocompleteRoot component.
  */
 export interface AutocompleteRootContext {
   /**
@@ -79,7 +79,7 @@ export interface AutocompleteRootContext {
 }
 
 /**
- * Properties for the autocomplete input component.
+ * Properties for the AutocompleteInput component.
  */
 export interface AutocompleteInputProps extends Omit<InputRootProps, 'defaultValue' | 'modelValue'> {
   /**
@@ -93,7 +93,7 @@ export interface AutocompleteInputProps extends Omit<InputRootProps, 'defaultVal
 }
 
 /**
- * Option data for the autocomplete single component.
+ * Option data for the AutocompleteSingle component.
  */
 export interface AutocompleteSingleOptionData extends Pick<AutocompleteItemProps, 'disabled' | 'value'> {
   /** Display label in the option list. */
@@ -107,7 +107,7 @@ export interface AutocompleteSingleOptionData extends Pick<AutocompleteItemProps
 }
 
 /**
- * Option data for the autocomplete group component.
+ * Option data for the AutocompleteGroup component.
  */
 export interface AutocompleteGroupOptionData<T extends AutocompleteSingleOptionData = AutocompleteSingleOptionData> {
   /** Group label in the option list. */
@@ -121,14 +121,14 @@ export interface AutocompleteGroupOptionData<T extends AutocompleteSingleOptionD
 }
 
 /**
- * Option data for the autocomplete component.
+ * Option data for the Autocomplete component.
  */
 export type AutocompleteOptionData<T extends AutocompleteSingleOptionData = AutocompleteSingleOptionData> =
   | T
   | AutocompleteGroupOptionData<T>;
 
 /**
- * Option data for the autocomplete search component.
+ * Option data for the AutocompleteSearch component.
  */
 export interface AutocompleteSearchOptionData extends AutocompleteSingleOptionData {
   /**
@@ -146,7 +146,7 @@ export interface AutocompleteSearchOptionData extends AutocompleteSingleOptionDa
 }
 
 /**
- * Properties for the autocomplete compact component.
+ * Properties for the AutocompleteCompact component.
  */
 export interface AutocompleteCompactProps<
   T extends AutocompleteSingleOptionData = AutocompleteSingleOptionData
@@ -226,7 +226,7 @@ export interface AutocompleteCompactProps<
 }
 
 /**
- * Events for the autocomplete compact component.
+ * Events for the AutocompleteCompact component.
  */
 export type AutocompleteCompactEmits<T extends AutocompleteSingleOptionData = AutocompleteSingleOptionData> =
   AutocompleteRootEmits & {
@@ -237,7 +237,7 @@ export type AutocompleteCompactEmits<T extends AutocompleteSingleOptionData = Au
   };
 
 /**
- * Slots for the autocomplete compact component.
+ * Slots for the AutocompleteCompact component.
  */
 export type AutocompleteCompactSlots<T extends AutocompleteSingleOptionData = AutocompleteSingleOptionData> = {
   /**

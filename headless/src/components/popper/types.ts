@@ -4,7 +4,7 @@ import type { Align, Placement, UiClass, VNodeRef } from '../../types';
 import type { PrimitiveProps } from '../primitive/types';
 
 /**
- * Properties for the popper anchor component.
+ * Properties for the PopperAnchor component.
  */
 export interface PopperAnchorProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {
   /**
@@ -15,7 +15,7 @@ export interface PopperAnchorProps extends PrimitiveProps, /** @vue-ignore */ HT
 }
 
 /**
- * Properties for the popper positioner component.
+ * Properties for the PopperPositioner component.
  */
 export interface PopperPositionerProps extends /** @vue-ignore */ HTMLAttributes {
   /**
@@ -143,7 +143,7 @@ export interface PopperPositionerProps extends /** @vue-ignore */ HTMLAttributes
 }
 
 /**
- * Events for the popper positioner component.
+ * Events for the PopperPositioner component.
  */
 export interface PopperPositionerEmits {
   /** Event handler called when the positioner is placed */
@@ -151,12 +151,12 @@ export interface PopperPositionerEmits {
 }
 
 /**
- * Properties for the popper popup component.
+ * Properties for the PopperPopup component.
  */
 export interface PopperPopupProps extends /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Properties for the popper arrow component.
+ * Properties for the PopperArrow component.
  */
 export interface PopperArrowProps extends /** @vue-ignore */ HTMLAttributes {}
 
@@ -179,11 +179,11 @@ export interface PopperPositionerContextParams {
 }
 
 /**
- * Available UI slots for the popper component.
+ * Available UI slots for the Popper component.
  */
 export type PopperUiSlot = 'positioner' | 'popup' | 'arrow' | 'anchor';
 
 /**
- * UI class overrides for the popper component.
+ * UI class overrides for the Popper component.
  */
 export type PopperUi = UiClass<PopperUiSlot>;

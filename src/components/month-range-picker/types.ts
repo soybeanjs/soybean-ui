@@ -10,7 +10,7 @@ import type {
 import type { ThemeSize } from '@/theme';
 
 /**
- * Properties for the month range picker component.
+ * Properties for the MonthRangePicker component.
  */
 export interface MonthRangePickerProps extends /** @vue-ignore */ MonthRangePickerRootProps {
   /**
@@ -36,12 +36,12 @@ export interface MonthRangePickerProps extends /** @vue-ignore */ MonthRangePick
 }
 
 /**
- * Events for the month range picker component.
+ * Events for the MonthRangePicker component.
  */
 export type MonthRangePickerEmits = MonthRangePickerRootEmits;
 
 /**
- * Slots for the month range picker component.
+ * Slots for the MonthRangePicker component.
  */
 export interface MonthRangePickerSlots {
   /**

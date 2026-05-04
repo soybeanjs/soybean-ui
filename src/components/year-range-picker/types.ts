@@ -12,7 +12,7 @@ import type { DateRange } from '@soybeanjs/headless/date';
 import type { ThemeSize } from '@/theme';
 
 /**
- * Properties for the year range picker component.
+ * Properties for the YearRangePicker component.
  */
 export interface YearRangePickerProps extends /** @vue-ignore */ YearRangePickerRootProps {
   /**
@@ -38,12 +38,12 @@ export interface YearRangePickerProps extends /** @vue-ignore */ YearRangePicker
 }
 
 /**
- * Events for the year range picker component.
+ * Events for the YearRangePicker component.
  */
 export type YearRangePickerEmits = YearRangePickerRootEmits;
 
 /**
- * Slots for the year range picker component.
+ * Slots for the YearRangePicker component.
  */
 export interface YearRangePickerSlots {
   /**

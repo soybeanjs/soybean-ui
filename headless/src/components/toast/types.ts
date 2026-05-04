@@ -13,22 +13,22 @@ export type ToastType = 'default' | 'success' | 'info' | 'warning' | 'error' | '
 export type ToastIconType = Exclude<ToastType, 'default'> | 'close';
 
 /**
- * Type information for the toast position component.
+ * Type information for ToastPosition.
  */
 export type ToastPosition = 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right' | 'top-center' | 'bottom-center';
 
 /**
- * Type information for the toast offset component.
+ * Type information for ToastOffset.
  */
 export type ToastOffset = Partial<Record<Side, number>> | number;
 
 /**
- * Type information for the toast promise component.
+ * Type information for ToastPromise.
  */
 export type ToastPromise<Data = any> = Promise<Data> | (() => Promise<Data>);
 
 /**
- * Type information for the toast height component.
+ * Type information for ToastHeight.
  */
 export interface ToastHeight {
   /**
@@ -46,7 +46,7 @@ export interface ToastHeight {
 }
 
 /**
- * Type information for the toast t component.
+ * Type information for ToastT.
  */
 export interface ToastT {
   /**
@@ -148,7 +148,7 @@ export interface ToastT {
 }
 
 /**
- * Type information for the toast external component.
+ * Type information for ToastExternal.
  */
 export interface ToastExternal extends Omit<
   ToastT,
@@ -161,7 +161,7 @@ export interface ToastExternal extends Omit<
 }
 
 /**
- * Type information for the toast create options component.
+ * Type information for ToastCreateOptions.
  */
 export interface ToastCreateOptions extends Omit<ToastT, 'id' | 'delete' | 'title'> {
   /**
@@ -175,7 +175,7 @@ export interface ToastCreateOptions extends Omit<ToastT, 'id' | 'delete' | 'titl
 }
 
 /**
- * Properties for the toast component.
+ * Properties for the Toast component.
  */
 export interface ToastProps extends /** @vue-ignore */ LiHTMLAttributes {
   /**
@@ -193,7 +193,7 @@ export interface ToastProps extends /** @vue-ignore */ LiHTMLAttributes {
 }
 
 /**
- * Events for the toast component.
+ * Events for the Toast component.
  */
 export interface ToastEmits {
   /**
@@ -207,7 +207,7 @@ export interface ToastEmits {
 }
 
 /**
- * Properties for the toaster component.
+ * Properties for the Toaster component.
  */
 export interface ToasterProps extends /** @vue-ignore */ OlHTMLAttributes {
   /**
@@ -317,12 +317,12 @@ export interface ToasterProps extends /** @vue-ignore */ OlHTMLAttributes {
 }
 
 /**
- * Properties for the toast provider component.
+ * Properties for the ToastProvider component.
  */
 export interface ToastProviderProps extends ToasterProps {}
 
 /**
- * Type information for the toast dismiss component.
+ * Type information for ToastDismiss.
  */
 export interface ToastDismiss {
   /**
@@ -336,17 +336,17 @@ export interface ToastDismiss {
 }
 
 /**
- * Type information for the toast or dismiss component.
+ * Type information for ToastOrDismiss.
  */
 export type ToastOrDismiss = ToastT | ToastDismiss;
 
 /**
- * Type information for the toast subscriber component.
+ * Type information for ToastSubscriber.
  */
 export type ToastSubscriber = (toast: ToastOrDismiss) => void;
 
 /**
- * Type information for the toast promise result component.
+ * Type information for ToastPromiseResult.
  */
 export interface ToastPromiseResult extends ToastExternal {
   /**
@@ -356,12 +356,12 @@ export interface ToastPromiseResult extends ToastExternal {
 }
 
 /**
- * Type information for the toast promise resolver component.
+ * Type information for ToastPromiseResolver.
  */
 export type ToastPromiseResolver<Result, Data = any> = Result | ((data: Data) => Result | Promise<Result>);
 
 /**
- * Type information for the toast promise data component.
+ * Type information for ToastPromiseData.
  */
 export type ToastPromiseData<ToastData = any> = Omit<ToastExternal, 'description'> & {
   /**
@@ -387,7 +387,7 @@ export type ToastPromiseData<ToastData = any> = Omit<ToastExternal, 'description
 };
 
 /**
- * Context for the toaster component.
+ * Context for the Toaster component.
  */
 export interface ToasterContext extends PropsToContext<
   ToasterProps & Required<Pick<ToasterProps, 'gap' | 'duration' | 'visibleCounts'>>,
@@ -433,7 +433,7 @@ export interface ToasterContext extends PropsToContext<
 }
 
 /**
- * Available UI slots for the toast component.
+ * Available UI slots for the Toast component.
  */
 export type ToastUiSlot =
   | 'toaster'
@@ -449,6 +449,6 @@ export type ToastUiSlot =
   | 'close';
 
 /**
- * UI class overrides for the toast component.
+ * UI class overrides for the Toast component.
  */
 export type ToastUi = UiClass<ToastUiSlot>;

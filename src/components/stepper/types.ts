@@ -13,7 +13,7 @@ import type { ClassValue, UiClass } from '@soybeanjs/headless/types';
 import type { ThemeColor, ThemeSize } from '@/theme';
 
 /**
- * Option data for the stepper component.
+ * Option data for the Stepper component.
  */
 export interface StepperOptionData extends Pick<StepperItemProps, 'disabled' | 'completed'> {
   /**
@@ -32,12 +32,12 @@ export interface StepperOptionData extends Pick<StepperItemProps, 'disabled' | '
 export type StepperExtraUiSlot = 'itemContent' | 'indicatorIcon';
 
 /**
- * Extended UI class overrides for the stepper component.
+ * Extended UI class overrides for the Stepper component.
  */
 export type StepperExtendedUi = UiClass<StepperUiSlot | StepperExtraUiSlot>;
 
 /**
- * Properties for the stepper component.
+ * Properties for the Stepper component.
  */
 export interface StepperProps extends StepperRootProps {
   /**
@@ -87,6 +87,6 @@ export interface StepperProps extends StepperRootProps {
 }
 
 /**
- * Events for the stepper component.
+ * Events for the Stepper component.
  */
 export type StepperEmits = StepperRootEmits;

@@ -35,7 +35,7 @@ import type { IconValue } from '../_icon/types';
 import type { PortalProps } from '../portal/types';
 
 /**
- * Properties for the combobox root component.
+ * Properties for the ComboboxRoot component.
  */
 export interface ComboboxRootProps<M extends boolean = false> extends Omit<
   ListboxRootProps<M>,
@@ -76,7 +76,7 @@ export interface ComboboxRootProps<M extends boolean = false> extends Omit<
 }
 
 /**
- * Events for the combobox root component.
+ * Events for the ComboboxRoot component.
  */
 export type ComboboxRootEmits<M extends boolean = false> = Pick<
   ListboxRootEmits<M>,
@@ -89,7 +89,7 @@ export type ComboboxRootEmits<M extends boolean = false> = Pick<
 };
 
 /**
- * Properties for the combobox trigger component.
+ * Properties for the ComboboxTrigger component.
  */
 export interface ComboboxTriggerProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {
   /**
@@ -99,7 +99,7 @@ export interface ComboboxTriggerProps extends PrimitiveProps, /** @vue-ignore */
 }
 
 /**
- * Properties for the combobox content impl component.
+ * Properties for the ComboboxContentImpl component.
  */
 export interface ComboboxContentImplProps
   extends PopperPositionerProps, TrapFocusProps, DismissableLayerProps, ForceMountProps {
@@ -122,22 +122,22 @@ export interface ComboboxContentImplProps
 }
 
 /**
- * Events for the combobox content impl component.
+ * Events for the ComboboxContentImpl component.
  */
 export type ComboboxContentImplEmits = DismissableLayerEmits & FocusScopeEmits & PopperPositionerEmits;
 
 /**
- * Properties for the combobox content component.
+ * Properties for the ComboboxContent component.
  */
 export interface ComboboxContentProps extends ComboboxContentImplProps {}
 
 /**
- * Events for the combobox content component.
+ * Events for the ComboboxContent component.
  */
 export type ComboboxContentEmits = ComboboxContentImplEmits;
 
 /**
- * Properties for the combobox input component.
+ * Properties for the ComboboxInput component.
  */
 export interface ComboboxInputProps extends ListboxFilterProps {
   /**
@@ -147,12 +147,12 @@ export interface ComboboxInputProps extends ListboxFilterProps {
 }
 
 /**
- * Events for the combobox input component.
+ * Events for the ComboboxInput component.
  */
 export type ComboboxInputEmits = ListboxFilterEmits;
 
 /**
- * Properties for the combobox viewport component.
+ * Properties for the ComboboxViewport component.
  */
 export interface ComboboxViewportProps extends /** @vue-ignore */ HTMLAttributes {
   /**
@@ -162,7 +162,7 @@ export interface ComboboxViewportProps extends /** @vue-ignore */ HTMLAttributes
 }
 
 /**
- * Properties for the combobox item component.
+ * Properties for the ComboboxItem component.
  */
 export interface ComboboxItemProps extends ListboxItemProps {
   /**
@@ -172,22 +172,22 @@ export interface ComboboxItemProps extends ListboxItemProps {
 }
 
 /**
- * Events for the combobox item component.
+ * Events for the ComboboxItem component.
  */
 export type ComboboxItemEmits = ListboxItemEmits;
 
 /**
- * Properties for the combobox empty component.
+ * Properties for the ComboboxEmpty component.
  */
 export interface ComboboxEmptyProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Properties for the combobox separator component.
+ * Properties for the ComboboxSeparator component.
  */
 export interface ComboboxSeparatorProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Properties for the combobox cancel component.
+ * Properties for the ComboboxCancel component.
  */
 export interface ComboboxCancelProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {
   /**
@@ -197,12 +197,12 @@ export interface ComboboxCancelProps extends PrimitiveProps, /** @vue-ignore */ 
 }
 
 /**
- * Properties for the combobox virtualizer component.
+ * Properties for the ComboboxVirtualizer component.
  */
 export interface ComboboxVirtualizerProps extends ListboxVirtualizerProps {}
 
 /**
- * Option data for the combobox single component.
+ * Option data for the ComboboxSingle component.
  */
 export interface ComboboxSingleOptionData extends Pick<ComboboxItemProps, 'disabled' | 'textValue'> {
   /**
@@ -224,7 +224,7 @@ export interface ComboboxSingleOptionData extends Pick<ComboboxItemProps, 'disab
 }
 
 /**
- * Option data for the combobox group component.
+ * Option data for the ComboboxGroup component.
  */
 export interface ComboboxGroupOptionData extends Pick<ComboboxSingleOptionData, 'label' | 'separator'> {
   /**
@@ -234,12 +234,12 @@ export interface ComboboxGroupOptionData extends Pick<ComboboxSingleOptionData, 
 }
 
 /**
- * Option data for the combobox component.
+ * Option data for the Combobox component.
  */
 export type ComboboxOptionData = ComboboxSingleOptionData | ComboboxGroupOptionData;
 
 /**
- * Properties for the combobox compact component.
+ * Properties for the ComboboxCompact component.
  */
 export interface ComboboxCompactProps<M extends boolean = false> extends ComboboxRootProps<M> {
   /**
@@ -317,7 +317,7 @@ export interface ComboboxCompactProps<M extends boolean = false> extends Combobo
 }
 
 /**
- * Events for the combobox compact component.
+ * Events for the ComboboxCompact component.
  */
 export type ComboboxCompactEmits<M extends boolean = false> = ComboboxRootEmits<M> &
   ComboboxContentEmits &
@@ -326,7 +326,7 @@ export type ComboboxCompactEmits<M extends boolean = false> = ComboboxRootEmits<
 type ComboboxCompactModelValue<M extends boolean = false> = (M extends true ? string[] : string) | undefined;
 
 /**
- * Slot properties for the combobox compact trigger value component.
+ * Slot properties for the ComboboxCompactTriggerValue component.
  */
 export interface ComboboxCompactTriggerValueSlotProps<M extends boolean = false> {
   /**
@@ -344,7 +344,7 @@ export interface ComboboxCompactTriggerValueSlotProps<M extends boolean = false>
 }
 
 /**
- * Slot properties for the combobox compact input component.
+ * Slot properties for the ComboboxCompactInput component.
  */
 export interface ComboboxCompactInputSlotProps {
   /**
@@ -354,7 +354,7 @@ export interface ComboboxCompactInputSlotProps {
 }
 
 /**
- * Slot properties for the combobox compact group label component.
+ * Slot properties for the ComboboxCompactGroupLabel component.
  */
 export interface ComboboxCompactGroupLabelSlotProps {
   /**
@@ -364,7 +364,7 @@ export interface ComboboxCompactGroupLabelSlotProps {
 }
 
 /**
- * Slot properties for the combobox compact item component.
+ * Slot properties for the ComboboxCompactItem component.
  */
 export interface ComboboxCompactItemSlotProps {
   /**
@@ -374,7 +374,7 @@ export interface ComboboxCompactItemSlotProps {
 }
 
 /**
- * Slots for the combobox compact component.
+ * Slots for the ComboboxCompact component.
  */
 export type ComboboxCompactSlots<M extends boolean = false> = {
   /**
@@ -428,7 +428,7 @@ export type ComboboxCompactSlots<M extends boolean = false> = {
 };
 
 /**
- * Context for the combobox root component.
+ * Context for the ComboboxRoot component.
  */
 export interface ComboboxRootContext extends PropsToContext<
   ComboboxRootProps,
@@ -540,7 +540,7 @@ export interface ComboboxRootContext extends PropsToContext<
 }
 
 /**
- * Available UI slots for the combobox component.
+ * Available UI slots for the Combobox component.
  */
 export type ComboboxUiSlot =
   | PopperUiSlot
@@ -560,7 +560,7 @@ export type ComboboxUiSlot =
   | 'virtualizer';
 
 /**
- * UI class overrides for the combobox component.
+ * UI class overrides for the Combobox component.
  */
 export type ComboboxUi = UiClass<ComboboxUiSlot>;
 

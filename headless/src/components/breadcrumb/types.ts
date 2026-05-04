@@ -4,42 +4,42 @@ import type { LinkBaseProps, LinkProps } from '../link/types';
 import type { UiClass } from '../../types';
 
 /**
- * Properties for the breadcrumb root component.
+ * Properties for the BreadcrumbRoot component.
  */
 export interface BreadcrumbRootProps extends /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Properties for the breadcrumb list component.
+ * Properties for the BreadcrumbList component.
  */
 export interface BreadcrumbListProps extends /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Properties for the breadcrumb item component.
+ * Properties for the BreadcrumbItem component.
  */
 export interface BreadcrumbItemProps extends /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Properties for the breadcrumb page component.
+ * Properties for the BreadcrumbPage component.
  */
 export interface BreadcrumbPageProps extends /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Properties for the breadcrumb separator component.
+ * Properties for the BreadcrumbSeparator component.
  */
 export interface BreadcrumbSeparatorProps extends /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Properties for the breadcrumb ellipsis component.
+ * Properties for the BreadcrumbEllipsis component.
  */
 export interface BreadcrumbEllipsisProps extends /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Properties for the breadcrumb link component.
+ * Properties for the BreadcrumbLink component.
  */
 export interface BreadcrumbLinkProps extends LinkProps {}
 
 /**
- * Option data for the breadcrumb component.
+ * Option data for the Breadcrumb component.
  */
 export interface BreadcrumbOptionData extends LinkBaseProps {
   /** The value of the option. */
@@ -53,7 +53,7 @@ export interface BreadcrumbOptionData extends LinkBaseProps {
 }
 
 /**
- * Properties for the breadcrumb compact component.
+ * Properties for the BreadcrumbCompact component.
  */
 export interface BreadcrumbCompactProps<T extends BreadcrumbOptionData = BreadcrumbOptionData> extends Omit<
   BreadcrumbRootProps,
@@ -96,7 +96,7 @@ export interface BreadcrumbCompactProps<T extends BreadcrumbOptionData = Breadcr
 }
 
 /**
- * Events for the breadcrumb compact component.
+ * Events for the BreadcrumbCompact component.
  */
 export type BreadcrumbCompactEmits<T extends BreadcrumbOptionData = BreadcrumbOptionData> = {
   /**
@@ -106,7 +106,7 @@ export type BreadcrumbCompactEmits<T extends BreadcrumbOptionData = BreadcrumbOp
 };
 
 /**
- * Slot properties for the breadcrumb compact item component.
+ * Slot properties for the BreadcrumbCompactItem component.
  */
 export interface BreadcrumbCompactItemSlotProps<T extends BreadcrumbOptionData = BreadcrumbOptionData> {
   /**
@@ -120,7 +120,7 @@ export interface BreadcrumbCompactItemSlotProps<T extends BreadcrumbOptionData =
 }
 
 /**
- * Slot properties for the breadcrumb compact ellipsis component.
+ * Slot properties for the BreadcrumbCompactEllipsis component.
  */
 export interface BreadcrumbCompactEllipsisSlotProps<T extends BreadcrumbOptionData = BreadcrumbOptionData> {
   /**
@@ -130,7 +130,7 @@ export interface BreadcrumbCompactEllipsisSlotProps<T extends BreadcrumbOptionDa
 }
 
 /**
- * Slots for the breadcrumb compact component.
+ * Slots for the BreadcrumbCompact component.
  */
 export type BreadcrumbCompactSlots<T extends BreadcrumbOptionData = BreadcrumbOptionData> = {
   /**
@@ -168,11 +168,11 @@ export type BreadcrumbCompactSlots<T extends BreadcrumbOptionData = BreadcrumbOp
 };
 
 /**
- * Available UI slots for the breadcrumb component.
+ * Available UI slots for the Breadcrumb component.
  */
 export type BreadcrumbUiSlot = 'root' | 'list' | 'item' | 'page' | 'separator' | 'ellipsis' | 'link';
 
 /**
- * UI class overrides for the breadcrumb component.
+ * UI class overrides for the Breadcrumb component.
  */
 export type BreadcrumbUi = UiClass<BreadcrumbUiSlot>;

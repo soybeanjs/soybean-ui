@@ -2,12 +2,12 @@ import type { ButtonHTMLAttributes } from 'vue';
 import type { PrimitiveProps } from '../primitive/types';
 
 /**
- * State values for the toggle component.
+ * State values for ToggleState.
  */
 export type ToggleState = 'on' | 'off';
 
 /**
- * Properties for the toggle component.
+ * Properties for the Toggle component.
  */
 export interface ToggleProps extends PrimitiveProps, /** @vue-ignore */ Omit<ButtonHTMLAttributes, 'onClick'> {
   /**
@@ -25,7 +25,7 @@ export interface ToggleProps extends PrimitiveProps, /** @vue-ignore */ Omit<But
 }
 
 /**
- * Events for the toggle component.
+ * Events for the Toggle component.
  */
 export type ToggleEmits = {
   /**

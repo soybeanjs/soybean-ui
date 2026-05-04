@@ -8,62 +8,62 @@ import type {
 } from '../collapsible/types';
 
 /**
- * Properties for the card root component.
+ * Properties for the CardRoot component.
  */
 export interface CardRootProps extends CollapsibleRootProps {}
 
 /**
- * Events for the card root component.
+ * Events for the CardRoot component.
  */
 export type CardRootEmits = CollapsibleRootEmits;
 
 /**
- * Properties for the card header component.
+ * Properties for the CardHeader component.
  */
 export interface CardHeaderProps extends /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Properties for the card content component.
+ * Properties for the CardContent component.
  */
 export interface CardContentProps extends CollapsibleContentProps {}
 
 /**
- * Properties for the card footer component.
+ * Properties for the CardFooter component.
  */
 export interface CardFooterProps extends /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Properties for the card title root component.
+ * Properties for the CardTitleRoot component.
  */
 export interface CardTitleRootProps extends /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Properties for the card title component.
+ * Properties for the CardTitle component.
  */
 export interface CardTitleProps extends /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Properties for the card description component.
+ * Properties for the CardDescription component.
  */
 export interface CardDescriptionProps extends /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Properties for the card collapsible trigger component.
+ * Properties for the CardCollapsibleTrigger component.
  */
 export interface CardCollapsibleTriggerProps extends CollapsibleTriggerProps {}
 
 /**
- * Available UI slots for the card component.
+ * Available UI slots for the Card component.
  */
 export type CardUiSlot = 'root' | 'header' | 'content' | 'footer' | 'titleRoot' | 'title' | 'description' | 'trigger';
 
 /**
- * UI class overrides for the card component.
+ * UI class overrides for the Card component.
  */
 export type CardUi = UiClass<CardUiSlot>;
 
 /**
- * Properties for the card compact component.
+ * Properties for the CardCompact component.
  */
 export interface CardCompactProps extends CardRootProps {
   /**
@@ -101,12 +101,12 @@ export interface CardCompactProps extends CardRootProps {
 }
 
 /**
- * Events for the card compact component.
+ * Events for the CardCompact component.
  */
 export type CardCompactEmits = CardRootEmits;
 
 /**
- * Slots for the card compact component.
+ * Slots for the CardCompact component.
  */
 export interface CardCompactSlots {
   /**

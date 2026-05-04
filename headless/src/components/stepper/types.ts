@@ -4,12 +4,12 @@ import type { PrimitiveProps } from '../primitive/types';
 import type { SeparatorRootProps } from '../separator/types';
 
 /**
- * State values for the stepper component.
+ * State values for StepperState.
  */
 export type StepperState = 'completed' | 'active' | 'inactive';
 
 /**
- * Properties for the stepper root component.
+ * Properties for the StepperRoot component.
  */
 export interface StepperRootProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {
   /**
@@ -41,7 +41,7 @@ export interface StepperRootProps extends PrimitiveProps, /** @vue-ignore */ HTM
 }
 
 /**
- * Events for the stepper root component.
+ * Events for the StepperRoot component.
  */
 export type StepperRootEmits = {
   /**
@@ -51,7 +51,7 @@ export type StepperRootEmits = {
 };
 
 /**
- * Properties for the stepper item component.
+ * Properties for the StepperItem component.
  */
 export interface StepperItemProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {
   /** The step index, starting from `1`. */
@@ -63,27 +63,27 @@ export interface StepperItemProps extends PrimitiveProps, /** @vue-ignore */ HTM
 }
 
 /**
- * Properties for the stepper trigger component.
+ * Properties for the StepperTrigger component.
  */
 export interface StepperTriggerProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Properties for the stepper indicator component.
+ * Properties for the StepperIndicator component.
  */
 export interface StepperIndicatorProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Properties for the stepper title component.
+ * Properties for the StepperTitle component.
  */
 export interface StepperTitleProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Properties for the stepper description component.
+ * Properties for the StepperDescription component.
  */
 export interface StepperDescriptionProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Context for the stepper root component.
+ * Context for the StepperRoot component.
  */
 export interface StepperRootContext extends PropsToContext<StepperRootProps, 'orientation' | 'dir' | 'linear'> {
   /**
@@ -113,7 +113,7 @@ export interface StepperRootContext extends PropsToContext<StepperRootProps, 'or
 }
 
 /**
- * Parameters used to create the stepper item context.
+ * Parameters used to create the StepperItem context.
  */
 export interface StepperItemContextParams extends PropsToContext<StepperItemProps, 'step' | 'disabled' | 'completed'> {
   /**
@@ -131,7 +131,7 @@ export interface StepperItemContextParams extends PropsToContext<StepperItemProp
 }
 
 /**
- * Context for the stepper item component.
+ * Context for the StepperItem component.
  */
 export interface StepperItemContext extends StepperItemContextParams {
   /**
@@ -145,7 +145,7 @@ export interface StepperItemContext extends StepperItemContextParams {
 }
 
 /**
- * Available UI slots for the stepper component.
+ * Available UI slots for the Stepper component.
  */
 export type StepperUiSlot =
   | 'root'
@@ -159,17 +159,17 @@ export type StepperUiSlot =
   | 'description';
 
 /**
- * UI class overrides for the stepper component.
+ * UI class overrides for the Stepper component.
  */
 export type StepperUi = UiClass<StepperUiSlot>;
 
 /**
- * Properties for the stepper separator component.
+ * Properties for the StepperSeparator component.
  */
 export type StepperSeparatorProps = SeparatorRootProps;
 
 /**
- * Type information for the stepper item data component.
+ * Type information for StepperItemData.
  */
 export interface StepperItemData {
   /**
@@ -191,7 +191,7 @@ export interface StepperItemData {
 }
 
 /**
- * Properties for the stepper compact component.
+ * Properties for the StepperCompact component.
  */
 export interface StepperCompactProps extends StepperRootProps {
   /**
@@ -225,12 +225,12 @@ export interface StepperCompactProps extends StepperRootProps {
 }
 
 /**
- * Events for the stepper compact component.
+ * Events for the StepperCompact component.
  */
 export type StepperCompactEmits = StepperRootEmits;
 
 /**
- * Slots for the stepper compact component.
+ * Slots for the StepperCompact component.
  */
 export interface StepperCompactSlots {
   /**

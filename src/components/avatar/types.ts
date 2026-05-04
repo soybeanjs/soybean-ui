@@ -3,7 +3,7 @@ import type { ClassValue } from '@soybeanjs/headless/types';
 import type { ThemeSize } from '@/theme';
 
 /**
- * Properties for the avatar component.
+ * Properties for the Avatar component.
  */
 export interface AvatarProps extends AvatarCompactProps {
   /**
@@ -21,6 +21,6 @@ export interface AvatarProps extends AvatarCompactProps {
 }
 
 /**
- * Events for the avatar component.
+ * Events for the Avatar component.
  */
 export type AvatarEmits = AvatarImageEmits;

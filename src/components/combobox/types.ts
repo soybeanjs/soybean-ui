@@ -8,7 +8,7 @@ import type { ClassValue } from '@soybeanjs/headless/types';
 import type { ThemeSize } from '@/theme';
 
 /**
- * Properties for the combobox component.
+ * Properties for the Combobox component.
  */
 export interface ComboboxProps<M extends boolean = false> extends ComboboxCompactProps<M> {
   /**
@@ -26,11 +26,11 @@ export interface ComboboxProps<M extends boolean = false> extends ComboboxCompac
 }
 
 /**
- * Events for the combobox component.
+ * Events for the Combobox component.
  */
 export type ComboboxEmits<M extends boolean = false> = ComboboxCompactEmits<M>;
 
 /**
- * Slots for the combobox component.
+ * Slots for the Combobox component.
  */
 export type ComboboxSlots<M extends boolean = false> = ComboboxCompactSlots<M>;

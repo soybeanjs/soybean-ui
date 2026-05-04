@@ -10,7 +10,7 @@ import type { ClassValue } from '@soybeanjs/headless/types';
 import type { ThemeColor, ThemeSize } from '@/theme';
 
 /**
- * Properties for the progress component.
+ * Properties for the Progress component.
  */
 export interface ProgressProps extends ProgressRootProps {
   /**
@@ -36,7 +36,7 @@ export interface ProgressProps extends ProgressRootProps {
 }
 
 /**
- * Properties for the progress circle component.
+ * Properties for the ProgressCircle component.
  */
 export interface ProgressCircleProps extends ProgressRootProps {
   /**
@@ -62,11 +62,11 @@ export interface ProgressCircleProps extends ProgressRootProps {
 }
 
 /**
- * Events for the progress component.
+ * Events for the Progress component.
  */
 export type ProgressEmits = ProgressRootEmits;
 /**
- * Events for the progress circle component.
+ * Events for the ProgressCircle component.
  */
 export type ProgressCircleEmits = ProgressRootEmits;
 

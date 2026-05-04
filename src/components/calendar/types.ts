@@ -8,7 +8,7 @@ import type { ClassValue } from '@soybeanjs/headless/types';
 import type { ThemeSize } from '@/theme';
 
 /**
- * Properties for the calendar component.
+ * Properties for the Calendar component.
  */
 export interface CalendarProps<M extends boolean = false> extends CalendarCompactProps<M> {
   /**
@@ -26,11 +26,11 @@ export interface CalendarProps<M extends boolean = false> extends CalendarCompac
 }
 
 /**
- * Events for the calendar component.
+ * Events for the Calendar component.
  */
 export type CalendarEmits<M extends boolean = false> = CalendarCompactEmits<M>;
 
 /**
- * Slots for the calendar component.
+ * Slots for the Calendar component.
  */
 export type CalendarSlots<M extends boolean = false> = CalendarCompactSlots<M>;

@@ -10,7 +10,7 @@ import type {
 } from '../tabs/types';
 
 /**
- * Properties for the segment compact component.
+ * Properties for the SegmentCompact component.
  */
 export interface SegmentCompactProps<T extends SegmentOptionData> extends SegmentRootProps<T['value'] | null> {
   /**
@@ -36,12 +36,12 @@ export interface SegmentCompactProps<T extends SegmentOptionData> extends Segmen
 }
 
 /**
- * Events for the segment compact component.
+ * Events for the SegmentCompact component.
  */
 export type SegmentCompactEmits<T extends AcceptableValue = AcceptableValue> = SegmentRootEmits<T>;
 
 /**
- * Slots for the segment compact component.
+ * Slots for the SegmentCompact component.
  */
 export type SegmentCompactSlots<T extends SegmentOptionData = SegmentOptionData> = {
   /**
@@ -55,12 +55,12 @@ export type SegmentCompactSlots<T extends SegmentOptionData = SegmentOptionData>
 };
 
 /**
- * Available UI slots for the segment component.
+ * Available UI slots for the Segment component.
  */
 export type SegmentUiSlot = Exclude<TabsUiSlot, 'content'>;
 
 /**
- * UI class overrides for the segment component.
+ * UI class overrides for the Segment component.
  */
 export type SegmentUi = UiClass<SegmentUiSlot>;
 

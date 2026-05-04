@@ -3,27 +3,27 @@ import type { Direction, FormFieldCommonProps, PropsToContext, UiClass, VNodeRef
 import type { PrimitiveProps } from '../primitive/types';
 
 /**
- * Type information for the editable activation mode component.
+ * Type information for EditableActivationMode.
  */
 export type EditableActivationMode = 'focus' | 'dblclick' | 'none';
 
 /**
- * Type information for the editable submit mode component.
+ * Type information for EditableSubmitMode.
  */
 export type EditableSubmitMode = 'blur' | 'enter' | 'none' | 'both';
 
 /**
- * State values for the editable component.
+ * State values for EditableEventState.
  */
 export type EditableEventState = 'edit' | 'submit' | 'cancel';
 
 /**
- * State values for the editable component.
+ * State values for EditableViewState.
  */
 export type EditableViewState = 'preview' | 'edit';
 
 /**
- * Type information for the editable placeholder component.
+ * Type information for EditablePlaceholder.
  */
 export interface EditablePlaceholder {
   /**
@@ -37,7 +37,7 @@ export interface EditablePlaceholder {
 }
 
 /**
- * Properties for the editable root component.
+ * Properties for the EditableRoot component.
  */
 export interface EditableRootProps
   extends PrimitiveProps, FormFieldCommonProps, /** @vue-ignore */ Omit<HTMLAttributes, 'onSubmit' | 'placeholder'> {
@@ -70,7 +70,7 @@ export interface EditableRootProps
 }
 
 /**
- * Events for the editable root component.
+ * Events for the EditableRoot component.
  */
 export type EditableRootEmits = {
   /** Event handler called whenever the model value changes. */
@@ -82,17 +82,17 @@ export type EditableRootEmits = {
 };
 
 /**
- * Properties for the editable area component.
+ * Properties for the EditableArea component.
  */
 export interface EditableAreaProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Properties for the editable preview component.
+ * Properties for the EditablePreview component.
  */
 export interface EditablePreviewProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Properties for the editable input component.
+ * Properties for the EditableInput component.
  */
 export interface EditableInputProps extends PrimitiveProps, /** @vue-ignore */ Omit<InputHTMLAttributes, 'id'> {
   /**
@@ -102,22 +102,22 @@ export interface EditableInputProps extends PrimitiveProps, /** @vue-ignore */ O
 }
 
 /**
- * Properties for the editable edit trigger component.
+ * Properties for the EditableEditTrigger component.
  */
 export interface EditableEditTriggerProps extends PrimitiveProps, /** @vue-ignore */ ButtonHTMLAttributes {}
 
 /**
- * Properties for the editable submit trigger component.
+ * Properties for the EditableSubmitTrigger component.
  */
 export interface EditableSubmitTriggerProps extends PrimitiveProps, /** @vue-ignore */ ButtonHTMLAttributes {}
 
 /**
- * Properties for the editable cancel trigger component.
+ * Properties for the EditableCancelTrigger component.
  */
 export interface EditableCancelTriggerProps extends PrimitiveProps, /** @vue-ignore */ ButtonHTMLAttributes {}
 
 /**
- * Parameters used to create the editable root context.
+ * Parameters used to create the EditableRoot context.
  */
 export interface EditableRootContextParams extends PropsToContext<
   EditableRootProps,
@@ -169,7 +169,7 @@ export interface EditableRootContextParams extends PropsToContext<
 }
 
 /**
- * Context for the editable root component.
+ * Context for the EditableRoot component.
  */
 export interface EditableRootContext extends Omit<EditableRootContextParams, 'dir'> {
   /**
@@ -199,7 +199,7 @@ export interface EditableRootContext extends Omit<EditableRootContextParams, 'di
 }
 
 /**
- * Available UI slots for the editable component.
+ * Available UI slots for the Editable component.
  */
 export type EditableUiSlot =
   | 'root'
@@ -212,12 +212,12 @@ export type EditableUiSlot =
   | 'cancelTrigger';
 
 /**
- * UI class overrides for the editable component.
+ * UI class overrides for the Editable component.
  */
 export type EditableUi = UiClass<EditableUiSlot>;
 
 /**
- * Properties for the editable compact component.
+ * Properties for the EditableCompact component.
  */
 export interface EditableCompactProps extends EditableRootProps {
   /**
@@ -247,12 +247,12 @@ export interface EditableCompactProps extends EditableRootProps {
 }
 
 /**
- * Events for the editable compact component.
+ * Events for the EditableCompact component.
  */
 export type EditableCompactEmits = EditableRootEmits;
 
 /**
- * Slot properties for the editable compact component.
+ * Slot properties for the EditableCompact component.
  */
 export interface EditableCompactSlotProps {
   /**
@@ -286,7 +286,7 @@ export interface EditableCompactSlotProps {
 }
 
 /**
- * Slots for the editable compact component.
+ * Slots for the EditableCompact component.
  */
 export interface EditableCompactSlots {
   /**

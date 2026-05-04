@@ -4,7 +4,7 @@ import type { ThemeSize } from '@/theme';
 import type { SeparatorBorder } from './variants';
 
 /**
- * Properties for the separator component.
+ * Properties for the Separator component.
  */
 export interface SeparatorProps extends SeparatorRootProps {
   /**

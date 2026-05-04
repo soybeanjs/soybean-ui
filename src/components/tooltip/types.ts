@@ -13,7 +13,7 @@ import type { ClassValue, Placement } from '@soybeanjs/headless/types';
 import type { ThemeSize } from '@/theme';
 
 /**
- * Properties for the tooltip component.
+ * Properties for the Tooltip component.
  */
 export interface TooltipProps extends TooltipRootProps {
   /**
@@ -63,6 +63,6 @@ export interface TooltipProps extends TooltipRootProps {
 }
 
 /**
- * Events for the tooltip component.
+ * Events for the Tooltip component.
  */
 export type TooltipEmits = TooltipRootEmits & TooltipPositionerEmits;

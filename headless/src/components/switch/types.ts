@@ -3,7 +3,7 @@ import type { AcceptableBooleanValue, FormFieldCommonProps, PropsToContext, UiCl
 import type { PrimitiveProps } from '../primitive/types';
 
 /**
- * Type information for the switch value config component.
+ * Type information for SwitchValueConfig.
  */
 export interface SwitchValueConfig<T extends AcceptableBooleanValue = boolean> {
   /**
@@ -21,7 +21,7 @@ export interface SwitchValueConfig<T extends AcceptableBooleanValue = boolean> {
 }
 
 /**
- * Properties for the switch root component.
+ * Properties for the SwitchRoot component.
  */
 export interface SwitchRootProps<T extends AcceptableBooleanValue>
   extends FormFieldCommonProps, SwitchValueConfig<T>, /** @vue-ignore */ HtmlHTMLAttributes {
@@ -36,7 +36,7 @@ export interface SwitchRootProps<T extends AcceptableBooleanValue>
 }
 
 /**
- * Events for the switch root component.
+ * Events for the SwitchRoot component.
  */
 export type SwitchRootEmits<T extends AcceptableBooleanValue = boolean> = {
   /** Event handler called when the value of the switch changes. */
@@ -44,7 +44,7 @@ export type SwitchRootEmits<T extends AcceptableBooleanValue = boolean> = {
 };
 
 /**
- * Properties for the switch control component.
+ * Properties for the SwitchControl component.
  */
 export interface SwitchControlProps extends /** @vue-ignore */ ButtonHTMLAttributes {
   /** Id of the element */
@@ -52,12 +52,12 @@ export interface SwitchControlProps extends /** @vue-ignore */ ButtonHTMLAttribu
 }
 
 /**
- * Properties for the switch thumb component.
+ * Properties for the SwitchThumb component.
  */
 export interface SwitchThumbProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Parameters used to create the switch root context.
+ * Parameters used to create the SwitchRoot context.
  */
 export interface SwitchRootContextParams<T extends AcceptableBooleanValue = boolean> extends PropsToContext<
   SwitchRootProps<T>,
@@ -70,11 +70,11 @@ export interface SwitchRootContextParams<T extends AcceptableBooleanValue = bool
 }
 
 /**
- * Available UI slots for the switch component.
+ * Available UI slots for the Switch component.
  */
 export type SwitchUiSlot = 'root' | 'control' | 'thumb';
 
 /**
- * UI class overrides for the switch component.
+ * UI class overrides for the Switch component.
  */
 export type SwitchUi = UiClass<SwitchUiSlot>;

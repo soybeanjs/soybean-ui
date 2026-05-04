@@ -2,17 +2,17 @@ import type { ComputedRef, HTMLAttributes, InputHTMLAttributes, ShallowRef } fro
 import type { FormFieldCommonProps, UiClass } from '../../types';
 
 /**
- * Type information for the input otp input mode component.
+ * Type information for InputOtpInputMode.
  */
 export type InputOtpInputMode = 'numeric' | 'text';
 
 /**
- * Type information for the input otp push password manager strategy component.
+ * Type information for InputOtpPushPasswordManagerStrategy.
  */
 export type InputOtpPushPasswordManagerStrategy = 'increase-width' | 'none';
 
 /**
- * Properties for the input otp root component.
+ * Properties for the InputOtpRoot component.
  */
 export interface InputOtpRootProps extends FormFieldCommonProps, /** @vue-ignore */ Omit<HTMLAttributes, 'onInput'> {
   /** The id of the native input element. */
@@ -48,7 +48,7 @@ export interface InputOtpRootProps extends FormFieldCommonProps, /** @vue-ignore
 }
 
 /**
- * Events for the input otp root component.
+ * Events for the InputOtpRoot component.
  */
 export type InputOtpRootEmits = {
   /**
@@ -94,27 +94,27 @@ export type InputOtpRootEmits = {
 };
 
 /**
- * Properties for the input otp positioner component.
+ * Properties for the InputOtpPositioner component.
  */
 export interface InputOtpPositionerProps extends /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Properties for the input otp input component.
+ * Properties for the InputOtpInput component.
  */
 export interface InputOtpInputProps extends /** @vue-ignore */ InputHTMLAttributes {}
 
 /**
- * Properties for the input otp compact component.
+ * Properties for the InputOtpCompact component.
  */
 export interface InputOtpCompactProps extends InputOtpRootProps {}
 
 /**
- * Events for the input otp compact component.
+ * Events for the InputOtpCompact component.
  */
 export type InputOtpCompactEmits = InputOtpRootEmits;
 
 /**
- * Slots for the input otp compact component.
+ * Slots for the InputOtpCompact component.
  */
 export type InputOtpCompactSlots = {
   /**
@@ -124,7 +124,7 @@ export type InputOtpCompactSlots = {
 };
 
 /**
- * Slot properties for the input otp component.
+ * Slot properties for the InputOtp component.
  */
 export interface InputOtpSlotProps {
   /** The typed character at the current slot. */
@@ -138,7 +138,7 @@ export interface InputOtpSlotProps {
 }
 
 /**
- * Slot properties for the input otp root component.
+ * Slot properties for the InputOtpRoot component.
  */
 export interface InputOtpRootSlotProps {
   /**
@@ -156,7 +156,7 @@ export interface InputOtpRootSlotProps {
 }
 
 /**
- * Context for the input otp root component.
+ * Context for the InputOtpRoot component.
  */
 export interface InputOtpRootContext {
   /**
@@ -298,11 +298,11 @@ export interface InputOtpRootContext {
 }
 
 /**
- * Available UI slots for the input otp component.
+ * Available UI slots for the InputOtp component.
  */
 export type InputOtpUiSlot = 'root' | 'positioner' | 'input' | 'group' | 'slot' | 'char' | 'placeholder' | 'caret';
 
 /**
- * UI class overrides for the input otp component.
+ * UI class overrides for the InputOtp component.
  */
 export type InputOtpUi = UiClass<InputOtpUiSlot>;

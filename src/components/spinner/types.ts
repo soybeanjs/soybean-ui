@@ -3,12 +3,12 @@ import type { ThemeColor, ThemeSize } from '@/theme';
 import type { IconProps } from '../icon/types';
 
 /**
- * Type information for the spinner icon component.
+ * Type information for SpinnerIcon.
  */
 export type SpinnerIcon = `svg-spinners:${string}`;
 
 /**
- * Properties for the spinner component.
+ * Properties for the Spinner component.
  */
 export interface SpinnerProps extends Omit<IconProps, 'icon' | 'color'> {
   /**

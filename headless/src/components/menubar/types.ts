@@ -18,7 +18,7 @@ import type {
 import type { PrimitiveProps } from '../primitive/types';
 
 /**
- * Properties for the menubar root component.
+ * Properties for the MenubarRoot component.
  */
 export interface MenubarRootProps<T extends DefinedValue = DefinedValue>
   extends PrimitiveProps, /** @vue-ignore */ Omit<HTMLAttributes, 'onSelect'> {
@@ -33,7 +33,7 @@ export interface MenubarRootProps<T extends DefinedValue = DefinedValue>
 }
 
 /**
- * Events for the menubar root component.
+ * Events for the MenubarRoot component.
  */
 export type MenubarRootEmits<T extends DefinedValue = DefinedValue> = {
   /**
@@ -43,7 +43,7 @@ export type MenubarRootEmits<T extends DefinedValue = DefinedValue> = {
 };
 
 /**
- * Properties for the menubar menu component.
+ * Properties for the MenubarMenu component.
  */
 export interface MenubarMenuProps {
   /** A unique value that associates the trigger with the active root value when controlled. */
@@ -51,7 +51,7 @@ export interface MenubarMenuProps {
 }
 
 /**
- * Properties for the menubar trigger component.
+ * Properties for the MenubarTrigger component.
  */
 export interface MenubarTriggerProps extends PrimitiveProps, /** @vue-ignore */ ButtonHTMLAttributes {
   /** When `true`, prevents the user from interacting with the trigger. */
@@ -59,7 +59,7 @@ export interface MenubarTriggerProps extends PrimitiveProps, /** @vue-ignore */ 
 }
 
 /**
- * Type information for the menubar collection item data component.
+ * Type information for MenubarCollectionItemData.
  */
 export interface MenubarCollectionItemData {
   /**
@@ -69,30 +69,30 @@ export interface MenubarCollectionItemData {
 }
 
 /**
- * Events for the menubar content component.
+ * Events for the MenubarContent component.
  */
 export type MenubarContentEmits = MenuContentEmits;
 /**
- * Properties for the menubar content component.
+ * Properties for the MenubarContent component.
  */
 export interface MenubarContentProps extends MenuContentProps {}
 
 /**
- * Properties for the menubar sub trigger component.
+ * Properties for the MenubarSubTrigger component.
  */
 export interface MenubarSubTriggerProps extends MenuSubTriggerProps {}
 
 /**
- * Properties for the menubar sub content component.
+ * Properties for the MenubarSubContent component.
  */
 export interface MenubarSubContentProps extends MenuSubContentProps {}
 /**
- * Events for the menubar sub content component.
+ * Events for the MenubarSubContent component.
  */
 export type MenubarSubContentEmits = MenuSubContentEmits;
 
 /**
- * Properties for the menubar compact component.
+ * Properties for the MenubarCompact component.
  */
 export interface MenubarCompactProps<T extends DefinedValue = DefinedValue>
   extends MenubarRootProps<T>, MenuOptionsCompactProps<T> {
@@ -130,13 +130,13 @@ export interface MenubarCompactProps<T extends DefinedValue = DefinedValue>
   arrowProps?: MenuArrowProps;
 }
 /**
- * Events for the menubar compact component.
+ * Events for the MenubarCompact component.
  */
 export type MenubarCompactEmits<T extends DefinedValue = DefinedValue> = MenubarRootEmits<T> &
   MenuContentEmits &
   MenuOptionsCompactEmits<T>;
 /**
- * Slots for the menubar compact component.
+ * Slots for the MenubarCompact component.
  */
 export type MenubarCompactSlots<T extends DefinedValue = DefinedValue> = MenuOptionsCompactSlots<T> & {
   /**
@@ -146,7 +146,7 @@ export type MenubarCompactSlots<T extends DefinedValue = DefinedValue> = MenuOpt
 };
 
 /**
- * Parameters used to create the menubar root context.
+ * Parameters used to create the MenubarRoot context.
  */
 export interface MenubarRootContextParams extends PropsToContext<MenubarRootProps, 'dir' | 'loop'> {
   /**
@@ -160,7 +160,7 @@ export interface MenubarRootContextParams extends PropsToContext<MenubarRootProp
 }
 
 /**
- * Parameters used to create the menubar menu context.
+ * Parameters used to create the MenubarMenu context.
  */
 export interface MenubarMenuContextParams {
   /**
@@ -190,10 +190,10 @@ export interface MenubarMenuContextParams {
 }
 
 /**
- * Available UI slots for the menubar component.
+ * Available UI slots for the Menubar component.
  */
 export type MenubarUiSlot = 'root' | 'trigger' | MenuUiSlot;
 /**
- * UI class overrides for the menubar component.
+ * UI class overrides for the Menubar component.
  */
 export type MenubarUi = UiClass<MenubarUiSlot>;

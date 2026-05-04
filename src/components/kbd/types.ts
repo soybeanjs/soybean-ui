@@ -4,7 +4,7 @@ import type { ThemeSize } from '@/theme';
 import type { KbdVariant } from './variants';
 
 /**
- * Properties for the kbd component.
+ * Properties for the Kbd component.
  */
 export interface KbdProps extends _KbdProps {
   /**

@@ -8,7 +8,7 @@ import type { ClassValue, DefinedValue } from '@soybeanjs/headless/types';
 import { ThemeSize } from '@/theme';
 
 /**
- * Properties for the carousel component.
+ * Properties for the Carousel component.
  */
 export interface CarouselProps<T extends DefinedValue = DefinedValue> extends CarouselCompactProps<T> {
   /**
@@ -32,11 +32,11 @@ export interface CarouselProps<T extends DefinedValue = DefinedValue> extends Ca
 }
 
 /**
- * Events for the carousel component.
+ * Events for the Carousel component.
  */
 export type CarouselEmits = CarouselCompactEmits;
 
 /**
- * Slots for the carousel component.
+ * Slots for the Carousel component.
  */
 export type CarouselSlots<T extends DefinedValue = DefinedValue> = CarouselCompactSlots<T>;

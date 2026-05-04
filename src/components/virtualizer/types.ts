@@ -5,7 +5,7 @@ import type {
 } from '@soybeanjs/headless/virtualizer';
 
 /**
- * Properties for the virtualizer component.
+ * Properties for the Virtualizer component.
  */
 export interface VirtualizerProps<T extends Record<string, any>> extends VirtualizerRootProps<T> {
   /**

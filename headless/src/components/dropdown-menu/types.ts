@@ -26,7 +26,7 @@ import type {
 export type DropdownMenuTriggerType = 'click' | 'hover';
 
 /**
- * Properties for the dropdown menu root component.
+ * Properties for the DropdownMenuRoot component.
  */
 export interface DropdownMenuRootProps extends MenuRootProps {
   /**
@@ -52,13 +52,13 @@ export interface DropdownMenuRootProps extends MenuRootProps {
   skipDelayDuration?: number;
 }
 /**
- * Events for the dropdown menu root component.
+ * Events for the DropdownMenuRoot component.
  */
 export type DropdownMenuRootEmits = MenuRootEmits;
 
 // Context
 /**
- * Parameters used to create the dropdown menu root context.
+ * Parameters used to create the DropdownMenuRoot context.
  */
 export interface DropdownMenuRootContextParams extends PropsToContext<DropdownMenuRootProps, 'dir' | 'modal'> {
   /**
@@ -68,7 +68,7 @@ export interface DropdownMenuRootContextParams extends PropsToContext<DropdownMe
 }
 
 /**
- * Parameters used to create the dropdown menu hover context.
+ * Parameters used to create the DropdownMenuHover context.
  */
 export interface DropdownMenuHoverContextParams extends PropsToContext<
   DropdownMenuRootProps,
@@ -85,22 +85,22 @@ export interface DropdownMenuHoverContextParams extends PropsToContext<
 }
 
 /**
- * Properties for the dropdown menu content component.
+ * Properties for the DropdownMenuContent component.
  */
 export interface DropdownMenuContentProps extends MenuContentProps {}
 
 /**
- * Events for the dropdown menu content component.
+ * Events for the DropdownMenuContent component.
  */
 export type DropdownMenuContentEmits = MenuContentEmits;
 
 /**
- * Properties for the dropdown menu trigger component.
+ * Properties for the DropdownMenuTrigger component.
  */
 export interface DropdownMenuTriggerProps extends MenuTriggerProps {}
 
 /**
- * Properties for the dropdown menu wrapper compact component.
+ * Properties for the DropdownMenuWrapperCompact component.
  */
 export interface DropdownMenuWrapperCompactProps extends DropdownMenuRootProps {
   /**
@@ -138,24 +138,24 @@ export interface DropdownMenuWrapperCompactProps extends DropdownMenuRootProps {
 }
 
 /**
- * Events for the dropdown menu wrapper compact component.
+ * Events for the DropdownMenuWrapperCompact component.
  */
 export type DropdownMenuWrapperCompactEmits = MenuRootEmits & MenuContentEmits;
 
 /**
- * Properties for the dropdown menu compact component.
+ * Properties for the DropdownMenuCompact component.
  */
 export interface DropdownMenuCompactProps<T extends DefinedValue = DefinedValue>
   extends DropdownMenuWrapperCompactProps, MenuOptionsCompactProps<T> {}
 
 /**
- * Events for the dropdown menu compact component.
+ * Events for the DropdownMenuCompact component.
  */
 export type DropdownMenuCompactEmits<T extends DefinedValue = DefinedValue> = DropdownMenuWrapperCompactEmits &
   MenuOptionsCompactEmits<T>;
 
 /**
- * Slots for the dropdown menu compact component.
+ * Slots for the DropdownMenuCompact component.
  */
 export type DropdownMenuCompactSlots<T extends DefinedValue = DefinedValue> = MenuOptionsCompactSlots<T> & {
   /**
@@ -166,19 +166,19 @@ export type DropdownMenuCompactSlots<T extends DefinedValue = DefinedValue> = Me
 
 // Menu Checkbox
 /**
- * Properties for the dropdown menu checkbox compact component.
+ * Properties for the DropdownMenuCheckboxCompact component.
  */
 export interface DropdownMenuCheckboxCompactProps<T extends DefinedValue = DefinedValue>
   extends DropdownMenuWrapperCompactProps, MenuCheckboxOptionsCompactProps<T> {}
 
 /**
- * Events for the dropdown menu checkbox compact component.
+ * Events for the DropdownMenuCheckboxCompact component.
  */
 export type DropdownMenuCheckboxCompactEmits<T extends DefinedValue = DefinedValue> = DropdownMenuWrapperCompactEmits &
   MenuCheckboxOptionsCompactEmits<T>;
 
 /**
- * Slots for the dropdown menu checkbox compact component.
+ * Slots for the DropdownMenuCheckboxCompact component.
  */
 export type DropdownMenuCheckboxCompactSlots<T extends DefinedValue = DefinedValue> =
   MenuCheckboxOptionsCompactSlots<T> & {
@@ -190,19 +190,19 @@ export type DropdownMenuCheckboxCompactSlots<T extends DefinedValue = DefinedVal
 
 // Menu Radio
 /**
- * Properties for the dropdown menu radio compact component.
+ * Properties for the DropdownMenuRadioCompact component.
  */
 export interface DropdownMenuRadioCompactProps<T extends AcceptableBooleanValue = AcceptableBooleanValue>
   extends DropdownMenuWrapperCompactProps, MenuRadioOptionsCompactProps<T> {}
 
 /**
- * Events for the dropdown menu radio compact component.
+ * Events for the DropdownMenuRadioCompact component.
  */
 export type DropdownMenuRadioCompactEmits<T extends AcceptableBooleanValue = AcceptableBooleanValue> =
   DropdownMenuWrapperCompactEmits & MenuRadioOptionsCompactEmits<T>;
 
 /**
- * Slots for the dropdown menu radio compact component.
+ * Slots for the DropdownMenuRadioCompact component.
  */
 export type DropdownMenuRadioCompactSlots<T extends AcceptableBooleanValue = AcceptableBooleanValue> =
   MenuRadioOptionsCompactSlots<T> & {

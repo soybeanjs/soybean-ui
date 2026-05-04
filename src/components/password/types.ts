@@ -7,7 +7,7 @@ type PasswordUiSlot = 'clearable' | 'visible';
 type PasswordUi = InputUi & Record<PasswordUiSlot, ClassValue>;
 
 /**
- * Properties for the password component.
+ * Properties for the Password component.
  */
 export interface PasswordProps extends InputRootProps {
   /**
@@ -39,7 +39,7 @@ export interface PasswordProps extends InputRootProps {
 }
 
 /**
- * Events for the password component.
+ * Events for the Password component.
  */
 export type PasswordEmits = InputRootEmits & {
   /**

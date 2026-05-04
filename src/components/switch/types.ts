@@ -10,7 +10,7 @@ import type { ThemeColor, ThemeSize } from '@/theme';
 import type { SwitchShape } from './variants';
 
 /**
- * Properties for the switch component.
+ * Properties for the Switch component.
  */
 export interface SwitchProps<T extends AcceptableBooleanValue = boolean> extends SwitchRootProps<T> {
   /**
@@ -44,7 +44,7 @@ export interface SwitchProps<T extends AcceptableBooleanValue = boolean> extends
 }
 
 /**
- * Events for the switch component.
+ * Events for the Switch component.
  */
 export type SwitchEmits<T extends AcceptableBooleanValue = boolean> = SwitchRootEmits<T>;
 

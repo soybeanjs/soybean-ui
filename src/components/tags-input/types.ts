@@ -3,7 +3,7 @@ import type { ClassValue } from '@soybeanjs/headless/types';
 import type { ThemeSize } from '@/theme';
 
 /**
- * Properties for the tags input component.
+ * Properties for the TagsInput component.
  */
 export interface TagsInputProps<T = string> extends TagsInputRootProps<T> {
   /**
@@ -21,6 +21,6 @@ export interface TagsInputProps<T = string> extends TagsInputRootProps<T> {
 }
 
 /**
- * Events for the tags input component.
+ * Events for the TagsInput component.
  */
 export type TagsInputEmits<T = string> = TagsInputRootEmits<T>;
