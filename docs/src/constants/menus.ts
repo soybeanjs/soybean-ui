@@ -4,6 +4,29 @@ export interface MenuData {
   items: string[];
 }
 
+export const newlyComponentKeys = [
+  'colorField',
+  'colorSlider',
+  'colorSwatch',
+  'colorSwatchPicker',
+  'colorPicker',
+  'pageTabs',
+  'calendar',
+  'dateField',
+  'datePicker',
+  'dateRangeField',
+  'dateRangePicker',
+  'monthPicker',
+  'monthRangePicker',
+  'rangeCalendar',
+  'yearPicker',
+  'yearRangePicker',
+  'timeField',
+  'timePicker',
+  'timeRangeField',
+  'timeRangePicker'
+];
+
 export const menuData: MenuData[] = [
   {
     value: 'general',

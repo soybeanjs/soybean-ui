@@ -1,32 +1,9 @@
 <script setup lang="ts">
 import { kebabCase, pascalCase } from '@soybeanjs/utils';
 import { resetDocOutline, setDocOutline } from '@/composables/use-doc-outline';
-import { menuData } from '../../constants/menus';
+import { menuData, newlyComponentKeys } from '../../constants/menus';
 
 const { t } = useI18n();
-
-const newlyComponents = [
-  'colorField',
-  'ColorSlider',
-  'ColorSwatch',
-  'ColorSwatchPicker',
-  'ColorPicker',
-  'pageTabs',
-  'calendar',
-  'dateField',
-  'datePicker',
-  'dateRangeField',
-  'dateRangePicker',
-  'monthPicker',
-  'monthRangePicker',
-  'rangeCalendar',
-  'yearPicker',
-  'yearRangePicker',
-  'timeField',
-  'timePicker',
-  'timeRangeField',
-  'timeRangePicker'
-];
 const featuredComponentKeys = ['button', 'input', 'select', 'dialog', 'table', 'form'];
 
 const componentGroups = computed(() =>
@@ -37,13 +14,13 @@ const componentGroups = computed(() =>
       key: item,
       label: pascalCase(item),
       path: `/components/${kebabCase(item)}`,
-      isNew: newlyComponents.includes(item)
+      isNew: newlyComponentKeys.includes(item)
     }))
   }))
 );
 
 const totalComponents = computed(() => componentGroups.value.reduce((total, group) => total + group.items.length, 0));
-const newComponentsCount = computed(() => newlyComponents.length);
+const newComponentsCount = computed(() => newlyComponentKeys.length);
 
 const featuredComponents = computed(() => {
   return featuredComponentKeys.map(item => {

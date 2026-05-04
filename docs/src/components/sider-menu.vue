@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { kebabCase, pascalCase } from '@soybeanjs/utils';
 import type { TreeMenuOptionData } from '@soybeanjs/ui';
-import { menuData } from '../constants/menus';
+import { menuData, newlyComponentKeys } from '../constants/menus';
 
 interface Props {
   shellClass?: string;
@@ -22,7 +22,6 @@ const expanded = ref<string[]>([]);
 
 const selected = ref<string>('');
 
-const newlyComponents = ['pageTabs'];
 const componentsOverviewValue = 'components-overview';
 
 const section = computed(() => route.path.split('/').filter(Boolean)[0] ?? '');
@@ -35,7 +34,7 @@ const componentMenus = computed<TreeMenuOptionData[]>(() =>
       label: pascalCase(item),
       value: kebabCase(item),
       to: `/components/${kebabCase(item)}`,
-      tag: newlyComponents.includes(item) ? '🎉new' : undefined
+      tag: newlyComponentKeys.includes(item) ? '🎉new' : undefined
     }))
   }))
 );
