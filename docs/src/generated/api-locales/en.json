@@ -3562,6 +3562,56 @@
         "autocompleteinputemits": {
           "emits": "Events for the input root component."
         },
+        "inputclearprops": {
+          "members": {
+            "as": "The element or component this component should render as. Can be overwrite by `asChild`",
+            "aschild": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+            "disabled": "Whether the component is disabled."
+          },
+          "props": "Properties for the input clear component."
+        },
+        "inputcompactemits": {
+          "callables": {
+            "update_modelvalue": "Emitted when the model value changes."
+          },
+          "emits": "Events for the input compact component."
+        },
+        "inputcompactprops": {
+          "members": {
+            "autofocus": "When `true`, the input is auto-focused.",
+            "clearable": "Whether to show the clear trigger.",
+            "clearlabel": "Accessible label for the clear trigger.",
+            "controlprops": "Properties forwarded to the control element.",
+            "defaultvalue": "The default value of the input",
+            "disabled": "When `true`, prevents the user from interacting with the input.",
+            "id": "Id of the input element",
+            "inputref": "The function to set the input element.",
+            "maxlength": "The maximum number of characters allowed in the input",
+            "minlength": "The minimum number of characters allowed in the input",
+            "modelvalue": "The controlled value of the input",
+            "name": "The name of the field. Submitted with its owning form as part of a name/value pair.",
+            "pattern": "The pattern attribute of the input",
+            "placeholder": "The placeholder of the input",
+            "readonly": "When `true`, the input is read-only.",
+            "required": "When `true`, indicates that the user must set the value before the owning form can be submitted."
+          },
+          "props": "Properties for the input compact component."
+        },
+        "inputcompactslotprops": {
+          "members": {
+            "clear": "Clear handler.",
+            "modelvalue": "Current model value."
+          },
+          "slotprops": "Slot properties for the input compact component."
+        },
+        "inputcompactslots": {
+          "callables": {
+            "clear": "Custom content for the clear slot.",
+            "leading": "Custom content for the leading slot.",
+            "trailing": "Custom content for the trailing slot."
+          },
+          "slots": "Slots for the input compact component."
+        },
         "inputcontrolprops": {
           "props": "Properties for the input control component."
         },
@@ -3587,7 +3637,8 @@
             "required": "When `true`, indicates that the user must set the value before the owning form can be submitted."
           },
           "props": "Properties for the input root component."
-        }
+        },
+        "inputui": "UI class overrides for the input component."
       },
       "headless_src_components_label_types": {
         "checkboxlabelprops": {
@@ -9809,13 +9860,13 @@
           },
           "emits": "Events for the input component."
         },
-        "inputextendedui": "",
         "inputprops": {
           "members": {
             "autofocus": "When `true`, the input is auto-focused.",
             "class": "root class",
-            "clearable": "Whether to show the clear icon",
-            "controlprops": "The props of the input extra props.",
+            "clearable": "Whether to show the clear trigger.",
+            "clearlabel": "Accessible label for the clear trigger.",
+            "controlprops": "Properties forwarded to the control element.",
             "defaultvalue": "The default value of the input",
             "disabled": "When `true`, prevents the user from interacting with the input.",
             "id": "Id of the input element",
@@ -9832,6 +9883,14 @@
             "ui": "Per-slot class overrides for the component."
           },
           "props": "Properties for the input component."
+        },
+        "inputslots": {
+          "callables": {
+            "clear": "Custom content for the clear slot.",
+            "leading": "Custom content for the leading slot.",
+            "trailing": "Custom content for the trailing slot."
+          },
+          "slots": "Slots for the input component."
         }
       },
       "src_components_kbd_types": {

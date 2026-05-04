@@ -21,6 +21,7 @@ const onInput = (event: Event) => {
 <template>
   <input
     :id="id"
+    data-slot="control"
     :class="cls"
     :aria-disabled="disabled ?? undefined"
     aria-roledescription="Input"

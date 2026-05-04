@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-04T06:19:16.683Z",
+  "generatedAt": "2026-05-04T06:50:02.920Z",
   "schemaVersion": 4,
   "components": {
     "accordion": {
@@ -469,7 +469,7 @@
     "input": {
       "component": "input",
       "file": "input.json",
-      "symbols": ["AutocompleteInput", "Input", "InputControl", "InputRoot"]
+      "symbols": ["AutocompleteInput", "Input", "InputClear", "InputCompact", "InputControl", "InputRoot"]
     },
     "input-number": {
       "component": "input-number",

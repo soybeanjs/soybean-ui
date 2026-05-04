@@ -245,6 +245,8 @@ import {
   HoverCardPositioner,
   HoverCardRoot,
   HoverCardTrigger,
+  InputClear,
+  InputCompact,
   InputControl,
   InputNumberControl,
   InputNumberDecrement,
@@ -1205,11 +1207,15 @@ export const HoverCard = {
 };
 
 export const Input = {
+  Compact: InputCompact,
   Root: InputRoot,
-  Control: InputControl
+  Control: InputControl,
+  Clear: InputClear
 } as {
+  Compact: typeof InputCompact;
   Root: typeof InputRoot;
   Control: typeof InputControl;
+  Clear: typeof InputClear;
 };
 
 export const InputNumber = {

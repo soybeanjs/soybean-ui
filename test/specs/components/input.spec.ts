@@ -1,5 +1,6 @@
 import { mount } from '@vue/test-utils';
 import { describe, expect, it } from 'vitest';
+import { SInputClear } from '../../../src/components/input';
 import SInput from '../../../src/components/input/input.vue';
 import { getA11yViolations } from '../../shared/a11y';
 
@@ -55,6 +56,49 @@ describe('SInput', () => {
       await wrapper.find('input').setValue('typed text');
       expect(wrapper.emitted('update:modelValue')).toBeTruthy();
       expect(wrapper.emitted('update:modelValue')![0]).toEqual(['typed text']);
+      wrapper.unmount();
+    });
+
+    it('renders clear trigger and emits empty value when clearing', async () => {
+      const wrapper = mount(SInput, {
+        props: {
+          modelValue: 'hello',
+          clearable: true
+        },
+        attachTo: document.body
+      });
+
+      await wrapper.find('button[aria-label="Clear input"]').trigger('click');
+
+      expect(wrapper.emitted('update:modelValue')).toBeTruthy();
+      expect(wrapper.emitted('update:modelValue')![0]).toEqual(['']);
+
+      wrapper.unmount();
+    });
+
+    it('clears through SInputClear in the clear slot', async () => {
+      const wrapper = mount(
+        {
+          components: {
+            SInput,
+            SInputClear
+          },
+          template: `
+            <SInput model-value="hello" clearable @update:model-value="$emit('update:modelValue', $event)">
+              <template #clear>
+                <SInputClear aria-label="Custom clear">Clear</SInputClear>
+              </template>
+            </SInput>
+          `
+        },
+        { attachTo: document.body }
+      );
+
+      await wrapper.findComponent(SInputClear).trigger('click');
+
+      expect(wrapper.emitted('update:modelValue')).toBeTruthy();
+      expect(wrapper.emitted('update:modelValue')![0]).toEqual(['']);
+
       wrapper.unmount();
     });
   });

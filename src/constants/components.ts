@@ -40,7 +40,7 @@ export const components = {
   form: ['SForm', 'SFormFieldBase'],
   hoverCard: ['SHoverCard'],
   icon: ['SIcon'],
-  input: ['SInput'],
+  input: ['SInput', 'SInputClear'],
   inputNumber: ['SInputNumber'],
   inputOtp: ['SInputOtp'],
   kbd: ['SKbd'],

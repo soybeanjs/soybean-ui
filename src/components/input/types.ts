@@ -1,15 +1,11 @@
-import type { InputControlProps, InputRootEmits, InputRootProps, InputUi } from '@soybeanjs/headless/input';
+import type { InputCompactProps, InputCompactSlots, InputRootEmits, InputUi } from '@soybeanjs/headless/input';
 import type { ClassValue } from '@soybeanjs/headless/types';
 import type { ThemeSize } from '@/theme';
-
-type InputExtraUiSlot = 'clearable';
-
-type InputExtendedUi = InputUi & Record<InputExtraUiSlot, ClassValue>;
 
 /**
  * Properties for the input component.
  */
-export interface InputProps extends InputRootProps {
+export interface InputProps extends InputCompactProps {
   /**
    * root class
    */
@@ -21,22 +17,15 @@ export interface InputProps extends InputRootProps {
   /**
    * Per-slot class overrides for the component.
    */
-  ui?: Partial<InputExtendedUi>;
-  /** Whether to show the clear icon */
-  clearable?: boolean;
-  /**
-   * The function to set the input element.
-   *
-   * @param el - The input element.
-   */
-  inputRef?: (el: HTMLInputElement) => void;
-  /**
-   * The props of the input extra props.
-   */
-  controlProps?: InputControlProps;
+  ui?: Partial<InputUi>;
 }
 
 /**
  * Events for the input component.
  */
 export type InputEmits = InputRootEmits;
+
+/**
+ * Slots for the input component.
+ */
+export type InputSlots = InputCompactSlots;

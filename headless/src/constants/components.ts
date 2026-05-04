@@ -232,7 +232,7 @@ export const components = {
     'HoverCardArrow',
     'HoverCardCompact'
   ],
-  input: ['InputRoot', 'InputControl'],
+  input: ['InputCompact', 'InputRoot', 'InputControl', 'InputClear'],
   inputNumber: ['InputNumberRoot', 'InputNumberControl', 'InputNumberIncrement', 'InputNumberDecrement'],
   inputOtp: ['InputOtpCompact', 'InputOtpInput', 'InputOtpPositioner', 'InputOtpRoot'],
   kbd: ['Kbd'],

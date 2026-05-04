@@ -31,6 +31,10 @@ const modelValue = useControllableState(
 const formControl = computed(() => isFormControl(rootElement.value));
 
 const onClear = () => {
+  if (props.disabled || props.readonly) {
+    return;
+  }
+
   modelValue.value = '';
 };
 
@@ -47,13 +51,15 @@ provideInputRootContext({
     'name',
     'required'
   ]),
-  modelValue
+  modelValue,
+  onClear
 });
 </script>
 
 <template>
   <div
     :ref="setRootElement"
+    data-slot="root"
     :class="cls"
     role="group"
     :data-disabled="disabled ? '' : undefined"

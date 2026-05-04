@@ -3562,6 +3562,56 @@
         "autocompleteinputemits": {
           "emits": "输入根组件的事件。"
         },
+        "inputclearprops": {
+          "members": {
+            "as": "该组件应呈现为的元素或组件。可被 `asChild` 改写",
+            "aschild": "为作为子元素传递的元素更改默认渲染元素，合并它们的道具和行为。",
+            "disabled": "组件是否禁用。"
+          },
+          "props": "输入清除组件的属性。"
+        },
+        "inputcompactemits": {
+          "callables": {
+            "update_modelvalue": "当模型值发生变化时发出。"
+          },
+          "emits": "输入紧凑组件的事件。"
+        },
+        "inputcompactprops": {
+          "members": {
+            "autofocus": "当 \"true \"时，输入会自动聚焦。",
+            "clearable": "是否显示清晰的触发器。",
+            "clearlabel": "清晰触发器的可访问标签。",
+            "controlprops": "转发到控制元素的属性。",
+            "defaultvalue": "输入的默认值为",
+            "disabled": "为 `true`时，阻止用户与输入进行交互。",
+            "id": "输入元素的 ID",
+            "inputref": "设置输入元素的函数。",
+            "maxlength": "输入中允许的最大字符数",
+            "minlength": "输入中允许的最少字符数",
+            "modelvalue": "输入的受控值",
+            "name": "字段名称。作为名称/值对的一部分，与其所属形式一起提交。",
+            "pattern": "输入的模式属性",
+            "placeholder": "输入的占位符",
+            "readonly": "true \"时，输入为只读。",
+            "required": "true \"时，表示用户必须在提交拥有表单前设置值。"
+          },
+          "props": "输入紧凑组件的属性。"
+        },
+        "inputcompactslotprops": {
+          "members": {
+            "clear": "清除处理程序。",
+            "modelvalue": "当前模型值。"
+          },
+          "slotprops": "输入紧凑组件的槽属性。"
+        },
+        "inputcompactslots": {
+          "callables": {
+            "clear": "清除槽的自定义内容。",
+            "leading": "前导槽的自定义内容。",
+            "trailing": "为尾部槽定制内容。"
+          },
+          "slots": "输入紧凑组件的插槽。"
+        },
         "inputcontrolprops": {
           "props": "输入控制组件的属性。"
         },
@@ -3587,7 +3637,8 @@
             "required": "true \"时，表示用户必须在提交拥有表单前设置值。"
           },
           "props": "输入根组件的属性。"
-        }
+        },
+        "inputui": "输入组件的 UI 类重载。"
       },
       "headless_src_components_label_types": {
         "checkboxlabelprops": {
@@ -9809,13 +9860,13 @@
           },
           "emits": "输入组件的事件"
         },
-        "inputextendedui": "",
         "inputprops": {
           "members": {
             "autofocus": "当 \"true \"时，输入会自动聚焦。",
             "class": "根类",
-            "clearable": "是否显示清晰图标",
-            "controlprops": "输入额外的道具。",
+            "clearable": "是否显示清晰的触发器。",
+            "clearlabel": "清晰触发器的可访问标签。",
+            "controlprops": "转发到控制元素的属性。",
             "defaultvalue": "输入的默认值为",
             "disabled": "为 `true`时，阻止用户与输入进行交互。",
             "id": "输入元素的 ID",
@@ -9832,6 +9883,14 @@
             "ui": "组件的每个插槽类重写。"
           },
           "props": "输入组件的属性。"
+        },
+        "inputslots": {
+          "callables": {
+            "clear": "清除槽的自定义内容。",
+            "leading": "前导槽的自定义内容。",
+            "trailing": "为尾部槽定制内容。"
+          },
+          "slots": "输入组件的插槽。"
         }
       },
       "src_components_kbd_types": {
