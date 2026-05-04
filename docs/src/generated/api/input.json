@@ -21,7 +21,7 @@
         "kind": "props",
         "name": "InputProps",
         "type": "Interface InputProps",
-        "resolvedType": "{ class?: string | Record<string, boolean> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<InputUi>; clearable?: boolean; clearLabel?: string; inputRef?: ((el: HTMLInputElement) => void); controlProps?: InputControlProps; defaultValue?: string; modelValue?: string; id?: string; autofocus?: boolean; disabled?: boolean; maxlength?: number; minlength?: number; pattern?: string; placeholder?: string; readonly?: boolean; name?: string; required?: boolean }",
+        "resolvedType": "{ class?: string | Record<string, boolean> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<InputUi>; clearable?: boolean; inputRef?: ((el: HTMLInputElement) => void); controlProps?: InputControlProps; clearProps?: InputClearProps; defaultValue?: string; modelValue?: string; id?: string; autofocus?: boolean; disabled?: boolean; maxlength?: number; minlength?: number; pattern?: string; placeholder?: string; readonly?: boolean; name?: string; required?: boolean }",
         "description": "Properties for the input component.",
         "descriptionKey": "api.generated.src_components_input_types.inputprops.props",
         "sourcePath": "src/components/input/types.ts",
@@ -114,17 +114,6 @@
             "referencedTypes": []
           },
           {
-            "name": "clearLabel",
-            "type": "string",
-            "required": false,
-            "description": "Accessible label for the clear trigger.",
-            "descriptionKey": "api.generated.src_components_input_types.inputprops.members.clearlabel",
-            "default": "'Clear input'",
-            "inheritedFrom": "clearLabel",
-            "sourcePath": "headless/src/components/input/types.ts",
-            "referencedTypes": []
-          },
-          {
             "name": "inputRef",
             "type": "((el: HTMLInputElement) => void)",
             "required": false,
@@ -170,6 +159,76 @@
                 "typeParameters": [],
                 "external": false,
                 "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "clearProps",
+            "type": "InputClearProps",
+            "required": false,
+            "description": "Properties forwarded to the clear element.",
+            "descriptionKey": "api.generated.src_components_input_types.inputprops.members.clearprops",
+            "default": null,
+            "inheritedFrom": "clearProps",
+            "sourcePath": "headless/src/components/input/types.ts",
+            "referencedTypes": [
+              {
+                "name": "InputClearProps",
+                "kind": "interface",
+                "type": "InputClearProps",
+                "resolvedType": "{ type?: ButtonType; disabled?: boolean; asChild?: boolean; as?: AsTag | Component }",
+                "description": "Properties for the input clear component.",
+                "descriptionKey": "api.generated.headless_src_components_input_types.inputclearprops",
+                "sourcePath": "headless/src/components/input/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "type",
+                    "type": "ButtonType",
+                    "required": false,
+                    "description": "The type of the button element. Can be one of 'button', 'submit', or 'reset'.",
+                    "descriptionKey": "api.generated.headless_src_components_input_types.inputclearprops.members.type",
+                    "default": "'button'",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/button/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "disabled",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Whether the component is disabled.",
+                    "descriptionKey": "api.generated.headless_src_components_input_types.inputclearprops.members.disabled",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/button/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "asChild",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+                    "descriptionKey": "api.generated.headless_src_components_input_types.inputclearprops.members.aschild",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "as",
+                    "type": "AsTag | Component",
+                    "required": false,
+                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+                    "descriptionKey": "api.generated.headless_src_components_input_types.inputclearprops.members.as",
+                    "default": "'div'",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
                 "callables": []
               }
             ]
@@ -446,8 +505,8 @@
         "referencedTypes": [
           {
             "name": "InputCompactSlots",
-            "kind": "interface",
-            "type": "InputCompactSlots",
+            "kind": "typeAlias",
+            "type": "{ leading?: (props: import(\"@soybeanjs/headless\").InputCompactSlotProps) => any; trailing?: (props: import(\"@soybeanjs/headless\").InputCompactSlotProps) => any; clear?: (props: import(\"@soybeanjs/headless\").InputCompactSlotProps) => any; }",
             "resolvedType": "{ leading?: ((props: InputCompactSlotProps) => any); trailing?: ((props: InputCompactSlotProps) => any); clear?: ((props: InputCompactSlotProps) => any) }",
             "description": "Slots for the input compact component.",
             "descriptionKey": "api.generated.headless_src_components_input_types.inputcompactslots",
@@ -496,12 +555,37 @@
         "kind": "props",
         "name": "InputClearProps",
         "type": "Interface InputClearProps",
-        "resolvedType": "{ disabled?: boolean; asChild?: boolean; as?: AsTag | Component }",
+        "resolvedType": "{ type?: ButtonType; disabled?: boolean; asChild?: boolean; as?: AsTag | Component }",
         "description": "Properties for the input clear component.",
         "descriptionKey": "api.generated.headless_src_components_input_types.inputclearprops.props",
         "sourcePath": "headless/src/components/input/types.ts",
         "typeParameters": [],
         "members": [
+          {
+            "name": "type",
+            "type": "ButtonType",
+            "required": false,
+            "description": "The type of the button element. Can be one of 'button', 'submit', or 'reset'.",
+            "descriptionKey": "api.generated.headless_src_components_input_types.inputclearprops.members.type",
+            "default": "'button'",
+            "inheritedFrom": "ButtonProps.type",
+            "sourcePath": "headless/src/components/button/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ButtonType",
+                "kind": "typeAlias",
+                "type": "'button' | 'submit' | 'reset'",
+                "resolvedType": "'button' | 'submit' | 'reset'",
+                "description": "Supported button values.",
+                "descriptionKey": "api.generated.headless_src_components_button_types.buttontype",
+                "sourcePath": "headless/src/components/button/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
           {
             "name": "disabled",
             "type": "boolean",
@@ -509,8 +593,8 @@
             "description": "Whether the component is disabled.",
             "descriptionKey": "api.generated.headless_src_components_input_types.inputclearprops.members.disabled",
             "default": null,
-            "inheritedFrom": null,
-            "sourcePath": "headless/src/components/input/types.ts",
+            "inheritedFrom": "ButtonProps.disabled",
+            "sourcePath": "headless/src/components/button/types.ts",
             "referencedTypes": []
           },
           {
@@ -520,7 +604,7 @@
             "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
             "descriptionKey": "api.generated.headless_src_components_input_types.inputclearprops.members.aschild",
             "default": null,
-            "inheritedFrom": "PrimitiveProps.asChild",
+            "inheritedFrom": "ButtonProps.asChild",
             "sourcePath": "headless/src/components/primitive/types.ts",
             "referencedTypes": []
           },
@@ -531,7 +615,7 @@
             "description": "The element or component this component should render as. Can be overwrite by `asChild`",
             "descriptionKey": "api.generated.headless_src_components_input_types.inputclearprops.members.as",
             "default": "'div'",
-            "inheritedFrom": "PrimitiveProps.as",
+            "inheritedFrom": "ButtonProps.as",
             "sourcePath": "headless/src/components/primitive/types.ts",
             "referencedTypes": [
               {
@@ -560,6 +644,44 @@
         ],
         "callables": [],
         "referencedTypes": []
+      },
+      "emits": {
+        "kind": "emits",
+        "name": "InputClearEmits",
+        "type": "TypeAlias InputClearEmits",
+        "resolvedType": "{ clear: [event: PointerEvent] }",
+        "description": "Events for the input clear component.",
+        "descriptionKey": "api.generated.headless_src_components_input_types.inputclearemits.emits",
+        "sourcePath": "headless/src/components/input/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [
+          {
+            "name": "clear",
+            "type": "[event: PointerEvent]",
+            "parameters": "event: PointerEvent",
+            "required": true,
+            "description": "Emitted when the clear button is clicked.",
+            "descriptionKey": "api.generated.headless_src_components_input_types.inputclearemits.callables.clear",
+            "sourcePath": "headless/src/components/input/types.ts",
+            "referencedTypes": [
+              {
+                "name": "PointerEvent",
+                "kind": "interface",
+                "type": "PointerEvent",
+                "resolvedType": null,
+                "description": "The **`PointerEvent`** interface represents the state of a DOM event produced by a pointer such as the geometry of the contact point, the device type that generated the event, the amount of pressure that was applied on the contact surface, etc.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/PointerEvent)",
+                "descriptionKey": "api.generated.node_modules_pnpm_typescript_6_0_3_node_modules_typescript_lib_lib_dom_d.pointerevent",
+                "sourcePath": "node_modules/.pnpm/typescript@6.0.3/node_modules/typescript/lib/lib.dom.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "referencedTypes": []
       }
     },
     "InputCompact": {
@@ -567,7 +689,7 @@
         "kind": "props",
         "name": "InputCompactProps",
         "type": "Interface InputCompactProps",
-        "resolvedType": "{ clearable?: boolean; clearLabel?: string; inputRef?: ((el: HTMLInputElement) => void); controlProps?: InputControlProps; defaultValue?: string; modelValue?: string; id?: string; autofocus?: boolean; disabled?: boolean; maxlength?: number; minlength?: number; pattern?: string; placeholder?: string; readonly?: boolean; name?: string; required?: boolean }",
+        "resolvedType": "{ clearable?: boolean; inputRef?: ((el: HTMLInputElement) => void); controlProps?: InputControlProps; clearProps?: InputClearProps; defaultValue?: string; modelValue?: string; id?: string; autofocus?: boolean; disabled?: boolean; maxlength?: number; minlength?: number; pattern?: string; placeholder?: string; readonly?: boolean; name?: string; required?: boolean }",
         "description": "Properties for the input compact component.",
         "descriptionKey": "api.generated.headless_src_components_input_types.inputcompactprops.props",
         "sourcePath": "headless/src/components/input/types.ts",
@@ -580,17 +702,6 @@
             "description": "Whether to show the clear trigger.",
             "descriptionKey": "api.generated.headless_src_components_input_types.inputcompactprops.members.clearable",
             "default": "false",
-            "inheritedFrom": null,
-            "sourcePath": "headless/src/components/input/types.ts",
-            "referencedTypes": []
-          },
-          {
-            "name": "clearLabel",
-            "type": "string",
-            "required": false,
-            "description": "Accessible label for the clear trigger.",
-            "descriptionKey": "api.generated.headless_src_components_input_types.inputcompactprops.members.clearlabel",
-            "default": "'Clear input'",
             "inheritedFrom": null,
             "sourcePath": "headless/src/components/input/types.ts",
             "referencedTypes": []
@@ -641,6 +752,76 @@
                 "typeParameters": [],
                 "external": false,
                 "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "clearProps",
+            "type": "InputClearProps",
+            "required": false,
+            "description": "Properties forwarded to the clear element.",
+            "descriptionKey": "api.generated.headless_src_components_input_types.inputcompactprops.members.clearprops",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/input/types.ts",
+            "referencedTypes": [
+              {
+                "name": "InputClearProps",
+                "kind": "interface",
+                "type": "InputClearProps",
+                "resolvedType": "{ type?: ButtonType; disabled?: boolean; asChild?: boolean; as?: AsTag | Component }",
+                "description": "Properties for the input clear component.",
+                "descriptionKey": "api.generated.headless_src_components_input_types.inputclearprops",
+                "sourcePath": "headless/src/components/input/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "type",
+                    "type": "ButtonType",
+                    "required": false,
+                    "description": "The type of the button element. Can be one of 'button', 'submit', or 'reset'.",
+                    "descriptionKey": "api.generated.headless_src_components_input_types.inputclearprops.members.type",
+                    "default": "'button'",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/button/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "disabled",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Whether the component is disabled.",
+                    "descriptionKey": "api.generated.headless_src_components_input_types.inputclearprops.members.disabled",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/button/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "asChild",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+                    "descriptionKey": "api.generated.headless_src_components_input_types.inputclearprops.members.aschild",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "as",
+                    "type": "AsTag | Component",
+                    "required": false,
+                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+                    "descriptionKey": "api.generated.headless_src_components_input_types.inputclearprops.members.as",
+                    "default": "'div'",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
                 "callables": []
               }
             ]
@@ -784,8 +965,8 @@
       "emits": {
         "kind": "emits",
         "name": "InputCompactEmits",
-        "type": "TypeAlias InputCompactEmits: AutocompleteInputEmits",
-        "resolvedType": "{ \"update:modelValue\": [value: string] }",
+        "type": "TypeAlias InputCompactEmits: AutocompleteInputEmits & InputClearEmits",
+        "resolvedType": "{ \"update:modelValue\": [value: string]; clear: [event: PointerEvent] }",
         "description": "Events for the input compact component.",
         "descriptionKey": "api.generated.headless_src_components_input_types.inputcompactemits.emits",
         "sourcePath": "headless/src/components/input/types.ts",
@@ -801,34 +982,33 @@
             "descriptionKey": "api.generated.headless_src_components_input_types.inputcompactemits.callables.update_modelvalue",
             "sourcePath": "headless/src/components/input/types.ts",
             "referencedTypes": []
-          }
-        ],
-        "referencedTypes": [
+          },
           {
-            "name": "InputRootEmits",
-            "kind": "typeAlias",
-            "type": "{ 'update:modelValue': [value: string]; }",
-            "resolvedType": "{ \"update:modelValue\": [value: string] }",
-            "description": "Events for the input root component.",
-            "descriptionKey": "api.generated.headless_src_components_input_types.inputrootemits",
+            "name": "clear",
+            "type": "[event: PointerEvent]",
+            "parameters": "event: PointerEvent",
+            "required": true,
+            "description": "Emitted when the clear button is clicked.",
+            "descriptionKey": "api.generated.headless_src_components_input_types.inputcompactemits.callables.clear",
             "sourcePath": "headless/src/components/input/types.ts",
-            "typeParameters": [],
-            "external": false,
-            "members": [],
-            "callables": [
+            "referencedTypes": [
               {
-                "name": "update:modelValue",
-                "type": "[value: string]",
-                "parameters": "value: string",
-                "required": true,
-                "description": "Emitted when the model value changes.",
-                "descriptionKey": "api.generated.headless_src_components_input_types.inputrootemits.callables.update_modelvalue",
-                "sourcePath": "headless/src/components/input/types.ts",
-                "referencedTypes": []
+                "name": "PointerEvent",
+                "kind": "interface",
+                "type": "PointerEvent",
+                "resolvedType": null,
+                "description": "The **`PointerEvent`** interface represents the state of a DOM event produced by a pointer such as the geometry of the contact point, the device type that generated the event, the amount of pressure that was applied on the contact surface, etc.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/PointerEvent)",
+                "descriptionKey": "api.generated.node_modules_pnpm_typescript_6_0_3_node_modules_typescript_lib_lib_dom_d.pointerevent",
+                "sourcePath": "node_modules/.pnpm/typescript@6.0.3/node_modules/typescript/lib/lib.dom.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
               }
             ]
           }
-        ]
+        ],
+        "referencedTypes": []
       },
       "slotProps": {
         "kind": "slotProps",
@@ -869,7 +1049,7 @@
       "slots": {
         "kind": "slots",
         "name": "InputCompactSlots",
-        "type": "Interface InputCompactSlots",
+        "type": "TypeAlias InputCompactSlots",
         "resolvedType": "{ leading?: ((props: InputCompactSlotProps) => any); trailing?: ((props: InputCompactSlotProps) => any); clear?: ((props: InputCompactSlotProps) => any) }",
         "description": "Slots for the input compact component.",
         "descriptionKey": "api.generated.headless_src_components_input_types.inputcompactslots.slots",

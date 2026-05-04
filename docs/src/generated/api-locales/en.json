@@ -3562,16 +3562,24 @@
         "autocompleteinputemits": {
           "emits": "Events for the input root component."
         },
+        "inputclearemits": {
+          "callables": {
+            "clear": "Emitted when the clear button is clicked."
+          },
+          "emits": "Events for the input clear component."
+        },
         "inputclearprops": {
           "members": {
             "as": "The element or component this component should render as. Can be overwrite by `asChild`",
             "aschild": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
-            "disabled": "Whether the component is disabled."
+            "disabled": "Whether the component is disabled.",
+            "type": "The type of the button element. Can be one of 'button', 'submit', or 'reset'."
           },
           "props": "Properties for the input clear component."
         },
         "inputcompactemits": {
           "callables": {
+            "clear": "Emitted when the clear button is clicked.",
             "update_modelvalue": "Emitted when the model value changes."
           },
           "emits": "Events for the input compact component."
@@ -3580,7 +3588,7 @@
           "members": {
             "autofocus": "When `true`, the input is auto-focused.",
             "clearable": "Whether to show the clear trigger.",
-            "clearlabel": "Accessible label for the clear trigger.",
+            "clearprops": "Properties forwarded to the clear element.",
             "controlprops": "Properties forwarded to the control element.",
             "defaultvalue": "The default value of the input",
             "disabled": "When `true`, prevents the user from interacting with the input.",
@@ -9865,7 +9873,7 @@
             "autofocus": "When `true`, the input is auto-focused.",
             "class": "root class",
             "clearable": "Whether to show the clear trigger.",
-            "clearlabel": "Accessible label for the clear trigger.",
+            "clearprops": "Properties forwarded to the clear element.",
             "controlprops": "Properties forwarded to the control element.",
             "defaultvalue": "The default value of the input",
             "disabled": "When `true`, prevents the user from interacting with the input.",

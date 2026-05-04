@@ -3562,16 +3562,24 @@
         "autocompleteinputemits": {
           "emits": "输入根组件的事件。"
         },
+        "inputclearemits": {
+          "callables": {
+            "clear": ""
+          },
+          "emits": ""
+        },
         "inputclearprops": {
           "members": {
             "as": "该组件应呈现为的元素或组件。可被 `asChild` 改写",
             "aschild": "为作为子元素传递的元素更改默认渲染元素，合并它们的道具和行为。",
-            "disabled": "组件是否禁用。"
+            "disabled": "组件是否禁用。",
+            "type": ""
           },
           "props": "输入清除组件的属性。"
         },
         "inputcompactemits": {
           "callables": {
+            "clear": "",
             "update_modelvalue": "当模型值发生变化时发出。"
           },
           "emits": "输入紧凑组件的事件。"
@@ -3580,7 +3588,7 @@
           "members": {
             "autofocus": "当 \"true \"时，输入会自动聚焦。",
             "clearable": "是否显示清晰的触发器。",
-            "clearlabel": "清晰触发器的可访问标签。",
+            "clearprops": "",
             "controlprops": "转发到控制元素的属性。",
             "defaultvalue": "输入的默认值为",
             "disabled": "为 `true`时，阻止用户与输入进行交互。",
@@ -9865,7 +9873,7 @@
             "autofocus": "当 \"true \"时，输入会自动聚焦。",
             "class": "根类",
             "clearable": "是否显示清晰的触发器。",
-            "clearlabel": "清晰触发器的可访问标签。",
+            "clearprops": "",
             "controlprops": "转发到控制元素的属性。",
             "defaultvalue": "输入的默认值为",
             "disabled": "为 `true`时，阻止用户与输入进行交互。",
