@@ -31,9 +31,11 @@ const forwardedProps = useOmitProps(props, [
   'descriptionProps'
 ]);
 
-const showHeader = computed(() => Boolean(slots.title || slots.description || props.title || props.description));
-
 const showMedia = computed(() => Boolean(slots.media || props.icon));
+
+const showHeader = computed(() =>
+  Boolean(showMedia.value || slots.title || slots.description || props.title || props.description)
+);
 </script>
 
 <template>

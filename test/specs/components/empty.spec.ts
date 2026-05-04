@@ -37,11 +37,8 @@ describe('SEmpty', () => {
       wrapper.unmount();
     });
 
-    it('applies icon media variant styles', () => {
+    it('applies media styles when header content is rendered', () => {
       const wrapper = mount(SEmpty, {
-        props: {
-          mediaVariant: 'icon'
-        },
         slots: {
           media: '<span>Media</span>'
         },
