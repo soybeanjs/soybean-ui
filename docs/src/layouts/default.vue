@@ -5,7 +5,7 @@ const visible = shallowRef(false);
 const docOutline = useDocOutline();
 const route = useRoute();
 const hasDocOutline = computed(() => docOutline.value.length > 0);
-const shouldReserveOutlineSpace = computed(() => route.path !== '/');
+const shouldReserveOutlineSpace = computed(() => !['/', '/releases'].includes(route.path));
 const shouldShowSidebar = computed(() => route.path.startsWith('/overview') || route.path.startsWith('/components'));
 
 const mobileSidebarDrawerUi = {
@@ -26,7 +26,7 @@ const closeDrawer = () => {
     <AppHeader />
     <div
       v-if="shouldShowSidebar"
-      class="lt-md:!hidden fixed top-[calc(var(--app-header)+0.5rem)] left-0 z-49 w-50 h-[calc(100vh-var(--app-header)-0.5rem)] p-3"
+      class="lt-md:!hidden fixed top-[calc(var(--app-header)+0.5rem)] left-0 z-49 w-55 h-[calc(100vh-var(--app-header)-0.5rem)] p-3"
     >
       <SiderMenu />
     </div>
@@ -42,7 +42,7 @@ const closeDrawer = () => {
       </SDrawer>
     </div>
     <div
-      :class="shouldShowSidebar ? 'lt-md:ml-0 md:ml-50' : 'ml-0'"
+      :class="shouldShowSidebar ? 'lt-md:ml-0 md:ml-55' : 'ml-0'"
       class="px-4 py-5 md:px-8 md:pb-7 md:pt-5 xl:px-10 lt-md:pt-12!"
     >
       <div

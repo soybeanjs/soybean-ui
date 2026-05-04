@@ -129,6 +129,7 @@ watchEffect(() => {
       class="docs-sidebar-menu"
       :model-value="selected"
       :items="menus"
+      :indent="4"
       @update:model-value="emit('select')"
     />
   </div>

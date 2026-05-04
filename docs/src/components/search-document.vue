@@ -100,10 +100,10 @@ function handleSelect(item: SelectEvent<string>) {
       v-model:search-term="search"
       class="docs-command-surface border rounded-lg shadow-md"
       :ui="{
-        root: 'docs-command-root',
+        root: 'docs-command-root px-2',
         list: 'docs-command-list',
         inputRoot: 'docs-command-input-root',
-        inputControl: 'docs-command-input-control',
+        inputControl: 'docs-command-input-control px-3',
         item: 'docs-command-item',
         group: 'docs-command-group',
         groupLabel: 'docs-command-group-label',
