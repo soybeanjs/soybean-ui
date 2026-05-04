@@ -14,8 +14,5 @@ export default defineConfig<Theme>({
     }
   },
   transformers: [transformerDirectives(), transformerVariantGroup()],
-  presets: [presetWind3({ dark: 'class' }), presetAnimations(), presetSoybean(), presetShadcn()],
-  shortcuts: {
-    'playground-title': 'mb-3 text-base font-semibold'
-  }
+  presets: [presetWind3({ dark: 'class' }), presetAnimations(), presetSoybean(), presetShadcn()]
 });
