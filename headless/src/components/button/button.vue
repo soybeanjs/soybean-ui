@@ -14,11 +14,13 @@ const props = withDefaults(defineProps<ButtonProps>(), {
 
 const emit = defineEmits<ButtonEmits>();
 
+const forwardedProps = useOmitProps(props, ['disabled', 'type']);
+
+const disabled = computed(() => (props.as === 'button' ? props.disabled : undefined));
+
 const dataDisabled = computed(() => (props.disabled ? '' : undefined));
 
 const ariaDisabled = computed(() => (props.disabled ? true : undefined));
-
-const forwardedProps = useOmitProps(props, ['disabled', 'type']);
 
 const buttonType = computed(() => {
   if (props.as !== 'button') return undefined;
@@ -26,7 +28,7 @@ const buttonType = computed(() => {
   return props.type ?? 'button';
 });
 
-const onClick = (event: MouseEvent) => {
+const onClick = (event: PointerEvent) => {
   if (props.disabled) {
     event.preventDefault();
     event.stopPropagation();
@@ -41,6 +43,7 @@ const onClick = (event: MouseEvent) => {
 <template>
   <Primitive
     v-bind="forwardedProps"
+    :disabled="disabled"
     :data-disabled="dataDisabled"
     :aria-disabled="ariaDisabled"
     :tabindex="disabled ? '-1' : undefined"

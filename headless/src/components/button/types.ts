@@ -9,7 +9,7 @@ export type ButtonType = 'button' | 'submit' | 'reset';
 /**
  * Properties for the button component.
  */
-export interface ButtonProps extends PrimitiveProps, /** @vue-ignore */ Omit<ButtonHTMLAttributes, 'onClick'> {
+export interface ButtonProps extends PrimitiveProps, /** @vue-ignore */ ButtonHTMLAttributes {
   /**
    * The type of the button element. Can be one of 'button', 'submit', or 'reset'.
    * @default 'button'
@@ -28,5 +28,5 @@ export type ButtonEmits = {
   /**
    * Emitted when click occurs.
    */
-  click: [event: MouseEvent];
+  click: [event: PointerEvent];
 };
