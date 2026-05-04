@@ -171,7 +171,7 @@
         "kind": "props",
         "name": "DateRangeFieldProps",
         "type": "Interface DateRangeFieldProps",
-        "resolvedType": "{ class?: string | Record<string, boolean> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<DateRangeFieldUi>; inputProps?: Omit<DateRangeFieldInputProps, 'part' | 'type'>; separator?: string }",
+        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<DateRangeFieldUi>; inputProps?: Omit<DateRangeFieldInputProps, 'part' | 'type'>; separator?: string }",
         "description": "Properties for the date range field component.",
         "descriptionKey": "api.generated.src_components_date_range_field_types.daterangefieldprops.props",
         "sourcePath": "src/components/date-range-field/types.ts",
@@ -179,7 +179,7 @@
         "members": [
           {
             "name": "class",
-            "type": "string | Record<string, boolean> | ClassValue[] | null",
+            "type": "string | false | Record<string, any> | ClassValue[] | null",
             "required": false,
             "description": "Additional class names applied to the root element.",
             "descriptionKey": "api.generated.src_components_date_range_field_types.daterangefieldprops.members.class",
@@ -190,8 +190,8 @@
               {
                 "name": "ClassValue",
                 "kind": "typeAlias",
-                "type": "string | Record<string, boolean> | ClassValue[] | null | undefined",
-                "resolvedType": "string | Record<string, boolean> | ClassValue[] | null | undefined",
+                "type": "string | false | Record<string, any> | ClassValue[] | null | undefined",
+                "resolvedType": "string | false | Record<string, any> | ClassValue[] | null | undefined",
                 "description": "",
                 "descriptionKey": "api.generated.headless_src_types_common.classvalue",
                 "sourcePath": "headless/src/types/common.ts",

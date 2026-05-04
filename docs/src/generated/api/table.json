@@ -6,7 +6,7 @@
         "kind": "props",
         "name": "TableProps",
         "type": "Interface TableProps<T, R, M>",
-        "resolvedType": "{ class?: string | Record<string, boolean> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<TableExtendedUi>; variant?: TableVariant; bordered?: boolean; rounded?: boolean; striped?: boolean; columns: TableColumn<T>[]; data: T[]; rowKey: (row: T) => R; defaultSortState?: TableSortState; sortState?: TableSortState; defaultFilterState?: TableFilterState; filterState?: TableFilterState; defaultColumnWidths?: TableColumnWidthState; columnWidths?: TableColumnWidthState; getChildren?: TableRowChildrenResolver<T>; indent?: number; virtual?: boolean; height?: string | number; estimateSize?: number | ((index: number, row: T) => number); virtualizerOptions?: VirtualizerOptions; defaultExpanded?: R[]; expanded?: R[]; defaultExpandAll?: boolean; contentProps?: TableContentProps; headerProps?: TableHeaderProps; bodyProps?: TableBodyProps; footerProps?: TableFooterProps; headProps?: TableHeadProps; rowProps?: TableRowProps; cellProps?: TableCellProps; dir?: Direction; defaultSelected?: (M extends true ? R[] : R); selected?: (M extends true ? R[] : R); multiple?: M }",
+        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<TableExtendedUi>; variant?: TableVariant; bordered?: boolean; rounded?: boolean; striped?: boolean; columns: TableColumn<T>[]; data: T[]; rowKey: (row: T) => R; defaultSortState?: TableSortState; sortState?: TableSortState; defaultFilterState?: TableFilterState; filterState?: TableFilterState; defaultColumnWidths?: TableColumnWidthState; columnWidths?: TableColumnWidthState; getChildren?: TableRowChildrenResolver<T>; indent?: number; virtual?: boolean; height?: string | number; estimateSize?: number | ((index: number, row: T) => number); virtualizerOptions?: VirtualizerOptions; defaultExpanded?: R[]; expanded?: R[]; defaultExpandAll?: boolean; contentProps?: TableContentProps; headerProps?: TableHeaderProps; bodyProps?: TableBodyProps; footerProps?: TableFooterProps; headProps?: TableHeadProps; rowProps?: TableRowProps; cellProps?: TableCellProps; dir?: Direction; defaultSelected?: (M extends true ? R[] : R); selected?: (M extends true ? R[] : R); multiple?: M }",
         "description": "Properties for the table component.",
         "descriptionKey": "api.generated.src_components_table_types.tableprops.props",
         "sourcePath": "src/components/table/types.ts",
@@ -14,7 +14,7 @@
         "members": [
           {
             "name": "class",
-            "type": "string | Record<string, boolean> | ClassValue[] | null",
+            "type": "string | false | Record<string, any> | ClassValue[] | null",
             "required": false,
             "description": "Additional class names to apply to the table.",
             "descriptionKey": "api.generated.src_components_table_types.tableprops.members.class",
@@ -25,8 +25,8 @@
               {
                 "name": "ClassValue",
                 "kind": "typeAlias",
-                "type": "string | Record<string, boolean> | ClassValue[] | null | undefined",
-                "resolvedType": "string | Record<string, boolean> | ClassValue[] | null | undefined",
+                "type": "string | false | Record<string, any> | ClassValue[] | null | undefined",
+                "resolvedType": "string | false | Record<string, any> | ClassValue[] | null | undefined",
                 "description": "",
                 "descriptionKey": "api.generated.headless_src_types_common.classvalue",
                 "sourcePath": "headless/src/types/common.ts",
@@ -4125,7 +4125,7 @@
                 "name": "TableExtendedUi",
                 "kind": "typeAlias",
                 "type": "{ root: ClassValue; header: ClassValue; content: ClassValue; fixed: ClassValue; footer: ClassValue; cell: ClassValue; scroll: ClassValue; resizeHandle: ClassValue; selection: ClassValue; filterOptions: ClassValue; body: ClassValue; row: ClassValue; head: ClassValue; sortTrigger: ClassValue; filterInput: ClassValue; treeCell: ClassValue; treeToggle: ClassValue; treeTogglePlaceholder: ClassValue; filterTrigger: ClassValue; filterPopup: ClassValue; filterSearch: ClassValue; filterOption: ClassValue; filterOptionLabel: ClassValue; filterFooter: ClassValue; filterCount: ClassValue; filterAction: ClassValue; filterEmpty: ClassValue; }",
-                "resolvedType": "{ root: string | Record<string, boolean> | ClassValue[] | null | undefined; header: string | Record<string, boolean> | ClassValue[] | null | undefined; content: string | Record<string, boolean> | ClassValue[] | null | undefined; fixed: string | Record<string, boolean> | ClassValue[] | null | undefined; footer: string | Record<string, boolean> | ClassValue[] | null | undefined; cell: string | Record<string, boolean> | ClassValue[] | null | undefined; scroll: string | Record<string, boolean> | ClassValue[] | null | undefined; resizeHandle: string | Record<string, boolean> | ClassValue[] | null | undefined; selection: string | Record<string, boolean> | ClassValue[] | null | undefined; filterOptions: string | Record<string, boolean> | ClassValue[] | null | undefined; body: string | Record<string, boolean> | ClassValue[] | null | undefined; row: string | Record<string, boolean> | ClassValue[] | null | undefined; head: string | Record<string, boolean> | ClassValue[] | null | undefined; sortTrigger: string | Record<string, boolean> | ClassValue[] | null | undefined; filterInput: string | Record<string, boolean> | ClassValue[] | null | undefined; treeCell: string | Record<string, boolean> | ClassValue[] | null | undefined; treeToggle: string | Record<string, boolean> | ClassValue[] | null | undefined; treeTogglePlaceholder: string | Record<string, boolean> | ClassValue[] | null | undefined; filterTrigger: string | Record<string, boolean> | ClassValue[] | null | undefined; filterPopup: string | Record<string, boolean> | ClassValue[] | null | undefined; filterSearch: string | Record<string, boolean> | ClassValue[] | null | undefined; filterOption: string | Record<string, boolean> | ClassValue[] | null | undefined; filterOptionLabel: string | Record<string, boolean> | ClassValue[] | null | undefined; filterFooter: string | Record<string, boolean> | ClassValue[] | null | undefined; filterCount: string | Record<string, boolean> | ClassValue[] | null | undefined; filterAction: string | Record<string, boolean> | ClassValue[] | null | undefined; filterEmpty: string | Record<string, boolean> | ClassValue[] | null | undefined }",
+                "resolvedType": "{ root: string | false | Record<string, any> | ClassValue[] | null | undefined; header: string | false | Record<string, any> | ClassValue[] | null | undefined; content: string | false | Record<string, any> | ClassValue[] | null | undefined; fixed: string | false | Record<string, any> | ClassValue[] | null | undefined; footer: string | false | Record<string, any> | ClassValue[] | null | undefined; cell: string | false | Record<string, any> | ClassValue[] | null | undefined; scroll: string | false | Record<string, any> | ClassValue[] | null | undefined; resizeHandle: string | false | Record<string, any> | ClassValue[] | null | undefined; selection: string | false | Record<string, any> | ClassValue[] | null | undefined; filterOptions: string | false | Record<string, any> | ClassValue[] | null | undefined; body: string | false | Record<string, any> | ClassValue[] | null | undefined; row: string | false | Record<string, any> | ClassValue[] | null | undefined; head: string | false | Record<string, any> | ClassValue[] | null | undefined; sortTrigger: string | false | Record<string, any> | ClassValue[] | null | undefined; filterInput: string | false | Record<string, any> | ClassValue[] | null | undefined; treeCell: string | false | Record<string, any> | ClassValue[] | null | undefined; treeToggle: string | false | Record<string, any> | ClassValue[] | null | undefined; treeTogglePlaceholder: string | false | Record<string, any> | ClassValue[] | null | undefined; filterTrigger: string | false | Record<string, any> | ClassValue[] | null | undefined; filterPopup: string | false | Record<string, any> | ClassValue[] | null | undefined; filterSearch: string | false | Record<string, any> | ClassValue[] | null | undefined; filterOption: string | false | Record<string, any> | ClassValue[] | null | undefined; filterOptionLabel: string | false | Record<string, any> | ClassValue[] | null | undefined; filterFooter: string | false | Record<string, any> | ClassValue[] | null | undefined; filterCount: string | false | Record<string, any> | ClassValue[] | null | undefined; filterAction: string | false | Record<string, any> | ClassValue[] | null | undefined; filterEmpty: string | false | Record<string, any> | ClassValue[] | null | undefined }",
                 "description": "Extended UI class overrides for the table component.",
                 "descriptionKey": "api.generated.src_components_table_types.tableextendedui",
                 "sourcePath": "src/components/table/types.ts",
@@ -4134,7 +4134,7 @@
                 "members": [
                   {
                     "name": "root",
-                    "type": "string | Record<string, boolean> | ClassValue[] | null | undefined",
+                    "type": "string | false | Record<string, any> | ClassValue[] | null | undefined",
                     "required": true,
                     "description": "",
                     "descriptionKey": "api.generated.src_components_table_types.tableextendedui.members.root",
@@ -4145,7 +4145,7 @@
                   },
                   {
                     "name": "header",
-                    "type": "string | Record<string, boolean> | ClassValue[] | null | undefined",
+                    "type": "string | false | Record<string, any> | ClassValue[] | null | undefined",
                     "required": true,
                     "description": "",
                     "descriptionKey": "api.generated.src_components_table_types.tableextendedui.members.header",
@@ -4156,7 +4156,7 @@
                   },
                   {
                     "name": "content",
-                    "type": "string | Record<string, boolean> | ClassValue[] | null | undefined",
+                    "type": "string | false | Record<string, any> | ClassValue[] | null | undefined",
                     "required": true,
                     "description": "",
                     "descriptionKey": "api.generated.src_components_table_types.tableextendedui.members.content",
@@ -4167,7 +4167,7 @@
                   },
                   {
                     "name": "fixed",
-                    "type": "string | Record<string, boolean> | ClassValue[] | null | undefined",
+                    "type": "string | false | Record<string, any> | ClassValue[] | null | undefined",
                     "required": true,
                     "description": "",
                     "descriptionKey": "api.generated.src_components_table_types.tableextendedui.members.fixed",
@@ -4178,7 +4178,7 @@
                   },
                   {
                     "name": "footer",
-                    "type": "string | Record<string, boolean> | ClassValue[] | null | undefined",
+                    "type": "string | false | Record<string, any> | ClassValue[] | null | undefined",
                     "required": true,
                     "description": "",
                     "descriptionKey": "api.generated.src_components_table_types.tableextendedui.members.footer",
@@ -4189,7 +4189,7 @@
                   },
                   {
                     "name": "cell",
-                    "type": "string | Record<string, boolean> | ClassValue[] | null | undefined",
+                    "type": "string | false | Record<string, any> | ClassValue[] | null | undefined",
                     "required": true,
                     "description": "",
                     "descriptionKey": "api.generated.src_components_table_types.tableextendedui.members.cell",
@@ -4200,7 +4200,7 @@
                   },
                   {
                     "name": "scroll",
-                    "type": "string | Record<string, boolean> | ClassValue[] | null | undefined",
+                    "type": "string | false | Record<string, any> | ClassValue[] | null | undefined",
                     "required": true,
                     "description": "",
                     "descriptionKey": "api.generated.src_components_table_types.tableextendedui.members.scroll",
@@ -4211,7 +4211,7 @@
                   },
                   {
                     "name": "resizeHandle",
-                    "type": "string | Record<string, boolean> | ClassValue[] | null | undefined",
+                    "type": "string | false | Record<string, any> | ClassValue[] | null | undefined",
                     "required": true,
                     "description": "",
                     "descriptionKey": "api.generated.src_components_table_types.tableextendedui.members.resizehandle",
@@ -4222,7 +4222,7 @@
                   },
                   {
                     "name": "selection",
-                    "type": "string | Record<string, boolean> | ClassValue[] | null | undefined",
+                    "type": "string | false | Record<string, any> | ClassValue[] | null | undefined",
                     "required": true,
                     "description": "",
                     "descriptionKey": "api.generated.src_components_table_types.tableextendedui.members.selection",
@@ -4233,7 +4233,7 @@
                   },
                   {
                     "name": "filterOptions",
-                    "type": "string | Record<string, boolean> | ClassValue[] | null | undefined",
+                    "type": "string | false | Record<string, any> | ClassValue[] | null | undefined",
                     "required": true,
                     "description": "",
                     "descriptionKey": "api.generated.src_components_table_types.tableextendedui.members.filteroptions",
@@ -4244,7 +4244,7 @@
                   },
                   {
                     "name": "body",
-                    "type": "string | Record<string, boolean> | ClassValue[] | null | undefined",
+                    "type": "string | false | Record<string, any> | ClassValue[] | null | undefined",
                     "required": true,
                     "description": "",
                     "descriptionKey": "api.generated.src_components_table_types.tableextendedui.members.body",
@@ -4255,7 +4255,7 @@
                   },
                   {
                     "name": "row",
-                    "type": "string | Record<string, boolean> | ClassValue[] | null | undefined",
+                    "type": "string | false | Record<string, any> | ClassValue[] | null | undefined",
                     "required": true,
                     "description": "",
                     "descriptionKey": "api.generated.src_components_table_types.tableextendedui.members.row",
@@ -4266,7 +4266,7 @@
                   },
                   {
                     "name": "head",
-                    "type": "string | Record<string, boolean> | ClassValue[] | null | undefined",
+                    "type": "string | false | Record<string, any> | ClassValue[] | null | undefined",
                     "required": true,
                     "description": "",
                     "descriptionKey": "api.generated.src_components_table_types.tableextendedui.members.head",
@@ -4277,7 +4277,7 @@
                   },
                   {
                     "name": "sortTrigger",
-                    "type": "string | Record<string, boolean> | ClassValue[] | null | undefined",
+                    "type": "string | false | Record<string, any> | ClassValue[] | null | undefined",
                     "required": true,
                     "description": "",
                     "descriptionKey": "api.generated.src_components_table_types.tableextendedui.members.sorttrigger",
@@ -4288,7 +4288,7 @@
                   },
                   {
                     "name": "filterInput",
-                    "type": "string | Record<string, boolean> | ClassValue[] | null | undefined",
+                    "type": "string | false | Record<string, any> | ClassValue[] | null | undefined",
                     "required": true,
                     "description": "",
                     "descriptionKey": "api.generated.src_components_table_types.tableextendedui.members.filterinput",
@@ -4299,7 +4299,7 @@
                   },
                   {
                     "name": "treeCell",
-                    "type": "string | Record<string, boolean> | ClassValue[] | null | undefined",
+                    "type": "string | false | Record<string, any> | ClassValue[] | null | undefined",
                     "required": true,
                     "description": "",
                     "descriptionKey": "api.generated.src_components_table_types.tableextendedui.members.treecell",
@@ -4310,7 +4310,7 @@
                   },
                   {
                     "name": "treeToggle",
-                    "type": "string | Record<string, boolean> | ClassValue[] | null | undefined",
+                    "type": "string | false | Record<string, any> | ClassValue[] | null | undefined",
                     "required": true,
                     "description": "",
                     "descriptionKey": "api.generated.src_components_table_types.tableextendedui.members.treetoggle",
@@ -4321,7 +4321,7 @@
                   },
                   {
                     "name": "treeTogglePlaceholder",
-                    "type": "string | Record<string, boolean> | ClassValue[] | null | undefined",
+                    "type": "string | false | Record<string, any> | ClassValue[] | null | undefined",
                     "required": true,
                     "description": "",
                     "descriptionKey": "api.generated.src_components_table_types.tableextendedui.members.treetoggleplaceholder",
@@ -4332,7 +4332,7 @@
                   },
                   {
                     "name": "filterTrigger",
-                    "type": "string | Record<string, boolean> | ClassValue[] | null | undefined",
+                    "type": "string | false | Record<string, any> | ClassValue[] | null | undefined",
                     "required": true,
                     "description": "",
                     "descriptionKey": "api.generated.src_components_table_types.tableextendedui.members.filtertrigger",
@@ -4343,7 +4343,7 @@
                   },
                   {
                     "name": "filterPopup",
-                    "type": "string | Record<string, boolean> | ClassValue[] | null | undefined",
+                    "type": "string | false | Record<string, any> | ClassValue[] | null | undefined",
                     "required": true,
                     "description": "",
                     "descriptionKey": "api.generated.src_components_table_types.tableextendedui.members.filterpopup",
@@ -4354,7 +4354,7 @@
                   },
                   {
                     "name": "filterSearch",
-                    "type": "string | Record<string, boolean> | ClassValue[] | null | undefined",
+                    "type": "string | false | Record<string, any> | ClassValue[] | null | undefined",
                     "required": true,
                     "description": "",
                     "descriptionKey": "api.generated.src_components_table_types.tableextendedui.members.filtersearch",
@@ -4365,7 +4365,7 @@
                   },
                   {
                     "name": "filterOption",
-                    "type": "string | Record<string, boolean> | ClassValue[] | null | undefined",
+                    "type": "string | false | Record<string, any> | ClassValue[] | null | undefined",
                     "required": true,
                     "description": "",
                     "descriptionKey": "api.generated.src_components_table_types.tableextendedui.members.filteroption",
@@ -4376,7 +4376,7 @@
                   },
                   {
                     "name": "filterOptionLabel",
-                    "type": "string | Record<string, boolean> | ClassValue[] | null | undefined",
+                    "type": "string | false | Record<string, any> | ClassValue[] | null | undefined",
                     "required": true,
                     "description": "",
                     "descriptionKey": "api.generated.src_components_table_types.tableextendedui.members.filteroptionlabel",
@@ -4387,7 +4387,7 @@
                   },
                   {
                     "name": "filterFooter",
-                    "type": "string | Record<string, boolean> | ClassValue[] | null | undefined",
+                    "type": "string | false | Record<string, any> | ClassValue[] | null | undefined",
                     "required": true,
                     "description": "",
                     "descriptionKey": "api.generated.src_components_table_types.tableextendedui.members.filterfooter",
@@ -4398,7 +4398,7 @@
                   },
                   {
                     "name": "filterCount",
-                    "type": "string | Record<string, boolean> | ClassValue[] | null | undefined",
+                    "type": "string | false | Record<string, any> | ClassValue[] | null | undefined",
                     "required": true,
                     "description": "",
                     "descriptionKey": "api.generated.src_components_table_types.tableextendedui.members.filtercount",
@@ -4409,7 +4409,7 @@
                   },
                   {
                     "name": "filterAction",
-                    "type": "string | Record<string, boolean> | ClassValue[] | null | undefined",
+                    "type": "string | false | Record<string, any> | ClassValue[] | null | undefined",
                     "required": true,
                     "description": "",
                     "descriptionKey": "api.generated.src_components_table_types.tableextendedui.members.filteraction",
@@ -4420,7 +4420,7 @@
                   },
                   {
                     "name": "filterEmpty",
-                    "type": "string | Record<string, boolean> | ClassValue[] | null | undefined",
+                    "type": "string | false | Record<string, any> | ClassValue[] | null | undefined",
                     "required": true,
                     "description": "",
                     "descriptionKey": "api.generated.src_components_table_types.tableextendedui.members.filterempty",

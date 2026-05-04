@@ -94,7 +94,7 @@
         "kind": "props",
         "name": "ComboboxProps",
         "type": "Interface ComboboxProps<M>",
-        "resolvedType": "{ class?: string | Record<string, boolean> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<ComboboxUi>; items: ComboboxOptionData[]; placeholder?: string; searchPlaceholder?: string; clearLabel?: string; emptyLabel?: string; anchorProps?: ComboboxAnchorProps; triggerProps?: ComboboxTriggerProps; cancelProps?: ComboboxCancelProps; portalProps?: PortalProps; contentProps?: ComboboxContentProps; viewportProps?: ComboboxViewportProps; inputProps?: ComboboxInputProps; emptyProps?: ComboboxEmptyProps; groupProps?: ComboboxGroupProps; groupLabelProps?: ComboboxGroupLabelProps; itemProps?: ComboboxItemProps; itemIndicatorProps?: ComboboxItemIndicatorProps; separatorProps?: ComboboxSeparatorProps; open?: boolean; defaultOpen?: boolean; resetSearchTermOnBlur?: boolean; resetSearchTermOnSelect?: boolean; openOnFocus?: boolean; openOnClick?: boolean; ignoreFilter?: boolean; resetModelValueOnClear?: boolean; disabled?: boolean; dir?: Direction; name?: string; defaultValue?: (M extends true ? string[] : string); modelValue?: (M extends true ? string[] : string); highlightOnHover?: boolean; required?: boolean; multiple?: M; clearable?: boolean }",
+        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<ComboboxUi>; items: ComboboxOptionData[]; placeholder?: string; searchPlaceholder?: string; clearLabel?: string; emptyLabel?: string; anchorProps?: ComboboxAnchorProps; triggerProps?: ComboboxTriggerProps; cancelProps?: ComboboxCancelProps; portalProps?: PortalProps; contentProps?: ComboboxContentProps; viewportProps?: ComboboxViewportProps; inputProps?: ComboboxInputProps; emptyProps?: ComboboxEmptyProps; groupProps?: ComboboxGroupProps; groupLabelProps?: ComboboxGroupLabelProps; itemProps?: ComboboxItemProps; itemIndicatorProps?: ComboboxItemIndicatorProps; separatorProps?: ComboboxSeparatorProps; open?: boolean; defaultOpen?: boolean; resetSearchTermOnBlur?: boolean; resetSearchTermOnSelect?: boolean; openOnFocus?: boolean; openOnClick?: boolean; ignoreFilter?: boolean; resetModelValueOnClear?: boolean; disabled?: boolean; dir?: Direction; name?: string; defaultValue?: (M extends true ? string[] : string); modelValue?: (M extends true ? string[] : string); highlightOnHover?: boolean; required?: boolean; multiple?: M; clearable?: boolean }",
         "description": "Properties for the combobox component.",
         "descriptionKey": "api.generated.src_components_combobox_types.comboboxprops.props",
         "sourcePath": "src/components/combobox/types.ts",
@@ -102,7 +102,7 @@
         "members": [
           {
             "name": "class",
-            "type": "string | Record<string, boolean> | ClassValue[] | null",
+            "type": "string | false | Record<string, any> | ClassValue[] | null",
             "required": false,
             "description": "Additional class names applied to the root element.",
             "descriptionKey": "api.generated.src_components_combobox_types.comboboxprops.members.class",
@@ -113,8 +113,8 @@
               {
                 "name": "ClassValue",
                 "kind": "typeAlias",
-                "type": "string | Record<string, boolean> | ClassValue[] | null | undefined",
-                "resolvedType": "string | Record<string, boolean> | ClassValue[] | null | undefined",
+                "type": "string | false | Record<string, any> | ClassValue[] | null | undefined",
+                "resolvedType": "string | false | Record<string, any> | ClassValue[] | null | undefined",
                 "description": "",
                 "descriptionKey": "api.generated.headless_src_types_common.classvalue",
                 "sourcePath": "headless/src/types/common.ts",

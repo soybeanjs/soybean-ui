@@ -6,7 +6,7 @@
         "kind": "props",
         "name": "BacktopProps",
         "type": "Interface BacktopProps",
-        "resolvedType": "{ class?: string | Record<string, boolean> | ClassValue[] | null; color?: ThemeColor; size?: ThemeSize; variant?: ButtonVariant; shape?: ButtonShape; shadow?: ButtonShadow; fitContent?: boolean; icon?: string; iconClass?: string | Record<string, boolean> | ClassValue[] | null; iconProps?: Partial<IconProps>; visibilityHeight?: number; target?: AffixTarget | null; duration?: number; disabled?: boolean; asChild?: boolean; as?: AsTag | Component; type?: ButtonType }",
+        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; color?: ThemeColor; size?: ThemeSize; variant?: ButtonVariant; shape?: ButtonShape; shadow?: ButtonShadow; fitContent?: boolean; icon?: string; iconClass?: string | false | Record<string, any> | ClassValue[] | null; iconProps?: Partial<IconProps>; visibilityHeight?: number; target?: AffixTarget | null; duration?: number; disabled?: boolean; asChild?: boolean; as?: AsTag | Component; type?: ButtonType }",
         "description": "Properties for the backtop component.",
         "descriptionKey": "api.generated.src_components_backtop_types.backtopprops.props",
         "sourcePath": "src/components/backtop/types.ts",
@@ -14,7 +14,7 @@
         "members": [
           {
             "name": "class",
-            "type": "string | Record<string, boolean> | ClassValue[] | null",
+            "type": "string | false | Record<string, any> | ClassValue[] | null",
             "required": false,
             "description": "Additional class names applied to the root element.",
             "descriptionKey": "api.generated.src_components_backtop_types.backtopprops.members.class",
@@ -25,8 +25,8 @@
               {
                 "name": "ClassValue",
                 "kind": "typeAlias",
-                "type": "string | Record<string, boolean> | ClassValue[] | null | undefined",
-                "resolvedType": "string | Record<string, boolean> | ClassValue[] | null | undefined",
+                "type": "string | false | Record<string, any> | ClassValue[] | null | undefined",
+                "resolvedType": "string | false | Record<string, any> | ClassValue[] | null | undefined",
                 "description": "",
                 "descriptionKey": "api.generated.headless_src_types_common.classvalue",
                 "sourcePath": "headless/src/types/common.ts",
@@ -186,7 +186,7 @@
           },
           {
             "name": "iconClass",
-            "type": "string | Record<string, boolean> | ClassValue[] | null",
+            "type": "string | false | Record<string, any> | ClassValue[] | null",
             "required": false,
             "description": "The class of the icon.",
             "descriptionKey": "api.generated.src_components_backtop_types.backtopprops.members.iconclass",
@@ -197,8 +197,8 @@
               {
                 "name": "ClassValue",
                 "kind": "typeAlias",
-                "type": "string | Record<string, boolean> | ClassValue[] | null | undefined",
-                "resolvedType": "string | Record<string, boolean> | ClassValue[] | null | undefined",
+                "type": "string | false | Record<string, any> | ClassValue[] | null | undefined",
+                "resolvedType": "string | false | Record<string, any> | ClassValue[] | null | undefined",
                 "description": "",
                 "descriptionKey": "api.generated.headless_src_types_common.classvalue",
                 "sourcePath": "headless/src/types/common.ts",

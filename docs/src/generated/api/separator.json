@@ -21,7 +21,7 @@
         "kind": "props",
         "name": "SeparatorProps",
         "type": "Interface SeparatorProps",
-        "resolvedType": "{ class?: string | Record<string, boolean> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<SeparatorUi>; align?: Align; border?: SeparatorBorder; label?: string; labelProps?: SeparatorLabelProps; orientation?: DataOrientation; decorative?: boolean }",
+        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<SeparatorUi>; align?: Align; border?: SeparatorBorder; label?: string; labelProps?: SeparatorLabelProps; orientation?: DataOrientation; decorative?: boolean }",
         "description": "Properties for the separator component.",
         "descriptionKey": "api.generated.src_components_separator_types.separatorprops.props",
         "sourcePath": "src/components/separator/types.ts",
@@ -29,7 +29,7 @@
         "members": [
           {
             "name": "class",
-            "type": "string | Record<string, boolean> | ClassValue[] | null",
+            "type": "string | false | Record<string, any> | ClassValue[] | null",
             "required": false,
             "description": "Additional class names applied to the root element.",
             "descriptionKey": "api.generated.src_components_separator_types.separatorprops.members.class",
@@ -40,8 +40,8 @@
               {
                 "name": "ClassValue",
                 "kind": "typeAlias",
-                "type": "string | Record<string, boolean> | ClassValue[] | null | undefined",
-                "resolvedType": "string | Record<string, boolean> | ClassValue[] | null | undefined",
+                "type": "string | false | Record<string, any> | ClassValue[] | null | undefined",
+                "resolvedType": "string | false | Record<string, any> | ClassValue[] | null | undefined",
                 "description": "",
                 "descriptionKey": "api.generated.headless_src_types_common.classvalue",
                 "sourcePath": "headless/src/types/common.ts",

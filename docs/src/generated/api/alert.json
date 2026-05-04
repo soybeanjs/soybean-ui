@@ -6,7 +6,7 @@
         "kind": "props",
         "name": "AlertProps",
         "type": "Interface AlertProps",
-        "resolvedType": "{ class?: string | Record<string, boolean> | ClassValue[] | null; size?: ThemeSize; color?: ThemeColor; variant?: AlertVariant; ui?: Partial<AlertUi>; title?: string; description?: string; icon?: string | import(\"vue\").Component | import(\"vue\").VNode<import(\"vue\").RendererNode, import(\"vue\").RendererElement, { [key: string]: any; }> | null; closable?: boolean; contentProps?: AlertContentProps; titleProps?: AlertTitleProps; descriptionProps?: AlertDescriptionProps; closeProps?: AlertCloseProps; open?: boolean }",
+        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; size?: ThemeSize; color?: ThemeColor; variant?: AlertVariant; ui?: Partial<AlertUi>; title?: string; description?: string; icon?: string | import(\"vue\").Component | import(\"vue\").VNode<import(\"vue\").RendererNode, import(\"vue\").RendererElement, { [key: string]: any; }> | null; closable?: boolean; contentProps?: AlertContentProps; titleProps?: AlertTitleProps; descriptionProps?: AlertDescriptionProps; closeProps?: AlertCloseProps; open?: boolean }",
         "description": "Properties for the alert component.",
         "descriptionKey": "api.generated.src_components_alert_types.alertprops.props",
         "sourcePath": "src/components/alert/types.ts",
@@ -14,7 +14,7 @@
         "members": [
           {
             "name": "class",
-            "type": "string | Record<string, boolean> | ClassValue[] | null",
+            "type": "string | false | Record<string, any> | ClassValue[] | null",
             "required": false,
             "description": "root class",
             "descriptionKey": "api.generated.src_components_alert_types.alertprops.members.class",
@@ -25,8 +25,8 @@
               {
                 "name": "ClassValue",
                 "kind": "typeAlias",
-                "type": "string | Record<string, boolean> | ClassValue[] | null | undefined",
-                "resolvedType": "string | Record<string, boolean> | ClassValue[] | null | undefined",
+                "type": "string | false | Record<string, any> | ClassValue[] | null | undefined",
+                "resolvedType": "string | false | Record<string, any> | ClassValue[] | null | undefined",
                 "description": "",
                 "descriptionKey": "api.generated.headless_src_types_common.classvalue",
                 "sourcePath": "headless/src/types/common.ts",

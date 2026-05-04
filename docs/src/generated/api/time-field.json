@@ -53,7 +53,7 @@
         "kind": "props",
         "name": "TimeFieldProps",
         "type": "Interface TimeFieldProps",
-        "resolvedType": "{ class?: string | Record<string, boolean> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<TimeFieldUi>; inputProps?: Omit<TimeFieldInputProps, 'part'> }",
+        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<TimeFieldUi>; inputProps?: Omit<TimeFieldInputProps, 'part'> }",
         "description": "Properties for the time field component.",
         "descriptionKey": "api.generated.src_components_time_field_types.timefieldprops.props",
         "sourcePath": "src/components/time-field/types.ts",
@@ -61,7 +61,7 @@
         "members": [
           {
             "name": "class",
-            "type": "string | Record<string, boolean> | ClassValue[] | null",
+            "type": "string | false | Record<string, any> | ClassValue[] | null",
             "required": false,
             "description": "Additional class names applied to the root element.",
             "descriptionKey": "api.generated.src_components_time_field_types.timefieldprops.members.class",
@@ -72,8 +72,8 @@
               {
                 "name": "ClassValue",
                 "kind": "typeAlias",
-                "type": "string | Record<string, boolean> | ClassValue[] | null | undefined",
-                "resolvedType": "string | Record<string, boolean> | ClassValue[] | null | undefined",
+                "type": "string | false | Record<string, any> | ClassValue[] | null | undefined",
+                "resolvedType": "string | false | Record<string, any> | ClassValue[] | null | undefined",
                 "description": "",
                 "descriptionKey": "api.generated.headless_src_types_common.classvalue",
                 "sourcePath": "headless/src/types/common.ts",

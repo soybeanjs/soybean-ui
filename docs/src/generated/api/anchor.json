@@ -6,7 +6,7 @@
         "kind": "props",
         "name": "AnchorProps",
         "type": "Interface AnchorProps",
-        "resolvedType": "{ color?: ThemeColor; size?: ThemeSize; ui?: Partial<AnchorExtendedUi>; class?: string | Record<string, boolean> | ClassValue[] | null; sticky?: boolean; items: AnchorOptionData[]; linkProps?: AnchorLinkProps; indicatorProps?: HTMLAttributes; titleProps?: HTMLAttributes; subProps?: HTMLAttributes; bounds?: number; dir?: Direction; getContainer?: (() => AnchorContainer | null); getCurrentAnchor?: ((activeHref: string) => string); modelValue?: string; offsetTop?: number; orientation?: DataOrientation; replace?: boolean; targetOffset?: number; asChild?: boolean; as?: AsTag | Component }",
+        "resolvedType": "{ color?: ThemeColor; size?: ThemeSize; ui?: Partial<AnchorExtendedUi>; class?: string | false | Record<string, any> | ClassValue[] | null; sticky?: boolean; items: AnchorOptionData[]; linkProps?: AnchorLinkProps; indicatorProps?: HTMLAttributes; titleProps?: HTMLAttributes; subProps?: HTMLAttributes; bounds?: number; dir?: Direction; getContainer?: (() => AnchorContainer | null); getCurrentAnchor?: ((activeHref: string) => string); modelValue?: string; offsetTop?: number; orientation?: DataOrientation; replace?: boolean; targetOffset?: number; asChild?: boolean; as?: AsTag | Component }",
         "description": "Properties for the anchor component.",
         "descriptionKey": "api.generated.src_components_anchor_types.anchorprops.props",
         "sourcePath": "src/components/anchor/types.ts",
@@ -89,7 +89,7 @@
           },
           {
             "name": "class",
-            "type": "string | Record<string, boolean> | ClassValue[] | null",
+            "type": "string | false | Record<string, any> | ClassValue[] | null",
             "required": false,
             "description": "Additional class names applied to the root element.",
             "descriptionKey": "api.generated.src_components_anchor_types.anchorprops.members.class",
@@ -100,8 +100,8 @@
               {
                 "name": "ClassValue",
                 "kind": "typeAlias",
-                "type": "string | Record<string, boolean> | ClassValue[] | null | undefined",
-                "resolvedType": "string | Record<string, boolean> | ClassValue[] | null | undefined",
+                "type": "string | false | Record<string, any> | ClassValue[] | null | undefined",
+                "resolvedType": "string | false | Record<string, any> | ClassValue[] | null | undefined",
                 "description": "",
                 "descriptionKey": "api.generated.headless_src_types_common.classvalue",
                 "sourcePath": "headless/src/types/common.ts",

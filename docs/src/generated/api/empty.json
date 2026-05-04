@@ -6,7 +6,7 @@
         "kind": "props",
         "name": "EmptyProps",
         "type": "Interface EmptyProps",
-        "resolvedType": "{ class?: string | Record<string, boolean> | ClassValue[] | null; ui?: Partial<EmptyUi>; size?: ThemeSize; title?: string; description?: string; icon?: string | import(\"vue\").Component | import(\"vue\").VNode<import(\"vue\").RendererNode, import(\"vue\").RendererElement, { [key: string]: any; }> | null; headerProps?: EmptyHeaderProps; mediaProps?: EmptyMediaProps; contentProps?: EmptyContentProps; titleProps?: EmptyTitleProps; descriptionProps?: EmptyDescriptionProps }",
+        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; ui?: Partial<EmptyUi>; size?: ThemeSize; title?: string; description?: string; icon?: string | import(\"vue\").Component | import(\"vue\").VNode<import(\"vue\").RendererNode, import(\"vue\").RendererElement, { [key: string]: any; }> | null; headerProps?: EmptyHeaderProps; mediaProps?: EmptyMediaProps; contentProps?: EmptyContentProps; titleProps?: EmptyTitleProps; descriptionProps?: EmptyDescriptionProps }",
         "description": "Properties for the empty component.",
         "descriptionKey": "api.generated.src_components_empty_types.emptyprops.props",
         "sourcePath": "src/components/empty/types.ts",
@@ -14,7 +14,7 @@
         "members": [
           {
             "name": "class",
-            "type": "string | Record<string, boolean> | ClassValue[] | null",
+            "type": "string | false | Record<string, any> | ClassValue[] | null",
             "required": false,
             "description": "Additional class names applied to the root element.",
             "descriptionKey": "api.generated.src_components_empty_types.emptyprops.members.class",
@@ -25,8 +25,8 @@
               {
                 "name": "ClassValue",
                 "kind": "typeAlias",
-                "type": "string | Record<string, boolean> | ClassValue[] | null | undefined",
-                "resolvedType": "string | Record<string, boolean> | ClassValue[] | null | undefined",
+                "type": "string | false | Record<string, any> | ClassValue[] | null | undefined",
+                "resolvedType": "string | false | Record<string, any> | ClassValue[] | null | undefined",
                 "description": "",
                 "descriptionKey": "api.generated.headless_src_types_common.classvalue",
                 "sourcePath": "headless/src/types/common.ts",

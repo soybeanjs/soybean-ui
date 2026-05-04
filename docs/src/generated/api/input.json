@@ -21,7 +21,7 @@
         "kind": "props",
         "name": "InputProps",
         "type": "Interface InputProps",
-        "resolvedType": "{ class?: string | Record<string, boolean> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<InputUi>; clearable?: boolean; inputRef?: ((el: HTMLInputElement) => void); controlProps?: InputControlProps; clearProps?: InputClearProps; defaultValue?: string; modelValue?: string; id?: string; autofocus?: boolean; disabled?: boolean; maxlength?: number; minlength?: number; pattern?: string; placeholder?: string; readonly?: boolean; name?: string; required?: boolean }",
+        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<InputUi>; clearable?: boolean; inputRef?: ((el: HTMLInputElement) => void); controlProps?: InputControlProps; clearProps?: InputClearProps; defaultValue?: string; modelValue?: string; id?: string; autofocus?: boolean; disabled?: boolean; maxlength?: number; minlength?: number; pattern?: string; placeholder?: string; readonly?: boolean; name?: string; required?: boolean }",
         "description": "Properties for the input component.",
         "descriptionKey": "api.generated.src_components_input_types.inputprops.props",
         "sourcePath": "src/components/input/types.ts",
@@ -29,7 +29,7 @@
         "members": [
           {
             "name": "class",
-            "type": "string | Record<string, boolean> | ClassValue[] | null",
+            "type": "string | false | Record<string, any> | ClassValue[] | null",
             "required": false,
             "description": "root class",
             "descriptionKey": "api.generated.src_components_input_types.inputprops.members.class",
@@ -40,8 +40,8 @@
               {
                 "name": "ClassValue",
                 "kind": "typeAlias",
-                "type": "string | Record<string, boolean> | ClassValue[] | null | undefined",
-                "resolvedType": "string | Record<string, boolean> | ClassValue[] | null | undefined",
+                "type": "string | false | Record<string, any> | ClassValue[] | null | undefined",
+                "resolvedType": "string | false | Record<string, any> | ClassValue[] | null | undefined",
                 "description": "",
                 "descriptionKey": "api.generated.headless_src_types_common.classvalue",
                 "sourcePath": "headless/src/types/common.ts",

@@ -101,7 +101,7 @@
         "kind": "props",
         "name": "TimeRangeFieldProps",
         "type": "Interface TimeRangeFieldProps",
-        "resolvedType": "{ class?: string | Record<string, boolean> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<TimeRangeFieldUi>; inputProps?: Omit<TimeRangeFieldInputProps, 'part' | 'type'>; separator?: string }",
+        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<TimeRangeFieldUi>; inputProps?: Omit<TimeRangeFieldInputProps, 'part' | 'type'>; separator?: string }",
         "description": "Properties for the time range field component.",
         "descriptionKey": "api.generated.src_components_time_range_field_types.timerangefieldprops.props",
         "sourcePath": "src/components/time-range-field/types.ts",
@@ -109,7 +109,7 @@
         "members": [
           {
             "name": "class",
-            "type": "string | Record<string, boolean> | ClassValue[] | null",
+            "type": "string | false | Record<string, any> | ClassValue[] | null",
             "required": false,
             "description": "Additional class names applied to the root element.",
             "descriptionKey": "api.generated.src_components_time_range_field_types.timerangefieldprops.members.class",
@@ -120,8 +120,8 @@
               {
                 "name": "ClassValue",
                 "kind": "typeAlias",
-                "type": "string | Record<string, boolean> | ClassValue[] | null | undefined",
-                "resolvedType": "string | Record<string, boolean> | ClassValue[] | null | undefined",
+                "type": "string | false | Record<string, any> | ClassValue[] | null | undefined",
+                "resolvedType": "string | false | Record<string, any> | ClassValue[] | null | undefined",
                 "description": "",
                 "descriptionKey": "api.generated.headless_src_types_common.classvalue",
                 "sourcePath": "headless/src/types/common.ts",

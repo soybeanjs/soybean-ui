@@ -6,7 +6,7 @@
         "kind": "props",
         "name": "DrawerProps",
         "type": "Interface DrawerProps",
-        "resolvedType": "{ side?: Side; class?: string | Record<string, boolean> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<DialogUi>; title?: string; description?: string; icon?: string | import(\"vue\").Component | VNode<import(\"vue\").RendererNode, import(\"vue\").RendererElement, { [key: string]: any; }> | null; showClose?: boolean; pure?: boolean; showCancel?: boolean | 'onlyWarning'; cancelText?: string; showConfirm?: boolean; confirmText?: string; triggerProps?: DialogTriggerProps; overlayProps?: DialogOverlayProps; portalProps?: DialogPortalProps; popupProps?: DialogPopupProps; headerProps?: DialogHeaderProps; contentProps?: DialogContentProps; footerProps?: DialogFooterProps; titleProps?: DialogTitleProps; descriptionProps?: DialogDescriptionProps; closeProps?: DialogCloseProps; cancelProps?: DialogCancelProps; confirmProps?: DialogConfirmProps; isAlert?: boolean; alertType?: DialogAlertType; open?: boolean; defaultOpen?: boolean; modal?: boolean }",
+        "resolvedType": "{ side?: Side; class?: string | false | Record<string, any> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<DialogUi>; title?: string; description?: string; icon?: string | import(\"vue\").Component | VNode<import(\"vue\").RendererNode, import(\"vue\").RendererElement, { [key: string]: any; }> | null; showClose?: boolean; pure?: boolean; showCancel?: boolean | 'onlyWarning'; cancelText?: string; showConfirm?: boolean; confirmText?: string; triggerProps?: DialogTriggerProps; overlayProps?: DialogOverlayProps; portalProps?: DialogPortalProps; popupProps?: DialogPopupProps; headerProps?: DialogHeaderProps; contentProps?: DialogContentProps; footerProps?: DialogFooterProps; titleProps?: DialogTitleProps; descriptionProps?: DialogDescriptionProps; closeProps?: DialogCloseProps; cancelProps?: DialogCancelProps; confirmProps?: DialogConfirmProps; isAlert?: boolean; alertType?: DialogAlertType; open?: boolean; defaultOpen?: boolean; modal?: boolean }",
         "description": "Properties for the drawer component.",
         "descriptionKey": "api.generated.src_components_drawer_types.drawerprops.props",
         "sourcePath": "src/components/drawer/types.ts",
@@ -39,7 +39,7 @@
           },
           {
             "name": "class",
-            "type": "string | Record<string, boolean> | ClassValue[] | null",
+            "type": "string | false | Record<string, any> | ClassValue[] | null",
             "required": false,
             "description": "the popup class of the dialog",
             "descriptionKey": "api.generated.src_components_drawer_types.drawerprops.members.class",
@@ -50,8 +50,8 @@
               {
                 "name": "ClassValue",
                 "kind": "typeAlias",
-                "type": "string | Record<string, boolean> | ClassValue[] | null | undefined",
-                "resolvedType": "string | Record<string, boolean> | ClassValue[] | null | undefined",
+                "type": "string | false | Record<string, any> | ClassValue[] | null | undefined",
+                "resolvedType": "string | false | Record<string, any> | ClassValue[] | null | undefined",
                 "description": "",
                 "descriptionKey": "api.generated.headless_src_types_common.classvalue",
                 "sourcePath": "headless/src/types/common.ts",

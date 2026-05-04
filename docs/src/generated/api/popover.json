@@ -107,7 +107,7 @@
         "kind": "props",
         "name": "PopoverProps",
         "type": "Interface PopoverProps",
-        "resolvedType": "{ class?: string | Record<string, boolean> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<PopoverUi>; placement?: Placement; showArrow?: boolean; positionerProps?: PopoverPositionerProps; popupProps?: PopoverPopupProps; triggerProps?: PopoverTriggerProps; closeProps?: PopoverCloseProps; portalProps?: PopoverPortalProps; arrowProps?: PopoverArrowProps; disabled?: boolean; open?: boolean; defaultOpen?: boolean; modal?: boolean }",
+        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<PopoverUi>; placement?: Placement; showArrow?: boolean; positionerProps?: PopoverPositionerProps; popupProps?: PopoverPopupProps; triggerProps?: PopoverTriggerProps; closeProps?: PopoverCloseProps; portalProps?: PopoverPortalProps; arrowProps?: PopoverArrowProps; disabled?: boolean; open?: boolean; defaultOpen?: boolean; modal?: boolean }",
         "description": "Properties for the popover component.",
         "descriptionKey": "api.generated.src_components_popover_types.popoverprops.props",
         "sourcePath": "src/components/popover/types.ts",
@@ -115,7 +115,7 @@
         "members": [
           {
             "name": "class",
-            "type": "string | Record<string, boolean> | ClassValue[] | null",
+            "type": "string | false | Record<string, any> | ClassValue[] | null",
             "required": false,
             "description": "class of popup",
             "descriptionKey": "api.generated.src_components_popover_types.popoverprops.members.class",
@@ -126,8 +126,8 @@
               {
                 "name": "ClassValue",
                 "kind": "typeAlias",
-                "type": "string | Record<string, boolean> | ClassValue[] | null | undefined",
-                "resolvedType": "string | Record<string, boolean> | ClassValue[] | null | undefined",
+                "type": "string | false | Record<string, any> | ClassValue[] | null | undefined",
+                "resolvedType": "string | false | Record<string, any> | ClassValue[] | null | undefined",
                 "description": "",
                 "descriptionKey": "api.generated.headless_src_types_common.classvalue",
                 "sourcePath": "headless/src/types/common.ts",

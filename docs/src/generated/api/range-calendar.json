@@ -6,7 +6,7 @@
         "kind": "props",
         "name": "RangeCalendarProps",
         "type": "Interface RangeCalendarProps",
-        "resolvedType": "{ class?: string | Record<string, boolean> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<RangeCalendarUi>; headerProps?: RangeCalendarHeaderProps; headingProps?: RangeCalendarHeadingProps; prevProps?: RangeCalendarPrevProps; nextProps?: RangeCalendarNextProps; gridProps?: RangeCalendarGridProps; gridHeadProps?: RangeCalendarGridHeadProps; gridBodyProps?: RangeCalendarGridBodyProps; gridRowProps?: RangeCalendarGridRowProps; headCellProps?: RangeCalendarHeadCellProps; cellProps?: Omit<RangeCalendarCellProps, 'date'>; cellTriggerProps?: Omit<RangeCalendarCellTriggerProps, 'day' | 'month'>; defaultValue?: DateRange; defaultPlaceholder?: DateValue; placeholder?: DateValue; modelValue?: DateRange; allowNonContiguousRanges?: boolean; pagedNavigation?: boolean; preventDeselect?: boolean; maximumDays?: number; weekStartsOn?: WeekStartsOn; weekdayFormat?: WeekDayFormat; calendarLabel?: string; fixedWeeks?: boolean; maxValue?: DateValue; minValue?: DateValue; locale?: string; numberOfMonths?: number; disabled?: boolean; readonly?: boolean; initialFocus?: boolean; isDateDisabled?: Matcher; isDateUnavailable?: Matcher; isDateHighlightable?: Matcher; dir?: Direction; nextPage?: ((placeholder: DateValue) => DateValue); prevPage?: ((placeholder: DateValue) => DateValue); disableDaysOutsideCurrentView?: boolean; fixedDate?: 'start' | 'end'; asChild?: boolean; as?: AsTag | Component }",
+        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<RangeCalendarUi>; headerProps?: RangeCalendarHeaderProps; headingProps?: RangeCalendarHeadingProps; prevProps?: RangeCalendarPrevProps; nextProps?: RangeCalendarNextProps; gridProps?: RangeCalendarGridProps; gridHeadProps?: RangeCalendarGridHeadProps; gridBodyProps?: RangeCalendarGridBodyProps; gridRowProps?: RangeCalendarGridRowProps; headCellProps?: RangeCalendarHeadCellProps; cellProps?: Omit<RangeCalendarCellProps, 'date'>; cellTriggerProps?: Omit<RangeCalendarCellTriggerProps, 'day' | 'month'>; defaultValue?: DateRange; defaultPlaceholder?: DateValue; placeholder?: DateValue; modelValue?: DateRange; allowNonContiguousRanges?: boolean; pagedNavigation?: boolean; preventDeselect?: boolean; maximumDays?: number; weekStartsOn?: WeekStartsOn; weekdayFormat?: WeekDayFormat; calendarLabel?: string; fixedWeeks?: boolean; maxValue?: DateValue; minValue?: DateValue; locale?: string; numberOfMonths?: number; disabled?: boolean; readonly?: boolean; initialFocus?: boolean; isDateDisabled?: Matcher; isDateUnavailable?: Matcher; isDateHighlightable?: Matcher; dir?: Direction; nextPage?: ((placeholder: DateValue) => DateValue); prevPage?: ((placeholder: DateValue) => DateValue); disableDaysOutsideCurrentView?: boolean; fixedDate?: 'start' | 'end'; asChild?: boolean; as?: AsTag | Component }",
         "description": "Properties for the range calendar component.",
         "descriptionKey": "api.generated.src_components_range_calendar_types.rangecalendarprops.props",
         "sourcePath": "src/components/range-calendar/types.ts",
@@ -14,7 +14,7 @@
         "members": [
           {
             "name": "class",
-            "type": "string | Record<string, boolean> | ClassValue[] | null",
+            "type": "string | false | Record<string, any> | ClassValue[] | null",
             "required": false,
             "description": "Additional class names applied to the root element.",
             "descriptionKey": "api.generated.src_components_range_calendar_types.rangecalendarprops.members.class",
@@ -25,8 +25,8 @@
               {
                 "name": "ClassValue",
                 "kind": "typeAlias",
-                "type": "string | Record<string, boolean> | ClassValue[] | null | undefined",
-                "resolvedType": "string | Record<string, boolean> | ClassValue[] | null | undefined",
+                "type": "string | false | Record<string, any> | ClassValue[] | null | undefined",
+                "resolvedType": "string | false | Record<string, any> | ClassValue[] | null | undefined",
                 "description": "",
                 "descriptionKey": "api.generated.headless_src_types_common.classvalue",
                 "sourcePath": "headless/src/types/common.ts",

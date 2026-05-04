@@ -489,7 +489,7 @@
         "kind": "props",
         "name": "RadioCardGroupProps",
         "type": "Interface RadioCardGroupProps<T, S>",
-        "resolvedType": "{ ui?: Partial<RadioGroupCardUi>; items: S[]; class?: string | Record<string, boolean> | ClassValue[] | null; variant?: RadioGroupVariant; color?: ThemeColor; size?: ThemeSize; itemProps?: RadioGroupItemProps; controlProps?: RadioGroupControlProps; indicatorProps?: RadioGroupIndicatorProps; labelProps?: RadioGroupLabelProps; modelValue?: T; defaultValue?: T; disabled?: boolean; orientation?: DataOrientation; dir?: Direction; loop?: boolean; name?: string; required?: boolean }",
+        "resolvedType": "{ ui?: Partial<RadioGroupCardUi>; items: S[]; class?: string | false | Record<string, any> | ClassValue[] | null; variant?: RadioGroupVariant; color?: ThemeColor; size?: ThemeSize; itemProps?: RadioGroupItemProps; controlProps?: RadioGroupControlProps; indicatorProps?: RadioGroupIndicatorProps; labelProps?: RadioGroupLabelProps; modelValue?: T; defaultValue?: T; disabled?: boolean; orientation?: DataOrientation; dir?: Direction; loop?: boolean; name?: string; required?: boolean }",
         "description": "Properties for the radio card group component.",
         "descriptionKey": "api.generated.src_components_radio_group_types.radiocardgroupprops.props",
         "sourcePath": "src/components/radio-group/types.ts",
@@ -533,7 +533,7 @@
           },
           {
             "name": "class",
-            "type": "string | Record<string, boolean> | ClassValue[] | null",
+            "type": "string | false | Record<string, any> | ClassValue[] | null",
             "required": false,
             "description": "Additional class names applied to the root element.",
             "descriptionKey": "api.generated.src_components_radio_group_types.radiocardgroupprops.members.class",
@@ -544,8 +544,8 @@
               {
                 "name": "ClassValue",
                 "kind": "typeAlias",
-                "type": "string | Record<string, boolean> | ClassValue[] | null | undefined",
-                "resolvedType": "string | Record<string, boolean> | ClassValue[] | null | undefined",
+                "type": "string | false | Record<string, any> | ClassValue[] | null | undefined",
+                "resolvedType": "string | false | Record<string, any> | ClassValue[] | null | undefined",
                 "description": "",
                 "descriptionKey": "api.generated.headless_src_types_common.classvalue",
                 "sourcePath": "headless/src/types/common.ts",
@@ -960,7 +960,7 @@
         "kind": "props",
         "name": "RadioGroupProps",
         "type": "Interface RadioGroupProps<T, S>",
-        "resolvedType": "{ class?: string | Record<string, boolean> | ClassValue[] | null; ui?: Partial<RadioGroupUi>; variant?: RadioGroupVariant; color?: ThemeColor; size?: ThemeSize; items: S[]; itemProps?: RadioGroupItemProps; controlProps?: RadioGroupControlProps; indicatorProps?: RadioGroupIndicatorProps; labelProps?: RadioGroupLabelProps; modelValue?: T; defaultValue?: T; disabled?: boolean; orientation?: DataOrientation; dir?: Direction; loop?: boolean; name?: string; required?: boolean }",
+        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; ui?: Partial<RadioGroupUi>; variant?: RadioGroupVariant; color?: ThemeColor; size?: ThemeSize; items: S[]; itemProps?: RadioGroupItemProps; controlProps?: RadioGroupControlProps; indicatorProps?: RadioGroupIndicatorProps; labelProps?: RadioGroupLabelProps; modelValue?: T; defaultValue?: T; disabled?: boolean; orientation?: DataOrientation; dir?: Direction; loop?: boolean; name?: string; required?: boolean }",
         "description": "Properties for the radio group component.",
         "descriptionKey": "api.generated.src_components_radio_group_types.radiogroupprops.props",
         "sourcePath": "src/components/radio-group/types.ts",
@@ -968,7 +968,7 @@
         "members": [
           {
             "name": "class",
-            "type": "string | Record<string, boolean> | ClassValue[] | null",
+            "type": "string | false | Record<string, any> | ClassValue[] | null",
             "required": false,
             "description": "Additional class names applied to the root element.",
             "descriptionKey": "api.generated.src_components_radio_group_types.radiogroupprops.members.class",
@@ -979,8 +979,8 @@
               {
                 "name": "ClassValue",
                 "kind": "typeAlias",
-                "type": "string | Record<string, boolean> | ClassValue[] | null | undefined",
-                "resolvedType": "string | Record<string, boolean> | ClassValue[] | null | undefined",
+                "type": "string | false | Record<string, any> | ClassValue[] | null | undefined",
+                "resolvedType": "string | false | Record<string, any> | ClassValue[] | null | undefined",
                 "description": "",
                 "descriptionKey": "api.generated.headless_src_types_common.classvalue",
                 "sourcePath": "headless/src/types/common.ts",

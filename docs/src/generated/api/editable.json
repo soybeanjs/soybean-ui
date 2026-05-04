@@ -6,7 +6,7 @@
         "kind": "props",
         "name": "EditableProps",
         "type": "Interface EditableProps",
-        "resolvedType": "{ class?: string | Record<string, boolean> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<EditableExtendedUi>; areaProps?: EditableAreaProps; previewProps?: EditablePreviewProps; inputProps?: EditableInputProps; editTriggerProps?: EditableEditTriggerProps; submitTriggerProps?: EditableSubmitTriggerProps; cancelTriggerProps?: EditableCancelTriggerProps; defaultValue?: string; modelValue?: string; placeholder?: string | EditablePlaceholder; dir?: Direction; disabled?: boolean; readonly?: boolean; activationMode?: EditableActivationMode; selectOnFocus?: boolean; submitMode?: EditableSubmitMode; startWithEditMode?: boolean; maxLength?: number; autoResize?: boolean; id?: string; asChild?: boolean; as?: AsTag | Component; name?: string; required?: boolean }",
+        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<EditableExtendedUi>; areaProps?: EditableAreaProps; previewProps?: EditablePreviewProps; inputProps?: EditableInputProps; editTriggerProps?: EditableEditTriggerProps; submitTriggerProps?: EditableSubmitTriggerProps; cancelTriggerProps?: EditableCancelTriggerProps; defaultValue?: string; modelValue?: string; placeholder?: string | EditablePlaceholder; dir?: Direction; disabled?: boolean; readonly?: boolean; activationMode?: EditableActivationMode; selectOnFocus?: boolean; submitMode?: EditableSubmitMode; startWithEditMode?: boolean; maxLength?: number; autoResize?: boolean; id?: string; asChild?: boolean; as?: AsTag | Component; name?: string; required?: boolean }",
         "description": "Properties for the editable component.",
         "descriptionKey": "api.generated.src_components_editable_types.editableprops.props",
         "sourcePath": "src/components/editable/types.ts",
@@ -14,7 +14,7 @@
         "members": [
           {
             "name": "class",
-            "type": "string | Record<string, boolean> | ClassValue[] | null",
+            "type": "string | false | Record<string, any> | ClassValue[] | null",
             "required": false,
             "description": "Additional class names applied to the root element.",
             "descriptionKey": "api.generated.src_components_editable_types.editableprops.members.class",
@@ -25,8 +25,8 @@
               {
                 "name": "ClassValue",
                 "kind": "typeAlias",
-                "type": "string | Record<string, boolean> | ClassValue[] | null | undefined",
-                "resolvedType": "string | Record<string, boolean> | ClassValue[] | null | undefined",
+                "type": "string | false | Record<string, any> | ClassValue[] | null | undefined",
+                "resolvedType": "string | false | Record<string, any> | ClassValue[] | null | undefined",
                 "description": "",
                 "descriptionKey": "api.generated.headless_src_types_common.classvalue",
                 "sourcePath": "headless/src/types/common.ts",

@@ -6,7 +6,7 @@
         "kind": "props",
         "name": "LayoutProps",
         "type": "Interface LayoutProps",
-        "resolvedType": "{ class?: string | Record<string, boolean> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<LayoutUi>; open?: boolean; defaultOpen?: boolean; side?: HorizontalSide; variant?: LayoutVariant; collapsible?: LayoutCollapsible; sidebarVisible?: boolean; sidebarWidth?: number; collapsedSidebarWidth?: number; isMobile?: boolean; mobileSidebarWidth?: number; headerVisible?: boolean; headerHeight?: number; tabVisible?: boolean; tabHeight?: number; footerVisible?: boolean; footerHeight?: number; fullContent?: boolean; pxToRem?: ((px: number) => number); sidebarProps?: LayoutSidebarProps; railProps?: LayoutRailProps; mainProps?: LayoutMainProps; headerProps?: LayoutHeaderProps; tabProps?: LayoutTabProps; contentProps?: LayoutContentProps; footerProps?: LayoutFooterProps; mobileProps?: LayoutMobileProps }",
+        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<LayoutUi>; open?: boolean; defaultOpen?: boolean; side?: HorizontalSide; variant?: LayoutVariant; collapsible?: LayoutCollapsible; sidebarVisible?: boolean; sidebarWidth?: number; collapsedSidebarWidth?: number; isMobile?: boolean; mobileSidebarWidth?: number; headerVisible?: boolean; headerHeight?: number; tabVisible?: boolean; tabHeight?: number; footerVisible?: boolean; footerHeight?: number; fullContent?: boolean; pxToRem?: ((px: number) => number); sidebarProps?: LayoutSidebarProps; railProps?: LayoutRailProps; mainProps?: LayoutMainProps; headerProps?: LayoutHeaderProps; tabProps?: LayoutTabProps; contentProps?: LayoutContentProps; footerProps?: LayoutFooterProps; mobileProps?: LayoutMobileProps }",
         "description": "Properties for the layout component.",
         "descriptionKey": "api.generated.src_components_layout_types.layoutprops.props",
         "sourcePath": "src/components/layout/types.ts",
@@ -14,7 +14,7 @@
         "members": [
           {
             "name": "class",
-            "type": "string | Record<string, boolean> | ClassValue[] | null",
+            "type": "string | false | Record<string, any> | ClassValue[] | null",
             "required": false,
             "description": "Additional class names applied to the root element.",
             "descriptionKey": "api.generated.src_components_layout_types.layoutprops.members.class",
@@ -25,8 +25,8 @@
               {
                 "name": "ClassValue",
                 "kind": "typeAlias",
-                "type": "string | Record<string, boolean> | ClassValue[] | null | undefined",
-                "resolvedType": "string | Record<string, boolean> | ClassValue[] | null | undefined",
+                "type": "string | false | Record<string, any> | ClassValue[] | null | undefined",
+                "resolvedType": "string | false | Record<string, any> | ClassValue[] | null | undefined",
                 "description": "",
                 "descriptionKey": "api.generated.headless_src_types_common.classvalue",
                 "sourcePath": "headless/src/types/common.ts",
@@ -749,7 +749,7 @@
         "kind": "props",
         "name": "LayoutClassicProps",
         "type": "Interface LayoutClassicProps",
-        "resolvedType": "{ class?: string | Record<string, boolean> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<LayoutClassicUi>; orientation?: DataOrientation; scrollBehavior?: LayoutClassicScrollBehavior; scrollId?: string; baseZIndex?: number; fixedTop?: boolean; fixedFooter?: boolean; stretchFooter?: boolean; open?: boolean; defaultOpen?: boolean; side?: HorizontalSide; sidebarVisible?: boolean; sidebarWidth?: number; collapsedSidebarWidth?: number; isMobile?: boolean; mobileSidebarWidth?: number; headerVisible?: boolean; headerHeight?: number; tabVisible?: boolean; tabHeight?: number; footerVisible?: boolean; footerHeight?: number; fullContent?: boolean; pxToRem?: ((px: number) => number); sidebarProps?: LayoutSidebarProps; railProps?: LayoutRailProps; mainProps?: LayoutMainProps; headerProps?: LayoutHeaderProps; tabProps?: LayoutTabProps; contentProps?: LayoutContentProps; footerProps?: LayoutFooterProps; mobileProps?: LayoutMobileProps }",
+        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<LayoutClassicUi>; orientation?: DataOrientation; scrollBehavior?: LayoutClassicScrollBehavior; scrollId?: string; baseZIndex?: number; fixedTop?: boolean; fixedFooter?: boolean; stretchFooter?: boolean; open?: boolean; defaultOpen?: boolean; side?: HorizontalSide; sidebarVisible?: boolean; sidebarWidth?: number; collapsedSidebarWidth?: number; isMobile?: boolean; mobileSidebarWidth?: number; headerVisible?: boolean; headerHeight?: number; tabVisible?: boolean; tabHeight?: number; footerVisible?: boolean; footerHeight?: number; fullContent?: boolean; pxToRem?: ((px: number) => number); sidebarProps?: LayoutSidebarProps; railProps?: LayoutRailProps; mainProps?: LayoutMainProps; headerProps?: LayoutHeaderProps; tabProps?: LayoutTabProps; contentProps?: LayoutContentProps; footerProps?: LayoutFooterProps; mobileProps?: LayoutMobileProps }",
         "description": "Properties for the layout classic component.",
         "descriptionKey": "api.generated.src_components_layout_types.layoutclassicprops.props",
         "sourcePath": "src/components/layout/types.ts",
@@ -757,7 +757,7 @@
         "members": [
           {
             "name": "class",
-            "type": "string | Record<string, boolean> | ClassValue[] | null",
+            "type": "string | false | Record<string, any> | ClassValue[] | null",
             "required": false,
             "description": "Additional class names applied to the root element.",
             "descriptionKey": "api.generated.src_components_layout_types.layoutclassicprops.members.class",
@@ -768,8 +768,8 @@
               {
                 "name": "ClassValue",
                 "kind": "typeAlias",
-                "type": "string | Record<string, boolean> | ClassValue[] | null | undefined",
-                "resolvedType": "string | Record<string, boolean> | ClassValue[] | null | undefined",
+                "type": "string | false | Record<string, any> | ClassValue[] | null | undefined",
+                "resolvedType": "string | false | Record<string, any> | ClassValue[] | null | undefined",
                 "description": "",
                 "descriptionKey": "api.generated.headless_src_types_common.classvalue",
                 "sourcePath": "headless/src/types/common.ts",

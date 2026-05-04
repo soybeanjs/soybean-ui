@@ -6,7 +6,7 @@
         "kind": "props",
         "name": "HoverCardProps",
         "type": "Interface HoverCardProps",
-        "resolvedType": "{ class?: string | Record<string, boolean> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<HoverCardUi>; placement?: Placement; showArrow?: boolean; positionerProps?: HoverCardPositionerProps; popupProps?: HoverCardPopupProps; triggerProps?: HoverCardTriggerProps; portalProps?: HoverCardPortalProps; arrowProps?: HoverCardArrowProps; defaultOpen?: boolean; open?: boolean; openDelay?: number; closeDelay?: number }",
+        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<HoverCardUi>; placement?: Placement; showArrow?: boolean; positionerProps?: HoverCardPositionerProps; popupProps?: HoverCardPopupProps; triggerProps?: HoverCardTriggerProps; portalProps?: HoverCardPortalProps; arrowProps?: HoverCardArrowProps; defaultOpen?: boolean; open?: boolean; openDelay?: number; closeDelay?: number }",
         "description": "Properties for the hover card component.",
         "descriptionKey": "api.generated.src_components_hover_card_types.hovercardprops.props",
         "sourcePath": "src/components/hover-card/types.ts",
@@ -14,7 +14,7 @@
         "members": [
           {
             "name": "class",
-            "type": "string | Record<string, boolean> | ClassValue[] | null",
+            "type": "string | false | Record<string, any> | ClassValue[] | null",
             "required": false,
             "description": "class of popup",
             "descriptionKey": "api.generated.src_components_hover_card_types.hovercardprops.members.class",
@@ -25,8 +25,8 @@
               {
                 "name": "ClassValue",
                 "kind": "typeAlias",
-                "type": "string | Record<string, boolean> | ClassValue[] | null | undefined",
-                "resolvedType": "string | Record<string, boolean> | ClassValue[] | null | undefined",
+                "type": "string | false | Record<string, any> | ClassValue[] | null | undefined",
+                "resolvedType": "string | false | Record<string, any> | ClassValue[] | null | undefined",
                 "description": "",
                 "descriptionKey": "api.generated.headless_src_types_common.classvalue",
                 "sourcePath": "headless/src/types/common.ts",

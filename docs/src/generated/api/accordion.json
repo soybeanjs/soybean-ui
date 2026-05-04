@@ -6,7 +6,7 @@
         "kind": "props",
         "name": "AccordionProps",
         "type": "Interface AccordionProps<T, M>",
-        "resolvedType": "{ class?: string | Record<string, boolean> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<AccordionUi>; items: T[]; itemProps?: AccordionItemProps; headerProps?: AccordionHeaderProps; triggerProps?: AccordionTriggerProps; contentProps?: AccordionContentProps; descriptionProps?: AccordionDescriptionProps; collapsible?: boolean; dir?: Direction; disabled?: boolean; orientation?: DataOrientation; unmountOnHide?: boolean; modelValue?: (M extends true ? string[] : string); defaultValue?: (M extends true ? string[] : string); multiple?: M; clearable?: boolean; selectionBehavior?: SelectionBehavior }",
+        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<AccordionUi>; items: T[]; itemProps?: AccordionItemProps; headerProps?: AccordionHeaderProps; triggerProps?: AccordionTriggerProps; contentProps?: AccordionContentProps; descriptionProps?: AccordionDescriptionProps; collapsible?: boolean; dir?: Direction; disabled?: boolean; orientation?: DataOrientation; unmountOnHide?: boolean; modelValue?: (M extends true ? string[] : string); defaultValue?: (M extends true ? string[] : string); multiple?: M; clearable?: boolean; selectionBehavior?: SelectionBehavior }",
         "description": "Properties for the accordion component.",
         "descriptionKey": "api.generated.src_components_accordion_types.accordionprops.props",
         "sourcePath": "src/components/accordion/types.ts",
@@ -14,7 +14,7 @@
         "members": [
           {
             "name": "class",
-            "type": "string | Record<string, boolean> | ClassValue[] | null",
+            "type": "string | false | Record<string, any> | ClassValue[] | null",
             "required": false,
             "description": "root class",
             "descriptionKey": "api.generated.src_components_accordion_types.accordionprops.members.class",
@@ -25,8 +25,8 @@
               {
                 "name": "ClassValue",
                 "kind": "typeAlias",
-                "type": "string | Record<string, boolean> | ClassValue[] | null | undefined",
-                "resolvedType": "string | Record<string, boolean> | ClassValue[] | null | undefined",
+                "type": "string | false | Record<string, any> | ClassValue[] | null | undefined",
+                "resolvedType": "string | false | Record<string, any> | ClassValue[] | null | undefined",
                 "description": "",
                 "descriptionKey": "api.generated.headless_src_types_common.classvalue",
                 "sourcePath": "headless/src/types/common.ts",

@@ -6,7 +6,7 @@
         "kind": "props",
         "name": "SwitchProps",
         "type": "Interface SwitchProps<T>",
-        "resolvedType": "{ class?: string | Record<string, boolean> | ClassValue[] | null; ui?: Partial<SwitchUi>; color?: ThemeColor; size?: ThemeSize; shape?: SwitchShape; controlProps?: SwitchControlProps; thumbProps?: SwitchThumbProps; defaultValue?: NonNullable<T>; modelValue?: T; disabled?: boolean; value?: string; name?: string; required?: boolean; trueValue?: NonNullable<T>; falseValue?: NonNullable<T> }",
+        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; ui?: Partial<SwitchUi>; color?: ThemeColor; size?: ThemeSize; shape?: SwitchShape; controlProps?: SwitchControlProps; thumbProps?: SwitchThumbProps; defaultValue?: NonNullable<T>; modelValue?: T; disabled?: boolean; value?: string; name?: string; required?: boolean; trueValue?: NonNullable<T>; falseValue?: NonNullable<T> }",
         "description": "Properties for the switch component.",
         "descriptionKey": "api.generated.src_components_switch_types.switchprops.props",
         "sourcePath": "src/components/switch/types.ts",
@@ -14,7 +14,7 @@
         "members": [
           {
             "name": "class",
-            "type": "string | Record<string, boolean> | ClassValue[] | null",
+            "type": "string | false | Record<string, any> | ClassValue[] | null",
             "required": false,
             "description": "Additional class names applied to the root element.",
             "descriptionKey": "api.generated.src_components_switch_types.switchprops.members.class",
@@ -25,8 +25,8 @@
               {
                 "name": "ClassValue",
                 "kind": "typeAlias",
-                "type": "string | Record<string, boolean> | ClassValue[] | null | undefined",
-                "resolvedType": "string | Record<string, boolean> | ClassValue[] | null | undefined",
+                "type": "string | false | Record<string, any> | ClassValue[] | null | undefined",
+                "resolvedType": "string | false | Record<string, any> | ClassValue[] | null | undefined",
                 "description": "",
                 "descriptionKey": "api.generated.headless_src_types_common.classvalue",
                 "sourcePath": "headless/src/types/common.ts",

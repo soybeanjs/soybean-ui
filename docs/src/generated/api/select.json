@@ -6,7 +6,7 @@
         "kind": "props",
         "name": "SelectProps",
         "type": "Interface SelectProps<T, M>",
-        "resolvedType": "{ class?: string | Record<string, boolean> | ClassValue[] | null; ui?: Partial<SelectUi>; size?: ThemeSize; items: SelectOptionData<T>[]; showArrow?: boolean; triggerProps?: SelectTriggerProps; triggerIconProps?: SelectTriggerIconProps; placeholder?: string; valueProps?: SelectValueProps; portalProps?: PortalProps; contentProps?: SelectContentProps; placement?: import(\"@/index\").Placement; popupProps?: SelectPopupProps; viewportProps?: SelectViewportProps; scrollDownButtonProps?: SelectScrollDownButtonProps; scrollUpButtonProps?: SelectScrollUpButtonProps; groupProps?: SelectGroupProps; groupLabelProps?: SelectGroupLabelProps; itemProps?: SelectItemProps; itemTextProps?: SelectItemTextProps; itemIndicatorProps?: SelectItemIndicatorProps; separatorProps?: SelectSeparatorProps; arrowProps?: PopperArrowProps; open?: boolean; defaultOpen?: boolean; dir?: Direction; autocomplete?: string; disabled?: boolean; modelValue?: (M extends true ? T[] : T); defaultValue?: (M extends true ? T[] : T); multiple?: M; clearable?: boolean; selectionBehavior?: SelectionBehavior; name?: string; required?: boolean }",
+        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; ui?: Partial<SelectUi>; size?: ThemeSize; items: SelectOptionData<T>[]; showArrow?: boolean; triggerProps?: SelectTriggerProps; triggerIconProps?: SelectTriggerIconProps; placeholder?: string; valueProps?: SelectValueProps; portalProps?: PortalProps; contentProps?: SelectContentProps; placement?: import(\"@/index\").Placement; popupProps?: SelectPopupProps; viewportProps?: SelectViewportProps; scrollDownButtonProps?: SelectScrollDownButtonProps; scrollUpButtonProps?: SelectScrollUpButtonProps; groupProps?: SelectGroupProps; groupLabelProps?: SelectGroupLabelProps; itemProps?: SelectItemProps; itemTextProps?: SelectItemTextProps; itemIndicatorProps?: SelectItemIndicatorProps; separatorProps?: SelectSeparatorProps; arrowProps?: PopperArrowProps; open?: boolean; defaultOpen?: boolean; dir?: Direction; autocomplete?: string; disabled?: boolean; modelValue?: (M extends true ? T[] : T); defaultValue?: (M extends true ? T[] : T); multiple?: M; clearable?: boolean; selectionBehavior?: SelectionBehavior; name?: string; required?: boolean }",
         "description": "Properties for the select component.",
         "descriptionKey": "api.generated.src_components_select_types.selectprops.props",
         "sourcePath": "src/components/select/types.ts",
@@ -14,7 +14,7 @@
         "members": [
           {
             "name": "class",
-            "type": "string | Record<string, boolean> | ClassValue[] | null",
+            "type": "string | false | Record<string, any> | ClassValue[] | null",
             "required": false,
             "description": "the class of select trigger",
             "descriptionKey": "api.generated.src_components_select_types.selectprops.members.class",
@@ -25,8 +25,8 @@
               {
                 "name": "ClassValue",
                 "kind": "typeAlias",
-                "type": "string | Record<string, boolean> | ClassValue[] | null | undefined",
-                "resolvedType": "string | Record<string, boolean> | ClassValue[] | null | undefined",
+                "type": "string | false | Record<string, any> | ClassValue[] | null | undefined",
+                "resolvedType": "string | false | Record<string, any> | ClassValue[] | null | undefined",
                 "description": "",
                 "descriptionKey": "api.generated.headless_src_types_common.classvalue",
                 "sourcePath": "headless/src/types/common.ts",

@@ -6,7 +6,7 @@
         "kind": "props",
         "name": "ScrollAreaProps",
         "type": "Interface ScrollAreaProps",
-        "resolvedType": "{ class?: string | Record<string, boolean> | ClassValue[] | null; ui?: Partial<ScrollAreaUi>; viewportProps?: ScrollAreaViewportProps; verticalScrollbarProps?: Omit<ScrollAreaScrollbarProps, 'orientation'>; horizontalScrollbarProps?: Omit<ScrollAreaScrollbarProps, 'orientation'>; thumbProps?: ScrollAreaThumbProps; cornerProps?: ScrollAreaCornerProps; type?: ScrollAreaType; dir?: Direction; scrollHideDelay?: number; asChild?: boolean; as?: AsTag | Component }",
+        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; ui?: Partial<ScrollAreaUi>; viewportProps?: ScrollAreaViewportProps; verticalScrollbarProps?: Omit<ScrollAreaScrollbarProps, 'orientation'>; horizontalScrollbarProps?: Omit<ScrollAreaScrollbarProps, 'orientation'>; thumbProps?: ScrollAreaThumbProps; cornerProps?: ScrollAreaCornerProps; type?: ScrollAreaType; dir?: Direction; scrollHideDelay?: number; asChild?: boolean; as?: AsTag | Component }",
         "description": "Properties for the scroll area component.",
         "descriptionKey": "api.generated.src_components_scroll_area_types.scrollareaprops.props",
         "sourcePath": "src/components/scroll-area/types.ts",
@@ -14,7 +14,7 @@
         "members": [
           {
             "name": "class",
-            "type": "string | Record<string, boolean> | ClassValue[] | null",
+            "type": "string | false | Record<string, any> | ClassValue[] | null",
             "required": false,
             "description": "Additional class names applied to the root element.",
             "descriptionKey": "api.generated.src_components_scroll_area_types.scrollareaprops.members.class",
@@ -25,8 +25,8 @@
               {
                 "name": "ClassValue",
                 "kind": "typeAlias",
-                "type": "string | Record<string, boolean> | ClassValue[] | null | undefined",
-                "resolvedType": "string | Record<string, boolean> | ClassValue[] | null | undefined",
+                "type": "string | false | Record<string, any> | ClassValue[] | null | undefined",
+                "resolvedType": "string | false | Record<string, any> | ClassValue[] | null | undefined",
                 "description": "",
                 "descriptionKey": "api.generated.headless_src_types_common.classvalue",
                 "sourcePath": "headless/src/types/common.ts",

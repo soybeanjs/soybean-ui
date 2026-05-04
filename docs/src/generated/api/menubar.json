@@ -6,7 +6,7 @@
         "kind": "props",
         "name": "MenubarProps",
         "type": "Interface MenubarProps<T>",
-        "resolvedType": "{ class?: string | Record<string, boolean> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<MenubarUi>; indicatorPosition?: AlignSide; disabled?: boolean; placement?: Placement; showArrow?: boolean; triggerProps?: MenubarTriggerProps; portalProps?: MenuPortalProps; contentProps?: MenubarContentProps; popupProps?: MenuPopupProps; arrowProps?: MenuArrowProps; modelValue?: T; defaultValue?: T; dir?: Direction; loop?: boolean; asChild?: boolean; as?: AsTag | Component; items: MenuOptionData<T>[]; activeValue?: T; itemProps?: MenuItemProps; linkProps?: LinkProps; groupProps?: MenuGroupProps; groupLabelProps?: MenuGroupLabelProps; subProps?: MenuSubProps; subTriggerProps?: MenuSubTriggerProps; subContentProps?: MenuSubContentProps; separatorProps?: MenuSeparatorProps; shortcutProps?: MenuShortcutProps }",
+        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<MenubarUi>; indicatorPosition?: AlignSide; disabled?: boolean; placement?: Placement; showArrow?: boolean; triggerProps?: MenubarTriggerProps; portalProps?: MenuPortalProps; contentProps?: MenubarContentProps; popupProps?: MenuPopupProps; arrowProps?: MenuArrowProps; modelValue?: T; defaultValue?: T; dir?: Direction; loop?: boolean; asChild?: boolean; as?: AsTag | Component; items: MenuOptionData<T>[]; activeValue?: T; itemProps?: MenuItemProps; linkProps?: LinkProps; groupProps?: MenuGroupProps; groupLabelProps?: MenuGroupLabelProps; subProps?: MenuSubProps; subTriggerProps?: MenuSubTriggerProps; subContentProps?: MenuSubContentProps; separatorProps?: MenuSeparatorProps; shortcutProps?: MenuShortcutProps }",
         "description": "Properties for the menubar component.",
         "descriptionKey": "api.generated.src_components_menubar_types.menubarprops.props",
         "sourcePath": "src/components/menubar/types.ts",
@@ -14,7 +14,7 @@
         "members": [
           {
             "name": "class",
-            "type": "string | Record<string, boolean> | ClassValue[] | null",
+            "type": "string | false | Record<string, any> | ClassValue[] | null",
             "required": false,
             "description": "class of menubar root",
             "descriptionKey": "api.generated.src_components_menubar_types.menubarprops.members.class",
@@ -25,8 +25,8 @@
               {
                 "name": "ClassValue",
                 "kind": "typeAlias",
-                "type": "string | Record<string, boolean> | ClassValue[] | null | undefined",
-                "resolvedType": "string | Record<string, boolean> | ClassValue[] | null | undefined",
+                "type": "string | false | Record<string, any> | ClassValue[] | null | undefined",
+                "resolvedType": "string | false | Record<string, any> | ClassValue[] | null | undefined",
                 "description": "",
                 "descriptionKey": "api.generated.headless_src_types_common.classvalue",
                 "sourcePath": "headless/src/types/common.ts",

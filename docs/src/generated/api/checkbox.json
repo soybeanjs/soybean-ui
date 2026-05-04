@@ -6,7 +6,7 @@
         "kind": "props",
         "name": "CheckboxProps",
         "type": "Interface CheckboxProps",
-        "resolvedType": "{ class?: string | Record<string, boolean> | ClassValue[] | null; ui?: Partial<CheckboxUi>; color?: ThemeColor; size?: ThemeSize; shape?: CheckboxShape; label?: string; controlProps?: CheckboxControlProps; indicatorProps?: CheckboxIndicatorProps; labelProps?: CheckboxLabelProps; id?: string; modelValue?: CheckedState | null; defaultValue?: CheckedState; value?: DefinedValue; disabled?: boolean; name?: string; required?: boolean }",
+        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; ui?: Partial<CheckboxUi>; color?: ThemeColor; size?: ThemeSize; shape?: CheckboxShape; label?: string; controlProps?: CheckboxControlProps; indicatorProps?: CheckboxIndicatorProps; labelProps?: CheckboxLabelProps; id?: string; modelValue?: CheckedState | null; defaultValue?: CheckedState; value?: DefinedValue; disabled?: boolean; name?: string; required?: boolean }",
         "description": "Properties for the checkbox component.",
         "descriptionKey": "api.generated.src_components_checkbox_types.checkboxprops.props",
         "sourcePath": "src/components/checkbox/types.ts",
@@ -14,7 +14,7 @@
         "members": [
           {
             "name": "class",
-            "type": "string | Record<string, boolean> | ClassValue[] | null",
+            "type": "string | false | Record<string, any> | ClassValue[] | null",
             "required": false,
             "description": "the class of root element",
             "descriptionKey": "api.generated.src_components_checkbox_types.checkboxprops.members.class",
@@ -25,8 +25,8 @@
               {
                 "name": "ClassValue",
                 "kind": "typeAlias",
-                "type": "string | Record<string, boolean> | ClassValue[] | null | undefined",
-                "resolvedType": "string | Record<string, boolean> | ClassValue[] | null | undefined",
+                "type": "string | false | Record<string, any> | ClassValue[] | null | undefined",
+                "resolvedType": "string | false | Record<string, any> | ClassValue[] | null | undefined",
                 "description": "",
                 "descriptionKey": "api.generated.headless_src_types_common.classvalue",
                 "sourcePath": "headless/src/types/common.ts",
@@ -445,7 +445,7 @@
         "kind": "props",
         "name": "CheckboxCardProps",
         "type": "Interface CheckboxCardProps",
-        "resolvedType": "{ class?: string | Record<string, boolean> | ClassValue[] | null; ui?: Partial<CheckboxCardUi>; color?: ThemeColor; size?: ThemeSize; shape?: CheckboxShape; icon?: string; description?: string; label?: string; controlProps?: CheckboxControlProps; indicatorProps?: CheckboxIndicatorProps; labelProps?: CheckboxLabelProps; id?: string; modelValue?: CheckedState | null; defaultValue?: CheckedState; value?: DefinedValue; disabled?: boolean; name?: string; required?: boolean }",
+        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; ui?: Partial<CheckboxCardUi>; color?: ThemeColor; size?: ThemeSize; shape?: CheckboxShape; icon?: string; description?: string; label?: string; controlProps?: CheckboxControlProps; indicatorProps?: CheckboxIndicatorProps; labelProps?: CheckboxLabelProps; id?: string; modelValue?: CheckedState | null; defaultValue?: CheckedState; value?: DefinedValue; disabled?: boolean; name?: string; required?: boolean }",
         "description": "Properties for the checkbox card component.",
         "descriptionKey": "api.generated.src_components_checkbox_types.checkboxcardprops.props",
         "sourcePath": "src/components/checkbox/types.ts",
@@ -453,7 +453,7 @@
         "members": [
           {
             "name": "class",
-            "type": "string | Record<string, boolean> | ClassValue[] | null",
+            "type": "string | false | Record<string, any> | ClassValue[] | null",
             "required": false,
             "description": "the class of root element",
             "descriptionKey": "api.generated.src_components_checkbox_types.checkboxcardprops.members.class",
@@ -464,8 +464,8 @@
               {
                 "name": "ClassValue",
                 "kind": "typeAlias",
-                "type": "string | Record<string, boolean> | ClassValue[] | null | undefined",
-                "resolvedType": "string | Record<string, boolean> | ClassValue[] | null | undefined",
+                "type": "string | false | Record<string, any> | ClassValue[] | null | undefined",
+                "resolvedType": "string | false | Record<string, any> | ClassValue[] | null | undefined",
                 "description": "",
                 "descriptionKey": "api.generated.headless_src_types_common.classvalue",
                 "sourcePath": "headless/src/types/common.ts",
@@ -1256,7 +1256,7 @@
         "kind": "props",
         "name": "CheckboxCardGroupProps",
         "type": "Interface CheckboxCardGroupProps<T>",
-        "resolvedType": "{ class?: string | Record<string, boolean> | ClassValue[] | null; ui?: Partial<CheckboxCardUi>; color?: ThemeColor; size?: ThemeSize; shape?: CheckboxShape; items: T[]; rootProps?: CheckboxRootProps; controlProps?: CheckboxControlProps; indicatorProps?: CheckboxIndicatorProps; labelProps?: CheckboxLabelProps; modelValue?: T['value'][]; defaultValue?: T['value'][]; rovingFocus?: boolean; disabled?: boolean; dir?: Direction; orientation?: DataOrientation; loop?: boolean; name?: string; required?: boolean }",
+        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; ui?: Partial<CheckboxCardUi>; color?: ThemeColor; size?: ThemeSize; shape?: CheckboxShape; items: T[]; rootProps?: CheckboxRootProps; controlProps?: CheckboxControlProps; indicatorProps?: CheckboxIndicatorProps; labelProps?: CheckboxLabelProps; modelValue?: T['value'][]; defaultValue?: T['value'][]; rovingFocus?: boolean; disabled?: boolean; dir?: Direction; orientation?: DataOrientation; loop?: boolean; name?: string; required?: boolean }",
         "description": "Properties for the checkbox card group component.",
         "descriptionKey": "api.generated.src_components_checkbox_types.checkboxcardgroupprops.props",
         "sourcePath": "src/components/checkbox/types.ts",
@@ -1264,7 +1264,7 @@
         "members": [
           {
             "name": "class",
-            "type": "string | Record<string, boolean> | ClassValue[] | null",
+            "type": "string | false | Record<string, any> | ClassValue[] | null",
             "required": false,
             "description": "the class of group root element",
             "descriptionKey": "api.generated.src_components_checkbox_types.checkboxcardgroupprops.members.class",
@@ -1275,8 +1275,8 @@
               {
                 "name": "ClassValue",
                 "kind": "typeAlias",
-                "type": "string | Record<string, boolean> | ClassValue[] | null | undefined",
-                "resolvedType": "string | Record<string, boolean> | ClassValue[] | null | undefined",
+                "type": "string | false | Record<string, any> | ClassValue[] | null | undefined",
+                "resolvedType": "string | false | Record<string, any> | ClassValue[] | null | undefined",
                 "description": "",
                 "descriptionKey": "api.generated.headless_src_types_common.classvalue",
                 "sourcePath": "headless/src/types/common.ts",
@@ -2550,7 +2550,7 @@
         "kind": "props",
         "name": "CheckboxGroupProps",
         "type": "Interface CheckboxGroupProps<T>",
-        "resolvedType": "{ class?: string | Record<string, boolean> | ClassValue[] | null; ui?: Partial<CheckboxUi>; color?: ThemeColor; size?: ThemeSize; shape?: CheckboxShape; items: T[]; rootProps?: CheckboxRootProps; controlProps?: CheckboxControlProps; indicatorProps?: CheckboxIndicatorProps; labelProps?: CheckboxLabelProps; modelValue?: T['value'][]; defaultValue?: T['value'][]; rovingFocus?: boolean; disabled?: boolean; dir?: Direction; orientation?: DataOrientation; loop?: boolean; name?: string; required?: boolean }",
+        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; ui?: Partial<CheckboxUi>; color?: ThemeColor; size?: ThemeSize; shape?: CheckboxShape; items: T[]; rootProps?: CheckboxRootProps; controlProps?: CheckboxControlProps; indicatorProps?: CheckboxIndicatorProps; labelProps?: CheckboxLabelProps; modelValue?: T['value'][]; defaultValue?: T['value'][]; rovingFocus?: boolean; disabled?: boolean; dir?: Direction; orientation?: DataOrientation; loop?: boolean; name?: string; required?: boolean }",
         "description": "Properties for the checkbox group component.",
         "descriptionKey": "api.generated.src_components_checkbox_types.checkboxgroupprops.props",
         "sourcePath": "src/components/checkbox/types.ts",
@@ -2558,7 +2558,7 @@
         "members": [
           {
             "name": "class",
-            "type": "string | Record<string, boolean> | ClassValue[] | null",
+            "type": "string | false | Record<string, any> | ClassValue[] | null",
             "required": false,
             "description": "the class of group root element",
             "descriptionKey": "api.generated.src_components_checkbox_types.checkboxgroupprops.members.class",
@@ -2569,8 +2569,8 @@
               {
                 "name": "ClassValue",
                 "kind": "typeAlias",
-                "type": "string | Record<string, boolean> | ClassValue[] | null | undefined",
-                "resolvedType": "string | Record<string, boolean> | ClassValue[] | null | undefined",
+                "type": "string | false | Record<string, any> | ClassValue[] | null | undefined",
+                "resolvedType": "string | false | Record<string, any> | ClassValue[] | null | undefined",
                 "description": "",
                 "descriptionKey": "api.generated.headless_src_types_common.classvalue",
                 "sourcePath": "headless/src/types/common.ts",

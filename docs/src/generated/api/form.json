@@ -6,7 +6,7 @@
         "kind": "props",
         "name": "FormProps",
         "type": "Interface FormProps",
-        "resolvedType": "{ class?: string | Record<string, boolean> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<FormUi>; fieldProps?: FormFieldProps; fieldArrayProps?: FormFieldProps; orientation?: DataOrientation; labelProps?: FormLabelProps; controlProps?: FormControlProps; descriptionProps?: FormDescriptionProps; errorProps?: FormErrorProps }",
+        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<FormUi>; fieldProps?: FormFieldProps; fieldArrayProps?: FormFieldProps; orientation?: DataOrientation; labelProps?: FormLabelProps; controlProps?: FormControlProps; descriptionProps?: FormDescriptionProps; errorProps?: FormErrorProps }",
         "description": "Properties for the FormCompact component",
         "descriptionKey": "api.generated.src_components_form_types.formprops.props",
         "sourcePath": "src/components/form/types.ts",
@@ -14,7 +14,7 @@
         "members": [
           {
             "name": "class",
-            "type": "string | Record<string, boolean> | ClassValue[] | null",
+            "type": "string | false | Record<string, any> | ClassValue[] | null",
             "required": false,
             "description": "Additional class names applied to the form element.",
             "descriptionKey": "api.generated.src_components_form_types.formprops.members.class",
@@ -25,8 +25,8 @@
               {
                 "name": "ClassValue",
                 "kind": "typeAlias",
-                "type": "string | Record<string, boolean> | ClassValue[] | null | undefined",
-                "resolvedType": "string | Record<string, boolean> | ClassValue[] | null | undefined",
+                "type": "string | false | Record<string, any> | ClassValue[] | null | undefined",
+                "resolvedType": "string | false | Record<string, any> | ClassValue[] | null | undefined",
                 "description": "",
                 "descriptionKey": "api.generated.headless_src_types_common.classvalue",
                 "sourcePath": "headless/src/types/common.ts",
