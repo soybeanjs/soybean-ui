@@ -4,7 +4,7 @@ import type { FormFieldCommonProps, PropsToContext, UiClass } from '../../types'
 import type { PrimitiveProps } from '../primitive/types';
 
 /**
- * Props for the color field root component.
+ * Properties for the color field root component.
  */
 export interface ColorFieldRootProps extends PrimitiveProps, FormFieldCommonProps, /** @vue-ignore */ HTMLAttributes {
   /**
@@ -50,7 +50,7 @@ export interface ColorFieldRootProps extends PrimitiveProps, FormFieldCommonProp
 }
 
 /**
- * Emits for the color field root component.
+ * Events for the color field root component.
  */
 export type ColorFieldRootEmits = {
   /**
@@ -64,7 +64,7 @@ export type ColorFieldRootEmits = {
 };
 
 /**
- * Props for the color field input component.
+ * Properties for the color field input component.
  */
 export interface ColorFieldInputProps extends /** @vue-ignore */ InputHTMLAttributes {}
 

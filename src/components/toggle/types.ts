@@ -4,7 +4,7 @@ import type { ThemeSize, ThemeColor } from '@/theme';
 import type { ToggleVariant, ToggleShape } from './variants';
 
 /**
- * Props for the toggle component.
+ * Properties for the toggle component.
  */
 export interface ToggleProps extends _ToggleProps {
   /**

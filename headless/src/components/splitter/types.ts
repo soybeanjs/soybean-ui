@@ -3,7 +3,7 @@ import type { DataOrientation, Direction, PropsToContext, UiClass } from '../../
 import type { PrimitiveProps } from '../primitive/types';
 
 /**
- * Props for the splitter group component.
+ * Properties for the splitter group component.
  */
 export interface SplitterGroupProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {
   /**
@@ -27,7 +27,7 @@ export interface SplitterGroupProps extends PrimitiveProps, /** @vue-ignore */ H
 }
 
 /**
- * Emits for the splitter group component.
+ * Events for the splitter group component.
  */
 export type SplitterGroupEmits = {
   /**
@@ -37,7 +37,7 @@ export type SplitterGroupEmits = {
 };
 
 /**
- * Props for the splitter panel component.
+ * Properties for the splitter panel component.
  */
 export interface SplitterPanelProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {
   /**
@@ -67,7 +67,7 @@ export interface SplitterPanelProps extends PrimitiveProps, /** @vue-ignore */ H
 }
 
 /**
- * Emits for the splitter panel component.
+ * Events for the splitter panel component.
  */
 export type SplitterPanelEmits = {
   /**
@@ -85,7 +85,7 @@ export type SplitterPanelEmits = {
 };
 
 /**
- * Props for the splitter resize handle component.
+ * Properties for the splitter resize handle component.
  */
 export interface SplitterResizeHandleProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {
   /**
@@ -99,7 +99,7 @@ export interface SplitterResizeHandleProps extends PrimitiveProps, /** @vue-igno
 }
 
 /**
- * Emits for the splitter resize handle component.
+ * Events for the splitter resize handle component.
  */
 export type SplitterResizeHandleEmits = {
   /**

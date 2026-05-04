@@ -9,7 +9,7 @@ import type { ClassValue } from '@soybeanjs/headless/types';
 import type { ThemeSize } from '@/theme';
 
 /**
- * Props for the command component.
+ * Properties for the command component.
  */
 export interface CommandProps<
   T extends CommandSingleOptionData = CommandSingleOptionData
@@ -27,7 +27,7 @@ export interface CommandProps<
 }
 
 /**
- * Emits for the command component.
+ * Events for the command component.
  */
 export type CommandEmits = CommandCompactEmits;
 

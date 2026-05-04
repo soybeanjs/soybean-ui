@@ -21,7 +21,7 @@ interface IconifyOptions {
 }
 
 /**
- * Props for the config provider component.
+ * Properties for the config provider component.
  */
 export interface ConfigProviderProps extends _ConfigProviderProps {
   /** The theme options. */

@@ -29,7 +29,7 @@ export interface SnapPoint {
 }
 
 /**
- * Props for the use drawer component.
+ * Properties for the use drawer component.
  */
 export interface UseDrawerProps {
   /**
@@ -270,7 +270,7 @@ export interface BottomSheetRootContext {
 }
 
 /**
- * Props for the with fade from component.
+ * Properties for the with fade from component.
  */
 export interface WithFadeFromProps {
   /**
@@ -284,7 +284,7 @@ export interface WithFadeFromProps {
 }
 
 /**
- * Props for the without fade from component.
+ * Properties for the without fade from component.
  */
 export interface WithoutFadeFromProps {
   /**
@@ -298,7 +298,7 @@ export interface WithoutFadeFromProps {
 }
 
 /**
- * Props for the bottom sheet root component.
+ * Properties for the bottom sheet root component.
  */
 export type BottomSheetRootProps = DialogRootProps & {
   /**
@@ -352,7 +352,7 @@ export type BottomSheetRootProps = DialogRootProps & {
 } & (WithFadeFromProps | WithoutFadeFromProps);
 
 /**
- * Emits for the bottom sheet root component.
+ * Events for the bottom sheet root component.
  */
 export type BottomSheetRootEmits = DialogRootEmits & {
   /**
@@ -406,7 +406,7 @@ export interface BottomSheetEmitHandlers {
 }
 
 /**
- * Props for the bottom sheet handle component.
+ * Properties for the bottom sheet handle component.
  */
 export interface BottomSheetHandleProps extends /** @vue-ignore */ HTMLAttributes {
   /**
@@ -416,18 +416,18 @@ export interface BottomSheetHandleProps extends /** @vue-ignore */ HTMLAttribute
 }
 
 /**
- * Props for the bottom sheet compact component.
+ * Properties for the bottom sheet compact component.
  */
 export type BottomSheetCompactProps = DialogCompactProps &
   BottomSheetRootProps & {
     /**
-     * Props forwarded to the handle element.
+     * Properties forwarded to the handle element.
      */
     handleProps?: BottomSheetHandleProps;
   };
 
 /**
- * Emits for the bottom sheet compact component.
+ * Events for the bottom sheet compact component.
  */
 export type BottomSheetCompactEmits = Omit<DialogCompactEmits, 'close'> & BottomSheetRootEmits;
 

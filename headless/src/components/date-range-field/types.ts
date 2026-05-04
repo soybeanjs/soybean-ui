@@ -15,7 +15,7 @@ import type { Direction, FormFieldCommonProps, PropsToContext, UiClass } from '.
 import type { PrimitiveProps } from '../primitive/types';
 
 /**
- * Props for the date range field root component.
+ * Properties for the date range field root component.
  */
 export interface DateRangeFieldRootProps
   extends PrimitiveProps, FormFieldCommonProps, /** @vue-ignore */ Omit<HTMLAttributes, 'placeholder'> {
@@ -94,7 +94,7 @@ export interface DateRangeFieldRootProps
 }
 
 /**
- * Emits for the date range field root component.
+ * Events for the date range field root component.
  */
 export type DateRangeFieldRootEmits = {
   /**
@@ -116,7 +116,7 @@ export type DateRangeFieldRootEmits = {
 };
 
 /**
- * Props for the date range field input component.
+ * Properties for the date range field input component.
  */
 export interface DateRangeFieldInputProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {
   /**
@@ -255,11 +255,11 @@ export type DateRangeFieldUiSlot = 'root' | 'input' | 'separator';
 export type DateRangeFieldUi = UiClass<DateRangeFieldUiSlot>;
 
 /**
- * Props for the date range field compact component.
+ * Properties for the date range field compact component.
  */
 export interface DateRangeFieldCompactProps extends DateRangeFieldRootProps {
   /**
-   * Props forwarded to the input element.
+   * Properties forwarded to the input element.
    */
   inputProps?: Omit<DateRangeFieldInputProps, 'part' | 'type'>;
   /**
@@ -269,7 +269,7 @@ export interface DateRangeFieldCompactProps extends DateRangeFieldRootProps {
 }
 
 /**
- * Emits for the date range field compact component.
+ * Events for the date range field compact component.
  */
 export type DateRangeFieldCompactEmits = DateRangeFieldRootEmits;
 

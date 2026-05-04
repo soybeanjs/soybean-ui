@@ -18,7 +18,7 @@ import type {
 import type { PrimitiveProps } from '../primitive/types';
 
 /**
- * Props for the menubar root component.
+ * Properties for the menubar root component.
  */
 export interface MenubarRootProps<T extends DefinedValue = DefinedValue>
   extends PrimitiveProps, /** @vue-ignore */ Omit<HTMLAttributes, 'onSelect'> {
@@ -33,7 +33,7 @@ export interface MenubarRootProps<T extends DefinedValue = DefinedValue>
 }
 
 /**
- * Emits for the menubar root component.
+ * Events for the menubar root component.
  */
 export type MenubarRootEmits<T extends DefinedValue = DefinedValue> = {
   /**
@@ -43,7 +43,7 @@ export type MenubarRootEmits<T extends DefinedValue = DefinedValue> = {
 };
 
 /**
- * Props for the menubar menu component.
+ * Properties for the menubar menu component.
  */
 export interface MenubarMenuProps {
   /** A unique value that associates the trigger with the active root value when controlled. */
@@ -51,7 +51,7 @@ export interface MenubarMenuProps {
 }
 
 /**
- * Props for the menubar trigger component.
+ * Properties for the menubar trigger component.
  */
 export interface MenubarTriggerProps extends PrimitiveProps, /** @vue-ignore */ ButtonHTMLAttributes {
   /** When `true`, prevents the user from interacting with the trigger. */
@@ -69,30 +69,30 @@ export interface MenubarCollectionItemData {
 }
 
 /**
- * Emits for the menubar content component.
+ * Events for the menubar content component.
  */
 export type MenubarContentEmits = MenuContentEmits;
 /**
- * Props for the menubar content component.
+ * Properties for the menubar content component.
  */
 export interface MenubarContentProps extends MenuContentProps {}
 
 /**
- * Props for the menubar sub trigger component.
+ * Properties for the menubar sub trigger component.
  */
 export interface MenubarSubTriggerProps extends MenuSubTriggerProps {}
 
 /**
- * Props for the menubar sub content component.
+ * Properties for the menubar sub content component.
  */
 export interface MenubarSubContentProps extends MenuSubContentProps {}
 /**
- * Emits for the menubar sub content component.
+ * Events for the menubar sub content component.
  */
 export type MenubarSubContentEmits = MenuSubContentEmits;
 
 /**
- * Props for the menubar compact component.
+ * Properties for the menubar compact component.
  */
 export interface MenubarCompactProps<T extends DefinedValue = DefinedValue>
   extends MenubarRootProps<T>, MenuOptionsCompactProps<T> {
@@ -109,28 +109,28 @@ export interface MenubarCompactProps<T extends DefinedValue = DefinedValue>
    */
   showArrow?: boolean;
   /**
-   * Props forwarded to the trigger element.
+   * Properties forwarded to the trigger element.
    */
   triggerProps?: MenubarTriggerProps;
   /**
-   * Props forwarded to the portal element.
+   * Properties forwarded to the portal element.
    */
   portalProps?: MenuPortalProps;
   /**
-   * Props forwarded to the content element.
+   * Properties forwarded to the content element.
    */
   contentProps?: MenubarContentProps;
   /**
-   * Props forwarded to the popup element.
+   * Properties forwarded to the popup element.
    */
   popupProps?: MenuPopupProps;
   /**
-   * Props forwarded to the arrow element.
+   * Properties forwarded to the arrow element.
    */
   arrowProps?: MenuArrowProps;
 }
 /**
- * Emits for the menubar compact component.
+ * Events for the menubar compact component.
  */
 export type MenubarCompactEmits<T extends DefinedValue = DefinedValue> = MenubarRootEmits<T> &
   MenuContentEmits &

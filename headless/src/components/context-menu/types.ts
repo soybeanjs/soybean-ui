@@ -21,7 +21,7 @@ import type {
 } from '../menu';
 
 /**
- * Props for the context menu root component.
+ * Properties for the context menu root component.
  */
 export interface ContextMenuRootProps extends Omit<MenuRootProps, 'open' | 'defaultOpen'> {
   /**
@@ -32,19 +32,19 @@ export interface ContextMenuRootProps extends Omit<MenuRootProps, 'open' | 'defa
   pressOpenDelay?: number;
 }
 /**
- * Emits for the context menu root component.
+ * Events for the context menu root component.
  */
 export type ContextMenuRootEmits = MenuRootEmits;
 
 /**
- * Props for the context menu content component.
+ * Properties for the context menu content component.
  */
 export type ContextMenuContentProps = Omit<
   MenuContentProps,
   'side' | 'sideOffset' | 'align' | 'arrowPadding' | 'updatePositionStrategy'
 >;
 /**
- * Emits for the context menu content component.
+ * Events for the context menu content component.
  */
 export type ContextMenuContentEmits = MenuContentEmits;
 
@@ -61,7 +61,7 @@ export interface ContextMenuRootContextParams extends PropsToContext<
   open: ShallowRef<boolean | undefined>;
 }
 /**
- * Props for the context menu trigger component.
+ * Properties for the context menu trigger component.
  */
 export interface ContextMenuTriggerProps extends MenuTriggerProps {
   /**
@@ -71,7 +71,7 @@ export interface ContextMenuTriggerProps extends MenuTriggerProps {
 }
 
 /**
- * Props for the context menu wrapper compact component.
+ * Properties for the context menu wrapper compact component.
  */
 export interface ContextMenuWrapperCompactProps extends ContextMenuRootProps {
   /**
@@ -83,40 +83,40 @@ export interface ContextMenuWrapperCompactProps extends ContextMenuRootProps {
    */
   showArrow?: boolean;
   /**
-   * Props forwarded to the trigger element.
+   * Properties forwarded to the trigger element.
    */
   triggerProps?: ContextMenuTriggerProps;
   /**
-   * Props forwarded to the portal element.
+   * Properties forwarded to the portal element.
    */
   portalProps?: MenuPortalProps;
   /**
-   * Props forwarded to the content element.
+   * Properties forwarded to the content element.
    */
   contentProps?: ContextMenuContentProps;
   /**
-   * Props forwarded to the popup element.
+   * Properties forwarded to the popup element.
    */
   popupProps?: MenuPopupProps;
   /**
-   * Props forwarded to the arrow element.
+   * Properties forwarded to the arrow element.
    */
   arrowProps?: MenuArrowProps;
 }
 
 /**
- * Emits for the context menu wrapper compact component.
+ * Events for the context menu wrapper compact component.
  */
 export type ContextMenuWrapperCompactEmits = MenuRootEmits & MenuContentEmits;
 
 /**
- * Props for the context menu compact component.
+ * Properties for the context menu compact component.
  */
 export interface ContextMenuCompactProps<T extends DefinedValue = DefinedValue>
   extends ContextMenuWrapperCompactProps, MenuOptionsCompactProps<T> {}
 
 /**
- * Emits for the context menu compact component.
+ * Events for the context menu compact component.
  */
 export type ContextMenuCompactEmits<T extends DefinedValue = DefinedValue> = ContextMenuWrapperCompactEmits &
   MenuOptionsCompactEmits<T>;
@@ -133,13 +133,13 @@ export type ContextMenuCompactSlots<T extends DefinedValue = DefinedValue> = Men
 
 // Menu Checkbox
 /**
- * Props for the context menu checkbox compact component.
+ * Properties for the context menu checkbox compact component.
  */
 export interface ContextMenuCheckboxCompactProps<T extends DefinedValue = DefinedValue>
   extends ContextMenuWrapperCompactProps, MenuCheckboxOptionsCompactProps<T> {}
 
 /**
- * Emits for the context menu checkbox compact component.
+ * Events for the context menu checkbox compact component.
  */
 export type ContextMenuCheckboxCompactEmits<T extends DefinedValue = DefinedValue> = ContextMenuWrapperCompactEmits &
   MenuCheckboxOptionsCompactEmits<T>;
@@ -157,13 +157,13 @@ export type ContextMenuCheckboxCompactSlots<T extends DefinedValue = DefinedValu
 
 // Menu Radio
 /**
- * Props for the context menu radio compact component.
+ * Properties for the context menu radio compact component.
  */
 export interface ContextMenuRadioCompactProps<T extends AcceptableBooleanValue = AcceptableBooleanValue>
   extends ContextMenuWrapperCompactProps, MenuRadioOptionsCompactProps<T> {}
 
 /**
- * Emits for the context menu radio compact component.
+ * Events for the context menu radio compact component.
  */
 export type ContextMenuRadioCompactEmits<T extends AcceptableBooleanValue = AcceptableBooleanValue> =
   ContextMenuWrapperCompactEmits & MenuRadioOptionsCompactEmits<T>;

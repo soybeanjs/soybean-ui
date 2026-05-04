@@ -8,7 +8,7 @@ import type {
 import type { ThemeSize } from '@/theme';
 
 /**
- * Slot props for the time range field component.
+ * Slot properties for the time range field component.
  */
 export interface TimeRangeFieldSlotProps {
   /**
@@ -30,7 +30,7 @@ export interface TimeRangeFieldSlotProps {
 }
 
 /**
- * Props for the time range field component.
+ * Properties for the time range field component.
  */
 export interface TimeRangeFieldProps extends /** @vue-ignore */ TimeRangeFieldRootProps {
   /**
@@ -46,7 +46,7 @@ export interface TimeRangeFieldProps extends /** @vue-ignore */ TimeRangeFieldRo
    */
   ui?: Partial<TimeRangeFieldUi>;
   /**
-   * Props forwarded to the input element.
+   * Properties forwarded to the input element.
    */
   inputProps?: Omit<TimeRangeFieldInputProps, 'part' | 'type'>;
   /**
@@ -56,7 +56,7 @@ export interface TimeRangeFieldProps extends /** @vue-ignore */ TimeRangeFieldRo
 }
 
 /**
- * Emits for the time range field component.
+ * Events for the time range field component.
  */
 export type TimeRangeFieldEmits = TimeRangeFieldRootEmits;
 

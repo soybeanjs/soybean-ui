@@ -13,7 +13,7 @@ export type AnchorExtraUiSlot = Exclude<AnchorUiSlot, 'root' | 'link'>;
 export type AnchorExtendedUi = UiClass<AnchorUiSlot>;
 
 /**
- * Props for the anchor component.
+ * Properties for the anchor component.
  */
 export interface AnchorProps extends AnchorCompactProps {
   /**
@@ -39,6 +39,6 @@ export interface AnchorProps extends AnchorCompactProps {
 }
 
 /**
- * Emits for the anchor component.
+ * Events for the anchor component.
  */
 export type AnchorEmits = AnchorCompactEmits;

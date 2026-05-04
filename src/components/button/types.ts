@@ -6,7 +6,7 @@ import type { LinkProps } from '../link/types';
 import type { ButtonShadow, ButtonShape, ButtonVariant } from './variants';
 
 /**
- * Props for the button component.
+ * Properties for the button component.
  */
 export interface ButtonProps extends _ButtonProps {
   /**
@@ -40,7 +40,7 @@ export interface ButtonProps extends _ButtonProps {
 }
 
 /**
- * Props for the button icon component.
+ * Properties for the button icon component.
  */
 export interface ButtonIconProps extends ButtonProps {
   /** The icon name of iconify. */
@@ -54,7 +54,7 @@ export interface ButtonIconProps extends ButtonProps {
 }
 
 /**
- * Props for the button loading component.
+ * Properties for the button loading component.
  */
 export interface ButtonLoadingProps extends ButtonProps {
   /**
@@ -99,12 +99,12 @@ export interface ButtonLoadingProps extends ButtonProps {
 }
 
 /**
- * Props for the button link component.
+ * Properties for the button link component.
  */
 export type ButtonLinkProps = ButtonProps & LinkProps;
 
 /**
- * Props for the button group component.
+ * Properties for the button group component.
  */
 export interface ButtonGroupProps extends ButtonProps {
   /**

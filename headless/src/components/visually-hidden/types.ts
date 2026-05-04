@@ -7,7 +7,7 @@ import type { PrimitiveProps } from '../primitive/types';
 export type VisuallyHiddenFeature = 'focusable' | 'fully-hidden';
 
 /**
- * Props for the visually hidden component.
+ * Properties for the visually hidden component.
  */
 export interface VisuallyHiddenProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {
   /**
@@ -17,7 +17,7 @@ export interface VisuallyHiddenProps extends PrimitiveProps, /** @vue-ignore */ 
 }
 
 /**
- * Props for the visually hidden input component.
+ * Properties for the visually hidden input component.
  */
 export interface VisuallyHiddenInputProps {
   /**

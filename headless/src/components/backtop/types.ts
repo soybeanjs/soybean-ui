@@ -12,7 +12,7 @@ export type BacktopTarget = AffixTarget;
 export type BacktopState = 'visible' | 'hidden';
 
 /**
- * Props for the backtop component.
+ * Properties for the backtop component.
  */
 export interface BacktopProps extends /** @vue-ignore */ Omit<ButtonProps, 'onChange'> {
   /**
@@ -36,7 +36,7 @@ export interface BacktopProps extends /** @vue-ignore */ Omit<ButtonProps, 'onCh
 }
 
 /**
- * Emits for the backtop component.
+ * Events for the backtop component.
  */
 export type BacktopEmits = {
   /**

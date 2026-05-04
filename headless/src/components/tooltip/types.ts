@@ -3,7 +3,7 @@ import type { DismissableLayerEmits, ForceMountProps, PropsToContext } from '../
 import type { PopperPopupProps, PopperPositionerProps } from '../popper/types';
 
 /**
- * Props for the tooltip provider component.
+ * Properties for the tooltip provider component.
  */
 export interface TooltipProviderProps {
   /**
@@ -61,7 +61,7 @@ export interface TooltipProviderProps {
 export type TooltipOpenDelayedContextParams = PropsToContext<TooltipProviderProps, 'skipDelayDuration'>;
 
 /**
- * Props for the tooltip root component.
+ * Properties for the tooltip root component.
  */
 export interface TooltipRootProps extends TooltipProviderProps {
   /** The open state of the tooltip when it is initially rendered. Use when you do not need to control its open state. */
@@ -70,7 +70,7 @@ export interface TooltipRootProps extends TooltipProviderProps {
   open?: boolean;
 }
 /**
- * Emits for the tooltip root component.
+ * Events for the tooltip root component.
  */
 export interface TooltipRootEmits {
   /** Event handler called when the open state of the tooltip changes. */
@@ -83,25 +83,25 @@ export interface TooltipRootEmits {
 export type TooltipDataState = 'closed' | 'delayed-open' | 'instant-open';
 
 /**
- * Props for the tooltip positioner impl component.
+ * Properties for the tooltip positioner impl component.
  */
 export interface TooltipPositionerImplProps extends PopperPositionerProps {}
 /**
- * Emits for the tooltip positioner impl component.
+ * Events for the tooltip positioner impl component.
  */
 export type TooltipPositionerImplEmits = Pick<DismissableLayerEmits, 'escapeKeyDown' | 'pointerDownOutside'>;
 
 /**
- * Props for the tooltip positioner component.
+ * Properties for the tooltip positioner component.
  */
 export interface TooltipPositionerProps extends TooltipPositionerImplProps, ForceMountProps {}
 /**
- * Emits for the tooltip positioner component.
+ * Events for the tooltip positioner component.
  */
 export type TooltipPositionerEmits = TooltipPositionerImplEmits;
 
 /**
- * Props for the tooltip popup component.
+ * Properties for the tooltip popup component.
  */
 export interface TooltipPopupProps extends PopperPopupProps {
   /**

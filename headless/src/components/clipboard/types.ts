@@ -7,7 +7,7 @@ import type { IconValue } from '../_icon/types';
 export type ClipboardState = 'ready' | 'copied' | 'unsupported';
 
 /**
- * Props for the clipboard component.
+ * Properties for the clipboard component.
  */
 export interface ClipboardProps extends _ButtonProps {
   /**
@@ -53,7 +53,7 @@ export interface ClipboardProps extends _ButtonProps {
 }
 
 /**
- * Slot props for the clipboard component.
+ * Slot properties for the clipboard component.
  */
 export interface ClipboardSlotProps {
   /**
@@ -87,7 +87,7 @@ export interface ClipboardSlotProps {
 }
 
 /**
- * Emits for the clipboard component.
+ * Events for the clipboard component.
  */
 export type ClipboardEmits = {
   /**

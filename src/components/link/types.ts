@@ -2,7 +2,7 @@ import type { LinkProps as _LinkProps } from '@soybeanjs/headless/link';
 import type { ClassValue } from '@soybeanjs/headless/types';
 
 /**
- * Props for the link component.
+ * Properties for the link component.
  */
 export interface LinkProps extends _LinkProps {
   /**

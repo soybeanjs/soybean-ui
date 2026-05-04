@@ -10,7 +10,7 @@ import type {
 import type { ThemeSize } from '@/theme';
 
 /**
- * Props for the month picker component.
+ * Properties for the month picker component.
  */
 export interface MonthPickerProps extends /** @vue-ignore */ MonthPickerRootProps {
   /**
@@ -26,17 +26,17 @@ export interface MonthPickerProps extends /** @vue-ignore */ MonthPickerRootProp
    */
   ui?: Partial<MonthPickerUi>;
   /**
-   * Props forwarded to the trigger element.
+   * Properties forwarded to the trigger element.
    */
   triggerProps?: MonthPickerTriggerProps;
   /**
-   * Props forwarded to the popup element.
+   * Properties forwarded to the popup element.
    */
   popupProps?: MonthPickerPopupProps;
 }
 
 /**
- * Emits for the month picker component.
+ * Events for the month picker component.
  */
 export type MonthPickerEmits = MonthPickerRootEmits;
 

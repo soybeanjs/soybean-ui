@@ -14,7 +14,7 @@ import type { Direction, FormFieldCommonProps, PropsToContext, UiClass } from '.
 import type { PrimitiveProps } from '../primitive/types';
 
 /**
- * Props for the date field root component.
+ * Properties for the date field root component.
  */
 export interface DateFieldRootProps
   extends PrimitiveProps, FormFieldCommonProps, /** @vue-ignore */ Omit<HTMLAttributes, 'placeholder'> {
@@ -85,7 +85,7 @@ export interface DateFieldRootProps
 }
 
 /**
- * Emits for the date field root component.
+ * Events for the date field root component.
  */
 export type DateFieldRootEmits = {
   /**
@@ -99,7 +99,7 @@ export type DateFieldRootEmits = {
 };
 
 /**
- * Props for the date field input component.
+ * Properties for the date field input component.
  */
 export interface DateFieldInputProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {
   /**
@@ -123,17 +123,17 @@ export interface DateFieldSegment {
 }
 
 /**
- * Props for the date field compact component.
+ * Properties for the date field compact component.
  */
 export interface DateFieldCompactProps extends DateFieldRootProps {
   /**
-   * Props forwarded to the input element.
+   * Properties forwarded to the input element.
    */
   inputProps?: Omit<DateFieldInputProps, 'part'>;
 }
 
 /**
- * Emits for the date field compact component.
+ * Events for the date field compact component.
  */
 export type DateFieldCompactEmits = DateFieldRootEmits;
 

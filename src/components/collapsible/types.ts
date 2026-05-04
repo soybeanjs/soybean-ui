@@ -2,7 +2,7 @@ import type { CollapsibleRootEmits, CollapsibleRootProps, CollapsibleUi } from '
 import type { ThemeSize } from '@/theme';
 
 /**
- * Props for the collapsible component.
+ * Properties for the collapsible component.
  */
 export interface CollapsibleProps extends CollapsibleRootProps {
   /**
@@ -16,6 +16,6 @@ export interface CollapsibleProps extends CollapsibleRootProps {
 }
 
 /**
- * Emits for the collapsible component.
+ * Events for the collapsible component.
  */
 export type CollapsibleEmits = CollapsibleRootEmits;

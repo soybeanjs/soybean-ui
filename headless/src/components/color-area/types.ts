@@ -16,7 +16,7 @@ import type { PrimitiveProps } from '../primitive/types';
 export type ColorAreaAxisChannel = Extract<ColorChannel, 'hue' | 'saturation' | 'lightness' | 'brightness' | 'chroma'>;
 
 /**
- * Props for the color area root component.
+ * Properties for the color area root component.
  */
 export interface ColorAreaRootProps extends PrimitiveProps, FormFieldCommonProps, /** @vue-ignore */ HTMLAttributes {
   /**
@@ -58,7 +58,7 @@ export interface ColorAreaRootProps extends PrimitiveProps, FormFieldCommonProps
 }
 
 /**
- * Emits for the color area root component.
+ * Events for the color area root component.
  */
 export type ColorAreaRootEmits = {
   /**
@@ -80,12 +80,12 @@ export type ColorAreaRootEmits = {
 };
 
 /**
- * Props for the color area area component.
+ * Properties for the color area area component.
  */
 export interface ColorAreaAreaProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Props for the color area thumb component.
+ * Properties for the color area thumb component.
  */
 export interface ColorAreaThumbProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {}
 

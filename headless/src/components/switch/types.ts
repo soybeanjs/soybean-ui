@@ -21,7 +21,7 @@ export interface SwitchValueConfig<T extends AcceptableBooleanValue = boolean> {
 }
 
 /**
- * Props for the switch root component.
+ * Properties for the switch root component.
  */
 export interface SwitchRootProps<T extends AcceptableBooleanValue>
   extends FormFieldCommonProps, SwitchValueConfig<T>, /** @vue-ignore */ HtmlHTMLAttributes {
@@ -36,7 +36,7 @@ export interface SwitchRootProps<T extends AcceptableBooleanValue>
 }
 
 /**
- * Emits for the switch root component.
+ * Events for the switch root component.
  */
 export type SwitchRootEmits<T extends AcceptableBooleanValue = boolean> = {
   /** Event handler called when the value of the switch changes. */
@@ -44,7 +44,7 @@ export type SwitchRootEmits<T extends AcceptableBooleanValue = boolean> = {
 };
 
 /**
- * Props for the switch control component.
+ * Properties for the switch control component.
  */
 export interface SwitchControlProps extends /** @vue-ignore */ ButtonHTMLAttributes {
   /** Id of the element */
@@ -52,7 +52,7 @@ export interface SwitchControlProps extends /** @vue-ignore */ ButtonHTMLAttribu
 }
 
 /**
- * Props for the switch thumb component.
+ * Properties for the switch thumb component.
  */
 export interface SwitchThumbProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {}
 

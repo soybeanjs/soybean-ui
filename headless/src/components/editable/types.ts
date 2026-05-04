@@ -37,7 +37,7 @@ export interface EditablePlaceholder {
 }
 
 /**
- * Props for the editable root component.
+ * Properties for the editable root component.
  */
 export interface EditableRootProps
   extends PrimitiveProps, FormFieldCommonProps, /** @vue-ignore */ Omit<HTMLAttributes, 'onSubmit' | 'placeholder'> {
@@ -70,7 +70,7 @@ export interface EditableRootProps
 }
 
 /**
- * Emits for the editable root component.
+ * Events for the editable root component.
  */
 export type EditableRootEmits = {
   /** Event handler called whenever the model value changes. */
@@ -82,17 +82,17 @@ export type EditableRootEmits = {
 };
 
 /**
- * Props for the editable area component.
+ * Properties for the editable area component.
  */
 export interface EditableAreaProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Props for the editable preview component.
+ * Properties for the editable preview component.
  */
 export interface EditablePreviewProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Props for the editable input component.
+ * Properties for the editable input component.
  */
 export interface EditableInputProps extends PrimitiveProps, /** @vue-ignore */ Omit<InputHTMLAttributes, 'id'> {
   /**
@@ -102,17 +102,17 @@ export interface EditableInputProps extends PrimitiveProps, /** @vue-ignore */ O
 }
 
 /**
- * Props for the editable edit trigger component.
+ * Properties for the editable edit trigger component.
  */
 export interface EditableEditTriggerProps extends PrimitiveProps, /** @vue-ignore */ ButtonHTMLAttributes {}
 
 /**
- * Props for the editable submit trigger component.
+ * Properties for the editable submit trigger component.
  */
 export interface EditableSubmitTriggerProps extends PrimitiveProps, /** @vue-ignore */ ButtonHTMLAttributes {}
 
 /**
- * Props for the editable cancel trigger component.
+ * Properties for the editable cancel trigger component.
  */
 export interface EditableCancelTriggerProps extends PrimitiveProps, /** @vue-ignore */ ButtonHTMLAttributes {}
 
@@ -217,42 +217,42 @@ export type EditableUiSlot =
 export type EditableUi = UiClass<EditableUiSlot>;
 
 /**
- * Props for the editable compact component.
+ * Properties for the editable compact component.
  */
 export interface EditableCompactProps extends EditableRootProps {
   /**
-   * Props forwarded to the area element.
+   * Properties forwarded to the area element.
    */
   areaProps?: EditableAreaProps;
   /**
-   * Props forwarded to the preview element.
+   * Properties forwarded to the preview element.
    */
   previewProps?: EditablePreviewProps;
   /**
-   * Props forwarded to the input element.
+   * Properties forwarded to the input element.
    */
   inputProps?: EditableInputProps;
   /**
-   * Props forwarded to the edit trigger element.
+   * Properties forwarded to the edit trigger element.
    */
   editTriggerProps?: EditableEditTriggerProps;
   /**
-   * Props forwarded to the submit trigger element.
+   * Properties forwarded to the submit trigger element.
    */
   submitTriggerProps?: EditableSubmitTriggerProps;
   /**
-   * Props forwarded to the cancel trigger element.
+   * Properties forwarded to the cancel trigger element.
    */
   cancelTriggerProps?: EditableCancelTriggerProps;
 }
 
 /**
- * Emits for the editable compact component.
+ * Events for the editable compact component.
  */
 export type EditableCompactEmits = EditableRootEmits;
 
 /**
- * Slot props for the editable compact component.
+ * Slot properties for the editable compact component.
  */
 export interface EditableCompactSlotProps {
   /**

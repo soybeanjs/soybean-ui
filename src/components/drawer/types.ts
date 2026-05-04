@@ -2,7 +2,7 @@ import type { Side } from '@soybeanjs/headless/types';
 import type { DialogEmits, DialogProps, DialogSlots } from '../dialog/types';
 
 /**
- * Props for the drawer component.
+ * Properties for the drawer component.
  */
 export interface DrawerProps extends DialogProps {
   /**
@@ -12,7 +12,7 @@ export interface DrawerProps extends DialogProps {
 }
 
 /**
- * Emits for the drawer component.
+ * Events for the drawer component.
  */
 export type DrawerEmits = DialogEmits;
 

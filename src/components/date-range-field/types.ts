@@ -8,7 +8,7 @@ import type {
 import type { ThemeSize } from '@/theme';
 
 /**
- * Slot props for the date range field component.
+ * Slot properties for the date range field component.
  */
 export interface DateRangeFieldSlotProps {
   /**
@@ -30,7 +30,7 @@ export interface DateRangeFieldSlotProps {
 }
 
 /**
- * Props for the date range field component.
+ * Properties for the date range field component.
  */
 export interface DateRangeFieldProps extends /** @vue-ignore */ DateRangeFieldRootProps {
   /**
@@ -46,7 +46,7 @@ export interface DateRangeFieldProps extends /** @vue-ignore */ DateRangeFieldRo
    */
   ui?: Partial<DateRangeFieldUi>;
   /**
-   * Props forwarded to the input element.
+   * Properties forwarded to the input element.
    */
   inputProps?: Omit<DateRangeFieldInputProps, 'part' | 'type'>;
   /**
@@ -56,7 +56,7 @@ export interface DateRangeFieldProps extends /** @vue-ignore */ DateRangeFieldRo
 }
 
 /**
- * Emits for the date range field component.
+ * Events for the date range field component.
  */
 export type DateRangeFieldEmits = DateRangeFieldRootEmits;
 

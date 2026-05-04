@@ -2,7 +2,7 @@ import type { HTMLAttributes, InputHTMLAttributes, ShallowRef } from 'vue';
 import type { FormFieldCommonProps, PropsToContext, UiClass } from '../../types';
 
 /**
- * Props for the input base component.
+ * Properties for the input base component.
  */
 export interface InputBaseProps {
   /** Id of the input element */
@@ -24,7 +24,7 @@ export interface InputBaseProps {
 }
 
 /**
- * Props for the input root component.
+ * Properties for the input root component.
  */
 export interface InputRootProps extends InputBaseProps, FormFieldCommonProps, /** @vue-ignore */ HTMLAttributes {
   /** The default value of the input */
@@ -34,7 +34,7 @@ export interface InputRootProps extends InputBaseProps, FormFieldCommonProps, /*
 }
 
 /**
- * Emits for the input root component.
+ * Events for the input root component.
  */
 export type InputRootEmits = {
   /**
@@ -44,7 +44,7 @@ export type InputRootEmits = {
 };
 
 /**
- * Props for the input control component.
+ * Properties for the input control component.
  */
 export interface InputControlProps extends /** @vue-ignore */ InputHTMLAttributes {}
 

@@ -14,7 +14,7 @@ export type ColorExtraUiSlot = 'checker' | 'fill';
 export type ColorSwatchExtendedUi = UiClass<ColorExtraUiSlot>;
 
 /**
- * Props for the color swatch component.
+ * Properties for the color swatch component.
  */
 export interface ColorSwatchProps extends HeadlessColorSwatchProps {
   /**

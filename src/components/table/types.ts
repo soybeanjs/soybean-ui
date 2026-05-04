@@ -39,7 +39,7 @@ export type TableExtraUiSlot =
 export type TableExtendedUi = UiClass<TableUiSlot | TableExtraUiSlot>;
 
 /**
- * Props for the table component.
+ * Properties for the table component.
  */
 export interface TableProps<
   T extends TableBaseData = TableBaseData,
@@ -77,7 +77,7 @@ export interface TableProps<
 }
 
 /**
- * Emits for the table component.
+ * Events for the table component.
  */
 export type TableEmits<R extends TableUnifiedKey = TableUnifiedKey, M extends boolean = false> = TableCompactEmits<
   R,
@@ -90,7 +90,7 @@ export type TableEmits<R extends TableUnifiedKey = TableUnifiedKey, M extends bo
 export type TableSlots<T extends TableBaseData = TableBaseData> = TableCompactSlots<T>;
 
 /**
- * Props for the table radio component.
+ * Properties for the table radio component.
  */
 export interface TableRadioProps {
   /**
@@ -140,7 +140,7 @@ export interface TableFilterPopoverOption {
 }
 
 /**
- * Props for the table filter popover component.
+ * Properties for the table filter popover component.
  */
 export interface TableFilterPopoverProps<
   T extends TableBaseData = TableBaseData

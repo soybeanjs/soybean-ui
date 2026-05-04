@@ -9,7 +9,7 @@ import type { RovingFocusGroupProps } from '../roving-focus/types';
 export type TabsActivationMode = 'automatic' | 'manual';
 
 /**
- * Props for the tabs root component.
+ * Properties for the tabs root component.
  */
 export interface TabsRootProps<T extends AcceptableValue = AcceptableValue> extends Omit<
   RovingFocusGroupProps,
@@ -37,7 +37,7 @@ export interface TabsRootProps<T extends AcceptableValue = AcceptableValue> exte
 }
 
 /**
- * Emits for the tabs root component.
+ * Events for the tabs root component.
  */
 export type TabsRootEmits<T = AcceptableValue> = {
   /** Event handler called when the value changes */
@@ -45,12 +45,12 @@ export type TabsRootEmits<T = AcceptableValue> = {
 };
 
 /**
- * Props for the tabs list component.
+ * Properties for the tabs list component.
  */
 export interface TabsListProps extends /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Props for the tabs content component.
+ * Properties for the tabs content component.
  */
 export interface TabsContentProps extends ForceMountProps, /** @vue-ignore */ HTMLAttributes {
   /** A unique value that associates the content with a trigger. */
@@ -58,7 +58,7 @@ export interface TabsContentProps extends ForceMountProps, /** @vue-ignore */ HT
 }
 
 /**
- * Props for the tabs trigger component.
+ * Properties for the tabs trigger component.
  */
 export interface TabsTriggerProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {
   /** A unique value that associates the trigger with a content. */
@@ -68,7 +68,7 @@ export interface TabsTriggerProps extends PrimitiveProps, /** @vue-ignore */ HTM
 }
 
 /**
- * Props for the tabs indicator component.
+ * Properties for the tabs indicator component.
  */
 export interface TabsIndicatorProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {}
 
@@ -91,7 +91,7 @@ export interface TabsOptionData<T extends DefinedValue = DefinedValue> {
 }
 
 /**
- * Props for the tabs compact component.
+ * Properties for the tabs compact component.
  */
 export interface TabsCompactProps<T extends TabsOptionData = TabsOptionData> extends TabsRootProps<T['value'] | null> {
   /**
@@ -103,25 +103,25 @@ export interface TabsCompactProps<T extends TabsOptionData = TabsOptionData> ext
    */
   enableIndicator?: boolean;
   /**
-   * Props forwarded to the list element.
+   * Properties forwarded to the list element.
    */
   listProps?: TabsListProps;
   /**
-   * Props forwarded to the trigger element.
+   * Properties forwarded to the trigger element.
    */
   triggerProps?: TabsTriggerProps;
   /**
-   * Props forwarded to the content element.
+   * Properties forwarded to the content element.
    */
   contentProps?: TabsContentProps;
   /**
-   * Props forwarded to the indicator element.
+   * Properties forwarded to the indicator element.
    */
   indicatorProps?: TabsIndicatorProps;
 }
 
 /**
- * Emits for the tabs compact component.
+ * Events for the tabs compact component.
  */
 export type TabsCompactEmits<T extends AcceptableValue = AcceptableValue> = TabsRootEmits<T>;
 

@@ -2,12 +2,12 @@ import type { HTMLAttributes } from 'vue';
 import type { DataOrientation, UiClass } from '../../types';
 
 /**
- * Props for the separator label component.
+ * Properties for the separator label component.
  */
 export interface SeparatorLabelProps extends /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Props for the separator root component.
+ * Properties for the separator root component.
  */
 export interface SeparatorRootProps extends /** @vue-ignore */ HTMLAttributes {
   /**

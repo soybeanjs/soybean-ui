@@ -2,7 +2,7 @@ import type { ButtonHTMLAttributes, HTMLAttributes, ShallowRef } from 'vue';
 import type { PropsToContext, UiClass } from '../../types';
 
 /**
- * Props for the pagination root component.
+ * Properties for the pagination root component.
  */
 export interface PaginationRootProps extends /** @vue-ignore */ HTMLAttributes {
   /** The controlled value of the current page. Can be bound as `v-model:page`. */
@@ -31,7 +31,7 @@ export interface PaginationRootProps extends /** @vue-ignore */ HTMLAttributes {
 }
 
 /**
- * Emits for the pagination root component.
+ * Events for the pagination root component.
  */
 export type PaginationRootEmits = {
   /** Event handler called when the page value changes */
@@ -41,12 +41,12 @@ export type PaginationRootEmits = {
 };
 
 /**
- * Props for the pagination list component.
+ * Properties for the pagination list component.
  */
 export interface PaginationListProps extends /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Props for the pagination list item component.
+ * Properties for the pagination list item component.
  */
 export interface PaginationListItemProps extends /** @vue-ignore */ ButtonHTMLAttributes {
   /** Value for the page */
@@ -54,12 +54,12 @@ export interface PaginationListItemProps extends /** @vue-ignore */ ButtonHTMLAt
 }
 
 /**
- * Props for the pagination ellipsis component.
+ * Properties for the pagination ellipsis component.
  */
 export interface PaginationEllipsisProps extends /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Props for the pagination button component.
+ * Properties for the pagination button component.
  */
 export interface PaginationButtonProps extends /** @vue-ignore */ ButtonHTMLAttributes {}
 
@@ -120,7 +120,7 @@ export interface PageItem {
 export type Pages = Array<PageEllipsis | PageItem>;
 
 /**
- * Props for the pagination compact component.
+ * Properties for the pagination compact component.
  */
 export interface PaginationCompactProps extends PaginationRootProps {
   /**
@@ -128,37 +128,37 @@ export interface PaginationCompactProps extends PaginationRootProps {
    */
   showFirstOrLast?: boolean;
   /**
-   * Props forwarded to the list element.
+   * Properties forwarded to the list element.
    */
   listProps?: PaginationListProps;
   /**
-   * Props forwarded to the list item element.
+   * Properties forwarded to the list item element.
    */
   listItemProps?: PaginationListItemProps;
   /**
-   * Props forwarded to the ellipsis element.
+   * Properties forwarded to the ellipsis element.
    */
   ellipsisProps?: PaginationEllipsisProps;
   /**
-   * Props forwarded to the first element.
+   * Properties forwarded to the first element.
    */
   firstProps?: PaginationButtonProps;
   /**
-   * Props forwarded to the prev element.
+   * Properties forwarded to the prev element.
    */
   prevProps?: PaginationButtonProps;
   /**
-   * Props forwarded to the next element.
+   * Properties forwarded to the next element.
    */
   nextProps?: PaginationButtonProps;
   /**
-   * Props forwarded to the last element.
+   * Properties forwarded to the last element.
    */
   lastProps?: PaginationButtonProps;
 }
 
 /**
- * Emits for the pagination compact component.
+ * Events for the pagination compact component.
  */
 export type PaginationCompactEmits = PaginationRootEmits;
 

@@ -1,7 +1,7 @@
 import type { HTMLAttributes } from 'vue';
 
 /**
- * Props for the tag component.
+ * Properties for the tag component.
  */
 export interface TagProps extends /** @vue-ignore */ HTMLAttributes {
   /**
@@ -11,7 +11,7 @@ export interface TagProps extends /** @vue-ignore */ HTMLAttributes {
 }
 
 /**
- * Emits for the tag component.
+ * Events for the tag component.
  */
 export type TagEmits = {
   /**

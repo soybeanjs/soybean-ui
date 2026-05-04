@@ -35,7 +35,7 @@ export type ColorPickerUiSlot =
 export type ColorPickerUi = UiClass<ColorPickerUiSlot>;
 
 /**
- * Props for the color picker component.
+ * Properties for the color picker component.
  */
 export interface ColorPickerProps extends Pick<
   PopoverProps,
@@ -104,11 +104,11 @@ export interface ColorPickerProps extends Pick<
    */
   swatches?: string[];
   /**
-   * Props forwarded to the trigger button element.
+   * Properties forwarded to the trigger button element.
    */
   triggerButtonProps?: ButtonProps;
   /**
-   * Props forwarded to the area element.
+   * Properties forwarded to the area element.
    */
   areaProps?: Omit<
     ColorAreaProps,
@@ -123,49 +123,49 @@ export interface ColorPickerProps extends Pick<
     | 'onChangeEnd'
   >;
   /**
-   * Props forwarded to the hue slider element.
+   * Properties forwarded to the hue slider element.
    */
   hueSliderProps?: Omit<
     ColorSliderProps,
     'modelValue' | 'defaultValue' | 'channel' | 'colorSpace' | 'disabled' | 'format' | 'onChange' | 'onChangeEnd'
   >;
   /**
-   * Props forwarded to the alpha slider element.
+   * Properties forwarded to the alpha slider element.
    */
   alphaSliderProps?: Omit<
     ColorSliderProps,
     'modelValue' | 'defaultValue' | 'channel' | 'colorSpace' | 'disabled' | 'format' | 'onChange' | 'onChangeEnd'
   >;
   /**
-   * Props forwarded to the alpha field element.
+   * Properties forwarded to the alpha field element.
    */
   alphaFieldProps?: Omit<
     ColorFieldProps,
     'modelValue' | 'defaultValue' | 'disabled' | 'channel' | 'colorSpace' | 'format'
   >;
   /**
-   * Props forwarded to the hex field element.
+   * Properties forwarded to the hex field element.
    */
   hexFieldProps?: Omit<
     ColorFieldProps,
     'modelValue' | 'defaultValue' | 'disabled' | 'channel' | 'colorSpace' | 'format'
   >;
   /**
-   * Props forwarded to the field element.
+   * Properties forwarded to the field element.
    */
   fieldProps?: Omit<ColorFieldProps, 'modelValue' | 'defaultValue' | 'disabled' | 'channel' | 'colorSpace' | 'format'>;
   /**
-   * Props forwarded to the swatch picker element.
+   * Properties forwarded to the swatch picker element.
    */
   swatchPickerProps?: Omit<ColorSwatchPickerProps, 'modelValue' | 'defaultValue' | 'colors' | 'disabled'>;
   /**
-   * Props forwarded to the swatch element.
+   * Properties forwarded to the swatch element.
    */
   swatchProps?: Omit<UiColorSwatchProps, 'class' | 'color' | 'size'>;
 }
 
 /**
- * Emits for the color picker component.
+ * Events for the color picker component.
  */
 export type ColorPickerEmits = {
   /**

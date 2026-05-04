@@ -15,7 +15,7 @@ import type { PopperPopupProps, PopperPositionerProps, PopperArrowProps, PopperU
 import type { PortalProps } from '../portal/types';
 
 /**
- * Props for the popover root component.
+ * Properties for the popover root component.
  */
 export interface PopoverRootProps extends DialogBaseProps {
   /**
@@ -25,12 +25,12 @@ export interface PopoverRootProps extends DialogBaseProps {
 }
 
 /**
- * Emits for the popover root component.
+ * Events for the popover root component.
  */
 export type PopoverRootEmits = DialogRootEmits;
 
 /**
- * Props for the popover close component.
+ * Properties for the popover close component.
  */
 export interface PopoverCloseProps extends PrimitiveProps, /** @vue-ignore */ ButtonHTMLAttributes {
   /**
@@ -39,7 +39,7 @@ export interface PopoverCloseProps extends PrimitiveProps, /** @vue-ignore */ Bu
   beforeClose?: () => MaybePromise<boolean | void>;
 }
 /**
- * Emits for the popover close component.
+ * Events for the popover close component.
  */
 export type PopoverCloseEmits = {
   /**
@@ -49,30 +49,30 @@ export type PopoverCloseEmits = {
 };
 
 /**
- * Props for the popover positioner impl component.
+ * Properties for the popover positioner impl component.
  */
 export interface PopoverPositionerImplProps extends PopperPositionerProps, TrapFocusProps, DismissableLayerProps {}
 /**
- * Emits for the popover positioner impl component.
+ * Events for the popover positioner impl component.
  */
 export type PopoverPositionerImplEmits = DismissableLayerEmits & FocusScopeEmits;
 
 /**
- * Props for the popover positioner component.
+ * Properties for the popover positioner component.
  */
 export interface PopoverPositionerProps extends PopperPositionerProps, ForceMountProps {}
 /**
- * Emits for the popover positioner component.
+ * Events for the popover positioner component.
  */
 export type PopoverPositionerEmits = PopoverPositionerImplEmits;
 
 /**
- * Props for the popover popup component.
+ * Properties for the popover popup component.
  */
 export interface PopoverPopupProps extends PopperPopupProps {}
 
 /**
- * Props for the popover trigger component.
+ * Properties for the popover trigger component.
  */
 export interface PopoverTriggerProps extends PrimitiveProps, /** @vue-ignore */ ButtonHTMLAttributes {}
 
@@ -89,7 +89,7 @@ export interface PopoverRootContextParams extends PropsToContext<PopoverRootProp
 export type { PopperAnchorProps as PopoverAnchorProps } from '../popper/types';
 
 /**
- * Props for the popover compact component.
+ * Properties for the popover compact component.
  */
 export interface PopoverCompactProps extends PopoverRootProps {
   /**
@@ -101,33 +101,33 @@ export interface PopoverCompactProps extends PopoverRootProps {
    */
   showArrow?: boolean;
   /**
-   * Props forwarded to the trigger element.
+   * Properties forwarded to the trigger element.
    */
   triggerProps?: PopoverTriggerProps;
   /**
-   * Props forwarded to the portal element.
+   * Properties forwarded to the portal element.
    */
   portalProps?: PortalProps;
   /**
-   * Props forwarded to the positioner element.
+   * Properties forwarded to the positioner element.
    */
   positionerProps?: PopoverPositionerProps;
   /**
-   * Props forwarded to the popup element.
+   * Properties forwarded to the popup element.
    */
   popupProps?: PopoverPopupProps;
   /**
-   * Props forwarded to the arrow element.
+   * Properties forwarded to the arrow element.
    */
   arrowProps?: PopperArrowProps;
   /**
-   * Props forwarded to the close element.
+   * Properties forwarded to the close element.
    */
   closeProps?: PopoverCloseProps;
 }
 
 /**
- * Emits for the popover compact component.
+ * Events for the popover compact component.
  */
 export type PopoverCompactEmits = PopoverRootEmits & PopoverPositionerEmits;
 

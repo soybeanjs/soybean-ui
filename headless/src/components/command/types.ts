@@ -59,17 +59,17 @@ export type CommandOptionData<T extends CommandSingleOptionData = CommandSingleO
   | CommandGroupOptionData<T>;
 
 /**
- * Props for the command item label component.
+ * Properties for the command item label component.
  */
 export interface CommandItemLabelProps extends /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Props for the command shortcut component.
+ * Properties for the command shortcut component.
  */
 export interface CommandShortcutProps extends Omit<KbdProps, 'value'> {}
 
 /**
- * Props for the command separator component.
+ * Properties for the command separator component.
  */
 export interface CommandSeparatorProps extends SeparatorRootProps {}
 
@@ -92,7 +92,7 @@ export type CommandSearchOptionData<T extends CommandSingleOptionData = CommandS
 };
 
 /**
- * Props for the command empty component.
+ * Properties for the command empty component.
  */
 export interface CommandEmptyProps extends /** @vue-ignore */ HTMLAttributes {}
 
@@ -116,7 +116,7 @@ export type CommandUiSlot =
 export type CommandUi = UiClass<CommandUiSlot>;
 
 /**
- * Props for the command compact component.
+ * Properties for the command compact component.
  */
 export interface CommandCompactProps<T extends CommandSingleOptionData = CommandSingleOptionData> extends Omit<
   CommandRootProps,
@@ -143,39 +143,39 @@ export interface CommandCompactProps<T extends CommandSingleOptionData = Command
    */
   fuseOptions?: UseFuseOptions<CommandSearchOptionData<T>>;
   /**
-   * Props forwarded to the list element.
+   * Properties forwarded to the list element.
    */
   listProps?: CommandListProps;
   /**
-   * Props forwarded to the item element.
+   * Properties forwarded to the item element.
    */
   itemProps?: CommandItemProps;
   /**
-   * Props forwarded to the item label element.
+   * Properties forwarded to the item label element.
    */
   itemLabelProps?: CommandItemLabelProps;
   /**
-   * Props forwarded to the group element.
+   * Properties forwarded to the group element.
    */
   groupProps?: CommandGroupProps;
   /**
-   * Props forwarded to the group label element.
+   * Properties forwarded to the group label element.
    */
   groupLabelProps?: CommandGroupLabelProps;
   /**
-   * Props forwarded to the shortcut element.
+   * Properties forwarded to the shortcut element.
    */
   shortcutProps?: CommandShortcutProps;
   /**
-   * Props forwarded to the separator element.
+   * Properties forwarded to the separator element.
    */
   separatorProps?: CommandSeparatorProps;
   /**
-   * Props forwarded to the input element.
+   * Properties forwarded to the input element.
    */
   inputProps?: CommandInputProps;
   /**
-   * Props forwarded to the empty element.
+   * Properties forwarded to the empty element.
    */
   emptyProps?: CommandEmptyProps;
   /**
@@ -185,7 +185,7 @@ export interface CommandCompactProps<T extends CommandSingleOptionData = Command
 }
 
 /**
- * Emits for the command search term component.
+ * Events for the command search term component.
  */
 export type CommandSearchTermEmits = {
   /**
@@ -195,12 +195,12 @@ export type CommandSearchTermEmits = {
 };
 
 /**
- * Emits for the command compact component.
+ * Events for the command compact component.
  */
 export type CommandCompactEmits = CommandRootEmits & CommandItemEmits & CommandSearchTermEmits;
 
 /**
- * Slot props for the command compact input component.
+ * Slot properties for the command compact input component.
  */
 export interface CommandCompactInputSlotProps {
   /**
@@ -210,7 +210,7 @@ export interface CommandCompactInputSlotProps {
 }
 
 /**
- * Slot props for the command compact item component.
+ * Slot properties for the command compact item component.
  */
 export interface CommandCompactItemSlotProps<T extends CommandSingleOptionData = CommandSingleOptionData> {
   /**

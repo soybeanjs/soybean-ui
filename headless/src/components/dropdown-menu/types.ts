@@ -26,7 +26,7 @@ import type {
 export type DropdownMenuTriggerType = 'click' | 'hover';
 
 /**
- * Props for the dropdown menu root component.
+ * Properties for the dropdown menu root component.
  */
 export interface DropdownMenuRootProps extends MenuRootProps {
   /**
@@ -52,7 +52,7 @@ export interface DropdownMenuRootProps extends MenuRootProps {
   skipDelayDuration?: number;
 }
 /**
- * Emits for the dropdown menu root component.
+ * Events for the dropdown menu root component.
  */
 export type DropdownMenuRootEmits = MenuRootEmits;
 
@@ -85,22 +85,22 @@ export interface DropdownMenuHoverContextParams extends PropsToContext<
 }
 
 /**
- * Props for the dropdown menu content component.
+ * Properties for the dropdown menu content component.
  */
 export interface DropdownMenuContentProps extends MenuContentProps {}
 
 /**
- * Emits for the dropdown menu content component.
+ * Events for the dropdown menu content component.
  */
 export type DropdownMenuContentEmits = MenuContentEmits;
 
 /**
- * Props for the dropdown menu trigger component.
+ * Properties for the dropdown menu trigger component.
  */
 export interface DropdownMenuTriggerProps extends MenuTriggerProps {}
 
 /**
- * Props for the dropdown menu wrapper compact component.
+ * Properties for the dropdown menu wrapper compact component.
  */
 export interface DropdownMenuWrapperCompactProps extends DropdownMenuRootProps {
   /**
@@ -116,40 +116,40 @@ export interface DropdownMenuWrapperCompactProps extends DropdownMenuRootProps {
    */
   showArrow?: boolean;
   /**
-   * Props forwarded to the trigger element.
+   * Properties forwarded to the trigger element.
    */
   triggerProps?: DropdownMenuTriggerProps;
   /**
-   * Props forwarded to the portal element.
+   * Properties forwarded to the portal element.
    */
   portalProps?: MenuPortalProps;
   /**
-   * Props forwarded to the content element.
+   * Properties forwarded to the content element.
    */
   contentProps?: DropdownMenuContentProps;
   /**
-   * Props forwarded to the popup element.
+   * Properties forwarded to the popup element.
    */
   popupProps?: MenuPopupProps;
   /**
-   * Props forwarded to the arrow element.
+   * Properties forwarded to the arrow element.
    */
   arrowProps?: MenuArrowProps;
 }
 
 /**
- * Emits for the dropdown menu wrapper compact component.
+ * Events for the dropdown menu wrapper compact component.
  */
 export type DropdownMenuWrapperCompactEmits = MenuRootEmits & MenuContentEmits;
 
 /**
- * Props for the dropdown menu compact component.
+ * Properties for the dropdown menu compact component.
  */
 export interface DropdownMenuCompactProps<T extends DefinedValue = DefinedValue>
   extends DropdownMenuWrapperCompactProps, MenuOptionsCompactProps<T> {}
 
 /**
- * Emits for the dropdown menu compact component.
+ * Events for the dropdown menu compact component.
  */
 export type DropdownMenuCompactEmits<T extends DefinedValue = DefinedValue> = DropdownMenuWrapperCompactEmits &
   MenuOptionsCompactEmits<T>;
@@ -166,13 +166,13 @@ export type DropdownMenuCompactSlots<T extends DefinedValue = DefinedValue> = Me
 
 // Menu Checkbox
 /**
- * Props for the dropdown menu checkbox compact component.
+ * Properties for the dropdown menu checkbox compact component.
  */
 export interface DropdownMenuCheckboxCompactProps<T extends DefinedValue = DefinedValue>
   extends DropdownMenuWrapperCompactProps, MenuCheckboxOptionsCompactProps<T> {}
 
 /**
- * Emits for the dropdown menu checkbox compact component.
+ * Events for the dropdown menu checkbox compact component.
  */
 export type DropdownMenuCheckboxCompactEmits<T extends DefinedValue = DefinedValue> = DropdownMenuWrapperCompactEmits &
   MenuCheckboxOptionsCompactEmits<T>;
@@ -190,13 +190,13 @@ export type DropdownMenuCheckboxCompactSlots<T extends DefinedValue = DefinedVal
 
 // Menu Radio
 /**
- * Props for the dropdown menu radio compact component.
+ * Properties for the dropdown menu radio compact component.
  */
 export interface DropdownMenuRadioCompactProps<T extends AcceptableBooleanValue = AcceptableBooleanValue>
   extends DropdownMenuWrapperCompactProps, MenuRadioOptionsCompactProps<T> {}
 
 /**
- * Emits for the dropdown menu radio compact component.
+ * Events for the dropdown menu radio compact component.
  */
 export type DropdownMenuRadioCompactEmits<T extends AcceptableBooleanValue = AcceptableBooleanValue> =
   DropdownMenuWrapperCompactEmits & MenuRadioOptionsCompactEmits<T>;

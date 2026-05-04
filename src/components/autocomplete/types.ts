@@ -9,7 +9,7 @@ import type { ClassValue } from '@soybeanjs/headless/types';
 import type { ThemeSize } from '@/theme';
 
 /**
- * Props for the autocomplete component.
+ * Properties for the autocomplete component.
  */
 export interface AutocompleteProps<
   T extends AutocompleteSingleOptionData = AutocompleteSingleOptionData
@@ -27,7 +27,7 @@ export interface AutocompleteProps<
 }
 
 /**
- * Emits for the autocomplete component.
+ * Events for the autocomplete component.
  */
 export type AutocompleteEmits<T extends AutocompleteSingleOptionData = AutocompleteSingleOptionData> =
   AutocompleteCompactEmits<T>;

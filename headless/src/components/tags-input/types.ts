@@ -9,7 +9,7 @@ import type { PrimitiveProps } from '../primitive/types';
 export type TagsInputAcceptableValue = string | number | bigint | Record<string, unknown>;
 
 /**
- * Props for the tags input root component.
+ * Properties for the tags input root component.
  */
 export interface TagsInputRootProps<T = TagsInputAcceptableValue>
   extends FormFieldCommonProps, /** @vue-ignore */ HTMLAttributes {
@@ -42,7 +42,7 @@ export interface TagsInputRootProps<T = TagsInputAcceptableValue>
 }
 
 /**
- * Emits for the tags input root component.
+ * Events for the tags input root component.
  */
 export type TagsInputRootEmits<T = TagsInputAcceptableValue> = {
   /**
@@ -64,7 +64,7 @@ export type TagsInputRootEmits<T = TagsInputAcceptableValue> = {
 };
 
 /**
- * Props for the tags input input component.
+ * Properties for the tags input input component.
  */
 export interface TagsInputInputProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {
   /**
@@ -98,7 +98,7 @@ export interface TagsInputInputProps extends PrimitiveProps, /** @vue-ignore */ 
 }
 
 /**
- * Props for the tags input item component.
+ * Properties for the tags input item component.
  */
 export interface TagsInputItemProps<T = TagsInputAcceptableValue>
   extends PrimitiveProps, /** @vue-ignore */ Omit<HTMLAttributes, 'value'> {
@@ -109,17 +109,17 @@ export interface TagsInputItemProps<T = TagsInputAcceptableValue>
 }
 
 /**
- * Props for the tags input item text component.
+ * Properties for the tags input item text component.
  */
 export interface TagsInputItemTextProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Props for the tags input item delete component.
+ * Properties for the tags input item delete component.
  */
 export interface TagsInputItemDeleteProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Props for the tags input clear component.
+ * Properties for the tags input clear component.
  */
 export interface TagsInputClearProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {}
 

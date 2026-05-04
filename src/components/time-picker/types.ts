@@ -11,7 +11,7 @@ import type {
 import type { ThemeSize } from '@/theme';
 
 /**
- * Props for the time picker component.
+ * Properties for the time picker component.
  */
 export interface TimePickerProps extends /** @vue-ignore */ TimePickerRootProps {
   /**
@@ -27,17 +27,17 @@ export interface TimePickerProps extends /** @vue-ignore */ TimePickerRootProps 
    */
   ui?: Partial<TimePickerUi>;
   /**
-   * Props forwarded to the trigger element.
+   * Properties forwarded to the trigger element.
    */
   triggerProps?: TimePickerTriggerProps;
   /**
-   * Props forwarded to the popup element.
+   * Properties forwarded to the popup element.
    */
   popupProps?: TimePickerPopupProps;
 }
 
 /**
- * Emits for the time picker component.
+ * Events for the time picker component.
  */
 export type TimePickerEmits = TimePickerRootEmits;
 

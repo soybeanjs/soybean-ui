@@ -12,7 +12,7 @@ export type InputOtpInputMode = 'numeric' | 'text';
 export type InputOtpPushPasswordManagerStrategy = 'increase-width' | 'none';
 
 /**
- * Props for the input otp root component.
+ * Properties for the input otp root component.
  */
 export interface InputOtpRootProps extends FormFieldCommonProps, /** @vue-ignore */ Omit<HTMLAttributes, 'onInput'> {
   /** The id of the native input element. */
@@ -48,7 +48,7 @@ export interface InputOtpRootProps extends FormFieldCommonProps, /** @vue-ignore
 }
 
 /**
- * Emits for the input otp root component.
+ * Events for the input otp root component.
  */
 export type InputOtpRootEmits = {
   /**
@@ -94,22 +94,22 @@ export type InputOtpRootEmits = {
 };
 
 /**
- * Props for the input otp positioner component.
+ * Properties for the input otp positioner component.
  */
 export interface InputOtpPositionerProps extends /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Props for the input otp input component.
+ * Properties for the input otp input component.
  */
 export interface InputOtpInputProps extends /** @vue-ignore */ InputHTMLAttributes {}
 
 /**
- * Props for the input otp compact component.
+ * Properties for the input otp compact component.
  */
 export interface InputOtpCompactProps extends InputOtpRootProps {}
 
 /**
- * Emits for the input otp compact component.
+ * Events for the input otp compact component.
  */
 export type InputOtpCompactEmits = InputOtpRootEmits;
 
@@ -124,7 +124,7 @@ export type InputOtpCompactSlots = {
 };
 
 /**
- * Slot props for the input otp component.
+ * Slot properties for the input otp component.
  */
 export interface InputOtpSlotProps {
   /** The typed character at the current slot. */
@@ -138,7 +138,7 @@ export interface InputOtpSlotProps {
 }
 
 /**
- * Slot props for the input otp root component.
+ * Slot properties for the input otp root component.
  */
 export interface InputOtpRootSlotProps {
   /**

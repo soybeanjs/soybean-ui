@@ -4,7 +4,7 @@ import type { ThemeColor, ThemeSize } from '@/theme';
 import type { BadgePosition } from './variants';
 
 /**
- * Props for the badge component.
+ * Properties for the badge component.
  */
 export interface BadgeProps extends BadgeCompactProps {
   /**
@@ -30,7 +30,7 @@ export interface BadgeProps extends BadgeCompactProps {
 }
 
 /**
- * Emits for the badge component.
+ * Events for the badge component.
  */
 export type BadgeEmits = BadgeRootEmits;
 

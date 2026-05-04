@@ -15,7 +15,7 @@ import type { Direction, FormFieldCommonProps, PropsToContext, UiClass } from '.
 import type { PrimitiveProps } from '../primitive/types';
 
 /**
- * Props for the time range field root component.
+ * Properties for the time range field root component.
  */
 export interface TimeRangeFieldRootProps
   extends PrimitiveProps, FormFieldCommonProps, /** @vue-ignore */ Omit<HTMLAttributes, 'placeholder'> {
@@ -94,7 +94,7 @@ export interface TimeRangeFieldRootProps
 }
 
 /**
- * Emits for the time range field root component.
+ * Events for the time range field root component.
  */
 export type TimeRangeFieldRootEmits = {
   /**
@@ -116,7 +116,7 @@ export type TimeRangeFieldRootEmits = {
 };
 
 /**
- * Props for the time range field input component.
+ * Properties for the time range field input component.
  */
 export interface TimeRangeFieldInputProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {
   /**
@@ -255,11 +255,11 @@ export type TimeRangeFieldUiSlot = 'root' | 'input' | 'separator';
 export type TimeRangeFieldUi = UiClass<TimeRangeFieldUiSlot>;
 
 /**
- * Props for the time range field compact component.
+ * Properties for the time range field compact component.
  */
 export interface TimeRangeFieldCompactProps extends TimeRangeFieldRootProps {
   /**
-   * Props forwarded to the input element.
+   * Properties forwarded to the input element.
    */
   inputProps?: Omit<TimeRangeFieldInputProps, 'part' | 'type'>;
   /**
@@ -269,7 +269,7 @@ export interface TimeRangeFieldCompactProps extends TimeRangeFieldRootProps {
 }
 
 /**
- * Emits for the time range field compact component.
+ * Events for the time range field compact component.
  */
 export type TimeRangeFieldCompactEmits = TimeRangeFieldRootEmits;
 

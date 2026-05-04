@@ -24,7 +24,7 @@ export type EditableExtraUiSlot = 'controls';
 export type EditableExtendedUi = UiClass<EditableUiSlot | EditableExtraUiSlot>;
 
 /**
- * Props for the editable component.
+ * Properties for the editable component.
  */
 export interface EditableProps extends EditableRootProps {
   /**
@@ -40,33 +40,33 @@ export interface EditableProps extends EditableRootProps {
    */
   ui?: Partial<EditableExtendedUi>;
   /**
-   * Props forwarded to the area element.
+   * Properties forwarded to the area element.
    */
   areaProps?: EditableAreaProps;
   /**
-   * Props forwarded to the preview element.
+   * Properties forwarded to the preview element.
    */
   previewProps?: EditablePreviewProps;
   /**
-   * Props forwarded to the input element.
+   * Properties forwarded to the input element.
    */
   inputProps?: EditableInputProps;
   /**
-   * Props forwarded to the edit trigger element.
+   * Properties forwarded to the edit trigger element.
    */
   editTriggerProps?: EditableEditTriggerProps;
   /**
-   * Props forwarded to the submit trigger element.
+   * Properties forwarded to the submit trigger element.
    */
   submitTriggerProps?: EditableSubmitTriggerProps;
   /**
-   * Props forwarded to the cancel trigger element.
+   * Properties forwarded to the cancel trigger element.
    */
   cancelTriggerProps?: EditableCancelTriggerProps;
 }
 
 /**
- * Emits for the editable component.
+ * Events for the editable component.
  */
 export type EditableEmits = EditableRootEmits;
 

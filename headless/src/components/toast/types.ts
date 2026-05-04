@@ -175,7 +175,7 @@ export interface ToastCreateOptions extends Omit<ToastT, 'id' | 'delete' | 'titl
 }
 
 /**
- * Props for the toast component.
+ * Properties for the toast component.
  */
 export interface ToastProps extends /** @vue-ignore */ LiHTMLAttributes {
   /**
@@ -193,7 +193,7 @@ export interface ToastProps extends /** @vue-ignore */ LiHTMLAttributes {
 }
 
 /**
- * Emits for the toast component.
+ * Events for the toast component.
  */
 export interface ToastEmits {
   /**
@@ -207,7 +207,7 @@ export interface ToastEmits {
 }
 
 /**
- * Props for the toaster component.
+ * Properties for the toaster component.
  */
 export interface ToasterProps extends /** @vue-ignore */ OlHTMLAttributes {
   /**
@@ -275,49 +275,49 @@ export interface ToasterProps extends /** @vue-ignore */ OlHTMLAttributes {
    */
   icons?: Partial<Record<ToastIconType, IconValue>>;
   /**
-   * Props forwarded to the toast element.
+   * Properties forwarded to the toast element.
    */
   toastProps?: LiHTMLAttributes;
   /**
-   * Props forwarded to the wrapper element.
+   * Properties forwarded to the wrapper element.
    */
   wrapperProps?: HTMLAttributes;
   /**
-   * Props forwarded to the content element.
+   * Properties forwarded to the content element.
    */
   contentProps?: HTMLAttributes;
   /**
-   * Props forwarded to the title element.
+   * Properties forwarded to the title element.
    */
   titleProps?: HTMLAttributes;
   /**
-   * Props forwarded to the description element.
+   * Properties forwarded to the description element.
    */
   descriptionProps?: HTMLAttributes;
   /**
-   * Props forwarded to the icon component.
+   * Properties forwarded to the icon component.
    */
   iconProps?: HTMLAttributes;
   /**
-   * Props forwarded to the footer element.
+   * Properties forwarded to the footer element.
    */
   footerProps?: HTMLAttributes;
   /**
-   * Props forwarded to the action element.
+   * Properties forwarded to the action element.
    */
   actionProps?: HTMLAttributes;
   /**
-   * Props forwarded to the cancel element.
+   * Properties forwarded to the cancel element.
    */
   cancelProps?: HTMLAttributes;
   /**
-   * Props forwarded to the close element.
+   * Properties forwarded to the close element.
    */
   closeProps?: HTMLAttributes;
 }
 
 /**
- * Props for the toast provider component.
+ * Properties for the toast provider component.
  */
 export interface ToastProviderProps extends ToasterProps {}
 

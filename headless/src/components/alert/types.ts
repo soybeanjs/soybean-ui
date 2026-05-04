@@ -4,7 +4,7 @@ import type { IconValue } from '../_icon/types';
 import type { PrimitiveProps } from '../primitive/types';
 
 /**
- * Props for the alert root component.
+ * Properties for the alert root component.
  */
 export interface AlertRootProps extends /** @vue-ignore */ HTMLAttributes {
   /**
@@ -16,7 +16,7 @@ export interface AlertRootProps extends /** @vue-ignore */ HTMLAttributes {
 }
 
 /**
- * Emits for the alert root component.
+ * Events for the alert root component.
  */
 export type AlertRootEmits = {
   /**
@@ -26,27 +26,27 @@ export type AlertRootEmits = {
 };
 
 /**
- * Props for the alert content component.
+ * Properties for the alert content component.
  */
 export interface AlertContentProps extends /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Props for the alert title component.
+ * Properties for the alert title component.
  */
 export interface AlertTitleProps extends /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Props for the alert description component.
+ * Properties for the alert description component.
  */
 export interface AlertDescriptionProps extends /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Props for the alert close component.
+ * Properties for the alert close component.
  */
 export interface AlertCloseProps extends PrimitiveProps, /** @vue-ignore */ ButtonHTMLAttributes {}
 
 /**
- * Props for the alert compact component.
+ * Properties for the alert compact component.
  */
 export interface AlertCompactProps extends AlertRootProps {
   /**
@@ -66,25 +66,25 @@ export interface AlertCompactProps extends AlertRootProps {
    */
   closable?: boolean;
   /**
-   * Props forwarded to the content element.
+   * Properties forwarded to the content element.
    */
   contentProps?: AlertContentProps;
   /**
-   * Props forwarded to the title element.
+   * Properties forwarded to the title element.
    */
   titleProps?: AlertTitleProps;
   /**
-   * Props forwarded to the description element.
+   * Properties forwarded to the description element.
    */
   descriptionProps?: AlertDescriptionProps;
   /**
-   * Props forwarded to the close element.
+   * Properties forwarded to the close element.
    */
   closeProps?: AlertCloseProps;
 }
 
 /**
- * Emits for the alert compact component.
+ * Events for the alert compact component.
  */
 export type AlertCompactEmits = AlertRootEmits;
 

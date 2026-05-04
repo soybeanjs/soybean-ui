@@ -8,7 +8,7 @@ import type { ClassValue } from '@soybeanjs/headless/types';
 import type { ThemeSize } from '@/theme';
 
 /**
- * Props for the bottom sheet component.
+ * Properties for the bottom sheet component.
  */
 export type BottomSheetProps = BottomSheetCompactProps & {
   /**
@@ -26,7 +26,7 @@ export type BottomSheetProps = BottomSheetCompactProps & {
 };
 
 /**
- * Emits for the bottom sheet component.
+ * Events for the bottom sheet component.
  */
 export type BottomSheetEmits = BottomSheetCompactEmits;
 

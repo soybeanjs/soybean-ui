@@ -10,32 +10,32 @@ import type { UiClass } from '../../types';
 import type { PrimitiveProps } from '../primitive/types';
 
 /**
- * Props for the color swatch picker root component.
+ * Properties for the color swatch picker root component.
  */
 export interface ColorSwatchPickerRootProps<M extends boolean = false> extends PrimitiveProps, ListboxRootProps<M> {}
 
 /**
- * Emits for the color swatch picker root component.
+ * Events for the color swatch picker root component.
  */
 export type ColorSwatchPickerRootEmits<M extends boolean = false> = ListboxRootEmits<M>;
 
 /**
- * Props for the color swatch picker item component.
+ * Properties for the color swatch picker item component.
  */
 export interface ColorSwatchPickerItemProps extends ListboxItemProps {}
 
 /**
- * Emits for the color swatch picker item component.
+ * Events for the color swatch picker item component.
  */
 export type ColorSwatchPickerItemEmits = ListboxItemEmits;
 
 /**
- * Props for the color swatch picker item indicator component.
+ * Properties for the color swatch picker item indicator component.
  */
 export interface ColorSwatchPickerItemIndicatorProps extends ListboxItemIndicatorProps {}
 
 /**
- * Props for the color swatch picker item swatch component.
+ * Properties for the color swatch picker item swatch component.
  */
 export interface ColorSwatchPickerItemSwatchProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {
   /**

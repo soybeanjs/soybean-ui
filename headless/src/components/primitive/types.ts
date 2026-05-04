@@ -24,7 +24,7 @@ export type AsTag =
   | ({} & string);
 
 /**
- * Props for the primitive component.
+ * Properties for the primitive component.
  */
 export interface PrimitiveProps {
   /** Change the default rendered element for the one passed as a child, merging their props and behavior. */

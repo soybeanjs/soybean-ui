@@ -4,7 +4,7 @@ import type { DefinedValue, DataOrientation, Direction, VNodeRef, UiClass } from
 import type { ButtonProps } from '../button/types';
 
 /**
- * Props for the carousel root component.
+ * Properties for the carousel root component.
  */
 export interface CarouselRootProps extends /** @vue-ignore */ Omit<HTMLAttributes, 'onSelect'> {
   /**
@@ -26,7 +26,7 @@ export interface CarouselRootProps extends /** @vue-ignore */ Omit<HTMLAttribute
 }
 
 /**
- * Emits for the carousel root component.
+ * Events for the carousel root component.
  */
 export type CarouselRootEmits = {
   /**
@@ -36,7 +36,7 @@ export type CarouselRootEmits = {
 };
 
 /**
- * Props for the carousel component, which combines all sub components into a single component for ease of use.
+ * Properties for the carousel component, which combines all sub components into a single component for ease of use.
  */
 export interface CarouselRootSlotProps {
   carousel: EmblaCarouselType | undefined;
@@ -58,37 +58,37 @@ export type CarouselRootSlots = {
 };
 
 /**
- * Props for the carousel content component.
+ * Properties for the carousel content component.
  */
 export interface CarouselContentProps extends /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Props for the carousel container component.
+ * Properties for the carousel container component.
  */
 export interface CarouselContainerProps extends /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Props for the carousel item component.
+ * Properties for the carousel item component.
  */
 export interface CarouselItemProps extends /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Props for the carousel control components (next and previous).
+ * Properties for the carousel control components (next and previous).
  */
 export interface CarouselControlProps extends /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Props for the carousel navigation component.
+ * Properties for the carousel navigation component.
  */
 export interface CarouselNavigationProps extends /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Props for the carousel previous component.
+ * Properties for the carousel previous component.
  */
 export interface CarouselPreviousProps extends ButtonProps {}
 
 /**
- * Props for the carousel next component.
+ * Properties for the carousel next component.
  */
 export interface CarouselNextProps extends ButtonProps {}
 
@@ -141,7 +141,7 @@ export interface CarouselRootContext {
 }
 
 /**
- * Props for the carousel compact component, which combines all sub components into a single component for ease of use.
+ * Properties for the carousel compact component, which combines all sub components into a single component for ease of use.
  */
 export interface CarouselCompactProps<T extends DefinedValue = DefinedValue> extends CarouselRootProps {
   /**
@@ -149,37 +149,37 @@ export interface CarouselCompactProps<T extends DefinedValue = DefinedValue> ext
    */
   slides: T[];
   /**
-   * Per-slot props for the component, allowing you to pass props directly to the sub components without needing to use the `v-slot` API. This is useful for quickly customizing the sub components without needing to use the full flexibility of slots.
+   * Per-slot properties for the component, allowing you to pass props directly to the sub components without needing to use the `v-slot` API. This is useful for quickly customizing the sub components without needing to use the full flexibility of slots.
    */
   contentProps?: CarouselContentProps;
   /**
-   * Per-slot props for the component, allowing you to pass props directly to the sub components without needing to use the `v-slot` API. This is useful for quickly customizing the sub components without needing to use the full flexibility of slots.
+   * Per-slot properties for the component, allowing you to pass props directly to the sub components without needing to use the `v-slot` API. This is useful for quickly customizing the sub components without needing to use the full flexibility of slots.
    */
   containerProps?: CarouselContainerProps;
   /**
-   * Per-slot props for the component, allowing you to pass props directly to the sub components without needing to use the `v-slot` API. This is useful for quickly customizing the sub components without needing to use the full flexibility of slots.
+   * Per-slot properties for the component, allowing you to pass props directly to the sub components without needing to use the `v-slot` API. This is useful for quickly customizing the sub components without needing to use the full flexibility of slots.
    */
   itemProps?: CarouselItemProps;
   /**
-   * Per-slot props for the component, allowing you to pass props directly to the sub components without needing to use the `v-slot` API. This is useful for quickly customizing the sub components without needing to use the full flexibility of slots.
+   * Per-slot properties for the component, allowing you to pass props directly to the sub components without needing to use the `v-slot` API. This is useful for quickly customizing the sub components without needing to use the full flexibility of slots.
    */
   controlProps?: CarouselControlProps;
   /**
-   * Per-slot props for the component, allowing you to pass props directly to the sub components without needing to use the `v-slot` API. This is useful for quickly customizing the sub components without needing to use the full flexibility of slots.
+   * Per-slot properties for the component, allowing you to pass props directly to the sub components without needing to use the `v-slot` API. This is useful for quickly customizing the sub components without needing to use the full flexibility of slots.
    */
   navigationProps?: CarouselNavigationProps;
   /**
-   * Per-slot props for the component, allowing you to pass props directly to the sub components without needing to use the `v-slot` API. This is useful for quickly customizing the sub components without needing to use the full flexibility of slots.
+   * Per-slot properties for the component, allowing you to pass props directly to the sub components without needing to use the `v-slot` API. This is useful for quickly customizing the sub components without needing to use the full flexibility of slots.
    */
   previousProps?: CarouselPreviousProps;
   /**
-   * Per-slot props for the component, allowing you to pass props directly to the sub components without needing to use the `v-slot` API. This is useful for quickly customizing the sub components without needing to use the full flexibility of slots.
+   * Per-slot properties for the component, allowing you to pass props directly to the sub components without needing to use the `v-slot` API. This is useful for quickly customizing the sub components without needing to use the full flexibility of slots.
    */
   nextProps?: CarouselNextProps;
 }
 
 /**
- * Emits for the carousel compact component, which combines all sub components into a single component for ease of use.
+ * Events for the carousel compact component, which combines all sub components into a single component for ease of use.
  */
 export type CarouselCompactEmits = CarouselRootEmits;
 

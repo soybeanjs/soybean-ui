@@ -4,7 +4,7 @@ import type { PrimitiveProps } from '../primitive/types';
 import type { InputBaseProps } from '../input/types';
 
 /**
- * Props for the input number root component.
+ * Properties for the input number root component.
  */
 export interface InputNumberRootProps extends InputBaseProps, FormFieldCommonProps, /** @vue-ignore */ HTMLAttributes {
   /** The default value of the input */
@@ -35,7 +35,7 @@ export interface InputNumberRootProps extends InputBaseProps, FormFieldCommonPro
 }
 
 /**
- * Emits for the input number root component.
+ * Events for the input number root component.
  */
 export type InputNumberRootEmits = {
   /**
@@ -45,12 +45,12 @@ export type InputNumberRootEmits = {
 };
 
 /**
- * Props for the input number control component.
+ * Properties for the input number control component.
  */
 export interface InputNumberControlProps extends /** @vue-ignore */ InputHTMLAttributes {}
 
 /**
- * Props for the input number increment component.
+ * Properties for the input number increment component.
  */
 export interface InputNumberIncrementProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {
   /**
@@ -60,7 +60,7 @@ export interface InputNumberIncrementProps extends PrimitiveProps, /** @vue-igno
 }
 
 /**
- * Props for the input number decrement component.
+ * Properties for the input number decrement component.
  */
 export interface InputNumberDecrementProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {
   /**

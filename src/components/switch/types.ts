@@ -10,7 +10,7 @@ import type { ThemeColor, ThemeSize } from '@/theme';
 import type { SwitchShape } from './variants';
 
 /**
- * Props for the switch component.
+ * Properties for the switch component.
  */
 export interface SwitchProps<T extends AcceptableBooleanValue = boolean> extends SwitchRootProps<T> {
   /**
@@ -34,17 +34,17 @@ export interface SwitchProps<T extends AcceptableBooleanValue = boolean> extends
    */
   shape?: SwitchShape;
   /**
-   * Props forwarded to the control element.
+   * Properties forwarded to the control element.
    */
   controlProps?: SwitchControlProps;
   /**
-   * Props forwarded to the thumb element.
+   * Properties forwarded to the thumb element.
    */
   thumbProps?: SwitchThumbProps;
 }
 
 /**
- * Emits for the switch component.
+ * Events for the switch component.
  */
 export type SwitchEmits<T extends AcceptableBooleanValue = boolean> = SwitchRootEmits<T>;
 

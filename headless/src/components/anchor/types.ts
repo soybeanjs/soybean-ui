@@ -18,17 +18,17 @@ export type AnchorHistoryMode = 'push' | 'replace';
  */
 export interface AnchorSection {
   /**
-   * Href.
+   * The link of anchor
    */
   href: string;
   /**
-   * Top.
+   * anchor top position
    */
   top: number;
 }
 
 /**
- * Props for the anchor root component.
+ * Properties for the anchor root component.
  */
 export interface AnchorRootProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {
   /**
@@ -70,7 +70,7 @@ export interface AnchorRootProps extends PrimitiveProps, /** @vue-ignore */ HTML
 }
 
 /**
- * Emits for the anchor root component.
+ * Events for the anchor root component.
  */
 export type AnchorRootEmits = {
   /**
@@ -88,11 +88,11 @@ export type AnchorRootEmits = {
 };
 
 /**
- * Props for the anchor link component.
+ * Properties for the AnchorLink component.
  */
 export interface AnchorLinkProps extends PrimitiveProps, LinkBaseProps, /** @vue-ignore */ HTMLAttributes {
   /**
-   * Href.
+   * The link of anchor
    */
   href: string;
   /**
@@ -116,7 +116,7 @@ export interface AnchorOptionData extends Pick<AnchorLinkProps, 'disabled' | 'hr
 }
 
 /**
- * Props for the anchor item compact component.
+ * Properties for the anchor item compact component.
  */
 export interface AnchorItemCompactProps extends /** @vue-ignore */ HTMLAttributes {
   /**
@@ -128,25 +128,25 @@ export interface AnchorItemCompactProps extends /** @vue-ignore */ HTMLAttribute
    */
   item: AnchorOptionData;
   /**
-   * Props forwarded to the link element.
+   * Properties forwarded to the link element.
    */
   linkProps?: AnchorLinkProps;
   /**
-   * Props forwarded to the indicator element.
+   * Properties forwarded to the indicator element.
    */
   indicatorProps?: HTMLAttributes;
   /**
-   * Props forwarded to the title element.
+   * Properties forwarded to the title element.
    */
   titleProps?: HTMLAttributes;
   /**
-   * Props forwarded to the sub element.
+   * Properties forwarded to the sub element.
    */
   subProps?: HTMLAttributes;
 }
 
 /**
- * Props for the anchor compact component.
+ * Properties for the anchor compact component.
  */
 export interface AnchorCompactProps extends AnchorRootProps {
   /**
@@ -154,25 +154,25 @@ export interface AnchorCompactProps extends AnchorRootProps {
    */
   items: AnchorOptionData[];
   /**
-   * Props forwarded to the link element.
+   * Properties forwarded to the link element.
    */
   linkProps?: AnchorLinkProps;
   /**
-   * Props forwarded to the indicator element.
+   * Properties forwarded to the indicator element.
    */
   indicatorProps?: HTMLAttributes;
   /**
-   * Props forwarded to the title element.
+   * Properties forwarded to the title element.
    */
   titleProps?: HTMLAttributes;
   /**
-   * Props forwarded to the sub element.
+   * Properties forwarded to the sub element.
    */
   subProps?: HTMLAttributes;
 }
 
 /**
- * Emits for the anchor compact component.
+ * Events for the anchor compact component.
  */
 export type AnchorCompactEmits = AnchorRootEmits;
 

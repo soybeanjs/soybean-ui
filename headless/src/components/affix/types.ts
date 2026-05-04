@@ -12,7 +12,7 @@ export type AffixTarget = string | Window | HTMLElement | (() => HTMLElement);
 export type AffixState = 'fixed' | 'static';
 
 /**
- * Props for the affix root component.
+ * Properties for the affix root component.
  */
 export interface AffixRootProps extends /** @vue-ignore */ Omit<HTMLAttributes, 'onChange'> {
   /**
@@ -34,7 +34,7 @@ export interface AffixRootProps extends /** @vue-ignore */ Omit<HTMLAttributes, 
 }
 
 /**
- * Emits for the affix root component.
+ * Events for the affix root component.
  */
 export type AffixRootEmits = {
   /**
@@ -44,31 +44,31 @@ export type AffixRootEmits = {
 };
 
 /**
- * Props for the affix placeholder component.
+ * Properties for the affix placeholder component.
  */
 export interface AffixPlaceholderProps extends /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Props for the affix content component.
+ * Properties for the affix content component.
  */
 export interface AffixContentProps extends /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Props for the affix compact component.
+ * Properties for the affix compact component.
  */
 export interface AffixCompactProps extends AffixRootProps {
   /**
-   * Props forwarded to the placeholder element.
+   * Properties forwarded to the placeholder element.
    */
   placeholderProps?: AffixPlaceholderProps;
   /**
-   * Props forwarded to the content element.
+   * Properties forwarded to the content element.
    */
   contentProps?: AffixContentProps;
 }
 
 /**
- * Emits for the affix compact component.
+ * Events for the affix compact component.
  */
 export type AffixCompactEmits = AffixRootEmits;
 

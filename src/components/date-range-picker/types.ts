@@ -10,7 +10,7 @@ import type { ClassValue } from '@soybeanjs/headless/types';
 import type { ThemeSize } from '@/theme';
 
 /**
- * Props for the date range picker component.
+ * Properties for the date range picker component.
  */
 export interface DateRangePickerProps extends /** @vue-ignore */ DateRangePickerRootProps {
   /**
@@ -26,17 +26,17 @@ export interface DateRangePickerProps extends /** @vue-ignore */ DateRangePicker
    */
   ui?: Partial<DateRangePickerUi>;
   /**
-   * Props forwarded to the trigger element.
+   * Properties forwarded to the trigger element.
    */
   triggerProps?: DateRangePickerTriggerProps;
   /**
-   * Props forwarded to the popup element.
+   * Properties forwarded to the popup element.
    */
   popupProps?: DateRangePickerPopupProps;
 }
 
 /**
- * Emits for the date range picker component.
+ * Events for the date range picker component.
  */
 export type DateRangePickerEmits = DateRangePickerRootEmits;
 

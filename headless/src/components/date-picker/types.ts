@@ -14,7 +14,7 @@ import type { PortalProps as DatePickerPortalProps } from '../portal/types';
 import type { PrimitiveProps } from '../primitive/types';
 
 /**
- * Props for the date picker root component.
+ * Properties for the date picker root component.
  */
 export interface DatePickerRootProps
   extends
@@ -89,7 +89,7 @@ export interface DatePickerRootProps
 }
 
 /**
- * Emits for the date picker root component.
+ * Events for the date picker root component.
  */
 export type DatePickerRootEmits = {
   /**
@@ -107,7 +107,7 @@ export type DatePickerRootEmits = {
 };
 
 /**
- * Slot props for the date picker component.
+ * Slot properties for the date picker component.
  */
 export interface DatePickerSlotProps {
   /**
@@ -143,7 +143,7 @@ export type DatePickerRootSlots = {
 };
 
 /**
- * Props for the date picker input component.
+ * Properties for the date picker input component.
  */
 export interface DatePickerInputProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {
   /**
@@ -239,21 +239,21 @@ export interface DatePickerRootContext extends PropsToContext<DatePickerRootProp
 }
 
 /**
- * Props for the date picker content component.
+ * Properties for the date picker content component.
  */
 export interface DatePickerContentProps extends DatePickerPositionerProps {
   /**
-   * Props forwarded to the popup element.
+   * Properties forwarded to the popup element.
    */
   popupProps?: DatePickerPopupProps;
   /**
-   * Props forwarded to the portal element.
+   * Properties forwarded to the portal element.
    */
   portalProps?: DatePickerPortalProps;
 }
 
 /**
- * Emits for the date picker content component.
+ * Events for the date picker content component.
  */
 export type DatePickerContentEmits = DatePickerPositionerEmits;
 
@@ -268,7 +268,7 @@ export type DatePickerContentSlots = {
 };
 
 /**
- * Props for the date picker compact component.
+ * Properties for the date picker compact component.
  */
 export interface DatePickerCompactProps extends DatePickerRootProps {
   /**
@@ -276,25 +276,25 @@ export interface DatePickerCompactProps extends DatePickerRootProps {
    */
   triggerPlaceholder?: string;
   /**
-   * Props forwarded to the positioner element.
+   * Properties forwarded to the positioner element.
    */
   positionerProps?: DatePickerPositionerProps;
   /**
-   * Props forwarded to the popup element.
+   * Properties forwarded to the popup element.
    */
   popupProps?: DatePickerPopupProps;
   /**
-   * Props forwarded to the portal element.
+   * Properties forwarded to the portal element.
    */
   portalProps?: DatePickerPortalProps;
   /**
-   * Props forwarded to the trigger element.
+   * Properties forwarded to the trigger element.
    */
   triggerProps?: DatePickerTriggerProps;
 }
 
 /**
- * Emits for the date picker compact component.
+ * Events for the date picker compact component.
  */
 export type DatePickerCompactEmits = DatePickerRootEmits;
 

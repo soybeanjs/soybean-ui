@@ -4,37 +4,37 @@ import type { LinkBaseProps, LinkProps } from '../link/types';
 import type { UiClass } from '../../types';
 
 /**
- * Props for the breadcrumb root component.
+ * Properties for the breadcrumb root component.
  */
 export interface BreadcrumbRootProps extends /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Props for the breadcrumb list component.
+ * Properties for the breadcrumb list component.
  */
 export interface BreadcrumbListProps extends /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Props for the breadcrumb item component.
+ * Properties for the breadcrumb item component.
  */
 export interface BreadcrumbItemProps extends /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Props for the breadcrumb page component.
+ * Properties for the breadcrumb page component.
  */
 export interface BreadcrumbPageProps extends /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Props for the breadcrumb separator component.
+ * Properties for the breadcrumb separator component.
  */
 export interface BreadcrumbSeparatorProps extends /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Props for the breadcrumb ellipsis component.
+ * Properties for the breadcrumb ellipsis component.
  */
 export interface BreadcrumbEllipsisProps extends /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Props for the breadcrumb link component.
+ * Properties for the breadcrumb link component.
  */
 export interface BreadcrumbLinkProps extends LinkProps {}
 
@@ -53,7 +53,7 @@ export interface BreadcrumbOptionData extends LinkBaseProps {
 }
 
 /**
- * Props for the breadcrumb compact component.
+ * Properties for the breadcrumb compact component.
  */
 export interface BreadcrumbCompactProps<T extends BreadcrumbOptionData = BreadcrumbOptionData> extends Omit<
   BreadcrumbRootProps,
@@ -70,33 +70,33 @@ export interface BreadcrumbCompactProps<T extends BreadcrumbOptionData = Breadcr
    */
   ellipsis?: true | [number, number] | null;
   /**
-   * Props forwarded to the list element.
+   * Properties forwarded to the list element.
    */
   listProps?: BreadcrumbListProps;
   /**
-   * Props forwarded to the item element.
+   * Properties forwarded to the item element.
    */
   itemProps?: BreadcrumbItemProps;
   /**
-   * Props forwarded to the link element.
+   * Properties forwarded to the link element.
    */
   linkProps?: BreadcrumbLinkProps;
   /**
-   * Props forwarded to the page element.
+   * Properties forwarded to the page element.
    */
   pageProps?: BreadcrumbPageProps;
   /**
-   * Props forwarded to the separator element.
+   * Properties forwarded to the separator element.
    */
   separatorProps?: BreadcrumbSeparatorProps;
   /**
-   * Props forwarded to the ellipsis element.
+   * Properties forwarded to the ellipsis element.
    */
   ellipsisProps?: BreadcrumbEllipsisProps;
 }
 
 /**
- * Emits for the breadcrumb compact component.
+ * Events for the breadcrumb compact component.
  */
 export type BreadcrumbCompactEmits<T extends BreadcrumbOptionData = BreadcrumbOptionData> = {
   /**
@@ -106,7 +106,7 @@ export type BreadcrumbCompactEmits<T extends BreadcrumbOptionData = BreadcrumbOp
 };
 
 /**
- * Slot props for the breadcrumb compact item component.
+ * Slot properties for the breadcrumb compact item component.
  */
 export interface BreadcrumbCompactItemSlotProps<T extends BreadcrumbOptionData = BreadcrumbOptionData> {
   /**
@@ -120,7 +120,7 @@ export interface BreadcrumbCompactItemSlotProps<T extends BreadcrumbOptionData =
 }
 
 /**
- * Slot props for the breadcrumb compact ellipsis component.
+ * Slot properties for the breadcrumb compact ellipsis component.
  */
 export interface BreadcrumbCompactEllipsisSlotProps<T extends BreadcrumbOptionData = BreadcrumbOptionData> {
   /**

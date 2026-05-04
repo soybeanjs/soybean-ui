@@ -16,7 +16,7 @@ export type ScrollAreaOrientation = 'horizontal' | 'vertical';
 export type ScrollAreaState = 'hidden' | 'visible';
 
 /**
- * Props for the scroll area root component.
+ * Properties for the scroll area root component.
  */
 export interface ScrollAreaRootProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {
   /** Controls scrollbar visibility behavior. */
@@ -28,7 +28,7 @@ export interface ScrollAreaRootProps extends PrimitiveProps, /** @vue-ignore */ 
 }
 
 /**
- * Props for the scroll area viewport component.
+ * Properties for the scroll area viewport component.
  */
 export interface ScrollAreaViewportProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {
   /** Adds a nonce to the injected style tag. */
@@ -36,7 +36,7 @@ export interface ScrollAreaViewportProps extends PrimitiveProps, /** @vue-ignore
 }
 
 /**
- * Props for the scroll area scrollbar component.
+ * Properties for the scroll area scrollbar component.
  */
 export interface ScrollAreaScrollbarProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {
   /** The scrollbar orientation. */
@@ -44,17 +44,17 @@ export interface ScrollAreaScrollbarProps extends PrimitiveProps, /** @vue-ignor
 }
 
 /**
- * Props for the scroll area thumb component.
+ * Properties for the scroll area thumb component.
  */
 export interface ScrollAreaThumbProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Props for the scroll area corner component.
+ * Properties for the scroll area corner component.
  */
 export interface ScrollAreaCornerProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Emits for the scroll area root component.
+ * Events for the scroll area root component.
  */
 export type ScrollAreaRootEmits = {};
 

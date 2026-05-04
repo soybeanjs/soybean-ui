@@ -10,7 +10,7 @@ import type { ClassValue } from '@soybeanjs/headless/types';
 import type { ThemeSize } from '@/theme';
 
 /**
- * Props for the input number component.
+ * Properties for the input number component.
  */
 export interface InputNumberProps extends InputNumberRootProps {
   /**
@@ -40,20 +40,20 @@ export interface InputNumberProps extends InputNumberRootProps {
    */
   inputRef?: (el: HTMLInputElement) => void;
   /**
-   * Props forwarded to the control element.
+   * Properties forwarded to the control element.
    */
   controlProps?: InputNumberControlProps;
   /**
-   * Props forwarded to the increment element.
+   * Properties forwarded to the increment element.
    */
   incrementProps?: InputNumberIncrementProps;
   /**
-   * Props forwarded to the decrement element.
+   * Properties forwarded to the decrement element.
    */
   decrementProps?: InputNumberDecrementProps;
 }
 
 /**
- * Emits for the input number component.
+ * Events for the input number component.
  */
 export type InputNumberEmits = InputNumberRootEmits;

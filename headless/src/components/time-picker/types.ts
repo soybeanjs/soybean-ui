@@ -5,7 +5,7 @@ import type { TimePickerOption } from '../../shared/time-picker';
 import type { PrimitiveProps } from '../primitive/types';
 
 /**
- * Props for the time picker root component.
+ * Properties for the time picker root component.
  */
 export interface TimePickerRootProps
   extends PrimitiveProps, FormFieldCommonProps, /** @vue-ignore */ Omit<HTMLAttributes, 'placeholder'> {
@@ -88,7 +88,7 @@ export interface TimePickerRootProps
 }
 
 /**
- * Emits for the time picker root component.
+ * Events for the time picker root component.
  */
 export type TimePickerRootEmits = {
   /**
@@ -106,11 +106,11 @@ export type TimePickerRootEmits = {
 };
 
 /**
- * Props for the time picker trigger component.
+ * Properties for the time picker trigger component.
  */
 export interface TimePickerTriggerProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {}
 /**
- * Props for the time picker popup component.
+ * Properties for the time picker popup component.
  */
 export interface TimePickerPopupProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {}
 

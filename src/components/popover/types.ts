@@ -14,7 +14,7 @@ import type { ClassValue, Placement } from '@soybeanjs/headless/types';
 import type { ThemeSize } from '@/theme';
 
 /**
- * Props for the popover component.
+ * Properties for the popover component.
  */
 export interface PopoverProps extends PopoverRootProps {
   /**
@@ -38,32 +38,32 @@ export interface PopoverProps extends PopoverRootProps {
    */
   showArrow?: boolean;
   /**
-   * Props forwarded to the positioner element.
+   * Properties forwarded to the positioner element.
    */
   positionerProps?: PopoverPositionerProps;
   /**
-   * Props forwarded to the popup element.
+   * Properties forwarded to the popup element.
    */
   popupProps?: PopoverPopupProps;
   /**
-   * Props forwarded to the trigger element.
+   * Properties forwarded to the trigger element.
    */
   triggerProps?: PopoverTriggerProps;
   /**
-   * Props forwarded to the close element.
+   * Properties forwarded to the close element.
    */
   closeProps?: PopoverCloseProps;
   /**
-   * Props forwarded to the portal element.
+   * Properties forwarded to the portal element.
    */
   portalProps?: PopoverPortalProps;
   /**
-   * Props forwarded to the arrow element.
+   * Properties forwarded to the arrow element.
    */
   arrowProps?: PopoverArrowProps;
 }
 
 /**
- * Emits for the popover component.
+ * Events for the popover component.
  */
 export type PopoverEmits = PopoverRootEmits & PopoverPositionerEmits;

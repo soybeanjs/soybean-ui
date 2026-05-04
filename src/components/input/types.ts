@@ -7,7 +7,7 @@ type InputExtraUiSlot = 'clearable';
 type InputExtendedUi = InputUi & Record<InputExtraUiSlot, ClassValue>;
 
 /**
- * Props for the input component.
+ * Properties for the input component.
  */
 export interface InputProps extends InputRootProps {
   /**
@@ -37,6 +37,6 @@ export interface InputProps extends InputRootProps {
 }
 
 /**
- * Emits for the input component.
+ * Events for the input component.
  */
 export type InputEmits = InputRootEmits;

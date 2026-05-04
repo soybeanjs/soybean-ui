@@ -8,7 +8,7 @@ import type { PrimitiveProps } from '../primitive/types';
 export type ProgressState = 'indeterminate' | 'loading' | 'complete';
 
 /**
- * Props for the progress root component.
+ * Properties for the progress root component.
  */
 export interface ProgressRootProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {
   /**
@@ -26,7 +26,7 @@ export interface ProgressRootProps extends PrimitiveProps, /** @vue-ignore */ HT
 }
 
 /**
- * Emits for the progress root component.
+ * Events for the progress root component.
  */
 export type ProgressRootEmits = {
   /**
@@ -40,12 +40,12 @@ export type ProgressRootEmits = {
 };
 
 /**
- * Props for the progress indicator component.
+ * Properties for the progress indicator component.
  */
 export interface ProgressIndicatorProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Props for the progress circle component.
+ * Properties for the progress circle component.
  */
 export interface ProgressCircleProps extends /** @vue-ignore */ SVGAttributes {
   /**
@@ -55,7 +55,7 @@ export interface ProgressCircleProps extends /** @vue-ignore */ SVGAttributes {
 }
 
 /**
- * Props for the progress provider component.
+ * Properties for the progress provider component.
  */
 export interface ProgressProviderProps extends ProgressOptions {}
 

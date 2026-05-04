@@ -10,7 +10,7 @@ import type {
 import type { ClassValue } from '@soybeanjs/headless/types';
 
 /**
- * Props for the scroll area component.
+ * Properties for the scroll area component.
  */
 export interface ScrollAreaProps extends ScrollAreaRootProps {
   /**
@@ -22,28 +22,28 @@ export interface ScrollAreaProps extends ScrollAreaRootProps {
    */
   ui?: Partial<ScrollAreaUi>;
   /**
-   * Props forwarded to the viewport element.
+   * Properties forwarded to the viewport element.
    */
   viewportProps?: ScrollAreaViewportProps;
   /**
-   * Props forwarded to the vertical scrollbar element.
+   * Properties forwarded to the vertical scrollbar element.
    */
   verticalScrollbarProps?: Omit<ScrollAreaScrollbarProps, 'orientation'>;
   /**
-   * Props forwarded to the horizontal scrollbar element.
+   * Properties forwarded to the horizontal scrollbar element.
    */
   horizontalScrollbarProps?: Omit<ScrollAreaScrollbarProps, 'orientation'>;
   /**
-   * Props forwarded to the thumb element.
+   * Properties forwarded to the thumb element.
    */
   thumbProps?: ScrollAreaThumbProps;
   /**
-   * Props forwarded to the corner element.
+   * Properties forwarded to the corner element.
    */
   cornerProps?: ScrollAreaCornerProps;
 }
 
 /**
- * Emits for the scroll area component.
+ * Events for the scroll area component.
  */
 export type ScrollAreaEmits = ScrollAreaRootEmits;

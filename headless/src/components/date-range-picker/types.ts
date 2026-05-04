@@ -13,7 +13,7 @@ import type { Direction, FormFieldCommonProps, PropsToContext, UiClass } from '.
 import type { PrimitiveProps } from '../primitive/types';
 
 /**
- * Props for the date range picker root component.
+ * Properties for the date range picker root component.
  */
 export interface DateRangePickerRootProps
   extends PrimitiveProps, FormFieldCommonProps, /** @vue-ignore */ Omit<HTMLAttributes, 'placeholder'> {
@@ -96,7 +96,7 @@ export interface DateRangePickerRootProps
 }
 
 /**
- * Emits for the date range picker root component.
+ * Events for the date range picker root component.
  */
 export type DateRangePickerRootEmits = {
   /**
@@ -122,7 +122,7 @@ export type DateRangePickerRootEmits = {
 };
 
 /**
- * Props for the date range picker input component.
+ * Properties for the date range picker input component.
  */
 export interface DateRangePickerInputProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {
   /**
@@ -132,12 +132,12 @@ export interface DateRangePickerInputProps extends PrimitiveProps, /** @vue-igno
 }
 
 /**
- * Props for the date range picker trigger component.
+ * Properties for the date range picker trigger component.
  */
 export interface DateRangePickerTriggerProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Props for the date range picker popup component.
+ * Properties for the date range picker popup component.
  */
 export interface DateRangePickerPopupProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {}
 
@@ -253,21 +253,21 @@ export type DateRangePickerUiSlot = 'root' | 'trigger' | 'popup' | 'input' | 'ca
 export type DateRangePickerUi = UiClass<DateRangePickerUiSlot>;
 
 /**
- * Props for the date range picker compact component.
+ * Properties for the date range picker compact component.
  */
 export interface DateRangePickerCompactProps extends DateRangePickerRootProps {
   /**
-   * Props forwarded to the trigger element.
+   * Properties forwarded to the trigger element.
    */
   triggerProps?: DateRangePickerTriggerProps;
   /**
-   * Props forwarded to the popup element.
+   * Properties forwarded to the popup element.
    */
   popupProps?: DateRangePickerPopupProps;
 }
 
 /**
- * Emits for the date range picker compact component.
+ * Events for the date range picker compact component.
  */
 export type DateRangePickerCompactEmits = DateRangePickerRootEmits;
 

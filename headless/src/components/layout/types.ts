@@ -23,7 +23,7 @@ export type LayoutCollapsible = 'offcanvas' | 'icon';
 export type LayoutSidebarState = 'expanded' | 'collapsed';
 
 /**
- * Props for the layout root component.
+ * Properties for the layout root component.
  */
 export interface LayoutRootProps extends /** @vue-ignore */ HTMLAttributes {
   /** The controlled open state of the layout. Can be bound with `v-model`. */
@@ -119,7 +119,7 @@ export interface LayoutRootProps extends /** @vue-ignore */ HTMLAttributes {
 }
 
 /**
- * Emits for the layout root component.
+ * Events for the layout root component.
  */
 export type LayoutRootEmits = {
   /**
@@ -129,47 +129,47 @@ export type LayoutRootEmits = {
 };
 
 /**
- * Props for the layout sidebar component.
+ * Properties for the layout sidebar component.
  */
 export interface LayoutSidebarProps extends /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Props for the layout rail component.
+ * Properties for the layout rail component.
  */
 export interface LayoutRailProps extends /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Props for the layout main component.
+ * Properties for the layout main component.
  */
 export interface LayoutMainProps extends /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Props for the layout header component.
+ * Properties for the layout header component.
  */
 export interface LayoutHeaderProps extends /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Props for the layout tab component.
+ * Properties for the layout tab component.
  */
 export interface LayoutTabProps extends /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Props for the layout content component.
+ * Properties for the layout content component.
  */
 export interface LayoutContentProps extends /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Props for the layout footer component.
+ * Properties for the layout footer component.
  */
 export interface LayoutFooterProps extends /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Props for the layout trigger component.
+ * Properties for the layout trigger component.
  */
 export interface LayoutTriggerProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Props for the layout mobile component.
+ * Properties for the layout mobile component.
  */
 export interface LayoutMobileProps extends /** @vue-ignore */ HTMLAttributes {}
 
@@ -185,12 +185,12 @@ interface LayoutOthersProps {
 }
 
 /**
- * Props for the layout compact component.
+ * Properties for the layout compact component.
  */
 export interface LayoutCompactProps extends LayoutRootProps, LayoutOthersProps {}
 
 /**
- * Emits for the layout compact component.
+ * Events for the layout compact component.
  */
 export type LayoutCompactEmits = LayoutRootEmits;
 
@@ -230,7 +230,7 @@ export type LayoutCompactSlots = {
 export type LayoutClassicScrollBehavior = 'wrapper' | 'content';
 
 /**
- * Props for the layout classic root component.
+ * Properties for the layout classic root component.
  */
 export interface LayoutClassicRootProps extends Omit<LayoutRootProps, 'variant' | 'collapsible'> {
   /**
@@ -272,17 +272,17 @@ export interface LayoutClassicRootProps extends Omit<LayoutRootProps, 'variant' 
 }
 
 /**
- * Emits for the layout classic root component.
+ * Events for the layout classic root component.
  */
 export type LayoutClassicRootEmits = LayoutRootEmits;
 
 /**
- * Props for the layout classic compact component.
+ * Properties for the layout classic compact component.
  */
 export interface LayoutClassicCompactProps extends LayoutClassicRootProps, LayoutOthersProps {}
 
 /**
- * Emits for the layout classic compact component.
+ * Events for the layout classic compact component.
  */
 export type LayoutClassicCompactEmits = LayoutClassicRootEmits;
 

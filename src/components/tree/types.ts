@@ -3,7 +3,7 @@ import type { TreeItemData, TreeVirtualizerRootEmits, TreeVirtualizerRootProps }
 import type { MaybeArray } from '@soybeanjs/headless/types';
 
 /**
- * Props for the tree virtualizer component.
+ * Properties for the tree virtualizer component.
  */
 export interface TreeVirtualizerProps<
   T extends TreeItemData,
@@ -11,16 +11,16 @@ export interface TreeVirtualizerProps<
   M extends boolean
 > extends TreeVirtualizerRootProps<T, U, M> {
   /**
-   * Props forwarded to the content element.
+   * Properties forwarded to the content element.
    */
   contentProps?: VirtualizerContentProps;
   /**
-   * Props forwarded to the dynamic content element.
+   * Properties forwarded to the dynamic content element.
    */
   dynamicContentProps?: VirtualizerDynamicContentProps;
 }
 
 /**
- * Emits for the tree virtualizer component.
+ * Events for the tree virtualizer component.
  */
 export type TreeVirtualizerEmits<M extends boolean | undefined> = TreeVirtualizerRootEmits<M>;

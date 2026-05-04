@@ -9,7 +9,7 @@ import type { ClassValue } from '@soybeanjs/headless/types';
 import type { ThemeSize } from '@/theme';
 
 /**
- * Props for the color area component.
+ * Properties for the color area component.
  */
 export interface ColorAreaProps extends ColorAreaRootProps {
   /**
@@ -25,16 +25,16 @@ export interface ColorAreaProps extends ColorAreaRootProps {
    */
   ui?: Partial<ColorAreaUi>;
   /**
-   * Props forwarded to the area element.
+   * Properties forwarded to the area element.
    */
   areaProps?: ColorAreaAreaProps;
   /**
-   * Props forwarded to the thumb element.
+   * Properties forwarded to the thumb element.
    */
   thumbProps?: ColorAreaThumbProps;
 }
 
 /**
- * Emits for the color area component.
+ * Events for the color area component.
  */
 export type ColorAreaEmits = ColorAreaRootEmits;

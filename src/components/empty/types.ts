@@ -12,7 +12,7 @@ import type { IconValue } from '../icon/types';
 import type { EmptyMediaVariant } from './variants';
 
 /**
- * Props for the empty component.
+ * Properties for the empty component.
  */
 export interface EmptyProps extends EmptyRootProps {
   /**
@@ -40,23 +40,23 @@ export interface EmptyProps extends EmptyRootProps {
    */
   mediaVariant?: EmptyMediaVariant;
   /**
-   * Props forwarded to the header element.
+   * Properties forwarded to the header element.
    */
   headerProps?: EmptyHeaderProps;
   /**
-   * Props forwarded to the media element.
+   * Properties forwarded to the media element.
    */
   mediaProps?: EmptyMediaProps;
   /**
-   * Props forwarded to the content element.
+   * Properties forwarded to the content element.
    */
   contentProps?: EmptyContentProps;
   /**
-   * Props forwarded to the title element.
+   * Properties forwarded to the title element.
    */
   titleProps?: EmptyTitleProps;
   /**
-   * Props forwarded to the description element.
+   * Properties forwarded to the description element.
    */
   descriptionProps?: EmptyDescriptionProps;
 }

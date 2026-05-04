@@ -3,7 +3,7 @@ import type { ClassValue } from '@soybeanjs/headless/types';
 import type { ThemeSize } from '@/theme';
 
 /**
- * Props for the label component.
+ * Properties for the label component.
  */
 export interface LabelProps extends _LabelProps {
   /**

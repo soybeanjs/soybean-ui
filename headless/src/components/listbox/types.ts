@@ -16,7 +16,7 @@ import type { PrimitiveProps } from '../primitive/types';
 import type { InputControlProps, InputRootEmits, InputRootProps } from '../input/types';
 
 /**
- * Props for the listbox root component.
+ * Properties for the listbox root component.
  */
 export interface ListboxRootProps<M extends boolean = false>
   extends SelectionProps<M>, FormFieldCommonProps, /** @vue-ignore */ HTMLAttributes {
@@ -45,7 +45,7 @@ export interface ListboxRootProps<M extends boolean = false>
 export type ListboxCollectionItemData = { value: string };
 
 /**
- * Emits for the listbox root component.
+ * Events for the listbox root component.
  */
 export type ListboxRootEmits<M extends boolean = false> = SelectionEmits<M> & {
   /** Event handler when highlighted element changes. */
@@ -57,7 +57,7 @@ export type ListboxRootEmits<M extends boolean = false> = SelectionEmits<M> & {
 };
 
 /**
- * Props for the listbox item component.
+ * Properties for the listbox item component.
  */
 export interface ListboxItemProps extends PrimitiveProps, /** @vue-ignore */ Omit<HTMLAttributes, 'onSelect'> {
   /** The value given as data when submitted with a `name`. */
@@ -67,7 +67,7 @@ export interface ListboxItemProps extends PrimitiveProps, /** @vue-ignore */ Omi
 }
 
 /**
- * Emits for the listbox item component.
+ * Events for the listbox item component.
  */
 export type ListboxItemEmits = {
   /** Event handler called when the selecting item. <br> It can be prevented by calling `event.preventDefault`. */
@@ -75,22 +75,22 @@ export type ListboxItemEmits = {
 };
 
 /**
- * Props for the listbox item indicator component.
+ * Properties for the listbox item indicator component.
  */
 export interface ListboxItemIndicatorProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Props for the listbox group component.
+ * Properties for the listbox group component.
  */
 export interface ListboxGroupProps extends /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Props for the listbox group label component.
+ * Properties for the listbox group label component.
  */
 export interface ListboxGroupLabelProps extends /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Props for the listbox filter component.
+ * Properties for the listbox filter component.
  */
 export interface ListboxFilterProps extends InputRootProps {
   /**
@@ -106,17 +106,17 @@ export interface ListboxFilterProps extends InputRootProps {
 }
 
 /**
- * Emits for the listbox filter component.
+ * Events for the listbox filter component.
  */
 export type ListboxFilterEmits = InputRootEmits;
 
 /**
- * Props for the listbox content component.
+ * Properties for the listbox content component.
  */
 export interface ListboxContentProps extends /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Props for the listbox virtualizer component.
+ * Properties for the listbox virtualizer component.
  */
 export interface ListboxVirtualizerProps {
   /** List of items */
@@ -130,7 +130,7 @@ export interface ListboxVirtualizerProps {
 }
 
 /**
- * Props for the listbox virtualizer slots component.
+ * Properties for the listbox virtualizer slots component.
  */
 export type ListboxVirtualizerSlotsProps = {
   /**

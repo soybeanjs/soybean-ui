@@ -5,7 +5,7 @@ import type { Direction, FormFieldCommonProps, PropsToContext, UiClass } from '.
 import type { PrimitiveProps } from '../primitive/types';
 
 /**
- * Props for the year picker root component.
+ * Properties for the year picker root component.
  */
 export interface YearPickerRootProps
   extends PrimitiveProps, FormFieldCommonProps, /** @vue-ignore */ Omit<HTMLAttributes, 'placeholder'> {
@@ -68,7 +68,7 @@ export interface YearPickerRootProps
 }
 
 /**
- * Emits for the year picker root component.
+ * Events for the year picker root component.
  */
 export type YearPickerRootEmits = {
   /**
@@ -86,11 +86,11 @@ export type YearPickerRootEmits = {
 };
 
 /**
- * Props for the year picker trigger component.
+ * Properties for the year picker trigger component.
  */
 export interface YearPickerTriggerProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {}
 /**
- * Props for the year picker popup component.
+ * Properties for the year picker popup component.
  */
 export interface YearPickerPopupProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {}
 

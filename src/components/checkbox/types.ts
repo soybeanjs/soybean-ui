@@ -17,7 +17,7 @@ import type { ThemeColor, ThemeSize } from '@/theme';
 import type { CheckboxShape } from './variants';
 
 /**
- * Props for the checkbox component.
+ * Properties for the checkbox component.
  */
 export interface CheckboxProps extends CheckboxCompactProps {
   /**
@@ -43,12 +43,12 @@ export interface CheckboxProps extends CheckboxCompactProps {
 }
 
 /**
- * Emits for the checkbox component.
+ * Events for the checkbox component.
  */
 export type CheckboxEmits = CheckboxCompactEmits;
 
 /**
- * Props for the checkbox card component.
+ * Properties for the checkbox card component.
  */
 export interface CheckboxCardProps extends CheckboxCardCompactProps {
   /**
@@ -82,12 +82,12 @@ export interface CheckboxCardProps extends CheckboxCardCompactProps {
 }
 
 /**
- * Emits for the checkbox card component.
+ * Events for the checkbox card component.
  */
 export type CheckboxCardEmits = CheckboxCardCompactEmits;
 
 /**
- * Props for the checkbox group component.
+ * Properties for the checkbox group component.
  */
 export interface CheckboxGroupProps<
   T extends CheckboxGroupOptionData = CheckboxGroupOptionData
@@ -115,12 +115,12 @@ export interface CheckboxGroupProps<
 }
 
 /**
- * Emits for the checkbox group component.
+ * Events for the checkbox group component.
  */
 export type CheckboxGroupEmits<T extends DefinedValue = DefinedValue> = CheckboxGroupCompactEmits<T>;
 
 /**
- * Props for the checkbox card group component.
+ * Properties for the checkbox card group component.
  */
 export interface CheckboxCardGroupProps<
   T extends CheckboxCardGroupOptionData = CheckboxCardGroupOptionData
@@ -148,7 +148,7 @@ export interface CheckboxCardGroupProps<
 }
 
 /**
- * Emits for the checkbox card group component.
+ * Events for the checkbox card group component.
  */
 export type CheckboxCardGroupEmits<T extends DefinedValue = DefinedValue> = CheckboxCardGroupCompactEmits<T>;
 

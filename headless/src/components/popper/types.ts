@@ -4,7 +4,7 @@ import type { Align, Placement, UiClass, VNodeRef } from '../../types';
 import type { PrimitiveProps } from '../primitive/types';
 
 /**
- * Props for the popper anchor component.
+ * Properties for the popper anchor component.
  */
 export interface PopperAnchorProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {
   /**
@@ -15,7 +15,7 @@ export interface PopperAnchorProps extends PrimitiveProps, /** @vue-ignore */ HT
 }
 
 /**
- * Props for the popper positioner component.
+ * Properties for the popper positioner component.
  */
 export interface PopperPositionerProps extends /** @vue-ignore */ HTMLAttributes {
   /**
@@ -143,7 +143,7 @@ export interface PopperPositionerProps extends /** @vue-ignore */ HTMLAttributes
 }
 
 /**
- * Emits for the popper positioner component.
+ * Events for the popper positioner component.
  */
 export interface PopperPositionerEmits {
   /** Event handler called when the positioner is placed */
@@ -151,12 +151,12 @@ export interface PopperPositionerEmits {
 }
 
 /**
- * Props for the popper popup component.
+ * Properties for the popper popup component.
  */
 export interface PopperPopupProps extends /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Props for the popper arrow component.
+ * Properties for the popper arrow component.
  */
 export interface PopperArrowProps extends /** @vue-ignore */ HTMLAttributes {}
 

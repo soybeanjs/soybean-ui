@@ -13,7 +13,7 @@ import type { ClassValue, Placement } from '@soybeanjs/headless/types';
 import type { ThemeSize } from '@/theme';
 
 /**
- * Props for the tooltip component.
+ * Properties for the tooltip component.
  */
 export interface TooltipProps extends TooltipRootProps {
   /**
@@ -41,28 +41,28 @@ export interface TooltipProps extends TooltipRootProps {
    */
   showArrow?: boolean;
   /**
-   * Props forwarded to the popup element.
+   * Properties forwarded to the popup element.
    */
   popupProps?: TooltipPopupProps;
   /**
-   * Props forwarded to the positioner element.
+   * Properties forwarded to the positioner element.
    */
   positionerProps?: TooltipPositionerProps;
   /**
-   * Props forwarded to the trigger element.
+   * Properties forwarded to the trigger element.
    */
   triggerProps?: TooltipTriggerProps;
   /**
-   * Props forwarded to the portal element.
+   * Properties forwarded to the portal element.
    */
   portalProps?: TooltipPortalProps;
   /**
-   * Props forwarded to the arrow element.
+   * Properties forwarded to the arrow element.
    */
   arrowProps?: TooltipArrowProps;
 }
 
 /**
- * Emits for the tooltip component.
+ * Events for the tooltip component.
  */
 export type TooltipEmits = TooltipRootEmits & TooltipPositionerEmits;

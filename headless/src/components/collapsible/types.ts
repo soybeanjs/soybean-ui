@@ -3,7 +3,7 @@ import type { ForceMountProps, PropsToContext, UiClass } from '../../types';
 import type { PrimitiveProps } from '../primitive/types';
 
 /**
- * Props for the collapsible root component.
+ * Properties for the collapsible root component.
  */
 export interface CollapsibleRootProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {
   /**
@@ -21,7 +21,7 @@ export interface CollapsibleRootProps extends PrimitiveProps, /** @vue-ignore */
 }
 
 /**
- * Emits for the collapsible root component.
+ * Events for the collapsible root component.
  */
 export type CollapsibleRootEmits = {
   /** Event handler called when the open state of the collapsible changes. */
@@ -29,12 +29,12 @@ export type CollapsibleRootEmits = {
 };
 
 /**
- * Props for the collapsible content component.
+ * Properties for the collapsible content component.
  */
 export interface CollapsibleContentProps extends PrimitiveProps, ForceMountProps, /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Props for the collapsible trigger component.
+ * Properties for the collapsible trigger component.
  */
 export interface CollapsibleTriggerProps extends PrimitiveProps, /** @vue-ignore */ ButtonHTMLAttributes {
   /** When `true`, prevents the user from toggling the collapsible. */

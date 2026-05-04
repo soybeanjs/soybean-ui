@@ -3,7 +3,7 @@ import type { DataOrientation, Direction, EmitsToHookProps, PropsToContext } fro
 import type { PrimitiveProps } from '../primitive/types';
 
 /**
- * Props for the roving focus group component.
+ * Properties for the roving focus group component.
  */
 export interface RovingFocusGroupProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {
   /** The orientation of the group. Mainly so arrow navigation is done accordingly (left & right vs. up & down) */
@@ -29,7 +29,7 @@ export interface RovingFocusGroupProps extends PrimitiveProps, /** @vue-ignore *
 }
 
 /**
- * Emits for the roving focus group component.
+ * Events for the roving focus group component.
  */
 export type RovingFocusGroupEmits = {
   /**
@@ -43,7 +43,7 @@ export type RovingFocusGroupEmits = {
 };
 
 /**
- * Props for the roving focus item component.
+ * Properties for the roving focus item component.
  */
 export interface RovingFocusItemProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {
   /**

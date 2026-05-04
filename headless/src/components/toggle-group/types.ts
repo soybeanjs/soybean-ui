@@ -13,7 +13,7 @@ import type { PrimitiveProps } from '../primitive/types';
 import type { ButtonProps } from '../button/types';
 
 /**
- * Props for the toggle group root component.
+ * Properties for the toggle group root component.
  */
 export interface ToggleGroupRootProps<M extends boolean = false, T extends DefinedValue = string>
   extends SelectionProps<M, T>, FormFieldCommonProps, PrimitiveProps, /** @vue-ignore */ HTMLAttributes {
@@ -30,7 +30,7 @@ export interface ToggleGroupRootProps<M extends boolean = false, T extends Defin
 }
 
 /**
- * Emits for the toggle group root component.
+ * Events for the toggle group root component.
  */
 export type ToggleGroupRootEmits<M extends boolean = false, T extends DefinedValue = string> = SelectionEmits<M, T>;
 
@@ -60,7 +60,7 @@ export type ToggleGroupRootContextParams = PropsToContext<
 };
 
 /**
- * Props for the toggle group item component.
+ * Properties for the toggle group item component.
  */
 export interface ToggleGroupItemProps<T extends DefinedValue = string> extends ButtonProps {
   /** A unique value that identifies the item inside the group. */

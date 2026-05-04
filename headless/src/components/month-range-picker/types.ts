@@ -4,7 +4,7 @@ import type { Direction, FormFieldCommonProps, PropsToContext, UiClass } from '.
 import type { PrimitiveProps } from '../primitive/types';
 
 /**
- * Props for the month range picker root component.
+ * Properties for the month range picker root component.
  */
 export interface MonthRangePickerRootProps
   extends PrimitiveProps, FormFieldCommonProps, /** @vue-ignore */ Omit<HTMLAttributes, 'placeholder'> {
@@ -67,7 +67,7 @@ export interface MonthRangePickerRootProps
 }
 
 /**
- * Emits for the month range picker root component.
+ * Events for the month range picker root component.
  */
 export type MonthRangePickerRootEmits = {
   /**
@@ -93,11 +93,11 @@ export type MonthRangePickerRootEmits = {
 };
 
 /**
- * Props for the month range picker trigger component.
+ * Properties for the month range picker trigger component.
  */
 export interface MonthRangePickerTriggerProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {}
 /**
- * Props for the month range picker popup component.
+ * Properties for the month range picker popup component.
  */
 export interface MonthRangePickerPopupProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {}
 

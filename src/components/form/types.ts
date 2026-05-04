@@ -22,7 +22,7 @@ import type { ClassValue, Path, PathValue, PropsToContext } from '@soybeanjs/hea
 import type { ThemeSize } from '@/theme';
 
 /**
- * Props for the form field base component.
+ * Properties for the form field base component.
  */
 export interface FormFieldBaseProps extends Omit<_FormFieldProps, 'class'> {
   /**
@@ -50,25 +50,25 @@ export interface FormFieldBaseProps extends Omit<_FormFieldProps, 'class'> {
    */
   description?: string;
   /**
-   * Props forwarded to the label element.
+   * Properties forwarded to the label element.
    */
   labelProps?: FormLabelProps;
   /**
-   * Props forwarded to the control element.
+   * Properties forwarded to the control element.
    */
   controlProps?: FormControlProps;
   /**
-   * Props forwarded to the description element.
+   * Properties forwarded to the description element.
    */
   descriptionProps?: FormDescriptionProps;
   /**
-   * Props forwarded to the error element.
+   * Properties forwarded to the error element.
    */
   errorProps?: FormErrorProps;
 }
 
 /**
- * Slot props for the form field base component.
+ * Slot properties for the form field base component.
  */
 export interface FormFieldBaseSlotProps {
   /**
@@ -86,7 +86,7 @@ export interface FormFieldBaseSlotProps {
 }
 
 /**
- * Props for the form field component.
+ * Properties for the form field component.
  */
 export interface FormFieldProps<Values extends FormValues, Name extends Path<Values>>
   extends Omit<FormFieldBaseProps, 'error' | 'fieldArray'>, FormRegisterOptions<PathValue<Values, Name>> {
@@ -136,7 +136,7 @@ export type FormFieldComponent<Values extends FormValues> = new <Name extends Pa
 >;
 
 /**
- * Props for the form field array component.
+ * Properties for the form field array component.
  */
 export type FormFieldArrayProps<Values extends FormValues, Name extends Path<Values>> = FormFieldProps<Values, Name>;
 
@@ -180,7 +180,7 @@ export type FormFieldArrayComponent<Values extends FormValues> = new <Name exten
 >;
 
 /**
- * Props for the form component.
+ * Properties for the form component.
  */
 export interface FormProps extends /** @vue-ignore */ FormHTMLAttributes {
   /**
@@ -200,27 +200,27 @@ export interface FormProps extends /** @vue-ignore */ FormHTMLAttributes {
    */
   inline?: boolean;
   /**
-   * Props forwarded to the field element.
+   * Properties forwarded to the field element.
    */
   fieldProps?: FormFieldBaseProps;
   /**
-   * Props forwarded to the field array element.
+   * Properties forwarded to the field array element.
    */
   fieldArrayProps?: FormFieldBaseProps;
   /**
-   * Props forwarded to the label element.
+   * Properties forwarded to the label element.
    */
   labelProps?: FormLabelProps;
   /**
-   * Props forwarded to the control element.
+   * Properties forwarded to the control element.
    */
   controlProps?: FormControlProps;
   /**
-   * Props forwarded to the description element.
+   * Properties forwarded to the description element.
    */
   descriptionProps?: FormDescriptionProps;
   /**
-   * Props forwarded to the error element.
+   * Properties forwarded to the error element.
    */
   errorProps?: FormErrorProps;
 }

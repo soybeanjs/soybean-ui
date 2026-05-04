@@ -12,7 +12,7 @@ import type { ThemeSize } from '@/theme';
 import type { PaginationShape, PaginationVariant } from './variants';
 
 /**
- * Props for the pagination component.
+ * Properties for the pagination component.
  */
 export interface PaginationProps extends PaginationRootProps {
   /**
@@ -31,23 +31,23 @@ export interface PaginationProps extends PaginationRootProps {
   actionAsSelected?: boolean;
   /** Whether to show the first and last buttons */
   showFirstOrLast?: boolean;
-  /** The props for the list component */
+  /** The properties for the list component */
   listProps?: PaginationListProps;
-  /** The props for the list item component */
+  /** The properties for the list item component */
   listItemProps?: PaginationListItemProps;
-  /** The props for the ellipsis component */
+  /** The properties for the ellipsis component */
   ellipsisProps?: PaginationEllipsisProps;
-  /** The props for the first button component */
+  /** The properties for the first button component */
   firstProps?: PaginationButtonProps;
-  /** The props for the previous button component */
+  /** The properties for the previous button component */
   prevProps?: PaginationButtonProps;
-  /** The props for the next button component */
+  /** The properties for the next button component */
   nextProps?: PaginationButtonProps;
-  /** The props for the last button component */
+  /** The properties for the last button component */
   lastProps?: PaginationButtonProps;
 }
 
 /**
- * Emits for the pagination component.
+ * Events for the pagination component.
  */
 export type PaginationEmits = PaginationRootEmits;

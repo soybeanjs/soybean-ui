@@ -2,7 +2,7 @@ import type { HTMLAttributes } from 'vue';
 import type { PrimitiveProps } from '../primitive/types';
 
 /**
- * Props for the aspect ratio component.
+ * Properties for the aspect ratio component.
  */
 export interface AspectRatioProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {
   /**

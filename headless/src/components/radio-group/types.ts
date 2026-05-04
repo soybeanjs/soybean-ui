@@ -13,7 +13,7 @@ import type { PrimitiveProps } from '../primitive/types';
 import type { LabelProps as RadioGroupLabelProps } from '../label/types';
 
 /**
- * Props for the radio group root component.
+ * Properties for the radio group root component.
  */
 export interface RadioGroupRootProps<T extends AcceptableBooleanValue = AcceptableBooleanValue>
   extends FormFieldCommonProps, /** @vue-ignore */ HTMLAttributes {
@@ -35,7 +35,7 @@ export interface RadioGroupRootProps<T extends AcceptableBooleanValue = Acceptab
 }
 
 /**
- * Emits for the radio group root component.
+ * Events for the radio group root component.
  */
 export type RadioGroupRootEmits<T extends AcceptableBooleanValue = AcceptableBooleanValue> = {
   /** Event handler called when the radio group value changes */
@@ -56,7 +56,7 @@ export type RadioGroupRootContext = PropsToContext<
 };
 
 /**
- * Props for the radio group item component.
+ * Properties for the radio group item component.
  */
 export interface RadioGroupItemProps extends FormFieldCommonProps, /** @vue-ignore */ HTMLAttributes {
   /** The value given as data when submitted with a `name`. */
@@ -80,7 +80,7 @@ export type RadioSelectEvent = CustomEvent<{
 }>;
 
 /**
- * Emits for the radio group item component.
+ * Events for the radio group item component.
  */
 export type RadioGroupItemEmits = {
   /** Event handler called when the radio item is selected */
@@ -88,7 +88,7 @@ export type RadioGroupItemEmits = {
 };
 
 /**
- * Props for the radio group control component.
+ * Properties for the radio group control component.
  */
 export interface RadioGroupControlProps extends /** @vue-ignore */ ButtonHTMLAttributes {
   /** Id of the element */
@@ -96,7 +96,7 @@ export interface RadioGroupControlProps extends /** @vue-ignore */ ButtonHTMLAtt
 }
 
 /**
- * Props for the radio group indicator component.
+ * Properties for the radio group indicator component.
  */
 export interface RadioGroupIndicatorProps extends PrimitiveProps, ForceMountProps, /** @vue-ignore */ HTMLAttributes {}
 
@@ -119,7 +119,7 @@ export interface RadioGroupOptionData<T extends AcceptableBooleanValue = Accepta
 }
 
 /**
- * Props for the radio group compact component.
+ * Properties for the radio group compact component.
  */
 export interface RadioGroupCompactProps<
   T extends AcceptableBooleanValue = AcceptableBooleanValue,
@@ -130,25 +130,25 @@ export interface RadioGroupCompactProps<
    */
   items: S[];
   /**
-   * Props forwarded to the item element.
+   * Properties forwarded to the item element.
    */
   itemProps?: RadioGroupItemProps;
   /**
-   * Props forwarded to the control element.
+   * Properties forwarded to the control element.
    */
   controlProps?: RadioGroupControlProps;
   /**
-   * Props forwarded to the indicator element.
+   * Properties forwarded to the indicator element.
    */
   indicatorProps?: RadioGroupIndicatorProps;
   /**
-   * Props forwarded to the label element.
+   * Properties forwarded to the label element.
    */
   labelProps?: RadioGroupLabelProps;
 }
 
 /**
- * Emits for the radio group compact component.
+ * Events for the radio group compact component.
  */
 export type RadioGroupCompactEmits<T extends AcceptableBooleanValue = AcceptableBooleanValue> = RadioGroupRootEmits<T>;
 

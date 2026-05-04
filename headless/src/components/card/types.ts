@@ -8,47 +8,47 @@ import type {
 } from '../collapsible/types';
 
 /**
- * Props for the card root component.
+ * Properties for the card root component.
  */
 export interface CardRootProps extends CollapsibleRootProps {}
 
 /**
- * Emits for the card root component.
+ * Events for the card root component.
  */
 export type CardRootEmits = CollapsibleRootEmits;
 
 /**
- * Props for the card header component.
+ * Properties for the card header component.
  */
 export interface CardHeaderProps extends /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Props for the card content component.
+ * Properties for the card content component.
  */
 export interface CardContentProps extends CollapsibleContentProps {}
 
 /**
- * Props for the card footer component.
+ * Properties for the card footer component.
  */
 export interface CardFooterProps extends /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Props for the card title root component.
+ * Properties for the card title root component.
  */
 export interface CardTitleRootProps extends /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Props for the card title component.
+ * Properties for the card title component.
  */
 export interface CardTitleProps extends /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Props for the card description component.
+ * Properties for the card description component.
  */
 export interface CardDescriptionProps extends /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Props for the card collapsible trigger component.
+ * Properties for the card collapsible trigger component.
  */
 export interface CardCollapsibleTriggerProps extends CollapsibleTriggerProps {}
 
@@ -63,7 +63,7 @@ export type CardUiSlot = 'root' | 'header' | 'content' | 'footer' | 'titleRoot' 
 export type CardUi = UiClass<CardUiSlot>;
 
 /**
- * Props for the card compact component.
+ * Properties for the card compact component.
  */
 export interface CardCompactProps extends CardRootProps {
   /**
@@ -75,33 +75,33 @@ export interface CardCompactProps extends CardRootProps {
    */
   description?: string;
   /**
-   * Props forwarded to the header element.
+   * Properties forwarded to the header element.
    */
   headerProps?: CardHeaderProps;
   /**
-   * Props forwarded to the content element.
+   * Properties forwarded to the content element.
    */
   contentProps?: CardContentProps;
   /**
-   * Props forwarded to the footer element.
+   * Properties forwarded to the footer element.
    */
   footerProps?: CardFooterProps;
   /**
-   * Props forwarded to the title root element.
+   * Properties forwarded to the title root element.
    */
   titleRootProps?: CardTitleRootProps;
   /**
-   * Props forwarded to the title element.
+   * Properties forwarded to the title element.
    */
   titleProps?: CardTitleProps;
   /**
-   * Props forwarded to the description element.
+   * Properties forwarded to the description element.
    */
   descriptionProps?: CardDescriptionProps;
 }
 
 /**
- * Emits for the card compact component.
+ * Events for the card compact component.
  */
 export type CardCompactEmits = CardRootEmits;
 

@@ -37,7 +37,7 @@ export type StepperExtraUiSlot = 'itemContent' | 'indicatorIcon';
 export type StepperExtendedUi = UiClass<StepperUiSlot | StepperExtraUiSlot>;
 
 /**
- * Props for the stepper component.
+ * Properties for the stepper component.
  */
 export interface StepperProps extends StepperRootProps {
   /**
@@ -61,32 +61,32 @@ export interface StepperProps extends StepperRootProps {
    */
   items: StepperOptionData[];
   /**
-   * Props forwarded to the item element.
+   * Properties forwarded to the item element.
    */
   itemProps?: StepperItemProps;
   /**
-   * Props forwarded to the trigger element.
+   * Properties forwarded to the trigger element.
    */
   triggerProps?: StepperTriggerProps;
   /**
-   * Props forwarded to the indicator element.
+   * Properties forwarded to the indicator element.
    */
   indicatorProps?: StepperIndicatorProps;
   /**
-   * Props forwarded to the separator element.
+   * Properties forwarded to the separator element.
    */
   separatorProps?: StepperSeparatorProps;
   /**
-   * Props forwarded to the title element.
+   * Properties forwarded to the title element.
    */
   titleProps?: StepperTitleProps;
   /**
-   * Props forwarded to the description element.
+   * Properties forwarded to the description element.
    */
   descriptionProps?: StepperDescriptionProps;
 }
 
 /**
- * Emits for the stepper component.
+ * Events for the stepper component.
  */
 export type StepperEmits = StepperRootEmits;

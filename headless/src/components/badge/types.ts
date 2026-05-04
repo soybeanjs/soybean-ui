@@ -2,7 +2,7 @@ import type { HTMLAttributes, ShallowRef } from 'vue';
 import type { UiClass } from '../../types';
 
 /**
- * Props for the badge root component.
+ * Properties for the badge root component.
  */
 export interface BadgeRootProps extends /** @vue-ignore */ HTMLAttributes {
   /**
@@ -12,7 +12,7 @@ export interface BadgeRootProps extends /** @vue-ignore */ HTMLAttributes {
 }
 
 /**
- * Emits for the badge root component.
+ * Events for the badge root component.
  */
 export type BadgeRootEmits = {
   /**
@@ -22,22 +22,22 @@ export type BadgeRootEmits = {
 };
 
 /**
- * Props for the badge content component.
+ * Properties for the badge content component.
  */
 export interface BadgeContentProps extends /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Props for the badge compact component.
+ * Properties for the badge compact component.
  */
 export interface BadgeCompactProps extends BadgeRootProps {
   /** Content rendered inside the badge bubble when no content slot is provided. */
   content?: string;
-  /** Props forwarded to the content element. */
+  /** Properties forwarded to the content element. */
   contentProps?: BadgeContentProps;
 }
 
 /**
- * Emits for the badge compact component.
+ * Events for the badge compact component.
  */
 export type BadgeCompactEmits = BadgeRootEmits;
 

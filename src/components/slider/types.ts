@@ -10,7 +10,7 @@ import type { ClassValue } from '@soybeanjs/headless/types';
 import type { ThemeColor, ThemeSize } from '@/theme';
 
 /**
- * Props for the slider component.
+ * Properties for the slider component.
  */
 export interface SliderProps extends SliderRootProps {
   /**
@@ -30,20 +30,20 @@ export interface SliderProps extends SliderRootProps {
    */
   ui?: Partial<SliderUi>;
   /**
-   * Props forwarded to the track element.
+   * Properties forwarded to the track element.
    */
   trackProps?: SliderTrackProps;
   /**
-   * Props forwarded to the range element.
+   * Properties forwarded to the range element.
    */
   rangeProps?: SliderRangeProps;
   /**
-   * Props forwarded to the thumb element.
+   * Properties forwarded to the thumb element.
    */
   thumbProps?: Omit<SliderThumbProps, 'index'>;
 }
 
 /**
- * Emits for the slider component.
+ * Events for the slider component.
  */
 export type SliderEmits = SliderRootEmits;

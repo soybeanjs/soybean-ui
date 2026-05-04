@@ -8,7 +8,7 @@ import type { PrimitiveProps } from '../primitive/types';
 export type SliderThumbAlignment = 'contain' | 'overflow';
 
 /**
- * Props for the slider root component.
+ * Properties for the slider root component.
  */
 export interface SliderRootProps extends PrimitiveProps, FormFieldCommonProps, /** @vue-ignore */ HTMLAttributes {
   /** The controlled value of the slider. Can be bind as `v-model`. */
@@ -36,7 +36,7 @@ export interface SliderRootProps extends PrimitiveProps, FormFieldCommonProps, /
 }
 
 /**
- * Emits for the slider root component.
+ * Events for the slider root component.
  */
 export type SliderRootEmits = {
   /** Event handler called when the slider value changes. */
@@ -46,17 +46,17 @@ export type SliderRootEmits = {
 };
 
 /**
- * Props for the slider track component.
+ * Properties for the slider track component.
  */
 export interface SliderTrackProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Props for the slider range component.
+ * Properties for the slider range component.
  */
 export interface SliderRangeProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Props for the slider thumb component.
+ * Properties for the slider thumb component.
  */
 export interface SliderThumbProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {
   /** The thumb index in the current slider value array. */

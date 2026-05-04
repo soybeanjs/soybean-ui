@@ -3,7 +3,7 @@ import type { UiClass } from '../../types';
 import type { LabelProps } from '../label/types';
 
 /**
- * Props for the form field component.
+ * Properties for the form field component.
  */
 export interface FormFieldProps extends /** @vue-ignore */ HTMLAttributes {
   /**
@@ -17,22 +17,22 @@ export interface FormFieldProps extends /** @vue-ignore */ HTMLAttributes {
 }
 
 /**
- * Props for the form label component.
+ * Properties for the form label component.
  */
 export interface FormLabelProps extends LabelProps {}
 
 /**
- * Props for the form control component.
+ * Properties for the form control component.
  */
 export interface FormControlProps extends /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Props for the form description component.
+ * Properties for the form description component.
  */
 export interface FormDescriptionProps extends /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Props for the form error component.
+ * Properties for the form error component.
  */
 export interface FormErrorProps extends /** @vue-ignore */ HTMLAttributes {}
 

@@ -11,7 +11,7 @@ import type { DataOrientation, Direction, FormFieldCommonProps, PropsToContext, 
 import type { PrimitiveProps } from '../primitive/types';
 
 /**
- * Props for the color slider root component.
+ * Properties for the color slider root component.
  */
 export interface ColorSliderRootProps extends PrimitiveProps, FormFieldCommonProps, /** @vue-ignore */ HTMLAttributes {
   /**
@@ -57,7 +57,7 @@ export interface ColorSliderRootProps extends PrimitiveProps, FormFieldCommonPro
 }
 
 /**
- * Emits for the color slider root component.
+ * Events for the color slider root component.
  */
 export type ColorSliderRootEmits = {
   /**
@@ -79,12 +79,12 @@ export type ColorSliderRootEmits = {
 };
 
 /**
- * Props for the color slider track component.
+ * Properties for the color slider track component.
  */
 export interface ColorSliderTrackProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Props for the color slider thumb component.
+ * Properties for the color slider thumb component.
  */
 export interface ColorSliderThumbProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {}
 

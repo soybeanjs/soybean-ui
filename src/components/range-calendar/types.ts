@@ -20,7 +20,7 @@ import type { ClassValue } from '@soybeanjs/headless/types';
 import type { ThemeSize } from '@/theme';
 
 /**
- * Props for the range calendar component.
+ * Properties for the range calendar component.
  */
 export interface RangeCalendarProps extends RangeCalendarRootProps {
   /**
@@ -36,58 +36,58 @@ export interface RangeCalendarProps extends RangeCalendarRootProps {
    */
   ui?: Partial<RangeCalendarUi>;
   /**
-   * Props forwarded to the header element.
+   * Properties forwarded to the header element.
    */
   headerProps?: RangeCalendarHeaderProps;
   /**
-   * Props forwarded to the heading element.
+   * Properties forwarded to the heading element.
    */
   headingProps?: RangeCalendarHeadingProps;
   /**
-   * Props forwarded to the prev element.
+   * Properties forwarded to the prev element.
    */
   prevProps?: RangeCalendarPrevProps;
   /**
-   * Props forwarded to the next element.
+   * Properties forwarded to the next element.
    */
   nextProps?: RangeCalendarNextProps;
   /**
-   * Props forwarded to the grid element.
+   * Properties forwarded to the grid element.
    */
   gridProps?: RangeCalendarGridProps;
   /**
-   * Props forwarded to the grid head element.
+   * Properties forwarded to the grid head element.
    */
   gridHeadProps?: RangeCalendarGridHeadProps;
   /**
-   * Props forwarded to the grid body element.
+   * Properties forwarded to the grid body element.
    */
   gridBodyProps?: RangeCalendarGridBodyProps;
   /**
-   * Props forwarded to the grid row element.
+   * Properties forwarded to the grid row element.
    */
   gridRowProps?: RangeCalendarGridRowProps;
   /**
-   * Props forwarded to the head cell element.
+   * Properties forwarded to the head cell element.
    */
   headCellProps?: RangeCalendarHeadCellProps;
   /**
-   * Props forwarded to the cell element.
+   * Properties forwarded to the cell element.
    */
   cellProps?: Omit<RangeCalendarCellProps, 'date'>;
   /**
-   * Props forwarded to the cell trigger element.
+   * Properties forwarded to the cell trigger element.
    */
   cellTriggerProps?: Omit<RangeCalendarCellTriggerProps, 'day' | 'month'>;
 }
 
 /**
- * Emits for the range calendar component.
+ * Events for the range calendar component.
  */
 export type RangeCalendarEmits = RangeCalendarRootEmits;
 
 /**
- * Slot props for the range calendar head cell component.
+ * Slot properties for the range calendar head cell component.
  */
 export interface RangeCalendarHeadCellSlotProps {
   /**
@@ -105,7 +105,7 @@ export interface RangeCalendarHeadCellSlotProps {
 }
 
 /**
- * Slot props for the range calendar day component.
+ * Slot properties for the range calendar day component.
  */
 export interface RangeCalendarDaySlotProps {
   /**

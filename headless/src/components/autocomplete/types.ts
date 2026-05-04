@@ -22,7 +22,7 @@ import type { ListboxCollectionItemData } from '../listbox/types';
 import type { PortalProps as AutocompletePortalProps } from '../portal/types';
 
 /**
- * Props for the autocomplete root component.
+ * Properties for the autocomplete root component.
  */
 export interface AutocompleteRootProps extends FormFieldCommonProps, /** @vue-ignore */ HTMLAttributes {
   /** The controlled value of the autocomplete input. */
@@ -51,7 +51,7 @@ export interface AutocompleteRootProps extends FormFieldCommonProps, /** @vue-ig
 export type AutocompleteHighlightPayload = CollectionItemData<ListboxCollectionItemData>;
 
 /**
- * Emits for the autocomplete root component.
+ * Events for the autocomplete root component.
  */
 export type AutocompleteRootEmits = {
   /**
@@ -79,7 +79,7 @@ export interface AutocompleteRootContext {
 }
 
 /**
- * Props for the autocomplete input component.
+ * Properties for the autocomplete input component.
  */
 export interface AutocompleteInputProps extends Omit<InputRootProps, 'defaultValue' | 'modelValue'> {
   /**
@@ -87,7 +87,7 @@ export interface AutocompleteInputProps extends Omit<InputRootProps, 'defaultVal
    */
   inputRef?: (el: HTMLInputElement) => void;
   /**
-   * Props forwarded to the control element.
+   * Properties forwarded to the control element.
    */
   controlProps?: InputControlProps;
 }
@@ -146,7 +146,7 @@ export interface AutocompleteSearchOptionData extends AutocompleteSingleOptionDa
 }
 
 /**
- * Props for the autocomplete compact component.
+ * Properties for the autocomplete compact component.
  */
 export interface AutocompleteCompactProps<
   T extends AutocompleteSingleOptionData = AutocompleteSingleOptionData
@@ -180,53 +180,53 @@ export interface AutocompleteCompactProps<
    */
   fuseOptions?: UseFuseOptions<AutocompleteSearchOptionData>;
   /**
-   * Props forwarded to the anchor element.
+   * Properties forwarded to the anchor element.
    */
   anchorProps?: AutocompleteAnchorProps;
   /**
-   * Props forwarded to the input element.
+   * Properties forwarded to the input element.
    */
   inputProps?: AutocompleteInputProps;
   /**
-   * Props forwarded to the trigger element.
+   * Properties forwarded to the trigger element.
    */
   triggerProps?: AutocompleteTriggerProps;
   /**
-   * Props forwarded to the portal element.
+   * Properties forwarded to the portal element.
    */
   portalProps?: AutocompletePortalProps;
   /**
-   * Props forwarded to the content element.
+   * Properties forwarded to the content element.
    */
   contentProps?: AutocompleteContentProps;
   /**
-   * Props forwarded to the viewport element.
+   * Properties forwarded to the viewport element.
    */
   viewportProps?: AutocompleteViewportProps;
   /**
-   * Props forwarded to the group element.
+   * Properties forwarded to the group element.
    */
   groupProps?: AutocompleteGroupProps;
   /**
-   * Props forwarded to the group label element.
+   * Properties forwarded to the group label element.
    */
   groupLabelProps?: AutocompleteGroupLabelProps;
   /**
-   * Props forwarded to the item element.
+   * Properties forwarded to the item element.
    */
   itemProps?: Omit<AutocompleteItemProps, 'disabled' | 'value'>;
   /**
-   * Props forwarded to the item indicator element.
+   * Properties forwarded to the item indicator element.
    */
   itemIndicatorProps?: AutocompleteItemIndicatorProps;
   /**
-   * Props forwarded to the separator element.
+   * Properties forwarded to the separator element.
    */
   separatorProps?: AutocompleteSeparatorProps;
 }
 
 /**
- * Emits for the autocomplete compact component.
+ * Events for the autocomplete compact component.
  */
 export type AutocompleteCompactEmits<T extends AutocompleteSingleOptionData = AutocompleteSingleOptionData> =
   AutocompleteRootEmits & {

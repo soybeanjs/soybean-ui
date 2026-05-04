@@ -9,7 +9,7 @@ import type { SeparatorRootProps } from '../separator/types';
 export type StepperState = 'completed' | 'active' | 'inactive';
 
 /**
- * Props for the stepper root component.
+ * Properties for the stepper root component.
  */
 export interface StepperRootProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {
   /**
@@ -41,7 +41,7 @@ export interface StepperRootProps extends PrimitiveProps, /** @vue-ignore */ HTM
 }
 
 /**
- * Emits for the stepper root component.
+ * Events for the stepper root component.
  */
 export type StepperRootEmits = {
   /**
@@ -51,7 +51,7 @@ export type StepperRootEmits = {
 };
 
 /**
- * Props for the stepper item component.
+ * Properties for the stepper item component.
  */
 export interface StepperItemProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {
   /** The step index, starting from `1`. */
@@ -63,22 +63,22 @@ export interface StepperItemProps extends PrimitiveProps, /** @vue-ignore */ HTM
 }
 
 /**
- * Props for the stepper trigger component.
+ * Properties for the stepper trigger component.
  */
 export interface StepperTriggerProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Props for the stepper indicator component.
+ * Properties for the stepper indicator component.
  */
 export interface StepperIndicatorProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Props for the stepper title component.
+ * Properties for the stepper title component.
  */
 export interface StepperTitleProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Props for the stepper description component.
+ * Properties for the stepper description component.
  */
 export interface StepperDescriptionProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {}
 
@@ -164,7 +164,7 @@ export type StepperUiSlot =
 export type StepperUi = UiClass<StepperUiSlot>;
 
 /**
- * Props for the stepper separator component.
+ * Properties for the stepper separator component.
  */
 export type StepperSeparatorProps = SeparatorRootProps;
 
@@ -191,7 +191,7 @@ export interface StepperItemData {
 }
 
 /**
- * Props for the stepper compact component.
+ * Properties for the stepper compact component.
  */
 export interface StepperCompactProps extends StepperRootProps {
   /**
@@ -199,33 +199,33 @@ export interface StepperCompactProps extends StepperRootProps {
    */
   items: StepperItemData[];
   /**
-   * Props forwarded to the item element.
+   * Properties forwarded to the item element.
    */
   itemProps?: StepperItemProps;
   /**
-   * Props forwarded to the trigger element.
+   * Properties forwarded to the trigger element.
    */
   triggerProps?: StepperTriggerProps;
   /**
-   * Props forwarded to the indicator element.
+   * Properties forwarded to the indicator element.
    */
   indicatorProps?: StepperIndicatorProps;
   /**
-   * Props forwarded to the separator element.
+   * Properties forwarded to the separator element.
    */
   separatorProps?: StepperSeparatorProps;
   /**
-   * Props forwarded to the title element.
+   * Properties forwarded to the title element.
    */
   titleProps?: StepperTitleProps;
   /**
-   * Props forwarded to the description element.
+   * Properties forwarded to the description element.
    */
   descriptionProps?: StepperDescriptionProps;
 }
 
 /**
- * Emits for the stepper compact component.
+ * Events for the stepper compact component.
  */
 export type StepperCompactEmits = StepperRootEmits;
 

@@ -20,7 +20,7 @@ export interface VirtualizerOptions extends Omit<
 > {}
 
 /**
- * Props for the virtualizer root component.
+ * Properties for the virtualizer root component.
  */
 export interface VirtualizerRootProps<T extends Record<string, any> = Record<string, any>>
   extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {
@@ -43,22 +43,22 @@ export interface VirtualizerRootProps<T extends Record<string, any> = Record<str
 }
 
 /**
- * Props for the virtualizer dynamic content component.
+ * Properties for the virtualizer dynamic content component.
  */
 export interface VirtualizerDynamicContentProps extends /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Props for the virtualizer content component.
+ * Properties for the virtualizer content component.
  */
 export interface VirtualizerContentProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {
   /**
-   * Props forwarded to the dynamic content element.
+   * Properties forwarded to the dynamic content element.
    */
   dynamicContentProps?: VirtualizerDynamicContentProps;
 }
 
 /**
- * Props for the virtualizer item component.
+ * Properties for the virtualizer item component.
  */
 export interface VirtualizerItemProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {
   /**

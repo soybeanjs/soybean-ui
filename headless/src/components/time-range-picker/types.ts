@@ -5,7 +5,7 @@ import type { TimePickerOption } from '../../shared/time-picker';
 import type { PrimitiveProps } from '../primitive/types';
 
 /**
- * Props for the time range picker root component.
+ * Properties for the time range picker root component.
  */
 export interface TimeRangePickerRootProps
   extends PrimitiveProps, FormFieldCommonProps, /** @vue-ignore */ Omit<HTMLAttributes, 'placeholder'> {
@@ -88,7 +88,7 @@ export interface TimeRangePickerRootProps
 }
 
 /**
- * Emits for the time range picker root component.
+ * Events for the time range picker root component.
  */
 export type TimeRangePickerRootEmits = {
   /**
@@ -114,11 +114,11 @@ export type TimeRangePickerRootEmits = {
 };
 
 /**
- * Props for the time range picker trigger component.
+ * Properties for the time range picker trigger component.
  */
 export interface TimeRangePickerTriggerProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {}
 /**
- * Props for the time range picker popup component.
+ * Properties for the time range picker popup component.
  */
 export interface TimeRangePickerPopupProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {}
 
@@ -250,21 +250,21 @@ export type TimeRangePickerUiSlot = 'root' | 'trigger' | 'popup' | 'list' | 'cel
 export type TimeRangePickerUi = UiClass<TimeRangePickerUiSlot>;
 
 /**
- * Props for the time range picker compact component.
+ * Properties for the time range picker compact component.
  */
 export interface TimeRangePickerCompactProps extends TimeRangePickerRootProps {
   /**
-   * Props forwarded to the trigger element.
+   * Properties forwarded to the trigger element.
    */
   triggerProps?: TimeRangePickerTriggerProps;
   /**
-   * Props forwarded to the popup element.
+   * Properties forwarded to the popup element.
    */
   popupProps?: TimeRangePickerPopupProps;
 }
 
 /**
- * Emits for the time range picker compact component.
+ * Events for the time range picker compact component.
  */
 export type TimeRangePickerCompactEmits = TimeRangePickerRootEmits;
 

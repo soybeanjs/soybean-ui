@@ -3,7 +3,7 @@ import type { DateFieldCompactProps, DateFieldCompactEmits, DateFieldUi } from '
 import type { ThemeSize } from '@/theme';
 
 /**
- * Props for the date field component.
+ * Properties for the date field component.
  */
 export interface DateFieldProps extends DateFieldCompactProps {
   /**
@@ -21,6 +21,6 @@ export interface DateFieldProps extends DateFieldCompactProps {
 }
 
 /**
- * Emits for the date field component.
+ * Events for the date field component.
  */
 export type DateFieldEmits = DateFieldCompactEmits;

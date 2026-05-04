@@ -10,7 +10,7 @@ import type { AlertVariant } from './variants';
 export type AlertExtendedUi = AlertUi;
 
 /**
- * Props for the alert component.
+ * Properties for the alert component.
  */
 export interface AlertProps extends AlertCompactProps {
   /**
@@ -36,7 +36,7 @@ export interface AlertProps extends AlertCompactProps {
 }
 
 /**
- * Emits for the alert component.
+ * Events for the alert component.
  */
 export type AlertEmits = AlertCompactEmits;
 

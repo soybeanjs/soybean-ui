@@ -16,7 +16,7 @@ import type { ThemeColor, ThemeSize } from '@/theme';
 import type { ButtonProps } from '../button/types';
 
 /**
- * Props for the popconfirm confirm component.
+ * Properties for the popconfirm confirm component.
  */
 export interface PopconfirmConfirmProps extends ButtonProps {
   /**
@@ -30,7 +30,7 @@ export interface PopconfirmConfirmProps extends ButtonProps {
   beforeClose?: () => MaybePromise<boolean | void>;
 }
 /**
- * Emits for the popconfirm confirm component.
+ * Events for the popconfirm confirm component.
  */
 export type PopconfirmConfirmEmits = {
   /**
@@ -40,7 +40,7 @@ export type PopconfirmConfirmEmits = {
 };
 
 /**
- * Props for the popconfirm cancel component.
+ * Properties for the popconfirm cancel component.
  */
 export interface PopconfirmCancelProps extends ButtonProps {
   /**
@@ -54,7 +54,7 @@ export interface PopconfirmCancelProps extends ButtonProps {
   beforeClose?: () => MaybePromise<boolean | void>;
 }
 /**
- * Emits for the popconfirm cancel component.
+ * Events for the popconfirm cancel component.
  */
 export type PopconfirmCancelEmits = {
   /**
@@ -64,27 +64,27 @@ export type PopconfirmCancelEmits = {
 };
 
 /**
- * Props for the popconfirm header component.
+ * Properties for the popconfirm header component.
  */
 export interface PopconfirmHeaderProps extends /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Props for the popconfirm title component.
+ * Properties for the popconfirm title component.
  */
 export interface PopconfirmTitleProps extends /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Props for the popconfirm description component.
+ * Properties for the popconfirm description component.
  */
 export interface PopconfirmDescriptionProps extends /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Props for the popconfirm content component.
+ * Properties for the popconfirm content component.
  */
 export interface PopconfirmContentProps extends /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Props for the popconfirm footer component.
+ * Properties for the popconfirm footer component.
  */
 export interface PopconfirmFooterProps extends /** @vue-ignore */ HTMLAttributes {}
 
@@ -101,7 +101,7 @@ type PopconfirmUiSlot = PopoverUiSlot | 'header' | 'icon' | 'header' | 'title' |
 export type PopconfirmUi = UiClass<PopconfirmUiSlot>;
 
 /**
- * Props for the popconfirm component.
+ * Properties for the popconfirm component.
  */
 export interface PopconfirmProps extends PopoverRootProps {
   /**
@@ -171,61 +171,61 @@ export interface PopconfirmProps extends PopoverRootProps {
    */
   beforeConfirm?: () => MaybePromise<boolean | void>;
   /**
-   * Props forwarded to the confirm element.
+   * Properties forwarded to the confirm element.
    */
   confirmProps?: PopconfirmConfirmProps;
   /**
-   * Props forwarded to the cancel element.
+   * Properties forwarded to the cancel element.
    */
   cancelProps?: PopconfirmCancelProps;
   /**
-   * Props forwarded to the positioner element.
+   * Properties forwarded to the positioner element.
    */
   positionerProps?: PopoverPositionerProps;
   /**
-   * Props forwarded to the popup element.
+   * Properties forwarded to the popup element.
    */
   popupProps?: PopoverPopupProps;
   /**
-   * Props forwarded to the trigger element.
+   * Properties forwarded to the trigger element.
    */
   triggerProps?: PopoverTriggerProps;
   /**
-   * Props forwarded to the close element.
+   * Properties forwarded to the close element.
    */
   closeProps?: PopoverCloseProps;
   /**
-   * Props forwarded to the portal element.
+   * Properties forwarded to the portal element.
    */
   portalProps?: PopoverPortalProps;
   /**
-   * Props forwarded to the arrow element.
+   * Properties forwarded to the arrow element.
    */
   arrowProps?: PopoverArrowProps;
   /**
-   * Props forwarded to the header element.
+   * Properties forwarded to the header element.
    */
   headerProps?: PopconfirmHeaderProps;
   /**
-   * Props forwarded to the title element.
+   * Properties forwarded to the title element.
    */
   titleProps?: PopconfirmTitleProps;
   /**
-   * Props forwarded to the description element.
+   * Properties forwarded to the description element.
    */
   descriptionProps?: PopconfirmDescriptionProps;
   /**
-   * Props forwarded to the content element.
+   * Properties forwarded to the content element.
    */
   contentProps?: PopconfirmContentProps;
   /**
-   * Props forwarded to the footer element.
+   * Properties forwarded to the footer element.
    */
   footerProps?: PopconfirmFooterProps;
 }
 
 /**
- * Emits for the popconfirm component.
+ * Events for the popconfirm component.
  */
 export type PopconfirmEmits = PopoverRootEmits &
   PopoverPositionerEmits & {

@@ -3,7 +3,7 @@ import type { ClassValue } from '@soybeanjs/headless/types';
 import type { ThemeSize } from '@/theme';
 
 /**
- * Props for the dialog component.
+ * Properties for the dialog component.
  */
 export interface DialogProps extends DialogCompactProps {
   /**
@@ -21,7 +21,7 @@ export interface DialogProps extends DialogCompactProps {
 }
 
 /**
- * Emits for the dialog component.
+ * Events for the dialog component.
  */
 export type DialogEmits = DialogCompactEmits;
 

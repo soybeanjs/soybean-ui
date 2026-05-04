@@ -2,12 +2,12 @@ import type { HTMLAttributes, ImgHTMLAttributes } from 'vue';
 import type { ImageLoadingStatus, UiClass } from '../../types';
 
 /**
- * Props for the avatar root component.
+ * Properties for the avatar root component.
  */
 export interface AvatarRootProps extends /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Props for the avatar image component.
+ * Properties for the avatar image component.
  */
 export interface AvatarImageProps extends /** @vue-ignore */ ImgHTMLAttributes {
   /** The image source URL */
@@ -18,7 +18,7 @@ export interface AvatarImageProps extends /** @vue-ignore */ ImgHTMLAttributes {
   crossorigin?: ImgHTMLAttributes['crossorigin'];
 }
 /**
- * Emits for the avatar image component.
+ * Events for the avatar image component.
  */
 export type AvatarImageEmits = {
   /**
@@ -29,7 +29,7 @@ export type AvatarImageEmits = {
 };
 
 /**
- * Props for the avatar fallback component.
+ * Properties for the avatar fallback component.
  */
 export interface AvatarFallbackProps extends /** @vue-ignore */ HTMLAttributes {
   /**
@@ -41,7 +41,7 @@ export interface AvatarFallbackProps extends /** @vue-ignore */ HTMLAttributes {
 }
 
 /**
- * Props for the avatar compact component.
+ * Properties for the avatar compact component.
  */
 export interface AvatarCompactProps extends AvatarRootProps {
   /** The image source URL. */
@@ -54,14 +54,14 @@ export interface AvatarCompactProps extends AvatarRootProps {
   delayMs?: number;
   /** Fallback text rendered when no custom fallback slot is provided. */
   fallbackLabel?: string;
-  /** Props forwarded to the image element. */
+  /** Properties forwarded to the image element. */
   imageProps?: AvatarImageProps;
-  /** Props forwarded to the fallback element. */
+  /** Properties forwarded to the fallback element. */
   fallbackProps?: AvatarFallbackProps;
 }
 
 /**
- * Emits for the avatar compact component.
+ * Events for the avatar compact component.
  */
 export type AvatarCompactEmits = AvatarImageEmits;
 

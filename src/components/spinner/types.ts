@@ -8,7 +8,7 @@ import type { IconProps } from '../icon/types';
 export type SpinnerIcon = `svg-spinners:${string}`;
 
 /**
- * Props for the spinner component.
+ * Properties for the spinner component.
  */
 export interface SpinnerProps extends Omit<IconProps, 'icon' | 'color'> {
   /**

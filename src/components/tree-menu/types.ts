@@ -92,7 +92,7 @@ export type TreeMenuOptionData<T extends TreeMenuBaseOptionData = TreeMenuBaseOp
 };
 
 /**
- * Slot props for the tree menu component.
+ * Slot properties for the tree menu component.
  */
 export interface TreeMenuOptionSlotProps extends TreeMenuOptionProps {
   /**
@@ -102,7 +102,7 @@ export interface TreeMenuOptionSlotProps extends TreeMenuOptionProps {
 }
 
 /**
- * Props for the tree menu option component.
+ * Properties for the tree menu option component.
  */
 export interface TreeMenuOptionProps {
   /**
@@ -114,29 +114,29 @@ export interface TreeMenuOptionProps {
    */
   item: TreeMenuOptionData;
   /**
-   * Props forwarded to the item element.
+   * Properties forwarded to the item element.
    */
   itemProps?: TreeMenuItemProps;
   /**
-   * Props forwarded to the button element.
+   * Properties forwarded to the button element.
    */
   buttonProps?: TreeMenuButtonProps;
   /**
-   * Props forwarded to the link element.
+   * Properties forwarded to the link element.
    */
   linkProps?: LinkProps;
   /**
-   * Props forwarded to the collapsible element.
+   * Properties forwarded to the collapsible element.
    */
   collapsibleProps?: TreeMenuCollapsibleProps;
   /**
-   * Props forwarded to the sub element.
+   * Properties forwarded to the sub element.
    */
   subProps?: TreeMenuSubProps;
 }
 
 /**
- * Emits for the tree menu option component.
+ * Events for the tree menu option component.
  */
 export type TreeMenuOptionEmits = {
   /**
@@ -146,7 +146,7 @@ export type TreeMenuOptionEmits = {
 };
 
 /**
- * Props for the tree menu options component.
+ * Properties for the tree menu options component.
  */
 export interface TreeMenuOptionsProps<T extends TreeMenuBaseOptionData = TreeMenuBaseOptionData> extends Omit<
   TreeMenuOptionProps,
@@ -157,15 +157,15 @@ export interface TreeMenuOptionsProps<T extends TreeMenuBaseOptionData = TreeMen
    */
   items: TreeMenuOptionData<T>[];
   /**
-   * Props forwarded to the group root element.
+   * Properties forwarded to the group root element.
    */
   groupRootProps?: TreeMenuGroupRootProps;
   /**
-   * Props forwarded to the group element.
+   * Properties forwarded to the group element.
    */
   groupProps?: TreeMenuGroupProps;
   /**
-   * Props forwarded to the group label element.
+   * Properties forwarded to the group label element.
    */
   groupLabelProps?: TreeMenuGroupLabelProps;
   /**
@@ -177,7 +177,7 @@ export interface TreeMenuOptionsProps<T extends TreeMenuBaseOptionData = TreeMen
 }
 
 /**
- * Emits for the tree menu options component.
+ * Events for the tree menu options component.
  */
 export type TreeMenuOptionsEmits = TreeMenuOptionEmits;
 
@@ -199,7 +199,7 @@ export type TreeMenuExtraUiSlot =
 export type TreeMenuExtendedUi = UiClass<TreeMenuUiSlot | TreeMenuExtraUiSlot>;
 
 /**
- * Props for the tree menu component.
+ * Properties for the tree menu component.
  */
 export interface TreeMenuProps<T extends TreeMenuBaseOptionData = TreeMenuBaseOptionData>
   extends TreeMenuRootProps, TreeMenuOptionsProps<T> {
@@ -236,12 +236,12 @@ export interface TreeMenuProps<T extends TreeMenuBaseOptionData = TreeMenuBaseOp
 }
 
 /**
- * Emits for the tree menu component.
+ * Events for the tree menu component.
  */
 export type TreeMenuEmits = TreeMenuRootEmits & TreeMenuOptionEmits;
 
 /**
- * Props for the tree menu styled item component.
+ * Properties for the tree menu styled item component.
  */
 export interface TreeMenuStyledItemProps extends /** @vue-ignore */ HTMLAttributes {
   /**

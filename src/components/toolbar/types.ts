@@ -2,7 +2,7 @@ import type { ToolbarRootProps as HeadlessToolbarRootProps, ToolbarUi } from '@s
 import type { ClassValue } from '@soybeanjs/headless/types';
 
 /**
- * Props for the toolbar component.
+ * Properties for the toolbar component.
  */
 export interface ToolbarProps extends HeadlessToolbarRootProps {
   /**

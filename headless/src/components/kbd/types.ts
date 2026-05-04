@@ -7,7 +7,7 @@ import type { KbdKey } from '../../types';
 export type KbdValue = KbdKey | (string & {});
 
 /**
- * Props for the kbd component.
+ * Properties for the kbd component.
  */
 export interface KbdProps extends /** @vue-ignore */ HTMLAttributes {
   /**

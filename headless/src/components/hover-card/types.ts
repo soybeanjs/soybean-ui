@@ -4,7 +4,7 @@ import type { PopperAnchorProps, PopperArrowProps, PopperPopupProps, PopperPosit
 import type { PortalProps } from '../portal/types';
 
 /**
- * Props for the hover card root component.
+ * Properties for the hover card root component.
  */
 export interface HoverCardRootProps {
   /** The open state of the hover card when it is initially rendered. Use when you do not need to control its open state. */
@@ -18,7 +18,7 @@ export interface HoverCardRootProps {
 }
 
 /**
- * Emits for the hover card root component.
+ * Events for the hover card root component.
  */
 export interface HoverCardRootEmits {
   /** Event handler called when the open state of the hover card changes. */
@@ -26,11 +26,11 @@ export interface HoverCardRootEmits {
 }
 
 /**
- * Props for the hover card positioner impl component.
+ * Properties for the hover card positioner impl component.
  */
 export interface HoverCardPositionerImplProps extends PopperPositionerProps {}
 /**
- * Emits for the hover card positioner impl component.
+ * Events for the hover card positioner impl component.
  */
 export type HoverCardPositionerImplEmits = Pick<
   DismissableLayerEmits,
@@ -38,16 +38,16 @@ export type HoverCardPositionerImplEmits = Pick<
 >;
 
 /**
- * Props for the hover card positioner component.
+ * Properties for the hover card positioner component.
  */
 export interface HoverCardPositionerProps extends HoverCardPositionerImplProps, ForceMountProps {}
 /**
- * Emits for the hover card positioner component.
+ * Events for the hover card positioner component.
  */
 export type HoverCardPositionerEmits = HoverCardPositionerImplEmits;
 
 /**
- * Props for the hover card popup component.
+ * Properties for the hover card popup component.
  */
 export interface HoverCardPopupProps extends PopperPopupProps {}
 
@@ -120,7 +120,7 @@ export type { PortalProps as HoverCardPortalProps } from '../portal/types';
 export type { PopperAnchorProps as HoverCardTriggerProps } from '../popper/types';
 
 /**
- * Props for the hover card compact component.
+ * Properties for the hover card compact component.
  */
 export interface HoverCardCompactProps extends HoverCardRootProps {
   /**
@@ -132,29 +132,29 @@ export interface HoverCardCompactProps extends HoverCardRootProps {
    */
   showArrow?: boolean;
   /**
-   * Props forwarded to the trigger element.
+   * Properties forwarded to the trigger element.
    */
   triggerProps?: PopperAnchorProps;
   /**
-   * Props forwarded to the portal element.
+   * Properties forwarded to the portal element.
    */
   portalProps?: PortalProps;
   /**
-   * Props forwarded to the positioner element.
+   * Properties forwarded to the positioner element.
    */
   positionerProps?: HoverCardPositionerProps;
   /**
-   * Props forwarded to the popup element.
+   * Properties forwarded to the popup element.
    */
   popupProps?: HoverCardPopupProps;
   /**
-   * Props forwarded to the arrow element.
+   * Properties forwarded to the arrow element.
    */
   arrowProps?: PopperArrowProps;
 }
 
 /**
- * Emits for the hover card compact component.
+ * Events for the hover card compact component.
  */
 export type HoverCardCompactEmits = HoverCardRootEmits & HoverCardPositionerEmits;
 

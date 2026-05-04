@@ -15,24 +15,24 @@ import type { AcceptableBooleanValue, DefinedValue } from '@soybeanjs/headless/t
 import type { MenuUiBaseProps } from '../menu/types';
 
 /**
- * Props for the dropdown menu wrapper component.
+ * Properties for the dropdown menu wrapper component.
  */
 export interface DropdownMenuWrapperProps extends MenuUiBaseProps, DropdownMenuWrapperCompactProps {}
 
 /**
- * Emits for the dropdown menu wrapper component.
+ * Events for the dropdown menu wrapper component.
  */
 export type DropdownMenuWrapperEmits = DropdownMenuWrapperCompactEmits;
 
 // Menu
 /**
- * Props for the dropdown menu component.
+ * Properties for the dropdown menu component.
  */
 export type DropdownMenuProps<T extends DefinedValue = DefinedValue> = Omit<MenuUiBaseProps, 'indicatorPosition'> &
   DropdownMenuCompactProps<T>;
 
 /**
- * Emits for the dropdown menu component.
+ * Events for the dropdown menu component.
  */
 export type DropdownMenuEmits<T extends DefinedValue = DefinedValue> = DropdownMenuCompactEmits<T>;
 
@@ -43,13 +43,13 @@ export type DropdownMenuSlots<T extends DefinedValue = DefinedValue> = DropdownM
 
 // Menu Checkbox
 /**
- * Props for the dropdown menu checkbox component.
+ * Properties for the dropdown menu checkbox component.
  */
 export type DropdownMenuCheckboxProps<T extends DefinedValue = DefinedValue> = MenuUiBaseProps &
   DropdownMenuCheckboxCompactProps<T>;
 
 /**
- * Emits for the dropdown menu checkbox component.
+ * Events for the dropdown menu checkbox component.
  */
 export type DropdownMenuCheckboxEmits<T extends DefinedValue = DefinedValue> = DropdownMenuCheckboxCompactEmits<T>;
 
@@ -60,13 +60,13 @@ export type DropdownMenuCheckboxSlots<T extends DefinedValue = DefinedValue> = D
 
 // Menu Radio
 /**
- * Props for the dropdown menu radio component.
+ * Properties for the dropdown menu radio component.
  */
 export type DropdownMenuRadioProps<T extends AcceptableBooleanValue = AcceptableBooleanValue> = MenuUiBaseProps &
   DropdownMenuRadioCompactProps<T>;
 
 /**
- * Emits for the dropdown menu radio component.
+ * Events for the dropdown menu radio component.
  */
 export type DropdownMenuRadioEmits<T extends AcceptableBooleanValue = AcceptableBooleanValue> =
   DropdownMenuRadioCompactEmits<T>;

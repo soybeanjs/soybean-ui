@@ -82,7 +82,7 @@ export function useCollection<ItemData = Record<string, any>>(collectionName: st
    * Hook for registering individual collection items
    *
    * @param itemData - Data to associate with this collection item
-   * @returns Item element reference and props for registration
+   * @returns Item element reference and properties for registration
    */
   const useCollectionItem = (itemData: MaybeRefOrGetter<ItemData> = {} as ItemData) => {
     const consumerName = pascalCase(`${collectionName}Item`);

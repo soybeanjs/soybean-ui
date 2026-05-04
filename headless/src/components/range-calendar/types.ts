@@ -5,7 +5,7 @@ import type { Direction, PropsToContext, UiClass } from '../../types';
 import type { PrimitiveProps } from '../primitive/types';
 
 /**
- * Props for the range calendar root component.
+ * Properties for the range calendar root component.
  */
 export interface RangeCalendarRootProps extends PrimitiveProps, /** @vue-ignore */ Omit<HTMLAttributes, 'placeholder'> {
   /**
@@ -119,7 +119,7 @@ export interface RangeCalendarRootProps extends PrimitiveProps, /** @vue-ignore 
 }
 
 /**
- * Emits for the range calendar root component.
+ * Events for the range calendar root component.
  */
 export type RangeCalendarRootEmits = {
   /**
@@ -137,43 +137,43 @@ export type RangeCalendarRootEmits = {
 };
 
 /**
- * Props for the range calendar header component.
+ * Properties for the range calendar header component.
  */
 export interface RangeCalendarHeaderProps
   extends PrimitiveProps, /** @vue-ignore */ Omit<HTMLAttributes, 'placeholder'> {}
 /**
- * Props for the range calendar heading component.
+ * Properties for the range calendar heading component.
  */
 export interface RangeCalendarHeadingProps
   extends PrimitiveProps, /** @vue-ignore */ Omit<HTMLAttributes, 'placeholder'> {}
 /**
- * Props for the range calendar grid component.
+ * Properties for the range calendar grid component.
  */
 export interface RangeCalendarGridProps
   extends PrimitiveProps, /** @vue-ignore */ Omit<HTMLAttributes, 'placeholder'> {}
 /**
- * Props for the range calendar grid head component.
+ * Properties for the range calendar grid head component.
  */
 export interface RangeCalendarGridHeadProps
   extends PrimitiveProps, /** @vue-ignore */ Omit<HTMLAttributes, 'placeholder'> {}
 /**
- * Props for the range calendar grid body component.
+ * Properties for the range calendar grid body component.
  */
 export interface RangeCalendarGridBodyProps
   extends PrimitiveProps, /** @vue-ignore */ Omit<HTMLAttributes, 'placeholder'> {}
 /**
- * Props for the range calendar grid row component.
+ * Properties for the range calendar grid row component.
  */
 export interface RangeCalendarGridRowProps
   extends PrimitiveProps, /** @vue-ignore */ Omit<HTMLAttributes, 'placeholder'> {}
 /**
- * Props for the range calendar head cell component.
+ * Properties for the range calendar head cell component.
  */
 export interface RangeCalendarHeadCellProps
   extends PrimitiveProps, /** @vue-ignore */ Omit<HTMLAttributes, 'placeholder'> {}
 
 /**
- * Props for the range calendar cell component.
+ * Properties for the range calendar cell component.
  */
 export interface RangeCalendarCellProps extends PrimitiveProps, /** @vue-ignore */ Omit<HTMLAttributes, 'placeholder'> {
   /**
@@ -183,7 +183,7 @@ export interface RangeCalendarCellProps extends PrimitiveProps, /** @vue-ignore 
 }
 
 /**
- * Props for the range calendar cell trigger component.
+ * Properties for the range calendar cell trigger component.
  */
 export interface RangeCalendarCellTriggerProps
   extends PrimitiveProps, /** @vue-ignore */ Omit<HTMLAttributes, 'placeholder'> {
@@ -198,7 +198,7 @@ export interface RangeCalendarCellTriggerProps
 }
 
 /**
- * Props for the range calendar prev component.
+ * Properties for the range calendar prev component.
  */
 export interface RangeCalendarPrevProps extends PrimitiveProps, /** @vue-ignore */ ButtonHTMLAttributes {
   /**
@@ -208,7 +208,7 @@ export interface RangeCalendarPrevProps extends PrimitiveProps, /** @vue-ignore 
 }
 
 /**
- * Props for the range calendar next component.
+ * Properties for the range calendar next component.
  */
 export interface RangeCalendarNextProps extends PrimitiveProps, /** @vue-ignore */ ButtonHTMLAttributes {
   /**
@@ -413,57 +413,57 @@ export type RangeCalendarUiSlot =
 export type RangeCalendarUi = UiClass<RangeCalendarUiSlot>;
 
 /**
- * Props for the range calendar compact component.
+ * Properties for the range calendar compact component.
  */
 export interface RangeCalendarCompactProps extends RangeCalendarRootProps {
   /**
-   * Props forwarded to the header element.
+   * Properties forwarded to the header element.
    */
   headerProps?: RangeCalendarHeaderProps;
   /**
-   * Props forwarded to the heading element.
+   * Properties forwarded to the heading element.
    */
   headingProps?: RangeCalendarHeadingProps;
   /**
-   * Props forwarded to the prev element.
+   * Properties forwarded to the prev element.
    */
   prevProps?: RangeCalendarPrevProps;
   /**
-   * Props forwarded to the next element.
+   * Properties forwarded to the next element.
    */
   nextProps?: RangeCalendarNextProps;
   /**
-   * Props forwarded to the grid element.
+   * Properties forwarded to the grid element.
    */
   gridProps?: RangeCalendarGridProps;
   /**
-   * Props forwarded to the grid head element.
+   * Properties forwarded to the grid head element.
    */
   gridHeadProps?: RangeCalendarGridHeadProps;
   /**
-   * Props forwarded to the grid body element.
+   * Properties forwarded to the grid body element.
    */
   gridBodyProps?: RangeCalendarGridBodyProps;
   /**
-   * Props forwarded to the grid row element.
+   * Properties forwarded to the grid row element.
    */
   gridRowProps?: RangeCalendarGridRowProps;
   /**
-   * Props forwarded to the head cell element.
+   * Properties forwarded to the head cell element.
    */
   headCellProps?: RangeCalendarHeadCellProps;
   /**
-   * Props forwarded to the cell element.
+   * Properties forwarded to the cell element.
    */
   cellProps?: Omit<RangeCalendarCellProps, 'date'>;
   /**
-   * Props forwarded to the cell trigger element.
+   * Properties forwarded to the cell trigger element.
    */
   cellTriggerProps?: Omit<RangeCalendarCellTriggerProps, 'day' | 'month'>;
 }
 
 /**
- * Emits for the range calendar compact component.
+ * Events for the range calendar compact component.
  */
 export type RangeCalendarCompactEmits = RangeCalendarRootEmits;
 

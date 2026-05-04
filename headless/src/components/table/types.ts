@@ -10,7 +10,7 @@ import type { CheckedState, Direction, Path, PathValue, PropsToContext, UiClass 
 import type { VirtualizerOptions } from '../virtualizer/types';
 
 /**
- * Props for the table root component.
+ * Properties for the table root component.
  */
 export interface TableRootProps extends /** @vue-ignore */ HTMLAttributes {
   /**
@@ -20,42 +20,42 @@ export interface TableRootProps extends /** @vue-ignore */ HTMLAttributes {
 }
 
 /**
- * Props for the table scroll component.
+ * Properties for the table scroll component.
  */
 export interface TableScrollProps extends /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Props for the table content component.
+ * Properties for the table content component.
  */
 export interface TableContentProps extends /** @vue-ignore */ TableHTMLAttributes {}
 
 /**
- * Props for the table header component.
+ * Properties for the table header component.
  */
 export interface TableHeaderProps extends /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Props for the table body component.
+ * Properties for the table body component.
  */
 export interface TableBodyProps extends /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Props for the table footer component.
+ * Properties for the table footer component.
  */
 export interface TableFooterProps extends /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Props for the table row component.
+ * Properties for the table row component.
  */
 export interface TableRowProps extends /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Props for the table head component.
+ * Properties for the table head component.
  */
 export interface TableHeadProps extends /** @vue-ignore */ ThHTMLAttributes {}
 
 /**
- * Props for the table cell component.
+ * Properties for the table cell component.
  */
 export interface TableCellProps extends /** @vue-ignore */ TdHTMLAttributes {}
 
@@ -505,7 +505,7 @@ export interface TableFixedColumnOffsets {
 }
 
 /**
- * Props for the table selection component.
+ * Properties for the table selection component.
  */
 export interface TableSelectionProps<R extends TableUnifiedKey = TableUnifiedKey, M extends boolean = false> {
   /**
@@ -523,7 +523,7 @@ export interface TableSelectionProps<R extends TableUnifiedKey = TableUnifiedKey
 }
 
 /**
- * Props for the table compact cell component.
+ * Properties for the table compact cell component.
  */
 export interface TableCompactCellProps {
   /**
@@ -541,7 +541,7 @@ export interface TableCompactCellProps {
 }
 
 /**
- * Props for the table compact expanded row component.
+ * Properties for the table compact expanded row component.
  */
 export interface TableCompactExpandedRowProps {
   /**
@@ -559,12 +559,12 @@ export interface TableCompactExpandedRowProps {
 }
 
 /**
- * Props for the table compact head component.
+ * Properties for the table compact head component.
  */
 export interface TableCompactHeadProps extends Omit<TableHeaderCell, 'key'> {}
 
 /**
- * Props for the table compact row component.
+ * Properties for the table compact row component.
  */
 export interface TableCompactRowProps {
   /**
@@ -606,7 +606,7 @@ export type TableCompactCellSlots<T extends TableBaseData> = {
 };
 
 /**
- * Slot props for the table header component.
+ * Slot properties for the table header component.
  */
 export interface TableHeaderSlotProps<T extends TableBaseData = TableBaseData> {
   /**
@@ -704,7 +704,7 @@ export interface TableHeaderSlotProps<T extends TableBaseData = TableBaseData> {
 }
 
 /**
- * Slot props for the table header selection component.
+ * Slot properties for the table header selection component.
  */
 export interface TableHeaderSelectionSlotProps<T extends TableBaseData = TableBaseData> {
   /**
@@ -730,7 +730,7 @@ export interface TableHeaderSelectionSlotProps<T extends TableBaseData = TableBa
 }
 
 /**
- * Slot props for the table header filter component.
+ * Slot properties for the table header filter component.
  */
 export interface TableHeaderFilterSlotProps<T extends TableBaseData = TableBaseData> extends Pick<
   TableHeaderSlotProps<T>,
@@ -749,7 +749,7 @@ export interface TableHeaderFilterSlotProps<T extends TableBaseData = TableBaseD
 > {}
 
 /**
- * Slot props for the table header sort component.
+ * Slot properties for the table header sort component.
  */
 export interface TableHeaderSortSlotProps<T extends TableBaseData = TableBaseData> {
   /**
@@ -771,7 +771,7 @@ export interface TableHeaderSortSlotProps<T extends TableBaseData = TableBaseDat
 }
 
 /**
- * Slot props for the table header resize component.
+ * Slot properties for the table header resize component.
  */
 export interface TableHeaderResizeSlotProps<T extends TableBaseData = TableBaseData> {
   /**
@@ -797,7 +797,7 @@ export interface TableHeaderResizeSlotProps<T extends TableBaseData = TableBaseD
 }
 
 /**
- * Slot props for the table index component.
+ * Slot properties for the table index component.
  */
 export interface TableIndexSlotProps<T extends TableBaseData = TableBaseData> {
   /**
@@ -823,7 +823,7 @@ export interface TableIndexSlotProps<T extends TableBaseData = TableBaseData> {
 }
 
 /**
- * Slot props for the table cell component.
+ * Slot properties for the table cell component.
  */
 export interface TableCellSlotProps<T extends TableBaseData = TableBaseData> {
   /**
@@ -857,7 +857,7 @@ export interface TableCellSlotProps<T extends TableBaseData = TableBaseData> {
 }
 
 /**
- * Slot props for the table selection component.
+ * Slot properties for the table selection component.
  */
 export interface TableSelectionSlotProps<T extends TableBaseData = TableBaseData> extends TableCellSlotProps<T> {
   /**
@@ -879,7 +879,7 @@ export interface TableSelectionSlotProps<T extends TableBaseData = TableBaseData
 }
 
 /**
- * Slot props for the table expand component.
+ * Slot properties for the table expand component.
  */
 export interface TableExpandSlotProps<T extends TableBaseData = TableBaseData> extends TableCellSlotProps<T> {
   /**
@@ -889,12 +889,12 @@ export interface TableExpandSlotProps<T extends TableBaseData = TableBaseData> e
 }
 
 /**
- * Slot props for the table tree toggle component.
+ * Slot properties for the table tree toggle component.
  */
 export type TableTreeToggleSlotProps<T extends TableBaseData = TableBaseData> = TableExpandSlotProps<T>;
 
 /**
- * Slot props for the table expanded row component.
+ * Slot properties for the table expanded row component.
  */
 export interface TableExpandedRowSlotProps<T extends TableBaseData = TableBaseData> {
   /**
@@ -916,7 +916,7 @@ export interface TableExpandedRowSlotProps<T extends TableBaseData = TableBaseDa
 }
 
 /**
- * Slot props for the table empty component.
+ * Slot properties for the table empty component.
  */
 export interface TableEmptySlotProps {
   /**
@@ -926,7 +926,7 @@ export interface TableEmptySlotProps {
 }
 
 /**
- * Slot props for the table data cell component.
+ * Slot properties for the table data cell component.
  */
 export interface TableDataCellSlotProps<
   T extends TableBaseData = TableBaseData,
@@ -939,7 +939,7 @@ export interface TableDataCellSlotProps<
 }
 
 /**
- * Props for the table compact component.
+ * Properties for the table compact component.
  */
 export interface TableCompactProps<
   T extends TableBaseData = TableBaseData,
@@ -1020,37 +1020,37 @@ export interface TableCompactProps<
    */
   defaultExpandAll?: boolean;
   /**
-   * Props forwarded to the content element.
+   * Properties forwarded to the content element.
    */
   contentProps?: TableContentProps;
   /**
-   * Props forwarded to the header element.
+   * Properties forwarded to the header element.
    */
   headerProps?: TableHeaderProps;
   /**
-   * Props forwarded to the body element.
+   * Properties forwarded to the body element.
    */
   bodyProps?: TableBodyProps;
   /**
-   * Props forwarded to the footer element.
+   * Properties forwarded to the footer element.
    */
   footerProps?: TableFooterProps;
   /**
-   * Props forwarded to the head element.
+   * Properties forwarded to the head element.
    */
   headProps?: TableHeadProps;
   /**
-   * Props forwarded to the row element.
+   * Properties forwarded to the row element.
    */
   rowProps?: TableRowProps;
   /**
-   * Props forwarded to the cell element.
+   * Properties forwarded to the cell element.
    */
   cellProps?: TableCellProps;
 }
 
 /**
- * Emits for the table compact component.
+ * Events for the table compact component.
  */
 export type TableCompactEmits<R extends TableUnifiedKey = TableUnifiedKey, M extends boolean = false> = {
   /**

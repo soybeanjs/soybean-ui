@@ -10,7 +10,7 @@ import type {
 } from '../tabs/types';
 
 /**
- * Props for the segment compact component.
+ * Properties for the segment compact component.
  */
 export interface SegmentCompactProps<T extends SegmentOptionData> extends SegmentRootProps<T['value'] | null> {
   /**
@@ -22,21 +22,21 @@ export interface SegmentCompactProps<T extends SegmentOptionData> extends Segmen
    */
   enableIndicator?: boolean;
   /**
-   * Props forwarded to the list element.
+   * Properties forwarded to the list element.
    */
   listProps?: SegmentListProps;
   /**
-   * Props forwarded to the trigger element.
+   * Properties forwarded to the trigger element.
    */
   triggerProps?: SegmentTriggerProps;
   /**
-   * Props forwarded to the indicator element.
+   * Properties forwarded to the indicator element.
    */
   indicatorProps?: SegmentIndicatorProps;
 }
 
 /**
- * Emits for the segment compact component.
+ * Events for the segment compact component.
  */
 export type SegmentCompactEmits<T extends AcceptableValue = AcceptableValue> = SegmentRootEmits<T>;
 

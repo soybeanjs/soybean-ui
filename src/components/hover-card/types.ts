@@ -13,7 +13,7 @@ import type { ClassValue, Placement } from '@soybeanjs/headless/types';
 import type { ThemeSize } from '@/theme';
 
 /**
- * Props for the hover card component.
+ * Properties for the hover card component.
  */
 export interface HoverCardProps extends HoverCardRootProps {
   /**
@@ -37,28 +37,28 @@ export interface HoverCardProps extends HoverCardRootProps {
    */
   showArrow?: boolean;
   /**
-   * Props forwarded to the positioner element.
+   * Properties forwarded to the positioner element.
    */
   positionerProps?: HoverCardPositionerProps;
   /**
-   * Props forwarded to the popup element.
+   * Properties forwarded to the popup element.
    */
   popupProps?: HoverCardPopupProps;
   /**
-   * Props forwarded to the trigger element.
+   * Properties forwarded to the trigger element.
    */
   triggerProps?: HoverCardTriggerProps;
   /**
-   * Props forwarded to the portal element.
+   * Properties forwarded to the portal element.
    */
   portalProps?: HoverCardPortalProps;
   /**
-   * Props forwarded to the arrow element.
+   * Properties forwarded to the arrow element.
    */
   arrowProps?: HoverCardArrowProps;
 }
 
 /**
- * Emits for the hover card component.
+ * Events for the hover card component.
  */
 export type HoverCardEmits = HoverCardRootEmits & HoverCardPositionerEmits;

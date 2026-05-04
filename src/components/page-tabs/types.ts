@@ -103,7 +103,7 @@ export interface PageTabsContextMenuOptionData extends MenuOptionData<string> {
 }
 
 /**
- * Props for the page tabs component.
+ * Properties for the page tabs component.
  */
 export interface PageTabsProps<T extends PageTabsOptionData> extends PageTabsRootProps {
   /**
@@ -140,7 +140,7 @@ export interface PageTabsProps<T extends PageTabsOptionData> extends PageTabsRoo
 }
 
 /**
- * Emits for the page tabs component.
+ * Events for the page tabs component.
  */
 export type PageTabsEmits<T> = PageTabsRootEmits & {
   (e: 'update:items', items: T[]): void;

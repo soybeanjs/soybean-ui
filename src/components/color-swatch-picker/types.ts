@@ -22,7 +22,7 @@ export type ColorSwatchPickerExtraUiSlot = 'checker' | 'fill';
 export type ColorSwatchPickerExtendedUi = UiClass<ColorSwatchPickerUiSlot | ColorSwatchPickerExtraUiSlot>;
 
 /**
- * Props for the color swatch picker component.
+ * Properties for the color swatch picker component.
  */
 export interface ColorSwatchPickerProps extends ColorSwatchPickerRootProps<boolean> {
   /**
@@ -46,21 +46,21 @@ export interface ColorSwatchPickerProps extends ColorSwatchPickerRootProps<boole
    */
   shape?: ColorSwatchPickerShape;
   /**
-   * Props forwarded to the item element.
+   * Properties forwarded to the item element.
    */
   itemProps?: Omit<ColorSwatchPickerItemProps, 'value'>;
   /**
-   * Props forwarded to the indicator element.
+   * Properties forwarded to the indicator element.
    */
   indicatorProps?: ColorSwatchPickerItemIndicatorProps;
   /**
-   * Props forwarded to the swatch element.
+   * Properties forwarded to the swatch element.
    */
   swatchProps?: ColorSwatchPickerItemSwatchProps;
 }
 
 /**
- * Emits for the color swatch picker component.
+ * Events for the color swatch picker component.
  */
 export type ColorSwatchPickerEmits = ColorSwatchPickerRootEmits<boolean> & ColorSwatchPickerItemEmits;
 

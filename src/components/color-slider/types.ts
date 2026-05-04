@@ -9,7 +9,7 @@ import type { ClassValue } from '@soybeanjs/headless/types';
 import type { ThemeColor, ThemeSize } from '@/theme';
 
 /**
- * Props for the color slider component.
+ * Properties for the color slider component.
  */
 export interface ColorSliderProps extends ColorSliderRootProps {
   /**
@@ -29,16 +29,16 @@ export interface ColorSliderProps extends ColorSliderRootProps {
    */
   ui?: Partial<ColorSliderUi>;
   /**
-   * Props forwarded to the track element.
+   * Properties forwarded to the track element.
    */
   trackProps?: ColorSliderTrackProps;
   /**
-   * Props forwarded to the thumb element.
+   * Properties forwarded to the thumb element.
    */
   thumbProps?: ColorSliderThumbProps;
 }
 
 /**
- * Emits for the color slider component.
+ * Events for the color slider component.
  */
 export type ColorSliderEmits = ColorSliderRootEmits;

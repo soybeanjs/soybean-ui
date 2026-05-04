@@ -4,7 +4,7 @@ import type { ThemeSize } from '@/theme';
 import type { SeparatorBorder } from './variants';
 
 /**
- * Props for the separator component.
+ * Properties for the separator component.
  */
 export interface SeparatorProps extends SeparatorRootProps {
   /**
@@ -32,7 +32,7 @@ export interface SeparatorProps extends SeparatorRootProps {
    */
   label?: string;
   /**
-   * Props forwarded to the label element.
+   * Properties forwarded to the label element.
    */
   labelProps?: SeparatorLabelProps;
 }

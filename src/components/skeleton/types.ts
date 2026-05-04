@@ -4,7 +4,7 @@ import type { ThemeSize } from '@/theme';
 import type { SkeletonShape } from './variants';
 
 /**
- * Props for the skeleton component.
+ * Properties for the skeleton component.
  */
 export interface SkeletonProps extends _SkeletonProps {
   /**

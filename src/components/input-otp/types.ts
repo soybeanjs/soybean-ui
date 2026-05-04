@@ -8,7 +8,7 @@ import type { ClassValue, Align } from '@soybeanjs/headless/types';
 import type { ThemeSize } from '@/theme';
 
 /**
- * Props for the input otp component.
+ * Properties for the input otp component.
  */
 export interface InputOtpProps extends InputOtpCompactProps {
   /** Root class. */
@@ -28,7 +28,7 @@ export interface InputOtpProps extends InputOtpCompactProps {
 }
 
 /**
- * Emits for the input otp component.
+ * Events for the input otp component.
  */
 export type InputOtpEmits = InputOtpCompactEmits;
 

@@ -14,7 +14,7 @@ import type { Direction, FormFieldCommonProps, PropsToContext, UiClass } from '.
 import type { PrimitiveProps } from '../primitive/types';
 
 /**
- * Props for the time field root component.
+ * Properties for the time field root component.
  */
 export interface TimeFieldRootProps
   extends PrimitiveProps, FormFieldCommonProps, /** @vue-ignore */ Omit<HTMLAttributes, 'placeholder'> {
@@ -85,7 +85,7 @@ export interface TimeFieldRootProps
 }
 
 /**
- * Emits for the time field root component.
+ * Events for the time field root component.
  */
 export type TimeFieldRootEmits = {
   /**
@@ -99,7 +99,7 @@ export type TimeFieldRootEmits = {
 };
 
 /**
- * Props for the time field input component.
+ * Properties for the time field input component.
  */
 export interface TimeFieldInputProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {
   /**

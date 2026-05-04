@@ -13,7 +13,7 @@ import type { LinkProps, LinkBaseProps } from '../link/types';
 import type { PrimitiveProps } from '../primitive/types';
 
 /**
- * Props for the navigation menu root component.
+ * Properties for the navigation menu root component.
  */
 export interface NavigationMenuRootProps extends /** @vue-ignore */ HTMLAttributes {
   /** The controlled value of the menu item to activate. Can be used as `v-model`. */
@@ -73,7 +73,7 @@ export interface NavigationMenuRootProps extends /** @vue-ignore */ HTMLAttribut
 }
 
 /**
- * Emits for the navigation menu root component.
+ * Events for the navigation menu root component.
  */
 export type NavigationMenuRootEmits = {
   /**
@@ -83,7 +83,7 @@ export type NavigationMenuRootEmits = {
 };
 
 /**
- * Props for the navigation menu viewport component.
+ * Properties for the navigation menu viewport component.
  */
 export interface NavigationMenuViewportProps extends ForceMountProps, /** @vue-ignore */ HTMLAttributes {
   /**
@@ -93,25 +93,25 @@ export interface NavigationMenuViewportProps extends ForceMountProps, /** @vue-i
 }
 
 /**
- * Props for the navigation menu content impl component.
+ * Properties for the navigation menu content impl component.
  */
 export interface NavigationMenuContentImplProps extends DismissableLayerProps, /** @vue-ignore */ HTMLAttributes {}
 /**
- * Emits for the navigation menu content impl component.
+ * Events for the navigation menu content impl component.
  */
 export type NavigationMenuContentImplEmits = DismissableLayerEmits;
 
 /**
- * Props for the navigation menu content component.
+ * Properties for the navigation menu content component.
  */
 export interface NavigationMenuContentProps extends NavigationMenuContentImplProps, ForceMountProps {}
 /**
- * Emits for the navigation menu content component.
+ * Events for the navigation menu content component.
  */
 export type NavigationMenuContentEmits = NavigationMenuContentImplEmits;
 
 /**
- * Props for the navigation menu trigger component.
+ * Properties for the navigation menu trigger component.
  */
 export interface NavigationMenuTriggerProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {
   /**
@@ -121,17 +121,17 @@ export interface NavigationMenuTriggerProps extends PrimitiveProps, /** @vue-ign
 }
 
 /**
- * Props for the navigation menu list component.
+ * Properties for the navigation menu list component.
  */
 export interface NavigationMenuListProps extends /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Props for the navigation menu sub list component.
+ * Properties for the navigation menu sub list component.
  */
 export interface NavigationMenuSubListProps extends /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Props for the navigation menu item component.
+ * Properties for the navigation menu item component.
  */
 export interface NavigationMenuItemProps extends /** @vue-ignore */ HTMLAttributes {
   /**
@@ -141,7 +141,7 @@ export interface NavigationMenuItemProps extends /** @vue-ignore */ HTMLAttribut
 }
 
 /**
- * Props for the navigation menu link component.
+ * Properties for the navigation menu link component.
  */
 export interface NavigationMenuLinkProps extends Omit<LinkProps, 'onSelect'> {
   /** Used to identify the link as the currently active page. */
@@ -149,7 +149,7 @@ export interface NavigationMenuLinkProps extends Omit<LinkProps, 'onSelect'> {
 }
 
 /**
- * Emits for the navigation menu link component.
+ * Events for the navigation menu link component.
  */
 export type NavigationMenuLinkEmits = {
   /**
@@ -159,12 +159,12 @@ export type NavigationMenuLinkEmits = {
 };
 
 /**
- * Props for the navigation menu indicator component.
+ * Properties for the navigation menu indicator component.
  */
 export interface NavigationMenuIndicatorProps extends ForceMountProps, /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Props for the navigation menu sub component.
+ * Properties for the navigation menu sub component.
  */
 export interface NavigationMenuSubProps extends /** @vue-ignore */ HTMLAttributes {
   /**
@@ -177,7 +177,7 @@ export interface NavigationMenuSubProps extends /** @vue-ignore */ HTMLAttribute
   defaultValue?: string;
 }
 /**
- * Emits for the navigation menu sub component.
+ * Events for the navigation menu sub component.
  */
 export type NavigationMenuSubEmits = NavigationMenuRootEmits;
 
@@ -300,33 +300,33 @@ export interface NavigationMenuItemData extends LinkBaseProps {
 }
 
 /**
- * Props for the navigation menu compact component.
+ * Properties for the navigation menu compact component.
  */
 export interface NavigationMenuCompactProps extends NavigationMenuRootProps {
   /** The items to render in the navigation menu. */
   items: NavigationMenuItemData[];
-  /** Props for each NavigationMenuItem. */
+  /** Properties for each NavigationMenuItem. */
   itemProps?: NavigationMenuItemProps;
-  /** Props for NavigationMenuLink. */
+  /** Properties for NavigationMenuLink. */
   linkProps?: NavigationMenuLinkProps;
-  /** Props for NavigationMenuTrigger. */
+  /** Properties for NavigationMenuTrigger. */
   triggerProps?: NavigationMenuTriggerProps;
-  /** Props for NavigationMenuContent. */
+  /** Properties for NavigationMenuContent. */
   contentProps?: NavigationMenuContentProps;
-  /** Props for NavigationMenuList. */
+  /** Properties for NavigationMenuList. */
   listProps?: NavigationMenuListProps;
-  /** Props for NavigationMenuSubList. */
+  /** Properties for NavigationMenuSubList. */
   subListProps?: NavigationMenuListProps;
-  /** Props for sub-items. */
+  /** Properties for sub-items. */
   subItemProps?: NavigationMenuItemProps;
-  /** Props for NavigationMenuViewport. */
+  /** Properties for NavigationMenuViewport. */
   viewportProps?: NavigationMenuViewportProps;
-  /** Props for NavigationMenuIndicator. */
+  /** Properties for NavigationMenuIndicator. */
   indicatorProps?: NavigationMenuIndicatorProps;
 }
 
 /**
- * Emits for the navigation menu compact component.
+ * Events for the navigation menu compact component.
  */
 export type NavigationMenuCompactEmits = NavigationMenuRootEmits & NavigationMenuLinkEmits & NavigationMenuContentEmits;
 

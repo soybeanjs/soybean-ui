@@ -6,7 +6,7 @@ import type { Component, VNode } from 'vue';
 export type IconValue = VNode | Component | string | null | undefined;
 
 /**
- * Props for the icon component.
+ * Properties for the icon component.
  */
 export interface IconProps {
   /**

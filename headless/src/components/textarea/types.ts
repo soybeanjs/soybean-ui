@@ -12,7 +12,7 @@ export interface TextareaAutosizeOptions {
 }
 
 /**
- * Props for the textarea base component.
+ * Properties for the textarea base component.
  */
 export interface TextareaBaseProps {
   /** Id of the textarea element */
@@ -32,7 +32,7 @@ export interface TextareaBaseProps {
 }
 
 /**
- * Props for the textarea root component.
+ * Properties for the textarea root component.
  */
 export interface TextareaRootProps extends TextareaBaseProps, FormFieldCommonProps, /** @vue-ignore */ HTMLAttributes {
   /** The default value of the textarea */
@@ -44,7 +44,7 @@ export interface TextareaRootProps extends TextareaBaseProps, FormFieldCommonPro
 }
 
 /**
- * Emits for the textarea root component.
+ * Events for the textarea root component.
  */
 export type TextareaRootEmits = {
   /**
@@ -54,12 +54,12 @@ export type TextareaRootEmits = {
 };
 
 /**
- * Props for the textarea control component.
+ * Properties for the textarea control component.
  */
 export interface TextareaControlProps extends /** @vue-ignore */ TextareaHTMLAttributes {}
 
 /**
- * Props for the textarea counter component.
+ * Properties for the textarea counter component.
  */
 export interface TextareaCounterProps extends /** @vue-ignore */ HTMLAttributes {}
 

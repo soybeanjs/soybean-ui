@@ -4,7 +4,7 @@ import type { TooltipProviderProps } from '../tooltip/types';
 import type { IconValue } from '../_icon/types';
 
 /**
- * Props for the config provider component.
+ * Properties for the config provider component.
  */
 export interface ConfigProviderProps {
   /**

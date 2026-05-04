@@ -3,7 +3,7 @@ import type { PrimitiveProps } from '../primitive/types';
 import type { PropsToContext, UiClass } from '../../types';
 
 /**
- * Props for the page tabs root component.
+ * Properties for the page tabs root component.
  */
 export interface PageTabsRootProps extends /** @vue-ignore */ HTMLAttributes {
   /**
@@ -17,7 +17,7 @@ export interface PageTabsRootProps extends /** @vue-ignore */ HTMLAttributes {
 }
 
 /**
- * Emits for the page tabs root component.
+ * Events for the page tabs root component.
  */
 export type PageTabsRootEmits = {
   /**
@@ -27,7 +27,7 @@ export type PageTabsRootEmits = {
 };
 
 /**
- * Props for the page tabs item component.
+ * Properties for the page tabs item component.
  */
 export interface PageTabsItemProps extends /** @vue-ignore */ Omit<HTMLAttributes, 'onClick'> {
   /**
@@ -41,7 +41,7 @@ export interface PageTabsItemProps extends /** @vue-ignore */ Omit<HTMLAttribute
 }
 
 /**
- * Emits for the page tabs item component.
+ * Events for the page tabs item component.
  */
 export type PageTabsItemEmits = {
   /**
@@ -59,12 +59,12 @@ export type PageTabsItemEmits = {
 };
 
 /**
- * Props for the page tabs close component.
+ * Properties for the page tabs close component.
  */
 export interface PageTabsCloseProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {}
 
 /**
- * Props for the page tabs pin component.
+ * Properties for the page tabs pin component.
  */
 export interface PageTabsPinProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {}
 
