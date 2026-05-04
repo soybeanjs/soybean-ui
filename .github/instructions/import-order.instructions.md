@@ -4,7 +4,7 @@ applyTo: '**/*.{ts,tsx,js,jsx,vue}'
 
 # Import 顺序
 
-修改 TypeScript、JavaScript、Vue 文件时，import 必须按以下分组顺序排列：
+这是仓库内唯一的 import 顺序来源。修改 TypeScript、JavaScript、Vue 文件时，import 必须按以下分组顺序排列：
 
 - builtin
 - external
@@ -65,7 +65,7 @@ Node.js 内置模块，例如 `fs`、`path`、`node:path`。
 ```ts
 import { computed } from 'vue';
 import type { ComputedRef } from 'vue';
-import { axios } from 'axios';
+import axios from 'axios';
 import type { Methods } from 'axios';
 import { cn } from '@/theme';
 import { mergeSlotVariants } from '../shared';

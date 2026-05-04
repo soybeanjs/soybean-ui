@@ -21,15 +21,12 @@ This is the assistant-neutral entrypoint for any AI coding assistant working in 
 ## Task Routing
 
 - Common TypeScript / JavaScript / Vue editing:
-  - `.github/instructions/import-order.instructions.md`
-  - `.github/instructions/typescript-functional-style.instructions.md`
-  - `.github/instructions/vue-sfc.instructions.md` for `.vue`
+  - Start with `.github/instructions/coding-standards.instructions.md`
 - Commit message, changelog, or release summary:
   - `.github/instructions/git-commit-convention.instructions.md`
 - SoybeanUI component work:
   - Start with `.github/instructions/soybean-ui-component-overview.instructions.md`
-  - Then read the relevant layer files such as headless, UI, and a11y/RTL
-  - When delivery surfaces change, also read playground, docs, and testing instructions
+  - Then read the relevant layer or delivery-surface files only when they are touched
   - Use `.github/instructions/soybean-ui-checklist.instructions.md` only at finish
 
 ## Non-negotiable Interpretation
@@ -37,3 +34,14 @@ This is the assistant-neutral entrypoint for any AI coding assistant working in 
 - `.github` remains the single home for concrete rule content.
 - `assistant-rules.md` is the neutral entrypoint; `copilot-instructions.md` is a compatibility bridge, not the assistant-neutral root.
 - External assistant bridge files must stay thin and should point back to `.github` instead of duplicating detailed rules.
+
+## Instruction Maintenance Contract
+
+- `assistant-rules.md` only defines source of truth, reading order, and top-level routing.
+- `copilot-instructions.md` only carries GitHub Copilot compatibility and repository-specific routing notes.
+- `coding-standards.instructions.md` is the common-code routing file for ordinary TypeScript, JavaScript, and Vue edits.
+- `soybean-ui-component-overview.instructions.md` only decides component pattern, scenario, phase order, and delivery scope.
+- Layer files such as headless, UI, and a11y/RTL only contain rules that are unique to that layer.
+- Delivery files such as docs, playground, and testing only contain rules for that delivery surface.
+- `soybean-ui-checklist.instructions.md` only contains finish-stage checks and must not restate implementation flow.
+- When a rule has one clear owner, other files should reference that owner instead of re-explaining the same rule.

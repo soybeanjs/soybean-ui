@@ -4,9 +4,7 @@ applyTo: 'docs/src/docs/**/*.md'
 
 # SoybeanUI 文档规范
 
-组件 API 和 playground 稳定后，再补文档。
-
-不要在 props、slots、emits、导出入口或 API 生成数据仍频繁变化时先补 API 文档。
+在组件 API、导出和 playground 基本稳定后再补文档。
 
 ## 文档交付面
 
@@ -29,11 +27,10 @@ applyTo: 'docs/src/docs/**/*.md'
 ## 编写顺序
 
 1. 先写概述和最小用法
-2. 再接入 `<UsageCode component="{component}" />` 与 `<PlaygroundGallery component="{component}" />`
-3. 再接入 `<ComponentApi component="{component}" />`
-4. 最后更新 `docs/src/constants/menus.ts`
-5. 运行 `pnpm gen:api` 更新 `docs/src/generated/api/` 与 `docs/src/generated/api-locales/` 的英文基线数据
-6. 对仓库内除 `en` 之外的 locale 逐个运行 `pnpm translate:api:i18n -- --locale <locale>`，补齐非英文 API 描述
+2. 接入 `<UsageCode component="{component}" />` 与 `<PlaygroundGallery component="{component}" />`
+3. 接入 `<ComponentApi component="{component}" />`
+4. 更新 `docs/src/constants/menus.ts`
+5. 若公开 API 有变化，运行 `pnpm gen:api`，并为非英文 locale 运行 `pnpm translate:api:i18n -- --locale <locale>`
 
 ## 关键规则
 
@@ -44,12 +41,9 @@ applyTo: 'docs/src/docs/**/*.md'
 - playground 子示例即使采用 `NN-name.vue` 文件名，`<UsageCode>` 与 `<PlaygroundGallery>` 传入的示例 key 仍然使用去前缀后的 `name`，例如 `basic`、`size`
 - 组件文档中的 `API` 段默认统一使用 `<ComponentApi component="{component}" />`
 - `<ComponentApi>` 的 `component` 值默认与组件目录名一致；如果文档文件名与组件导出名不同，也要传真实组件名，例如 `input-number`
-- 不要在普通组件文档里手写 `DataTable` / `TypeTable` 来替代 `<ComponentApi>`
-- 只有在生成式 API 无法覆盖的特殊页面或遗留组件文档中，才允许手写 `DataTable` / `TypeTable` 作为例外
-- 如果确实手写 API 表格，仍要完整覆盖公开 props、emits、slots，以及必要的 `Ui` 类型信息，内容必须和真实导出保持一致
-- `<ComponentApi>` 依赖 `docs/src/generated/api/*.json` 与 `docs/src/generated/api-locales/*.json`；公共 API、类型描述或导出面变化后，必须运行 `pnpm gen:api`
-- `pnpm gen:api` 会生成英文 API 描述与各 locale 的模板数据；非英文描述再通过 `pnpm translate:api:i18n -- --locale <locale>` 填充
-- API 生成产物以脚本输出为准，不要靠手改 `docs/src/generated/api/` 或 `docs/src/generated/api-locales/` 维持同步
+- 只有生成式 API 无法覆盖的特殊页面，才允许手写 `DataTable` / `TypeTable` 作为例外
+- 公开 API、类型描述或导出面变化后，必须运行 `pnpm gen:api`
+- API 生成产物以脚本输出为准，不要手改 `docs/src/generated/api/` 或 `docs/src/generated/api-locales/`
 
 ## 菜单注册
 
@@ -76,6 +70,5 @@ applyTo: 'docs/src/docs/**/*.md'
 - 若 playground 子示例文件带有顺序前缀，文档层仍要使用去前缀后的示例 key，不要把 `01-basic` 这类原始文件名写进文档
 - `<ComponentApi>` 的 `component` 值要与真实 API 数据源保持一致
 - 文档中的演示展示面要和 `playground/examples/{component}/` 真实文件保持一致
-- `docs/src/generated/api/` 与 `docs/src/generated/api-locales/` 的内容要和当前公开导出、类型描述、locale 列表同步
 - 标题与 API 内容不要落后于实现
-- 中英文文档是新组件从 0 到 1 的正式交付面，不要只写单语版本
+- 新组件默认补齐中英文文档，不要只写单语版本

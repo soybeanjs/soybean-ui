@@ -4,42 +4,21 @@ applyTo: 'src/components/**/*.{ts,vue}'
 
 # SoybeanUI UI 层规范
 
+按 `soybean-ui-component-overview.instructions.md` 先判模式与场景；本文件只讲 UI 层实现。
+
 ## 职责边界
 
-- UI 层只负责样式包装、variants 计算、UiContext 注入和 props/listeners 转发
+- UI 只负责样式包装、variants 计算、UiContext 注入和 props/listeners 转发
 - 禁止在 UI 层放 ARIA 属性、键盘逻辑或状态语义
+- UI 应消费 headless 已暴露的 `data-state`、`dir` 与 slot 结构做样式表达，而不是重建语义
 
-## 与 A11y / RTL 规范的关系
-
-- 本文件只约束 UI 层如何承接 headless 已有的状态、方向和值，不重新定义组件语义。
-- `role`、`aria-*`、`tabindex`、键盘交互、焦点管理都以 `soybean-ui-accessibility-rtl.instructions.md` 为准，并继续留在 headless。
-- UI 层应消费 headless 已暴露的 `data-state`、`dir`、slot 结构来做样式表达，而不是在 wrapper 中重新生成语义属性。
-
-## 场景补充
-
-### 场景 A：从 0 到 1
-
-- 在 headless 稳定后，直接按 Step 1 到 Step 5 推进
-
-### 场景 B：迁入其它仓库现有代码后规范化
-
-- 外部组件的样式、slots 包装、props 透传方式要重构成 SoybeanUI 的 `variants.ts`、`types.ts`、wrapper `.vue`、`index.ts`
-- 不要把外部仓库已有的 class 拼接、单文件样式逻辑、ARIA 逻辑一起搬进 UI 层
-
-### 场景 C：对现有组件做规范对齐
-
-- 先检查 `variants.ts`、`types.ts`、wrapper、导出与 `class` 合并是否符合当前规范
-- 优先修复会影响公开能力和分层边界的问题，再处理写法一致性
-
-## 新组件 UI 顺序
-
-headless 稳定后，再按下面顺序做 UI：
+## 实现顺序
 
 1. `variants.ts`
 2. `types.ts`
 3. wrapper `.vue`
-4. `index.ts`
-5. 接入 `src/index.ts`，然后运行 `pnpm gen:ui` 更新 `src/constants/components.ts`
+4. `index.ts` 与 `src/index.ts`
+5. 运行 `pnpm gen:ui`
 
 ## Step 1：variants.ts
 
@@ -98,8 +77,6 @@ headless 稳定后，再按下面顺序做 UI：
 - 直接 `cn(variants(...), props.class)`
 - 不建立 UiContext
 
-进入 Step 4 前，wrapper 的 props 转发、样式注入与组件模式实现必须已经稳定。
-
 ## Step 4：index.ts
 
 - UI 组件 barrel 导出默认组件
@@ -111,10 +88,6 @@ headless 稳定后，再按下面顺序做 UI：
 
 - 更新 `src/index.ts`
 - 运行 `pnpm gen:ui` 更新 `src/constants/components.ts`（该文件由脚本生成，不要手动编辑）
-
-完成 UI 阶段后，再进入 playground、docs、tests。
-
-场景 B 与场景 C 中，只要组件仍然对外公开，这一步就不能省略。
 
 ## 禁止反模式
 

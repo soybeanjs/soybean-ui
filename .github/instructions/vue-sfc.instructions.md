@@ -35,7 +35,6 @@ applyTo: '**/*.vue'
 ### 1. import statements
 
 - import 顺序遵循同目录 `import-order.instructions.md`。
-- value import 在前，`import type` 紧跟对应模块。
 
 ### 2. defineOptions
 
@@ -101,40 +100,13 @@ interface LocalEmits {
 - 可以用简短注释标出逻辑块，但不要写低信息量注释。
 - 对对象、数组、实例句柄等不需要深层响应式的数据，优先使用 `shallowRef` 而不是 `ref`。
 
-```ts
-// counter logic
-const count = ref(0);
-const increment = () => {
-  count.value++;
-};
-
-// toggle logic
-const visible = ref(false);
-const toggleVisible = () => {
-  visible.value = !visible.value;
-};
-```
-
 ### 响应式引用选择
 
 - 需要追踪基础值或确实依赖深层属性响应式更新时，使用 `ref`。
 - 如果只关心 `.value` 整体替换，而不需要内部深层属性自动追踪，优先使用 `shallowRef`，这样更符合性能预期。
 - 尤其是对象、数组、第三方实例、DOM 句柄、上下文状态容器这类值，默认先考虑 `shallowRef`。
 
-```ts
-const open = shallowRef(false);
-const activeItem = shallowRef<Item | null>(null);
-const popperInstance = shallowRef<PopperInstance | null>(null);
-```
-
-```ts
-const formState = ref({
-  touched: false,
-  errors: []
-});
-```
-
-上面这种需要依赖对象内部字段变化触发更新的场景，才更适合继续使用 `ref`。
+只有需要依赖对象内部字段变化触发更新时，才更适合继续使用 `ref`。
 
 ### 9. init 函数
 
@@ -205,66 +177,6 @@ defineExpose({
 - 允许在 template 中给脚本内已定义的函数传参，例如 `@click="handleSelect(item.id)"`；不允许直接写 `@click="() => handleSelect(item.id)"` 这类内联实现。
 - 在 soybean-ui 组件里，如果状态值不需要深层响应式，优先 `shallowRef`；这与仓库里大量 headless context、受控状态和元素引用的写法保持一致。
 - 若组件非常简单，不必为了凑顺序硬塞空分区；顺序是为了增强可读性，不是制造样板代码。
-
-```vue
-<template>
-  <ButtonRoot :disabled="disabled">
-    <slot />
-  </ButtonRoot>
-</template>
-
-<script setup lang="ts">
-defineOptions({
-  name: 'SButton'
-});
-
-const props = defineProps<{ disabled?: boolean }>();
-</script>
-```
-
-```vue
-<template>
-  <ButtonRoot v-bind="attrs" :disabled="disabled">
-    <slot />
-  </ButtonRoot>
-</template>
-
-<script setup lang="ts">
-import { useAttrs } from 'vue';
-
-defineOptions({
-  name: 'SButton',
-  inheritAttrs: false
-});
-
-const props = defineProps<{ disabled?: boolean }>();
-const attrs = useAttrs();
-</script>
-```
-
-```vue
-<template>
-  <button @click="handleClick">Save</button>
-  <button @click="handleSelect(item.id)">Select</button>
-</template>
-
-<script setup lang="ts">
-function handleClick() {
-  // ...
-}
-
-function handleSelect(id: string) {
-  // ...
-}
-</script>
-```
-
-```vue
-<template>
-  <button @click="() => handleClick()">Save</button>
-  <button @click="value => emit('select', value)">Select</button>
-</template>
-```
 
 ## 检查问题
 

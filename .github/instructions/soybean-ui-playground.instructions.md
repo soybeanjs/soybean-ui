@@ -4,9 +4,7 @@ applyTo: 'playground/examples/**/*.vue'
 
 # SoybeanUI Playground 规范
 
-组件主体和正式出口稳定后，再补 playground。
-
-不要在组件 API、slots、variants 还频繁变化时先写 playground。
+组件主体、导出和主要公开能力稳定后，再补 playground。
 
 ## 目录结构
 
@@ -21,7 +19,7 @@ applyTo: 'playground/examples/**/*.vue'
 - `04-disabled.vue`
 - `05-custom-styling.vue`
 
-并非每个组件都必须拥有全部示例，但每个文件只演示一个特性。
+并非每个组件都必须拥有全部示例，但每个文件只演示一个能力点。
 
 ## 编写顺序
 
@@ -34,7 +32,6 @@ applyTo: 'playground/examples/**/*.vue'
 - 统一写成：导入 `../../components/playground-gallery.vue`，并渲染 `<PlaygroundGallery component="{component}" />`
 - `component` 值使用目录名本身，例如 `accordion`、`date-range-picker`
 - 不要在 `index.vue` 中手动导入和拼装所有子示例
-- 不要再用 `<SCard title="{Name}" ...>` 作为组件 playground 入口页容器
 
 ## 子示例
 
@@ -45,7 +42,6 @@ applyTo: 'playground/examples/**/*.vue'
 - 子示例文件内不要再写 `<h3 class="playground-title">` 这类局部标题
 - 没有布局意义时，不要为了包一层根节点而额外套 `<div>`；能直接渲染组件就直接渲染
 - 如果确实需要布局容器、滚动容器、宽度约束或多节点分组，可以保留最小必要包装
-- 一个文件只展示一个能力点
 - 受控状态用 `ref` 或 `shallowRef`
 - 静态数据用 `const`
 
@@ -61,4 +57,4 @@ applyTo: 'playground/examples/**/*.vue'
 - 示例要覆盖主要公开能力，而不是重复展示同一场景
 - 如果组件有 `color`、`size`、`disabled`、`ui` 等公开能力，示例应体现这些能力
 - 子示例文件名中的 `name` 部分要准确表达能力点，因为它同时决定国际化标题 key 和展示语义
-- playground 是组件从 0 到 1 的正式交付面之一，不是可选附属物
+- playground 是正式交付面之一，不是可选附属物

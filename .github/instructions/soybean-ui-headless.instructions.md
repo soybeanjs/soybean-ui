@@ -4,46 +4,25 @@ applyTo: 'headless/src/components/**/*.{ts,vue}'
 
 # SoybeanUI Headless 规范
 
+按 `soybean-ui-component-overview.instructions.md` 先判模式与场景；本文件只讲 headless 层实现。
+
 ## 职责边界
 
 - headless 只负责逻辑、状态、a11y、结构聚合和默认语义
 - 禁止添加 UnoCSS 类名、`<style>`、内联样式或任何视觉样式
 - 禁止从 `@soybeanjs/ui` 导入
-- 写新逻辑前，先检查 `headless/src/composables/`、`headless/src/shared/`、`headless/src/types/` 是否已有可复用实现
+- 写新逻辑前，先检查 `headless/src/composables/`、`headless/src/shared/`、`headless/src/types/`
+- `role`、`aria-*`、`tabindex`、键盘交互、焦点管理、`dir` 等语义要求以 `soybean-ui-accessibility-rtl.instructions.md` 为准，headless 负责落地
 
-## 与 A11y / RTL 规范的关系
-
-- 本文件关注 a11y 与方向能力在 headless 层“落到哪里、怎么组织”，不重复列举每一种组件模式的 WAI-ARIA 细则。
-- 凡 `role`、`aria-*`、`tabindex`、键盘交互、焦点管理、`aria-labelledby` / `aria-controls`、`dir` 这些语义要求，以 `soybean-ui-accessibility-rtl.instructions.md` 为准；headless 的职责是把它们落实到 `types.ts`、`context.ts` 与分片 SFC 中。
-- UI 只消费 headless 暴露出来的状态与方向，不应回填或改写这些语义。
-
-## 场景补充
-
-### 场景 A：从 0 到 1
-
-- 直接按本文件的 Step 1 到 Step 7 顺序推进
-
-### 场景 B：迁入其它仓库现有代码后规范化
-
-- 先提炼出外部实现里的状态、交互、a11y、数据结构和默认语义
-- 再按本文件顺序拆成 `types.ts`、`context.ts`、分片组件、必要的 `{Name}Compact`
-- 不要把外部组件的样式类、DOM 结构习惯或单层文件组织直接照搬到 headless
-
-### 场景 C：对现有组件做规范对齐
-
-- 先检查 context 是否响应式、分片是否暴露 `data-slot`、聚合逻辑是否放错层
-- 优先修结构和语义边界，再考虑局部实现风格统一
-
-## 新组件 headless 顺序
-
-开发一个新 headless 组件时，按下面顺序推进：
+## 实现顺序
 
 1. `types.ts`
 2. `context.ts`
 3. 基础分片组件 SFC
-4. 必要时新增 `{Name}Compact`
-5. `index.ts`
-6. 接入 `headless/src/index.ts`，然后运行 `pnpm gen:headless` 更新 `headless/src/constants/components.ts` 和 `headless/src/namespaced/index.ts`
+4. `UiContext`
+5. 必要时新增 `{Name}Compact`
+6. `index.ts` 与 `headless/src/index.ts`
+7. 运行 `pnpm gen:headless`
 
 ## Step 1：types.ts
 
@@ -73,7 +52,7 @@ applyTo: 'headless/src/components/**/*.{ts,vue}'
 - `role`、`aria-*`、`tabindex`、键盘事件、焦点相关属性都应落在这些 headless 可交互元素上，而不是留给 UI wrapper 兜底
 - 状态通过 `data-state` 等 `data-*` 属性暴露，不要用 class 传状态
 
-## Step 4：UI Context
+## Step 4：UiContext
 
 - 多 slot 组件通过 `useUiContext` 建立 `provide{Name}Ui` / `use{Name}Ui`
 - 对外只导出 `provide{Name}Ui`
@@ -114,9 +93,7 @@ applyTo: 'headless/src/components/**/*.{ts,vue}'
 
 - `index.ts` 导出组件、`provide{Name}Ui` 和相关 types
 - 正式出口还要同步接入 `headless/src/index.ts`
-- 接入后运行 `pnpm gen:headless` 自动更新 `headless/src/constants/components.ts` 与 `headless/src/namespaced/index.ts`（这两个文件由脚本生成，不要手动编辑）
-
-场景 B 与场景 C 里，只要组件仍是正式公开组件，这一步就不能跳过。
+- 接入后运行 `pnpm gen:headless` 自动更新生成文件，不要手动编辑
 
 ## 禁止反模式
 

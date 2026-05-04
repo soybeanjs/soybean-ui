@@ -6,13 +6,9 @@ applyTo: '{headless/src/components,src/components}/**/*.{ts,vue}'
 
 仅在组件开发任务收尾阶段应用本文件。
 
-如果当前还在判模式、找参照、拆分层或补主体实现，这份文件只可作为预览清单，不作为当前阶段的执行顺序。
+如果当前还在判模式、找参照、拆分层或补主体实现，本文件只可作预览，不作为当前执行顺序。
 
-收尾时按“实现顺序的逆序”检查：先看验证结果，再看 tests/docs/playground，再看出口面，再回看 headless 与 UI 分层是否干净。
-
-如果某一层还没通过，就不要继续往后勾选下一层。
-
-开始收尾前，组件模式、开发场景、完整交付范围与实现顺序应已按 `soybean-ui-component-overview.instructions.md` 完成判定；本文件不重复承担这些前置决策。
+按逆序检查：先验证，再看交付面，再看出口，最后回看分层边界。未通过上一组前，不继续勾下一组。
 
 ## 验证
 
@@ -20,28 +16,22 @@ applyTo: '{headless/src/components,src/components}/**/*.{ts,vue}'
 - 已运行 `pnpm lint`
 - 已运行相关 `pnpm test` 或定向组件测试
 - 若有未运行项，已明确记录原因
-- 场景 B 与场景 C 中，已额外验证结构调整没有带来行为回退
 
-## Playground / Docs / Tests
+## 交付面
 
 - playground 示例可以说明主要公开能力
 - 中英文文档结构同步
 - `docs/src/constants/menus.ts` 已更新
-- `pnpm gen:api` 已运行，`docs/src/generated/api/` 与 `docs/src/generated/api-locales/` 已同步到当前公开 API
-- 已对仓库内除 `en` 之外的 locale 运行 `pnpm translate:api:i18n -- --locale <locale>`，或已明确说明为何暂未翻译
+- 若公开 API 有变化，已运行 `pnpm gen:api`
+- 非英文 API 描述已通过 `pnpm translate:api:i18n -- --locale <locale>` 同步，或已说明暂未翻译原因
 - 组件测试覆盖 rendering、state、disabled、accessibility 核心场景
-- 场景 B 中，即使外部代码没有自带 docs / tests，也已按仓库规范补齐
-- 场景 C 中，只要本轮改动影响公开行为或结构语义，就已同步更新 docs / tests
 
-## 集成出口
+## 出口与生成文件
 
 - `headless/src/index.ts` 与 `src/index.ts` 已更新
 - `pnpm gen:headless` 已运行（更新 `headless/src/constants/components.ts` 与 `headless/src/namespaced/index.ts`）
 - `pnpm gen:ui` 已运行（更新 `src/constants/components.ts`）
 - 组件名称数据、命名空间数据与 API 生成产物都来自脚本，未手动改生成文件
-
-- 新建组件时，已检查并补齐完整交付面的其余入口
-- 为现有组件加功能或修 bug 时，已同步更新所有受影响层和出口面
 
 ## Headless
 
@@ -50,8 +40,6 @@ applyTo: '{headless/src/components,src/components}/**/*.{ts,vue}'
 - 无 UI 样式、无 `@soybeanjs/ui` 导入
 - 稳定聚合结构已正确下沉为 `{Name}Compact`
 - 分片根元素带有正确的 `data-slot`
-- 场景 B 中，外部代码中的逻辑和语义已正确拆入 headless，而不是残留在 UI wrapper
-- 场景 C 中，已优先修复 headless 的结构与语义边界问题
 
 ## UI
 
@@ -60,8 +48,6 @@ applyTo: '{headless/src/components,src/components}/**/*.{ts,vue}'
 - `mergeSlotVariants` 正确合并 `props.class`
 - `useOmitProps` / `usePickProps` 使用有明确理由
 - 无 ARIA 逻辑、无业务语义泄漏到 UI 层
-- 场景 B 中，外部样式实现已被重构为 SoybeanUI 的 UI wrapper 结构
-- 场景 C 中，已补齐 UI 层的命名、导出、class 合并和 props 转发规范
 
 ## A11y 与 RTL
 

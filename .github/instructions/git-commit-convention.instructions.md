@@ -4,7 +4,9 @@ applyTo: '**/*.{md}'
 
 # Git Commit 规范
 
-编写 commit message、准备 changelog 或 release summary 时，使用 Conventional Commits，格式必须为：
+仅在编写 commit message、准备 changelog 或 release summary 时应用本文件。
+
+使用 Conventional Commits，格式必须为：
 
 `<type>(<scope>): <subject>`
 

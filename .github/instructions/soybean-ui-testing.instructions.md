@@ -8,8 +8,6 @@ applyTo: 'test/specs/components/**/*.ts'
 
 组件主体、导出和主要交互稳定后，再补测试；不要在 API 还未稳定时先堆测试样板。
 
-测试顺序应当跟随组件稳定度，而不是反过来驱动未定稿的 API。
-
 ## 测试基本规则
 
 - 所有 `mount()` 默认加 `attachTo: document.body`
@@ -22,13 +20,6 @@ applyTo: 'test/specs/components/**/*.ts'
 - `{state} state`
 - `disabled state`
 - `accessibility`
-
-## 编写顺序
-
-1. 先补 `rendering`
-2. 再补 `state`
-3. 再补 `disabled state`
-4. 最后补 `accessibility`
 
 ## rendering
 
@@ -53,9 +44,8 @@ applyTo: 'test/specs/components/**/*.ts'
 
 ## 交互触发方式
 
-- Button、Checkbox、Switch、AccordionTrigger 通常使用 `click`
-- TabsTrigger 使用 `mousedown` 且 `button: 0`
-- Popover、Tooltip 等弹层触发方式按实现检查 `click` 或 `mouseenter`
+- 事件触发方式以组件真实实现为准，不要写脱离实现的理想化交互
+- 常见情况包括 `click`、`mousedown`、`mouseenter`，但应先看当前组件真实行为
 
 ## accessibility
 
@@ -67,4 +57,4 @@ applyTo: 'test/specs/components/**/*.ts'
 
 - 测试断言应对齐组件真实行为，不写脱离实现的理想化断言
 - 新增或修复组件能力时，同步补对应测试
-- 新组件从 0 到 1 默认需要测试，不要把测试留成后续补债
+- 新组件默认需要测试，不要把测试留成后续补债

@@ -70,10 +70,7 @@ applyTo: '**/*.{ts,tsx,js,jsx,vue}'
 
 ## Import 顺序
 
-- import 顺序同时遵循同目录 `import-order.instructions.md`。
-- value import 顺序为：builtin、external、internal、parent、sibling、index。
-- 同模块的 `import type` 紧跟在对应 value import 下方。
-- parent 组内更远的父路径排在更近的父路径前。
+- import 顺序统一遵循 `import-order.instructions.md`，不要在这里重复维护第二份规则。
 
 ## 重构检查清单
 
