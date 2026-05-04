@@ -1,0 +1,24 @@
+{
+  "component": "bottom-sheet",
+  "generatedAt": "2026-05-04T20:22:38.088Z",
+  "schemaVersion": 1,
+  "versions": [
+    {
+      "version": "v0.15.4",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.15.3...v0.15.4",
+      "date": "2026-04-30",
+      "entries": [
+        {
+          "type": "feature",
+          "scope": "components",
+          "summary": "Implement BottomSheet component",
+          "summaryKey": "changelog.generated.v0.15.4.fb274",
+          "commitHash": "fb274",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/fb274b91",
+          "authors": ["soybeanjs", "MicrosoftCopilot"],
+          "source": "exact-scope"
+        }
+      ]
+    }
+  ]
+}

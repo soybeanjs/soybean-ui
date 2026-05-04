@@ -1,0 +1,207 @@
+{
+  "component": "dialog",
+  "generatedAt": "2026-05-04T20:22:38.088Z",
+  "schemaVersion": 1,
+  "versions": [
+    {
+      "version": "v0.17.0",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.16.0...v0.17.0",
+      "date": "2026-05-03",
+      "entries": [
+        {
+          "type": "optimization",
+          "scope": "dialog",
+          "summary": "rename DialogRootProps to extend DialogBaseProps for consistency",
+          "summaryKey": "changelog.generated.v0.17.0.7b052",
+          "commitHash": "7b052",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/7b052f99",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    },
+    {
+      "version": "v0.15.0",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.14.0...v0.15.0",
+      "date": "2026-04-26",
+      "entries": [
+        {
+          "type": "feature",
+          "scope": "dialog",
+          "summary": "enable showConfirm prop in DialogCompact component",
+          "summaryKey": "changelog.generated.v0.15.0.e8a13",
+          "commitHash": "e8a13",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/e8a13e04",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "optimization",
+          "scope": "dialog",
+          "summary": "enhance slot props binding for DialogCompact component",
+          "summaryKey": "changelog.generated.v0.15.0.a3c2d",
+          "commitHash": "a3c2d",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/a3c2d5a4",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope"
+        }
+      ]
+    },
+    {
+      "version": "v0.15.0-beta.3",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.15.0-beta.2...v0.15.0-beta.3",
+      "date": "2026-04-26",
+      "entries": [
+        {
+          "type": "feature",
+          "scope": "dialog",
+          "summary": "enable showConfirm prop in DialogCompact component",
+          "summaryKey": "changelog.generated.v0.15.0-beta.3.e8a13",
+          "commitHash": "e8a13",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/e8a13e04",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "optimization",
+          "scope": "dialog",
+          "summary": "enhance slot props binding for DialogCompact component",
+          "summaryKey": "changelog.generated.v0.15.0-beta.3.a3c2d",
+          "commitHash": "a3c2d",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/a3c2d5a4",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope"
+        }
+      ]
+    },
+    {
+      "version": "v0.13.8",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.13.7...v0.13.8",
+      "date": "2026-03-24",
+      "entries": [
+        {
+          "type": "fix",
+          "scope": "dialog",
+          "summary": "update content styles for responsive design",
+          "summaryKey": "changelog.generated.v0.13.8.77fa2",
+          "commitHash": "77fa2",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/77fa2e4e",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    },
+    {
+      "version": "v0.12.1",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.12.0...v0.12.1",
+      "date": "2026-03-07",
+      "entries": [
+        {
+          "type": "optimization",
+          "scope": "dialog",
+          "summary": "update dialog content styles to use w-max for better responsiveness",
+          "summaryKey": "changelog.generated.v0.12.1.eb13c",
+          "commitHash": "eb13c",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/eb13c50d",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    },
+    {
+      "version": "v0.11.4",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.11.3...v0.11.4",
+      "date": "2026-03-06",
+      "entries": [
+        {
+          "type": "feature",
+          "scope": "dialog",
+          "summary": "add min-width constraints to dialog content sizes",
+          "summaryKey": "changelog.generated.v0.11.4.9a5e1",
+          "commitHash": "9a5e1",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/9a5e1989",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    },
+    {
+      "version": "v0.11.3",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.11.2...v0.11.3",
+      "date": "2026-03-06",
+      "entries": [
+        {
+          "type": "feature",
+          "scope": "dialog",
+          "summary": "update max-width for dialog size variants",
+          "summaryKey": "changelog.generated.v0.11.3.417a0",
+          "commitHash": "417a0",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/417a0b37",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    },
+    {
+      "version": "v0.11.2",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.11.1...v0.11.2",
+      "date": "2026-03-06",
+      "entries": [
+        {
+          "type": "feature",
+          "scope": "dialog",
+          "summary": "add class prop to bind content class",
+          "summaryKey": "changelog.generated.v0.11.2.1e779",
+          "commitHash": "1e779",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/1e7791bc",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    },
+    {
+      "version": "v0.10.3",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.10.2...v0.10.3",
+      "date": "2026-03-06",
+      "entries": [
+        {
+          "type": "fix",
+          "scope": "dialog",
+          "summary": "remove unnecessary sm: prefix from rounded-lg class",
+          "summaryKey": "changelog.generated.v0.10.3.30fd6",
+          "commitHash": "30fd6",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/30fd60fa",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    },
+    {
+      "version": "v0.0.8",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.0.7...v0.0.8",
+      "date": "2026-01-01",
+      "entries": [
+        {
+          "type": "refactor",
+          "scope": "dialog",
+          "summary": "replace DialogContent with DialogPopup, and update related types and context management for improved structure and functionality",
+          "summaryKey": "changelog.generated.v0.0.8.4d82e",
+          "commitHash": "4d82e",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/4d82e8ec",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "refactor",
+          "scope": "dialog",
+          "summary": "rename DialogPopup to DialogContent",
+          "summaryKey": "changelog.generated.v0.0.8.e0796",
+          "commitHash": "e0796",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/e079656c",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    }
+  ]
+}

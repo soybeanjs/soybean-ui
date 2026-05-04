@@ -1,0 +1,24 @@
+{
+  "component": "breadcrumb",
+  "generatedAt": "2026-05-04T20:22:38.088Z",
+  "schemaVersion": 1,
+  "versions": [
+    {
+      "version": "v0.0.7",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.0.6...v0.0.7",
+      "date": "2025-12-09",
+      "entries": [
+        {
+          "type": "style",
+          "scope": "breadcrumb",
+          "summary": "adjust padding in list variant for improved layout",
+          "summaryKey": "changelog.generated.v0.0.7.88be2",
+          "commitHash": "88be2",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/88be2285",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,85 @@
+{
+  "component": "tooltip",
+  "generatedAt": "2026-05-04T20:22:38.088Z",
+  "schemaVersion": 1,
+  "versions": [
+    {
+      "version": "v0.14.0",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.13.8...v0.14.0",
+      "date": "2026-04-03",
+      "entries": [
+        {
+          "type": "feature",
+          "scope": "tooltip",
+          "summary": "enhance positioner props and context integration",
+          "summaryKey": "changelog.generated.v0.14.0.5ce78",
+          "commitHash": "5ce78",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/5ce78414",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    },
+    {
+      "version": "v0.12.0",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.11.4...v0.12.0",
+      "date": "2026-03-07",
+      "entries": [
+        {
+          "type": "optimization",
+          "scope": "tooltip",
+          "summary": "add default prop for avoidCollisions in TooltipPositioner; bind triggerProps to TooltipTrigger",
+          "summaryKey": "changelog.generated.v0.12.0.e024c",
+          "commitHash": "e024c",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/e024c231",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    },
+    {
+      "version": "v0.8.0",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.7.1...v0.8.0",
+      "date": "2026-02-10",
+      "entries": [
+        {
+          "type": "refactor",
+          "scope": "tooltip",
+          "summary": "simplify ariaLabel computation and remove unused slots",
+          "summaryKey": "changelog.generated.v0.8.0.2fa29",
+          "commitHash": "2fa29",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/2fa29ef0",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    },
+    {
+      "version": "v0.0.8",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.0.7...v0.0.8",
+      "date": "2026-01-01",
+      "entries": [
+        {
+          "type": "optimization",
+          "scope": "tooltip",
+          "summary": "remove TooltipPositioner context and update related components for improved clarity and functionality",
+          "summaryKey": "changelog.generated.v0.0.8.4d8da",
+          "commitHash": "4d8da",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/4d8da100",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "refactor",
+          "scope": "tooltip",
+          "summary": "remove TooltipContent, introduce TooltipPopup and TooltipPositioner components, and enhance context management for improved structure and functionality",
+          "summaryKey": "changelog.generated.v0.0.8.41a2d",
+          "commitHash": "41a2d",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/41a2d630",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    }
+  ]
+}

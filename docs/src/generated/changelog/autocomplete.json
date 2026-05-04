@@ -1,0 +1,58 @@
+{
+  "component": "autocomplete",
+  "generatedAt": "2026-05-04T20:22:38.088Z",
+  "schemaVersion": 1,
+  "versions": [
+    {
+      "version": "v0.16.0",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.15.5...v0.16.0",
+      "date": "2026-05-01",
+      "entries": [
+        {
+          "type": "refactor",
+          "scope": "autocomplete",
+          "summary": "migrate components to use combobox structure and remove unused files",
+          "summaryKey": "changelog.generated.v0.16.0.b1396",
+          "commitHash": "b1396",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/b13965cd",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope"
+        }
+      ]
+    },
+    {
+      "version": "v0.15.0",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.14.0...v0.15.0",
+      "date": "2026-04-26",
+      "entries": [
+        {
+          "type": "optimization",
+          "scope": "autocomplete",
+          "summary": "add prioritizePosition prop to enhance positioning logic",
+          "summaryKey": "changelog.generated.v0.15.0.1a2ba",
+          "commitHash": "1a2ba",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/1a2ba8a5",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    },
+    {
+      "version": "v0.15.0-beta.1",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.14.0...v0.15.0-beta.1",
+      "date": "2026-04-18",
+      "entries": [
+        {
+          "type": "optimization",
+          "scope": "autocomplete",
+          "summary": "add prioritizePosition prop to enhance positioning logic",
+          "summaryKey": "changelog.generated.v0.15.0-beta.1.1a2ba",
+          "commitHash": "1a2ba",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/1a2ba8a5",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    }
+  ]
+}

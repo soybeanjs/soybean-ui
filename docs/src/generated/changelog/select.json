@@ -1,0 +1,183 @@
+{
+  "component": "select",
+  "generatedAt": "2026-05-04T20:22:38.088Z",
+  "schemaVersion": 1,
+  "versions": [
+    {
+      "version": "v0.15.0",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.14.0...v0.15.0",
+      "date": "2026-04-26",
+      "entries": [
+        {
+          "type": "fix",
+          "scope": "select",
+          "summary": "replace singleClearable with clearable in context props",
+          "summaryKey": "changelog.generated.v0.15.0.ca438",
+          "commitHash": "ca438",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/ca438af5",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope"
+        }
+      ]
+    },
+    {
+      "version": "v0.15.0-beta.3",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.15.0-beta.2...v0.15.0-beta.3",
+      "date": "2026-04-26",
+      "entries": [
+        {
+          "type": "fix",
+          "scope": "select",
+          "summary": "replace singleClearable with clearable in context props",
+          "summaryKey": "changelog.generated.v0.15.0-beta.3.ca438",
+          "commitHash": "ca438",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/ca438af5",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope"
+        }
+      ]
+    },
+    {
+      "version": "v0.12.2",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.12.1...v0.12.2",
+      "date": "2026-03-07",
+      "entries": [
+        {
+          "type": "fix",
+          "scope": "select",
+          "summary": "omit 'disableOutsidePointerEvents' from popperPositionerProps",
+          "summaryKey": "changelog.generated.v0.12.2.57e0a",
+          "commitHash": "57e0a",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/57e0a5aa",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "fix",
+          "scope": "select",
+          "summary": "prevent triggering click event when dropdown is open",
+          "summaryKey": "changelog.generated.v0.12.2.a26f3",
+          "commitHash": "a26f3",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/a26f3d25",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    },
+    {
+      "version": "v0.10.4",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.10.3...v0.10.4",
+      "date": "2026-03-06",
+      "entries": [
+        {
+          "type": "fix",
+          "scope": "select",
+          "summary": "set singleClearable prop default to true",
+          "summaryKey": "changelog.generated.v0.10.4.9ebd1",
+          "commitHash": "9ebd1",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/9ebd10da",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    },
+    {
+      "version": "v0.9.2",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.9.1...v0.9.2",
+      "date": "2026-03-05",
+      "entries": [
+        {
+          "type": "feature",
+          "scope": "select",
+          "summary": "add single clearable option and example",
+          "summaryKey": "changelog.generated.v0.9.2.d24b2",
+          "commitHash": "d24b2",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/d24b2172",
+          "authors": ["Soybean"],
+          "source": "exact-scope"
+        }
+      ]
+    },
+    {
+      "version": "v0.8.0",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.7.1...v0.8.0",
+      "date": "2026-02-10",
+      "entries": [
+        {
+          "type": "optimization",
+          "scope": "select",
+          "summary": "add disableOutsidePointerEvents prop to enhance interaction and simplify arrow visibility logic",
+          "summaryKey": "changelog.generated.v0.8.0.f5048",
+          "commitHash": "f5048",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/f5048445",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    },
+    {
+      "version": "v0.0.17",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.0.16...v0.0.17",
+      "date": "2026-01-19",
+      "entries": [
+        {
+          "type": "fix",
+          "scope": "select",
+          "summary": "bind slot names correctly in SSelectSingleOption",
+          "summaryKey": "changelog.generated.v0.0.17.5e278",
+          "commitHash": "5e278",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/5e278ca1",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "refactor",
+          "scope": "select",
+          "summary": "simplify type definitions and improve variant styles",
+          "summaryKey": "changelog.generated.v0.0.17.219c5",
+          "commitHash": "219c5",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/219c5344",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "refactor",
+          "scope": "select",
+          "summary": "integrate useSelectUi in various components for improved styling",
+          "summaryKey": "changelog.generated.v0.0.17.088f9",
+          "commitHash": "088f9",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/088f9986",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    },
+    {
+      "version": "v0.0.8",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.0.7...v0.0.8",
+      "date": "2026-01-01",
+      "entries": [
+        {
+          "type": "optimization",
+          "scope": "select",
+          "summary": "update CSS variable names in select popper for consistency and clarity",
+          "summaryKey": "changelog.generated.v0.0.8.13132",
+          "commitHash": "13132",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/13132f4a",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "refactor",
+          "scope": "select",
+          "summary": "restructure select components by introducing SelectPopup and SelectItemAlignedPopup, updating context management, and enhancing type definitions for improved functionality and clarity",
+          "summaryKey": "changelog.generated.v0.0.8.2e56e",
+          "commitHash": "2e56e",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/2e56e15b",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    }
+  ]
+}

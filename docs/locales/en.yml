@@ -544,7 +544,7 @@ components:
     desc: Button component
   home:
     title: SoybeanUI
-    description: "A powerful, elegant component library for Vue 3: {'@'}soybeanjs/headless delivers unstyled interaction primitives, while {'@'}soybeanjs/ui ships styled components that help teams establish a consistent interaction model, high-quality interface experiences, and a scalable foundation for design systems."
+    description: 'A powerful, elegant Vue 3 component system with headless primitives and ready-to-use styled wrappers.'
     kicker: Vue 3 Component System
     actions:
       start: Get Started
@@ -648,10 +648,71 @@ api:
   local_types: Local Types
   common_types_note: Shared repeated types are centralized on the
   common_types_link: Common Types page.
+changelog:
+  actions:
+    compare_release: Compare release
+    view_commit: View commit
+  meta:
+    scope: Scope
+    authors: Authors
+  sources:
+    curated: Curated mapping
+  empty:
+    title: No component-specific release notes yet
+    desc: Release entries appear here when CHANGELOG items are scoped to this component or manually mapped.
+  types:
+    feature: Feature
+    fix: Fix
+    optimization: Optimization
+    refactor: Refactor
+    docs: Docs
+    chore: Chore
+    style: Style
+releases_page:
+  kicker: Release overview
+  title: Releases
+  summary: Track recent releases, see which components changed, and jump directly into the parts of the system most relevant to your upgrade.
+  filter:
+    title: Filter by component
+    desc: Narrow the release timeline to the components you actually use, then jump back into their docs from the matched entries.
+    placeholder: Search components like dialog, table, or date-picker
+    clear: Clear
+    suggestions: Suggestions
+    enter_hint: Press Enter to pick the first match.
+    related_only: Only component-related entries
+    related_only_desc: Hide shared release items like docs, deps, workflow, and other non-component changes.
+    no_match: No matching component found in tracked release data.
+  latest:
+    title: Latest snapshot
+    desc: Start with the newest release, then scan older versions only if your upgrade path crosses multiple published tags.
+  sections:
+    recent:
+      title: Recent releases
+      desc: Each release groups shipped entries, affected components, and the fastest links back into component docs.
+    impacted:
+      title: Affected components
+    highlights:
+      title: Selected highlights
+  stats:
+    entries: Entries
+    components: Components
+    versions: Releases tracked
+  actions:
+    compare_release: Compare release
+    full_changelog: Full changelog
+    browse_components: Browse components
+  empty:
+    title: No release data yet
+    desc: Run the changelog generation command to populate this page.
+    filtered_title: No matching releases
+    filtered_desc: No tracked release currently matches this component filter.
+  more_entries: '+ {count} more entries in the full changelog'
 component_detail:
   kicker: Component detail entry
   helper: Use the top shortcuts to reach overview, usage, demos, and API first, then continue through the full page.
   summary: '{component} belongs to the {category} category. Start with demos and usage, then use the API tables to finish integration and styling decisions.'
+  changelog:
+    desc: Version history is grouped by release so you can quickly see what changed for this component across published versions.
   meta:
     category: Category
     import: Import
@@ -659,12 +720,14 @@ component_detail:
   actions:
     demos: View demos
     api: View API
+    changelog: View changelog
     catalog: Back to catalog
   sections:
     overview: Overview
     usage: Usage
     demos: Demos
     api: API
+    changelog: Changelog
   quick_jump:
     title: Quick jump
     desc: Jump straight to the sections most people use first.

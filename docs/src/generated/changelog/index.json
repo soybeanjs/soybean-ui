@@ -1,0 +1,657 @@
+{
+  "generatedAt": "2026-05-04T20:22:38.088Z",
+  "schemaVersion": 1,
+  "components": {
+    "accordion": {
+      "component": "accordion",
+      "file": "accordion.json",
+      "latestVersion": "v0.15.0",
+      "versionCount": 4,
+      "entryCount": 9
+    },
+    "affix": {
+      "component": "affix",
+      "file": "affix.json",
+      "latestVersion": "v0.15.0",
+      "versionCount": 3,
+      "entryCount": 8
+    },
+    "alert": {
+      "component": "alert",
+      "file": "alert.json",
+      "latestVersion": "v0.15.0",
+      "versionCount": 2,
+      "entryCount": 2
+    },
+    "anchor": {
+      "component": "anchor",
+      "file": "anchor.json",
+      "latestVersion": "v0.17.0",
+      "versionCount": 3,
+      "entryCount": 3
+    },
+    "arrow": {
+      "component": "arrow",
+      "file": "arrow.json",
+      "latestVersion": "v0.0.8",
+      "versionCount": 1,
+      "entryCount": 1
+    },
+    "aspect-ratio": {
+      "component": "aspect-ratio",
+      "file": "aspect-ratio.json",
+      "latestVersion": null,
+      "versionCount": 0,
+      "entryCount": 0
+    },
+    "autocomplete": {
+      "component": "autocomplete",
+      "file": "autocomplete.json",
+      "latestVersion": "v0.16.0",
+      "versionCount": 3,
+      "entryCount": 3
+    },
+    "avatar": {
+      "component": "avatar",
+      "file": "avatar.json",
+      "latestVersion": null,
+      "versionCount": 0,
+      "entryCount": 0
+    },
+    "backtop": {
+      "component": "backtop",
+      "file": "backtop.json",
+      "latestVersion": null,
+      "versionCount": 0,
+      "entryCount": 0
+    },
+    "badge": {
+      "component": "badge",
+      "file": "badge.json",
+      "latestVersion": "v0.0.9",
+      "versionCount": 1,
+      "entryCount": 1
+    },
+    "bottom-sheet": {
+      "component": "bottom-sheet",
+      "file": "bottom-sheet.json",
+      "latestVersion": "v0.15.4",
+      "versionCount": 1,
+      "entryCount": 1
+    },
+    "breadcrumb": {
+      "component": "breadcrumb",
+      "file": "breadcrumb.json",
+      "latestVersion": "v0.0.7",
+      "versionCount": 1,
+      "entryCount": 1
+    },
+    "button": {
+      "component": "button",
+      "file": "button.json",
+      "latestVersion": "v0.13.3",
+      "versionCount": 2,
+      "entryCount": 2
+    },
+    "calendar": {
+      "component": "calendar",
+      "file": "calendar.json",
+      "latestVersion": "v0.17.0",
+      "versionCount": 2,
+      "entryCount": 2
+    },
+    "card": {
+      "component": "card",
+      "file": "card.json",
+      "latestVersion": "v0.16.0",
+      "versionCount": 6,
+      "entryCount": 7
+    },
+    "carousel": {
+      "component": "carousel",
+      "file": "carousel.json",
+      "latestVersion": "v0.16.0",
+      "versionCount": 3,
+      "entryCount": 3
+    },
+    "checkbox": {
+      "component": "checkbox",
+      "file": "checkbox.json",
+      "latestVersion": "v0.15.0",
+      "versionCount": 5,
+      "entryCount": 6
+    },
+    "clipboard": {
+      "component": "clipboard",
+      "file": "clipboard.json",
+      "latestVersion": "v0.15.0",
+      "versionCount": 2,
+      "entryCount": 2
+    },
+    "collapsible": {
+      "component": "collapsible",
+      "file": "collapsible.json",
+      "latestVersion": null,
+      "versionCount": 0,
+      "entryCount": 0
+    },
+    "color-area": {
+      "component": "color-area",
+      "file": "color-area.json",
+      "latestVersion": null,
+      "versionCount": 0,
+      "entryCount": 0
+    },
+    "color-field": {
+      "component": "color-field",
+      "file": "color-field.json",
+      "latestVersion": null,
+      "versionCount": 0,
+      "entryCount": 0
+    },
+    "color-picker": {
+      "component": "color-picker",
+      "file": "color-picker.json",
+      "latestVersion": "v0.15.1",
+      "versionCount": 3,
+      "entryCount": 3
+    },
+    "color-slider": {
+      "component": "color-slider",
+      "file": "color-slider.json",
+      "latestVersion": null,
+      "versionCount": 0,
+      "entryCount": 0
+    },
+    "color-swatch": {
+      "component": "color-swatch",
+      "file": "color-swatch.json",
+      "latestVersion": null,
+      "versionCount": 0,
+      "entryCount": 0
+    },
+    "color-swatch-picker": {
+      "component": "color-swatch-picker",
+      "file": "color-swatch-picker.json",
+      "latestVersion": null,
+      "versionCount": 0,
+      "entryCount": 0
+    },
+    "combobox": {
+      "component": "combobox",
+      "file": "combobox.json",
+      "latestVersion": "v0.16.0",
+      "versionCount": 5,
+      "entryCount": 7
+    },
+    "command": {
+      "component": "command",
+      "file": "command.json",
+      "latestVersion": "v0.9.1",
+      "versionCount": 6,
+      "entryCount": 6
+    },
+    "config-provider": {
+      "component": "config-provider",
+      "file": "config-provider.json",
+      "latestVersion": "v0.17.0",
+      "versionCount": 3,
+      "entryCount": 6
+    },
+    "context-menu": {
+      "component": "context-menu",
+      "file": "context-menu.json",
+      "latestVersion": "v0.8.0",
+      "versionCount": 2,
+      "entryCount": 2
+    },
+    "date-field": {
+      "component": "date-field",
+      "file": "date-field.json",
+      "latestVersion": "v0.16.0",
+      "versionCount": 1,
+      "entryCount": 1
+    },
+    "date-picker": {
+      "component": "date-picker",
+      "file": "date-picker.json",
+      "latestVersion": "v0.17.0",
+      "versionCount": 1,
+      "entryCount": 2
+    },
+    "date-range-field": {
+      "component": "date-range-field",
+      "file": "date-range-field.json",
+      "latestVersion": null,
+      "versionCount": 0,
+      "entryCount": 0
+    },
+    "date-range-picker": {
+      "component": "date-range-picker",
+      "file": "date-range-picker.json",
+      "latestVersion": null,
+      "versionCount": 0,
+      "entryCount": 0
+    },
+    "dialog": {
+      "component": "dialog",
+      "file": "dialog.json",
+      "latestVersion": "v0.17.0",
+      "versionCount": 10,
+      "entryCount": 13
+    },
+    "dropdown-menu": {
+      "component": "dropdown-menu",
+      "file": "dropdown-menu.json",
+      "latestVersion": "v0.0.9",
+      "versionCount": 2,
+      "entryCount": 3
+    },
+    "editable": {
+      "component": "editable",
+      "file": "editable.json",
+      "latestVersion": "v0.16.0",
+      "versionCount": 3,
+      "entryCount": 3
+    },
+    "empty": {
+      "component": "empty",
+      "file": "empty.json",
+      "latestVersion": null,
+      "versionCount": 0,
+      "entryCount": 0
+    },
+    "form": {
+      "component": "form",
+      "file": "form.json",
+      "latestVersion": "v0.15.0",
+      "versionCount": 9,
+      "entryCount": 10
+    },
+    "hover-card": {
+      "component": "hover-card",
+      "file": "hover-card.json",
+      "latestVersion": "v0.17.0",
+      "versionCount": 2,
+      "entryCount": 3
+    },
+    "input": {
+      "component": "input",
+      "file": "input.json",
+      "latestVersion": "v0.0.10",
+      "versionCount": 1,
+      "entryCount": 1
+    },
+    "input-number": {
+      "component": "input-number",
+      "file": "input-number.json",
+      "latestVersion": null,
+      "versionCount": 0,
+      "entryCount": 0
+    },
+    "input-otp": {
+      "component": "input-otp",
+      "file": "input-otp.json",
+      "latestVersion": null,
+      "versionCount": 0,
+      "entryCount": 0
+    },
+    "kbd": {
+      "component": "kbd",
+      "file": "kbd.json",
+      "latestVersion": "v0.15.1",
+      "versionCount": 1,
+      "entryCount": 1
+    },
+    "label": {
+      "component": "label",
+      "file": "label.json",
+      "latestVersion": null,
+      "versionCount": 0,
+      "entryCount": 0
+    },
+    "layout": {
+      "component": "layout",
+      "file": "layout.json",
+      "latestVersion": "v0.15.5",
+      "versionCount": 14,
+      "entryCount": 15
+    },
+    "link": {
+      "component": "link",
+      "file": "link.json",
+      "latestVersion": "v0.2.3",
+      "versionCount": 7,
+      "entryCount": 7
+    },
+    "list": {
+      "component": "list",
+      "file": "list.json",
+      "latestVersion": null,
+      "versionCount": 0,
+      "entryCount": 0
+    },
+    "listbox": {
+      "component": "listbox",
+      "file": "listbox.json",
+      "latestVersion": "v0.15.0",
+      "versionCount": 3,
+      "entryCount": 4
+    },
+    "menu": {
+      "component": "menu",
+      "file": "menu.json",
+      "latestVersion": "v0.15.0",
+      "versionCount": 7,
+      "entryCount": 16
+    },
+    "menubar": {
+      "component": "menubar",
+      "file": "menubar.json",
+      "latestVersion": null,
+      "versionCount": 0,
+      "entryCount": 0
+    },
+    "month-picker": {
+      "component": "month-picker",
+      "file": "month-picker.json",
+      "latestVersion": null,
+      "versionCount": 0,
+      "entryCount": 0
+    },
+    "month-range-picker": {
+      "component": "month-range-picker",
+      "file": "month-range-picker.json",
+      "latestVersion": null,
+      "versionCount": 0,
+      "entryCount": 0
+    },
+    "navigation-menu": {
+      "component": "navigation-menu",
+      "file": "navigation-menu.json",
+      "latestVersion": "v0.16.0",
+      "versionCount": 3,
+      "entryCount": 4
+    },
+    "page-tabs": {
+      "component": "page-tabs",
+      "file": "page-tabs.json",
+      "latestVersion": "v0.6.5",
+      "versionCount": 7,
+      "entryCount": 7
+    },
+    "pagination": {
+      "component": "pagination",
+      "file": "pagination.json",
+      "latestVersion": "v0.16.0",
+      "versionCount": 4,
+      "entryCount": 4
+    },
+    "popover": {
+      "component": "popover",
+      "file": "popover.json",
+      "latestVersion": "v0.17.0",
+      "versionCount": 5,
+      "entryCount": 6
+    },
+    "popper": {
+      "component": "popper",
+      "file": "popper.json",
+      "latestVersion": "v0.16.0",
+      "versionCount": 3,
+      "entryCount": 4
+    },
+    "portal": {
+      "component": "portal",
+      "file": "portal.json",
+      "latestVersion": null,
+      "versionCount": 0,
+      "entryCount": 0
+    },
+    "primitive": {
+      "component": "primitive",
+      "file": "primitive.json",
+      "latestVersion": null,
+      "versionCount": 0,
+      "entryCount": 0
+    },
+    "progress": {
+      "component": "progress",
+      "file": "progress.json",
+      "latestVersion": "v0.15.3",
+      "versionCount": 4,
+      "entryCount": 7
+    },
+    "radio-group": {
+      "component": "radio-group",
+      "file": "radio-group.json",
+      "latestVersion": null,
+      "versionCount": 0,
+      "entryCount": 0
+    },
+    "range-calendar": {
+      "component": "range-calendar",
+      "file": "range-calendar.json",
+      "latestVersion": null,
+      "versionCount": 0,
+      "entryCount": 0
+    },
+    "roving-focus": {
+      "component": "roving-focus",
+      "file": "roving-focus.json",
+      "latestVersion": null,
+      "versionCount": 0,
+      "entryCount": 0
+    },
+    "scroll-area": {
+      "component": "scroll-area",
+      "file": "scroll-area.json",
+      "latestVersion": null,
+      "versionCount": 0,
+      "entryCount": 0
+    },
+    "segment": {
+      "component": "segment",
+      "file": "segment.json",
+      "latestVersion": null,
+      "versionCount": 0,
+      "entryCount": 0
+    },
+    "select": {
+      "component": "select",
+      "file": "select.json",
+      "latestVersion": "v0.15.0",
+      "versionCount": 8,
+      "entryCount": 12
+    },
+    "separator": {
+      "component": "separator",
+      "file": "separator.json",
+      "latestVersion": null,
+      "versionCount": 0,
+      "entryCount": 0
+    },
+    "skeleton": {
+      "component": "skeleton",
+      "file": "skeleton.json",
+      "latestVersion": "v0.15.0",
+      "versionCount": 2,
+      "entryCount": 2
+    },
+    "slider": {
+      "component": "slider",
+      "file": "slider.json",
+      "latestVersion": "v0.15.0",
+      "versionCount": 2,
+      "entryCount": 2
+    },
+    "slot": {
+      "component": "slot",
+      "file": "slot.json",
+      "latestVersion": null,
+      "versionCount": 0,
+      "entryCount": 0
+    },
+    "splitter": {
+      "component": "splitter",
+      "file": "splitter.json",
+      "latestVersion": null,
+      "versionCount": 0,
+      "entryCount": 0
+    },
+    "stepper": {
+      "component": "stepper",
+      "file": "stepper.json",
+      "latestVersion": "v0.16.0",
+      "versionCount": 1,
+      "entryCount": 1
+    },
+    "switch": {
+      "component": "switch",
+      "file": "switch.json",
+      "latestVersion": null,
+      "versionCount": 0,
+      "entryCount": 0
+    },
+    "table": {
+      "component": "table",
+      "file": "table.json",
+      "latestVersion": "v0.15.3",
+      "versionCount": 14,
+      "entryCount": 39
+    },
+    "tabs": {
+      "component": "tabs",
+      "file": "tabs.json",
+      "latestVersion": "v0.8.0",
+      "versionCount": 2,
+      "entryCount": 2
+    },
+    "tag": {
+      "component": "tag",
+      "file": "tag.json",
+      "latestVersion": null,
+      "versionCount": 0,
+      "entryCount": 0
+    },
+    "tags-input": {
+      "component": "tags-input",
+      "file": "tags-input.json",
+      "latestVersion": null,
+      "versionCount": 0,
+      "entryCount": 0
+    },
+    "textarea": {
+      "component": "textarea",
+      "file": "textarea.json",
+      "latestVersion": null,
+      "versionCount": 0,
+      "entryCount": 0
+    },
+    "time-field": {
+      "component": "time-field",
+      "file": "time-field.json",
+      "latestVersion": null,
+      "versionCount": 0,
+      "entryCount": 0
+    },
+    "time-picker": {
+      "component": "time-picker",
+      "file": "time-picker.json",
+      "latestVersion": null,
+      "versionCount": 0,
+      "entryCount": 0
+    },
+    "time-range-field": {
+      "component": "time-range-field",
+      "file": "time-range-field.json",
+      "latestVersion": null,
+      "versionCount": 0,
+      "entryCount": 0
+    },
+    "time-range-picker": {
+      "component": "time-range-picker",
+      "file": "time-range-picker.json",
+      "latestVersion": null,
+      "versionCount": 0,
+      "entryCount": 0
+    },
+    "toast": {
+      "component": "toast",
+      "file": "toast.json",
+      "latestVersion": "v0.15.1",
+      "versionCount": 6,
+      "entryCount": 10
+    },
+    "toggle": {
+      "component": "toggle",
+      "file": "toggle.json",
+      "latestVersion": "v0.15.0",
+      "versionCount": 2,
+      "entryCount": 2
+    },
+    "toggle-group": {
+      "component": "toggle-group",
+      "file": "toggle-group.json",
+      "latestVersion": "v0.15.0",
+      "versionCount": 2,
+      "entryCount": 2
+    },
+    "toolbar": {
+      "component": "toolbar",
+      "file": "toolbar.json",
+      "latestVersion": null,
+      "versionCount": 0,
+      "entryCount": 0
+    },
+    "tooltip": {
+      "component": "tooltip",
+      "file": "tooltip.json",
+      "latestVersion": "v0.14.0",
+      "versionCount": 4,
+      "entryCount": 5
+    },
+    "tree": {
+      "component": "tree",
+      "file": "tree.json",
+      "latestVersion": null,
+      "versionCount": 0,
+      "entryCount": 0
+    },
+    "tree-menu": {
+      "component": "tree-menu",
+      "file": "tree-menu.json",
+      "latestVersion": "v0.15.0",
+      "versionCount": 26,
+      "entryCount": 30
+    },
+    "virtualizer": {
+      "component": "virtualizer",
+      "file": "virtualizer.json",
+      "latestVersion": null,
+      "versionCount": 0,
+      "entryCount": 0
+    },
+    "visually-hidden": {
+      "component": "visually-hidden",
+      "file": "visually-hidden.json",
+      "latestVersion": null,
+      "versionCount": 0,
+      "entryCount": 0
+    },
+    "year-picker": {
+      "component": "year-picker",
+      "file": "year-picker.json",
+      "latestVersion": null,
+      "versionCount": 0,
+      "entryCount": 0
+    },
+    "year-range-picker": {
+      "component": "year-range-picker",
+      "file": "year-range-picker.json",
+      "latestVersion": null,
+      "versionCount": 0,
+      "entryCount": 0
+    }
+  }
+}

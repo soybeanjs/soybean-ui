@@ -1,0 +1,68 @@
+{
+  "component": "navigation-menu",
+  "generatedAt": "2026-05-04T20:22:38.088Z",
+  "schemaVersion": 1,
+  "versions": [
+    {
+      "version": "v0.16.0",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.15.5...v0.16.0",
+      "date": "2026-05-01",
+      "entries": [
+        {
+          "type": "feature",
+          "scope": "components",
+          "summary": "implement Compact components for Card, Popover, Editable, HoverCard, NavigationMenu, Pagination and Stepper",
+          "summaryKey": "changelog.generated.v0.16.0.6cbdc",
+          "commitHash": "6cbdc",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/6cbdcee7",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    },
+    {
+      "version": "v0.8.0",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.7.1...v0.8.0",
+      "date": "2026-02-10",
+      "entries": [
+        {
+          "type": "fix",
+          "scope": "navigation-menu",
+          "summary": "add event listener for root content dismiss in context",
+          "summaryKey": "changelog.generated.v0.8.0.0e1cf",
+          "commitHash": "0e1cf",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/0e1cf983",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    },
+    {
+      "version": "v0.0.8",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.0.7...v0.0.8",
+      "date": "2026-01-01",
+      "entries": [
+        {
+          "type": "feature",
+          "scope": "navigation-menu",
+          "summary": "add support for horizontal and vertical orientations, update examples and documentation",
+          "summaryKey": "changelog.generated.v0.0.8.30ba7",
+          "commitHash": "30ba7",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/30ba7787",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "style",
+          "scope": "navigation-menu",
+          "summary": "add margin reset to item and subItem styles for consistent layout",
+          "summaryKey": "changelog.generated.v0.0.8.a27cd",
+          "commitHash": "a27cd",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/a27cd045",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    }
+  ]
+}

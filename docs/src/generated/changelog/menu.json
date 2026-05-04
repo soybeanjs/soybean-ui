@@ -1,0 +1,216 @@
+{
+  "component": "menu",
+  "generatedAt": "2026-05-04T20:22:38.088Z",
+  "schemaVersion": 1,
+  "versions": [
+    {
+      "version": "v0.15.0",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.14.0...v0.15.0",
+      "date": "2026-04-26",
+      "entries": [
+        {
+          "type": "feature",
+          "scope": "menu",
+          "summary": "add MenuSubAttributeContext and integrate into menu components",
+          "summaryKey": "changelog.generated.v0.15.0.7bc9f",
+          "commitHash": "7bc9f",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/7bc9ffcf",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "fix",
+          "scope": "menu",
+          "summary": "correct focus handling in PopperPositioner and RovingFocusGroup",
+          "summaryKey": "changelog.generated.v0.15.0.68b9d",
+          "commitHash": "68b9d",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/68b9d584",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "refactor",
+          "scope": "menu",
+          "summary": "Implement Menu Compact components",
+          "summaryKey": "changelog.generated.v0.15.0.a1e6d",
+          "commitHash": "a1e6d",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/a1e6d340",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "chore",
+          "scope": "menu",
+          "summary": "add unit tests for SMenuOptions keyboard navigation",
+          "summaryKey": "changelog.generated.v0.15.0.a4532",
+          "commitHash": "a4532",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/a4532fef",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "style",
+          "scope": "menu",
+          "summary": "change cursor style from default to pointer for menu items",
+          "summaryKey": "changelog.generated.v0.15.0.c47ff",
+          "commitHash": "c47ff",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/c47ff1d0",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    },
+    {
+      "version": "v0.15.0-beta.1",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.14.0...v0.15.0-beta.1",
+      "date": "2026-04-18",
+      "entries": [
+        {
+          "type": "feature",
+          "scope": "menu",
+          "summary": "add MenuSubAttributeContext and integrate into menu components",
+          "summaryKey": "changelog.generated.v0.15.0-beta.1.7bc9f",
+          "commitHash": "7bc9f",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/7bc9ffcf",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "fix",
+          "scope": "menu",
+          "summary": "correct focus handling in PopperPositioner and RovingFocusGroup",
+          "summaryKey": "changelog.generated.v0.15.0-beta.1.68b9d",
+          "commitHash": "68b9d",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/68b9d584",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "refactor",
+          "scope": "menu",
+          "summary": "Implement Menu Compact components",
+          "summaryKey": "changelog.generated.v0.15.0-beta.1.a1e6d",
+          "commitHash": "a1e6d",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/a1e6d340",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "chore",
+          "scope": "menu",
+          "summary": "add unit tests for SMenuOptions keyboard navigation",
+          "summaryKey": "changelog.generated.v0.15.0-beta.1.a4532",
+          "commitHash": "a4532",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/a4532fef",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "style",
+          "scope": "menu",
+          "summary": "change cursor style from default to pointer for menu items",
+          "summaryKey": "changelog.generated.v0.15.0-beta.1.c47ff",
+          "commitHash": "c47ff",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/c47ff1d0",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    },
+    {
+      "version": "v0.14.0",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.13.8...v0.14.0",
+      "date": "2026-04-03",
+      "entries": [
+        {
+          "type": "refactor",
+          "scope": "menu",
+          "summary": "enhance menu item radio and checkbox components",
+          "summaryKey": "changelog.generated.v0.14.0.233ff",
+          "commitHash": "233ff",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/233ffade",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    },
+    {
+      "version": "v0.3.0",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.2.8...v0.3.0",
+      "date": "2026-01-29",
+      "entries": [
+        {
+          "type": "feature",
+          "scope": "menu",
+          "summary": "support active state",
+          "summaryKey": "changelog.generated.v0.3.0.32476",
+          "commitHash": "32476",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/32476719",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    },
+    {
+      "version": "v0.1.11",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.1.10...v0.1.11",
+      "date": "2026-01-28",
+      "entries": [
+        {
+          "type": "fix",
+          "scope": "menu",
+          "summary": "add focus-visible outline to popup for better accessibility",
+          "summaryKey": "changelog.generated.v0.1.11.f5509",
+          "commitHash": "f5509",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/f5509564",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    },
+    {
+      "version": "v0.0.20",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.0.19...v0.0.20",
+      "date": "2026-01-21",
+      "entries": [
+        {
+          "type": "feature",
+          "scope": "menu",
+          "summary": "support indicator position",
+          "summaryKey": "changelog.generated.v0.0.20.f7da3",
+          "commitHash": "f7da3",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/f7da3c39",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    },
+    {
+      "version": "v0.0.8",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.0.7...v0.0.8",
+      "date": "2026-01-01",
+      "entries": [
+        {
+          "type": "optimization",
+          "scope": "menu",
+          "summary": "enhance type definitions",
+          "summaryKey": "changelog.generated.v0.0.8.e2fb8",
+          "commitHash": "e2fb8",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/e2fb89cb",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "refactor",
+          "scope": "menu",
+          "summary": "restructure menu components by introducing popup and positioner elements, updating context management, and enhancing type definitions for improved clarity and functionality",
+          "summaryKey": "changelog.generated.v0.0.8.f4143",
+          "commitHash": "f4143",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/f4143b48",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    }
+  ]
+}

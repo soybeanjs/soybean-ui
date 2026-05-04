@@ -1,0 +1,24 @@
+{
+  "component": "input",
+  "generatedAt": "2026-05-04T20:22:38.088Z",
+  "schemaVersion": 1,
+  "versions": [
+    {
+      "version": "v0.0.10",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.0.9...v0.0.10",
+      "date": "2026-01-07",
+      "entries": [
+        {
+          "type": "feature",
+          "scope": "input",
+          "summary": "add name and required props to InputControl and InputRoot for enhanced form handling",
+          "summaryKey": "changelog.generated.v0.0.10.f28c6",
+          "commitHash": "f28c6",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/f28c6415",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    }
+  ]
+}

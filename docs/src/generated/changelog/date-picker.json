@@ -1,0 +1,34 @@
+{
+  "component": "date-picker",
+  "generatedAt": "2026-05-04T20:22:38.088Z",
+  "schemaVersion": 1,
+  "versions": [
+    {
+      "version": "v0.17.0",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.16.0...v0.17.0",
+      "date": "2026-05-03",
+      "entries": [
+        {
+          "type": "fix",
+          "scope": "date-picker",
+          "summary": "add disabled prop to PopoverRoot and update test selectors",
+          "summaryKey": "changelog.generated.v0.17.0.1cce9",
+          "commitHash": "1cce9",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/1cce97ae",
+          "authors": ["soybeanjs", "Copilot"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "optimization",
+          "scope": "date-picker",
+          "summary": "refactor date-picker components and integrate popover functionality",
+          "summaryKey": "changelog.generated.v0.17.0.7ae41",
+          "commitHash": "7ae41",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/7ae413ff",
+          "authors": ["soybeanjs", "Copilot"],
+          "source": "exact-scope"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,75 @@
+{
+  "component": "pagination",
+  "generatedAt": "2026-05-04T20:22:38.088Z",
+  "schemaVersion": 1,
+  "versions": [
+    {
+      "version": "v0.16.0",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.15.5...v0.16.0",
+      "date": "2026-05-01",
+      "entries": [
+        {
+          "type": "feature",
+          "scope": "components",
+          "summary": "implement Compact components for Card, Popover, Editable, HoverCard, NavigationMenu, Pagination and Stepper",
+          "summaryKey": "changelog.generated.v0.16.0.6cbdc",
+          "commitHash": "6cbdc",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/6cbdcee7",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    },
+    {
+      "version": "v0.11.1",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.11.0...v0.11.1",
+      "date": "2026-03-06",
+      "entries": [
+        {
+          "type": "feature",
+          "scope": "pagination",
+          "summary": "add leading and trailing slots",
+          "summaryKey": "changelog.generated.v0.11.1.b03ba",
+          "commitHash": "b03ba",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/b03baf86",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    },
+    {
+      "version": "v0.11.0",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.10.6...v0.11.0",
+      "date": "2026-03-06",
+      "entries": [
+        {
+          "type": "refactor",
+          "scope": "pagination",
+          "summary": "rename itemsPerPage to pageSize and support update pageSize by event",
+          "summaryKey": "changelog.generated.v0.11.0.7817c",
+          "commitHash": "7817c",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/7817c828",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    },
+    {
+      "version": "v0.0.7",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.0.6...v0.0.7",
+      "date": "2025-12-09",
+      "entries": [
+        {
+          "type": "fix",
+          "scope": "pagination",
+          "summary": "update border styles for selected button states in pagination variants",
+          "summaryKey": "changelog.generated.v0.0.7.e817f",
+          "commitHash": "e817f",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/e817ff24",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    }
+  ]
+}

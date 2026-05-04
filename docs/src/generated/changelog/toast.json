@@ -1,0 +1,149 @@
+{
+  "component": "toast",
+  "generatedAt": "2026-05-04T20:22:38.088Z",
+  "schemaVersion": 1,
+  "versions": [
+    {
+      "version": "v0.15.1",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.15.0...v0.15.1",
+      "date": "2026-04-27",
+      "entries": [
+        {
+          "type": "feature",
+          "scope": "toast",
+          "summary": "add ToastProvider component and refactor Toaster integration",
+          "summaryKey": "changelog.generated.v0.15.1.e2491",
+          "commitHash": "e2491",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/e249120d",
+          "authors": ["soybeanjs", "Copilot"],
+          "source": "exact-scope"
+        }
+      ]
+    },
+    {
+      "version": "v0.15.0",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.14.0...v0.15.0",
+      "date": "2026-04-26",
+      "entries": [
+        {
+          "type": "optimization",
+          "scope": "toast",
+          "summary": "optimize toast api and icon,button render",
+          "summaryKey": "changelog.generated.v0.15.0.080c2",
+          "commitHash": "080c2",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/080c2359",
+          "authors": ["soybeanjs", "soybean-js"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "docs",
+          "scope": "toast",
+          "summary": "update toast component documentation for clarity and usage examples",
+          "summaryKey": "changelog.generated.v0.15.0.9e4f4",
+          "commitHash": "9e4f4",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/9e4f4580",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "chore",
+          "scope": "toast",
+          "summary": "update mount reference from Toaster to SToaster in tests",
+          "summaryKey": "changelog.generated.v0.15.0.acbd4",
+          "commitHash": "acbd4",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/acbd4920",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    },
+    {
+      "version": "v0.15.0-beta.3",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.15.0-beta.2...v0.15.0-beta.3",
+      "date": "2026-04-26",
+      "entries": [
+        {
+          "type": "optimization",
+          "scope": "toast",
+          "summary": "optimize toast api and icon,button render",
+          "summaryKey": "changelog.generated.v0.15.0-beta.3.080c2",
+          "commitHash": "080c2",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/080c2359",
+          "authors": ["soybeanjs", "soybean-js"],
+          "source": "exact-scope"
+        }
+      ]
+    },
+    {
+      "version": "v0.15.0-beta.1",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.14.0...v0.15.0-beta.1",
+      "date": "2026-04-18",
+      "entries": [
+        {
+          "type": "docs",
+          "scope": "toast",
+          "summary": "update toast component documentation for clarity and usage examples",
+          "summaryKey": "changelog.generated.v0.15.0-beta.1.9e4f4",
+          "commitHash": "9e4f4",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/9e4f4580",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "chore",
+          "scope": "toast",
+          "summary": "update mount reference from Toaster to SToaster in tests",
+          "summaryKey": "changelog.generated.v0.15.0-beta.1.acbd4",
+          "commitHash": "acbd4",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/acbd4920",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    },
+    {
+      "version": "v0.14.0",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.13.8...v0.14.0",
+      "date": "2026-04-03",
+      "entries": [
+        {
+          "type": "fix",
+          "scope": "toast",
+          "summary": "add feature attribute to VisuallyHidden component",
+          "summaryKey": "changelog.generated.v0.14.0.4dc6d",
+          "commitHash": "4dc6d",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/4dc6d5f8",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "fix",
+          "scope": "toast",
+          "summary": "remove unnecessary aria attributes from VisuallyHidden and ToastAnnounce components",
+          "summaryKey": "changelog.generated.v0.14.0.044dc",
+          "commitHash": "044dc",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/044dcd43",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    },
+    {
+      "version": "v0.8.0",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.7.1...v0.8.0",
+      "date": "2026-02-10",
+      "entries": [
+        {
+          "type": "feature",
+          "scope": "toast",
+          "summary": "add disableSwipe prop to control swipe-to-close functionality",
+          "summaryKey": "changelog.generated.v0.8.0.32d53",
+          "commitHash": "32d53",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/32d53a74",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "component": "slider",
+  "generatedAt": "2026-05-04T20:22:38.088Z",
+  "schemaVersion": 1,
+  "versions": [
+    {
+      "version": "v0.15.0",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.14.0...v0.15.0",
+      "date": "2026-04-26",
+      "entries": [
+        {
+          "type": "optimization",
+          "scope": "slider",
+          "summary": "clean up props handling and improve readability",
+          "summaryKey": "changelog.generated.v0.15.0.012f2",
+          "commitHash": "012f2",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/012f257e",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    },
+    {
+      "version": "v0.15.0-beta.1",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.14.0...v0.15.0-beta.1",
+      "date": "2026-04-18",
+      "entries": [
+        {
+          "type": "optimization",
+          "scope": "slider",
+          "summary": "clean up props handling and improve readability",
+          "summaryKey": "changelog.generated.v0.15.0-beta.1.012f2",
+          "commitHash": "012f2",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/012f257e",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    }
+  ]
+}

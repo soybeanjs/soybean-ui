@@ -1,0 +1,126 @@
+{
+  "component": "page-tabs",
+  "generatedAt": "2026-05-04T20:22:38.088Z",
+  "schemaVersion": 1,
+  "versions": [
+    {
+      "version": "v0.6.5",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.6.4...v0.6.5",
+      "date": "2026-02-08",
+      "entries": [
+        {
+          "type": "fix",
+          "scope": "page-tabs",
+          "summary": "omit beforeClose prop from forwardedProps",
+          "summaryKey": "changelog.generated.v0.6.5.37fba",
+          "commitHash": "37fba",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/37fba8dd",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    },
+    {
+      "version": "v0.6.2",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.6.1...v0.6.2",
+      "date": "2026-02-08",
+      "entries": [
+        {
+          "type": "fix",
+          "scope": "page-tabs",
+          "summary": "fix scroll centerX value",
+          "summaryKey": "changelog.generated.v0.6.2.1dadd",
+          "commitHash": "1dadd",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/1dadda7b",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    },
+    {
+      "version": "v0.6.1",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.6.0...v0.6.1",
+      "date": "2026-02-07",
+      "entries": [
+        {
+          "type": "fix",
+          "scope": "page-tabs",
+          "summary": "add sorting functionality for tabs based on pinned status",
+          "summaryKey": "changelog.generated.v0.6.1.f5bac",
+          "commitHash": "f5bac",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/f5bacad3",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    },
+    {
+      "version": "v0.6.0",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.5.9...v0.6.0",
+      "date": "2026-02-07",
+      "entries": [
+        {
+          "type": "refactor",
+          "scope": "page-tabs",
+          "summary": "simplify context and state management, remove unused operations",
+          "summaryKey": "changelog.generated.v0.6.0.ded83",
+          "commitHash": "ded83",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/ded83e90",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    },
+    {
+      "version": "v0.4.3",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.4.2...v0.4.3",
+      "date": "2026-02-01",
+      "entries": [
+        {
+          "type": "fix",
+          "scope": "page-tabs",
+          "summary": "fix tab closing functions",
+          "summaryKey": "changelog.generated.v0.4.3.ca73e",
+          "commitHash": "ca73e",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/ca73e49e",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    },
+    {
+      "version": "v0.4.2",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.4.1...v0.4.2",
+      "date": "2026-02-01",
+      "entries": [
+        {
+          "type": "optimization",
+          "scope": "page-tabs",
+          "summary": "optimize page-tabs logic",
+          "summaryKey": "changelog.generated.v0.4.2.a2a1c",
+          "commitHash": "a2a1c",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/a2a1c3d5",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    },
+    {
+      "version": "v0.4.1",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.4.0...v0.4.1",
+      "date": "2026-02-01",
+      "entries": [
+        {
+          "type": "refactor",
+          "scope": "page-tabs",
+          "summary": "refactor context and operations for improved tab management",
+          "summaryKey": "changelog.generated.v0.4.1.2b884",
+          "commitHash": "2b884",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/2b884ccf",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    }
+  ]
+}

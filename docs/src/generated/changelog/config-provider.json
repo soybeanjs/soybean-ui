@@ -1,0 +1,88 @@
+{
+  "component": "config-provider",
+  "generatedAt": "2026-05-04T20:22:38.088Z",
+  "schemaVersion": 1,
+  "versions": [
+    {
+      "version": "v0.17.0",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.16.0...v0.17.0",
+      "date": "2026-05-03",
+      "entries": [
+        {
+          "type": "fix",
+          "scope": "config-provider",
+          "summary": "remove unused useStyleTag and integrate cssVars in Primitive",
+          "summaryKey": "changelog.generated.v0.17.0.3996e",
+          "commitHash": "3996e",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/3996ea3b",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    },
+    {
+      "version": "v0.6.6",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.6.5...v0.6.6",
+      "date": "2026-02-09",
+      "entries": [
+        {
+          "type": "feature",
+          "scope": "config-provider",
+          "summary": "enhance theme variable management with useStorage",
+          "summaryKey": "changelog.generated.v0.6.6.1a002",
+          "commitHash": "1a002",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/1a002016",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    },
+    {
+      "version": "v0.0.17",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.0.16...v0.0.17",
+      "date": "2026-01-19",
+      "entries": [
+        {
+          "type": "optimization",
+          "scope": "config-provider",
+          "summary": "cache theme CSS variables",
+          "summaryKey": "changelog.generated.v0.0.17.78e49",
+          "commitHash": "78e49",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/78e49459",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "refactor",
+          "scope": "config-provider",
+          "summary": "add theme styling support with Shadcn theme integration",
+          "summaryKey": "changelog.generated.v0.0.17.cb4dd",
+          "commitHash": "cb4dd",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/cb4dd886",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "refactor",
+          "scope": "config-provider",
+          "summary": "remove unused useStyleTag and bind cssVars to Primitive",
+          "summaryKey": "changelog.generated.v0.0.17.a3ee0",
+          "commitHash": "a3ee0",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/a3ee007e",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "refactor",
+          "scope": "config-provider",
+          "summary": "remove unused theme options from props",
+          "summaryKey": "changelog.generated.v0.0.17.b731c",
+          "commitHash": "b731c",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/b731c8c9",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    }
+  ]
+}

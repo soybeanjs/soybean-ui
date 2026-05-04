@@ -1,0 +1,170 @@
+{
+  "component": "form",
+  "generatedAt": "2026-05-04T20:22:38.088Z",
+  "schemaVersion": 1,
+  "versions": [
+    {
+      "version": "v0.15.0",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.14.0...v0.15.0",
+      "date": "2026-04-26",
+      "entries": [
+        {
+          "type": "fix",
+          "scope": "form",
+          "summary": "update form input and output types for schema validation",
+          "summaryKey": "changelog.generated.v0.15.0.3b792",
+          "commitHash": "3b792",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/3b792d13",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    },
+    {
+      "version": "v0.15.0-beta.2",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.15.0-beta.1...v0.15.0-beta.2",
+      "date": "2026-04-18",
+      "entries": [
+        {
+          "type": "fix",
+          "scope": "form",
+          "summary": "update form input and output types for schema validation",
+          "summaryKey": "changelog.generated.v0.15.0-beta.2.3b792",
+          "commitHash": "3b792",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/3b792d13",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    },
+    {
+      "version": "v0.10.2",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.10.1...v0.10.2",
+      "date": "2026-03-06",
+      "entries": [
+        {
+          "type": "fix",
+          "scope": "form",
+          "summary": "update label style to prevent text wrapping",
+          "summaryKey": "changelog.generated.v0.10.2.2bbce",
+          "commitHash": "2bbce",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/2bbce25e",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    },
+    {
+      "version": "v0.10.0",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.9.4...v0.10.0",
+      "date": "2026-03-06",
+      "entries": [
+        {
+          "type": "optimization",
+          "scope": "form",
+          "summary": "simplify inline field styles in formVariants",
+          "summaryKey": "changelog.generated.v0.10.0.bafd3",
+          "commitHash": "bafd3",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/bafd3bc2",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    },
+    {
+      "version": "v0.9.4",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.9.3...v0.9.4",
+      "date": "2026-03-05",
+      "entries": [
+        {
+          "type": "optimization",
+          "scope": "form",
+          "summary": "optimize form variants",
+          "summaryKey": "changelog.generated.v0.9.4.5e736",
+          "commitHash": "5e736",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/5e736467",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    },
+    {
+      "version": "v0.9.3",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.9.2...v0.9.3",
+      "date": "2026-03-05",
+      "entries": [
+        {
+          "type": "feature",
+          "scope": "form",
+          "summary": "add SFormFieldBase component export",
+          "summaryKey": "changelog.generated.v0.9.3.c0ee8",
+          "commitHash": "c0ee8",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/c0ee8467",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    },
+    {
+      "version": "v0.9.2",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.9.1...v0.9.2",
+      "date": "2026-03-05",
+      "entries": [
+        {
+          "type": "feature",
+          "scope": "form",
+          "summary": "add FormControl component and update form structure",
+          "summaryKey": "changelog.generated.v0.9.2.58c98",
+          "commitHash": "58c98",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/58c982c1",
+          "authors": ["Soybean"],
+          "source": "exact-scope"
+        }
+      ]
+    },
+    {
+      "version": "v0.0.11",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.0.10...v0.0.11",
+      "date": "2026-01-08",
+      "entries": [
+        {
+          "type": "fix",
+          "scope": "form",
+          "summary": "expand form component exports with additional types for improved type safety and flexibility",
+          "summaryKey": "changelog.generated.v0.0.11.9b8e0",
+          "commitHash": "9b8e0",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/9b8e0ff5",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    },
+    {
+      "version": "v0.0.10",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.0.9...v0.0.10",
+      "date": "2026-01-07",
+      "entries": [
+        {
+          "type": "feature",
+          "scope": "form",
+          "summary": "add FormResetState type to form component exports for enhanced form state management",
+          "summaryKey": "changelog.generated.v0.0.10.57e07",
+          "commitHash": "57e07",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/57e072ff",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "refactor",
+          "scope": "form",
+          "summary": "restructure form components",
+          "summaryKey": "changelog.generated.v0.0.10.1af2b",
+          "commitHash": "1af2b",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/1af2b6c3",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    }
+  ]
+}

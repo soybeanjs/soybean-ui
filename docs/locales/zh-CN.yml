@@ -488,9 +488,9 @@ layout:
     search: 搜索文档
     search_empty: 没有找到相关文档
     docs: 文档
-    getting_started: 入门指南
+    getting_started: 开始使用
     components: 组件
-    releases: 发布记录
+    releases: 更新日志
     version: 版本
     github: GitHub
     theme: 主题
@@ -543,7 +543,7 @@ components:
     desc: 按钮组件
   home:
     title: SoybeanUI
-    description: "面向 Vue 3 的强大而优雅的现代组件库：{'@'}soybeanjs/headless 提供无头交互能力，{'@'}soybeanjs/ui 提供带默认样式的组件封装，为团队建立一致的交互范式、高质量的界面体验与可扩展的设计系统基础。"
+    description: '面向 Vue 3 的强大而优雅的组件系统，提供无头交互能力与开箱即用的样式封装。'
     kicker: Vue 3 组件系统
     actions:
       start: 开始使用
@@ -644,10 +644,71 @@ api:
   local_types: 本地类型
   common_types_note: 通用且重复出现的类型已集中整理到
   common_types_link: 公共类型页。
+changelog:
+  actions:
+    compare_release: 对比版本
+    view_commit: 查看提交
+  meta:
+    scope: 范围
+    authors: 作者
+  sources:
+    curated: 人工映射
+  empty:
+    title: 暂无组件级发布记录
+    desc: 当 CHANGELOG 条目使用该组件 scope，或被人工映射到该组件时，这里会展示对应版本变更。
+  types:
+    feature: 新功能
+    fix: 修复
+    optimization: 优化
+    refactor: 重构
+    docs: 文档
+    chore: 维护
+    style: 样式
+releases_page:
+  kicker: 版本总览
+  title: 更新日志
+  summary: 用全局视角查看最近版本、受影响组件与升级入口，再按需跳回具体组件文档处理升级细节。
+  filter:
+    title: 按组件筛选
+    desc: 只看你实际使用到的组件相关版本，再从命中的条目直接跳回对应组件文档。
+    placeholder: 搜索 dialog、table、date-picker 等组件
+    clear: 清空
+    suggestions: 候选组件
+    enter_hint: 按回车可直接选中第一个匹配项。
+    related_only: 仅看组件相关条目
+    related_only_desc: 隐藏 docs、deps、workflow 等共享范围的非组件变更。
+    no_match: 当前收录的版本数据里没有匹配的组件。
+  latest:
+    title: 最新版本快照
+    desc: 先看最新发布，再在升级路径跨越多个 tag 时补看更早版本，避免在完整 changelog 里来回搜索。
+  sections:
+    recent:
+      title: 最近发布
+      desc: 每个版本卡片都会汇总已发布条目、受影响组件，以及跳回组件文档的最快入口。
+    impacted:
+      title: 受影响组件
+    highlights:
+      title: 重点变更
+  stats:
+    entries: 条目数
+    components: 组件数
+    versions: 收录版本
+  actions:
+    compare_release: 对比版本
+    full_changelog: 完整 Changelog
+    browse_components: 浏览组件
+  empty:
+    title: 暂无发布数据
+    desc: 运行 changelog 生成命令后，这个页面会自动展示版本汇总内容。
+    filtered_title: 没有匹配的版本
+    filtered_desc: 当前组件筛选下没有命中的已收录版本。
+  more_entries: '完整 changelog 中还有 {count} 条变更'
 component_detail:
   kicker: 组件详情入口
   helper: 先用顶部快捷入口找到概述、用法、演示和 API，再往下细读完整文档内容。
   summary: '{component} 属于 {category} 分类。建议先看演示与用法，再对照 API 表格完成接入和样式调整。'
+  changelog:
+    desc: 版本记录按发布版本分组，便于快速查看这个组件在不同版本里的实际变更。
   meta:
     category: 分类
     import: 导入名
@@ -655,12 +716,14 @@ component_detail:
   actions:
     demos: 查看演示
     api: 查看 API
+    changelog: 查看更新日志
     catalog: 返回目录
   sections:
     overview: 概述
     usage: 用法
     demos: 演示
     api: API
+    changelog: 更新日志
   quick_jump:
     title: 快速跳转
     desc: 直接跳到当前组件最常用的阅读节点。

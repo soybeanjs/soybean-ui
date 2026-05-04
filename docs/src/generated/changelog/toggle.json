@@ -1,0 +1,41 @@
+{
+  "component": "toggle",
+  "generatedAt": "2026-05-04T20:22:38.088Z",
+  "schemaVersion": 1,
+  "versions": [
+    {
+      "version": "v0.15.0",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.14.0...v0.15.0",
+      "date": "2026-04-26",
+      "entries": [
+        {
+          "type": "fix",
+          "scope": "toggle",
+          "summary": "add shape prop to ToggleProps and update forwardedProps",
+          "summaryKey": "changelog.generated.v0.15.0.63f21",
+          "commitHash": "63f21",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/63f21829",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    },
+    {
+      "version": "v0.15.0-beta.1",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.14.0...v0.15.0-beta.1",
+      "date": "2026-04-18",
+      "entries": [
+        {
+          "type": "fix",
+          "scope": "toggle",
+          "summary": "add shape prop to ToggleProps and update forwardedProps",
+          "summaryKey": "changelog.generated.v0.15.0-beta.1.63f21",
+          "commitHash": "63f21",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/63f21829",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,119 @@
+{
+  "component": "card",
+  "generatedAt": "2026-05-04T20:22:38.088Z",
+  "schemaVersion": 1,
+  "versions": [
+    {
+      "version": "v0.16.0",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.15.5...v0.16.0",
+      "date": "2026-05-01",
+      "entries": [
+        {
+          "type": "feature",
+          "scope": "components",
+          "summary": "implement Compact components for Card, Popover, Editable, HoverCard, NavigationMenu, Pagination and Stepper",
+          "summaryKey": "changelog.generated.v0.16.0.6cbdc",
+          "commitHash": "6cbdc",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/6cbdcee7",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    },
+    {
+      "version": "v0.15.3",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.15.2...v0.15.3",
+      "date": "2026-04-27",
+      "entries": [
+        {
+          "type": "style",
+          "scope": "card",
+          "summary": "update content class for improved accessibility",
+          "summaryKey": "changelog.generated.v0.15.3.0160d",
+          "commitHash": "0160d",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/0160d881",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope"
+        }
+      ]
+    },
+    {
+      "version": "v0.10.5",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.10.4...v0.10.5",
+      "date": "2026-03-06",
+      "entries": [
+        {
+          "type": "fix",
+          "scope": "card",
+          "summary": "update content styles",
+          "summaryKey": "changelog.generated.v0.10.5.5a26c",
+          "commitHash": "5a26c",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/5a26ced0",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    },
+    {
+      "version": "v0.10.1",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.10.0...v0.10.1",
+      "date": "2026-03-06",
+      "entries": [
+        {
+          "type": "feature",
+          "scope": "card",
+          "summary": "add default prop 'asChild' to SCardCollapsibleTrigger",
+          "summaryKey": "changelog.generated.v0.10.1.3201c",
+          "commitHash": "3201c",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/3201cc25",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "fix",
+          "scope": "card",
+          "summary": "add 'SCardCollapsibleTrigger' to card components",
+          "summaryKey": "changelog.generated.v0.10.1.d070a",
+          "commitHash": "d070a",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/d070a917",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    },
+    {
+      "version": "v0.10.0",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.9.4...v0.10.0",
+      "date": "2026-03-06",
+      "entries": [
+        {
+          "type": "feature",
+          "scope": "card",
+          "summary": "add collapsible functionality and update API props",
+          "summaryKey": "changelog.generated.v0.10.0.e7891",
+          "commitHash": "e7891",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/e78917d2",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    },
+    {
+      "version": "v0.4.5",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.4.4...v0.4.5",
+      "date": "2026-02-04",
+      "entries": [
+        {
+          "type": "fix",
+          "scope": "card",
+          "summary": "wrap header slot content for improved structure and rendering",
+          "summaryKey": "changelog.generated.v0.4.5.c07bf",
+          "commitHash": "c07bf",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/c07bff3f",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    }
+  ]
+}

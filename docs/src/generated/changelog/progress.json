@@ -1,0 +1,105 @@
+{
+  "component": "progress",
+  "generatedAt": "2026-05-04T20:22:38.088Z",
+  "schemaVersion": 1,
+  "versions": [
+    {
+      "version": "v0.15.3",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.15.2...v0.15.3",
+      "date": "2026-04-27",
+      "entries": [
+        {
+          "type": "docs",
+          "scope": "progress",
+          "summary": "update progress documentation and improve structure",
+          "summaryKey": "changelog.generated.v0.15.3.d86ac",
+          "commitHash": "d86ac",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/d86acef7",
+          "authors": ["soybeanfe", "Copilot"],
+          "source": "exact-scope"
+        }
+      ]
+    },
+    {
+      "version": "v0.15.0",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.14.0...v0.15.0",
+      "date": "2026-04-26",
+      "entries": [
+        {
+          "type": "feature",
+          "scope": "progress",
+          "summary": "add imperative progress provider api and remove loading-bar wrapper. closed #129",
+          "summaryKey": "changelog.generated.v0.15.0.5f90a",
+          "commitHash": "5f90a",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/5f90a644",
+          "authors": ["MicrosoftCopilot in https://github.com/soybeanjs/soybean-ui/issues/129"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "refactor",
+          "scope": "progress",
+          "summary": "Refactor ProgressProvider and progress api",
+          "summaryKey": "changelog.generated.v0.15.0.c60cf",
+          "commitHash": "c60cf",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/c60cf09a",
+          "authors": ["soybeanjs", "soybean-js", "MicrosoftCopilot"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "docs",
+          "scope": "progress",
+          "summary": "update class name descriptions and improve API documentation",
+          "summaryKey": "changelog.generated.v0.15.0.d1327",
+          "commitHash": "d1327",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/d132782f",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    },
+    {
+      "version": "v0.15.0-beta.3",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.15.0-beta.2...v0.15.0-beta.3",
+      "date": "2026-04-26",
+      "entries": [
+        {
+          "type": "feature",
+          "scope": "progress",
+          "summary": "add imperative progress provider api and remove loading-bar wrapper. closed #129",
+          "summaryKey": "changelog.generated.v0.15.0-beta.3.5f90a",
+          "commitHash": "5f90a",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/5f90a644",
+          "authors": ["MicrosoftCopilot in https://github.com/soybeanjs/soybean-ui/issues/129"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "refactor",
+          "scope": "progress",
+          "summary": "Refactor ProgressProvider and progress api",
+          "summaryKey": "changelog.generated.v0.15.0-beta.3.c60cf",
+          "commitHash": "c60cf",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/c60cf09a",
+          "authors": ["soybeanjs", "soybean-js", "MicrosoftCopilot"],
+          "source": "exact-scope"
+        }
+      ]
+    },
+    {
+      "version": "v0.15.0-beta.1",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.14.0...v0.15.0-beta.1",
+      "date": "2026-04-18",
+      "entries": [
+        {
+          "type": "docs",
+          "scope": "progress",
+          "summary": "update class name descriptions and improve API documentation",
+          "summaryKey": "changelog.generated.v0.15.0-beta.1.d1327",
+          "commitHash": "d1327",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/d132782f",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    }
+  ]
+}

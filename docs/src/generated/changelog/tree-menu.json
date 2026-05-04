@@ -1,0 +1,489 @@
+{
+  "component": "tree-menu",
+  "generatedAt": "2026-05-04T20:22:38.088Z",
+  "schemaVersion": 1,
+  "versions": [
+    {
+      "version": "v0.15.0",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.14.0...v0.15.0",
+      "date": "2026-04-26",
+      "entries": [
+        {
+          "type": "fix",
+          "scope": "tree-menu",
+          "summary": "fix collapsible ui context in tree menu",
+          "summaryKey": "changelog.generated.v0.15.0.fbb4b",
+          "commitHash": "fbb4b",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/fbb4bf38",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    },
+    {
+      "version": "v0.15.0-beta.1",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.14.0...v0.15.0-beta.1",
+      "date": "2026-04-18",
+      "entries": [
+        {
+          "type": "fix",
+          "scope": "tree-menu",
+          "summary": "fix collapsible ui context in tree menu",
+          "summaryKey": "changelog.generated.v0.15.0-beta.1.fbb4b",
+          "commitHash": "fbb4b",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/fbb4bf38",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    },
+    {
+      "version": "v0.7.0",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.6.6...v0.7.0",
+      "date": "2026-02-09",
+      "entries": [
+        {
+          "type": "refactor",
+          "scope": "tree-menu",
+          "summary": "add TreeMenuOptions component and enhance context management",
+          "summaryKey": "changelog.generated.v0.7.0.4878f",
+          "commitHash": "4878f",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/4878f0ba",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    },
+    {
+      "version": "v0.3.3",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.3.2...v0.3.3",
+      "date": "2026-01-30",
+      "entries": [
+        {
+          "type": "fix",
+          "scope": "tree-menu",
+          "summary": "add active-value binding to dropdown menu",
+          "summaryKey": "changelog.generated.v0.3.3.18f74",
+          "commitHash": "18f74",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/18f74c15",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    },
+    {
+      "version": "v0.3.0",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.2.8...v0.3.0",
+      "date": "2026-01-29",
+      "entries": [
+        {
+          "type": "feature",
+          "scope": "tree-menu",
+          "summary": "implement active path tracking and update child active state logic",
+          "summaryKey": "changelog.generated.v0.3.0.6d5e8",
+          "commitHash": "6d5e8",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/6d5e886d",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "optimization",
+          "scope": "tree-menu",
+          "summary": "add getTreePaths function and update tree-menu component to use it",
+          "summaryKey": "changelog.generated.v0.3.0.c6391",
+          "commitHash": "c6391",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/c6391c9e",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    },
+    {
+      "version": "v0.2.8",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.2.7...v0.2.8",
+      "date": "2026-01-28",
+      "entries": [
+        {
+          "type": "fix",
+          "scope": "tree-menu",
+          "summary": "update open state logic in TreeMenuCollapsible component",
+          "summaryKey": "changelog.generated.v0.2.8.5e892",
+          "commitHash": "5e892",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/5e892eb6",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "fix",
+          "scope": "tree-menu",
+          "summary": "add select-dropdown event emission in TreeMenuOption component",
+          "summaryKey": "changelog.generated.v0.2.8.7852c",
+          "commitHash": "7852c",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/7852cb0c",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    },
+    {
+      "version": "v0.2.7",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.2.6...v0.2.7",
+      "date": "2026-01-28",
+      "entries": [
+        {
+          "type": "fix",
+          "scope": "tree-menu",
+          "summary": "ensure new menu objects are created in filterHiddenMenus function",
+          "summaryKey": "changelog.generated.v0.2.7.5579b",
+          "commitHash": "5579b",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/5579b369",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    },
+    {
+      "version": "v0.2.6",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.2.5...v0.2.6",
+      "date": "2026-01-28",
+      "entries": [
+        {
+          "type": "feature",
+          "scope": "tree-menu",
+          "summary": "enhance filtering logic for hidden menus and update child visibility checks",
+          "summaryKey": "changelog.generated.v0.2.6.4bd8a",
+          "commitHash": "4bd8a",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/4bd8a2ee",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    },
+    {
+      "version": "v0.2.5",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.2.4...v0.2.5",
+      "date": "2026-01-28",
+      "entries": [
+        {
+          "type": "optimization",
+          "scope": "tree-menu",
+          "summary": "adjust spacing and padding for size variants in TreeMenu",
+          "summaryKey": "changelog.generated.v0.2.5.f9249",
+          "commitHash": "f9249",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/f924960c",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    },
+    {
+      "version": "v0.2.4",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.2.3...v0.2.4",
+      "date": "2026-01-28",
+      "entries": [
+        {
+          "type": "fix",
+          "scope": "tree-menu",
+          "summary": "update hasChildren computation to exclude hidden children",
+          "summaryKey": "changelog.generated.v0.2.4.f3343",
+          "commitHash": "f3343",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/f3343a51",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "optimization",
+          "scope": "tree-menu",
+          "summary": "improve children filtering logic in TreeMenuOption and TreeMenu",
+          "summaryKey": "changelog.generated.v0.2.4.7955e",
+          "commitHash": "7955e",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/7955e36e",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    },
+    {
+      "version": "v0.2.0",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.1.13...v0.2.0",
+      "date": "2026-01-28",
+      "entries": [
+        {
+          "type": "refactor",
+          "scope": "tree-menu",
+          "summary": "refactor type definition and add hidden property",
+          "summaryKey": "changelog.generated.v0.2.0.23110",
+          "commitHash": "23110",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/23110eb3",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    },
+    {
+      "version": "v0.1.13",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.1.12...v0.1.13",
+      "date": "2026-01-28",
+      "entries": [
+        {
+          "type": "feature",
+          "scope": "tree-menu",
+          "summary": "add item visibility control to tree menu options",
+          "summaryKey": "changelog.generated.v0.1.13.70ac1",
+          "commitHash": "70ac1",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/70ac1c83",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    },
+    {
+      "version": "v0.1.12",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.1.11...v0.1.12",
+      "date": "2026-01-28",
+      "entries": [
+        {
+          "type": "optimization",
+          "scope": "tree-menu",
+          "summary": "change TreeMenuGroupOptionData to a type and remove redundant properties",
+          "summaryKey": "changelog.generated.v0.1.12.40685",
+          "commitHash": "40685",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/4068590e",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    },
+    {
+      "version": "v0.1.10",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.1.9...v0.1.10",
+      "date": "2026-01-28",
+      "entries": [
+        {
+          "type": "feature",
+          "scope": "tree-menu",
+          "summary": "add showGroupIcon prop to control group icon visibility",
+          "summaryKey": "changelog.generated.v0.1.10.62193",
+          "commitHash": "62193",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/621932d1",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "feature",
+          "scope": "tree-menu",
+          "summary": "enhance TreeMenuOption with new props for better customization",
+          "summaryKey": "changelog.generated.v0.1.10.69033",
+          "commitHash": "69033",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/69033371",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    },
+    {
+      "version": "v0.1.8",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.1.7...v0.1.8",
+      "date": "2026-01-27",
+      "entries": [
+        {
+          "type": "optimization",
+          "scope": "tree-menu",
+          "summary": "remove unused useTreeMenuUi import and refactor styled item component",
+          "summaryKey": "changelog.generated.v0.1.8.7e505",
+          "commitHash": "7e505",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/7e505bb1",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    },
+    {
+      "version": "v0.1.7",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.1.6...v0.1.7",
+      "date": "2026-01-27",
+      "entries": [
+        {
+          "type": "optimization",
+          "scope": "tree-menu",
+          "summary": "update groupRoot margin styles for better layout",
+          "summaryKey": "changelog.generated.v0.1.7.e3fb2",
+          "commitHash": "e3fb2",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/e3fb2eb4",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    },
+    {
+      "version": "v0.1.5",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.1.4...v0.1.5",
+      "date": "2026-01-27",
+      "entries": [
+        {
+          "type": "optimization",
+          "scope": "tree-menu",
+          "summary": "remove unused collapsedWidth prop from TreeMenuRootProps",
+          "summaryKey": "changelog.generated.v0.1.5.7a4fd",
+          "commitHash": "7a4fd",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/7a4fd36e",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    },
+    {
+      "version": "v0.1.4",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.1.3...v0.1.4",
+      "date": "2026-01-27",
+      "entries": [
+        {
+          "type": "feature",
+          "scope": "tree-menu",
+          "summary": "extend TreeMenuOptionData with custom properties and update type definitions",
+          "summaryKey": "changelog.generated.v0.1.4.12721",
+          "commitHash": "12721",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/12721d8f",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    },
+    {
+      "version": "v0.1.3",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.1.2...v0.1.3",
+      "date": "2026-01-26",
+      "entries": [
+        {
+          "type": "feature",
+          "scope": "tree-menu",
+          "summary": "enhance TreeMenuStyledItem with computed classes and props interface",
+          "summaryKey": "changelog.generated.v0.1.3.c6bc8",
+          "commitHash": "c6bc8",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/c6bc8082",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    },
+    {
+      "version": "v0.0.11",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.0.10...v0.0.11",
+      "date": "2026-01-08",
+      "entries": [
+        {
+          "type": "feature",
+          "scope": "tree-menu",
+          "summary": "add 'as' prop to TreeMenuOption and update related components for improved flexibility in rendering",
+          "summaryKey": "changelog.generated.v0.0.11.18c0f",
+          "commitHash": "18c0f",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/18c0f72b",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    },
+    {
+      "version": "v0.0.9",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.0.8...v0.0.9",
+      "date": "2026-01-02",
+      "entries": [
+        {
+          "type": "refactor",
+          "scope": "tree-menu",
+          "summary": "implement TreeMenu headless component with enhanced structure and styling, including new TreeMenuOption and TreeMenuGroup components",
+          "summaryKey": "changelog.generated.v0.0.9.21708",
+          "commitHash": "21708",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/2170869a",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    },
+    {
+      "version": "v0.0.8",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.0.7...v0.0.8",
+      "date": "2026-01-01",
+      "entries": [
+        {
+          "type": "style",
+          "scope": "tree-menu",
+          "summary": "add margin reset to root style for improved layout consistency",
+          "summaryKey": "changelog.generated.v0.0.8.5ff20",
+          "commitHash": "5ff20",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/5ff2060e",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    },
+    {
+      "version": "v0.0.6",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.0.5...v0.0.6",
+      "date": "2025-12-09",
+      "entries": [
+        {
+          "type": "style",
+          "scope": "tree-menu",
+          "summary": "enhance dropdown selection handling and update type definitions for better integration",
+          "summaryKey": "changelog.generated.v0.0.6.350ed",
+          "commitHash": "350ed",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/350edcb4",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    },
+    {
+      "version": "v0.0.6-beta.2",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.0.6-beta.1...v0.0.6-beta.2",
+      "date": "2025-12-07",
+      "entries": [
+        {
+          "type": "feature",
+          "scope": "tree-menu",
+          "summary": "enhance dropdown selection handling and update type definitions for better integration",
+          "summaryKey": "changelog.generated.v0.0.6-beta.2.350ed",
+          "commitHash": "350ed",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/350edcb4",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    },
+    {
+      "version": "v0.0.3",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.0.2...v0.0.3",
+      "date": "2025-11-19",
+      "entries": [
+        {
+          "type": "refactor",
+          "scope": "tree-menu",
+          "summary": "improve item action positioning and tooltip logic for better usability",
+          "summaryKey": "changelog.generated.v0.0.3.8fd11",
+          "commitHash": "8fd11",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/8fd11d1b",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    },
+    {
+      "version": "v0.0.3-beta.1",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.0.2...v0.0.3-beta.1",
+      "date": "2025-11-19",
+      "entries": [
+        {
+          "type": "refactor",
+          "scope": "tree-menu",
+          "summary": "improve item action positioning and tooltip logic for better usability",
+          "summaryKey": "changelog.generated.v0.0.3-beta.1.8fd11",
+          "commitHash": "8fd11",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/8fd11d1b",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    }
+  ]
+}

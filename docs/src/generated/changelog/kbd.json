@@ -1,0 +1,24 @@
+{
+  "component": "kbd",
+  "generatedAt": "2026-05-04T20:22:38.088Z",
+  "schemaVersion": 1,
+  "versions": [
+    {
+      "version": "v0.15.1",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.15.0...v0.15.1",
+      "date": "2026-04-27",
+      "entries": [
+        {
+          "type": "feature",
+          "scope": "kbd",
+          "summary": "add raised prop and update API documentation",
+          "summaryKey": "changelog.generated.v0.15.1.d70b7",
+          "commitHash": "d70b7",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/d70b7e63",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    }
+  ]
+}

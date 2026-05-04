@@ -1,0 +1,24 @@
+{
+  "component": "arrow",
+  "generatedAt": "2026-05-04T20:22:38.088Z",
+  "schemaVersion": 1,
+  "versions": [
+    {
+      "version": "v0.0.8",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.0.7...v0.0.8",
+      "date": "2026-01-01",
+      "entries": [
+        {
+          "type": "refactor",
+          "scope": "arrow",
+          "summary": "simplify Arrow component by removing unused context and props, and directly using SVG markup",
+          "summaryKey": "changelog.generated.v0.0.8.9fc80",
+          "commitHash": "9fc80",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/9fc807ad",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    }
+  ]
+}

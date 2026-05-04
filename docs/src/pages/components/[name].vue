@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { kebabCase, pascalCase } from '@soybeanjs/utils';
 import { menuData } from '@/constants/menus';
+import { getComponentChangelogMeta } from '@/shared/generated-changelog';
 
 const router = useRouter();
 const route = useRoute('/components/[name]');
@@ -12,6 +13,9 @@ const path = computed(() => `components/${name.value}`);
 
 const componentName = computed(() => pascalCase(name.value));
 const importName = computed(() => `S${componentName.value}`);
+const changelogMeta = computed(() => getComponentChangelogMeta(name.value));
+const hasChangelog = computed(() => changelogMeta.value.entryCount > 0);
+const changelogSectionId = computed(() => toHeadingId(t('component_detail.sections.changelog')));
 
 const currentGroup = computed(() => {
   return menuData.find(group => group.items.some(item => kebabCase(item) === name.value));
@@ -29,6 +33,10 @@ const sectionLinks = computed(() => {
     t('component_detail.sections.api')
   ];
 
+  if (hasChangelog.value) {
+    labels.push(t('component_detail.sections.changelog'));
+  }
+
   return labels.map(label => ({
     label,
     href: `#${toHeadingId(label)}`,
@@ -36,22 +44,36 @@ const sectionLinks = computed(() => {
   }));
 });
 
-const actionLinks = computed(() => [
-  {
-    label: t('component_detail.actions.demos'),
-    href: `#${toHeadingId(t('component_detail.sections.demos'))}`,
-    target: '_self' as const
-  },
-  {
-    label: t('component_detail.actions.api'),
-    href: `#${toHeadingId(t('component_detail.sections.api'))}`,
-    target: '_self' as const
-  },
-  {
-    label: t('component_detail.actions.catalog'),
-    to: '/components'
+const actionLinks = computed(() => {
+  const links = [
+    {
+      label: t('component_detail.actions.demos'),
+      href: `#${toHeadingId(t('component_detail.sections.demos'))}`,
+      target: '_self' as const
+    },
+    {
+      label: t('component_detail.actions.api'),
+      href: `#${toHeadingId(t('component_detail.sections.api'))}`,
+      target: '_self' as const
+    }
+  ];
+
+  if (hasChangelog.value) {
+    links.push({
+      label: t('component_detail.actions.changelog'),
+      href: `#${changelogSectionId.value}`,
+      target: '_self' as const
+    });
   }
-]);
+
+  links.push({
+    label: t('component_detail.actions.catalog'),
+    href: '/components',
+    target: '_self'
+  });
+
+  return links;
+});
 
 const relatedComponents = computed(() => {
   return (
@@ -146,19 +168,17 @@ function onLoaded(isSuccess: boolean) {
             <SButtonLink
               v-for="action in actionLinks"
               :key="action.label"
-              v-bind="action.to ? { to: action.to } : { href: action.href, target: action.target }"
+              :href="action.href"
+              :target="action.target"
               size="lg"
               variant="ghost"
               shape="rounded"
-              :class="
-                action.to
-                  ? 'docs-home-button docs-home-button-subtle group min-w-36'
-                  : 'docs-home-button docs-home-button-primary group min-w-36'
-              "
+              class="docs-home-button group min-w-36"
+              :class="action.href ? 'docs-home-button-subtle' : 'docs-home-button-primary'"
             >
               {{ action.label }}
               <SIcon
-                :icon="action.to ? 'lucide:layout-grid' : 'lucide:arrow-right'"
+                :icon="action.href ? 'lucide:arrow-right' : 'lucide:layout-grid'"
                 class="transition-transform duration-200 group-hover:translate-x-1"
               />
             </SButtonLink>
@@ -216,5 +236,30 @@ function onLoaded(isSuccess: boolean) {
     </section>
 
     <DocMd :path="path" @loaded="onLoaded" />
+
+    <section
+      v-if="hasChangelog"
+      :id="changelogSectionId"
+      class="docs-page-shell glass-shell relative min-w-0 overflow-hidden"
+    >
+      <div
+        aria-hidden="true"
+        class="pointer-events-none absolute inset-x-0 top-0 h-36 bg-linear-to-r from-primary/8 via-warning/6 to-info/8 opacity-80"
+      />
+      <div class="docs-page-grid relative min-w-0 px-5 py-6 sm:px-8 sm:py-8 xl:px-10 xl:py-10">
+        <div class="min-w-0 space-y-6">
+          <div class="space-y-2">
+            <h2 class="scroll-mt-24 text-3xl font-black tracking-[-0.04em] text-foreground">
+              {{ t('component_detail.sections.changelog') }}
+            </h2>
+            <p class="max-w-3xl text-sm leading-7 text-muted-foreground sm:text-base">
+              {{ t('component_detail.changelog.desc') }}
+            </p>
+          </div>
+
+          <ComponentChangelog :component="name" />
+        </div>
+      </div>
+    </section>
   </div>
 </template>

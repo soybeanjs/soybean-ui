@@ -25,6 +25,13 @@ const generatedApiLocalesMap = Object.fromEntries(
   ])
 ) as Partial<Record<Locale, LocaleMessageLoader>>;
 
+const generatedChangelogLocalesMap = Object.fromEntries(
+  Object.entries(import.meta.glob('../generated/changelog-locales/*.json')).map(([path, loadLocale]) => [
+    path.match(/([\w-]*)\.json$/)?.[1],
+    loadLocale
+  ])
+) as Partial<Record<Locale, LocaleMessageLoader>>;
+
 export const availableLocales = Object.keys(localesMap);
 
 const loadedLanguages: string[] = [];
@@ -67,9 +74,13 @@ function mergeLocaleMessages(...messageGroups: Array<LocaleMessages | undefined>
 }
 
 async function loadLocaleMessages(lang: Locale): Promise<LocaleMessages> {
-  const [messages, generatedApiMessages] = await Promise.all([localesMap[lang](), generatedApiLocalesMap[lang]?.()]);
+  const [messages, generatedApiMessages, generatedChangelogMessages] = await Promise.all([
+    localesMap[lang](),
+    generatedApiLocalesMap[lang]?.(),
+    generatedChangelogLocalesMap[lang]?.()
+  ]);
 
-  return mergeLocaleMessages(messages.default, generatedApiMessages?.default);
+  return mergeLocaleMessages(messages.default, generatedApiMessages?.default, generatedChangelogMessages?.default);
 }
 
 function setI18nLanguage(lang: Locale) {

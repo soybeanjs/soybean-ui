@@ -1,0 +1,41 @@
+{
+  "component": "skeleton",
+  "generatedAt": "2026-05-04T20:22:38.088Z",
+  "schemaVersion": 1,
+  "versions": [
+    {
+      "version": "v0.15.0",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.14.0...v0.15.0",
+      "date": "2026-04-26",
+      "entries": [
+        {
+          "type": "optimization",
+          "scope": "skeleton",
+          "summary": "remove 'square' shape variant from Skeleton component",
+          "summaryKey": "changelog.generated.v0.15.0.50651",
+          "commitHash": "50651",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/50651159",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    },
+    {
+      "version": "v0.15.0-beta.1",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.14.0...v0.15.0-beta.1",
+      "date": "2026-04-18",
+      "entries": [
+        {
+          "type": "optimization",
+          "scope": "skeleton",
+          "summary": "remove 'square' shape variant from Skeleton component",
+          "summaryKey": "changelog.generated.v0.15.0-beta.1.50651",
+          "commitHash": "50651",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/50651159",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    }
+  ]
+}

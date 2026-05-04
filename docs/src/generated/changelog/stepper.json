@@ -1,0 +1,24 @@
+{
+  "component": "stepper",
+  "generatedAt": "2026-05-04T20:22:38.088Z",
+  "schemaVersion": 1,
+  "versions": [
+    {
+      "version": "v0.16.0",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.15.5...v0.16.0",
+      "date": "2026-05-01",
+      "entries": [
+        {
+          "type": "feature",
+          "scope": "components",
+          "summary": "implement Compact components for Card, Popover, Editable, HoverCard, NavigationMenu, Pagination and Stepper",
+          "summaryKey": "changelog.generated.v0.16.0.6cbdc",
+          "commitHash": "6cbdc",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/6cbdcee7",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    }
+  ]
+}

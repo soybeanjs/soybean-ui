@@ -1,0 +1,41 @@
+{
+  "component": "button",
+  "generatedAt": "2026-05-04T20:22:38.088Z",
+  "schemaVersion": 1,
+  "versions": [
+    {
+      "version": "v0.13.3",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.13.2...v0.13.3",
+      "date": "2026-03-21",
+      "entries": [
+        {
+          "type": "feature",
+          "scope": "button",
+          "summary": "add type prop to ButtonProps interface and update default props",
+          "summaryKey": "changelog.generated.v0.13.3.1a0b9",
+          "commitHash": "1a0b9",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/1a0b9f41",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    },
+    {
+      "version": "v0.0.20",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.0.19...v0.0.20",
+      "date": "2026-01-21",
+      "entries": [
+        {
+          "type": "docs",
+          "scope": "button",
+          "summary": "update documentation for Button component, including overview, main features, and API details",
+          "summaryKey": "changelog.generated.v0.0.20.4d06f",
+          "commitHash": "4d06f",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/4d06fc31",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    }
+  ]
+}

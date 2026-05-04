@@ -1,0 +1,68 @@
+{
+  "component": "popper",
+  "generatedAt": "2026-05-04T20:22:38.088Z",
+  "schemaVersion": 1,
+  "versions": [
+    {
+      "version": "v0.16.0",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.15.5...v0.16.0",
+      "date": "2026-05-01",
+      "entries": [
+        {
+          "type": "optimization",
+          "scope": "popper",
+          "summary": "add class binding for anchor element and update PopperUiSlot type",
+          "summaryKey": "changelog.generated.v0.16.0.21d02",
+          "commitHash": "21d02",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/21d02afb",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope"
+        }
+      ]
+    },
+    {
+      "version": "v0.8.0",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.7.1...v0.8.0",
+      "date": "2026-02-10",
+      "entries": [
+        {
+          "type": "feature",
+          "scope": "popper",
+          "summary": "add hideShiftedArrow prop to control arrow visibility",
+          "summaryKey": "changelog.generated.v0.8.0.6ce45",
+          "commitHash": "6ce45",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/6ce45594",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    },
+    {
+      "version": "v0.0.8",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.0.7...v0.0.8",
+      "date": "2026-01-01",
+      "entries": [
+        {
+          "type": "optimization",
+          "scope": "popper",
+          "summary": "copy z-index from popup to positioner",
+          "summaryKey": "changelog.generated.v0.0.8.ffa35",
+          "commitHash": "ffa35",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/ffa35f3d",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "refactor",
+          "scope": "popper",
+          "summary": "restructure popper components by removing PopperContent, adding PopperPositioner and PopperPopup, and updating context usage for improved clarity and functionality",
+          "summaryKey": "changelog.generated.v0.0.8.e7b76",
+          "commitHash": "e7b76",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/e7b76e6f",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    }
+  ]
+}

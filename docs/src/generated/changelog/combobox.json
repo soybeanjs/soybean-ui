@@ -1,0 +1,112 @@
+{
+  "component": "combobox",
+  "generatedAt": "2026-05-04T20:22:38.088Z",
+  "schemaVersion": 1,
+  "versions": [
+    {
+      "version": "v0.16.0",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.15.5...v0.16.0",
+      "date": "2026-05-01",
+      "entries": [
+        {
+          "type": "optimization",
+          "scope": "combobox",
+          "summary": "reorganize component imports and remove unused files",
+          "summaryKey": "changelog.generated.v0.16.0.d58a6",
+          "commitHash": "d58a6",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/d58a6dc3",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "optimization",
+          "scope": "combobox",
+          "summary": "add parentElement reference and integrate useHideOthers for improved accessibility",
+          "summaryKey": "changelog.generated.v0.16.0.b83ef",
+          "commitHash": "b83ef",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/b83ef7dd",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope"
+        }
+      ]
+    },
+    {
+      "version": "v0.15.1",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.15.0...v0.15.1",
+      "date": "2026-04-27",
+      "entries": [
+        {
+          "type": "fix",
+          "scope": "combobox",
+          "summary": "fix group and item management with Maps",
+          "summaryKey": "changelog.generated.v0.15.1.cb831",
+          "commitHash": "cb831",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/cb831b95",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    },
+    {
+      "version": "v0.15.0",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.14.0...v0.15.0",
+      "date": "2026-04-26",
+      "entries": [
+        {
+          "type": "optimization",
+          "scope": "combobox",
+          "summary": "add prioritizePosition prop to enhance positioning logic",
+          "summaryKey": "changelog.generated.v0.15.0.b7a16",
+          "commitHash": "b7a16",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/b7a16697",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "refactor",
+          "scope": "combobox",
+          "summary": "refactor combobox component",
+          "summaryKey": "changelog.generated.v0.15.0.5dec4",
+          "commitHash": "5dec4",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/5dec4fd1",
+          "authors": ["soybeanjs", "MicrosoftCopilot", "soybeanfe"],
+          "source": "exact-scope"
+        }
+      ]
+    },
+    {
+      "version": "v0.15.0-beta.3",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.15.0-beta.2...v0.15.0-beta.3",
+      "date": "2026-04-26",
+      "entries": [
+        {
+          "type": "refactor",
+          "scope": "combobox",
+          "summary": "refactor combobox component",
+          "summaryKey": "changelog.generated.v0.15.0-beta.3.5dec4",
+          "commitHash": "5dec4",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/5dec4fd1",
+          "authors": ["soybeanjs", "MicrosoftCopilot", "soybeanfe"],
+          "source": "exact-scope"
+        }
+      ]
+    },
+    {
+      "version": "v0.15.0-beta.1",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.14.0...v0.15.0-beta.1",
+      "date": "2026-04-18",
+      "entries": [
+        {
+          "type": "optimization",
+          "scope": "combobox",
+          "summary": "add prioritizePosition prop to enhance positioning logic",
+          "summaryKey": "changelog.generated.v0.15.0-beta.1.b7a16",
+          "commitHash": "b7a16",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/b7a16697",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    }
+  ]
+}

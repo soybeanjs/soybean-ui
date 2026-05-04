@@ -1,0 +1,255 @@
+{
+  "component": "layout",
+  "generatedAt": "2026-05-04T20:22:38.088Z",
+  "schemaVersion": 1,
+  "versions": [
+    {
+      "version": "v0.15.5",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.15.4...v0.15.5",
+      "date": "2026-04-30",
+      "entries": [
+        {
+          "type": "optimization",
+          "scope": "layout",
+          "summary": "remove unused properties from LayoutClassicRootProps",
+          "summaryKey": "changelog.generated.v0.15.5.c9233",
+          "commitHash": "c9233",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/c92330fb",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope"
+        }
+      ]
+    },
+    {
+      "version": "v0.9.1",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.9.0...v0.9.1",
+      "date": "2026-03-03",
+      "entries": [
+        {
+          "type": "fix",
+          "scope": "layout",
+          "summary": "add background color to sidebar for better visibility",
+          "summaryKey": "changelog.generated.v0.9.1.1ce3f",
+          "commitHash": "1ce3f",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/1ce3f00b",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "optimization",
+          "scope": "layout",
+          "summary": "optimize layout styles",
+          "summaryKey": "changelog.generated.v0.9.1.f5d4d",
+          "commitHash": "f5d4d",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/f5d4d710",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    },
+    {
+      "version": "v0.6.3",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.6.2...v0.6.3",
+      "date": "2026-02-08",
+      "entries": [
+        {
+          "type": "fix",
+          "scope": "layout",
+          "summary": "add background color to tab and content variants",
+          "summaryKey": "changelog.generated.v0.6.3.d7ab2",
+          "commitHash": "d7ab2",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/d7ab267e",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    },
+    {
+      "version": "v0.5.9",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.5.8...v0.5.9",
+      "date": "2026-02-07",
+      "entries": [
+        {
+          "type": "fix",
+          "scope": "layout",
+          "summary": "update main and root styles for layout variants",
+          "summaryKey": "changelog.generated.v0.5.9.4bea2",
+          "commitHash": "4bea2",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/4bea25d1",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    },
+    {
+      "version": "v0.5.8",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.5.7...v0.5.8",
+      "date": "2026-02-07",
+      "entries": [
+        {
+          "type": "feature",
+          "scope": "layout",
+          "summary": "add tabVisible and footerVisible props to LayoutProps",
+          "summaryKey": "changelog.generated.v0.5.8.af2b6",
+          "commitHash": "af2b6",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/af2b6b7e",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    },
+    {
+      "version": "v0.3.2",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.3.1...v0.3.2",
+      "date": "2026-01-29",
+      "entries": [
+        {
+          "type": "feature",
+          "scope": "layout",
+          "summary": "add LayoutContent component and update layout structure",
+          "summaryKey": "changelog.generated.v0.3.2.f5515",
+          "commitHash": "f5515",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/f5515498",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    },
+    {
+      "version": "v0.1.6",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.1.5...v0.1.6",
+      "date": "2026-01-27",
+      "entries": [
+        {
+          "type": "feature",
+          "scope": "layout",
+          "summary": "add customizable header, tab, and footer heights",
+          "summaryKey": "changelog.generated.v0.1.6.17258",
+          "commitHash": "17258",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/17258af0",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    },
+    {
+      "version": "v0.1.1",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.1.0...v0.1.1",
+      "date": "2026-01-23",
+      "entries": [
+        {
+          "type": "feature",
+          "scope": "layout",
+          "summary": "add default props for side, variant, and collapsible",
+          "summaryKey": "changelog.generated.v0.1.1.203e7",
+          "commitHash": "203e7",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/203e7b0d",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    },
+    {
+      "version": "v0.0.13",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.0.12...v0.0.13",
+      "date": "2026-01-09",
+      "entries": [
+        {
+          "type": "fix",
+          "scope": "layout",
+          "summary": "adjust breadcrumb spacing and enhance content area for better layout consistency",
+          "summaryKey": "changelog.generated.v0.0.13.c595b",
+          "commitHash": "c595b",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/c595bba4",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    },
+    {
+      "version": "v0.0.11",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.0.10...v0.0.11",
+      "date": "2026-01-08",
+      "entries": [
+        {
+          "type": "fix",
+          "scope": "layout",
+          "summary": "update max-width values in configuration and layout files for consistent styling",
+          "summaryKey": "changelog.generated.v0.0.11.861cc",
+          "commitHash": "861cc",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/861cc3cc",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    },
+    {
+      "version": "v0.0.10",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.0.9...v0.0.10",
+      "date": "2026-01-07",
+      "entries": [
+        {
+          "type": "refactor",
+          "scope": "layout",
+          "summary": "replace sizeRatio with pxToRem function for improved sidebar width calculations and update mobile layout styles",
+          "summaryKey": "changelog.generated.v0.0.10.ca234",
+          "commitHash": "ca234",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/ca2346d1",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    },
+    {
+      "version": "v0.0.8",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.0.7...v0.0.8",
+      "date": "2026-01-01",
+      "entries": [
+        {
+          "type": "fix",
+          "scope": "layout",
+          "summary": "replace drawerContentVariants with drawerPopupVariants for improved layout handling",
+          "summaryKey": "changelog.generated.v0.0.8.6ba89",
+          "commitHash": "6ba89",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/6ba89a89",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    },
+    {
+      "version": "v0.0.7",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.0.6...v0.0.7",
+      "date": "2025-12-09",
+      "entries": [
+        {
+          "type": "fix",
+          "scope": "layout",
+          "summary": "add z-index to mobile drawer for improved visibility",
+          "summaryKey": "changelog.generated.v0.0.7.43a1c",
+          "commitHash": "43a1c",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/43a1c135",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    },
+    {
+      "version": "v0.0.6",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.0.5...v0.0.6",
+      "date": "2025-12-09",
+      "entries": [
+        {
+          "type": "fix",
+          "scope": "layout",
+          "summary": "adjust header and layout styles for improved consistency and overflow handling",
+          "summaryKey": "changelog.generated.v0.0.6.6996b",
+          "commitHash": "6996b",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/6996b132",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    }
+  ]
+}

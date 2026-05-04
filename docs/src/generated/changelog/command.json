@@ -1,0 +1,109 @@
+{
+  "component": "command",
+  "generatedAt": "2026-05-04T20:22:38.088Z",
+  "schemaVersion": 1,
+  "versions": [
+    {
+      "version": "v0.9.1",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.9.0...v0.9.1",
+      "date": "2026-03-03",
+      "entries": [
+        {
+          "type": "fix",
+          "scope": "command",
+          "summary": "fix search options",
+          "summaryKey": "changelog.generated.v0.9.1.2e26c",
+          "commitHash": "2e26c",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/2e26c75c",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    },
+    {
+      "version": "v0.2.2",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.2.1...v0.2.2",
+      "date": "2026-01-28",
+      "entries": [
+        {
+          "type": "feature",
+          "scope": "command",
+          "summary": "add placeholder prop to CommandProps",
+          "summaryKey": "changelog.generated.v0.2.2.390fd",
+          "commitHash": "390fd",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/390fdc43",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    },
+    {
+      "version": "v0.2.1",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.2.0...v0.2.1",
+      "date": "2026-01-28",
+      "entries": [
+        {
+          "type": "refactor",
+          "scope": "command",
+          "summary": "refactor command type definition",
+          "summaryKey": "changelog.generated.v0.2.1.0e2ad",
+          "commitHash": "0e2ad",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/0e2ad99b",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    },
+    {
+      "version": "v0.0.12",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.0.11...v0.0.12",
+      "date": "2026-01-08",
+      "entries": [
+        {
+          "type": "feature",
+          "scope": "command",
+          "summary": "add bottom slot to command component and refine groupLabel styles for improved layout",
+          "summaryKey": "changelog.generated.v0.0.12.1f199",
+          "commitHash": "1f199",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/1f199dbb",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    },
+    {
+      "version": "v0.0.6",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.0.5...v0.0.6",
+      "date": "2025-12-09",
+      "entries": [
+        {
+          "type": "fix",
+          "scope": "command",
+          "summary": "remove searchTerm condition from empty state display logic",
+          "summaryKey": "changelog.generated.v0.0.6.199bc",
+          "commitHash": "199bc",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/199bc04e",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    },
+    {
+      "version": "v0.0.6-beta.1",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.0.5...v0.0.6-beta.1",
+      "date": "2025-11-23",
+      "entries": [
+        {
+          "type": "fix",
+          "scope": "command",
+          "summary": "remove searchTerm condition from empty state display logic",
+          "summaryKey": "changelog.generated.v0.0.6-beta.1.199bc",
+          "commitHash": "199bc",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/199bc04e",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    }
+  ]
+}

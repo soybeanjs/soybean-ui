@@ -1,0 +1,102 @@
+{
+  "component": "checkbox",
+  "generatedAt": "2026-05-04T20:22:38.088Z",
+  "schemaVersion": 1,
+  "versions": [
+    {
+      "version": "v0.15.0",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.14.0...v0.15.0",
+      "date": "2026-04-26",
+      "entries": [
+        {
+          "type": "fix",
+          "scope": "checkbox",
+          "summary": "update forwardedProps to omit 'class' instead of 'label'",
+          "summaryKey": "changelog.generated.v0.15.0.0d537",
+          "commitHash": "0d537",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/0d5375c8",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "docs",
+          "scope": "checkbox",
+          "summary": "fix emit parameter syntax for consistency",
+          "summaryKey": "changelog.generated.v0.15.0.1d2d7",
+          "commitHash": "1d2d7",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/1d2d7797",
+          "authors": ["soybeanjs", "Copilot"],
+          "source": "exact-scope"
+        }
+      ]
+    },
+    {
+      "version": "v0.15.0-beta.3",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.15.0-beta.2...v0.15.0-beta.3",
+      "date": "2026-04-26",
+      "entries": [
+        {
+          "type": "fix",
+          "scope": "checkbox",
+          "summary": "update forwardedProps to omit 'class' instead of 'label'",
+          "summaryKey": "changelog.generated.v0.15.0-beta.3.0d537",
+          "commitHash": "0d537",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/0d5375c8",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope"
+        }
+      ]
+    },
+    {
+      "version": "v0.9.0",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.8.1...v0.9.0",
+      "date": "2026-03-01",
+      "entries": [
+        {
+          "type": "fix",
+          "scope": "checkbox",
+          "summary": "conditionally render CheckboxLabel based on slot or label presence; update root variant style",
+          "summaryKey": "changelog.generated.v0.9.0.78f2b",
+          "commitHash": "78f2b",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/78f2bfbe",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    },
+    {
+      "version": "v0.0.20",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.0.19...v0.0.20",
+      "date": "2026-01-21",
+      "entries": [
+        {
+          "type": "docs",
+          "scope": "checkbox",
+          "summary": "fix markdown format",
+          "summaryKey": "changelog.generated.v0.0.20.762c9",
+          "commitHash": "762c9",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/762c96f8",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    },
+    {
+      "version": "v0.0.19",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.0.18...v0.0.19",
+      "date": "2026-01-19",
+      "entries": [
+        {
+          "type": "feature",
+          "scope": "checkbox",
+          "summary": "support enter keyboard to toggle checked state",
+          "summaryKey": "changelog.generated.v0.0.19.75ddd",
+          "commitHash": "75ddd",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/75ddd2de",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    }
+  ]
+}

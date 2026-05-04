@@ -1,0 +1,1074 @@
+{
+  "changelog": {
+    "generated": {
+      "v0": {
+        "0": {
+          "3": {
+            "630c3": "simplify focus management by removing unnecessary event dispatching and timeout logic",
+            "641b4": "update descriptions and add credits section for SoybeanUI and SoybeanHeadless",
+            "8fd11": "improve item action positioning and tooltip logic for better usability",
+            "b109f": "enhance documentation for SoybeanUI and SoybeanHeadless",
+            "b41a9": "remove outdated markdown guides and migration documentation"
+          },
+          "4": {
+            "5fcc5": "update exports and publishConfig for better module resolution",
+            "a592a": "update to reflect SoybeanUI v0.0.2 release, summarizing new features, enhancements, and bug fixes",
+            "c9a55": "update developer guide"
+          },
+          "5": {
+            "53001": "update deps",
+            "4ccc6": "dynamically import safeParseAsync for improved performance"
+          },
+          "6": {
+            "24126": "remove npm registry url && update deps",
+            "71796": "remove motion-v dependency and enhance background decoration with particle effects",
+            "12b6d": "optimize the responsive design of the homepage logo.",
+            "199bc": "remove searchTerm condition from empty state display logic",
+            "1f2aa": "fix input with icon",
+            "293bd": "implement navbar for the header section.",
+            "2bbd4": "add 'unstub' script for resetting stubs",
+            "350ed": "enhance dropdown selection handling and update type definitions for better integration",
+            "4511f": "update deps",
+            "5fbc9": "update border color for improved UI consistency",
+            "6996b": "adjust header and layout styles for improved consistency and overflow handling",
+            "82c4f": "format code",
+            "8d380": "add docs home page",
+            "943d7": "add logo to README files for better branding",
+            "a9fa3": "modify the width of the page center within the document.",
+            "c1182": "update deps",
+            "d5c7a": "enhance slot functionality in link components to pass isHref prop for better context handling",
+            "e35bb": "update Vite server configuration and enhance background decoration with fade-in animation",
+            "e4fcc": "update TypeScript configuration with new compiler options and exclude settings",
+            "ec936": "enhance header navigation and search functionality with new components",
+            "efb08": "replace mobile drawer with popover and adjust layout for improved responsiveness",
+            "fb2e0": "add introduction and quick start documentation, implement sider menu component, and update app header styles"
+          },
+          "7": {
+            "33948": "add About route and create about.vue component",
+            "2dda1": "update boolean handling for multiple selection logic",
+            "3a7b1": "replace `ui` with `@soybeanjs/ui` in playground",
+            "43a1c": "add z-index to mobile drawer for improved visibility",
+            "6d10b": "update deps",
+            "88be2": "adjust padding in list variant for improved layout",
+            "a9344": "update description and title styles across multiple components to include margin reset",
+            "ab6c8": "update style for improved mobile layout",
+            "ccb14": "unocss config: add shortcuts for playground title styling",
+            "d18ac": "add 'as-child' prop to AlertDialogTrigger for improved slot handling",
+            "d439a": "show playground examples in docs and update related docs",
+            "d8ed8": "optimize style and introduce themeSizeRatioMap for consistent size ratios and update related components",
+            "e817f": "update border styles for selected button states in pagination variants",
+            "e84da": "correct not-found page and simplify 404 layout",
+            "ea6d4": "optimize playground examples",
+            "f0ce2": "introduce theme customizer component and update theme context for dynamic styling"
+          },
+          "8": {
+            "13132": "update CSS variable names in select popper for consistency and clarity",
+            "28773": "modify Avatar docs.",
+            "79297": "update deps",
+            "217ef": "rename layerElementRef to layerElement and simplify computed properties for clarity",
+            "296bc": "update logo references in README and documentation files",
+            "2ca7f": "optimize docs",
+            "2e56e": "restructure select components by introducing SelectPopup and SelectItemAlignedPopup, updating context management, and enhancing type definitions for improved functionality and clarity",
+            "2eb9c": "remove PopoverContent, introduce PopoverPositioner and PopoverPopup components, and enhance context management for improved structure and functionality",
+            "30ba7": "add support for horizontal and vertical orientations, update examples and documentation",
+            "3401f": "add null check for event target in handleAndDispatchCustomEvent function",
+            "37d96": "optimize playground examples",
+            "3dda1": "optimize the overall style of the document table section.",
+            "41a2d": "remove TooltipContent, introduce TooltipPopup and TooltipPositioner components, and enhance context management for improved structure and functionality",
+            "4d82e": "replace DialogContent with DialogPopup, and update related types and context management for improved structure and functionality",
+            "4d8da": "remove TooltipPositioner context and update related components for improved clarity and functionality",
+            "56c08": "simplify navigation menu component by directly passing orientation prop",
+            "5ff20": "add margin reset to root style for improved layout consistency",
+            "61e0a": "replace favicon with new logo SVG and update references in documentation",
+            "629a3": "modify AlertDialog docs",
+            "67fc6": "update color stops in logo SVG and app-logo component for improved visual consistency",
+            "6ba89": "replace drawerContentVariants with drawerPopupVariants for improved layout handling",
+            "6edc1": "update the way API tables are written in docs",
+            "73ac1": "streamline context management by removing unused elements and updating references for improved clarity and functionality",
+            "7bb4a": "update type definitions to use Partial<Record> for improved flexibility and clarity",
+            "7cac3": "support docs to use tsx.",
+            "8133b": "modify Card docs.",
+            "8f822": "rename contentElement to areaElement for improved clarity and update related references",
+            "9fc80": "simplify Arrow component by removing unused context and props, and directly using SVG markup",
+            "a13a2": "update deps",
+            "a27cd": "add margin reset to item and subItem styles for consistent layout",
+            "a3cea": "optimize the type anchor.",
+            "ab324": "refactor floating UI integration by replacing '@floating-ui/vue'",
+            "ab340": "add popupProps to dropdown menu components for enhanced functionality",
+            "af4ec": "add usePopupEvents composable for managing popup interactions and focus behavior",
+            "c7699": "replace DialogContent with DialogPopup",
+            "d0b14": "add md tooltips syntax and modify According docs",
+            "d3b1a": "set color for required",
+            "dae92": "streamline path data in logo SVG and app-logo component for improved rendering consistency",
+            "de4b4": "remove PopoverPositioner context and update related components for improved clarity and functionality",
+            "e0796": "rename DialogPopup to DialogContent",
+            "e1c39": "update links in breadcrumb and tree menu examples to point to the new SoybeanUI URL and rename route demo to route about",
+            "e2c4f": "adjust path data in logo SVG and app-logo component for consistency in rendering",
+            "e2fb8": "enhance type definitions",
+            "e7289": "introduce popupProps to context menu components for enhanced functionality",
+            "e7b76": "restructure popper components by removing PopperContent, adding PopperPositioner and PopperPopup, and updating context usage for improved clarity and functionality",
+            "efd93": "update ESLint configuration to disable additional rules for TypeScript and Vue",
+            "f4143": "restructure menu components by introducing popup and positioner elements, updating context management, and enhancing type definitions for improved clarity and functionality",
+            "fd788": "update deps & update headless package.json",
+            "ff39e": "modify Breadcrumb docs.",
+            "ff7f8": "remove unused focusScopeProps and simplify return structure",
+            "ffa35": "copy z-index from popup to positioner"
+          },
+          "9": {
+            "21708": "implement TreeMenu headless component with enhanced structure and styling, including new TreeMenuOption and TreeMenuGroup components",
+            "04e0b": "add placement prop to DropdownMenuWrapper and DropdownMenu components",
+            "1b456": "integrate useAttrs for enhanced class merging in mergeSlotVariants",
+            "7b3f1": "extend LinkProps to include LinkBaseProps and LinkExtraProps, and set default rel attribute",
+            "81dff": "enhance mergeSlotVariants function to include root class merging",
+            "ac19e": "add disabledCollapsible prop to prevent toggling and update click handler"
+          },
+          "10": {
+            "01b95": "handle model value update correctly by ensuring onUpdateModelValue is called when value is undefined",
+            "14c31": "sort the component constants alphabetically.",
+            "1af2b": "restructure form components",
+            "2be97": "remove unused forms entry from package.json to streamline exports",
+            "324e3": "add valibot and zod dependencies to examples",
+            "57e07": "add FormResetState type to form component exports for enhanced form state management",
+            "7a196": "update deps",
+            "8f079": "update mergeSlotVariants and mergeUi functions to support multiple UI sources for improved class merging",
+            "a8a5c": "optimize docs",
+            "b2fbb": "optimize the class enables the class merge to take effect",
+            "bed68": "introduce useUiContext composable for managing UI class values and context",
+            "c12aa": "refactor components ui context managing",
+            "ca234": "replace sizeRatio with pxToRem function for improved sidebar width calculations and update mobile layout styles",
+            "cfb41": "update drawer component structure and styling, replacing drawerContentVariants with drawerVariants for improved UI management",
+            "d3f79": "unify name prop usage across form elements for consistency",
+            "ecb10": "optimize NavigationMenu example style",
+            "f28c6": "add name and required props to InputControl and InputRoot for enhanced form handling"
+          },
+          "11": {
+            "18c0f": "add 'as' prop to TreeMenuOption and update related components for improved flexibility in rendering",
+            "23f05": "add smooth scroll behavior and adjust layout styles for improved user experience",
+            "3793c": "add presetSoybeanJS and presetShadcn with type errors ignored",
+            "861cc": "update max-width values in configuration and layout files for consistent styling",
+            "9b8e0": "expand form component exports with additional types for improved type safety and flexibility",
+            "f8f90": "update deps"
+          },
+          "12": {
+            "1f199": "add bottom slot to command component and refine groupLabel styles for improved layout",
+            "2e5a8": "enhance search-document component with dynamic menu items and routing functionality",
+            "5afd3": "update deps",
+            "9b550": "search-document: add bottom slot to enhance user interaction with navigation options",
+            "cd05f": "integrate Vitest configuration into vite.config.ts and remove vitest.config.ts"
+          },
+          "13": {
+            "ba5b4": "update @soybeanjs/unocss-shadcn and @soybeanjs/unocss-preset & update unocss config",
+            "c595b": "adjust breadcrumb spacing and enhance content area for better layout consistency"
+          },
+          "14": {
+            "78876": "update deps",
+            "bc59a": "modify Badge docs."
+          },
+          "15": {
+            "0ef4c": "fix headless package.json exports",
+            "76bf4": "update @soybeanjs/unocss-shadcn and adjust imports in theme customizer components"
+          },
+          "17": {
+            "35273": "optimize docs theme configurator",
+            "088f9": "integrate useSelectUi in various components for improved styling",
+            "1c945": "add disable-outside-pointer-events binding to PopoverPositionerImpl",
+            "219c5": "simplify type definitions and improve variant styles",
+            "5e278": "bind slot names correctly in SSelectSingleOption",
+            "78e49": "cache theme CSS variables",
+            "9f7b3": "add preview:docs script for documentation preview",
+            "a3ee0": "remove unused useStyleTag and bind cssVars to Primitive",
+            "b731c": "remove unused theme options from props",
+            "cb4dd": "add theme styling support with Shadcn theme integration"
+          },
+          "18": {
+            "7fe60": "update focus ring styles for improved accessibility"
+          },
+          "19": {
+            "2dd6a": "remove unocss presetTypography & optimize docs style",
+            "75ddd": "support enter keyboard to toggle checked state"
+          },
+          "20": {
+            "47240": "optimize docs",
+            "49645": "optimize code",
+            "00422": "playground components support preview code",
+            "0e59d": "add locale icons and sort locales for improved display",
+            "31cbb": "add theming documentation and related components",
+            "384df": "enhance slot functionality and improve forwarded props handling",
+            "3fb7d": "update heading styles for improved readability",
+            "4d06f": "update documentation for Button component, including overview, main features, and API details",
+            "553b6": "standardize key naming conventions and update translations",
+            "58ec2": "update type definition format for IconValue prop",
+            "762c9": "fix markdown format",
+            "820fe": "add GitHub Actions workflow for opencode functionality",
+            "8213a": "implement base64 encoding for code snippets in copyCodePlugin",
+            "876d9": "optimize config-provider context",
+            "a681b": "add comprehensive documentation for SoybeanUI architecture, including headless and styled UI layers, conventions, and development workflows",
+            "b6e3b": "update deps & fix ts types error",
+            "ca0a7": "move shiki to dependencies",
+            "d9187": "optimize config-provider context",
+            "e7153": "add CopyButton component to code block and integrate with markdown rendering",
+            "edb12": "optimize sidebar menu data define",
+            "ee2ac": "refactor i18n for pages and optimize other i18n",
+            "f577c": "update components docs",
+            "f7da3": "support indicator position",
+            "fcfd4": "update activeClass for navigation links to enhance styling"
+          },
+          "3-beta": {
+            "1": {
+              "630c3": "simplify focus management by removing unnecessary event dispatching and timeout logic",
+              "8fd11": "improve item action positioning and tooltip logic for better usability"
+            }
+          },
+          "5-beta": {
+            "1": {
+              "4ccc6": "dynamically import safeParseAsync for improved performance"
+            }
+          },
+          "6-beta": {
+            "1": {
+              "24126": "remove npm registry url && update deps",
+              "71796": "remove motion-v dependency and enhance background decoration with particle effects",
+              "12b6d": "optimize the responsive design of the homepage logo.",
+              "199bc": "remove searchTerm condition from empty state display logic",
+              "293bd": "implement navbar for the header section.",
+              "5fbc9": "update border color for improved UI consistency",
+              "8d380": "add docs home page",
+              "943d7": "add logo to README files for better branding",
+              "d5c7a": "enhance slot functionality in link components to pass isHref prop for better context handling",
+              "e35bb": "update Vite server configuration and enhance background decoration with fade-in animation",
+              "ec936": "enhance header navigation and search functionality with new components",
+              "fb2e0": "add introduction and quick start documentation, implement sider menu component, and update app header styles"
+            },
+            "2": {
+              "1f2aa": "fix input with icon",
+              "2bbd4": "add 'unstub' script for resetting stubs",
+              "350ed": "enhance dropdown selection handling and update type definitions for better integration",
+              "4511f": "update deps",
+              "82c4f": "format code",
+              "a9fa3": "modify the width of the page center within the document.",
+              "c1182": "update deps",
+              "e4fcc": "update TypeScript configuration with new compiler options and exclude settings",
+              "efb08": "replace mobile drawer with popover and adjust layout for improved responsiveness"
+            }
+          }
+        },
+        "1": {
+          "0": {
+            "06f22": "optimize components order and add missing components",
+            "162c2": "add component development workflow documentation",
+            "45c3a": "update deps",
+            "57dc8": "remove unnecessary classes from layout and tabs content",
+            "d2dcd": "rename data entry to forms and reorder menu items",
+            "d41b3": "enhance slot binding for Link component and update styles"
+          },
+          "1": {
+            "203e7": "add default props for side, variant, and collapsible",
+            "95f29": "export ThemeOptions type from config provider"
+          },
+          "2": {
+            "09613": "export ThemeOptions type from config provider"
+          },
+          "3": {
+            "75a7f": "update deps",
+            "c6bc8": "enhance TreeMenuStyledItem with computed classes and props interface"
+          },
+          "4": {
+            "12721": "extend TreeMenuOptionData with custom properties and update type definitions"
+          },
+          "5": {
+            "98386": "remove unused custom prop and simplify href handling",
+            "7a4fd": "remove unused collapsedWidth prop from TreeMenuRootProps",
+            "9c789": "remove vite-plugin-vue-devtools from plugins"
+          },
+          "6": {
+            "17258": "add customizable header, tab, and footer heights",
+            "64e03": "update GitHub link in the playground component",
+            "732c5": "revert headless package.json exports"
+          },
+          "7": {
+            "e3fb2": "update groupRoot margin styles for better layout"
+          },
+          "8": {
+            "7e505": "remove unused useTreeMenuUi import and refactor styled item component"
+          },
+          "9": {
+            "ec72f": "simplify linkProps handling and enhance link integration"
+          },
+          "10": {
+            "62193": "add showGroupIcon prop to control group icon visibility",
+            "69033": "enhance TreeMenuOption with new props for better customization"
+          },
+          "11": {
+            "f5509": "add focus-visible outline to popup for better accessibility"
+          },
+          "12": {
+            "40685": "change TreeMenuGroupOptionData to a type and remove redundant properties"
+          },
+          "13": {
+            "70ac1": "add item visibility control to tree menu options"
+          }
+        },
+        "2": {
+          "0": {
+            "23110": "refactor type definition and add hidden property"
+          },
+          "1": {
+            "0e2ad": "refactor command type definition"
+          },
+          "2": {
+            "390fd": "add placeholder prop to CommandProps"
+          },
+          "3": {
+            "3d935": "update href prop description and type"
+          },
+          "4": {
+            "7955e": "improve children filtering logic in TreeMenuOption and TreeMenu",
+            "f3343": "update hasChildren computation to exclude hidden children"
+          },
+          "5": {
+            "f9249": "adjust spacing and padding for size variants in TreeMenu"
+          },
+          "6": {
+            "4bd8a": "enhance filtering logic for hidden menus and update child visibility checks"
+          },
+          "7": {
+            "5579b": "ensure new menu objects are created in filterHiddenMenus function"
+          },
+          "8": {
+            "5e892": "update open state logic in TreeMenuCollapsible component",
+            "7852c": "add select-dropdown event emission in TreeMenuOption component"
+          }
+        },
+        "3": {
+          "0": {
+            "32476": "support active state",
+            "6d5e8": "implement active path tracking and update child active state logic",
+            "c6391": "add getTreePaths function and update tree-menu component to use it"
+          },
+          "1": {
+            "35363": "update deps",
+            "9f91c": "use oxlint and oxfmt replace eslint, prettier"
+          },
+          "2": {
+            "f2eb5": "optimize config-provider",
+            "f5515": "add LayoutContent component and update layout structure"
+          },
+          "3": {
+            "18f74": "add active-value binding to dropdown menu",
+            "ceb58": "add demo menu data"
+          }
+        },
+        "4": {
+          "0": {
+            "02c40": "update component status and add PageTabs to the README",
+            "bfb6b": "update vue-router to v5, use vite-plugin-vue-meta-layouts",
+            "d2c4a": "implement components PageTabs",
+            "dc394": "clean up auto-imports and components type declarations"
+          },
+          "1": {
+            "2b884": "refactor context and operations for improved tab management"
+          },
+          "2": {
+            "a2a1c": "optimize page-tabs logic"
+          },
+          "3": {
+            "ca73e": "fix tab closing functions"
+          },
+          "4": {
+            "43f54": "support nullish icon value and remove unnecessary v-if checks for icon rendering",
+            "b07ff": "update deps"
+          },
+          "5": {
+            "92eaf": "expose useDialog and useToast globally for external access",
+            "c07bf": "wrap header slot content for improved structure and rendering"
+          },
+          "6": {
+            "2cdc8": "add return type annotations to useDialog and useToast functions"
+          }
+        },
+        "5": {
+          "0": {
+            "944c2": "enhance useToast options with onClose callback and refactor toast handling",
+            "cab93": "add onClose callback to dialog state and update dialog-provider to use it"
+          },
+          "1": {
+            "5b9ff": "add a copy button to the demo code.",
+            "5e6b9": "update deps",
+            "a66d8": "enhance pageTabsVariants for dark mode support and improve hover effects"
+          },
+          "2": {
+            "ff5f5": "add overflow-hidden to main layout variants"
+          },
+          "3": {
+            "00dcd": "add nextTick to watchEffect to get dom"
+          },
+          "4": {
+            "2a5ec": "add @standard-schema/spec to dependencies and remove from devDependencies",
+            "8685b": "add necessary deps and update tsdown config",
+            "bf815": "rename update-pkg script to upkg for consistency",
+            "da0ea": "add external deps to fix build",
+            "dad63": "correct import casing for Vue and Unocss",
+            "fd6bc": "add localPrefix support for local icon names"
+          },
+          "6": {
+            "5fcbb": "optimize theme"
+          },
+          "7": {
+            "55aec": "update deps"
+          },
+          "8": {
+            "af2b6": "add tabVisible and footerVisible props to LayoutProps"
+          },
+          "9": {
+            "4bea2": "update main and root styles for layout variants"
+          }
+        },
+        "6": {
+          "0": {
+            "d7bdf": "update oxlint,oxfmt config",
+            "ded83": "simplify context and state management, remove unused operations"
+          },
+          "1": {
+            "f5bac": "add sorting functionality for tabs based on pinned status"
+          },
+          "2": {
+            "1dadd": "fix scroll centerX value"
+          },
+          "3": {
+            "d7ab2": "add background color to tab and content variants"
+          },
+          "4": {
+            "2f80e": "update deps",
+            "d96ec": "support iconClass prop"
+          },
+          "5": {
+            "37fba": "omit beforeClose prop from forwardedProps"
+          },
+          "6": {
+            "0e3d4": "update global window properties to use \\__SoybeanUI_ prefix",
+            "1a002": "enhance theme variable management with useStorage"
+          }
+        },
+        "7": {
+          "0": {
+            "4878f": "add TreeMenuOptions component and enhance context management"
+          },
+          "1": {
+            "60712": "fix missing methods"
+          }
+        },
+        "8": {
+          "0": {
+            "38523": "add focusOnChange prop to enhance user experience",
+            "0c3c1": "remove unused triggerElement from context menu props",
+            "0e1cf": "add event listener for root content dismiss in context",
+            "1f86b": "add default value for unmountOnHide prop",
+            "2fa29": "simplify ariaLabel computation and remove unused slots",
+            "32d53": "add disableSwipe prop to control swipe-to-close functionality",
+            "6ce45": "add hideShiftedArrow prop to control arrow visibility",
+            "73aa8": "add cleanup for pointer in transit state on component dispose",
+            "751b6": "support dynamic estimateSize function in ListboxVirtualizerProps",
+            "944db": "split variants to every components",
+            "a26fd": "update skills and README",
+            "b5dfa": "remove unused function getAriaLabelByVNode",
+            "c58fa": "add registerContentId and unregisterContentId for dynamic content management",
+            "cb095": "remove prevent default from keydown event handler",
+            "f5048": "add disableOutsidePointerEvents prop to enhance interaction and simplify arrow visibility logic"
+          },
+          "1": {
+            "1aa0b": "update deps",
+            "309e7": "fix import tailwindPalette from '@soybeanjs/colord/palette' in docs",
+            "314e5": "update entry pattern for component variants in uno.config.ts"
+          }
+        },
+        "9": {
+          "0": {
+            "46817": "update lint-staged command to use oxlint and oxfmt",
+            "0fdfd": "add table component with context, variants, and example usage",
+            "1290d": "update deps",
+            "3832f": "update VirtualizerContent to extend PrimitiveProps",
+            "3ded4": "update useSelection to support MaybeRefOrGetter for props",
+            "643db": "fix code-block style",
+            "78f2b": "conditionally render CheckboxLabel based on slot or label presence; update root variant style",
+            "8dde2": "remove unused TableCaptionProps from types",
+            "be24e": "update lint script to include eslint for code formatting",
+            "d9cbb": "fix eslint lint code",
+            "f4eac": "update deps",
+            "f8077": "use eslint to lint vue"
+          },
+          "1": {
+            "43882": "add table docs and examples",
+            "1ce3f": "add background color to sidebar for better visibility",
+            "2e26c": "fix search options",
+            "4b5fa": "update default base color from gray to zinc",
+            "592cb": "simplify menu item linkProps and update SNavigationMenu usage",
+            "7491f": "remove debug log from renderCode function",
+            "f5d4d": "optimize layout styles"
+          },
+          "2": {
+            "58c98": "add FormControl component and update form structure",
+            "6f989": "add Vue Devtools plugin to Vite configuration",
+            "d24b2": "add single clearable option and example"
+          },
+          "3": {
+            "1a4f5": "add Table component and update form component exports",
+            "c0ee8": "add SFormFieldBase component export"
+          },
+          "4": {
+            "5e736": "optimize form variants"
+          }
+        },
+        "10": {
+          "0": {
+            "6defb": "update deps",
+            "bafd3": "simplify inline field styles in formVariants",
+            "e7891": "add collapsible functionality and update API props",
+            "eec64": "update config"
+          },
+          "1": {
+            "3201c": "add default prop 'asChild' to SCardCollapsibleTrigger",
+            "d070a": "add 'SCardCollapsibleTrigger' to card components"
+          },
+          "2": {
+            "2bbce": "update label style to prevent text wrapping"
+          },
+          "3": {
+            "30fd6": "remove unnecessary sm: prefix from rounded-lg class"
+          },
+          "4": {
+            "9ebd1": "set singleClearable prop default to true"
+          },
+          "5": {
+            "5a26c": "update content styles"
+          },
+          "6": {
+            "f56cf": "adjust header z-index and set multiple default to true"
+          }
+        },
+        "11": {
+          "0": {
+            "7817c": "rename itemsPerPage to pageSize and support update pageSize by event"
+          },
+          "1": {
+            "b03ba": "add leading and trailing slots"
+          },
+          "2": {
+            "1e779": "add class prop to bind content class"
+          },
+          "3": {
+            "417a0": "update max-width for dialog size variants"
+          },
+          "4": {
+            "2ed12": "bind content class to merged slot variants",
+            "9a5e1": "add min-width constraints to dialog content sizes"
+          }
+        },
+        "12": {
+          "0": {
+            "08e1c": "add PopoverCloseEmits and beforeClose prop; update PopoverPositioner default props",
+            "6e917": "implement component Popconfirm",
+            "e024c": "add default prop for avoidCollisions in TooltipPositioner; bind triggerProps to TooltipTrigger"
+          },
+          "1": {
+            "b30b1": "update deps",
+            "eb13c": "update dialog content styles to use w-max for better responsiveness"
+          },
+          "2": {
+            "57e0a": "omit 'disableOutsidePointerEvents' from popperPositionerProps",
+            "a26f3": "prevent triggering click event when dropdown is open",
+            "ec5dd": "improve DOM tree containment check and add helper function"
+          },
+          "3": {
+            "38151": "add 'vite/client' to types for improved type support",
+            "51070": "fix beforeConfirm and beforeCancel of Popconfirm and AlertDialog"
+          },
+          "4": {
+            "1dc2c": "reduce z-index for fullContent layout variants"
+          }
+        },
+        "13": {
+          "0": {
+            "29758": "update deps",
+            "1261f": "simplify line endings configuration for all file types",
+            "1ae61": "implement useTable and usePaginatedTable hooks with pagination support",
+            "1b3db": "update AGENTS.md for improved clarity and structure across headless and UI layers",
+            "1de7e": "add transition-all-150 to interactive components for smooth hover & focus animations. closed #98",
+            "3c077": "simplify useUi type definition and improve type safety",
+            "9fb13": "update deps",
+            "b4525": "update actions and pnpm setup to latest versions",
+            "b67fc": "update deps",
+            "c54b9": "update fetch method in usePaginatedTable hook",
+            "ce4e6": "update recommended extensions",
+            "eaf01": "remove 'justify' and 'char' options from TableAlign type",
+            "fc0f0": "update deps"
+          },
+          "1": {
+            "22928": "add onFetched callback to usePaginatedTable for handling fetched data"
+          },
+          "2": {
+            "30d25": "update deps",
+            "338a2": "remove default value comment for singleClearable property",
+            "4cfd8": "correct order of useFormFieldUi calls in computed class"
+          },
+          "3": {
+            "1a0b9": "add type prop to ButtonProps interface and update default props"
+          },
+          "4": {
+            "25840": "reorder exports for consistency and clarity"
+          },
+          "5": {
+            "945b5": "ensure columns are checked by default and filter checks accordingly"
+          },
+          "6": {
+            "7c72b": "enhance column handling in getColumns function for improved type support"
+          },
+          "7": {
+            "6b41f": "update deps"
+          },
+          "8": {
+            "77fa2": "update content styles for responsive design"
+          },
+          "0-beta": {
+            "1": {
+              "29758": "update deps",
+              "1261f": "simplify line endings configuration for all file types",
+              "1ae61": "implement useTable and usePaginatedTable hooks with pagination support",
+              "1b3db": "update AGENTS.md for improved clarity and structure across headless and UI layers",
+              "1de7e": "add transition-all-150 to interactive components for smooth hover & focus animations. closed #98",
+              "3c077": "simplify useUi type definition and improve type safety",
+              "9fb13": "update deps",
+              "b4525": "update actions and pnpm setup to latest versions",
+              "b67fc": "update deps",
+              "ce4e6": "update recommended extensions",
+              "eaf01": "remove 'justify' and 'char' options from TableAlign type",
+              "fc0f0": "update deps"
+            }
+          }
+        },
+        "14": {
+          "0": {
+            "044dc": "remove unnecessary aria attributes from VisuallyHidden and ToastAnnounce components",
+            "1cebe": "update deps",
+            "233ff": "enhance menu item radio and checkbox components",
+            "2457e": "integrate menu context for pointer event handling",
+            "4dc6d": "add feature attribute to VisuallyHidden component",
+            "5ce78": "enhance positioner props and context integration",
+            "a4cf8": "add check to skip hiding elements inside closed native popovers",
+            "dd253": "remove props prefix in template"
+          }
+        },
+        "15": {
+          "0": {
+            "13935": "add comprehensive guidelines for soybean-ui component development, testing, and documentation",
+            "15609": "add shared headless date utilities for upcoming date components",
+            "22707": "reorganize imports and update slot structure for Accordion components",
+            "33809": "Implement Spinner component",
+            "35549": "update deps",
+            "43638": "add requirement for component key insertion in sidebar menu",
+            "46994": "add pnpm overrides for vite-ssg and update jsdom version",
+            "50076": "enhance selection behavior and add boolean casting utility",
+            "50651": "remove 'square' shape variant from Skeleton component",
+            "50653": "add git commit convention guidelines",
+            "53678": "Refactor `STable` aggregation into headless `Table`",
+            "54031": "update unocss order",
+            "59664": "update component classes for consistent sizing",
+            "65037": "add new components and update existing API documentation",
+            "67180": "update sidebarWrapper and rail styles for responsive layout",
+            "70476": "Implement ToggleGroup component",
+            "91222": "add principles for deriving state in context callbacks",
+            "012f2": "clean up props handling and improve readability",
+            "03705": "Implement Skeleton component",
+            "03d4d": "Implement BottomSheet component",
+            "05392": "Implement TagsInput component",
+            "080c2": "optimize toast api and icon,button render",
+            "0830a": "simplify ColorSwatch export",
+            "09bf0": "reorganize AlertContent type and exports",
+            "09d81": "Implement Stepper component",
+            "0a26f": "remove bottom-sheet",
+            "0b4e6": "simplify format selection logic in color picker tests",
+            "0c8b7": "add playground examples and documentation requirements",
+            "0d537": "update forwardedProps to omit 'class' instead of 'label'",
+            "102be": "update components development skill",
+            "132e9": "update secondary and accent color variants to include opacity",
+            "14b3e": "update context consumption guidelines and checklist for Vue SFC",
+            "1a2ba": "add prioritizePosition prop to enhance positioning logic",
+            "1b635": "remove 'square' shape variant of skeleton",
+            "1cb41": "add accessibility and RTL adaptation guidelines",
+            "1d2d7": "fix emit parameter syntax for consistency",
+            "1e350": "add guidelines for headless aggregate components and icon rendering",
+            "21de4": "add component development guidelines and coding standards references",
+            "24b2e": "Implement Anchor component",
+            "29a30": "remove outdated TODO list for component optimizations",
+            "2a030": "add guidelines for CSS variable naming conventions",
+            "2cd3c": "add auto-focus event handling for open and close actions",
+            "2f87c": "Implement Editable component",
+            "3076c": "Implement Splitter component",
+            "341cb": "Implement Menubar component",
+            "34cf7": "update variant options and remove outline example",
+            "3a6cf": "Implement LayoutCompact component and LayoutClassic component",
+            "3b126": "enhance anchor component with location hash sync and optimize code",
+            "3b792": "update form input and output types for schema validation",
+            "3d77e": "simplify type reference collection and improve symbol resolution",
+            "3e877": "add IconRender component with customizable icon rendering in headless",
+            "434ae": "remove unused useSlots import and streamline slot definition",
+            "46b9c": "add component optimization tasks to TODO list",
+            "477cb": "add compact implementations for anchor, checkbox, and segment components",
+            "47d99": "refactor Affix component: split three headless components",
+            "4caf1": "enhance component development guidelines and checklist",
+            "4de50": "improve column sorting logic in getColumns function",
+            "4f5b5": "update Vue SFC guidelines for attrs handling and template structure",
+            "4fdd8": "Implement Toast component inspire by vue-sonner",
+            "540de": "replace singleClearable with clearable prop",
+            "5c153": "update deps",
+            "5c9e2": "add global test setup to mock fetch requests for iconify",
+            "5dec4": "refactor combobox component",
+            "5f90a": "add imperative progress provider api and remove loading-bar wrapper. closed #129",
+            "60cfe": "update checklist for component development with unit testing guidelines",
+            "63f21": "add shape prop to ToggleProps and update forwardedProps",
+            "6506e": "add AccordionDescription component and update related files",
+            "66c16": "Implement Color related components: ColorArea, ColorField, ColorSlider, ColorSwatch, ColorSwatchPicker, ColorPicker",
+            "68aed": "update 'focus-visible:outline-none' to 'outline-none'",
+            "68b9d": "correct focus handling in PopperPositioner and RovingFocusGroup",
+            "68e59": "remove SDialogPure from global components declaration",
+            "6970e": "rename \"IconRender\" to \"icon\" in headless",
+            "6c09a": "add TypeScript functional style and import order guidelines",
+            "6d8cb": "simplify bordered prop and update table styles",
+            "6f584": "Implement Carousel component",
+            "6fce5": "add experimental param parser type import",
+            "72a94": "Implementation with a new TableCompact, supports grouped headers, sorting/filtering, fixed columns, column resizing, tree rows, and virtualization. closed #97.",
+            "73d4e": "add soybean-ui-component development prompt",
+            "7675b": "reorganize type exports and clean up unused interfaces",
+            "78d17": "add loop option to SCarousel component",
+            "7bc9f": "add MenuSubAttributeContext and integrate into menu components",
+            "7c212": "enhance target resolution to support string selectors and direct elements",
+            "80db3": "update import path for UiResolver",
+            "86efb": "update deps",
+            "87e9f": "Implement HoverCard component",
+            "8ac9f": "Implement Affix component",
+            "8ad7b": "add initial roadmap for SoybeanUI improvements",
+            "8b299": "Implement InputOpt component",
+            "93c81": "support script to generate components api",
+            "942aa": "update component development guidelines and clarify task scopes",
+            "944ca": "update SKILL.md and checklist.md for barrel file and constants registration",
+            "94a50": "remove outdated roadmap document",
+            "96d89": "Implement Clipboard component",
+            "97a5b": "add .omx to ignore list",
+            "9e4f4": "update toast component documentation for clarity and usage examples",
+            "9ed11": "update .omx entry to ignore directory",
+            "a10c1": "update deps",
+            "a1c14": "Implement some compact components",
+            "a1e6d": "Implement Menu Compact components",
+            "a36d2": "adjust SClipboard component structure in examples for better readability",
+            "a3c2d": "enhance slot props binding for DialogCompact component",
+            "a4532": "add unit tests for SMenuOptions keyboard navigation",
+            "a500b": "Implement Toolbar component",
+            "a500f": "Implement ScrollArea component",
+            "a5678": "update generation date and enhance component descriptions",
+            "a686c": "add clearable prop and enhance model value change handling",
+            "a6ed9": "Implement Backtop component",
+            "a6ee3": "update deps",
+            "a76f9": "add script to generate component API documentation",
+            "a8d78": "add @vueuse/core dependency",
+            "a9d4a": "optimize style",
+            "aa563": "generate components and namespaced files dynamically",
+            "acbd4": "update mount reference from Toaster to SToaster in tests",
+            "adf72": "format code",
+            "b31ff": "enhance table components with improved column width handling and additional properties",
+            "b66a5": "add AI assistant bridge guidelines and routing instructions",
+            "b7a16": "add prioritizePosition prop to enhance positioning logic",
+            "b9c4d": "Implement Combobox component",
+            "bf9b0": "add provideAffixUi for headless affix component to fix test",
+            "c08dd": "update vue-router typings",
+            "c0fd5": "implement logical fixed columns and text alignment for RTL support",
+            "c26b8": "add CI workflow for type checking, linting, and testing",
+            "c2a23": "update bordered prop type to boolean",
+            "c348f": "add axe-core for accessibility testing and implement a11y tests for components",
+            "c47ff": "change cursor style from default to pointer for menu items",
+            "c521e": "update deps",
+            "c60cf": "Refactor ProgressProvider and progress api",
+            "c7634": "update layout for consistent sizing in editable examples",
+            "ca438": "replace singleClearable with clearable in context props",
+            "d1327": "update class name descriptions and improve API documentation",
+            "d20de": "add Vue SFC organization guidelines and update checklist for script setup order",
+            "d4c79": "update component development guidelines and add props forwarding strategy",
+            "d8c6a": "update component names of Toast",
+            "db7a1": "optimize slot template types",
+            "dd475": "remove fixed property from column definition",
+            "df4d5": "Implement progress component",
+            "e05b3": "Implement AccordionCompact component and update related types and context",
+            "e1c89": "remove outdated references to .github/instructions",
+            "e2387": "remove redundant bordered prop from table components",
+            "e5683": "remove unused data table components and types",
+            "e6aef": "Implement useLoadingBar based Progress",
+            "e7f1d": "Implment Slider component",
+            "e8a13": "enable showConfirm prop in DialogCompact component",
+            "e94d7": "update AGENTS and README",
+            "eaf07": "add guidelines for reusing global types and defining context types",
+            "ef368": "update type files",
+            "f3134": "Implement Toggle component",
+            "fa6e8": "add compact aggregator explanation for headless components",
+            "fbb4b": "fix collapsible ui context in tree menu",
+            "fc269": "Implement Autocomplete component",
+            "febb0": "update testing coverage and CI/CD sections with completed tasks",
+            "fef94": "Implement Empty component"
+          },
+          "1": {
+            "075f5": "format code",
+            "1faa6": "update gen:api script to format generated API docs",
+            "346d2": "update lint command to target specific directories",
+            "34d51": "add miniSize computed property for size handling",
+            "483a4": "update API documentation to use ComponentApi for multiple components",
+            "a9acc": "reorder LayoutClassicCompact in exports",
+            "cb831": "fix group and item management with Maps",
+            "d70b7": "add raised prop and update API documentation",
+            "e2491": "add ToastProvider component and refactor Toaster integration"
+          },
+          "2": {
+            "1964c": "set default value for multiple prop in STable component",
+            "9997c": "add table scroll component, enhance table style",
+            "e390d": "add last start and first end fixed column indicators"
+          },
+          "3": {
+            "0160d": "update content class for improved accessibility",
+            "38ca1": "add empty state support and update documentation",
+            "5bbd4": "add missing TableScroll component exports",
+            "a130d": "update table api",
+            "c7376": "update deps",
+            "d86ac": "update progress documentation and improve structure",
+            "d96d3": "add CHANGELOG.md to ignore patterns"
+          },
+          "4": {
+            "9ef67": "simplify style handling in config-provider and toast-provider",
+            "b2a75": "add global css in config-provider",
+            "fb274": "Implement BottomSheet component"
+          },
+          "5": {
+            "c9233": "remove unused properties from LayoutClassicRootProps"
+          },
+          "0-beta": {
+            "1": {
+              "13935": "add comprehensive guidelines for soybean-ui component development, testing, and documentation",
+              "33809": "Implement Spinner component",
+              "35549": "update deps",
+              "43638": "add requirement for component key insertion in sidebar menu",
+              "46994": "add pnpm overrides for vite-ssg and update jsdom version",
+              "50651": "remove 'square' shape variant from Skeleton component",
+              "50653": "add git commit convention guidelines",
+              "53678": "Refactor `STable` aggregation into headless `Table`",
+              "70476": "Implement ToggleGroup component",
+              "91222": "add principles for deriving state in context callbacks",
+              "012f2": "clean up props handling and improve readability",
+              "03705": "Implement Skeleton component",
+              "03d4d": "Implement BottomSheet component",
+              "05392": "Implement TagsInput component",
+              "0830a": "simplify ColorSwatch export",
+              "09d81": "Implement Stepper component",
+              "0b4e6": "simplify format selection logic in color picker tests",
+              "0c8b7": "add playground examples and documentation requirements",
+              "102be": "update components development skill",
+              "132e9": "update secondary and accent color variants to include opacity",
+              "14b3e": "update context consumption guidelines and checklist for Vue SFC",
+              "1a2ba": "add prioritizePosition prop to enhance positioning logic",
+              "1b635": "remove 'square' shape variant of skeleton",
+              "1cb41": "add accessibility and RTL adaptation guidelines",
+              "1e350": "add guidelines for headless aggregate components and icon rendering",
+              "21de4": "add component development guidelines and coding standards references",
+              "24b2e": "Implement Anchor component",
+              "29a30": "remove outdated TODO list for component optimizations",
+              "2a030": "add guidelines for CSS variable naming conventions",
+              "2cd3c": "add auto-focus event handling for open and close actions",
+              "2f87c": "Implement Editable component",
+              "3076c": "Implement Splitter component",
+              "341cb": "Implement Menubar component",
+              "34cf7": "update variant options and remove outline example",
+              "3b126": "enhance anchor component with location hash sync and optimize code",
+              "3e877": "add IconRender component with customizable icon rendering in headless",
+              "434ae": "remove unused useSlots import and streamline slot definition",
+              "46b9c": "add component optimization tasks to TODO list",
+              "47d99": "refactor Affix component: split three headless components",
+              "4caf1": "enhance component development guidelines and checklist",
+              "4fdd8": "Implement Toast component inspire by vue-sonner",
+              "5c153": "update deps",
+              "5c9e2": "add global test setup to mock fetch requests for iconify",
+              "60cfe": "update checklist for component development with unit testing guidelines",
+              "63f21": "add shape prop to ToggleProps and update forwardedProps",
+              "66c16": "Implement Color related components: ColorArea, ColorField, ColorSlider, ColorSwatch, ColorSwatchPicker, ColorPicker",
+              "68b9d": "correct focus handling in PopperPositioner and RovingFocusGroup",
+              "6c09a": "add TypeScript functional style and import order guidelines",
+              "6d8cb": "simplify bordered prop and update table styles",
+              "6f584": "Implement Carousel component",
+              "72a94": "Implementation with a new TableCompact, supports grouped headers, sorting/filtering, fixed columns, column resizing, tree rows, and virtualization. closed #97.",
+              "73d4e": "add soybean-ui-component development prompt",
+              "7bc9f": "add MenuSubAttributeContext and integrate into menu components",
+              "7c212": "enhance target resolution to support string selectors and direct elements",
+              "87e9f": "Implement HoverCard component",
+              "8ac9f": "Implement Affix component",
+              "8ad7b": "add initial roadmap for SoybeanUI improvements",
+              "942aa": "update component development guidelines and clarify task scopes",
+              "944ca": "update SKILL.md and checklist.md for barrel file and constants registration",
+              "94a50": "remove outdated roadmap document",
+              "97a5b": "add .omx to ignore list",
+              "9e4f4": "update toast component documentation for clarity and usage examples",
+              "9ed11": "update .omx entry to ignore directory",
+              "a10c1": "update deps",
+              "a1e6d": "Implement Menu Compact components",
+              "a4532": "add unit tests for SMenuOptions keyboard navigation",
+              "a500b": "Implement Toolbar component",
+              "a500f": "Implement ScrollArea component",
+              "a5678": "update generation date and enhance component descriptions",
+              "a6ee3": "update deps",
+              "a8d78": "add @vueuse/core dependency",
+              "a9d4a": "optimize style",
+              "acbd4": "update mount reference from Toaster to SToaster in tests",
+              "adf72": "format code",
+              "b31ff": "enhance table components with improved column width handling and additional properties",
+              "b66a5": "add AI assistant bridge guidelines and routing instructions",
+              "b7a16": "add prioritizePosition prop to enhance positioning logic",
+              "b9c4d": "Implement Combobox component",
+              "bf9b0": "add provideAffixUi for headless affix component to fix test",
+              "c08dd": "update vue-router typings",
+              "c0fd5": "implement logical fixed columns and text alignment for RTL support",
+              "c26b8": "add CI workflow for type checking, linting, and testing",
+              "c2a23": "update bordered prop type to boolean",
+              "c348f": "add axe-core for accessibility testing and implement a11y tests for components",
+              "c47ff": "change cursor style from default to pointer for menu items",
+              "d1327": "update class name descriptions and improve API documentation",
+              "d20de": "add Vue SFC organization guidelines and update checklist for script setup order",
+              "d4c79": "update component development guidelines and add props forwarding strategy",
+              "d8c6a": "update component names of Toast",
+              "db7a1": "optimize slot template types",
+              "df4d5": "Implement progress component",
+              "e05b3": "Implement AccordionCompact component and update related types and context",
+              "e1c89": "remove outdated references to .github/instructions",
+              "e2387": "remove redundant bordered prop from table components",
+              "e5683": "remove unused data table components and types",
+              "e6aef": "Implement useLoadingBar based Progress",
+              "e7f1d": "Implment Slider component",
+              "e94d7": "update AGENTS and README",
+              "eaf07": "add guidelines for reusing global types and defining context types",
+              "f3134": "Implement Toggle component",
+              "fa6e8": "add compact aggregator explanation for headless components",
+              "fbb4b": "fix collapsible ui context in tree menu",
+              "fc269": "Implement Autocomplete component",
+              "febb0": "update testing coverage and CI/CD sections with completed tasks",
+              "fef94": "Implement Empty component"
+            },
+            "2": {
+              "3b792": "update form input and output types for schema validation"
+            },
+            "3": {
+              "15609": "add shared headless date utilities for upcoming date components",
+              "22707": "reorganize imports and update slot structure for Accordion components",
+              "50076": "enhance selection behavior and add boolean casting utility",
+              "54031": "update unocss order",
+              "59664": "update component classes for consistent sizing",
+              "65037": "add new components and update existing API documentation",
+              "080c2": "optimize toast api and icon,button render",
+              "09bf0": "reorganize AlertContent type and exports",
+              "0a26f": "remove bottom-sheet",
+              "0d537": "update forwardedProps to omit 'class' instead of 'label'",
+              "3d77e": "simplify type reference collection and improve symbol resolution",
+              "477cb": "add compact implementations for anchor, checkbox, and segment components",
+              "4de50": "improve column sorting logic in getColumns function",
+              "4f5b5": "update Vue SFC guidelines for attrs handling and template structure",
+              "540de": "replace singleClearable with clearable prop",
+              "5dec4": "refactor combobox component",
+              "5f90a": "add imperative progress provider api and remove loading-bar wrapper. closed #129",
+              "6506e": "add AccordionDescription component and update related files",
+              "68aed": "update 'focus-visible:outline-none' to 'outline-none'",
+              "6970e": "rename \"IconRender\" to \"icon\" in headless",
+              "7675b": "reorganize type exports and clean up unused interfaces",
+              "78d17": "add loop option to SCarousel component",
+              "80db3": "update import path for UiResolver",
+              "8b299": "Implement InputOpt component",
+              "93c81": "support script to generate components api",
+              "96d89": "Implement Clipboard component",
+              "a1c14": "Implement some compact components",
+              "a36d2": "adjust SClipboard component structure in examples for better readability",
+              "a3c2d": "enhance slot props binding for DialogCompact component",
+              "a686c": "add clearable prop and enhance model value change handling",
+              "a6ed9": "Implement Backtop component",
+              "a76f9": "add script to generate component API documentation",
+              "aa563": "generate components and namespaced files dynamically",
+              "c521e": "update deps",
+              "c60cf": "Refactor ProgressProvider and progress api",
+              "c7634": "update layout for consistent sizing in editable examples",
+              "ca438": "replace singleClearable with clearable in context props",
+              "dd475": "remove fixed property from column definition",
+              "e8a13": "enable showConfirm prop in DialogCompact component",
+              "ef368": "update type files"
+            },
+            "4": {
+              "67180": "update sidebarWrapper and rail styles for responsive layout"
+            }
+          }
+        },
+        "16": {
+          "0": {
+            "28241": "Implement calendar, date, month, time and year components",
+            "0d0d5": "update target parameter type to support multiple elements",
+            "1066a": "sort component groups before generating components file",
+            "21d02": "add class binding for anchor element and update PopperUiSlot type",
+            "2633d": "add DateFieldCompact component and integrate into SDateField",
+            "2d4e6": "add compact header with month/year select and improve calendar functionality",
+            "5dbd0": "add script to generate UI components file",
+            "6711d": "update instructions and add CLAUDE files for components and playground",
+            "6cbdc": "implement Compact components for Card, Popover, Editable, HoverCard, NavigationMenu, Pagination and Stepper",
+            "7249b": "handle undefined variant return values in merge functions",
+            "85e45": "rename CarouselPlugins to CarouselPlugin for consistency",
+            "9a282": "add new skills for issue tracking, TDD, and triage processes",
+            "af9c9": "update deps",
+            "b1396": "migrate components to use combobox structure and remove unused files",
+            "b83ef": "add parentElement reference and integrate useHideOthers for improved accessibility",
+            "ce1ba": "remove duplicate rule for no-underscore-dangle",
+            "d58a6": "reorganize component imports and remove unused files",
+            "d5b89": "refactor docs components api",
+            "d9510": "update API documentation for various components to use ComponentApi",
+            "e53db": "add prioritizePosition prop to HoverCardPositioner"
+          }
+        },
+        "17": {
+          "0": {
+            "11966": "rename AnchorItemCompact component and update types",
+            "15133": "update documentation with Compact components and current architecture",
+            "46177": "refactor docs style",
+            "00acc": "replace toKebabCase and toPascalCase with kebabCase and pascalCase",
+            "0a009": "change export statements to export types from headless components",
+            "0c680": "add components overview to sidebar menu and update selection logic",
+            "130a3": "add sub-area attribute for hover card positioning",
+            "1adad": "update imports to use specific module paths for better clarity",
+            "1cce9": "add disabled prop to PopoverRoot and update test selectors",
+            "1e3b1": "replace nprogress with progress of ui",
+            "26f1d": "simplify entry configuration by removing unnecessary filter",
+            "3996e": "remove unused useStyleTag and integrate cssVars in Primitive",
+            "3a25c": "replace markdown-it with markdown-exit and clean up unused dependencies",
+            "4f91b": "refactor docs with glass style",
+            "5c27a": "fix ts error",
+            "66c57": "update docs api",
+            "750b5": "update button type descriptions to remove redundant translations",
+            "7ae41": "refactor date-picker components and integrate popover functionality",
+            "7b052": "rename DialogRootProps to extend DialogBaseProps for consistency",
+            "7f6a0": "remove unused border opacity classes for cleaner styling",
+            "8a8db": "update scrollBehavior to handle hash navigation smoothly",
+            "a177b": "enhance component props with additional documentation and properties",
+            "a4045": "reorganize regex exports and improve import structure",
+            "aacda": "enhance locale message resolution in useApiI18n",
+            "aed69": "remove unused props and update readonly binding",
+            "b02ea": "add component catalog with descriptions and statistics",
+            "bc382": "update pre styles for better responsiveness",
+            "bde9f": "add internationalization support for API descriptions and actions",
+            "c65a5": "fix vue ignore comments",
+            "c82ee": "remove redundant translation comments",
+            "c9b19": "add types export for types module and components",
+            "d064f": "update type references from AnchorItemData to AnchorOptionData",
+            "d6526": "update deps",
+            "d8463": "integrate DeepL translation API and update environment variables",
+            "e1c69": "simplify exports by removing redundant type definitions",
+            "f6666": "enhance context and props for popover components",
+            "ff4e8": "add descriptions and keys for year range picker props and emits"
+          }
+        }
+      }
+    }
+  }
+}

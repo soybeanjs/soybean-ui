@@ -1,0 +1,495 @@
+{
+  "component": "table",
+  "generatedAt": "2026-05-04T20:22:38.088Z",
+  "schemaVersion": 1,
+  "versions": [
+    {
+      "version": "v0.15.3",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.15.2...v0.15.3",
+      "date": "2026-04-27",
+      "entries": [
+        {
+          "type": "feature",
+          "scope": "table",
+          "summary": "add empty state support and update documentation",
+          "summaryKey": "changelog.generated.v0.15.3.38ca1",
+          "commitHash": "38ca1",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/38ca16c2",
+          "authors": ["soybeanfe", "Copilot"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "fix",
+          "scope": "table",
+          "summary": "add missing TableScroll component exports",
+          "summaryKey": "changelog.generated.v0.15.3.5bbd4",
+          "commitHash": "5bbd4",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/5bbd46c3",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "docs",
+          "scope": "table",
+          "summary": "update table api",
+          "summaryKey": "changelog.generated.v0.15.3.a130d",
+          "commitHash": "a130d",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/a130d38c",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope"
+        }
+      ]
+    },
+    {
+      "version": "v0.15.2",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.15.1...v0.15.2",
+      "date": "2026-04-27",
+      "entries": [
+        {
+          "type": "feature",
+          "scope": "table",
+          "summary": "add last start and first end fixed column indicators",
+          "summaryKey": "changelog.generated.v0.15.2.e390d",
+          "commitHash": "e390d",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/e390d598",
+          "authors": ["soybeanfe", "Copilot"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "feature",
+          "scope": "table",
+          "summary": "add table scroll component, enhance table style",
+          "summaryKey": "changelog.generated.v0.15.2.9997c",
+          "commitHash": "9997c",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/9997c1e0",
+          "authors": ["soybeanfe", "Copilot"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "fix",
+          "scope": "table",
+          "summary": "set default value for multiple prop in STable component",
+          "summaryKey": "changelog.generated.v0.15.2.1964c",
+          "commitHash": "1964c",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/1964c4c5",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope"
+        }
+      ]
+    },
+    {
+      "version": "v0.15.0",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.14.0...v0.15.0",
+      "date": "2026-04-26",
+      "entries": [
+        {
+          "type": "feature",
+          "scope": "table",
+          "summary": "Implementation with a new TableCompact, supports grouped headers, sorting/filtering, fixed columns, column resizing, tree rows, and virtualization. closed #97.",
+          "summaryKey": "changelog.generated.v0.15.0.72a94",
+          "commitHash": "72a94",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/72a9425b",
+          "authors": ["MicrosoftCopilot in https://github.com/soybeanjs/soybean-ui/issues/97"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "feature",
+          "scope": "table",
+          "summary": "implement logical fixed columns and text alignment for RTL support",
+          "summaryKey": "changelog.generated.v0.15.0.c0fd5",
+          "commitHash": "c0fd5",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/c0fd5c5d",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "fix",
+          "scope": "table",
+          "summary": "remove redundant bordered prop from table components",
+          "summaryKey": "changelog.generated.v0.15.0.e2387",
+          "commitHash": "e2387",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/e23872c4",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "fix",
+          "scope": "table",
+          "summary": "improve column sorting logic in getColumns function",
+          "summaryKey": "changelog.generated.v0.15.0.4de50",
+          "commitHash": "4de50",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/4de507e6",
+          "authors": ["soybeanfe", "Copilot"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "optimization",
+          "scope": "table",
+          "summary": "remove unused data table components and types",
+          "summaryKey": "changelog.generated.v0.15.0.e5683",
+          "commitHash": "e5683",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/e5683916",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "optimization",
+          "scope": "table",
+          "summary": "enhance table components with improved column width handling and additional properties",
+          "summaryKey": "changelog.generated.v0.15.0.b31ff",
+          "commitHash": "b31ff",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/b31ff550",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "optimization",
+          "scope": "table",
+          "summary": "simplify bordered prop and update table styles",
+          "summaryKey": "changelog.generated.v0.15.0.6d8cb",
+          "commitHash": "6d8cb",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/6d8cb722",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "optimization",
+          "scope": "table",
+          "summary": "remove unused useSlots import and streamline slot definition",
+          "summaryKey": "changelog.generated.v0.15.0.434ae",
+          "commitHash": "434ae",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/434aec23",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "refactor",
+          "scope": "table",
+          "summary": "Refactor `STable` aggregation into headless `Table`",
+          "summaryKey": "changelog.generated.v0.15.0.53678",
+          "commitHash": "53678",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/53678f8c",
+          "authors": ["MicrosoftCopilot"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "docs",
+          "scope": "table",
+          "summary": "update bordered prop type to boolean",
+          "summaryKey": "changelog.generated.v0.15.0.c2a23",
+          "commitHash": "c2a23",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/c2a23a72",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "style",
+          "scope": "table",
+          "summary": "remove fixed property from column definition",
+          "summaryKey": "changelog.generated.v0.15.0.dd475",
+          "commitHash": "dd475",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/dd475bd5",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope"
+        }
+      ]
+    },
+    {
+      "version": "v0.15.0-beta.3",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.15.0-beta.2...v0.15.0-beta.3",
+      "date": "2026-04-26",
+      "entries": [
+        {
+          "type": "fix",
+          "scope": "table",
+          "summary": "improve column sorting logic in getColumns function",
+          "summaryKey": "changelog.generated.v0.15.0-beta.3.4de50",
+          "commitHash": "4de50",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/4de507e6",
+          "authors": ["soybeanfe", "Copilot"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "style",
+          "scope": "table",
+          "summary": "remove fixed property from column definition",
+          "summaryKey": "changelog.generated.v0.15.0-beta.3.dd475",
+          "commitHash": "dd475",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/dd475bd5",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope"
+        }
+      ]
+    },
+    {
+      "version": "v0.15.0-beta.1",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.14.0...v0.15.0-beta.1",
+      "date": "2026-04-18",
+      "entries": [
+        {
+          "type": "feature",
+          "scope": "table",
+          "summary": "Implementation with a new TableCompact, supports grouped headers, sorting/filtering, fixed columns, column resizing, tree rows, and virtualization. closed #97.",
+          "summaryKey": "changelog.generated.v0.15.0-beta.1.72a94",
+          "commitHash": "72a94",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/72a9425b",
+          "authors": ["MicrosoftCopilot in https://github.com/soybeanjs/soybean-ui/issues/97"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "feature",
+          "scope": "table",
+          "summary": "implement logical fixed columns and text alignment for RTL support",
+          "summaryKey": "changelog.generated.v0.15.0-beta.1.c0fd5",
+          "commitHash": "c0fd5",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/c0fd5c5d",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "fix",
+          "scope": "table",
+          "summary": "remove redundant bordered prop from table components",
+          "summaryKey": "changelog.generated.v0.15.0-beta.1.e2387",
+          "commitHash": "e2387",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/e23872c4",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "optimization",
+          "scope": "table",
+          "summary": "remove unused data table components and types",
+          "summaryKey": "changelog.generated.v0.15.0-beta.1.e5683",
+          "commitHash": "e5683",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/e5683916",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "optimization",
+          "scope": "table",
+          "summary": "enhance table components with improved column width handling and additional properties",
+          "summaryKey": "changelog.generated.v0.15.0-beta.1.b31ff",
+          "commitHash": "b31ff",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/b31ff550",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "optimization",
+          "scope": "table",
+          "summary": "simplify bordered prop and update table styles",
+          "summaryKey": "changelog.generated.v0.15.0-beta.1.6d8cb",
+          "commitHash": "6d8cb",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/6d8cb722",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "optimization",
+          "scope": "table",
+          "summary": "remove unused useSlots import and streamline slot definition",
+          "summaryKey": "changelog.generated.v0.15.0-beta.1.434ae",
+          "commitHash": "434ae",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/434aec23",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "refactor",
+          "scope": "table",
+          "summary": "Refactor `STable` aggregation into headless `Table`",
+          "summaryKey": "changelog.generated.v0.15.0-beta.1.53678",
+          "commitHash": "53678",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/53678f8c",
+          "authors": ["MicrosoftCopilot"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "docs",
+          "scope": "table",
+          "summary": "update bordered prop type to boolean",
+          "summaryKey": "changelog.generated.v0.15.0-beta.1.c2a23",
+          "commitHash": "c2a23",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/c2a23a72",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    },
+    {
+      "version": "v0.13.6",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.13.5...v0.13.6",
+      "date": "2026-03-22",
+      "entries": [
+        {
+          "type": "fix",
+          "scope": "table",
+          "summary": "enhance column handling in getColumns function for improved type support",
+          "summaryKey": "changelog.generated.v0.13.6.7c72b",
+          "commitHash": "7c72b",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/7c72bb64",
+          "authors": ["Soybean"],
+          "source": "exact-scope"
+        }
+      ]
+    },
+    {
+      "version": "v0.13.5",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.13.4...v0.13.5",
+      "date": "2026-03-22",
+      "entries": [
+        {
+          "type": "fix",
+          "scope": "table",
+          "summary": "ensure columns are checked by default and filter checks accordingly",
+          "summaryKey": "changelog.generated.v0.13.5.945b5",
+          "commitHash": "945b5",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/945b5e5d",
+          "authors": ["Soybean"],
+          "source": "exact-scope"
+        }
+      ]
+    },
+    {
+      "version": "v0.13.4",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.13.3...v0.13.4",
+      "date": "2026-03-22",
+      "entries": [
+        {
+          "type": "fix",
+          "scope": "table",
+          "summary": "reorder exports for consistency and clarity",
+          "summaryKey": "changelog.generated.v0.13.4.25840",
+          "commitHash": "25840",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/25840a45",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    },
+    {
+      "version": "v0.13.1",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.13.0...v0.13.1",
+      "date": "2026-03-20",
+      "entries": [
+        {
+          "type": "feature",
+          "scope": "table",
+          "summary": "add onFetched callback to usePaginatedTable for handling fetched data",
+          "summaryKey": "changelog.generated.v0.13.1.22928",
+          "commitHash": "22928",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/22928699",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    },
+    {
+      "version": "v0.13.0",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.12.4...v0.13.0",
+      "date": "2026-03-20",
+      "entries": [
+        {
+          "type": "feature",
+          "scope": "table",
+          "summary": "implement useTable and usePaginatedTable hooks with pagination support",
+          "summaryKey": "changelog.generated.v0.13.0.1ae61",
+          "commitHash": "1ae61",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/1ae619bd",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "fix",
+          "scope": "table",
+          "summary": "update fetch method in usePaginatedTable hook",
+          "summaryKey": "changelog.generated.v0.13.0.c54b9",
+          "commitHash": "c54b9",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/c54b978b",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    },
+    {
+      "version": "v0.13.0-beta.1",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.12.4...v0.13.0-beta.1",
+      "date": "2026-03-20",
+      "entries": [
+        {
+          "type": "feature",
+          "scope": "table",
+          "summary": "implement useTable and usePaginatedTable hooks with pagination support",
+          "summaryKey": "changelog.generated.v0.13.0-beta.1.1ae61",
+          "commitHash": "1ae61",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/1ae619bd",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    },
+    {
+      "version": "v0.10.6",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.10.5...v0.10.6",
+      "date": "2026-03-06",
+      "entries": [
+        {
+          "type": "fix",
+          "scope": "table",
+          "summary": "adjust header z-index and set multiple default to true",
+          "summaryKey": "changelog.generated.v0.10.6.f56cf",
+          "commitHash": "f56cf",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/f56cfc90",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    },
+    {
+      "version": "v0.9.1",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.9.0...v0.9.1",
+      "date": "2026-03-03",
+      "entries": [
+        {
+          "type": "docs",
+          "scope": "table",
+          "summary": "add table docs and examples",
+          "summaryKey": "changelog.generated.v0.9.1.43882",
+          "commitHash": "43882",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/43882d6a",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    },
+    {
+      "version": "v0.9.0",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.8.1...v0.9.0",
+      "date": "2026-03-01",
+      "entries": [
+        {
+          "type": "feature",
+          "scope": "table",
+          "summary": "add table component with context, variants, and example usage",
+          "summaryKey": "changelog.generated.v0.9.0.0fdfd",
+          "commitHash": "0fdfd",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/0fdfdb6c",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "fix",
+          "scope": "table",
+          "summary": "remove unused TableCaptionProps from types",
+          "summaryKey": "changelog.generated.v0.9.0.8dde2",
+          "commitHash": "8dde2",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/8dde2c21",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    }
+  ]
+}

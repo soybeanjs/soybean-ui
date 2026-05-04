@@ -1,0 +1,125 @@
+{
+  "component": "accordion",
+  "generatedAt": "2026-05-04T20:22:38.088Z",
+  "schemaVersion": 1,
+  "versions": [
+    {
+      "version": "v0.15.0",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.14.0...v0.15.0",
+      "date": "2026-04-26",
+      "entries": [
+        {
+          "type": "feature",
+          "scope": "accordion",
+          "summary": "Implement AccordionCompact component and update related types and context",
+          "summaryKey": "changelog.generated.v0.15.0.e05b3",
+          "commitHash": "e05b3",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/e05b3237",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "feature",
+          "scope": "accordion",
+          "summary": "add AccordionDescription component and update related files",
+          "summaryKey": "changelog.generated.v0.15.0.6506e",
+          "commitHash": "6506e",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/6506e753",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "optimization",
+          "scope": "accordion",
+          "summary": "optimize slot template types",
+          "summaryKey": "changelog.generated.v0.15.0.db7a1",
+          "commitHash": "db7a1",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/db7a1348",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "optimization",
+          "scope": "accordion",
+          "summary": "reorganize imports and update slot structure for Accordion components",
+          "summaryKey": "changelog.generated.v0.15.0.22707",
+          "commitHash": "22707",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/2270794d",
+          "authors": ["soybean-js"],
+          "source": "exact-scope"
+        }
+      ]
+    },
+    {
+      "version": "v0.15.0-beta.3",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.15.0-beta.2...v0.15.0-beta.3",
+      "date": "2026-04-26",
+      "entries": [
+        {
+          "type": "feature",
+          "scope": "accordion",
+          "summary": "add AccordionDescription component and update related files",
+          "summaryKey": "changelog.generated.v0.15.0-beta.3.6506e",
+          "commitHash": "6506e",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/6506e753",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "optimization",
+          "scope": "accordion",
+          "summary": "reorganize imports and update slot structure for Accordion components",
+          "summaryKey": "changelog.generated.v0.15.0-beta.3.22707",
+          "commitHash": "22707",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/2270794d",
+          "authors": ["soybean-js"],
+          "source": "exact-scope"
+        }
+      ]
+    },
+    {
+      "version": "v0.15.0-beta.1",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.14.0...v0.15.0-beta.1",
+      "date": "2026-04-18",
+      "entries": [
+        {
+          "type": "feature",
+          "scope": "accordion",
+          "summary": "Implement AccordionCompact component and update related types and context",
+          "summaryKey": "changelog.generated.v0.15.0-beta.1.e05b3",
+          "commitHash": "e05b3",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/e05b3237",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "optimization",
+          "scope": "accordion",
+          "summary": "optimize slot template types",
+          "summaryKey": "changelog.generated.v0.15.0-beta.1.db7a1",
+          "commitHash": "db7a1",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/db7a1348",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    },
+    {
+      "version": "v0.8.0",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.7.1...v0.8.0",
+      "date": "2026-02-10",
+      "entries": [
+        {
+          "type": "fix",
+          "scope": "accordion",
+          "summary": "add default value for unmountOnHide prop",
+          "summaryKey": "changelog.generated.v0.8.0.1f86b",
+          "commitHash": "1f86b",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/1f86b28f",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    }
+  ]
+}
