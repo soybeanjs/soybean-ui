@@ -2,7 +2,8 @@
 import { URL, fileURLToPath } from 'node:url';
 import path from 'node:path';
 import { defineConfig } from 'vite';
-import Vue from 'unplugin-vue/vite';
+import Vue from '@vitejs/plugin-vue';
+import VueJsx from '@vitejs/plugin-vue-jsx';
 import Unocss from 'unocss/vite';
 import VueRouter from 'vue-router/vite';
 import MetaLayouts from 'vite-plugin-vue-meta-layouts';
@@ -20,6 +21,7 @@ export default defineConfig({
   },
   plugins: [
     Vue(),
+    VueJsx(),
     Unocss(),
     VueRouter({
       routesFolder: 'playground/pages',
