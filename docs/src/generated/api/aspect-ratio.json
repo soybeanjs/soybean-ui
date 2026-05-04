@@ -7,7 +7,7 @@
         "name": "AspectRatioProps",
         "type": "Interface AspectRatioProps",
         "resolvedType": "{ ratio?: number; asChild?: boolean; as?: AsTag | Component }",
-        "description": "Properties for the aspect ratio component.",
+        "description": "Properties for the AspectRatio component.",
         "descriptionKey": "api.generated.headless_src_components_aspect_ratio_types.aspectratioprops.props",
         "sourcePath": "headless/src/components/aspect-ratio/types.ts",
         "typeParameters": [],

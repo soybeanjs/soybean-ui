@@ -7,7 +7,7 @@
         "name": "KbdProps",
         "type": "Interface KbdProps",
         "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; size?: ThemeSize; variant?: KbdVariant; raised?: boolean; value?: KbdValue | KbdValue[]; symbolize?: boolean }",
-        "description": "Properties for the kbd component.",
+        "description": "Properties for the Kbd component.",
         "descriptionKey": "api.generated.src_components_kbd_types.kbdprops.props",
         "sourcePath": "src/components/kbd/types.ts",
         "typeParameters": [],

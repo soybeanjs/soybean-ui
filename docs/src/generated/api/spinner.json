@@ -7,7 +7,7 @@
         "name": "SpinnerProps",
         "type": "Interface SpinnerProps",
         "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; color?: ThemeColor; icon?: `svg-spinners:${string}`; size?: ThemeSize }",
-        "description": "Properties for the spinner component.",
+        "description": "Properties for the Spinner component.",
         "descriptionKey": "api.generated.src_components_spinner_types.spinnerprops.props",
         "sourcePath": "src/components/spinner/types.ts",
         "typeParameters": [],
