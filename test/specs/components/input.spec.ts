@@ -23,10 +23,16 @@ describe('SInput', () => {
 
     it('passes type attribute', () => {
       const wrapper = mount(SInput, {
-        attrs: { type: 'email' },
+        props: {
+          controlProps: {
+            type: 'email'
+          }
+        },
         attachTo: document.body
       });
+
       expect(wrapper.find('input').attributes('type')).toBe('email');
+
       wrapper.unmount();
     });
 
@@ -68,7 +74,7 @@ describe('SInput', () => {
         attachTo: document.body
       });
 
-      await wrapper.find('button[aria-label="Clear input"]').trigger('click');
+      await wrapper.find('[data-slot="clearable"]').trigger('click');
 
       expect(wrapper.emitted('update:modelValue')).toBeTruthy();
       expect(wrapper.emitted('update:modelValue')![0]).toEqual(['']);
