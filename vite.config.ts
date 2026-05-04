@@ -1,4 +1,3 @@
-/// <reference types="vitest/config" />
 import { URL, fileURLToPath } from 'node:url';
 import path from 'node:path';
 import { defineConfig } from 'vite';
@@ -45,11 +44,5 @@ export default defineConfig({
   ],
   server: {
     open: true
-  },
-  test: {
-    globals: true,
-    include: ['test/specs/**/*.spec.ts'],
-    environment: 'happy-dom',
-    setupFiles: ['./test/setup.ts']
   }
 });
