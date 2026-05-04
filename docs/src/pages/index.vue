@@ -323,8 +323,6 @@ const featuredGroups = computed(() =>
         <template #extra>
           <SButtonLink
             to="/components"
-            target="_blank"
-            rel="noopener noreferrer"
             size="lg"
             variant="ghost"
             shape="rounded"
@@ -373,8 +371,6 @@ const featuredGroups = computed(() =>
         <template #extra>
           <SButtonLink
             to="/components"
-            target="_blank"
-            rel="noopener noreferrer"
             size="lg"
             variant="ghost"
             shape="rounded"
