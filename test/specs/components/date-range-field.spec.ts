@@ -22,10 +22,10 @@ describe('SDateRangeField', () => {
 
       expect(wrapper.classes()).toContain('test-date-range-field');
       expect(wrapper.findAll('[data-soybean-date-field-segment]').length).toBeGreaterThanOrEqual(10);
-      
+
       const startPart = wrapper.find('[data-date-range-field-part="start"]');
       const endPart = wrapper.find('[data-date-range-field-part="end"]');
-      
+
       expect(startPart.exists()).toBe(true);
       expect(endPart.exists()).toBe(true);
       wrapper.unmount();
@@ -46,7 +46,7 @@ describe('SDateRangeField', () => {
 
       const hourSegments = wrapper.findAll('[data-segment="hour"]');
       const minuteSegments = wrapper.findAll('[data-segment="minute"]');
-      
+
       expect(hourSegments.length).toBeGreaterThanOrEqual(2);
       expect(minuteSegments.length).toBeGreaterThanOrEqual(2);
       wrapper.unmount();
@@ -126,14 +126,14 @@ describe('SDateRangeField', () => {
       });
 
       expect(wrapper.attributes('data-disabled')).toBeDefined();
-      
+
       const segments = wrapper.findAll('[data-segment]:not([data-segment="literal"])');
-      
+
       segments.forEach(segment => {
         expect(segment.attributes('data-disabled')).toBeDefined();
         expect(segment.attributes('tabindex')).toBeUndefined();
       });
-      
+
       wrapper.unmount();
     });
   });

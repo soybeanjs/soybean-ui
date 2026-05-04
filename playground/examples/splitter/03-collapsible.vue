@@ -13,13 +13,7 @@ const collapsed = ref(false);
     </div>
     <div class="h-48 rd-md border">
       <SSplitterGroup>
-        <SSplitterPanel
-          v-slot="{ expand, collapse }"
-          collapsible
-          :collapsed-size="0"
-          :min-size="20"
-          :default-size="30"
-        >
+        <SSplitterPanel v-slot="{ expand, collapse }" collapsible :collapsed-size="0" :min-size="20" :default-size="30">
           <div class="flex h-full items-center justify-center bg-muted/40 text-sm text-muted-foreground">
             <button class="rd-md border px-3 py-1.5" @click="collapsed ? expand() : collapse()">
               {{ collapsed ? 'Expand from panel' : 'Collapse from panel' }}

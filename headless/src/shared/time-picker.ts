@@ -1,6 +1,15 @@
 import type { DateStep, Formatter, HourCycle, TimeGranularity, TimeMatcher, TimeValue } from '../date';
 
-import { getOptsByGranularity, isAfter, isAfterOrSame, isBefore, isBeforeOrSame, isEqualValue, isTime, isZonedDateTime } from '../date';
+import {
+  getOptsByGranularity,
+  isAfter,
+  isAfterOrSame,
+  isBefore,
+  isBeforeOrSame,
+  isEqualValue,
+  isTime,
+  isZonedDateTime
+} from '../date';
 
 export interface TimePickerOption {
   value: TimeValue;
@@ -41,7 +50,8 @@ export function isTimeBetweenInclusive(date: TimeValue, start: TimeValue, end: T
 }
 
 export function formatTimeValue(props: FormatTimeValueProps): string {
-  return props.formatter.toParts(props.value, getOptsByGranularity(props.granularity, props.hourCycle, true))
+  return props.formatter
+    .toParts(props.value, getOptsByGranularity(props.granularity, props.hourCycle, true))
     .filter(part => {
       if (part.type !== 'timeZoneName') {
         return true;

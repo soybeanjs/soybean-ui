@@ -174,9 +174,7 @@ const items = [
 
 ```vue
 <template>
-  <SButton class="w-full rounded-full">
-    自定义按钮
-  </SButton>
+  <SButton class="w-full rounded-full">自定义按钮</SButton>
 </template>
 ```
 

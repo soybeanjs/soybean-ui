@@ -1,15 +1,16 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
-import { YearPickerPopup, YearPickerRoot, YearPickerTrigger, provideYearPickerUi } from '@soybeanjs/headless/year-picker';
-
+import {
+  YearPickerPopup,
+  YearPickerRoot,
+  YearPickerTrigger,
+  provideYearPickerUi
+} from '@soybeanjs/headless/year-picker';
 import { mergeSlotVariants } from '@/theme';
-
 import Icon from '../icon/icon.vue';
-
-import type { YearPickerEmits, YearPickerProps, YearPickerSlots } from './types';
 import { yearPickerVariants } from './variants';
+import type { YearPickerEmits, YearPickerProps, YearPickerSlots } from './types';
 
 defineOptions({
   name: 'SYearPicker'
@@ -37,7 +38,12 @@ provideYearPickerUi(ui);
 <template>
   <YearPickerRoot v-slot="slotProps" v-bind="forwardedProps" v-on="listeners">
     <YearPickerTrigger v-bind="triggerProps">
-      <slot name="trigger" :display-value="slotProps.displayValue" :model-value="slotProps.modelValue" :open="slotProps.open">
+      <slot
+        name="trigger"
+        :display-value="slotProps.displayValue"
+        :model-value="slotProps.modelValue"
+        :open="slotProps.open"
+      >
         <Icon class="size-4" icon="lucide:calendar" />
         <span v-if="slotProps.displayValue">{{ slotProps.displayValue }}</span>
         <span v-else class="text-muted-foreground">Pick a year</span>

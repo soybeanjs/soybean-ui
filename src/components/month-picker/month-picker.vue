@@ -1,13 +1,14 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
-import { MonthPickerPopup, MonthPickerRoot, MonthPickerTrigger, provideMonthPickerUi } from '@soybeanjs/headless/month-picker';
-
+import {
+  MonthPickerPopup,
+  MonthPickerRoot,
+  MonthPickerTrigger,
+  provideMonthPickerUi
+} from '@soybeanjs/headless/month-picker';
 import { mergeSlotVariants } from '@/theme';
-
 import Icon from '../icon/icon.vue';
-
 import { monthPickerVariants } from './variants';
 import type { MonthPickerEmits, MonthPickerProps, MonthPickerSlots } from './types';
 
@@ -37,7 +38,12 @@ provideMonthPickerUi(ui);
 <template>
   <MonthPickerRoot v-slot="slotProps" v-bind="forwardedProps" v-on="listeners">
     <MonthPickerTrigger v-bind="triggerProps">
-      <slot name="trigger" :display-value="slotProps.displayValue" :model-value="slotProps.modelValue" :open="slotProps.open">
+      <slot
+        name="trigger"
+        :display-value="slotProps.displayValue"
+        :model-value="slotProps.modelValue"
+        :open="slotProps.open"
+      >
         <Icon class="size-4" icon="lucide:calendar-range" />
         <span v-if="slotProps.displayValue">{{ slotProps.displayValue }}</span>
         <span v-else class="text-muted-foreground">Pick a month</span>

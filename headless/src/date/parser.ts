@@ -2,10 +2,24 @@ import type { Ref } from 'vue';
 
 import type { Formatter } from './formatter';
 import type { TimeValue } from './comparators';
-import type { DateSegmentPart, Granularity, HourCycle, SegmentContentObj, SegmentPart, SegmentValueObj, TimeSegmentPart } from './types';
+import type {
+  DateSegmentPart,
+  Granularity,
+  HourCycle,
+  SegmentContentObj,
+  SegmentPart,
+  SegmentValueObj,
+  TimeSegmentPart
+} from './types';
 
 import { isTime, isZonedDateTime, toDate } from './comparators';
-import { DATE_SEGMENT_PARTS, EDITABLE_SEGMENT_PARTS, TIME_SEGMENT_PARTS, isDateSegmentPart, isSegmentPart } from './parts';
+import {
+  DATE_SEGMENT_PARTS,
+  EDITABLE_SEGMENT_PARTS,
+  TIME_SEGMENT_PARTS,
+  isDateSegmentPart,
+  isSegmentPart
+} from './parts';
 import { getPlaceholder } from './placeholders';
 import { getOptsByGranularity, normalizeHourCycle } from './utils';
 
@@ -79,7 +93,7 @@ function createContentObj(props: CreateContentProps) {
           return props.formatter.part(
             props.dateRef.set({
               [part]: value as number,
-              month: 'month' in props.segmentValues ? props.segmentValues.month ?? 1 : 1
+              month: 'month' in props.segmentValues ? (props.segmentValues.month ?? 1) : 1
             }),
             part,
             { hourCycle: normalizeHourCycle(props.hourCycle) }
@@ -98,7 +112,10 @@ function createContentObj(props: CreateContentProps) {
       const value = numericSegmentValues[part];
       if (value !== null) {
         if (part === 'day') {
-          return props.formatter.part(props.dateRef.set({ [part]: value as number, month: props.segmentValues.month ?? 1 }), part);
+          return props.formatter.part(
+            props.dateRef.set({ [part]: value as number, month: props.segmentValues.month ?? 1 }),
+            part
+          );
         }
 
         return props.formatter.part(props.dateRef.set({ [part]: value as number }), part);
@@ -125,16 +142,22 @@ function createContentObj(props: CreateContentProps) {
   }, {} as SegmentContentObj);
 }
 
-function createContentValue(part: DateSegmentPart | TimeSegmentPart, getPartContent: (part: DateSegmentPart | TimeSegmentPart) => string) {
+function createContentValue(
+  part: DateSegmentPart | TimeSegmentPart,
+  getPartContent: (part: DateSegmentPart | TimeSegmentPart) => string
+) {
   return getPartContent(part);
 }
 
 export function createContent(props: CreateContentProps) {
   const contentObj = createContentObj(props);
-  const parts = props.formatter.toParts(props.dateRef, getOptsByGranularity(props.granularity, props.hourCycle, props.isTimeValue));
+  const parts = props.formatter.toParts(
+    props.dateRef,
+    getOptsByGranularity(props.granularity, props.hourCycle, props.isTimeValue)
+  );
   const arr = parts
     .map(part => {
-      if ((part.type === 'literal' || part.type === 'timeZoneName' || part.type === null) || !isSegmentPart(part.type)) {
+      if (part.type === 'literal' || part.type === 'timeZoneName' || part.type === null || !isSegmentPart(part.type)) {
         return {
           part: part.type,
           value: part.value

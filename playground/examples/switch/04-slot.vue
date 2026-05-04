@@ -4,13 +4,7 @@ import { SIcon, SSwitch } from '@soybeanjs/ui';
 
 <template>
   <div class="flex flex-wrap gap-6">
-    <SSwitch
-      color="carbon"
-      default-value="on"
-      true-value="on"
-      false-value="off"
-      :ui="{ root: 'flex-y-center gap-2' }"
-    >
+    <SSwitch color="carbon" default-value="on" true-value="on" false-value="off" :ui="{ root: 'flex-y-center gap-2' }">
       <template #leading="{ modelValue }">
         <div :class="{ 'text-muted-foreground opacity-50': modelValue === 'on' }">off</div>
       </template>

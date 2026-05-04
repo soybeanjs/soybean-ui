@@ -20,7 +20,11 @@ function resolvePlaceholderLocale(locale: string): SupportedLocale {
   return 'en';
 }
 
-export function getPlaceholder(field: PlaceholderField | 'era' | 'hour' | 'minute' | 'second' | 'dayPeriod', value: string, locale: string) {
+export function getPlaceholder(
+  field: PlaceholderField | 'era' | 'hour' | 'minute' | 'second' | 'dayPeriod',
+  value: string,
+  locale: string
+) {
   if (field === 'year' || field === 'month' || field === 'day') {
     return placeholders[resolvePlaceholderLocale(locale)][field];
   }

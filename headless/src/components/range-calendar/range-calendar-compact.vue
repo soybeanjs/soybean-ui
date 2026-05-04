@@ -71,7 +71,11 @@ const listeners = useForwardListeners(emit);
       <RangeCalendarGrid v-for="month in grid" :key="month.value.toString()" v-bind="gridProps">
         <RangeCalendarGridHead v-bind="gridHeadProps">
           <RangeCalendarGridRow v-bind="gridRowProps">
-            <RangeCalendarHeadCell v-for="(weekDay, index) in weekDays" :key="`${month.value.toString()}-${weekDay}-${index}`" v-bind="headCellProps">
+            <RangeCalendarHeadCell
+              v-for="(weekDay, index) in weekDays"
+              :key="`${month.value.toString()}-${weekDay}-${index}`"
+              v-bind="headCellProps"
+            >
               <slot name="head-cell" :date="month.value" :index="index" :label="weekDay">
                 {{ weekDay }}
               </slot>
@@ -79,8 +83,17 @@ const listeners = useForwardListeners(emit);
           </RangeCalendarGridRow>
         </RangeCalendarGridHead>
         <RangeCalendarGridBody v-bind="gridBodyProps">
-          <RangeCalendarGridRow v-for="(week, weekIndex) in month.rows" :key="`${month.value.toString()}-${weekIndex}`" v-bind="gridRowProps">
-            <RangeCalendarCell v-for="dateValue in week" :key="dateValue.toString()" :date="dateValue" v-bind="cellProps">
+          <RangeCalendarGridRow
+            v-for="(week, weekIndex) in month.rows"
+            :key="`${month.value.toString()}-${weekIndex}`"
+            v-bind="gridRowProps"
+          >
+            <RangeCalendarCell
+              v-for="dateValue in week"
+              :key="dateValue.toString()"
+              :date="dateValue"
+              v-bind="cellProps"
+            >
               <RangeCalendarCellTrigger :day="dateValue" :month="month.value" v-bind="cellTriggerProps">
                 <template #default="slotProps">
                   <slot

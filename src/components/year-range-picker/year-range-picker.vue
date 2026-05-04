@@ -1,15 +1,16 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
-import { YearRangePickerPopup, YearRangePickerRoot, YearRangePickerTrigger, provideYearRangePickerUi } from '@soybeanjs/headless/year-range-picker';
-
+import {
+  YearRangePickerPopup,
+  YearRangePickerRoot,
+  YearRangePickerTrigger,
+  provideYearRangePickerUi
+} from '@soybeanjs/headless/year-range-picker';
 import { mergeSlotVariants } from '@/theme';
-
 import Icon from '../icon/icon.vue';
-
-import type { YearRangePickerEmits, YearRangePickerProps, YearRangePickerSlots } from './types';
 import { yearRangePickerVariants } from './variants';
+import type { YearRangePickerEmits, YearRangePickerProps, YearRangePickerSlots } from './types';
 
 defineOptions({
   name: 'SYearRangePicker'
@@ -37,7 +38,12 @@ provideYearRangePickerUi(ui);
 <template>
   <YearRangePickerRoot v-slot="slotProps" v-bind="forwardedProps" v-on="listeners">
     <YearRangePickerTrigger v-bind="triggerProps">
-      <slot name="trigger" :display-value="slotProps.displayValue" :model-value="slotProps.modelValue" :open="slotProps.open">
+      <slot
+        name="trigger"
+        :display-value="slotProps.displayValue"
+        :model-value="slotProps.modelValue"
+        :open="slotProps.open"
+      >
         <Icon class="size-4" icon="lucide:calendar-range" />
         <span v-if="slotProps.displayValue">{{ slotProps.displayValue }}</span>
         <span v-else class="text-muted-foreground">Pick a year range</span>

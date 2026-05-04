@@ -1,15 +1,11 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
 import { TimeRangePickerCompact, provideTimeRangePickerUi } from '@soybeanjs/headless/time-range-picker';
-
 import { mergeSlotVariants } from '@/theme';
-
 import Icon from '../icon/icon.vue';
-
-import type { TimeRangePickerEmits, TimeRangePickerProps, TimeRangePickerSlots } from './types';
 import { timeRangePickerVariants } from './variants';
+import type { TimeRangePickerEmits, TimeRangePickerProps, TimeRangePickerSlots } from './types';
 
 defineOptions({
   name: 'STimeRangePicker'

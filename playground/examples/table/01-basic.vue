@@ -37,9 +37,7 @@ const data: TableData[] = [
 
 <template>
   <STable caption="Table Caption" :columns="columns" :data="data" :row-key="row => row.id" class="h-60">
-    <template #header-address>
-      Header Address
-    </template>
+    <template #header-address>Header Address</template>
     <template #address="{ value }">
       <span class="text-red">{{ value }}</span>
     </template>

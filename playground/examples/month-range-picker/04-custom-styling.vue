@@ -1,7 +1,6 @@
 <script setup lang="ts">
-import { CalendarDate } from '@internationalized/date';
 import { shallowRef } from 'vue';
-
+import { CalendarDate } from '@internationalized/date';
 import { SMonthRangePicker } from '@soybeanjs/ui';
 
 const value = shallowRef({

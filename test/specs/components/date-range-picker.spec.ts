@@ -153,8 +153,14 @@ describe('SDateRangePicker', () => {
       const emitted = wrapper.emitted('update:modelValue');
 
       expect(emitted).toBeTruthy();
-      expect(((emitted as NonNullable<typeof emitted>)[0][0] as { start?: CalendarDate; end?: CalendarDate }).start?.toString()).toBe('2026-04-18');
-      expect(((emitted as NonNullable<typeof emitted>)[1][0] as { start?: CalendarDate; end?: CalendarDate }).end?.toString()).toBe('2026-04-20');
+      expect(
+        (
+          (emitted as NonNullable<typeof emitted>)[0][0] as { start?: CalendarDate; end?: CalendarDate }
+        ).start?.toString()
+      ).toBe('2026-04-18');
+      expect(
+        ((emitted as NonNullable<typeof emitted>)[1][0] as { start?: CalendarDate; end?: CalendarDate }).end?.toString()
+      ).toBe('2026-04-20');
       expect(wrapper.find('[data-slot="popup"]').exists()).toBe(false);
 
       wrapper.unmount();

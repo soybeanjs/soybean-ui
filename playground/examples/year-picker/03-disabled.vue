@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { CalendarDate } from '@internationalized/date';
-
 import { SYearPicker } from '@soybeanjs/ui';
 
 const value = new CalendarDate(2026, 1, 1);

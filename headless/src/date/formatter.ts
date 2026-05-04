@@ -113,7 +113,11 @@ export function useDateFormatter(initialLocale: string, opts: DateFormatterOptio
     second: 'numeric'
   };
 
-  function part(dateObj: DateValue | TimeValue, type: Intl.DateTimeFormatPartTypes, options: DateFormatterOptions = {}) {
+  function part(
+    dateObj: DateValue | TimeValue,
+    type: Intl.DateTimeFormatPartTypes,
+    options: DateFormatterOptions = {}
+  ) {
     const parts = toParts(dateObj, { ...defaultPartOptions, ...options });
     const segment = parts.find(item => item.type === type);
 

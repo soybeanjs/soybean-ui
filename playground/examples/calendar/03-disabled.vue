@@ -1,8 +1,6 @@
 <script setup lang="ts">
-import type { DateValue } from '@internationalized/date';
-
 import { CalendarDate } from '@internationalized/date';
-
+import type { DateValue } from '@internationalized/date';
 import { SCalendar } from '@soybeanjs/ui';
 
 const today = new CalendarDate(2026, 4, 18);

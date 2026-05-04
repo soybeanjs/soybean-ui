@@ -23,8 +23,6 @@ const items = [
 
 <template>
   <SBreadcrumb :items="items">
-    <template #separator>
-      &nbsp;/&nbsp;
-    </template>
+    <template #separator>&nbsp;/&nbsp;</template>
   </SBreadcrumb>
 </template>

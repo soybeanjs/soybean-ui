@@ -174,9 +174,7 @@ All components support the `class` prop, which intelligently merges with default
 
 ```vue
 <template>
-  <SButton class="w-full rounded-full">
-    Custom Button
-  </SButton>
+  <SButton class="w-full rounded-full">Custom Button</SButton>
 </template>
 ```
 

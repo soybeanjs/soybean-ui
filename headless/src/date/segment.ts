@@ -7,7 +7,19 @@ export function isNumberString(value: string) {
 }
 
 export function isAcceptableSegmentKey(key: string) {
-  const acceptableSegmentKeys = ['Enter', 'ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'Backspace', ' ', 'a', 'A', 'p', 'P'];
+  const acceptableSegmentKeys = [
+    'Enter',
+    'ArrowUp',
+    'ArrowDown',
+    'ArrowLeft',
+    'ArrowRight',
+    'Backspace',
+    ' ',
+    'a',
+    'A',
+    'p',
+    'P'
+  ];
 
   return acceptableSegmentKeys.includes(key) || isNumberString(key);
 }

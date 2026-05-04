@@ -11,5 +11,7 @@ const value = shallowRef({
 
 <template>
   <SRangeCalendar v-model="value" :default-placeholder="value.start" />
-  <p class="text-sm text-muted-foreground">Range: {{ value.start?.toString() ?? '-' }} ~ {{ value.end?.toString() ?? '-' }}</p>
+  <p class="text-sm text-muted-foreground">
+    Range: {{ value.start?.toString() ?? '-' }} ~ {{ value.end?.toString() ?? '-' }}
+  </p>
 </template>

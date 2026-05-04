@@ -174,7 +174,11 @@ export function isBetween(date: DateValue, start: DateValue, end: DateValue) {
   return isAfter(date, start) && isBefore(date, end);
 }
 
-export function getLastFirstDayOfWeek<T extends DateValue = DateValue>(date: T, firstDayOfWeek: number, locale: string): T {
+export function getLastFirstDayOfWeek<T extends DateValue = DateValue>(
+  date: T,
+  firstDayOfWeek: number,
+  locale: string
+): T {
   const day = getDayOfWeek(date, locale, 'sun');
 
   if (firstDayOfWeek > day) {
@@ -188,7 +192,11 @@ export function getLastFirstDayOfWeek<T extends DateValue = DateValue>(date: T, 
   return date.subtract({ days: day - firstDayOfWeek }) as T;
 }
 
-export function getNextLastDayOfWeek<T extends DateValue = DateValue>(date: T, firstDayOfWeek: number, locale: string): T {
+export function getNextLastDayOfWeek<T extends DateValue = DateValue>(
+  date: T,
+  firstDayOfWeek: number,
+  locale: string
+): T {
   const day = getDayOfWeek(date, locale, 'sun');
   const lastDayOfWeek = firstDayOfWeek === 0 ? 6 : firstDayOfWeek - 1;
 

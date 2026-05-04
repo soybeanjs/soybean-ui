@@ -1,7 +1,6 @@
 <script setup lang="ts">
-import type { DateValue } from '@internationalized/date';
-
 import { CalendarDate } from '@internationalized/date';
+import type { DateValue } from '@internationalized/date';
 import { SRangeCalendar } from '@soybeanjs/ui';
 
 const value = {

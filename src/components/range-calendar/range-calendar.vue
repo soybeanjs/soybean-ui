@@ -1,15 +1,11 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-
 import { RangeCalendarCompact, provideRangeCalendarUi } from '@soybeanjs/headless/range-calendar';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
-
 import { mergeSlotVariants } from '@/theme';
-
 import Icon from '../icon/icon.vue';
-
-import type { RangeCalendarEmits, RangeCalendarProps, RangeCalendarSlots } from './types';
 import { rangeCalendarVariants } from './variants';
+import type { RangeCalendarEmits, RangeCalendarProps, RangeCalendarSlots } from './types';
 
 defineOptions({
   name: 'SRangeCalendar'

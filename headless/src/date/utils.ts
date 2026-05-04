@@ -79,7 +79,9 @@ export function handleCalendarInitialFocus(calendar: HTMLElement) {
     return;
   }
 
-  const firstDay = calendar.querySelector<HTMLElement>('[data-slot="cell-trigger"]:not([data-disabled]):not([data-unavailable])');
+  const firstDay = calendar.querySelector<HTMLElement>(
+    '[data-slot="cell-trigger"]:not([data-disabled]):not([data-unavailable])'
+  );
   firstDay?.focus();
 }
 
@@ -135,7 +137,6 @@ export function normalizeInputValue(date: DateValue | undefined, granularity: Gr
 
   return `${year}-${month}-${day}T${hour}:${minute}`;
 }
-
 
 export function getTimeInputType(_granularity: TimeGranularity): TimeInputType {
   return 'time';

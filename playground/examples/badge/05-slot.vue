@@ -4,9 +4,7 @@ import { SBadge, SButton } from '@soybeanjs/ui';
 
 <template>
   <SBadge>
-    <template #content>
-      New!
-    </template>
+    <template #content>New!</template>
     <SButton variant="pure">99+</SButton>
   </SBadge>
 </template>

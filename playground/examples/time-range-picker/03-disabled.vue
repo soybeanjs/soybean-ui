@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { Time } from '@internationalized/date';
-
 import { STimeRangePicker } from '@soybeanjs/ui';
 
 const value = {

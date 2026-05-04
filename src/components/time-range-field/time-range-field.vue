@@ -1,11 +1,8 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-
 import { TimeRangeFieldCompact, provideTimeRangeFieldUi } from '@soybeanjs/headless/time-range-field';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
-
 import { mergeSlotVariants } from '@/theme';
-
 import { timeRangeFieldVariants } from './variants';
 import type { TimeRangeFieldEmits, TimeRangeFieldProps, TimeRangeFieldSlots } from './types';
 

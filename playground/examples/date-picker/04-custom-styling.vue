@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import { CalendarDate } from '@internationalized/date';
-
 import { SDatePicker } from '@soybeanjs/ui';
 
 const selectedDate = ref<any>();

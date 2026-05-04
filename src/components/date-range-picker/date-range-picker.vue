@@ -1,14 +1,10 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-
 import { DateRangePickerCompact, provideDateRangePickerUi } from '@soybeanjs/headless/date-range-picker';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
-
 import { mergeSlotVariants } from '@/theme';
-
 import Icon from '../icon/icon.vue';
 import SRangeCalendar from '../range-calendar/range-calendar.vue';
-
 import { dateRangePickerVariants } from './variants';
 import type { DateRangePickerEmits, DateRangePickerProps, DateRangePickerSlots } from './types';
 

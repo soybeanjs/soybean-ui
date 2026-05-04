@@ -19,10 +19,7 @@ export const timeRangeFieldVariants = tv({
       'focus-visible:bg-accent/60 focus-visible:ring-2 focus-visible:ring-primary/20',
       'data-[disabled]:cursor-not-allowed data-[readonly]:cursor-default'
     ],
-    separator: [
-      'inline-flex items-center justify-center px-1 text-muted-foreground',
-      'select-none'
-    ]
+    separator: ['inline-flex items-center justify-center px-1 text-muted-foreground', 'select-none']
   },
   variants: {
     size: {

@@ -1,15 +1,16 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
-import { TimePickerPopup, TimePickerRoot, TimePickerTrigger, provideTimePickerUi } from '@soybeanjs/headless/time-picker';
-
+import {
+  TimePickerPopup,
+  TimePickerRoot,
+  TimePickerTrigger,
+  provideTimePickerUi
+} from '@soybeanjs/headless/time-picker';
 import { mergeSlotVariants } from '@/theme';
-
 import Icon from '../icon/icon.vue';
-
-import type { TimePickerEmits, TimePickerProps, TimePickerSlots } from './types';
 import { timePickerVariants } from './variants';
+import type { TimePickerEmits, TimePickerProps, TimePickerSlots } from './types';
 
 defineOptions({
   name: 'STimePicker'
@@ -37,7 +38,12 @@ provideTimePickerUi(ui);
 <template>
   <TimePickerRoot v-slot="slotProps" v-bind="forwardedProps" v-on="listeners">
     <TimePickerTrigger v-bind="triggerProps">
-      <slot name="trigger" :display-value="slotProps.displayValue" :model-value="slotProps.modelValue" :open="slotProps.open">
+      <slot
+        name="trigger"
+        :display-value="slotProps.displayValue"
+        :model-value="slotProps.modelValue"
+        :open="slotProps.open"
+      >
         <Icon class="size-4" icon="lucide:clock-3" />
         <span v-if="slotProps.displayValue">{{ slotProps.displayValue }}</span>
         <span v-else class="text-muted-foreground">Pick a time</span>
