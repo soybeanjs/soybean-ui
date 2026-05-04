@@ -7,7 +7,7 @@
         "name": "ColorSwatchProps",
         "type": "Interface ColorSwatchProps",
         "resolvedType": "{ class?: string | Record<string, boolean> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<ColorSwatchExtendedUi>; shape?: ColorSwatchShape; color?: import(\"@soybeanjs/colord\").AnyColor; label?: string; asChild?: boolean; as?: AsTag | Component }",
-        "description": "Props for the color swatch component.",
+        "description": "Properties for the color swatch component.",
         "descriptionKey": "api.generated.src_components_color_swatch_types.colorswatchprops.props",
         "sourcePath": "src/components/color-swatch/types.ts",
         "typeParameters": [],

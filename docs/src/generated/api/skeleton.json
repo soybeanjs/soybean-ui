@@ -7,7 +7,7 @@
         "name": "SkeletonProps",
         "type": "Interface SkeletonProps",
         "resolvedType": "{ class?: string | Record<string, boolean> | ClassValue[] | null; size?: ThemeSize; animated?: boolean; shape?: SkeletonShape; asChild?: boolean; as?: AsTag | Component }",
-        "description": "Props for the skeleton component.",
+        "description": "Properties for the skeleton component.",
         "descriptionKey": "api.generated.src_components_skeleton_types.skeletonprops.props",
         "sourcePath": "src/components/skeleton/types.ts",
         "typeParameters": [],
