@@ -470,6 +470,27 @@
         }
       },
       "headless_src_components_badge_types": {
+        "badgecompactemits": {
+          "callables": {
+            "update_open": "Emitted when the open state changes."
+          },
+          "emits": "Emits for the badge compact component."
+        },
+        "badgecompactprops": {
+          "members": {
+            "content": "Content rendered inside the badge bubble when no content slot is provided.",
+            "contentprops": "Props forwarded to the content element.",
+            "open": "Whether the component is open."
+          },
+          "props": "Props for the badge compact component."
+        },
+        "badgecompactslots": {
+          "callables": {
+            "content": "Custom content for the badge content slot.",
+            "default": "Custom content for the default slot."
+          },
+          "slots": "Slots for the badge compact component."
+        },
         "badgecontentprops": {
           "props": "Props for the badge content component."
         },

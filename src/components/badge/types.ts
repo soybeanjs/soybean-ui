@@ -1,4 +1,4 @@
-import type { BadgeContentProps, BadgeRootEmits, BadgeRootProps, BadgeUi } from '@soybeanjs/headless/badge';
+import type { BadgeCompactProps, BadgeRootEmits, BadgeUi } from '@soybeanjs/headless/badge';
 import type { ClassValue } from '@soybeanjs/headless/types';
 import type { ThemeColor, ThemeSize } from '@/theme';
 import type { BadgePosition } from './variants';
@@ -6,7 +6,7 @@ import type { BadgePosition } from './variants';
 /**
  * Props for the badge component.
  */
-export interface BadgeProps extends BadgeRootProps {
+export interface BadgeProps extends BadgeCompactProps {
   /**
    * root class
    */
@@ -27,14 +27,6 @@ export interface BadgeProps extends BadgeRootProps {
    * Position.
    */
   position?: BadgePosition;
-  /**
-   * Content.
-   */
-  content?: string;
-  /**
-   * Props forwarded to the content element.
-   */
-  contentProps?: BadgeContentProps;
 }
 
 /**

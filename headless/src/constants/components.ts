@@ -30,7 +30,7 @@ export const components = {
   ],
   avatar: ['AvatarCompact', 'AvatarRoot', 'AvatarImage', 'AvatarFallback'],
   backtop: ['Backtop'],
-  badge: ['BadgeRoot', 'BadgeContent'],
+  badge: ['BadgeCompact', 'BadgeRoot', 'BadgeContent'],
   bottomSheet: [
     'BottomSheetTrigger',
     'BottomSheetPortal',

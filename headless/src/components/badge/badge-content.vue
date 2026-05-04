@@ -14,7 +14,7 @@ const cls = useBadgeUi('content');
 </script>
 
 <template>
-  <span v-if="open" :class="cls">
+  <span v-if="open" data-slot="content" :class="cls">
     <slot />
   </span>
 </template>

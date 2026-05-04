@@ -470,6 +470,27 @@
         }
       },
       "headless_src_components_badge_types": {
+        "badgecompactemits": {
+          "callables": {
+            "update_open": "当打开状态发生变化时发出。"
+          },
+          "emits": "徽章紧凑组件的输出。"
+        },
+        "badgecompactprops": {
+          "members": {
+            "content": "未提供内容插槽时，在徽章气泡内呈现的内容。",
+            "contentprops": "道具转发到内容元素。",
+            "open": "组件是否打开。"
+          },
+          "props": "为徽章紧凑组件点赞"
+        },
+        "badgecompactslots": {
+          "callables": {
+            "content": "徽章内容槽的自定义内容。",
+            "default": "默认插槽的自定义内容。"
+          },
+          "slots": "徽章紧凑组件的插槽。"
+        },
         "badgecontentprops": {
           "props": "为徽章内容组件点赞。"
         },

@@ -141,11 +141,11 @@
             "name": "content",
             "type": "string",
             "required": false,
-            "description": "Content.",
+            "description": "Content rendered inside the badge bubble when no content slot is provided.",
             "descriptionKey": "api.generated.src_components_badge_types.badgeprops.members.content",
             "default": null,
-            "inheritedFrom": null,
-            "sourcePath": "src/components/badge/types.ts",
+            "inheritedFrom": "content",
+            "sourcePath": "headless/src/components/badge/types.ts",
             "referencedTypes": []
           },
           {
@@ -155,8 +155,8 @@
             "description": "Props forwarded to the content element.",
             "descriptionKey": "api.generated.src_components_badge_types.badgeprops.members.contentprops",
             "default": null,
-            "inheritedFrom": null,
-            "sourcePath": "src/components/badge/types.ts",
+            "inheritedFrom": "contentProps",
+            "sourcePath": "headless/src/components/badge/types.ts",
             "referencedTypes": [
               {
                 "name": "BadgeContentProps",
@@ -236,6 +236,152 @@
             ]
           }
         ]
+      }
+    },
+    "BadgeCompact": {
+      "props": {
+        "kind": "props",
+        "name": "BadgeCompactProps",
+        "type": "Interface BadgeCompactProps",
+        "resolvedType": "{ content?: string; contentProps?: BadgeContentProps; open?: boolean }",
+        "description": "Props for the badge compact component.",
+        "descriptionKey": "api.generated.headless_src_components_badge_types.badgecompactprops.props",
+        "sourcePath": "headless/src/components/badge/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "content",
+            "type": "string",
+            "required": false,
+            "description": "Content rendered inside the badge bubble when no content slot is provided.",
+            "descriptionKey": "api.generated.headless_src_components_badge_types.badgecompactprops.members.content",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/badge/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "contentProps",
+            "type": "BadgeContentProps",
+            "required": false,
+            "description": "Props forwarded to the content element.",
+            "descriptionKey": "api.generated.headless_src_components_badge_types.badgecompactprops.members.contentprops",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/badge/types.ts",
+            "referencedTypes": [
+              {
+                "name": "BadgeContentProps",
+                "kind": "interface",
+                "type": "BadgeContentProps",
+                "resolvedType": null,
+                "description": "Props for the badge content component.",
+                "descriptionKey": "api.generated.headless_src_components_badge_types.badgecontentprops",
+                "sourcePath": "headless/src/components/badge/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "open",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether the component is open.",
+            "descriptionKey": "api.generated.headless_src_components_badge_types.badgecompactprops.members.open",
+            "default": null,
+            "inheritedFrom": "open",
+            "sourcePath": "headless/src/components/badge/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      },
+      "emits": {
+        "kind": "emits",
+        "name": "BadgeCompactEmits",
+        "type": "TypeAlias BadgeCompactEmits: BadgeRootEmits",
+        "resolvedType": "{ \"update:open\": [open: boolean] }",
+        "description": "Emits for the badge compact component.",
+        "descriptionKey": "api.generated.headless_src_components_badge_types.badgecompactemits.emits",
+        "sourcePath": "headless/src/components/badge/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [
+          {
+            "name": "update:open",
+            "type": "[open: boolean]",
+            "parameters": "open: boolean",
+            "required": true,
+            "description": "Emitted when the open state changes.",
+            "descriptionKey": "api.generated.headless_src_components_badge_types.badgecompactemits.callables.update_open",
+            "sourcePath": "headless/src/components/badge/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "referencedTypes": [
+          {
+            "name": "BadgeRootEmits",
+            "kind": "typeAlias",
+            "type": "{ 'update:open': [open: boolean]; }",
+            "resolvedType": "{ \"update:open\": [open: boolean] }",
+            "description": "Emits for the badge root component.",
+            "descriptionKey": "api.generated.headless_src_components_badge_types.badgerootemits",
+            "sourcePath": "headless/src/components/badge/types.ts",
+            "typeParameters": [],
+            "external": false,
+            "members": [],
+            "callables": [
+              {
+                "name": "update:open",
+                "type": "[open: boolean]",
+                "parameters": "open: boolean",
+                "required": true,
+                "description": "Emitted when the open state changes.",
+                "descriptionKey": "api.generated.headless_src_components_badge_types.badgerootemits.callables.update_open",
+                "sourcePath": "headless/src/components/badge/types.ts",
+                "referencedTypes": []
+              }
+            ]
+          }
+        ]
+      },
+      "slots": {
+        "kind": "slots",
+        "name": "BadgeCompactSlots",
+        "type": "TypeAlias BadgeCompactSlots",
+        "resolvedType": "{ default?: (() => any); content?: (() => any) }",
+        "description": "Slots for the badge compact component.",
+        "descriptionKey": "api.generated.headless_src_components_badge_types.badgecompactslots.slots",
+        "sourcePath": "headless/src/components/badge/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [
+          {
+            "name": "default",
+            "type": "(() => any) | undefined",
+            "parameters": "(() => any) | undefined",
+            "required": false,
+            "description": "Custom content for the default slot.",
+            "descriptionKey": "api.generated.headless_src_components_badge_types.badgecompactslots.callables.default",
+            "sourcePath": "headless/src/components/badge/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "content",
+            "type": "(() => any) | undefined",
+            "parameters": "(() => any) | undefined",
+            "required": false,
+            "description": "Custom content for the badge content slot.",
+            "descriptionKey": "api.generated.headless_src_components_badge_types.badgecompactslots.callables.content",
+            "sourcePath": "headless/src/components/badge/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "referencedTypes": []
       }
     },
     "BadgeContent": {

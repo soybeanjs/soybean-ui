@@ -27,6 +27,31 @@ export type BadgeRootEmits = {
 export interface BadgeContentProps extends /** @vue-ignore */ HTMLAttributes {}
 
 /**
+ * Props for the badge compact component.
+ */
+export interface BadgeCompactProps extends BadgeRootProps {
+  /** Content rendered inside the badge bubble when no content slot is provided. */
+  content?: string;
+  /** Props forwarded to the content element. */
+  contentProps?: BadgeContentProps;
+}
+
+/**
+ * Emits for the badge compact component.
+ */
+export type BadgeCompactEmits = BadgeRootEmits;
+
+/**
+ * Slots for the badge compact component.
+ */
+export type BadgeCompactSlots = {
+  /** Custom content for the default slot. */
+  default?: () => any;
+  /** Custom content for the badge content slot. */
+  content?: () => any;
+};
+
+/**
  * Context for the badge root component.
  */
 export interface BadgeRootContext {

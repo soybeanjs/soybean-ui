@@ -40,6 +40,7 @@ import {
   AvatarImage,
   AvatarRoot,
   Backtop,
+  BadgeCompact,
   BadgeContent,
   BadgeRoot,
   BottomSheetCancel,
@@ -627,9 +628,11 @@ export const Autocomplete = {
 };
 
 export const Badge = {
+  Compact: BadgeCompact,
   Root: BadgeRoot,
   Content: BadgeContent
 } as {
+  Compact: typeof BadgeCompact;
   Root: typeof BadgeRoot;
   Content: typeof BadgeContent;
 };

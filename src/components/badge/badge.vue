@@ -1,6 +1,8 @@
 <script setup lang="ts">
-import { computed } from 'vue';
-import { BadgeContent, BadgeRoot, provideBadgeUi } from '@soybeanjs/headless/badge';
+import { computed, useSlots } from 'vue';
+import { BadgeCompact, provideBadgeUi } from '@soybeanjs/headless/badge';
+import { useOmitProps } from '@soybeanjs/headless/composables';
+import { keysOf } from '@soybeanjs/utils';
 import { mergeSlotVariants } from '@/theme';
 import { badgeVariants } from './variants';
 import type { BadgeEmits, BadgeProps } from './types';
@@ -14,6 +16,12 @@ const props = withDefaults(defineProps<BadgeProps>(), {
 });
 
 const emit = defineEmits<BadgeEmits>();
+
+const slots = useSlots();
+
+const forwardedProps = useOmitProps(props, ['class', 'color', 'size', 'ui', 'position']);
+
+const slotNames = computed(() => keysOf(slots));
 
 const ui = computed(() => {
   const variants = badgeVariants({
@@ -29,10 +37,9 @@ provideBadgeUi(ui);
 </script>
 
 <template>
-  <BadgeRoot :open="open" @update:open="emit('update:open', $event)">
-    <slot />
-    <BadgeContent v-bind="contentProps">
-      <slot name="content">{{ content }}</slot>
-    </BadgeContent>
-  </BadgeRoot>
+  <BadgeCompact v-bind="forwardedProps" @update:open="emit('update:open', $event)">
+    <template v-for="slotName in slotNames" #[slotName]>
+      <slot :name="slotName" />
+    </template>
+  </BadgeCompact>
 </template>

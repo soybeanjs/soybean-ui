@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-04T04:05:41.321Z",
+  "generatedAt": "2026-05-04T04:11:14.902Z",
   "schemaVersion": 4,
   "components": {
     "accordion": {
@@ -74,7 +74,7 @@
     "badge": {
       "component": "badge",
       "file": "badge.json",
-      "symbols": ["Badge", "BadgeContent", "BadgeRoot"]
+      "symbols": ["Badge", "BadgeCompact", "BadgeContent", "BadgeRoot"]
     },
     "bottom-sheet": {
       "component": "bottom-sheet",

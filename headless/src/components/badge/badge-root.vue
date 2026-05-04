@@ -29,7 +29,7 @@ provideBadgeRootContext({
 </script>
 
 <template>
-  <div :class="cls">
+  <div data-slot="root" :class="cls">
     <slot />
   </div>
 </template>

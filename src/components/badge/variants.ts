@@ -5,7 +5,7 @@ import type { VariantProps } from 'tailwind-variants';
 export const badgeVariants = tv({
   slots: {
     root: 'relative inline-block',
-    content: `absolute flex justify-center items-center whitespace-nowrap rounded-full transform`
+    content: `absolute flex justify-center items-center leading-relaxed whitespace-nowrap rounded-full transform`
   },
   variants: {
     color: {
@@ -36,36 +36,36 @@ export const badgeVariants = tv({
     },
     size: {
       xs: {
-        content: `min-h-2 px-1 text-4xs leading-relaxed`
+        content: `min-h-2 px-1 text-4xs`
       },
       sm: {
-        content: `min-h-2.5 px-1.25 text-3xs leading-relaxed`
+        content: `min-h-2.5 px-1.25 text-3xs`
       },
       md: {
-        content: `min-h-3 px-1.5 text-2xs leading-relaxed`
+        content: `min-h-3 px-1.5 text-2xs`
       },
       lg: {
-        content: `min-h-3.5 px-1.75 text-xs leading-relaxed`
+        content: `min-h-3.5 px-1.75 text-xs`
       },
       xl: {
-        content: `min-h-4 px-2 text-sm leading-relaxed`
+        content: `min-h-4 px-2 text-sm`
       },
       '2xl': {
-        content: `min-h-5 px-2.5 text-base leading-relaxed`
+        content: `min-h-5 px-2.5 text-base`
       }
     },
     position: {
       'top-right': {
-        content: 'right-0 top-0 translate-x-1/2 -translate-y-1/2'
+        content: 'end-0 top-0 translate-x-1/2 -translate-y-1/2 rtl:-translate-x-1/2'
       },
       'bottom-right': {
-        content: 'right-0 bottom-0 translate-x-1/2 translate-y-1/2'
+        content: 'end-0 bottom-0 translate-x-1/2 translate-y-1/2 rtl:-translate-x-1/2'
       },
       'top-left': {
-        content: 'left-0 top-0 -translate-x-1/2 -translate-y-1/2'
+        content: 'start-0 top-0 -translate-x-1/2 -translate-y-1/2 rtl:translate-x-1/2'
       },
       'bottom-left': {
-        content: 'left-0 bottom-0 -translate-x-1/2 translate-y-1/2'
+        content: 'start-0 bottom-0 -translate-x-1/2 translate-y-1/2 rtl:translate-x-1/2'
       }
     }
   },
