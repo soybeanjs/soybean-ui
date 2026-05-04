@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { provideFormFieldContext, useFormFieldUi } from './context';
+import { provideFormFieldContext, useFormUi, useFormFieldUi } from './context';
+import { mergeClasses } from './shared';
 import type { FormFieldProps } from './types';
 
 defineOptions({
@@ -9,7 +10,12 @@ defineOptions({
 
 const props = defineProps<FormFieldProps>();
 
-const cls = computed(() => (props.isFieldArray ? useFormFieldUi('fieldArray').value : useFormFieldUi('field').value));
+const fieldType = props.isFieldArray ? 'fieldArray' : 'field';
+
+const formCls = useFormUi(fieldType);
+const fieldCls = useFormFieldUi(fieldType);
+
+const cls = computed(() => mergeClasses(formCls.value, fieldCls.value));
 
 const error = computed(() => props.error);
 
@@ -17,7 +23,7 @@ const { formFieldId, ariaDescribedBy, ariaInvalid } = provideFormFieldContext({ 
 </script>
 
 <template>
-  <div :id="isFieldArray ? formFieldId : undefined" :class="cls">
+  <div :id="isFieldArray ? formFieldId : undefined" :class="cls" :data-field-type="isFieldArray ? 'array' : 'field'">
     <slot :form-field-id="formFieldId" :aria-described-by="ariaDescribedBy" :aria-invalid="ariaInvalid" />
   </div>
 </template>

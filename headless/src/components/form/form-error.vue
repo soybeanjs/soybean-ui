@@ -1,5 +1,7 @@
 <script setup lang="ts">
-import { useFormFieldContext, useFormFieldUi } from './context';
+import { computed } from 'vue';
+import { useFormFieldContext, useFormUi, useFormFieldUi } from './context';
+import { mergeClasses } from './shared';
 import type { FormErrorProps } from './types';
 
 defineOptions({
@@ -10,7 +12,10 @@ defineProps<FormErrorProps>();
 
 const { formErrorId } = useFormFieldContext('FormError');
 
-const cls = useFormFieldUi('error');
+const formCls = useFormUi('error');
+const fieldCls = useFormFieldUi('error');
+
+const cls = computed(() => mergeClasses(formCls.value, fieldCls.value));
 </script>
 
 <template>

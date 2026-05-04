@@ -64,7 +64,7 @@ const citiesItems: SelectOptionData<string>[] = [
 
 <template>
   <SForm class="w-90 gap-3" @submit="handleSubmit">
-    <SFormField name="username" label="Username">
+    <SFormField name="username" label="Username" description="This is FormField description">
       <SInput placeholder="Please input username" />
     </SFormField>
     <SFormField name="gender" label="Gender">

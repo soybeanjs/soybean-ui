@@ -271,7 +271,7 @@ export interface FormState<Values extends FormValues> {
 /**
  * Type information for the use form options component.
  */
-export interface UseFormOptions<S extends StandardSchemaV1<FormValues, FormValues>> {
+export interface UseHeadlessFormOptions<S extends StandardSchemaV1<FormValues, FormValues>> {
   /**
    * Schema.
    */
@@ -525,7 +525,7 @@ export interface UseFormStateReturn<Values extends FormValues> {
 /**
  * Context for the form component.
  */
-export interface FormContext<Values extends FormValues>
+export interface UseHeadlessFormReturn<Values extends FormValues>
   extends Omit<UseFormStateReturn<Values>, 'formState' | 'submitHelper'>, FormState<Values> {
   /**
    * Handle submit used by the component context.

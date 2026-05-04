@@ -3276,30 +3276,100 @@
         },
         "emptyui": "空组件的 UI 类重载。"
       },
+      "headless_src_components_form_core_types": {
+        "formfieldarraystates": "表单字段数组状态组件的类型信息。",
+        "formfieldstate": "说明表单核心组件的值。",
+        "formfieldvalidator": "表单字段验证器组件的类型信息。"
+      },
       "headless_src_components_form_types": {
+        "formcompactprops": {
+          "members": {
+            "controlprops": "转发到控制元素的属性。",
+            "descriptionprops": "转发到描述元素的属性。",
+            "errorprops": "属性转发到错误元素。",
+            "fieldarrayprops": "",
+            "fieldprops": "",
+            "labelprops": "转发到标签元素的属性。",
+            "orientation": ""
+          },
+          "props": "FormCompact 组件的属性"
+        },
         "formcontrolprops": {
-          "props": "表单控制组件的属性。"
+          "props": "FormControl 组件的属性。"
         },
         "formdescriptionprops": {
-          "props": "表单描述组件的属性"
+          "props": "FormDescription 组件的属性。"
         },
         "formerrorprops": {
-          "props": "表单错误组件的属性"
+          "props": "FormError 组件的属性。"
+        },
+        "formfieldarraycompactslots": {
+          "callables": {
+            "default": "默认插槽的自定义内容。",
+            "description": "自定义描述槽的内容。",
+            "label": "标签槽的自定义内容。"
+          },
+          "slots": "表单字段数组组件的属性。"
+        },
+        "formfieldbasecompactprops": {
+          "members": {
+            "controlprops": "转发到控制元素的属性。",
+            "description": "组件呈现的描述文本。",
+            "descriptionprops": "转发到描述元素的属性。",
+            "error": "错误。",
+            "errorprops": "属性转发到错误元素。",
+            "isfieldarray": "字段是否为数组。",
+            "label": "为组件呈现的文本添加标签。",
+            "labelprops": "转发到标签元素的属性。",
+            "orientation": ""
+          },
+          "props": "FormFieldBaseCompact 组件的属性"
+        },
+        "formfieldbasecompactslots": {
+          "callables": {
+            "default": "默认插槽的自定义内容。",
+            "description": "自定义描述槽的内容。",
+            "label": "标签槽的自定义内容。"
+          },
+          "slots": "FormFieldBaseCompact 组件的插槽。"
+        },
+        "formfieldcompactprops": {
+          "members": {
+            "controlprops": "转发到控制元素的属性。",
+            "description": "组件呈现的描述文本。",
+            "descriptionprops": "转发到描述元素的属性。",
+            "errorprops": "属性转发到错误元素。",
+            "label": "为组件呈现的文本添加标签。",
+            "labelprops": "转发到标签元素的属性。",
+            "name": "表单字段的名称，用于注册和数值检索。",
+            "orientation": "",
+            "reset": "重置。",
+            "validate": "验证。"
+          },
+          "props": "表单字段上下文提供的状态和方法。"
+        },
+        "formfieldcompactslots": {
+          "callables": {
+            "default": "默认插槽的自定义内容。",
+            "description": "自定义描述槽的内容。",
+            "label": "标签槽的自定义内容。"
+          },
+          "slots": "表单字段组件的插槽。"
         },
         "formfieldprops": {
           "members": {
             "error": "错误。",
             "isfieldarray": "字段是否为数组。"
           },
-          "props": "表单字段组件的属性"
+          "props": "FormField 组件的属性。"
         },
-        "formfieldui": "表单组件的 UI 类重载。",
         "formlabelprops": {
           "members": {
             "for": "标签关联元素的 id。"
           },
-          "props": "表单标签组件的属性"
-        }
+          "props": "FormLabel 组件的属性。"
+        },
+        "formui": ""
       },
       "headless_src_components_hover_card_types": {
         "hovercardcompactemits": {
@@ -3564,22 +3634,22 @@
         },
         "inputclearemits": {
           "callables": {
-            "clear": ""
+            "clear": "点击清除按钮时输出。"
           },
-          "emits": ""
+          "emits": "输入清除组件的事件。"
         },
         "inputclearprops": {
           "members": {
             "as": "该组件应呈现为的元素或组件。可被 `asChild` 改写",
             "aschild": "为作为子元素传递的元素更改默认渲染元素，合并它们的道具和行为。",
             "disabled": "组件是否禁用。",
-            "type": ""
+            "type": "按钮元素的类型。可以是 \"按钮\"、\"提交 \"或 \"重置\"。"
           },
           "props": "输入清除组件的属性。"
         },
         "inputcompactemits": {
           "callables": {
-            "clear": "",
+            "clear": "点击清除按钮时输出。",
             "update_modelvalue": "当模型值发生变化时发出。"
           },
           "emits": "输入紧凑组件的事件。"
@@ -3588,7 +3658,7 @@
           "members": {
             "autofocus": "当 \"true \"时，输入会自动聚焦。",
             "clearable": "是否显示清晰的触发器。",
-            "clearprops": "",
+            "clearprops": "属性转发到 clear 元素。",
             "controlprops": "转发到控制元素的属性。",
             "defaultvalue": "输入的默认值为",
             "disabled": "为 `true`时，阻止用户与输入进行交互。",
@@ -9687,48 +9757,28 @@
         }
       },
       "src_components_form_types": {
-        "formfieldbaseprops": {
-          "members": {
-            "class": "应用于根元素的附加类名。",
-            "controlprops": "转发到控制元素的属性。",
-            "description": "组件呈现的描述文本。",
-            "descriptionprops": "转发到描述元素的属性。",
-            "error": "错误。",
-            "errorprops": "属性转发到错误元素。",
-            "inline": "标签是否与控件内联。",
-            "isfieldarray": "字段是否为数组。",
-            "label": "为组件呈现的文本添加标签。",
-            "labelprops": "转发到标签元素的属性。",
-            "size": "组件的可视化尺寸。",
-            "ui": "组件的每个插槽类重写。"
-          },
-          "props": "表单字段基础组件的属性。"
-        },
-        "formfieldbaseslotprops": {
-          "members": {
-            "ariadescribedby": "在槽作用域中通过暴露描述的咏叹调。",
-            "ariainvalid": "aria 是否无效。",
-            "formfieldid": "在槽作用域中暴露表单字段 id。"
-          },
-          "slotprops": "表单字段基础组件的槽属性。"
-        },
         "formfieldslots": {
-          "slots": "表单字段组件的插槽。"
+          "callables": {
+            "default": "默认插槽的自定义内容。",
+            "description": "自定义描述槽的内容。",
+            "label": "标签槽的自定义内容。"
+          },
+          "slots": "FormField 组件的插槽"
         },
         "formprops": {
           "members": {
-            "class": "应用于根元素的附加类名。",
+            "class": "应用于表单元素的附加类名。",
             "controlprops": "转发到控制元素的属性。",
             "descriptionprops": "转发到描述元素的属性。",
             "errorprops": "属性转发到错误元素。",
-            "fieldarrayprops": "转发到字段数组元素的属性。",
-            "fieldprops": "转发到字段元素的属性。",
-            "inline": "标签是否与控件内联。",
+            "fieldarrayprops": "",
+            "fieldprops": "",
             "labelprops": "转发到标签元素的属性。",
+            "orientation": "",
             "size": "组件的可视化尺寸。",
             "ui": "组件的每个插槽类重写。"
           },
-          "props": "表单组件的属性"
+          "props": "FormCompact 组件的属性"
         }
       },
       "src_components_hover_card_types": {
@@ -9873,7 +9923,7 @@
             "autofocus": "当 \"true \"时，输入会自动聚焦。",
             "class": "根类",
             "clearable": "是否显示清晰的触发器。",
-            "clearprops": "",
+            "clearprops": "属性转发到 clear 元素。",
             "controlprops": "转发到控制元素的属性。",
             "defaultvalue": "输入的默认值为",
             "disabled": "为 `true`时，阻止用户与输入进行交互。",

@@ -233,10 +233,14 @@ import {
   EmptyMedia,
   EmptyRoot,
   EmptyTitle,
+  FormCompact,
   FormControl,
   FormDescription,
   FormError,
   FormField,
+  FormFieldArrayCompact,
+  FormFieldBaseCompact,
+  FormFieldCompact,
   FormLabel,
   HoverCardArrow,
   HoverCardCompact,
@@ -1175,12 +1179,20 @@ export const Empty = {
 };
 
 export const Form = {
+  Compact: FormCompact,
+  FieldCompact: FormFieldCompact,
+  FieldArrayCompact: FormFieldArrayCompact,
+  FieldBaseCompact: FormFieldBaseCompact,
   Field: FormField,
   Label: FormLabel,
   Control: FormControl,
   Description: FormDescription,
   Error: FormError
 } as {
+  Compact: typeof FormCompact;
+  FieldCompact: typeof FormFieldCompact;
+  FieldArrayCompact: typeof FormFieldArrayCompact;
+  FieldBaseCompact: typeof FormFieldBaseCompact;
   Field: typeof FormField;
   Label: typeof FormLabel;
   Control: typeof FormControl;

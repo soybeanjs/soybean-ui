@@ -211,7 +211,7 @@ playground:
       slot: 插槽
     form:
       basic: 基础
-      valibot: Valibot
+      horizontal: 水平方向
       zod: Zod
     hover-card:
       basic: 基础

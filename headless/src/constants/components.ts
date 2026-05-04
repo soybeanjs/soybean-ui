@@ -222,7 +222,17 @@ export const components = {
     'EditableCompact'
   ],
   empty: ['EmptyCompact', 'EmptyRoot', 'EmptyHeader', 'EmptyMedia', 'EmptyContent', 'EmptyTitle', 'EmptyDescription'],
-  form: ['FormField', 'FormLabel', 'FormControl', 'FormDescription', 'FormError'],
+  form: [
+    'FormCompact',
+    'FormFieldCompact',
+    'FormFieldArrayCompact',
+    'FormFieldBaseCompact',
+    'FormField',
+    'FormLabel',
+    'FormControl',
+    'FormDescription',
+    'FormError'
+  ],
   hoverCard: [
     'HoverCardRoot',
     'HoverCardTrigger',

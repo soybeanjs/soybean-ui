@@ -1,5 +1,7 @@
 <script setup lang="ts">
-import { useFormFieldUi } from './context';
+import { computed } from 'vue';
+import { useFormUi, useFormFieldUi } from './context';
+import { mergeClasses } from './shared';
 import type { FormControlProps } from './types';
 
 defineOptions({
@@ -8,7 +10,10 @@ defineOptions({
 
 defineProps<FormControlProps>();
 
-const cls = useFormFieldUi('control');
+const formCls = useFormUi('control');
+const fieldCls = useFormFieldUi('control');
+
+const cls = computed(() => mergeClasses(formCls.value, fieldCls.value));
 </script>
 
 <template>

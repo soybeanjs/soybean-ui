@@ -21,11 +21,11 @@ import type {
   FormSubmitHelper,
   FormValues,
   InferStandardSchemaInput,
-  UseFormOptions,
+  UseHeadlessFormOptions,
   UseFormStateReturn
 } from './types';
 
-export function useFormState<S extends StandardSchemaV1<FormValues, FormValues>>(options: UseFormOptions<S>) {
+export function useFormState<S extends StandardSchemaV1<FormValues, FormValues>>(options: UseHeadlessFormOptions<S>) {
   type Values = InferStandardSchemaInput<S>;
 
   const { validateOnMounted = false, validateMode = 'submit', reValidateMode = 'change' } = options;
