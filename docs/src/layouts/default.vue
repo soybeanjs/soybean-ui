@@ -8,12 +8,6 @@ const hasDocOutline = computed(() => docOutline.value.length > 0);
 const shouldReserveOutlineSpace = computed(() => !['/', '/releases'].includes(route.path));
 const shouldShowSidebar = computed(() => route.path.startsWith('/overview') || route.path.startsWith('/components'));
 
-const mobileSidebarDrawerUi = {
-  overlay: 'docs-mobile-sidebar-overlay',
-  popup: 'docs-mobile-sidebar-popup',
-  content: 'min-h-0'
-} as const;
-
 const closeDrawer = () => {
   visible.value = false;
 };
@@ -34,9 +28,16 @@ const closeDrawer = () => {
       v-if="shouldShowSidebar"
       class="md:hidden fixed top-[calc(var(--app-header)+0.5rem)] left-0 right-0 z-50 pl-2 py-1"
     >
-      <SDrawer v-model:open="visible" side="left" :ui="mobileSidebarDrawerUi">
+      <SDrawer v-model:open="visible" side="left" class="rounded-tl-none! rounded-bl-none!">
         <template #trigger>
-          <SButtonIcon icon="lucide:menu" class="text-lg" />
+          <SButtonIcon
+            variant="pure"
+            icon="lucide:menu"
+            shape="circle"
+            shadow="lg"
+            :fit-content="false"
+            class="text-lg"
+          />
         </template>
         <SiderMenu @select="closeDrawer" />
       </SDrawer>
