@@ -79,7 +79,7 @@ export default defineConfig({
     })
   ],
   ssgOptions: {
-    script: 'async',
+    script: 'sync',
     formatting: 'minify',
     beastiesOptions: {
       reduceInlineStyles: false
