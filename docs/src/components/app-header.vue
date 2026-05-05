@@ -7,18 +7,32 @@ const { t } = useI18n();
 const route = useRoute();
 const isScrolled = shallowRef(false);
 let bodyObserver: MutationObserver | null = null;
+let viewport: VisualViewport | null = null;
 
 const { version } = pkg;
 const showTopBar = computed(() => route.path !== '/');
+
+function readWindowScrollOffset() {
+  return (
+    window.scrollY ||
+    window.pageYOffset ||
+    document.scrollingElement?.scrollTop ||
+    document.documentElement.scrollTop ||
+    document.body.scrollTop ||
+    0
+  );
+}
 
 function getScrollOffset() {
   if (document.body.hasAttribute('data-scroll-lock')) {
     const top = Number.parseFloat(document.body.style.top || '0');
 
-    return Number.isNaN(top) ? 0 : Math.abs(top);
+    if (!Number.isNaN(top) && top !== 0) {
+      return Math.abs(top);
+    }
   }
 
-  return window.scrollY;
+  return readWindowScrollOffset();
 }
 
 function syncScrollState() {
@@ -26,8 +40,15 @@ function syncScrollState() {
 }
 
 onMounted(() => {
+  viewport = window.visualViewport;
   syncScrollState();
+  requestAnimationFrame(syncScrollState);
   window.addEventListener('scroll', syncScrollState, { passive: true });
+  document.addEventListener('scroll', syncScrollState, { passive: true });
+  window.addEventListener('resize', syncScrollState, { passive: true });
+  window.addEventListener('pageshow', syncScrollState);
+  viewport?.addEventListener('scroll', syncScrollState, { passive: true });
+  viewport?.addEventListener('resize', syncScrollState, { passive: true });
   bodyObserver = new MutationObserver(syncScrollState);
   bodyObserver.observe(document.body, {
     attributes: true,
@@ -37,8 +58,14 @@ onMounted(() => {
 
 onUnmounted(() => {
   window.removeEventListener('scroll', syncScrollState);
+  document.removeEventListener('scroll', syncScrollState);
+  window.removeEventListener('resize', syncScrollState);
+  window.removeEventListener('pageshow', syncScrollState);
+  viewport?.removeEventListener('scroll', syncScrollState);
+  viewport?.removeEventListener('resize', syncScrollState);
   bodyObserver?.disconnect();
   bodyObserver = null;
+  viewport = null;
 });
 </script>
 
