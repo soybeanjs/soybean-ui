@@ -33,13 +33,7 @@ const layerTitleMap: Record<'ui' | 'headless', string> = {
         <span class="text-sm font-medium text-muted-foreground">{{ layer.symbols.length }}</span>
       </div>
 
-      <SCard
-        v-for="symbol in layer.symbols"
-        :key="symbol.key"
-        size="sm"
-        split
-        class="docs-home-card-shell glass-shell docs-home-soft-shell overflow-hidden"
-      >
+      <SCard v-for="symbol in layer.symbols" :key="symbol.key" split class="docs-card overflow-hidden">
         <template #title>
           <h4 class="scroll-mt-24 text-lg font-semibold tracking-[-0.02em] text-foreground">
             <component :is="typeToVNode(symbol.displayName)" />

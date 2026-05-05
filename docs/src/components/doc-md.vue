@@ -173,13 +173,17 @@ watchEffect(() => {
 
 <template>
   <div ref="contentRef" class="min-w-0">
-    <article v-if="cp" :data-doc-path="path" class="docs-page-shell glass-shell relative min-w-0 overflow-hidden">
+    <article
+      v-if="cp"
+      :data-doc-path="path"
+      class="relative min-w-0 border border-border/50 dark:border-border rounded-xl overflow-hidden"
+    >
       <div
         aria-hidden="true"
         class="pointer-events-none absolute inset-x-0 top-0 h-36 bg-linear-to-r from-primary/8 via-warning/6 to-info/8 opacity-80"
       />
-      <div class="docs-page-grid relative min-w-0 px-5 py-6 sm:px-8 sm:py-8 xl:px-10 xl:py-10">
-        <div class="docs-prose min-w-0">
+      <div class="relative min-w-0 px-5 py-6 sm:px-8 sm:py-8 xl:px-10 xl:py-10">
+        <div class="min-w-0">
           <component :is="cp" />
         </div>
       </div>

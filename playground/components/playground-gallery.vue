@@ -32,7 +32,7 @@ const components = computed(() =>
 <template>
   <div class="space-y-5">
     <template v-for="(item, index) in components" :key="index">
-      <SCard :title="item.title" split class="glass-shell overflow-hidden">
+      <SCard :title="item.title" split class="overflow-hidden">
         <component :is="item.component" v-if="item.component" />
         <SAlert
           v-else

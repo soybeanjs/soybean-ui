@@ -40,13 +40,6 @@ interface Props<Row = any> {
 const props = defineProps<Props>();
 const { resolveApiText, t } = useApiI18n();
 
-const docsTableUi = {
-  root: 'docs-api-table-root',
-  head: 'docs-api-table-head',
-  row: 'docs-api-table-row',
-  cell: 'docs-api-table-cell'
-} as const;
-
 type TableRow = Record<string, unknown> & {
   __rowKey: string;
 };
@@ -178,15 +171,8 @@ function getDescriptionText(row: TableRow) {
 </script>
 
 <template>
-  <div class="docs-data-table glass-panel min-w-0 overflow-x-auto">
-    <STable
-      :columns="tableColumns"
-      :data="tableData"
-      :row-key="row => row.__rowKey"
-      size="sm"
-      bordered
-      :ui="docsTableUi"
-    >
+  <div class="min-w-0 overflow-x-auto">
+    <STable :columns="tableColumns" :data="tableData" :row-key="row => row.__rowKey" size="sm" bordered>
       <template #name="{ row: tableRow }">
         <div class="flex flex-wrap items-center gap-2">
           <SBadge size="xs" color="destructive" :open="Boolean(tableRow.required)">
@@ -230,7 +216,7 @@ function getDescriptionText(row: TableRow) {
       </template>
 
       <template #description="{ row: tableRow }">
-        <div class="max-w-[22rem] whitespace-pre-wrap break-words py-1 text-sm leading-6 text-muted-foreground">
+        <div class="max-w-[22rem] whitespace-pre-wrap break-words py-1 text-muted-foreground">
           {{ getDescriptionText(tableRow) }}
         </div>
       </template>
