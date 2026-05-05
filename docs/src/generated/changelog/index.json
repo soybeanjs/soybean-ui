@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-04T20:22:38.088Z",
+  "generatedAt": "2026-05-05T02:53:12.834Z",
   "schemaVersion": 1,
   "components": {
     "accordion": {
@@ -54,23 +54,23 @@
     "avatar": {
       "component": "avatar",
       "file": "avatar.json",
-      "latestVersion": null,
-      "versionCount": 0,
-      "entryCount": 0
+      "latestVersion": "v0.18.0",
+      "versionCount": 1,
+      "entryCount": 1
     },
     "backtop": {
       "component": "backtop",
       "file": "backtop.json",
-      "latestVersion": null,
-      "versionCount": 0,
-      "entryCount": 0
+      "latestVersion": "v0.18.0",
+      "versionCount": 1,
+      "entryCount": 2
     },
     "badge": {
       "component": "badge",
       "file": "badge.json",
-      "latestVersion": "v0.0.9",
-      "versionCount": 1,
-      "entryCount": 1
+      "latestVersion": "v0.18.0",
+      "versionCount": 2,
+      "entryCount": 2
     },
     "bottom-sheet": {
       "component": "bottom-sheet",
@@ -89,9 +89,9 @@
     "button": {
       "component": "button",
       "file": "button.json",
-      "latestVersion": "v0.13.3",
-      "versionCount": 2,
-      "entryCount": 2
+      "latestVersion": "v0.18.0",
+      "versionCount": 3,
+      "entryCount": 3
     },
     "calendar": {
       "component": "calendar",
@@ -110,9 +110,9 @@
     "carousel": {
       "component": "carousel",
       "file": "carousel.json",
-      "latestVersion": "v0.16.0",
-      "versionCount": 3,
-      "entryCount": 3
+      "latestVersion": "v0.18.0",
+      "versionCount": 4,
+      "entryCount": 4
     },
     "checkbox": {
       "component": "checkbox",
@@ -124,9 +124,9 @@
     "clipboard": {
       "component": "clipboard",
       "file": "clipboard.json",
-      "latestVersion": "v0.15.0",
-      "versionCount": 2,
-      "entryCount": 2
+      "latestVersion": "v0.18.0",
+      "versionCount": 3,
+      "entryCount": 3
     },
     "collapsible": {
       "component": "collapsible",
@@ -257,16 +257,16 @@
     "empty": {
       "component": "empty",
       "file": "empty.json",
-      "latestVersion": null,
-      "versionCount": 0,
-      "entryCount": 0
+      "latestVersion": "v0.18.0",
+      "versionCount": 1,
+      "entryCount": 2
     },
     "form": {
       "component": "form",
       "file": "form.json",
-      "latestVersion": "v0.15.0",
-      "versionCount": 9,
-      "entryCount": 10
+      "latestVersion": "v0.18.0",
+      "versionCount": 10,
+      "entryCount": 11
     },
     "hover-card": {
       "component": "hover-card",
@@ -278,9 +278,9 @@
     "input": {
       "component": "input",
       "file": "input.json",
-      "latestVersion": "v0.0.10",
-      "versionCount": 1,
-      "entryCount": 1
+      "latestVersion": "v0.18.0",
+      "versionCount": 2,
+      "entryCount": 3
     },
     "input-number": {
       "component": "input-number",

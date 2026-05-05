@@ -1,8 +1,35 @@
 {
   "component": "input",
-  "generatedAt": "2026-05-04T20:22:38.088Z",
+  "generatedAt": "2026-05-05T02:53:12.834Z",
   "schemaVersion": 1,
   "versions": [
+    {
+      "version": "v0.18.0",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.17.0...v0.18.0",
+      "date": "2026-05-05",
+      "entries": [
+        {
+          "type": "feature",
+          "scope": "input",
+          "summary": "add InputClear and InputCompact components with clear functionality",
+          "summaryKey": "changelog.generated.v0.18.0.9f4b2",
+          "commitHash": "9f4b2",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/9f4b293d",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "chore",
+          "scope": "input",
+          "summary": "update type attribute handling and clear trigger in SInput tests",
+          "summaryKey": "changelog.generated.v0.18.0.718f6",
+          "commitHash": "718f6",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/718f6e72",
+          "authors": ["soybeanjs", "Copilot"],
+          "source": "exact-scope"
+        }
+      ]
+    },
     {
       "version": "v0.0.10",
       "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.0.9...v0.0.10",

@@ -1,6 +1,34 @@
 {
   "component": "empty",
-  "generatedAt": "2026-05-04T20:22:38.088Z",
+  "generatedAt": "2026-05-05T02:53:12.834Z",
   "schemaVersion": 1,
-  "versions": []
+  "versions": [
+    {
+      "version": "v0.18.0",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.17.0...v0.18.0",
+      "date": "2026-05-05",
+      "entries": [
+        {
+          "type": "feature",
+          "scope": "empty",
+          "summary": "add EmptyCompact component and update empty structure",
+          "summaryKey": "changelog.generated.v0.18.0.04cb4",
+          "commitHash": "04cb4",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/04cb4c99",
+          "authors": ["soybeanfe", "Copilot"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "fix",
+          "scope": "empty",
+          "summary": "improve header visibility logic in EmptyCompact component",
+          "summaryKey": "changelog.generated.v0.18.0.8faf3",
+          "commitHash": "8faf3",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/8faf39cc",
+          "authors": ["soybeanfe", "Copilot"],
+          "source": "exact-scope"
+        }
+      ]
+    }
+  ]
 }

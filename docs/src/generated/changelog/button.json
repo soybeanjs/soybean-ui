@@ -1,8 +1,25 @@
 {
   "component": "button",
-  "generatedAt": "2026-05-04T20:22:38.088Z",
+  "generatedAt": "2026-05-05T02:53:12.834Z",
   "schemaVersion": 1,
   "versions": [
+    {
+      "version": "v0.18.0",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.17.0...v0.18.0",
+      "date": "2026-05-05",
+      "entries": [
+        {
+          "type": "optimization",
+          "scope": "button",
+          "summary": "update button props and event types for consistency",
+          "summaryKey": "changelog.generated.v0.18.0.43c2b",
+          "commitHash": "43c2b",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/43c2b24c",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope"
+        }
+      ]
+    },
     {
       "version": "v0.13.3",
       "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.13.2...v0.13.3",

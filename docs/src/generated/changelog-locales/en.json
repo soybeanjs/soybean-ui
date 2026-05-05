@@ -1067,6 +1067,53 @@
             "f6666": "enhance context and props for popover components",
             "ff4e8": "add descriptions and keys for year range picker props and emits"
           }
+        },
+        "18": {
+          "0": {
+            "19896": "keep home browse links in-page",
+            "49172": "enhance theme configurator popup styles for better visibility",
+            "00bfc": "simplify color resolution for orbs and particles",
+            "04cb4": "add EmptyCompact component and update empty structure",
+            "0b0fd": "build releases overview page",
+            "1b420": "format code",
+            "248c2": "share new component markers",
+            "294f0": "update usage and playground examples in documentation",
+            "298f8": "update component property descriptions to use component names",
+            "2b99c": "support order",
+            "2d244": "update AGENTS, instructions and README",
+            "3d56c": "update vue and vue-jsx plugins in package.json and vite.config.ts",
+            "3d7e4": "update event types from MouseEvent to PointerEvent for consistency across components",
+            "43c2b": "update button props and event types for consistency",
+            "4666c": "update click event type from MouseEvent to PointerEvent for consistency",
+            "49ceb": "add BadgeCompact component with props, emits, and slots",
+            "50e1f": "update api docs",
+            "66e8f": "update comments",
+            "718f6": "update type attribute handling and clear trigger in SInput tests",
+            "756ed": "remove vitest configuration from vite.config.ts",
+            "7be6a": "update background color variables for light and dark themes",
+            "7c85b": "update deps",
+            "7d59d": "add AvatarCompact component with props and emits",
+            "7d885": "fix docs conflict styles",
+            "80f90": "simplify size handling in date picker example",
+            "8faf3": "improve header visibility logic in EmptyCompact component",
+            "95c48": "Implement Compact components",
+            "9c6d2": "update docs api",
+            "9f4b2": "add InputClear and InputCompact components with clear functionality",
+            "a1050": "update soybean-ui guidelines for clarity and consistency",
+            "a524f": "optimize example basic file and optimize docs usage",
+            "b6b6c": "Implement compact carousel component with improved navigation and accessibility",
+            "b9763": "document changelog workflow",
+            "ca2b0": "update click event type from MouseEvent to PointerEvent for consistency",
+            "cc145": "update docs api",
+            "d4283": "reorder and organize component entries for consistency",
+            "d6a57": "add generated changelog data",
+            "d8b56": "replace demo components with PlaygroundGallery",
+            "dd6e6": "add unplugin-vue and unplugin-vue-jsx",
+            "de55a": "remove unused shortcuts from uno.config.ts",
+            "ec404": "reorder export type statements for consistency",
+            "fa0df": "update size handling in backtopVariants and computed class",
+            "ff0f3": "improve locale handling and add support for changed source keys"
+          }
         }
       }
     }

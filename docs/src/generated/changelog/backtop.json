@@ -1,6 +1,34 @@
 {
   "component": "backtop",
-  "generatedAt": "2026-05-04T20:22:38.088Z",
+  "generatedAt": "2026-05-05T02:53:12.834Z",
   "schemaVersion": 1,
-  "versions": []
+  "versions": [
+    {
+      "version": "v0.18.0",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.17.0...v0.18.0",
+      "date": "2026-05-05",
+      "entries": [
+        {
+          "type": "optimization",
+          "scope": "backtop",
+          "summary": "update size handling in backtopVariants and computed class",
+          "summaryKey": "changelog.generated.v0.18.0.fa0df",
+          "commitHash": "fa0df",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/fa0dfa26",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "optimization",
+          "scope": "backtop",
+          "summary": "update click event type from MouseEvent to PointerEvent for consistency",
+          "summaryKey": "changelog.generated.v0.18.0.4666c",
+          "commitHash": "4666c",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/4666c178",
+          "authors": ["soybeanfe", "Copilot"],
+          "source": "exact-scope"
+        }
+      ]
+    }
+  ]
 }

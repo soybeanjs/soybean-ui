@@ -1,8 +1,25 @@
 {
   "component": "carousel",
-  "generatedAt": "2026-05-04T20:22:38.088Z",
+  "generatedAt": "2026-05-05T02:53:12.834Z",
   "schemaVersion": 1,
   "versions": [
+    {
+      "version": "v0.18.0",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.17.0...v0.18.0",
+      "date": "2026-05-05",
+      "entries": [
+        {
+          "type": "feature",
+          "scope": "carousel",
+          "summary": "Implement compact carousel component with improved navigation and accessibility",
+          "summaryKey": "changelog.generated.v0.18.0.b6b6c",
+          "commitHash": "b6b6c",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/b6b6c9eb",
+          "authors": ["soybeanjs", "soybeanfe", "Copilot"],
+          "source": "exact-scope"
+        }
+      ]
+    },
     {
       "version": "v0.16.0",
       "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.15.5...v0.16.0",

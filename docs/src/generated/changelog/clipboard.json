@@ -1,8 +1,25 @@
 {
   "component": "clipboard",
-  "generatedAt": "2026-05-04T20:22:38.088Z",
+  "generatedAt": "2026-05-05T02:53:12.834Z",
   "schemaVersion": 1,
   "versions": [
+    {
+      "version": "v0.18.0",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.17.0...v0.18.0",
+      "date": "2026-05-05",
+      "entries": [
+        {
+          "type": "optimization",
+          "scope": "clipboard",
+          "summary": "update click event type from MouseEvent to PointerEvent for consistency",
+          "summaryKey": "changelog.generated.v0.18.0.ca2b0",
+          "commitHash": "ca2b0",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/ca2b0640",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope"
+        }
+      ]
+    },
     {
       "version": "v0.15.0",
       "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.14.0...v0.15.0",
