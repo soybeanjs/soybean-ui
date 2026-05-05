@@ -1,5 +1,108 @@
 # Changelog
 
+## [v0.18.0](https://github.com/soybeanjs/soybean-ui/compare/v0.17.0...v0.18.0) (2026-05-05)
+
+### &nbsp;&nbsp;&nbsp;🚀 Features
+
+- **api**:
+  - update event types from MouseEvent to PointerEvent for consistency across components &nbsp;-&nbsp; by **soybeanfe** [<samp>(3d7e4)</samp>](https://github.com/soybeanjs/soybean-ui/commit/3d7e4e63)
+- **avatar**:
+  - add AvatarCompact component with props and emits &nbsp;-&nbsp; by @soybeanjs [<samp>(7d59d)</samp>](https://github.com/soybeanjs/soybean-ui/commit/7d59d36a)
+- **badge**:
+  - add BadgeCompact component with props, emits, and slots &nbsp;-&nbsp; by @soybeanjs [<samp>(49ceb)</samp>](https://github.com/soybeanjs/soybean-ui/commit/49ceb52f)
+- **carousel**:
+  - Implement compact carousel component with improved navigation and accessibility &nbsp;-&nbsp; by @soybeanjs, **soybeanfe** and **Copilot** [<samp>(b6b6c)</samp>](https://github.com/soybeanjs/soybean-ui/commit/b6b6c9eb)
+- **docs**:
+  - update AGENTS, instructions and README &nbsp;-&nbsp; by @soybeanjs and **Copilot** [<samp>(2d244)</samp>](https://github.com/soybeanjs/soybean-ui/commit/2d244313)
+  - add generated changelog data &nbsp;-&nbsp; by @soybeanjs [<samp>(d6a57)</samp>](https://github.com/soybeanjs/soybean-ui/commit/d6a57f65)
+  - build releases overview page &nbsp;-&nbsp; by @soybeanjs [<samp>(0b0fd)</samp>](https://github.com/soybeanjs/soybean-ui/commit/0b0fd9e8)
+- **empty**:
+  - add EmptyCompact component and update empty structure &nbsp;-&nbsp; by **soybeanfe** and **Copilot** [<samp>(04cb4)</samp>](https://github.com/soybeanjs/soybean-ui/commit/04cb4c99)
+- **form**:
+  - Implement Compact components &nbsp;-&nbsp; by @soybeanjs, **soybeanfe** and **Copilot** [<samp>(95c48)</samp>](https://github.com/soybeanjs/soybean-ui/commit/95c484e8)
+- **input**:
+  - add InputClear and InputCompact components with clear functionality &nbsp;-&nbsp; by **soybeanfe** [<samp>(9f4b2)</samp>](https://github.com/soybeanjs/soybean-ui/commit/9f4b293d)
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- **docs**: keep home browse links in-page &nbsp;-&nbsp; by @soybeanjs [<samp>(19896)</samp>](https://github.com/soybeanjs/soybean-ui/commit/198961a2)
+- **empty**: improve header visibility logic in EmptyCompact component &nbsp;-&nbsp; by **soybeanfe** and **Copilot** [<samp>(8faf3)</samp>](https://github.com/soybeanjs/soybean-ui/commit/8faf39cc)
+
+### &nbsp;&nbsp;&nbsp;🛠 Optimizations
+
+- **api-i18n**:
+  - improve locale handling and add support for changed source keys &nbsp;-&nbsp; by @soybeanjs [<samp>(ff0f3)</samp>](https://github.com/soybeanjs/soybean-ui/commit/ff0f3eec)
+- **backtop**:
+  - update size handling in backtopVariants and computed class &nbsp;-&nbsp; by @soybeanjs [<samp>(fa0df)</samp>](https://github.com/soybeanjs/soybean-ui/commit/fa0dfa26)
+  - update click event type from MouseEvent to PointerEvent for consistency &nbsp;-&nbsp; by **soybeanfe** and **Copilot** [<samp>(4666c)</samp>](https://github.com/soybeanjs/soybean-ui/commit/4666c178)
+- **button**:
+  - update button props and event types for consistency &nbsp;-&nbsp; by **soybeanfe** [<samp>(43c2b)</samp>](https://github.com/soybeanjs/soybean-ui/commit/43c2b24c)
+- **clipboard**:
+  - update click event type from MouseEvent to PointerEvent for consistency &nbsp;-&nbsp; by **soybeanfe** [<samp>(ca2b0)</samp>](https://github.com/soybeanjs/soybean-ui/commit/ca2b0640)
+- **components**:
+  - reorder and organize component entries for consistency &nbsp;-&nbsp; by **soybeanfe** [<samp>(d4283)</samp>](https://github.com/soybeanjs/soybean-ui/commit/d4283522)
+- **docs**:
+  - update usage and playground examples in documentation &nbsp;-&nbsp; by @soybeanjs [<samp>(294f0)</samp>](https://github.com/soybeanjs/soybean-ui/commit/294f04a3)
+- **playground**:
+  - simplify size handling in date picker example &nbsp;-&nbsp; by @soybeanjs [<samp>(80f90)</samp>](https://github.com/soybeanjs/soybean-ui/commit/80f90e61)
+- **projects**:
+  - update comments &nbsp;-&nbsp; by @soybeanjs [<samp>(66e8f)</samp>](https://github.com/soybeanjs/soybean-ui/commit/66e8f793)
+
+### &nbsp;&nbsp;&nbsp;💅 Refactors
+
+- **components**:
+  - reorder export type statements for consistency &nbsp;-&nbsp; by **soybeanfe** [<samp>(ec404)</samp>](https://github.com/soybeanjs/soybean-ui/commit/ec404151)
+- **config**:
+  - remove unused shortcuts from uno.config.ts &nbsp;-&nbsp; by @soybeanjs [<samp>(de55a)</samp>](https://github.com/soybeanjs/soybean-ui/commit/de55ae12)
+- **docs**:
+  - share new component markers &nbsp;-&nbsp; by @soybeanjs [<samp>(248c2)</samp>](https://github.com/soybeanjs/soybean-ui/commit/248c269d)
+- **playground**:
+  - replace demo components with PlaygroundGallery &nbsp;-&nbsp; by @soybeanjs [<samp>(d8b56)</samp>](https://github.com/soybeanjs/soybean-ui/commit/d8b560cb)
+  - support order &nbsp;-&nbsp; by @soybeanjs and **Copilot** [<samp>(2b99c)</samp>](https://github.com/soybeanjs/soybean-ui/commit/2b99c403)
+- **projects**:
+  - optimize example basic file and optimize docs usage &nbsp;-&nbsp; by **soybeanfe** and **Copilot** [<samp>(a524f)</samp>](https://github.com/soybeanjs/soybean-ui/commit/a524f55c)
+- **types**:
+  - update component property descriptions to use component names &nbsp;-&nbsp; by @soybeanjs [<samp>(298f8)</samp>](https://github.com/soybeanjs/soybean-ui/commit/298f86cb)
+
+### &nbsp;&nbsp;&nbsp;📖 Documentation
+
+- **AGENTS**:
+  - update soybean-ui guidelines for clarity and consistency &nbsp;-&nbsp; by @soybeanjs and **Copilot** [<samp>(a1050)</samp>](https://github.com/soybeanjs/soybean-ui/commit/a1050fbb)
+- **api**:
+  - update api docs &nbsp;-&nbsp; by @soybeanjs [<samp>(50e1f)</samp>](https://github.com/soybeanjs/soybean-ui/commit/50e1ffbc)
+  - update docs api &nbsp;-&nbsp; by @soybeanjs [<samp>(9c6d2)</samp>](https://github.com/soybeanjs/soybean-ui/commit/9c6d27e6)
+  - update docs api &nbsp;-&nbsp; by @soybeanjs [<samp>(cc145)</samp>](https://github.com/soybeanjs/soybean-ui/commit/cc145a50)
+- **repo**:
+  - document changelog workflow &nbsp;-&nbsp; by @soybeanjs [<samp>(b9763)</samp>](https://github.com/soybeanjs/soybean-ui/commit/b9763f22)
+
+### &nbsp;&nbsp;&nbsp;🏡 Chore
+
+- **config**:
+  - remove vitest configuration from vite.config.ts &nbsp;-&nbsp; by **soybeanfe** [<samp>(756ed)</samp>](https://github.com/soybeanjs/soybean-ui/commit/756ed4dd)
+- **deps**:
+  - update vue and vue-jsx plugins in package.json and vite.config.ts &nbsp;-&nbsp; by @soybeanjs [<samp>(3d56c)</samp>](https://github.com/soybeanjs/soybean-ui/commit/3d56c38f)
+  - add unplugin-vue and unplugin-vue-jsx &nbsp;-&nbsp; by **soybeanfe** [<samp>(dd6e6)</samp>](https://github.com/soybeanjs/soybean-ui/commit/dd6e61c3)
+  - update deps &nbsp;-&nbsp; by @soybeanjs [<samp>(7c85b)</samp>](https://github.com/soybeanjs/soybean-ui/commit/7c85b351)
+
+### &nbsp;&nbsp;&nbsp;✅ Tests
+
+- **input**: update type attribute handling and clear trigger in SInput tests &nbsp;-&nbsp; by @soybeanjs and **Copilot** [<samp>(718f6)</samp>](https://github.com/soybeanjs/soybean-ui/commit/718f6e72)
+
+### &nbsp;&nbsp;&nbsp;🎨 Styles
+
+- **docs**:
+  - fix docs conflict styles &nbsp;-&nbsp; by @soybeanjs [<samp>(7d885)</samp>](https://github.com/soybeanjs/soybean-ui/commit/7d8851c0)
+  - update background color variables for light and dark themes &nbsp;-&nbsp; by @soybeanjs and **Copilot** [<samp>(7be6a)</samp>](https://github.com/soybeanjs/soybean-ui/commit/7be6a158)
+  - enhance theme configurator popup styles for better visibility &nbsp;-&nbsp; by @soybeanjs and **Copilot** [<samp>(49172)</samp>](https://github.com/soybeanjs/soybean-ui/commit/49172a39)
+  - simplify color resolution for orbs and particles &nbsp;-&nbsp; by @soybeanjs and **Copilot** [<samp>(00bfc)</samp>](https://github.com/soybeanjs/soybean-ui/commit/00bfcf64)
+- **projects**:
+  - format code &nbsp;-&nbsp; by @soybeanjs [<samp>(1b420)</samp>](https://github.com/soybeanjs/soybean-ui/commit/1b4201b0)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;
+[Copilot](mailto:copilot@github.com),&nbsp;[soybeanfe](mailto:honghuangdc@gmail.com)
+
 ## [v0.17.0](https://github.com/soybeanjs/soybean-ui/compare/v0.16.0...v0.17.0) (2026-05-03)
 
 ### &nbsp;&nbsp;&nbsp;🚀 Features
