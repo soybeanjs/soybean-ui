@@ -39,11 +39,6 @@ function copyCodePlugin(md: MarkdownExit) {
 
     const rendered = origFence ? origFence(tokens, idx, options, env, slf) : slf.renderToken(tokens, idx, options);
 
-    // Let specialized fence plugins fully control their own blocks
-    if (info === 'playground' || info === 'usage' || info === 'mermaid') {
-      return rendered;
-    }
-
     return wrapWithCopyButton(rendered, info, token.content);
   };
 }
