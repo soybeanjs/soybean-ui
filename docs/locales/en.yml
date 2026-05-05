@@ -701,6 +701,8 @@ releases_page:
     compare_release: Compare release
     full_changelog: Full changelog
     browse_components: Browse components
+    view_full_release: View full release
+    collapse_release: Collapse full release
   empty:
     title: No release data yet
     desc: Run the changelog generation command to populate this page.

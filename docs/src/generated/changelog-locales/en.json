@@ -1101,7 +1101,7 @@
             "9f4b2": "add InputClear and InputCompact components with clear functionality",
             "a1050": "update soybean-ui guidelines for clarity and consistency",
             "a524f": "optimize example basic file and optimize docs usage",
-            "b6b6c": "Implement compact carousel component with improved navigation and accessibility",
+            "b6b6c": "Implement CarouselCompact component with improved navigation and accessibility",
             "b9763": "document changelog workflow",
             "ca2b0": "update click event type from MouseEvent to PointerEvent for consistency",
             "cc145": "update docs api",

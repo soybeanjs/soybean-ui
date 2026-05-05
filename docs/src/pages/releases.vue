@@ -14,6 +14,7 @@ const releases = computed(() => releaseDocument.value.releases);
 const componentQuery = ref('');
 const onlyComponentRelated = ref(false);
 const isFilterInputFocused = ref(false);
+const expandedReleaseVersions = ref<string[]>([]);
 const routeComponentQuery = computed(() => resolveRouteComponentQuery(route.query.component));
 const routeOnlyComponentRelated = computed(() => resolveRouteOnlyComponentRelated(route.query.related));
 const normalizedComponentQuery = computed(() => normalizeSearchValue(componentQuery.value));
@@ -152,12 +153,24 @@ function getHighlightedEntries(release: GeneratedReleaseChangelogVersion) {
   return release.entries.slice(0, highlightedEntryCount);
 }
 
+function getDisplayedEntries(release: GeneratedReleaseChangelogVersion) {
+  if (isReleaseExpanded(release.version)) {
+    return release.entries;
+  }
+
+  return getHighlightedEntries(release);
+}
+
 function getHighlightedComponents(release: GeneratedReleaseChangelogVersion) {
   return release.components.slice(0, highlightedComponentCount);
 }
 
 function getRemainingEntryCount(release: GeneratedReleaseChangelogVersion) {
   return Math.max(release.entries.length - highlightedEntryCount, 0);
+}
+
+function hasHiddenEntries(release: GeneratedReleaseChangelogVersion) {
+  return getRemainingEntryCount(release) > 0;
 }
 
 function getRemainingComponentCount(release: GeneratedReleaseChangelogVersion) {
@@ -174,6 +187,20 @@ function normalizeSearchValue(value: string) {
 
 function formatComponentLabel(component: string) {
   return pascalCase(component);
+}
+
+function isReleaseExpanded(version: string) {
+  return expandedReleaseVersions.value.includes(version);
+}
+
+function toggleReleaseExpanded(version: string) {
+  if (isReleaseExpanded(version)) {
+    expandedReleaseVersions.value = expandedReleaseVersions.value.filter(item => item !== version);
+
+    return;
+  }
+
+  expandedReleaseVersions.value = [...expandedReleaseVersions.value, version];
 }
 
 function applyComponentFilter(component: string) {
@@ -617,7 +644,7 @@ watch([normalizedComponentQuery, onlyComponentRelated], ([component, related]) =
 
                     <div class="space-y-3">
                       <div
-                        v-for="entry in getHighlightedEntries(release)"
+                        v-for="entry in getDisplayedEntries(release)"
                         :key="`${release.version}-${entry.commitHash ?? entry.summary}`"
                         class="glass-panel space-y-3 rounded-2xl px-4 py-4"
                       >
@@ -664,9 +691,31 @@ watch([normalizedComponentQuery, onlyComponentRelated], ([component, related]) =
                       </div>
                     </div>
 
-                    <p v-if="getRemainingEntryCount(release)" class="text-sm text-muted-foreground">
-                      {{ t('releases_page.more_entries', { count: getRemainingEntryCount(release) }) }}
-                    </p>
+                    <div
+                      v-if="hasHiddenEntries(release) || isReleaseExpanded(release.version)"
+                      class="flex flex-wrap items-center gap-3"
+                    >
+                      <p
+                        v-if="!isReleaseExpanded(release.version) && getRemainingEntryCount(release)"
+                        class="text-sm text-muted-foreground"
+                      >
+                        {{ t('releases_page.more_entries', { count: getRemainingEntryCount(release) }) }}
+                      </p>
+
+                      <SButton
+                        size="sm"
+                        variant="ghost"
+                        shape="rounded"
+                        class="docs-home-button docs-home-button-subtle"
+                        @click="toggleReleaseExpanded(release.version)"
+                      >
+                        {{
+                          isReleaseExpanded(release.version)
+                            ? t('releases_page.actions.collapse_release')
+                            : t('releases_page.actions.view_full_release')
+                        }}
+                      </SButton>
+                    </div>
                   </div>
                 </div>
               </template>

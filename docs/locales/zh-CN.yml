@@ -697,6 +697,8 @@ releases_page:
     compare_release: 对比版本
     full_changelog: 完整 Changelog
     browse_components: 浏览组件
+    view_full_release: 查看完整内容
+    collapse_release: 收起完整内容
   empty:
     title: 暂无发布数据
     desc: 运行 changelog 生成命令后，这个页面会自动展示版本汇总内容。

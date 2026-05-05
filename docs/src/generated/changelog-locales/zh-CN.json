@@ -1101,7 +1101,7 @@
             "9f4b2": "新增 InputClear 与 InputCompact 组件，支持清除功能",
             "a1050": "更新 soybean-ui 指南，提升清晰度与一致性",
             "a524f": "优化基础示例文件并改进文档用法",
-            "b6b6c": "实现紧凑型 Carousel 组件，改进导航与可访问性",
+            "b6b6c": "实现 CarouselCompact 组件，改进导航与可访问性",
             "b9763": "文档化 changelog 工作流",
             "ca2b0": "将点击事件类型从 MouseEvent 更新为 PointerEvent，保持一致性",
             "cc145": "更新文档 API",
