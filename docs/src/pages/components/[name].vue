@@ -44,17 +44,24 @@ const sectionLinks = computed(() => {
   }));
 });
 
+interface ActionLink {
+  label: string;
+  href?: string;
+  to?: string;
+  target?: '_self' | '_blank';
+}
+
 const actionLinks = computed(() => {
-  const links = [
+  const links: ActionLink[] = [
     {
       label: t('component_detail.actions.demos'),
       href: `#${toHeadingId(t('component_detail.sections.demos'))}`,
-      target: '_self' as const
+      target: '_self'
     },
     {
       label: t('component_detail.actions.api'),
       href: `#${toHeadingId(t('component_detail.sections.api'))}`,
-      target: '_self' as const
+      target: '_self'
     }
   ];
 
@@ -62,13 +69,13 @@ const actionLinks = computed(() => {
     links.push({
       label: t('component_detail.actions.changelog'),
       href: `#${changelogSectionId.value}`,
-      target: '_self' as const
+      target: '_self'
     });
   }
 
   links.push({
     label: t('component_detail.actions.catalog'),
-    href: '/components',
+    to: '/components',
     target: '_self'
   });
 
@@ -115,7 +122,9 @@ function onLoaded(isSuccess: boolean) {
 
 <template>
   <div class="mx-auto max-w-screen-2xl space-y-6 pb-8">
-    <section class="docs-hero-shell glass-shell relative overflow-hidden px-6 py-7 sm:px-8 sm:py-9 xl:px-10">
+    <section
+      class="relative overflow-hidden px-6 py-7 border border-border/50 dark:border-border rounded-xl sm:px-8 sm:py-9 xl:px-10"
+    >
       <div
         class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,hsl(var(--primary-400)/0.12),transparent_30%),radial-gradient(circle_at_bottom_left,hsl(var(--primary-700)/0.07),transparent_28%)]"
       />
@@ -123,7 +132,7 @@ function onLoaded(isSuccess: boolean) {
       <div class="relative grid gap-8 xl:grid-cols-[minmax(0,1.12fr)_22rem] xl:items-start">
         <div class="space-y-5">
           <div
-            class="glass-chip inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.18em] text-muted-foreground"
+            class="inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.18em] text-muted-foreground"
           >
             <SIcon icon="lucide:component" class="text-sm text-primary" />
             <span>{{ t('component_detail.kicker') }}</span>
@@ -149,13 +158,13 @@ function onLoaded(isSuccess: boolean) {
             </div>
 
             <div class="grid gap-3 sm:grid-cols-2 xl:max-w-2xl">
-              <div class="glass-panel px-4 py-3">
+              <div class="docs-subtle-card px-4 py-3">
                 <div class="text-[11px] font-semibold uppercase tracking-[0.16em] text-muted-foreground">
                   {{ t('component_detail.meta.category') }}
                 </div>
                 <div class="mt-2 text-sm font-medium text-foreground">{{ currentGroupLabel }}</div>
               </div>
-              <div class="glass-panel px-4 py-3">
+              <div class="docs-subtle-card px-4 py-3">
                 <div class="text-[11px] font-semibold uppercase tracking-[0.16em] text-muted-foreground">
                   {{ t('component_detail.meta.import') }}
                 </div>
@@ -164,17 +173,18 @@ function onLoaded(isSuccess: boolean) {
             </div>
           </div>
 
-          <div class="flex flex-wrap gap-3">
+          <div class="grid grid-cols-2 gap-3 lt-md:grid-cols-1">
             <SButtonLink
               v-for="action in actionLinks"
               :key="action.label"
               :href="action.href"
+              :to="action.to"
               :target="action.target"
               size="lg"
-              variant="ghost"
+              color="accent"
+              :variant="action.href ? 'ghost' : 'pure'"
               shape="rounded"
-              class="docs-home-button group min-w-36"
-              :class="action.href ? 'docs-home-button-subtle' : 'docs-home-button-primary'"
+              class="group justify-between"
             >
               {{ action.label }}
               <SIcon
@@ -185,27 +195,22 @@ function onLoaded(isSuccess: boolean) {
           </div>
         </div>
 
-        <SCard
-          :title="t('component_detail.quick_jump.title')"
-          split
-          class="glass-shell docs-home-soft-shell docs-home-soft-shell docs-home-card-shell overflow-hidden"
-        >
+        <SCard :title="t('component_detail.quick_jump.title')" split class="docs-card overflow-hidden">
           <template #default>
             <div class="space-y-5">
               <div class="grid gap-2.5">
-                <SLink
+                <SButtonLink
                   v-for="link in sectionLinks"
                   :key="link.label"
                   :href="link.href"
                   :target="link.target"
-                  class="glass-panel glass-hover-lift group flex items-center justify-between rounded-xl px-3.5 py-3 text-sm font-medium text-foreground hover:border-primary/35 hover:text-primary"
+                  variant="ghost"
+                  color="accent"
+                  class="justify-between"
                 >
                   <span>{{ link.label }}</span>
-                  <SIcon
-                    icon="lucide:arrow-right"
-                    class="text-sm text-muted-foreground transition-colors group-hover:text-primary"
-                  />
-                </SLink>
+                  <SIcon icon="lucide:arrow-right" class="text-sm text-muted-foreground" />
+                </SButtonLink>
               </div>
 
               <div class="space-y-3 border-t border-border/60 pt-4">
@@ -219,14 +224,15 @@ function onLoaded(isSuccess: boolean) {
                 </div>
 
                 <div class="flex flex-wrap gap-2">
-                  <SLink
+                  <SButtonLink
                     v-for="component in relatedComponents"
                     :key="component.key"
                     :to="component.to"
-                    class="docs-home-name-pill rounded-full px-3 py-1.5 text-sm text-foreground transition-colors duration-200 hover:border-primary/35 hover:text-primary"
+                    shape="rounded"
+                    variant="pure"
                   >
                     {{ component.label }}
-                  </SLink>
+                  </SButtonLink>
                 </div>
               </div>
             </div>
@@ -237,16 +243,12 @@ function onLoaded(isSuccess: boolean) {
 
     <DocMd :path="path" @loaded="onLoaded" />
 
-    <section
-      v-if="hasChangelog"
-      :id="changelogSectionId"
-      class="docs-page-shell glass-shell relative min-w-0 overflow-hidden"
-    >
+    <section v-if="hasChangelog" :id="changelogSectionId" class="relative min-w-0 overflow-hidden">
       <div
         aria-hidden="true"
         class="pointer-events-none absolute inset-x-0 top-0 h-36 bg-linear-to-r from-primary/8 via-warning/6 to-info/8 opacity-80"
       />
-      <div class="docs-page-grid relative min-w-0 px-5 py-6 sm:px-8 sm:py-8 xl:px-10 xl:py-10">
+      <div class="relative min-w-0 px-5 py-6 sm:px-8 sm:py-8 xl:px-10 xl:py-10">
         <div class="min-w-0 space-y-6">
           <div class="space-y-2">
             <h2 class="scroll-mt-24 text-3xl font-black tracking-[-0.04em] text-foreground">

@@ -42,17 +42,14 @@ const menus = computed<HeaderNavItem[]>(() => [
 </script>
 
 <template>
-  <nav
-    class="docs-header-nav"
-    :class="orientation === 'vertical' ? 'flex flex-col items-stretch gap-2' : 'flex w-fit items-center gap-2'"
-  >
+  <nav :class="orientation === 'vertical' ? 'flex flex-col items-stretch gap-2' : 'flex w-fit items-center gap-2'">
     <SLink
       v-for="item in menus"
       :key="item.value"
       :to="item.to"
       :aria-current="item.isActive ? 'page' : undefined"
-      class="docs-header-nav-link flex items-center gap-2 rounded-md px-2 py-1.5 font-medium outline-none decoration-none"
-      :class="item.isActive ? 'docs-header-nav-link-active text-primary! font-semibold dark:text-primary!' : ''"
+      class="flex items-center gap-2 rounded-md px-2 py-1.5 font-medium outline-none decoration-none hover:bg-accent focus-visible:ring-3 focus-visible:ring-primary/30 focus-visible:ring-offset-3"
+      :class="item.isActive ? 'text-primary font-semibold bg-accent' : ''"
     >
       <SIcon :icon="item.icon" class="text-base" />
       <span>{{ item.label }}</span>

@@ -34,7 +34,13 @@ const onSelectLocale = async (item: MenuOptionData<string>) => {
 </script>
 
 <template>
-  <SDropdownMenuRadio :model-value="locale" :items="items" indicator-position="end" @select="onSelectLocale">
+  <SDropdownMenuRadio
+    :modal="false"
+    :model-value="locale"
+    :items="items"
+    indicator-position="end"
+    @select="onSelectLocale"
+  >
     <template #trigger>
       <SButtonIcon icon="lucide:languages" size="lg" />
     </template>

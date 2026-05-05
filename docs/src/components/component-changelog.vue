@@ -85,7 +85,7 @@ function resolveSummary(summary: string, summaryKey: string | null) {
           :key="`${version.version}-${entry.commitHash ?? entry.summary}`"
           size="sm"
           split
-          class="docs-home-card-shell glass-shell docs-home-soft-shell overflow-hidden"
+          class="docs-card overflow-hidden"
         >
           <template #title>
             <div class="flex flex-wrap items-center gap-2.5">

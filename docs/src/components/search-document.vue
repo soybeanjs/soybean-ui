@@ -5,11 +5,9 @@ import { kebabCase, pascalCase } from '@soybeanjs/utils';
 import { components } from '../../../src/constants/components';
 
 defineOptions({
-  name: 'SearchDocument',
-  inheritAttrs: false
+  name: 'SearchDocument'
 });
 
-const attrs = useAttrs();
 const router = useRouter();
 const { t } = useI18n();
 const keys = useMagicKeys();
@@ -79,36 +77,18 @@ function handleSelect(item: SelectEvent<string>) {
 </script>
 
 <template>
-  <SDialog
-    v-model:open="searchOpen"
-    pure
-    :show-close="false"
-    :ui="{ overlay: 'docs-floating-overlay', popup: 'docs-command-dialog' }"
-  >
+  <SDialog v-model:open="searchOpen" pure :show-close="false">
     <template #trigger>
-      <div
-        v-bind="attrs"
-        class="docs-search-trigger flex items-center gap-2 px-3 py-1.5 rounded-lg text-sm cursor-pointer transition-colors"
-      >
+      <SButton color="accent" variant="soft">
         <SIcon icon="lucide:search" class="text-base" />
-        <span class="placeholder">{{ t('layout.header.search') }}</span>
+        <span class="lt-md:hidden">{{ t('layout.header.search') }}</span>
         <SKbd :value="['command', 'k']" class="ml-auto" />
-      </div>
+      </SButton>
     </template>
 
     <SCommand
       v-model:search-term="search"
-      class="docs-command-surface border rounded-lg shadow-md"
-      :ui="{
-        root: 'docs-command-root px-2',
-        list: 'docs-command-list',
-        inputRoot: 'docs-command-input-root',
-        inputControl: 'docs-command-input-control px-3',
-        item: 'docs-command-item',
-        group: 'docs-command-group',
-        groupLabel: 'docs-command-group-label',
-        empty: 'docs-command-empty'
-      }"
+      class="border rounded-lg shadow-md"
       :items="searched"
       :input-props="{ placeholder: t('layout.header.search') }"
       :empty-label="t('layout.header.search_empty')"
@@ -118,7 +98,7 @@ function handleSelect(item: SelectEvent<string>) {
         <SIcon icon="lucide:arrow-right" />
       </template>
       <template #bottom>
-        <div class="docs-command-footer flex-y-center gap-2 h-10 px-4 border-t border-solid">
+        <div class="flex-y-center gap-2 h-10 px-4 border-t border-solid">
           <SKbd value="enter" />
           <span>Go to Page</span>
         </div>

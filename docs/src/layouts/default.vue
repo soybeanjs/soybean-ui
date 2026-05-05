@@ -21,7 +21,7 @@ const closeDrawer = () => {
 
 <template>
   <div
-    class="docs-frosted-app [--app-header-main:3.75rem] [--app-topbar:0rem] md:[--app-topbar:2.75rem] [--app-header:calc(var(--app-header-main)+var(--app-topbar))] min-h-full pt-[--app-header] text-sm"
+    class="[--app-header-main:3.75rem] [--app-topbar:0rem] md:[--app-topbar:2.75rem] [--app-header:calc(var(--app-header-main)+var(--app-topbar))] min-h-full pt-[--app-header] text-sm"
   >
     <AppHeader />
     <div
@@ -32,13 +32,13 @@ const closeDrawer = () => {
     </div>
     <div
       v-if="shouldShowSidebar"
-      class="docs-mobile-nav-shell md:hidden fixed top-[--app-header] left-0 right-0 z-50 pl-2 py-1 border-b"
+      class="md:hidden fixed top-[calc(var(--app-header)+0.5rem)] left-0 right-0 z-50 pl-2 py-1"
     >
       <SDrawer v-model:open="visible" side="left" :ui="mobileSidebarDrawerUi">
         <template #trigger>
           <SButtonIcon icon="lucide:menu" class="text-lg" />
         </template>
-        <SiderMenu shell-class="docs-mobile-sidebar-shell" @select="closeDrawer" />
+        <SiderMenu @select="closeDrawer" />
       </SDrawer>
     </div>
     <div
@@ -58,7 +58,9 @@ const closeDrawer = () => {
             class="fixed top-[calc(var(--app-header)+1.25rem)] right-8 z-40 w-72 transition-opacity duration-200"
             :class="hasDocOutline ? 'opacity-100' : 'pointer-events-none opacity-0'"
           >
-            <div class="docs-outline-shell glass-shell max-h-[calc(100vh-var(--app-header)-2.5rem)] overflow-auto p-3">
+            <div
+              class="max-h-[calc(100vh-var(--app-header)-2.5rem)] overflow-auto border border-border/50 dark:border-border p-3 rounded-xl"
+            >
               <SAnchor :items="docOutline" size="sm" :offset-top="124" :target-offset="124" />
             </div>
           </div>

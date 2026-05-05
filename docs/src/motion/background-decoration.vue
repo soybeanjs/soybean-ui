@@ -22,13 +22,25 @@ const orbs = [
   }
 ];
 
-const particleTones: PrimaryTone[] = ['400', '500', '600', '700', '500', '600', '400', '700', '600', '500', '400'];
+// Tech Particles 配置
+const particleColors = [
+  'bg-primary',
+  'bg-purple-500',
+  'bg-cyan-500',
+  'bg-pink-500',
+  'bg-indigo-500',
+  'bg-teal-500',
+  'bg-rose-500',
+  'bg-amber-500',
+  'bg-emerald-500'
+];
 
-const particleSizes = ['w-1 h-1', 'w-1.5 h-1.5', 'w-2 h-2'];
+const particleSizes = ['w-2 h-2', 'w-2.5 h-2.5', 'w-3 h-3'];
 
-const gridCols = 4;
+// 生成9个粒子，使用3x3网格均匀分布
+const gridCols = 3;
 const gridRows = 3;
-const totalParticles = particleTones.length;
+const totalParticles = gridCols * gridRows;
 
 const particles = computed(() => {
   return Array.from({ length: totalParticles }, (_, index) => {
@@ -39,14 +51,15 @@ const particles = computed(() => {
     const leftPercent = 10 + col * (80 / (gridCols - 1));
     const topPercent = 10 + row * (80 / (gridRows - 1));
 
-    const tone = particleTones[index % particleTones.length];
+    // 随机选择颜色和大小
+    const color = particleColors[index % particleColors.length];
     const size = particleSizes[index % particleSizes.length];
 
     // 延迟时间（0-2000ms之间，每个粒子间隔约200ms）
     const delay = index * 200;
 
     return {
-      background: resolvePrimaryTone(tone, 0.22),
+      color,
       size,
       left: leftPercent,
       top: topPercent,
@@ -57,13 +70,14 @@ const particles = computed(() => {
 </script>
 
 <template>
-  <div class="bg-decoration absolute inset-0 overflow-hidden pointer-events-none select-none">
+  <div class="bg-decoration fixed inset-0 overflow-hidden pointer-events-none select-none">
     <!-- Grid Background -->
     <div
-      class="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]"
+      class="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"
     />
 
     <!-- Floating Orbs -->
+
     <div
       v-for="(orb, index) in orbs"
       :key="index"
@@ -77,18 +91,17 @@ const particles = computed(() => {
     />
 
     <!-- Tech Particles / Accents -->
-    <div class="absolute inset-0 opacity-30 dark:opacity-20">
+    <div class="absolute inset-0 opacity-55 dark:opacity-40">
       <div
         v-for="(particle, index) in particles"
         :key="index"
         :style="{
-          background: particle.background,
           left: `${particle.left}%`,
           top: `${particle.top}%`,
           animationDelay: `${particle.delay}ms`
         }"
         class="absolute rounded-full animate-ping will-change-transform"
-        :class="particle.size"
+        :class="[particle.size, particle.color]"
       />
     </div>
   </div>

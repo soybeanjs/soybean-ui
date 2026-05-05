@@ -11,10 +11,6 @@ let bodyObserver: MutationObserver | null = null;
 const { version } = pkg;
 const showTopBar = computed(() => route.path !== '/');
 
-const headerMenuPopoverUi = {
-  popup: 'docs-header-popover'
-} as const;
-
 function getScrollOffset() {
   if (document.body.hasAttribute('data-scroll-lock')) {
     const top = Number.parseFloat(document.body.style.top || '0');
@@ -49,9 +45,11 @@ onUnmounted(() => {
 <template>
   <header
     :data-scrolled="isScrolled"
-    class="docs-header-shell fixed top-0 left-0 right-0 z-49 px-4 transition-all duration-300 sm:px-6"
+    class="docs-header-shell group fixed top-0 left-0 right-0 z-49 px-4 transition-all-800 data-[scrolled=true]:top-3 sm:px-6"
   >
-    <div class="docs-header-frame mx-auto flex max-w-360 items-center justify-between gap-3 px-6 py-3 xl:gap-4">
+    <div
+      class="docs-header-frame mx-auto flex max-w-360 min-h-[--app-header-main] items-center justify-between gap-3 px-6 py-3 group-data-[scrolled=true]:min-h-0 lt-md:group-data-[scrolled=true]:py-2 transition-all-300 xl:gap-4"
+    >
       <div class="flex min-w-0 items-center gap-4 lg:gap-6 xl:gap-8">
         <SLink to="/" class="group flex items-center gap-3">
           <AppLogo class="size-8 transition-transform duration-300 group-hover:scale-110" />
@@ -61,7 +59,7 @@ onUnmounted(() => {
             {{ t('components.home.title') }}
           </h1>
         </SLink>
-        <SearchDocument class="lt-xl:!hidden [&_.placeholder]:lt-2xl:hidden" />
+        <SearchDocument />
       </div>
 
       <div class="flex items-center gap-3 xl:gap-4">
@@ -70,12 +68,11 @@ onUnmounted(() => {
         <SSeparator orientation="vertical" class="h-8 lt-xl:!hidden" />
         <ToolBar class="lt-xl:!hidden" />
 
-        <SPopover placement="bottom-end" :ui="headerMenuPopoverUi">
+        <SPopover :modal="false" placement="bottom-end">
           <template #trigger>
             <SButtonIcon icon="lucide:menu" class="xl:!hidden text-xl" />
           </template>
           <div class="flex flex-col gap-4 pt-4">
-            <SearchDocument data-mobile class="w-full" />
             <HeaderNav orientation="vertical" />
             <SSeparator />
             <ToolBar />
@@ -88,10 +85,10 @@ onUnmounted(() => {
   <div
     v-if="showTopBar"
     :data-scrolled="isScrolled"
-    class="docs-topbar-shell lt-md:hidden fixed left-0 right-0 z-48 px-4 sm:px-6"
+    class="docs-topbar-shell fixed left-0 right-0 top-[--app-header-main] data-[scrolled=true]:top-[calc(var(--app-header-main)+0.5rem)] border border-border/50 data-[scrolled=true]:border-transparent dark:border-border z-48 transition-all-800 px-6 lt-md:hidden lt-sm:px-4"
   >
     <div class="mx-auto max-w-360 px-6">
-      <div class="docs-topbar-frame flex h-[--app-topbar] items-center">
+      <div class="docs-topbar-frame flex h-[--app-topbar] items-center px-4">
         <TopBar class="min-w-0 flex-1" />
       </div>
     </div>

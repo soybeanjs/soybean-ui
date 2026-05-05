@@ -24,13 +24,6 @@ interface Props {
 const props = defineProps<Props>();
 const { resolveApiText, t } = useApiI18n();
 
-const docsTableUi = {
-  root: 'docs-api-table-root',
-  head: 'docs-api-table-head',
-  row: 'docs-api-table-row',
-  cell: 'docs-api-table-cell'
-} as const;
-
 const anchorId = computed(() => toTypeAnchorId(props.name));
 
 type TableRow = TypeFieldDef & {
@@ -82,7 +75,7 @@ function getFieldDescription(field: TypeFieldDef) {
     </p>
 
     <div class="min-w-0 overflow-x-auto">
-      <STable :columns="columns" :data="tableData" :row-key="row => row.__rowKey" size="sm" bordered :ui="docsTableUi">
+      <STable :columns="columns" :data="tableData" :row-key="row => row.__rowKey" size="sm" bordered>
         <template #name="{ row }">
           <div class="code-btn">
             <span>{{ row.name }}</span>

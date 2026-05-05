@@ -311,7 +311,9 @@ watch([normalizedComponentQuery, onlyComponentRelated], ([component, related]) =
 
 <template>
   <div class="mx-auto max-w-screen-2xl space-y-6 pb-8">
-    <section class="docs-hero-shell glass-shell relative overflow-hidden px-6 py-7 sm:px-8 sm:py-9 xl:px-10">
+    <section
+      class="relative overflow-hidden px-6 py-7 sm:px-8 sm:py-9 xl:px-10 border border-border/50 dark:border-border rounded-xl"
+    >
       <div
         class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,hsl(var(--primary-400)/0.12),transparent_30%),radial-gradient(circle_at_bottom_left,hsl(var(--primary-700)/0.07),transparent_28%)]"
       />
@@ -319,7 +321,7 @@ watch([normalizedComponentQuery, onlyComponentRelated], ([component, related]) =
       <div class="relative grid gap-8 xl:grid-cols-[minmax(0,1.12fr)_22rem] xl:items-start">
         <div class="space-y-5">
           <div
-            class="glass-chip inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.18em] text-muted-foreground"
+            class="inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.18em] text-muted-foreground"
           >
             <SIcon icon="lucide:history" class="text-sm text-primary" />
             <span>{{ t('releases_page.kicker') }}</span>
@@ -348,7 +350,7 @@ watch([normalizedComponentQuery, onlyComponentRelated], ([component, related]) =
                 {{ t('releases_page.filter.title') }}
               </div>
 
-              <div class="glass-panel flex flex-wrap items-center gap-3 rounded-2xl px-4 py-3">
+              <div class="flex flex-wrap items-center gap-3 rounded-2xl px-4 py-3">
                 <div class="min-w-0 flex-1">
                   <input
                     v-model="componentQuery"
@@ -377,7 +379,7 @@ watch([normalizedComponentQuery, onlyComponentRelated], ([component, related]) =
                 {{ t('releases_page.filter.desc') }}
               </p>
 
-              <div class="glass-panel flex items-center justify-between gap-4 rounded-2xl px-4 py-3">
+              <div class="flex items-center justify-between gap-4 rounded-2xl px-4 py-3">
                 <div class="space-y-1">
                   <div class="text-sm font-medium text-foreground">
                     {{ t('releases_page.filter.related_only') }}
@@ -395,7 +397,7 @@ watch([normalizedComponentQuery, onlyComponentRelated], ([component, related]) =
                 />
               </div>
 
-              <div v-if="showSuggestionPanel" class="glass-panel space-y-3 rounded-2xl px-4 py-3">
+              <div v-if="showSuggestionPanel" class="space-y-3 rounded-2xl px-4 py-3">
                 <div class="flex flex-wrap items-center justify-between gap-2">
                   <div class="text-sm font-medium text-foreground">
                     {{ t('releases_page.filter.suggestions') }}
@@ -412,7 +414,7 @@ watch([normalizedComponentQuery, onlyComponentRelated], ([component, related]) =
                     size="sm"
                     variant="ghost"
                     shape="rounded"
-                    class="docs-home-name-pill px-3 py-1.5"
+                    class="px-3 py-1.5"
                     @mousedown.prevent
                     @click="applyComponentFilter(component)"
                   >
@@ -432,14 +434,15 @@ watch([normalizedComponentQuery, onlyComponentRelated], ([component, related]) =
               </div>
 
               <div class="flex flex-wrap gap-2">
-                <SLink
+                <SButtonLink
                   v-for="component in getHighlightedComponents(latestRelease)"
                   :key="component"
                   :to="toComponentLink(component)"
-                  class="docs-home-name-pill rounded-full px-3 py-1.5 text-sm text-foreground transition-colors duration-200 hover:border-primary/35 hover:text-primary"
+                  shape="rounded"
+                  variant="pure"
                 >
                   {{ formatComponentLabel(component) }}
-                </SLink>
+                </SButtonLink>
 
                 <span
                   v-if="getRemainingComponentCount(latestRelease)"
@@ -457,13 +460,9 @@ watch([normalizedComponentQuery, onlyComponentRelated], ([component, related]) =
               :key="action.label"
               v-bind="action.to ? { to: action.to } : { href: action.href, target: action.target }"
               size="lg"
-              variant="ghost"
+              :variant="action.href ? 'ghost' : 'pure'"
               shape="rounded"
-              :class="
-                action.to
-                  ? 'docs-home-button docs-home-button-subtle group min-w-36'
-                  : 'docs-home-button docs-home-button-primary group min-w-36'
-              "
+              class="group min-w-36"
             >
               {{ action.label }}
               <SIcon
@@ -474,14 +473,10 @@ watch([normalizedComponentQuery, onlyComponentRelated], ([component, related]) =
           </div>
         </div>
 
-        <SCard
-          :title="t('releases_page.latest.title')"
-          split
-          class="glass-shell docs-home-soft-shell docs-home-card-shell overflow-hidden"
-        >
+        <SCard :title="t('releases_page.latest.title')" split class="docs-card overflow-hidden">
           <template #default>
             <div class="space-y-4">
-              <div class="glass-panel px-4 py-3">
+              <div class="docs-subtle-card px-4 py-3">
                 <div class="text-[11px] font-semibold uppercase tracking-[0.16em] text-muted-foreground">
                   {{ t('releases_page.stats.versions') }}
                 </div>
@@ -491,7 +486,7 @@ watch([normalizedComponentQuery, onlyComponentRelated], ([component, related]) =
               </div>
 
               <div v-if="latestRelease" class="grid gap-3 sm:grid-cols-2 xl:grid-cols-1">
-                <div class="glass-panel px-4 py-3">
+                <div class="docs-subtle-card px-4 py-3">
                   <div class="text-[11px] font-semibold uppercase tracking-[0.16em] text-muted-foreground">
                     {{ t('releases_page.stats.entries') }}
                   </div>
@@ -500,7 +495,7 @@ watch([normalizedComponentQuery, onlyComponentRelated], ([component, related]) =
                   </div>
                 </div>
 
-                <div class="glass-panel px-4 py-3">
+                <div class="docs-subtle-card px-4 py-3">
                   <div class="text-[11px] font-semibold uppercase tracking-[0.16em] text-muted-foreground">
                     {{ t('releases_page.stats.components') }}
                   </div>
@@ -532,12 +527,12 @@ watch([normalizedComponentQuery, onlyComponentRelated], ([component, related]) =
       </div>
     </section>
 
-    <section class="docs-page-shell glass-shell relative min-w-0 overflow-hidden">
+    <section class="relative min-w-0 overflow-hidden">
       <div
         aria-hidden="true"
         class="pointer-events-none absolute inset-x-0 top-0 h-36 bg-linear-to-r from-primary/8 via-warning/6 to-info/8 opacity-80"
       />
-      <div class="docs-page-grid relative min-w-0 px-5 py-6 sm:px-8 sm:py-8 xl:px-10 xl:py-10">
+      <div class="relative min-w-0 px-5 py-6 sm:px-8 sm:py-8 xl:px-10 xl:py-10">
         <div class="min-w-0 space-y-6">
           <div class="space-y-2">
             <h2 class="scroll-mt-24 text-3xl font-black tracking-[-0.04em] text-foreground">
@@ -571,7 +566,7 @@ watch([normalizedComponentQuery, onlyComponentRelated], ([component, related]) =
               :key="release.version"
               size="sm"
               split
-              class="docs-home-card-shell glass-shell docs-home-soft-shell overflow-hidden"
+              class="docs-card overflow-hidden"
             >
               <template #title>
                 <div class="space-y-1">
@@ -619,14 +614,15 @@ watch([normalizedComponentQuery, onlyComponentRelated], ([component, related]) =
                     </div>
 
                     <div class="flex flex-wrap gap-2">
-                      <SLink
+                      <SButtonLink
                         v-for="component in getHighlightedComponents(release)"
                         :key="component"
                         :to="toComponentLink(component)"
-                        class="docs-home-name-pill rounded-full px-3 py-1.5 text-sm text-foreground transition-colors duration-200 hover:border-primary/35 hover:text-primary"
+                        variant="pure"
+                        shape="rounded"
                       >
                         {{ formatComponentLabel(component) }}
-                      </SLink>
+                      </SButtonLink>
 
                       <span
                         v-if="getRemainingComponentCount(release)"
@@ -646,7 +642,7 @@ watch([normalizedComponentQuery, onlyComponentRelated], ([component, related]) =
                       <div
                         v-for="entry in getDisplayedEntries(release)"
                         :key="`${release.version}-${entry.commitHash ?? entry.summary}`"
-                        class="glass-panel space-y-3 rounded-2xl px-4 py-4"
+                        class="space-y-3 rounded-2xl px-4 py-4"
                       >
                         <div class="flex flex-wrap items-center gap-2.5">
                           <span
@@ -679,14 +675,16 @@ watch([normalizedComponentQuery, onlyComponentRelated], ([component, related]) =
                         </p>
 
                         <div v-if="entry.components.length" class="flex flex-wrap gap-2">
-                          <SLink
+                          <SButtonLink
                             v-for="component in entry.components"
                             :key="`${entry.commitHash ?? entry.summary}-${component}`"
                             :to="toComponentLink(component)"
-                            class="docs-home-name-pill rounded-full px-3 py-1.5 text-sm text-foreground transition-colors duration-200 hover:border-primary/35 hover:text-primary"
+                            size="sm"
+                            variant="pure"
+                            shape="rounded"
                           >
                             {{ formatComponentLabel(component) }}
-                          </SLink>
+                          </SButtonLink>
                         </div>
                       </div>
                     </div>
@@ -706,7 +704,6 @@ watch([normalizedComponentQuery, onlyComponentRelated], ([component, related]) =
                         size="sm"
                         variant="ghost"
                         shape="rounded"
-                        class="docs-home-button docs-home-button-subtle"
                         @click="toggleReleaseExpanded(release.version)"
                       >
                         {{

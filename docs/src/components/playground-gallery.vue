@@ -41,12 +41,12 @@ const tabs = computed<TabsOptionData<TabValue>[]>(() => [
 <template>
   <div class="space-y-5">
     <template v-for="(item, index) in components" :key="index">
-      <SCard :title="item.title" split class="glass-shell overflow-hidden">
+      <SCard :title="item.title" split class="overflow-hidden">
         <template #default>
           <STabs :items="tabs" default-value="preview" fill="auto">
             <template #content="{ value }">
               <template v-if="item.component">
-                <div v-if="value === 'preview'" class="docs-preview-surface min-h-36 border border-dashed p-4 sm:p-5">
+                <div v-if="value === 'preview'" class="min-h-36 border border-dashed p-4 sm:p-5">
                   <component :is="item.component" />
                 </div>
                 <CodeBlock v-else :code="item.code" lang="vue" />

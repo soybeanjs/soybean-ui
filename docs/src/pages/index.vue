@@ -158,10 +158,32 @@ const featuredComponents = computed(() => {
   });
 });
 
+const featuredGroupMeta = {
+  general: {
+    icon: 'lucide:layout-grid',
+    iconClass: 'text-primary bg-primary/10'
+  },
+  groupLayout: {
+    icon: 'lucide:panels-top-left',
+    iconClass: 'text-info bg-info/10'
+  },
+  navigation: {
+    icon: 'lucide:compass',
+    iconClass: 'text-success bg-success/10'
+  },
+  forms: {
+    icon: 'lucide:square-pen',
+    iconClass: 'text-warning bg-warning/10'
+  }
+} as const;
+
 const featuredGroups = computed(() =>
   menuData.slice(0, 4).map(group => ({
     value: group.value,
     label: t(group.i18n),
+    icon: featuredGroupMeta[group.value as keyof typeof featuredGroupMeta]?.icon ?? 'lucide:shapes',
+    iconClass:
+      featuredGroupMeta[group.value as keyof typeof featuredGroupMeta]?.iconClass ?? 'text-primary bg-primary/10',
     count: group.items.length,
     items: group.items.slice(0, 4).map(item => ({
       key: item,
@@ -173,21 +195,19 @@ const featuredGroups = computed(() =>
 </script>
 
 <template>
-  <div class="docs-home-page relative min-h-screen overflow-hidden px-4 pb-16 pt-24 sm:px-6 lg:px-8">
+  <div class="relative min-h-screen overflow-hidden px-4 pb-16 pt-24 sm:px-6 lg:px-8">
     <BackgroundDecoration />
 
     <div class="relative z-10 mx-auto flex max-w-screen-2xl flex-col gap-8">
-      <section
-        class="docs-hero-shell docs-home-card-shell docs-home-hero-shell glass-shell relative overflow-hidden px-6 py-8 sm:px-8 sm:py-10 xl:px-10"
-      >
+      <section class="relative overflow-hidden px-6 py-8 sm:px-8 sm:py-10 xl:px-10">
         <div
-          class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,hsl(var(--primary-400)/0.12),transparent_28%),radial-gradient(circle_at_bottom_left,hsl(var(--primary-700)/0.07),transparent_26%)]"
+          class="absolute inset-0 rounded-xl bg-[radial-gradient(circle_at_top_right,hsl(var(--primary-400)/0.12),transparent_28%),radial-gradient(circle_at_bottom_left,hsl(var(--primary-700)/0.07),transparent_26%)]"
         />
 
         <div class="relative grid gap-8 xl:grid-cols-[minmax(0,1.2fr)_22rem] xl:items-start">
           <div class="space-y-6">
             <div
-              class="glass-chip inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.18em] text-muted-foreground"
+              class="inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.18em] text-muted-foreground"
             >
               <SIcon icon="lucide:sparkles" class="text-sm text-primary" />
               <span>{{ t('components.home.kicker') }}</span>
@@ -195,13 +215,11 @@ const featuredGroups = computed(() =>
 
             <div class="space-y-4">
               <div class="flex gap-4 flex-wrap">
-                <div
-                  class="docs-home-card-panel glass-panel flex size-20 shrink-0 items-center justify-center rounded-3xl p-1 lt-sm:size-18"
-                >
+                <div class="flex size-20 shrink-0 items-center justify-center rounded-3xl p-1 lt-sm:size-18">
                   <AppLogo class="size-full" />
                 </div>
                 <h1
-                  class="max-w-4xl text-[clamp(3rem,7vw,5.5rem)] leading-[0.9] font-black tracking-[-0.065em] text-primary/90 lt-sm:pt-3"
+                  class="max-w-4xl text-7xl lt-sm:text-4xl lt-md:text-5xl font-black tracking-[-0.065em] text-primary/90 lt-sm:pt-3"
                 >
                   {{ t('components.home.title') }}
                 </h1>
@@ -211,24 +229,18 @@ const featuredGroups = computed(() =>
               </div>
             </div>
 
-            <div class="flex flex-wrap gap-3">
+            <div class="grid gap-4 lt-sm:grid-cols-1 lt-md:grid-cols-2 md:grid-cols-3 max-w-3xl">
               <SButtonLink
                 to="/overview/quick-start"
                 size="lg"
-                variant="ghost"
+                variant="solid"
                 shape="rounded"
-                class="docs-home-button docs-home-button-primary group min-w-40"
+                class="group whitespace-nowrap"
               >
                 {{ t('components.home.actions.start') }}
                 <SIcon icon="lucide:arrow-right" class="transition-transform duration-200 group-hover:translate-x-1" />
               </SButtonLink>
-              <SButtonLink
-                to="/components"
-                size="lg"
-                variant="ghost"
-                shape="rounded"
-                class="docs-home-button docs-home-button-subtle group min-w-40"
-              >
+              <SButtonLink to="/components" size="lg" variant="pure" shape="rounded" class="group whitespace-nowrap">
                 {{ t('components.home.actions.browse') }}
                 <SIcon icon="lucide:layout-grid" class="transition-transform duration-200 group-hover:translate-x-1" />
               </SButtonLink>
@@ -237,9 +249,9 @@ const featuredGroups = computed(() =>
                 target="_blank"
                 rel="noopener noreferrer"
                 size="lg"
-                variant="ghost"
+                variant="pure"
                 shape="rounded"
-                class="docs-home-button docs-home-button-subtle group min-w-40"
+                class="group"
               >
                 <SIcon icon="lucide:github" class="transition-transform duration-200 group-hover:-translate-y-0.5" />
                 {{ t('components.home.actions.github') }}
@@ -247,18 +259,10 @@ const featuredGroups = computed(() =>
             </div>
           </div>
 
-          <SCard
-            :title="t('components.home.stats_title')"
-            split
-            class="docs-home-card-shell glass-shell docs-home-soft-shell overflow-hidden"
-          >
+          <SCard :title="t('components.home.stats_title')" class="docs-card overflow-hidden">
             <template #default>
               <div class="grid gap-3 sm:grid-cols-2 xl:grid-cols-1">
-                <div
-                  v-for="stat in heroStats"
-                  :key="stat.label"
-                  class="docs-home-card-panel glass-panel docs-home-stat-panel px-4 py-3"
-                >
+                <div v-for="stat in heroStats" :key="stat.label" class="docs-subtle-card px-4 py-3">
                   <div class="text-2xl font-bold tracking-[-0.04em] text-foreground">{{ stat.value }}</div>
                   <div class="mt-1 text-sm text-muted-foreground">{{ stat.label }}</div>
                 </div>
@@ -268,13 +272,8 @@ const featuredGroups = computed(() =>
         </div>
       </section>
 
-      <section class="docs-home-card-shell glass-shell grid gap-4 p-4 lg:grid-cols-2 xl:grid-cols-4">
-        <SLink
-          v-for="item in quickLinks"
-          :key="item.to"
-          :to="item.to"
-          class="docs-home-card-panel glass-panel glass-hover-lift group px-5 py-4 hover:border-primary/35"
-        >
+      <section class="grid gap-4 p-4 lg:grid-cols-2 xl:grid-cols-4">
+        <SLink v-for="item in quickLinks" :key="item.to" :to="item.to" class="group px-5 py-4 hover:border-primary/35">
           <div class="flex min-h-18 items-center gap-4">
             <div class="rounded-2xl bg-primary/10 p-3 text-xl text-primary">
               <SIcon :icon="item.icon" />
@@ -291,18 +290,10 @@ const featuredGroups = computed(() =>
         </SLink>
       </section>
 
-      <SCard
-        :title="t('components.home.sections.highlights.title')"
-        split
-        class="docs-home-card-shell glass-shell overflow-hidden"
-      >
+      <SCard :title="t('components.home.sections.highlights.title')" split class="docs-card overflow-hidden">
         <template #default>
           <div class="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-            <div
-              v-for="feature in features"
-              :key="feature.title"
-              class="docs-home-card-panel glass-panel glass-hover-lift p-5 sm:p-6"
-            >
+            <div v-for="feature in features" :key="feature.title" class="docs-subtle-card p-5 sm:p-6">
               <div class="mb-4 inline-flex rounded-2xl p-3 text-xl" :class="feature.iconClass">
                 <SIcon :icon="feature.icon" />
               </div>
@@ -313,21 +304,11 @@ const featuredGroups = computed(() =>
         </template>
       </SCard>
 
-      <SCard
-        :title="t('components.home.sections.featured.title')"
-        split
-        class="docs-home-card-shell glass-shell overflow-hidden"
-      >
+      <SCard :title="t('components.home.sections.featured.title')" split class="docs-card overflow-hidden">
         <template #description>{{ t('components.home.sections.featured.desc') }}</template>
 
         <template #extra>
-          <SButtonLink
-            to="/components"
-            size="lg"
-            variant="ghost"
-            shape="rounded"
-            class="docs-home-button docs-home-button-subtle"
-          >
+          <SButtonLink to="/components" size="lg" variant="pure" shape="rounded" class=" ">
             {{ t('components.home.actions.browse') }}
           </SButtonLink>
         </template>
@@ -338,7 +319,7 @@ const featuredGroups = computed(() =>
               v-for="item in featuredComponents"
               :key="item.key"
               :to="item.to"
-              class="docs-home-card-panel glass-panel glass-hover-lift group p-5 hover:border-primary/35"
+              class="docs-subtle-card group p-5 hover:border-primary/35"
             >
               <div class="flex items-start justify-between gap-3">
                 <div class="rounded-2xl p-3 text-xl" :class="item.iconClass">
@@ -363,40 +344,30 @@ const featuredGroups = computed(() =>
         </template>
       </SCard>
 
-      <SCard
-        :title="t('components.home.sections.categories.title')"
-        split
-        class="docs-home-card-shell glass-shell overflow-hidden"
-      >
+      <SCard :title="t('components.home.sections.categories.title')" split class="docs-card overflow-hidden">
         <template #extra>
-          <SButtonLink
-            to="/components"
-            size="lg"
-            variant="ghost"
-            shape="rounded"
-            class="docs-home-button docs-home-button-subtle"
-          >
+          <SButtonLink to="/components" size="lg" variant="pure" shape="rounded" class=" ">
             {{ t('components.home.actions.browse') }}
           </SButtonLink>
         </template>
 
         <template #default>
           <div class="grid gap-4 lg:grid-cols-2">
-            <div v-for="group in featuredGroups" :key="group.value" class="docs-home-card-panel glass-panel p-5">
+            <div v-for="group in featuredGroups" :key="group.value" class="docs-subtle-card p-5">
               <div class="flex min-h-12 items-center justify-between gap-3">
-                <h3 class="text-lg leading-7 font-semibold tracking-[-0.02em] text-foreground">{{ group.label }}</h3>
+                <div class="flex min-w-0 items-center gap-3">
+                  <div class="rounded-2xl p-3 text-xl" :class="group.iconClass">
+                    <SIcon :icon="group.icon" />
+                  </div>
+                  <h3 class="text-lg leading-7 font-semibold tracking-[-0.02em] text-foreground">{{ group.label }}</h3>
+                </div>
                 <span class="text-sm font-medium text-muted-foreground">{{ group.count }}</span>
               </div>
 
               <div class="mt-4 flex flex-wrap gap-2">
-                <SLink
-                  v-for="item in group.items"
-                  :key="item.key"
-                  :to="item.to"
-                  class="docs-home-name-pill rounded-full px-3 py-1.5 text-sm text-foreground transition-colors duration-200 hover:border-primary/35 hover:text-primary"
-                >
+                <SButtonLink v-for="item in group.items" :key="item.key" :to="item.to" variant="plain" shape="rounded">
                   {{ item.label }}
-                </SLink>
+                </SButtonLink>
               </div>
             </div>
           </div>
