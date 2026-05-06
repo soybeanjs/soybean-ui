@@ -27,7 +27,7 @@ applyTo: 'headless/src/components/**/*.{ts,vue}'
 ## Step 1：types.ts
 
 - 多 slot 组件使用 `UiClass<{Name}UiSlot>` 定义 `{Name}Ui`
-- Props 使用 `interface`，并 `extends /** @vue-ignore */ HTMLAttributes` 或更具体的 HTML 属性类型
+- Props 使用 `interface`，并 `extends BaseProps` 或更具体的 HTML 属性类型, 如果组件基于 `Primitive` 则直接 `extends PrimitiveWithBaseProps`
 - 先复用 `headless/src/types/common.ts` 中已有类型，不要重复定义 `Side`、`Align`、`Direction` 等公共类型
 - 写新类型前，先检查 `headless/src/types/` 中现有定义，不要在组件目录里重复造类型
 - 受控/非受控状态用 `useControllableState`
