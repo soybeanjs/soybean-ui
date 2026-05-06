@@ -251,7 +251,6 @@ export interface EditableCompactProps extends EditableRootProps {
  * Events for the EditableCompact component.
  */
 export type EditableCompactEmits = EditableRootEmits;
-
 /**
  * Slot properties for the EditableCompact component.
  */

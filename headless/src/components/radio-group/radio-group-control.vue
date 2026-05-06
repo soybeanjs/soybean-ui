@@ -3,6 +3,7 @@ import { computed, onBeforeMount, onMounted, useAttrs, useTemplateRef, watchEffe
 import { getAriaLabel, handleAndDispatchCustomEvent, isFormControl } from '../../shared';
 import type { NavigationKey } from '../../types';
 import { RovingFocusItem } from '../roving-focus';
+import Button from '../button/button.vue';
 import { useRadioGroupItemContext, useRadioGroupRootContext, useRadioGroupUi } from './context';
 import type { RadioGroupControlProps, RadioSelectEvent } from './types';
 
@@ -42,8 +43,6 @@ function onKeyUp() {
 }
 
 function onClick(event: MouseEvent) {
-  if (props.disabled) return;
-
   const eventDetail = { originalEvent: event, value: value.value };
 
   handleAndDispatchCustomEvent(
@@ -97,16 +96,14 @@ onBeforeMount(() => {
 
 <template>
   <RovingFocusItem as-child :checked="checked" :focusable="!disabled" :active="checked">
-    <button
-      :id="id"
+    <Button
       ref="controlElement"
+      v-bind="props"
       :class="cls"
       role="radio"
-      type="button"
       :disabled="disabled"
       :aria-checked="checked"
       :aria-label="ariaLabel"
-      :data-disabled="disabled ? '' : undefined"
       :data-state="dataState"
       :value="String(value)"
       :required="required"
@@ -116,6 +113,6 @@ onBeforeMount(() => {
       @focus="onFocus"
     >
       <slot :checked="checked" :required="required" :disabled="disabled" />
-    </button>
+    </Button>
   </RovingFocusItem>
 </template>

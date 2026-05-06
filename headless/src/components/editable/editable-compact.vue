@@ -47,17 +47,17 @@ const ui = useEditableUi();
         </slot>
         <div :class="ui.controls">
           <slot name="edit-trigger" v-bind="slotProps">
-            <EditableEditTrigger v-bind="editTriggerProps">
+            <EditableEditTrigger v-if="!slotProps.isEditing" v-bind="editTriggerProps">
               <Icon icon="lucide:pencil-line" :aria-hidden="true" />
             </EditableEditTrigger>
           </slot>
           <slot name="submit-trigger" v-bind="slotProps">
-            <EditableSubmitTrigger v-bind="submitTriggerProps">
+            <EditableSubmitTrigger v-if="slotProps.isEditing" v-bind="submitTriggerProps">
               <Icon icon="lucide:check" :aria-hidden="true" />
             </EditableSubmitTrigger>
           </slot>
           <slot name="cancel-trigger" v-bind="slotProps">
-            <EditableCancelTrigger v-bind="cancelTriggerProps">
+            <EditableCancelTrigger v-if="slotProps.isEditing" v-bind="cancelTriggerProps">
               <Icon icon="lucide:x" :aria-hidden="true" />
             </EditableCancelTrigger>
           </slot>

@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import { computed } from 'vue';
-import { Primitive } from '../primitive';
+import Button from '../button/button.vue';
 import { usePopoverRootContext } from './context';
 import type { PopoverCloseProps, PopoverCloseEmits } from './types';
 
@@ -8,27 +7,20 @@ defineOptions({
   name: 'PopoverClose'
 });
 
-const props = withDefaults(defineProps<PopoverCloseProps>(), {
-  as: 'button'
-});
+const props = defineProps<PopoverCloseProps>();
 
 const emit = defineEmits<PopoverCloseEmits>();
 
 const { onOpenChange } = usePopoverRootContext('PopoverClose');
 
-const tag = computed(() => (props.as === 'button' ? 'button' : undefined));
-
-const onClose = async () => {
-  const result = await props.beforeClose?.();
-  if (result === false) return;
-
+const onClose = (event: PointerEvent) => {
+  emit('close', event);
   onOpenChange(false);
-  emit('close');
 };
 </script>
 
 <template>
-  <Primitive :as="as" :as-child="asChild" :type="tag" @click="onClose">
+  <Button v-bind="props" @click="onClose">
     <slot />
-  </Primitive>
+  </Button>
 </template>

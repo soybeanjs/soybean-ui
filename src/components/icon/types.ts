@@ -1,5 +1,5 @@
 import type { IconProps as IconifyIconProps } from '@iconify/vue';
-import type { IconValue } from '@soybeanjs/headless/_icon';
+import type { IconValue } from '@soybeanjs/headless';
 
 /**
  * Properties for the Icon component.

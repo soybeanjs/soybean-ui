@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { onBeforeUnmount, watchEffect } from 'vue';
 import { getActiveElement } from '../../shared';
-import { Primitive } from '../primitive';
+import Button from '../button/button.vue';
 import { useCollectionContext, useSelectContentContext } from './context';
 import type { SelectScrollButtonImplEmits, SelectScrollButtonImplProps } from './types';
 
@@ -9,7 +9,7 @@ defineOptions({
   name: 'SelectScrollButtonImpl'
 });
 
-defineProps<SelectScrollButtonImplProps>();
+const props = defineProps<SelectScrollButtonImplProps>();
 
 const emit = defineEmits<SelectScrollButtonImplEmits>();
 
@@ -61,9 +61,8 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <Primitive
-    :as="as"
-    :as-child="asChild"
+  <Button
+    v-bind="props"
     aria-hidden="true"
     style="flex-shrink: 0"
     @pointerdown="onPointerDown"
@@ -71,5 +70,5 @@ onBeforeUnmount(() => {
     @pointerleave="onPointerLeave"
   >
     <slot />
-  </Primitive>
+  </Button>
 </template>

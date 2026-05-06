@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Primitive } from '../primitive';
+import Button from '../button/button.vue';
 import { useTreeMenuItemContext, useTreeMenuUi } from './context';
 import type { TreeMenuButtonProps } from './types';
 
@@ -7,9 +7,7 @@ defineOptions({
   name: 'TreeMenuButton'
 });
 
-const props = withDefaults(defineProps<TreeMenuButtonProps>(), {
-  as: 'button'
-});
+const props = defineProps<TreeMenuButtonProps>();
 
 const cls = useTreeMenuUi('button');
 
@@ -23,7 +21,7 @@ const onClick = () => {
 </script>
 
 <template>
-  <Primitive :as="as" :as-child="asChild" :class="cls" :data-active="isActive" @click="onClick">
+  <Button v-bind="props" :class="cls" :data-active="isActive" @click="onClick">
     <slot />
-  </Primitive>
+  </Button>
 </template>

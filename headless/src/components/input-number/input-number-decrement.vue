@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { useForwardElement } from '../../composables';
-import { Primitive } from '../primitive';
+import Button from '../button/button.vue';
 import { useInputNumberRootContext, useInputNumberUi } from './context';
 import { usePressedHold } from './shared';
 import type { InputNumberDecrementProps } from './types';
@@ -10,9 +10,7 @@ defineOptions({
   name: 'InputNumberDecrement'
 });
 
-const props = withDefaults(defineProps<InputNumberDecrementProps>(), {
-  as: 'button'
-});
+const props = defineProps<InputNumberDecrementProps>();
 
 const { disabled, readonly, isIncreaseDisabled, onDecrease } = useInputNumberRootContext('InputNumberDecrement');
 
@@ -24,8 +22,6 @@ const isDisabled = computed(() => disabled.value || readonly.value || props.disa
 
 const { isPressed, onTrigger } = usePressedHold({ target: decrementElement, disabled: isDisabled });
 
-const tag = computed(() => (props.as === 'button' ? 'button' : undefined));
-
 const style = computed(() => (isPressed.value ? 'user-select:none;' : undefined));
 
 onTrigger(() => {
@@ -34,20 +30,16 @@ onTrigger(() => {
 </script>
 
 <template>
-  <Primitive
+  <Button
     :ref="setDecrementElement"
-    :as="as"
-    :as-child="asChild"
     :class="cls"
-    :type="tag"
     tabindex="-1"
     aria-label="Decrease"
-    :disabled="isDisabled ? '' : undefined"
-    :data-disabled="isDisabled ? '' : undefined"
+    :disabled="isDisabled"
     :data-pressed="isPressed ? 'true' : undefined"
     :style="style"
     @contextmenu.prevent
   >
     <slot />
-  </Primitive>
+  </Button>
 </template>

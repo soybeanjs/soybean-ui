@@ -53,7 +53,7 @@ const ui = useAlertUi();
       <slot />
     </AlertContent>
     <slot name="trailing" />
-    <AlertClose v-if="closable" v-bind="closeProps">
+    <AlertClose v-if="closable" v-bind="closeProps" @close="emit('close', $event)">
       <slot name="close">
         <Icon icon="lucide:x" />
       </slot>

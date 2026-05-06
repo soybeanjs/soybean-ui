@@ -1,8 +1,7 @@
 <script setup lang="ts">
-import { computed } from 'vue';
-import { Primitive } from '../primitive';
+import Button from '../button/button.vue';
 import { useDialogRootContext } from './context';
-import type { DialogTriggerProps } from './types';
+import type { DialogTriggerProps, DialogTriggerEmits } from './types';
 
 defineOptions({
   name: 'DialogTrigger'
@@ -10,23 +9,27 @@ defineOptions({
 
 const props = defineProps<DialogTriggerProps>();
 
+const emit = defineEmits<DialogTriggerEmits>();
+
 const { open, onOpenToggle, dataState, popupId, setTriggerElement } = useDialogRootContext('DialogTrigger');
 
-const tag = computed(() => (props.as === 'button' ? 'button' : undefined));
+const onTriggerClick = (event: PointerEvent) => {
+  emit('click', event);
+
+  onOpenToggle();
+};
 </script>
 
 <template>
-  <Primitive
+  <Button
+    v-bind="props"
     :ref="setTriggerElement"
-    :as="as"
-    :as-child="asChild"
-    :type="tag"
     aria-haspopup="dialog"
     :aria-expanded="open || false"
     :aria-controls="open ? popupId : undefined"
     :data-state="dataState"
-    @click="onOpenToggle"
+    @click="onTriggerClick"
   >
     <slot />
-  </Primitive>
+  </Button>
 </template>

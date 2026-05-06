@@ -17,10 +17,6 @@ export interface ToggleProps extends ButtonProps {
    * The controlled pressed state of the toggle. Can be bound with v-model.
    */
   modelValue?: boolean;
-  /**
-   * When `true`, prevents the user from interacting with the toggle.
-   */
-  disabled?: boolean;
 }
 
 /**

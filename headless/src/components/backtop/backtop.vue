@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { computed, nextTick, onBeforeUnmount, onMounted, shallowRef, watch, onWatcherCleanup } from 'vue';
+import { computed, nextTick, onBeforeUnmount, onMounted, shallowRef, watch, useAttrs, onWatcherCleanup } from 'vue';
 import { useEventListener, useRafFn } from '@vueuse/core';
 import { useOmitProps } from '../../composables';
-import { Button } from '../button';
+import Button from '../button/button.vue';
 import { easeInOutCubic, getScrollTop, prefersReducedMotion, resolveBacktopTarget, setScrollTop } from './shared';
 import type { BacktopProps, BacktopEmits, BacktopState } from './types';
 
@@ -11,13 +11,13 @@ defineOptions({
 });
 
 const props = withDefaults(defineProps<BacktopProps>(), {
-  as: 'button',
-  type: 'button',
   duration: 300,
   visibilityHeight: 400
 });
 
 const emit = defineEmits<BacktopEmits>();
+
+const attrs = useAttrs();
 
 const forwardedProps = useOmitProps(props, ['duration', 'target', 'visibilityHeight']);
 
@@ -27,7 +27,7 @@ const resolvedTarget = shallowRef<Window | HTMLElement | null>(null);
 let scrollAnimationFrameId: number | null = null;
 
 const dataState = computed<BacktopState>(() => (visible.value ? 'visible' : 'hidden'));
-const ariaLabel = computed(() => props['aria-label'] ?? 'Back to top');
+const ariaLabel = computed(() => (attrs['aria-label'] as string) ?? 'Back to top');
 
 function updateVisible(nextVisible: boolean) {
   if (visible.value === nextVisible) {
@@ -114,8 +114,7 @@ function scrollToTop() {
   scrollAnimationFrameId = requestAnimationFrame(step);
 }
 
-function onClick(event: PointerEvent) {
-  emit('click', event);
+function onClick() {
   scrollToTop();
 }
 

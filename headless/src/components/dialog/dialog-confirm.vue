@@ -20,8 +20,6 @@ const { onOpenChange } = useDialogRootContext('DialogConfirm');
 const onConfirm = async (event: MouseEvent) => {
   emit('confirm', event);
 
-  if (event.defaultPrevented) return;
-
   onOpenChange(false);
 };
 </script>

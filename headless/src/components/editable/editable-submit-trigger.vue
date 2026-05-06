@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, useAttrs } from 'vue';
-import { Primitive } from '../primitive';
+import Button from '../button/button.vue';
 import { useEditableRootContext, useEditableUi } from './context';
 import type { EditableSubmitTriggerProps } from './types';
 
@@ -8,18 +8,17 @@ defineOptions({
   name: 'EditableSubmitTrigger'
 });
 
-const props = withDefaults(defineProps<EditableSubmitTriggerProps>(), {
-  as: 'button'
-});
+const props = defineProps<EditableSubmitTriggerProps>();
 
 const attrs = useAttrs();
 
-const { dataDisabled, dataReadonly, dataState, disabled, isEditing, submit } =
+const { dataReadonly, dataState, disabled, readonly, isEditing, submit } =
   useEditableRootContext('EditableSubmitTrigger');
 
 const cls = useEditableUi('submitTrigger');
 
-const buttonType = computed(() => (props.as === 'button' ? 'button' : undefined));
+const triggerDisabled = computed(() => disabled.value || readonly.value);
+
 const ariaLabel = computed(() => {
   if (attrs['aria-labelledby']) {
     return undefined;
@@ -34,18 +33,16 @@ function onClick() {
 </script>
 
 <template>
-  <Primitive
+  <Button
     v-bind="props"
-    :aria-label="ariaLabel"
     :class="cls"
-    :data-disabled="dataDisabled"
+    :aria-label="ariaLabel"
     :data-readonly="dataReadonly"
     :data-state="dataState"
-    :disabled="disabled"
+    :disabled="triggerDisabled"
     :hidden="!isEditing"
-    :type="buttonType"
     @click="onClick"
   >
     <slot>Submit</slot>
-  </Primitive>
+  </Button>
 </template>

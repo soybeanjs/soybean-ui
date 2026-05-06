@@ -52,7 +52,7 @@ const isIndeterminate = computed(() => props.modelValue === 'indeterminate');
         </p>
       </div>
     </div>
-    <CheckboxControl v-bind="controlProps" :id="checkboxId" class="checkbox-control">
+    <CheckboxControl v-bind="controlProps" :id="checkboxId">
       <CheckboxIndicator v-slot="slotProps" v-bind="indicatorProps">
         <slot name="indicator" v-bind="slotProps">
           <Icon :icon="isIndeterminate ? 'lucide:minus' : 'lucide:check'" :class="ui['indicator-icon']" />

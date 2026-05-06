@@ -5,7 +5,6 @@ import type {
   FocusScopeEmits,
   ForceMountProps,
   TrapFocusProps,
-  MaybePromise,
   PropsToContext,
   UiClass
 } from '../../types';
@@ -32,12 +31,7 @@ export type PopoverRootEmits = DialogRootEmits;
 /**
  * Properties for the PopoverClose component.
  */
-export interface PopoverCloseProps extends ButtonProps {
-  /**
-   * Before close.
-   */
-  beforeClose?: () => MaybePromise<boolean | void>;
-}
+export interface PopoverCloseProps extends ButtonProps {}
 /**
  * Events for the PopoverClose component.
  */
@@ -45,7 +39,7 @@ export type PopoverCloseEmits = {
   /**
    * Emitted when close occurs.
    */
-  close: [];
+  close: [PointerEvent];
 };
 
 /**

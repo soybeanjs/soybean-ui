@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { useForwardElement } from '../../composables';
-import { Primitive } from '../primitive';
+import Button from '../button/button.vue';
 import { useInputNumberRootContext, useInputNumberUi } from './context';
 import { usePressedHold } from './shared';
 import type { InputNumberIncrementProps } from './types';
@@ -10,9 +10,7 @@ defineOptions({
   name: 'InputNumberIncrement'
 });
 
-const props = withDefaults(defineProps<InputNumberIncrementProps>(), {
-  as: 'button'
-});
+const props = defineProps<InputNumberIncrementProps>();
 
 const { disabled, readonly, isIncreaseDisabled, onIncrease } = useInputNumberRootContext('InputNumberIncrement');
 
@@ -24,8 +22,6 @@ const isDisabled = computed(() => disabled.value || readonly.value || props.disa
 
 const { isPressed, onTrigger } = usePressedHold({ target: incrementElement, disabled: isDisabled });
 
-const tag = computed(() => (props.as === 'button' ? 'button' : undefined));
-
 const style = computed(() => (isPressed.value ? 'user-select:none;' : undefined));
 
 onTrigger(() => {
@@ -34,20 +30,17 @@ onTrigger(() => {
 </script>
 
 <template>
-  <Primitive
+  <Button
     :ref="setIncrementElement"
-    :as="as"
-    :as-child="asChild"
+    v-bind="props"
     :class="cls"
-    :type="tag"
     tabindex="-1"
     aria-label="Increase"
-    :disabled="isDisabled ? '' : undefined"
-    :data-disabled="isDisabled ? '' : undefined"
+    :disabled="isDisabled"
     :data-pressed="isPressed ? 'true' : undefined"
     :style="style"
     @contextmenu.prevent
   >
     <slot />
-  </Primitive>
+  </Button>
 </template>

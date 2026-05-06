@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, useAttrs } from 'vue';
 import { useOmitProps } from '../../composables';
-import { Button } from '../button';
+import Button from '../button/button.vue';
 import Icon from '../_icon/icon.vue';
 import { useCarouselRootContext, useCarouselUi } from './context';
 import type { CarouselPreviousProps } from './types';
@@ -22,6 +22,10 @@ const { canScrollPrev, contentId, scrollPrev } = useCarouselRootContext('Carouse
 
 const disabled = computed(() => props.disabled || !canScrollPrev.value);
 const ariaLabel = computed(() => (attrs['aria-label'] as string) ?? 'Previous slide');
+
+const onPrev = () => {
+  scrollPrev();
+};
 </script>
 
 <template>
@@ -32,7 +36,7 @@ const ariaLabel = computed(() => (attrs['aria-label'] as string) ?? 'Previous sl
     :aria-controls="contentId || undefined"
     :aria-label="ariaLabel"
     data-soybean-carousel-previous
-    @click="scrollPrev"
+    @click="onPrev"
   >
     <slot>
       <Icon icon="lucide:arrow-left" :aria-hidden="true" />

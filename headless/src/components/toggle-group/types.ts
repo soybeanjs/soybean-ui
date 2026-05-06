@@ -65,8 +65,6 @@ export type ToggleGroupRootContextParams = PropsToContext<
 export interface ToggleGroupItemProps<T extends DefinedValue = string> extends ButtonProps {
   /** A unique value that identifies the item inside the group. */
   value: T;
-  /** When `true`, prevents interaction with the item. */
-  disabled?: boolean;
 }
 
 /**

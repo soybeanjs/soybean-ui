@@ -1,6 +1,6 @@
 import type { ComputedRef, ShallowRef } from 'vue';
 import type { BaseProps, DataOrientation, HorizontalSide, PropsToContext, UiClass } from '../../types';
-import type { PrimitiveWithBaseProps } from '../primitive/types';
+import type { ButtonProps } from '../button/types';
 
 /**
  * Type information for LayoutVariant.
@@ -166,7 +166,7 @@ export interface LayoutFooterProps extends BaseProps {}
 /**
  * Properties for the LayoutTrigger component.
  */
-export interface LayoutTriggerProps extends PrimitiveWithBaseProps {}
+export interface LayoutTriggerProps extends ButtonProps {}
 
 /**
  * Properties for the LayoutMobile component.

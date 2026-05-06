@@ -1,6 +1,6 @@
 import type { InputHTMLAttributes, ShallowRef } from 'vue';
 import type { BaseProps, FormFieldCommonProps, PropsToContext, UiClass } from '../../types';
-import type { PrimitiveWithBaseProps } from '../primitive/types';
+import type { ButtonProps } from '../button/types';
 import type { InputBaseProps } from '../input/types';
 
 /**
@@ -52,22 +52,12 @@ export interface InputNumberControlProps extends BaseProps<InputHTMLAttributes> 
 /**
  * Properties for the InputNumberIncrement component.
  */
-export interface InputNumberIncrementProps extends PrimitiveWithBaseProps {
-  /**
-   * Whether the component is disabled.
-   */
-  disabled?: boolean;
-}
+export interface InputNumberIncrementProps extends ButtonProps {}
 
 /**
  * Properties for the InputNumberDecrement component.
  */
-export interface InputNumberDecrementProps extends PrimitiveWithBaseProps {
-  /**
-   * Whether the component is disabled.
-   */
-  disabled?: boolean;
-}
+export interface InputNumberDecrementProps extends ButtonProps {}
 
 /**
  * Parameters used to create the InputNumberRoot context.

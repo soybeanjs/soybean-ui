@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { useControllableState, useOmitProps } from '../../composables';
-import { Primitive } from '../primitive';
+import Button from '../button/button.vue';
 import type { ToggleEmits, ToggleProps, ToggleState } from './types';
 
 defineOptions({
@@ -9,25 +9,21 @@ defineOptions({
 });
 
 const props = withDefaults(defineProps<ToggleProps>(), {
-  as: 'button',
-  type: 'button',
   modelValue: undefined,
-  disabled: false
+  defaultValue: false
 });
 
 const emit = defineEmits<ToggleEmits>();
 
-const forwardedProps = useOmitProps(props, ['defaultValue', 'modelValue', 'disabled']);
+const forwardedProps = useOmitProps(props, ['defaultValue', 'modelValue']);
 
 const modelValue = useControllableState(
   () => props.modelValue,
   value => {
-    emit('update:modelValue', value ?? false);
+    emit('update:modelValue', value);
   },
-  props.defaultValue ?? false
+  props.defaultValue
 );
-
-const dataDisabled = computed(() => (props.disabled ? '' : undefined));
 
 const dataState = computed<ToggleState>(() => (modelValue.value ? 'on' : 'off'));
 
@@ -44,16 +40,13 @@ const onClick = (event: MouseEvent) => {
 </script>
 
 <template>
-  <Primitive
+  <Button
     v-bind="forwardedProps"
-    :type="as === 'button' ? props.type : undefined"
-    :disabled="as === 'button' ? disabled : undefined"
-    :aria-disabled="as === 'button' ? undefined : disabled || undefined"
-    :aria-pressed="!!modelValue"
-    :data-disabled="dataDisabled"
+    :disabled="disabled"
+    :aria-pressed="modelValue"
     :data-state="dataState"
     @click="onClick"
   >
-    <slot :model-value="!!modelValue" :pressed="!!modelValue" :state="dataState" :disabled="disabled" />
-  </Primitive>
+    <slot :model-value="modelValue" :pressed="modelValue" :state="dataState" :disabled="disabled" />
+  </Button>
 </template>

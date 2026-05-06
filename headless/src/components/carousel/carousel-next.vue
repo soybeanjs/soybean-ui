@@ -22,6 +22,10 @@ const { canScrollNext, contentId, scrollNext } = useCarouselRootContext('Carouse
 
 const disabled = computed(() => props.disabled || !canScrollNext.value);
 const ariaLabel = computed(() => (attrs['aria-label'] as string) ?? 'Next slide');
+
+const onNext = () => {
+  scrollNext();
+};
 </script>
 
 <template>
@@ -32,7 +36,7 @@ const ariaLabel = computed(() => (attrs['aria-label'] as string) ?? 'Next slide'
     :aria-controls="contentId || undefined"
     :aria-label="ariaLabel"
     data-soybean-carousel-next
-    @click="scrollNext"
+    @click="onNext"
   >
     <slot>
       <Icon icon="lucide:arrow-right" :aria-hidden="true" />

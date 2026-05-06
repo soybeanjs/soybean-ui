@@ -21,7 +21,6 @@ const disabled = computed(() => props.disabled || rootDisabled.value || readonly
 
 const handleClear = (event: PointerEvent) => {
   emit('clear', event);
-  if (event.defaultPrevented) return;
 
   onClear?.();
 };

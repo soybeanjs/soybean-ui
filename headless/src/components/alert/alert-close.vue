@@ -1,16 +1,16 @@
 <script setup lang="ts">
 import { computed, useAttrs } from 'vue';
-import { Primitive } from '../primitive';
+import Button from '../button/button.vue';
 import { useAlertRootContext, useAlertUi } from './context';
-import type { AlertCloseProps } from './types';
+import type { AlertCloseProps, AlertCloseEmits } from './types';
 
 defineOptions({
   name: 'AlertClose'
 });
 
-const props = withDefaults(defineProps<AlertCloseProps>(), {
-  as: 'button'
-});
+const props = defineProps<AlertCloseProps>();
+
+const emit = defineEmits<AlertCloseEmits>();
 
 const attrs = useAttrs();
 
@@ -18,13 +18,17 @@ const { onOpenChange } = useAlertRootContext('AlertClose');
 
 const cls = useAlertUi('close');
 
-const tag = computed(() => (props.as === 'button' ? 'button' : undefined));
+const ariaLabel = computed(() => (attrs['aria-label'] as string) ?? 'Close alert');
 
-const ariaLabel = computed(() => attrs['aria-label'] ?? 'Close alert');
+const onClose = (event: PointerEvent) => {
+  emit('close', event);
+
+  onOpenChange(false);
+};
 </script>
 
 <template>
-  <Primitive :as="as" :as-child="asChild" :class="cls" :aria-label="ariaLabel" :type="tag" @click="onOpenChange(false)">
+  <Button v-bind="props" :class="cls" :aria-label="ariaLabel" @click="onClose">
     <slot />
-  </Primitive>
+  </Button>
 </template>

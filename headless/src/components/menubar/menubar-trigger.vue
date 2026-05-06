@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { shallowRef } from 'vue';
 import { useForwardElement } from '../../composables';
+import Button from '../button/button.vue';
 import { MenuAnchor } from '../menu';
-import { Primitive } from '../primitive';
 import { RovingFocusItem } from '../roving-focus';
 import { useMenubarCollectionItem, useMenubarMenuContext, useMenubarRootContext, useMenubarUi } from './context';
 import { isTriggerLink } from './shared';
@@ -12,9 +12,7 @@ defineOptions({
   name: 'MenubarTrigger'
 });
 
-const props = withDefaults(defineProps<MenubarTriggerProps>(), {
-  as: 'button'
-});
+const props = defineProps<MenubarTriggerProps>();
 
 const { isLinkTriggerHovered, modelValue, onMenuOpen, onMenuToggle, setTriggerLink } =
   useMenubarRootContext('MenubarTrigger');
@@ -29,7 +27,7 @@ const {
 
 const cls = useMenubarUi('trigger');
 
-const { itemProps, onItemElementChange } = useMenubarCollectionItem(() => ({ value: value.value }));
+const { onItemElementChange } = useMenubarCollectionItem(() => ({ value: value.value }));
 
 const [triggerElement, setTriggerElement] = useForwardElement(element => {
   menuTriggerElement.value = element;
@@ -101,24 +99,21 @@ const onKeyDown = (event: KeyboardEvent) => {
 <template>
   <RovingFocusItem as-child :focusable="!disabled" :tab-stop-id="String(value)">
     <MenuAnchor as-child>
-      <Primitive
-        v-bind="itemProps"
+      <Button
+        v-bind="props"
         :id="triggerId"
         :ref="setTriggerElement"
-        :as="as"
-        :as-child="asChild"
         :class="cls"
-        :type="as === 'button' ? 'button' : undefined"
-        role="menuitem"
-        aria-haspopup="menu"
-        :aria-expanded="open"
         :aria-controls="open ? contentId : undefined"
+        :aria-expanded="open"
+        aria-haspopup="menu"
         :data-highlighted="isFocused ? '' : undefined"
+        data-soybean-collection-item
         :data-state="open ? 'open' : 'closed'"
-        :data-disabled="disabled ? '' : undefined"
-        :disabled="disabled"
         :data-value="value"
+        :disabled="disabled"
         data-slot="trigger"
+        role="menuitem"
         @pointerdown="onPointerDown"
         @pointerenter="onPointerEnter"
         @keydown.enter.space.arrow-down="onKeyDown"
@@ -126,7 +121,7 @@ const onKeyDown = (event: KeyboardEvent) => {
         @blur="onBlur"
       >
         <slot />
-      </Primitive>
+      </Button>
     </MenuAnchor>
   </RovingFocusItem>
 </template>

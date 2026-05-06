@@ -3,6 +3,7 @@ import { computed, useAttrs, watchEffect } from 'vue';
 import { useForwardElement } from '../../composables';
 import { getAriaLabel, isIndeterminate, isNullish, isValueEqualOrExist } from '../../shared';
 import { RovingFocusItem } from '../roving-focus';
+import Button from '../button/button.vue';
 import { useCheckboxGroupRootContext, useCheckboxRootContext, useCheckboxUi } from './context';
 import type { CheckboxControlProps } from './types';
 
@@ -18,7 +19,7 @@ const cls = useCheckboxUi('control');
 
 const groupContext = useCheckboxGroupRootContext();
 
-const { modelValue, value, disabled, state, ariaChecked, dataDisabled, dataState, required, initControlId } =
+const { modelValue, value, disabled, state, ariaChecked, dataState, required, initControlId } =
   useCheckboxRootContext('CheckboxControl');
 
 const [controlElement, setControlElement] = useForwardElement();
@@ -52,24 +53,22 @@ watchEffect(() => {
 </script>
 
 <template>
-  <component
-    :is="rovingFocus ? RovingFocusItem : 'button'"
-    :id="id"
-    :ref="setControlElement"
-    :class="cls"
-    as="button"
-    role="checkbox"
-    type="button"
-    :disabled="disabled"
-    :aria-checked="ariaChecked"
-    :data-disabled="dataDisabled"
-    :aria-label="ariaLabel"
-    :aria-required="required"
-    :data-state="dataState"
-    :focusable="focusable"
-    @click="onClick"
-    @keydown.enter.prevent="onClick"
-  >
-    <slot :model-value="modelValue" :state="state" />
+  <component :is="rovingFocus ? RovingFocusItem : 'template'" as-child :focusable="focusable">
+    <Button
+      v-bind="props"
+      :id="id"
+      :ref="setControlElement"
+      :class="cls"
+      role="checkbox"
+      :disabled="disabled"
+      :aria-checked="ariaChecked"
+      :aria-label="ariaLabel"
+      :aria-required="required"
+      :data-state="dataState"
+      @click="onClick"
+      @keydown.enter.prevent="onClick"
+    >
+      <slot :model-value="modelValue" :state="state" />
+    </Button>
   </component>
 </template>

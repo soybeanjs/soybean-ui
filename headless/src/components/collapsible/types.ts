@@ -42,11 +42,6 @@ export interface CollapsibleTriggerProps extends ButtonProps {
   disabledCollapsible?: boolean;
 }
 
-export type CollapsibleTriggerEmits = {
-  /** Event handler called when the trigger is clicked. */
-  click: [event: PointerEvent];
-};
-
 /**
  * Parameters used to create the CollapsibleRoot context.
  */

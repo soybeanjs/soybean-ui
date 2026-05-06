@@ -66,7 +66,7 @@ export interface InputRootContext extends PropsToContext<InputBaseProps & FormFi
 /**
  * Properties for the InputClear component.
  */
-export interface InputClearProps extends ButtonProps, BaseProps {}
+export interface InputClearProps extends ButtonProps {}
 
 /**
  * Events for the InputClear component.

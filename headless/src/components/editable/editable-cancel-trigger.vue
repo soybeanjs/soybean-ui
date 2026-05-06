@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, useAttrs } from 'vue';
-import { Primitive } from '../primitive';
+import Button from '../button/button.vue';
 import { useEditableRootContext, useEditableUi } from './context';
 import type { EditableCancelTriggerProps } from './types';
 
@@ -8,18 +8,17 @@ defineOptions({
   name: 'EditableCancelTrigger'
 });
 
-const props = withDefaults(defineProps<EditableCancelTriggerProps>(), {
-  as: 'button'
-});
+const props = defineProps<EditableCancelTriggerProps>();
 
 const attrs = useAttrs();
 
-const { dataDisabled, dataReadonly, dataState, disabled, cancel, isEditing } =
+const { dataReadonly, dataState, disabled, readonly, cancel, isEditing } =
   useEditableRootContext('EditableCancelTrigger');
 
 const cls = useEditableUi('cancelTrigger');
 
-const buttonType = computed(() => (props.as === 'button' ? 'button' : undefined));
+const triggerDisabled = computed(() => disabled.value || readonly.value);
+
 const ariaLabel = computed(() => {
   if (attrs['aria-labelledby']) {
     return undefined;
@@ -34,18 +33,16 @@ function onClick() {
 </script>
 
 <template>
-  <Primitive
+  <Button
     v-bind="props"
-    :aria-label="ariaLabel"
     :class="cls"
-    :data-disabled="dataDisabled"
+    :aria-label="ariaLabel"
     :data-readonly="dataReadonly"
     :data-state="dataState"
-    :disabled="disabled"
+    :disabled="triggerDisabled"
     :hidden="!isEditing"
-    :type="buttonType"
     @click="onClick"
   >
     <slot>Cancel</slot>
-  </Primitive>
+  </Button>
 </template>

@@ -1,6 +1,7 @@
 import type { ComputedRef, ShallowRef } from 'vue';
 import type { BaseProps, UiClass } from '../../types';
 import type { PrimitiveWithBaseProps } from '../primitive/types';
+import type { ButtonProps } from '../button/types';
 
 /**
  * State values for TreeMenuCollapsedState.
@@ -94,7 +95,7 @@ export interface TreeMenuItemProps extends TreeMenuBaseItemProps, PrimitiveWithB
 /**
  * Properties for the TreeMenuButton component.
  */
-export interface TreeMenuButtonProps extends PrimitiveWithBaseProps {
+export interface TreeMenuButtonProps extends ButtonProps {
   /**
    * When `true`, prevents the user from activating the item.
    *
