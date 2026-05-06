@@ -29,7 +29,7 @@ const [provideRovingFocusGroupContext, useRovingFocusGroupContext] = useContext(
     const currentTabStopId = useControllableState(
       () => params.currentTabStopId.value,
       onUpdateCurrentTabStopId,
-      defaultCurrentTabStopId.value
+      defaultCurrentTabStopId.value ?? ''
     );
 
     const onItemFocus = (tabStopId: string) => {

@@ -28,9 +28,7 @@ const cls = useStepperUi('root');
 const modelValue = useControllableState(
   () => props.modelValue,
   value => {
-    if (typeof value === 'number') {
-      emit('update:modelValue', value);
-    }
+    emit('update:modelValue', value);
   },
   props.defaultValue
 );

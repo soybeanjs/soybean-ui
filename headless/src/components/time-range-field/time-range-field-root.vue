@@ -14,7 +14,7 @@ import {
   syncTimeSegmentValues,
   useDateFormatter
 } from '../../date';
-import type { SegmentPart, TimeRange, TimeValue } from '../../date';
+import type { SegmentPart, TimeRange } from '../../date';
 import { isNullish } from '../../shared';
 import { useDirection, useLocale } from '../config-provider/context';
 import { Primitive } from '../primitive';
@@ -61,8 +61,8 @@ const formatter = useDateFormatter(locale.value, {
   hourCycle: normalizeHourCycle(props.hourCycle)
 });
 
-const modelValue = useControllableState<TimeRange>(
-  () => props.modelValue as TimeRange,
+const modelValue = useControllableState(
+  () => props.modelValue,
   value => {
     emit('update:modelValue', value);
     emit('update:startValue', value.start);
@@ -76,8 +76,8 @@ const defaultTime = getDefaultTime({
   defaultValue: modelValue.value.start
 });
 
-const placeholder = useControllableState<TimeValue>(
-  () => props.placeholder as TimeValue,
+const placeholder = useControllableState(
+  () => props.placeholder,
   value => emit('update:placeholder', value),
   props.defaultPlaceholder ?? defaultTime.copy()
 );

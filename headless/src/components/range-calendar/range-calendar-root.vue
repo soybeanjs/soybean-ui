@@ -59,8 +59,8 @@ const dir = useDirection(() => props.dir);
 const weekStartsOn = computed(() => props.weekStartsOn ?? getWeekStartsOn(locale.value));
 const formatter = useDateFormatter(locale.value);
 
-const modelValue = useControllableState<DateRange>(
-  () => props.modelValue as DateRange,
+const modelValue = useControllableState(
+  () => props.modelValue,
   value => {
     emit('update:modelValue', value);
     emit('update:startValue', value.start);
@@ -74,8 +74,8 @@ const defaultDate = getDefaultDate({
   locale: props.locale
 });
 
-const placeholder = useControllableState<DateValue>(
-  () => props.placeholder as DateValue,
+const placeholder = useControllableState(
+  () => props.placeholder,
   value => {
     emit('update:placeholder', value);
   },

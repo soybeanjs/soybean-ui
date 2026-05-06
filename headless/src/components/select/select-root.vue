@@ -31,7 +31,7 @@ const { modelValue, isMultiple, onModelValueChange, isEmptyModelValue } = useSel
 const open = useControllableState(
   () => props.open,
   value => {
-    emit('update:open', value!);
+    emit('update:open', value);
   },
   props.defaultOpen
 );

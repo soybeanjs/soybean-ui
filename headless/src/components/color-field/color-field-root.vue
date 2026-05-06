@@ -47,7 +47,7 @@ function resolveColorValue(value: string | ColorValue | undefined) {
   return toColorObject(value, 'rgb');
 }
 
-const modelValue = useControllableState<string | ColorValue | undefined>(
+const modelValue = useControllableState(
   () => props.modelValue,
   value => {
     emit('update:modelValue', typeof value === 'string' ? value : formatColor(value, props.format));

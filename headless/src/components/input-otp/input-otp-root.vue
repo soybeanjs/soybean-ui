@@ -37,7 +37,7 @@ const rootCls = useInputOtpUi('root');
 const modelValue = useControllableState(
   () => props.modelValue,
   value => {
-    emit('update:modelValue', value as string);
+    emit('update:modelValue', value);
   },
   props.defaultValue
 );

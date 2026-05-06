@@ -27,11 +27,9 @@ const groupContext = useCheckboxGroupRootContext();
 const modelValue = useControllableState(
   () => props.modelValue,
   value => {
-    if (value !== undefined) {
-      emit('update:modelValue', value);
-    }
+    emit('update:modelValue', value);
   },
-  props.defaultValue
+  props.defaultValue ?? null
 );
 
 const formControl = computed(() => isFormControl(rootElement.value));

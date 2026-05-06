@@ -448,7 +448,7 @@ export interface ComboboxRootContext extends PropsToContext<
   /**
    * Current model value.
    */
-  modelValue: ShallowRef<MaybeArray<string> | undefined>;
+  modelValue: ShallowRef<MaybeArray<string>>;
   /**
    * Handler used to update the model value.
    */
@@ -460,7 +460,7 @@ export interface ComboboxRootContext extends PropsToContext<
   /**
    * Whether the component is open.
    */
-  open: ShallowRef<boolean | undefined>;
+  open: ShallowRef<boolean>;
   /**
    * Callback invoked when the open changes.
    */

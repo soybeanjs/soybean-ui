@@ -38,10 +38,11 @@ const formatter = useDateFormatter(locale.value);
 
 const normalizeYearDate = (date: DateValue) => date.set({ month: 1, day: 1 });
 
-const modelValue = useControllableState<DateValue | undefined>(
+const modelValue = useControllableState(
   () => props.modelValue,
   value => emit('update:modelValue', value),
-  props.defaultValue ? normalizeYearDate(props.defaultValue) : undefined
+  props.defaultValue ? normalizeYearDate(props.defaultValue) : undefined,
+  true
 );
 
 const defaultDate = normalizeYearDate(

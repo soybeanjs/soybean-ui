@@ -34,7 +34,7 @@ const cls = useMenuUi('checkboxItem');
 const modelValue = useControllableState(
   () => props.modelValue,
   value => {
-    emit('update:modelValue', value ?? false);
+    emit('update:modelValue', value);
   },
   false
 );

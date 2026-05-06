@@ -21,7 +21,8 @@ export function useSelection<M extends boolean = false, N extends DefinedValue =
     value => {
       onUpdateModelValue(value!);
     },
-    getSelectionDefaultValue()
+    getSelectionDefaultValue(),
+    true
   );
 
   function getSelectionDefaultValue() {
@@ -60,11 +61,6 @@ export function useSelection<M extends boolean = false, N extends DefinedValue =
       }
 
       modelValue.value = updated as SelectionProps<M, N>['modelValue'];
-
-      if (updated === undefined) {
-        // @ts-expect-error ignore type
-        onUpdateModelValue(updated);
-      }
       return;
     }
 

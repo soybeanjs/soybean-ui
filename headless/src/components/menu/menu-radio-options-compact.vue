@@ -1,5 +1,5 @@
 <script setup lang="ts" generic="T extends AcceptableBooleanValue = AcceptableBooleanValue">
-import { useOmitProps } from '../../composables';
+import { useOmitProps, useForwardListeners } from '../../composables';
 import type { AcceptableBooleanValue } from '../../types';
 import MenuSeparator from '../separator/separator-root.vue';
 import Icon from '../_icon/icon.vue';
@@ -32,13 +32,15 @@ const forwardedProps = useOmitProps(props, [
   'separatorProps'
 ]);
 
+const listeners = useForwardListeners(emit);
+
 const commonSlotNames = useCommonSlotNames(slots);
 
 const ui = useMenuUi();
 </script>
 
 <template>
-  <MenuRadioGroup v-bind="forwardedProps" @update:model-value="emit('update:modelValue', $event)">
+  <MenuRadioGroup v-bind="forwardedProps" v-on="listeners">
     <template v-for="item in items" :key="item.value">
       <MenuGroupLabel v-if="item.isGroupLabel" v-bind="groupLabelProps">
         <MenuItemSlotCompact :icon="item.icon" :label="item.label">

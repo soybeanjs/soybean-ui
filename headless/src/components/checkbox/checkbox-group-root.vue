@@ -31,9 +31,9 @@ const rovingFocusProps = computed<RovingFocusGroupProps>(() => {
 const modelValue = useControllableState(
   () => props.modelValue,
   value => {
-    emit('update:modelValue', value ?? []);
+    emit('update:modelValue', value);
   },
-  props.defaultValue
+  props.defaultValue ?? []
 );
 
 provideCheckboxGroupRootContext({

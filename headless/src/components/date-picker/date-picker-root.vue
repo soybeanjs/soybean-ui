@@ -46,10 +46,11 @@ const formatter = useDateFormatter(locale.value, {
   hourCycle: normalizeHourCycle(props.hourCycle)
 });
 
-const modelValue = useControllableState<DateValue | undefined>(
+const modelValue = useControllableState(
   () => props.modelValue,
   value => emit('update:modelValue', value),
-  props.defaultValue
+  props.defaultValue,
+  true
 );
 
 const defaultDate = getDefaultDate({
@@ -59,8 +60,8 @@ const defaultDate = getDefaultDate({
   locale: props.locale
 });
 
-const placeholder = useControllableState<DateValue>(
-  () => props.placeholder as DateValue,
+const placeholder = useControllableState(
+  () => props.placeholder,
   value => emit('update:placeholder', value),
   props.defaultPlaceholder ?? defaultDate.copy()
 );
@@ -68,7 +69,7 @@ const placeholder = useControllableState<DateValue>(
 const open = useControllableState(
   () => props.open,
   value => {
-    emit('update:open', value ?? false);
+    emit('update:open', value);
   },
   props.defaultOpen
 );

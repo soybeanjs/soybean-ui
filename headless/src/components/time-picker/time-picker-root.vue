@@ -48,10 +48,11 @@ const formatter = useDateFormatter(locale.value, {
 const granularity = computed(() => props.granularity ?? 'minute');
 const hideTimeZone = computed(() => props.hideTimeZone);
 
-const modelValue = useControllableState<TimeValue | undefined>(
+const modelValue = useControllableState(
   () => props.modelValue,
   value => emit('update:modelValue', value),
-  props.defaultValue
+  props.defaultValue,
+  true
 );
 
 const defaultTime = getDefaultTime({
@@ -59,15 +60,15 @@ const defaultTime = getDefaultTime({
   defaultValue: modelValue.value
 });
 
-const placeholder = useControllableState<TimeValue>(
-  () => props.placeholder as TimeValue,
+const placeholder = useControllableState(
+  () => props.placeholder,
   value => emit('update:placeholder', value),
   props.defaultPlaceholder ?? defaultTime.copy()
 );
 
 const open = useControllableState(
   () => props.open,
-  value => emit('update:open', value ?? false),
+  value => emit('update:open', value),
   props.defaultOpen
 );
 

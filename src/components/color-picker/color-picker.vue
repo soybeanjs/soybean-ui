@@ -40,10 +40,10 @@ const props = withDefaults(defineProps<ColorPickerProps>(), {
 
 const emit = defineEmits<ColorPickerEmits>();
 
-const formatValue = useControllableState<ColorFormat | undefined>(
+const formatValue = useControllableState(
   () => props.format,
   value => {
-    emit('update:format', value as ColorFormat);
+    emit('update:format', value);
   },
   resolveColorPickerFormat(props.defaultFormat, props.modelValue ?? props.defaultValue)
 );

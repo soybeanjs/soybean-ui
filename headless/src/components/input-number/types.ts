@@ -41,7 +41,7 @@ export type InputNumberRootEmits = {
   /**
    * Emitted when the model value changes.
    */
-  'update:modelValue': [val: number];
+  'update:modelValue': [val: number | null];
 };
 
 /**

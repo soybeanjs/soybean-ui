@@ -35,10 +35,10 @@ const virtualKeydownHook = createEventHook<KeyboardEvent>();
 const modelValue = useControllableState(
   () => props.modelValue,
   value => {
-    // @ts-expect-error ignore type
+    // @ts-expect-error ignore type error caused by generic type
     emit('update:modelValue', value);
   },
-  getDefaultValue()
+  getDefaultValue() as Exclude<U, undefined>
 );
 
 const selectedKeys = computed(() => {
@@ -55,12 +55,12 @@ const { onSelectItem, handleMultipleReplace } = useSelectionBehavior(
   () => props.selectionBehavior
 );
 
-function getDefaultValue(): U {
+function getDefaultValue() {
   if (!isNullish(props.defaultValue)) {
-    return props.defaultValue as U;
+    return props.defaultValue;
   }
 
-  return (props.multiple ? [] : undefined) as U;
+  return props.multiple ? [] : '';
 }
 
 const expanded = useControllableState(

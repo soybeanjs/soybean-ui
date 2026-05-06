@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { watchEffect } from 'vue';
-import type { ShallowRef } from 'vue';
 import { useControllableState, useForwardElement } from '../../composables';
 import { transformPropsToContext } from '../../shared';
 import { provideCollectionContext, provideNavigationMenuRootContext, useNavigationMenuUi } from './context';
@@ -27,8 +26,8 @@ const modelValue = useControllableState(
   value => {
     emit('update:modelValue', value!);
   },
-  props.defaultValue
-) as ShallowRef<string>;
+  props.defaultValue ?? ''
+);
 
 const { onRootElementChange, onActiveTriggerElementChange } = provideNavigationMenuRootContext({
   isRoot: true,

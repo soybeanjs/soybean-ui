@@ -19,9 +19,9 @@ const cls = useMenuUi('checkboxGroup');
 const modelValue = useControllableState(
   () => props.modelValue,
   value => {
-    emit('update:modelValue', value || []);
+    emit('update:modelValue', value);
   },
-  props.defaultValue
+  props.defaultValue ?? []
 );
 
 provideMenuCheckboxGroupContext({

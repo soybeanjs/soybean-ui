@@ -224,7 +224,7 @@ export interface MenuRadioGroupProps<T = AcceptableBooleanValue> extends MenuGro
  */
 export type MenuRadioGroupEmits<T = AcceptableBooleanValue> = {
   /** Event handler called when the radio group value changes */
-  'update:modelValue': [payload: NonNullable<T>];
+  'update:modelValue': [payload: Exclude<T, undefined>];
 };
 
 // MenuSubTrigger

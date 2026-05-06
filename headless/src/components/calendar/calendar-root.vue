@@ -39,15 +39,15 @@ const [parentElement, setParentElement] = useForwardElement();
 const locale = useLocale(() => props.locale);
 const dir = useDirection(() => props.dir);
 const weekStartsOn = computed(() => props.weekStartsOn ?? getWeekStartsOn(locale.value));
-const isModelValueControlled = computed(() => props.modelValue !== undefined);
 const multiple = computed(() => getVueBooleanCasting(props.multiple));
 
-const modelValue = useControllableState<CalendarModelValue<M>>(
-  () => props.modelValue as CalendarModelValue<M>,
+const modelValue = useControllableState(
+  () => props.modelValue,
   value => {
     emit('update:modelValue', value);
   },
-  props.defaultValue as CalendarModelValue<M>
+  props.defaultValue,
+  true
 );
 
 const defaultDate = getDefaultDate({
@@ -56,8 +56,8 @@ const defaultDate = getDefaultDate({
   locale: props.locale
 });
 
-const placeholder = useControllableState<DateValue>(
-  () => props.placeholder as DateValue,
+const placeholder = useControllableState(
+  () => props.placeholder,
   value => {
     emit('update:placeholder', value);
   },
@@ -121,12 +121,6 @@ function onPlaceholderChange(value: DateValue) {
   placeholder.value = value.copy();
 }
 
-function emitUndefinedModelValue() {
-  if (!isModelValueControlled.value) {
-    emit('update:modelValue', undefined as CalendarModelValue<M>);
-  }
-}
-
 function onDateChange(value: DateValue) {
   if (props.readonly) {
     return;
@@ -140,8 +134,7 @@ function onDateChange(value: DateValue) {
 
     if (!props.preventDeselect && isSameDay(modelValue.value as DateValue, value)) {
       placeholder.value = value.copy();
-      modelValue.value = undefined as CalendarModelValue<M>;
-      emitUndefinedModelValue();
+      modelValue.value = undefined;
       return;
     }
 
@@ -167,8 +160,7 @@ function onDateChange(value: DateValue) {
 
       if (!nextValue.length) {
         placeholder.value = value.copy();
-        modelValue.value = undefined as CalendarModelValue<M>;
-        emitUndefinedModelValue();
+        modelValue.value = undefined;
         return;
       }
 

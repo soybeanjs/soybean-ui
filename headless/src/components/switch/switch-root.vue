@@ -27,9 +27,11 @@ const cls = useSwitchUi('root');
 const modelValue = useControllableState(
   () => props.modelValue,
   value => {
-    emit('update:modelValue', value as NonNullable<T>);
+    // @ts-expect-error ignore type
+    emit('update:modelValue', value);
   },
-  props.defaultValue
+  // @ts-expect-error defaultValue can be null
+  props.defaultValue ?? null
 );
 
 const formControl = computed(() => isFormControl(rootElement.value));

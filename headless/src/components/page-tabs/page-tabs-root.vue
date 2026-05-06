@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import type { ShallowRef } from 'vue';
 import { useControllableState } from '../../composables';
 import { transformPropsToContext } from '../../shared';
 import { providePageTabsRootContext, usePageTabsUi } from './context';
@@ -22,10 +21,10 @@ const cls = usePageTabsUi('root');
 const modelValue = useControllableState(
   () => props.modelValue,
   value => {
-    emit('update:modelValue', value ?? '');
+    emit('update:modelValue', value);
   },
   ''
-) as ShallowRef<string>;
+);
 
 const { setRootElement, onWheel } = usePageTabsScroll(modelValue);
 

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useControllableState } from '../../composables';
-import { isNullish, transformPropsToContext } from '../../shared';
+import { transformPropsToContext } from '../../shared';
 import { provideTabsRootContext, useTabsUi } from './context';
 import type { TabsRootEmits, TabsRootProps } from './types';
 
@@ -21,10 +21,9 @@ const emit = defineEmits<TabsRootEmits>();
 const modelValue = useControllableState(
   () => props.modelValue,
   value => {
-    if (isNullish(value)) return;
     emit('update:modelValue', value);
   },
-  props.defaultValue
+  props.defaultValue ?? null
 );
 
 const cls = useTabsUi('root');

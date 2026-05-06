@@ -58,7 +58,7 @@ export interface BadgeRootContext {
   /**
    * Whether the component is open.
    */
-  open: ShallowRef<boolean | undefined>;
+  open: ShallowRef<boolean>;
 }
 
 /**

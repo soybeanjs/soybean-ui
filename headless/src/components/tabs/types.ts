@@ -41,7 +41,7 @@ export interface TabsRootProps<T extends AcceptableValue = AcceptableValue> exte
  */
 export type TabsRootEmits<T = AcceptableValue> = {
   /** Event handler called when the value changes */
-  'update:modelValue': [payload: NonNullable<T>];
+  'update:modelValue': [payload: Exclude<T, undefined>];
 };
 
 /**

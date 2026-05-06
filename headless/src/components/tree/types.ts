@@ -51,7 +51,7 @@ export interface TreeRootProps<
   /** The controlled value of the tree. Can be bound-with with `v-model`. */
   modelValue?: U;
   /** The value of the tree when initially rendered. Use when you do not need to control the state of the tree */
-  defaultValue?: NonNullable<U>;
+  defaultValue?: U;
   /** Determines whether a "single" or "multiple" items can be selected at a time. */
   multiple?: IsMultiple<U, M>;
   /** List of items */

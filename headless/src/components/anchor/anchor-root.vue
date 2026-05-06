@@ -49,7 +49,7 @@ const dir = useDirection(() => props.dir);
 
 const activeHref = useControllableState(
   () => props.modelValue,
-  value => emit('update:modelValue', value ?? ''),
+  value => emit('update:modelValue', value),
   ''
 );
 

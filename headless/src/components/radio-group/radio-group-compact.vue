@@ -33,7 +33,7 @@ const getItemKey = (item: S) => String(item.value);
 const getItemId = (index: number) => `${props.itemProps?.id || `radio-${defaultId}`}-${index}`;
 
 const handleModelValueChange = (value: AcceptableBooleanValue) => {
-  emit('update:modelValue', value as NonNullable<T>);
+  emit('update:modelValue', value as Exclude<T, undefined>);
 };
 </script>
 

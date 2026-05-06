@@ -23,7 +23,7 @@ const emit = defineEmits<ColorPickerRootEmits>();
 
 const [rootElement, setRootElement] = useForwardElement();
 
-const modelValue = useControllableState<string | ColorValue | undefined>(
+const modelValue = useControllableState(
   () => props.modelValue,
   value => {
     emit('update:modelValue', typeof value === 'string' ? value : formatColor(value, props.format));

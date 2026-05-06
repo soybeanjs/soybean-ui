@@ -26,7 +26,7 @@ const forwardedProps = useOmitProps(props, ['class', 'ui', 'variant', 'color', '
 
 const compactItems = computed(() => props.items as RadioGroupOptionData<T>[]);
 
-const handleModelValueChange = (value: NonNullable<T>) => {
+const handleModelValueChange = (value: Exclude<T, undefined>) => {
   emit('update:modelValue', value);
 };
 

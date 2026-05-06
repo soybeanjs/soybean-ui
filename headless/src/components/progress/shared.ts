@@ -36,7 +36,7 @@ export function getValidMax(value: number | undefined) {
 
 export function getValidModelValue(value: number | null | undefined, maxValue: number) {
   if (isNullish(value)) {
-    return value;
+    return value ?? null;
   }
 
   if (!isValidPositiveNumber(value) && value !== 0) {

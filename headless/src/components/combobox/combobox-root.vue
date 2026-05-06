@@ -1,9 +1,10 @@
 <script setup lang="ts" generic="M extends boolean = false">
 import { computed, nextTick, onUnmounted, shallowRef, useId, useTemplateRef, useAttrs } from 'vue';
-import type { ComponentPublicInstance } from 'vue';
+import type { ComponentPublicInstance, ShallowRef } from 'vue';
 import { createEventHook } from '@vueuse/core';
 import { useControllableState, useOmitProps, useSelection } from '../../composables';
 import { transformPropsToContext, getElFromTemplateRef } from '../../shared';
+import type { MaybeArray } from '../../types';
 import { ListboxRoot } from '../listbox';
 import { PopperRoot } from '../popper';
 import { provideComboboxRootContext } from './context';
@@ -56,7 +57,7 @@ const parentElement = computed(() => getElFromTemplateRef(listboxElement.value a
 const open = useControllableState(
   () => props.open,
   value => {
-    emit('update:open', value ?? false);
+    emit('update:open', value);
   },
   props.defaultOpen ?? false
 );
@@ -175,7 +176,7 @@ provideComboboxRootContext({
     'openOnClick',
     'resetModelValueOnClear'
   ]),
-  modelValue,
+  modelValue: modelValue as ShallowRef<MaybeArray<string>>,
   isMultiple,
   onModelValueChange,
   resetModelValue,

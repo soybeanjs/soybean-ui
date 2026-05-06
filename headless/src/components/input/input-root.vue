@@ -23,9 +23,9 @@ const cls = useInputUi('root');
 const modelValue = useControllableState(
   () => props.modelValue,
   value => {
-    emit('update:modelValue', value as string);
+    emit('update:modelValue', value);
   },
-  props.defaultValue
+  props.defaultValue ?? ''
 );
 
 const formControl = computed(() => isFormControl(rootElement.value));

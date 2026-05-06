@@ -67,15 +67,15 @@ const defaultTime = getDefaultTime({
   defaultValue: modelValue.value.start
 });
 
-const placeholder = useControllableState<TimeValue>(
-  () => props.placeholder as TimeValue,
+const placeholder = useControllableState(
+  () => props.placeholder,
   value => emit('update:placeholder', value),
   props.defaultPlaceholder ?? defaultTime.copy()
 );
 
 const open = useControllableState(
   () => props.open,
-  value => emit('update:open', value ?? false),
+  value => emit('update:open', value),
   props.defaultOpen
 );
 

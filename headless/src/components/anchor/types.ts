@@ -183,7 +183,7 @@ export interface AnchorRootContextParams extends PropsToContext<AnchorRootProps,
   /**
    * Active href used by the component context.
    */
-  activeHref: ShallowRef<string | undefined>;
+  activeHref: ShallowRef<string>;
   /**
    * Callback invoked when the link click event fires.
    */

@@ -1,6 +1,5 @@
 <script setup lang="ts" generic="T extends CommandSingleOptionData = CommandSingleOptionData">
 import { computed } from 'vue';
-import type { ShallowRef } from 'vue';
 import { useFuse } from '@vueuse/integrations/useFuse';
 import { defu } from 'defu';
 import { useControllableState, useOmitProps } from '../../composables';
@@ -50,10 +49,10 @@ const forwardedProps = useOmitProps(props, [
 const searchTerm = useControllableState(
   () => props.searchTerm,
   value => {
-    emit('update:searchTerm', value ?? '');
+    emit('update:searchTerm', value);
   },
-  props.inputProps?.defaultValue || ''
-) as ShallowRef<string>;
+  props.inputProps?.defaultValue ?? ''
+);
 
 const fuseOptions = computed(() =>
   defu(props.fuseOptions, {

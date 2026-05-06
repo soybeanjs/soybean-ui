@@ -18,12 +18,13 @@ const props = withDefaults(defineProps<ColorSwatchPickerRootProps<M>>(), {
 
 const emit = defineEmits<ColorSwatchPickerRootEmits<M>>();
 
-const modelValue = useControllableState<M extends true ? string[] | undefined : string | undefined>(
-  () => props.modelValue as M extends true ? string[] | undefined : string | undefined,
+const modelValue = useControllableState(
+  () => props.modelValue,
   value => {
     emit('update:modelValue', value as M extends true ? string[] : string);
   },
-  (props.defaultValue ?? (props.multiple ? [] : undefined)) as M extends true ? string[] : string
+  // @ts-expect-error ignore default value type mismatch since it can be string or string[]
+  props.defaultValue ?? (props.multiple ? [] : '')
 );
 
 const forwardedProps = useOmitProps(props, ['modelValue', 'defaultValue', 'class']);

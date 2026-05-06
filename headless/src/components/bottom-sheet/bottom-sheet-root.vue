@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { computed, toRefs } from 'vue';
-import type { ShallowRef } from 'vue';
 import { useControllableState } from '../../composables';
 import { DialogRoot } from '../dialog';
 import { provideDrawerRootContext } from './context';
@@ -41,17 +40,17 @@ defineSlots<BottomSheetRootSlots>();
 const open = useControllableState(
   () => props.open,
   value => {
-    emit('update:open', value ?? false);
+    emit('update:open', value);
   },
-  props.defaultOpen
-) as ShallowRef<boolean>;
+  props.defaultOpen ?? false
+);
 
 const activeSnapPoint = useControllableState(
   () => props.activeSnapPoint,
   value => {
-    emit('update:activeSnapPoint', value!);
+    emit('update:activeSnapPoint', value);
   },
-  undefined
+  null
 );
 
 const fadeFromIndex = computed(() => props.fadeFromIndex ?? (props.snapPoints && props.snapPoints.length - 1));

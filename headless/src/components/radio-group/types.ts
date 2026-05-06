@@ -39,7 +39,7 @@ export interface RadioGroupRootProps<T extends AcceptableBooleanValue = Acceptab
  */
 export type RadioGroupRootEmits<T extends AcceptableBooleanValue = AcceptableBooleanValue> = {
   /** Event handler called when the radio group value changes */
-  'update:modelValue': [payload: NonNullable<T>];
+  'update:modelValue': [payload: Exclude<T, undefined>];
 };
 
 /**

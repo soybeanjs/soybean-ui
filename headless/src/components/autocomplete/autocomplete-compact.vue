@@ -1,6 +1,5 @@
 <script setup lang="ts" generic="T extends AutocompleteSingleOptionData = AutocompleteSingleOptionData">
 import { computed } from 'vue';
-import type { ShallowRef } from 'vue';
 import { useFuse } from '@vueuse/integrations/useFuse';
 import { defu } from 'defu';
 import { useControllableState, useOmitProps } from '../../composables';
@@ -71,10 +70,10 @@ const forwardedProps = useOmitProps(props, [
 const modelValue = useControllableState(
   () => props.modelValue,
   value => {
-    emit('update:modelValue', value ?? '');
+    emit('update:modelValue', value);
   },
   props.defaultValue ?? ''
-) as ShallowRef<string>;
+);
 
 const fuseOptions = computed(() =>
   defu(props.fuseOptions, {

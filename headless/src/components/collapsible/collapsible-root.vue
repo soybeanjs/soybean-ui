@@ -24,10 +24,9 @@ const cls = useCollapsibleUi('root');
 const open = useControllableState(
   () => props.open,
   value => {
-    if (value === undefined) return;
     emit('update:open', value);
   },
-  props.defaultOpen || false
+  props.defaultOpen
 );
 
 const { dataDisabled, dataState } = provideCollapsibleRootContext({

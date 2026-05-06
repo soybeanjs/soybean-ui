@@ -37,8 +37,8 @@ const locale = useLocale(() => props.locale);
 const dir = useDirection(() => props.dir);
 const formatter = useDateFormatter(locale.value);
 
-const modelValue = useControllableState<DateRange>(
-  () => props.modelValue as DateRange,
+const modelValue = useControllableState(
+  () => props.modelValue,
   value => {
     emit('update:modelValue', value);
     emit('update:startValue', value.start);
@@ -53,15 +53,15 @@ const defaultDate = getDefaultDate({
   locale: props.locale
 }).set({ day: 1 });
 
-const placeholder = useControllableState<DateValue>(
-  () => props.placeholder as DateValue,
+const placeholder = useControllableState(
+  () => props.placeholder,
   value => emit('update:placeholder', value),
   props.defaultPlaceholder?.set({ day: 1 }) ?? defaultDate.copy()
 );
 
 const open = useControllableState(
   () => props.open,
-  value => emit('update:open', value ?? false),
+  value => emit('update:open', value),
   props.defaultOpen
 );
 

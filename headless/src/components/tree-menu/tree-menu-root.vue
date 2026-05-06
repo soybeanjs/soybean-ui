@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { computed, watch } from 'vue';
-import type { ShallowRef } from 'vue';
 import { useControllableState } from '../../composables';
 import { provideTreeMenuRootContext, useTreeMenuUi } from './context';
 import type { TreeMenuCollapsedState, TreeMenuRootEmits, TreeMenuRootProps } from './types';
@@ -23,26 +22,26 @@ const cls = useTreeMenuUi('root');
 const modelValue = useControllableState(
   () => props.modelValue,
   value => {
-    emit('update:modelValue', value as string);
+    emit('update:modelValue', value);
   },
   props.defaultValue
-) as ShallowRef<string>;
+);
 
 const expanded = useControllableState(
   () => props.expanded,
   value => {
-    emit('update:expanded', value ?? []);
+    emit('update:expanded', value);
   },
   props.defaultExpanded
-) as ShallowRef<string[]>;
+);
 
 const collapsed = useControllableState(
   () => props.collapsed,
   value => {
-    emit('update:collapsed', value ?? false);
+    emit('update:collapsed', value);
   },
   props.defaultCollapsed
-) as ShallowRef<boolean>;
+);
 
 const dataState = computed<TreeMenuCollapsedState>(() => (collapsed.value ? 'collapsed' : 'expanded'));
 

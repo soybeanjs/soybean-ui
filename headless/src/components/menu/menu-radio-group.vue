@@ -1,7 +1,6 @@
 <script setup lang="ts" generic="T extends AcceptableBooleanValue">
 import { computed } from 'vue';
 import { useControllableState } from '../../composables';
-import { isNullish } from '../../shared';
 import type { AcceptableBooleanValue } from '../../types';
 import { Primitive } from '../primitive';
 import { provideMenuRadioGroupContext, useMenuUi } from './context';
@@ -20,10 +19,10 @@ const cls = useMenuUi('radioGroup');
 const modelValue = useControllableState(
   () => props.modelValue,
   value => {
-    if (isNullish(value)) return;
-    emit('update:modelValue', value as NonNullable<T>);
+    emit('update:modelValue', value);
   },
-  props.defaultValue
+  // @ts-expect-error - The default value can be null
+  props.defaultValue ?? null
 );
 
 provideMenuRadioGroupContext({

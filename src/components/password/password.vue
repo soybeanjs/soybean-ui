@@ -24,7 +24,7 @@ const forwardedProps = useOmitProps(props, ['class', 'size', 'ui', 'clearable', 
 const visible = useControllableState(
   () => props.visible,
   value => {
-    emit('update:visible', value as boolean);
+    emit('update:visible', value);
   },
   false
 );

@@ -1,7 +1,7 @@
 <script setup lang="ts" generic="T extends AcceptableBooleanValue">
 import { computed, useTemplateRef } from 'vue';
 import { useControllableState } from '../../composables';
-import { isFormControl, isNullish, transformPropsToContext } from '../../shared';
+import { isFormControl, transformPropsToContext } from '../../shared';
 import type { AcceptableBooleanValue } from '../../types';
 import { RovingFocusGroup } from '../roving-focus';
 import { VisuallyHiddenInput } from '../visually-hidden';
@@ -29,10 +29,10 @@ const rootElement = useTemplateRef('rootElement');
 const modelValue = useControllableState(
   () => props.modelValue,
   value => {
-    if (isNullish(value)) return;
-    emit('update:modelValue', value as NonNullable<T>);
+    emit('update:modelValue', value);
   },
-  props.defaultValue
+  // @ts-expect-error defaultValue can be null
+  props.defaultValue ?? null
 );
 
 const formControl = computed(() => isFormControl(rootElement.value));

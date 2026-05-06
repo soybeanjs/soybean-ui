@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { computed, shallowRef } from 'vue';
-import type { ShallowRef } from 'vue';
 import { useControllableState, useForwardElement, useOmitProps } from '../../composables';
 import { transformPropsToContext } from '../../shared';
 import { Primitive } from '../primitive';
@@ -28,10 +27,10 @@ const mergedClass = computed(() => [cls.value, props.class]);
 const modelValue = useControllableState(
   () => props.modelValue,
   value => {
-    emit('update:modelValue', value ?? '');
+    emit('update:modelValue', value);
   },
   props.defaultValue ?? ''
-) as ShallowRef<string>;
+);
 
 const currentTabStopId = shallowRef<string | null>(null);
 

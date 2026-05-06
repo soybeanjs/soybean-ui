@@ -21,7 +21,7 @@ const emit = defineEmits<MenuRootEmits>();
 const open = useControllableState(
   () => props.open,
   value => {
-    emit('update:open', value ?? false);
+    emit('update:open', value);
   },
   props.defaultOpen
 );

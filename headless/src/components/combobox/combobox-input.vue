@@ -39,7 +39,7 @@ const forwardedProps = useOmitProps(props, ['displayValue']);
 const inputValue = useControllableState(
   () => props.modelValue,
   value => {
-    emit('update:modelValue', value ?? '');
+    emit('update:modelValue', value);
   },
   props.defaultValue ?? ''
 );

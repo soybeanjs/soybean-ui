@@ -35,11 +35,11 @@ const [rootElement, setRootElement] = useForwardElement(onContainerElementChange
 const dir = useDirection(() => props.dir);
 
 const modelValue = useControllableState(
-  () => props.modelValue as TagsInputAcceptableValue[] | undefined,
+  () => props.modelValue,
   value => {
-    emit('update:modelValue', value as T[]);
+    emit('update:modelValue', value);
   },
-  (props.defaultValue ?? []) as TagsInputAcceptableValue[]
+  props.defaultValue ?? []
 );
 
 const selectedElement = shallowRef<HTMLElement>();

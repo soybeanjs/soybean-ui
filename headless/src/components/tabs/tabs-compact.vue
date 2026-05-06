@@ -35,7 +35,7 @@ const forwardedProps = useOmitProps(props, [
 
 const ui = useTabsUi();
 
-const onUpdateModelValue = (value: NonNullable<AcceptableValue>) => {
+const onUpdateModelValue = (value: AcceptableValue) => {
   emit('update:modelValue', value as T['value']);
 };
 </script>

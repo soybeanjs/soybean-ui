@@ -41,10 +41,10 @@ const forwardedProps = useOmitProps(props, [
 const modelValue = useControllableState(
   () => props.modelValue,
   value => {
-    emit('update:modelValue', value ?? '');
+    emit('update:modelValue', value);
   },
   ''
-) as ShallowRef<string>;
+);
 
 const items = useControllableState(
   () => props.items,

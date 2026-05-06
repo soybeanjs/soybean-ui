@@ -29,13 +29,13 @@ const modelValue = useControllableState(
   value => {
     emit('update:modelValue', value);
   },
-  undefined
+  null
 );
 
 const max = useControllableState(
   () => props.max,
   value => {
-    emit('update:max', value ?? DEFAULT_MAX);
+    emit('update:max', value);
   },
   DEFAULT_MAX
 );

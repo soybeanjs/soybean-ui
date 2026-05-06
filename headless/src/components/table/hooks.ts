@@ -111,7 +111,7 @@ export function useTableCompactState(options: UseTableCompactStateOptions) {
   const expanded = useControllableState(
     () => props.expanded,
     value => {
-      emit('update:expanded', value ?? []);
+      emit('update:expanded', value);
     },
     getDefaultTableExpandedKeys(props.data, props.rowKey, {
       getChildren: props.getChildren,
@@ -119,31 +119,32 @@ export function useTableCompactState(options: UseTableCompactStateOptions) {
       defaultExpanded: props.defaultExpanded,
       includeLeaves: Boolean(toValue(hasExpandedRowSlot))
     })
-  ) as ShallowRef<TableUnifiedKey[]>;
+  );
 
   const sortState = useControllableState(
     () => props.sortState,
     value => {
       emit('update:sortState', value);
     },
-    props.defaultSortState
+    props.defaultSortState,
+    true
   );
 
   const filterState = useControllableState(
     () => props.filterState,
     value => {
-      emit('update:filterState', value ?? {});
+      emit('update:filterState', value);
     },
     props.defaultFilterState ?? {}
-  ) as ShallowRef<TableFilterState>;
+  );
 
   const columnWidths = useControllableState(
     () => props.columnWidths,
     value => {
-      emit('update:columnWidths', value ?? {});
+      emit('update:columnWidths', value);
     },
     props.defaultColumnWidths ?? {}
-  ) as ShallowRef<TableColumnWidthState>;
+  );
 
   const {
     modelValue: selected,

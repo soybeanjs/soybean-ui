@@ -21,7 +21,7 @@ const emit = defineEmits<PaginationRootEmits>();
 const cls = usePaginationUi('root');
 
 const page = useControllableState(
-  () => props.page as number,
+  () => props.page,
   value => {
     emit('update:page', value);
   },
@@ -29,7 +29,7 @@ const page = useControllableState(
 );
 
 const pageSize = useControllableState(
-  () => props.pageSize as number,
+  () => props.pageSize,
   value => {
     emit('update:pageSize', value);
   },

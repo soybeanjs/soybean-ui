@@ -41,7 +41,7 @@ const forwardedProps = useOmitProps(
 const modelValue = useControllableState(
   () => props.modelValue,
   value => {
-    emit('update:modelValue', value ?? '');
+    emit('update:modelValue', value);
   },
   props.defaultValue ?? ''
 );
@@ -49,7 +49,7 @@ const modelValue = useControllableState(
 const open = useControllableState(
   () => props.open,
   value => {
-    emit('update:open', value ?? false);
+    emit('update:open', value);
   },
   props.defaultOpen
 );
