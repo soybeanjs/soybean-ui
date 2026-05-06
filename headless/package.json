@@ -101,7 +101,7 @@
     "@soybeanjs/colord": "^0.5.0",
     "@standard-schema/spec": "^1.1.0",
     "@tanstack/vue-virtual": "^3.13.24",
-    "@vue/shared": "^3.5.33",
+    "@vue/shared": "^3.5.34",
     "@vueuse/core": "^14.3.0",
     "@vueuse/integrations": "^14.3.0",
     "@vueuse/router": "^14.3.0",
@@ -121,7 +121,7 @@
     "unplugin-vue": "7.2.0",
     "unplugin-vue-components": "^32.0.0",
     "unplugin-vue-jsx": "0.8.1",
-    "vue": "3.5.33",
+    "vue": "3.5.34",
     "vue-router": "5.0.6"
   },
   "peerDependencies": {
@@ -143,5 +143,5 @@
       "optional": true
     }
   },
-  "packageManager": "pnpm@10.33.2"
+  "packageManager": "pnpm@10.33.4"
 }
