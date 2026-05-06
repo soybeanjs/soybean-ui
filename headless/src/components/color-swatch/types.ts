@@ -1,11 +1,10 @@
 import type { ColorValue } from '../../shared';
-import { BaseProps } from '../../types';
-import type { PrimitiveProps } from '../primitive/types';
+import type { PrimitiveWithBaseProps } from '../primitive/types';
 
 /**
  * Properties for the ColorSwatch component.
  */
-export interface ColorSwatchProps extends PrimitiveProps, Omit<BaseProps, 'color'> {
+export interface ColorSwatchProps extends Omit<PrimitiveWithBaseProps, 'color'> {
   /**
    * Theme color of the component.
    */

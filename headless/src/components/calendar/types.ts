@@ -1,9 +1,9 @@
 import type { DateValue } from '@internationalized/date';
 import type { ComputedRef, ShallowRef } from 'vue';
 import type { Formatter, Grid, Matcher, WeekDayFormat, WeekStartsOn } from '../../date';
-import type { BaseProps, Direction, PropsToContext, UiClass } from '../../types';
+import type { Direction, PropsToContext, UiClass } from '../../types';
 import type { ButtonProps } from '../button/types';
-import type { PrimitiveProps } from '../primitive/types';
+import type { PrimitiveWithBaseProps } from '../primitive/types';
 import type { SelectOptionData } from '../select/types';
 
 /**
@@ -16,7 +16,7 @@ export type CalendarModelValue<M extends boolean = false> = M extends true
 /**
  * Properties for the CalendarRoot component.
  */
-export interface CalendarRootProps<M extends boolean = false> extends PrimitiveProps, Omit<BaseProps, 'placeholder'> {
+export interface CalendarRootProps<M extends boolean = false> extends Omit<PrimitiveWithBaseProps, 'placeholder'> {
   /**
    * Default value.
    */
@@ -132,36 +132,36 @@ export type CalendarRootEmits<M extends boolean = false> = {
 /**
  * Properties for the CalendarHeader component.
  */
-export interface CalendarHeaderProps extends PrimitiveProps, BaseProps {}
+export interface CalendarHeaderProps extends PrimitiveWithBaseProps {}
 /**
  * Properties for the CalendarHeading component.
  */
-export interface CalendarHeadingProps extends PrimitiveProps, BaseProps {}
+export interface CalendarHeadingProps extends PrimitiveWithBaseProps {}
 /**
  * Properties for the CalendarGrid component.
  */
-export interface CalendarGridProps extends PrimitiveProps, BaseProps {}
+export interface CalendarGridProps extends PrimitiveWithBaseProps {}
 /**
  * Properties for the CalendarGridHead component.
  */
-export interface CalendarGridHeadProps extends PrimitiveProps, BaseProps {}
+export interface CalendarGridHeadProps extends PrimitiveWithBaseProps {}
 /**
  * Properties for the CalendarGridBody component.
  */
-export interface CalendarGridBodyProps extends PrimitiveProps, BaseProps {}
+export interface CalendarGridBodyProps extends PrimitiveWithBaseProps {}
 /**
  * Properties for the CalendarGridRow component.
  */
-export interface CalendarGridRowProps extends PrimitiveProps, BaseProps {}
+export interface CalendarGridRowProps extends PrimitiveWithBaseProps {}
 /**
  * Properties for the CalendarHeadCell component.
  */
-export interface CalendarHeadCellProps extends PrimitiveProps, BaseProps {}
+export interface CalendarHeadCellProps extends PrimitiveWithBaseProps {}
 
 /**
  * Properties for the CalendarCell component.
  */
-export interface CalendarCellProps extends PrimitiveProps, BaseProps {
+export interface CalendarCellProps extends PrimitiveWithBaseProps {
   /**
    * Date.
    */
@@ -171,7 +171,7 @@ export interface CalendarCellProps extends PrimitiveProps, BaseProps {
 /**
  * Properties for the CalendarCellTrigger component.
  */
-export interface CalendarCellTriggerProps extends PrimitiveProps, BaseProps {
+export interface CalendarCellTriggerProps extends PrimitiveWithBaseProps {
   /**
    * Day.
    */

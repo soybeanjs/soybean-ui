@@ -1,3 +1,3 @@
 export { Primitive } from './primitive';
 
-export type { PrimitiveProps, AsTag } from './types';
+export type { PrimitiveProps, PrimitiveWithBaseProps, AsTag } from './types';

@@ -1,14 +1,6 @@
 import type { ComputedRef, ShallowRef } from 'vue';
-import type {
-  BaseProps,
-  DataOrientation,
-  Direction,
-  FormFieldCommonProps,
-  PropsToContext,
-  Side,
-  UiClass
-} from '../../types';
-import type { PrimitiveProps } from '../primitive/types';
+import type { DataOrientation, Direction, FormFieldCommonProps, PropsToContext, Side, UiClass } from '../../types';
+import type { PrimitiveWithBaseProps } from '../primitive/types';
 
 /**
  * Type information for SliderThumbAlignment.
@@ -18,7 +10,7 @@ export type SliderThumbAlignment = 'contain' | 'overflow';
 /**
  * Properties for the SliderRoot component.
  */
-export interface SliderRootProps extends PrimitiveProps, FormFieldCommonProps, BaseProps {
+export interface SliderRootProps extends FormFieldCommonProps, PrimitiveWithBaseProps {
   /** The controlled value of the slider. Can be bind as `v-model`. */
   modelValue?: number[];
   /** The initial value of the slider when uncontrolled. */
@@ -56,17 +48,17 @@ export type SliderRootEmits = {
 /**
  * Properties for the SliderTrack component.
  */
-export interface SliderTrackProps extends PrimitiveProps, BaseProps {}
+export interface SliderTrackProps extends PrimitiveWithBaseProps {}
 
 /**
  * Properties for the SliderRange component.
  */
-export interface SliderRangeProps extends PrimitiveProps, BaseProps {}
+export interface SliderRangeProps extends PrimitiveWithBaseProps {}
 
 /**
  * Properties for the SliderThumb component.
  */
-export interface SliderThumbProps extends PrimitiveProps, BaseProps {
+export interface SliderThumbProps extends PrimitiveWithBaseProps {
   /** The thumb index in the current slider value array. */
   index: number;
 }

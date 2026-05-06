@@ -1,6 +1,6 @@
 import type { ShallowRef } from 'vue';
 import type { BaseProps, AcceptableValue, DefinedValue, ForceMountProps, PropsToContext, UiClass } from '../../types';
-import type { PrimitiveProps } from '../primitive/types';
+import type { PrimitiveWithBaseProps } from '../primitive/types';
 import type { RovingFocusGroupProps } from '../roving-focus/types';
 
 /**
@@ -60,7 +60,7 @@ export interface TabsContentProps extends ForceMountProps, BaseProps {
 /**
  * Properties for the TabsTrigger component.
  */
-export interface TabsTriggerProps extends PrimitiveProps, BaseProps {
+export interface TabsTriggerProps extends PrimitiveWithBaseProps {
   /** A unique value that associates the trigger with a content. */
   value: DefinedValue;
   /** When `true`, prevents the user from interacting with the tab. */
@@ -70,7 +70,7 @@ export interface TabsTriggerProps extends PrimitiveProps, BaseProps {
 /**
  * Properties for the TabsIndicator component.
  */
-export interface TabsIndicatorProps extends PrimitiveProps, BaseProps {}
+export interface TabsIndicatorProps extends PrimitiveWithBaseProps {}
 
 /**
  * Option data for the Tabs component.

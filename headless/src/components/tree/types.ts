@@ -1,16 +1,8 @@
 import type { ComputedRef, ShallowRef } from 'vue';
 import type { EventHook } from '@vueuse/core';
-import type {
-  BaseProps,
-  Direction,
-  FocusIntent,
-  MaybeArray,
-  PropsToContext,
-  TreeSelectEvent,
-  TreeToggleEvent
-} from '../../types';
+import type { Direction, FocusIntent, MaybeArray, PropsToContext, TreeSelectEvent, TreeToggleEvent } from '../../types';
 import type { CollectionItemData } from '../../composables/use-collection';
-import type { PrimitiveProps } from '../primitive/types';
+import type { PrimitiveWithBaseProps } from '../primitive/types';
 import type { VirtualizerItemProps, VirtualizerRootProps } from '../virtualizer/types';
 
 /**
@@ -54,8 +46,7 @@ export interface TreeRootProps<
   T extends TreeItemData = TreeItemData,
   U extends MaybeArray<string> | undefined = MaybeArray<string> | undefined,
   M extends boolean = boolean
->
-  extends PrimitiveProps, Omit<BaseProps, 'onSelect' | 'onToggle'> {
+> extends Omit<PrimitiveWithBaseProps, 'onSelect' | 'onToggle'> {
   /** The controlled value of the tree. Can be bound-with with `v-model`. */
   modelValue?: U;
   /** The value of the tree when initially rendered. Use when you do not need to control the state of the tree */
@@ -153,7 +144,7 @@ export type FlattenedItem<T extends TreeItemData> = {
 /**
  * Properties for the TreeItem component.
  */
-export interface TreeItemProps extends PrimitiveProps, Omit<BaseProps, 'onSelect' | 'onToggle'> {
+export interface TreeItemProps extends Omit<PrimitiveWithBaseProps, 'onSelect' | 'onToggle'> {
   /**
    * Value associated with the current item.
    */

@@ -1,5 +1,5 @@
 import type { ComputedRef, ShallowRef } from 'vue';
-import type { PrimitiveProps } from '../primitive/types';
+import type { PrimitiveWithBaseProps } from '../primitive/types';
 import type { BaseProps, PropsToContext, UiClass } from '../../types';
 
 /**
@@ -61,12 +61,12 @@ export type PageTabsItemEmits = {
 /**
  * Properties for the PageTabsClose component.
  */
-export interface PageTabsCloseProps extends PrimitiveProps, BaseProps {}
+export interface PageTabsCloseProps extends PrimitiveWithBaseProps {}
 
 /**
  * Properties for the PageTabsPin component.
  */
-export interface PageTabsPinProps extends PrimitiveProps, BaseProps {}
+export interface PageTabsPinProps extends PrimitiveWithBaseProps {}
 
 /**
  * Context for the PageTabsRoot component.

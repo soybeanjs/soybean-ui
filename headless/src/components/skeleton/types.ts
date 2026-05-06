@@ -1,7 +1,6 @@
-import type { BaseProps } from '../../types';
-import type { PrimitiveProps } from '../primitive/types';
+import type { PrimitiveWithBaseProps } from '../primitive/types';
 
 /**
  * Properties for the Skeleton component.
  */
-export interface SkeletonProps extends PrimitiveProps, BaseProps {}
+export interface SkeletonProps extends PrimitiveWithBaseProps {}

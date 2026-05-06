@@ -15,7 +15,7 @@ import type {
 } from '../../types';
 import type { ButtonProps } from '../button/types';
 import type { IconValue } from '../_icon/types';
-import type { PrimitiveProps } from '../primitive/types';
+import type { PrimitiveWithBaseProps } from '../primitive/types';
 import type { PopperAnchorProps, PopperArrowProps, PopperPositionerProps } from '../popper/types';
 import type { PortalProps } from '../portal/types';
 
@@ -187,7 +187,7 @@ export interface SelectTriggerIconProps extends BaseProps {}
 /**
  * Properties for the SelectItem component.
  */
-export interface SelectItemProps extends PrimitiveProps, Omit<BaseProps, 'onSelect'> {
+export interface SelectItemProps extends Omit<PrimitiveWithBaseProps, 'onSelect'> {
   /** The value given as data when submitted with a `name`. */
   value: DefinedValue;
   /** When `true`, prevents the user from interacting with the item. */
@@ -230,7 +230,7 @@ export interface SelectItemTextProps extends BaseProps {}
 /**
  * Properties for the SelectItemIndicator component.
  */
-export interface SelectItemIndicatorProps extends PrimitiveProps, BaseProps {}
+export interface SelectItemIndicatorProps extends PrimitiveWithBaseProps {}
 
 /**
  * Events for the SelectItemAlignedPosition component.

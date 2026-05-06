@@ -1,6 +1,6 @@
 import type { ComputedRef, ShallowRef } from 'vue';
-import type { BaseProps, Direction, FormFieldCommonProps, PropsToContext, UiClass, VNodeRef } from '../../types';
-import type { PrimitiveProps } from '../primitive/types';
+import type { Direction, FormFieldCommonProps, PropsToContext, UiClass, VNodeRef } from '../../types';
+import type { PrimitiveWithBaseProps } from '../primitive/types';
 import type { ButtonProps } from '../button/types';
 
 /**
@@ -41,7 +41,7 @@ export interface EditablePlaceholder {
  * Properties for the EditableRoot component.
  */
 export interface EditableRootProps
-  extends PrimitiveProps, FormFieldCommonProps, Omit<BaseProps, 'onSubmit' | 'placeholder'> {
+  extends FormFieldCommonProps, Omit<PrimitiveWithBaseProps, 'onSubmit' | 'placeholder'> {
   /** The default value of the editable field. */
   defaultValue?: string;
   /** The controlled value of the editable field. */
@@ -85,17 +85,17 @@ export type EditableRootEmits = {
 /**
  * Properties for the EditableArea component.
  */
-export interface EditableAreaProps extends PrimitiveProps, BaseProps {}
+export interface EditableAreaProps extends PrimitiveWithBaseProps {}
 
 /**
  * Properties for the EditablePreview component.
  */
-export interface EditablePreviewProps extends PrimitiveProps, BaseProps {}
+export interface EditablePreviewProps extends PrimitiveWithBaseProps {}
 
 /**
  * Properties for the EditableInput component.
  */
-export interface EditableInputProps extends PrimitiveProps, Omit<BaseProps, 'id'> {
+export interface EditableInputProps extends Omit<PrimitiveWithBaseProps, 'id'> {
   /**
    * Id.
    */

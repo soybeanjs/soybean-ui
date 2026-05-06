@@ -1,13 +1,12 @@
 import type { ComputedRef, ShallowRef } from 'vue';
 import type { DateRange, DateValue, Formatter } from '../../date';
-import type { BaseProps, Direction, FormFieldCommonProps, PropsToContext, UiClass } from '../../types';
-import type { PrimitiveProps } from '../primitive/types';
+import type { Direction, FormFieldCommonProps, PropsToContext, UiClass } from '../../types';
+import type { PrimitiveWithBaseProps } from '../primitive/types';
 
 /**
  * Properties for the MonthRangePickerRoot component.
  */
-export interface MonthRangePickerRootProps
-  extends PrimitiveProps, FormFieldCommonProps, Omit<BaseProps, 'placeholder'> {
+export interface MonthRangePickerRootProps extends FormFieldCommonProps, Omit<PrimitiveWithBaseProps, 'placeholder'> {
   /**
    * Default value.
    */
@@ -95,11 +94,11 @@ export type MonthRangePickerRootEmits = {
 /**
  * Properties for the MonthRangePickerTrigger component.
  */
-export interface MonthRangePickerTriggerProps extends PrimitiveProps, BaseProps {}
+export interface MonthRangePickerTriggerProps extends PrimitiveWithBaseProps {}
 /**
  * Properties for the MonthRangePickerPopup component.
  */
-export interface MonthRangePickerPopupProps extends PrimitiveProps, BaseProps {}
+export interface MonthRangePickerPopupProps extends PrimitiveWithBaseProps {}
 
 /**
  * Context for the MonthRangePickerRoot component.

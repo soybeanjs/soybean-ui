@@ -6,7 +6,7 @@ import type {
   VirtualizerOptions as _VirtualizerOptions
 } from '@tanstack/vue-virtual';
 import type { BaseProps, PropsToContext } from '../../types';
-import type { PrimitiveProps } from '../primitive';
+import type { PrimitiveWithBaseProps } from '../primitive/types';
 
 /**
  * Type information for VirtualizerOptions.
@@ -22,8 +22,9 @@ export interface VirtualizerOptions extends Omit<
 /**
  * Properties for the VirtualizerRoot component.
  */
-export interface VirtualizerRootProps<T extends Record<string, any> = Record<string, any>>
-  extends PrimitiveProps, BaseProps {
+export interface VirtualizerRootProps<
+  T extends Record<string, any> = Record<string, any>
+> extends PrimitiveWithBaseProps {
   /**
    * The height of the virtualizer root
    */
@@ -50,7 +51,7 @@ export interface VirtualizerDynamicContentProps extends BaseProps {}
 /**
  * Properties for the VirtualizerContent component.
  */
-export interface VirtualizerContentProps extends PrimitiveProps, BaseProps {
+export interface VirtualizerContentProps extends PrimitiveWithBaseProps {
   /**
    * Properties forwarded to the dynamic content element.
    */
@@ -60,7 +61,7 @@ export interface VirtualizerContentProps extends PrimitiveProps, BaseProps {
 /**
  * Properties for the VirtualizerItem component.
  */
-export interface VirtualizerItemProps extends PrimitiveProps, BaseProps {
+export interface VirtualizerItemProps extends PrimitiveWithBaseProps {
   /**
    * Data.
    */

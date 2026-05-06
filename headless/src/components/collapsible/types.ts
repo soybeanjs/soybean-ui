@@ -1,12 +1,12 @@
 import type { Ref } from 'vue';
-import type { BaseProps, ForceMountProps, PropsToContext, UiClass } from '../../types';
-import type { PrimitiveProps } from '../primitive/types';
+import type { ForceMountProps, PropsToContext, UiClass } from '../../types';
+import type { PrimitiveWithBaseProps } from '../primitive/types';
 import type { ButtonProps } from '../button/types';
 
 /**
  * Properties for the CollapsibleRoot component.
  */
-export interface CollapsibleRootProps extends PrimitiveProps, BaseProps {
+export interface CollapsibleRootProps extends PrimitiveWithBaseProps {
   /**
    * The open state of the collapsible when it is initially rendered.
    *
@@ -32,7 +32,7 @@ export type CollapsibleRootEmits = {
 /**
  * Properties for the CollapsibleContent component.
  */
-export interface CollapsibleContentProps extends PrimitiveProps, ForceMountProps, BaseProps {}
+export interface CollapsibleContentProps extends ForceMountProps, PrimitiveWithBaseProps {}
 
 /**
  * Properties for the CollapsibleTrigger component.

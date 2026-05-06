@@ -1,6 +1,6 @@
 import type { ComputedRef, SVGAttributes } from 'vue';
 import type { BaseProps, Direction, UiClass } from '../../types';
-import type { PrimitiveProps } from '../primitive/types';
+import type { PrimitiveWithBaseProps } from '../primitive/types';
 
 /**
  * State values for ProgressState.
@@ -10,7 +10,7 @@ export type ProgressState = 'indeterminate' | 'loading' | 'complete';
 /**
  * Properties for the ProgressRoot component.
  */
-export interface ProgressRootProps extends PrimitiveProps, BaseProps {
+export interface ProgressRootProps extends PrimitiveWithBaseProps {
   /**
    * Reading direction of the component.
    */
@@ -42,7 +42,7 @@ export type ProgressRootEmits = {
 /**
  * Properties for the ProgressIndicator component.
  */
-export interface ProgressIndicatorProps extends PrimitiveProps, BaseProps {}
+export interface ProgressIndicatorProps extends PrimitiveWithBaseProps {}
 
 /**
  * Properties for the ProgressCircle component.

@@ -1,11 +1,11 @@
 import type { ComputedRef, CSSProperties, ShallowRef } from 'vue';
-import type { BaseProps, DataOrientation, Direction, PropsToContext, UiClass } from '../../types';
-import type { PrimitiveProps } from '../primitive/types';
+import type { DataOrientation, Direction, PropsToContext, UiClass } from '../../types';
+import type { PrimitiveWithBaseProps } from '../primitive/types';
 
 /**
  * Properties for the SplitterGroup component.
  */
-export interface SplitterGroupProps extends PrimitiveProps, BaseProps {
+export interface SplitterGroupProps extends PrimitiveWithBaseProps {
   /**
    * The orientation of the splitter group.
    *
@@ -39,7 +39,7 @@ export type SplitterGroupEmits = {
 /**
  * Properties for the SplitterPanel component.
  */
-export interface SplitterPanelProps extends PrimitiveProps, BaseProps {
+export interface SplitterPanelProps extends PrimitiveWithBaseProps {
   /**
    * The initial size of the panel as a percentage of the group.
    */
@@ -87,7 +87,7 @@ export type SplitterPanelEmits = {
 /**
  * Properties for the SplitterResizeHandle component.
  */
-export interface SplitterResizeHandleProps extends PrimitiveProps, BaseProps {
+export interface SplitterResizeHandleProps extends PrimitiveWithBaseProps {
   /**
    * Whether the resize handle is disabled.
    */

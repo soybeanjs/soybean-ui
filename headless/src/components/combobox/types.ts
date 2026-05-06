@@ -23,7 +23,7 @@ import type {
   ListboxItemIndicatorProps as ComboboxItemIndicatorProps,
   ListboxVirtualizerProps
 } from '../listbox/types';
-import type { PrimitiveProps } from '../primitive/types';
+import type { PrimitiveWithBaseProps } from '../primitive/types';
 import type {
   PopperAnchorProps as ComboboxAnchorProps,
   PopperArrowProps as ComboboxArrowProps,
@@ -92,7 +92,7 @@ export type ComboboxRootEmits<M extends boolean = false> = Pick<
 /**
  * Properties for the ComboboxTrigger component.
  */
-export interface ComboboxTriggerProps extends PrimitiveProps, BaseProps {
+export interface ComboboxTriggerProps extends PrimitiveWithBaseProps {
   /**
    * Whether the component is disabled.
    */
@@ -180,17 +180,17 @@ export type ComboboxItemEmits = ListboxItemEmits;
 /**
  * Properties for the ComboboxEmpty component.
  */
-export interface ComboboxEmptyProps extends PrimitiveProps, BaseProps {}
+export interface ComboboxEmptyProps extends PrimitiveWithBaseProps {}
 
 /**
  * Properties for the ComboboxSeparator component.
  */
-export interface ComboboxSeparatorProps extends PrimitiveProps, BaseProps {}
+export interface ComboboxSeparatorProps extends PrimitiveWithBaseProps {}
 
 /**
  * Properties for the ComboboxCancel component.
  */
-export interface ComboboxCancelProps extends PrimitiveProps, BaseProps {
+export interface ComboboxCancelProps extends PrimitiveWithBaseProps {
   /**
    * Whether the component is disabled.
    */

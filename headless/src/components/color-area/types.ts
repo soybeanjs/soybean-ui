@@ -7,8 +7,8 @@ import type {
   ColorValue,
   NormalizedColor
 } from '../../shared';
-import type { BaseProps, FormFieldCommonProps, PropsToContext, UiClass } from '../../types';
-import type { PrimitiveProps } from '../primitive/types';
+import type { FormFieldCommonProps, PropsToContext, UiClass } from '../../types';
+import type { PrimitiveWithBaseProps } from '../primitive/types';
 
 /**
  * Type information for ColorAreaAxisChannel.
@@ -18,7 +18,7 @@ export type ColorAreaAxisChannel = Extract<ColorChannel, 'hue' | 'saturation' | 
 /**
  * Properties for the ColorAreaRoot component.
  */
-export interface ColorAreaRootProps extends PrimitiveProps, FormFieldCommonProps, BaseProps {
+export interface ColorAreaRootProps extends FormFieldCommonProps, PrimitiveWithBaseProps {
   /**
    * Current model value.
    */
@@ -82,12 +82,12 @@ export type ColorAreaRootEmits = {
 /**
  * Properties for the ColorAreaArea component.
  */
-export interface ColorAreaAreaProps extends PrimitiveProps, BaseProps {}
+export interface ColorAreaAreaProps extends PrimitiveWithBaseProps {}
 
 /**
  * Properties for the ColorAreaThumb component.
  */
-export interface ColorAreaThumbProps extends PrimitiveProps, BaseProps {}
+export interface ColorAreaThumbProps extends PrimitiveWithBaseProps {}
 
 /**
  * Context for the ColorAreaRoot component.

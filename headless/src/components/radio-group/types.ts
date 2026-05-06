@@ -11,7 +11,7 @@ import type {
   UiClass
 } from '../../types';
 import type { ButtonProps } from '../button/types';
-import type { PrimitiveProps } from '../primitive/types';
+import type { PrimitiveWithBaseProps } from '../primitive/types';
 import type { LabelProps as RadioGroupLabelProps } from '../label/types';
 
 /**
@@ -100,7 +100,7 @@ export interface RadioGroupControlProps extends ButtonProps {
 /**
  * Properties for the RadioGroupIndicator component.
  */
-export interface RadioGroupIndicatorProps extends PrimitiveProps, ForceMountProps, BaseProps {}
+export interface RadioGroupIndicatorProps extends ForceMountProps, PrimitiveWithBaseProps {}
 
 /**
  * Option data for the RadioGroup component.

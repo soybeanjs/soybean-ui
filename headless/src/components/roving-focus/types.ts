@@ -1,10 +1,10 @@
-import type { BaseProps, DataOrientation, Direction, EmitsToHookProps, PropsToContext } from '../../types';
-import type { PrimitiveProps } from '../primitive/types';
+import type { DataOrientation, Direction, EmitsToHookProps, PropsToContext } from '../../types';
+import type { PrimitiveWithBaseProps } from '../primitive/types';
 
 /**
  * Properties for the RovingFocusGroup component.
  */
-export interface RovingFocusGroupProps extends PrimitiveProps, BaseProps {
+export interface RovingFocusGroupProps extends PrimitiveWithBaseProps {
   /** The orientation of the group. Mainly so arrow navigation is done accordingly (left & right vs. up & down) */
   orientation?: DataOrientation;
   /** The direction of navigation between items. */
@@ -44,7 +44,7 @@ export type RovingFocusGroupEmits = {
 /**
  * Properties for the RovingFocusItem component.
  */
-export interface RovingFocusItemProps extends PrimitiveProps, BaseProps {
+export interface RovingFocusItemProps extends PrimitiveWithBaseProps {
   /**
    * Tab stop id.
    */

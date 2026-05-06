@@ -1,5 +1,5 @@
 import type { HTMLAttributes, ShallowRef } from 'vue';
-import type { PrimitiveProps } from '../primitive/types';
+import type { PrimitiveWithBaseProps } from '../primitive/types';
 import type { LinkBaseProps } from '../link/types';
 import type { BaseProps, DataOrientation, Direction, PropsToContext, UiClass } from '../../types';
 
@@ -30,7 +30,7 @@ export interface AnchorSection {
 /**
  * Properties for the AnchorRoot component.
  */
-export interface AnchorRootProps extends PrimitiveProps, BaseProps {
+export interface AnchorRootProps extends PrimitiveWithBaseProps {
   /**
    * Bounds.
    */
@@ -90,7 +90,7 @@ export type AnchorRootEmits = {
 /**
  * Properties for the AnchorLink component.
  */
-export interface AnchorLinkProps extends PrimitiveProps, LinkBaseProps, BaseProps {
+export interface AnchorLinkProps extends LinkBaseProps, PrimitiveWithBaseProps {
   /**
    * The link of anchor
    */

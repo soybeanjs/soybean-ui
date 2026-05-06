@@ -1,5 +1,5 @@
 import type { ComputedRef, ShallowRef } from 'vue';
-import type { BaseProps, DefinedValue, Direction, Placement, PropsToContext, UiClass } from '../../types';
+import type { DefinedValue, Direction, Placement, PropsToContext, UiClass } from '../../types';
 import type {
   MenuPopupProps,
   MenuPortalProps,
@@ -16,13 +16,15 @@ import type {
   MenuUiSlot
 } from '../menu';
 import type { ButtonProps } from '../button/types';
-import type { PrimitiveProps } from '../primitive/types';
+import type { PrimitiveWithBaseProps } from '../primitive/types';
 
 /**
  * Properties for the MenubarRoot component.
  */
-export interface MenubarRootProps<T extends DefinedValue = DefinedValue>
-  extends PrimitiveProps, Omit<BaseProps, 'onSelect'> {
+export interface MenubarRootProps<T extends DefinedValue = DefinedValue> extends Omit<
+  PrimitiveWithBaseProps,
+  'onSelect'
+> {
   /** The controlled value of the menu to open. Can be used as `v-model`. */
   modelValue?: T;
   /** The value of the menu that should be open when initially rendered. */

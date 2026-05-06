@@ -13,7 +13,7 @@ import type {
   UiClass
 } from '../../types';
 import type { CollectionItemData } from '../../composables';
-import type { PrimitiveProps } from '../primitive/types';
+import type { PrimitiveWithBaseProps } from '../primitive/types';
 import type { InputControlProps, InputRootEmits, InputRootProps } from '../input/types';
 
 /**
@@ -60,7 +60,7 @@ export type ListboxRootEmits<M extends boolean = false> = SelectionEmits<M> & {
 /**
  * Properties for the ListboxItem component.
  */
-export interface ListboxItemProps extends PrimitiveProps, Omit<BaseProps, 'onSelect'> {
+export interface ListboxItemProps extends Omit<PrimitiveWithBaseProps, 'onSelect'> {
   /** The value given as data when submitted with a `name`. */
   value: string;
   /** When `true`, prevents the user from interacting with the item. */
@@ -78,7 +78,7 @@ export type ListboxItemEmits = {
 /**
  * Properties for the ListboxItemIndicator component.
  */
-export interface ListboxItemIndicatorProps extends PrimitiveProps, BaseProps {}
+export interface ListboxItemIndicatorProps extends PrimitiveWithBaseProps {}
 
 /**
  * Properties for the ListboxGroup component.

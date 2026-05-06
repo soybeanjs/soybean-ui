@@ -1,13 +1,13 @@
 import type { ComputedRef, ShallowRef } from 'vue';
 import type { DateStep, Formatter, HourCycle, TimeGranularity, TimeMatcher, TimeValue } from '../../date';
-import type { BaseProps, Direction, FormFieldCommonProps, PropsToContext, UiClass } from '../../types';
+import type { Direction, FormFieldCommonProps, PropsToContext, UiClass } from '../../types';
 import type { TimePickerOption } from '../../shared/time-picker';
-import type { PrimitiveProps } from '../primitive/types';
+import type { PrimitiveWithBaseProps } from '../primitive/types';
 
 /**
  * Properties for the TimePickerRoot component.
  */
-export interface TimePickerRootProps extends PrimitiveProps, FormFieldCommonProps, Omit<BaseProps, 'placeholder'> {
+export interface TimePickerRootProps extends FormFieldCommonProps, Omit<PrimitiveWithBaseProps, 'placeholder'> {
   /**
    * Default value.
    */
@@ -107,11 +107,11 @@ export type TimePickerRootEmits = {
 /**
  * Properties for the TimePickerTrigger component.
  */
-export interface TimePickerTriggerProps extends PrimitiveProps, BaseProps {}
+export interface TimePickerTriggerProps extends PrimitiveWithBaseProps {}
 /**
  * Properties for the TimePickerPopup component.
  */
-export interface TimePickerPopupProps extends PrimitiveProps, BaseProps {}
+export interface TimePickerPopupProps extends PrimitiveWithBaseProps {}
 
 /**
  * Context for the TimePickerRoot component.

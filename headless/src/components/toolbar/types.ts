@@ -1,5 +1,5 @@
 import type { ComputedRef } from 'vue';
-import type { BaseProps, DataOrientation, DefinedValue, Direction, UiClass } from '../../types';
+import type { DataOrientation, DefinedValue, Direction, UiClass } from '../../types';
 import type {
   ToggleGroupItemProps as BaseToggleGroupItemProps,
   ToggleGroupRootEmits as BaseToggleGroupRootEmits,
@@ -8,12 +8,12 @@ import type {
 import type { ButtonEmits, ButtonProps } from '../button/types';
 import type { LinkProps } from '../link/types';
 import type { SeparatorRootProps } from '../separator/types';
-import type { PrimitiveProps } from '../primitive/types';
+import type { PrimitiveWithBaseProps } from '../primitive/types';
 
 /**
  * Properties for the ToolbarRoot component.
  */
-export interface ToolbarRootProps extends PrimitiveProps, BaseProps {
+export interface ToolbarRootProps extends PrimitiveWithBaseProps {
   /** The orientation of the toolbar. */
   orientation?: DataOrientation;
   /** The reading direction of the toolbar. */

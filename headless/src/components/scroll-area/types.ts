@@ -1,6 +1,6 @@
 import type { ComputedRef, CSSProperties, ShallowRef } from 'vue';
-import type { BaseProps, Direction, PropsToContext, UiClass } from '../../types';
-import type { PrimitiveProps } from '../primitive/types';
+import type { Direction, PropsToContext, UiClass } from '../../types';
+import type { PrimitiveWithBaseProps } from '../primitive/types';
 
 /**
  * Supported scroll area values.
@@ -18,7 +18,7 @@ export type ScrollAreaState = 'hidden' | 'visible';
 /**
  * Properties for the ScrollAreaRoot component.
  */
-export interface ScrollAreaRootProps extends PrimitiveProps, BaseProps {
+export interface ScrollAreaRootProps extends PrimitiveWithBaseProps {
   /** Controls scrollbar visibility behavior. */
   type?: ScrollAreaType;
   /** The reading direction of the scroll area. */
@@ -30,7 +30,7 @@ export interface ScrollAreaRootProps extends PrimitiveProps, BaseProps {
 /**
  * Properties for the ScrollAreaViewport component.
  */
-export interface ScrollAreaViewportProps extends PrimitiveProps, BaseProps {
+export interface ScrollAreaViewportProps extends PrimitiveWithBaseProps {
   /** Adds a nonce to the injected style tag. */
   nonce?: string;
 }
@@ -38,7 +38,7 @@ export interface ScrollAreaViewportProps extends PrimitiveProps, BaseProps {
 /**
  * Properties for the ScrollAreaScrollbar component.
  */
-export interface ScrollAreaScrollbarProps extends PrimitiveProps, BaseProps {
+export interface ScrollAreaScrollbarProps extends PrimitiveWithBaseProps {
   /** The scrollbar orientation. */
   orientation?: ScrollAreaOrientation;
 }
@@ -46,12 +46,12 @@ export interface ScrollAreaScrollbarProps extends PrimitiveProps, BaseProps {
 /**
  * Properties for the ScrollAreaThumb component.
  */
-export interface ScrollAreaThumbProps extends PrimitiveProps, BaseProps {}
+export interface ScrollAreaThumbProps extends PrimitiveWithBaseProps {}
 
 /**
  * Properties for the ScrollAreaCorner component.
  */
-export interface ScrollAreaCornerProps extends PrimitiveProps, BaseProps {}
+export interface ScrollAreaCornerProps extends PrimitiveWithBaseProps {}
 
 /**
  * Events for the ScrollAreaRoot component.

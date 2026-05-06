@@ -1,12 +1,12 @@
 import type { ComputedRef } from 'vue';
 import type { Padding, ReferenceElement, Side } from '@floating-ui/dom';
 import type { BaseProps, Align, Placement, UiClass, VNodeRef } from '../../types';
-import type { PrimitiveProps } from '../primitive/types';
+import type { PrimitiveWithBaseProps } from '../primitive/types';
 
 /**
  * Properties for the PopperAnchor component.
  */
-export interface PopperAnchorProps extends PrimitiveProps, BaseProps {
+export interface PopperAnchorProps extends PrimitiveWithBaseProps {
   /**
    * The reference (or anchor) element that is being referred to for positioning. If not provided will use the current
    * component as anchor.

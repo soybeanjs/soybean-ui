@@ -1,7 +1,7 @@
 import type { HtmlHTMLAttributes, ShallowRef } from 'vue';
 import type { BaseProps, AcceptableBooleanValue, FormFieldCommonProps, PropsToContext, UiClass } from '../../types';
 import type { ButtonProps } from '../button/types';
-import type { PrimitiveProps } from '../primitive/types';
+import type { PrimitiveWithBaseProps } from '../primitive/types';
 
 /**
  * Type information for SwitchValueConfig.
@@ -55,7 +55,7 @@ export interface SwitchControlProps extends ButtonProps {
 /**
  * Properties for the SwitchThumb component.
  */
-export interface SwitchThumbProps extends PrimitiveProps, BaseProps {}
+export interface SwitchThumbProps extends PrimitiveWithBaseProps {}
 
 /**
  * Parameters used to create the SwitchRoot context.

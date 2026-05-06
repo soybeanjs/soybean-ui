@@ -12,7 +12,7 @@ import type {
 import type { ButtonProps } from '../button/types';
 import type { IconValue } from '../_icon/types';
 import type { PortalProps as DialogPortalProps } from '../portal/types';
-import type { PrimitiveProps } from '../primitive/types';
+import type { PrimitiveWithBaseProps } from '../primitive/types';
 
 /**
  * Supported dialog alert values.
@@ -90,7 +90,7 @@ export interface DialogOverlayProps extends ForceMountProps, BaseProps {}
 /**
  * Properties for the DialogPopupImpl component.
  */
-export interface DialogPopupImplProps extends PrimitiveProps, TrapFocusProps, DismissableLayerProps, BaseProps {}
+export interface DialogPopupImplProps extends TrapFocusProps, DismissableLayerProps, PrimitiveWithBaseProps {}
 /**
  * Events for the DialogPopupImpl component.
  */

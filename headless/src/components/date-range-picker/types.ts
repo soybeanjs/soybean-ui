@@ -9,13 +9,13 @@ import type {
   SegmentPart,
   DateValue
 } from '../../date';
-import type { BaseProps, Direction, FormFieldCommonProps, PropsToContext, UiClass } from '../../types';
-import type { PrimitiveProps } from '../primitive/types';
+import type { Direction, FormFieldCommonProps, PropsToContext, UiClass } from '../../types';
+import type { PrimitiveWithBaseProps } from '../primitive/types';
 
 /**
  * Properties for the DateRangePickerRoot component.
  */
-export interface DateRangePickerRootProps extends PrimitiveProps, FormFieldCommonProps, Omit<BaseProps, 'placeholder'> {
+export interface DateRangePickerRootProps extends FormFieldCommonProps, Omit<PrimitiveWithBaseProps, 'placeholder'> {
   /**
    * Default value.
    */
@@ -123,7 +123,7 @@ export type DateRangePickerRootEmits = {
 /**
  * Properties for the DateRangePickerInput component.
  */
-export interface DateRangePickerInputProps extends PrimitiveProps, BaseProps {
+export interface DateRangePickerInputProps extends PrimitiveWithBaseProps {
   /**
    * Part.
    */
@@ -133,12 +133,12 @@ export interface DateRangePickerInputProps extends PrimitiveProps, BaseProps {
 /**
  * Properties for the DateRangePickerTrigger component.
  */
-export interface DateRangePickerTriggerProps extends PrimitiveProps, BaseProps {}
+export interface DateRangePickerTriggerProps extends PrimitiveWithBaseProps {}
 
 /**
  * Properties for the DateRangePickerPopup component.
  */
-export interface DateRangePickerPopupProps extends PrimitiveProps, BaseProps {}
+export interface DateRangePickerPopupProps extends PrimitiveWithBaseProps {}
 
 /**
  * Context for the DateRangePickerRoot component.

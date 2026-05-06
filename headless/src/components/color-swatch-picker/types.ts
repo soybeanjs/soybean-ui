@@ -6,13 +6,13 @@ import type {
   ListboxRootEmits,
   ListboxRootProps
 } from '../listbox/types';
-import type { BaseProps, UiClass } from '../../types';
-import type { PrimitiveProps } from '../primitive/types';
+import type { UiClass } from '../../types';
+import type { PrimitiveWithBaseProps } from '../primitive/types';
 
 /**
  * Properties for the ColorSwatchPickerRoot component.
  */
-export interface ColorSwatchPickerRootProps<M extends boolean = false> extends PrimitiveProps, ListboxRootProps<M> {}
+export interface ColorSwatchPickerRootProps<M extends boolean = false> extends ListboxRootProps<M> {}
 
 /**
  * Events for the ColorSwatchPickerRoot component.
@@ -37,7 +37,7 @@ export interface ColorSwatchPickerItemIndicatorProps extends ListboxItemIndicato
 /**
  * Properties for the ColorSwatchPickerItemSwatch component.
  */
-export interface ColorSwatchPickerItemSwatchProps extends PrimitiveProps, BaseProps {
+export interface ColorSwatchPickerItemSwatchProps extends PrimitiveWithBaseProps {
   /**
    * Label text rendered by the component.
    */

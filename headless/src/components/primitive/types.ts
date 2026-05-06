@@ -38,4 +38,4 @@ export interface PrimitiveProps {
   as?: AsTag | Component;
 }
 
-export interface PrimitiveWithAttributes extends PrimitiveProps, BaseProps {}
+export interface PrimitiveWithBaseProps extends PrimitiveProps, BaseProps {}

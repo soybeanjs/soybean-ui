@@ -10,13 +10,13 @@ import type {
   TimeMatcher,
   TimeValue
 } from '../../date';
-import type { BaseProps, Direction, FormFieldCommonProps, PropsToContext, UiClass } from '../../types';
-import type { PrimitiveProps } from '../primitive/types';
+import type { Direction, FormFieldCommonProps, PropsToContext, UiClass } from '../../types';
+import type { PrimitiveWithBaseProps } from '../primitive/types';
 
 /**
  * Properties for the TimeFieldRoot component.
  */
-export interface TimeFieldRootProps extends PrimitiveProps, FormFieldCommonProps, Omit<BaseProps, 'placeholder'> {
+export interface TimeFieldRootProps extends FormFieldCommonProps, Omit<PrimitiveWithBaseProps, 'placeholder'> {
   /**
    * Default value.
    */
@@ -100,7 +100,7 @@ export type TimeFieldRootEmits = {
 /**
  * Properties for the TimeFieldInput component.
  */
-export interface TimeFieldInputProps extends PrimitiveProps, BaseProps {
+export interface TimeFieldInputProps extends PrimitiveWithBaseProps {
   /**
    * Part.
    */

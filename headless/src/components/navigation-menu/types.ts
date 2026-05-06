@@ -11,7 +11,7 @@ import type {
   UiClass
 } from '../../types';
 import type { LinkProps, LinkBaseProps } from '../link/types';
-import type { PrimitiveProps } from '../primitive/types';
+import type { PrimitiveWithBaseProps } from '../primitive/types';
 
 /**
  * Properties for the NavigationMenuRoot component.
@@ -114,7 +114,7 @@ export type NavigationMenuContentEmits = NavigationMenuContentImplEmits;
 /**
  * Properties for the NavigationMenuTrigger component.
  */
-export interface NavigationMenuTriggerProps extends PrimitiveProps, BaseProps {
+export interface NavigationMenuTriggerProps extends PrimitiveWithBaseProps {
   /**
    * Whether the component is disabled.
    */

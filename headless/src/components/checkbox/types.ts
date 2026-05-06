@@ -9,7 +9,7 @@ import type {
   UiClass
 } from '../../types';
 import type { ButtonProps } from '../button/types';
-import type { PrimitiveProps } from '../primitive/types';
+import type { PrimitiveWithBaseProps } from '../primitive/types';
 import type { LabelProps as CheckboxLabelProps } from '../label/types';
 import type { IconValue } from '../_icon/types';
 import type { RovingFocusGroupProps } from '../roving-focus/types';
@@ -59,7 +59,7 @@ export interface CheckboxControlProps extends ButtonProps {
 /**
  * Properties for the CheckboxIndicator component.
  */
-export interface CheckboxIndicatorProps extends PrimitiveProps, ForceMountProps, BaseProps {}
+export interface CheckboxIndicatorProps extends ForceMountProps, PrimitiveWithBaseProps {}
 
 /**
  * Option data for the CheckboxGroup component.

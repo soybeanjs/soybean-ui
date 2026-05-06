@@ -1,5 +1,4 @@
-import type { BaseProps } from '../../types';
-import type { PrimitiveProps } from '../primitive/types';
+import type { PrimitiveWithBaseProps } from '../primitive/types';
 
 /**
  * Type information for VisuallyHiddenFeature.
@@ -9,7 +8,7 @@ export type VisuallyHiddenFeature = 'focusable' | 'fully-hidden';
 /**
  * Properties for the VisuallyHidden component.
  */
-export interface VisuallyHiddenProps extends PrimitiveProps, BaseProps {
+export interface VisuallyHiddenProps extends PrimitiveWithBaseProps {
   /**
    * Feature.
    */

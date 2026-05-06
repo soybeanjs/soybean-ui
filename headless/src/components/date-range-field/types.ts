@@ -11,13 +11,13 @@ import type {
   SegmentPart,
   SegmentValueObj
 } from '../../date';
-import type { BaseProps, Direction, FormFieldCommonProps, PropsToContext, UiClass } from '../../types';
-import type { PrimitiveProps } from '../primitive/types';
+import type { Direction, FormFieldCommonProps, PropsToContext, UiClass } from '../../types';
+import type { PrimitiveWithBaseProps } from '../primitive/types';
 
 /**
  * Properties for the DateRangeFieldRoot component.
  */
-export interface DateRangeFieldRootProps extends PrimitiveProps, FormFieldCommonProps, Omit<BaseProps, 'placeholder'> {
+export interface DateRangeFieldRootProps extends FormFieldCommonProps, Omit<PrimitiveWithBaseProps, 'placeholder'> {
   /**
    * Default value.
    */
@@ -117,7 +117,7 @@ export type DateRangeFieldRootEmits = {
 /**
  * Properties for the DateRangeFieldInput component.
  */
-export interface DateRangeFieldInputProps extends PrimitiveProps, BaseProps {
+export interface DateRangeFieldInputProps extends PrimitiveWithBaseProps {
   /**
    * Part.
    */

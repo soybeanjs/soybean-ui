@@ -1,6 +1,5 @@
 import type { ComputedRef, ShallowRef } from 'vue';
 import type {
-  BaseProps,
   DataOrientation,
   DefinedValue,
   Direction,
@@ -10,14 +9,14 @@ import type {
   SelectionProps,
   UiClass
 } from '../../types';
-import type { PrimitiveProps } from '../primitive/types';
+import type { PrimitiveWithBaseProps } from '../primitive/types';
 import type { ButtonProps } from '../button/types';
 
 /**
  * Properties for the ToggleGroupRoot component.
  */
 export interface ToggleGroupRootProps<M extends boolean = false, T extends DefinedValue = string>
-  extends SelectionProps<M, T>, FormFieldCommonProps, PrimitiveProps, BaseProps {
+  extends SelectionProps<M, T>, FormFieldCommonProps, PrimitiveWithBaseProps {
   /** When `false`, navigating through items with arrow keys is disabled. */
   rovingFocus?: boolean;
   /** When `true`, prevents interaction with all items in the group. */

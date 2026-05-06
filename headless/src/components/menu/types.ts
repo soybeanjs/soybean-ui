@@ -18,7 +18,7 @@ import type { IconValue } from '../_icon/types';
 import type { KbdProps, KbdValue } from '../kbd/types';
 import type { LinkBaseProps, LinkProps } from '../link/types';
 import type { PortalProps as MenuPortalProps } from '../portal/types';
-import type { PrimitiveProps } from '../primitive/types';
+import type { PrimitiveWithBaseProps } from '../primitive/types';
 import type { DialogRootEmits, DialogBaseProps } from '../dialog/types';
 import type { PopperPopupProps, PopperPositionerProps } from '../popper/types';
 import type { RovingFocusGroupEmits, RovingFocusGroupProps } from '../roving-focus/types';
@@ -106,7 +106,7 @@ export type MenuSubContentEmits = MenuContentEmits;
 /**
  * Properties for the MenuGroup component.
  */
-export interface MenuGroupProps extends PrimitiveProps, Omit<BaseProps, 'dir' | 'onSelect'> {}
+export interface MenuGroupProps extends Omit<PrimitiveWithBaseProps, 'dir' | 'onSelect'> {}
 
 // MenuGroupLabel
 /**
@@ -118,7 +118,7 @@ export interface MenuGroupLabelProps extends BaseProps {}
 /**
  * Properties for the MenuItemImpl component.
  */
-export interface MenuItemImplProps extends PrimitiveProps, BaseProps {
+export interface MenuItemImplProps extends PrimitiveWithBaseProps {
   /** When `true`, prevents the user from interacting with the item. */
   disabled?: boolean;
   /**
@@ -236,7 +236,7 @@ export interface MenuSubTriggerProps extends MenuItemImplProps {}
 /**
  * Properties for the MenuItemIndicator component.
  */
-export interface MenuItemIndicatorProps extends PrimitiveProps, ForceMountProps, BaseProps {}
+export interface MenuItemIndicatorProps extends ForceMountProps, PrimitiveWithBaseProps {}
 
 /**
  * Type information for MenuCollectionItemData.
