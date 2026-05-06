@@ -1,4 +1,5 @@
 import type { ButtonHTMLAttributes } from 'vue';
+import type { BaseProps } from '../../types';
 import type { PrimitiveProps } from '../primitive/types';
 
 /**
@@ -9,7 +10,7 @@ export type ButtonType = 'button' | 'submit' | 'reset';
 /**
  * Properties for the Button component.
  */
-export interface ButtonProps extends PrimitiveProps, /** @vue-ignore */ ButtonHTMLAttributes {
+export interface ButtonProps extends PrimitiveProps, BaseProps<ButtonHTMLAttributes> {
   /**
    * The type of the button element. Can be one of 'button', 'submit', or 'reset'.
    * @default 'button'

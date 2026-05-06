@@ -1,4 +1,4 @@
-import type { ComputedRef, HTMLAttributes, ShallowRef } from 'vue';
+import type { ComputedRef, ShallowRef } from 'vue';
 import type {
   DateRange,
   DateStep,
@@ -9,14 +9,13 @@ import type {
   SegmentPart,
   DateValue
 } from '../../date';
-import type { Direction, FormFieldCommonProps, PropsToContext, UiClass } from '../../types';
+import type { BaseProps, Direction, FormFieldCommonProps, PropsToContext, UiClass } from '../../types';
 import type { PrimitiveProps } from '../primitive/types';
 
 /**
  * Properties for the DateRangePickerRoot component.
  */
-export interface DateRangePickerRootProps
-  extends PrimitiveProps, FormFieldCommonProps, /** @vue-ignore */ Omit<HTMLAttributes, 'placeholder'> {
+export interface DateRangePickerRootProps extends PrimitiveProps, FormFieldCommonProps, Omit<BaseProps, 'placeholder'> {
   /**
    * Default value.
    */
@@ -124,7 +123,7 @@ export type DateRangePickerRootEmits = {
 /**
  * Properties for the DateRangePickerInput component.
  */
-export interface DateRangePickerInputProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {
+export interface DateRangePickerInputProps extends PrimitiveProps, BaseProps {
   /**
    * Part.
    */
@@ -134,12 +133,12 @@ export interface DateRangePickerInputProps extends PrimitiveProps, /** @vue-igno
 /**
  * Properties for the DateRangePickerTrigger component.
  */
-export interface DateRangePickerTriggerProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {}
+export interface DateRangePickerTriggerProps extends PrimitiveProps, BaseProps {}
 
 /**
  * Properties for the DateRangePickerPopup component.
  */
-export interface DateRangePickerPopupProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {}
+export interface DateRangePickerPopupProps extends PrimitiveProps, BaseProps {}
 
 /**
  * Context for the DateRangePickerRoot component.

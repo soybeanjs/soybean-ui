@@ -1,7 +1,8 @@
 import type { DateValue } from '@internationalized/date';
-import type { ButtonHTMLAttributes, ComputedRef, HTMLAttributes, ShallowRef } from 'vue';
+import type { ComputedRef, ShallowRef } from 'vue';
 import type { Formatter, Grid, Matcher, WeekDayFormat, WeekStartsOn } from '../../date';
-import type { Direction, PropsToContext, UiClass } from '../../types';
+import type { BaseProps, Direction, PropsToContext, UiClass } from '../../types';
+import type { ButtonProps } from '../button/types';
 import type { PrimitiveProps } from '../primitive/types';
 import type { SelectOptionData } from '../select/types';
 
@@ -15,8 +16,7 @@ export type CalendarModelValue<M extends boolean = false> = M extends true
 /**
  * Properties for the CalendarRoot component.
  */
-export interface CalendarRootProps<M extends boolean = false>
-  extends PrimitiveProps, /** @vue-ignore */ Omit<HTMLAttributes, 'placeholder'> {
+export interface CalendarRootProps<M extends boolean = false> extends PrimitiveProps, Omit<BaseProps, 'placeholder'> {
   /**
    * Default value.
    */
@@ -132,36 +132,36 @@ export type CalendarRootEmits<M extends boolean = false> = {
 /**
  * Properties for the CalendarHeader component.
  */
-export interface CalendarHeaderProps extends PrimitiveProps, /** @vue-ignore */ Omit<HTMLAttributes, 'placeholder'> {}
+export interface CalendarHeaderProps extends PrimitiveProps, BaseProps {}
 /**
  * Properties for the CalendarHeading component.
  */
-export interface CalendarHeadingProps extends PrimitiveProps, /** @vue-ignore */ Omit<HTMLAttributes, 'placeholder'> {}
+export interface CalendarHeadingProps extends PrimitiveProps, BaseProps {}
 /**
  * Properties for the CalendarGrid component.
  */
-export interface CalendarGridProps extends PrimitiveProps, /** @vue-ignore */ Omit<HTMLAttributes, 'placeholder'> {}
+export interface CalendarGridProps extends PrimitiveProps, BaseProps {}
 /**
  * Properties for the CalendarGridHead component.
  */
-export interface CalendarGridHeadProps extends PrimitiveProps, /** @vue-ignore */ Omit<HTMLAttributes, 'placeholder'> {}
+export interface CalendarGridHeadProps extends PrimitiveProps, BaseProps {}
 /**
  * Properties for the CalendarGridBody component.
  */
-export interface CalendarGridBodyProps extends PrimitiveProps, /** @vue-ignore */ Omit<HTMLAttributes, 'placeholder'> {}
+export interface CalendarGridBodyProps extends PrimitiveProps, BaseProps {}
 /**
  * Properties for the CalendarGridRow component.
  */
-export interface CalendarGridRowProps extends PrimitiveProps, /** @vue-ignore */ Omit<HTMLAttributes, 'placeholder'> {}
+export interface CalendarGridRowProps extends PrimitiveProps, BaseProps {}
 /**
  * Properties for the CalendarHeadCell component.
  */
-export interface CalendarHeadCellProps extends PrimitiveProps, /** @vue-ignore */ Omit<HTMLAttributes, 'placeholder'> {}
+export interface CalendarHeadCellProps extends PrimitiveProps, BaseProps {}
 
 /**
  * Properties for the CalendarCell component.
  */
-export interface CalendarCellProps extends PrimitiveProps, /** @vue-ignore */ Omit<HTMLAttributes, 'placeholder'> {
+export interface CalendarCellProps extends PrimitiveProps, BaseProps {
   /**
    * Date.
    */
@@ -171,8 +171,7 @@ export interface CalendarCellProps extends PrimitiveProps, /** @vue-ignore */ Om
 /**
  * Properties for the CalendarCellTrigger component.
  */
-export interface CalendarCellTriggerProps
-  extends PrimitiveProps, /** @vue-ignore */ Omit<HTMLAttributes, 'placeholder'> {
+export interface CalendarCellTriggerProps extends PrimitiveProps, BaseProps {
   /**
    * Day.
    */
@@ -186,7 +185,7 @@ export interface CalendarCellTriggerProps
 /**
  * Properties for the CalendarPrev component.
  */
-export interface CalendarPrevProps extends PrimitiveProps, /** @vue-ignore */ ButtonHTMLAttributes {
+export interface CalendarPrevProps extends ButtonProps {
   /**
    * Prev page.
    */
@@ -196,7 +195,7 @@ export interface CalendarPrevProps extends PrimitiveProps, /** @vue-ignore */ Bu
 /**
  * Properties for the CalendarNext component.
  */
-export interface CalendarNextProps extends PrimitiveProps, /** @vue-ignore */ ButtonHTMLAttributes {
+export interface CalendarNextProps extends ButtonProps {
   /**
    * Next page.
    */

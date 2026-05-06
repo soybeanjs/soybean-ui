@@ -1,14 +1,13 @@
 import type { DateValue } from '@internationalized/date';
-import type { ComputedRef, HTMLAttributes, ShallowRef } from 'vue';
+import type { ComputedRef, ShallowRef } from 'vue';
 import type { DateRange, Formatter, Grid } from '../../date';
-import type { Direction, FormFieldCommonProps, PropsToContext, UiClass } from '../../types';
+import type { BaseProps, Direction, FormFieldCommonProps, PropsToContext, UiClass } from '../../types';
 import type { PrimitiveProps } from '../primitive/types';
 
 /**
  * Properties for the YearRangePickerRoot component.
  */
-export interface YearRangePickerRootProps
-  extends PrimitiveProps, FormFieldCommonProps, /** @vue-ignore */ Omit<HTMLAttributes, 'placeholder'> {
+export interface YearRangePickerRootProps extends PrimitiveProps, FormFieldCommonProps, Omit<BaseProps, 'placeholder'> {
   /**
    * Default value.
    */
@@ -96,11 +95,11 @@ export type YearRangePickerRootEmits = {
 /**
  * Properties for the YearRangePickerTrigger component.
  */
-export interface YearRangePickerTriggerProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {}
+export interface YearRangePickerTriggerProps extends PrimitiveProps, BaseProps {}
 /**
  * Properties for the YearRangePickerPopup component.
  */
-export interface YearRangePickerPopupProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {}
+export interface YearRangePickerPopupProps extends PrimitiveProps, BaseProps {}
 
 /**
  * Context for the YearRangePickerRoot component.

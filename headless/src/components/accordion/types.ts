@@ -1,5 +1,6 @@
-import type { ComputedRef, HTMLAttributes, ShallowRef } from 'vue';
+import type { ComputedRef, ShallowRef } from 'vue';
 import type {
+  BaseProps,
   DataOrientation,
   Direction,
   MaybeArray,
@@ -15,8 +16,7 @@ import type { IconValue } from '../_icon/types';
 /**
  * Properties for the AccordionRoot component.
  */
-export interface AccordionRootProps<M extends boolean = false>
-  extends SelectionProps<M>, /** @vue-ignore */ HTMLAttributes {
+export interface AccordionRootProps<M extends boolean = false> extends SelectionProps<M>, BaseProps {
   /**
    * When type is "single", allows closing content when clicking trigger for an open item.
    *
@@ -67,7 +67,7 @@ export interface AccordionItemProps extends Omit<CollapsibleRootProps, 'open' | 
 /**
  * Properties for the AccordionHeader component.
  */
-export interface AccordionHeaderProps extends /** @vue-ignore */ HTMLAttributes {}
+export interface AccordionHeaderProps extends BaseProps {}
 
 /**
  * Properties for the AccordionTrigger component.
@@ -82,7 +82,7 @@ export interface AccordionContentProps extends CollapsibleContentProps {}
 /**
  * Properties for the AccordionDescription component.
  */
-export interface AccordionDescriptionProps extends /** @vue-ignore */ HTMLAttributes {}
+export interface AccordionDescriptionProps extends BaseProps {}
 
 /**
  * Option data for the Accordion component.

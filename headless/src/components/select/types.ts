@@ -1,5 +1,6 @@
-import type { ButtonHTMLAttributes, ComputedRef, HTMLAttributes, ShallowRef } from 'vue';
+import type { ComputedRef, ShallowRef } from 'vue';
 import type {
+  BaseProps,
   DefinedValue,
   Direction,
   DismissableLayerProps,
@@ -12,6 +13,7 @@ import type {
   SelectionProps,
   UiClass
 } from '../../types';
+import type { ButtonProps } from '../button/types';
 import type { IconValue } from '../_icon/types';
 import type { PrimitiveProps } from '../primitive/types';
 import type { PopperAnchorProps, PopperArrowProps, PopperPositionerProps } from '../popper/types';
@@ -67,13 +69,13 @@ export interface SelectOption {
 /**
  * Properties for the SelectPopup component.
  */
-export interface SelectPopupProps extends /** @vue-ignore */ HTMLAttributes {}
+export interface SelectPopupProps extends BaseProps {}
 
 // SelectItemAlignedPosition
 /**
  * Properties for the SelectItemAlignedPosition component.
  */
-export interface SelectItemAlignedPositionProps extends /** @vue-ignore */ HTMLAttributes {}
+export interface SelectItemAlignedPositionProps extends BaseProps {}
 
 /**
  * Type information for SelectPosition.
@@ -144,7 +146,7 @@ export interface SelectTeleportProviderProps extends Pick<SelectContentImplProps
 /**
  * Properties for the SelectViewport component.
  */
-export interface SelectViewportProps extends /** @vue-ignore */ HTMLAttributes {
+export interface SelectViewportProps extends BaseProps {
   /**
    * Will add `nonce` attribute to the style tag which can be used by Content Security Policy. <br> If omitted, inherits
    * globally from `ConfigProvider`.
@@ -156,13 +158,13 @@ export interface SelectViewportProps extends /** @vue-ignore */ HTMLAttributes {
 /**
  * Properties for the SelectGroup component.
  */
-export interface SelectGroupProps extends /** @vue-ignore */ Omit<HTMLAttributes, 'onSelect'> {}
+export interface SelectGroupProps extends Omit<BaseProps, 'onSelect'> {}
 
 // SelectGroupLabel
 /**
  * Properties for the SelectGroupLabel component.
  */
-export interface SelectGroupLabelProps extends /** @vue-ignore */ HTMLAttributes {}
+export interface SelectGroupLabelProps extends BaseProps {}
 
 // SelectTrigger
 /**
@@ -179,13 +181,13 @@ export interface SelectTriggerProps extends PopperAnchorProps {
 /**
  * Properties for the SelectTriggerIcon component.
  */
-export interface SelectTriggerIconProps extends /** @vue-ignore */ HTMLAttributes {}
+export interface SelectTriggerIconProps extends BaseProps {}
 
 // SelectItem
 /**
  * Properties for the SelectItem component.
  */
-export interface SelectItemProps extends PrimitiveProps, /** @vue-ignore */ Omit<HTMLAttributes, 'onSelect'> {
+export interface SelectItemProps extends PrimitiveProps, Omit<BaseProps, 'onSelect'> {
   /** The value given as data when submitted with a `name`. */
   value: DefinedValue;
   /** When `true`, prevents the user from interacting with the item. */
@@ -222,13 +224,13 @@ export type SelectItemEmits<T extends DefinedValue = DefinedValue> = {
 /**
  * Properties for the SelectItemText component.
  */
-export interface SelectItemTextProps extends /** @vue-ignore */ HTMLAttributes {}
+export interface SelectItemTextProps extends BaseProps {}
 
 // SelectItemIndicator
 /**
  * Properties for the SelectItemIndicator component.
  */
-export interface SelectItemIndicatorProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {}
+export interface SelectItemIndicatorProps extends PrimitiveProps, BaseProps {}
 
 /**
  * Events for the SelectItemAlignedPosition component.
@@ -480,7 +482,7 @@ export type SelectCompactSlots<T extends DefinedValue = DefinedValue, M extends 
 /**
  * Properties for the SelectValue component.
  */
-export interface SelectValueProps extends /** @vue-ignore */ HTMLAttributes {
+export interface SelectValueProps extends BaseProps {
   /** The content that will be rendered inside the `SelectValue` when no `value` or `defaultValue` is set. */
   placeholder?: string;
 }
@@ -489,13 +491,13 @@ export interface SelectValueProps extends /** @vue-ignore */ HTMLAttributes {
 /**
  * Properties for the SelectSeparator component.
  */
-export interface SelectSeparatorProps extends /** @vue-ignore */ HTMLAttributes {}
+export interface SelectSeparatorProps extends BaseProps {}
 
 // SelectScrollButtonImpl
 /**
  * Properties for the SelectScrollButtonImpl component.
  */
-export interface SelectScrollButtonImplProps extends PrimitiveProps, /** @vue-ignore */ ButtonHTMLAttributes {}
+export interface SelectScrollButtonImplProps extends ButtonProps {}
 
 /**
  * Events for the SelectScrollButtonImpl component.

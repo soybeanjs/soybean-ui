@@ -1,5 +1,6 @@
-import type { ButtonHTMLAttributes, ComputedRef, HTMLAttributes, ShallowRef } from 'vue';
+import type { ComputedRef, ShallowRef } from 'vue';
 import type {
+  BaseProps,
   AcceptableBooleanValue,
   DataOrientation,
   Direction,
@@ -9,6 +10,7 @@ import type {
   PropsToContext,
   UiClass
 } from '../../types';
+import type { ButtonProps } from '../button/types';
 import type { PrimitiveProps } from '../primitive/types';
 import type { LabelProps as RadioGroupLabelProps } from '../label/types';
 
@@ -16,7 +18,7 @@ import type { LabelProps as RadioGroupLabelProps } from '../label/types';
  * Properties for the RadioGroupRoot component.
  */
 export interface RadioGroupRootProps<T extends AcceptableBooleanValue = AcceptableBooleanValue>
-  extends FormFieldCommonProps, /** @vue-ignore */ HTMLAttributes {
+  extends FormFieldCommonProps, BaseProps {
   /** The controlled value of the radio item to check. Can be bound as `v-model`. */
   modelValue?: T;
   /**
@@ -58,7 +60,7 @@ export type RadioGroupRootContext = PropsToContext<
 /**
  * Properties for the RadioGroupItem component.
  */
-export interface RadioGroupItemProps extends FormFieldCommonProps, /** @vue-ignore */ HTMLAttributes {
+export interface RadioGroupItemProps extends FormFieldCommonProps, BaseProps {
   /** The value given as data when submitted with a `name`. */
   value: NonNullable<AcceptableBooleanValue>;
   /** When `true`, prevents the user from interacting with the radio item. */
@@ -90,7 +92,7 @@ export type RadioGroupItemEmits = {
 /**
  * Properties for the RadioGroupControl component.
  */
-export interface RadioGroupControlProps extends /** @vue-ignore */ ButtonHTMLAttributes {
+export interface RadioGroupControlProps extends ButtonProps {
   /** Id of the element */
   id?: string;
 }
@@ -98,7 +100,7 @@ export interface RadioGroupControlProps extends /** @vue-ignore */ ButtonHTMLAtt
 /**
  * Properties for the RadioGroupIndicator component.
  */
-export interface RadioGroupIndicatorProps extends PrimitiveProps, ForceMountProps, /** @vue-ignore */ HTMLAttributes {}
+export interface RadioGroupIndicatorProps extends PrimitiveProps, ForceMountProps, BaseProps {}
 
 /**
  * Option data for the RadioGroup component.

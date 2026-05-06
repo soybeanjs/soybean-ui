@@ -1,5 +1,5 @@
-import type { ComputedRef, HTMLAttributes } from 'vue';
-import type { ClassValue, HorizontalSide, PropsToContext, UiClass } from '@soybeanjs/headless/types';
+import type { ComputedRef } from 'vue';
+import type { BaseProps, ClassValue, HorizontalSide, PropsToContext, UiClass } from '@soybeanjs/headless/types';
 import type { AsTag } from '@soybeanjs/headless/primitive';
 import type { LinkBaseProps, LinkProps } from '@soybeanjs/headless/link';
 import type {
@@ -243,7 +243,7 @@ export type TreeMenuEmits = TreeMenuRootEmits & TreeMenuOptionEmits;
 /**
  * Properties for the TreeMenuStyledItem component.
  */
-export interface TreeMenuStyledItemProps extends /** @vue-ignore */ HTMLAttributes {
+export interface TreeMenuStyledItemProps extends BaseProps {
   /**
    * Additional class names applied to the root element.
    */

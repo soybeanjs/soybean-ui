@@ -1,5 +1,5 @@
-import type { ComputedRef, HTMLAttributes, ShallowRef } from 'vue';
-import type { UiClass } from '../../types';
+import type { ComputedRef, ShallowRef } from 'vue';
+import type { BaseProps, UiClass } from '../../types';
 import type { PrimitiveProps } from '../primitive/types';
 
 /**
@@ -60,17 +60,17 @@ export type TreeMenuRootEmits = {
 /**
  * Properties for the TreeMenuGroupRoot component.
  */
-export interface TreeMenuGroupRootProps extends /** @vue-ignore */ HTMLAttributes {}
+export interface TreeMenuGroupRootProps extends BaseProps {}
 
 /**
  * Properties for the TreeMenuGroup component.
  */
-export interface TreeMenuGroupProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {}
+export interface TreeMenuGroupProps extends PrimitiveProps, BaseProps {}
 
 /**
  * Properties for the TreeMenuGroupLabel component.
  */
-export interface TreeMenuGroupLabelProps extends /** @vue-ignore */ HTMLAttributes {}
+export interface TreeMenuGroupLabelProps extends BaseProps {}
 
 /**
  * Properties for the TreeMenuBaseItem component.
@@ -89,12 +89,12 @@ export interface TreeMenuBaseItemProps {
 /**
  * Properties for the TreeMenuItem component.
  */
-export interface TreeMenuItemProps extends TreeMenuBaseItemProps, PrimitiveProps, /** @vue-ignore */ HTMLAttributes {}
+export interface TreeMenuItemProps extends TreeMenuBaseItemProps, PrimitiveProps, BaseProps {}
 
 /**
  * Properties for the TreeMenuButton component.
  */
-export interface TreeMenuButtonProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {
+export interface TreeMenuButtonProps extends PrimitiveProps, BaseProps {
   /**
    * When `true`, prevents the user from activating the item.
    *
@@ -106,7 +106,7 @@ export interface TreeMenuButtonProps extends PrimitiveProps, /** @vue-ignore */ 
 /**
  * Properties for the TreeMenuCollapsible component.
  */
-export interface TreeMenuCollapsibleProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {
+export interface TreeMenuCollapsibleProps extends PrimitiveProps, BaseProps {
   /**
    * When `true`, prevents the user from activating the collapsible trigger.
    */
@@ -116,7 +116,7 @@ export interface TreeMenuCollapsibleProps extends PrimitiveProps, /** @vue-ignor
 /**
  * Properties for the TreeMenuSub component.
  */
-export interface TreeMenuSubProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {}
+export interface TreeMenuSubProps extends PrimitiveProps, BaseProps {}
 
 /**
  * Parameters used to create the TreeMenuRoot context.

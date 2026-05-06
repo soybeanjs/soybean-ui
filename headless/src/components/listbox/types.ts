@@ -1,6 +1,7 @@
-import type { ComputedRef, HTMLAttributes, ShallowRef } from 'vue';
+import type { ComputedRef, ShallowRef } from 'vue';
 import type { VirtualItem, Virtualizer } from '@tanstack/vue-virtual';
 import type {
+  BaseProps,
   DataOrientation,
   Direction,
   FormFieldCommonProps,
@@ -19,7 +20,7 @@ import type { InputControlProps, InputRootEmits, InputRootProps } from '../input
  * Properties for the ListboxRoot component.
  */
 export interface ListboxRootProps<M extends boolean = false>
-  extends SelectionProps<M>, FormFieldCommonProps, /** @vue-ignore */ HTMLAttributes {
+  extends SelectionProps<M>, FormFieldCommonProps, BaseProps {
   /** The orientation of the listbox. <br>Mainly so arrow navigation is done accordingly (left & right vs. up & down) */
   orientation?: DataOrientation;
   /**
@@ -59,7 +60,7 @@ export type ListboxRootEmits<M extends boolean = false> = SelectionEmits<M> & {
 /**
  * Properties for the ListboxItem component.
  */
-export interface ListboxItemProps extends PrimitiveProps, /** @vue-ignore */ Omit<HTMLAttributes, 'onSelect'> {
+export interface ListboxItemProps extends PrimitiveProps, Omit<BaseProps, 'onSelect'> {
   /** The value given as data when submitted with a `name`. */
   value: string;
   /** When `true`, prevents the user from interacting with the item. */
@@ -77,17 +78,17 @@ export type ListboxItemEmits = {
 /**
  * Properties for the ListboxItemIndicator component.
  */
-export interface ListboxItemIndicatorProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {}
+export interface ListboxItemIndicatorProps extends PrimitiveProps, BaseProps {}
 
 /**
  * Properties for the ListboxGroup component.
  */
-export interface ListboxGroupProps extends /** @vue-ignore */ HTMLAttributes {}
+export interface ListboxGroupProps extends BaseProps {}
 
 /**
  * Properties for the ListboxGroupLabel component.
  */
-export interface ListboxGroupLabelProps extends /** @vue-ignore */ HTMLAttributes {}
+export interface ListboxGroupLabelProps extends BaseProps {}
 
 /**
  * Properties for the ListboxFilter component.
@@ -113,7 +114,7 @@ export type ListboxFilterEmits = InputRootEmits;
 /**
  * Properties for the ListboxContent component.
  */
-export interface ListboxContentProps extends /** @vue-ignore */ HTMLAttributes {}
+export interface ListboxContentProps extends BaseProps {}
 
 /**
  * Properties for the ListboxVirtualizer component.

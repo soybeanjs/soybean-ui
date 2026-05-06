@@ -1,12 +1,12 @@
-import type { HTMLAttributes, InputHTMLAttributes, ShallowRef } from 'vue';
-import type { FormFieldCommonProps, PropsToContext, UiClass } from '../../types';
+import type { InputHTMLAttributes, ShallowRef } from 'vue';
+import type { BaseProps, FormFieldCommonProps, PropsToContext, UiClass } from '../../types';
 import type { PrimitiveProps } from '../primitive/types';
 import type { InputBaseProps } from '../input/types';
 
 /**
  * Properties for the InputNumberRoot component.
  */
-export interface InputNumberRootProps extends InputBaseProps, FormFieldCommonProps, /** @vue-ignore */ HTMLAttributes {
+export interface InputNumberRootProps extends InputBaseProps, FormFieldCommonProps, BaseProps {
   /** The default value of the input */
   defaultValue?: number;
   /** The controlled value of the input */
@@ -47,12 +47,12 @@ export type InputNumberRootEmits = {
 /**
  * Properties for the InputNumberControl component.
  */
-export interface InputNumberControlProps extends /** @vue-ignore */ InputHTMLAttributes {}
+export interface InputNumberControlProps extends BaseProps<InputHTMLAttributes> {}
 
 /**
  * Properties for the InputNumberIncrement component.
  */
-export interface InputNumberIncrementProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {
+export interface InputNumberIncrementProps extends PrimitiveProps, BaseProps {
   /**
    * Whether the component is disabled.
    */
@@ -62,7 +62,7 @@ export interface InputNumberIncrementProps extends PrimitiveProps, /** @vue-igno
 /**
  * Properties for the InputNumberDecrement component.
  */
-export interface InputNumberDecrementProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {
+export interface InputNumberDecrementProps extends PrimitiveProps, BaseProps {
   /**
    * Whether the component is disabled.
    */

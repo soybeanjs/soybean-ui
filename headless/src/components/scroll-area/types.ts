@@ -1,5 +1,5 @@
-import type { ComputedRef, CSSProperties, HTMLAttributes, ShallowRef } from 'vue';
-import type { Direction, PropsToContext, UiClass } from '../../types';
+import type { ComputedRef, CSSProperties, ShallowRef } from 'vue';
+import type { BaseProps, Direction, PropsToContext, UiClass } from '../../types';
 import type { PrimitiveProps } from '../primitive/types';
 
 /**
@@ -18,7 +18,7 @@ export type ScrollAreaState = 'hidden' | 'visible';
 /**
  * Properties for the ScrollAreaRoot component.
  */
-export interface ScrollAreaRootProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {
+export interface ScrollAreaRootProps extends PrimitiveProps, BaseProps {
   /** Controls scrollbar visibility behavior. */
   type?: ScrollAreaType;
   /** The reading direction of the scroll area. */
@@ -30,7 +30,7 @@ export interface ScrollAreaRootProps extends PrimitiveProps, /** @vue-ignore */ 
 /**
  * Properties for the ScrollAreaViewport component.
  */
-export interface ScrollAreaViewportProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {
+export interface ScrollAreaViewportProps extends PrimitiveProps, BaseProps {
   /** Adds a nonce to the injected style tag. */
   nonce?: string;
 }
@@ -38,7 +38,7 @@ export interface ScrollAreaViewportProps extends PrimitiveProps, /** @vue-ignore
 /**
  * Properties for the ScrollAreaScrollbar component.
  */
-export interface ScrollAreaScrollbarProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {
+export interface ScrollAreaScrollbarProps extends PrimitiveProps, BaseProps {
   /** The scrollbar orientation. */
   orientation?: ScrollAreaOrientation;
 }
@@ -46,12 +46,12 @@ export interface ScrollAreaScrollbarProps extends PrimitiveProps, /** @vue-ignor
 /**
  * Properties for the ScrollAreaThumb component.
  */
-export interface ScrollAreaThumbProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {}
+export interface ScrollAreaThumbProps extends PrimitiveProps, BaseProps {}
 
 /**
  * Properties for the ScrollAreaCorner component.
  */
-export interface ScrollAreaCornerProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {}
+export interface ScrollAreaCornerProps extends PrimitiveProps, BaseProps {}
 
 /**
  * Events for the ScrollAreaRoot component.

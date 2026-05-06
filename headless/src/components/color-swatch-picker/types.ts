@@ -1,4 +1,4 @@
-import type { ComputedRef, HTMLAttributes } from 'vue';
+import type { ComputedRef } from 'vue';
 import type {
   ListboxItemEmits,
   ListboxItemIndicatorProps,
@@ -6,7 +6,7 @@ import type {
   ListboxRootEmits,
   ListboxRootProps
 } from '../listbox/types';
-import type { UiClass } from '../../types';
+import type { BaseProps, UiClass } from '../../types';
 import type { PrimitiveProps } from '../primitive/types';
 
 /**
@@ -37,7 +37,7 @@ export interface ColorSwatchPickerItemIndicatorProps extends ListboxItemIndicato
 /**
  * Properties for the ColorSwatchPickerItemSwatch component.
  */
-export interface ColorSwatchPickerItemSwatchProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {
+export interface ColorSwatchPickerItemSwatchProps extends PrimitiveProps, BaseProps {
   /**
    * Label text rendered by the component.
    */

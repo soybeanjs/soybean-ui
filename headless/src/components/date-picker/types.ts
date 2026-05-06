@@ -1,7 +1,7 @@
 import type { DateValue } from '@internationalized/date';
-import type { ComputedRef, HTMLAttributes, ShallowRef } from 'vue';
+import type { ComputedRef, ShallowRef } from 'vue';
 import type { DateStep, Formatter, Granularity, HourCycle, Matcher, SegmentPart } from '../../date';
-import type { Direction, FormFieldCommonProps, PropsToContext, UiClass } from '../../types';
+import type { BaseProps, Direction, FormFieldCommonProps, PropsToContext, UiClass } from '../../types';
 import type {
   PopoverRootProps,
   PopoverPositionerProps as DatePickerPositionerProps,
@@ -17,11 +17,7 @@ import type { PrimitiveProps } from '../primitive/types';
  * Properties for the DatePickerRoot component.
  */
 export interface DatePickerRootProps
-  extends
-    PrimitiveProps,
-    FormFieldCommonProps,
-    PopoverRootProps,
-    /** @vue-ignore */ Omit<HTMLAttributes, 'placeholder'> {
+  extends PrimitiveProps, FormFieldCommonProps, PopoverRootProps, Omit<BaseProps, 'placeholder'> {
   /**
    * Default value.
    */
@@ -145,7 +141,7 @@ export type DatePickerRootSlots = {
 /**
  * Properties for the DatePickerInput component.
  */
-export interface DatePickerInputProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {
+export interface DatePickerInputProps extends PrimitiveProps, BaseProps {
   /**
    * Part.
    */

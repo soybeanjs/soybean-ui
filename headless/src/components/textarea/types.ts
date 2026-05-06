@@ -1,5 +1,5 @@
-import type { ComputedRef, HTMLAttributes, ShallowRef, TextareaHTMLAttributes } from 'vue';
-import type { FormFieldCommonProps, PropsToContext, UiClass } from '../../types';
+import type { ComputedRef, ShallowRef, TextareaHTMLAttributes } from 'vue';
+import type { BaseProps, FormFieldCommonProps, PropsToContext, UiClass } from '../../types';
 
 /**
  * Type information for TextareaAutosizeOptions.
@@ -34,7 +34,7 @@ export interface TextareaBaseProps {
 /**
  * Properties for the TextareaRoot component.
  */
-export interface TextareaRootProps extends TextareaBaseProps, FormFieldCommonProps, /** @vue-ignore */ HTMLAttributes {
+export interface TextareaRootProps extends TextareaBaseProps, FormFieldCommonProps, BaseProps {
   /** The default value of the textarea */
   defaultValue?: string;
   /** The controlled value of the textarea */
@@ -56,12 +56,12 @@ export type TextareaRootEmits = {
 /**
  * Properties for the TextareaControl component.
  */
-export interface TextareaControlProps extends /** @vue-ignore */ TextareaHTMLAttributes {}
+export interface TextareaControlProps extends BaseProps<TextareaHTMLAttributes> {}
 
 /**
  * Properties for the TextareaCounter component.
  */
-export interface TextareaCounterProps extends /** @vue-ignore */ HTMLAttributes {}
+export interface TextareaCounterProps extends BaseProps {}
 
 /**
  * Context for the TextareaRoot component.

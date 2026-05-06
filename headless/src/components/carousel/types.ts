@@ -1,12 +1,12 @@
-import type { HTMLAttributes, ShallowRef } from 'vue';
+import type { ShallowRef } from 'vue';
 import type { EmblaCarouselType, EmblaOptionsType, EmblaPluginType } from 'embla-carousel';
-import type { DefinedValue, DataOrientation, Direction, VNodeRef, UiClass } from '../../types';
+import type { BaseProps, DefinedValue, DataOrientation, Direction, VNodeRef, UiClass } from '../../types';
 import type { ButtonProps } from '../button/types';
 
 /**
  * Properties for the CarouselRoot component.
  */
-export interface CarouselRootProps extends /** @vue-ignore */ Omit<HTMLAttributes, 'onSelect'> {
+export interface CarouselRootProps extends BaseProps {
   /**
    * Reading direction of the component.
    */
@@ -60,27 +60,27 @@ export type CarouselRootSlots = {
 /**
  * Properties for the CarouselContent component.
  */
-export interface CarouselContentProps extends /** @vue-ignore */ HTMLAttributes {}
+export interface CarouselContentProps extends BaseProps {}
 
 /**
  * Properties for the CarouselContainer component.
  */
-export interface CarouselContainerProps extends /** @vue-ignore */ HTMLAttributes {}
+export interface CarouselContainerProps extends BaseProps {}
 
 /**
  * Properties for the CarouselItem component.
  */
-export interface CarouselItemProps extends /** @vue-ignore */ HTMLAttributes {}
+export interface CarouselItemProps extends BaseProps {}
 
 /**
  * Properties for the CarouselControl component.
  */
-export interface CarouselControlProps extends /** @vue-ignore */ HTMLAttributes {}
+export interface CarouselControlProps extends BaseProps {}
 
 /**
  * Properties for the CarouselNavigation component.
  */
-export interface CarouselNavigationProps extends /** @vue-ignore */ HTMLAttributes {}
+export interface CarouselNavigationProps extends BaseProps {}
 
 /**
  * Properties for the CarouselPrevious component.

@@ -1,13 +1,14 @@
 import type { DateValue } from '@internationalized/date';
-import type { ButtonHTMLAttributes, ComputedRef, HTMLAttributes, ShallowRef } from 'vue';
+import type { ComputedRef, ShallowRef } from 'vue';
 import type { Grid, Matcher, WeekDayFormat, WeekStartsOn, DateRange, Formatter } from '../../date';
-import type { Direction, PropsToContext, UiClass } from '../../types';
+import type { BaseProps, Direction, PropsToContext, UiClass } from '../../types';
+import type { ButtonProps } from '../button/types';
 import type { PrimitiveProps } from '../primitive/types';
 
 /**
  * Properties for the RangeCalendarRoot component.
  */
-export interface RangeCalendarRootProps extends PrimitiveProps, /** @vue-ignore */ Omit<HTMLAttributes, 'placeholder'> {
+export interface RangeCalendarRootProps extends PrimitiveProps, Omit<BaseProps, 'placeholder'> {
   /**
    * Default value.
    */
@@ -139,43 +140,36 @@ export type RangeCalendarRootEmits = {
 /**
  * Properties for the RangeCalendarHeader component.
  */
-export interface RangeCalendarHeaderProps
-  extends PrimitiveProps, /** @vue-ignore */ Omit<HTMLAttributes, 'placeholder'> {}
+export interface RangeCalendarHeaderProps extends PrimitiveProps, BaseProps {}
 /**
  * Properties for the RangeCalendarHeading component.
  */
-export interface RangeCalendarHeadingProps
-  extends PrimitiveProps, /** @vue-ignore */ Omit<HTMLAttributes, 'placeholder'> {}
+export interface RangeCalendarHeadingProps extends PrimitiveProps, BaseProps {}
 /**
  * Properties for the RangeCalendarGrid component.
  */
-export interface RangeCalendarGridProps
-  extends PrimitiveProps, /** @vue-ignore */ Omit<HTMLAttributes, 'placeholder'> {}
+export interface RangeCalendarGridProps extends PrimitiveProps, BaseProps {}
 /**
  * Properties for the RangeCalendarGridHead component.
  */
-export interface RangeCalendarGridHeadProps
-  extends PrimitiveProps, /** @vue-ignore */ Omit<HTMLAttributes, 'placeholder'> {}
+export interface RangeCalendarGridHeadProps extends PrimitiveProps, BaseProps {}
 /**
  * Properties for the RangeCalendarGridBody component.
  */
-export interface RangeCalendarGridBodyProps
-  extends PrimitiveProps, /** @vue-ignore */ Omit<HTMLAttributes, 'placeholder'> {}
+export interface RangeCalendarGridBodyProps extends PrimitiveProps, BaseProps {}
 /**
  * Properties for the RangeCalendarGridRow component.
  */
-export interface RangeCalendarGridRowProps
-  extends PrimitiveProps, /** @vue-ignore */ Omit<HTMLAttributes, 'placeholder'> {}
+export interface RangeCalendarGridRowProps extends PrimitiveProps, BaseProps {}
 /**
  * Properties for the RangeCalendarHeadCell component.
  */
-export interface RangeCalendarHeadCellProps
-  extends PrimitiveProps, /** @vue-ignore */ Omit<HTMLAttributes, 'placeholder'> {}
+export interface RangeCalendarHeadCellProps extends PrimitiveProps, BaseProps {}
 
 /**
  * Properties for the RangeCalendarCell component.
  */
-export interface RangeCalendarCellProps extends PrimitiveProps, /** @vue-ignore */ Omit<HTMLAttributes, 'placeholder'> {
+export interface RangeCalendarCellProps extends PrimitiveProps, BaseProps {
   /**
    * Date.
    */
@@ -185,8 +179,7 @@ export interface RangeCalendarCellProps extends PrimitiveProps, /** @vue-ignore 
 /**
  * Properties for the RangeCalendarCellTrigger component.
  */
-export interface RangeCalendarCellTriggerProps
-  extends PrimitiveProps, /** @vue-ignore */ Omit<HTMLAttributes, 'placeholder'> {
+export interface RangeCalendarCellTriggerProps extends PrimitiveProps, BaseProps {
   /**
    * Day.
    */
@@ -200,7 +193,7 @@ export interface RangeCalendarCellTriggerProps
 /**
  * Properties for the RangeCalendarPrev component.
  */
-export interface RangeCalendarPrevProps extends PrimitiveProps, /** @vue-ignore */ ButtonHTMLAttributes {
+export interface RangeCalendarPrevProps extends ButtonProps {
   /**
    * Prev page.
    */
@@ -210,7 +203,7 @@ export interface RangeCalendarPrevProps extends PrimitiveProps, /** @vue-ignore 
 /**
  * Properties for the RangeCalendarNext component.
  */
-export interface RangeCalendarNextProps extends PrimitiveProps, /** @vue-ignore */ ButtonHTMLAttributes {
+export interface RangeCalendarNextProps extends ButtonProps {
   /**
    * Next page.
    */

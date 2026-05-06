@@ -1,4 +1,4 @@
-import type { ComputedRef, HTMLAttributes } from 'vue';
+import type { ComputedRef } from 'vue';
 import type {
   ColorChannel,
   ColorChannelRange,
@@ -7,13 +7,13 @@ import type {
   ColorValue,
   NormalizedColor
 } from '../../shared';
-import type { DataOrientation, Direction, FormFieldCommonProps, PropsToContext, UiClass } from '../../types';
+import type { BaseProps, DataOrientation, Direction, FormFieldCommonProps, PropsToContext, UiClass } from '../../types';
 import type { PrimitiveProps } from '../primitive/types';
 
 /**
  * Properties for the ColorSliderRoot component.
  */
-export interface ColorSliderRootProps extends PrimitiveProps, FormFieldCommonProps, /** @vue-ignore */ HTMLAttributes {
+export interface ColorSliderRootProps extends PrimitiveProps, FormFieldCommonProps, BaseProps {
   /**
    * Current model value.
    */
@@ -81,12 +81,12 @@ export type ColorSliderRootEmits = {
 /**
  * Properties for the ColorSliderTrack component.
  */
-export interface ColorSliderTrackProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {}
+export interface ColorSliderTrackProps extends PrimitiveProps, BaseProps {}
 
 /**
  * Properties for the ColorSliderThumb component.
  */
-export interface ColorSliderThumbProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {}
+export interface ColorSliderThumbProps extends PrimitiveProps, BaseProps {}
 
 /**
  * Context for the ColorSliderRoot component.

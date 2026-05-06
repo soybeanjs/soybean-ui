@@ -1,6 +1,5 @@
 import type {
   ComputedRef,
-  HTMLAttributes,
   FormHTMLAttributes,
   ComponentOptionsMixin,
   CreateComponentPublicInstanceWithMixins,
@@ -8,7 +7,7 @@ import type {
   PublicProps,
   SlotsType
 } from 'vue';
-import type { DataOrientation, Path, PathValue, PropsToContext, UiClass } from '../../types';
+import type { BaseProps, DataOrientation, Path, PathValue, PropsToContext, UiClass } from '../../types';
 import type { LabelProps } from '../label/types';
 import type {
   UseHeadlessFormReturn,
@@ -21,7 +20,7 @@ import type {
 /**
  * Properties for the FormField component.
  */
-export interface FormFieldProps extends /** @vue-ignore */ HTMLAttributes {
+export interface FormFieldProps extends BaseProps {
   /**
    * Error.
    */
@@ -40,17 +39,17 @@ export interface FormLabelProps extends LabelProps {}
 /**
  * Properties for the FormControl component.
  */
-export interface FormControlProps extends /** @vue-ignore */ HTMLAttributes {}
+export interface FormControlProps extends BaseProps {}
 
 /**
  * Properties for the FormDescription component.
  */
-export interface FormDescriptionProps extends /** @vue-ignore */ HTMLAttributes {}
+export interface FormDescriptionProps extends BaseProps {}
 
 /**
  * Properties for the FormError component.
  */
-export interface FormErrorProps extends /** @vue-ignore */ HTMLAttributes {}
+export interface FormErrorProps extends BaseProps {}
 
 /**
  * Context for the FormField component.
@@ -223,7 +222,7 @@ export type FormFieldArrayComponent<Values extends FormValues, ExtraProps extend
 export interface FormCompactProps
   extends
     Pick<FormFieldCommonProps, 'orientation' | 'labelProps' | 'controlProps' | 'descriptionProps' | 'errorProps'>,
-    /** @vue-ignore */ FormHTMLAttributes {
+    BaseProps<FormHTMLAttributes> {
   fieldProps?: FormFieldProps;
   fieldArrayProps?: FormFieldProps;
 }

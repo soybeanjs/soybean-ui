@@ -1,4 +1,4 @@
-import type { ComponentPublicInstance, ComputedRef } from 'vue';
+import type { ComponentPublicInstance, ComputedRef, HTMLAttributes } from 'vue';
 
 export type VNodeRef = Element | ComponentPublicInstance | null | undefined;
 
@@ -18,3 +18,9 @@ export type InferDefaults<T> = {
 };
 type NativeType = null | number | string | boolean | symbol | ((...args: any[]) => any);
 type InferDefault<P, T> = ((props: P) => T & {}) | (T extends NativeType ? T : never);
+
+export type DataAttributes = {
+  [K in `data-${string}`]?: unknown;
+};
+
+export type BaseProps<T = HTMLAttributes> = /** @vue-ignore */ DataAttributes & /** @vue-ignore */ T;

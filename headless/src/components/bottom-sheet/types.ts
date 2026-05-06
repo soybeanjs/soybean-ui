@@ -1,5 +1,5 @@
-import type { ShallowRef, Ref, HTMLAttributes } from 'vue';
-import type { Side, UiClass, VNodeRef } from '../../types';
+import type { ShallowRef, Ref } from 'vue';
+import type { BaseProps, Side, UiClass, VNodeRef } from '../../types';
 import type {
   DialogRootProps,
   DialogRootEmits,
@@ -408,7 +408,7 @@ export interface BottomSheetEmitHandlers {
 /**
  * Properties for the BottomSheetHandle component.
  */
-export interface BottomSheetHandleProps extends /** @vue-ignore */ HTMLAttributes {
+export interface BottomSheetHandleProps extends BaseProps {
   /**
    * Whether prevent cycle.
    */

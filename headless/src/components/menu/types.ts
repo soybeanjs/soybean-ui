@@ -1,5 +1,6 @@
-import type { ButtonHTMLAttributes, ComputedRef, HTMLAttributes, ShallowRef } from 'vue';
+import type { ComputedRef, ShallowRef } from 'vue';
 import type {
+  BaseProps,
   AcceptableBooleanValue,
   CheckedState,
   DefinedValue,
@@ -12,6 +13,7 @@ import type {
   TrapFocusProps,
   UiClass
 } from '../../types';
+import type { ButtonProps } from '../button/types';
 import type { IconValue } from '../_icon/types';
 import type { KbdProps, KbdValue } from '../kbd/types';
 import type { LinkBaseProps, LinkProps } from '../link/types';
@@ -78,10 +80,7 @@ export type MenuContentEmits = MenuContentImplEmits;
 /**
  * Properties for the MenuTrigger component.
  */
-export interface MenuTriggerProps extends PrimitiveProps, /** @vue-ignore */ ButtonHTMLAttributes {
-  /** When `true`, the menu would not open when triggered. */
-  disabled?: boolean;
-}
+export interface MenuTriggerProps extends ButtonProps {}
 
 // MenuSub
 /**
@@ -107,19 +106,19 @@ export type MenuSubContentEmits = MenuContentEmits;
 /**
  * Properties for the MenuGroup component.
  */
-export interface MenuGroupProps extends PrimitiveProps, /** @vue-ignore */ Omit<HTMLAttributes, 'dir' | 'onSelect'> {}
+export interface MenuGroupProps extends PrimitiveProps, Omit<BaseProps, 'dir' | 'onSelect'> {}
 
 // MenuGroupLabel
 /**
  * Properties for the MenuGroupLabel component.
  */
-export interface MenuGroupLabelProps extends /** @vue-ignore */ HTMLAttributes {}
+export interface MenuGroupLabelProps extends BaseProps {}
 
 // MenuItemImpl
 /**
  * Properties for the MenuItemImpl component.
  */
-export interface MenuItemImplProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {
+export interface MenuItemImplProps extends PrimitiveProps, BaseProps {
   /** When `true`, prevents the user from interacting with the item. */
   disabled?: boolean;
   /**
@@ -237,7 +236,7 @@ export interface MenuSubTriggerProps extends MenuItemImplProps {}
 /**
  * Properties for the MenuItemIndicator component.
  */
-export interface MenuItemIndicatorProps extends PrimitiveProps, ForceMountProps, /** @vue-ignore */ HTMLAttributes {}
+export interface MenuItemIndicatorProps extends PrimitiveProps, ForceMountProps, BaseProps {}
 
 /**
  * Type information for MenuCollectionItemData.

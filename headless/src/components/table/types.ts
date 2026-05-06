@@ -1,18 +1,11 @@
-import type {
-  ShallowRef,
-  ComputedRef,
-  HTMLAttributes,
-  TableHTMLAttributes,
-  TdHTMLAttributes,
-  ThHTMLAttributes
-} from 'vue';
-import type { CheckedState, Direction, Path, PathValue, PropsToContext, UiClass } from '../../types';
+import type { ShallowRef, ComputedRef, TableHTMLAttributes, TdHTMLAttributes, ThHTMLAttributes } from 'vue';
+import type { BaseProps, CheckedState, Direction, Path, PathValue, PropsToContext, UiClass } from '../../types';
 import type { VirtualizerOptions } from '../virtualizer/types';
 
 /**
  * Properties for the TableRoot component.
  */
-export interface TableRootProps extends /** @vue-ignore */ HTMLAttributes {
+export interface TableRootProps extends BaseProps {
   /**
    * Reading direction of the component.
    */
@@ -22,42 +15,42 @@ export interface TableRootProps extends /** @vue-ignore */ HTMLAttributes {
 /**
  * Properties for the TableScroll component.
  */
-export interface TableScrollProps extends /** @vue-ignore */ HTMLAttributes {}
+export interface TableScrollProps extends BaseProps {}
 
 /**
  * Properties for the TableContent component.
  */
-export interface TableContentProps extends /** @vue-ignore */ TableHTMLAttributes {}
+export interface TableContentProps extends BaseProps<TableHTMLAttributes> {}
 
 /**
  * Properties for the TableHeader component.
  */
-export interface TableHeaderProps extends /** @vue-ignore */ HTMLAttributes {}
+export interface TableHeaderProps extends BaseProps {}
 
 /**
  * Properties for the TableBody component.
  */
-export interface TableBodyProps extends /** @vue-ignore */ HTMLAttributes {}
+export interface TableBodyProps extends BaseProps {}
 
 /**
  * Properties for the TableFooter component.
  */
-export interface TableFooterProps extends /** @vue-ignore */ HTMLAttributes {}
+export interface TableFooterProps extends BaseProps {}
 
 /**
  * Properties for the TableRow component.
  */
-export interface TableRowProps extends /** @vue-ignore */ HTMLAttributes {}
+export interface TableRowProps extends BaseProps {}
 
 /**
  * Properties for the TableHead component.
  */
-export interface TableHeadProps extends /** @vue-ignore */ ThHTMLAttributes {}
+export interface TableHeadProps extends BaseProps<ThHTMLAttributes> {}
 
 /**
  * Properties for the TableCell component.
  */
-export interface TableCellProps extends /** @vue-ignore */ TdHTMLAttributes {}
+export interface TableCellProps extends BaseProps<TdHTMLAttributes> {}
 
 /**
  * Available UI slots for the Table component.

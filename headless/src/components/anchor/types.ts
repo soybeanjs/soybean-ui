@@ -1,7 +1,7 @@
 import type { HTMLAttributes, ShallowRef } from 'vue';
 import type { PrimitiveProps } from '../primitive/types';
 import type { LinkBaseProps } from '../link/types';
-import type { DataOrientation, Direction, PropsToContext, UiClass } from '../../types';
+import type { BaseProps, DataOrientation, Direction, PropsToContext, UiClass } from '../../types';
 
 /**
  * Type information for AnchorContainer.
@@ -30,7 +30,7 @@ export interface AnchorSection {
 /**
  * Properties for the AnchorRoot component.
  */
-export interface AnchorRootProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {
+export interface AnchorRootProps extends PrimitiveProps, BaseProps {
   /**
    * Bounds.
    */
@@ -90,7 +90,7 @@ export type AnchorRootEmits = {
 /**
  * Properties for the AnchorLink component.
  */
-export interface AnchorLinkProps extends PrimitiveProps, LinkBaseProps, /** @vue-ignore */ HTMLAttributes {
+export interface AnchorLinkProps extends PrimitiveProps, LinkBaseProps, BaseProps {
   /**
    * The link of anchor
    */
@@ -118,7 +118,7 @@ export interface AnchorOptionData extends Pick<AnchorLinkProps, 'disabled' | 'hr
 /**
  * Properties for the AnchorItemCompact component.
  */
-export interface AnchorItemCompactProps extends /** @vue-ignore */ HTMLAttributes {
+export interface AnchorItemCompactProps extends BaseProps {
   /**
    * Current model value.
    */

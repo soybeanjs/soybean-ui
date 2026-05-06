@@ -1,11 +1,10 @@
-import type { HTMLAttributes } from 'vue';
-import type { DataOrientation, Direction, EmitsToHookProps, PropsToContext } from '../../types';
+import type { BaseProps, DataOrientation, Direction, EmitsToHookProps, PropsToContext } from '../../types';
 import type { PrimitiveProps } from '../primitive/types';
 
 /**
  * Properties for the RovingFocusGroup component.
  */
-export interface RovingFocusGroupProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {
+export interface RovingFocusGroupProps extends PrimitiveProps, BaseProps {
   /** The orientation of the group. Mainly so arrow navigation is done accordingly (left & right vs. up & down) */
   orientation?: DataOrientation;
   /** The direction of navigation between items. */
@@ -45,7 +44,7 @@ export type RovingFocusGroupEmits = {
 /**
  * Properties for the RovingFocusItem component.
  */
-export interface RovingFocusItemProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {
+export interface RovingFocusItemProps extends PrimitiveProps, BaseProps {
   /**
    * Tab stop id.
    */

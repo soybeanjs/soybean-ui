@@ -1,15 +1,14 @@
-import type { HTMLAttributes } from 'vue';
-import type { DataOrientation, UiClass } from '../../types';
+import type { BaseProps, DataOrientation, UiClass } from '../../types';
 
 /**
  * Properties for the SeparatorLabel component.
  */
-export interface SeparatorLabelProps extends /** @vue-ignore */ HTMLAttributes {}
+export interface SeparatorLabelProps extends BaseProps {}
 
 /**
  * Properties for the SeparatorRoot component.
  */
-export interface SeparatorRootProps extends /** @vue-ignore */ HTMLAttributes {
+export interface SeparatorRootProps extends BaseProps {
   /**
    * Orientation of the component.
    *

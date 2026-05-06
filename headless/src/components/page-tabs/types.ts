@@ -1,11 +1,11 @@
-import type { ComputedRef, HTMLAttributes, ShallowRef } from 'vue';
+import type { ComputedRef, ShallowRef } from 'vue';
 import type { PrimitiveProps } from '../primitive/types';
-import type { PropsToContext, UiClass } from '../../types';
+import type { BaseProps, PropsToContext, UiClass } from '../../types';
 
 /**
  * Properties for the PageTabsRoot component.
  */
-export interface PageTabsRootProps extends /** @vue-ignore */ HTMLAttributes {
+export interface PageTabsRootProps extends BaseProps {
   /**
    * The active tab value.
    */
@@ -29,7 +29,7 @@ export type PageTabsRootEmits = {
 /**
  * Properties for the PageTabsItem component.
  */
-export interface PageTabsItemProps extends /** @vue-ignore */ Omit<HTMLAttributes, 'onClick'> {
+export interface PageTabsItemProps extends Omit<BaseProps, 'onClick'> {
   /**
    * The unique value of the tab.
    */
@@ -61,12 +61,12 @@ export type PageTabsItemEmits = {
 /**
  * Properties for the PageTabsClose component.
  */
-export interface PageTabsCloseProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {}
+export interface PageTabsCloseProps extends PrimitiveProps, BaseProps {}
 
 /**
  * Properties for the PageTabsPin component.
  */
-export interface PageTabsPinProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {}
+export interface PageTabsPinProps extends PrimitiveProps, BaseProps {}
 
 /**
  * Context for the PageTabsRoot component.

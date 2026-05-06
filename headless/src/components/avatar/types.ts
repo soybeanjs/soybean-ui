@@ -1,15 +1,15 @@
-import type { HTMLAttributes, ImgHTMLAttributes } from 'vue';
-import type { ImageLoadingStatus, UiClass } from '../../types';
+import type { ImgHTMLAttributes } from 'vue';
+import type { BaseProps, ImageLoadingStatus, UiClass } from '../../types';
 
 /**
  * Properties for the AvatarRoot component.
  */
-export interface AvatarRootProps extends /** @vue-ignore */ HTMLAttributes {}
+export interface AvatarRootProps extends BaseProps {}
 
 /**
  * Properties for the AvatarImage component.
  */
-export interface AvatarImageProps extends /** @vue-ignore */ ImgHTMLAttributes {
+export interface AvatarImageProps extends BaseProps<ImgHTMLAttributes> {
   /** The image source URL */
   src: string;
   /** The referrer policy for the image */
@@ -31,7 +31,7 @@ export type AvatarImageEmits = {
 /**
  * Properties for the AvatarFallback component.
  */
-export interface AvatarFallbackProps extends /** @vue-ignore */ HTMLAttributes {
+export interface AvatarFallbackProps extends BaseProps {
   /**
    * Useful for delaying rendering so it only appears for those with slower connections.
    *

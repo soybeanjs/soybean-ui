@@ -1,7 +1,7 @@
-import type { HTMLAttributes, ShallowRef } from 'vue';
+import type { ShallowRef } from 'vue';
 import type { UseFuseOptions } from '@vueuse/integrations/useFuse';
 import type { CollectionItemData } from '../../composables';
-import type { Direction, FormFieldCommonProps } from '../../types';
+import type { BaseProps, Direction, FormFieldCommonProps } from '../../types';
 import type {
   ComboboxAnchorProps as AutocompleteAnchorProps,
   ComboboxContentProps as AutocompleteContentProps,
@@ -24,7 +24,7 @@ import type { PortalProps as AutocompletePortalProps } from '../portal/types';
 /**
  * Properties for the AutocompleteRoot component.
  */
-export interface AutocompleteRootProps extends FormFieldCommonProps, /** @vue-ignore */ HTMLAttributes {
+export interface AutocompleteRootProps extends FormFieldCommonProps, BaseProps {
   /** The controlled value of the autocomplete input. */
   modelValue?: string;
   /** The value of the autocomplete input when initially rendered. */

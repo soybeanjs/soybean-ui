@@ -12,7 +12,7 @@ import type { ThemeSize } from '@/theme';
 /**
  * Properties for the DateRangePicker component.
  */
-export interface DateRangePickerProps extends /** @vue-ignore */ DateRangePickerRootProps {
+export interface DateRangePickerProps extends DateRangePickerRootProps {
   /**
    * Additional class names applied to the root element.
    */

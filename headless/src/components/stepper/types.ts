@@ -1,5 +1,5 @@
-import type { ComputedRef, HTMLAttributes, ShallowRef } from 'vue';
-import type { DataOrientation, Direction, PropsToContext, UiClass } from '../../types';
+import type { ComputedRef, ShallowRef } from 'vue';
+import type { BaseProps, DataOrientation, Direction, PropsToContext, UiClass } from '../../types';
 import type { PrimitiveProps } from '../primitive/types';
 import type { SeparatorRootProps } from '../separator/types';
 
@@ -11,7 +11,7 @@ export type StepperState = 'completed' | 'active' | 'inactive';
 /**
  * Properties for the StepperRoot component.
  */
-export interface StepperRootProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {
+export interface StepperRootProps extends PrimitiveProps, BaseProps {
   /**
    * The value of the step that should be active when initially rendered.
    *
@@ -53,7 +53,7 @@ export type StepperRootEmits = {
 /**
  * Properties for the StepperItem component.
  */
-export interface StepperItemProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {
+export interface StepperItemProps extends PrimitiveProps, BaseProps {
   /** The step index, starting from `1`. */
   step: number;
   /** When `true`, prevents the user from interacting with the step. */
@@ -65,22 +65,22 @@ export interface StepperItemProps extends PrimitiveProps, /** @vue-ignore */ HTM
 /**
  * Properties for the StepperTrigger component.
  */
-export interface StepperTriggerProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {}
+export interface StepperTriggerProps extends PrimitiveProps, BaseProps {}
 
 /**
  * Properties for the StepperIndicator component.
  */
-export interface StepperIndicatorProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {}
+export interface StepperIndicatorProps extends PrimitiveProps, BaseProps {}
 
 /**
  * Properties for the StepperTitle component.
  */
-export interface StepperTitleProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {}
+export interface StepperTitleProps extends PrimitiveProps, BaseProps {}
 
 /**
  * Properties for the StepperDescription component.
  */
-export interface StepperDescriptionProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {}
+export interface StepperDescriptionProps extends PrimitiveProps, BaseProps {}
 
 /**
  * Context for the StepperRoot component.

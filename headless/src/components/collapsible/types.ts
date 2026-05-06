@@ -1,11 +1,12 @@
-import type { ButtonHTMLAttributes, HTMLAttributes, Ref } from 'vue';
-import type { ForceMountProps, PropsToContext, UiClass } from '../../types';
+import type { Ref } from 'vue';
+import type { BaseProps, ForceMountProps, PropsToContext, UiClass } from '../../types';
 import type { PrimitiveProps } from '../primitive/types';
+import type { ButtonProps } from '../button/types';
 
 /**
  * Properties for the CollapsibleRoot component.
  */
-export interface CollapsibleRootProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {
+export interface CollapsibleRootProps extends PrimitiveProps, BaseProps {
   /**
    * The open state of the collapsible when it is initially rendered.
    *
@@ -31,15 +32,20 @@ export type CollapsibleRootEmits = {
 /**
  * Properties for the CollapsibleContent component.
  */
-export interface CollapsibleContentProps extends PrimitiveProps, ForceMountProps, /** @vue-ignore */ HTMLAttributes {}
+export interface CollapsibleContentProps extends PrimitiveProps, ForceMountProps, BaseProps {}
 
 /**
  * Properties for the CollapsibleTrigger component.
  */
-export interface CollapsibleTriggerProps extends PrimitiveProps, /** @vue-ignore */ ButtonHTMLAttributes {
+export interface CollapsibleTriggerProps extends ButtonProps {
   /** When `true`, prevents the user from toggling the collapsible. */
   disabledCollapsible?: boolean;
 }
+
+export type CollapsibleTriggerEmits = {
+  /** Event handler called when the trigger is clicked. */
+  click: [event: PointerEvent];
+};
 
 /**
  * Parameters used to create the CollapsibleRoot context.

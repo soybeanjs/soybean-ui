@@ -1,4 +1,4 @@
-import type { ComputedRef, HTMLAttributes, ShallowRef } from 'vue';
+import type { ComputedRef, ShallowRef } from 'vue';
 import type {
   DateStep,
   Formatter,
@@ -11,14 +11,13 @@ import type {
   TimeRange,
   TimeValue
 } from '../../date';
-import type { Direction, FormFieldCommonProps, PropsToContext, UiClass } from '../../types';
+import type { BaseProps, Direction, FormFieldCommonProps, PropsToContext, UiClass } from '../../types';
 import type { PrimitiveProps } from '../primitive/types';
 
 /**
  * Properties for the TimeRangeFieldRoot component.
  */
-export interface TimeRangeFieldRootProps
-  extends PrimitiveProps, FormFieldCommonProps, /** @vue-ignore */ Omit<HTMLAttributes, 'placeholder'> {
+export interface TimeRangeFieldRootProps extends PrimitiveProps, FormFieldCommonProps, Omit<BaseProps, 'placeholder'> {
   /**
    * Default value.
    */
@@ -118,7 +117,7 @@ export type TimeRangeFieldRootEmits = {
 /**
  * Properties for the TimeRangeFieldInput component.
  */
-export interface TimeRangeFieldInputProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {
+export interface TimeRangeFieldInputProps extends PrimitiveProps, BaseProps {
   /**
    * Part.
    */

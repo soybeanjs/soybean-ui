@@ -1,12 +1,12 @@
-import type { ButtonHTMLAttributes, HTMLAttributes, ShallowRef } from 'vue';
-import type { UiClass } from '../../types';
+import type { ShallowRef } from 'vue';
+import type { BaseProps, UiClass } from '../../types';
+import type { ButtonProps } from '../button/types';
 import type { IconValue } from '../_icon/types';
-import type { PrimitiveProps } from '../primitive/types';
 
 /**
  * Properties for the AlertRoot component.
  */
-export interface AlertRootProps extends /** @vue-ignore */ HTMLAttributes {
+export interface AlertRootProps extends BaseProps {
   /**
    * The controlled open state of the alert. Can be bound with `v-model:open`.
    *
@@ -28,22 +28,30 @@ export type AlertRootEmits = {
 /**
  * Properties for the AlertContent component.
  */
-export interface AlertContentProps extends /** @vue-ignore */ HTMLAttributes {}
+export interface AlertContentProps extends BaseProps {}
 
 /**
  * Properties for the AlertTitle component.
  */
-export interface AlertTitleProps extends /** @vue-ignore */ HTMLAttributes {}
+export interface AlertTitleProps extends BaseProps {}
 
 /**
  * Properties for the AlertDescription component.
  */
-export interface AlertDescriptionProps extends /** @vue-ignore */ HTMLAttributes {}
+export interface AlertDescriptionProps extends BaseProps {}
 
 /**
  * Properties for the AlertClose component.
  */
-export interface AlertCloseProps extends PrimitiveProps, /** @vue-ignore */ ButtonHTMLAttributes {}
+export interface AlertCloseProps extends ButtonProps {}
+
+/**
+ * Events for the AlertClose component.
+ */
+export type AlertCloseEmits = {
+  /** Emitted when the close button is clicked. */
+  close: [event: PointerEvent];
+};
 
 /**
  * Properties for the AlertCompact component.
@@ -86,7 +94,7 @@ export interface AlertCompactProps extends AlertRootProps {
 /**
  * Events for the AlertCompact component.
  */
-export type AlertCompactEmits = AlertRootEmits;
+export type AlertCompactEmits = AlertRootEmits & AlertCloseEmits;
 
 /**
  * Slots for the AlertCompact component.

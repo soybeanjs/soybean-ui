@@ -1,10 +1,11 @@
-import type { ButtonHTMLAttributes, HTMLAttributes, ShallowRef } from 'vue';
-import type { PropsToContext, UiClass } from '../../types';
+import type { ShallowRef } from 'vue';
+import type { BaseProps, PropsToContext, UiClass } from '../../types';
+import type { ButtonProps } from '../button/types';
 
 /**
  * Properties for the PaginationRoot component.
  */
-export interface PaginationRootProps extends /** @vue-ignore */ HTMLAttributes {
+export interface PaginationRootProps extends BaseProps {
   /** The controlled value of the current page. Can be bound as `v-model:page`. */
   page?: number;
   /**
@@ -43,12 +44,12 @@ export type PaginationRootEmits = {
 /**
  * Properties for the PaginationList component.
  */
-export interface PaginationListProps extends /** @vue-ignore */ HTMLAttributes {}
+export interface PaginationListProps extends BaseProps {}
 
 /**
  * Properties for the PaginationListItem component.
  */
-export interface PaginationListItemProps extends /** @vue-ignore */ ButtonHTMLAttributes {
+export interface PaginationListItemProps extends ButtonProps {
   /** Value for the page */
   value: number;
 }
@@ -56,12 +57,12 @@ export interface PaginationListItemProps extends /** @vue-ignore */ ButtonHTMLAt
 /**
  * Properties for the PaginationEllipsis component.
  */
-export interface PaginationEllipsisProps extends /** @vue-ignore */ HTMLAttributes {}
+export interface PaginationEllipsisProps extends BaseProps {}
 
 /**
  * Properties for the PaginationButton component.
  */
-export interface PaginationButtonProps extends /** @vue-ignore */ ButtonHTMLAttributes {}
+export interface PaginationButtonProps extends ButtonProps {}
 
 /**
  * Parameters used to create the PaginationRoot context.

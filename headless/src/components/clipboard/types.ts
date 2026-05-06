@@ -1,4 +1,4 @@
-import type { ButtonProps as _ButtonProps } from '../button/types';
+import type { ButtonProps } from '../button/types';
 import type { IconValue } from '../_icon/types';
 
 /**
@@ -9,7 +9,7 @@ export type ClipboardState = 'ready' | 'copied' | 'unsupported';
 /**
  * Properties for the Clipboard component.
  */
-export interface ClipboardProps extends _ButtonProps {
+export interface ClipboardProps extends ButtonProps {
   /**
    * The text value to copy.
    */

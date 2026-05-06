@@ -1,5 +1,6 @@
-import type { ButtonHTMLAttributes, HTMLAttributes, HtmlHTMLAttributes, ShallowRef } from 'vue';
-import type { AcceptableBooleanValue, FormFieldCommonProps, PropsToContext, UiClass } from '../../types';
+import type { HtmlHTMLAttributes, ShallowRef } from 'vue';
+import type { BaseProps, AcceptableBooleanValue, FormFieldCommonProps, PropsToContext, UiClass } from '../../types';
+import type { ButtonProps } from '../button/types';
 import type { PrimitiveProps } from '../primitive/types';
 
 /**
@@ -24,7 +25,7 @@ export interface SwitchValueConfig<T extends AcceptableBooleanValue = boolean> {
  * Properties for the SwitchRoot component.
  */
 export interface SwitchRootProps<T extends AcceptableBooleanValue>
-  extends FormFieldCommonProps, SwitchValueConfig<T>, /** @vue-ignore */ HtmlHTMLAttributes {
+  extends FormFieldCommonProps, SwitchValueConfig<T>, BaseProps<HtmlHTMLAttributes> {
   /** The state of the switch when it is initially rendered. Use when you do not need to control its state. */
   defaultValue?: NonNullable<T>;
   /** The controlled state of the switch. Can be bind as `v-model`. */
@@ -46,7 +47,7 @@ export type SwitchRootEmits<T extends AcceptableBooleanValue = boolean> = {
 /**
  * Properties for the SwitchControl component.
  */
-export interface SwitchControlProps extends /** @vue-ignore */ ButtonHTMLAttributes {
+export interface SwitchControlProps extends ButtonProps {
   /** Id of the element */
   id?: string;
 }
@@ -54,7 +55,7 @@ export interface SwitchControlProps extends /** @vue-ignore */ ButtonHTMLAttribu
 /**
  * Properties for the SwitchThumb component.
  */
-export interface SwitchThumbProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {}
+export interface SwitchThumbProps extends PrimitiveProps, BaseProps {}
 
 /**
  * Parameters used to create the SwitchRoot context.

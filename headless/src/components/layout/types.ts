@@ -1,5 +1,5 @@
-import type { ComputedRef, HTMLAttributes, ShallowRef } from 'vue';
-import type { DataOrientation, HorizontalSide, PropsToContext, UiClass } from '../../types';
+import type { ComputedRef, ShallowRef } from 'vue';
+import type { BaseProps, DataOrientation, HorizontalSide, PropsToContext, UiClass } from '../../types';
 import type { PrimitiveProps } from '../primitive/types';
 
 /**
@@ -25,7 +25,7 @@ export type LayoutSidebarState = 'expanded' | 'collapsed';
 /**
  * Properties for the LayoutRoot component.
  */
-export interface LayoutRootProps extends /** @vue-ignore */ HTMLAttributes {
+export interface LayoutRootProps extends BaseProps {
   /** The controlled open state of the layout. Can be bound with `v-model`. */
   open?: boolean;
   /** The open state of the layout when it is initially rendered.
@@ -131,47 +131,47 @@ export type LayoutRootEmits = {
 /**
  * Properties for the LayoutSidebar component.
  */
-export interface LayoutSidebarProps extends /** @vue-ignore */ HTMLAttributes {}
+export interface LayoutSidebarProps extends BaseProps {}
 
 /**
  * Properties for the LayoutRail component.
  */
-export interface LayoutRailProps extends /** @vue-ignore */ HTMLAttributes {}
+export interface LayoutRailProps extends BaseProps {}
 
 /**
  * Properties for the LayoutMain component.
  */
-export interface LayoutMainProps extends /** @vue-ignore */ HTMLAttributes {}
+export interface LayoutMainProps extends BaseProps {}
 
 /**
  * Properties for the LayoutHeader component.
  */
-export interface LayoutHeaderProps extends /** @vue-ignore */ HTMLAttributes {}
+export interface LayoutHeaderProps extends BaseProps {}
 
 /**
  * Properties for the LayoutTab component.
  */
-export interface LayoutTabProps extends /** @vue-ignore */ HTMLAttributes {}
+export interface LayoutTabProps extends BaseProps {}
 
 /**
  * Properties for the LayoutContent component.
  */
-export interface LayoutContentProps extends /** @vue-ignore */ HTMLAttributes {}
+export interface LayoutContentProps extends BaseProps {}
 
 /**
  * Properties for the LayoutFooter component.
  */
-export interface LayoutFooterProps extends /** @vue-ignore */ HTMLAttributes {}
+export interface LayoutFooterProps extends BaseProps {}
 
 /**
  * Properties for the LayoutTrigger component.
  */
-export interface LayoutTriggerProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {}
+export interface LayoutTriggerProps extends PrimitiveProps, BaseProps {}
 
 /**
  * Properties for the LayoutMobile component.
  */
-export interface LayoutMobileProps extends /** @vue-ignore */ HTMLAttributes {}
+export interface LayoutMobileProps extends BaseProps {}
 
 interface LayoutOthersProps {
   sidebarProps?: LayoutSidebarProps;

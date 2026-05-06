@@ -1,9 +1,9 @@
-import type { HTMLAttributes } from 'vue';
+import type { BaseProps } from '../../types';
 
 /**
  * Properties for the Tag component.
  */
-export interface TagProps extends /** @vue-ignore */ HTMLAttributes {
+export interface TagProps extends BaseProps {
   /**
    * Whether the component is open.
    */

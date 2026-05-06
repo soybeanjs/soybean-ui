@@ -14,7 +14,7 @@ export type BacktopState = 'visible' | 'hidden';
 /**
  * Properties for the Backtop component.
  */
-export interface BacktopProps extends /** @vue-ignore */ Omit<ButtonProps, 'onChange'> {
+export interface BacktopProps extends Omit<ButtonProps, 'onChange'> {
   /**
    * Scroll distance that must be reached before the Backtop button becomes visible.
    *

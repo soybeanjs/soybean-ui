@@ -1,5 +1,5 @@
-import type { ButtonHTMLAttributes, ComputedRef, HTMLAttributes, ShallowRef } from 'vue';
-import type { DefinedValue, Direction, Placement, PropsToContext, UiClass } from '../../types';
+import type { ComputedRef, ShallowRef } from 'vue';
+import type { BaseProps, DefinedValue, Direction, Placement, PropsToContext, UiClass } from '../../types';
 import type {
   MenuPopupProps,
   MenuPortalProps,
@@ -15,13 +15,14 @@ import type {
   MenuOptionData,
   MenuUiSlot
 } from '../menu';
+import type { ButtonProps } from '../button/types';
 import type { PrimitiveProps } from '../primitive/types';
 
 /**
  * Properties for the MenubarRoot component.
  */
 export interface MenubarRootProps<T extends DefinedValue = DefinedValue>
-  extends PrimitiveProps, /** @vue-ignore */ Omit<HTMLAttributes, 'onSelect'> {
+  extends PrimitiveProps, Omit<BaseProps, 'onSelect'> {
   /** The controlled value of the menu to open. Can be used as `v-model`. */
   modelValue?: T;
   /** The value of the menu that should be open when initially rendered. */
@@ -53,10 +54,7 @@ export interface MenubarMenuProps {
 /**
  * Properties for the MenubarTrigger component.
  */
-export interface MenubarTriggerProps extends PrimitiveProps, /** @vue-ignore */ ButtonHTMLAttributes {
-  /** When `true`, prevents the user from interacting with the trigger. */
-  disabled?: boolean;
-}
+export interface MenubarTriggerProps extends ButtonProps {}
 
 /**
  * Type information for MenubarCollectionItemData.

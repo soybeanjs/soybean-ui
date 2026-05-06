@@ -1,6 +1,5 @@
 import type { UseFuseOptions } from '@vueuse/integrations/useFuse';
-import type { HTMLAttributes } from 'vue';
-import type { UiClass } from '../../types';
+import type { BaseProps, UiClass } from '../../types';
 import type { IconValue } from '../_icon/types';
 import type { KbdProps, KbdValue } from '../kbd/types';
 import type {
@@ -61,7 +60,7 @@ export type CommandOptionData<T extends CommandSingleOptionData = CommandSingleO
 /**
  * Properties for the CommandItemLabel component.
  */
-export interface CommandItemLabelProps extends /** @vue-ignore */ HTMLAttributes {}
+export interface CommandItemLabelProps extends BaseProps {}
 
 /**
  * Properties for the CommandShortcut component.
@@ -94,7 +93,7 @@ export type CommandSearchOptionData<T extends CommandSingleOptionData = CommandS
 /**
  * Properties for the CommandEmpty component.
  */
-export interface CommandEmptyProps extends /** @vue-ignore */ HTMLAttributes {}
+export interface CommandEmptyProps extends BaseProps {}
 
 /**
  * Available UI slots for the Command component.

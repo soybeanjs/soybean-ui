@@ -1,5 +1,4 @@
-import type { HTMLAttributes } from 'vue';
-import type { KbdKey } from '../../types';
+import type { BaseProps, KbdKey } from '../../types';
 
 /**
  * Type information for KbdValue.
@@ -9,7 +8,7 @@ export type KbdValue = KbdKey | (string & {});
 /**
  * Properties for the Kbd component.
  */
-export interface KbdProps extends /** @vue-ignore */ HTMLAttributes {
+export interface KbdProps extends BaseProps {
   /**
    * The value of the component.
    */

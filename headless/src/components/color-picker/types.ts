@@ -1,12 +1,12 @@
-import type { ComputedRef, HTMLAttributes } from 'vue';
+import type { ComputedRef } from 'vue';
 import type { ColorFormat, ColorValue, NormalizedColor } from '../../shared';
-import type { FormFieldCommonProps } from '../../types';
+import type { BaseProps, FormFieldCommonProps } from '../../types';
 import type { PrimitiveProps } from '../primitive/types';
 
 /**
  * Properties for the ColorPickerRoot component.
  */
-export interface ColorPickerRootProps extends PrimitiveProps, FormFieldCommonProps, /** @vue-ignore */ HTMLAttributes {
+export interface ColorPickerRootProps extends PrimitiveProps, FormFieldCommonProps, BaseProps {
   /**
    * Current model value.
    */

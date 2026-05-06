@@ -1,11 +1,11 @@
-import type { HTMLAttributes } from 'vue';
 import type { ColorValue } from '../../shared';
+import { BaseProps } from '../../types';
 import type { PrimitiveProps } from '../primitive/types';
 
 /**
  * Properties for the ColorSwatch component.
  */
-export interface ColorSwatchProps extends PrimitiveProps, /** @vue-ignore */ Omit<HTMLAttributes, 'color'> {
+export interface ColorSwatchProps extends PrimitiveProps, Omit<BaseProps, 'color'> {
   /**
    * Theme color of the component.
    */

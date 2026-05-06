@@ -1,10 +1,10 @@
-import type { HTMLAttributes, ShallowRef } from 'vue';
-import type { UiClass } from '../../types';
+import type { ShallowRef } from 'vue';
+import type { BaseProps, UiClass } from '../../types';
 
 /**
  * Properties for the BadgeRoot component.
  */
-export interface BadgeRootProps extends /** @vue-ignore */ HTMLAttributes {
+export interface BadgeRootProps extends BaseProps {
   /**
    * Whether the component is open.
    */
@@ -24,7 +24,7 @@ export type BadgeRootEmits = {
 /**
  * Properties for the BadgeContent component.
  */
-export interface BadgeContentProps extends /** @vue-ignore */ HTMLAttributes {}
+export interface BadgeContentProps extends BaseProps {}
 
 /**
  * Properties for the BadgeCompact component.

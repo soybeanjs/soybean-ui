@@ -1,5 +1,5 @@
-import type { ComputedRef, HTMLAttributes, ShallowRef } from 'vue';
-import type { UiClass } from '../../types';
+import type { ComputedRef, ShallowRef } from 'vue';
+import type { BaseProps, UiClass } from '../../types';
 
 /**
  * Type information for AffixTarget.
@@ -14,7 +14,7 @@ export type AffixState = 'fixed' | 'static';
 /**
  * Properties for the AffixRoot component.
  */
-export interface AffixRootProps extends /** @vue-ignore */ Omit<HTMLAttributes, 'onChange'> {
+export interface AffixRootProps extends Omit<BaseProps, 'onChange'> {
   /**
    * The offset from the top of the target container when the element becomes affixed.
    *
@@ -46,12 +46,12 @@ export type AffixRootEmits = {
 /**
  * Properties for the AffixPlaceholder component.
  */
-export interface AffixPlaceholderProps extends /** @vue-ignore */ HTMLAttributes {}
+export interface AffixPlaceholderProps extends BaseProps {}
 
 /**
  * Properties for the AffixContent component.
  */
-export interface AffixContentProps extends /** @vue-ignore */ HTMLAttributes {}
+export interface AffixContentProps extends BaseProps {}
 
 /**
  * Properties for the AffixCompact component.

@@ -1,5 +1,5 @@
-import type { ComputedRef, HTMLAttributes, SVGAttributes } from 'vue';
-import type { Direction, UiClass } from '../../types';
+import type { ComputedRef, SVGAttributes } from 'vue';
+import type { BaseProps, Direction, UiClass } from '../../types';
 import type { PrimitiveProps } from '../primitive/types';
 
 /**
@@ -10,7 +10,7 @@ export type ProgressState = 'indeterminate' | 'loading' | 'complete';
 /**
  * Properties for the ProgressRoot component.
  */
-export interface ProgressRootProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {
+export interface ProgressRootProps extends PrimitiveProps, BaseProps {
   /**
    * Reading direction of the component.
    */
@@ -42,12 +42,12 @@ export type ProgressRootEmits = {
 /**
  * Properties for the ProgressIndicator component.
  */
-export interface ProgressIndicatorProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {}
+export interface ProgressIndicatorProps extends PrimitiveProps, BaseProps {}
 
 /**
  * Properties for the ProgressCircle component.
  */
-export interface ProgressCircleProps extends /** @vue-ignore */ SVGAttributes {
+export interface ProgressCircleProps extends BaseProps<SVGAttributes> {
   /**
    * Stroke width.
    */

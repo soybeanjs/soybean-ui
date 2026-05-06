@@ -1,5 +1,6 @@
-import type { ButtonHTMLAttributes, ComputedRef, HTMLAttributes, ShallowRef } from 'vue';
+import type { ComputedRef, ShallowRef } from 'vue';
 import type {
+  BaseProps,
   CheckedState,
   DefinedValue,
   ForceMountProps,
@@ -7,6 +8,7 @@ import type {
   PropsToContext,
   UiClass
 } from '../../types';
+import type { ButtonProps } from '../button/types';
 import type { PrimitiveProps } from '../primitive/types';
 import type { LabelProps as CheckboxLabelProps } from '../label/types';
 import type { IconValue } from '../_icon/types';
@@ -15,7 +17,7 @@ import type { RovingFocusGroupProps } from '../roving-focus/types';
 /**
  * Properties for the CheckboxRoot component.
  */
-export interface CheckboxRootProps extends FormFieldCommonProps, /** @vue-ignore */ HTMLAttributes {
+export interface CheckboxRootProps extends FormFieldCommonProps, BaseProps {
   /**
    * Id.
    */
@@ -49,7 +51,7 @@ export type CheckboxRootEmits = {
 /**
  * Properties for the CheckboxControl component.
  */
-export interface CheckboxControlProps extends /** @vue-ignore */ ButtonHTMLAttributes {
+export interface CheckboxControlProps extends ButtonProps {
   /** Id of the element */
   id?: string;
 }
@@ -57,7 +59,7 @@ export interface CheckboxControlProps extends /** @vue-ignore */ ButtonHTMLAttri
 /**
  * Properties for the CheckboxIndicator component.
  */
-export interface CheckboxIndicatorProps extends PrimitiveProps, ForceMountProps, /** @vue-ignore */ HTMLAttributes {}
+export interface CheckboxIndicatorProps extends PrimitiveProps, ForceMountProps, BaseProps {}
 
 /**
  * Option data for the CheckboxGroup component.

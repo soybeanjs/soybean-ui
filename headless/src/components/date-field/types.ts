@@ -1,5 +1,5 @@
 import type { DateValue } from '@internationalized/date';
-import type { ComputedRef, HTMLAttributes, ShallowRef } from 'vue';
+import type { ComputedRef, ShallowRef } from 'vue';
 import type {
   DateInputType,
   DateStep,
@@ -10,14 +10,13 @@ import type {
   SegmentPart,
   SegmentValueObj
 } from '../../date';
-import type { Direction, FormFieldCommonProps, PropsToContext, UiClass } from '../../types';
+import type { BaseProps, Direction, FormFieldCommonProps, PropsToContext, UiClass } from '../../types';
 import type { PrimitiveProps } from '../primitive/types';
 
 /**
  * Properties for the DateFieldRoot component.
  */
-export interface DateFieldRootProps
-  extends PrimitiveProps, FormFieldCommonProps, /** @vue-ignore */ Omit<HTMLAttributes, 'placeholder'> {
+export interface DateFieldRootProps extends PrimitiveProps, FormFieldCommonProps, Omit<BaseProps, 'placeholder'> {
   /**
    * Default value.
    */
@@ -101,7 +100,7 @@ export type DateFieldRootEmits = {
 /**
  * Properties for the DateFieldInput component.
  */
-export interface DateFieldInputProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {
+export interface DateFieldInputProps extends PrimitiveProps, BaseProps {
   /**
    * Part.
    */

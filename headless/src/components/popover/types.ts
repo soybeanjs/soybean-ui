@@ -1,4 +1,4 @@
-import type { ButtonHTMLAttributes, ShallowRef } from 'vue';
+import type { ShallowRef } from 'vue';
 import type {
   DismissableLayerEmits,
   DismissableLayerProps,
@@ -9,7 +9,7 @@ import type {
   PropsToContext,
   UiClass
 } from '../../types';
-import type { PrimitiveProps } from '../primitive/types';
+import type { ButtonProps } from '../button/types';
 import type { DialogRootEmits, DialogBaseProps } from '../dialog/types';
 import type { PopperPopupProps, PopperPositionerProps, PopperArrowProps, PopperUiSlot } from '../popper/types';
 import type { PortalProps } from '../portal/types';
@@ -32,7 +32,7 @@ export type PopoverRootEmits = DialogRootEmits;
 /**
  * Properties for the PopoverClose component.
  */
-export interface PopoverCloseProps extends PrimitiveProps, /** @vue-ignore */ ButtonHTMLAttributes {
+export interface PopoverCloseProps extends ButtonProps {
   /**
    * Before close.
    */
@@ -74,7 +74,7 @@ export interface PopoverPopupProps extends PopperPopupProps {}
 /**
  * Properties for the PopoverTrigger component.
  */
-export interface PopoverTriggerProps extends PrimitiveProps, /** @vue-ignore */ ButtonHTMLAttributes {}
+export interface PopoverTriggerProps extends ButtonProps {}
 
 /**
  * Parameters used to create the PopoverRoot context.

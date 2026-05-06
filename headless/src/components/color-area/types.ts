@@ -1,4 +1,4 @@
-import type { ComputedRef, CSSProperties, HTMLAttributes, ShallowRef } from 'vue';
+import type { ComputedRef, CSSProperties, ShallowRef } from 'vue';
 import type {
   ColorChannel,
   ColorChannelRange,
@@ -7,7 +7,7 @@ import type {
   ColorValue,
   NormalizedColor
 } from '../../shared';
-import type { FormFieldCommonProps, PropsToContext, UiClass } from '../../types';
+import type { BaseProps, FormFieldCommonProps, PropsToContext, UiClass } from '../../types';
 import type { PrimitiveProps } from '../primitive/types';
 
 /**
@@ -18,7 +18,7 @@ export type ColorAreaAxisChannel = Extract<ColorChannel, 'hue' | 'saturation' | 
 /**
  * Properties for the ColorAreaRoot component.
  */
-export interface ColorAreaRootProps extends PrimitiveProps, FormFieldCommonProps, /** @vue-ignore */ HTMLAttributes {
+export interface ColorAreaRootProps extends PrimitiveProps, FormFieldCommonProps, BaseProps {
   /**
    * Current model value.
    */
@@ -82,12 +82,12 @@ export type ColorAreaRootEmits = {
 /**
  * Properties for the ColorAreaArea component.
  */
-export interface ColorAreaAreaProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {}
+export interface ColorAreaAreaProps extends PrimitiveProps, BaseProps {}
 
 /**
  * Properties for the ColorAreaThumb component.
  */
-export interface ColorAreaThumbProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {}
+export interface ColorAreaThumbProps extends PrimitiveProps, BaseProps {}
 
 /**
  * Context for the ColorAreaRoot component.

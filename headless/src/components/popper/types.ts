@@ -1,12 +1,12 @@
-import type { ComputedRef, HTMLAttributes } from 'vue';
+import type { ComputedRef } from 'vue';
 import type { Padding, ReferenceElement, Side } from '@floating-ui/dom';
-import type { Align, Placement, UiClass, VNodeRef } from '../../types';
+import type { BaseProps, Align, Placement, UiClass, VNodeRef } from '../../types';
 import type { PrimitiveProps } from '../primitive/types';
 
 /**
  * Properties for the PopperAnchor component.
  */
-export interface PopperAnchorProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {
+export interface PopperAnchorProps extends PrimitiveProps, BaseProps {
   /**
    * The reference (or anchor) element that is being referred to for positioning. If not provided will use the current
    * component as anchor.
@@ -17,7 +17,7 @@ export interface PopperAnchorProps extends PrimitiveProps, /** @vue-ignore */ HT
 /**
  * Properties for the PopperPositioner component.
  */
-export interface PopperPositionerProps extends /** @vue-ignore */ HTMLAttributes {
+export interface PopperPositionerProps extends BaseProps {
   /**
    * The placement of the floating element.
    *
@@ -153,12 +153,12 @@ export interface PopperPositionerEmits {
 /**
  * Properties for the PopperPopup component.
  */
-export interface PopperPopupProps extends /** @vue-ignore */ HTMLAttributes {}
+export interface PopperPopupProps extends BaseProps {}
 
 /**
  * Properties for the PopperArrow component.
  */
-export interface PopperArrowProps extends /** @vue-ignore */ HTMLAttributes {}
+export interface PopperArrowProps extends BaseProps {}
 
 /** Context interface for PopperPositioner */
 export interface PopperPositionerContextParams {

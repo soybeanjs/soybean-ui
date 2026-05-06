@@ -1,11 +1,11 @@
-import type { ComputedRef, HTMLAttributes, Ref } from 'vue';
+import type { ComputedRef, Ref } from 'vue';
 import type {
   PartialKeys,
   VirtualItem,
   Virtualizer,
   VirtualizerOptions as _VirtualizerOptions
 } from '@tanstack/vue-virtual';
-import type { PropsToContext } from '../../types';
+import type { BaseProps, PropsToContext } from '../../types';
 import type { PrimitiveProps } from '../primitive';
 
 /**
@@ -23,7 +23,7 @@ export interface VirtualizerOptions extends Omit<
  * Properties for the VirtualizerRoot component.
  */
 export interface VirtualizerRootProps<T extends Record<string, any> = Record<string, any>>
-  extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {
+  extends PrimitiveProps, BaseProps {
   /**
    * The height of the virtualizer root
    */
@@ -45,12 +45,12 @@ export interface VirtualizerRootProps<T extends Record<string, any> = Record<str
 /**
  * Properties for the VirtualizerDynamicContent component.
  */
-export interface VirtualizerDynamicContentProps extends /** @vue-ignore */ HTMLAttributes {}
+export interface VirtualizerDynamicContentProps extends BaseProps {}
 
 /**
  * Properties for the VirtualizerContent component.
  */
-export interface VirtualizerContentProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {
+export interface VirtualizerContentProps extends PrimitiveProps, BaseProps {
   /**
    * Properties forwarded to the dynamic content element.
    */
@@ -60,7 +60,7 @@ export interface VirtualizerContentProps extends PrimitiveProps, /** @vue-ignore
 /**
  * Properties for the VirtualizerItem component.
  */
-export interface VirtualizerItemProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {
+export interface VirtualizerItemProps extends PrimitiveProps, BaseProps {
   /**
    * Data.
    */

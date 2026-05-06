@@ -1,10 +1,10 @@
-import type { HTMLAttributes } from 'vue';
+import type { BaseProps } from '../../types';
 import type { PrimitiveProps } from '../primitive/types';
 
 /**
  * Properties for the AspectRatio component.
  */
-export interface AspectRatioProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {
+export interface AspectRatioProps extends PrimitiveProps, BaseProps {
   /**
    * The desired ratio. Eg: 16/9
    *

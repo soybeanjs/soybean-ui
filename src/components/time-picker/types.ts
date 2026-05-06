@@ -13,7 +13,7 @@ import type { ThemeSize } from '@/theme';
 /**
  * Properties for the TimePicker component.
  */
-export interface TimePickerProps extends /** @vue-ignore */ TimePickerRootProps {
+export interface TimePickerProps extends TimePickerRootProps {
   /**
    * Additional class names applied to the root element.
    */

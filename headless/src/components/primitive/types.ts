@@ -1,4 +1,5 @@
 import type { Component } from 'vue';
+import type { BaseProps } from '../../types';
 
 /**
  * Type information for AsTag.
@@ -36,3 +37,5 @@ export interface PrimitiveProps {
    */
   as?: AsTag | Component;
 }
+
+export interface PrimitiveWithAttributes extends PrimitiveProps, BaseProps {}

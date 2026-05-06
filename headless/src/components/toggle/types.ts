@@ -1,5 +1,4 @@
-import type { ButtonHTMLAttributes } from 'vue';
-import type { PrimitiveProps } from '../primitive/types';
+import type { ButtonProps } from '../button/types';
 
 /**
  * State values for ToggleState.
@@ -9,7 +8,7 @@ export type ToggleState = 'on' | 'off';
 /**
  * Properties for the Toggle component.
  */
-export interface ToggleProps extends PrimitiveProps, /** @vue-ignore */ Omit<ButtonHTMLAttributes, 'onClick'> {
+export interface ToggleProps extends ButtonProps {
   /**
    * The pressed state of the toggle when it is initially rendered.
    */

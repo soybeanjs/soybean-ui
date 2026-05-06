@@ -1,6 +1,7 @@
 import type { EventHookOn } from '@vueuse/core';
-import type { ComputedRef, HTMLAttributes, ShallowRef } from 'vue';
+import type { ComputedRef, ShallowRef } from 'vue';
 import type {
+  BaseProps,
   DismissableLayerEmits,
   DismissableLayerProps,
   FocusScopeEmits,
@@ -91,7 +92,7 @@ export type ComboboxRootEmits<M extends boolean = false> = Pick<
 /**
  * Properties for the ComboboxTrigger component.
  */
-export interface ComboboxTriggerProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {
+export interface ComboboxTriggerProps extends PrimitiveProps, BaseProps {
   /**
    * Whether the component is disabled.
    */
@@ -154,7 +155,7 @@ export type ComboboxInputEmits = ListboxFilterEmits;
 /**
  * Properties for the ComboboxViewport component.
  */
-export interface ComboboxViewportProps extends /** @vue-ignore */ HTMLAttributes {
+export interface ComboboxViewportProps extends BaseProps {
   /**
    * Nonce.
    */
@@ -179,17 +180,17 @@ export type ComboboxItemEmits = ListboxItemEmits;
 /**
  * Properties for the ComboboxEmpty component.
  */
-export interface ComboboxEmptyProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {}
+export interface ComboboxEmptyProps extends PrimitiveProps, BaseProps {}
 
 /**
  * Properties for the ComboboxSeparator component.
  */
-export interface ComboboxSeparatorProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {}
+export interface ComboboxSeparatorProps extends PrimitiveProps, BaseProps {}
 
 /**
  * Properties for the ComboboxCancel component.
  */
-export interface ComboboxCancelProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {
+export interface ComboboxCancelProps extends PrimitiveProps, BaseProps {
   /**
    * Whether the component is disabled.
    */

@@ -1,5 +1,4 @@
-import type { HTMLAttributes } from 'vue';
-import type { UiClass } from '../../types';
+import type { BaseProps, UiClass } from '../../types';
 import type {
   CollapsibleRootProps,
   CollapsibleRootEmits,
@@ -20,7 +19,7 @@ export type CardRootEmits = CollapsibleRootEmits;
 /**
  * Properties for the CardHeader component.
  */
-export interface CardHeaderProps extends /** @vue-ignore */ HTMLAttributes {}
+export interface CardHeaderProps extends BaseProps {}
 
 /**
  * Properties for the CardContent component.
@@ -30,22 +29,22 @@ export interface CardContentProps extends CollapsibleContentProps {}
 /**
  * Properties for the CardFooter component.
  */
-export interface CardFooterProps extends /** @vue-ignore */ HTMLAttributes {}
+export interface CardFooterProps extends BaseProps {}
 
 /**
  * Properties for the CardTitleRoot component.
  */
-export interface CardTitleRootProps extends /** @vue-ignore */ HTMLAttributes {}
+export interface CardTitleRootProps extends BaseProps {}
 
 /**
  * Properties for the CardTitle component.
  */
-export interface CardTitleProps extends /** @vue-ignore */ HTMLAttributes {}
+export interface CardTitleProps extends BaseProps {}
 
 /**
  * Properties for the CardDescription component.
  */
-export interface CardDescriptionProps extends /** @vue-ignore */ HTMLAttributes {}
+export interface CardDescriptionProps extends BaseProps {}
 
 /**
  * Properties for the CardCollapsibleTrigger component.

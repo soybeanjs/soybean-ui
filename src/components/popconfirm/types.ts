@@ -1,4 +1,3 @@
-import type { HTMLAttributes } from 'vue';
 import type {
   PopoverArrowProps,
   PopoverCloseProps,
@@ -11,7 +10,14 @@ import type {
   PopoverTriggerProps,
   PopoverUiSlot
 } from '@soybeanjs/headless/popover';
-import type { ClassValue, MaybePromise, Placement, PropsToContext, UiClass } from '@soybeanjs/headless/types';
+import type {
+  BaseProps,
+  ClassValue,
+  MaybePromise,
+  Placement,
+  PropsToContext,
+  UiClass
+} from '@soybeanjs/headless/types';
 import type { ThemeColor, ThemeSize } from '@/theme';
 import type { ButtonProps } from '../button/types';
 
@@ -66,27 +72,27 @@ export type PopconfirmCancelEmits = {
 /**
  * Properties for the PopconfirmHeader component.
  */
-export interface PopconfirmHeaderProps extends /** @vue-ignore */ HTMLAttributes {}
+export interface PopconfirmHeaderProps extends BaseProps {}
 
 /**
  * Properties for the PopconfirmTitle component.
  */
-export interface PopconfirmTitleProps extends /** @vue-ignore */ HTMLAttributes {}
+export interface PopconfirmTitleProps extends BaseProps {}
 
 /**
  * Properties for the PopconfirmDescription component.
  */
-export interface PopconfirmDescriptionProps extends /** @vue-ignore */ HTMLAttributes {}
+export interface PopconfirmDescriptionProps extends BaseProps {}
 
 /**
  * Properties for the PopconfirmContent component.
  */
-export interface PopconfirmContentProps extends /** @vue-ignore */ HTMLAttributes {}
+export interface PopconfirmContentProps extends BaseProps {}
 
 /**
  * Properties for the PopconfirmFooter component.
  */
-export interface PopconfirmFooterProps extends /** @vue-ignore */ HTMLAttributes {}
+export interface PopconfirmFooterProps extends BaseProps {}
 
 /**
  * Supported popconfirm values.

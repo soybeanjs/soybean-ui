@@ -1,6 +1,6 @@
-import type { ComputedRef, HTMLAttributes, ShallowRef } from 'vue';
+import type { ComputedRef, ShallowRef } from 'vue';
 import type { CollectionItemData } from '../../composables';
-import type { Direction, FormFieldCommonProps, PropsToContext, UiClass } from '../../types';
+import type { BaseProps, Direction, FormFieldCommonProps, PropsToContext, UiClass } from '../../types';
 import type { PrimitiveProps } from '../primitive/types';
 
 /**
@@ -11,8 +11,7 @@ export type TagsInputAcceptableValue = string | number | bigint | Record<string,
 /**
  * Properties for the TagsInputRoot component.
  */
-export interface TagsInputRootProps<T = TagsInputAcceptableValue>
-  extends FormFieldCommonProps, /** @vue-ignore */ HTMLAttributes {
+export interface TagsInputRootProps<T = TagsInputAcceptableValue> extends FormFieldCommonProps, BaseProps {
   /** Id of the input element. */
   id?: string;
   /** The controlled value of the tags input. */
@@ -66,7 +65,7 @@ export type TagsInputRootEmits<T = TagsInputAcceptableValue> = {
 /**
  * Properties for the TagsInputInput component.
  */
-export interface TagsInputInputProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {
+export interface TagsInputInputProps extends PrimitiveProps, BaseProps {
   /**
    * Id.
    */
@@ -100,8 +99,7 @@ export interface TagsInputInputProps extends PrimitiveProps, /** @vue-ignore */ 
 /**
  * Properties for the TagsInputItem component.
  */
-export interface TagsInputItemProps<T = TagsInputAcceptableValue>
-  extends PrimitiveProps, /** @vue-ignore */ Omit<HTMLAttributes, 'value'> {
+export interface TagsInputItemProps<T = TagsInputAcceptableValue> extends PrimitiveProps, Omit<BaseProps, 'value'> {
   /** Value associated with the tag. */
   value: T;
   /** Whether to disable the tag item. */
@@ -111,17 +109,17 @@ export interface TagsInputItemProps<T = TagsInputAcceptableValue>
 /**
  * Properties for the TagsInputItemText component.
  */
-export interface TagsInputItemTextProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {}
+export interface TagsInputItemTextProps extends PrimitiveProps, BaseProps {}
 
 /**
  * Properties for the TagsInputItemDelete component.
  */
-export interface TagsInputItemDeleteProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {}
+export interface TagsInputItemDeleteProps extends PrimitiveProps, BaseProps {}
 
 /**
  * Properties for the TagsInputClear component.
  */
-export interface TagsInputClearProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {}
+export interface TagsInputClearProps extends PrimitiveProps, BaseProps {}
 
 /**
  * Type information for TagsInputCollectionItemData.

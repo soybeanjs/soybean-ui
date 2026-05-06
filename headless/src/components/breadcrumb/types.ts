@@ -1,37 +1,36 @@
-import type { HTMLAttributes } from 'vue';
 import type { IconValue } from '../_icon/types';
 import type { LinkBaseProps, LinkProps } from '../link/types';
-import type { UiClass } from '../../types';
+import type { BaseProps, UiClass } from '../../types';
 
 /**
  * Properties for the BreadcrumbRoot component.
  */
-export interface BreadcrumbRootProps extends /** @vue-ignore */ HTMLAttributes {}
+export interface BreadcrumbRootProps extends BaseProps {}
 
 /**
  * Properties for the BreadcrumbList component.
  */
-export interface BreadcrumbListProps extends /** @vue-ignore */ HTMLAttributes {}
+export interface BreadcrumbListProps extends BaseProps {}
 
 /**
  * Properties for the BreadcrumbItem component.
  */
-export interface BreadcrumbItemProps extends /** @vue-ignore */ HTMLAttributes {}
+export interface BreadcrumbItemProps extends BaseProps {}
 
 /**
  * Properties for the BreadcrumbPage component.
  */
-export interface BreadcrumbPageProps extends /** @vue-ignore */ HTMLAttributes {}
+export interface BreadcrumbPageProps extends BaseProps {}
 
 /**
  * Properties for the BreadcrumbSeparator component.
  */
-export interface BreadcrumbSeparatorProps extends /** @vue-ignore */ HTMLAttributes {}
+export interface BreadcrumbSeparatorProps extends BaseProps {}
 
 /**
  * Properties for the BreadcrumbEllipsis component.
  */
-export interface BreadcrumbEllipsisProps extends /** @vue-ignore */ HTMLAttributes {}
+export interface BreadcrumbEllipsisProps extends BaseProps {}
 
 /**
  * Properties for the BreadcrumbLink component.

@@ -1,36 +1,35 @@
-import type { HTMLAttributes } from 'vue';
-import type { UiClass } from '../../types';
+import type { BaseProps, UiClass } from '../../types';
 import type { IconValue } from '../_icon/types';
 
 /**
  * Properties for the EmptyRoot component.
  */
-export interface EmptyRootProps extends /** @vue-ignore */ HTMLAttributes {}
+export interface EmptyRootProps extends BaseProps {}
 
 /**
  * Properties for the EmptyHeader component.
  */
-export interface EmptyHeaderProps extends /** @vue-ignore */ HTMLAttributes {}
+export interface EmptyHeaderProps extends BaseProps {}
 
 /**
  * Properties for the EmptyMedia component.
  */
-export interface EmptyMediaProps extends /** @vue-ignore */ HTMLAttributes {}
+export interface EmptyMediaProps extends BaseProps {}
 
 /**
  * Properties for the EmptyContent component.
  */
-export interface EmptyContentProps extends /** @vue-ignore */ HTMLAttributes {}
+export interface EmptyContentProps extends BaseProps {}
 
 /**
  * Properties for the EmptyTitle component.
  */
-export interface EmptyTitleProps extends /** @vue-ignore */ HTMLAttributes {}
+export interface EmptyTitleProps extends BaseProps {}
 
 /**
  * Properties for the EmptyDescription component.
  */
-export interface EmptyDescriptionProps extends /** @vue-ignore */ HTMLAttributes {}
+export interface EmptyDescriptionProps extends BaseProps {}
 
 /**
  * Available UI slots for the Empty component.

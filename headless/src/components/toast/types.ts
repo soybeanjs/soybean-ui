@@ -1,5 +1,5 @@
 import type { VNode, OlHTMLAttributes, LiHTMLAttributes, HTMLAttributes, ShallowRef, ComputedRef } from 'vue';
-import type { Direction, Side, SwipeDirection, PropsToContext, UiClass } from '../../types';
+import type { Direction, Side, SwipeDirection, PropsToContext, UiClass, BaseProps } from '../../types';
 import type { IconValue } from '../_icon/types';
 
 /**
@@ -177,7 +177,7 @@ export interface ToastCreateOptions extends Omit<ToastT, 'id' | 'delete' | 'titl
 /**
  * Properties for the Toast component.
  */
-export interface ToastProps extends /** @vue-ignore */ LiHTMLAttributes {
+export interface ToastProps extends BaseProps<LiHTMLAttributes> {
   /**
    * Index of the current item.
    */
@@ -209,7 +209,7 @@ export interface ToastEmits {
 /**
  * Properties for the Toaster component.
  */
-export interface ToasterProps extends /** @vue-ignore */ OlHTMLAttributes {
+export interface ToasterProps extends BaseProps<OlHTMLAttributes> {
   /**
    * Id.
    */

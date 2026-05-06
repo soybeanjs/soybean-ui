@@ -1,5 +1,6 @@
-import type { HTMLAttributes, ShallowRef } from 'vue';
+import type { ShallowRef } from 'vue';
 import type {
+  BaseProps,
   Align,
   DataOrientation,
   Direction,
@@ -15,7 +16,7 @@ import type { PrimitiveProps } from '../primitive/types';
 /**
  * Properties for the NavigationMenuRoot component.
  */
-export interface NavigationMenuRootProps extends /** @vue-ignore */ HTMLAttributes {
+export interface NavigationMenuRootProps extends BaseProps {
   /** The controlled value of the menu item to activate. Can be used as `v-model`. */
   modelValue?: string;
   /**
@@ -85,7 +86,7 @@ export type NavigationMenuRootEmits = {
 /**
  * Properties for the NavigationMenuViewport component.
  */
-export interface NavigationMenuViewportProps extends ForceMountProps, /** @vue-ignore */ HTMLAttributes {
+export interface NavigationMenuViewportProps extends ForceMountProps, BaseProps {
   /**
    * Align.
    */
@@ -95,7 +96,7 @@ export interface NavigationMenuViewportProps extends ForceMountProps, /** @vue-i
 /**
  * Properties for the NavigationMenuContentImpl component.
  */
-export interface NavigationMenuContentImplProps extends DismissableLayerProps, /** @vue-ignore */ HTMLAttributes {}
+export interface NavigationMenuContentImplProps extends DismissableLayerProps, BaseProps {}
 /**
  * Events for the NavigationMenuContentImpl component.
  */
@@ -113,7 +114,7 @@ export type NavigationMenuContentEmits = NavigationMenuContentImplEmits;
 /**
  * Properties for the NavigationMenuTrigger component.
  */
-export interface NavigationMenuTriggerProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {
+export interface NavigationMenuTriggerProps extends PrimitiveProps, BaseProps {
   /**
    * Whether the component is disabled.
    */
@@ -123,17 +124,17 @@ export interface NavigationMenuTriggerProps extends PrimitiveProps, /** @vue-ign
 /**
  * Properties for the NavigationMenuList component.
  */
-export interface NavigationMenuListProps extends /** @vue-ignore */ HTMLAttributes {}
+export interface NavigationMenuListProps extends BaseProps {}
 
 /**
  * Properties for the NavigationMenuSubList component.
  */
-export interface NavigationMenuSubListProps extends /** @vue-ignore */ HTMLAttributes {}
+export interface NavigationMenuSubListProps extends BaseProps {}
 
 /**
  * Properties for the NavigationMenuItem component.
  */
-export interface NavigationMenuItemProps extends /** @vue-ignore */ HTMLAttributes {
+export interface NavigationMenuItemProps extends BaseProps {
   /**
    * Value associated with the current item.
    */
@@ -161,12 +162,12 @@ export type NavigationMenuLinkEmits = {
 /**
  * Properties for the NavigationMenuIndicator component.
  */
-export interface NavigationMenuIndicatorProps extends ForceMountProps, /** @vue-ignore */ HTMLAttributes {}
+export interface NavigationMenuIndicatorProps extends ForceMountProps, BaseProps {}
 
 /**
  * Properties for the NavigationMenuSub component.
  */
-export interface NavigationMenuSubProps extends /** @vue-ignore */ HTMLAttributes {
+export interface NavigationMenuSubProps extends BaseProps {
   /**
    * Current model value.
    */

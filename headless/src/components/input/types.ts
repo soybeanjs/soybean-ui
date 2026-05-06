@@ -1,5 +1,5 @@
-import type { HTMLAttributes, InputHTMLAttributes, ShallowRef } from 'vue';
-import type { FormFieldCommonProps, PropsToContext, UiClass } from '../../types';
+import type { InputHTMLAttributes, ShallowRef } from 'vue';
+import type { BaseProps, FormFieldCommonProps, PropsToContext, UiClass } from '../../types';
 import type { ButtonProps } from '../button/types';
 
 /**
@@ -27,7 +27,7 @@ export interface InputBaseProps {
 /**
  * Properties for the InputRoot component.
  */
-export interface InputRootProps extends InputBaseProps, FormFieldCommonProps, /** @vue-ignore */ HTMLAttributes {
+export interface InputRootProps extends InputBaseProps, FormFieldCommonProps, BaseProps {
   /** The default value of the input */
   defaultValue?: string;
   /** The controlled value of the input */
@@ -47,7 +47,7 @@ export type InputRootEmits = {
 /**
  * Properties for the InputControl component.
  */
-export interface InputControlProps extends /** @vue-ignore */ InputHTMLAttributes {}
+export interface InputControlProps extends BaseProps<InputHTMLAttributes> {}
 
 /**
  * Context for the InputRoot component.
@@ -66,7 +66,7 @@ export interface InputRootContext extends PropsToContext<InputBaseProps & FormFi
 /**
  * Properties for the InputClear component.
  */
-export interface InputClearProps extends ButtonProps, /** @vue-ignore */ HTMLAttributes {}
+export interface InputClearProps extends ButtonProps, BaseProps {}
 
 /**
  * Events for the InputClear component.

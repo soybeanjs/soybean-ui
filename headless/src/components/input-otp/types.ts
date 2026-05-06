@@ -1,5 +1,5 @@
-import type { ComputedRef, HTMLAttributes, InputHTMLAttributes, ShallowRef } from 'vue';
-import type { FormFieldCommonProps, UiClass } from '../../types';
+import type { ComputedRef, InputHTMLAttributes, ShallowRef } from 'vue';
+import type { BaseProps, FormFieldCommonProps, UiClass } from '../../types';
 
 /**
  * Type information for InputOtpInputMode.
@@ -14,7 +14,7 @@ export type InputOtpPushPasswordManagerStrategy = 'increase-width' | 'none';
 /**
  * Properties for the InputOtpRoot component.
  */
-export interface InputOtpRootProps extends FormFieldCommonProps, /** @vue-ignore */ Omit<HTMLAttributes, 'onInput'> {
+export interface InputOtpRootProps extends FormFieldCommonProps, Omit<BaseProps, 'onInput'> {
   /** The id of the native input element. */
   id?: string;
   /** Autocomplete hint passed to the native input. */
@@ -96,12 +96,12 @@ export type InputOtpRootEmits = {
 /**
  * Properties for the InputOtpPositioner component.
  */
-export interface InputOtpPositionerProps extends /** @vue-ignore */ HTMLAttributes {}
+export interface InputOtpPositionerProps extends BaseProps {}
 
 /**
  * Properties for the InputOtpInput component.
  */
-export interface InputOtpInputProps extends /** @vue-ignore */ InputHTMLAttributes {}
+export interface InputOtpInputProps extends BaseProps<InputHTMLAttributes> {}
 
 /**
  * Properties for the InputOtpCompact component.

@@ -1,5 +1,5 @@
-import type { HTMLAttributes, ShallowRef } from 'vue';
-import type { AcceptableValue, DefinedValue, ForceMountProps, PropsToContext, UiClass } from '../../types';
+import type { ShallowRef } from 'vue';
+import type { BaseProps, AcceptableValue, DefinedValue, ForceMountProps, PropsToContext, UiClass } from '../../types';
 import type { PrimitiveProps } from '../primitive/types';
 import type { RovingFocusGroupProps } from '../roving-focus/types';
 
@@ -47,12 +47,12 @@ export type TabsRootEmits<T = AcceptableValue> = {
 /**
  * Properties for the TabsList component.
  */
-export interface TabsListProps extends /** @vue-ignore */ HTMLAttributes {}
+export interface TabsListProps extends BaseProps {}
 
 /**
  * Properties for the TabsContent component.
  */
-export interface TabsContentProps extends ForceMountProps, /** @vue-ignore */ HTMLAttributes {
+export interface TabsContentProps extends ForceMountProps, BaseProps {
   /** A unique value that associates the content with a trigger. */
   value: DefinedValue;
 }
@@ -60,7 +60,7 @@ export interface TabsContentProps extends ForceMountProps, /** @vue-ignore */ HT
 /**
  * Properties for the TabsTrigger component.
  */
-export interface TabsTriggerProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {
+export interface TabsTriggerProps extends PrimitiveProps, BaseProps {
   /** A unique value that associates the trigger with a content. */
   value: DefinedValue;
   /** When `true`, prevents the user from interacting with the tab. */
@@ -70,7 +70,7 @@ export interface TabsTriggerProps extends PrimitiveProps, /** @vue-ignore */ HTM
 /**
  * Properties for the TabsIndicator component.
  */
-export interface TabsIndicatorProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {}
+export interface TabsIndicatorProps extends PrimitiveProps, BaseProps {}
 
 /**
  * Option data for the Tabs component.

@@ -1,5 +1,6 @@
-import type { ComputedRef, ButtonHTMLAttributes, HTMLAttributes, Ref, ShallowRef, VNode } from 'vue';
+import type { ComputedRef, Ref, ShallowRef, VNode } from 'vue';
 import type {
+  BaseProps,
   DismissableLayerEmits,
   DismissableLayerProps,
   FocusScopeEmits,
@@ -71,18 +72,25 @@ export type DialogRootEmits = {
 /**
  * Properties for the DialogTrigger component.
  */
-export interface DialogTriggerProps extends PrimitiveProps, /** @vue-ignore */ ButtonHTMLAttributes {}
+export interface DialogTriggerProps extends ButtonProps {}
+
+/**
+ * Events for the DialogTrigger component.
+ */
+export type DialogTriggerEmits = {
+  /** Event handler called when the dialog trigger is activated. */
+  click: [event: PointerEvent];
+};
 
 /**
  * Properties for the DialogOverlay component.
  */
-export interface DialogOverlayProps extends ForceMountProps, /** @vue-ignore */ HTMLAttributes {}
+export interface DialogOverlayProps extends ForceMountProps, BaseProps {}
 
 /**
  * Properties for the DialogPopupImpl component.
  */
-export interface DialogPopupImplProps
-  extends PrimitiveProps, TrapFocusProps, DismissableLayerProps, /** @vue-ignore */ HTMLAttributes {}
+export interface DialogPopupImplProps extends PrimitiveProps, TrapFocusProps, DismissableLayerProps, BaseProps {}
 /**
  * Events for the DialogPopupImpl component.
  */
@@ -101,12 +109,12 @@ export type DialogPopupEmits = DialogPopupImplEmits;
 /**
  * Properties for the DialogTitle component.
  */
-export interface DialogTitleProps extends /** @vue-ignore */ HTMLAttributes {}
+export interface DialogTitleProps extends BaseProps {}
 
 /**
  * Properties for the DialogDescription component.
  */
-export interface DialogDescriptionProps extends /** @vue-ignore */ HTMLAttributes {}
+export interface DialogDescriptionProps extends BaseProps {}
 
 /**
  * Properties for the DialogClose component.
@@ -147,17 +155,17 @@ export type DialogConfirmEmits = {
 /**
  * Properties for the DialogHeader component.
  */
-export interface DialogHeaderProps extends /** @vue-ignore */ HTMLAttributes {}
+export interface DialogHeaderProps extends BaseProps {}
 
 /**
  * Properties for the DialogContent component.
  */
-export interface DialogContentProps extends /** @vue-ignore */ HTMLAttributes {}
+export interface DialogContentProps extends BaseProps {}
 
 /**
  * Properties for the DialogFooter component.
  */
-export interface DialogFooterProps extends /** @vue-ignore */ HTMLAttributes {}
+export interface DialogFooterProps extends BaseProps {}
 
 /**
  * Properties for the DialogCompact component.
@@ -269,6 +277,7 @@ export interface DialogCompactProps extends DialogRootProps {
  * Events for the DialogCompact component.
  */
 export type DialogCompactEmits = DialogRootEmits &
+  DialogTriggerEmits &
   DialogPopupEmits &
   DialogCloseEmits &
   DialogConfirmEmits &
