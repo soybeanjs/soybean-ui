@@ -38,7 +38,7 @@ const forwardedProps = useOmitProps(props, ['modelValue', 'defaultValue', 'class
     @entry-focus="emit('entryFocus', $event)"
     @leave="emit('leave', $event)"
   >
-    <ListboxContent :as="as" :as-child="asChild">
+    <ListboxContent>
       <slot :model-value="modelValue" />
     </ListboxContent>
   </ListboxRoot>
