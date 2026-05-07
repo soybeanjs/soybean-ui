@@ -1,19 +1,12 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import {
-  PopoverArrow,
-  PopoverClose,
-  PopoverPopup,
-  PopoverPortal,
-  PopoverPositioner,
-  PopoverRoot,
-  PopoverTrigger,
-  providePopoverUi
-} from '@soybeanjs/headless/popover';
-import { useForwardListeners, usePickProps } from '@soybeanjs/headless/composables';
-import { mergeSlotVariants } from '@/theme';
+import { PopoverCompact, providePopoverUi } from '@soybeanjs/headless/popover';
+import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
+import { keysOf } from '@soybeanjs/utils';
+import { mergeBaseVariants, mergeSlotVariants, miniSizeMap } from '@/theme';
+import { buttonVariants } from '../button/variants';
 import { popoverVariants } from './variants';
-import type { PopoverEmits, PopoverProps } from './types';
+import type { PopoverProps, PopoverEmits, PopoverSlots } from './types';
 
 defineOptions({
   name: 'SPopover'
@@ -27,43 +20,39 @@ const props = withDefaults(defineProps<PopoverProps>(), {
 
 const emit = defineEmits<PopoverEmits>();
 
-const forwardedRootProps = usePickProps(props, ['defaultOpen', 'open', 'modal']);
+const slots = defineSlots<PopoverSlots>();
+
+const forwardedProps = useOmitProps(props, ['class', 'ui', 'size']);
 
 const listeners = useForwardListeners(emit);
 
+const slotNames = computed(() => keysOf(slots));
+
 const ui = computed(() => {
-  const variants = popoverVariants({
+  const baseVariants = popoverVariants({
     size: props.size
   });
 
-  return mergeSlotVariants(variants, props.ui, { popup: props.class });
-});
+  const variants = mergeBaseVariants(baseVariants, {
+    close: buttonVariants({
+      size: miniSizeMap[props.size ?? 'md'],
+      color: 'accent',
+      variant: 'ghost',
+      shape: 'square',
+      fitContent: true
+    })
+  });
 
-const positionerProps = computed(() => {
-  return {
-    ...props.positionerProps,
-    placement: props.placement ?? props.positionerProps?.placement
-  };
+  return mergeSlotVariants(variants, props.ui, { popup: props.class });
 });
 
 providePopoverUi(ui);
 </script>
 
 <template>
-  <PopoverRoot v-bind="forwardedRootProps" @update:open="emit('update:open', $event)">
-    <PopoverTrigger v-bind="triggerProps" as-child>
-      <slot name="trigger" />
-    </PopoverTrigger>
-    <PopoverPortal v-bind="portalProps">
-      <PopoverPositioner v-bind="positionerProps" v-on="listeners">
-        <PopoverPopup v-bind="popupProps">
-          <slot />
-          <PopoverArrow v-if="showArrow" v-bind="arrowProps" />
-        </PopoverPopup>
-        <PopoverClose v-if="$slots.close" v-bind="closeProps" as-child>
-          <slot name="close" />
-        </PopoverClose>
-      </PopoverPositioner>
-    </PopoverPortal>
-  </PopoverRoot>
+  <PopoverCompact v-bind="forwardedProps" v-on="listeners">
+    <template v-for="slotName in slotNames" :key="slotName" #[slotName]>
+      <slot :name="slotName" />
+    </template>
+  </PopoverCompact>
 </template>

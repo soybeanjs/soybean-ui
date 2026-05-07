@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import Button from '../button/button.vue';
-import { usePopoverRootContext } from './context';
+import { usePopoverRootContext, usePopoverUi } from './context';
 import type { PopoverCloseProps, PopoverCloseEmits } from './types';
 
 defineOptions({
@@ -13,6 +13,8 @@ const emit = defineEmits<PopoverCloseEmits>();
 
 const { onOpenChange } = usePopoverRootContext('PopoverClose');
 
+const cls = usePopoverUi('close');
+
 const onClose = (event: PointerEvent) => {
   emit('close', event);
   onOpenChange(false);
@@ -20,7 +22,7 @@ const onClose = (event: PointerEvent) => {
 </script>
 
 <template>
-  <Button v-bind="props" @click="onClose">
+  <Button v-bind="props" :class="cls" @click="onClose">
     <slot />
   </Button>
 </template>

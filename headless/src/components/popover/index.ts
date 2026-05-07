@@ -11,6 +11,9 @@ export { default as PopoverClose } from './popover-close.vue';
 export { providePopoverUi } from './context';
 
 export type {
+  PopoverCompactProps,
+  PopoverCompactEmits,
+  PopoverCompactSlots,
   PopoverRootProps,
   PopoverRootEmits,
   PopoverAnchorProps,
@@ -20,9 +23,6 @@ export type {
   PopoverPositionerEmits,
   PopoverPopupProps,
   PopoverTriggerProps,
-  PopoverCompactProps,
-  PopoverCompactEmits,
-  PopoverCompactSlots,
   PopoverUiSlot,
   PopoverUi
 } from './types';

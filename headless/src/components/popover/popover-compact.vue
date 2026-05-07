@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { useForwardListeners, useOmitProps } from '../../composables';
+import Icon from '../_icon/icon.vue';
 import PopoverRoot from './popover-root.vue';
 import PopoverTrigger from './popover-trigger.vue';
 import PopoverPortal from '../portal/portal.vue';
@@ -37,6 +38,13 @@ const forwardedRootProps = useOmitProps(props, [
 
 const listeners = useForwardListeners(emit);
 
+const triggerProps = computed(() => {
+  return {
+    ...props.triggerProps,
+    asChild: props.triggerProps?.asChild ?? true
+  };
+});
+
 const positionerProps = computed(() => {
   return {
     ...props.positionerProps,
@@ -47,7 +55,7 @@ const positionerProps = computed(() => {
 
 <template>
   <PopoverRoot v-bind="forwardedRootProps" @update:open="emit('update:open', $event)">
-    <PopoverTrigger v-bind="triggerProps" as-child>
+    <PopoverTrigger v-bind="triggerProps">
       <slot name="trigger" />
     </PopoverTrigger>
     <PopoverPortal v-bind="portalProps">
@@ -56,8 +64,10 @@ const positionerProps = computed(() => {
           <slot />
           <PopoverArrow v-if="showArrow" v-bind="arrowProps" />
         </PopoverPopup>
-        <PopoverClose v-if="slots.close" v-bind="closeProps" as-child>
-          <slot name="close" />
+        <PopoverClose v-if="slots.close" v-bind="closeProps">
+          <slot name="close">
+            <Icon icon="lucide:x" />
+          </slot>
         </PopoverClose>
       </PopoverPositioner>
     </PopoverPortal>

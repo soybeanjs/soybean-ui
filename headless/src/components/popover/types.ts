@@ -128,7 +128,7 @@ export type PopoverCompactEmits = PopoverRootEmits & PopoverPositionerEmits;
 /**
  * Slots for the PopoverCompact component.
  */
-export interface PopoverCompactSlots {
+export type PopoverCompactSlots = {
   /**
    * Custom content for the default slot.
    */
@@ -141,12 +141,12 @@ export interface PopoverCompactSlots {
    * Custom content for the close slot.
    */
   close?: () => any;
-}
+};
 
 /**
  * Available UI slots for the Popover component.
  */
-export type PopoverUiSlot = PopperUiSlot | 'trigger';
+export type PopoverUiSlot = PopperUiSlot | 'trigger' | 'close';
 
 /**
  * UI class overrides for the Popover component.
