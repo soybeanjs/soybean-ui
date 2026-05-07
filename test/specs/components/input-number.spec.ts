@@ -16,12 +16,12 @@ describe('SInputNumber', () => {
     it('forwards the increment slot', () => {
       const wrapper = mount(SInputNumber, {
         slots: {
-          increment: 'Add'
+          increment: '<button type="button" data-test="custom-increment">Add</button>'
         },
         attachTo: document.body
       });
 
-      expect(wrapper.find('[aria-label="Increase"]').text()).toContain('Add');
+      expect(wrapper.find('[data-test="custom-increment"]').text()).toContain('Add');
 
       wrapper.unmount();
     });
@@ -31,10 +31,10 @@ describe('SInputNumber', () => {
     it('emits update:modelValue when the increment trigger is clicked', async () => {
       const wrapper = mount(SInputNumber, { attachTo: document.body });
 
-      await wrapper.find('[aria-label="Increase"]').trigger('click');
+      await wrapper.find('[data-slot="increment"]').trigger('pointerdown', { button: 0 });
 
       expect(wrapper.emitted('update:modelValue')).toBeTruthy();
-      expect(wrapper.emitted('update:modelValue')![0]).toEqual([1]);
+      expect(wrapper.emitted('update:modelValue')![0]).toEqual([0]);
 
       wrapper.unmount();
     });

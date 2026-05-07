@@ -38,7 +38,6 @@ const onClear = () => {
 };
 
 provideInputNumberRootContext({
-  modelValue,
   ...transformPropsToContext(props, [
     'id',
     'autofocus',
@@ -57,7 +56,9 @@ provideInputNumberRootContext({
     'stepSnapping',
     'disableWheelChange',
     'invertWheelChange'
-  ])
+  ]),
+  modelValue,
+  onClear
 });
 </script>
 

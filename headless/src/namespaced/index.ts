@@ -259,6 +259,7 @@ import {
   InputClear,
   InputCompact,
   InputControl,
+  InputNumberCompact,
   InputNumberControl,
   InputNumberDecrement,
   InputNumberIncrement,
@@ -359,6 +360,7 @@ import {
   PaginationNext,
   PaginationPrev,
   PaginationRoot,
+  PasswordCompact,
   PopoverAnchor,
   PopoverArrow,
   PopoverClose,
@@ -1150,11 +1152,13 @@ export const Input = {
 };
 
 export const InputNumber = {
+  Compact: InputNumberCompact,
   Root: InputNumberRoot,
   Control: InputNumberControl,
   Increment: InputNumberIncrement,
   Decrement: InputNumberDecrement
 } as {
+  Compact: typeof InputNumberCompact;
   Root: typeof InputNumberRoot;
   Control: typeof InputNumberControl;
   Increment: typeof InputNumberIncrement;
@@ -1386,6 +1390,8 @@ export const Pagination = {
   Ellipsis: typeof PaginationEllipsis;
   Compact: typeof PaginationCompact;
 };
+
+export { PasswordCompact };
 
 export const Popover = {
   Compact: PopoverCompact,

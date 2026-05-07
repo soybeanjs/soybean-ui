@@ -1,13 +1,11 @@
 <script setup lang="ts">
-import { computed } from 'vue';
 import { useForwardElement, useOmitProps } from '../../composables';
-import Button from '../button/button.vue';
 import Icon from '../_icon/icon.vue';
+import InputNumberRoot from './input-number-root.vue';
 import InputNumberControl from './input-number-control.vue';
 import InputNumberDecrement from './input-number-decrement.vue';
 import InputNumberIncrement from './input-number-increment.vue';
-import InputNumberRoot from './input-number-root.vue';
-import { useInputNumberUi } from './context';
+import InputNumberClear from './input-number-clear.vue';
 import type { InputNumberCompactEmits, InputNumberCompactProps, InputNumberCompactSlots } from './types';
 
 defineOptions({
@@ -30,41 +28,24 @@ const forwardedProps = useOmitProps(props, [
 ]);
 
 const [_, setInputElement] = useForwardElement(el => props.inputRef?.(el as HTMLInputElement));
-
-const ui = useInputNumberUi();
-
-const clearDisabled = computed(() => props.disabled || props.readonly || props.clearProps?.disabled || false);
 </script>
 
 <template>
-  <InputNumberRoot
-    v-slot="{ clear, modelValue }"
-    v-bind="forwardedProps"
-    @update:model-value="emit('update:modelValue', $event)"
-  >
-    <slot name="leading" :clear="clear" :model-value="modelValue" />
+  <InputNumberRoot v-slot="slotProps" v-bind="forwardedProps" @update:model-value="emit('update:modelValue', $event)">
+    <slot name="leading" v-bind="slotProps" />
     <InputNumberControl v-bind="controlProps" :ref="setInputElement" />
     <template v-if="clearable">
-      <slot name="clear" :clear="clear" :model-value="modelValue">
-        <Button
-          v-bind="clearProps"
-          data-slot="clearable"
-          :class="ui.clearable"
-          :disabled="clearDisabled"
-          aria-label="Clear input"
-          @click="clear"
-        >
-          <Icon icon="lucide:x" :aria-hidden="true" />
-        </Button>
+      <slot name="clear" v-bind="slotProps">
+        <InputNumberClear v-bind="clearProps" @clear="emit('clear', $event)" />
       </slot>
     </template>
-    <slot name="trailing" :clear="clear" :model-value="modelValue" />
-    <slot name="decrement" :clear="clear" :model-value="modelValue">
+    <slot name="trailing" v-bind="slotProps" />
+    <slot name="decrement" v-bind="slotProps">
       <InputNumberDecrement v-bind="decrementProps">
         <Icon icon="lucide:minus" :aria-hidden="true" />
       </InputNumberDecrement>
     </slot>
-    <slot name="increment" :clear="clear" :model-value="modelValue">
+    <slot name="increment" v-bind="slotProps">
       <InputNumberIncrement v-bind="incrementProps">
         <Icon icon="lucide:plus" :aria-hidden="true" />
       </InputNumberIncrement>

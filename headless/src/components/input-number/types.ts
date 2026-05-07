@@ -60,6 +60,21 @@ export interface InputNumberIncrementProps extends ButtonProps {}
 export interface InputNumberDecrementProps extends ButtonProps {}
 
 /**
+ * Properties for the InputNumberClear component.
+ */
+export interface InputNumberClearProps extends ButtonProps {}
+
+/**
+ * Events for the InputNumberClear component.
+ */
+export type InputNumberClearEmits = {
+  /**
+   * Emitted when the clear button is clicked.
+   */
+  clear: [event: PointerEvent];
+};
+
+/**
  * Slot properties for the InputNumberCompact component.
  */
 export interface InputNumberCompactSlotProps {
@@ -108,7 +123,7 @@ export interface InputNumberCompactProps extends InputNumberRootProps {
 /**
  * Events for the InputNumberCompact component.
  */
-export type InputNumberCompactEmits = InputNumberRootEmits;
+export type InputNumberCompactEmits = InputNumberRootEmits & InputNumberClearEmits;
 
 /**
  * Slots for the InputNumberCompact component.
@@ -163,6 +178,10 @@ export interface InputNumberRootContextParams extends PropsToContext<
    * Current model value.
    */
   modelValue: ShallowRef<number | null | undefined>;
+  /**
+   * Clear handler.
+   */
+  onClear: () => void;
 }
 
 /**
