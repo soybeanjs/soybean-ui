@@ -1,18 +1,10 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import {
-  TooltipArrow,
-  TooltipPopup,
-  TooltipPortal,
-  TooltipPositioner,
-  TooltipRoot,
-  TooltipTrigger,
-  provideTooltipUi
-} from '@soybeanjs/headless/tooltip';
+import { TooltipCompact, provideTooltipUi } from '@soybeanjs/headless/tooltip';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
 import { mergeSlotVariants } from '@/theme';
 import { tooltipVariants } from './variants';
-import type { TooltipEmits, TooltipProps } from './types';
+import type { TooltipEmits, TooltipProps, TooltipSlots } from './types';
 
 defineOptions({
   name: 'STooltip'
@@ -27,17 +19,12 @@ const props = withDefaults(defineProps<TooltipProps>(), {
 
 const emit = defineEmits<TooltipEmits>();
 
+defineSlots<TooltipSlots>();
+
 const forwardedRootProps = useOmitProps(props, [
   'class',
   'size',
-  'ui',
-  'content',
-  'showArrow',
-  'popupProps',
-  'positionerProps',
-  'triggerProps',
-  'portalProps',
-  'arrowProps'
+  'ui'
 ]);
 
 const listeners = useForwardListeners(emit);
@@ -50,28 +37,14 @@ const ui = computed(() => {
   return mergeSlotVariants(variants, props.ui, { popup: props.class });
 });
 
-const positionerProps = computed(() => {
-  return {
-    placement: props.placement,
-    ...props.positionerProps
-  };
-});
-
 provideTooltipUi(ui);
 </script>
 
 <template>
-  <TooltipRoot v-bind="forwardedRootProps" @update:open="emit('update:open', $event)">
-    <TooltipTrigger v-bind="triggerProps" as-child>
+  <TooltipCompact v-bind="forwardedRootProps" v-on="listeners">
+    <template #trigger>
       <slot name="trigger" />
-    </TooltipTrigger>
-    <TooltipPortal v-bind="portalProps">
-      <TooltipPositioner v-bind="positionerProps" v-on="listeners">
-        <TooltipPopup v-bind="popupProps">
-          <slot>{{ content }}</slot>
-          <TooltipArrow v-if="showArrow" v-bind="arrowProps" />
-        </TooltipPopup>
-      </TooltipPositioner>
-    </TooltipPortal>
-  </TooltipRoot>
+    </template>
+    <slot />
+  </TooltipCompact>
 </template>

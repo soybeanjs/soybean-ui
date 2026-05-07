@@ -7254,6 +7254,42 @@
         "toolbarui": "UI class overrides for the Toolbar component."
       },
       "headless_src_components_tooltip_types": {
+        "tooltipcompactemits": {
+          "callables": {
+            "escapekeydown": "Event handler called when the escape key is down. Can be prevented.",
+            "pointerdownoutside": "Event handler called when a `pointerdown` event happens outside of the `DismissableLayer`. Can be prevented.",
+            "update_open": "Event handler called when the open state of the tooltip changes."
+          },
+          "emits": "Events for the TooltipCompact component."
+        },
+        "tooltipcompactprops": {
+          "members": {
+            "arrowprops": "Properties forwarded to the arrow element.",
+            "content": "Content.",
+            "defaultopen": "The open state of the tooltip when it is initially rendered. Use when you do not need to control its open state.",
+            "delayduration": "The duration from when the pointer enters the trigger until the tooltip gets opened.",
+            "disableclosingtrigger": "When `true`, clicking on trigger will not close the content.",
+            "disabled": "When `true`, disable tooltip",
+            "disablehoverablecontent": "When `true`, trying to hover the content will result in the tooltip closing as the pointer leaves the trigger.",
+            "ignorenonkeyboardfocus": "Prevent the tooltip from opening if the focus did not come from the keyboard by matching against the\n`:focus-visible` selector. This is useful if you want to avoid opening it when switching browser tabs or closing a\ndialog.",
+            "open": "The controlled open state of the tooltip.",
+            "placement": "Placement.",
+            "popupprops": "Properties forwarded to the popup element.",
+            "portalprops": "Properties forwarded to the portal element.",
+            "positionerprops": "Properties forwarded to the positioner element.",
+            "showarrow": "Whether to show an arrow.",
+            "skipdelayduration": "How much time a user has to enter another trigger without incurring a delay again.",
+            "triggerprops": "Properties forwarded to the trigger element."
+          },
+          "props": "Properties for the TooltipCompact component."
+        },
+        "tooltipcompactslots": {
+          "callables": {
+            "default": "Custom content for the default slot.",
+            "trigger": "Custom content for the trigger slot."
+          },
+          "slots": "Slots for the TooltipCompact component."
+        },
         "tooltippopupprops": {
           "members": {
             "arialabel": "By default, screen readers will announce the content inside the component.\n\nIf this is not descriptive enough, or you have content that cannot be announced, use `aria-label` as a more\ndescriptive label."
@@ -11717,6 +11753,13 @@
             "ui": "Per-slot class overrides for the component."
           },
           "props": "Properties for the Tooltip component."
+        },
+        "tooltipslots": {
+          "callables": {
+            "default": "Custom content for the default slot.",
+            "trigger": "Custom content for the trigger slot."
+          },
+          "slots": "Slots for the Tooltip component."
         }
       },
       "src_components_tree_menu_types": {

@@ -1,6 +1,7 @@
 import type { Ref, ShallowRef } from 'vue';
 import type { DismissableLayerEmits, ForceMountProps, PropsToContext } from '../../types';
-import type { PopperPopupProps, PopperPositionerProps } from '../popper/types';
+import type { PopperAnchorProps, PopperArrowProps, PopperPopupProps, PopperPositionerProps } from '../popper/types';
+import type { PortalProps } from '../portal/types';
 
 /**
  * Properties for the TooltipProvider component.
@@ -136,3 +137,60 @@ export interface TooltipRootContextParams extends PropsToContext<
 }
 
 export type { PopperAnchorProps as TooltipTriggerProps } from '../popper/types';
+
+/**
+ * Properties for the TooltipCompact component.
+ */
+export interface TooltipCompactProps extends TooltipRootProps {
+  /**
+   * Content.
+   */
+  content?: string;
+  /**
+   * Placement.
+   */
+  placement?: PopperPositionerProps['placement'];
+  /**
+   * Whether to show an arrow.
+   */
+  showArrow?: boolean;
+  /**
+   * Properties forwarded to the trigger element.
+   */
+  triggerProps?: PopperAnchorProps;
+  /**
+   * Properties forwarded to the portal element.
+   */
+  portalProps?: PortalProps;
+  /**
+   * Properties forwarded to the positioner element.
+   */
+  positionerProps?: TooltipPositionerProps;
+  /**
+   * Properties forwarded to the popup element.
+   */
+  popupProps?: TooltipPopupProps;
+  /**
+   * Properties forwarded to the arrow element.
+   */
+  arrowProps?: PopperArrowProps;
+}
+
+/**
+ * Events for the TooltipCompact component.
+ */
+export type TooltipCompactEmits = TooltipRootEmits & TooltipPositionerEmits;
+
+/**
+ * Slots for the TooltipCompact component.
+ */
+export interface TooltipCompactSlots {
+  /**
+   * Custom content for the default slot.
+   */
+  default?: () => any;
+  /**
+   * Custom content for the trigger slot.
+   */
+  trigger?: () => any;
+}
