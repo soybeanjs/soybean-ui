@@ -10,24 +10,24 @@ import {
   PROGRESS_CIRCLE_CENTER,
   PROGRESS_CIRCLE_VIEWBOX_SIZE
 } from './shared';
-import type { ProgressCircleProps } from './types';
+import type { ProgressCircleSvgProps } from './types';
 
 defineOptions({
-  name: 'ProgressCircle',
+  name: 'ProgressCircleSvg',
   inheritAttrs: false
 });
 
-const props = withDefaults(defineProps<ProgressCircleProps>(), {
+const props = withDefaults(defineProps<ProgressCircleSvgProps>(), {
   strokeWidth: DEFAULT_PROGRESS_CIRCLE_STROKE_WIDTH
 });
 
 const attrs = useAttrs();
 
-const circleCls = useProgressUi('circle');
+const circleCls = useProgressUi('circleSvg');
 const trackCls = useProgressUi('track');
 const indicatorCls = useProgressUi('indicator');
 
-const { max, modelValue, progressState, valuePercent } = useProgressRootContext('ProgressCircle');
+const { max, modelValue, progressState, valuePercent } = useProgressRootContext('ProgressCircleSvg');
 
 const strokeWidth = computed(() => getValidProgressCircleStrokeWidth(props.strokeWidth));
 

@@ -1,6 +1,7 @@
 import { mount } from '@vue/test-utils';
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import SConfigProvider from '../../../src/components/config-provider/config-provider.vue';
+import SProgressCircle from '../../../src/components/progress/progress-circle.vue';
 import SProgress from '../../../src/components/progress/progress.vue';
 import { progress } from '../../../src/components/progress';
 import { getA11yViolations } from '../../shared/a11y';
@@ -53,6 +54,35 @@ describe('SProgress', () => {
 
       const violations = await getA11yViolations(wrapper.element);
 
+      expect(violations).toHaveLength(0);
+      wrapper.unmount();
+    });
+
+    it('renders circle progress slot content without a11y violations', async () => {
+      const wrapper = mount(
+        {
+          components: { SConfigProvider, SProgressCircle },
+          template: `
+          <SConfigProvider>
+            <SProgressCircle class="my-circle-progress" :model-value="72">
+              <template #default="{ valuePercent }">
+                <span>{{ Math.round(valuePercent ?? 0) }}%</span>
+              </template>
+            </SProgressCircle>
+          </SConfigProvider>
+        `
+        },
+        {
+          attachTo: document.body
+        }
+      );
+
+      const progressbar = wrapper.get('[role="progressbar"]');
+      const label = wrapper.get('[data-slot="label"]');
+      const violations = await getA11yViolations(wrapper.element);
+
+      expect(progressbar.classes()).toContain('my-circle-progress');
+      expect(label.text()).toBe('72%');
       expect(violations).toHaveLength(0);
       wrapper.unmount();
     });

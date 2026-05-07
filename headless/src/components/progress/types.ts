@@ -45,13 +45,89 @@ export type ProgressRootEmits = {
 export interface ProgressIndicatorProps extends PrimitiveWithBaseProps {}
 
 /**
- * Properties for the ProgressCircle component.
+ * Properties for the ProgressCircleSvg component.
  */
-export interface ProgressCircleProps extends BaseProps<SVGAttributes> {
+export interface ProgressCircleSvgProps extends BaseProps<SVGAttributes> {
   /**
    * Stroke width.
    */
   strokeWidth?: number;
+}
+
+/**
+ * Slot properties for the Progress component family.
+ */
+export interface ProgressSlotProps {
+  /**
+   * Current model value.
+   */
+  modelValue: number | null | undefined;
+  /**
+   * Max used by the component.
+   */
+  max: number;
+  /**
+   * Progress state used by the component.
+   */
+  progressState: ProgressState;
+  /**
+   * Current progress percentage.
+   */
+  valuePercent: number | null;
+}
+
+/**
+ * Properties for the ProgressCompact component.
+ */
+export interface ProgressCompactProps extends ProgressRootProps {
+  /**
+   * Properties forwarded to the indicator element.
+   */
+  indicatorProps?: ProgressIndicatorProps;
+}
+
+/**
+ * Events for the ProgressCompact component.
+ */
+export type ProgressCompactEmits = ProgressRootEmits;
+
+/**
+ * Slots for the ProgressCompact component.
+ */
+export interface ProgressCompactSlots {
+  /**
+   * Custom content for the default slot.
+   */
+  default?: (props: ProgressSlotProps) => any;
+}
+
+/**
+ * Properties for the ProgressCircleCompact component.
+ */
+export interface ProgressCircleCompactProps extends ProgressRootProps {
+  /**
+   * Stroke width.
+   */
+  strokeWidth?: number;
+  /**
+   * Properties forwarded to the ProgressCircleSvg component.
+   */
+  circleSvgProps?: ProgressCircleSvgProps;
+}
+
+/**
+ * Events for the ProgressCircleCompact component.
+ */
+export type ProgressCircleCompactEmits = ProgressRootEmits;
+
+/**
+ * Slots for the ProgressCircleCompact component.
+ */
+export interface ProgressCircleCompactSlots {
+  /**
+   * Custom content for the default slot.
+   */
+  default?: (props: ProgressSlotProps) => any;
 }
 
 /**
@@ -88,7 +164,7 @@ export interface ProgressRootContext {
 /**
  * Available UI slots for the Progress component.
  */
-export type ProgressUiSlot = 'root' | 'indicator' | 'circle' | 'track' | 'label';
+export type ProgressUiSlot = 'root' | 'indicator' | 'circleSvg' | 'track' | 'label';
 
 /**
  * UI class overrides for the Progress component.

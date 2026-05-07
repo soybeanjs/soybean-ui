@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { ProgressIndicator, ProgressRoot, provideProgressUi } from '@soybeanjs/headless/progress';
+import { ProgressCompact, provideProgressUi } from '@soybeanjs/headless/progress';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
 import { mergeSlotVariants } from '@/theme';
 import { progressVariants } from './variants';
-import type { ProgressEmits, ProgressProps } from './types';
+import type { ProgressEmits, ProgressProps, ProgressSlots } from './types';
 
 defineOptions({
   name: 'SProgress'
@@ -13,6 +13,8 @@ defineOptions({
 const props = defineProps<ProgressProps>();
 
 const emit = defineEmits<ProgressEmits>();
+
+defineSlots<ProgressSlots>();
 
 const forwardedProps = useOmitProps(props, ['class', 'color', 'size', 'ui', 'indicatorProps']);
 
@@ -31,9 +33,7 @@ provideProgressUi(ui);
 </script>
 
 <template>
-  <ProgressRoot v-slot="slotProps" v-bind="forwardedProps" v-on="listeners">
-    <ProgressIndicator v-bind="indicatorProps">
-      <slot v-bind="slotProps" />
-    </ProgressIndicator>
-  </ProgressRoot>
+  <ProgressCompact v-slot="slotProps" v-bind="forwardedProps" v-on="listeners">
+    <slot v-bind="slotProps" />
+  </ProgressCompact>
 </template>
