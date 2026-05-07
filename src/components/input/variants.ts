@@ -17,7 +17,7 @@ export const inputVariants = tv({
       'hidden shrink-0 opacity-50',
       'group-hover:inline-flex group-focus-within:inline-flex hover:opacity-100 focus-visible:opacity-100'
     ],
-    visible: 'cursor-pointer'
+    visible: 'shrink-0 cursor-pointer'
   },
   variants: {
     size: {

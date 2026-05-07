@@ -12,13 +12,13 @@ defineOptions({
 
 const props = defineProps<InputNumberDecrementProps>();
 
-const { disabled, readonly, isIncreaseDisabled, onDecrease } = useInputNumberRootContext('InputNumberDecrement');
+const { disabled, readonly, isDecreaseDisabled, onDecrease } = useInputNumberRootContext('InputNumberDecrement');
 
 const cls = useInputNumberUi('decrement');
 
 const [decrementElement, setDecrementElement] = useForwardElement();
 
-const isDisabled = computed(() => disabled.value || readonly.value || props.disabled || isIncreaseDisabled.value);
+const isDisabled = computed(() => disabled.value || readonly.value || props.disabled || isDecreaseDisabled.value);
 
 const { isPressed, onTrigger } = usePressedHold({ target: decrementElement, disabled: isDisabled });
 
@@ -32,6 +32,8 @@ onTrigger(() => {
 <template>
   <Button
     :ref="setDecrementElement"
+    v-bind="props"
+    data-slot="decrement"
     :class="cls"
     tabindex="-1"
     aria-label="Decrease"

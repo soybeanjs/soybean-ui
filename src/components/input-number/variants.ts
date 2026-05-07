@@ -11,7 +11,10 @@ export const inputNumberVariants = tv({
       `placeholder:text-muted-foreground`,
       'disabled:cursor-not-allowed disabled:opacity-50'
     ],
-    clearable: 'hidden group-hover:block size-1em cursor-pointer opacity-50 hover:opacity-100'
+    clearable: [
+      'hidden shrink-0 opacity-50',
+      'group-hover:inline-flex group-focus-within:inline-flex hover:opacity-100 focus-visible:opacity-100'
+    ]
   },
   variants: {
     size: {

@@ -1,9 +1,7 @@
 import type {
-  InputNumberControlProps,
-  InputNumberDecrementProps,
-  InputNumberIncrementProps,
-  InputNumberRootEmits,
-  InputNumberRootProps,
+  InputNumberCompactEmits,
+  InputNumberCompactProps,
+  InputNumberCompactSlots,
   InputNumberUi
 } from '@soybeanjs/headless/input-number';
 import type { ClassValue } from '@soybeanjs/headless/types';
@@ -12,7 +10,7 @@ import type { ThemeSize } from '@/theme';
 /**
  * Properties for the InputNumber component.
  */
-export interface InputNumberProps extends InputNumberRootProps {
+export interface InputNumberProps extends InputNumberCompactProps {
   /**
    * Additional class names applied to the root element.
    */
@@ -31,29 +29,14 @@ export interface InputNumberProps extends InputNumberRootProps {
    * @defaultValue false
    */
   center?: boolean;
-  /** Whether to show the clear icon */
-  clearable?: boolean;
-  /**
-   * The function to set the input element.
-   *
-   * @param el - The input element.
-   */
-  inputRef?: (el: HTMLInputElement) => void;
-  /**
-   * Properties forwarded to the control element.
-   */
-  controlProps?: InputNumberControlProps;
-  /**
-   * Properties forwarded to the increment element.
-   */
-  incrementProps?: InputNumberIncrementProps;
-  /**
-   * Properties forwarded to the decrement element.
-   */
-  decrementProps?: InputNumberDecrementProps;
 }
 
 /**
  * Events for the InputNumber component.
  */
-export type InputNumberEmits = InputNumberRootEmits;
+export type InputNumberEmits = InputNumberCompactEmits;
+
+/**
+ * Slots for the InputNumber component.
+ */
+export type InputNumberSlots = InputNumberCompactSlots;

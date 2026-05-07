@@ -1,0 +1,99 @@
+import type { UiClass } from '../../types';
+import type { ButtonProps } from '../button/types';
+import type { InputClearProps, InputControlProps, InputRootEmits, InputRootProps, InputUiSlot } from '../input/types';
+
+/**
+ * Available UI slots for the Password component.
+ */
+export type PasswordUiSlot = InputUiSlot | 'visible';
+
+/**
+ * UI class overrides for the Password component.
+ */
+export type PasswordUi = UiClass<PasswordUiSlot>;
+
+/**
+ * Slot properties for the PasswordCompact component.
+ */
+export interface PasswordCompactSlotProps {
+  /**
+   * Current model value.
+   */
+  modelValue?: string;
+  /**
+   * Clear handler.
+   */
+  clear: () => void;
+  /**
+   * Whether the password is visible.
+   */
+  visible: boolean;
+  /**
+   * Toggle password visibility.
+   */
+  toggle: () => void;
+}
+
+/**
+ * Properties for the PasswordCompact component.
+ */
+export interface PasswordCompactProps extends InputRootProps {
+  /**
+   * Whether to show the clear trigger.
+   *
+   * @defaultValue false
+   */
+  clearable?: boolean;
+  /**
+   * Controlled password visibility.
+   */
+  visible?: boolean;
+  /**
+   * The function to set the input element.
+   */
+  inputRef?: (el: HTMLInputElement) => void;
+  /**
+   * Properties forwarded to the control element.
+   */
+  controlProps?: InputControlProps;
+  /**
+   * Properties forwarded to the clear element.
+   */
+  clearProps?: InputClearProps;
+  /**
+   * Properties forwarded to the visible element.
+   */
+  visibleProps?: ButtonProps;
+}
+
+/**
+ * Events for the PasswordCompact component.
+ */
+export type PasswordCompactEmits = InputRootEmits & {
+  /**
+   * Emitted when the visible state changes.
+   */
+  'update:visible': [visible: boolean];
+};
+
+/**
+ * Slots for the PasswordCompact component.
+ */
+export type PasswordCompactSlots = {
+  /**
+   * Custom content for the leading slot.
+   */
+  leading?: (props: PasswordCompactSlotProps) => any;
+  /**
+   * Custom content for the trailing slot.
+   */
+  trailing?: (props: PasswordCompactSlotProps) => any;
+  /**
+   * Custom content for the clear slot.
+   */
+  clear?: (props: PasswordCompactSlotProps) => any;
+  /**
+   * Custom content for the visible slot.
+   */
+  visible?: (props: PasswordCompactSlotProps) => any;
+};

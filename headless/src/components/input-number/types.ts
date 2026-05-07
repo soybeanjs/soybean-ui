@@ -60,6 +60,83 @@ export interface InputNumberIncrementProps extends ButtonProps {}
 export interface InputNumberDecrementProps extends ButtonProps {}
 
 /**
+ * Slot properties for the InputNumberCompact component.
+ */
+export interface InputNumberCompactSlotProps {
+  /**
+   * Current model value.
+   */
+  modelValue?: number | null;
+  /**
+   * Clear handler.
+   */
+  clear: () => void;
+}
+
+/**
+ * Properties for the InputNumberCompact component.
+ */
+export interface InputNumberCompactProps extends InputNumberRootProps {
+  /**
+   * Whether to show the clear trigger.
+   *
+   * @defaultValue false
+   */
+  clearable?: boolean;
+  /**
+   * The function to set the input element.
+   */
+  inputRef?: (el: HTMLInputElement) => void;
+  /**
+   * Properties forwarded to the control element.
+   */
+  controlProps?: InputNumberControlProps;
+  /**
+   * Properties forwarded to the increment element.
+   */
+  incrementProps?: InputNumberIncrementProps;
+  /**
+   * Properties forwarded to the decrement element.
+   */
+  decrementProps?: InputNumberDecrementProps;
+  /**
+   * Properties forwarded to the clear element.
+   */
+  clearProps?: ButtonProps;
+}
+
+/**
+ * Events for the InputNumberCompact component.
+ */
+export type InputNumberCompactEmits = InputNumberRootEmits;
+
+/**
+ * Slots for the InputNumberCompact component.
+ */
+export type InputNumberCompactSlots = {
+  /**
+   * Custom content for the leading slot.
+   */
+  leading?: (props: InputNumberCompactSlotProps) => any;
+  /**
+   * Custom content for the trailing slot.
+   */
+  trailing?: (props: InputNumberCompactSlotProps) => any;
+  /**
+   * Custom content for the clear slot.
+   */
+  clear?: (props: InputNumberCompactSlotProps) => any;
+  /**
+   * Custom content for the decrement slot.
+   */
+  decrement?: (props: InputNumberCompactSlotProps) => any;
+  /**
+   * Custom content for the increment slot.
+   */
+  increment?: (props: InputNumberCompactSlotProps) => any;
+};
+
+/**
  * Parameters used to create the InputNumberRoot context.
  */
 export interface InputNumberRootContextParams extends PropsToContext<
@@ -91,7 +168,7 @@ export interface InputNumberRootContextParams extends PropsToContext<
 /**
  * Available UI slots for the InputNumber component.
  */
-export type InputNumberUiSlot = 'root' | 'increment' | 'decrement' | 'control';
+export type InputNumberUiSlot = 'root' | 'increment' | 'decrement' | 'control' | 'clearable';
 
 /**
  * UI class overrides for the InputNumber component.
