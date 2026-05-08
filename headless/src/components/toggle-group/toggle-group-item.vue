@@ -26,7 +26,15 @@ const {
 const disabled = computed(() => rootDisabled.value || props.disabled);
 const pressed = computed(() => isValueSelected(props.value));
 
-const forwardedProps = useOmitProps(props, ['value']);
+const rovingFocusProps = computed(() => {
+  if (!rovingFocus.value) {
+    return {};
+  }
+
+  return { focusable: !disabled.value, active: pressed.value };
+});
+
+const forwardedProps = useOmitProps(props, ['value'], rovingFocusProps);
 
 const dataState = computed(() => (pressed.value ? 'on' : 'off'));
 
@@ -36,17 +44,17 @@ const onClick = () => {
 </script>
 
 <template>
-  <component :is="rovingFocus ? RovingFocusItem : 'template'" as-child :focusable="!disabled" :active="pressed">
-    <Button
-      v-bind="forwardedProps"
-      :class="cls"
-      :aria-pressed="pressed ? 'true' : 'false'"
-      :data-state="dataState"
-      :data-orientation="orientation"
-      :disabled="disabled"
-      @click="onClick"
-    >
-      <slot :pressed="pressed" :disabled="disabled" />
-    </Button>
+  <component
+    :is="rovingFocus ? RovingFocusItem : Button"
+    v-bind="forwardedProps"
+    :as="rovingFocus ? Button : props.as"
+    :class="cls"
+    :aria-pressed="pressed ? 'true' : 'false'"
+    :data-state="dataState"
+    :data-orientation="orientation"
+    :disabled="disabled"
+    @click="onClick"
+  >
+    <slot :pressed="pressed" :disabled="disabled" />
   </component>
 </template>
