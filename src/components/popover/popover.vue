@@ -47,8 +47,9 @@ providePopoverUi(ui);
 
 <template>
   <PopoverCompact v-bind="forwardedProps" v-on="listeners">
-    <template v-for="slotName in slotNames" :key="slotName" #[slotName]>
-      <slot :name="slotName" />
+    <template v-for="slotName in slotNames" :key="slotName" #[slotName]="slotProps">
+      <!-- @vue-expect-error ignore slot type error -->
+      <slot :name="slotName" v-bind="slotProps" />
     </template>
   </PopoverCompact>
 </template>
