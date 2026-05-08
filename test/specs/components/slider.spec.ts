@@ -77,6 +77,27 @@ describe('SSlider', () => {
       wrapper.unmount();
     });
 
+    it('renders custom thumb content from slot props', () => {
+      const wrapper = mount({
+        components: { SSlider },
+        template: `
+          <SSlider :model-value="[20, 80]">
+            <template #default="{ index, value, modelValue }">
+              <span class="thumb-label">{{ index }}-{{ value }}-{{ modelValue.join(',') }}</span>
+            </template>
+          </SSlider>
+        `,
+        attachTo: document.body
+      });
+
+      const labels = wrapper.findAll('.thumb-label');
+
+      expect(labels).toHaveLength(2);
+      expect(labels[0]?.text()).toBe('0-20-20,80');
+      expect(labels[1]?.text()).toBe('1-80-20,80');
+      wrapper.unmount();
+    });
+
     it('allows custom thumb aria-labels in range mode', () => {
       const wrapper = mount(SSlider, {
         props: { modelValue: [20, 80], thumbProps: { 'aria-label': 'Price range' } },
@@ -122,7 +143,7 @@ describe('SSlider', () => {
         attachTo: document.body
       });
 
-      const track = wrapper.find('[data-slot="slider-track"]');
+      const track = wrapper.findComponent({ name: 'SliderTrack' });
 
       mockRect(track.element, { x: 0, y: 0, width: 100, height: 10 });
       dispatchPointerEvent(track.element, 'pointerdown', { clientX: 25, clientY: 5, pointerId: 1 });
@@ -141,7 +162,7 @@ describe('SSlider', () => {
         attachTo: document.body
       });
 
-      const track = wrapper.find('[data-slot="slider-track"]');
+      const track = wrapper.findComponent({ name: 'SliderTrack' });
       const thumb = wrapper.find('[role="slider"]');
 
       mockRect(track.element, { x: 0, y: 0, width: 100, height: 10 });

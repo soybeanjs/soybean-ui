@@ -424,6 +424,7 @@ import {
   SeparatorLabel,
   SeparatorRoot,
   Skeleton,
+  SliderCompact,
   SliderRange,
   SliderRoot,
   SliderThumb,
@@ -1577,11 +1578,13 @@ export const Splitter = {
 };
 
 export const Slider = {
+  Compact: SliderCompact,
   Root: SliderRoot,
   Track: SliderTrack,
   Range: SliderRange,
   Thumb: SliderThumb
 } as {
+  Compact: typeof SliderCompact;
   Root: typeof SliderRoot;
   Track: typeof SliderTrack;
   Range: typeof SliderRange;

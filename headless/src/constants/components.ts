@@ -418,7 +418,7 @@ export const components = {
   ],
   separator: ['SeparatorRoot', 'SeparatorLabel'],
   skeleton: ['Skeleton'],
-  slider: ['SliderRoot', 'SliderTrack', 'SliderRange', 'SliderThumb'],
+  slider: ['SliderCompact', 'SliderRoot', 'SliderTrack', 'SliderRange', 'SliderThumb'],
   slot: ['Slot'],
   splitter: ['SplitterGroup', 'SplitterPanel', 'SplitterResizeHandle'],
   stepper: [
