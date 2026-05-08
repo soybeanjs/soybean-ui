@@ -27,7 +27,14 @@ const handleClear = (event: PointerEvent) => {
 </script>
 
 <template>
-  <Button v-bind="props" data-slot="clearable" :class="cls" :disabled="disabled" @click="handleClear">
+  <Button
+    v-bind="props"
+    data-slot="clearable"
+    :class="cls"
+    aria-label="Clear value"
+    :disabled="disabled"
+    @click="handleClear"
+  >
     <slot>
       <Icon icon="lucide:x" />
     </slot>
