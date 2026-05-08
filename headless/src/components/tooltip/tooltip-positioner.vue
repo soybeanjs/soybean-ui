@@ -10,7 +10,8 @@ defineOptions({
 });
 
 const props = withDefaults(defineProps<TooltipPositionerProps>(), {
-  avoidCollisions: true
+  avoidCollisions: true,
+  prioritizePosition: true
 });
 
 const emit = defineEmits<TooltipPositionerEmits>();
