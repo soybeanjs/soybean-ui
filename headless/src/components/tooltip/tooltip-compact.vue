@@ -7,7 +7,7 @@ import TooltipPortal from '../portal/portal.vue';
 import TooltipPositioner from './tooltip-positioner.vue';
 import TooltipPopup from './tooltip-popup.vue';
 import TooltipArrow from '../popper/popper-arrow.vue';
-import type { TooltipCompactEmits, TooltipCompactProps, TooltipCompactSlots } from './types';
+import type { TooltipCompactProps, TooltipCompactEmits, TooltipCompactSlots } from './types';
 
 defineOptions({
   name: 'TooltipCompact'
@@ -16,7 +16,6 @@ defineOptions({
 const props = withDefaults(defineProps<TooltipCompactProps>(), {
   open: undefined,
   defaultOpen: false,
-  avoidCollisions: true,
   showArrow: true
 });
 

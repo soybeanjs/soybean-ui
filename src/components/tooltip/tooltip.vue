@@ -21,11 +21,7 @@ const emit = defineEmits<TooltipEmits>();
 
 defineSlots<TooltipSlots>();
 
-const forwardedRootProps = useOmitProps(props, [
-  'class',
-  'size',
-  'ui'
-]);
+const forwardedRootProps = useOmitProps(props, ['class', 'size', 'ui']);
 
 const listeners = useForwardListeners(emit);
 

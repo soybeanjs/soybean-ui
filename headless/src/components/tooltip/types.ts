@@ -1,5 +1,5 @@
 import type { Ref, ShallowRef } from 'vue';
-import type { DismissableLayerEmits, ForceMountProps, PropsToContext } from '../../types';
+import type { DismissableLayerEmits, ForceMountProps, PropsToContext, Placement } from '../../types';
 import type { PopperAnchorProps, PopperArrowProps, PopperPopupProps, PopperPositionerProps } from '../popper/types';
 import type { PortalProps } from '../portal/types';
 
@@ -13,35 +13,30 @@ export interface TooltipProviderProps {
    * @defaultValue 150
    */
   delayDuration?: number;
-
   /**
    * How much time a user has to enter another trigger without incurring a delay again.
    *
    * @defaultValue 300
    */
   skipDelayDuration?: number;
-
   /**
    * When `true`, trying to hover the content will result in the tooltip closing as the pointer leaves the trigger.
    *
    * @defaultValue false
    */
   disableHoverableContent?: boolean;
-
   /**
    * When `true`, clicking on trigger will not close the content.
    *
    * @defaultValue false
    */
   disableClosingTrigger?: boolean;
-
   /**
    * When `true`, disable tooltip
    *
    * @defaultValue false
    */
   disabled?: boolean;
-
   /**
    * Prevent the tooltip from opening if the focus did not come from the keyboard by matching against the
    * `:focus-visible` selector. This is useful if you want to avoid opening it when switching browser tabs or closing a
@@ -149,7 +144,7 @@ export interface TooltipCompactProps extends TooltipRootProps {
   /**
    * Placement.
    */
-  placement?: PopperPositionerProps['placement'];
+  placement?: Placement;
   /**
    * Whether to show an arrow.
    */
