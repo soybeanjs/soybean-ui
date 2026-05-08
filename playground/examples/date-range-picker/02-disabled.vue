@@ -3,5 +3,5 @@ import { SDateRangePicker } from '@soybeanjs/ui';
 </script>
 
 <template>
-  <SDateRangePicker class="w-90 lt-md:w-auto" disabled />
+  <SDateRangePicker disabled />
 </template>

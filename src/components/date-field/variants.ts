@@ -1,17 +1,16 @@
 // @unocss-include
 import { tv } from 'tailwind-variants';
-import type { VariantProps } from 'tailwind-variants';
 
 export const dateFieldVariants = tv({
   slots: {
     root: [
-      'group inline-flex flex-wrap items-center w-fit rounded-md border border-input bg-background transition-all-150',
+      'group inline-flex items-center w-fit lt-md:max-w-auto rounded-md border border-input bg-background transition-all-150',
       'outline-none focus-within:ring-3 focus-within:ring-offset-background focus-within:ring-primary/30',
-      'data-[disabled]:opacity-60 data-[readonly]:bg-muted/40',
+      'data-[disabled]:opacity-50 data-[readonly]:bg-muted/40',
       'data-[invalid]:border-destructive data-[invalid]:ring-3 data-[invalid]:ring-destructive/20'
     ],
     input: [
-      'inline-flex items-center justify-center rounded-sm px-0.5 text-center outline-none',
+      'inline-flex items-center justify-center rounded-sm text-center outline-none',
       'tabular-nums leading-none',
       'data-[segment=literal]:min-w-0 data-[segment=literal]:px-0 data-[segment=literal]:text-muted-foreground',
       'data-[segment=timeZoneName]:min-w-fit data-[segment=timeZoneName]:px-1 data-[segment=timeZoneName]:text-muted-foreground',
@@ -23,28 +22,28 @@ export const dateFieldVariants = tv({
   variants: {
     size: {
       xs: {
-        root: 'min-h-6 px-1.5 text-2xs',
-        input: 'min-h-4.5 min-w-4.5'
+        root: 'gap-0.5 h-6 px-1.5 text-2xs',
+        input: 'min-w-4.5 p-0.5 data-[segment=timeZoneName]:px-0.5'
       },
       sm: {
-        root: 'min-h-7 px-2 text-xs',
-        input: 'min-h-5 min-w-5'
+        root: 'gap-0.75 h-7 px-2 text-xs',
+        input: 'min-w-5 p-0.5 data-[segment=timeZoneName]:px-0.75'
       },
       md: {
-        root: 'min-h-8 px-2.5 text-sm',
-        input: 'min-h-5.5 min-w-5.5'
+        root: 'gap-1 h-8 px-2.5 text-sm',
+        input: 'min-w-5.5 p-0.625 data-[segment=timeZoneName]:px-1'
       },
       lg: {
-        root: 'min-h-9 px-3 text-base',
-        input: 'min-h-6 min-w-6'
+        root: 'gap-1.25 h-9 px-3 text-base',
+        input: 'min-w-6 p-0.75 data-[segment=timeZoneName]:px-1.25'
       },
       xl: {
-        root: 'min-h-10 px-3.5 text-lg',
-        input: 'min-h-6.5 min-w-6.5'
+        root: 'gap-1.5 h-10 px-3.5 text-lg',
+        input: 'min-w-6.5 p-0.875 data-[segment=timeZoneName]:px-1.5'
       },
       '2xl': {
-        root: 'min-h-12 px-4 text-xl',
-        input: 'min-h-8 min-w-8'
+        root: 'gap-2 h-12 px-4 text-xl',
+        input: 'min-w-8 p-1 data-[segment=timeZoneName]:px-2'
       }
     }
   },
@@ -52,7 +51,3 @@ export const dateFieldVariants = tv({
     size: 'md'
   }
 });
-
-type DateFieldVariants = VariantProps<typeof dateFieldVariants>;
-
-export type DateFieldVariantProps = DateFieldVariants;

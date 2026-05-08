@@ -13,6 +13,7 @@ export const components = {
   breadcrumb: ['SBreadcrumb', 'SBreadcrumbPage', 'SBreadcrumbEllipsis'],
   button: ['SButton', 'SButtonLoading', 'SButtonIcon', 'SButtonLink', 'SButtonGroup'],
   calendar: ['SCalendar'],
+  calendarRange: ['SCalendarRange'],
   card: ['SCard', 'SCardCollapsibleTrigger'],
   carousel: ['SCarousel'],
   checkbox: ['SCheckboxGroup', 'SCheckbox', 'SCheckboxCardGroup', 'SCheckboxCard'],
@@ -50,8 +51,6 @@ export const components = {
   list: ['SList', 'SListItem'],
   menu: ['SMenuOptions', 'SMenuCheckboxOptions', 'SMenuRadioOptions'],
   menubar: ['SMenubar'],
-  monthPicker: ['SMonthPicker'],
-  monthRangePicker: ['SMonthRangePicker'],
   navigationMenu: ['SNavigationMenu'],
   pageTabs: ['SPageTabs'],
   pagination: ['SPagination'],
@@ -60,7 +59,6 @@ export const components = {
   popover: ['SPopover'],
   progress: ['SProgressProvider', 'SProgress', 'SProgressCircle'],
   radioGroup: ['SRadioGroup', 'SRadio', 'SRadioCard', 'SRadioCardGroup'],
-  rangeCalendar: ['SRangeCalendar'],
   scrollArea: ['SScrollArea'],
   segment: ['SSegment'],
   select: ['SSelect'],
@@ -84,9 +82,7 @@ export const components = {
   ],
   textarea: ['STextarea'],
   timeField: ['STimeField'],
-  timePicker: ['STimePicker'],
   timeRangeField: ['STimeRangeField'],
-  timeRangePicker: ['STimeRangePicker'],
   toast: ['SToastProvider'],
   toggle: ['SToggle'],
   toggleGroup: ['SToggleGroup', 'SToggleGroupItem'],
@@ -101,7 +97,5 @@ export const components = {
   tooltip: ['STooltip'],
   tree: ['STree', 'STreeVirtualizer', 'STreeItem', 'STreeVirtualizerItem'],
   treeMenu: ['STreeMenu', 'STreeMenuStyledItem'],
-  virtualizer: ['SVirtualizer', 'SVirtualizerItem'],
-  yearPicker: ['SYearPicker'],
-  yearRangePicker: ['SYearRangePicker']
+  virtualizer: ['SVirtualizer', 'SVirtualizerItem']
 };

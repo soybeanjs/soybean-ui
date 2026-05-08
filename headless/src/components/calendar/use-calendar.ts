@@ -1,81 +1,83 @@
+import { computed, shallowRef, watch } from 'vue';
+import type { ShallowRef } from 'vue';
 import { isEqualMonth, isSameDay, isSameMonth } from '@internationalized/date';
 import type { DateFields, DateValue } from '@internationalized/date';
-import { computed, shallowRef, watch } from 'vue';
-import type { Ref, ShallowRef } from 'vue';
 import { createMonths, getDaysInMonth, isAfter, isBefore, toDate, useDateFormatter } from '../../date';
-import type { DateFormatterOptions, Grid, Matcher, WeekDayFormat, WeekStartsOn } from '../../date';
+import type { DateFormatterOptions, DateMatcher, DateGrid, WeekDayFormat, WeekStartsOn } from '../../date';
 
-export interface UseCalendarProps {
-  locale: Ref<string>;
+export interface UseCalendarOptions {
+  locale: ShallowRef<string>;
   placeholder: ShallowRef<DateValue>;
-  weekStartsOn: Ref<WeekStartsOn>;
-  fixedWeeks: Ref<boolean>;
-  numberOfMonths: Ref<number>;
-  minValue: Ref<DateValue | undefined>;
-  maxValue: Ref<DateValue | undefined>;
-  disabled: Ref<boolean>;
-  weekdayFormat: Ref<WeekDayFormat>;
-  pagedNavigation: Ref<boolean>;
-  isDateDisabled?: Matcher;
-  isDateUnavailable?: Matcher;
-  calendarLabel: Ref<string | undefined>;
-  nextPage: Ref<((placeholder: DateValue) => DateValue) | undefined>;
-  prevPage: Ref<((placeholder: DateValue) => DateValue) | undefined>;
+  weekStartsOn: ShallowRef<WeekStartsOn>;
+  fixedWeeks: ShallowRef<boolean>;
+  numberOfMonths: ShallowRef<number>;
+  minValue: ShallowRef<DateValue | undefined>;
+  maxValue: ShallowRef<DateValue | undefined>;
+  disabled: ShallowRef<boolean>;
+  weekdayFormat: ShallowRef<WeekDayFormat>;
+  pagedNavigation: ShallowRef<boolean>;
+  isDateDisabled?: DateMatcher;
+  isDateUnavailable?: DateMatcher;
+  calendarLabel: ShallowRef<string | undefined>;
+  nextPage: ShallowRef<((placeholder: DateValue) => DateValue) | undefined>;
+  prevPage: ShallowRef<((placeholder: DateValue) => DateValue) | undefined>;
 }
 
-export interface UseCalendarStateProps {
-  isDateDisabled: Matcher;
-  isDateUnavailable: Matcher;
+export interface UseCalendarStateOptions {
+  isDateDisabled: DateMatcher;
+  isDateUnavailable: DateMatcher;
   date: ShallowRef<DateValue | DateValue[] | undefined>;
 }
 
-export function useCalendarState(props: UseCalendarStateProps) {
+export function useCalendarState(options: UseCalendarStateOptions) {
+  const { date, isDateDisabled, isDateUnavailable } = options;
+
   function isDateSelected(dateObj: DateValue) {
-    if (Array.isArray(props.date.value)) {
-      return props.date.value.some(date => isSameDay(date, dateObj));
+    if (Array.isArray(date.value)) {
+      return date.value.some(item => isSameDay(item, dateObj));
     }
 
-    if (!props.date.value) {
+    if (!date.value) {
       return false;
     }
 
-    return isSameDay(props.date.value, dateObj);
+    return isSameDay(date.value, dateObj);
   }
 
   const isInvalid = computed(() => {
-    if (Array.isArray(props.date.value)) {
-      if (!props.date.value.length) {
+    if (Array.isArray(date.value)) {
+      if (!date.value.length) {
         return false;
       }
 
-      return props.date.value.some(dateObj => props.isDateDisabled?.(dateObj) || props.isDateUnavailable?.(dateObj));
+      return date.value.some(dateObj => isDateDisabled?.(dateObj) || isDateUnavailable?.(dateObj));
     }
 
-    if (!props.date.value) {
+    if (!date.value) {
       return false;
     }
 
-    return Boolean(props.isDateDisabled?.(props.date.value) || props.isDateUnavailable?.(props.date.value));
+    return Boolean(isDateDisabled?.(date.value) || isDateUnavailable?.(date.value));
   });
 
   const hasSelectedDate = computed(() => {
-    return Array.isArray(props.date.value) ? props.date.value.length > 0 : Boolean(props.date.value);
+    return Array.isArray(date.value) ? date.value.length > 0 : Boolean(date.value);
   });
 
   const isSelectedDateDisabled = computed(() => {
-    if (Array.isArray(props.date.value)) {
-      if (!props.date.value.length) {
+    if (Array.isArray(date.value)) {
+      if (!date.value.length) {
         return false;
       }
 
-      return props.date.value.some(dateObj => props.isDateDisabled?.(dateObj));
+      return date.value.some(dateObj => isDateDisabled?.(dateObj));
     }
 
-    if (!props.date.value) {
+    if (!date.value) {
       return false;
     }
 
-    return Boolean(props.isDateDisabled?.(props.date.value));
+    return Boolean(isDateDisabled?.(date.value));
   });
 
   return {
@@ -116,28 +118,44 @@ function handlePrevDisabled(firstPeriodInView: DateValue, prevPageFunc: (date: D
   return lastPeriodOfPrevPage.set({ ...duration });
 }
 
-export function useCalendar(props: UseCalendarProps) {
-  const formatter = useDateFormatter(props.locale.value);
+export function useCalendar(options: UseCalendarOptions) {
+  const {
+    locale,
+    placeholder,
+    weekStartsOn,
+    fixedWeeks,
+    numberOfMonths,
+    minValue,
+    maxValue,
+    disabled,
+    weekdayFormat,
+    pagedNavigation,
+    nextPage,
+    prevPage,
+    calendarLabel
+  } = options;
+
+  const formatter = useDateFormatter(locale.value);
 
   const headingFormatOptions = computed<DateFormatterOptions>(() => {
-    const options: DateFormatterOptions = {
-      calendar: props.placeholder.value.calendar.identifier
+    const opts: DateFormatterOptions = {
+      calendar: placeholder.value.calendar.identifier
     };
 
-    if (props.placeholder.value.calendar.identifier === 'gregory' && props.placeholder.value.era === 'BC') {
-      options.era = 'short';
+    if (placeholder.value.calendar.identifier === 'gregory' && placeholder.value.era === 'BC') {
+      opts.era = 'short';
     }
 
-    return options;
+    return opts;
   });
 
-  const grid = shallowRef<Grid<DateValue>[]>(
+  const grid = shallowRef<DateGrid<DateValue>[]>(
     createMonths({
-      dateObj: props.placeholder.value,
-      weekStartsOn: props.weekStartsOn.value,
-      locale: props.locale.value,
-      fixedWeeks: props.fixedWeeks.value,
-      numberOfMonths: props.numberOfMonths.value
+      dateObj: placeholder.value,
+      weekStartsOn: weekStartsOn.value,
+      locale: locale.value,
+      fixedWeeks: fixedWeeks.value,
+      numberOfMonths: numberOfMonths.value
     })
   );
 
@@ -148,94 +166,92 @@ export function useCalendar(props: UseCalendarProps) {
   }
 
   const isNextButtonDisabled = (nextPageFunc?: (date: DateValue) => DateValue) => {
-    if (!props.maxValue.value || !grid.value.length) {
+    if (!maxValue.value || !grid.value.length) {
       return false;
     }
-    if (props.disabled.value) {
+    if (disabled.value) {
       return true;
     }
 
     const lastPeriodInView = grid.value.at(-1)!.value;
 
-    if (!nextPageFunc && !props.nextPage.value) {
+    if (!nextPageFunc && !nextPage.value) {
       const firstPeriodOfNextPage = lastPeriodInView.add({ months: 1 }).set({ day: 1 });
-      return isAfter(firstPeriodOfNextPage, props.maxValue.value);
+      return isAfter(firstPeriodOfNextPage, maxValue.value);
     }
 
-    const firstPeriodOfNextPage = handleNextDisabled(lastPeriodInView, nextPageFunc || props.nextPage.value!);
-    return isAfter(firstPeriodOfNextPage, props.maxValue.value);
+    const firstPeriodOfNextPage = handleNextDisabled(lastPeriodInView, nextPageFunc || nextPage.value!);
+    return isAfter(firstPeriodOfNextPage, maxValue.value);
   };
 
   const isPrevButtonDisabled = (prevPageFunc?: (date: DateValue) => DateValue) => {
-    if (!props.minValue.value || !grid.value.length) {
+    if (!minValue.value || !grid.value.length) {
       return false;
     }
-    if (props.disabled.value) {
+    if (disabled.value) {
       return true;
     }
 
     const firstPeriodInView = grid.value[0].value;
 
-    if (!prevPageFunc && !props.prevPage.value) {
+    if (!prevPageFunc && !prevPage.value) {
       const lastPeriodOfPrevPage = firstPeriodInView.subtract({ months: 1 }).set({ day: 35 });
-      return isBefore(lastPeriodOfPrevPage, props.minValue.value);
+      return isBefore(lastPeriodOfPrevPage, minValue.value);
     }
 
-    const lastPeriodOfPrevPage = handlePrevDisabled(firstPeriodInView, prevPageFunc || props.prevPage.value!);
-    return isBefore(lastPeriodOfPrevPage, props.minValue.value);
+    const lastPeriodOfPrevPage = handlePrevDisabled(firstPeriodInView, prevPageFunc || prevPage.value!);
+    return isBefore(lastPeriodOfPrevPage, minValue.value);
   };
 
   function isDateDisabled(dateObj: DateValue) {
-    if (props.isDateDisabled?.(dateObj) || props.disabled.value) {
+    if (options.isDateDisabled?.(dateObj) || disabled.value) {
       return true;
     }
-    if (props.maxValue.value && isAfter(dateObj, props.maxValue.value)) {
+    if (maxValue.value && isAfter(dateObj, maxValue.value)) {
       return true;
     }
-    if (props.minValue.value && isBefore(dateObj, props.minValue.value)) {
+    if (minValue.value && isBefore(dateObj, minValue.value)) {
       return true;
     }
 
     return false;
   }
 
-  const isDateUnavailable = (date: DateValue) => {
-    return Boolean(props.isDateUnavailable?.(date));
-  };
+  const isDateUnavailable = (date: DateValue) => Boolean(options.isDateUnavailable?.(date));
 
   const weekdays = computed(() => {
     if (!grid.value.length) {
       return [];
     }
 
-    return grid.value[0].rows[0].map(date => formatter.dayOfWeek(toDate(date), props.weekdayFormat.value));
+    return grid.value[0].rows[0].map(date => formatter.dayOfWeek(toDate(date), weekdayFormat.value));
   });
 
-  const nextPage = (nextPageFunc?: (date: DateValue) => DateValue) => {
+  const handleNextPage = (nextPageFunc?: (date: DateValue) => DateValue) => {
     const firstDate = grid.value[0].value;
 
-    if (!nextPageFunc && !props.nextPage.value) {
-      const newDate = firstDate.add({ months: props.pagedNavigation.value ? props.numberOfMonths.value : 1 });
+    if (!nextPageFunc && !nextPage.value) {
+      const newDate = firstDate.add({ months: pagedNavigation.value ? numberOfMonths.value : 1 });
       const newGrid = createMonths({
         dateObj: newDate,
-        weekStartsOn: props.weekStartsOn.value,
-        locale: props.locale.value,
-        fixedWeeks: props.fixedWeeks.value,
-        numberOfMonths: props.numberOfMonths.value
+        weekStartsOn: weekStartsOn.value,
+        locale: locale.value,
+        fixedWeeks: fixedWeeks.value,
+        numberOfMonths: numberOfMonths.value
       });
 
       grid.value = newGrid;
-      props.placeholder.value = newGrid[0].value.set({ day: 1 });
+      placeholder.value = newGrid[0].value.set({ day: 1 });
       return;
     }
 
-    const newDate = (nextPageFunc || props.nextPage.value!)(firstDate);
+    const newDate = (nextPageFunc || nextPage.value!)(firstDate);
     const newGrid = createMonths({
       dateObj: newDate,
-      weekStartsOn: props.weekStartsOn.value,
-      locale: props.locale.value,
-      fixedWeeks: props.fixedWeeks.value,
-      numberOfMonths: props.numberOfMonths.value
+      weekStartsOn: weekStartsOn.value,
+      locale: locale.value,
+      fixedWeeks: fixedWeeks.value,
+      numberOfMonths: numberOfMonths.value
     });
 
     grid.value = newGrid;
@@ -252,34 +268,34 @@ export function useCalendar(props: UseCalendarProps) {
       }
     }
 
-    props.placeholder.value = newGrid[0].value.set({ ...duration });
+    placeholder.value = newGrid[0].value.set({ ...duration });
   };
 
-  const prevPage = (prevPageFunc?: (date: DateValue) => DateValue) => {
+  const handlePrevPage = (prevPageFunc?: (date: DateValue) => DateValue) => {
     const firstDate = grid.value[0].value;
 
-    if (!prevPageFunc && !props.prevPage.value) {
-      const newDate = firstDate.subtract({ months: props.pagedNavigation.value ? props.numberOfMonths.value : 1 });
+    if (!prevPageFunc && !prevPage.value) {
+      const newDate = firstDate.subtract({ months: pagedNavigation.value ? numberOfMonths.value : 1 });
       const newGrid = createMonths({
         dateObj: newDate,
-        weekStartsOn: props.weekStartsOn.value,
-        locale: props.locale.value,
-        fixedWeeks: props.fixedWeeks.value,
-        numberOfMonths: props.numberOfMonths.value
+        weekStartsOn: weekStartsOn.value,
+        locale: locale.value,
+        fixedWeeks: fixedWeeks.value,
+        numberOfMonths: numberOfMonths.value
       });
 
       grid.value = newGrid;
-      props.placeholder.value = newGrid[0].value.set({ day: 1 });
+      placeholder.value = newGrid[0].value.set({ day: 1 });
       return;
     }
 
-    const newDate = (prevPageFunc || props.prevPage.value!)(firstDate);
+    const newDate = (prevPageFunc || prevPage.value!)(firstDate);
     const newGrid = createMonths({
       dateObj: newDate,
-      weekStartsOn: props.weekStartsOn.value,
-      locale: props.locale.value,
-      fixedWeeks: props.fixedWeeks.value,
-      numberOfMonths: props.numberOfMonths.value
+      weekStartsOn: weekStartsOn.value,
+      locale: locale.value,
+      fixedWeeks: fixedWeeks.value,
+      numberOfMonths: numberOfMonths.value
     });
 
     grid.value = newGrid;
@@ -296,30 +312,30 @@ export function useCalendar(props: UseCalendarProps) {
       }
     }
 
-    props.placeholder.value = newGrid[0].value.set({ ...duration });
+    placeholder.value = newGrid[0].value.set({ ...duration });
   };
 
-  watch(props.placeholder, value => {
+  watch(placeholder, value => {
     if (visibleView.value.some(month => isEqualMonth(month, value))) {
       return;
     }
 
     grid.value = createMonths({
       dateObj: value,
-      weekStartsOn: props.weekStartsOn.value,
-      locale: props.locale.value,
-      fixedWeeks: props.fixedWeeks.value,
-      numberOfMonths: props.numberOfMonths.value
+      weekStartsOn: weekStartsOn.value,
+      locale: locale.value,
+      fixedWeeks: fixedWeeks.value,
+      numberOfMonths: numberOfMonths.value
     });
   });
 
-  watch([props.locale, props.weekStartsOn, props.fixedWeeks, props.numberOfMonths], () => {
+  watch([locale, weekStartsOn, fixedWeeks, numberOfMonths], () => {
     grid.value = createMonths({
-      dateObj: props.placeholder.value,
-      weekStartsOn: props.weekStartsOn.value,
-      locale: props.locale.value,
-      fixedWeeks: props.fixedWeeks.value,
-      numberOfMonths: props.numberOfMonths.value
+      dateObj: placeholder.value,
+      weekStartsOn: weekStartsOn.value,
+      locale: locale.value,
+      fixedWeeks: fixedWeeks.value,
+      numberOfMonths: numberOfMonths.value
     });
   });
 
@@ -328,8 +344,8 @@ export function useCalendar(props: UseCalendarProps) {
       return '';
     }
 
-    if (props.locale.value !== formatter.getLocale()) {
-      formatter.setLocale(props.locale.value);
+    if (locale.value !== formatter.getLocale()) {
+      formatter.setLocale(locale.value);
     }
 
     if (grid.value.length === 1) {
@@ -350,29 +366,28 @@ export function useCalendar(props: UseCalendarProps) {
     return `${startMonthName} ${startMonthYear} - ${endMonthName} ${endMonthYear}`;
   });
 
-  const fullCalendarLabel = computed(() => `${props.calendarLabel.value ?? 'Event Date'}, ${headingValue.value}`);
+  const fullCalendarLabel = computed(() => `${calendarLabel.value ?? 'Event Date'}, ${headingValue.value}`);
 
   const isPlaceholderFocusable = computed(() => {
     return !(
-      isDateDisabled(props.placeholder.value) ||
-      isDateUnavailable(props.placeholder.value) ||
-      isOutsideVisibleView(props.placeholder.value)
+      isDateDisabled(placeholder.value) ||
+      isDateUnavailable?.(placeholder.value) ||
+      isOutsideVisibleView(placeholder.value)
     );
   });
 
   const firstFocusableDate = computed(() => {
     for (const month of grid.value) {
-      if (props.minValue.value && isBefore(month.value, props.minValue.value)) {
+      if (minValue.value && isBefore(month.value, minValue.value)) {
         continue;
       }
 
       const daysInMonth = getDaysInMonth(month.value);
-      const startDay =
-        props.minValue.value && isSameMonth(props.minValue.value, month.value) ? props.minValue.value.day : 1;
+      const startDay = minValue.value && isSameMonth(minValue.value, month.value) ? minValue.value.day : 1;
 
       for (let day = startDay; day <= daysInMonth; day += 1) {
         const date = month.value.set({ day });
-        if (isDateDisabled(date) || isDateUnavailable(date)) {
+        if (isDateDisabled(date) || isDateUnavailable?.(date)) {
           continue;
         }
 
@@ -393,8 +408,8 @@ export function useCalendar(props: UseCalendarProps) {
     visibleView,
     isOutsideVisibleView,
     formatter,
-    nextPage,
-    prevPage,
+    nextPage: handleNextPage,
+    prevPage: handlePrevPage,
     headingValue,
     fullCalendarLabel,
     isPlaceholderFocusable,

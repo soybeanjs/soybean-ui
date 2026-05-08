@@ -75,6 +75,21 @@ export const components = {
     'CalendarCell',
     'CalendarCellTrigger'
   ],
+  calendarRange: [
+    'CalendarRangeCompact',
+    'CalendarRangeRoot',
+    'CalendarRangeHeader',
+    'CalendarRangeHeading',
+    'CalendarRangePrev',
+    'CalendarRangeNext',
+    'CalendarRangeGrid',
+    'CalendarRangeGridHead',
+    'CalendarRangeGridBody',
+    'CalendarRangeGridRow',
+    'CalendarRangeHeadCell',
+    'CalendarRangeCell',
+    'CalendarRangeCellTrigger'
+  ],
   card: [
     'CardRoot',
     'CardHeader',
@@ -166,10 +181,10 @@ export const components = {
     'ContextMenuRadioCompact',
     'ContextMenuWrapperCompact'
   ],
-  dateField: ['DateFieldCompact', 'DateFieldInput', 'DateFieldRoot'],
-  datePicker: ['DatePickerCompact', 'DatePickerContent', 'DatePickerRoot', 'DatePickerTrigger'],
-  dateRangeField: ['DateRangeFieldCompact', 'DateRangeFieldInput', 'DateRangeFieldRoot'],
-  dateRangePicker: ['DateRangePickerCompact', 'DateRangePickerRoot', 'DateRangePickerTrigger', 'DateRangePickerPopup'],
+  dateField: ['DateFieldCompact', 'DateFieldRoot', 'DateFieldInput'],
+  datePicker: ['DatePickerCompact'],
+  dateRangeField: ['DateRangeFieldCompact', 'DateRangeFieldRoot', 'DateRangeFieldInput'],
+  dateRangePicker: ['DateRangePickerCompact'],
   dialog: [
     'DialogCompact',
     'DialogProvider',
@@ -317,8 +332,6 @@ export const components = {
     'MenubarRadioGroup',
     'MenubarCompact'
   ],
-  monthPicker: ['MonthPickerPopup', 'MonthPickerRoot', 'MonthPickerTrigger'],
-  monthRangePicker: ['MonthRangePickerPopup', 'MonthRangePickerRoot', 'MonthRangePickerTrigger'],
   navigationMenu: [
     'NavigationMenuRoot',
     'NavigationMenuList',
@@ -365,21 +378,6 @@ export const components = {
     'RadioGroupControl',
     'RadioGroupIndicator',
     'RadioGroupLabel'
-  ],
-  rangeCalendar: [
-    'RangeCalendarCompact',
-    'RangeCalendarRoot',
-    'RangeCalendarHeader',
-    'RangeCalendarHeading',
-    'RangeCalendarPrev',
-    'RangeCalendarNext',
-    'RangeCalendarGrid',
-    'RangeCalendarGridHead',
-    'RangeCalendarGridBody',
-    'RangeCalendarGridRow',
-    'RangeCalendarHeadCell',
-    'RangeCalendarCell',
-    'RangeCalendarCellTrigger'
   ],
   rovingFocus: ['RovingFocusGroup', 'RovingFocusItem'],
   scrollArea: ['ScrollAreaRoot', 'ScrollAreaViewport', 'ScrollAreaScrollbar', 'ScrollAreaThumb', 'ScrollAreaCorner'],
@@ -442,10 +440,8 @@ export const components = {
     'TagsInputClear'
   ],
   textarea: ['TextareaRoot', 'TextareaControl', 'TextareaCounter'],
-  timeField: ['TimeFieldRoot', 'TimeFieldInput'],
-  timePicker: ['TimePickerPopup', 'TimePickerRoot', 'TimePickerTrigger'],
+  timeField: ['TimeFieldCompact', 'TimeFieldRoot', 'TimeFieldInput'],
   timeRangeField: ['TimeRangeFieldCompact', 'TimeRangeFieldRoot', 'TimeRangeFieldInput'],
-  timeRangePicker: ['TimeRangePickerCompact', 'TimeRangePickerPopup', 'TimeRangePickerRoot', 'TimeRangePickerTrigger'],
   toast: ['Toaster', 'ToastProvider'],
   toggle: ['Toggle'],
   toggleGroup: ['ToggleGroupRoot', 'ToggleGroupItem'],
@@ -470,7 +466,5 @@ export const components = {
     'TreeMenuSub'
   ],
   virtualizer: ['VirtualizerRoot', 'VirtualizerContent', 'VirtualizerItem'],
-  visuallyHidden: ['VisuallyHidden', 'VisuallyHiddenInput'],
-  yearPicker: ['YearPickerPopup', 'YearPickerRoot', 'YearPickerTrigger'],
-  yearRangePicker: ['YearRangePickerPopup', 'YearRangePickerRoot', 'YearRangePickerTrigger']
+  visuallyHidden: ['VisuallyHidden', 'VisuallyHiddenInput']
 };

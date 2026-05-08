@@ -300,7 +300,7 @@ playground:
       color: Color
       size: Size
       variant: Variant
-    range-calendar:
+    calendar-range:
       basic: Basic
       custom-styling: Custom Styling
       disabled: Disabled

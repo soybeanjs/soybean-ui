@@ -1,87 +1,26 @@
+import type { ShallowRef } from 'vue';
 import type { DateValue } from '@internationalized/date';
-import type { ComputedRef, ShallowRef } from 'vue';
+import type { DateRange, SegmentValueObj } from '../../date';
+import type { UiClass } from '../../types';
 import type {
-  DateInputType,
-  DateRange,
-  DateStep,
-  Formatter,
-  Granularity,
-  HourCycle,
-  Matcher,
-  SegmentPart,
-  SegmentValueObj
-} from '../../date';
-import type { Direction, FormFieldCommonProps, PropsToContext, UiClass } from '../../types';
-import type { PrimitiveWithBaseProps } from '../primitive/types';
+  DateFieldRootProps,
+  DateFieldInputProps,
+  DateFieldSegment,
+  DateFieldRootContext
+} from '../date-field/types';
 
 /**
  * Properties for the DateRangeFieldRoot component.
  */
-export interface DateRangeFieldRootProps extends FormFieldCommonProps, Omit<PrimitiveWithBaseProps, 'placeholder'> {
+export interface DateRangeFieldRootProps extends Omit<DateFieldRootProps, 'modelValue' | 'defaultValue'> {
   /**
    * Default value.
    */
   defaultValue?: DateRange;
   /**
-   * Default placeholder.
-   */
-  defaultPlaceholder?: DateValue;
-  /**
-   * Placeholder.
-   */
-  placeholder?: DateValue;
-  /**
    * Current model value.
    */
   modelValue?: DateRange;
-  /**
-   * Hour cycle.
-   */
-  hourCycle?: HourCycle;
-  /**
-   * Step.
-   */
-  step?: DateStep;
-  /**
-   * Granularity.
-   */
-  granularity?: Granularity;
-  /**
-   * Whether hide time zone.
-   */
-  hideTimeZone?: boolean;
-  /**
-   * Max value.
-   */
-  maxValue?: DateValue;
-  /**
-   * Min value.
-   */
-  minValue?: DateValue;
-  /**
-   * Locale.
-   */
-  locale?: string;
-  /**
-   * Whether the component is disabled.
-   */
-  disabled?: boolean;
-  /**
-   * Whether the component is readonly.
-   */
-  readonly?: boolean;
-  /**
-   * Whether the date is unavailable.
-   */
-  isDateUnavailable?: Matcher;
-  /**
-   * Id.
-   */
-  id?: string;
-  /**
-   * Reading direction of the component.
-   */
-  dir?: Direction;
   /**
    * Start name.
    */
@@ -115,73 +54,60 @@ export type DateRangeFieldRootEmits = {
 };
 
 /**
- * Properties for the DateRangeFieldInput component.
+ * Slot properties for the DateRangeField component.
  */
-export interface DateRangeFieldInputProps extends PrimitiveWithBaseProps {
+export interface DateRangeFieldSlotProps {
   /**
-   * Part.
+   * Start segments used by the component context.
    */
-  part: SegmentPart;
+  startSegments: DateFieldSegment[];
   /**
-   * Type.
+   * End segments used by the component context.
    */
-  type?: 'start' | 'end';
+  endSegments: DateFieldSegment[];
+  /**
+   * Current model value.
+   */
+  modelValue: DateRange;
+  /**
+   * Whether the date is invalid.
+   */
+  isInvalid: boolean;
 }
 
 /**
- * Type information for DateRangeFieldSegment.
+ * Slots for the DateRangeFieldRoot component.
  */
-export interface DateRangeFieldSegment {
+export type DateRangeFieldRootSlots = {
   /**
-   * Part.
+   * Custom content for the default slot.
    */
-  part: SegmentPart;
+  default?: (props: DateRangeFieldSlotProps) => any;
+};
+
+export type DateRangeType = 'start' | 'end';
+
+/**
+ * Properties for the DateRangeFieldInput component.
+ */
+export interface DateRangeFieldInputProps extends DateFieldInputProps {
   /**
-   * Value associated with the current item.
+   * Type.
    */
-  value: string;
+  type?: DateRangeType;
 }
 
 /**
  * Context for the DateRangeFieldRoot component.
  */
-export interface DateRangeFieldRootContext extends PropsToContext<DateRangeFieldRootProps, 'disabled' | 'readonly'> {
-  /**
-   * Locale used by the component context.
-   */
-  locale: ComputedRef<string>;
-  /**
-   * Reading direction of the component.
-   */
-  dir: ComputedRef<Direction>;
+export interface DateRangeFieldRootContext extends Pick<
+  DateFieldRootContext,
+  'disabled' | 'readonly' | 'placeholder' | 'isInvalid' | 'formatter' | 'hourCycle' | 'step'
+> {
   /**
    * Current model value.
    */
   modelValue: ShallowRef<DateRange>;
-  /**
-   * Placeholder used by the component context.
-   */
-  placeholder: ShallowRef<DateValue>;
-  /**
-   * Whether the date is unavailable.
-   */
-  isDateUnavailable?: Matcher;
-  /**
-   * Whether the current value is invalid.
-   */
-  isInvalid: ComputedRef<boolean>;
-  /**
-   * Formatter used by the component context.
-   */
-  formatter: Formatter;
-  /**
-   * Hour cycle used by the component context.
-   */
-  hourCycle: HourCycle;
-  /**
-   * Step used by the component context.
-   */
-  step: ComputedRef<DateStep>;
   /**
    * Start segment values used by the component context.
    */
@@ -191,63 +117,19 @@ export interface DateRangeFieldRootContext extends PropsToContext<DateRangeField
    */
   endSegmentValues: ShallowRef<SegmentValueObj>;
   /**
-   * Start segment contents used by the component context.
-   */
-  startSegmentContents: ComputedRef<DateRangeFieldSegment[]>;
-  /**
-   * End segment contents used by the component context.
-   */
-  endSegmentContents: ComputedRef<DateRangeFieldSegment[]>;
-  /**
-   * Start input type used by the component context.
-   */
-  startInputType: ComputedRef<DateInputType>;
-  /**
-   * End input type used by the component context.
-   */
-  endInputType: ComputedRef<DateInputType>;
-  /**
-   * Start input value used by the component context.
-   */
-  startInputValue: ComputedRef<string>;
-  /**
-   * End input value used by the component context.
-   */
-  endInputValue: ComputedRef<string>;
-  /**
-   * Input max value used by the component context.
-   */
-  inputMaxValue: ComputedRef<string | undefined>;
-  /**
-   * Input min value used by the component context.
-   */
-  inputMinValue: ComputedRef<string | undefined>;
-  /**
-   * Start elements used by the component context.
-   */
-  startElements: ShallowRef<HTMLElement[]>;
-  /**
-   * End elements used by the component context.
-   */
-  endElements: ShallowRef<HTMLElement[]>;
-  /**
-   * Focused type used by the component context.
-   */
-  focusedType: ShallowRef<'start' | 'end'>;
-  /**
    * Focus next used by the component context.
    */
-  focusNext: (type: 'start' | 'end') => void;
+  focusNext: (type: DateRangeType) => void;
   /**
    * Set focused element used by the component context.
    */
-  setFocusedElement: (el: HTMLElement, type: 'start' | 'end') => void;
+  setFocusedElement: (el: HTMLElement, type: DateRangeType) => void;
 }
 
 /**
  * Available UI slots for the DateRangeField component.
  */
-export type DateRangeFieldUiSlot = 'root' | 'input' | 'separator';
+export type DateRangeFieldUiSlot = 'root' | 'input' | 'startRoot' | 'endRoot' | 'separator';
 /**
  * UI class overrides for the DateRangeField component.
  */
@@ -260,7 +142,7 @@ export interface DateRangeFieldCompactProps extends DateRangeFieldRootProps {
   /**
    * Properties forwarded to the input element.
    */
-  inputProps?: Omit<DateRangeFieldInputProps, 'part' | 'type'>;
+  inputProps?: DateRangeFieldInputProps;
   /**
    * Separator.
    */
@@ -277,14 +159,13 @@ export type DateRangeFieldCompactEmits = DateRangeFieldRootEmits;
  */
 export type DateRangeFieldCompactSlots = {
   /**
-   * Custom content for the default slot.
+   * Custom content for the leading slot.
    */
-  default?: (props: {
-    startSegments: DateRangeFieldSegment[];
-    endSegments: DateRangeFieldSegment[];
-    modelValue: DateRange;
-    isInvalid: boolean;
-  }) => any;
+  leading?: () => any;
+  /**
+   * Custom content for the trailing slot.
+   */
+  trailing?: () => any;
   /**
    * Custom content for the separator slot.
    */

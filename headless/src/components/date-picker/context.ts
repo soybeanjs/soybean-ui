@@ -1,12 +1,11 @@
-import { useContext, useUiContext } from '../../composables';
+import { useUiContext } from '../../composables';
 import { providePopoverUi } from '../popover/context';
-import type { DatePickerRootContext, DatePickerUiSlot } from './types';
-
-export const [provideDatePickerRootContext, useDatePickerRootContext] =
-  useContext<DatePickerRootContext>('DatePickerRoot');
+import { provideDateFieldUi } from '../date-field/context';
+import type { DatePickerUiSlot } from './types';
 
 export const [provideDatePickerUi, useDatePickerUi] = useUiContext<DatePickerUiSlot>('DatePickerUi', ui => {
   providePopoverUi(ui);
+  provideDateFieldUi(ui);
 
   return ui;
 });

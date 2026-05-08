@@ -1,9 +1,11 @@
 <script setup lang="ts">
-import { useForwardListeners, useOmitProps } from '../../composables';
-import DateRangePickerRoot from './date-range-picker-root.vue';
-import DateRangePickerTrigger from './date-range-picker-trigger.vue';
-import DateRangePickerPopup from './date-range-picker-popup.vue';
-import type { DateRangePickerCompactEmits, DateRangePickerCompactProps, DateRangePickerCompactSlots } from './types';
+import { computed } from 'vue';
+import { useForwardListeners, usePickProps, useOmitProps } from '../../composables';
+import type { DateRange, DateValue } from '../../date';
+import Icon from '../_icon/icon.vue';
+import PopoverCompact from '../popover/popover-compact.vue';
+import DateRangeFieldCompact from '../date-range-field/date-range-field-compact.vue';
+import type { DateRangePickerCompactEmits, DateRangePickerCompactProps } from './types';
 
 defineOptions({
   name: 'DateRangePickerCompact'
@@ -15,27 +17,89 @@ const props = withDefaults(defineProps<DateRangePickerCompactProps>(), {
 
 const emit = defineEmits<DateRangePickerCompactEmits>();
 
-defineSlots<DateRangePickerCompactSlots>();
-
-const forwardedProps = useOmitProps(props, ['triggerProps', 'popupProps']);
-
 const listeners = useForwardListeners(emit);
+
+const popoverProps = usePickProps(props, [
+  'open',
+  'defaultOpen',
+  'modal',
+  'disabled',
+  'placement',
+  'showArrow',
+  'portalProps',
+  'positionerProps',
+  'popupProps',
+  'arrowProps',
+  'closeProps'
+]);
+
+const dateFieldProps = usePickProps(
+  props,
+  [
+    'dir',
+    'locale',
+    'modelValue',
+    'defaultValue',
+    'placeholder',
+    'defaultPlaceholder',
+    'disabled',
+    'readonly',
+    'maxValue',
+    'minValue',
+    'isDateUnavailable'
+  ],
+  computed(() => ({ ...props.dateFieldProps }))
+);
+
+const triggerProps = computed(() => ({
+  ...props.triggerProps,
+  asChild: props.triggerProps?.asChild ?? false
+}));
+
+const calendarProps = useOmitProps(props, [
+  'open',
+  'defaultOpen',
+  'modal',
+  'placement',
+  'showArrow',
+  'triggerProps',
+  'portalProps',
+  'positionerProps',
+  'popupProps',
+  'arrowProps',
+  'closeProps'
+]);
+
+const onUpdateModelValue = (value: DateRange) => {
+  emit('update:modelValue', value);
+};
+
+const onUpdatePlaceholder = (placeholder: DateValue) => {
+  emit('update:placeholder', placeholder);
+};
 </script>
 
 <template>
-  <DateRangePickerRoot v-slot="slotProps" v-bind="forwardedProps" v-on="listeners">
-    <DateRangePickerTrigger v-bind="triggerProps">
-      <slot name="trigger" :open="slotProps.open" :model-value="slotProps.modelValue" />
-    </DateRangePickerTrigger>
-    <DateRangePickerPopup v-bind="popupProps">
-      <slot
-        name="calendar"
-        :model-value="slotProps.modelValue"
-        :placeholder="slotProps.placeholder"
-        :set-range="slotProps.setRange"
-        :set-placeholder="slotProps.setPlaceholder"
-      />
-    </DateRangePickerPopup>
-    <slot v-bind="slotProps" />
-  </DateRangePickerRoot>
+  <DateRangeFieldCompact
+    v-bind="dateFieldProps"
+    @update:model-value="emit('update:modelValue', $event)"
+    @update:placeholder="emit('update:placeholder', $event)"
+  >
+    <template #trailing>
+      <PopoverCompact v-bind="popoverProps" :trigger-props="triggerProps" v-on="listeners">
+        <template #trigger>
+          <Icon icon="lucide:calendar" />
+        </template>
+        <template #default="{ open, close }">
+          <slot
+            :open="open"
+            :close="close"
+            :calendar-range-props="calendarProps"
+            :on-update-model-value="onUpdateModelValue"
+            :on-update-placeholder="onUpdatePlaceholder"
+          />
+        </template>
+      </PopoverCompact>
+    </template>
+  </DateRangeFieldCompact>
 </template>

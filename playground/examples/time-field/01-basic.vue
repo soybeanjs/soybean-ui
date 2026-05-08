@@ -7,5 +7,5 @@ const value = shallowRef(new Time(9, 30, 0));
 </script>
 
 <template>
-  <STimeField v-model="value" class="w-60 lt-md:w-auto" aria-label="Meeting time" />
+  <STimeField v-model="value" aria-label="Meeting time" />
 </template>

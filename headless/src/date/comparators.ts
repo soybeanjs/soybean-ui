@@ -1,8 +1,3 @@
-import type { DateValue } from '@internationalized/date';
-import type { CalendarIdentifier } from '@internationalized/date';
-
-import type { Granularity, Matcher } from './types';
-
 import {
   CalendarDate,
   CalendarDateTime,
@@ -17,8 +12,7 @@ import {
   toCalendar,
   ZonedDateTime
 } from '@internationalized/date';
-
-export type TimeValue = Time | CalendarDateTime | ZonedDateTime;
+import type { DateValue, CalendarIdentifier, Granularity, DateMatcher, TimeValue } from './types';
 
 export function parseStringToDateValue(dateStr: string, referenceValue: DateValue): DateValue {
   let dateValue: DateValue;
@@ -222,9 +216,9 @@ export function isSameYear(a: DateValue, b: DateValue): boolean {
 export function areAllDaysBetweenValid(
   start: DateValue,
   end: DateValue,
-  isUnavailable: Matcher | undefined,
-  isDisabled: Matcher | undefined,
-  isHighlightable?: Matcher | undefined
+  isUnavailable: DateMatcher | undefined,
+  isDisabled: DateMatcher | undefined,
+  isHighlightable?: DateMatcher | undefined
 ) {
   if (isUnavailable === undefined && isDisabled === undefined && isHighlightable === undefined) {
     return true;

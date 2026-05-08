@@ -1,0 +1,86 @@
+<script setup lang="ts">
+import { computed } from 'vue';
+import { CalendarRangeCompact, provideCalendarRangeUi } from '@soybeanjs/headless/calendar-range';
+import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
+import { keysOf } from '@soybeanjs/utils';
+import { mergeBaseVariants, mergeSlotVariants, miniSizeMap } from '@/theme';
+import { buttonVariants } from '../button/variants';
+import { calendarRangeVariants } from './variants';
+import SSelect from '../select/select.vue';
+import type { CalendarRangeProps, CalendarRangeEmits, CalendarRangeSlots } from './types';
+
+defineOptions({
+  name: 'SCalendarRange'
+});
+
+const props = defineProps<CalendarRangeProps>();
+
+const emit = defineEmits<CalendarRangeEmits>();
+
+const slots = defineSlots<CalendarRangeSlots>();
+
+const forwardedProps = useOmitProps(props, ['class', 'ui', 'size']);
+
+const listeners = useForwardListeners(emit);
+
+const slotNames = computed(() => keysOf(slots).filter(name => name !== 'heading'));
+
+const ui = computed(() => {
+  const baseVariants = calendarRangeVariants({
+    size: props.size
+  });
+
+  const variants = mergeBaseVariants(baseVariants, {
+    prev: buttonVariants({
+      size: props.size,
+      variant: 'pure',
+      fitContent: true
+    }),
+    next: buttonVariants({
+      size: props.size,
+      variant: 'pure',
+      fitContent: true
+    })
+  });
+
+  return mergeSlotVariants(variants, props.ui, { root: props.class });
+});
+
+const miniSize = computed(() => miniSizeMap[props.size || 'md']);
+
+provideCalendarRangeUi(ui);
+</script>
+
+<template>
+  <CalendarRangeCompact v-bind="forwardedProps" v-on="listeners">
+    <template v-for="slotName in slotNames" :key="slotName" #[slotName]="slotProps">
+      <!-- @vue-expect-error ignore slot props type -->
+      <slot :name="slotName" v-bind="slotProps" />
+    </template>
+    <template v-if="$slots.heading" #heading="slotProps">
+      <slot name="heading" v-bind="slotProps" />
+    </template>
+    <template v-else #heading="{ monthOptions, yearOptions, selectedMonth, selectedYear, onMonthChange, onYearChange }">
+      <SSelect
+        :size="miniSize"
+        :disabled="disabled"
+        :clearable="false"
+        :items="monthOptions"
+        :model-value="selectedMonth"
+        :trigger-props="{ 'aria-label': 'Select month' }"
+        :ui="{ trigger: 'w-fit' }"
+        @update:model-value="onMonthChange"
+      />
+      <SSelect
+        :size="miniSize"
+        :disabled="disabled"
+        :clearable="false"
+        :items="yearOptions"
+        :model-value="selectedYear"
+        :trigger-props="{ 'aria-label': 'Select year' }"
+        :ui="{ popup: 'max-h-72', trigger: 'w-fit' }"
+        @update:model-value="onYearChange"
+      />
+    </template>
+  </CalendarRangeCompact>
+</template>

@@ -761,25 +761,25 @@
         "RadioGroupRoot"
       ]
     },
-    "range-calendar": {
-      "component": "range-calendar",
-      "file": "range-calendar.json",
+    "calendar-range": {
+      "component": "calendar-range",
+      "file": "calendar-range.json",
       "symbols": [
-        "RangeCalendar",
-        "RangeCalendarCell",
-        "RangeCalendarCellTrigger",
-        "RangeCalendarCompact",
-        "RangeCalendarDay",
-        "RangeCalendarGrid",
-        "RangeCalendarGridBody",
-        "RangeCalendarGridHead",
-        "RangeCalendarGridRow",
-        "RangeCalendarHeadCell",
-        "RangeCalendarHeader",
-        "RangeCalendarHeading",
-        "RangeCalendarNext",
-        "RangeCalendarPrev",
-        "RangeCalendarRoot"
+        "CalendarRange",
+        "CalendarRangeCell",
+        "CalendarRangeCellTrigger",
+        "CalendarRangeCompact",
+        "CalendarRangeDay",
+        "CalendarRangeGrid",
+        "CalendarRangeGridBody",
+        "CalendarRangeGridHead",
+        "CalendarRangeGridRow",
+        "CalendarRangeHeadCell",
+        "CalendarRangeHeader",
+        "CalendarRangeHeading",
+        "CalendarRangeNext",
+        "CalendarRangePrev",
+        "CalendarRangeRoot"
       ]
     },
     "scroll-area": {

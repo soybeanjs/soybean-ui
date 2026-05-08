@@ -54,14 +54,14 @@ const positionerProps = computed(() => {
 </script>
 
 <template>
-  <PopoverRoot v-bind="forwardedRootProps" @update:open="emit('update:open', $event)">
+  <PopoverRoot v-slot="slotProps" v-bind="forwardedRootProps" @update:open="emit('update:open', $event)">
     <PopoverTrigger v-bind="triggerProps">
       <slot name="trigger" />
     </PopoverTrigger>
     <PopoverPortal v-bind="portalProps">
       <PopoverPositioner v-bind="positionerProps" v-on="listeners">
         <PopoverPopup v-bind="popupProps">
-          <slot />
+          <slot v-bind="slotProps" />
           <PopoverArrow v-if="showArrow" v-bind="arrowProps" />
         </PopoverPopup>
         <PopoverClose v-if="slots.close" v-bind="closeProps">

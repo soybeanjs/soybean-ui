@@ -15,11 +15,14 @@ export { default as CalendarCellTrigger } from './calendar-cell-trigger.vue';
 export { provideCalendarUi } from './context';
 
 export type {
+  CalendarCompactProps,
+  CalendarCompactEmits,
+  CalendarCompactSlots,
+  CalendarRootProps,
+  CalendarRootEmits,
+  CalendarRootSlotProps,
   CalendarCellProps,
   CalendarCellTriggerProps,
-  CalendarCompactEmits,
-  CalendarCompactProps,
-  CalendarCompactSlots,
   CalendarGridBodyProps,
   CalendarGridHeadProps,
   CalendarGridProps,
@@ -31,10 +34,6 @@ export type {
   CalendarModelValue,
   CalendarNextProps,
   CalendarPrevProps,
-  CalendarRootContext,
-  CalendarRootEmits,
-  CalendarRootProps,
-  CalendarRootSlotProps,
   CalendarUi,
   CalendarUiSlot
 } from './types';

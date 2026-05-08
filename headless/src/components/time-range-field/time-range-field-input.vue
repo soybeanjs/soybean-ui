@@ -17,24 +17,22 @@ const props = withDefaults(defineProps<TimeRangeFieldInputProps>(), {
 
 const cls = useTimeRangeFieldUi('input');
 const {
-  disabled: rootDisabled,
-  readonly: rootReadonly,
+  modelValue,
+  disabled,
+  readonly,
   placeholder,
   hourCycle,
   step,
   startSegmentValues,
   endSegmentValues,
   formatter,
-  focusNext,
-  modelValue,
   isInvalid,
+  focusNext,
   setFocusedElement
 } = useTimeRangeFieldRootContext('TimeRangeFieldInput');
 
 const hasLeftFocus = ref(true);
 const lastKeyZero = ref(false);
-const disabled = computed(() => Boolean(rootDisabled.value));
-const readonly = computed(() => Boolean(rootReadonly.value));
 
 const segmentValues = computed(() => {
   return props.type === 'start' ? startSegmentValues.value : endSegmentValues.value;

@@ -5,6 +5,7 @@ const placeholders = {
 } as const;
 
 type PlaceholderField = 'year' | 'month' | 'day';
+
 export type SupportedLocale = keyof typeof placeholders;
 
 function resolvePlaceholderLocale(locale: string): SupportedLocale {

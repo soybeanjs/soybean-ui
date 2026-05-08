@@ -1,26 +1,35 @@
 import type { ComputedRef, ShallowRef } from 'vue';
+import type { TimeGranularity, TimeInputType, TimeMatcher, TimeValue } from '../../date';
+import type { UiClass } from '../../types';
 import type {
-  DateStep,
-  Formatter,
-  HourCycle,
-  SegmentPart,
-  SegmentValueObj,
-  TimeGranularity,
-  TimeInputType,
-  TimeMatcher,
-  TimeValue
-} from '../../date';
-import type { Direction, FormFieldCommonProps, PropsToContext, UiClass } from '../../types';
-import type { PrimitiveWithBaseProps } from '../primitive/types';
+  DateFieldRootProps,
+  DateFieldInputProps as TimeFieldInputProps,
+  DateFieldSegment,
+  DateFieldRootContext
+} from '../date-field/types';
 
 /**
  * Properties for the TimeFieldRoot component.
  */
-export interface TimeFieldRootProps extends FormFieldCommonProps, Omit<PrimitiveWithBaseProps, 'placeholder'> {
+export interface TimeFieldRootProps extends Omit<
+  DateFieldRootProps,
+  | 'modelValue'
+  | 'defaultValue'
+  | 'placeholder'
+  | 'defaultPlaceholder'
+  | 'granularity'
+  | 'maxValue'
+  | 'minValue'
+  | 'isDateUnavailable'
+> {
   /**
-   * Default value.
+   * Default value for the time field.
    */
   defaultValue?: TimeValue;
+  /**
+   * Current model value.
+   */
+  modelValue?: TimeValue;
   /**
    * Default placeholder.
    */
@@ -30,25 +39,9 @@ export interface TimeFieldRootProps extends FormFieldCommonProps, Omit<Primitive
    */
   placeholder?: TimeValue;
   /**
-   * Current model value.
-   */
-  modelValue?: TimeValue;
-  /**
-   * Hour cycle.
-   */
-  hourCycle?: HourCycle;
-  /**
-   * Step.
-   */
-  step?: DateStep;
-  /**
    * Granularity.
    */
   granularity?: TimeGranularity;
-  /**
-   * Whether hide time zone.
-   */
-  hideTimeZone?: boolean;
   /**
    * Max value.
    */
@@ -58,29 +51,9 @@ export interface TimeFieldRootProps extends FormFieldCommonProps, Omit<Primitive
    */
   minValue?: TimeValue;
   /**
-   * Locale.
-   */
-  locale?: string;
-  /**
-   * Whether the component is disabled.
-   */
-  disabled?: boolean;
-  /**
-   * Whether the component is readonly.
-   */
-  readonly?: boolean;
-  /**
    * Whether the time is unavailable.
    */
   isTimeUnavailable?: TimeMatcher;
-  /**
-   * Id.
-   */
-  id?: string;
-  /**
-   * Reading direction of the component.
-   */
-  dir?: Direction;
 }
 
 /**
@@ -98,41 +71,45 @@ export type TimeFieldRootEmits = {
 };
 
 /**
- * Properties for the TimeFieldInput component.
+ * Slot properties for the TimeFieldRoot component.
  */
-export interface TimeFieldInputProps extends PrimitiveWithBaseProps {
+export interface TimeFieldRootSlotProps {
   /**
-   * Part.
+   * Current model value.
    */
-  part: SegmentPart;
+  modelValue: TimeValue | undefined;
+  /**
+   * Segments used by the default slot.
+   */
+  segments: DateFieldSegment[];
+  /**
+   * Whether the current value is invalid.
+   */
+  isInvalid: boolean;
 }
 
 /**
- * Type information for TimeFieldSegment.
+ * Slots for the TimeFieldRoot component.
  */
-export interface TimeFieldSegment {
-  /**
-   * Part.
-   */
-  part: SegmentPart;
-  /**
-   * Value associated with the current item.
-   */
-  value: string;
-}
+export type TimeFieldRootSlots = {
+  default?: (props: TimeFieldRootSlotProps) => any;
+};
 
 /**
  * Context for the TimeFieldRoot component.
  */
-export interface TimeFieldRootContext extends PropsToContext<TimeFieldRootProps, 'disabled' | 'readonly'> {
-  /**
-   * Locale used by the component context.
-   */
-  locale: ComputedRef<string>;
-  /**
-   * Reading direction of the component.
-   */
-  dir: ComputedRef<Direction>;
+export interface TimeFieldRootContext extends Pick<
+  DateFieldRootContext,
+  | 'disabled'
+  | 'readonly'
+  | 'isInvalid'
+  | 'formatter'
+  | 'hourCycle'
+  | 'step'
+  | 'segmentValues'
+  | 'focusNext'
+  | 'setFocusedElement'
+> {
   /**
    * Current model value.
    */
@@ -146,58 +123,25 @@ export interface TimeFieldRootContext extends PropsToContext<TimeFieldRootProps,
    */
   isTimeUnavailable?: TimeMatcher;
   /**
-   * Whether the current value is invalid.
-   */
-  isInvalid: ComputedRef<boolean>;
-  /**
-   * Formatter used by the component context.
-   */
-  formatter: Formatter;
-  /**
-   * Hour cycle used by the component context.
-   */
-  hourCycle: HourCycle;
-  /**
-   * Step used by the component context.
-   */
-  step: ComputedRef<DateStep>;
-  /**
-   * Segment values used by the component context.
-   */
-  segmentValues: ShallowRef<SegmentValueObj>;
-  /**
-   * Segment contents used by the component context.
-   */
-  segmentContents: ComputedRef<TimeFieldSegment[]>;
-  /**
    * Input type used by the component context.
    */
   inputType: ComputedRef<TimeInputType>;
-  /**
-   * Input value used by the component context.
-   */
-  inputValue: ComputedRef<string>;
-  /**
-   * Input max value used by the component context.
-   */
-  inputMaxValue: ComputedRef<string | undefined>;
-  /**
-   * Input min value used by the component context.
-   */
-  inputMinValue: ComputedRef<string | undefined>;
-  /**
-   * Elements used by the component context.
-   */
-  elements: ShallowRef<HTMLElement[]>;
-  /**
-   * Focus next used by the component context.
-   */
-  focusNext: () => void;
-  /**
-   * Set focused element used by the component context.
-   */
-  setFocusedElement: (el: HTMLElement) => void;
 }
+
+/**
+ * Properties for the time field compact component.
+ */
+export interface TimeFieldCompactProps extends TimeFieldRootProps {
+  /**
+   * Properties forwarded to the input element.
+   */
+  inputProps?: TimeFieldInputProps;
+}
+
+/**
+ * Events for the time field compact component.
+ */
+export type TimeFieldCompactEmits = TimeFieldRootEmits;
 
 /**
  * Available UI slots for the TimeField component.
@@ -207,3 +151,5 @@ export type TimeFieldUiSlot = 'root' | 'input';
  * UI class overrides for the TimeField component.
  */
 export type TimeFieldUi = UiClass<TimeFieldUiSlot>;
+
+export type { TimeFieldInputProps };

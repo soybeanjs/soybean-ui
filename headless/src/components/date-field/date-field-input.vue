@@ -15,23 +15,21 @@ const props = withDefaults(defineProps<DateFieldInputProps>(), {
 
 const cls = useDateFieldUi('input');
 const {
-  disabled: rootDisabled,
-  readonly: rootReadonly,
+  modelValue,
+  disabled,
+  readonly,
   placeholder,
   hourCycle,
   step,
   segmentValues,
   formatter,
-  focusNext,
-  modelValue,
   isInvalid,
+  focusNext,
   setFocusedElement
 } = useDateFieldRootContext('DateFieldInput');
 
 const hasLeftFocus = ref(true);
 const lastKeyZero = ref(false);
-const disabled = computed(() => Boolean(rootDisabled.value));
-const readonly = computed(() => Boolean(rootReadonly.value));
 
 const { attributes, handleSegmentClick, handleSegmentFocusOut, handleSegmentKeydown } = useDateField({
   hasLeftFocus,

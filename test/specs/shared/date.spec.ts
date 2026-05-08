@@ -1,7 +1,7 @@
 import { CalendarDate, CalendarDateTime, parseDate } from '@internationalized/date';
+import { chunk } from '@soybeanjs/headless/shared';
 import {
   areAllDaysBetweenValid,
-  chunk,
   compareYearMonth,
   createDecade,
   createDateRange,

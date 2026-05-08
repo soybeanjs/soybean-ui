@@ -10,7 +10,7 @@ const value = shallowRef({
 </script>
 
 <template>
-  <SDateRangeField v-model="value" class="w-100 lt-md:w-auto" granularity="minute" aria-label="Date range with time" />
+  <SDateRangeField v-model="value" granularity="minute" aria-label="Date range with time" />
   <div class="text-xs text-muted-foreground">
     Selected: {{ value.start?.toString() }} to {{ value.end?.toString() }}
   </div>

@@ -1,7 +1,5 @@
 <script setup lang="ts" generic="M extends boolean = false">
-import type { DateValue } from '@internationalized/date';
 import { useForwardListeners, useOmitProps } from '../../composables';
-import { compareYearMonth, toDate } from '../../date';
 import Icon from '../_icon/icon.vue';
 import CalendarRoot from './calendar-root.vue';
 import CalendarCell from './calendar-cell.vue';
@@ -15,7 +13,6 @@ import CalendarHeader from './calendar-header.vue';
 import CalendarHeading from './calendar-heading.vue';
 import CalendarNext from './calendar-next.vue';
 import CalendarPrev from './calendar-prev.vue';
-import type { Formatter } from '../../date';
 import type { CalendarCompactEmits, CalendarCompactProps, CalendarCompactSlots } from './types';
 
 defineOptions({
@@ -43,129 +40,6 @@ const forwardedProps = useOmitProps(props, [
 ]);
 
 const listeners = useForwardListeners(emit);
-
-function normalizeMonthBoundary(date?: DateValue) {
-  return date?.set({ day: 1 });
-}
-
-function clampPlaceholder(date: DateValue, minValue?: DateValue, maxValue?: DateValue) {
-  const nextDate = date.set({ day: 1 });
-  const normalizedMinValue = normalizeMonthBoundary(minValue);
-  const normalizedMaxValue = normalizeMonthBoundary(maxValue);
-
-  if (normalizedMinValue && compareYearMonth(nextDate, normalizedMinValue) < 0) {
-    return normalizedMinValue.copy();
-  }
-
-  if (normalizedMaxValue && compareYearMonth(nextDate, normalizedMaxValue) > 0) {
-    return normalizedMaxValue.copy();
-  }
-
-  return nextDate.copy();
-}
-
-function updatePlaceholder(
-  date: DateValue,
-  onPlaceholderChange: (date: DateValue) => void,
-  minValue?: DateValue,
-  maxValue?: DateValue
-) {
-  onPlaceholderChange(clampPlaceholder(date, minValue, maxValue));
-}
-
-function isMonthDisabled(date: DateValue, disabled: boolean, minValue?: DateValue, maxValue?: DateValue) {
-  if (disabled) {
-    return true;
-  }
-
-  const normalizedMinValue = normalizeMonthBoundary(minValue);
-  const normalizedMaxValue = normalizeMonthBoundary(maxValue);
-
-  if (normalizedMinValue && compareYearMonth(date, normalizedMinValue) < 0) {
-    return true;
-  }
-
-  if (normalizedMaxValue && compareYearMonth(date, normalizedMaxValue) > 0) {
-    return true;
-  }
-
-  return false;
-}
-
-function getHeadingValue(formatter: Formatter, placeholder: DateValue) {
-  return formatter.fullMonthAndYear(toDate(placeholder));
-}
-
-function getMonthValue(formatter: Formatter, placeholder: DateValue) {
-  return formatter.fullMonth(toDate(placeholder));
-}
-
-function getYearValue(formatter: Formatter, placeholder: DateValue) {
-  return formatter.fullYear(toDate(placeholder));
-}
-
-function getMonthOptions(
-  formatter: Formatter,
-  placeholder: DateValue,
-  disabled: boolean,
-  minValue?: DateValue,
-  maxValue?: DateValue
-) {
-  return formatter.getMonths().map(item => ({
-    disabled: isMonthDisabled(placeholder.set({ day: 1, month: item.value }), disabled, minValue, maxValue),
-    label: item.label,
-    value: item.value
-  }));
-}
-
-function getYearOptions(placeholder: DateValue, minValue?: DateValue, maxValue?: DateValue) {
-  const startYear = normalizeMonthBoundary(minValue)?.year ?? placeholder.year - 100;
-  const endYear = normalizeMonthBoundary(maxValue)?.year ?? placeholder.year + 100;
-
-  return Array.from({ length: endYear - startYear + 1 }, (_, index) => {
-    const year = startYear + index;
-
-    return {
-      label: String(year),
-      value: year
-    };
-  });
-}
-
-function onMonthChange(
-  value: number | undefined,
-  placeholder: DateValue,
-  disabled: boolean,
-  onPlaceholderChange: (date: DateValue) => void,
-  minValue?: DateValue,
-  maxValue?: DateValue
-) {
-  if (value === undefined) {
-    return;
-  }
-
-  const nextDate = placeholder.set({ day: 1, month: value });
-
-  if (isMonthDisabled(nextDate, disabled, minValue, maxValue)) {
-    return;
-  }
-
-  updatePlaceholder(nextDate, onPlaceholderChange, minValue, maxValue);
-}
-
-function onYearChange(
-  value: number | undefined,
-  placeholder: DateValue,
-  onPlaceholderChange: (date: DateValue) => void,
-  minValue?: DateValue,
-  maxValue?: DateValue
-) {
-  if (value === undefined) {
-    return;
-  }
-
-  updatePlaceholder(placeholder.set({ day: 1, year: value }), onPlaceholderChange, minValue, maxValue);
-}
 </script>
 
 <template>
@@ -183,44 +57,15 @@ function onYearChange(
           <template #default>
             <slot
               name="heading"
-              :heading-value="getHeadingValue(slotProps.formatter, slotProps.placeholder)"
-              :month-options="
-                getMonthOptions(
-                  slotProps.formatter,
-                  slotProps.placeholder,
-                  slotProps.disabled,
-                  slotProps.minValue,
-                  slotProps.maxValue
-                )
-              "
-              :month-value="getMonthValue(slotProps.formatter, slotProps.placeholder)"
-              :on-month-change="
-                (value: number | undefined) =>
-                  onMonthChange(
-                    value,
-                    slotProps.placeholder,
-                    slotProps.disabled,
-                    slotProps.onPlaceholderChange,
-                    slotProps.minValue,
-                    slotProps.maxValue
-                  )
-              "
-              :on-year-change="
-                (value: number | undefined) =>
-                  onYearChange(
-                    value,
-                    slotProps.placeholder,
-                    slotProps.onPlaceholderChange,
-                    slotProps.minValue,
-                    slotProps.maxValue
-                  )
-              "
+              :heading-value="slotProps.headingValue"
               :selected-month="slotProps.placeholder.month"
               :selected-year="slotProps.placeholder.year"
-              :year-options="getYearOptions(slotProps.placeholder, slotProps.minValue, slotProps.maxValue)"
-              :year-value="getYearValue(slotProps.formatter, slotProps.placeholder)"
+              :year-options="slotProps.yearOptions"
+              :on-year-change="slotProps.onYearChange"
+              :month-options="slotProps.monthOptions"
+              :on-month-change="slotProps.onMonthChange"
             >
-              {{ getHeadingValue(slotProps.formatter, slotProps.placeholder) }}
+              {{ slotProps.headingValue }}
             </slot>
           </template>
         </CalendarHeading>
@@ -255,20 +100,9 @@ function onYearChange(
           >
             <CalendarCell v-for="dateValue in week" :key="dateValue.toString()" :date="dateValue" v-bind="cellProps">
               <CalendarCellTrigger :day="dateValue" :month="month.value" v-bind="cellTriggerProps">
-                <template #default="compactSlotProps">
-                  <slot
-                    name="day"
-                    :day="dateValue"
-                    :day-value="compactSlotProps.dayValue"
-                    :disabled="compactSlotProps.disabled"
-                    :month="month.value"
-                    :outside-view="compactSlotProps.outsideView"
-                    :outside-visible-view="compactSlotProps.outsideVisibleView"
-                    :selected="compactSlotProps.selected"
-                    :today="compactSlotProps.today"
-                    :unavailable="compactSlotProps.unavailable"
-                  >
-                    {{ compactSlotProps.dayValue }}
+                <template #default="triggerSlotProps">
+                  <slot name="day" v-bind="triggerSlotProps" :day="dateValue" :month="month.value">
+                    {{ triggerSlotProps.dayValue }}
                   </slot>
                 </template>
               </CalendarCellTrigger>

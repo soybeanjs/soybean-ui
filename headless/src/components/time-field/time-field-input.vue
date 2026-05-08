@@ -15,8 +15,8 @@ const props = withDefaults(defineProps<TimeFieldInputProps>(), {
 
 const cls = useTimeFieldUi('input');
 const {
-  disabled: rootDisabled,
-  readonly: rootReadonly,
+  disabled,
+  readonly,
   placeholder,
   hourCycle,
   step,
@@ -30,8 +30,6 @@ const {
 
 const hasLeftFocus = ref(true);
 const lastKeyZero = ref(false);
-const disabled = computed(() => Boolean(rootDisabled.value));
-const readonly = computed(() => Boolean(rootReadonly.value));
 
 const { attributes, handleSegmentClick, handleSegmentFocusOut, handleSegmentKeydown } = useDateField({
   hasLeftFocus,
@@ -77,13 +75,13 @@ const listeners = computed(() => {
 
 <template>
   <Primitive
+    v-bind="attributes"
     :as="as"
     :as-child="asChild"
-    v-bind="attributes"
+    :class="cls"
     :aria-disabled="disabled ? true : undefined"
     :aria-invalid="isInvalid ? true : undefined"
     :aria-readonly="readonly || part === 'timeZoneName' ? true : undefined"
-    :class="cls"
     :contenteditable="contentEditable"
     :data-disabled="disabled ? '' : undefined"
     :data-invalid="isInvalid ? '' : undefined"

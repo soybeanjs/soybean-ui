@@ -14,13 +14,12 @@ import {
   syncTimeSegmentValues,
   useDateFormatter
 } from '../../date';
-import type { SegmentPart, TimeRange } from '../../date';
 import { isNullish } from '../../shared';
 import { useDirection, useLocale } from '../config-provider/context';
 import { Primitive } from '../primitive';
 import { VisuallyHidden } from '../visually-hidden';
 import { provideTimeRangeFieldRootContext, useTimeRangeFieldUi } from './context';
-import type { TimeRangeFieldRootEmits, TimeRangeFieldRootProps } from './types';
+import type { TimeRangeFieldRootProps, TimeRangeFieldRootEmits, TimeRangeFieldRootSlots } from './types';
 
 defineOptions({
   name: 'TimeRangeFieldRoot'
@@ -43,14 +42,7 @@ const props = withDefaults(defineProps<TimeRangeFieldRootProps>(), {
 
 const emit = defineEmits<TimeRangeFieldRootEmits>();
 
-defineSlots<{
-  default?: (props: {
-    modelValue: TimeRange;
-    startSegments: { part: SegmentPart; value: string }[];
-    endSegments: { part: SegmentPart; value: string }[];
-    isInvalid: boolean;
-  }) => any;
-}>();
+defineSlots<TimeRangeFieldRootSlots>();
 
 const cls = useTimeRangeFieldUi('root');
 const [rootElement, setRootElement] = useForwardElement();
@@ -82,7 +74,7 @@ const placeholder = useControllableState(
   props.defaultPlaceholder ?? defaultTime.copy()
 );
 
-const step = computed(() => normalizeDateStep(props));
+const step = computed(() => normalizeDateStep(props.step));
 const inferredGranularity = computed(() => props.granularity ?? 'minute');
 
 const isInvalid = computed(() => {
@@ -267,11 +259,8 @@ const handleRootKeydown = (event: KeyboardEvent) => {
 };
 
 provideTimeRangeFieldRootContext({
-  locale,
-  dir,
   modelValue,
   placeholder,
-  isTimeUnavailable: props.isTimeUnavailable,
   isInvalid,
   disabled: computed(() => props.disabled),
   readonly: computed(() => props.readonly),
@@ -280,17 +269,6 @@ provideTimeRangeFieldRootContext({
   step,
   startSegmentValues,
   endSegmentValues,
-  startSegmentContents,
-  endSegmentContents,
-  startInputType: inputType,
-  endInputType: inputType,
-  startInputValue,
-  endInputValue,
-  inputMaxValue,
-  inputMinValue,
-  startElements: startSegmentElements,
-  endElements: endSegmentElements,
-  focusedType,
   focusNext(type: 'start' | 'end') {
     moveFocus(type, 'next');
   },
@@ -318,10 +296,10 @@ onMounted(refreshSegmentElements);
     @keydown="handleRootKeydown"
   >
     <slot
-      :end-segments="endSegmentContents"
-      :is-invalid="isInvalid"
       :model-value="modelValue"
       :start-segments="startSegmentContents"
+      :end-segments="endSegmentContents"
+      :is-invalid="isInvalid"
     />
 
     <VisuallyHidden
