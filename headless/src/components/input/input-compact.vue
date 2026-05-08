@@ -15,7 +15,7 @@ const emit = defineEmits<InputCompactEmits>();
 
 defineSlots<InputCompactSlots>();
 
-const forwardedProps = useOmitProps(props, ['inputRef', 'controlProps', 'clearable']);
+const forwardedProps = useOmitProps(props, ['inputRef', 'clearable', 'controlProps', 'clearProps']);
 
 const [_, setInputElement] = useForwardElement(el => props.inputRef?.(el as HTMLInputElement));
 </script>

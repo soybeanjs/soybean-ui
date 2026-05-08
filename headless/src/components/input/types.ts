@@ -107,15 +107,15 @@ export interface InputCompactSlotProps {
  */
 export interface InputCompactProps extends InputRootProps {
   /**
+   * The function to set the input element.
+   */
+  inputRef?: (el: HTMLInputElement) => void;
+  /**
    * Whether to show the clear trigger.
    *
    * @defaultValue false
    */
   clearable?: boolean;
-  /**
-   * The function to set the input element.
-   */
-  inputRef?: (el: HTMLInputElement) => void;
   /**
    * Properties forwarded to the control element.
    */
