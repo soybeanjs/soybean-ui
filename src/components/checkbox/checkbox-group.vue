@@ -10,7 +10,9 @@ defineOptions({
   name: 'SCheckboxGroup'
 });
 
-const props = defineProps<CheckboxGroupProps<T>>();
+const props = withDefaults(defineProps<CheckboxGroupProps<T>>(), {
+  rovingFocus: true
+});
 
 const emit = defineEmits<CheckboxGroupEmits<T['value']>>();
 
