@@ -6,5 +6,5 @@ const value = new CalendarDate(2026, 4, 19);
 </script>
 
 <template>
-  <SDateField :model-value="value" disabled aria-label="Disabled date" />
+  <SDateField :model-value="value" disabled aria-label="Disabled date" class="w-fit" />
 </template>

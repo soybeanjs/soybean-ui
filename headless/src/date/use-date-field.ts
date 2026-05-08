@@ -1,28 +1,32 @@
-import type { CalendarDateTime, DateValue, Time, TimeFields } from '@internationalized/date';
-import type { Ref } from 'vue';
-
-import type { TimeValue } from './comparators';
-import type { Formatter } from './formatter';
-import type { AnyExceptLiteral, DateStep, HourCycle, SegmentPart, SegmentValueObj } from './types';
-
-import { DateFormatter } from '@internationalized/date';
 import { computed } from 'vue';
-
+import type { Ref } from 'vue';
+import { DateFormatter } from '@internationalized/date';
+import type { CalendarDateTime, Time, TimeFields } from '@internationalized/date';
 import { getDaysInMonth } from './comparators';
 import { isAcceptableSegmentKey, isNumberString, isSegmentNavigationKey } from './segment';
+import type { Formatter } from './formatter';
+import type {
+  DateValue,
+  TimeValue,
+  AnyExceptLiteral,
+  DateStep,
+  HourCycle,
+  SegmentPart,
+  SegmentValueObj
+} from './types';
 
-type SegmentAttrProps = {
-  disabled: boolean;
+type SegmentAttrOptions = {
+  disabled?: boolean;
   segmentValues: SegmentValueObj;
   hourCycle: HourCycle;
   placeholder: DateValue | TimeValue;
   formatter: Formatter;
 };
 
-const commonSegmentAttrs = (props: SegmentAttrProps) => ({
+const commonSegmentAttrs = (disabled?: boolean) => ({
   role: 'spinbutton',
   contenteditable: true,
-  tabindex: props.disabled ? undefined : 0,
+  tabindex: disabled ? undefined : 0,
   spellcheck: false,
   inputmode: 'numeric',
   autocorrect: 'off',
@@ -39,7 +43,7 @@ const uses12HourFormat = (hourCycle: HourCycle, locale: string) => {
   return resolvedHourCycle === 'h11' || resolvedHourCycle === 'h12';
 };
 
-const getAccessibleHourValue = (props: SegmentAttrProps) => {
+const getAccessibleHourValue = (props: SegmentAttrOptions) => {
   const rawHour = 'hour' in props.placeholder ? props.placeholder.hour : 0;
 
   if (!uses12HourFormat(props.hourCycle, props.formatter.getLocale())) {
@@ -51,8 +55,8 @@ const getAccessibleHourValue = (props: SegmentAttrProps) => {
 
 const segmentBuilders = {
   day: {
-    attrs: (props: SegmentAttrProps) => ({
-      ...commonSegmentAttrs(props),
+    attrs: (props: SegmentAttrOptions) => ({
+      ...commonSegmentAttrs(props.disabled),
       'aria-label': 'day,',
       'aria-valuemin': 1,
       'aria-valuemax': getDaysInMonth(props.placeholder as DateValue),
@@ -62,8 +66,8 @@ const segmentBuilders = {
     })
   },
   month: {
-    attrs: (props: SegmentAttrProps) => ({
-      ...commonSegmentAttrs(props),
+    attrs: (props: SegmentAttrOptions) => ({
+      ...commonSegmentAttrs(props.disabled),
       'aria-label': 'month, ',
       'aria-valuemin': 1,
       'aria-valuemax': 12,
@@ -76,8 +80,8 @@ const segmentBuilders = {
     })
   },
   year: {
-    attrs: (props: SegmentAttrProps) => ({
-      ...commonSegmentAttrs(props),
+    attrs: (props: SegmentAttrOptions) => ({
+      ...commonSegmentAttrs(props.disabled),
       'aria-label': 'year, ',
       'aria-valuemin': 1,
       'aria-valuemax': 9999,
@@ -87,8 +91,8 @@ const segmentBuilders = {
     })
   },
   hour: {
-    attrs: (props: SegmentAttrProps) => ({
-      ...commonSegmentAttrs(props),
+    attrs: (props: SegmentAttrOptions) => ({
+      ...commonSegmentAttrs(props.disabled),
       'aria-label': 'hour, ',
       'aria-valuemin': uses12HourFormat(props.hourCycle, props.formatter.getLocale()) ? 1 : 0,
       'aria-valuemax': uses12HourFormat(props.hourCycle, props.formatter.getLocale()) ? 12 : 23,
@@ -101,8 +105,8 @@ const segmentBuilders = {
     })
   },
   minute: {
-    attrs: (props: SegmentAttrProps) => ({
-      ...commonSegmentAttrs(props),
+    attrs: (props: SegmentAttrOptions) => ({
+      ...commonSegmentAttrs(props.disabled),
       'aria-label': 'minute, ',
       'aria-valuemin': 0,
       'aria-valuemax': 59,
@@ -115,8 +119,8 @@ const segmentBuilders = {
     })
   },
   second: {
-    attrs: (props: SegmentAttrProps) => ({
-      ...commonSegmentAttrs(props),
+    attrs: (props: SegmentAttrOptions) => ({
+      ...commonSegmentAttrs(props.disabled),
       'aria-label': 'second, ',
       'aria-valuemin': 0,
       'aria-valuemax': 59,
@@ -129,8 +133,8 @@ const segmentBuilders = {
     })
   },
   dayPeriod: {
-    attrs: (props: SegmentAttrProps) => ({
-      ...commonSegmentAttrs(props),
+    attrs: (props: SegmentAttrOptions) => ({
+      ...commonSegmentAttrs(props.disabled),
       inputmode: 'text',
       'aria-label': 'AM/PM, ',
       'aria-valuetext':
@@ -143,7 +147,7 @@ const segmentBuilders = {
   },
   literal: { attrs: () => ({ 'aria-hidden': true, 'data-segment': 'literal' }) },
   timeZoneName: {
-    attrs: (props: SegmentAttrProps) => ({
+    attrs: (props: SegmentAttrOptions) => ({
       role: 'textbox',
       tabindex: props.disabled ? undefined : 0,
       'aria-label': 'time zone, ',
@@ -153,7 +157,7 @@ const segmentBuilders = {
   }
 } as const;
 
-export type UseDateFieldProps = {
+export type UseDateFieldOptions = {
   hasLeftFocus: Ref<boolean>;
   lastKeyZero: Ref<boolean>;
   placeholder: Ref<DateValue | TimeValue>;
@@ -161,14 +165,14 @@ export type UseDateFieldProps = {
   step: Ref<DateStep>;
   formatter: Formatter;
   segmentValues: Ref<SegmentValueObj>;
-  disabled: Ref<boolean>;
-  readonly: Ref<boolean>;
+  disabled: Ref<boolean | undefined>;
+  readonly: Ref<boolean | undefined>;
   part: SegmentPart;
   modelValue: Ref<DateValue | TimeValue | undefined>;
   focusNext: () => void;
 };
 
-export function useDateField(props: UseDateFieldProps) {
+export function useDateField(props: UseDateFieldOptions) {
   const attributes = computed(
     () =>
       segmentBuilders[props.part]?.attrs({

@@ -57,26 +57,26 @@ provideCalendarUi(ui);
     <template v-if="$slots.heading" #heading="slotProps">
       <slot name="heading" v-bind="slotProps" />
     </template>
-    <template v-else #heading="slotProps">
+    <template v-else #heading="{ monthOptions, yearOptions, selectedMonth, selectedYear, onMonthChange, onYearChange }">
       <SSelect
         :size="miniSize"
         :disabled="disabled"
         :clearable="false"
-        :items="slotProps.monthOptions"
-        :model-value="slotProps.selectedMonth"
+        :items="monthOptions"
+        :model-value="selectedMonth"
         :trigger-props="{ 'aria-label': 'Select month' }"
         :ui="{ trigger: 'w-fit' }"
-        @update:model-value="slotProps.onMonthChange"
+        @update:model-value="onMonthChange"
       />
       <SSelect
         :size="miniSize"
         :disabled="disabled"
         :clearable="false"
-        :items="slotProps.yearOptions"
-        :model-value="slotProps.selectedYear"
+        :items="yearOptions"
+        :model-value="selectedYear"
         :trigger-props="{ 'aria-label': 'Select year' }"
         :ui="{ popup: 'max-h-72', trigger: 'w-fit' }"
-        @update:model-value="slotProps.onYearChange"
+        @update:model-value="onYearChange"
       />
     </template>
     <template #next="slotProps">

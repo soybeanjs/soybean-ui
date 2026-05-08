@@ -1,18 +1,11 @@
-import type { DateValue } from '@internationalized/date';
+import type { DateValue, Time, CalendarDateTime, CalendarIdentifier, ZonedDateTime } from '@internationalized/date';
 
-import type { TimeValue } from './comparators';
-import type {
-  DATE_SEGMENT_PARTS,
-  EDITABLE_SEGMENT_PARTS,
-  NON_EDITABLE_SEGMENT_PARTS,
-  TIME_SEGMENT_PARTS
-} from './parts';
-
-export type { DateValue };
+export type TimeValue = Time | CalendarDateTime | ZonedDateTime;
 
 export type DayOfWeek = 'sun' | 'mon' | 'tue' | 'wed' | 'thu' | 'fri' | 'sat';
 
-export type Matcher = (date: DateValue) => boolean;
+export type DateMatcher = (date: DateValue) => boolean;
+
 export type TimeMatcher = (time: TimeValue) => boolean;
 
 export interface DateRange {
@@ -25,7 +18,7 @@ export interface TimeRange {
   end?: TimeValue;
 }
 
-export interface Grid<T> {
+export interface DateGrid<T> {
   value: DateValue;
   rows: T[][];
   cells: T[];
@@ -42,14 +35,16 @@ export interface DateStep {
 }
 
 export type HourCycle = 12 | 24 | undefined;
-export type DateSegmentPart = (typeof DATE_SEGMENT_PARTS)[number];
-export type TimeSegmentPart = (typeof TIME_SEGMENT_PARTS)[number];
-export type EditableSegmentPart = (typeof EDITABLE_SEGMENT_PARTS)[number];
-export type NonEditableSegmentPart = (typeof NON_EDITABLE_SEGMENT_PARTS)[number];
+export type DateSegmentPart = 'day' | 'month' | 'year';
+export type TimeSegmentPart = 'hour' | 'minute' | 'second' | 'dayPeriod';
+export type EditableSegmentPart = DateSegmentPart | TimeSegmentPart;
+export type NonEditableSegmentPart = 'literal' | 'timeZoneName';
 export type SegmentPart = EditableSegmentPart | NonEditableSegmentPart;
 export type AnyExceptLiteral = Exclude<SegmentPart, 'literal'>;
 
 export type DayPeriod = 'AM' | 'PM' | null;
+export type WeekDayFormat = 'narrow' | 'short' | 'long';
+export type WeekStartsOn = 0 | 1 | 2 | 3 | 4 | 5 | 6;
 
 export type DateSegmentObj = {
   [K in DateSegmentPart]: number | null;
@@ -65,5 +60,7 @@ export type SegmentContentObj = Record<EditableSegmentPart, string>;
 
 export type DateInputType = 'date' | 'datetime-local';
 export type TimeInputType = 'time';
-export type Granularity = 'day' | 'hour' | 'minute' | 'second';
 export type TimeGranularity = 'hour' | 'minute' | 'second';
+export type Granularity = 'day' | TimeGranularity;
+
+export type { DateValue, CalendarIdentifier };

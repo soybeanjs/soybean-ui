@@ -1,11 +1,8 @@
-import type { DateValue, ZonedDateTime } from '@internationalized/date';
-
-import type { TimeValue } from './comparators';
-
-import { DateFormatter, getLocalTimeZone, today } from '@internationalized/date';
 import { ref } from 'vue';
-
+import { DateFormatter, getLocalTimeZone, today } from '@internationalized/date';
+import type { DateValue, ZonedDateTime } from '@internationalized/date';
 import { hasTime, isZonedDateTime, toDate } from './comparators';
+import type { TimeValue } from './types';
 
 export interface DateFormatterOptions extends Intl.DateTimeFormatOptions {
   calendar?: string;

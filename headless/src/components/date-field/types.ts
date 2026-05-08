@@ -1,111 +1,8 @@
-import type { DateValue } from '@internationalized/date';
 import type { ComputedRef, ShallowRef } from 'vue';
-import type {
-  DateInputType,
-  DateStep,
-  Formatter,
-  Granularity,
-  HourCycle,
-  Matcher,
-  SegmentPart,
-  SegmentValueObj
-} from '../../date';
-import type { Direction, FormFieldCommonProps, PropsToContext, UiClass } from '../../types';
+import type { DateValue, DateStep, Granularity, Formatter, HourCycle, SegmentPart, SegmentValueObj } from '../../date';
+import type { FormFieldCommonProps, PropsToContext, UiClass } from '../../types';
+import type { CalendarRootProps } from '../calendar/types';
 import type { PrimitiveWithBaseProps } from '../primitive/types';
-
-/**
- * Properties for the DateFieldRoot component.
- */
-export interface DateFieldRootProps extends FormFieldCommonProps, Omit<PrimitiveWithBaseProps, 'placeholder'> {
-  /**
-   * Default value.
-   */
-  defaultValue?: DateValue;
-  /**
-   * Default placeholder.
-   */
-  defaultPlaceholder?: DateValue;
-  /**
-   * Placeholder.
-   */
-  placeholder?: DateValue;
-  /**
-   * Current model value.
-   */
-  modelValue?: DateValue;
-  /**
-   * Hour cycle.
-   */
-  hourCycle?: HourCycle;
-  /**
-   * Step.
-   */
-  step?: DateStep;
-  /**
-   * Granularity.
-   */
-  granularity?: Granularity;
-  /**
-   * Whether hide time zone.
-   */
-  hideTimeZone?: boolean;
-  /**
-   * Max value.
-   */
-  maxValue?: DateValue;
-  /**
-   * Min value.
-   */
-  minValue?: DateValue;
-  /**
-   * Locale.
-   */
-  locale?: string;
-  /**
-   * Whether the component is disabled.
-   */
-  disabled?: boolean;
-  /**
-   * Whether the component is readonly.
-   */
-  readonly?: boolean;
-  /**
-   * Whether the date is unavailable.
-   */
-  isDateUnavailable?: Matcher;
-  /**
-   * Id.
-   */
-  id?: string;
-  /**
-   * Reading direction of the component.
-   */
-  dir?: Direction;
-}
-
-/**
- * Events for the DateFieldRoot component.
- */
-export type DateFieldRootEmits = {
-  /**
-   * Emitted when the model value changes.
-   */
-  'update:modelValue': [date: DateValue | undefined];
-  /**
-   * Emitted when the placeholder value changes.
-   */
-  'update:placeholder': [date: DateValue];
-};
-
-/**
- * Properties for the DateFieldInput component.
- */
-export interface DateFieldInputProps extends PrimitiveWithBaseProps {
-  /**
-   * Part.
-   */
-  part: SegmentPart;
-}
 
 /**
  * Type information for DateFieldSegment.
@@ -122,32 +19,101 @@ export interface DateFieldSegment {
 }
 
 /**
- * Properties for the DateFieldCompact component.
+ * Properties for the DateFieldRoot component.
  */
-export interface DateFieldCompactProps extends DateFieldRootProps {
+export interface DateFieldRootProps
+  extends
+    FormFieldCommonProps,
+    Pick<
+      CalendarRootProps<false>,
+      | 'dir'
+      | 'locale'
+      | 'modelValue'
+      | 'defaultValue'
+      | 'placeholder'
+      | 'defaultPlaceholder'
+      | 'disabled'
+      | 'readonly'
+      | 'maxValue'
+      | 'minValue'
+      | 'isDateUnavailable'
+    >,
+    Omit<PrimitiveWithBaseProps, 'dir' | 'placeholder'> {
   /**
-   * Properties forwarded to the input element.
+   * Id.
    */
-  inputProps?: Omit<DateFieldInputProps, 'part'>;
+  id?: string;
+  /**
+   * Granularity.
+   */
+  granularity?: Granularity;
+  /**
+   * Hour cycle.
+   */
+  hourCycle?: HourCycle;
+  /**
+   * Step.
+   */
+  step?: DateStep;
+  /**
+   * Whether hide time zone.
+   */
+  hideTimeZone?: boolean;
 }
 
 /**
- * Events for the DateFieldCompact component.
+ * Events for the DateFieldRoot component.
  */
-export type DateFieldCompactEmits = DateFieldRootEmits;
+export type DateFieldRootEmits = {
+  /**
+   * Emitted when the model value changes.
+   */
+  'update:modelValue': [value: DateValue | undefined];
+  /**
+   * Emitted when the placeholder value changes.
+   */
+  'update:placeholder': [value: DateValue];
+};
+
+/**
+ * Properties for the DateFieldRoot slot.
+ */
+export interface DateFieldRootSlotProps {
+  /**
+   * Current model value.
+   */
+  modelValue: DateValue | undefined;
+  /**
+   * Segments used by the default slot.
+   */
+  segments: DateFieldSegment[];
+  /**
+   * Whether the current value is invalid.
+   */
+  isInvalid: boolean;
+}
+
+/**
+ * Slots for the DateFieldRoot component.
+ */
+export type DateFieldRootSlots = {
+  default?: (props: DateFieldRootSlotProps) => any;
+};
+
+/**
+ * Properties for the DateFieldInput component.
+ */
+export interface DateFieldInputProps extends PrimitiveWithBaseProps {
+  /**
+   * Part.
+   */
+  part: SegmentPart;
+}
 
 /**
  * Context for the DateFieldRoot component.
  */
 export interface DateFieldRootContext extends PropsToContext<DateFieldRootProps, 'disabled' | 'readonly'> {
-  /**
-   * Locale used by the component context.
-   */
-  locale: ComputedRef<string>;
-  /**
-   * Reading direction of the component.
-   */
-  dir: ComputedRef<Direction>;
   /**
    * Current model value.
    */
@@ -156,10 +122,6 @@ export interface DateFieldRootContext extends PropsToContext<DateFieldRootProps,
    * Placeholder used by the component context.
    */
   placeholder: ShallowRef<DateValue>;
-  /**
-   * Whether the date is unavailable.
-   */
-  isDateUnavailable?: Matcher;
   /**
    * Whether the current value is invalid.
    */
@@ -181,30 +143,6 @@ export interface DateFieldRootContext extends PropsToContext<DateFieldRootProps,
    */
   segmentValues: ShallowRef<SegmentValueObj>;
   /**
-   * Segment contents used by the component context.
-   */
-  segmentContents: ComputedRef<DateFieldSegment[]>;
-  /**
-   * Input type used by the component context.
-   */
-  inputType: ComputedRef<DateInputType>;
-  /**
-   * Input value used by the component context.
-   */
-  inputValue: ComputedRef<string>;
-  /**
-   * Input max value used by the component context.
-   */
-  inputMaxValue: ComputedRef<string | undefined>;
-  /**
-   * Input min value used by the component context.
-   */
-  inputMinValue: ComputedRef<string | undefined>;
-  /**
-   * Elements used by the component context.
-   */
-  elements: ShallowRef<HTMLElement[]>;
-  /**
    * Focus next used by the component context.
    */
   focusNext: () => void;
@@ -213,6 +151,21 @@ export interface DateFieldRootContext extends PropsToContext<DateFieldRootProps,
    */
   setFocusedElement: (el: HTMLElement) => void;
 }
+
+/**
+ * Properties for the DateFieldCompact component.
+ */
+export interface DateFieldCompactProps extends DateFieldRootProps {
+  /**
+   * Properties forwarded to the input element.
+   */
+  inputProps?: DateFieldInputProps;
+}
+
+/**
+ * Events for the DateFieldCompact component.
+ */
+export type DateFieldCompactEmits = DateFieldRootEmits;
 
 /**
  * Available UI slots for the DateField component.

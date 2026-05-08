@@ -19,6 +19,7 @@ const listeners = useForwardListeners(emit);
 
 <template>
   <DateFieldRoot v-slot="slotProps" v-bind="forwardedProps" v-on="listeners">
+    <slot name="leading" />
     <DateFieldInput
       v-for="(segment, index) in slotProps.segments"
       :key="`${segment.part}-${index}`"
@@ -27,5 +28,6 @@ const listeners = useForwardListeners(emit);
     >
       {{ segment.value }}
     </DateFieldInput>
+    <slot name="trailing" />
   </DateFieldRoot>
 </template>

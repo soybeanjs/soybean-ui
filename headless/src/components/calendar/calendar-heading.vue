@@ -11,11 +11,8 @@ withDefaults(defineProps<CalendarHeadingProps>(), {
   as: 'div'
 });
 
-defineSlots<{
-  default?: (props: { headingValue: string }) => any;
-}>();
-
 const cls = useCalendarUi('heading');
+
 const { disabled, headingValue } = useCalendarRootContext('CalendarHeading');
 </script>
 

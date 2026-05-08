@@ -10,5 +10,5 @@ const value = shallowRef({
 </script>
 
 <template>
-  <STimeRangeField v-model="value" class="w-90 lt-md:w-auto" aria-label="Working hours" />
+  <STimeRangeField v-model="value" aria-label="Working hours" />
 </template>

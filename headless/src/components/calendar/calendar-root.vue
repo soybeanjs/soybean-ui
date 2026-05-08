@@ -1,7 +1,7 @@
 <script setup lang="ts" generic="M extends boolean = false">
+import { computed, onMounted, watch } from 'vue';
 import { isEqualDay, isSameDay } from '@internationalized/date';
 import type { DateValue } from '@internationalized/date';
-import { computed, onMounted, watch } from 'vue';
 import { useControllableState, useForwardElement } from '../../composables';
 import { getDefaultDate, getWeekStartsOn, handleCalendarInitialFocus } from '../../date';
 import { getVueBooleanCasting, transformPropsToContext } from '../../shared';
@@ -9,9 +9,9 @@ import { useDirection, useLocale } from '../config-provider/context';
 import { Primitive } from '../primitive';
 import { VisuallyHidden } from '../visually-hidden';
 import { provideCalendarRootContext, useCalendarUi } from './context';
-import type { CalendarModelValue, CalendarRootEmits, CalendarRootProps } from './types';
 import { useCalendar, useCalendarState } from './use-calendar';
-import type { CalendarRootSlotProps } from './types';
+import { getMonthOptions, getYearOptions, handleMonthChange, handleYearChange } from './shared';
+import type { CalendarModelValue, CalendarRootEmits, CalendarRootProps, CalendarRootSlots } from './types';
 
 defineOptions({
   name: 'CalendarRoot'
@@ -29,9 +29,7 @@ const props = withDefaults(defineProps<CalendarRootProps<M>>(), {
 
 const emit = defineEmits<CalendarRootEmits<M>>();
 
-defineSlots<{
-  default?: (props: CalendarRootSlotProps<M>) => any;
-}>();
+defineSlots<CalendarRootSlots<M>>();
 
 const cls = useCalendarUi('root');
 const [parentElement, setParentElement] = useForwardElement();
@@ -102,6 +100,43 @@ const { isInvalid, isDateSelected, hasSelectedDate, isSelectedDateDisabled } = u
   isDateDisabled,
   isDateUnavailable
 });
+
+const monthOptions = computed(() =>
+  getMonthOptions({
+    placeholder: placeholder.value,
+    disabled: props.disabled,
+    minValue: props.minValue,
+    maxValue: props.maxValue,
+    formatter
+  })
+);
+
+const onMonthChange = (month?: number) => {
+  handleMonthChange(month, {
+    placeholder: placeholder.value,
+    disabled: props.disabled,
+    minValue: props.minValue,
+    maxValue: props.maxValue,
+    onPlaceholderChange
+  });
+};
+
+const onYearChange = (year?: number) => {
+  handleYearChange(year, {
+    placeholder: placeholder.value,
+    minValue: props.minValue,
+    maxValue: props.maxValue,
+    onPlaceholderChange
+  });
+};
+
+const yearOptions = computed(() =>
+  getYearOptions({
+    placeholder: placeholder.value,
+    minValue: props.minValue,
+    maxValue: props.maxValue
+  })
+);
 
 watch(modelValue, value => {
   if (Array.isArray(value) && value.length) {
@@ -227,7 +262,7 @@ onMounted(() => {
     :class="cls"
     :data-disabled="disabled ? '' : undefined"
     :data-invalid="isInvalid ? '' : undefined"
-    :data-readonly="props.readonly ? '' : undefined"
+    :data-readonly="readonly ? '' : undefined"
     :dir="dir"
     data-slot="root"
   >
@@ -235,6 +270,7 @@ onMounted(() => {
       :date="placeholder"
       :disabled="disabled"
       :formatter="formatter"
+      :heading-value="headingValue"
       :fixed-weeks="fixedWeeks"
       :grid="grid"
       :locale="locale"
@@ -245,6 +281,10 @@ onMounted(() => {
       :placeholder="placeholder"
       :week-days="weekdays"
       :week-starts-on="weekStartsOn"
+      :year-options="yearOptions"
+      :on-year-change="onYearChange"
+      :month-options="monthOptions"
+      :on-month-change="onMonthChange"
     />
     <VisuallyHidden as="span" feature="fully-hidden">
       <span aria-level="2" role="heading">{{ fullCalendarLabel }}</span>

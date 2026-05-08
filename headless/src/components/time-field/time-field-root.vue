@@ -14,13 +14,12 @@ import {
   syncTimeSegmentValues,
   useDateFormatter
 } from '../../date';
-import type { SegmentPart, TimeValue } from '../../date';
 import { isNullish } from '../../shared';
 import { useDirection, useLocale } from '../config-provider/context';
 import { Primitive } from '../primitive';
 import { VisuallyHidden } from '../visually-hidden';
 import { provideTimeFieldRootContext, useTimeFieldUi } from './context';
-import type { TimeFieldRootEmits, TimeFieldRootProps } from './types';
+import type { TimeFieldRootProps, TimeFieldRootEmits, TimeFieldRootSlots } from './types';
 
 defineOptions({
   name: 'TimeFieldRoot'
@@ -41,13 +40,7 @@ const props = withDefaults(defineProps<TimeFieldRootProps>(), {
 
 const emit = defineEmits<TimeFieldRootEmits>();
 
-defineSlots<{
-  default?: (props: {
-    modelValue: TimeValue | undefined;
-    segments: { part: SegmentPart; value: string }[];
-    isInvalid: boolean;
-  }) => any;
-}>();
+defineSlots<TimeFieldRootSlots>();
 
 const cls = useTimeFieldUi('root');
 const [rootElement, setRootElement] = useForwardElement();
@@ -77,7 +70,7 @@ const placeholder = useControllableState(
 );
 
 const inferredGranularity = computed(() => props.granularity ?? 'minute');
-const step = computed(() => normalizeDateStep(props));
+const step = computed(() => normalizeDateStep(props.step));
 
 const isInvalid = computed(() => {
   if (!modelValue.value) {
@@ -186,8 +179,6 @@ const handleRootKeydown = (event: KeyboardEvent) => {
 };
 
 provideTimeFieldRootContext({
-  locale,
-  dir,
   modelValue,
   placeholder,
   isTimeUnavailable: props.isTimeUnavailable,
@@ -198,12 +189,7 @@ provideTimeFieldRootContext({
   hourCycle: props.hourCycle,
   step,
   segmentValues,
-  segmentContents,
   inputType,
-  inputValue,
-  inputMaxValue,
-  inputMinValue,
-  elements: segmentElements,
   focusNext() {
     moveFocus('next');
   },

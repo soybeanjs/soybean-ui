@@ -1,18 +1,18 @@
 export { default as DateRangeFieldCompact } from './date-range-field-compact.vue';
-export { default as DateRangeFieldInput } from './date-range-field-input.vue';
 export { default as DateRangeFieldRoot } from './date-range-field-root.vue';
+export { default as DateRangeFieldInput } from './date-range-field-input.vue';
 
 export { provideDateRangeFieldUi } from './context';
 
 export type {
-  DateRangeFieldCompactEmits,
   DateRangeFieldCompactProps,
+  DateRangeFieldCompactEmits,
   DateRangeFieldCompactSlots,
-  DateRangeFieldInputProps,
-  DateRangeFieldRootContext,
-  DateRangeFieldRootEmits,
   DateRangeFieldRootProps,
-  DateRangeFieldSegment,
-  DateRangeFieldUi,
-  DateRangeFieldUiSlot
+  DateRangeFieldRootEmits,
+  DateRangeFieldRootSlots,
+  DateRangeFieldInputProps,
+  DateRangeFieldSlotProps,
+  DateRangeFieldUiSlot,
+  DateRangeFieldUi
 } from './types';

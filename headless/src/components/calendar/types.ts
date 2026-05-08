@@ -1,6 +1,5 @@
-import type { DateValue } from '@internationalized/date';
 import type { ComputedRef, ShallowRef } from 'vue';
-import type { Formatter, Grid, Matcher, WeekDayFormat, WeekStartsOn } from '../../date';
+import type { DateValue, Formatter, DateGrid, DateMatcher, WeekDayFormat, WeekStartsOn } from '../../date';
 import type { Direction, PropsToContext, UiClass } from '../../types';
 import type { ButtonProps } from '../button/types';
 import type { PrimitiveWithBaseProps } from '../primitive/types';
@@ -16,19 +15,46 @@ export type CalendarModelValue<M extends boolean = false> = M extends true
 /**
  * Properties for the CalendarRoot component.
  */
-export interface CalendarRootProps<M extends boolean = false> extends Omit<PrimitiveWithBaseProps, 'placeholder'> {
+export interface CalendarRootProps<M extends boolean = false> extends Omit<
+  PrimitiveWithBaseProps,
+  'dir' | 'placeholder'
+> {
+  /**
+   * Reading direction of the component.
+   */
+  dir?: Direction;
+  /**
+   * Locale.
+   */
+  locale?: string;
+  /**
+   * Current model value.
+   */
+  modelValue?: CalendarModelValue<M>;
   /**
    * Default value.
    */
   defaultValue?: CalendarModelValue<M>;
   /**
-   * Default placeholder.
+   * Whether multiple values are supported.
    */
-  defaultPlaceholder?: DateValue;
+  multiple?: M;
   /**
    * Placeholder.
    */
   placeholder?: DateValue;
+  /**
+   * Default placeholder.
+   */
+  defaultPlaceholder?: DateValue;
+  /**
+   * Whether the component is disabled.
+   */
+  disabled?: boolean;
+  /**
+   * Whether the component is readonly.
+   */
+  readonly?: boolean;
   /**
    * Whether paged navigation.
    */
@@ -62,21 +88,9 @@ export interface CalendarRootProps<M extends boolean = false> extends Omit<Primi
    */
   minValue?: DateValue;
   /**
-   * Locale.
-   */
-  locale?: string;
-  /**
    * Number of months.
    */
   numberOfMonths?: number;
-  /**
-   * Whether the component is disabled.
-   */
-  disabled?: boolean;
-  /**
-   * Whether the component is readonly.
-   */
-  readonly?: boolean;
   /**
    * Whether initial focus.
    */
@@ -84,15 +98,11 @@ export interface CalendarRootProps<M extends boolean = false> extends Omit<Primi
   /**
    * Whether the date is disabled.
    */
-  isDateDisabled?: Matcher;
+  isDateDisabled?: DateMatcher;
   /**
    * Whether the date is unavailable.
    */
-  isDateUnavailable?: Matcher;
-  /**
-   * Reading direction of the component.
-   */
-  dir?: Direction;
+  isDateUnavailable?: DateMatcher;
   /**
    * Next page.
    */
@@ -101,14 +111,6 @@ export interface CalendarRootProps<M extends boolean = false> extends Omit<Primi
    * Prev page.
    */
   prevPage?: (placeholder: DateValue) => DateValue;
-  /**
-   * Current model value.
-   */
-  modelValue?: CalendarModelValue<M>;
-  /**
-   * Whether multiple values are supported.
-   */
-  multiple?: M;
   /**
    * Whether to disable days outside current view.
    */
@@ -171,7 +173,7 @@ export interface CalendarCellProps extends PrimitiveWithBaseProps {
 /**
  * Properties for the CalendarCellTrigger component.
  */
-export interface CalendarCellTriggerProps extends PrimitiveWithBaseProps {
+export interface CalendarCellTriggerProps extends ButtonProps {
   /**
    * Day.
    */
@@ -181,6 +183,50 @@ export interface CalendarCellTriggerProps extends PrimitiveWithBaseProps {
    */
   month: DateValue;
 }
+
+/**
+ * Slot properties for the CalendarCellTrigger component.
+ */
+export interface CalendarCellTriggerSlotProps {
+  /**
+   * Day value string exposed in the slot scope.
+   */
+  dayValue: string;
+  /**
+   * Whether the date is disabled.
+   */
+  disabled: boolean;
+  /**
+   * Whether the date is selected.
+   */
+  selected: boolean;
+  /**
+   * Whether the date is unavailable.
+   */
+  unavailable: boolean;
+  /**
+   * Whether the date is today.
+   */
+  today: boolean;
+  /**
+   * Whether the date is outside the current view.
+   */
+  outsideView: boolean;
+  /**
+   * Whether the date is outside the visible view.
+   */
+  outsideVisibleView: boolean;
+}
+
+/**
+ * Slots for the CalendarCellTrigger component.
+ */
+export type CalendarCellTriggerSlots = {
+  /**
+   * Custom content for the default slot.
+   */
+  default?: (props: CalendarCellTriggerSlotProps) => any;
+};
 
 /**
  * Properties for the CalendarPrev component.
@@ -247,7 +293,7 @@ export interface CalendarRootContext extends PropsToContext<
   /**
    * Grid used by the component context.
    */
-  grid: ShallowRef<Grid<DateValue>[]>;
+  grid: ShallowRef<DateGrid<DateValue>[]>;
   /**
    * Parent element used by the component context.
    */
@@ -303,15 +349,15 @@ export interface CalendarRootContext extends PropsToContext<
   /**
    * Whether the date is disabled.
    */
-  isDateDisabled: Matcher;
+  isDateDisabled: DateMatcher;
   /**
    * Whether the date is selected.
    */
-  isDateSelected: Matcher;
+  isDateSelected: DateMatcher;
   /**
    * Whether the date is unavailable.
    */
-  isDateUnavailable?: Matcher;
+  isDateUnavailable?: DateMatcher;
   /**
    * Whether an outside visible view.
    */
@@ -343,13 +389,17 @@ export interface CalendarRootSlotProps<M extends boolean = false> {
    */
   date: DateValue;
   /**
+   * Heading value exposed in the slot scope.
+   */
+  headingValue: string;
+  /**
    * Placeholder exposed in the slot scope.
    */
   placeholder: DateValue;
   /**
    * Grid exposed in the slot scope.
    */
-  grid: Grid<DateValue>[];
+  grid: DateGrid<DateValue>[];
   /**
    * Week days exposed in the slot scope.
    */
@@ -390,48 +440,43 @@ export interface CalendarRootSlotProps<M extends boolean = false> {
    * Callback invoked when the placeholder changes.
    */
   onPlaceholderChange: (date: DateValue) => void;
-}
-
-/**
- * Slot properties for the CalendarHeading component.
- */
-export interface CalendarHeadingSlotProps {
-  /**
-   * Heading value exposed in the slot scope.
-   */
-  headingValue: string;
-  /**
-   * Month value exposed in the slot scope.
-   */
-  monthValue: string;
-  /**
-   * Year value exposed in the slot scope.
-   */
-  yearValue: string;
-  /**
-   * Selected month exposed in the slot scope.
-   */
-  selectedMonth: number;
-  /**
-   * Selected year exposed in the slot scope.
-   */
-  selectedYear: number;
-  /**
-   * Month options exposed in the slot scope.
-   */
-  monthOptions: SelectOptionData<number>[];
   /**
    * Year options exposed in the slot scope.
    */
   yearOptions: SelectOptionData<number>[];
   /**
-   * Callback invoked when the month changes.
-   */
-  onMonthChange: (value: number | undefined) => void;
-  /**
    * Callback invoked when the year changes.
    */
-  onYearChange: (value: number | undefined) => void;
+  onYearChange: (value?: number | undefined) => void;
+  /**
+   * Month options exposed in the slot scope.
+   */
+  monthOptions: SelectOptionData<number>[];
+  /**
+   * Callback invoked when the month changes.
+   */
+  onMonthChange: (value?: number | undefined) => void;
+}
+
+/**
+ * Slots for the Calendar component.
+ */
+export type CalendarRootSlots<M extends boolean = false> = {
+  /**
+   * Custom content for the default slot.
+   */
+  default?: (props: CalendarRootSlotProps<M>) => any;
+};
+
+/**
+ * Slot properties for the CalendarHeading component.
+ */
+export interface CalendarHeadingSlotProps extends Pick<
+  CalendarRootSlotProps,
+  'headingValue' | 'yearOptions' | 'onYearChange' | 'monthOptions' | 'onMonthChange'
+> {
+  selectedMonth: number;
+  selectedYear: number;
 }
 
 /**
@@ -499,17 +544,31 @@ export interface CalendarCompactProps<M extends boolean = false> extends Calenda
   /**
    * Properties forwarded to the cell element.
    */
-  cellProps?: Omit<CalendarCellProps, 'date'>;
+  cellProps?: CalendarCellProps;
   /**
    * Properties forwarded to the cell trigger element.
    */
-  cellTriggerProps?: Omit<CalendarCellTriggerProps, 'day' | 'month'>;
+  cellTriggerProps?: CalendarCellTriggerProps;
 }
 
 /**
  * Events for the CalendarCompact component.
  */
 export type CalendarCompactEmits<M extends boolean = false> = CalendarRootEmits<M>;
+
+/**
+ * Slot properties for the day slot of the Calendar component.
+ */
+export interface CalendarDaySlotProps extends CalendarCellTriggerSlotProps {
+  /**
+   * Day value exposed in the slot scope.
+   */
+  day: DateValue;
+  /**
+   * Month value exposed in the slot scope.
+   */
+  month: DateValue;
+}
 
 /**
  * Slots for the CalendarCompact component.
@@ -538,15 +597,5 @@ export type CalendarCompactSlots<M extends boolean = false> = {
   /**
    * Custom content for the day slot.
    */
-  day?: (props: {
-    day: DateValue;
-    month: DateValue;
-    dayValue: string;
-    disabled: boolean;
-    selected: boolean;
-    unavailable: boolean;
-    today: boolean;
-    outsideView: boolean;
-    outsideVisibleView: boolean;
-  }) => any;
+  day?: (props: CalendarDaySlotProps) => any;
 };

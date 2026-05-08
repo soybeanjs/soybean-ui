@@ -1,11 +1,12 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { DatePickerCompact, provideDatePickerUi } from '@soybeanjs/headless/date-picker';
-import { useForwardListeners, useOmitProps, usePickProps } from '@soybeanjs/headless/composables';
+import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
 import { mergeSlotVariants } from '@/theme';
-import SCalendar from '../calendar/calendar.vue';
+import Calendar from '../calendar/calendar.vue';
+import { dateFieldVariants } from '../date-field/variants';
 import { datePickerVariants } from './variants';
-import type { DatePickerEmits, DatePickerProps, DatePickerSlots } from './types';
+import type { DatePickerEmits, DatePickerProps } from './types';
 
 defineOptions({
   name: 'SDatePicker'
@@ -17,46 +18,37 @@ const props = withDefaults(defineProps<DatePickerProps>(), {
 
 const emit = defineEmits<DatePickerEmits>();
 
-defineSlots<DatePickerSlots>();
+const forwardedProps = useOmitProps(props, ['class', 'size', 'ui']);
 
 const listeners = useForwardListeners(emit);
 
-const forwardedProps = useOmitProps(props, ['class', 'size', 'ui']);
-
-const calendarProps = usePickProps(props, [
-  'locale',
-  'dir',
-  'disabled',
-  'readonly',
-  'minValue',
-  'maxValue',
-  'isDateUnavailable'
-]);
-
 const ui = computed(() => {
   const variants = datePickerVariants({ size: props.size });
+  const dateField = dateFieldVariants({ size: props.size });
 
-  return mergeSlotVariants(variants, props.ui, { root: props.class });
+  return mergeSlotVariants(Object.assign(variants, dateField), props.ui, { root: props.class });
 });
 
 provideDatePickerUi(ui);
 </script>
 
 <template>
-  <DatePickerCompact v-bind="forwardedProps" v-on="listeners">
-    <template #trigger="slotProps">
-      <slot name="trigger" v-bind="slotProps" />
-    </template>
-    <template #default="slotProps">
-      <SCalendar
-        v-bind="calendarProps"
-        :size="size"
-        :model-value="slotProps.modelValue"
-        :placeholder="slotProps.placeholder"
-        data-slot="calendar"
-        @update:model-value="slotProps.setDate"
-        @update:placeholder="slotProps.setPlaceholder"
-      />
-    </template>
+  <DatePickerCompact
+    v-slot="{ calendarProps, close, onUpdateModelValue, onUpdatePlaceholder }"
+    v-bind="forwardedProps"
+    v-on="listeners"
+  >
+    <Calendar
+      v-bind="calendarProps"
+      :size="size"
+      :ui="calendarUi"
+      @update:model-value="
+        value => {
+          onUpdateModelValue(value);
+          close();
+        }
+      "
+      @update:placeholder="onUpdatePlaceholder"
+    />
   </DatePickerCompact>
 </template>

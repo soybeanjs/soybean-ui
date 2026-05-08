@@ -1,20 +1,5 @@
-import type { DateStep, DateValue, Granularity, HourCycle, TimeGranularity, TimeInputType } from './types';
-
-import type { TimeValue } from './comparators';
-
-export function chunk<T>(array: T[], size: number): T[][] {
-  if (size <= 0) {
-    throw new RangeError('chunk size must be greater than 0');
-  }
-
-  const result: T[][] = [];
-
-  for (let index = 0; index < array.length; index += size) {
-    result.push(array.slice(index, index + size));
-  }
-
-  return result;
-}
+import { defu } from 'defu';
+import type { TimeValue, DateStep, DateValue, Granularity, HourCycle, TimeGranularity, TimeInputType } from './types';
 
 export function getOptsByGranularity(granularity: Granularity, hourCycle: HourCycle, isTimeValue = false) {
   const options: Intl.DateTimeFormatOptions = {
@@ -54,16 +39,16 @@ export function getOptsByGranularity(granularity: Granularity, hourCycle: HourCy
   return options;
 }
 
-export function normalizeDateStep(props?: { step?: DateStep }): DateStep {
-  return {
-    year: props?.step?.year ?? 1,
-    month: props?.step?.month ?? 1,
-    day: props?.step?.day ?? 1,
-    hour: props?.step?.hour ?? 1,
-    minute: props?.step?.minute ?? 1,
-    second: props?.step?.second ?? 1,
-    millisecond: props?.step?.millisecond ?? 1
-  };
+export function normalizeDateStep(step?: DateStep): DateStep {
+  return defu(step, {
+    year: 1,
+    month: 1,
+    day: 1,
+    hour: 1,
+    minute: 1,
+    second: 1,
+    millisecond: 1
+  });
 }
 
 export function handleCalendarInitialFocus(calendar: HTMLElement) {

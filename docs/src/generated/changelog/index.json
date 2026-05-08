@@ -429,9 +429,9 @@
       "versionCount": 0,
       "entryCount": 0
     },
-    "range-calendar": {
-      "component": "range-calendar",
-      "file": "range-calendar.json",
+    "calendar-range": {
+      "component": "calendar-range",
+      "file": "calendar-range.json",
       "latestVersion": null,
       "versionCount": 0,
       "entryCount": 0

@@ -4,30 +4,19 @@ import type { VariantProps } from 'tailwind-variants';
 
 export const dateRangePickerVariants = tv({
   slots: {
-    root: 'inline-flex w-full flex-col gap-2',
-    trigger: [
-      'inline-flex w-full items-center justify-start gap-2 rounded-md border border-input bg-background px-3 py-0 text-start font-normal shadow-xs transition-[background-color,color,box-shadow]',
-      'hover:bg-accent/50 hover:text-accent-foreground',
-      'focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-offset-background focus-visible:ring-primary/30',
-      'data-[disabled]:opacity-60 data-[disabled]:cursor-not-allowed data-[disabled]:pointer-events-none',
-      'data-[state=open]:bg-accent/50 data-[state=open]:text-accent-foreground'
-    ],
+    root: '',
+    input: '',
+    startRoot: '',
+    endRoot: '',
+    separator: '',
+    trigger: 'ml-auto data-[state=open]:bg-accent/50 data-[state=open]:text-accent-foreground',
+    positioner: 'w-max',
     popup: [
-      'z-50 overflow-hidden rounded-lg border border-border bg-popover p-0 text-popover-foreground shadow-md',
-      'data-[state=open]:animate-in data-[state=closed]:animate-out',
-      'data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0',
-      'data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95'
-    ],
-    input: [
-      'inline-flex min-w-5 items-center justify-center rounded-sm px-0.5 text-center outline-none',
-      'tabular-nums leading-none',
-      'data-[segment=literal]:min-w-0 data-[segment=literal]:px-0 data-[segment=literal]:text-muted-foreground',
-      'data-[segment=timeZoneName]:min-w-fit data-[segment=timeZoneName]:px-1 data-[segment=timeZoneName]:text-muted-foreground',
-      'data-[placeholder]:text-muted-foreground',
-      'focus-visible:bg-accent focus-visible:text-accent-foreground focus-visible:ring-2 focus-visible:ring-primary/20',
-      'data-[disabled]:cursor-not-allowed data-[readonly]:cursor-default'
-    ],
-    calendar: ''
+      `w-auto rounded-md border bg-popover text-popover-foreground outline-none z-50 will-change-transform`,
+      `data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95`,
+      `data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95`,
+      `data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2`
+    ]
   },
   variants: {
     size: {

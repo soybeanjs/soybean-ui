@@ -2,7 +2,9 @@
 import { computed } from 'vue';
 import { DateRangeFieldCompact, provideDateRangeFieldUi } from '@soybeanjs/headless/date-range-field';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
+import { keysOf } from '@soybeanjs/utils';
 import { mergeSlotVariants } from '@/theme';
+import { dateFieldVariants } from '../date-field/variants';
 import { dateRangeFieldVariants } from './variants';
 import type { DateRangeFieldEmits, DateRangeFieldProps, DateRangeFieldSlots } from './types';
 
@@ -10,34 +12,32 @@ defineOptions({
   name: 'SDateRangeField'
 });
 
-const props = withDefaults(defineProps<DateRangeFieldProps>(), {
-  separator: '–'
-});
+const props = defineProps<DateRangeFieldProps>();
 
 const emit = defineEmits<DateRangeFieldEmits>();
 
-defineSlots<DateRangeFieldSlots>();
+const slots = defineSlots<DateRangeFieldSlots>();
 
 const listeners = useForwardListeners(emit);
 
-const forwardedProps = useOmitProps(props, ['class', 'size', 'ui', 'inputProps', 'separator']);
+const forwardedProps = useOmitProps(props, ['class', 'size', 'ui']);
+
+const slotNames = computed(() => keysOf(slots));
 
 const ui = computed(() => {
   const variants = dateRangeFieldVariants({ size: props.size });
+  const dateField = dateFieldVariants({ size: props.size });
 
-  return mergeSlotVariants(variants, props.ui, { root: props.class });
+  return mergeSlotVariants(Object.assign(variants, dateField), props.ui, { root: props.class });
 });
 
 provideDateRangeFieldUi(ui);
 </script>
 
 <template>
-  <DateRangeFieldCompact v-bind="{ ...forwardedProps, inputProps, separator }" v-on="listeners">
-    <template v-if="$slots.default" #default="slotProps">
-      <slot v-bind="slotProps" />
-    </template>
-    <template #separator>
-      <slot name="separator">{{ separator }}</slot>
+  <DateRangeFieldCompact v-bind="forwardedProps" v-on="listeners">
+    <template v-for="slotName in slotNames" :key="slotName" #[slotName]>
+      <slot :name="slotName" />
     </template>
   </DateRangeFieldCompact>
 </template>

@@ -132,7 +132,7 @@ export type PopoverCompactSlots = {
   /**
    * Custom content for the default slot.
    */
-  default?: () => any;
+  default?: (props: { open: boolean; close: () => void }) => any;
   /**
    * Custom content for the trigger slot.
    */

@@ -5,14 +5,14 @@ export { default as TimeRangeFieldInput } from './time-range-field-input.vue';
 export { provideTimeRangeFieldUi } from './context';
 
 export type {
-  TimeRangeFieldCompactEmits,
   TimeRangeFieldCompactProps,
+  TimeRangeFieldCompactEmits,
   TimeRangeFieldCompactSlots,
-  TimeRangeFieldInputProps,
-  TimeRangeFieldRootContext,
-  TimeRangeFieldRootEmits,
   TimeRangeFieldRootProps,
-  TimeRangeFieldSegment,
+  TimeRangeFieldRootEmits,
+  TimeRangeFieldRootSlots,
+  TimeRangeFieldSlotProps,
+  TimeRangeFieldInputProps,
   TimeRangeFieldUi,
   TimeRangeFieldUiSlot
 } from './types';

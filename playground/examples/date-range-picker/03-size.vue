@@ -1,14 +1,10 @@
 <script setup lang="ts">
 import { SDateRangePicker } from '@soybeanjs/ui';
+import { themeSizeOptions } from '../../constants/theme';
 </script>
 
 <template>
   <div class="flex flex-col gap-4">
-    <SDateRangePicker class="w-90 lt-md:w-auto" size="xs" />
-    <SDateRangePicker class="w-90 lt-md:w-auto" size="sm" />
-    <SDateRangePicker class="w-90 lt-md:w-auto" size="md" />
-    <SDateRangePicker class="w-90 lt-md:w-auto" size="lg" />
-    <SDateRangePicker class="w-90 lt-md:w-auto" size="xl" />
-    <SDateRangePicker class="w-90 lt-md:w-auto" size="2xl" />
+    <SDateRangePicker v-for="item in themeSizeOptions" :key="item.value" :size="item.value" />
   </div>
 </template>

@@ -300,7 +300,7 @@ playground:
       color: 颜色
       size: 尺寸
       variant: 变体
-    range-calendar:
+    calendar-range:
       basic: 基础
       custom-styling: 自定义样式
       disabled: 禁用

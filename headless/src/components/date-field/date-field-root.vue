@@ -15,13 +15,12 @@ import {
   syncSegmentValues,
   useDateFormatter
 } from '../../date';
-import type { DateValue, SegmentPart } from '../../date';
-import { isNullish } from '../../shared';
+import { isNullish, transformPropsToContext } from '../../shared';
 import { useDirection, useLocale } from '../config-provider/context';
 import { Primitive } from '../primitive';
 import { VisuallyHidden } from '../visually-hidden';
 import { provideDateFieldRootContext, useDateFieldUi } from './context';
-import type { DateFieldRootEmits, DateFieldRootProps } from './types';
+import type { DateFieldRootProps, DateFieldRootEmits, DateFieldRootSlots } from './types';
 
 defineOptions({
   name: 'DateFieldRoot'
@@ -42,13 +41,7 @@ const props = withDefaults(defineProps<DateFieldRootProps>(), {
 
 const emit = defineEmits<DateFieldRootEmits>();
 
-defineSlots<{
-  default?: (props: {
-    modelValue: DateValue | undefined;
-    segments: { part: SegmentPart; value: string }[];
-    isInvalid: boolean;
-  }) => any;
-}>();
+defineSlots<DateFieldRootSlots>();
 
 const cls = useDateFieldUi('root');
 const [rootElement, setRootElement] = useForwardElement();
@@ -79,7 +72,8 @@ const placeholder = useControllableState(
   props.defaultPlaceholder ?? defaultDate.copy()
 );
 
-const step = computed(() => normalizeDateStep(props));
+const step = computed(() => normalizeDateStep(props.step));
+
 const inferredGranularity = computed(() => {
   if (props.granularity) {
     return hasTime(placeholder.value) ? props.granularity : 'day';
@@ -196,24 +190,14 @@ const handleRootKeydown = (event: KeyboardEvent) => {
 };
 
 provideDateFieldRootContext({
-  locale,
-  dir,
+  ...transformPropsToContext(props, ['disabled', 'readonly']),
   modelValue,
   placeholder,
-  isDateUnavailable: props.isDateUnavailable,
   isInvalid,
-  disabled: computed(() => props.disabled),
-  readonly: computed(() => props.readonly),
   formatter,
   hourCycle: props.hourCycle,
   step,
   segmentValues,
-  segmentContents,
-  inputType,
-  inputValue,
-  inputMaxValue,
-  inputMinValue,
-  elements: segmentElements,
   focusNext() {
     moveFocus('next');
   },

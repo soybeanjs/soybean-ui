@@ -9,7 +9,6 @@ const value = shallowRef(new Time(18, 15, 0));
 <template>
   <STimeField
     v-model="value"
-    class="w-60 lt-md:w-auto"
     aria-label="Styled time"
     :ui="{
       root: 'rounded-xl border-primary/40 bg-primary/4',

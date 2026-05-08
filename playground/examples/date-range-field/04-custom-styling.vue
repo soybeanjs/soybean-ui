@@ -12,7 +12,6 @@ const value = shallowRef({
 <template>
   <SDateRangeField
     v-model="value"
-    class="w-100 lt-md:w-auto"
     size="lg"
     separator="→"
     aria-label="Styled date range"

@@ -1,58 +1,105 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { useForwardListeners, useOmitProps } from '../../composables';
+import { useForwardListeners, usePickProps, useOmitProps } from '../../composables';
+import type { DateValue } from '../../date';
 import Icon from '../_icon/icon.vue';
-import PopoverTrigger from '../popover/popover-trigger.vue';
-import DatePickerContent from './date-picker-content.vue';
-import DatePickerRoot from './date-picker-root.vue';
-import type { DatePickerCompactEmits, DatePickerCompactProps, DatePickerCompactSlots } from './types';
+import PopoverCompact from '../popover/popover-compact.vue';
+import DateFieldCompact from '../date-field/date-field-compact.vue';
+import type { DatePickerCompactEmits, DatePickerCompactProps } from './types';
 
 defineOptions({
   name: 'DatePickerCompact'
 });
 
 const props = withDefaults(defineProps<DatePickerCompactProps>(), {
-  open: undefined,
-  triggerPlaceholder: 'Pick a date'
+  open: undefined
 });
 
 const emit = defineEmits<DatePickerCompactEmits>();
 
-defineSlots<DatePickerCompactSlots>();
-
 const listeners = useForwardListeners(emit);
 
-const forwardedProps = useOmitProps(props, [
-  'triggerPlaceholder',
-  'triggerProps',
-  'popupProps',
+const popoverProps = usePickProps(props, [
+  'open',
+  'defaultOpen',
+  'modal',
+  'disabled',
+  'placement',
+  'showArrow',
   'portalProps',
-  'positionerProps'
+  'positionerProps',
+  'popupProps',
+  'arrowProps',
+  'closeProps'
 ]);
 
-const mergedPositionerProps = computed(() => {
-  return {
-    side: 'bottom' as const,
-    align: 'start' as const,
-    sideOffset: 4,
-    portalProps: props.portalProps,
-    popupProps: props.popupProps,
-    ...props.positionerProps
-  };
-});
+const dateFieldProps = usePickProps(
+  props,
+  [
+    'dir',
+    'locale',
+    'modelValue',
+    'defaultValue',
+    'placeholder',
+    'defaultPlaceholder',
+    'disabled',
+    'readonly',
+    'maxValue',
+    'minValue',
+    'isDateUnavailable'
+  ],
+  computed(() => ({ ...props.dateFieldProps }))
+);
+
+const triggerProps = computed(() => ({
+  ...props.triggerProps,
+  asChild: props.triggerProps?.asChild ?? false
+}));
+
+const calendarProps = useOmitProps(props, [
+  'open',
+  'defaultOpen',
+  'modal',
+  'placement',
+  'showArrow',
+  'triggerProps',
+  'portalProps',
+  'positionerProps',
+  'popupProps',
+  'arrowProps',
+  'closeProps'
+]);
+
+const onUpdateModelValue = (value: DateValue | undefined) => {
+  emit('update:modelValue', value);
+};
+
+const onUpdatePlaceholder = (placeholder: DateValue) => {
+  emit('update:placeholder', placeholder);
+};
 </script>
 
 <template>
-  <DatePickerRoot v-slot="slotProps" v-bind="forwardedProps" v-on="listeners">
-    <PopoverTrigger v-bind="triggerProps">
-      <slot name="trigger" :open="slotProps.open" :model-value="slotProps.modelValue">
-        <Icon icon="lucide:calendar" />
-        <span v-if="slotProps.modelValue">{{ slotProps.modelValue.toString() }}</span>
-        <span v-else>{{ triggerPlaceholder }}</span>
-      </slot>
-    </PopoverTrigger>
-    <DatePickerContent v-slot="contentSlotProps" v-bind="mergedPositionerProps">
-      <slot v-bind="contentSlotProps" />
-    </DatePickerContent>
-  </DatePickerRoot>
+  <DateFieldCompact
+    v-bind="dateFieldProps"
+    @update:model-value="emit('update:modelValue', $event)"
+    @update:placeholder="emit('update:placeholder', $event)"
+  >
+    <template #trailing>
+      <PopoverCompact v-bind="popoverProps" :trigger-props="triggerProps" v-on="listeners">
+        <template #trigger>
+          <Icon icon="lucide:calendar" />
+        </template>
+        <template #default="{ open, close }">
+          <slot
+            :open="open"
+            :close="close"
+            :calendar-props="calendarProps"
+            :on-update-model-value="onUpdateModelValue"
+            :on-update-placeholder="onUpdatePlaceholder"
+          />
+        </template>
+      </PopoverCompact>
+    </template>
+  </DateFieldCompact>
 </template>

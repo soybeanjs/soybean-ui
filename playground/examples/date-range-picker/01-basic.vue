@@ -6,5 +6,5 @@ const range = shallowRef();
 </script>
 
 <template>
-  <SDateRangePicker v-model="range" class="w-90 lt-md:w-auto" />
+  <SDateRangePicker v-model="range" />
 </template>

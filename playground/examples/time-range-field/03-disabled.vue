@@ -9,5 +9,5 @@ const value = {
 </script>
 
 <template>
-  <STimeRangeField class="w-90 lt-md:w-auto" :model-value="value" disabled aria-label="Disabled time range" />
+  <STimeRangeField :model-value="value" disabled aria-label="Disabled time range" />
 </template>

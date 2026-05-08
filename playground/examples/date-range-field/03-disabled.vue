@@ -10,5 +10,5 @@ const value = shallowRef({
 </script>
 
 <template>
-  <SDateRangeField v-model="value" class="w-90 lt-md:w-auto" disabled aria-label="Disabled date range" />
+  <SDateRangeField v-model="value" disabled aria-label="Disabled date range" />
 </template>

@@ -5476,7 +5476,7 @@
             "aschild": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
             "date": "Date."
           },
-          "props": "Properties for the RangeCalendarCell component."
+          "props": "Properties for the CalendarRangeCell component."
         },
         "rangecalendarcelltriggerprops": {
           "members": {
@@ -5485,7 +5485,7 @@
             "day": "Day.",
             "month": "Month."
           },
-          "props": "Properties for the RangeCalendarCellTrigger component."
+          "props": "Properties for the CalendarRangeCellTrigger component."
         },
         "rangecalendarcompactemits": {
           "callables": {
@@ -5493,7 +5493,7 @@
             "update_placeholder": "Emitted when the placeholder value changes.",
             "update_startvalue": "Emitted when the start value changes."
           },
-          "emits": "Events for the RangeCalendarCompact component."
+          "emits": "Events for the CalendarRangeCompact component."
         },
         "rangecalendarcompactprops": {
           "members": {
@@ -5538,7 +5538,7 @@
             "weekdayformat": "Weekday format.",
             "weekstartson": "Week starts on."
           },
-          "props": "Properties for the RangeCalendarCompact component."
+          "props": "Properties for the CalendarRangeCompact component."
         },
         "rangecalendarcompactslots": {
           "callables": {
@@ -5549,56 +5549,56 @@
             "next": "Custom content for the next slot.",
             "prev": "Custom content for the prev slot."
           },
-          "slots": "Slots for the RangeCalendarCompact component."
+          "slots": "Slots for the CalendarRangeCompact component."
         },
         "rangecalendargridbodyprops": {
           "members": {
             "as": "The element or component this component should render as. Can be overwrite by `asChild`",
             "aschild": "Change the default rendered element for the one passed as a child, merging their props and behavior."
           },
-          "props": "Properties for the RangeCalendarGridBody component."
+          "props": "Properties for the CalendarRangeGridBody component."
         },
         "rangecalendargridheadprops": {
           "members": {
             "as": "The element or component this component should render as. Can be overwrite by `asChild`",
             "aschild": "Change the default rendered element for the one passed as a child, merging their props and behavior."
           },
-          "props": "Properties for the RangeCalendarGridHead component."
+          "props": "Properties for the CalendarRangeGridHead component."
         },
         "rangecalendargridprops": {
           "members": {
             "as": "The element or component this component should render as. Can be overwrite by `asChild`",
             "aschild": "Change the default rendered element for the one passed as a child, merging their props and behavior."
           },
-          "props": "Properties for the RangeCalendarGrid component."
+          "props": "Properties for the CalendarRangeGrid component."
         },
         "rangecalendargridrowprops": {
           "members": {
             "as": "The element or component this component should render as. Can be overwrite by `asChild`",
             "aschild": "Change the default rendered element for the one passed as a child, merging their props and behavior."
           },
-          "props": "Properties for the RangeCalendarGridRow component."
+          "props": "Properties for the CalendarRangeGridRow component."
         },
         "rangecalendarheadcellprops": {
           "members": {
             "as": "The element or component this component should render as. Can be overwrite by `asChild`",
             "aschild": "Change the default rendered element for the one passed as a child, merging their props and behavior."
           },
-          "props": "Properties for the RangeCalendarHeadCell component."
+          "props": "Properties for the CalendarRangeHeadCell component."
         },
         "rangecalendarheaderprops": {
           "members": {
             "as": "The element or component this component should render as. Can be overwrite by `asChild`",
             "aschild": "Change the default rendered element for the one passed as a child, merging their props and behavior."
           },
-          "props": "Properties for the RangeCalendarHeader component."
+          "props": "Properties for the CalendarRangeHeader component."
         },
         "rangecalendarheadingprops": {
           "members": {
             "as": "The element or component this component should render as. Can be overwrite by `asChild`",
             "aschild": "Change the default rendered element for the one passed as a child, merging their props and behavior."
           },
-          "props": "Properties for the RangeCalendarHeading component."
+          "props": "Properties for the CalendarRangeHeading component."
         },
         "rangecalendarnextprops": {
           "callables": {
@@ -5609,7 +5609,7 @@
             "aschild": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
             "nextpage": "Next page."
           },
-          "props": "Properties for the RangeCalendarNext component."
+          "props": "Properties for the CalendarRangeNext component."
         },
         "rangecalendarprevprops": {
           "callables": {
@@ -5620,7 +5620,7 @@
             "aschild": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
             "prevpage": "Prev page."
           },
-          "props": "Properties for the RangeCalendarPrev component."
+          "props": "Properties for the CalendarRangePrev component."
         },
         "rangecalendarrootemits": {
           "callables": {
@@ -5628,7 +5628,7 @@
             "update_placeholder": "Emitted when the placeholder value changes.",
             "update_startvalue": "Emitted when the start value changes."
           },
-          "emits": "Events for the RangeCalendarRoot component."
+          "emits": "Events for the CalendarRangeRoot component."
         },
         "rangecalendarrootprops": {
           "members": {
@@ -5662,9 +5662,9 @@
             "weekdayformat": "Weekday format.",
             "weekstartson": "Week starts on."
           },
-          "props": "Properties for the RangeCalendarRoot component."
+          "props": "Properties for the CalendarRangeRoot component."
         },
-        "rangecalendarui": "UI class overrides for the RangeCalendar component.",
+        "rangecalendarui": "UI class overrides for the CalendarRange component.",
         "type": ""
       },
       "headless_src_components_scroll_area_types": {
@@ -10774,7 +10774,7 @@
             "today": "Whether today.",
             "unavailable": "Whether unavailable."
           },
-          "slotprops": "Slot properties for the RangeCalendarDay component."
+          "slotprops": "Slot properties for the CalendarRangeDay component."
         },
         "rangecalendaremits": {
           "callables": {
@@ -10782,7 +10782,7 @@
             "update_placeholder": "Emitted when the placeholder value changes.",
             "update_startvalue": "Emitted when the start value changes."
           },
-          "emits": "Events for the RangeCalendar component."
+          "emits": "Events for the CalendarRange component."
         },
         "rangecalendarheadcellslotprops": {
           "members": {
@@ -10790,7 +10790,7 @@
             "index": "Index of the current item.",
             "label": "Label text rendered by the component."
           },
-          "slotprops": "Slot properties for the RangeCalendarHeadCell component."
+          "slotprops": "Slot properties for the CalendarRangeHeadCell component."
         },
         "rangecalendarprops": {
           "members": {
@@ -10838,7 +10838,7 @@
             "weekdayformat": "Weekday format.",
             "weekstartson": "Week starts on."
           },
-          "props": "Properties for the RangeCalendar component."
+          "props": "Properties for the CalendarRange component."
         },
         "rangecalendarslots": {
           "callables": {
@@ -10849,7 +10849,7 @@
             "next": "Custom content for the next slot.",
             "prev": "Custom content for the prev slot."
           },
-          "slots": "Slots for the RangeCalendar component."
+          "slots": "Slots for the CalendarRange component."
         },
         "type": ""
       },

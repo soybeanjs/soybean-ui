@@ -4,7 +4,6 @@ import { SDateRangePicker } from '@soybeanjs/ui';
 
 <template>
   <SDateRangePicker
-    class="w-90 lt-md:w-auto"
     :ui="{
       trigger: 'border-primary hover:bg-primary/10',
       popup: 'border-primary/20'

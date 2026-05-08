@@ -5476,7 +5476,7 @@
             "aschild": "为作为子元素传递的元素更改默认渲染元素，合并它们的道具和行为。",
             "date": "日期"
           },
-          "props": "RangeCalendarCell 组件的属性。"
+          "props": "CalendarRangeCell 组件的属性。"
         },
         "rangecalendarcelltriggerprops": {
           "members": {
@@ -5485,7 +5485,7 @@
             "day": "日。",
             "month": "月"
           },
-          "props": "RangeCalendarCellTrigger 组件的属性。"
+          "props": "CalendarRangeCellTrigger 组件的属性。"
         },
         "rangecalendarcompactemits": {
           "callables": {
@@ -5493,7 +5493,7 @@
             "update_placeholder": "在占位符值发生变化时输出。",
             "update_startvalue": "当起始值发生变化时发出。"
           },
-          "emits": "RangeCalendarCompact 组件的事件。"
+          "emits": "CalendarRangeCompact 组件的事件。"
         },
         "rangecalendarcompactprops": {
           "members": {
@@ -5538,7 +5538,7 @@
             "weekdayformat": "平日格式。",
             "weekstartson": "本周开始"
           },
-          "props": "RangeCalendarCompact 组件的属性。"
+          "props": "CalendarRangeCompact 组件的属性。"
         },
         "rangecalendarcompactslots": {
           "callables": {
@@ -5549,56 +5549,56 @@
             "next": "为下一个插槽定制内容。",
             "prev": "自定义 prev 插槽的内容。"
           },
-          "slots": "RangeCalendarCompact 组件的插槽。"
+          "slots": "CalendarRangeCompact 组件的插槽。"
         },
         "rangecalendargridbodyprops": {
           "members": {
             "as": "该组件应呈现为的元素或组件。可被 `asChild` 改写",
             "aschild": "为作为子元素传递的元素更改默认渲染元素，合并它们的道具和行为。"
           },
-          "props": "RangeCalendarGridBody 组件的属性。"
+          "props": "CalendarRangeGridBody 组件的属性。"
         },
         "rangecalendargridheadprops": {
           "members": {
             "as": "该组件应呈现为的元素或组件。可被 `asChild` 改写",
             "aschild": "为作为子元素传递的元素更改默认渲染元素，合并它们的道具和行为。"
           },
-          "props": "RangeCalendarGridHead 组件的属性。"
+          "props": "CalendarRangeGridHead 组件的属性。"
         },
         "rangecalendargridprops": {
           "members": {
             "as": "该组件应呈现为的元素或组件。可被 `asChild` 改写",
             "aschild": "为作为子元素传递的元素更改默认渲染元素，合并它们的道具和行为。"
           },
-          "props": "RangeCalendarGrid 组件的属性。"
+          "props": "CalendarRangeGrid 组件的属性。"
         },
         "rangecalendargridrowprops": {
           "members": {
             "as": "该组件应呈现为的元素或组件。可被 `asChild` 改写",
             "aschild": "为作为子元素传递的元素更改默认渲染元素，合并它们的道具和行为。"
           },
-          "props": "RangeCalendarGridRow 组件的属性。"
+          "props": "CalendarRangeGridRow 组件的属性。"
         },
         "rangecalendarheadcellprops": {
           "members": {
             "as": "该组件应呈现为的元素或组件。可被 `asChild` 改写",
             "aschild": "为作为子元素传递的元素更改默认渲染元素，合并它们的道具和行为。"
           },
-          "props": "RangeCalendarHeadCell 组件的属性。"
+          "props": "CalendarRangeHeadCell 组件的属性。"
         },
         "rangecalendarheaderprops": {
           "members": {
             "as": "该组件应呈现为的元素或组件。可被 `asChild` 改写",
             "aschild": "为作为子元素传递的元素更改默认渲染元素，合并它们的道具和行为。"
           },
-          "props": "RangeCalendarHeader 组件的属性。"
+          "props": "CalendarRangeHeader 组件的属性。"
         },
         "rangecalendarheadingprops": {
           "members": {
             "as": "该组件应呈现为的元素或组件。可被 `asChild` 改写",
             "aschild": "为作为子元素传递的元素更改默认渲染元素，合并它们的道具和行为。"
           },
-          "props": "RangeCalendarHeading 组件的属性。"
+          "props": "CalendarRangeHeading 组件的属性。"
         },
         "rangecalendarnextprops": {
           "callables": {
@@ -5609,7 +5609,7 @@
             "aschild": "为作为子元素传递的元素更改默认渲染元素，合并它们的道具和行为。",
             "nextpage": "下一页"
           },
-          "props": "RangeCalendarNext 组件的属性。"
+          "props": "CalendarRangeNext 组件的属性。"
         },
         "rangecalendarprevprops": {
           "callables": {
@@ -5620,7 +5620,7 @@
             "aschild": "为作为子元素传递的元素更改默认渲染元素，合并它们的道具和行为。",
             "prevpage": "上一页"
           },
-          "props": "RangeCalendarPrev 组件的属性。"
+          "props": "CalendarRangePrev 组件的属性。"
         },
         "rangecalendarrootemits": {
           "callables": {
@@ -5628,7 +5628,7 @@
             "update_placeholder": "在占位符值发生变化时输出。",
             "update_startvalue": "当起始值发生变化时发出。"
           },
-          "emits": "RangeCalendarRoot 组件的事件。"
+          "emits": "CalendarRangeRoot 组件的事件。"
         },
         "rangecalendarrootprops": {
           "members": {
@@ -5662,9 +5662,9 @@
             "weekdayformat": "平日格式。",
             "weekstartson": "本周开始"
           },
-          "props": "RangeCalendarRoot 组件的属性。"
+          "props": "CalendarRangeRoot 组件的属性。"
         },
-        "rangecalendarui": "RangeCalendar 组件的 UI 类重载。",
+        "rangecalendarui": "CalendarRange 组件的 UI 类重载。",
         "type": ""
       },
       "headless_src_components_scroll_area_types": {
@@ -10774,7 +10774,7 @@
             "today": "无论今天",
             "unavailable": "是否不可用。"
           },
-          "slotprops": "RangeCalendarDay 组件的槽属性。"
+          "slotprops": "CalendarRangeDay 组件的槽属性。"
         },
         "rangecalendaremits": {
           "callables": {
@@ -10782,7 +10782,7 @@
             "update_placeholder": "在占位符值发生变化时输出。",
             "update_startvalue": "当起始值发生变化时发出。"
           },
-          "emits": "RangeCalendar 组件的事件。"
+          "emits": "CalendarRange 组件的事件。"
         },
         "rangecalendarheadcellslotprops": {
           "members": {
@@ -10790,7 +10790,7 @@
             "index": "当前项目的索引。",
             "label": "为组件呈现的文本添加标签。"
           },
-          "slotprops": "RangeCalendarHeadCell 组件的槽属性。"
+          "slotprops": "CalendarRangeHeadCell 组件的槽属性。"
         },
         "rangecalendarprops": {
           "members": {
@@ -10838,7 +10838,7 @@
             "weekdayformat": "平日格式。",
             "weekstartson": "本周开始"
           },
-          "props": "RangeCalendar 组件的属性。"
+          "props": "CalendarRange 组件的属性。"
         },
         "rangecalendarslots": {
           "callables": {
@@ -10849,7 +10849,7 @@
             "next": "为下一个插槽定制内容。",
             "prev": "自定义 prev 插槽的内容。"
           },
-          "slots": "RangeCalendar 组件的插槽。"
+          "slots": "CalendarRange 组件的插槽。"
         },
         "type": ""
       },

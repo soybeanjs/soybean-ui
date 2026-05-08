@@ -2,33 +2,24 @@
 import { computed, nextTick } from 'vue';
 import { getLocalTimeZone, isSameDay, isSameMonth, isToday } from '@internationalized/date';
 import type { DateValue } from '@internationalized/date';
-import { useForwardElement } from '../../composables';
+import { useOmitProps, useForwardElement } from '../../composables';
 import { toDate } from '../../date';
-import { Primitive } from '../primitive';
+import Button from '../button/button.vue';
 import { useCalendarRootContext, useCalendarUi } from './context';
-import type { CalendarCellTriggerProps } from './types';
+import type { CalendarCellTriggerProps, CalendarCellTriggerSlots } from './types';
 
 defineOptions({
   name: 'CalendarCellTrigger'
 });
 
-const props = withDefaults(defineProps<CalendarCellTriggerProps>(), {
-  as: 'button'
-});
+const props = defineProps<CalendarCellTriggerProps>();
 
-defineSlots<{
-  default?: (props: {
-    dayValue: string;
-    disabled: boolean;
-    selected: boolean;
-    today: boolean;
-    outsideView: boolean;
-    outsideVisibleView: boolean;
-    unavailable: boolean;
-  }) => any;
-}>();
+defineSlots<CalendarCellTriggerSlots>();
+
+const forwardedProps = useOmitProps(props, ['day', 'month']);
 
 const cls = useCalendarUi('cellTrigger');
+
 const {
   locale,
   formatter,
@@ -71,7 +62,7 @@ const isDateToday = computed(() => isToday(props.day, getLocalTimeZone()));
 const isOutsideView = computed(() => !isSameMonth(props.day, props.month));
 const isOutsideVisibleView = computed(() => checkOutsideVisibleView(props.day));
 const isDisabled = computed(() => {
-  return isDateDisabled(props.day) || (disableDaysOutsideCurrentView.value && isOutsideView.value);
+  return isDateDisabled(props.day) || Boolean(disableDaysOutsideCurrentView.value && isOutsideView.value);
 });
 const isSelectedDate = computed(() => isDateSelected(props.day));
 const isFocusedDate = computed(() => {
@@ -142,10 +133,6 @@ const shiftFocus = (day: DateValue, add: number) => {
 };
 
 const handleClick = () => {
-  if (isDisabled.value || isUnavailable.value) {
-    return;
-  }
-
   changeDate(props.day);
 };
 
@@ -185,14 +172,12 @@ const handleKeydown = (event: KeyboardEvent) => {
 </script>
 
 <template>
-  <Primitive
+  <Button
     :ref="setElement"
-    :as="as"
-    :as-child="asChild"
-    :aria-disabled="as === 'button' ? undefined : isDisabled || isUnavailable ? true : undefined"
-    :aria-label="labelText"
+    v-bind="forwardedProps"
     :class="cls"
-    :data-disabled="isDisabled ? '' : undefined"
+    :disabled="isDisabled || isUnavailable"
+    :aria-label="labelText"
     :data-focused="isFocusedDate ? '' : undefined"
     :data-outside-view="isOutsideView ? '' : undefined"
     :data-outside-visible-view="isOutsideVisibleView ? '' : undefined"
@@ -200,17 +185,14 @@ const handleKeydown = (event: KeyboardEvent) => {
     :data-today="isDateToday ? '' : undefined"
     :data-unavailable="isUnavailable ? '' : undefined"
     :data-value="day.toString()"
-    :disabled="as === 'button' ? isDisabled || isUnavailable : undefined"
-    :role="as === 'button' ? undefined : 'button'"
     :tabindex="isFocusedDate ? 0 : isOutsideView || isDisabled ? undefined : -1"
-    :type="as === 'button' ? 'button' : undefined"
     data-slot="cell-trigger"
     @click="handleClick"
     @keydown="handleKeydown"
   >
     <slot
       :day-value="dayValue"
-      :disabled="Boolean(isDisabled)"
+      :disabled="isDisabled"
       :outside-view="isOutsideView"
       :outside-visible-view="isOutsideVisibleView"
       :selected="isSelectedDate"
@@ -219,5 +201,5 @@ const handleKeydown = (event: KeyboardEvent) => {
     >
       {{ dayValue }}
     </slot>
-  </Primitive>
+  </Button>
 </template>

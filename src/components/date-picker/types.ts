@@ -1,9 +1,5 @@
-import type {
-  DatePickerUi,
-  DatePickerCompactProps,
-  DatePickerCompactEmits,
-  DatePickerCompactSlots
-} from '@soybeanjs/headless/date-picker';
+import type { DatePickerUi, DatePickerCompactProps, DatePickerCompactEmits } from '@soybeanjs/headless/date-picker';
+import type { CalendarUi } from '@soybeanjs/headless/calendar';
 import type { ClassValue } from '@soybeanjs/headless/types';
 import type { ThemeSize } from '@/theme';
 
@@ -23,14 +19,13 @@ export interface DatePickerProps extends DatePickerCompactProps {
    * Per-slot class overrides for the component.
    */
   ui?: Partial<DatePickerUi>;
+  /**
+   * Per-slot class overrides for the Calendar component within the DatePicker.
+   */
+  calendarUi?: Partial<CalendarUi>;
 }
 
 /**
  * Events for the DatePicker component.
  */
 export type DatePickerEmits = DatePickerCompactEmits;
-
-/**
- * Slots for the DatePicker component.
- */
-export type DatePickerSlots = DatePickerCompactSlots;

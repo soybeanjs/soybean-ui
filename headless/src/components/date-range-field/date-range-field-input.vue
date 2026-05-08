@@ -17,8 +17,8 @@ const props = withDefaults(defineProps<DateRangeFieldInputProps>(), {
 
 const cls = useDateRangeFieldUi('input');
 const {
-  disabled: rootDisabled,
-  readonly: rootReadonly,
+  disabled,
+  readonly,
   placeholder,
   hourCycle,
   step,
@@ -33,8 +33,6 @@ const {
 
 const hasLeftFocus = ref(true);
 const lastKeyZero = ref(false);
-const disabled = computed(() => Boolean(rootDisabled.value));
-const readonly = computed(() => Boolean(rootReadonly.value));
 
 const segmentValues = computed(() => {
   return props.type === 'start' ? startSegmentValues.value : endSegmentValues.value;

@@ -4,7 +4,7 @@ import { DateFieldCompact, provideDateFieldUi } from '@soybeanjs/headless/date-f
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
 import { mergeSlotVariants } from '@/theme';
 import { dateFieldVariants } from './variants';
-import type { DateFieldEmits, DateFieldProps } from './types';
+import type { DateFieldProps, DateFieldEmits } from './types';
 
 defineOptions({
   name: 'SDateField'
