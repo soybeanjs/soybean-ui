@@ -33,6 +33,7 @@ onTrigger(() => {
   <Button
     :ref="setIncrementElement"
     v-bind="props"
+    data-slot="increment"
     :class="cls"
     tabindex="-1"
     aria-label="Increase"

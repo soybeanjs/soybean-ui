@@ -1,11 +1,12 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { InputControl, InputRoot, provideInputUi } from '@soybeanjs/headless/input';
-import { useControllableState, useForwardElement, useOmitProps } from '@soybeanjs/headless/composables';
-import { mergeSlotVariants } from '@/theme';
+import { useOmitProps } from '@soybeanjs/headless/composables';
+import { PasswordCompact, providePasswordUi } from '@soybeanjs/headless/password';
+import { keysOf } from '@soybeanjs/utils';
+import { mergeBaseVariants, mergeSlotVariants, miniSizeMap } from '@/theme';
+import { buttonIconVariants } from '../button/variants';
 import { inputVariants } from '../input/variants';
-import Icon from '../icon/icon.vue';
-import type { PasswordEmits, PasswordProps } from './types';
+import type { PasswordEmits, PasswordProps, PasswordSlots } from './types';
 
 defineOptions({
   name: 'SPassword'
@@ -17,41 +18,43 @@ const props = withDefaults(defineProps<PasswordProps>(), {
 
 const emit = defineEmits<PasswordEmits>();
 
-const [_, setInputElement] = useForwardElement(el => props.inputRef?.(el as HTMLInputElement));
+const forwardedProps = useOmitProps(props, ['class', 'size', 'ui']);
 
-const forwardedProps = useOmitProps(props, ['class', 'size', 'ui', 'clearable', 'visible', 'inputRef', 'controlProps']);
+const slots = defineSlots<PasswordSlots>();
 
-const visible = useControllableState(
-  () => props.visible,
-  value => {
-    emit('update:visible', value);
-  },
-  false
-);
-
-const toggleVisible = () => {
-  visible.value = !visible.value;
-};
+const slotNames = computed(() => keysOf(slots));
 
 const ui = computed(() => {
-  const variants = inputVariants({
+  const baseVariants = inputVariants({
     size: props.size
+  });
+
+  const miniSize = miniSizeMap[props.size ?? 'md'];
+
+  const variants = mergeBaseVariants(baseVariants, {
+    clear: buttonIconVariants({
+      size: miniSize,
+      shape: 'circle'
+    }),
+    visible: buttonIconVariants({
+      size: miniSize
+    })
   });
 
   return mergeSlotVariants(variants, props.ui, { root: props.class });
 });
 
-provideInputUi(ui);
+providePasswordUi(ui);
 </script>
 
 <template>
-  <InputRoot v-slot="{ clear }" v-bind="forwardedProps" @update:model-value="emit('update:modelValue', $event)">
-    <slot name="leading" />
-    <InputControl v-bind="controlProps" :ref="setInputElement" :type="visible ? 'text' : 'password'" />
-    <Icon v-if="clearable" icon="lucide:x" :class="ui.clearable" @click="clear" />
-    <slot name="trailing" />
-    <slot name="visible" :visible="visible" :toggle="toggleVisible">
-      <Icon :icon="visible ? 'lucide:eye' : 'lucide:eye-off'" :class="ui.visible" @click="toggleVisible" />
-    </slot>
-  </InputRoot>
+  <PasswordCompact
+    v-bind="forwardedProps"
+    @update:model-value="emit('update:modelValue', $event)"
+    @update:visible="emit('update:visible', $event)"
+  >
+    <template v-for="slotName in slotNames" :key="slotName" #[slotName]="slotProps">
+      <slot :name="slotName" v-bind="slotProps" />
+    </template>
+  </PasswordCompact>
 </template>

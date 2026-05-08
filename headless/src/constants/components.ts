@@ -258,7 +258,13 @@ export const components = {
     'HoverCardCompact'
   ],
   input: ['InputCompact', 'InputRoot', 'InputControl', 'InputClear'],
-  inputNumber: ['InputNumberRoot', 'InputNumberControl', 'InputNumberIncrement', 'InputNumberDecrement'],
+  inputNumber: [
+    'InputNumberCompact',
+    'InputNumberRoot',
+    'InputNumberControl',
+    'InputNumberIncrement',
+    'InputNumberDecrement'
+  ],
   inputOtp: ['InputOtpCompact', 'InputOtpInput', 'InputOtpPositioner', 'InputOtpRoot'],
   kbd: ['Kbd'],
   label: ['Label'],
@@ -356,6 +362,7 @@ export const components = {
     'PaginationEllipsis',
     'PaginationCompact'
   ],
+  password: ['PasswordCompact'],
   popover: [
     'PopoverCompact',
     'PopoverRoot',

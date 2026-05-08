@@ -1,17 +1,12 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import {
-  InputNumberControl,
-  InputNumberDecrement,
-  InputNumberIncrement,
-  InputNumberRoot,
-  provideInputNumberUi
-} from '@soybeanjs/headless/input-number';
-import { useForwardElement, useOmitProps } from '@soybeanjs/headless/composables';
-import { mergeSlotVariants } from '@/theme';
-import Icon from '../icon/icon.vue';
+import { InputNumberCompact, provideInputNumberUi } from '@soybeanjs/headless/input-number';
+import { useOmitProps } from '@soybeanjs/headless/composables';
+import { keysOf } from '@soybeanjs/utils';
+import { mergeBaseVariants, mergeSlotVariants, miniSizeMap } from '@/theme';
+import { buttonIconVariants } from '../button/variants';
 import { inputNumberVariants } from './variants';
-import type { InputNumberEmits, InputNumberProps } from './types';
+import type { InputNumberEmits, InputNumberProps, InputNumberSlots } from './types';
 
 defineOptions({
   name: 'SInputNumber'
@@ -21,24 +16,24 @@ const props = defineProps<InputNumberProps>();
 
 const emit = defineEmits<InputNumberEmits>();
 
-const [_, setInputElement] = useForwardElement(el => props.inputRef?.(el as HTMLInputElement));
+const forwardedProps = useOmitProps(props, ['class', 'size', 'ui', 'center']);
 
-const forwardedProps = useOmitProps(props, [
-  'class',
-  'size',
-  'ui',
-  'center',
-  'clearable',
-  'inputRef',
-  'controlProps',
-  'incrementProps',
-  'decrementProps'
-]);
+const slots = defineSlots<InputNumberSlots>();
+
+const slotNames = computed(() => keysOf(slots));
 
 const ui = computed(() => {
-  const variants = inputNumberVariants({
+  const baseVariants = inputNumberVariants({
     size: props.size,
     center: props.center
+  });
+
+  const miniSize = miniSizeMap[props.size ?? 'md'];
+
+  const variants = mergeBaseVariants(baseVariants, {
+    decrement: buttonIconVariants({ size: miniSize }),
+    increment: buttonIconVariants({ size: miniSize }),
+    clear: buttonIconVariants({ size: miniSize, shape: 'circle' })
   });
 
   return mergeSlotVariants(variants, props.ui, { root: props.class });
@@ -48,20 +43,9 @@ provideInputNumberUi(ui);
 </script>
 
 <template>
-  <InputNumberRoot v-slot="{ clear }" v-bind="forwardedProps" @update:model-value="emit('update:modelValue', $event)">
-    <slot name="leading" />
-    <InputNumberControl v-bind="controlProps" :ref="setInputElement" />
-    <Icon v-if="clearable" icon="lucide:x" :class="ui.clearable" @click="clear" />
-    <slot name="trailing" />
-    <InputNumberDecrement v-bind="decrementProps">
-      <slot name="decrement">
-        <Icon icon="lucide:minus" />
-      </slot>
-    </InputNumberDecrement>
-    <InputNumberIncrement v-bind="incrementProps">
-      <slot name="increment">
-        <Icon icon="lucide:plus" />
-      </slot>
-    </InputNumberIncrement>
-  </InputNumberRoot>
+  <InputNumberCompact v-bind="forwardedProps" @update:model-value="emit('update:modelValue', $event)">
+    <template v-for="slotName in slotNames" :key="slotName" #[slotName]="slotProps">
+      <slot :name="slotName" v-bind="slotProps" />
+    </template>
+  </InputNumberCompact>
 </template>

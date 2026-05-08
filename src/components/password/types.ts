@@ -1,15 +1,11 @@
-import type { InputControlProps, InputRootEmits, InputRootProps, InputUi } from '@soybeanjs/headless/input';
+import type { PasswordCompactEmits, PasswordCompactProps, PasswordCompactSlots, PasswordUi } from '@soybeanjs/headless/password';
 import type { ClassValue } from '@soybeanjs/headless/types';
 import type { ThemeSize } from '@/theme';
-
-type PasswordUiSlot = 'clearable' | 'visible';
-
-type PasswordUi = InputUi & Record<PasswordUiSlot, ClassValue>;
 
 /**
  * Properties for the Password component.
  */
-export interface PasswordProps extends InputRootProps {
+export interface PasswordProps extends PasswordCompactProps {
   /**
    * Additional class names applied to the root element.
    */
@@ -22,28 +18,14 @@ export interface PasswordProps extends InputRootProps {
    * Per-slot class overrides for the component.
    */
   ui?: Partial<PasswordUi>;
-  /** Whether to show the password */
-  visible?: boolean;
-  /** Whether to show the clear icon */
-  clearable?: boolean;
-  /**
-   * The function to set the input element.
-   *
-   * @param el - The input element.
-   */
-  inputRef?: (el: HTMLInputElement) => void;
-  /**
-   * The props of the input extra props.
-   */
-  controlProps?: InputControlProps;
 }
 
 /**
  * Events for the Password component.
  */
-export type PasswordEmits = InputRootEmits & {
-  /**
-   * Emitted when the visible state changes.
-   */
-  'update:visible': [visible: boolean];
-};
+export type PasswordEmits = PasswordCompactEmits;
+
+/**
+ * Slots for the Password component.
+ */
+export type PasswordSlots = PasswordCompactSlots;
