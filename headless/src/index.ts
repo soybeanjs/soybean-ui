@@ -53,6 +53,7 @@ export * from './components/navigation-menu';
 export * from './components/page-tabs';
 export * from './components/pagination';
 export * from './components/password';
+export * from './components/popconfirm';
 export * from './components/popover';
 export * from './components/popper';
 export * from './components/portal';

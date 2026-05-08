@@ -1,24 +1,12 @@
 import type {
-  PopoverArrowProps,
-  PopoverCloseProps,
-  PopoverPopupProps,
-  PopoverPortalProps,
-  PopoverPositionerEmits,
-  PopoverPositionerProps,
-  PopoverRootEmits,
-  PopoverRootProps,
-  PopoverTriggerProps,
-  PopoverUiSlot
-} from '@soybeanjs/headless/popover';
-import type {
-  BaseProps,
-  ClassValue,
-  MaybePromise,
-  Placement,
-  PropsToContext,
-  UiClass
-} from '@soybeanjs/headless/types';
-import type { ThemeColor, ThemeSize } from '@/theme';
+  PopconfirmCompactEmits,
+  PopconfirmCompactProps,
+  PopconfirmCompactSlots,
+  PopconfirmType as _PopconfirmType,
+  PopconfirmUi as _PopconfirmUi
+} from '@soybeanjs/headless/popconfirm';
+import type { ClassValue, MaybePromise, PropsToContext } from '@soybeanjs/headless/types';
+import type { ThemeSize } from '@/theme';
 import type { ButtonProps } from '../button/types';
 
 /**
@@ -70,46 +58,19 @@ export type PopconfirmCancelEmits = {
 };
 
 /**
- * Properties for the PopconfirmHeader component.
- */
-export interface PopconfirmHeaderProps extends BaseProps {}
-
-/**
- * Properties for the PopconfirmTitle component.
- */
-export interface PopconfirmTitleProps extends BaseProps {}
-
-/**
- * Properties for the PopconfirmDescription component.
- */
-export interface PopconfirmDescriptionProps extends BaseProps {}
-
-/**
- * Properties for the PopconfirmContent component.
- */
-export interface PopconfirmContentProps extends BaseProps {}
-
-/**
- * Properties for the PopconfirmFooter component.
- */
-export interface PopconfirmFooterProps extends BaseProps {}
-
-/**
  * Supported popconfirm values.
  */
-export type PopconfirmType = Extract<ThemeColor, 'destructive' | 'success' | 'warning' | 'info'>;
-
-type PopconfirmUiSlot = PopoverUiSlot | 'header' | 'icon' | 'header' | 'title' | 'description' | 'content' | 'footer';
+export type PopconfirmType = _PopconfirmType;
 
 /**
  * UI class overrides for the Popconfirm component.
  */
-export type PopconfirmUi = UiClass<PopconfirmUiSlot>;
+export type PopconfirmUi = _PopconfirmUi;
 
 /**
  * Properties for the Popconfirm component.
  */
-export interface PopconfirmProps extends PopoverRootProps {
+export interface PopconfirmProps extends Omit<PopconfirmCompactProps, 'confirmProps' | 'cancelProps'> {
   /**
    * class of popup
    */
@@ -123,60 +84,6 @@ export interface PopconfirmProps extends PopoverRootProps {
    */
   ui?: Partial<PopconfirmUi>;
   /**
-   * Type.
-   */
-  type?: PopconfirmType;
-  /**
-   * Placement.
-   */
-  placement?: Placement;
-  /**
-   * Title text rendered by the component.
-   */
-  title?: string;
-  /**
-   * Description text rendered by the component.
-   */
-  description?: string;
-  /**
-   * Content.
-   */
-  content?: string;
-  /**
-   * Whether to show an arrow.
-   */
-  showArrow?: boolean;
-  /**
-   * Whether to show an icon.
-   */
-  showIcon?: boolean;
-  /**
-   * The text of the confirm button.
-   *
-   * @defaultValue 'Confirm'
-   */
-  confirmText?: string;
-  /**
-   * The text of the cancel button.
-   *
-   * @defaultValue 'Cancel'
-   */
-  cancelText?: string;
-  /**
-   * Determines whether the cancel button is shown.
-   *
-   * @default 'onlyWarning'
-   */
-  showCancel?: 'onlyWarning' | boolean;
-  /**
-   * Before cancel.
-   */
-  beforeCancel?: () => MaybePromise<boolean | void>;
-  /**
-   * Before confirm.
-   */
-  beforeConfirm?: () => MaybePromise<boolean | void>;
-  /**
    * Properties forwarded to the confirm element.
    */
   confirmProps?: PopconfirmConfirmProps;
@@ -184,80 +91,22 @@ export interface PopconfirmProps extends PopoverRootProps {
    * Properties forwarded to the cancel element.
    */
   cancelProps?: PopconfirmCancelProps;
-  /**
-   * Properties forwarded to the positioner element.
-   */
-  positionerProps?: PopoverPositionerProps;
-  /**
-   * Properties forwarded to the popup element.
-   */
-  popupProps?: PopoverPopupProps;
-  /**
-   * Properties forwarded to the trigger element.
-   */
-  triggerProps?: PopoverTriggerProps;
-  /**
-   * Properties forwarded to the close element.
-   */
-  closeProps?: PopoverCloseProps;
-  /**
-   * Properties forwarded to the portal element.
-   */
-  portalProps?: PopoverPortalProps;
-  /**
-   * Properties forwarded to the arrow element.
-   */
-  arrowProps?: PopoverArrowProps;
-  /**
-   * Properties forwarded to the header element.
-   */
-  headerProps?: PopconfirmHeaderProps;
-  /**
-   * Properties forwarded to the title element.
-   */
-  titleProps?: PopconfirmTitleProps;
-  /**
-   * Properties forwarded to the description element.
-   */
-  descriptionProps?: PopconfirmDescriptionProps;
-  /**
-   * Properties forwarded to the content element.
-   */
-  contentProps?: PopconfirmContentProps;
-  /**
-   * Properties forwarded to the footer element.
-   */
-  footerProps?: PopconfirmFooterProps;
 }
 
 /**
  * Events for the Popconfirm component.
  */
-export type PopconfirmEmits = PopoverRootEmits &
-  PopoverPositionerEmits & {
-    /**
-     * Emitted when close occurs.
-     */
-    close: [];
-  };
+export type PopconfirmEmits = PopconfirmCompactEmits;
+
+/**
+ * Slots for the Popconfirm component.
+ */
+export type PopconfirmSlots = PopconfirmCompactSlots;
 
 /**
  * Context for the Popconfirm component.
  */
 export interface PopconfirmContext extends PropsToContext<
   PopconfirmProps,
-  'size' | 'confirmText' | 'cancelText' | 'showCancel' | 'confirmProps' | 'cancelProps'
-> {
-  /**
-   * Before confirm used by the component context.
-   */
-  beforeConfirm?: () => MaybePromise<boolean | void>;
-  /**
-   * Before cancel used by the component context.
-   */
-  beforeCancel?: () => MaybePromise<boolean | void>;
-  /**
-   * Callback invoked when the close event fires.
-   */
-  onClose: () => void;
-}
+  'size'
+> {}

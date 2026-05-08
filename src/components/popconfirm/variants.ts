@@ -11,11 +11,14 @@ export const popconfirmVariants = tv({
       `data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2`
     ],
     arrow: 'w-1em h-0.5em fill-popover stroke-border',
-    header: `flex flex-col text-center sm:text-left`,
+    header: `flex flex-col text-center sm:text-start`,
+    icon: `shrink-0`,
     title: `flex items-center font-semibold leading-none tracking-tight m-0`,
     description: `text-muted-foreground m-0`,
     content: '',
-    footer: `flex flex-col-reverse sm:flex-row sm:justify-end`
+    footer: `flex flex-col-reverse sm:flex-row sm:justify-end`,
+    cancel: '',
+    confirm: ''
   },
   variants: {
     size: {
@@ -23,6 +26,7 @@ export const popconfirmVariants = tv({
         popup: 'gap-y-2 p-2 text-2xs',
         arrow: 'text-3xs',
         header: 'gap-y-1.5',
+        icon: 'text-3xs',
         title: 'gap-x-1.5',
         footer: 'gap-1.5'
       },
@@ -30,6 +34,7 @@ export const popconfirmVariants = tv({
         popup: 'gap-y-2.5 p-2.5 text-xs',
         arrow: 'text-2xs',
         header: 'gap-y-1.75',
+        icon: 'text-2xs',
         title: 'gap-x-1.75',
         footer: 'gap-1.75'
       },
@@ -37,6 +42,7 @@ export const popconfirmVariants = tv({
         popup: 'gap-y-3 p-3 text-sm',
         arrow: 'text-xs',
         header: 'gap-y-2',
+        icon: 'text-sm',
         title: 'gap-x-2',
         footer: 'gap-2'
       },
@@ -44,6 +50,7 @@ export const popconfirmVariants = tv({
         popup: 'gap-y-3.5 p-3.5 text-base',
         arrow: 'text-sm',
         header: 'gap-y-2.5',
+        icon: 'text-base',
         title: 'gap-x-2.5',
         footer: 'gap-2.5'
       },
@@ -51,6 +58,7 @@ export const popconfirmVariants = tv({
         popup: 'gap-y-4 p-4 text-lg',
         arrow: 'text-base',
         header: 'gap-y-3',
+        icon: 'text-lg',
         title: 'gap-x-3',
         footer: 'gap-3'
       },
@@ -58,8 +66,23 @@ export const popconfirmVariants = tv({
         popup: 'gap-y-4.5 p-4.5 text-xl',
         arrow: 'text-lg',
         header: 'gap-y-3.5',
+        icon: 'text-xl',
         title: 'gap-x-3.5',
         footer: 'gap-3.5'
+      }
+    },
+    type: {
+      destructive: {
+        icon: 'text-destructive'
+      },
+      success: {
+        icon: 'text-success'
+      },
+      warning: {
+        icon: 'text-warning'
+      },
+      info: {
+        icon: 'text-info'
       }
     }
   },

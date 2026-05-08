@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { PopoverClose } from '@soybeanjs/headless/popover';
+import { PopconfirmConfirm } from '@soybeanjs/headless/popconfirm';
 import { useOmitProps } from '@soybeanjs/headless/composables';
-import { miniSizeMap } from '@/theme';
-import Button from '../button/button.vue';
+import { cn } from '@/theme';
 import { usePopconfirmContext } from './context';
+import { resolvePopconfirmButtonVariants } from './shared';
 import type { PopconfirmConfirmProps, PopconfirmConfirmEmits } from './types';
 
 defineOptions({
@@ -15,28 +15,15 @@ const props = defineProps<PopconfirmConfirmProps>();
 
 const emit = defineEmits<PopconfirmConfirmEmits>();
 
-const forwardedProps = useOmitProps(props, ['text', 'beforeClose']);
+const forwardedProps = useOmitProps(props, ['class', 'color', 'fitContent', 'shadow', 'shape', 'size', 'variant']);
 
-const { size, confirmText, confirmProps, beforeConfirm, onClose } = usePopconfirmContext('PopconfirmConfirm');
+const { size } = usePopconfirmContext('PopconfirmConfirm');
 
-const mergedProps = computed(() => ({
-  ...confirmProps.value,
-  ...forwardedProps.value
-}));
-const text = computed(() => props.text ?? confirmText.value ?? 'Confirm');
-
-const mergedSize = computed(() => props.size ?? miniSizeMap[size.value ?? 'md']);
-
-const handleClose = () => {
-  emit('close');
-  onClose();
-};
+const cls = computed(() => cn(resolvePopconfirmButtonVariants(props, size.value), props.class));
 </script>
 
 <template>
-  <PopoverClose as-child :before-close="beforeClose ?? beforeConfirm" @close="handleClose">
-    <Button v-bind="mergedProps" :size="mergedSize">
-      <slot>{{ text }}</slot>
-    </Button>
-  </PopoverClose>
+  <PopconfirmConfirm v-bind="forwardedProps" :class="cls" @close="emit('close')">
+    <slot />
+  </PopconfirmConfirm>
 </template>
