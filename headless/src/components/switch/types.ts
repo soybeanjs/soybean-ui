@@ -58,6 +58,53 @@ export interface SwitchControlProps extends ButtonProps {
 export interface SwitchThumbProps extends PrimitiveWithBaseProps {}
 
 /**
+ * Slot properties for the SwitchCompact component.
+ */
+export interface SwitchCompactSlotProps<T extends AcceptableBooleanValue = boolean> {
+  /**
+   * Current model value.
+   */
+  modelValue: T | undefined;
+}
+
+/**
+ * Properties for the SwitchCompact component.
+ */
+export interface SwitchCompactProps<T extends AcceptableBooleanValue = boolean> extends SwitchRootProps<T> {
+  /**
+   * Properties forwarded to the control element.
+   */
+  controlProps?: SwitchControlProps;
+  /**
+   * Properties forwarded to the thumb element.
+   */
+  thumbProps?: SwitchThumbProps;
+}
+
+/**
+ * Events for the SwitchCompact component.
+ */
+export type SwitchCompactEmits<T extends AcceptableBooleanValue = boolean> = SwitchRootEmits<T>;
+
+/**
+ * Slots for the SwitchCompact component.
+ */
+export interface SwitchCompactSlots<T extends AcceptableBooleanValue = boolean> {
+  /**
+   * Custom content for the default slot.
+   */
+  default?: (props: SwitchCompactSlotProps<T>) => any;
+  /**
+   * Custom content for the leading slot.
+   */
+  leading?: (props: SwitchCompactSlotProps<T>) => any;
+  /**
+   * Custom content for the trailing slot.
+   */
+  trailing?: (props: SwitchCompactSlotProps<T>) => any;
+}
+
+/**
  * Parameters used to create the SwitchRoot context.
  */
 export interface SwitchRootContextParams<T extends AcceptableBooleanValue = boolean> extends PropsToContext<

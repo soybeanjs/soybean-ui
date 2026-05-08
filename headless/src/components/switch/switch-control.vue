@@ -30,6 +30,7 @@ const ariaLabel = computed(() => getAriaLabel(controlElement.value, props.id, at
     v-bind="props"
     :ref="setControlElement"
     :class="cls"
+    data-slot="control"
     :disabled="isDisabled"
     :aria-checked="dataState === 'checked'"
     :aria-label="ariaLabel"

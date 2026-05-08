@@ -440,6 +440,7 @@ import {
   StepperSeparator,
   StepperTitle,
   StepperTrigger,
+  SwitchCompact,
   SwitchControl,
   SwitchRoot,
   SwitchThumb,
@@ -1612,11 +1613,13 @@ export const Stepper = {
 export const Switch = {
   Root: SwitchRoot,
   Control: SwitchControl,
-  Thumb: SwitchThumb
+  Thumb: SwitchThumb,
+  Compact: SwitchCompact
 } as {
   Root: typeof SwitchRoot;
   Control: typeof SwitchControl;
   Thumb: typeof SwitchThumb;
+  Compact: typeof SwitchCompact;
 };
 
 export const Table = {
