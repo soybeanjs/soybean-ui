@@ -4,7 +4,7 @@ import { BottomSheetCompact, provideBottomSheetUi } from '@soybeanjs/headless/bo
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
 import { keysOf } from '@soybeanjs/utils';
 import { mergeSlotVariants, mergeBaseVariants, miniSizeMap } from '@/theme';
-import { buttonVariants } from '../button/variants';
+import { buttonVariants, buttonIconVariants } from '../button/variants';
 import { dialogVariants } from '../dialog/variants';
 import { drawerVariants } from '../drawer/variants';
 import { bottomSheetVariants } from './variants';
@@ -35,35 +35,33 @@ const listeners = useForwardListeners(emit);
 const slotNames = computed(() => keysOf(slots));
 
 const ui = computed(() => {
-  const _dialogVariants = dialogVariants({
+  const dialog = dialogVariants({
     size: props.size,
     pure: props.pure
   });
 
-  const _drawerVariants = drawerVariants({
+  const drawer = drawerVariants({
     size: props.size,
     side: 'bottom'
   });
 
   const currentVariants = bottomSheetVariants({ size: props.size });
 
-  const baseVariants = Object.assign({}, currentVariants, _dialogVariants, _drawerVariants);
+  const baseVariants = Object.assign({}, currentVariants, dialog, drawer);
+
+  const miniSize = miniSizeMap[props.size ?? 'md'];
 
   const variants = mergeBaseVariants(baseVariants, {
     cancel: buttonVariants({
       variant: 'pure',
-      size: miniSizeMap[props.size ?? 'md']
+      size: miniSize
     }),
     confirm: buttonVariants({
       variant: 'solid',
-      size: miniSizeMap[props.size ?? 'md']
+      size: miniSize
     }),
-    close: buttonVariants({
-      variant: 'ghost',
-      color: 'accent',
-      size: miniSizeMap[props.size ?? 'md'],
-      shape: 'square',
-      fitContent: true
+    close: buttonIconVariants({
+      size: miniSize
     })
   });
 

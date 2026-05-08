@@ -5,7 +5,7 @@ import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composabl
 import type { DefinedValue } from '@soybeanjs/headless/types';
 import { keysOf } from '@soybeanjs/utils';
 import { mergeBaseVariants, mergeSlotVariants } from '@/theme';
-import { buttonVariants } from '../button/variants';
+import { buttonIconVariants } from '../button/variants';
 import { carouselVariants } from './variants';
 import type { CarouselProps, CarouselEmits, CarouselSlots } from './types';
 
@@ -33,19 +33,15 @@ const ui = computed(() => {
   });
 
   const variants = mergeBaseVariants(baseVariants, {
-    previous: buttonVariants({
+    previous: buttonIconVariants({
       size: props.size,
-      color: 'accent',
       variant: 'pure',
-      shape: 'circle',
-      fitContent: true
+      shape: 'circle'
     }),
-    next: buttonVariants({
+    next: buttonIconVariants({
       size: props.size,
-      color: 'accent',
       variant: 'pure',
-      shape: 'circle',
-      fitContent: true
+      shape: 'circle'
     })
   });
 

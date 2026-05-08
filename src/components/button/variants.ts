@@ -434,6 +434,16 @@ export const buttonGroupVariants = tv({
   }
 });
 
+export const buttonIconVariants = (options?: Partial<ButtonVariants>) =>
+  buttonVariants({
+    size: 'md',
+    color: 'accent',
+    variant: 'ghost',
+    shape: 'square',
+    fitContent: true,
+    ...options
+  });
+
 type ButtonVariants = VariantProps<typeof buttonVariants>;
 
 export type ButtonVariant = NonNullable<ButtonVariants['variant']>;

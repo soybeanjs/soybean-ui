@@ -4,7 +4,7 @@ import { PopoverCompact, providePopoverUi } from '@soybeanjs/headless/popover';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
 import { keysOf } from '@soybeanjs/utils';
 import { mergeBaseVariants, mergeSlotVariants, miniSizeMap } from '@/theme';
-import { buttonVariants } from '../button/variants';
+import { buttonIconVariants } from '../button/variants';
 import { popoverVariants } from './variants';
 import type { PopoverProps, PopoverEmits, PopoverSlots } from './types';
 
@@ -34,12 +34,8 @@ const ui = computed(() => {
   });
 
   const variants = mergeBaseVariants(baseVariants, {
-    close: buttonVariants({
-      size: miniSizeMap[props.size ?? 'md'],
-      color: 'accent',
-      variant: 'ghost',
-      shape: 'square',
-      fitContent: true
+    close: buttonIconVariants({
+      size: miniSizeMap[props.size ?? 'md']
     })
   });
 

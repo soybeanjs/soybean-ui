@@ -5,7 +5,7 @@ import { useOmitProps } from '@soybeanjs/headless/composables';
 import { keysOf } from '@soybeanjs/utils';
 import { mergeBaseVariants, mergeSlotVariants, miniSizeMap } from '@/theme';
 import { inputVariants } from './variants';
-import { buttonVariants } from '../button/variants';
+import { buttonIconVariants } from '../button/variants';
 import type { InputEmits, InputProps, InputSlots } from './types';
 
 defineOptions({
@@ -30,12 +30,9 @@ const ui = computed(() => {
   const miniSize = miniSizeMap[props.size ?? 'md'];
 
   const variants = mergeBaseVariants(baseVariants, {
-    clearable: buttonVariants({
+    clearable: buttonIconVariants({
       size: miniSize,
-      color: 'accent',
-      variant: 'ghost',
-      shape: 'circle',
-      fitContent: true
+      shape: 'circle'
     })
   });
 

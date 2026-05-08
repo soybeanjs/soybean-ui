@@ -2,7 +2,7 @@
 import { computed } from 'vue';
 import { DialogProvider, provideDialogUi } from '@soybeanjs/headless/dialog';
 import { mergeSlotVariants, mergeBaseVariants, miniSizeMap } from '@/theme';
-import { buttonVariants } from '../button/variants';
+import { buttonVariants, buttonIconVariants } from '../button/variants';
 import { dialogVariants } from './variants';
 
 defineOptions({
@@ -11,6 +11,7 @@ defineOptions({
 
 const ui = computed(() => {
   const size = 'md';
+  const miniSize = miniSizeMap[size];
 
   const variants = mergeBaseVariants(
     dialogVariants({
@@ -19,18 +20,14 @@ const ui = computed(() => {
     {
       cancel: buttonVariants({
         variant: 'pure',
-        size: miniSizeMap[size]
+        size: miniSize
       }),
       confirm: buttonVariants({
         variant: 'solid',
-        size: miniSizeMap[size]
+        size: miniSize
       }),
-      close: buttonVariants({
-        variant: 'ghost',
-        color: 'accent',
-        size: miniSizeMap[size],
-        shape: 'square',
-        fitContent: true
+      close: buttonIconVariants({
+        size: miniSize
       })
     }
   );

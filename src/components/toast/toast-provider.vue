@@ -4,7 +4,7 @@ import { useStyleTag } from '@vueuse/core';
 import { ToastProvider, provideToastUi } from '@soybeanjs/headless/toast';
 import { useOmitProps } from '@soybeanjs/headless/composables';
 import { mergeBaseVariants, mergeSlotVariants, miniSizeMap } from '@/theme';
-import { buttonVariants } from '../button/variants';
+import { buttonVariants, buttonIconVariants } from '../button/variants';
 import { toastVariants } from './variants';
 import type { ToastProviderProps } from './types';
 import toastStyles from './styles.css?raw';
@@ -22,6 +22,7 @@ const forwardedProps = useOmitProps(props, ['size', 'ui']);
 
 const ui = computed(() => {
   const size = props.size ?? 'md';
+  const miniSize = miniSizeMap[size];
 
   const baseVariants = toastVariants({
     size: props.size
@@ -30,18 +31,14 @@ const ui = computed(() => {
   const variants = mergeBaseVariants(baseVariants, {
     action: buttonVariants({
       variant: 'solid',
-      size: miniSizeMap[size]
+      size: miniSize
     }),
     cancel: buttonVariants({
       variant: 'pure',
-      size: miniSizeMap[size]
+      size: miniSize
     }),
-    close: buttonVariants({
-      variant: 'ghost',
-      color: 'accent',
-      size: miniSizeMap[size],
-      shape: 'square',
-      fitContent: true
+    close: buttonIconVariants({
+      size: miniSize
     })
   });
 

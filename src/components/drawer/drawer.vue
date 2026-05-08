@@ -4,7 +4,7 @@ import { DialogCompact, provideDialogUi } from '@soybeanjs/headless/dialog';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
 import { keysOf } from '@soybeanjs/utils';
 import { mergeSlotVariants, mergeBaseVariants, miniSizeMap } from '@/theme';
-import { buttonVariants } from '../button/variants';
+import { buttonVariants, buttonIconVariants } from '../button/variants';
 import { dialogVariants } from '../dialog/variants';
 import { drawerVariants } from './variants';
 import type { DrawerEmits, DrawerProps, DrawerSlots } from './types';
@@ -30,33 +30,29 @@ const listeners = useForwardListeners(emit);
 const slotNames = computed(() => keysOf(slots));
 
 const ui = computed(() => {
-  const baseVariants = dialogVariants({
+  const dialog = dialogVariants({
     size: props.size,
     pure: props.pure
   });
 
-  const currentVariants = drawerVariants({
+  const drawer = drawerVariants({
     size: props.size,
     side: props.side
   });
 
-  baseVariants.popup = currentVariants.popup;
+  const miniSize = miniSizeMap[props.size ?? 'md'];
 
-  const variants = mergeBaseVariants(baseVariants, {
+  const variants = mergeBaseVariants(Object.assign({}, dialog, drawer), {
     cancel: buttonVariants({
       variant: 'pure',
-      size: miniSizeMap[props.size ?? 'md']
+      size: miniSize
     }),
     confirm: buttonVariants({
       variant: 'solid',
-      size: miniSizeMap[props.size ?? 'md']
+      size: miniSize
     }),
-    close: buttonVariants({
-      variant: 'ghost',
-      color: 'accent',
-      size: miniSizeMap[props.size ?? 'md'],
-      shape: 'square',
-      fitContent: true
+    close: buttonIconVariants({
+      size: miniSize
     })
   });
 

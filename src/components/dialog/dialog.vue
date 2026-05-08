@@ -4,7 +4,7 @@ import { DialogCompact, provideDialogUi } from '@soybeanjs/headless/dialog';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
 import { keysOf } from '@soybeanjs/utils';
 import { mergeSlotVariants, mergeBaseVariants, miniSizeMap } from '@/theme';
-import { buttonVariants } from '../button/variants';
+import { buttonVariants, buttonIconVariants } from '../button/variants';
 import { dialogVariants } from './variants';
 import type { DialogEmits, DialogProps, DialogSlots } from './types';
 
@@ -29,6 +29,8 @@ const listeners = useForwardListeners(emit);
 const slotNames = computed(() => keysOf(slots));
 
 const ui = computed(() => {
+  const miniSize = miniSizeMap[props.size ?? 'md'];
+
   const variants = mergeBaseVariants(
     dialogVariants({
       size: props.size,
@@ -37,18 +39,14 @@ const ui = computed(() => {
     {
       cancel: buttonVariants({
         variant: 'pure',
-        size: miniSizeMap[props.size ?? 'md']
+        size: miniSize
       }),
       confirm: buttonVariants({
         variant: 'solid',
-        size: miniSizeMap[props.size ?? 'md']
+        size: miniSize
       }),
-      close: buttonVariants({
-        variant: 'ghost',
-        color: 'accent',
-        size: miniSizeMap[props.size ?? 'md'],
-        shape: 'square',
-        fitContent: true
+      close: buttonIconVariants({
+        size: miniSize
       })
     }
   );

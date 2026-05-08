@@ -3,7 +3,7 @@ import { computed } from 'vue';
 import { CalendarCompact, provideCalendarUi } from '@soybeanjs/headless/calendar';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
 import { mergeBaseVariants, mergeSlotVariants, miniSizeMap } from '@/theme';
-import { buttonVariants } from '../button/variants';
+import { buttonIconVariants } from '../button/variants';
 import Icon from '../icon/icon.vue';
 import SSelect from '../select/select.vue';
 import { calendarVariants } from './variants';
@@ -29,8 +29,14 @@ const ui = computed(() => {
   });
 
   const variants = mergeBaseVariants(baseVariants, {
-    prev: buttonVariants({ size: props.size, color: 'accent', variant: 'pure', fitContent: true }),
-    next: buttonVariants({ size: props.size, color: 'accent', variant: 'pure', fitContent: true })
+    prev: buttonIconVariants({
+      size: props.size,
+      variant: 'pure'
+    }),
+    next: buttonIconVariants({
+      size: props.size,
+      variant: 'pure'
+    })
   });
 
   return mergeSlotVariants(variants, props.ui, { root: props.class });

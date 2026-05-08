@@ -5,7 +5,7 @@ import { useOmitProps } from '@soybeanjs/headless/composables';
 import { keysOf } from '@soybeanjs/utils';
 import { mergeBaseVariants, mergeSlotVariants, themeSizeMap, themeSizeRatio } from '@/theme';
 import { drawerVariants } from '../drawer/variants';
-import { buttonVariants } from '../button/variants';
+import { buttonIconVariants } from '../button/variants';
 import { layoutVariants } from './variants';
 import type { LayoutEmits, LayoutProps, LayoutSlots } from './types';
 
@@ -53,12 +53,8 @@ const ui = computed(() => {
     side: props.side
   });
 
-  const close = buttonVariants({
-    size: props.size,
-    color: 'accent',
-    variant: 'ghost',
-    shape: 'square',
-    fitContent: true
+  const close = buttonIconVariants({
+    size: props.size
   });
 
   const variants = mergeBaseVariants(baseVariants, {
