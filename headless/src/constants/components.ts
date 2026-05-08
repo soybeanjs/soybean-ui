@@ -453,7 +453,15 @@ export const components = {
     'ToolbarToggleGroup',
     'ToolbarToggleItem'
   ],
-  tooltip: ['TooltipRoot', 'TooltipTrigger', 'TooltipPortal', 'TooltipPositioner', 'TooltipPopup', 'TooltipArrow'],
+  tooltip: [
+    'TooltipCompact',
+    'TooltipRoot',
+    'TooltipTrigger',
+    'TooltipPortal',
+    'TooltipPositioner',
+    'TooltipPopup',
+    'TooltipArrow'
+  ],
   tree: ['TreeRoot', 'TreeItem', 'TreeVirtualizerRoot', 'TreeVirtualizerItem'],
   treeMenu: [
     'TreeMenuRoot',

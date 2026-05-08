@@ -6,7 +6,7 @@
         "kind": "props",
         "name": "TooltipProps",
         "type": "Interface TooltipProps",
-        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<TooltipUi>; content?: string; placement?: Placement; showArrow?: boolean; popupProps?: TooltipPopupProps; positionerProps?: TooltipPositionerProps; triggerProps?: TooltipTriggerProps; portalProps?: TooltipPortalProps; arrowProps?: TooltipArrowProps; defaultOpen?: boolean; open?: boolean; delayDuration?: number; skipDelayDuration?: number; disableHoverableContent?: boolean; disableClosingTrigger?: boolean; disabled?: boolean; ignoreNonKeyboardFocus?: boolean }",
+        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<TooltipUi>; content?: string; placement?: import(\"@/index\").Placement; showArrow?: boolean; triggerProps?: PopperAnchorProps; portalProps?: PortalProps; positionerProps?: TooltipPositionerProps; popupProps?: TooltipPopupProps; arrowProps?: PopperArrowProps; defaultOpen?: boolean; open?: boolean; delayDuration?: number; skipDelayDuration?: number; disableHoverableContent?: boolean; disableClosingTrigger?: boolean; disabled?: boolean; ignoreNonKeyboardFocus?: boolean }",
         "description": "Properties for the Tooltip component.",
         "descriptionKey": "api.generated.src_components_tooltip_types.tooltipprops.props",
         "sourcePath": "src/components/tooltip/types.ts",
@@ -94,34 +94,20 @@
             "description": "Content.",
             "descriptionKey": "api.generated.src_components_tooltip_types.tooltipprops.members.content",
             "default": null,
-            "inheritedFrom": null,
-            "sourcePath": "src/components/tooltip/types.ts",
+            "inheritedFrom": "content",
+            "sourcePath": "headless/src/components/tooltip/types.ts",
             "referencedTypes": []
           },
           {
             "name": "placement",
-            "type": "Placement",
+            "type": "import(\"@/index\").Placement",
             "required": false,
             "description": "Placement.",
             "descriptionKey": "api.generated.src_components_tooltip_types.tooltipprops.members.placement",
             "default": null,
-            "inheritedFrom": null,
-            "sourcePath": "src/components/tooltip/types.ts",
-            "referencedTypes": [
-              {
-                "name": "Placement",
-                "kind": "typeAlias",
-                "type": "'top' | 'right' | 'bottom' | 'left' | 'top-start' | 'top-end' | 'right-start' | 'right-end' | 'bottom-start' | 'bottom-end' | 'left-start' | 'left-end'",
-                "resolvedType": "'top' | 'right' | 'bottom' | 'left' | 'top-start' | 'top-end' | 'right-start' | 'right-end' | 'bottom-start' | 'bottom-end' | 'left-start' | 'left-end'",
-                "description": "",
-                "descriptionKey": "api.generated.headless_src_types_common.placement",
-                "sourcePath": "headless/src/types/common.ts",
-                "typeParameters": [],
-                "external": false,
-                "members": [],
-                "callables": []
-              }
-            ]
+            "inheritedFrom": "placement",
+            "sourcePath": "headless/src/components/tooltip/types.ts",
+            "referencedTypes": []
           },
           {
             "name": "showArrow",
@@ -130,40 +116,132 @@
             "description": "Whether to show an arrow.",
             "descriptionKey": "api.generated.src_components_tooltip_types.tooltipprops.members.showarrow",
             "default": null,
-            "inheritedFrom": null,
-            "sourcePath": "src/components/tooltip/types.ts",
+            "inheritedFrom": "showArrow",
+            "sourcePath": "headless/src/components/tooltip/types.ts",
             "referencedTypes": []
           },
           {
-            "name": "popupProps",
-            "type": "TooltipPopupProps",
+            "name": "triggerProps",
+            "type": "PopperAnchorProps",
             "required": false,
-            "description": "Properties forwarded to the popup element.",
-            "descriptionKey": "api.generated.src_components_tooltip_types.tooltipprops.members.popupprops",
+            "description": "Properties forwarded to the trigger element.",
+            "descriptionKey": "api.generated.src_components_tooltip_types.tooltipprops.members.triggerprops",
             "default": null,
-            "inheritedFrom": null,
-            "sourcePath": "src/components/tooltip/types.ts",
+            "inheritedFrom": "triggerProps",
+            "sourcePath": "headless/src/components/tooltip/types.ts",
             "referencedTypes": [
               {
-                "name": "TooltipPopupProps",
+                "name": "PopperAnchorProps",
                 "kind": "interface",
-                "type": "TooltipPopupProps",
-                "resolvedType": "{ ariaLabel?: string }",
-                "description": "Properties for the TooltipPopup component.",
-                "descriptionKey": "api.generated.headless_src_components_tooltip_types.tooltippopupprops",
-                "sourcePath": "headless/src/components/tooltip/types.ts",
+                "type": "PopperAnchorProps",
+                "resolvedType": "{ reference?: ReferenceElement; asChild?: boolean; as?: AsTag | Component }",
+                "description": "Properties for the PopperAnchor component.",
+                "descriptionKey": "api.generated.headless_src_components_popper_types.popperanchorprops",
+                "sourcePath": "headless/src/components/popper/types.ts",
                 "typeParameters": [],
                 "external": false,
                 "members": [
                   {
-                    "name": "ariaLabel",
-                    "type": "string",
+                    "name": "reference",
+                    "type": "ReferenceElement",
                     "required": false,
-                    "description": "By default, screen readers will announce the content inside the component.\n\nIf this is not descriptive enough, or you have content that cannot be announced, use `aria-label` as a more\ndescriptive label.",
-                    "descriptionKey": "api.generated.headless_src_components_tooltip_types.tooltippopupprops.members.arialabel",
+                    "description": "The reference (or anchor) element that is being referred to for positioning. If not provided will use the current\ncomponent as anchor.",
+                    "descriptionKey": "api.generated.headless_src_components_popper_types.popperanchorprops.members.reference",
                     "default": null,
                     "inheritedFrom": null,
-                    "sourcePath": "headless/src/components/tooltip/types.ts",
+                    "sourcePath": "headless/src/components/popper/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "asChild",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+                    "descriptionKey": "api.generated.headless_src_components_popper_types.popperanchorprops.members.aschild",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "as",
+                    "type": "AsTag | Component",
+                    "required": false,
+                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+                    "descriptionKey": "api.generated.headless_src_components_popper_types.popperanchorprops.members.as",
+                    "default": "'div'",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "portalProps",
+            "type": "PortalProps",
+            "required": false,
+            "description": "Properties forwarded to the portal element.",
+            "descriptionKey": "api.generated.src_components_tooltip_types.tooltipprops.members.portalprops",
+            "default": null,
+            "inheritedFrom": "portalProps",
+            "sourcePath": "headless/src/components/tooltip/types.ts",
+            "referencedTypes": [
+              {
+                "name": "PortalProps",
+                "kind": "interface",
+                "type": "PortalProps",
+                "resolvedType": "{ to?: string | HTMLElement; disabled?: boolean; defer?: boolean; forceMount?: boolean }",
+                "description": "Properties for the Portal component.",
+                "descriptionKey": "api.generated.headless_src_components_portal_types.portalprops",
+                "sourcePath": "headless/src/components/portal/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "to",
+                    "type": "string | HTMLElement",
+                    "required": false,
+                    "description": "Vue native teleport component prop `:to`\n\n{@link https://vuejs.org/guide/built-ins/teleport.html#basic-usage}",
+                    "descriptionKey": "api.generated.headless_src_components_portal_types.portalprops.members.to",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/portal/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "disabled",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Disable teleport and render the component inline\n\n{@link https://vuejs.org/guide/built-ins/teleport.html#disabling-teleport}",
+                    "descriptionKey": "api.generated.headless_src_components_portal_types.portalprops.members.disabled",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/portal/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "defer",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Defer the resolving of a Teleport target until other parts of the application have mounted (requires Vue 3.5.0+)\n\n{@link https://vuejs.org/guide/built-ins/teleport.html#deferred-teleport}",
+                    "descriptionKey": "api.generated.headless_src_components_portal_types.portalprops.members.defer",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/portal/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "forceMount",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Used to force mounting when more control is needed.\n\nUseful when controlling animation with Vue animation libraries.",
+                    "descriptionKey": "api.generated.headless_src_components_portal_types.portalprops.members.forcemount",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/types/component.ts",
                     "referencedTypes": []
                   }
                 ],
@@ -178,8 +256,8 @@
             "description": "Properties forwarded to the positioner element.",
             "descriptionKey": "api.generated.src_components_tooltip_types.tooltipprops.members.positionerprops",
             "default": null,
-            "inheritedFrom": null,
-            "sourcePath": "src/components/tooltip/types.ts",
+            "inheritedFrom": "positionerProps",
+            "sourcePath": "headless/src/components/tooltip/types.ts",
             "referencedTypes": [
               {
                 "name": "TooltipPositionerProps",
@@ -418,127 +496,35 @@
             ]
           },
           {
-            "name": "triggerProps",
-            "type": "TooltipTriggerProps",
+            "name": "popupProps",
+            "type": "TooltipPopupProps",
             "required": false,
-            "description": "Properties forwarded to the trigger element.",
-            "descriptionKey": "api.generated.src_components_tooltip_types.tooltipprops.members.triggerprops",
+            "description": "Properties forwarded to the popup element.",
+            "descriptionKey": "api.generated.src_components_tooltip_types.tooltipprops.members.popupprops",
             "default": null,
-            "inheritedFrom": null,
-            "sourcePath": "src/components/tooltip/types.ts",
+            "inheritedFrom": "popupProps",
+            "sourcePath": "headless/src/components/tooltip/types.ts",
             "referencedTypes": [
               {
-                "name": "PopperAnchorProps",
+                "name": "TooltipPopupProps",
                 "kind": "interface",
-                "type": "TooltipTriggerProps",
-                "resolvedType": "{ reference?: ReferenceElement; asChild?: boolean; as?: AsTag | Component }",
-                "description": "Properties for the PopperAnchor component.",
-                "descriptionKey": "api.generated.headless_src_components_popper_types.popperanchorprops",
-                "sourcePath": "headless/src/components/popper/types.ts",
+                "type": "TooltipPopupProps",
+                "resolvedType": "{ ariaLabel?: string }",
+                "description": "Properties for the TooltipPopup component.",
+                "descriptionKey": "api.generated.headless_src_components_tooltip_types.tooltippopupprops",
+                "sourcePath": "headless/src/components/tooltip/types.ts",
                 "typeParameters": [],
                 "external": false,
                 "members": [
                   {
-                    "name": "reference",
-                    "type": "ReferenceElement",
+                    "name": "ariaLabel",
+                    "type": "string",
                     "required": false,
-                    "description": "The reference (or anchor) element that is being referred to for positioning. If not provided will use the current\ncomponent as anchor.",
-                    "descriptionKey": "api.generated.headless_src_components_popper_types.popperanchorprops.members.reference",
+                    "description": "By default, screen readers will announce the content inside the component.\n\nIf this is not descriptive enough, or you have content that cannot be announced, use `aria-label` as a more\ndescriptive label.",
+                    "descriptionKey": "api.generated.headless_src_components_tooltip_types.tooltippopupprops.members.arialabel",
                     "default": null,
                     "inheritedFrom": null,
-                    "sourcePath": "headless/src/components/popper/types.ts",
-                    "referencedTypes": []
-                  },
-                  {
-                    "name": "asChild",
-                    "type": "boolean",
-                    "required": false,
-                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
-                    "descriptionKey": "api.generated.headless_src_components_popper_types.popperanchorprops.members.aschild",
-                    "default": null,
-                    "inheritedFrom": null,
-                    "sourcePath": "headless/src/components/primitive/types.ts",
-                    "referencedTypes": []
-                  },
-                  {
-                    "name": "as",
-                    "type": "AsTag | Component",
-                    "required": false,
-                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
-                    "descriptionKey": "api.generated.headless_src_components_popper_types.popperanchorprops.members.as",
-                    "default": "'div'",
-                    "inheritedFrom": null,
-                    "sourcePath": "headless/src/components/primitive/types.ts",
-                    "referencedTypes": []
-                  }
-                ],
-                "callables": []
-              }
-            ]
-          },
-          {
-            "name": "portalProps",
-            "type": "TooltipPortalProps",
-            "required": false,
-            "description": "Properties forwarded to the portal element.",
-            "descriptionKey": "api.generated.src_components_tooltip_types.tooltipprops.members.portalprops",
-            "default": null,
-            "inheritedFrom": null,
-            "sourcePath": "src/components/tooltip/types.ts",
-            "referencedTypes": [
-              {
-                "name": "PortalProps",
-                "kind": "interface",
-                "type": "TooltipPortalProps",
-                "resolvedType": "{ to?: string | HTMLElement; disabled?: boolean; defer?: boolean; forceMount?: boolean }",
-                "description": "Properties for the Portal component.",
-                "descriptionKey": "api.generated.headless_src_components_portal_types.portalprops",
-                "sourcePath": "headless/src/components/portal/types.ts",
-                "typeParameters": [],
-                "external": false,
-                "members": [
-                  {
-                    "name": "to",
-                    "type": "string | HTMLElement",
-                    "required": false,
-                    "description": "Vue native teleport component prop `:to`\n\n{@link https://vuejs.org/guide/built-ins/teleport.html#basic-usage}",
-                    "descriptionKey": "api.generated.headless_src_components_portal_types.portalprops.members.to",
-                    "default": null,
-                    "inheritedFrom": null,
-                    "sourcePath": "headless/src/components/portal/types.ts",
-                    "referencedTypes": []
-                  },
-                  {
-                    "name": "disabled",
-                    "type": "boolean",
-                    "required": false,
-                    "description": "Disable teleport and render the component inline\n\n{@link https://vuejs.org/guide/built-ins/teleport.html#disabling-teleport}",
-                    "descriptionKey": "api.generated.headless_src_components_portal_types.portalprops.members.disabled",
-                    "default": null,
-                    "inheritedFrom": null,
-                    "sourcePath": "headless/src/components/portal/types.ts",
-                    "referencedTypes": []
-                  },
-                  {
-                    "name": "defer",
-                    "type": "boolean",
-                    "required": false,
-                    "description": "Defer the resolving of a Teleport target until other parts of the application have mounted (requires Vue 3.5.0+)\n\n{@link https://vuejs.org/guide/built-ins/teleport.html#deferred-teleport}",
-                    "descriptionKey": "api.generated.headless_src_components_portal_types.portalprops.members.defer",
-                    "default": null,
-                    "inheritedFrom": null,
-                    "sourcePath": "headless/src/components/portal/types.ts",
-                    "referencedTypes": []
-                  },
-                  {
-                    "name": "forceMount",
-                    "type": "boolean",
-                    "required": false,
-                    "description": "Used to force mounting when more control is needed.\n\nUseful when controlling animation with Vue animation libraries.",
-                    "descriptionKey": "api.generated.headless_src_components_portal_types.portalprops.members.forcemount",
-                    "default": null,
-                    "inheritedFrom": null,
-                    "sourcePath": "headless/src/types/component.ts",
+                    "sourcePath": "headless/src/components/tooltip/types.ts",
                     "referencedTypes": []
                   }
                 ],
@@ -548,18 +534,18 @@
           },
           {
             "name": "arrowProps",
-            "type": "TooltipArrowProps",
+            "type": "PopperArrowProps",
             "required": false,
             "description": "Properties forwarded to the arrow element.",
             "descriptionKey": "api.generated.src_components_tooltip_types.tooltipprops.members.arrowprops",
             "default": null,
-            "inheritedFrom": null,
-            "sourcePath": "src/components/tooltip/types.ts",
+            "inheritedFrom": "arrowProps",
+            "sourcePath": "headless/src/components/tooltip/types.ts",
             "referencedTypes": [
               {
                 "name": "PopperArrowProps",
                 "kind": "interface",
-                "type": "TooltipArrowProps",
+                "type": "PopperArrowProps",
                 "resolvedType": null,
                 "description": "Properties for the PopperArrow component.",
                 "descriptionKey": "api.generated.headless_src_components_popper_types.popperarrowprops",
@@ -666,7 +652,7 @@
       "emits": {
         "kind": "emits",
         "name": "TooltipEmits",
-        "type": "TypeAlias TooltipEmits: TooltipRootEmits & TooltipPositionerEmits",
+        "type": "TypeAlias TooltipEmits: TooltipCompactEmits",
         "resolvedType": "{ \"update:open\": [value: boolean]; escapeKeyDown: [event: KeyboardEvent]; pointerDownOutside: [event: PointerDownOutsideEvent] }",
         "description": "Events for the Tooltip component.",
         "descriptionKey": "api.generated.src_components_tooltip_types.tooltipemits.emits",
@@ -733,10 +719,804 @@
             ]
           }
         ],
-        "referencedTypes": []
+        "referencedTypes": [
+          {
+            "name": "TooltipCompactEmits",
+            "kind": "typeAlias",
+            "type": "import(\"@soybeanjs/headless\").TooltipRootEmits & import(\"../../../node_modules/@soybeanjs/headless/src/components/tooltip/types\").TooltipPositionerImplEmits",
+            "resolvedType": "{ \"update:open\": [value: boolean]; escapeKeyDown: [event: KeyboardEvent]; pointerDownOutside: [event: PointerDownOutsideEvent] }",
+            "description": "Events for the TooltipCompact component.",
+            "descriptionKey": "api.generated.headless_src_components_tooltip_types.tooltipcompactemits",
+            "sourcePath": "headless/src/components/tooltip/types.ts",
+            "typeParameters": [],
+            "external": false,
+            "members": [],
+            "callables": [
+              {
+                "name": "update:open",
+                "type": "[value: boolean]",
+                "parameters": "value: boolean",
+                "required": true,
+                "description": "Event handler called when the open state of the tooltip changes.",
+                "descriptionKey": "api.generated.headless_src_components_tooltip_types.tooltipcompactemits.callables.update_open",
+                "sourcePath": "headless/src/components/tooltip/types.ts",
+                "referencedTypes": []
+              },
+              {
+                "name": "escapeKeyDown",
+                "type": "[event: KeyboardEvent]",
+                "parameters": "event: KeyboardEvent",
+                "required": true,
+                "description": "Event handler called when the escape key is down. Can be prevented.",
+                "descriptionKey": "api.generated.headless_src_components_tooltip_types.tooltipcompactemits.callables.escapekeydown",
+                "sourcePath": "headless/src/types/component.ts",
+                "referencedTypes": []
+              },
+              {
+                "name": "pointerDownOutside",
+                "type": "[event: PointerDownOutsideEvent]",
+                "parameters": "event: PointerDownOutsideEvent",
+                "required": true,
+                "description": "Event handler called when a `pointerdown` event happens outside of the `DismissableLayer`. Can be prevented.",
+                "descriptionKey": "api.generated.headless_src_components_tooltip_types.tooltipcompactemits.callables.pointerdownoutside",
+                "sourcePath": "headless/src/types/component.ts",
+                "referencedTypes": []
+              }
+            ]
+          }
+        ]
+      },
+      "slots": {
+        "kind": "slots",
+        "name": "TooltipSlots",
+        "type": "TypeAlias TooltipSlots: TooltipCompactSlots",
+        "resolvedType": "{ default?: (() => any); trigger?: (() => any) }",
+        "description": "Slots for the Tooltip component.",
+        "descriptionKey": "api.generated.src_components_tooltip_types.tooltipslots.slots",
+        "sourcePath": "src/components/tooltip/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [
+          {
+            "name": "default",
+            "type": "(() => any) | undefined",
+            "parameters": "(() => any) | undefined",
+            "required": false,
+            "description": "Custom content for the default slot.",
+            "descriptionKey": "api.generated.src_components_tooltip_types.tooltipslots.callables.default",
+            "sourcePath": "headless/src/components/tooltip/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "trigger",
+            "type": "(() => any) | undefined",
+            "parameters": "(() => any) | undefined",
+            "required": false,
+            "description": "Custom content for the trigger slot.",
+            "descriptionKey": "api.generated.src_components_tooltip_types.tooltipslots.callables.trigger",
+            "sourcePath": "headless/src/components/tooltip/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "referencedTypes": [
+          {
+            "name": "TooltipCompactSlots",
+            "kind": "interface",
+            "type": "TooltipCompactSlots",
+            "resolvedType": "{ default?: (() => any); trigger?: (() => any) }",
+            "description": "Slots for the TooltipCompact component.",
+            "descriptionKey": "api.generated.headless_src_components_tooltip_types.tooltipcompactslots",
+            "sourcePath": "headless/src/components/tooltip/types.ts",
+            "typeParameters": [],
+            "external": false,
+            "members": [],
+            "callables": [
+              {
+                "name": "default",
+                "type": "(() => any) | undefined",
+                "parameters": "(() => any) | undefined",
+                "required": false,
+                "description": "Custom content for the default slot.",
+                "descriptionKey": "api.generated.headless_src_components_tooltip_types.tooltipcompactslots.callables.default",
+                "sourcePath": "headless/src/components/tooltip/types.ts",
+                "referencedTypes": []
+              },
+              {
+                "name": "trigger",
+                "type": "(() => any) | undefined",
+                "parameters": "(() => any) | undefined",
+                "required": false,
+                "description": "Custom content for the trigger slot.",
+                "descriptionKey": "api.generated.headless_src_components_tooltip_types.tooltipcompactslots.callables.trigger",
+                "sourcePath": "headless/src/components/tooltip/types.ts",
+                "referencedTypes": []
+              }
+            ]
+          }
+        ]
       }
     },
     "TooltipArrow": {},
+    "TooltipCompact": {
+      "props": {
+        "kind": "props",
+        "name": "TooltipCompactProps",
+        "type": "Interface TooltipCompactProps",
+        "resolvedType": "{ content?: string; placement?: import(\"@/index\").Placement; showArrow?: boolean; triggerProps?: PopperAnchorProps; portalProps?: PortalProps; positionerProps?: TooltipPositionerProps; popupProps?: TooltipPopupProps; arrowProps?: PopperArrowProps; defaultOpen?: boolean; open?: boolean; delayDuration?: number; skipDelayDuration?: number; disableHoverableContent?: boolean; disableClosingTrigger?: boolean; disabled?: boolean; ignoreNonKeyboardFocus?: boolean }",
+        "description": "Properties for the TooltipCompact component.",
+        "descriptionKey": "api.generated.headless_src_components_tooltip_types.tooltipcompactprops.props",
+        "sourcePath": "headless/src/components/tooltip/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "content",
+            "type": "string",
+            "required": false,
+            "description": "Content.",
+            "descriptionKey": "api.generated.headless_src_components_tooltip_types.tooltipcompactprops.members.content",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/tooltip/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "placement",
+            "type": "import(\"@/index\").Placement",
+            "required": false,
+            "description": "Placement.",
+            "descriptionKey": "api.generated.headless_src_components_tooltip_types.tooltipcompactprops.members.placement",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/tooltip/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "showArrow",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether to show an arrow.",
+            "descriptionKey": "api.generated.headless_src_components_tooltip_types.tooltipcompactprops.members.showarrow",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/tooltip/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "triggerProps",
+            "type": "PopperAnchorProps",
+            "required": false,
+            "description": "Properties forwarded to the trigger element.",
+            "descriptionKey": "api.generated.headless_src_components_tooltip_types.tooltipcompactprops.members.triggerprops",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/tooltip/types.ts",
+            "referencedTypes": [
+              {
+                "name": "PopperAnchorProps",
+                "kind": "interface",
+                "type": "PopperAnchorProps",
+                "resolvedType": "{ reference?: ReferenceElement; asChild?: boolean; as?: AsTag | Component }",
+                "description": "Properties for the PopperAnchor component.",
+                "descriptionKey": "api.generated.headless_src_components_popper_types.popperanchorprops",
+                "sourcePath": "headless/src/components/popper/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "reference",
+                    "type": "ReferenceElement",
+                    "required": false,
+                    "description": "The reference (or anchor) element that is being referred to for positioning. If not provided will use the current\ncomponent as anchor.",
+                    "descriptionKey": "api.generated.headless_src_components_popper_types.popperanchorprops.members.reference",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/popper/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "asChild",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+                    "descriptionKey": "api.generated.headless_src_components_popper_types.popperanchorprops.members.aschild",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "as",
+                    "type": "AsTag | Component",
+                    "required": false,
+                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+                    "descriptionKey": "api.generated.headless_src_components_popper_types.popperanchorprops.members.as",
+                    "default": "'div'",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "portalProps",
+            "type": "PortalProps",
+            "required": false,
+            "description": "Properties forwarded to the portal element.",
+            "descriptionKey": "api.generated.headless_src_components_tooltip_types.tooltipcompactprops.members.portalprops",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/tooltip/types.ts",
+            "referencedTypes": [
+              {
+                "name": "PortalProps",
+                "kind": "interface",
+                "type": "PortalProps",
+                "resolvedType": "{ to?: string | HTMLElement; disabled?: boolean; defer?: boolean; forceMount?: boolean }",
+                "description": "Properties for the Portal component.",
+                "descriptionKey": "api.generated.headless_src_components_portal_types.portalprops",
+                "sourcePath": "headless/src/components/portal/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "to",
+                    "type": "string | HTMLElement",
+                    "required": false,
+                    "description": "Vue native teleport component prop `:to`\n\n{@link https://vuejs.org/guide/built-ins/teleport.html#basic-usage}",
+                    "descriptionKey": "api.generated.headless_src_components_portal_types.portalprops.members.to",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/portal/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "disabled",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Disable teleport and render the component inline\n\n{@link https://vuejs.org/guide/built-ins/teleport.html#disabling-teleport}",
+                    "descriptionKey": "api.generated.headless_src_components_portal_types.portalprops.members.disabled",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/portal/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "defer",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Defer the resolving of a Teleport target until other parts of the application have mounted (requires Vue 3.5.0+)\n\n{@link https://vuejs.org/guide/built-ins/teleport.html#deferred-teleport}",
+                    "descriptionKey": "api.generated.headless_src_components_portal_types.portalprops.members.defer",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/portal/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "forceMount",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Used to force mounting when more control is needed.\n\nUseful when controlling animation with Vue animation libraries.",
+                    "descriptionKey": "api.generated.headless_src_components_portal_types.portalprops.members.forcemount",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/types/component.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "positionerProps",
+            "type": "TooltipPositionerProps",
+            "required": false,
+            "description": "Properties forwarded to the positioner element.",
+            "descriptionKey": "api.generated.headless_src_components_tooltip_types.tooltipcompactprops.members.positionerprops",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/tooltip/types.ts",
+            "referencedTypes": [
+              {
+                "name": "TooltipPositionerProps",
+                "kind": "interface",
+                "type": "TooltipPositionerProps",
+                "resolvedType": "{ placement?: Placement; side?: Side; sideOffset?: number; sideFlip?: boolean; align?: Align; alignOffset?: number; alignFlip?: boolean; avoidCollisions?: boolean; collisionBoundary?: Element | (Element | null)[] | null; collisionPadding?: Padding; arrowPadding?: number; hideShiftedArrow?: boolean; sticky?: 'partial' | 'always'; hideWhenDetached?: boolean; positionStrategy?: 'fixed' | 'absolute'; updatePositionStrategy?: 'always' | 'optimized'; disableUpdateOnLayoutShift?: boolean; prioritizePosition?: boolean; reference?: ReferenceElement; forceMount?: boolean }",
+                "description": "Properties for the TooltipPositioner component.",
+                "descriptionKey": "api.generated.headless_src_components_tooltip_types.tooltippositionerprops",
+                "sourcePath": "headless/src/components/tooltip/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "placement",
+                    "type": "Placement",
+                    "required": false,
+                    "description": "The placement of the floating element.\n\nIf used, it will override the `side` and `align` props.",
+                    "descriptionKey": "api.generated.headless_src_components_tooltip_types.tooltippositionerprops.members.placement",
+                    "default": "undefined",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/popper/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "side",
+                    "type": "Side",
+                    "required": false,
+                    "description": "The preferred side of the trigger to render against when open. Will be reversed when collisions occur and\navoidCollisions is enabled.",
+                    "descriptionKey": "api.generated.headless_src_components_tooltip_types.tooltippositionerprops.members.side",
+                    "default": "'bottom'",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/popper/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "sideOffset",
+                    "type": "number",
+                    "required": false,
+                    "description": "The distance in pixels from the trigger.",
+                    "descriptionKey": "api.generated.headless_src_components_tooltip_types.tooltippositionerprops.members.sideoffset",
+                    "default": "0",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/popper/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "sideFlip",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Flip to the opposite side when colliding with boundary.",
+                    "descriptionKey": "api.generated.headless_src_components_tooltip_types.tooltippositionerprops.members.sideflip",
+                    "default": "true",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/popper/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "align",
+                    "type": "Align",
+                    "required": false,
+                    "description": "The preferred alignment against the trigger. May change when collisions occur.",
+                    "descriptionKey": "api.generated.headless_src_components_tooltip_types.tooltippositionerprops.members.align",
+                    "default": "'center'",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/popper/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "alignOffset",
+                    "type": "number",
+                    "required": false,
+                    "description": "An offset in pixels from the `start` or `end` alignment options.",
+                    "descriptionKey": "api.generated.headless_src_components_tooltip_types.tooltippositionerprops.members.alignoffset",
+                    "default": "0",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/popper/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "alignFlip",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Flip alignment when colliding with boundary.\nMay only occur when `prioritizePosition` is true.",
+                    "descriptionKey": "api.generated.headless_src_components_tooltip_types.tooltippositionerprops.members.alignflip",
+                    "default": "true",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/popper/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "avoidCollisions",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "When `true`, overrides the side and align preferences to prevent collisions with boundary edges.",
+                    "descriptionKey": "api.generated.headless_src_components_tooltip_types.tooltippositionerprops.members.avoidcollisions",
+                    "default": "true",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/popper/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "collisionBoundary",
+                    "type": "Element | (Element | null)[] | null",
+                    "required": false,
+                    "description": "The element used as the collision boundary. By default this is the viewport, though you can provide additional\nelement(s) to be included in this check.",
+                    "descriptionKey": "api.generated.headless_src_components_tooltip_types.tooltippositionerprops.members.collisionboundary",
+                    "default": "[ ]",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/popper/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "collisionPadding",
+                    "type": "Padding",
+                    "required": false,
+                    "description": "The distance in pixels from the boundary edges where collision detection should occur. Accepts a number (same for\nall sides), or a partial padding object, for example: { top: 20, left: 20 }.",
+                    "descriptionKey": "api.generated.headless_src_components_tooltip_types.tooltippositionerprops.members.collisionpadding",
+                    "default": "0",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/popper/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "arrowPadding",
+                    "type": "number",
+                    "required": false,
+                    "description": "The padding between the arrow and the edges of the content. If your content has border-radius, this will prevent it\nfrom overflowing the corners.",
+                    "descriptionKey": "api.generated.headless_src_components_tooltip_types.tooltippositionerprops.members.arrowpadding",
+                    "default": "0",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/popper/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "hideShiftedArrow",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "When `true`, hides the arrow when it cannot be centered\nto the reference element.",
+                    "descriptionKey": "api.generated.headless_src_components_tooltip_types.tooltippositionerprops.members.hideshiftedarrow",
+                    "default": "true",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/popper/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "sticky",
+                    "type": "'partial' | 'always'",
+                    "required": false,
+                    "description": "The sticky behavior on the align axis. `partial` will keep the content in the boundary as long as the trigger is at\nleast partially in the boundary whilst \"always\" will keep the content in the boundary regardless.",
+                    "descriptionKey": "api.generated.headless_src_components_tooltip_types.tooltippositionerprops.members.sticky",
+                    "default": "'partial'",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/popper/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "hideWhenDetached",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Whether to hide the content when the trigger becomes fully occluded.",
+                    "descriptionKey": "api.generated.headless_src_components_tooltip_types.tooltippositionerprops.members.hidewhendetached",
+                    "default": "false",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/popper/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "positionStrategy",
+                    "type": "'fixed' | 'absolute'",
+                    "required": false,
+                    "description": "The type of CSS position property to use.",
+                    "descriptionKey": "api.generated.headless_src_components_tooltip_types.tooltippositionerprops.members.positionstrategy",
+                    "default": "'fixed'",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/popper/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "updatePositionStrategy",
+                    "type": "'always' | 'optimized'",
+                    "required": false,
+                    "description": "Strategy to update the position of the floating element on every animation frame.",
+                    "descriptionKey": "api.generated.headless_src_components_tooltip_types.tooltippositionerprops.members.updatepositionstrategy",
+                    "default": "'optimized'",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/popper/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "disableUpdateOnLayoutShift",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Whether to disable the update position for the content when the layout shifted.",
+                    "descriptionKey": "api.generated.headless_src_components_tooltip_types.tooltippositionerprops.members.disableupdateonlayoutshift",
+                    "default": "false",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/popper/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "prioritizePosition",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Force content to be position within the viewport. Might overlap the reference element, which may not be desired.",
+                    "descriptionKey": "api.generated.headless_src_components_tooltip_types.tooltippositionerprops.members.prioritizeposition",
+                    "default": "false",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/popper/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "reference",
+                    "type": "ReferenceElement",
+                    "required": false,
+                    "description": "The custom element or virtual element that will be set as the reference to position the floating element. If\nprovided, it will replace the default anchor element.",
+                    "descriptionKey": "api.generated.headless_src_components_tooltip_types.tooltippositionerprops.members.reference",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/popper/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "forceMount",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Used to force mounting when more control is needed.\n\nUseful when controlling animation with Vue animation libraries.",
+                    "descriptionKey": "api.generated.headless_src_components_tooltip_types.tooltippositionerprops.members.forcemount",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/types/component.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "popupProps",
+            "type": "TooltipPopupProps",
+            "required": false,
+            "description": "Properties forwarded to the popup element.",
+            "descriptionKey": "api.generated.headless_src_components_tooltip_types.tooltipcompactprops.members.popupprops",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/tooltip/types.ts",
+            "referencedTypes": [
+              {
+                "name": "TooltipPopupProps",
+                "kind": "interface",
+                "type": "TooltipPopupProps",
+                "resolvedType": "{ ariaLabel?: string }",
+                "description": "Properties for the TooltipPopup component.",
+                "descriptionKey": "api.generated.headless_src_components_tooltip_types.tooltippopupprops",
+                "sourcePath": "headless/src/components/tooltip/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "ariaLabel",
+                    "type": "string",
+                    "required": false,
+                    "description": "By default, screen readers will announce the content inside the component.\n\nIf this is not descriptive enough, or you have content that cannot be announced, use `aria-label` as a more\ndescriptive label.",
+                    "descriptionKey": "api.generated.headless_src_components_tooltip_types.tooltippopupprops.members.arialabel",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/tooltip/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "arrowProps",
+            "type": "PopperArrowProps",
+            "required": false,
+            "description": "Properties forwarded to the arrow element.",
+            "descriptionKey": "api.generated.headless_src_components_tooltip_types.tooltipcompactprops.members.arrowprops",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/tooltip/types.ts",
+            "referencedTypes": [
+              {
+                "name": "PopperArrowProps",
+                "kind": "interface",
+                "type": "PopperArrowProps",
+                "resolvedType": null,
+                "description": "Properties for the PopperArrow component.",
+                "descriptionKey": "api.generated.headless_src_components_popper_types.popperarrowprops",
+                "sourcePath": "headless/src/components/popper/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "defaultOpen",
+            "type": "boolean",
+            "required": false,
+            "description": "The open state of the tooltip when it is initially rendered. Use when you do not need to control its open state.",
+            "descriptionKey": "api.generated.headless_src_components_tooltip_types.tooltipcompactprops.members.defaultopen",
+            "default": null,
+            "inheritedFrom": "defaultOpen",
+            "sourcePath": "headless/src/components/tooltip/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "open",
+            "type": "boolean",
+            "required": false,
+            "description": "The controlled open state of the tooltip.",
+            "descriptionKey": "api.generated.headless_src_components_tooltip_types.tooltipcompactprops.members.open",
+            "default": null,
+            "inheritedFrom": "open",
+            "sourcePath": "headless/src/components/tooltip/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "delayDuration",
+            "type": "number",
+            "required": false,
+            "description": "The duration from when the pointer enters the trigger until the tooltip gets opened.",
+            "descriptionKey": "api.generated.headless_src_components_tooltip_types.tooltipcompactprops.members.delayduration",
+            "default": "150",
+            "inheritedFrom": "delayDuration",
+            "sourcePath": "headless/src/components/tooltip/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "skipDelayDuration",
+            "type": "number",
+            "required": false,
+            "description": "How much time a user has to enter another trigger without incurring a delay again.",
+            "descriptionKey": "api.generated.headless_src_components_tooltip_types.tooltipcompactprops.members.skipdelayduration",
+            "default": "300",
+            "inheritedFrom": "skipDelayDuration",
+            "sourcePath": "headless/src/components/tooltip/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "disableHoverableContent",
+            "type": "boolean",
+            "required": false,
+            "description": "When `true`, trying to hover the content will result in the tooltip closing as the pointer leaves the trigger.",
+            "descriptionKey": "api.generated.headless_src_components_tooltip_types.tooltipcompactprops.members.disablehoverablecontent",
+            "default": "false",
+            "inheritedFrom": "disableHoverableContent",
+            "sourcePath": "headless/src/components/tooltip/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "disableClosingTrigger",
+            "type": "boolean",
+            "required": false,
+            "description": "When `true`, clicking on trigger will not close the content.",
+            "descriptionKey": "api.generated.headless_src_components_tooltip_types.tooltipcompactprops.members.disableclosingtrigger",
+            "default": "false",
+            "inheritedFrom": "disableClosingTrigger",
+            "sourcePath": "headless/src/components/tooltip/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "disabled",
+            "type": "boolean",
+            "required": false,
+            "description": "When `true`, disable tooltip",
+            "descriptionKey": "api.generated.headless_src_components_tooltip_types.tooltipcompactprops.members.disabled",
+            "default": "false",
+            "inheritedFrom": "disabled",
+            "sourcePath": "headless/src/components/tooltip/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "ignoreNonKeyboardFocus",
+            "type": "boolean",
+            "required": false,
+            "description": "Prevent the tooltip from opening if the focus did not come from the keyboard by matching against the\n`:focus-visible` selector. This is useful if you want to avoid opening it when switching browser tabs or closing a\ndialog.",
+            "descriptionKey": "api.generated.headless_src_components_tooltip_types.tooltipcompactprops.members.ignorenonkeyboardfocus",
+            "default": "false",
+            "inheritedFrom": "ignoreNonKeyboardFocus",
+            "sourcePath": "headless/src/components/tooltip/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      },
+      "emits": {
+        "kind": "emits",
+        "name": "TooltipCompactEmits",
+        "type": "TypeAlias TooltipCompactEmits: TooltipRootEmits & TooltipPositionerEmits",
+        "resolvedType": "{ \"update:open\": [value: boolean]; escapeKeyDown: [event: KeyboardEvent]; pointerDownOutside: [event: PointerDownOutsideEvent] }",
+        "description": "Events for the TooltipCompact component.",
+        "descriptionKey": "api.generated.headless_src_components_tooltip_types.tooltipcompactemits.emits",
+        "sourcePath": "headless/src/components/tooltip/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [
+          {
+            "name": "update:open",
+            "type": "[value: boolean]",
+            "parameters": "value: boolean",
+            "required": true,
+            "description": "Event handler called when the open state of the tooltip changes.",
+            "descriptionKey": "api.generated.headless_src_components_tooltip_types.tooltipcompactemits.callables.update_open",
+            "sourcePath": "headless/src/components/tooltip/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "escapeKeyDown",
+            "type": "[event: KeyboardEvent]",
+            "parameters": "event: KeyboardEvent",
+            "required": true,
+            "description": "Event handler called when the escape key is down. Can be prevented.",
+            "descriptionKey": "api.generated.headless_src_components_tooltip_types.tooltipcompactemits.callables.escapekeydown",
+            "sourcePath": "headless/src/types/component.ts",
+            "referencedTypes": [
+              {
+                "name": "KeyboardEvent",
+                "kind": "interface",
+                "type": "KeyboardEvent",
+                "resolvedType": null,
+                "description": "**`KeyboardEvent`** objects describe a user interaction with the keyboard; each event describes a single interaction between the user and a key (or combination of a key with modifier keys) on the keyboard. The event type (keydown, keypress, or keyup) identifies what kind of keyboard activity occurred.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/KeyboardEvent)",
+                "descriptionKey": "api.generated.node_modules_pnpm_typescript_6_0_3_node_modules_typescript_lib_lib_dom_d.keyboardevent",
+                "sourcePath": "node_modules/.pnpm/typescript@6.0.3/node_modules/typescript/lib/lib.dom.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "pointerDownOutside",
+            "type": "[event: PointerDownOutsideEvent]",
+            "parameters": "event: PointerDownOutsideEvent",
+            "required": true,
+            "description": "Event handler called when a `pointerdown` event happens outside of the `DismissableLayer`. Can be prevented.",
+            "descriptionKey": "api.generated.headless_src_components_tooltip_types.tooltipcompactemits.callables.pointerdownoutside",
+            "sourcePath": "headless/src/types/component.ts",
+            "referencedTypes": [
+              {
+                "name": "PointerDownOutsideEvent",
+                "kind": "typeAlias",
+                "type": "CustomEvent<{ originalEvent: PointerEvent; }>",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": "api.generated.headless_src_types_event.pointerdownoutsideevent",
+                "sourcePath": "headless/src/types/event.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "referencedTypes": []
+      },
+      "slots": {
+        "kind": "slots",
+        "name": "TooltipCompactSlots",
+        "type": "Interface TooltipCompactSlots",
+        "resolvedType": "{ default?: (() => any); trigger?: (() => any) }",
+        "description": "Slots for the TooltipCompact component.",
+        "descriptionKey": "api.generated.headless_src_components_tooltip_types.tooltipcompactslots.slots",
+        "sourcePath": "headless/src/components/tooltip/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [
+          {
+            "name": "default",
+            "type": "(() => any) | undefined",
+            "parameters": "(() => any) | undefined",
+            "required": false,
+            "description": "Custom content for the default slot.",
+            "descriptionKey": "api.generated.headless_src_components_tooltip_types.tooltipcompactslots.callables.default",
+            "sourcePath": "headless/src/components/tooltip/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "trigger",
+            "type": "(() => any) | undefined",
+            "parameters": "(() => any) | undefined",
+            "required": false,
+            "description": "Custom content for the trigger slot.",
+            "descriptionKey": "api.generated.headless_src_components_tooltip_types.tooltipcompactslots.callables.trigger",
+            "sourcePath": "headless/src/components/tooltip/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "referencedTypes": []
+      }
+    },
     "TooltipPopup": {
       "props": {
         "kind": "props",

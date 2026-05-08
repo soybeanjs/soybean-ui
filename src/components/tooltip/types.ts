@@ -1,21 +1,16 @@
 import type {
-  TooltipArrowProps,
-  TooltipPopupProps,
-  TooltipPortalProps,
-  TooltipPositionerEmits,
-  TooltipPositionerProps,
-  TooltipRootEmits,
-  TooltipRootProps,
-  TooltipTriggerProps,
+  TooltipCompactEmits,
+  TooltipCompactProps,
+  TooltipCompactSlots,
   TooltipUi
 } from '@soybeanjs/headless/tooltip';
-import type { ClassValue, Placement } from '@soybeanjs/headless/types';
+import type { ClassValue } from '@soybeanjs/headless/types';
 import type { ThemeSize } from '@/theme';
 
 /**
  * Properties for the Tooltip component.
  */
-export interface TooltipProps extends TooltipRootProps {
+export interface TooltipProps extends TooltipCompactProps {
   /**
    * class of popup
    */
@@ -28,41 +23,14 @@ export interface TooltipProps extends TooltipRootProps {
    * Per-slot class overrides for the component.
    */
   ui?: Partial<TooltipUi>;
-  /**
-   * Content.
-   */
-  content?: string;
-  /**
-   * Placement.
-   */
-  placement?: Placement;
-  /**
-   * Whether to show an arrow.
-   */
-  showArrow?: boolean;
-  /**
-   * Properties forwarded to the popup element.
-   */
-  popupProps?: TooltipPopupProps;
-  /**
-   * Properties forwarded to the positioner element.
-   */
-  positionerProps?: TooltipPositionerProps;
-  /**
-   * Properties forwarded to the trigger element.
-   */
-  triggerProps?: TooltipTriggerProps;
-  /**
-   * Properties forwarded to the portal element.
-   */
-  portalProps?: TooltipPortalProps;
-  /**
-   * Properties forwarded to the arrow element.
-   */
-  arrowProps?: TooltipArrowProps;
 }
 
 /**
  * Events for the Tooltip component.
  */
-export type TooltipEmits = TooltipRootEmits & TooltipPositionerEmits;
+export type TooltipEmits = TooltipCompactEmits;
+
+/**
+ * Slots for the Tooltip component.
+ */
+export type TooltipSlots = TooltipCompactSlots;

@@ -7254,6 +7254,42 @@
         "toolbarui": "工具栏组件的 UI 类重载。"
       },
       "headless_src_components_tooltip_types": {
+        "tooltipcompactemits": {
+          "callables": {
+            "escapekeydown": "",
+            "pointerdownoutside": "",
+            "update_open": ""
+          },
+          "emits": ""
+        },
+        "tooltipcompactprops": {
+          "members": {
+            "arrowprops": "",
+            "content": "",
+            "defaultopen": "",
+            "delayduration": "",
+            "disableclosingtrigger": "",
+            "disabled": "",
+            "disablehoverablecontent": "",
+            "ignorenonkeyboardfocus": "",
+            "open": "",
+            "placement": "",
+            "popupprops": "",
+            "portalprops": "",
+            "positionerprops": "",
+            "showarrow": "",
+            "skipdelayduration": "",
+            "triggerprops": ""
+          },
+          "props": ""
+        },
+        "tooltipcompactslots": {
+          "callables": {
+            "default": "",
+            "trigger": ""
+          },
+          "slots": ""
+        },
         "tooltippopupprops": {
           "members": {
             "arialabel": "默认情况下，屏幕阅读器将公布组件内的内容。\n\n如果描述性不够，或有无法公布的内容，可使用 `aria-label` 作为描述性更强的标签。\n描述性标签。"
@@ -11717,6 +11753,13 @@
             "ui": "组件的每个插槽类重写。"
           },
           "props": "工具提示组件的属性。"
+        },
+        "tooltipslots": {
+          "callables": {
+            "default": "",
+            "trigger": ""
+          },
+          "slots": ""
         }
       },
       "src_components_tree_menu_types": {

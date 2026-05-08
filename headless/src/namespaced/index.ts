@@ -480,6 +480,7 @@ import {
   ToolbarToggleGroup,
   ToolbarToggleItem,
   TooltipArrow,
+  TooltipCompact,
   TooltipPopup,
   TooltipPortal,
   TooltipPositioner,
@@ -1713,6 +1714,7 @@ export const ToggleGroup = {
 };
 
 export const Tooltip = {
+  Compact: TooltipCompact,
   Root: TooltipRoot,
   Trigger: TooltipTrigger,
   Portal: TooltipPortal,
@@ -1720,6 +1722,7 @@ export const Tooltip = {
   Popup: TooltipPopup,
   Arrow: TooltipArrow
 } as {
+  Compact: typeof TooltipCompact;
   Root: typeof TooltipRoot;
   Trigger: typeof TooltipTrigger;
   Portal: typeof TooltipPortal;
