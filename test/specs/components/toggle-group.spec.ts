@@ -1,7 +1,6 @@
 import { mount } from '@vue/test-utils';
 import { describe, expect, it } from 'vitest';
-import SToggleGroup from '../../../src/components/toggle-group/toggle-group.vue';
-import SToggleGroupItem from '../../../src/components/toggle-group/toggle-group-item.vue';
+import { SToggleGroup, SToggleGroupItem } from '../../../src/components/toggle-group';
 import { getA11yViolations } from '../../shared/a11y';
 
 function mountToggleGroup(props?: Record<string, unknown>) {
