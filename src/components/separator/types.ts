@@ -1,4 +1,4 @@
-import type { SeparatorLabelProps, SeparatorRootProps, SeparatorUi } from '@soybeanjs/headless/separator';
+import type { SeparatorCompactProps, SeparatorUi } from '@soybeanjs/headless/separator';
 import type { Align, ClassValue } from '@soybeanjs/headless/types';
 import type { ThemeSize } from '@/theme';
 import type { SeparatorBorder } from './variants';
@@ -6,7 +6,7 @@ import type { SeparatorBorder } from './variants';
 /**
  * Properties for the Separator component.
  */
-export interface SeparatorProps extends SeparatorRootProps {
+export interface SeparatorProps extends SeparatorCompactProps {
   /**
    * Additional class names applied to the root element.
    */
@@ -27,12 +27,4 @@ export interface SeparatorProps extends SeparatorRootProps {
    * Border.
    */
   border?: SeparatorBorder;
-  /**
-   * Label text rendered by the component.
-   */
-  label?: string;
-  /**
-   * Properties forwarded to the label element.
-   */
-  labelProps?: SeparatorLabelProps;
 }

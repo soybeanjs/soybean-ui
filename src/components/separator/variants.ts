@@ -40,13 +40,13 @@ export const separatorVariants = tv({
     },
     align: {
       start: {
-        label: 'left-1/16 lt-sm:left-1/8 lt-md:left-1/10 lt-lg:left-1/12'
+        label: 'start-1/16 lt-sm:start-1/8 lt-md:start-1/10 lt-lg:start-1/12'
       },
       center: {
-        label: 'left-1/2'
+        label: 'start-1/2'
       },
       end: {
-        label: 'left-15/16 lt-sm:left-7/8 lt-md:left-9/10 lt-lg:left-11/12'
+        label: 'start-15/16 lt-sm:start-7/8 lt-md:start-9/10 lt-lg:start-11/12'
       }
     },
     border: {
