@@ -10,6 +10,7 @@ import {
 } from './parts';
 import { getPlaceholder } from './placeholders';
 import { getOptsByGranularity, normalizeHourCycle } from './utils';
+import type { LocaleDateMessages } from '../locale/types';
 import type {
   DateSegmentPart,
   DateValue,
@@ -80,10 +81,22 @@ type CreateContentOptions = {
   segmentValues: SegmentValueObj;
   locale: Ref<string>;
   isTimeValue?: boolean;
+  dateMessages?: LocaleDateMessages;
 };
 
 function createContentObj(options: CreateContentOptions) {
   const { segmentValues, dateRef, formatter, hourCycle, locale } = options;
+
+  const resolvePlaceholder = (part: DateSegmentPart | TimeSegmentPart): string => {
+    const m = options.dateMessages;
+    if (m) {
+      if (part === 'year') return m.placeholder.year;
+      if (part === 'month') return m.placeholder.month;
+      if (part === 'day') return m.placeholder.day;
+      return m.placeholder.time;
+    }
+    return getPlaceholder(part, '', locale.value);
+  };
 
   const numericSegmentValues = segmentValues as Record<string, number | 'AM' | 'PM' | null>;
   const getPartContent = (part: DateSegmentPart | TimeSegmentPart) => {
@@ -106,7 +119,7 @@ function createContentObj(options: CreateContentOptions) {
         });
       }
 
-      return getPlaceholder(part, '', locale.value);
+      return resolvePlaceholder(part);
     }
 
     if (isDateSegmentPart(part)) {
@@ -119,7 +132,7 @@ function createContentObj(options: CreateContentOptions) {
         return formatter.part(dateRef.set({ [part]: value as number }), part);
       }
 
-      return getPlaceholder(part, '', locale.value);
+      return resolvePlaceholder(part);
     }
 
     return '';

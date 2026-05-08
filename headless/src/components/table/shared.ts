@@ -22,6 +22,8 @@ import type {
   TableVisibleRow,
   TableVirtualMeasurement
 } from './types';
+import type { LocaleTableMessages } from '../../locale/types';
+import { interpolate } from '../../shared';
 
 const tableColumnFallbackKeys = new WeakMap<object, string>();
 
@@ -856,28 +858,39 @@ export function getTableColumnLabel<T extends TableBaseData>(column: TableColumn
   return column.title ?? getTableColumnKey(column);
 }
 
-export function getTableSortButtonLabel(columnLabel: string, order: TableSortOrder | undefined): string {
+export function getTableSortButtonLabel(
+  columnLabel: string,
+  order: TableSortOrder | undefined,
+  messages: Pick<LocaleTableMessages, 'sortByColumn' | 'sortByColumnAsc' | 'sortByColumnDesc'>
+): string {
   if (order === 'asc') {
-    return `Sort by ${columnLabel}, currently ascending`;
+    return interpolate(messages.sortByColumnAsc, { column: columnLabel });
   }
 
   if (order === 'desc') {
-    return `Sort by ${columnLabel}, currently descending`;
+    return interpolate(messages.sortByColumnDesc, { column: columnLabel });
   }
 
-  return `Sort by ${columnLabel}`;
+  return interpolate(messages.sortByColumn, { column: columnLabel });
 }
 
-export function getTableResizeHandleLabel(columnLabel: string): string {
-  return `Resize ${columnLabel} column`;
+export function getTableResizeHandleLabel(
+  columnLabel: string,
+  messages: Pick<LocaleTableMessages, 'resizeColumn'>
+): string {
+  return interpolate(messages.resizeColumn, { column: columnLabel });
 }
 
-export function getTableRowExpandLabel(rowLabel: string, expanded: boolean): string {
-  return expanded ? `Collapse row ${rowLabel}` : `Expand row ${rowLabel}`;
+export function getTableRowExpandLabel(
+  rowLabel: string,
+  expanded: boolean,
+  messages: Pick<LocaleTableMessages, 'expandRow' | 'collapseRow'>
+): string {
+  return interpolate(expanded ? messages.collapseRow : messages.expandRow, { row: rowLabel });
 }
 
-export function getTableSelectRowLabel(rowLabel: string): string {
-  return `Select row ${rowLabel}`;
+export function getTableSelectRowLabel(rowLabel: string, messages: Pick<LocaleTableMessages, 'selectRow'>): string {
+  return interpolate(messages.selectRow, { row: rowLabel });
 }
 
 export function getNextTablePointerResizeWidth(

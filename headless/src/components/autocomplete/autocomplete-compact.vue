@@ -21,6 +21,7 @@ import { Portal } from '../portal';
 import AutocompleteRoot from './autocomplete-root.vue';
 import AutocompleteInput from './autocomplete-input.vue';
 import { getAutocompleteItemOptions, getAutocompleteSearchOptions, isGroupOption } from './shared';
+import { useLocaleMessages } from '../../locale';
 import type {
   AutocompleteCompactEmits,
   AutocompleteCompactProps,
@@ -36,9 +37,7 @@ defineOptions({
 const props = withDefaults(defineProps<AutocompleteCompactProps<T>>(), {
   modelValue: undefined,
   open: undefined,
-  clearable: false,
-  clearLabel: 'Clear input',
-  emptyLabel: 'No results found.'
+  clearable: false
 });
 
 const emit = defineEmits<AutocompleteCompactEmits<T>>();
@@ -104,6 +103,8 @@ const inputProps = computed(() => ({
   placeholder: props.placeholder ?? props.inputProps?.placeholder
 }));
 
+const messages = useLocaleMessages();
+
 const getItemKey = (item: (typeof filteredItems.value)[number]) => {
   if (isGroupOption(item)) {
     return `group-${item.label}`;
@@ -133,13 +134,21 @@ const handleSelect = (item: T) => {
           </slot>
         </template>
         <template #trailing="{ clear }">
-          <AutocompleteCancel v-if="clearable && modelValue" :aria-label="clearLabel" @click="clear">
+          <AutocompleteCancel
+            v-if="clearable && modelValue"
+            :aria-label="props.clearLabel ?? messages.autocomplete.clearInput"
+            @click="clear"
+          >
             <Icon icon="lucide:x" />
           </AutocompleteCancel>
           <slot name="input-trailing" />
         </template>
       </AutocompleteInput>
-      <AutocompleteTrigger v-slot="{ triggerIconClass }" v-bind="triggerProps" aria-label="Toggle suggestions">
+      <AutocompleteTrigger
+        v-slot="{ triggerIconClass }"
+        v-bind="triggerProps"
+        :aria-label="messages.autocomplete.toggleSuggestions"
+      >
         <slot name="trigger-icon">
           <Icon icon="lucide:chevrons-up-down" :class="triggerIconClass" />
         </slot>
@@ -149,7 +158,7 @@ const handleSelect = (item: T) => {
       <AutocompleteContent v-bind="contentProps">
         <AutocompleteViewport v-bind="viewportProps">
           <AutocompleteEmpty v-if="!filteredItems.length">
-            <slot name="empty">{{ emptyLabel }}</slot>
+            <slot name="empty">{{ props.emptyLabel ?? messages.autocomplete.noResults }}</slot>
           </AutocompleteEmpty>
           <template v-for="item in filteredItems" :key="getItemKey(item)">
             <template v-if="isGroupOption(item)">

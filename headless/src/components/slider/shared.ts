@@ -1,4 +1,5 @@
-import { clamp, snapValueToStep } from '../../shared';
+import { clamp, interpolate, snapValueToStep } from '../../shared';
+import type { LocaleSliderMessages } from '../../locale/types';
 import type { DataOrientation, Direction, Side } from '../../types';
 import type { SliderSlideDirection } from './types';
 
@@ -148,13 +149,17 @@ export function getThumbInBoundsOffset(size: number, percentage: number, directi
   return (halfSize - offset(percentage) * direction) * direction;
 }
 
-export function getThumbLabel(index: number, totalValues: number) {
+export function getThumbLabel(
+  index: number,
+  totalValues: number,
+  messages: Pick<LocaleSliderMessages, 'valueN' | 'minimum' | 'maximum'>
+): string | undefined {
   if (totalValues > 2) {
-    return `Value ${index + 1} of ${totalValues}`;
+    return interpolate(messages.valueN, { index: String(index + 1), total: String(totalValues) });
   }
 
   if (totalValues === 2) {
-    return ['Minimum', 'Maximum'][index];
+    return [messages.minimum, messages.maximum][index];
   }
 
   return undefined;

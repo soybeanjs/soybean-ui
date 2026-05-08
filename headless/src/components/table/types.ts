@@ -717,6 +717,10 @@ export interface TableHeaderSelectionSlotProps<T extends TableBaseData = TableBa
    */
   disabled: boolean;
   /**
+   * Accessible label for the "select all" control.
+   */
+  ariaLabel: string;
+  /**
    * Update checked exposed in the slot scope.
    */
   updateChecked: (value: CheckedState | null) => void;

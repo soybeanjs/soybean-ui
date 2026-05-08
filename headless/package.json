@@ -27,6 +27,8 @@
     "./constants": "./src/constants/index.ts",
     "./composables": "./src/composables/index.ts",
     "./date": "./src/date/index.ts",
+    "./locale": "./src/locale/index.ts",
+    "./locale/*": "./src/locale/langs/*.ts",
     "./shared": "./src/shared/index.ts",
     "./nuxt": "./src/nuxt/index.ts",
     "./resolver": "./src/resolver/index.ts",
@@ -55,6 +57,16 @@
         "types": "./dist/shared/index.d.ts",
         "import": "./dist/shared/index.js",
         "require": "./dist/shared/index.js"
+      },
+      "./locale": {
+        "types": "./dist/locale/index.d.ts",
+        "import": "./dist/locale/index.js",
+        "require": "./dist/locale/index.js"
+      },
+      "./locale/*": {
+        "types": "./dist/locale/langs/*.d.ts",
+        "import": "./dist/locale/langs/*.js",
+        "require": "./dist/locale/langs/*.js"
       },
       "./date": {
         "types": "./dist/date/index.d.ts",

@@ -11,6 +11,7 @@ import { computed } from 'vue';
 import { provideTableUi, TableCompact } from '@soybeanjs/headless/table';
 import type { TableSortOrder } from '@soybeanjs/headless/table';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
+import { useLocaleMessages } from '@soybeanjs/headless';
 import { mergeSlotVariants, miniSizeMap } from '@/theme';
 import SButtonIcon from '../button/button-icon.vue';
 import SEmpty from '../empty/empty.vue';
@@ -53,6 +54,8 @@ const ui = computed(() => {
 
 const miniSize = computed(() => miniSizeMap[props.size ?? 'md']);
 
+const messages = useLocaleMessages();
+
 const getOrderIcon = (sortOrder?: TableSortOrder) => {
   return sortOrder === 'asc' ? 'lucide:arrow-up' : sortOrder === 'desc' ? 'lucide:arrow-down' : 'lucide:arrow-up-down';
 };
@@ -66,13 +69,16 @@ provideTableUi(ui);
       <slot :name="slotName" v-bind="slotProps" />
     </template>
 
-    <template v-if="!slots['header-selection']" #header-selection="{ checked, disabled, multiple, updateChecked }">
+    <template
+      v-if="!slots['header-selection']"
+      #header-selection="{ checked, disabled, multiple, ariaLabel, updateChecked }"
+    >
       <SCheckbox
         v-if="multiple"
         :disabled="disabled"
         :model-value="checked"
         :class="ui.selection"
-        :control-props="{ 'aria-label': 'Select all rows' }"
+        :control-props="{ 'aria-label': ariaLabel }"
         @update:model-value="updateChecked"
       />
     </template>
@@ -140,7 +146,12 @@ provideTableUi(ui);
     </template>
 
     <template v-if="!slots.empty" #empty>
-      <SEmpty title="No data" description="There is no data to display." icon="lucide:inbox" media-variant="icon" />
+      <SEmpty
+        :title="messages.table.emptyTitle"
+        :description="messages.table.emptyDescription"
+        icon="lucide:inbox"
+        media-variant="icon"
+      />
     </template>
   </TableCompact>
 </template>

@@ -7,6 +7,7 @@ import InputClear from '../input/input-clear.vue';
 import InputControl from '../input/input-control.vue';
 import InputRoot from '../input/input-root.vue';
 import { usePasswordUi } from './context';
+import { useLocaleMessages } from '../../locale';
 import type { PasswordCompactEmits, PasswordCompactProps, PasswordCompactSlots } from './types';
 
 defineOptions({
@@ -41,12 +42,15 @@ const visible = useControllableState(
 );
 
 const ui = usePasswordUi();
+const messages = useLocaleMessages();
 
-const clearAriaLabel = computed(() => props.clearProps?.['aria-label'] ?? 'Clear input');
+const clearAriaLabel = computed(() => props.clearProps?.['aria-label'] ?? messages.value.password.clearInput);
 
 const visibleDisabled = computed(() => props.disabled || props.readonly || props.visibleProps?.disabled || false);
 
-const visibleLabel = computed(() => (visible.value ? 'Hide password' : 'Show password'));
+const visibleLabel = computed(() =>
+  visible.value ? messages.value.password.hidePassword : messages.value.password.showPassword
+);
 
 const toggleVisible = () => {
   visible.value = !visible.value;

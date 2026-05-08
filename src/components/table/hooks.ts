@@ -29,11 +29,11 @@ export type UsePaginatedTableOptions<ResponseData, ApiData extends TableBaseData
   page?: number;
   pageSize?: number;
   /**
-   * Whether to fetch data when page or pageSize changes. [是否在 page 或 pageSize 变化时自动请求数据]
+   * Whether to fetch data when page or pageSize changes.
    *
-   * Set this to `false` if you want to handle pagination change manually, such as fetching data in a parent component. [如果你想手动处理分页变化，比如在父组件中请求数据，可以将此项设置为 `false`]
+   * Set this to `false` if you want to handle pagination change manually, such as fetching data in a parent component.
    *
-   * In this case, you can listen to `update:page` and `update:pageSize` events to get the current page and page size. [在这种情况下，你可以监听 `update:page` 和 `update:pageSize` 事件来获取当前页码和每页条数]
+   * In this case, you can listen to `update:page` and `update:pageSize` events to get the current page and page size.
    *
    * @default true
    */

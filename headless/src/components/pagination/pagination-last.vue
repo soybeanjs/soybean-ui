@@ -2,6 +2,7 @@
 import { computed } from 'vue';
 import Button from '../button/button.vue';
 import { usePaginationRootContext, usePaginationUi } from './context';
+import { useLocaleMessages } from '../../locale';
 import type { PaginationButtonProps } from './types';
 
 defineOptions({
@@ -13,6 +14,7 @@ const props = defineProps<PaginationButtonProps>();
 const { page, onPageChange, pageCount, disabled } = usePaginationRootContext('PaginationLast');
 
 const cls = usePaginationUi('last');
+const messages = useLocaleMessages();
 
 const isDisabled = computed(() => disabled.value || page.value === pageCount.value);
 
@@ -22,7 +24,13 @@ const onClick = () => {
 </script>
 
 <template>
-  <Button v-bind="props" :class="cls" :disabled="isDisabled" aria-label="Last Page" @click="onClick">
-    <slot>Last page</slot>
+  <Button
+    v-bind="props"
+    :class="cls"
+    :disabled="isDisabled"
+    :aria-label="messages.pagination.lastPage"
+    @click="onClick"
+  >
+    <slot>{{ messages.pagination.lastPage }}</slot>
   </Button>
 </template>

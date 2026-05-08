@@ -4,6 +4,7 @@ import { useForwardElement } from '../../composables';
 import Button from '../button/button.vue';
 import { useInputNumberRootContext, useInputNumberUi } from './context';
 import { usePressedHold } from './shared';
+import { useLocaleMessages } from '../../locale';
 import type { InputNumberDecrementProps } from './types';
 
 defineOptions({
@@ -15,6 +16,7 @@ const props = defineProps<InputNumberDecrementProps>();
 const { disabled, readonly, isDecreaseDisabled, onDecrease } = useInputNumberRootContext('InputNumberDecrement');
 
 const cls = useInputNumberUi('decrement');
+const messages = useLocaleMessages();
 
 const [decrementElement, setDecrementElement] = useForwardElement();
 
@@ -36,7 +38,7 @@ onTrigger(() => {
     data-slot="decrement"
     :class="cls"
     tabindex="-1"
-    aria-label="Decrease"
+    :aria-label="messages.inputNumber.decrement"
     :disabled="isDisabled"
     :data-pressed="isPressed ? 'true' : undefined"
     :style="style"

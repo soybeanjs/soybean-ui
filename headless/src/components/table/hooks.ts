@@ -5,6 +5,7 @@ import { useTableCompactContext, useTableUi } from './context';
 import { useControllableState, useForwardElement, useSelection } from '../../composables';
 import { getElFromTemplateRef, getMergedRefsValue, pick } from '../../shared';
 import type { CheckedState, VNodeRef, PropsToContext } from '../../types';
+import { useLocaleMessages } from '../../locale';
 import {
   buildTableTree,
   filterTableColumns,
@@ -453,6 +454,7 @@ export function useTableCompactHead(options: PropsToContext<TableCompactHeadProp
   } = useTableCompactContext('TableCompactHead');
   const ui = useTableUi();
   const { column, colSpan, rowSpan } = options;
+  const messages = useLocaleMessages();
 
   const columnKey = computed(() => getTableColumnKey(column.value));
   const sortOrder = computed(() => getTableColumnSortOrder(column.value, sortState.value));
@@ -460,7 +462,9 @@ export function useTableCompactHead(options: PropsToContext<TableCompactHeadProp
   const filterable = computed(() => isTableFilterableColumn(column.value));
   const resizable = computed(() => isTableColumnResizable(column.value));
   const columnLabel = computed(() => getTableColumnLabel(column.value));
-  const sortAriaLabel = computed(() => getTableSortButtonLabel(columnLabel.value, sortOrder.value));
+  const sortAriaLabel = computed(() =>
+    getTableSortButtonLabel(columnLabel.value, sortOrder.value, messages.value.table)
+  );
   const headerAriaSort = computed(() => getTableAriaSort(sortOrder.value));
   const filterValue = computed(() => {
     if (!filterable.value) {
@@ -624,6 +628,7 @@ export function useTableCompactHead(options: PropsToContext<TableCompactHeadProp
     multiple: multiple.value,
     checked: checked.value,
     disabled: disabled.value,
+    ariaLabel: messages.value.table.selectAllRows,
     updateChecked
   }));
   const headerFilterSlotProps = computed<TableHeaderFilterSlotProps>(() =>
@@ -651,7 +656,7 @@ export function useTableCompactHead(options: PropsToContext<TableCompactHeadProp
   const resizeSlotProps = computed<TableHeaderResizeSlotProps>(() => ({
     column: column.value,
     resizing: resizingColumnKey.value === columnKey.value,
-    ariaLabel: getTableResizeHandleLabel(columnLabel.value),
+    ariaLabel: getTableResizeHandleLabel(columnLabel.value, messages.value.table),
     onPointerdown: event => startColumnResize(event),
     onKeydown: event => onResizeHandleKeydown(event)
   }));
@@ -778,6 +783,7 @@ export function useTableCompactCell(options: PropsToContext<TableCompactCellOpti
 
   const ui = useTableUi();
   const { column, row, index } = options;
+  const messages = useLocaleMessages();
 
   const toggleExpand = (key: TableUnifiedKey) => {
     expanded.value = getNextTableExpandedKeys(expanded.value, key);
@@ -843,7 +849,8 @@ export function useTableCompactCell(options: PropsToContext<TableCompactCellOpti
     ...getCellSlotProps(column.value, row.value, index.value),
     ariaLabel: getTableRowExpandLabel(
       getTableRowLabel(row.value.row, rowKey),
-      isTableRowExpanded(visibleExpandedKeys.value, row.value.key)
+      isTableRowExpanded(visibleExpandedKeys.value, row.value.key),
+      messages.value.table
     )
   }));
 
@@ -859,7 +866,7 @@ export function useTableCompactCell(options: PropsToContext<TableCompactCellOpti
     ...getCellSlotProps(column.value, row.value, index.value),
     multiple: multiple.value,
     checked: isValueSelected(row.value.key),
-    ariaLabel: getTableSelectRowLabel(getTableRowLabel(row.value.row, rowKey)),
+    ariaLabel: getTableSelectRowLabel(getTableRowLabel(row.value.row, rowKey), messages.value.table),
     toggleSelect: () => onSelectedChange(row.value.key)
   }));
 
@@ -867,7 +874,8 @@ export function useTableCompactCell(options: PropsToContext<TableCompactCellOpti
     ...getCellSlotProps(column.value, row.value, index.value),
     ariaLabel: getTableRowExpandLabel(
       getTableRowLabel(row.value.row, rowKey),
-      isTableRowExpanded(visibleExpandedKeys.value, row.value.key)
+      isTableRowExpanded(visibleExpandedKeys.value, row.value.key),
+      messages.value.table
     )
   }));
 

@@ -2,6 +2,7 @@
 import { watchEffect } from 'vue';
 import { progress } from './state';
 import { useProgressProviderUi } from './context';
+import { useLocaleMessages } from '../../locale';
 import type { ProgressProviderProps } from './types';
 
 defineOptions({
@@ -11,6 +12,7 @@ defineOptions({
 const props = defineProps<ProgressProviderProps>();
 
 const ui = useProgressProviderUi();
+const messages = useLocaleMessages();
 
 watchEffect(() => {
   progress.configure(props);
@@ -21,7 +23,7 @@ watchEffect(() => {
   <div
     :class="ui.root"
     role="progressbar"
-    aria-label="Loading"
+    :aria-label="messages.progress.loading"
     aria-valuemin="0"
     aria-valuemax="1"
     style="display: none"

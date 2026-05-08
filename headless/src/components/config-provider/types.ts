@@ -2,6 +2,7 @@ import type { VNode } from 'vue';
 import type { Direction, PropsToContext } from '../../types';
 import type { TooltipProviderProps } from '../tooltip/types';
 import type { IconValue } from '../_icon/types';
+import type { LocaleMessagesOverrides } from '../../locale/types';
 
 /**
  * Properties for the ConfigProvider component.
@@ -43,6 +44,13 @@ export interface ConfigProviderProps {
    * @param icon The icon to be rendered. It can be a string, a VNode, or a Component.
    */
   iconRender?: (icon: IconValue) => VNode;
+  /**
+   * Overrides for built-in component locale messages. Merged on top of the locale selected by the
+   * `locale` prop, so you only need to supply the keys you want to change.
+   *
+   * @type LocaleMessagesOverrides
+   */
+  messages?: LocaleMessagesOverrides;
 }
 
 /**
