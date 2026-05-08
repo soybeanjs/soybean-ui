@@ -12,7 +12,9 @@ defineOptions({
   name: 'CheckboxCardGroupCompact'
 });
 
-const props = defineProps<CheckboxCardGroupCompactProps<T>>();
+const props = withDefaults(defineProps<CheckboxCardGroupCompactProps<T>>(), {
+  rovingFocus: true
+});
 
 const emit = defineEmits<CheckboxCardGroupCompactEmits<T['value']>>();
 
