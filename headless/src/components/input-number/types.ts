@@ -187,7 +187,7 @@ export interface InputNumberRootContextParams extends PropsToContext<
 /**
  * Available UI slots for the InputNumber component.
  */
-export type InputNumberUiSlot = 'root' | 'increment' | 'decrement' | 'control' | 'clearable';
+export type InputNumberUiSlot = 'root' | 'increment' | 'decrement' | 'control' | 'clear';
 
 /**
  * UI class overrides for the InputNumber component.

@@ -3,7 +3,8 @@ import { computed } from 'vue';
 import { InputNumberCompact, provideInputNumberUi } from '@soybeanjs/headless/input-number';
 import { useOmitProps } from '@soybeanjs/headless/composables';
 import { keysOf } from '@soybeanjs/utils';
-import { mergeSlotVariants } from '@/theme';
+import { mergeBaseVariants, mergeSlotVariants, miniSizeMap } from '@/theme';
+import { buttonIconVariants } from '../button/variants';
 import { inputNumberVariants } from './variants';
 import type { InputNumberEmits, InputNumberProps, InputNumberSlots } from './types';
 
@@ -22,9 +23,17 @@ const slots = defineSlots<InputNumberSlots>();
 const slotNames = computed(() => keysOf(slots));
 
 const ui = computed(() => {
-  const variants = inputNumberVariants({
+  const baseVariants = inputNumberVariants({
     size: props.size,
     center: props.center
+  });
+
+  const miniSize = miniSizeMap[props.size ?? 'md'];
+
+  const variants = mergeBaseVariants(baseVariants, {
+    decrement: buttonIconVariants({ size: miniSize }),
+    increment: buttonIconVariants({ size: miniSize }),
+    clear: buttonIconVariants({ size: miniSize, shape: 'circle' })
   });
 
   return mergeSlotVariants(variants, props.ui, { root: props.class });

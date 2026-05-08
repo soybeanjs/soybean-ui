@@ -13,7 +13,7 @@ const props = defineProps<InputNumberClearProps>();
 
 const emit = defineEmits<InputNumberClearEmits>();
 
-const cls = useInputNumberUi('clearable');
+const cls = useInputNumberUi('clear');
 
 const { disabled: rootDisabled, readonly, onClear } = useInputNumberRootContext('InputNumberClear');
 

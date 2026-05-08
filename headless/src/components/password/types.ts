@@ -3,14 +3,9 @@ import type { ButtonProps } from '../button/types';
 import type { InputClearProps, InputControlProps, InputRootEmits, InputRootProps, InputUiSlot } from '../input/types';
 
 /**
- * Available UI slots for the Password component.
+ * Properties for the PasswordVisible component.
  */
-export type PasswordUiSlot = InputUiSlot | 'visible';
-
-/**
- * UI class overrides for the Password component.
- */
-export type PasswordUi = UiClass<PasswordUiSlot>;
+export interface PasswordVisibleProps extends ButtonProps {}
 
 /**
  * Slot properties for the PasswordCompact component.
@@ -97,3 +92,13 @@ export type PasswordCompactSlots = {
    */
   visible?: (props: PasswordCompactSlotProps) => any;
 };
+
+/**
+ * Available UI slots for the Password component.
+ */
+export type PasswordUiSlot = InputUiSlot | 'visible';
+
+/**
+ * UI class overrides for the Password component.
+ */
+export type PasswordUi = UiClass<PasswordUiSlot>;
