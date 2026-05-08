@@ -24,19 +24,19 @@ initTriggerId();
 </script>
 
 <template>
-  <component :is="hasCustomAnchor ? 'template' : PopperAnchor" as-child>
-    <Button
-      :ref="setTriggerElement"
-      v-bind="props"
-      :class="cls"
-      aria-haspopup="dialog"
-      :aria-expanded="open || false"
-      :aria-controls="open ? popupId : undefined"
-      :disabled="disabled"
-      :data-state="dataState"
-      @click="onOpenToggle"
-    >
-      <slot />
-    </Button>
+  <component
+    :is="hasCustomAnchor ? Button : PopperAnchor"
+    :ref="setTriggerElement"
+    v-bind="props"
+    :class="cls"
+    :as="hasCustomAnchor ? props.as : Button"
+    aria-haspopup="dialog"
+    :aria-expanded="open || false"
+    :aria-controls="open ? popupId : undefined"
+    :disabled="disabled"
+    :data-state="dataState"
+    @click="onOpenToggle"
+  >
+    <slot />
   </component>
 </template>
