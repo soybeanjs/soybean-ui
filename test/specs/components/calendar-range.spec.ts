@@ -9,7 +9,7 @@ import { getA11yViolations } from '../../shared/a11y';
 
 describe('SCalendarRange', () => {
   describe('rendering', () => {
-    it('renders the current heading and weekday cells', () => {
+    it('renders the heading controls and weekday cells', () => {
       const wrapper = mount(SCalendarRange, {
         props: {
           defaultPlaceholder: new CalendarDate(2026, 4, 18)
@@ -17,7 +17,8 @@ describe('SCalendarRange', () => {
         attachTo: document.body
       });
 
-      expect(wrapper.text()).toContain('April 2026');
+      expect(wrapper.find('[aria-label="Select month"]').exists()).toBe(true);
+      expect(wrapper.find('[aria-label="Select year"]').exists()).toBe(true);
       expect(wrapper.text()).toContain('S');
       wrapper.unmount();
     });

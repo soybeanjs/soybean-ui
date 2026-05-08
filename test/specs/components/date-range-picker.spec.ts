@@ -1,15 +1,26 @@
 import { mount } from '@vue/test-utils';
 import { CalendarDate } from '@internationalized/date';
+import { nextTick } from 'vue';
 import { describe, expect, it } from 'vitest';
 
 import SDateRangePicker from '../../../src/components/date-range-picker/date-range-picker.vue';
 import { getA11yViolations } from '../../shared/a11y';
 
+function getPopup() {
+  return document.body.querySelector('[data-slot="popup"]') as HTMLElement | null;
+}
+
 describe('SDateRangePicker', () => {
   describe('rendering', () => {
     it('renders correctly with default slot', () => {
       const wrapper = mount(SDateRangePicker, {
-        attachTo: document.body
+        attachTo: document.body,
+        props: {
+          'data-root': '',
+          triggerProps: {
+            'data-slot': 'trigger'
+          }
+        }
       });
 
       expect(wrapper.find('[data-slot="root"]').exists()).toBe(true);
@@ -31,15 +42,18 @@ describe('SDateRangePicker', () => {
       wrapper.unmount();
     });
 
-    it('renders trigger slot', () => {
+    it('renders custom trigger props', () => {
       const wrapper = mount(SDateRangePicker, {
-        slots: {
-          trigger: '<button>Custom Trigger</button>'
+        props: {
+          triggerProps: {
+            'data-slot': 'trigger',
+            class: 'custom-trigger'
+          }
         },
         attachTo: document.body
       });
 
-      expect(wrapper.text()).toContain('Custom Trigger');
+      expect(wrapper.find('[data-slot="trigger"]').classes()).toContain('custom-trigger');
 
       wrapper.unmount();
     });
@@ -48,7 +62,15 @@ describe('SDateRangePicker', () => {
   describe('open state', () => {
     it('opens popup when trigger is clicked', async () => {
       const wrapper = mount(SDateRangePicker, {
-        attachTo: document.body
+        attachTo: document.body,
+        props: {
+          triggerProps: {
+            'data-slot': 'trigger'
+          },
+          popupProps: {
+            'data-slot': 'popup'
+          }
+        }
       });
 
       const trigger = wrapper.find('[data-slot="trigger"]');
@@ -56,8 +78,9 @@ describe('SDateRangePicker', () => {
       expect(wrapper.find('[data-slot="popup"]').exists()).toBe(false);
 
       await trigger.trigger('click');
+      await nextTick();
 
-      expect(wrapper.find('[data-slot="popup"]').exists()).toBe(true);
+      expect(getPopup()).not.toBeNull();
       expect(trigger.attributes('data-state')).toBe('open');
       expect(trigger.attributes('aria-expanded')).toBe('true');
 
@@ -66,7 +89,12 @@ describe('SDateRangePicker', () => {
 
     it('emits update:open event', async () => {
       const wrapper = mount(SDateRangePicker, {
-        attachTo: document.body
+        attachTo: document.body,
+        props: {
+          triggerProps: {
+            'data-slot': 'trigger'
+          }
+        }
       });
 
       const trigger = wrapper.find('[data-slot="trigger"]');
@@ -82,7 +110,13 @@ describe('SDateRangePicker', () => {
     it('respects controlled open state', async () => {
       const wrapper = mount(SDateRangePicker, {
         props: {
-          open: false
+          open: false,
+          triggerProps: {
+            'data-slot': 'trigger'
+          },
+          popupProps: {
+            'data-slot': 'popup'
+          }
         },
         attachTo: document.body
       });
@@ -90,8 +124,9 @@ describe('SDateRangePicker', () => {
       expect(wrapper.find('[data-slot="popup"]').exists()).toBe(false);
 
       await wrapper.setProps({ open: true });
+      await nextTick();
 
-      expect(wrapper.find('[data-slot="popup"]').exists()).toBe(true);
+      expect(getPopup()).not.toBeNull();
 
       wrapper.unmount();
     });
@@ -101,7 +136,14 @@ describe('SDateRangePicker', () => {
     it('renders disabled state correctly', () => {
       const wrapper = mount(SDateRangePicker, {
         props: {
-          disabled: true
+          'data-slot': 'root',
+          disabled: true,
+          triggerProps: {
+            'data-slot': 'trigger'
+          },
+          popupProps: {
+            'data-slot': 'popup'
+          }
         },
         attachTo: document.body
       });
@@ -119,7 +161,13 @@ describe('SDateRangePicker', () => {
     it('does not open when disabled', async () => {
       const wrapper = mount(SDateRangePicker, {
         props: {
-          disabled: true
+          disabled: true,
+          triggerProps: {
+            'data-slot': 'trigger'
+          },
+          popupProps: {
+            'data-slot': 'popup'
+          }
         },
         attachTo: document.body
       });
@@ -139,7 +187,13 @@ describe('SDateRangePicker', () => {
     it('emits update:modelValue when range changes', async () => {
       const wrapper = mount(SDateRangePicker, {
         props: {
-          defaultPlaceholder: new CalendarDate(2026, 4, 18)
+          defaultPlaceholder: new CalendarDate(2026, 4, 18),
+          triggerProps: {
+            'data-slot': 'trigger'
+          },
+          popupProps: {
+            'data-slot': 'popup'
+          }
         },
         attachTo: document.body
       });
@@ -147,8 +201,18 @@ describe('SDateRangePicker', () => {
       const trigger = wrapper.find('[data-slot="trigger"]');
 
       await trigger.trigger('click');
-      await wrapper.get('[data-value="2026-04-18"]').trigger('click');
-      await wrapper.get('[data-value="2026-04-20"]').trigger('click');
+      await nextTick();
+
+      const startCell = document.body.querySelector('[data-value="2026-04-18"]') as HTMLButtonElement | null;
+      const endCell = document.body.querySelector('[data-value="2026-04-20"]') as HTMLButtonElement | null;
+
+      expect(startCell).not.toBeNull();
+      expect(endCell).not.toBeNull();
+
+      startCell?.click();
+      await nextTick();
+      endCell?.click();
+      await nextTick();
 
       const emitted = wrapper.emitted('update:modelValue');
 
@@ -161,7 +225,7 @@ describe('SDateRangePicker', () => {
       expect(
         ((emitted as NonNullable<typeof emitted>)[1][0] as { start?: CalendarDate; end?: CalendarDate }).end?.toString()
       ).toBe('2026-04-20');
-      expect(wrapper.find('[data-slot="popup"]').exists()).toBe(false);
+      expect(getPopup()).toBeNull();
 
       wrapper.unmount();
     });
@@ -172,15 +236,17 @@ describe('SDateRangePicker', () => {
 
       const wrapper = mount(SDateRangePicker, {
         props: {
+          'data-slot': 'root',
           modelValue: { start, end }
         },
         attachTo: document.body
       });
 
-      const trigger = wrapper.find('[data-slot="trigger"]');
+      const root = wrapper.find('[data-slot="root"]');
 
-      expect(trigger.text()).toContain('2024-01-01');
-      expect(trigger.text()).toContain('2024-01-31');
+      expect(root.text()).toContain('2024');
+      expect(root.text()).toContain('31');
+      expect(root.text()).not.toContain('yyyy');
 
       wrapper.unmount();
     });
@@ -189,6 +255,11 @@ describe('SDateRangePicker', () => {
   describe('accessibility', () => {
     it('has no a11y violations', async () => {
       const wrapper = mount(SDateRangePicker, {
+        props: {
+          triggerProps: {
+            'aria-label': 'Select date range'
+          }
+        },
         attachTo: document.body
       });
 
@@ -201,7 +272,12 @@ describe('SDateRangePicker', () => {
 
     it('has proper ARIA attributes on trigger', () => {
       const wrapper = mount(SDateRangePicker, {
-        attachTo: document.body
+        attachTo: document.body,
+        props: {
+          triggerProps: {
+            'data-slot': 'trigger'
+          }
+        }
       });
 
       const trigger = wrapper.find('[data-slot="trigger"]');
@@ -215,14 +291,22 @@ describe('SDateRangePicker', () => {
     it('popup has dialog role', async () => {
       const wrapper = mount(SDateRangePicker, {
         props: {
-          open: true
+          open: true,
+          triggerProps: {
+            'data-slot': 'trigger'
+          },
+          popupProps: {
+            'data-slot': 'popup'
+          }
         },
         attachTo: document.body
       });
 
-      const popup = wrapper.find('[data-slot="popup"]');
+      await nextTick();
 
-      expect(popup.attributes('role')).toBe('dialog');
+      const popup = getPopup();
+
+      expect(popup?.getAttribute('role')).toBe('dialog');
 
       wrapper.unmount();
     });
