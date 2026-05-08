@@ -13,7 +13,7 @@ const props = defineProps<InputClearProps>();
 
 const emit = defineEmits<InputClearEmits>();
 
-const cls = useInputUi('clearable');
+const cls = useInputUi('clear');
 
 const { disabled: rootDisabled, readonly, onClear } = useInputRootContext('InputClear');
 

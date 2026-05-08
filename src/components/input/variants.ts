@@ -8,12 +8,12 @@ export const inputVariants = tv({
       `outline-none focus-within:ring-3  focus-within:ring-offset-background focus-within:ring-primary/30`
     ],
     control: [
-      'grow bg-transparent outline-none',
+      'grow min-w-0 h-full bg-transparent outline-none',
       'placeholder:text-muted-foreground',
       'disabled:cursor-not-allowed disabled:opacity-50',
       'file:border-0 file:bg-transparent file:font-medium'
     ],
-    clearable: [
+    clear: [
       'hidden shrink-0 opacity-50',
       'group-hover:inline-flex group-focus-within:inline-flex hover:opacity-100 focus-visible:opacity-100'
     ],

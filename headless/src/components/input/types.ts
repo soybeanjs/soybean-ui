@@ -81,7 +81,7 @@ export type InputClearEmits = {
 /**
  * Available UI slots for the Input component.
  */
-export type InputUiSlot = 'root' | 'control' | 'clearable';
+export type InputUiSlot = 'root' | 'control' | 'clear';
 
 /**
  * UI class overrides for the Input component.
