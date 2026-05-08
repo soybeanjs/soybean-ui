@@ -453,7 +453,7 @@ export const components = {
     'TagsInputItemDelete',
     'TagsInputClear'
   ],
-  textarea: ['TextareaRoot', 'TextareaControl', 'TextareaCounter'],
+  textarea: ['TextareaCompact', 'TextareaRoot', 'TextareaControl', 'TextareaClear', 'TextareaCounter'],
   timeField: ['TimeFieldCompact', 'TimeFieldRoot', 'TimeFieldInput'],
   timeRangeField: ['TimeRangeFieldCompact', 'TimeRangeFieldRoot', 'TimeRangeFieldInput'],
   toast: ['Toaster', 'ToastProvider'],

@@ -463,6 +463,8 @@ import {
   TagsInputItemDelete,
   TagsInputItemText,
   TagsInputRoot,
+  TextareaClear,
+  TextareaCompact,
   TextareaControl,
   TextareaCounter,
   TextareaRoot,
@@ -1662,12 +1664,16 @@ export const TagsInput = {
 };
 
 export const Textarea = {
+  Compact: TextareaCompact,
   Root: TextareaRoot,
   Control: TextareaControl,
+  Clear: TextareaClear,
   Counter: TextareaCounter
 } as {
+  Compact: typeof TextareaCompact;
   Root: typeof TextareaRoot;
   Control: typeof TextareaControl;
+  Clear: typeof TextareaClear;
   Counter: typeof TextareaCounter;
 };
 

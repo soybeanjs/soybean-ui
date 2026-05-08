@@ -22,7 +22,7 @@ const countText = computed(() => {
 </script>
 
 <template>
-  <div :class="cls">
+  <div data-slot="counter" :class="cls">
     <slot :count="count" :maxlength="maxlength">{{ countText }}</slot>
   </div>
 </template>

@@ -31,6 +31,9 @@ export const en: LocaleMessages = {
     decrement: 'Decrease',
     clear: 'Clear value'
   },
+  textarea: {
+    clear: 'Clear textarea'
+  },
   progress: {
     loading: 'Loading'
   },

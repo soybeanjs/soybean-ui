@@ -82,6 +82,11 @@ export interface LocaleInputNumberMessages {
   clear: string;
 }
 
+export interface LocaleTextareaMessages {
+  /** Aria-label for the clear button. */
+  clear: string;
+}
+
 export interface LocaleProgressMessages {
   /** Aria-label for the progress bar. */
   loading: string;

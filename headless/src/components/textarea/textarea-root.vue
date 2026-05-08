@@ -41,6 +41,10 @@ const autosizeOptions = computed(() => {
 });
 
 const onClear = () => {
+  if (props.disabled || props.readonly) {
+    return;
+  }
+
   modelValue.value = '';
 };
 
@@ -52,9 +56,12 @@ provideTextareaRootContext({
     'disabled',
     'readonly',
     'maxlength',
-    'minlength'
+    'minlength',
+    'name',
+    'required'
   ]),
   modelValue,
+  onClear,
   count,
   autosizeOptions
 });
@@ -63,12 +70,13 @@ provideTextareaRootContext({
 <template>
   <div
     :ref="setRootElement"
+    data-slot="root"
     :class="cls"
     role="group"
     :data-disabled="disabled ? '' : undefined"
     :data-readonly="readonly ? '' : undefined"
   >
-    <slot :model-value="modelValue" :clear="onClear" />
+    <slot :model-value="modelValue" :clear="onClear" :count="count" :maxlength="maxlength" />
 
     <VisuallyHiddenInput
       v-if="formControl && name"

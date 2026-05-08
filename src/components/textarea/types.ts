@@ -1,8 +1,7 @@
 import type {
-  TextareaControlProps,
-  TextareaCounterProps,
-  TextareaRootEmits,
-  TextareaRootProps,
+  TextareaCompactEmits,
+  TextareaCompactProps,
+  TextareaCompactSlots,
   TextareaUi
 } from '@soybeanjs/headless/textarea';
 import type { ClassValue } from '@soybeanjs/headless/types';
@@ -10,16 +9,9 @@ import type { ThemeSize } from '@/theme';
 import type { TextareaResize } from './variants';
 
 /**
- * Additional UI slots for the textarea component.
- */
-export type TextareaExtraUiSlot = 'clearable';
-
-type TextareaExtendedUi = TextareaUi & Record<TextareaExtraUiSlot, ClassValue>;
-
-/**
  * Properties for the Textarea component.
  */
-export interface TextareaProps extends TextareaRootProps {
+export interface TextareaProps extends TextareaCompactProps {
   /**
    * Additional class names applied to the root element.
    */
@@ -31,36 +23,23 @@ export interface TextareaProps extends TextareaRootProps {
   /**
    * Per-slot class overrides for the component.
    */
-  ui?: Partial<TextareaExtendedUi>;
+  ui?: Partial<TextareaUi>;
   /**
    * The resize of the textarea
    *
    * if autosize is true, the resize will be ignored
    */
   resize?: TextareaResize;
-  /** Whether to show the clear icon */
-  clearable?: boolean;
-  /** Whether to show the counter */
-  showCounter?: boolean;
-  /**
-   * The function to set the textarea element.
-   *
-   * @param el - The textarea element.
-   */
-  textareaRef?: (el: HTMLTextAreaElement) => void;
-  /**
-   * The props of the textarea extra props.
-   */
-  controlProps?: TextareaControlProps;
-  /**
-   * Properties forwarded to the counter element.
-   */
-  counterProps?: TextareaCounterProps;
 }
 
 /**
  * Events for the Textarea component.
  */
-export type TextareaEmits = TextareaRootEmits;
+export type TextareaEmits = TextareaCompactEmits;
+
+/**
+ * Slots for the Textarea component.
+ */
+export type TextareaSlots = TextareaCompactSlots;
 
 export type { TextareaResize };

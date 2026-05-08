@@ -31,6 +31,9 @@ export const zhCN: LocaleMessages = {
     decrement: '减少',
     clear: '清除数值'
   },
+  textarea: {
+    clear: '清除文本域'
+  },
   progress: {
     loading: '加载中'
   },

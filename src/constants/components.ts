@@ -80,7 +80,7 @@ export const components = {
     'STagsInputItem',
     'STagsInputItemText'
   ],
-  textarea: ['STextarea'],
+  textarea: ['STextarea', 'STextareaClear'],
   timeField: ['STimeField'],
   timeRangeField: ['STimeRangeField'],
   toast: ['SToastProvider'],

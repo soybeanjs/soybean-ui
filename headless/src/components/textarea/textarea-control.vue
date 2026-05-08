@@ -37,9 +37,10 @@ watch(
   <textarea
     :id="id"
     ref="textareaRef"
+    data-slot="control"
     :class="cls"
+    :aria-disabled="disabled ?? undefined"
     aria-roledescription="Textarea"
-    :aria-valuenow="modelValue ?? undefined"
     autocorrect="off"
     :autofocus="autofocus"
     :data-disabled="disabled ? '' : undefined"
