@@ -64,7 +64,7 @@ export function isFormControl(el?: HTMLElement | null) {
   // We set this to true by default so that events bubble to forms without JS (SSR)
   if (!el) return true;
 
-  return el.classList.contains('form');
+  return 'classList' in el && el.classList.contains('form');
 }
 
 type RefToValue<T extends MaybeRefOrGetter> = T extends MaybeRefOrGetter<infer V> ? V : never;
