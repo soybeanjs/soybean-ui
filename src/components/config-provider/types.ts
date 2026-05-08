@@ -2,7 +2,7 @@ import type { ConfigProviderProps as _ConfigProviderProps } from '@soybeanjs/hea
 import type { PropsToContext } from '@soybeanjs/headless/types';
 import type { ThemeOptions } from '@soybeanjs/shadcn-theme';
 import type { ThemeSize } from '@/theme';
-import type { ProgressProviderProps } from '../progress/types';
+import type { ProgressProviderProps } from '../progress';
 import type { ToastProviderProps } from '../toast/types';
 
 interface IconifyOptions {
