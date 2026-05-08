@@ -16,6 +16,7 @@ import {
   scrollContainerTo,
   updateAnchorHistory
 } from './shared';
+import { useLocaleMessages } from '../../locale';
 import type { AnchorContainer, AnchorRootEmits, AnchorRootProps } from './types';
 
 defineOptions({
@@ -32,6 +33,7 @@ const props = withDefaults(defineProps<AnchorRootProps>(), {
 const emit = defineEmits<AnchorRootEmits>();
 
 const cls = useAnchorUi('root');
+const messages = useLocaleMessages();
 
 const forwardedProps = useOmitProps(props, [
   'bounds',
@@ -246,7 +248,13 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <nav v-bind="forwardedProps" :class="cls" :dir="dir" :data-orientation="orientation" aria-label="Anchor">
+  <nav
+    v-bind="forwardedProps"
+    :class="cls"
+    :dir="dir"
+    :data-orientation="orientation"
+    :aria-label="messages.anchor.nav"
+  >
     <slot :model-value="activeHref" />
   </nav>
 </template>

@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { useBreadcrumbUi } from './context';
+import { useLocaleMessages } from '../../locale';
 import type { BreadcrumbRootProps } from './types';
 
 defineOptions({
@@ -9,10 +10,11 @@ defineOptions({
 defineProps<BreadcrumbRootProps>();
 
 const cls = useBreadcrumbUi('root');
+const messages = useLocaleMessages();
 </script>
 
 <template>
-  <nav :class="cls" aria-label="breadcrumb">
+  <nav :class="cls" :aria-label="messages.breadcrumb.nav">
     <slot />
   </nav>
 </template>

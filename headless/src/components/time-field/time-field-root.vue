@@ -16,6 +16,7 @@ import {
 } from '../../date';
 import { isNullish } from '../../shared';
 import { useDirection, useLocale } from '../config-provider/context';
+import { useLocaleMessages } from '../../locale';
 import { Primitive } from '../primitive';
 import { VisuallyHidden } from '../visually-hidden';
 import { provideTimeFieldRootContext, useTimeFieldUi } from './context';
@@ -47,6 +48,7 @@ const [rootElement, setRootElement] = useForwardElement();
 
 const locale = useLocale(() => props.locale);
 const dir = useDirection(() => props.dir);
+const messages = useLocaleMessages();
 const formatter = useDateFormatter(locale.value, {
   hourCycle: normalizeHourCycle(props.hourCycle)
 });
@@ -108,7 +110,8 @@ const segmentContents = computed(
       hourCycle: props.hourCycle,
       segmentValues: segmentValues.value,
       locale,
-      isTimeValue: true
+      isTimeValue: true,
+      dateMessages: messages.value.date
     }).arr
 );
 

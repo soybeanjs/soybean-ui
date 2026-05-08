@@ -3,6 +3,7 @@ import { computed, nextTick, onBeforeUnmount, shallowRef, watch } from 'vue';
 import { useControllableState, useForwardElement } from '../../composables';
 import { isFormControl, snapValueToStep } from '../../shared';
 import { useDirection } from '../config-provider/context';
+import { useLocaleMessages } from '../../locale';
 import { Primitive } from '../primitive';
 import { VisuallyHiddenInput } from '../visually-hidden';
 import { provideSliderRootContext, useSliderUi } from './context';
@@ -50,6 +51,7 @@ const emit = defineEmits<SliderRootEmits>();
 const [rootElement, setRootElement] = useForwardElement();
 
 const cls = useSliderUi('root');
+const messages = useLocaleMessages();
 
 const modelValue = useControllableState(
   () => props.modelValue,
@@ -348,7 +350,7 @@ provideSliderRootContext({
   setThumbElement,
   getPercentage,
   getClosestValueIndex: getClosestIndex,
-  getThumbLabel: index => getThumbLabel(index, currentModelValue.value.length),
+  getThumbLabel: index => getThumbLabel(index, currentModelValue.value.length, messages.value.slider),
   beginTrackDrag,
   beginThumbDrag,
   moveDrag,

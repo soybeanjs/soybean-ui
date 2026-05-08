@@ -1,7 +1,9 @@
 <script setup lang="ts">
 import { useOmitProps } from '../../composables';
+import { interpolate } from '../../shared';
 import { Primitive } from '../primitive';
 import { useStepperItemContext, useStepperUi } from './context';
+import { useLocaleMessages } from '../../locale';
 import type { StepperIndicatorProps } from './types';
 
 defineOptions({
@@ -13,6 +15,7 @@ const props = withDefaults(defineProps<StepperIndicatorProps>(), {
 });
 
 const { step } = useStepperItemContext('StepperIndicator');
+const messages = useLocaleMessages();
 
 const cls = useStepperUi('indicator');
 
@@ -21,6 +24,6 @@ const forwardedProps = useOmitProps(props, []);
 
 <template>
   <Primitive v-bind="forwardedProps" :as="as" :as-child="asChild" :class="cls">
-    <slot :step="step">Step {{ step }}</slot>
+    <slot :step="step">{{ interpolate(messages.stepper.step, { step: String(step) }) }}</slot>
   </Primitive>
 </template>

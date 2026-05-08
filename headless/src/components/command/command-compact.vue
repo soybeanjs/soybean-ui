@@ -9,6 +9,7 @@ import { ListboxContent, ListboxFilter, ListboxGroup, ListboxGroupLabel, Listbox
 import SeparatorRoot from '../separator/separator-root.vue';
 import { useCommandUi } from './context';
 import { getCommandItemOptions, getCommandSearchOptions, isGroupOption } from './shared';
+import { useLocaleMessages } from '../../locale';
 import type {
   CommandCompactEmits,
   CommandCompactProps,
@@ -21,9 +22,7 @@ defineOptions({
   name: 'CommandCompact'
 });
 
-const props = withDefaults(defineProps<CommandCompactProps<T>>(), {
-  emptyLabel: 'No results found.'
-});
+const props = withDefaults(defineProps<CommandCompactProps<T>>(), {});
 
 const emit = defineEmits<CommandCompactEmits>();
 
@@ -85,6 +84,7 @@ const listProps = computed(() => ({
 }));
 
 const ui = useCommandUi();
+const messages = useLocaleMessages();
 
 const getItemKey = (item: CommandOptionData<T>) => {
   if (isGroupOption(item)) {
@@ -116,7 +116,7 @@ const getItemKey = (item: CommandOptionData<T>) => {
     </ListboxFilter>
     <ListboxContent v-bind="listProps">
       <div v-if="!filteredItems.length" v-bind="emptyProps" :class="ui.empty">
-        <slot name="empty">{{ emptyLabel }}</slot>
+        <slot name="empty">{{ props.emptyLabel ?? messages.command.noResults }}</slot>
       </div>
       <template v-for="item in filteredItems" :key="getItemKey(item)">
         <template v-if="isGroupOption(item)">

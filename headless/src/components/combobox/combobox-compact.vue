@@ -18,6 +18,7 @@ import ComboboxSeparator from './combobox-separator.vue';
 import ComboboxTrigger from './combobox-trigger.vue';
 import ComboboxViewport from './combobox-viewport.vue';
 import { getDisplayValue, getSelectedLabels, isGroupOption } from './shared';
+import { useLocaleMessages } from '../../locale';
 import type { ComboboxCompactEmits, ComboboxCompactProps, ComboboxCompactSlots, ComboboxOptionData } from './types';
 
 defineOptions({
@@ -26,9 +27,7 @@ defineOptions({
 
 const props = withDefaults(defineProps<ComboboxCompactProps<M>>(), {
   open: undefined,
-  clearable: true,
-  clearLabel: 'Clear input',
-  emptyLabel: 'No results found.'
+  clearable: true
 });
 
 const emit = defineEmits<ComboboxCompactEmits<M>>();
@@ -60,8 +59,14 @@ const getInputDisplayValue = (modelValue: MaybeArray<string> | undefined) => {
   return !props.multiple ? getDisplayValue(modelValue, props.items) : '';
 };
 
+const messages = useLocaleMessages();
+
 const ariaLabel = computed(
-  () => props.inputProps?.controlProps?.['aria-label'] ?? props.searchPlaceholder ?? props.placeholder ?? 'Search'
+  () =>
+    props.inputProps?.controlProps?.['aria-label'] ??
+    props.searchPlaceholder ??
+    props.placeholder ??
+    messages.value.combobox.search
 );
 
 const inputProps = computed(() => ({
@@ -77,7 +82,7 @@ const inputProps = computed(() => ({
 
 const viewportProps = computed(() => ({
   ...props.viewportProps,
-  'aria-label': props.viewportProps?.['aria-label'] ?? props.placeholder ?? 'Options'
+  'aria-label': props.viewportProps?.['aria-label'] ?? props.placeholder ?? messages.value.combobox.options
 }));
 
 const anchorProps = computed(() => ({
@@ -155,14 +160,18 @@ const getTriggerProps = (modelValue: MaybeArray<string> | undefined) => ({
             </slot>
           </template>
           <template #trailing="slotProps">
-            <ComboboxCancel v-if="clearable" v-bind="cancelProps" :aria-label="clearLabel">
+            <ComboboxCancel
+              v-if="clearable"
+              v-bind="cancelProps"
+              :aria-label="props.clearLabel ?? messages.combobox.clearInput"
+            >
               <Icon icon="lucide:x" />
             </ComboboxCancel>
             <slot name="input-trailing" v-bind="slotProps" />
           </template>
         </ComboboxInput>
         <ComboboxEmpty v-bind="emptyProps">
-          <slot name="empty">{{ emptyLabel }}</slot>
+          <slot name="empty">{{ props.emptyLabel ?? messages.combobox.noResults }}</slot>
         </ComboboxEmpty>
         <ComboboxViewport v-bind="viewportProps">
           <template v-for="(item, index) in items" :key="getItemKey(item, index)">

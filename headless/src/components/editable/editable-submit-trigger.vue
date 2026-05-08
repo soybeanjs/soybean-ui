@@ -2,6 +2,7 @@
 import { computed, useAttrs } from 'vue';
 import Button from '../button/button.vue';
 import { useEditableRootContext, useEditableUi } from './context';
+import { useLocaleMessages } from '../../locale';
 import type { EditableSubmitTriggerProps } from './types';
 
 defineOptions({
@@ -16,6 +17,7 @@ const { dataReadonly, dataState, disabled, readonly, isEditing, submit } =
   useEditableRootContext('EditableSubmitTrigger');
 
 const cls = useEditableUi('submitTrigger');
+const messages = useLocaleMessages();
 
 const triggerDisabled = computed(() => disabled.value || readonly.value);
 
@@ -24,7 +26,7 @@ const ariaLabel = computed(() => {
     return undefined;
   }
 
-  return (attrs['aria-label'] as string) || 'Submit';
+  return (attrs['aria-label'] as string) || messages.value.editable.submit;
 });
 
 function onClick() {
@@ -43,6 +45,6 @@ function onClick() {
     :hidden="!isEditing"
     @click="onClick"
   >
-    <slot>Submit</slot>
+    <slot>{{ messages.editable.submit }}</slot>
   </Button>
 </template>

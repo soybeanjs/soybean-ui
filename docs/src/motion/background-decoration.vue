@@ -22,7 +22,7 @@ const orbs = [
   }
 ];
 
-// Tech Particles 配置
+// Tech Particles Config
 const particleColors = [
   'bg-primary',
   'bg-purple-500',
@@ -37,7 +37,7 @@ const particleColors = [
 
 const particleSizes = ['w-2 h-2', 'w-2.5 h-2.5', 'w-3 h-3'];
 
-// 生成9个粒子，使用3x3网格均匀分布
+// Generate 9 particles, evenly distributed in a 3x3 grid
 const gridCols = 3;
 const gridRows = 3;
 const totalParticles = gridCols * gridRows;
@@ -47,15 +47,15 @@ const particles = computed(() => {
     const col = index % gridCols;
     const row = Math.floor(index / gridCols);
 
-    // 计算均匀分布的位置（留出边距，避免太靠边）
+    // Calculate evenly distributed positions (leave margins to avoid being too close to the edges)
     const leftPercent = 10 + col * (80 / (gridCols - 1));
     const topPercent = 10 + row * (80 / (gridRows - 1));
 
-    // 随机选择颜色和大小
+    // Choose color and size based on index to ensure variety while keeping it deterministic
     const color = particleColors[index % particleColors.length];
     const size = particleSizes[index % particleSizes.length];
 
-    // 延迟时间（0-2000ms之间，每个粒子间隔约200ms）
+    // Delay time (between 0-2000ms, with about 200ms intervals between particles)
     const delay = index * 200;
 
     return {
@@ -122,7 +122,7 @@ const particles = computed(() => {
   }
 }
 
-/* 移动端优化：减少初始渲染闪烁 */
+/** Optimize for mobile: reduce initial render flicker */
 @media (max-width: 768px) {
   .bg-decoration {
     animation: fadeIn 0.5s ease-out forwards;

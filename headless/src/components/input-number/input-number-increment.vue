@@ -4,6 +4,7 @@ import { useForwardElement } from '../../composables';
 import Button from '../button/button.vue';
 import { useInputNumberRootContext, useInputNumberUi } from './context';
 import { usePressedHold } from './shared';
+import { useLocaleMessages } from '../../locale';
 import type { InputNumberIncrementProps } from './types';
 
 defineOptions({
@@ -15,6 +16,7 @@ const props = defineProps<InputNumberIncrementProps>();
 const { disabled, readonly, isIncreaseDisabled, onIncrease } = useInputNumberRootContext('InputNumberIncrement');
 
 const cls = useInputNumberUi('increment');
+const messages = useLocaleMessages();
 
 const [incrementElement, setIncrementElement] = useForwardElement();
 
@@ -36,7 +38,7 @@ onTrigger(() => {
     data-slot="increment"
     :class="cls"
     tabindex="-1"
-    aria-label="Increase"
+    :aria-label="messages.inputNumber.increment"
     :disabled="isDisabled"
     :data-pressed="isPressed ? 'true' : undefined"
     :style="style"

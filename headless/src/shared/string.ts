@@ -19,3 +19,11 @@ export function stringToPath(str: string) {
 export function isKey(str: string) {
   return /^\w*$/.test(str);
 }
+
+/**
+ * Replace `{key}` placeholders in a template string with values from `params`.
+ * Unknown keys are left as-is.
+ */
+export function interpolate(template: string, params: Record<string, string>): string {
+  return template.replace(/\{(\w+)\}/g, (match, key) => params[key] ?? match);
+}

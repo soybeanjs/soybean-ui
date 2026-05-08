@@ -2,6 +2,7 @@
 import { computed, useAttrs } from 'vue';
 import Button from '../button/button.vue';
 import { useEditableRootContext, useEditableUi } from './context';
+import { useLocaleMessages } from '../../locale';
 import type { EditableEditTriggerProps } from './types';
 
 defineOptions({
@@ -15,6 +16,7 @@ const attrs = useAttrs();
 const { dataReadonly, dataState, disabled, edit, isEditing, readonly } = useEditableRootContext('EditableEditTrigger');
 
 const cls = useEditableUi('editTrigger');
+const messages = useLocaleMessages();
 
 const triggerDisabled = computed(() => disabled.value || readonly.value);
 
@@ -23,7 +25,7 @@ const ariaLabel = computed(() => {
     return undefined;
   }
 
-  return (attrs['aria-label'] as string) || 'Edit';
+  return (attrs['aria-label'] as string) || messages.value.editable.edit;
 });
 
 function onClick() {
@@ -42,6 +44,6 @@ function onClick() {
     :hidden="isEditing"
     @click="onClick"
   >
-    <slot>Edit</slot>
+    <slot>{{ messages.editable.edit }}</slot>
   </Button>
 </template>

@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { useLayoutRootContext, useLayoutUi } from './context';
+import { useLocaleMessages } from '../../locale';
 import type { LayoutRailProps } from './types';
 
 defineOptions({
@@ -9,6 +10,7 @@ defineOptions({
 defineProps<LayoutRailProps>();
 
 const { toggleSidebar } = useLayoutRootContext('LayoutRail');
+const messages = useLocaleMessages();
 
 const cls = useLayoutUi('rail');
 </script>
@@ -18,9 +20,9 @@ const cls = useLayoutUi('rail');
     :class="cls"
     data-sidebar="rail"
     data-slot="sidebar-rail"
-    aria-label="Toggle Sidebar"
+    :aria-label="messages.layout.toggleSidebar"
     :tabindex="-1"
-    title="Toggle Sidebar"
+    :title="messages.layout.toggleSidebar"
     @click="toggleSidebar"
   >
     <slot />

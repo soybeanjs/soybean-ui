@@ -3,6 +3,7 @@ import { computed } from 'vue';
 import Button from '../button/button.vue';
 import Icon from '../_icon/icon.vue';
 import { useInputNumberRootContext, useInputNumberUi } from './context';
+import { useLocaleMessages } from '../../locale';
 import type { InputNumberClearProps, InputNumberClearEmits } from './types';
 
 defineOptions({
@@ -14,6 +15,7 @@ const props = defineProps<InputNumberClearProps>();
 const emit = defineEmits<InputNumberClearEmits>();
 
 const cls = useInputNumberUi('clear');
+const messages = useLocaleMessages();
 
 const { disabled: rootDisabled, readonly, onClear } = useInputNumberRootContext('InputNumberClear');
 
@@ -31,7 +33,7 @@ const handleClear = (event: PointerEvent) => {
     v-bind="props"
     data-slot="clearable"
     :class="cls"
-    aria-label="Clear value"
+    :aria-label="messages.inputNumber.clear"
     :disabled="disabled"
     @click="handleClear"
   >

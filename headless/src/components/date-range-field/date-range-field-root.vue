@@ -17,6 +17,7 @@ import {
 } from '../../date';
 import { isNullish, transformPropsToContext } from '../../shared';
 import { useDirection, useLocale } from '../config-provider/context';
+import { useLocaleMessages } from '../../locale';
 import { Primitive } from '../primitive';
 import { VisuallyHidden } from '../visually-hidden';
 import { provideDateRangeFieldRootContext, useDateRangeFieldUi } from './context';
@@ -50,6 +51,7 @@ const [rootElement, setRootElement] = useForwardElement();
 
 const locale = useLocale(() => props.locale);
 const dir = useDirection(() => props.dir);
+const messages = useLocaleMessages();
 const formatter = useDateFormatter(locale.value, {
   hourCycle: normalizeHourCycle(props.hourCycle)
 });
@@ -145,7 +147,8 @@ const startSegmentContents = computed(
       hideTimeZone: props.hideTimeZone,
       hourCycle: props.hourCycle,
       segmentValues: startSegmentValues.value,
-      locale
+      locale,
+      dateMessages: messages.value.date
     }).arr
 );
 
@@ -158,7 +161,8 @@ const endSegmentContents = computed(
       hideTimeZone: props.hideTimeZone,
       hourCycle: props.hourCycle,
       segmentValues: endSegmentValues.value,
-      locale
+      locale,
+      dateMessages: messages.value.date
     }).arr
 );
 

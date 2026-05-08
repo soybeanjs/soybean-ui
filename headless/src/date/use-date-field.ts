@@ -5,6 +5,8 @@ import type { CalendarDateTime, Time, TimeFields } from '@internationalized/date
 import { getDaysInMonth } from './comparators';
 import { isAcceptableSegmentKey, isNumberString, isSegmentNavigationKey } from './segment';
 import type { Formatter } from './formatter';
+import { useLocaleMessages } from '../locale';
+import type { LocaleDateMessages } from '../locale/types';
 import type {
   DateValue,
   TimeValue,
@@ -21,6 +23,7 @@ type SegmentAttrOptions = {
   hourCycle: HourCycle;
   placeholder: DateValue | TimeValue;
   formatter: Formatter;
+  messages: LocaleDateMessages;
 };
 
 const commonSegmentAttrs = (disabled?: boolean) => ({
@@ -57,24 +60,25 @@ const segmentBuilders = {
   day: {
     attrs: (props: SegmentAttrOptions) => ({
       ...commonSegmentAttrs(props.disabled),
-      'aria-label': 'day,',
+      'aria-label': props.messages.daySegment,
       'aria-valuemin': 1,
       'aria-valuemax': getDaysInMonth(props.placeholder as DateValue),
       'aria-valuenow': (props.placeholder as DateValue).day,
-      'aria-valuetext': props.segmentValues.day === null ? 'Empty' : `${(props.placeholder as DateValue).day}`,
+      'aria-valuetext':
+        props.segmentValues.day === null ? props.messages.empty : `${(props.placeholder as DateValue).day}`,
       'data-placeholder': props.segmentValues.day === null ? '' : undefined
     })
   },
   month: {
     attrs: (props: SegmentAttrOptions) => ({
       ...commonSegmentAttrs(props.disabled),
-      'aria-label': 'month, ',
+      'aria-label': props.messages.monthSegment,
       'aria-valuemin': 1,
       'aria-valuemax': 12,
       'aria-valuenow': (props.placeholder as DateValue).month,
       'aria-valuetext':
         props.segmentValues.month === null
-          ? 'Empty'
+          ? props.messages.empty
           : `${(props.placeholder as DateValue).month} - ${props.formatter.fullMonth((props.placeholder as DateValue).toDate('UTC'))}`,
       'data-placeholder': props.segmentValues.month === null ? '' : undefined
     })
@@ -82,24 +86,25 @@ const segmentBuilders = {
   year: {
     attrs: (props: SegmentAttrOptions) => ({
       ...commonSegmentAttrs(props.disabled),
-      'aria-label': 'year, ',
+      'aria-label': props.messages.yearSegment,
       'aria-valuemin': 1,
       'aria-valuemax': 9999,
       'aria-valuenow': (props.placeholder as DateValue).year,
-      'aria-valuetext': props.segmentValues.year === null ? 'Empty' : `${(props.placeholder as DateValue).year}`,
+      'aria-valuetext':
+        props.segmentValues.year === null ? props.messages.empty : `${(props.placeholder as DateValue).year}`,
       'data-placeholder': props.segmentValues.year === null ? '' : undefined
     })
   },
   hour: {
     attrs: (props: SegmentAttrOptions) => ({
       ...commonSegmentAttrs(props.disabled),
-      'aria-label': 'hour, ',
+      'aria-label': props.messages.hourSegment,
       'aria-valuemin': uses12HourFormat(props.hourCycle, props.formatter.getLocale()) ? 1 : 0,
       'aria-valuemax': uses12HourFormat(props.hourCycle, props.formatter.getLocale()) ? 12 : 23,
       'aria-valuenow': getAccessibleHourValue(props),
       'aria-valuetext':
         'hour' in props.segmentValues && props.segmentValues.hour === null
-          ? 'Empty'
+          ? props.messages.empty
           : `${getAccessibleHourValue(props)}`,
       'data-placeholder': 'hour' in props.segmentValues && props.segmentValues.hour === null ? '' : undefined
     })
@@ -107,13 +112,13 @@ const segmentBuilders = {
   minute: {
     attrs: (props: SegmentAttrOptions) => ({
       ...commonSegmentAttrs(props.disabled),
-      'aria-label': 'minute, ',
+      'aria-label': props.messages.minuteSegment,
       'aria-valuemin': 0,
       'aria-valuemax': 59,
       'aria-valuenow': 'minute' in props.placeholder ? props.placeholder.minute : 0,
       'aria-valuetext':
         'minute' in props.segmentValues && props.segmentValues.minute === null
-          ? 'Empty'
+          ? props.messages.empty
           : `${'minute' in props.placeholder ? props.placeholder.minute : 0}`,
       'data-placeholder': 'minute' in props.segmentValues && props.segmentValues.minute === null ? '' : undefined
     })
@@ -121,13 +126,13 @@ const segmentBuilders = {
   second: {
     attrs: (props: SegmentAttrOptions) => ({
       ...commonSegmentAttrs(props.disabled),
-      'aria-label': 'second, ',
+      'aria-label': props.messages.secondSegment,
       'aria-valuemin': 0,
       'aria-valuemax': 59,
       'aria-valuenow': 'second' in props.placeholder ? props.placeholder.second : 0,
       'aria-valuetext':
         'second' in props.segmentValues && props.segmentValues.second === null
-          ? 'Empty'
+          ? props.messages.empty
           : `${'second' in props.placeholder ? props.placeholder.second : 0}`,
       'data-placeholder': 'second' in props.segmentValues && props.segmentValues.second === null ? '' : undefined
     })
@@ -136,10 +141,10 @@ const segmentBuilders = {
     attrs: (props: SegmentAttrOptions) => ({
       ...commonSegmentAttrs(props.disabled),
       inputmode: 'text',
-      'aria-label': 'AM/PM, ',
+      'aria-label': props.messages.dayPeriodSegment,
       'aria-valuetext':
         'dayPeriod' in props.segmentValues && props.segmentValues.dayPeriod === null
-          ? 'Empty'
+          ? props.messages.empty
           : 'dayPeriod' in props.segmentValues
             ? props.segmentValues.dayPeriod
             : undefined
@@ -150,7 +155,7 @@ const segmentBuilders = {
     attrs: (props: SegmentAttrOptions) => ({
       role: 'textbox',
       tabindex: props.disabled ? undefined : 0,
-      'aria-label': 'time zone, ',
+      'aria-label': props.messages.timeZoneSegment,
       'data-readonly': true,
       style: 'caret-color: transparent;'
     })
@@ -173,6 +178,8 @@ export type UseDateFieldOptions = {
 };
 
 export function useDateField(props: UseDateFieldOptions) {
+  const messages = useLocaleMessages();
+
   const attributes = computed(
     () =>
       segmentBuilders[props.part]?.attrs({
@@ -180,7 +187,8 @@ export function useDateField(props: UseDateFieldOptions) {
         placeholder: props.placeholder.value,
         hourCycle: props.hourCycle,
         segmentValues: props.segmentValues.value,
-        formatter: props.formatter
+        formatter: props.formatter,
+        messages: messages.value.date
       }) ?? {}
   );
 
