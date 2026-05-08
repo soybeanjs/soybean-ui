@@ -53,22 +53,22 @@ watchEffect(() => {
 </script>
 
 <template>
-  <component :is="rovingFocus ? RovingFocusItem : 'template'" as-child :focusable="focusable">
-    <Button
-      v-bind="props"
-      :id="id"
-      :ref="setControlElement"
-      :class="cls"
-      role="checkbox"
-      :disabled="disabled"
-      :aria-checked="ariaChecked"
-      :aria-label="ariaLabel"
-      :aria-required="required"
-      :data-state="dataState"
-      @click="onClick"
-      @keydown.enter.prevent="onClick"
-    >
-      <slot :model-value="modelValue" :state="state" />
-    </Button>
+  <component
+    :is="rovingFocus ? RovingFocusItem : Button"
+    :ref="setControlElement"
+    v-bind="props"
+    :as="rovingFocus ? Button : props.as"
+    :class="cls"
+    :focusable="focusable"
+    role="checkbox"
+    :disabled="disabled"
+    :aria-checked="ariaChecked"
+    :aria-label="ariaLabel"
+    :aria-required="required"
+    :data-state="dataState"
+    @click="onClick"
+    @keydown.enter.prevent="onClick"
+  >
+    <slot :model-value="modelValue" :state="state" />
   </component>
 </template>
