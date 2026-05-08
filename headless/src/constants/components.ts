@@ -370,7 +370,14 @@ export const components = {
   popper: ['PopperRoot', 'PopperAnchor', 'PopperPositioner', 'PopperPopup', 'PopperArrow'],
   portal: ['Portal'],
   primitive: ['Primitive'],
-  progress: ['ProgressProvider', 'ProgressRoot', 'ProgressIndicator', 'ProgressCircle'],
+  progress: [
+    'ProgressProvider',
+    'ProgressCompact',
+    'ProgressRoot',
+    'ProgressIndicator',
+    'ProgressCircle',
+    'ProgressCircleCompact'
+  ],
   radioGroup: [
     'RadioGroupRoot',
     'RadioGroupCompact',

@@ -63,7 +63,7 @@ export const progressVariants = tv({
   }
 });
 
-export const circleProgressVariants = tv({
+export const progressCircleVariants = tv({
   slots: {
     root: 'relative inline-flex shrink-0 items-center justify-center rounded-full',
     indicator: 'fill-none stroke-current transition-[stroke-dasharray,stroke-dashoffset] duration-300 ease-in-out',

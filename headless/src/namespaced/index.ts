@@ -376,6 +376,8 @@ import {
   Portal,
   Primitive,
   ProgressCircle,
+  ProgressCircleCompact,
+  ProgressCompact,
   ProgressIndicator,
   ProgressProvider,
   ProgressRoot,
@@ -1427,14 +1429,18 @@ export { Primitive };
 
 export const Progress = {
   Provider: ProgressProvider,
+  Compact: ProgressCompact,
   Root: ProgressRoot,
   Indicator: ProgressIndicator,
-  Circle: ProgressCircle
+  Circle: ProgressCircle,
+  CircleCompact: ProgressCircleCompact
 } as {
   Provider: typeof ProgressProvider;
+  Compact: typeof ProgressCompact;
   Root: typeof ProgressRoot;
   Indicator: typeof ProgressIndicator;
   Circle: typeof ProgressCircle;
+  CircleCompact: typeof ProgressCircleCompact;
 };
 
 export const RadioGroup = {
