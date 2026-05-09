@@ -1,5 +1,13 @@
 import type { ComputedRef, ShallowRef } from 'vue';
-import type { DataOrientation, Direction, FormFieldCommonProps, PropsToContext, Side, UiClass } from '../../types';
+import type {
+  BaseProps,
+  DataOrientation,
+  Direction,
+  FormFieldCommonProps,
+  PropsToContext,
+  Side,
+  UiClass
+} from '../../types';
 import type { PrimitiveWithBaseProps } from '../primitive/types';
 
 /**
@@ -96,7 +104,7 @@ export interface SliderCompactProps extends SliderRootProps {
   /**
    * Properties forwarded to the thumb element.
    */
-  thumbProps?: SliderThumbProps;
+  thumbProps?: BaseProps;
 }
 
 /**
