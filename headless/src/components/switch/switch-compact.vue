@@ -25,7 +25,7 @@ const forwardedProps = useOmitProps(props, ['controlProps', 'thumbProps']);
 
 const defaultId = useId();
 
-const switchId = computed(() => props.id || `switch-${defaultId}`);
+const switchId = computed(() => props.controlProps?.id || `switch-${defaultId}`);
 </script>
 
 <template>

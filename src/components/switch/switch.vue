@@ -3,6 +3,7 @@ import { computed } from 'vue';
 import { SwitchCompact, provideSwitchUi } from '@soybeanjs/headless/switch';
 import type { AcceptableBooleanValue } from '@soybeanjs/headless/types';
 import { useOmitProps } from '@soybeanjs/headless/composables';
+import { keysOf } from '@soybeanjs/utils';
 import { mergeSlotVariants } from '@/theme';
 import { switchVariants } from './variants';
 import type { SwitchEmits, SwitchProps, SwitchSlots } from './types';
@@ -19,9 +20,11 @@ const props = withDefaults(defineProps<SwitchProps<T>>(), {
 
 const emit = defineEmits<SwitchEmits<T>>();
 
-defineSlots<SwitchSlots<T>>();
+const slots = defineSlots<SwitchSlots<T>>();
 
 const forwardedProps = useOmitProps(props, ['class', 'ui', 'color', 'size', 'shape']);
+
+const slotNames = computed(() => keysOf(slots));
 
 const ui = computed(() => {
   const variants = switchVariants({
@@ -38,14 +41,8 @@ provideSwitchUi(ui);
 
 <template>
   <SwitchCompact v-bind="forwardedProps" @update:model-value="emit('update:modelValue', $event)">
-    <template #leading="slotProps">
-      <slot name="leading" v-bind="slotProps" />
-    </template>
-    <template #default="slotProps">
-      <slot v-bind="slotProps" />
-    </template>
-    <template #trailing="slotProps">
-      <slot name="trailing" v-bind="slotProps" />
+    <template v-for="slotName in slotNames" :key="slotName" #[slotName]="slotProps">
+      <slot :name="slotName" v-bind="slotProps" />
     </template>
   </SwitchCompact>
 </template>

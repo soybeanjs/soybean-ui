@@ -89,7 +89,7 @@ export type SwitchCompactEmits<T extends AcceptableBooleanValue = boolean> = Swi
 /**
  * Slots for the SwitchCompact component.
  */
-export interface SwitchCompactSlots<T extends AcceptableBooleanValue = boolean> {
+export type SwitchCompactSlots<T extends AcceptableBooleanValue = boolean> = {
   /**
    * Custom content for the default slot.
    */
@@ -102,7 +102,7 @@ export interface SwitchCompactSlots<T extends AcceptableBooleanValue = boolean> 
    * Custom content for the trailing slot.
    */
   trailing?: (props: SwitchCompactSlotProps<T>) => any;
-}
+};
 
 /**
  * Parameters used to create the SwitchRoot context.

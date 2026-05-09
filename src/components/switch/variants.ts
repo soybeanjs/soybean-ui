@@ -3,7 +3,6 @@ import { tv } from 'tailwind-variants';
 import type { VariantProps } from 'tailwind-variants';
 
 export const switchVariants = tv({
-  base: [],
   slots: {
     root: 'inline-flex',
     control: [
