@@ -96,7 +96,7 @@ export interface SliderCompactProps extends SliderRootProps {
   /**
    * Properties forwarded to the thumb element.
    */
-  thumbProps?: Omit<SliderThumbProps, 'index'>;
+  thumbProps?: SliderThumbProps;
 }
 
 /**
