@@ -1,97 +1,3 @@
-export interface LocalePaginationMessages {
-  /**
-   * Aria-label and default slot content for the "first page" button.
-   */
-  firstPage: string;
-  /**
-   * Aria-label and default slot content for the "previous page" button.
-   */
-  prevPage: string;
-  /**
-   * Aria-label and default slot content for the "next page" button.
-   */
-  nextPage: string;
-  /**
-   * Aria-label and default slot content for the "last page" button.
-   */
-  lastPage: string;
-}
-
-export interface LocaleTableMessages {
-  /** Title shown in the empty-state slot when there are no rows. */
-  emptyTitle: string;
-  /** Description shown in the empty-state slot when there are no rows. */
-  emptyDescription: string;
-  /** Aria-label for the "select all rows" header checkbox. */
-  selectAllRows: string;
-  /**
-   * Aria-label template for the sort button when no sort is active.
-   * Supports `{column}` placeholder.
-   */
-  sortByColumn: string;
-  /**
-   * Aria-label template for the sort button when sort is ascending.
-   * Supports `{column}` placeholder.
-   */
-  sortByColumnAsc: string;
-  /**
-   * Aria-label template for the sort button when sort is descending.
-   * Supports `{column}` placeholder.
-   */
-  sortByColumnDesc: string;
-  /**
-   * Aria-label template for the column resize handle.
-   * Supports `{column}` placeholder.
-   */
-  resizeColumn: string;
-  /**
-   * Aria-label template for expanding a row.
-   * Supports `{row}` placeholder.
-   */
-  expandRow: string;
-  /**
-   * Aria-label template for collapsing a row.
-   * Supports `{row}` placeholder.
-   */
-  collapseRow: string;
-  /**
-   * Aria-label template for selecting a row.
-   * Supports `{row}` placeholder.
-   */
-  selectRow: string;
-}
-
-export interface LocaleCalendarMessages {
-  /** Aria-label and default slot content for the "previous page" button. */
-  prevPage: string;
-  /** Aria-label and default slot content for the "next page" button. */
-  nextPage: string;
-}
-
-export interface LocaleLayoutMessages {
-  /** Aria-label and title for the sidebar toggle trigger/rail. */
-  toggleSidebar: string;
-}
-
-export interface LocaleInputNumberMessages {
-  /** Aria-label for the increment button. */
-  increment: string;
-  /** Aria-label for the decrement button. */
-  decrement: string;
-  /** Aria-label for the clear button. */
-  clear: string;
-}
-
-export interface LocaleTextareaMessages {
-  /** Aria-label for the clear button. */
-  clear: string;
-}
-
-export interface LocaleProgressMessages {
-  /** Aria-label for the progress bar. */
-  loading: string;
-}
-
 export interface LocaleAnchorMessages {
   /** Aria-label for the anchor `<nav>` landmark. */
   nav: string;
@@ -102,21 +8,20 @@ export interface LocaleBreadcrumbMessages {
   nav: string;
 }
 
-export interface LocaleStepperMessages {
-  /**
-   * Default slot content for the step indicator.
-   * Supports `{step}` placeholder.
-   */
-  step: string;
+export interface LocaleAutocompleteMessages {
+  /** Aria-label for the suggestions toggle trigger. */
+  toggleSuggestions: string;
+  /** Default aria-label for the clear button. */
+  clearInput: string;
+  /** Default text for the empty state. */
+  noResults: string;
 }
 
-export interface LocaleEditableMessages {
-  /** Default aria-label and slot content for the cancel trigger. */
-  cancel: string;
-  /** Default aria-label and slot content for the edit trigger. */
-  edit: string;
-  /** Default aria-label and slot content for the submit trigger. */
-  submit: string;
+export interface LocaleCalendarMessages {
+  /** Aria-label and default slot content for the "previous page" button. */
+  prevPage: string;
+  /** Aria-label and default slot content for the "next page" button. */
+  nextPage: string;
 }
 
 export interface LocaleComboboxMessages {
@@ -130,39 +35,9 @@ export interface LocaleComboboxMessages {
   options: string;
 }
 
-export interface LocaleAutocompleteMessages {
-  /** Aria-label for the suggestions toggle trigger. */
-  toggleSuggestions: string;
-  /** Default aria-label for the clear button. */
-  clearInput: string;
-  /** Default text for the empty state. */
-  noResults: string;
-}
-
 export interface LocaleCommandMessages {
   /** Default text for the empty state. */
   noResults: string;
-}
-
-export interface LocaleSliderMessages {
-  /**
-   * Aria-label template for a thumb when there are more than two values.
-   * Supports `{index}` (1-based) and `{total}` placeholders.
-   */
-  valueN: string;
-  /** Aria-label for the minimum thumb in a range slider. */
-  minimum: string;
-  /** Aria-label for the maximum thumb in a range slider. */
-  maximum: string;
-}
-
-export interface LocalePasswordMessages {
-  /** Fallback aria-label for the clear button. */
-  clearInput: string;
-  /** Aria-label for the visibility toggle when password is hidden. */
-  showPassword: string;
-  /** Aria-label for the visibility toggle when password is visible. */
-  hidePassword: string;
 }
 
 export interface LocaleDatePlaceholderMessages {
@@ -209,23 +84,149 @@ export interface LocaleDateMessages {
   placeholder: LocaleDatePlaceholderMessages;
 }
 
+export interface LocaleEditableMessages {
+  /** Default aria-label and slot content for the cancel trigger. */
+  cancel: string;
+  /** Default aria-label and slot content for the edit trigger. */
+  edit: string;
+  /** Default aria-label and slot content for the submit trigger. */
+  submit: string;
+}
+
+export interface LocaleInputNumberMessages {
+  /** Aria-label for the increment button. */
+  increment: string;
+  /** Aria-label for the decrement button. */
+  decrement: string;
+  /** Aria-label for the clear button. */
+  clear: string;
+}
+
+export interface LocaleLayoutMessages {
+  /** Aria-label and title for the sidebar toggle trigger/rail. */
+  toggleSidebar: string;
+}
+
+export interface LocalePaginationMessages {
+  /**
+   * Aria-label and default slot content for the "first page" button.
+   */
+  firstPage: string;
+  /**
+   * Aria-label and default slot content for the "previous page" button.
+   */
+  prevPage: string;
+  /**
+   * Aria-label and default slot content for the "next page" button.
+   */
+  nextPage: string;
+  /**
+   * Aria-label and default slot content for the "last page" button.
+   */
+  lastPage: string;
+}
+
+export interface LocalePasswordMessages {
+  /** Fallback aria-label for the clear button. */
+  clearInput: string;
+  /** Aria-label for the visibility toggle when password is hidden. */
+  showPassword: string;
+  /** Aria-label for the visibility toggle when password is visible. */
+  hidePassword: string;
+}
+
+export interface LocaleProgressMessages {
+  /** Aria-label for the progress bar. */
+  loading: string;
+}
+
+export interface LocaleSliderMessages {
+  /**
+   * Aria-label template for a thumb when there are more than two values.
+   * Supports `{index}` (1-based) and `{total}` placeholders.
+   */
+  valueN: string;
+  /** Aria-label for the minimum thumb in a range slider. */
+  minimum: string;
+  /** Aria-label for the maximum thumb in a range slider. */
+  maximum: string;
+}
+
+export interface LocaleStepperMessages {
+  /**
+   * Default slot content for the step indicator.
+   * Supports `{step}` placeholder.
+   */
+  step: string;
+}
+
+export interface LocaleTableMessages {
+  /** Title shown in the empty-state slot when there are no rows. */
+  emptyTitle: string;
+  /** Description shown in the empty-state slot when there are no rows. */
+  emptyDescription: string;
+  /** Aria-label for the "select all rows" header checkbox. */
+  selectAllRows: string;
+  /**
+   * Aria-label template for the sort button when no sort is active.
+   * Supports `{column}` placeholder.
+   */
+  sortByColumn: string;
+  /**
+   * Aria-label template for the sort button when sort is ascending.
+   * Supports `{column}` placeholder.
+   */
+  sortByColumnAsc: string;
+  /**
+   * Aria-label template for the sort button when sort is descending.
+   * Supports `{column}` placeholder.
+   */
+  sortByColumnDesc: string;
+  /**
+   * Aria-label template for the column resize handle.
+   * Supports `{column}` placeholder.
+   */
+  resizeColumn: string;
+  /**
+   * Aria-label template for expanding a row.
+   * Supports `{row}` placeholder.
+   */
+  expandRow: string;
+  /**
+   * Aria-label template for collapsing a row.
+   * Supports `{row}` placeholder.
+   */
+  collapseRow: string;
+  /**
+   * Aria-label template for selecting a row.
+   * Supports `{row}` placeholder.
+   */
+  selectRow: string;
+}
+
+export interface LocaleTextareaMessages {
+  /** Aria-label for the clear button. */
+  clear: string;
+}
+
 export interface LocaleMessages {
-  pagination: LocalePaginationMessages;
-  table: LocaleTableMessages;
-  calendar: LocaleCalendarMessages;
-  layout: LocaleLayoutMessages;
-  inputNumber: LocaleInputNumberMessages;
-  progress: LocaleProgressMessages;
   anchor: LocaleAnchorMessages;
-  breadcrumb: LocaleBreadcrumbMessages;
-  stepper: LocaleStepperMessages;
-  editable: LocaleEditableMessages;
-  combobox: LocaleComboboxMessages;
   autocomplete: LocaleAutocompleteMessages;
+  breadcrumb: LocaleBreadcrumbMessages;
+  calendar: LocaleCalendarMessages;
+  combobox: LocaleComboboxMessages;
   command: LocaleCommandMessages;
-  slider: LocaleSliderMessages;
-  password: LocalePasswordMessages;
   date: LocaleDateMessages;
+  editable: LocaleEditableMessages;
+  inputNumber: LocaleInputNumberMessages;
+  layout: LocaleLayoutMessages;
+  pagination: LocalePaginationMessages;
+  password: LocalePasswordMessages;
+  progress: LocaleProgressMessages;
+  slider: LocaleSliderMessages;
+  stepper: LocaleStepperMessages;
+  table: LocaleTableMessages;
+  textarea: LocaleTextareaMessages;
 }
 
 export type LocaleMessagesOverrides = {
