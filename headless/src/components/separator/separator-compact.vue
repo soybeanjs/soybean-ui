@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { computed } from 'vue';
+import { computed, useSlots } from 'vue';
 import { useOmitProps } from '../../composables';
 import SeparatorLabel from './separator-label.vue';
 import SeparatorRoot from './separator-root.vue';
-import type { SeparatorCompactProps, SeparatorCompactSlots } from './types';
+import type { SeparatorCompactProps } from './types';
 
 defineOptions({
   name: 'SeparatorCompact'
@@ -11,19 +11,17 @@ defineOptions({
 
 const props = defineProps<SeparatorCompactProps>();
 
-const slots = defineSlots<SeparatorCompactSlots>();
+const slots = useSlots();
 
 const forwardedProps = useOmitProps(props, ['label', 'labelProps']);
 
-const showLabel = computed(
-  () => (props.orientation === undefined || props.orientation === 'horizontal') && (slots.default || props.label)
-);
+const showLabel = computed(() => (slots.label || props.label) && props.orientation !== 'vertical');
 </script>
 
 <template>
   <SeparatorRoot v-bind="forwardedProps">
     <SeparatorLabel v-if="showLabel" v-bind="labelProps">
-      <slot>{{ label }}</slot>
+      <slot name="label">{{ label }}</slot>
     </SeparatorLabel>
   </SeparatorRoot>
 </template>
