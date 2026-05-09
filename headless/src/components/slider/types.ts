@@ -64,6 +64,57 @@ export interface SliderThumbProps extends PrimitiveWithBaseProps {
 }
 
 /**
+ * Slot properties for the SliderCompact component.
+ */
+export interface SliderCompactSlotProps {
+  /**
+   * Current model value.
+   */
+  modelValue: number[];
+  /**
+   * Current thumb index.
+   */
+  index: number;
+  /**
+   * Current thumb value.
+   */
+  value: number;
+}
+
+/**
+ * Properties for the SliderCompact component.
+ */
+export interface SliderCompactProps extends SliderRootProps {
+  /**
+   * Properties forwarded to the track element.
+   */
+  trackProps?: SliderTrackProps;
+  /**
+   * Properties forwarded to the range element.
+   */
+  rangeProps?: SliderRangeProps;
+  /**
+   * Properties forwarded to the thumb element.
+   */
+  thumbProps?: SliderThumbProps;
+}
+
+/**
+ * Events for the SliderCompact component.
+ */
+export type SliderCompactEmits = SliderRootEmits;
+
+/**
+ * Slots for the SliderCompact component.
+ */
+export interface SliderCompactSlots {
+  /**
+   * Custom content for the default slot.
+   */
+  default?: (props: SliderCompactSlotProps) => any;
+}
+
+/**
  * Type information for SliderSlideDirection.
  */
 export type SliderSlideDirection = 'from-left' | 'from-right' | 'from-bottom' | 'from-top';

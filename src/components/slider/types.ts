@@ -1,9 +1,6 @@
 import type {
-  SliderRangeProps,
-  SliderRootEmits,
-  SliderRootProps,
-  SliderThumbProps,
-  SliderTrackProps,
+  SliderCompactProps,
+  SliderCompactEmits,
   SliderUi
 } from '@soybeanjs/headless/slider';
 import type { ClassValue } from '@soybeanjs/headless/types';
@@ -12,7 +9,7 @@ import type { ThemeColor, ThemeSize } from '@/theme';
 /**
  * Properties for the Slider component.
  */
-export interface SliderProps extends SliderRootProps {
+export interface SliderProps extends SliderCompactProps {
   /**
    * Additional class names applied to the root element.
    */
@@ -29,21 +26,9 @@ export interface SliderProps extends SliderRootProps {
    * Per-slot class overrides for the component.
    */
   ui?: Partial<SliderUi>;
-  /**
-   * Properties forwarded to the track element.
-   */
-  trackProps?: SliderTrackProps;
-  /**
-   * Properties forwarded to the range element.
-   */
-  rangeProps?: SliderRangeProps;
-  /**
-   * Properties forwarded to the thumb element.
-   */
-  thumbProps?: Omit<SliderThumbProps, 'index'>;
 }
 
 /**
  * Events for the Slider component.
  */
-export type SliderEmits = SliderRootEmits;
+export type SliderEmits = SliderCompactEmits;
