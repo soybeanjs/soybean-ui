@@ -13,11 +13,11 @@ export const pageTabsVariants = tv({
     ],
     itemText: 'grow truncate',
     close: [
-      `rounded-full hover:text-muted group-data-[active=true]/item:hover:bg-primary/50`,
+      `outline-none rounded-full hover:text-muted group-data-[active=true]/item:hover:bg-primary/50`,
       `group-data-[active=false]/item:hover:bg-accent-foreground/20`,
       `dark:hover:text-foreground dark:group-data-[active=true]/item:hover:bg-accent-foreground/20`
     ],
-    pin: ``,
+    pin: 'outline-none',
     chromeBgLeft: [
       `absolute right-full bottom-0 fill-transparent`,
       `group-hover/item:fill-accent group-data-[active=true]/item:fill-primary-50 dark:group-data-[active=true]/item:fill-accent group-data-[active=true]/item:z-2`

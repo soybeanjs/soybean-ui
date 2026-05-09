@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { transformPropsToContext } from '../../shared';
+import RovingFocusItem from '../roving-focus/roving-focus-item.vue';
 import { usePageTabsUi, usePageTabsRootContext, providePageTabsItemContext } from './context';
 import type { PageTabsItemProps, PageTabsItemEmits } from './types';
 
@@ -8,7 +9,9 @@ defineOptions({
   name: 'PageTabsItem'
 });
 
-const props = defineProps<PageTabsItemProps>();
+const props = withDefaults(defineProps<PageTabsItemProps>(), {
+  as: 'button'
+});
 
 const emit = defineEmits<PageTabsItemEmits>();
 
@@ -51,14 +54,19 @@ providePageTabsItemContext({
 </script>
 
 <template>
-  <button
+  <RovingFocusItem
     :class="cls"
     :data-value="value"
     :data-active="isActive"
     :data-pinned="pinned"
+    :active="isActive"
+    :focusable="true"
+    data-slot="item"
     @click="onClick"
     @mousedown="onMouseDown"
+    @keydown.enter="onClick"
+    @keydown.backspace="onClose"
   >
     <slot />
-  </button>
+  </RovingFocusItem>
 </template>

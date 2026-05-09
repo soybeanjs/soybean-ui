@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { Primitive } from '../primitive';
+import { computed, useAttrs } from 'vue';
+import Button from '../button/button.vue';
 import { usePageTabsUi, usePageTabsItemContext } from './context';
 import type { PageTabsCloseProps } from './types';
 
@@ -7,15 +8,27 @@ defineOptions({
   name: 'PageTabsClose'
 });
 
-defineProps<PageTabsCloseProps>();
+const props = defineProps<PageTabsCloseProps>();
+
+const attrs = useAttrs();
 
 const cls = usePageTabsUi('close');
 
 const { closable, onClose } = usePageTabsItemContext('PageTabsClose');
+
+const ariaLabel = computed(() => (attrs['aria-label'] as string) ?? 'Close tab');
 </script>
 
 <template>
-  <Primitive v-if="closable" :as="as" :as-child="asChild" :class="cls" @click.stop="onClose">
+  <Button
+    v-if="closable"
+    v-bind="props"
+    :class="cls"
+    :aria-label="ariaLabel"
+    data-slot="close"
+    tabindex="-1"
+    @click.stop="onClose"
+  >
     <slot />
-  </Primitive>
+  </Button>
 </template>

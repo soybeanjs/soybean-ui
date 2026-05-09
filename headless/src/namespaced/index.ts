@@ -348,6 +348,7 @@ import {
   NavigationMenuTrigger,
   NavigationMenuViewport,
   PageTabsClose,
+  PageTabsCompact,
   PageTabsItem,
   PageTabsPin,
   PageTabsRoot,
@@ -1383,12 +1384,14 @@ export const PageTabs = {
   Root: PageTabsRoot,
   Item: PageTabsItem,
   Close: PageTabsClose,
-  Pin: PageTabsPin
+  Pin: PageTabsPin,
+  Compact: PageTabsCompact
 } as {
   Root: typeof PageTabsRoot;
   Item: typeof PageTabsItem;
   Close: typeof PageTabsClose;
   Pin: typeof PageTabsPin;
+  Compact: typeof PageTabsCompact;
 };
 
 export const Pagination = {

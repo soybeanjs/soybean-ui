@@ -350,7 +350,7 @@ export const components = {
     'NavigationMenuIndicator',
     'NavigationMenuCompact'
   ],
-  pageTabs: ['PageTabsRoot', 'PageTabsItem', 'PageTabsClose', 'PageTabsPin'],
+  pageTabs: ['PageTabsRoot', 'PageTabsItem', 'PageTabsClose', 'PageTabsPin', 'PageTabsCompact'],
   pagination: [
     'PaginationRoot',
     'PaginationList',
