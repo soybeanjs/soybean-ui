@@ -90,6 +90,25 @@ export interface ColorAreaAreaProps extends PrimitiveWithBaseProps {}
 export interface ColorAreaThumbProps extends PrimitiveWithBaseProps {}
 
 /**
+ * Properties for the ColorAreaCompact component.
+ */
+export interface ColorAreaCompactProps extends ColorAreaRootProps {
+  /**
+   * Properties forwarded to the area element.
+   */
+  areaProps?: ColorAreaAreaProps;
+  /**
+   * Properties forwarded to the thumb element.
+   */
+  thumbProps?: ColorAreaThumbProps;
+}
+
+/**
+ * Events for the ColorAreaCompact component.
+ */
+export type ColorAreaCompactEmits = ColorAreaRootEmits;
+
+/**
  * Context for the ColorAreaRoot component.
  */
 export interface ColorAreaRootContext extends PropsToContext<

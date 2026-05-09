@@ -1,15 +1,11 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import {
-  ColorSwatchPickerItem,
-  ColorSwatchPickerItemIndicator,
-  ColorSwatchPickerItemSwatch,
-  ColorSwatchPickerRoot,
+  ColorSwatchPickerCompact,
   provideColorSwatchPickerUi
 } from '@soybeanjs/headless/color-swatch-picker';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
 import { mergeSlotVariants } from '@/theme';
-import Icon from '../icon/icon.vue';
 import { colorSwatchPickerVariants } from './variants';
 import type { ColorSwatchPickerEmits, ColorSwatchPickerProps } from './types';
 
@@ -22,6 +18,11 @@ const props = withDefaults(defineProps<ColorSwatchPickerProps>(), {
 });
 
 const emit = defineEmits<ColorSwatchPickerEmits>();
+
+const slots = defineSlots<{
+  default?: (props: { modelValue: string | string[] }) => any;
+  indicator?: (props: { color: string }) => any;
+}>();
 
 const listeners = useForwardListeners(emit);
 
@@ -46,20 +47,16 @@ provideColorSwatchPickerUi(ui);
 </script>
 
 <template>
-  <ColorSwatchPickerRoot v-bind="forwardedProps" v-on="listeners">
-    <template v-if="colors?.length">
-      <ColorSwatchPickerItem v-for="color in colors" :key="color" :value="color" v-bind="itemProps">
-        <ColorSwatchPickerItemSwatch v-bind="swatchProps">
-          <span :class="ui.checker" />
-          <span :class="ui.fill" />
-        </ColorSwatchPickerItemSwatch>
-        <ColorSwatchPickerItemIndicator v-bind="indicatorProps">
-          <slot name="indicator" :color="color">
-            <Icon icon="lucide:check" />
-          </slot>
-        </ColorSwatchPickerItemIndicator>
-      </ColorSwatchPickerItem>
+  <ColorSwatchPickerCompact v-bind="forwardedProps" v-on="listeners">
+    <template #swatch>
+      <span :class="ui.checker" />
+      <span :class="ui.fill" />
     </template>
-    <slot v-else />
-  </ColorSwatchPickerRoot>
+    <template v-if="slots.indicator" #indicator="slotProps">
+      <slot name="indicator" v-bind="slotProps" />
+    </template>
+    <template v-if="slots.default" #default="slotProps">
+      <slot v-bind="slotProps" />
+    </template>
+  </ColorSwatchPickerCompact>
 </template>

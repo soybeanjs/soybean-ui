@@ -1,21 +1,18 @@
 <script setup lang="ts">
-import { computed, useAttrs } from 'vue';
-import { ColorFieldInput, ColorFieldRoot, provideColorFieldUi } from '@soybeanjs/headless/color-field';
+import { computed } from 'vue';
+import { ColorFieldCompact, provideColorFieldUi } from '@soybeanjs/headless/color-field';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
 import { mergeSlotVariants } from '@/theme';
 import { colorFieldVariants } from './variants';
 import type { ColorFieldEmits, ColorFieldProps } from './types';
 
 defineOptions({
-  name: 'SColorField',
-  inheritAttrs: false
+  name: 'SColorField'
 });
 
 const props = defineProps<ColorFieldProps>();
 
 const emit = defineEmits<ColorFieldEmits>();
-
-const attrs = useAttrs();
 
 const listeners = useForwardListeners(emit);
 
@@ -31,7 +28,5 @@ provideColorFieldUi(ui);
 </script>
 
 <template>
-  <ColorFieldRoot v-bind="forwardedProps" v-on="listeners">
-    <ColorFieldInput v-bind="{ ...inputProps, ...attrs }" />
-  </ColorFieldRoot>
+  <ColorFieldCompact v-bind="forwardedProps" v-on="listeners" />
 </template>

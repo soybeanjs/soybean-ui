@@ -1,9 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import {
-  ColorSliderRoot,
-  ColorSliderThumb,
-  ColorSliderTrack,
+  ColorSliderCompact,
   provideColorSliderUi
 } from '@soybeanjs/headless/color-slider';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
@@ -36,8 +34,5 @@ provideColorSliderUi(ui);
 </script>
 
 <template>
-  <ColorSliderRoot v-bind="forwardedProps" v-on="listeners">
-    <ColorSliderTrack v-bind="trackProps" />
-    <ColorSliderThumb v-bind="thumbProps" />
-  </ColorSliderRoot>
+  <ColorSliderCompact v-bind="forwardedProps" v-on="listeners" />
 </template>

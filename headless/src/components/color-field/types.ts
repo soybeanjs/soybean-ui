@@ -69,6 +69,21 @@ export type ColorFieldRootEmits = {
 export interface ColorFieldInputProps extends BaseProps<InputHTMLAttributes> {}
 
 /**
+ * Properties for the ColorFieldCompact component.
+ */
+export interface ColorFieldCompactProps extends ColorFieldRootProps {
+  /**
+   * Properties forwarded to the input element.
+   */
+  inputProps?: ColorFieldInputProps;
+}
+
+/**
+ * Events for the ColorFieldCompact component.
+ */
+export type ColorFieldCompactEmits = ColorFieldRootEmits;
+
+/**
  * Context for the ColorFieldRoot component.
  */
 export interface ColorFieldRootContext extends PropsToContext<

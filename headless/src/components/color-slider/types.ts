@@ -89,6 +89,25 @@ export interface ColorSliderTrackProps extends PrimitiveWithBaseProps {}
 export interface ColorSliderThumbProps extends PrimitiveWithBaseProps {}
 
 /**
+ * Properties for the ColorSliderCompact component.
+ */
+export interface ColorSliderCompactProps extends ColorSliderRootProps {
+  /**
+   * Properties forwarded to the track element.
+   */
+  trackProps?: ColorSliderTrackProps;
+  /**
+   * Properties forwarded to the thumb element.
+   */
+  thumbProps?: ColorSliderThumbProps;
+}
+
+/**
+ * Events for the ColorSliderCompact component.
+ */
+export type ColorSliderCompactEmits = ColorSliderRootEmits;
+
+/**
  * Context for the ColorSliderRoot component.
  */
 export interface ColorSliderRootContext extends PropsToContext<

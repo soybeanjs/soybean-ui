@@ -1,8 +1,6 @@
 import type {
-  ColorSliderRootEmits,
-  ColorSliderRootProps,
-  ColorSliderThumbProps,
-  ColorSliderTrackProps,
+  ColorSliderCompactEmits,
+  ColorSliderCompactProps,
   ColorSliderUi
 } from '@soybeanjs/headless/color-slider';
 import type { ClassValue } from '@soybeanjs/headless/types';
@@ -11,7 +9,7 @@ import type { ThemeColor, ThemeSize } from '@/theme';
 /**
  * Properties for the ColorSlider component.
  */
-export interface ColorSliderProps extends ColorSliderRootProps {
+export interface ColorSliderProps extends ColorSliderCompactProps {
   /**
    * Additional class names applied to the root element.
    */
@@ -28,17 +26,9 @@ export interface ColorSliderProps extends ColorSliderRootProps {
    * Per-slot class overrides for the component.
    */
   ui?: Partial<ColorSliderUi>;
-  /**
-   * Properties forwarded to the track element.
-   */
-  trackProps?: ColorSliderTrackProps;
-  /**
-   * Properties forwarded to the thumb element.
-   */
-  thumbProps?: ColorSliderThumbProps;
 }
 
 /**
  * Events for the ColorSlider component.
  */
-export type ColorSliderEmits = ColorSliderRootEmits;
+export type ColorSliderEmits = ColorSliderCompactEmits;

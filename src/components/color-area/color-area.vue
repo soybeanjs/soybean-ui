@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { ColorAreaArea, ColorAreaRoot, ColorAreaThumb, provideColorAreaUi } from '@soybeanjs/headless/color-area';
+import { ColorAreaCompact, provideColorAreaUi } from '@soybeanjs/headless/color-area';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
 import type { ColorAreaEmits, ColorAreaProps } from '@/components/color-area/types';
 import { mergeSlotVariants } from '@/theme';
@@ -21,16 +21,12 @@ const forwardedProps = useOmitProps(props, ['class', 'size', 'ui', 'areaProps', 
 const ui = computed(() => {
   const variants = colorAreaVariants({ size: props.size });
 
-  return mergeSlotVariants(variants, props.ui, { root: props.class });
+      return mergeSlotVariants(variants, props.ui, { root: props.class });
 });
 
 provideColorAreaUi(ui);
 </script>
 
 <template>
-  <ColorAreaRoot v-bind="forwardedProps" v-on="listeners">
-    <ColorAreaArea v-bind="areaProps">
-      <ColorAreaThumb v-bind="thumbProps" />
-    </ColorAreaArea>
-  </ColorAreaRoot>
+  <ColorAreaCompact v-bind="forwardedProps" v-on="listeners" />
 </template>

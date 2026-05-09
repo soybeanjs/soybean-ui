@@ -1,10 +1,6 @@
 import type {
-  ColorSwatchPickerItemEmits,
-  ColorSwatchPickerItemIndicatorProps,
-  ColorSwatchPickerItemProps,
-  ColorSwatchPickerItemSwatchProps,
-  ColorSwatchPickerRootEmits,
-  ColorSwatchPickerRootProps,
+  ColorSwatchPickerCompactEmits,
+  ColorSwatchPickerCompactProps,
   ColorSwatchPickerUiSlot
 } from '@soybeanjs/headless/color-swatch-picker';
 import type { ClassValue, UiClass } from '@soybeanjs/headless/types';
@@ -24,7 +20,7 @@ export type ColorSwatchPickerExtendedUi = UiClass<ColorSwatchPickerUiSlot | Colo
 /**
  * Properties for the ColorSwatchPicker component.
  */
-export interface ColorSwatchPickerProps extends ColorSwatchPickerRootProps<boolean> {
+export interface ColorSwatchPickerProps extends ColorSwatchPickerCompactProps<boolean> {
   /**
    * Additional class names applied to the root element.
    */
@@ -38,30 +34,14 @@ export interface ColorSwatchPickerProps extends ColorSwatchPickerRootProps<boole
    */
   ui?: Partial<ColorSwatchPickerExtendedUi>;
   /**
-   * Colors.
-   */
-  colors?: string[];
-  /**
    * Shape of the component.
    */
   shape?: ColorSwatchPickerShape;
-  /**
-   * Properties forwarded to the item element.
-   */
-  itemProps?: Omit<ColorSwatchPickerItemProps, 'value'>;
-  /**
-   * Properties forwarded to the indicator element.
-   */
-  indicatorProps?: ColorSwatchPickerItemIndicatorProps;
-  /**
-   * Properties forwarded to the swatch element.
-   */
-  swatchProps?: ColorSwatchPickerItemSwatchProps;
 }
 
 /**
  * Events for the ColorSwatchPicker component.
  */
-export type ColorSwatchPickerEmits = ColorSwatchPickerRootEmits<boolean> & ColorSwatchPickerItemEmits;
+export type ColorSwatchPickerEmits = ColorSwatchPickerCompactEmits<boolean>;
 
 export type { ColorSwatchPickerShape };

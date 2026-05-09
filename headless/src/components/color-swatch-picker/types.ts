@@ -55,6 +55,72 @@ export interface ColorSwatchPickerItemContext {
 }
 
 /**
+ * Slot properties for the ColorSwatchPickerCompact component.
+ */
+export interface ColorSwatchPickerCompactSlotProps<M extends boolean = false> {
+  /**
+   * Current model value.
+   */
+  modelValue: M extends true ? string[] : string;
+}
+
+/**
+ * Slot properties for color-specific ColorSwatchPickerCompact slots.
+ */
+export interface ColorSwatchPickerCompactColorSlotProps {
+  /**
+   * Current swatch color.
+   */
+  color: string;
+}
+
+/**
+ * Properties for the ColorSwatchPickerCompact component.
+ */
+export interface ColorSwatchPickerCompactProps<M extends boolean = false> extends ColorSwatchPickerRootProps<M> {
+  /**
+   * Colors.
+   */
+  colors?: string[];
+  /**
+   * Properties forwarded to the item element.
+   */
+  itemProps?: Omit<ColorSwatchPickerItemProps, 'value'>;
+  /**
+   * Properties forwarded to the indicator element.
+   */
+  indicatorProps?: ColorSwatchPickerItemIndicatorProps;
+  /**
+   * Properties forwarded to the swatch element.
+   */
+  swatchProps?: ColorSwatchPickerItemSwatchProps;
+}
+
+/**
+ * Events for the ColorSwatchPickerCompact component.
+ */
+export type ColorSwatchPickerCompactEmits<M extends boolean = false> =
+  ColorSwatchPickerRootEmits<M> & ColorSwatchPickerItemEmits;
+
+/**
+ * Slots for the ColorSwatchPickerCompact component.
+ */
+export interface ColorSwatchPickerCompactSlots<M extends boolean = false> {
+  /**
+   * Custom content rendered when colors are not provided.
+   */
+  default?: (props: ColorSwatchPickerCompactSlotProps<M>) => any;
+  /**
+   * Custom content rendered inside each swatch.
+   */
+  swatch?: (props: ColorSwatchPickerCompactColorSlotProps) => any;
+  /**
+   * Custom content rendered inside each indicator.
+   */
+  indicator?: (props: ColorSwatchPickerCompactColorSlotProps) => any;
+}
+
+/**
  * Available UI slots for the ColorSwatchPicker component.
  */
 export type ColorSwatchPickerUiSlot = 'root' | 'item' | 'itemIndicator' | 'swatch';

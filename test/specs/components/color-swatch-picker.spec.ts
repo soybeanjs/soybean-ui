@@ -27,6 +27,19 @@ describe('SColorSwatchPicker', () => {
       expect(swatch.findAll('span')).toHaveLength(2);
       wrapper.unmount();
     });
+
+    it('forwards the indicator slot through the compact wrapper', () => {
+      const wrapper = mount(SColorSwatchPicker, {
+        props: { colors: ['#7c3aed'] },
+        slots: {
+          indicator: '<span data-testid="indicator">ok</span>'
+        },
+        attachTo: document.body
+      });
+
+      expect(wrapper.find('[data-testid="indicator"]').exists()).toBe(true);
+      wrapper.unmount();
+    });
   });
 
   describe('selection', () => {
