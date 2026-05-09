@@ -30,7 +30,7 @@ describe('SColorSwatchPicker', () => {
 
     it('forwards the indicator slot through the compact wrapper', () => {
       const wrapper = mount(SColorSwatchPicker, {
-        props: { colors: ['#7c3aed'] },
+        props: { colors: ['#7c3aed'], modelValue: '#7c3aed' },
         slots: {
           indicator: '<span data-testid="indicator">ok</span>'
         },

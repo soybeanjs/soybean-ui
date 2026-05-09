@@ -1,9 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import {
-  ColorSwatchPickerCompact,
-  provideColorSwatchPickerUi
-} from '@soybeanjs/headless/color-swatch-picker';
+import { ColorSwatchPickerCompact, provideColorSwatchPickerUi } from '@soybeanjs/headless/color-swatch-picker';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
 import { mergeSlotVariants } from '@/theme';
 import { colorSwatchPickerVariants } from './variants';
@@ -26,16 +23,7 @@ const slots = defineSlots<{
 
 const listeners = useForwardListeners(emit);
 
-const forwardedProps = useOmitProps(props, [
-  'class',
-  'size',
-  'ui',
-  'colors',
-  'shape',
-  'itemProps',
-  'indicatorProps',
-  'swatchProps'
-]);
+const forwardedProps = useOmitProps(props, ['class', 'size', 'ui', 'shape']);
 
 const ui = computed(() => {
   const variants = colorSwatchPickerVariants({ size: props.size, shape: props.shape });

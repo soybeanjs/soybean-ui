@@ -21,7 +21,7 @@ const forwardedProps = useOmitProps(props, ['class', 'size', 'ui', 'areaProps', 
 const ui = computed(() => {
   const variants = colorAreaVariants({ size: props.size });
 
-      return mergeSlotVariants(variants, props.ui, { root: props.class });
+  return mergeSlotVariants(variants, props.ui, { root: props.class });
 });
 
 provideColorAreaUi(ui);

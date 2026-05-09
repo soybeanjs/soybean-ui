@@ -1408,7 +1408,36 @@
           },
           "props": "Properties for the ColorAreaThumb component."
         },
-        "colorareaui": "UI class overrides for the ColorArea component."
+        "colorareaui": "UI class overrides for the ColorArea component.",
+        "colorareacompactemits": {
+          "callables": {
+            "change": "Emitted when change occurs.",
+            "changeend": "Emitted when change end occurs.",
+            "update_color": "Emitted when the color value changes.",
+            "update_modelvalue": "Emitted when the model value changes."
+          },
+          "emits": "Events for the ColorAreaCompact component."
+        },
+        "colorareacompactprops": {
+          "members": {
+            "areaprops": "Properties forwarded to the area element.",
+            "as": "The element or component this component should render as. Can be overwrite by `asChild`",
+            "aschild": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+            "colorspace": "Color space.",
+            "defaultvalue": "Default value.",
+            "disabled": "Whether the component is disabled.",
+            "format": "Format.",
+            "modelvalue": "Current model value.",
+            "name": "The name of the field. Submitted with its owning form as part of a name/value pair.",
+            "required": "When `true`, indicates that the user must set the value before the owning form can be submitted.",
+            "thumbprops": "Properties forwarded to the thumb element.",
+            "xchannel": "X channel.",
+            "xname": "X name.",
+            "ychannel": "Y channel.",
+            "yname": "Y name."
+          },
+          "props": "Properties for the ColorAreaCompact component."
+        }
       },
       "headless_src_components_color_field_types": {
         "colorfieldinputprops": {
@@ -1440,7 +1469,34 @@
           },
           "props": "Properties for the ColorFieldRoot component."
         },
-        "colorfieldui": "UI class overrides for the ColorField component."
+        "colorfieldui": "UI class overrides for the ColorField component.",
+        "colorfieldcompactemits": {
+          "callables": {
+            "update_color": "Emitted when the color value changes.",
+            "update_modelvalue": "Emitted when the model value changes."
+          },
+          "emits": "Events for the ColorFieldCompact component."
+        },
+        "colorfieldcompactprops": {
+          "members": {
+            "as": "The element or component this component should render as. Can be overwrite by `asChild`",
+            "aschild": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+            "channel": "Channel.",
+            "colorspace": "Color space.",
+            "defaultvalue": "Default value.",
+            "disabled": "Whether the component is disabled.",
+            "disablewheelchange": "Whether to disable wheel change.",
+            "format": "Format.",
+            "inputprops": "Properties forwarded to the input element.",
+            "modelvalue": "Current model value.",
+            "name": "The name of the field. Submitted with its owning form as part of a name/value pair.",
+            "placeholder": "Placeholder.",
+            "readonly": "Whether the component is readonly.",
+            "required": "When `true`, indicates that the user must set the value before the owning form can be submitted.",
+            "step": "Step."
+          },
+          "props": "Properties for the ColorFieldCompact component."
+        }
       },
       "headless_src_components_color_picker_types": {
         "colorpickerrootemits": {
@@ -1516,7 +1572,37 @@
           },
           "props": "Properties for the ColorSliderTrack component."
         },
-        "colorsliderui": "UI class overrides for the ColorSlider component."
+        "colorsliderui": "UI class overrides for the ColorSlider component.",
+        "colorslidercompactemits": {
+          "callables": {
+            "change": "Emitted when change occurs.",
+            "changeend": "Emitted when change end occurs.",
+            "update_color": "Emitted when the color value changes.",
+            "update_modelvalue": "Emitted when the model value changes."
+          },
+          "emits": "Events for the ColorSliderCompact component."
+        },
+        "colorslidercompactprops": {
+          "members": {
+            "as": "The element or component this component should render as. Can be overwrite by `asChild`",
+            "aschild": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+            "channel": "Channel.",
+            "colorspace": "Color space.",
+            "defaultvalue": "Default value.",
+            "dir": "Reading direction of the component.",
+            "disabled": "Whether the component is disabled.",
+            "format": "Format.",
+            "inverted": "Whether inverted.",
+            "modelvalue": "Current model value.",
+            "name": "The name of the field. Submitted with its owning form as part of a name/value pair.",
+            "orientation": "Orientation of the component.",
+            "required": "When `true`, indicates that the user must set the value before the owning form can be submitted.",
+            "step": "Step.",
+            "thumbprops": "Properties forwarded to the thumb element.",
+            "trackprops": "Properties forwarded to the track element."
+          },
+          "props": "Properties for the ColorSliderCompact component."
+        }
       },
       "headless_src_components_color_swatch_picker_types": {
         "colorswatchpickeritememits": {
@@ -1575,6 +1661,56 @@
             "selectionbehavior": "How multiple selection should behave in the collection."
           },
           "props": "Properties for the ColorSwatchPickerRoot component."
+        },
+        "colorswatchpickercompactcolorslotprops": {
+          "members": {
+            "color": "Current swatch color."
+          },
+          "slotprops": "Slot properties for color-specific ColorSwatchPickerCompact slots."
+        },
+        "colorswatchpickercompactemits": {
+          "callables": {
+            "entryfocus": "Event handler called when container is being focused. Can be prevented.",
+            "highlight": "Event handler when highlighted element changes.",
+            "leave": "Event handler called when the mouse leave the container",
+            "select": "Event handler called when the selecting item. <br> It can be prevented by calling `event.preventDefault`.",
+            "update_modelvalue": ""
+          },
+          "emits": "Events for the ColorSwatchPickerCompact component."
+        },
+        "colorswatchpickercompactprops": {
+          "members": {
+            "clearable": "Whether selected item can be cleared when `multiple` is false.",
+            "colors": "Colors.",
+            "defaultvalue": "The default value of the selected item(s).\n\nUse this when you need to set the initial state of the items.",
+            "dir": "The reading direction of the listbox when applicable. <br> If omitted, inherits globally from `ConfigProvider` or\nassumes LTR (left-to-right) reading mode.",
+            "disabled": "When `true`, prevents the user from interacting with listbox",
+            "highlightonhover": "When `true`, hover over item will trigger highlight",
+            "indicatorprops": "Properties forwarded to the indicator element.",
+            "itemprops": "Properties forwarded to the item element.",
+            "modelvalue": "The controlled value of the selected item(s).\n\nUse this when you need to control the state of the items. Can be bound with `v-model`",
+            "multiple": "Determines whether a \"single\" or \"multiple\" items can be selected at a time.\n\nThis prop will overwrite the inferred type from `modelValue` and `defaultValue`.",
+            "name": "The name of the field. Submitted with its owning form as part of a name/value pair.",
+            "orientation": "The orientation of the listbox. <br>Mainly so arrow navigation is done accordingly (left & right vs. up & down)",
+            "required": "When `true`, indicates that the user must set the value before the owning form can be submitted.",
+            "selectionbehavior": "How multiple selection should behave in the collection.",
+            "swatchprops": "Properties forwarded to the swatch element."
+          },
+          "props": "Properties for the ColorSwatchPickerCompact component."
+        },
+        "colorswatchpickercompactslotprops": {
+          "members": {
+            "modelvalue": "Current model value."
+          },
+          "slotprops": "Slot properties for the ColorSwatchPickerCompact component."
+        },
+        "colorswatchpickercompactslots": {
+          "callables": {
+            "default": "Custom content rendered when colors are not provided.",
+            "indicator": "Custom content rendered inside each indicator.",
+            "swatch": "Custom content rendered inside each swatch."
+          },
+          "slots": "Slots for the ColorSwatchPickerCompact component."
         }
       },
       "headless_src_components_combobox_types": {
