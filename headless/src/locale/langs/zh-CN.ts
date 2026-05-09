@@ -34,6 +34,10 @@ export const zhCN: LocaleMessages = {
   textarea: {
     clear: '清除文本域'
   },
+  tagsInput: {
+    addTag: '添加标签',
+    clear: '清除标签'
+  },
   progress: {
     loading: '加载中'
   },

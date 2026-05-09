@@ -1,18 +1,10 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { STagsInput, STagsInputInput, STagsInputItem, STagsInputItemDelete, STagsInputItemText } from '@soybeanjs/ui';
+import { STagsInput } from '@soybeanjs/ui';
 
-const tags = ref(['Disabled', 'Readonly']);
+const tags = ref(['Vue', 'React', 'Angular']);
 </script>
 
 <template>
-  <STagsInput v-model="tags" disabled>
-    <template #default>
-      <STagsInputItem v-for="tag in tags" :key="tag" :value="tag">
-        <STagsInputItemText />
-        <STagsInputItemDelete />
-      </STagsInputItem>
-      <STagsInputInput aria-label="Disabled tags input" placeholder="Disabled" />
-    </template>
-  </STagsInput>
+  <STagsInput v-model="tags" :control-props="{ 'aria-label': 'Add tag', placeholder: 'Add a tag' }" disabled />
 </template>

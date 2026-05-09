@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { useId } from 'vue';
-import { Primitive } from '../primitive';
 import { useTagsInputItemContext, useTagsInputUi } from './context';
 import type { TagsInputItemTextProps } from './types';
 
@@ -8,13 +7,11 @@ defineOptions({
   name: 'TagsInputItemText'
 });
 
-const props = withDefaults(defineProps<TagsInputItemTextProps>(), {
-  as: 'span'
-});
+const props = defineProps<TagsInputItemTextProps>();
 
 const cls = useTagsInputUi('itemText');
 
-const { displayValue, textId } = useTagsInputItemContext('TagsInputItemText');
+const { displayedValue, textId } = useTagsInputItemContext('TagsInputItemText');
 
 if (!textId.value) {
   textId.value = `soybean-tags-input-item-text-${useId()}`;
@@ -22,7 +19,7 @@ if (!textId.value) {
 </script>
 
 <template>
-  <Primitive v-bind="props" :id="textId" :class="cls">
-    <slot>{{ displayValue }}</slot>
-  </Primitive>
+  <span v-bind="props" :id="textId" :class="cls" data-slot="item-text">
+    <slot>{{ displayedValue }}</slot>
+  </span>
 </template>

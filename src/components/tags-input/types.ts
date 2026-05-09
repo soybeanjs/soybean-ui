@@ -1,11 +1,16 @@
-import type { TagsInputRootEmits, TagsInputRootProps, TagsInputUi } from '@soybeanjs/headless/tags-input';
+import type {
+  TagsInputCompactProps,
+  TagsInputCompactEmits,
+  TagsInputCompactSlots,
+  TagsInputUi
+} from '@soybeanjs/headless/tags-input';
 import type { ClassValue } from '@soybeanjs/headless/types';
 import type { ThemeSize } from '@/theme';
 
 /**
  * Properties for the TagsInput component.
  */
-export interface TagsInputProps<T = string> extends TagsInputRootProps<T> {
+export interface TagsInputProps extends TagsInputCompactProps {
   /**
    * Additional class names applied to the root element.
    */
@@ -23,4 +28,9 @@ export interface TagsInputProps<T = string> extends TagsInputRootProps<T> {
 /**
  * Events for the TagsInput component.
  */
-export type TagsInputEmits<T = string> = TagsInputRootEmits<T>;
+export type TagsInputEmits = TagsInputCompactEmits;
+
+/**
+ * Slots for the TagsInput component.
+ */
+export type TagsInputSlots = TagsInputCompactSlots;

@@ -458,7 +458,8 @@ import {
   TabsTrigger,
   Tag,
   TagsInputClear,
-  TagsInputInput,
+  TagsInputCompact,
+  TagsInputControl,
   TagsInputItem,
   TagsInputItemDelete,
   TagsInputItemText,
@@ -823,44 +824,6 @@ export const Collapsible = {
   Trigger: typeof CollapsibleTrigger;
 };
 
-export const Combobox = {
-  Compact: ComboboxCompact,
-  Root: ComboboxRoot,
-  Anchor: ComboboxAnchor,
-  Trigger: ComboboxTrigger,
-  Portal: ComboboxPortal,
-  Viewport: ComboboxViewport,
-  Content: ComboboxContent,
-  Cancel: ComboboxCancel,
-  Arrow: ComboboxArrow,
-  Group: ComboboxGroup,
-  GroupLabel: ComboboxGroupLabel,
-  Input: ComboboxInput,
-  Item: ComboboxItem,
-  ItemIndicator: ComboboxItemIndicator,
-  Empty: ComboboxEmpty,
-  Separator: ComboboxSeparator,
-  Virtualizer: ComboboxVirtualizer
-} as {
-  Compact: typeof ComboboxCompact;
-  Root: typeof ComboboxRoot;
-  Anchor: typeof ComboboxAnchor;
-  Trigger: typeof ComboboxTrigger;
-  Portal: typeof ComboboxPortal;
-  Viewport: typeof ComboboxViewport;
-  Content: typeof ComboboxContent;
-  Cancel: typeof ComboboxCancel;
-  Arrow: typeof ComboboxArrow;
-  Group: typeof ComboboxGroup;
-  GroupLabel: typeof ComboboxGroupLabel;
-  Input: typeof ComboboxInput;
-  Item: typeof ComboboxItem;
-  ItemIndicator: typeof ComboboxItemIndicator;
-  Empty: typeof ComboboxEmpty;
-  Separator: typeof ComboboxSeparator;
-  Virtualizer: typeof ComboboxVirtualizer;
-};
-
 export const ColorArea = {
   Root: ColorAreaRoot,
   Area: ColorAreaArea,
@@ -903,6 +866,44 @@ export const ColorSwatchPicker = {
   Item: typeof ColorSwatchPickerItem;
   ItemIndicator: typeof ColorSwatchPickerItemIndicator;
   ItemSwatch: typeof ColorSwatchPickerItemSwatch;
+};
+
+export const Combobox = {
+  Compact: ComboboxCompact,
+  Root: ComboboxRoot,
+  Anchor: ComboboxAnchor,
+  Trigger: ComboboxTrigger,
+  Portal: ComboboxPortal,
+  Viewport: ComboboxViewport,
+  Content: ComboboxContent,
+  Cancel: ComboboxCancel,
+  Arrow: ComboboxArrow,
+  Group: ComboboxGroup,
+  GroupLabel: ComboboxGroupLabel,
+  Input: ComboboxInput,
+  Item: ComboboxItem,
+  ItemIndicator: ComboboxItemIndicator,
+  Empty: ComboboxEmpty,
+  Separator: ComboboxSeparator,
+  Virtualizer: ComboboxVirtualizer
+} as {
+  Compact: typeof ComboboxCompact;
+  Root: typeof ComboboxRoot;
+  Anchor: typeof ComboboxAnchor;
+  Trigger: typeof ComboboxTrigger;
+  Portal: typeof ComboboxPortal;
+  Viewport: typeof ComboboxViewport;
+  Content: typeof ComboboxContent;
+  Cancel: typeof ComboboxCancel;
+  Arrow: typeof ComboboxArrow;
+  Group: typeof ComboboxGroup;
+  GroupLabel: typeof ComboboxGroupLabel;
+  Input: typeof ComboboxInput;
+  Item: typeof ComboboxItem;
+  ItemIndicator: typeof ComboboxItemIndicator;
+  Empty: typeof ComboboxEmpty;
+  Separator: typeof ComboboxSeparator;
+  Virtualizer: typeof ComboboxVirtualizer;
 };
 
 export { CommandCompact };
@@ -1438,17 +1439,17 @@ export { Primitive };
 export const Progress = {
   Provider: ProgressProvider,
   Compact: ProgressCompact,
+  CircleCompact: ProgressCircleCompact,
   Root: ProgressRoot,
   Indicator: ProgressIndicator,
-  Circle: ProgressCircle,
-  CircleCompact: ProgressCircleCompact
+  Circle: ProgressCircle
 } as {
   Provider: typeof ProgressProvider;
   Compact: typeof ProgressCompact;
+  CircleCompact: typeof ProgressCircleCompact;
   Root: typeof ProgressRoot;
   Indicator: typeof ProgressIndicator;
   Circle: typeof ProgressCircle;
-  CircleCompact: typeof ProgressCircleCompact;
 };
 
 export const RadioGroup = {
@@ -1648,18 +1649,20 @@ export const Tabs = {
 export { Tag };
 
 export const TagsInput = {
+  Compact: TagsInputCompact,
   Root: TagsInputRoot,
-  Input: TagsInputInput,
   Item: TagsInputItem,
   ItemText: TagsInputItemText,
   ItemDelete: TagsInputItemDelete,
+  Control: TagsInputControl,
   Clear: TagsInputClear
 } as {
+  Compact: typeof TagsInputCompact;
   Root: typeof TagsInputRoot;
-  Input: typeof TagsInputInput;
   Item: typeof TagsInputItem;
   ItemText: typeof TagsInputItemText;
   ItemDelete: typeof TagsInputItemDelete;
+  Control: typeof TagsInputControl;
   Clear: typeof TagsInputClear;
 };
 

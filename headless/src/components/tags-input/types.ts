@@ -1,23 +1,20 @@
-import type { ComputedRef, ShallowRef } from 'vue';
+import type { ComputedRef, ShallowRef, InputHTMLAttributes } from 'vue';
 import type { CollectionItemData } from '../../composables';
 import type { BaseProps, Direction, FormFieldCommonProps, PropsToContext, UiClass } from '../../types';
+import type { ButtonProps } from '../button/types';
+import type { InputBaseProps } from '../input/types';
 import type { PrimitiveWithBaseProps } from '../primitive/types';
-
-/**
- * Type information for TagsInputAcceptableValue.
- */
-export type TagsInputAcceptableValue = string | number | bigint | Record<string, unknown>;
 
 /**
  * Properties for the TagsInputRoot component.
  */
-export interface TagsInputRootProps<T = TagsInputAcceptableValue> extends FormFieldCommonProps, BaseProps {
-  /** Id of the input element. */
-  id?: string;
+export interface TagsInputRootProps extends InputBaseProps, FormFieldCommonProps, Omit<BaseProps, 'onInvalid'> {
+  /** The reading direction of the tags input. */
+  dir?: Direction;
   /** The controlled value of the tags input. */
-  modelValue?: T[];
+  modelValue?: string[];
   /** The uncontrolled default value of the tags input. */
-  defaultValue?: T[];
+  defaultValue?: string[];
   /** Whether to add tags on paste. */
   addOnPaste?: boolean;
   /** Whether to add tags on tab. */
@@ -26,82 +23,53 @@ export interface TagsInputRootProps<T = TagsInputAcceptableValue> extends FormFi
   addOnBlur?: boolean;
   /** Whether to allow duplicated tags. */
   duplicate?: boolean;
-  /** Whether to disable the tags input. */
-  disabled?: boolean;
   /** The delimiter used to add tags. */
   delimiter?: string | RegExp;
-  /** The reading direction of the tags input. */
-  dir?: Direction;
   /** Maximum number of tags. Set to 0 for unlimited. */
   max?: number;
-  /** Convert the raw input string into the tag value. */
-  convertValue?: (value: string) => T;
-  /** Display the tag value. */
-  displayValue?: (value: T) => string;
+  /**
+   * Display the value of the tag. Useful when you want to apply modifications to the value like adding a suffix
+   *
+   * @default "(value: string) => value"
+   */
+  displayValue?: (value: string) => string;
 }
 
 /**
  * Events for the TagsInputRoot component.
  */
-export type TagsInputRootEmits<T = TagsInputAcceptableValue> = {
+export type TagsInputRootEmits = {
   /**
    * Emitted when the model value changes.
    */
-  'update:modelValue': [value: T[]];
+  'update:modelValue': [value: string[]];
   /**
    * Emitted when invalid occurs.
    */
-  invalid: [value: T];
+  invalid: [value: string];
   /**
    * Emitted when add tag occurs.
    */
-  addTag: [value: T];
+  addTag: [value: string];
   /**
    * Emitted when remove tag occurs.
    */
-  removeTag: [value: T];
+  removeTag: [value: string];
 };
 
 /**
- * Properties for the TagsInputInput component.
+ * Properties for the TagsInputControl component.
  */
-export interface TagsInputInputProps extends PrimitiveWithBaseProps {
-  /**
-   * Id.
-   */
-  id?: string;
-  /**
-   * Placeholder.
-   */
-  placeholder?: string;
-  /**
-   * Whether autofocus.
-   */
-  autofocus?: boolean;
-  /**
-   * Maxlength.
-   */
-  maxlength?: number;
-  /**
-   * Whether the component is disabled.
-   */
-  disabled?: boolean;
-  /**
-   * Aria label.
-   */
-  'aria-label'?: string;
-  /**
-   * Aria controls.
-   */
-  'aria-controls'?: string;
-}
+export interface TagsInputControlProps extends BaseProps<InputHTMLAttributes> {}
 
 /**
  * Properties for the TagsInputItem component.
  */
-export interface TagsInputItemProps<T = TagsInputAcceptableValue> extends Omit<PrimitiveWithBaseProps, 'value'> {
-  /** Value associated with the tag. */
-  value: T;
+export interface TagsInputItemProps extends PrimitiveWithBaseProps {
+  /**
+   * Value associated with the tag.
+   */
+  value: string;
   /** Whether to disable the tag item. */
   disabled?: boolean;
 }
@@ -114,12 +82,59 @@ export interface TagsInputItemTextProps extends PrimitiveWithBaseProps {}
 /**
  * Properties for the TagsInputItemDelete component.
  */
-export interface TagsInputItemDeleteProps extends PrimitiveWithBaseProps {}
+export interface TagsInputItemDeleteProps extends ButtonProps {}
 
 /**
  * Properties for the TagsInputClear component.
  */
-export interface TagsInputClearProps extends PrimitiveWithBaseProps {}
+export interface TagsInputClearProps extends ButtonProps {}
+
+/**
+ * Properties for the TagsInputCompact component.
+ */
+export interface TagsInputCompactProps extends TagsInputRootProps {
+  /** Whether to render the clear trigger. */
+  clearable?: boolean;
+  /** Props forwarded to the input element. */
+  controlProps?: TagsInputControlProps;
+  /** Props forwarded to the clear element. */
+  clearProps?: TagsInputClearProps;
+  /** Props forwarded to the item element. */
+  itemProps?: TagsInputItemProps;
+  /** Props forwarded to the item text element. */
+  itemTextProps?: TagsInputItemTextProps;
+  /** Props forwarded to the item delete element. */
+  itemDeleteProps?: TagsInputItemDeleteProps;
+}
+
+/**
+ * Events for the TagsInputCompact component.
+ */
+export type TagsInputCompactEmits = TagsInputRootEmits;
+
+/**
+ * Slot properties for item-related compact slots.
+ */
+export interface TagsInputCompactSlotProps {
+  /** Value associated with the current item. */
+  value: string;
+  /** Current item index. */
+  index: number;
+  /** Current item display value. */
+  displayedValue: string;
+  /** Delete handler for the current item. */
+  onDelete: () => void;
+  /** Clear handler for the current item. */
+  onClear: () => void;
+}
+
+/**
+ * Slots for the TagsInputCompact component.
+ */
+export type TagsInputCompactSlots = {
+  /** Custom item content or full item replacement. */
+  item?: (props: TagsInputCompactSlotProps) => any;
+};
 
 /**
  * Type information for TagsInputCollectionItemData.
@@ -128,7 +143,7 @@ export type TagsInputCollectionItemData = {
   /**
    * Value associated with the current item.
    */
-  value: TagsInputAcceptableValue;
+  value: string;
 };
 
 /**
@@ -136,12 +151,25 @@ export type TagsInputCollectionItemData = {
  */
 export interface TagsInputRootContext extends PropsToContext<
   TagsInputRootProps,
-  'id' | 'addOnPaste' | 'addOnTab' | 'addOnBlur' | 'disabled' | 'delimiter' | 'max'
+  | 'id'
+  | 'autofocus'
+  | 'disabled'
+  | 'maxlength'
+  | 'minlength'
+  | 'pattern'
+  | 'placeholder'
+  | 'readonly'
+  | 'addOnPaste'
+  | 'addOnTab'
+  | 'addOnBlur'
+  | 'disabled'
+  | 'delimiter'
+  | 'max'
 > {
   /**
    * Current model value.
    */
-  modelValue: ShallowRef<TagsInputAcceptableValue[]>;
+  modelValue: ShallowRef<string[]>;
   /**
    * Selected element used by the component context.
    */
@@ -154,10 +182,6 @@ export interface TagsInputRootContext extends PropsToContext<
    * Reading direction of the component.
    */
   dir: ComputedRef<Direction>;
-  /**
-   * Display value used by the component context.
-   */
-  displayValue: (value: TagsInputAcceptableValue) => string;
   /**
    * Callback invoked when the add value event fires.
    */
@@ -178,6 +202,10 @@ export interface TagsInputRootContext extends PropsToContext<
    * Get items used by the component context.
    */
   getItems: () => CollectionItemData<TagsInputCollectionItemData>[];
+  /**
+   * Get display value used by the component context
+   */
+  displayValue: (value: string) => string;
 }
 
 /**
@@ -187,11 +215,11 @@ export interface TagsInputItemContext {
   /**
    * Value associated with the current item.
    */
-  value: ComputedRef<TagsInputAcceptableValue>;
+  value: ComputedRef<string>;
   /**
    * Display value used by the component context.
    */
-  displayValue: ComputedRef<string>;
+  displayedValue: ComputedRef<string>;
   /**
    * Whether a selected.
    */
@@ -208,12 +236,16 @@ export interface TagsInputItemContext {
    * Text id used by the component context.
    */
   textId: ShallowRef<string>;
+  /**
+   * Callback invoked when the delete event fires.
+   */
+  onDelete: () => void;
 }
 
 /**
  * Available UI slots for the TagsInput component.
  */
-export type TagsInputUiSlot = 'root' | 'item' | 'itemText' | 'itemDelete' | 'input' | 'clear';
+export type TagsInputUiSlot = 'root' | 'item' | 'itemText' | 'itemDelete' | 'control' | 'clear';
 
 /**
  * UI class overrides for the TagsInput component.

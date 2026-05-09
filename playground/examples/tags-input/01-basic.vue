@@ -1,18 +1,14 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { STagsInput, STagsInputInput, STagsInputItem, STagsInputItemDelete, STagsInputItemText } from '@soybeanjs/ui';
+import { STagsInput } from '@soybeanjs/ui';
 
-const tags = ref(['Vue', 'TypeScript']);
+const tags = ref(['Vue', 'React', 'Angular']);
 </script>
 
 <template>
-  <STagsInput v-model="tags">
-    <template #default>
-      <STagsInputItem v-for="tag in tags" :key="tag" :value="tag">
-        <STagsInputItemText />
-        <STagsInputItemDelete />
-      </STagsInputItem>
-      <STagsInputInput aria-label="Add tag" placeholder="Add a tag" />
-    </template>
-  </STagsInput>
+  <STagsInput
+    v-model="tags"
+    :control-props="{ 'aria-label': 'Add tag', placeholder: 'Add a tag' }"
+    class="w-120 lt-md:w-full"
+  />
 </template>
