@@ -434,6 +434,7 @@ import {
   SelectTriggerIcon,
   SelectValue,
   SelectViewport,
+  SeparatorCompact,
   SeparatorLabel,
   SeparatorRoot,
   Skeleton,
@@ -1597,9 +1598,11 @@ export const Select = {
 };
 
 export const Separator = {
+  Compact: SeparatorCompact,
   Root: SeparatorRoot,
   Label: SeparatorLabel
 } as {
+  Compact: typeof SeparatorCompact;
   Root: typeof SeparatorRoot;
   Label: typeof SeparatorLabel;
 };

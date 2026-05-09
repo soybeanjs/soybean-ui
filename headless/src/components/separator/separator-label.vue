@@ -12,7 +12,7 @@ const cls = useSeparatorUi('label');
 </script>
 
 <template>
-  <span :class="cls">
+  <span :class="cls" data-slot="label">
     <slot />
   </span>
 </template>

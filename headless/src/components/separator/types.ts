@@ -23,6 +23,30 @@ export interface SeparatorRootProps extends BaseProps {
 }
 
 /**
+ * Properties for the SeparatorCompact component.
+ */
+export interface SeparatorCompactProps extends SeparatorRootProps {
+  /**
+   * Label text rendered by the component.
+   */
+  label?: string;
+  /**
+   * Properties forwarded to the label element.
+   */
+  labelProps?: SeparatorLabelProps;
+}
+
+/**
+ * Slots for the SeparatorCompact component.
+ */
+export interface SeparatorCompactSlots {
+  /**
+   * Custom content for the label slot.
+   */
+  default?: () => any;
+}
+
+/**
  * Available UI slots for the Separator component.
  */
 export type SeparatorUiSlot = 'root' | 'label';

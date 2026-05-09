@@ -439,7 +439,7 @@ export const components = {
     'SelectSeparator',
     'SelectArrow'
   ],
-  separator: ['SeparatorRoot', 'SeparatorLabel'],
+  separator: ['SeparatorCompact', 'SeparatorRoot', 'SeparatorLabel'],
   skeleton: ['Skeleton'],
   slider: ['SliderCompact', 'SliderRoot', 'SliderTrack', 'SliderRange', 'SliderThumb'],
   slot: ['Slot'],
