@@ -3,6 +3,7 @@ import { mount } from '@vue/test-utils';
 import type { VueWrapper } from '@vue/test-utils';
 import { describe, expect, it } from 'vitest';
 import {
+  ScrollAreaCompact,
   ScrollAreaRoot,
   ScrollAreaScrollbar,
   ScrollAreaThumb,
@@ -151,6 +152,17 @@ describe('SScrollArea', () => {
     it('renders viewport and both scrollbars', () => {
       const wrapper = mount(SScrollArea, {
         props: { class: 'h-40 w-40' },
+        slots: { default: '<div>Scrollable Content</div>' },
+        attachTo: document.body
+      });
+
+      expect(wrapper.find('[data-soybean-scroll-area-viewport]').exists()).toBe(true);
+      expect(wrapper.findAll('[data-soybean-scroll-area-scrollbar]')).toHaveLength(2);
+      wrapper.unmount();
+    });
+
+    it('renders the headless compact structure', () => {
+      const wrapper = mount(ScrollAreaCompact, {
         slots: { default: '<div>Scrollable Content</div>' },
         attachTo: document.body
       });

@@ -59,6 +59,47 @@ export interface ScrollAreaCornerProps extends PrimitiveWithBaseProps {}
 export type ScrollAreaRootEmits = {};
 
 /**
+ * Properties for the ScrollAreaCompact component.
+ */
+export interface ScrollAreaCompactProps extends ScrollAreaRootProps {
+  /**
+   * Properties forwarded to the viewport element.
+   */
+  viewportProps?: ScrollAreaViewportProps;
+  /**
+   * Properties forwarded to the vertical scrollbar element.
+   */
+  verticalScrollbarProps?: ScrollAreaScrollbarProps;
+  /**
+   * Properties forwarded to the horizontal scrollbar element.
+   */
+  horizontalScrollbarProps?: ScrollAreaScrollbarProps;
+  /**
+   * Properties forwarded to the thumb elements.
+   */
+  thumbProps?: ScrollAreaThumbProps;
+  /**
+   * Properties forwarded to the corner element.
+   */
+  cornerProps?: ScrollAreaCornerProps;
+}
+
+/**
+ * Events for the ScrollAreaCompact component.
+ */
+export type ScrollAreaCompactEmits = ScrollAreaRootEmits;
+
+/**
+ * Slots for the ScrollAreaCompact component.
+ */
+export interface ScrollAreaCompactSlots {
+  /**
+   * Custom content for the default slot.
+   */
+  default?: () => any;
+}
+
+/**
  * Context for the ScrollAreaRoot component.
  */
 export interface ScrollAreaRootContext extends PropsToContext<ScrollAreaRootProps, 'scrollHideDelay' | 'type'> {

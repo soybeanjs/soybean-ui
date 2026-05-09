@@ -1,13 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import {
-  ScrollAreaCorner,
-  ScrollAreaRoot,
-  ScrollAreaScrollbar,
-  ScrollAreaThumb,
-  ScrollAreaViewport,
-  provideScrollAreaUi
-} from '@soybeanjs/headless/scroll-area';
+import { ScrollAreaCompact, provideScrollAreaUi } from '@soybeanjs/headless/scroll-area';
 import { useOmitProps } from '@soybeanjs/headless/composables';
 import { mergeSlotVariants } from '@/theme';
 import { scrollAreaVariants } from './variants';
@@ -19,15 +12,7 @@ defineOptions({
 
 const props = defineProps<ScrollAreaProps>();
 
-const forwardedProps = useOmitProps(props, [
-  'class',
-  'ui',
-  'viewportProps',
-  'verticalScrollbarProps',
-  'horizontalScrollbarProps',
-  'thumbProps',
-  'cornerProps'
-]);
+const forwardedProps = useOmitProps(props, ['class', 'ui']);
 
 const ui = computed(() => {
   const variants = scrollAreaVariants();
@@ -39,16 +24,7 @@ provideScrollAreaUi(ui);
 </script>
 
 <template>
-  <ScrollAreaRoot v-bind="forwardedProps">
-    <ScrollAreaViewport v-bind="viewportProps">
-      <slot />
-    </ScrollAreaViewport>
-    <ScrollAreaScrollbar orientation="vertical" v-bind="verticalScrollbarProps">
-      <ScrollAreaThumb v-bind="thumbProps" />
-    </ScrollAreaScrollbar>
-    <ScrollAreaScrollbar orientation="horizontal" v-bind="horizontalScrollbarProps">
-      <ScrollAreaThumb v-bind="thumbProps" />
-    </ScrollAreaScrollbar>
-    <ScrollAreaCorner v-bind="cornerProps" />
-  </ScrollAreaRoot>
+  <ScrollAreaCompact v-bind="forwardedProps">
+    <slot />
+  </ScrollAreaCompact>
 </template>
