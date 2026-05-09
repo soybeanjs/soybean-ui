@@ -17,7 +17,14 @@ const cls = useSwitchUi('thumb');
 </script>
 
 <template>
-  <Primitive :as="as" :as-child="asChild" :class="cls" :data-disabled="dataDisabled" :data-state="dataState">
+  <Primitive
+    :as="as"
+    :as-child="asChild"
+    :class="cls"
+    data-slot="thumb"
+    :data-disabled="dataDisabled"
+    :data-state="dataState"
+  >
     <slot />
   </Primitive>
 </template>

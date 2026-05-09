@@ -431,7 +431,7 @@ export const components = {
     'StepperDescription',
     'StepperCompact'
   ],
-  switch: ['SwitchRoot', 'SwitchControl', 'SwitchThumb'],
+  switch: ['SwitchRoot', 'SwitchControl', 'SwitchThumb', 'SwitchCompact'],
   table: [
     'TableCompact',
     'TableRoot',

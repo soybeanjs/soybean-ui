@@ -1,10 +1,4 @@
-import type {
-  SwitchControlProps,
-  SwitchRootEmits,
-  SwitchRootProps,
-  SwitchThumbProps,
-  SwitchUi
-} from '@soybeanjs/headless/switch';
+import type { SwitchCompactEmits, SwitchCompactProps, SwitchCompactSlots, SwitchUi } from '@soybeanjs/headless/switch';
 import type { AcceptableBooleanValue, ClassValue } from '@soybeanjs/headless/types';
 import type { ThemeColor, ThemeSize } from '@/theme';
 import type { SwitchShape } from './variants';
@@ -12,7 +6,7 @@ import type { SwitchShape } from './variants';
 /**
  * Properties for the Switch component.
  */
-export interface SwitchProps<T extends AcceptableBooleanValue = boolean> extends SwitchRootProps<T> {
+export interface SwitchProps<T extends AcceptableBooleanValue = boolean> extends SwitchCompactProps<T> {
   /**
    * Additional class names applied to the root element.
    */
@@ -33,19 +27,16 @@ export interface SwitchProps<T extends AcceptableBooleanValue = boolean> extends
    * Shape of the component.
    */
   shape?: SwitchShape;
-  /**
-   * Properties forwarded to the control element.
-   */
-  controlProps?: SwitchControlProps;
-  /**
-   * Properties forwarded to the thumb element.
-   */
-  thumbProps?: SwitchThumbProps;
 }
 
 /**
  * Events for the Switch component.
  */
-export type SwitchEmits<T extends AcceptableBooleanValue = boolean> = SwitchRootEmits<T>;
+export type SwitchEmits<T extends AcceptableBooleanValue = boolean> = SwitchCompactEmits<T>;
+
+/**
+ * Slots for the Switch component.
+ */
+export type SwitchSlots<T extends AcceptableBooleanValue = boolean> = SwitchCompactSlots<T>;
 
 export type { SwitchShape };

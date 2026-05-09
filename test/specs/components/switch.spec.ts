@@ -23,6 +23,17 @@ describe('SSwitch', () => {
       expect(wrapper.find('[data-testid="trailing"]').exists()).toBe(true);
       wrapper.unmount();
     });
+
+    it('renders default slot content inside the thumb', () => {
+      const wrapper = mount(SSwitch, {
+        slots: {
+          default: '<span data-testid="thumb-slot">T</span>'
+        },
+        attachTo: document.body
+      });
+      expect(wrapper.find('[data-slot="thumb"] [data-testid="thumb-slot"]').exists()).toBe(true);
+      wrapper.unmount();
+    });
   });
 
   describe('checked state', () => {

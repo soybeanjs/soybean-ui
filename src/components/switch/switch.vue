@@ -1,11 +1,12 @@
 <script setup lang="ts" generic="T extends AcceptableBooleanValue = boolean">
-import { computed, useId } from 'vue';
-import { SwitchControl, SwitchRoot, SwitchThumb, provideSwitchUi } from '@soybeanjs/headless/switch';
+import { computed } from 'vue';
+import { SwitchCompact, provideSwitchUi } from '@soybeanjs/headless/switch';
 import type { AcceptableBooleanValue } from '@soybeanjs/headless/types';
 import { useOmitProps } from '@soybeanjs/headless/composables';
+import { keysOf } from '@soybeanjs/utils';
 import { mergeSlotVariants } from '@/theme';
 import { switchVariants } from './variants';
-import type { SwitchEmits, SwitchProps } from './types';
+import type { SwitchEmits, SwitchProps, SwitchSlots } from './types';
 
 defineOptions({
   name: 'SSwitch'
@@ -19,11 +20,11 @@ const props = withDefaults(defineProps<SwitchProps<T>>(), {
 
 const emit = defineEmits<SwitchEmits<T>>();
 
-const forwardedProps = useOmitProps(props, ['class', 'ui', 'color', 'size', 'shape', 'controlProps', 'thumbProps']);
+const slots = defineSlots<SwitchSlots<T>>();
 
-const defaultId = useId();
+const forwardedProps = useOmitProps(props, ['class', 'ui', 'color', 'size', 'shape']);
 
-const switchId = computed(() => props.id || `switch-${defaultId}`);
+const slotNames = computed(() => keysOf(slots));
 
 const ui = computed(() => {
   const variants = switchVariants({
@@ -39,13 +40,9 @@ provideSwitchUi(ui);
 </script>
 
 <template>
-  <SwitchRoot v-slot="slotProps" v-bind="forwardedProps" @update:model-value="emit('update:modelValue', $event)">
-    <slot name="leading" v-bind="slotProps" />
-    <SwitchControl v-bind="controlProps" :id="switchId">
-      <SwitchThumb v-bind="thumbProps">
-        <slot v-bind="slotProps" />
-      </SwitchThumb>
-    </SwitchControl>
-    <slot name="trailing" v-bind="slotProps" />
-  </SwitchRoot>
+  <SwitchCompact v-bind="forwardedProps" @update:model-value="emit('update:modelValue', $event)">
+    <template v-for="slotName in slotNames" :key="slotName" #[slotName]="slotProps">
+      <slot :name="slotName" v-bind="slotProps" />
+    </template>
+  </SwitchCompact>
 </template>
