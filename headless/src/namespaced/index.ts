@@ -361,9 +361,21 @@ import {
   PaginationPrev,
   PaginationRoot,
   PasswordCompact,
+  PopconfirmArrow,
   PopconfirmCancel,
+  PopconfirmClose,
   PopconfirmCompact,
   PopconfirmConfirm,
+  PopconfirmContent,
+  PopconfirmDescription,
+  PopconfirmFooter,
+  PopconfirmHeader,
+  PopconfirmPopup,
+  PopconfirmPortal,
+  PopconfirmPositioner,
+  PopconfirmRoot,
+  PopconfirmTitle,
+  PopconfirmTrigger,
   PopoverAnchor,
   PopoverArrow,
   PopoverClose,
@@ -394,6 +406,7 @@ import {
   RadioGroupRoot,
   RovingFocusGroup,
   RovingFocusItem,
+  ScrollAreaCompact,
   ScrollAreaCorner,
   ScrollAreaRoot,
   ScrollAreaScrollbar,
@@ -1403,10 +1416,34 @@ export { PasswordCompact };
 
 export const Popconfirm = {
   Compact: PopconfirmCompact,
+  Root: PopconfirmRoot,
+  Trigger: PopconfirmTrigger,
+  Portal: PopconfirmPortal,
+  Positioner: PopconfirmPositioner,
+  Popup: PopconfirmPopup,
+  Arrow: PopconfirmArrow,
+  Close: PopconfirmClose,
+  Header: PopconfirmHeader,
+  Title: PopconfirmTitle,
+  Description: PopconfirmDescription,
+  Content: PopconfirmContent,
+  Footer: PopconfirmFooter,
   Confirm: PopconfirmConfirm,
   Cancel: PopconfirmCancel
 } as {
   Compact: typeof PopconfirmCompact;
+  Root: typeof PopconfirmRoot;
+  Trigger: typeof PopconfirmTrigger;
+  Portal: typeof PopconfirmPortal;
+  Positioner: typeof PopconfirmPositioner;
+  Popup: typeof PopconfirmPopup;
+  Arrow: typeof PopconfirmArrow;
+  Close: typeof PopconfirmClose;
+  Header: typeof PopconfirmHeader;
+  Title: typeof PopconfirmTitle;
+  Description: typeof PopconfirmDescription;
+  Content: typeof PopconfirmContent;
+  Footer: typeof PopconfirmFooter;
   Confirm: typeof PopconfirmConfirm;
   Cancel: typeof PopconfirmCancel;
 };
@@ -1496,13 +1533,15 @@ export const ScrollArea = {
   Viewport: ScrollAreaViewport,
   Scrollbar: ScrollAreaScrollbar,
   Thumb: ScrollAreaThumb,
-  Corner: ScrollAreaCorner
+  Corner: ScrollAreaCorner,
+  Compact: ScrollAreaCompact
 } as {
   Root: typeof ScrollAreaRoot;
   Viewport: typeof ScrollAreaViewport;
   Scrollbar: typeof ScrollAreaScrollbar;
   Thumb: typeof ScrollAreaThumb;
   Corner: typeof ScrollAreaCorner;
+  Compact: typeof ScrollAreaCompact;
 };
 
 export const Segment = {

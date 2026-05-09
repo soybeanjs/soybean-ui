@@ -363,7 +363,23 @@ export const components = {
     'PaginationCompact'
   ],
   password: ['PasswordCompact'],
-  popconfirm: ['PopconfirmCompact', 'PopconfirmConfirm', 'PopconfirmCancel'],
+  popconfirm: [
+    'PopconfirmCompact',
+    'PopconfirmRoot',
+    'PopconfirmTrigger',
+    'PopconfirmPortal',
+    'PopconfirmPositioner',
+    'PopconfirmPopup',
+    'PopconfirmArrow',
+    'PopconfirmClose',
+    'PopconfirmHeader',
+    'PopconfirmTitle',
+    'PopconfirmDescription',
+    'PopconfirmContent',
+    'PopconfirmFooter',
+    'PopconfirmConfirm',
+    'PopconfirmCancel'
+  ],
   popover: [
     'PopoverCompact',
     'PopoverRoot',
@@ -395,7 +411,14 @@ export const components = {
     'RadioGroupLabel'
   ],
   rovingFocus: ['RovingFocusGroup', 'RovingFocusItem'],
-  scrollArea: ['ScrollAreaRoot', 'ScrollAreaViewport', 'ScrollAreaScrollbar', 'ScrollAreaThumb', 'ScrollAreaCorner'],
+  scrollArea: [
+    'ScrollAreaRoot',
+    'ScrollAreaViewport',
+    'ScrollAreaScrollbar',
+    'ScrollAreaThumb',
+    'ScrollAreaCorner',
+    'ScrollAreaCompact'
+  ],
   segment: ['SegmentRoot', 'SegmentList', 'SegmentTrigger', 'SegmentIndicator', 'SegmentCompact'],
   select: [
     'SelectRoot',
