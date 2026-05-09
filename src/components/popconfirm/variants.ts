@@ -18,13 +18,15 @@ export const popconfirmVariants = tv({
     content: '',
     footer: `flex flex-col-reverse sm:flex-row sm:justify-end`,
     cancel: '',
-    confirm: ''
+    confirm: '',
+    close: 'absolute'
   },
   variants: {
     size: {
       xs: {
         popup: 'gap-y-2 p-2 text-2xs',
         arrow: 'text-3xs',
+        close: 'top-1 end-1',
         header: 'gap-y-1.5',
         icon: 'text-3xs',
         title: 'gap-x-1.5',
@@ -33,6 +35,7 @@ export const popconfirmVariants = tv({
       sm: {
         popup: 'gap-y-2.5 p-2.5 text-xs',
         arrow: 'text-2xs',
+        close: 'top-1.25 end-1.25',
         header: 'gap-y-1.75',
         icon: 'text-2xs',
         title: 'gap-x-1.75',
@@ -41,6 +44,7 @@ export const popconfirmVariants = tv({
       md: {
         popup: 'gap-y-3 p-3 text-sm',
         arrow: 'text-xs',
+        close: 'top-1.5 end-1.5',
         header: 'gap-y-2',
         icon: 'text-sm',
         title: 'gap-x-2',
@@ -49,6 +53,7 @@ export const popconfirmVariants = tv({
       lg: {
         popup: 'gap-y-3.5 p-3.5 text-base',
         arrow: 'text-sm',
+        close: 'top-1.75 end-1.75',
         header: 'gap-y-2.5',
         icon: 'text-base',
         title: 'gap-x-2.5',
@@ -57,6 +62,7 @@ export const popconfirmVariants = tv({
       xl: {
         popup: 'gap-y-4 p-4 text-lg',
         arrow: 'text-base',
+        close: 'top-2 end-2',
         header: 'gap-y-3',
         icon: 'text-lg',
         title: 'gap-x-3',
@@ -65,6 +71,7 @@ export const popconfirmVariants = tv({
       '2xl': {
         popup: 'gap-y-4.5 p-4.5 text-xl',
         arrow: 'text-lg',
+        close: 'top-2.5 end-2.5',
         header: 'gap-y-3.5',
         icon: 'text-xl',
         title: 'gap-x-3.5',
@@ -72,7 +79,7 @@ export const popconfirmVariants = tv({
       }
     },
     type: {
-      destructive: {
+      error: {
         icon: 'text-destructive'
       },
       success: {

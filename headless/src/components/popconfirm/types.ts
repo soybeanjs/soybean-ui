@@ -1,12 +1,5 @@
-import type { IconValue } from '../_icon/types';
 import type { ButtonProps } from '../button/types';
-import type {
-  BaseProps,
-  MaybePromise,
-  Placement,
-  PropsToContext,
-  UiClass
-} from '../../types';
+import type { BaseProps, Placement, UiClass } from '../../types';
 import type {
   PopoverCloseProps,
   PopoverPopupProps,
@@ -23,56 +16,34 @@ import type { PortalProps as PopconfirmPortalProps } from '../portal/types';
 /**
  * Supported popconfirm values.
  */
-export type PopconfirmType = 'destructive' | 'success' | 'warning' | 'info';
+export type PopconfirmType = 'error' | 'success' | 'warning' | 'info';
 
 /**
  * Properties for the PopconfirmConfirm component.
  */
-export interface PopconfirmConfirmProps extends ButtonProps {
-  /**
-   * Text.
-   */
-  text?: string;
-  /**
-   * Called before the popconfirm is closed. Can be used to prevent the popconfirm from closing.
-   *
-   * @returns A boolean or a promise that resolves to a boolean. If returns `false`, the popconfirm will not close.
-   */
-  beforeClose?: () => MaybePromise<boolean | void>;
-}
+export interface PopconfirmConfirmProps extends ButtonProps {}
 /**
  * Events for the PopconfirmConfirm component.
  */
 export type PopconfirmConfirmEmits = {
   /**
-   * Emitted when close occurs.
+   * Emitted when confirm occurs.
    */
-  close: [];
+  confirm: [event: PointerEvent];
 };
 
 /**
  * Properties for the PopconfirmCancel component.
  */
-export interface PopconfirmCancelProps extends ButtonProps {
-  /**
-   * Text.
-   */
-  text?: string;
-  /**
-   * Called before the popconfirm is closed. Can be used to prevent the popconfirm from closing.
-   *
-   * @returns A boolean or a promise that resolves to a boolean. If returns `false`, the popconfirm will not close.
-   */
-  beforeClose?: () => MaybePromise<boolean | void>;
-}
+export interface PopconfirmCancelProps extends ButtonProps {}
 /**
  * Events for the PopconfirmCancel component.
  */
 export type PopconfirmCancelEmits = {
   /**
-   * Emitted when close occurs.
+   * Emitted when cancel occurs.
    */
-  close: [];
+  cancel: [event: PointerEvent];
 };
 
 /**
@@ -155,21 +126,13 @@ export interface PopconfirmCompactProps extends PopoverRootProps {
    */
   showCancel?: 'onlyWarning' | boolean;
   /**
-   * Before cancel.
+   * Properties forwarded to the trigger element.
    */
-  beforeCancel?: () => MaybePromise<boolean | void>;
+  triggerProps?: PopoverTriggerProps;
   /**
-   * Before confirm.
+   * Properties forwarded to the portal element.
    */
-  beforeConfirm?: () => MaybePromise<boolean | void>;
-  /**
-   * Properties forwarded to the confirm element.
-   */
-  confirmProps?: PopconfirmConfirmProps;
-  /**
-   * Properties forwarded to the cancel element.
-   */
-  cancelProps?: PopconfirmCancelProps;
+  portalProps?: PopconfirmPortalProps;
   /**
    * Properties forwarded to the positioner element.
    */
@@ -179,21 +142,13 @@ export interface PopconfirmCompactProps extends PopoverRootProps {
    */
   popupProps?: PopoverPopupProps;
   /**
-   * Properties forwarded to the trigger element.
+   * Properties forwarded to the arrow element.
    */
-  triggerProps?: PopoverTriggerProps;
+  arrowProps?: PopconfirmArrowProps;
   /**
    * Properties forwarded to the close element.
    */
   closeProps?: PopoverCloseProps;
-  /**
-   * Properties forwarded to the portal element.
-   */
-  portalProps?: PopconfirmPortalProps;
-  /**
-   * Properties forwarded to the arrow element.
-   */
-  arrowProps?: PopconfirmArrowProps;
   /**
    * Properties forwarded to the header element.
    */
@@ -214,18 +169,23 @@ export interface PopconfirmCompactProps extends PopoverRootProps {
    * Properties forwarded to the footer element.
    */
   footerProps?: PopconfirmFooterProps;
+  /**
+   * Properties forwarded to the confirm element.
+   */
+  confirmProps?: PopconfirmConfirmProps;
+  /**
+   * Properties forwarded to the cancel element.
+   */
+  cancelProps?: PopconfirmCancelProps;
 }
 
 /**
  * Events for the PopconfirmCompact component.
  */
 export type PopconfirmCompactEmits = PopoverRootEmits &
-  PopoverPositionerEmits & {
-    /**
-     * Emitted when close occurs.
-     */
-    close: [];
-  };
+  PopoverPositionerEmits &
+  PopconfirmConfirmEmits &
+  PopconfirmCancelEmits;
 
 /**
  * Slot properties for the PopconfirmCompact component.
@@ -272,39 +232,22 @@ export type PopconfirmCompactSlots = {
 };
 
 /**
- * Context for the Popconfirm component.
- */
-export interface PopconfirmContext extends PropsToContext<
-  PopconfirmCompactProps,
-  'confirmText' | 'cancelText' | 'confirmProps' | 'cancelProps'
-> {
-  /**
-   * Before confirm used by the component context.
-   */
-  beforeConfirm?: () => MaybePromise<boolean | void>;
-  /**
-   * Before cancel used by the component context.
-   */
-  beforeCancel?: () => MaybePromise<boolean | void>;
-  /**
-   * Callback invoked when the close event fires.
-   */
-  onClose: () => void;
-}
-
-/**
  * Available UI slots for the Popconfirm component.
  */
-export type PopconfirmUiSlot = PopoverUiSlot | 'header' | 'icon' | 'title' | 'description' | 'content' | 'footer' | 'cancel' | 'confirm';
+export type PopconfirmUiSlot =
+  | PopoverUiSlot
+  | 'header'
+  | 'icon'
+  | 'title'
+  | 'description'
+  | 'content'
+  | 'footer'
+  | 'cancel'
+  | 'confirm';
 
 /**
  * UI class overrides for the Popconfirm component.
  */
 export type PopconfirmUi = UiClass<PopconfirmUiSlot>;
-
-/**
- * Icon mapping used by the PopconfirmCompact component.
- */
-export type PopconfirmIcon = IconValue;
 
 export type { PopconfirmPortalProps };

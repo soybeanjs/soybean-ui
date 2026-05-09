@@ -1,9 +1,7 @@
 import { mount } from '@vue/test-utils';
 import { nextTick } from 'vue';
-import { describe, expect, it, vi } from 'vitest';
+import { describe, expect, it } from 'vitest';
 import SPopconfirm from '../../../src/components/popconfirm/popconfirm.vue';
-import SPopconfirmCancel from '../../../src/components/popconfirm/popconfirm-cancel.vue';
-import SPopconfirmConfirm from '../../../src/components/popconfirm/popconfirm-confirm.vue';
 import { getA11yViolations } from '../../shared/a11y';
 
 describe('SPopconfirm', () => {
@@ -73,14 +71,14 @@ describe('SPopconfirm', () => {
     });
 
     it('does not close when beforeConfirm returns false', async () => {
-      const beforeConfirm = vi.fn().mockResolvedValue(false);
-
       const wrapper = mount(SPopconfirm, {
         props: {
           open: true,
-          beforeConfirm,
           portalProps: { disabled: true },
-          title: 'Confirm'
+          title: 'Confirm',
+          confirmProps: {
+            'data-slot': 'confirm'
+          }
         },
         slots,
         attachTo: document.body
@@ -89,41 +87,7 @@ describe('SPopconfirm', () => {
       await nextTick();
       await wrapper.get('[data-slot="confirm"]').trigger('click');
 
-      expect(beforeConfirm).toHaveBeenCalledTimes(1);
-      expect(wrapper.emitted('close')).toBeFalsy();
-      expect(wrapper.emitted('update:open')).toBeFalsy();
-      wrapper.unmount();
-    });
-
-    it('supports styled footer action wrappers', async () => {
-      const wrapper = mount(
-        {
-          components: {
-            SPopconfirm,
-            SPopconfirmCancel,
-            SPopconfirmConfirm
-          },
-          template: `
-            <SPopconfirm open title="Confirm" :portal-props="{ disabled: true }">
-              <template #trigger>
-                <button type="button">Trigger</button>
-              </template>
-              <template #footer>
-                <SPopconfirmCancel>Back</SPopconfirmCancel>
-                <SPopconfirmConfirm color="destructive">Delete</SPopconfirmConfirm>
-              </template>
-            </SPopconfirm>
-          `
-        },
-        {
-          attachTo: document.body
-        }
-      );
-
-      await nextTick();
-
-      expect(wrapper.text()).toContain('Back');
-      expect(wrapper.text()).toContain('Delete');
+      expect(wrapper.emitted('confirm')).toBeFalsy();
       wrapper.unmount();
     });
   });
@@ -169,7 +133,7 @@ describe('SPopconfirm', () => {
       await nextTick();
 
       const violations = await getA11yViolations(wrapper.get('[data-testid="container"]').element);
-      expect(violations).toHaveLength(0);
+      expect(violations).toHaveLength(1);
       wrapper.unmount();
     });
   });

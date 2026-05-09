@@ -1,6 +1,8 @@
 export { default as SPopconfirm } from './popconfirm.vue';
-export { default as SPopconfirmConfirm } from './popconfirm-confirm.vue';
-export { default as SPopconfirmCancel } from './popconfirm-cancel.vue';
+export {
+  PopconfirmConfirm as SPopconfirmConfirm,
+  PopconfirmCancel as SPopconfirmCancel
+} from '@soybeanjs/headless/popconfirm';
 
 export type {
   PopconfirmRootProps,
