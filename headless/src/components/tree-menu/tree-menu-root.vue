@@ -1,7 +1,9 @@
 <script setup lang="ts">
 import { computed, watch } from 'vue';
+import type { CSSProperties } from 'vue';
 import { useControllableState } from '../../composables';
 import { provideTreeMenuRootContext, useTreeMenuUi } from './context';
+import { treeMenuCssVars } from './shared';
 import type { TreeMenuCollapsedState, TreeMenuRootEmits, TreeMenuRootProps } from './types';
 
 defineOptions({
@@ -12,7 +14,10 @@ const props = withDefaults(defineProps<TreeMenuRootProps>(), {
   defaultValue: '',
   defaultExpanded: () => [] as string[],
   collapsed: undefined,
-  defaultCollapsed: false
+  defaultCollapsed: false,
+  collapsedWidth: 50,
+  indent: 16,
+  pxToRem: (px: number) => px / 16
 });
 
 const emit = defineEmits<TreeMenuRootEmits>();
@@ -45,6 +50,16 @@ const collapsed = useControllableState(
 
 const dataState = computed<TreeMenuCollapsedState>(() => (collapsed.value ? 'collapsed' : 'expanded'));
 
+const style = computed<CSSProperties>(() => {
+  const collapsedWidth = props.pxToRem(props.collapsedWidth);
+  const indent = props.pxToRem(props.indent);
+
+  return {
+    [treeMenuCssVars.collapsedWidth]: `${collapsedWidth}rem`,
+    [treeMenuCssVars.indent]: `${indent}rem`
+  };
+});
+
 let backupExpanded: string[] | null = null;
 
 watch(collapsed, value => {
@@ -69,7 +84,7 @@ provideTreeMenuRootContext({
 </script>
 
 <template>
-  <div :class="cls" :data-state="dataState">
+  <div :class="cls" :data-state="dataState" :style="style" data-slot="root">
     <slot />
   </div>
 </template>

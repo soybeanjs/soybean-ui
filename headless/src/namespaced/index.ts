@@ -516,11 +516,15 @@ import {
   TreeItem,
   TreeMenuButton,
   TreeMenuCollapsible,
+  TreeMenuCompact,
   TreeMenuGroup,
   TreeMenuGroupLabel,
   TreeMenuGroupRoot,
   TreeMenuItem,
+  TreeMenuOptionCompact,
+  TreeMenuOptionsCompact,
   TreeMenuRoot,
+  TreeMenuSlotCompact,
   TreeMenuSub,
   TreeRoot,
   TreeVirtualizerItem,
@@ -1829,6 +1833,10 @@ export const Tree = {
 };
 
 export const TreeMenu = {
+  Compact: TreeMenuCompact,
+  OptionsCompact: TreeMenuOptionsCompact,
+  OptionCompact: TreeMenuOptionCompact,
+  SlotCompact: TreeMenuSlotCompact,
   Root: TreeMenuRoot,
   GroupRoot: TreeMenuGroupRoot,
   Group: TreeMenuGroup,
@@ -1838,6 +1846,10 @@ export const TreeMenu = {
   Collapsible: TreeMenuCollapsible,
   Sub: TreeMenuSub
 } as {
+  Compact: typeof TreeMenuCompact;
+  OptionsCompact: typeof TreeMenuOptionsCompact;
+  OptionCompact: typeof TreeMenuOptionCompact;
+  SlotCompact: typeof TreeMenuSlotCompact;
   Root: typeof TreeMenuRoot;
   GroupRoot: typeof TreeMenuGroupRoot;
   Group: typeof TreeMenuGroup;

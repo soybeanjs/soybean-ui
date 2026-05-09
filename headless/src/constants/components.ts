@@ -503,6 +503,10 @@ export const components = {
   ],
   tree: ['TreeRoot', 'TreeItem', 'TreeVirtualizerRoot', 'TreeVirtualizerItem'],
   treeMenu: [
+    'TreeMenuCompact',
+    'TreeMenuOptionsCompact',
+    'TreeMenuOptionCompact',
+    'TreeMenuSlotCompact',
     'TreeMenuRoot',
     'TreeMenuGroupRoot',
     'TreeMenuGroup',

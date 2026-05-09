@@ -42,6 +42,7 @@ provideTreeMenuItemContext({
     :class="cls"
     :data-disabled="disabled ? '' : undefined"
     :data-active="isActive"
+    data-slot="item"
   >
     <slot />
   </Primitive>

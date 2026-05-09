@@ -12,7 +12,7 @@ const cls = useTreeMenuUi('groupLabel');
 </script>
 
 <template>
-  <div :class="cls">
+  <div :class="cls" data-slot="groupLabel">
     <slot />
   </div>
 </template>

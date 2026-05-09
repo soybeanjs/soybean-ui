@@ -26,9 +26,13 @@ export const treeMenuVariants = tv({
     itemLabel: 'truncate',
     itemLinkIcon: `shrink-0 self-start text-muted-foreground`,
     itemBadge: ``,
-    itemTag: `shrink-0 ml-auto`,
-    itemAction: `absolute -translate-y-1/2 top-1/2`,
-    itemAbsolute: `absolute top-0 left-0 w-full h-full z-1 cursor-pointer`
+    itemTag: `shrink-0 ml-auto inline-flex items-center rounded-sm bg-accent/15 text-accent-foreground`,
+    itemAction: [
+      `absolute end-0 top-1/2 -translate-y-1/2 z-2 inline-flex items-center justify-center rounded-sm text-muted-foreground outline-none transition-colors`,
+      `focus-visible:bg-sidebar-accent focus-visible:text-foreground focus-visible:ring-3 focus-visible:ring-accent-foreground/20`,
+      `disabled:pointer-events-none disabled:opacity-50`
+    ],
+    itemAbsolute: `absolute inset-0 z-1 cursor-pointer`
   },
   variants: {
     size: {
@@ -41,7 +45,8 @@ export const treeMenuVariants = tv({
         sub: 'gap-0.875 pl-1.5 pt-0.875',
         subButton: 'gap-1.5 h-6 px-1.5 py-1 group-data-[state=collapsed]:w-6',
         itemLinkIcon: 'size-2 -ml-1',
-        itemAction: 'right-1.5'
+        itemTag: 'min-h-3.5 px-1 text-4xs',
+        itemAction: 'end-1 size-4 text-2xs'
       },
       sm: {
         root: 'gap-1 p-1.75 text-xs',
@@ -52,7 +57,8 @@ export const treeMenuVariants = tv({
         sub: 'gap-1 pl-1.75 pt-1',
         subButton: 'gap-1.75 h-7 px-1.75 py-1 group-data-[state=collapsed]:w-7',
         itemLinkIcon: 'size-2.5 -ml-1.5',
-        itemAction: 'right-1.75'
+        itemTag: 'min-h-4 px-1.25 text-3xs',
+        itemAction: 'end-1.25 size-4.5 text-xs'
       },
       md: {
         root: 'gap-1.25 p-2 text-sm',
@@ -63,7 +69,8 @@ export const treeMenuVariants = tv({
         sub: 'gap-1.25 pl-2 pt-1.25',
         subButton: 'gap-2 h-8 px-2 py-1.5 group-data-[state=collapsed]:w-8',
         itemLinkIcon: 'size-3 -ml-2',
-        itemAction: 'right-2'
+        itemTag: 'min-h-4.5 px-1.5 text-2xs',
+        itemAction: 'end-1.5 size-5 text-sm'
       },
       lg: {
         root: 'gap-1.5 p-2.25 text-base',
@@ -74,7 +81,8 @@ export const treeMenuVariants = tv({
         sub: 'gap-1.5 pl-2.25 pt-1.5',
         subButton: 'gap-2.25 h-9 px-2.25 py-1.5 group-data-[state=collapsed]:w-9',
         itemLinkIcon: 'size-3.5 -ml-2.5',
-        itemAction: 'right-2.25'
+        itemTag: 'min-h-5 px-1.75 text-xs',
+        itemAction: 'end-1.75 size-5.5 text-base'
       },
       xl: {
         root: 'gap-2 p-2.5 text-lg',
@@ -85,7 +93,8 @@ export const treeMenuVariants = tv({
         sub: 'gap-2 pl-2.5 pt-2',
         subButton: 'gap-2.5 h-10 px-2.5 py-2 group-data-[state=collapsed]:w-10',
         itemLinkIcon: 'size-4 -ml-3',
-        itemAction: 'right-2.5'
+        itemTag: 'min-h-5.5 px-2 text-sm',
+        itemAction: 'end-2 size-6 text-lg'
       },
       '2xl': {
         root: 'gap-2.5 p-3 text-xl',
@@ -96,7 +105,8 @@ export const treeMenuVariants = tv({
         sub: 'gap-2.5 pl-3 pt-2.5',
         subButton: 'gap-3 h-12 px-3 py-2.5 group-data-[state=collapsed]:w-12',
         itemLinkIcon: 'size-5 -ml-4',
-        itemAction: 'right-3'
+        itemTag: 'min-h-6 px-2.5 text-base',
+        itemAction: 'end-2.5 size-7 text-xl'
       }
     }
   },

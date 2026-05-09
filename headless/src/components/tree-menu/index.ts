@@ -1,3 +1,7 @@
+export { default as TreeMenuCompact } from './tree-menu-compact.vue';
+export { default as TreeMenuOptionsCompact } from './tree-menu-options-compact.vue';
+export { default as TreeMenuOptionCompact } from './tree-menu-option-compact.vue';
+export { default as TreeMenuSlotCompact } from './tree-menu-slot-compact.vue';
 export { default as TreeMenuRoot } from './tree-menu-root.vue';
 export { default as TreeMenuGroupRoot } from './tree-menu-group-root.vue';
 export { default as TreeMenuGroup } from './tree-menu-group.vue';
@@ -10,17 +14,27 @@ export { default as TreeMenuSub } from './tree-menu-sub.vue';
 export { provideTreeMenuUi, provideTreeMenuRootContext, useTreeMenuRootContext } from './context';
 
 export type {
-  TreeMenuCollapsedState,
+  TreeMenuCompactProps,
+  TreeMenuCompactEmits,
+  TreeMenuCompactSlots,
+  TreeMenuOptionCompactProps,
+  TreeMenuOptionsCompactEmits,
+  TreeMenuOptionsCompactProps,
+  TreeMenuOptionCompactEmits,
+  TreeMenuOptionSlotCompactProps,
   TreeMenuRootProps,
   TreeMenuRootEmits,
   TreeMenuGroupRootProps,
   TreeMenuGroupProps,
   TreeMenuGroupLabelProps,
   TreeMenuBaseItemProps,
+  TreeMenuBaseOptionData,
   TreeMenuItemProps,
   TreeMenuButtonProps,
   TreeMenuCollapsibleProps,
   TreeMenuSubProps,
+  TreeMenuCollapsedState,
+  TreeMenuOptionData,
   TreeMenuUiSlot,
   TreeMenuUi
 } from './types';

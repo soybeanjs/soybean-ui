@@ -16,12 +16,12 @@ const open = computed(() => !props.disabledCollapsible && isExpanded.value);
 </script>
 
 <template>
-  <CollapsibleRoot :as="as" :open="open" @update:open="onExpandedToggle">
-    <CollapsibleTrigger as-child :disabled-collapsible="disabledCollapsible">
+  <CollapsibleRoot :as="as" :open="open" data-slot="collapsibleRoot" @update:open="onExpandedToggle">
+    <CollapsibleTrigger as-child data-slot="collapsibleTrigger" :disabled-collapsible="disabledCollapsible">
       <slot name="trigger" />
     </CollapsibleTrigger>
     <slot name="extra" />
-    <CollapsibleContent>
+    <CollapsibleContent data-slot="collapsibleContent">
       <slot />
     </CollapsibleContent>
   </CollapsibleRoot>

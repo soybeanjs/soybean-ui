@@ -1,77 +1,35 @@
 <script setup lang="ts" generic="T extends TreeMenuBaseOptionData = TreeMenuBaseOptionData">
 import { computed } from 'vue';
-import type { CSSProperties } from 'vue';
-import { TreeMenuRoot, provideTreeMenuUi } from '@soybeanjs/headless/tree-menu';
-import { useForwardListeners, usePickProps } from '@soybeanjs/headless/composables';
-import { transformPropsToContext } from '@soybeanjs/headless/shared';
-import { mergeSlotVariants, themeSizeMap, themeSizeRatio } from '@/theme';
-import { provideTreeMenuContext, provideTreeMenuExtraUi } from './context';
+import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
+import { TreeMenuCompact, provideTreeMenuUi } from '@soybeanjs/headless/tree-menu';
+import type { TreeMenuBaseOptionData } from '@soybeanjs/headless/tree-menu';
+import { provideBadgeUi } from '@soybeanjs/headless/badge';
+import { provideTooltipUi } from '@soybeanjs/headless/tooltip';
+import { keysOf } from '@soybeanjs/utils';
+import { mergeSlotVariants } from '@/theme';
+import { provideMenuUi } from '../menu/context';
+import { badgeVariants } from '../badge/variants';
+import { tooltipVariants } from '../tooltip/variants';
 import { treeMenuVariants } from './variants';
-import TreeMenuOptions from './tree-menu-options.vue';
-import { treeMenuCssVars } from './shared';
-import type { TreeMenuBaseOptionData, TreeMenuEmits, TreeMenuProps } from './types';
+import type { TreeMenuEmits, TreeMenuProps, TreeMenuSlots } from './types';
 
 defineOptions({
   name: 'STreeMenu'
 });
 
 const props = withDefaults(defineProps<TreeMenuProps<T>>(), {
-  size: 'md',
-  side: 'left',
-  loop: true,
-  collapsed: undefined,
-  collapsedWidth: 50,
-  indent: 16
+  collapsed: undefined
 });
 
 const emit = defineEmits<TreeMenuEmits>();
 
-type Slots = {
-  top: () => any;
-  bottom: () => any;
-  item: (props: { item: T }) => any;
-  'item-leading': (props: { item: T }) => any;
-  'item-trailing': (props: { item: T }) => any;
-  'group-label': (props: { item: T }) => any;
-};
+const slots = defineSlots<TreeMenuSlots<T>>();
 
-const slots = defineSlots<Slots>();
-
-const itemSlotKeys = computed(() => Object.keys(slots).filter(key => key.startsWith('item')) as (keyof Slots)[]);
-
-const forwardedRootProps = usePickProps(props, [
-  'modelValue',
-  'defaultValue',
-  'expanded',
-  'defaultExpanded',
-  'collapsed',
-  'defaultCollapsed'
-]);
-
-const forwardedOptionsProps = usePickProps(props, [
-  'items',
-  'groupRootProps',
-  'groupProps',
-  'groupLabelProps',
-  'showGroupIcon',
-  'itemProps',
-  'buttonProps',
-  'linkProps',
-  'collapsibleProps',
-  'subProps'
-]);
+const forwardedProps = useOmitProps(props, ['class', 'size', 'ui']);
 
 const listeners = useForwardListeners(emit);
 
-const style = computed<CSSProperties>(() => {
-  const collapsedWidth = props.collapsedWidth * themeSizeRatio[props.size];
-  const indent = props.indent * themeSizeRatio[props.size];
-
-  return {
-    [treeMenuCssVars.collapsedWidth]: `${collapsedWidth / themeSizeMap.md}rem`,
-    [treeMenuCssVars.indent]: `${indent / themeSizeMap.md}rem`
-  };
-});
+const slotNames = computed(() => keysOf(slots));
 
 const ui = computed(() => {
   const variants = treeMenuVariants({
@@ -81,20 +39,33 @@ const ui = computed(() => {
   return mergeSlotVariants(variants, props.ui, { root: props.class });
 });
 
-provideTreeMenuUi(ui);
-provideTreeMenuExtraUi(ui);
+const badgeUi = computed(() =>
+  badgeVariants({
+    color: 'accent',
+    size: props.size,
+    position: 'top-right'
+  })
+);
 
-provideTreeMenuContext(transformPropsToContext(props, ['size', 'side']));
+const tooltipUi = computed(() =>
+  tooltipVariants({
+    size: props.size
+  })
+);
+
+provideMenuUi(() => ({
+  size: props.size
+}));
+provideBadgeUi(badgeUi);
+provideTooltipUi(tooltipUi);
+provideTreeMenuUi(ui);
 </script>
 
 <template>
-  <TreeMenuRoot v-bind="forwardedRootProps" :style="style" v-on="listeners">
-    <slot name="top" />
-    <TreeMenuOptions v-bind="forwardedOptionsProps" @select-dropdown="emit('selectDropdown', $event)">
-      <template v-for="slot in itemSlotKeys" :key="slot" #[slot]="slotProps">
-        <slot :name="slot" v-bind="slotProps" />
-      </template>
-    </TreeMenuOptions>
-    <slot name="bottom" />
-  </TreeMenuRoot>
+  <TreeMenuCompact v-bind="forwardedProps" v-on="listeners">
+    <template v-for="slotName in slotNames" #[slotName]="slotProps">
+      <!-- @vue-expect-error ignore slot type -->
+      <slot :name="slotName" v-bind="slotProps" />
+    </template>
+  </TreeMenuCompact>
 </template>

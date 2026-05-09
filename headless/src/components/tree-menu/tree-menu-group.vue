@@ -15,7 +15,7 @@ const cls = useTreeMenuUi('group');
 </script>
 
 <template>
-  <Primitive :as="as" :as-child="asChild" :class="cls" role="group">
+  <Primitive :as="as" :as-child="asChild" :class="cls" data-slot="group">
     <slot />
   </Primitive>
 </template>
