@@ -1,34 +1,45 @@
 <script setup lang="ts">
-import { computed, nextTick, ref } from 'vue';
-import { Primitive } from '../primitive';
+import { computed, nextTick, ref, useAttrs } from 'vue';
+import { useLocaleMessages } from '../../locale';
 import { useTagsInputRootContext, useTagsInputUi } from './context';
-import type { TagsInputInputProps } from './types';
+import type { TagsInputControlProps } from './types';
 
 defineOptions({
-  name: 'TagsInputInput'
+  name: 'TagsInputControl'
 });
 
-const props = withDefaults(defineProps<TagsInputInputProps>(), {
-  as: 'input'
-});
+defineProps<TagsInputControlProps>();
 
-const cls = useTagsInputUi('input');
+const attrs = useAttrs();
+
+const cls = useTagsInputUi('control');
 
 const {
   id,
-  addOnPaste,
-  addOnBlur,
-  addOnTab,
-  delimiter,
+  autofocus,
   disabled,
+  maxlength,
+  minlength,
+  pattern,
+  placeholder,
+  readonly,
+  addOnPaste,
+  addOnTab,
+  addOnBlur,
+  delimiter,
   isInvalidInput,
   onAddValue,
   onInputKeydown,
   selectedElement
-} = useTagsInputRootContext('TagsInputInput');
+} = useTagsInputRootContext('TagsInputControl');
+
+const messages = useLocaleMessages();
+
+const ariaLabel = computed(() => (attrs['aria-label'] as string) ?? messages.value.tagsInput.addTag);
+
+const isDisabled = computed(() => Boolean(attrs['disabled']) || disabled.value);
 
 const isComposing = ref(false);
-const isNativeInput = computed(() => !props.asChild && (props.as === undefined || props.as === 'input'));
 
 const handleBlur = (event: FocusEvent) => {
   selectedElement.value = undefined;
@@ -144,21 +155,22 @@ const onCompositionEnd = () => {
 </script>
 
 <template>
-  <Primitive
-    :id="props.id || id"
-    :as="props.as"
-    :as-child="props.asChild"
+  <input
+    :id="id"
     :class="cls"
-    :type="isNativeInput ? 'text' : undefined"
-    :autocomplete="isNativeInput ? 'off' : undefined"
-    :autocorrect="isNativeInput ? 'off' : undefined"
-    :autocapitalize="isNativeInput ? 'off' : undefined"
-    :autofocus="isNativeInput ? props.autofocus : undefined"
-    :placeholder="isNativeInput ? props.placeholder : undefined"
-    :maxlength="isNativeInput ? props.maxlength : undefined"
-    :aria-label="props['aria-label']"
-    :aria-controls="props['aria-controls']"
-    :disabled="disabled || props.disabled"
+    data-slot="input"
+    type="text"
+    autocomplete="off"
+    autocorrect="off"
+    autocapitalize="off"
+    :autofocus="autofocus"
+    :placeholder="placeholder"
+    :maxlength="maxlength"
+    :minlength="minlength"
+    :aria-label="ariaLabel"
+    :disabled="isDisabled"
+    :pattern="pattern"
+    :readonly="readonly"
     :data-invalid="isInvalidInput ? '' : undefined"
     @input="handleInput"
     @keydown.enter="handleCustomKeydown"
@@ -168,7 +180,5 @@ const onCompositionEnd = () => {
     @paste="handlePaste"
     @compositionstart="onCompositionStart"
     @compositionend="onCompositionEnd"
-  >
-    <slot />
-  </Primitive>
+  />
 </template>

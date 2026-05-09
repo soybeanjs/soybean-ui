@@ -34,6 +34,10 @@ export const en: LocaleMessages = {
   textarea: {
     clear: 'Clear textarea'
   },
+  tagsInput: {
+    addTag: 'Add tag',
+    clear: 'Clear tags'
+  },
   progress: {
     loading: 'Loading'
   },

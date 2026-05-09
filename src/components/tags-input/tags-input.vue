@@ -1,25 +1,36 @@
-<script setup lang="ts" generic="T extends TagsInputAcceptableValue = string">
+<script setup lang="ts">
 import { computed } from 'vue';
-import { TagsInputRoot, provideTagsInputUi } from '@soybeanjs/headless/tags-input';
-import type { TagsInputAcceptableValue } from '@soybeanjs/headless/tags-input';
+import { TagsInputCompact, provideTagsInputUi } from '@soybeanjs/headless/tags-input';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
-import { mergeSlotVariants } from '@/theme';
+import { mergeBaseVariants, mergeSlotVariants, miniSizeMap } from '@/theme';
+import { buttonIconVariants } from '../button/variants';
 import { tagsInputVariants } from './variants';
-import type { TagsInputEmits, TagsInputProps } from './types';
+import type { TagsInputEmits, TagsInputProps, TagsInputSlots } from './types';
 
 defineOptions({
   name: 'STagsInput'
 });
 
-const props = defineProps<TagsInputProps<T>>();
+const props = defineProps<TagsInputProps>();
 
-const emit = defineEmits<TagsInputEmits<T>>();
+const emit = defineEmits<TagsInputEmits>();
 
-const forwardedProps = useOmitProps(props, ['class', 'size', 'ui', 'onInvalid']);
+const slots = defineSlots<TagsInputSlots>();
+
+const forwardedProps = useOmitProps(props, ['class', 'size', 'ui']);
+
 const listeners = useForwardListeners(emit);
+
 const ui = computed(() => {
-  const variants = tagsInputVariants({
+  const baseVariants = tagsInputVariants({
     size: props.size
+  });
+
+  const miniSize = miniSizeMap[props.size || 'md'];
+
+  const variants = mergeBaseVariants(baseVariants, {
+    itemDelete: buttonIconVariants({ size: miniSize, shape: 'circle' }),
+    clear: buttonIconVariants({ size: props.size })
   });
 
   return mergeSlotVariants(variants, props.ui, { root: props.class });
@@ -29,7 +40,9 @@ provideTagsInputUi(ui);
 </script>
 
 <template>
-  <TagsInputRoot v-slot="slotProps" v-bind="forwardedProps" v-on="listeners">
-    <slot v-bind="slotProps" />
-  </TagsInputRoot>
+  <TagsInputCompact v-bind="forwardedProps" v-on="listeners">
+    <template v-if="slots.item" #item="slotProps">
+      <slot name="item" v-bind="slotProps" />
+    </template>
+  </TagsInputCompact>
 </template>

@@ -380,10 +380,10 @@ export const components = {
   progress: [
     'ProgressProvider',
     'ProgressCompact',
+    'ProgressCircleCompact',
     'ProgressRoot',
     'ProgressIndicator',
-    'ProgressCircle',
-    'ProgressCircleCompact'
+    'ProgressCircle'
   ],
   radioGroup: [
     'RadioGroupRoot',
@@ -446,11 +446,12 @@ export const components = {
   tabs: ['TabsRoot', 'TabsList', 'TabsTrigger', 'TabsContent', 'TabsIndicator', 'TabsCompact'],
   tag: ['Tag'],
   tagsInput: [
+    'TagsInputCompact',
     'TagsInputRoot',
-    'TagsInputInput',
     'TagsInputItem',
     'TagsInputItemText',
     'TagsInputItemDelete',
+    'TagsInputControl',
     'TagsInputClear'
   ],
   textarea: ['TextareaCompact', 'TextareaRoot', 'TextareaControl', 'TextareaClear', 'TextareaCounter'],

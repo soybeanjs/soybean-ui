@@ -1,38 +1,50 @@
-<script setup lang="ts" generic="T extends TagsInputAcceptableValue = string">
+<script setup lang="ts">
 import { computed, shallowRef } from 'vue';
 import { useOmitProps } from '../../composables';
 import { Primitive } from '../primitive';
 import { provideTagsInputItemContext, useCollectionItem, useTagsInputRootContext, useTagsInputUi } from './context';
-import type { TagsInputAcceptableValue, TagsInputItemProps } from './types';
+import type { TagsInputItemProps } from './types';
 
 defineOptions({
   name: 'TagsInputItem'
 });
 
-const props = withDefaults(defineProps<TagsInputItemProps<T>>(), {
-  as: 'div'
-});
+const props = defineProps<TagsInputItemProps>();
 
 const cls = useTagsInputUi('item');
 
-const { selectedElement, disabled: rootDisabled, displayValue } = useTagsInputRootContext('TagsInputItem');
-const { itemElement, itemProps, setItemElement } = useCollectionItem(() => ({
-  value: props.value as TagsInputAcceptableValue
+const {
+  selectedElement,
+  disabled: rootDisabled,
+  getItems,
+  onRemoveValue,
+  displayValue
+} = useTagsInputRootContext('TagsInputItem');
+const { itemElement, setItemElement } = useCollectionItem(() => ({
+  value: props.value
 }));
 
-const forwardedProps = useOmitProps(props, ['value', 'disabled'], itemProps);
+const forwardedProps = useOmitProps(props, ['value', 'disabled']);
 
 const isSelected = computed(() => selectedElement.value === itemElement.value);
 const disabled = computed(() => rootDisabled.value || props.disabled);
 const textId = shallowRef('');
 
+const displayedValue = computed(() => displayValue(props.value));
+
+const onDelete = () => {
+  const index = getItems().findIndex(item => item.element === itemElement.value);
+  onRemoveValue(index);
+};
+
 provideTagsInputItemContext({
-  value: computed(() => props.value as TagsInputAcceptableValue),
-  displayValue: computed(() => displayValue(props.value as TagsInputAcceptableValue)),
+  value: computed(() => props.value),
+  displayedValue: displayedValue,
   isSelected,
   disabled,
   itemElement,
-  textId
+  textId,
+  onDelete
 });
 </script>
 
@@ -41,11 +53,13 @@ provideTagsInputItemContext({
     v-bind="forwardedProps"
     :ref="setItemElement"
     :class="cls"
+    data-slot="item"
+    data-soybean-collection-item
     :aria-labelledby="textId || undefined"
     :aria-current="isSelected ? 'true' : undefined"
     :data-disabled="disabled ? '' : undefined"
     :data-state="isSelected ? 'active' : 'inactive'"
   >
-    <slot />
+    <slot :on-delete="onDelete" :displayed-value="displayedValue" />
   </Primitive>
 </template>

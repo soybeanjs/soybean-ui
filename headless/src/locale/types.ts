@@ -204,6 +204,13 @@ export interface LocaleTableMessages {
   selectRow: string;
 }
 
+export interface LocaleTagsInputMessages {
+  /** Fallback aria-label for the input element. */
+  addTag: string;
+  /** Aria-label for the clear button. */
+  clear: string;
+}
+
 export interface LocaleTextareaMessages {
   /** Aria-label for the clear button. */
   clear: string;
@@ -226,6 +233,7 @@ export interface LocaleMessages {
   slider: LocaleSliderMessages;
   stepper: LocaleStepperMessages;
   table: LocaleTableMessages;
+  tagsInput: LocaleTagsInputMessages;
   textarea: LocaleTextareaMessages;
 }
 

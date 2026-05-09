@@ -72,14 +72,7 @@ export const components = {
   table: ['STable', 'STableRow', 'STableCell'],
   tabs: ['STabs'],
   tag: ['STag'],
-  tagsInput: [
-    'STagsInput',
-    'STagsInputItemDelete',
-    'STagsInputClear',
-    'STagsInputInput',
-    'STagsInputItem',
-    'STagsInputItemText'
-  ],
+  tagsInput: ['STagsInput', 'STagsInputItemText', 'STagsInputItemDelete'],
   textarea: ['STextarea', 'STextareaClear'],
   timeField: ['STimeField'],
   timeRangeField: ['STimeRangeField'],

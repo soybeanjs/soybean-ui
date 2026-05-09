@@ -1,30 +1,24 @@
-<script setup lang="ts" generic="T extends TagsInputAcceptableValue = string">
+<script setup lang="ts">
 import { computed, shallowRef } from 'vue';
-import { isEqual } from 'ohash';
 import { useArrowNavigation, useControllableState, useForwardElement } from '../../composables';
 import { isFormControl, removeAt, transformPropsToContext } from '../../shared';
 import { useDirection } from '../config-provider/context';
 import { VisuallyHiddenInput } from '../visually-hidden';
 import { provideCollectionContext, provideTagsInputRootContext, useTagsInputUi } from './context';
-import type { TagsInputAcceptableValue, TagsInputRootEmits, TagsInputRootProps } from './types';
+import type { TagsInputRootProps, TagsInputRootEmits } from './types';
 
 defineOptions({
   name: 'TagsInputRoot'
 });
 
-const props = withDefaults(defineProps<TagsInputRootProps<T>>(), {
+const props = withDefaults(defineProps<TagsInputRootProps>(), {
   modelValue: undefined,
   defaultValue: () => [],
-  addOnPaste: false,
-  addOnTab: false,
-  addOnBlur: false,
-  duplicate: false,
-  disabled: false,
   delimiter: ',',
   max: 0
 });
 
-const emit = defineEmits<TagsInputRootEmits<T>>();
+const emit = defineEmits<TagsInputRootEmits>();
 
 const cls = useTagsInputUi('root');
 
@@ -45,23 +39,13 @@ const modelValue = useControllableState(
 const selectedElement = shallowRef<HTMLElement>();
 const isInvalidInput = shallowRef(false);
 
-const displayValue = (value: TagsInputAcceptableValue) => {
-  if (props.displayValue) {
-    return props.displayValue(value as T);
-  }
-
-  return String(value);
-};
-
-const currentModelValue = computed(() => {
-  return Array.isArray(modelValue.value) ? [...modelValue.value] : [];
-});
+const hasValue = computed(() => modelValue.value.length > 0);
 
 const formControl = computed(() => isFormControl(rootElement.value));
 
-const getItems = () => getOrderedItems(false);
+const getItems = () => getOrderedItems();
 
-const getEnabledElements = () => getOrderedElements(false).filter(element => element.dataset.disabled === undefined);
+const getEnabledElements = () => getOrderedElements();
 
 const onClear = () => {
   if (props.disabled) return;
@@ -78,29 +62,21 @@ const onRemoveValue = (index: number) => {
   const item = items[index];
   if (!item) return;
 
-  modelValue.value = removeAt(currentModelValue.value, index);
-  emit('removeTag', item.data.value as T);
+  modelValue.value = removeAt(modelValue.value, index);
+  emit('removeTag', item.data.value);
 };
 
 const onAddValue = (rawValue: string) => {
-  const normalizedValue = rawValue.trim();
-  const values = currentModelValue.value;
-  const hasObjectValue = values.some(value => typeof value === 'object' && value !== null);
-  const hasDefaultObjectValue = (props.defaultValue ?? []).some(value => typeof value === 'object' && value !== null);
-
   if (props.disabled) {
     return false;
   }
 
-  if (!normalizedValue) {
+  const value = rawValue.trim();
+  if (!value) {
     return false;
   }
 
-  if ((hasObjectValue || hasDefaultObjectValue) && typeof props.convertValue !== 'function') {
-    throw new Error('You must provide a `convertValue` function when using object values.');
-  }
-
-  const value = (props.convertValue ? props.convertValue(normalizedValue) : normalizedValue) as T;
+  const values = modelValue.value;
 
   if (props.max > 0 && values.length >= props.max) {
     isInvalidInput.value = true;
@@ -108,7 +84,7 @@ const onAddValue = (rawValue: string) => {
     return false;
   }
 
-  const isDuplicate = values.some(item => isEqual(item, value));
+  const isDuplicate = values.some(item => item === value);
   if (!props.duplicate && isDuplicate) {
     isInvalidInput.value = true;
     emit('invalid', value);
@@ -207,30 +183,47 @@ const onInputKeydown = (event: KeyboardEvent) => {
 };
 
 provideTagsInputRootContext({
-  ...transformPropsToContext(props, ['id', 'addOnPaste', 'addOnTab', 'addOnBlur', 'disabled', 'delimiter', 'max']),
-  modelValue: modelValue as typeof modelValue & { value: TagsInputAcceptableValue[] },
+  ...transformPropsToContext(props, [
+    'id',
+    'autofocus',
+    'disabled',
+    'maxlength',
+    'minlength',
+    'pattern',
+    'placeholder',
+    'readonly',
+    'addOnPaste',
+    'addOnTab',
+    'addOnBlur',
+    'disabled',
+    'delimiter',
+    'max'
+  ]),
+  modelValue,
   selectedElement,
   isInvalidInput,
   dir,
-  displayValue,
   onAddValue,
   onRemoveValue,
   onInputKeydown,
   onClear,
-  getItems
+  getItems,
+  displayValue: props.displayValue ?? ((value: string) => value)
 });
 </script>
 
 <template>
   <div
     :ref="setRootElement"
+    data-slot="root"
     :class="cls"
     role="group"
     :dir="dir"
     :data-disabled="disabled ? '' : undefined"
     :data-invalid="isInvalidInput ? '' : undefined"
+    :data-has-value="hasValue ? '' : undefined"
   >
-    <slot :model-value="modelValue" />
+    <slot :model-value="modelValue" :clear="onClear" />
 
     <VisuallyHiddenInput
       v-if="formControl && name"
