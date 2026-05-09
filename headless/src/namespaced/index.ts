@@ -361,6 +361,9 @@ import {
   PaginationPrev,
   PaginationRoot,
   PasswordCompact,
+  PopconfirmCancel,
+  PopconfirmCompact,
+  PopconfirmConfirm,
   PopoverAnchor,
   PopoverArrow,
   PopoverClose,
@@ -1395,6 +1398,16 @@ export const Pagination = {
 };
 
 export { PasswordCompact };
+
+export const Popconfirm = {
+  Compact: PopconfirmCompact,
+  Confirm: PopconfirmConfirm,
+  Cancel: PopconfirmCancel
+} as {
+  Compact: typeof PopconfirmCompact;
+  Confirm: typeof PopconfirmConfirm;
+  Cancel: typeof PopconfirmCancel;
+};
 
 export const Popover = {
   Compact: PopoverCompact,

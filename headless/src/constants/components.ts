@@ -363,6 +363,7 @@ export const components = {
     'PaginationCompact'
   ],
   password: ['PasswordCompact'],
+  popconfirm: ['PopconfirmCompact', 'PopconfirmConfirm', 'PopconfirmCancel'],
   popover: [
     'PopoverCompact',
     'PopoverRoot',

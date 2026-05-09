@@ -1,24 +1,12 @@
 <script setup lang="ts">
-import { computed, useSlots } from 'vue';
-import {
-  PopoverArrow,
-  PopoverClose,
-  PopoverPopup,
-  PopoverPortal,
-  PopoverPositioner,
-  PopoverRoot,
-  PopoverTrigger,
-  providePopoverUi
-} from '@soybeanjs/headless/popover';
-import { useForwardListeners, usePickProps } from '@soybeanjs/headless/composables';
-import { transformPropsToContext } from '@soybeanjs/headless/shared';
-import { mergeSlotVariants } from '@/theme';
-import Icon from '../icon/icon.vue';
-import { providePopconfirmContext } from './context';
+import { computed } from 'vue';
+import { PopconfirmCompact, providePopconfirmUi } from '@soybeanjs/headless/popconfirm';
+import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
+import { keysOf } from '@soybeanjs/utils';
+import { mergeBaseVariants, mergeSlotVariants, miniSizeMap } from '@/theme';
+import { buttonVariants, buttonIconVariants } from '../button/variants';
 import { popconfirmVariants } from './variants';
-import SPopconfirmCancel from './popconfirm-cancel.vue';
-import SPopconfirmConfirm from './popconfirm-confirm.vue';
-import type { PopconfirmEmits, PopconfirmProps, PopconfirmType } from './types';
+import type { PopconfirmEmits, PopconfirmProps, PopconfirmSlots } from './types';
 
 defineOptions({
   name: 'SPopconfirm'
@@ -26,8 +14,6 @@ defineOptions({
 
 const props = withDefaults(defineProps<PopconfirmProps>(), {
   open: undefined,
-  defaultOpen: false,
-  modal: false,
   showArrow: true,
   showIcon: true,
   showCancel: 'onlyWarning'
@@ -35,105 +21,46 @@ const props = withDefaults(defineProps<PopconfirmProps>(), {
 
 const emit = defineEmits<PopconfirmEmits>();
 
-const slots = useSlots();
+const slots = defineSlots<PopconfirmSlots>();
 
-const forwardedRootProps = usePickProps(props, ['defaultOpen', 'open', 'modal']);
+const forwardedProps = useOmitProps(props, ['class', 'size', 'ui']);
 
 const listeners = useForwardListeners(emit);
 
+const slotNames = keysOf(slots);
+
 const ui = computed(() => {
-  const variants = popconfirmVariants({
-    size: props.size
+  const baseVariants = popconfirmVariants({
+    size: props.size,
+    type: props.type
+  });
+
+  const miniSize = miniSizeMap[props.size ?? 'md'];
+
+  const variants = mergeBaseVariants(baseVariants, {
+    cancel: buttonVariants({
+      variant: 'pure',
+      size: miniSize
+    }),
+    confirm: buttonVariants({
+      variant: 'solid',
+      size: miniSize
+    }),
+    close: buttonIconVariants({
+      size: miniSize
+    })
   });
 
   return mergeSlotVariants(variants, props.ui, { popup: props.class });
 });
 
-const iconRecord: Record<PopconfirmType, { icon: string; class: string }> = {
-  destructive: {
-    icon: 'lucide:circle-x',
-    class: 'text-destructive'
-  },
-  success: {
-    icon: 'lucide:circle-check',
-    class: 'text-success'
-  },
-  warning: {
-    icon: 'lucide:circle-alert',
-    class: 'text-warning'
-  },
-  info: {
-    icon: 'lucide:info',
-    class: 'text-info'
-  }
-};
-
-const iconConfig = computed(() => {
-  if (!props.type) return null;
-
-  return iconRecord[props.type];
-});
-
-const positionerProps = computed(() => {
-  return {
-    placement: props.placement,
-    ...props.positionerProps
-  };
-});
-
-const cancelVisible = computed(() => {
-  if (typeof props.showCancel === 'boolean') {
-    return props.showCancel;
-  }
-
-  return props.type === 'warning';
-});
-
-const onClose = () => {
-  emit('close');
-};
-
-providePopoverUi(ui);
-providePopconfirmContext({
-  ...transformPropsToContext(props, ['size', 'confirmText', 'cancelText', 'showCancel', 'cancelProps', 'confirmProps']),
-  beforeConfirm: props.beforeConfirm,
-  beforeCancel: props.beforeCancel,
-  onClose
-});
+providePopconfirmUi(ui);
 </script>
 
 <template>
-  <PopoverRoot v-slot="slotProps" v-bind="forwardedRootProps" @update:open="emit('update:open', $event)">
-    <PopoverTrigger v-bind="triggerProps" as-child>
-      <slot name="trigger" />
-    </PopoverTrigger>
-    <PopoverPortal v-bind="portalProps">
-      <PopoverPositioner v-bind="positionerProps" v-on="listeners">
-        <PopoverPopup v-bind="popupProps">
-          <div v-bind="headerProps" :class="ui.header">
-            <h3 v-bind="titleProps" :class="ui.title">
-              <Icon v-if="showIcon && iconConfig" :icon="iconConfig.icon" :class="iconConfig.class" />
-              <slot name="title" :close="slotProps.close">{{ title }}</slot>
-            </h3>
-            <p v-if="slots.description || description" :class="ui.description">
-              <slot name="description" :close="slotProps.close">{{ description }}</slot>
-            </p>
-          </div>
-          <div v-if="$slots.content || content" v-bind="contentProps" :class="ui.content">
-            <slot :close="slotProps.close">{{ content }}</slot>
-          </div>
-          <div :class="ui.footer">
-            <slot name="footer" :close="slotProps.close">
-              <SPopconfirmCancel v-if="cancelVisible" />
-              <SPopconfirmConfirm :text="confirmText" />
-            </slot>
-          </div>
-          <PopoverArrow v-if="showArrow" v-bind="arrowProps" />
-        </PopoverPopup>
-        <PopoverClose v-if="$slots.close" as-child>
-          <slot name="close" />
-        </PopoverClose>
-      </PopoverPositioner>
-    </PopoverPortal>
-  </PopoverRoot>
+  <PopconfirmCompact v-bind="forwardedProps" :cancel-props="cancelProps" :confirm-props="confirmProps" v-on="listeners">
+    <template v-for="slotName in slotNames" :key="slotName" #[slotName]="slotProps">
+      <slot :name="slotName" v-bind="slotProps" />
+    </template>
+  </PopconfirmCompact>
 </template>

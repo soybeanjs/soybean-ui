@@ -15,7 +15,7 @@ function handleCancel() {
     <SPopconfirm
       title="Delete Item?"
       description="This action cannot be undone. Are you sure you want to delete this item?"
-      type="destructive"
+      type="error"
       :ui="{ description: 'max-w-50' }"
       :before-confirm="handleConfirm"
       :before-cancel="handleCancel"
