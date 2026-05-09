@@ -11,6 +11,18 @@ describe('SColorField', () => {
       wrapper.unmount();
     });
 
+    it('forwards non-prop attrs to the input element', () => {
+      const wrapper = mount(SColorField, {
+        attrs: {
+          'aria-label': 'Accent color'
+        },
+        attachTo: document.body
+      });
+
+      expect(wrapper.find('input[type="text"]').attributes('aria-label')).toBe('Accent color');
+      wrapper.unmount();
+    });
+
     it('renders a hidden form input when used inside a form', () => {
       const wrapper = mount(
         {
