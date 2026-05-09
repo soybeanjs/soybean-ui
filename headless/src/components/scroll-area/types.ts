@@ -69,11 +69,11 @@ export interface ScrollAreaCompactProps extends ScrollAreaRootProps {
   /**
    * Properties forwarded to the vertical scrollbar element.
    */
-  verticalScrollbarProps?: Omit<ScrollAreaScrollbarProps, 'orientation'>;
+  verticalScrollbarProps?: ScrollAreaScrollbarProps;
   /**
    * Properties forwarded to the horizontal scrollbar element.
    */
-  horizontalScrollbarProps?: Omit<ScrollAreaScrollbarProps, 'orientation'>;
+  horizontalScrollbarProps?: ScrollAreaScrollbarProps;
   /**
    * Properties forwarded to the thumb elements.
    */
