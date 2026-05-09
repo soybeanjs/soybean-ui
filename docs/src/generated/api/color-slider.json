@@ -6,7 +6,7 @@
         "kind": "props",
         "name": "ColorSliderProps",
         "type": "Interface ColorSliderProps",
-        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; color?: ThemeColor; size?: ThemeSize; ui?: Partial<ColorSliderUi>; trackProps?: ColorSliderTrackProps; thumbProps?: ColorSliderThumbProps; modelValue?: import(\"@soybeanjs/colord\").AnyColor; defaultValue?: import(\"@soybeanjs/colord\").AnyColor; colorSpace?: ColorSpace; channel: 'alpha' | 'hue' | 'saturation' | 'lightness' | 'brightness' | 'red' | 'green' | 'blue' | 'chroma'; format?: ColorFormat; orientation?: DataOrientation; dir?: Direction; inverted?: boolean; disabled?: boolean; step?: number; asChild?: boolean; as?: AsTag | Component; name?: string; required?: boolean }",
+        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; color?: ThemeColor; size?: ThemeSize; ui?: Partial<ColorSliderUi>; trackProps?: ColorSliderTrackProps; thumbProps?: ColorSliderThumbProps; modelValue?: import(\"@soybeanjs/colord\").AnyColor; defaultValue?: import(\"@soybeanjs/colord\").AnyColor; colorSpace?: ColorSpace; channel: 'alpha' | 'hue' | 'saturation' | 'lightness' | 'brightness' | 'red' | 'green' | 'blue' | 'chroma'; format?: ColorFormat; orientation?: DataOrientation; dir?: Direction; inverted?: boolean; disabled?: boolean; step?: number; name?: string; required?: boolean; asChild?: boolean; as?: AsTag | Component }",
         "description": "Properties for the ColorSlider component.",
         "descriptionKey": "api.generated.src_components_color_slider_types.colorsliderprops.props",
         "sourcePath": "src/components/color-slider/types.ts",
@@ -119,8 +119,8 @@
             "description": "Properties forwarded to the track element.",
             "descriptionKey": "api.generated.src_components_color_slider_types.colorsliderprops.members.trackprops",
             "default": null,
-            "inheritedFrom": null,
-            "sourcePath": "src/components/color-slider/types.ts",
+            "inheritedFrom": "trackProps",
+            "sourcePath": "headless/src/components/color-slider/types.ts",
             "referencedTypes": [
               {
                 "name": "ColorSliderTrackProps",
@@ -167,8 +167,8 @@
             "description": "Properties forwarded to the thumb element.",
             "descriptionKey": "api.generated.src_components_color_slider_types.colorsliderprops.members.thumbprops",
             "default": null,
-            "inheritedFrom": null,
-            "sourcePath": "src/components/color-slider/types.ts",
+            "inheritedFrom": "thumbProps",
+            "sourcePath": "headless/src/components/color-slider/types.ts",
             "referencedTypes": [
               {
                 "name": "ColorSliderThumbProps",
@@ -389,6 +389,28 @@
             "referencedTypes": []
           },
           {
+            "name": "name",
+            "type": "string",
+            "required": false,
+            "description": "The name of the field. Submitted with its owning form as part of a name/value pair.",
+            "descriptionKey": "api.generated.src_components_color_slider_types.colorsliderprops.members.name",
+            "default": null,
+            "inheritedFrom": "name",
+            "sourcePath": "headless/src/types/component.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "required",
+            "type": "boolean",
+            "required": false,
+            "description": "When `true`, indicates that the user must set the value before the owning form can be submitted.",
+            "descriptionKey": "api.generated.src_components_color_slider_types.colorsliderprops.members.required",
+            "default": null,
+            "inheritedFrom": "required",
+            "sourcePath": "headless/src/types/component.ts",
+            "referencedTypes": []
+          },
+          {
             "name": "asChild",
             "type": "boolean",
             "required": false,
@@ -415,8 +437,8 @@
                 "type": "Component",
                 "resolvedType": null,
                 "description": "A type used in public APIs where a component type is expected.\nThe constructor type is an artificial type returned by defineComponent().",
-                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_33_node_modules_vue_runtime_core_dist_runtime_core_d.component",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_34_node_modules_vue_runtime_core_dist_runtime_core_d.component",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.34/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
                 "typeParameters": [
                   "PropsOrInstance = any",
                   "RawBindings = any",
@@ -431,28 +453,6 @@
                 "callables": []
               }
             ]
-          },
-          {
-            "name": "name",
-            "type": "string",
-            "required": false,
-            "description": "The name of the field. Submitted with its owning form as part of a name/value pair.",
-            "descriptionKey": "api.generated.src_components_color_slider_types.colorsliderprops.members.name",
-            "default": null,
-            "inheritedFrom": "name",
-            "sourcePath": "headless/src/types/component.ts",
-            "referencedTypes": []
-          },
-          {
-            "name": "required",
-            "type": "boolean",
-            "required": false,
-            "description": "When `true`, indicates that the user must set the value before the owning form can be submitted.",
-            "descriptionKey": "api.generated.src_components_color_slider_types.colorsliderprops.members.required",
-            "default": null,
-            "inheritedFrom": "required",
-            "sourcePath": "headless/src/types/component.ts",
-            "referencedTypes": []
           }
         ],
         "callables": [],
@@ -461,7 +461,7 @@
       "emits": {
         "kind": "emits",
         "name": "ColorSliderEmits",
-        "type": "TypeAlias ColorSliderEmits: ColorSliderRootEmits",
+        "type": "TypeAlias ColorSliderEmits: ColorSliderCompactEmits",
         "resolvedType": "{ \"update:modelValue\": [value: string]; \"update:color\": [value: NormalizedColor]; change: [value: string]; changeEnd: [value: string] }",
         "description": "Events for the ColorSlider component.",
         "descriptionKey": "api.generated.src_components_color_slider_types.colorslideremits.emits",
@@ -582,12 +582,493 @@
         ]
       }
     },
+    "ColorSliderCompact": {
+      "props": {
+        "kind": "props",
+        "name": "ColorSliderCompactProps",
+        "type": "Interface ColorSliderCompactProps",
+        "resolvedType": "{ trackProps?: ColorSliderTrackProps; thumbProps?: ColorSliderThumbProps; modelValue?: import(\"@soybeanjs/colord\").AnyColor; defaultValue?: import(\"@soybeanjs/colord\").AnyColor; colorSpace?: ColorSpace; channel: 'alpha' | 'hue' | 'saturation' | 'lightness' | 'brightness' | 'red' | 'green' | 'blue' | 'chroma'; format?: ColorFormat; orientation?: DataOrientation; dir?: Direction; inverted?: boolean; disabled?: boolean; step?: number; name?: string; required?: boolean; asChild?: boolean; as?: AsTag | Component }",
+        "description": "Properties for the ColorSliderCompact component.",
+        "descriptionKey": "api.generated.headless_src_components_color_slider_types.colorslidercompactprops.props",
+        "sourcePath": "headless/src/components/color-slider/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "trackProps",
+            "type": "ColorSliderTrackProps",
+            "required": false,
+            "description": "Properties forwarded to the track element.",
+            "descriptionKey": "api.generated.headless_src_components_color_slider_types.colorslidercompactprops.members.trackprops",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/color-slider/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ColorSliderTrackProps",
+                "kind": "interface",
+                "type": "ColorSliderTrackProps",
+                "resolvedType": "{ asChild?: boolean; as?: AsTag | Component }",
+                "description": "Properties for the ColorSliderTrack component.",
+                "descriptionKey": "api.generated.headless_src_components_color_slider_types.colorslidertrackprops",
+                "sourcePath": "headless/src/components/color-slider/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "asChild",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+                    "descriptionKey": "api.generated.headless_src_components_color_slider_types.colorslidertrackprops.members.aschild",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "as",
+                    "type": "AsTag | Component",
+                    "required": false,
+                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+                    "descriptionKey": "api.generated.headless_src_components_color_slider_types.colorslidertrackprops.members.as",
+                    "default": "'div'",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "thumbProps",
+            "type": "ColorSliderThumbProps",
+            "required": false,
+            "description": "Properties forwarded to the thumb element.",
+            "descriptionKey": "api.generated.headless_src_components_color_slider_types.colorslidercompactprops.members.thumbprops",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/color-slider/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ColorSliderThumbProps",
+                "kind": "interface",
+                "type": "ColorSliderThumbProps",
+                "resolvedType": "{ asChild?: boolean; as?: AsTag | Component }",
+                "description": "Properties for the ColorSliderThumb component.",
+                "descriptionKey": "api.generated.headless_src_components_color_slider_types.colorsliderthumbprops",
+                "sourcePath": "headless/src/components/color-slider/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "asChild",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+                    "descriptionKey": "api.generated.headless_src_components_color_slider_types.colorsliderthumbprops.members.aschild",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "as",
+                    "type": "AsTag | Component",
+                    "required": false,
+                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+                    "descriptionKey": "api.generated.headless_src_components_color_slider_types.colorsliderthumbprops.members.as",
+                    "default": "'div'",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "modelValue",
+            "type": "import(\"@soybeanjs/colord\").AnyColor",
+            "required": false,
+            "description": "Current model value.",
+            "descriptionKey": "api.generated.headless_src_components_color_slider_types.colorslidercompactprops.members.modelvalue",
+            "default": null,
+            "inheritedFrom": "modelValue",
+            "sourcePath": "headless/src/components/color-slider/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "defaultValue",
+            "type": "import(\"@soybeanjs/colord\").AnyColor",
+            "required": false,
+            "description": "Default value.",
+            "descriptionKey": "api.generated.headless_src_components_color_slider_types.colorslidercompactprops.members.defaultvalue",
+            "default": null,
+            "inheritedFrom": "defaultValue",
+            "sourcePath": "headless/src/components/color-slider/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "colorSpace",
+            "type": "ColorSpace",
+            "required": false,
+            "description": "Color space.",
+            "descriptionKey": "api.generated.headless_src_components_color_slider_types.colorslidercompactprops.members.colorspace",
+            "default": null,
+            "inheritedFrom": "colorSpace",
+            "sourcePath": "headless/src/components/color-slider/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ColorSpace",
+                "kind": "typeAlias",
+                "type": "'hsl' | 'hsv' | 'oklch'",
+                "resolvedType": "'hsl' | 'hsv' | 'oklch'",
+                "description": "",
+                "descriptionKey": "api.generated.headless_src_shared_color.colorspace",
+                "sourcePath": "headless/src/shared/color.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "channel",
+            "type": "'alpha' | 'hue' | 'saturation' | 'lightness' | 'brightness' | 'red' | 'green' | 'blue' | 'chroma'",
+            "required": true,
+            "description": "Channel.",
+            "descriptionKey": "api.generated.headless_src_components_color_slider_types.colorslidercompactprops.members.channel",
+            "default": null,
+            "inheritedFrom": "channel",
+            "sourcePath": "headless/src/components/color-slider/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ColorChannel",
+                "kind": "typeAlias",
+                "type": "'alpha' | 'hue' | 'saturation' | 'lightness' | 'brightness' | 'red' | 'green' | 'blue' | 'chroma'",
+                "resolvedType": "'alpha' | 'hue' | 'saturation' | 'lightness' | 'brightness' | 'red' | 'green' | 'blue' | 'chroma'",
+                "description": "",
+                "descriptionKey": "api.generated.headless_src_shared_color.colorchannel",
+                "sourcePath": "headless/src/shared/color.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "format",
+            "type": "ColorFormat",
+            "required": false,
+            "description": "Format.",
+            "descriptionKey": "api.generated.headless_src_components_color_slider_types.colorslidercompactprops.members.format",
+            "default": null,
+            "inheritedFrom": "format",
+            "sourcePath": "headless/src/components/color-slider/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ColorFormat",
+                "kind": "typeAlias",
+                "type": "'hsl' | 'oklch' | 'hex' | 'rgb'",
+                "resolvedType": "'hsl' | 'oklch' | 'hex' | 'rgb'",
+                "description": "",
+                "descriptionKey": "api.generated.headless_src_shared_color.colorformat",
+                "sourcePath": "headless/src/shared/color.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "orientation",
+            "type": "DataOrientation",
+            "required": false,
+            "description": "Orientation of the component.",
+            "descriptionKey": "api.generated.headless_src_components_color_slider_types.colorslidercompactprops.members.orientation",
+            "default": null,
+            "inheritedFrom": "orientation",
+            "sourcePath": "headless/src/components/color-slider/types.ts",
+            "referencedTypes": [
+              {
+                "name": "DataOrientation",
+                "kind": "typeAlias",
+                "type": "'vertical' | 'horizontal'",
+                "resolvedType": "'vertical' | 'horizontal'",
+                "description": "",
+                "descriptionKey": "api.generated.headless_src_types_common.dataorientation",
+                "sourcePath": "headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "dir",
+            "type": "Direction",
+            "required": false,
+            "description": "Reading direction of the component.",
+            "descriptionKey": "api.generated.headless_src_components_color_slider_types.colorslidercompactprops.members.dir",
+            "default": null,
+            "inheritedFrom": "dir",
+            "sourcePath": "headless/src/components/color-slider/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Direction",
+                "kind": "typeAlias",
+                "type": "'ltr' | 'rtl'",
+                "resolvedType": "'ltr' | 'rtl'",
+                "description": "",
+                "descriptionKey": "api.generated.headless_src_types_common.direction",
+                "sourcePath": "headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "inverted",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether inverted.",
+            "descriptionKey": "api.generated.headless_src_components_color_slider_types.colorslidercompactprops.members.inverted",
+            "default": null,
+            "inheritedFrom": "inverted",
+            "sourcePath": "headless/src/components/color-slider/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "disabled",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether the component is disabled.",
+            "descriptionKey": "api.generated.headless_src_components_color_slider_types.colorslidercompactprops.members.disabled",
+            "default": null,
+            "inheritedFrom": "disabled",
+            "sourcePath": "headless/src/components/color-slider/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "step",
+            "type": "number",
+            "required": false,
+            "description": "Step.",
+            "descriptionKey": "api.generated.headless_src_components_color_slider_types.colorslidercompactprops.members.step",
+            "default": null,
+            "inheritedFrom": "step",
+            "sourcePath": "headless/src/components/color-slider/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "name",
+            "type": "string",
+            "required": false,
+            "description": "The name of the field. Submitted with its owning form as part of a name/value pair.",
+            "descriptionKey": "api.generated.headless_src_components_color_slider_types.colorslidercompactprops.members.name",
+            "default": null,
+            "inheritedFrom": "name",
+            "sourcePath": "headless/src/types/component.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "required",
+            "type": "boolean",
+            "required": false,
+            "description": "When `true`, indicates that the user must set the value before the owning form can be submitted.",
+            "descriptionKey": "api.generated.headless_src_components_color_slider_types.colorslidercompactprops.members.required",
+            "default": null,
+            "inheritedFrom": "required",
+            "sourcePath": "headless/src/types/component.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "asChild",
+            "type": "boolean",
+            "required": false,
+            "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+            "descriptionKey": "api.generated.headless_src_components_color_slider_types.colorslidercompactprops.members.aschild",
+            "default": null,
+            "inheritedFrom": "asChild",
+            "sourcePath": "headless/src/components/primitive/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "as",
+            "type": "AsTag | Component",
+            "required": false,
+            "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+            "descriptionKey": "api.generated.headless_src_components_color_slider_types.colorslidercompactprops.members.as",
+            "default": "'div'",
+            "inheritedFrom": "as",
+            "sourcePath": "headless/src/components/primitive/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Component",
+                "kind": "typeAlias",
+                "type": "Component",
+                "resolvedType": null,
+                "description": "A type used in public APIs where a component type is expected.\nThe constructor type is an artificial type returned by defineComponent().",
+                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_34_node_modules_vue_runtime_core_dist_runtime_core_d.component",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.34/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [
+                  "PropsOrInstance = any",
+                  "RawBindings = any",
+                  "D = any",
+                  "C extends ComputedOptions = ComputedOptions",
+                  "M extends MethodOptions = MethodOptions",
+                  "E extends EmitsOptions | Record<string, any[]> = {}",
+                  "S extends Record<string, any> = any"
+                ],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      },
+      "emits": {
+        "kind": "emits",
+        "name": "ColorSliderCompactEmits",
+        "type": "TypeAlias ColorSliderCompactEmits: ColorSliderRootEmits",
+        "resolvedType": "{ \"update:modelValue\": [value: string]; \"update:color\": [value: NormalizedColor]; change: [value: string]; changeEnd: [value: string] }",
+        "description": "Events for the ColorSliderCompact component.",
+        "descriptionKey": "api.generated.headless_src_components_color_slider_types.colorslidercompactemits.emits",
+        "sourcePath": "headless/src/components/color-slider/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [
+          {
+            "name": "update:modelValue",
+            "type": "[value: string]",
+            "parameters": "value: string",
+            "required": true,
+            "description": "Emitted when the model value changes.",
+            "descriptionKey": "api.generated.headless_src_components_color_slider_types.colorslidercompactemits.callables.update_modelvalue",
+            "sourcePath": "headless/src/components/color-slider/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "update:color",
+            "type": "[value: NormalizedColor]",
+            "parameters": "value: NormalizedColor",
+            "required": true,
+            "description": "Emitted when the color value changes.",
+            "descriptionKey": "api.generated.headless_src_components_color_slider_types.colorslidercompactemits.callables.update_color",
+            "sourcePath": "headless/src/components/color-slider/types.ts",
+            "referencedTypes": [
+              {
+                "name": "NormalizedColor",
+                "kind": "typeAlias",
+                "type": "import(\"@soybeanjs/colord\").RgbColor | import(\"@soybeanjs/colord\").HslColor | import(\"@soybeanjs/colord\").HsvColor | import(\"@soybeanjs/colord\").OklchColor",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": "api.generated.headless_src_shared_color.normalizedcolor",
+                "sourcePath": "headless/src/shared/color.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "change",
+            "type": "[value: string]",
+            "parameters": "value: string",
+            "required": true,
+            "description": "Emitted when change occurs.",
+            "descriptionKey": "api.generated.headless_src_components_color_slider_types.colorslidercompactemits.callables.change",
+            "sourcePath": "headless/src/components/color-slider/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "changeEnd",
+            "type": "[value: string]",
+            "parameters": "value: string",
+            "required": true,
+            "description": "Emitted when change end occurs.",
+            "descriptionKey": "api.generated.headless_src_components_color_slider_types.colorslidercompactemits.callables.changeend",
+            "sourcePath": "headless/src/components/color-slider/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "referencedTypes": [
+          {
+            "name": "ColorSliderRootEmits",
+            "kind": "typeAlias",
+            "type": "{ 'update:modelValue': [value: string]; 'update:color': [value: NormalizedColor]; change: [value: string]; changeEnd: [value: string]; }",
+            "resolvedType": "{ \"update:modelValue\": [value: string]; \"update:color\": [value: NormalizedColor]; change: [value: string]; changeEnd: [value: string] }",
+            "description": "Events for the ColorSliderRoot component.",
+            "descriptionKey": "api.generated.headless_src_components_color_slider_types.colorsliderrootemits",
+            "sourcePath": "headless/src/components/color-slider/types.ts",
+            "typeParameters": [],
+            "external": false,
+            "members": [],
+            "callables": [
+              {
+                "name": "update:modelValue",
+                "type": "[value: string]",
+                "parameters": "value: string",
+                "required": true,
+                "description": "Emitted when the model value changes.",
+                "descriptionKey": "api.generated.headless_src_components_color_slider_types.colorsliderrootemits.callables.update_modelvalue",
+                "sourcePath": "headless/src/components/color-slider/types.ts",
+                "referencedTypes": []
+              },
+              {
+                "name": "update:color",
+                "type": "[value: NormalizedColor]",
+                "parameters": "value: NormalizedColor",
+                "required": true,
+                "description": "Emitted when the color value changes.",
+                "descriptionKey": "api.generated.headless_src_components_color_slider_types.colorsliderrootemits.callables.update_color",
+                "sourcePath": "headless/src/components/color-slider/types.ts",
+                "referencedTypes": []
+              },
+              {
+                "name": "change",
+                "type": "[value: string]",
+                "parameters": "value: string",
+                "required": true,
+                "description": "Emitted when change occurs.",
+                "descriptionKey": "api.generated.headless_src_components_color_slider_types.colorsliderrootemits.callables.change",
+                "sourcePath": "headless/src/components/color-slider/types.ts",
+                "referencedTypes": []
+              },
+              {
+                "name": "changeEnd",
+                "type": "[value: string]",
+                "parameters": "value: string",
+                "required": true,
+                "description": "Emitted when change end occurs.",
+                "descriptionKey": "api.generated.headless_src_components_color_slider_types.colorsliderrootemits.callables.changeend",
+                "sourcePath": "headless/src/components/color-slider/types.ts",
+                "referencedTypes": []
+              }
+            ]
+          }
+        ]
+      }
+    },
     "ColorSliderRoot": {
       "props": {
         "kind": "props",
         "name": "ColorSliderRootProps",
         "type": "Interface ColorSliderRootProps",
-        "resolvedType": "{ modelValue?: import(\"@soybeanjs/colord\").AnyColor; defaultValue?: import(\"@soybeanjs/colord\").AnyColor; colorSpace?: ColorSpace; channel: 'alpha' | 'hue' | 'saturation' | 'lightness' | 'brightness' | 'red' | 'green' | 'blue' | 'chroma'; format?: ColorFormat; orientation?: DataOrientation; dir?: Direction; inverted?: boolean; disabled?: boolean; step?: number; asChild?: boolean; as?: AsTag | Component; name?: string; required?: boolean }",
+        "resolvedType": "{ modelValue?: import(\"@soybeanjs/colord\").AnyColor; defaultValue?: import(\"@soybeanjs/colord\").AnyColor; colorSpace?: ColorSpace; channel: 'alpha' | 'hue' | 'saturation' | 'lightness' | 'brightness' | 'red' | 'green' | 'blue' | 'chroma'; format?: ColorFormat; orientation?: DataOrientation; dir?: Direction; inverted?: boolean; disabled?: boolean; step?: number; name?: string; required?: boolean; asChild?: boolean; as?: AsTag | Component }",
         "description": "Properties for the ColorSliderRoot component.",
         "descriptionKey": "api.generated.headless_src_components_color_slider_types.colorsliderrootprops.props",
         "sourcePath": "headless/src/components/color-slider/types.ts",
@@ -774,50 +1255,6 @@
             "referencedTypes": []
           },
           {
-            "name": "asChild",
-            "type": "boolean",
-            "required": false,
-            "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
-            "descriptionKey": "api.generated.headless_src_components_color_slider_types.colorsliderrootprops.members.aschild",
-            "default": null,
-            "inheritedFrom": "PrimitiveProps.asChild",
-            "sourcePath": "headless/src/components/primitive/types.ts",
-            "referencedTypes": []
-          },
-          {
-            "name": "as",
-            "type": "AsTag | Component",
-            "required": false,
-            "description": "The element or component this component should render as. Can be overwrite by `asChild`",
-            "descriptionKey": "api.generated.headless_src_components_color_slider_types.colorsliderrootprops.members.as",
-            "default": "'div'",
-            "inheritedFrom": "PrimitiveProps.as",
-            "sourcePath": "headless/src/components/primitive/types.ts",
-            "referencedTypes": [
-              {
-                "name": "Component",
-                "kind": "typeAlias",
-                "type": "Component",
-                "resolvedType": null,
-                "description": "A type used in public APIs where a component type is expected.\nThe constructor type is an artificial type returned by defineComponent().",
-                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_33_node_modules_vue_runtime_core_dist_runtime_core_d.component",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
-                "typeParameters": [
-                  "PropsOrInstance = any",
-                  "RawBindings = any",
-                  "D = any",
-                  "C extends ComputedOptions = ComputedOptions",
-                  "M extends MethodOptions = MethodOptions",
-                  "E extends EmitsOptions | Record<string, any[]> = {}",
-                  "S extends Record<string, any> = any"
-                ],
-                "external": true,
-                "members": [],
-                "callables": []
-              }
-            ]
-          },
-          {
             "name": "name",
             "type": "string",
             "required": false,
@@ -838,6 +1275,50 @@
             "inheritedFrom": "required",
             "sourcePath": "headless/src/types/component.ts",
             "referencedTypes": []
+          },
+          {
+            "name": "asChild",
+            "type": "boolean",
+            "required": false,
+            "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+            "descriptionKey": "api.generated.headless_src_components_color_slider_types.colorsliderrootprops.members.aschild",
+            "default": null,
+            "inheritedFrom": "PrimitiveWithBaseProps.asChild",
+            "sourcePath": "headless/src/components/primitive/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "as",
+            "type": "AsTag | Component",
+            "required": false,
+            "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+            "descriptionKey": "api.generated.headless_src_components_color_slider_types.colorsliderrootprops.members.as",
+            "default": "'div'",
+            "inheritedFrom": "PrimitiveWithBaseProps.as",
+            "sourcePath": "headless/src/components/primitive/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Component",
+                "kind": "typeAlias",
+                "type": "Component",
+                "resolvedType": null,
+                "description": "A type used in public APIs where a component type is expected.\nThe constructor type is an artificial type returned by defineComponent().",
+                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_34_node_modules_vue_runtime_core_dist_runtime_core_d.component",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.34/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [
+                  "PropsOrInstance = any",
+                  "RawBindings = any",
+                  "D = any",
+                  "C extends ComputedOptions = ComputedOptions",
+                  "M extends MethodOptions = MethodOptions",
+                  "E extends EmitsOptions | Record<string, any[]> = {}",
+                  "S extends Record<string, any> = any"
+                ],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
           }
         ],
         "callables": [],
@@ -930,7 +1411,7 @@
             "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
             "descriptionKey": "api.generated.headless_src_components_color_slider_types.colorsliderthumbprops.members.aschild",
             "default": null,
-            "inheritedFrom": "PrimitiveProps.asChild",
+            "inheritedFrom": "PrimitiveWithBaseProps.asChild",
             "sourcePath": "headless/src/components/primitive/types.ts",
             "referencedTypes": []
           },
@@ -941,7 +1422,7 @@
             "description": "The element or component this component should render as. Can be overwrite by `asChild`",
             "descriptionKey": "api.generated.headless_src_components_color_slider_types.colorsliderthumbprops.members.as",
             "default": "'div'",
-            "inheritedFrom": "PrimitiveProps.as",
+            "inheritedFrom": "PrimitiveWithBaseProps.as",
             "sourcePath": "headless/src/components/primitive/types.ts",
             "referencedTypes": [
               {
@@ -950,8 +1431,8 @@
                 "type": "Component",
                 "resolvedType": null,
                 "description": "A type used in public APIs where a component type is expected.\nThe constructor type is an artificial type returned by defineComponent().",
-                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_33_node_modules_vue_runtime_core_dist_runtime_core_d.component",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_34_node_modules_vue_runtime_core_dist_runtime_core_d.component",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.34/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
                 "typeParameters": [
                   "PropsOrInstance = any",
                   "RawBindings = any",
@@ -990,7 +1471,7 @@
             "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
             "descriptionKey": "api.generated.headless_src_components_color_slider_types.colorslidertrackprops.members.aschild",
             "default": null,
-            "inheritedFrom": "PrimitiveProps.asChild",
+            "inheritedFrom": "PrimitiveWithBaseProps.asChild",
             "sourcePath": "headless/src/components/primitive/types.ts",
             "referencedTypes": []
           },
@@ -1001,7 +1482,7 @@
             "description": "The element or component this component should render as. Can be overwrite by `asChild`",
             "descriptionKey": "api.generated.headless_src_components_color_slider_types.colorslidertrackprops.members.as",
             "default": "'div'",
-            "inheritedFrom": "PrimitiveProps.as",
+            "inheritedFrom": "PrimitiveWithBaseProps.as",
             "sourcePath": "headless/src/components/primitive/types.ts",
             "referencedTypes": [
               {
@@ -1010,8 +1491,8 @@
                 "type": "Component",
                 "resolvedType": null,
                 "description": "A type used in public APIs where a component type is expected.\nThe constructor type is an artificial type returned by defineComponent().",
-                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_33_node_modules_vue_runtime_core_dist_runtime_core_d.component",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_34_node_modules_vue_runtime_core_dist_runtime_core_d.component",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.34/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
                 "typeParameters": [
                   "PropsOrInstance = any",
                   "RawBindings = any",
