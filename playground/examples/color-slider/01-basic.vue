@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue';
-import type { ColorValue } from '@soybeanjs/headless/shared';
+import type { ColorValue } from '@soybeanjs/headless/types';
 import { formatColor } from '@soybeanjs/headless/shared';
 import { SColorSlider, SColorSwatch } from '@soybeanjs/ui';
 

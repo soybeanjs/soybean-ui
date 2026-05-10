@@ -2,16 +2,17 @@
 import { computed, shallowRef, watch } from 'vue';
 import { useControllableState, useForwardElement } from '../../composables';
 import {
-  type ColorValue,
   formatColor,
   getAreaBackgroundStyle,
   getChannelRange,
   getChannelValue,
   hasVisibleChromaticity,
   setChannelValues,
-  toColorObject
+  toColorObject,
+  isFormControl,
+  transformPropsToContext
 } from '../../shared';
-import { isFormControl, transformPropsToContext } from '../../shared';
+import type { ColorValue } from '../../types';
 import { Primitive } from '../primitive';
 import { VisuallyHiddenInput } from '../visually-hidden';
 import { provideColorAreaRootContext, useColorAreaUi } from './context';

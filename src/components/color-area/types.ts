@@ -1,8 +1,6 @@
 import type {
-  ColorAreaAreaProps,
-  ColorAreaRootEmits,
-  ColorAreaRootProps,
-  ColorAreaThumbProps,
+  ColorAreaCompactEmits,
+  ColorAreaCompactProps,
   ColorAreaUi
 } from '@soybeanjs/headless/color-area';
 import type { ClassValue } from '@soybeanjs/headless/types';
@@ -11,7 +9,7 @@ import type { ThemeSize } from '@/theme';
 /**
  * Properties for the ColorArea component.
  */
-export interface ColorAreaProps extends ColorAreaRootProps {
+export interface ColorAreaProps extends ColorAreaCompactProps {
   /**
    * Additional class names applied to the root element.
    */
@@ -24,17 +22,9 @@ export interface ColorAreaProps extends ColorAreaRootProps {
    * Per-slot class overrides for the component.
    */
   ui?: Partial<ColorAreaUi>;
-  /**
-   * Properties forwarded to the area element.
-   */
-  areaProps?: ColorAreaAreaProps;
-  /**
-   * Properties forwarded to the thumb element.
-   */
-  thumbProps?: ColorAreaThumbProps;
 }
 
 /**
  * Events for the ColorArea component.
  */
-export type ColorAreaEmits = ColorAreaRootEmits;
+export type ColorAreaEmits = ColorAreaCompactEmits;

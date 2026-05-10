@@ -1,21 +1,19 @@
 <script setup lang="ts">
-import { ColorSwatch } from '../color-swatch';
-import { useColorSwatchPickerItemContext, useColorSwatchPickerUi } from './context';
+import ColorSwatchCompact from '../color-swatch/color-swatch-compact.vue';
+import { useColorSwatchPickerItemContext } from './context';
 import type { ColorSwatchPickerItemSwatchProps } from './types';
 
 defineOptions({
   name: 'ColorSwatchPickerItemSwatch'
 });
 
-defineProps<ColorSwatchPickerItemSwatchProps>();
-
-const cls = useColorSwatchPickerUi('swatch');
+const props = defineProps<ColorSwatchPickerItemSwatchProps>();
 
 const { color } = useColorSwatchPickerItemContext('ColorSwatchPickerItemSwatch');
 </script>
 
 <template>
-  <ColorSwatch :as="as" :as-child="asChild" :class="cls" :color="color" :label="label">
+  <ColorSwatchCompact v-bind="props" :color="color">
     <slot />
-  </ColorSwatch>
+  </ColorSwatchCompact>
 </template>

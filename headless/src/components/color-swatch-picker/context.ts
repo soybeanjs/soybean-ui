@@ -1,6 +1,7 @@
 import { computed } from 'vue';
 import { useContext, useUiContext } from '../../composables';
 import { provideListboxUi } from '../listbox/context';
+import { provideColorSwatchUi } from '../color-swatch/context';
 import type { ColorSwatchPickerItemContext, ColorSwatchPickerUiSlot } from './types';
 
 export const [provideColorSwatchPickerItemContext, useColorSwatchPickerItemContext] =
@@ -15,7 +16,14 @@ export const [provideColorSwatchPickerUi, useColorSwatchPickerUi] = useUiContext
       itemIndicator: ui.value.itemIndicator
     }));
 
+    const swatchUi = computed(() => ({
+      root: ui.value.swatchRoot,
+      checker: ui.value.swatchChecker,
+      fill: ui.value.swatchFill
+    }));
+
     provideListboxUi(listboxUi);
+    provideColorSwatchUi(swatchUi);
 
     return ui;
   }

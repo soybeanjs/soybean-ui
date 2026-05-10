@@ -6,7 +6,7 @@
         "kind": "props",
         "name": "ColorSwatchPickerProps",
         "type": "Interface ColorSwatchPickerProps",
-        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<ColorSwatchPickerExtendedUi>; colors?: string[]; shape?: ColorSwatchPickerShape; itemProps?: Omit<ColorSwatchPickerItemProps, 'value'>; indicatorProps?: ColorSwatchPickerItemIndicatorProps; swatchProps?: ColorSwatchPickerItemSwatchProps; asChild?: boolean; as?: AsTag | Component; orientation?: DataOrientation; dir?: Direction; disabled?: boolean; highlightOnHover?: boolean; modelValue?: string | string[]; defaultValue?: string | string[]; multiple?: boolean; clearable?: boolean; selectionBehavior?: SelectionBehavior; name?: string; required?: boolean }",
+        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<ColorSwatchPickerExtendedUi>; shape?: ColorSwatchPickerShape; colors?: string[]; itemProps?: Omit<ColorSwatchPickerItemProps, 'value'>; indicatorProps?: ColorSwatchPickerItemIndicatorProps; swatchProps?: ColorSwatchPickerItemSwatchProps; orientation?: DataOrientation; dir?: Direction; disabled?: boolean; highlightOnHover?: boolean; modelValue?: string | string[]; defaultValue?: string | string[]; multiple?: boolean; clearable?: boolean; selectionBehavior?: SelectionBehavior; name?: string; required?: boolean }",
         "description": "Properties for the ColorSwatchPicker component.",
         "descriptionKey": "api.generated.src_components_color_swatch_picker_types.colorswatchpickerprops.props",
         "sourcePath": "src/components/color-swatch-picker/types.ts",
@@ -88,17 +88,6 @@
             ]
           },
           {
-            "name": "colors",
-            "type": "string[]",
-            "required": false,
-            "description": "Colors.",
-            "descriptionKey": "api.generated.src_components_color_swatch_picker_types.colorswatchpickerprops.members.colors",
-            "default": null,
-            "inheritedFrom": null,
-            "sourcePath": "src/components/color-swatch-picker/types.ts",
-            "referencedTypes": []
-          },
-          {
             "name": "shape",
             "type": "ColorSwatchPickerShape",
             "required": false,
@@ -124,14 +113,25 @@
             ]
           },
           {
+            "name": "colors",
+            "type": "string[]",
+            "required": false,
+            "description": "Colors.",
+            "descriptionKey": "api.generated.src_components_color_swatch_picker_types.colorswatchpickerprops.members.colors",
+            "default": null,
+            "inheritedFrom": "colors",
+            "sourcePath": "headless/src/components/color-swatch-picker/types.ts",
+            "referencedTypes": []
+          },
+          {
             "name": "itemProps",
             "type": "Omit<ColorSwatchPickerItemProps, 'value'>",
             "required": false,
             "description": "Properties forwarded to the item element.",
             "descriptionKey": "api.generated.src_components_color_swatch_picker_types.colorswatchpickerprops.members.itemprops",
             "default": null,
-            "inheritedFrom": null,
-            "sourcePath": "src/components/color-swatch-picker/types.ts",
+            "inheritedFrom": "itemProps",
+            "sourcePath": "headless/src/components/color-swatch-picker/types.ts",
             "referencedTypes": [
               {
                 "name": "ColorSwatchPickerItemProps",
@@ -155,8 +155,8 @@
             "description": "Properties forwarded to the indicator element.",
             "descriptionKey": "api.generated.src_components_color_swatch_picker_types.colorswatchpickerprops.members.indicatorprops",
             "default": null,
-            "inheritedFrom": null,
-            "sourcePath": "src/components/color-swatch-picker/types.ts",
+            "inheritedFrom": "indicatorProps",
+            "sourcePath": "headless/src/components/color-swatch-picker/types.ts",
             "referencedTypes": [
               {
                 "name": "ColorSwatchPickerItemIndicatorProps",
@@ -203,8 +203,8 @@
             "description": "Properties forwarded to the swatch element.",
             "descriptionKey": "api.generated.src_components_color_swatch_picker_types.colorswatchpickerprops.members.swatchprops",
             "default": null,
-            "inheritedFrom": null,
-            "sourcePath": "src/components/color-swatch-picker/types.ts",
+            "inheritedFrom": "swatchProps",
+            "sourcePath": "headless/src/components/color-swatch-picker/types.ts",
             "referencedTypes": [
               {
                 "name": "ColorSwatchPickerItemSwatchProps",
@@ -251,50 +251,6 @@
                     "referencedTypes": []
                   }
                 ],
-                "callables": []
-              }
-            ]
-          },
-          {
-            "name": "asChild",
-            "type": "boolean",
-            "required": false,
-            "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
-            "descriptionKey": "api.generated.src_components_color_swatch_picker_types.colorswatchpickerprops.members.aschild",
-            "default": null,
-            "inheritedFrom": "asChild",
-            "sourcePath": "headless/src/components/primitive/types.ts",
-            "referencedTypes": []
-          },
-          {
-            "name": "as",
-            "type": "AsTag | Component",
-            "required": false,
-            "description": "The element or component this component should render as. Can be overwrite by `asChild`",
-            "descriptionKey": "api.generated.src_components_color_swatch_picker_types.colorswatchpickerprops.members.as",
-            "default": "'div'",
-            "inheritedFrom": "as",
-            "sourcePath": "headless/src/components/primitive/types.ts",
-            "referencedTypes": [
-              {
-                "name": "Component",
-                "kind": "typeAlias",
-                "type": "Component",
-                "resolvedType": null,
-                "description": "A type used in public APIs where a component type is expected.\nThe constructor type is an artificial type returned by defineComponent().",
-                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_33_node_modules_vue_runtime_core_dist_runtime_core_d.component",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
-                "typeParameters": [
-                  "PropsOrInstance = any",
-                  "RawBindings = any",
-                  "D = any",
-                  "C extends ComputedOptions = ComputedOptions",
-                  "M extends MethodOptions = MethodOptions",
-                  "E extends EmitsOptions | Record<string, any[]> = {}",
-                  "S extends Record<string, any> = any"
-                ],
-                "external": true,
-                "members": [],
                 "callables": []
               }
             ]
@@ -469,7 +425,7 @@
       "emits": {
         "kind": "emits",
         "name": "ColorSwatchPickerEmits",
-        "type": "TypeAlias ColorSwatchPickerEmits: ColorSwatchPickerRootEmits<boolean> & ColorSwatchPickerItemEmits",
+        "type": "TypeAlias ColorSwatchPickerEmits: ColorSwatchPickerCompactEmits<boolean>",
         "resolvedType": "{ \"update:modelValue\": [value: string | string[]]; highlight: [payload?: CollectionItemData<ListboxCollectionItemData> | undefined]; entryFocus: [event: CustomEvent<any>]; leave: [event: Event]; select: [event: SelectEvent<string>] }",
         "description": "Events for the ColorSwatchPicker component.",
         "descriptionKey": "api.generated.src_components_color_swatch_picker_types.colorswatchpickeremits.emits",
@@ -587,6 +543,586 @@
         "referencedTypes": []
       }
     },
+    "ColorSwatchPickerCompact": {
+      "props": {
+        "kind": "props",
+        "name": "ColorSwatchPickerCompactProps",
+        "type": "Interface ColorSwatchPickerCompactProps<M>",
+        "resolvedType": "{ colors?: string[]; itemProps?: Omit<ColorSwatchPickerItemProps, 'value'>; indicatorProps?: ColorSwatchPickerItemIndicatorProps; swatchProps?: ColorSwatchPickerItemSwatchProps; orientation?: DataOrientation; dir?: Direction; disabled?: boolean; highlightOnHover?: boolean; modelValue?: (M extends true ? string[] : string); defaultValue?: (M extends true ? string[] : string); multiple?: M; clearable?: boolean; selectionBehavior?: SelectionBehavior; name?: string; required?: boolean }",
+        "description": "Properties for the ColorSwatchPickerCompact component.",
+        "descriptionKey": "api.generated.headless_src_components_color_swatch_picker_types.colorswatchpickercompactprops.props",
+        "sourcePath": "headless/src/components/color-swatch-picker/types.ts",
+        "typeParameters": ["TypeParameter M"],
+        "members": [
+          {
+            "name": "colors",
+            "type": "string[]",
+            "required": false,
+            "description": "Colors.",
+            "descriptionKey": "api.generated.headless_src_components_color_swatch_picker_types.colorswatchpickercompactprops.members.colors",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/color-swatch-picker/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "itemProps",
+            "type": "Omit<ColorSwatchPickerItemProps, 'value'>",
+            "required": false,
+            "description": "Properties forwarded to the item element.",
+            "descriptionKey": "api.generated.headless_src_components_color_swatch_picker_types.colorswatchpickercompactprops.members.itemprops",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/color-swatch-picker/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ColorSwatchPickerItemProps",
+                "kind": "interface",
+                "type": "ColorSwatchPickerItemProps",
+                "resolvedType": null,
+                "description": "Properties for the ColorSwatchPickerItem component.",
+                "descriptionKey": "api.generated.headless_src_components_color_swatch_picker_types.colorswatchpickeritemprops",
+                "sourcePath": "headless/src/components/color-swatch-picker/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "indicatorProps",
+            "type": "ColorSwatchPickerItemIndicatorProps",
+            "required": false,
+            "description": "Properties forwarded to the indicator element.",
+            "descriptionKey": "api.generated.headless_src_components_color_swatch_picker_types.colorswatchpickercompactprops.members.indicatorprops",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/color-swatch-picker/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ColorSwatchPickerItemIndicatorProps",
+                "kind": "interface",
+                "type": "ColorSwatchPickerItemIndicatorProps",
+                "resolvedType": "{ asChild?: boolean; as?: AsTag | Component }",
+                "description": "Properties for the ColorSwatchPickerItemIndicator component.",
+                "descriptionKey": "api.generated.headless_src_components_color_swatch_picker_types.colorswatchpickeritemindicatorprops",
+                "sourcePath": "headless/src/components/color-swatch-picker/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "asChild",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+                    "descriptionKey": "api.generated.headless_src_components_color_swatch_picker_types.colorswatchpickeritemindicatorprops.members.aschild",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "as",
+                    "type": "AsTag | Component",
+                    "required": false,
+                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+                    "descriptionKey": "api.generated.headless_src_components_color_swatch_picker_types.colorswatchpickeritemindicatorprops.members.as",
+                    "default": "'div'",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "swatchProps",
+            "type": "ColorSwatchPickerItemSwatchProps",
+            "required": false,
+            "description": "Properties forwarded to the swatch element.",
+            "descriptionKey": "api.generated.headless_src_components_color_swatch_picker_types.colorswatchpickercompactprops.members.swatchprops",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/color-swatch-picker/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ColorSwatchPickerItemSwatchProps",
+                "kind": "interface",
+                "type": "ColorSwatchPickerItemSwatchProps",
+                "resolvedType": "{ label?: string; asChild?: boolean; as?: AsTag | Component }",
+                "description": "Properties for the ColorSwatchPickerItemSwatch component.",
+                "descriptionKey": "api.generated.headless_src_components_color_swatch_picker_types.colorswatchpickeritemswatchprops",
+                "sourcePath": "headless/src/components/color-swatch-picker/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "label",
+                    "type": "string",
+                    "required": false,
+                    "description": "Label text rendered by the component.",
+                    "descriptionKey": "api.generated.headless_src_components_color_swatch_picker_types.colorswatchpickeritemswatchprops.members.label",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/color-swatch-picker/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "asChild",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+                    "descriptionKey": "api.generated.headless_src_components_color_swatch_picker_types.colorswatchpickeritemswatchprops.members.aschild",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "as",
+                    "type": "AsTag | Component",
+                    "required": false,
+                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+                    "descriptionKey": "api.generated.headless_src_components_color_swatch_picker_types.colorswatchpickeritemswatchprops.members.as",
+                    "default": "'div'",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "orientation",
+            "type": "DataOrientation",
+            "required": false,
+            "description": "The orientation of the listbox. <br>Mainly so arrow navigation is done accordingly (left & right vs. up & down)",
+            "descriptionKey": "api.generated.headless_src_components_color_swatch_picker_types.colorswatchpickercompactprops.members.orientation",
+            "default": null,
+            "inheritedFrom": "orientation",
+            "sourcePath": "headless/src/components/listbox/types.ts",
+            "referencedTypes": [
+              {
+                "name": "DataOrientation",
+                "kind": "typeAlias",
+                "type": "'vertical' | 'horizontal'",
+                "resolvedType": "'vertical' | 'horizontal'",
+                "description": "",
+                "descriptionKey": "api.generated.headless_src_types_common.dataorientation",
+                "sourcePath": "headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "dir",
+            "type": "Direction",
+            "required": false,
+            "description": "The reading direction of the listbox when applicable. <br> If omitted, inherits globally from `ConfigProvider` or\nassumes LTR (left-to-right) reading mode.",
+            "descriptionKey": "api.generated.headless_src_components_color_swatch_picker_types.colorswatchpickercompactprops.members.dir",
+            "default": null,
+            "inheritedFrom": "dir",
+            "sourcePath": "headless/src/components/listbox/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Direction",
+                "kind": "typeAlias",
+                "type": "'ltr' | 'rtl'",
+                "resolvedType": "'ltr' | 'rtl'",
+                "description": "",
+                "descriptionKey": "api.generated.headless_src_types_common.direction",
+                "sourcePath": "headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "disabled",
+            "type": "boolean",
+            "required": false,
+            "description": "When `true`, prevents the user from interacting with listbox",
+            "descriptionKey": "api.generated.headless_src_components_color_swatch_picker_types.colorswatchpickercompactprops.members.disabled",
+            "default": null,
+            "inheritedFrom": "disabled",
+            "sourcePath": "headless/src/components/listbox/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "highlightOnHover",
+            "type": "boolean",
+            "required": false,
+            "description": "When `true`, hover over item will trigger highlight",
+            "descriptionKey": "api.generated.headless_src_components_color_swatch_picker_types.colorswatchpickercompactprops.members.highlightonhover",
+            "default": null,
+            "inheritedFrom": "highlightOnHover",
+            "sourcePath": "headless/src/components/listbox/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "modelValue",
+            "type": "(M extends true ? string[] : string)",
+            "required": false,
+            "description": "The controlled value of the selected item(s).\n\nUse this when you need to control the state of the items. Can be bound with `v-model`",
+            "descriptionKey": "api.generated.headless_src_components_color_swatch_picker_types.colorswatchpickercompactprops.members.modelvalue",
+            "default": null,
+            "inheritedFrom": "modelValue",
+            "sourcePath": "headless/src/types/common.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "defaultValue",
+            "type": "(M extends true ? string[] : string)",
+            "required": false,
+            "description": "The default value of the selected item(s).\n\nUse this when you need to set the initial state of the items.",
+            "descriptionKey": "api.generated.headless_src_components_color_swatch_picker_types.colorswatchpickercompactprops.members.defaultvalue",
+            "default": null,
+            "inheritedFrom": "defaultValue",
+            "sourcePath": "headless/src/types/common.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "multiple",
+            "type": "M",
+            "required": false,
+            "description": "Determines whether a \"single\" or \"multiple\" items can be selected at a time.\n\nThis prop will overwrite the inferred type from `modelValue` and `defaultValue`.",
+            "descriptionKey": "api.generated.headless_src_components_color_swatch_picker_types.colorswatchpickercompactprops.members.multiple",
+            "default": null,
+            "inheritedFrom": "multiple",
+            "sourcePath": "headless/src/types/common.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "clearable",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether selected item can be cleared when `multiple` is false.",
+            "descriptionKey": "api.generated.headless_src_components_color_swatch_picker_types.colorswatchpickercompactprops.members.clearable",
+            "default": null,
+            "inheritedFrom": "clearable",
+            "sourcePath": "headless/src/types/common.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "selectionBehavior",
+            "type": "SelectionBehavior",
+            "required": false,
+            "description": "How multiple selection should behave in the collection.",
+            "descriptionKey": "api.generated.headless_src_components_color_swatch_picker_types.colorswatchpickercompactprops.members.selectionbehavior",
+            "default": "'toggle'",
+            "inheritedFrom": "selectionBehavior",
+            "sourcePath": "headless/src/types/common.ts",
+            "referencedTypes": [
+              {
+                "name": "SelectionBehavior",
+                "kind": "typeAlias",
+                "type": "'toggle' | 'replace'",
+                "resolvedType": "'toggle' | 'replace'",
+                "description": "",
+                "descriptionKey": "api.generated.headless_src_types_common.selectionbehavior",
+                "sourcePath": "headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "name",
+            "type": "string",
+            "required": false,
+            "description": "The name of the field. Submitted with its owning form as part of a name/value pair.",
+            "descriptionKey": "api.generated.headless_src_components_color_swatch_picker_types.colorswatchpickercompactprops.members.name",
+            "default": null,
+            "inheritedFrom": "name",
+            "sourcePath": "headless/src/types/component.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "required",
+            "type": "boolean",
+            "required": false,
+            "description": "When `true`, indicates that the user must set the value before the owning form can be submitted.",
+            "descriptionKey": "api.generated.headless_src_components_color_swatch_picker_types.colorswatchpickercompactprops.members.required",
+            "default": null,
+            "inheritedFrom": "required",
+            "sourcePath": "headless/src/types/component.ts",
+            "referencedTypes": []
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      },
+      "emits": {
+        "kind": "emits",
+        "name": "ColorSwatchPickerCompactEmits",
+        "type": "TypeAlias ColorSwatchPickerCompactEmits<M>: ColorSwatchPickerRootEmits<M> & ColorSwatchPickerItemEmits",
+        "resolvedType": "{ \"update:modelValue\": [value: M extends true ? string[] : string]; highlight: [payload?: CollectionItemData<ListboxCollectionItemData> | undefined]; entryFocus: [event: CustomEvent<any>]; leave: [event: Event]; select: [event: SelectEvent<string>] }",
+        "description": "Events for the ColorSwatchPickerCompact component.",
+        "descriptionKey": "api.generated.headless_src_components_color_swatch_picker_types.colorswatchpickercompactemits.emits",
+        "sourcePath": "headless/src/components/color-swatch-picker/types.ts",
+        "typeParameters": ["TypeParameter M"],
+        "members": [],
+        "callables": [
+          {
+            "name": "update:modelValue",
+            "type": "[value: M extends true ? string[] : string]",
+            "parameters": "value: M extends true ? string[] : string",
+            "required": true,
+            "description": "",
+            "descriptionKey": "api.generated.headless_src_components_color_swatch_picker_types.colorswatchpickercompactemits.callables.update_modelvalue",
+            "sourcePath": "headless/src/types/common.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "highlight",
+            "type": "[payload?: CollectionItemData<ListboxCollectionItemData> | undefined]",
+            "parameters": "payload?: CollectionItemData<ListboxCollectionItemData> | undefined",
+            "required": true,
+            "description": "Event handler when highlighted element changes.",
+            "descriptionKey": "api.generated.headless_src_components_color_swatch_picker_types.colorswatchpickercompactemits.callables.highlight",
+            "sourcePath": "headless/src/components/listbox/types.ts",
+            "referencedTypes": [
+              {
+                "name": "CollectionItemData",
+                "kind": "interface",
+                "type": "CollectionItemData<ListboxCollectionItemData>",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": "api.generated.headless_src_composables_use_collection.collectionitemdata",
+                "sourcePath": "headless/src/composables/use-collection.ts",
+                "typeParameters": ["ItemData = Record<string, any>"],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "entryFocus",
+            "type": "[event: CustomEvent<any>]",
+            "parameters": "event: CustomEvent<any>",
+            "required": true,
+            "description": "Event handler called when container is being focused. Can be prevented.",
+            "descriptionKey": "api.generated.headless_src_components_color_swatch_picker_types.colorswatchpickercompactemits.callables.entryfocus",
+            "sourcePath": "headless/src/components/listbox/types.ts",
+            "referencedTypes": [
+              {
+                "name": "CustomEvent",
+                "kind": "interface",
+                "type": "CustomEvent",
+                "resolvedType": null,
+                "description": "The **`CustomEvent`** interface can be used to attach custom data to an event generated by an application.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/CustomEvent)",
+                "descriptionKey": "api.generated.node_modules_pnpm_typescript_6_0_3_node_modules_typescript_lib_lib_dom_d.customevent",
+                "sourcePath": "node_modules/.pnpm/typescript@6.0.3/node_modules/typescript/lib/lib.dom.d.ts",
+                "typeParameters": ["T = any"],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "leave",
+            "type": "[event: Event]",
+            "parameters": "event: Event",
+            "required": true,
+            "description": "Event handler called when the mouse leave the container",
+            "descriptionKey": "api.generated.headless_src_components_color_swatch_picker_types.colorswatchpickercompactemits.callables.leave",
+            "sourcePath": "headless/src/components/listbox/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Event",
+                "kind": "interface",
+                "type": "Event",
+                "resolvedType": null,
+                "description": "The **`Event`** interface represents an event which takes place on an EventTarget.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event)",
+                "descriptionKey": "api.generated.node_modules_pnpm_typescript_6_0_3_node_modules_typescript_lib_lib_dom_d.event",
+                "sourcePath": "node_modules/.pnpm/typescript@6.0.3/node_modules/typescript/lib/lib.dom.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "select",
+            "type": "[event: SelectEvent<string>]",
+            "parameters": "event: SelectEvent<string>",
+            "required": true,
+            "description": "Event handler called when the selecting item. <br> It can be prevented by calling `event.preventDefault`.",
+            "descriptionKey": "api.generated.headless_src_components_color_swatch_picker_types.colorswatchpickercompactemits.callables.select",
+            "sourcePath": "headless/src/components/listbox/types.ts",
+            "referencedTypes": [
+              {
+                "name": "SelectEvent",
+                "kind": "typeAlias",
+                "type": "CustomEvent<{ originalEvent: MouseEvent; value?: string | undefined; }>",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": "api.generated.headless_src_types_event.selectevent",
+                "sourcePath": "headless/src/types/event.ts",
+                "typeParameters": ["T"],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "referencedTypes": []
+      },
+      "slots": {
+        "kind": "slots",
+        "name": "ColorSwatchPickerCompactSlots",
+        "type": "Interface ColorSwatchPickerCompactSlots<M>",
+        "resolvedType": "{ default?: ((props: ColorSwatchPickerCompactSlotProps<M>) => any); swatch?: ((props: ColorSwatchPickerCompactColorSlotProps) => any); indicator?: ((props: ColorSwatchPickerCompactColorSlotProps) => any) }",
+        "description": "Slots for the ColorSwatchPickerCompact component.",
+        "descriptionKey": "api.generated.headless_src_components_color_swatch_picker_types.colorswatchpickercompactslots.slots",
+        "sourcePath": "headless/src/components/color-swatch-picker/types.ts",
+        "typeParameters": ["TypeParameter M"],
+        "members": [],
+        "callables": [
+          {
+            "name": "default",
+            "type": "((props: ColorSwatchPickerCompactSlotProps<M>) => any) | undefined",
+            "parameters": "((props: ColorSwatchPickerCompactSlotProps<M>) => any) | undefined",
+            "required": false,
+            "description": "Custom content rendered when colors are not provided.",
+            "descriptionKey": "api.generated.headless_src_components_color_swatch_picker_types.colorswatchpickercompactslots.callables.default",
+            "sourcePath": "headless/src/components/color-swatch-picker/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ColorSwatchPickerCompactSlotProps",
+                "kind": "interface",
+                "type": "ColorSwatchPickerCompactSlotProps<M>",
+                "resolvedType": null,
+                "description": "Slot properties for the ColorSwatchPickerCompact component.",
+                "descriptionKey": "api.generated.headless_src_components_color_swatch_picker_types.colorswatchpickercompactslotprops",
+                "sourcePath": "headless/src/components/color-swatch-picker/types.ts",
+                "typeParameters": ["M extends boolean = false"],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "swatch",
+            "type": "((props: ColorSwatchPickerCompactColorSlotProps) => any) | undefined",
+            "parameters": "((props: ColorSwatchPickerCompactColorSlotProps) => any) | undefined",
+            "required": false,
+            "description": "Custom content rendered inside each swatch.",
+            "descriptionKey": "api.generated.headless_src_components_color_swatch_picker_types.colorswatchpickercompactslots.callables.swatch",
+            "sourcePath": "headless/src/components/color-swatch-picker/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ColorSwatchPickerCompactColorSlotProps",
+                "kind": "interface",
+                "type": "ColorSwatchPickerCompactColorSlotProps",
+                "resolvedType": null,
+                "description": "Slot properties for color-specific ColorSwatchPickerCompact slots.",
+                "descriptionKey": "api.generated.headless_src_components_color_swatch_picker_types.colorswatchpickercompactcolorslotprops",
+                "sourcePath": "headless/src/components/color-swatch-picker/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "indicator",
+            "type": "((props: ColorSwatchPickerCompactColorSlotProps) => any) | undefined",
+            "parameters": "((props: ColorSwatchPickerCompactColorSlotProps) => any) | undefined",
+            "required": false,
+            "description": "Custom content rendered inside each indicator.",
+            "descriptionKey": "api.generated.headless_src_components_color_swatch_picker_types.colorswatchpickercompactslots.callables.indicator",
+            "sourcePath": "headless/src/components/color-swatch-picker/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ColorSwatchPickerCompactColorSlotProps",
+                "kind": "interface",
+                "type": "ColorSwatchPickerCompactColorSlotProps",
+                "resolvedType": null,
+                "description": "Slot properties for color-specific ColorSwatchPickerCompact slots.",
+                "descriptionKey": "api.generated.headless_src_components_color_swatch_picker_types.colorswatchpickercompactcolorslotprops",
+                "sourcePath": "headless/src/components/color-swatch-picker/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "referencedTypes": []
+      },
+      "slotProps": {
+        "kind": "slotProps",
+        "name": "ColorSwatchPickerCompactSlotProps",
+        "type": "Interface ColorSwatchPickerCompactSlotProps<M>",
+        "resolvedType": "{ modelValue: M extends true ? string[] : string }",
+        "description": "Slot properties for the ColorSwatchPickerCompact component.",
+        "descriptionKey": "api.generated.headless_src_components_color_swatch_picker_types.colorswatchpickercompactslotprops.slotprops",
+        "sourcePath": "headless/src/components/color-swatch-picker/types.ts",
+        "typeParameters": ["TypeParameter M"],
+        "members": [
+          {
+            "name": "modelValue",
+            "type": "M extends true ? string[] : string",
+            "required": true,
+            "description": "Current model value.",
+            "descriptionKey": "api.generated.headless_src_components_color_swatch_picker_types.colorswatchpickercompactslotprops.members.modelvalue",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/color-swatch-picker/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "ColorSwatchPickerCompactColor": {
+      "slotProps": {
+        "kind": "slotProps",
+        "name": "ColorSwatchPickerCompactColorSlotProps",
+        "type": "Interface ColorSwatchPickerCompactColorSlotProps",
+        "resolvedType": "{ color: string }",
+        "description": "Slot properties for color-specific ColorSwatchPickerCompact slots.",
+        "descriptionKey": "api.generated.headless_src_components_color_swatch_picker_types.colorswatchpickercompactcolorslotprops.slotprops",
+        "sourcePath": "headless/src/components/color-swatch-picker/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "color",
+            "type": "string",
+            "required": true,
+            "description": "Current swatch color.",
+            "descriptionKey": "api.generated.headless_src_components_color_swatch_picker_types.colorswatchpickercompactcolorslotprops.members.color",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/color-swatch-picker/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
     "ColorSwatchPickerItem": {
       "props": {
         "kind": "props",
@@ -647,8 +1183,8 @@
                 "type": "Component",
                 "resolvedType": null,
                 "description": "A type used in public APIs where a component type is expected.\nThe constructor type is an artificial type returned by defineComponent().",
-                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_33_node_modules_vue_runtime_core_dist_runtime_core_d.component",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_34_node_modules_vue_runtime_core_dist_runtime_core_d.component",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.34/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
                 "typeParameters": [
                   "PropsOrInstance = any",
                   "RawBindings = any",
@@ -770,8 +1306,8 @@
                 "type": "Component",
                 "resolvedType": null,
                 "description": "A type used in public APIs where a component type is expected.\nThe constructor type is an artificial type returned by defineComponent().",
-                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_33_node_modules_vue_runtime_core_dist_runtime_core_d.component",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_34_node_modules_vue_runtime_core_dist_runtime_core_d.component",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.34/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
                 "typeParameters": [
                   "PropsOrInstance = any",
                   "RawBindings = any",
@@ -821,7 +1357,7 @@
             "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
             "descriptionKey": "api.generated.headless_src_components_color_swatch_picker_types.colorswatchpickeritemswatchprops.members.aschild",
             "default": null,
-            "inheritedFrom": "PrimitiveProps.asChild",
+            "inheritedFrom": "PrimitiveWithBaseProps.asChild",
             "sourcePath": "headless/src/components/primitive/types.ts",
             "referencedTypes": []
           },
@@ -832,7 +1368,7 @@
             "description": "The element or component this component should render as. Can be overwrite by `asChild`",
             "descriptionKey": "api.generated.headless_src_components_color_swatch_picker_types.colorswatchpickeritemswatchprops.members.as",
             "default": "'div'",
-            "inheritedFrom": "PrimitiveProps.as",
+            "inheritedFrom": "PrimitiveWithBaseProps.as",
             "sourcePath": "headless/src/components/primitive/types.ts",
             "referencedTypes": [
               {
@@ -841,8 +1377,8 @@
                 "type": "Component",
                 "resolvedType": null,
                 "description": "A type used in public APIs where a component type is expected.\nThe constructor type is an artificial type returned by defineComponent().",
-                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_33_node_modules_vue_runtime_core_dist_runtime_core_d.component",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_34_node_modules_vue_runtime_core_dist_runtime_core_d.component",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.34/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
                 "typeParameters": [
                   "PropsOrInstance = any",
                   "RawBindings = any",
@@ -868,56 +1404,12 @@
         "kind": "props",
         "name": "ColorSwatchPickerRootProps",
         "type": "Interface ColorSwatchPickerRootProps<M>",
-        "resolvedType": "{ asChild?: boolean; as?: AsTag | Component; orientation?: DataOrientation; dir?: Direction; disabled?: boolean; highlightOnHover?: boolean; modelValue?: (M extends true ? string[] : string); defaultValue?: (M extends true ? string[] : string); multiple?: M; clearable?: boolean; selectionBehavior?: SelectionBehavior; name?: string; required?: boolean }",
+        "resolvedType": "{ orientation?: DataOrientation; dir?: Direction; disabled?: boolean; highlightOnHover?: boolean; modelValue?: (M extends true ? string[] : string); defaultValue?: (M extends true ? string[] : string); multiple?: M; clearable?: boolean; selectionBehavior?: SelectionBehavior; name?: string; required?: boolean }",
         "description": "Properties for the ColorSwatchPickerRoot component.",
         "descriptionKey": "api.generated.headless_src_components_color_swatch_picker_types.colorswatchpickerrootprops.props",
         "sourcePath": "headless/src/components/color-swatch-picker/types.ts",
         "typeParameters": ["TypeParameter M"],
         "members": [
-          {
-            "name": "asChild",
-            "type": "boolean",
-            "required": false,
-            "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
-            "descriptionKey": "api.generated.headless_src_components_color_swatch_picker_types.colorswatchpickerrootprops.members.aschild",
-            "default": null,
-            "inheritedFrom": "PrimitiveProps.asChild",
-            "sourcePath": "headless/src/components/primitive/types.ts",
-            "referencedTypes": []
-          },
-          {
-            "name": "as",
-            "type": "AsTag | Component",
-            "required": false,
-            "description": "The element or component this component should render as. Can be overwrite by `asChild`",
-            "descriptionKey": "api.generated.headless_src_components_color_swatch_picker_types.colorswatchpickerrootprops.members.as",
-            "default": "'div'",
-            "inheritedFrom": "PrimitiveProps.as",
-            "sourcePath": "headless/src/components/primitive/types.ts",
-            "referencedTypes": [
-              {
-                "name": "Component",
-                "kind": "typeAlias",
-                "type": "Component",
-                "resolvedType": null,
-                "description": "A type used in public APIs where a component type is expected.\nThe constructor type is an artificial type returned by defineComponent().",
-                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_33_node_modules_vue_runtime_core_dist_runtime_core_d.component",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
-                "typeParameters": [
-                  "PropsOrInstance = any",
-                  "RawBindings = any",
-                  "D = any",
-                  "C extends ComputedOptions = ComputedOptions",
-                  "M extends MethodOptions = MethodOptions",
-                  "E extends EmitsOptions | Record<string, any[]> = {}",
-                  "S extends Record<string, any> = any"
-                ],
-                "external": true,
-                "members": [],
-                "callables": []
-              }
-            ]
-          },
           {
             "name": "orientation",
             "type": "DataOrientation",

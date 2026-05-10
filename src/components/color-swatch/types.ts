@@ -1,22 +1,12 @@
-import type { ClassValue, UiClass } from '@soybeanjs/headless/types';
-import type { ColorSwatchProps as HeadlessColorSwatchProps } from '@soybeanjs/headless/color-swatch';
+import type { ClassValue } from '@soybeanjs/headless/types';
+import type { ColorSwatchCompactProps, ColorSwatchCompactSlots, ColorSwatchUi } from '@soybeanjs/headless/color-swatch';
 import type { ThemeSize } from '@/theme';
 import type { ColorSwatchShape } from './variants';
 
 /**
- * Additional UI slots for the color swatch component.
- */
-export type ColorExtraUiSlot = 'checker' | 'fill';
-
-/**
- * Extended UI class overrides for the ColorSwatch component.
- */
-export type ColorSwatchExtendedUi = UiClass<ColorExtraUiSlot>;
-
-/**
  * Properties for the ColorSwatch component.
  */
-export interface ColorSwatchProps extends HeadlessColorSwatchProps {
+export interface ColorSwatchProps extends ColorSwatchCompactProps {
   /**
    * Additional class names applied to the root element.
    */
@@ -28,11 +18,16 @@ export interface ColorSwatchProps extends HeadlessColorSwatchProps {
   /**
    * Per-slot class overrides for the component.
    */
-  ui?: Partial<ColorSwatchExtendedUi>;
+  ui?: Partial<ColorSwatchUi>;
   /**
    * Shape of the component.
    */
   shape?: ColorSwatchShape;
 }
+
+/**
+ * Slots for the ColorSwatch component.
+ */
+export type ColorSwatchSlots = ColorSwatchCompactSlots;
 
 export type { ColorSwatchShape };

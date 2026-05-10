@@ -5,9 +5,11 @@ import type {
   ColorFormat,
   ColorSpace,
   ColorValue,
-  NormalizedColor
-} from '../../shared';
-import type { FormFieldCommonProps, PropsToContext, UiClass } from '../../types';
+  NormalizedColor,
+  FormFieldCommonProps,
+  PropsToContext,
+  UiClass
+} from '../../types';
 import type { PrimitiveWithBaseProps } from '../primitive/types';
 
 /**
@@ -18,7 +20,7 @@ export type ColorAreaAxisChannel = Extract<ColorChannel, 'hue' | 'saturation' | 
 /**
  * Properties for the ColorAreaRoot component.
  */
-export interface ColorAreaRootProps extends FormFieldCommonProps, PrimitiveWithBaseProps {
+export interface ColorAreaRootProps extends FormFieldCommonProps, Omit<PrimitiveWithBaseProps, 'onChange'> {
   /**
    * Current model value.
    */
@@ -88,6 +90,25 @@ export interface ColorAreaAreaProps extends PrimitiveWithBaseProps {}
  * Properties for the ColorAreaThumb component.
  */
 export interface ColorAreaThumbProps extends PrimitiveWithBaseProps {}
+
+/**
+ * Properties for the ColorAreaCompact component.
+ */
+export interface ColorAreaCompactProps extends ColorAreaRootProps {
+  /**
+   * Properties forwarded to the area element.
+   */
+  areaProps?: ColorAreaAreaProps;
+  /**
+   * Properties forwarded to the thumb element.
+   */
+  thumbProps?: ColorAreaThumbProps;
+}
+
+/**
+ * Events for the ColorAreaCompact component.
+ */
+export type ColorAreaCompactEmits = ColorAreaRootEmits;
 
 /**
  * Context for the ColorAreaRoot component.

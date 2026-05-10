@@ -1,6 +1,15 @@
 import type { InputHTMLAttributes, ShallowRef } from 'vue';
-import type { ColorChannel, ColorFormat, ColorSpace, ColorValue, NormalizedColor } from '../../shared';
-import type { BaseProps, FormFieldCommonProps, PropsToContext, UiClass } from '../../types';
+import type {
+  BaseProps,
+  ColorChannel,
+  ColorFormat,
+  ColorSpace,
+  ColorValue,
+  NormalizedColor,
+  FormFieldCommonProps,
+  PropsToContext,
+  UiClass
+} from '../../types';
 import type { PrimitiveWithBaseProps } from '../primitive/types';
 
 /**
@@ -67,6 +76,21 @@ export type ColorFieldRootEmits = {
  * Properties for the ColorFieldInput component.
  */
 export interface ColorFieldInputProps extends BaseProps<InputHTMLAttributes> {}
+
+/**
+ * Properties for the ColorFieldCompact component.
+ */
+export interface ColorFieldCompactProps extends ColorFieldRootProps {
+  /**
+   * Properties forwarded to the input element.
+   */
+  inputProps?: ColorFieldInputProps;
+}
+
+/**
+ * Events for the ColorFieldCompact component.
+ */
+export type ColorFieldCompactEmits = ColorFieldRootEmits;
 
 /**
  * Context for the ColorFieldRoot component.

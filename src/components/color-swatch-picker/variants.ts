@@ -10,12 +10,9 @@ export const colorSwatchPickerVariants = tv({
       'hover:scale-110 data-[highlighted]:scale-105 data-[disabled]:opacity-50'
     ],
     itemIndicator: `pointer-events-none absolute inset-0 flex justify-center items-center text-muted`,
-    swatch: [
-      'relative isolate inline-flex size-full overflow-hidden rounded-[inherit] border border-input bg-background shadow-sm',
-      'data-[no-color]:bg-muted/40'
-    ],
-    checker: `absolute inset-0 bg-[linear-gradient(45deg,rgba(0,0,0,0.08)_25%,transparent_25%,transparent_75%,rgba(0,0,0,0.08)_75%),linear-gradient(45deg,rgba(0,0,0,0.08)_25%,transparent_25%,transparent_75%,rgba(0,0,0,0.08)_75%)] bg-[length:8px_8px] bg-[position:0_0,4px_4px]`,
-    fill: 'absolute inset-0 bg-[var(--soybean-color-swatch-color)]'
+    swatchRoot: '',
+    swatchChecker: '',
+    swatchFill: ''
   },
   variants: {
     size: {

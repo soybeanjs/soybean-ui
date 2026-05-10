@@ -8,10 +8,11 @@ import {
   getChannelValue,
   isValidColor,
   setChannelValue,
-  toColorObject
+  toColorObject,
+  isFormControl,
+  transformPropsToContext
 } from '../../shared';
-import type { ColorValue } from '../../shared';
-import { isFormControl, transformPropsToContext } from '../../shared';
+import type { ColorValue } from '../../types';
 import { Primitive } from '../primitive';
 import { VisuallyHiddenInput } from '../visually-hidden';
 import { provideColorFieldRootContext, useColorFieldUi } from './context';

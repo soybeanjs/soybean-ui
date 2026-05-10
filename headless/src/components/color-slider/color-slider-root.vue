@@ -2,7 +2,6 @@
 import { computed, shallowRef, watch } from 'vue';
 import { useControllableState } from '../../composables';
 import {
-  type ColorValue,
   areColorsEqual,
   formatColor,
   getChannelObjectSpace,
@@ -10,9 +9,11 @@ import {
   getChannelValue,
   hasVisibleChromaticity,
   setChannelValue,
-  toColorObject
+  toColorObject,
+  snapValueToStep,
+  transformPropsToContext
 } from '../../shared';
-import { snapValueToStep, transformPropsToContext } from '../../shared';
+import type { ColorValue } from '../../types';
 import { useDirection } from '../config-provider/context';
 import { SliderRoot } from '../slider';
 import { VisuallyHiddenInput } from '../visually-hidden';
