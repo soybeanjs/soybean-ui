@@ -1,8 +1,35 @@
 {
   "component": "input",
-  "generatedAt": "2026-05-05T02:53:12.834Z",
+  "generatedAt": "2026-05-10T18:12:18.948Z",
   "schemaVersion": 1,
   "versions": [
+    {
+      "version": "v0.19.0",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.18.0...v0.19.0",
+      "date": "2026-05-11",
+      "entries": [
+        {
+          "type": "fix",
+          "scope": "input",
+          "summary": "include clearProps in omitted properties for InputCompact",
+          "summaryKey": "changelog.generated.v0.19.0.82f86",
+          "commitHash": "82f86",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/82f86783",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "refactor",
+          "scope": "input",
+          "summary": "rename 'clearable' to 'clear' for consistency",
+          "summaryKey": "changelog.generated.v0.19.0.b1072",
+          "commitHash": "b1072",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/b10722b2",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope"
+        }
+      ]
+    },
     {
       "version": "v0.18.0",
       "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.17.0...v0.18.0",

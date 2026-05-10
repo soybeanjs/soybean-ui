@@ -1,8 +1,45 @@
 {
   "component": "checkbox",
-  "generatedAt": "2026-05-05T02:53:12.834Z",
+  "generatedAt": "2026-05-10T18:12:18.948Z",
   "schemaVersion": 1,
   "versions": [
+    {
+      "version": "v0.19.0",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.18.0...v0.19.0",
+      "date": "2026-05-11",
+      "entries": [
+        {
+          "type": "optimization",
+          "scope": "checkbox",
+          "summary": "update component structure for improved readability",
+          "summaryKey": "changelog.generated.v0.19.0.3a6a2",
+          "commitHash": "3a6a2",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/3a6a2539",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "optimization",
+          "scope": "checkbox",
+          "summary": "set default rovingFocus prop in CheckboxCardGroupCompact",
+          "summaryKey": "changelog.generated.v0.19.0.5930e",
+          "commitHash": "5930e",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/5930eb01",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "optimization",
+          "scope": "checkbox",
+          "summary": "set default rovingFocus prop in CheckboxCardGroup and CheckboxGroup",
+          "summaryKey": "changelog.generated.v0.19.0.d659e",
+          "commitHash": "d659e",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/d659ee7c",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope"
+        }
+      ]
+    },
     {
       "version": "v0.15.0",
       "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.14.0...v0.15.0",

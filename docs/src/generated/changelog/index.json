@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-05T02:53:12.834Z",
+  "generatedAt": "2026-05-10T18:12:18.948Z",
   "schemaVersion": 1,
   "components": {
     "accordion": {
@@ -61,9 +61,9 @@
     "backtop": {
       "component": "backtop",
       "file": "backtop.json",
-      "latestVersion": "v0.18.0",
-      "versionCount": 1,
-      "entryCount": 2
+      "latestVersion": "v0.19.0",
+      "versionCount": 2,
+      "entryCount": 4
     },
     "badge": {
       "component": "badge",
@@ -75,9 +75,9 @@
     "bottom-sheet": {
       "component": "bottom-sheet",
       "file": "bottom-sheet.json",
-      "latestVersion": "v0.15.4",
-      "versionCount": 1,
-      "entryCount": 1
+      "latestVersion": "v0.19.0",
+      "versionCount": 2,
+      "entryCount": 2
     },
     "breadcrumb": {
       "component": "breadcrumb",
@@ -89,9 +89,9 @@
     "button": {
       "component": "button",
       "file": "button.json",
-      "latestVersion": "v0.18.0",
-      "versionCount": 3,
-      "entryCount": 3
+      "latestVersion": "v0.19.0",
+      "versionCount": 4,
+      "entryCount": 4
     },
     "calendar": {
       "component": "calendar",
@@ -99,6 +99,13 @@
       "latestVersion": "v0.17.0",
       "versionCount": 2,
       "entryCount": 2
+    },
+    "calendar-range": {
+      "component": "calendar-range",
+      "file": "calendar-range.json",
+      "latestVersion": null,
+      "versionCount": 0,
+      "entryCount": 0
     },
     "card": {
       "component": "card",
@@ -117,9 +124,9 @@
     "checkbox": {
       "component": "checkbox",
       "file": "checkbox.json",
-      "latestVersion": "v0.15.0",
-      "versionCount": 5,
-      "entryCount": 6
+      "latestVersion": "v0.19.0",
+      "versionCount": 6,
+      "entryCount": 9
     },
     "clipboard": {
       "component": "clipboard",
@@ -152,9 +159,9 @@
     "color-picker": {
       "component": "color-picker",
       "file": "color-picker.json",
-      "latestVersion": "v0.15.1",
-      "versionCount": 3,
-      "entryCount": 3
+      "latestVersion": "v0.19.0",
+      "versionCount": 4,
+      "entryCount": 4
     },
     "color-slider": {
       "component": "color-slider",
@@ -173,9 +180,9 @@
     "color-swatch-picker": {
       "component": "color-swatch-picker",
       "file": "color-swatch-picker.json",
-      "latestVersion": null,
-      "versionCount": 0,
-      "entryCount": 0
+      "latestVersion": "v0.19.0",
+      "versionCount": 1,
+      "entryCount": 1
     },
     "combobox": {
       "component": "combobox",
@@ -278,16 +285,16 @@
     "input": {
       "component": "input",
       "file": "input.json",
-      "latestVersion": "v0.18.0",
-      "versionCount": 2,
-      "entryCount": 3
+      "latestVersion": "v0.19.0",
+      "versionCount": 3,
+      "entryCount": 5
     },
     "input-number": {
       "component": "input-number",
       "file": "input-number.json",
-      "latestVersion": null,
-      "versionCount": 0,
-      "entryCount": 0
+      "latestVersion": "v0.19.0",
+      "versionCount": 1,
+      "entryCount": 1
     },
     "input-otp": {
       "component": "input-otp",
@@ -352,20 +359,6 @@
       "versionCount": 0,
       "entryCount": 0
     },
-    "month-picker": {
-      "component": "month-picker",
-      "file": "month-picker.json",
-      "latestVersion": null,
-      "versionCount": 0,
-      "entryCount": 0
-    },
-    "month-range-picker": {
-      "component": "month-range-picker",
-      "file": "month-range-picker.json",
-      "latestVersion": null,
-      "versionCount": 0,
-      "entryCount": 0
-    },
     "navigation-menu": {
       "component": "navigation-menu",
       "file": "navigation-menu.json",
@@ -376,9 +369,9 @@
     "page-tabs": {
       "component": "page-tabs",
       "file": "page-tabs.json",
-      "latestVersion": "v0.6.5",
-      "versionCount": 7,
-      "entryCount": 7
+      "latestVersion": "v0.19.0",
+      "versionCount": 8,
+      "entryCount": 8
     },
     "pagination": {
       "component": "pagination",
@@ -387,12 +380,26 @@
       "versionCount": 4,
       "entryCount": 4
     },
+    "password": {
+      "component": "password",
+      "file": "password.json",
+      "latestVersion": null,
+      "versionCount": 0,
+      "entryCount": 0
+    },
+    "popconfirm": {
+      "component": "popconfirm",
+      "file": "popconfirm.json",
+      "latestVersion": "v0.19.0",
+      "versionCount": 1,
+      "entryCount": 1
+    },
     "popover": {
       "component": "popover",
       "file": "popover.json",
-      "latestVersion": "v0.17.0",
-      "versionCount": 5,
-      "entryCount": 6
+      "latestVersion": "v0.19.0",
+      "versionCount": 6,
+      "entryCount": 10
     },
     "popper": {
       "component": "popper",
@@ -418,20 +425,13 @@
     "progress": {
       "component": "progress",
       "file": "progress.json",
-      "latestVersion": "v0.15.3",
-      "versionCount": 4,
-      "entryCount": 7
+      "latestVersion": "v0.19.0",
+      "versionCount": 5,
+      "entryCount": 8
     },
     "radio-group": {
       "component": "radio-group",
       "file": "radio-group.json",
-      "latestVersion": null,
-      "versionCount": 0,
-      "entryCount": 0
-    },
-    "calendar-range": {
-      "component": "calendar-range",
-      "file": "calendar-range.json",
       "latestVersion": null,
       "versionCount": 0,
       "entryCount": 0
@@ -446,9 +446,9 @@
     "scroll-area": {
       "component": "scroll-area",
       "file": "scroll-area.json",
-      "latestVersion": null,
-      "versionCount": 0,
-      "entryCount": 0
+      "latestVersion": "v0.19.0",
+      "versionCount": 1,
+      "entryCount": 1
     },
     "segment": {
       "component": "segment",
@@ -467,9 +467,9 @@
     "separator": {
       "component": "separator",
       "file": "separator.json",
-      "latestVersion": null,
-      "versionCount": 0,
-      "entryCount": 0
+      "latestVersion": "v0.19.0",
+      "versionCount": 1,
+      "entryCount": 2
     },
     "skeleton": {
       "component": "skeleton",
@@ -481,9 +481,9 @@
     "slider": {
       "component": "slider",
       "file": "slider.json",
-      "latestVersion": "v0.15.0",
-      "versionCount": 2,
-      "entryCount": 2
+      "latestVersion": "v0.19.0",
+      "versionCount": 3,
+      "entryCount": 4
     },
     "slot": {
       "component": "slot",
@@ -509,9 +509,9 @@
     "switch": {
       "component": "switch",
       "file": "switch.json",
-      "latestVersion": null,
-      "versionCount": 0,
-      "entryCount": 0
+      "latestVersion": "v0.19.0",
+      "versionCount": 1,
+      "entryCount": 1
     },
     "table": {
       "component": "table",
@@ -537,16 +537,16 @@
     "tags-input": {
       "component": "tags-input",
       "file": "tags-input.json",
-      "latestVersion": null,
-      "versionCount": 0,
-      "entryCount": 0
+      "latestVersion": "v0.19.0",
+      "versionCount": 1,
+      "entryCount": 1
     },
     "textarea": {
       "component": "textarea",
       "file": "textarea.json",
-      "latestVersion": null,
-      "versionCount": 0,
-      "entryCount": 0
+      "latestVersion": "v0.19.0",
+      "versionCount": 1,
+      "entryCount": 1
     },
     "time-field": {
       "component": "time-field",
@@ -555,23 +555,9 @@
       "versionCount": 0,
       "entryCount": 0
     },
-    "time-picker": {
-      "component": "time-picker",
-      "file": "time-picker.json",
-      "latestVersion": null,
-      "versionCount": 0,
-      "entryCount": 0
-    },
     "time-range-field": {
       "component": "time-range-field",
       "file": "time-range-field.json",
-      "latestVersion": null,
-      "versionCount": 0,
-      "entryCount": 0
-    },
-    "time-range-picker": {
-      "component": "time-range-picker",
-      "file": "time-range-picker.json",
       "latestVersion": null,
       "versionCount": 0,
       "entryCount": 0
@@ -593,9 +579,9 @@
     "toggle-group": {
       "component": "toggle-group",
       "file": "toggle-group.json",
-      "latestVersion": "v0.15.0",
-      "versionCount": 2,
-      "entryCount": 2
+      "latestVersion": "v0.19.0",
+      "versionCount": 3,
+      "entryCount": 3
     },
     "toolbar": {
       "component": "toolbar",
@@ -607,9 +593,9 @@
     "tooltip": {
       "component": "tooltip",
       "file": "tooltip.json",
-      "latestVersion": "v0.14.0",
-      "versionCount": 4,
-      "entryCount": 5
+      "latestVersion": "v0.19.0",
+      "versionCount": 5,
+      "entryCount": 7
     },
     "tree": {
       "component": "tree",
@@ -621,9 +607,9 @@
     "tree-menu": {
       "component": "tree-menu",
       "file": "tree-menu.json",
-      "latestVersion": "v0.15.0",
-      "versionCount": 26,
-      "entryCount": 30
+      "latestVersion": "v0.19.0",
+      "versionCount": 27,
+      "entryCount": 31
     },
     "virtualizer": {
       "component": "virtualizer",
@@ -635,20 +621,6 @@
     "visually-hidden": {
       "component": "visually-hidden",
       "file": "visually-hidden.json",
-      "latestVersion": null,
-      "versionCount": 0,
-      "entryCount": 0
-    },
-    "year-picker": {
-      "component": "year-picker",
-      "file": "year-picker.json",
-      "latestVersion": null,
-      "versionCount": 0,
-      "entryCount": 0
-    },
-    "year-range-picker": {
-      "component": "year-range-picker",
-      "file": "year-range-picker.json",
       "latestVersion": null,
       "versionCount": 0,
       "entryCount": 0

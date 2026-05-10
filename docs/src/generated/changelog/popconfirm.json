@@ -1,5 +1,5 @@
 {
-  "component": "scroll-area",
+  "component": "popconfirm",
   "generatedAt": "2026-05-10T18:12:18.948Z",
   "schemaVersion": 1,
   "versions": [
@@ -10,11 +10,11 @@
       "entries": [
         {
           "type": "feature",
-          "scope": "scroll-area",
-          "summary": "Implement ScrollAreaCompact",
-          "summaryKey": "changelog.generated.v0.19.0.3e0e8",
-          "commitHash": "3e0e8",
-          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/3e0e871a",
+          "scope": "popconfirm",
+          "summary": "Implement PopconfirmCompact",
+          "summaryKey": "changelog.generated.v0.19.0.9550a",
+          "commitHash": "9550a",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/9550aac2",
           "authors": ["soybeanjs", "MicrosoftCopilot", "soybeanfe"],
           "source": "exact-scope"
         }

@@ -1,8 +1,55 @@
 {
   "component": "popover",
-  "generatedAt": "2026-05-05T02:53:12.834Z",
+  "generatedAt": "2026-05-10T18:12:18.948Z",
   "schemaVersion": 1,
   "versions": [
+    {
+      "version": "v0.19.0",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.18.0...v0.19.0",
+      "date": "2026-05-11",
+      "entries": [
+        {
+          "type": "feature",
+          "scope": "popover",
+          "summary": "add prioritizePosition prop for improved positioning control",
+          "summaryKey": "changelog.generated.v0.19.0.0bc99",
+          "commitHash": "0bc99",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/0bc99c3c",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "fix",
+          "scope": "popover",
+          "summary": "bind slotProps to slots in PopoverCompact template",
+          "summaryKey": "changelog.generated.v0.19.0.ba82c",
+          "commitHash": "ba82c",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/ba82c435",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "optimization",
+          "scope": "popover",
+          "summary": "simplify popover component structure and enhance close functionality",
+          "summaryKey": "changelog.generated.v0.19.0.f9d63",
+          "commitHash": "f9d63",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/f9d63e52",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "optimization",
+          "scope": "popover",
+          "summary": "simplify component structure in PopoverTrigger",
+          "summaryKey": "changelog.generated.v0.19.0.f1764",
+          "commitHash": "f1764",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/f1764117",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope"
+        }
+      ]
+    },
     {
       "version": "v0.17.0",
       "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.16.0...v0.17.0",

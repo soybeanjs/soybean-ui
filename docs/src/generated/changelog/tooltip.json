@@ -1,8 +1,35 @@
 {
   "component": "tooltip",
-  "generatedAt": "2026-05-05T02:53:12.834Z",
+  "generatedAt": "2026-05-10T18:12:18.948Z",
   "schemaVersion": 1,
   "versions": [
+    {
+      "version": "v0.19.0",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.18.0...v0.19.0",
+      "date": "2026-05-11",
+      "entries": [
+        {
+          "type": "feature",
+          "scope": "tooltip",
+          "summary": "add prioritizePosition prop for improved tooltip positioning",
+          "summaryKey": "changelog.generated.v0.19.0.85b45",
+          "commitHash": "85b45",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/85b4523b",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "feature",
+          "scope": "tooltip",
+          "summary": "Implement TooltipCompact components",
+          "summaryKey": "changelog.generated.v0.19.0.dbae3",
+          "commitHash": "dbae3",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/dbae3f8d",
+          "authors": ["soybeanjs", "MicrosoftCopilot", "soybeanfe"],
+          "source": "exact-scope"
+        }
+      ]
+    },
     {
       "version": "v0.14.0",
       "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.13.8...v0.14.0",
