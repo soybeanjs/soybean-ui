@@ -87,7 +87,7 @@ const onUpdatePlaceholder = (placeholder: DateValue) => {
     @update:placeholder="emit('update:placeholder', $event)"
   >
     <template #trailing>
-      <PopoverCompact data-soybean-popover-compact v-bind="popoverProps" :trigger-props="triggerProps" v-on="listeners">
+      <PopoverCompact v-bind="popoverProps" :trigger-props="triggerProps" v-on="listeners">
         <template #trigger>
           <Icon icon="lucide:calendar" />
         </template>

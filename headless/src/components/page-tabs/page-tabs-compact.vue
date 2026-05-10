@@ -150,7 +150,7 @@ watchEffect(() => {
       </slot>
     </PageTabsItem>
 
-    <ContextMenuCompact data-soybean-context-menu-compact
+    <ContextMenuCompact
       v-if="contextMenus.length"
       v-bind="contextMenuProps"
       :modal="false"

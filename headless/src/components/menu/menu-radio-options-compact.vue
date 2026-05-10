@@ -43,7 +43,7 @@ const ui = useMenuUi();
   <MenuRadioGroup v-bind="forwardedProps" v-on="listeners">
     <template v-for="item in items" :key="item.value">
       <MenuGroupLabel v-if="item.isGroupLabel" v-bind="groupLabelProps">
-        <MenuItemSlotCompact data-soybean-menu-item-slot-compact :icon="item.icon" :label="item.label">
+        <MenuItemSlotCompact :icon="item.icon" :label="item.label">
           <template v-for="slotName in commonSlotNames">
             <slot :name="slotName" v-bind="item" />
           </template>
@@ -57,7 +57,7 @@ const ui = useMenuUi();
         :text-value="item.textValue"
         @select="emit('select', item, $event)"
       >
-        <MenuItemSlotCompact data-soybean-menu-item-slot-compact :icon="item.icon" :label="item.label">
+        <MenuItemSlotCompact :icon="item.icon" :label="item.label">
           <template #indicator>
             <MenuItemIndicator v-bind="indicatorProps">
               <slot name="item-indicator-icon" v-bind="item">

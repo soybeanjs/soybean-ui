@@ -99,7 +99,7 @@ const contentProps = computed(() => {
         </MenubarTrigger>
         <MenuPortal v-bind="portalProps">
           <MenubarContent v-bind="contentProps">
-            <MenuOptionsCompact data-soybean-menu-options-compact v-bind="forwardedOptionsProps" :items="item.children ?? []">
+            <MenuOptionsCompact v-bind="forwardedOptionsProps" :items="item.children ?? []">
               <template v-for="slotName in slotNames" :key="slotName" #[slotName]="slotProps">
                 <slot :name="slotName" v-bind="slotProps" />
               </template>

@@ -49,7 +49,7 @@ const childActive = computed(() => activePaths.value.includes(props.item.value))
 
 <template>
   <MenuGroupLabel v-if="item.isGroupLabel" v-bind="groupLabelProps">
-    <MenuItemSlotCompact data-soybean-menu-item-slot-compact :icon="item.icon" :label="item.label">
+    <MenuItemSlotCompact :icon="item.icon" :label="item.label">
       <template v-for="slotName in commonSlotNames">
         <slot :name="slotName" :item="item" />
       </template>
@@ -73,7 +73,7 @@ const childActive = computed(() => activePaths.value.includes(props.item.value))
       :target="item.target"
       :external="item.external"
     >
-      <MenuItemSlotCompact data-soybean-menu-item-slot-compact :icon="item.icon" :label="item.label">
+      <MenuItemSlotCompact :icon="item.icon" :label="item.label">
         <template v-for="slotName in commonSlotNames">
           <slot :name="slotName" :item="item" />
         </template>
@@ -93,7 +93,7 @@ const childActive = computed(() => activePaths.value.includes(props.item.value))
     :data-active="dataActive"
     @select="emit('select', item, $event)"
   >
-    <MenuItemSlotCompact data-soybean-menu-item-slot-compact :icon="item.icon" :label="item.label">
+    <MenuItemSlotCompact :icon="item.icon" :label="item.label">
       <template v-for="slotName in commonSlotNames">
         <slot :name="slotName" :item="item" />
       </template>
@@ -109,7 +109,7 @@ const childActive = computed(() => activePaths.value.includes(props.item.value))
       :text-value="item.textValue"
       :data-child-active="childActive ? '' : undefined"
     >
-      <MenuItemSlotCompact data-soybean-menu-item-slot-compact :icon="item.icon" :label="item.label">
+      <MenuItemSlotCompact :icon="item.icon" :label="item.label">
         <template v-for="slotName in commonSlotNames">
           <slot :name="slotName" :item="item" />
         </template>
