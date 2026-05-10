@@ -13,7 +13,7 @@ const props = defineProps<ColorAreaCompactProps>();
 
 const emit = defineEmits<ColorAreaCompactEmits>();
 
-const forwardedProps = useOmitProps(props, ['areaProps', 'thumbProps', 'onChange']);
+const forwardedProps = useOmitProps(props, ['areaProps', 'thumbProps']);
 
 const listeners = useForwardListeners(emit);
 </script>

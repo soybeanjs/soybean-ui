@@ -7,7 +7,7 @@ import type {
   ListboxRootProps
 } from '../listbox/types';
 import type { UiClass } from '../../types';
-import type { PrimitiveWithBaseProps } from '../primitive/types';
+import type { ColorSwatchCompactProps } from '../color-swatch/types';
 
 /**
  * Properties for the ColorSwatchPickerRoot component.
@@ -37,12 +37,7 @@ export interface ColorSwatchPickerItemIndicatorProps extends ListboxItemIndicato
 /**
  * Properties for the ColorSwatchPickerItemSwatch component.
  */
-export interface ColorSwatchPickerItemSwatchProps extends PrimitiveWithBaseProps {
-  /**
-   * Label text rendered by the component.
-   */
-  label?: string;
-}
+export interface ColorSwatchPickerItemSwatchProps extends ColorSwatchCompactProps {}
 
 /**
  * Context for the ColorSwatchPickerItem component.
@@ -99,8 +94,8 @@ export interface ColorSwatchPickerCompactProps<M extends boolean = false> extend
 /**
  * Events for the ColorSwatchPickerCompact component.
  */
-export type ColorSwatchPickerCompactEmits<M extends boolean = false> =
-  ColorSwatchPickerRootEmits<M> & ColorSwatchPickerItemEmits;
+export type ColorSwatchPickerCompactEmits<M extends boolean = false> = ColorSwatchPickerRootEmits<M> &
+  ColorSwatchPickerItemEmits;
 
 /**
  * Slots for the ColorSwatchPickerCompact component.
@@ -123,7 +118,7 @@ export interface ColorSwatchPickerCompactSlots<M extends boolean = false> {
 /**
  * Available UI slots for the ColorSwatchPicker component.
  */
-export type ColorSwatchPickerUiSlot = 'root' | 'item' | 'itemIndicator' | 'swatch';
+export type ColorSwatchPickerUiSlot = 'root' | 'item' | 'itemIndicator' | 'swatchRoot' | 'swatchChecker' | 'swatchFill';
 
 /**
  * UI class overrides for the ColorSwatchPicker component.

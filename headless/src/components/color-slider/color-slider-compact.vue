@@ -13,7 +13,7 @@ const props = defineProps<ColorSliderCompactProps>();
 
 const emit = defineEmits<ColorSliderCompactEmits>();
 
-const forwardedProps = useOmitProps(props, ['trackProps', 'thumbProps', 'onChange']);
+const forwardedProps = useOmitProps(props, ['trackProps', 'thumbProps']);
 
 const listeners = useForwardListeners(emit);
 </script>

@@ -1,15 +1,20 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { ColorSwatch } from '@soybeanjs/headless/color-swatch';
+import { useOmitProps } from '@soybeanjs/headless/composables';
+import { ColorSwatchCompact, provideColorSwatchUi } from '@soybeanjs/headless/color-swatch';
 import { mergeSlotVariants } from '@/theme';
 import { colorSwatchVariants } from './variants';
-import type { ColorSwatchProps } from './types';
+import type { ColorSwatchProps, ColorSwatchSlots } from './types';
 
 defineOptions({
   name: 'SColorSwatch'
 });
 
 const props = defineProps<ColorSwatchProps>();
+
+defineSlots<ColorSwatchSlots>();
+
+const forwardedProps = useOmitProps(props, ['class', 'ui', 'size', 'shape']);
 
 const ui = computed(() => {
   const variants = colorSwatchVariants({
@@ -19,12 +24,12 @@ const ui = computed(() => {
 
   return mergeSlotVariants(variants, props.ui, { root: props.class });
 });
+
+provideColorSwatchUi(ui);
 </script>
 
 <template>
-  <ColorSwatch :as="as" :as-child="asChild" :class="ui.root" :color="color" :label="label">
-    <span :class="ui.checker" />
-    <span :class="ui.fill" />
-    <slot />
-  </ColorSwatch>
+  <ColorSwatchCompact v-slot="slotProps" v-bind="forwardedProps">
+    <slot v-bind="slotProps" />
+  </ColorSwatchCompact>
 </template>

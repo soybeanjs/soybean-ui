@@ -5,7 +5,7 @@ import type { VariantProps } from 'tailwind-variants';
 export const colorFieldVariants = tv({
   slots: {
     root: [
-      'group flex items-center rounded-md border border-input bg-background transition-all-150',
+      'group flex items-center min-w-0 rounded-md border border-input bg-background transition-all-150',
       'outline-none focus-within:ring-3 focus-within:ring-offset-background focus-within:ring-primary/30',
       'data-[disabled]:opacity-60 data-[readonly]:bg-muted/40'
     ],

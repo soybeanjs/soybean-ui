@@ -1,33 +1,16 @@
-import { colord, getFormat } from '@soybeanjs/colord';
-import type { AnyColor, HslColor, HsvColor, OklchColor, RgbColor } from '@soybeanjs/colord';
 import type { CSSProperties } from 'vue';
-
-export type ColorValue = AnyColor;
-
-export type ColorFormat = 'hex' | 'rgb' | 'hsl' | 'oklch';
-
-export type ColorSpace = 'hsl' | 'hsv' | 'oklch';
-
-export type ColorObjectSpace = 'rgb' | ColorSpace;
-
-export type ColorChannel =
-  | 'hue'
-  | 'saturation'
-  | 'lightness'
-  | 'brightness'
-  | 'red'
-  | 'green'
-  | 'blue'
-  | 'alpha'
-  | 'chroma';
-
-export interface ColorChannelRange {
-  min: number;
-  max: number;
-  step: number;
-}
-
-export type NormalizedColor = RgbColor | HslColor | HsvColor | OklchColor;
+import { colord, getFormat } from '@soybeanjs/colord';
+import type { HslColor, HsvColor, OklchColor, RgbColor } from '@soybeanjs/colord';
+import { clamp } from '../shared';
+import type {
+  ColorValue,
+  ColorChannel,
+  ColorChannelRange,
+  ColorFormat,
+  ColorObjectSpace,
+  ColorSpace,
+  NormalizedColor
+} from '../types';
 
 const FALLBACK_COLOR = '#000000';
 const DEFAULT_CHROMA_MAX = 0.4;
@@ -87,10 +70,6 @@ function getColorInstance(input: ColorValue | undefined, fallback: ColorValue = 
   const instance = colord(normalizedInput);
 
   return instance.isValid() ? instance : colord(fallback);
-}
-
-function clamp(value: number, min: number, max: number) {
-  return Math.min(max, Math.max(min, value));
 }
 
 function wrapHue(value: number) {

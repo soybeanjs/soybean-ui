@@ -5,18 +5,18 @@ export const colorPickerVariants = tv({
   slots: {
     popup: '',
     content: 'flex flex-col',
-    triggerButton: '',
-    triggerSwatch: 'shrink-0',
+    trigger: '',
+    triggerSwatch: '',
     triggerValue: 'min-w-0 flex-1 truncate text-left font-mono text-xs',
     segment: '',
-    area: 'w-full',
+    area: '',
     sliderSwatch: 'flex items-center',
     sliderRoot: 'flex-1',
-    swatch: 'shrink-0',
-    fields: 'flex items-center',
-    field: 'min-w-0 flex-1 truncate',
-    alphaField: 'shrink-0',
-    swatches: ''
+    swatch: '',
+    fields: 'grid grid-cols-[2fr_1fr]',
+    field: '',
+    alphaField: '',
+    swatchPicker: ''
   },
   variants: {
     size: {

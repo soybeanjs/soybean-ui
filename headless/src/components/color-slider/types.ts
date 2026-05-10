@@ -5,15 +5,19 @@ import type {
   ColorFormat,
   ColorSpace,
   ColorValue,
-  NormalizedColor
-} from '../../shared';
-import type { DataOrientation, Direction, FormFieldCommonProps, PropsToContext, UiClass } from '../../types';
+  NormalizedColor,
+  DataOrientation,
+  Direction,
+  FormFieldCommonProps,
+  PropsToContext,
+  UiClass
+} from '../../types';
 import type { PrimitiveWithBaseProps } from '../primitive/types';
 
 /**
  * Properties for the ColorSliderRoot component.
  */
-export interface ColorSliderRootProps extends FormFieldCommonProps, PrimitiveWithBaseProps {
+export interface ColorSliderRootProps extends FormFieldCommonProps, Omit<PrimitiveWithBaseProps, 'onChange'> {
   /**
    * Current model value.
    */

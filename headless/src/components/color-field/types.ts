@@ -1,6 +1,15 @@
 import type { InputHTMLAttributes, ShallowRef } from 'vue';
-import type { ColorChannel, ColorFormat, ColorSpace, ColorValue, NormalizedColor } from '../../shared';
-import type { BaseProps, FormFieldCommonProps, PropsToContext, UiClass } from '../../types';
+import type {
+  BaseProps,
+  ColorChannel,
+  ColorFormat,
+  ColorSpace,
+  ColorValue,
+  NormalizedColor,
+  FormFieldCommonProps,
+  PropsToContext,
+  UiClass
+} from '../../types';
 import type { PrimitiveWithBaseProps } from '../primitive/types';
 
 /**

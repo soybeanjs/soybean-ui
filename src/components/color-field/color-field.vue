@@ -16,7 +16,7 @@ const emit = defineEmits<ColorFieldEmits>();
 
 const listeners = useForwardListeners(emit);
 
-const forwardedProps = useOmitProps(props, ['class', 'size', 'ui', 'inputProps']);
+const forwardedProps = useOmitProps(props, ['class', 'size', 'ui']);
 
 const ui = computed(() => {
   const variants = colorFieldVariants({ size: props.size });

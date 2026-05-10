@@ -126,15 +126,20 @@ import {
   CollapsibleRoot,
   CollapsibleTrigger,
   ColorAreaArea,
+  ColorAreaCompact,
   ColorAreaRoot,
   ColorAreaThumb,
+  ColorFieldCompact,
   ColorFieldInput,
   ColorFieldRoot,
+  ColorPickerCompact,
   ColorPickerRoot,
+  ColorSliderCompact,
   ColorSliderRoot,
   ColorSliderThumb,
   ColorSliderTrack,
   ColorSwatch,
+  ColorSwatchPickerCompact,
   ColorSwatchPickerItem,
   ColorSwatchPickerItemIndicator,
   ColorSwatchPickerItemSwatch,
@@ -849,30 +854,42 @@ export const Collapsible = {
 };
 
 export const ColorArea = {
+  Compact: ColorAreaCompact,
   Root: ColorAreaRoot,
   Area: ColorAreaArea,
   Thumb: ColorAreaThumb
 } as {
+  Compact: typeof ColorAreaCompact;
   Root: typeof ColorAreaRoot;
   Area: typeof ColorAreaArea;
   Thumb: typeof ColorAreaThumb;
 };
 
 export const ColorField = {
+  Compact: ColorFieldCompact,
   Root: ColorFieldRoot,
   Input: ColorFieldInput
 } as {
+  Compact: typeof ColorFieldCompact;
   Root: typeof ColorFieldRoot;
   Input: typeof ColorFieldInput;
 };
 
-export { ColorPickerRoot };
+export const ColorPicker = {
+  Compact: ColorPickerCompact,
+  Root: ColorPickerRoot
+} as {
+  Compact: typeof ColorPickerCompact;
+  Root: typeof ColorPickerRoot;
+};
 
 export const ColorSlider = {
+  Compact: ColorSliderCompact,
   Root: ColorSliderRoot,
   Track: ColorSliderTrack,
   Thumb: ColorSliderThumb
 } as {
+  Compact: typeof ColorSliderCompact;
   Root: typeof ColorSliderRoot;
   Track: typeof ColorSliderTrack;
   Thumb: typeof ColorSliderThumb;
@@ -881,11 +898,13 @@ export const ColorSlider = {
 export { ColorSwatch };
 
 export const ColorSwatchPicker = {
+  Compact: ColorSwatchPickerCompact,
   Root: ColorSwatchPickerRoot,
   Item: ColorSwatchPickerItem,
   ItemIndicator: ColorSwatchPickerItemIndicator,
   ItemSwatch: ColorSwatchPickerItemSwatch
 } as {
+  Compact: typeof ColorSwatchPickerCompact;
   Root: typeof ColorSwatchPickerRoot;
   Item: typeof ColorSwatchPickerItem;
   ItemIndicator: typeof ColorSwatchPickerItemIndicator;

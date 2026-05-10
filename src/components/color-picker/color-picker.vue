@@ -1,238 +1,110 @@
 <script setup lang="ts">
-import { computed, shallowRef, watch } from 'vue';
-import { useControllableState, usePickProps } from '@soybeanjs/headless/composables';
-import { areColorsEqual, formatColor, toColorObject } from '@soybeanjs/headless/shared';
-import type { ColorFormat, ColorSpace, ColorValue } from '@soybeanjs/headless/shared';
-import { mergeSlotVariants, miniSizeMap } from '@/theme';
-import SButton from '../button/button.vue';
-import SColorArea from '../color-area/color-area.vue';
-import SColorField from '../color-field/color-field.vue';
-import SColorSlider from '../color-slider/color-slider.vue';
-import SColorSwatchPicker from '../color-swatch-picker/color-swatch-picker.vue';
-import SColorSwatch from '../color-swatch/color-swatch.vue';
-import SPopover from '../popover/popover.vue';
-import SSegment from '../segment/segment.vue';
-import { COLOR_PICKER_FORMATS, DEFAULT_COLOR_PICKER_SWATCHES, resolveColorPickerFormat } from './shared';
+import { computed } from 'vue';
+import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
+import { ColorPickerCompact, provideColorPickerUi } from '@soybeanjs/headless/color-picker';
+import { provideColorAreaUi } from '@soybeanjs/headless/color-area';
+import { provideColorFieldUi } from '@soybeanjs/headless/color-field';
+import { provideColorSwatchUi } from '@soybeanjs/headless/color-swatch';
+import { provideColorSwatchPickerUi } from '@soybeanjs/headless/color-swatch-picker';
+import { provideColorSliderUi } from '@soybeanjs/headless/color-slider';
+import { providePopoverUi } from '@soybeanjs/headless/popover';
+import { provideTabsUi } from '@soybeanjs/headless/tabs';
+import { mergeBaseVariants, mergeSlotVariants, miniSizeMap } from '@/theme';
+import { buttonIconVariants, buttonVariants } from '../button/variants';
+import { popoverVariants } from '../popover/variants';
+import { colorAreaVariants } from '../color-area/variants';
+import { colorFieldVariants } from '../color-field/variants';
+import { colorSwatchVariants } from '../color-swatch/variants';
+import { colorSwatchPickerVariants } from '../color-swatch-picker/variants';
+import { sliderVariants } from '../slider/variants';
+import { tabsVariants } from '../tabs/variants';
 import { colorPickerVariants } from './variants';
-import type { ColorPickerEmits, ColorPickerProps } from './types';
+import type { ColorPickerProps, ColorPickerEmits } from './types';
 
 defineOptions({
   name: 'SColorPicker'
 });
 
 const props = withDefaults(defineProps<ColorPickerProps>(), {
-  modelValue: undefined,
-  defaultValue: '#7f007f',
-  format: undefined,
-  defaultFormat: undefined,
   open: undefined,
-  defaultOpen: false,
-  modal: false,
-  placement: 'bottom',
   showArrow: true,
-  disabled: false,
   showAlpha: true,
   showFields: true,
-  showSwatches: true,
-  colorSpace: 'hsl',
-  swatches: () => DEFAULT_COLOR_PICKER_SWATCHES
+  showSwatches: true
 });
 
 const emit = defineEmits<ColorPickerEmits>();
 
-const formatValue = useControllableState(
-  () => props.format,
-  value => {
-    emit('update:format', value);
-  },
-  resolveColorPickerFormat(props.defaultFormat, props.modelValue ?? props.defaultValue)
-);
+const forwardedProps = useOmitProps(props, ['class', 'size', 'ui']);
 
-const currentColor = shallowRef<ColorValue>(props.modelValue ?? props.defaultValue);
-const lastEmittedFormattedValue = shallowRef<string>();
-
-const ui = computed(() => {
-  const variants = colorPickerVariants({ size: props.size });
-
-  return mergeSlotVariants(variants, props.ui, { popup: props.class });
-});
+const listeners = useForwardListeners(emit);
 
 const miniSize = computed(() => miniSizeMap[props.size ?? 'md']);
 
-const hexValue = computed(() => formatColor(currentColor.value, 'hex'));
-const displayFormat = computed(() => resolveColorPickerFormat(formatValue.value, currentColor.value));
-const displayValue = computed(() => formatColor(currentColor.value, displayFormat.value));
-const displayFormatLabel = computed(() => displayFormat.value.toUpperCase());
-const formattedFieldProps = computed(() => (displayFormat.value === 'hex' ? props.hexFieldProps : props.fieldProps));
-const alphaFieldProps = computed(() => props.alphaFieldProps ?? props.fieldProps);
-const formatItems = computed(() => COLOR_PICKER_FORMATS.map(item => ({ value: item, label: item.toUpperCase() })));
-const areaXChannel = computed(() => (props.colorSpace === 'oklch' ? 'chroma' : 'saturation'));
-const areaYChannel = computed(() => (props.colorSpace === 'hsv' ? 'brightness' : 'lightness'));
+const ui = computed(() => {
+  const baseVariants = colorPickerVariants({ size: props.size });
 
-const popoverProps = usePickProps(props, [
-  'open',
-  'defaultOpen',
-  'modal',
-  'placement',
-  'showArrow',
-  'positionerProps',
-  'popupProps',
-  'triggerProps',
-  'closeProps',
-  'portalProps',
-  'arrowProps'
-]);
+  const variants = mergeBaseVariants(baseVariants, {
+    trigger: buttonVariants({
+      size: props.size,
+      variant: 'pure'
+    })
+  });
 
-watch(
-  () => props.modelValue,
-  value => {
-    if (value == null) {
-      return;
-    }
+  return mergeSlotVariants(variants, props.ui, { trigger: props.class });
+});
 
-    if (typeof value === 'string' && value === lastEmittedFormattedValue.value) {
-      return;
-    }
+const popoverUi = computed(() => {
+  const baseVariants = popoverVariants({ size: props.size });
+  const variants = mergeBaseVariants(baseVariants, {
+    close: buttonIconVariants({ size: miniSize.value })
+  });
 
-    if (areColorsEqual(value, currentColor.value)) {
-      return;
-    }
+  return mergeSlotVariants(variants, props.ui);
+});
 
-    currentColor.value = value;
-  },
-  { immediate: true }
-);
+const colorAreaUi = computed(() => {
+  const variants = colorAreaVariants({ size: props.size });
+  return mergeSlotVariants(variants);
+});
+const colorFieldUi = computed(() => {
+  const variants = colorFieldVariants({ size: props.size });
+  return mergeSlotVariants(variants);
+});
+const colorSwatchUi = computed(() => {
+  const variants = colorSwatchVariants({ size: props.size, shape: 'square' });
+  return mergeSlotVariants(variants);
+});
+const colorSwatchPickerUi = computed(() => {
+  const variants = colorSwatchPickerVariants({ size: props.size, shape: 'square' });
+  return mergeSlotVariants(variants);
+});
+const colorSliderUi = computed(() => {
+  const variants = sliderVariants({ size: props.size });
+  return mergeSlotVariants(variants);
+});
+const segmentUi = computed(() => {
+  const variants = tabsVariants({
+    size: props.size,
+    orientation: 'horizontal',
+    shape: 'square',
+    fill: 'auto',
+    enableIndicator: true
+  });
 
-function getNormalizedColor(nextColor: ColorValue) {
-  const colorSpace: ColorSpace = props.colorSpace;
+  return mergeSlotVariants(variants);
+});
 
-  return toColorObject(nextColor, colorSpace);
-}
-
-function syncColor(nextColor: ColorValue) {
-  const formatted = formatColor(nextColor, displayFormat.value);
-
-  currentColor.value = nextColor;
-  lastEmittedFormattedValue.value = formatted;
-  emit('update:modelValue', formatted);
-  emit('update:color', getNormalizedColor(nextColor));
-  emit('change', formatted);
-}
-
-function handleFormatChange(nextFormat: ColorFormat) {
-  if (displayFormat.value === nextFormat) {
-    return;
-  }
-
-  formatValue.value = nextFormat;
-}
-
-function handleDisplayValueChange(value: string) {
-  syncColor(value);
-}
-
-function handleSwatchValueChange(value: string | string[]) {
-  if (typeof value === 'string') {
-    syncColor(value);
-  }
-}
+provideColorPickerUi(ui);
+providePopoverUi(popoverUi);
+provideColorAreaUi(colorAreaUi);
+provideColorFieldUi(colorFieldUi);
+provideColorSwatchPickerUi(colorSwatchPickerUi);
+provideColorSliderUi(colorSliderUi);
+provideColorSwatchUi(colorSwatchUi);
+provideTabsUi(segmentUi);
 </script>
 
 <template>
-  <SPopover v-bind="popoverProps" :class="ui.popup" :size="size" @update:open="emit('update:open', $event)">
-    <template #trigger>
-      <slot name="trigger" :color="currentColor" :hex="hexValue" :value="displayValue" :format="displayFormat">
-        <SButton v-bind="triggerButtonProps" :size="size" :disabled="disabled" color="accent" variant="pure">
-          <SColorSwatch
-            v-bind="swatchProps"
-            :class="ui.triggerSwatch"
-            :color="hexValue"
-            :size="miniSize"
-            shape="circle"
-          />
-          <span :class="ui.triggerValue">{{ displayValue }}</span>
-        </SButton>
-      </slot>
-    </template>
-
-    <div :class="ui.content">
-      <SSegment
-        :class="ui.segment"
-        :model-value="displayFormat"
-        :items="formatItems"
-        :size="size"
-        fill="full"
-        :disabled="disabled"
-        @update:model-value="handleFormatChange"
-      />
-      <SColorArea
-        v-bind="areaProps"
-        :class="ui.area"
-        :model-value="currentColor"
-        :color-space="colorSpace"
-        :x-channel="areaXChannel"
-        :y-channel="areaYChannel"
-        :disabled="disabled"
-        @update:color="syncColor"
-      />
-      <div :class="ui.sliderSwatch">
-        <div :class="ui.sliderRoot">
-          <SColorSlider
-            v-bind="hueSliderProps"
-            :size="size"
-            :model-value="currentColor"
-            channel="hue"
-            :color-space="colorSpace"
-            :disabled="disabled"
-            @update:color="syncColor"
-          />
-          <SColorSlider
-            v-if="showAlpha"
-            v-bind="alphaSliderProps"
-            :size="size"
-            :model-value="currentColor"
-            channel="alpha"
-            :color-space="colorSpace"
-            :disabled="disabled"
-            @update:color="syncColor"
-          />
-        </div>
-        <SColorSwatch v-bind="swatchProps" :size="size" :color="hexValue" :class="ui.swatch" />
-      </div>
-      <div v-if="showFields" :class="ui.fields">
-        <SColorField
-          v-bind="formattedFieldProps"
-          :size="size"
-          :class="ui.field"
-          :model-value="hexValue"
-          :format="displayFormat"
-          :placeholder="displayFormatLabel"
-          :disabled="disabled"
-          @update:model-value="handleDisplayValueChange"
-        />
-        <SColorField
-          v-if="showAlpha"
-          v-bind="alphaFieldProps"
-          :size="size"
-          :class="ui.alphaField"
-          :model-value="currentColor"
-          channel="alpha"
-          :color-space="colorSpace"
-          :disabled="disabled"
-          @update:color="syncColor"
-        />
-      </div>
-
-      <SColorSwatchPicker
-        v-if="showSwatches && swatches.length"
-        v-bind="swatchPickerProps"
-        :size="size"
-        :class="ui.swatches"
-        :colors="swatches"
-        :model-value="hexValue"
-        :disabled="disabled"
-        @update:model-value="handleSwatchValueChange"
-      />
-    </div>
-  </SPopover>
+  <ColorPickerCompact v-bind="forwardedProps" v-on="listeners" />
 </template>

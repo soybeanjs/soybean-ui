@@ -2,16 +2,18 @@
 import { computed } from 'vue';
 import { formatColor, getColorContrast, getColorLabel, toColorObject } from '../../shared';
 import { Primitive } from '../primitive';
-import type { ColorSwatchProps } from './types';
+import { useColorSwatchUi } from './context';
+import type { ColorSwatchRootProps, ColorSwatchRootSlots } from './types';
 
 defineOptions({
-  name: 'ColorSwatch'
+  name: 'ColorSwatchRoot'
 });
 
-const props = withDefaults(defineProps<ColorSwatchProps>(), {
-  as: 'div',
-  color: ''
-});
+const props = defineProps<ColorSwatchRootProps>();
+
+defineSlots<ColorSwatchRootSlots>();
+
+const cls = useColorSwatchUi('root');
 
 const colorString = computed(() => (props.color ? formatColor(props.color, 'rgb') : 'transparent'));
 const colorValue = computed(() => toColorObject(props.color, 'rgb'));
@@ -23,11 +25,12 @@ const colorContrast = computed(() => getColorContrast(props.color));
 
 <template>
   <Primitive
+    :as="as"
+    :as-child="asChild"
+    :class="cls"
     role="img"
     :aria-label="label"
     aria-roledescription="color swatch"
-    :as="as"
-    :as-child="asChild"
     :data-color-contrast="colorContrast"
     :data-no-color="isNoColor ? '' : undefined"
     :style="{
