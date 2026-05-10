@@ -25,7 +25,7 @@ const isPresent = props.forceMount ? shallowRef(true) : usePresence(popupElement
 </script>
 
 <template>
-  <HoverCardPositionerImpl v-if="isPresent" v-bind="forwardedProps" v-on="listeners">
+  <HoverCardPositionerImpl v-if="isPresent" data-soybean-hover-card-positioner v-bind="forwardedProps" v-on="listeners">
     <slot />
   </HoverCardPositionerImpl>
 </template>

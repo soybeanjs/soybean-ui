@@ -29,7 +29,7 @@ const formattedValue = computed(() => {
 </script>
 
 <template>
-  <kbd :data-group="Array.isArray(value) ? '' : undefined">
+  <kbd data-soybean-kbd :data-group="Array.isArray(value) ? '' : undefined">
     <slot>{{ formattedValue }}</slot>
   </kbd>
 </template>

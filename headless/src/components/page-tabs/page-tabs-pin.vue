@@ -23,9 +23,9 @@ const ariaLabel = computed(() => (attrs['aria-label'] as string) ?? (pinned.valu
   <Button
     v-if="pinned"
     v-bind="props"
+    data-soybean-page-tabs-pin
     :aria-label="ariaLabel"
     :class="cls"
-    data-slot="pin"
     tabindex="-1"
     @click.stop="onPin"
   >

@@ -23,7 +23,7 @@ const forwardedProps = useOmitProps(props, []);
 </script>
 
 <template>
-  <Primitive v-bind="forwardedProps" :as="as" :as-child="asChild" :class="cls">
+  <Primitive v-bind="forwardedProps" :as="as" :as-child="asChild" data-soybean-stepper-indicator :class="cls">
     <slot :step="step">{{ interpolate(messages.stepper.step, { step: String(step) }) }}</slot>
   </Primitive>
 </template>

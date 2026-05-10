@@ -24,7 +24,7 @@ const onArrowNavigation = (event: KeyboardEvent) => {
   const nextKey = dir.value === 'rtl' ? 'ArrowLeft' : 'ArrowRight';
 
   if (event.key !== nextKey) return;
-  if (target.hasAttribute('data-soybean-menubar-subtrigger')) return;
+  if (target.hasAttribute('data-soybean-menubar-sub-trigger')) return;
 
   const candidateValues = getOrderedItems().map(item => item.data.value);
 
@@ -41,7 +41,7 @@ const onArrowNavigation = (event: KeyboardEvent) => {
 </script>
 
 <template>
-  <MenuSubContent v-bind="props" data-slot="sub-content" v-on="listeners" @keydown="onArrowNavigation">
+  <MenuSubContent v-bind="props" data-soybean-menubar-sub-content v-on="listeners" @keydown="onArrowNavigation">
     <slot />
   </MenuSubContent>
 </template>

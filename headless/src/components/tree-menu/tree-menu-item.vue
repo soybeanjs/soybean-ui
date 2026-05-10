@@ -39,10 +39,10 @@ provideTreeMenuItemContext({
   <Primitive
     :as="as"
     :as-child="asChild"
+    data-soybean-tree-menu-item
     :class="cls"
     :data-disabled="disabled ? '' : undefined"
     :data-active="isActive"
-    data-slot="item"
   >
     <slot />
   </Primitive>

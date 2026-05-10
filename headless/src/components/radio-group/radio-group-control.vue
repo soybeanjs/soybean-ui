@@ -99,6 +99,7 @@ onBeforeMount(() => {
     <Button
       ref="controlElement"
       v-bind="props"
+      data-soybean-radio-group-control
       :class="cls"
       role="radio"
       :disabled="disabled"

@@ -12,7 +12,7 @@ const cls = useSeparatorUi('label');
 </script>
 
 <template>
-  <span :class="cls" data-slot="label">
+  <span data-soybean-separator-label :class="cls">
     <slot />
   </span>
 </template>

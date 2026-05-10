@@ -14,7 +14,7 @@ const cls = useListboxUi('group');
 </script>
 
 <template>
-  <div :aria-labelledby="id" role="group" :class="cls">
+  <div data-soybean-listbox-group :aria-labelledby="id" role="group" :class="cls">
     <slot />
   </div>
 </template>

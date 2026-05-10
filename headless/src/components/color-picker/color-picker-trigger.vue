@@ -27,7 +27,13 @@ const isDisabled = computed(() => disabled.value || props.disabled);
 </script>
 
 <template>
-  <Button v-bind="props" :ref="setTriggerElement" :class="ui.trigger" :disabled="isDisabled">
+  <Button
+    v-bind="props"
+    :ref="setTriggerElement"
+    data-soybean-color-picker-trigger
+    :class="ui.trigger"
+    :disabled="isDisabled"
+  >
     <slot :color="color" :hex-value="hexValue" :formatted-value="formattedValue" :display-format="displayFormat">
       <ColorSwatchCompact :color="hexValue" :class="ui.triggerSwatch" />
       <span :class="ui.triggerValue">{{ formattedValue }}</span>

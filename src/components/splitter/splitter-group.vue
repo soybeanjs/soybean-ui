@@ -24,7 +24,7 @@ provideSplitterUi(ui);
 </script>
 
 <template>
-  <SplitterGroup data-slot="splitter-group" v-bind="forwardedProps" v-on="listeners">
+  <SplitterGroup v-bind="forwardedProps" v-on="listeners">
     <slot />
   </SplitterGroup>
 </template>

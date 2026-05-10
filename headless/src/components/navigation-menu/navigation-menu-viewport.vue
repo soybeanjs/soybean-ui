@@ -119,6 +119,7 @@ useResizeObserver([() => globalThis?.document?.body, rootElement], () => {
   <div
     v-if="isPresent"
     :ref="setViewportElement"
+    data-soybean-navigation-menu-viewport
     :class="cls"
     :data-state="dataState"
     :hidden="!isPresent"

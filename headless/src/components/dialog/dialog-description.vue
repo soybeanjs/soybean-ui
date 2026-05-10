@@ -16,7 +16,7 @@ initDescriptionId();
 </script>
 
 <template>
-  <p :id="descriptionId" :class="cls">
+  <p :id="descriptionId" data-soybean-dialog-description :class="cls">
     <slot />
   </p>
 </template>

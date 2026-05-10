@@ -12,7 +12,7 @@ const cls = useCardUi('header');
 </script>
 
 <template>
-  <div :class="cls">
+  <div data-soybean-card-header :class="cls">
     <slot />
   </div>
 </template>

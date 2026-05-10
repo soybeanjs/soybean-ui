@@ -23,12 +23,12 @@ const readonlyAttr = computed(() => (readonly.value ? true : undefined));
   <Primitive
     :as="as"
     :as-child="asChild"
+    data-soybean-calendar-range-grid
+    :class="cls"
     :aria-disabled="disabledAttr"
     :aria-readonly="readonlyAttr"
-    :class="cls"
     :data-disabled="disabledAttr ? '' : undefined"
     :data-readonly="readonlyAttr ? '' : undefined"
-    data-slot="grid"
     role="application"
     tabindex="-1"
   >

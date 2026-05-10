@@ -43,6 +43,7 @@ const ariaValueText = computed(
     :ref="setThumbElementRef"
     :as="as"
     :as-child="asChild"
+    data-soybean-color-area-thumb
     :class="cls"
     role="slider"
     :tabindex="disabled ? undefined : 0"

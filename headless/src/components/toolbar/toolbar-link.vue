@@ -34,7 +34,7 @@ const onKeyDown = (event: KeyboardEvent) => {
 
 <template>
   <RovingFocusItem as-child :focusable="focusable">
-    <Link v-bind="forwardedProps" :class="mergedClass" @keydown="onKeyDown">
+    <Link v-bind="forwardedProps" data-soybean-toolbar-link :class="mergedClass" @keydown="onKeyDown">
       <slot />
     </Link>
   </RovingFocusItem>

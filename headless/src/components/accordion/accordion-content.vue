@@ -23,6 +23,7 @@ const style: CSSProperties = {
 
 <template>
   <CollapsibleContent
+    data-soybean-accordion-content
     :as="as"
     :as-child="asChild"
     :force-mount="forceMount"
@@ -31,7 +32,6 @@ const style: CSSProperties = {
     :data-disabled="dataDisabled"
     :data-orientation="orientation"
     :data-state="dataState"
-    data-slot="content"
     :style="style"
   >
     <slot />

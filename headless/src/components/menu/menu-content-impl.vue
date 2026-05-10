@@ -204,7 +204,7 @@ watchEffect(() => {
 </script>
 
 <template>
-  <PopperPositioner v-bind="forwardedProps" :ref="setPositionerElement" :class="cls">
+  <PopperPositioner v-bind="forwardedProps" :ref="setPositionerElement" data-soybean-menu-content-impl :class="cls">
     <RovingFocusGroup
       ref="rovingFocusGroupRef"
       v-model:current-tab-stop-id="currentItemId"

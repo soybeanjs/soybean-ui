@@ -30,7 +30,7 @@ const handleModelValueChange = (value: AcceptableValue) => {
 </script>
 
 <template>
-  <TabsRoot v-bind="forwardedProps" @update:model-value="handleModelValueChange">
+  <TabsRoot v-bind="forwardedProps" data-soybean-segment @update:model-value="handleModelValueChange">
     <TabsList v-bind="listProps">
       <TabsTrigger
         v-for="item in items"

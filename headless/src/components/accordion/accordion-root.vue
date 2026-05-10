@@ -40,7 +40,7 @@ provideAccordionRootContext({
 </script>
 
 <template>
-  <div ref="rootElement" :class="cls" :dir="dir" data-slot="root">
+  <div ref="rootElement" data-soybean-accordion-root :class="cls" :dir="dir">
     <slot :model-value="modelValue" />
   </div>
 </template>

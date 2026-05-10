@@ -26,7 +26,7 @@ const onClose = async (event: MouseEvent) => {
 </script>
 
 <template>
-  <Button v-bind="props" :class="cls" @click="onClose">
+  <Button v-bind="props" data-soybean-dialog-close :class="cls" @click="onClose">
     <slot>
       <Icon icon="lucide:x" />
     </slot>

@@ -12,7 +12,7 @@ const cls = useCarouselUi('container');
 </script>
 
 <template>
-  <div :class="cls" data-soybean-carousel-container>
+  <div data-soybean-carousel-container :class="cls">
     <slot />
   </div>
 </template>

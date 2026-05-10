@@ -43,9 +43,10 @@ const onClick = (event: PointerEvent) => {
 <template>
   <Primitive
     v-bind="forwardedProps"
+    data-soybean-button
     :disabled="disabled"
-    :data-disabled="dataDisabled"
     :aria-disabled="ariaDisabled"
+    :data-disabled="dataDisabled"
     :tabindex="disabled ? '-1' : undefined"
     :type="buttonType"
     @click="onClick"

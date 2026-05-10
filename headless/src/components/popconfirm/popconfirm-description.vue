@@ -12,7 +12,7 @@ const cls = usePopconfirmUi('description');
 </script>
 
 <template>
-  <p :class="cls">
+  <p data-soybean-popconfirm-description :class="cls">
     <slot />
   </p>
 </template>

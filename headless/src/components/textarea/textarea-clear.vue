@@ -35,7 +35,7 @@ const handleClear = (event: PointerEvent) => {
 <template>
   <Button
     v-bind="props"
-    data-slot="clearable"
+    data-soybean-textarea-clearable
     :class="cls"
     :disabled="disabled"
     :aria-label="ariaLabel"

@@ -228,6 +228,7 @@ defineExpose({
       ref="listboxElement"
       v-bind="forwardedProps"
       v-model="modelValue"
+      data-soybean-combobox-root
       :dir="dir"
       :multiple="multiple"
       :name="name"

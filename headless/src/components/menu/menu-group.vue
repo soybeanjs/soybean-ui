@@ -13,7 +13,7 @@ const cls = useMenuUi('group');
 </script>
 
 <template>
-  <Primitive :as="as" :as-child="asChild" :class="cls" role="group">
+  <Primitive :as="as" :as-child="asChild" data-soybean-menu-group :class="cls" role="group">
     <slot />
   </Primitive>
 </template>

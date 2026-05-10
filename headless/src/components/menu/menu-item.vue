@@ -76,6 +76,7 @@ const onKeyDown = async (event: KeyboardEvent) => {
   <MenuItemImpl
     v-bind="props"
     :ref="setMenuItemElement"
+    data-soybean-menu-item
     :class="cls"
     @click="onSelect"
     @pointerdown="onPointerDown"

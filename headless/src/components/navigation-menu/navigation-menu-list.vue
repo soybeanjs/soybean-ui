@@ -18,7 +18,7 @@ const cls = useNavigationMenuUi('list');
 </script>
 
 <template>
-  <div :ref="setIndicatorTrackElement" style="position: relative">
+  <div :ref="setIndicatorTrackElement" data-soybean-navigation-menu-list style="position: relative">
     <ul v-bind="attrs" :class="cls">
       <slot />
     </ul>

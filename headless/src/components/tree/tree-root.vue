@@ -203,6 +203,7 @@ provideTreeRootContext({
     <Primitive
       :as="as"
       :as-child="asChild"
+      data-soybean-tree-root
       :aria-disabled="disabled ? true : undefined"
       :aria-multiselectable="multiple ? true : undefined"
       :data-disabled="disabled ? '' : undefined"

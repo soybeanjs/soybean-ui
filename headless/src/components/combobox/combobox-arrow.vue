@@ -19,7 +19,7 @@ const showArrow = computed(() => open.value && position.value === 'popper');
 </script>
 
 <template>
-  <PopperArrow v-if="showArrow" :class="cls" data-slot="arrow">
+  <PopperArrow v-if="showArrow" data-soybean-combobox-arrow :class="cls">
     <slot />
   </PopperArrow>
 </template>

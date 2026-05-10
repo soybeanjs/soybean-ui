@@ -39,8 +39,9 @@ watch(valueState, (newValue, prevValue) => {
 <template>
   <VisuallyHidden
     :ref="setElement"
-    :feature="feature"
     as="input"
+    data-soybean-visually-hidden-input-bubble
+    :feature="feature"
     :name="name"
     :value="value"
     :checked="checked"

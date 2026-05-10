@@ -155,12 +155,12 @@ defineExpose({
 
 <template>
   <div
+    data-soybean-carousel-root
     :class="cls"
     :dir="dir"
     :data-orientation="orientation"
     :aria-label="ariaLabel"
     :tabindex="resolvedTabindex"
-    data-soybean-carousel-root
     role="region"
     aria-roledescription="carousel"
     @keydown="onKeydown"

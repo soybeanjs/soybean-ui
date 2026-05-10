@@ -21,7 +21,7 @@ watchEffect(() => {
 
 <template>
   <DialogOverlay
-    data-soybean-overlay=""
+    data-soybean-overlay
     :data-soybean-snap-points="isOpen && hasSnapPoints ? 'true' : 'false'"
     :data-soybean-snap-points-overlay="isOpen && shouldFade ? 'true' : 'false'"
   />

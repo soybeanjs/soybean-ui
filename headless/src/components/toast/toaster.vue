@@ -325,6 +325,7 @@ onBeforeUnmount(() => {
 
 <template>
   <section
+    data-soybean-toaster-container
     :aria-label="sectionAriaLabel"
     tabindex="-1"
     aria-live="polite"
@@ -339,7 +340,7 @@ onBeforeUnmount(() => {
       :class="ui.toaster"
       tabindex="-1"
       :dir="dir"
-      data-slot="toaster"
+      data-soybean-toaster
       :data-y-position="position.split('-')[0]"
       :data-x-position="position.split('-')[1]"
       :style="{

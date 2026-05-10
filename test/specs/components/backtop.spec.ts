@@ -126,7 +126,7 @@ describe('SBacktop', () => {
       const button = wrapper.find('button');
 
       expect(button.classes()).toContain('headless-backtop');
-      expect(button.attributes('data-slot')).toBe('root');
+      expect(button.attributes('data-soybean-backtop')).toBe('');
 
       wrapper.unmount();
       target.remove();

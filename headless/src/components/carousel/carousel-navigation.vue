@@ -12,7 +12,7 @@ const cls = useCarouselUi('navigation');
 </script>
 
 <template>
-  <div :class="cls" data-soybean-carousel-navigation>
+  <div data-soybean-carousel-navigation :class="cls">
     <slot />
   </div>
 </template>

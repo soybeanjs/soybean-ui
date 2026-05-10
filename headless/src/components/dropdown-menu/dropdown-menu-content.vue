@@ -93,6 +93,7 @@ watchPostEffect(() => {
 <template>
   <MenuContent
     v-bind="props"
+    data-soybean-dropdown-menu-content
     v-on="listeners"
     @close-auto-focus="onCloseAutoFocus"
     @interact-outside="onInteractOutside"

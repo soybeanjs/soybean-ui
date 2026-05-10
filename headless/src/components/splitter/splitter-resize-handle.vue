@@ -258,6 +258,7 @@ onBeforeUnmount(() => {
     :ref="setHandleElement"
     :as="as"
     :as-child="asChild"
+    data-soybean-splitter-resize-handle
     :class="cls"
     role="separator"
     data-splitter-resize-handle=""

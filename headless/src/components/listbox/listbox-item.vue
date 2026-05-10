@@ -89,6 +89,7 @@ provideListboxItemContext({
     :id="id"
     :ref="setItemElement"
     v-memo="[isHighlighted, isSelected]"
+    data-soybean-listbox-item
     :class="cls"
     role="option"
     :tabindex="tabindex"

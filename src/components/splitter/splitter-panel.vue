@@ -15,7 +15,7 @@ const listeners = useForwardListeners(emit);
 </script>
 
 <template>
-  <SplitterPanel v-slot="slotProps" data-slot="splitter-panel" v-bind="props" v-on="listeners">
+  <SplitterPanel v-slot="slotProps" v-bind="props" v-on="listeners">
     <slot v-bind="slotProps" />
   </SplitterPanel>
 </template>

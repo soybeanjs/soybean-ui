@@ -135,11 +135,11 @@ const onVisuallyHiddenFocus = (event: FocusEvent) => {
     :ref="setTriggerElement"
     :as="as"
     :as-child="asChild"
+    data-soybean-navigation-menu-trigger
     :class="cls"
     :disabled="disabled"
     :data-disabled="disabled ? '' : undefined"
     :data-state="dataState"
-    data-soybean-navigation-menu-trigger
     :aria-expanded="open"
     :aria-controls="contentId"
     @pointerenter="onPointerEnter"

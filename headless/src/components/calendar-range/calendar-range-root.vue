@@ -318,13 +318,13 @@ onMounted(() => {
     :ref="setParentElement"
     :as="as"
     :as-child="asChild"
-    :aria-label="fullCalendarLabel"
+    data-soybean-calendar-range-root
     :class="cls"
+    :aria-label="fullCalendarLabel"
     :data-disabled="disabled ? '' : undefined"
     :data-invalid="isInvalid ? '' : undefined"
     :data-readonly="readonly ? '' : undefined"
     :dir="dir"
-    data-slot="root"
   >
     <slot
       :date="placeholder"

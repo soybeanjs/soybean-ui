@@ -21,13 +21,13 @@ watchEffect(() => {
 
 <template>
   <div
+    data-soybean-progress-provider
     :class="ui.root"
     role="progressbar"
     :aria-label="messages.progress.loading"
     aria-valuemin="0"
     aria-valuemax="1"
     style="display: none"
-    data-soybean-progress
   >
     <div :class="ui.indicator" data-soybean-progress-bar></div>
   </div>

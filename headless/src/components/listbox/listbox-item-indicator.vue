@@ -17,7 +17,14 @@ const cls = useListboxUi('itemIndicator');
 </script>
 
 <template>
-  <Primitive v-if="isSelected" :as="as" :as-child="asChild" :class="cls" aria-hidden="true">
+  <Primitive
+    v-if="isSelected"
+    data-soybean-listbox-item-indicator
+    :as="as"
+    :as-child="asChild"
+    :class="cls"
+    aria-hidden="true"
+  >
     <slot />
   </Primitive>
 </template>

@@ -32,7 +32,7 @@ provideMenuRadioGroupContext({
 </script>
 
 <template>
-  <Primitive :as="as" :as-child="asChild" :class="cls" role="menu-radio-group">
+  <Primitive :as="as" :as-child="asChild" data-soybean-menu-radio-group :class="cls" role="menu-radio-group">
     <slot :model-value="modelValue" />
   </Primitive>
 </template>

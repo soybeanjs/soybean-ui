@@ -17,7 +17,12 @@ const cls = useSelectUi('popup');
 </script>
 
 <template>
-  <div :ref="setPopupElement" :class="cls" style="box-sizing: border-box; max-height: 100%">
+  <div
+    :ref="setPopupElement"
+    data-soybean-select-item-aligned-popup
+    :class="cls"
+    style="box-sizing: border-box; max-height: 100%"
+  >
     <slot />
   </div>
 </template>

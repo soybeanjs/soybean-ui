@@ -25,7 +25,7 @@ const onConfirm = async (event: MouseEvent) => {
 </script>
 
 <template>
-  <Button v-bind="props" :class="cls" @click="onConfirm">
+  <Button v-bind="props" data-soybean-dialog-confirm :class="cls" @click="onConfirm">
     <slot />
   </Button>
 </template>

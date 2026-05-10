@@ -26,7 +26,14 @@ const ariaLabel = computed(() => (attrs['aria-label'] as string) ?? messages.val
 </script>
 
 <template>
-  <Button v-bind="props" data-slot="clear" :class="cls" :aria-label="ariaLabel" :disabled="isDisabled" @click="onClear">
+  <Button
+    v-bind="props"
+    data-soybean-tags-input-clear
+    :class="cls"
+    :aria-label="ariaLabel"
+    :disabled="isDisabled"
+    @click="onClear"
+  >
     <slot>
       <Icon icon="lucide:x" :aria-hidden="true" />
     </slot>

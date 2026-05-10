@@ -23,6 +23,7 @@ provideColorSwatchPickerItemContext({
 
 <template>
   <ListboxItem
+    data-soybean-color-swatch-picker-item
     :value="value"
     :aria-label="colorLabel"
     :data-color="value"

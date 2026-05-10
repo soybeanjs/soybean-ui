@@ -363,10 +363,10 @@ watchEffect(() => {
   <li
     v-bind="toastProps"
     ref="toast"
+    data-soybean-toast
     :class="[ui.toast, toast.ui?.toast]"
     :dir="dir"
     tabindex="0"
-    data-slot="toast"
     :data-rich-color="toast.richColor"
     :data-inverted="toast.inverted"
     :data-mounted="mounted"
@@ -391,10 +391,10 @@ watchEffect(() => {
     @pointerup="onPointerUp"
     @pointermove="onPointerMove"
   >
-    <div ref="wrapper" v-bind="wrapperProps" :class="[ui.wrapper, toast.ui?.wrapper]" data-slot="wrapper">
+    <div ref="wrapper" v-bind="wrapperProps" :class="[ui.wrapper, toast.ui?.wrapper]" data-soybean-toast-wrapper>
       <component :is="toast.custom" v-if="toast.custom" />
       <template v-else>
-        <h3 v-bind="titleProps" :class="[ui.title, toast.ui?.title]" data-slot="title">
+        <h3 v-bind="titleProps" :class="[ui.title, toast.ui?.title]" data-soybean-toast-title>
           <Icon v-if="icon" v-bind="iconProps" :icon="icon" :class="[ui.icon, toast.ui?.icon]" />
           <DynamicRender :is="toast.title" />
         </h3>
@@ -402,7 +402,7 @@ watchEffect(() => {
           v-if="toast.description"
           v-bind="descriptionProps"
           :class="[ui.description, toast.ui?.description]"
-          data-slot="description"
+          data-soybean-toast-description
         >
           <DynamicRender :is="toast.description" />
         </p>
@@ -411,19 +411,19 @@ watchEffect(() => {
           :is="toast.content"
           v-if="toast.content"
           :class="[ui.content, toast.ui?.content]"
-          data-slot="content"
+          data-soybean-toast-content
         />
         <div
           v-if="toast.action || toast.cancel"
           v-bind="footerProps"
           :class="[ui.footer, toast.ui?.footer]"
-          data-slot="footer"
+          data-soybean-toast-footer
         >
           <Button
             v-if="toast.cancel"
             v-bind="cancelProps"
             :class="[ui.cancel, toast.ui?.cancel]"
-            data-slot="cancel"
+            data-soybean-toast-cancel
             @click="onCancel"
           >
             <DynamicRender :is="toast.cancel" />
@@ -432,7 +432,7 @@ watchEffect(() => {
             v-if="toast.action"
             v-bind="actionProps"
             :class="[ui.action, toast.ui?.action]"
-            data-slot="action"
+            data-soybean-toast-action
             @click="onAction"
           >
             <DynamicRender :is="toast.action" />
@@ -445,7 +445,7 @@ watchEffect(() => {
       v-if="closeVisible && icons?.close"
       v-bind="closeProps"
       :class="[ui.close, toast.ui?.close]"
-      data-slot="close"
+      data-soybean-toast-close
       @click="onCloseToast"
     >
       <Icon :icon="icons?.close" />

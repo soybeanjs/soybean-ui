@@ -126,7 +126,7 @@ const handleSelect = (item: T) => {
     @update:model-value="modelValue = $event"
     @update:open="emit('update:open', $event)"
   >
-    <AutocompleteAnchor v-bind="anchorProps">
+    <AutocompleteAnchor v-bind="anchorProps" data-soybean-autocomplete-anchor>
       <AutocompleteInput v-bind="inputProps">
         <template #leading>
           <slot name="input-leading">
@@ -137,6 +137,7 @@ const handleSelect = (item: T) => {
           <AutocompleteCancel
             v-if="clearable && modelValue"
             :aria-label="props.clearLabel ?? messages.autocomplete.clearInput"
+            data-soybean-autocomplete-cancel
             @click="clear"
           >
             <Icon icon="lucide:x" />
@@ -148,6 +149,7 @@ const handleSelect = (item: T) => {
         v-slot="{ triggerIconClass }"
         v-bind="triggerProps"
         :aria-label="messages.autocomplete.toggleSuggestions"
+        data-soybean-autocomplete-trigger
       >
         <slot name="trigger-icon">
           <Icon icon="lucide:chevrons-up-down" :class="triggerIconClass" />

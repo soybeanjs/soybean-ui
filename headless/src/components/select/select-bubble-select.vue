@@ -52,7 +52,7 @@ watch(
 
 <template>
   <VisuallyHidden as-child>
-    <select ref="selectElement" v-bind="props" @input="onInput">
+    <select ref="selectElement" v-bind="props" data-soybean-select-bubble-select @input="onInput">
       <slot />
     </select>
   </VisuallyHidden>

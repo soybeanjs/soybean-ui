@@ -47,7 +47,7 @@ applyTo: 'headless/src/components/**/*.{ts,vue}'
 ## Step 3：基础分片组件 SFC
 
 - 分片组件通过 `use{Name}Ui('root')` 或 `use{Name}Ui()` 获取类名
-- 每个 headless 分片组件根元素都要暴露稳定的 `data-slot="{slotName}"`
+- 每个 headless 分片组件根元素都要暴露稳定的 `data-soybean-{name}` 属性，命名默认与分片文件名一致，例如 `data-soybean-card-root`
 - 需要暴露 DOM 句柄时使用 `useForwardElement`
 - `role`、`aria-*`、`tabindex`、键盘事件、焦点相关属性都应落在这些 headless 可交互元素上，而不是留给 UI wrapper 兜底
 - 状态通过 `data-state` 等 `data-*` 属性暴露，不要用 class 传状态

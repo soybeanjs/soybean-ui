@@ -15,7 +15,7 @@ const cls = useCalendarUi('header');
 </script>
 
 <template>
-  <Primitive :as="as" :as-child="asChild" :class="cls" data-slot="header">
+  <Primitive :as="as" :as-child="asChild" data-soybean-calendar-header :class="cls">
     <slot />
   </Primitive>
 </template>

@@ -30,6 +30,7 @@ provideToolbarRootContext(transformPropsToContext(props, ['orientation', 'dir'])
       v-bind="forwardedProps"
       :as="as"
       :as-child="asChild"
+      data-soybean-toolbar-root
       :class="mergedClass"
       role="toolbar"
       :aria-orientation="orientation"

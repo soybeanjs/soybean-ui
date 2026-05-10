@@ -23,12 +23,12 @@ const disabled = computed(() => isDateDisabled(props.date) || isDateUnavailable?
   <Primitive
     :as="as"
     :as-child="asChild"
+    data-soybean-calendar-cell
     :aria-disabled="disabled ? true : undefined"
     :aria-selected="selected ? true : undefined"
     :class="cls"
     :data-disabled="disabled ? '' : undefined"
     :data-selected="selected ? '' : undefined"
-    data-slot="cell"
     role="gridcell"
   >
     <slot />

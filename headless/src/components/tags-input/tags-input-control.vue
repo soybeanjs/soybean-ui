@@ -158,7 +158,7 @@ const onCompositionEnd = () => {
   <input
     :id="id"
     :class="cls"
-    data-slot="input"
+    data-soybean-tags-input-input
     type="text"
     autocomplete="off"
     autocorrect="off"

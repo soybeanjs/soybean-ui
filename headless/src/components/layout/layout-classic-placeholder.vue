@@ -32,9 +32,9 @@ const visible = computed(() => {
   return footerVisible.value;
 });
 
-const dataSlot = computed(() => `${props.type}-placeholder`);
+const dataSoybeanAttr = computed(() => ({ [`data-soybean-layout-${props.type}-placeholder`]: '' }));
 </script>
 
 <template>
-  <div v-if="visible && fixed" :class="cls" :data-slot="dataSlot"></div>
+  <div v-if="visible && fixed" :class="cls" v-bind="dataSoybeanAttr"></div>
 </template>

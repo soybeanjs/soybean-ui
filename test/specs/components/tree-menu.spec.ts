@@ -72,7 +72,7 @@ describe('STreeMenu', () => {
         attachTo: document.body
       });
 
-      expect(wrapper.find('[data-slot="root"]').exists()).toBe(true);
+      expect(wrapper.find('[data-soybean-tree-menu-root]').exists()).toBe(true);
       expect(wrapper.text()).toContain('Workspace');
       expect(wrapper.text()).toContain('Projects');
       expect(wrapper.text()).toContain('Profile');
@@ -108,7 +108,7 @@ describe('STreeMenu', () => {
         attachTo: document.body
       });
 
-      await wrapper.findAll('[data-slot="button"]')[0].trigger('click');
+      await wrapper.findAll('[data-soybean-tree-menu-button]')[0].trigger('click');
 
       expect(wrapper.emitted('update:modelValue')).toBeTruthy();
       expect(wrapper.emitted('update:modelValue')![0][0]).toBe('overview');
@@ -128,7 +128,7 @@ describe('STreeMenu', () => {
 
       await nextTick();
 
-      expect(wrapper.find('[data-slot="root"]').attributes('data-state')).toBe('collapsed');
+      expect(wrapper.find('[data-soybean-tree-menu-root]').attributes('data-state')).toBe('collapsed');
       expect(document.body.textContent).toContain('Reports');
       expect(document.body.textContent).toContain('Insights');
 

@@ -23,7 +23,7 @@ const ui = useLayoutUi();
     <LayoutMobile v-if="isMobile" v-bind="attrs">
       <slot />
     </LayoutMobile>
-    <div v-else :class="ui.sidebarRoot">
+    <div v-else :class="ui.sidebarRoot" data-soybean-layout-sidebar>
       <div :class="ui.sidebarGapHandler"></div>
       <div :class="ui.sidebarWrapper">
         <div v-bind="attrs" :class="ui.sidebar" data-sidebar="sidebar">

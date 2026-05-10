@@ -13,7 +13,7 @@ const cls = useComboboxUi('separator');
 </script>
 
 <template>
-  <Primitive v-bind="props" :class="cls" role="separator" aria-orientation="horizontal" data-slot="separator">
+  <Primitive v-bind="props" data-soybean-combobox-separator :class="cls" role="separator" aria-orientation="horizontal">
     <slot />
   </Primitive>
 </template>

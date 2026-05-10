@@ -22,11 +22,11 @@ const endStyle = computed(() => getTableSpacerCellStyle(props.paddingEnd));
 </script>
 
 <template>
-  <TableRow v-if="isVirtual && paddingStart > 0" aria-hidden="true">
+  <TableRow v-if="isVirtual && paddingStart > 0" data-soybean-table-virtual-spacer-row aria-hidden="true">
     <td :colspan="colspan" :style="startStyle" />
   </TableRow>
   <slot />
-  <TableRow v-if="isVirtual && paddingEnd > 0" aria-hidden="true">
+  <TableRow v-if="isVirtual && paddingEnd > 0" data-soybean-table-virtual-spacer-row aria-hidden="true">
     <td :colspan="colspan" :style="endStyle" />
   </TableRow>
 </template>

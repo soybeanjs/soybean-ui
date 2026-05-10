@@ -15,7 +15,7 @@ const cls = useCalendarUi('gridBody');
 </script>
 
 <template>
-  <Primitive :as="as" :as-child="asChild" :class="cls" data-slot="grid-body">
+  <Primitive :as="as" :as-child="asChild" data-soybean-calendar-grid-body :class="cls">
     <slot />
   </Primitive>
 </template>

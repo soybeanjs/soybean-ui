@@ -133,6 +133,7 @@ provideMenuItemIndicatorContext({
   <MenuItemImpl
     v-bind="forwardedProps"
     :ref="setMenuItemElement"
+    data-soybean-menu-checkbox-item
     :class="cls"
     role="menu-checkbox-item"
     :disabled="disabled"

@@ -19,7 +19,7 @@ provideNavigationMenuRootContext({
 </script>
 
 <template>
-  <ul :class="cls">
+  <ul data-soybean-navigation-menu-sub-list :class="cls">
     <slot />
   </ul>
 </template>

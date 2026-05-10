@@ -12,7 +12,7 @@ const cls = useTableUi('root');
 </script>
 
 <template>
-  <div :class="cls" :dir="dir">
+  <div data-soybean-table-root :class="cls" :dir="dir">
     <slot />
   </div>
 </template>

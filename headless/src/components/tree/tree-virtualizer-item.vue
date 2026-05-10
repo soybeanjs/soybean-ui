@@ -17,7 +17,13 @@ const listeners = useForwardListeners(emit);
 
 <template>
   <TreeItem v-slot="slotProps" :value="value" :level="level" as-child v-on="listeners">
-    <VirtualizerItem :as="as" :as-child="asChild" :data="data" :custom-style="customStyle">
+    <VirtualizerItem
+      :as="as"
+      :as-child="asChild"
+      data-soybean-tree-virtualizer-item
+      :data="data"
+      :custom-style="customStyle"
+    >
       <slot v-bind="slotProps" />
     </VirtualizerItem>
   </TreeItem>

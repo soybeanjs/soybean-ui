@@ -17,7 +17,14 @@ const cls = useSelectUi('itemIndicator');
 </script>
 
 <template>
-  <Primitive v-if="isSelected" :as="as" :as-child="asChild" :class="cls" aria-hidden="true">
+  <Primitive
+    v-if="isSelected"
+    data-soybean-select-item-indicator
+    :as="as"
+    :as-child="asChild"
+    :class="cls"
+    aria-hidden="true"
+  >
     <slot />
   </Primitive>
 </template>

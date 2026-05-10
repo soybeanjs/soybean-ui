@@ -42,6 +42,7 @@ const onClick = (event: MouseEvent) => {
 <template>
   <Button
     v-bind="forwardedProps"
+    data-soybean-toggle
     :disabled="disabled"
     :aria-pressed="modelValue"
     :data-state="dataState"

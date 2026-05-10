@@ -29,7 +29,7 @@ provideAlertRootContext({
 </script>
 
 <template>
-  <div v-if="open" :class="cls">
+  <div v-if="open" data-soybean-alert-root :class="cls">
     <slot />
   </div>
 </template>

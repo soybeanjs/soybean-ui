@@ -19,7 +19,7 @@ describe('sDatePicker', () => {
         }
       });
 
-      expect(wrapper.find('[data-slot="root"]').exists()).toBe(true);
+      expect(wrapper.find('[data-soybean-date-field-root]').exists()).toBe(true);
       expect(findTrigger(wrapper).exists()).toBe(true);
 
       wrapper.unmount();
@@ -34,7 +34,7 @@ describe('sDatePicker', () => {
         }
       });
 
-      const root = wrapper.find('[data-slot="root"]');
+      const root = wrapper.find('[data-soybean-date-field-root]');
 
       expect(root.classes()).toContain('custom-class');
 
@@ -143,7 +143,7 @@ describe('sDatePicker', () => {
         }
       });
 
-      const root = wrapper.find('[data-slot="root"]');
+      const root = wrapper.find('[data-soybean-date-field-root]');
 
       expect(root.attributes('data-disabled')).toBe('');
 

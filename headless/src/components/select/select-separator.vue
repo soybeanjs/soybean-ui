@@ -12,7 +12,7 @@ const cls = useSelectUi('separator');
 </script>
 
 <template>
-  <div :class="cls" role="separator" aria-orientation="horizontal">
+  <div data-soybean-select-separator :class="cls" role="separator" aria-orientation="horizontal">
     <slot />
   </div>
 </template>

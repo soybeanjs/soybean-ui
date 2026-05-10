@@ -42,7 +42,7 @@ provideMenuOptionsCompactContext({
 
 <template>
   <MenuGroup v-bind="groupProps">
-    <MenuOptionCompact
+    <MenuOptionCompact data-soybean-menu-option-compact
       v-for="item in items"
       :key="item.value"
       v-bind="forwardedItemProps"

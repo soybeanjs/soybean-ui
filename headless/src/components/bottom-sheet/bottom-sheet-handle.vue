@@ -104,7 +104,7 @@ function handleOnDrag(event: PointerEvent) {
     :ref="setHandleRef"
     :class="cls"
     :data-soybean-bottom-sheet-visible="isOpen ? 'true' : 'false'"
-    data-soybean-handle=""
+    data-soybean-handle
     aria-hidden="true"
     @click="handleStartCycle"
     @pointercancel="handleCancelInteraction"

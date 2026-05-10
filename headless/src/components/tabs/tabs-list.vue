@@ -18,7 +18,7 @@ const cls = useTabsUi('list');
 </script>
 
 <template>
-  <RovingFocusGroup as-child :dir="dir" :orientation="orientation" :loop="loop">
+  <RovingFocusGroup data-soybean-tabs-list as-child :dir="dir" :orientation="orientation" :loop="loop">
     <div :ref="setListElement" :class="cls" role="tablist" :aria-orientation="orientation">
       <slot />
     </div>

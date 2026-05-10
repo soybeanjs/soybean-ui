@@ -73,9 +73,10 @@ const popoverProps = usePickProps(props, [
           <slot name="trigger" v-bind="slotProps" />
         </ColorPickerTrigger>
       </template>
-      <div :class="ui.content" data-slot="content">
+      <div :class="ui.content" data-soybean-color-picker-content>
         <SegmentCompact
           v-bind="segmentProps"
+          data-soybean-color-picker-segment
           :class="ui.segment"
           :model-value="displayFormat"
           :items="colorFormats"
@@ -84,6 +85,7 @@ const popoverProps = usePickProps(props, [
         />
         <ColorAreaCompact
           v-bind="areaProps"
+          data-soybean-color-picker-area
           :class="ui.area"
           :model-value="color"
           :color-space="colorSpace"
@@ -92,10 +94,11 @@ const popoverProps = usePickProps(props, [
           :disabled="disabled"
           @update:color="setColor"
         />
-        <div :class="ui.sliderSwatch" data-slot="slider-swatch">
-          <div :class="ui.sliderRoot" data-slot="slider-root">
+        <div :class="ui.sliderSwatch" data-soybean-color-picker-slider-swatch>
+          <div :class="ui.sliderRoot" data-soybean-color-picker-slider-root>
             <ColorSliderCompact
               v-bind="hueSliderProps"
+              data-soybean-color-picker-hue-slider
               :class="ui.slider"
               :model-value="color"
               channel="hue"
@@ -106,6 +109,7 @@ const popoverProps = usePickProps(props, [
             <ColorSliderCompact
               v-if="showAlpha"
               v-bind="alphaSliderProps"
+              data-soybean-color-picker-alpha-slider
               :class="ui.alphaSlider"
               :model-value="color"
               channel="alpha"
@@ -114,11 +118,17 @@ const popoverProps = usePickProps(props, [
               @update:color="setColor"
             />
           </div>
-          <ColorSwatchCompact v-bind="swatchProps" :class="ui.swatch" :color="hexValue" />
+          <ColorSwatchCompact
+            v-bind="swatchProps"
+            data-soybean-color-picker-swatch
+            :class="ui.swatch"
+            :color="hexValue"
+          />
         </div>
-        <div v-if="showFields" :class="ui.fields" data-slot="fields">
+        <div v-if="showFields" :class="ui.fields" data-soybean-color-picker-fields>
           <ColorFieldCompact
             v-bind="fieldProps"
+            data-soybean-color-picker-field
             :class="ui.field"
             :model-value="hexValue"
             :format="displayFormat"
@@ -129,6 +139,7 @@ const popoverProps = usePickProps(props, [
           <ColorFieldCompact
             v-if="showAlpha"
             v-bind="alphaFieldProps"
+            data-soybean-color-picker-alpha-field
             :class="ui.alphaField"
             :model-value="color"
             channel="alpha"
@@ -140,6 +151,7 @@ const popoverProps = usePickProps(props, [
         <ColorSwatchPickerCompact
           v-if="showSwatches && swatches.length"
           v-bind="swatchPickerProps"
+          data-soybean-color-picker-swatch-picker
           :class="ui.swatchPicker"
           :colors="swatches"
           :model-value="hexValue"

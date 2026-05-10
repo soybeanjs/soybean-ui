@@ -13,7 +13,7 @@ const { affixed, affixStyle, dataState, setContentElement } = useAffixRootContex
 </script>
 
 <template>
-  <div :ref="setContentElement" :class="cls" :data-state="dataState" :style="affixStyle">
+  <div :ref="setContentElement" data-soybean-affix-content :class="cls" :data-state="dataState" :style="affixStyle">
     <slot :affixed="affixed" />
   </div>
 </template>

@@ -19,7 +19,7 @@ const backgroundStyle = computed(() => getSliderBackgroundStyle(color.value, cha
 </script>
 
 <template>
-  <SliderTrack :as="as" :as-child="asChild" :class="cls" :style="backgroundStyle">
+  <SliderTrack :as="as" :as-child="asChild" data-soybean-color-slider-track :class="cls" :style="backgroundStyle">
     <slot />
   </SliderTrack>
 </template>

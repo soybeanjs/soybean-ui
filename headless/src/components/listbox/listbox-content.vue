@@ -64,6 +64,7 @@ const onMousedown = () => {
 <template>
   <div
     :ref="setContentElement"
+    data-soybean-listbox-content
     :class="cls"
     role="listbox"
     :tabindex="tabindex"

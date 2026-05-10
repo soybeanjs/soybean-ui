@@ -26,7 +26,7 @@ const visible = computed(() => {
 </script>
 
 <template>
-  <Primitive v-if="visible" v-bind="props" :class="cls" data-slot="empty">
+  <Primitive v-if="visible" v-bind="props" data-soybean-combobox-empty :class="cls">
     <slot />
   </Primitive>
 </template>

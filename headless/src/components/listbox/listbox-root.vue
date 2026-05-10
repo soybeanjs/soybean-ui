@@ -75,6 +75,7 @@ defineExpose({
 <template>
   <div
     :ref="setRootElement"
+    data-soybean-listbox-root
     :class="cls"
     :data-disabled="disabled ? '' : undefined"
     :dir="dir"

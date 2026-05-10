@@ -124,6 +124,7 @@ initContentId();
       :ref="setTriggerElement"
       :as="as"
       :as-child="asChild"
+      data-soybean-select-trigger
       :class="cls"
       :aria-controls="contentId"
       :aria-expanded="open || false"

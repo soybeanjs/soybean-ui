@@ -99,6 +99,7 @@ function handleBeforeInput(event: InputEvent) {
 
 <template>
   <input
+    data-soybean-color-field-input
     :class="cls"
     type="text"
     :inputmode="channel ? 'decimal' : 'text'"

@@ -18,9 +18,9 @@ describe('SAvatar', () => {
         attachTo: document.body
       });
 
-      expect(wrapper.find('[data-slot="root"]').exists()).toBe(true);
-      expect(wrapper.find('[data-slot="image"]').exists()).toBe(true);
-      expect(wrapper.find('[data-slot="fallback"]').text()).toBe('JD');
+      expect(wrapper.find('[data-soybean-avatar-root]').exists()).toBe(true);
+      expect(wrapper.find('[data-soybean-avatar-image]').exists()).toBe(true);
+      expect(wrapper.find('[data-soybean-avatar-fallback]').text()).toBe('JD');
 
       wrapper.unmount();
       cleanupImage();
@@ -37,7 +37,7 @@ describe('SAvatar', () => {
         attachTo: document.body
       });
 
-      expect(wrapper.find('[data-slot="root"]').classes()).toContain('my-avatar');
+      expect(wrapper.find('[data-soybean-avatar-root]').classes()).toContain('my-avatar');
 
       wrapper.unmount();
       cleanupImage();
@@ -81,8 +81,8 @@ describe('SAvatar', () => {
       await nextTick();
 
       expect(wrapper.emitted('loadingStatusChange')?.at(-1)).toEqual(['loaded']);
-      expect(wrapper.find('[data-slot="fallback"]').exists()).toBe(false);
-      expect((wrapper.find('[data-slot="image"]').element as HTMLImageElement).src).toContain('avatar.png');
+      expect(wrapper.find('[data-soybean-avatar-fallback]').exists()).toBe(false);
+      expect((wrapper.find('[data-soybean-avatar-image]').element as HTMLImageElement).src).toContain('avatar.png');
 
       wrapper.unmount();
       cleanupImage();
@@ -103,8 +103,8 @@ describe('SAvatar', () => {
       await nextTick();
 
       expect(wrapper.emitted('loadingStatusChange')?.at(-1)).toEqual(['error']);
-      expect(wrapper.find('[data-slot="fallback"]').exists()).toBe(true);
-      expect(wrapper.find('[data-slot="fallback"]').text()).toBe('JD');
+      expect(wrapper.find('[data-soybean-avatar-fallback]').exists()).toBe(true);
+      expect(wrapper.find('[data-soybean-avatar-fallback]').text()).toBe('JD');
 
       wrapper.unmount();
       cleanupImage();
@@ -122,12 +122,12 @@ describe('SAvatar', () => {
         attachTo: document.body
       });
 
-      expect(wrapper.find('[data-slot="fallback"]').exists()).toBe(false);
+      expect(wrapper.find('[data-soybean-avatar-fallback]').exists()).toBe(false);
 
       await delay(60);
       await nextTick();
 
-      expect(wrapper.find('[data-slot="fallback"]').exists()).toBe(true);
+      expect(wrapper.find('[data-soybean-avatar-fallback]').exists()).toBe(true);
 
       wrapper.unmount();
       cleanupImage();

@@ -39,11 +39,11 @@ const circumference = computed(() => 2 * Math.PI * radius.value);
 <template>
   <svg
     v-bind="attrs"
+    data-soybean-progress-circle-svg
     fill="none"
     :class="circleCls"
     :viewBox="`0 0 ${PROGRESS_CIRCLE_VIEWBOX_SIZE} ${PROGRESS_CIRCLE_VIEWBOX_SIZE}`"
     aria-hidden="true"
-    data-slot="circle"
   >
     <circle
       :cx="PROGRESS_CIRCLE_CENTER"
@@ -51,7 +51,7 @@ const circumference = computed(() => 2 * Math.PI * radius.value);
       :r="radius"
       :stroke-width="strokeWidth"
       :class="trackCls"
-      data-slot="track"
+      data-soybean-progress-track
     />
     <circle
       :cx="PROGRESS_CIRCLE_CENTER"
@@ -64,7 +64,7 @@ const circumference = computed(() => 2 * Math.PI * radius.value);
       :data-value="modelValue ?? undefined"
       :data-max="max"
       :class="indicatorCls"
-      data-slot="indicator"
+      data-soybean-progress-indicator
       stroke-linecap="round"
       :transform="`rotate(-90 ${PROGRESS_CIRCLE_CENTER} ${PROGRESS_CIRCLE_CENTER})`"
     />

@@ -15,7 +15,7 @@ const cls = useTreeMenuUi('sub');
 </script>
 
 <template>
-  <Primitive :as="as" :as-child="asChild" :class="cls" data-slot="sub">
+  <Primitive :as="as" :as-child="asChild" data-soybean-tree-menu-sub :class="cls">
     <slot />
   </Primitive>
 </template>

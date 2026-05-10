@@ -93,6 +93,7 @@ onMounted(() => {
     :ref="setContentElement"
     :as="as"
     :as-child="asChild"
+    data-soybean-collapsible-content
     :class="cls"
     :data-disabled="dataDisabled"
     :data-state="dataState"

@@ -30,7 +30,7 @@ watchEffect(() => {
 </script>
 
 <template>
-  <Primitive v-bind="forwardedProps" :ref="setAnchorElement" :class="cls">
+  <Primitive v-bind="forwardedProps" :ref="setAnchorElement" data-soybean-popper-anchor :class="cls">
     <slot />
   </Primitive>
 </template>

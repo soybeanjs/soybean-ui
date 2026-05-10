@@ -10,7 +10,7 @@ defineProps<ColorSwatchPickerItemIndicatorProps>();
 </script>
 
 <template>
-  <ListboxItemIndicator :as="as" :as-child="asChild">
+  <ListboxItemIndicator :as="as" :as-child="asChild" data-soybean-color-swatch-picker-item-indicator>
     <slot />
   </ListboxItemIndicator>
 </template>

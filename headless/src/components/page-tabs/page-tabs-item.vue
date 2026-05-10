@@ -56,12 +56,12 @@ providePageTabsItemContext({
 <template>
   <RovingFocusItem
     :class="cls"
+    data-soybean-page-tabs-item
     :data-value="value"
     :data-active="isActive"
     :data-pinned="pinned"
     :active="isActive"
     :focusable="true"
-    data-slot="item"
     @click="onClick"
     @mousedown="onMouseDown"
     @keydown.enter="onClick"

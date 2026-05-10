@@ -12,7 +12,7 @@ const cls = useBreadcrumbUi('separator');
 </script>
 
 <template>
-  <li :class="cls" role="presentation" aria-hidden="true">
+  <li data-soybean-breadcrumb-separator :class="cls" role="presentation" aria-hidden="true">
     <slot />
   </li>
 </template>

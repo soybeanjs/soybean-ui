@@ -36,6 +36,7 @@ const { onPointerDownOutside, onFocusOutside, onInteractOutside, onCloseAutoFocu
   <PopoverPositionerImpl
     v-if="isPresent"
     v-bind="forwardedProps"
+    data-soybean-popover-positioner
     :trap-focus="trapFocus"
     :disable-outside-pointer-events="modal"
     v-on="listeners"

@@ -20,7 +20,7 @@ const dynamicContentStyle = computed(
 </script>
 
 <template>
-  <Primitive :as="as" :as-child="asChild" :style="contentStyle">
+  <Primitive :as="as" :as-child="asChild" data-soybean-virtualizer-content :style="contentStyle">
     <div v-if="isVerticalDynamic" v-bind="dynamicContentProps" :style="dynamicContentStyle">
       <slot />
     </div>

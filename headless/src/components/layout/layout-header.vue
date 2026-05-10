@@ -14,7 +14,7 @@ const { headerVisible } = useLayoutRootContext('LayoutHeader');
 </script>
 
 <template>
-  <header v-if="headerVisible" :class="cls">
+  <header v-if="headerVisible" data-soybean-layout-header :class="cls">
     <slot />
   </header>
 </template>

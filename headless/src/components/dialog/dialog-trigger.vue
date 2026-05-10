@@ -24,6 +24,7 @@ const onTriggerClick = (event: PointerEvent) => {
   <Button
     v-bind="props"
     :ref="setTriggerElement"
+    data-soybean-dialog-trigger
     aria-haspopup="dialog"
     :aria-expanded="open || false"
     :aria-controls="open ? popupId : undefined"

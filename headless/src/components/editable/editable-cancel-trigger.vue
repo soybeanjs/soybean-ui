@@ -37,6 +37,7 @@ function onClick() {
 <template>
   <Button
     v-bind="props"
+    data-soybean-editable-cancel-trigger
     :class="cls"
     :aria-label="ariaLabel"
     :data-readonly="dataReadonly"

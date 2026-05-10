@@ -16,7 +16,7 @@ const showArrow = computed(() => position.value === 'popper');
 </script>
 
 <template>
-  <PopperArrow v-if="showArrow">
+  <PopperArrow v-if="showArrow" data-soybean-select-arrow>
     <slot />
   </PopperArrow>
 </template>

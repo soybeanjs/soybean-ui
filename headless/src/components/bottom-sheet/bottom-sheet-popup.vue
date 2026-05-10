@@ -94,7 +94,7 @@ watchEffect(() => {
 
 <template>
   <DialogPopup
-    data-soybean-bottom-sheet=""
+    data-soybean-bottom-sheet-popup
     :data-soybean-bottom-sheet-direction="direction"
     :data-soybean-delayed-snap-points="delayedSnapPoints ? 'true' : 'false'"
     :data-soybean-snap-points="isOpen && hasSnapPoints ? 'true' : 'false'"

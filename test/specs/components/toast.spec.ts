@@ -11,13 +11,19 @@ describe('Toaster', () => {
   it('pre-renders toast containers for all positions', () => {
     const wrapper = mount(SToastProvider);
 
-    expect(wrapper.findAll('[data-slot=toaster]')).toHaveLength(6);
-    expect(wrapper.find('[data-slot=toaster][data-y-position="top"][data-x-position="right"]').exists()).toBe(true);
-    expect(wrapper.find('[data-slot=toaster][data-y-position="top"][data-x-position="left"]').exists()).toBe(true);
-    expect(wrapper.find('[data-slot=toaster][data-y-position="top"][data-x-position="center"]').exists()).toBe(true);
-    expect(wrapper.find('[data-slot=toaster][data-y-position="bottom"][data-x-position="right"]').exists()).toBe(true);
-    expect(wrapper.find('[data-slot=toaster][data-y-position="bottom"][data-x-position="left"]').exists()).toBe(true);
-    expect(wrapper.find('[data-slot=toaster][data-y-position="bottom"][data-x-position="center"]').exists()).toBe(true);
+    expect(wrapper.findAll('[data-soybean-toaster]')).toHaveLength(6);
+    expect(wrapper.find('[data-soybean-toaster][data-y-position="top"][data-x-position="right"]').exists()).toBe(true);
+    expect(wrapper.find('[data-soybean-toaster][data-y-position="top"][data-x-position="left"]').exists()).toBe(true);
+    expect(wrapper.find('[data-soybean-toaster][data-y-position="top"][data-x-position="center"]').exists()).toBe(true);
+    expect(wrapper.find('[data-soybean-toaster][data-y-position="bottom"][data-x-position="right"]').exists()).toBe(
+      true
+    );
+    expect(wrapper.find('[data-soybean-toaster][data-y-position="bottom"][data-x-position="left"]').exists()).toBe(
+      true
+    );
+    expect(wrapper.find('[data-soybean-toaster][data-y-position="bottom"][data-x-position="center"]').exists()).toBe(
+      true
+    );
 
     wrapper.unmount();
   });
@@ -46,7 +52,7 @@ describe('Toaster', () => {
     document.dispatchEvent(new KeyboardEvent('keydown', { altKey: true, code: 'KeyT' }));
     await nextTick();
 
-    const targetList = wrapper.find('[data-slot=toaster][data-y-position="bottom"][data-x-position="left"]');
+    const targetList = wrapper.find('[data-soybean-toaster][data-y-position="bottom"][data-x-position="left"]');
 
     expect(document.activeElement).toBe(targetList.element);
 

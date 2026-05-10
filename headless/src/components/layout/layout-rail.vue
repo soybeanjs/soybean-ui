@@ -18,8 +18,8 @@ const cls = useLayoutUi('rail');
 <template>
   <button
     :class="cls"
+    data-soybean-layout-rail
     data-sidebar="rail"
-    data-slot="sidebar-rail"
     :aria-label="messages.layout.toggleSidebar"
     :tabindex="-1"
     :title="messages.layout.toggleSidebar"

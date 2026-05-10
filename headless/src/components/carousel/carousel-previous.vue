@@ -31,11 +31,11 @@ const onPrev = () => {
 <template>
   <Button
     v-bind="forwardedProps"
+    data-soybean-carousel-previous
     :class="cls"
     :disabled="disabled"
     :aria-controls="contentId || undefined"
     :aria-label="ariaLabel"
-    data-soybean-carousel-previous
     @click="onPrev"
   >
     <slot>

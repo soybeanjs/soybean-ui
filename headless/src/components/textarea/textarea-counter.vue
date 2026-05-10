@@ -22,7 +22,7 @@ const countText = computed(() => {
 </script>
 
 <template>
-  <div data-slot="counter" :class="cls">
+  <div data-soybean-textarea-counter :class="cls">
     <slot :count="count" :maxlength="maxlength">{{ countText }}</slot>
   </div>
 </template>

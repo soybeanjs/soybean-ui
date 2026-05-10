@@ -125,6 +125,7 @@ provideColorAreaRootContext({
     :ref="setRootElement"
     :as="as"
     :as-child="asChild"
+    data-soybean-color-area-root
     :class="cls"
     role="group"
     :aria-disabled="disabled ? 'true' : undefined"

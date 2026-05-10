@@ -21,7 +21,7 @@ const onClick = () => {
 </script>
 
 <template>
-  <Button v-bind="props" :class="cls" :data-active="isActive" data-slot="button" @click="onClick">
+  <Button v-bind="props" data-soybean-tree-menu-button :class="cls" :data-active="isActive" @click="onClick">
     <slot />
   </Button>
 </template>

@@ -30,7 +30,7 @@ const style = computed<CSSProperties>(() => {
   <DialogRoot :open="mobileOpen" @update:open="onMobileOpenChange">
     <DialogPortal>
       <DialogOverlay :class="ui.mobileOverlay" />
-      <DialogContent :class="ui.mobileDrawer" :style="style">
+      <DialogContent data-soybean-layout-mobile :class="ui.mobileDrawer" :style="style">
         <div v-bind="attrs" :class="ui.mobile" data-sidebar="sidebar" data-mobile>
           <slot />
         </div>

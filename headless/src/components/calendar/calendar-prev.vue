@@ -25,10 +25,10 @@ const onClick = () => {
 <template>
   <Button
     v-bind="props"
+    data-soybean-calendar-prev
     :class="cls"
     :disabled="disabled"
     :aria-label="messages.calendar.prevPage"
-    data-slot="prev"
     @click="onClick"
   >
     <slot :disabled="disabled">{{ messages.calendar.prevPage }}</slot>

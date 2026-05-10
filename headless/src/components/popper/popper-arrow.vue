@@ -45,7 +45,7 @@ const style = computed<CSSProperties>(() => ({
 </script>
 
 <template>
-  <span :ref="setArrowElement" :class="cls" :style="style">
+  <span :ref="setArrowElement" data-soybean-popper-arrow :class="cls" :style="style">
     <Arrow />
   </span>
 </template>

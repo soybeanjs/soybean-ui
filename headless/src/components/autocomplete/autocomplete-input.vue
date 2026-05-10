@@ -148,6 +148,7 @@ onUnmounted(() => {
 <template>
   <InputRoot
     v-slot="{ clear }"
+    data-soybean-autocomplete-input-root
     v-bind="forwardedProps"
     :model-value="modelValue"
     @update:model-value="onUpdateModelValue"
@@ -157,6 +158,7 @@ onUnmounted(() => {
       v-bind="controlProps"
       :id="resolvedInputId"
       :ref="setLocalInputElement"
+      data-soybean-autocomplete-input-control
       :aria-activedescendant="activedescendant"
       :aria-controls="contentId"
       :aria-expanded="open || false"

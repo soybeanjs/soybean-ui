@@ -35,7 +35,7 @@ const { dataState } = provideRadioGroupItemContext({
 </script>
 
 <template>
-  <div ref="itemElement" :class="cls" :data-state="dataState">
+  <div ref="itemElement" data-soybean-radio-group-item :class="cls" :data-state="dataState">
     <slot :checked="checked" />
 
     <VisuallyHiddenInput

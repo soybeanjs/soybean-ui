@@ -61,6 +61,7 @@ const toggleVisible = () => {
   <InputRoot
     v-slot="{ clear, modelValue }"
     v-bind="forwardedProps"
+    data-soybean-password
     @update:model-value="emit('update:modelValue', $event)"
   >
     <slot name="leading" :clear="clear" :model-value="modelValue" :toggle="toggleVisible" :visible="visible" />
@@ -74,7 +75,7 @@ const toggleVisible = () => {
     <slot name="visible" :clear="clear" :model-value="modelValue" :toggle="toggleVisible" :visible="visible">
       <Button
         v-bind="visibleProps"
-        data-slot="visible"
+        data-soybean-password-visible
         :class="ui.visible"
         :disabled="visibleDisabled"
         :aria-label="visibleLabel"

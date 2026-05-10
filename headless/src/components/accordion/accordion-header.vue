@@ -16,11 +16,11 @@ const { dataDisabled, dataState } = useAccordionItemContext('AccordionHeader');
 
 <template>
   <div
+    data-soybean-accordion-header
     :class="cls"
     :data-disabled="dataDisabled"
     :data-orientation="orientation"
     :data-state="dataState"
-    data-slot="header"
   >
     <slot />
   </div>

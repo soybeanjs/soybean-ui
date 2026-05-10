@@ -12,7 +12,7 @@ const cls = useEmptyUi('header');
 </script>
 
 <template>
-  <div data-slot="header" :class="cls">
+  <div data-soybean-empty-header :class="cls">
     <slot />
   </div>
 </template>

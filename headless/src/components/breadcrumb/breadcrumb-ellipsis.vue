@@ -12,7 +12,7 @@ const cls = useBreadcrumbUi('ellipsis');
 </script>
 
 <template>
-  <span :class="cls" role="presentation" aria-hidden="true">
+  <span data-soybean-breadcrumb-ellipsis :class="cls" role="presentation" aria-hidden="true">
     <slot>…</slot>
   </span>
 </template>

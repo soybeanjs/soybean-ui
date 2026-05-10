@@ -27,8 +27,8 @@ const ariaOrientation = computed(() => (computedOrientation.value === 'vertical'
 
 <template>
   <div
+    data-soybean-separator-root
     :class="cls"
-    data-slot="root"
     :data-orientation="computedOrientation"
     :aria-orientation="ariaOrientation"
     :role="decorative ? 'none' : 'separator'"

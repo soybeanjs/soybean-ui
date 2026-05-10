@@ -12,7 +12,7 @@ const cls = usePaginationUi('ellipsis');
 </script>
 
 <template>
-  <div :class="cls" data-type="ellipsis">
+  <div data-soybean-pagination-ellipsis :class="cls" data-type="ellipsis">
     <slot>...</slot>
   </div>
 </template>

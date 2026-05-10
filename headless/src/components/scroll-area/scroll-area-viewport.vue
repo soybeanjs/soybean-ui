@@ -39,8 +39,8 @@ const contentStyle = computed<CSSProperties>(() => ({
 <template>
   <div
     :ref="setViewportElement"
-    data-soybean-scroll-area-viewport=""
     v-bind="viewportProps"
+    data-soybean-scroll-area-viewport
     :class="cls"
     class="soybean-headless-scrollbar-hidden"
     :style="style"

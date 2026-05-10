@@ -12,7 +12,7 @@ const cls = useTreeMenuUi('groupLabel');
 </script>
 
 <template>
-  <div :class="cls" data-slot="groupLabel">
+  <div data-soybean-tree-menu-group-label :class="cls">
     <slot />
   </div>
 </template>

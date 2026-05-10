@@ -12,7 +12,7 @@ const cls = useAlertUi('description');
 </script>
 
 <template>
-  <p :class="cls">
+  <p data-soybean-alert-description :class="cls">
     <slot />
   </p>
 </template>

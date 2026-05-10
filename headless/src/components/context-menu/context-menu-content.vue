@@ -44,6 +44,7 @@ function onInteractOutside(event: PointerDownOutsideEvent | FocusOutsideEvent) {
 <template>
   <MenuContent
     v-bind="props"
+    data-soybean-context-menu-content
     side="right"
     :side-offset="2"
     align="start"

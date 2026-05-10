@@ -30,6 +30,7 @@ const dataState = computed(() => getCheckedState(checked.value));
     :ref="setIndicatorElement"
     :as="as"
     :as-child="asChild"
+    data-soybean-radio-group-indicator
     :class="cls"
     :data-state="dataState"
     :data-disabled="disabled ? '' : undefined"

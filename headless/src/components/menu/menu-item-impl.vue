@@ -66,6 +66,7 @@ const onBlur = async (event: FocusEvent) => {
   <Primitive
     v-bind="forwardedProps"
     :ref="setItemElement"
+    data-soybean-menu-item-impl
     role="menuitem"
     tabindex="-1"
     :aria-disabled="disabled || undefined"

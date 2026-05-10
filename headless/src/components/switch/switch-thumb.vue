@@ -20,8 +20,8 @@ const cls = useSwitchUi('thumb');
   <Primitive
     :as="as"
     :as-child="asChild"
+    data-soybean-switch-thumb
     :class="cls"
-    data-slot="thumb"
     :data-disabled="dataDisabled"
     :data-state="dataState"
   >

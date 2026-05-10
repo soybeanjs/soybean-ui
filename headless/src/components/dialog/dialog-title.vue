@@ -16,7 +16,7 @@ initTitleId();
 </script>
 
 <template>
-  <h2 :id="titleId" :class="cls">
+  <h2 :id="titleId" data-soybean-dialog-title :class="cls">
     <slot />
   </h2>
 </template>

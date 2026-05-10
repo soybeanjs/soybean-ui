@@ -23,7 +23,7 @@ const handleClose = async (event: PointerEvent) => {
 </script>
 
 <template>
-  <Button v-bind="props" :class="cls" data-slot="cancel" @click="handleClose">
+  <Button v-bind="props" data-soybean-popconfirm-cancel :class="cls" @click="handleClose">
     <slot />
   </Button>
 </template>

@@ -63,7 +63,7 @@ watchEffect(() => {
 </script>
 
 <template>
-  <nav :ref="setRootElement" :class="cls" :data-orientation="orientation" data-soybean-navigation-menu :dir="dir">
+  <nav :ref="setRootElement" data-soybean-navigation-menu :class="cls" :data-orientation="orientation" :dir="dir">
     <slot :model-value="modelValue" />
   </nav>
 </template>

@@ -22,7 +22,7 @@ const disabled = computed(() => rootDisabled.value || props.disabled);
 
 <template>
   <RovingFocusItem as-child :focusable="!disabled">
-    <ToggleGroupItem v-bind="props" :class="cls" :disabled="disabled">
+    <ToggleGroupItem v-bind="props" data-soybean-toolbar-toggle-item :class="cls" :disabled="disabled">
       <slot />
     </ToggleGroupItem>
   </RovingFocusItem>

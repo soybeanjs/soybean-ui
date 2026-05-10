@@ -12,7 +12,7 @@ const cls = useInputOtpUi('positioner');
 </script>
 
 <template>
-  <div data-slot="positioner" :class="cls">
+  <div data-soybean-input-otp-positioner :class="cls">
     <slot />
   </div>
 </template>

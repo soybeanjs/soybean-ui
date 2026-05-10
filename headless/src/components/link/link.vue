@@ -98,10 +98,26 @@ const handleClick = (event: Event) => {
 </script>
 
 <template>
-  <Primitive v-if="isHref" v-bind="forwardedProps" :as="as" :as-child="asChild" data-link @click="handleClick">
+  <Primitive
+    v-if="isHref"
+    v-bind="forwardedProps"
+    :as="as"
+    :as-child="asChild"
+    data-soybean-link
+    data-link
+    @click="handleClick"
+  >
     <slot :is-href="true" />
   </Primitive>
-  <component :is="LinkComponent" v-else v-slot="slotProps" v-bind="forwardedProps" data-link @click="handleClick">
+  <component
+    :is="LinkComponent"
+    v-else
+    v-slot="slotProps"
+    v-bind="forwardedProps"
+    data-soybean-link
+    data-link
+    @click="handleClick"
+  >
     <slot :is-href="false" :is-active="slotProps?.isActive" :is-exact-active="slotProps?.isExactActive" />
   </component>
 </template>

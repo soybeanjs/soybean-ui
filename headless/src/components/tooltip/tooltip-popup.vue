@@ -31,7 +31,13 @@ initPopupId();
 </script>
 
 <template>
-  <PopperPopup :ref="setPopupElement" data-dismissable-layer :data-state="dataState" :style="cssVarsStyle">
+  <PopperPopup
+    :ref="setPopupElement"
+    data-soybean-tooltip-popup
+    data-dismissable-layer
+    :data-state="dataState"
+    :style="cssVarsStyle"
+  >
     <slot />
     <VisuallyHidden :id="popupId" role="tooltip">
       {{ ariaLabel }}

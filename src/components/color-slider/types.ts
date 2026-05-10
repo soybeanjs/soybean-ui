@@ -1,8 +1,4 @@
-import type {
-  ColorSliderCompactEmits,
-  ColorSliderCompactProps,
-  ColorSliderUi
-} from '@soybeanjs/headless/color-slider';
+import type { ColorSliderCompactEmits, ColorSliderCompactProps, ColorSliderUi } from '@soybeanjs/headless/color-slider';
 import type { ClassValue } from '@soybeanjs/headless/types';
 import type { ThemeColor, ThemeSize } from '@/theme';
 

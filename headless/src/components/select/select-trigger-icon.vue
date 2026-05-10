@@ -12,7 +12,7 @@ const cls = useSelectUi('triggerIcon');
 </script>
 
 <template>
-  <span :class="cls" aria-hidden="true">
+  <span data-soybean-select-trigger-icon :class="cls" aria-hidden="true">
     <slot />
   </span>
 </template>

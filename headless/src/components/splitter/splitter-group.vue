@@ -282,6 +282,7 @@ refreshLayout();
     :ref="setRootElement"
     :as="as"
     :as-child="asChild"
+    data-soybean-splitter-group
     :class="cls"
     :dir="dir"
     :data-orientation="direction"

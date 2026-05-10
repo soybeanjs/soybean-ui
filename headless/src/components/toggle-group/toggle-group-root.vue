@@ -70,6 +70,7 @@ provideToggleGroupRootContext({
     :ref="setGroupElement"
     :as="as"
     :as-child="asChild"
+    data-soybean-toggle-group-root
     :class="cls"
     :dir="dir"
     role="group"

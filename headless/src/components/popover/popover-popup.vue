@@ -32,6 +32,7 @@ initPopupId();
   <PopperPopup
     :id="popupId"
     :ref="setPopupElement"
+    data-soybean-popover-popup
     :aria-labelledby="triggerId"
     data-dismissable-layer
     :data-state="dataState"

@@ -40,7 +40,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div :aria-labelledby="id" role="group" :class="cls" :hidden="visible ? undefined : true" data-slot="group">
+  <div :aria-labelledby="id" role="group" data-soybean-combobox-group :class="cls" :hidden="visible ? undefined : true">
     <slot />
   </div>
 </template>

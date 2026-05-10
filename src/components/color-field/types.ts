@@ -1,8 +1,4 @@
-import type {
-  ColorFieldCompactEmits,
-  ColorFieldCompactProps,
-  ColorFieldUi
-} from '@soybeanjs/headless/color-field';
+import type { ColorFieldCompactEmits, ColorFieldCompactProps, ColorFieldUi } from '@soybeanjs/headless/color-field';
 import type { ClassValue } from '@soybeanjs/headless/types';
 import type { ThemeSize } from '@/theme';
 

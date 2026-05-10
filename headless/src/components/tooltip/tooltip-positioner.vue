@@ -26,7 +26,7 @@ const isPresent = props.forceMount ? shallowRef(true) : usePresence(popupElement
 </script>
 
 <template>
-  <TooltipPositionerImpl v-if="isPresent" v-bind="forwardedProps" v-on="listeners">
+  <TooltipPositionerImpl v-if="isPresent" v-bind="forwardedProps" data-soybean-tooltip-positioner v-on="listeners">
     <slot />
   </TooltipPositionerImpl>
 </template>

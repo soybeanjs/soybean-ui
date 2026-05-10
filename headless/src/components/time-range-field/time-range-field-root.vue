@@ -290,12 +290,12 @@ onMounted(refreshSegmentElements);
     :ref="setRootElement"
     :as="as"
     :as-child="asChild"
+    data-soybean-time-range-field-root
     :class="cls"
     :data-disabled="disabled ? '' : undefined"
     :data-invalid="isInvalid ? '' : undefined"
     :data-readonly="readonly ? '' : undefined"
     :dir="dir"
-    data-slot="root"
     role="group"
     @keydown="handleRootKeydown"
   >

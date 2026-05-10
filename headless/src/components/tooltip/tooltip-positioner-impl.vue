@@ -96,7 +96,7 @@ watchPostEffect(() => {
 </script>
 
 <template>
-  <PopperPositioner v-bind="positionerProps" :ref="setPositionerElement">
+  <PopperPositioner v-bind="positionerProps" :ref="setPositionerElement" data-soybean-tooltip-positioner-impl>
     <slot />
   </PopperPositioner>
 </template>

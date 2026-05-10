@@ -135,7 +135,7 @@ const controlProps = computed<InputControlProps>(() =>
       ...props.controlProps
     },
     {
-      'data-slot': 'input-control',
+      'data-soybean-combobox-input-control': '',
       role: 'combobox',
       'aria-autocomplete': 'list',
       autocomplete: 'off',
@@ -178,7 +178,7 @@ onMounted(() => {
   <ListboxFilter
     v-bind="forwardedProps"
     v-model="inputValue"
-    data-slot="input-root"
+    data-soybean-combobox-input-root
     :control-props="controlProps"
     :input-ref="inputRef"
   >

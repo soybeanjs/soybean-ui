@@ -14,5 +14,12 @@ const { affixed, placeholderStyle } = useAffixRootContext('AffixPlaceholder');
 </script>
 
 <template>
-  <div v-if="affixed" :class="cls" aria-hidden="true" role="presentation" :style="placeholderStyle" />
+  <div
+    v-if="affixed"
+    data-soybean-affix-placeholder
+    :class="cls"
+    aria-hidden="true"
+    role="presentation"
+    :style="placeholderStyle"
+  />
 </template>

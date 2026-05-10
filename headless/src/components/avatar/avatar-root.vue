@@ -14,7 +14,7 @@ provideAvatarRootContext();
 </script>
 
 <template>
-  <span data-slot="root" :class="cls">
+  <span data-soybean-avatar-root :class="cls">
     <slot />
   </span>
 </template>

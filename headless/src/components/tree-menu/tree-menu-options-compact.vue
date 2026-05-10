@@ -61,7 +61,7 @@ const activePaths = computed(() => getTreePaths(modelValue.value, items.value));
         </slot>
       </TreeMenuGroupLabel>
       <TreeMenuGroup v-bind="groupProps">
-        <TreeMenuOptionCompact
+        <TreeMenuOptionCompact data-soybean-tree-menu-option-compact
           v-for="child in item.children"
           :key="child.value"
           v-bind="forwardedOptionProps"
@@ -76,7 +76,7 @@ const activePaths = computed(() => getTreePaths(modelValue.value, items.value));
         </TreeMenuOptionCompact>
       </TreeMenuGroup>
     </TreeMenuGroupRoot>
-    <TreeMenuOptionCompact
+    <TreeMenuOptionCompact data-soybean-tree-menu-option-compact
       v-else
       as="div"
       v-bind="forwardedOptionProps"

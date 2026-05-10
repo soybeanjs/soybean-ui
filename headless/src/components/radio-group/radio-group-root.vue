@@ -47,6 +47,7 @@ provideRadioGroupRootContext({
   <RovingFocusGroup as-child :orientation="orientation" :dir="dir" :loop="loop">
     <div
       ref="rootElement"
+      data-soybean-radio-group-root
       :class="cls"
       role="radiogroup"
       :data-disabled="disabled ? '' : undefined"

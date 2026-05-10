@@ -12,7 +12,7 @@ const cls = useListUi('root');
 </script>
 
 <template>
-  <ul :class="cls">
+  <ul data-soybean-list-root :class="cls">
     <slot />
   </ul>
 </template>

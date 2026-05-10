@@ -72,7 +72,14 @@ watch(
 </script>
 
 <template>
-  <Primitive v-if="typeof indicatorStyle.size === 'number'" :as="as" :as-child="asChild" :class="cls" :style="style">
+  <Primitive
+    v-if="typeof indicatorStyle.size === 'number'"
+    data-soybean-tabs-indicator
+    :as="as"
+    :as-child="asChild"
+    :class="cls"
+    :style="style"
+  >
     <slot />
   </Primitive>
 </template>

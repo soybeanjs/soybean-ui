@@ -19,6 +19,7 @@ const cls = useLayoutUi('trigger');
 <template>
   <Button
     v-bind="props"
+    data-soybean-layout-trigger
     :class="cls"
     :aria-label="messages.layout.toggleSidebar"
     data-sidebar="trigger"

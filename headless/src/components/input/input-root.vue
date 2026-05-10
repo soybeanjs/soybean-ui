@@ -59,7 +59,7 @@ provideInputRootContext({
 <template>
   <div
     :ref="setRootElement"
-    data-slot="root"
+    data-soybean-input-root
     :class="cls"
     role="group"
     :data-disabled="disabled ? '' : undefined"

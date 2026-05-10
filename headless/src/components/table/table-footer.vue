@@ -12,7 +12,7 @@ const cls = useTableUi('footer');
 </script>
 
 <template>
-  <tfoot :class="cls">
+  <tfoot data-soybean-table-footer :class="cls">
     <slot />
   </tfoot>
 </template>

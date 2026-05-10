@@ -48,6 +48,7 @@ defineExpose({
     :ref="setContainerElement"
     :as="as"
     :as-child="asChild"
+    data-soybean-roving-focus-group
     v-on="rovingFocusGroupListeners"
   >
     <slot />

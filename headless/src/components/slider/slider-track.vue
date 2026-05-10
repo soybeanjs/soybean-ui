@@ -36,6 +36,7 @@ function onPointerDown(event: PointerEvent) {
     :ref="setElementRef"
     :as="as"
     :as-child="asChild"
+    data-soybean-slider-track
     :class="cls"
     :data-disabled="disabled ? '' : undefined"
     :data-orientation="orientation"

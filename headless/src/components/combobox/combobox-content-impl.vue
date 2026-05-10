@@ -170,7 +170,6 @@ onUnmounted(() => {
       :id="contentId"
       :ref="setContentElement"
       v-bind="popupProps"
-      data-slot="popup"
       data-dismissable-layer
       :data-state="open ? 'open' : 'closed'"
       :data-empty="isEmpty ? '' : undefined"
@@ -186,7 +185,6 @@ onUnmounted(() => {
     :ref="setContentElement"
     v-bind="popupProps"
     as="div"
-    data-slot="popup"
     data-dismissable-layer
     :data-state="open ? 'open' : 'closed'"
     :data-empty="isEmpty ? '' : undefined"

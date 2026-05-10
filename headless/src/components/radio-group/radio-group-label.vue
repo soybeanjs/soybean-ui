@@ -18,7 +18,7 @@ const id = computed(() => props.for || controlId.value);
 </script>
 
 <template>
-  <Label :for="id" :class="cls">
+  <Label data-soybean-radio-group-label :for="id" :class="cls">
     <slot />
   </Label>
 </template>

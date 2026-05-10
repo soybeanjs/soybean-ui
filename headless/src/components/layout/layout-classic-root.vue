@@ -129,6 +129,7 @@ provideLayoutClassicRootContext({
 
 <template>
   <div
+    data-soybean-layout-classic-root
     :class="cls"
     :data-orientation="orientation"
     :data-side="side"

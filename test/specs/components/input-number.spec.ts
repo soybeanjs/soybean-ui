@@ -31,7 +31,7 @@ describe('SInputNumber', () => {
     it('emits update:modelValue when the increment trigger is clicked', async () => {
       const wrapper = mount(SInputNumber, { attachTo: document.body });
 
-      await wrapper.find('[data-slot="increment"]').trigger('pointerdown', { button: 0 });
+      await wrapper.find('[data-soybean-input-number-increment]').trigger('pointerdown', { button: 0 });
 
       expect(wrapper.emitted('update:modelValue')).toBeTruthy();
       expect(wrapper.emitted('update:modelValue')![0]).toEqual([0]);
@@ -48,7 +48,7 @@ describe('SInputNumber', () => {
         attachTo: document.body
       });
 
-      await wrapper.find('[data-slot="clearable"]').trigger('click');
+      await wrapper.find('[data-soybean-input-number-clear]').trigger('click');
 
       expect(wrapper.emitted('update:modelValue')).toBeTruthy();
       expect(wrapper.emitted('update:modelValue')![0]).toEqual([null]);
@@ -70,7 +70,7 @@ describe('SInputNumber', () => {
       expect(wrapper.find('input').element.disabled).toBe(true);
       expect((wrapper.find('[aria-label="Increase"]').element as HTMLButtonElement).disabled).toBe(true);
       expect((wrapper.find('[aria-label="Decrease"]').element as HTMLButtonElement).disabled).toBe(true);
-      expect((wrapper.find('[data-slot="clearable"]').element as HTMLButtonElement).disabled).toBe(true);
+      expect((wrapper.find('[data-soybean-input-number-clear]').element as HTMLButtonElement).disabled).toBe(true);
 
       wrapper.unmount();
     });

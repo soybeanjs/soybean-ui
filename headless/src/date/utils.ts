@@ -65,7 +65,7 @@ export function handleCalendarInitialFocus(calendar: HTMLElement) {
   }
 
   const firstDay = calendar.querySelector<HTMLElement>(
-    '[data-slot="cell-trigger"]:not([data-disabled]):not([data-unavailable])'
+    '[data-soybean-calendar-cell-trigger]:not([data-disabled]):not([data-unavailable])'
   );
   firstDay?.focus();
 }

@@ -70,7 +70,7 @@ provideTextareaRootContext({
 <template>
   <div
     :ref="setRootElement"
-    data-slot="root"
+    data-soybean-textarea-root
     :class="cls"
     role="group"
     :data-disabled="disabled ? '' : undefined"

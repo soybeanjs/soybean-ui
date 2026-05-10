@@ -168,9 +168,9 @@ defineExpose({
 <template>
   <Button
     v-bind="forwardedProps"
+    data-soybean-backtop
     :aria-hidden="visible ? undefined : true"
     :aria-label="ariaLabel"
-    data-slot="root"
     :data-state="dataState"
     :hidden="!visible"
     @click="onClick"

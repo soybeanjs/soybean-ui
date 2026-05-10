@@ -52,9 +52,9 @@ provideTagsInputItemContext({
   <Primitive
     v-bind="forwardedProps"
     :ref="setItemElement"
-    :class="cls"
-    data-slot="item"
+    data-soybean-tags-input-item
     data-soybean-collection-item
+    :class="cls"
     :aria-labelledby="textId || undefined"
     :aria-current="isSelected ? 'true' : undefined"
     :data-disabled="disabled ? '' : undefined"

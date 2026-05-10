@@ -215,7 +215,7 @@ provideTagsInputRootContext({
 <template>
   <div
     :ref="setRootElement"
-    data-slot="root"
+    data-soybean-tags-input-root
     :class="cls"
     role="group"
     :dir="dir"

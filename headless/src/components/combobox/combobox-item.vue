@@ -136,11 +136,11 @@ onUnmounted(() => {
 <template>
   <ListboxItem
     v-if="visible"
-    v-bind="forwardedProps"
     :ref="setItemElement"
+    v-bind="forwardedProps"
+    data-soybean-combobox-item
     :value="value"
     :disabled="disabled"
-    data-slot="item"
     @select="onSelect"
   >
     <slot />

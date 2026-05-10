@@ -10,7 +10,7 @@ describe('SSeparator', () => {
       const separator = wrapper.get('[role="separator"]');
 
       expect(separator.attributes('data-orientation')).toBe('horizontal');
-      expect(separator.attributes('data-slot')).toBe('root');
+      expect(separator.attributes('data-soybean-separator-root')).toBe('');
       wrapper.unmount();
     });
 
@@ -20,7 +20,7 @@ describe('SSeparator', () => {
         attachTo: document.body
       });
 
-      expect(wrapper.get('[data-slot="label"]').text()).toBe('Section');
+      expect(wrapper.get('[data-soybean-separator-label]').text()).toBe('Section');
       wrapper.unmount();
     });
 
@@ -30,7 +30,7 @@ describe('SSeparator', () => {
         attachTo: document.body
       });
 
-      expect(wrapper.get('[data-slot="label"]').text()).toBe('Slot label');
+      expect(wrapper.get('[data-soybean-separator-label]').text()).toBe('Slot label');
       wrapper.unmount();
     });
 
@@ -46,8 +46,8 @@ describe('SSeparator', () => {
         attachTo: document.body
       });
 
-      expect(wrapper.get('[data-slot="root"]').classes()).toContain('custom-root');
-      expect(wrapper.get('[data-slot="label"]').classes()).toContain('custom-label');
+      expect(wrapper.get('[data-soybean-separator-root]').classes()).toContain('custom-root');
+      expect(wrapper.get('[data-soybean-separator-label]').classes()).toContain('custom-label');
       wrapper.unmount();
     });
   });
@@ -63,7 +63,7 @@ describe('SSeparator', () => {
       });
 
       expect(wrapper.get('[role="separator"]').attributes('data-orientation')).toBe('vertical');
-      expect(wrapper.find('[data-slot="label"]').exists()).toBe(false);
+      expect(wrapper.find('[data-soybean-separator-label]').exists()).toBe(false);
       wrapper.unmount();
     });
   });

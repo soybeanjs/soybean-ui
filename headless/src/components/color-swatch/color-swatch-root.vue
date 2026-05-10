@@ -27,6 +27,7 @@ const colorContrast = computed(() => getColorContrast(props.color));
   <Primitive
     :as="as"
     :as-child="asChild"
+    data-soybean-color-swatch-root
     :class="cls"
     role="img"
     :aria-label="label"

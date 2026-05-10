@@ -12,7 +12,7 @@ const cls = useMenuUi('groupLabel');
 </script>
 
 <template>
-  <div :class="cls">
+  <div data-soybean-menu-group-label :class="cls">
     <slot />
   </div>
 </template>

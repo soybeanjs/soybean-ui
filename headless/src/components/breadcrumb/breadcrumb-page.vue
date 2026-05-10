@@ -12,7 +12,7 @@ const cls = useBreadcrumbUi('page');
 </script>
 
 <template>
-  <span :class="cls" role="link" aria-disabled="true" aria-current="page">
+  <span data-soybean-breadcrumb-page :class="cls" role="link" aria-disabled="true" aria-current="page">
     <slot />
   </span>
 </template>

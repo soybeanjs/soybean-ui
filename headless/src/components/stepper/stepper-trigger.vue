@@ -79,6 +79,8 @@ onBeforeUnmount(() => {
     v-bind="forwardedProps"
     :as="as"
     :as-child="asChild"
+    data-soybean-stepper-trigger
+    data-soybean-collection-item
     :class="cls"
     :type="as === 'button' ? 'button' : undefined"
     :disabled="disabled || !isFocusable ? true : undefined"
@@ -88,7 +90,6 @@ onBeforeUnmount(() => {
     :tabindex="isFocusable ? 0 : -1"
     :aria-describedby="descriptionId"
     :aria-labelledby="titleId"
-    data-soybean-collection-item
     @mousedown.left="onMouseDown"
     @keydown.enter.space.left.right.up.down.home.end="onKeyDown"
   >

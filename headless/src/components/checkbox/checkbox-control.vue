@@ -58,6 +58,7 @@ watchEffect(() => {
     :ref="setControlElement"
     v-bind="props"
     :as="rovingFocus ? Button : props.as"
+    data-soybean-checkbox-control
     :class="cls"
     :focusable="focusable"
     role="checkbox"

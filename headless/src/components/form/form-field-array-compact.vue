@@ -26,7 +26,7 @@ const error = computed(() => state.value.meta.error);
 </script>
 
 <template>
-  <FormFieldBaseCompact v-bind="props" :error="error" :is-field-array="true">
+  <FormFieldBaseCompact data-soybean-form-field-array v-bind="props" :error="error" :is-field-array="true">
     <template v-for="slotName in slotNames" :key="slotName" #[slotName]>
       <slot :name="slotName" v-bind="state" />
     </template>

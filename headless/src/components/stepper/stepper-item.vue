@@ -67,6 +67,7 @@ provideStepperItemContext({
     v-bind="forwardedProps"
     :as="as"
     :as-child="asChild"
+    data-soybean-stepper-item
     :class="cls"
     :aria-current="state === 'active' ? 'step' : undefined"
     :data-disabled="dataDisabled"

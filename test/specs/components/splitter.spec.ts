@@ -101,8 +101,8 @@ describe('Splitter', () => {
         { attachTo: document.body }
       );
 
-      const horizontalHandle = horizontalWrapper.find('[data-slot="splitter-resize-handle"]');
-      const verticalHandle = verticalWrapper.find('[data-slot="splitter-resize-handle"]');
+      const horizontalHandle = horizontalWrapper.find('[data-splitter-resize-handle]');
+      const verticalHandle = verticalWrapper.find('[data-splitter-resize-handle]');
 
       expect(horizontalHandle.classes()).toContain('cursor-col-resize');
       expect(horizontalHandle.classes()).toContain('data-[state=hover]:bg-accent');
@@ -134,8 +134,8 @@ describe('Splitter', () => {
       await nextTick();
 
       const group = wrapper.findComponent(SSplitterGroup);
-      const groupElement = wrapper.find('[data-slot="splitter-group"]');
-      const handle = wrapper.find('[data-slot="splitter-resize-handle"]');
+      const groupElement = wrapper.find('[data-splitter-group-id]');
+      const handle = wrapper.find('[data-splitter-resize-handle]');
 
       mockRect(groupElement.element, { x: 0, y: 0, width: 100, height: 40 });
       dispatchPointerEvent(handle.element, 'pointerdown', { clientX: 50, clientY: 20, pointerId: 1 });
@@ -167,7 +167,7 @@ describe('Splitter', () => {
       await nextTick();
 
       const group = wrapper.findComponent(SSplitterGroup);
-      const handle = wrapper.find('[data-slot="splitter-resize-handle"]');
+      const handle = wrapper.find('[data-splitter-resize-handle]');
 
       await handle.trigger('keydown', { key: 'ArrowRight' });
 
@@ -193,7 +193,7 @@ describe('Splitter', () => {
         { attachTo: document.body }
       );
 
-      const handle = wrapper.find('[data-slot="splitter-resize-handle"]');
+      const handle = wrapper.find('[data-splitter-resize-handle]');
       const panel = wrapper.find('[data-panel]');
 
       await handle.trigger('keydown', { key: 'Enter' });
@@ -222,8 +222,8 @@ describe('Splitter', () => {
       await nextTick();
 
       const group = wrapper.findComponent(SSplitterGroup);
-      const groupElement = wrapper.find('[data-slot="splitter-group"]');
-      const handle = wrapper.find('[data-slot="splitter-resize-handle"]');
+      const groupElement = wrapper.find('[data-splitter-group-id]');
+      const handle = wrapper.find('[data-splitter-resize-handle]');
 
       mockRect(groupElement.element, { x: 0, y: 0, width: 100, height: 40 });
       dispatchPointerEvent(handle.element, 'pointerdown', { clientX: 50, clientY: 20, pointerId: 1 });

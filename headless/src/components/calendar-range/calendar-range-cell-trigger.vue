@@ -192,6 +192,7 @@ const handleKeydown = (event: KeyboardEvent) => {
   <Button
     :ref="setElement"
     v-bind="forwardedProps"
+    data-soybean-calendar-range-cell-trigger
     :class="cls"
     :disabled="isDisabled || isUnavailable"
     :aria-label="labelText"
@@ -209,7 +210,6 @@ const handleKeydown = (event: KeyboardEvent) => {
     :data-unavailable="isUnavailable ? '' : undefined"
     :data-value="day.toString()"
     :tabindex="isFocusedDate ? 0 : isOutsideView || isDisabled ? undefined : -1"
-    data-slot="cell-trigger"
     @click="handleClick"
     @focusin="handlePointerEnter"
     @keydown="handleKeydown"

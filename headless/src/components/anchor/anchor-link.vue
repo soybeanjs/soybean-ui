@@ -56,8 +56,9 @@ watch(
   <Primitive
     :as="as"
     :as-child="asChild"
-    :href="href"
+    data-soybean-anchor-link
     :class="cls"
+    :href="href"
     :target="target"
     :aria-current="active ? 'location' : undefined"
     :aria-disabled="disabled ? 'true' : undefined"

@@ -76,7 +76,12 @@ watchPostEffect(() => {
 </script>
 
 <template>
-  <PopperPositioner v-bind="forwardedProps" :ref="setPositionerElement" @keydown="onKeydown">
+  <PopperPositioner
+    v-bind="forwardedProps"
+    :ref="setPositionerElement"
+    data-soybean-popover-positioner-impl
+    @keydown="onKeydown"
+  >
     <slot />
   </PopperPositioner>
 </template>

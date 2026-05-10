@@ -82,6 +82,7 @@ const onUpdatePlaceholder = (placeholder: DateValue) => {
 <template>
   <DateFieldCompact
     v-bind="dateFieldProps"
+    data-soybean-date-picker
     @update:model-value="emit('update:modelValue', $event)"
     @update:placeholder="emit('update:placeholder', $event)"
   >

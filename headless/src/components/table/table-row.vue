@@ -12,7 +12,7 @@ const cls = useTableUi('row');
 </script>
 
 <template>
-  <tr :class="cls">
+  <tr data-soybean-table-row :class="cls">
     <slot />
   </tr>
 </template>

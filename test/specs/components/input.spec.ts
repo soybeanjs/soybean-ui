@@ -74,7 +74,7 @@ describe('SInput', () => {
         attachTo: document.body
       });
 
-      await wrapper.find('[data-slot="clearable"]').trigger('click');
+      await wrapper.find('[data-soybean-input-clearable]').trigger('click');
 
       expect(wrapper.emitted('update:modelValue')).toBeTruthy();
       expect(wrapper.emitted('update:modelValue')![0]).toEqual(['']);

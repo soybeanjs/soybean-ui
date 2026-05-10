@@ -47,8 +47,8 @@ providePageTabsRootContext({
   <RovingFocusGroup
     :ref="setRootElement"
     v-bind="forwardedProps"
+    data-soybean-page-tabs-root
     :class="cls"
-    data-slot="root"
     orientation="horizontal"
     class="soybean-headless-scrollbar-hidden soybean-headless-overflow-y-hidden"
     @wheel="onWheel"

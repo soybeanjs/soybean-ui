@@ -46,6 +46,7 @@ function onDoubleClick() {
 <template>
   <Primitive
     v-bind="props"
+    data-soybean-editable-preview
     :class="cls"
     :data-disabled="dataDisabled"
     :data-placeholder-shown="isEmpty ? '' : undefined"

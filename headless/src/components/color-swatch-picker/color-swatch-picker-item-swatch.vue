@@ -13,7 +13,7 @@ const { color } = useColorSwatchPickerItemContext('ColorSwatchPickerItemSwatch')
 </script>
 
 <template>
-  <ColorSwatchCompact v-bind="props" :color="color">
+  <ColorSwatchCompact v-bind="props" data-soybean-color-swatch-picker-item-swatch :color="color">
     <slot />
   </ColorSwatchCompact>
 </template>

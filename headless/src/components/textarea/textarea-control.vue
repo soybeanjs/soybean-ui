@@ -37,7 +37,7 @@ watch(
   <textarea
     :id="id"
     ref="textareaRef"
-    data-slot="control"
+    data-soybean-textarea-control
     :class="cls"
     :aria-disabled="disabled ?? undefined"
     aria-roledescription="Textarea"

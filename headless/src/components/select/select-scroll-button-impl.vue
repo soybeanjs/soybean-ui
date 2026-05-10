@@ -63,6 +63,7 @@ onBeforeUnmount(() => {
 <template>
   <Button
     v-bind="props"
+    data-soybean-select-scroll-button-impl
     aria-hidden="true"
     style="flex-shrink: 0"
     @pointerdown="onPointerDown"

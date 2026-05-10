@@ -34,6 +34,7 @@ const isFormArrayEmptyAndRequired = computed(
     v-if="isFormArrayEmptyAndRequired"
     :key="name"
     v-bind="{ ...props, ...attrs }"
+    data-soybean-visually-hidden-input
     :name="name"
     :value="value"
   />
@@ -42,6 +43,7 @@ const isFormArrayEmptyAndRequired = computed(
       v-for="parsed in parsedValue"
       :key="parsed.name"
       v-bind="{ ...props, ...attrs }"
+      data-soybean-visually-hidden-input
       :name="parsed.name"
       :value="parsed.value"
     />

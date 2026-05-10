@@ -16,7 +16,7 @@ initLabelId();
 </script>
 
 <template>
-  <div :class="cls" :aria-labelledby="labelId" role="group">
+  <div data-soybean-select-group :class="cls" :aria-labelledby="labelId" role="group">
     <slot />
   </div>
 </template>

@@ -101,6 +101,7 @@ const tooltipListeners = computed(() => {
     :ref="setTriggerElement"
     :as="as"
     :as-child="asChild"
+    data-soybean-tooltip-trigger
     :reference="reference"
     :aria-describedby="open ? popupId : undefined"
     :data-state="dataState"

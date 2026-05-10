@@ -31,7 +31,7 @@ describe('SSwitch', () => {
         },
         attachTo: document.body
       });
-      expect(wrapper.find('[data-slot="thumb"] [data-testid="thumb-slot"]').exists()).toBe(true);
+      expect(wrapper.find('[data-soybean-switch-thumb] [data-testid="thumb-slot"]').exists()).toBe(true);
       wrapper.unmount();
     });
   });

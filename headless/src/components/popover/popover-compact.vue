@@ -12,7 +12,8 @@ import PopoverClose from './popover-close.vue';
 import type { PopoverCompactProps, PopoverCompactEmits, PopoverCompactSlots } from './types';
 
 defineOptions({
-  name: 'PopoverCompact'
+  name: 'PopoverCompact',
+  inheritAttrs: false
 });
 
 const props = withDefaults(defineProps<PopoverCompactProps>(), {

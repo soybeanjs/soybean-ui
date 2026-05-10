@@ -10,7 +10,7 @@ const props = defineProps<ToastProviderProps>();
 </script>
 
 <template>
-  <Toaster v-bind="props">
+  <Toaster data-soybean-toast-provider v-bind="props">
     <slot />
   </Toaster>
 </template>

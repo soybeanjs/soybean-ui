@@ -123,6 +123,7 @@ provideProgressRootContext({
 <template>
   <Primitive
     v-bind="forwardedProps"
+    data-soybean-progress-root
     :class="cls"
     role="progressbar"
     :aria-label="ariaLabel"
@@ -132,7 +133,6 @@ provideProgressRootContext({
     :data-state="progressState"
     :data-value="normalizedModelValue ?? undefined"
     :data-max="normalizedMax"
-    data-slot="root"
   >
     <slot
       :model-value="normalizedModelValue"

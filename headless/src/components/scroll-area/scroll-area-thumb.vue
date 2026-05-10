@@ -27,10 +27,10 @@ const { dataState, hasOverflow, onThumbPointerDown, onThumbPointerUp, orientatio
     v-bind="forwardedProps"
     :as="as"
     :as-child="asChild"
+    data-soybean-scroll-area-thumb
     :class="cls"
     :data-orientation="orientation"
     :data-state="dataState"
-    data-soybean-scroll-area-thumb=""
     :aria-hidden="true"
     :hidden="hasOverflow ? undefined : ''"
     :style="thumbStyle"

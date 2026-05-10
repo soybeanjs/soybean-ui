@@ -36,7 +36,7 @@ const onContentArrowNavigation = (event: KeyboardEvent) => {
   const nextKey = dir.value === 'rtl' ? 'ArrowLeft' : 'ArrowRight';
 
   if (event.key !== nextKey) return;
-  if (target.hasAttribute('data-soybean-menubar-subtrigger')) return;
+  if (target.hasAttribute('data-soybean-menubar-sub-trigger')) return;
 
   const candidateValues = getOrderedItems().map(item => item.data.value);
 
@@ -68,7 +68,7 @@ provideMenubarMenuContext({
 
 provideMenuSubAttributeContext({
   subTrigger: computed(() => ({
-    'data-soybean-menubar-subtrigger': ''
+    'data-soybean-menubar-sub-trigger': ''
   })),
   subContent: computed(() => ({ onKeydown: onContentArrowNavigation }))
 });

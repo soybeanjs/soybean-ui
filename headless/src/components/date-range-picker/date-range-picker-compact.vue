@@ -82,11 +82,12 @@ const onUpdatePlaceholder = (placeholder: DateValue) => {
 <template>
   <DateRangeFieldCompact
     v-bind="dateFieldProps"
+    data-soybean-date-range-picker
     @update:model-value="emit('update:modelValue', $event)"
     @update:placeholder="emit('update:placeholder', $event)"
   >
     <template #trailing>
-      <PopoverCompact v-bind="popoverProps" :trigger-props="triggerProps" v-on="listeners">
+      <PopoverCompact data-soybean-popover-compact v-bind="popoverProps" :trigger-props="triggerProps" v-on="listeners">
         <template #trigger>
           <Icon icon="lucide:calendar" />
         </template>

@@ -58,13 +58,13 @@ const onClick = () => {
   <Primitive
     :as="as"
     :as-child="asChild"
+    data-soybean-combobox-cancel
     :class="cls"
     :type="tag"
     :aria-disabled="disabled || undefined"
     :data-disabled="disabled ? '' : undefined"
     :disabled="disabled"
     :tabindex="tabindex"
-    data-slot="cancel"
     @click="onClick"
   >
     <slot />

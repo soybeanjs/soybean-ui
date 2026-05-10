@@ -56,6 +56,7 @@ const onFocus = () => {
       :id="triggerId"
       :as="as"
       :as-child="asChild"
+      data-soybean-tabs-trigger
       :class="cls"
       :aria-controls="ariaControls"
       :aria-selected="isSelected ? 'true' : 'false'"

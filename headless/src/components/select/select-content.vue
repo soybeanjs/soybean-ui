@@ -40,7 +40,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <SelectContentImpl v-if="isPresent" v-bind="forwardedProps" v-on="listeners">
+  <SelectContentImpl v-if="isPresent" data-soybean-select-content v-bind="forwardedProps" v-on="listeners">
     <slot />
   </SelectContentImpl>
   <div v-else-if="fragment">

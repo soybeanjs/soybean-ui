@@ -10,7 +10,7 @@ const props = defineProps<CardContentProps>();
 </script>
 
 <template>
-  <CollapsibleContent v-bind="props" tabindex="-1">
+  <CollapsibleContent v-bind="props" data-soybean-card-content tabindex="-1">
     <slot />
   </CollapsibleContent>
 </template>

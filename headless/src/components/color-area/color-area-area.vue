@@ -173,6 +173,7 @@ function handleKeyDown(event: KeyboardEvent) {
     :ref="setAreaElement"
     :as="as"
     :as-child="asChild"
+    data-soybean-color-area-area
     :class="cls"
     role="application"
     aria-roledescription="Color picker area"

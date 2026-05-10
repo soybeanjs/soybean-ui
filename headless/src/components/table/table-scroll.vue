@@ -12,7 +12,7 @@ const cls = useTableUi('scroll');
 </script>
 
 <template>
-  <div :class="cls">
+  <div data-soybean-table-scroll :class="cls">
     <slot />
   </div>
 </template>

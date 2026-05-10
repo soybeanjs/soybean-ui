@@ -22,7 +22,7 @@ const isDisabled = computed(() => props.disabled || disabled.value);
   <Button
     v-bind="props"
     :class="cls"
-    data-slot="item-delete"
+    data-soybean-tags-input-item-delete
     tabindex="-1"
     :disabled="isDisabled"
     :aria-labelledby="textId || undefined"

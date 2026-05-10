@@ -28,7 +28,7 @@ watch(
 </script>
 
 <template>
-  <div :id="resolvedContentId" :ref="setCarouselRef" :class="cls" data-soybean-carousel-content>
+  <div :id="resolvedContentId" :ref="setCarouselRef" data-soybean-carousel-content :class="cls">
     <slot />
   </div>
 </template>

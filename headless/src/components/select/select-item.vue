@@ -130,6 +130,7 @@ if (props.value === '') {
   <Primitive
     v-bind="itemProps"
     :ref="setItemElement"
+    data-soybean-select-item
     :as="as"
     :as-child="asChild"
     :class="cls"

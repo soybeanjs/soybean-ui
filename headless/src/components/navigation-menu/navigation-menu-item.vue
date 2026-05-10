@@ -110,7 +110,12 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <li :class="cls" data-menu-item @keydown.up.down.left.right.home.end.space="onKeydown">
+  <li
+    data-soybean-navigation-menu-item
+    :class="cls"
+    data-menu-item
+    @keydown.up.down.left.right.home.end.space="onKeydown"
+  >
     <slot />
   </li>
 </template>

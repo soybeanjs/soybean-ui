@@ -41,7 +41,7 @@ applyTo: '{headless/src/components,src/components}/**/*.{ts,vue}'
 - Context 中的值保持响应式
 - 无 UI 样式、无 `@soybeanjs/ui` 导入
 - 稳定聚合结构已正确下沉为 `{Name}Compact`
-- 分片根元素带有正确的 `data-slot`
+- 分片根元素带有正确的 `data-soybean-{name}` 属性
 
 ## UI
 

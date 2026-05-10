@@ -74,6 +74,7 @@ useResizeObserver(indicatorTrackElement, onPositionChange);
       v-if="isPresent"
       v-bind="attrs"
       :ref="setIndicatorElement"
+      data-soybean-navigation-menu-indicator
       :class="cls"
       aria-hidden="true"
       :data-state="isVisible ? 'visible' : 'hidden'"

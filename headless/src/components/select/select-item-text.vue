@@ -41,7 +41,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <span :id="textId" :ref="setItemTextElement" :class="cls">
+  <span :id="textId" :ref="setItemTextElement" data-soybean-select-item-text :class="cls">
     <slot />
   </span>
 </template>

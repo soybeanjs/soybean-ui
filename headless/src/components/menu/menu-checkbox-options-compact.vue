@@ -45,7 +45,7 @@ const ui = useMenuUi();
   <MenuCheckboxGroup v-bind="forwardedProps" @update:model-value="emit('update:modelValue', $event)">
     <template v-for="item in items" :key="item.value">
       <MenuGroupLabel v-if="item.isGroupLabel" v-bind="groupLabelProps">
-        <MenuItemSlotCompact :icon="item.icon" :label="item.label">
+        <MenuItemSlotCompact data-soybean-menu-item-slot-compact :icon="item.icon" :label="item.label">
           <template v-for="slotName in commonSlotNames">
             <slot :name="slotName" v-bind="item" />
           </template>
@@ -59,7 +59,7 @@ const ui = useMenuUi();
         :text-value="item.textValue"
         @select="emit('select', item, $event)"
       >
-        <MenuItemSlotCompact :icon="item.icon" :label="item.label">
+        <MenuItemSlotCompact data-soybean-menu-item-slot-compact :icon="item.icon" :label="item.label">
           <template #indicator>
             <MenuItemIndicator v-bind="indicatorProps">
               <slot name="item-indicator-icon" v-bind="item">

@@ -69,6 +69,7 @@ const onKeyDown = (event: KeyboardEvent) => {
 <template>
   <MenuContentImpl
     v-if="isPresent"
+    data-soybean-menu-sub-content
     v-bind="mergedProps"
     :trap-focus="false"
     :disable-outside-pointer-events="false"

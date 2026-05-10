@@ -84,7 +84,7 @@ provideTreeMenuRootContext({
 </script>
 
 <template>
-  <div :class="cls" :data-state="dataState" :style="style" data-slot="root">
+  <div data-soybean-tree-menu-root :class="cls" :data-state="dataState" :style="style">
     <slot />
   </div>
 </template>

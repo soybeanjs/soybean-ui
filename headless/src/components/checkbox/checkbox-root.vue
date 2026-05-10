@@ -55,7 +55,7 @@ const { dataState } = provideCheckboxRootContext({
 </script>
 
 <template>
-  <div ref="rootElement" :class="cls" :data-state="dataState">
+  <div ref="rootElement" data-soybean-checkbox-root :class="cls" :data-state="dataState">
     <slot :model-value="modelValue" :state="state" />
 
     <VisuallyHiddenInput

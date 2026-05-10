@@ -42,7 +42,7 @@ describe('SPassword', () => {
     it('toggles the input type and emits update:visible', async () => {
       const wrapper = mount(SPassword, { attachTo: document.body });
 
-      await wrapper.find('[data-slot="visible"]').trigger('click');
+      await wrapper.find('[data-soybean-password-visible]').trigger('click');
 
       expect(wrapper.find('input').attributes('type')).toBe('text');
       expect(wrapper.emitted('update:visible')).toBeTruthy();
@@ -60,7 +60,7 @@ describe('SPassword', () => {
         attachTo: document.body
       });
 
-      await wrapper.find('[data-slot="clearable"]').trigger('click');
+      await wrapper.find('[data-soybean-input-clearable]').trigger('click');
 
       expect(wrapper.emitted('update:modelValue')).toBeTruthy();
       expect(wrapper.emitted('update:modelValue')![0]).toEqual(['']);
@@ -80,8 +80,8 @@ describe('SPassword', () => {
       });
 
       expect(wrapper.find('input').element.disabled).toBe(true);
-      expect((wrapper.find('[data-slot="visible"]').element as HTMLButtonElement).disabled).toBe(true);
-      expect((wrapper.find('[data-slot="clearable"]').element as HTMLButtonElement).disabled).toBe(true);
+      expect((wrapper.find('[data-soybean-password-visible]').element as HTMLButtonElement).disabled).toBe(true);
+      expect((wrapper.find('[data-soybean-input-clearable]').element as HTMLButtonElement).disabled).toBe(true);
 
       wrapper.unmount();
     });

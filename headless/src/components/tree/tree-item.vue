@@ -176,6 +176,7 @@ const onClick = (event: PointerEvent) => {
     <Primitive
       :as="as"
       :as-child="asChild"
+      data-soybean-tree-item
       :aria-disabled="disabled ? true : undefined"
       :aria-selected="isSelected"
       :aria-expanded="hasChildren ? isExpanded : undefined"

@@ -84,7 +84,7 @@ watchPostEffect(() => {
 </script>
 
 <template>
-  <div :ref="setPositionerElement" :class="cls" data-soybean-popper-positioner :style="positionerStyle">
+  <div :ref="setPositionerElement" data-soybean-popper-positioner :class="cls" :style="positionerStyle">
     <slot />
   </div>
 </template>

@@ -47,8 +47,9 @@ const onClick = () => {
     :ref="setTriggerElement"
     :as="as"
     :as-child="asChild"
-    :type="tag"
+    data-soybean-combobox-trigger
     :class="cls"
+    :type="tag"
     aria-haspopup="listbox"
     :aria-expanded="open || false"
     :aria-controls="contentId || undefined"
@@ -57,7 +58,6 @@ const onClick = () => {
     :data-disabled="disabled ? '' : undefined"
     :disabled="disabled"
     tabindex="-1"
-    data-slot="trigger"
     @click="onClick"
   >
     <slot :trigger-icon-class="triggerIconCls" />

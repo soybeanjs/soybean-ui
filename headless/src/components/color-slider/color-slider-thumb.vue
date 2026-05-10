@@ -23,6 +23,7 @@ const ariaValueText = computed(() => formatChannelValue(channel.value, channelVa
   <SliderThumb
     :as="as"
     :as-child="asChild"
+    data-soybean-color-slider-thumb
     :class="cls"
     :index="0"
     :aria-label="ariaLabel"

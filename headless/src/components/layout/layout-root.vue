@@ -87,6 +87,7 @@ provideLayoutRootContext({
 
 <template>
   <div
+    data-soybean-layout-root
     :class="cls"
     :data-collapsible="dataCollapsible"
     :data-side="side"

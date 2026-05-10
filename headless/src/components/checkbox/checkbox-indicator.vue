@@ -31,6 +31,7 @@ const isPresent = props.forceMount
     :ref="setIndicatorElement"
     :as="as"
     :as-child="asChild"
+    data-soybean-checkbox-indicator
     :class="cls"
     :data-disabled="dataDisabled"
     :data-state="dataState"

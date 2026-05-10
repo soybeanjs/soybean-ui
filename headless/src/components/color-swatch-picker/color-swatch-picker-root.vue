@@ -34,6 +34,7 @@ const forwardedProps = useOmitProps(props, ['modelValue', 'defaultValue', 'class
   <ListboxRoot
     v-bind="forwardedProps"
     v-model="modelValue"
+    data-soybean-color-swatch-picker-root
     @highlight="emit('highlight', $event)"
     @entry-focus="emit('entryFocus', $event)"
     @leave="emit('leave', $event)"

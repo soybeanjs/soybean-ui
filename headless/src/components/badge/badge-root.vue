@@ -29,7 +29,7 @@ provideBadgeRootContext({
 </script>
 
 <template>
-  <div data-slot="root" :class="cls">
+  <div data-soybean-badge-root :class="cls">
     <slot />
   </div>
 </template>

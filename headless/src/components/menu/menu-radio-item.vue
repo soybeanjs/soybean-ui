@@ -111,6 +111,7 @@ provideMenuItemIndicatorContext({
   <MenuItemImpl
     v-bind="forwardedProps"
     :ref="setMenuItemElement"
+    data-soybean-menu-radio-item
     :class="cls"
     role="menu-radio-item"
     :disabled="disabled"

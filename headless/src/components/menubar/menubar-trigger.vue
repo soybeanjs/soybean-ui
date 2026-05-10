@@ -103,6 +103,7 @@ const onKeyDown = (event: KeyboardEvent) => {
         v-bind="props"
         :id="triggerId"
         :ref="setTriggerElement"
+        data-soybean-menubar-trigger
         :class="cls"
         :aria-controls="open ? contentId : undefined"
         :aria-expanded="open"
@@ -112,7 +113,6 @@ const onKeyDown = (event: KeyboardEvent) => {
         :data-state="open ? 'open' : 'closed'"
         :data-value="value"
         :disabled="disabled"
-        data-slot="trigger"
         role="menuitem"
         @pointerdown="onPointerDown"
         @pointerenter="onPointerEnter"

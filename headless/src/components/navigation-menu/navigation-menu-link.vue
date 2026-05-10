@@ -50,6 +50,7 @@ const onClick = async (event: MouseEvent) => {
     v-slot="slotProps"
     v-bind="forwardedProps"
     :ref="setItemElement"
+    data-soybean-navigation-menu-link
     :class="cls"
     :data-active="active ? '' : undefined"
     :aria-current="active ? 'page' : undefined"

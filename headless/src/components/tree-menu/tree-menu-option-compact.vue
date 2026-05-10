@@ -106,7 +106,7 @@ const handleDropdownMenuSelect = (item: TreeMenuBaseOptionData) => {
   <TreeMenuItem v-if="!hasChildren" v-bind="itemProps" :as="as" :value="item.value" :disabled="item.disabled">
     <TreeMenuButton v-if="isLink" v-bind="buttonProps" as-child>
       <Link v-slot="{ isHref }" v-bind="linkProps">
-        <TreeMenuSlotCompact :item="item" :show-link-icon="isHref">
+        <TreeMenuSlotCompact data-soybean-tree-menu-slot-compact :item="item" :show-link-icon="isHref">
           <template v-for="slotName in slotNames" #[slotName]="slotProps">
             <slot :name="slotName" v-bind="slotProps" />
           </template>
@@ -114,13 +114,13 @@ const handleDropdownMenuSelect = (item: TreeMenuBaseOptionData) => {
       </Link>
     </TreeMenuButton>
     <TreeMenuButton v-else v-bind="buttonProps">
-      <TreeMenuSlotCompact :item="item">
+      <TreeMenuSlotCompact data-soybean-tree-menu-slot-compact :item="item">
         <template v-for="slotName in slotNames" #[slotName]="slotProps">
           <slot :name="slotName" v-bind="slotProps" />
         </template>
       </TreeMenuSlotCompact>
     </TreeMenuButton>
-    <TooltipCompact v-if="tooltip" v-bind="tooltipProps" :content="tooltip">
+    <TooltipCompact data-soybean-tooltip-compact v-if="tooltip" v-bind="tooltipProps" :content="tooltip">
       <template #trigger>
         <Link v-if="isLink" v-bind="linkProps" :class="ui.itemAbsolute" @click="handleActive" />
         <div v-else :class="ui.itemAbsolute" @click="handleActive" />
@@ -131,7 +131,7 @@ const handleDropdownMenuSelect = (item: TreeMenuBaseOptionData) => {
     <TreeMenuCollapsible v-bind="collapsibleProps" :as="as" :disabled-collapsible="collapsed">
       <template #trigger>
         <TreeMenuButton v-bind="buttonProps" disabled-active :data-child-active="childActive ? '' : undefined">
-          <TreeMenuSlotCompact :item="item">
+          <TreeMenuSlotCompact data-soybean-tree-menu-slot-compact :item="item">
             <template v-for="slotName in slotNames" #[slotName]="slotProps">
               <slot :name="slotName" v-bind="slotProps" />
             </template>
@@ -154,7 +154,7 @@ const handleDropdownMenuSelect = (item: TreeMenuBaseOptionData) => {
         </TreeMenuOptionCompact>
       </TreeMenuSub>
       <template #extra>
-        <DropdownMenuCompact
+        <DropdownMenuCompact data-soybean-dropdown-menu-compact
           v-if="showDropdown"
           v-bind="dropdownMenuProps"
           :items="children"

@@ -56,7 +56,7 @@ const onEntryFocus = (event: Event) => {
 
 const onArrowNavigation = (event: KeyboardEvent) => {
   const target = event.target as HTMLElement;
-  const targetIsSubTrigger = target.hasAttribute('data-soybean-menubar-subtrigger');
+  const targetIsSubTrigger = target.hasAttribute('data-soybean-menubar-sub-trigger');
 
   const previousKey = dir.value === 'rtl' ? 'ArrowRight' : 'ArrowLeft';
   const isPreviousKey = event.key === previousKey;
@@ -92,8 +92,8 @@ const onArrowNavigation = (event: KeyboardEvent) => {
   <MenuContent
     v-bind="props"
     :id="contentId"
+    data-soybean-menubar-content
     :aria-labelledby="triggerId"
-    data-slot="content"
     v-on="listeners"
     @close-auto-focus="onCloseAutoFocus"
     @focus-outside="onFocusOutside"

@@ -50,6 +50,7 @@ const handleInteractOutside = (event: PointerDownOutsideEvent | FocusOutsideEven
   <DialogPopupImpl
     v-if="isPresent"
     v-bind="forwardedProps"
+    data-soybean-dialog-popup
     :trap-focus="trapFocus"
     :disable-outside-pointer-events="modal"
     v-on="listeners"

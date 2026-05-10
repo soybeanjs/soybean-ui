@@ -39,6 +39,7 @@ const onPointerLeave = (event: PointerEvent) => {
     :ref="setTriggerElement"
     :as="as"
     :as-child="asChild"
+    data-soybean-hover-card-trigger
     :reference="reference"
     :data-state="dataState"
     data-grace-area-trigger

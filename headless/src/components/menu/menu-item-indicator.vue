@@ -26,7 +26,14 @@ const isPresent = props.forceMount ? shallowRef(true) : usePresence(indicatorEle
 </script>
 
 <template>
-  <Primitive v-if="isPresent" :ref="setIndicatorElement" :as="as" :as-child="asChild" :class="cls">
+  <Primitive
+    v-if="isPresent"
+    :ref="setIndicatorElement"
+    :as="as"
+    :as-child="asChild"
+    data-soybean-menu-item-indicator
+    :class="cls"
+  >
     <slot />
   </Primitive>
 </template>

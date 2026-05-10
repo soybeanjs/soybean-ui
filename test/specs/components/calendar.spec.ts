@@ -166,11 +166,11 @@ describe('SCalendar', () => {
         attachTo: document.body
       });
 
-      await wrapper.get('[data-slot="cell-trigger"][data-value="2026-04-20"]').trigger('click');
+      await wrapper.get('[data-soybean-calendar-cell-trigger][data-value="2026-04-20"]').trigger('click');
       await nextTick();
 
       const selected = wrapper
-        .findAll('[data-slot="cell-trigger"][data-selected]')
+        .findAll('[data-soybean-calendar-cell-trigger][data-selected]')
         .map(node => node.attributes('data-value'));
 
       expect(selected).toEqual(['2026-04-18', '2026-04-20', '2026-04-21']);

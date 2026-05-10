@@ -28,6 +28,7 @@ initTriggerId();
     :is="hasCustomAnchor ? Button : PopperAnchor"
     :ref="setTriggerElement"
     v-bind="props"
+    data-soybean-popover-trigger
     :class="cls"
     :as="hasCustomAnchor ? props.as : Button"
     aria-haspopup="dialog"

@@ -34,7 +34,7 @@ watch(
 <template>
   <img
     v-show="imageLoadingStatus === 'loaded'"
-    data-slot="image"
+    data-soybean-avatar-image
     :class="cls"
     :src="src"
     :referrerpolicy="referrerpolicy"

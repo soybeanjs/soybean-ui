@@ -12,7 +12,7 @@ const cls = useAccordionUi('description');
 </script>
 
 <template>
-  <p :class="cls" data-slot="description">
+  <p data-soybean-accordion-description :class="cls">
     <slot />
   </p>
 </template>

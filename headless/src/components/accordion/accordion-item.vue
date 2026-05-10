@@ -60,13 +60,13 @@ defineExpose({
 <template>
   <CollapsibleRoot
     v-bind="forwardedProps"
+    data-soybean-accordion-item
     :open="open"
     :disabled="disabled"
     :unmount-on-hide="unmountOnHide"
     :data-disabled="dataDisabled"
     :data-orientation="orientation"
     :data-state="dataState"
-    data-slot="item"
     @keydown="onKeydown"
   >
     <slot :open="open" />

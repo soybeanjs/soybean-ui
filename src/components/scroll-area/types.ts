@@ -1,8 +1,4 @@
-import type {
-  ScrollAreaCompactEmits,
-  ScrollAreaCompactProps,
-  ScrollAreaUi,
-} from '@soybeanjs/headless/scroll-area';
+import type { ScrollAreaCompactEmits, ScrollAreaCompactProps, ScrollAreaUi } from '@soybeanjs/headless/scroll-area';
 import type { ClassValue } from '@soybeanjs/headless/types';
 
 /**

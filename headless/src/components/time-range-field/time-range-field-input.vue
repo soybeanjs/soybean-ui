@@ -91,20 +91,20 @@ const listeners = computed(() => {
 
 <template>
   <Primitive
+    v-bind="attributes"
     :as="as"
     :as-child="asChild"
-    v-bind="attributes"
+    data-soybean-time-range-field-input
+    :data-soybean-date-field-segment="part"
+    :class="cls"
     :aria-disabled="disabled ? true : undefined"
     :aria-invalid="isInvalid ? true : undefined"
     :aria-readonly="readonly || part === 'timeZoneName' ? true : undefined"
-    :class="cls"
     :contenteditable="contentEditable"
     :data-disabled="disabled ? '' : undefined"
     :data-invalid="isInvalid ? '' : undefined"
     :data-readonly="readonly || part === 'timeZoneName' ? '' : undefined"
     :data-segment="part"
-    :data-soybean-date-field-segment="part"
-    data-slot="input"
     v-on="listeners"
   >
     <slot />

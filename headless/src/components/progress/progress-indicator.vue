@@ -34,11 +34,11 @@ const style = computed(() => {
   <Primitive
     :as="as"
     :as-child="asChild"
+    data-soybean-progress-indicator
     :class="cls"
     :data-state="progressState"
     :data-value="modelValue ?? undefined"
     :data-max="max"
-    data-slot="indicator"
     :style="style"
   >
     <slot />

@@ -69,7 +69,7 @@ describe('STextarea', () => {
         attachTo: document.body
       });
 
-      await wrapper.find('[data-slot="clearable"]').trigger('click');
+      await wrapper.find('[data-soybean-textarea-clearable]').trigger('click');
 
       expect(wrapper.emitted('update:modelValue')).toBeTruthy();
       expect(wrapper.emitted('update:modelValue')![0]).toEqual(['']);
@@ -115,7 +115,7 @@ describe('STextarea', () => {
       });
 
       expect(wrapper.find('textarea').element.disabled).toBe(true);
-      expect((wrapper.find('[data-slot="clearable"]').element as HTMLButtonElement).disabled).toBe(true);
+      expect((wrapper.find('[data-soybean-textarea-clearable]').element as HTMLButtonElement).disabled).toBe(true);
 
       wrapper.unmount();
     });

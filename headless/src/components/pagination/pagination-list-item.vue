@@ -27,6 +27,7 @@ const onClick = () => {
 <template>
   <Button
     v-bind="forwardedProps"
+    data-soybean-pagination-list-item
     :class="cls"
     data-type="page"
     :aria-label="`Page ${value}`"

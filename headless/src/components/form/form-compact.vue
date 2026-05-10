@@ -30,7 +30,7 @@ provideFormSub();
 </script>
 
 <template>
-  <form :class="cls" :data-orientation="orientation">
+  <form data-soybean-form :class="cls" :data-orientation="orientation">
     <slot />
   </form>
 </template>

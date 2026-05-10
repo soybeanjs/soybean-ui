@@ -7,7 +7,7 @@ import SDateRangePicker from '../../../src/components/date-range-picker/date-ran
 import { getA11yViolations } from '../../shared/a11y';
 
 function getPopup() {
-  return document.body.querySelector('[data-slot="popup"]') as HTMLElement | null;
+  return document.body.querySelector('[data-soybean-popover-popup]') as HTMLElement | null;
 }
 
 describe('SDateRangePicker', () => {
@@ -18,13 +18,13 @@ describe('SDateRangePicker', () => {
         props: {
           'data-root': '',
           triggerProps: {
-            'data-slot': 'trigger'
+            'data-soybean-popover-trigger': ''
           }
         }
       });
 
-      expect(wrapper.find('[data-slot="root"]').exists()).toBe(true);
-      expect(wrapper.find('[data-slot="trigger"]').exists()).toBe(true);
+      expect(wrapper.find('[data-soybean-date-range-field-root]').exists()).toBe(true);
+      expect(wrapper.find('[data-soybean-popover-trigger]').exists()).toBe(true);
 
       wrapper.unmount();
     });
@@ -37,7 +37,7 @@ describe('SDateRangePicker', () => {
         attachTo: document.body
       });
 
-      expect(wrapper.find('[data-slot="root"]').classes()).toContain('custom-class');
+      expect(wrapper.find('[data-soybean-date-range-field-root]').classes()).toContain('custom-class');
 
       wrapper.unmount();
     });
@@ -46,14 +46,14 @@ describe('SDateRangePicker', () => {
       const wrapper = mount(SDateRangePicker, {
         props: {
           triggerProps: {
-            'data-slot': 'trigger',
+            'data-soybean-popover-trigger': '',
             class: 'custom-trigger'
           }
         },
         attachTo: document.body
       });
 
-      expect(wrapper.find('[data-slot="trigger"]').classes()).toContain('custom-trigger');
+      expect(wrapper.find('[data-soybean-popover-trigger]').classes()).toContain('custom-trigger');
 
       wrapper.unmount();
     });
@@ -65,17 +65,17 @@ describe('SDateRangePicker', () => {
         attachTo: document.body,
         props: {
           triggerProps: {
-            'data-slot': 'trigger'
+            'data-soybean-popover-trigger': ''
           },
           popupProps: {
-            'data-slot': 'popup'
+            'data-soybean-popover-popup': ''
           }
         }
       });
 
-      const trigger = wrapper.find('[data-slot="trigger"]');
+      const trigger = wrapper.find('[data-soybean-popover-trigger]');
 
-      expect(wrapper.find('[data-slot="popup"]').exists()).toBe(false);
+      expect(wrapper.find('[data-soybean-popover-popup]').exists()).toBe(false);
 
       await trigger.trigger('click');
       await nextTick();
@@ -92,12 +92,12 @@ describe('SDateRangePicker', () => {
         attachTo: document.body,
         props: {
           triggerProps: {
-            'data-slot': 'trigger'
+            'data-soybean-popover-trigger': ''
           }
         }
       });
 
-      const trigger = wrapper.find('[data-slot="trigger"]');
+      const trigger = wrapper.find('[data-soybean-popover-trigger]');
 
       await trigger.trigger('click');
 
@@ -112,16 +112,16 @@ describe('SDateRangePicker', () => {
         props: {
           open: false,
           triggerProps: {
-            'data-slot': 'trigger'
+            'data-soybean-popover-trigger': ''
           },
           popupProps: {
-            'data-slot': 'popup'
+            'data-soybean-popover-popup': ''
           }
         },
         attachTo: document.body
       });
 
-      expect(wrapper.find('[data-slot="popup"]').exists()).toBe(false);
+      expect(wrapper.find('[data-soybean-popover-popup]').exists()).toBe(false);
 
       await wrapper.setProps({ open: true });
       await nextTick();
@@ -136,20 +136,20 @@ describe('SDateRangePicker', () => {
     it('renders disabled state correctly', () => {
       const wrapper = mount(SDateRangePicker, {
         props: {
-          'data-slot': 'root',
+          'data-soybean-date-range-field-root': '',
           disabled: true,
           triggerProps: {
-            'data-slot': 'trigger'
+            'data-soybean-popover-trigger': ''
           },
           popupProps: {
-            'data-slot': 'popup'
+            'data-soybean-popover-popup': ''
           }
         },
         attachTo: document.body
       });
 
-      const root = wrapper.find('[data-slot="root"]');
-      const trigger = wrapper.find('[data-slot="trigger"]');
+      const root = wrapper.find('[data-soybean-date-range-field-root]');
+      const trigger = wrapper.find('[data-soybean-popover-trigger]');
 
       expect(root.attributes('data-disabled')).toBe('');
       expect(trigger.attributes('data-disabled')).toBe('');
@@ -163,20 +163,20 @@ describe('SDateRangePicker', () => {
         props: {
           disabled: true,
           triggerProps: {
-            'data-slot': 'trigger'
+            'data-soybean-popover-trigger': ''
           },
           popupProps: {
-            'data-slot': 'popup'
+            'data-soybean-popover-popup': ''
           }
         },
         attachTo: document.body
       });
 
-      const trigger = wrapper.find('[data-slot="trigger"]');
+      const trigger = wrapper.find('[data-soybean-popover-trigger]');
 
       await trigger.trigger('click');
 
-      expect(wrapper.find('[data-slot="popup"]').exists()).toBe(false);
+      expect(wrapper.find('[data-soybean-popover-popup]').exists()).toBe(false);
       expect(wrapper.emitted('update:open')).toBeFalsy();
 
       wrapper.unmount();
@@ -189,16 +189,16 @@ describe('SDateRangePicker', () => {
         props: {
           defaultPlaceholder: new CalendarDate(2026, 4, 18),
           triggerProps: {
-            'data-slot': 'trigger'
+            'data-soybean-popover-trigger': ''
           },
           popupProps: {
-            'data-slot': 'popup'
+            'data-soybean-popover-popup': ''
           }
         },
         attachTo: document.body
       });
 
-      const trigger = wrapper.find('[data-slot="trigger"]');
+      const trigger = wrapper.find('[data-soybean-popover-trigger]');
 
       await trigger.trigger('click');
       await nextTick();
@@ -236,13 +236,13 @@ describe('SDateRangePicker', () => {
 
       const wrapper = mount(SDateRangePicker, {
         props: {
-          'data-slot': 'root',
+          'data-soybean-date-range-field-root': '',
           modelValue: { start, end }
         },
         attachTo: document.body
       });
 
-      const root = wrapper.find('[data-slot="root"]');
+      const root = wrapper.find('[data-soybean-date-range-field-root]');
 
       expect(root.text()).toContain('2024');
       expect(root.text()).toContain('31');
@@ -275,12 +275,12 @@ describe('SDateRangePicker', () => {
         attachTo: document.body,
         props: {
           triggerProps: {
-            'data-slot': 'trigger'
+            'data-soybean-popover-trigger': ''
           }
         }
       });
 
-      const trigger = wrapper.find('[data-slot="trigger"]');
+      const trigger = wrapper.find('[data-soybean-popover-trigger]');
 
       expect(trigger.attributes('aria-expanded')).toBe('false');
       expect(trigger.attributes('type')).toBe('button');
@@ -293,10 +293,10 @@ describe('SDateRangePicker', () => {
         props: {
           open: true,
           triggerProps: {
-            'data-slot': 'trigger'
+            'data-soybean-popover-trigger': ''
           },
           popupProps: {
-            'data-slot': 'popup'
+            'data-soybean-popover-popup': ''
           }
         },
         attachTo: document.body

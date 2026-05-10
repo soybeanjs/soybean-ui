@@ -10,7 +10,7 @@ const props = defineProps<MenubarSubTriggerProps>();
 </script>
 
 <template>
-  <MenuSubTrigger v-bind="props" data-slot="sub-trigger" data-soybean-menubar-subtrigger>
+  <MenuSubTrigger v-bind="props" data-soybean-menubar-sub-trigger>
     <slot />
   </MenuSubTrigger>
 </template>

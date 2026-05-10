@@ -23,9 +23,9 @@ const ariaLabel = computed(() => (attrs['aria-label'] as string) ?? 'Close tab')
   <Button
     v-if="closable"
     v-bind="props"
+    data-soybean-page-tabs-close
     :class="cls"
     :aria-label="ariaLabel"
-    data-slot="close"
     tabindex="-1"
     @click.stop="onClose"
   >

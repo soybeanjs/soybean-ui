@@ -36,6 +36,7 @@ const focusOutside = (event: FocusOutsideEvent) => {
   <MenuContentImpl
     v-if="isPresent"
     v-bind="forwardedProps"
+    data-soybean-menu-content
     :trap-focus="trapFocus"
     :disable-outside-pointer-events="trapFocus"
     v-on="listeners"

@@ -14,7 +14,7 @@ const cls = useSelectUi('groupLabel');
 </script>
 
 <template>
-  <div :id="labelId" :class="cls">
+  <div :id="labelId" data-soybean-select-group-label :class="cls">
     <slot />
   </div>
 </template>

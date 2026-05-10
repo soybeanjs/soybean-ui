@@ -67,8 +67,8 @@ function onScroll(event: Event) {
   <div
     v-bind="attrs"
     :ref="setViewportElement"
-    :class="cls"
     data-soybean-select-viewport
+    :class="cls"
     role="presentation"
     :style="style"
     @scroll="onScroll"

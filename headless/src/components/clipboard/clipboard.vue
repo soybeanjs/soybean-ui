@@ -82,7 +82,7 @@ const onClick = async (event: PointerEvent) => {
 </script>
 
 <template>
-  <Button v-bind="forwardedProps" :disabled="disabled" :data-state="dataState" @click="onClick">
+  <Button v-bind="forwardedProps" data-soybean-clipboard :disabled="disabled" :data-state="dataState" @click="onClick">
     <slot name="leading" v-bind="slotProps">
       <span aria-hidden="true">
         <Icon :icon="displayIcon" />

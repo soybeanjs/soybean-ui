@@ -45,7 +45,7 @@ function mountMenubar() {
 describe('SMenubar link trigger', () => {
   it('does not prevent default on pointerdown for link triggers', async () => {
     const wrapper = mountMenubar();
-    const linkTrigger = wrapper.find('[data-slot="trigger"][data-value="github"]');
+    const linkTrigger = wrapper.find('[data-soybean-menubar-trigger][data-value="github"]');
     const event = new PointerEvent('pointerdown', { bubbles: true, cancelable: true, button: 0 });
 
     linkTrigger.element.dispatchEvent(event);

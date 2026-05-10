@@ -23,6 +23,7 @@ const { setItemElement, rovingFocusItemProps, rovingFocusItemListeners } = useRo
     :ref="setItemElement"
     :as="as"
     :as-child="asChild"
+    data-soybean-roving-focus-item
     v-on="rovingFocusItemListeners"
   >
     <slot />

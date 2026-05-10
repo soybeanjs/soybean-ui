@@ -51,6 +51,7 @@ const formControl = computed(() => isFormControl(groupElement.value));
     :is="rovingFocus ? RovingFocusGroup : 'div'"
     v-bind="rovingFocusProps"
     :ref="setGroupElement"
+    data-soybean-checkbox-group-root
     :class="cls"
     as="div"
   >

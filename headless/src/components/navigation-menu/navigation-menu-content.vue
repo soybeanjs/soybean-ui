@@ -66,6 +66,7 @@ const onPointerLeave = (event: PointerEvent) => {
       v-if="isPresent"
       v-bind="forwardedProps"
       :ref="setContentElement"
+      data-soybean-navigation-menu-content
       :hidden="!isPresent"
       v-on="listeners"
       @pointerenter="onPointerEnter"

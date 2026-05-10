@@ -13,7 +13,7 @@ const { tabVisible } = useLayoutRootContext('LayoutTab');
 </script>
 
 <template>
-  <div v-if="tabVisible" :class="cls">
+  <div v-if="tabVisible" data-soybean-layout-tab :class="cls">
     <slot />
   </div>
 </template>

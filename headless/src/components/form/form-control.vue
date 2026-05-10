@@ -17,7 +17,7 @@ const cls = computed(() => mergeClasses(formCls.value, fieldCls.value));
 </script>
 
 <template>
-  <div :class="cls">
+  <div data-soybean-form-control :class="cls">
     <slot />
   </div>
 </template>

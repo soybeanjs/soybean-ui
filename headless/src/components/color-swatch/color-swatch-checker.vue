@@ -12,5 +12,5 @@ const cls = useColorSwatchUi('checker');
 </script>
 
 <template>
-  <span :class="cls"></span>
+  <span data-soybean-color-swatch-checker :class="cls"></span>
 </template>

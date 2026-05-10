@@ -24,6 +24,7 @@ const cls = useStepperUi('separator');
   <SeparatorRoot
     v-bind="forwardedProps"
     :class="cls"
+    data-soybean-stepper-separator
     :orientation="orientation"
     :decorative="decorative"
     :data-state="state"

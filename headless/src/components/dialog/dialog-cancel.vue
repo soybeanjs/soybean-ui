@@ -25,7 +25,7 @@ const onCancel = async (event: MouseEvent) => {
 </script>
 
 <template>
-  <Button :ref="setCancelElement" v-bind="props" :class="cls" @click="onCancel">
+  <Button :ref="setCancelElement" v-bind="props" data-soybean-dialog-cancel :class="cls" @click="onCancel">
     <slot />
   </Button>
 </template>

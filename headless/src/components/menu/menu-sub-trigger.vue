@@ -136,6 +136,7 @@ initTriggerId();
       v-bind="mergedProps"
       :id="triggerId"
       :ref="setSubTriggerElement"
+      data-soybean-menu-sub-trigger
       :class="cls"
       aria-haspopup="menu"
       :aria-expanded="open"

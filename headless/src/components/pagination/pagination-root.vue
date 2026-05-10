@@ -44,7 +44,7 @@ const { pageCount } = providePaginationRootContext({
 </script>
 
 <template>
-  <nav :class="cls">
+  <nav data-soybean-pagination-root :class="cls">
     <slot :page="page" :page-count="pageCount" />
   </nav>
 </template>

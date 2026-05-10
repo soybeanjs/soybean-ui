@@ -156,6 +156,7 @@ defineExpose({
     v-bind="forwardedProps"
     :as="as"
     :as-child="asChild"
+    data-soybean-stepper-root
     :class="cls"
     :dir="dir"
     role="group"

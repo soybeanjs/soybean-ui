@@ -26,7 +26,14 @@ watchEffect(() => {
 </script>
 
 <template>
-  <div v-if="isPresent" :ref="setOverlayElement" :class="cls" :data-state="dataState" style="pointer-events: auto">
+  <div
+    v-if="isPresent"
+    :ref="setOverlayElement"
+    data-soybean-dialog-overlay
+    :class="cls"
+    :data-state="dataState"
+    style="pointer-events: auto"
+  >
     <slot />
   </div>
 </template>

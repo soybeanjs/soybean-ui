@@ -14,7 +14,7 @@ const cls = useListboxUi('groupLabel');
 </script>
 
 <template>
-  <div :id="id" :class="cls">
+  <div :id="id" data-soybean-listbox-group-label :class="cls">
     <slot />
   </div>
 </template>

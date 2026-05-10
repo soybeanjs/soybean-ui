@@ -54,6 +54,7 @@ watchEffect(() => {
   <SelectScrollButtonImpl
     v-if="canScrollDown"
     :ref="setButtonElement"
+    data-soybean-select-scroll-down-button
     v-bind="props"
     :class="cls"
     @auto-scroll="onAutoScroll"

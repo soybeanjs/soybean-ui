@@ -16,7 +16,13 @@ const { disabled, headingValue } = useCalendarRangeRootContext('CalendarRangeHea
 </script>
 
 <template>
-  <Primitive :as="as" :as-child="asChild" :class="cls" :data-disabled="disabled ? '' : undefined" data-slot="heading">
+  <Primitive
+    :as="as"
+    :as-child="asChild"
+    data-soybean-calendar-range-heading
+    :class="cls"
+    :data-disabled="disabled ? '' : undefined"
+  >
     <slot :heading-value="headingValue">{{ headingValue }}</slot>
   </Primitive>
 </template>

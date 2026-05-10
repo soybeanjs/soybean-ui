@@ -26,6 +26,7 @@ const listeners = useForwardListeners(emit);
       v-slot="{ virtualItems }"
       :as="as"
       :as-child="asChild"
+      data-soybean-tree-virtualizer-root
       :items="flattenItems"
       :options="options"
       :height="height"

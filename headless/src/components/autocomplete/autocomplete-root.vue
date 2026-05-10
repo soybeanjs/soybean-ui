@@ -237,6 +237,7 @@ defineExpose({
       :model-value="modelValue"
       :highlight-on-hover="highlightOnHover"
       selection-behavior="replace"
+      data-soybean-autocomplete-root
       @update:model-value="onModelValueChange(Array.isArray($event) ? ($event[0] ?? '') : ($event ?? ''))"
       @highlight="emit('highlight', $event)"
     >

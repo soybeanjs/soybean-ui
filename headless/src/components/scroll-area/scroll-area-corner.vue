@@ -34,6 +34,7 @@ const style = computed(() => ({
     v-bind="forwardedProps"
     :as="as"
     :as-child="asChild"
+    data-soybean-scroll-area-corner
     :class="cls"
     :aria-hidden="true"
     :style="style"

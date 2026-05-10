@@ -66,7 +66,7 @@ export default defineComponent({
       h(
         SplitterResizeHandle,
         {
-          'data-slot': 'splitter-resize-handle',
+          'data-soybean-splitter-resize-handle': '',
           ...forwardedProps.value,
           class: props.class,
           onDragging: (value: boolean) => emit('dragging', value)

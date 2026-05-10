@@ -126,7 +126,7 @@ describe('STagsInput', () => {
     it('removes the first tag on delete click without recursive updates', async () => {
       const wrapper = mount(ControlledCompactTagsInput, { attachTo: document.body });
 
-      await wrapper.findAll('[data-slot="item-delete"]')[0].trigger('click');
+      await wrapper.findAll('[data-soybean-tags-input-item-delete]')[0].trigger('click');
 
       expect(wrapper.text()).not.toContain('Vue');
       expect(wrapper.text()).toContain('React');
@@ -164,7 +164,7 @@ describe('STagsInput', () => {
     it('clears all tags when clear is clicked', async () => {
       const wrapper = mountCompactTagsInput();
 
-      await wrapper.find('[data-slot="clear"]').trigger('click');
+      await wrapper.find('[data-soybean-tags-input-clear]').trigger('click');
 
       expect(wrapper.emitted('update:modelValue')?.[0]).toEqual([[]]);
 

@@ -48,6 +48,7 @@ const onClick = () => {
     :is="rovingFocus ? RovingFocusItem : Button"
     v-bind="forwardedProps"
     :as="rovingFocus ? Button : props.as"
+    data-soybean-toggle-group-item
     :class="cls"
     :aria-pressed="pressed ? 'true' : 'false'"
     :data-state="dataState"

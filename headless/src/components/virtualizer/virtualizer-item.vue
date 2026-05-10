@@ -41,6 +41,7 @@ const itemStyle = computed(() => {
   <Primitive
     :as="as"
     :as-child="asChild"
+    data-soybean-virtualizer-item
     :data-index="data.index"
     :aria-setsize="totalSize"
     :aria-posinset="data.index + 1"

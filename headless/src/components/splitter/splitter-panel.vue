@@ -112,6 +112,7 @@ defineExpose({
     :id="panelId"
     :as="as"
     :as-child="asChild"
+    data-soybean-splitter-panel
     :class="cls"
     :style="style"
     data-panel=""

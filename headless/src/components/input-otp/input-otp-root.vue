@@ -394,7 +394,7 @@ defineExpose(exposed);
 <template>
   <div
     ref="containerElement"
-    data-slot="root"
+    data-soybean-input-otp-root
     data-input-otp-container
     :data-disabled="disabled ? '' : undefined"
     :data-focused="isFocused ? '' : undefined"

@@ -100,6 +100,7 @@ onUnmounted(() => {
 <template>
   <PopperPopup
     :ref="setPopupElement"
+    data-soybean-hover-card-popup
     data-dismissable-layer
     :data-state="dataState"
     :style="{

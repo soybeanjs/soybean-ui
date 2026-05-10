@@ -28,7 +28,7 @@ function handleUpdateModelValue(value: unknown) {
 </script>
 
 <template>
-  <FormFieldBaseCompact v-bind="props" :error="error">
+  <FormFieldBaseCompact data-soybean-form-field v-bind="props" :error="error">
     <template #default="slotProps">
       <Slot
         :id="slotProps.formFieldId"

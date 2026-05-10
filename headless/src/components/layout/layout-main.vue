@@ -12,7 +12,7 @@ const cls = useLayoutUi('main');
 </script>
 
 <template>
-  <main :class="cls">
+  <main data-soybean-layout-main :class="cls">
     <slot />
   </main>
 </template>

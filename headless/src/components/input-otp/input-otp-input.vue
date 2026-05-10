@@ -52,7 +52,7 @@ const setInputElement: VNodeRef = element => {
     v-bind="inputAttrs"
     :id="resolvedId"
     :ref="setInputElement"
-    data-slot="input"
+    data-soybean-input-otp-input
     data-input-otp
     :data-password-manager-badge="willPushPWMBadge ? '' : undefined"
     type="text"

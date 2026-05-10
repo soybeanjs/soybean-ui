@@ -58,10 +58,10 @@ const [_, setRootElement] = useForwardElement(onContainerElementChange);
       :ref="setRootElement"
       :as="as"
       :as-child="asChild"
+      data-soybean-menubar-root
       :class="mergedClass"
       role="menubar"
       :dir="dir"
-      data-slot="root"
     >
       <slot :model-value="modelValue" />
     </Primitive>

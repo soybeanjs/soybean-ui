@@ -22,7 +22,7 @@ const onClose = (event: PointerEvent) => {
 </script>
 
 <template>
-  <Button v-bind="props" :class="cls" @click="onClose">
+  <Button data-soybean-popover-close v-bind="props" :class="cls" @click="onClose">
     <slot />
   </Button>
 </template>

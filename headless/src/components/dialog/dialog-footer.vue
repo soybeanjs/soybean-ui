@@ -12,7 +12,7 @@ const cls = useDialogUi('footer');
 </script>
 
 <template>
-  <div :class="cls">
+  <div data-soybean-dialog-footer :class="cls">
     <slot />
   </div>
 </template>

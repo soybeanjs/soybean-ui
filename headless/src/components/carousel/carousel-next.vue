@@ -31,11 +31,11 @@ const onNext = () => {
 <template>
   <Button
     v-bind="forwardedProps"
+    data-soybean-carousel-next
     :class="cls"
     :disabled="disabled"
     :aria-controls="contentId || undefined"
     :aria-label="ariaLabel"
-    data-soybean-carousel-next
     @click="onNext"
   >
     <slot>

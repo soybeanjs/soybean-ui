@@ -29,7 +29,7 @@ initContentId();
 </script>
 
 <template>
-  <ComboboxContentImpl v-if="isPresent" v-bind="forwardedProps" v-on="listeners">
+  <ComboboxContentImpl v-if="isPresent" v-bind="forwardedProps" data-soybean-combobox-content v-on="listeners">
     <slot />
   </ComboboxContentImpl>
 </template>

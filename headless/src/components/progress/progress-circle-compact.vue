@@ -31,7 +31,7 @@ const circleSvgProps = computed(() => ({
 <template>
   <ProgressRoot v-slot="slotProps" v-bind="forwardedProps" v-on="listeners">
     <ProgressCircle v-bind="circleSvgProps" />
-    <div v-if="slots.default" :class="labelCls" data-slot="label">
+    <div v-if="slots.default" :class="labelCls" data-soybean-progress-label>
       <slot v-bind="slotProps" />
     </div>
   </ProgressRoot>

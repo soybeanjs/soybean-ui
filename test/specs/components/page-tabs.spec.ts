@@ -17,8 +17,8 @@ describe('SPageTabs', () => {
         attachTo: document.body
       });
 
-      expect(wrapper.findAll('[data-slot="item"]')).toHaveLength(items.length);
-      expect(wrapper.find('[data-slot="root"]').exists()).toBe(true);
+      expect(wrapper.findAll('[data-soybean-page-tabs-item]')).toHaveLength(items.length);
+      expect(wrapper.find('[data-soybean-page-tabs-root]').exists()).toBe(true);
 
       wrapper.unmount();
     });
@@ -43,8 +43,8 @@ describe('SPageTabs', () => {
         attachTo: document.body
       });
 
-      expect(wrapper.findAll('[data-slot="item"]')[0].attributes('data-active')).toBe('true');
-      expect(wrapper.findAll('[data-slot="item"]')[1].attributes('data-active')).toBe('false');
+      expect(wrapper.findAll('[data-soybean-page-tabs-item]')[0].attributes('data-active')).toBe('true');
+      expect(wrapper.findAll('[data-soybean-page-tabs-item]')[1].attributes('data-active')).toBe('false');
 
       wrapper.unmount();
     });
@@ -55,7 +55,7 @@ describe('SPageTabs', () => {
         attachTo: document.body
       });
 
-      await wrapper.findAll('[data-slot="item"]')[1].trigger('click');
+      await wrapper.findAll('[data-soybean-page-tabs-item]')[1].trigger('click');
 
       expect(wrapper.emitted('update:modelValue')).toBeTruthy();
       expect(wrapper.emitted('update:modelValue')![0][0]).toBe('profile');
@@ -71,7 +71,7 @@ describe('SPageTabs', () => {
         attachTo: document.body
       });
 
-      await wrapper.findAll('[data-slot="item"]')[1].trigger('mousedown', { button: 1 });
+      await wrapper.findAll('[data-soybean-page-tabs-item]')[1].trigger('mousedown', { button: 1 });
 
       expect(wrapper.emitted('close')).toBeTruthy();
       expect(wrapper.emitted('close')![0][0]).toMatchObject({ value: 'profile', label: 'Profile' });
@@ -87,7 +87,7 @@ describe('SPageTabs', () => {
         attachTo: document.body
       });
 
-      await wrapper.findAll('[data-slot="item"]')[0].trigger('mousedown', { button: 1 });
+      await wrapper.findAll('[data-soybean-page-tabs-item]')[0].trigger('mousedown', { button: 1 });
 
       expect(wrapper.emitted('close')).toBeFalsy();
 

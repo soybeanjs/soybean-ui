@@ -15,7 +15,7 @@ const emit = defineEmits<CardRootEmits>();
 </script>
 
 <template>
-  <CollapsibleRoot v-bind="props" @update:open="emit('update:open', $event)">
+  <CollapsibleRoot v-bind="props" data-soybean-card-root @update:open="emit('update:open', $event)">
     <slot />
   </CollapsibleRoot>
 </template>

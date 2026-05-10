@@ -233,6 +233,7 @@ provideColorFieldRootContext({
     :ref="setRootElement"
     :as="as"
     :as-child="asChild"
+    data-soybean-color-field-root
     :class="cls"
     role="group"
     :data-disabled="disabled ? '' : undefined"

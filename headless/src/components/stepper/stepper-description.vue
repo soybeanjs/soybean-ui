@@ -20,7 +20,14 @@ const forwardedProps = useOmitProps(props, []);
 </script>
 
 <template>
-  <Primitive v-bind="forwardedProps" :id="descriptionId" :as="as" :as-child="asChild" :class="cls">
+  <Primitive
+    v-bind="forwardedProps"
+    :id="descriptionId"
+    :as="as"
+    :as-child="asChild"
+    data-soybean-stepper-description
+    :class="cls"
+  >
     <slot />
   </Primitive>
 </template>

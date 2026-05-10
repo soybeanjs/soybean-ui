@@ -28,7 +28,7 @@ const style: CSSProperties = {
 </script>
 
 <template>
-  <PopperPopup :ref="setPopupElement" :style="style">
+  <PopperPopup :ref="setPopupElement" data-soybean-select-popper-popup :style="style">
     <slot />
   </PopperPopup>
 </template>

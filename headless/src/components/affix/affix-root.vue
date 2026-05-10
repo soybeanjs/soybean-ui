@@ -180,7 +180,7 @@ defineExpose({
 </script>
 
 <template>
-  <div :ref="setRootElement" :class="cls">
+  <div :ref="setRootElement" data-soybean-affix-root :class="cls">
     <slot :affixed="affixed" />
   </div>
 </template>

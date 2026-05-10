@@ -35,7 +35,7 @@ onTrigger(() => {
   <Button
     :ref="setDecrementElement"
     v-bind="props"
-    data-slot="decrement"
+    data-soybean-input-number-decrement
     :class="cls"
     tabindex="-1"
     :aria-label="messages.inputNumber.decrement"

@@ -12,7 +12,7 @@ const cls = useTableUi('body');
 </script>
 
 <template>
-  <tbody :class="cls">
+  <tbody data-soybean-table-body :class="cls">
     <slot />
   </tbody>
 </template>

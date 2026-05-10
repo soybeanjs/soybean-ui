@@ -104,6 +104,7 @@ initTriggerId();
       :ref="setTriggerElement"
       :as="as"
       :as-child="asChild"
+      data-soybean-dropdown-menu-trigger
       :type="tag"
       :aria-controls="ariaControls"
       :aria-disabled="ariaDisabled"

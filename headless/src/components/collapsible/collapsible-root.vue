@@ -40,7 +40,13 @@ defineExpose({
 </script>
 
 <template>
-  <Primitive v-bind="forwardedProps" :class="cls" :data-disabled="dataDisabled" :data-state="dataState">
+  <Primitive
+    v-bind="forwardedProps"
+    data-soybean-collapsible-root
+    :class="cls"
+    :data-disabled="dataDisabled"
+    :data-state="dataState"
+  >
     <slot :open="open" />
   </Primitive>
 </template>

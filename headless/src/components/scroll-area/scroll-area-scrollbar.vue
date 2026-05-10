@@ -322,10 +322,10 @@ onUnmounted(() => {
     :ref="setScrollbarElement"
     :as="as"
     :as-child="asChild"
+    data-soybean-scroll-area-scrollbar
     :class="cls"
     :data-orientation="orientation"
     :data-state="dataState"
-    data-soybean-scroll-area-scrollbar=""
     :aria-hidden="true"
     @pointerdown="handleTrackPointerDown"
   >

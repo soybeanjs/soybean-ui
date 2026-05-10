@@ -180,6 +180,7 @@ defineExpose({
   <Primitive
     v-bind="forwardedProps"
     :ref="setRootElement"
+    data-soybean-editable-root
     :class="cls"
     :dir="dir"
     data-dismissable-layer

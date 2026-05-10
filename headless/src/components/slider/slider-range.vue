@@ -32,6 +32,7 @@ const style = computed(() => ({
   <Primitive
     :as="as"
     :as-child="asChild"
+    data-soybean-slider-range
     :class="cls"
     :data-disabled="disabled ? '' : undefined"
     :data-orientation="orientation"

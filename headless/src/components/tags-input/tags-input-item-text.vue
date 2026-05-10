@@ -19,7 +19,7 @@ if (!textId.value) {
 </script>
 
 <template>
-  <span v-bind="props" :id="textId" :class="cls" data-slot="item-text">
+  <span v-bind="props" :id="textId" data-soybean-tags-input-item-text :class="cls">
     <slot>{{ displayedValue }}</slot>
   </span>
 </template>

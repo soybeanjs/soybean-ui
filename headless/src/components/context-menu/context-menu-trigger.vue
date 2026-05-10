@@ -123,6 +123,7 @@ watchEffect(() => {
     v-if="!reference"
     :ref="setTriggerElement"
     v-bind="forwardedProps"
+    data-soybean-context-menu-trigger
     :data-disabled="dataDisabled"
     :data-state="dataState"
     :style="{

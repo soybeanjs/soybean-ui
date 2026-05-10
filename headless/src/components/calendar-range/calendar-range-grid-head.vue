@@ -15,7 +15,7 @@ const cls = useCalendarRangeUi('gridHead');
 </script>
 
 <template>
-  <Primitive :as="as" :as-child="asChild" :class="cls" aria-hidden="true" data-slot="grid-head">
+  <Primitive :as="as" :as-child="asChild" data-soybean-calendar-range-grid-head :class="cls" aria-hidden="true">
     <slot />
   </Primitive>
 </template>

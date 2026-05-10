@@ -1,4 +1,9 @@
-import type { PasswordCompactEmits, PasswordCompactProps, PasswordCompactSlots, PasswordUi } from '@soybeanjs/headless/password';
+import type {
+  PasswordCompactEmits,
+  PasswordCompactProps,
+  PasswordCompactSlots,
+  PasswordUi
+} from '@soybeanjs/headless/password';
 import type { ClassValue } from '@soybeanjs/headless/types';
 import type { ThemeSize } from '@/theme';
 

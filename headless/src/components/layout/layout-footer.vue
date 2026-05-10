@@ -13,7 +13,7 @@ const { footerVisible } = useLayoutRootContext('LayoutFooter');
 </script>
 
 <template>
-  <div v-if="footerVisible" :class="cls">
+  <div v-if="footerVisible" data-soybean-layout-footer :class="cls">
     <slot />
   </div>
 </template>

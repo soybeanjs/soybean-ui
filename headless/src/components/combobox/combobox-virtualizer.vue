@@ -20,7 +20,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <ListboxVirtualizer v-slot="slotProps" v-bind="props" data-slot="virtualizer">
+  <ListboxVirtualizer v-slot="slotProps" v-bind="props" data-soybean-combobox-virtualizer>
     <slot v-bind="slotProps" />
   </ListboxVirtualizer>
 </template>

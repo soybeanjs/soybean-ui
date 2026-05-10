@@ -44,6 +44,7 @@ onBeforeUnmount(() => {
   <div
     :id="contentId"
     :ref="setContentElement"
+    data-soybean-tabs-content
     :class="cls"
     :aria-labelledby="triggerId"
     :data-state="dataState"

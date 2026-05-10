@@ -22,7 +22,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <PopperAnchor v-bind="props">
+  <PopperAnchor data-soybean-popover-anchor v-bind="props">
     <slot />
   </PopperAnchor>
 </template>

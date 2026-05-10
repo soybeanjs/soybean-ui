@@ -12,5 +12,5 @@ const cls = useColorSwatchUi('fill');
 </script>
 
 <template>
-  <span :class="cls"></span>
+  <span data-soybean-color-swatch-fill :class="cls"></span>
 </template>

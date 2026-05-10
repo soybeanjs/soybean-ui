@@ -95,6 +95,7 @@ provideScrollAreaRootContext({
     :ref="setRootElement"
     :as="as"
     :as-child="asChild"
+    data-soybean-scroll-area-root
     :class="cls"
     :dir="dir"
     @pointerenter="isHovering = true"

@@ -27,6 +27,7 @@ const mergedClass = computed(() => [cls.value, props.class]);
 <template>
   <ToggleGroupRoot
     v-bind="forwardedProps"
+    data-soybean-toolbar-toggle-group
     :class="mergedClass"
     :dir="props.dir ?? dir"
     :orientation="props.orientation ?? orientation"

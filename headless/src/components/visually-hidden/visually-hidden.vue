@@ -16,6 +16,7 @@ withDefaults(defineProps<VisuallyHiddenProps>(), {
   <Primitive
     :as="as"
     :as-child="asChild"
+    data-soybean-visually-hidden
     :aria-hidden="feature === 'focusable' ? 'true' : undefined"
     :data-hidden="feature === 'fully-hidden' ? '' : undefined"
     :tabindex="feature === 'fully-hidden' ? '-1' : undefined"

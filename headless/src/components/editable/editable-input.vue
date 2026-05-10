@@ -9,7 +9,9 @@ defineOptions({
   name: 'EditableInput'
 });
 
-const props = defineProps<EditableInputProps>();
+const props = withDefaults(defineProps<EditableInputProps>(), {
+  as: 'input'
+});
 
 const attrs = useAttrs();
 
@@ -96,8 +98,9 @@ onMounted(() => {
     v-bind="props"
     :id="inputId"
     :ref="setInputElement"
-    :as="props.as || 'input'"
-    :as-child="props.asChild"
+    :as="as"
+    :as-child="asChild"
+    data-soybean-editable-input
     :class="cls"
     :aria-label="ariaLabel"
     :data-disabled="dataDisabled"

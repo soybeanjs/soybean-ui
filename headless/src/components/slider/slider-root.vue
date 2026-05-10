@@ -390,6 +390,7 @@ onBeforeUnmount(() => {
     :ref="setRootElement"
     :as="as"
     :as-child="asChild"
+    data-soybean-slider-root
     :class="cls"
     :dir="dir"
     :data-disabled="dataDisabled"

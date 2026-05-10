@@ -12,7 +12,7 @@ const cls = useDialogUi('content');
 </script>
 
 <template>
-  <div :class="cls">
+  <div data-soybean-dialog-content :class="cls">
     <slot />
   </div>
 </template>

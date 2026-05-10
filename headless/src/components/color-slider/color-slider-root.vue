@@ -134,6 +134,7 @@ provideColorSliderRootContext({
     v-model="sliderValue"
     :as="as"
     :as-child="asChild"
+    data-soybean-color-slider-root
     :class="cls"
     :orientation="orientation"
     :dir="dir"

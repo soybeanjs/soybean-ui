@@ -77,7 +77,7 @@ describe('SPopconfirm', () => {
           portalProps: { disabled: true },
           title: 'Confirm',
           confirmProps: {
-            'data-slot': 'confirm'
+            'data-soybean-popconfirm-confirm': ''
           }
         },
         slots,
@@ -85,7 +85,7 @@ describe('SPopconfirm', () => {
       });
 
       await nextTick();
-      await wrapper.get('[data-slot="confirm"]').trigger('click');
+      await wrapper.get('[data-soybean-popconfirm-confirm]').trigger('click');
 
       expect(wrapper.emitted('confirm')).toBeFalsy();
       wrapper.unmount();

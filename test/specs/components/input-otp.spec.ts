@@ -15,10 +15,10 @@ describe('SInputOtp', () => {
         attachTo: document.body
       });
 
-      expect(wrapper.findAll('[data-slot="slot"]')).toHaveLength(6);
+      expect(wrapper.findAll('[data-soybean-input-otp-slot]')).toHaveLength(6);
       expect(
         wrapper
-          .findAll('[data-slot="placeholder"]')
+          .findAll('[data-soybean-input-otp-placeholder]')
           .map(node => node.text())
           .join('')
       ).toBe('123456');

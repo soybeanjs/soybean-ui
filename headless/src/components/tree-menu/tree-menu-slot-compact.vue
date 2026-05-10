@@ -28,7 +28,7 @@ const actionAriaLabel = computed(() => `Open ${props.item.label} actions`);
   </slot>
 
   <slot name="item" :item="item">
-    <BadgeCompact v-if="item.badge" v-bind="item.badgeProps" :content="item.badge" :class="ui.itemBadge">
+    <BadgeCompact data-soybean-badge-compact v-if="item.badge" v-bind="item.badgeProps" :content="item.badge" :class="ui.itemBadge">
       <span :class="ui.itemLabel">{{ item.label }}</span>
     </BadgeCompact>
     <span v-else :class="ui.itemLabel">{{ item.label }}</span>
@@ -38,7 +38,7 @@ const actionAriaLabel = computed(() => `Open ${props.item.label} actions`);
 
   <span v-if="item.tag" v-bind="item.tagProps" :class="ui.itemTag">{{ item.tag }}</span>
 
-  <DropdownMenuCompact
+  <DropdownMenuCompact data-soybean-dropdown-menu-compact
     v-if="!collapsed && item.actions?.length"
     v-bind="item.actionMenuProps"
     :items="item.actions"

@@ -23,7 +23,7 @@ const handleClose = (event: PointerEvent) => {
 </script>
 
 <template>
-  <Button v-bind="props" :class="cls" data-slot="confirm" @click="handleClose">
+  <Button v-bind="props" data-soybean-popconfirm-confirm :class="cls" @click="handleClose">
     <slot />
   </Button>
 </template>

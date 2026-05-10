@@ -28,7 +28,7 @@ const onClose = (event: PointerEvent) => {
 </script>
 
 <template>
-  <Button v-bind="props" :class="cls" :aria-label="ariaLabel" @click="onClose">
+  <Button v-bind="props" data-soybean-alert-close :class="cls" :aria-label="ariaLabel" @click="onClose">
     <slot />
   </Button>
 </template>

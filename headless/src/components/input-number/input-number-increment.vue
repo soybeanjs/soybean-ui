@@ -35,7 +35,7 @@ onTrigger(() => {
   <Button
     :ref="setIncrementElement"
     v-bind="props"
-    data-slot="increment"
+    data-soybean-input-number-increment
     :class="cls"
     tabindex="-1"
     :aria-label="messages.inputNumber.increment"

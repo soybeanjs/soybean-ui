@@ -20,7 +20,7 @@ const transformedRange = computed(() =>
 </script>
 
 <template>
-  <div :class="cls">
+  <div data-soybean-pagination-list :class="cls">
     <slot :items="transformedRange" />
   </div>
 </template>

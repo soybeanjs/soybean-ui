@@ -54,7 +54,12 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <InputRoot v-slot="{ clear }" v-bind="forwardedProps" @update:model-value="emit('update:modelValue', $event)">
+  <InputRoot
+    v-slot="{ clear }"
+    data-soybean-listbox-filter
+    v-bind="forwardedProps"
+    @update:model-value="emit('update:modelValue', $event)"
+  >
     <slot name="leading" :clear="clear" />
     <InputControl
       v-bind="controlProps"

@@ -23,7 +23,12 @@ const separatorOrientation = computed(() => (orientation.value === 'horizontal' 
 </script>
 
 <template>
-  <SeparatorRoot v-bind="forwardedProps" :class="mergedClass" :orientation="separatorOrientation">
+  <SeparatorRoot
+    v-bind="forwardedProps"
+    data-soybean-toolbar-separator
+    :class="mergedClass"
+    :orientation="separatorOrientation"
+  >
     <slot />
   </SeparatorRoot>
 </template>

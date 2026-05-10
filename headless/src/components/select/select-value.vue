@@ -39,6 +39,7 @@ const slotText = computed(() => {
 <template>
   <span
     :ref="setValueElement"
+    data-soybean-select-value
     :class="cls"
     :data-placeholder="selectedLabel.length ? undefined : props.placeholder"
     style="pointer-events: none"

@@ -60,7 +60,14 @@ provideVirtualizerContext({
 </script>
 
 <template>
-  <Primitive :ref="setRootElement" :as="as" :as-child="asChild" :style="style" tabindex="-1">
+  <Primitive
+    :ref="setRootElement"
+    :as="as"
+    :as-child="asChild"
+    data-soybean-virtualizer-root
+    :style="style"
+    tabindex="-1"
+  >
     <slot :virtual-items="virtualItems" :items="items" />
   </Primitive>
 </template>

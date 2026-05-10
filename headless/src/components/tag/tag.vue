@@ -26,7 +26,7 @@ const close = () => {
 </script>
 
 <template>
-  <div v-if="open" :data-open="open ? '' : undefined">
+  <div v-if="open" data-soybean-tag :data-open="open ? '' : undefined">
     <slot :open="open" :close="close" />
   </div>
 </template>

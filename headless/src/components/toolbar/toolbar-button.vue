@@ -17,7 +17,7 @@ const cls = useToolbarUi('button');
 
 <template>
   <RovingFocusItem as-child :focusable="!disabled">
-    <Button v-bind="props" :class="cls" @click="emit('click', $event)">
+    <Button v-bind="props" data-soybean-toolbar-button :class="cls" @click="emit('click', $event)">
       <slot />
     </Button>
   </RovingFocusItem>

@@ -250,6 +250,7 @@ onBeforeUnmount(() => {
 <template>
   <nav
     v-bind="forwardedProps"
+    data-soybean-anchor-root
     :class="cls"
     :dir="dir"
     :data-orientation="orientation"

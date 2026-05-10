@@ -63,19 +63,19 @@ const getSlotState = (slot: InputOtpSlotProps) => {
 <template>
   <InputOtpRoot v-slot="slotProps" v-bind="rootProps" v-on="listeners">
     <slot v-bind="slotProps">
-      <div data-slot="group" aria-hidden="true" :class="ui.group" :style="groupStyle">
+      <div data-soybean-input-otp-group aria-hidden="true" :class="ui.group" :style="groupStyle">
         <div
           v-for="(slotItem, index) in slotProps.slots"
           :key="index"
-          data-slot="slot"
+          data-soybean-input-otp-slot
           :class="ui.slot"
           :data-state="getSlotState(slotItem)"
         >
-          <span v-if="slotItem.char" data-slot="char" :class="ui.char">{{ slotItem.char }}</span>
-          <span v-else-if="slotItem.placeholderChar" data-slot="placeholder" :class="ui.placeholder">
+          <span v-if="slotItem.char" data-soybean-input-otp-char :class="ui.char">{{ slotItem.char }}</span>
+          <span v-else-if="slotItem.placeholderChar" data-soybean-input-otp-placeholder :class="ui.placeholder">
             {{ slotItem.placeholderChar }}
           </span>
-          <span v-if="slotItem.hasFakeCaret" data-slot="caret" :class="ui.caret" />
+          <span v-if="slotItem.hasFakeCaret" data-soybean-input-otp-caret :class="ui.caret" />
         </div>
       </div>
     </slot>

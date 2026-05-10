@@ -22,6 +22,7 @@ const areaStyle = computed(() => (autoResize.value ? { display: 'inline-grid' } 
 <template>
   <Primitive
     v-bind="props"
+    data-soybean-editable-area
     :class="cls"
     :data-disabled="dataDisabled"
     :data-empty="isEmpty ? '' : undefined"

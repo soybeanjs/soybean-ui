@@ -14,7 +14,7 @@ const messages = useLocaleMessages();
 </script>
 
 <template>
-  <nav :class="cls" :aria-label="messages.breadcrumb.nav">
+  <nav data-soybean-breadcrumb-root :class="cls" :aria-label="messages.breadcrumb.nav">
     <slot />
   </nav>
 </template>

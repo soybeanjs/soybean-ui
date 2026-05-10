@@ -12,7 +12,7 @@ const cls = useBreadcrumbUi('list');
 </script>
 
 <template>
-  <ol :class="cls">
+  <ol data-soybean-breadcrumb-list :class="cls">
     <slot />
   </ol>
 </template>

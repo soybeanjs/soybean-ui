@@ -21,6 +21,7 @@ const onTriggerClick = () => {
 <template>
   <Button
     v-bind="props"
+    data-soybean-collapsible-trigger
     :class="cls"
     :disabled="disabled || disabledCollapsible"
     :aria-controls="contentId"

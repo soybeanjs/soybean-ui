@@ -198,6 +198,7 @@ onMounted(async () => {
 <template>
   <div
     ref="positionerElement"
+    data-soybean-select-item-aligned-positioner
     :class="cls"
     style="display: flex; flex-direction: column; position: fixed"
     :style="{

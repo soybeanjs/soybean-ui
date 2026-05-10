@@ -121,6 +121,7 @@ watch(
   <input
     :id="id"
     :ref="setInputElement"
+    data-soybean-input-number-control
     :class="cls"
     aria-roledescription="Number Input"
     :aria-valuemin="min"
