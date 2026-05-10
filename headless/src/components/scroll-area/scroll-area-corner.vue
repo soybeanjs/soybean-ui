@@ -10,9 +10,7 @@ defineOptions({
   inheritAttrs: false
 });
 
-const props = withDefaults(defineProps<ScrollAreaCornerProps>(), {
-  as: 'div'
-});
+const props = defineProps<ScrollAreaCornerProps>();
 
 const attrs = useAttrs();
 const forwardedProps = useOmitProps(props, [], attrs);

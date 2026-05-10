@@ -10,7 +10,6 @@ defineOptions({
 });
 
 const props = withDefaults(defineProps<SplitterResizeHandleProps>(), {
-  as: 'div',
   disabled: false,
   tabindex: 0
 });

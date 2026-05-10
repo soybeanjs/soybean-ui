@@ -8,9 +8,7 @@ defineOptions({
   name: 'EditableArea'
 });
 
-const props = withDefaults(defineProps<EditableAreaProps>(), {
-  as: 'div'
-});
+const props = defineProps<EditableAreaProps>();
 
 const { autoResize, dataDisabled, dataReadonly, dataState, isEmpty } = useEditableRootContext('EditableArea');
 

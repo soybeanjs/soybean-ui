@@ -23,7 +23,6 @@ defineOptions({
 });
 
 const props = withDefaults(defineProps<ColorFieldRootProps>(), {
-  as: 'div',
   modelValue: undefined,
   defaultValue: '#000000',
   colorSpace: 'hsl',

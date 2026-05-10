@@ -13,7 +13,6 @@ defineOptions({
 });
 
 const props = withDefaults(defineProps<ScrollAreaRootProps>(), {
-  as: 'div',
   type: 'hover',
   scrollHideDelay: 600
 });

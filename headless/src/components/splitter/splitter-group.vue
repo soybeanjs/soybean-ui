@@ -19,7 +19,6 @@ defineOptions({
 });
 
 const props = withDefaults(defineProps<SplitterGroupProps>(), {
-  as: 'div',
   direction: 'horizontal',
   dir: undefined,
   defaultLayout: undefined,

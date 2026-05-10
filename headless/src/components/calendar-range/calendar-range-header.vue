@@ -7,9 +7,7 @@ defineOptions({
   name: 'CalendarRangeHeader'
 });
 
-withDefaults(defineProps<CalendarRangeHeaderProps>(), {
-  as: 'div'
-});
+defineProps<CalendarRangeHeaderProps>();
 
 const cls = useCalendarRangeUi('header');
 </script>

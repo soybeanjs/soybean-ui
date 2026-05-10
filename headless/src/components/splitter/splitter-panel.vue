@@ -11,7 +11,6 @@ defineOptions({
 });
 
 const props = withDefaults(defineProps<SplitterPanelProps>(), {
-  as: 'div',
   defaultSize: undefined,
   collapsible: false,
   collapsedSize: 0,

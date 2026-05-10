@@ -11,9 +11,7 @@ defineOptions({
   name: 'ListboxItem'
 });
 
-const props = withDefaults(defineProps<ListboxItemProps>(), {
-  as: 'div'
-});
+const props = defineProps<ListboxItemProps>();
 
 const emit = defineEmits<ListboxItemEmits>();
 

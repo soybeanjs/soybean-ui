@@ -32,7 +32,6 @@ defineOptions({
 });
 
 const props = withDefaults(defineProps<SliderRootProps>(), {
-  as: 'div',
   modelValue: undefined,
   defaultValue: () => [0],
   disabled: false,

@@ -8,9 +8,7 @@ defineOptions({
   name: 'SliderRange'
 });
 
-withDefaults(defineProps<SliderRangeProps>(), {
-  as: 'div'
-});
+defineProps<SliderRangeProps>();
 
 const cls = useSliderUi('range');
 

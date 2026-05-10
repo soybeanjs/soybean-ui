@@ -19,7 +19,6 @@ defineOptions({
 });
 
 const props = withDefaults(defineProps<EditableRootProps>(), {
-  as: 'div',
   modelValue: undefined,
   disabled: false,
   readonly: false,

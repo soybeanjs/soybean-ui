@@ -14,7 +14,6 @@ defineOptions({
 });
 
 const props = withDefaults(defineProps<ProgressRootProps>(), {
-  as: 'div',
   getValueLabel
 });
 

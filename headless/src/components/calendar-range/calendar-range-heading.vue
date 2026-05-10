@@ -7,9 +7,7 @@ defineOptions({
   name: 'CalendarRangeHeading'
 });
 
-withDefaults(defineProps<CalendarRangeHeadingProps>(), {
-  as: 'div'
-});
+defineProps<CalendarRangeHeadingProps>();
 
 const cls = useCalendarRangeUi('heading');
 const { disabled, headingValue } = useCalendarRangeRootContext('CalendarRangeHeading');

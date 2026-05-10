@@ -8,7 +8,6 @@ defineOptions({
 });
 
 const props = withDefaults(defineProps<ColorSwatchPickerRootProps<M>>(), {
-  as: 'div',
   defaultValue: undefined,
   dir: 'ltr',
   disabled: false,

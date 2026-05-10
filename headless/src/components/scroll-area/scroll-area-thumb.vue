@@ -10,9 +10,7 @@ defineOptions({
   inheritAttrs: false
 });
 
-const props = withDefaults(defineProps<ScrollAreaThumbProps>(), {
-  as: 'div'
-});
+const props = defineProps<ScrollAreaThumbProps>();
 
 const attrs = useAttrs();
 const forwardedProps = useOmitProps(props, [], attrs);

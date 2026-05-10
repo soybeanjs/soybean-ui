@@ -13,7 +13,6 @@ defineOptions({
 });
 
 const props = withDefaults(defineProps<ScrollAreaScrollbarProps>(), {
-  as: 'div',
   orientation: 'vertical'
 });
 

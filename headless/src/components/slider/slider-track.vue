@@ -8,9 +8,7 @@ defineOptions({
   name: 'SliderTrack'
 });
 
-withDefaults(defineProps<SliderTrackProps>(), {
-  as: 'div'
-});
+defineProps<SliderTrackProps>();
 
 const cls = useSliderUi('track');
 

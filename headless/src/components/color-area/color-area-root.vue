@@ -23,7 +23,6 @@ defineOptions({
 });
 
 const props = withDefaults(defineProps<ColorAreaRootProps>(), {
-  as: 'div',
   modelValue: undefined,
   defaultValue: '#ff0000',
   colorSpace: 'hsl',

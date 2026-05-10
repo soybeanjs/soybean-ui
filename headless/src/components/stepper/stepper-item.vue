@@ -11,7 +11,6 @@ defineOptions({
 });
 
 const props = withDefaults(defineProps<StepperItemProps>(), {
-  as: 'div',
   disabled: false,
   completed: false
 });

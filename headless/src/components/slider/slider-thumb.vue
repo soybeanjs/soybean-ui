@@ -12,9 +12,7 @@ defineOptions({
   name: 'SliderThumb'
 });
 
-const props = withDefaults(defineProps<SliderThumbProps>(), {
-  as: 'div'
-});
+const props = defineProps<SliderThumbProps>();
 
 const attrs = useAttrs();
 

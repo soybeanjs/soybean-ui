@@ -7,9 +7,7 @@ defineOptions({
   name: 'Skeleton'
 });
 
-withDefaults(defineProps<SkeletonProps>(), {
-  as: 'div'
-});
+defineProps<SkeletonProps>();
 
 const attrs = useAttrs();
 

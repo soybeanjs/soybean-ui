@@ -8,9 +8,7 @@ defineOptions({
   name: 'ComboboxEmpty'
 });
 
-const props = withDefaults(defineProps<ComboboxEmptyProps>(), {
-  as: 'div'
-});
+const props = defineProps<ComboboxEmptyProps>();
 
 const cls = useComboboxUi('empty');
 

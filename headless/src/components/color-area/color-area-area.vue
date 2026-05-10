@@ -10,9 +10,7 @@ defineOptions({
   name: 'ColorAreaArea'
 });
 
-withDefaults(defineProps<ColorAreaAreaProps>(), {
-  as: 'div'
-});
+defineProps<ColorAreaAreaProps>();
 
 const [areaElement, setAreaElement] = useForwardElement();
 

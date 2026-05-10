@@ -12,7 +12,6 @@ defineOptions({
 });
 
 const props = withDefaults(defineProps<StepperRootProps>(), {
-  as: 'div',
   modelValue: undefined,
   defaultValue: 1,
   orientation: 'horizontal',

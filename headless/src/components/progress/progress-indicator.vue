@@ -9,9 +9,7 @@ defineOptions({
   name: 'ProgressIndicator'
 });
 
-withDefaults(defineProps<ProgressIndicatorProps>(), {
-  as: 'div'
-});
+defineProps<ProgressIndicatorProps>();
 
 const cls = useProgressUi('indicator');
 
