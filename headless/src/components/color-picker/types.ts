@@ -12,7 +12,7 @@ import type { ButtonProps } from '../button/types';
 import type { ColorAreaCompactProps } from '../color-area/types';
 import type { ColorFieldCompactProps } from '../color-field/types';
 import type { ColorSliderCompactProps } from '../color-slider/types';
-import type { ColorSwatchProps } from '../color-swatch/types';
+import type { ColorSwatchCompactProps } from '../color-swatch/types';
 import type { ColorSwatchPickerCompactProps } from '../color-swatch-picker/types';
 import type { PopoverCompactEmits, PopoverCompactProps } from '../popover/types';
 import type { SegmentCompactProps, SegmentOptionData } from '../segment/types';
@@ -163,7 +163,7 @@ export interface ColorPickerCompactProps extends ColorPickerRootProps, PopoverCo
   /**
    * Properties forwarded to the swatch element.
    */
-  swatchProps?: ColorSwatchProps;
+  swatchProps?: ColorSwatchCompactProps;
   /**
    * Properties forwarded to the segment element.
    */

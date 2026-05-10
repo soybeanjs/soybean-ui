@@ -134,16 +134,20 @@ import {
   ColorFieldRoot,
   ColorPickerCompact,
   ColorPickerRoot,
+  ColorPickerTrigger,
   ColorSliderCompact,
   ColorSliderRoot,
   ColorSliderThumb,
   ColorSliderTrack,
-  ColorSwatch,
+  ColorSwatchChecker,
+  ColorSwatchCompact,
+  ColorSwatchFill,
   ColorSwatchPickerCompact,
   ColorSwatchPickerItem,
   ColorSwatchPickerItemIndicator,
   ColorSwatchPickerItemSwatch,
   ColorSwatchPickerRoot,
+  ColorSwatchRoot,
   ComboboxAnchor,
   ComboboxArrow,
   ComboboxCancel,
@@ -877,10 +881,12 @@ export const ColorField = {
 
 export const ColorPicker = {
   Compact: ColorPickerCompact,
-  Root: ColorPickerRoot
+  Root: ColorPickerRoot,
+  Trigger: ColorPickerTrigger
 } as {
   Compact: typeof ColorPickerCompact;
   Root: typeof ColorPickerRoot;
+  Trigger: typeof ColorPickerTrigger;
 };
 
 export const ColorSlider = {
@@ -895,7 +901,17 @@ export const ColorSlider = {
   Thumb: typeof ColorSliderThumb;
 };
 
-export { ColorSwatch };
+export const ColorSwatch = {
+  Compact: ColorSwatchCompact,
+  Root: ColorSwatchRoot,
+  Checker: ColorSwatchChecker,
+  Fill: ColorSwatchFill
+} as {
+  Compact: typeof ColorSwatchCompact;
+  Root: typeof ColorSwatchRoot;
+  Checker: typeof ColorSwatchChecker;
+  Fill: typeof ColorSwatchFill;
+};
 
 export const ColorSwatchPicker = {
   Compact: ColorSwatchPickerCompact,

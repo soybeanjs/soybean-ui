@@ -13,8 +13,10 @@ describe('SColorField', () => {
 
     it('forwards non-prop attrs to the input element', () => {
       const wrapper = mount(SColorField, {
-        attrs: {
-          'aria-label': 'Accent color'
+        props: {
+          inputProps: {
+            'aria-label': 'Accent color'
+          }
         },
         attachTo: document.body
       });

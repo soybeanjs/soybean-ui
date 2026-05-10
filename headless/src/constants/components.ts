@@ -127,9 +127,9 @@ export const components = {
   collapsible: ['CollapsibleRoot', 'CollapsibleContent', 'CollapsibleTrigger'],
   colorArea: ['ColorAreaCompact', 'ColorAreaRoot', 'ColorAreaArea', 'ColorAreaThumb'],
   colorField: ['ColorFieldCompact', 'ColorFieldRoot', 'ColorFieldInput'],
-  colorPicker: ['ColorPickerCompact', 'ColorPickerRoot'],
+  colorPicker: ['ColorPickerCompact', 'ColorPickerRoot', 'ColorPickerTrigger'],
   colorSlider: ['ColorSliderCompact', 'ColorSliderRoot', 'ColorSliderTrack', 'ColorSliderThumb'],
-  colorSwatch: ['ColorSwatch'],
+  colorSwatch: ['ColorSwatchCompact', 'ColorSwatchRoot', 'ColorSwatchChecker', 'ColorSwatchFill'],
   colorSwatchPicker: [
     'ColorSwatchPickerCompact',
     'ColorSwatchPickerRoot',
