@@ -1,6 +1,6 @@
 import { mount } from '@vue/test-utils';
 import { nextTick } from 'vue';
-import { describe, expect, it } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
 import { Backtop } from '@soybeanjs/headless/backtop';
 import SBacktop from '../../../src/components/backtop/backtop.vue';
 import { getA11yViolations } from '../../shared/a11y';
@@ -185,6 +185,38 @@ describe('SBacktop', () => {
 
       expect(getScrollTop()).toBe(0);
       expect(wrapper.emitted('click')).toHaveLength(1);
+
+      wrapper.unmount();
+      target.remove();
+    });
+
+    it('blurs the focused button before hiding it after scrolling to the top', async () => {
+      const { target } = createMockScrollTarget(180);
+
+      const wrapper = mount(SBacktop, {
+        props: {
+          duration: 0,
+          target,
+          visibilityHeight: 100
+        },
+        attachTo: document.body
+      });
+
+      getBacktop(wrapper).updateVisibility();
+      await waitForBacktopUpdate();
+
+      const button = wrapper.find('button');
+      (button.element as HTMLButtonElement).focus();
+      const blurSpy = vi.spyOn(button.element as HTMLButtonElement, 'blur');
+
+      expect(document.activeElement).toBe(button.element);
+
+      await button.trigger('click');
+      await waitForBacktopUpdate();
+
+      expect(blurSpy).toHaveBeenCalledTimes(1);
+      expect(button.attributes('hidden')).toBe('');
+      expect(button.attributes('aria-hidden')).toBeUndefined();
 
       wrapper.unmount();
       target.remove();

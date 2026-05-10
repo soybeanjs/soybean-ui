@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, nextTick, onBeforeUnmount, onMounted, shallowRef, watch, useAttrs, onWatcherCleanup } from 'vue';
 import { useEventListener, useRafFn } from '@vueuse/core';
-import { useOmitProps } from '../../composables';
+import { useOmitProps, useForwardElement } from '../../composables';
 import Button from '../button/button.vue';
 import { easeInOutCubic, getScrollTop, prefersReducedMotion, resolveBacktopTarget, setScrollTop } from './shared';
 import type { BacktopProps, BacktopEmits, BacktopState } from './types';
@@ -22,6 +22,7 @@ const attrs = useAttrs();
 const forwardedProps = useOmitProps(props, ['duration', 'target', 'visibilityHeight']);
 
 const visible = shallowRef(false);
+const [buttonRef, setButtonRef] = useForwardElement();
 const resolvedTarget = shallowRef<Window | HTMLElement | null>(null);
 
 let scrollAnimationFrameId: number | null = null;
@@ -32,6 +33,10 @@ const ariaLabel = computed(() => (attrs['aria-label'] as string) ?? 'Back to top
 function updateVisible(nextVisible: boolean) {
   if (visible.value === nextVisible) {
     return;
+  }
+
+  if (!nextVisible && buttonRef.value && buttonRef.value === document.activeElement) {
+    buttonRef.value.blur();
   }
 
   visible.value = nextVisible;
@@ -115,6 +120,12 @@ function scrollToTop() {
 }
 
 function onClick(event: PointerEvent) {
+  const buttonElement = event.currentTarget;
+
+  if (buttonElement instanceof HTMLElement) {
+    buttonElement.blur();
+  }
+
   scrollToTop();
   emit('click', event);
 }
@@ -167,9 +178,9 @@ defineExpose({
 
 <template>
   <Button
+    :ref="setButtonRef"
     v-bind="forwardedProps"
     data-soybean-backtop
-    :aria-hidden="visible ? undefined : true"
     :aria-label="ariaLabel"
     :data-state="dataState"
     :hidden="!visible"
