@@ -125,7 +125,7 @@ const [provideRovingFocusGroupContext, useRovingFocusGroupContext] = useContext(
 
 function useRovingFocusItem(options: UseRovingFocusItemOptions = {}) {
   const { getOrderedElements } = useCollectionContext('RovingFocusItem');
-  const { setItemElement, itemProps } = useCollectionItem(options.itemData);
+  const { setItemElement } = useCollectionItem(options.itemData);
   const {
     currentTabStopId,
     orientation,
@@ -185,8 +185,8 @@ function useRovingFocusItem(options: UseRovingFocusItemOptions = {}) {
 
   const rovingFocusItemProps = computed(() => {
     return {
-      ...itemProps,
       tabindex: isCurrentTabStop.value ? '0' : '-1',
+      'data-soybean-collection-item': '',
       'data-orientation': orientation.value,
       'data-active': active?.value ? '' : undefined,
       'data-disabled': !focusable.value ? '' : undefined

@@ -20,9 +20,9 @@ const ui = useNavigationMenuUi();
 
 const cls = computed(() => (isRoot ? ui.value?.link : ui.value?.subLink));
 
-const { itemProps, setItemElement } = useCollectionItem();
+const { setItemElement } = useCollectionItem();
 
-const forwardedProps = useOmitProps(props, ['active'], itemProps);
+const forwardedProps = useOmitProps(props, ['active']);
 
 const onClick = async (event: MouseEvent) => {
   const linkSelectEvent = new CustomEvent(LINK_SELECT, {
@@ -51,6 +51,7 @@ const onClick = async (event: MouseEvent) => {
     v-bind="forwardedProps"
     :ref="setItemElement"
     data-soybean-navigation-menu-link
+    data-soybean-collection-item
     :class="cls"
     :data-active="active ? '' : undefined"
     :aria-current="active ? 'page' : undefined"

@@ -16,9 +16,9 @@ const props = defineProps<MenuItemImplProps>();
 const { open } = useMenuContext('MenuItemImpl');
 const { onItemEnter, onItemLeave } = useMenuContentContext('MenuItemImpl');
 
-const { setItemElement, itemProps } = useCollectionItem(() => ({ textValue: props.textValue }));
+const { setItemElement } = useCollectionItem(() => ({ textValue: props.textValue }));
 
-const forwardedProps = useOmitProps(props, ['disabled', 'textValue'], itemProps);
+const forwardedProps = useOmitProps(props, ['disabled', 'textValue']);
 
 const isFocused = shallowRef(false);
 
@@ -67,6 +67,7 @@ const onBlur = async (event: FocusEvent) => {
     v-bind="forwardedProps"
     :ref="setItemElement"
     data-soybean-menu-item-impl
+    data-soybean-collection-item
     role="menuitem"
     tabindex="-1"
     :aria-disabled="disabled || undefined"

@@ -40,7 +40,7 @@ const { textId, textValue, disabled } = provideSelectItemContext({
   isSelected
 });
 
-const { onItemElementChange, itemProps } = useCollectionItem(() => ({
+const { onItemElementChange } = useCollectionItem(() => ({
   textValue: textValue.value
 }));
 
@@ -128,9 +128,9 @@ if (props.value === '') {
 
 <template>
   <Primitive
-    v-bind="itemProps"
     :ref="setItemElement"
     data-soybean-select-item
+    data-soybean-collection-item
     :as="as"
     :as-child="asChild"
     :class="cls"

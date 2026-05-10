@@ -49,7 +49,7 @@ const {
 
 const cls = useNavigationMenuUi('trigger');
 
-const { itemProps, onItemElementChange } = useCollectionItem();
+const { onItemElementChange } = useCollectionItem();
 const [triggerElement, setTriggerElement] = useForwardElement(el => {
   onTriggerElementChange(el);
   onItemElementChange(el);
@@ -130,12 +130,13 @@ const onVisuallyHiddenFocus = (event: FocusEvent) => {
 
 <template>
   <Primitive
-    v-bind="{ ...attrs, ...itemProps }"
+    v-bind="attrs"
     :id="triggerId"
     :ref="setTriggerElement"
     :as="as"
     :as-child="asChild"
     data-soybean-navigation-menu-trigger
+    data-soybean-collection-item
     :class="cls"
     :disabled="disabled"
     :data-disabled="disabled ? '' : undefined"

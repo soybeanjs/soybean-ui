@@ -26,9 +26,9 @@ const {
   highlightedElement,
   changeHighlight
 } = useListboxRootContext('ListboxItem');
-const { itemProps, itemElement, setItemElement } = useCollectionItem({ value: props.value });
+const { itemElement, setItemElement } = useCollectionItem({ value: props.value });
 
-const forwardedProps = useOmitProps(props, ['value', 'disabled'], itemProps);
+const forwardedProps = useOmitProps(props, ['value', 'disabled']);
 
 const id = `soybean-listbox-item-${useId()}`;
 
@@ -88,6 +88,7 @@ provideListboxItemContext({
     :ref="setItemElement"
     v-memo="[isHighlighted, isSelected]"
     data-soybean-listbox-item
+    data-soybean-collection-item
     :class="cls"
     role="option"
     :tabindex="tabindex"

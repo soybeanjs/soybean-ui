@@ -2,7 +2,6 @@ import { onBeforeUnmount, onWatcherCleanup, ref, shallowRef, toValue, watchPostE
 import type { MaybeRefOrGetter, Ref } from 'vue';
 import { pascalCase } from '@soybeanjs/utils';
 import { getCollectionItemElements, getElFromTemplateRef, isElementHasAttribute } from '../shared';
-import { COLLECTION_ITEM_ATTRIBUTE } from '../constants';
 import type { VNodeRef } from '../types';
 import { useContext } from './use-context';
 
@@ -129,10 +128,7 @@ export function useCollection<ItemData = Record<string, any>>(collectionName: st
     return {
       itemElement,
       onItemElementChange,
-      setItemElement: registerItemElement,
-      itemProps: {
-        [COLLECTION_ITEM_ATTRIBUTE]: ''
-      }
+      setItemElement: registerItemElement
     };
   };
 
