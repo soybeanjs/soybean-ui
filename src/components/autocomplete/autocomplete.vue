@@ -4,7 +4,7 @@ import { AutocompleteCompact, provideAutocompleteUi } from '@soybeanjs/headless/
 import type { AutocompleteSingleOptionData } from '@soybeanjs/headless/autocomplete';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
 import { keysOf } from '@soybeanjs/utils';
-import { mergeSlotVariants } from '@/theme';
+import { mergeVariants } from '@/theme';
 import { autocompleteVariants } from './variants';
 import type { AutocompleteEmits, AutocompleteProps, AutocompleteSlots } from './types';
 
@@ -35,7 +35,7 @@ const ui = computed(() => {
     size: props.size
   });
 
-  return mergeSlotVariants(variants, props.ui, { root: props.class });
+  return mergeVariants(variants, props.ui, { root: props.class });
 });
 
 provideAutocompleteUi(ui);

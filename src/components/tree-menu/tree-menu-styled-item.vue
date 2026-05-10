@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { mergeSlotVariants } from '@/theme';
+import { mergeVariants } from '@/theme';
 import { treeMenuVariants } from './variants';
 import type { TreeMenuStyledItemProps } from './types';
 
@@ -15,7 +15,7 @@ const ui = computed(() => {
     size: props.size
   });
 
-  return mergeSlotVariants(variants, props.ui, { item: props.class });
+  return mergeVariants(variants, props.ui, { item: props.class });
 });
 </script>
 

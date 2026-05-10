@@ -2,7 +2,7 @@
 import { computed } from 'vue';
 import { ToolbarRoot, provideToolbarUi } from '@soybeanjs/headless/toolbar';
 import { useOmitProps } from '@soybeanjs/headless/composables';
-import { mergeSlotVariants } from '@/theme';
+import { mergeVariants } from '@/theme';
 import { toolbarVariants } from './variants';
 import type { ToolbarProps } from './types';
 
@@ -17,7 +17,7 @@ const forwardedProps = useOmitProps(props, ['class', 'ui']);
 const ui = computed(() => {
   const variants = toolbarVariants();
 
-  return mergeSlotVariants(variants, props.ui, { root: props.class });
+  return mergeVariants(variants, props.ui, { root: props.class });
 });
 
 provideToolbarUi(ui);

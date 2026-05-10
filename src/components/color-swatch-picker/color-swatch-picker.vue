@@ -2,7 +2,7 @@
 import { computed } from 'vue';
 import { ColorSwatchPickerCompact, provideColorSwatchPickerUi } from '@soybeanjs/headless/color-swatch-picker';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
-import { mergeBaseVariants, mergeSlotVariants } from '@/theme';
+import { mergeVariants } from '@/theme';
 import { colorSwatchVariants } from '../color-swatch/variants';
 import { colorSwatchPickerVariants } from './variants';
 import type { ColorSwatchPickerEmits, ColorSwatchPickerProps } from './types';
@@ -27,17 +27,18 @@ const listeners = useForwardListeners(emit);
 const forwardedProps = useOmitProps(props, ['class', 'size', 'ui', 'shape']);
 
 const ui = computed(() => {
-  const baseVariants = colorSwatchPickerVariants({ size: props.size, shape: props.shape });
-
-  const { root, checker, fill } = colorSwatchVariants({ size: props.size });
-
-  const variants = mergeBaseVariants(baseVariants, {
-    swatchRoot: root(),
-    swatchChecker: checker(),
-    swatchFill: fill()
+  const variants = Object.assign(colorSwatchPickerVariants({ size: props.size, shape: props.shape }), {
+    $alias: {
+      variants: colorSwatchVariants({ size: props.size }),
+      map: {
+        root: 'swatchRoot',
+        checker: 'swatchChecker',
+        fill: 'swatchFill'
+      }
+    }
   });
 
-  return mergeSlotVariants(variants, props.ui, { root: props.class });
+  return mergeVariants(variants, props.ui, { root: props.class });
 });
 
 provideColorSwatchPickerUi(ui);

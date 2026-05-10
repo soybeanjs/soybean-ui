@@ -2,7 +2,7 @@
 import { computed } from 'vue';
 import { ColorFieldCompact, provideColorFieldUi } from '@soybeanjs/headless/color-field';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
-import { mergeSlotVariants } from '@/theme';
+import { mergeVariants } from '@/theme';
 import { colorFieldVariants } from './variants';
 import type { ColorFieldEmits, ColorFieldProps } from './types';
 
@@ -21,7 +21,7 @@ const forwardedProps = useOmitProps(props, ['class', 'size', 'ui']);
 const ui = computed(() => {
   const variants = colorFieldVariants({ size: props.size });
 
-  return mergeSlotVariants(variants, props.ui, { root: props.class });
+  return mergeVariants(variants, props.ui, { root: props.class });
 });
 
 provideColorFieldUi(ui);

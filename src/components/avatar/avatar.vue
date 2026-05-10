@@ -3,7 +3,7 @@ import { computed, useSlots } from 'vue';
 import { AvatarCompact, provideAvatarUi } from '@soybeanjs/headless/avatar';
 import { useOmitProps } from '@soybeanjs/headless/composables';
 import { keysOf } from '@soybeanjs/utils';
-import { mergeSlotVariants } from '@/theme';
+import { mergeVariants } from '@/theme';
 import { avatarVariants } from './variants';
 import type { AvatarEmits, AvatarProps } from './types';
 
@@ -24,7 +24,7 @@ const slotNames = computed(() => keysOf(slots));
 const ui = computed(() => {
   const variants = avatarVariants({ size: props.size });
 
-  return mergeSlotVariants(variants, props.ui, { root: props.class });
+  return mergeVariants(variants, props.ui, { root: props.class });
 });
 
 provideAvatarUi(ui);

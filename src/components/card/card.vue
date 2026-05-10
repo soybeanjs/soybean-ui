@@ -2,7 +2,7 @@
 import { computed } from 'vue';
 import { CardCompact, provideCardUi } from '@soybeanjs/headless/card';
 import { useOmitProps } from '@soybeanjs/headless/composables';
-import { mergeSlotVariants } from '@/theme';
+import { mergeVariants } from '@/theme';
 import { cardVariants } from './variants';
 import type { CardProps } from './types';
 
@@ -39,7 +39,7 @@ const ui = computed(() => {
     split: props.split
   });
 
-  return mergeSlotVariants(variants, props.ui, { root: props.class });
+  return mergeVariants(variants, props.ui, { root: props.class });
 });
 
 provideCardUi(ui);

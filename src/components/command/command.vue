@@ -4,7 +4,7 @@ import { CommandCompact, provideCommandUi } from '@soybeanjs/headless/command';
 import type { CommandSingleOptionData } from '@soybeanjs/headless/command';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
 import { keysOf } from '@soybeanjs/utils';
-import { mergeBaseVariants, mergeSlotVariants } from '@/theme';
+import { mergeVariants } from '@/theme';
 import { kbdVariants } from '../kbd/variants';
 import { commandVariants } from './variants';
 import type { CommandEmits, CommandProps, CommandSlots } from './types';
@@ -26,17 +26,20 @@ const listeners = useForwardListeners(emit);
 const slotNames = computed(() => keysOf(slots));
 
 const ui = computed(() => {
-  const cVariants = commandVariants({
-    size: props.size
-  });
-
-  const variants = mergeBaseVariants(cVariants, {
-    shortcut: kbdVariants({
+  const variants = Object.assign(
+    commandVariants({
       size: props.size
-    })
-  });
+    }),
+    {
+      $base: {
+        shortcut: kbdVariants({
+          size: props.size
+        })
+      }
+    }
+  );
 
-  return mergeSlotVariants(variants, props.ui, { root: props.class });
+  return mergeVariants(variants, props.ui, { root: props.class });
 });
 
 provideCommandUi(ui);

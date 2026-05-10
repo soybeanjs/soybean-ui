@@ -3,7 +3,7 @@ import { computed } from 'vue';
 import { EmptyCompact, provideEmptyUi } from '@soybeanjs/headless/empty';
 import { useOmitProps } from '@soybeanjs/headless/composables';
 import { keysOf } from '@soybeanjs/utils';
-import { mergeSlotVariants } from '@/theme';
+import { mergeVariants } from '@/theme';
 import { emptyVariants } from './variants';
 import type { EmptyProps, EmptySlots } from './types';
 
@@ -24,7 +24,7 @@ const ui = computed(() => {
     size: props.size
   });
 
-  return mergeSlotVariants(variants, props.ui, { root: props.class });
+  return mergeVariants(variants, props.ui, { root: props.class });
 });
 
 provideEmptyUi(ui);

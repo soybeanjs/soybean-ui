@@ -3,7 +3,7 @@ import { computed } from 'vue';
 import type { CSSProperties } from 'vue';
 import { AnchorCompact, provideAnchorUi } from '@soybeanjs/headless/anchor';
 import { useOmitProps, useForwardListeners } from '@soybeanjs/headless/composables';
-import { mergeSlotVariants } from '@/theme';
+import { mergeVariants } from '@/theme';
 import { anchorVariants } from './variants';
 import type { AnchorEmits, AnchorProps } from './types';
 
@@ -34,7 +34,7 @@ const ui = computed(() => {
     sticky: props.sticky
   });
 
-  return mergeSlotVariants(variants, props.ui, { root: props.class });
+  return mergeVariants(variants, props.ui, { root: props.class });
 });
 
 provideAnchorUi(ui);

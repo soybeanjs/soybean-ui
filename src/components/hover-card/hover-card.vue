@@ -10,7 +10,7 @@ import {
   provideHoverCardUi
 } from '@soybeanjs/headless/hover-card';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
-import { mergeSlotVariants } from '@/theme';
+import { mergeVariants } from '@/theme';
 import { hoverCardVariants } from './variants';
 import type { HoverCardEmits, HoverCardProps } from './types';
 
@@ -46,7 +46,7 @@ const ui = computed(() => {
     size: props.size
   });
 
-  return mergeSlotVariants(variants, props.ui, { popup: props.class });
+  return mergeVariants(variants, props.ui, { popup: props.class });
 });
 
 const positionerProps = computed(() => {

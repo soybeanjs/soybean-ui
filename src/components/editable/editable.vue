@@ -11,7 +11,7 @@ import {
   provideEditableUi
 } from '@soybeanjs/headless/editable';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
-import { mergeSlotVariants } from '@/theme';
+import { mergeVariants } from '@/theme';
 import Icon from '../icon/icon.vue';
 import { editableVariants } from './variants';
 import type { EditableEmits, EditableProps } from './types';
@@ -43,7 +43,7 @@ const ui = computed(() => {
     size: props.size
   });
 
-  return mergeSlotVariants(variants, props.ui, { root: props.class });
+  return mergeVariants(variants, props.ui, { root: props.class });
 });
 
 provideEditableUi(ui);

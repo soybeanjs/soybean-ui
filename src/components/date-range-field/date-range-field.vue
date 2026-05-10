@@ -3,7 +3,7 @@ import { computed } from 'vue';
 import { DateRangeFieldCompact, provideDateRangeFieldUi } from '@soybeanjs/headless/date-range-field';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
 import { keysOf } from '@soybeanjs/utils';
-import { mergeSlotVariants } from '@/theme';
+import { mergeVariants } from '@/theme';
 import { dateFieldVariants } from '../date-field/variants';
 import { dateRangeFieldVariants } from './variants';
 import type { DateRangeFieldEmits, DateRangeFieldProps, DateRangeFieldSlots } from './types';
@@ -28,7 +28,7 @@ const ui = computed(() => {
   const variants = dateRangeFieldVariants({ size: props.size });
   const dateField = dateFieldVariants({ size: props.size });
 
-  return mergeSlotVariants(Object.assign(variants, dateField), props.ui, { root: props.class });
+  return mergeVariants(Object.assign(variants, dateField), props.ui, { root: props.class });
 });
 
 provideDateRangeFieldUi(ui);

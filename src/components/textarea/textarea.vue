@@ -3,7 +3,7 @@ import { computed } from 'vue';
 import { TextareaCompact, provideTextareaUi } from '@soybeanjs/headless/textarea';
 import { useOmitProps } from '@soybeanjs/headless/composables';
 import { keysOf } from '@soybeanjs/utils';
-import { mergeBaseVariants, mergeSlotVariants, miniSizeMap } from '@/theme';
+import { mergeVariants, miniSizeMap } from '@/theme';
 import { buttonIconVariants } from '../button/variants';
 import { textareaVariants } from './variants';
 import type { TextareaEmits, TextareaProps, TextareaSlots } from './types';
@@ -23,21 +23,24 @@ const slots = defineSlots<TextareaSlots>();
 const slotNames = computed(() => keysOf(slots));
 
 const ui = computed(() => {
-  const baseVariants = textareaVariants({
-    size: props.size,
-    resize: !props.autosize ? props.resize : false
-  });
-
   const miniSize = miniSizeMap[props.size ?? 'md'];
 
-  const variants = mergeBaseVariants(baseVariants, {
-    clear: buttonIconVariants({
-      size: miniSize,
-      shape: 'circle'
-    })
-  });
+  const variants = Object.assign(
+    textareaVariants({
+      size: props.size,
+      resize: !props.autosize ? props.resize : false
+    }),
+    {
+      $base: {
+        clear: buttonIconVariants({
+          size: miniSize,
+          shape: 'circle'
+        })
+      }
+    }
+  );
 
-  return mergeSlotVariants(variants, props.ui, { root: props.class });
+  return mergeVariants(variants, props.ui, { root: props.class });
 });
 
 provideTextareaUi(ui);

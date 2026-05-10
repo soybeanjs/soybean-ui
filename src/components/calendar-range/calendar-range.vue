@@ -3,7 +3,7 @@ import { computed } from 'vue';
 import { CalendarRangeCompact, provideCalendarRangeUi } from '@soybeanjs/headless/calendar-range';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
 import { keysOf } from '@soybeanjs/utils';
-import { mergeBaseVariants, mergeSlotVariants, miniSizeMap } from '@/theme';
+import { mergeVariants, miniSizeMap } from '@/theme';
 import { buttonVariants } from '../button/variants';
 import { calendarRangeVariants } from './variants';
 import SSelect from '../select/select.vue';
@@ -26,24 +26,27 @@ const listeners = useForwardListeners(emit);
 const slotNames = computed(() => keysOf(slots).filter(name => name !== 'heading'));
 
 const ui = computed(() => {
-  const baseVariants = calendarRangeVariants({
-    size: props.size
-  });
-
-  const variants = mergeBaseVariants(baseVariants, {
-    prev: buttonVariants({
-      size: props.size,
-      variant: 'pure',
-      fitContent: true
+  const variants = Object.assign(
+    calendarRangeVariants({
+      size: props.size
     }),
-    next: buttonVariants({
-      size: props.size,
-      variant: 'pure',
-      fitContent: true
-    })
-  });
+    {
+      $base: {
+        prev: buttonVariants({
+          size: props.size,
+          variant: 'pure',
+          fitContent: true
+        }),
+        next: buttonVariants({
+          size: props.size,
+          variant: 'pure',
+          fitContent: true
+        })
+      }
+    }
+  );
 
-  return mergeSlotVariants(variants, props.ui, { root: props.class });
+  return mergeVariants(variants, props.ui, { root: props.class });
 });
 
 const miniSize = computed(() => miniSizeMap[props.size || 'md']);

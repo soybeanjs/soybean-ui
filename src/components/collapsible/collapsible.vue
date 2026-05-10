@@ -2,7 +2,7 @@
 import { computed } from 'vue';
 import { CollapsibleRoot, provideCollapsibleUi } from '@soybeanjs/headless/collapsible';
 import { useOmitProps } from '@soybeanjs/headless/composables';
-import { mergeSlotVariants } from '@/theme';
+import { mergeVariants } from '@/theme';
 import { collapsibleVariants } from './variants';
 import type { CollapsibleEmits, CollapsibleProps } from './types';
 
@@ -25,7 +25,7 @@ const ui = computed(() => {
     size: props.size
   });
 
-  return mergeSlotVariants(variants, props.ui);
+  return mergeVariants(variants, props.ui);
 });
 
 provideCollapsibleUi(ui);

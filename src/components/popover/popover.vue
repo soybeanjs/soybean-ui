@@ -3,7 +3,7 @@ import { computed } from 'vue';
 import { PopoverCompact, providePopoverUi } from '@soybeanjs/headless/popover';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
 import { keysOf } from '@soybeanjs/utils';
-import { mergeBaseVariants, mergeSlotVariants, miniSizeMap } from '@/theme';
+import { mergeVariants, miniSizeMap } from '@/theme';
 import { buttonIconVariants } from '../button/variants';
 import { popoverVariants } from './variants';
 import type { PopoverProps, PopoverEmits, PopoverSlots } from './types';
@@ -29,17 +29,22 @@ const listeners = useForwardListeners(emit);
 const slotNames = computed(() => keysOf(slots));
 
 const ui = computed(() => {
-  const baseVariants = popoverVariants({
-    size: props.size
-  });
+  const miniSize = miniSizeMap[props.size ?? 'md'];
 
-  const variants = mergeBaseVariants(baseVariants, {
-    close: buttonIconVariants({
-      size: miniSizeMap[props.size ?? 'md']
-    })
-  });
+  const variants = Object.assign(
+    popoverVariants({
+      size: props.size
+    }),
+    {
+      $base: {
+        close: buttonIconVariants({
+          size: miniSize
+        })
+      }
+    }
+  );
 
-  return mergeSlotVariants(variants, props.ui, { popup: props.class });
+  return mergeVariants(variants, props.ui, { popup: props.class });
 });
 
 providePopoverUi(ui);

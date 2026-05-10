@@ -2,7 +2,7 @@
 import { computed } from 'vue';
 import { ProgressCircleCompact, provideProgressUi } from '@soybeanjs/headless/progress';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
-import { mergeSlotVariants } from '@/theme';
+import { mergeVariants } from '@/theme';
 import { progressCircleVariants } from './variants';
 import type { ProgressCircleEmits, ProgressCircleProps, ProgressCircleSlots } from './types';
 
@@ -26,7 +26,7 @@ const ui = computed(() => {
     size: props.size
   });
 
-  return mergeSlotVariants(variants, props.ui, { root: props.class });
+  return mergeVariants(variants, props.ui, { root: props.class });
 });
 
 const hasDefaultSlot = computed(() => Boolean(slots.default));

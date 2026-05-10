@@ -4,7 +4,7 @@ import { CarouselCompact, provideCarouselUi } from '@soybeanjs/headless/carousel
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
 import type { DefinedValue } from '@soybeanjs/headless/types';
 import { keysOf } from '@soybeanjs/utils';
-import { mergeBaseVariants, mergeSlotVariants } from '@/theme';
+import { mergeVariants } from '@/theme';
 import { buttonIconVariants } from '../button/variants';
 import { carouselVariants } from './variants';
 import type { CarouselProps, CarouselEmits, CarouselSlots } from './types';
@@ -26,26 +26,29 @@ const listeners = useForwardListeners(emit);
 const slotNames = computed(() => keysOf(slots).filter(name => name !== 'item'));
 
 const ui = computed(() => {
-  const baseVariants = carouselVariants({
-    size: props.size,
-    orientation: props.orientation,
-    floatNav: props.floatNav
-  });
-
-  const variants = mergeBaseVariants(baseVariants, {
-    previous: buttonIconVariants({
+  const variants = Object.assign(
+    carouselVariants({
       size: props.size,
-      variant: 'pure',
-      shape: 'circle'
+      orientation: props.orientation,
+      floatNav: props.floatNav
     }),
-    next: buttonIconVariants({
-      size: props.size,
-      variant: 'pure',
-      shape: 'circle'
-    })
-  });
+    {
+      $base: {
+        previous: buttonIconVariants({
+          size: props.size,
+          variant: 'pure',
+          shape: 'circle'
+        }),
+        next: buttonIconVariants({
+          size: props.size,
+          variant: 'pure',
+          shape: 'circle'
+        })
+      }
+    }
+  );
 
-  return mergeSlotVariants(variants, props.ui, { root: props.class });
+  return mergeVariants(variants, props.ui, { root: props.class });
 });
 
 provideCarouselUi(ui);

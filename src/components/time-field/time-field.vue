@@ -2,7 +2,7 @@
 import { computed } from 'vue';
 import { TimeFieldCompact, provideTimeFieldUi } from '@soybeanjs/headless/time-field';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
-import { mergeSlotVariants } from '@/theme';
+import { mergeVariants } from '@/theme';
 import { dateFieldVariants } from '../date-field/variants';
 import type { TimeFieldProps, TimeFieldEmits } from './types';
 
@@ -21,7 +21,7 @@ const forwardedProps = useOmitProps(props, ['class', 'size', 'ui']);
 const ui = computed(() => {
   const variants = dateFieldVariants({ size: props.size });
 
-  return mergeSlotVariants(variants, props.ui, { root: props.class });
+  return mergeVariants(variants, props.ui, { root: props.class });
 });
 
 provideTimeFieldUi(ui);

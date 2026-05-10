@@ -3,6 +3,7 @@ import { tv } from 'tailwind-variants';
 
 export const bottomSheetVariants = tv({
   slots: {
+    popup: '',
     handle: `mx-auto shrink-0 cursor-grab active:cursor-grabbing rounded-full bg-muted`
   },
   variants: {

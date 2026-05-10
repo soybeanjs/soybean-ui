@@ -3,7 +3,7 @@ import { computed } from 'vue';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
 import { ComboboxCompact, provideComboboxUi } from '@soybeanjs/headless/combobox';
 import { keysOf } from '@soybeanjs/utils';
-import { mergeSlotVariants } from '@/theme';
+import { mergeVariants } from '@/theme';
 import { comboboxVariants } from './variants';
 import type { ComboboxEmits, ComboboxProps, ComboboxSlots } from './types';
 
@@ -31,7 +31,7 @@ const ui = computed(() => {
     size: props.size
   });
 
-  return mergeSlotVariants(variants, props.ui, { trigger: props.class });
+  return mergeVariants(variants, props.ui, { trigger: props.class });
 });
 
 provideComboboxUi(ui);

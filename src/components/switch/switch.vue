@@ -4,7 +4,7 @@ import { SwitchCompact, provideSwitchUi } from '@soybeanjs/headless/switch';
 import type { AcceptableBooleanValue } from '@soybeanjs/headless/types';
 import { useOmitProps } from '@soybeanjs/headless/composables';
 import { keysOf } from '@soybeanjs/utils';
-import { mergeSlotVariants } from '@/theme';
+import { mergeVariants } from '@/theme';
 import { switchVariants } from './variants';
 import type { SwitchEmits, SwitchProps, SwitchSlots } from './types';
 
@@ -33,7 +33,7 @@ const ui = computed(() => {
     shape: props.shape
   });
 
-  return mergeSlotVariants(variants, props.ui, { root: props.class });
+  return mergeVariants(variants, props.ui, { root: props.class });
 });
 
 provideSwitchUi(ui);

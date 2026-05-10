@@ -10,7 +10,7 @@ import { computed } from 'vue';
 import { RadioGroupCompact, provideRadioGroupUi } from '@soybeanjs/headless/radio-group';
 import { useOmitProps } from '@soybeanjs/headless/composables';
 import type { AcceptableBooleanValue } from '@soybeanjs/headless/types';
-import { mergeSlotVariants } from '@/theme';
+import { mergeVariants } from '@/theme';
 import { radioGroupVariants } from './variants';
 import type { RadioGroupEmits, RadioGroupOptionData, RadioGroupProps } from './types';
 
@@ -37,7 +37,7 @@ const ui = computed(() => {
     size: props.size
   });
 
-  return mergeSlotVariants(variants, props.ui, { root: props.class });
+  return mergeVariants(variants, props.ui, { root: props.class });
 });
 
 provideRadioGroupUi(ui);

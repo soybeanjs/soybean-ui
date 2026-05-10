@@ -3,7 +3,7 @@ import { computed } from 'vue';
 import { InputNumberCompact, provideInputNumberUi } from '@soybeanjs/headless/input-number';
 import { useOmitProps } from '@soybeanjs/headless/composables';
 import { keysOf } from '@soybeanjs/utils';
-import { mergeBaseVariants, mergeSlotVariants, miniSizeMap } from '@/theme';
+import { mergeVariants, miniSizeMap } from '@/theme';
 import { buttonIconVariants } from '../button/variants';
 import { inputNumberVariants } from './variants';
 import type { InputNumberEmits, InputNumberProps, InputNumberSlots } from './types';
@@ -23,20 +23,23 @@ const slots = defineSlots<InputNumberSlots>();
 const slotNames = computed(() => keysOf(slots));
 
 const ui = computed(() => {
-  const baseVariants = inputNumberVariants({
-    size: props.size,
-    center: props.center
-  });
-
   const miniSize = miniSizeMap[props.size ?? 'md'];
 
-  const variants = mergeBaseVariants(baseVariants, {
-    decrement: buttonIconVariants({ size: miniSize }),
-    increment: buttonIconVariants({ size: miniSize }),
-    clear: buttonIconVariants({ size: miniSize, shape: 'circle' })
-  });
+  const variants = Object.assign(
+    inputNumberVariants({
+      size: props.size,
+      center: props.center
+    }),
+    {
+      $base: {
+        decrement: buttonIconVariants({ size: miniSize }),
+        increment: buttonIconVariants({ size: miniSize }),
+        clear: buttonIconVariants({ size: miniSize, shape: 'circle' })
+      }
+    }
+  );
 
-  return mergeSlotVariants(variants, props.ui, { root: props.class });
+  return mergeVariants(variants, props.ui, { root: props.class });
 });
 
 provideInputNumberUi(ui);

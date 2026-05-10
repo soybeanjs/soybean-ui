@@ -2,7 +2,7 @@
 import { computed } from 'vue';
 import { InputOtpCompact, provideInputOtpUi } from '@soybeanjs/headless/input-otp';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
-import { mergeSlotVariants } from '@/theme';
+import { mergeVariants } from '@/theme';
 import { inputOtpVariants } from './variants';
 import type { InputOtpEmits, InputOtpProps, InputOtpSlots } from './types';
 
@@ -26,7 +26,7 @@ const ui = computed(() => {
     align: props.align
   });
 
-  return mergeSlotVariants(variants, props.ui, { root: props.class });
+  return mergeVariants(variants, props.ui, { root: props.class });
 });
 
 provideInputOtpUi(ui);

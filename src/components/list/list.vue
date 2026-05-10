@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { ListRoot, provideListUi } from '@soybeanjs/headless/list';
-import { mergeSlotVariants } from '@/theme';
+import { mergeVariants } from '@/theme';
 import { listVariants } from './variants';
 import type { ListProps } from './types';
 
@@ -16,7 +16,7 @@ const ui = computed(() => {
     size: props.size
   });
 
-  return mergeSlotVariants(variants, props.ui, { root: props.class });
+  return mergeVariants(variants, props.ui, { root: props.class });
 });
 
 provideListUi(ui);

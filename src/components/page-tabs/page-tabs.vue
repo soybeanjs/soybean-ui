@@ -4,7 +4,7 @@ import { PageTabsCompact, providePageTabsUi } from '@soybeanjs/headless/page-tab
 import type { PageTabsOptionData } from '@soybeanjs/headless/page-tabs';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
 import { keysOf } from '@soybeanjs/utils';
-import { mergeSlotVariants } from '@/theme';
+import { mergeVariants } from '@/theme';
 import { provideMenuUi } from '../menu/context';
 import { pageTabsVariants } from './variants';
 import type { PageTabsEmits, PageTabsProps, PageTabsSlots } from './types';
@@ -34,7 +34,7 @@ const ui = computed(() => {
     variant: props.variant
   });
 
-  return mergeSlotVariants(variants, props.ui, { root: props.class });
+  return mergeVariants(variants, props.ui, { root: props.class });
 });
 
 provideMenuUi(() => ({

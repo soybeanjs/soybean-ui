@@ -6,7 +6,7 @@ import type { TreeMenuBaseOptionData } from '@soybeanjs/headless/tree-menu';
 import { provideBadgeUi } from '@soybeanjs/headless/badge';
 import { provideTooltipUi } from '@soybeanjs/headless/tooltip';
 import { keysOf } from '@soybeanjs/utils';
-import { mergeSlotVariants } from '@/theme';
+import { mergeVariants } from '@/theme';
 import { provideMenuUi } from '../menu/context';
 import { badgeVariants } from '../badge/variants';
 import { tooltipVariants } from '../tooltip/variants';
@@ -36,7 +36,7 @@ const ui = computed(() => {
     size: props.size
   });
 
-  return mergeSlotVariants(variants, props.ui, { root: props.class });
+  return mergeVariants(variants, props.ui, { root: props.class });
 });
 
 const badgeUi = computed(() =>

@@ -9,7 +9,7 @@ import { provideColorSwatchPickerUi } from '@soybeanjs/headless/color-swatch-pic
 import { provideColorSliderUi } from '@soybeanjs/headless/color-slider';
 import { providePopoverUi } from '@soybeanjs/headless/popover';
 import { provideTabsUi } from '@soybeanjs/headless/tabs';
-import { mergeBaseVariants, mergeSlotVariants, miniSizeMap } from '@/theme';
+import { mergeVariants, miniSizeMap } from '@/theme';
 import { buttonIconVariants, buttonVariants } from '../button/variants';
 import { popoverVariants } from '../popover/variants';
 import { colorAreaVariants } from '../color-area/variants';
@@ -44,44 +44,48 @@ const miniSize = computed(() => miniSizeMap[props.size ?? 'md']);
 const ui = computed(() => {
   const baseVariants = colorPickerVariants({ size: props.size });
 
-  const variants = mergeBaseVariants(baseVariants, {
-    trigger: buttonVariants({
-      size: props.size,
-      variant: 'pure'
-    })
+  const variants = Object.assign(baseVariants, {
+    $base: {
+      trigger: buttonVariants({
+        size: props.size,
+        variant: 'pure'
+      }),
+      close: buttonIconVariants({ size: miniSize.value })
+    }
   });
 
-  return mergeSlotVariants(variants, props.ui, { trigger: props.class });
+  return mergeVariants(variants, props.ui, { trigger: props.class });
 });
 
 const popoverUi = computed(() => {
-  const baseVariants = popoverVariants({ size: props.size });
-  const variants = mergeBaseVariants(baseVariants, {
-    close: buttonIconVariants({ size: miniSize.value })
+  const variants = Object.assign(popoverVariants({ size: props.size }), {
+    $base: {
+      close: buttonIconVariants({ size: miniSize.value })
+    }
   });
 
-  return mergeSlotVariants(variants, props.ui);
+  return mergeVariants(variants, props.ui);
 });
 
 const colorAreaUi = computed(() => {
   const variants = colorAreaVariants({ size: props.size });
-  return mergeSlotVariants(variants);
+  return mergeVariants(variants);
 });
 const colorFieldUi = computed(() => {
   const variants = colorFieldVariants({ size: props.size });
-  return mergeSlotVariants(variants);
+  return mergeVariants(variants);
 });
 const colorSwatchUi = computed(() => {
   const variants = colorSwatchVariants({ size: props.size, shape: 'square' });
-  return mergeSlotVariants(variants);
+  return mergeVariants(variants);
 });
 const colorSwatchPickerUi = computed(() => {
   const variants = colorSwatchPickerVariants({ size: props.size, shape: 'square' });
-  return mergeSlotVariants(variants);
+  return mergeVariants(variants);
 });
 const colorSliderUi = computed(() => {
   const variants = sliderVariants({ size: props.size });
-  return mergeSlotVariants(variants);
+  return mergeVariants(variants);
 });
 const segmentUi = computed(() => {
   const variants = tabsVariants({
@@ -92,7 +96,7 @@ const segmentUi = computed(() => {
     enableIndicator: true
   });
 
-  return mergeSlotVariants(variants);
+  return mergeVariants(variants);
 });
 
 provideColorPickerUi(ui);

@@ -3,7 +3,7 @@ import { computed } from 'vue';
 import { ToggleGroupRoot, provideToggleGroupUi } from '@soybeanjs/headless/toggle-group';
 import type { DefinedValue } from '@soybeanjs/headless/types';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
-import { mergeSlotVariants } from '@/theme';
+import { mergeVariants } from '@/theme';
 import { toggleGroupVariants } from './variants';
 import type { ToggleGroupEmits, ToggleGroupProps } from './types';
 
@@ -27,7 +27,7 @@ const ui = computed(() => {
     orientation: props.orientation
   });
 
-  return mergeSlotVariants(variants, props.ui, { root: props.class });
+  return mergeVariants(variants, props.ui, { root: props.class });
 });
 
 provideToggleGroupUi(ui);

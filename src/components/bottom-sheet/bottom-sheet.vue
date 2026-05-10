@@ -3,7 +3,7 @@ import { computed } from 'vue';
 import { BottomSheetCompact, provideBottomSheetUi } from '@soybeanjs/headless/bottom-sheet';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
 import { keysOf } from '@soybeanjs/utils';
-import { mergeSlotVariants, mergeBaseVariants, miniSizeMap } from '@/theme';
+import { mergeVariants, miniSizeMap } from '@/theme';
 import { buttonVariants, buttonIconVariants } from '../button/variants';
 import { dialogVariants } from '../dialog/variants';
 import { drawerVariants } from '../drawer/variants';
@@ -35,37 +35,31 @@ const listeners = useForwardListeners(emit);
 const slotNames = computed(() => keysOf(slots));
 
 const ui = computed(() => {
-  const dialog = dialogVariants({
-    size: props.size,
-    pure: props.pure
+  const variants = Object.assign(bottomSheetVariants({ size: props.size }), {
+    $base: {
+      ...dialogVariants({
+        size: props.size,
+        pure: props.pure
+      }),
+      ...drawerVariants({
+        size: props.size,
+        side: 'bottom'
+      }),
+      cancel: buttonVariants({
+        variant: 'pure',
+        size: miniSizeMap[props.size ?? 'md']
+      }),
+      confirm: buttonVariants({
+        variant: 'solid',
+        size: miniSizeMap[props.size ?? 'md']
+      }),
+      close: buttonIconVariants({
+        size: miniSizeMap[props.size ?? 'md']
+      })
+    }
   });
 
-  const drawer = drawerVariants({
-    size: props.size,
-    side: 'bottom'
-  });
-
-  const currentVariants = bottomSheetVariants({ size: props.size });
-
-  const baseVariants = Object.assign({}, currentVariants, dialog, drawer);
-
-  const miniSize = miniSizeMap[props.size ?? 'md'];
-
-  const variants = mergeBaseVariants(baseVariants, {
-    cancel: buttonVariants({
-      variant: 'pure',
-      size: miniSize
-    }),
-    confirm: buttonVariants({
-      variant: 'solid',
-      size: miniSize
-    }),
-    close: buttonIconVariants({
-      size: miniSize
-    })
-  });
-
-  return mergeSlotVariants(variants, props.ui, { popup: props.class });
+  return mergeVariants(variants, props.ui, { popup: props.class });
 });
 
 provideBottomSheetUi(ui);

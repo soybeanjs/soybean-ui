@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { DialogProvider, provideDialogUi } from '@soybeanjs/headless/dialog';
-import { mergeSlotVariants, mergeBaseVariants, miniSizeMap } from '@/theme';
+import { mergeVariants, miniSizeMap } from '@/theme';
 import { buttonVariants, buttonIconVariants } from '../button/variants';
 import { dialogVariants } from './variants';
 
@@ -13,26 +13,28 @@ const ui = computed(() => {
   const size = 'md';
   const miniSize = miniSizeMap[size];
 
-  const variants = mergeBaseVariants(
+  const variants = Object.assign(
     dialogVariants({
       size
     }),
     {
-      cancel: buttonVariants({
-        variant: 'pure',
-        size: miniSize
-      }),
-      confirm: buttonVariants({
-        variant: 'solid',
-        size: miniSize
-      }),
-      close: buttonIconVariants({
-        size: miniSize
-      })
+      $base: {
+        cancel: buttonVariants({
+          variant: 'pure',
+          size: miniSize
+        }),
+        confirm: buttonVariants({
+          variant: 'solid',
+          size: miniSize
+        }),
+        close: buttonIconVariants({
+          size: miniSize
+        })
+      }
     }
   );
 
-  return mergeSlotVariants(variants);
+  return mergeVariants(variants);
 });
 
 provideDialogUi(ui);

@@ -3,7 +3,7 @@ import { computed } from 'vue';
 import { useStyleTag } from '@vueuse/core';
 import { ToastProvider, provideToastUi } from '@soybeanjs/headless/toast';
 import { useOmitProps } from '@soybeanjs/headless/composables';
-import { mergeBaseVariants, mergeSlotVariants, miniSizeMap } from '@/theme';
+import { mergeVariants, miniSizeMap } from '@/theme';
 import { buttonVariants, buttonIconVariants } from '../button/variants';
 import { toastVariants } from './variants';
 import type { ToastProviderProps } from './types';
@@ -21,28 +21,30 @@ const props = withDefaults(defineProps<ToastProviderProps>(), {
 const forwardedProps = useOmitProps(props, ['size', 'ui']);
 
 const ui = computed(() => {
-  const size = props.size ?? 'md';
-  const miniSize = miniSizeMap[size];
+  const miniSize = miniSizeMap[props.size ?? 'md'];
 
-  const baseVariants = toastVariants({
-    size: props.size
-  });
-
-  const variants = mergeBaseVariants(baseVariants, {
-    action: buttonVariants({
-      variant: 'solid',
-      size: miniSize
+  const variants = Object.assign(
+    toastVariants({
+      size: props.size
     }),
-    cancel: buttonVariants({
-      variant: 'pure',
-      size: miniSize
-    }),
-    close: buttonIconVariants({
-      size: miniSize
-    })
-  });
+    {
+      $base: {
+        action: buttonVariants({
+          variant: 'solid',
+          size: miniSize
+        }),
+        cancel: buttonVariants({
+          variant: 'pure',
+          size: miniSize
+        }),
+        close: buttonIconVariants({
+          size: miniSize
+        })
+      }
+    }
+  );
 
-  return mergeSlotVariants(variants, props.ui);
+  return mergeVariants(variants, props.ui);
 });
 
 useStyleTag(toastStyles, {

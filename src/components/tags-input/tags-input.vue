@@ -2,7 +2,7 @@
 import { computed } from 'vue';
 import { TagsInputCompact, provideTagsInputUi } from '@soybeanjs/headless/tags-input';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
-import { mergeBaseVariants, mergeSlotVariants, miniSizeMap } from '@/theme';
+import { mergeVariants, miniSizeMap } from '@/theme';
 import { buttonIconVariants } from '../button/variants';
 import { tagsInputVariants } from './variants';
 import type { TagsInputEmits, TagsInputProps, TagsInputSlots } from './types';
@@ -22,18 +22,21 @@ const forwardedProps = useOmitProps(props, ['class', 'size', 'ui']);
 const listeners = useForwardListeners(emit);
 
 const ui = computed(() => {
-  const baseVariants = tagsInputVariants({
-    size: props.size
-  });
-
   const miniSize = miniSizeMap[props.size || 'md'];
 
-  const variants = mergeBaseVariants(baseVariants, {
-    itemDelete: buttonIconVariants({ size: miniSize, shape: 'circle' }),
-    clear: buttonIconVariants({ size: props.size })
-  });
+  const variants = Object.assign(
+    tagsInputVariants({
+      size: props.size
+    }),
+    {
+      $base: {
+        itemDelete: buttonIconVariants({ size: miniSize, shape: 'circle' }),
+        clear: buttonIconVariants({ size: props.size })
+      }
+    }
+  );
 
-  return mergeSlotVariants(variants, props.ui, { root: props.class });
+  return mergeVariants(variants, props.ui, { root: props.class });
 });
 
 provideTagsInputUi(ui);

@@ -2,7 +2,7 @@
 import { computed } from 'vue';
 import { useOmitProps } from '@soybeanjs/headless/composables';
 import { ColorSwatchCompact, provideColorSwatchUi } from '@soybeanjs/headless/color-swatch';
-import { mergeSlotVariants } from '@/theme';
+import { mergeVariants } from '@/theme';
 import { colorSwatchVariants } from './variants';
 import type { ColorSwatchProps, ColorSwatchSlots } from './types';
 
@@ -22,7 +22,7 @@ const ui = computed(() => {
     shape: props.shape
   });
 
-  return mergeSlotVariants(variants, props.ui, { root: props.class });
+  return mergeVariants(variants, props.ui, { root: props.class });
 });
 
 provideColorSwatchUi(ui);

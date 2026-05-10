@@ -2,7 +2,7 @@
 import { computed } from 'vue';
 import { ColorSliderCompact, provideColorSliderUi } from '@soybeanjs/headless/color-slider';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
-import { mergeSlotVariants } from '@/theme';
+import { mergeVariants } from '@/theme';
 import { sliderVariants } from '../slider/variants';
 import type { ColorSliderEmits, ColorSliderProps } from './types';
 
@@ -24,7 +24,7 @@ const forwardedProps = useOmitProps(props, ['class', 'size', 'ui']);
 const ui = computed(() => {
   const variants = sliderVariants({ color: props.color, size: props.size });
 
-  return mergeSlotVariants(variants, props.ui, { root: props.class });
+  return mergeVariants(variants, props.ui, { root: props.class });
 });
 
 provideColorSliderUi(ui);

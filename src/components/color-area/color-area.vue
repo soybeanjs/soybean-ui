@@ -2,7 +2,7 @@
 import { computed } from 'vue';
 import { ColorAreaCompact, provideColorAreaUi } from '@soybeanjs/headless/color-area';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
-import { mergeSlotVariants } from '@/theme';
+import { mergeVariants } from '@/theme';
 import { colorAreaVariants } from './variants';
 import type { ColorAreaEmits, ColorAreaProps } from './types';
 
@@ -21,7 +21,7 @@ const forwardedProps = useOmitProps(props, ['class', 'size', 'ui']);
 const ui = computed(() => {
   const variants = colorAreaVariants({ size: props.size });
 
-  return mergeSlotVariants(variants, props.ui, { root: props.class });
+  return mergeVariants(variants, props.ui, { root: props.class });
 });
 
 provideColorAreaUi(ui);

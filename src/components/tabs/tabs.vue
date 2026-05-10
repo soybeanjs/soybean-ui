@@ -3,7 +3,7 @@ import { computed } from 'vue';
 import { TabsCompact, provideTabsUi } from '@soybeanjs/headless/tabs';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
 import { keysOf } from '@soybeanjs/utils';
-import { mergeSlotVariants } from '@/theme';
+import { mergeVariants } from '@/theme';
 import { tabsVariants } from './variants';
 import type { TabsEmits, TabsProps, TabsSlots, TabsOptionData } from './types';
 
@@ -36,7 +36,7 @@ const ui = computed(() => {
     enableIndicator: props.enableIndicator
   });
 
-  return mergeSlotVariants(variants, props.ui, { root: props.class });
+  return mergeVariants(variants, props.ui, { root: props.class });
 });
 
 provideTabsUi(ui);

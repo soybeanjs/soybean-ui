@@ -11,7 +11,7 @@ import { RadioGroupRoot, provideRadioGroupUi } from '@soybeanjs/headless/radio-g
 import type { RadioGroupRootEmits } from '@soybeanjs/headless/radio-group';
 import { useOmitProps } from '@soybeanjs/headless/composables';
 import type { AcceptableBooleanValue } from '@soybeanjs/headless/types';
-import { mergeSlotVariants } from '@/theme';
+import { mergeVariants } from '@/theme';
 import { radioCardGroupVariants } from './variants';
 import RadioCard from './radio-card.vue';
 import type { RadioCardGroupOptionData, RadioCardGroupProps } from './types';
@@ -44,7 +44,7 @@ const ui = computed(() => {
     size: props.size
   });
 
-  return mergeSlotVariants(variants, props.ui, { root: props.class });
+  return mergeVariants(variants, props.ui, { root: props.class });
 });
 
 provideRadioGroupUi(ui);

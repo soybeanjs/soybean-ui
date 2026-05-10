@@ -11,7 +11,7 @@ import {
   provideStepperUi
 } from '@soybeanjs/headless/stepper';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
-import { mergeSlotVariants } from '@/theme';
+import { mergeVariants } from '@/theme';
 import Icon from '../icon/icon.vue';
 import { stepperVariants } from './variants';
 import type { StepperEmits, StepperProps } from './types';
@@ -49,7 +49,7 @@ const ui = computed(() => {
     orientation: props.orientation
   });
 
-  return mergeSlotVariants(variants, props.ui, { root: props.class });
+  return mergeVariants(variants, props.ui, { root: props.class });
 });
 
 provideStepperUi(ui);

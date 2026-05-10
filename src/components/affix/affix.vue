@@ -2,7 +2,7 @@
 import { computed } from 'vue';
 import { AffixCompact, provideAffixUi } from '@soybeanjs/headless/affix';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
-import { mergeSlotVariants } from '@/theme';
+import { mergeVariants } from '@/theme';
 import { affixVariants } from './variants';
 import type { AffixEmits, AffixProps } from './types';
 
@@ -21,7 +21,7 @@ const listeners = useForwardListeners(emit);
 const ui = computed(() => {
   const variants = affixVariants();
 
-  return mergeSlotVariants(variants, props.ui, { content: props.class });
+  return mergeVariants(variants, props.ui, { content: props.class });
 });
 
 provideAffixUi(ui);

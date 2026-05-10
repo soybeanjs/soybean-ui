@@ -4,7 +4,7 @@ import { AccordionCompact, provideAccordionUi } from '@soybeanjs/headless/accord
 import type { AccordionOptionData } from '@soybeanjs/headless/accordion';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
 import { keysOf } from '@soybeanjs/utils';
-import { mergeSlotVariants } from '@/theme';
+import { mergeVariants } from '@/theme';
 import { accordionVariants } from './variants';
 import type { AccordionEmits, AccordionProps, AccordionSlots } from './types';
 
@@ -29,7 +29,7 @@ const ui = computed(() => {
     size: props.size
   });
 
-  return mergeSlotVariants(variants, props.ui, { root: props.class });
+  return mergeVariants(variants, props.ui, { root: props.class });
 });
 
 provideAccordionUi(ui);

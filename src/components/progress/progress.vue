@@ -2,7 +2,7 @@
 import { computed } from 'vue';
 import { ProgressCompact, provideProgressUi } from '@soybeanjs/headless/progress';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
-import { mergeSlotVariants } from '@/theme';
+import { mergeVariants } from '@/theme';
 import { progressVariants } from './variants';
 import type { ProgressEmits, ProgressProps, ProgressSlots } from './types';
 
@@ -26,7 +26,7 @@ const ui = computed(() => {
     size: props.size
   });
 
-  return mergeSlotVariants(variants, props.ui, { root: props.class });
+  return mergeVariants(variants, props.ui, { root: props.class });
 });
 
 provideProgressUi(ui);

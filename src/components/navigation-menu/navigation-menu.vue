@@ -8,7 +8,7 @@ import {
   provideNavigationMenuUi
 } from '@soybeanjs/headless/navigation-menu';
 import { useForwardListeners, useOmitProps, usePickProps } from '@soybeanjs/headless/composables';
-import { mergeSlotVariants } from '@/theme';
+import { mergeVariants } from '@/theme';
 import { provideNavigationMenuExtraUi } from './context';
 import { navigationMenuVariants } from './variants';
 import NavigationMenuOption from './navigation-menu-option.vue';
@@ -58,7 +58,7 @@ const ui = computed(() => {
     size: props.size
   });
 
-  return mergeSlotVariants(variants, props.ui, { root: props.class });
+  return mergeVariants(variants, props.ui, { root: props.class });
 });
 
 provideNavigationMenuUi(ui);

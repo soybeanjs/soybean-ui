@@ -4,7 +4,7 @@ import { MenubarCompact, provideMenubarUi } from '@soybeanjs/headless/menubar';
 import type { DefinedValue } from '@soybeanjs/headless/types';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
 import { keysOf } from '@soybeanjs/utils';
-import { mergeSlotVariants } from '@/theme';
+import { mergeVariants } from '@/theme';
 import { provideMenuUi } from '../menu/context';
 import { menubarVariants } from './variants';
 import type { MenubarEmits, MenubarProps, MenubarSlots } from './types';
@@ -30,7 +30,7 @@ const ui = computed(() => {
     size: props.size
   });
 
-  return mergeSlotVariants(variants, props.ui, { root: props.class });
+  return mergeVariants(variants, props.ui, { root: props.class });
 });
 
 provideMenubarUi(ui);

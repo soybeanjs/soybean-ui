@@ -2,7 +2,7 @@
 import { computed } from 'vue';
 import { TooltipCompact, provideTooltipUi } from '@soybeanjs/headless/tooltip';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
-import { mergeSlotVariants } from '@/theme';
+import { mergeVariants } from '@/theme';
 import { tooltipVariants } from './variants';
 import type { TooltipEmits, TooltipProps, TooltipSlots } from './types';
 
@@ -30,7 +30,7 @@ const ui = computed(() => {
     size: props.size
   });
 
-  return mergeSlotVariants(variants, props.ui, { popup: props.class });
+  return mergeVariants(variants, props.ui, { popup: props.class });
 });
 
 provideTooltipUi(ui);

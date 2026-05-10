@@ -2,7 +2,7 @@
 import { computed } from 'vue';
 import { FormCompact, provideFormUi } from '@soybeanjs/headless/form';
 import { useOmitProps } from '@soybeanjs/headless/composables';
-import { mergeSlotVariants } from '@/theme';
+import { mergeVariants } from '@/theme';
 import { formVariants } from './variants';
 import type { FormProps } from './types';
 
@@ -19,7 +19,7 @@ const ui = computed(() => {
     size: props.size
   });
 
-  return mergeSlotVariants(variants, props.ui, { form: props.class });
+  return mergeVariants(variants, props.ui, { form: props.class });
 });
 
 provideFormUi(ui);

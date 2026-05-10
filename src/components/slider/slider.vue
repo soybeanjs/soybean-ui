@@ -2,7 +2,7 @@
 import { computed } from 'vue';
 import { SliderCompact, provideSliderUi } from '@soybeanjs/headless/slider';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
-import { mergeSlotVariants } from '@/theme';
+import { mergeVariants } from '@/theme';
 import { sliderVariants } from './variants';
 import type { SliderEmits, SliderProps } from './types';
 
@@ -28,7 +28,7 @@ const ui = computed(() => {
     size: props.size
   });
 
-  return mergeSlotVariants(variants, props.ui, { root: props.class });
+  return mergeVariants(variants, props.ui, { root: props.class });
 });
 
 provideSliderUi(ui);

@@ -3,7 +3,7 @@ import { computed } from 'vue';
 import { FormFieldArrayCompact, provideFormFieldUi } from '@soybeanjs/headless/form';
 import { useOmitProps } from '@soybeanjs/headless/composables';
 import { keysOf } from '@soybeanjs/utils';
-import { mergeSlotVariants } from '@/theme';
+import { mergeVariants } from '@/theme';
 import { formVariants } from './variants';
 import type { FormFieldArrayProps, FormFieldArraySlots } from './types';
 
@@ -24,7 +24,7 @@ const ui = computed(() => {
     size: props.size
   });
 
-  return mergeSlotVariants(variants, props.ui, { field: props.class });
+  return mergeVariants(variants, props.ui, { field: props.class });
 });
 
 provideFormFieldUi(ui);

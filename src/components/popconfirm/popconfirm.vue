@@ -3,7 +3,7 @@ import { computed } from 'vue';
 import { PopconfirmCompact, providePopconfirmUi } from '@soybeanjs/headless/popconfirm';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
 import { keysOf } from '@soybeanjs/utils';
-import { mergeBaseVariants, mergeSlotVariants, miniSizeMap } from '@/theme';
+import { mergeVariants, miniSizeMap } from '@/theme';
 import { buttonVariants, buttonIconVariants } from '../button/variants';
 import { popconfirmVariants } from './variants';
 import type { PopconfirmEmits, PopconfirmProps, PopconfirmSlots } from './types';
@@ -30,28 +30,31 @@ const listeners = useForwardListeners(emit);
 const slotNames = keysOf(slots);
 
 const ui = computed(() => {
-  const baseVariants = popconfirmVariants({
-    size: props.size,
-    type: props.type
-  });
-
   const miniSize = miniSizeMap[props.size ?? 'md'];
 
-  const variants = mergeBaseVariants(baseVariants, {
-    cancel: buttonVariants({
-      variant: 'pure',
-      size: miniSize
+  const variants = Object.assign(
+    popconfirmVariants({
+      size: props.size,
+      type: props.type
     }),
-    confirm: buttonVariants({
-      variant: 'solid',
-      size: miniSize
-    }),
-    close: buttonIconVariants({
-      size: miniSize
-    })
-  });
+    {
+      $base: {
+        cancel: buttonVariants({
+          variant: 'pure',
+          size: miniSize
+        }),
+        confirm: buttonVariants({
+          variant: 'solid',
+          size: miniSize
+        }),
+        close: buttonIconVariants({
+          size: miniSize
+        })
+      }
+    }
+  );
 
-  return mergeSlotVariants(variants, props.ui, { popup: props.class });
+  return mergeVariants(variants, props.ui, { popup: props.class });
 });
 
 providePopconfirmUi(ui);

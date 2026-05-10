@@ -3,7 +3,7 @@ import { computed, useSlots } from 'vue';
 import { BadgeCompact, provideBadgeUi } from '@soybeanjs/headless/badge';
 import { useOmitProps } from '@soybeanjs/headless/composables';
 import { keysOf } from '@soybeanjs/utils';
-import { mergeSlotVariants } from '@/theme';
+import { mergeVariants } from '@/theme';
 import { badgeVariants } from './variants';
 import type { BadgeEmits, BadgeProps } from './types';
 
@@ -30,7 +30,7 @@ const ui = computed(() => {
     position: props.position
   });
 
-  return mergeSlotVariants(variants, props.ui, { root: props.class });
+  return mergeVariants(variants, props.ui, { root: props.class });
 });
 
 provideBadgeUi(ui);

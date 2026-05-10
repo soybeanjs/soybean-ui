@@ -3,7 +3,7 @@ import { computed } from 'vue';
 import { DialogCompact, provideDialogUi } from '@soybeanjs/headless/dialog';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
 import { keysOf } from '@soybeanjs/utils';
-import { mergeSlotVariants, mergeBaseVariants, miniSizeMap } from '@/theme';
+import { mergeVariants, miniSizeMap } from '@/theme';
 import { buttonVariants, buttonIconVariants } from '../button/variants';
 import { dialogVariants } from './variants';
 import type { DialogEmits, DialogProps, DialogSlots } from './types';
@@ -31,27 +31,29 @@ const slotNames = computed(() => keysOf(slots));
 const ui = computed(() => {
   const miniSize = miniSizeMap[props.size ?? 'md'];
 
-  const variants = mergeBaseVariants(
+  const variants = Object.assign(
     dialogVariants({
       size: props.size,
       pure: props.pure
     }),
     {
-      cancel: buttonVariants({
-        variant: 'pure',
-        size: miniSize
-      }),
-      confirm: buttonVariants({
-        variant: 'solid',
-        size: miniSize
-      }),
-      close: buttonIconVariants({
-        size: miniSize
-      })
+      $base: {
+        cancel: buttonVariants({
+          variant: 'pure',
+          size: miniSize
+        }),
+        confirm: buttonVariants({
+          variant: 'solid',
+          size: miniSize
+        }),
+        close: buttonIconVariants({
+          size: miniSize
+        })
+      }
     }
   );
 
-  return mergeSlotVariants(variants, props.ui, { popup: props.class });
+  return mergeVariants(variants, props.ui, { popup: props.class });
 });
 
 provideDialogUi(ui);

@@ -12,7 +12,7 @@ import {
   providePaginationUi
 } from '@soybeanjs/headless/pagination';
 import { useOmitProps } from '@soybeanjs/headless/composables';
-import { mergeSlotVariants } from '@/theme';
+import { mergeVariants } from '@/theme';
 import Icon from '../icon/icon.vue';
 import { paginationVariants } from './variants';
 import type { PaginationEmits, PaginationProps } from './types';
@@ -56,7 +56,7 @@ const ui = computed(() => {
 
   const { button, navigationButton } = variants;
 
-  return mergeSlotVariants(
+  return mergeVariants(
     {
       ...variants,
       listItem: button,

@@ -2,7 +2,7 @@
 import { computed } from 'vue';
 import { CalendarCompact, provideCalendarUi } from '@soybeanjs/headless/calendar';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
-import { mergeBaseVariants, mergeSlotVariants, miniSizeMap } from '@/theme';
+import { mergeVariants, miniSizeMap } from '@/theme';
 import { buttonIconVariants } from '../button/variants';
 import Icon from '../icon/icon.vue';
 import SSelect from '../select/select.vue';
@@ -24,22 +24,23 @@ const forwardedProps = useOmitProps(props, ['class', 'size', 'ui']);
 const listeners = useForwardListeners(emit);
 
 const ui = computed(() => {
-  const baseVariants = calendarVariants({
-    size: props.size
-  });
-
-  const variants = mergeBaseVariants(baseVariants, {
-    prev: buttonIconVariants({
-      size: props.size,
-      variant: 'pure'
+  const variants = Object.assign(
+    calendarVariants({
+      size: props.size
     }),
-    next: buttonIconVariants({
-      size: props.size,
-      variant: 'pure'
-    })
-  });
+    {
+      $base: {
+        prev: buttonIconVariants({
+          size: miniSizeMap[props.size ?? 'md']
+        }),
+        next: buttonIconVariants({
+          size: miniSizeMap[props.size ?? 'md']
+        })
+      }
+    }
+  );
 
-  return mergeSlotVariants(variants, props.ui, { root: props.class });
+  return mergeVariants(variants, props.ui, { root: props.class });
 });
 
 const miniSize = computed(() => miniSizeMap[props.size || 'md']);

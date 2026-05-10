@@ -2,7 +2,7 @@
 import { computed } from 'vue';
 import { CheckboxGroupCompact, provideCheckboxUi } from '@soybeanjs/headless/checkbox';
 import { useOmitProps } from '@soybeanjs/headless/composables';
-import { mergeSlotVariants } from '@/theme';
+import { mergeVariants } from '@/theme';
 import { checkboxVariants } from './variants';
 import type { CheckboxGroupEmits, CheckboxGroupOptionData, CheckboxGroupProps } from './types';
 
@@ -26,7 +26,7 @@ const ui = computed(() => {
     orientation: props.orientation
   });
 
-  return mergeSlotVariants(variants, props.ui, { groupRoot: props.class });
+  return mergeVariants(variants, props.ui, { groupRoot: props.class });
 });
 
 provideCheckboxUi(ui);

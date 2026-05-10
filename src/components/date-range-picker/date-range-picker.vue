@@ -2,7 +2,7 @@
 import { computed } from 'vue';
 import { DateRangePickerCompact, provideDateRangePickerUi } from '@soybeanjs/headless/date-range-picker';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
-import { mergeSlotVariants } from '@/theme';
+import { mergeVariants } from '@/theme';
 import CalendarRange from '../calendar-range/calendar-range.vue';
 import { dateFieldVariants } from '../date-field/variants';
 import { dateRangeFieldVariants } from '../date-range-field/variants';
@@ -28,7 +28,7 @@ const ui = computed(() => {
   const dateRangeField = dateRangeFieldVariants({ size: props.size });
   const dateField = dateFieldVariants({ size: props.size });
 
-  return mergeSlotVariants(Object.assign(variants, dateRangeField, dateField), props.ui, { root: props.class });
+  return mergeVariants(Object.assign(variants, dateRangeField, dateField), props.ui, { root: props.class });
 });
 
 provideDateRangePickerUi(ui);

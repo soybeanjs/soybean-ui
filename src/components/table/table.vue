@@ -12,7 +12,7 @@ import { provideTableUi, TableCompact } from '@soybeanjs/headless/table';
 import type { TableSortOrder } from '@soybeanjs/headless/table';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
 import { useLocaleMessages } from '@soybeanjs/headless';
-import { mergeSlotVariants, miniSizeMap } from '@/theme';
+import { mergeVariants, miniSizeMap } from '@/theme';
 import SButtonIcon from '../button/button-icon.vue';
 import SEmpty from '../empty/empty.vue';
 import SCheckbox from '../checkbox/checkbox.vue';
@@ -49,7 +49,7 @@ const ui = computed(() => {
     striped: props.striped
   });
 
-  return mergeSlotVariants(variants, props.ui, { root: props.class });
+  return mergeVariants(variants, props.ui, { root: props.class });
 });
 
 const miniSize = computed(() => miniSizeMap[props.size ?? 'md']);

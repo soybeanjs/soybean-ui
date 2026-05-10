@@ -2,7 +2,7 @@
 import { computed } from 'vue';
 import { ScrollAreaCompact, provideScrollAreaUi } from '@soybeanjs/headless/scroll-area';
 import { useOmitProps } from '@soybeanjs/headless/composables';
-import { mergeSlotVariants } from '@/theme';
+import { mergeVariants } from '@/theme';
 import { scrollAreaVariants } from './variants';
 import type { ScrollAreaProps } from './types';
 
@@ -17,7 +17,7 @@ const forwardedProps = useOmitProps(props, ['class', 'ui']);
 const ui = computed(() => {
   const variants = scrollAreaVariants();
 
-  return mergeSlotVariants(variants, props.ui, { root: props.class });
+  return mergeVariants(variants, props.ui, { root: props.class });
 });
 
 provideScrollAreaUi(ui);

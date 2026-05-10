@@ -2,7 +2,7 @@
 import { computed, useSlots } from 'vue';
 import { useOmitProps } from '@soybeanjs/headless/composables';
 import { SeparatorCompact, provideSeparatorUi } from '@soybeanjs/headless/separator';
-import { mergeSlotVariants } from '@/theme';
+import { mergeVariants } from '@/theme';
 import { separatorVariants } from './variants';
 import type { SeparatorProps } from './types';
 
@@ -26,7 +26,7 @@ const ui = computed(() => {
     border: props.border
   });
 
-  return mergeSlotVariants(variants, props.ui, { root: props.class });
+  return mergeVariants(variants, props.ui, { root: props.class });
 });
 
 provideSeparatorUi(ui);
