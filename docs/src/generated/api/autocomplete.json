@@ -180,8 +180,8 @@
                 "type": "UseFuseOptions<AutocompleteSearchOptionData>",
                 "resolvedType": null,
                 "description": "",
-                "descriptionKey": "api.generated.node_modules_pnpm_vueuse_integrations_14_3_0_fuse_js_7_3_0_vue_3_5_33_typescript_6_0_3_node_modules_vueuse_integrations_dist_usefuse_d.usefuseoptions",
-                "sourcePath": "node_modules/.pnpm/@vueuse+integrations@14.3.0_fuse.js@7.3.0_vue@3.5.33_typescript@6.0.3_/node_modules/@vueuse/integrations/dist/useFuse.d.ts",
+                "descriptionKey": "api.generated.node_modules_pnpm_vueuse_integrations_14_3_0_fuse_js_7_3_0_vue_3_5_34_typescript_6_0_3_node_modules_vueuse_integrations_dist_usefuse_d.usefuseoptions",
+                "sourcePath": "node_modules/.pnpm/@vueuse+integrations@14.3.0_fuse.js@7.3.0_vue@3.5.34_typescript@6.0.3_/node_modules/@vueuse/integrations/dist/useFuse.d.ts",
                 "typeParameters": ["T"],
                 "external": true,
                 "members": [],
@@ -1415,7 +1415,21 @@
         "referencedTypes": []
       }
     },
-    "AutocompleteAnchor": {},
+    "AutocompleteAnchor": {
+      "props": {
+        "kind": "props",
+        "name": "AutocompleteAnchorProps",
+        "type": "Interface AutocompleteAnchorProps",
+        "resolvedType": null,
+        "description": "Properties for the PopperAnchor component.",
+        "descriptionKey": "api.generated.headless_src_components_popper_types.autocompleteanchorprops.props",
+        "sourcePath": "headless/src/components/popper/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
     "AutocompleteCompact": {
       "props": {
         "kind": "props",
@@ -1520,8 +1534,8 @@
                 "type": "UseFuseOptions<AutocompleteSearchOptionData>",
                 "resolvedType": null,
                 "description": "",
-                "descriptionKey": "api.generated.node_modules_pnpm_vueuse_integrations_14_3_0_fuse_js_7_3_0_vue_3_5_33_typescript_6_0_3_node_modules_vueuse_integrations_dist_usefuse_d.usefuseoptions",
-                "sourcePath": "node_modules/.pnpm/@vueuse+integrations@14.3.0_fuse.js@7.3.0_vue@3.5.33_typescript@6.0.3_/node_modules/@vueuse/integrations/dist/useFuse.d.ts",
+                "descriptionKey": "api.generated.node_modules_pnpm_vueuse_integrations_14_3_0_fuse_js_7_3_0_vue_3_5_34_typescript_6_0_3_node_modules_vueuse_integrations_dist_usefuse_d.usefuseoptions",
+                "sourcePath": "node_modules/.pnpm/@vueuse+integrations@14.3.0_fuse.js@7.3.0_vue@3.5.34_typescript@6.0.3_/node_modules/@vueuse/integrations/dist/useFuse.d.ts",
                 "typeParameters": ["T"],
                 "external": true,
                 "members": [],
@@ -2755,9 +2769,51 @@
         "referencedTypes": []
       }
     },
-    "AutocompleteContent": {},
-    "AutocompleteGroup": {},
-    "AutocompleteGroupLabel": {},
+    "AutocompleteContent": {
+      "props": {
+        "kind": "props",
+        "name": "AutocompleteContentProps",
+        "type": "Interface AutocompleteContentProps",
+        "resolvedType": null,
+        "description": "Properties for the ComboboxContent component.",
+        "descriptionKey": "api.generated.headless_src_components_combobox_types.autocompletecontentprops.props",
+        "sourcePath": "headless/src/components/combobox/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "AutocompleteGroup": {
+      "props": {
+        "kind": "props",
+        "name": "AutocompleteGroupProps",
+        "type": "Interface AutocompleteGroupProps",
+        "resolvedType": null,
+        "description": "Properties for the ListboxGroup component.",
+        "descriptionKey": "api.generated.headless_src_components_listbox_types.autocompletegroupprops.props",
+        "sourcePath": "headless/src/components/listbox/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "AutocompleteGroupLabel": {
+      "props": {
+        "kind": "props",
+        "name": "AutocompleteGroupLabelProps",
+        "type": "Interface AutocompleteGroupLabelProps",
+        "resolvedType": null,
+        "description": "Properties for the ListboxGroupLabel component.",
+        "descriptionKey": "api.generated.headless_src_components_listbox_types.autocompletegrouplabelprops.props",
+        "sourcePath": "headless/src/components/listbox/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
     "AutocompleteInput": {
       "props": {
         "kind": "props",
@@ -2932,11 +2988,79 @@
         ],
         "callables": [],
         "referencedTypes": []
+      },
+      "emits": {
+        "kind": "emits",
+        "name": "AutocompleteInputEmits",
+        "type": "TypeAlias AutocompleteInputEmits",
+        "resolvedType": null,
+        "description": "Events for the InputRoot component.",
+        "descriptionKey": "api.generated.headless_src_components_input_types.autocompleteinputemits.emits",
+        "sourcePath": "headless/src/components/input/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [],
+        "referencedTypes": []
       }
     },
-    "AutocompleteItem": {},
-    "AutocompleteItemIndicator": {},
-    "AutocompletePortal": {},
+    "AutocompleteItem": {
+      "props": {
+        "kind": "props",
+        "name": "AutocompleteItemProps",
+        "type": "Interface AutocompleteItemProps",
+        "resolvedType": null,
+        "description": "Properties for the ComboboxItem component.",
+        "descriptionKey": "api.generated.headless_src_components_combobox_types.autocompleteitemprops.props",
+        "sourcePath": "headless/src/components/combobox/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [],
+        "referencedTypes": []
+      },
+      "emits": {
+        "kind": "emits",
+        "name": "AutocompleteItemEmits",
+        "type": "TypeAlias AutocompleteItemEmits: CommandItemEmits",
+        "resolvedType": null,
+        "description": "Events for the ComboboxItem component.",
+        "descriptionKey": "api.generated.headless_src_components_combobox_types.autocompleteitememits.emits",
+        "sourcePath": "headless/src/components/combobox/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "AutocompleteItemIndicator": {
+      "props": {
+        "kind": "props",
+        "name": "AutocompleteItemIndicatorProps",
+        "type": "Interface AutocompleteItemIndicatorProps",
+        "resolvedType": null,
+        "description": "Properties for the ListboxItemIndicator component.",
+        "descriptionKey": "api.generated.headless_src_components_listbox_types.autocompleteitemindicatorprops.props",
+        "sourcePath": "headless/src/components/listbox/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "AutocompletePortal": {
+      "props": {
+        "kind": "props",
+        "name": "AutocompletePortalProps",
+        "type": "Interface AutocompletePortalProps",
+        "resolvedType": null,
+        "description": "Properties for the Portal component.",
+        "descriptionKey": "api.generated.headless_src_components_portal_types.autocompleteportalprops.props",
+        "sourcePath": "headless/src/components/portal/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
     "AutocompleteRoot": {
       "props": {
         "kind": "props",
@@ -3146,8 +3270,50 @@
         "referencedTypes": []
       }
     },
-    "AutocompleteSeparator": {},
-    "AutocompleteTrigger": {},
-    "AutocompleteViewport": {}
+    "AutocompleteSeparator": {
+      "props": {
+        "kind": "props",
+        "name": "AutocompleteSeparatorProps",
+        "type": "Interface AutocompleteSeparatorProps",
+        "resolvedType": null,
+        "description": "Properties for the ComboboxSeparator component.",
+        "descriptionKey": "api.generated.headless_src_components_combobox_types.autocompleteseparatorprops.props",
+        "sourcePath": "headless/src/components/combobox/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "AutocompleteTrigger": {
+      "props": {
+        "kind": "props",
+        "name": "AutocompleteTriggerProps",
+        "type": "Interface AutocompleteTriggerProps",
+        "resolvedType": null,
+        "description": "Properties for the ComboboxTrigger component.",
+        "descriptionKey": "api.generated.headless_src_components_combobox_types.autocompletetriggerprops.props",
+        "sourcePath": "headless/src/components/combobox/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "AutocompleteViewport": {
+      "props": {
+        "kind": "props",
+        "name": "AutocompleteViewportProps",
+        "type": "Interface AutocompleteViewportProps",
+        "resolvedType": null,
+        "description": "Properties for the ComboboxViewport component.",
+        "descriptionKey": "api.generated.headless_src_components_combobox_types.autocompleteviewportprops.props",
+        "sourcePath": "headless/src/components/combobox/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [],
+        "referencedTypes": []
+      }
+    }
   }
 }

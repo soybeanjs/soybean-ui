@@ -37,7 +37,7 @@
                 "name": "RadioGroupControlProps",
                 "kind": "interface",
                 "type": "RadioGroupControlProps",
-                "resolvedType": "{ id?: string }",
+                "resolvedType": "{ id?: string; type?: ButtonType; disabled?: boolean; asChild?: boolean; as?: AsTag | Component }",
                 "description": "Properties for the RadioGroupControl component.",
                 "descriptionKey": "api.generated.headless_src_components_radio_group_types.radiogroupcontrolprops",
                 "sourcePath": "headless/src/components/radio-group/types.ts",
@@ -53,6 +53,50 @@
                     "default": null,
                     "inheritedFrom": null,
                     "sourcePath": "headless/src/components/radio-group/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "type",
+                    "type": "ButtonType",
+                    "required": false,
+                    "description": "The type of the button element. Can be one of 'button', 'submit', or 'reset'.",
+                    "descriptionKey": "api.generated.headless_src_components_radio_group_types.radiogroupcontrolprops.members.type",
+                    "default": "'button'",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/button/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "disabled",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Whether the component is disabled.",
+                    "descriptionKey": "api.generated.headless_src_components_radio_group_types.radiogroupcontrolprops.members.disabled",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/button/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "asChild",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+                    "descriptionKey": "api.generated.headless_src_components_radio_group_types.radiogroupcontrolprops.members.aschild",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "as",
+                    "type": "AsTag | Component",
+                    "required": false,
+                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+                    "descriptionKey": "api.generated.headless_src_components_radio_group_types.radiogroupcontrolprops.members.as",
+                    "default": "'div'",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
                     "referencedTypes": []
                   }
                 ],
@@ -74,13 +118,24 @@
                 "name": "RadioGroupIndicatorProps",
                 "kind": "interface",
                 "type": "RadioGroupIndicatorProps",
-                "resolvedType": "{ asChild?: boolean; as?: AsTag | Component; forceMount?: boolean }",
+                "resolvedType": "{ forceMount?: boolean; asChild?: boolean; as?: AsTag | Component }",
                 "description": "Properties for the RadioGroupIndicator component.",
                 "descriptionKey": "api.generated.headless_src_components_radio_group_types.radiogroupindicatorprops",
                 "sourcePath": "headless/src/components/radio-group/types.ts",
                 "typeParameters": [],
                 "external": false,
                 "members": [
+                  {
+                    "name": "forceMount",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Used to force mounting when more control is needed.\n\nUseful when controlling animation with Vue animation libraries.",
+                    "descriptionKey": "api.generated.headless_src_components_radio_group_types.radiogroupindicatorprops.members.forcemount",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/types/component.ts",
+                    "referencedTypes": []
+                  },
                   {
                     "name": "asChild",
                     "type": "boolean",
@@ -101,17 +156,6 @@
                     "default": "'div'",
                     "inheritedFrom": null,
                     "sourcePath": "headless/src/components/primitive/types.ts",
-                    "referencedTypes": []
-                  },
-                  {
-                    "name": "forceMount",
-                    "type": "boolean",
-                    "required": false,
-                    "description": "Used to force mounting when more control is needed.\n\nUseful when controlling animation with Vue animation libraries.",
-                    "descriptionKey": "api.generated.headless_src_components_radio_group_types.radiogroupindicatorprops.members.forcemount",
-                    "default": null,
-                    "inheritedFrom": null,
-                    "sourcePath": "headless/src/types/component.ts",
                     "referencedTypes": []
                   }
                 ],
@@ -302,7 +346,7 @@
                 "name": "RadioGroupControlProps",
                 "kind": "interface",
                 "type": "RadioGroupControlProps",
-                "resolvedType": "{ id?: string }",
+                "resolvedType": "{ id?: string; type?: ButtonType; disabled?: boolean; asChild?: boolean; as?: AsTag | Component }",
                 "description": "Properties for the RadioGroupControl component.",
                 "descriptionKey": "api.generated.headless_src_components_radio_group_types.radiogroupcontrolprops",
                 "sourcePath": "headless/src/components/radio-group/types.ts",
@@ -318,6 +362,50 @@
                     "default": null,
                     "inheritedFrom": null,
                     "sourcePath": "headless/src/components/radio-group/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "type",
+                    "type": "ButtonType",
+                    "required": false,
+                    "description": "The type of the button element. Can be one of 'button', 'submit', or 'reset'.",
+                    "descriptionKey": "api.generated.headless_src_components_radio_group_types.radiogroupcontrolprops.members.type",
+                    "default": "'button'",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/button/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "disabled",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Whether the component is disabled.",
+                    "descriptionKey": "api.generated.headless_src_components_radio_group_types.radiogroupcontrolprops.members.disabled",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/button/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "asChild",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+                    "descriptionKey": "api.generated.headless_src_components_radio_group_types.radiogroupcontrolprops.members.aschild",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "as",
+                    "type": "AsTag | Component",
+                    "required": false,
+                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+                    "descriptionKey": "api.generated.headless_src_components_radio_group_types.radiogroupcontrolprops.members.as",
+                    "default": "'div'",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
                     "referencedTypes": []
                   }
                 ],
@@ -339,13 +427,24 @@
                 "name": "RadioGroupIndicatorProps",
                 "kind": "interface",
                 "type": "RadioGroupIndicatorProps",
-                "resolvedType": "{ asChild?: boolean; as?: AsTag | Component; forceMount?: boolean }",
+                "resolvedType": "{ forceMount?: boolean; asChild?: boolean; as?: AsTag | Component }",
                 "description": "Properties for the RadioGroupIndicator component.",
                 "descriptionKey": "api.generated.headless_src_components_radio_group_types.radiogroupindicatorprops",
                 "sourcePath": "headless/src/components/radio-group/types.ts",
                 "typeParameters": [],
                 "external": false,
                 "members": [
+                  {
+                    "name": "forceMount",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Used to force mounting when more control is needed.\n\nUseful when controlling animation with Vue animation libraries.",
+                    "descriptionKey": "api.generated.headless_src_components_radio_group_types.radiogroupindicatorprops.members.forcemount",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/types/component.ts",
+                    "referencedTypes": []
+                  },
                   {
                     "name": "asChild",
                     "type": "boolean",
@@ -366,17 +465,6 @@
                     "default": "'div'",
                     "inheritedFrom": null,
                     "sourcePath": "headless/src/components/primitive/types.ts",
-                    "referencedTypes": []
-                  },
-                  {
-                    "name": "forceMount",
-                    "type": "boolean",
-                    "required": false,
-                    "description": "Used to force mounting when more control is needed.\n\nUseful when controlling animation with Vue animation libraries.",
-                    "descriptionKey": "api.generated.headless_src_components_radio_group_types.radiogroupindicatorprops.members.forcemount",
-                    "default": null,
-                    "inheritedFrom": null,
-                    "sourcePath": "headless/src/types/component.ts",
                     "referencedTypes": []
                   }
                 ],
@@ -715,7 +803,7 @@
                 "name": "RadioGroupControlProps",
                 "kind": "interface",
                 "type": "RadioGroupControlProps",
-                "resolvedType": "{ id?: string }",
+                "resolvedType": "{ id?: string; type?: ButtonType; disabled?: boolean; asChild?: boolean; as?: AsTag | Component }",
                 "description": "Properties for the RadioGroupControl component.",
                 "descriptionKey": "api.generated.headless_src_components_radio_group_types.radiogroupcontrolprops",
                 "sourcePath": "headless/src/components/radio-group/types.ts",
@@ -731,6 +819,50 @@
                     "default": null,
                     "inheritedFrom": null,
                     "sourcePath": "headless/src/components/radio-group/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "type",
+                    "type": "ButtonType",
+                    "required": false,
+                    "description": "The type of the button element. Can be one of 'button', 'submit', or 'reset'.",
+                    "descriptionKey": "api.generated.headless_src_components_radio_group_types.radiogroupcontrolprops.members.type",
+                    "default": "'button'",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/button/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "disabled",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Whether the component is disabled.",
+                    "descriptionKey": "api.generated.headless_src_components_radio_group_types.radiogroupcontrolprops.members.disabled",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/button/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "asChild",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+                    "descriptionKey": "api.generated.headless_src_components_radio_group_types.radiogroupcontrolprops.members.aschild",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "as",
+                    "type": "AsTag | Component",
+                    "required": false,
+                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+                    "descriptionKey": "api.generated.headless_src_components_radio_group_types.radiogroupcontrolprops.members.as",
+                    "default": "'div'",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
                     "referencedTypes": []
                   }
                 ],
@@ -752,13 +884,24 @@
                 "name": "RadioGroupIndicatorProps",
                 "kind": "interface",
                 "type": "RadioGroupIndicatorProps",
-                "resolvedType": "{ asChild?: boolean; as?: AsTag | Component; forceMount?: boolean }",
+                "resolvedType": "{ forceMount?: boolean; asChild?: boolean; as?: AsTag | Component }",
                 "description": "Properties for the RadioGroupIndicator component.",
                 "descriptionKey": "api.generated.headless_src_components_radio_group_types.radiogroupindicatorprops",
                 "sourcePath": "headless/src/components/radio-group/types.ts",
                 "typeParameters": [],
                 "external": false,
                 "members": [
+                  {
+                    "name": "forceMount",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Used to force mounting when more control is needed.\n\nUseful when controlling animation with Vue animation libraries.",
+                    "descriptionKey": "api.generated.headless_src_components_radio_group_types.radiogroupindicatorprops.members.forcemount",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/types/component.ts",
+                    "referencedTypes": []
+                  },
                   {
                     "name": "asChild",
                     "type": "boolean",
@@ -779,17 +922,6 @@
                     "default": "'div'",
                     "inheritedFrom": null,
                     "sourcePath": "headless/src/components/primitive/types.ts",
-                    "referencedTypes": []
-                  },
-                  {
-                    "name": "forceMount",
-                    "type": "boolean",
-                    "required": false,
-                    "description": "Used to force mounting when more control is needed.\n\nUseful when controlling animation with Vue animation libraries.",
-                    "descriptionKey": "api.generated.headless_src_components_radio_group_types.radiogroupindicatorprops.members.forcemount",
-                    "default": null,
-                    "inheritedFrom": null,
-                    "sourcePath": "headless/src/types/component.ts",
                     "referencedTypes": []
                   }
                 ],
@@ -1186,7 +1318,7 @@
                 "name": "RadioGroupControlProps",
                 "kind": "interface",
                 "type": "RadioGroupControlProps",
-                "resolvedType": "{ id?: string }",
+                "resolvedType": "{ id?: string; type?: ButtonType; disabled?: boolean; asChild?: boolean; as?: AsTag | Component }",
                 "description": "Properties for the RadioGroupControl component.",
                 "descriptionKey": "api.generated.headless_src_components_radio_group_types.radiogroupcontrolprops",
                 "sourcePath": "headless/src/components/radio-group/types.ts",
@@ -1202,6 +1334,50 @@
                     "default": null,
                     "inheritedFrom": null,
                     "sourcePath": "headless/src/components/radio-group/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "type",
+                    "type": "ButtonType",
+                    "required": false,
+                    "description": "The type of the button element. Can be one of 'button', 'submit', or 'reset'.",
+                    "descriptionKey": "api.generated.headless_src_components_radio_group_types.radiogroupcontrolprops.members.type",
+                    "default": "'button'",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/button/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "disabled",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Whether the component is disabled.",
+                    "descriptionKey": "api.generated.headless_src_components_radio_group_types.radiogroupcontrolprops.members.disabled",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/button/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "asChild",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+                    "descriptionKey": "api.generated.headless_src_components_radio_group_types.radiogroupcontrolprops.members.aschild",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "as",
+                    "type": "AsTag | Component",
+                    "required": false,
+                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+                    "descriptionKey": "api.generated.headless_src_components_radio_group_types.radiogroupcontrolprops.members.as",
+                    "default": "'div'",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
                     "referencedTypes": []
                   }
                 ],
@@ -1223,13 +1399,24 @@
                 "name": "RadioGroupIndicatorProps",
                 "kind": "interface",
                 "type": "RadioGroupIndicatorProps",
-                "resolvedType": "{ asChild?: boolean; as?: AsTag | Component; forceMount?: boolean }",
+                "resolvedType": "{ forceMount?: boolean; asChild?: boolean; as?: AsTag | Component }",
                 "description": "Properties for the RadioGroupIndicator component.",
                 "descriptionKey": "api.generated.headless_src_components_radio_group_types.radiogroupindicatorprops",
                 "sourcePath": "headless/src/components/radio-group/types.ts",
                 "typeParameters": [],
                 "external": false,
                 "members": [
+                  {
+                    "name": "forceMount",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Used to force mounting when more control is needed.\n\nUseful when controlling animation with Vue animation libraries.",
+                    "descriptionKey": "api.generated.headless_src_components_radio_group_types.radiogroupindicatorprops.members.forcemount",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/types/component.ts",
+                    "referencedTypes": []
+                  },
                   {
                     "name": "asChild",
                     "type": "boolean",
@@ -1250,17 +1437,6 @@
                     "default": "'div'",
                     "inheritedFrom": null,
                     "sourcePath": "headless/src/components/primitive/types.ts",
-                    "referencedTypes": []
-                  },
-                  {
-                    "name": "forceMount",
-                    "type": "boolean",
-                    "required": false,
-                    "description": "Used to force mounting when more control is needed.\n\nUseful when controlling animation with Vue animation libraries.",
-                    "descriptionKey": "api.generated.headless_src_components_radio_group_types.radiogroupindicatorprops.members.forcemount",
-                    "default": null,
-                    "inheritedFrom": null,
-                    "sourcePath": "headless/src/types/component.ts",
                     "referencedTypes": []
                   }
                 ],
@@ -1429,7 +1605,7 @@
         "kind": "emits",
         "name": "RadioGroupEmits",
         "type": "TypeAlias RadioGroupEmits<T>: RadioGroupCompactEmits<T>",
-        "resolvedType": "{ \"update:modelValue\": [payload: NonNullable<T>] }",
+        "resolvedType": "{ \"update:modelValue\": [payload: Exclude<T, undefined>] }",
         "description": "Events for the RadioGroup component.",
         "descriptionKey": "api.generated.src_components_radio_group_types.radiogroupemits.emits",
         "sourcePath": "src/components/radio-group/types.ts",
@@ -1438,8 +1614,8 @@
         "callables": [
           {
             "name": "update:modelValue",
-            "type": "[payload: NonNullable<T>]",
-            "parameters": "payload: NonNullable<T>",
+            "type": "[payload: Exclude<T, undefined>]",
+            "parameters": "payload: Exclude<T, undefined>",
             "required": true,
             "description": "Event handler called when the radio group value changes",
             "descriptionKey": "api.generated.src_components_radio_group_types.radiogroupemits.callables.update_modelvalue",
@@ -1455,7 +1631,7 @@
         "kind": "emits",
         "name": "RadioGroupCardEmits",
         "type": "TypeAlias RadioGroupCardEmits<T>: RadioGroupEmits<T>",
-        "resolvedType": "{ \"update:modelValue\": [payload: NonNullable<T>] }",
+        "resolvedType": "{ \"update:modelValue\": [payload: Exclude<T, undefined>] }",
         "description": "Events for the RadioGroupCard component.",
         "descriptionKey": "api.generated.src_components_radio_group_types.radiogroupcardemits.emits",
         "sourcePath": "src/components/radio-group/types.ts",
@@ -1464,8 +1640,8 @@
         "callables": [
           {
             "name": "update:modelValue",
-            "type": "[payload: NonNullable<T>]",
-            "parameters": "payload: NonNullable<T>",
+            "type": "[payload: Exclude<T, undefined>]",
+            "parameters": "payload: Exclude<T, undefined>",
             "required": true,
             "description": "Event handler called when the radio group value changes",
             "descriptionKey": "api.generated.src_components_radio_group_types.radiogroupcardemits.callables.update_modelvalue",
@@ -1582,7 +1758,7 @@
                 "name": "RadioGroupControlProps",
                 "kind": "interface",
                 "type": "RadioGroupControlProps",
-                "resolvedType": "{ id?: string }",
+                "resolvedType": "{ id?: string; type?: ButtonType; disabled?: boolean; asChild?: boolean; as?: AsTag | Component }",
                 "description": "Properties for the RadioGroupControl component.",
                 "descriptionKey": "api.generated.headless_src_components_radio_group_types.radiogroupcontrolprops",
                 "sourcePath": "headless/src/components/radio-group/types.ts",
@@ -1598,6 +1774,50 @@
                     "default": null,
                     "inheritedFrom": null,
                     "sourcePath": "headless/src/components/radio-group/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "type",
+                    "type": "ButtonType",
+                    "required": false,
+                    "description": "The type of the button element. Can be one of 'button', 'submit', or 'reset'.",
+                    "descriptionKey": "api.generated.headless_src_components_radio_group_types.radiogroupcontrolprops.members.type",
+                    "default": "'button'",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/button/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "disabled",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Whether the component is disabled.",
+                    "descriptionKey": "api.generated.headless_src_components_radio_group_types.radiogroupcontrolprops.members.disabled",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/button/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "asChild",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+                    "descriptionKey": "api.generated.headless_src_components_radio_group_types.radiogroupcontrolprops.members.aschild",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "as",
+                    "type": "AsTag | Component",
+                    "required": false,
+                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+                    "descriptionKey": "api.generated.headless_src_components_radio_group_types.radiogroupcontrolprops.members.as",
+                    "default": "'div'",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
                     "referencedTypes": []
                   }
                 ],
@@ -1619,13 +1839,24 @@
                 "name": "RadioGroupIndicatorProps",
                 "kind": "interface",
                 "type": "RadioGroupIndicatorProps",
-                "resolvedType": "{ asChild?: boolean; as?: AsTag | Component; forceMount?: boolean }",
+                "resolvedType": "{ forceMount?: boolean; asChild?: boolean; as?: AsTag | Component }",
                 "description": "Properties for the RadioGroupIndicator component.",
                 "descriptionKey": "api.generated.headless_src_components_radio_group_types.radiogroupindicatorprops",
                 "sourcePath": "headless/src/components/radio-group/types.ts",
                 "typeParameters": [],
                 "external": false,
                 "members": [
+                  {
+                    "name": "forceMount",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Used to force mounting when more control is needed.\n\nUseful when controlling animation with Vue animation libraries.",
+                    "descriptionKey": "api.generated.headless_src_components_radio_group_types.radiogroupindicatorprops.members.forcemount",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/types/component.ts",
+                    "referencedTypes": []
+                  },
                   {
                     "name": "asChild",
                     "type": "boolean",
@@ -1646,17 +1877,6 @@
                     "default": "'div'",
                     "inheritedFrom": null,
                     "sourcePath": "headless/src/components/primitive/types.ts",
-                    "referencedTypes": []
-                  },
-                  {
-                    "name": "forceMount",
-                    "type": "boolean",
-                    "required": false,
-                    "description": "Used to force mounting when more control is needed.\n\nUseful when controlling animation with Vue animation libraries.",
-                    "descriptionKey": "api.generated.headless_src_components_radio_group_types.radiogroupindicatorprops.members.forcemount",
-                    "default": null,
-                    "inheritedFrom": null,
-                    "sourcePath": "headless/src/types/component.ts",
                     "referencedTypes": []
                   }
                 ],
@@ -1825,7 +2045,7 @@
         "kind": "emits",
         "name": "RadioGroupCompactEmits",
         "type": "TypeAlias RadioGroupCompactEmits<T>: RadioGroupRootEmits<T>",
-        "resolvedType": "{ \"update:modelValue\": [payload: NonNullable<T>] }",
+        "resolvedType": "{ \"update:modelValue\": [payload: Exclude<T, undefined>] }",
         "description": "Events for the RadioGroupCompact component.",
         "descriptionKey": "api.generated.headless_src_components_radio_group_types.radiogroupcompactemits.emits",
         "sourcePath": "headless/src/components/radio-group/types.ts",
@@ -1834,8 +2054,8 @@
         "callables": [
           {
             "name": "update:modelValue",
-            "type": "[payload: NonNullable<T>]",
-            "parameters": "payload: NonNullable<T>",
+            "type": "[payload: Exclude<T, undefined>]",
+            "parameters": "payload: Exclude<T, undefined>",
             "required": true,
             "description": "Event handler called when the radio group value changes",
             "descriptionKey": "api.generated.headless_src_components_radio_group_types.radiogroupcompactemits.callables.update_modelvalue",
@@ -1851,7 +2071,7 @@
         "kind": "props",
         "name": "RadioGroupControlProps",
         "type": "Interface RadioGroupControlProps",
-        "resolvedType": "{ id?: string }",
+        "resolvedType": "{ id?: string; type?: ButtonType; disabled?: boolean; asChild?: boolean; as?: AsTag | Component }",
         "description": "Properties for the RadioGroupControl component.",
         "descriptionKey": "api.generated.headless_src_components_radio_group_types.radiogroupcontrolprops.props",
         "sourcePath": "headless/src/components/radio-group/types.ts",
@@ -1867,31 +2087,51 @@
             "inheritedFrom": null,
             "sourcePath": "headless/src/components/radio-group/types.ts",
             "referencedTypes": []
-          }
-        ],
-        "callables": [],
-        "referencedTypes": []
-      }
-    },
-    "RadioGroupIndicator": {
-      "props": {
-        "kind": "props",
-        "name": "RadioGroupIndicatorProps",
-        "type": "Interface RadioGroupIndicatorProps",
-        "resolvedType": "{ asChild?: boolean; as?: AsTag | Component; forceMount?: boolean }",
-        "description": "Properties for the RadioGroupIndicator component.",
-        "descriptionKey": "api.generated.headless_src_components_radio_group_types.radiogroupindicatorprops.props",
-        "sourcePath": "headless/src/components/radio-group/types.ts",
-        "typeParameters": [],
-        "members": [
+          },
+          {
+            "name": "type",
+            "type": "ButtonType",
+            "required": false,
+            "description": "The type of the button element. Can be one of 'button', 'submit', or 'reset'.",
+            "descriptionKey": "api.generated.headless_src_components_radio_group_types.radiogroupcontrolprops.members.type",
+            "default": "'button'",
+            "inheritedFrom": "ButtonProps.type",
+            "sourcePath": "headless/src/components/button/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ButtonType",
+                "kind": "typeAlias",
+                "type": "'button' | 'submit' | 'reset'",
+                "resolvedType": "'button' | 'submit' | 'reset'",
+                "description": "Supported button values.",
+                "descriptionKey": "api.generated.headless_src_components_button_types.buttontype",
+                "sourcePath": "headless/src/components/button/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "disabled",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether the component is disabled.",
+            "descriptionKey": "api.generated.headless_src_components_radio_group_types.radiogroupcontrolprops.members.disabled",
+            "default": null,
+            "inheritedFrom": "ButtonProps.disabled",
+            "sourcePath": "headless/src/components/button/types.ts",
+            "referencedTypes": []
+          },
           {
             "name": "asChild",
             "type": "boolean",
             "required": false,
             "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
-            "descriptionKey": "api.generated.headless_src_components_radio_group_types.radiogroupindicatorprops.members.aschild",
+            "descriptionKey": "api.generated.headless_src_components_radio_group_types.radiogroupcontrolprops.members.aschild",
             "default": null,
-            "inheritedFrom": "PrimitiveProps.asChild",
+            "inheritedFrom": "ButtonProps.asChild",
             "sourcePath": "headless/src/components/primitive/types.ts",
             "referencedTypes": []
           },
@@ -1900,9 +2140,9 @@
             "type": "AsTag | Component",
             "required": false,
             "description": "The element or component this component should render as. Can be overwrite by `asChild`",
-            "descriptionKey": "api.generated.headless_src_components_radio_group_types.radiogroupindicatorprops.members.as",
+            "descriptionKey": "api.generated.headless_src_components_radio_group_types.radiogroupcontrolprops.members.as",
             "default": "'div'",
-            "inheritedFrom": "PrimitiveProps.as",
+            "inheritedFrom": "ButtonProps.as",
             "sourcePath": "headless/src/components/primitive/types.ts",
             "referencedTypes": [
               {
@@ -1911,8 +2151,8 @@
                 "type": "Component",
                 "resolvedType": null,
                 "description": "A type used in public APIs where a component type is expected.\nThe constructor type is an artificial type returned by defineComponent().",
-                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_33_node_modules_vue_runtime_core_dist_runtime_core_d.component",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_34_node_modules_vue_runtime_core_dist_runtime_core_d.component",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.34/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
                 "typeParameters": [
                   "PropsOrInstance = any",
                   "RawBindings = any",
@@ -1927,7 +2167,23 @@
                 "callables": []
               }
             ]
-          },
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "RadioGroupIndicator": {
+      "props": {
+        "kind": "props",
+        "name": "RadioGroupIndicatorProps",
+        "type": "Interface RadioGroupIndicatorProps",
+        "resolvedType": "{ forceMount?: boolean; asChild?: boolean; as?: AsTag | Component }",
+        "description": "Properties for the RadioGroupIndicator component.",
+        "descriptionKey": "api.generated.headless_src_components_radio_group_types.radiogroupindicatorprops.props",
+        "sourcePath": "headless/src/components/radio-group/types.ts",
+        "typeParameters": [],
+        "members": [
           {
             "name": "forceMount",
             "type": "boolean",
@@ -1938,6 +2194,50 @@
             "inheritedFrom": "forceMount",
             "sourcePath": "headless/src/types/component.ts",
             "referencedTypes": []
+          },
+          {
+            "name": "asChild",
+            "type": "boolean",
+            "required": false,
+            "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+            "descriptionKey": "api.generated.headless_src_components_radio_group_types.radiogroupindicatorprops.members.aschild",
+            "default": null,
+            "inheritedFrom": "PrimitiveWithBaseProps.asChild",
+            "sourcePath": "headless/src/components/primitive/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "as",
+            "type": "AsTag | Component",
+            "required": false,
+            "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+            "descriptionKey": "api.generated.headless_src_components_radio_group_types.radiogroupindicatorprops.members.as",
+            "default": "'div'",
+            "inheritedFrom": "PrimitiveWithBaseProps.as",
+            "sourcePath": "headless/src/components/primitive/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Component",
+                "kind": "typeAlias",
+                "type": "Component",
+                "resolvedType": null,
+                "description": "A type used in public APIs where a component type is expected.\nThe constructor type is an artificial type returned by defineComponent().",
+                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_34_node_modules_vue_runtime_core_dist_runtime_core_d.component",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.34/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [
+                  "PropsOrInstance = any",
+                  "RawBindings = any",
+                  "D = any",
+                  "C extends ComputedOptions = ComputedOptions",
+                  "M extends MethodOptions = MethodOptions",
+                  "E extends EmitsOptions | Record<string, any[]> = {}",
+                  "S extends Record<string, any> = any"
+                ],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
           }
         ],
         "callables": [],
@@ -2192,7 +2492,7 @@
         "kind": "emits",
         "name": "RadioGroupRootEmits",
         "type": "TypeAlias RadioGroupRootEmits<T>",
-        "resolvedType": "{ \"update:modelValue\": [payload: NonNullable<T>] }",
+        "resolvedType": "{ \"update:modelValue\": [payload: Exclude<T, undefined>] }",
         "description": "Events for the RadioGroupRoot component.",
         "descriptionKey": "api.generated.headless_src_components_radio_group_types.radiogrouprootemits.emits",
         "sourcePath": "headless/src/components/radio-group/types.ts",
@@ -2201,8 +2501,8 @@
         "callables": [
           {
             "name": "update:modelValue",
-            "type": "[payload: NonNullable<T>]",
-            "parameters": "payload: NonNullable<T>",
+            "type": "[payload: Exclude<T, undefined>]",
+            "parameters": "payload: Exclude<T, undefined>",
             "required": true,
             "description": "Event handler called when the radio group value changes",
             "descriptionKey": "api.generated.headless_src_components_radio_group_types.radiogrouprootemits.callables.update_modelvalue",

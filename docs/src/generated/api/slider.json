@@ -6,7 +6,7 @@
         "kind": "props",
         "name": "SliderProps",
         "type": "Interface SliderProps",
-        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; color?: ThemeColor; size?: ThemeSize; ui?: Partial<SliderUi>; trackProps?: SliderTrackProps; rangeProps?: SliderRangeProps; thumbProps?: Omit<SliderThumbProps, 'index'>; modelValue?: number[]; defaultValue?: number[]; disabled?: boolean; orientation?: DataOrientation; dir?: Direction; inverted?: boolean; min?: number; max?: number; step?: number; minStepsBetweenThumbs?: number; thumbAlignment?: SliderThumbAlignment; asChild?: boolean; as?: AsTag | Component; name?: string; required?: boolean }",
+        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; color?: ThemeColor; size?: ThemeSize; ui?: Partial<SliderUi>; trackProps?: SliderTrackProps; rangeProps?: SliderRangeProps; thumbProps?: BaseProps; modelValue?: number[]; defaultValue?: number[]; disabled?: boolean; orientation?: DataOrientation; dir?: Direction; inverted?: boolean; min?: number; max?: number; step?: number; minStepsBetweenThumbs?: number; thumbAlignment?: SliderThumbAlignment; name?: string; required?: boolean; asChild?: boolean; as?: AsTag | Component }",
         "description": "Properties for the Slider component.",
         "descriptionKey": "api.generated.src_components_slider_types.sliderprops.props",
         "sourcePath": "src/components/slider/types.ts",
@@ -119,8 +119,8 @@
             "description": "Properties forwarded to the track element.",
             "descriptionKey": "api.generated.src_components_slider_types.sliderprops.members.trackprops",
             "default": null,
-            "inheritedFrom": null,
-            "sourcePath": "src/components/slider/types.ts",
+            "inheritedFrom": "trackProps",
+            "sourcePath": "headless/src/components/slider/types.ts",
             "referencedTypes": [
               {
                 "name": "SliderTrackProps",
@@ -167,8 +167,8 @@
             "description": "Properties forwarded to the range element.",
             "descriptionKey": "api.generated.src_components_slider_types.sliderprops.members.rangeprops",
             "default": null,
-            "inheritedFrom": null,
-            "sourcePath": "src/components/slider/types.ts",
+            "inheritedFrom": "rangeProps",
+            "sourcePath": "headless/src/components/slider/types.ts",
             "referencedTypes": [
               {
                 "name": "SliderRangeProps",
@@ -210,23 +210,23 @@
           },
           {
             "name": "thumbProps",
-            "type": "Omit<SliderThumbProps, 'index'>",
+            "type": "BaseProps",
             "required": false,
             "description": "Properties forwarded to the thumb element.",
             "descriptionKey": "api.generated.src_components_slider_types.sliderprops.members.thumbprops",
             "default": null,
-            "inheritedFrom": null,
-            "sourcePath": "src/components/slider/types.ts",
+            "inheritedFrom": "thumbProps",
+            "sourcePath": "headless/src/components/slider/types.ts",
             "referencedTypes": [
               {
-                "name": "SliderThumbProps",
-                "kind": "interface",
-                "type": "SliderThumbProps",
-                "resolvedType": null,
-                "description": "Properties for the SliderThumb component.",
-                "descriptionKey": "api.generated.headless_src_components_slider_types.sliderthumbprops",
-                "sourcePath": "headless/src/components/slider/types.ts",
-                "typeParameters": [],
+                "name": "BaseProps",
+                "kind": "typeAlias",
+                "type": "import(\"../../types\").DataAttributes & import(\"vue\").HTMLAttributes",
+                "resolvedType": "DataAttributes & T",
+                "description": "",
+                "descriptionKey": "api.generated.headless_src_types_vue.baseprops",
+                "sourcePath": "headless/src/types/vue.ts",
+                "typeParameters": ["T = HTMLAttributes"],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -397,6 +397,28 @@
             ]
           },
           {
+            "name": "name",
+            "type": "string",
+            "required": false,
+            "description": "The name of the field. Submitted with its owning form as part of a name/value pair.",
+            "descriptionKey": "api.generated.src_components_slider_types.sliderprops.members.name",
+            "default": null,
+            "inheritedFrom": "name",
+            "sourcePath": "headless/src/types/component.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "required",
+            "type": "boolean",
+            "required": false,
+            "description": "When `true`, indicates that the user must set the value before the owning form can be submitted.",
+            "descriptionKey": "api.generated.src_components_slider_types.sliderprops.members.required",
+            "default": null,
+            "inheritedFrom": "required",
+            "sourcePath": "headless/src/types/component.ts",
+            "referencedTypes": []
+          },
+          {
             "name": "asChild",
             "type": "boolean",
             "required": false,
@@ -423,8 +445,8 @@
                 "type": "Component",
                 "resolvedType": null,
                 "description": "A type used in public APIs where a component type is expected.\nThe constructor type is an artificial type returned by defineComponent().",
-                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_33_node_modules_vue_runtime_core_dist_runtime_core_d.component",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_34_node_modules_vue_runtime_core_dist_runtime_core_d.component",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.34/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
                 "typeParameters": [
                   "PropsOrInstance = any",
                   "RawBindings = any",
@@ -439,28 +461,6 @@
                 "callables": []
               }
             ]
-          },
-          {
-            "name": "name",
-            "type": "string",
-            "required": false,
-            "description": "The name of the field. Submitted with its owning form as part of a name/value pair.",
-            "descriptionKey": "api.generated.src_components_slider_types.sliderprops.members.name",
-            "default": null,
-            "inheritedFrom": "name",
-            "sourcePath": "headless/src/types/component.ts",
-            "referencedTypes": []
-          },
-          {
-            "name": "required",
-            "type": "boolean",
-            "required": false,
-            "description": "When `true`, indicates that the user must set the value before the owning form can be submitted.",
-            "descriptionKey": "api.generated.src_components_slider_types.sliderprops.members.required",
-            "default": null,
-            "inheritedFrom": "required",
-            "sourcePath": "headless/src/types/component.ts",
-            "referencedTypes": []
           }
         ],
         "callables": [],
@@ -469,7 +469,7 @@
       "emits": {
         "kind": "emits",
         "name": "SliderEmits",
-        "type": "TypeAlias SliderEmits: SliderRootEmits",
+        "type": "TypeAlias SliderEmits: SliderCompactEmits",
         "resolvedType": "{ \"update:modelValue\": [value: number[]]; valueCommit: [value: number[]] }",
         "description": "Events for the Slider component.",
         "descriptionKey": "api.generated.src_components_slider_types.slideremits.emits",
@@ -536,6 +536,526 @@
         ]
       }
     },
+    "SliderCompact": {
+      "props": {
+        "kind": "props",
+        "name": "SliderCompactProps",
+        "type": "Interface SliderCompactProps",
+        "resolvedType": "{ trackProps?: SliderTrackProps; rangeProps?: SliderRangeProps; thumbProps?: BaseProps; modelValue?: number[]; defaultValue?: number[]; disabled?: boolean; orientation?: DataOrientation; dir?: Direction; inverted?: boolean; min?: number; max?: number; step?: number; minStepsBetweenThumbs?: number; thumbAlignment?: SliderThumbAlignment; name?: string; required?: boolean; asChild?: boolean; as?: AsTag | Component }",
+        "description": "Properties for the SliderCompact component.",
+        "descriptionKey": "api.generated.headless_src_components_slider_types.slidercompactprops.props",
+        "sourcePath": "headless/src/components/slider/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "trackProps",
+            "type": "SliderTrackProps",
+            "required": false,
+            "description": "Properties forwarded to the track element.",
+            "descriptionKey": "api.generated.headless_src_components_slider_types.slidercompactprops.members.trackprops",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/slider/types.ts",
+            "referencedTypes": [
+              {
+                "name": "SliderTrackProps",
+                "kind": "interface",
+                "type": "SliderTrackProps",
+                "resolvedType": "{ asChild?: boolean; as?: AsTag | Component }",
+                "description": "Properties for the SliderTrack component.",
+                "descriptionKey": "api.generated.headless_src_components_slider_types.slidertrackprops",
+                "sourcePath": "headless/src/components/slider/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "asChild",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+                    "descriptionKey": "api.generated.headless_src_components_slider_types.slidertrackprops.members.aschild",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "as",
+                    "type": "AsTag | Component",
+                    "required": false,
+                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+                    "descriptionKey": "api.generated.headless_src_components_slider_types.slidertrackprops.members.as",
+                    "default": "'div'",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "rangeProps",
+            "type": "SliderRangeProps",
+            "required": false,
+            "description": "Properties forwarded to the range element.",
+            "descriptionKey": "api.generated.headless_src_components_slider_types.slidercompactprops.members.rangeprops",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/slider/types.ts",
+            "referencedTypes": [
+              {
+                "name": "SliderRangeProps",
+                "kind": "interface",
+                "type": "SliderRangeProps",
+                "resolvedType": "{ asChild?: boolean; as?: AsTag | Component }",
+                "description": "Properties for the SliderRange component.",
+                "descriptionKey": "api.generated.headless_src_components_slider_types.sliderrangeprops",
+                "sourcePath": "headless/src/components/slider/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "asChild",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+                    "descriptionKey": "api.generated.headless_src_components_slider_types.sliderrangeprops.members.aschild",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "as",
+                    "type": "AsTag | Component",
+                    "required": false,
+                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+                    "descriptionKey": "api.generated.headless_src_components_slider_types.sliderrangeprops.members.as",
+                    "default": "'div'",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "thumbProps",
+            "type": "BaseProps",
+            "required": false,
+            "description": "Properties forwarded to the thumb element.",
+            "descriptionKey": "api.generated.headless_src_components_slider_types.slidercompactprops.members.thumbprops",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/slider/types.ts",
+            "referencedTypes": [
+              {
+                "name": "BaseProps",
+                "kind": "typeAlias",
+                "type": "import(\"../../types\").DataAttributes & import(\"vue\").HTMLAttributes",
+                "resolvedType": "DataAttributes & T",
+                "description": "",
+                "descriptionKey": "api.generated.headless_src_types_vue.baseprops",
+                "sourcePath": "headless/src/types/vue.ts",
+                "typeParameters": ["T = HTMLAttributes"],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "modelValue",
+            "type": "number[]",
+            "required": false,
+            "description": "The controlled value of the slider. Can be bind as `v-model`.",
+            "descriptionKey": "api.generated.headless_src_components_slider_types.slidercompactprops.members.modelvalue",
+            "default": null,
+            "inheritedFrom": "modelValue",
+            "sourcePath": "headless/src/components/slider/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "defaultValue",
+            "type": "number[]",
+            "required": false,
+            "description": "The initial value of the slider when uncontrolled.",
+            "descriptionKey": "api.generated.headless_src_components_slider_types.slidercompactprops.members.defaultvalue",
+            "default": null,
+            "inheritedFrom": "defaultValue",
+            "sourcePath": "headless/src/components/slider/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "disabled",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether the slider is disabled.",
+            "descriptionKey": "api.generated.headless_src_components_slider_types.slidercompactprops.members.disabled",
+            "default": null,
+            "inheritedFrom": "disabled",
+            "sourcePath": "headless/src/components/slider/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "orientation",
+            "type": "DataOrientation",
+            "required": false,
+            "description": "The orientation of the slider.",
+            "descriptionKey": "api.generated.headless_src_components_slider_types.slidercompactprops.members.orientation",
+            "default": null,
+            "inheritedFrom": "orientation",
+            "sourcePath": "headless/src/components/slider/types.ts",
+            "referencedTypes": [
+              {
+                "name": "DataOrientation",
+                "kind": "typeAlias",
+                "type": "'vertical' | 'horizontal'",
+                "resolvedType": "'vertical' | 'horizontal'",
+                "description": "",
+                "descriptionKey": "api.generated.headless_src_types_common.dataorientation",
+                "sourcePath": "headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "dir",
+            "type": "Direction",
+            "required": false,
+            "description": "The reading direction of the slider.",
+            "descriptionKey": "api.generated.headless_src_components_slider_types.slidercompactprops.members.dir",
+            "default": null,
+            "inheritedFrom": "dir",
+            "sourcePath": "headless/src/components/slider/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Direction",
+                "kind": "typeAlias",
+                "type": "'ltr' | 'rtl'",
+                "resolvedType": "'ltr' | 'rtl'",
+                "description": "",
+                "descriptionKey": "api.generated.headless_src_types_common.direction",
+                "sourcePath": "headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "inverted",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether the slider value direction is inverted.",
+            "descriptionKey": "api.generated.headless_src_components_slider_types.slidercompactprops.members.inverted",
+            "default": null,
+            "inheritedFrom": "inverted",
+            "sourcePath": "headless/src/components/slider/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "min",
+            "type": "number",
+            "required": false,
+            "description": "The minimum value.",
+            "descriptionKey": "api.generated.headless_src_components_slider_types.slidercompactprops.members.min",
+            "default": null,
+            "inheritedFrom": "min",
+            "sourcePath": "headless/src/components/slider/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "max",
+            "type": "number",
+            "required": false,
+            "description": "The maximum value.",
+            "descriptionKey": "api.generated.headless_src_components_slider_types.slidercompactprops.members.max",
+            "default": null,
+            "inheritedFrom": "max",
+            "sourcePath": "headless/src/components/slider/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "step",
+            "type": "number",
+            "required": false,
+            "description": "The stepping interval.",
+            "descriptionKey": "api.generated.headless_src_components_slider_types.slidercompactprops.members.step",
+            "default": null,
+            "inheritedFrom": "step",
+            "sourcePath": "headless/src/components/slider/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "minStepsBetweenThumbs",
+            "type": "number",
+            "required": false,
+            "description": "The minimum permitted steps between multiple thumbs.",
+            "descriptionKey": "api.generated.headless_src_components_slider_types.slidercompactprops.members.minstepsbetweenthumbs",
+            "default": null,
+            "inheritedFrom": "minStepsBetweenThumbs",
+            "sourcePath": "headless/src/components/slider/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "thumbAlignment",
+            "type": "SliderThumbAlignment",
+            "required": false,
+            "description": "Whether thumbs stay within the track bounds or may overflow it.",
+            "descriptionKey": "api.generated.headless_src_components_slider_types.slidercompactprops.members.thumbalignment",
+            "default": null,
+            "inheritedFrom": "thumbAlignment",
+            "sourcePath": "headless/src/components/slider/types.ts",
+            "referencedTypes": [
+              {
+                "name": "SliderThumbAlignment",
+                "kind": "typeAlias",
+                "type": "'contain' | 'overflow'",
+                "resolvedType": "'contain' | 'overflow'",
+                "description": "Type information for SliderThumbAlignment.",
+                "descriptionKey": "api.generated.headless_src_components_slider_types.sliderthumbalignment",
+                "sourcePath": "headless/src/components/slider/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "name",
+            "type": "string",
+            "required": false,
+            "description": "The name of the field. Submitted with its owning form as part of a name/value pair.",
+            "descriptionKey": "api.generated.headless_src_components_slider_types.slidercompactprops.members.name",
+            "default": null,
+            "inheritedFrom": "name",
+            "sourcePath": "headless/src/types/component.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "required",
+            "type": "boolean",
+            "required": false,
+            "description": "When `true`, indicates that the user must set the value before the owning form can be submitted.",
+            "descriptionKey": "api.generated.headless_src_components_slider_types.slidercompactprops.members.required",
+            "default": null,
+            "inheritedFrom": "required",
+            "sourcePath": "headless/src/types/component.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "asChild",
+            "type": "boolean",
+            "required": false,
+            "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+            "descriptionKey": "api.generated.headless_src_components_slider_types.slidercompactprops.members.aschild",
+            "default": null,
+            "inheritedFrom": "asChild",
+            "sourcePath": "headless/src/components/primitive/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "as",
+            "type": "AsTag | Component",
+            "required": false,
+            "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+            "descriptionKey": "api.generated.headless_src_components_slider_types.slidercompactprops.members.as",
+            "default": "'div'",
+            "inheritedFrom": "as",
+            "sourcePath": "headless/src/components/primitive/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Component",
+                "kind": "typeAlias",
+                "type": "Component",
+                "resolvedType": null,
+                "description": "A type used in public APIs where a component type is expected.\nThe constructor type is an artificial type returned by defineComponent().",
+                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_34_node_modules_vue_runtime_core_dist_runtime_core_d.component",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.34/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [
+                  "PropsOrInstance = any",
+                  "RawBindings = any",
+                  "D = any",
+                  "C extends ComputedOptions = ComputedOptions",
+                  "M extends MethodOptions = MethodOptions",
+                  "E extends EmitsOptions | Record<string, any[]> = {}",
+                  "S extends Record<string, any> = any"
+                ],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      },
+      "emits": {
+        "kind": "emits",
+        "name": "SliderCompactEmits",
+        "type": "TypeAlias SliderCompactEmits: SliderRootEmits",
+        "resolvedType": "{ \"update:modelValue\": [value: number[]]; valueCommit: [value: number[]] }",
+        "description": "Events for the SliderCompact component.",
+        "descriptionKey": "api.generated.headless_src_components_slider_types.slidercompactemits.emits",
+        "sourcePath": "headless/src/components/slider/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [
+          {
+            "name": "update:modelValue",
+            "type": "[value: number[]]",
+            "parameters": "value: number[]",
+            "required": true,
+            "description": "Event handler called when the slider value changes.",
+            "descriptionKey": "api.generated.headless_src_components_slider_types.slidercompactemits.callables.update_modelvalue",
+            "sourcePath": "headless/src/components/slider/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "valueCommit",
+            "type": "[value: number[]]",
+            "parameters": "value: number[]",
+            "required": true,
+            "description": "Event handler called when a slider interaction is committed.",
+            "descriptionKey": "api.generated.headless_src_components_slider_types.slidercompactemits.callables.valuecommit",
+            "sourcePath": "headless/src/components/slider/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "referencedTypes": [
+          {
+            "name": "SliderRootEmits",
+            "kind": "typeAlias",
+            "type": "{ 'update:modelValue': [value: number[]]; valueCommit: [value: number[]]; }",
+            "resolvedType": "{ \"update:modelValue\": [value: number[]]; valueCommit: [value: number[]] }",
+            "description": "Events for the SliderRoot component.",
+            "descriptionKey": "api.generated.headless_src_components_slider_types.sliderrootemits",
+            "sourcePath": "headless/src/components/slider/types.ts",
+            "typeParameters": [],
+            "external": false,
+            "members": [],
+            "callables": [
+              {
+                "name": "update:modelValue",
+                "type": "[value: number[]]",
+                "parameters": "value: number[]",
+                "required": true,
+                "description": "Event handler called when the slider value changes.",
+                "descriptionKey": "api.generated.headless_src_components_slider_types.sliderrootemits.callables.update_modelvalue",
+                "sourcePath": "headless/src/components/slider/types.ts",
+                "referencedTypes": []
+              },
+              {
+                "name": "valueCommit",
+                "type": "[value: number[]]",
+                "parameters": "value: number[]",
+                "required": true,
+                "description": "Event handler called when a slider interaction is committed.",
+                "descriptionKey": "api.generated.headless_src_components_slider_types.sliderrootemits.callables.valuecommit",
+                "sourcePath": "headless/src/components/slider/types.ts",
+                "referencedTypes": []
+              }
+            ]
+          }
+        ]
+      },
+      "slots": {
+        "kind": "slots",
+        "name": "SliderCompactSlots",
+        "type": "Interface SliderCompactSlots",
+        "resolvedType": "{ SliderThumb?: ((props: SliderCompactSlotProps) => any) }",
+        "description": "Slots for the SliderCompact component.",
+        "descriptionKey": "api.generated.headless_src_components_slider_types.slidercompactslots.slots",
+        "sourcePath": "headless/src/components/slider/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [
+          {
+            "name": "default",
+            "type": "((props: SliderCompactSlotProps) => any) | undefined",
+            "parameters": "((props: SliderCompactSlotProps) => any) | undefined",
+            "required": false,
+            "description": "Custom content for the default slot.",
+            "descriptionKey": "api.generated.headless_src_components_slider_types.slidercompactslots.callables.default",
+            "sourcePath": "headless/src/components/slider/types.ts",
+            "referencedTypes": [
+              {
+                "name": "SliderCompactSlotProps",
+                "kind": "interface",
+                "type": "SliderCompactSlotProps",
+                "resolvedType": null,
+                "description": "Slot properties for the SliderCompact component.",
+                "descriptionKey": "api.generated.headless_src_components_slider_types.slidercompactslotprops",
+                "sourcePath": "headless/src/components/slider/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "referencedTypes": []
+      },
+      "slotProps": {
+        "kind": "slotProps",
+        "name": "SliderCompactSlotProps",
+        "type": "Interface SliderCompactSlotProps",
+        "resolvedType": "{ modelValue: number[]; index: number; value: number }",
+        "description": "Slot properties for the SliderCompact component.",
+        "descriptionKey": "api.generated.headless_src_components_slider_types.slidercompactslotprops.slotprops",
+        "sourcePath": "headless/src/components/slider/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "modelValue",
+            "type": "number[]",
+            "required": true,
+            "description": "Current model value.",
+            "descriptionKey": "api.generated.headless_src_components_slider_types.slidercompactslotprops.members.modelvalue",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/slider/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "index",
+            "type": "number",
+            "required": true,
+            "description": "Current thumb index.",
+            "descriptionKey": "api.generated.headless_src_components_slider_types.slidercompactslotprops.members.index",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/slider/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "value",
+            "type": "number",
+            "required": true,
+            "description": "Current thumb value.",
+            "descriptionKey": "api.generated.headless_src_components_slider_types.slidercompactslotprops.members.value",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/slider/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
     "SliderRange": {
       "props": {
         "kind": "props",
@@ -554,7 +1074,7 @@
             "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
             "descriptionKey": "api.generated.headless_src_components_slider_types.sliderrangeprops.members.aschild",
             "default": null,
-            "inheritedFrom": "PrimitiveProps.asChild",
+            "inheritedFrom": "PrimitiveWithBaseProps.asChild",
             "sourcePath": "headless/src/components/primitive/types.ts",
             "referencedTypes": []
           },
@@ -565,7 +1085,7 @@
             "description": "The element or component this component should render as. Can be overwrite by `asChild`",
             "descriptionKey": "api.generated.headless_src_components_slider_types.sliderrangeprops.members.as",
             "default": "'div'",
-            "inheritedFrom": "PrimitiveProps.as",
+            "inheritedFrom": "PrimitiveWithBaseProps.as",
             "sourcePath": "headless/src/components/primitive/types.ts",
             "referencedTypes": [
               {
@@ -574,8 +1094,8 @@
                 "type": "Component",
                 "resolvedType": null,
                 "description": "A type used in public APIs where a component type is expected.\nThe constructor type is an artificial type returned by defineComponent().",
-                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_33_node_modules_vue_runtime_core_dist_runtime_core_d.component",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_34_node_modules_vue_runtime_core_dist_runtime_core_d.component",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.34/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
                 "typeParameters": [
                   "PropsOrInstance = any",
                   "RawBindings = any",
@@ -601,7 +1121,7 @@
         "kind": "props",
         "name": "SliderRootProps",
         "type": "Interface SliderRootProps",
-        "resolvedType": "{ modelValue?: number[]; defaultValue?: number[]; disabled?: boolean; orientation?: DataOrientation; dir?: Direction; inverted?: boolean; min?: number; max?: number; step?: number; minStepsBetweenThumbs?: number; thumbAlignment?: SliderThumbAlignment; asChild?: boolean; as?: AsTag | Component; name?: string; required?: boolean }",
+        "resolvedType": "{ modelValue?: number[]; defaultValue?: number[]; disabled?: boolean; orientation?: DataOrientation; dir?: Direction; inverted?: boolean; min?: number; max?: number; step?: number; minStepsBetweenThumbs?: number; thumbAlignment?: SliderThumbAlignment; name?: string; required?: boolean; asChild?: boolean; as?: AsTag | Component }",
         "description": "Properties for the SliderRoot component.",
         "descriptionKey": "api.generated.headless_src_components_slider_types.sliderrootprops.props",
         "sourcePath": "headless/src/components/slider/types.ts",
@@ -771,50 +1291,6 @@
             ]
           },
           {
-            "name": "asChild",
-            "type": "boolean",
-            "required": false,
-            "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
-            "descriptionKey": "api.generated.headless_src_components_slider_types.sliderrootprops.members.aschild",
-            "default": null,
-            "inheritedFrom": "PrimitiveProps.asChild",
-            "sourcePath": "headless/src/components/primitive/types.ts",
-            "referencedTypes": []
-          },
-          {
-            "name": "as",
-            "type": "AsTag | Component",
-            "required": false,
-            "description": "The element or component this component should render as. Can be overwrite by `asChild`",
-            "descriptionKey": "api.generated.headless_src_components_slider_types.sliderrootprops.members.as",
-            "default": "'div'",
-            "inheritedFrom": "PrimitiveProps.as",
-            "sourcePath": "headless/src/components/primitive/types.ts",
-            "referencedTypes": [
-              {
-                "name": "Component",
-                "kind": "typeAlias",
-                "type": "Component",
-                "resolvedType": null,
-                "description": "A type used in public APIs where a component type is expected.\nThe constructor type is an artificial type returned by defineComponent().",
-                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_33_node_modules_vue_runtime_core_dist_runtime_core_d.component",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
-                "typeParameters": [
-                  "PropsOrInstance = any",
-                  "RawBindings = any",
-                  "D = any",
-                  "C extends ComputedOptions = ComputedOptions",
-                  "M extends MethodOptions = MethodOptions",
-                  "E extends EmitsOptions | Record<string, any[]> = {}",
-                  "S extends Record<string, any> = any"
-                ],
-                "external": true,
-                "members": [],
-                "callables": []
-              }
-            ]
-          },
-          {
             "name": "name",
             "type": "string",
             "required": false,
@@ -835,6 +1311,50 @@
             "inheritedFrom": "required",
             "sourcePath": "headless/src/types/component.ts",
             "referencedTypes": []
+          },
+          {
+            "name": "asChild",
+            "type": "boolean",
+            "required": false,
+            "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+            "descriptionKey": "api.generated.headless_src_components_slider_types.sliderrootprops.members.aschild",
+            "default": null,
+            "inheritedFrom": "PrimitiveWithBaseProps.asChild",
+            "sourcePath": "headless/src/components/primitive/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "as",
+            "type": "AsTag | Component",
+            "required": false,
+            "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+            "descriptionKey": "api.generated.headless_src_components_slider_types.sliderrootprops.members.as",
+            "default": "'div'",
+            "inheritedFrom": "PrimitiveWithBaseProps.as",
+            "sourcePath": "headless/src/components/primitive/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Component",
+                "kind": "typeAlias",
+                "type": "Component",
+                "resolvedType": null,
+                "description": "A type used in public APIs where a component type is expected.\nThe constructor type is an artificial type returned by defineComponent().",
+                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_34_node_modules_vue_runtime_core_dist_runtime_core_d.component",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.34/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [
+                  "PropsOrInstance = any",
+                  "RawBindings = any",
+                  "D = any",
+                  "C extends ComputedOptions = ComputedOptions",
+                  "M extends MethodOptions = MethodOptions",
+                  "E extends EmitsOptions | Record<string, any[]> = {}",
+                  "S extends Record<string, any> = any"
+                ],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
           }
         ],
         "callables": [],
@@ -904,7 +1424,7 @@
             "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
             "descriptionKey": "api.generated.headless_src_components_slider_types.sliderthumbprops.members.aschild",
             "default": null,
-            "inheritedFrom": "PrimitiveProps.asChild",
+            "inheritedFrom": "PrimitiveWithBaseProps.asChild",
             "sourcePath": "headless/src/components/primitive/types.ts",
             "referencedTypes": []
           },
@@ -915,7 +1435,7 @@
             "description": "The element or component this component should render as. Can be overwrite by `asChild`",
             "descriptionKey": "api.generated.headless_src_components_slider_types.sliderthumbprops.members.as",
             "default": "'div'",
-            "inheritedFrom": "PrimitiveProps.as",
+            "inheritedFrom": "PrimitiveWithBaseProps.as",
             "sourcePath": "headless/src/components/primitive/types.ts",
             "referencedTypes": [
               {
@@ -924,8 +1444,8 @@
                 "type": "Component",
                 "resolvedType": null,
                 "description": "A type used in public APIs where a component type is expected.\nThe constructor type is an artificial type returned by defineComponent().",
-                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_33_node_modules_vue_runtime_core_dist_runtime_core_d.component",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_34_node_modules_vue_runtime_core_dist_runtime_core_d.component",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.34/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
                 "typeParameters": [
                   "PropsOrInstance = any",
                   "RawBindings = any",
@@ -964,7 +1484,7 @@
             "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
             "descriptionKey": "api.generated.headless_src_components_slider_types.slidertrackprops.members.aschild",
             "default": null,
-            "inheritedFrom": "PrimitiveProps.asChild",
+            "inheritedFrom": "PrimitiveWithBaseProps.asChild",
             "sourcePath": "headless/src/components/primitive/types.ts",
             "referencedTypes": []
           },
@@ -975,7 +1495,7 @@
             "description": "The element or component this component should render as. Can be overwrite by `asChild`",
             "descriptionKey": "api.generated.headless_src_components_slider_types.slidertrackprops.members.as",
             "default": "'div'",
-            "inheritedFrom": "PrimitiveProps.as",
+            "inheritedFrom": "PrimitiveWithBaseProps.as",
             "sourcePath": "headless/src/components/primitive/types.ts",
             "referencedTypes": [
               {
@@ -984,8 +1504,8 @@
                 "type": "Component",
                 "resolvedType": null,
                 "description": "A type used in public APIs where a component type is expected.\nThe constructor type is an artificial type returned by defineComponent().",
-                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_33_node_modules_vue_runtime_core_dist_runtime_core_d.component",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_34_node_modules_vue_runtime_core_dist_runtime_core_d.component",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.34/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
                 "typeParameters": [
                   "PropsOrInstance = any",
                   "RawBindings = any",

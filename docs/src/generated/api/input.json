@@ -1,27 +1,12 @@
 {
   "component": "input",
   "symbols": {
-    "AutocompleteInput": {
-      "emits": {
-        "kind": "emits",
-        "name": "AutocompleteInputEmits",
-        "type": "TypeAlias AutocompleteInputEmits",
-        "resolvedType": null,
-        "description": "Events for the InputRoot component.",
-        "descriptionKey": "api.generated.headless_src_components_input_types.autocompleteinputemits.emits",
-        "sourcePath": "headless/src/components/input/types.ts",
-        "typeParameters": [],
-        "members": [],
-        "callables": [],
-        "referencedTypes": []
-      }
-    },
     "Input": {
       "props": {
         "kind": "props",
         "name": "InputProps",
         "type": "Interface InputProps",
-        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<InputUi>; clearable?: boolean; inputRef?: ((el: HTMLInputElement) => void); controlProps?: InputControlProps; clearProps?: InputClearProps; defaultValue?: string; modelValue?: string; id?: string; autofocus?: boolean; disabled?: boolean; maxlength?: number; minlength?: number; pattern?: string; placeholder?: string; readonly?: boolean; name?: string; required?: boolean }",
+        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<InputUi>; inputRef?: ((el: HTMLInputElement) => void); clearable?: boolean; controlProps?: InputControlProps; clearProps?: InputClearProps; defaultValue?: string; modelValue?: string; id?: string; autofocus?: boolean; disabled?: boolean; maxlength?: number; minlength?: number; pattern?: string; placeholder?: string; readonly?: boolean; name?: string; required?: boolean }",
         "description": "Properties for the Input component.",
         "descriptionKey": "api.generated.src_components_input_types.inputprops.props",
         "sourcePath": "src/components/input/types.ts",
@@ -90,7 +75,7 @@
               {
                 "name": "InputUi",
                 "kind": "typeAlias",
-                "type": "{ root: ClassValue; control: ClassValue; clearable: ClassValue; }",
+                "type": "{ root: ClassValue; clear: ClassValue; control: ClassValue; }",
                 "resolvedType": null,
                 "description": "UI class overrides for the Input component.",
                 "descriptionKey": "api.generated.headless_src_components_input_types.inputui",
@@ -101,17 +86,6 @@
                 "callables": []
               }
             ]
-          },
-          {
-            "name": "clearable",
-            "type": "boolean",
-            "required": false,
-            "description": "Whether to show the clear trigger.",
-            "descriptionKey": "api.generated.src_components_input_types.inputprops.members.clearable",
-            "default": "false",
-            "inheritedFrom": "clearable",
-            "sourcePath": "headless/src/components/input/types.ts",
-            "referencedTypes": []
           },
           {
             "name": "inputRef",
@@ -137,6 +111,17 @@
                 "callables": []
               }
             ]
+          },
+          {
+            "name": "clearable",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether to show the clear trigger.",
+            "descriptionKey": "api.generated.src_components_input_types.inputprops.members.clearable",
+            "default": "false",
+            "inheritedFrom": "clearable",
+            "sourcePath": "headless/src/components/input/types.ts",
+            "referencedTypes": []
           },
           {
             "name": "controlProps",
@@ -624,8 +609,8 @@
                 "type": "Component",
                 "resolvedType": null,
                 "description": "A type used in public APIs where a component type is expected.\nThe constructor type is an artificial type returned by defineComponent().",
-                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_33_node_modules_vue_runtime_core_dist_runtime_core_d.component",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_34_node_modules_vue_runtime_core_dist_runtime_core_d.component",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.34/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
                 "typeParameters": [
                   "PropsOrInstance = any",
                   "RawBindings = any",
@@ -689,23 +674,12 @@
         "kind": "props",
         "name": "InputCompactProps",
         "type": "Interface InputCompactProps",
-        "resolvedType": "{ clearable?: boolean; inputRef?: ((el: HTMLInputElement) => void); controlProps?: InputControlProps; clearProps?: InputClearProps; defaultValue?: string; modelValue?: string; id?: string; autofocus?: boolean; disabled?: boolean; maxlength?: number; minlength?: number; pattern?: string; placeholder?: string; readonly?: boolean; name?: string; required?: boolean }",
+        "resolvedType": "{ inputRef?: ((el: HTMLInputElement) => void); clearable?: boolean; controlProps?: InputControlProps; clearProps?: InputClearProps; defaultValue?: string; modelValue?: string; id?: string; autofocus?: boolean; disabled?: boolean; maxlength?: number; minlength?: number; pattern?: string; placeholder?: string; readonly?: boolean; name?: string; required?: boolean }",
         "description": "Properties for the InputCompact component.",
         "descriptionKey": "api.generated.headless_src_components_input_types.inputcompactprops.props",
         "sourcePath": "headless/src/components/input/types.ts",
         "typeParameters": [],
         "members": [
-          {
-            "name": "clearable",
-            "type": "boolean",
-            "required": false,
-            "description": "Whether to show the clear trigger.",
-            "descriptionKey": "api.generated.headless_src_components_input_types.inputcompactprops.members.clearable",
-            "default": "false",
-            "inheritedFrom": null,
-            "sourcePath": "headless/src/components/input/types.ts",
-            "referencedTypes": []
-          },
           {
             "name": "inputRef",
             "type": "((el: HTMLInputElement) => void)",
@@ -730,6 +704,17 @@
                 "callables": []
               }
             ]
+          },
+          {
+            "name": "clearable",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether to show the clear trigger.",
+            "descriptionKey": "api.generated.headless_src_components_input_types.inputcompactprops.members.clearable",
+            "default": "false",
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/input/types.ts",
+            "referencedTypes": []
           },
           {
             "name": "controlProps",

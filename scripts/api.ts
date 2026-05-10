@@ -146,6 +146,14 @@ type TsProgramContext = {
   program: ts.Program;
 };
 
+type AliasExportMeta = {
+  aliasName: string;
+  originalName: string;
+  ownerComponentKey: string;
+  ownerSourcePath: string;
+  originalComponentKey: string | null;
+};
+
 const declarationCache = new Map<string, Map<string, TsDeclaration>>();
 
 let tsProgramContext: TsProgramContext | null = null;
@@ -165,6 +173,93 @@ const apiSectionSuffixes = {
 const componentSymbolsByKey = Object.fromEntries(
   Object.entries(headlessComponents).map(([componentKey, symbols]) => [kebabCase(componentKey), symbols])
 ) as Record<string, string[]>;
+const componentKeyBySymbolName = buildComponentKeyBySymbolName();
+const aliasExportRegistry = buildAliasExportRegistry();
+const aliasExportByAliasName = new Map(aliasExportRegistry.map(aliasMeta => [aliasMeta.aliasName, aliasMeta]));
+const aliasExportByOwnerAndOriginalName = new Map(
+  aliasExportRegistry.map(aliasMeta => [`${aliasMeta.ownerComponentKey}:${aliasMeta.originalName}`, aliasMeta])
+);
+
+function buildComponentKeyBySymbolName(): Record<string, string> {
+  const symbolOwners = new Map<string, string>();
+  const ambiguousSymbols = new Set<string>();
+
+  for (const [componentKey, symbols] of Object.entries(componentSymbolsByKey)) {
+    for (const symbolName of symbols) {
+      const existingOwner = symbolOwners.get(symbolName);
+
+      if (!existingOwner) {
+        symbolOwners.set(symbolName, componentKey);
+        continue;
+      }
+
+      if (existingOwner !== componentKey) {
+        ambiguousSymbols.add(symbolName);
+      }
+    }
+  }
+
+  ambiguousSymbols.forEach(symbolName => {
+    symbolOwners.delete(symbolName);
+  });
+
+  return Object.fromEntries(symbolOwners.entries());
+}
+
+function buildAliasExportRegistry(): AliasExportMeta[] {
+  const aliasExports: AliasExportMeta[] = [];
+
+  for (const componentKey of Object.keys(componentSymbolsByKey)) {
+    const componentIndexFilePath = path.join(rootDir, 'headless/src/components', componentKey, 'index.ts');
+    const source = ts.sys.readFile(componentIndexFilePath);
+
+    if (!source) {
+      continue;
+    }
+
+    const sourceFile = ts.createSourceFile(
+      componentIndexFilePath,
+      source,
+      ts.ScriptTarget.Latest,
+      true,
+      ts.ScriptKind.TS
+    );
+
+    for (const statement of sourceFile.statements) {
+      if (!ts.isExportDeclaration(statement) || !statement.exportClause || !ts.isNamedExports(statement.exportClause)) {
+        continue;
+      }
+
+      const moduleSpecifierNode = statement.moduleSpecifier;
+      const moduleSpecifier =
+        moduleSpecifierNode && ts.isStringLiteral(moduleSpecifierNode) ? moduleSpecifierNode.text : null;
+      const originalComponentKey = moduleSpecifier ? getComponentKeyFromModuleSpecifier(moduleSpecifier) : null;
+
+      for (const element of statement.exportClause.elements) {
+        if (!element.propertyName || element.propertyName.text === element.name.text) {
+          continue;
+        }
+
+        aliasExports.push({
+          aliasName: element.name.text,
+          originalName: element.propertyName.text,
+          ownerComponentKey: componentKey,
+          ownerSourcePath: toSourcePath(componentIndexFilePath),
+          originalComponentKey
+        });
+      }
+    }
+  }
+
+  return aliasExports;
+}
+
+function getComponentKeyFromModuleSpecifier(moduleSpecifier: string): string | null {
+  const normalizedModuleSpecifier = moduleSpecifier.replace(/\\/gu, '/');
+  const match = normalizedModuleSpecifier.match(/^\.\.\/([^/]+)(?:\/.*)?$/u);
+
+  return match?.[1] ?? null;
+}
 
 function toPosixPath(filePath: string): string {
   return filePath.split(path.sep).join('/');
@@ -252,6 +347,177 @@ function getSectionMeta(reflectionName: string): { sectionName: string; kind: Ap
   }
 
   return null;
+}
+
+function getComponentKeyForSymbol(symbolName: string): string | null {
+  return componentKeyBySymbolName[symbolName] ?? null;
+}
+
+function getComponentKeyForApiType(typeName: string, sourcePath: string | null): string | null {
+  const sectionMeta = getSectionMeta(typeName);
+
+  if (sectionMeta) {
+    return getComponentKeyForSymbol(sectionMeta.sectionName) ?? getComponentKeyFromPath(sourcePath);
+  }
+
+  return getComponentKeyForSymbol(typeName) ?? getComponentKeyFromPath(sourcePath);
+}
+
+function resolveDisplayAliasMeta(typeName: string, componentKey: string): AliasExportMeta | null {
+  const directAlias = aliasExportByAliasName.get(typeName);
+
+  if (directAlias?.ownerComponentKey === componentKey) {
+    return directAlias;
+  }
+
+  return aliasExportByOwnerAndOriginalName.get(`${componentKey}:${typeName}`) ?? null;
+}
+
+function resolveDisplayTypeName(typeName: string, componentKey: string): string {
+  const directAlias = aliasExportByAliasName.get(typeName);
+
+  if (directAlias?.ownerComponentKey === componentKey) {
+    return directAlias.aliasName;
+  }
+
+  const ownedAlias = aliasExportByOwnerAndOriginalName.get(`${componentKey}:${typeName}`);
+
+  if (ownedAlias) {
+    return ownedAlias.aliasName;
+  }
+
+  if (directAlias?.originalComponentKey === componentKey) {
+    return directAlias.originalName;
+  }
+
+  return typeName;
+}
+
+function normalizeTypeTextForComponent(typeText: string | null, componentKey: string): string | null {
+  if (!typeText) {
+    return typeText;
+  }
+
+  let normalizedTypeText = typeText;
+  const aliasNames = Array.from(aliasExportByAliasName.keys()).sort((left, right) => right.length - left.length);
+
+  for (const aliasName of aliasNames) {
+    const aliasMeta = aliasExportByAliasName.get(aliasName);
+
+    if (!aliasMeta) {
+      continue;
+    }
+
+    if (aliasMeta.originalComponentKey === componentKey) {
+      normalizedTypeText = normalizedTypeText.replace(
+        new RegExp(`\\b${escapeRegExpForRegExp(aliasMeta.aliasName)}\\b`, 'gu'),
+        aliasMeta.originalName
+      );
+    }
+  }
+
+  const originalNames = Array.from(aliasExportByOwnerAndOriginalName.keys())
+    .filter(key => key.startsWith(`${componentKey}:`))
+    .map(key => aliasExportByOwnerAndOriginalName.get(key)!)
+    .sort((left, right) => right.originalName.length - left.originalName.length);
+
+  for (const aliasMeta of originalNames) {
+    normalizedTypeText = normalizedTypeText.replace(
+      new RegExp(`\\b${escapeRegExpForRegExp(aliasMeta.originalName)}\\b`, 'gu'),
+      aliasMeta.aliasName
+    );
+  }
+
+  return normalizedTypeText;
+}
+
+function escapeRegExpForRegExp(value: string): string {
+  return value.replace(/[.*+?^${}()|[\]\\]/gu, '\\$&');
+}
+
+function normalizeApiTypeReference(type: ApiTypeReference, componentKey: string): ApiTypeReference {
+  const normalizedName = resolveDisplayTypeName(type.name, componentKey);
+  const aliasMeta = resolveDisplayAliasMeta(type.name, componentKey);
+  const normalizedSourcePath =
+    aliasMeta?.ownerComponentKey === componentKey ? aliasMeta.ownerSourcePath : type.sourcePath;
+  const typeComponentKey = getComponentKeyForApiType(normalizedName, normalizedSourcePath) ?? componentKey;
+
+  return {
+    ...type,
+    name: normalizedName,
+    type: normalizeTypeTextForComponent(type.type, typeComponentKey) ?? type.type,
+    resolvedType: normalizeTypeTextForComponent(type.resolvedType, typeComponentKey),
+    descriptionKey: createDescriptionKey(normalizedSourcePath, normalizedName) ?? type.descriptionKey,
+    sourcePath: normalizedSourcePath,
+    members: type.members.map(member =>
+      normalizeApiMember(member, normalizedName, normalizedSourcePath, typeComponentKey)
+    ),
+    callables: type.callables.map(callable =>
+      normalizeApiCallable(callable, normalizedName, normalizedSourcePath, typeComponentKey)
+    )
+  };
+}
+
+function normalizeApiMember(
+  member: ApiMember,
+  ownerTypeName: string,
+  ownerSourcePath: string | null,
+  componentKey: string
+): ApiMember {
+  return {
+    ...member,
+    type: normalizeTypeTextForComponent(member.type, componentKey) ?? member.type,
+    descriptionKey:
+      createDescriptionKey(ownerSourcePath, ownerTypeName, 'members', member.name) ?? member.descriptionKey,
+    inheritedFrom: normalizeTypeTextForComponent(member.inheritedFrom, componentKey),
+    referencedTypes: member.referencedTypes.map(referencedType =>
+      normalizeApiTypeReference(referencedType, componentKey)
+    )
+  };
+}
+
+function normalizeApiCallable(
+  callable: ApiCallable,
+  ownerTypeName: string,
+  ownerSourcePath: string | null,
+  componentKey: string
+): ApiCallable {
+  return {
+    ...callable,
+    type: normalizeTypeTextForComponent(callable.type, componentKey) ?? callable.type,
+    parameters: normalizeTypeTextForComponent(callable.parameters, componentKey),
+    descriptionKey:
+      createDescriptionKey(ownerSourcePath, ownerTypeName, 'callables', callable.name) ?? callable.descriptionKey,
+    referencedTypes: callable.referencedTypes.map(referencedType =>
+      normalizeApiTypeReference(referencedType, componentKey)
+    )
+  };
+}
+
+function normalizeApiSection(section: ApiSection, componentKey: string): ApiSection {
+  const normalizedName = resolveDisplayTypeName(section.name, componentKey);
+  const aliasMeta = resolveDisplayAliasMeta(section.name, componentKey);
+  const normalizedSourcePath =
+    aliasMeta?.ownerComponentKey === componentKey ? aliasMeta.ownerSourcePath : section.sourcePath;
+  const sectionComponentKey = getComponentKeyForApiType(normalizedName, normalizedSourcePath) ?? componentKey;
+
+  return {
+    ...section,
+    name: normalizedName,
+    type: normalizeTypeTextForComponent(section.type, sectionComponentKey) ?? section.type,
+    resolvedType: normalizeTypeTextForComponent(section.resolvedType, sectionComponentKey),
+    descriptionKey: createDescriptionKey(normalizedSourcePath, normalizedName, section.kind) ?? section.descriptionKey,
+    sourcePath: normalizedSourcePath,
+    members: section.members.map(member =>
+      normalizeApiMember(member, normalizedName, normalizedSourcePath, sectionComponentKey)
+    ),
+    callables: section.callables.map(callable =>
+      normalizeApiCallable(callable, normalizedName, normalizedSourcePath, sectionComponentKey)
+    ),
+    referencedTypes: section.referencedTypes.map(referencedType =>
+      normalizeApiTypeReference(referencedType, sectionComponentKey)
+    )
+  };
 }
 
 function getLeadingNodeText(sourceText: string, sourceFile: ts.SourceFile, node: ts.Node): string {
@@ -998,35 +1264,38 @@ function toApiCallable(
   };
 }
 
-function buildSection(kind: ApiSectionKind, reflection: DeclarationReflection): ApiSection {
+function buildSection(kind: ApiSectionKind, reflection: DeclarationReflection, componentKey: string): ApiSection {
   const typeContext = getTsTypeContext(reflection);
   const symbols = typeContext ? getSectionPropertySymbols(typeContext) : [];
   const seenTypeKeys = new Set<string>([createTypeKey(reflection.name, getSourcePath(reflection))]);
   const sectionType = typeContext?.type;
   const sourcePath = getSourcePath(reflection);
 
-  return {
-    kind,
-    name: reflection.name,
-    type: reflection.toString(),
-    resolvedType: typeContext ? buildResolvedType(typeContext) : null,
-    description: getCommentText(reflection.comment),
-    descriptionKey: createDescriptionKey(sourcePath, reflection.name, kind),
-    sourcePath,
-    typeParameters: getTypeParameters(reflection),
-    members:
-      (kind === 'props' || kind === 'slotProps') && typeContext
-        ? symbols.map(symbol => toApiMember(symbol, typeContext, true, seenTypeKeys))
-        : [],
-    callables:
-      (kind === 'emits' || kind === 'slots') && typeContext
-        ? symbols.map(symbol => toApiCallable(symbol, typeContext, true, seenTypeKeys))
-        : [],
-    referencedTypes:
-      typeContext && sectionType
-        ? collectReferencedTypes(sectionType, typeContext.checker, typeContext.declaration, new Set(seenTypeKeys))
-        : []
-  };
+  return normalizeApiSection(
+    {
+      kind,
+      name: reflection.name,
+      type: reflection.toString(),
+      resolvedType: typeContext ? buildResolvedType(typeContext) : null,
+      description: getCommentText(reflection.comment),
+      descriptionKey: createDescriptionKey(sourcePath, reflection.name, kind),
+      sourcePath,
+      typeParameters: getTypeParameters(reflection),
+      members:
+        (kind === 'props' || kind === 'slotProps') && typeContext
+          ? symbols.map(symbol => toApiMember(symbol, typeContext, true, seenTypeKeys))
+          : [],
+      callables:
+        (kind === 'emits' || kind === 'slots') && typeContext
+          ? symbols.map(symbol => toApiCallable(symbol, typeContext, true, seenTypeKeys))
+          : [],
+      referencedTypes:
+        typeContext && sectionType
+          ? collectReferencedTypes(sectionType, typeContext.checker, typeContext.declaration, new Set(seenTypeKeys))
+          : []
+    },
+    componentKey
+  );
 }
 
 function getDeclarationCommentText(declaration: TsDeclaration, checker: ts.TypeChecker): string {
@@ -1048,32 +1317,39 @@ function getDeclarationDisplayText(declaration: TsDeclaration): string {
   return `${declarationKind} ${declaration.name.text}${typeParameters}`;
 }
 
-function buildSectionFromDeclaration(kind: ApiSectionKind, declaration: TsDeclaration): ApiSection {
+function buildSectionFromDeclaration(
+  kind: ApiSectionKind,
+  declaration: TsDeclaration,
+  componentKey: string
+): ApiSection {
   const { checker } = getTsProgramContext();
   const typeContext = createNestedTsTypeContext(declaration, checker);
   const symbols = getSectionPropertySymbols(typeContext);
   const sourcePath = getDeclarationSourcePath(declaration);
   const seenTypeKeys = new Set<string>([createTypeKey(declaration.name.text, sourcePath)]);
 
-  return {
-    kind,
-    name: declaration.name.text,
-    type: getDeclarationDisplayText(declaration),
-    resolvedType: buildResolvedType(typeContext),
-    description: getDeclarationCommentText(declaration, checker),
-    descriptionKey: createDescriptionKey(sourcePath, declaration.name.text, kind),
-    sourcePath,
-    typeParameters: getTsDeclarationTypeParameters(declaration),
-    members:
-      kind === 'props' || kind === 'slotProps'
-        ? symbols.map(symbol => toApiMember(symbol, typeContext, true, seenTypeKeys))
-        : [],
-    callables:
-      kind === 'emits' || kind === 'slots'
-        ? symbols.map(symbol => toApiCallable(symbol, typeContext, true, seenTypeKeys))
-        : [],
-    referencedTypes: collectReferencedTypes(typeContext.type, checker, declaration, new Set(seenTypeKeys))
-  };
+  return normalizeApiSection(
+    {
+      kind,
+      name: declaration.name.text,
+      type: getDeclarationDisplayText(declaration),
+      resolvedType: buildResolvedType(typeContext),
+      description: getDeclarationCommentText(declaration, checker),
+      descriptionKey: createDescriptionKey(sourcePath, declaration.name.text, kind),
+      sourcePath,
+      typeParameters: getTsDeclarationTypeParameters(declaration),
+      members:
+        kind === 'props' || kind === 'slotProps'
+          ? symbols.map(symbol => toApiMember(symbol, typeContext, true, seenTypeKeys))
+          : [],
+      callables:
+        kind === 'emits' || kind === 'slots'
+          ? symbols.map(symbol => toApiCallable(symbol, typeContext, true, seenTypeKeys))
+          : [],
+      referencedTypes: collectReferencedTypes(typeContext.type, checker, declaration, new Set(seenTypeKeys))
+    },
+    componentKey
+  );
 }
 
 function sortEntries<T>(record: Record<string, T>): Record<string, T> {
@@ -1123,7 +1399,7 @@ function completeSymbolApi(
       continue;
     }
 
-    completedSymbolApi[kind] = buildSectionFromDeclaration(kind, declaration);
+    completedSymbolApi[kind] = buildSectionFromDeclaration(kind, declaration, componentKey);
   }
 
   return completedSymbolApi;
@@ -1160,7 +1436,7 @@ function collectComponentApis(project: ProjectReflection): Record<string, Compon
     }
 
     const sourcePath = getSourcePath(reflection);
-    const componentKey = getComponentKeyFromPath(sourcePath);
+    const componentKey = getComponentKeyForSymbol(sectionMeta.sectionName) ?? getComponentKeyFromPath(sourcePath);
 
     if (!componentKey) {
       continue;
@@ -1174,7 +1450,8 @@ function collectComponentApis(project: ProjectReflection): Record<string, Compon
     components[componentKey].symbols[sectionMeta.sectionName] ??= {};
     components[componentKey].symbols[sectionMeta.sectionName][sectionMeta.kind] = buildSection(
       sectionMeta.kind,
-      reflection
+      reflection,
+      componentKey
     );
   }
 

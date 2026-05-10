@@ -1,100 +1,12 @@
 {
   "component": "combobox",
   "symbols": {
-    "AutocompleteContent": {
-      "props": {
-        "kind": "props",
-        "name": "AutocompleteContentProps",
-        "type": "Interface AutocompleteContentProps",
-        "resolvedType": null,
-        "description": "Properties for the ComboboxContent component.",
-        "descriptionKey": "api.generated.headless_src_components_combobox_types.autocompletecontentprops.props",
-        "sourcePath": "headless/src/components/combobox/types.ts",
-        "typeParameters": [],
-        "members": [],
-        "callables": [],
-        "referencedTypes": []
-      }
-    },
-    "AutocompleteItem": {
-      "props": {
-        "kind": "props",
-        "name": "AutocompleteItemProps",
-        "type": "Interface AutocompleteItemProps",
-        "resolvedType": null,
-        "description": "Properties for the ComboboxItem component.",
-        "descriptionKey": "api.generated.headless_src_components_combobox_types.autocompleteitemprops.props",
-        "sourcePath": "headless/src/components/combobox/types.ts",
-        "typeParameters": [],
-        "members": [],
-        "callables": [],
-        "referencedTypes": []
-      },
-      "emits": {
-        "kind": "emits",
-        "name": "AutocompleteItemEmits",
-        "type": "TypeAlias AutocompleteItemEmits: CommandItemEmits",
-        "resolvedType": null,
-        "description": "Events for the ComboboxItem component.",
-        "descriptionKey": "api.generated.headless_src_components_combobox_types.autocompleteitememits.emits",
-        "sourcePath": "headless/src/components/combobox/types.ts",
-        "typeParameters": [],
-        "members": [],
-        "callables": [],
-        "referencedTypes": []
-      }
-    },
-    "AutocompleteSeparator": {
-      "props": {
-        "kind": "props",
-        "name": "AutocompleteSeparatorProps",
-        "type": "Interface AutocompleteSeparatorProps",
-        "resolvedType": null,
-        "description": "Properties for the ComboboxSeparator component.",
-        "descriptionKey": "api.generated.headless_src_components_combobox_types.autocompleteseparatorprops.props",
-        "sourcePath": "headless/src/components/combobox/types.ts",
-        "typeParameters": [],
-        "members": [],
-        "callables": [],
-        "referencedTypes": []
-      }
-    },
-    "AutocompleteTrigger": {
-      "props": {
-        "kind": "props",
-        "name": "AutocompleteTriggerProps",
-        "type": "Interface AutocompleteTriggerProps",
-        "resolvedType": null,
-        "description": "Properties for the ComboboxTrigger component.",
-        "descriptionKey": "api.generated.headless_src_components_combobox_types.autocompletetriggerprops.props",
-        "sourcePath": "headless/src/components/combobox/types.ts",
-        "typeParameters": [],
-        "members": [],
-        "callables": [],
-        "referencedTypes": []
-      }
-    },
-    "AutocompleteViewport": {
-      "props": {
-        "kind": "props",
-        "name": "AutocompleteViewportProps",
-        "type": "Interface AutocompleteViewportProps",
-        "resolvedType": null,
-        "description": "Properties for the ComboboxViewport component.",
-        "descriptionKey": "api.generated.headless_src_components_combobox_types.autocompleteviewportprops.props",
-        "sourcePath": "headless/src/components/combobox/types.ts",
-        "typeParameters": [],
-        "members": [],
-        "callables": [],
-        "referencedTypes": []
-      }
-    },
     "Combobox": {
       "props": {
         "kind": "props",
         "name": "ComboboxProps",
         "type": "Interface ComboboxProps<M>",
-        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<ComboboxUi>; items: ComboboxOptionData[]; placeholder?: string; searchPlaceholder?: string; clearLabel?: string; emptyLabel?: string; anchorProps?: ComboboxAnchorProps; triggerProps?: ComboboxTriggerProps; cancelProps?: ComboboxCancelProps; portalProps?: PortalProps; contentProps?: ComboboxContentProps; viewportProps?: ComboboxViewportProps; inputProps?: ComboboxInputProps; emptyProps?: ComboboxEmptyProps; groupProps?: ComboboxGroupProps; groupLabelProps?: ComboboxGroupLabelProps; itemProps?: ComboboxItemProps; itemIndicatorProps?: ComboboxItemIndicatorProps; separatorProps?: ComboboxSeparatorProps; open?: boolean; defaultOpen?: boolean; resetSearchTermOnBlur?: boolean; resetSearchTermOnSelect?: boolean; openOnFocus?: boolean; openOnClick?: boolean; ignoreFilter?: boolean; resetModelValueOnClear?: boolean; disabled?: boolean; dir?: Direction; name?: string; defaultValue?: (M extends true ? string[] : string); modelValue?: (M extends true ? string[] : string); highlightOnHover?: boolean; required?: boolean; multiple?: M; clearable?: boolean }",
+        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<ComboboxUi>; items: ComboboxOptionData[]; placeholder?: string; searchPlaceholder?: string; clearLabel?: string; emptyLabel?: string; anchorProps?: ComboboxAnchorProps; triggerProps?: ComboboxTriggerProps; cancelProps?: ComboboxCancelProps; portalProps?: ComboboxPortalProps; contentProps?: ComboboxContentProps; viewportProps?: ComboboxViewportProps; inputProps?: ComboboxInputProps; emptyProps?: ComboboxEmptyProps; groupProps?: ComboboxGroupProps; groupLabelProps?: ComboboxGroupLabelProps; itemProps?: ComboboxItemProps; itemIndicatorProps?: ComboboxItemIndicatorProps; separatorProps?: ComboboxSeparatorProps; open?: boolean; defaultOpen?: boolean; resetSearchTermOnBlur?: boolean; resetSearchTermOnSelect?: boolean; openOnFocus?: boolean; openOnClick?: boolean; ignoreFilter?: boolean; resetModelValueOnClear?: boolean; disabled?: boolean; dir?: Direction; name?: string; defaultValue?: (M extends true ? string[] : string); modelValue?: (M extends true ? string[] : string); highlightOnHover?: boolean; required?: boolean; multiple?: M; clearable?: boolean }",
         "description": "Properties for the Combobox component.",
         "descriptionKey": "api.generated.src_components_combobox_types.comboboxprops.props",
         "sourcePath": "src/components/combobox/types.ts",
@@ -409,7 +321,7 @@
           },
           {
             "name": "portalProps",
-            "type": "PortalProps",
+            "type": "ComboboxPortalProps",
             "required": false,
             "description": "Properties forwarded to the portal element.",
             "descriptionKey": "api.generated.src_components_combobox_types.comboboxprops.members.portalprops",
@@ -418,13 +330,13 @@
             "sourcePath": "headless/src/components/combobox/types.ts",
             "referencedTypes": [
               {
-                "name": "PortalProps",
+                "name": "ComboboxPortalProps",
                 "kind": "interface",
-                "type": "PortalProps",
+                "type": "ComboboxPortalProps",
                 "resolvedType": "{ to?: string | HTMLElement; disabled?: boolean; defer?: boolean; forceMount?: boolean }",
                 "description": "Properties for the Portal component.",
-                "descriptionKey": "api.generated.headless_src_components_portal_types.portalprops",
-                "sourcePath": "headless/src/components/portal/types.ts",
+                "descriptionKey": "api.generated.headless_src_components_combobox_index.comboboxportalprops",
+                "sourcePath": "headless/src/components/combobox/index.ts",
                 "typeParameters": [],
                 "external": false,
                 "members": [
@@ -433,7 +345,7 @@
                     "type": "string | HTMLElement",
                     "required": false,
                     "description": "Vue native teleport component prop `:to`\n\n{@link https://vuejs.org/guide/built-ins/teleport.html#basic-usage}",
-                    "descriptionKey": "api.generated.headless_src_components_portal_types.portalprops.members.to",
+                    "descriptionKey": "api.generated.headless_src_components_combobox_index.comboboxportalprops.members.to",
                     "default": null,
                     "inheritedFrom": null,
                     "sourcePath": "headless/src/components/portal/types.ts",
@@ -444,7 +356,7 @@
                     "type": "boolean",
                     "required": false,
                     "description": "Disable teleport and render the component inline\n\n{@link https://vuejs.org/guide/built-ins/teleport.html#disabling-teleport}",
-                    "descriptionKey": "api.generated.headless_src_components_portal_types.portalprops.members.disabled",
+                    "descriptionKey": "api.generated.headless_src_components_combobox_index.comboboxportalprops.members.disabled",
                     "default": null,
                     "inheritedFrom": null,
                     "sourcePath": "headless/src/components/portal/types.ts",
@@ -455,7 +367,7 @@
                     "type": "boolean",
                     "required": false,
                     "description": "Defer the resolving of a Teleport target until other parts of the application have mounted (requires Vue 3.5.0+)\n\n{@link https://vuejs.org/guide/built-ins/teleport.html#deferred-teleport}",
-                    "descriptionKey": "api.generated.headless_src_components_portal_types.portalprops.members.defer",
+                    "descriptionKey": "api.generated.headless_src_components_combobox_index.comboboxportalprops.members.defer",
                     "default": null,
                     "inheritedFrom": null,
                     "sourcePath": "headless/src/components/portal/types.ts",
@@ -466,7 +378,7 @@
                     "type": "boolean",
                     "required": false,
                     "description": "Used to force mounting when more control is needed.\n\nUseful when controlling animation with Vue animation libraries.",
-                    "descriptionKey": "api.generated.headless_src_components_portal_types.portalprops.members.forcemount",
+                    "descriptionKey": "api.generated.headless_src_components_combobox_index.comboboxportalprops.members.forcemount",
                     "default": null,
                     "inheritedFrom": null,
                     "sourcePath": "headless/src/types/component.ts",
@@ -1993,7 +1905,21 @@
       }
     },
     "ComboboxAnchor": {},
-    "ComboboxArrow": {},
+    "ComboboxArrow": {
+      "props": {
+        "kind": "props",
+        "name": "ComboboxArrowProps",
+        "type": "Interface ComboboxArrowProps",
+        "resolvedType": null,
+        "description": "Properties for the PopperArrow component.",
+        "descriptionKey": "api.generated.headless_src_components_popper_types.comboboxarrowprops.props",
+        "sourcePath": "headless/src/components/popper/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
     "ComboboxCancel": {
       "props": {
         "kind": "props",
@@ -2023,7 +1949,7 @@
             "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
             "descriptionKey": "api.generated.headless_src_components_combobox_types.comboboxcancelprops.members.aschild",
             "default": null,
-            "inheritedFrom": "PrimitiveProps.asChild",
+            "inheritedFrom": "PrimitiveWithBaseProps.asChild",
             "sourcePath": "headless/src/components/primitive/types.ts",
             "referencedTypes": []
           },
@@ -2034,7 +1960,7 @@
             "description": "The element or component this component should render as. Can be overwrite by `asChild`",
             "descriptionKey": "api.generated.headless_src_components_combobox_types.comboboxcancelprops.members.as",
             "default": "'div'",
-            "inheritedFrom": "PrimitiveProps.as",
+            "inheritedFrom": "PrimitiveWithBaseProps.as",
             "sourcePath": "headless/src/components/primitive/types.ts",
             "referencedTypes": [
               {
@@ -2043,8 +1969,8 @@
                 "type": "Component",
                 "resolvedType": null,
                 "description": "A type used in public APIs where a component type is expected.\nThe constructor type is an artificial type returned by defineComponent().",
-                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_33_node_modules_vue_runtime_core_dist_runtime_core_d.component",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_34_node_modules_vue_runtime_core_dist_runtime_core_d.component",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.34/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
                 "typeParameters": [
                   "PropsOrInstance = any",
                   "RawBindings = any",
@@ -2070,7 +1996,7 @@
         "kind": "props",
         "name": "ComboboxCompactProps",
         "type": "Interface ComboboxCompactProps<M>",
-        "resolvedType": "{ items: ComboboxOptionData[]; placeholder?: string; searchPlaceholder?: string; clearLabel?: string; emptyLabel?: string; anchorProps?: ComboboxAnchorProps; triggerProps?: ComboboxTriggerProps; cancelProps?: ComboboxCancelProps; portalProps?: PortalProps; contentProps?: ComboboxContentProps; viewportProps?: ComboboxViewportProps; inputProps?: ComboboxInputProps; emptyProps?: ComboboxEmptyProps; groupProps?: ComboboxGroupProps; groupLabelProps?: ComboboxGroupLabelProps; itemProps?: ComboboxItemProps; itemIndicatorProps?: ComboboxItemIndicatorProps; separatorProps?: ComboboxSeparatorProps; open?: boolean; defaultOpen?: boolean; resetSearchTermOnBlur?: boolean; resetSearchTermOnSelect?: boolean; openOnFocus?: boolean; openOnClick?: boolean; ignoreFilter?: boolean; resetModelValueOnClear?: boolean; disabled?: boolean; dir?: Direction; name?: string; defaultValue?: (M extends true ? string[] : string); modelValue?: (M extends true ? string[] : string); highlightOnHover?: boolean; required?: boolean; multiple?: M; clearable?: boolean }",
+        "resolvedType": "{ items: ComboboxOptionData[]; placeholder?: string; searchPlaceholder?: string; clearLabel?: string; emptyLabel?: string; anchorProps?: ComboboxAnchorProps; triggerProps?: ComboboxTriggerProps; cancelProps?: ComboboxCancelProps; portalProps?: ComboboxPortalProps; contentProps?: ComboboxContentProps; viewportProps?: ComboboxViewportProps; inputProps?: ComboboxInputProps; emptyProps?: ComboboxEmptyProps; groupProps?: ComboboxGroupProps; groupLabelProps?: ComboboxGroupLabelProps; itemProps?: ComboboxItemProps; itemIndicatorProps?: ComboboxItemIndicatorProps; separatorProps?: ComboboxSeparatorProps; open?: boolean; defaultOpen?: boolean; resetSearchTermOnBlur?: boolean; resetSearchTermOnSelect?: boolean; openOnFocus?: boolean; openOnClick?: boolean; ignoreFilter?: boolean; resetModelValueOnClear?: boolean; disabled?: boolean; dir?: Direction; name?: string; defaultValue?: (M extends true ? string[] : string); modelValue?: (M extends true ? string[] : string); highlightOnHover?: boolean; required?: boolean; multiple?: M; clearable?: boolean }",
         "description": "Properties for the ComboboxCompact component.",
         "descriptionKey": "api.generated.headless_src_components_combobox_types.comboboxcompactprops.props",
         "sourcePath": "headless/src/components/combobox/types.ts",
@@ -2310,7 +2236,7 @@
           },
           {
             "name": "portalProps",
-            "type": "PortalProps",
+            "type": "ComboboxPortalProps",
             "required": false,
             "description": "Properties forwarded to the portal element.",
             "descriptionKey": "api.generated.headless_src_components_combobox_types.comboboxcompactprops.members.portalprops",
@@ -2319,13 +2245,13 @@
             "sourcePath": "headless/src/components/combobox/types.ts",
             "referencedTypes": [
               {
-                "name": "PortalProps",
+                "name": "ComboboxPortalProps",
                 "kind": "interface",
-                "type": "PortalProps",
+                "type": "ComboboxPortalProps",
                 "resolvedType": "{ to?: string | HTMLElement; disabled?: boolean; defer?: boolean; forceMount?: boolean }",
                 "description": "Properties for the Portal component.",
-                "descriptionKey": "api.generated.headless_src_components_portal_types.portalprops",
-                "sourcePath": "headless/src/components/portal/types.ts",
+                "descriptionKey": "api.generated.headless_src_components_combobox_index.comboboxportalprops",
+                "sourcePath": "headless/src/components/combobox/index.ts",
                 "typeParameters": [],
                 "external": false,
                 "members": [
@@ -2334,7 +2260,7 @@
                     "type": "string | HTMLElement",
                     "required": false,
                     "description": "Vue native teleport component prop `:to`\n\n{@link https://vuejs.org/guide/built-ins/teleport.html#basic-usage}",
-                    "descriptionKey": "api.generated.headless_src_components_portal_types.portalprops.members.to",
+                    "descriptionKey": "api.generated.headless_src_components_combobox_index.comboboxportalprops.members.to",
                     "default": null,
                     "inheritedFrom": null,
                     "sourcePath": "headless/src/components/portal/types.ts",
@@ -2345,7 +2271,7 @@
                     "type": "boolean",
                     "required": false,
                     "description": "Disable teleport and render the component inline\n\n{@link https://vuejs.org/guide/built-ins/teleport.html#disabling-teleport}",
-                    "descriptionKey": "api.generated.headless_src_components_portal_types.portalprops.members.disabled",
+                    "descriptionKey": "api.generated.headless_src_components_combobox_index.comboboxportalprops.members.disabled",
                     "default": null,
                     "inheritedFrom": null,
                     "sourcePath": "headless/src/components/portal/types.ts",
@@ -2356,7 +2282,7 @@
                     "type": "boolean",
                     "required": false,
                     "description": "Defer the resolving of a Teleport target until other parts of the application have mounted (requires Vue 3.5.0+)\n\n{@link https://vuejs.org/guide/built-ins/teleport.html#deferred-teleport}",
-                    "descriptionKey": "api.generated.headless_src_components_portal_types.portalprops.members.defer",
+                    "descriptionKey": "api.generated.headless_src_components_combobox_index.comboboxportalprops.members.defer",
                     "default": null,
                     "inheritedFrom": null,
                     "sourcePath": "headless/src/components/portal/types.ts",
@@ -2367,7 +2293,7 @@
                     "type": "boolean",
                     "required": false,
                     "description": "Used to force mounting when more control is needed.\n\nUseful when controlling animation with Vue animation libraries.",
-                    "descriptionKey": "api.generated.headless_src_components_portal_types.portalprops.members.forcemount",
+                    "descriptionKey": "api.generated.headless_src_components_combobox_index.comboboxportalprops.members.forcemount",
                     "default": null,
                     "inheritedFrom": null,
                     "sourcePath": "headless/src/types/component.ts",
@@ -4579,7 +4505,7 @@
             "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
             "descriptionKey": "api.generated.headless_src_components_combobox_types.comboboxemptyprops.members.aschild",
             "default": null,
-            "inheritedFrom": "PrimitiveProps.asChild",
+            "inheritedFrom": "PrimitiveWithBaseProps.asChild",
             "sourcePath": "headless/src/components/primitive/types.ts",
             "referencedTypes": []
           },
@@ -4590,7 +4516,7 @@
             "description": "The element or component this component should render as. Can be overwrite by `asChild`",
             "descriptionKey": "api.generated.headless_src_components_combobox_types.comboboxemptyprops.members.as",
             "default": "'div'",
-            "inheritedFrom": "PrimitiveProps.as",
+            "inheritedFrom": "PrimitiveWithBaseProps.as",
             "sourcePath": "headless/src/components/primitive/types.ts",
             "referencedTypes": [
               {
@@ -4599,8 +4525,8 @@
                 "type": "Component",
                 "resolvedType": null,
                 "description": "A type used in public APIs where a component type is expected.\nThe constructor type is an artificial type returned by defineComponent().",
-                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_33_node_modules_vue_runtime_core_dist_runtime_core_d.component",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_34_node_modules_vue_runtime_core_dist_runtime_core_d.component",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.34/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
                 "typeParameters": [
                   "PropsOrInstance = any",
                   "RawBindings = any",
@@ -4952,8 +4878,8 @@
                 "type": "Component",
                 "resolvedType": null,
                 "description": "A type used in public APIs where a component type is expected.\nThe constructor type is an artificial type returned by defineComponent().",
-                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_33_node_modules_vue_runtime_core_dist_runtime_core_d.component",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_34_node_modules_vue_runtime_core_dist_runtime_core_d.component",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.34/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
                 "typeParameters": [
                   "PropsOrInstance = any",
                   "RawBindings = any",
@@ -5352,8 +5278,8 @@
                 "type": "Component",
                 "resolvedType": null,
                 "description": "A type used in public APIs where a component type is expected.\nThe constructor type is an artificial type returned by defineComponent().",
-                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_33_node_modules_vue_runtime_core_dist_runtime_core_d.component",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_34_node_modules_vue_runtime_core_dist_runtime_core_d.component",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.34/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
                 "typeParameters": [
                   "PropsOrInstance = any",
                   "RawBindings = any",
@@ -5423,8 +5349,8 @@
                 "type": "Component",
                 "resolvedType": null,
                 "description": "A type used in public APIs where a component type is expected.\nThe constructor type is an artificial type returned by defineComponent().",
-                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_33_node_modules_vue_runtime_core_dist_runtime_core_d.component",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_34_node_modules_vue_runtime_core_dist_runtime_core_d.component",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.34/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
                 "typeParameters": [
                   "PropsOrInstance = any",
                   "RawBindings = any",

@@ -1,79 +1,6 @@
 {
   "component": "tabs",
   "symbols": {
-    "SegmentIndicator": {
-      "props": {
-        "kind": "props",
-        "name": "SegmentIndicatorProps",
-        "type": "Interface SegmentIndicatorProps",
-        "resolvedType": null,
-        "description": "Properties for the TabsIndicator component.",
-        "descriptionKey": "api.generated.headless_src_components_tabs_types.segmentindicatorprops.props",
-        "sourcePath": "headless/src/components/tabs/types.ts",
-        "typeParameters": [],
-        "members": [],
-        "callables": [],
-        "referencedTypes": []
-      }
-    },
-    "SegmentList": {
-      "props": {
-        "kind": "props",
-        "name": "SegmentListProps",
-        "type": "Interface SegmentListProps",
-        "resolvedType": null,
-        "description": "Properties for the TabsList component.",
-        "descriptionKey": "api.generated.headless_src_components_tabs_types.segmentlistprops.props",
-        "sourcePath": "headless/src/components/tabs/types.ts",
-        "typeParameters": [],
-        "members": [],
-        "callables": [],
-        "referencedTypes": []
-      }
-    },
-    "SegmentRoot": {
-      "emits": {
-        "kind": "emits",
-        "name": "SegmentRootEmits",
-        "type": "TypeAlias SegmentRootEmits<T>",
-        "resolvedType": null,
-        "description": "Events for the TabsRoot component.",
-        "descriptionKey": "api.generated.headless_src_components_tabs_types.segmentrootemits.emits",
-        "sourcePath": "headless/src/components/tabs/types.ts",
-        "typeParameters": ["TypeParameter T"],
-        "members": [],
-        "callables": [],
-        "referencedTypes": []
-      },
-      "props": {
-        "kind": "props",
-        "name": "SegmentRootProps",
-        "type": "Interface SegmentRootProps<T>",
-        "resolvedType": null,
-        "description": "Properties for the TabsRoot component.",
-        "descriptionKey": "api.generated.headless_src_components_tabs_types.segmentrootprops.props",
-        "sourcePath": "headless/src/components/tabs/types.ts",
-        "typeParameters": ["TypeParameter T"],
-        "members": [],
-        "callables": [],
-        "referencedTypes": []
-      }
-    },
-    "SegmentTrigger": {
-      "props": {
-        "kind": "props",
-        "name": "SegmentTriggerProps",
-        "type": "Interface SegmentTriggerProps",
-        "resolvedType": null,
-        "description": "Properties for the TabsTrigger component.",
-        "descriptionKey": "api.generated.headless_src_components_tabs_types.segmenttriggerprops.props",
-        "sourcePath": "headless/src/components/tabs/types.ts",
-        "typeParameters": [],
-        "members": [],
-        "callables": [],
-        "referencedTypes": []
-      }
-    },
     "Tabs": {
       "props": {
         "kind": "props",
@@ -525,7 +452,7 @@
         "kind": "emits",
         "name": "TabsEmits",
         "type": "TypeAlias TabsEmits<T>: TabsCompactEmits<T>",
-        "resolvedType": "{ \"update:modelValue\": [payload: NonNullable<T>] }",
+        "resolvedType": "{ \"update:modelValue\": [payload: Exclude<T, undefined>] }",
         "description": "Events for the Tabs component.",
         "descriptionKey": "api.generated.src_components_tabs_types.tabsemits.emits",
         "sourcePath": "src/components/tabs/types.ts",
@@ -534,8 +461,8 @@
         "callables": [
           {
             "name": "update:modelValue",
-            "type": "[payload: NonNullable<T>]",
-            "parameters": "payload: NonNullable<T>",
+            "type": "[payload: Exclude<T, undefined>]",
+            "parameters": "payload: Exclude<T, undefined>",
             "required": true,
             "description": "Event handler called when the value changes",
             "descriptionKey": "api.generated.src_components_tabs_types.tabsemits.callables.update_modelvalue",
@@ -969,7 +896,7 @@
         "kind": "emits",
         "name": "TabsCompactEmits",
         "type": "TypeAlias TabsCompactEmits<T>: SegmentRootEmits<T>",
-        "resolvedType": "{ \"update:modelValue\": [payload: NonNullable<T>] }",
+        "resolvedType": "{ \"update:modelValue\": [payload: Exclude<T, undefined>] }",
         "description": "Events for the TabsCompact component.",
         "descriptionKey": "api.generated.headless_src_components_tabs_types.tabscompactemits.emits",
         "sourcePath": "headless/src/components/tabs/types.ts",
@@ -978,8 +905,8 @@
         "callables": [
           {
             "name": "update:modelValue",
-            "type": "[payload: NonNullable<T>]",
-            "parameters": "payload: NonNullable<T>",
+            "type": "[payload: Exclude<T, undefined>]",
+            "parameters": "payload: Exclude<T, undefined>",
             "required": true,
             "description": "Event handler called when the value changes",
             "descriptionKey": "api.generated.headless_src_components_tabs_types.tabscompactemits.callables.update_modelvalue",
@@ -1152,8 +1079,8 @@
                 "type": "Component",
                 "resolvedType": null,
                 "description": "A type used in public APIs where a component type is expected.\nThe constructor type is an artificial type returned by defineComponent().",
-                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_33_node_modules_vue_runtime_core_dist_runtime_core_d.component",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_34_node_modules_vue_runtime_core_dist_runtime_core_d.component",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.34/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
                 "typeParameters": [
                   "PropsOrInstance = any",
                   "RawBindings = any",
@@ -1327,7 +1254,7 @@
         "kind": "emits",
         "name": "TabsRootEmits",
         "type": "TypeAlias TabsRootEmits<T>",
-        "resolvedType": "{ \"update:modelValue\": [payload: NonNullable<T>] }",
+        "resolvedType": "{ \"update:modelValue\": [payload: Exclude<T, undefined>] }",
         "description": "Events for the TabsRoot component.",
         "descriptionKey": "api.generated.headless_src_components_tabs_types.tabsrootemits.emits",
         "sourcePath": "headless/src/components/tabs/types.ts",
@@ -1336,8 +1263,8 @@
         "callables": [
           {
             "name": "update:modelValue",
-            "type": "[payload: NonNullable<T>]",
-            "parameters": "payload: NonNullable<T>",
+            "type": "[payload: Exclude<T, undefined>]",
+            "parameters": "payload: Exclude<T, undefined>",
             "required": true,
             "description": "Event handler called when the value changes",
             "descriptionKey": "api.generated.headless_src_components_tabs_types.tabsrootemits.callables.update_modelvalue",
@@ -1422,8 +1349,8 @@
                 "type": "Component",
                 "resolvedType": null,
                 "description": "A type used in public APIs where a component type is expected.\nThe constructor type is an artificial type returned by defineComponent().",
-                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_33_node_modules_vue_runtime_core_dist_runtime_core_d.component",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_34_node_modules_vue_runtime_core_dist_runtime_core_d.component",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.34/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
                 "typeParameters": [
                   "PropsOrInstance = any",
                   "RawBindings = any",

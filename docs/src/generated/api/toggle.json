@@ -6,7 +6,7 @@
         "kind": "props",
         "name": "ToggleProps",
         "type": "Interface ToggleProps",
-        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; color?: ThemeColor; size?: ThemeSize; variant?: ToggleVariant; shape?: ToggleShape; defaultValue?: boolean; modelValue?: boolean; disabled?: boolean; asChild?: boolean; as?: AsTag | Component }",
+        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; color?: ThemeColor; size?: ThemeSize; variant?: ToggleVariant; shape?: ToggleShape; defaultValue?: boolean; modelValue?: boolean; type?: ButtonType; disabled?: boolean; asChild?: boolean; as?: AsTag | Component }",
         "description": "Properties for the Toggle component.",
         "descriptionKey": "api.generated.src_components_toggle_types.toggleprops.props",
         "sourcePath": "src/components/toggle/types.ts",
@@ -160,14 +160,39 @@
             "referencedTypes": []
           },
           {
+            "name": "type",
+            "type": "ButtonType",
+            "required": false,
+            "description": "The type of the button element. Can be one of 'button', 'submit', or 'reset'.",
+            "descriptionKey": "api.generated.src_components_toggle_types.toggleprops.members.type",
+            "default": "'button'",
+            "inheritedFrom": "_ToggleProps.type",
+            "sourcePath": "headless/src/components/button/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ButtonType",
+                "kind": "typeAlias",
+                "type": "'button' | 'submit' | 'reset'",
+                "resolvedType": "'button' | 'submit' | 'reset'",
+                "description": "Supported button values.",
+                "descriptionKey": "api.generated.headless_src_components_button_types.buttontype",
+                "sourcePath": "headless/src/components/button/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
             "name": "disabled",
             "type": "boolean",
             "required": false,
-            "description": "When `true`, prevents the user from interacting with the toggle.",
+            "description": "Whether the component is disabled.",
             "descriptionKey": "api.generated.src_components_toggle_types.toggleprops.members.disabled",
             "default": null,
             "inheritedFrom": "_ToggleProps.disabled",
-            "sourcePath": "headless/src/components/toggle/types.ts",
+            "sourcePath": "headless/src/components/button/types.ts",
             "referencedTypes": []
           },
           {
@@ -197,8 +222,8 @@
                 "type": "Component",
                 "resolvedType": null,
                 "description": "A type used in public APIs where a component type is expected.\nThe constructor type is an artificial type returned by defineComponent().",
-                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_33_node_modules_vue_runtime_core_dist_runtime_core_d.component",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_34_node_modules_vue_runtime_core_dist_runtime_core_d.component",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.34/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
                 "typeParameters": [
                   "PropsOrInstance = any",
                   "RawBindings = any",

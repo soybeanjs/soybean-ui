@@ -1,270 +1,14 @@
 {
   "component": "menu",
   "symbols": {
-    "ContextMenuCheckboxGroup": {
-      "emits": {
-        "kind": "emits",
-        "name": "ContextMenuCheckboxGroupEmits",
-        "type": "TypeAlias ContextMenuCheckboxGroupEmits<T>",
-        "resolvedType": null,
-        "description": "Events for the MenuCheckboxGroup component.",
-        "descriptionKey": "api.generated.headless_src_components_menu_types.contextmenucheckboxgroupemits.emits",
-        "sourcePath": "headless/src/components/menu/types.ts",
-        "typeParameters": ["TypeParameter T"],
-        "members": [],
-        "callables": [],
-        "referencedTypes": []
-      },
-      "props": {
-        "kind": "props",
-        "name": "ContextMenuCheckboxGroupProps",
-        "type": "Interface ContextMenuCheckboxGroupProps<T>",
-        "resolvedType": null,
-        "description": "Properties for the MenuCheckboxGroup component.",
-        "descriptionKey": "api.generated.headless_src_components_menu_types.contextmenucheckboxgroupprops.props",
-        "sourcePath": "headless/src/components/menu/types.ts",
-        "typeParameters": ["TypeParameter T"],
-        "members": [],
-        "callables": [],
-        "referencedTypes": []
-      }
-    },
-    "ContextMenuCheckboxItem": {
-      "emits": {
-        "kind": "emits",
-        "name": "ContextMenuCheckboxItemEmits",
-        "type": "TypeAlias ContextMenuCheckboxItemEmits: ContextMenuItemEmits & { update:modelValue: [value: CheckedState] }",
-        "resolvedType": null,
-        "description": "Events for the MenuCheckboxItem component.",
-        "descriptionKey": "api.generated.headless_src_components_menu_types.contextmenucheckboxitememits.emits",
-        "sourcePath": "headless/src/components/menu/types.ts",
-        "typeParameters": [],
-        "members": [],
-        "callables": [],
-        "referencedTypes": []
-      },
-      "props": {
-        "kind": "props",
-        "name": "ContextMenuCheckboxItemProps",
-        "type": "Interface ContextMenuCheckboxItemProps",
-        "resolvedType": null,
-        "description": "Properties for the MenuCheckboxItem component.",
-        "descriptionKey": "api.generated.headless_src_components_menu_types.contextmenucheckboxitemprops.props",
-        "sourcePath": "headless/src/components/menu/types.ts",
-        "typeParameters": [],
-        "members": [],
-        "callables": [],
-        "referencedTypes": []
-      }
-    },
-    "ContextMenuGroup": {
-      "props": {
-        "kind": "props",
-        "name": "ContextMenuGroupProps",
-        "type": "Interface ContextMenuGroupProps",
-        "resolvedType": null,
-        "description": "Properties for the MenuGroup component.",
-        "descriptionKey": "api.generated.headless_src_components_menu_types.contextmenugroupprops.props",
-        "sourcePath": "headless/src/components/menu/types.ts",
-        "typeParameters": [],
-        "members": [],
-        "callables": [],
-        "referencedTypes": []
-      }
-    },
-    "ContextMenuGroupLabel": {
-      "props": {
-        "kind": "props",
-        "name": "ContextMenuGroupLabelProps",
-        "type": "Interface ContextMenuGroupLabelProps",
-        "resolvedType": null,
-        "description": "Properties for the MenuGroupLabel component.",
-        "descriptionKey": "api.generated.headless_src_components_menu_types.contextmenugrouplabelprops.props",
-        "sourcePath": "headless/src/components/menu/types.ts",
-        "typeParameters": [],
-        "members": [],
-        "callables": [],
-        "referencedTypes": []
-      }
-    },
-    "ContextMenuItem": {
-      "emits": {
-        "kind": "emits",
-        "name": "ContextMenuItemEmits",
-        "type": "TypeAlias ContextMenuItemEmits",
-        "resolvedType": null,
-        "description": "Events for the MenuItem component.",
-        "descriptionKey": "api.generated.headless_src_components_menu_types.contextmenuitememits.emits",
-        "sourcePath": "headless/src/components/menu/types.ts",
-        "typeParameters": [],
-        "members": [],
-        "callables": [],
-        "referencedTypes": []
-      },
-      "props": {
-        "kind": "props",
-        "name": "ContextMenuItemProps",
-        "type": "Interface ContextMenuItemProps",
-        "resolvedType": null,
-        "description": "Properties for the MenuItem component.",
-        "descriptionKey": "api.generated.headless_src_components_menu_types.contextmenuitemprops.props",
-        "sourcePath": "headless/src/components/menu/types.ts",
-        "typeParameters": [],
-        "members": [],
-        "callables": [],
-        "referencedTypes": []
-      }
-    },
-    "ContextMenuItemIndicator": {
-      "props": {
-        "kind": "props",
-        "name": "ContextMenuItemIndicatorProps",
-        "type": "Interface ContextMenuItemIndicatorProps",
-        "resolvedType": null,
-        "description": "Properties for the MenuItemIndicator component.",
-        "descriptionKey": "api.generated.headless_src_components_menu_types.contextmenuitemindicatorprops.props",
-        "sourcePath": "headless/src/components/menu/types.ts",
-        "typeParameters": [],
-        "members": [],
-        "callables": [],
-        "referencedTypes": []
-      }
-    },
     "ContextMenuPopup": {
       "props": {
         "kind": "props",
-        "name": "ContextMenuPopupProps",
-        "type": "Interface ContextMenuPopupProps",
+        "name": "MenuPopupProps",
+        "type": "Interface MenuPopupProps",
         "resolvedType": null,
         "description": "Properties for the MenuPopup component.",
-        "descriptionKey": "api.generated.headless_src_components_menu_types.contextmenupopupprops.props",
-        "sourcePath": "headless/src/components/menu/types.ts",
-        "typeParameters": [],
-        "members": [],
-        "callables": [],
-        "referencedTypes": []
-      }
-    },
-    "ContextMenuRadioGroup": {
-      "emits": {
-        "kind": "emits",
-        "name": "ContextMenuRadioGroupEmits",
-        "type": "TypeAlias ContextMenuRadioGroupEmits<T>",
-        "resolvedType": null,
-        "description": "Events for the MenuRadioGroup component.",
-        "descriptionKey": "api.generated.headless_src_components_menu_types.contextmenuradiogroupemits.emits",
-        "sourcePath": "headless/src/components/menu/types.ts",
-        "typeParameters": ["TypeParameter T"],
-        "members": [],
-        "callables": [],
-        "referencedTypes": []
-      },
-      "props": {
-        "kind": "props",
-        "name": "ContextMenuRadioGroupProps",
-        "type": "Interface ContextMenuRadioGroupProps<T>",
-        "resolvedType": null,
-        "description": "Properties for the MenuRadioGroup component.",
-        "descriptionKey": "api.generated.headless_src_components_menu_types.contextmenuradiogroupprops.props",
-        "sourcePath": "headless/src/components/menu/types.ts",
-        "typeParameters": ["TypeParameter T"],
-        "members": [],
-        "callables": [],
-        "referencedTypes": []
-      }
-    },
-    "ContextMenuRadioItem": {
-      "emits": {
-        "kind": "emits",
-        "name": "ContextMenuRadioItemEmits",
-        "type": "TypeAlias ContextMenuRadioItemEmits: ContextMenuItemEmits",
-        "resolvedType": null,
-        "description": "Events for the MenuRadioItem component.",
-        "descriptionKey": "api.generated.headless_src_components_menu_types.contextmenuradioitememits.emits",
-        "sourcePath": "headless/src/components/menu/types.ts",
-        "typeParameters": [],
-        "members": [],
-        "callables": [],
-        "referencedTypes": []
-      },
-      "props": {
-        "kind": "props",
-        "name": "ContextMenuRadioItemProps",
-        "type": "Interface ContextMenuRadioItemProps",
-        "resolvedType": null,
-        "description": "Properties for the MenuRadioItem component.",
-        "descriptionKey": "api.generated.headless_src_components_menu_types.contextmenuradioitemprops.props",
-        "sourcePath": "headless/src/components/menu/types.ts",
-        "typeParameters": [],
-        "members": [],
-        "callables": [],
-        "referencedTypes": []
-      }
-    },
-    "ContextMenuSub": {
-      "emits": {
-        "kind": "emits",
-        "name": "ContextMenuSubEmits",
-        "type": "TypeAlias ContextMenuSubEmits: MenuRootEmits",
-        "resolvedType": null,
-        "description": "Events for the MenuSub component.",
-        "descriptionKey": "api.generated.headless_src_components_menu_types.contextmenusubemits.emits",
-        "sourcePath": "headless/src/components/menu/types.ts",
-        "typeParameters": [],
-        "members": [],
-        "callables": [],
-        "referencedTypes": []
-      },
-      "props": {
-        "kind": "props",
-        "name": "ContextMenuSubProps",
-        "type": "Interface ContextMenuSubProps",
-        "resolvedType": null,
-        "description": "Properties for the MenuSub component.",
-        "descriptionKey": "api.generated.headless_src_components_menu_types.contextmenusubprops.props",
-        "sourcePath": "headless/src/components/menu/types.ts",
-        "typeParameters": [],
-        "members": [],
-        "callables": [],
-        "referencedTypes": []
-      }
-    },
-    "ContextMenuSubContent": {
-      "emits": {
-        "kind": "emits",
-        "name": "ContextMenuSubContentEmits",
-        "type": "TypeAlias ContextMenuSubContentEmits: MenuContentEmits",
-        "resolvedType": null,
-        "description": "Events for the MenuSubContent component.",
-        "descriptionKey": "api.generated.headless_src_components_menu_types.contextmenusubcontentemits.emits",
-        "sourcePath": "headless/src/components/menu/types.ts",
-        "typeParameters": [],
-        "members": [],
-        "callables": [],
-        "referencedTypes": []
-      },
-      "props": {
-        "kind": "props",
-        "name": "ContextMenuSubContentProps",
-        "type": "Interface ContextMenuSubContentProps",
-        "resolvedType": null,
-        "description": "Properties for the MenuSubContent component.",
-        "descriptionKey": "api.generated.headless_src_components_menu_types.contextmenusubcontentprops.props",
-        "sourcePath": "headless/src/components/menu/types.ts",
-        "typeParameters": [],
-        "members": [],
-        "callables": [],
-        "referencedTypes": []
-      }
-    },
-    "ContextMenuSubTrigger": {
-      "props": {
-        "kind": "props",
-        "name": "ContextMenuSubTriggerProps",
-        "type": "Interface ContextMenuSubTriggerProps",
-        "resolvedType": null,
-        "description": "Properties for the MenuSubTrigger component.",
-        "descriptionKey": "api.generated.headless_src_components_menu_types.contextmenusubtriggerprops.props",
+        "descriptionKey": "api.generated.headless_src_components_menu_types.menupopupprops.props",
         "sourcePath": "headless/src/components/menu/types.ts",
         "typeParameters": [],
         "members": [],
@@ -345,8 +89,8 @@
                 "type": "Component",
                 "resolvedType": null,
                 "description": "A type used in public APIs where a component type is expected.\nThe constructor type is an artificial type returned by defineComponent().",
-                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_33_node_modules_vue_runtime_core_dist_runtime_core_d.component",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_34_node_modules_vue_runtime_core_dist_runtime_core_d.component",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.34/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
                 "typeParameters": [
                   "PropsOrInstance = any",
                   "RawBindings = any",
@@ -501,8 +245,8 @@
                 "type": "Component",
                 "resolvedType": null,
                 "description": "A type used in public APIs where a component type is expected.\nThe constructor type is an artificial type returned by defineComponent().",
-                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_33_node_modules_vue_runtime_core_dist_runtime_core_d.component",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_34_node_modules_vue_runtime_core_dist_runtime_core_d.component",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.34/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
                 "typeParameters": [
                   "PropsOrInstance = any",
                   "RawBindings = any",
@@ -738,13 +482,24 @@
                 "name": "MenuItemIndicatorProps",
                 "kind": "interface",
                 "type": "MenuItemIndicatorProps",
-                "resolvedType": "{ asChild?: boolean; as?: AsTag | Component; forceMount?: boolean }",
+                "resolvedType": "{ forceMount?: boolean; asChild?: boolean; as?: AsTag | Component }",
                 "description": "Properties for the MenuItemIndicator component.",
                 "descriptionKey": "api.generated.headless_src_components_menu_types.menuitemindicatorprops",
                 "sourcePath": "headless/src/components/menu/types.ts",
                 "typeParameters": [],
                 "external": false,
                 "members": [
+                  {
+                    "name": "forceMount",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Used to force mounting when more control is needed.\n\nUseful when controlling animation with Vue animation libraries.",
+                    "descriptionKey": "api.generated.headless_src_components_menu_types.menuitemindicatorprops.members.forcemount",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/types/component.ts",
+                    "referencedTypes": []
+                  },
                   {
                     "name": "asChild",
                     "type": "boolean",
@@ -765,17 +520,6 @@
                     "default": "'div'",
                     "inheritedFrom": null,
                     "sourcePath": "headless/src/components/primitive/types.ts",
-                    "referencedTypes": []
-                  },
-                  {
-                    "name": "forceMount",
-                    "type": "boolean",
-                    "required": false,
-                    "description": "Used to force mounting when more control is needed.\n\nUseful when controlling animation with Vue animation libraries.",
-                    "descriptionKey": "api.generated.headless_src_components_menu_types.menuitemindicatorprops.members.forcemount",
-                    "default": null,
-                    "inheritedFrom": null,
-                    "sourcePath": "headless/src/types/component.ts",
                     "referencedTypes": []
                   }
                 ],
@@ -831,13 +575,13 @@
             "sourcePath": "headless/src/components/menu/types.ts",
             "referencedTypes": [
               {
-                "name": "SeparatorRootProps",
+                "name": "MenuSeparatorProps",
                 "kind": "interface",
                 "type": "MenuSeparatorProps",
                 "resolvedType": "{ orientation?: DataOrientation; decorative?: boolean }",
                 "description": "Properties for the SeparatorRoot component.",
-                "descriptionKey": "api.generated.headless_src_components_separator_types.separatorrootprops",
-                "sourcePath": "headless/src/components/separator/types.ts",
+                "descriptionKey": "api.generated.headless_src_components_menu_index.menuseparatorprops",
+                "sourcePath": "headless/src/components/menu/index.ts",
                 "typeParameters": [],
                 "external": false,
                 "members": [
@@ -846,7 +590,7 @@
                     "type": "DataOrientation",
                     "required": false,
                     "description": "Orientation of the component.\n\nEither `vertical` or `horizontal`. Defaults to `horizontal`.",
-                    "descriptionKey": "api.generated.headless_src_components_separator_types.separatorrootprops.members.orientation",
+                    "descriptionKey": "api.generated.headless_src_components_menu_index.menuseparatorprops.members.orientation",
                     "default": null,
                     "inheritedFrom": null,
                     "sourcePath": "headless/src/components/separator/types.ts",
@@ -857,7 +601,7 @@
                     "type": "boolean",
                     "required": false,
                     "description": "Whether or not the component is purely decorative. <br>When `true`, accessibility-related attributes are updated so\nthat that the rendered element is removed from the accessibility tree.",
-                    "descriptionKey": "api.generated.headless_src_components_separator_types.separatorrootprops.members.decorative",
+                    "descriptionKey": "api.generated.headless_src_components_menu_index.menuseparatorprops.members.decorative",
                     "default": null,
                     "inheritedFrom": null,
                     "sourcePath": "headless/src/components/separator/types.ts",
@@ -928,8 +672,8 @@
                 "type": "Component",
                 "resolvedType": null,
                 "description": "A type used in public APIs where a component type is expected.\nThe constructor type is an artificial type returned by defineComponent().",
-                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_33_node_modules_vue_runtime_core_dist_runtime_core_d.component",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_34_node_modules_vue_runtime_core_dist_runtime_core_d.component",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.34/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
                 "typeParameters": [
                   "PropsOrInstance = any",
                   "RawBindings = any",
@@ -952,7 +696,7 @@
       "emits": {
         "kind": "emits",
         "name": "MenuCheckboxOptionsCompactEmits",
-        "type": "TypeAlias MenuCheckboxOptionsCompactEmits<T>: ContextMenuCheckboxGroupEmits<T> & MenuCheckboxOptionsCompactSelectEmits<T>",
+        "type": "TypeAlias MenuCheckboxOptionsCompactEmits<T>: MenuCheckboxGroupEmits<T> & MenuCheckboxOptionsCompactSelectEmits<T>",
         "resolvedType": "{ \"update:modelValue\": [value: T[]]; select: [item: MenuCheckboxOptionData<T>, event: Event] }",
         "description": "Events for the MenuCheckboxOptionsCompact component.",
         "descriptionKey": "api.generated.headless_src_components_menu_types.menucheckboxoptionscompactemits.emits",
@@ -1848,8 +1592,8 @@
                 "type": "Component",
                 "resolvedType": null,
                 "description": "A type used in public APIs where a component type is expected.\nThe constructor type is an artificial type returned by defineComponent().",
-                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_33_node_modules_vue_runtime_core_dist_runtime_core_d.component",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_34_node_modules_vue_runtime_core_dist_runtime_core_d.component",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.34/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
                 "typeParameters": [
                   "PropsOrInstance = any",
                   "RawBindings = any",
@@ -1945,8 +1689,8 @@
                 "type": "Component",
                 "resolvedType": null,
                 "description": "A type used in public APIs where a component type is expected.\nThe constructor type is an artificial type returned by defineComponent().",
-                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_33_node_modules_vue_runtime_core_dist_runtime_core_d.component",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_34_node_modules_vue_runtime_core_dist_runtime_core_d.component",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.34/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
                 "typeParameters": [
                   "PropsOrInstance = any",
                   "RawBindings = any",
@@ -2010,12 +1754,23 @@
         "kind": "props",
         "name": "MenuItemIndicatorProps",
         "type": "Interface MenuItemIndicatorProps",
-        "resolvedType": "{ asChild?: boolean; as?: AsTag | Component; forceMount?: boolean }",
+        "resolvedType": "{ forceMount?: boolean; asChild?: boolean; as?: AsTag | Component }",
         "description": "Properties for the MenuItemIndicator component.",
         "descriptionKey": "api.generated.headless_src_components_menu_types.menuitemindicatorprops.props",
         "sourcePath": "headless/src/components/menu/types.ts",
         "typeParameters": [],
         "members": [
+          {
+            "name": "forceMount",
+            "type": "boolean",
+            "required": false,
+            "description": "Used to force mounting when more control is needed.\n\nUseful when controlling animation with Vue animation libraries.",
+            "descriptionKey": "api.generated.headless_src_components_menu_types.menuitemindicatorprops.members.forcemount",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/types/component.ts",
+            "referencedTypes": []
+          },
           {
             "name": "asChild",
             "type": "boolean",
@@ -2043,8 +1798,8 @@
                 "type": "Component",
                 "resolvedType": null,
                 "description": "A type used in public APIs where a component type is expected.\nThe constructor type is an artificial type returned by defineComponent().",
-                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_33_node_modules_vue_runtime_core_dist_runtime_core_d.component",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_34_node_modules_vue_runtime_core_dist_runtime_core_d.component",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.34/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
                 "typeParameters": [
                   "PropsOrInstance = any",
                   "RawBindings = any",
@@ -2059,17 +1814,6 @@
                 "callables": []
               }
             ]
-          },
-          {
-            "name": "forceMount",
-            "type": "boolean",
-            "required": false,
-            "description": "Used to force mounting when more control is needed.\n\nUseful when controlling animation with Vue animation libraries.",
-            "descriptionKey": "api.generated.headless_src_components_menu_types.menuitemindicatorprops.members.forcemount",
-            "default": null,
-            "inheritedFrom": null,
-            "sourcePath": "headless/src/types/component.ts",
-            "referencedTypes": []
           }
         ],
         "callables": [],
@@ -2774,13 +2518,13 @@
             "sourcePath": "headless/src/components/menu/types.ts",
             "referencedTypes": [
               {
-                "name": "PortalProps",
+                "name": "MenuPortalProps",
                 "kind": "interface",
                 "type": "MenuPortalProps",
                 "resolvedType": "{ to?: string | HTMLElement; disabled?: boolean; defer?: boolean; forceMount?: boolean }",
                 "description": "Properties for the Portal component.",
-                "descriptionKey": "api.generated.headless_src_components_portal_types.portalprops",
-                "sourcePath": "headless/src/components/portal/types.ts",
+                "descriptionKey": "api.generated.headless_src_components_menu_index.menuportalprops",
+                "sourcePath": "headless/src/components/menu/index.ts",
                 "typeParameters": [],
                 "external": false,
                 "members": [
@@ -2789,7 +2533,7 @@
                     "type": "string | HTMLElement",
                     "required": false,
                     "description": "Vue native teleport component prop `:to`\n\n{@link https://vuejs.org/guide/built-ins/teleport.html#basic-usage}",
-                    "descriptionKey": "api.generated.headless_src_components_portal_types.portalprops.members.to",
+                    "descriptionKey": "api.generated.headless_src_components_menu_index.menuportalprops.members.to",
                     "default": null,
                     "inheritedFrom": null,
                     "sourcePath": "headless/src/components/portal/types.ts",
@@ -2800,7 +2544,7 @@
                     "type": "boolean",
                     "required": false,
                     "description": "Disable teleport and render the component inline\n\n{@link https://vuejs.org/guide/built-ins/teleport.html#disabling-teleport}",
-                    "descriptionKey": "api.generated.headless_src_components_portal_types.portalprops.members.disabled",
+                    "descriptionKey": "api.generated.headless_src_components_menu_index.menuportalprops.members.disabled",
                     "default": null,
                     "inheritedFrom": null,
                     "sourcePath": "headless/src/components/portal/types.ts",
@@ -2811,7 +2555,7 @@
                     "type": "boolean",
                     "required": false,
                     "description": "Defer the resolving of a Teleport target until other parts of the application have mounted (requires Vue 3.5.0+)\n\n{@link https://vuejs.org/guide/built-ins/teleport.html#deferred-teleport}",
-                    "descriptionKey": "api.generated.headless_src_components_portal_types.portalprops.members.defer",
+                    "descriptionKey": "api.generated.headless_src_components_menu_index.menuportalprops.members.defer",
                     "default": null,
                     "inheritedFrom": null,
                     "sourcePath": "headless/src/components/portal/types.ts",
@@ -2822,7 +2566,7 @@
                     "type": "boolean",
                     "required": false,
                     "description": "Used to force mounting when more control is needed.\n\nUseful when controlling animation with Vue animation libraries.",
-                    "descriptionKey": "api.generated.headless_src_components_portal_types.portalprops.members.forcemount",
+                    "descriptionKey": "api.generated.headless_src_components_menu_index.menuportalprops.members.forcemount",
                     "default": null,
                     "inheritedFrom": null,
                     "sourcePath": "headless/src/types/component.ts",
@@ -2847,7 +2591,7 @@
                 "name": "MenuSubContentProps",
                 "kind": "interface",
                 "type": "MenuSubContentProps",
-                "resolvedType": "{ loop?: boolean; placement?: Placement; popupProps?: MenuPopupProps; sideOffset?: number; arrowPadding?: number; updatePositionStrategy?: 'always' | 'optimized'; sideFlip?: boolean; alignOffset?: number; alignFlip?: boolean; avoidCollisions?: boolean; collisionBoundary?: Element | (Element | null)[] | null; collisionPadding?: Padding; hideShiftedArrow?: boolean; sticky?: 'partial' | 'always'; hideWhenDetached?: boolean; positionStrategy?: 'fixed' | 'absolute'; disableUpdateOnLayoutShift?: boolean; prioritizePosition?: boolean; reference?: ReferenceElement; forceMount?: boolean }",
+                "resolvedType": "{ loop?: boolean; placement?: Placement; sideOffset?: number; arrowPadding?: number; updatePositionStrategy?: 'always' | 'optimized'; popupProps?: MenuPopupProps; sideFlip?: boolean; alignOffset?: number; alignFlip?: boolean; avoidCollisions?: boolean; collisionBoundary?: Element | (Element | null)[] | null; collisionPadding?: Padding; hideShiftedArrow?: boolean; sticky?: 'partial' | 'always'; hideWhenDetached?: boolean; positionStrategy?: 'fixed' | 'absolute'; disableUpdateOnLayoutShift?: boolean; prioritizePosition?: boolean; reference?: ReferenceElement; forceMount?: boolean }",
                 "description": "Properties for the MenuSubContent component.",
                 "descriptionKey": "api.generated.headless_src_components_menu_types.menusubcontentprops",
                 "sourcePath": "headless/src/components/menu/types.ts",
@@ -2874,17 +2618,6 @@
                     "default": "undefined",
                     "inheritedFrom": null,
                     "sourcePath": "headless/src/components/popper/types.ts",
-                    "referencedTypes": []
-                  },
-                  {
-                    "name": "popupProps",
-                    "type": "MenuPopupProps",
-                    "required": false,
-                    "description": "Properties forwarded to the popup element.",
-                    "descriptionKey": "api.generated.headless_src_components_menu_types.menusubcontentprops.members.popupprops",
-                    "default": null,
-                    "inheritedFrom": null,
-                    "sourcePath": "headless/src/components/menu/types.ts",
                     "referencedTypes": []
                   },
                   {
@@ -2918,6 +2651,17 @@
                     "default": "'optimized'",
                     "inheritedFrom": null,
                     "sourcePath": "headless/src/components/popper/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "popupProps",
+                    "type": "MenuPopupProps",
+                    "required": false,
+                    "description": "Properties forwarded to the popup element.",
+                    "descriptionKey": "api.generated.headless_src_components_menu_types.menusubcontentprops.members.popupprops",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/menu/types.ts",
                     "referencedTypes": []
                   },
                   {
@@ -3090,13 +2834,13 @@
             "sourcePath": "headless/src/components/menu/types.ts",
             "referencedTypes": [
               {
-                "name": "SeparatorRootProps",
+                "name": "MenuSeparatorProps",
                 "kind": "interface",
                 "type": "MenuSeparatorProps",
                 "resolvedType": "{ orientation?: DataOrientation; decorative?: boolean }",
                 "description": "Properties for the SeparatorRoot component.",
-                "descriptionKey": "api.generated.headless_src_components_separator_types.separatorrootprops",
-                "sourcePath": "headless/src/components/separator/types.ts",
+                "descriptionKey": "api.generated.headless_src_components_menu_index.menuseparatorprops",
+                "sourcePath": "headless/src/components/menu/index.ts",
                 "typeParameters": [],
                 "external": false,
                 "members": [
@@ -3105,7 +2849,7 @@
                     "type": "DataOrientation",
                     "required": false,
                     "description": "Orientation of the component.\n\nEither `vertical` or `horizontal`. Defaults to `horizontal`.",
-                    "descriptionKey": "api.generated.headless_src_components_separator_types.separatorrootprops.members.orientation",
+                    "descriptionKey": "api.generated.headless_src_components_menu_index.menuseparatorprops.members.orientation",
                     "default": null,
                     "inheritedFrom": null,
                     "sourcePath": "headless/src/components/separator/types.ts",
@@ -3116,7 +2860,7 @@
                     "type": "boolean",
                     "required": false,
                     "description": "Whether or not the component is purely decorative. <br>When `true`, accessibility-related attributes are updated so\nthat that the rendered element is removed from the accessibility tree.",
-                    "descriptionKey": "api.generated.headless_src_components_separator_types.separatorrootprops.members.decorative",
+                    "descriptionKey": "api.generated.headless_src_components_menu_index.menuseparatorprops.members.decorative",
                     "default": null,
                     "inheritedFrom": null,
                     "sourcePath": "headless/src/components/separator/types.ts",
@@ -3171,7 +2915,7 @@
       "emits": {
         "kind": "emits",
         "name": "MenuOptionCompactEmits",
-        "type": "TypeAlias MenuOptionCompactEmits<T>: ContextMenuSubEmits & ContextMenuSubContentEmits & MenuOptionCompactSelectEmits<T>",
+        "type": "TypeAlias MenuOptionCompactEmits<T>: MenuSubEmits & MenuSubContentEmits & MenuOptionCompactSelectEmits<T>",
         "resolvedType": "{ \"update:open\": [value: boolean]; escapeKeyDown: [event: KeyboardEvent]; pointerDownOutside: [event: PointerDownOutsideEvent]; focusOutside: [event: FocusOutsideEvent]; interactOutside: [event: PointerDownOutsideEvent | FocusOutsideEvent]; openAutoFocus: [event: Event]; closeAutoFocus: [event: Event]; entryFocus: [event: Event]; select: [item: MenuOptionData<T>, event: Event] }",
         "description": "Events for the MenuOptionCompact component.",
         "descriptionKey": "api.generated.headless_src_components_menu_types.menuoptioncompactemits.emits",
@@ -3603,7 +3347,7 @@
         "kind": "props",
         "name": "MenuOptionsCompactProps",
         "type": "Interface MenuOptionsCompactProps<T>",
-        "resolvedType": "{ items: MenuOptionData<T>[]; activeValue?: T; portalProps?: MenuPortalProps; itemProps?: MenuItemProps; linkProps?: LinkProps; groupProps?: MenuGroupProps; groupLabelProps?: MenuGroupLabelProps; subProps?: MenuSubProps; subTriggerProps?: MenuSubTriggerProps; subContentProps?: MenuSubContentProps; separatorProps?: MenuSeparatorProps; shortcutProps?: MenuShortcutProps }",
+        "resolvedType": "{ items: MenuOptionData<T>[]; activeValue?: T; itemProps?: MenuItemProps; linkProps?: LinkProps; groupProps?: MenuGroupProps; groupLabelProps?: MenuGroupLabelProps; subProps?: MenuSubProps; subTriggerProps?: MenuSubTriggerProps; portalProps?: MenuPortalProps; subContentProps?: MenuSubContentProps; separatorProps?: MenuSeparatorProps; shortcutProps?: MenuShortcutProps }",
         "description": "Properties for the MenuOptionsCompact component.",
         "descriptionKey": "api.generated.headless_src_components_menu_types.menuoptionscompactprops.props",
         "sourcePath": "headless/src/components/menu/types.ts",
@@ -3630,76 +3374,6 @@
             "inheritedFrom": null,
             "sourcePath": "headless/src/components/menu/types.ts",
             "referencedTypes": []
-          },
-          {
-            "name": "portalProps",
-            "type": "MenuPortalProps",
-            "required": false,
-            "description": "Properties forwarded to the portal element.",
-            "descriptionKey": "api.generated.headless_src_components_menu_types.menuoptionscompactprops.members.portalprops",
-            "default": null,
-            "inheritedFrom": "Omit.portalProps",
-            "sourcePath": "headless/src/components/menu/types.ts",
-            "referencedTypes": [
-              {
-                "name": "PortalProps",
-                "kind": "interface",
-                "type": "MenuPortalProps",
-                "resolvedType": "{ to?: string | HTMLElement; disabled?: boolean; defer?: boolean; forceMount?: boolean }",
-                "description": "Properties for the Portal component.",
-                "descriptionKey": "api.generated.headless_src_components_portal_types.portalprops",
-                "sourcePath": "headless/src/components/portal/types.ts",
-                "typeParameters": [],
-                "external": false,
-                "members": [
-                  {
-                    "name": "to",
-                    "type": "string | HTMLElement",
-                    "required": false,
-                    "description": "Vue native teleport component prop `:to`\n\n{@link https://vuejs.org/guide/built-ins/teleport.html#basic-usage}",
-                    "descriptionKey": "api.generated.headless_src_components_portal_types.portalprops.members.to",
-                    "default": null,
-                    "inheritedFrom": null,
-                    "sourcePath": "headless/src/components/portal/types.ts",
-                    "referencedTypes": []
-                  },
-                  {
-                    "name": "disabled",
-                    "type": "boolean",
-                    "required": false,
-                    "description": "Disable teleport and render the component inline\n\n{@link https://vuejs.org/guide/built-ins/teleport.html#disabling-teleport}",
-                    "descriptionKey": "api.generated.headless_src_components_portal_types.portalprops.members.disabled",
-                    "default": null,
-                    "inheritedFrom": null,
-                    "sourcePath": "headless/src/components/portal/types.ts",
-                    "referencedTypes": []
-                  },
-                  {
-                    "name": "defer",
-                    "type": "boolean",
-                    "required": false,
-                    "description": "Defer the resolving of a Teleport target until other parts of the application have mounted (requires Vue 3.5.0+)\n\n{@link https://vuejs.org/guide/built-ins/teleport.html#deferred-teleport}",
-                    "descriptionKey": "api.generated.headless_src_components_portal_types.portalprops.members.defer",
-                    "default": null,
-                    "inheritedFrom": null,
-                    "sourcePath": "headless/src/components/portal/types.ts",
-                    "referencedTypes": []
-                  },
-                  {
-                    "name": "forceMount",
-                    "type": "boolean",
-                    "required": false,
-                    "description": "Used to force mounting when more control is needed.\n\nUseful when controlling animation with Vue animation libraries.",
-                    "descriptionKey": "api.generated.headless_src_components_portal_types.portalprops.members.forcemount",
-                    "default": null,
-                    "inheritedFrom": null,
-                    "sourcePath": "headless/src/types/component.ts",
-                    "referencedTypes": []
-                  }
-                ],
-                "callables": []
-              }
-            ]
           },
           {
             "name": "itemProps",
@@ -4209,6 +3883,76 @@
             ]
           },
           {
+            "name": "portalProps",
+            "type": "MenuPortalProps",
+            "required": false,
+            "description": "Properties forwarded to the portal element.",
+            "descriptionKey": "api.generated.headless_src_components_menu_types.menuoptionscompactprops.members.portalprops",
+            "default": null,
+            "inheritedFrom": "Omit.portalProps",
+            "sourcePath": "headless/src/components/menu/types.ts",
+            "referencedTypes": [
+              {
+                "name": "MenuPortalProps",
+                "kind": "interface",
+                "type": "MenuPortalProps",
+                "resolvedType": "{ to?: string | HTMLElement; disabled?: boolean; defer?: boolean; forceMount?: boolean }",
+                "description": "Properties for the Portal component.",
+                "descriptionKey": "api.generated.headless_src_components_menu_index.menuportalprops",
+                "sourcePath": "headless/src/components/menu/index.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "to",
+                    "type": "string | HTMLElement",
+                    "required": false,
+                    "description": "Vue native teleport component prop `:to`\n\n{@link https://vuejs.org/guide/built-ins/teleport.html#basic-usage}",
+                    "descriptionKey": "api.generated.headless_src_components_menu_index.menuportalprops.members.to",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/portal/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "disabled",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Disable teleport and render the component inline\n\n{@link https://vuejs.org/guide/built-ins/teleport.html#disabling-teleport}",
+                    "descriptionKey": "api.generated.headless_src_components_menu_index.menuportalprops.members.disabled",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/portal/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "defer",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Defer the resolving of a Teleport target until other parts of the application have mounted (requires Vue 3.5.0+)\n\n{@link https://vuejs.org/guide/built-ins/teleport.html#deferred-teleport}",
+                    "descriptionKey": "api.generated.headless_src_components_menu_index.menuportalprops.members.defer",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/portal/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "forceMount",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Used to force mounting when more control is needed.\n\nUseful when controlling animation with Vue animation libraries.",
+                    "descriptionKey": "api.generated.headless_src_components_menu_index.menuportalprops.members.forcemount",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/types/component.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
             "name": "subContentProps",
             "type": "MenuSubContentProps",
             "required": false,
@@ -4222,7 +3966,7 @@
                 "name": "MenuSubContentProps",
                 "kind": "interface",
                 "type": "MenuSubContentProps",
-                "resolvedType": "{ loop?: boolean; placement?: Placement; popupProps?: MenuPopupProps; sideOffset?: number; arrowPadding?: number; updatePositionStrategy?: 'always' | 'optimized'; sideFlip?: boolean; alignOffset?: number; alignFlip?: boolean; avoidCollisions?: boolean; collisionBoundary?: Element | (Element | null)[] | null; collisionPadding?: Padding; hideShiftedArrow?: boolean; sticky?: 'partial' | 'always'; hideWhenDetached?: boolean; positionStrategy?: 'fixed' | 'absolute'; disableUpdateOnLayoutShift?: boolean; prioritizePosition?: boolean; reference?: ReferenceElement; forceMount?: boolean }",
+                "resolvedType": "{ loop?: boolean; placement?: Placement; sideOffset?: number; arrowPadding?: number; updatePositionStrategy?: 'always' | 'optimized'; popupProps?: MenuPopupProps; sideFlip?: boolean; alignOffset?: number; alignFlip?: boolean; avoidCollisions?: boolean; collisionBoundary?: Element | (Element | null)[] | null; collisionPadding?: Padding; hideShiftedArrow?: boolean; sticky?: 'partial' | 'always'; hideWhenDetached?: boolean; positionStrategy?: 'fixed' | 'absolute'; disableUpdateOnLayoutShift?: boolean; prioritizePosition?: boolean; reference?: ReferenceElement; forceMount?: boolean }",
                 "description": "Properties for the MenuSubContent component.",
                 "descriptionKey": "api.generated.headless_src_components_menu_types.menusubcontentprops",
                 "sourcePath": "headless/src/components/menu/types.ts",
@@ -4249,17 +3993,6 @@
                     "default": "undefined",
                     "inheritedFrom": null,
                     "sourcePath": "headless/src/components/popper/types.ts",
-                    "referencedTypes": []
-                  },
-                  {
-                    "name": "popupProps",
-                    "type": "MenuPopupProps",
-                    "required": false,
-                    "description": "Properties forwarded to the popup element.",
-                    "descriptionKey": "api.generated.headless_src_components_menu_types.menusubcontentprops.members.popupprops",
-                    "default": null,
-                    "inheritedFrom": null,
-                    "sourcePath": "headless/src/components/menu/types.ts",
                     "referencedTypes": []
                   },
                   {
@@ -4293,6 +4026,17 @@
                     "default": "'optimized'",
                     "inheritedFrom": null,
                     "sourcePath": "headless/src/components/popper/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "popupProps",
+                    "type": "MenuPopupProps",
+                    "required": false,
+                    "description": "Properties forwarded to the popup element.",
+                    "descriptionKey": "api.generated.headless_src_components_menu_types.menusubcontentprops.members.popupprops",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/menu/types.ts",
                     "referencedTypes": []
                   },
                   {
@@ -4465,13 +4209,13 @@
             "sourcePath": "headless/src/components/menu/types.ts",
             "referencedTypes": [
               {
-                "name": "SeparatorRootProps",
+                "name": "MenuSeparatorProps",
                 "kind": "interface",
                 "type": "MenuSeparatorProps",
                 "resolvedType": "{ orientation?: DataOrientation; decorative?: boolean }",
                 "description": "Properties for the SeparatorRoot component.",
-                "descriptionKey": "api.generated.headless_src_components_separator_types.separatorrootprops",
-                "sourcePath": "headless/src/components/separator/types.ts",
+                "descriptionKey": "api.generated.headless_src_components_menu_index.menuseparatorprops",
+                "sourcePath": "headless/src/components/menu/index.ts",
                 "typeParameters": [],
                 "external": false,
                 "members": [
@@ -4480,7 +4224,7 @@
                     "type": "DataOrientation",
                     "required": false,
                     "description": "Orientation of the component.\n\nEither `vertical` or `horizontal`. Defaults to `horizontal`.",
-                    "descriptionKey": "api.generated.headless_src_components_separator_types.separatorrootprops.members.orientation",
+                    "descriptionKey": "api.generated.headless_src_components_menu_index.menuseparatorprops.members.orientation",
                     "default": null,
                     "inheritedFrom": null,
                     "sourcePath": "headless/src/components/separator/types.ts",
@@ -4491,7 +4235,7 @@
                     "type": "boolean",
                     "required": false,
                     "description": "Whether or not the component is purely decorative. <br>When `true`, accessibility-related attributes are updated so\nthat that the rendered element is removed from the accessibility tree.",
-                    "descriptionKey": "api.generated.headless_src_components_separator_types.separatorrootprops.members.decorative",
+                    "descriptionKey": "api.generated.headless_src_components_menu_index.menuseparatorprops.members.decorative",
                     "default": null,
                     "inheritedFrom": null,
                     "sourcePath": "headless/src/components/separator/types.ts",
@@ -4992,8 +4736,8 @@
                 "type": "Component",
                 "resolvedType": null,
                 "description": "A type used in public APIs where a component type is expected.\nThe constructor type is an artificial type returned by defineComponent().",
-                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_33_node_modules_vue_runtime_core_dist_runtime_core_d.component",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_34_node_modules_vue_runtime_core_dist_runtime_core_d.component",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.34/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
                 "typeParameters": [
                   "PropsOrInstance = any",
                   "RawBindings = any",
@@ -5017,7 +4761,7 @@
         "kind": "emits",
         "name": "MenuRadioGroupEmits",
         "type": "TypeAlias MenuRadioGroupEmits<T>",
-        "resolvedType": "{ \"update:modelValue\": [payload: NonNullable<T>] }",
+        "resolvedType": "{ \"update:modelValue\": [payload: Exclude<T, undefined>] }",
         "description": "Events for the MenuRadioGroup component.",
         "descriptionKey": "api.generated.headless_src_components_menu_types.menuradiogroupemits.emits",
         "sourcePath": "headless/src/components/menu/types.ts",
@@ -5026,8 +4770,8 @@
         "callables": [
           {
             "name": "update:modelValue",
-            "type": "[payload: NonNullable<T>]",
-            "parameters": "payload: NonNullable<T>",
+            "type": "[payload: Exclude<T, undefined>]",
+            "parameters": "payload: Exclude<T, undefined>",
             "required": true,
             "description": "Event handler called when the radio group value changes",
             "descriptionKey": "api.generated.headless_src_components_menu_types.menuradiogroupemits.callables.update_modelvalue",
@@ -5123,8 +4867,8 @@
                 "type": "Component",
                 "resolvedType": null,
                 "description": "A type used in public APIs where a component type is expected.\nThe constructor type is an artificial type returned by defineComponent().",
-                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_33_node_modules_vue_runtime_core_dist_runtime_core_d.component",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_34_node_modules_vue_runtime_core_dist_runtime_core_d.component",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.34/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
                 "typeParameters": [
                   "PropsOrInstance = any",
                   "RawBindings = any",
@@ -5350,13 +5094,24 @@
                 "name": "MenuItemIndicatorProps",
                 "kind": "interface",
                 "type": "MenuItemIndicatorProps",
-                "resolvedType": "{ asChild?: boolean; as?: AsTag | Component; forceMount?: boolean }",
+                "resolvedType": "{ forceMount?: boolean; asChild?: boolean; as?: AsTag | Component }",
                 "description": "Properties for the MenuItemIndicator component.",
                 "descriptionKey": "api.generated.headless_src_components_menu_types.menuitemindicatorprops",
                 "sourcePath": "headless/src/components/menu/types.ts",
                 "typeParameters": [],
                 "external": false,
                 "members": [
+                  {
+                    "name": "forceMount",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Used to force mounting when more control is needed.\n\nUseful when controlling animation with Vue animation libraries.",
+                    "descriptionKey": "api.generated.headless_src_components_menu_types.menuitemindicatorprops.members.forcemount",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/types/component.ts",
+                    "referencedTypes": []
+                  },
                   {
                     "name": "asChild",
                     "type": "boolean",
@@ -5377,17 +5132,6 @@
                     "default": "'div'",
                     "inheritedFrom": null,
                     "sourcePath": "headless/src/components/primitive/types.ts",
-                    "referencedTypes": []
-                  },
-                  {
-                    "name": "forceMount",
-                    "type": "boolean",
-                    "required": false,
-                    "description": "Used to force mounting when more control is needed.\n\nUseful when controlling animation with Vue animation libraries.",
-                    "descriptionKey": "api.generated.headless_src_components_menu_types.menuitemindicatorprops.members.forcemount",
-                    "default": null,
-                    "inheritedFrom": null,
-                    "sourcePath": "headless/src/types/component.ts",
                     "referencedTypes": []
                   }
                 ],
@@ -5443,13 +5187,13 @@
             "sourcePath": "headless/src/components/menu/types.ts",
             "referencedTypes": [
               {
-                "name": "SeparatorRootProps",
+                "name": "MenuSeparatorProps",
                 "kind": "interface",
                 "type": "MenuSeparatorProps",
                 "resolvedType": "{ orientation?: DataOrientation; decorative?: boolean }",
                 "description": "Properties for the SeparatorRoot component.",
-                "descriptionKey": "api.generated.headless_src_components_separator_types.separatorrootprops",
-                "sourcePath": "headless/src/components/separator/types.ts",
+                "descriptionKey": "api.generated.headless_src_components_menu_index.menuseparatorprops",
+                "sourcePath": "headless/src/components/menu/index.ts",
                 "typeParameters": [],
                 "external": false,
                 "members": [
@@ -5458,7 +5202,7 @@
                     "type": "DataOrientation",
                     "required": false,
                     "description": "Orientation of the component.\n\nEither `vertical` or `horizontal`. Defaults to `horizontal`.",
-                    "descriptionKey": "api.generated.headless_src_components_separator_types.separatorrootprops.members.orientation",
+                    "descriptionKey": "api.generated.headless_src_components_menu_index.menuseparatorprops.members.orientation",
                     "default": null,
                     "inheritedFrom": null,
                     "sourcePath": "headless/src/components/separator/types.ts",
@@ -5469,7 +5213,7 @@
                     "type": "boolean",
                     "required": false,
                     "description": "Whether or not the component is purely decorative. <br>When `true`, accessibility-related attributes are updated so\nthat that the rendered element is removed from the accessibility tree.",
-                    "descriptionKey": "api.generated.headless_src_components_separator_types.separatorrootprops.members.decorative",
+                    "descriptionKey": "api.generated.headless_src_components_menu_index.menuseparatorprops.members.decorative",
                     "default": null,
                     "inheritedFrom": null,
                     "sourcePath": "headless/src/components/separator/types.ts",
@@ -5540,8 +5284,8 @@
                 "type": "Component",
                 "resolvedType": null,
                 "description": "A type used in public APIs where a component type is expected.\nThe constructor type is an artificial type returned by defineComponent().",
-                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_33_node_modules_vue_runtime_core_dist_runtime_core_d.component",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_34_node_modules_vue_runtime_core_dist_runtime_core_d.component",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.34/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
                 "typeParameters": [
                   "PropsOrInstance = any",
                   "RawBindings = any",
@@ -5564,8 +5308,8 @@
       "emits": {
         "kind": "emits",
         "name": "MenuRadioOptionsCompactEmits",
-        "type": "TypeAlias MenuRadioOptionsCompactEmits<T>: ContextMenuRadioGroupEmits<T> & MenuRadioOptionsCompactSelectEmits<T>",
-        "resolvedType": "{ \"update:modelValue\": [payload: NonNullable<T>]; select: [item: MenuRadioOptionData<T>, event: Event] }",
+        "type": "TypeAlias MenuRadioOptionsCompactEmits<T>: MenuRadioGroupEmits<T> & MenuRadioOptionsCompactSelectEmits<T>",
+        "resolvedType": "{ \"update:modelValue\": [payload: Exclude<T, undefined>]; select: [item: MenuRadioOptionData<T>, event: Event] }",
         "description": "Events for the MenuRadioOptionsCompact component.",
         "descriptionKey": "api.generated.headless_src_components_menu_types.menuradiooptionscompactemits.emits",
         "sourcePath": "headless/src/components/menu/types.ts",
@@ -5574,8 +5318,8 @@
         "callables": [
           {
             "name": "update:modelValue",
-            "type": "[payload: NonNullable<T>]",
-            "parameters": "payload: NonNullable<T>",
+            "type": "[payload: Exclude<T, undefined>]",
+            "parameters": "payload: Exclude<T, undefined>",
             "required": true,
             "description": "Event handler called when the radio group value changes",
             "descriptionKey": "api.generated.headless_src_components_menu_types.menuradiooptionscompactemits.callables.update_modelvalue",
@@ -6029,7 +5773,7 @@
         "kind": "props",
         "name": "MenuSubContentProps",
         "type": "Interface MenuSubContentProps",
-        "resolvedType": "{ loop?: boolean; placement?: Placement; popupProps?: MenuPopupProps; sideOffset?: number; arrowPadding?: number; updatePositionStrategy?: 'always' | 'optimized'; sideFlip?: boolean; alignOffset?: number; alignFlip?: boolean; avoidCollisions?: boolean; collisionBoundary?: Element | (Element | null)[] | null; collisionPadding?: Padding; hideShiftedArrow?: boolean; sticky?: 'partial' | 'always'; hideWhenDetached?: boolean; positionStrategy?: 'fixed' | 'absolute'; disableUpdateOnLayoutShift?: boolean; prioritizePosition?: boolean; reference?: ReferenceElement; forceMount?: boolean }",
+        "resolvedType": "{ loop?: boolean; placement?: Placement; sideOffset?: number; arrowPadding?: number; updatePositionStrategy?: 'always' | 'optimized'; popupProps?: MenuPopupProps; sideFlip?: boolean; alignOffset?: number; alignFlip?: boolean; avoidCollisions?: boolean; collisionBoundary?: Element | (Element | null)[] | null; collisionPadding?: Padding; hideShiftedArrow?: boolean; sticky?: 'partial' | 'always'; hideWhenDetached?: boolean; positionStrategy?: 'fixed' | 'absolute'; disableUpdateOnLayoutShift?: boolean; prioritizePosition?: boolean; reference?: ReferenceElement; forceMount?: boolean }",
         "description": "Properties for the MenuSubContent component.",
         "descriptionKey": "api.generated.headless_src_components_menu_types.menusubcontentprops.props",
         "sourcePath": "headless/src/components/menu/types.ts",
@@ -6072,31 +5816,6 @@
             ]
           },
           {
-            "name": "popupProps",
-            "type": "MenuPopupProps",
-            "required": false,
-            "description": "Properties forwarded to the popup element.",
-            "descriptionKey": "api.generated.headless_src_components_menu_types.menusubcontentprops.members.popupprops",
-            "default": null,
-            "inheritedFrom": null,
-            "sourcePath": "headless/src/components/menu/types.ts",
-            "referencedTypes": [
-              {
-                "name": "MenuPopupProps",
-                "kind": "interface",
-                "type": "MenuPopupProps",
-                "resolvedType": null,
-                "description": "Properties for the MenuPopup component.",
-                "descriptionKey": "api.generated.headless_src_components_menu_types.menupopupprops",
-                "sourcePath": "headless/src/components/menu/types.ts",
-                "typeParameters": [],
-                "external": false,
-                "members": [],
-                "callables": []
-              }
-            ]
-          },
-          {
             "name": "sideOffset",
             "type": "number",
             "required": false,
@@ -6128,6 +5847,31 @@
             "inheritedFrom": null,
             "sourcePath": "headless/src/components/popper/types.ts",
             "referencedTypes": []
+          },
+          {
+            "name": "popupProps",
+            "type": "MenuPopupProps",
+            "required": false,
+            "description": "Properties forwarded to the popup element.",
+            "descriptionKey": "api.generated.headless_src_components_menu_types.menusubcontentprops.members.popupprops",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/menu/types.ts",
+            "referencedTypes": [
+              {
+                "name": "MenuPopupProps",
+                "kind": "interface",
+                "type": "MenuPopupProps",
+                "resolvedType": null,
+                "description": "Properties for the MenuPopup component.",
+                "descriptionKey": "api.generated.headless_src_components_menu_types.menupopupprops",
+                "sourcePath": "headless/src/components/menu/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
           },
           {
             "name": "sideFlip",
@@ -6670,8 +6414,8 @@
                 "type": "Component",
                 "resolvedType": null,
                 "description": "A type used in public APIs where a component type is expected.\nThe constructor type is an artificial type returned by defineComponent().",
-                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_33_node_modules_vue_runtime_core_dist_runtime_core_d.component",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_34_node_modules_vue_runtime_core_dist_runtime_core_d.component",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.34/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
                 "typeParameters": [
                   "PropsOrInstance = any",
                   "RawBindings = any",
@@ -6697,21 +6441,46 @@
         "kind": "props",
         "name": "MenuTriggerProps",
         "type": "Interface MenuTriggerProps",
-        "resolvedType": "{ disabled?: boolean; asChild?: boolean; as?: AsTag | Component }",
+        "resolvedType": "{ type?: ButtonType; disabled?: boolean; asChild?: boolean; as?: AsTag | Component }",
         "description": "Properties for the MenuTrigger component.",
         "descriptionKey": "api.generated.headless_src_components_menu_types.menutriggerprops.props",
         "sourcePath": "headless/src/components/menu/types.ts",
         "typeParameters": [],
         "members": [
           {
+            "name": "type",
+            "type": "ButtonType",
+            "required": false,
+            "description": "The type of the button element. Can be one of 'button', 'submit', or 'reset'.",
+            "descriptionKey": "api.generated.headless_src_components_menu_types.menutriggerprops.members.type",
+            "default": "'button'",
+            "inheritedFrom": "ButtonProps.type",
+            "sourcePath": "headless/src/components/button/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ButtonType",
+                "kind": "typeAlias",
+                "type": "'button' | 'submit' | 'reset'",
+                "resolvedType": "'button' | 'submit' | 'reset'",
+                "description": "Supported button values.",
+                "descriptionKey": "api.generated.headless_src_components_button_types.buttontype",
+                "sourcePath": "headless/src/components/button/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
             "name": "disabled",
             "type": "boolean",
             "required": false,
-            "description": "When `true`, the menu would not open when triggered.",
+            "description": "Whether the component is disabled.",
             "descriptionKey": "api.generated.headless_src_components_menu_types.menutriggerprops.members.disabled",
             "default": null,
-            "inheritedFrom": null,
-            "sourcePath": "headless/src/components/menu/types.ts",
+            "inheritedFrom": "ButtonProps.disabled",
+            "sourcePath": "headless/src/components/button/types.ts",
             "referencedTypes": []
           },
           {
@@ -6721,7 +6490,7 @@
             "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
             "descriptionKey": "api.generated.headless_src_components_menu_types.menutriggerprops.members.aschild",
             "default": null,
-            "inheritedFrom": "PrimitiveProps.asChild",
+            "inheritedFrom": "ButtonProps.asChild",
             "sourcePath": "headless/src/components/primitive/types.ts",
             "referencedTypes": []
           },
@@ -6732,7 +6501,7 @@
             "description": "The element or component this component should render as. Can be overwrite by `asChild`",
             "descriptionKey": "api.generated.headless_src_components_menu_types.menutriggerprops.members.as",
             "default": "'div'",
-            "inheritedFrom": "PrimitiveProps.as",
+            "inheritedFrom": "ButtonProps.as",
             "sourcePath": "headless/src/components/primitive/types.ts",
             "referencedTypes": [
               {
@@ -6741,8 +6510,8 @@
                 "type": "Component",
                 "resolvedType": null,
                 "description": "A type used in public APIs where a component type is expected.\nThe constructor type is an artificial type returned by defineComponent().",
-                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_33_node_modules_vue_runtime_core_dist_runtime_core_d.component",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_34_node_modules_vue_runtime_core_dist_runtime_core_d.component",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.34/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
                 "typeParameters": [
                   "PropsOrInstance = any",
                   "RawBindings = any",

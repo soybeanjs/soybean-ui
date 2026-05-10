@@ -5,12 +5,12 @@
       "props": {
         "kind": "props",
         "name": "TagsInputProps",
-        "type": "Interface TagsInputProps<T>",
-        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<TagsInputUi>; id?: string; modelValue?: T[]; defaultValue?: T[]; addOnPaste?: boolean; addOnTab?: boolean; addOnBlur?: boolean; duplicate?: boolean; disabled?: boolean; delimiter?: string | RegExp; dir?: Direction; max?: number; convertValue?: ((value: string) => T); displayValue?: ((value: T) => string); name?: string; required?: boolean }",
+        "type": "Interface TagsInputProps",
+        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<TagsInputUi>; clearable?: boolean; controlProps?: TagsInputControlProps; clearProps?: TagsInputClearProps; itemProps?: TagsInputItemProps; itemTextProps?: TagsInputItemTextProps; itemDeleteProps?: TagsInputItemDeleteProps; dir?: Direction; modelValue?: string[]; defaultValue?: string[]; addOnPaste?: boolean; addOnTab?: boolean; addOnBlur?: boolean; duplicate?: boolean; delimiter?: string | RegExp; max?: number; displayValue?: ((value: string) => string); id?: string; autofocus?: boolean; disabled?: boolean; maxlength?: number; minlength?: number; pattern?: string; placeholder?: string; readonly?: boolean; name?: string; required?: boolean }",
         "description": "Properties for the TagsInput component.",
         "descriptionKey": "api.generated.src_components_tags_input_types.tagsinputprops.props",
         "sourcePath": "src/components/tags-input/types.ts",
-        "typeParameters": ["TypeParameter T"],
+        "typeParameters": [],
         "members": [
           {
             "name": "class",
@@ -75,7 +75,7 @@
               {
                 "name": "TagsInputUi",
                 "kind": "typeAlias",
-                "type": "{ root: ClassValue; item: ClassValue; input: ClassValue; clear: ClassValue; itemText: ClassValue; itemDelete: ClassValue; }",
+                "type": "{ root: ClassValue; item: ClassValue; clear: ClassValue; control: ClassValue; itemText: ClassValue; itemDelete: ClassValue; }",
                 "resolvedType": null,
                 "description": "UI class overrides for the TagsInput component.",
                 "descriptionKey": "api.generated.headless_src_components_tags_input_types.tagsinputui",
@@ -88,19 +88,327 @@
             ]
           },
           {
-            "name": "id",
-            "type": "string",
+            "name": "clearable",
+            "type": "boolean",
             "required": false,
-            "description": "Id of the input element.",
-            "descriptionKey": "api.generated.src_components_tags_input_types.tagsinputprops.members.id",
+            "description": "Whether to render the clear trigger.",
+            "descriptionKey": "api.generated.src_components_tags_input_types.tagsinputprops.members.clearable",
             "default": null,
-            "inheritedFrom": "id",
+            "inheritedFrom": "clearable",
             "sourcePath": "headless/src/components/tags-input/types.ts",
             "referencedTypes": []
           },
           {
+            "name": "controlProps",
+            "type": "TagsInputControlProps",
+            "required": false,
+            "description": "Props forwarded to the input element.",
+            "descriptionKey": "api.generated.src_components_tags_input_types.tagsinputprops.members.controlprops",
+            "default": null,
+            "inheritedFrom": "controlProps",
+            "sourcePath": "headless/src/components/tags-input/types.ts",
+            "referencedTypes": [
+              {
+                "name": "TagsInputControlProps",
+                "kind": "interface",
+                "type": "TagsInputControlProps",
+                "resolvedType": null,
+                "description": "Properties for the TagsInputControl component.",
+                "descriptionKey": "api.generated.headless_src_components_tags_input_types.tagsinputcontrolprops",
+                "sourcePath": "headless/src/components/tags-input/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "clearProps",
+            "type": "TagsInputClearProps",
+            "required": false,
+            "description": "Props forwarded to the clear element.",
+            "descriptionKey": "api.generated.src_components_tags_input_types.tagsinputprops.members.clearprops",
+            "default": null,
+            "inheritedFrom": "clearProps",
+            "sourcePath": "headless/src/components/tags-input/types.ts",
+            "referencedTypes": [
+              {
+                "name": "TagsInputClearProps",
+                "kind": "interface",
+                "type": "TagsInputClearProps",
+                "resolvedType": "{ type?: ButtonType; disabled?: boolean; asChild?: boolean; as?: AsTag | Component }",
+                "description": "Properties for the TagsInputClear component.",
+                "descriptionKey": "api.generated.headless_src_components_tags_input_types.tagsinputclearprops",
+                "sourcePath": "headless/src/components/tags-input/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "type",
+                    "type": "ButtonType",
+                    "required": false,
+                    "description": "The type of the button element. Can be one of 'button', 'submit', or 'reset'.",
+                    "descriptionKey": "api.generated.headless_src_components_tags_input_types.tagsinputclearprops.members.type",
+                    "default": "'button'",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/button/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "disabled",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Whether the component is disabled.",
+                    "descriptionKey": "api.generated.headless_src_components_tags_input_types.tagsinputclearprops.members.disabled",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/button/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "asChild",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+                    "descriptionKey": "api.generated.headless_src_components_tags_input_types.tagsinputclearprops.members.aschild",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "as",
+                    "type": "AsTag | Component",
+                    "required": false,
+                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+                    "descriptionKey": "api.generated.headless_src_components_tags_input_types.tagsinputclearprops.members.as",
+                    "default": "'div'",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "itemProps",
+            "type": "TagsInputItemProps",
+            "required": false,
+            "description": "Props forwarded to the item element.",
+            "descriptionKey": "api.generated.src_components_tags_input_types.tagsinputprops.members.itemprops",
+            "default": null,
+            "inheritedFrom": "itemProps",
+            "sourcePath": "headless/src/components/tags-input/types.ts",
+            "referencedTypes": [
+              {
+                "name": "TagsInputItemProps",
+                "kind": "interface",
+                "type": "TagsInputItemProps",
+                "resolvedType": "{ value: string; disabled?: boolean; asChild?: boolean; as?: AsTag | Component }",
+                "description": "Properties for the TagsInputItem component.",
+                "descriptionKey": "api.generated.headless_src_components_tags_input_types.tagsinputitemprops",
+                "sourcePath": "headless/src/components/tags-input/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "value",
+                    "type": "string",
+                    "required": true,
+                    "description": "Value associated with the tag.",
+                    "descriptionKey": "api.generated.headless_src_components_tags_input_types.tagsinputitemprops.members.value",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/tags-input/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "disabled",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Whether to disable the tag item.",
+                    "descriptionKey": "api.generated.headless_src_components_tags_input_types.tagsinputitemprops.members.disabled",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/tags-input/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "asChild",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+                    "descriptionKey": "api.generated.headless_src_components_tags_input_types.tagsinputitemprops.members.aschild",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "as",
+                    "type": "AsTag | Component",
+                    "required": false,
+                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+                    "descriptionKey": "api.generated.headless_src_components_tags_input_types.tagsinputitemprops.members.as",
+                    "default": "'div'",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "itemTextProps",
+            "type": "TagsInputItemTextProps",
+            "required": false,
+            "description": "Props forwarded to the item text element.",
+            "descriptionKey": "api.generated.src_components_tags_input_types.tagsinputprops.members.itemtextprops",
+            "default": null,
+            "inheritedFrom": "itemTextProps",
+            "sourcePath": "headless/src/components/tags-input/types.ts",
+            "referencedTypes": [
+              {
+                "name": "TagsInputItemTextProps",
+                "kind": "interface",
+                "type": "TagsInputItemTextProps",
+                "resolvedType": "{ asChild?: boolean; as?: AsTag | Component }",
+                "description": "Properties for the TagsInputItemText component.",
+                "descriptionKey": "api.generated.headless_src_components_tags_input_types.tagsinputitemtextprops",
+                "sourcePath": "headless/src/components/tags-input/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "asChild",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+                    "descriptionKey": "api.generated.headless_src_components_tags_input_types.tagsinputitemtextprops.members.aschild",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "as",
+                    "type": "AsTag | Component",
+                    "required": false,
+                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+                    "descriptionKey": "api.generated.headless_src_components_tags_input_types.tagsinputitemtextprops.members.as",
+                    "default": "'div'",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "itemDeleteProps",
+            "type": "TagsInputItemDeleteProps",
+            "required": false,
+            "description": "Props forwarded to the item delete element.",
+            "descriptionKey": "api.generated.src_components_tags_input_types.tagsinputprops.members.itemdeleteprops",
+            "default": null,
+            "inheritedFrom": "itemDeleteProps",
+            "sourcePath": "headless/src/components/tags-input/types.ts",
+            "referencedTypes": [
+              {
+                "name": "TagsInputItemDeleteProps",
+                "kind": "interface",
+                "type": "TagsInputItemDeleteProps",
+                "resolvedType": "{ type?: ButtonType; disabled?: boolean; asChild?: boolean; as?: AsTag | Component }",
+                "description": "Properties for the TagsInputItemDelete component.",
+                "descriptionKey": "api.generated.headless_src_components_tags_input_types.tagsinputitemdeleteprops",
+                "sourcePath": "headless/src/components/tags-input/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "type",
+                    "type": "ButtonType",
+                    "required": false,
+                    "description": "The type of the button element. Can be one of 'button', 'submit', or 'reset'.",
+                    "descriptionKey": "api.generated.headless_src_components_tags_input_types.tagsinputitemdeleteprops.members.type",
+                    "default": "'button'",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/button/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "disabled",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Whether the component is disabled.",
+                    "descriptionKey": "api.generated.headless_src_components_tags_input_types.tagsinputitemdeleteprops.members.disabled",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/button/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "asChild",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+                    "descriptionKey": "api.generated.headless_src_components_tags_input_types.tagsinputitemdeleteprops.members.aschild",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "as",
+                    "type": "AsTag | Component",
+                    "required": false,
+                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+                    "descriptionKey": "api.generated.headless_src_components_tags_input_types.tagsinputitemdeleteprops.members.as",
+                    "default": "'div'",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "dir",
+            "type": "Direction",
+            "required": false,
+            "description": "The reading direction of the tags input.",
+            "descriptionKey": "api.generated.src_components_tags_input_types.tagsinputprops.members.dir",
+            "default": null,
+            "inheritedFrom": "dir",
+            "sourcePath": "headless/src/components/tags-input/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Direction",
+                "kind": "typeAlias",
+                "type": "'ltr' | 'rtl'",
+                "resolvedType": "'ltr' | 'rtl'",
+                "description": "",
+                "descriptionKey": "api.generated.headless_src_types_common.direction",
+                "sourcePath": "headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
             "name": "modelValue",
-            "type": "T[]",
+            "type": "string[]",
             "required": false,
             "description": "The controlled value of the tags input.",
             "descriptionKey": "api.generated.src_components_tags_input_types.tagsinputprops.members.modelvalue",
@@ -111,7 +419,7 @@
           },
           {
             "name": "defaultValue",
-            "type": "T[]",
+            "type": "string[]",
             "required": false,
             "description": "The uncontrolled default value of the tags input.",
             "descriptionKey": "api.generated.src_components_tags_input_types.tagsinputprops.members.defaultvalue",
@@ -165,17 +473,6 @@
             "referencedTypes": []
           },
           {
-            "name": "disabled",
-            "type": "boolean",
-            "required": false,
-            "description": "Whether to disable the tags input.",
-            "descriptionKey": "api.generated.src_components_tags_input_types.tagsinputprops.members.disabled",
-            "default": null,
-            "inheritedFrom": "disabled",
-            "sourcePath": "headless/src/components/tags-input/types.ts",
-            "referencedTypes": []
-          },
-          {
             "name": "delimiter",
             "type": "string | RegExp",
             "required": false,
@@ -185,31 +482,6 @@
             "inheritedFrom": "delimiter",
             "sourcePath": "headless/src/components/tags-input/types.ts",
             "referencedTypes": []
-          },
-          {
-            "name": "dir",
-            "type": "Direction",
-            "required": false,
-            "description": "The reading direction of the tags input.",
-            "descriptionKey": "api.generated.src_components_tags_input_types.tagsinputprops.members.dir",
-            "default": null,
-            "inheritedFrom": "dir",
-            "sourcePath": "headless/src/components/tags-input/types.ts",
-            "referencedTypes": [
-              {
-                "name": "Direction",
-                "kind": "typeAlias",
-                "type": "'ltr' | 'rtl'",
-                "resolvedType": "'ltr' | 'rtl'",
-                "description": "",
-                "descriptionKey": "api.generated.headless_src_types_common.direction",
-                "sourcePath": "headless/src/types/common.ts",
-                "typeParameters": [],
-                "external": false,
-                "members": [],
-                "callables": []
-              }
-            ]
           },
           {
             "name": "max",
@@ -223,25 +495,102 @@
             "referencedTypes": []
           },
           {
-            "name": "convertValue",
-            "type": "((value: string) => T)",
+            "name": "displayValue",
+            "type": "((value: string) => string)",
             "required": false,
-            "description": "Convert the raw input string into the tag value.",
-            "descriptionKey": "api.generated.src_components_tags_input_types.tagsinputprops.members.convertvalue",
-            "default": null,
-            "inheritedFrom": "convertValue",
+            "description": "Display the value of the tag. Useful when you want to apply modifications to the value like adding a suffix",
+            "descriptionKey": "api.generated.src_components_tags_input_types.tagsinputprops.members.displayvalue",
+            "default": "\"(value: string) => value\"",
+            "inheritedFrom": "displayValue",
             "sourcePath": "headless/src/components/tags-input/types.ts",
             "referencedTypes": []
           },
           {
-            "name": "displayValue",
-            "type": "((value: T) => string)",
+            "name": "id",
+            "type": "string",
             "required": false,
-            "description": "Display the tag value.",
-            "descriptionKey": "api.generated.src_components_tags_input_types.tagsinputprops.members.displayvalue",
+            "description": "Id of the input element",
+            "descriptionKey": "api.generated.src_components_tags_input_types.tagsinputprops.members.id",
             "default": null,
-            "inheritedFrom": "displayValue",
-            "sourcePath": "headless/src/components/tags-input/types.ts",
+            "inheritedFrom": "id",
+            "sourcePath": "headless/src/components/input/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "autofocus",
+            "type": "boolean",
+            "required": false,
+            "description": "When `true`, the input is auto-focused.",
+            "descriptionKey": "api.generated.src_components_tags_input_types.tagsinputprops.members.autofocus",
+            "default": null,
+            "inheritedFrom": "autofocus",
+            "sourcePath": "headless/src/components/input/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "disabled",
+            "type": "boolean",
+            "required": false,
+            "description": "When `true`, prevents the user from interacting with the input.",
+            "descriptionKey": "api.generated.src_components_tags_input_types.tagsinputprops.members.disabled",
+            "default": null,
+            "inheritedFrom": "disabled",
+            "sourcePath": "headless/src/components/input/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "maxlength",
+            "type": "number",
+            "required": false,
+            "description": "The maximum number of characters allowed in the input",
+            "descriptionKey": "api.generated.src_components_tags_input_types.tagsinputprops.members.maxlength",
+            "default": null,
+            "inheritedFrom": "maxlength",
+            "sourcePath": "headless/src/components/input/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "minlength",
+            "type": "number",
+            "required": false,
+            "description": "The minimum number of characters allowed in the input",
+            "descriptionKey": "api.generated.src_components_tags_input_types.tagsinputprops.members.minlength",
+            "default": null,
+            "inheritedFrom": "minlength",
+            "sourcePath": "headless/src/components/input/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "pattern",
+            "type": "string",
+            "required": false,
+            "description": "The pattern attribute of the input",
+            "descriptionKey": "api.generated.src_components_tags_input_types.tagsinputprops.members.pattern",
+            "default": null,
+            "inheritedFrom": "pattern",
+            "sourcePath": "headless/src/components/input/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "placeholder",
+            "type": "string",
+            "required": false,
+            "description": "The placeholder of the input",
+            "descriptionKey": "api.generated.src_components_tags_input_types.tagsinputprops.members.placeholder",
+            "default": null,
+            "inheritedFrom": "placeholder",
+            "sourcePath": "headless/src/components/input/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "readonly",
+            "type": "boolean",
+            "required": false,
+            "description": "When `true`, the input is read-only.",
+            "descriptionKey": "api.generated.src_components_tags_input_types.tagsinputprops.members.readonly",
+            "default": null,
+            "inheritedFrom": "readonly",
+            "sourcePath": "headless/src/components/input/types.ts",
             "referencedTypes": []
           },
           {
@@ -273,18 +622,18 @@
       "emits": {
         "kind": "emits",
         "name": "TagsInputEmits",
-        "type": "TypeAlias TagsInputEmits<T>: TagsInputRootEmits<T>",
-        "resolvedType": "{ \"update:modelValue\": [value: T[]]; invalid: [value: T]; addTag: [value: T]; removeTag: [value: T] }",
+        "type": "TypeAlias TagsInputEmits: TagsInputCompactEmits",
+        "resolvedType": "{ \"update:modelValue\": [value: string[]]; invalid: [value: string]; addTag: [value: string]; removeTag: [value: string] }",
         "description": "Events for the TagsInput component.",
         "descriptionKey": "api.generated.src_components_tags_input_types.tagsinputemits.emits",
         "sourcePath": "src/components/tags-input/types.ts",
-        "typeParameters": ["TypeParameter T"],
+        "typeParameters": [],
         "members": [],
         "callables": [
           {
             "name": "update:modelValue",
-            "type": "[value: T[]]",
-            "parameters": "value: T[]",
+            "type": "[value: string[]]",
+            "parameters": "value: string[]",
             "required": true,
             "description": "Emitted when the model value changes.",
             "descriptionKey": "api.generated.src_components_tags_input_types.tagsinputemits.callables.update_modelvalue",
@@ -293,8 +642,8 @@
           },
           {
             "name": "invalid",
-            "type": "[value: T]",
-            "parameters": "value: T",
+            "type": "[value: string]",
+            "parameters": "value: string",
             "required": true,
             "description": "Emitted when invalid occurs.",
             "descriptionKey": "api.generated.src_components_tags_input_types.tagsinputemits.callables.invalid",
@@ -303,8 +652,8 @@
           },
           {
             "name": "addTag",
-            "type": "[value: T]",
-            "parameters": "value: T",
+            "type": "[value: string]",
+            "parameters": "value: string",
             "required": true,
             "description": "Emitted when add tag occurs.",
             "descriptionKey": "api.generated.src_components_tags_input_types.tagsinputemits.callables.addtag",
@@ -313,8 +662,8 @@
           },
           {
             "name": "removeTag",
-            "type": "[value: T]",
-            "parameters": "value: T",
+            "type": "[value: string]",
+            "parameters": "value: string",
             "required": true,
             "description": "Emitted when remove tag occurs.",
             "descriptionKey": "api.generated.src_components_tags_input_types.tagsinputemits.callables.removetag",
@@ -322,7 +671,125 @@
             "referencedTypes": []
           }
         ],
-        "referencedTypes": []
+        "referencedTypes": [
+          {
+            "name": "TagsInputRootEmits",
+            "kind": "typeAlias",
+            "type": "{ 'update:modelValue': [value: string[]]; invalid: [value: string]; addTag: [value: string]; removeTag: [value: string]; }",
+            "resolvedType": "{ \"update:modelValue\": [value: string[]]; invalid: [value: string]; addTag: [value: string]; removeTag: [value: string] }",
+            "description": "Events for the TagsInputRoot component.",
+            "descriptionKey": "api.generated.headless_src_components_tags_input_types.tagsinputrootemits",
+            "sourcePath": "headless/src/components/tags-input/types.ts",
+            "typeParameters": [],
+            "external": false,
+            "members": [],
+            "callables": [
+              {
+                "name": "update:modelValue",
+                "type": "[value: string[]]",
+                "parameters": "value: string[]",
+                "required": true,
+                "description": "Emitted when the model value changes.",
+                "descriptionKey": "api.generated.headless_src_components_tags_input_types.tagsinputrootemits.callables.update_modelvalue",
+                "sourcePath": "headless/src/components/tags-input/types.ts",
+                "referencedTypes": []
+              },
+              {
+                "name": "invalid",
+                "type": "[value: string]",
+                "parameters": "value: string",
+                "required": true,
+                "description": "Emitted when invalid occurs.",
+                "descriptionKey": "api.generated.headless_src_components_tags_input_types.tagsinputrootemits.callables.invalid",
+                "sourcePath": "headless/src/components/tags-input/types.ts",
+                "referencedTypes": []
+              },
+              {
+                "name": "addTag",
+                "type": "[value: string]",
+                "parameters": "value: string",
+                "required": true,
+                "description": "Emitted when add tag occurs.",
+                "descriptionKey": "api.generated.headless_src_components_tags_input_types.tagsinputrootemits.callables.addtag",
+                "sourcePath": "headless/src/components/tags-input/types.ts",
+                "referencedTypes": []
+              },
+              {
+                "name": "removeTag",
+                "type": "[value: string]",
+                "parameters": "value: string",
+                "required": true,
+                "description": "Emitted when remove tag occurs.",
+                "descriptionKey": "api.generated.headless_src_components_tags_input_types.tagsinputrootemits.callables.removetag",
+                "sourcePath": "headless/src/components/tags-input/types.ts",
+                "referencedTypes": []
+              }
+            ]
+          }
+        ]
+      },
+      "slots": {
+        "kind": "slots",
+        "name": "TagsInputSlots",
+        "type": "TypeAlias TagsInputSlots: TagsInputCompactSlots",
+        "resolvedType": "{ item?: ((props: TagsInputCompactSlotProps) => any) }",
+        "description": "Slots for the TagsInput component.",
+        "descriptionKey": "api.generated.src_components_tags_input_types.tagsinputslots.slots",
+        "sourcePath": "src/components/tags-input/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [
+          {
+            "name": "item",
+            "type": "((props: TagsInputCompactSlotProps) => any) | undefined",
+            "parameters": "((props: TagsInputCompactSlotProps) => any) | undefined",
+            "required": false,
+            "description": "Custom item content or full item replacement.",
+            "descriptionKey": "api.generated.src_components_tags_input_types.tagsinputslots.callables.item",
+            "sourcePath": "headless/src/components/tags-input/types.ts",
+            "referencedTypes": [
+              {
+                "name": "TagsInputCompactSlotProps",
+                "kind": "interface",
+                "type": "TagsInputCompactSlotProps",
+                "resolvedType": null,
+                "description": "Slot properties for item-related compact slots.",
+                "descriptionKey": "api.generated.headless_src_components_tags_input_types.tagsinputcompactslotprops",
+                "sourcePath": "headless/src/components/tags-input/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "referencedTypes": [
+          {
+            "name": "TagsInputCompactSlots",
+            "kind": "typeAlias",
+            "type": "{ item?: (props: import(\"@soybeanjs/headless\").TagsInputCompactSlotProps) => any; }",
+            "resolvedType": "{ item?: ((props: TagsInputCompactSlotProps) => any) }",
+            "description": "Slots for the TagsInputCompact component.",
+            "descriptionKey": "api.generated.headless_src_components_tags_input_types.tagsinputcompactslots",
+            "sourcePath": "headless/src/components/tags-input/types.ts",
+            "typeParameters": [],
+            "external": false,
+            "members": [],
+            "callables": [
+              {
+                "name": "item",
+                "type": "((props: TagsInputCompactSlotProps) => any) | undefined",
+                "parameters": "((props: TagsInputCompactSlotProps) => any) | undefined",
+                "required": false,
+                "description": "Custom item content or full item replacement.",
+                "descriptionKey": "api.generated.headless_src_components_tags_input_types.tagsinputcompactslots.callables.item",
+                "sourcePath": "headless/src/components/tags-input/types.ts",
+                "referencedTypes": []
+              }
+            ]
+          }
+        ]
       }
     },
     "TagsInputClear": {
@@ -330,12 +797,48 @@
         "kind": "props",
         "name": "TagsInputClearProps",
         "type": "Interface TagsInputClearProps",
-        "resolvedType": "{ asChild?: boolean; as?: AsTag | Component }",
+        "resolvedType": "{ type?: ButtonType; disabled?: boolean; asChild?: boolean; as?: AsTag | Component }",
         "description": "Properties for the TagsInputClear component.",
         "descriptionKey": "api.generated.headless_src_components_tags_input_types.tagsinputclearprops.props",
         "sourcePath": "headless/src/components/tags-input/types.ts",
         "typeParameters": [],
         "members": [
+          {
+            "name": "type",
+            "type": "ButtonType",
+            "required": false,
+            "description": "The type of the button element. Can be one of 'button', 'submit', or 'reset'.",
+            "descriptionKey": "api.generated.headless_src_components_tags_input_types.tagsinputclearprops.members.type",
+            "default": "'button'",
+            "inheritedFrom": "ButtonProps.type",
+            "sourcePath": "headless/src/components/button/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ButtonType",
+                "kind": "typeAlias",
+                "type": "'button' | 'submit' | 'reset'",
+                "resolvedType": "'button' | 'submit' | 'reset'",
+                "description": "Supported button values.",
+                "descriptionKey": "api.generated.headless_src_components_button_types.buttontype",
+                "sourcePath": "headless/src/components/button/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "disabled",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether the component is disabled.",
+            "descriptionKey": "api.generated.headless_src_components_tags_input_types.tagsinputclearprops.members.disabled",
+            "default": null,
+            "inheritedFrom": "ButtonProps.disabled",
+            "sourcePath": "headless/src/components/button/types.ts",
+            "referencedTypes": []
+          },
           {
             "name": "asChild",
             "type": "boolean",
@@ -343,7 +846,7 @@
             "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
             "descriptionKey": "api.generated.headless_src_components_tags_input_types.tagsinputclearprops.members.aschild",
             "default": null,
-            "inheritedFrom": "PrimitiveProps.asChild",
+            "inheritedFrom": "ButtonProps.asChild",
             "sourcePath": "headless/src/components/primitive/types.ts",
             "referencedTypes": []
           },
@@ -354,7 +857,7 @@
             "description": "The element or component this component should render as. Can be overwrite by `asChild`",
             "descriptionKey": "api.generated.headless_src_components_tags_input_types.tagsinputclearprops.members.as",
             "default": "'div'",
-            "inheritedFrom": "PrimitiveProps.as",
+            "inheritedFrom": "ButtonProps.as",
             "sourcePath": "headless/src/components/primitive/types.ts",
             "referencedTypes": [
               {
@@ -363,8 +866,8 @@
                 "type": "Component",
                 "resolvedType": null,
                 "description": "A type used in public APIs where a component type is expected.\nThe constructor type is an artificial type returned by defineComponent().",
-                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_33_node_modules_vue_runtime_core_dist_runtime_core_d.component",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_34_node_modules_vue_runtime_core_dist_runtime_core_d.component",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.34/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
                 "typeParameters": [
                   "PropsOrInstance = any",
                   "RawBindings = any",
@@ -385,139 +888,777 @@
         "referencedTypes": []
       }
     },
-    "TagsInputInput": {
+    "TagsInputCompact": {
       "props": {
         "kind": "props",
-        "name": "TagsInputInputProps",
-        "type": "Interface TagsInputInputProps",
-        "resolvedType": "{ id?: string; placeholder?: string; autofocus?: boolean; maxlength?: number; disabled?: boolean; \"aria-label\"?: string; \"aria-controls\"?: string; asChild?: boolean; as?: AsTag | Component }",
-        "description": "Properties for the TagsInputInput component.",
-        "descriptionKey": "api.generated.headless_src_components_tags_input_types.tagsinputinputprops.props",
+        "name": "TagsInputCompactProps",
+        "type": "Interface TagsInputCompactProps",
+        "resolvedType": "{ clearable?: boolean; controlProps?: TagsInputControlProps; clearProps?: TagsInputClearProps; itemProps?: TagsInputItemProps; itemTextProps?: TagsInputItemTextProps; itemDeleteProps?: TagsInputItemDeleteProps; dir?: Direction; modelValue?: string[]; defaultValue?: string[]; addOnPaste?: boolean; addOnTab?: boolean; addOnBlur?: boolean; duplicate?: boolean; delimiter?: string | RegExp; max?: number; displayValue?: ((value: string) => string); id?: string; autofocus?: boolean; disabled?: boolean; maxlength?: number; minlength?: number; pattern?: string; placeholder?: string; readonly?: boolean; name?: string; required?: boolean }",
+        "description": "Properties for the TagsInputCompact component.",
+        "descriptionKey": "api.generated.headless_src_components_tags_input_types.tagsinputcompactprops.props",
         "sourcePath": "headless/src/components/tags-input/types.ts",
         "typeParameters": [],
         "members": [
           {
-            "name": "id",
-            "type": "string",
+            "name": "clearable",
+            "type": "boolean",
             "required": false,
-            "description": "Id.",
-            "descriptionKey": "api.generated.headless_src_components_tags_input_types.tagsinputinputprops.members.id",
+            "description": "Whether to render the clear trigger.",
+            "descriptionKey": "api.generated.headless_src_components_tags_input_types.tagsinputcompactprops.members.clearable",
             "default": null,
             "inheritedFrom": null,
             "sourcePath": "headless/src/components/tags-input/types.ts",
             "referencedTypes": []
           },
           {
-            "name": "placeholder",
-            "type": "string",
+            "name": "controlProps",
+            "type": "TagsInputControlProps",
             "required": false,
-            "description": "Placeholder.",
-            "descriptionKey": "api.generated.headless_src_components_tags_input_types.tagsinputinputprops.members.placeholder",
+            "description": "Props forwarded to the input element.",
+            "descriptionKey": "api.generated.headless_src_components_tags_input_types.tagsinputcompactprops.members.controlprops",
             "default": null,
             "inheritedFrom": null,
             "sourcePath": "headless/src/components/tags-input/types.ts",
+            "referencedTypes": [
+              {
+                "name": "TagsInputControlProps",
+                "kind": "interface",
+                "type": "TagsInputControlProps",
+                "resolvedType": null,
+                "description": "Properties for the TagsInputControl component.",
+                "descriptionKey": "api.generated.headless_src_components_tags_input_types.tagsinputcontrolprops",
+                "sourcePath": "headless/src/components/tags-input/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "clearProps",
+            "type": "TagsInputClearProps",
+            "required": false,
+            "description": "Props forwarded to the clear element.",
+            "descriptionKey": "api.generated.headless_src_components_tags_input_types.tagsinputcompactprops.members.clearprops",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/tags-input/types.ts",
+            "referencedTypes": [
+              {
+                "name": "TagsInputClearProps",
+                "kind": "interface",
+                "type": "TagsInputClearProps",
+                "resolvedType": "{ type?: ButtonType; disabled?: boolean; asChild?: boolean; as?: AsTag | Component }",
+                "description": "Properties for the TagsInputClear component.",
+                "descriptionKey": "api.generated.headless_src_components_tags_input_types.tagsinputclearprops",
+                "sourcePath": "headless/src/components/tags-input/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "type",
+                    "type": "ButtonType",
+                    "required": false,
+                    "description": "The type of the button element. Can be one of 'button', 'submit', or 'reset'.",
+                    "descriptionKey": "api.generated.headless_src_components_tags_input_types.tagsinputclearprops.members.type",
+                    "default": "'button'",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/button/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "disabled",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Whether the component is disabled.",
+                    "descriptionKey": "api.generated.headless_src_components_tags_input_types.tagsinputclearprops.members.disabled",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/button/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "asChild",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+                    "descriptionKey": "api.generated.headless_src_components_tags_input_types.tagsinputclearprops.members.aschild",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "as",
+                    "type": "AsTag | Component",
+                    "required": false,
+                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+                    "descriptionKey": "api.generated.headless_src_components_tags_input_types.tagsinputclearprops.members.as",
+                    "default": "'div'",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "itemProps",
+            "type": "TagsInputItemProps",
+            "required": false,
+            "description": "Props forwarded to the item element.",
+            "descriptionKey": "api.generated.headless_src_components_tags_input_types.tagsinputcompactprops.members.itemprops",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/tags-input/types.ts",
+            "referencedTypes": [
+              {
+                "name": "TagsInputItemProps",
+                "kind": "interface",
+                "type": "TagsInputItemProps",
+                "resolvedType": "{ value: string; disabled?: boolean; asChild?: boolean; as?: AsTag | Component }",
+                "description": "Properties for the TagsInputItem component.",
+                "descriptionKey": "api.generated.headless_src_components_tags_input_types.tagsinputitemprops",
+                "sourcePath": "headless/src/components/tags-input/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "value",
+                    "type": "string",
+                    "required": true,
+                    "description": "Value associated with the tag.",
+                    "descriptionKey": "api.generated.headless_src_components_tags_input_types.tagsinputitemprops.members.value",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/tags-input/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "disabled",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Whether to disable the tag item.",
+                    "descriptionKey": "api.generated.headless_src_components_tags_input_types.tagsinputitemprops.members.disabled",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/tags-input/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "asChild",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+                    "descriptionKey": "api.generated.headless_src_components_tags_input_types.tagsinputitemprops.members.aschild",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "as",
+                    "type": "AsTag | Component",
+                    "required": false,
+                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+                    "descriptionKey": "api.generated.headless_src_components_tags_input_types.tagsinputitemprops.members.as",
+                    "default": "'div'",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "itemTextProps",
+            "type": "TagsInputItemTextProps",
+            "required": false,
+            "description": "Props forwarded to the item text element.",
+            "descriptionKey": "api.generated.headless_src_components_tags_input_types.tagsinputcompactprops.members.itemtextprops",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/tags-input/types.ts",
+            "referencedTypes": [
+              {
+                "name": "TagsInputItemTextProps",
+                "kind": "interface",
+                "type": "TagsInputItemTextProps",
+                "resolvedType": "{ asChild?: boolean; as?: AsTag | Component }",
+                "description": "Properties for the TagsInputItemText component.",
+                "descriptionKey": "api.generated.headless_src_components_tags_input_types.tagsinputitemtextprops",
+                "sourcePath": "headless/src/components/tags-input/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "asChild",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+                    "descriptionKey": "api.generated.headless_src_components_tags_input_types.tagsinputitemtextprops.members.aschild",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "as",
+                    "type": "AsTag | Component",
+                    "required": false,
+                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+                    "descriptionKey": "api.generated.headless_src_components_tags_input_types.tagsinputitemtextprops.members.as",
+                    "default": "'div'",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "itemDeleteProps",
+            "type": "TagsInputItemDeleteProps",
+            "required": false,
+            "description": "Props forwarded to the item delete element.",
+            "descriptionKey": "api.generated.headless_src_components_tags_input_types.tagsinputcompactprops.members.itemdeleteprops",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/tags-input/types.ts",
+            "referencedTypes": [
+              {
+                "name": "TagsInputItemDeleteProps",
+                "kind": "interface",
+                "type": "TagsInputItemDeleteProps",
+                "resolvedType": "{ type?: ButtonType; disabled?: boolean; asChild?: boolean; as?: AsTag | Component }",
+                "description": "Properties for the TagsInputItemDelete component.",
+                "descriptionKey": "api.generated.headless_src_components_tags_input_types.tagsinputitemdeleteprops",
+                "sourcePath": "headless/src/components/tags-input/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "type",
+                    "type": "ButtonType",
+                    "required": false,
+                    "description": "The type of the button element. Can be one of 'button', 'submit', or 'reset'.",
+                    "descriptionKey": "api.generated.headless_src_components_tags_input_types.tagsinputitemdeleteprops.members.type",
+                    "default": "'button'",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/button/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "disabled",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Whether the component is disabled.",
+                    "descriptionKey": "api.generated.headless_src_components_tags_input_types.tagsinputitemdeleteprops.members.disabled",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/button/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "asChild",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+                    "descriptionKey": "api.generated.headless_src_components_tags_input_types.tagsinputitemdeleteprops.members.aschild",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "as",
+                    "type": "AsTag | Component",
+                    "required": false,
+                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+                    "descriptionKey": "api.generated.headless_src_components_tags_input_types.tagsinputitemdeleteprops.members.as",
+                    "default": "'div'",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "dir",
+            "type": "Direction",
+            "required": false,
+            "description": "The reading direction of the tags input.",
+            "descriptionKey": "api.generated.headless_src_components_tags_input_types.tagsinputcompactprops.members.dir",
+            "default": null,
+            "inheritedFrom": "dir",
+            "sourcePath": "headless/src/components/tags-input/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Direction",
+                "kind": "typeAlias",
+                "type": "'ltr' | 'rtl'",
+                "resolvedType": "'ltr' | 'rtl'",
+                "description": "",
+                "descriptionKey": "api.generated.headless_src_types_common.direction",
+                "sourcePath": "headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "modelValue",
+            "type": "string[]",
+            "required": false,
+            "description": "The controlled value of the tags input.",
+            "descriptionKey": "api.generated.headless_src_components_tags_input_types.tagsinputcompactprops.members.modelvalue",
+            "default": null,
+            "inheritedFrom": "modelValue",
+            "sourcePath": "headless/src/components/tags-input/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "defaultValue",
+            "type": "string[]",
+            "required": false,
+            "description": "The uncontrolled default value of the tags input.",
+            "descriptionKey": "api.generated.headless_src_components_tags_input_types.tagsinputcompactprops.members.defaultvalue",
+            "default": null,
+            "inheritedFrom": "defaultValue",
+            "sourcePath": "headless/src/components/tags-input/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "addOnPaste",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether to add tags on paste.",
+            "descriptionKey": "api.generated.headless_src_components_tags_input_types.tagsinputcompactprops.members.addonpaste",
+            "default": null,
+            "inheritedFrom": "addOnPaste",
+            "sourcePath": "headless/src/components/tags-input/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "addOnTab",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether to add tags on tab.",
+            "descriptionKey": "api.generated.headless_src_components_tags_input_types.tagsinputcompactprops.members.addontab",
+            "default": null,
+            "inheritedFrom": "addOnTab",
+            "sourcePath": "headless/src/components/tags-input/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "addOnBlur",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether to add tags on blur.",
+            "descriptionKey": "api.generated.headless_src_components_tags_input_types.tagsinputcompactprops.members.addonblur",
+            "default": null,
+            "inheritedFrom": "addOnBlur",
+            "sourcePath": "headless/src/components/tags-input/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "duplicate",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether to allow duplicated tags.",
+            "descriptionKey": "api.generated.headless_src_components_tags_input_types.tagsinputcompactprops.members.duplicate",
+            "default": null,
+            "inheritedFrom": "duplicate",
+            "sourcePath": "headless/src/components/tags-input/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "delimiter",
+            "type": "string | RegExp",
+            "required": false,
+            "description": "The delimiter used to add tags.",
+            "descriptionKey": "api.generated.headless_src_components_tags_input_types.tagsinputcompactprops.members.delimiter",
+            "default": null,
+            "inheritedFrom": "delimiter",
+            "sourcePath": "headless/src/components/tags-input/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "max",
+            "type": "number",
+            "required": false,
+            "description": "Maximum number of tags. Set to 0 for unlimited.",
+            "descriptionKey": "api.generated.headless_src_components_tags_input_types.tagsinputcompactprops.members.max",
+            "default": null,
+            "inheritedFrom": "max",
+            "sourcePath": "headless/src/components/tags-input/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "displayValue",
+            "type": "((value: string) => string)",
+            "required": false,
+            "description": "Display the value of the tag. Useful when you want to apply modifications to the value like adding a suffix",
+            "descriptionKey": "api.generated.headless_src_components_tags_input_types.tagsinputcompactprops.members.displayvalue",
+            "default": "\"(value: string) => value\"",
+            "inheritedFrom": "displayValue",
+            "sourcePath": "headless/src/components/tags-input/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "id",
+            "type": "string",
+            "required": false,
+            "description": "Id of the input element",
+            "descriptionKey": "api.generated.headless_src_components_tags_input_types.tagsinputcompactprops.members.id",
+            "default": null,
+            "inheritedFrom": "id",
+            "sourcePath": "headless/src/components/input/types.ts",
             "referencedTypes": []
           },
           {
             "name": "autofocus",
             "type": "boolean",
             "required": false,
-            "description": "Whether autofocus.",
-            "descriptionKey": "api.generated.headless_src_components_tags_input_types.tagsinputinputprops.members.autofocus",
+            "description": "When `true`, the input is auto-focused.",
+            "descriptionKey": "api.generated.headless_src_components_tags_input_types.tagsinputcompactprops.members.autofocus",
             "default": null,
-            "inheritedFrom": null,
-            "sourcePath": "headless/src/components/tags-input/types.ts",
-            "referencedTypes": []
-          },
-          {
-            "name": "maxlength",
-            "type": "number",
-            "required": false,
-            "description": "Maxlength.",
-            "descriptionKey": "api.generated.headless_src_components_tags_input_types.tagsinputinputprops.members.maxlength",
-            "default": null,
-            "inheritedFrom": null,
-            "sourcePath": "headless/src/components/tags-input/types.ts",
+            "inheritedFrom": "autofocus",
+            "sourcePath": "headless/src/components/input/types.ts",
             "referencedTypes": []
           },
           {
             "name": "disabled",
             "type": "boolean",
             "required": false,
-            "description": "Whether the component is disabled.",
-            "descriptionKey": "api.generated.headless_src_components_tags_input_types.tagsinputinputprops.members.disabled",
+            "description": "When `true`, prevents the user from interacting with the input.",
+            "descriptionKey": "api.generated.headless_src_components_tags_input_types.tagsinputcompactprops.members.disabled",
             "default": null,
-            "inheritedFrom": null,
-            "sourcePath": "headless/src/components/tags-input/types.ts",
+            "inheritedFrom": "disabled",
+            "sourcePath": "headless/src/components/input/types.ts",
             "referencedTypes": []
           },
           {
-            "name": "aria-label",
+            "name": "maxlength",
+            "type": "number",
+            "required": false,
+            "description": "The maximum number of characters allowed in the input",
+            "descriptionKey": "api.generated.headless_src_components_tags_input_types.tagsinputcompactprops.members.maxlength",
+            "default": null,
+            "inheritedFrom": "maxlength",
+            "sourcePath": "headless/src/components/input/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "minlength",
+            "type": "number",
+            "required": false,
+            "description": "The minimum number of characters allowed in the input",
+            "descriptionKey": "api.generated.headless_src_components_tags_input_types.tagsinputcompactprops.members.minlength",
+            "default": null,
+            "inheritedFrom": "minlength",
+            "sourcePath": "headless/src/components/input/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "pattern",
             "type": "string",
             "required": false,
-            "description": "Aria label.",
-            "descriptionKey": "api.generated.headless_src_components_tags_input_types.tagsinputinputprops.members.aria_label",
+            "description": "The pattern attribute of the input",
+            "descriptionKey": "api.generated.headless_src_components_tags_input_types.tagsinputcompactprops.members.pattern",
             "default": null,
-            "inheritedFrom": null,
-            "sourcePath": "headless/src/components/tags-input/types.ts",
+            "inheritedFrom": "pattern",
+            "sourcePath": "headless/src/components/input/types.ts",
             "referencedTypes": []
           },
           {
-            "name": "aria-controls",
+            "name": "placeholder",
             "type": "string",
             "required": false,
-            "description": "Aria controls.",
-            "descriptionKey": "api.generated.headless_src_components_tags_input_types.tagsinputinputprops.members.aria_controls",
+            "description": "The placeholder of the input",
+            "descriptionKey": "api.generated.headless_src_components_tags_input_types.tagsinputcompactprops.members.placeholder",
             "default": null,
-            "inheritedFrom": null,
-            "sourcePath": "headless/src/components/tags-input/types.ts",
+            "inheritedFrom": "placeholder",
+            "sourcePath": "headless/src/components/input/types.ts",
             "referencedTypes": []
           },
           {
-            "name": "asChild",
+            "name": "readonly",
             "type": "boolean",
             "required": false,
-            "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
-            "descriptionKey": "api.generated.headless_src_components_tags_input_types.tagsinputinputprops.members.aschild",
+            "description": "When `true`, the input is read-only.",
+            "descriptionKey": "api.generated.headless_src_components_tags_input_types.tagsinputcompactprops.members.readonly",
             "default": null,
-            "inheritedFrom": "PrimitiveProps.asChild",
-            "sourcePath": "headless/src/components/primitive/types.ts",
+            "inheritedFrom": "readonly",
+            "sourcePath": "headless/src/components/input/types.ts",
             "referencedTypes": []
           },
           {
-            "name": "as",
-            "type": "AsTag | Component",
+            "name": "name",
+            "type": "string",
             "required": false,
-            "description": "The element or component this component should render as. Can be overwrite by `asChild`",
-            "descriptionKey": "api.generated.headless_src_components_tags_input_types.tagsinputinputprops.members.as",
-            "default": "'div'",
-            "inheritedFrom": "PrimitiveProps.as",
-            "sourcePath": "headless/src/components/primitive/types.ts",
+            "description": "The name of the field. Submitted with its owning form as part of a name/value pair.",
+            "descriptionKey": "api.generated.headless_src_components_tags_input_types.tagsinputcompactprops.members.name",
+            "default": null,
+            "inheritedFrom": "name",
+            "sourcePath": "headless/src/types/component.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "required",
+            "type": "boolean",
+            "required": false,
+            "description": "When `true`, indicates that the user must set the value before the owning form can be submitted.",
+            "descriptionKey": "api.generated.headless_src_components_tags_input_types.tagsinputcompactprops.members.required",
+            "default": null,
+            "inheritedFrom": "required",
+            "sourcePath": "headless/src/types/component.ts",
+            "referencedTypes": []
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      },
+      "emits": {
+        "kind": "emits",
+        "name": "TagsInputCompactEmits",
+        "type": "TypeAlias TagsInputCompactEmits: TagsInputRootEmits",
+        "resolvedType": "{ \"update:modelValue\": [value: string[]]; invalid: [value: string]; addTag: [value: string]; removeTag: [value: string] }",
+        "description": "Events for the TagsInputCompact component.",
+        "descriptionKey": "api.generated.headless_src_components_tags_input_types.tagsinputcompactemits.emits",
+        "sourcePath": "headless/src/components/tags-input/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [
+          {
+            "name": "update:modelValue",
+            "type": "[value: string[]]",
+            "parameters": "value: string[]",
+            "required": true,
+            "description": "Emitted when the model value changes.",
+            "descriptionKey": "api.generated.headless_src_components_tags_input_types.tagsinputcompactemits.callables.update_modelvalue",
+            "sourcePath": "headless/src/components/tags-input/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "invalid",
+            "type": "[value: string]",
+            "parameters": "value: string",
+            "required": true,
+            "description": "Emitted when invalid occurs.",
+            "descriptionKey": "api.generated.headless_src_components_tags_input_types.tagsinputcompactemits.callables.invalid",
+            "sourcePath": "headless/src/components/tags-input/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "addTag",
+            "type": "[value: string]",
+            "parameters": "value: string",
+            "required": true,
+            "description": "Emitted when add tag occurs.",
+            "descriptionKey": "api.generated.headless_src_components_tags_input_types.tagsinputcompactemits.callables.addtag",
+            "sourcePath": "headless/src/components/tags-input/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "removeTag",
+            "type": "[value: string]",
+            "parameters": "value: string",
+            "required": true,
+            "description": "Emitted when remove tag occurs.",
+            "descriptionKey": "api.generated.headless_src_components_tags_input_types.tagsinputcompactemits.callables.removetag",
+            "sourcePath": "headless/src/components/tags-input/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "referencedTypes": [
+          {
+            "name": "TagsInputRootEmits",
+            "kind": "typeAlias",
+            "type": "{ 'update:modelValue': [value: string[]]; invalid: [value: string]; addTag: [value: string]; removeTag: [value: string]; }",
+            "resolvedType": "{ \"update:modelValue\": [value: string[]]; invalid: [value: string]; addTag: [value: string]; removeTag: [value: string] }",
+            "description": "Events for the TagsInputRoot component.",
+            "descriptionKey": "api.generated.headless_src_components_tags_input_types.tagsinputrootemits",
+            "sourcePath": "headless/src/components/tags-input/types.ts",
+            "typeParameters": [],
+            "external": false,
+            "members": [],
+            "callables": [
+              {
+                "name": "update:modelValue",
+                "type": "[value: string[]]",
+                "parameters": "value: string[]",
+                "required": true,
+                "description": "Emitted when the model value changes.",
+                "descriptionKey": "api.generated.headless_src_components_tags_input_types.tagsinputrootemits.callables.update_modelvalue",
+                "sourcePath": "headless/src/components/tags-input/types.ts",
+                "referencedTypes": []
+              },
+              {
+                "name": "invalid",
+                "type": "[value: string]",
+                "parameters": "value: string",
+                "required": true,
+                "description": "Emitted when invalid occurs.",
+                "descriptionKey": "api.generated.headless_src_components_tags_input_types.tagsinputrootemits.callables.invalid",
+                "sourcePath": "headless/src/components/tags-input/types.ts",
+                "referencedTypes": []
+              },
+              {
+                "name": "addTag",
+                "type": "[value: string]",
+                "parameters": "value: string",
+                "required": true,
+                "description": "Emitted when add tag occurs.",
+                "descriptionKey": "api.generated.headless_src_components_tags_input_types.tagsinputrootemits.callables.addtag",
+                "sourcePath": "headless/src/components/tags-input/types.ts",
+                "referencedTypes": []
+              },
+              {
+                "name": "removeTag",
+                "type": "[value: string]",
+                "parameters": "value: string",
+                "required": true,
+                "description": "Emitted when remove tag occurs.",
+                "descriptionKey": "api.generated.headless_src_components_tags_input_types.tagsinputrootemits.callables.removetag",
+                "sourcePath": "headless/src/components/tags-input/types.ts",
+                "referencedTypes": []
+              }
+            ]
+          }
+        ]
+      },
+      "slots": {
+        "kind": "slots",
+        "name": "TagsInputCompactSlots",
+        "type": "TypeAlias TagsInputCompactSlots",
+        "resolvedType": "{ item?: ((props: TagsInputCompactSlotProps) => any) }",
+        "description": "Slots for the TagsInputCompact component.",
+        "descriptionKey": "api.generated.headless_src_components_tags_input_types.tagsinputcompactslots.slots",
+        "sourcePath": "headless/src/components/tags-input/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [
+          {
+            "name": "item",
+            "type": "((props: TagsInputCompactSlotProps) => any) | undefined",
+            "parameters": "((props: TagsInputCompactSlotProps) => any) | undefined",
+            "required": false,
+            "description": "Custom item content or full item replacement.",
+            "descriptionKey": "api.generated.headless_src_components_tags_input_types.tagsinputcompactslots.callables.item",
+            "sourcePath": "headless/src/components/tags-input/types.ts",
             "referencedTypes": [
               {
-                "name": "Component",
-                "kind": "typeAlias",
-                "type": "Component",
+                "name": "TagsInputCompactSlotProps",
+                "kind": "interface",
+                "type": "TagsInputCompactSlotProps",
                 "resolvedType": null,
-                "description": "A type used in public APIs where a component type is expected.\nThe constructor type is an artificial type returned by defineComponent().",
-                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_33_node_modules_vue_runtime_core_dist_runtime_core_d.component",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
-                "typeParameters": [
-                  "PropsOrInstance = any",
-                  "RawBindings = any",
-                  "D = any",
-                  "C extends ComputedOptions = ComputedOptions",
-                  "M extends MethodOptions = MethodOptions",
-                  "E extends EmitsOptions | Record<string, any[]> = {}",
-                  "S extends Record<string, any> = any"
-                ],
-                "external": true,
+                "description": "Slot properties for item-related compact slots.",
+                "descriptionKey": "api.generated.headless_src_components_tags_input_types.tagsinputcompactslotprops",
+                "sourcePath": "headless/src/components/tags-input/types.ts",
+                "typeParameters": [],
+                "external": false,
                 "members": [],
                 "callables": []
               }
             ]
           }
         ],
+        "referencedTypes": []
+      },
+      "slotProps": {
+        "kind": "slotProps",
+        "name": "TagsInputCompactSlotProps",
+        "type": "Interface TagsInputCompactSlotProps",
+        "resolvedType": "{ value: string; index: number; displayedValue: string; onDelete: () => void; onClear: () => void }",
+        "description": "Slot properties for item-related compact slots.",
+        "descriptionKey": "api.generated.headless_src_components_tags_input_types.tagsinputcompactslotprops.slotprops",
+        "sourcePath": "headless/src/components/tags-input/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "value",
+            "type": "string",
+            "required": true,
+            "description": "Value associated with the current item.",
+            "descriptionKey": "api.generated.headless_src_components_tags_input_types.tagsinputcompactslotprops.members.value",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/tags-input/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "index",
+            "type": "number",
+            "required": true,
+            "description": "Current item index.",
+            "descriptionKey": "api.generated.headless_src_components_tags_input_types.tagsinputcompactslotprops.members.index",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/tags-input/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "displayedValue",
+            "type": "string",
+            "required": true,
+            "description": "Current item display value.",
+            "descriptionKey": "api.generated.headless_src_components_tags_input_types.tagsinputcompactslotprops.members.displayedvalue",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/tags-input/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "onDelete",
+            "type": "() => void",
+            "required": true,
+            "description": "Delete handler for the current item.",
+            "descriptionKey": "api.generated.headless_src_components_tags_input_types.tagsinputcompactslotprops.members.ondelete",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/tags-input/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "onClear",
+            "type": "() => void",
+            "required": true,
+            "description": "Clear handler for the current item.",
+            "descriptionKey": "api.generated.headless_src_components_tags_input_types.tagsinputcompactslotprops.members.onclear",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/tags-input/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "TagsInputControl": {
+      "props": {
+        "kind": "props",
+        "name": "TagsInputControlProps",
+        "type": "Interface TagsInputControlProps",
+        "resolvedType": null,
+        "description": "Properties for the TagsInputControl component.",
+        "descriptionKey": "api.generated.headless_src_components_tags_input_types.tagsinputcontrolprops.props",
+        "sourcePath": "headless/src/components/tags-input/types.ts",
+        "typeParameters": [],
+        "members": [],
         "callables": [],
         "referencedTypes": []
       }
@@ -526,16 +1667,16 @@
       "props": {
         "kind": "props",
         "name": "TagsInputItemProps",
-        "type": "Interface TagsInputItemProps<T>",
-        "resolvedType": "{ value: T; disabled?: boolean; asChild?: boolean; as?: AsTag | Component }",
+        "type": "Interface TagsInputItemProps",
+        "resolvedType": "{ value: string; disabled?: boolean; asChild?: boolean; as?: AsTag | Component }",
         "description": "Properties for the TagsInputItem component.",
         "descriptionKey": "api.generated.headless_src_components_tags_input_types.tagsinputitemprops.props",
         "sourcePath": "headless/src/components/tags-input/types.ts",
-        "typeParameters": ["TypeParameter T"],
+        "typeParameters": [],
         "members": [
           {
             "name": "value",
-            "type": "T",
+            "type": "string",
             "required": true,
             "description": "Value associated with the tag.",
             "descriptionKey": "api.generated.headless_src_components_tags_input_types.tagsinputitemprops.members.value",
@@ -562,7 +1703,7 @@
             "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
             "descriptionKey": "api.generated.headless_src_components_tags_input_types.tagsinputitemprops.members.aschild",
             "default": null,
-            "inheritedFrom": "PrimitiveProps.asChild",
+            "inheritedFrom": "PrimitiveWithBaseProps.asChild",
             "sourcePath": "headless/src/components/primitive/types.ts",
             "referencedTypes": []
           },
@@ -573,7 +1714,7 @@
             "description": "The element or component this component should render as. Can be overwrite by `asChild`",
             "descriptionKey": "api.generated.headless_src_components_tags_input_types.tagsinputitemprops.members.as",
             "default": "'div'",
-            "inheritedFrom": "PrimitiveProps.as",
+            "inheritedFrom": "PrimitiveWithBaseProps.as",
             "sourcePath": "headless/src/components/primitive/types.ts",
             "referencedTypes": [
               {
@@ -582,8 +1723,8 @@
                 "type": "Component",
                 "resolvedType": null,
                 "description": "A type used in public APIs where a component type is expected.\nThe constructor type is an artificial type returned by defineComponent().",
-                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_33_node_modules_vue_runtime_core_dist_runtime_core_d.component",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_34_node_modules_vue_runtime_core_dist_runtime_core_d.component",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.34/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
                 "typeParameters": [
                   "PropsOrInstance = any",
                   "RawBindings = any",
@@ -609,12 +1750,48 @@
         "kind": "props",
         "name": "TagsInputItemDeleteProps",
         "type": "Interface TagsInputItemDeleteProps",
-        "resolvedType": "{ asChild?: boolean; as?: AsTag | Component }",
+        "resolvedType": "{ type?: ButtonType; disabled?: boolean; asChild?: boolean; as?: AsTag | Component }",
         "description": "Properties for the TagsInputItemDelete component.",
         "descriptionKey": "api.generated.headless_src_components_tags_input_types.tagsinputitemdeleteprops.props",
         "sourcePath": "headless/src/components/tags-input/types.ts",
         "typeParameters": [],
         "members": [
+          {
+            "name": "type",
+            "type": "ButtonType",
+            "required": false,
+            "description": "The type of the button element. Can be one of 'button', 'submit', or 'reset'.",
+            "descriptionKey": "api.generated.headless_src_components_tags_input_types.tagsinputitemdeleteprops.members.type",
+            "default": "'button'",
+            "inheritedFrom": "ButtonProps.type",
+            "sourcePath": "headless/src/components/button/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ButtonType",
+                "kind": "typeAlias",
+                "type": "'button' | 'submit' | 'reset'",
+                "resolvedType": "'button' | 'submit' | 'reset'",
+                "description": "Supported button values.",
+                "descriptionKey": "api.generated.headless_src_components_button_types.buttontype",
+                "sourcePath": "headless/src/components/button/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "disabled",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether the component is disabled.",
+            "descriptionKey": "api.generated.headless_src_components_tags_input_types.tagsinputitemdeleteprops.members.disabled",
+            "default": null,
+            "inheritedFrom": "ButtonProps.disabled",
+            "sourcePath": "headless/src/components/button/types.ts",
+            "referencedTypes": []
+          },
           {
             "name": "asChild",
             "type": "boolean",
@@ -622,7 +1799,7 @@
             "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
             "descriptionKey": "api.generated.headless_src_components_tags_input_types.tagsinputitemdeleteprops.members.aschild",
             "default": null,
-            "inheritedFrom": "PrimitiveProps.asChild",
+            "inheritedFrom": "ButtonProps.asChild",
             "sourcePath": "headless/src/components/primitive/types.ts",
             "referencedTypes": []
           },
@@ -633,7 +1810,7 @@
             "description": "The element or component this component should render as. Can be overwrite by `asChild`",
             "descriptionKey": "api.generated.headless_src_components_tags_input_types.tagsinputitemdeleteprops.members.as",
             "default": "'div'",
-            "inheritedFrom": "PrimitiveProps.as",
+            "inheritedFrom": "ButtonProps.as",
             "sourcePath": "headless/src/components/primitive/types.ts",
             "referencedTypes": [
               {
@@ -642,8 +1819,8 @@
                 "type": "Component",
                 "resolvedType": null,
                 "description": "A type used in public APIs where a component type is expected.\nThe constructor type is an artificial type returned by defineComponent().",
-                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_33_node_modules_vue_runtime_core_dist_runtime_core_d.component",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_34_node_modules_vue_runtime_core_dist_runtime_core_d.component",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.34/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
                 "typeParameters": [
                   "PropsOrInstance = any",
                   "RawBindings = any",
@@ -682,7 +1859,7 @@
             "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
             "descriptionKey": "api.generated.headless_src_components_tags_input_types.tagsinputitemtextprops.members.aschild",
             "default": null,
-            "inheritedFrom": "PrimitiveProps.asChild",
+            "inheritedFrom": "PrimitiveWithBaseProps.asChild",
             "sourcePath": "headless/src/components/primitive/types.ts",
             "referencedTypes": []
           },
@@ -693,7 +1870,7 @@
             "description": "The element or component this component should render as. Can be overwrite by `asChild`",
             "descriptionKey": "api.generated.headless_src_components_tags_input_types.tagsinputitemtextprops.members.as",
             "default": "'div'",
-            "inheritedFrom": "PrimitiveProps.as",
+            "inheritedFrom": "PrimitiveWithBaseProps.as",
             "sourcePath": "headless/src/components/primitive/types.ts",
             "referencedTypes": [
               {
@@ -702,8 +1879,8 @@
                 "type": "Component",
                 "resolvedType": null,
                 "description": "A type used in public APIs where a component type is expected.\nThe constructor type is an artificial type returned by defineComponent().",
-                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_33_node_modules_vue_runtime_core_dist_runtime_core_d.component",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_34_node_modules_vue_runtime_core_dist_runtime_core_d.component",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.34/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
                 "typeParameters": [
                   "PropsOrInstance = any",
                   "RawBindings = any",
@@ -728,27 +1905,41 @@
       "props": {
         "kind": "props",
         "name": "TagsInputRootProps",
-        "type": "Interface TagsInputRootProps<T>",
-        "resolvedType": "{ id?: string; modelValue?: T[]; defaultValue?: T[]; addOnPaste?: boolean; addOnTab?: boolean; addOnBlur?: boolean; duplicate?: boolean; disabled?: boolean; delimiter?: string | RegExp; dir?: Direction; max?: number; convertValue?: ((value: string) => T); displayValue?: ((value: T) => string); name?: string; required?: boolean }",
+        "type": "Interface TagsInputRootProps",
+        "resolvedType": "{ dir?: Direction; modelValue?: string[]; defaultValue?: string[]; addOnPaste?: boolean; addOnTab?: boolean; addOnBlur?: boolean; duplicate?: boolean; delimiter?: string | RegExp; max?: number; displayValue?: ((value: string) => string); id?: string; autofocus?: boolean; disabled?: boolean; maxlength?: number; minlength?: number; pattern?: string; placeholder?: string; readonly?: boolean; name?: string; required?: boolean }",
         "description": "Properties for the TagsInputRoot component.",
         "descriptionKey": "api.generated.headless_src_components_tags_input_types.tagsinputrootprops.props",
         "sourcePath": "headless/src/components/tags-input/types.ts",
-        "typeParameters": ["TypeParameter T"],
+        "typeParameters": [],
         "members": [
           {
-            "name": "id",
-            "type": "string",
+            "name": "dir",
+            "type": "Direction",
             "required": false,
-            "description": "Id of the input element.",
-            "descriptionKey": "api.generated.headless_src_components_tags_input_types.tagsinputrootprops.members.id",
+            "description": "The reading direction of the tags input.",
+            "descriptionKey": "api.generated.headless_src_components_tags_input_types.tagsinputrootprops.members.dir",
             "default": null,
             "inheritedFrom": null,
             "sourcePath": "headless/src/components/tags-input/types.ts",
-            "referencedTypes": []
+            "referencedTypes": [
+              {
+                "name": "Direction",
+                "kind": "typeAlias",
+                "type": "'ltr' | 'rtl'",
+                "resolvedType": "'ltr' | 'rtl'",
+                "description": "",
+                "descriptionKey": "api.generated.headless_src_types_common.direction",
+                "sourcePath": "headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
           },
           {
             "name": "modelValue",
-            "type": "T[]",
+            "type": "string[]",
             "required": false,
             "description": "The controlled value of the tags input.",
             "descriptionKey": "api.generated.headless_src_components_tags_input_types.tagsinputrootprops.members.modelvalue",
@@ -759,7 +1950,7 @@
           },
           {
             "name": "defaultValue",
-            "type": "T[]",
+            "type": "string[]",
             "required": false,
             "description": "The uncontrolled default value of the tags input.",
             "descriptionKey": "api.generated.headless_src_components_tags_input_types.tagsinputrootprops.members.defaultvalue",
@@ -813,17 +2004,6 @@
             "referencedTypes": []
           },
           {
-            "name": "disabled",
-            "type": "boolean",
-            "required": false,
-            "description": "Whether to disable the tags input.",
-            "descriptionKey": "api.generated.headless_src_components_tags_input_types.tagsinputrootprops.members.disabled",
-            "default": null,
-            "inheritedFrom": null,
-            "sourcePath": "headless/src/components/tags-input/types.ts",
-            "referencedTypes": []
-          },
-          {
             "name": "delimiter",
             "type": "string | RegExp",
             "required": false,
@@ -833,31 +2013,6 @@
             "inheritedFrom": null,
             "sourcePath": "headless/src/components/tags-input/types.ts",
             "referencedTypes": []
-          },
-          {
-            "name": "dir",
-            "type": "Direction",
-            "required": false,
-            "description": "The reading direction of the tags input.",
-            "descriptionKey": "api.generated.headless_src_components_tags_input_types.tagsinputrootprops.members.dir",
-            "default": null,
-            "inheritedFrom": null,
-            "sourcePath": "headless/src/components/tags-input/types.ts",
-            "referencedTypes": [
-              {
-                "name": "Direction",
-                "kind": "typeAlias",
-                "type": "'ltr' | 'rtl'",
-                "resolvedType": "'ltr' | 'rtl'",
-                "description": "",
-                "descriptionKey": "api.generated.headless_src_types_common.direction",
-                "sourcePath": "headless/src/types/common.ts",
-                "typeParameters": [],
-                "external": false,
-                "members": [],
-                "callables": []
-              }
-            ]
           },
           {
             "name": "max",
@@ -871,25 +2026,102 @@
             "referencedTypes": []
           },
           {
-            "name": "convertValue",
-            "type": "((value: string) => T)",
+            "name": "displayValue",
+            "type": "((value: string) => string)",
             "required": false,
-            "description": "Convert the raw input string into the tag value.",
-            "descriptionKey": "api.generated.headless_src_components_tags_input_types.tagsinputrootprops.members.convertvalue",
-            "default": null,
+            "description": "Display the value of the tag. Useful when you want to apply modifications to the value like adding a suffix",
+            "descriptionKey": "api.generated.headless_src_components_tags_input_types.tagsinputrootprops.members.displayvalue",
+            "default": "\"(value: string) => value\"",
             "inheritedFrom": null,
             "sourcePath": "headless/src/components/tags-input/types.ts",
             "referencedTypes": []
           },
           {
-            "name": "displayValue",
-            "type": "((value: T) => string)",
+            "name": "id",
+            "type": "string",
             "required": false,
-            "description": "Display the tag value.",
-            "descriptionKey": "api.generated.headless_src_components_tags_input_types.tagsinputrootprops.members.displayvalue",
+            "description": "Id of the input element",
+            "descriptionKey": "api.generated.headless_src_components_tags_input_types.tagsinputrootprops.members.id",
             "default": null,
-            "inheritedFrom": null,
-            "sourcePath": "headless/src/components/tags-input/types.ts",
+            "inheritedFrom": "InputBaseProps.id",
+            "sourcePath": "headless/src/components/input/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "autofocus",
+            "type": "boolean",
+            "required": false,
+            "description": "When `true`, the input is auto-focused.",
+            "descriptionKey": "api.generated.headless_src_components_tags_input_types.tagsinputrootprops.members.autofocus",
+            "default": null,
+            "inheritedFrom": "InputBaseProps.autofocus",
+            "sourcePath": "headless/src/components/input/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "disabled",
+            "type": "boolean",
+            "required": false,
+            "description": "When `true`, prevents the user from interacting with the input.",
+            "descriptionKey": "api.generated.headless_src_components_tags_input_types.tagsinputrootprops.members.disabled",
+            "default": null,
+            "inheritedFrom": "InputBaseProps.disabled",
+            "sourcePath": "headless/src/components/input/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "maxlength",
+            "type": "number",
+            "required": false,
+            "description": "The maximum number of characters allowed in the input",
+            "descriptionKey": "api.generated.headless_src_components_tags_input_types.tagsinputrootprops.members.maxlength",
+            "default": null,
+            "inheritedFrom": "InputBaseProps.maxlength",
+            "sourcePath": "headless/src/components/input/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "minlength",
+            "type": "number",
+            "required": false,
+            "description": "The minimum number of characters allowed in the input",
+            "descriptionKey": "api.generated.headless_src_components_tags_input_types.tagsinputrootprops.members.minlength",
+            "default": null,
+            "inheritedFrom": "InputBaseProps.minlength",
+            "sourcePath": "headless/src/components/input/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "pattern",
+            "type": "string",
+            "required": false,
+            "description": "The pattern attribute of the input",
+            "descriptionKey": "api.generated.headless_src_components_tags_input_types.tagsinputrootprops.members.pattern",
+            "default": null,
+            "inheritedFrom": "InputBaseProps.pattern",
+            "sourcePath": "headless/src/components/input/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "placeholder",
+            "type": "string",
+            "required": false,
+            "description": "The placeholder of the input",
+            "descriptionKey": "api.generated.headless_src_components_tags_input_types.tagsinputrootprops.members.placeholder",
+            "default": null,
+            "inheritedFrom": "InputBaseProps.placeholder",
+            "sourcePath": "headless/src/components/input/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "readonly",
+            "type": "boolean",
+            "required": false,
+            "description": "When `true`, the input is read-only.",
+            "descriptionKey": "api.generated.headless_src_components_tags_input_types.tagsinputrootprops.members.readonly",
+            "default": null,
+            "inheritedFrom": "InputBaseProps.readonly",
+            "sourcePath": "headless/src/components/input/types.ts",
             "referencedTypes": []
           },
           {
@@ -921,18 +2153,18 @@
       "emits": {
         "kind": "emits",
         "name": "TagsInputRootEmits",
-        "type": "TypeAlias TagsInputRootEmits<T>",
-        "resolvedType": "{ \"update:modelValue\": [value: T[]]; invalid: [value: T]; addTag: [value: T]; removeTag: [value: T] }",
+        "type": "TypeAlias TagsInputRootEmits",
+        "resolvedType": "{ \"update:modelValue\": [value: string[]]; invalid: [value: string]; addTag: [value: string]; removeTag: [value: string] }",
         "description": "Events for the TagsInputRoot component.",
         "descriptionKey": "api.generated.headless_src_components_tags_input_types.tagsinputrootemits.emits",
         "sourcePath": "headless/src/components/tags-input/types.ts",
-        "typeParameters": ["TypeParameter T"],
+        "typeParameters": [],
         "members": [],
         "callables": [
           {
             "name": "update:modelValue",
-            "type": "[value: T[]]",
-            "parameters": "value: T[]",
+            "type": "[value: string[]]",
+            "parameters": "value: string[]",
             "required": true,
             "description": "Emitted when the model value changes.",
             "descriptionKey": "api.generated.headless_src_components_tags_input_types.tagsinputrootemits.callables.update_modelvalue",
@@ -941,8 +2173,8 @@
           },
           {
             "name": "invalid",
-            "type": "[value: T]",
-            "parameters": "value: T",
+            "type": "[value: string]",
+            "parameters": "value: string",
             "required": true,
             "description": "Emitted when invalid occurs.",
             "descriptionKey": "api.generated.headless_src_components_tags_input_types.tagsinputrootemits.callables.invalid",
@@ -951,8 +2183,8 @@
           },
           {
             "name": "addTag",
-            "type": "[value: T]",
-            "parameters": "value: T",
+            "type": "[value: string]",
+            "parameters": "value: string",
             "required": true,
             "description": "Emitted when add tag occurs.",
             "descriptionKey": "api.generated.headless_src_components_tags_input_types.tagsinputrootemits.callables.addtag",
@@ -961,8 +2193,8 @@
           },
           {
             "name": "removeTag",
-            "type": "[value: T]",
-            "parameters": "value: T",
+            "type": "[value: string]",
+            "parameters": "value: string",
             "required": true,
             "description": "Emitted when remove tag occurs.",
             "descriptionKey": "api.generated.headless_src_components_tags_input_types.tagsinputrootemits.callables.removetag",

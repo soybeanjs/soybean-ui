@@ -1,51 +1,6 @@
 {
   "component": "listbox",
   "symbols": {
-    "AutocompleteGroup": {
-      "props": {
-        "kind": "props",
-        "name": "AutocompleteGroupProps",
-        "type": "Interface AutocompleteGroupProps",
-        "resolvedType": null,
-        "description": "Properties for the ListboxGroup component.",
-        "descriptionKey": "api.generated.headless_src_components_listbox_types.autocompletegroupprops.props",
-        "sourcePath": "headless/src/components/listbox/types.ts",
-        "typeParameters": [],
-        "members": [],
-        "callables": [],
-        "referencedTypes": []
-      }
-    },
-    "AutocompleteGroupLabel": {
-      "props": {
-        "kind": "props",
-        "name": "AutocompleteGroupLabelProps",
-        "type": "Interface AutocompleteGroupLabelProps",
-        "resolvedType": null,
-        "description": "Properties for the ListboxGroupLabel component.",
-        "descriptionKey": "api.generated.headless_src_components_listbox_types.autocompletegrouplabelprops.props",
-        "sourcePath": "headless/src/components/listbox/types.ts",
-        "typeParameters": [],
-        "members": [],
-        "callables": [],
-        "referencedTypes": []
-      }
-    },
-    "AutocompleteItemIndicator": {
-      "props": {
-        "kind": "props",
-        "name": "AutocompleteItemIndicatorProps",
-        "type": "Interface AutocompleteItemIndicatorProps",
-        "resolvedType": null,
-        "description": "Properties for the ListboxItemIndicator component.",
-        "descriptionKey": "api.generated.headless_src_components_listbox_types.autocompleteitemindicatorprops.props",
-        "sourcePath": "headless/src/components/listbox/types.ts",
-        "typeParameters": [],
-        "members": [],
-        "callables": [],
-        "referencedTypes": []
-      }
-    },
     "CommandInput": {
       "props": {
         "kind": "props",
@@ -484,8 +439,8 @@
                 "type": "Component",
                 "resolvedType": null,
                 "description": "A type used in public APIs where a component type is expected.\nThe constructor type is an artificial type returned by defineComponent().",
-                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_33_node_modules_vue_runtime_core_dist_runtime_core_d.component",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_34_node_modules_vue_runtime_core_dist_runtime_core_d.component",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.34/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
                 "typeParameters": [
                   "PropsOrInstance = any",
                   "RawBindings = any",
@@ -582,8 +537,8 @@
                 "type": "Component",
                 "resolvedType": null,
                 "description": "A type used in public APIs where a component type is expected.\nThe constructor type is an artificial type returned by defineComponent().",
-                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_33_node_modules_vue_runtime_core_dist_runtime_core_d.component",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_34_node_modules_vue_runtime_core_dist_runtime_core_d.component",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.34/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
                 "typeParameters": [
                   "PropsOrInstance = any",
                   "RawBindings = any",
@@ -942,7 +897,7 @@
         "kind": "slots",
         "name": "ListboxVirtualizerSlots",
         "type": "TypeAlias ListboxVirtualizerSlots",
-        "resolvedType": "{ default: (props: ListboxVirtualizerSlotsProps) => any }",
+        "resolvedType": "{ ListboxVirtualizer: (props: ListboxVirtualizerSlotsProps) => any }",
         "description": "Slots for the ListboxVirtualizer component.",
         "descriptionKey": "api.generated.headless_src_components_listbox_types.listboxvirtualizerslots.slots",
         "sourcePath": "headless/src/components/listbox/types.ts",

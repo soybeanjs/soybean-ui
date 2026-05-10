@@ -284,13 +284,35 @@
                 "name": "AlertCloseProps",
                 "kind": "interface",
                 "type": "AlertCloseProps",
-                "resolvedType": "{ asChild?: boolean; as?: AsTag | Component }",
+                "resolvedType": "{ type?: ButtonType; disabled?: boolean; asChild?: boolean; as?: AsTag | Component }",
                 "description": "Properties for the AlertClose component.",
                 "descriptionKey": "api.generated.headless_src_components_alert_types.alertcloseprops",
                 "sourcePath": "headless/src/components/alert/types.ts",
                 "typeParameters": [],
                 "external": false,
                 "members": [
+                  {
+                    "name": "type",
+                    "type": "ButtonType",
+                    "required": false,
+                    "description": "The type of the button element. Can be one of 'button', 'submit', or 'reset'.",
+                    "descriptionKey": "api.generated.headless_src_components_alert_types.alertcloseprops.members.type",
+                    "default": "'button'",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/button/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "disabled",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Whether the component is disabled.",
+                    "descriptionKey": "api.generated.headless_src_components_alert_types.alertcloseprops.members.disabled",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/button/types.ts",
+                    "referencedTypes": []
+                  },
                   {
                     "name": "asChild",
                     "type": "boolean",
@@ -337,7 +359,7 @@
         "kind": "emits",
         "name": "AlertEmits",
         "type": "TypeAlias AlertEmits: AlertCompactEmits",
-        "resolvedType": "{ \"update:open\": [open: boolean] }",
+        "resolvedType": "{ \"update:open\": [open: boolean]; close: [event: PointerEvent] }",
         "description": "Events for the Alert component.",
         "descriptionKey": "api.generated.src_components_alert_types.alertemits.emits",
         "sourcePath": "src/components/alert/types.ts",
@@ -353,16 +375,40 @@
             "descriptionKey": "api.generated.src_components_alert_types.alertemits.callables.update_open",
             "sourcePath": "headless/src/components/alert/types.ts",
             "referencedTypes": []
+          },
+          {
+            "name": "close",
+            "type": "[event: PointerEvent]",
+            "parameters": "event: PointerEvent",
+            "required": true,
+            "description": "Emitted when the close button is clicked.",
+            "descriptionKey": "api.generated.src_components_alert_types.alertemits.callables.close",
+            "sourcePath": "headless/src/components/alert/types.ts",
+            "referencedTypes": [
+              {
+                "name": "PointerEvent",
+                "kind": "interface",
+                "type": "PointerEvent",
+                "resolvedType": null,
+                "description": "The **`PointerEvent`** interface represents the state of a DOM event produced by a pointer such as the geometry of the contact point, the device type that generated the event, the amount of pressure that was applied on the contact surface, etc.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/PointerEvent)",
+                "descriptionKey": "api.generated.node_modules_pnpm_typescript_6_0_3_node_modules_typescript_lib_lib_dom_d.pointerevent",
+                "sourcePath": "node_modules/.pnpm/typescript@6.0.3/node_modules/typescript/lib/lib.dom.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
           }
         ],
         "referencedTypes": [
           {
-            "name": "AlertRootEmits",
+            "name": "AlertCompactEmits",
             "kind": "typeAlias",
-            "type": "{ 'update:open': [open: boolean]; }",
-            "resolvedType": "{ \"update:open\": [open: boolean] }",
-            "description": "Events for the AlertRoot component.",
-            "descriptionKey": "api.generated.headless_src_components_alert_types.alertrootemits",
+            "type": "import(\"@soybeanjs/headless\").AlertRootEmits & import(\"../../../node_modules/@soybeanjs/headless/src/components/alert/types\").AlertCloseEmits",
+            "resolvedType": "{ \"update:open\": [open: boolean]; close: [event: PointerEvent] }",
+            "description": "Events for the AlertCompact component.",
+            "descriptionKey": "api.generated.headless_src_components_alert_types.alertcompactemits",
             "sourcePath": "headless/src/components/alert/types.ts",
             "typeParameters": [],
             "external": false,
@@ -374,7 +420,17 @@
                 "parameters": "open: boolean",
                 "required": true,
                 "description": "Emitted when the open changes.",
-                "descriptionKey": "api.generated.headless_src_components_alert_types.alertrootemits.callables.update_open",
+                "descriptionKey": "api.generated.headless_src_components_alert_types.alertcompactemits.callables.update_open",
+                "sourcePath": "headless/src/components/alert/types.ts",
+                "referencedTypes": []
+              },
+              {
+                "name": "close",
+                "type": "[event: PointerEvent]",
+                "parameters": "event: PointerEvent",
+                "required": true,
+                "description": "Emitted when the close button is clicked.",
+                "descriptionKey": "api.generated.headless_src_components_alert_types.alertcompactemits.callables.close",
                 "sourcePath": "headless/src/components/alert/types.ts",
                 "referencedTypes": []
               }
@@ -386,7 +442,7 @@
         "kind": "slots",
         "name": "AlertSlots",
         "type": "TypeAlias AlertSlots: AlertCompactSlots",
-        "resolvedType": "{ default?: (() => any); leading?: (() => any); title?: (() => any); description?: (() => any); trailing?: (() => any); close?: (() => any) }",
+        "resolvedType": "{ AlertClose?: (() => any); leading?: (() => any); title?: (() => any); description?: (() => any); trailing?: (() => any); close?: (() => any) }",
         "description": "Slots for the Alert component.",
         "descriptionKey": "api.generated.src_components_alert_types.alertslots.slots",
         "sourcePath": "src/components/alert/types.ts",
@@ -458,8 +514,8 @@
           {
             "name": "AlertCompactSlots",
             "kind": "typeAlias",
-            "type": "{ default?: () => any; leading?: () => any; title?: () => any; description?: () => any; trailing?: () => any; close?: () => any; }",
-            "resolvedType": "{ default?: (() => any); leading?: (() => any); title?: (() => any); description?: (() => any); trailing?: (() => any); close?: (() => any) }",
+            "type": "{ AlertClose?: () => any; leading?: () => any; title?: () => any; description?: () => any; trailing?: () => any; close?: () => any; }",
+            "resolvedType": "{ AlertClose?: (() => any); leading?: (() => any); title?: (() => any); description?: (() => any); trailing?: (() => any); close?: (() => any) }",
             "description": "Slots for the AlertCompact component.",
             "descriptionKey": "api.generated.headless_src_components_alert_types.alertcompactslots",
             "sourcePath": "headless/src/components/alert/types.ts",
@@ -537,12 +593,48 @@
         "kind": "props",
         "name": "AlertCloseProps",
         "type": "Interface AlertCloseProps",
-        "resolvedType": "{ asChild?: boolean; as?: AsTag | Component }",
+        "resolvedType": "{ type?: ButtonType; disabled?: boolean; asChild?: boolean; as?: AsTag | Component }",
         "description": "Properties for the AlertClose component.",
         "descriptionKey": "api.generated.headless_src_components_alert_types.alertcloseprops.props",
         "sourcePath": "headless/src/components/alert/types.ts",
         "typeParameters": [],
         "members": [
+          {
+            "name": "type",
+            "type": "ButtonType",
+            "required": false,
+            "description": "The type of the button element. Can be one of 'button', 'submit', or 'reset'.",
+            "descriptionKey": "api.generated.headless_src_components_alert_types.alertcloseprops.members.type",
+            "default": "'button'",
+            "inheritedFrom": "ButtonProps.type",
+            "sourcePath": "headless/src/components/button/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ButtonType",
+                "kind": "typeAlias",
+                "type": "'button' | 'submit' | 'reset'",
+                "resolvedType": "'button' | 'submit' | 'reset'",
+                "description": "Supported button values.",
+                "descriptionKey": "api.generated.headless_src_components_button_types.buttontype",
+                "sourcePath": "headless/src/components/button/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "disabled",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether the component is disabled.",
+            "descriptionKey": "api.generated.headless_src_components_alert_types.alertcloseprops.members.disabled",
+            "default": null,
+            "inheritedFrom": "ButtonProps.disabled",
+            "sourcePath": "headless/src/components/button/types.ts",
+            "referencedTypes": []
+          },
           {
             "name": "asChild",
             "type": "boolean",
@@ -550,7 +642,7 @@
             "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
             "descriptionKey": "api.generated.headless_src_components_alert_types.alertcloseprops.members.aschild",
             "default": null,
-            "inheritedFrom": "PrimitiveProps.asChild",
+            "inheritedFrom": "ButtonProps.asChild",
             "sourcePath": "headless/src/components/primitive/types.ts",
             "referencedTypes": []
           },
@@ -561,7 +653,7 @@
             "description": "The element or component this component should render as. Can be overwrite by `asChild`",
             "descriptionKey": "api.generated.headless_src_components_alert_types.alertcloseprops.members.as",
             "default": "'div'",
-            "inheritedFrom": "PrimitiveProps.as",
+            "inheritedFrom": "ButtonProps.as",
             "sourcePath": "headless/src/components/primitive/types.ts",
             "referencedTypes": [
               {
@@ -570,8 +662,8 @@
                 "type": "Component",
                 "resolvedType": null,
                 "description": "A type used in public APIs where a component type is expected.\nThe constructor type is an artificial type returned by defineComponent().",
-                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_33_node_modules_vue_runtime_core_dist_runtime_core_d.component",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_34_node_modules_vue_runtime_core_dist_runtime_core_d.component",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.34/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
                 "typeParameters": [
                   "PropsOrInstance = any",
                   "RawBindings = any",
@@ -589,6 +681,44 @@
           }
         ],
         "callables": [],
+        "referencedTypes": []
+      },
+      "emits": {
+        "kind": "emits",
+        "name": "AlertCloseEmits",
+        "type": "TypeAlias AlertCloseEmits",
+        "resolvedType": "{ close: [event: PointerEvent] }",
+        "description": "Events for the AlertClose component.",
+        "descriptionKey": "api.generated.headless_src_components_alert_types.alertcloseemits.emits",
+        "sourcePath": "headless/src/components/alert/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [
+          {
+            "name": "close",
+            "type": "[event: PointerEvent]",
+            "parameters": "event: PointerEvent",
+            "required": true,
+            "description": "Emitted when the close button is clicked.",
+            "descriptionKey": "api.generated.headless_src_components_alert_types.alertcloseemits.callables.close",
+            "sourcePath": "headless/src/components/alert/types.ts",
+            "referencedTypes": [
+              {
+                "name": "PointerEvent",
+                "kind": "interface",
+                "type": "PointerEvent",
+                "resolvedType": null,
+                "description": "The **`PointerEvent`** interface represents the state of a DOM event produced by a pointer such as the geometry of the contact point, the device type that generated the event, the amount of pressure that was applied on the contact surface, etc.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/PointerEvent)",
+                "descriptionKey": "api.generated.node_modules_pnpm_typescript_6_0_3_node_modules_typescript_lib_lib_dom_d.pointerevent",
+                "sourcePath": "node_modules/.pnpm/typescript@6.0.3/node_modules/typescript/lib/lib.dom.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
         "referencedTypes": []
       }
     },
@@ -750,13 +880,35 @@
                 "name": "AlertCloseProps",
                 "kind": "interface",
                 "type": "AlertCloseProps",
-                "resolvedType": "{ asChild?: boolean; as?: AsTag | Component }",
+                "resolvedType": "{ type?: ButtonType; disabled?: boolean; asChild?: boolean; as?: AsTag | Component }",
                 "description": "Properties for the AlertClose component.",
                 "descriptionKey": "api.generated.headless_src_components_alert_types.alertcloseprops",
                 "sourcePath": "headless/src/components/alert/types.ts",
                 "typeParameters": [],
                 "external": false,
                 "members": [
+                  {
+                    "name": "type",
+                    "type": "ButtonType",
+                    "required": false,
+                    "description": "The type of the button element. Can be one of 'button', 'submit', or 'reset'.",
+                    "descriptionKey": "api.generated.headless_src_components_alert_types.alertcloseprops.members.type",
+                    "default": "'button'",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/button/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "disabled",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Whether the component is disabled.",
+                    "descriptionKey": "api.generated.headless_src_components_alert_types.alertcloseprops.members.disabled",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/button/types.ts",
+                    "referencedTypes": []
+                  },
                   {
                     "name": "asChild",
                     "type": "boolean",
@@ -802,8 +954,8 @@
       "emits": {
         "kind": "emits",
         "name": "AlertCompactEmits",
-        "type": "TypeAlias AlertCompactEmits: AlertRootEmits",
-        "resolvedType": "{ \"update:open\": [open: boolean] }",
+        "type": "TypeAlias AlertCompactEmits: AlertRootEmits & AlertCloseEmits",
+        "resolvedType": "{ \"update:open\": [open: boolean]; close: [event: PointerEvent] }",
         "description": "Events for the AlertCompact component.",
         "descriptionKey": "api.generated.headless_src_components_alert_types.alertcompactemits.emits",
         "sourcePath": "headless/src/components/alert/types.ts",
@@ -819,40 +971,39 @@
             "descriptionKey": "api.generated.headless_src_components_alert_types.alertcompactemits.callables.update_open",
             "sourcePath": "headless/src/components/alert/types.ts",
             "referencedTypes": []
-          }
-        ],
-        "referencedTypes": [
+          },
           {
-            "name": "AlertRootEmits",
-            "kind": "typeAlias",
-            "type": "{ 'update:open': [open: boolean]; }",
-            "resolvedType": "{ \"update:open\": [open: boolean] }",
-            "description": "Events for the AlertRoot component.",
-            "descriptionKey": "api.generated.headless_src_components_alert_types.alertrootemits",
+            "name": "close",
+            "type": "[event: PointerEvent]",
+            "parameters": "event: PointerEvent",
+            "required": true,
+            "description": "Emitted when the close button is clicked.",
+            "descriptionKey": "api.generated.headless_src_components_alert_types.alertcompactemits.callables.close",
             "sourcePath": "headless/src/components/alert/types.ts",
-            "typeParameters": [],
-            "external": false,
-            "members": [],
-            "callables": [
+            "referencedTypes": [
               {
-                "name": "update:open",
-                "type": "[open: boolean]",
-                "parameters": "open: boolean",
-                "required": true,
-                "description": "Emitted when the open changes.",
-                "descriptionKey": "api.generated.headless_src_components_alert_types.alertrootemits.callables.update_open",
-                "sourcePath": "headless/src/components/alert/types.ts",
-                "referencedTypes": []
+                "name": "PointerEvent",
+                "kind": "interface",
+                "type": "PointerEvent",
+                "resolvedType": null,
+                "description": "The **`PointerEvent`** interface represents the state of a DOM event produced by a pointer such as the geometry of the contact point, the device type that generated the event, the amount of pressure that was applied on the contact surface, etc.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/PointerEvent)",
+                "descriptionKey": "api.generated.node_modules_pnpm_typescript_6_0_3_node_modules_typescript_lib_lib_dom_d.pointerevent",
+                "sourcePath": "node_modules/.pnpm/typescript@6.0.3/node_modules/typescript/lib/lib.dom.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
               }
             ]
           }
-        ]
+        ],
+        "referencedTypes": []
       },
       "slots": {
         "kind": "slots",
         "name": "AlertCompactSlots",
         "type": "TypeAlias AlertCompactSlots",
-        "resolvedType": "{ default?: (() => any); leading?: (() => any); title?: (() => any); description?: (() => any); trailing?: (() => any); close?: (() => any) }",
+        "resolvedType": "{ AlertClose?: (() => any); leading?: (() => any); title?: (() => any); description?: (() => any); trailing?: (() => any); close?: (() => any) }",
         "description": "Slots for the AlertCompact component.",
         "descriptionKey": "api.generated.headless_src_components_alert_types.alertcompactslots.slots",
         "sourcePath": "headless/src/components/alert/types.ts",

@@ -162,7 +162,7 @@
                 "name": "CheckboxControlProps",
                 "kind": "interface",
                 "type": "CheckboxControlProps",
-                "resolvedType": "{ id?: string }",
+                "resolvedType": "{ id?: string; type?: ButtonType; disabled?: boolean; asChild?: boolean; as?: AsTag | Component }",
                 "description": "Properties for the CheckboxControl component.",
                 "descriptionKey": "api.generated.headless_src_components_checkbox_types.checkboxcontrolprops",
                 "sourcePath": "headless/src/components/checkbox/types.ts",
@@ -178,6 +178,50 @@
                     "default": null,
                     "inheritedFrom": null,
                     "sourcePath": "headless/src/components/checkbox/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "type",
+                    "type": "ButtonType",
+                    "required": false,
+                    "description": "The type of the button element. Can be one of 'button', 'submit', or 'reset'.",
+                    "descriptionKey": "api.generated.headless_src_components_checkbox_types.checkboxcontrolprops.members.type",
+                    "default": "'button'",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/button/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "disabled",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Whether the component is disabled.",
+                    "descriptionKey": "api.generated.headless_src_components_checkbox_types.checkboxcontrolprops.members.disabled",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/button/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "asChild",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+                    "descriptionKey": "api.generated.headless_src_components_checkbox_types.checkboxcontrolprops.members.aschild",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "as",
+                    "type": "AsTag | Component",
+                    "required": false,
+                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+                    "descriptionKey": "api.generated.headless_src_components_checkbox_types.checkboxcontrolprops.members.as",
+                    "default": "'div'",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
                     "referencedTypes": []
                   }
                 ],
@@ -199,13 +243,24 @@
                 "name": "CheckboxIndicatorProps",
                 "kind": "interface",
                 "type": "CheckboxIndicatorProps",
-                "resolvedType": "{ asChild?: boolean; as?: AsTag | Component; forceMount?: boolean }",
+                "resolvedType": "{ forceMount?: boolean; asChild?: boolean; as?: AsTag | Component }",
                 "description": "Properties for the CheckboxIndicator component.",
                 "descriptionKey": "api.generated.headless_src_components_checkbox_types.checkboxindicatorprops",
                 "sourcePath": "headless/src/components/checkbox/types.ts",
                 "typeParameters": [],
                 "external": false,
                 "members": [
+                  {
+                    "name": "forceMount",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Used to force mounting when more control is needed.\n\nUseful when controlling animation with Vue animation libraries.",
+                    "descriptionKey": "api.generated.headless_src_components_checkbox_types.checkboxindicatorprops.members.forcemount",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/types/component.ts",
+                    "referencedTypes": []
+                  },
                   {
                     "name": "asChild",
                     "type": "boolean",
@@ -226,17 +281,6 @@
                     "default": "'div'",
                     "inheritedFrom": null,
                     "sourcePath": "headless/src/components/primitive/types.ts",
-                    "referencedTypes": []
-                  },
-                  {
-                    "name": "forceMount",
-                    "type": "boolean",
-                    "required": false,
-                    "description": "Used to force mounting when more control is needed.\n\nUseful when controlling animation with Vue animation libraries.",
-                    "descriptionKey": "api.generated.headless_src_components_checkbox_types.checkboxindicatorprops.members.forcemount",
-                    "default": null,
-                    "inheritedFrom": null,
-                    "sourcePath": "headless/src/types/component.ts",
                     "referencedTypes": []
                   }
                 ],
@@ -623,7 +667,7 @@
                 "name": "CheckboxControlProps",
                 "kind": "interface",
                 "type": "CheckboxControlProps",
-                "resolvedType": "{ id?: string }",
+                "resolvedType": "{ id?: string; type?: ButtonType; disabled?: boolean; asChild?: boolean; as?: AsTag | Component }",
                 "description": "Properties for the CheckboxControl component.",
                 "descriptionKey": "api.generated.headless_src_components_checkbox_types.checkboxcontrolprops",
                 "sourcePath": "headless/src/components/checkbox/types.ts",
@@ -639,6 +683,50 @@
                     "default": null,
                     "inheritedFrom": null,
                     "sourcePath": "headless/src/components/checkbox/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "type",
+                    "type": "ButtonType",
+                    "required": false,
+                    "description": "The type of the button element. Can be one of 'button', 'submit', or 'reset'.",
+                    "descriptionKey": "api.generated.headless_src_components_checkbox_types.checkboxcontrolprops.members.type",
+                    "default": "'button'",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/button/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "disabled",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Whether the component is disabled.",
+                    "descriptionKey": "api.generated.headless_src_components_checkbox_types.checkboxcontrolprops.members.disabled",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/button/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "asChild",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+                    "descriptionKey": "api.generated.headless_src_components_checkbox_types.checkboxcontrolprops.members.aschild",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "as",
+                    "type": "AsTag | Component",
+                    "required": false,
+                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+                    "descriptionKey": "api.generated.headless_src_components_checkbox_types.checkboxcontrolprops.members.as",
+                    "default": "'div'",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
                     "referencedTypes": []
                   }
                 ],
@@ -660,13 +748,24 @@
                 "name": "CheckboxIndicatorProps",
                 "kind": "interface",
                 "type": "CheckboxIndicatorProps",
-                "resolvedType": "{ asChild?: boolean; as?: AsTag | Component; forceMount?: boolean }",
+                "resolvedType": "{ forceMount?: boolean; asChild?: boolean; as?: AsTag | Component }",
                 "description": "Properties for the CheckboxIndicator component.",
                 "descriptionKey": "api.generated.headless_src_components_checkbox_types.checkboxindicatorprops",
                 "sourcePath": "headless/src/components/checkbox/types.ts",
                 "typeParameters": [],
                 "external": false,
                 "members": [
+                  {
+                    "name": "forceMount",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Used to force mounting when more control is needed.\n\nUseful when controlling animation with Vue animation libraries.",
+                    "descriptionKey": "api.generated.headless_src_components_checkbox_types.checkboxindicatorprops.members.forcemount",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/types/component.ts",
+                    "referencedTypes": []
+                  },
                   {
                     "name": "asChild",
                     "type": "boolean",
@@ -687,17 +786,6 @@
                     "default": "'div'",
                     "inheritedFrom": null,
                     "sourcePath": "headless/src/components/primitive/types.ts",
-                    "referencedTypes": []
-                  },
-                  {
-                    "name": "forceMount",
-                    "type": "boolean",
-                    "required": false,
-                    "description": "Used to force mounting when more control is needed.\n\nUseful when controlling animation with Vue animation libraries.",
-                    "descriptionKey": "api.generated.headless_src_components_checkbox_types.checkboxindicatorprops.members.forcemount",
-                    "default": null,
-                    "inheritedFrom": null,
-                    "sourcePath": "headless/src/types/component.ts",
                     "referencedTypes": []
                   }
                 ],
@@ -973,7 +1061,7 @@
                 "name": "CheckboxControlProps",
                 "kind": "interface",
                 "type": "CheckboxControlProps",
-                "resolvedType": "{ id?: string }",
+                "resolvedType": "{ id?: string; type?: ButtonType; disabled?: boolean; asChild?: boolean; as?: AsTag | Component }",
                 "description": "Properties for the CheckboxControl component.",
                 "descriptionKey": "api.generated.headless_src_components_checkbox_types.checkboxcontrolprops",
                 "sourcePath": "headless/src/components/checkbox/types.ts",
@@ -989,6 +1077,50 @@
                     "default": null,
                     "inheritedFrom": null,
                     "sourcePath": "headless/src/components/checkbox/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "type",
+                    "type": "ButtonType",
+                    "required": false,
+                    "description": "The type of the button element. Can be one of 'button', 'submit', or 'reset'.",
+                    "descriptionKey": "api.generated.headless_src_components_checkbox_types.checkboxcontrolprops.members.type",
+                    "default": "'button'",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/button/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "disabled",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Whether the component is disabled.",
+                    "descriptionKey": "api.generated.headless_src_components_checkbox_types.checkboxcontrolprops.members.disabled",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/button/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "asChild",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+                    "descriptionKey": "api.generated.headless_src_components_checkbox_types.checkboxcontrolprops.members.aschild",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "as",
+                    "type": "AsTag | Component",
+                    "required": false,
+                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+                    "descriptionKey": "api.generated.headless_src_components_checkbox_types.checkboxcontrolprops.members.as",
+                    "default": "'div'",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
                     "referencedTypes": []
                   }
                 ],
@@ -1010,13 +1142,24 @@
                 "name": "CheckboxIndicatorProps",
                 "kind": "interface",
                 "type": "CheckboxIndicatorProps",
-                "resolvedType": "{ asChild?: boolean; as?: AsTag | Component; forceMount?: boolean }",
+                "resolvedType": "{ forceMount?: boolean; asChild?: boolean; as?: AsTag | Component }",
                 "description": "Properties for the CheckboxIndicator component.",
                 "descriptionKey": "api.generated.headless_src_components_checkbox_types.checkboxindicatorprops",
                 "sourcePath": "headless/src/components/checkbox/types.ts",
                 "typeParameters": [],
                 "external": false,
                 "members": [
+                  {
+                    "name": "forceMount",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Used to force mounting when more control is needed.\n\nUseful when controlling animation with Vue animation libraries.",
+                    "descriptionKey": "api.generated.headless_src_components_checkbox_types.checkboxindicatorprops.members.forcemount",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/types/component.ts",
+                    "referencedTypes": []
+                  },
                   {
                     "name": "asChild",
                     "type": "boolean",
@@ -1037,17 +1180,6 @@
                     "default": "'div'",
                     "inheritedFrom": null,
                     "sourcePath": "headless/src/components/primitive/types.ts",
-                    "referencedTypes": []
-                  },
-                  {
-                    "name": "forceMount",
-                    "type": "boolean",
-                    "required": false,
-                    "description": "Used to force mounting when more control is needed.\n\nUseful when controlling animation with Vue animation libraries.",
-                    "descriptionKey": "api.generated.headless_src_components_checkbox_types.checkboxindicatorprops.members.forcemount",
-                    "default": null,
-                    "inheritedFrom": null,
-                    "sourcePath": "headless/src/types/component.ts",
                     "referencedTypes": []
                   }
                 ],
@@ -1515,7 +1647,7 @@
                 "name": "CheckboxControlProps",
                 "kind": "interface",
                 "type": "CheckboxControlProps",
-                "resolvedType": "{ id?: string }",
+                "resolvedType": "{ id?: string; type?: ButtonType; disabled?: boolean; asChild?: boolean; as?: AsTag | Component }",
                 "description": "Properties for the CheckboxControl component.",
                 "descriptionKey": "api.generated.headless_src_components_checkbox_types.checkboxcontrolprops",
                 "sourcePath": "headless/src/components/checkbox/types.ts",
@@ -1531,6 +1663,50 @@
                     "default": null,
                     "inheritedFrom": null,
                     "sourcePath": "headless/src/components/checkbox/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "type",
+                    "type": "ButtonType",
+                    "required": false,
+                    "description": "The type of the button element. Can be one of 'button', 'submit', or 'reset'.",
+                    "descriptionKey": "api.generated.headless_src_components_checkbox_types.checkboxcontrolprops.members.type",
+                    "default": "'button'",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/button/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "disabled",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Whether the component is disabled.",
+                    "descriptionKey": "api.generated.headless_src_components_checkbox_types.checkboxcontrolprops.members.disabled",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/button/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "asChild",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+                    "descriptionKey": "api.generated.headless_src_components_checkbox_types.checkboxcontrolprops.members.aschild",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "as",
+                    "type": "AsTag | Component",
+                    "required": false,
+                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+                    "descriptionKey": "api.generated.headless_src_components_checkbox_types.checkboxcontrolprops.members.as",
+                    "default": "'div'",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
                     "referencedTypes": []
                   }
                 ],
@@ -1552,13 +1728,24 @@
                 "name": "CheckboxIndicatorProps",
                 "kind": "interface",
                 "type": "CheckboxIndicatorProps",
-                "resolvedType": "{ asChild?: boolean; as?: AsTag | Component; forceMount?: boolean }",
+                "resolvedType": "{ forceMount?: boolean; asChild?: boolean; as?: AsTag | Component }",
                 "description": "Properties for the CheckboxIndicator component.",
                 "descriptionKey": "api.generated.headless_src_components_checkbox_types.checkboxindicatorprops",
                 "sourcePath": "headless/src/components/checkbox/types.ts",
                 "typeParameters": [],
                 "external": false,
                 "members": [
+                  {
+                    "name": "forceMount",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Used to force mounting when more control is needed.\n\nUseful when controlling animation with Vue animation libraries.",
+                    "descriptionKey": "api.generated.headless_src_components_checkbox_types.checkboxindicatorprops.members.forcemount",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/types/component.ts",
+                    "referencedTypes": []
+                  },
                   {
                     "name": "asChild",
                     "type": "boolean",
@@ -1579,17 +1766,6 @@
                     "default": "'div'",
                     "inheritedFrom": null,
                     "sourcePath": "headless/src/components/primitive/types.ts",
-                    "referencedTypes": []
-                  },
-                  {
-                    "name": "forceMount",
-                    "type": "boolean",
-                    "required": false,
-                    "description": "Used to force mounting when more control is needed.\n\nUseful when controlling animation with Vue animation libraries.",
-                    "descriptionKey": "api.generated.headless_src_components_checkbox_types.checkboxindicatorprops.members.forcemount",
-                    "default": null,
-                    "inheritedFrom": null,
-                    "sourcePath": "headless/src/types/component.ts",
                     "referencedTypes": []
                   }
                 ],
@@ -1929,7 +2105,7 @@
                 "name": "CheckboxControlProps",
                 "kind": "interface",
                 "type": "CheckboxControlProps",
-                "resolvedType": "{ id?: string }",
+                "resolvedType": "{ id?: string; type?: ButtonType; disabled?: boolean; asChild?: boolean; as?: AsTag | Component }",
                 "description": "Properties for the CheckboxControl component.",
                 "descriptionKey": "api.generated.headless_src_components_checkbox_types.checkboxcontrolprops",
                 "sourcePath": "headless/src/components/checkbox/types.ts",
@@ -1945,6 +2121,50 @@
                     "default": null,
                     "inheritedFrom": null,
                     "sourcePath": "headless/src/components/checkbox/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "type",
+                    "type": "ButtonType",
+                    "required": false,
+                    "description": "The type of the button element. Can be one of 'button', 'submit', or 'reset'.",
+                    "descriptionKey": "api.generated.headless_src_components_checkbox_types.checkboxcontrolprops.members.type",
+                    "default": "'button'",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/button/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "disabled",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Whether the component is disabled.",
+                    "descriptionKey": "api.generated.headless_src_components_checkbox_types.checkboxcontrolprops.members.disabled",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/button/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "asChild",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+                    "descriptionKey": "api.generated.headless_src_components_checkbox_types.checkboxcontrolprops.members.aschild",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "as",
+                    "type": "AsTag | Component",
+                    "required": false,
+                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+                    "descriptionKey": "api.generated.headless_src_components_checkbox_types.checkboxcontrolprops.members.as",
+                    "default": "'div'",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
                     "referencedTypes": []
                   }
                 ],
@@ -1966,13 +2186,24 @@
                 "name": "CheckboxIndicatorProps",
                 "kind": "interface",
                 "type": "CheckboxIndicatorProps",
-                "resolvedType": "{ asChild?: boolean; as?: AsTag | Component; forceMount?: boolean }",
+                "resolvedType": "{ forceMount?: boolean; asChild?: boolean; as?: AsTag | Component }",
                 "description": "Properties for the CheckboxIndicator component.",
                 "descriptionKey": "api.generated.headless_src_components_checkbox_types.checkboxindicatorprops",
                 "sourcePath": "headless/src/components/checkbox/types.ts",
                 "typeParameters": [],
                 "external": false,
                 "members": [
+                  {
+                    "name": "forceMount",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Used to force mounting when more control is needed.\n\nUseful when controlling animation with Vue animation libraries.",
+                    "descriptionKey": "api.generated.headless_src_components_checkbox_types.checkboxindicatorprops.members.forcemount",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/types/component.ts",
+                    "referencedTypes": []
+                  },
                   {
                     "name": "asChild",
                     "type": "boolean",
@@ -1993,17 +2224,6 @@
                     "default": "'div'",
                     "inheritedFrom": null,
                     "sourcePath": "headless/src/components/primitive/types.ts",
-                    "referencedTypes": []
-                  },
-                  {
-                    "name": "forceMount",
-                    "type": "boolean",
-                    "required": false,
-                    "description": "Used to force mounting when more control is needed.\n\nUseful when controlling animation with Vue animation libraries.",
-                    "descriptionKey": "api.generated.headless_src_components_checkbox_types.checkboxindicatorprops.members.forcemount",
-                    "default": null,
-                    "inheritedFrom": null,
-                    "sourcePath": "headless/src/types/component.ts",
                     "referencedTypes": []
                   }
                 ],
@@ -2240,7 +2460,7 @@
                 "name": "CheckboxControlProps",
                 "kind": "interface",
                 "type": "CheckboxControlProps",
-                "resolvedType": "{ id?: string }",
+                "resolvedType": "{ id?: string; type?: ButtonType; disabled?: boolean; asChild?: boolean; as?: AsTag | Component }",
                 "description": "Properties for the CheckboxControl component.",
                 "descriptionKey": "api.generated.headless_src_components_checkbox_types.checkboxcontrolprops",
                 "sourcePath": "headless/src/components/checkbox/types.ts",
@@ -2256,6 +2476,50 @@
                     "default": null,
                     "inheritedFrom": null,
                     "sourcePath": "headless/src/components/checkbox/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "type",
+                    "type": "ButtonType",
+                    "required": false,
+                    "description": "The type of the button element. Can be one of 'button', 'submit', or 'reset'.",
+                    "descriptionKey": "api.generated.headless_src_components_checkbox_types.checkboxcontrolprops.members.type",
+                    "default": "'button'",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/button/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "disabled",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Whether the component is disabled.",
+                    "descriptionKey": "api.generated.headless_src_components_checkbox_types.checkboxcontrolprops.members.disabled",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/button/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "asChild",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+                    "descriptionKey": "api.generated.headless_src_components_checkbox_types.checkboxcontrolprops.members.aschild",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "as",
+                    "type": "AsTag | Component",
+                    "required": false,
+                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+                    "descriptionKey": "api.generated.headless_src_components_checkbox_types.checkboxcontrolprops.members.as",
+                    "default": "'div'",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
                     "referencedTypes": []
                   }
                 ],
@@ -2277,13 +2541,24 @@
                 "name": "CheckboxIndicatorProps",
                 "kind": "interface",
                 "type": "CheckboxIndicatorProps",
-                "resolvedType": "{ asChild?: boolean; as?: AsTag | Component; forceMount?: boolean }",
+                "resolvedType": "{ forceMount?: boolean; asChild?: boolean; as?: AsTag | Component }",
                 "description": "Properties for the CheckboxIndicator component.",
                 "descriptionKey": "api.generated.headless_src_components_checkbox_types.checkboxindicatorprops",
                 "sourcePath": "headless/src/components/checkbox/types.ts",
                 "typeParameters": [],
                 "external": false,
                 "members": [
+                  {
+                    "name": "forceMount",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Used to force mounting when more control is needed.\n\nUseful when controlling animation with Vue animation libraries.",
+                    "descriptionKey": "api.generated.headless_src_components_checkbox_types.checkboxindicatorprops.members.forcemount",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/types/component.ts",
+                    "referencedTypes": []
+                  },
                   {
                     "name": "asChild",
                     "type": "boolean",
@@ -2304,17 +2579,6 @@
                     "default": "'div'",
                     "inheritedFrom": null,
                     "sourcePath": "headless/src/components/primitive/types.ts",
-                    "referencedTypes": []
-                  },
-                  {
-                    "name": "forceMount",
-                    "type": "boolean",
-                    "required": false,
-                    "description": "Used to force mounting when more control is needed.\n\nUseful when controlling animation with Vue animation libraries.",
-                    "descriptionKey": "api.generated.headless_src_components_checkbox_types.checkboxindicatorprops.members.forcemount",
-                    "default": null,
-                    "inheritedFrom": null,
-                    "sourcePath": "headless/src/types/component.ts",
                     "referencedTypes": []
                   }
                 ],
@@ -2523,7 +2787,7 @@
         "kind": "props",
         "name": "CheckboxControlProps",
         "type": "Interface CheckboxControlProps",
-        "resolvedType": "{ id?: string }",
+        "resolvedType": "{ id?: string; type?: ButtonType; disabled?: boolean; asChild?: boolean; as?: AsTag | Component }",
         "description": "Properties for the CheckboxControl component.",
         "descriptionKey": "api.generated.headless_src_components_checkbox_types.checkboxcontrolprops.props",
         "sourcePath": "headless/src/components/checkbox/types.ts",
@@ -2539,6 +2803,86 @@
             "inheritedFrom": null,
             "sourcePath": "headless/src/components/checkbox/types.ts",
             "referencedTypes": []
+          },
+          {
+            "name": "type",
+            "type": "ButtonType",
+            "required": false,
+            "description": "The type of the button element. Can be one of 'button', 'submit', or 'reset'.",
+            "descriptionKey": "api.generated.headless_src_components_checkbox_types.checkboxcontrolprops.members.type",
+            "default": "'button'",
+            "inheritedFrom": "ButtonProps.type",
+            "sourcePath": "headless/src/components/button/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ButtonType",
+                "kind": "typeAlias",
+                "type": "'button' | 'submit' | 'reset'",
+                "resolvedType": "'button' | 'submit' | 'reset'",
+                "description": "Supported button values.",
+                "descriptionKey": "api.generated.headless_src_components_button_types.buttontype",
+                "sourcePath": "headless/src/components/button/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "disabled",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether the component is disabled.",
+            "descriptionKey": "api.generated.headless_src_components_checkbox_types.checkboxcontrolprops.members.disabled",
+            "default": null,
+            "inheritedFrom": "ButtonProps.disabled",
+            "sourcePath": "headless/src/components/button/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "asChild",
+            "type": "boolean",
+            "required": false,
+            "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+            "descriptionKey": "api.generated.headless_src_components_checkbox_types.checkboxcontrolprops.members.aschild",
+            "default": null,
+            "inheritedFrom": "ButtonProps.asChild",
+            "sourcePath": "headless/src/components/primitive/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "as",
+            "type": "AsTag | Component",
+            "required": false,
+            "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+            "descriptionKey": "api.generated.headless_src_components_checkbox_types.checkboxcontrolprops.members.as",
+            "default": "'div'",
+            "inheritedFrom": "ButtonProps.as",
+            "sourcePath": "headless/src/components/primitive/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Component",
+                "kind": "typeAlias",
+                "type": "Component",
+                "resolvedType": null,
+                "description": "A type used in public APIs where a component type is expected.\nThe constructor type is an artificial type returned by defineComponent().",
+                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_34_node_modules_vue_runtime_core_dist_runtime_core_d.component",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.34/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [
+                  "PropsOrInstance = any",
+                  "RawBindings = any",
+                  "D = any",
+                  "C extends ComputedOptions = ComputedOptions",
+                  "M extends MethodOptions = MethodOptions",
+                  "E extends EmitsOptions | Record<string, any[]> = {}",
+                  "S extends Record<string, any> = any"
+                ],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
           }
         ],
         "callables": [],
@@ -2809,7 +3153,7 @@
                 "name": "CheckboxControlProps",
                 "kind": "interface",
                 "type": "CheckboxControlProps",
-                "resolvedType": "{ id?: string }",
+                "resolvedType": "{ id?: string; type?: ButtonType; disabled?: boolean; asChild?: boolean; as?: AsTag | Component }",
                 "description": "Properties for the CheckboxControl component.",
                 "descriptionKey": "api.generated.headless_src_components_checkbox_types.checkboxcontrolprops",
                 "sourcePath": "headless/src/components/checkbox/types.ts",
@@ -2825,6 +3169,50 @@
                     "default": null,
                     "inheritedFrom": null,
                     "sourcePath": "headless/src/components/checkbox/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "type",
+                    "type": "ButtonType",
+                    "required": false,
+                    "description": "The type of the button element. Can be one of 'button', 'submit', or 'reset'.",
+                    "descriptionKey": "api.generated.headless_src_components_checkbox_types.checkboxcontrolprops.members.type",
+                    "default": "'button'",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/button/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "disabled",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Whether the component is disabled.",
+                    "descriptionKey": "api.generated.headless_src_components_checkbox_types.checkboxcontrolprops.members.disabled",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/button/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "asChild",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+                    "descriptionKey": "api.generated.headless_src_components_checkbox_types.checkboxcontrolprops.members.aschild",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "as",
+                    "type": "AsTag | Component",
+                    "required": false,
+                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+                    "descriptionKey": "api.generated.headless_src_components_checkbox_types.checkboxcontrolprops.members.as",
+                    "default": "'div'",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
                     "referencedTypes": []
                   }
                 ],
@@ -2846,13 +3234,24 @@
                 "name": "CheckboxIndicatorProps",
                 "kind": "interface",
                 "type": "CheckboxIndicatorProps",
-                "resolvedType": "{ asChild?: boolean; as?: AsTag | Component; forceMount?: boolean }",
+                "resolvedType": "{ forceMount?: boolean; asChild?: boolean; as?: AsTag | Component }",
                 "description": "Properties for the CheckboxIndicator component.",
                 "descriptionKey": "api.generated.headless_src_components_checkbox_types.checkboxindicatorprops",
                 "sourcePath": "headless/src/components/checkbox/types.ts",
                 "typeParameters": [],
                 "external": false,
                 "members": [
+                  {
+                    "name": "forceMount",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Used to force mounting when more control is needed.\n\nUseful when controlling animation with Vue animation libraries.",
+                    "descriptionKey": "api.generated.headless_src_components_checkbox_types.checkboxindicatorprops.members.forcemount",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/types/component.ts",
+                    "referencedTypes": []
+                  },
                   {
                     "name": "asChild",
                     "type": "boolean",
@@ -2873,17 +3272,6 @@
                     "default": "'div'",
                     "inheritedFrom": null,
                     "sourcePath": "headless/src/components/primitive/types.ts",
-                    "referencedTypes": []
-                  },
-                  {
-                    "name": "forceMount",
-                    "type": "boolean",
-                    "required": false,
-                    "description": "Used to force mounting when more control is needed.\n\nUseful when controlling animation with Vue animation libraries.",
-                    "descriptionKey": "api.generated.headless_src_components_checkbox_types.checkboxindicatorprops.members.forcemount",
-                    "default": null,
-                    "inheritedFrom": null,
-                    "sourcePath": "headless/src/types/component.ts",
                     "referencedTypes": []
                   }
                 ],
@@ -3223,7 +3611,7 @@
                 "name": "CheckboxControlProps",
                 "kind": "interface",
                 "type": "CheckboxControlProps",
-                "resolvedType": "{ id?: string }",
+                "resolvedType": "{ id?: string; type?: ButtonType; disabled?: boolean; asChild?: boolean; as?: AsTag | Component }",
                 "description": "Properties for the CheckboxControl component.",
                 "descriptionKey": "api.generated.headless_src_components_checkbox_types.checkboxcontrolprops",
                 "sourcePath": "headless/src/components/checkbox/types.ts",
@@ -3239,6 +3627,50 @@
                     "default": null,
                     "inheritedFrom": null,
                     "sourcePath": "headless/src/components/checkbox/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "type",
+                    "type": "ButtonType",
+                    "required": false,
+                    "description": "The type of the button element. Can be one of 'button', 'submit', or 'reset'.",
+                    "descriptionKey": "api.generated.headless_src_components_checkbox_types.checkboxcontrolprops.members.type",
+                    "default": "'button'",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/button/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "disabled",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Whether the component is disabled.",
+                    "descriptionKey": "api.generated.headless_src_components_checkbox_types.checkboxcontrolprops.members.disabled",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/button/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "asChild",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+                    "descriptionKey": "api.generated.headless_src_components_checkbox_types.checkboxcontrolprops.members.aschild",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "as",
+                    "type": "AsTag | Component",
+                    "required": false,
+                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+                    "descriptionKey": "api.generated.headless_src_components_checkbox_types.checkboxcontrolprops.members.as",
+                    "default": "'div'",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
                     "referencedTypes": []
                   }
                 ],
@@ -3260,13 +3692,24 @@
                 "name": "CheckboxIndicatorProps",
                 "kind": "interface",
                 "type": "CheckboxIndicatorProps",
-                "resolvedType": "{ asChild?: boolean; as?: AsTag | Component; forceMount?: boolean }",
+                "resolvedType": "{ forceMount?: boolean; asChild?: boolean; as?: AsTag | Component }",
                 "description": "Properties for the CheckboxIndicator component.",
                 "descriptionKey": "api.generated.headless_src_components_checkbox_types.checkboxindicatorprops",
                 "sourcePath": "headless/src/components/checkbox/types.ts",
                 "typeParameters": [],
                 "external": false,
                 "members": [
+                  {
+                    "name": "forceMount",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Used to force mounting when more control is needed.\n\nUseful when controlling animation with Vue animation libraries.",
+                    "descriptionKey": "api.generated.headless_src_components_checkbox_types.checkboxindicatorprops.members.forcemount",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/types/component.ts",
+                    "referencedTypes": []
+                  },
                   {
                     "name": "asChild",
                     "type": "boolean",
@@ -3287,17 +3730,6 @@
                     "default": "'div'",
                     "inheritedFrom": null,
                     "sourcePath": "headless/src/components/primitive/types.ts",
-                    "referencedTypes": []
-                  },
-                  {
-                    "name": "forceMount",
-                    "type": "boolean",
-                    "required": false,
-                    "description": "Used to force mounting when more control is needed.\n\nUseful when controlling animation with Vue animation libraries.",
-                    "descriptionKey": "api.generated.headless_src_components_checkbox_types.checkboxindicatorprops.members.forcemount",
-                    "default": null,
-                    "inheritedFrom": null,
-                    "sourcePath": "headless/src/types/component.ts",
                     "referencedTypes": []
                   }
                 ],
@@ -3670,12 +4102,23 @@
         "kind": "props",
         "name": "CheckboxIndicatorProps",
         "type": "Interface CheckboxIndicatorProps",
-        "resolvedType": "{ asChild?: boolean; as?: AsTag | Component; forceMount?: boolean }",
+        "resolvedType": "{ forceMount?: boolean; asChild?: boolean; as?: AsTag | Component }",
         "description": "Properties for the CheckboxIndicator component.",
         "descriptionKey": "api.generated.headless_src_components_checkbox_types.checkboxindicatorprops.props",
         "sourcePath": "headless/src/components/checkbox/types.ts",
         "typeParameters": [],
         "members": [
+          {
+            "name": "forceMount",
+            "type": "boolean",
+            "required": false,
+            "description": "Used to force mounting when more control is needed.\n\nUseful when controlling animation with Vue animation libraries.",
+            "descriptionKey": "api.generated.headless_src_components_checkbox_types.checkboxindicatorprops.members.forcemount",
+            "default": null,
+            "inheritedFrom": "forceMount",
+            "sourcePath": "headless/src/types/component.ts",
+            "referencedTypes": []
+          },
           {
             "name": "asChild",
             "type": "boolean",
@@ -3683,7 +4126,7 @@
             "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
             "descriptionKey": "api.generated.headless_src_components_checkbox_types.checkboxindicatorprops.members.aschild",
             "default": null,
-            "inheritedFrom": "PrimitiveProps.asChild",
+            "inheritedFrom": "PrimitiveWithBaseProps.asChild",
             "sourcePath": "headless/src/components/primitive/types.ts",
             "referencedTypes": []
           },
@@ -3694,7 +4137,7 @@
             "description": "The element or component this component should render as. Can be overwrite by `asChild`",
             "descriptionKey": "api.generated.headless_src_components_checkbox_types.checkboxindicatorprops.members.as",
             "default": "'div'",
-            "inheritedFrom": "PrimitiveProps.as",
+            "inheritedFrom": "PrimitiveWithBaseProps.as",
             "sourcePath": "headless/src/components/primitive/types.ts",
             "referencedTypes": [
               {
@@ -3703,8 +4146,8 @@
                 "type": "Component",
                 "resolvedType": null,
                 "description": "A type used in public APIs where a component type is expected.\nThe constructor type is an artificial type returned by defineComponent().",
-                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_33_node_modules_vue_runtime_core_dist_runtime_core_d.component",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_34_node_modules_vue_runtime_core_dist_runtime_core_d.component",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.34/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
                 "typeParameters": [
                   "PropsOrInstance = any",
                   "RawBindings = any",
@@ -3719,24 +4162,27 @@
                 "callables": []
               }
             ]
-          },
-          {
-            "name": "forceMount",
-            "type": "boolean",
-            "required": false,
-            "description": "Used to force mounting when more control is needed.\n\nUseful when controlling animation with Vue animation libraries.",
-            "descriptionKey": "api.generated.headless_src_components_checkbox_types.checkboxindicatorprops.members.forcemount",
-            "default": null,
-            "inheritedFrom": "forceMount",
-            "sourcePath": "headless/src/types/component.ts",
-            "referencedTypes": []
           }
         ],
         "callables": [],
         "referencedTypes": []
       }
     },
-    "CheckboxLabel": {},
+    "CheckboxLabel": {
+      "props": {
+        "kind": "props",
+        "name": "CheckboxLabelProps",
+        "type": "Interface CheckboxLabelProps",
+        "resolvedType": null,
+        "description": "Properties for the Label component.",
+        "descriptionKey": "api.generated.headless_src_components_label_types.checkboxlabelprops.props",
+        "sourcePath": "headless/src/components/label/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
     "CheckboxRoot": {
       "props": {
         "kind": "props",

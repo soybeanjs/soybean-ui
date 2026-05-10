@@ -1,21 +1,6 @@
 {
   "component": "separator",
   "symbols": {
-    "ContextMenuSeparator": {
-      "props": {
-        "kind": "props",
-        "name": "ContextMenuSeparatorProps",
-        "type": "Interface ContextMenuSeparatorProps",
-        "resolvedType": null,
-        "description": "Properties for the SeparatorRoot component.",
-        "descriptionKey": "api.generated.headless_src_components_separator_types.contextmenuseparatorprops.props",
-        "sourcePath": "headless/src/components/separator/types.ts",
-        "typeParameters": [],
-        "members": [],
-        "callables": [],
-        "referencedTypes": []
-      }
-    },
     "Separator": {
       "props": {
         "kind": "props",
@@ -159,8 +144,8 @@
             "description": "Label text rendered by the component.",
             "descriptionKey": "api.generated.src_components_separator_types.separatorprops.members.label",
             "default": null,
-            "inheritedFrom": null,
-            "sourcePath": "src/components/separator/types.ts",
+            "inheritedFrom": "label",
+            "sourcePath": "headless/src/components/separator/types.ts",
             "referencedTypes": []
           },
           {
@@ -170,8 +155,8 @@
             "description": "Properties forwarded to the label element.",
             "descriptionKey": "api.generated.src_components_separator_types.separatorprops.members.labelprops",
             "default": null,
-            "inheritedFrom": null,
-            "sourcePath": "src/components/separator/types.ts",
+            "inheritedFrom": "labelProps",
+            "sourcePath": "headless/src/components/separator/types.ts",
             "referencedTypes": [
               {
                 "name": "SeparatorLabelProps",
@@ -226,6 +211,118 @@
           }
         ],
         "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "SeparatorCompact": {
+      "props": {
+        "kind": "props",
+        "name": "SeparatorCompactProps",
+        "type": "Interface SeparatorCompactProps",
+        "resolvedType": "{ label?: string; labelProps?: SeparatorLabelProps; orientation?: DataOrientation; decorative?: boolean }",
+        "description": "Properties for the SeparatorCompact component.",
+        "descriptionKey": "api.generated.headless_src_components_separator_types.separatorcompactprops.props",
+        "sourcePath": "headless/src/components/separator/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "label",
+            "type": "string",
+            "required": false,
+            "description": "Label text rendered by the component.",
+            "descriptionKey": "api.generated.headless_src_components_separator_types.separatorcompactprops.members.label",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/separator/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "labelProps",
+            "type": "SeparatorLabelProps",
+            "required": false,
+            "description": "Properties forwarded to the label element.",
+            "descriptionKey": "api.generated.headless_src_components_separator_types.separatorcompactprops.members.labelprops",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/separator/types.ts",
+            "referencedTypes": [
+              {
+                "name": "SeparatorLabelProps",
+                "kind": "interface",
+                "type": "SeparatorLabelProps",
+                "resolvedType": null,
+                "description": "Properties for the SeparatorLabel component.",
+                "descriptionKey": "api.generated.headless_src_components_separator_types.separatorlabelprops",
+                "sourcePath": "headless/src/components/separator/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "orientation",
+            "type": "DataOrientation",
+            "required": false,
+            "description": "Orientation of the component.\n\nEither `vertical` or `horizontal`. Defaults to `horizontal`.",
+            "descriptionKey": "api.generated.headless_src_components_separator_types.separatorcompactprops.members.orientation",
+            "default": null,
+            "inheritedFrom": "orientation",
+            "sourcePath": "headless/src/components/separator/types.ts",
+            "referencedTypes": [
+              {
+                "name": "DataOrientation",
+                "kind": "typeAlias",
+                "type": "'vertical' | 'horizontal'",
+                "resolvedType": "'vertical' | 'horizontal'",
+                "description": "",
+                "descriptionKey": "api.generated.headless_src_types_common.dataorientation",
+                "sourcePath": "headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "decorative",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether or not the component is purely decorative. <br>When `true`, accessibility-related attributes are updated so\nthat that the rendered element is removed from the accessibility tree.",
+            "descriptionKey": "api.generated.headless_src_components_separator_types.separatorcompactprops.members.decorative",
+            "default": null,
+            "inheritedFrom": "decorative",
+            "sourcePath": "headless/src/components/separator/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      },
+      "slots": {
+        "kind": "slots",
+        "name": "SeparatorCompactSlots",
+        "type": "Interface SeparatorCompactSlots",
+        "resolvedType": "{ SeparatorLabel?: (() => any) }",
+        "description": "Slots for the SeparatorCompact component.",
+        "descriptionKey": "api.generated.headless_src_components_separator_types.separatorcompactslots.slots",
+        "sourcePath": "headless/src/components/separator/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [
+          {
+            "name": "default",
+            "type": "(() => any) | undefined",
+            "parameters": "(() => any) | undefined",
+            "required": false,
+            "description": "Custom content for the label slot.",
+            "descriptionKey": "api.generated.headless_src_components_separator_types.separatorcompactslots.callables.default",
+            "sourcePath": "headless/src/components/separator/types.ts",
+            "referencedTypes": []
+          }
+        ],
         "referencedTypes": []
       }
     },

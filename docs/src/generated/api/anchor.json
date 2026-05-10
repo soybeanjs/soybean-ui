@@ -148,7 +148,7 @@
                 "name": "AnchorLinkProps",
                 "kind": "interface",
                 "type": "AnchorLinkProps",
-                "resolvedType": "{ href: string; disabled?: boolean; asChild?: boolean; as?: AsTag | Component; to?: string | import(\"vue-router\").RouteLocationAsRelativeGeneric | import(\"vue-router\").RouteLocationAsPathGeneric; external?: boolean; target?: '_blank' | '_parent' | '_self' | '_top' | (string & {}) | null }",
+                "resolvedType": "{ href: string; disabled?: boolean; to?: string | import(\"vue-router\").RouteLocationAsRelativeGeneric | import(\"vue-router\").RouteLocationAsPathGeneric; external?: boolean; target?: '_blank' | '_parent' | '_self' | '_top' | (string & {}) | null; asChild?: boolean; as?: AsTag | Component }",
                 "description": "Properties for the AnchorLink component.",
                 "descriptionKey": "api.generated.headless_src_components_anchor_types.anchorlinkprops",
                 "sourcePath": "headless/src/components/anchor/types.ts",
@@ -175,28 +175,6 @@
                     "default": null,
                     "inheritedFrom": null,
                     "sourcePath": "headless/src/components/anchor/types.ts",
-                    "referencedTypes": []
-                  },
-                  {
-                    "name": "asChild",
-                    "type": "boolean",
-                    "required": false,
-                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
-                    "descriptionKey": "api.generated.headless_src_components_anchor_types.anchorlinkprops.members.aschild",
-                    "default": null,
-                    "inheritedFrom": null,
-                    "sourcePath": "headless/src/components/primitive/types.ts",
-                    "referencedTypes": []
-                  },
-                  {
-                    "name": "as",
-                    "type": "AsTag | Component",
-                    "required": false,
-                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
-                    "descriptionKey": "api.generated.headless_src_components_anchor_types.anchorlinkprops.members.as",
-                    "default": "'div'",
-                    "inheritedFrom": null,
-                    "sourcePath": "headless/src/components/primitive/types.ts",
                     "referencedTypes": []
                   },
                   {
@@ -231,6 +209,28 @@
                     "inheritedFrom": null,
                     "sourcePath": "headless/src/components/link/types.ts",
                     "referencedTypes": []
+                  },
+                  {
+                    "name": "asChild",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+                    "descriptionKey": "api.generated.headless_src_components_anchor_types.anchorlinkprops.members.aschild",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "as",
+                    "type": "AsTag | Component",
+                    "required": false,
+                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+                    "descriptionKey": "api.generated.headless_src_components_anchor_types.anchorlinkprops.members.as",
+                    "default": "'div'",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
                   }
                 ],
                 "callables": []
@@ -253,8 +253,8 @@
                 "type": "HTMLAttributes",
                 "resolvedType": null,
                 "description": "",
-                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_dom_3_5_33_node_modules_vue_runtime_dom_dist_runtime_dom_d.htmlattributes",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-dom@3.5.33/node_modules/@vue/runtime-dom/dist/runtime-dom.d.ts",
+                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_dom_3_5_34_node_modules_vue_runtime_dom_dist_runtime_dom_d.htmlattributes",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-dom@3.5.34/node_modules/@vue/runtime-dom/dist/runtime-dom.d.ts",
                 "typeParameters": [],
                 "external": true,
                 "members": [],
@@ -278,8 +278,8 @@
                 "type": "HTMLAttributes",
                 "resolvedType": null,
                 "description": "",
-                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_dom_3_5_33_node_modules_vue_runtime_dom_dist_runtime_dom_d.htmlattributes",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-dom@3.5.33/node_modules/@vue/runtime-dom/dist/runtime-dom.d.ts",
+                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_dom_3_5_34_node_modules_vue_runtime_dom_dist_runtime_dom_d.htmlattributes",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-dom@3.5.34/node_modules/@vue/runtime-dom/dist/runtime-dom.d.ts",
                 "typeParameters": [],
                 "external": true,
                 "members": [],
@@ -303,8 +303,8 @@
                 "type": "HTMLAttributes",
                 "resolvedType": null,
                 "description": "",
-                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_dom_3_5_33_node_modules_vue_runtime_dom_dist_runtime_dom_d.htmlattributes",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-dom@3.5.33/node_modules/@vue/runtime-dom/dist/runtime-dom.d.ts",
+                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_dom_3_5_34_node_modules_vue_runtime_dom_dist_runtime_dom_d.htmlattributes",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-dom@3.5.34/node_modules/@vue/runtime-dom/dist/runtime-dom.d.ts",
                 "typeParameters": [],
                 "external": true,
                 "members": [],
@@ -466,8 +466,8 @@
                 "type": "Component",
                 "resolvedType": null,
                 "description": "A type used in public APIs where a component type is expected.\nThe constructor type is an artificial type returned by defineComponent().",
-                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_33_node_modules_vue_runtime_core_dist_runtime_core_d.component",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_34_node_modules_vue_runtime_core_dist_runtime_core_d.component",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.34/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
                 "typeParameters": [
                   "PropsOrInstance = any",
                   "RawBindings = any",
@@ -640,7 +640,7 @@
                 "name": "AnchorLinkProps",
                 "kind": "interface",
                 "type": "AnchorLinkProps",
-                "resolvedType": "{ href: string; disabled?: boolean; asChild?: boolean; as?: AsTag | Component; to?: string | import(\"vue-router\").RouteLocationAsRelativeGeneric | import(\"vue-router\").RouteLocationAsPathGeneric; external?: boolean; target?: '_blank' | '_parent' | '_self' | '_top' | (string & {}) | null }",
+                "resolvedType": "{ href: string; disabled?: boolean; to?: string | import(\"vue-router\").RouteLocationAsRelativeGeneric | import(\"vue-router\").RouteLocationAsPathGeneric; external?: boolean; target?: '_blank' | '_parent' | '_self' | '_top' | (string & {}) | null; asChild?: boolean; as?: AsTag | Component }",
                 "description": "Properties for the AnchorLink component.",
                 "descriptionKey": "api.generated.headless_src_components_anchor_types.anchorlinkprops",
                 "sourcePath": "headless/src/components/anchor/types.ts",
@@ -667,28 +667,6 @@
                     "default": null,
                     "inheritedFrom": null,
                     "sourcePath": "headless/src/components/anchor/types.ts",
-                    "referencedTypes": []
-                  },
-                  {
-                    "name": "asChild",
-                    "type": "boolean",
-                    "required": false,
-                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
-                    "descriptionKey": "api.generated.headless_src_components_anchor_types.anchorlinkprops.members.aschild",
-                    "default": null,
-                    "inheritedFrom": null,
-                    "sourcePath": "headless/src/components/primitive/types.ts",
-                    "referencedTypes": []
-                  },
-                  {
-                    "name": "as",
-                    "type": "AsTag | Component",
-                    "required": false,
-                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
-                    "descriptionKey": "api.generated.headless_src_components_anchor_types.anchorlinkprops.members.as",
-                    "default": "'div'",
-                    "inheritedFrom": null,
-                    "sourcePath": "headless/src/components/primitive/types.ts",
                     "referencedTypes": []
                   },
                   {
@@ -723,6 +701,28 @@
                     "inheritedFrom": null,
                     "sourcePath": "headless/src/components/link/types.ts",
                     "referencedTypes": []
+                  },
+                  {
+                    "name": "asChild",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+                    "descriptionKey": "api.generated.headless_src_components_anchor_types.anchorlinkprops.members.aschild",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "as",
+                    "type": "AsTag | Component",
+                    "required": false,
+                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+                    "descriptionKey": "api.generated.headless_src_components_anchor_types.anchorlinkprops.members.as",
+                    "default": "'div'",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
                   }
                 ],
                 "callables": []
@@ -745,8 +745,8 @@
                 "type": "HTMLAttributes",
                 "resolvedType": null,
                 "description": "",
-                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_dom_3_5_33_node_modules_vue_runtime_dom_dist_runtime_dom_d.htmlattributes",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-dom@3.5.33/node_modules/@vue/runtime-dom/dist/runtime-dom.d.ts",
+                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_dom_3_5_34_node_modules_vue_runtime_dom_dist_runtime_dom_d.htmlattributes",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-dom@3.5.34/node_modules/@vue/runtime-dom/dist/runtime-dom.d.ts",
                 "typeParameters": [],
                 "external": true,
                 "members": [],
@@ -770,8 +770,8 @@
                 "type": "HTMLAttributes",
                 "resolvedType": null,
                 "description": "",
-                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_dom_3_5_33_node_modules_vue_runtime_dom_dist_runtime_dom_d.htmlattributes",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-dom@3.5.33/node_modules/@vue/runtime-dom/dist/runtime-dom.d.ts",
+                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_dom_3_5_34_node_modules_vue_runtime_dom_dist_runtime_dom_d.htmlattributes",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-dom@3.5.34/node_modules/@vue/runtime-dom/dist/runtime-dom.d.ts",
                 "typeParameters": [],
                 "external": true,
                 "members": [],
@@ -795,8 +795,8 @@
                 "type": "HTMLAttributes",
                 "resolvedType": null,
                 "description": "",
-                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_dom_3_5_33_node_modules_vue_runtime_dom_dist_runtime_dom_d.htmlattributes",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-dom@3.5.33/node_modules/@vue/runtime-dom/dist/runtime-dom.d.ts",
+                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_dom_3_5_34_node_modules_vue_runtime_dom_dist_runtime_dom_d.htmlattributes",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-dom@3.5.34/node_modules/@vue/runtime-dom/dist/runtime-dom.d.ts",
                 "typeParameters": [],
                 "external": true,
                 "members": [],
@@ -958,8 +958,8 @@
                 "type": "Component",
                 "resolvedType": null,
                 "description": "A type used in public APIs where a component type is expected.\nThe constructor type is an artificial type returned by defineComponent().",
-                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_33_node_modules_vue_runtime_core_dist_runtime_core_d.component",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_34_node_modules_vue_runtime_core_dist_runtime_core_d.component",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.34/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
                 "typeParameters": [
                   "PropsOrInstance = any",
                   "RawBindings = any",
@@ -1213,7 +1213,7 @@
                 "name": "AnchorLinkProps",
                 "kind": "interface",
                 "type": "AnchorLinkProps",
-                "resolvedType": "{ href: string; disabled?: boolean; asChild?: boolean; as?: AsTag | Component; to?: string | import(\"vue-router\").RouteLocationAsRelativeGeneric | import(\"vue-router\").RouteLocationAsPathGeneric; external?: boolean; target?: '_blank' | '_parent' | '_self' | '_top' | (string & {}) | null }",
+                "resolvedType": "{ href: string; disabled?: boolean; to?: string | import(\"vue-router\").RouteLocationAsRelativeGeneric | import(\"vue-router\").RouteLocationAsPathGeneric; external?: boolean; target?: '_blank' | '_parent' | '_self' | '_top' | (string & {}) | null; asChild?: boolean; as?: AsTag | Component }",
                 "description": "Properties for the AnchorLink component.",
                 "descriptionKey": "api.generated.headless_src_components_anchor_types.anchorlinkprops",
                 "sourcePath": "headless/src/components/anchor/types.ts",
@@ -1240,28 +1240,6 @@
                     "default": null,
                     "inheritedFrom": null,
                     "sourcePath": "headless/src/components/anchor/types.ts",
-                    "referencedTypes": []
-                  },
-                  {
-                    "name": "asChild",
-                    "type": "boolean",
-                    "required": false,
-                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
-                    "descriptionKey": "api.generated.headless_src_components_anchor_types.anchorlinkprops.members.aschild",
-                    "default": null,
-                    "inheritedFrom": null,
-                    "sourcePath": "headless/src/components/primitive/types.ts",
-                    "referencedTypes": []
-                  },
-                  {
-                    "name": "as",
-                    "type": "AsTag | Component",
-                    "required": false,
-                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
-                    "descriptionKey": "api.generated.headless_src_components_anchor_types.anchorlinkprops.members.as",
-                    "default": "'div'",
-                    "inheritedFrom": null,
-                    "sourcePath": "headless/src/components/primitive/types.ts",
                     "referencedTypes": []
                   },
                   {
@@ -1296,6 +1274,28 @@
                     "inheritedFrom": null,
                     "sourcePath": "headless/src/components/link/types.ts",
                     "referencedTypes": []
+                  },
+                  {
+                    "name": "asChild",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+                    "descriptionKey": "api.generated.headless_src_components_anchor_types.anchorlinkprops.members.aschild",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "as",
+                    "type": "AsTag | Component",
+                    "required": false,
+                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+                    "descriptionKey": "api.generated.headless_src_components_anchor_types.anchorlinkprops.members.as",
+                    "default": "'div'",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
                   }
                 ],
                 "callables": []
@@ -1318,8 +1318,8 @@
                 "type": "HTMLAttributes",
                 "resolvedType": null,
                 "description": "",
-                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_dom_3_5_33_node_modules_vue_runtime_dom_dist_runtime_dom_d.htmlattributes",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-dom@3.5.33/node_modules/@vue/runtime-dom/dist/runtime-dom.d.ts",
+                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_dom_3_5_34_node_modules_vue_runtime_dom_dist_runtime_dom_d.htmlattributes",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-dom@3.5.34/node_modules/@vue/runtime-dom/dist/runtime-dom.d.ts",
                 "typeParameters": [],
                 "external": true,
                 "members": [],
@@ -1343,8 +1343,8 @@
                 "type": "HTMLAttributes",
                 "resolvedType": null,
                 "description": "",
-                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_dom_3_5_33_node_modules_vue_runtime_dom_dist_runtime_dom_d.htmlattributes",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-dom@3.5.33/node_modules/@vue/runtime-dom/dist/runtime-dom.d.ts",
+                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_dom_3_5_34_node_modules_vue_runtime_dom_dist_runtime_dom_d.htmlattributes",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-dom@3.5.34/node_modules/@vue/runtime-dom/dist/runtime-dom.d.ts",
                 "typeParameters": [],
                 "external": true,
                 "members": [],
@@ -1368,8 +1368,8 @@
                 "type": "HTMLAttributes",
                 "resolvedType": null,
                 "description": "",
-                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_dom_3_5_33_node_modules_vue_runtime_dom_dist_runtime_dom_d.htmlattributes",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-dom@3.5.33/node_modules/@vue/runtime-dom/dist/runtime-dom.d.ts",
+                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_dom_3_5_34_node_modules_vue_runtime_dom_dist_runtime_dom_d.htmlattributes",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-dom@3.5.34/node_modules/@vue/runtime-dom/dist/runtime-dom.d.ts",
                 "typeParameters": [],
                 "external": true,
                 "members": [],
@@ -1387,7 +1387,7 @@
         "kind": "props",
         "name": "AnchorLinkProps",
         "type": "Interface AnchorLinkProps",
-        "resolvedType": "{ href: string; disabled?: boolean; asChild?: boolean; as?: AsTag | Component; to?: string | import(\"vue-router\").RouteLocationAsRelativeGeneric | import(\"vue-router\").RouteLocationAsPathGeneric; external?: boolean; target?: '_blank' | '_parent' | '_self' | '_top' | (string & {}) | null }",
+        "resolvedType": "{ href: string; disabled?: boolean; to?: string | import(\"vue-router\").RouteLocationAsRelativeGeneric | import(\"vue-router\").RouteLocationAsPathGeneric; external?: boolean; target?: '_blank' | '_parent' | '_self' | '_top' | (string & {}) | null; asChild?: boolean; as?: AsTag | Component }",
         "description": "Properties for the AnchorLink component.",
         "descriptionKey": "api.generated.headless_src_components_anchor_types.anchorlinkprops.props",
         "sourcePath": "headless/src/components/anchor/types.ts",
@@ -1416,50 +1416,6 @@
             "referencedTypes": []
           },
           {
-            "name": "asChild",
-            "type": "boolean",
-            "required": false,
-            "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
-            "descriptionKey": "api.generated.headless_src_components_anchor_types.anchorlinkprops.members.aschild",
-            "default": null,
-            "inheritedFrom": "PrimitiveProps.asChild",
-            "sourcePath": "headless/src/components/primitive/types.ts",
-            "referencedTypes": []
-          },
-          {
-            "name": "as",
-            "type": "AsTag | Component",
-            "required": false,
-            "description": "The element or component this component should render as. Can be overwrite by `asChild`",
-            "descriptionKey": "api.generated.headless_src_components_anchor_types.anchorlinkprops.members.as",
-            "default": "'div'",
-            "inheritedFrom": "PrimitiveProps.as",
-            "sourcePath": "headless/src/components/primitive/types.ts",
-            "referencedTypes": [
-              {
-                "name": "Component",
-                "kind": "typeAlias",
-                "type": "Component",
-                "resolvedType": null,
-                "description": "A type used in public APIs where a component type is expected.\nThe constructor type is an artificial type returned by defineComponent().",
-                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_33_node_modules_vue_runtime_core_dist_runtime_core_d.component",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
-                "typeParameters": [
-                  "PropsOrInstance = any",
-                  "RawBindings = any",
-                  "D = any",
-                  "C extends ComputedOptions = ComputedOptions",
-                  "M extends MethodOptions = MethodOptions",
-                  "E extends EmitsOptions | Record<string, any[]> = {}",
-                  "S extends Record<string, any> = any"
-                ],
-                "external": true,
-                "members": [],
-                "callables": []
-              }
-            ]
-          },
-          {
             "name": "to",
             "type": "string | import(\"vue-router\").RouteLocationAsRelativeGeneric | import(\"vue-router\").RouteLocationAsPathGeneric",
             "required": false,
@@ -1475,8 +1431,8 @@
                 "type": "RouteLocationRaw",
                 "resolvedType": null,
                 "description": "Route location that can be passed to `router.push()` and other user-facing APIs.",
-                "descriptionKey": "api.generated.node_modules_pnpm_vue_router_5_0_6_vue_compiler_sfc_3_5_33_pinia_3_0_4_typescript_6_0_3_vue_3_5_33_types_5291f2364aa3c25c31ad23c437ad644c_node_modules_vue_router_dist_index_d_veap3p_d.routelocationraw",
-                "sourcePath": "node_modules/.pnpm/vue-router@5.0.6_@vue+compiler-sfc@3.5.33_pinia@3.0.4_typescript@6.0.3_vue@3.5.33_types_5291f2364aa3c25c31ad23c437ad644c/node_modules/vue-router/dist/index-D_VEAp3P.d.ts",
+                "descriptionKey": "api.generated.node_modules_pnpm_vue_router_5_0_6_vue_compiler_sfc_3_5_34_pinia_3_0_4_typescript_6_0_3_vue_3_5_34_types_50dd1815d493fa68b45f0a33526446ac_node_modules_vue_router_dist_index_d_veap3p_d.routelocationraw",
+                "sourcePath": "node_modules/.pnpm/vue-router@5.0.6_@vue+compiler-sfc@3.5.34_pinia@3.0.4_typescript@6.0.3_vue@3.5.34_types_50dd1815d493fa68b45f0a33526446ac/node_modules/vue-router/dist/index-D_VEAp3P.d.ts",
                 "typeParameters": ["Name extends keyof RouteMap = keyof RouteMap"],
                 "external": true,
                 "members": [],
@@ -1505,6 +1461,50 @@
             "inheritedFrom": "target",
             "sourcePath": "headless/src/components/link/types.ts",
             "referencedTypes": []
+          },
+          {
+            "name": "asChild",
+            "type": "boolean",
+            "required": false,
+            "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+            "descriptionKey": "api.generated.headless_src_components_anchor_types.anchorlinkprops.members.aschild",
+            "default": null,
+            "inheritedFrom": "PrimitiveWithBaseProps.asChild",
+            "sourcePath": "headless/src/components/primitive/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "as",
+            "type": "AsTag | Component",
+            "required": false,
+            "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+            "descriptionKey": "api.generated.headless_src_components_anchor_types.anchorlinkprops.members.as",
+            "default": "'div'",
+            "inheritedFrom": "PrimitiveWithBaseProps.as",
+            "sourcePath": "headless/src/components/primitive/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Component",
+                "kind": "typeAlias",
+                "type": "Component",
+                "resolvedType": null,
+                "description": "A type used in public APIs where a component type is expected.\nThe constructor type is an artificial type returned by defineComponent().",
+                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_34_node_modules_vue_runtime_core_dist_runtime_core_d.component",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.34/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [
+                  "PropsOrInstance = any",
+                  "RawBindings = any",
+                  "D = any",
+                  "C extends ComputedOptions = ComputedOptions",
+                  "M extends MethodOptions = MethodOptions",
+                  "E extends EmitsOptions | Record<string, any[]> = {}",
+                  "S extends Record<string, any> = any"
+                ],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
           }
         ],
         "callables": [],
@@ -1656,7 +1656,7 @@
             "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
             "descriptionKey": "api.generated.headless_src_components_anchor_types.anchorrootprops.members.aschild",
             "default": null,
-            "inheritedFrom": "PrimitiveProps.asChild",
+            "inheritedFrom": "PrimitiveWithBaseProps.asChild",
             "sourcePath": "headless/src/components/primitive/types.ts",
             "referencedTypes": []
           },
@@ -1667,7 +1667,7 @@
             "description": "The element or component this component should render as. Can be overwrite by `asChild`",
             "descriptionKey": "api.generated.headless_src_components_anchor_types.anchorrootprops.members.as",
             "default": "'div'",
-            "inheritedFrom": "PrimitiveProps.as",
+            "inheritedFrom": "PrimitiveWithBaseProps.as",
             "sourcePath": "headless/src/components/primitive/types.ts",
             "referencedTypes": [
               {
@@ -1676,8 +1676,8 @@
                 "type": "Component",
                 "resolvedType": null,
                 "description": "A type used in public APIs where a component type is expected.\nThe constructor type is an artificial type returned by defineComponent().",
-                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_33_node_modules_vue_runtime_core_dist_runtime_core_d.component",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_34_node_modules_vue_runtime_core_dist_runtime_core_d.component",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.34/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
                 "typeParameters": [
                   "PropsOrInstance = any",
                   "RawBindings = any",

@@ -6,7 +6,7 @@
         "kind": "props",
         "name": "PageTabsProps",
         "type": "Interface PageTabsProps<T>",
-        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; size?: ThemeSize; variant?: PageTabsVariant; ui?: Partial<PageTabsExtendedUi>; items: T[]; menuFactory?: ((tab: T, state: PageTabsState) => PageTabsContextMenuOptionData[]); beforeClose?: ((value: string) => MaybePromise<boolean | void>); modelValue?: string; middleClickClose?: boolean }",
+        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; size?: ThemeSize; variant?: PageTabsVariant; ui?: Partial<PageTabsUi>; items: T[]; menuFactory?: ((tab: T, state: PageTabsState) => PageTabsContextMenuOptionData[]); beforeClose?: ((value: string) => MaybePromise<boolean | void>); itemProps?: BaseProps; pinProps?: BaseProps; closeProps?: BaseProps; contextMenuProps?: Omit<ContextMenuCompactProps<import(\"@/index\").DefinedValue>, 'options'>; modelValue?: string; middleClickClose?: boolean; asChild?: boolean; as?: AsTag | Component; dir?: Direction; currentTabStopId?: string | null; defaultCurrentTabStopId?: string; preventScrollOnEntryFocus?: boolean; loop?: boolean }",
         "description": "Properties for the PageTabs component.",
         "descriptionKey": "api.generated.src_components_page_tabs_types.pagetabsprops.props",
         "sourcePath": "src/components/page-tabs/types.ts",
@@ -89,7 +89,7 @@
           },
           {
             "name": "ui",
-            "type": "Partial<PageTabsExtendedUi>",
+            "type": "Partial<PageTabsUi>",
             "required": false,
             "description": "Per-slot class overrides for the component.",
             "descriptionKey": "api.generated.src_components_page_tabs_types.pagetabsprops.members.ui",
@@ -98,13 +98,13 @@
             "sourcePath": "src/components/page-tabs/types.ts",
             "referencedTypes": [
               {
-                "name": "PageTabsExtendedUi",
+                "name": "PageTabsUi",
                 "kind": "typeAlias",
-                "type": "{ root: ClassValue; item: ClassValue; close: ClassValue; itemText: ClassValue; pin: ClassValue; sliderIndicator: ClassValue; chromeBgLeft: ClassValue; chromeBgRight: ClassValue; }",
+                "type": "{ root: ClassValue; item: ClassValue; close: ClassValue; itemText: ClassValue; pin: ClassValue; }",
                 "resolvedType": null,
-                "description": "Extended UI class overrides for the PageTabs component.",
-                "descriptionKey": "api.generated.src_components_page_tabs_types.pagetabsextendedui",
-                "sourcePath": "src/components/page-tabs/types.ts",
+                "description": "UI class overrides for the PageTabs component.",
+                "descriptionKey": "api.generated.headless_src_components_page_tabs_types.pagetabsui",
+                "sourcePath": "headless/src/components/page-tabs/types.ts",
                 "typeParameters": [],
                 "external": false,
                 "members": [],
@@ -119,8 +119,8 @@
             "description": "Items rendered by the component.",
             "descriptionKey": "api.generated.src_components_page_tabs_types.pagetabsprops.members.items",
             "default": null,
-            "inheritedFrom": null,
-            "sourcePath": "src/components/page-tabs/types.ts",
+            "inheritedFrom": "items",
+            "sourcePath": "headless/src/components/page-tabs/types.ts",
             "referencedTypes": []
           },
           {
@@ -130,8 +130,8 @@
             "description": "A factory function to generate context menu options for each tab.",
             "descriptionKey": "api.generated.src_components_page_tabs_types.pagetabsprops.members.menufactory",
             "default": null,
-            "inheritedFrom": null,
-            "sourcePath": "src/components/page-tabs/types.ts",
+            "inheritedFrom": "menuFactory",
+            "sourcePath": "headless/src/components/page-tabs/types.ts",
             "referencedTypes": [
               {
                 "name": "PageTabsState",
@@ -139,8 +139,8 @@
                 "type": "PageTabsState",
                 "resolvedType": null,
                 "description": "State values for PageTabsState.",
-                "descriptionKey": "api.generated.src_components_page_tabs_types.pagetabsstate",
-                "sourcePath": "src/components/page-tabs/types.ts",
+                "descriptionKey": "api.generated.headless_src_components_page_tabs_types.pagetabsstate",
+                "sourcePath": "headless/src/components/page-tabs/types.ts",
                 "typeParameters": [],
                 "external": false,
                 "members": [],
@@ -155,8 +155,8 @@
             "description": "Callback invoked before closing the tab. Return `false` or a promise that resolves to `false` to prevent closing.",
             "descriptionKey": "api.generated.src_components_page_tabs_types.pagetabsprops.members.beforeclose",
             "default": null,
-            "inheritedFrom": null,
-            "sourcePath": "src/components/page-tabs/types.ts",
+            "inheritedFrom": "beforeClose",
+            "sourcePath": "headless/src/components/page-tabs/types.ts",
             "referencedTypes": [
               {
                 "name": "MaybePromise",
@@ -167,6 +167,106 @@
                 "descriptionKey": "api.generated.headless_src_types_common.maybepromise",
                 "sourcePath": "headless/src/types/common.ts",
                 "typeParameters": ["T"],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "itemProps",
+            "type": "BaseProps",
+            "required": false,
+            "description": "Per-slot class overrides for the component.",
+            "descriptionKey": "api.generated.src_components_page_tabs_types.pagetabsprops.members.itemprops",
+            "default": null,
+            "inheritedFrom": "itemProps",
+            "sourcePath": "headless/src/components/page-tabs/types.ts",
+            "referencedTypes": [
+              {
+                "name": "BaseProps",
+                "kind": "typeAlias",
+                "type": "import(\"../../types\").DataAttributes & import(\"vue\").HTMLAttributes",
+                "resolvedType": "DataAttributes & T",
+                "description": "",
+                "descriptionKey": "api.generated.headless_src_types_vue.baseprops",
+                "sourcePath": "headless/src/types/vue.ts",
+                "typeParameters": ["T = HTMLAttributes"],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "pinProps",
+            "type": "BaseProps",
+            "required": false,
+            "description": "Per-slot class overrides for the component.",
+            "descriptionKey": "api.generated.src_components_page_tabs_types.pagetabsprops.members.pinprops",
+            "default": null,
+            "inheritedFrom": "pinProps",
+            "sourcePath": "headless/src/components/page-tabs/types.ts",
+            "referencedTypes": [
+              {
+                "name": "BaseProps",
+                "kind": "typeAlias",
+                "type": "import(\"../../types\").DataAttributes & import(\"vue\").HTMLAttributes",
+                "resolvedType": "DataAttributes & T",
+                "description": "",
+                "descriptionKey": "api.generated.headless_src_types_vue.baseprops",
+                "sourcePath": "headless/src/types/vue.ts",
+                "typeParameters": ["T = HTMLAttributes"],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "closeProps",
+            "type": "BaseProps",
+            "required": false,
+            "description": "Per-slot class overrides for the component.",
+            "descriptionKey": "api.generated.src_components_page_tabs_types.pagetabsprops.members.closeprops",
+            "default": null,
+            "inheritedFrom": "closeProps",
+            "sourcePath": "headless/src/components/page-tabs/types.ts",
+            "referencedTypes": [
+              {
+                "name": "BaseProps",
+                "kind": "typeAlias",
+                "type": "import(\"../../types\").DataAttributes & import(\"vue\").HTMLAttributes",
+                "resolvedType": "DataAttributes & T",
+                "description": "",
+                "descriptionKey": "api.generated.headless_src_types_vue.baseprops",
+                "sourcePath": "headless/src/types/vue.ts",
+                "typeParameters": ["T = HTMLAttributes"],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "contextMenuProps",
+            "type": "Omit<ContextMenuCompactProps<import(\"@/index\").DefinedValue>, 'options'>",
+            "required": false,
+            "description": "Additional props for the context menu component.",
+            "descriptionKey": "api.generated.src_components_page_tabs_types.pagetabsprops.members.contextmenuprops",
+            "default": null,
+            "inheritedFrom": "contextMenuProps",
+            "sourcePath": "headless/src/components/page-tabs/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ContextMenuCompactProps",
+                "kind": "interface",
+                "type": "ContextMenuCompactProps<import(\"@/index\").DefinedValue>",
+                "resolvedType": null,
+                "description": "Properties for the ContextMenuCompact component.",
+                "descriptionKey": "api.generated.headless_src_components_context_menu_types.contextmenucompactprops",
+                "sourcePath": "headless/src/components/context-menu/types.ts",
+                "typeParameters": ["T extends DefinedValue = DefinedValue"],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -194,44 +294,15 @@
             "inheritedFrom": "middleClickClose",
             "sourcePath": "headless/src/components/page-tabs/types.ts",
             "referencedTypes": []
-          }
-        ],
-        "callables": [],
-        "referencedTypes": []
-      },
-      "emits": {
-        "kind": "emits",
-        "name": "PageTabsEmits",
-        "type": "TypeAlias PageTabsEmits<T>: PageTabsRootEmits & { (e: \"update:items\", items: T[]): void; (e: \"click\", tab: T): void; (e: \"close\", tab: T): void; (e: \"pin\", tab: T): void; (e: \"contextmenu\", tab: T): void; (e: \"selectContextMenu\", menu: PageTabsContextMenuOptionData, tab: T): void }",
-        "resolvedType": "(e: 'update:modelValue', value: string) => void | (e: 'update:items', items: T[]) => void | (e: 'click', tab: T) => void | (e: 'close', tab: T) => void | (e: 'pin', tab: T) => void | (e: 'contextmenu', tab: T) => void | (e: 'selectContextMenu', menu: PageTabsContextMenuOptionData, tab: T) => void",
-        "description": "Events for the PageTabs component.",
-        "descriptionKey": "api.generated.src_components_page_tabs_types.pagetabsemits.emits",
-        "sourcePath": "src/components/page-tabs/types.ts",
-        "typeParameters": ["TypeParameter T"],
-        "members": [],
-        "callables": [],
-        "referencedTypes": []
-      }
-    },
-    "PageTabsClose": {
-      "props": {
-        "kind": "props",
-        "name": "PageTabsCloseProps",
-        "type": "Interface PageTabsCloseProps",
-        "resolvedType": "{ asChild?: boolean; as?: AsTag | Component }",
-        "description": "Properties for the PageTabsClose component.",
-        "descriptionKey": "api.generated.headless_src_components_page_tabs_types.pagetabscloseprops.props",
-        "sourcePath": "headless/src/components/page-tabs/types.ts",
-        "typeParameters": [],
-        "members": [
+          },
           {
             "name": "asChild",
             "type": "boolean",
             "required": false,
             "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
-            "descriptionKey": "api.generated.headless_src_components_page_tabs_types.pagetabscloseprops.members.aschild",
+            "descriptionKey": "api.generated.src_components_page_tabs_types.pagetabsprops.members.aschild",
             "default": null,
-            "inheritedFrom": "PrimitiveProps.asChild",
+            "inheritedFrom": "asChild",
             "sourcePath": "headless/src/components/primitive/types.ts",
             "referencedTypes": []
           },
@@ -240,9 +311,9 @@
             "type": "AsTag | Component",
             "required": false,
             "description": "The element or component this component should render as. Can be overwrite by `asChild`",
-            "descriptionKey": "api.generated.headless_src_components_page_tabs_types.pagetabscloseprops.members.as",
+            "descriptionKey": "api.generated.src_components_page_tabs_types.pagetabsprops.members.as",
             "default": "'div'",
-            "inheritedFrom": "PrimitiveProps.as",
+            "inheritedFrom": "as",
             "sourcePath": "headless/src/components/primitive/types.ts",
             "referencedTypes": [
               {
@@ -251,8 +322,8 @@
                 "type": "Component",
                 "resolvedType": null,
                 "description": "A type used in public APIs where a component type is expected.\nThe constructor type is an artificial type returned by defineComponent().",
-                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_33_node_modules_vue_runtime_core_dist_runtime_core_d.component",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_34_node_modules_vue_runtime_core_dist_runtime_core_d.component",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.34/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
                 "typeParameters": [
                   "PropsOrInstance = any",
                   "RawBindings = any",
@@ -267,6 +338,829 @@
                 "callables": []
               }
             ]
+          },
+          {
+            "name": "dir",
+            "type": "Direction",
+            "required": false,
+            "description": "The direction of navigation between items.",
+            "descriptionKey": "api.generated.src_components_page_tabs_types.pagetabsprops.members.dir",
+            "default": null,
+            "inheritedFrom": "dir",
+            "sourcePath": "headless/src/components/roving-focus/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Direction",
+                "kind": "typeAlias",
+                "type": "'ltr' | 'rtl'",
+                "resolvedType": "'ltr' | 'rtl'",
+                "description": "",
+                "descriptionKey": "api.generated.headless_src_types_common.direction",
+                "sourcePath": "headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "currentTabStopId",
+            "type": "string | null",
+            "required": false,
+            "description": "The controlled value of the current stop item. Can be bound as `v-model`.",
+            "descriptionKey": "api.generated.src_components_page_tabs_types.pagetabsprops.members.currenttabstopid",
+            "default": null,
+            "inheritedFrom": "currentTabStopId",
+            "sourcePath": "headless/src/components/roving-focus/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "defaultCurrentTabStopId",
+            "type": "string",
+            "required": false,
+            "description": "The value of the current stop item.\n\nUse when you do not need to control the state of the stop item.",
+            "descriptionKey": "api.generated.src_components_page_tabs_types.pagetabsprops.members.defaultcurrenttabstopid",
+            "default": null,
+            "inheritedFrom": "defaultCurrentTabStopId",
+            "sourcePath": "headless/src/components/roving-focus/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "preventScrollOnEntryFocus",
+            "type": "boolean",
+            "required": false,
+            "description": "When `true`, will prevent scrolling to the focus item when focused.",
+            "descriptionKey": "api.generated.src_components_page_tabs_types.pagetabsprops.members.preventscrollonentryfocus",
+            "default": null,
+            "inheritedFrom": "preventScrollOnEntryFocus",
+            "sourcePath": "headless/src/components/roving-focus/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "loop",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether keyboard navigation should loop around",
+            "descriptionKey": "api.generated.src_components_page_tabs_types.pagetabsprops.members.loop",
+            "default": "false",
+            "inheritedFrom": "loop",
+            "sourcePath": "headless/src/components/roving-focus/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      },
+      "emits": {
+        "kind": "emits",
+        "name": "PageTabsEmits",
+        "type": "TypeAlias PageTabsEmits<T>: PageTabsCompactEmits<T>",
+        "resolvedType": "(e: 'update:modelValue', value: string) => void | (e: 'update:items', items: T[]) => void | (e: 'click', tab: T) => void | (e: 'close', tab: T) => void | (e: 'pin', tab: T) => void | (e: 'contextmenu', tab: T) => void | (e: 'selectContextMenu', menu: PageTabsContextMenuOptionData, tab: T) => void",
+        "description": "Events for the PageTabs component.",
+        "descriptionKey": "api.generated.src_components_page_tabs_types.pagetabsemits.emits",
+        "sourcePath": "src/components/page-tabs/types.ts",
+        "typeParameters": ["TypeParameter T"],
+        "members": [],
+        "callables": [],
+        "referencedTypes": []
+      },
+      "slots": {
+        "kind": "slots",
+        "name": "PageTabsSlots",
+        "type": "TypeAlias PageTabsSlots<T>: PageTabsCompactSlots<T>",
+        "resolvedType": "{ item?: ((props: PageTabsCompactItemSlotProps<T>) => any); icon?: ((props: PageTabsCompactItemSlotProps<T>) => any); label?: ((props: PageTabsCompactItemSlotProps<T>) => any); indicator?: ((props: PageTabsCompactItemSlotProps<T>) => any); \"pin-icon\"?: (() => void); \"close-icon\"?: (() => void) }",
+        "description": "Slots for the PageTabs component.",
+        "descriptionKey": "api.generated.src_components_page_tabs_types.pagetabsslots.slots",
+        "sourcePath": "src/components/page-tabs/types.ts",
+        "typeParameters": ["TypeParameter T"],
+        "members": [],
+        "callables": [
+          {
+            "name": "item",
+            "type": "((props: PageTabsCompactItemSlotProps<T>) => any) | undefined",
+            "parameters": "((props: PageTabsCompactItemSlotProps<T>) => any) | undefined",
+            "required": false,
+            "description": "Custom content for the default tab item body.",
+            "descriptionKey": "api.generated.src_components_page_tabs_types.pagetabsslots.callables.item",
+            "sourcePath": "headless/src/components/page-tabs/types.ts",
+            "referencedTypes": [
+              {
+                "name": "PageTabsCompactItemSlotProps",
+                "kind": "interface",
+                "type": "PageTabsCompactItemSlotProps<T>",
+                "resolvedType": null,
+                "description": "Slot props for a compact page tab item.",
+                "descriptionKey": "api.generated.headless_src_components_page_tabs_types.pagetabscompactitemslotprops",
+                "sourcePath": "headless/src/components/page-tabs/types.ts",
+                "typeParameters": ["T extends PageTabsOptionData = PageTabsOptionData"],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "icon",
+            "type": "((props: PageTabsCompactItemSlotProps<T>) => any) | undefined",
+            "parameters": "((props: PageTabsCompactItemSlotProps<T>) => any) | undefined",
+            "required": false,
+            "description": "Custom content for the tab icon.",
+            "descriptionKey": "api.generated.src_components_page_tabs_types.pagetabsslots.callables.icon",
+            "sourcePath": "headless/src/components/page-tabs/types.ts",
+            "referencedTypes": [
+              {
+                "name": "PageTabsCompactItemSlotProps",
+                "kind": "interface",
+                "type": "PageTabsCompactItemSlotProps<T>",
+                "resolvedType": null,
+                "description": "Slot props for a compact page tab item.",
+                "descriptionKey": "api.generated.headless_src_components_page_tabs_types.pagetabscompactitemslotprops",
+                "sourcePath": "headless/src/components/page-tabs/types.ts",
+                "typeParameters": ["T extends PageTabsOptionData = PageTabsOptionData"],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "label",
+            "type": "((props: PageTabsCompactItemSlotProps<T>) => any) | undefined",
+            "parameters": "((props: PageTabsCompactItemSlotProps<T>) => any) | undefined",
+            "required": false,
+            "description": "Custom content for the tab label.",
+            "descriptionKey": "api.generated.src_components_page_tabs_types.pagetabsslots.callables.label",
+            "sourcePath": "headless/src/components/page-tabs/types.ts",
+            "referencedTypes": [
+              {
+                "name": "PageTabsCompactItemSlotProps",
+                "kind": "interface",
+                "type": "PageTabsCompactItemSlotProps<T>",
+                "resolvedType": null,
+                "description": "Slot props for a compact page tab item.",
+                "descriptionKey": "api.generated.headless_src_components_page_tabs_types.pagetabscompactitemslotprops",
+                "sourcePath": "headless/src/components/page-tabs/types.ts",
+                "typeParameters": ["T extends PageTabsOptionData = PageTabsOptionData"],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "indicator",
+            "type": "((props: PageTabsCompactItemSlotProps<T>) => any) | undefined",
+            "parameters": "((props: PageTabsCompactItemSlotProps<T>) => any) | undefined",
+            "required": false,
+            "description": "Custom content for the tab indicator.",
+            "descriptionKey": "api.generated.src_components_page_tabs_types.pagetabsslots.callables.indicator",
+            "sourcePath": "headless/src/components/page-tabs/types.ts",
+            "referencedTypes": [
+              {
+                "name": "PageTabsCompactItemSlotProps",
+                "kind": "interface",
+                "type": "PageTabsCompactItemSlotProps<T>",
+                "resolvedType": null,
+                "description": "Slot props for a compact page tab item.",
+                "descriptionKey": "api.generated.headless_src_components_page_tabs_types.pagetabscompactitemslotprops",
+                "sourcePath": "headless/src/components/page-tabs/types.ts",
+                "typeParameters": ["T extends PageTabsOptionData = PageTabsOptionData"],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "pin-icon",
+            "type": "(() => void) | undefined",
+            "parameters": "(() => void) | undefined",
+            "required": false,
+            "description": "Custom content for the pin icon.",
+            "descriptionKey": "api.generated.src_components_page_tabs_types.pagetabsslots.callables.pin_icon",
+            "sourcePath": "headless/src/components/page-tabs/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "close-icon",
+            "type": "(() => void) | undefined",
+            "parameters": "(() => void) | undefined",
+            "required": false,
+            "description": "Custom content for the close icon.",
+            "descriptionKey": "api.generated.src_components_page_tabs_types.pagetabsslots.callables.close_icon",
+            "sourcePath": "headless/src/components/page-tabs/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "referencedTypes": []
+      }
+    },
+    "PageTabsClose": {
+      "props": {
+        "kind": "props",
+        "name": "PageTabsCloseProps",
+        "type": "Interface PageTabsCloseProps",
+        "resolvedType": "{ type?: ButtonType; disabled?: boolean; asChild?: boolean; as?: AsTag | Component }",
+        "description": "Properties for the PageTabsClose component.",
+        "descriptionKey": "api.generated.headless_src_components_page_tabs_types.pagetabscloseprops.props",
+        "sourcePath": "headless/src/components/page-tabs/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "type",
+            "type": "ButtonType",
+            "required": false,
+            "description": "The type of the button element. Can be one of 'button', 'submit', or 'reset'.",
+            "descriptionKey": "api.generated.headless_src_components_page_tabs_types.pagetabscloseprops.members.type",
+            "default": "'button'",
+            "inheritedFrom": "ButtonProps.type",
+            "sourcePath": "headless/src/components/button/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ButtonType",
+                "kind": "typeAlias",
+                "type": "'button' | 'submit' | 'reset'",
+                "resolvedType": "'button' | 'submit' | 'reset'",
+                "description": "Supported button values.",
+                "descriptionKey": "api.generated.headless_src_components_button_types.buttontype",
+                "sourcePath": "headless/src/components/button/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "disabled",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether the component is disabled.",
+            "descriptionKey": "api.generated.headless_src_components_page_tabs_types.pagetabscloseprops.members.disabled",
+            "default": null,
+            "inheritedFrom": "ButtonProps.disabled",
+            "sourcePath": "headless/src/components/button/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "asChild",
+            "type": "boolean",
+            "required": false,
+            "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+            "descriptionKey": "api.generated.headless_src_components_page_tabs_types.pagetabscloseprops.members.aschild",
+            "default": null,
+            "inheritedFrom": "ButtonProps.asChild",
+            "sourcePath": "headless/src/components/primitive/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "as",
+            "type": "AsTag | Component",
+            "required": false,
+            "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+            "descriptionKey": "api.generated.headless_src_components_page_tabs_types.pagetabscloseprops.members.as",
+            "default": "'div'",
+            "inheritedFrom": "ButtonProps.as",
+            "sourcePath": "headless/src/components/primitive/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Component",
+                "kind": "typeAlias",
+                "type": "Component",
+                "resolvedType": null,
+                "description": "A type used in public APIs where a component type is expected.\nThe constructor type is an artificial type returned by defineComponent().",
+                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_34_node_modules_vue_runtime_core_dist_runtime_core_d.component",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.34/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [
+                  "PropsOrInstance = any",
+                  "RawBindings = any",
+                  "D = any",
+                  "C extends ComputedOptions = ComputedOptions",
+                  "M extends MethodOptions = MethodOptions",
+                  "E extends EmitsOptions | Record<string, any[]> = {}",
+                  "S extends Record<string, any> = any"
+                ],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "PageTabsCompact": {
+      "props": {
+        "kind": "props",
+        "name": "PageTabsCompactProps",
+        "type": "Interface PageTabsCompactProps<T>",
+        "resolvedType": "{ items: T[]; menuFactory?: ((tab: T, state: PageTabsState) => PageTabsContextMenuOptionData[]); beforeClose?: ((value: string) => MaybePromise<boolean | void>); itemProps?: BaseProps; pinProps?: BaseProps; closeProps?: BaseProps; contextMenuProps?: Omit<ContextMenuCompactProps<import(\"@/index\").DefinedValue>, 'options'>; modelValue?: string; middleClickClose?: boolean; asChild?: boolean; as?: AsTag | Component; dir?: Direction; currentTabStopId?: string | null; defaultCurrentTabStopId?: string; preventScrollOnEntryFocus?: boolean; loop?: boolean }",
+        "description": "Properties for the PageTabsCompact component.",
+        "descriptionKey": "api.generated.headless_src_components_page_tabs_types.pagetabscompactprops.props",
+        "sourcePath": "headless/src/components/page-tabs/types.ts",
+        "typeParameters": ["TypeParameter T"],
+        "members": [
+          {
+            "name": "items",
+            "type": "T[]",
+            "required": true,
+            "description": "Items rendered by the component.",
+            "descriptionKey": "api.generated.headless_src_components_page_tabs_types.pagetabscompactprops.members.items",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/page-tabs/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "menuFactory",
+            "type": "((tab: T, state: PageTabsState) => PageTabsContextMenuOptionData[])",
+            "required": false,
+            "description": "A factory function to generate context menu options for each tab.",
+            "descriptionKey": "api.generated.headless_src_components_page_tabs_types.pagetabscompactprops.members.menufactory",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/page-tabs/types.ts",
+            "referencedTypes": [
+              {
+                "name": "PageTabsState",
+                "kind": "interface",
+                "type": "PageTabsState",
+                "resolvedType": null,
+                "description": "State values for PageTabsState.",
+                "descriptionKey": "api.generated.headless_src_components_page_tabs_types.pagetabsstate",
+                "sourcePath": "headless/src/components/page-tabs/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "beforeClose",
+            "type": "((value: string) => MaybePromise<boolean | void>)",
+            "required": false,
+            "description": "Callback invoked before closing the tab. Return `false` or a promise that resolves to `false` to prevent closing.",
+            "descriptionKey": "api.generated.headless_src_components_page_tabs_types.pagetabscompactprops.members.beforeclose",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/page-tabs/types.ts",
+            "referencedTypes": [
+              {
+                "name": "MaybePromise",
+                "kind": "typeAlias",
+                "type": "boolean | void | Promise<boolean | void>",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": "api.generated.headless_src_types_common.maybepromise",
+                "sourcePath": "headless/src/types/common.ts",
+                "typeParameters": ["T"],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "itemProps",
+            "type": "BaseProps",
+            "required": false,
+            "description": "Per-slot class overrides for the component.",
+            "descriptionKey": "api.generated.headless_src_components_page_tabs_types.pagetabscompactprops.members.itemprops",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/page-tabs/types.ts",
+            "referencedTypes": [
+              {
+                "name": "BaseProps",
+                "kind": "typeAlias",
+                "type": "import(\"../../types\").DataAttributes & import(\"vue\").HTMLAttributes",
+                "resolvedType": "DataAttributes & T",
+                "description": "",
+                "descriptionKey": "api.generated.headless_src_types_vue.baseprops",
+                "sourcePath": "headless/src/types/vue.ts",
+                "typeParameters": ["T = HTMLAttributes"],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "pinProps",
+            "type": "BaseProps",
+            "required": false,
+            "description": "Per-slot class overrides for the component.",
+            "descriptionKey": "api.generated.headless_src_components_page_tabs_types.pagetabscompactprops.members.pinprops",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/page-tabs/types.ts",
+            "referencedTypes": [
+              {
+                "name": "BaseProps",
+                "kind": "typeAlias",
+                "type": "import(\"../../types\").DataAttributes & import(\"vue\").HTMLAttributes",
+                "resolvedType": "DataAttributes & T",
+                "description": "",
+                "descriptionKey": "api.generated.headless_src_types_vue.baseprops",
+                "sourcePath": "headless/src/types/vue.ts",
+                "typeParameters": ["T = HTMLAttributes"],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "closeProps",
+            "type": "BaseProps",
+            "required": false,
+            "description": "Per-slot class overrides for the component.",
+            "descriptionKey": "api.generated.headless_src_components_page_tabs_types.pagetabscompactprops.members.closeprops",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/page-tabs/types.ts",
+            "referencedTypes": [
+              {
+                "name": "BaseProps",
+                "kind": "typeAlias",
+                "type": "import(\"../../types\").DataAttributes & import(\"vue\").HTMLAttributes",
+                "resolvedType": "DataAttributes & T",
+                "description": "",
+                "descriptionKey": "api.generated.headless_src_types_vue.baseprops",
+                "sourcePath": "headless/src/types/vue.ts",
+                "typeParameters": ["T = HTMLAttributes"],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "contextMenuProps",
+            "type": "Omit<ContextMenuCompactProps<import(\"@/index\").DefinedValue>, 'options'>",
+            "required": false,
+            "description": "Additional props for the context menu component.",
+            "descriptionKey": "api.generated.headless_src_components_page_tabs_types.pagetabscompactprops.members.contextmenuprops",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/page-tabs/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ContextMenuCompactProps",
+                "kind": "interface",
+                "type": "ContextMenuCompactProps<import(\"@/index\").DefinedValue>",
+                "resolvedType": null,
+                "description": "Properties for the ContextMenuCompact component.",
+                "descriptionKey": "api.generated.headless_src_components_context_menu_types.contextmenucompactprops",
+                "sourcePath": "headless/src/components/context-menu/types.ts",
+                "typeParameters": ["T extends DefinedValue = DefinedValue"],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "modelValue",
+            "type": "string",
+            "required": false,
+            "description": "The active tab value.",
+            "descriptionKey": "api.generated.headless_src_components_page_tabs_types.pagetabscompactprops.members.modelvalue",
+            "default": null,
+            "inheritedFrom": "modelValue",
+            "sourcePath": "headless/src/components/page-tabs/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "middleClickClose",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether middle-clicking a tab closes it.",
+            "descriptionKey": "api.generated.headless_src_components_page_tabs_types.pagetabscompactprops.members.middleclickclose",
+            "default": null,
+            "inheritedFrom": "middleClickClose",
+            "sourcePath": "headless/src/components/page-tabs/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "asChild",
+            "type": "boolean",
+            "required": false,
+            "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+            "descriptionKey": "api.generated.headless_src_components_page_tabs_types.pagetabscompactprops.members.aschild",
+            "default": null,
+            "inheritedFrom": "asChild",
+            "sourcePath": "headless/src/components/primitive/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "as",
+            "type": "AsTag | Component",
+            "required": false,
+            "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+            "descriptionKey": "api.generated.headless_src_components_page_tabs_types.pagetabscompactprops.members.as",
+            "default": "'div'",
+            "inheritedFrom": "as",
+            "sourcePath": "headless/src/components/primitive/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Component",
+                "kind": "typeAlias",
+                "type": "Component",
+                "resolvedType": null,
+                "description": "A type used in public APIs where a component type is expected.\nThe constructor type is an artificial type returned by defineComponent().",
+                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_34_node_modules_vue_runtime_core_dist_runtime_core_d.component",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.34/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [
+                  "PropsOrInstance = any",
+                  "RawBindings = any",
+                  "D = any",
+                  "C extends ComputedOptions = ComputedOptions",
+                  "M extends MethodOptions = MethodOptions",
+                  "E extends EmitsOptions | Record<string, any[]> = {}",
+                  "S extends Record<string, any> = any"
+                ],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "dir",
+            "type": "Direction",
+            "required": false,
+            "description": "The direction of navigation between items.",
+            "descriptionKey": "api.generated.headless_src_components_page_tabs_types.pagetabscompactprops.members.dir",
+            "default": null,
+            "inheritedFrom": "dir",
+            "sourcePath": "headless/src/components/roving-focus/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Direction",
+                "kind": "typeAlias",
+                "type": "'ltr' | 'rtl'",
+                "resolvedType": "'ltr' | 'rtl'",
+                "description": "",
+                "descriptionKey": "api.generated.headless_src_types_common.direction",
+                "sourcePath": "headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "currentTabStopId",
+            "type": "string | null",
+            "required": false,
+            "description": "The controlled value of the current stop item. Can be bound as `v-model`.",
+            "descriptionKey": "api.generated.headless_src_components_page_tabs_types.pagetabscompactprops.members.currenttabstopid",
+            "default": null,
+            "inheritedFrom": "currentTabStopId",
+            "sourcePath": "headless/src/components/roving-focus/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "defaultCurrentTabStopId",
+            "type": "string",
+            "required": false,
+            "description": "The value of the current stop item.\n\nUse when you do not need to control the state of the stop item.",
+            "descriptionKey": "api.generated.headless_src_components_page_tabs_types.pagetabscompactprops.members.defaultcurrenttabstopid",
+            "default": null,
+            "inheritedFrom": "defaultCurrentTabStopId",
+            "sourcePath": "headless/src/components/roving-focus/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "preventScrollOnEntryFocus",
+            "type": "boolean",
+            "required": false,
+            "description": "When `true`, will prevent scrolling to the focus item when focused.",
+            "descriptionKey": "api.generated.headless_src_components_page_tabs_types.pagetabscompactprops.members.preventscrollonentryfocus",
+            "default": null,
+            "inheritedFrom": "preventScrollOnEntryFocus",
+            "sourcePath": "headless/src/components/roving-focus/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "loop",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether keyboard navigation should loop around",
+            "descriptionKey": "api.generated.headless_src_components_page_tabs_types.pagetabscompactprops.members.loop",
+            "default": "false",
+            "inheritedFrom": "loop",
+            "sourcePath": "headless/src/components/roving-focus/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      },
+      "emits": {
+        "kind": "emits",
+        "name": "PageTabsCompactEmits",
+        "type": "TypeAlias PageTabsCompactEmits<T>: PageTabsRootEmits & { (e: \"update:items\", items: T[]): void; (e: \"click\", tab: T): void; (e: \"close\", tab: T): void; (e: \"pin\", tab: T): void; (e: \"contextmenu\", tab: T): void; (e: \"selectContextMenu\", menu: PageTabsContextMenuOptionData, tab: T): void }",
+        "resolvedType": "(e: 'update:modelValue', value: string) => void | (e: 'update:items', items: T[]) => void | (e: 'click', tab: T) => void | (e: 'close', tab: T) => void | (e: 'pin', tab: T) => void | (e: 'contextmenu', tab: T) => void | (e: 'selectContextMenu', menu: PageTabsContextMenuOptionData, tab: T) => void",
+        "description": "Events for the PageTabsCompact component.",
+        "descriptionKey": "api.generated.headless_src_components_page_tabs_types.pagetabscompactemits.emits",
+        "sourcePath": "headless/src/components/page-tabs/types.ts",
+        "typeParameters": ["TypeParameter T"],
+        "members": [],
+        "callables": [],
+        "referencedTypes": []
+      },
+      "slots": {
+        "kind": "slots",
+        "name": "PageTabsCompactSlots",
+        "type": "TypeAlias PageTabsCompactSlots<T>",
+        "resolvedType": "{ item?: ((props: PageTabsCompactItemSlotProps<T>) => any); icon?: ((props: PageTabsCompactItemSlotProps<T>) => any); label?: ((props: PageTabsCompactItemSlotProps<T>) => any); indicator?: ((props: PageTabsCompactItemSlotProps<T>) => any); \"pin-icon\"?: (() => void); \"close-icon\"?: (() => void) }",
+        "description": "Slots for the PageTabsCompact component.",
+        "descriptionKey": "api.generated.headless_src_components_page_tabs_types.pagetabscompactslots.slots",
+        "sourcePath": "headless/src/components/page-tabs/types.ts",
+        "typeParameters": ["TypeParameter T"],
+        "members": [],
+        "callables": [
+          {
+            "name": "item",
+            "type": "((props: PageTabsCompactItemSlotProps<T>) => any) | undefined",
+            "parameters": "((props: PageTabsCompactItemSlotProps<T>) => any) | undefined",
+            "required": false,
+            "description": "Custom content for the default tab item body.",
+            "descriptionKey": "api.generated.headless_src_components_page_tabs_types.pagetabscompactslots.callables.item",
+            "sourcePath": "headless/src/components/page-tabs/types.ts",
+            "referencedTypes": [
+              {
+                "name": "PageTabsCompactItemSlotProps",
+                "kind": "interface",
+                "type": "PageTabsCompactItemSlotProps<T>",
+                "resolvedType": null,
+                "description": "Slot props for a compact page tab item.",
+                "descriptionKey": "api.generated.headless_src_components_page_tabs_types.pagetabscompactitemslotprops",
+                "sourcePath": "headless/src/components/page-tabs/types.ts",
+                "typeParameters": ["T extends PageTabsOptionData = PageTabsOptionData"],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "icon",
+            "type": "((props: PageTabsCompactItemSlotProps<T>) => any) | undefined",
+            "parameters": "((props: PageTabsCompactItemSlotProps<T>) => any) | undefined",
+            "required": false,
+            "description": "Custom content for the tab icon.",
+            "descriptionKey": "api.generated.headless_src_components_page_tabs_types.pagetabscompactslots.callables.icon",
+            "sourcePath": "headless/src/components/page-tabs/types.ts",
+            "referencedTypes": [
+              {
+                "name": "PageTabsCompactItemSlotProps",
+                "kind": "interface",
+                "type": "PageTabsCompactItemSlotProps<T>",
+                "resolvedType": null,
+                "description": "Slot props for a compact page tab item.",
+                "descriptionKey": "api.generated.headless_src_components_page_tabs_types.pagetabscompactitemslotprops",
+                "sourcePath": "headless/src/components/page-tabs/types.ts",
+                "typeParameters": ["T extends PageTabsOptionData = PageTabsOptionData"],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "label",
+            "type": "((props: PageTabsCompactItemSlotProps<T>) => any) | undefined",
+            "parameters": "((props: PageTabsCompactItemSlotProps<T>) => any) | undefined",
+            "required": false,
+            "description": "Custom content for the tab label.",
+            "descriptionKey": "api.generated.headless_src_components_page_tabs_types.pagetabscompactslots.callables.label",
+            "sourcePath": "headless/src/components/page-tabs/types.ts",
+            "referencedTypes": [
+              {
+                "name": "PageTabsCompactItemSlotProps",
+                "kind": "interface",
+                "type": "PageTabsCompactItemSlotProps<T>",
+                "resolvedType": null,
+                "description": "Slot props for a compact page tab item.",
+                "descriptionKey": "api.generated.headless_src_components_page_tabs_types.pagetabscompactitemslotprops",
+                "sourcePath": "headless/src/components/page-tabs/types.ts",
+                "typeParameters": ["T extends PageTabsOptionData = PageTabsOptionData"],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "indicator",
+            "type": "((props: PageTabsCompactItemSlotProps<T>) => any) | undefined",
+            "parameters": "((props: PageTabsCompactItemSlotProps<T>) => any) | undefined",
+            "required": false,
+            "description": "Custom content for the tab indicator.",
+            "descriptionKey": "api.generated.headless_src_components_page_tabs_types.pagetabscompactslots.callables.indicator",
+            "sourcePath": "headless/src/components/page-tabs/types.ts",
+            "referencedTypes": [
+              {
+                "name": "PageTabsCompactItemSlotProps",
+                "kind": "interface",
+                "type": "PageTabsCompactItemSlotProps<T>",
+                "resolvedType": null,
+                "description": "Slot props for a compact page tab item.",
+                "descriptionKey": "api.generated.headless_src_components_page_tabs_types.pagetabscompactitemslotprops",
+                "sourcePath": "headless/src/components/page-tabs/types.ts",
+                "typeParameters": ["T extends PageTabsOptionData = PageTabsOptionData"],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "pin-icon",
+            "type": "(() => void) | undefined",
+            "parameters": "(() => void) | undefined",
+            "required": false,
+            "description": "Custom content for the pin icon.",
+            "descriptionKey": "api.generated.headless_src_components_page_tabs_types.pagetabscompactslots.callables.pin_icon",
+            "sourcePath": "headless/src/components/page-tabs/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "close-icon",
+            "type": "(() => void) | undefined",
+            "parameters": "(() => void) | undefined",
+            "required": false,
+            "description": "Custom content for the close icon.",
+            "descriptionKey": "api.generated.headless_src_components_page_tabs_types.pagetabscompactslots.callables.close_icon",
+            "sourcePath": "headless/src/components/page-tabs/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "referencedTypes": []
+      }
+    },
+    "PageTabsCompactItem": {
+      "slotProps": {
+        "kind": "slotProps",
+        "name": "PageTabsCompactItemSlotProps",
+        "type": "Interface PageTabsCompactItemSlotProps<T>",
+        "resolvedType": "{ item: T; index: number; active: boolean; closable: boolean }",
+        "description": "Slot props for a compact page tab item.",
+        "descriptionKey": "api.generated.headless_src_components_page_tabs_types.pagetabscompactitemslotprops.slotprops",
+        "sourcePath": "headless/src/components/page-tabs/types.ts",
+        "typeParameters": ["TypeParameter T"],
+        "members": [
+          {
+            "name": "item",
+            "type": "T",
+            "required": true,
+            "description": "Current item data.",
+            "descriptionKey": "api.generated.headless_src_components_page_tabs_types.pagetabscompactitemslotprops.members.item",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/page-tabs/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "index",
+            "type": "number",
+            "required": true,
+            "description": "Index of the current item.",
+            "descriptionKey": "api.generated.headless_src_components_page_tabs_types.pagetabscompactitemslotprops.members.index",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/page-tabs/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "active",
+            "type": "boolean",
+            "required": true,
+            "description": "Whether the current item is active.",
+            "descriptionKey": "api.generated.headless_src_components_page_tabs_types.pagetabscompactitemslotprops.members.active",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/page-tabs/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "closable",
+            "type": "boolean",
+            "required": true,
+            "description": "Whether the current item can be closed.",
+            "descriptionKey": "api.generated.headless_src_components_page_tabs_types.pagetabscompactitemslotprops.members.closable",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/page-tabs/types.ts",
+            "referencedTypes": []
           }
         ],
         "callables": [],
@@ -329,12 +1223,48 @@
         "kind": "props",
         "name": "PageTabsPinProps",
         "type": "Interface PageTabsPinProps",
-        "resolvedType": "{ asChild?: boolean; as?: AsTag | Component }",
+        "resolvedType": "{ type?: ButtonType; disabled?: boolean; asChild?: boolean; as?: AsTag | Component }",
         "description": "Properties for the PageTabsPin component.",
         "descriptionKey": "api.generated.headless_src_components_page_tabs_types.pagetabspinprops.props",
         "sourcePath": "headless/src/components/page-tabs/types.ts",
         "typeParameters": [],
         "members": [
+          {
+            "name": "type",
+            "type": "ButtonType",
+            "required": false,
+            "description": "The type of the button element. Can be one of 'button', 'submit', or 'reset'.",
+            "descriptionKey": "api.generated.headless_src_components_page_tabs_types.pagetabspinprops.members.type",
+            "default": "'button'",
+            "inheritedFrom": "ButtonProps.type",
+            "sourcePath": "headless/src/components/button/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ButtonType",
+                "kind": "typeAlias",
+                "type": "'button' | 'submit' | 'reset'",
+                "resolvedType": "'button' | 'submit' | 'reset'",
+                "description": "Supported button values.",
+                "descriptionKey": "api.generated.headless_src_components_button_types.buttontype",
+                "sourcePath": "headless/src/components/button/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "disabled",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether the component is disabled.",
+            "descriptionKey": "api.generated.headless_src_components_page_tabs_types.pagetabspinprops.members.disabled",
+            "default": null,
+            "inheritedFrom": "ButtonProps.disabled",
+            "sourcePath": "headless/src/components/button/types.ts",
+            "referencedTypes": []
+          },
           {
             "name": "asChild",
             "type": "boolean",
@@ -342,7 +1272,7 @@
             "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
             "descriptionKey": "api.generated.headless_src_components_page_tabs_types.pagetabspinprops.members.aschild",
             "default": null,
-            "inheritedFrom": "PrimitiveProps.asChild",
+            "inheritedFrom": "ButtonProps.asChild",
             "sourcePath": "headless/src/components/primitive/types.ts",
             "referencedTypes": []
           },
@@ -353,7 +1283,7 @@
             "description": "The element or component this component should render as. Can be overwrite by `asChild`",
             "descriptionKey": "api.generated.headless_src_components_page_tabs_types.pagetabspinprops.members.as",
             "default": "'div'",
-            "inheritedFrom": "PrimitiveProps.as",
+            "inheritedFrom": "ButtonProps.as",
             "sourcePath": "headless/src/components/primitive/types.ts",
             "referencedTypes": [
               {
@@ -362,8 +1292,8 @@
                 "type": "Component",
                 "resolvedType": null,
                 "description": "A type used in public APIs where a component type is expected.\nThe constructor type is an artificial type returned by defineComponent().",
-                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_33_node_modules_vue_runtime_core_dist_runtime_core_d.component",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_34_node_modules_vue_runtime_core_dist_runtime_core_d.component",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.34/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
                 "typeParameters": [
                   "PropsOrInstance = any",
                   "RawBindings = any",
@@ -389,7 +1319,7 @@
         "kind": "props",
         "name": "PageTabsRootProps",
         "type": "Interface PageTabsRootProps",
-        "resolvedType": "{ modelValue?: string; middleClickClose?: boolean }",
+        "resolvedType": "{ modelValue?: string; middleClickClose?: boolean; asChild?: boolean; as?: AsTag | Component; dir?: Direction; currentTabStopId?: string | null; defaultCurrentTabStopId?: string; preventScrollOnEntryFocus?: boolean; loop?: boolean }",
         "description": "Properties for the PageTabsRoot component.",
         "descriptionKey": "api.generated.headless_src_components_page_tabs_types.pagetabsrootprops.props",
         "sourcePath": "headless/src/components/page-tabs/types.ts",
@@ -415,6 +1345,119 @@
             "default": null,
             "inheritedFrom": null,
             "sourcePath": "headless/src/components/page-tabs/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "asChild",
+            "type": "boolean",
+            "required": false,
+            "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+            "descriptionKey": "api.generated.headless_src_components_page_tabs_types.pagetabsrootprops.members.aschild",
+            "default": null,
+            "inheritedFrom": "asChild",
+            "sourcePath": "headless/src/components/primitive/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "as",
+            "type": "AsTag | Component",
+            "required": false,
+            "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+            "descriptionKey": "api.generated.headless_src_components_page_tabs_types.pagetabsrootprops.members.as",
+            "default": "'div'",
+            "inheritedFrom": "as",
+            "sourcePath": "headless/src/components/primitive/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Component",
+                "kind": "typeAlias",
+                "type": "Component",
+                "resolvedType": null,
+                "description": "A type used in public APIs where a component type is expected.\nThe constructor type is an artificial type returned by defineComponent().",
+                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_34_node_modules_vue_runtime_core_dist_runtime_core_d.component",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.34/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [
+                  "PropsOrInstance = any",
+                  "RawBindings = any",
+                  "D = any",
+                  "C extends ComputedOptions = ComputedOptions",
+                  "M extends MethodOptions = MethodOptions",
+                  "E extends EmitsOptions | Record<string, any[]> = {}",
+                  "S extends Record<string, any> = any"
+                ],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "dir",
+            "type": "Direction",
+            "required": false,
+            "description": "The direction of navigation between items.",
+            "descriptionKey": "api.generated.headless_src_components_page_tabs_types.pagetabsrootprops.members.dir",
+            "default": null,
+            "inheritedFrom": "Omit.dir",
+            "sourcePath": "headless/src/components/roving-focus/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Direction",
+                "kind": "typeAlias",
+                "type": "'ltr' | 'rtl'",
+                "resolvedType": "'ltr' | 'rtl'",
+                "description": "",
+                "descriptionKey": "api.generated.headless_src_types_common.direction",
+                "sourcePath": "headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "currentTabStopId",
+            "type": "string | null",
+            "required": false,
+            "description": "The controlled value of the current stop item. Can be bound as `v-model`.",
+            "descriptionKey": "api.generated.headless_src_components_page_tabs_types.pagetabsrootprops.members.currenttabstopid",
+            "default": null,
+            "inheritedFrom": "Omit.currentTabStopId",
+            "sourcePath": "headless/src/components/roving-focus/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "defaultCurrentTabStopId",
+            "type": "string",
+            "required": false,
+            "description": "The value of the current stop item.\n\nUse when you do not need to control the state of the stop item.",
+            "descriptionKey": "api.generated.headless_src_components_page_tabs_types.pagetabsrootprops.members.defaultcurrenttabstopid",
+            "default": null,
+            "inheritedFrom": "Omit.defaultCurrentTabStopId",
+            "sourcePath": "headless/src/components/roving-focus/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "preventScrollOnEntryFocus",
+            "type": "boolean",
+            "required": false,
+            "description": "When `true`, will prevent scrolling to the focus item when focused.",
+            "descriptionKey": "api.generated.headless_src_components_page_tabs_types.pagetabsrootprops.members.preventscrollonentryfocus",
+            "default": null,
+            "inheritedFrom": "Omit.preventScrollOnEntryFocus",
+            "sourcePath": "headless/src/components/roving-focus/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "loop",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether keyboard navigation should loop around",
+            "descriptionKey": "api.generated.headless_src_components_page_tabs_types.pagetabsrootprops.members.loop",
+            "default": "false",
+            "inheritedFrom": "Omit.loop",
+            "sourcePath": "headless/src/components/roving-focus/types.ts",
             "referencedTypes": []
           }
         ],

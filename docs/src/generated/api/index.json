@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-09T10:02:03.298Z",
+  "generatedAt": "2026-05-10T17:56:57.878Z",
   "schemaVersion": 4,
   "components": {
     "accordion": {
@@ -235,7 +235,7 @@
     "color-picker": {
       "component": "color-picker",
       "file": "color-picker.json",
-      "symbols": ["ColorPicker", "ColorPickerRoot"]
+      "symbols": ["ColorPicker", "ColorPickerCompact", "ColorPickerRoot", "ColorPickerTrigger"]
     },
     "color-slider": {
       "component": "color-slider",
@@ -245,7 +245,7 @@
     "color-swatch": {
       "component": "color-swatch",
       "file": "color-swatch.json",
-      "symbols": ["ColorSwatch"]
+      "symbols": ["ColorSwatch", "ColorSwatchChecker", "ColorSwatchCompact", "ColorSwatchFill", "ColorSwatchRoot"]
     },
     "color-swatch-picker": {
       "component": "color-swatch-picker",
@@ -264,11 +264,6 @@
       "component": "combobox",
       "file": "combobox.json",
       "symbols": [
-        "AutocompleteContent",
-        "AutocompleteItem",
-        "AutocompleteSeparator",
-        "AutocompleteTrigger",
-        "AutocompleteViewport",
         "Combobox",
         "ComboboxAnchor",
         "ComboboxArrow",
@@ -362,17 +357,6 @@
       "component": "dialog",
       "file": "dialog.json",
       "symbols": [
-        "BottomSheetCancel",
-        "BottomSheetClose",
-        "BottomSheetConfirm",
-        "BottomSheetContent",
-        "BottomSheetDescription",
-        "BottomSheetFooter",
-        "BottomSheetHeader",
-        "BottomSheetOverlay",
-        "BottomSheetPopup",
-        "BottomSheetTitle",
-        "BottomSheetTrigger",
         "Dialog",
         "DialogCancel",
         "DialogClose",
@@ -496,7 +480,7 @@
     "input": {
       "component": "input",
       "file": "input.json",
-      "symbols": ["AutocompleteInput", "Input", "InputClear", "InputCompact", "InputControl", "InputRoot"]
+      "symbols": ["Input", "InputClear", "InputCompact", "InputControl", "InputRoot"]
     },
     "input-number": {
       "component": "input-number",
@@ -523,7 +507,7 @@
     "label": {
       "component": "label",
       "file": "label.json",
-      "symbols": ["CheckboxLabel", "Label"]
+      "symbols": ["Label"]
     },
     "layout": {
       "component": "layout",
@@ -559,9 +543,6 @@
       "component": "listbox",
       "file": "listbox.json",
       "symbols": [
-        "AutocompleteGroup",
-        "AutocompleteGroupLabel",
-        "AutocompleteItemIndicator",
         "CommandInput",
         "CommandItem",
         "CommandList",
@@ -580,18 +561,7 @@
       "component": "menu",
       "file": "menu.json",
       "symbols": [
-        "ContextMenuCheckboxGroup",
-        "ContextMenuCheckboxItem",
-        "ContextMenuGroup",
-        "ContextMenuGroupLabel",
-        "ContextMenuItem",
-        "ContextMenuItemIndicator",
         "ContextMenuPopup",
-        "ContextMenuRadioGroup",
-        "ContextMenuRadioItem",
-        "ContextMenuSub",
-        "ContextMenuSubContent",
-        "ContextMenuSubTrigger",
         "MenuAnchor",
         "MenuArrow",
         "MenuCheckboxGroup",
@@ -669,7 +639,15 @@
     "page-tabs": {
       "component": "page-tabs",
       "file": "page-tabs.json",
-      "symbols": ["PageTabs", "PageTabsClose", "PageTabsItem", "PageTabsPin", "PageTabsRoot"]
+      "symbols": [
+        "PageTabs",
+        "PageTabsClose",
+        "PageTabsCompact",
+        "PageTabsCompactItem",
+        "PageTabsItem",
+        "PageTabsPin",
+        "PageTabsRoot"
+      ]
     },
     "pagination": {
       "component": "pagination",
@@ -719,11 +697,6 @@
       "component": "popover",
       "file": "popover.json",
       "symbols": [
-        "PopconfirmClose",
-        "PopconfirmPopup",
-        "PopconfirmPositioner",
-        "PopconfirmRoot",
-        "PopconfirmTrigger",
         "Popover",
         "PopoverAnchor",
         "PopoverArrow",
@@ -735,24 +708,6 @@
         "PopoverRoot",
         "PopoverTrigger"
       ]
-    },
-    "popper": {
-      "component": "popper",
-      "file": "popper.json",
-      "symbols": [
-        "AutocompleteAnchor",
-        "ComboboxArrow",
-        "PopperAnchor",
-        "PopperArrow",
-        "PopperPopup",
-        "PopperPositioner",
-        "PopperRoot"
-      ]
-    },
-    "portal": {
-      "component": "portal",
-      "file": "portal.json",
-      "symbols": ["AutocompletePortal", "Portal"]
     },
     "progress": {
       "component": "progress",
@@ -831,7 +786,7 @@
     "separator": {
       "component": "separator",
       "file": "separator.json",
-      "symbols": ["ContextMenuSeparator", "Separator", "SeparatorCompact", "SeparatorLabel", "SeparatorRoot"]
+      "symbols": ["Separator", "SeparatorCompact", "SeparatorLabel", "SeparatorRoot"]
     },
     "skeleton": {
       "component": "skeleton",
@@ -910,19 +865,7 @@
     "tabs": {
       "component": "tabs",
       "file": "tabs.json",
-      "symbols": [
-        "SegmentIndicator",
-        "SegmentList",
-        "SegmentRoot",
-        "SegmentTrigger",
-        "Tabs",
-        "TabsCompact",
-        "TabsContent",
-        "TabsIndicator",
-        "TabsList",
-        "TabsRoot",
-        "TabsTrigger"
-      ]
+      "symbols": ["Tabs", "TabsCompact", "TabsContent", "TabsIndicator", "TabsList", "TabsRoot", "TabsTrigger"]
     },
     "tag": {
       "component": "tag",
@@ -1014,13 +957,16 @@
         "TreeMenuBaseItem",
         "TreeMenuButton",
         "TreeMenuCollapsible",
+        "TreeMenuCompact",
         "TreeMenuGroup",
         "TreeMenuGroupLabel",
         "TreeMenuGroupRoot",
         "TreeMenuItem",
-        "TreeMenuOption",
-        "TreeMenuOptions",
+        "TreeMenuOptionCompact",
+        "TreeMenuOptionsCompact",
+        "TreeMenuOptionSlotCompact",
         "TreeMenuRoot",
+        "TreeMenuSlotCompact",
         "TreeMenuStyledItem",
         "TreeMenuSub"
       ]

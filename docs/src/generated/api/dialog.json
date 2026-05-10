@@ -1,223 +1,6 @@
 {
   "component": "dialog",
   "symbols": {
-    "BottomSheetCancel": {
-      "props": {
-        "kind": "props",
-        "name": "BottomSheetCancelProps",
-        "type": "Interface BottomSheetCancelProps",
-        "resolvedType": null,
-        "description": "Properties for the DialogCancel component.",
-        "descriptionKey": "api.generated.headless_src_components_dialog_types.bottomsheetcancelprops.props",
-        "sourcePath": "headless/src/components/dialog/types.ts",
-        "typeParameters": [],
-        "members": [],
-        "callables": [],
-        "referencedTypes": []
-      },
-      "emits": {
-        "kind": "emits",
-        "name": "BottomSheetCancelEmits",
-        "type": "TypeAlias BottomSheetCancelEmits",
-        "resolvedType": null,
-        "description": "Events for the DialogCancel component.",
-        "descriptionKey": "api.generated.headless_src_components_dialog_types.bottomsheetcancelemits.emits",
-        "sourcePath": "headless/src/components/dialog/types.ts",
-        "typeParameters": [],
-        "members": [],
-        "callables": [],
-        "referencedTypes": []
-      }
-    },
-    "BottomSheetClose": {
-      "props": {
-        "kind": "props",
-        "name": "BottomSheetCloseProps",
-        "type": "Interface BottomSheetCloseProps",
-        "resolvedType": null,
-        "description": "Properties for the DialogClose component.",
-        "descriptionKey": "api.generated.headless_src_components_dialog_types.bottomsheetcloseprops.props",
-        "sourcePath": "headless/src/components/dialog/types.ts",
-        "typeParameters": [],
-        "members": [],
-        "callables": [],
-        "referencedTypes": []
-      },
-      "emits": {
-        "kind": "emits",
-        "name": "BottomSheetCloseEmits",
-        "type": "TypeAlias BottomSheetCloseEmits",
-        "resolvedType": null,
-        "description": "Events for the DialogClose component.",
-        "descriptionKey": "api.generated.headless_src_components_dialog_types.bottomsheetcloseemits.emits",
-        "sourcePath": "headless/src/components/dialog/types.ts",
-        "typeParameters": [],
-        "members": [],
-        "callables": [],
-        "referencedTypes": []
-      }
-    },
-    "BottomSheetConfirm": {
-      "props": {
-        "kind": "props",
-        "name": "BottomSheetConfirmProps",
-        "type": "Interface BottomSheetConfirmProps",
-        "resolvedType": null,
-        "description": "Properties for the DialogConfirm component.",
-        "descriptionKey": "api.generated.headless_src_components_dialog_types.bottomsheetconfirmprops.props",
-        "sourcePath": "headless/src/components/dialog/types.ts",
-        "typeParameters": [],
-        "members": [],
-        "callables": [],
-        "referencedTypes": []
-      },
-      "emits": {
-        "kind": "emits",
-        "name": "BottomSheetConfirmEmits",
-        "type": "TypeAlias BottomSheetConfirmEmits",
-        "resolvedType": null,
-        "description": "Events for the DialogConfirm component.",
-        "descriptionKey": "api.generated.headless_src_components_dialog_types.bottomsheetconfirmemits.emits",
-        "sourcePath": "headless/src/components/dialog/types.ts",
-        "typeParameters": [],
-        "members": [],
-        "callables": [],
-        "referencedTypes": []
-      }
-    },
-    "BottomSheetContent": {
-      "props": {
-        "kind": "props",
-        "name": "BottomSheetContentProps",
-        "type": "Interface BottomSheetContentProps",
-        "resolvedType": null,
-        "description": "Properties for the DialogContent component.",
-        "descriptionKey": "api.generated.headless_src_components_dialog_types.bottomsheetcontentprops.props",
-        "sourcePath": "headless/src/components/dialog/types.ts",
-        "typeParameters": [],
-        "members": [],
-        "callables": [],
-        "referencedTypes": []
-      }
-    },
-    "BottomSheetDescription": {
-      "props": {
-        "kind": "props",
-        "name": "BottomSheetDescriptionProps",
-        "type": "Interface BottomSheetDescriptionProps",
-        "resolvedType": null,
-        "description": "Properties for the DialogDescription component.",
-        "descriptionKey": "api.generated.headless_src_components_dialog_types.bottomsheetdescriptionprops.props",
-        "sourcePath": "headless/src/components/dialog/types.ts",
-        "typeParameters": [],
-        "members": [],
-        "callables": [],
-        "referencedTypes": []
-      }
-    },
-    "BottomSheetFooter": {
-      "props": {
-        "kind": "props",
-        "name": "BottomSheetFooterProps",
-        "type": "Interface BottomSheetFooterProps",
-        "resolvedType": null,
-        "description": "Properties for the DialogFooter component.",
-        "descriptionKey": "api.generated.headless_src_components_dialog_types.bottomsheetfooterprops.props",
-        "sourcePath": "headless/src/components/dialog/types.ts",
-        "typeParameters": [],
-        "members": [],
-        "callables": [],
-        "referencedTypes": []
-      }
-    },
-    "BottomSheetHeader": {
-      "props": {
-        "kind": "props",
-        "name": "BottomSheetHeaderProps",
-        "type": "Interface BottomSheetHeaderProps",
-        "resolvedType": null,
-        "description": "Properties for the DialogHeader component.",
-        "descriptionKey": "api.generated.headless_src_components_dialog_types.bottomsheetheaderprops.props",
-        "sourcePath": "headless/src/components/dialog/types.ts",
-        "typeParameters": [],
-        "members": [],
-        "callables": [],
-        "referencedTypes": []
-      }
-    },
-    "BottomSheetOverlay": {
-      "props": {
-        "kind": "props",
-        "name": "BottomSheetOverlayProps",
-        "type": "Interface BottomSheetOverlayProps",
-        "resolvedType": null,
-        "description": "Properties for the DialogOverlay component.",
-        "descriptionKey": "api.generated.headless_src_components_dialog_types.bottomsheetoverlayprops.props",
-        "sourcePath": "headless/src/components/dialog/types.ts",
-        "typeParameters": [],
-        "members": [],
-        "callables": [],
-        "referencedTypes": []
-      }
-    },
-    "BottomSheetPopup": {
-      "props": {
-        "kind": "props",
-        "name": "BottomSheetPopupProps",
-        "type": "Interface BottomSheetPopupProps",
-        "resolvedType": null,
-        "description": "Properties for the DialogPopup component.",
-        "descriptionKey": "api.generated.headless_src_components_dialog_types.bottomsheetpopupprops.props",
-        "sourcePath": "headless/src/components/dialog/types.ts",
-        "typeParameters": [],
-        "members": [],
-        "callables": [],
-        "referencedTypes": []
-      },
-      "emits": {
-        "kind": "emits",
-        "name": "BottomSheetPopupEmits",
-        "type": "TypeAlias BottomSheetPopupEmits: DialogPopupImplEmits",
-        "resolvedType": null,
-        "description": "Events for the DialogPopup component.",
-        "descriptionKey": "api.generated.headless_src_components_dialog_types.bottomsheetpopupemits.emits",
-        "sourcePath": "headless/src/components/dialog/types.ts",
-        "typeParameters": [],
-        "members": [],
-        "callables": [],
-        "referencedTypes": []
-      }
-    },
-    "BottomSheetTitle": {
-      "props": {
-        "kind": "props",
-        "name": "BottomSheetTitleProps",
-        "type": "Interface BottomSheetTitleProps",
-        "resolvedType": null,
-        "description": "Properties for the DialogTitle component.",
-        "descriptionKey": "api.generated.headless_src_components_dialog_types.bottomsheettitleprops.props",
-        "sourcePath": "headless/src/components/dialog/types.ts",
-        "typeParameters": [],
-        "members": [],
-        "callables": [],
-        "referencedTypes": []
-      }
-    },
-    "BottomSheetTrigger": {
-      "props": {
-        "kind": "props",
-        "name": "BottomSheetTriggerProps",
-        "type": "Interface BottomSheetTriggerProps",
-        "resolvedType": null,
-        "description": "Properties for the DialogTrigger component.",
-        "descriptionKey": "api.generated.headless_src_components_dialog_types.bottomsheettriggerprops.props",
-        "sourcePath": "headless/src/components/dialog/types.ts",
-        "typeParameters": [],
-        "members": [],
-        "callables": [],
-        "referencedTypes": []
-      }
-    },
     "Dialog": {
       "props": {
         "kind": "props",
@@ -388,9 +171,9 @@
             "name": "cancelText",
             "type": "string",
             "required": false,
-            "description": "The text of the cancel button. This is used for accessibility purposes and will be rendered in the footer of the dialog if the `cancel` slot is not provided.",
+            "description": "The text of the cancel button. This is used for accessibility purposes and will be rendered in the footer of the dialog if the `cancel` slot is not provided.\n\nDefaults to the localized `dialog.cancel` message from `ConfigProvider`.",
             "descriptionKey": "api.generated.src_components_dialog_types.dialogprops.members.canceltext",
-            "default": "'Cancel'",
+            "default": null,
             "inheritedFrom": "cancelText",
             "sourcePath": "headless/src/components/dialog/types.ts",
             "referencedTypes": []
@@ -410,9 +193,9 @@
             "name": "confirmText",
             "type": "string",
             "required": false,
-            "description": "The text of the confirm button. This is used for accessibility purposes and will be rendered in the footer of the dialog if the `confirm` slot is not provided.",
+            "description": "The text of the confirm button. This is used for accessibility purposes and will be rendered in the footer of the dialog if the `confirm` slot is not provided.\n\nDefaults to the localized `dialog.confirm` message from `ConfigProvider`.",
             "descriptionKey": "api.generated.src_components_dialog_types.dialogprops.members.confirmtext",
-            "default": "'Confirm'",
+            "default": null,
             "inheritedFrom": "confirmText",
             "sourcePath": "headless/src/components/dialog/types.ts",
             "referencedTypes": []
@@ -431,13 +214,35 @@
                 "name": "DialogTriggerProps",
                 "kind": "interface",
                 "type": "DialogTriggerProps",
-                "resolvedType": "{ asChild?: boolean; as?: AsTag | Component }",
+                "resolvedType": "{ type?: ButtonType; disabled?: boolean; asChild?: boolean; as?: AsTag | Component }",
                 "description": "Properties for the DialogTrigger component.",
                 "descriptionKey": "api.generated.headless_src_components_dialog_types.dialogtriggerprops",
                 "sourcePath": "headless/src/components/dialog/types.ts",
                 "typeParameters": [],
                 "external": false,
                 "members": [
+                  {
+                    "name": "type",
+                    "type": "ButtonType",
+                    "required": false,
+                    "description": "The type of the button element. Can be one of 'button', 'submit', or 'reset'.",
+                    "descriptionKey": "api.generated.headless_src_components_dialog_types.dialogtriggerprops.members.type",
+                    "default": "'button'",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/button/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "disabled",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Whether the component is disabled.",
+                    "descriptionKey": "api.generated.headless_src_components_dialog_types.dialogtriggerprops.members.disabled",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/button/types.ts",
+                    "referencedTypes": []
+                  },
                   {
                     "name": "asChild",
                     "type": "boolean",
@@ -990,8 +795,8 @@
               {
                 "name": "DialogAlertType",
                 "kind": "typeAlias",
-                "type": "'success' | 'warning' | 'info' | 'error' | 'default'",
-                "resolvedType": "'success' | 'warning' | 'info' | 'error' | 'default'",
+                "type": "'success' | 'warning' | 'info' | 'error' | 'DialogConfirm'",
+                "resolvedType": "'success' | 'warning' | 'info' | 'error' | 'DialogConfirm'",
                 "description": "Supported dialog alert values.",
                 "descriptionKey": "api.generated.headless_src_components_dialog_types.dialogalerttype",
                 "sourcePath": "headless/src/components/dialog/types.ts",
@@ -1043,7 +848,7 @@
         "kind": "emits",
         "name": "DialogEmits",
         "type": "TypeAlias DialogEmits: DialogCompactEmits",
-        "resolvedType": "{ \"update:open\": [value: boolean]; escapeKeyDown: [event: KeyboardEvent]; pointerDownOutside: [event: PointerDownOutsideEvent]; focusOutside: [event: FocusOutsideEvent]; interactOutside: [event: PointerDownOutsideEvent | FocusOutsideEvent]; openAutoFocus: [event: Event]; closeAutoFocus: [event: Event]; close: [event: MouseEvent]; confirm: [event: MouseEvent]; cancel: [event: MouseEvent] }",
+        "resolvedType": "{ \"update:open\": [value: boolean]; click: [event: PointerEvent]; escapeKeyDown: [event: KeyboardEvent]; pointerDownOutside: [event: PointerDownOutsideEvent]; focusOutside: [event: FocusOutsideEvent]; interactOutside: [event: PointerDownOutsideEvent | FocusOutsideEvent]; openAutoFocus: [event: Event]; closeAutoFocus: [event: Event]; close: [event: MouseEvent]; confirm: [event: MouseEvent]; cancel: [event: MouseEvent] }",
         "description": "Events for the Dialog component.",
         "descriptionKey": "api.generated.src_components_dialog_types.dialogemits.emits",
         "sourcePath": "src/components/dialog/types.ts",
@@ -1059,6 +864,30 @@
             "descriptionKey": "api.generated.src_components_dialog_types.dialogemits.callables.update_open",
             "sourcePath": "headless/src/components/dialog/types.ts",
             "referencedTypes": []
+          },
+          {
+            "name": "click",
+            "type": "[event: PointerEvent]",
+            "parameters": "event: PointerEvent",
+            "required": true,
+            "description": "Event handler called when the dialog trigger is activated.",
+            "descriptionKey": "api.generated.src_components_dialog_types.dialogemits.callables.click",
+            "sourcePath": "headless/src/components/dialog/types.ts",
+            "referencedTypes": [
+              {
+                "name": "PointerEvent",
+                "kind": "interface",
+                "type": "PointerEvent",
+                "resolvedType": null,
+                "description": "The **`PointerEvent`** interface represents the state of a DOM event produced by a pointer such as the geometry of the contact point, the device type that generated the event, the amount of pressure that was applied on the contact surface, etc.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/PointerEvent)",
+                "descriptionKey": "api.generated.node_modules_pnpm_typescript_6_0_3_node_modules_typescript_lib_lib_dom_d.pointerevent",
+                "sourcePath": "node_modules/.pnpm/typescript@6.0.3/node_modules/typescript/lib/lib.dom.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
           },
           {
             "name": "escapeKeyDown",
@@ -1294,8 +1123,8 @@
           {
             "name": "DialogCompactEmits",
             "kind": "typeAlias",
-            "type": "import(\"@soybeanjs/headless\").DialogRootEmits & import(\"@soybeanjs/headless\").DismissableLayerEmits & import(\"@soybeanjs/headless\").FocusScopeEmits & import(\"@soybeanjs/headless\").BottomSheetCloseEmits & import(\"@soybeanjs/headless\").BottomSheetConfirmEmits & import(\"@soybeanjs/headless\").BottomSheetCancelEmits",
-            "resolvedType": "{ \"update:open\": [value: boolean]; escapeKeyDown: [event: KeyboardEvent]; pointerDownOutside: [event: PointerDownOutsideEvent]; focusOutside: [event: FocusOutsideEvent]; interactOutside: [event: PointerDownOutsideEvent | FocusOutsideEvent]; openAutoFocus: [event: Event]; closeAutoFocus: [event: Event]; close: [event: MouseEvent]; confirm: [event: MouseEvent]; cancel: [event: MouseEvent] }",
+            "type": "import(\"@soybeanjs/headless\").DialogRootEmits & import(\"../../../node_modules/@soybeanjs/headless/src/components/dialog/types\").DialogTriggerEmits & import(\"@soybeanjs/headless\").DismissableLayerEmits & import(\"@soybeanjs/headless\").FocusScopeEmits & import(\"@soybeanjs/headless\").DialogCloseEmits & import(\"@soybeanjs/headless\").DialogConfirmEmits & import(\"@soybeanjs/headless\").DialogCancelEmits",
+            "resolvedType": "{ \"update:open\": [value: boolean]; click: [event: PointerEvent]; escapeKeyDown: [event: KeyboardEvent]; pointerDownOutside: [event: PointerDownOutsideEvent]; focusOutside: [event: FocusOutsideEvent]; interactOutside: [event: PointerDownOutsideEvent | FocusOutsideEvent]; openAutoFocus: [event: Event]; closeAutoFocus: [event: Event]; close: [event: MouseEvent]; confirm: [event: MouseEvent]; cancel: [event: MouseEvent] }",
             "description": "Events for the DialogCompact component.",
             "descriptionKey": "api.generated.headless_src_components_dialog_types.dialogcompactemits",
             "sourcePath": "headless/src/components/dialog/types.ts",
@@ -1310,6 +1139,16 @@
                 "required": true,
                 "description": "Event handler called when the open state of the dialog changes.",
                 "descriptionKey": "api.generated.headless_src_components_dialog_types.dialogcompactemits.callables.update_open",
+                "sourcePath": "headless/src/components/dialog/types.ts",
+                "referencedTypes": []
+              },
+              {
+                "name": "click",
+                "type": "[event: PointerEvent]",
+                "parameters": "event: PointerEvent",
+                "required": true,
+                "description": "Event handler called when the dialog trigger is activated.",
+                "descriptionKey": "api.generated.headless_src_components_dialog_types.dialogcompactemits.callables.click",
                 "sourcePath": "headless/src/components/dialog/types.ts",
                 "referencedTypes": []
               },
@@ -1411,7 +1250,7 @@
         "kind": "slots",
         "name": "DialogSlots",
         "type": "TypeAlias DialogSlots: DialogCompactSlots",
-        "resolvedType": "{ default: (props: DialogCompactBaseSlotProps) => any; trigger?: ((props: DialogCompactBaseSlotProps) => any); title?: ((props: DialogCompactBaseSlotProps) => any); description?: ((props: DialogCompactBaseSlotProps) => any); close?: ((props: DialogCompactBaseSlotProps) => any); footer?: ((props: DialogCompactBaseSlotProps) => any); cancel?: ((props: DialogCompactBaseSlotProps) => any); confirm?: ((props: DialogCompactBaseSlotProps) => any) }",
+        "resolvedType": "{ DialogConfirm: (props: DialogCompactBaseSlotProps) => any; trigger?: ((props: DialogCompactBaseSlotProps) => any); title?: ((props: DialogCompactBaseSlotProps) => any); description?: ((props: DialogCompactBaseSlotProps) => any); close?: ((props: DialogCompactBaseSlotProps) => any); footer?: ((props: DialogCompactBaseSlotProps) => any); cancel?: ((props: DialogCompactBaseSlotProps) => any); confirm?: ((props: DialogCompactBaseSlotProps) => any) }",
         "description": "Slots for the Dialog component.",
         "descriptionKey": "api.generated.src_components_dialog_types.dialogslots.slots",
         "sourcePath": "src/components/dialog/types.ts",
@@ -1615,8 +1454,8 @@
           {
             "name": "DialogCompactSlots",
             "kind": "typeAlias",
-            "type": "{ default: (props: import(\"@soybeanjs/headless\").DialogCompactBaseSlotProps) => any; trigger?: (props: import(\"@soybeanjs/headless\").DialogCompactBaseSlotProps) => any; title?: (props: import(\"@soybeanjs/headless\").DialogCompactBaseSlotProps) => any; description?: (props: import(\"@soybeanjs/headless\").DialogCompactBaseSlotProps) => any; close?: (props: import(\"@soybeanjs/headless\").DialogCompactBaseSlotProps) => any; footer?: (props: import(\"@soybeanjs/headless\").DialogCompactBaseSlotProps) => any; cancel?: (props: import(\"@soybeanjs/headless\").DialogCompactBaseSlotProps) => any; confirm?: (props: import(\"@soybeanjs/headless\").DialogCompactBaseSlotProps) => any; }",
-            "resolvedType": "{ default: (props: DialogCompactBaseSlotProps) => any; trigger?: ((props: DialogCompactBaseSlotProps) => any); title?: ((props: DialogCompactBaseSlotProps) => any); description?: ((props: DialogCompactBaseSlotProps) => any); close?: ((props: DialogCompactBaseSlotProps) => any); footer?: ((props: DialogCompactBaseSlotProps) => any); cancel?: ((props: DialogCompactBaseSlotProps) => any); confirm?: ((props: DialogCompactBaseSlotProps) => any) }",
+            "type": "{ DialogConfirm: (props: import(\"@soybeanjs/headless\").DialogCompactBaseSlotProps) => any; trigger?: (props: import(\"@soybeanjs/headless\").DialogCompactBaseSlotProps) => any; title?: (props: import(\"@soybeanjs/headless\").DialogCompactBaseSlotProps) => any; description?: (props: import(\"@soybeanjs/headless\").DialogCompactBaseSlotProps) => any; close?: (props: import(\"@soybeanjs/headless\").DialogCompactBaseSlotProps) => any; footer?: (props: import(\"@soybeanjs/headless\").DialogCompactBaseSlotProps) => any; cancel?: (props: import(\"@soybeanjs/headless\").DialogCompactBaseSlotProps) => any; confirm?: (props: import(\"@soybeanjs/headless\").DialogCompactBaseSlotProps) => any; }",
+            "resolvedType": "{ DialogConfirm: (props: DialogCompactBaseSlotProps) => any; trigger?: ((props: DialogCompactBaseSlotProps) => any); title?: ((props: DialogCompactBaseSlotProps) => any); description?: ((props: DialogCompactBaseSlotProps) => any); close?: ((props: DialogCompactBaseSlotProps) => any); footer?: ((props: DialogCompactBaseSlotProps) => any); cancel?: ((props: DialogCompactBaseSlotProps) => any); confirm?: ((props: DialogCompactBaseSlotProps) => any) }",
             "description": "Slots for the DialogCompact component.",
             "descriptionKey": "api.generated.headless_src_components_dialog_types.dialogcompactslots",
             "sourcePath": "headless/src/components/dialog/types.ts",
@@ -1783,8 +1622,8 @@
                 "type": "Component",
                 "resolvedType": null,
                 "description": "A type used in public APIs where a component type is expected.\nThe constructor type is an artificial type returned by defineComponent().",
-                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_33_node_modules_vue_runtime_core_dist_runtime_core_d.component",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_34_node_modules_vue_runtime_core_dist_runtime_core_d.component",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.34/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
                 "typeParameters": [
                   "PropsOrInstance = any",
                   "RawBindings = any",
@@ -1917,8 +1756,8 @@
                 "type": "Component",
                 "resolvedType": null,
                 "description": "A type used in public APIs where a component type is expected.\nThe constructor type is an artificial type returned by defineComponent().",
-                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_33_node_modules_vue_runtime_core_dist_runtime_core_d.component",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_34_node_modules_vue_runtime_core_dist_runtime_core_d.component",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.34/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
                 "typeParameters": [
                   "PropsOrInstance = any",
                   "RawBindings = any",
@@ -2072,9 +1911,9 @@
             "name": "cancelText",
             "type": "string",
             "required": false,
-            "description": "The text of the cancel button. This is used for accessibility purposes and will be rendered in the footer of the dialog if the `cancel` slot is not provided.",
+            "description": "The text of the cancel button. This is used for accessibility purposes and will be rendered in the footer of the dialog if the `cancel` slot is not provided.\n\nDefaults to the localized `dialog.cancel` message from `ConfigProvider`.",
             "descriptionKey": "api.generated.headless_src_components_dialog_types.dialogcompactprops.members.canceltext",
-            "default": "'Cancel'",
+            "default": null,
             "inheritedFrom": null,
             "sourcePath": "headless/src/components/dialog/types.ts",
             "referencedTypes": []
@@ -2094,9 +1933,9 @@
             "name": "confirmText",
             "type": "string",
             "required": false,
-            "description": "The text of the confirm button. This is used for accessibility purposes and will be rendered in the footer of the dialog if the `confirm` slot is not provided.",
+            "description": "The text of the confirm button. This is used for accessibility purposes and will be rendered in the footer of the dialog if the `confirm` slot is not provided.\n\nDefaults to the localized `dialog.confirm` message from `ConfigProvider`.",
             "descriptionKey": "api.generated.headless_src_components_dialog_types.dialogcompactprops.members.confirmtext",
-            "default": "'Confirm'",
+            "default": null,
             "inheritedFrom": null,
             "sourcePath": "headless/src/components/dialog/types.ts",
             "referencedTypes": []
@@ -2115,13 +1954,35 @@
                 "name": "DialogTriggerProps",
                 "kind": "interface",
                 "type": "DialogTriggerProps",
-                "resolvedType": "{ asChild?: boolean; as?: AsTag | Component }",
+                "resolvedType": "{ type?: ButtonType; disabled?: boolean; asChild?: boolean; as?: AsTag | Component }",
                 "description": "Properties for the DialogTrigger component.",
                 "descriptionKey": "api.generated.headless_src_components_dialog_types.dialogtriggerprops",
                 "sourcePath": "headless/src/components/dialog/types.ts",
                 "typeParameters": [],
                 "external": false,
                 "members": [
+                  {
+                    "name": "type",
+                    "type": "ButtonType",
+                    "required": false,
+                    "description": "The type of the button element. Can be one of 'button', 'submit', or 'reset'.",
+                    "descriptionKey": "api.generated.headless_src_components_dialog_types.dialogtriggerprops.members.type",
+                    "default": "'button'",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/button/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "disabled",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Whether the component is disabled.",
+                    "descriptionKey": "api.generated.headless_src_components_dialog_types.dialogtriggerprops.members.disabled",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/button/types.ts",
+                    "referencedTypes": []
+                  },
                   {
                     "name": "asChild",
                     "type": "boolean",
@@ -2674,8 +2535,8 @@
               {
                 "name": "DialogAlertType",
                 "kind": "typeAlias",
-                "type": "'success' | 'warning' | 'info' | 'error' | 'default'",
-                "resolvedType": "'success' | 'warning' | 'info' | 'error' | 'default'",
+                "type": "'success' | 'warning' | 'info' | 'error' | 'DialogConfirm'",
+                "resolvedType": "'success' | 'warning' | 'info' | 'error' | 'DialogConfirm'",
                 "description": "Supported dialog alert values.",
                 "descriptionKey": "api.generated.headless_src_components_dialog_types.dialogalerttype",
                 "sourcePath": "headless/src/components/dialog/types.ts",
@@ -2726,8 +2587,8 @@
       "emits": {
         "kind": "emits",
         "name": "DialogCompactEmits",
-        "type": "TypeAlias DialogCompactEmits: DialogRootEmits & BottomSheetPopupEmits & BottomSheetCloseEmits & BottomSheetConfirmEmits & BottomSheetCancelEmits",
-        "resolvedType": "{ \"update:open\": [value: boolean]; escapeKeyDown: [event: KeyboardEvent]; pointerDownOutside: [event: PointerDownOutsideEvent]; focusOutside: [event: FocusOutsideEvent]; interactOutside: [event: PointerDownOutsideEvent | FocusOutsideEvent]; openAutoFocus: [event: Event]; closeAutoFocus: [event: Event]; close: [event: MouseEvent]; confirm: [event: MouseEvent]; cancel: [event: MouseEvent] }",
+        "type": "TypeAlias DialogCompactEmits: DialogRootEmits & DialogTriggerEmits & DialogPopupEmits & DialogCloseEmits & DialogConfirmEmits & DialogCancelEmits",
+        "resolvedType": "{ \"update:open\": [value: boolean]; click: [event: PointerEvent]; escapeKeyDown: [event: KeyboardEvent]; pointerDownOutside: [event: PointerDownOutsideEvent]; focusOutside: [event: FocusOutsideEvent]; interactOutside: [event: PointerDownOutsideEvent | FocusOutsideEvent]; openAutoFocus: [event: Event]; closeAutoFocus: [event: Event]; close: [event: MouseEvent]; confirm: [event: MouseEvent]; cancel: [event: MouseEvent] }",
         "description": "Events for the DialogCompact component.",
         "descriptionKey": "api.generated.headless_src_components_dialog_types.dialogcompactemits.emits",
         "sourcePath": "headless/src/components/dialog/types.ts",
@@ -2743,6 +2604,30 @@
             "descriptionKey": "api.generated.headless_src_components_dialog_types.dialogcompactemits.callables.update_open",
             "sourcePath": "headless/src/components/dialog/types.ts",
             "referencedTypes": []
+          },
+          {
+            "name": "click",
+            "type": "[event: PointerEvent]",
+            "parameters": "event: PointerEvent",
+            "required": true,
+            "description": "Event handler called when the dialog trigger is activated.",
+            "descriptionKey": "api.generated.headless_src_components_dialog_types.dialogcompactemits.callables.click",
+            "sourcePath": "headless/src/components/dialog/types.ts",
+            "referencedTypes": [
+              {
+                "name": "PointerEvent",
+                "kind": "interface",
+                "type": "PointerEvent",
+                "resolvedType": null,
+                "description": "The **`PointerEvent`** interface represents the state of a DOM event produced by a pointer such as the geometry of the contact point, the device type that generated the event, the amount of pressure that was applied on the contact surface, etc.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/PointerEvent)",
+                "descriptionKey": "api.generated.node_modules_pnpm_typescript_6_0_3_node_modules_typescript_lib_lib_dom_d.pointerevent",
+                "sourcePath": "node_modules/.pnpm/typescript@6.0.3/node_modules/typescript/lib/lib.dom.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
           },
           {
             "name": "escapeKeyDown",
@@ -2980,7 +2865,7 @@
         "kind": "slots",
         "name": "DialogCompactSlots",
         "type": "TypeAlias DialogCompactSlots",
-        "resolvedType": "{ default: (props: DialogCompactBaseSlotProps) => any; trigger?: ((props: DialogCompactBaseSlotProps) => any); title?: ((props: DialogCompactBaseSlotProps) => any); description?: ((props: DialogCompactBaseSlotProps) => any); close?: ((props: DialogCompactBaseSlotProps) => any); footer?: ((props: DialogCompactBaseSlotProps) => any); cancel?: ((props: DialogCompactBaseSlotProps) => any); confirm?: ((props: DialogCompactBaseSlotProps) => any) }",
+        "resolvedType": "{ DialogConfirm: (props: DialogCompactBaseSlotProps) => any; trigger?: ((props: DialogCompactBaseSlotProps) => any); title?: ((props: DialogCompactBaseSlotProps) => any); description?: ((props: DialogCompactBaseSlotProps) => any); close?: ((props: DialogCompactBaseSlotProps) => any); footer?: ((props: DialogCompactBaseSlotProps) => any); cancel?: ((props: DialogCompactBaseSlotProps) => any); confirm?: ((props: DialogCompactBaseSlotProps) => any) }",
         "description": "Slots for the DialogCompact component.",
         "descriptionKey": "api.generated.headless_src_components_dialog_types.dialogcompactslots.slots",
         "sourcePath": "headless/src/components/dialog/types.ts",
@@ -3295,8 +3180,8 @@
                 "type": "Component",
                 "resolvedType": null,
                 "description": "A type used in public APIs where a component type is expected.\nThe constructor type is an artificial type returned by defineComponent().",
-                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_33_node_modules_vue_runtime_core_dist_runtime_core_d.component",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_34_node_modules_vue_runtime_core_dist_runtime_core_d.component",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.34/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
                 "typeParameters": [
                   "PropsOrInstance = any",
                   "RawBindings = any",
@@ -3480,8 +3365,8 @@
                 "type": "Component",
                 "resolvedType": null,
                 "description": "A type used in public APIs where a component type is expected.\nThe constructor type is an artificial type returned by defineComponent().",
-                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_33_node_modules_vue_runtime_core_dist_runtime_core_d.component",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_34_node_modules_vue_runtime_core_dist_runtime_core_d.component",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.34/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
                 "typeParameters": [
                   "PropsOrInstance = any",
                   "RawBindings = any",
@@ -3796,8 +3681,8 @@
               {
                 "name": "DialogAlertType",
                 "kind": "typeAlias",
-                "type": "'success' | 'warning' | 'info' | 'error' | 'default'",
-                "resolvedType": "'success' | 'warning' | 'info' | 'error' | 'default'",
+                "type": "'success' | 'warning' | 'info' | 'error' | 'DialogConfirm'",
+                "resolvedType": "'success' | 'warning' | 'info' | 'error' | 'DialogConfirm'",
                 "description": "Supported dialog alert values.",
                 "descriptionKey": "api.generated.headless_src_components_dialog_types.dialogalerttype",
                 "sourcePath": "headless/src/components/dialog/types.ts",
@@ -3890,12 +3775,48 @@
         "kind": "props",
         "name": "DialogTriggerProps",
         "type": "Interface DialogTriggerProps",
-        "resolvedType": "{ asChild?: boolean; as?: AsTag | Component }",
+        "resolvedType": "{ type?: ButtonType; disabled?: boolean; asChild?: boolean; as?: AsTag | Component }",
         "description": "Properties for the DialogTrigger component.",
         "descriptionKey": "api.generated.headless_src_components_dialog_types.dialogtriggerprops.props",
         "sourcePath": "headless/src/components/dialog/types.ts",
         "typeParameters": [],
         "members": [
+          {
+            "name": "type",
+            "type": "ButtonType",
+            "required": false,
+            "description": "The type of the button element. Can be one of 'button', 'submit', or 'reset'.",
+            "descriptionKey": "api.generated.headless_src_components_dialog_types.dialogtriggerprops.members.type",
+            "default": "'button'",
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/button/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ButtonType",
+                "kind": "typeAlias",
+                "type": "'button' | 'submit' | 'reset'",
+                "resolvedType": "'button' | 'submit' | 'reset'",
+                "description": "Supported button values.",
+                "descriptionKey": "api.generated.headless_src_components_button_types.buttontype",
+                "sourcePath": "headless/src/components/button/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "disabled",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether the component is disabled.",
+            "descriptionKey": "api.generated.headless_src_components_dialog_types.dialogtriggerprops.members.disabled",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/button/types.ts",
+            "referencedTypes": []
+          },
           {
             "name": "asChild",
             "type": "boolean",
@@ -3923,8 +3844,8 @@
                 "type": "Component",
                 "resolvedType": null,
                 "description": "A type used in public APIs where a component type is expected.\nThe constructor type is an artificial type returned by defineComponent().",
-                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_33_node_modules_vue_runtime_core_dist_runtime_core_d.component",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_34_node_modules_vue_runtime_core_dist_runtime_core_d.component",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.34/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
                 "typeParameters": [
                   "PropsOrInstance = any",
                   "RawBindings = any",
@@ -3942,6 +3863,44 @@
           }
         ],
         "callables": [],
+        "referencedTypes": []
+      },
+      "emits": {
+        "kind": "emits",
+        "name": "DialogTriggerEmits",
+        "type": "TypeAlias DialogTriggerEmits",
+        "resolvedType": "{ click: [event: PointerEvent] }",
+        "description": "Events for the DialogTrigger component.",
+        "descriptionKey": "api.generated.headless_src_components_dialog_types.dialogtriggeremits.emits",
+        "sourcePath": "headless/src/components/dialog/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [
+          {
+            "name": "click",
+            "type": "[event: PointerEvent]",
+            "parameters": "event: PointerEvent",
+            "required": true,
+            "description": "Event handler called when the dialog trigger is activated.",
+            "descriptionKey": "api.generated.headless_src_components_dialog_types.dialogtriggeremits.callables.click",
+            "sourcePath": "headless/src/components/dialog/types.ts",
+            "referencedTypes": [
+              {
+                "name": "PointerEvent",
+                "kind": "interface",
+                "type": "PointerEvent",
+                "resolvedType": null,
+                "description": "The **`PointerEvent`** interface represents the state of a DOM event produced by a pointer such as the geometry of the contact point, the device type that generated the event, the amount of pressure that was applied on the contact surface, etc.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/PointerEvent)",
+                "descriptionKey": "api.generated.node_modules_pnpm_typescript_6_0_3_node_modules_typescript_lib_lib_dom_d.pointerevent",
+                "sourcePath": "node_modules/.pnpm/typescript@6.0.3/node_modules/typescript/lib/lib.dom.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
         "referencedTypes": []
       }
     }

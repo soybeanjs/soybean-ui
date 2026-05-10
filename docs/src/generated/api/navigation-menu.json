@@ -6,7 +6,7 @@
         "kind": "props",
         "name": "NavigationMenuProps",
         "type": "Interface NavigationMenuProps",
-        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<NavigationMenuExtendedUi>; items: NavigationMenuOptionData[]; modelValue?: string; defaultValue?: string; dir?: Direction; orientation?: DataOrientation; delayDuration?: number; skipDelayDuration?: number; disableClickTrigger?: boolean; disableHoverTrigger?: boolean; disablePointerLeaveClose?: boolean; unmountOnHide?: boolean; triggerProps?: NavigationMenuTriggerProps; itemProps?: NavigationMenuItemProps; indicatorProps?: NavigationMenuIndicatorProps; linkProps?: NavigationMenuLinkProps; contentProps?: NavigationMenuContentProps; viewportProps?: NavigationMenuViewportProps; listProps?: NavigationMenuListProps; subListProps?: NavigationMenuListProps; subItemProps?: NavigationMenuItemProps }",
+        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<NavigationMenuExtendedUi>; items: NavigationMenuOptionData[]; modelValue?: string; defaultValue?: string; dir?: Direction; orientation?: DataOrientation; delayDuration?: number; skipDelayDuration?: number; disableClickTrigger?: boolean; disableHoverTrigger?: boolean; disablePointerLeaveClose?: boolean; unmountOnHide?: boolean; itemProps?: NavigationMenuItemProps; linkProps?: NavigationMenuLinkProps; triggerProps?: NavigationMenuTriggerProps; contentProps?: NavigationMenuContentProps; viewportProps?: NavigationMenuViewportProps; indicatorProps?: NavigationMenuIndicatorProps; listProps?: NavigationMenuListProps; subListProps?: NavigationMenuListProps; subItemProps?: NavigationMenuItemProps }",
         "description": "Properties for the NavigationMenu component.",
         "descriptionKey": "api.generated.src_components_navigation_menu_types.navigationmenuprops.props",
         "sourcePath": "src/components/navigation-menu/types.ts",
@@ -237,65 +237,6 @@
             "referencedTypes": []
           },
           {
-            "name": "triggerProps",
-            "type": "NavigationMenuTriggerProps",
-            "required": false,
-            "description": "Properties forwarded to the trigger element.",
-            "descriptionKey": "api.generated.src_components_navigation_menu_types.navigationmenuprops.members.triggerprops",
-            "default": null,
-            "inheritedFrom": "triggerProps",
-            "sourcePath": "src/components/navigation-menu/types.ts",
-            "referencedTypes": [
-              {
-                "name": "NavigationMenuTriggerProps",
-                "kind": "interface",
-                "type": "NavigationMenuTriggerProps",
-                "resolvedType": "{ disabled?: boolean; asChild?: boolean; as?: AsTag | Component }",
-                "description": "Properties for the NavigationMenuTrigger component.",
-                "descriptionKey": "api.generated.headless_src_components_navigation_menu_types.navigationmenutriggerprops",
-                "sourcePath": "headless/src/components/navigation-menu/types.ts",
-                "typeParameters": [],
-                "external": false,
-                "members": [
-                  {
-                    "name": "disabled",
-                    "type": "boolean",
-                    "required": false,
-                    "description": "Whether the component is disabled.",
-                    "descriptionKey": "api.generated.headless_src_components_navigation_menu_types.navigationmenutriggerprops.members.disabled",
-                    "default": null,
-                    "inheritedFrom": null,
-                    "sourcePath": "headless/src/components/navigation-menu/types.ts",
-                    "referencedTypes": []
-                  },
-                  {
-                    "name": "asChild",
-                    "type": "boolean",
-                    "required": false,
-                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
-                    "descriptionKey": "api.generated.headless_src_components_navigation_menu_types.navigationmenutriggerprops.members.aschild",
-                    "default": null,
-                    "inheritedFrom": null,
-                    "sourcePath": "headless/src/components/primitive/types.ts",
-                    "referencedTypes": []
-                  },
-                  {
-                    "name": "as",
-                    "type": "AsTag | Component",
-                    "required": false,
-                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
-                    "descriptionKey": "api.generated.headless_src_components_navigation_menu_types.navigationmenutriggerprops.members.as",
-                    "default": "'div'",
-                    "inheritedFrom": null,
-                    "sourcePath": "headless/src/components/primitive/types.ts",
-                    "referencedTypes": []
-                  }
-                ],
-                "callables": []
-              }
-            ]
-          },
-          {
             "name": "itemProps",
             "type": "NavigationMenuItemProps",
             "required": false,
@@ -325,43 +266,6 @@
                     "default": null,
                     "inheritedFrom": null,
                     "sourcePath": "headless/src/components/navigation-menu/types.ts",
-                    "referencedTypes": []
-                  }
-                ],
-                "callables": []
-              }
-            ]
-          },
-          {
-            "name": "indicatorProps",
-            "type": "NavigationMenuIndicatorProps",
-            "required": false,
-            "description": "Properties forwarded to the indicator element.",
-            "descriptionKey": "api.generated.src_components_navigation_menu_types.navigationmenuprops.members.indicatorprops",
-            "default": null,
-            "inheritedFrom": "indicatorProps",
-            "sourcePath": "src/components/navigation-menu/types.ts",
-            "referencedTypes": [
-              {
-                "name": "NavigationMenuIndicatorProps",
-                "kind": "interface",
-                "type": "NavigationMenuIndicatorProps",
-                "resolvedType": "{ forceMount?: boolean }",
-                "description": "Properties for the NavigationMenuIndicator component.",
-                "descriptionKey": "api.generated.headless_src_components_navigation_menu_types.navigationmenuindicatorprops",
-                "sourcePath": "headless/src/components/navigation-menu/types.ts",
-                "typeParameters": [],
-                "external": false,
-                "members": [
-                  {
-                    "name": "forceMount",
-                    "type": "boolean",
-                    "required": false,
-                    "description": "Used to force mounting when more control is needed.\n\nUseful when controlling animation with Vue animation libraries.",
-                    "descriptionKey": "api.generated.headless_src_components_navigation_menu_types.navigationmenuindicatorprops.members.forcemount",
-                    "default": null,
-                    "inheritedFrom": null,
-                    "sourcePath": "headless/src/types/component.ts",
                     "referencedTypes": []
                   }
                 ],
@@ -627,6 +531,65 @@
             ]
           },
           {
+            "name": "triggerProps",
+            "type": "NavigationMenuTriggerProps",
+            "required": false,
+            "description": "Properties forwarded to the trigger element.",
+            "descriptionKey": "api.generated.src_components_navigation_menu_types.navigationmenuprops.members.triggerprops",
+            "default": null,
+            "inheritedFrom": "triggerProps",
+            "sourcePath": "src/components/navigation-menu/types.ts",
+            "referencedTypes": [
+              {
+                "name": "NavigationMenuTriggerProps",
+                "kind": "interface",
+                "type": "NavigationMenuTriggerProps",
+                "resolvedType": "{ disabled?: boolean; asChild?: boolean; as?: AsTag | Component }",
+                "description": "Properties for the NavigationMenuTrigger component.",
+                "descriptionKey": "api.generated.headless_src_components_navigation_menu_types.navigationmenutriggerprops",
+                "sourcePath": "headless/src/components/navigation-menu/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "disabled",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Whether the component is disabled.",
+                    "descriptionKey": "api.generated.headless_src_components_navigation_menu_types.navigationmenutriggerprops.members.disabled",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/navigation-menu/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "asChild",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+                    "descriptionKey": "api.generated.headless_src_components_navigation_menu_types.navigationmenutriggerprops.members.aschild",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "as",
+                    "type": "AsTag | Component",
+                    "required": false,
+                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+                    "descriptionKey": "api.generated.headless_src_components_navigation_menu_types.navigationmenutriggerprops.members.as",
+                    "default": "'div'",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
             "name": "contentProps",
             "type": "NavigationMenuContentProps",
             "required": false,
@@ -712,6 +675,43 @@
                     "required": false,
                     "description": "Used to force mounting when more control is needed.\n\nUseful when controlling animation with Vue animation libraries.",
                     "descriptionKey": "api.generated.headless_src_components_navigation_menu_types.navigationmenuviewportprops.members.forcemount",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/types/component.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "indicatorProps",
+            "type": "NavigationMenuIndicatorProps",
+            "required": false,
+            "description": "Properties forwarded to the indicator element.",
+            "descriptionKey": "api.generated.src_components_navigation_menu_types.navigationmenuprops.members.indicatorprops",
+            "default": null,
+            "inheritedFrom": "indicatorProps",
+            "sourcePath": "src/components/navigation-menu/types.ts",
+            "referencedTypes": [
+              {
+                "name": "NavigationMenuIndicatorProps",
+                "kind": "interface",
+                "type": "NavigationMenuIndicatorProps",
+                "resolvedType": "{ forceMount?: boolean }",
+                "description": "Properties for the NavigationMenuIndicator component.",
+                "descriptionKey": "api.generated.headless_src_components_navigation_menu_types.navigationmenuindicatorprops",
+                "sourcePath": "headless/src/components/navigation-menu/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "forceMount",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Used to force mounting when more control is needed.\n\nUseful when controlling animation with Vue animation libraries.",
+                    "descriptionKey": "api.generated.headless_src_components_navigation_menu_types.navigationmenuindicatorprops.members.forcemount",
                     "default": null,
                     "inheritedFrom": null,
                     "sourcePath": "headless/src/types/component.ts",
@@ -2401,8 +2401,8 @@
                 "type": "Component",
                 "resolvedType": null,
                 "description": "A type used in public APIs where a component type is expected.\nThe constructor type is an artificial type returned by defineComponent().",
-                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_33_node_modules_vue_runtime_core_dist_runtime_core_d.component",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_34_node_modules_vue_runtime_core_dist_runtime_core_d.component",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.34/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
                 "typeParameters": [
                   "PropsOrInstance = any",
                   "RawBindings = any",
@@ -2434,8 +2434,8 @@
                 "type": "RouteLocationRaw",
                 "resolvedType": null,
                 "description": "Route location that can be passed to `router.push()` and other user-facing APIs.",
-                "descriptionKey": "api.generated.node_modules_pnpm_vue_router_5_0_6_vue_compiler_sfc_3_5_33_pinia_3_0_4_typescript_6_0_3_vue_3_5_33_types_5291f2364aa3c25c31ad23c437ad644c_node_modules_vue_router_dist_index_d_veap3p_d.routelocationraw",
-                "sourcePath": "node_modules/.pnpm/vue-router@5.0.6_@vue+compiler-sfc@3.5.33_pinia@3.0.4_typescript@6.0.3_vue@3.5.33_types_5291f2364aa3c25c31ad23c437ad644c/node_modules/vue-router/dist/index-D_VEAp3P.d.ts",
+                "descriptionKey": "api.generated.node_modules_pnpm_vue_router_5_0_6_vue_compiler_sfc_3_5_34_pinia_3_0_4_typescript_6_0_3_vue_3_5_34_types_50dd1815d493fa68b45f0a33526446ac_node_modules_vue_router_dist_index_d_veap3p_d.routelocationraw",
+                "sourcePath": "node_modules/.pnpm/vue-router@5.0.6_@vue+compiler-sfc@3.5.34_pinia@3.0.4_typescript@6.0.3_vue@3.5.34_types_50dd1815d493fa68b45f0a33526446ac/node_modules/vue-router/dist/index-D_VEAp3P.d.ts",
                 "typeParameters": ["Name extends keyof RouteMap = keyof RouteMap"],
                 "external": true,
                 "members": [],
@@ -4419,7 +4419,7 @@
             "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
             "descriptionKey": "api.generated.headless_src_components_navigation_menu_types.navigationmenutriggerprops.members.aschild",
             "default": null,
-            "inheritedFrom": "PrimitiveProps.asChild",
+            "inheritedFrom": "PrimitiveWithBaseProps.asChild",
             "sourcePath": "headless/src/components/primitive/types.ts",
             "referencedTypes": []
           },
@@ -4430,7 +4430,7 @@
             "description": "The element or component this component should render as. Can be overwrite by `asChild`",
             "descriptionKey": "api.generated.headless_src_components_navigation_menu_types.navigationmenutriggerprops.members.as",
             "default": "'div'",
-            "inheritedFrom": "PrimitiveProps.as",
+            "inheritedFrom": "PrimitiveWithBaseProps.as",
             "sourcePath": "headless/src/components/primitive/types.ts",
             "referencedTypes": [
               {
@@ -4439,8 +4439,8 @@
                 "type": "Component",
                 "resolvedType": null,
                 "description": "A type used in public APIs where a component type is expected.\nThe constructor type is an artificial type returned by defineComponent().",
-                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_33_node_modules_vue_runtime_core_dist_runtime_core_d.component",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_34_node_modules_vue_runtime_core_dist_runtime_core_d.component",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.34/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
                 "typeParameters": [
                   "PropsOrInstance = any",
                   "RawBindings = any",

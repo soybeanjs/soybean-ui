@@ -173,7 +173,7 @@
                 "name": "MenubarTriggerProps",
                 "kind": "interface",
                 "type": "MenubarTriggerProps",
-                "resolvedType": "{ disabled?: boolean; asChild?: boolean; as?: AsTag | Component }",
+                "resolvedType": "{ type?: ButtonType; disabled?: boolean; asChild?: boolean; as?: AsTag | Component }",
                 "description": "Properties for the MenubarTrigger component.",
                 "descriptionKey": "api.generated.headless_src_components_menubar_types.menubartriggerprops",
                 "sourcePath": "headless/src/components/menubar/types.ts",
@@ -181,14 +181,25 @@
                 "external": false,
                 "members": [
                   {
+                    "name": "type",
+                    "type": "ButtonType",
+                    "required": false,
+                    "description": "The type of the button element. Can be one of 'button', 'submit', or 'reset'.",
+                    "descriptionKey": "api.generated.headless_src_components_menubar_types.menubartriggerprops.members.type",
+                    "default": "'button'",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/button/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
                     "name": "disabled",
                     "type": "boolean",
                     "required": false,
-                    "description": "When `true`, prevents the user from interacting with the trigger.",
+                    "description": "Whether the component is disabled.",
                     "descriptionKey": "api.generated.headless_src_components_menubar_types.menubartriggerprops.members.disabled",
                     "default": null,
                     "inheritedFrom": null,
-                    "sourcePath": "headless/src/components/menubar/types.ts",
+                    "sourcePath": "headless/src/components/button/types.ts",
                     "referencedTypes": []
                   },
                   {
@@ -231,7 +242,7 @@
               {
                 "name": "PortalProps",
                 "kind": "interface",
-                "type": "MenuPortalProps",
+                "type": "PortalProps",
                 "resolvedType": "{ to?: string | HTMLElement; disabled?: boolean; defer?: boolean; forceMount?: boolean }",
                 "description": "Properties for the Portal component.",
                 "descriptionKey": "api.generated.headless_src_components_portal_types.portalprops",
@@ -594,7 +605,7 @@
               {
                 "name": "PopperArrowProps",
                 "kind": "interface",
-                "type": "MenuArrowProps",
+                "type": "PopperArrowProps",
                 "resolvedType": null,
                 "description": "Properties for the PopperArrow component.",
                 "descriptionKey": "api.generated.headless_src_components_popper_types.popperarrowprops",
@@ -691,8 +702,8 @@
                 "type": "Component",
                 "resolvedType": null,
                 "description": "A type used in public APIs where a component type is expected.\nThe constructor type is an artificial type returned by defineComponent().",
-                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_33_node_modules_vue_runtime_core_dist_runtime_core_d.component",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_34_node_modules_vue_runtime_core_dist_runtime_core_d.component",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.34/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
                 "typeParameters": [
                   "PropsOrInstance = any",
                   "RawBindings = any",
@@ -1251,7 +1262,7 @@
                 "name": "MenuSubContentProps",
                 "kind": "interface",
                 "type": "MenuSubContentProps",
-                "resolvedType": "{ loop?: boolean; placement?: Placement; popupProps?: MenuPopupProps; sideOffset?: number; arrowPadding?: number; updatePositionStrategy?: 'always' | 'optimized'; sideFlip?: boolean; alignOffset?: number; alignFlip?: boolean; avoidCollisions?: boolean; collisionBoundary?: Element | (Element | null)[] | null; collisionPadding?: Padding; hideShiftedArrow?: boolean; sticky?: 'partial' | 'always'; hideWhenDetached?: boolean; positionStrategy?: 'fixed' | 'absolute'; disableUpdateOnLayoutShift?: boolean; prioritizePosition?: boolean; reference?: ReferenceElement; forceMount?: boolean }",
+                "resolvedType": "{ loop?: boolean; placement?: Placement; sideOffset?: number; arrowPadding?: number; updatePositionStrategy?: 'always' | 'optimized'; popupProps?: MenuPopupProps; sideFlip?: boolean; alignOffset?: number; alignFlip?: boolean; avoidCollisions?: boolean; collisionBoundary?: Element | (Element | null)[] | null; collisionPadding?: Padding; hideShiftedArrow?: boolean; sticky?: 'partial' | 'always'; hideWhenDetached?: boolean; positionStrategy?: 'fixed' | 'absolute'; disableUpdateOnLayoutShift?: boolean; prioritizePosition?: boolean; reference?: ReferenceElement; forceMount?: boolean }",
                 "description": "Properties for the MenuSubContent component.",
                 "descriptionKey": "api.generated.headless_src_components_menu_types.menusubcontentprops",
                 "sourcePath": "headless/src/components/menu/types.ts",
@@ -1278,17 +1289,6 @@
                     "default": "undefined",
                     "inheritedFrom": null,
                     "sourcePath": "headless/src/components/popper/types.ts",
-                    "referencedTypes": []
-                  },
-                  {
-                    "name": "popupProps",
-                    "type": "MenuPopupProps",
-                    "required": false,
-                    "description": "Properties forwarded to the popup element.",
-                    "descriptionKey": "api.generated.headless_src_components_menu_types.menusubcontentprops.members.popupprops",
-                    "default": null,
-                    "inheritedFrom": null,
-                    "sourcePath": "headless/src/components/menu/types.ts",
                     "referencedTypes": []
                   },
                   {
@@ -1322,6 +1322,17 @@
                     "default": "'optimized'",
                     "inheritedFrom": null,
                     "sourcePath": "headless/src/components/popper/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "popupProps",
+                    "type": "MenuPopupProps",
+                    "required": false,
+                    "description": "Properties forwarded to the popup element.",
+                    "descriptionKey": "api.generated.headless_src_components_menu_types.menusubcontentprops.members.popupprops",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/menu/types.ts",
                     "referencedTypes": []
                   },
                   {
@@ -1496,7 +1507,7 @@
               {
                 "name": "SeparatorRootProps",
                 "kind": "interface",
-                "type": "MenuSeparatorProps",
+                "type": "SeparatorRootProps",
                 "resolvedType": "{ orientation?: DataOrientation; decorative?: boolean }",
                 "description": "Properties for the SeparatorRoot component.",
                 "descriptionKey": "api.generated.headless_src_components_separator_types.separatorrootprops",
@@ -2058,7 +2069,7 @@
                 "name": "MenubarTriggerProps",
                 "kind": "interface",
                 "type": "MenubarTriggerProps",
-                "resolvedType": "{ disabled?: boolean; asChild?: boolean; as?: AsTag | Component }",
+                "resolvedType": "{ type?: ButtonType; disabled?: boolean; asChild?: boolean; as?: AsTag | Component }",
                 "description": "Properties for the MenubarTrigger component.",
                 "descriptionKey": "api.generated.headless_src_components_menubar_types.menubartriggerprops",
                 "sourcePath": "headless/src/components/menubar/types.ts",
@@ -2066,14 +2077,25 @@
                 "external": false,
                 "members": [
                   {
+                    "name": "type",
+                    "type": "ButtonType",
+                    "required": false,
+                    "description": "The type of the button element. Can be one of 'button', 'submit', or 'reset'.",
+                    "descriptionKey": "api.generated.headless_src_components_menubar_types.menubartriggerprops.members.type",
+                    "default": "'button'",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/button/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
                     "name": "disabled",
                     "type": "boolean",
                     "required": false,
-                    "description": "When `true`, prevents the user from interacting with the trigger.",
+                    "description": "Whether the component is disabled.",
                     "descriptionKey": "api.generated.headless_src_components_menubar_types.menubartriggerprops.members.disabled",
                     "default": null,
                     "inheritedFrom": null,
-                    "sourcePath": "headless/src/components/menubar/types.ts",
+                    "sourcePath": "headless/src/components/button/types.ts",
                     "referencedTypes": []
                   },
                   {
@@ -2116,7 +2138,7 @@
               {
                 "name": "PortalProps",
                 "kind": "interface",
-                "type": "MenuPortalProps",
+                "type": "PortalProps",
                 "resolvedType": "{ to?: string | HTMLElement; disabled?: boolean; defer?: boolean; forceMount?: boolean }",
                 "description": "Properties for the Portal component.",
                 "descriptionKey": "api.generated.headless_src_components_portal_types.portalprops",
@@ -2479,7 +2501,7 @@
               {
                 "name": "PopperArrowProps",
                 "kind": "interface",
-                "type": "MenuArrowProps",
+                "type": "PopperArrowProps",
                 "resolvedType": null,
                 "description": "Properties for the PopperArrow component.",
                 "descriptionKey": "api.generated.headless_src_components_popper_types.popperarrowprops",
@@ -2576,8 +2598,8 @@
                 "type": "Component",
                 "resolvedType": null,
                 "description": "A type used in public APIs where a component type is expected.\nThe constructor type is an artificial type returned by defineComponent().",
-                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_33_node_modules_vue_runtime_core_dist_runtime_core_d.component",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_34_node_modules_vue_runtime_core_dist_runtime_core_d.component",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.34/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
                 "typeParameters": [
                   "PropsOrInstance = any",
                   "RawBindings = any",
@@ -3136,7 +3158,7 @@
                 "name": "MenuSubContentProps",
                 "kind": "interface",
                 "type": "MenuSubContentProps",
-                "resolvedType": "{ loop?: boolean; placement?: Placement; popupProps?: MenuPopupProps; sideOffset?: number; arrowPadding?: number; updatePositionStrategy?: 'always' | 'optimized'; sideFlip?: boolean; alignOffset?: number; alignFlip?: boolean; avoidCollisions?: boolean; collisionBoundary?: Element | (Element | null)[] | null; collisionPadding?: Padding; hideShiftedArrow?: boolean; sticky?: 'partial' | 'always'; hideWhenDetached?: boolean; positionStrategy?: 'fixed' | 'absolute'; disableUpdateOnLayoutShift?: boolean; prioritizePosition?: boolean; reference?: ReferenceElement; forceMount?: boolean }",
+                "resolvedType": "{ loop?: boolean; placement?: Placement; sideOffset?: number; arrowPadding?: number; updatePositionStrategy?: 'always' | 'optimized'; popupProps?: MenuPopupProps; sideFlip?: boolean; alignOffset?: number; alignFlip?: boolean; avoidCollisions?: boolean; collisionBoundary?: Element | (Element | null)[] | null; collisionPadding?: Padding; hideShiftedArrow?: boolean; sticky?: 'partial' | 'always'; hideWhenDetached?: boolean; positionStrategy?: 'fixed' | 'absolute'; disableUpdateOnLayoutShift?: boolean; prioritizePosition?: boolean; reference?: ReferenceElement; forceMount?: boolean }",
                 "description": "Properties for the MenuSubContent component.",
                 "descriptionKey": "api.generated.headless_src_components_menu_types.menusubcontentprops",
                 "sourcePath": "headless/src/components/menu/types.ts",
@@ -3163,17 +3185,6 @@
                     "default": "undefined",
                     "inheritedFrom": null,
                     "sourcePath": "headless/src/components/popper/types.ts",
-                    "referencedTypes": []
-                  },
-                  {
-                    "name": "popupProps",
-                    "type": "MenuPopupProps",
-                    "required": false,
-                    "description": "Properties forwarded to the popup element.",
-                    "descriptionKey": "api.generated.headless_src_components_menu_types.menusubcontentprops.members.popupprops",
-                    "default": null,
-                    "inheritedFrom": null,
-                    "sourcePath": "headless/src/components/menu/types.ts",
                     "referencedTypes": []
                   },
                   {
@@ -3207,6 +3218,17 @@
                     "default": "'optimized'",
                     "inheritedFrom": null,
                     "sourcePath": "headless/src/components/popper/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "popupProps",
+                    "type": "MenuPopupProps",
+                    "required": false,
+                    "description": "Properties forwarded to the popup element.",
+                    "descriptionKey": "api.generated.headless_src_components_menu_types.menusubcontentprops.members.popupprops",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/menu/types.ts",
                     "referencedTypes": []
                   },
                   {
@@ -3381,7 +3403,7 @@
               {
                 "name": "SeparatorRootProps",
                 "kind": "interface",
-                "type": "MenuSeparatorProps",
+                "type": "SeparatorRootProps",
                 "resolvedType": "{ orientation?: DataOrientation; decorative?: boolean }",
                 "description": "Properties for the SeparatorRoot component.",
                 "descriptionKey": "api.generated.headless_src_components_separator_types.separatorrootprops",
@@ -4628,7 +4650,7 @@
             "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
             "descriptionKey": "api.generated.headless_src_components_menubar_types.menubarrootprops.members.aschild",
             "default": null,
-            "inheritedFrom": "PrimitiveProps.asChild",
+            "inheritedFrom": "asChild",
             "sourcePath": "headless/src/components/primitive/types.ts",
             "referencedTypes": []
           },
@@ -4639,7 +4661,7 @@
             "description": "The element or component this component should render as. Can be overwrite by `asChild`",
             "descriptionKey": "api.generated.headless_src_components_menubar_types.menubarrootprops.members.as",
             "default": "'div'",
-            "inheritedFrom": "PrimitiveProps.as",
+            "inheritedFrom": "as",
             "sourcePath": "headless/src/components/primitive/types.ts",
             "referencedTypes": [
               {
@@ -4648,8 +4670,8 @@
                 "type": "Component",
                 "resolvedType": null,
                 "description": "A type used in public APIs where a component type is expected.\nThe constructor type is an artificial type returned by defineComponent().",
-                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_33_node_modules_vue_runtime_core_dist_runtime_core_d.component",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_34_node_modules_vue_runtime_core_dist_runtime_core_d.component",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.34/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
                 "typeParameters": [
                   "PropsOrInstance = any",
                   "RawBindings = any",
@@ -4701,7 +4723,7 @@
         "kind": "props",
         "name": "MenubarSubContentProps",
         "type": "Interface MenubarSubContentProps",
-        "resolvedType": "{ loop?: boolean; placement?: Placement; popupProps?: MenuPopupProps; sideOffset?: number; arrowPadding?: number; updatePositionStrategy?: 'always' | 'optimized'; sideFlip?: boolean; alignOffset?: number; alignFlip?: boolean; avoidCollisions?: boolean; collisionBoundary?: Element | (Element | null)[] | null; collisionPadding?: Padding; hideShiftedArrow?: boolean; sticky?: 'partial' | 'always'; hideWhenDetached?: boolean; positionStrategy?: 'fixed' | 'absolute'; disableUpdateOnLayoutShift?: boolean; prioritizePosition?: boolean; reference?: ReferenceElement; forceMount?: boolean }",
+        "resolvedType": "{ loop?: boolean; placement?: Placement; sideOffset?: number; arrowPadding?: number; updatePositionStrategy?: 'always' | 'optimized'; popupProps?: MenuPopupProps; sideFlip?: boolean; alignOffset?: number; alignFlip?: boolean; avoidCollisions?: boolean; collisionBoundary?: Element | (Element | null)[] | null; collisionPadding?: Padding; hideShiftedArrow?: boolean; sticky?: 'partial' | 'always'; hideWhenDetached?: boolean; positionStrategy?: 'fixed' | 'absolute'; disableUpdateOnLayoutShift?: boolean; prioritizePosition?: boolean; reference?: ReferenceElement; forceMount?: boolean }",
         "description": "Properties for the MenubarSubContent component.",
         "descriptionKey": "api.generated.headless_src_components_menubar_types.menubarsubcontentprops.props",
         "sourcePath": "headless/src/components/menubar/types.ts",
@@ -4744,31 +4766,6 @@
             ]
           },
           {
-            "name": "popupProps",
-            "type": "MenuPopupProps",
-            "required": false,
-            "description": "Properties forwarded to the popup element.",
-            "descriptionKey": "api.generated.headless_src_components_menubar_types.menubarsubcontentprops.members.popupprops",
-            "default": null,
-            "inheritedFrom": "popupProps",
-            "sourcePath": "headless/src/components/menu/types.ts",
-            "referencedTypes": [
-              {
-                "name": "MenuPopupProps",
-                "kind": "interface",
-                "type": "MenuPopupProps",
-                "resolvedType": null,
-                "description": "Properties for the MenuPopup component.",
-                "descriptionKey": "api.generated.headless_src_components_menu_types.menupopupprops",
-                "sourcePath": "headless/src/components/menu/types.ts",
-                "typeParameters": [],
-                "external": false,
-                "members": [],
-                "callables": []
-              }
-            ]
-          },
-          {
             "name": "sideOffset",
             "type": "number",
             "required": false,
@@ -4800,6 +4797,31 @@
             "inheritedFrom": "updatePositionStrategy",
             "sourcePath": "headless/src/components/popper/types.ts",
             "referencedTypes": []
+          },
+          {
+            "name": "popupProps",
+            "type": "MenuPopupProps",
+            "required": false,
+            "description": "Properties forwarded to the popup element.",
+            "descriptionKey": "api.generated.headless_src_components_menubar_types.menubarsubcontentprops.members.popupprops",
+            "default": null,
+            "inheritedFrom": "popupProps",
+            "sourcePath": "headless/src/components/menu/types.ts",
+            "referencedTypes": [
+              {
+                "name": "MenuPopupProps",
+                "kind": "interface",
+                "type": "MenuPopupProps",
+                "resolvedType": null,
+                "description": "Properties for the MenuPopup component.",
+                "descriptionKey": "api.generated.headless_src_components_menu_types.menupopupprops",
+                "sourcePath": "headless/src/components/menu/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
           },
           {
             "name": "sideFlip",
@@ -5342,8 +5364,8 @@
                 "type": "Component",
                 "resolvedType": null,
                 "description": "A type used in public APIs where a component type is expected.\nThe constructor type is an artificial type returned by defineComponent().",
-                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_33_node_modules_vue_runtime_core_dist_runtime_core_d.component",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_34_node_modules_vue_runtime_core_dist_runtime_core_d.component",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.34/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
                 "typeParameters": [
                   "PropsOrInstance = any",
                   "RawBindings = any",
@@ -5369,21 +5391,46 @@
         "kind": "props",
         "name": "MenubarTriggerProps",
         "type": "Interface MenubarTriggerProps",
-        "resolvedType": "{ disabled?: boolean; asChild?: boolean; as?: AsTag | Component }",
+        "resolvedType": "{ type?: ButtonType; disabled?: boolean; asChild?: boolean; as?: AsTag | Component }",
         "description": "Properties for the MenubarTrigger component.",
         "descriptionKey": "api.generated.headless_src_components_menubar_types.menubartriggerprops.props",
         "sourcePath": "headless/src/components/menubar/types.ts",
         "typeParameters": [],
         "members": [
           {
+            "name": "type",
+            "type": "ButtonType",
+            "required": false,
+            "description": "The type of the button element. Can be one of 'button', 'submit', or 'reset'.",
+            "descriptionKey": "api.generated.headless_src_components_menubar_types.menubartriggerprops.members.type",
+            "default": "'button'",
+            "inheritedFrom": "ButtonProps.type",
+            "sourcePath": "headless/src/components/button/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ButtonType",
+                "kind": "typeAlias",
+                "type": "'button' | 'submit' | 'reset'",
+                "resolvedType": "'button' | 'submit' | 'reset'",
+                "description": "Supported button values.",
+                "descriptionKey": "api.generated.headless_src_components_button_types.buttontype",
+                "sourcePath": "headless/src/components/button/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
             "name": "disabled",
             "type": "boolean",
             "required": false,
-            "description": "When `true`, prevents the user from interacting with the trigger.",
+            "description": "Whether the component is disabled.",
             "descriptionKey": "api.generated.headless_src_components_menubar_types.menubartriggerprops.members.disabled",
             "default": null,
-            "inheritedFrom": null,
-            "sourcePath": "headless/src/components/menubar/types.ts",
+            "inheritedFrom": "ButtonProps.disabled",
+            "sourcePath": "headless/src/components/button/types.ts",
             "referencedTypes": []
           },
           {
@@ -5393,7 +5440,7 @@
             "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
             "descriptionKey": "api.generated.headless_src_components_menubar_types.menubartriggerprops.members.aschild",
             "default": null,
-            "inheritedFrom": "PrimitiveProps.asChild",
+            "inheritedFrom": "ButtonProps.asChild",
             "sourcePath": "headless/src/components/primitive/types.ts",
             "referencedTypes": []
           },
@@ -5404,7 +5451,7 @@
             "description": "The element or component this component should render as. Can be overwrite by `asChild`",
             "descriptionKey": "api.generated.headless_src_components_menubar_types.menubartriggerprops.members.as",
             "default": "'div'",
-            "inheritedFrom": "PrimitiveProps.as",
+            "inheritedFrom": "ButtonProps.as",
             "sourcePath": "headless/src/components/primitive/types.ts",
             "referencedTypes": [
               {
@@ -5413,8 +5460,8 @@
                 "type": "Component",
                 "resolvedType": null,
                 "description": "A type used in public APIs where a component type is expected.\nThe constructor type is an artificial type returned by defineComponent().",
-                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_33_node_modules_vue_runtime_core_dist_runtime_core_d.component",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_34_node_modules_vue_runtime_core_dist_runtime_core_d.component",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.34/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
                 "typeParameters": [
                   "PropsOrInstance = any",
                   "RawBindings = any",

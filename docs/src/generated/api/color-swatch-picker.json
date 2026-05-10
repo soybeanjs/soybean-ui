@@ -75,7 +75,7 @@
               {
                 "name": "ColorSwatchPickerExtendedUi",
                 "kind": "typeAlias",
-                "type": "{ root: ClassValue; item: ClassValue; fill: ClassValue; itemIndicator: ClassValue; checker: ClassValue; swatch: ClassValue; }",
+                "type": "{ root: ClassValue; item: ClassValue; fill: ClassValue; itemIndicator: ClassValue; checker: ClassValue; swatchRoot: ClassValue; swatchChecker: ClassValue; swatchFill: ClassValue; }",
                 "resolvedType": null,
                 "description": "Extended UI class overrides for the ColorSwatchPicker component.",
                 "descriptionKey": "api.generated.src_components_color_swatch_picker_types.colorswatchpickerextendedui",
@@ -210,13 +210,46 @@
                 "name": "ColorSwatchPickerItemSwatchProps",
                 "kind": "interface",
                 "type": "ColorSwatchPickerItemSwatchProps",
-                "resolvedType": "{ label?: string; asChild?: boolean; as?: AsTag | Component }",
+                "resolvedType": "{ checkerProps?: ColorSwatchCheckerProps; fillProps?: ColorSwatchFillProps; color?: import(\"@soybeanjs/colord\").AnyColor; label?: string; asChild?: boolean; as?: AsTag | Component }",
                 "description": "Properties for the ColorSwatchPickerItemSwatch component.",
                 "descriptionKey": "api.generated.headless_src_components_color_swatch_picker_types.colorswatchpickeritemswatchprops",
                 "sourcePath": "headless/src/components/color-swatch-picker/types.ts",
                 "typeParameters": [],
                 "external": false,
                 "members": [
+                  {
+                    "name": "checkerProps",
+                    "type": "ColorSwatchCheckerProps",
+                    "required": false,
+                    "description": "Props for the checker element of the ColorSwatch component.",
+                    "descriptionKey": "api.generated.headless_src_components_color_swatch_picker_types.colorswatchpickeritemswatchprops.members.checkerprops",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/color-swatch/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "fillProps",
+                    "type": "ColorSwatchFillProps",
+                    "required": false,
+                    "description": "Props for the fill element of the ColorSwatch component.",
+                    "descriptionKey": "api.generated.headless_src_components_color_swatch_picker_types.colorswatchpickeritemswatchprops.members.fillprops",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/color-swatch/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "color",
+                    "type": "import(\"@soybeanjs/colord\").AnyColor",
+                    "required": false,
+                    "description": "Theme color of the component.",
+                    "descriptionKey": "api.generated.headless_src_components_color_swatch_picker_types.colorswatchpickeritemswatchprops.members.color",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/color-swatch/types.ts",
+                    "referencedTypes": []
+                  },
                   {
                     "name": "label",
                     "type": "string",
@@ -225,7 +258,7 @@
                     "descriptionKey": "api.generated.headless_src_components_color_swatch_picker_types.colorswatchpickeritemswatchprops.members.label",
                     "default": null,
                     "inheritedFrom": null,
-                    "sourcePath": "headless/src/components/color-swatch-picker/types.ts",
+                    "sourcePath": "headless/src/components/color-swatch/types.ts",
                     "referencedTypes": []
                   },
                   {
@@ -652,13 +685,46 @@
                 "name": "ColorSwatchPickerItemSwatchProps",
                 "kind": "interface",
                 "type": "ColorSwatchPickerItemSwatchProps",
-                "resolvedType": "{ label?: string; asChild?: boolean; as?: AsTag | Component }",
+                "resolvedType": "{ checkerProps?: ColorSwatchCheckerProps; fillProps?: ColorSwatchFillProps; color?: import(\"@soybeanjs/colord\").AnyColor; label?: string; asChild?: boolean; as?: AsTag | Component }",
                 "description": "Properties for the ColorSwatchPickerItemSwatch component.",
                 "descriptionKey": "api.generated.headless_src_components_color_swatch_picker_types.colorswatchpickeritemswatchprops",
                 "sourcePath": "headless/src/components/color-swatch-picker/types.ts",
                 "typeParameters": [],
                 "external": false,
                 "members": [
+                  {
+                    "name": "checkerProps",
+                    "type": "ColorSwatchCheckerProps",
+                    "required": false,
+                    "description": "Props for the checker element of the ColorSwatch component.",
+                    "descriptionKey": "api.generated.headless_src_components_color_swatch_picker_types.colorswatchpickeritemswatchprops.members.checkerprops",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/color-swatch/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "fillProps",
+                    "type": "ColorSwatchFillProps",
+                    "required": false,
+                    "description": "Props for the fill element of the ColorSwatch component.",
+                    "descriptionKey": "api.generated.headless_src_components_color_swatch_picker_types.colorswatchpickeritemswatchprops.members.fillprops",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/color-swatch/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "color",
+                    "type": "import(\"@soybeanjs/colord\").AnyColor",
+                    "required": false,
+                    "description": "Theme color of the component.",
+                    "descriptionKey": "api.generated.headless_src_components_color_swatch_picker_types.colorswatchpickeritemswatchprops.members.color",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/color-swatch/types.ts",
+                    "referencedTypes": []
+                  },
                   {
                     "name": "label",
                     "type": "string",
@@ -667,7 +733,7 @@
                     "descriptionKey": "api.generated.headless_src_components_color_swatch_picker_types.colorswatchpickeritemswatchprops.members.label",
                     "default": null,
                     "inheritedFrom": null,
-                    "sourcePath": "headless/src/components/color-swatch-picker/types.ts",
+                    "sourcePath": "headless/src/components/color-swatch/types.ts",
                     "referencedTypes": []
                   },
                   {
@@ -988,7 +1054,7 @@
         "kind": "slots",
         "name": "ColorSwatchPickerCompactSlots",
         "type": "Interface ColorSwatchPickerCompactSlots<M>",
-        "resolvedType": "{ default?: ((props: ColorSwatchPickerCompactSlotProps<M>) => any); swatch?: ((props: ColorSwatchPickerCompactColorSlotProps) => any); indicator?: ((props: ColorSwatchPickerCompactColorSlotProps) => any) }",
+        "resolvedType": "{ ColorSwatchPickerItemSwatch?: ((props: ColorSwatchPickerCompactSlotProps<M>) => any); swatch?: ((props: ColorSwatchPickerCompactColorSlotProps) => any); indicator?: ((props: ColorSwatchPickerCompactColorSlotProps) => any) }",
         "description": "Slots for the ColorSwatchPickerCompact component.",
         "descriptionKey": "api.generated.headless_src_components_color_swatch_picker_types.colorswatchpickercompactslots.slots",
         "sourcePath": "headless/src/components/color-swatch-picker/types.ts",
@@ -1333,12 +1399,73 @@
         "kind": "props",
         "name": "ColorSwatchPickerItemSwatchProps",
         "type": "Interface ColorSwatchPickerItemSwatchProps",
-        "resolvedType": "{ label?: string; asChild?: boolean; as?: AsTag | Component }",
+        "resolvedType": "{ checkerProps?: ColorSwatchCheckerProps; fillProps?: ColorSwatchFillProps; color?: import(\"@soybeanjs/colord\").AnyColor; label?: string; asChild?: boolean; as?: AsTag | Component }",
         "description": "Properties for the ColorSwatchPickerItemSwatch component.",
         "descriptionKey": "api.generated.headless_src_components_color_swatch_picker_types.colorswatchpickeritemswatchprops.props",
         "sourcePath": "headless/src/components/color-swatch-picker/types.ts",
         "typeParameters": [],
         "members": [
+          {
+            "name": "checkerProps",
+            "type": "ColorSwatchCheckerProps",
+            "required": false,
+            "description": "Props for the checker element of the ColorSwatch component.",
+            "descriptionKey": "api.generated.headless_src_components_color_swatch_picker_types.colorswatchpickeritemswatchprops.members.checkerprops",
+            "default": null,
+            "inheritedFrom": "checkerProps",
+            "sourcePath": "headless/src/components/color-swatch/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ColorSwatchCheckerProps",
+                "kind": "interface",
+                "type": "ColorSwatchCheckerProps",
+                "resolvedType": null,
+                "description": "Events for the ColorSwatch component.",
+                "descriptionKey": "api.generated.headless_src_components_color_swatch_types.colorswatchcheckerprops",
+                "sourcePath": "headless/src/components/color-swatch/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "fillProps",
+            "type": "ColorSwatchFillProps",
+            "required": false,
+            "description": "Props for the fill element of the ColorSwatch component.",
+            "descriptionKey": "api.generated.headless_src_components_color_swatch_picker_types.colorswatchpickeritemswatchprops.members.fillprops",
+            "default": null,
+            "inheritedFrom": "fillProps",
+            "sourcePath": "headless/src/components/color-swatch/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ColorSwatchFillProps",
+                "kind": "interface",
+                "type": "ColorSwatchFillProps",
+                "resolvedType": null,
+                "description": "Events for the ColorSwatch component.",
+                "descriptionKey": "api.generated.headless_src_components_color_swatch_types.colorswatchfillprops",
+                "sourcePath": "headless/src/components/color-swatch/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "color",
+            "type": "import(\"@soybeanjs/colord\").AnyColor",
+            "required": false,
+            "description": "Theme color of the component.",
+            "descriptionKey": "api.generated.headless_src_components_color_swatch_picker_types.colorswatchpickeritemswatchprops.members.color",
+            "default": null,
+            "inheritedFrom": "color",
+            "sourcePath": "headless/src/components/color-swatch/types.ts",
+            "referencedTypes": []
+          },
           {
             "name": "label",
             "type": "string",
@@ -1346,8 +1473,8 @@
             "description": "Label text rendered by the component.",
             "descriptionKey": "api.generated.headless_src_components_color_swatch_picker_types.colorswatchpickeritemswatchprops.members.label",
             "default": null,
-            "inheritedFrom": null,
-            "sourcePath": "headless/src/components/color-swatch-picker/types.ts",
+            "inheritedFrom": "label",
+            "sourcePath": "headless/src/components/color-swatch/types.ts",
             "referencedTypes": []
           },
           {
@@ -1357,7 +1484,7 @@
             "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
             "descriptionKey": "api.generated.headless_src_components_color_swatch_picker_types.colorswatchpickeritemswatchprops.members.aschild",
             "default": null,
-            "inheritedFrom": "PrimitiveWithBaseProps.asChild",
+            "inheritedFrom": "asChild",
             "sourcePath": "headless/src/components/primitive/types.ts",
             "referencedTypes": []
           },
@@ -1368,7 +1495,7 @@
             "description": "The element or component this component should render as. Can be overwrite by `asChild`",
             "descriptionKey": "api.generated.headless_src_components_color_swatch_picker_types.colorswatchpickeritemswatchprops.members.as",
             "default": "'div'",
-            "inheritedFrom": "PrimitiveWithBaseProps.as",
+            "inheritedFrom": "as",
             "sourcePath": "headless/src/components/primitive/types.ts",
             "referencedTypes": [
               {

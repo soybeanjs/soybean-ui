@@ -6,7 +6,7 @@
         "kind": "props",
         "name": "DateFieldProps",
         "type": "Interface DateFieldProps",
-        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<DateFieldUi>; inputProps?: Omit<DateFieldInputProps, 'part'>; defaultValue?: DateValue; defaultPlaceholder?: DateValue; placeholder?: DateValue; modelValue?: DateValue; hourCycle?: 12 | 24; step?: DateStep; granularity?: Granularity; hideTimeZone?: boolean; maxValue?: DateValue; minValue?: DateValue; locale?: string; disabled?: boolean; readonly?: boolean; isDateUnavailable?: Matcher; id?: string; dir?: Direction; asChild?: boolean; as?: AsTag | Component; name?: string; required?: boolean }",
+        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<DateFieldUi>; inputProps?: DateFieldInputProps; id?: string; granularity?: Granularity; hourCycle?: 12 | 24; step?: DateStep; hideTimeZone?: boolean; name?: string; required?: boolean; disabled?: boolean; dir?: Direction; placeholder?: DateValue; defaultValue?: DateValue; modelValue?: DateValue; readonly?: boolean; locale?: string; defaultPlaceholder?: DateValue; maxValue?: DateValue; minValue?: DateValue; isDateUnavailable?: DateMatcher; asChild?: boolean; as?: AsTag | Component }",
         "description": "Properties for the DateField component.",
         "descriptionKey": "api.generated.src_components_date_field_types.datefieldprops.props",
         "sourcePath": "src/components/date-field/types.ts",
@@ -89,7 +89,7 @@
           },
           {
             "name": "inputProps",
-            "type": "Omit<DateFieldInputProps, 'part'>",
+            "type": "DateFieldInputProps",
             "required": false,
             "description": "Properties forwarded to the input element.",
             "descriptionKey": "api.generated.src_components_date_field_types.datefieldprops.members.inputprops",
@@ -101,112 +101,82 @@
                 "name": "DateFieldInputProps",
                 "kind": "interface",
                 "type": "DateFieldInputProps",
-                "resolvedType": null,
+                "resolvedType": "{ part: import(\"../../date\").EditableSegmentPart | import(\"../../date\").NonEditableSegmentPart; asChild?: boolean; as?: AsTag | Component }",
                 "description": "Properties for the DateFieldInput component.",
                 "descriptionKey": "api.generated.headless_src_components_date_field_types.datefieldinputprops",
                 "sourcePath": "headless/src/components/date-field/types.ts",
                 "typeParameters": [],
                 "external": false,
-                "members": [],
+                "members": [
+                  {
+                    "name": "part",
+                    "type": "import(\"../../date\").EditableSegmentPart | import(\"../../date\").NonEditableSegmentPart",
+                    "required": true,
+                    "description": "Part.",
+                    "descriptionKey": "api.generated.headless_src_components_date_field_types.datefieldinputprops.members.part",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/date-field/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "asChild",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+                    "descriptionKey": "api.generated.headless_src_components_date_field_types.datefieldinputprops.members.aschild",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "as",
+                    "type": "AsTag | Component",
+                    "required": false,
+                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+                    "descriptionKey": "api.generated.headless_src_components_date_field_types.datefieldinputprops.members.as",
+                    "default": "'div'",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
                 "callables": []
               }
             ]
           },
           {
-            "name": "defaultValue",
-            "type": "DateValue",
+            "name": "id",
+            "type": "string",
             "required": false,
-            "description": "Default value.",
-            "descriptionKey": "api.generated.src_components_date_field_types.datefieldprops.members.defaultvalue",
+            "description": "Id.",
+            "descriptionKey": "api.generated.src_components_date_field_types.datefieldprops.members.id",
             "default": null,
-            "inheritedFrom": "defaultValue",
+            "inheritedFrom": "id",
             "sourcePath": "headless/src/components/date-field/types.ts",
-            "referencedTypes": [
-              {
-                "name": "DateValue",
-                "kind": "typeAlias",
-                "type": "DateValue",
-                "resolvedType": null,
-                "description": "",
-                "descriptionKey": "api.generated.node_modules_pnpm_internationalized_date_3_12_1_node_modules_internationalized_date_dist_types_src_calendardate_d.datevalue",
-                "sourcePath": "node_modules/.pnpm/@internationalized+date@3.12.1/node_modules/@internationalized/date/dist/types/src/CalendarDate.d.ts",
-                "typeParameters": [],
-                "external": true,
-                "members": [],
-                "callables": []
-              }
-            ]
+            "referencedTypes": []
           },
           {
-            "name": "defaultPlaceholder",
-            "type": "DateValue",
+            "name": "granularity",
+            "type": "Granularity",
             "required": false,
-            "description": "Default placeholder.",
-            "descriptionKey": "api.generated.src_components_date_field_types.datefieldprops.members.defaultplaceholder",
+            "description": "Granularity.",
+            "descriptionKey": "api.generated.src_components_date_field_types.datefieldprops.members.granularity",
             "default": null,
-            "inheritedFrom": "defaultPlaceholder",
+            "inheritedFrom": "granularity",
             "sourcePath": "headless/src/components/date-field/types.ts",
             "referencedTypes": [
               {
-                "name": "DateValue",
+                "name": "Granularity",
                 "kind": "typeAlias",
-                "type": "DateValue",
-                "resolvedType": null,
+                "type": "'day' | import(\"../../date\").TimeGranularity",
+                "resolvedType": "'day' | TimeGranularity",
                 "description": "",
-                "descriptionKey": "api.generated.node_modules_pnpm_internationalized_date_3_12_1_node_modules_internationalized_date_dist_types_src_calendardate_d.datevalue",
-                "sourcePath": "node_modules/.pnpm/@internationalized+date@3.12.1/node_modules/@internationalized/date/dist/types/src/CalendarDate.d.ts",
+                "descriptionKey": "api.generated.headless_src_date_types.granularity",
+                "sourcePath": "headless/src/date/types.ts",
                 "typeParameters": [],
-                "external": true,
-                "members": [],
-                "callables": []
-              }
-            ]
-          },
-          {
-            "name": "placeholder",
-            "type": "DateValue",
-            "required": false,
-            "description": "Placeholder.",
-            "descriptionKey": "api.generated.src_components_date_field_types.datefieldprops.members.placeholder",
-            "default": null,
-            "inheritedFrom": "placeholder",
-            "sourcePath": "headless/src/components/date-field/types.ts",
-            "referencedTypes": [
-              {
-                "name": "DateValue",
-                "kind": "typeAlias",
-                "type": "DateValue",
-                "resolvedType": null,
-                "description": "",
-                "descriptionKey": "api.generated.node_modules_pnpm_internationalized_date_3_12_1_node_modules_internationalized_date_dist_types_src_calendardate_d.datevalue",
-                "sourcePath": "node_modules/.pnpm/@internationalized+date@3.12.1/node_modules/@internationalized/date/dist/types/src/CalendarDate.d.ts",
-                "typeParameters": [],
-                "external": true,
-                "members": [],
-                "callables": []
-              }
-            ]
-          },
-          {
-            "name": "modelValue",
-            "type": "DateValue",
-            "required": false,
-            "description": "Current model value.",
-            "descriptionKey": "api.generated.src_components_date_field_types.datefieldprops.members.modelvalue",
-            "default": null,
-            "inheritedFrom": "modelValue",
-            "sourcePath": "headless/src/components/date-field/types.ts",
-            "referencedTypes": [
-              {
-                "name": "DateValue",
-                "kind": "typeAlias",
-                "type": "DateValue",
-                "resolvedType": null,
-                "description": "",
-                "descriptionKey": "api.generated.node_modules_pnpm_internationalized_date_3_12_1_node_modules_internationalized_date_dist_types_src_calendardate_d.datevalue",
-                "sourcePath": "node_modules/.pnpm/@internationalized+date@3.12.1/node_modules/@internationalized/date/dist/types/src/CalendarDate.d.ts",
-                "typeParameters": [],
-                "external": true,
+                "external": false,
                 "members": [],
                 "callables": []
               }
@@ -341,31 +311,6 @@
             ]
           },
           {
-            "name": "granularity",
-            "type": "Granularity",
-            "required": false,
-            "description": "Granularity.",
-            "descriptionKey": "api.generated.src_components_date_field_types.datefieldprops.members.granularity",
-            "default": null,
-            "inheritedFrom": "granularity",
-            "sourcePath": "headless/src/components/date-field/types.ts",
-            "referencedTypes": [
-              {
-                "name": "Granularity",
-                "kind": "typeAlias",
-                "type": "'day' | 'hour' | 'minute' | 'second'",
-                "resolvedType": "'day' | 'hour' | 'minute' | 'second'",
-                "description": "",
-                "descriptionKey": "api.generated.headless_src_date_types.granularity",
-                "sourcePath": "headless/src/date/types.ts",
-                "typeParameters": [],
-                "external": false,
-                "members": [],
-                "callables": []
-              }
-            ]
-          },
-          {
             "name": "hideTimeZone",
             "type": "boolean",
             "required": false,
@@ -377,6 +322,186 @@
             "referencedTypes": []
           },
           {
+            "name": "name",
+            "type": "string",
+            "required": false,
+            "description": "The name of the field. Submitted with its owning form as part of a name/value pair.",
+            "descriptionKey": "api.generated.src_components_date_field_types.datefieldprops.members.name",
+            "default": null,
+            "inheritedFrom": "name",
+            "sourcePath": "headless/src/types/component.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "required",
+            "type": "boolean",
+            "required": false,
+            "description": "When `true`, indicates that the user must set the value before the owning form can be submitted.",
+            "descriptionKey": "api.generated.src_components_date_field_types.datefieldprops.members.required",
+            "default": null,
+            "inheritedFrom": "required",
+            "sourcePath": "headless/src/types/component.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "disabled",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether the component is disabled.",
+            "descriptionKey": "api.generated.src_components_date_field_types.datefieldprops.members.disabled",
+            "default": null,
+            "inheritedFrom": "disabled",
+            "sourcePath": "headless/src/components/calendar/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "dir",
+            "type": "Direction",
+            "required": false,
+            "description": "Reading direction of the component.",
+            "descriptionKey": "api.generated.src_components_date_field_types.datefieldprops.members.dir",
+            "default": null,
+            "inheritedFrom": "dir",
+            "sourcePath": "headless/src/components/calendar/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Direction",
+                "kind": "typeAlias",
+                "type": "'ltr' | 'rtl'",
+                "resolvedType": "'ltr' | 'rtl'",
+                "description": "",
+                "descriptionKey": "api.generated.headless_src_types_common.direction",
+                "sourcePath": "headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "placeholder",
+            "type": "DateValue",
+            "required": false,
+            "description": "Placeholder.",
+            "descriptionKey": "api.generated.src_components_date_field_types.datefieldprops.members.placeholder",
+            "default": null,
+            "inheritedFrom": "placeholder",
+            "sourcePath": "headless/src/components/calendar/types.ts",
+            "referencedTypes": [
+              {
+                "name": "DateValue",
+                "kind": "typeAlias",
+                "type": "DateValue",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": "api.generated.node_modules_pnpm_internationalized_date_3_12_1_node_modules_internationalized_date_dist_types_src_calendardate_d.datevalue",
+                "sourcePath": "node_modules/.pnpm/@internationalized+date@3.12.1/node_modules/@internationalized/date/dist/types/src/CalendarDate.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "defaultValue",
+            "type": "DateValue",
+            "required": false,
+            "description": "Default value.",
+            "descriptionKey": "api.generated.src_components_date_field_types.datefieldprops.members.defaultvalue",
+            "default": null,
+            "inheritedFrom": "defaultValue",
+            "sourcePath": "headless/src/components/calendar/types.ts",
+            "referencedTypes": [
+              {
+                "name": "CalendarModelValue",
+                "kind": "typeAlias",
+                "type": "M extends true ? DateValue[] | undefined : DateValue | undefined",
+                "resolvedType": "M extends true ? DateValue[] | undefined : DateValue | undefined",
+                "description": "Model value type for the calendar component.",
+                "descriptionKey": "api.generated.headless_src_components_calendar_types.calendarmodelvalue",
+                "sourcePath": "headless/src/components/calendar/types.ts",
+                "typeParameters": ["M extends boolean = false"],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "modelValue",
+            "type": "DateValue",
+            "required": false,
+            "description": "Current model value.",
+            "descriptionKey": "api.generated.src_components_date_field_types.datefieldprops.members.modelvalue",
+            "default": null,
+            "inheritedFrom": "modelValue",
+            "sourcePath": "headless/src/components/calendar/types.ts",
+            "referencedTypes": [
+              {
+                "name": "CalendarModelValue",
+                "kind": "typeAlias",
+                "type": "M extends true ? DateValue[] | undefined : DateValue | undefined",
+                "resolvedType": "M extends true ? DateValue[] | undefined : DateValue | undefined",
+                "description": "Model value type for the calendar component.",
+                "descriptionKey": "api.generated.headless_src_components_calendar_types.calendarmodelvalue",
+                "sourcePath": "headless/src/components/calendar/types.ts",
+                "typeParameters": ["M extends boolean = false"],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "readonly",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether the component is readonly.",
+            "descriptionKey": "api.generated.src_components_date_field_types.datefieldprops.members.readonly",
+            "default": null,
+            "inheritedFrom": "readonly",
+            "sourcePath": "headless/src/components/calendar/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "locale",
+            "type": "string",
+            "required": false,
+            "description": "Locale.",
+            "descriptionKey": "api.generated.src_components_date_field_types.datefieldprops.members.locale",
+            "default": null,
+            "inheritedFrom": "locale",
+            "sourcePath": "headless/src/components/calendar/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "defaultPlaceholder",
+            "type": "DateValue",
+            "required": false,
+            "description": "Default placeholder.",
+            "descriptionKey": "api.generated.src_components_date_field_types.datefieldprops.members.defaultplaceholder",
+            "default": null,
+            "inheritedFrom": "defaultPlaceholder",
+            "sourcePath": "headless/src/components/calendar/types.ts",
+            "referencedTypes": [
+              {
+                "name": "DateValue",
+                "kind": "typeAlias",
+                "type": "DateValue",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": "api.generated.node_modules_pnpm_internationalized_date_3_12_1_node_modules_internationalized_date_dist_types_src_calendardate_d.datevalue",
+                "sourcePath": "node_modules/.pnpm/@internationalized+date@3.12.1/node_modules/@internationalized/date/dist/types/src/CalendarDate.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
             "name": "maxValue",
             "type": "DateValue",
             "required": false,
@@ -384,7 +509,7 @@
             "descriptionKey": "api.generated.src_components_date_field_types.datefieldprops.members.maxvalue",
             "default": null,
             "inheritedFrom": "maxValue",
-            "sourcePath": "headless/src/components/date-field/types.ts",
+            "sourcePath": "headless/src/components/calendar/types.ts",
             "referencedTypes": [
               {
                 "name": "DateValue",
@@ -409,7 +534,7 @@
             "descriptionKey": "api.generated.src_components_date_field_types.datefieldprops.members.minvalue",
             "default": null,
             "inheritedFrom": "minValue",
-            "sourcePath": "headless/src/components/date-field/types.ts",
+            "sourcePath": "headless/src/components/calendar/types.ts",
             "referencedTypes": [
               {
                 "name": "DateValue",
@@ -427,92 +552,23 @@
             ]
           },
           {
-            "name": "locale",
-            "type": "string",
-            "required": false,
-            "description": "Locale.",
-            "descriptionKey": "api.generated.src_components_date_field_types.datefieldprops.members.locale",
-            "default": null,
-            "inheritedFrom": "locale",
-            "sourcePath": "headless/src/components/date-field/types.ts",
-            "referencedTypes": []
-          },
-          {
-            "name": "disabled",
-            "type": "boolean",
-            "required": false,
-            "description": "Whether the component is disabled.",
-            "descriptionKey": "api.generated.src_components_date_field_types.datefieldprops.members.disabled",
-            "default": null,
-            "inheritedFrom": "disabled",
-            "sourcePath": "headless/src/components/date-field/types.ts",
-            "referencedTypes": []
-          },
-          {
-            "name": "readonly",
-            "type": "boolean",
-            "required": false,
-            "description": "Whether the component is readonly.",
-            "descriptionKey": "api.generated.src_components_date_field_types.datefieldprops.members.readonly",
-            "default": null,
-            "inheritedFrom": "readonly",
-            "sourcePath": "headless/src/components/date-field/types.ts",
-            "referencedTypes": []
-          },
-          {
             "name": "isDateUnavailable",
-            "type": "Matcher",
+            "type": "DateMatcher",
             "required": false,
             "description": "Whether the date is unavailable.",
             "descriptionKey": "api.generated.src_components_date_field_types.datefieldprops.members.isdateunavailable",
             "default": null,
             "inheritedFrom": "isDateUnavailable",
-            "sourcePath": "headless/src/components/date-field/types.ts",
+            "sourcePath": "headless/src/components/calendar/types.ts",
             "referencedTypes": [
               {
-                "name": "Matcher",
+                "name": "DateMatcher",
                 "kind": "typeAlias",
                 "type": "(date: DateValue) => boolean",
-                "resolvedType": "(date: import(\"@internationalized/date\").CalendarDate | import(\"@internationalized/date\").CalendarDateTime | import(\"@internationalized/date\").ZonedDateTime) => boolean",
+                "resolvedType": "(date: import(\"@internationalized/date\").CalendarDate | CalendarDateTime | ZonedDateTime) => boolean",
                 "description": "",
-                "descriptionKey": "api.generated.headless_src_date_types.matcher",
+                "descriptionKey": "api.generated.headless_src_date_types.datematcher",
                 "sourcePath": "headless/src/date/types.ts",
-                "typeParameters": [],
-                "external": false,
-                "members": [],
-                "callables": []
-              }
-            ]
-          },
-          {
-            "name": "id",
-            "type": "string",
-            "required": false,
-            "description": "Id.",
-            "descriptionKey": "api.generated.src_components_date_field_types.datefieldprops.members.id",
-            "default": null,
-            "inheritedFrom": "id",
-            "sourcePath": "headless/src/components/date-field/types.ts",
-            "referencedTypes": []
-          },
-          {
-            "name": "dir",
-            "type": "Direction",
-            "required": false,
-            "description": "Reading direction of the component.",
-            "descriptionKey": "api.generated.src_components_date_field_types.datefieldprops.members.dir",
-            "default": null,
-            "inheritedFrom": "dir",
-            "sourcePath": "headless/src/components/date-field/types.ts",
-            "referencedTypes": [
-              {
-                "name": "Direction",
-                "kind": "typeAlias",
-                "type": "'ltr' | 'rtl'",
-                "resolvedType": "'ltr' | 'rtl'",
-                "description": "",
-                "descriptionKey": "api.generated.headless_src_types_common.direction",
-                "sourcePath": "headless/src/types/common.ts",
                 "typeParameters": [],
                 "external": false,
                 "members": [],
@@ -547,8 +603,8 @@
                 "type": "Component",
                 "resolvedType": null,
                 "description": "A type used in public APIs where a component type is expected.\nThe constructor type is an artificial type returned by defineComponent().",
-                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_33_node_modules_vue_runtime_core_dist_runtime_core_d.component",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_34_node_modules_vue_runtime_core_dist_runtime_core_d.component",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.34/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
                 "typeParameters": [
                   "PropsOrInstance = any",
                   "RawBindings = any",
@@ -563,28 +619,6 @@
                 "callables": []
               }
             ]
-          },
-          {
-            "name": "name",
-            "type": "string",
-            "required": false,
-            "description": "The name of the field. Submitted with its owning form as part of a name/value pair.",
-            "descriptionKey": "api.generated.src_components_date_field_types.datefieldprops.members.name",
-            "default": null,
-            "inheritedFrom": "name",
-            "sourcePath": "headless/src/types/component.ts",
-            "referencedTypes": []
-          },
-          {
-            "name": "required",
-            "type": "boolean",
-            "required": false,
-            "description": "When `true`, indicates that the user must set the value before the owning form can be submitted.",
-            "descriptionKey": "api.generated.src_components_date_field_types.datefieldprops.members.required",
-            "default": null,
-            "inheritedFrom": "required",
-            "sourcePath": "headless/src/types/component.ts",
-            "referencedTypes": []
           }
         ],
         "callables": [],
@@ -594,7 +628,7 @@
         "kind": "emits",
         "name": "DateFieldEmits",
         "type": "TypeAlias DateFieldEmits: DateFieldCompactEmits",
-        "resolvedType": "{ \"update:modelValue\": [date: DateValue | undefined]; \"update:placeholder\": [date: DateValue] }",
+        "resolvedType": "{ \"update:modelValue\": [value: DateValue | undefined]; \"update:placeholder\": [value: DateValue] }",
         "description": "Events for the DateField component.",
         "descriptionKey": "api.generated.src_components_date_field_types.datefieldemits.emits",
         "sourcePath": "src/components/date-field/types.ts",
@@ -603,8 +637,8 @@
         "callables": [
           {
             "name": "update:modelValue",
-            "type": "[date: DateValue | undefined]",
-            "parameters": "date: DateValue | undefined",
+            "type": "[value: DateValue | undefined]",
+            "parameters": "value: DateValue | undefined",
             "required": true,
             "description": "Emitted when the model value changes.",
             "descriptionKey": "api.generated.src_components_date_field_types.datefieldemits.callables.update_modelvalue",
@@ -627,8 +661,8 @@
           },
           {
             "name": "update:placeholder",
-            "type": "[date: DateValue]",
-            "parameters": "date: DateValue",
+            "type": "[value: DateValue]",
+            "parameters": "value: DateValue",
             "required": true,
             "description": "Emitted when the placeholder value changes.",
             "descriptionKey": "api.generated.src_components_date_field_types.datefieldemits.callables.update_placeholder",
@@ -654,8 +688,8 @@
           {
             "name": "DateFieldRootEmits",
             "kind": "typeAlias",
-            "type": "{ 'update:modelValue': [date: import(\"@internationalized/date\").DateValue | undefined]; 'update:placeholder': [date: import(\"@internationalized/date\").DateValue]; }",
-            "resolvedType": "{ \"update:modelValue\": [date: DateValue | undefined]; \"update:placeholder\": [date: DateValue] }",
+            "type": "{ 'update:modelValue': [value: import(\"@internationalized/date\").DateValue | undefined]; 'update:placeholder': [value: import(\"@internationalized/date\").DateValue]; }",
+            "resolvedType": "{ \"update:modelValue\": [value: DateValue | undefined]; \"update:placeholder\": [value: DateValue] }",
             "description": "Events for the DateFieldRoot component.",
             "descriptionKey": "api.generated.headless_src_components_date_field_types.datefieldrootemits",
             "sourcePath": "headless/src/components/date-field/types.ts",
@@ -665,8 +699,8 @@
             "callables": [
               {
                 "name": "update:modelValue",
-                "type": "[date: DateValue | undefined]",
-                "parameters": "date: DateValue | undefined",
+                "type": "[value: DateValue | undefined]",
+                "parameters": "value: DateValue | undefined",
                 "required": true,
                 "description": "Emitted when the model value changes.",
                 "descriptionKey": "api.generated.headless_src_components_date_field_types.datefieldrootemits.callables.update_modelvalue",
@@ -675,8 +709,8 @@
               },
               {
                 "name": "update:placeholder",
-                "type": "[date: DateValue]",
-                "parameters": "date: DateValue",
+                "type": "[value: DateValue]",
+                "parameters": "value: DateValue",
                 "required": true,
                 "description": "Emitted when the placeholder value changes.",
                 "descriptionKey": "api.generated.headless_src_components_date_field_types.datefieldrootemits.callables.update_placeholder",
@@ -689,108 +723,11 @@
       }
     },
     "DateFieldCompact": {
-      "emits": {
-        "kind": "emits",
-        "name": "DateFieldCompactEmits",
-        "type": "TypeAlias DateFieldCompactEmits: DateFieldRootEmits",
-        "resolvedType": "{ \"update:modelValue\": [date: DateValue | undefined]; \"update:placeholder\": [date: DateValue] }",
-        "description": "Events for the DateFieldCompact component.",
-        "descriptionKey": "api.generated.headless_src_components_date_field_types.datefieldcompactemits.emits",
-        "sourcePath": "headless/src/components/date-field/types.ts",
-        "typeParameters": [],
-        "members": [],
-        "callables": [
-          {
-            "name": "update:modelValue",
-            "type": "[date: DateValue | undefined]",
-            "parameters": "date: DateValue | undefined",
-            "required": true,
-            "description": "Emitted when the model value changes.",
-            "descriptionKey": "api.generated.headless_src_components_date_field_types.datefieldcompactemits.callables.update_modelvalue",
-            "sourcePath": "headless/src/components/date-field/types.ts",
-            "referencedTypes": [
-              {
-                "name": "DateValue",
-                "kind": "typeAlias",
-                "type": "DateValue",
-                "resolvedType": null,
-                "description": "",
-                "descriptionKey": "api.generated.node_modules_pnpm_internationalized_date_3_12_1_node_modules_internationalized_date_dist_types_src_calendardate_d.datevalue",
-                "sourcePath": "node_modules/.pnpm/@internationalized+date@3.12.1/node_modules/@internationalized/date/dist/types/src/CalendarDate.d.ts",
-                "typeParameters": [],
-                "external": true,
-                "members": [],
-                "callables": []
-              }
-            ]
-          },
-          {
-            "name": "update:placeholder",
-            "type": "[date: DateValue]",
-            "parameters": "date: DateValue",
-            "required": true,
-            "description": "Emitted when the placeholder value changes.",
-            "descriptionKey": "api.generated.headless_src_components_date_field_types.datefieldcompactemits.callables.update_placeholder",
-            "sourcePath": "headless/src/components/date-field/types.ts",
-            "referencedTypes": [
-              {
-                "name": "DateValue",
-                "kind": "typeAlias",
-                "type": "DateValue",
-                "resolvedType": null,
-                "description": "",
-                "descriptionKey": "api.generated.node_modules_pnpm_internationalized_date_3_12_1_node_modules_internationalized_date_dist_types_src_calendardate_d.datevalue",
-                "sourcePath": "node_modules/.pnpm/@internationalized+date@3.12.1/node_modules/@internationalized/date/dist/types/src/CalendarDate.d.ts",
-                "typeParameters": [],
-                "external": true,
-                "members": [],
-                "callables": []
-              }
-            ]
-          }
-        ],
-        "referencedTypes": [
-          {
-            "name": "DateFieldRootEmits",
-            "kind": "typeAlias",
-            "type": "{ 'update:modelValue': [date: DateValue | undefined]; 'update:placeholder': [date: DateValue]; }",
-            "resolvedType": "{ \"update:modelValue\": [date: DateValue | undefined]; \"update:placeholder\": [date: DateValue] }",
-            "description": "Events for the DateFieldRoot component.",
-            "descriptionKey": "api.generated.headless_src_components_date_field_types.datefieldrootemits",
-            "sourcePath": "headless/src/components/date-field/types.ts",
-            "typeParameters": [],
-            "external": false,
-            "members": [],
-            "callables": [
-              {
-                "name": "update:modelValue",
-                "type": "[date: DateValue | undefined]",
-                "parameters": "date: DateValue | undefined",
-                "required": true,
-                "description": "Emitted when the model value changes.",
-                "descriptionKey": "api.generated.headless_src_components_date_field_types.datefieldrootemits.callables.update_modelvalue",
-                "sourcePath": "headless/src/components/date-field/types.ts",
-                "referencedTypes": []
-              },
-              {
-                "name": "update:placeholder",
-                "type": "[date: DateValue]",
-                "parameters": "date: DateValue",
-                "required": true,
-                "description": "Emitted when the placeholder value changes.",
-                "descriptionKey": "api.generated.headless_src_components_date_field_types.datefieldrootemits.callables.update_placeholder",
-                "sourcePath": "headless/src/components/date-field/types.ts",
-                "referencedTypes": []
-              }
-            ]
-          }
-        ]
-      },
       "props": {
         "kind": "props",
         "name": "DateFieldCompactProps",
         "type": "Interface DateFieldCompactProps",
-        "resolvedType": "{ inputProps?: Omit<DateFieldInputProps, 'part'>; defaultValue?: DateValue; defaultPlaceholder?: DateValue; placeholder?: DateValue; modelValue?: DateValue; hourCycle?: 12 | 24; step?: DateStep; granularity?: Granularity; hideTimeZone?: boolean; maxValue?: DateValue; minValue?: DateValue; locale?: string; disabled?: boolean; readonly?: boolean; isDateUnavailable?: Matcher; id?: string; dir?: Direction; asChild?: boolean; as?: AsTag | Component; name?: string; required?: boolean }",
+        "resolvedType": "{ inputProps?: DateFieldInputProps; id?: string; granularity?: Granularity; hourCycle?: 12 | 24; step?: DateStep; hideTimeZone?: boolean; name?: string; required?: boolean; disabled?: boolean; dir?: Direction; placeholder?: DateValue; defaultValue?: DateValue; modelValue?: DateValue; readonly?: boolean; locale?: string; defaultPlaceholder?: DateValue; maxValue?: DateValue; minValue?: DateValue; isDateUnavailable?: DateMatcher; asChild?: boolean; as?: AsTag | Component }",
         "description": "Properties for the DateFieldCompact component.",
         "descriptionKey": "api.generated.headless_src_components_date_field_types.datefieldcompactprops.props",
         "sourcePath": "headless/src/components/date-field/types.ts",
@@ -798,7 +735,7 @@
         "members": [
           {
             "name": "inputProps",
-            "type": "Omit<DateFieldInputProps, 'part'>",
+            "type": "DateFieldInputProps",
             "required": false,
             "description": "Properties forwarded to the input element.",
             "descriptionKey": "api.generated.headless_src_components_date_field_types.datefieldcompactprops.members.inputprops",
@@ -810,112 +747,82 @@
                 "name": "DateFieldInputProps",
                 "kind": "interface",
                 "type": "DateFieldInputProps",
-                "resolvedType": null,
+                "resolvedType": "{ part: import(\"../../date\").EditableSegmentPart | import(\"../../date\").NonEditableSegmentPart; asChild?: boolean; as?: AsTag | Component }",
                 "description": "Properties for the DateFieldInput component.",
                 "descriptionKey": "api.generated.headless_src_components_date_field_types.datefieldinputprops",
                 "sourcePath": "headless/src/components/date-field/types.ts",
                 "typeParameters": [],
                 "external": false,
-                "members": [],
+                "members": [
+                  {
+                    "name": "part",
+                    "type": "import(\"../../date\").EditableSegmentPart | import(\"../../date\").NonEditableSegmentPart",
+                    "required": true,
+                    "description": "Part.",
+                    "descriptionKey": "api.generated.headless_src_components_date_field_types.datefieldinputprops.members.part",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/date-field/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "asChild",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+                    "descriptionKey": "api.generated.headless_src_components_date_field_types.datefieldinputprops.members.aschild",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "as",
+                    "type": "AsTag | Component",
+                    "required": false,
+                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+                    "descriptionKey": "api.generated.headless_src_components_date_field_types.datefieldinputprops.members.as",
+                    "default": "'div'",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
                 "callables": []
               }
             ]
           },
           {
-            "name": "defaultValue",
-            "type": "DateValue",
+            "name": "id",
+            "type": "string",
             "required": false,
-            "description": "Default value.",
-            "descriptionKey": "api.generated.headless_src_components_date_field_types.datefieldcompactprops.members.defaultvalue",
+            "description": "Id.",
+            "descriptionKey": "api.generated.headless_src_components_date_field_types.datefieldcompactprops.members.id",
             "default": null,
-            "inheritedFrom": "defaultValue",
+            "inheritedFrom": "id",
             "sourcePath": "headless/src/components/date-field/types.ts",
-            "referencedTypes": [
-              {
-                "name": "DateValue",
-                "kind": "typeAlias",
-                "type": "DateValue",
-                "resolvedType": null,
-                "description": "",
-                "descriptionKey": "api.generated.node_modules_pnpm_internationalized_date_3_12_1_node_modules_internationalized_date_dist_types_src_calendardate_d.datevalue",
-                "sourcePath": "node_modules/.pnpm/@internationalized+date@3.12.1/node_modules/@internationalized/date/dist/types/src/CalendarDate.d.ts",
-                "typeParameters": [],
-                "external": true,
-                "members": [],
-                "callables": []
-              }
-            ]
+            "referencedTypes": []
           },
           {
-            "name": "defaultPlaceholder",
-            "type": "DateValue",
+            "name": "granularity",
+            "type": "Granularity",
             "required": false,
-            "description": "Default placeholder.",
-            "descriptionKey": "api.generated.headless_src_components_date_field_types.datefieldcompactprops.members.defaultplaceholder",
+            "description": "Granularity.",
+            "descriptionKey": "api.generated.headless_src_components_date_field_types.datefieldcompactprops.members.granularity",
             "default": null,
-            "inheritedFrom": "defaultPlaceholder",
+            "inheritedFrom": "granularity",
             "sourcePath": "headless/src/components/date-field/types.ts",
             "referencedTypes": [
               {
-                "name": "DateValue",
+                "name": "Granularity",
                 "kind": "typeAlias",
-                "type": "DateValue",
-                "resolvedType": null,
+                "type": "'day' | import(\"../../date\").TimeGranularity",
+                "resolvedType": "'day' | TimeGranularity",
                 "description": "",
-                "descriptionKey": "api.generated.node_modules_pnpm_internationalized_date_3_12_1_node_modules_internationalized_date_dist_types_src_calendardate_d.datevalue",
-                "sourcePath": "node_modules/.pnpm/@internationalized+date@3.12.1/node_modules/@internationalized/date/dist/types/src/CalendarDate.d.ts",
+                "descriptionKey": "api.generated.headless_src_date_types.granularity",
+                "sourcePath": "headless/src/date/types.ts",
                 "typeParameters": [],
-                "external": true,
-                "members": [],
-                "callables": []
-              }
-            ]
-          },
-          {
-            "name": "placeholder",
-            "type": "DateValue",
-            "required": false,
-            "description": "Placeholder.",
-            "descriptionKey": "api.generated.headless_src_components_date_field_types.datefieldcompactprops.members.placeholder",
-            "default": null,
-            "inheritedFrom": "placeholder",
-            "sourcePath": "headless/src/components/date-field/types.ts",
-            "referencedTypes": [
-              {
-                "name": "DateValue",
-                "kind": "typeAlias",
-                "type": "DateValue",
-                "resolvedType": null,
-                "description": "",
-                "descriptionKey": "api.generated.node_modules_pnpm_internationalized_date_3_12_1_node_modules_internationalized_date_dist_types_src_calendardate_d.datevalue",
-                "sourcePath": "node_modules/.pnpm/@internationalized+date@3.12.1/node_modules/@internationalized/date/dist/types/src/CalendarDate.d.ts",
-                "typeParameters": [],
-                "external": true,
-                "members": [],
-                "callables": []
-              }
-            ]
-          },
-          {
-            "name": "modelValue",
-            "type": "DateValue",
-            "required": false,
-            "description": "Current model value.",
-            "descriptionKey": "api.generated.headless_src_components_date_field_types.datefieldcompactprops.members.modelvalue",
-            "default": null,
-            "inheritedFrom": "modelValue",
-            "sourcePath": "headless/src/components/date-field/types.ts",
-            "referencedTypes": [
-              {
-                "name": "DateValue",
-                "kind": "typeAlias",
-                "type": "DateValue",
-                "resolvedType": null,
-                "description": "",
-                "descriptionKey": "api.generated.node_modules_pnpm_internationalized_date_3_12_1_node_modules_internationalized_date_dist_types_src_calendardate_d.datevalue",
-                "sourcePath": "node_modules/.pnpm/@internationalized+date@3.12.1/node_modules/@internationalized/date/dist/types/src/CalendarDate.d.ts",
-                "typeParameters": [],
-                "external": true,
+                "external": false,
                 "members": [],
                 "callables": []
               }
@@ -1050,31 +957,6 @@
             ]
           },
           {
-            "name": "granularity",
-            "type": "Granularity",
-            "required": false,
-            "description": "Granularity.",
-            "descriptionKey": "api.generated.headless_src_components_date_field_types.datefieldcompactprops.members.granularity",
-            "default": null,
-            "inheritedFrom": "granularity",
-            "sourcePath": "headless/src/components/date-field/types.ts",
-            "referencedTypes": [
-              {
-                "name": "Granularity",
-                "kind": "typeAlias",
-                "type": "'day' | 'hour' | 'minute' | 'second'",
-                "resolvedType": "'day' | 'hour' | 'minute' | 'second'",
-                "description": "",
-                "descriptionKey": "api.generated.headless_src_date_types.granularity",
-                "sourcePath": "headless/src/date/types.ts",
-                "typeParameters": [],
-                "external": false,
-                "members": [],
-                "callables": []
-              }
-            ]
-          },
-          {
             "name": "hideTimeZone",
             "type": "boolean",
             "required": false,
@@ -1086,6 +968,186 @@
             "referencedTypes": []
           },
           {
+            "name": "name",
+            "type": "string",
+            "required": false,
+            "description": "The name of the field. Submitted with its owning form as part of a name/value pair.",
+            "descriptionKey": "api.generated.headless_src_components_date_field_types.datefieldcompactprops.members.name",
+            "default": null,
+            "inheritedFrom": "name",
+            "sourcePath": "headless/src/types/component.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "required",
+            "type": "boolean",
+            "required": false,
+            "description": "When `true`, indicates that the user must set the value before the owning form can be submitted.",
+            "descriptionKey": "api.generated.headless_src_components_date_field_types.datefieldcompactprops.members.required",
+            "default": null,
+            "inheritedFrom": "required",
+            "sourcePath": "headless/src/types/component.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "disabled",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether the component is disabled.",
+            "descriptionKey": "api.generated.headless_src_components_date_field_types.datefieldcompactprops.members.disabled",
+            "default": null,
+            "inheritedFrom": "disabled",
+            "sourcePath": "headless/src/components/calendar/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "dir",
+            "type": "Direction",
+            "required": false,
+            "description": "Reading direction of the component.",
+            "descriptionKey": "api.generated.headless_src_components_date_field_types.datefieldcompactprops.members.dir",
+            "default": null,
+            "inheritedFrom": "dir",
+            "sourcePath": "headless/src/components/calendar/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Direction",
+                "kind": "typeAlias",
+                "type": "'ltr' | 'rtl'",
+                "resolvedType": "'ltr' | 'rtl'",
+                "description": "",
+                "descriptionKey": "api.generated.headless_src_types_common.direction",
+                "sourcePath": "headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "placeholder",
+            "type": "DateValue",
+            "required": false,
+            "description": "Placeholder.",
+            "descriptionKey": "api.generated.headless_src_components_date_field_types.datefieldcompactprops.members.placeholder",
+            "default": null,
+            "inheritedFrom": "placeholder",
+            "sourcePath": "headless/src/components/calendar/types.ts",
+            "referencedTypes": [
+              {
+                "name": "DateValue",
+                "kind": "typeAlias",
+                "type": "DateValue",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": "api.generated.node_modules_pnpm_internationalized_date_3_12_1_node_modules_internationalized_date_dist_types_src_calendardate_d.datevalue",
+                "sourcePath": "node_modules/.pnpm/@internationalized+date@3.12.1/node_modules/@internationalized/date/dist/types/src/CalendarDate.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "defaultValue",
+            "type": "DateValue",
+            "required": false,
+            "description": "Default value.",
+            "descriptionKey": "api.generated.headless_src_components_date_field_types.datefieldcompactprops.members.defaultvalue",
+            "default": null,
+            "inheritedFrom": "defaultValue",
+            "sourcePath": "headless/src/components/calendar/types.ts",
+            "referencedTypes": [
+              {
+                "name": "CalendarModelValue",
+                "kind": "typeAlias",
+                "type": "M extends true ? DateValue[] | undefined : DateValue | undefined",
+                "resolvedType": "M extends true ? DateValue[] | undefined : DateValue | undefined",
+                "description": "Model value type for the calendar component.",
+                "descriptionKey": "api.generated.headless_src_components_calendar_types.calendarmodelvalue",
+                "sourcePath": "headless/src/components/calendar/types.ts",
+                "typeParameters": ["M extends boolean = false"],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "modelValue",
+            "type": "DateValue",
+            "required": false,
+            "description": "Current model value.",
+            "descriptionKey": "api.generated.headless_src_components_date_field_types.datefieldcompactprops.members.modelvalue",
+            "default": null,
+            "inheritedFrom": "modelValue",
+            "sourcePath": "headless/src/components/calendar/types.ts",
+            "referencedTypes": [
+              {
+                "name": "CalendarModelValue",
+                "kind": "typeAlias",
+                "type": "M extends true ? DateValue[] | undefined : DateValue | undefined",
+                "resolvedType": "M extends true ? DateValue[] | undefined : DateValue | undefined",
+                "description": "Model value type for the calendar component.",
+                "descriptionKey": "api.generated.headless_src_components_calendar_types.calendarmodelvalue",
+                "sourcePath": "headless/src/components/calendar/types.ts",
+                "typeParameters": ["M extends boolean = false"],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "readonly",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether the component is readonly.",
+            "descriptionKey": "api.generated.headless_src_components_date_field_types.datefieldcompactprops.members.readonly",
+            "default": null,
+            "inheritedFrom": "readonly",
+            "sourcePath": "headless/src/components/calendar/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "locale",
+            "type": "string",
+            "required": false,
+            "description": "Locale.",
+            "descriptionKey": "api.generated.headless_src_components_date_field_types.datefieldcompactprops.members.locale",
+            "default": null,
+            "inheritedFrom": "locale",
+            "sourcePath": "headless/src/components/calendar/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "defaultPlaceholder",
+            "type": "DateValue",
+            "required": false,
+            "description": "Default placeholder.",
+            "descriptionKey": "api.generated.headless_src_components_date_field_types.datefieldcompactprops.members.defaultplaceholder",
+            "default": null,
+            "inheritedFrom": "defaultPlaceholder",
+            "sourcePath": "headless/src/components/calendar/types.ts",
+            "referencedTypes": [
+              {
+                "name": "DateValue",
+                "kind": "typeAlias",
+                "type": "DateValue",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": "api.generated.node_modules_pnpm_internationalized_date_3_12_1_node_modules_internationalized_date_dist_types_src_calendardate_d.datevalue",
+                "sourcePath": "node_modules/.pnpm/@internationalized+date@3.12.1/node_modules/@internationalized/date/dist/types/src/CalendarDate.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
             "name": "maxValue",
             "type": "DateValue",
             "required": false,
@@ -1093,7 +1155,7 @@
             "descriptionKey": "api.generated.headless_src_components_date_field_types.datefieldcompactprops.members.maxvalue",
             "default": null,
             "inheritedFrom": "maxValue",
-            "sourcePath": "headless/src/components/date-field/types.ts",
+            "sourcePath": "headless/src/components/calendar/types.ts",
             "referencedTypes": [
               {
                 "name": "DateValue",
@@ -1118,7 +1180,7 @@
             "descriptionKey": "api.generated.headless_src_components_date_field_types.datefieldcompactprops.members.minvalue",
             "default": null,
             "inheritedFrom": "minValue",
-            "sourcePath": "headless/src/components/date-field/types.ts",
+            "sourcePath": "headless/src/components/calendar/types.ts",
             "referencedTypes": [
               {
                 "name": "DateValue",
@@ -1136,92 +1198,23 @@
             ]
           },
           {
-            "name": "locale",
-            "type": "string",
-            "required": false,
-            "description": "Locale.",
-            "descriptionKey": "api.generated.headless_src_components_date_field_types.datefieldcompactprops.members.locale",
-            "default": null,
-            "inheritedFrom": "locale",
-            "sourcePath": "headless/src/components/date-field/types.ts",
-            "referencedTypes": []
-          },
-          {
-            "name": "disabled",
-            "type": "boolean",
-            "required": false,
-            "description": "Whether the component is disabled.",
-            "descriptionKey": "api.generated.headless_src_components_date_field_types.datefieldcompactprops.members.disabled",
-            "default": null,
-            "inheritedFrom": "disabled",
-            "sourcePath": "headless/src/components/date-field/types.ts",
-            "referencedTypes": []
-          },
-          {
-            "name": "readonly",
-            "type": "boolean",
-            "required": false,
-            "description": "Whether the component is readonly.",
-            "descriptionKey": "api.generated.headless_src_components_date_field_types.datefieldcompactprops.members.readonly",
-            "default": null,
-            "inheritedFrom": "readonly",
-            "sourcePath": "headless/src/components/date-field/types.ts",
-            "referencedTypes": []
-          },
-          {
             "name": "isDateUnavailable",
-            "type": "Matcher",
+            "type": "DateMatcher",
             "required": false,
             "description": "Whether the date is unavailable.",
             "descriptionKey": "api.generated.headless_src_components_date_field_types.datefieldcompactprops.members.isdateunavailable",
             "default": null,
             "inheritedFrom": "isDateUnavailable",
-            "sourcePath": "headless/src/components/date-field/types.ts",
+            "sourcePath": "headless/src/components/calendar/types.ts",
             "referencedTypes": [
               {
-                "name": "Matcher",
+                "name": "DateMatcher",
                 "kind": "typeAlias",
                 "type": "(date: DateValue) => boolean",
-                "resolvedType": "(date: import(\"@internationalized/date\").CalendarDate | import(\"@internationalized/date\").CalendarDateTime | import(\"@internationalized/date\").ZonedDateTime) => boolean",
+                "resolvedType": "(date: import(\"@internationalized/date\").CalendarDate | CalendarDateTime | ZonedDateTime) => boolean",
                 "description": "",
-                "descriptionKey": "api.generated.headless_src_date_types.matcher",
+                "descriptionKey": "api.generated.headless_src_date_types.datematcher",
                 "sourcePath": "headless/src/date/types.ts",
-                "typeParameters": [],
-                "external": false,
-                "members": [],
-                "callables": []
-              }
-            ]
-          },
-          {
-            "name": "id",
-            "type": "string",
-            "required": false,
-            "description": "Id.",
-            "descriptionKey": "api.generated.headless_src_components_date_field_types.datefieldcompactprops.members.id",
-            "default": null,
-            "inheritedFrom": "id",
-            "sourcePath": "headless/src/components/date-field/types.ts",
-            "referencedTypes": []
-          },
-          {
-            "name": "dir",
-            "type": "Direction",
-            "required": false,
-            "description": "Reading direction of the component.",
-            "descriptionKey": "api.generated.headless_src_components_date_field_types.datefieldcompactprops.members.dir",
-            "default": null,
-            "inheritedFrom": "dir",
-            "sourcePath": "headless/src/components/date-field/types.ts",
-            "referencedTypes": [
-              {
-                "name": "Direction",
-                "kind": "typeAlias",
-                "type": "'ltr' | 'rtl'",
-                "resolvedType": "'ltr' | 'rtl'",
-                "description": "",
-                "descriptionKey": "api.generated.headless_src_types_common.direction",
-                "sourcePath": "headless/src/types/common.ts",
                 "typeParameters": [],
                 "external": false,
                 "members": [],
@@ -1256,8 +1249,8 @@
                 "type": "Component",
                 "resolvedType": null,
                 "description": "A type used in public APIs where a component type is expected.\nThe constructor type is an artificial type returned by defineComponent().",
-                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_33_node_modules_vue_runtime_core_dist_runtime_core_d.component",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_34_node_modules_vue_runtime_core_dist_runtime_core_d.component",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.34/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
                 "typeParameters": [
                   "PropsOrInstance = any",
                   "RawBindings = any",
@@ -1272,32 +1265,107 @@
                 "callables": []
               }
             ]
-          },
-          {
-            "name": "name",
-            "type": "string",
-            "required": false,
-            "description": "The name of the field. Submitted with its owning form as part of a name/value pair.",
-            "descriptionKey": "api.generated.headless_src_components_date_field_types.datefieldcompactprops.members.name",
-            "default": null,
-            "inheritedFrom": "name",
-            "sourcePath": "headless/src/types/component.ts",
-            "referencedTypes": []
-          },
-          {
-            "name": "required",
-            "type": "boolean",
-            "required": false,
-            "description": "When `true`, indicates that the user must set the value before the owning form can be submitted.",
-            "descriptionKey": "api.generated.headless_src_components_date_field_types.datefieldcompactprops.members.required",
-            "default": null,
-            "inheritedFrom": "required",
-            "sourcePath": "headless/src/types/component.ts",
-            "referencedTypes": []
           }
         ],
         "callables": [],
         "referencedTypes": []
+      },
+      "emits": {
+        "kind": "emits",
+        "name": "DateFieldCompactEmits",
+        "type": "TypeAlias DateFieldCompactEmits: DateFieldRootEmits",
+        "resolvedType": "{ \"update:modelValue\": [value: DateValue | undefined]; \"update:placeholder\": [value: DateValue] }",
+        "description": "Events for the DateFieldCompact component.",
+        "descriptionKey": "api.generated.headless_src_components_date_field_types.datefieldcompactemits.emits",
+        "sourcePath": "headless/src/components/date-field/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [
+          {
+            "name": "update:modelValue",
+            "type": "[value: DateValue | undefined]",
+            "parameters": "value: DateValue | undefined",
+            "required": true,
+            "description": "Emitted when the model value changes.",
+            "descriptionKey": "api.generated.headless_src_components_date_field_types.datefieldcompactemits.callables.update_modelvalue",
+            "sourcePath": "headless/src/components/date-field/types.ts",
+            "referencedTypes": [
+              {
+                "name": "DateValue",
+                "kind": "typeAlias",
+                "type": "DateValue",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": "api.generated.node_modules_pnpm_internationalized_date_3_12_1_node_modules_internationalized_date_dist_types_src_calendardate_d.datevalue",
+                "sourcePath": "node_modules/.pnpm/@internationalized+date@3.12.1/node_modules/@internationalized/date/dist/types/src/CalendarDate.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "update:placeholder",
+            "type": "[value: DateValue]",
+            "parameters": "value: DateValue",
+            "required": true,
+            "description": "Emitted when the placeholder value changes.",
+            "descriptionKey": "api.generated.headless_src_components_date_field_types.datefieldcompactemits.callables.update_placeholder",
+            "sourcePath": "headless/src/components/date-field/types.ts",
+            "referencedTypes": [
+              {
+                "name": "DateValue",
+                "kind": "typeAlias",
+                "type": "DateValue",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": "api.generated.node_modules_pnpm_internationalized_date_3_12_1_node_modules_internationalized_date_dist_types_src_calendardate_d.datevalue",
+                "sourcePath": "node_modules/.pnpm/@internationalized+date@3.12.1/node_modules/@internationalized/date/dist/types/src/CalendarDate.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "referencedTypes": [
+          {
+            "name": "DateFieldRootEmits",
+            "kind": "typeAlias",
+            "type": "{ 'update:modelValue': [value: DateValue | undefined]; 'update:placeholder': [value: DateValue]; }",
+            "resolvedType": "{ \"update:modelValue\": [value: DateValue | undefined]; \"update:placeholder\": [value: DateValue] }",
+            "description": "Events for the DateFieldRoot component.",
+            "descriptionKey": "api.generated.headless_src_components_date_field_types.datefieldrootemits",
+            "sourcePath": "headless/src/components/date-field/types.ts",
+            "typeParameters": [],
+            "external": false,
+            "members": [],
+            "callables": [
+              {
+                "name": "update:modelValue",
+                "type": "[value: DateValue | undefined]",
+                "parameters": "value: DateValue | undefined",
+                "required": true,
+                "description": "Emitted when the model value changes.",
+                "descriptionKey": "api.generated.headless_src_components_date_field_types.datefieldrootemits.callables.update_modelvalue",
+                "sourcePath": "headless/src/components/date-field/types.ts",
+                "referencedTypes": []
+              },
+              {
+                "name": "update:placeholder",
+                "type": "[value: DateValue]",
+                "parameters": "value: DateValue",
+                "required": true,
+                "description": "Emitted when the placeholder value changes.",
+                "descriptionKey": "api.generated.headless_src_components_date_field_types.datefieldrootemits.callables.update_placeholder",
+                "sourcePath": "headless/src/components/date-field/types.ts",
+                "referencedTypes": []
+              }
+            ]
+          }
+        ]
       }
     },
     "DateFieldInput": {
@@ -1305,7 +1373,7 @@
         "kind": "props",
         "name": "DateFieldInputProps",
         "type": "Interface DateFieldInputProps",
-        "resolvedType": "{ part: 'day' | 'month' | 'year' | 'hour' | 'minute' | 'second' | 'dayPeriod' | 'literal' | 'timeZoneName'; asChild?: boolean; as?: AsTag | Component }",
+        "resolvedType": "{ part: import(\"../../date\").EditableSegmentPart | import(\"../../date\").NonEditableSegmentPart; asChild?: boolean; as?: AsTag | Component }",
         "description": "Properties for the DateFieldInput component.",
         "descriptionKey": "api.generated.headless_src_components_date_field_types.datefieldinputprops.props",
         "sourcePath": "headless/src/components/date-field/types.ts",
@@ -1313,7 +1381,7 @@
         "members": [
           {
             "name": "part",
-            "type": "'day' | 'month' | 'year' | 'hour' | 'minute' | 'second' | 'dayPeriod' | 'literal' | 'timeZoneName'",
+            "type": "import(\"../../date\").EditableSegmentPart | import(\"../../date\").NonEditableSegmentPart",
             "required": true,
             "description": "Part.",
             "descriptionKey": "api.generated.headless_src_components_date_field_types.datefieldinputprops.members.part",
@@ -1324,8 +1392,8 @@
               {
                 "name": "SegmentPart",
                 "kind": "typeAlias",
-                "type": "'day' | 'month' | 'year' | 'hour' | 'minute' | 'second' | 'dayPeriod' | 'literal' | 'timeZoneName'",
-                "resolvedType": "'day' | 'month' | 'year' | 'hour' | 'minute' | 'second' | 'dayPeriod' | 'literal' | 'timeZoneName'",
+                "type": "import(\"../../date\").EditableSegmentPart | import(\"../../date\").NonEditableSegmentPart",
+                "resolvedType": "EditableSegmentPart | NonEditableSegmentPart",
                 "description": "",
                 "descriptionKey": "api.generated.headless_src_date_types.segmentpart",
                 "sourcePath": "headless/src/date/types.ts",
@@ -1343,7 +1411,7 @@
             "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
             "descriptionKey": "api.generated.headless_src_components_date_field_types.datefieldinputprops.members.aschild",
             "default": null,
-            "inheritedFrom": "PrimitiveProps.asChild",
+            "inheritedFrom": "PrimitiveWithBaseProps.asChild",
             "sourcePath": "headless/src/components/primitive/types.ts",
             "referencedTypes": []
           },
@@ -1354,7 +1422,7 @@
             "description": "The element or component this component should render as. Can be overwrite by `asChild`",
             "descriptionKey": "api.generated.headless_src_components_date_field_types.datefieldinputprops.members.as",
             "default": "'div'",
-            "inheritedFrom": "PrimitiveProps.as",
+            "inheritedFrom": "PrimitiveWithBaseProps.as",
             "sourcePath": "headless/src/components/primitive/types.ts",
             "referencedTypes": [
               {
@@ -1363,8 +1431,8 @@
                 "type": "Component",
                 "resolvedType": null,
                 "description": "A type used in public APIs where a component type is expected.\nThe constructor type is an artificial type returned by defineComponent().",
-                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_33_node_modules_vue_runtime_core_dist_runtime_core_d.component",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_34_node_modules_vue_runtime_core_dist_runtime_core_d.component",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.34/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
                 "typeParameters": [
                   "PropsOrInstance = any",
                   "RawBindings = any",
@@ -1386,173 +1454,47 @@
       }
     },
     "DateFieldRoot": {
-      "emits": {
-        "kind": "emits",
-        "name": "DateFieldRootEmits",
-        "type": "TypeAlias DateFieldRootEmits",
-        "resolvedType": "{ \"update:modelValue\": [date: DateValue | undefined]; \"update:placeholder\": [date: DateValue] }",
-        "description": "Events for the DateFieldRoot component.",
-        "descriptionKey": "api.generated.headless_src_components_date_field_types.datefieldrootemits.emits",
-        "sourcePath": "headless/src/components/date-field/types.ts",
-        "typeParameters": [],
-        "members": [],
-        "callables": [
-          {
-            "name": "update:modelValue",
-            "type": "[date: DateValue | undefined]",
-            "parameters": "date: DateValue | undefined",
-            "required": true,
-            "description": "Emitted when the model value changes.",
-            "descriptionKey": "api.generated.headless_src_components_date_field_types.datefieldrootemits.callables.update_modelvalue",
-            "sourcePath": "headless/src/components/date-field/types.ts",
-            "referencedTypes": [
-              {
-                "name": "DateValue",
-                "kind": "typeAlias",
-                "type": "DateValue",
-                "resolvedType": null,
-                "description": "",
-                "descriptionKey": "api.generated.node_modules_pnpm_internationalized_date_3_12_1_node_modules_internationalized_date_dist_types_src_calendardate_d.datevalue",
-                "sourcePath": "node_modules/.pnpm/@internationalized+date@3.12.1/node_modules/@internationalized/date/dist/types/src/CalendarDate.d.ts",
-                "typeParameters": [],
-                "external": true,
-                "members": [],
-                "callables": []
-              }
-            ]
-          },
-          {
-            "name": "update:placeholder",
-            "type": "[date: DateValue]",
-            "parameters": "date: DateValue",
-            "required": true,
-            "description": "Emitted when the placeholder value changes.",
-            "descriptionKey": "api.generated.headless_src_components_date_field_types.datefieldrootemits.callables.update_placeholder",
-            "sourcePath": "headless/src/components/date-field/types.ts",
-            "referencedTypes": [
-              {
-                "name": "DateValue",
-                "kind": "typeAlias",
-                "type": "DateValue",
-                "resolvedType": null,
-                "description": "",
-                "descriptionKey": "api.generated.node_modules_pnpm_internationalized_date_3_12_1_node_modules_internationalized_date_dist_types_src_calendardate_d.datevalue",
-                "sourcePath": "node_modules/.pnpm/@internationalized+date@3.12.1/node_modules/@internationalized/date/dist/types/src/CalendarDate.d.ts",
-                "typeParameters": [],
-                "external": true,
-                "members": [],
-                "callables": []
-              }
-            ]
-          }
-        ],
-        "referencedTypes": []
-      },
       "props": {
         "kind": "props",
         "name": "DateFieldRootProps",
         "type": "Interface DateFieldRootProps",
-        "resolvedType": "{ defaultValue?: DateValue; defaultPlaceholder?: DateValue; placeholder?: DateValue; modelValue?: DateValue; hourCycle?: 12 | 24; step?: DateStep; granularity?: Granularity; hideTimeZone?: boolean; maxValue?: DateValue; minValue?: DateValue; locale?: string; disabled?: boolean; readonly?: boolean; isDateUnavailable?: Matcher; id?: string; dir?: Direction; asChild?: boolean; as?: AsTag | Component; name?: string; required?: boolean }",
+        "resolvedType": "{ id?: string; granularity?: Granularity; hourCycle?: 12 | 24; step?: DateStep; hideTimeZone?: boolean; name?: string; required?: boolean; disabled?: boolean; dir?: Direction; placeholder?: DateValue; defaultValue?: DateValue; modelValue?: DateValue; readonly?: boolean; locale?: string; defaultPlaceholder?: DateValue; maxValue?: DateValue; minValue?: DateValue; isDateUnavailable?: DateMatcher; asChild?: boolean; as?: AsTag | Component }",
         "description": "Properties for the DateFieldRoot component.",
         "descriptionKey": "api.generated.headless_src_components_date_field_types.datefieldrootprops.props",
         "sourcePath": "headless/src/components/date-field/types.ts",
         "typeParameters": [],
         "members": [
           {
-            "name": "defaultValue",
-            "type": "DateValue",
+            "name": "id",
+            "type": "string",
             "required": false,
-            "description": "Default value.",
-            "descriptionKey": "api.generated.headless_src_components_date_field_types.datefieldrootprops.members.defaultvalue",
+            "description": "Id.",
+            "descriptionKey": "api.generated.headless_src_components_date_field_types.datefieldrootprops.members.id",
             "default": null,
             "inheritedFrom": null,
             "sourcePath": "headless/src/components/date-field/types.ts",
-            "referencedTypes": [
-              {
-                "name": "DateValue",
-                "kind": "typeAlias",
-                "type": "DateValue",
-                "resolvedType": null,
-                "description": "",
-                "descriptionKey": "api.generated.node_modules_pnpm_internationalized_date_3_12_1_node_modules_internationalized_date_dist_types_src_calendardate_d.datevalue",
-                "sourcePath": "node_modules/.pnpm/@internationalized+date@3.12.1/node_modules/@internationalized/date/dist/types/src/CalendarDate.d.ts",
-                "typeParameters": [],
-                "external": true,
-                "members": [],
-                "callables": []
-              }
-            ]
+            "referencedTypes": []
           },
           {
-            "name": "defaultPlaceholder",
-            "type": "DateValue",
+            "name": "granularity",
+            "type": "Granularity",
             "required": false,
-            "description": "Default placeholder.",
-            "descriptionKey": "api.generated.headless_src_components_date_field_types.datefieldrootprops.members.defaultplaceholder",
+            "description": "Granularity.",
+            "descriptionKey": "api.generated.headless_src_components_date_field_types.datefieldrootprops.members.granularity",
             "default": null,
             "inheritedFrom": null,
             "sourcePath": "headless/src/components/date-field/types.ts",
             "referencedTypes": [
               {
-                "name": "DateValue",
+                "name": "Granularity",
                 "kind": "typeAlias",
-                "type": "DateValue",
-                "resolvedType": null,
+                "type": "'day' | import(\"../../date\").TimeGranularity",
+                "resolvedType": "'day' | TimeGranularity",
                 "description": "",
-                "descriptionKey": "api.generated.node_modules_pnpm_internationalized_date_3_12_1_node_modules_internationalized_date_dist_types_src_calendardate_d.datevalue",
-                "sourcePath": "node_modules/.pnpm/@internationalized+date@3.12.1/node_modules/@internationalized/date/dist/types/src/CalendarDate.d.ts",
+                "descriptionKey": "api.generated.headless_src_date_types.granularity",
+                "sourcePath": "headless/src/date/types.ts",
                 "typeParameters": [],
-                "external": true,
-                "members": [],
-                "callables": []
-              }
-            ]
-          },
-          {
-            "name": "placeholder",
-            "type": "DateValue",
-            "required": false,
-            "description": "Placeholder.",
-            "descriptionKey": "api.generated.headless_src_components_date_field_types.datefieldrootprops.members.placeholder",
-            "default": null,
-            "inheritedFrom": null,
-            "sourcePath": "headless/src/components/date-field/types.ts",
-            "referencedTypes": [
-              {
-                "name": "DateValue",
-                "kind": "typeAlias",
-                "type": "DateValue",
-                "resolvedType": null,
-                "description": "",
-                "descriptionKey": "api.generated.node_modules_pnpm_internationalized_date_3_12_1_node_modules_internationalized_date_dist_types_src_calendardate_d.datevalue",
-                "sourcePath": "node_modules/.pnpm/@internationalized+date@3.12.1/node_modules/@internationalized/date/dist/types/src/CalendarDate.d.ts",
-                "typeParameters": [],
-                "external": true,
-                "members": [],
-                "callables": []
-              }
-            ]
-          },
-          {
-            "name": "modelValue",
-            "type": "DateValue",
-            "required": false,
-            "description": "Current model value.",
-            "descriptionKey": "api.generated.headless_src_components_date_field_types.datefieldrootprops.members.modelvalue",
-            "default": null,
-            "inheritedFrom": null,
-            "sourcePath": "headless/src/components/date-field/types.ts",
-            "referencedTypes": [
-              {
-                "name": "DateValue",
-                "kind": "typeAlias",
-                "type": "DateValue",
-                "resolvedType": null,
-                "description": "",
-                "descriptionKey": "api.generated.node_modules_pnpm_internationalized_date_3_12_1_node_modules_internationalized_date_dist_types_src_calendardate_d.datevalue",
-                "sourcePath": "node_modules/.pnpm/@internationalized+date@3.12.1/node_modules/@internationalized/date/dist/types/src/CalendarDate.d.ts",
-                "typeParameters": [],
-                "external": true,
+                "external": false,
                 "members": [],
                 "callables": []
               }
@@ -1687,31 +1629,6 @@
             ]
           },
           {
-            "name": "granularity",
-            "type": "Granularity",
-            "required": false,
-            "description": "Granularity.",
-            "descriptionKey": "api.generated.headless_src_components_date_field_types.datefieldrootprops.members.granularity",
-            "default": null,
-            "inheritedFrom": null,
-            "sourcePath": "headless/src/components/date-field/types.ts",
-            "referencedTypes": [
-              {
-                "name": "Granularity",
-                "kind": "typeAlias",
-                "type": "'day' | 'hour' | 'minute' | 'second'",
-                "resolvedType": "'day' | 'hour' | 'minute' | 'second'",
-                "description": "",
-                "descriptionKey": "api.generated.headless_src_date_types.granularity",
-                "sourcePath": "headless/src/date/types.ts",
-                "typeParameters": [],
-                "external": false,
-                "members": [],
-                "callables": []
-              }
-            ]
-          },
-          {
             "name": "hideTimeZone",
             "type": "boolean",
             "required": false,
@@ -1723,14 +1640,194 @@
             "referencedTypes": []
           },
           {
+            "name": "name",
+            "type": "string",
+            "required": false,
+            "description": "The name of the field. Submitted with its owning form as part of a name/value pair.",
+            "descriptionKey": "api.generated.headless_src_components_date_field_types.datefieldrootprops.members.name",
+            "default": null,
+            "inheritedFrom": "name",
+            "sourcePath": "headless/src/types/component.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "required",
+            "type": "boolean",
+            "required": false,
+            "description": "When `true`, indicates that the user must set the value before the owning form can be submitted.",
+            "descriptionKey": "api.generated.headless_src_components_date_field_types.datefieldrootprops.members.required",
+            "default": null,
+            "inheritedFrom": "required",
+            "sourcePath": "headless/src/types/component.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "disabled",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether the component is disabled.",
+            "descriptionKey": "api.generated.headless_src_components_date_field_types.datefieldrootprops.members.disabled",
+            "default": null,
+            "inheritedFrom": "disabled",
+            "sourcePath": "headless/src/components/calendar/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "dir",
+            "type": "Direction",
+            "required": false,
+            "description": "Reading direction of the component.",
+            "descriptionKey": "api.generated.headless_src_components_date_field_types.datefieldrootprops.members.dir",
+            "default": null,
+            "inheritedFrom": "dir",
+            "sourcePath": "headless/src/components/calendar/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Direction",
+                "kind": "typeAlias",
+                "type": "'ltr' | 'rtl'",
+                "resolvedType": "'ltr' | 'rtl'",
+                "description": "",
+                "descriptionKey": "api.generated.headless_src_types_common.direction",
+                "sourcePath": "headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "placeholder",
+            "type": "DateValue",
+            "required": false,
+            "description": "Placeholder.",
+            "descriptionKey": "api.generated.headless_src_components_date_field_types.datefieldrootprops.members.placeholder",
+            "default": null,
+            "inheritedFrom": "placeholder",
+            "sourcePath": "headless/src/components/calendar/types.ts",
+            "referencedTypes": [
+              {
+                "name": "DateValue",
+                "kind": "typeAlias",
+                "type": "DateValue",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": "api.generated.node_modules_pnpm_internationalized_date_3_12_1_node_modules_internationalized_date_dist_types_src_calendardate_d.datevalue",
+                "sourcePath": "node_modules/.pnpm/@internationalized+date@3.12.1/node_modules/@internationalized/date/dist/types/src/CalendarDate.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "defaultValue",
+            "type": "DateValue",
+            "required": false,
+            "description": "Default value.",
+            "descriptionKey": "api.generated.headless_src_components_date_field_types.datefieldrootprops.members.defaultvalue",
+            "default": null,
+            "inheritedFrom": "Pick.defaultValue",
+            "sourcePath": "headless/src/components/calendar/types.ts",
+            "referencedTypes": [
+              {
+                "name": "CalendarModelValue",
+                "kind": "typeAlias",
+                "type": "M extends true ? DateValue[] | undefined : DateValue | undefined",
+                "resolvedType": "M extends true ? DateValue[] | undefined : DateValue | undefined",
+                "description": "Model value type for the calendar component.",
+                "descriptionKey": "api.generated.headless_src_components_calendar_types.calendarmodelvalue",
+                "sourcePath": "headless/src/components/calendar/types.ts",
+                "typeParameters": ["M extends boolean = false"],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "modelValue",
+            "type": "DateValue",
+            "required": false,
+            "description": "Current model value.",
+            "descriptionKey": "api.generated.headless_src_components_date_field_types.datefieldrootprops.members.modelvalue",
+            "default": null,
+            "inheritedFrom": "Pick.modelValue",
+            "sourcePath": "headless/src/components/calendar/types.ts",
+            "referencedTypes": [
+              {
+                "name": "CalendarModelValue",
+                "kind": "typeAlias",
+                "type": "M extends true ? DateValue[] | undefined : DateValue | undefined",
+                "resolvedType": "M extends true ? DateValue[] | undefined : DateValue | undefined",
+                "description": "Model value type for the calendar component.",
+                "descriptionKey": "api.generated.headless_src_components_calendar_types.calendarmodelvalue",
+                "sourcePath": "headless/src/components/calendar/types.ts",
+                "typeParameters": ["M extends boolean = false"],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "readonly",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether the component is readonly.",
+            "descriptionKey": "api.generated.headless_src_components_date_field_types.datefieldrootprops.members.readonly",
+            "default": null,
+            "inheritedFrom": "readonly",
+            "sourcePath": "headless/src/components/calendar/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "locale",
+            "type": "string",
+            "required": false,
+            "description": "Locale.",
+            "descriptionKey": "api.generated.headless_src_components_date_field_types.datefieldrootprops.members.locale",
+            "default": null,
+            "inheritedFrom": "locale",
+            "sourcePath": "headless/src/components/calendar/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "defaultPlaceholder",
+            "type": "DateValue",
+            "required": false,
+            "description": "Default placeholder.",
+            "descriptionKey": "api.generated.headless_src_components_date_field_types.datefieldrootprops.members.defaultplaceholder",
+            "default": null,
+            "inheritedFrom": "defaultPlaceholder",
+            "sourcePath": "headless/src/components/calendar/types.ts",
+            "referencedTypes": [
+              {
+                "name": "DateValue",
+                "kind": "typeAlias",
+                "type": "DateValue",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": "api.generated.node_modules_pnpm_internationalized_date_3_12_1_node_modules_internationalized_date_dist_types_src_calendardate_d.datevalue",
+                "sourcePath": "node_modules/.pnpm/@internationalized+date@3.12.1/node_modules/@internationalized/date/dist/types/src/CalendarDate.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
             "name": "maxValue",
             "type": "DateValue",
             "required": false,
             "description": "Max value.",
             "descriptionKey": "api.generated.headless_src_components_date_field_types.datefieldrootprops.members.maxvalue",
             "default": null,
-            "inheritedFrom": null,
-            "sourcePath": "headless/src/components/date-field/types.ts",
+            "inheritedFrom": "maxValue",
+            "sourcePath": "headless/src/components/calendar/types.ts",
             "referencedTypes": [
               {
                 "name": "DateValue",
@@ -1754,6 +1851,214 @@
             "description": "Min value.",
             "descriptionKey": "api.generated.headless_src_components_date_field_types.datefieldrootprops.members.minvalue",
             "default": null,
+            "inheritedFrom": "minValue",
+            "sourcePath": "headless/src/components/calendar/types.ts",
+            "referencedTypes": [
+              {
+                "name": "DateValue",
+                "kind": "typeAlias",
+                "type": "DateValue",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": "api.generated.node_modules_pnpm_internationalized_date_3_12_1_node_modules_internationalized_date_dist_types_src_calendardate_d.datevalue",
+                "sourcePath": "node_modules/.pnpm/@internationalized+date@3.12.1/node_modules/@internationalized/date/dist/types/src/CalendarDate.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "isDateUnavailable",
+            "type": "DateMatcher",
+            "required": false,
+            "description": "Whether the date is unavailable.",
+            "descriptionKey": "api.generated.headless_src_components_date_field_types.datefieldrootprops.members.isdateunavailable",
+            "default": null,
+            "inheritedFrom": "isDateUnavailable",
+            "sourcePath": "headless/src/components/calendar/types.ts",
+            "referencedTypes": [
+              {
+                "name": "DateMatcher",
+                "kind": "typeAlias",
+                "type": "(date: DateValue) => boolean",
+                "resolvedType": "(date: import(\"@internationalized/date\").CalendarDate | CalendarDateTime | ZonedDateTime) => boolean",
+                "description": "",
+                "descriptionKey": "api.generated.headless_src_date_types.datematcher",
+                "sourcePath": "headless/src/date/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "asChild",
+            "type": "boolean",
+            "required": false,
+            "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+            "descriptionKey": "api.generated.headless_src_components_date_field_types.datefieldrootprops.members.aschild",
+            "default": null,
+            "inheritedFrom": "asChild",
+            "sourcePath": "headless/src/components/primitive/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "as",
+            "type": "AsTag | Component",
+            "required": false,
+            "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+            "descriptionKey": "api.generated.headless_src_components_date_field_types.datefieldrootprops.members.as",
+            "default": "'div'",
+            "inheritedFrom": "as",
+            "sourcePath": "headless/src/components/primitive/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Component",
+                "kind": "typeAlias",
+                "type": "Component",
+                "resolvedType": null,
+                "description": "A type used in public APIs where a component type is expected.\nThe constructor type is an artificial type returned by defineComponent().",
+                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_34_node_modules_vue_runtime_core_dist_runtime_core_d.component",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.34/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [
+                  "PropsOrInstance = any",
+                  "RawBindings = any",
+                  "D = any",
+                  "C extends ComputedOptions = ComputedOptions",
+                  "M extends MethodOptions = MethodOptions",
+                  "E extends EmitsOptions | Record<string, any[]> = {}",
+                  "S extends Record<string, any> = any"
+                ],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      },
+      "emits": {
+        "kind": "emits",
+        "name": "DateFieldRootEmits",
+        "type": "TypeAlias DateFieldRootEmits",
+        "resolvedType": "{ \"update:modelValue\": [value: DateValue | undefined]; \"update:placeholder\": [value: DateValue] }",
+        "description": "Events for the DateFieldRoot component.",
+        "descriptionKey": "api.generated.headless_src_components_date_field_types.datefieldrootemits.emits",
+        "sourcePath": "headless/src/components/date-field/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [
+          {
+            "name": "update:modelValue",
+            "type": "[value: DateValue | undefined]",
+            "parameters": "value: DateValue | undefined",
+            "required": true,
+            "description": "Emitted when the model value changes.",
+            "descriptionKey": "api.generated.headless_src_components_date_field_types.datefieldrootemits.callables.update_modelvalue",
+            "sourcePath": "headless/src/components/date-field/types.ts",
+            "referencedTypes": [
+              {
+                "name": "DateValue",
+                "kind": "typeAlias",
+                "type": "DateValue",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": "api.generated.node_modules_pnpm_internationalized_date_3_12_1_node_modules_internationalized_date_dist_types_src_calendardate_d.datevalue",
+                "sourcePath": "node_modules/.pnpm/@internationalized+date@3.12.1/node_modules/@internationalized/date/dist/types/src/CalendarDate.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "update:placeholder",
+            "type": "[value: DateValue]",
+            "parameters": "value: DateValue",
+            "required": true,
+            "description": "Emitted when the placeholder value changes.",
+            "descriptionKey": "api.generated.headless_src_components_date_field_types.datefieldrootemits.callables.update_placeholder",
+            "sourcePath": "headless/src/components/date-field/types.ts",
+            "referencedTypes": [
+              {
+                "name": "DateValue",
+                "kind": "typeAlias",
+                "type": "DateValue",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": "api.generated.node_modules_pnpm_internationalized_date_3_12_1_node_modules_internationalized_date_dist_types_src_calendardate_d.datevalue",
+                "sourcePath": "node_modules/.pnpm/@internationalized+date@3.12.1/node_modules/@internationalized/date/dist/types/src/CalendarDate.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "referencedTypes": []
+      },
+      "slots": {
+        "kind": "slots",
+        "name": "DateFieldRootSlots",
+        "type": "TypeAlias DateFieldRootSlots",
+        "resolvedType": "{ DateFieldInput?: ((props: DateFieldRootSlotProps) => any) }",
+        "description": "Slots for the DateFieldRoot component.",
+        "descriptionKey": "api.generated.headless_src_components_date_field_types.datefieldrootslots.slots",
+        "sourcePath": "headless/src/components/date-field/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [
+          {
+            "name": "default",
+            "type": "((props: DateFieldRootSlotProps) => any) | undefined",
+            "parameters": "((props: DateFieldRootSlotProps) => any) | undefined",
+            "required": false,
+            "description": "",
+            "descriptionKey": "api.generated.headless_src_components_date_field_types.datefieldrootslots.callables.default",
+            "sourcePath": "headless/src/components/date-field/types.ts",
+            "referencedTypes": [
+              {
+                "name": "DateFieldRootSlotProps",
+                "kind": "interface",
+                "type": "DateFieldRootSlotProps",
+                "resolvedType": null,
+                "description": "Properties for the DateFieldRoot slot.",
+                "descriptionKey": "api.generated.headless_src_components_date_field_types.datefieldrootslotprops",
+                "sourcePath": "headless/src/components/date-field/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "referencedTypes": []
+      },
+      "slotProps": {
+        "kind": "slotProps",
+        "name": "DateFieldRootSlotProps",
+        "type": "Interface DateFieldRootSlotProps",
+        "resolvedType": "{ modelValue: DateValue | undefined; segments: DateFieldSegment[]; isInvalid: boolean }",
+        "description": "Properties for the DateFieldRoot slot.",
+        "descriptionKey": "api.generated.headless_src_components_date_field_types.datefieldrootslotprops.slotprops",
+        "sourcePath": "headless/src/components/date-field/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "modelValue",
+            "type": "DateValue | undefined",
+            "required": true,
+            "description": "Current model value.",
+            "descriptionKey": "api.generated.headless_src_components_date_field_types.datefieldrootslotprops.members.modelvalue",
+            "default": null,
             "inheritedFrom": null,
             "sourcePath": "headless/src/components/date-field/types.ts",
             "referencedTypes": [
@@ -1773,163 +2078,25 @@
             ]
           },
           {
-            "name": "locale",
-            "type": "string",
-            "required": false,
-            "description": "Locale.",
-            "descriptionKey": "api.generated.headless_src_components_date_field_types.datefieldrootprops.members.locale",
+            "name": "segments",
+            "type": "DateFieldSegment[]",
+            "required": true,
+            "description": "Segments used by the default slot.",
+            "descriptionKey": "api.generated.headless_src_components_date_field_types.datefieldrootslotprops.members.segments",
             "default": null,
             "inheritedFrom": null,
             "sourcePath": "headless/src/components/date-field/types.ts",
             "referencedTypes": []
           },
           {
-            "name": "disabled",
+            "name": "isInvalid",
             "type": "boolean",
-            "required": false,
-            "description": "Whether the component is disabled.",
-            "descriptionKey": "api.generated.headless_src_components_date_field_types.datefieldrootprops.members.disabled",
+            "required": true,
+            "description": "Whether the current value is invalid.",
+            "descriptionKey": "api.generated.headless_src_components_date_field_types.datefieldrootslotprops.members.isinvalid",
             "default": null,
             "inheritedFrom": null,
             "sourcePath": "headless/src/components/date-field/types.ts",
-            "referencedTypes": []
-          },
-          {
-            "name": "readonly",
-            "type": "boolean",
-            "required": false,
-            "description": "Whether the component is readonly.",
-            "descriptionKey": "api.generated.headless_src_components_date_field_types.datefieldrootprops.members.readonly",
-            "default": null,
-            "inheritedFrom": null,
-            "sourcePath": "headless/src/components/date-field/types.ts",
-            "referencedTypes": []
-          },
-          {
-            "name": "isDateUnavailable",
-            "type": "Matcher",
-            "required": false,
-            "description": "Whether the date is unavailable.",
-            "descriptionKey": "api.generated.headless_src_components_date_field_types.datefieldrootprops.members.isdateunavailable",
-            "default": null,
-            "inheritedFrom": null,
-            "sourcePath": "headless/src/components/date-field/types.ts",
-            "referencedTypes": [
-              {
-                "name": "Matcher",
-                "kind": "typeAlias",
-                "type": "(date: DateValue) => boolean",
-                "resolvedType": "(date: import(\"@internationalized/date\").CalendarDate | import(\"@internationalized/date\").CalendarDateTime | import(\"@internationalized/date\").ZonedDateTime) => boolean",
-                "description": "",
-                "descriptionKey": "api.generated.headless_src_date_types.matcher",
-                "sourcePath": "headless/src/date/types.ts",
-                "typeParameters": [],
-                "external": false,
-                "members": [],
-                "callables": []
-              }
-            ]
-          },
-          {
-            "name": "id",
-            "type": "string",
-            "required": false,
-            "description": "Id.",
-            "descriptionKey": "api.generated.headless_src_components_date_field_types.datefieldrootprops.members.id",
-            "default": null,
-            "inheritedFrom": null,
-            "sourcePath": "headless/src/components/date-field/types.ts",
-            "referencedTypes": []
-          },
-          {
-            "name": "dir",
-            "type": "Direction",
-            "required": false,
-            "description": "Reading direction of the component.",
-            "descriptionKey": "api.generated.headless_src_components_date_field_types.datefieldrootprops.members.dir",
-            "default": null,
-            "inheritedFrom": null,
-            "sourcePath": "headless/src/components/date-field/types.ts",
-            "referencedTypes": [
-              {
-                "name": "Direction",
-                "kind": "typeAlias",
-                "type": "'ltr' | 'rtl'",
-                "resolvedType": "'ltr' | 'rtl'",
-                "description": "",
-                "descriptionKey": "api.generated.headless_src_types_common.direction",
-                "sourcePath": "headless/src/types/common.ts",
-                "typeParameters": [],
-                "external": false,
-                "members": [],
-                "callables": []
-              }
-            ]
-          },
-          {
-            "name": "asChild",
-            "type": "boolean",
-            "required": false,
-            "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
-            "descriptionKey": "api.generated.headless_src_components_date_field_types.datefieldrootprops.members.aschild",
-            "default": null,
-            "inheritedFrom": "PrimitiveProps.asChild",
-            "sourcePath": "headless/src/components/primitive/types.ts",
-            "referencedTypes": []
-          },
-          {
-            "name": "as",
-            "type": "AsTag | Component",
-            "required": false,
-            "description": "The element or component this component should render as. Can be overwrite by `asChild`",
-            "descriptionKey": "api.generated.headless_src_components_date_field_types.datefieldrootprops.members.as",
-            "default": "'div'",
-            "inheritedFrom": "PrimitiveProps.as",
-            "sourcePath": "headless/src/components/primitive/types.ts",
-            "referencedTypes": [
-              {
-                "name": "Component",
-                "kind": "typeAlias",
-                "type": "Component",
-                "resolvedType": null,
-                "description": "A type used in public APIs where a component type is expected.\nThe constructor type is an artificial type returned by defineComponent().",
-                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_33_node_modules_vue_runtime_core_dist_runtime_core_d.component",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
-                "typeParameters": [
-                  "PropsOrInstance = any",
-                  "RawBindings = any",
-                  "D = any",
-                  "C extends ComputedOptions = ComputedOptions",
-                  "M extends MethodOptions = MethodOptions",
-                  "E extends EmitsOptions | Record<string, any[]> = {}",
-                  "S extends Record<string, any> = any"
-                ],
-                "external": true,
-                "members": [],
-                "callables": []
-              }
-            ]
-          },
-          {
-            "name": "name",
-            "type": "string",
-            "required": false,
-            "description": "The name of the field. Submitted with its owning form as part of a name/value pair.",
-            "descriptionKey": "api.generated.headless_src_components_date_field_types.datefieldrootprops.members.name",
-            "default": null,
-            "inheritedFrom": "name",
-            "sourcePath": "headless/src/types/component.ts",
-            "referencedTypes": []
-          },
-          {
-            "name": "required",
-            "type": "boolean",
-            "required": false,
-            "description": "When `true`, indicates that the user must set the value before the owning form can be submitted.",
-            "descriptionKey": "api.generated.headless_src_components_date_field_types.datefieldrootprops.members.required",
-            "default": null,
-            "inheritedFrom": "required",
-            "sourcePath": "headless/src/types/component.ts",
             "referencedTypes": []
           }
         ],
