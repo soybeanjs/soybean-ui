@@ -208,7 +208,7 @@ export interface DialogCompactProps extends DialogRootProps {
   /**
    * The text of the cancel button. This is used for accessibility purposes and will be rendered in the footer of the dialog if the `cancel` slot is not provided.
    *
-   * @defaultValue 'Cancel'
+   * Defaults to the localized `dialog.cancel` message from `ConfigProvider`.
    */
   cancelText?: string;
   /**
@@ -220,7 +220,7 @@ export interface DialogCompactProps extends DialogRootProps {
   /**
    * The text of the confirm button. This is used for accessibility purposes and will be rendered in the footer of the dialog if the `confirm` slot is not provided.
    *
-   * @defaultValue 'Confirm'
+   * Defaults to the localized `dialog.confirm` message from `ConfigProvider`.
    */
   confirmText?: string;
   /**

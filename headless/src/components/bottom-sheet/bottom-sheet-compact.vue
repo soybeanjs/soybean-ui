@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { useForwardListeners, useOmitProps } from '../../composables';
+import { useLocaleMessages } from '../../locale';
 import Icon from '../_icon/icon.vue';
 import type { IconValue } from '../_icon/types';
 import DialogPortal from '../portal/portal.vue';
@@ -37,9 +38,7 @@ const props = withDefaults(defineProps<BottomSheetCompactProps>(), {
   showClose: true,
   showConfirm: true,
   alertType: 'default',
-  showCancel: 'onlyWarning',
-  cancelText: 'Cancel',
-  confirmText: 'Confirm'
+  showCancel: 'onlyWarning'
 });
 
 const forwardedProps = useOmitProps(props, [
@@ -72,6 +71,8 @@ const emit = defineEmits<BottomSheetCompactEmits>();
 const slots = defineSlots<BottomSheetCompactSlots>();
 
 const listeners = useForwardListeners(emit);
+
+const messages = useLocaleMessages();
 
 const ui = useBottomSheetUi();
 
@@ -113,6 +114,10 @@ const showFooter = computed(() => {
 
   return showCancel.value || showConfirm.value;
 });
+
+const cancelText = computed(() => props.cancelText ?? messages.value.dialog.cancel);
+
+const confirmText = computed(() => props.confirmText ?? messages.value.dialog.confirm);
 </script>
 
 <template>

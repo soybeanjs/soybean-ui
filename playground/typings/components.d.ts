@@ -14,6 +14,7 @@ declare module 'vue' {
   export interface GlobalComponents {
     CodeBlock: typeof import('./../components/code-block.vue')['default']
     DirectionToggler: typeof import('./../components/direction-toggler.vue')['default']
+    LocaleToggler: typeof import('./../components/locale-toggler.vue')['default']
     PlaygroundGallery: typeof import('./../components/playground-gallery.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
@@ -38,6 +39,7 @@ declare module 'vue' {
 declare global {
   const CodeBlock: typeof import('./../components/code-block.vue')['default']
   const DirectionToggler: typeof import('./../components/direction-toggler.vue')['default']
+  const LocaleToggler: typeof import('./../components/locale-toggler.vue')['default']
   const PlaygroundGallery: typeof import('./../components/playground-gallery.vue')['default']
   const RouterLink: typeof import('vue-router')['RouterLink']
   const RouterView: typeof import('vue-router')['RouterView']

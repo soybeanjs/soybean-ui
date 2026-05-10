@@ -21,7 +21,9 @@ export const zhCN: LocaleMessages = {
   },
   calendar: {
     prevPage: '上一页',
-    nextPage: '下一页'
+    nextPage: '下一页',
+    selectMonth: '选择月份',
+    selectYear: '选择年份'
   },
   layout: {
     toggleSidebar: '切换侧边栏'
@@ -68,6 +70,10 @@ export const zhCN: LocaleMessages = {
   },
   command: {
     noResults: '无匹配结果。'
+  },
+  dialog: {
+    cancel: '取消',
+    confirm: '确认'
   },
   slider: {
     valueN: '第 {index} 个值，共 {total} 个',

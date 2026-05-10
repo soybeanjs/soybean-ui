@@ -11,6 +11,7 @@ export const [provideThemeContext, useTheme] = useContext('ThemeContext', () => 
   const radius = useStorage('radius', 0.625);
   const size = useStorage<ThemeSize>('size', 'md');
   const direction = useStorage<Direction>('direction', 'ltr');
+  const locale = useStorage('locale', 'en');
 
   const configProviderProps = computed<ConfigProviderProps>(() => ({
     theme: {
@@ -20,7 +21,8 @@ export const [provideThemeContext, useTheme] = useContext('ThemeContext', () => 
       radius: `${radius.value}rem`
     },
     size: size.value,
-    dir: direction.value
+    dir: direction.value,
+    locale: locale.value
   }));
 
   const setRadius = (value: number) => {
@@ -33,6 +35,10 @@ export const [provideThemeContext, useTheme] = useContext('ThemeContext', () => 
     direction.value = value;
   };
 
+  const setLocale = (value: string) => {
+    locale.value = value;
+  };
+
   return {
     base,
     primary,
@@ -40,9 +46,11 @@ export const [provideThemeContext, useTheme] = useContext('ThemeContext', () => 
     radius,
     size,
     direction,
+    locale,
     configProviderProps,
     setRadius,
     setSize,
-    setDirection
+    setDirection,
+    setLocale
   };
 });

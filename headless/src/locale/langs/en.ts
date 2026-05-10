@@ -21,7 +21,9 @@ export const en: LocaleMessages = {
   },
   calendar: {
     prevPage: 'Previous page',
-    nextPage: 'Next page'
+    nextPage: 'Next page',
+    selectMonth: 'Select month',
+    selectYear: 'Select year'
   },
   layout: {
     toggleSidebar: 'Toggle Sidebar'
@@ -68,6 +70,10 @@ export const en: LocaleMessages = {
   },
   command: {
     noResults: 'No results found.'
+  },
+  dialog: {
+    cancel: 'Cancel',
+    confirm: 'Confirm'
   },
   slider: {
     valueN: 'Value {index} of {total}',

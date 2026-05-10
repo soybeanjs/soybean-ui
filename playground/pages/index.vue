@@ -7,6 +7,7 @@ import type { TabsOptionData } from '@soybeanjs/ui';
 import ThemeConfigurator from '../components/theme-configurator.vue';
 import ThemeSchemaToggler from '../components/theme-schema-toggler.vue';
 import DirectionToggler from '../components/direction-toggler.vue';
+import LocaleToggler from '../components/locale-toggler.vue';
 
 const activeTab = shallowRef('');
 
@@ -99,6 +100,7 @@ onMounted(() => {
         <DirectionToggler />
         <ThemeConfigurator />
         <ThemeSchemaToggler />
+        <LocaleToggler />
       </div>
     </template>
     <STabs

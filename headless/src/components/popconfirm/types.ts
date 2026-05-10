@@ -110,13 +110,13 @@ export interface PopconfirmCompactProps extends PopoverRootProps {
   /**
    * The text of the confirm button.
    *
-   * @defaultValue 'Confirm'
+   * Defaults to the localized `dialog.confirm` message from `ConfigProvider`.
    */
   confirmText?: string;
   /**
    * The text of the cancel button.
    *
-   * @defaultValue 'Cancel'
+   * Defaults to the localized `dialog.cancel` message from `ConfigProvider`.
    */
   cancelText?: string;
   /**

@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { useForwardListeners, useOmitProps } from '../../composables';
+import { useLocaleMessages } from '../../locale';
 import Icon from '../_icon/icon.vue';
 import type { IconValue } from '../_icon/types';
 import PopoverPortal from '../portal/portal.vue';
@@ -30,9 +31,7 @@ const props = withDefaults(defineProps<PopconfirmCompactProps>(), {
   modal: false,
   showArrow: true,
   showIcon: true,
-  showCancel: 'onlyWarning',
-  cancelText: 'Cancel',
-  confirmText: 'Confirm'
+  showCancel: 'onlyWarning'
 });
 
 const emit = defineEmits<PopconfirmCompactEmits>();
@@ -66,6 +65,8 @@ const forwardedRootProps = useOmitProps(props, [
 ]);
 
 const listeners = useForwardListeners(emit);
+
+const messages = useLocaleMessages();
 
 const ui = usePopconfirmUi();
 
@@ -101,6 +102,10 @@ const cancelVisible = computed(() => {
 
   return props.type === 'warning';
 });
+
+const cancelText = computed(() => props.cancelText ?? messages.value.dialog.cancel);
+
+const confirmText = computed(() => props.confirmText ?? messages.value.dialog.confirm);
 </script>
 
 <template>

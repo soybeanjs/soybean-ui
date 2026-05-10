@@ -1,5 +1,6 @@
 <script setup lang="ts" generic="M extends boolean = false">
 import { computed } from 'vue';
+import { useLocaleMessages } from '@soybeanjs/headless';
 import { CalendarCompact, provideCalendarUi } from '@soybeanjs/headless/calendar';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
 import { mergeVariants, miniSizeMap } from '@/theme';
@@ -22,6 +23,12 @@ defineSlots<CalendarSlots<M>>();
 const forwardedProps = useOmitProps(props, ['class', 'size', 'ui']);
 
 const listeners = useForwardListeners(emit);
+
+const messages = useLocaleMessages();
+
+const monthTriggerProps = computed(() => ({ 'aria-label': messages.value.calendar.selectMonth }));
+
+const yearTriggerProps = computed(() => ({ 'aria-label': messages.value.calendar.selectYear }));
 
 const ui = computed(() => {
   const variants = Object.assign(
@@ -65,7 +72,7 @@ provideCalendarUi(ui);
         :clearable="false"
         :items="monthOptions"
         :model-value="selectedMonth"
-        :trigger-props="{ 'aria-label': 'Select month' }"
+        :trigger-props="monthTriggerProps"
         :ui="{ trigger: 'w-fit' }"
         @update:model-value="onMonthChange"
       />
@@ -75,7 +82,7 @@ provideCalendarUi(ui);
         :clearable="false"
         :items="yearOptions"
         :model-value="selectedYear"
-        :trigger-props="{ 'aria-label': 'Select year' }"
+        :trigger-props="yearTriggerProps"
         :ui="{ popup: 'max-h-72', trigger: 'w-fit' }"
         @update:model-value="onYearChange"
       />

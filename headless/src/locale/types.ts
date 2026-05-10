@@ -22,6 +22,10 @@ export interface LocaleCalendarMessages {
   prevPage: string;
   /** Aria-label and default slot content for the "next page" button. */
   nextPage: string;
+  /** Aria-label for the month select trigger. */
+  selectMonth: string;
+  /** Aria-label for the year select trigger. */
+  selectYear: string;
 }
 
 export interface LocaleComboboxMessages {
@@ -82,6 +86,13 @@ export interface LocaleDateMessages {
    * Placeholders for date segments when empty. These are used by the date and time field components to populate the segment placeholders, and should be kept in sync with the `dataPlaceholders` messages.
    */
   placeholder: LocaleDatePlaceholderMessages;
+}
+
+export interface LocaleDialogMessages {
+  /** Default slot content for the cancel trigger. */
+  cancel: string;
+  /** Default slot content for the confirm trigger. */
+  confirm: string;
 }
 
 export interface LocaleEditableMessages {
@@ -224,6 +235,7 @@ export interface LocaleMessages {
   combobox: LocaleComboboxMessages;
   command: LocaleCommandMessages;
   date: LocaleDateMessages;
+  dialog: LocaleDialogMessages;
   editable: LocaleEditableMessages;
   inputNumber: LocaleInputNumberMessages;
   layout: LocaleLayoutMessages;
