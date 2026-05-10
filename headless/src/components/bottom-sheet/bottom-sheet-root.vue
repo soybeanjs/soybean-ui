@@ -53,7 +53,17 @@ const activeSnapPoint = useControllableState(
   null
 );
 
-const fadeFromIndex = computed(() => props.fadeFromIndex ?? (props.snapPoints && props.snapPoints.length - 1));
+const fadeFromIndex = computed(() => {
+  if (props.fadeFromIndex !== undefined) {
+    return props.fadeFromIndex;
+  }
+
+  if (!props.snapPoints?.length) {
+    return undefined;
+  }
+
+  return props.snapPoints.length - 1;
+});
 
 const emitHandlers: BottomSheetEmitHandlers = {
   emitDrag: (percentageDragged: number) => emit('drag', percentageDragged),

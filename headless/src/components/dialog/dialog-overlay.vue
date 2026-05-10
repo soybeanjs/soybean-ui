@@ -17,7 +17,7 @@ const cls = useDialogUi('overlay');
 const isPresent = props.forceMount ? shallowRef(true) : usePresence(overlayElement, open);
 
 watchEffect(() => {
-  if (isPresent.value) {
+  if (isPresent.value && open.value) {
     const cleanup = useBodyScrollLock();
 
     onWatcherCleanup(cleanup);

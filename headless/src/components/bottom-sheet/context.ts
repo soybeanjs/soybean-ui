@@ -70,9 +70,17 @@ export function useDrawer(props: BottomSheetRootContextParams): BottomSheetRootC
 
   const drawerHeightRef = computed(() => drawerRef.value?.getBoundingClientRect().height || 0);
 
-  const snapPoints = computed(() => props.snapPoints?.value ?? []);
+  const snapPoints = computed(() => {
+    const value = props.snapPoints?.value;
 
-  const hasSnapPoints = computed(() => snapPoints && (snapPoints.value?.length ?? 0) > 0);
+    if (!value?.length) {
+      return undefined;
+    }
+
+    return value;
+  });
+
+  const hasSnapPoints = computed(() => (snapPoints.value?.length ?? 0) > 0);
 
   const {
     activeSnapPointIndex,
