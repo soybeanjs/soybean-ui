@@ -1,8 +1,25 @@
 {
   "component": "switch",
-  "generatedAt": "2026-05-10T18:12:18.948Z",
+  "generatedAt": "2026-05-11T16:23:12.289Z",
   "schemaVersion": 1,
   "versions": [
+    {
+      "version": "v0.20.0",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.19.0...v0.20.0",
+      "date": "2026-05-12",
+      "entries": [
+        {
+          "type": "feature",
+          "scope": "switch",
+          "summary": "add direction support for switch component",
+          "summaryKey": "changelog.generated.v0.20.0.f6453",
+          "commitHash": "f6453",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/f64533a9",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope"
+        }
+      ]
+    },
     {
       "version": "v0.19.0",
       "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.18.0...v0.19.0",

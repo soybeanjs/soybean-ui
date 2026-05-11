@@ -1185,6 +1185,49 @@
             "fbaf8": "optimize `useControllableState` types and update related files",
             "fe6df": "Implement TextareaCompact"
           }
+        },
+        "20": {
+          "0": {
+            "75173": "add max height and overflow styles to the container",
+            "93359": "change interfaces to type aliases for compact slots",
+            "073e1": "update class names for RTL support and improve positioning logic",
+            "106c5": "make aria-label test asynchronous",
+            "33b01": "implement NavigationMenuCompact",
+            "37ee8": "conditionally display badge based on preset type",
+            "41d72": "simplify Editable component by using EditableCompact",
+            "4634b": "remove v-model binding from SNavigationMenu",
+            "4d747": "simplify slot handling and remove unused variables",
+            "583fc": "replace 'ml-' with 'ms-' for RTL support in various components",
+            "6025f": "update docs Anchor size",
+            "6b27d": "update deps",
+            "810ee": "add ignorePatterns to configuration",
+            "859be": "enhance md-code-block styling with borders and background",
+            "8c796": "remove redundant viewport position tests for RTL",
+            "8d694": "reorder type imports for consistency across components",
+            "8f21f": "remove unused text direction handling",
+            "9437a": "add component count to introduction section",
+            "9b64f": "add script to reorder Vue props and emits imports",
+            "aa79d": "add RTL support details and examples to documentation",
+            "ae39f": "rename forwardedRootProps to forwardedProps for consistency",
+            "b41d2": "add rounded corners to preview component container",
+            "b55f5": "simplify variant assignment in computed property",
+            "b5c6d": "update docs changelog",
+            "b781b": "simplify component structure using StepperCompact",
+            "bc952": "update query selectors to use data-soybean-progress-provider",
+            "bcec5": "correct margin classes for media in size variants",
+            "d2545": "rename forwardedRootProps to forwardedProps for consistency",
+            "d833a": "support RTL",
+            "d96a3": "update docs api",
+            "da103": "remove computed class and simplify class binding",
+            "de602": "rename RadioCardGroup to RadioGroupCard and simplify RadioGroup component by using RadioGroupCompact",
+            "e1d05": "add showIcon prop to ToolbarLink and enhance toolbar variants",
+            "e96e7": "simplify variant merging logic and remove unused slot",
+            "f0042": "integrate theme setting on locale change",
+            "f23ad": "simplify HoverCard component by using HoverCardCompact",
+            "f6453": "add direction support for switch component",
+            "fbf17": "update component count in introduction",
+            "fd3b9": "simplify Pagination component by using PaginationCompact"
+          }
         }
       }
     }

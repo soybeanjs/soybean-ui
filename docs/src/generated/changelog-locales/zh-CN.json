@@ -1185,6 +1185,49 @@
             "fbaf8": "优化 `useControllableState` 类型并更新相关文件",
             "fe6df": "实施 TextareaCompact"
           }
+        },
+        "20": {
+          "0": {
+            "75173": "为容器添加最大高度和溢出样式",
+            "93359": "将接口改为紧凑型插槽的类型别名",
+            "073e1": "更新类名以支持 RTL 并改进定位逻辑",
+            "106c5": "使 aria-label 测试成为异步测试",
+            "33b01": "实现 NavigationMenuCompact",
+            "37ee8": "根据预设类型有条件地显示徽章",
+            "41d72": "使用 EditableCompact 简化 Editable 组件",
+            "4634b": "移除 SNavigationMenu 中的 v 模型绑定",
+            "4d747": "简化插槽处理，删除未使用的变量",
+            "583fc": "将 \"ml-\"替换为 \"ms-\"，以便在各种组件中支持 RTL",
+            "6025f": "更新文档主播大小",
+            "6b27d": "更新资料库",
+            "810ee": "在配置中添加 ignorePatterns",
+            "859be": "使用边框和背景增强 md-code 块的样式",
+            "8c796": "删除多余的 RTL 视口位置测试",
+            "8d694": "对类型导入进行重新排序，使各组件保持一致",
+            "8f21f": "删除未使用的文本方向处理",
+            "9437a": "在导言部分增加组件数量",
+            "9b64f": "添加脚本以重新排序 Vue 的道具和导入的内容",
+            "aa79d": "在文档中添加 RTL 支持细节和示例",
+            "ae39f": "将 forwardedRootProps 重命名为 forwardedProps，以保持一致",
+            "b41d2": "为预览组件容器添加圆角",
+            "b55f5": "简化计算属性中的变量分配",
+            "b5c6d": "更新文档更新日志",
+            "b781b": "使用 StepperCompact 简化组件结构",
+            "bc952": "更新查询选择器以使用 data-soybean-progress-provider",
+            "bcec5": "为不同尺寸的媒体提供正确的边距类别",
+            "d2545": "将 forwardedRootProps 重命名为 forwardedProps，以保持一致",
+            "d833a": "支持 RTL",
+            "d96a3": "更新文档应用程序",
+            "da103": "删除计算类，简化类绑定",
+            "de602": "将 RadioCardGroup 更名为 RadioGroupCard，并使用 RadioGroupCompact 简化 RadioGroup 组件",
+            "e1d05": "为 ToolbarLink 添加 showIcon 属性并增强工具栏变量",
+            "e96e7": "简化变量合并逻辑，删除未使用的插槽",
+            "f0042": "在更改地域时整合主题设置",
+            "f23ad": "使用 HoverCardCompact 简化 HoverCard 组件",
+            "f6453": "为开关组件添加方向支持",
+            "fbf17": "更新引言中的组件数量",
+            "fd3b9": "使用 PaginationCompact 简化分页组件"
+          }
         }
       }
     }

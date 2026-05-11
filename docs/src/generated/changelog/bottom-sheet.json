@@ -1,8 +1,25 @@
 {
   "component": "bottom-sheet",
-  "generatedAt": "2026-05-10T18:12:18.948Z",
+  "generatedAt": "2026-05-11T16:23:12.289Z",
   "schemaVersion": 1,
   "versions": [
+    {
+      "version": "v0.20.0",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.19.0...v0.20.0",
+      "date": "2026-05-12",
+      "entries": [
+        {
+          "type": "fix",
+          "scope": "bottom-sheet",
+          "summary": "simplify variant merging logic and remove unused slot",
+          "summaryKey": "changelog.generated.v0.20.0.e96e7",
+          "commitHash": "e96e7",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/e96e7f76",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    },
     {
       "version": "v0.19.0",
       "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.18.0...v0.19.0",

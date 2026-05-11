@@ -1,8 +1,45 @@
 {
   "component": "hover-card",
-  "generatedAt": "2026-05-10T18:12:18.948Z",
+  "generatedAt": "2026-05-11T16:23:12.289Z",
   "schemaVersion": 1,
   "versions": [
+    {
+      "version": "v0.20.0",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.19.0...v0.20.0",
+      "date": "2026-05-12",
+      "entries": [
+        {
+          "type": "optimization",
+          "scope": "hover-card",
+          "summary": "simplify HoverCard component by using HoverCardCompact",
+          "summaryKey": "changelog.generated.v0.20.0.f23ad",
+          "commitHash": "f23ad",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/f23adcba",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "optimization",
+          "scope": "hover-card",
+          "summary": "rename forwardedRootProps to forwardedProps for consistency",
+          "summaryKey": "changelog.generated.v0.20.0.d2545",
+          "commitHash": "d2545",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/d2545dd5",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "optimization",
+          "scope": "hover-card",
+          "summary": "simplify slot handling and remove unused variables",
+          "summaryKey": "changelog.generated.v0.20.0.4d747",
+          "commitHash": "4d747",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/4d7478d4",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    },
     {
       "version": "v0.17.0",
       "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.16.0...v0.17.0",

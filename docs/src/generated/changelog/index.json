@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-10T18:12:18.948Z",
+  "generatedAt": "2026-05-11T16:23:12.289Z",
   "schemaVersion": 1,
   "components": {
     "accordion": {
@@ -75,9 +75,9 @@
     "bottom-sheet": {
       "component": "bottom-sheet",
       "file": "bottom-sheet.json",
-      "latestVersion": "v0.19.0",
-      "versionCount": 2,
-      "entryCount": 2
+      "latestVersion": "v0.20.0",
+      "versionCount": 3,
+      "entryCount": 3
     },
     "breadcrumb": {
       "component": "breadcrumb",
@@ -201,9 +201,9 @@
     "config-provider": {
       "component": "config-provider",
       "file": "config-provider.json",
-      "latestVersion": "v0.17.0",
-      "versionCount": 3,
-      "entryCount": 6
+      "latestVersion": "v0.20.0",
+      "versionCount": 4,
+      "entryCount": 7
     },
     "context-menu": {
       "component": "context-menu",
@@ -257,16 +257,16 @@
     "editable": {
       "component": "editable",
       "file": "editable.json",
-      "latestVersion": "v0.16.0",
-      "versionCount": 3,
-      "entryCount": 3
+      "latestVersion": "v0.20.0",
+      "versionCount": 4,
+      "entryCount": 5
     },
     "empty": {
       "component": "empty",
       "file": "empty.json",
-      "latestVersion": "v0.18.0",
-      "versionCount": 1,
-      "entryCount": 2
+      "latestVersion": "v0.20.0",
+      "versionCount": 2,
+      "entryCount": 3
     },
     "form": {
       "component": "form",
@@ -278,9 +278,9 @@
     "hover-card": {
       "component": "hover-card",
       "file": "hover-card.json",
-      "latestVersion": "v0.17.0",
-      "versionCount": 2,
-      "entryCount": 3
+      "latestVersion": "v0.20.0",
+      "versionCount": 3,
+      "entryCount": 6
     },
     "input": {
       "component": "input",
@@ -355,16 +355,16 @@
     "menubar": {
       "component": "menubar",
       "file": "menubar.json",
-      "latestVersion": null,
-      "versionCount": 0,
-      "entryCount": 0
+      "latestVersion": "v0.20.0",
+      "versionCount": 1,
+      "entryCount": 1
     },
     "navigation-menu": {
       "component": "navigation-menu",
       "file": "navigation-menu.json",
-      "latestVersion": "v0.16.0",
-      "versionCount": 3,
-      "entryCount": 4
+      "latestVersion": "v0.20.0",
+      "versionCount": 4,
+      "entryCount": 5
     },
     "page-tabs": {
       "component": "page-tabs",
@@ -376,9 +376,9 @@
     "pagination": {
       "component": "pagination",
       "file": "pagination.json",
-      "latestVersion": "v0.16.0",
-      "versionCount": 4,
-      "entryCount": 4
+      "latestVersion": "v0.20.0",
+      "versionCount": 5,
+      "entryCount": 5
     },
     "password": {
       "component": "password",
@@ -425,16 +425,16 @@
     "progress": {
       "component": "progress",
       "file": "progress.json",
-      "latestVersion": "v0.19.0",
-      "versionCount": 5,
-      "entryCount": 8
+      "latestVersion": "v0.20.0",
+      "versionCount": 6,
+      "entryCount": 9
     },
     "radio-group": {
       "component": "radio-group",
       "file": "radio-group.json",
-      "latestVersion": null,
-      "versionCount": 0,
-      "entryCount": 0
+      "latestVersion": "v0.20.0",
+      "versionCount": 1,
+      "entryCount": 1
     },
     "roving-focus": {
       "component": "roving-focus",
@@ -502,16 +502,16 @@
     "stepper": {
       "component": "stepper",
       "file": "stepper.json",
-      "latestVersion": "v0.16.0",
-      "versionCount": 1,
-      "entryCount": 1
+      "latestVersion": "v0.20.0",
+      "versionCount": 2,
+      "entryCount": 2
     },
     "switch": {
       "component": "switch",
       "file": "switch.json",
-      "latestVersion": "v0.19.0",
-      "versionCount": 1,
-      "entryCount": 1
+      "latestVersion": "v0.20.0",
+      "versionCount": 2,
+      "entryCount": 2
     },
     "table": {
       "component": "table",
@@ -586,16 +586,16 @@
     "toolbar": {
       "component": "toolbar",
       "file": "toolbar.json",
-      "latestVersion": null,
-      "versionCount": 0,
-      "entryCount": 0
+      "latestVersion": "v0.20.0",
+      "versionCount": 1,
+      "entryCount": 1
     },
     "tooltip": {
       "component": "tooltip",
       "file": "tooltip.json",
-      "latestVersion": "v0.19.0",
-      "versionCount": 5,
-      "entryCount": 7
+      "latestVersion": "v0.20.0",
+      "versionCount": 6,
+      "entryCount": 8
     },
     "tree": {
       "component": "tree",

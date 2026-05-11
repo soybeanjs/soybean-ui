@@ -1,8 +1,35 @@
 {
   "component": "editable",
-  "generatedAt": "2026-05-10T18:12:18.948Z",
+  "generatedAt": "2026-05-11T16:23:12.289Z",
   "schemaVersion": 1,
   "versions": [
+    {
+      "version": "v0.20.0",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.19.0...v0.20.0",
+      "date": "2026-05-12",
+      "entries": [
+        {
+          "type": "optimization",
+          "scope": "editable",
+          "summary": "simplify Editable component by using EditableCompact",
+          "summaryKey": "changelog.generated.v0.20.0.41d72",
+          "commitHash": "41d72",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/41d72493",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "chore",
+          "scope": "editable",
+          "summary": "make aria-label test asynchronous",
+          "summaryKey": "changelog.generated.v0.20.0.106c5",
+          "commitHash": "106c5",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/106c5e97",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope"
+        }
+      ]
+    },
     {
       "version": "v0.16.0",
       "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.15.5...v0.16.0",
