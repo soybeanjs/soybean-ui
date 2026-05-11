@@ -76,6 +76,16 @@ function clampViewportPosition(position: number, contentSize: number, viewportSi
   return position;
 }
 
+function getLogicalStartPosition(left: number, width: number, dir: Direction) {
+  if (dir !== 'rtl') {
+    return left;
+  }
+
+  const { width: viewportWidth } = getViewportSize();
+
+  return viewportWidth - left - width;
+}
+
 export function getNavigationMenuViewportPosition(params: GetNavigationMenuViewportPositionParams) {
   const { rootElement, contentSize, orientation, dir, align } = params;
 
@@ -124,16 +134,15 @@ export function getNavigationMenuViewportPosition(params: GetNavigationMenuViewp
   posLeft = clampViewportPosition(posLeft, contentWidth, viewportWidth, screenOffset);
   posTop = clampViewportPosition(posTop, contentHeight, viewportHeight, screenOffset);
 
-  // Possible blurring font with decimal values
-  posLeft = Math.round(posLeft);
-  posTop = Math.round(posTop);
-
   const position: NavigationMenuViewportPosition = {
-    left: posLeft,
+    left: getLogicalStartPosition(posLeft, contentWidth, dir),
     top: posTop
   };
 
-  return position;
+  return {
+    left: Math.round(position.left),
+    top: Math.round(position.top)
+  };
 }
 
 export function getNavigationMenuIndicatorPosition(params: GetNavigationMenuIndicatorPositionParams) {
@@ -145,10 +154,11 @@ export function getNavigationMenuIndicatorPosition(params: GetNavigationMenuIndi
   const isHorizontal = orientation === 'horizontal';
   const isRtl = dir === 'rtl';
   const size = isHorizontal ? triggerRect.width : triggerRect.height;
+  const physicalLeft = isHorizontal ? triggerRect.left : isRtl ? trackRect.left - size : trackRect.right;
 
   const position = {
     size,
-    left: isHorizontal ? triggerRect.left : isRtl ? trackRect.left - size : trackRect.right,
+    left: getLogicalStartPosition(physicalLeft, size, dir),
     top: isHorizontal ? trackRect.bottom : triggerRect.top + triggerRect.height / 2
   };
 

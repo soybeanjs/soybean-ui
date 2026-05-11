@@ -22,9 +22,9 @@ export const treeMenuVariants = tv({
       'data-[state=closed]:animate-collapsible-up data-[state=open]:animate-collapsible-down'
     ],
     collapsibleIcon: `shrink-0 ms-auto text-muted-foreground transition-transform-200 group-data-[state=open]/button:rotate-90 group-data-[child-active]/button:text-primary`,
-    sub: 'flex flex-col m-0 list-none ms-[--soybean-tree-menu-indent] border-l border-sidebar-border border-solid',
+    sub: 'flex flex-col m-0 list-none ms-[--soybean-tree-menu-indent] border-s border-sidebar-border border-solid',
     itemLabel: 'truncate',
-    itemLinkIcon: `shrink-0 self-start text-muted-foreground`,
+    itemLinkIcon: `shrink-0 self-start text-muted-foreground rtl:rotate-270`,
     itemBadge: ``,
     itemTag: `shrink-0 ms-auto inline-flex items-center rounded-sm bg-accent/15 text-accent-foreground`,
     itemAction: [

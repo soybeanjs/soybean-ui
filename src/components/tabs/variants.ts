@@ -51,7 +51,7 @@ export const tabsVariants = tv({
     orientation: {
       horizontal: {
         root: `flex-col`,
-        indicator: `h-full w-[--soybean-tabs-indicator-size] translate-x-[--soybean-tabs-indicator-position]`
+        indicator: `h-full w-[--soybean-tabs-indicator-size] translate-x-[--soybean-tabs-indicator-position] rtl:-translate-x-[--soybean-tabs-indicator-position]`
       },
       vertical: {
         list: `flex-col items-stretch`,

@@ -9,7 +9,7 @@ export const scrollAreaVariants = tv({
     scrollbar: [
       'absolute flex touch-none select-none p-px transition-opacity duration-200 ease-out',
       'data-[state=hidden]:pointer-events-none data-[state=hidden]:opacity-0',
-      'data-[orientation=vertical]:inset-y-0 data-[orientation=vertical]:end-0 data-[orientation=vertical]:w-2.5 data-[orientation=vertical]:border-l data-[orientation=vertical]:border-l-transparent',
+      'data-[orientation=vertical]:inset-y-0 data-[orientation=vertical]:end-0 data-[orientation=vertical]:w-2.5 data-[orientation=vertical]:border-s data-[orientation=vertical]:border-s-transparent',
       'rtl:data-[orientation=vertical]:end-auto rtl:data-[orientation=vertical]:start-0',
       'data-[orientation=horizontal]:inset-x-0 data-[orientation=horizontal]:bottom-0 data-[orientation=horizontal]:h-2.5 data-[orientation=horizontal]:flex-col data-[orientation=horizontal]:border-t data-[orientation=horizontal]:border-t-transparent'
     ],

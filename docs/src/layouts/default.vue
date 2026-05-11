@@ -20,13 +20,13 @@ const closeDrawer = () => {
     <AppHeader />
     <div
       v-if="shouldShowSidebar"
-      class="lt-md:!hidden fixed top-[calc(var(--app-header)+0.5rem)] left-0 z-49 w-55 h-[calc(100vh-var(--app-header)-0.5rem)] p-3"
+      class="lt-md:!hidden fixed top-[calc(var(--app-header)+0.5rem)] start-0 z-49 w-55 h-[calc(100vh-var(--app-header)-0.5rem)] p-3"
     >
       <SiderMenu />
     </div>
     <div
       v-if="shouldShowSidebar"
-      class="md:hidden fixed top-[calc(var(--app-header)+0.5rem)] left-0 right-0 z-50 ps-2 py-1"
+      class="md:hidden fixed top-[calc(var(--app-header)+0.5rem)] start-0 end-0 z-50 ps-2 py-1"
     >
       <SDrawer v-model:open="visible" side="left" class="rounded-tl-none! rounded-bl-none!">
         <template #trigger>
@@ -56,7 +56,7 @@ const closeDrawer = () => {
 
         <aside v-if="shouldReserveOutlineSpace" class="lt-xl:hidden xl:w-72 xl:min-w-0">
           <div
-            class="fixed top-[calc(var(--app-header)+1.25rem)] right-8 z-40 w-72 transition-opacity duration-200"
+            class="fixed top-[calc(var(--app-header)+1.25rem)] end-8 z-40 w-72 transition-opacity duration-200"
             :class="hasDocOutline ? 'opacity-100' : 'pointer-events-none opacity-0'"
           >
             <div

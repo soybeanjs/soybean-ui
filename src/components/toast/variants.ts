@@ -5,7 +5,7 @@ export const toastVariants = tv({
   slots: {
     toaster: [
       'fixed z-[--z-index] list-none outline-none transition-transform-400 ease',
-      'data-[x-position=right]:end-[--offset-right] data-[x-position=left]:start-[--offset-left] data-[x-position=center]:start-1/2 data-[x-position=center]:-translate-x-1/2',
+      'data-[x-position=right]:end-[--offset-right] data-[x-position=left]:start-[--offset-left] data-[x-position=center]:start-1/2 data-[x-position=center]:-translate-x-1/2 [&[dir=rtl]]:data-[x-position=center]:translate-x-1/2',
       'data-[y-position=top]:top-[--offset-top] data-[y-position=bottom]:bottom-[--offset-bottom]'
     ],
     toast: [

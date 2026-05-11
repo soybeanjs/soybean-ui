@@ -4,14 +4,14 @@ import type { VariantProps } from 'tailwind-variants';
 
 export const switchVariants = tv({
   slots: {
-    root: 'group inline-flex [--dir:1] rtl:[--dir:-1]',
+    root: 'inline-flex',
     control: [
       `peer shrink-0 inline-flex items-center rounded-full border-0 shadow-sm transition-colors-200`,
       `outline-none focus-visible:ring-3  focus-visible:ring-offset-background disabled:cursor-not-allowed disabled:opacity-50 data-[state=unchecked]:bg-input`
     ],
     thumb: [
       `flex justify-center items-center rounded-full shadow-lg transition-transform-200 bg-background pointer-events-none`,
-      `data-[state=unchecked]:translate-x-[calc(0.125rem*var(--dir))]`
+      `data-[state=unchecked]:translate-x-0.5 rtl:data-[state=unchecked]:-translate-x-0.5`
     ]
   },
   variants: {
@@ -44,27 +44,27 @@ export const switchVariants = tv({
     size: {
       xs: {
         control: 'h-4 w-7',
-        thumb: 'size-3 data-[state=checked]:translate-x-[calc(0.875rem*var(--dir))]'
+        thumb: 'size-3 data-[state=checked]:translate-x-3.5 rtl:data-[state=checked]:-translate-x-3.5'
       },
       sm: {
         control: 'h-4.5 w-8',
-        thumb: 'size-3.5 data-[state=checked]:translate-x-[calc(1rem*var(--dir))]'
+        thumb: 'size-3.5 data-[state=checked]:translate-x-4 rtl:data-[state=checked]:-translate-x-4'
       },
       md: {
         control: 'h-5 w-9',
-        thumb: 'size-4 data-[state=checked]:translate-x-[calc(1.125rem*var(--dir))]'
+        thumb: 'size-4 data-[state=checked]:translate-x-4.5 rtl:data-[state=checked]:-translate-x-4.5'
       },
       lg: {
         control: 'h-5.5 w-10',
-        thumb: 'size-4.5 data-[state=checked]:translate-x-[calc(1.25rem*var(--dir))]'
+        thumb: 'size-4.5 data-[state=checked]:translate-x-5 rtl:data-[state=checked]:-translate-x-5'
       },
       xl: {
         control: 'h-6 w-11',
-        thumb: 'size-5 data-[state=checked]:translate-x-[calc(1.375rem*var(--dir))]'
+        thumb: 'size-5 data-[state=checked]:translate-x-5.5 rtl:data-[state=checked]:-translate-x-5.5'
       },
       '2xl': {
         control: 'h-7 w-13',
-        thumb: 'size-6 data-[state=checked]:translate-x-[calc(1.625rem*var(--dir))]'
+        thumb: 'size-6 data-[state=checked]:translate-x-6.5 rtl:data-[state=checked]:-translate-x-6.5'
       }
     },
     shape: {

@@ -2,6 +2,7 @@
 import { watchEffect } from 'vue';
 import { useControllableState, useForwardElement } from '../../composables';
 import { transformPropsToContext } from '../../shared';
+import { useDirection } from '../config-provider/context';
 import { provideCollectionContext, provideNavigationMenuRootContext, useNavigationMenuUi } from './context';
 import type { NavigationMenuRootProps, NavigationMenuRootEmits } from './types';
 
@@ -10,7 +11,6 @@ defineOptions({
 });
 
 const props = withDefaults(defineProps<NavigationMenuRootProps>(), {
-  dir: 'ltr',
   orientation: 'horizontal',
   delayDuration: 200,
   skipDelayDuration: 300,
@@ -20,6 +20,8 @@ const props = withDefaults(defineProps<NavigationMenuRootProps>(), {
 const emit = defineEmits<NavigationMenuRootEmits>();
 
 const cls = useNavigationMenuUi('root');
+
+const dir = useDirection(() => props.dir);
 
 const modelValue = useControllableState(
   () => props.modelValue,
@@ -32,8 +34,8 @@ const modelValue = useControllableState(
 const { onRootElementChange, onActiveTriggerElementChange } = provideNavigationMenuRootContext({
   isRoot: true,
   modelValue,
+  dir,
   ...transformPropsToContext(props, [
-    'dir',
     'orientation',
     'unmountOnHide',
     'skipDelayDuration',

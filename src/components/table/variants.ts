@@ -53,7 +53,7 @@ export const tableVariants = tv({
       'border-primary focus-visible:ring-primary/30',
       'outline-none focus-visible:ring-3  focus-visible:ring-offset-background disabled:cursor-not-allowed disabled:opacity-50'
     ],
-    radioIndicator: 'absolute top-1/2 start-1/2 -translate-x-1/2 -translate-y-1/2 size-1/2 bg-primary rounded-full'
+    radioIndicator: `absolute top-1/2 start-1/2 -translate-x-1/2 rtl:translate-x-1/2 -translate-y-1/2 size-1/2 bg-primary rounded-full`
   },
   variants: {
     size: {
@@ -155,7 +155,7 @@ export const tableVariants = tv({
     },
     bordered: {
       true: {
-        cell: 'border-l border-border first:border-l-0'
+        cell: 'border-s border-border first:border-s-0'
       }
     },
     rounded: {

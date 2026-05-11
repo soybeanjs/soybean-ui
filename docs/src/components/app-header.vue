@@ -72,7 +72,7 @@ onUnmounted(() => {
 <template>
   <header
     :data-scrolled="isScrolled"
-    class="docs-header-shell group fixed top-0 left-0 right-0 z-49 px-4 transition-all-800 data-[scrolled=true]:top-3 sm:px-6"
+    class="docs-header-shell group fixed top-0 start-0 end-0 z-49 px-4 transition-all-800 data-[scrolled=true]:top-3 sm:px-6"
   >
     <div
       class="docs-header-frame mx-auto flex max-w-360 min-h-[--app-header-main] items-center justify-between gap-3 px-6 py-3 group-data-[scrolled=true]:min-h-0 lt-md:group-data-[scrolled=true]:py-2 transition-all-300 xl:gap-4"
@@ -112,7 +112,7 @@ onUnmounted(() => {
   <div
     v-if="showTopBar"
     :data-scrolled="isScrolled"
-    class="docs-topbar-shell fixed left-0 right-0 top-[--app-header-main] data-[scrolled=true]:top-[calc(var(--app-header-main)+0.5rem)] border border-border/50 data-[scrolled=true]:border-transparent dark:border-border z-48 transition-all-800 px-6 lt-md:hidden lt-sm:px-4"
+    class="docs-topbar-shell fixed start-0 end-0 top-[--app-header-main] data-[scrolled=true]:top-[calc(var(--app-header-main)+0.5rem)] border border-border/50 data-[scrolled=true]:border-transparent dark:border-border z-48 transition-all-800 px-6 lt-md:hidden lt-sm:px-4"
   >
     <div class="mx-auto max-w-360 px-6">
       <div class="docs-topbar-frame flex h-[--app-topbar] items-center px-4">

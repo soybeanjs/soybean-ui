@@ -422,11 +422,11 @@ export const buttonVariants = tv({
 });
 
 export const buttonGroupVariants = tv({
-  base: `[&>*]:relative focus-visible:[&>*]:z-2 not-first:not-last:[&>*]:rd-0`,
+  base: `[&>*]:relative focus-visible:[&>*]:z-2 not-first:not-last:[&>*]:rounded-0`,
   variants: {
     orientation: {
-      horizontal: `inline-flex not-last:[&>*]:border-r-0 focus-visible:[&>*]:border-r first:[&>*]:rd-r-0 last:[&>*]:rd-l-0 rtl:flex-row-reverse`,
-      vertical: `flex flex-col not-last:[&>*]:border-b-0 focus-visible:[&>*]:border-b first:[&>*]:rd-b-0 last:[&>*]:rd-t-0`
+      horizontal: `inline-flex not-last:[&>*]:border-e-0 focus-visible:[&>*]:border-e first:[&>*]:rounded-e-0 last:[&>*]:rounded-s-0`,
+      vertical: `flex flex-col not-last:[&>*]:border-b-0 focus-visible:[&>*]:border-b first:[&>*]:rounded-b-0 last:[&>*]:rounded-t-0`
     }
   },
   defaultVariants: {

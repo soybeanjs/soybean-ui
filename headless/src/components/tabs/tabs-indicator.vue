@@ -35,6 +35,16 @@ const style = computed(() => {
 
 const tabs = ref<Array<HTMLElement>>([]);
 
+function getHorizontalIndicatorPosition(activeTab: HTMLButtonElement) {
+  const list = listElement.value;
+
+  if (!list || dir.value !== 'rtl') {
+    return activeTab.offsetLeft;
+  }
+
+  return list.clientWidth - activeTab.offsetLeft - activeTab.offsetWidth;
+}
+
 function updateIndicatorStyle() {
   const activeTab = listElement.value?.querySelector<HTMLButtonElement>('[role="tab"][data-state="active"]');
 
@@ -43,7 +53,7 @@ function updateIndicatorStyle() {
   if (orientation.value === 'horizontal') {
     indicatorStyle.value = {
       size: activeTab.offsetWidth,
-      position: activeTab.offsetLeft
+      position: getHorizontalIndicatorPosition(activeTab)
     };
   } else {
     indicatorStyle.value = {

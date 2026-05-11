@@ -6,7 +6,7 @@ export const navigationMenuVariants = tv({
     root: `group`,
     viewport: [
       `fixed z-50 origin-top-center overflow-hidden rounded-md border bg-popover text-popover-foreground shadow-lg`,
-      `left-[--soybean-navigation-menu-viewport-left] top-[--soybean-navigation-menu-viewport-top]`,
+      `start-[--soybean-navigation-menu-viewport-left] top-[--soybean-navigation-menu-viewport-top]`,
       `h-[--soybean-navigation-menu-viewport-height] w-[--soybean-navigation-menu-viewport-width]`,
       `data-[state=open]:animate-in data-[state=open]:zoom-in-90 data-[state=closed]:animate-out data-[state=closed]:zoom-out-95`,
       `group-data-[orientation=vertical]:mt-0`
@@ -18,8 +18,7 @@ export const navigationMenuVariants = tv({
       `data-[motion=from-end]:slide-in-from-right-52 data-[motion=from-start]:slide-in-from-left-52 data-[motion=to-end]:slide-out-to-right-52 data-[motion=to-start]:slide-out-to-left-52`,
       `rtl:data-[motion=from-end]:slide-in-from-left-52 rtl:data-[motion=from-start]:slide-in-from-right-52 rtl:data-[motion=to-end]:slide-out-to-left-52 rtl:data-[motion=to-start]:slide-out-to-right-52`
     ],
-    arrow:
-      'w-1em h-0.5em fill-popover stroke-border rotate-180 group-data-[orientation=vertical]:rotate-90 rtl:group-data-[orientation=vertical]:-rotate-90',
+    arrow: `w-1em h-0.5em fill-popover stroke-border rotate-180 group-data-[orientation=vertical]:rotate-90`,
     list: [
       `group grow flex items-center justify-center my-0 list-none`,
       `group-data-[orientation=vertical]:flex-col group-data-[orientation=vertical]:items-stretch`
@@ -42,7 +41,7 @@ export const navigationMenuVariants = tv({
       `fixed start-[--soybean-navigation-menu-indicator-left] top-[--soybean-navigation-menu-indicator-top] z-50`,
       `flex w-[--soybean-navigation-menu-indicator-size] items-end justify-center overflow-hidden transition-transform-200 ease-out`,
       `data-[state=visible]:animate-in data-[state=visible]:fade-in-0 data-[state=hidden]:animate-out data-[state=hidden]:fade-out-0`,
-      `data-[orientation=vertical]:-rotate-90`
+      `data-[orientation=vertical]:-rotate-90 [&[dir=rtl]]:data-[orientation=vertical]:rotate-90`
     ],
     link: [
       `group relative w-full flex items-center rounded-md font-medium outline-none cursor-pointer decoration-none`,
@@ -54,7 +53,7 @@ export const navigationMenuVariants = tv({
       `focus:bg-accent focus:text-accent-foreground hover:bg-accent hover:text-accent-foreground`,
       `data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50`
     ],
-    linkIcon: 'shrink-0 self-start text-muted-foreground',
+    linkIcon: 'shrink-0 self-start text-muted-foreground rtl:rotate-270',
     subLinkContent: `grow flex flex-col items-start`,
     subLinkLabel: `font-medium leading-none`,
     subLinkDescription: `line-clamp-2 text-muted-foreground leading-snug m-0`

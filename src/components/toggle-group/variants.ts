@@ -48,10 +48,10 @@ export const toggleGroupVariants = tv({
       horizontal: {
         root: [
           'inline-flex flex-row rtl:flex-row-reverse',
-          '[&>*:not(:last-child)]:border-r-0 [&>*:not(:last-child)>*]:border-r-0',
-          'focus-visible:[&>*]:border-r focus-visible:[&>*>*]:border-r',
-          '[&>*:first-child]:!rounded-r-none [&>*:first-child>*]:!rounded-r-none',
-          '[&>*:last-child]:!rounded-l-none [&>*:last-child>*]:!rounded-l-none'
+          '[&>*:not(:last-child)]:border-e-0 [&>*:not(:last-child)>*]:border-e-0',
+          'focus-visible:[&>*]:border-e focus-visible:[&>*>*]:border-e',
+          '[&>*:first-child]:!rounded-e-none [&>*:first-child>*]:!rounded-e-none',
+          '[&>*:last-child]:!rounded-s-none [&>*:last-child>*]:!rounded-s-none'
         ]
       },
       vertical: {

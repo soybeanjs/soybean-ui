@@ -14,7 +14,7 @@ export const paginationVariants = tv({
       `disabled:cursor-not-allowed disabled:opacity-50`
     ],
     navigationButton: [
-      `inline-flex items-center justify-center flex-shrink-0 font-medium transition-all-150`,
+      `inline-flex items-center justify-center flex-shrink-0 font-medium transition-all-150 rtl:[&>svg]:rotate-180`,
       `hover:bg-accent hover:text-accent-foreground`,
       `outline-none focus-visible:ring-3  focus-visible:ring-offset-background focus-visible:ring-primary/30`,
       `disabled:cursor-not-allowed disabled:opacity-50`

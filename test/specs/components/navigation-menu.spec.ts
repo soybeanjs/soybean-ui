@@ -117,8 +117,33 @@ describe('NavigationMenu viewport positioning', () => {
     });
 
     expect(position).toEqual({
-      left: 480,
+      left: 560,
       top: 96
+    });
+  });
+
+  it('uses logical inline-start coordinates for vertical RTL viewports', () => {
+    setViewportSize(1280, 720);
+
+    const position = getNavigationMenuViewportPosition({
+      rootElement: createMockElement({
+        left: 220,
+        top: 140,
+        width: 72,
+        height: 120
+      }),
+      contentSize: {
+        width: 180,
+        height: 160
+      },
+      orientation: 'vertical',
+      dir: 'rtl',
+      align: 'center'
+    });
+
+    expect(position).toEqual({
+      left: 1060,
+      top: 120
     });
   });
 });
@@ -149,6 +174,33 @@ describe('NavigationMenu indicator positioning', () => {
     });
   });
 
+  it('returns logical inline-start coordinates for a horizontal RTL indicator', () => {
+    setViewportSize(1280, 720);
+
+    const position = getNavigationMenuIndicatorPosition({
+      indicatorTrackElement: createMockElement({
+        left: 80,
+        top: 40,
+        width: 640,
+        height: 56
+      }),
+      activeTriggerElement: createMockElement({
+        left: 320,
+        top: 44,
+        width: 100,
+        height: 40
+      }),
+      orientation: 'horizontal',
+      dir: 'rtl'
+    });
+
+    expect(position).toEqual({
+      size: 100,
+      left: 860,
+      top: 96
+    });
+  });
+
   it('returns fixed coordinates for a vertical indicator using the track edge and trigger center', () => {
     const position = getNavigationMenuIndicatorPosition({
       indicatorTrackElement: createMockElement({
@@ -174,7 +226,9 @@ describe('NavigationMenu indicator positioning', () => {
     });
   });
 
-  it('anchors vertical RTL indicators to the inline-end side of the list track', () => {
+  it('returns logical inline-start coordinates for a vertical RTL indicator', () => {
+    setViewportSize(1280, 720);
+
     const position = getNavigationMenuIndicatorPosition({
       indicatorTrackElement: createMockElement({
         left: 80,
@@ -194,7 +248,7 @@ describe('NavigationMenu indicator positioning', () => {
 
     expect(position).toEqual({
       size: 40,
-      left: 40,
+      left: 1200,
       top: 180
     });
   });

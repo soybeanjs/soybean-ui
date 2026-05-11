@@ -4,7 +4,7 @@ import { Primitive } from '@soybeanjs/headless/primitive';
 import { useOmitProps } from '@soybeanjs/headless/composables';
 import { transformPropsToContext } from '@soybeanjs/headless/shared';
 import { cn } from '@/theme';
-import { useConfigProvider } from '../config-provider';
+import { useConfigProvider } from '../config-provider/context';
 import { provideButtonGroupContext } from './context';
 import { buttonGroupVariants } from './variants';
 import type { ButtonGroupProps } from './types';
@@ -14,8 +14,7 @@ defineOptions({
 });
 
 const props = withDefaults(defineProps<ButtonGroupProps>(), {
-  orientation: 'horizontal',
-  dir: 'ltr'
+  orientation: 'horizontal'
 });
 
 const forwardedProps = useOmitProps(props, [

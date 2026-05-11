@@ -24,7 +24,7 @@ export const layoutVariants = tv({
     ],
     mobile: 'flex flex-col w-full h-full',
     rail: [
-      'absolute inset-y-0 z-20 flex w-[--soybean-layout-spacing] -translate-x-1/2 transition-all ease-linear lt-sm:hidden',
+      'absolute inset-y-0 z-20 flex w-[--soybean-layout-spacing] -translate-x-1/2 rtl:translate-x-1/2 transition-all ease-linear lt-sm:hidden',
       'after:absolute after:inset-y-0 after:start-1/2 after:content-empty after:w-[calc(var(--soybean-layout-spacing)/8)] hover:after:bg-sidebar-border'
     ],
     trigger: '',
@@ -58,7 +58,7 @@ export const layoutVariants = tv({
     variant: {
       sidebar: {
         sidebarGapHandler: 'group-data-[collapsible=icon]:w-[--soybean-collapsed-sidebar-width]',
-        sidebarWrapper: `group-data-[collapsible=icon]:w-[--soybean-collapsed-sidebar-width] group-data-[side=left]:border-r group-data-[side=right]:border-l`
+        sidebarWrapper: `group-data-[collapsible=icon]:w-[--soybean-collapsed-sidebar-width] group-data-[side=left]:border-e group-data-[side=right]:border-s`
       },
       floating: {
         sidebarGapHandler: `w-[calc(var(--soybean-sidebar-width)+var(--soybean-layout-spacing))] group-data-[collapsible=icon]:w-[calc(var(--soybean-collapsed-sidebar-width)+var(--soybean-layout-spacing))]`,
@@ -223,14 +223,14 @@ export const layoutClassicVariants = tv({
     side: {
       left: {
         main: 'ps-[--soybean-layout-start-gap]',
-        sidebarWrapper: 'start-0 border-r',
+        sidebarWrapper: 'start-0 border-e',
         rail: 'cursor-w-resize group-data-[state=collapsed]:cursor-e-resize -end-[var(--soybean-layout-spacing)]',
         header: 'group-data-[fixed-top=true]:ps-[--soybean-layout-header-start-gap]',
         footer: 'group-data-[fixed-footer=true]:ps-[--soybean-layout-footer-start-gap]'
       },
       right: {
         main: 'pe-[--soybean-layout-start-gap]',
-        sidebarWrapper: 'end-0 border-l',
+        sidebarWrapper: 'end-0 border-s',
         rail: 'cursor-e-resize group-data-[state=collapsed]:cursor-w-resize start-0',
         header: 'group-data-[fixed-top=true]:pe-[--soybean-layout-header-start-gap]',
         footer: 'group-data-[fixed-footer=true]:pe-[--soybean-layout-footer-start-gap]'

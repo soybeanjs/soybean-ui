@@ -2,7 +2,6 @@ import { computed, shallowRef } from 'vue';
 import { refAutoReset, useDebounceFn, useEventListener } from '@vueuse/core';
 import { useCollection, useContext, useForwardElement, useUiContext } from '../../composables';
 import { getDisclosureState } from '../../shared';
-import { useDirection } from '../config-provider/context';
 import { EVENT_ROOT_CONTENT_DISMISS } from './shared';
 import type { NavigationMenuItemContextParams, NavigationMenuRootContextParams, NavigationMenuUiSlot } from './types';
 
@@ -10,8 +9,6 @@ export const [provideNavigationMenuRootContext, useNavigationMenuRootContext] = 
   'NavigationMenuRoot',
   (params: NavigationMenuRootContextParams) => {
     const { modelValue, skipDelayDuration, delayDuration, disablePointerLeaveClose } = params;
-
-    const dir = useDirection(params.dir);
 
     const rootElement = shallowRef<HTMLElement>();
     const onRootElementChange = (node: HTMLElement) => {
@@ -91,7 +88,6 @@ export const [provideNavigationMenuRootContext, useNavigationMenuRootContext] = 
 
     return {
       ...params,
-      dir,
       baseId: 'soybean-navigation-menu',
       rootElement,
       onRootElementChange,

@@ -23,7 +23,7 @@ const menuWidth = computed(() => `${(BASE_WIDTH * themeSizeRatioMap[size.value])
     <SButtonIcon
       icon="lucide:panel-left"
       :size="size"
-      class="absolute right-2 top-2 z-2"
+      class="absolute end-2 top-2 z-2"
       @click="() => toggleCollapsible()"
     />
     <STreeMenu

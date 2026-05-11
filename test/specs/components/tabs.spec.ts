@@ -119,6 +119,48 @@ describe('STabs', () => {
       expect(panels.length).toBeGreaterThan(0);
       wrapper.unmount();
     });
+
+    it('positions the indicator from inline-start in rtl mode', async () => {
+      const wrapper = mount(STabs, {
+        props: { items, modelValue: 'tab-1', dir: 'rtl' },
+        attachTo: document.body
+      });
+
+      const list = wrapper.find('[role="tablist"]').element;
+      const tabs = wrapper.findAll('[role="tab"]').map(tab => tab.element);
+
+      Object.defineProperty(list, 'clientWidth', {
+        configurable: true,
+        get: () => 300
+      });
+
+      Object.defineProperty(tabs[0], 'offsetWidth', {
+        configurable: true,
+        get: () => 80
+      });
+      Object.defineProperty(tabs[0], 'offsetLeft', {
+        configurable: true,
+        get: () => 200
+      });
+      Object.defineProperty(tabs[1], 'offsetWidth', {
+        configurable: true,
+        get: () => 90
+      });
+      Object.defineProperty(tabs[1], 'offsetLeft', {
+        configurable: true,
+        get: () => 110
+      });
+
+      await wrapper.setProps({ modelValue: 'tab-2' });
+      await nextTick();
+
+      const indicator = wrapper.find('[data-soybean-tabs-indicator]');
+
+      expect(indicator.attributes('style')).toContain('--soybean-tabs-indicator-size: 90px;');
+      expect(indicator.attributes('style')).toContain('--soybean-tabs-indicator-position: 100px;');
+
+      wrapper.unmount();
+    });
   });
 
   describe('disabled state', () => {
