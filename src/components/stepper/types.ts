@@ -1,45 +1,16 @@
 import type {
-  StepperDescriptionProps,
-  StepperIndicatorProps,
-  StepperItemProps,
-  StepperRootEmits,
-  StepperRootProps,
-  StepperSeparatorProps,
-  StepperTitleProps,
-  StepperTriggerProps,
-  StepperUiSlot
+  StepperCompactProps,
+  StepperCompactEmits,
+  StepperCompactSlots,
+  StepperUi
 } from '@soybeanjs/headless/stepper';
-import type { ClassValue, UiClass } from '@soybeanjs/headless/types';
+import type { ClassValue } from '@soybeanjs/headless/types';
 import type { ThemeColor, ThemeSize } from '@/theme';
-
-/**
- * Option data for the Stepper component.
- */
-export interface StepperOptionData extends Pick<StepperItemProps, 'disabled' | 'completed'> {
-  /**
-   * Title text rendered by the component.
-   */
-  title?: string;
-  /**
-   * Description text rendered by the component.
-   */
-  description?: string;
-}
-
-/**
- * Additional UI slots for the stepper component.
- */
-export type StepperExtraUiSlot = 'itemContent' | 'indicatorIcon';
-
-/**
- * Extended UI class overrides for the Stepper component.
- */
-export type StepperExtendedUi = UiClass<StepperUiSlot | StepperExtraUiSlot>;
 
 /**
  * Properties for the Stepper component.
  */
-export interface StepperProps extends StepperRootProps {
+export interface StepperProps extends StepperCompactProps {
   /**
    * Additional class names applied to the root element.
    */
@@ -55,38 +26,15 @@ export interface StepperProps extends StepperRootProps {
   /**
    * Per-slot class overrides for the component.
    */
-  ui?: Partial<StepperExtendedUi>;
-  /**
-   * Items rendered by the component.
-   */
-  items: StepperOptionData[];
-  /**
-   * Properties forwarded to the item element.
-   */
-  itemProps?: StepperItemProps;
-  /**
-   * Properties forwarded to the trigger element.
-   */
-  triggerProps?: StepperTriggerProps;
-  /**
-   * Properties forwarded to the indicator element.
-   */
-  indicatorProps?: StepperIndicatorProps;
-  /**
-   * Properties forwarded to the separator element.
-   */
-  separatorProps?: StepperSeparatorProps;
-  /**
-   * Properties forwarded to the title element.
-   */
-  titleProps?: StepperTitleProps;
-  /**
-   * Properties forwarded to the description element.
-   */
-  descriptionProps?: StepperDescriptionProps;
+  ui?: Partial<StepperUi>;
 }
 
 /**
  * Events for the Stepper component.
  */
-export type StepperEmits = StepperRootEmits;
+export type StepperEmits = StepperCompactEmits;
+
+/**
+ * Slots for the Stepper component.
+ */
+export type StepperSlots = StepperCompactSlots;

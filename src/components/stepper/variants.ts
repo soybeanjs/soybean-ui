@@ -4,11 +4,11 @@ import { tv } from 'tailwind-variants';
 export const stepperVariants = tv({
   slots: {
     root: 'flex w-full',
-    item: 'group flex min-w-0 flex-1 items-center gap-2',
+    item: 'group flex min-w-0 flex-1',
     trigger: [
-      'inline-flex rounded-md p-1 transition-colors',
+      'inline-flex rounded-md transition-colors',
       'outline-none focus-visible:ring-3 focus-visible:ring-offset-background focus-visible:ring-primary/30',
-      'group-data-[disabled]:pointer-events-none'
+      'data-[orientation=horizontal]:mt-0.25 data-[orientation=vertical]:ms-0.25 group-data-[disabled]:pointer-events-none'
     ],
     indicator: [
       'inline-flex shrink-0 items-center justify-center rounded-full border bg-background font-medium transition-colors',
@@ -17,55 +17,79 @@ export const stepperVariants = tv({
     separator: 'shrink-0 bg-muted transition-colors group-data-[disabled]:opacity-50',
     title: 'font-semibold whitespace-nowrap transition-colors',
     description: 'text-muted-foreground transition-colors',
-    itemContent: 'flex min-w-0 flex-col gap-0.5',
-    indicatorIcon: 'size-[1em]'
+    itemContent: 'flex min-w-0 flex-col',
+    indicatorIcon: ''
   },
   variants: {
     size: {
       xs: {
+        root: 'text-2xs',
+        trigger: 'gap-1 data-[orientation=vertical]:gap-2',
         indicator: 'size-6 text-2xs',
+        itemContent: 'gap-1',
         title: 'text-2xs',
-        description: 'text-4xs'
+        description: 'text-4xs',
+        separator: 'data-[orientation=horizontal]:mt-3 data-[orientation=vertical]:ms-3'
       },
       sm: {
+        root: 'text-xs',
+        trigger: 'gap-1.5 data-[orientation=vertical]:gap-3',
         indicator: 'size-7 text-xs',
+        itemContent: 'gap-1.5',
         title: 'text-xs',
-        description: 'text-3xs'
+        description: 'text-3xs',
+        separator: 'data-[orientation=horizontal]:mt-3.5 data-[orientation=vertical]:ms-3.5'
       },
       md: {
-        indicator: 'size-8 text-sm',
+        root: 'text-sm',
+        trigger: 'gap-2 data-[orientation=vertical]:gap-4',
+        indicator: 'size-8',
+        itemContent: 'gap-2',
         title: 'text-sm',
-        description: 'text-xs'
+        description: 'text-xs',
+        separator: 'data-[orientation=horizontal]:mt-4 data-[orientation=vertical]:ms-4'
       },
       lg: {
+        root: 'text-base',
+        trigger: 'gap-2.5 data-[orientation=vertical]:gap-5',
         indicator: 'size-9 text-base',
+        itemContent: 'gap-2.5',
         title: 'text-base',
-        description: 'text-sm'
+        description: 'text-sm',
+        separator: 'data-[orientation=horizontal]:mt-4.5 data-[orientation=vertical]:ms-4.5'
       },
       xl: {
+        root: 'text-lg',
+        trigger: 'gap-3 data-[orientation=vertical]:gap-6',
         indicator: 'size-10 text-lg',
+        itemContent: 'gap-3',
         title: 'text-lg',
-        description: 'text-base'
+        description: 'text-base',
+        separator: 'data-[orientation=horizontal]:mt-5 data-[orientation=vertical]:ms-5'
       },
       '2xl': {
+        root: 'text-xl',
+        trigger: 'gap-3.5 data-[orientation=vertical]:gap-7',
         indicator: 'size-12 text-xl',
+        itemContent: 'gap-3.5',
         title: 'text-xl',
-        description: 'text-lg'
+        description: 'text-lg',
+        separator: 'data-[orientation=horizontal]:mt-6 data-[orientation=vertical]:ms-6'
       }
     },
     orientation: {
       horizontal: {
-        root: 'items-start gap-2',
-        trigger: 'flex-col items-center text-center gap-2',
+        root: 'items-start',
+        trigger: 'flex-col items-center text-center',
         itemContent: 'items-center text-center',
-        separator: 'mt-3 h-0.5 flex-1'
+        separator: 'h-0.5 flex-1'
       },
       vertical: {
-        root: 'flex-col gap-0',
-        item: 'flex-none flex-col items-start gap-0',
-        trigger: 'w-full flex-row items-start text-left gap-3',
-        itemContent: 'flex-1 items-start text-left pt-0.5',
-        separator: 'ms-4 w-0.5 min-h-7'
+        root: 'flex-col',
+        item: 'flex-none flex-col items-start',
+        trigger: 'w-full flex-row items-start text-left',
+        itemContent: 'flex-1 items-start text-left',
+        separator: 'w-0.5 min-h-7'
       }
     },
     color: {
