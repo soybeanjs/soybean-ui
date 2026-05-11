@@ -49,7 +49,7 @@ class ProgressObserver {
       return false;
     }
 
-    return document.querySelector('[data-soybean-progress]') !== null;
+    return document.querySelector('[data-soybean-progress-provider]') !== null;
   }
 
   /**
@@ -257,7 +257,7 @@ class ProgressObserver {
     }
 
     const progressElements: HTMLElement[] = Array.from(
-      document.querySelectorAll('[data-soybean-progress]')
+      document.querySelectorAll('[data-soybean-progress-provider]')
     ) as HTMLElement[];
 
     // Common initialization logic for all progress elements
@@ -307,7 +307,7 @@ class ProgressObserver {
       // For user-provided templates, hide the element instead of removing it.
       progressElement.style.display = 'none';
     } else {
-      const progresses = document.querySelectorAll('[data-soybean-progress]');
+      const progresses = document.querySelectorAll('[data-soybean-progress-provider]');
       progresses.forEach(progress => {
         const elem = progress as HTMLElement;
         // Hide the element instead of removing it.
