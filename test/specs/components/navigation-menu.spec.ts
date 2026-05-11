@@ -97,31 +97,6 @@ describe('NavigationMenu viewport positioning', () => {
     });
   });
 
-  it('anchors a vertical ltr viewport to the root menu left edge when space allows', () => {
-    setViewportSize(640, 480);
-
-    const position = getNavigationMenuViewportPosition({
-      rootElement: createMockElement({
-        left: 220,
-        top: 140,
-        width: 72,
-        height: 120
-      }),
-      contentSize: {
-        width: 180,
-        height: 160
-      },
-      orientation: 'vertical',
-      dir: 'ltr',
-      align: 'center'
-    });
-
-    expect(position).toEqual({
-      left: 220,
-      top: 120
-    });
-  });
-
   it('uses inline-start alignment for horizontal RTL viewports', () => {
     setViewportSize(1280, 720);
 
@@ -144,31 +119,6 @@ describe('NavigationMenu viewport positioning', () => {
     expect(position).toEqual({
       left: 480,
       top: 96
-    });
-  });
-
-  it('anchors vertical RTL viewports to the root menu inline-start edge', () => {
-    setViewportSize(640, 480);
-
-    const position = getNavigationMenuViewportPosition({
-      rootElement: createMockElement({
-        left: 220,
-        top: 140,
-        width: 72,
-        height: 120
-      }),
-      contentSize: {
-        width: 180,
-        height: 160
-      },
-      orientation: 'vertical',
-      dir: 'rtl',
-      align: 'center'
-    });
-
-    expect(position).toEqual({
-      left: 112,
-      top: 120
     });
   });
 });

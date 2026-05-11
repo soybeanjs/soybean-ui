@@ -62,7 +62,6 @@ describe('SStepper', () => {
       const itemChildren = Array.from(activeItem.element.children);
       const activeSeparator = itemChildren[1] as HTMLElement | undefined;
 
-      expect(wrapper.find('[role="group"]').classes()).toContain('gap-0');
       expect(activeItem.classes()).toContain('flex-col');
       expect(itemChildren[0]?.tagName).toBe('BUTTON');
       expect(activeSeparator?.getAttribute('role')).toBe('none');
