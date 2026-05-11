@@ -20,7 +20,7 @@ const emit = defineEmits<HoverCardEmits>();
 
 const slots = defineSlots<HoverCardSlots>();
 
-const forwardedRootProps = useOmitProps(props, ['class', 'size', 'ui']);
+const forwardedProps = useOmitProps(props, ['class', 'size', 'ui']);
 
 const listeners = useForwardListeners(emit);
 
@@ -38,7 +38,7 @@ provideHoverCardUi(ui);
 </script>
 
 <template>
-  <HoverCardCompact v-bind="forwardedRootProps" v-on="listeners">
+  <HoverCardCompact v-bind="forwardedProps" v-on="listeners">
     <template v-for="slotName in slotNames" :key="slotName" #[slotName]>
       <slot :name="slotName" />
     </template>
