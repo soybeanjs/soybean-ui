@@ -46,7 +46,7 @@ const tabs = computed<TabsOptionData<TabValue>[]>(() => [
           <STabs :items="tabs" default-value="preview" fill="auto">
             <template #content="{ value }">
               <template v-if="item.component">
-                <div v-if="value === 'preview'" class="min-h-36 border border-dashed p-4 sm:p-5">
+                <div v-if="value === 'preview'" class="min-h-36 border border-dashed p-4 rounded-md sm:p-5">
                   <component :is="item.component" />
                 </div>
                 <CodeBlock v-else :code="item.code" lang="vue" />
