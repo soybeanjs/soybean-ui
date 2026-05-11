@@ -42,6 +42,18 @@ useStyleTag(
   overflow-y: hidden;
 }
 
+.soybean-headless-transition-all-150 {
+  transition: all 150ms ease-in-out;
+}
+
+.soybean-headless-opacity-0 {
+  opacity: 0;
+}
+
+.soybean-headless-scale-0 {
+  transform: scale(0);
+}
+
 .soybean-headless-sr-only {
   position: absolute;
   width: 1px;

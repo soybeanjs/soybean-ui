@@ -1,8 +1,8 @@
 import type { ComputedRef, ShallowRef } from 'vue';
 import type {
   BaseProps,
-  AcceptableBooleanValue,
   DataOrientation,
+  DefinedWithBooleanValue,
   Direction,
   EmitsToHookProps,
   ForceMountProps,
@@ -13,14 +13,15 @@ import type {
 import type { ButtonProps } from '../button/types';
 import type { PrimitiveWithBaseProps } from '../primitive/types';
 import type { LabelProps as RadioGroupLabelProps } from '../label/types';
+import { IconValue } from '../_icon/types';
 
 /**
  * Properties for the RadioGroupRoot component.
  */
-export interface RadioGroupRootProps<T extends AcceptableBooleanValue = AcceptableBooleanValue>
+export interface RadioGroupRootProps<T extends DefinedWithBooleanValue = DefinedWithBooleanValue>
   extends FormFieldCommonProps, BaseProps {
   /** The controlled value of the radio item to check. Can be bound as `v-model`. */
-  modelValue?: T;
+  modelValue?: T | null;
   /**
    * The value of the radio item that should be checked when initially rendered. Use when you do not need to control the
    * state of the radio items.
@@ -39,9 +40,9 @@ export interface RadioGroupRootProps<T extends AcceptableBooleanValue = Acceptab
 /**
  * Events for the RadioGroupRoot component.
  */
-export type RadioGroupRootEmits<T extends AcceptableBooleanValue = AcceptableBooleanValue> = {
+export type RadioGroupRootEmits<T extends DefinedWithBooleanValue> = {
   /** Event handler called when the radio group value changes */
-  'update:modelValue': [payload: Exclude<T, undefined>];
+  'update:modelValue': [payload: T | null];
 };
 
 /**
@@ -54,7 +55,7 @@ export type RadioGroupRootContext = PropsToContext<
   /**
    * Current model value.
    */
-  modelValue: ShallowRef<AcceptableBooleanValue>;
+  modelValue: ShallowRef<DefinedWithBooleanValue | null>;
 };
 
 /**
@@ -62,7 +63,7 @@ export type RadioGroupRootContext = PropsToContext<
  */
 export interface RadioGroupItemProps extends FormFieldCommonProps, BaseProps {
   /** The value given as data when submitted with a `name`. */
-  value: NonNullable<AcceptableBooleanValue>;
+  value: DefinedWithBooleanValue;
   /** When `true`, prevents the user from interacting with the radio item. */
   disabled?: boolean;
 }
@@ -78,7 +79,7 @@ export type RadioSelectEvent = CustomEvent<{
   /**
    * Value associated with the current item.
    */
-  value: NonNullable<AcceptableBooleanValue>;
+  value: DefinedWithBooleanValue;
 }>;
 
 /**
@@ -105,11 +106,11 @@ export interface RadioGroupIndicatorProps extends ForceMountProps, PrimitiveWith
 /**
  * Option data for the RadioGroup component.
  */
-export interface RadioGroupOptionData<T extends AcceptableBooleanValue = AcceptableBooleanValue> {
+export interface RadioGroupOptionData<T extends DefinedWithBooleanValue = DefinedWithBooleanValue> {
   /**
    * Value associated with the current item.
    */
-  value: NonNullable<T>;
+  value: T;
   /**
    * Label text rendered by the component.
    */
@@ -124,13 +125,12 @@ export interface RadioGroupOptionData<T extends AcceptableBooleanValue = Accepta
  * Properties for the RadioGroupCompact component.
  */
 export interface RadioGroupCompactProps<
-  T extends AcceptableBooleanValue = AcceptableBooleanValue,
-  S extends RadioGroupOptionData<T> = RadioGroupOptionData<T>
-> extends RadioGroupRootProps<T> {
+  T extends RadioGroupOptionData = RadioGroupOptionData
+> extends RadioGroupRootProps<T['value']> {
   /**
    * Items rendered by the component.
    */
-  items: S[];
+  items: T[];
   /**
    * Properties forwarded to the item element.
    */
@@ -152,7 +152,60 @@ export interface RadioGroupCompactProps<
 /**
  * Events for the RadioGroupCompact component.
  */
-export type RadioGroupCompactEmits<T extends AcceptableBooleanValue = AcceptableBooleanValue> = RadioGroupRootEmits<T>;
+export type RadioGroupCompactEmits<T extends DefinedWithBooleanValue = DefinedWithBooleanValue> =
+  RadioGroupRootEmits<T>;
+
+/**
+ * Option data for the RadioGroupCard component.
+ */
+export interface RadioGroupCardOptionData<
+  T extends DefinedWithBooleanValue = DefinedWithBooleanValue
+> extends RadioGroupOptionData<T> {
+  /**
+   * Icon rendered by the component.
+   */
+  icon?: IconValue;
+  /**
+   * Description text rendered by the component.
+   */
+  description?: string;
+}
+
+/**
+ * Properties for the RadioGroupCard component.
+ */
+export interface RadioGroupCardCompactProps<
+  T extends RadioGroupCardOptionData = RadioGroupCardOptionData
+> extends RadioGroupCompactProps<T> {
+  /**
+   * Properties forwarded to the content element.
+   */
+  contentProps?: BaseProps;
+  /**
+   * Properties forwarded to the text content element.
+   */
+  textContentProps?: BaseProps;
+  /**
+   * Properties forwarded to the description element.
+   */
+  descriptionProps?: BaseProps;
+}
+
+/**
+ * Events for the RadioGroupCardCompact component.
+ */
+export type RadioGroupCardCompactEmits<T extends DefinedWithBooleanValue = DefinedWithBooleanValue> =
+  RadioGroupCompactEmits<T>;
+
+/**
+ * Slots for the RadioGroupCompact component.
+ */
+export type RadioGroupCardCompactSlots<T extends RadioGroupCardOptionData = RadioGroupCardOptionData> = {
+  /**
+   * Slot for rendering custom description content within the radio card.
+   */
+  description?: (props: { item: T }) => any;
+};
 
 /**
  * Parameters used to create the RadioGroupItem context.
@@ -180,5 +233,15 @@ export type RadioGroupUiSlot = 'root' | 'item' | 'indicator' | 'label' | 'contro
  * UI class overrides for the RadioGroup component.
  */
 export type RadioGroupUi = UiClass<RadioGroupUiSlot>;
+
+/**
+ * Available UI slots for the RadioGroupCard component.
+ */
+export type RadioGroupCardUiSlot = RadioGroupUiSlot | 'content' | 'textContent' | 'description' | 'icon';
+
+/**
+ * UI class overrides for the RadioGroupCard component.
+ */
+export type RadioGroupCardUi = UiClass<RadioGroupCardUiSlot>;
 
 export type { RadioGroupLabelProps };

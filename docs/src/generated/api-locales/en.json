@@ -11904,7 +11904,7 @@
             "ui": "Per-slot class overrides for the component.",
             "variant": "Visual variant of the component."
           },
-          "props": "Properties for the RadioCardGroup component."
+          "props": "Properties for the RadioGroupCard component."
         },
         "radiocardprops": {
           "members": {

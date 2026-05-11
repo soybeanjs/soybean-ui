@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { SRadioCardGroup } from '@soybeanjs/ui';
-import type { RadioCardGroupOptionData } from '@soybeanjs/ui';
+import { SRadioGroupCard } from '@soybeanjs/ui';
+import type { RadioGroupCardOptionData } from '@soybeanjs/ui';
 
 const selected = ref<string>('apple');
 
-const items: RadioCardGroupOptionData<string>[] = [
+const items: RadioGroupCardOptionData<string>[] = [
   { icon: 'lucide:apple', value: 'apple', label: 'Apple', description: 'This is an apple' },
   { icon: 'hugeicons:orange', value: 'orange', label: 'Orange', description: 'This is an orange' },
   { icon: 'lucide:banana', value: 'banana', label: 'Banana', description: 'This is a banana' },
@@ -14,5 +14,5 @@ const items: RadioCardGroupOptionData<string>[] = [
 </script>
 
 <template>
-  <SRadioCardGroup v-model="selected" :items="items" color="destructive" shape="rounded" />
+  <SRadioGroupCard v-model="selected" :items="items" color="destructive" shape="rounded" />
 </template>

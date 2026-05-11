@@ -404,8 +404,9 @@ export const components = {
     'ProgressCircle'
   ],
   radioGroup: [
-    'RadioGroupRoot',
     'RadioGroupCompact',
+    'RadioGroupCardCompact',
+    'RadioGroupRoot',
     'RadioGroupItem',
     'RadioGroupControl',
     'RadioGroupIndicator',

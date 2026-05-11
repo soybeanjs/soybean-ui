@@ -572,13 +572,13 @@
         "referencedTypes": []
       }
     },
-    "RadioCardGroup": {
+    "RadioGroupCard": {
       "props": {
         "kind": "props",
-        "name": "RadioCardGroupProps",
-        "type": "Interface RadioCardGroupProps<T, S>",
+        "name": "RadioGroupCardProps",
+        "type": "Interface RadioGroupCardProps<T, S>",
         "resolvedType": "{ ui?: Partial<RadioGroupCardUi>; items: S[]; class?: string | false | Record<string, any> | ClassValue[] | null; variant?: RadioGroupVariant; color?: ThemeColor; size?: ThemeSize; itemProps?: RadioGroupItemProps; controlProps?: RadioGroupControlProps; indicatorProps?: RadioGroupIndicatorProps; labelProps?: RadioGroupLabelProps; modelValue?: T; defaultValue?: T; disabled?: boolean; orientation?: DataOrientation; dir?: Direction; loop?: boolean; name?: string; required?: boolean }",
-        "description": "Properties for the RadioCardGroup component.",
+        "description": "Properties for the RadioGroupCard component.",
         "descriptionKey": "api.generated.src_components_radio_group_types.radiocardgroupprops.props",
         "sourcePath": "src/components/radio-group/types.ts",
         "typeParameters": ["TypeParameter T", "TypeParameter S"],

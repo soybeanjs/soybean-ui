@@ -1,8 +1,8 @@
-<script setup lang="ts" generic="T extends AcceptableBooleanValue">
+<script setup lang="ts" generic="T extends DefinedWithBooleanValue">
 import { computed, useTemplateRef } from 'vue';
 import { useControllableState } from '../../composables';
 import { isFormControl, transformPropsToContext } from '../../shared';
-import type { AcceptableBooleanValue } from '../../types';
+import type { DefinedWithBooleanValue } from '../../types';
 import { RovingFocusGroup } from '../roving-focus';
 import { VisuallyHiddenInput } from '../visually-hidden';
 import { provideRadioGroupRootContext, useRadioGroupUi } from './context';
@@ -31,7 +31,6 @@ const modelValue = useControllableState(
   value => {
     emit('update:modelValue', value);
   },
-  // @ts-expect-error defaultValue can be null
   props.defaultValue ?? null
 );
 

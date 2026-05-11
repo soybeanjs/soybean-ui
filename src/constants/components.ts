@@ -58,7 +58,7 @@ export const components = {
   popconfirm: ['SPopconfirm', 'SPopconfirmConfirm', 'SPopconfirmCancel'],
   popover: ['SPopover'],
   progress: ['SProgressProvider', 'SProgress', 'SProgressCircle'],
-  radioGroup: ['SRadioGroup', 'SRadio', 'SRadioCard', 'SRadioCardGroup'],
+  radioGroup: ['SRadioGroup', 'SRadioGroupCard'],
   scrollArea: ['SScrollArea'],
   segment: ['SSegment'],
   select: ['SSelect'],

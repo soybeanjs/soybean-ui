@@ -5,6 +5,7 @@ export type ClassValue = false | null | undefined | string | Record<string, any>
 export type UiClass<UiSlot extends string> = Record<UiSlot, ClassValue>;
 
 export type DefinedValue = string | number;
+export type DefinedWithBooleanValue = DefinedValue | boolean;
 export type AcceptableValue = DefinedValue | null | undefined;
 export type AcceptableBooleanValue = AcceptableValue | boolean;
 

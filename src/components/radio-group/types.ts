@@ -1,54 +1,28 @@
 import type {
-  RadioGroupCompactEmits,
   RadioGroupCompactProps,
-  RadioGroupControlProps,
-  RadioGroupIndicatorProps,
-  RadioGroupItemProps,
-  RadioGroupLabelProps,
+  RadioGroupCompactEmits,
   RadioGroupOptionData,
-  RadioGroupUi
+  RadioGroupCardCompactProps,
+  RadioGroupCardCompactEmits,
+  RadioGroupCardCompactSlots,
+  RadioGroupCardOptionData,
+  RadioGroupUi,
+  RadioGroupCardUi
 } from '@soybeanjs/headless/radio-group';
-import type { AcceptableBooleanValue, ClassValue } from '@soybeanjs/headless/types';
+import type { DefinedWithBooleanValue, ClassValue } from '@soybeanjs/headless/types';
 import type { ThemeColor, ThemeSize } from '@/theme';
 import type { RadioGroupVariant } from './variants';
-
-/**
- * Properties for the Radio component.
- */
-export interface RadioProps extends RadioGroupItemProps {
-  /**
-   * Label text rendered by the component.
-   */
-  label?: string;
-  /**
-   * Properties forwarded to the control element.
-   */
-  controlProps?: RadioGroupControlProps;
-  /**
-   * Properties forwarded to the indicator element.
-   */
-  indicatorProps?: RadioGroupIndicatorProps;
-  /**
-   * Properties forwarded to the label element.
-   */
-  labelProps?: RadioGroupLabelProps;
-}
 
 /**
  * Properties for the RadioGroup component.
  */
 export interface RadioGroupProps<
-  T extends AcceptableBooleanValue = AcceptableBooleanValue,
-  S extends RadioGroupOptionData<T> = RadioGroupOptionData<T>
-> extends RadioGroupCompactProps<T, S> {
+  T extends RadioGroupOptionData = RadioGroupOptionData
+> extends RadioGroupCompactProps<T> {
   /**
    * Additional class names applied to the root element.
    */
   class?: ClassValue;
-  /**
-   * Per-slot class overrides for the component.
-   */
-  ui?: Partial<RadioGroupUi>;
   /**
    * Visual variant of the component.
    */
@@ -61,77 +35,53 @@ export interface RadioGroupProps<
    * Visual size of the component.
    */
   size?: ThemeSize;
+  /**
+   * Per-slot class overrides for the component.
+   */
+  ui?: Partial<RadioGroupUi>;
 }
 
 /**
  * Events for the RadioGroup component.
  */
-export type RadioGroupEmits<T extends AcceptableBooleanValue = AcceptableBooleanValue> = RadioGroupCompactEmits<T>;
+export type RadioGroupEmits<T extends DefinedWithBooleanValue = DefinedWithBooleanValue> = RadioGroupCompactEmits<T>;
 
 /**
- * Available UI slots for the RadioGroupCard component.
+ * Properties for the RadioGroupCard component.
  */
-export type RadioGroupCardUiSlot = 'content' | 'textContent' | 'icon' | 'description';
-
-/**
- * UI class overrides for the RadioGroupCard component.
- */
-export type RadioGroupCardUi = RadioGroupUi & Record<RadioGroupCardUiSlot, ClassValue>;
-
-/**
- * Properties for the RadioCard component.
- */
-export interface RadioCardProps extends RadioProps {
+export interface RadioGroupCardProps<
+  T extends RadioGroupCardOptionData = RadioGroupCardOptionData
+> extends RadioGroupCardCompactProps<T> {
+  /**
+   * Additional class names applied to the root element.
+   */
+  class?: ClassValue;
+  /**
+   * Visual variant of the component.
+   */
+  variant?: RadioGroupVariant;
+  /**
+   * Theme color of the component.
+   */
+  color?: ThemeColor;
+  /**
+   * Visual size of the component.
+   */
+  size?: ThemeSize;
   /**
    * Per-slot class overrides for the component.
    */
   ui?: Partial<RadioGroupCardUi>;
-  /**
-   * Icon rendered by the component.
-   */
-  icon?: string;
-  /**
-   * Description text rendered by the component.
-   */
-  description?: string;
-}
-
-/**
- * Option data for the RadioCardGroup component.
- */
-export interface RadioCardGroupOptionData<
-  T extends AcceptableBooleanValue = AcceptableBooleanValue
-> extends RadioGroupOptionData<T> {
-  /**
-   * Icon rendered by the component.
-   */
-  icon?: string;
-  /**
-   * Description text rendered by the component.
-   */
-  description?: string;
-}
-
-/**
- * Properties for the RadioCardGroup component.
- */
-export interface RadioCardGroupProps<
-  T extends AcceptableBooleanValue = AcceptableBooleanValue,
-  S extends RadioCardGroupOptionData<T> = RadioCardGroupOptionData<T>
-> extends RadioGroupProps<T, S> {
-  /**
-   * Per-slot class overrides for the component.
-   */
-  ui?: Partial<RadioGroupCardUi>;
-  /**
-   * Items rendered by the component.
-   */
-  items: S[];
 }
 
 /**
  * Events for the RadioGroupCard component.
  */
-export type RadioGroupCardEmits<T extends AcceptableBooleanValue = AcceptableBooleanValue> = RadioGroupEmits<T>;
+export type RadioGroupCardEmits<T extends DefinedWithBooleanValue = DefinedWithBooleanValue> =
+  RadioGroupCardCompactEmits<T>;
 
-export type { RadioGroupOptionData } from '@soybeanjs/headless/radio-group';
+/**
+ * Slots for the RadioGroupCard component.
+ */
+export type RadioGroupCardSlots<T extends RadioGroupCardOptionData = RadioGroupCardOptionData> =
+  RadioGroupCardCompactSlots<T>;

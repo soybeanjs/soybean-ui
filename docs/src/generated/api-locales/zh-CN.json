@@ -11904,7 +11904,7 @@
             "ui": "组件的每个插槽类重写。",
             "variant": "组件的可视化变体。"
           },
-          "props": "RadioCardGroup 组件的属性。"
+          "props": "RadioGroupCard 组件的属性。"
         },
         "radiocardprops": {
           "members": {

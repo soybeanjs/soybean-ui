@@ -1,34 +1,21 @@
-<script
-  setup
-  lang="ts"
-  generic="
-    T extends AcceptableBooleanValue = AcceptableBooleanValue,
-    S extends RadioGroupOptionData<T> = RadioGroupOptionData<T>
-  "
->
+<script setup lang="ts" generic="T extends RadioGroupOptionData">
 import { computed } from 'vue';
 import { RadioGroupCompact, provideRadioGroupUi } from '@soybeanjs/headless/radio-group';
+import type { RadioGroupOptionData } from '@soybeanjs/headless/radio-group';
 import { useOmitProps } from '@soybeanjs/headless/composables';
-import type { AcceptableBooleanValue } from '@soybeanjs/headless/types';
 import { mergeVariants } from '@/theme';
 import { radioGroupVariants } from './variants';
-import type { RadioGroupEmits, RadioGroupOptionData, RadioGroupProps } from './types';
+import type { RadioGroupEmits, RadioGroupProps } from './types';
 
 defineOptions({
   name: 'SRadioGroup'
 });
 
-const props = defineProps<RadioGroupProps<T, S>>();
+const props = defineProps<RadioGroupProps<T>>();
 
-const emit = defineEmits<RadioGroupEmits<T>>();
+const emit = defineEmits<RadioGroupEmits<T['value']>>();
 
 const forwardedProps = useOmitProps(props, ['class', 'ui', 'variant', 'color', 'size']);
-
-const compactItems = computed(() => props.items as RadioGroupOptionData<T>[]);
-
-const handleModelValueChange = (value: Exclude<T, undefined>) => {
-  emit('update:modelValue', value);
-};
 
 const ui = computed(() => {
   const variants = radioGroupVariants({
@@ -44,6 +31,5 @@ provideRadioGroupUi(ui);
 </script>
 
 <template>
-  <!-- @vue-ignore generic props are validated by RadioGroupProps/RadioGroupCompactProps -->
-  <RadioGroupCompact v-bind="forwardedProps" :items="compactItems" @update:model-value="handleModelValueChange" />
+  <RadioGroupCompact v-bind="forwardedProps" :items="items" @update:model-value="emit('update:modelValue', $event)" />
 </template>
