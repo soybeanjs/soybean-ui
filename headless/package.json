@@ -126,13 +126,13 @@
     "ohash": "^2.0.11"
   },
   "devDependencies": {
-    "@nuxt/kit": "^4.4.4",
-    "@nuxt/schema": "^4.4.4",
-    "tsdown": "0.21.10",
+    "@nuxt/kit": "^4.4.5",
+    "@nuxt/schema": "^4.4.5",
+    "tsdown": "0.22.0",
     "typescript": "6.0.3",
     "unplugin-vue": "7.2.0",
     "unplugin-vue-components": "^32.0.0",
-    "unplugin-vue-jsx": "0.8.1",
+    "unplugin-vue-jsx": "0.9.0",
     "vue": "3.5.34",
     "vue-router": "5.0.6"
   },
