@@ -1,5 +1,98 @@
 # Changelog
 
+## [v0.20.0](https://github.com/soybeanjs/soybean-ui/compare/v0.19.0...v0.20.0) (2026-05-12)
+
+### &nbsp;&nbsp;&nbsp;🚀 Features
+
+- **docs**:
+  - integrate theme setting on locale change &nbsp;-&nbsp; by **soybeanfe** [<samp>(f0042)</samp>](https://github.com/soybeanjs/soybean-ui/commit/f004236b)
+  - add component count to introduction section &nbsp;-&nbsp; by **soybeanfe** [<samp>(9437a)</samp>](https://github.com/soybeanjs/soybean-ui/commit/9437ac52)
+  - add RTL support details and examples to documentation &nbsp;-&nbsp; by @soybeanjs [<samp>(aa79d)</samp>](https://github.com/soybeanjs/soybean-ui/commit/aa79df1f)
+- **navigation-menu**:
+  - implement NavigationMenuCompact &nbsp;-&nbsp; by **soybeanfe** [<samp>(33b01)</samp>](https://github.com/soybeanjs/soybean-ui/commit/33b01bc9)
+- **scripts**:
+  - add script to reorder Vue props and emits imports &nbsp;-&nbsp; by **soybeanfe** [<samp>(9b64f)</samp>](https://github.com/soybeanjs/soybean-ui/commit/9b64f817)
+- **stepper**:
+  - simplify component structure using StepperCompact &nbsp;-&nbsp; by **soybeanfe** [<samp>(b781b)</samp>](https://github.com/soybeanjs/soybean-ui/commit/b781b350)
+- **switch**:
+  - add direction support for switch component &nbsp;-&nbsp; by **soybeanfe** [<samp>(f6453)</samp>](https://github.com/soybeanjs/soybean-ui/commit/f64533a9)
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- **bottom-sheet**:
+  - simplify variant merging logic and remove unused slot &nbsp;-&nbsp; by @soybeanjs [<samp>(e96e7)</samp>](https://github.com/soybeanjs/soybean-ui/commit/e96e7f76)
+- **docs**:
+  - add max height and overflow styles to the container &nbsp;-&nbsp; by **soybeanfe** [<samp>(75173)</samp>](https://github.com/soybeanjs/soybean-ui/commit/751735a1)
+  - conditionally display badge based on preset type &nbsp;-&nbsp; by **soybeanfe** [<samp>(37ee8)</samp>](https://github.com/soybeanjs/soybean-ui/commit/37ee882f)
+- **drawer**:
+  - simplify variant assignment in computed property &nbsp;-&nbsp; by @soybeanjs [<samp>(b55f5)</samp>](https://github.com/soybeanjs/soybean-ui/commit/b55f5032)
+- **empty**:
+  - correct margin classes for media in size variants &nbsp;-&nbsp; by **soybeanfe** [<samp>(bcec5)</samp>](https://github.com/soybeanjs/soybean-ui/commit/bcec5907)
+- **playground**:
+  - remove v-model binding from SNavigationMenu &nbsp;-&nbsp; by **soybeanfe** [<samp>(4634b)</samp>](https://github.com/soybeanjs/soybean-ui/commit/4634b12a)
+- **progress**:
+  - update query selectors to use data-soybean-progress-provider &nbsp;-&nbsp; by @soybeanjs [<samp>(bc952)</samp>](https://github.com/soybeanjs/soybean-ui/commit/bc952854)
+- **test**:
+  - remove redundant viewport position tests for RTL &nbsp;-&nbsp; by @soybeanjs [<samp>(8c796)</samp>](https://github.com/soybeanjs/soybean-ui/commit/8c79656b)
+
+### &nbsp;&nbsp;&nbsp;🛠 Optimizations
+
+- **components**:
+  - support RTL &nbsp;-&nbsp; by **soybeanfe** [<samp>(d833a)</samp>](https://github.com/soybeanjs/soybean-ui/commit/d833a484)
+- **config-provider**:
+  - remove unused text direction handling &nbsp;-&nbsp; by **soybeanfe** [<samp>(8f21f)</samp>](https://github.com/soybeanjs/soybean-ui/commit/8f21fba2)
+- **docs**:
+  - update docs Anchor size &nbsp;-&nbsp; by **soybeanfe** [<samp>(6025f)</samp>](https://github.com/soybeanjs/soybean-ui/commit/6025f630)
+- **editable**:
+  - simplify Editable component by using EditableCompact &nbsp;-&nbsp; by @soybeanjs [<samp>(41d72)</samp>](https://github.com/soybeanjs/soybean-ui/commit/41d72493)
+- **hover-card**:
+  - simplify HoverCard component by using HoverCardCompact &nbsp;-&nbsp; by @soybeanjs [<samp>(f23ad)</samp>](https://github.com/soybeanjs/soybean-ui/commit/f23adcba)
+  - rename forwardedRootProps to forwardedProps for consistency &nbsp;-&nbsp; by @soybeanjs [<samp>(d2545)</samp>](https://github.com/soybeanjs/soybean-ui/commit/d2545dd5)
+  - simplify slot handling and remove unused variables &nbsp;-&nbsp; by @soybeanjs [<samp>(4d747)</samp>](https://github.com/soybeanjs/soybean-ui/commit/4d7478d4)
+- **menubar**:
+  - remove computed class and simplify class binding &nbsp;-&nbsp; by **soybeanfe** [<samp>(da103)</samp>](https://github.com/soybeanjs/soybean-ui/commit/da103dea)
+- **pagination**:
+  - simplify Pagination component by using PaginationCompact &nbsp;-&nbsp; by @soybeanjs [<samp>(fd3b9)</samp>](https://github.com/soybeanjs/soybean-ui/commit/fd3b9c44)
+- **toolbar**:
+  - add showIcon prop to ToolbarLink and enhance toolbar variants &nbsp;-&nbsp; by **soybeanfe** [<samp>(e1d05)</samp>](https://github.com/soybeanjs/soybean-ui/commit/e1d056e2)
+- **tooltip**:
+  - rename forwardedRootProps to forwardedProps for consistency &nbsp;-&nbsp; by @soybeanjs [<samp>(ae39f)</samp>](https://github.com/soybeanjs/soybean-ui/commit/ae39f7b0)
+
+### &nbsp;&nbsp;&nbsp;💅 Refactors
+
+- **components**: update class names for RTL support and improve positioning logic &nbsp;-&nbsp; by @soybeanjs [<samp>(073e1)</samp>](https://github.com/soybeanjs/soybean-ui/commit/073e1824)
+- **radio-group**: rename RadioCardGroup to RadioGroupCard and simplify RadioGroup component by using RadioGroupCompact &nbsp;-&nbsp; by **soybeanfe** [<samp>(de602)</samp>](https://github.com/soybeanjs/soybean-ui/commit/de6024fc)
+- **types**: change interfaces to type aliases for compact slots &nbsp;-&nbsp; by @soybeanjs [<samp>(93359)</samp>](https://github.com/soybeanjs/soybean-ui/commit/93359f74)
+
+### &nbsp;&nbsp;&nbsp;📖 Documentation
+
+- **api**: update docs api &nbsp;-&nbsp; by **soybeanfe** [<samp>(d96a3)</samp>](https://github.com/soybeanjs/soybean-ui/commit/d96a35a9)
+- **changelog**: update docs changelog &nbsp;-&nbsp; by @soybeanjs [<samp>(b5c6d)</samp>](https://github.com/soybeanjs/soybean-ui/commit/b5c6d247)
+- **introduction**: update component count in introduction &nbsp;-&nbsp; by @soybeanjs [<samp>(fbf17)</samp>](https://github.com/soybeanjs/soybean-ui/commit/fbf17e91)
+
+### &nbsp;&nbsp;&nbsp;🏡 Chore
+
+- **deps**: update deps &nbsp;-&nbsp; by **soybeanfe** [<samp>(6b27d)</samp>](https://github.com/soybeanjs/soybean-ui/commit/6b27dfc9)
+- **lint**: add ignorePatterns to configuration &nbsp;-&nbsp; by **soybeanfe** [<samp>(810ee)</samp>](https://github.com/soybeanjs/soybean-ui/commit/810ee5f0)
+
+### &nbsp;&nbsp;&nbsp;✅ Tests
+
+- **editable**: make aria-label test asynchronous &nbsp;-&nbsp; by **soybeanfe** [<samp>(106c5)</samp>](https://github.com/soybeanjs/soybean-ui/commit/106c5e97)
+
+### &nbsp;&nbsp;&nbsp;🎨 Styles
+
+- **components**:
+  - reorder type imports for consistency across components &nbsp;-&nbsp; by **soybeanfe** [<samp>(8d694)</samp>](https://github.com/soybeanjs/soybean-ui/commit/8d694718)
+  - replace 'ml-' with 'ms-' for RTL support in various components &nbsp;-&nbsp; by **soybeanfe** [<samp>(583fc)</samp>](https://github.com/soybeanjs/soybean-ui/commit/583fcc54)
+- **docs**:
+  - enhance md-code-block styling with borders and background &nbsp;-&nbsp; by **soybeanfe** [<samp>(859be)</samp>](https://github.com/soybeanjs/soybean-ui/commit/859be21a)
+  - add rounded corners to preview component container &nbsp;-&nbsp; by **soybeanfe** [<samp>(b41d2)</samp>](https://github.com/soybeanjs/soybean-ui/commit/b41d2edc)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;
+[soybeanfe](mailto:honghuangdc@gmail.com)
+
 ## [v0.19.0](https://github.com/soybeanjs/soybean-ui/compare/v0.18.0...v0.19.0) (2026-05-11)
 
 ### &nbsp;&nbsp;&nbsp;🚀 Features
