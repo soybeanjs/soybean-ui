@@ -78,10 +78,8 @@
   }
 
   .md-code-block {
-    --uno: 'relative my-8 overflow-hidden';
+    --uno: 'relative my-8 border border-border rounded-xl overflow-hidden';
     background: color-mix(in srgb, var(--docs-surface-strong) 96%, transparent);
-    border: 1px solid color-mix(in srgb, var(--docs-panel-border) 82%, transparent);
-    border-radius: var(--docs-panel-radius);
     box-shadow: var(--docs-shadow), var(--docs-panel-inset);
     -webkit-backdrop-filter: saturate(170%) blur(var(--docs-panel-blur));
     backdrop-filter: saturate(170%) blur(var(--docs-panel-blur));
@@ -97,11 +95,8 @@
 
   .md-code-block::before {
     content: attr(data-lang);
-    --uno: 'absolute left-3 top-3 z-1 rounded-full px-2.5 py-1 text-2xs font-semibold uppercase tracking-[0.2em] text-muted-foreground';
-    background: var(--docs-chip-bg-strong);
-    border: 1px solid var(--docs-chip-border);
-    -webkit-backdrop-filter: saturate(150%) blur(8px);
-    backdrop-filter: saturate(150%) blur(8px);
+    --uno: 'absolute left-3 top-3 z-1 border border-border bg-accent rounded-full px-2.5 py-1 text-2xs font-semibold uppercase tracking-[0.2em] text-muted-foreground';
+
   }
 
   .md-code-block > pre {
