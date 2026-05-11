@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { useOmitProps } from '../../composables';
 import { SeparatorRoot } from '../separator';
 import { useToolbarRootContext, useToolbarUi } from './context';
 import type { ToolbarSeparatorProps } from './types';
@@ -15,20 +14,11 @@ const { orientation } = useToolbarRootContext('ToolbarSeparator');
 
 const cls = useToolbarUi('separator');
 
-const forwardedProps = useOmitProps(props, ['class']);
-
-const mergedClass = computed(() => [cls.value, props.class]);
-
 const separatorOrientation = computed(() => (orientation.value === 'horizontal' ? 'vertical' : 'horizontal'));
 </script>
 
 <template>
-  <SeparatorRoot
-    v-bind="forwardedProps"
-    data-soybean-toolbar-separator
-    :class="mergedClass"
-    :orientation="separatorOrientation"
-  >
+  <SeparatorRoot v-bind="props" data-soybean-toolbar-separator :class="cls" :orientation="separatorOrientation">
     <slot />
   </SeparatorRoot>
 </template>

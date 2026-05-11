@@ -12,10 +12,12 @@ defineOptions({
 
 const props = defineProps<ToolbarProps>();
 
-const forwardedProps = useOmitProps(props, ['class', 'ui']);
+const forwardedProps = useOmitProps(props, ['class', 'size', 'ui']);
 
 const ui = computed(() => {
-  const variants = toolbarVariants();
+  const variants = toolbarVariants({
+    size: props.size
+  });
 
   return mergeVariants(variants, props.ui, { root: props.class });
 });

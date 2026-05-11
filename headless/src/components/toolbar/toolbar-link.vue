@@ -2,7 +2,8 @@
 import { computed } from 'vue';
 import { useOmitProps } from '../../composables';
 import { RovingFocusItem } from '../roving-focus';
-import { Link } from '../link';
+import Link from '../link/link.vue';
+import Icon from '../_icon/icon.vue';
 import { useToolbarUi } from './context';
 import type { ToolbarLinkProps } from './types';
 
@@ -11,14 +12,12 @@ defineOptions({
 });
 
 const props = withDefaults(defineProps<ToolbarLinkProps>(), {
-  as: 'a'
+  showIcon: true
 });
 
-const cls = useToolbarUi('link');
+const ui = useToolbarUi();
 
 const forwardedProps = useOmitProps(props, ['class']);
-
-const mergedClass = computed(() => [cls.value, props.class]);
 
 const focusable = computed(() => !props.disabled && props.tabindex !== '-1' && props.tabindex !== -1);
 
@@ -34,8 +33,9 @@ const onKeyDown = (event: KeyboardEvent) => {
 
 <template>
   <RovingFocusItem as-child :focusable="focusable">
-    <Link v-bind="forwardedProps" data-soybean-toolbar-link :class="mergedClass" @keydown="onKeyDown">
+    <Link v-slot="slotProps" v-bind="forwardedProps" data-soybean-toolbar-link :class="ui.link" @keydown="onKeyDown">
       <slot />
+      <Icon v-if="props.showIcon && slotProps.isHref" icon="lucide:arrow-up-right" :class="ui.linkIcon" />
     </Link>
   </RovingFocusItem>
 </template>

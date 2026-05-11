@@ -53,7 +53,7 @@ export interface ToolbarRootContextParams {
 /**
  * Available UI slots for the Toolbar component.
  */
-export type ToolbarUiSlot = 'root' | 'button' | 'link' | 'separator' | 'toggleGroup' | 'toggleItem';
+export type ToolbarUiSlot = 'root' | 'button' | 'link' | 'linkIcon' | 'separator' | 'toggleGroup' | 'toggleItem';
 
 /**
  * UI class overrides for the Toolbar component.
@@ -73,7 +73,12 @@ export type ToolbarButtonEmits = ButtonEmits;
 /**
  * Properties for the ToolbarLink component.
  */
-export interface ToolbarLinkProps extends LinkProps {}
+export interface ToolbarLinkProps extends LinkProps {
+  /**
+   * Whether or not to show an icon when the `href` prop is provided.
+   */
+  showIcon?: boolean;
+}
 
 /**
  * Properties for the ToolbarSeparator component.
