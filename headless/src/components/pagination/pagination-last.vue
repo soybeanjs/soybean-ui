@@ -27,6 +27,7 @@ const onClick = () => {
   <Button
     v-bind="props"
     data-soybean-pagination-last
+    data-soybean-pagination-action
     :class="cls"
     :disabled="isDisabled"
     :aria-label="messages.pagination.lastPage"

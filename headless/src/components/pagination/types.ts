@@ -82,16 +82,6 @@ export interface PaginationRootContextParams extends PropsToContext<
 }
 
 /**
- * Available UI slots for the Pagination component.
- */
-export type PaginationUiSlot = 'root' | 'list' | 'listItem' | 'ellipsis' | 'first' | 'prev' | 'next' | 'last';
-
-/**
- * UI class overrides for the Pagination component.
- */
-export type PaginationUi = UiClass<PaginationUiSlot>;
-
-/**
  * Type information for PageEllipsis.
  */
 export interface PageEllipsis {
@@ -196,3 +186,13 @@ export type PaginationCompactSlots = {
    */
   ellipsis?: () => any;
 };
+
+/**
+ * Available UI slots for the Pagination component.
+ */
+export type PaginationUiSlot = 'root' | 'list' | 'listItem' | 'ellipsis' | 'first' | 'prev' | 'next' | 'last';
+
+/**
+ * UI class overrides for the Pagination component.
+ */
+export type PaginationUi = UiClass<PaginationUiSlot>;

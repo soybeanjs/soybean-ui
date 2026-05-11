@@ -94,28 +94,28 @@ export const paginationVariants = tv({
       variant: 'pure',
       actionAsSelected: true,
       class: {
-        navigationButton: `data-[selected]:border data-[selected]:border-border data-[selected]:bg-background data-[selected]:text-accent-foreground data-[selected]:hover:bg-accent/60 data-[selected]:active:bg-accent`
+        navigationButton: `data-[soybean-pagination-action]:border data-[soybean-pagination-action]:border-border data-[soybean-pagination-action]:bg-background data-[soybean-pagination-action]:text-accent-foreground data-[soybean-pagination-action]:hover:bg-accent/60 data-[soybean-pagination-action]:active:bg-accent`
       }
     },
     {
       variant: 'solid',
       actionAsSelected: true,
       class: {
-        navigationButton: `data-[selected]:border-transparent data-[selected]:bg-primary data-[selected]:text-primary-foreground data-[selected]:hover:bg-primary/80 data-[selected]:hover:text-primary-foreground data-[selected]:active:bg-primary-600`
+        navigationButton: `data-[soybean-pagination-action]:border-transparent data-[soybean-pagination-action]:bg-primary data-[soybean-pagination-action]:text-primary-foreground data-[soybean-pagination-action]:hover:bg-primary/80 data-[soybean-pagination-action]:hover:text-primary-foreground data-[soybean-pagination-action]:active:bg-primary-600`
       }
     },
     {
       variant: 'outline',
       actionAsSelected: true,
       class: {
-        navigationButton: `data-[selected]:border data-[selected]:border-primary data-[selected]:bg-background data-[selected]:text-primary data-[selected]:hover:bg-transparent`
+        navigationButton: `data-[soybean-pagination-action]:border data-[soybean-pagination-action]:border-primary data-[soybean-pagination-action]:bg-background data-[soybean-pagination-action]:text-primary data-[soybean-pagination-action]:hover:bg-transparent`
       }
     },
     {
       variant: 'soft',
       actionAsSelected: true,
       class: {
-        navigationButton: `data-[selected]:bg-primary/10 data-[selected]:hover:bg-primary/10 data-[selected]:active:bg-primary/20`
+        navigationButton: `data-[soybean-pagination-action]:bg-primary/10 data-[soybean-pagination-action]:hover:bg-primary/10 data-[soybean-pagination-action]:active:bg-primary/20`
       }
     }
   ],

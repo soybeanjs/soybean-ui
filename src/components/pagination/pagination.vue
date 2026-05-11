@@ -1,21 +1,11 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import {
-  PaginationEllipsis,
-  PaginationFirst,
-  PaginationLast,
-  PaginationList,
-  PaginationListItem,
-  PaginationNext,
-  PaginationPrev,
-  PaginationRoot,
-  providePaginationUi
-} from '@soybeanjs/headless/pagination';
-import { useOmitProps } from '@soybeanjs/headless/composables';
+import { PaginationCompact, providePaginationUi } from '@soybeanjs/headless/pagination';
+import { useOmitProps, useForwardListeners } from '@soybeanjs/headless/composables';
+import { keysOf } from '@soybeanjs/utils';
 import { mergeVariants } from '@/theme';
-import Icon from '../icon/icon.vue';
 import { paginationVariants } from './variants';
-import type { PaginationEmits, PaginationProps } from './types';
+import type { PaginationProps, PaginationEmits, PaginationSlots } from './types';
 
 defineOptions({
   name: 'SPagination'
@@ -27,24 +17,13 @@ const props = withDefaults(defineProps<PaginationProps>(), {
 
 const emit = defineEmits<PaginationEmits>();
 
-const forwardedProps = useOmitProps(props, [
-  'class',
-  'ui',
-  'size',
-  'variant',
-  'shape',
-  'actionAsSelected',
-  'showFirstOrLast',
-  'listProps',
-  'listItemProps',
-  'ellipsisProps',
-  'firstProps',
-  'prevProps',
-  'nextProps',
-  'lastProps'
-]);
+const slots = defineSlots<PaginationSlots>();
 
-const dataSelected = computed(() => (props.actionAsSelected ? '' : undefined));
+const forwardedProps = useOmitProps(props, ['class', 'ui', 'size', 'variant', 'shape', 'actionAsSelected']);
+
+const listeners = useForwardListeners(emit);
+
+const slotNames = computed(() => keysOf(slots));
 
 const ui = computed(() => {
   const variants = paginationVariants({
@@ -74,42 +53,9 @@ providePaginationUi(ui);
 </script>
 
 <template>
-  <PaginationRoot
-    v-bind="forwardedProps"
-    @update:page="emit('update:page', $event)"
-    @update:page-size="emit('update:pageSize', $event)"
-  >
-    <slot name="leading" />
-    <PaginationList v-slot="{ items }" v-bind="listProps">
-      <PaginationFirst v-if="showFirstOrLast" v-bind="firstProps" :data-selected="dataSelected">
-        <slot name="first">
-          <Icon icon="lucide:chevrons-left" />
-        </slot>
-      </PaginationFirst>
-      <PaginationPrev v-bind="prevProps" :data-selected="dataSelected">
-        <slot name="prev">
-          <Icon icon="lucide:chevron-left" />
-        </slot>
-      </PaginationPrev>
-      <template v-for="item in items" :key="item">
-        <PaginationListItem v-if="item.type === 'page'" v-bind="listItemProps" :value="item.value" />
-        <PaginationEllipsis v-else-if="item.type === 'ellipsis'" v-bind="ellipsisProps">
-          <slot name="ellipsis">
-            <Icon icon="lucide:ellipsis" />
-          </slot>
-        </PaginationEllipsis>
-      </template>
-      <PaginationNext v-bind="nextProps" :data-selected="dataSelected">
-        <slot name="next">
-          <Icon icon="lucide:chevron-right" />
-        </slot>
-      </PaginationNext>
-      <PaginationLast v-if="showFirstOrLast" v-bind="lastProps" :data-selected="dataSelected">
-        <slot name="last">
-          <Icon icon="lucide:chevrons-right" />
-        </slot>
-      </PaginationLast>
-    </PaginationList>
-    <slot name="trailing" />
-  </PaginationRoot>
+  <PaginationCompact v-bind="forwardedProps" v-on="listeners">
+    <template v-for="slotName in slotNames" :key="slotName" #[slotName]>
+      <slot :name="slotName" />
+    </template>
+  </PaginationCompact>
 </template>
