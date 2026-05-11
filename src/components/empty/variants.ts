@@ -16,37 +16,37 @@ export const emptyVariants = tv({
         root: 'text-2xs gap-3',
         title: 'text-xs',
         header: 'gap-1.5',
-        media: 'mb-1.5'
+        media: 'my-1.5'
       },
       sm: {
         root: 'text-xs gap-3.5',
         title: 'text-sm',
         header: 'gap-1.75',
-        media: 'mb-1.75'
+        media: 'my-1.75'
       },
       md: {
         root: 'text-sm gap-4',
         title: 'text-base',
         header: 'gap-2',
-        media: 'mb-2 size-10'
+        media: 'my-2 size-10'
       },
       lg: {
         root: 'text-base gap-4.5',
         title: 'text-lg',
         header: 'gap-2.5',
-        media: 'mb-2.5'
+        media: 'my-2.5'
       },
       xl: {
         root: 'text-lg gap-5',
         title: 'text-xl',
         header: 'gap-3',
-        media: 'mb-3'
+        media: 'my-3'
       },
       '2xl': {
         root: 'text-xl gap-6',
         title: 'text-2xl',
         header: 'gap-3.5',
-        media: 'mb-3.5'
+        media: 'my-3.5'
       }
     }
   },
