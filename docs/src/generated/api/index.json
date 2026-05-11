@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-10T17:56:57.878Z",
+  "generatedAt": "2026-05-11T13:53:43.224Z",
   "schemaVersion": 4,
   "components": {
     "accordion": {
@@ -627,11 +627,9 @@
         "NavigationMenuItem",
         "NavigationMenuLink",
         "NavigationMenuList",
-        "NavigationMenuOption",
         "NavigationMenuRoot",
         "NavigationMenuSub",
         "NavigationMenuSubList",
-        "NavigationMenuSubOption",
         "NavigationMenuTrigger",
         "NavigationMenuViewport"
       ]
@@ -727,11 +725,9 @@
       "component": "radio-group",
       "file": "radio-group.json",
       "symbols": [
-        "Radio",
-        "RadioCard",
-        "RadioGroupCard",
         "RadioGroup",
         "RadioGroupCard",
+        "RadioGroupCardCompact",
         "RadioGroupCompact",
         "RadioGroupControl",
         "RadioGroupIndicator",

@@ -6,7 +6,7 @@
         "kind": "props",
         "name": "BottomSheetProps",
         "type": "TypeAlias BottomSheetProps: BottomSheetCompactProps & { class?: ClassValue; size?: ThemeSize; ui?: Partial<BottomSheetUi> }",
-        "resolvedType": "{ title?: string; description?: string; icon?: string | import(\"vue\").Component | VNode<import(\"vue\").RendererNode, import(\"vue\").RendererElement, { [key: string]: any; }> | null; showClose?: boolean; pure?: boolean; showCancel?: boolean | 'onlyWarning'; cancelText?: string; showConfirm?: boolean; confirmText?: string; triggerProps?: BottomSheetTriggerProps; overlayProps?: BottomSheetOverlayProps; portalProps?: BottomSheetPortalProps; popupProps?: BottomSheetPopupProps; headerProps?: BottomSheetHeaderProps; contentProps?: BottomSheetContentProps; footerProps?: BottomSheetFooterProps; titleProps?: BottomSheetTitleProps; descriptionProps?: BottomSheetDescriptionProps; closeProps?: BottomSheetCloseProps; cancelProps?: BottomSheetCancelProps; confirmProps?: BottomSheetConfirmProps; isAlert?: boolean; alertType?: DialogAlertType; open?: boolean; defaultOpen?: boolean; modal?: boolean; activeSnapPoint?: string | number | null; closeThreshold?: number; shouldScaleBackground?: boolean; setBackgroundColorOnScale?: boolean; scrollLockTimeout?: number; fixed?: boolean; dismissible?: boolean; nested?: boolean; direction?: Side; noBodyStyles?: boolean; handleOnly?: boolean; preventScrollRestoration?: boolean; snapPoints?: (string | number)[]; fadeFromIndex?: number; handleProps?: BottomSheetHandleProps; class?: string | false | Record<string, any> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<BottomSheetUi> }",
+        "resolvedType": "{ title?: string; description?: string; icon?: string | import(\"vue\").Component | VNode<import(\"vue\").RendererNode, import(\"vue\").RendererElement, { [key: string]: any; }> | null; showClose?: boolean; pure?: boolean; showCancel?: boolean | 'onlyWarning'; cancelText?: string; showConfirm?: boolean; confirmText?: string; triggerProps?: BottomSheetTriggerProps; overlayProps?: BottomSheetOverlayProps; portalProps?: BottomSheetPortalProps; popupProps?: BottomSheetPopupProps; headerProps?: BottomSheetHeaderProps; contentProps?: BottomSheetContentProps; footerProps?: BottomSheetFooterProps; titleProps?: BottomSheetTitleProps; descriptionProps?: BottomSheetDescriptionProps; closeProps?: BottomSheetCloseProps; cancelProps?: BottomSheetCancelProps; confirmProps?: BottomSheetConfirmProps; dir?: Direction; isAlert?: boolean; alertType?: DialogAlertType; open?: boolean; defaultOpen?: boolean; modal?: boolean; activeSnapPoint?: string | number | null; closeThreshold?: number; shouldScaleBackground?: boolean; setBackgroundColorOnScale?: boolean; scrollLockTimeout?: number; fixed?: boolean; dismissible?: boolean; nested?: boolean; direction?: Side; noBodyStyles?: boolean; handleOnly?: boolean; preventScrollRestoration?: boolean; snapPoints?: (string | number)[]; fadeFromIndex?: number; handleProps?: BottomSheetHandleProps; class?: string | false | Record<string, any> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<BottomSheetUi> }",
         "description": "Properties for the BottomSheet component.",
         "descriptionKey": "api.generated.src_components_bottom_sheet_types.bottomsheetprops.props",
         "sourcePath": "src/components/bottom-sheet/types.ts",
@@ -692,6 +692,31 @@
                     "referencedTypes": []
                   }
                 ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "dir",
+            "type": "Direction",
+            "required": false,
+            "description": "The text direction of the dialog",
+            "descriptionKey": "api.generated.src_components_bottom_sheet_types.bottomsheetprops.members.dir",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/dialog/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Direction",
+                "kind": "typeAlias",
+                "type": "'ltr' | 'rtl'",
+                "resolvedType": "'ltr' | 'rtl'",
+                "description": "",
+                "descriptionKey": "api.generated.headless_src_types_common.direction",
+                "sourcePath": "headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
                 "callables": []
               }
             ]
@@ -1862,7 +1887,7 @@
         "kind": "props",
         "name": "BottomSheetCompactProps",
         "type": "TypeAlias BottomSheetCompactProps: DialogCompactProps & BottomSheetRootProps & { handleProps?: BottomSheetHandleProps }",
-        "resolvedType": "{ title?: string; description?: string; icon?: string | import(\"vue\").Component | VNode<import(\"vue\").RendererNode, import(\"vue\").RendererElement, { [key: string]: any; }> | null; showClose?: boolean; pure?: boolean; showCancel?: boolean | 'onlyWarning'; cancelText?: string; showConfirm?: boolean; confirmText?: string; triggerProps?: BottomSheetTriggerProps; overlayProps?: BottomSheetOverlayProps; portalProps?: BottomSheetPortalProps; popupProps?: BottomSheetPopupProps; headerProps?: BottomSheetHeaderProps; contentProps?: BottomSheetContentProps; footerProps?: BottomSheetFooterProps; titleProps?: BottomSheetTitleProps; descriptionProps?: BottomSheetDescriptionProps; closeProps?: BottomSheetCloseProps; cancelProps?: BottomSheetCancelProps; confirmProps?: BottomSheetConfirmProps; isAlert?: boolean; alertType?: DialogAlertType; open?: boolean; defaultOpen?: boolean; modal?: boolean; activeSnapPoint?: string | number | null; closeThreshold?: number; shouldScaleBackground?: boolean; setBackgroundColorOnScale?: boolean; scrollLockTimeout?: number; fixed?: boolean; dismissible?: boolean; nested?: boolean; direction?: Side; noBodyStyles?: boolean; handleOnly?: boolean; preventScrollRestoration?: boolean; snapPoints?: (string | number)[]; fadeFromIndex?: number; handleProps?: BottomSheetHandleProps }",
+        "resolvedType": "{ title?: string; description?: string; icon?: string | import(\"vue\").Component | VNode<import(\"vue\").RendererNode, import(\"vue\").RendererElement, { [key: string]: any; }> | null; showClose?: boolean; pure?: boolean; showCancel?: boolean | 'onlyWarning'; cancelText?: string; showConfirm?: boolean; confirmText?: string; triggerProps?: BottomSheetTriggerProps; overlayProps?: BottomSheetOverlayProps; portalProps?: BottomSheetPortalProps; popupProps?: BottomSheetPopupProps; headerProps?: BottomSheetHeaderProps; contentProps?: BottomSheetContentProps; footerProps?: BottomSheetFooterProps; titleProps?: BottomSheetTitleProps; descriptionProps?: BottomSheetDescriptionProps; closeProps?: BottomSheetCloseProps; cancelProps?: BottomSheetCancelProps; confirmProps?: BottomSheetConfirmProps; dir?: Direction; isAlert?: boolean; alertType?: DialogAlertType; open?: boolean; defaultOpen?: boolean; modal?: boolean; activeSnapPoint?: string | number | null; closeThreshold?: number; shouldScaleBackground?: boolean; setBackgroundColorOnScale?: boolean; scrollLockTimeout?: number; fixed?: boolean; dismissible?: boolean; nested?: boolean; direction?: Side; noBodyStyles?: boolean; handleOnly?: boolean; preventScrollRestoration?: boolean; snapPoints?: (string | number)[]; fadeFromIndex?: number; handleProps?: BottomSheetHandleProps }",
         "description": "Properties for the BottomSheetCompact component.",
         "descriptionKey": "api.generated.headless_src_components_bottom_sheet_types.bottomsheetcompactprops.props",
         "sourcePath": "headless/src/components/bottom-sheet/types.ts",
@@ -2548,6 +2573,31 @@
                     "referencedTypes": []
                   }
                 ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "dir",
+            "type": "Direction",
+            "required": false,
+            "description": "The text direction of the dialog",
+            "descriptionKey": "api.generated.headless_src_components_bottom_sheet_types.bottomsheetcompactprops.members.dir",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/dialog/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Direction",
+                "kind": "typeAlias",
+                "type": "'ltr' | 'rtl'",
+                "resolvedType": "'ltr' | 'rtl'",
+                "description": "",
+                "descriptionKey": "api.generated.headless_src_types_common.direction",
+                "sourcePath": "headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
                 "callables": []
               }
             ]
@@ -3589,12 +3639,37 @@
         "kind": "props",
         "name": "BottomSheetRootProps",
         "type": "TypeAlias BottomSheetRootProps: DialogRootProps & { activeSnapPoint?: number | string | null; closeThreshold?: number; direction?: DrawerDirection; dismissible?: boolean; fixed?: boolean; handleOnly?: boolean; nested?: boolean; noBodyStyles?: boolean; preventScrollRestoration?: boolean; scrollLockTimeout?: number; setBackgroundColorOnScale?: boolean; shouldScaleBackground?: boolean } & (WithFadeFromProps | WithoutFadeFromProps)",
-        "resolvedType": "{ isAlert?: boolean; alertType?: DialogAlertType; open?: boolean; defaultOpen?: boolean; modal?: boolean; activeSnapPoint?: string | number | null; closeThreshold?: number; shouldScaleBackground?: boolean; setBackgroundColorOnScale?: boolean; scrollLockTimeout?: number; fixed?: boolean; dismissible?: boolean; nested?: boolean; direction?: Side; noBodyStyles?: boolean; handleOnly?: boolean; preventScrollRestoration?: boolean; snapPoints?: (string | number)[]; fadeFromIndex?: number }",
+        "resolvedType": "{ dir?: Direction; isAlert?: boolean; alertType?: DialogAlertType; open?: boolean; defaultOpen?: boolean; modal?: boolean; activeSnapPoint?: string | number | null; closeThreshold?: number; shouldScaleBackground?: boolean; setBackgroundColorOnScale?: boolean; scrollLockTimeout?: number; fixed?: boolean; dismissible?: boolean; nested?: boolean; direction?: Side; noBodyStyles?: boolean; handleOnly?: boolean; preventScrollRestoration?: boolean; snapPoints?: (string | number)[]; fadeFromIndex?: number }",
         "description": "Properties for the BottomSheetRoot component.",
         "descriptionKey": "api.generated.headless_src_components_bottom_sheet_types.bottomsheetrootprops.props",
         "sourcePath": "headless/src/components/bottom-sheet/types.ts",
         "typeParameters": [],
         "members": [
+          {
+            "name": "dir",
+            "type": "Direction",
+            "required": false,
+            "description": "The text direction of the dialog",
+            "descriptionKey": "api.generated.headless_src_components_bottom_sheet_types.bottomsheetrootprops.members.dir",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/dialog/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Direction",
+                "kind": "typeAlias",
+                "type": "'ltr' | 'rtl'",
+                "resolvedType": "'ltr' | 'rtl'",
+                "description": "",
+                "descriptionKey": "api.generated.headless_src_types_common.direction",
+                "sourcePath": "headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
           {
             "name": "isAlert",
             "type": "boolean",

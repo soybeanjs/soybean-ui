@@ -340,6 +340,7 @@ export const components = {
     'MenubarCompact'
   ],
   navigationMenu: [
+    'NavigationMenuCompact',
     'NavigationMenuRoot',
     'NavigationMenuList',
     'NavigationMenuItem',
@@ -348,8 +349,7 @@ export const components = {
     'NavigationMenuLink',
     'NavigationMenuSubList',
     'NavigationMenuViewport',
-    'NavigationMenuIndicator',
-    'NavigationMenuCompact'
+    'NavigationMenuIndicator'
   ],
   pageTabs: ['PageTabsRoot', 'PageTabsItem', 'PageTabsClose', 'PageTabsPin', 'PageTabsCompact'],
   pagination: [

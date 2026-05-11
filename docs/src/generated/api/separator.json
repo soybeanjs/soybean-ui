@@ -304,7 +304,7 @@
       "slots": {
         "kind": "slots",
         "name": "SeparatorCompactSlots",
-        "type": "Interface SeparatorCompactSlots",
+        "type": "TypeAlias SeparatorCompactSlots",
         "resolvedType": "{ SeparatorLabel?: (() => any) }",
         "description": "Slots for the SeparatorCompact component.",
         "descriptionKey": "api.generated.headless_src_components_separator_types.separatorcompactslots.slots",

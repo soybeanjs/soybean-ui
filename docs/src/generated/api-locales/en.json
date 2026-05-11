@@ -635,6 +635,7 @@
             "defaultopen": "The open state of the dialog when it is initially rendered. Use when you do not need to control its open state.",
             "description": "The description of the dialog. This is used for accessibility purposes and will be rendered in the content of the dialog if the `description` slot is not provided.",
             "descriptionprops": "Properties forwarded to the description element.",
+            "dir": "The text direction of the dialog",
             "direction": "Direction.",
             "dismissible": "Whether dismissible.",
             "fadefromindex": "Fade from index.",
@@ -702,6 +703,7 @@
             "alerttype": "The alert type of the dialog, which determines the default icon and styles when the dialog is an alert dialog.",
             "closethreshold": "Close threshold.",
             "defaultopen": "The open state of the dialog when it is initially rendered. Use when you do not need to control its open state.",
+            "dir": "The text direction of the dialog",
             "direction": "Direction.",
             "dismissible": "Whether dismissible.",
             "fadefromindex": "Fade from index.",
@@ -3406,6 +3408,7 @@
             "defaultopen": "The open state of the dialog when it is initially rendered. Use when you do not need to control its open state.",
             "description": "The description of the dialog. This is used for accessibility purposes and will be rendered in the content of the dialog if the `description` slot is not provided.",
             "descriptionprops": "Properties forwarded to the description element.",
+            "dir": "The text direction of the dialog",
             "footerprops": "Properties forwarded to the footer element.",
             "headerprops": "Properties forwarded to the header element.",
             "icon": "The icon of the dialog. This is used for accessibility purposes and will be rendered in the header of the dialog if the `icon` slot is not provided.",
@@ -3510,6 +3513,7 @@
           "members": {
             "alerttype": "The alert type of the dialog, which determines the default icon and styles when the dialog is an alert dialog.",
             "defaultopen": "The open state of the dialog when it is initially rendered. Use when you do not need to control its open state.",
+            "dir": "The text direction of the dialog",
             "isalert": "Whether the dialog is an alert dialog. An alert dialog is a dialog that interrupts the user's workflow to communicate an important message and requires a response.\n\nWhen set to `true`, the dialog will have `role=\"alertdialog\"` and will require a `DialogTitle` to be provided. This is used for accessibility purposes.",
             "modal": "The modality of the dialog. When set to `true`, interaction with outside elements will be disabled and only dialog\ncontent will be visible to screen readers.",
             "open": "The controlled open state of the dialog. Can be bound with `v-model:open`."
@@ -4034,7 +4038,8 @@
             "type": "The type of the button element. Can be one of 'button', 'submit', or 'reset'."
           },
           "props": "Properties for the EditableSubmitTrigger component."
-        }
+        },
+        "editableui": "UI class overrides for the Editable component."
       },
       "headless_src_components_empty_types": {
         "emptycompactprops": {
@@ -5607,38 +5612,37 @@
         },
         "navigationmenucompactprops": {
           "members": {
-            "contentprops": "Properties for NavigationMenuContent.",
+            "contentprops": "Properties forwarded to the content element.",
             "defaultvalue": "The value of the menu item that should be active when initially rendered.\n\nUse when you do not need to control the value state.",
             "delayduration": "The duration from when the pointer enters the trigger until the tooltip gets opened.",
             "dir": "The reading direction of the combobox when applicable.\n\nIf omitted, inherits globally from `ConfigProvider` or assumes LTR (left-to-right) reading mode.",
             "disableclicktrigger": "If `true`, menu cannot be open by click on trigger",
             "disablehovertrigger": "If `true`, menu cannot be open by hover on trigger",
             "disablepointerleaveclose": "If `true`, menu will not close during pointer leave event",
-            "indicatorprops": "Properties for NavigationMenuIndicator.",
-            "itemprops": "Properties for each NavigationMenuItem.",
+            "indicatorprops": "Properties forwarded to the indicator element.",
+            "itemprops": "Properties forwarded to the item element.",
             "items": "The items to render in the navigation menu.",
-            "linkprops": "Properties for NavigationMenuLink.",
-            "listprops": "Properties for NavigationMenuList.",
+            "linkprops": "Properties forwarded to the link element.",
+            "listprops": "Properties forwarded to the list element.",
             "modelvalue": "The controlled value of the menu item to activate. Can be used as `v-model`.",
             "orientation": "The orientation of the menu.",
             "skipdelayduration": "How much time a user has to enter another trigger without incurring a delay again.",
-            "subitemprops": "Properties for sub-items.",
-            "sublistprops": "Properties for NavigationMenuSubList.",
-            "triggerprops": "Properties for NavigationMenuTrigger.",
+            "subitemprops": "Properties forwarded to the sub item element.",
+            "sublistprops": "Properties forwarded to the sub list element.",
+            "triggerprops": "Properties forwarded to the trigger element.",
             "unmountonhide": "When `true`, the element will be unmounted on closed state.",
-            "viewportprops": "Properties for NavigationMenuViewport."
+            "viewportprops": "Properties forwarded to the viewport element."
           },
           "props": "Properties for the NavigationMenuCompact component."
         },
         "navigationmenucompactslots": {
           "callables": {
-            "indicator": "Slot for rendering indicator arrow.",
-            "item": "Slot for rendering the entire item (for top-level items).",
-            "item_children": "Slot for rendering custom children content.",
-            "item_leading": "Slot for rendering leading content of an item.",
-            "item_link_icon": "Slot for rendering link icon (arrow up right by default for external links).",
-            "item_trailing": "Slot for rendering trailing content of an item.",
-            "item_trigger_icon": "Slot for rendering trigger icon (chevron down by default)."
+            "item": "",
+            "item_children": "",
+            "item_leading": "",
+            "item_link_icon": "",
+            "item_trailing": "",
+            "item_trigger_icon": ""
           },
           "slots": "Slots for the NavigationMenuCompact component."
         },
@@ -5705,6 +5709,16 @@
         "navigationmenulistprops": {
           "props": "Properties for the NavigationMenuList component."
         },
+        "navigationmenuoptioncompactslots": {
+          "callables": {
+            "item": "",
+            "item_children": "",
+            "item_leading": "",
+            "item_link_icon": "",
+            "item_trailing": "",
+            "item_trigger_icon": ""
+          }
+        },
         "navigationmenurootemits": {
           "callables": {
             "update_modelvalue": "Emitted when the model value changes."
@@ -5750,6 +5764,7 @@
           },
           "props": "Properties for the NavigationMenuTrigger component."
         },
+        "navigationmenuui": "UI class overrides for the NavigationMenu component.",
         "navigationmenuviewportprops": {
           "members": {
             "align": "Align.",
@@ -6448,6 +6463,40 @@
         "progressui": "UI class overrides for the Progress component."
       },
       "headless_src_components_radio_group_types": {
+        "radiogroupcardcompactemits": {
+          "callables": {
+            "update_modelvalue": "Event handler called when the radio group value changes"
+          },
+          "emits": "Events for the RadioGroupCardCompact component."
+        },
+        "radiogroupcardcompactprops": {
+          "members": {
+            "contentprops": "Properties forwarded to the content element.",
+            "controlprops": "Properties forwarded to the control element.",
+            "defaultvalue": "The value of the radio item that should be checked when initially rendered. Use when you do not need to control the\nstate of the radio items.",
+            "descriptionprops": "Properties forwarded to the description element.",
+            "dir": "The reading direction of the radio group when applicable.",
+            "disabled": "When `true`, prevents the user from interacting with radio items.",
+            "indicatorprops": "Properties forwarded to the indicator element.",
+            "itemprops": "Properties forwarded to the item element.",
+            "items": "Items rendered by the component.",
+            "labelprops": "Properties forwarded to the label element.",
+            "loop": "When `true`, keyboard navigation will loop from last item to first, and vice versa.",
+            "modelvalue": "The controlled value of the radio item to check. Can be bound as `v-model`.",
+            "name": "The name of the field. Submitted with its owning form as part of a name/value pair.",
+            "orientation": "The orientation of the component.",
+            "required": "When `true`, indicates that the user must set the value before the owning form can be submitted.",
+            "textcontentprops": "Properties forwarded to the text content element."
+          },
+          "props": "Properties for the RadioGroupCard component."
+        },
+        "radiogroupcardcompactslots": {
+          "callables": {
+            "description": "Slot for rendering custom description content within the radio card."
+          },
+          "slots": "Slots for the RadioGroupCompact component."
+        },
+        "radiogroupcardui": "UI class overrides for the RadioGroupCard component.",
         "radiogroupcompactemits": {
           "callables": {
             "update_modelvalue": "Event handler called when the radio group value changes"
@@ -6525,7 +6574,8 @@
           "props": "Properties for the RadioGroupRoot component."
         },
         "radiogroupui": "UI class overrides for the RadioGroup component.",
-        "radioselectevent": "Type information for RadioSelectEvent."
+        "radioselectevent": "Type information for RadioSelectEvent.",
+        "type": ""
       },
       "headless_src_components_scroll_area_types": {
         "scrollareacompactemits": {
@@ -7110,6 +7160,7 @@
           },
           "props": "Properties for the StepperTrigger component."
         },
+        "stepperui": "UI class overrides for the Stepper component.",
         "type": ""
       },
       "headless_src_components_switch_types": {
@@ -7123,6 +7174,7 @@
           "members": {
             "controlprops": "Properties forwarded to the control element.",
             "defaultvalue": "The state of the switch when it is initially rendered. Use when you do not need to control its state.",
+            "dir": "The direction the switch should animate towards when changing state.",
             "disabled": "When `true`, prevents the user from interacting with the switch.",
             "falsevalue": "The value given as data when submitted with a `name`.",
             "modelvalue": "The controlled state of the switch. Can be bind as `v-model`.",
@@ -7167,6 +7219,7 @@
         "switchrootprops": {
           "members": {
             "defaultvalue": "The state of the switch when it is initially rendered. Use when you do not need to control its state.",
+            "dir": "The direction the switch should animate towards when changing state.",
             "disabled": "When `true`, prevents the user from interacting with the switch.",
             "falsevalue": "The value given as data when submitted with a `name`.",
             "modelvalue": "The controlled state of the switch. Can be bind as `v-model`.",
@@ -8201,6 +8254,7 @@
             "prefetchon": "Allows controlling when to prefetch links. By default, prefetch is triggered only on visibility.",
             "rel": "A rel attribute value to apply on the link. Defaults to \"noopener noreferrer\" for external links.",
             "replace": "Calls `router.replace` instead of `router.push`.",
+            "showicon": "Whether or not to show an icon when the `href` prop is provided.",
             "target": "Where to display the linked URL, as the name for a browsing context.",
             "to": "Route Location the link should navigate to when clicked on.",
             "trailingslash": "An option to either add or remove trailing slashes in the `href` for this specific link.\nOverrides the global `trailingSlash` option if provided.",
@@ -8828,6 +8882,7 @@
         "classvalue": "",
         "dataorientation": "",
         "definedvalue": "",
+        "definedwithbooleanvalue": "",
         "direction": "",
         "horizontalside": "",
         "maybepromise": "",
@@ -9233,6 +9288,7 @@
             "defaultopen": "The open state of the dialog when it is initially rendered. Use when you do not need to control its open state.",
             "description": "The description of the dialog. This is used for accessibility purposes and will be rendered in the content of the dialog if the `description` slot is not provided.",
             "descriptionprops": "Properties forwarded to the description element.",
+            "dir": "The text direction of the dialog",
             "direction": "Direction.",
             "dismissible": "Whether dismissible.",
             "fadefromindex": "Fade from index.",
@@ -10652,6 +10708,7 @@
             "defaultopen": "The open state of the dialog when it is initially rendered. Use when you do not need to control its open state.",
             "description": "The description of the dialog. This is used for accessibility purposes and will be rendered in the content of the dialog if the `description` slot is not provided.",
             "descriptionprops": "Properties forwarded to the description element.",
+            "dir": "The text direction of the dialog",
             "footerprops": "Properties forwarded to the footer element.",
             "headerprops": "Properties forwarded to the header element.",
             "icon": "The icon of the dialog. This is used for accessibility purposes and will be rendered in the header of the dialog if the `icon` slot is not provided.",
@@ -10717,6 +10774,7 @@
             "defaultopen": "The open state of the dialog when it is initially rendered. Use when you do not need to control its open state.",
             "description": "The description of the dialog. This is used for accessibility purposes and will be rendered in the content of the dialog if the `description` slot is not provided.",
             "descriptionprops": "Properties forwarded to the description element.",
+            "dir": "The text direction of the dialog",
             "footerprops": "Properties forwarded to the footer element.",
             "headerprops": "Properties forwarded to the header element.",
             "icon": "The icon of the dialog. This is used for accessibility purposes and will be rendered in the header of the dialog if the `icon` slot is not provided.",
@@ -10978,7 +11036,6 @@
           },
           "emits": "Events for the Editable component."
         },
-        "editableextendedui": "Extended UI class overrides for the Editable component.",
         "editableprops": {
           "members": {
             "activationmode": "The activation event of the editable field.",
@@ -11009,6 +11066,17 @@
             "ui": "Per-slot class overrides for the component."
           },
           "props": "Properties for the Editable component."
+        },
+        "editableslots": {
+          "callables": {
+            "cancel_trigger": "Custom content for the cancel trigger slot.",
+            "default": "Custom content for the default slot.",
+            "edit_trigger": "Custom content for the edit trigger slot.",
+            "input": "Custom content for the input slot.",
+            "preview": "Custom content for the preview slot.",
+            "submit_trigger": "Custom content for the submit trigger slot."
+          },
+          "slots": "Slot properties for the Editable component."
         }
       },
       "src_components_empty_types": {
@@ -11092,6 +11160,13 @@
             "ui": "Per-slot class overrides for the component."
           },
           "props": "Properties for the HoverCard component."
+        },
+        "hovercardslots": {
+          "callables": {
+            "default": "Custom content for the default slot.",
+            "trigger": "Custom content for the trigger slot."
+          },
+          "slots": "Slots for the HoverCard component."
         }
       },
       "src_components_icon_types": {
@@ -11503,47 +11578,6 @@
           },
           "emits": "Events for the NavigationMenu component."
         },
-        "navigationmenuextendedui": "Extended UI class overrides for the NavigationMenu component.",
-        "navigationmenuoptiondata": {
-          "members": {
-            "children": "The children of the option.",
-            "description": "The description of the option.",
-            "disabled": "Whether the option is disabled.",
-            "external": "Forces the link to be considered as external (true) or internal (false). This is helpful to handle edge-cases",
-            "href": "The URL the link should navigate to when clicked on.",
-            "icon": "The icon of the option.\n\nif it is a string, it will be used as the icon name of the iconify.",
-            "label": "The label to display in the option.",
-            "target": "Where to display the linked URL, as the name for a browsing context.",
-            "to": "Route Location the link should navigate to when clicked on.",
-            "value": "The value of the option."
-          }
-        },
-        "navigationmenuoptionemits": {
-          "callables": {
-            "escapekeydown": "Event handler called when the escape key is down. Can be prevented.",
-            "focusoutside": "Event handler called when the focus moves outside of the `DismissableLayer`. Can be prevented.",
-            "interactoutside": "Event handler called when an interaction happens outside the `DismissableLayer`. Specifically, when a `pointerdown`\nevent happens outside or focus moves outside of it. Can be prevented.",
-            "pointerdownoutside": "Event handler called when a `pointerdown` event happens outside of the `DismissableLayer`. Can be prevented.",
-            "select": "Emitted when select occurs.",
-            "update_modelvalue": "Emitted when the model value changes."
-          },
-          "emits": "Events for the NavigationMenuOption component."
-        },
-        "navigationmenuoptionprops": {
-          "members": {
-            "contentprops": "Properties forwarded to the content element.",
-            "indicatorprops": "Properties forwarded to the indicator element.",
-            "item": "Current item data.",
-            "itemprops": "Properties forwarded to the item element.",
-            "linkprops": "Properties forwarded to the link element.",
-            "listprops": "Properties forwarded to the list element.",
-            "subitemprops": "Properties forwarded to the sub item element.",
-            "sublistprops": "Properties forwarded to the sub list element.",
-            "triggerprops": "Properties forwarded to the trigger element.",
-            "viewportprops": "Properties forwarded to the viewport element."
-          },
-          "props": "Properties for the NavigationMenuOption component."
-        },
         "navigationmenuprops": {
           "members": {
             "class": "Additional class names applied to the root element.",
@@ -11556,7 +11590,7 @@
             "disablepointerleaveclose": "If `true`, menu will not close during pointer leave event",
             "indicatorprops": "Properties forwarded to the indicator element.",
             "itemprops": "Properties forwarded to the item element.",
-            "items": "Items rendered by the component.",
+            "items": "The items to render in the navigation menu.",
             "linkprops": "Properties forwarded to the link element.",
             "listprops": "Properties forwarded to the list element.",
             "modelvalue": "The controlled value of the menu item to activate. Can be used as `v-model`.",
@@ -11572,19 +11606,16 @@
           },
           "props": "Properties for the NavigationMenu component."
         },
-        "navigationmenusuboptionemits": {
+        "navigationmenuslots": {
           "callables": {
-            "select": "Emitted when select occurs."
+            "item": "",
+            "item_children": "",
+            "item_leading": "",
+            "item_link_icon": "",
+            "item_trailing": "",
+            "item_trigger_icon": ""
           },
-          "emits": "Events for the NavigationMenuSubOption component."
-        },
-        "navigationmenusuboptionprops": {
-          "members": {
-            "linkprops": "Properties forwarded to the link element.",
-            "subitem": "Sub item.",
-            "subitemprops": "Properties forwarded to the sub item element."
-          },
-          "props": "Properties for the NavigationMenuSubOption component."
+          "slots": "Slots for the NavigationMenu component."
         }
       },
       "src_components_page_tabs_types": {
@@ -11646,18 +11677,18 @@
             "defaultpage": "The value of the page that should be active when initially rendered. Use when you do not need to control the value\nstate.",
             "defaultpagesize": "The default value of `pageSize` when initially rendered. Use when you do not need to control the value state.",
             "disabled": "When `true`, prevents the user from interacting with item",
-            "ellipsisprops": "The properties for the ellipsis component",
-            "firstprops": "The properties for the first button component",
-            "lastprops": "The properties for the last button component",
-            "listitemprops": "The properties for the list item component",
-            "listprops": "The properties for the list component",
-            "nextprops": "The properties for the next button component",
+            "ellipsisprops": "Properties forwarded to the ellipsis element.",
+            "firstprops": "Properties forwarded to the first element.",
+            "lastprops": "Properties forwarded to the last element.",
+            "listitemprops": "Properties forwarded to the list item element.",
+            "listprops": "Properties forwarded to the list element.",
+            "nextprops": "Properties forwarded to the next element.",
             "page": "The controlled value of the current page. Can be bound as `v-model:page`.",
             "pagesize": "Number of items per page",
-            "prevprops": "The properties for the previous button component",
+            "prevprops": "Properties forwarded to the prev element.",
             "shape": "The shape of the pagination",
             "showedges": "When `true`, always show first page, last page, and ellipsis",
-            "showfirstorlast": "Whether to show the first and last buttons",
+            "showfirstorlast": "Whether to show a first or last.",
             "siblingcount": "Number of sibling should be shown around the current page",
             "size": "The size of the pagination",
             "total": "Number of items in your list",
@@ -11665,6 +11696,18 @@
             "variant": "The variant of the pagination"
           },
           "props": "Properties for the Pagination component."
+        },
+        "paginationslots": {
+          "callables": {
+            "ellipsis": "Custom content for the ellipsis slot.",
+            "first": "Custom content for the first slot.",
+            "last": "Custom content for the last slot.",
+            "leading": "Custom content for the leading slot.",
+            "next": "Custom content for the next slot.",
+            "prev": "Custom content for the prev slot.",
+            "trailing": "Custom content for the trailing slot."
+          },
+          "slots": "Slots for the Pagination component."
         }
       },
       "src_components_pagination_variants": {
@@ -11883,12 +11926,20 @@
         }
       },
       "src_components_radio_group_types": {
-        "radiocardgroupprops": {
+        "radiogroupcardemits": {
+          "callables": {
+            "update_modelvalue": "Event handler called when the radio group value changes"
+          },
+          "emits": "Events for the RadioGroupCard component."
+        },
+        "radiogroupcardprops": {
           "members": {
             "class": "Additional class names applied to the root element.",
             "color": "Theme color of the component.",
+            "contentprops": "Properties forwarded to the content element.",
             "controlprops": "Properties forwarded to the control element.",
             "defaultvalue": "The value of the radio item that should be checked when initially rendered. Use when you do not need to control the\nstate of the radio items.",
+            "descriptionprops": "Properties forwarded to the description element.",
             "dir": "The reading direction of the radio group when applicable.",
             "disabled": "When `true`, prevents the user from interacting with radio items.",
             "indicatorprops": "Properties forwarded to the indicator element.",
@@ -11901,34 +11952,18 @@
             "orientation": "The orientation of the component.",
             "required": "When `true`, indicates that the user must set the value before the owning form can be submitted.",
             "size": "Visual size of the component.",
+            "textcontentprops": "Properties forwarded to the text content element.",
             "ui": "Per-slot class overrides for the component.",
             "variant": "Visual variant of the component."
           },
           "props": "Properties for the RadioGroupCard component."
         },
-        "radiocardprops": {
-          "members": {
-            "controlprops": "Properties forwarded to the control element.",
-            "description": "Description text rendered by the component.",
-            "disabled": "When `true`, prevents the user from interacting with the radio item.",
-            "icon": "Icon rendered by the component.",
-            "indicatorprops": "Properties forwarded to the indicator element.",
-            "label": "Label text rendered by the component.",
-            "labelprops": "Properties forwarded to the label element.",
-            "name": "The name of the field. Submitted with its owning form as part of a name/value pair.",
-            "required": "When `true`, indicates that the user must set the value before the owning form can be submitted.",
-            "ui": "Per-slot class overrides for the component.",
-            "value": "The value given as data when submitted with a `name`."
-          },
-          "props": "Properties for the RadioCard component."
-        },
-        "radiogroupcardemits": {
+        "radiogroupcardslots": {
           "callables": {
-            "update_modelvalue": "Event handler called when the radio group value changes"
+            "description": "Slot for rendering custom description content within the radio card."
           },
-          "emits": "Events for the RadioGroupCard component."
+          "slots": "Slots for the RadioGroupCard component."
         },
-        "radiogroupcardui": "UI class overrides for the RadioGroupCard component.",
         "radiogroupemits": {
           "callables": {
             "update_modelvalue": "Event handler called when the radio group value changes"
@@ -11957,19 +11992,6 @@
             "variant": "Visual variant of the component."
           },
           "props": "Properties for the RadioGroup component."
-        },
-        "radioprops": {
-          "members": {
-            "controlprops": "Properties forwarded to the control element.",
-            "disabled": "When `true`, prevents the user from interacting with the radio item.",
-            "indicatorprops": "Properties forwarded to the indicator element.",
-            "label": "Label text rendered by the component.",
-            "labelprops": "Properties forwarded to the label element.",
-            "name": "The name of the field. Submitted with its owning form as part of a name/value pair.",
-            "required": "When `true`, indicates that the user must set the value before the owning form can be submitted.",
-            "value": "The value given as data when submitted with a `name`."
-          },
-          "props": "Properties for the Radio component."
         }
       },
       "src_components_radio_group_variants": {
@@ -12252,7 +12274,6 @@
           },
           "emits": "Events for the Stepper component."
         },
-        "stepperextendedui": "Extended UI class overrides for the Stepper component.",
         "stepperprops": {
           "members": {
             "as": "The element or component this component should render as. Can be overwrite by `asChild`",
@@ -12275,6 +12296,16 @@
             "ui": "Per-slot class overrides for the component."
           },
           "props": "Properties for the Stepper component."
+        },
+        "stepperslots": {
+          "callables": {
+            "description": "Custom content for the description slot.",
+            "indicator": "Custom content for the indicator slot.",
+            "item": "Custom content for the item slot.",
+            "separator": "Custom content for the separator slot.",
+            "title": "Custom content for the title slot."
+          },
+          "slots": "Slots for the Stepper component."
         }
       },
       "src_components_switch_types": {
@@ -12290,6 +12321,7 @@
             "color": "Theme color of the component.",
             "controlprops": "Properties forwarded to the control element.",
             "defaultvalue": "The state of the switch when it is initially rendered. Use when you do not need to control its state.",
+            "dir": "The direction the switch should animate towards when changing state.",
             "disabled": "When `true`, prevents the user from interacting with the switch.",
             "falsevalue": "The value given as data when submitted with a `name`.",
             "modelvalue": "The controlled state of the switch. Can be bind as `v-model`.",
@@ -12797,6 +12829,7 @@
             "dir": "The reading direction of the toolbar.",
             "loop": "Whether keyboard roving focus loops.",
             "orientation": "The orientation of the toolbar.",
+            "size": "Visual size of the component.",
             "ui": "Per-slot class overrides for the component."
           },
           "props": "Properties for the Toolbar component."

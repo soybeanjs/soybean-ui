@@ -385,8 +385,8 @@
         "referencedTypes": [
           {
             "name": "ProgressCompactSlots",
-            "kind": "interface",
-            "type": "ProgressCompactSlots",
+            "kind": "typeAlias",
+            "type": "{ ProgressCircle?: (props: import(\"@soybeanjs/headless\").ProgressSlotProps) => any; }",
             "resolvedType": "{ ProgressCircle?: ((props: ProgressSlotProps) => any) }",
             "description": "Slots for the ProgressCompact component.",
             "descriptionKey": "api.generated.headless_src_components_progress_types.progresscompactslots",
@@ -866,8 +866,8 @@
         "referencedTypes": [
           {
             "name": "ProgressCircleCompactSlots",
-            "kind": "interface",
-            "type": "ProgressCircleCompactSlots",
+            "kind": "typeAlias",
+            "type": "{ ProgressCircle?: (props: import(\"@soybeanjs/headless\").ProgressSlotProps) => any; }",
             "resolvedType": "{ ProgressCircle?: ((props: ProgressSlotProps) => any) }",
             "description": "Slots for the ProgressCircleCompact component.",
             "descriptionKey": "api.generated.headless_src_components_progress_types.progresscirclecompactslots",
@@ -1139,7 +1139,7 @@
       "slots": {
         "kind": "slots",
         "name": "ProgressCircleCompactSlots",
-        "type": "Interface ProgressCircleCompactSlots",
+        "type": "TypeAlias ProgressCircleCompactSlots",
         "resolvedType": "{ ProgressCircle?: ((props: ProgressSlotProps) => any) }",
         "description": "Slots for the ProgressCircleCompact component.",
         "descriptionKey": "api.generated.headless_src_components_progress_types.progresscirclecompactslots.slots",
@@ -1450,7 +1450,7 @@
       "slots": {
         "kind": "slots",
         "name": "ProgressCompactSlots",
-        "type": "Interface ProgressCompactSlots",
+        "type": "TypeAlias ProgressCompactSlots",
         "resolvedType": "{ ProgressCircle?: ((props: ProgressSlotProps) => any) }",
         "description": "Slots for the ProgressCompact component.",
         "descriptionKey": "api.generated.headless_src_components_progress_types.progresscompactslots.slots",

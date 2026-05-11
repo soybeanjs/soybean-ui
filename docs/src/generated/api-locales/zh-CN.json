@@ -635,6 +635,7 @@
             "defaultopen": "对话框初始呈现时的打开状态。在不需要控制其打开状态时使用。",
             "description": "对话框说明。该说明用于辅助功能，如果未提供 `description` 插槽，则将在对话框内容中呈现。",
             "descriptionprops": "转发到描述元素的属性。",
+            "dir": "对话框的文本方向",
             "direction": "方向",
             "dismissible": "是否可删除。",
             "fadefromindex": "淡出索引。",
@@ -702,6 +703,7 @@
             "alerttype": "对话框的警报类型，当对话框是警报对话框时，它将决定默认图标和样式。",
             "closethreshold": "关闭阈值。",
             "defaultopen": "对话框初始呈现时的打开状态。在不需要控制其打开状态时使用。",
+            "dir": "对话框的文本方向",
             "direction": "方向",
             "dismissible": "是否可删除。",
             "fadefromindex": "淡出索引。",
@@ -3406,6 +3408,7 @@
             "defaultopen": "对话框初始呈现时的打开状态。在不需要控制其打开状态时使用。",
             "description": "对话框说明。该说明用于辅助功能，如果未提供 `description` 插槽，则将在对话框内容中呈现。",
             "descriptionprops": "转发到描述元素的属性。",
+            "dir": "对话框的文本方向",
             "footerprops": "转发到页脚元素的属性。",
             "headerprops": "转发到标题元素的属性。",
             "icon": "对话框的图标。该图标用于可访问性目的，如果未提供 icon 插槽，则将在对话框的页眉中显示。",
@@ -3510,6 +3513,7 @@
           "members": {
             "alerttype": "对话框的警报类型，当对话框是警报对话框时，它将决定默认图标和样式。",
             "defaultopen": "对话框初始呈现时的打开状态。在不需要控制其打开状态时使用。",
+            "dir": "对话框的文本方向",
             "isalert": "对话框是否为警报对话框。警报对话框是一种中断用户工作流程以传达重要信息并要求用户做出响应的对话框。\n\n设置为 \"true \"时，对话框将具有 \"role=\"alertdialog\"\"，并要求提供 \"DialogTitle\"。这将用于可访问性目的。",
             "modal": "对话框的模式。设置为 \"true \"时，与外部元素的交互将被禁用，屏幕阅读器只能看到对话框的内容。\n内容对屏幕阅读器可见。",
             "open": "对话框的受控打开状态。可与 `v-model:open`绑定。"
@@ -4034,7 +4038,8 @@
             "type": "按钮元素的类型。可以是 \"按钮\"、\"提交 \"或 \"重置\"。"
           },
           "props": "EditableSubmitTrigger 组件的属性。"
-        }
+        },
+        "editableui": "可编辑组件的 UI 类重载。"
       },
       "headless_src_components_empty_types": {
         "emptycompactprops": {
@@ -5607,38 +5612,37 @@
         },
         "navigationmenucompactprops": {
           "members": {
-            "contentprops": "NavigationMenuContent 的属性。",
+            "contentprops": "转发到内容元素的属性。",
             "defaultvalue": "初始渲染时应处于活动状态的菜单项的值。\n\n在不需要控制值的状态时使用。",
             "delayduration": "从指针进入触发器到打开工具提示的持续时间。",
             "dir": "组合框的阅读方向（如适用）。\n\n如果省略，则全局继承自 `ConfigProvider` 或假定为 LTR（从左到右）阅读模式。",
             "disableclicktrigger": "如果 `true`，菜单不能通过点击触发器打开",
             "disablehovertrigger": "如果 \"true\"，菜单不能通过触发器上的悬停打开",
             "disablepointerleaveclose": "如果 \"true\"，菜单不会在指针离开事件中关闭",
-            "indicatorprops": "NavigationMenuIndicator 的属性。",
-            "itemprops": "每个导航菜单项的属性。",
+            "indicatorprops": "转发到指示器元素的属性。",
+            "itemprops": "转发到项目元素的属性。",
             "items": "在导航菜单中呈现的项目。",
-            "linkprops": "NavigationMenuLink 的属性。",
-            "listprops": "NavigationMenuList 的属性。",
+            "linkprops": "转发到链接元素的属性。",
+            "listprops": "转发到列表元素的属性。",
             "modelvalue": "要激活的菜单项的受控值。可用作 `v-model`。",
             "orientation": "菜单的方向",
             "skipdelayduration": "用户有多少时间输入另一个触发器而不会再次产生延迟。",
-            "subitemprops": "子项目的属性。",
-            "sublistprops": "NavigationMenuSubList 的属性。",
-            "triggerprops": "NavigationMenuTrigger 的属性。",
+            "subitemprops": "转发到子项目元素的属性。",
+            "sublistprops": "转发到子列表元素的属性。",
+            "triggerprops": "转发到触发器元素的属性。",
             "unmountonhide": "true \"时，元素将在关闭状态下卸载。",
-            "viewportprops": "NavigationMenuViewport 的属性。"
+            "viewportprops": "转发到视口元素的属性。"
           },
           "props": "NavigationMenuCompact 组件的属性。"
         },
         "navigationmenucompactslots": {
           "callables": {
-            "indicator": "渲染指示箭头的插槽。",
-            "item": "渲染整个项目的插槽（对于顶层项目）。",
-            "item_children": "渲染自定义子内容的插槽。",
-            "item_leading": "渲染项目前导内容的插槽。",
-            "item_link_icon": "渲染链接图标的插槽（外部链接默认为右上角箭头）。",
-            "item_trailing": "用于呈现项目尾部内容的插槽。",
-            "item_trigger_icon": "用于渲染触发器图标的插槽（默认为向下箭头）。"
+            "item": "",
+            "item_children": "",
+            "item_leading": "",
+            "item_link_icon": "",
+            "item_trailing": "",
+            "item_trigger_icon": ""
           },
           "slots": "NavigationMenuCompact 组件的插槽。"
         },
@@ -5705,6 +5709,16 @@
         "navigationmenulistprops": {
           "props": "NavigationMenuList 组件的属性。"
         },
+        "navigationmenuoptioncompactslots": {
+          "callables": {
+            "item": "",
+            "item_children": "",
+            "item_leading": "",
+            "item_link_icon": "",
+            "item_trailing": "",
+            "item_trigger_icon": ""
+          }
+        },
         "navigationmenurootemits": {
           "callables": {
             "update_modelvalue": "当模型值发生变化时发出。"
@@ -5750,6 +5764,7 @@
           },
           "props": "NavigationMenuTrigger 组件的属性。"
         },
+        "navigationmenuui": "NavigationMenu 组件的 UI 类重载。",
         "navigationmenuviewportprops": {
           "members": {
             "align": "对齐。",
@@ -6448,6 +6463,40 @@
         "progressui": "Progress 组件的 UI 类重载。"
       },
       "headless_src_components_radio_group_types": {
+        "radiogroupcardcompactemits": {
+          "callables": {
+            "update_modelvalue": "单选组值发生变化时调用的事件处理程序"
+          },
+          "emits": "RadioGroupCardCompact 组件的事件。"
+        },
+        "radiogroupcardcompactprops": {
+          "members": {
+            "contentprops": "转发到内容元素的属性。",
+            "controlprops": "转发到控制元素的属性。",
+            "defaultvalue": "初始渲染时应检查的单选项的值。当您不需要控制\n单选项的状态时使用。",
+            "descriptionprops": "转发到描述元素的属性。",
+            "dir": "在适用的情况下，无线电组的阅读方向。",
+            "disabled": "true \"时，阻止用户与单选项交互。",
+            "indicatorprops": "转发到指示器元素的属性。",
+            "itemprops": "转发到项目元素的属性。",
+            "items": "组件呈现的项目。",
+            "labelprops": "转发到标签元素的属性。",
+            "loop": "true \"时，键盘导航将从最后一项循环到第一项，反之亦然。",
+            "modelvalue": "要检查的单选项的受控值。可绑定为 `v-model`。",
+            "name": "字段名称。作为名称/值对的一部分，与其所属形式一起提交。",
+            "orientation": "组件的方向。",
+            "required": "true \"时，表示用户必须在提交拥有表单前设置值。",
+            "textcontentprops": "转发到文本内容元素的属性。"
+          },
+          "props": "RadioGroupCard 组件的属性。"
+        },
+        "radiogroupcardcompactslots": {
+          "callables": {
+            "description": "在无线电卡中渲染自定义描述内容的插槽。"
+          },
+          "slots": "RadioGroupCompact 组件的插槽。"
+        },
+        "radiogroupcardui": "RadioGroupCard 组件的 UI 类重载。",
         "radiogroupcompactemits": {
           "callables": {
             "update_modelvalue": "单选组值发生变化时调用的事件处理程序"
@@ -6525,7 +6574,8 @@
           "props": "RadioGroupRoot 组件的属性。"
         },
         "radiogroupui": "RadioGroup 组件的 UI 类重载。",
-        "radioselectevent": "RadioSelectEvent 的类型信息。"
+        "radioselectevent": "RadioSelectEvent 的类型信息。",
+        "type": ""
       },
       "headless_src_components_scroll_area_types": {
         "scrollareacompactemits": {
@@ -7110,6 +7160,7 @@
           },
           "props": "StepperTrigger 组件的属性。"
         },
+        "stepperui": "步进组件的 UI 类重载。",
         "type": ""
       },
       "headless_src_components_switch_types": {
@@ -7123,6 +7174,7 @@
           "members": {
             "controlprops": "转发到控制元素的属性。",
             "defaultvalue": "开关初始呈现时的状态。在不需要控制开关状态时使用。",
+            "dir": "开关在改变状态时的动画方向。",
             "disabled": "为 `true`时，阻止用户与开关交互。",
             "falsevalue": "在提交 \"名称 \"时作为数据给出的值。",
             "modelvalue": "开关的受控状态。可绑定为 `v-model`。",
@@ -7167,6 +7219,7 @@
         "switchrootprops": {
           "members": {
             "defaultvalue": "开关初始呈现时的状态。在不需要控制开关状态时使用。",
+            "dir": "开关在改变状态时的动画方向。",
             "disabled": "为 `true`时，阻止用户与开关交互。",
             "falsevalue": "在提交 \"名称 \"时作为数据给出的值。",
             "modelvalue": "开关的受控状态。可绑定为 `v-model`。",
@@ -8201,6 +8254,7 @@
             "prefetchon": "允许控制何时预取链接。默认情况下，只有在可见时才会触发预取。",
             "rel": "用于链接的 rel 属性值。外部链接默认为 \"noopener noreferrer\"。",
             "replace": "调用 `router.replace` 代替 `router.push`.",
+            "showicon": "是否在提供 `href` 工具时显示图标。",
             "target": "显示链接 URL 的位置，作为浏览上下文的名称。",
             "to": "路由 点击链接时应导航到的位置。",
             "trailingslash": "为特定链接的 `href` 添加或删除尾部斜线的选项。\n如果提供，则覆盖全局 `trailingSlash` 选项。",
@@ -8828,6 +8882,7 @@
         "classvalue": "",
         "dataorientation": "",
         "definedvalue": "",
+        "definedwithbooleanvalue": "",
         "direction": "",
         "horizontalside": "",
         "maybepromise": "",
@@ -9233,6 +9288,7 @@
             "defaultopen": "对话框初始呈现时的打开状态。在不需要控制其打开状态时使用。",
             "description": "对话框说明。该说明用于辅助功能，如果未提供 `description` 插槽，则将在对话框内容中呈现。",
             "descriptionprops": "转发到描述元素的属性。",
+            "dir": "对话框的文本方向",
             "direction": "方向",
             "dismissible": "是否可删除。",
             "fadefromindex": "淡出索引。",
@@ -10652,6 +10708,7 @@
             "defaultopen": "对话框初始呈现时的打开状态。在不需要控制其打开状态时使用。",
             "description": "对话框说明。该说明用于辅助功能，如果未提供 `description` 插槽，则将在对话框内容中呈现。",
             "descriptionprops": "转发到描述元素的属性。",
+            "dir": "对话框的文本方向",
             "footerprops": "转发到页脚元素的属性。",
             "headerprops": "转发到标题元素的属性。",
             "icon": "对话框的图标。该图标用于可访问性目的，如果未提供 icon 插槽，则将在对话框的页眉中显示。",
@@ -10717,6 +10774,7 @@
             "defaultopen": "对话框初始呈现时的打开状态。在不需要控制其打开状态时使用。",
             "description": "对话框说明。该说明用于辅助功能，如果未提供 `description` 插槽，则将在对话框内容中呈现。",
             "descriptionprops": "转发到描述元素的属性。",
+            "dir": "对话框的文本方向",
             "footerprops": "转发到页脚元素的属性。",
             "headerprops": "转发到标题元素的属性。",
             "icon": "对话框的图标。该图标用于可访问性目的，如果未提供 icon 插槽，则将在对话框的页眉中显示。",
@@ -10978,7 +11036,6 @@
           },
           "emits": "可编辑组件的事件"
         },
-        "editableextendedui": "可编辑组件的扩展 UI 类重载。",
         "editableprops": {
           "members": {
             "activationmode": "可编辑字段的激活事件。",
@@ -11009,6 +11066,17 @@
             "ui": "组件的每个插槽类重写。"
           },
           "props": "可编辑组件的属性"
+        },
+        "editableslots": {
+          "callables": {
+            "cancel_trigger": "取消触发槽的自定义内容。",
+            "default": "默认插槽的自定义内容。",
+            "edit_trigger": "编辑触发槽的自定义内容。",
+            "input": "输入槽的自定义内容。",
+            "preview": "预览槽的自定义内容。",
+            "submit_trigger": "提交触发槽的自定义内容。"
+          },
+          "slots": "可编辑组件的槽属性。"
         }
       },
       "src_components_empty_types": {
@@ -11092,6 +11160,13 @@
             "ui": "组件的每个插槽类重写。"
           },
           "props": "HoverCard 组件的属性。"
+        },
+        "hovercardslots": {
+          "callables": {
+            "default": "默认插槽的自定义内容。",
+            "trigger": "触发槽的自定义内容。"
+          },
+          "slots": "HoverCard 组件的插槽。"
         }
       },
       "src_components_icon_types": {
@@ -11503,47 +11578,6 @@
           },
           "emits": "NavigationMenu 组件的事件。"
         },
-        "navigationmenuextendedui": "NavigationMenu 组件的扩展 UI 类重载。",
-        "navigationmenuoptiondata": {
-          "members": {
-            "children": "选项的子选项",
-            "description": "选项说明",
-            "disabled": "是否禁用该选项。",
-            "external": "强制将链接视为外部链接（true）或内部链接（false）。这有助于处理边缘情况",
-            "href": "点击链接时应导航到的 URL。",
-            "icon": "选项图标\n\n如果是字符串，将用作 iconify 的图标名称。",
-            "label": "在选项中显示的标签。",
-            "target": "显示链接 URL 的位置，作为浏览上下文的名称。",
-            "to": "路由 点击链接时应导航到的位置。",
-            "value": "选项的值。"
-          }
-        },
-        "navigationmenuoptionemits": {
-          "callables": {
-            "escapekeydown": "按下 Escape 键时调用事件处理程序。可以避免。",
-            "focusoutside": "当焦点移出 \"DismissableLayer \"时调用事件处理程序。可以防止。",
-            "interactoutside": "当交互发生在 `DismissableLayer` 以外时，调用事件处理程序。具体来说，当`pointerdown\n事件发生或焦点移出时调用的事件处理程序。可以避免。",
-            "pointerdownoutside": "当 \"DismissableLayer \"之外发生 \"pointerdown \"事件时调用事件处理程序。可以防止。",
-            "select": "发生选择时输出。",
-            "update_modelvalue": "当模型值发生变化时发出。"
-          },
-          "emits": "NavigationMenuOption 组件的事件。"
-        },
-        "navigationmenuoptionprops": {
-          "members": {
-            "contentprops": "转发到内容元素的属性。",
-            "indicatorprops": "转发到指示器元素的属性。",
-            "item": "当前项目数据。",
-            "itemprops": "转发到项目元素的属性。",
-            "linkprops": "转发到链接元素的属性。",
-            "listprops": "转发到列表元素的属性。",
-            "subitemprops": "转发到子项目元素的属性。",
-            "sublistprops": "转发到子列表元素的属性。",
-            "triggerprops": "转发到触发器元素的属性。",
-            "viewportprops": "转发到视口元素的属性。"
-          },
-          "props": "NavigationMenuOption 组件的属性。"
-        },
         "navigationmenuprops": {
           "members": {
             "class": "应用于根元素的附加类名。",
@@ -11556,7 +11590,7 @@
             "disablepointerleaveclose": "如果 \"true\"，菜单不会在指针离开事件中关闭",
             "indicatorprops": "转发到指示器元素的属性。",
             "itemprops": "转发到项目元素的属性。",
-            "items": "组件呈现的项目。",
+            "items": "在导航菜单中呈现的项目。",
             "linkprops": "转发到链接元素的属性。",
             "listprops": "转发到列表元素的属性。",
             "modelvalue": "要激活的菜单项的受控值。可用作 `v-model`。",
@@ -11572,19 +11606,16 @@
           },
           "props": "NavigationMenu 组件的属性。"
         },
-        "navigationmenusuboptionemits": {
+        "navigationmenuslots": {
           "callables": {
-            "select": "发生选择时输出。"
+            "item": "",
+            "item_children": "",
+            "item_leading": "",
+            "item_link_icon": "",
+            "item_trailing": "",
+            "item_trigger_icon": ""
           },
-          "emits": "NavigationMenuSubOption 组件的事件。"
-        },
-        "navigationmenusuboptionprops": {
-          "members": {
-            "linkprops": "转发到链接元素的属性。",
-            "subitem": "子项目。",
-            "subitemprops": "转发到子项目元素的属性。"
-          },
-          "props": "NavigationMenuSubOption 组件的属性。"
+          "slots": "NavigationMenu 组件的插槽。"
         }
       },
       "src_components_page_tabs_types": {
@@ -11646,18 +11677,18 @@
             "defaultpage": "初始呈现时应处于活动状态的页面值。当您不需要控制值的\n状态。",
             "defaultpagesize": "初始渲染时的 `pageSize` 默认值。在不需要控制值状态时使用。",
             "disabled": "为 \"true \"时，阻止用户与项目进行交互。",
-            "ellipsisprops": "省略号组件的属性",
-            "firstprops": "第一个按钮组件的属性",
-            "lastprops": "最后一个按钮组件的属性",
-            "listitemprops": "列表项组件的属性",
-            "listprops": "列表组件的属性",
-            "nextprops": "下一个按钮组件的属性",
+            "ellipsisprops": "属性转到省略号元素。",
+            "firstprops": "属性转发到第一个元素。",
+            "lastprops": "属性转到最后一个元素。",
+            "listitemprops": "转发到列表项元素的属性。",
+            "listprops": "转发到列表元素的属性。",
+            "nextprops": "属性转到下一个元素。",
             "page": "当前页面的受控值。可绑定为 `v-model:page`。",
             "pagesize": "每页条目数",
-            "prevprops": "上一个按钮组件的属性",
+            "prevprops": "属性转发到 prev 元素。",
             "shape": "分页的形状",
             "showedges": "当 \"true \"时，始终显示第一页、最后一页和省略号",
-            "showfirstorlast": "是否显示第一个和最后一个按钮",
+            "showfirstorlast": "是否显示首字母或尾字母",
             "siblingcount": "应在当前页面周围显示同级页的数量",
             "size": "分页的大小",
             "total": "列表中的项目数",
@@ -11665,6 +11696,18 @@
             "variant": "分页的变体"
           },
           "props": "分页组件的属性。"
+        },
+        "paginationslots": {
+          "callables": {
+            "ellipsis": "省略号槽的自定义内容。",
+            "first": "第一槽的自定义内容。",
+            "last": "为最后一个插槽定制内容。",
+            "leading": "前导槽的自定义内容。",
+            "next": "为下一个插槽定制内容。",
+            "prev": "自定义 prev 插槽的内容。",
+            "trailing": "为尾部槽定制内容。"
+          },
+          "slots": "分页组件的插槽。"
         }
       },
       "src_components_pagination_variants": {
@@ -11883,12 +11926,20 @@
         }
       },
       "src_components_radio_group_types": {
-        "radiocardgroupprops": {
+        "radiogroupcardemits": {
+          "callables": {
+            "update_modelvalue": "单选组值发生变化时调用的事件处理程序"
+          },
+          "emits": "RadioGroupCard 组件的事件。"
+        },
+        "radiogroupcardprops": {
           "members": {
             "class": "应用于根元素的附加类名。",
             "color": "组件的主题颜色。",
+            "contentprops": "转发到内容元素的属性。",
             "controlprops": "转发到控制元素的属性。",
             "defaultvalue": "初始渲染时应检查的单选项的值。当您不需要控制\n单选项的状态时使用。",
+            "descriptionprops": "转发到描述元素的属性。",
             "dir": "在适用的情况下，无线电组的阅读方向。",
             "disabled": "true \"时，阻止用户与单选项交互。",
             "indicatorprops": "转发到指示器元素的属性。",
@@ -11901,34 +11952,18 @@
             "orientation": "组件的方向。",
             "required": "true \"时，表示用户必须在提交拥有表单前设置值。",
             "size": "组件的可视化尺寸。",
+            "textcontentprops": "转发到文本内容元素的属性。",
             "ui": "组件的每个插槽类重写。",
             "variant": "组件的可视化变体。"
           },
           "props": "RadioGroupCard 组件的属性。"
         },
-        "radiocardprops": {
-          "members": {
-            "controlprops": "转发到控制元素的属性。",
-            "description": "组件呈现的描述文本。",
-            "disabled": "true \"时，阻止用户与单选项交互。",
-            "icon": "组件呈现的图标。",
-            "indicatorprops": "转发到指示器元素的属性。",
-            "label": "为组件呈现的文本添加标签。",
-            "labelprops": "转发到标签元素的属性。",
-            "name": "字段名称。作为名称/值对的一部分，与其所属形式一起提交。",
-            "required": "true \"时，表示用户必须在提交拥有表单前设置值。",
-            "ui": "组件的每个插槽类重写。",
-            "value": "在提交 \"名称 \"时作为数据给出的值。"
-          },
-          "props": "RadioCard 组件的属性。"
-        },
-        "radiogroupcardemits": {
+        "radiogroupcardslots": {
           "callables": {
-            "update_modelvalue": "单选组值发生变化时调用的事件处理程序"
+            "description": "在无线电卡中渲染自定义描述内容的插槽。"
           },
-          "emits": "RadioGroupCard 组件的事件。"
+          "slots": "RadioGroupCard 组件的插槽。"
         },
-        "radiogroupcardui": "RadioGroupCard 组件的 UI 类重载。",
         "radiogroupemits": {
           "callables": {
             "update_modelvalue": "单选组值发生变化时调用的事件处理程序"
@@ -11957,19 +11992,6 @@
             "variant": "组件的可视化变体。"
           },
           "props": "RadioGroup 组件的属性。"
-        },
-        "radioprops": {
-          "members": {
-            "controlprops": "转发到控制元素的属性。",
-            "disabled": "true \"时，阻止用户与单选项交互。",
-            "indicatorprops": "转发到指示器元素的属性。",
-            "label": "为组件呈现的文本添加标签。",
-            "labelprops": "转发到标签元素的属性。",
-            "name": "字段名称。作为名称/值对的一部分，与其所属形式一起提交。",
-            "required": "true \"时，表示用户必须在提交拥有表单前设置值。",
-            "value": "在提交 \"名称 \"时作为数据给出的值。"
-          },
-          "props": "无线电组件的属性。"
         }
       },
       "src_components_radio_group_variants": {
@@ -12252,7 +12274,6 @@
           },
           "emits": "步进组件的事件"
         },
-        "stepperextendedui": "步进组件的扩展 UI 类重载。",
         "stepperprops": {
           "members": {
             "as": "该组件应呈现为的元素或组件。可被 `asChild` 改写",
@@ -12275,6 +12296,16 @@
             "ui": "组件的每个插槽类重写。"
           },
           "props": "步进组件的属性。"
+        },
+        "stepperslots": {
+          "callables": {
+            "description": "自定义描述槽的内容。",
+            "indicator": "指标槽的自定义内容。",
+            "item": "自定义项目槽的内容。",
+            "separator": "分隔符槽的自定义内容。",
+            "title": "标题槽的自定义内容。"
+          },
+          "slots": "步进组件的插槽。"
         }
       },
       "src_components_switch_types": {
@@ -12290,6 +12321,7 @@
             "color": "组件的主题颜色。",
             "controlprops": "转发到控制元素的属性。",
             "defaultvalue": "开关初始呈现时的状态。在不需要控制开关状态时使用。",
+            "dir": "开关在改变状态时的动画方向。",
             "disabled": "为 `true`时，阻止用户与开关交互。",
             "falsevalue": "在提交 \"名称 \"时作为数据给出的值。",
             "modelvalue": "开关的受控状态。可绑定为 `v-model`。",
@@ -12797,6 +12829,7 @@
             "dir": "工具栏的阅读方向",
             "loop": "是否使用键盘漫游焦点循环。",
             "orientation": "工具栏的方向",
+            "size": "组件的可视化尺寸。",
             "ui": "组件的每个插槽类重写。"
           },
           "props": "工具栏组件的属性"

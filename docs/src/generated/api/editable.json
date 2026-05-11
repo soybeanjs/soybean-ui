@@ -6,7 +6,7 @@
         "kind": "props",
         "name": "EditableProps",
         "type": "Interface EditableProps",
-        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<EditableExtendedUi>; areaProps?: EditableAreaProps; previewProps?: EditablePreviewProps; inputProps?: EditableInputProps; editTriggerProps?: EditableEditTriggerProps; submitTriggerProps?: EditableSubmitTriggerProps; cancelTriggerProps?: EditableCancelTriggerProps; defaultValue?: string; modelValue?: string; placeholder?: string | EditablePlaceholder; dir?: Direction; disabled?: boolean; readonly?: boolean; activationMode?: EditableActivationMode; selectOnFocus?: boolean; submitMode?: EditableSubmitMode; startWithEditMode?: boolean; maxLength?: number; autoResize?: boolean; id?: string; name?: string; required?: boolean; asChild?: boolean; as?: AsTag | Component }",
+        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<EditableUi>; areaProps?: EditableAreaProps; previewProps?: EditablePreviewProps; inputProps?: EditableInputProps; editTriggerProps?: EditableEditTriggerProps; submitTriggerProps?: EditableSubmitTriggerProps; cancelTriggerProps?: EditableCancelTriggerProps; defaultValue?: string; modelValue?: string; placeholder?: string | EditablePlaceholder; dir?: Direction; disabled?: boolean; readonly?: boolean; activationMode?: EditableActivationMode; selectOnFocus?: boolean; submitMode?: EditableSubmitMode; startWithEditMode?: boolean; maxLength?: number; autoResize?: boolean; id?: string; name?: string; required?: boolean; asChild?: boolean; as?: AsTag | Component }",
         "description": "Properties for the Editable component.",
         "descriptionKey": "api.generated.src_components_editable_types.editableprops.props",
         "sourcePath": "src/components/editable/types.ts",
@@ -64,7 +64,7 @@
           },
           {
             "name": "ui",
-            "type": "Partial<EditableExtendedUi>",
+            "type": "Partial<EditableUi>",
             "required": false,
             "description": "Per-slot class overrides for the component.",
             "descriptionKey": "api.generated.src_components_editable_types.editableprops.members.ui",
@@ -73,13 +73,13 @@
             "sourcePath": "src/components/editable/types.ts",
             "referencedTypes": [
               {
-                "name": "EditableExtendedUi",
+                "name": "EditableUi",
                 "kind": "typeAlias",
                 "type": "{ root: ClassValue; input: ClassValue; area: ClassValue; preview: ClassValue; controls: ClassValue; editTrigger: ClassValue; submitTrigger: ClassValue; cancelTrigger: ClassValue; }",
                 "resolvedType": null,
-                "description": "Extended UI class overrides for the Editable component.",
-                "descriptionKey": "api.generated.src_components_editable_types.editableextendedui",
-                "sourcePath": "src/components/editable/types.ts",
+                "description": "UI class overrides for the Editable component.",
+                "descriptionKey": "api.generated.headless_src_components_editable_types.editableui",
+                "sourcePath": "headless/src/components/editable/types.ts",
                 "typeParameters": [],
                 "external": false,
                 "members": [],
@@ -94,8 +94,8 @@
             "description": "Properties forwarded to the area element.",
             "descriptionKey": "api.generated.src_components_editable_types.editableprops.members.areaprops",
             "default": null,
-            "inheritedFrom": null,
-            "sourcePath": "src/components/editable/types.ts",
+            "inheritedFrom": "areaProps",
+            "sourcePath": "headless/src/components/editable/types.ts",
             "referencedTypes": [
               {
                 "name": "EditableAreaProps",
@@ -142,8 +142,8 @@
             "description": "Properties forwarded to the preview element.",
             "descriptionKey": "api.generated.src_components_editable_types.editableprops.members.previewprops",
             "default": null,
-            "inheritedFrom": null,
-            "sourcePath": "src/components/editable/types.ts",
+            "inheritedFrom": "previewProps",
+            "sourcePath": "headless/src/components/editable/types.ts",
             "referencedTypes": [
               {
                 "name": "EditablePreviewProps",
@@ -190,8 +190,8 @@
             "description": "Properties forwarded to the input element.",
             "descriptionKey": "api.generated.src_components_editable_types.editableprops.members.inputprops",
             "default": null,
-            "inheritedFrom": null,
-            "sourcePath": "src/components/editable/types.ts",
+            "inheritedFrom": "inputProps",
+            "sourcePath": "headless/src/components/editable/types.ts",
             "referencedTypes": [
               {
                 "name": "EditableInputProps",
@@ -249,8 +249,8 @@
             "description": "Properties forwarded to the edit trigger element.",
             "descriptionKey": "api.generated.src_components_editable_types.editableprops.members.edittriggerprops",
             "default": null,
-            "inheritedFrom": null,
-            "sourcePath": "src/components/editable/types.ts",
+            "inheritedFrom": "editTriggerProps",
+            "sourcePath": "headless/src/components/editable/types.ts",
             "referencedTypes": [
               {
                 "name": "EditableEditTriggerProps",
@@ -319,8 +319,8 @@
             "description": "Properties forwarded to the submit trigger element.",
             "descriptionKey": "api.generated.src_components_editable_types.editableprops.members.submittriggerprops",
             "default": null,
-            "inheritedFrom": null,
-            "sourcePath": "src/components/editable/types.ts",
+            "inheritedFrom": "submitTriggerProps",
+            "sourcePath": "headless/src/components/editable/types.ts",
             "referencedTypes": [
               {
                 "name": "EditableSubmitTriggerProps",
@@ -389,8 +389,8 @@
             "description": "Properties forwarded to the cancel trigger element.",
             "descriptionKey": "api.generated.src_components_editable_types.editableprops.members.canceltriggerprops",
             "default": null,
-            "inheritedFrom": null,
-            "sourcePath": "src/components/editable/types.ts",
+            "inheritedFrom": "cancelTriggerProps",
+            "sourcePath": "headless/src/components/editable/types.ts",
             "referencedTypes": [
               {
                 "name": "EditableCancelTriggerProps",
@@ -747,7 +747,7 @@
       "emits": {
         "kind": "emits",
         "name": "EditableEmits",
-        "type": "TypeAlias EditableEmits: EditableRootEmits",
+        "type": "TypeAlias EditableEmits: EditableCompactEmits",
         "resolvedType": "{ \"update:modelValue\": [value: string]; submit: [value: string]; \"update:state\": [state: EditableEventState] }",
         "description": "Events for the Editable component.",
         "descriptionKey": "api.generated.src_components_editable_types.editableemits.emits",
@@ -840,6 +840,239 @@
                 "required": true,
                 "description": "Event handler called when the editable field changes state.",
                 "descriptionKey": "api.generated.headless_src_components_editable_types.editablerootemits.callables.update_state",
+                "sourcePath": "headless/src/components/editable/types.ts",
+                "referencedTypes": []
+              }
+            ]
+          }
+        ]
+      },
+      "slots": {
+        "kind": "slots",
+        "name": "EditableSlots",
+        "type": "TypeAlias EditableSlots: EditableCompactSlots",
+        "resolvedType": "{ EditableCompact?: ((props: EditableCompactSlotProps) => any); preview?: ((props: EditableCompactSlotProps) => any); input?: ((props: EditableCompactSlotProps) => any); \"edit-trigger\"?: ((props: EditableCompactSlotProps) => any); \"submit-trigger\"?: ((props: EditableCompactSlotProps) => any); \"cancel-trigger\"?: ((props: EditableCompactSlotProps) => any) }",
+        "description": "Slot properties for the Editable component.",
+        "descriptionKey": "api.generated.src_components_editable_types.editableslots.slots",
+        "sourcePath": "src/components/editable/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [
+          {
+            "name": "default",
+            "type": "((props: EditableCompactSlotProps) => any) | undefined",
+            "parameters": "((props: EditableCompactSlotProps) => any) | undefined",
+            "required": false,
+            "description": "Custom content for the default slot.",
+            "descriptionKey": "api.generated.src_components_editable_types.editableslots.callables.default",
+            "sourcePath": "headless/src/components/editable/types.ts",
+            "referencedTypes": [
+              {
+                "name": "EditableCompactSlotProps",
+                "kind": "interface",
+                "type": "EditableCompactSlotProps",
+                "resolvedType": null,
+                "description": "Slot properties for the EditableCompact component.",
+                "descriptionKey": "api.generated.headless_src_components_editable_types.editablecompactslotprops",
+                "sourcePath": "headless/src/components/editable/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "preview",
+            "type": "((props: EditableCompactSlotProps) => any) | undefined",
+            "parameters": "((props: EditableCompactSlotProps) => any) | undefined",
+            "required": false,
+            "description": "Custom content for the preview slot.",
+            "descriptionKey": "api.generated.src_components_editable_types.editableslots.callables.preview",
+            "sourcePath": "headless/src/components/editable/types.ts",
+            "referencedTypes": [
+              {
+                "name": "EditableCompactSlotProps",
+                "kind": "interface",
+                "type": "EditableCompactSlotProps",
+                "resolvedType": null,
+                "description": "Slot properties for the EditableCompact component.",
+                "descriptionKey": "api.generated.headless_src_components_editable_types.editablecompactslotprops",
+                "sourcePath": "headless/src/components/editable/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "input",
+            "type": "((props: EditableCompactSlotProps) => any) | undefined",
+            "parameters": "((props: EditableCompactSlotProps) => any) | undefined",
+            "required": false,
+            "description": "Custom content for the input slot.",
+            "descriptionKey": "api.generated.src_components_editable_types.editableslots.callables.input",
+            "sourcePath": "headless/src/components/editable/types.ts",
+            "referencedTypes": [
+              {
+                "name": "EditableCompactSlotProps",
+                "kind": "interface",
+                "type": "EditableCompactSlotProps",
+                "resolvedType": null,
+                "description": "Slot properties for the EditableCompact component.",
+                "descriptionKey": "api.generated.headless_src_components_editable_types.editablecompactslotprops",
+                "sourcePath": "headless/src/components/editable/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "edit-trigger",
+            "type": "((props: EditableCompactSlotProps) => any) | undefined",
+            "parameters": "((props: EditableCompactSlotProps) => any) | undefined",
+            "required": false,
+            "description": "Custom content for the edit trigger slot.",
+            "descriptionKey": "api.generated.src_components_editable_types.editableslots.callables.edit_trigger",
+            "sourcePath": "headless/src/components/editable/types.ts",
+            "referencedTypes": [
+              {
+                "name": "EditableCompactSlotProps",
+                "kind": "interface",
+                "type": "EditableCompactSlotProps",
+                "resolvedType": null,
+                "description": "Slot properties for the EditableCompact component.",
+                "descriptionKey": "api.generated.headless_src_components_editable_types.editablecompactslotprops",
+                "sourcePath": "headless/src/components/editable/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "submit-trigger",
+            "type": "((props: EditableCompactSlotProps) => any) | undefined",
+            "parameters": "((props: EditableCompactSlotProps) => any) | undefined",
+            "required": false,
+            "description": "Custom content for the submit trigger slot.",
+            "descriptionKey": "api.generated.src_components_editable_types.editableslots.callables.submit_trigger",
+            "sourcePath": "headless/src/components/editable/types.ts",
+            "referencedTypes": [
+              {
+                "name": "EditableCompactSlotProps",
+                "kind": "interface",
+                "type": "EditableCompactSlotProps",
+                "resolvedType": null,
+                "description": "Slot properties for the EditableCompact component.",
+                "descriptionKey": "api.generated.headless_src_components_editable_types.editablecompactslotprops",
+                "sourcePath": "headless/src/components/editable/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "cancel-trigger",
+            "type": "((props: EditableCompactSlotProps) => any) | undefined",
+            "parameters": "((props: EditableCompactSlotProps) => any) | undefined",
+            "required": false,
+            "description": "Custom content for the cancel trigger slot.",
+            "descriptionKey": "api.generated.src_components_editable_types.editableslots.callables.cancel_trigger",
+            "sourcePath": "headless/src/components/editable/types.ts",
+            "referencedTypes": [
+              {
+                "name": "EditableCompactSlotProps",
+                "kind": "interface",
+                "type": "EditableCompactSlotProps",
+                "resolvedType": null,
+                "description": "Slot properties for the EditableCompact component.",
+                "descriptionKey": "api.generated.headless_src_components_editable_types.editablecompactslotprops",
+                "sourcePath": "headless/src/components/editable/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "referencedTypes": [
+          {
+            "name": "EditableCompactSlots",
+            "kind": "typeAlias",
+            "type": "{ EditableCompact?: (props: import(\"../../../node_modules/@soybeanjs/headless/src/components/editable/types\").EditableCompactSlotProps) => any; preview?: (props: import(\"../../../node_modules/@soybeanjs/headless/src/components/editable/types\").EditableCompactSlotProps) => any; input?: (props: import(\"../../../node_modules/@soybeanjs/headless/src/components/editable/types\").EditableCompactSlotProps) => any; 'edit-trigger'?: (props: import(\"../../../node_modules/@soybeanjs/headless/src/components/editable/types\").EditableCompactSlotProps) => any; 'submit-trigger'?: (props: import(\"../../../node_modules/@soybeanjs/headless/src/components/editable/types\").EditableCompactSlotProps) => any; 'cancel-trigger'?: (props: import(\"../../../node_modules/@soybeanjs/headless/src/components/editable/types\").EditableCompactSlotProps) => any; }",
+            "resolvedType": "{ EditableCompact?: ((props: EditableCompactSlotProps) => any); preview?: ((props: EditableCompactSlotProps) => any); input?: ((props: EditableCompactSlotProps) => any); \"edit-trigger\"?: ((props: EditableCompactSlotProps) => any); \"submit-trigger\"?: ((props: EditableCompactSlotProps) => any); \"cancel-trigger\"?: ((props: EditableCompactSlotProps) => any) }",
+            "description": "Slots for the EditableCompact component.",
+            "descriptionKey": "api.generated.headless_src_components_editable_types.editablecompactslots",
+            "sourcePath": "headless/src/components/editable/types.ts",
+            "typeParameters": [],
+            "external": false,
+            "members": [],
+            "callables": [
+              {
+                "name": "default",
+                "type": "((props: EditableCompactSlotProps) => any) | undefined",
+                "parameters": "((props: EditableCompactSlotProps) => any) | undefined",
+                "required": false,
+                "description": "Custom content for the default slot.",
+                "descriptionKey": "api.generated.headless_src_components_editable_types.editablecompactslots.callables.default",
+                "sourcePath": "headless/src/components/editable/types.ts",
+                "referencedTypes": []
+              },
+              {
+                "name": "preview",
+                "type": "((props: EditableCompactSlotProps) => any) | undefined",
+                "parameters": "((props: EditableCompactSlotProps) => any) | undefined",
+                "required": false,
+                "description": "Custom content for the preview slot.",
+                "descriptionKey": "api.generated.headless_src_components_editable_types.editablecompactslots.callables.preview",
+                "sourcePath": "headless/src/components/editable/types.ts",
+                "referencedTypes": []
+              },
+              {
+                "name": "input",
+                "type": "((props: EditableCompactSlotProps) => any) | undefined",
+                "parameters": "((props: EditableCompactSlotProps) => any) | undefined",
+                "required": false,
+                "description": "Custom content for the input slot.",
+                "descriptionKey": "api.generated.headless_src_components_editable_types.editablecompactslots.callables.input",
+                "sourcePath": "headless/src/components/editable/types.ts",
+                "referencedTypes": []
+              },
+              {
+                "name": "edit-trigger",
+                "type": "((props: EditableCompactSlotProps) => any) | undefined",
+                "parameters": "((props: EditableCompactSlotProps) => any) | undefined",
+                "required": false,
+                "description": "Custom content for the edit trigger slot.",
+                "descriptionKey": "api.generated.headless_src_components_editable_types.editablecompactslots.callables.edit_trigger",
+                "sourcePath": "headless/src/components/editable/types.ts",
+                "referencedTypes": []
+              },
+              {
+                "name": "submit-trigger",
+                "type": "((props: EditableCompactSlotProps) => any) | undefined",
+                "parameters": "((props: EditableCompactSlotProps) => any) | undefined",
+                "required": false,
+                "description": "Custom content for the submit trigger slot.",
+                "descriptionKey": "api.generated.headless_src_components_editable_types.editablecompactslots.callables.submit_trigger",
+                "sourcePath": "headless/src/components/editable/types.ts",
+                "referencedTypes": []
+              },
+              {
+                "name": "cancel-trigger",
+                "type": "((props: EditableCompactSlotProps) => any) | undefined",
+                "parameters": "((props: EditableCompactSlotProps) => any) | undefined",
+                "required": false,
+                "description": "Custom content for the cancel trigger slot.",
+                "descriptionKey": "api.generated.headless_src_components_editable_types.editablecompactslots.callables.cancel_trigger",
                 "sourcePath": "headless/src/components/editable/types.ts",
                 "referencedTypes": []
               }
@@ -1778,7 +2011,7 @@
       "slots": {
         "kind": "slots",
         "name": "EditableCompactSlots",
-        "type": "Interface EditableCompactSlots",
+        "type": "TypeAlias EditableCompactSlots",
         "resolvedType": "{ EditableCompact?: ((props: EditableCompactSlotProps) => any); preview?: ((props: EditableCompactSlotProps) => any); input?: ((props: EditableCompactSlotProps) => any); \"edit-trigger\"?: ((props: EditableCompactSlotProps) => any); \"submit-trigger\"?: ((props: EditableCompactSlotProps) => any); \"cancel-trigger\"?: ((props: EditableCompactSlotProps) => any) }",
         "description": "Slots for the EditableCompact component.",
         "descriptionKey": "api.generated.headless_src_components_editable_types.editablecompactslots.slots",

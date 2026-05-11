@@ -1397,6 +1397,7 @@ export const Menubar = {
 };
 
 export const NavigationMenu = {
+  Compact: NavigationMenuCompact,
   Root: NavigationMenuRoot,
   List: NavigationMenuList,
   Item: NavigationMenuItem,
@@ -1405,9 +1406,9 @@ export const NavigationMenu = {
   Link: NavigationMenuLink,
   SubList: NavigationMenuSubList,
   Viewport: NavigationMenuViewport,
-  Indicator: NavigationMenuIndicator,
-  Compact: NavigationMenuCompact
+  Indicator: NavigationMenuIndicator
 } as {
+  Compact: typeof NavigationMenuCompact;
   Root: typeof NavigationMenuRoot;
   List: typeof NavigationMenuList;
   Item: typeof NavigationMenuItem;
@@ -1417,7 +1418,6 @@ export const NavigationMenu = {
   SubList: typeof NavigationMenuSubList;
   Viewport: typeof NavigationMenuViewport;
   Indicator: typeof NavigationMenuIndicator;
-  Compact: typeof NavigationMenuCompact;
 };
 
 export const PageTabs = {

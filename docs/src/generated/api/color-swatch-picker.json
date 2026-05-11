@@ -1053,7 +1053,7 @@
       "slots": {
         "kind": "slots",
         "name": "ColorSwatchPickerCompactSlots",
-        "type": "Interface ColorSwatchPickerCompactSlots<M>",
+        "type": "TypeAlias ColorSwatchPickerCompactSlots<M>",
         "resolvedType": "{ ColorSwatchPickerItemSwatch?: ((props: ColorSwatchPickerCompactSlotProps<M>) => any); swatch?: ((props: ColorSwatchPickerCompactColorSlotProps) => any); indicator?: ((props: ColorSwatchPickerCompactColorSlotProps) => any) }",
         "description": "Slots for the ColorSwatchPickerCompact component.",
         "descriptionKey": "api.generated.headless_src_components_color_swatch_picker_types.colorswatchpickercompactslots.slots",

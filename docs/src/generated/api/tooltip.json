@@ -815,8 +815,8 @@
         "referencedTypes": [
           {
             "name": "TooltipCompactSlots",
-            "kind": "interface",
-            "type": "TooltipCompactSlots",
+            "kind": "typeAlias",
+            "type": "{ TooltipArrow?: () => any; trigger?: () => any; }",
             "resolvedType": "{ TooltipArrow?: (() => any); trigger?: (() => any) }",
             "description": "Slots for the TooltipCompact component.",
             "descriptionKey": "api.generated.headless_src_components_tooltip_types.tooltipcompactslots",
@@ -1513,7 +1513,7 @@
       "slots": {
         "kind": "slots",
         "name": "TooltipCompactSlots",
-        "type": "Interface TooltipCompactSlots",
+        "type": "TypeAlias TooltipCompactSlots",
         "resolvedType": "{ TooltipArrow?: (() => any); trigger?: (() => any) }",
         "description": "Slots for the TooltipCompact component.",
         "descriptionKey": "api.generated.headless_src_components_tooltip_types.tooltipcompactslots.slots",

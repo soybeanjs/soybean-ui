@@ -6,7 +6,7 @@
         "kind": "props",
         "name": "StepperProps",
         "type": "Interface StepperProps",
-        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; color?: ThemeColor; size?: ThemeSize; ui?: Partial<StepperExtendedUi>; items: StepperOptionData[]; itemProps?: StepperItemProps; triggerProps?: StepperTriggerProps; indicatorProps?: StepperIndicatorProps; separatorProps?: import(\"@soybeanjs/headless\").ContextMenuSeparatorProps; titleProps?: StepperTitleProps; descriptionProps?: StepperDescriptionProps; defaultValue?: number; modelValue?: number; orientation?: DataOrientation; dir?: Direction; linear?: boolean; asChild?: boolean; as?: AsTag | Component }",
+        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; color?: ThemeColor; size?: ThemeSize; ui?: Partial<StepperUi>; items: StepperItemData[]; itemProps?: StepperItemProps; triggerProps?: StepperTriggerProps; indicatorProps?: StepperIndicatorProps; separatorProps?: SeparatorRootProps; titleProps?: StepperTitleProps; descriptionProps?: StepperDescriptionProps; defaultValue?: number; modelValue?: number; orientation?: DataOrientation; dir?: Direction; linear?: boolean; asChild?: boolean; as?: AsTag | Component }",
         "description": "Properties for the Stepper component.",
         "descriptionKey": "api.generated.src_components_stepper_types.stepperprops.props",
         "sourcePath": "src/components/stepper/types.ts",
@@ -89,7 +89,7 @@
           },
           {
             "name": "ui",
-            "type": "Partial<StepperExtendedUi>",
+            "type": "Partial<StepperUi>",
             "required": false,
             "description": "Per-slot class overrides for the component.",
             "descriptionKey": "api.generated.src_components_stepper_types.stepperprops.members.ui",
@@ -98,13 +98,13 @@
             "sourcePath": "src/components/stepper/types.ts",
             "referencedTypes": [
               {
-                "name": "StepperExtendedUi",
+                "name": "StepperUi",
                 "kind": "typeAlias",
                 "type": "{ root: ClassValue; item: ClassValue; trigger: ClassValue; description: ClassValue; title: ClassValue; indicator: ClassValue; separator: ClassValue; indicatorIcon: ClassValue; itemContent: ClassValue; }",
                 "resolvedType": null,
-                "description": "Extended UI class overrides for the Stepper component.",
-                "descriptionKey": "api.generated.src_components_stepper_types.stepperextendedui",
-                "sourcePath": "src/components/stepper/types.ts",
+                "description": "UI class overrides for the Stepper component.",
+                "descriptionKey": "api.generated.headless_src_components_stepper_types.stepperui",
+                "sourcePath": "headless/src/components/stepper/types.ts",
                 "typeParameters": [],
                 "external": false,
                 "members": [],
@@ -114,13 +114,13 @@
           },
           {
             "name": "items",
-            "type": "StepperOptionData[]",
+            "type": "StepperItemData[]",
             "required": true,
             "description": "Items rendered by the component.",
             "descriptionKey": "api.generated.src_components_stepper_types.stepperprops.members.items",
             "default": null,
-            "inheritedFrom": null,
-            "sourcePath": "src/components/stepper/types.ts",
+            "inheritedFrom": "items",
+            "sourcePath": "headless/src/components/stepper/types.ts",
             "referencedTypes": []
           },
           {
@@ -130,8 +130,8 @@
             "description": "Properties forwarded to the item element.",
             "descriptionKey": "api.generated.src_components_stepper_types.stepperprops.members.itemprops",
             "default": null,
-            "inheritedFrom": null,
-            "sourcePath": "src/components/stepper/types.ts",
+            "inheritedFrom": "itemProps",
+            "sourcePath": "headless/src/components/stepper/types.ts",
             "referencedTypes": [
               {
                 "name": "StepperItemProps",
@@ -211,8 +211,8 @@
             "description": "Properties forwarded to the trigger element.",
             "descriptionKey": "api.generated.src_components_stepper_types.stepperprops.members.triggerprops",
             "default": null,
-            "inheritedFrom": null,
-            "sourcePath": "src/components/stepper/types.ts",
+            "inheritedFrom": "triggerProps",
+            "sourcePath": "headless/src/components/stepper/types.ts",
             "referencedTypes": [
               {
                 "name": "StepperTriggerProps",
@@ -259,8 +259,8 @@
             "description": "Properties forwarded to the indicator element.",
             "descriptionKey": "api.generated.src_components_stepper_types.stepperprops.members.indicatorprops",
             "default": null,
-            "inheritedFrom": null,
-            "sourcePath": "src/components/stepper/types.ts",
+            "inheritedFrom": "indicatorProps",
+            "sourcePath": "headless/src/components/stepper/types.ts",
             "referencedTypes": [
               {
                 "name": "StepperIndicatorProps",
@@ -302,18 +302,18 @@
           },
           {
             "name": "separatorProps",
-            "type": "import(\"@soybeanjs/headless\").ContextMenuSeparatorProps",
+            "type": "SeparatorRootProps",
             "required": false,
             "description": "Properties forwarded to the separator element.",
             "descriptionKey": "api.generated.src_components_stepper_types.stepperprops.members.separatorprops",
             "default": null,
-            "inheritedFrom": null,
-            "sourcePath": "src/components/stepper/types.ts",
+            "inheritedFrom": "separatorProps",
+            "sourcePath": "headless/src/components/stepper/types.ts",
             "referencedTypes": [
               {
                 "name": "SeparatorRootProps",
                 "kind": "interface",
-                "type": "import(\"@soybeanjs/headless\").ContextMenuSeparatorProps",
+                "type": "SeparatorRootProps",
                 "resolvedType": "{ orientation?: DataOrientation; decorative?: boolean }",
                 "description": "Properties for the SeparatorRoot component.",
                 "descriptionKey": "api.generated.headless_src_components_separator_types.separatorrootprops",
@@ -355,8 +355,8 @@
             "description": "Properties forwarded to the title element.",
             "descriptionKey": "api.generated.src_components_stepper_types.stepperprops.members.titleprops",
             "default": null,
-            "inheritedFrom": null,
-            "sourcePath": "src/components/stepper/types.ts",
+            "inheritedFrom": "titleProps",
+            "sourcePath": "headless/src/components/stepper/types.ts",
             "referencedTypes": [
               {
                 "name": "StepperTitleProps",
@@ -403,8 +403,8 @@
             "description": "Properties forwarded to the description element.",
             "descriptionKey": "api.generated.src_components_stepper_types.stepperprops.members.descriptionprops",
             "default": null,
-            "inheritedFrom": null,
-            "sourcePath": "src/components/stepper/types.ts",
+            "inheritedFrom": "descriptionProps",
+            "sourcePath": "headless/src/components/stepper/types.ts",
             "referencedTypes": [
               {
                 "name": "StepperDescriptionProps",
@@ -578,7 +578,7 @@
       "emits": {
         "kind": "emits",
         "name": "StepperEmits",
-        "type": "TypeAlias StepperEmits: StepperRootEmits",
+        "type": "TypeAlias StepperEmits: StepperCompactEmits",
         "resolvedType": "{ \"update:modelValue\": [payload: number] }",
         "description": "Events for the Stepper component.",
         "descriptionKey": "api.generated.src_components_stepper_types.stepperemits.emits",
@@ -617,6 +617,270 @@
                 "required": true,
                 "description": "Emitted when the model value changes.",
                 "descriptionKey": "api.generated.headless_src_components_stepper_types.stepperrootemits.callables.update_modelvalue",
+                "sourcePath": "headless/src/components/stepper/types.ts",
+                "referencedTypes": []
+              }
+            ]
+          }
+        ]
+      },
+      "slots": {
+        "kind": "slots",
+        "name": "StepperSlots",
+        "type": "TypeAlias StepperSlots: StepperCompactSlots",
+        "resolvedType": "{ item?: ((props: StepperItemData & { step: number; state: StepperState; }) => any); indicator?: ((props: StepperItemData & { step: number; state: StepperState; }) => any); title?: ((props: StepperItemData & { step: number; state: StepperState; }) => any); description?: ((props: StepperItemData & { step: number; state: StepperState; }) => any); separator?: ((props: StepperItemData & { step: number; state: StepperState; }) => any) }",
+        "description": "Slots for the Stepper component.",
+        "descriptionKey": "api.generated.src_components_stepper_types.stepperslots.slots",
+        "sourcePath": "src/components/stepper/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [
+          {
+            "name": "item",
+            "type": "((props: StepperItemData & { step: number; state: StepperState; }) => any) | undefined",
+            "parameters": "((props: StepperItemData & { step: number; state: StepperState; }) => any) | undefined",
+            "required": false,
+            "description": "Custom content for the item slot.",
+            "descriptionKey": "api.generated.src_components_stepper_types.stepperslots.callables.item",
+            "sourcePath": "headless/src/components/stepper/types.ts",
+            "referencedTypes": [
+              {
+                "name": "__type",
+                "kind": "typeLiteral",
+                "type": "{ step: number; state: StepperState; }",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": "api.generated.headless_src_components_stepper_types.type",
+                "sourcePath": "headless/src/components/stepper/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "StepperItemData",
+                "kind": "interface",
+                "type": "StepperItemData",
+                "resolvedType": null,
+                "description": "Type information for StepperItemData.",
+                "descriptionKey": "api.generated.headless_src_components_stepper_types.stepperitemdata",
+                "sourcePath": "headless/src/components/stepper/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "indicator",
+            "type": "((props: StepperItemData & { step: number; state: StepperState; }) => any) | undefined",
+            "parameters": "((props: StepperItemData & { step: number; state: StepperState; }) => any) | undefined",
+            "required": false,
+            "description": "Custom content for the indicator slot.",
+            "descriptionKey": "api.generated.src_components_stepper_types.stepperslots.callables.indicator",
+            "sourcePath": "headless/src/components/stepper/types.ts",
+            "referencedTypes": [
+              {
+                "name": "__type",
+                "kind": "typeLiteral",
+                "type": "{ step: number; state: StepperState; }",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": "api.generated.headless_src_components_stepper_types.type",
+                "sourcePath": "headless/src/components/stepper/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "StepperItemData",
+                "kind": "interface",
+                "type": "StepperItemData",
+                "resolvedType": null,
+                "description": "Type information for StepperItemData.",
+                "descriptionKey": "api.generated.headless_src_components_stepper_types.stepperitemdata",
+                "sourcePath": "headless/src/components/stepper/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "title",
+            "type": "((props: StepperItemData & { step: number; state: StepperState; }) => any) | undefined",
+            "parameters": "((props: StepperItemData & { step: number; state: StepperState; }) => any) | undefined",
+            "required": false,
+            "description": "Custom content for the title slot.",
+            "descriptionKey": "api.generated.src_components_stepper_types.stepperslots.callables.title",
+            "sourcePath": "headless/src/components/stepper/types.ts",
+            "referencedTypes": [
+              {
+                "name": "__type",
+                "kind": "typeLiteral",
+                "type": "{ step: number; state: StepperState; }",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": "api.generated.headless_src_components_stepper_types.type",
+                "sourcePath": "headless/src/components/stepper/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "StepperItemData",
+                "kind": "interface",
+                "type": "StepperItemData",
+                "resolvedType": null,
+                "description": "Type information for StepperItemData.",
+                "descriptionKey": "api.generated.headless_src_components_stepper_types.stepperitemdata",
+                "sourcePath": "headless/src/components/stepper/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "description",
+            "type": "((props: StepperItemData & { step: number; state: StepperState; }) => any) | undefined",
+            "parameters": "((props: StepperItemData & { step: number; state: StepperState; }) => any) | undefined",
+            "required": false,
+            "description": "Custom content for the description slot.",
+            "descriptionKey": "api.generated.src_components_stepper_types.stepperslots.callables.description",
+            "sourcePath": "headless/src/components/stepper/types.ts",
+            "referencedTypes": [
+              {
+                "name": "__type",
+                "kind": "typeLiteral",
+                "type": "{ step: number; state: StepperState; }",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": "api.generated.headless_src_components_stepper_types.type",
+                "sourcePath": "headless/src/components/stepper/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "StepperItemData",
+                "kind": "interface",
+                "type": "StepperItemData",
+                "resolvedType": null,
+                "description": "Type information for StepperItemData.",
+                "descriptionKey": "api.generated.headless_src_components_stepper_types.stepperitemdata",
+                "sourcePath": "headless/src/components/stepper/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "separator",
+            "type": "((props: StepperItemData & { step: number; state: StepperState; }) => any) | undefined",
+            "parameters": "((props: StepperItemData & { step: number; state: StepperState; }) => any) | undefined",
+            "required": false,
+            "description": "Custom content for the separator slot.",
+            "descriptionKey": "api.generated.src_components_stepper_types.stepperslots.callables.separator",
+            "sourcePath": "headless/src/components/stepper/types.ts",
+            "referencedTypes": [
+              {
+                "name": "__type",
+                "kind": "typeLiteral",
+                "type": "{ step: number; state: StepperState; }",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": "api.generated.headless_src_components_stepper_types.type",
+                "sourcePath": "headless/src/components/stepper/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "StepperItemData",
+                "kind": "interface",
+                "type": "StepperItemData",
+                "resolvedType": null,
+                "description": "Type information for StepperItemData.",
+                "descriptionKey": "api.generated.headless_src_components_stepper_types.stepperitemdata",
+                "sourcePath": "headless/src/components/stepper/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "referencedTypes": [
+          {
+            "name": "StepperCompactSlots",
+            "kind": "typeAlias",
+            "type": "{ item?: (props: import(\"@soybeanjs/headless\").StepperItemData & { step: number; state: import(\"@soybeanjs/headless\").StepperState; }) => any; indicator?: (props: import(\"@soybeanjs/headless\").StepperItemData & { step: number; state: import(\"@soybeanjs/headless\").StepperState; }) => any; title?: (props: import(\"@soybeanjs/headless\").StepperItemData & { step: number; state: import(\"@soybeanjs/headless\").StepperState; }) => any; description?: (props: import(\"@soybeanjs/headless\").StepperItemData & { step: number; state: import(\"@soybeanjs/headless\").StepperState; }) => any; separator?: (props: import(\"@soybeanjs/headless\").StepperItemData & { step: number; state: import(\"@soybeanjs/headless\").StepperState; }) => any; }",
+            "resolvedType": "{ item?: ((props: StepperItemData & { step: number; state: StepperState; }) => any); indicator?: ((props: StepperItemData & { step: number; state: StepperState; }) => any); title?: ((props: StepperItemData & { step: number; state: StepperState; }) => any); description?: ((props: StepperItemData & { step: number; state: StepperState; }) => any); separator?: ((props: StepperItemData & { step: number; state: StepperState; }) => any) }",
+            "description": "Slots for the StepperCompact component.",
+            "descriptionKey": "api.generated.headless_src_components_stepper_types.steppercompactslots",
+            "sourcePath": "headless/src/components/stepper/types.ts",
+            "typeParameters": [],
+            "external": false,
+            "members": [],
+            "callables": [
+              {
+                "name": "item",
+                "type": "((props: StepperItemData & { step: number; state: StepperState; }) => any) | undefined",
+                "parameters": "((props: StepperItemData & { step: number; state: StepperState; }) => any) | undefined",
+                "required": false,
+                "description": "Custom content for the item slot.",
+                "descriptionKey": "api.generated.headless_src_components_stepper_types.steppercompactslots.callables.item",
+                "sourcePath": "headless/src/components/stepper/types.ts",
+                "referencedTypes": []
+              },
+              {
+                "name": "indicator",
+                "type": "((props: StepperItemData & { step: number; state: StepperState; }) => any) | undefined",
+                "parameters": "((props: StepperItemData & { step: number; state: StepperState; }) => any) | undefined",
+                "required": false,
+                "description": "Custom content for the indicator slot.",
+                "descriptionKey": "api.generated.headless_src_components_stepper_types.steppercompactslots.callables.indicator",
+                "sourcePath": "headless/src/components/stepper/types.ts",
+                "referencedTypes": []
+              },
+              {
+                "name": "title",
+                "type": "((props: StepperItemData & { step: number; state: StepperState; }) => any) | undefined",
+                "parameters": "((props: StepperItemData & { step: number; state: StepperState; }) => any) | undefined",
+                "required": false,
+                "description": "Custom content for the title slot.",
+                "descriptionKey": "api.generated.headless_src_components_stepper_types.steppercompactslots.callables.title",
+                "sourcePath": "headless/src/components/stepper/types.ts",
+                "referencedTypes": []
+              },
+              {
+                "name": "description",
+                "type": "((props: StepperItemData & { step: number; state: StepperState; }) => any) | undefined",
+                "parameters": "((props: StepperItemData & { step: number; state: StepperState; }) => any) | undefined",
+                "required": false,
+                "description": "Custom content for the description slot.",
+                "descriptionKey": "api.generated.headless_src_components_stepper_types.steppercompactslots.callables.description",
+                "sourcePath": "headless/src/components/stepper/types.ts",
+                "referencedTypes": []
+              },
+              {
+                "name": "separator",
+                "type": "((props: StepperItemData & { step: number; state: StepperState; }) => any) | undefined",
+                "parameters": "((props: StepperItemData & { step: number; state: StepperState; }) => any) | undefined",
+                "required": false,
+                "description": "Custom content for the separator slot.",
+                "descriptionKey": "api.generated.headless_src_components_stepper_types.steppercompactslots.callables.separator",
                 "sourcePath": "headless/src/components/stepper/types.ts",
                 "referencedTypes": []
               }
@@ -1151,7 +1415,7 @@
       "slots": {
         "kind": "slots",
         "name": "StepperCompactSlots",
-        "type": "Interface StepperCompactSlots",
+        "type": "TypeAlias StepperCompactSlots",
         "resolvedType": "{ item?: ((props: StepperItemData & { step: number; state: StepperState; }) => any); indicator?: ((props: StepperItemData & { step: number; state: StepperState; }) => any); title?: ((props: StepperItemData & { step: number; state: StepperState; }) => any); description?: ((props: StepperItemData & { step: number; state: StepperState; }) => any); separator?: ((props: StepperItemData & { step: number; state: StepperState; }) => any) }",
         "description": "Slots for the StepperCompact component.",
         "descriptionKey": "api.generated.headless_src_components_stepper_types.steppercompactslots.slots",

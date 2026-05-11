@@ -973,7 +973,7 @@
       "slots": {
         "kind": "slots",
         "name": "SliderCompactSlots",
-        "type": "Interface SliderCompactSlots",
+        "type": "TypeAlias SliderCompactSlots",
         "resolvedType": "{ SliderThumb?: ((props: SliderCompactSlotProps) => any) }",
         "description": "Slots for the SliderCompact component.",
         "descriptionKey": "api.generated.headless_src_components_slider_types.slidercompactslots.slots",

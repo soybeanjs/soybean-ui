@@ -6,7 +6,7 @@
         "kind": "props",
         "name": "SwitchProps",
         "type": "Interface SwitchProps<T>",
-        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; ui?: Partial<SwitchUi>; color?: ThemeColor; size?: ThemeSize; shape?: SwitchShape; controlProps?: SwitchControlProps; thumbProps?: SwitchThumbProps; defaultValue?: NonNullable<T>; modelValue?: T; disabled?: boolean; value?: string; name?: string; required?: boolean; trueValue?: NonNullable<T>; falseValue?: NonNullable<T> }",
+        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; ui?: Partial<SwitchUi>; color?: ThemeColor; size?: ThemeSize; shape?: SwitchShape; controlProps?: SwitchControlProps; thumbProps?: SwitchThumbProps; defaultValue?: NonNullable<T>; modelValue?: T; disabled?: boolean; value?: string; dir?: Direction; name?: string; required?: boolean; trueValue?: NonNullable<T>; falseValue?: NonNullable<T> }",
         "description": "Properties for the Switch component.",
         "descriptionKey": "api.generated.src_components_switch_types.switchprops.props",
         "sourcePath": "src/components/switch/types.ts",
@@ -311,6 +311,31 @@
             "referencedTypes": []
           },
           {
+            "name": "dir",
+            "type": "Direction",
+            "required": false,
+            "description": "The direction the switch should animate towards when changing state.",
+            "descriptionKey": "api.generated.src_components_switch_types.switchprops.members.dir",
+            "default": null,
+            "inheritedFrom": "dir",
+            "sourcePath": "headless/src/components/switch/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Direction",
+                "kind": "typeAlias",
+                "type": "'ltr' | 'rtl'",
+                "resolvedType": "'ltr' | 'rtl'",
+                "description": "",
+                "descriptionKey": "api.generated.headless_src_types_common.direction",
+                "sourcePath": "headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
             "name": "name",
             "type": "string",
             "required": false,
@@ -499,7 +524,7 @@
         "kind": "props",
         "name": "SwitchCompactProps",
         "type": "Interface SwitchCompactProps<T>",
-        "resolvedType": "{ controlProps?: SwitchControlProps; thumbProps?: SwitchThumbProps; defaultValue?: NonNullable<T>; modelValue?: T; disabled?: boolean; value?: string; name?: string; required?: boolean; trueValue?: NonNullable<T>; falseValue?: NonNullable<T> }",
+        "resolvedType": "{ controlProps?: SwitchControlProps; thumbProps?: SwitchThumbProps; defaultValue?: NonNullable<T>; modelValue?: T; disabled?: boolean; value?: string; dir?: Direction; name?: string; required?: boolean; trueValue?: NonNullable<T>; falseValue?: NonNullable<T> }",
         "description": "Properties for the SwitchCompact component.",
         "descriptionKey": "api.generated.headless_src_components_switch_types.switchcompactprops.props",
         "sourcePath": "headless/src/components/switch/types.ts",
@@ -677,6 +702,31 @@
             "inheritedFrom": "value",
             "sourcePath": "headless/src/components/switch/types.ts",
             "referencedTypes": []
+          },
+          {
+            "name": "dir",
+            "type": "Direction",
+            "required": false,
+            "description": "The direction the switch should animate towards when changing state.",
+            "descriptionKey": "api.generated.headless_src_components_switch_types.switchcompactprops.members.dir",
+            "default": null,
+            "inheritedFrom": "dir",
+            "sourcePath": "headless/src/components/switch/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Direction",
+                "kind": "typeAlias",
+                "type": "'ltr' | 'rtl'",
+                "resolvedType": "'ltr' | 'rtl'",
+                "description": "",
+                "descriptionKey": "api.generated.headless_src_types_common.direction",
+                "sourcePath": "headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
           },
           {
             "name": "name",
@@ -949,7 +999,7 @@
         "kind": "props",
         "name": "SwitchRootProps",
         "type": "Interface SwitchRootProps<T>",
-        "resolvedType": "{ defaultValue?: NonNullable<T>; modelValue?: T; disabled?: boolean; value?: string; name?: string; required?: boolean; trueValue?: NonNullable<T>; falseValue?: NonNullable<T> }",
+        "resolvedType": "{ defaultValue?: NonNullable<T>; modelValue?: T; disabled?: boolean; value?: string; dir?: Direction; name?: string; required?: boolean; trueValue?: NonNullable<T>; falseValue?: NonNullable<T> }",
         "description": "Properties for the SwitchRoot component.",
         "descriptionKey": "api.generated.headless_src_components_switch_types.switchrootprops.props",
         "sourcePath": "headless/src/components/switch/types.ts",
@@ -998,6 +1048,31 @@
             "inheritedFrom": null,
             "sourcePath": "headless/src/components/switch/types.ts",
             "referencedTypes": []
+          },
+          {
+            "name": "dir",
+            "type": "Direction",
+            "required": false,
+            "description": "The direction the switch should animate towards when changing state.",
+            "descriptionKey": "api.generated.headless_src_components_switch_types.switchrootprops.members.dir",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/switch/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Direction",
+                "kind": "typeAlias",
+                "type": "'ltr' | 'rtl'",
+                "resolvedType": "'ltr' | 'rtl'",
+                "description": "",
+                "descriptionKey": "api.generated.headless_src_types_common.direction",
+                "sourcePath": "headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
           },
           {
             "name": "name",

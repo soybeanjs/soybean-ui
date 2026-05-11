@@ -6,7 +6,7 @@
         "kind": "props",
         "name": "DialogProps",
         "type": "Interface DialogProps",
-        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<DialogUi>; title?: string; description?: string; icon?: string | import(\"vue\").Component | VNode<import(\"vue\").RendererNode, import(\"vue\").RendererElement, { [key: string]: any; }> | null; showClose?: boolean; pure?: boolean; showCancel?: boolean | 'onlyWarning'; cancelText?: string; showConfirm?: boolean; confirmText?: string; triggerProps?: DialogTriggerProps; overlayProps?: DialogOverlayProps; portalProps?: DialogPortalProps; popupProps?: DialogPopupProps; headerProps?: DialogHeaderProps; contentProps?: DialogContentProps; footerProps?: DialogFooterProps; titleProps?: DialogTitleProps; descriptionProps?: DialogDescriptionProps; closeProps?: DialogCloseProps; cancelProps?: DialogCancelProps; confirmProps?: DialogConfirmProps; isAlert?: boolean; alertType?: DialogAlertType; open?: boolean; defaultOpen?: boolean; modal?: boolean }",
+        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<DialogUi>; title?: string; description?: string; icon?: string | import(\"vue\").Component | VNode<import(\"vue\").RendererNode, import(\"vue\").RendererElement, { [key: string]: any; }> | null; showClose?: boolean; pure?: boolean; showCancel?: boolean | 'onlyWarning'; cancelText?: string; showConfirm?: boolean; confirmText?: string; triggerProps?: DialogTriggerProps; overlayProps?: DialogOverlayProps; portalProps?: DialogPortalProps; popupProps?: DialogPopupProps; headerProps?: DialogHeaderProps; contentProps?: DialogContentProps; footerProps?: DialogFooterProps; titleProps?: DialogTitleProps; descriptionProps?: DialogDescriptionProps; closeProps?: DialogCloseProps; cancelProps?: DialogCancelProps; confirmProps?: DialogConfirmProps; dir?: Direction; isAlert?: boolean; alertType?: DialogAlertType; open?: boolean; defaultOpen?: boolean; modal?: boolean }",
         "description": "Properties for the Dialog component.",
         "descriptionKey": "api.generated.src_components_dialog_types.dialogprops.props",
         "sourcePath": "src/components/dialog/types.ts",
@@ -767,6 +767,31 @@
                     "referencedTypes": []
                   }
                 ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "dir",
+            "type": "Direction",
+            "required": false,
+            "description": "The text direction of the dialog",
+            "descriptionKey": "api.generated.src_components_dialog_types.dialogprops.members.dir",
+            "default": null,
+            "inheritedFrom": "dir",
+            "sourcePath": "headless/src/components/dialog/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Direction",
+                "kind": "typeAlias",
+                "type": "'ltr' | 'rtl'",
+                "resolvedType": "'ltr' | 'rtl'",
+                "description": "",
+                "descriptionKey": "api.generated.headless_src_types_common.direction",
+                "sourcePath": "headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
                 "callables": []
               }
             ]
@@ -1821,7 +1846,7 @@
         "kind": "props",
         "name": "DialogCompactProps",
         "type": "Interface DialogCompactProps",
-        "resolvedType": "{ title?: string; description?: string; icon?: string | import(\"vue\").Component | VNode<import(\"vue\").RendererNode, import(\"vue\").RendererElement, { [key: string]: any; }> | null; showClose?: boolean; pure?: boolean; showCancel?: boolean | 'onlyWarning'; cancelText?: string; showConfirm?: boolean; confirmText?: string; triggerProps?: DialogTriggerProps; overlayProps?: DialogOverlayProps; portalProps?: DialogPortalProps; popupProps?: DialogPopupProps; headerProps?: DialogHeaderProps; contentProps?: DialogContentProps; footerProps?: DialogFooterProps; titleProps?: DialogTitleProps; descriptionProps?: DialogDescriptionProps; closeProps?: DialogCloseProps; cancelProps?: DialogCancelProps; confirmProps?: DialogConfirmProps; isAlert?: boolean; alertType?: DialogAlertType; open?: boolean; defaultOpen?: boolean; modal?: boolean }",
+        "resolvedType": "{ title?: string; description?: string; icon?: string | import(\"vue\").Component | VNode<import(\"vue\").RendererNode, import(\"vue\").RendererElement, { [key: string]: any; }> | null; showClose?: boolean; pure?: boolean; showCancel?: boolean | 'onlyWarning'; cancelText?: string; showConfirm?: boolean; confirmText?: string; triggerProps?: DialogTriggerProps; overlayProps?: DialogOverlayProps; portalProps?: DialogPortalProps; popupProps?: DialogPopupProps; headerProps?: DialogHeaderProps; contentProps?: DialogContentProps; footerProps?: DialogFooterProps; titleProps?: DialogTitleProps; descriptionProps?: DialogDescriptionProps; closeProps?: DialogCloseProps; cancelProps?: DialogCancelProps; confirmProps?: DialogConfirmProps; dir?: Direction; isAlert?: boolean; alertType?: DialogAlertType; open?: boolean; defaultOpen?: boolean; modal?: boolean }",
         "description": "Properties for the DialogCompact component.",
         "descriptionKey": "api.generated.headless_src_components_dialog_types.dialogcompactprops.props",
         "sourcePath": "headless/src/components/dialog/types.ts",
@@ -2507,6 +2532,31 @@
                     "referencedTypes": []
                   }
                 ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "dir",
+            "type": "Direction",
+            "required": false,
+            "description": "The text direction of the dialog",
+            "descriptionKey": "api.generated.headless_src_components_dialog_types.dialogcompactprops.members.dir",
+            "default": null,
+            "inheritedFrom": "dir",
+            "sourcePath": "headless/src/components/dialog/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Direction",
+                "kind": "typeAlias",
+                "type": "'ltr' | 'rtl'",
+                "resolvedType": "'ltr' | 'rtl'",
+                "description": "",
+                "descriptionKey": "api.generated.headless_src_types_common.direction",
+                "sourcePath": "headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
                 "callables": []
               }
             ]
@@ -3651,12 +3701,37 @@
         "kind": "props",
         "name": "DialogRootProps",
         "type": "Interface DialogRootProps",
-        "resolvedType": "{ isAlert?: boolean; alertType?: DialogAlertType; open?: boolean; defaultOpen?: boolean; modal?: boolean }",
+        "resolvedType": "{ dir?: Direction; isAlert?: boolean; alertType?: DialogAlertType; open?: boolean; defaultOpen?: boolean; modal?: boolean }",
         "description": "Properties for the DialogRoot component.",
         "descriptionKey": "api.generated.headless_src_components_dialog_types.dialogrootprops.props",
         "sourcePath": "headless/src/components/dialog/types.ts",
         "typeParameters": [],
         "members": [
+          {
+            "name": "dir",
+            "type": "Direction",
+            "required": false,
+            "description": "The text direction of the dialog",
+            "descriptionKey": "api.generated.headless_src_components_dialog_types.dialogrootprops.members.dir",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/dialog/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Direction",
+                "kind": "typeAlias",
+                "type": "'ltr' | 'rtl'",
+                "resolvedType": "'ltr' | 'rtl'",
+                "description": "",
+                "descriptionKey": "api.generated.headless_src_types_common.direction",
+                "sourcePath": "headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
           {
             "name": "isAlert",
             "type": "boolean",

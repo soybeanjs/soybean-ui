@@ -152,22 +152,22 @@
             "name": "showFirstOrLast",
             "type": "boolean",
             "required": false,
-            "description": "Whether to show the first and last buttons",
+            "description": "Whether to show a first or last.",
             "descriptionKey": "api.generated.src_components_pagination_types.paginationprops.members.showfirstorlast",
             "default": null,
-            "inheritedFrom": null,
-            "sourcePath": "src/components/pagination/types.ts",
+            "inheritedFrom": "showFirstOrLast",
+            "sourcePath": "headless/src/components/pagination/types.ts",
             "referencedTypes": []
           },
           {
             "name": "listProps",
             "type": "PaginationListProps",
             "required": false,
-            "description": "The properties for the list component",
+            "description": "Properties forwarded to the list element.",
             "descriptionKey": "api.generated.src_components_pagination_types.paginationprops.members.listprops",
             "default": null,
-            "inheritedFrom": null,
-            "sourcePath": "src/components/pagination/types.ts",
+            "inheritedFrom": "listProps",
+            "sourcePath": "headless/src/components/pagination/types.ts",
             "referencedTypes": [
               {
                 "name": "PaginationListProps",
@@ -188,11 +188,11 @@
             "name": "listItemProps",
             "type": "PaginationListItemProps",
             "required": false,
-            "description": "The properties for the list item component",
+            "description": "Properties forwarded to the list item element.",
             "descriptionKey": "api.generated.src_components_pagination_types.paginationprops.members.listitemprops",
             "default": null,
-            "inheritedFrom": null,
-            "sourcePath": "src/components/pagination/types.ts",
+            "inheritedFrom": "listItemProps",
+            "sourcePath": "headless/src/components/pagination/types.ts",
             "referencedTypes": [
               {
                 "name": "PaginationListItemProps",
@@ -269,11 +269,11 @@
             "name": "ellipsisProps",
             "type": "PaginationEllipsisProps",
             "required": false,
-            "description": "The properties for the ellipsis component",
+            "description": "Properties forwarded to the ellipsis element.",
             "descriptionKey": "api.generated.src_components_pagination_types.paginationprops.members.ellipsisprops",
             "default": null,
-            "inheritedFrom": null,
-            "sourcePath": "src/components/pagination/types.ts",
+            "inheritedFrom": "ellipsisProps",
+            "sourcePath": "headless/src/components/pagination/types.ts",
             "referencedTypes": [
               {
                 "name": "PaginationEllipsisProps",
@@ -294,11 +294,11 @@
             "name": "firstProps",
             "type": "PaginationButtonProps",
             "required": false,
-            "description": "The properties for the first button component",
+            "description": "Properties forwarded to the first element.",
             "descriptionKey": "api.generated.src_components_pagination_types.paginationprops.members.firstprops",
             "default": null,
-            "inheritedFrom": null,
-            "sourcePath": "src/components/pagination/types.ts",
+            "inheritedFrom": "firstProps",
+            "sourcePath": "headless/src/components/pagination/types.ts",
             "referencedTypes": [
               {
                 "name": "PaginationButtonProps",
@@ -364,11 +364,11 @@
             "name": "prevProps",
             "type": "PaginationButtonProps",
             "required": false,
-            "description": "The properties for the previous button component",
+            "description": "Properties forwarded to the prev element.",
             "descriptionKey": "api.generated.src_components_pagination_types.paginationprops.members.prevprops",
             "default": null,
-            "inheritedFrom": null,
-            "sourcePath": "src/components/pagination/types.ts",
+            "inheritedFrom": "prevProps",
+            "sourcePath": "headless/src/components/pagination/types.ts",
             "referencedTypes": [
               {
                 "name": "PaginationButtonProps",
@@ -434,11 +434,11 @@
             "name": "nextProps",
             "type": "PaginationButtonProps",
             "required": false,
-            "description": "The properties for the next button component",
+            "description": "Properties forwarded to the next element.",
             "descriptionKey": "api.generated.src_components_pagination_types.paginationprops.members.nextprops",
             "default": null,
-            "inheritedFrom": null,
-            "sourcePath": "src/components/pagination/types.ts",
+            "inheritedFrom": "nextProps",
+            "sourcePath": "headless/src/components/pagination/types.ts",
             "referencedTypes": [
               {
                 "name": "PaginationButtonProps",
@@ -504,11 +504,11 @@
             "name": "lastProps",
             "type": "PaginationButtonProps",
             "required": false,
-            "description": "The properties for the last button component",
+            "description": "Properties forwarded to the last element.",
             "descriptionKey": "api.generated.src_components_pagination_types.paginationprops.members.lastprops",
             "default": null,
-            "inheritedFrom": null,
-            "sourcePath": "src/components/pagination/types.ts",
+            "inheritedFrom": "lastProps",
+            "sourcePath": "headless/src/components/pagination/types.ts",
             "referencedTypes": [
               {
                 "name": "PaginationButtonProps",
@@ -665,7 +665,7 @@
       "emits": {
         "kind": "emits",
         "name": "PaginationEmits",
-        "type": "TypeAlias PaginationEmits: PaginationRootEmits",
+        "type": "TypeAlias PaginationEmits: PaginationCompactEmits",
         "resolvedType": "{ \"update:page\": [value: number]; \"update:pageSize\": [value: number] }",
         "description": "Events for the Pagination component.",
         "descriptionKey": "api.generated.src_components_pagination_types.paginationemits.emits",
@@ -724,6 +724,175 @@
                 "required": true,
                 "description": "Event handler called when the page size value changes",
                 "descriptionKey": "api.generated.headless_src_components_pagination_types.paginationrootemits.callables.update_pagesize",
+                "sourcePath": "headless/src/components/pagination/types.ts",
+                "referencedTypes": []
+              }
+            ]
+          }
+        ]
+      },
+      "slots": {
+        "kind": "slots",
+        "name": "PaginationSlots",
+        "type": "TypeAlias PaginationSlots: PaginationCompactSlots",
+        "resolvedType": "{ leading?: (() => any); trailing?: (() => any); first?: (() => any); prev?: (() => any); next?: (() => any); last?: (() => any); ellipsis?: (() => any) }",
+        "description": "Slots for the Pagination component.",
+        "descriptionKey": "api.generated.src_components_pagination_types.paginationslots.slots",
+        "sourcePath": "src/components/pagination/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [
+          {
+            "name": "leading",
+            "type": "(() => any) | undefined",
+            "parameters": "(() => any) | undefined",
+            "required": false,
+            "description": "Custom content for the leading slot.",
+            "descriptionKey": "api.generated.src_components_pagination_types.paginationslots.callables.leading",
+            "sourcePath": "headless/src/components/pagination/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "trailing",
+            "type": "(() => any) | undefined",
+            "parameters": "(() => any) | undefined",
+            "required": false,
+            "description": "Custom content for the trailing slot.",
+            "descriptionKey": "api.generated.src_components_pagination_types.paginationslots.callables.trailing",
+            "sourcePath": "headless/src/components/pagination/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "first",
+            "type": "(() => any) | undefined",
+            "parameters": "(() => any) | undefined",
+            "required": false,
+            "description": "Custom content for the first slot.",
+            "descriptionKey": "api.generated.src_components_pagination_types.paginationslots.callables.first",
+            "sourcePath": "headless/src/components/pagination/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "prev",
+            "type": "(() => any) | undefined",
+            "parameters": "(() => any) | undefined",
+            "required": false,
+            "description": "Custom content for the prev slot.",
+            "descriptionKey": "api.generated.src_components_pagination_types.paginationslots.callables.prev",
+            "sourcePath": "headless/src/components/pagination/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "next",
+            "type": "(() => any) | undefined",
+            "parameters": "(() => any) | undefined",
+            "required": false,
+            "description": "Custom content for the next slot.",
+            "descriptionKey": "api.generated.src_components_pagination_types.paginationslots.callables.next",
+            "sourcePath": "headless/src/components/pagination/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "last",
+            "type": "(() => any) | undefined",
+            "parameters": "(() => any) | undefined",
+            "required": false,
+            "description": "Custom content for the last slot.",
+            "descriptionKey": "api.generated.src_components_pagination_types.paginationslots.callables.last",
+            "sourcePath": "headless/src/components/pagination/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "ellipsis",
+            "type": "(() => any) | undefined",
+            "parameters": "(() => any) | undefined",
+            "required": false,
+            "description": "Custom content for the ellipsis slot.",
+            "descriptionKey": "api.generated.src_components_pagination_types.paginationslots.callables.ellipsis",
+            "sourcePath": "headless/src/components/pagination/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "referencedTypes": [
+          {
+            "name": "PaginationCompactSlots",
+            "kind": "typeAlias",
+            "type": "{ leading?: () => any; trailing?: () => any; first?: () => any; prev?: () => any; next?: () => any; last?: () => any; ellipsis?: () => any; }",
+            "resolvedType": "{ leading?: (() => any); trailing?: (() => any); first?: (() => any); prev?: (() => any); next?: (() => any); last?: (() => any); ellipsis?: (() => any) }",
+            "description": "Slots for the PaginationCompact component.",
+            "descriptionKey": "api.generated.headless_src_components_pagination_types.paginationcompactslots",
+            "sourcePath": "headless/src/components/pagination/types.ts",
+            "typeParameters": [],
+            "external": false,
+            "members": [],
+            "callables": [
+              {
+                "name": "leading",
+                "type": "(() => any) | undefined",
+                "parameters": "(() => any) | undefined",
+                "required": false,
+                "description": "Custom content for the leading slot.",
+                "descriptionKey": "api.generated.headless_src_components_pagination_types.paginationcompactslots.callables.leading",
+                "sourcePath": "headless/src/components/pagination/types.ts",
+                "referencedTypes": []
+              },
+              {
+                "name": "trailing",
+                "type": "(() => any) | undefined",
+                "parameters": "(() => any) | undefined",
+                "required": false,
+                "description": "Custom content for the trailing slot.",
+                "descriptionKey": "api.generated.headless_src_components_pagination_types.paginationcompactslots.callables.trailing",
+                "sourcePath": "headless/src/components/pagination/types.ts",
+                "referencedTypes": []
+              },
+              {
+                "name": "first",
+                "type": "(() => any) | undefined",
+                "parameters": "(() => any) | undefined",
+                "required": false,
+                "description": "Custom content for the first slot.",
+                "descriptionKey": "api.generated.headless_src_components_pagination_types.paginationcompactslots.callables.first",
+                "sourcePath": "headless/src/components/pagination/types.ts",
+                "referencedTypes": []
+              },
+              {
+                "name": "prev",
+                "type": "(() => any) | undefined",
+                "parameters": "(() => any) | undefined",
+                "required": false,
+                "description": "Custom content for the prev slot.",
+                "descriptionKey": "api.generated.headless_src_components_pagination_types.paginationcompactslots.callables.prev",
+                "sourcePath": "headless/src/components/pagination/types.ts",
+                "referencedTypes": []
+              },
+              {
+                "name": "next",
+                "type": "(() => any) | undefined",
+                "parameters": "(() => any) | undefined",
+                "required": false,
+                "description": "Custom content for the next slot.",
+                "descriptionKey": "api.generated.headless_src_components_pagination_types.paginationcompactslots.callables.next",
+                "sourcePath": "headless/src/components/pagination/types.ts",
+                "referencedTypes": []
+              },
+              {
+                "name": "last",
+                "type": "(() => any) | undefined",
+                "parameters": "(() => any) | undefined",
+                "required": false,
+                "description": "Custom content for the last slot.",
+                "descriptionKey": "api.generated.headless_src_components_pagination_types.paginationcompactslots.callables.last",
+                "sourcePath": "headless/src/components/pagination/types.ts",
+                "referencedTypes": []
+              },
+              {
+                "name": "ellipsis",
+                "type": "(() => any) | undefined",
+                "parameters": "(() => any) | undefined",
+                "required": false,
+                "description": "Custom content for the ellipsis slot.",
+                "descriptionKey": "api.generated.headless_src_components_pagination_types.paginationcompactslots.callables.ellipsis",
                 "sourcePath": "headless/src/components/pagination/types.ts",
                 "referencedTypes": []
               }
@@ -1425,7 +1594,7 @@
       "slots": {
         "kind": "slots",
         "name": "PaginationCompactSlots",
-        "type": "Interface PaginationCompactSlots",
+        "type": "TypeAlias PaginationCompactSlots",
         "resolvedType": "{ leading?: (() => any); trailing?: (() => any); first?: (() => any); prev?: (() => any); next?: (() => any); last?: (() => any); ellipsis?: (() => any) }",
         "description": "Slots for the PaginationCompact component.",
         "descriptionKey": "api.generated.headless_src_components_pagination_types.paginationcompactslots.slots",

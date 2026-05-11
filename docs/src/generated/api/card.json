@@ -876,7 +876,7 @@
       "slots": {
         "kind": "slots",
         "name": "CardCompactSlots",
-        "type": "Interface CardCompactSlots",
+        "type": "TypeAlias CardCompactSlots",
         "resolvedType": "{ CardCompact?: (() => any); header?: (() => any); title?: (() => any); \"title-leading\"?: (() => any); \"title-trailing\"?: (() => any); extra?: (() => any); footer?: (() => any); description?: (() => any) }",
         "description": "Slots for the CardCompact component.",
         "descriptionKey": "api.generated.headless_src_components_card_types.cardcompactslots.slots",
