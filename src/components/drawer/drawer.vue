@@ -33,16 +33,16 @@ const ui = computed(() => {
   const miniSize = miniSizeMap[props.size ?? 'md'];
 
   const variants = Object.assign(
+    dialogVariants({
+      size: props.size,
+      pure: props.pure
+    }),
     drawerVariants({
       size: props.size,
       side: props.side
     }),
     {
       $base: {
-        ...dialogVariants({
-          size: props.size,
-          pure: props.pure
-        }),
         cancel: buttonVariants({
           variant: 'pure',
           size: miniSize
