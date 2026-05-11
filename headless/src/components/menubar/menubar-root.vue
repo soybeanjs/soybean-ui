@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, shallowRef } from 'vue';
+import { shallowRef } from 'vue';
 import { useControllableState, useForwardElement, useOmitProps } from '../../composables';
 import { transformPropsToContext } from '../../shared';
 import { Primitive } from '../primitive';
@@ -21,8 +21,6 @@ const emit = defineEmits<MenubarRootEmits>();
 const cls = useMenubarUi('root');
 
 const forwardedProps = useOmitProps(props, ['class', 'modelValue', 'defaultValue', 'dir', 'loop']);
-
-const mergedClass = computed(() => [cls.value, props.class]);
 
 const modelValue = useControllableState(
   () => props.modelValue,
@@ -59,7 +57,7 @@ const [_, setRootElement] = useForwardElement(onContainerElementChange);
       :as="as"
       :as-child="asChild"
       data-soybean-menubar-root
-      :class="mergedClass"
+      :class="cls"
       role="menubar"
       :dir="dir"
     >
