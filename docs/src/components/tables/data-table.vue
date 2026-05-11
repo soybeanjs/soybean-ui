@@ -175,7 +175,7 @@ function getDescriptionText(row: TableRow) {
     <STable :columns="tableColumns" :data="tableData" :row-key="row => row.__rowKey" size="sm" bordered>
       <template #name="{ row: tableRow }">
         <div class="flex flex-wrap items-center gap-2">
-          <SBadge size="xs" color="destructive" :open="Boolean(tableRow.required)">
+          <SBadge size="xs" color="destructive" :open="Boolean(tableRow.required) && preset === 'props'">
             <div class="code-btn">{{ getCellValue(tableRow, 'name') }}</div>
           </SBadge>
         </div>
