@@ -1,4 +1,5 @@
 {
+  "ignorePatterns": ["node_modules", "dist", "build"],
   "categories": {
     "correctness": "error",
     "suspicious": "error"
