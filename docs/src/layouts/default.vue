@@ -62,7 +62,7 @@ const closeDrawer = () => {
             <div
               class="max-h-[calc(100vh-var(--app-header)-2.5rem)] overflow-auto border border-border/50 dark:border-border p-3 rounded-xl"
             >
-              <SAnchor :items="docOutline" size="sm" :offset-top="124" :target-offset="124" />
+              <SAnchor :items="docOutline" :offset-top="124" :target-offset="124" />
             </div>
           </div>
         </aside>
