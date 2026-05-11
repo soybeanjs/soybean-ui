@@ -1,9 +1,6 @@
 <script setup lang="ts">
-import { ref } from 'vue';
 import { SNavigationMenu } from '@soybeanjs/ui';
 import type { NavigationMenuOptionData } from '@soybeanjs/ui';
-
-const modelValue = ref('guide');
 
 const menus: NavigationMenuOptionData[] = [
   {
@@ -152,5 +149,5 @@ const menus: NavigationMenuOptionData[] = [
 </script>
 
 <template>
-  <SNavigationMenu v-model="modelValue" :items="menus" :ui="{ root: 'z-10', subLink: 'w-60' }" class="w-max" />
+  <SNavigationMenu :items="menus" :ui="{ root: 'z-10', subLink: 'w-60' }" class="w-max" />
 </template>
