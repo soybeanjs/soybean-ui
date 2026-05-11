@@ -19,14 +19,14 @@ export const pageTabsVariants = tv({
     ],
     pin: 'outline-none',
     chromeBgLeft: [
-      `absolute right-full bottom-0 fill-transparent`,
+      `absolute end-full bottom-0 fill-transparent`,
       `group-hover/item:fill-accent group-data-[active=true]/item:fill-primary-50 dark:group-data-[active=true]/item:fill-accent group-data-[active=true]/item:z-2`
     ],
     chromeBgRight: [
-      `absolute left-full bottom-0 fill-transparent`,
+      `absolute start-full bottom-0 fill-transparent`,
       `group-hover/item:fill-accent group-data-[active=true]/item:fill-primary-50 dark:group-data-[active=true]/item:fill-accent group-data-[active=true]/item:z-2`
     ],
-    sliderIndicator: `absolute bottom-0 left-0 w-full h-0.5 group-data-[active=true]/item:bg-primary`
+    sliderIndicator: `absolute bottom-0 start-0 w-full h-0.5 group-data-[active=true]/item:bg-primary`
   },
   variants: {
     size: {

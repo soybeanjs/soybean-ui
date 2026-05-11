@@ -33,8 +33,8 @@ export const menuVariants = tv({
     ],
     itemLinkIcon: `shrink-0 self-start text-muted-foreground`,
     subTrigger: `group/trigger flex items-center rounded-sm outline-none cursor-pointer select-none focus:bg-accent data-[state=open]:bg-accent data-[child-active]:text-primary`,
-    subTriggerIcon: `ml-auto text-muted-foreground group-data-[child-active]/trigger:text-primary`,
-    shortcut: `ml-auto tracking-widest opacity-60`,
+    subTriggerIcon: `ms-auto text-muted-foreground group-data-[child-active]/trigger:text-primary`,
+    shortcut: `ms-auto tracking-widest opacity-60`,
     separator: `h-px bg-border`,
     checkboxItem: [
       `relative flex items-center rounded-sm outline-none transition-colors-200 cursor-pointer select-none`,
@@ -53,7 +53,7 @@ export const menuVariants = tv({
         groupLabel: 'gap-1 p-1 text-3xs',
         item: 'gap-1 px-1 py-1',
         itemLink: 'gap-1 px-1 py-1',
-        itemLinkIcon: 'size-2 -ml-1',
+        itemLinkIcon: 'size-2 -ms-1',
         separator: '-mx-0.75 my-0.75',
         subTrigger: 'gap-1 px-1 py-1',
         subPopup: 'text-2xs p-0.75',
@@ -65,7 +65,7 @@ export const menuVariants = tv({
         groupLabel: 'gap-1.25 p-1.25 text-2xs',
         item: 'gap-1.5 px-1.5 py-1',
         itemLink: 'gap-1.5 px-1.5 py-1',
-        itemLinkIcon: 'size-2.5 -ml-1.5',
+        itemLinkIcon: 'size-2.5 -ms-1.5',
         separator: '-mx-0.875 my-0.875',
         subTrigger: 'gap-1.5 px-1.5 py-1',
         subPopup: 'text-xs p-0.875',
@@ -77,7 +77,7 @@ export const menuVariants = tv({
         groupLabel: 'gap-1.75 p-1.75 text-xs',
         item: 'gap-2 px-2 py-1.5',
         itemLink: 'gap-2 px-2 py-1.5',
-        itemLinkIcon: 'size-3 -ml-2',
+        itemLinkIcon: 'size-3 -ms-2',
         separator: '-mx-1 my-1',
         subTrigger: 'gap-2 px-2 py-1.5',
         subPopup: 'text-sm p-1',
@@ -89,7 +89,7 @@ export const menuVariants = tv({
         groupLabel: 'gap-2 p-2 text-sm',
         item: 'gap-2.5 px-2.5 py-1.5',
         itemLink: 'gap-2.5 px-2.5 py-1.5',
-        itemLinkIcon: 'size-3.5 -ml-2.5',
+        itemLinkIcon: 'size-3.5 -ms-2.5',
         separator: '-mx-1.25 my-1.25',
         subTrigger: 'gap-2.5 px-2.5 py-1.5',
         subPopup: 'text-base p-1.25',
@@ -101,7 +101,7 @@ export const menuVariants = tv({
         groupLabel: 'gap-2.5 p-2.5 text-base',
         item: 'gap-3 px-3 py-2',
         itemLink: 'gap-3 px-3 py-2',
-        itemLinkIcon: 'size-4 -ml-3',
+        itemLinkIcon: 'size-4 -ms-3',
         separator: '-mx-1.5 my-1.5',
         subTrigger: 'gap-3 px-3 py-2',
         subPopup: 'text-lg p-1.5',
@@ -113,7 +113,7 @@ export const menuVariants = tv({
         groupLabel: 'gap-3 p-3 text-lg',
         item: 'gap-3.5 px-3.5 py-2.5',
         itemLink: 'gap-3.5 px-3.5 py-2.5',
-        itemLinkIcon: 'size-4.5 -ml-3.5',
+        itemLinkIcon: 'size-4.5 -ms-3.5',
         separator: '-mx-1.75 my-1.75',
         subTrigger: 'gap-3.5 px-3.5 py-2.5',
         subPopup: 'text-xl p-1.75',
@@ -123,14 +123,14 @@ export const menuVariants = tv({
     },
     indicatorPosition: {
       start: {
-        itemIndicator: 'left-2',
-        checkboxItem: 'pl-8 pr-2',
-        radioItem: 'pl-8 pr-2'
+        itemIndicator: 'start-2',
+        checkboxItem: 'ps-8 pe-2',
+        radioItem: 'ps-8 pe-2'
       },
       end: {
-        itemIndicator: 'right-2',
-        checkboxItem: 'pl-2 pr-8',
-        radioItem: 'pl-2 pr-8'
+        itemIndicator: 'end-2',
+        checkboxItem: 'ps-2 pe-8',
+        radioItem: 'ps-2 pe-8'
       }
     }
   },
@@ -139,90 +139,90 @@ export const menuVariants = tv({
       indicatorPosition: 'start',
       size: 'xs',
       class: {
-        itemIndicator: 'left-1',
-        checkboxItem: 'pl-6 pr-1',
-        radioItem: 'pl-6 pr-1'
+        itemIndicator: 'start-1',
+        checkboxItem: 'ps-6 pe-1',
+        radioItem: 'ps-6 pe-1'
       }
     },
     {
       indicatorPosition: 'end',
       size: 'xs',
       class: {
-        itemIndicator: 'right-1',
-        checkboxItem: 'pl-1 pr-6',
-        radioItem: 'pl-1 pr-6'
+        itemIndicator: 'end-1',
+        checkboxItem: 'ps-1 pe-6',
+        radioItem: 'ps-1 pe-6'
       }
     },
     {
       indicatorPosition: 'start',
       size: 'sm',
       class: {
-        itemIndicator: 'left-1.5',
-        checkboxItem: 'pl-7 pr-1.5',
-        radioItem: 'pl-7 pr-1.5'
+        itemIndicator: 'start-1.5',
+        checkboxItem: 'ps-7 pe-1.5',
+        radioItem: 'ps-7 pe-1.5'
       }
     },
     {
       indicatorPosition: 'end',
       size: 'sm',
       class: {
-        itemIndicator: 'right-1.5',
-        checkboxItem: 'pl-1.5 pr-7',
-        radioItem: 'pl-1.5 pr-7'
+        itemIndicator: 'end-1.5',
+        checkboxItem: 'ps-1.5 pe-7',
+        radioItem: 'ps-1.5 pe-7'
       }
     },
     {
       indicatorPosition: 'start',
       size: 'lg',
       class: {
-        itemIndicator: 'left-2.5',
-        checkboxItem: 'pl-9 pr-2.5',
-        radioItem: 'pl-9 pr-2.5'
+        itemIndicator: 'start-2.5',
+        checkboxItem: 'ps-9 pe-2.5',
+        radioItem: 'ps-9 pe-2.5'
       }
     },
     {
       indicatorPosition: 'end',
       size: 'lg',
       class: {
-        itemIndicator: 'right-2.5',
-        checkboxItem: 'pl-2.5 pr-9',
-        radioItem: 'pl-2.5 pr-9'
+        itemIndicator: 'end-2.5',
+        checkboxItem: 'ps-2.5 pe-9',
+        radioItem: 'ps-2.5 pe-9'
       }
     },
     {
       indicatorPosition: 'start',
       size: 'xl',
       class: {
-        itemIndicator: 'left-3',
-        checkboxItem: 'pl-10 pr-3',
-        radioItem: 'pl-10 pr-3'
+        itemIndicator: 'start-3',
+        checkboxItem: 'ps-10 pe-3',
+        radioItem: 'ps-10 pe-3'
       }
     },
     {
       indicatorPosition: 'end',
       size: 'xl',
       class: {
-        itemIndicator: 'right-3',
-        checkboxItem: 'pl-3 pr-10',
-        radioItem: 'pl-3 pr-10'
+        itemIndicator: 'end-3',
+        checkboxItem: 'ps-3 pe-10',
+        radioItem: 'ps-3 pe-10'
       }
     },
     {
       indicatorPosition: 'start',
       size: '2xl',
       class: {
-        itemIndicator: 'left-3.5',
-        checkboxItem: 'pl-12 pr-3.5',
-        radioItem: 'pl-12 pr-3.5'
+        itemIndicator: 'start-3.5',
+        checkboxItem: 'ps-12 pe-3.5',
+        radioItem: 'ps-12 pe-3.5'
       }
     },
     {
       indicatorPosition: 'end',
       size: '2xl',
       class: {
-        itemIndicator: 'right-3.5',
-        checkboxItem: 'pl-3.5 pr-12',
-        radioItem: 'pl-3.5 pr-12'
+        itemIndicator: 'end-3.5',
+        checkboxItem: 'ps-3.5 pe-12',
+        radioItem: 'ps-3.5 pe-12'
       }
     }
   ],

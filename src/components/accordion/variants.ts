@@ -17,7 +17,7 @@ export const accordionVariants = tv({
       `hover:underline [&[data-state=open]>.trigger-icon]:rotate-180`
     ],
     triggerLeadingIcon: `shrink-0`,
-    triggerIcon: `trigger-icon ml-auto shrink-0 text-muted-foreground transition-transform-200`
+    triggerIcon: `trigger-icon ms-auto shrink-0 text-muted-foreground transition-transform-200`
   },
   variants: {
     size: {

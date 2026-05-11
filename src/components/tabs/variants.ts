@@ -11,7 +11,7 @@ export const tabsVariants = tv({
       `outline-none focus-visible:ring-3  focus-visible:ring-offset-background focus-visible:ring-primary/30`,
       `disabled:cursor-not-allowed disabled:opacity-50`
     ],
-    indicator: `absolute top-0 left-0 z-2 transition-[width,height,transform] duration-300`,
+    indicator: `absolute top-0 start-0 z-2 transition-[width,height,transform] duration-300`,
     indicatorContent: `w-full h-full bg-background shadow`,
     content: `flex-grow self-stretch transition-all-150 outline-none focus-visible:ring-3  focus-visible:ring-offset-background focus-visible:ring-primary/30`
   },
@@ -96,7 +96,7 @@ export const tabsVariants = tv({
       orientation: 'vertical',
       class: {
         indicator: 'px-0.75',
-        content: 'ml-1.5'
+        content: 'ms-1.5'
       }
     },
     {
@@ -112,7 +112,7 @@ export const tabsVariants = tv({
       orientation: 'vertical',
       class: {
         indicator: 'px-1',
-        content: 'ml-1.75'
+        content: 'ms-1.75'
       }
     },
     {
@@ -128,7 +128,7 @@ export const tabsVariants = tv({
       orientation: 'vertical',
       class: {
         indicator: 'px-1',
-        content: 'ml-2'
+        content: 'ms-2'
       }
     },
     {
@@ -144,7 +144,7 @@ export const tabsVariants = tv({
       orientation: 'vertical',
       class: {
         indicator: 'px-1.125',
-        content: 'ml-2.5'
+        content: 'ms-2.5'
       }
     },
     {
@@ -160,7 +160,7 @@ export const tabsVariants = tv({
       orientation: 'vertical',
       class: {
         indicator: 'px-1.25',
-        content: 'ml-3'
+        content: 'ms-3'
       }
     },
     {
@@ -176,7 +176,7 @@ export const tabsVariants = tv({
       orientation: 'vertical',
       class: {
         indicator: 'px-1.5',
-        content: 'ml-3.5'
+        content: 'ms-3.5'
       }
     }
   ],

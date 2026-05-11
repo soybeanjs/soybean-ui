@@ -39,7 +39,7 @@ export const navigationMenuVariants = tv({
     subItemContent: `flex items-start rounded-md outline-none cursor-default select-none`,
     triggerIcon: `ms-auto transition duration-200 group-data-[state=open]:rotate-180`,
     indicator: [
-      `fixed left-[--soybean-navigation-menu-indicator-left] top-[--soybean-navigation-menu-indicator-top] z-50`,
+      `fixed start-[--soybean-navigation-menu-indicator-left] top-[--soybean-navigation-menu-indicator-top] z-50`,
       `flex w-[--soybean-navigation-menu-indicator-size] items-end justify-center overflow-hidden transition-transform-200 ease-out`,
       `data-[state=visible]:animate-in data-[state=visible]:fade-in-0 data-[state=hidden]:animate-out data-[state=hidden]:fade-out-0`,
       `data-[orientation=vertical]:-rotate-90`

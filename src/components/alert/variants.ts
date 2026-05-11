@@ -68,37 +68,37 @@ export const alertVariants = tv({
         root: 'gap-2 px-2 py-1.75 text-2xs',
         content: 'gap-0.75',
         title: 'text-xs leading-3.125',
-        close: 'top-1.25 right-1.25'
+        close: 'top-1.25 end-1.25'
       },
       sm: {
         root: 'gap-2.5 px-3 py-2.5 text-xs',
         content: 'gap-1',
         title: 'text-sm leading-3.75',
-        close: 'top-1.875 right-1.875'
+        close: 'top-1.875 end-1.875'
       },
       md: {
         root: 'gap-3 px-4 py-3 text-sm',
         content: 'gap-1',
         title: 'text-base leading-4.375',
-        close: 'top-2.25 right-2.25'
+        close: 'top-2.25 end-2.25'
       },
       lg: {
         root: 'gap-3.5 px-5 py-3.5 text-base',
         content: 'gap-1.25',
         title: 'text-lg leading-5',
-        close: 'top-2.5 right-2.5'
+        close: 'top-2.5 end-2.5'
       },
       xl: {
         root: 'gap-4 px-6 py-4 text-lg',
         content: 'gap-1.5',
         title: 'text-xl leading-5.625',
-        close: 'top-2.75 right-2.75'
+        close: 'top-2.75 end-2.75'
       },
       '2xl': {
         root: 'gap-4.5 px-7 py-4.5 text-xl',
         content: 'gap-2',
         title: 'text-2xl leading-6.25',
-        close: 'top-3 right-3'
+        close: 'top-3 end-3'
       }
     }
   },

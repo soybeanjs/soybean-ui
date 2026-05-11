@@ -26,7 +26,7 @@ export const selectVariants = tv({
       `focus:bg-accent focus:text-accent-foreground data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50`
     ],
     itemText: '',
-    itemIndicator: `ml-auto shrink-0 text-muted-foreground`,
+    itemIndicator: `ms-auto shrink-0 text-muted-foreground`,
     separator: `-mx-1 my-1 h-px bg-muted`,
     scrollUpButton: `flex items-center justify-center cursor-default`,
     scrollDownButton: `flex items-center justify-center cursor-default`,

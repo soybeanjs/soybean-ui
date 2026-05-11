@@ -9,7 +9,7 @@ export const dateRangePickerVariants = tv({
     startRoot: '',
     endRoot: '',
     separator: '',
-    trigger: 'ml-auto data-[state=open]:bg-accent/50 data-[state=open]:text-accent-foreground',
+    trigger: 'ms-auto data-[state=open]:bg-accent/50 data-[state=open]:text-accent-foreground',
     positioner: 'w-max',
     popup: [
       `w-auto rounded-md border bg-popover text-popover-foreground outline-none z-50 will-change-transform`,

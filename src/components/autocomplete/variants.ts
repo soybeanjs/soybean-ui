@@ -35,7 +35,7 @@ export const autocompleteVariants = tv({
     ],
     itemIcon: 'shrink-0 text-muted-foreground',
     itemText: 'grow truncate text-left',
-    itemIndicator: 'ml-auto shrink-0 text-muted-foreground',
+    itemIndicator: 'ms-auto shrink-0 text-muted-foreground',
     separator: '-mx-1 my-1 h-px bg-border'
   },
   variants: {
