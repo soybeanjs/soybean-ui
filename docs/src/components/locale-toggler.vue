@@ -2,7 +2,9 @@
 import type { MenuOptionData } from '@soybeanjs/ui';
 import { snakeCase } from 'es-toolkit';
 import { availableLocales, loadLanguageAsync } from '@/modules/i18n';
+import { useTheme } from '../../../playground/theme';
 
+const { setLocale } = useTheme('LocaleToggler');
 const { t, locale } = useI18n();
 
 const iconMap: Record<string, string> = {
@@ -30,6 +32,7 @@ const onSelectLocale = async (item: MenuOptionData<string>) => {
   locale.value = item.value;
 
   localStorage.setItem('locale', item.value);
+  setLocale(item.value);
 };
 </script>
 
