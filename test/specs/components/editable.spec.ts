@@ -144,7 +144,7 @@ describe('SEditable', () => {
   });
 
   describe('accessible labels', () => {
-    it('allows overriding trigger aria-labels', () => {
+    it('allows overriding trigger aria-labels', async () => {
       const wrapper = mount(SEditable, {
         props: {
           editTriggerProps: { 'aria-label': 'Rename' },
@@ -155,6 +155,10 @@ describe('SEditable', () => {
       });
 
       expect(wrapper.find('button[aria-label="Rename"]').exists()).toBe(true);
+
+      await wrapper.find('button[aria-label="Rename"]').trigger('click');
+      await nextTick();
+
       expect(wrapper.find('button[aria-label="Save changes"]').exists()).toBe(true);
       expect(wrapper.find('button[aria-label="Discard changes"]').exists()).toBe(true);
 
