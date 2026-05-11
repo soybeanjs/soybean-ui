@@ -15,7 +15,6 @@ defineOptions({
 
 const props = withDefaults(defineProps<HoverCardCompactProps>(), {
   open: undefined,
-  defaultOpen: false,
   showArrow: true
 });
 
@@ -34,6 +33,13 @@ const forwardedProps = useOmitProps(props, [
 ]);
 
 const listeners = useForwardListeners(emit);
+
+const triggerProps = computed(() => {
+  return {
+    ...props.triggerProps,
+    asChild: props.triggerProps?.asChild ?? true
+  };
+});
 
 const positionerProps = computed(() => {
   return {
