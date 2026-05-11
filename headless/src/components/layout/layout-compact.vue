@@ -8,7 +8,7 @@ import LayoutTab from './layout-tab.vue';
 import LayoutContent from './layout-content.vue';
 import LayoutFooter from './layout-footer.vue';
 import { useOmitProps } from '@soybeanjs/headless/composables';
-import type { LayoutCompactEmits, LayoutCompactProps, LayoutCompactSlots } from './types';
+import type { LayoutCompactProps, LayoutCompactEmits, LayoutCompactSlots } from './types';
 
 defineOptions({
   name: 'LayoutCompact'

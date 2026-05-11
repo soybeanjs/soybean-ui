@@ -5,7 +5,7 @@ import { useForwardListeners, useOmitProps, usePickProps } from '../../composabl
 import type { AcceptableBooleanValue } from '../../types';
 import MenuRadioOptions from '../menu/menu-radio-options-compact.vue';
 import ContextMenuWrapper from './context-menu-wrapper-compact.vue';
-import type { ContextMenuRadioCompactEmits, ContextMenuRadioCompactProps, ContextMenuRadioCompactSlots } from './types';
+import type { ContextMenuRadioCompactProps, ContextMenuRadioCompactEmits, ContextMenuRadioCompactSlots } from './types';
 
 defineOptions({
   name: 'ContextMenuRadioCompact'

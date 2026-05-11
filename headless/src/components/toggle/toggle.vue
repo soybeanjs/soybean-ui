@@ -2,7 +2,7 @@
 import { computed } from 'vue';
 import { useControllableState, useOmitProps } from '../../composables';
 import Button from '../button/button.vue';
-import type { ToggleEmits, ToggleProps, ToggleState } from './types';
+import type { ToggleProps, ToggleEmits, ToggleState } from './types';
 
 defineOptions({
   name: 'Toggle'

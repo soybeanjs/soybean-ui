@@ -13,7 +13,7 @@ import {
 } from './context';
 import { ITEM_SELECT } from './shared';
 import MenuItemImpl from './menu-item-impl.vue';
-import type { MenuCheckboxItemEmits, MenuCheckboxItemProps } from './types';
+import type { MenuCheckboxItemProps, MenuCheckboxItemEmits } from './types';
 
 defineOptions({
   name: 'MenuCheckboxItem'

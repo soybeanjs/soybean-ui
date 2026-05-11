@@ -14,7 +14,7 @@ import { PopperPopup, PopperPositioner } from '../popper';
 import { popperCssVars } from '../popper/shared';
 import { Primitive } from '../primitive';
 import { provideComboboxContentContext, useComboboxRootContext } from './context';
-import type { ComboboxContentImplEmits, ComboboxContentImplProps } from './types';
+import type { ComboboxContentImplProps, ComboboxContentImplEmits } from './types';
 
 defineOptions({
   name: 'ComboboxContentImpl',

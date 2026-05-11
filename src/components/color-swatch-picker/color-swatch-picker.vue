@@ -5,7 +5,7 @@ import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composabl
 import { mergeVariants } from '@/theme';
 import { colorSwatchVariants } from '../color-swatch/variants';
 import { colorSwatchPickerVariants } from './variants';
-import type { ColorSwatchPickerEmits, ColorSwatchPickerProps } from './types';
+import type { ColorSwatchPickerProps, ColorSwatchPickerEmits } from './types';
 
 defineOptions({
   name: 'SColorSwatchPicker'

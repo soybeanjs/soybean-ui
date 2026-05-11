@@ -7,7 +7,7 @@ import { RovingFocusGroup } from '../roving-focus';
 import { VisuallyHiddenInput } from '../visually-hidden';
 import { Primitive } from '../primitive';
 import { provideToggleGroupRootContext, useToggleGroupUi } from './context';
-import type { ToggleGroupRootEmits, ToggleGroupRootProps } from './types';
+import type { ToggleGroupRootProps, ToggleGroupRootEmits } from './types';
 
 defineOptions({
   name: 'ToggleGroupRoot'

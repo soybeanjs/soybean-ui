@@ -4,7 +4,7 @@ import { useForwardListeners, useOmitProps } from '../../composables';
 import { useProgressUi } from './context';
 import ProgressCircle from './progress-circle-svg.vue';
 import ProgressRoot from './progress-root.vue';
-import type { ProgressCircleCompactEmits, ProgressCircleCompactProps, ProgressCircleCompactSlots } from './types';
+import type { ProgressCircleCompactProps, ProgressCircleCompactEmits, ProgressCircleCompactSlots } from './types';
 
 defineOptions({
   name: 'ProgressCircleCompact'

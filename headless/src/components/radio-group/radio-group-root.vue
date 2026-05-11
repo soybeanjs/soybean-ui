@@ -6,7 +6,7 @@ import type { DefinedWithBooleanValue } from '../../types';
 import { RovingFocusGroup } from '../roving-focus';
 import { VisuallyHiddenInput } from '../visually-hidden';
 import { provideRadioGroupRootContext, useRadioGroupUi } from './context';
-import type { RadioGroupRootEmits, RadioGroupRootProps } from './types';
+import type { RadioGroupRootProps, RadioGroupRootEmits } from './types';
 
 defineOptions({
   name: 'RadioGroupRoot'

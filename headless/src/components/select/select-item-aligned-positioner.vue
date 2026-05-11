@@ -11,7 +11,7 @@ import {
   useSelectUi
 } from './context';
 import { CONTENT_MARGIN } from './shared';
-import type { SelectItemAlignedPositionEmits, SelectItemAlignedPositionProps } from './types';
+import type { SelectItemAlignedPositionProps, SelectItemAlignedPositionEmits } from './types';
 
 defineOptions({
   name: 'SelectItemAlignedPosition'

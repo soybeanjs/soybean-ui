@@ -5,7 +5,7 @@ import { useExposedElement, useOmitProps } from '../../composables';
 import { ListboxItem } from '../listbox';
 import { useListboxGroupContext, useListboxRootContext } from '../listbox/context';
 import { useComboboxRootContext } from './context';
-import type { ComboboxItemEmits, ComboboxItemProps } from './types';
+import type { ComboboxItemProps, ComboboxItemEmits } from './types';
 
 defineOptions({
   name: 'ComboboxItem'

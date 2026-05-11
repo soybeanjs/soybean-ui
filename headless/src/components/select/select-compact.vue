@@ -22,10 +22,10 @@ import SelectViewport from './select-viewport.vue';
 import { useOmitProps } from '../../composables';
 import { isGroupOption } from './shared';
 import type {
-  SelectCompactEmits,
   SelectCompactProps,
-  SelectCompactSlots,
   SelectCompactTriggerValueSlotProps,
+  SelectCompactEmits,
+  SelectCompactSlots,
   SelectItemEvent,
   SelectOptionData
 } from './types';

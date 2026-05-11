@@ -4,7 +4,7 @@ import { useControllableState, useForwardElement } from '../../composables';
 import { isFormControl, transformPropsToContext } from '../../shared';
 import VisuallyHiddenInput from '../visually-hidden/visually-hidden-input.vue';
 import { provideTextareaRootContext, useTextareaUi } from './context';
-import type { TextareaRootEmits, TextareaRootProps } from './types';
+import type { TextareaRootProps, TextareaRootEmits } from './types';
 
 defineOptions({
   name: 'TextareaRoot'

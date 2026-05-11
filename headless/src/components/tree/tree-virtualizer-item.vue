@@ -2,7 +2,7 @@
 import { useForwardListeners } from '../../composables';
 import VirtualizerItem from '../virtualizer/virtualizer-item.vue';
 import TreeItem from './tree-item.vue';
-import type { TreeVirtualizerItemEmits, TreeVirtualizerItemProps } from './types';
+import type { TreeVirtualizerItemProps, TreeVirtualizerItemEmits } from './types';
 
 defineOptions({
   name: 'TreeVirtualizerItem'

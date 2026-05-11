@@ -1,7 +1,7 @@
 <script setup lang="ts" generic="T extends TreeItemData, U extends MaybeArray<string> | undefined, M extends boolean">
 import { TreeRoot } from '@soybeanjs/headless/tree';
 import { useForwardListeners } from '@soybeanjs/headless/composables';
-import type { TreeItemData, TreeRootEmits, TreeRootProps } from '@soybeanjs/headless/tree';
+import type { TreeRootProps, TreeItemData, TreeRootEmits } from '@soybeanjs/headless/tree';
 import type { MaybeArray } from '@soybeanjs/headless/types';
 import { vAutoAnimate } from '@formkit/auto-animate';
 

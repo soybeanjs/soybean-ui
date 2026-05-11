@@ -3,7 +3,7 @@ import { onBeforeUnmount, watchEffect } from 'vue';
 import { getActiveElement } from '../../shared';
 import Button from '../button/button.vue';
 import { useCollectionContext, useSelectContentContext } from './context';
-import type { SelectScrollButtonImplEmits, SelectScrollButtonImplProps } from './types';
+import type { SelectScrollButtonImplProps, SelectScrollButtonImplEmits } from './types';
 
 defineOptions({
   name: 'SelectScrollButtonImpl'

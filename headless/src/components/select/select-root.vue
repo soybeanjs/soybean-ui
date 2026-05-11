@@ -6,7 +6,7 @@ import type { DefinedValue } from '../../types';
 import { PopperRoot } from '../popper';
 import { provideCollectionContext, provideSelectRootContext } from './context';
 import SelectBubbleSelect from './select-bubble-select.vue';
-import type { SelectRootEmits, SelectRootProps } from './types';
+import type { SelectRootProps, SelectRootEmits } from './types';
 
 defineOptions({
   name: 'SelectRoot',

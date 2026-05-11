@@ -3,7 +3,7 @@ import { computed, onMounted, onUnmounted, shallowRef, watchSyncEffect } from 'v
 import { useForwardElement, useOmitProps } from '../../composables';
 import { InputControl, InputRoot } from '../input';
 import { useListboxRootContext } from './context';
-import type { ListboxFilterEmits, ListboxFilterProps } from './types';
+import type { ListboxFilterProps, ListboxFilterEmits } from './types';
 
 defineOptions({
   name: 'ListboxFilter'

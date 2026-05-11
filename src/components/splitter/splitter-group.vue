@@ -4,7 +4,7 @@ import { SplitterGroup, provideSplitterUi } from '@soybeanjs/headless/splitter';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
 import { mergeVariants } from '@/theme';
 import { splitterVariants } from './variants';
-import type { SplitterGroupEmits, SplitterGroupProps } from './types';
+import type { SplitterGroupProps, SplitterGroupEmits } from './types';
 
 defineOptions({
   name: 'SSplitterGroup'

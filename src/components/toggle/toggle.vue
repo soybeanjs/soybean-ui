@@ -4,7 +4,7 @@ import { Toggle } from '@soybeanjs/headless/toggle';
 import { useOmitProps } from '@soybeanjs/headless/composables';
 import { cn } from '@/theme';
 import { toggleVariants } from './variants';
-import type { ToggleEmits, ToggleProps } from './types';
+import type { ToggleProps, ToggleEmits } from './types';
 
 defineOptions({
   name: 'SToggle'

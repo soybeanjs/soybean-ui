@@ -6,8 +6,8 @@ import type { DefinedValue } from '../../types';
 import MenuCheckboxOptions from '../menu/menu-checkbox-options-compact.vue';
 import ContextMenuWrapper from './context-menu-wrapper-compact.vue';
 import type {
-  ContextMenuCheckboxCompactEmits,
   ContextMenuCheckboxCompactProps,
+  ContextMenuCheckboxCompactEmits,
   ContextMenuCheckboxCompactSlots
 } from './types';
 

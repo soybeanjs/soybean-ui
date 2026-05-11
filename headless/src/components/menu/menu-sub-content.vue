@@ -4,7 +4,7 @@ import { useForwardListeners, usePresence } from '../../composables';
 import type { FocusOutsideEvent, HorizontalSide } from '../../types';
 import { useMenuContext, useMenuRootContext, useMenuSubAttributeContext } from './context';
 import MenuContentImpl from './menu-content-impl.vue';
-import type { MenuSubContentEmits, MenuSubContentProps } from './types';
+import type { MenuSubContentProps, MenuSubContentEmits } from './types';
 import { SUB_CLOSE_KEYS } from './shared';
 
 defineOptions({

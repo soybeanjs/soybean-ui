@@ -7,7 +7,7 @@ import { keysOf } from '@soybeanjs/utils';
 import { mergeVariants } from '@/theme';
 import { provideMenuUi } from '../menu/context';
 import { menubarVariants } from './variants';
-import type { MenubarEmits, MenubarProps, MenubarSlots } from './types';
+import type { MenubarProps, MenubarEmits, MenubarSlots } from './types';
 
 defineOptions({
   name: 'SMenubar'

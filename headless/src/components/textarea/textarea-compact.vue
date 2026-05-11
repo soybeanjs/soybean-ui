@@ -4,7 +4,7 @@ import TextareaClear from './textarea-clear.vue';
 import TextareaControl from './textarea-control.vue';
 import TextareaCounter from './textarea-counter.vue';
 import TextareaRoot from './textarea-root.vue';
-import type { TextareaCompactEmits, TextareaCompactProps, TextareaCompactSlots } from './types';
+import type { TextareaCompactProps, TextareaCompactEmits, TextareaCompactSlots } from './types';
 
 defineOptions({
   name: 'TextareaCompact'

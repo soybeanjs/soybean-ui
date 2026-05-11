@@ -4,7 +4,7 @@ import { defu } from 'defu';
 import { useDismissableLayer, useForwardElement, useGraceArea } from '../../composables';
 import { PopperPositioner } from '../popper';
 import { useHoverCardRootContext } from './context';
-import type { HoverCardPositionerImplEmits, HoverCardPositionerImplProps } from './types';
+import type { HoverCardPositionerImplProps, HoverCardPositionerImplEmits } from './types';
 
 defineOptions({
   name: 'HoverCardPositionerImpl'

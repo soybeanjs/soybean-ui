@@ -3,7 +3,7 @@ import { useOmitProps } from '../../composables';
 import AffixContent from './affix-content.vue';
 import AffixPlaceholder from './affix-placeholder.vue';
 import AffixRoot from './affix-root.vue';
-import type { AffixCompactEmits, AffixCompactProps } from './types';
+import type { AffixCompactProps, AffixCompactEmits } from './types';
 
 defineOptions({
   name: 'AffixCompact'

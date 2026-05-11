@@ -3,7 +3,7 @@ import { computed } from 'vue';
 import { getColorLabel } from '../../shared';
 import { ListboxItem } from '../listbox';
 import { provideColorSwatchPickerItemContext } from './context';
-import type { ColorSwatchPickerItemEmits, ColorSwatchPickerItemProps } from './types';
+import type { ColorSwatchPickerItemProps, ColorSwatchPickerItemEmits } from './types';
 
 defineOptions({
   name: 'ColorSwatchPickerItem'

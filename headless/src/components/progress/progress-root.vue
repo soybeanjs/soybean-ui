@@ -6,7 +6,7 @@ import { Primitive } from '../primitive';
 import { useDirection } from '../config-provider/context';
 import { provideProgressRootContext, useProgressUi } from './context';
 import { DEFAULT_MAX, getValueLabel, getValidMax, getValidModelValue } from './shared';
-import type { ProgressRootEmits, ProgressRootProps, ProgressState } from './types';
+import type { ProgressRootProps, ProgressRootEmits, ProgressState } from './types';
 
 defineOptions({
   name: 'ProgressRoot',

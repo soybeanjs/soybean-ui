@@ -4,7 +4,7 @@ import { AffixCompact, provideAffixUi } from '@soybeanjs/headless/affix';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
 import { mergeVariants } from '@/theme';
 import { affixVariants } from './variants';
-import type { AffixEmits, AffixProps } from './types';
+import type { AffixProps, AffixEmits } from './types';
 
 defineOptions({
   name: 'SAffix'

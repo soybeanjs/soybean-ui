@@ -11,7 +11,7 @@ import SegmentCompact from '../segment/segment-compact.vue';
 import { useColorPickerUi } from './context';
 import { colorFormats } from './shared';
 import ColorPickerTrigger from './color-picker-trigger.vue';
-import type { ColorPickerCompactEmits, ColorPickerCompactProps } from './types';
+import type { ColorPickerCompactProps, ColorPickerCompactEmits } from './types';
 
 defineOptions({
   name: 'ColorPickerCompact'

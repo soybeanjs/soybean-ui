@@ -4,7 +4,7 @@ import { CheckboxCompact, provideCheckboxUi } from '@soybeanjs/headless/checkbox
 import { useOmitProps } from '@soybeanjs/headless/composables';
 import { mergeVariants } from '@/theme';
 import { checkboxVariants } from './variants';
-import type { CheckboxEmits, CheckboxProps } from './types';
+import type { CheckboxProps, CheckboxEmits } from './types';
 
 defineOptions({
   name: 'SCheckbox'

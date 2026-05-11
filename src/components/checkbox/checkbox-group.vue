@@ -4,7 +4,7 @@ import { CheckboxGroupCompact, provideCheckboxUi } from '@soybeanjs/headless/che
 import { useOmitProps } from '@soybeanjs/headless/composables';
 import { mergeVariants } from '@/theme';
 import { checkboxVariants } from './variants';
-import type { CheckboxGroupEmits, CheckboxGroupOptionData, CheckboxGroupProps } from './types';
+import type { CheckboxGroupProps, CheckboxGroupEmits, CheckboxGroupOptionData } from './types';
 
 defineOptions({
   name: 'SCheckboxGroup'

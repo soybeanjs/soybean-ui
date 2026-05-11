@@ -3,7 +3,7 @@ import { computed, useTemplateRef } from 'vue';
 import { isFormControl, isNullish, transformPropsToContext } from '../../shared';
 import { VisuallyHiddenInput } from '../visually-hidden';
 import { provideRadioGroupItemContext, useRadioGroupRootContext, useRadioGroupUi } from './context';
-import type { RadioGroupItemEmits, RadioGroupItemProps, RadioSelectEvent } from './types';
+import type { RadioGroupItemProps, RadioGroupItemEmits, RadioSelectEvent } from './types';
 
 defineOptions({
   name: 'RadioGroupItem'

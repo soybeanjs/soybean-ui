@@ -5,7 +5,7 @@ import { useInputOtpUi } from './context';
 import InputOtpInput from './input-otp-input.vue';
 import InputOtpPositioner from './input-otp-positioner.vue';
 import InputOtpRoot from './input-otp-root.vue';
-import type { InputOtpCompactEmits, InputOtpCompactProps, InputOtpCompactSlots, InputOtpSlotProps } from './types';
+import type { InputOtpCompactProps, InputOtpSlotProps, InputOtpCompactEmits, InputOtpCompactSlots } from './types';
 
 defineOptions({
   name: 'InputOtpCompact'

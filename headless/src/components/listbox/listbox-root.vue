@@ -4,7 +4,7 @@ import { useSelection } from '../../composables';
 import { isFormControl, transformPropsToContext } from '../../shared';
 import VisuallyHiddenInput from '../visually-hidden/visually-hidden-input.vue';
 import { provideListboxRootContext, useListboxUi } from './context';
-import type { ListboxRootEmits, ListboxRootProps } from './types';
+import type { ListboxRootProps, ListboxRootEmits } from './types';
 
 defineOptions({
   name: 'ListboxRoot'

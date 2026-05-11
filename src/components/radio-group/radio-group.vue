@@ -5,7 +5,7 @@ import type { RadioGroupOptionData } from '@soybeanjs/headless/radio-group';
 import { useOmitProps } from '@soybeanjs/headless/composables';
 import { mergeVariants } from '@/theme';
 import { radioGroupVariants } from './variants';
-import type { RadioGroupEmits, RadioGroupProps } from './types';
+import type { RadioGroupProps, RadioGroupEmits } from './types';
 
 defineOptions({
   name: 'SRadioGroup'

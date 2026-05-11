@@ -7,7 +7,7 @@ import type { DefinedValue } from '../../types';
 import { provideMenuOptionsCompactContext } from './context';
 import MenuGroup from './menu-group.vue';
 import MenuOptionCompact from './menu-option-compact.vue';
-import type { MenuOptionsCompactEmits, MenuOptionsCompactProps, MenuOptionsCompactSlots } from './types';
+import type { MenuOptionsCompactProps, MenuOptionsCompactEmits, MenuOptionsCompactSlots } from './types';
 
 defineOptions({
   name: 'MenuOptionsCompact',

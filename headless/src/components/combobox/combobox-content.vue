@@ -3,7 +3,7 @@ import { shallowRef } from 'vue';
 import { useForwardListeners, useOmitProps, usePresence } from '../../composables';
 import ComboboxContentImpl from './combobox-content-impl.vue';
 import { useComboboxRootContext } from './context';
-import type { ComboboxContentEmits, ComboboxContentProps } from './types';
+import type { ComboboxContentProps, ComboboxContentEmits } from './types';
 
 defineOptions({
   name: 'ComboboxContent'

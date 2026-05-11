@@ -12,7 +12,7 @@ import {
 } from './context';
 import { ITEM_SELECT } from './shared';
 import MenuItemImpl from './menu-item-impl.vue';
-import type { MenuRadioItemEmits, MenuRadioItemProps } from './types';
+import type { MenuRadioItemProps, MenuRadioItemEmits } from './types';
 
 defineOptions({
   name: 'MenuRadioItem'

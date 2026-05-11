@@ -5,7 +5,7 @@ import { provideTabsUi } from '@soybeanjs/headless/tabs';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
 import { mergeVariants } from '@/theme';
 import { tabsVariants } from '../tabs/variants';
-import type { SegmentEmits, SegmentProps, SegmentSlots, SegmentOptionData } from './types';
+import type { SegmentProps, SegmentEmits, SegmentSlots, SegmentOptionData } from './types';
 
 defineOptions({
   name: 'SSegment'

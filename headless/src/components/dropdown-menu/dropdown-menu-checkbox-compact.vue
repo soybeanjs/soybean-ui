@@ -6,8 +6,8 @@ import type { DefinedValue } from '../../types';
 import MenuCheckboxOptions from '../menu/menu-checkbox-options-compact.vue';
 import DropdownMenuWrapper from './dropdown-menu-wrapper-compact.vue';
 import type {
-  DropdownMenuCheckboxCompactEmits,
   DropdownMenuCheckboxCompactProps,
+  DropdownMenuCheckboxCompactEmits,
   DropdownMenuCheckboxCompactSlots
 } from './types';
 

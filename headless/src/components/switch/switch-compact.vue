@@ -5,7 +5,7 @@ import type { AcceptableBooleanValue } from '../../types';
 import SwitchControl from './switch-control.vue';
 import SwitchRoot from './switch-root.vue';
 import SwitchThumb from './switch-thumb.vue';
-import type { SwitchCompactEmits, SwitchCompactProps, SwitchCompactSlots } from './types';
+import type { SwitchCompactProps, SwitchCompactEmits, SwitchCompactSlots } from './types';
 
 defineOptions({
   name: 'SwitchCompact'

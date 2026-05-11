@@ -3,7 +3,7 @@ import { useOmitProps } from '../../composables';
 import type { AcceptableValue } from '../../types';
 import { TabsIndicator, TabsList, TabsRoot, TabsTrigger } from '../tabs';
 import { useTabsUi } from '../tabs/context';
-import type { SegmentCompactEmits, SegmentCompactProps, SegmentCompactSlots, SegmentOptionData } from './types';
+import type { SegmentCompactProps, SegmentCompactEmits, SegmentCompactSlots, SegmentOptionData } from './types';
 
 defineOptions({
   name: 'SegmentCompact'

@@ -8,7 +8,7 @@ import type { MaybeArray } from '../../types';
 import { ListboxRoot } from '../listbox';
 import { PopperRoot } from '../popper';
 import { provideComboboxRootContext } from './context';
-import type { ComboboxRootEmits, ComboboxRootProps } from './types';
+import type { ComboboxRootProps, ComboboxRootEmits } from './types';
 
 defineOptions({
   name: 'ComboboxRoot',

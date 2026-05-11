@@ -4,7 +4,7 @@ import { CollapsibleRoot, provideCollapsibleUi } from '@soybeanjs/headless/colla
 import { useOmitProps } from '@soybeanjs/headless/composables';
 import { mergeVariants } from '@/theme';
 import { collapsibleVariants } from './variants';
-import type { CollapsibleEmits, CollapsibleProps } from './types';
+import type { CollapsibleProps, CollapsibleEmits } from './types';
 
 defineOptions({
   name: 'SCollapsible'

@@ -2,7 +2,7 @@
 import { useControllableState } from '../../composables';
 import { transformPropsToContext } from '../../shared';
 import { providePaginationRootContext, usePaginationUi } from './context';
-import type { PaginationRootEmits, PaginationRootProps } from './types';
+import type { PaginationRootProps, PaginationRootEmits } from './types';
 
 defineOptions({
   name: 'PaginationRoot'

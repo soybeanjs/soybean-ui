@@ -2,7 +2,7 @@
 import { useForwardListeners } from '../../composables';
 import { useDrawerRootContext } from './context';
 import BottomSheetRoot from './bottom-sheet-root.vue';
-import type { BottomSheetRootEmits, BottomSheetRootProps } from './types';
+import type { BottomSheetRootProps, BottomSheetRootEmits } from './types';
 
 defineOptions({
   name: 'BottomSheetRootNested'

@@ -16,7 +16,7 @@ import {
   setSwipeAmount,
   resetSwipeAmount
 } from './shared';
-import type { ToastEmits, ToastProps, ToastType } from './types';
+import type { ToastProps, ToastEmits, ToastType } from './types';
 
 defineOptions({
   name: 'Toast'

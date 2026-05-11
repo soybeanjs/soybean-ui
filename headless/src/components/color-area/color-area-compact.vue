@@ -3,7 +3,7 @@ import { useForwardListeners, useOmitProps } from '../../composables';
 import ColorAreaArea from './color-area-area.vue';
 import ColorAreaRoot from './color-area-root.vue';
 import ColorAreaThumb from './color-area-thumb.vue';
-import type { ColorAreaCompactEmits, ColorAreaCompactProps } from './types';
+import type { ColorAreaCompactProps, ColorAreaCompactEmits } from './types';
 
 defineOptions({
   name: 'ColorAreaCompact'

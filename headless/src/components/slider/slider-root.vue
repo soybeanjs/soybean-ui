@@ -25,7 +25,7 @@ import {
   normalizeSliderValues,
   PAGE_KEYS
 } from './shared';
-import type { SliderRootEmits, SliderRootProps } from './types';
+import type { SliderRootProps, SliderRootEmits } from './types';
 
 defineOptions({
   name: 'SliderRoot'

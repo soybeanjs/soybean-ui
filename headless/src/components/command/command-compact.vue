@@ -11,8 +11,8 @@ import { useCommandUi } from './context';
 import { getCommandItemOptions, getCommandSearchOptions, isGroupOption } from './shared';
 import { useLocaleMessages } from '../../locale';
 import type {
-  CommandCompactEmits,
   CommandCompactProps,
+  CommandCompactEmits,
   CommandCompactSlots,
   CommandOptionData,
   CommandSingleOptionData

@@ -3,7 +3,7 @@ import { ref, watch } from 'vue';
 import { transformPropsToContext } from '../../shared';
 import { MenuRoot } from '../menu';
 import { provideContextMenuRootContext } from './context';
-import type { ContextMenuRootEmits, ContextMenuRootProps } from './types';
+import type { ContextMenuRootProps, ContextMenuRootEmits } from './types';
 
 defineOptions({
   name: 'ContextMenuRoot',

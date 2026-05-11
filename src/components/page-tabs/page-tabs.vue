@@ -7,7 +7,7 @@ import { keysOf } from '@soybeanjs/utils';
 import { mergeVariants } from '@/theme';
 import { provideMenuUi } from '../menu/context';
 import { pageTabsVariants } from './variants';
-import type { PageTabsEmits, PageTabsProps, PageTabsSlots } from './types';
+import type { PageTabsProps, PageTabsEmits, PageTabsSlots } from './types';
 
 defineOptions({
   name: 'SPageTabs'

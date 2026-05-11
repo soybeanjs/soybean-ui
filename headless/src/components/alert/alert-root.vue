@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useControllableState } from '../../composables';
 import { provideAlertRootContext, useAlertUi } from './context';
-import type { AlertRootEmits, AlertRootProps } from './types';
+import type { AlertRootProps, AlertRootEmits } from './types';
 
 defineOptions({
   name: 'AlertRoot'

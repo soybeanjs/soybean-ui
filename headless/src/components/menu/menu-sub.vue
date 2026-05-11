@@ -3,7 +3,7 @@ import { onWatcherCleanup, watchEffect } from 'vue';
 import { useControllableState } from '../../composables';
 import { PopperRoot } from '../popper';
 import { provideMenuContext, useMenuContext } from './context';
-import type { MenuSubEmits, MenuSubProps } from './types';
+import type { MenuSubProps, MenuSubEmits } from './types';
 
 defineOptions({
   name: 'MenuSub',

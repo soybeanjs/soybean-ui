@@ -6,7 +6,7 @@ import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composabl
 import { keysOf } from '@soybeanjs/utils';
 import { mergeVariants } from '@/theme';
 import { accordionVariants } from './variants';
-import type { AccordionEmits, AccordionProps, AccordionSlots } from './types';
+import type { AccordionProps, AccordionEmits, AccordionSlots } from './types';
 
 defineOptions({
   name: 'SAccordion'

@@ -5,7 +5,7 @@ import { useOmitProps } from '@soybeanjs/headless/composables';
 import { cn } from '@/theme';
 import { useButtonGroupContext } from './context';
 import { buttonVariants } from './variants';
-import type { ButtonEmits, ButtonProps } from './types';
+import type { ButtonProps, ButtonEmits } from './types';
 
 defineOptions({
   name: 'SButton'

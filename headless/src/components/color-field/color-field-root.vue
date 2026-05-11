@@ -16,7 +16,7 @@ import type { ColorValue } from '../../types';
 import { Primitive } from '../primitive';
 import { VisuallyHiddenInput } from '../visually-hidden';
 import { provideColorFieldRootContext, useColorFieldUi } from './context';
-import type { ColorFieldRootEmits, ColorFieldRootProps } from './types';
+import type { ColorFieldRootProps, ColorFieldRootEmits } from './types';
 
 defineOptions({
   name: 'ColorFieldRoot'

@@ -6,8 +6,8 @@ import ColorSwatchPickerItemIndicator from './color-swatch-picker-item-indicator
 import ColorSwatchPickerItemSwatch from './color-swatch-picker-item-swatch.vue';
 import ColorSwatchPickerRoot from './color-swatch-picker-root.vue';
 import type {
-  ColorSwatchPickerCompactEmits,
   ColorSwatchPickerCompactProps,
+  ColorSwatchPickerCompactEmits,
   ColorSwatchPickerCompactSlots
 } from './types';
 

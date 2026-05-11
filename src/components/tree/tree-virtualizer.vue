@@ -4,7 +4,7 @@ import type { TreeItemData } from '@soybeanjs/headless/tree';
 import { VirtualizerContent } from '@soybeanjs/headless/virtualizer';
 import type { MaybeArray } from '@soybeanjs/headless/types';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
-import type { TreeVirtualizerEmits, TreeVirtualizerProps } from './types';
+import type { TreeVirtualizerProps, TreeVirtualizerEmits } from './types';
 
 defineOptions({
   name: 'STreeVirtualizer'

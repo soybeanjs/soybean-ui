@@ -5,7 +5,7 @@ import { useDismissableLayer, useForwardElement, useGraceArea } from '../../comp
 import { PopperPositioner } from '../popper';
 import { TOOLTIP_OPEN } from './shared';
 import { useTooltipOpenDelayedContext, useTooltipRootContext } from './context';
-import type { TooltipPositionerImplEmits, TooltipPositionerImplProps } from './types';
+import type { TooltipPositionerImplProps, TooltipPositionerImplEmits } from './types';
 
 defineOptions({
   name: 'TooltipPositionerImpl'

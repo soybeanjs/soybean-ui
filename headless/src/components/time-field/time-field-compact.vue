@@ -2,7 +2,7 @@
 import { useForwardListeners, useOmitProps } from '../../composables';
 import TimeFieldInput from './time-field-input.vue';
 import TimeFieldRoot from './time-field-root.vue';
-import type { TimeFieldCompactEmits, TimeFieldCompactProps } from './types';
+import type { TimeFieldCompactProps, TimeFieldCompactEmits } from './types';
 
 defineOptions({
   name: 'TimeFieldCompact'

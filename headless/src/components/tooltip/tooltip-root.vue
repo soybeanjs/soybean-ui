@@ -5,7 +5,7 @@ import { useConfigProvider } from '../config-provider/context';
 import { PopperRoot } from '../popper';
 import { provideTooltipOpenDelayedContext, provideTooltipRootContext } from './context';
 import { TOOLTIP_OPEN, createDefaultTooltipConfig } from './shared';
-import type { TooltipRootEmits, TooltipRootProps } from './types';
+import type { TooltipRootProps, TooltipRootEmits } from './types';
 
 defineOptions({
   name: 'TooltipRoot',

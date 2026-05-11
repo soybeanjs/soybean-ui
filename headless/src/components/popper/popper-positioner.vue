@@ -6,7 +6,7 @@ import { getAlignment, getSide } from '@floating-ui/utils';
 import { useFloating, useForwardElement } from '../../composables';
 import { providePopperPositionerContext, usePopperRootContext, usePopperUi } from './context';
 import { createPopperPositionerDefaultProps, getFloatingUiMiddleware, getPlacement, popperCssVars } from './shared';
-import type { PopperPositionerEmits, PopperPositionerProps } from './types';
+import type { PopperPositionerProps, PopperPositionerEmits } from './types';
 
 defineOptions({
   name: 'PopperPositioner'

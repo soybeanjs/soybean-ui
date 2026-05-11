@@ -4,7 +4,7 @@ import { Tag } from '@soybeanjs/headless/tag';
 import { cn } from '@/theme';
 import Icon from '../icon/icon.vue';
 import { tagVariants } from './variants';
-import type { TagEmits, TagProps } from './types';
+import type { TagProps, TagEmits } from './types';
 
 defineOptions({
   name: 'STag'

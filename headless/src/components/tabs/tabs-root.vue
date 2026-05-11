@@ -2,7 +2,7 @@
 import { useControllableState } from '../../composables';
 import { transformPropsToContext } from '../../shared';
 import { provideTabsRootContext, useTabsUi } from './context';
-import type { TabsRootEmits, TabsRootProps } from './types';
+import type { TabsRootProps, TabsRootEmits } from './types';
 
 defineOptions({
   name: 'TabsRoot'

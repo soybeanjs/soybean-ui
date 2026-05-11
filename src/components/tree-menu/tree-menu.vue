@@ -11,7 +11,7 @@ import { provideMenuUi } from '../menu/context';
 import { badgeVariants } from '../badge/variants';
 import { tooltipVariants } from '../tooltip/variants';
 import { treeMenuVariants } from './variants';
-import type { TreeMenuEmits, TreeMenuProps, TreeMenuSlots } from './types';
+import type { TreeMenuProps, TreeMenuEmits, TreeMenuSlots } from './types';
 
 defineOptions({
   name: 'STreeMenu'

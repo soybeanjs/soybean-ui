@@ -4,7 +4,7 @@ import { ColorSliderCompact, provideColorSliderUi } from '@soybeanjs/headless/co
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
 import { mergeVariants } from '@/theme';
 import { sliderVariants } from '../slider/variants';
-import type { ColorSliderEmits, ColorSliderProps } from './types';
+import type { ColorSliderProps, ColorSliderEmits } from './types';
 
 defineOptions({
   name: 'SColorSlider'

@@ -6,7 +6,7 @@ import { useMenuContext } from '../menu/context';
 import type { FocusOutsideEvent, PointerDownOutsideEvent } from '../../types';
 import { useDropdownMenuHoverContext, useDropdownMenuRootContext } from './context';
 import { DROPDOWN_MENU_HOVER_OPEN } from './shared';
-import type { DropdownMenuContentEmits, DropdownMenuContentProps } from './types';
+import type { DropdownMenuContentProps, DropdownMenuContentEmits } from './types';
 
 defineOptions({
   name: 'DropdownMenuContent'

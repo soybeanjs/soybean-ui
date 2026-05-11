@@ -3,7 +3,7 @@ import { watchEffect } from 'vue';
 import { useControllableState, useForwardElement } from '../../composables';
 import { transformPropsToContext } from '../../shared';
 import { provideCollectionContext, provideNavigationMenuRootContext, useNavigationMenuUi } from './context';
-import type { NavigationMenuRootEmits, NavigationMenuRootProps } from './types';
+import type { NavigationMenuRootProps, NavigationMenuRootEmits } from './types';
 
 defineOptions({
   name: 'NavigationMenuRoot'

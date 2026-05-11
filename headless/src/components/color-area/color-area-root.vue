@@ -16,7 +16,7 @@ import type { ColorValue } from '../../types';
 import { Primitive } from '../primitive';
 import { VisuallyHiddenInput } from '../visually-hidden';
 import { provideColorAreaRootContext, useColorAreaUi } from './context';
-import type { ColorAreaRootEmits, ColorAreaRootProps } from './types';
+import type { ColorAreaRootProps, ColorAreaRootEmits } from './types';
 
 defineOptions({
   name: 'ColorAreaRoot'

@@ -7,7 +7,7 @@ import { keysOf } from '@soybeanjs/utils';
 import { mergeVariants } from '@/theme';
 import { kbdVariants } from '../kbd/variants';
 import { commandVariants } from './variants';
-import type { CommandEmits, CommandProps, CommandSlots } from './types';
+import type { CommandProps, CommandEmits, CommandSlots } from './types';
 
 defineOptions({
   name: 'SCommand'

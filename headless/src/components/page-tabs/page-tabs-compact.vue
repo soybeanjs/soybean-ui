@@ -12,9 +12,9 @@ import PageTabsItem from './page-tabs-item.vue';
 import PageTabsPin from './page-tabs-pin.vue';
 import PageTabsRoot from './page-tabs-root.vue';
 import type {
-  PageTabsCompactEmits,
   PageTabsCompactItemSlotProps,
   PageTabsCompactProps,
+  PageTabsCompactEmits,
   PageTabsCompactSlots,
   PageTabsContextMenuOptionData,
   PageTabsOptionData

@@ -8,7 +8,7 @@ import AlertDescription from './alert-description.vue';
 import AlertRoot from './alert-root.vue';
 import AlertTitle from './alert-title.vue';
 import { useAlertUi } from './context';
-import type { AlertCompactEmits, AlertCompactProps, AlertCompactSlots } from './types';
+import type { AlertCompactProps, AlertCompactEmits, AlertCompactSlots } from './types';
 
 defineOptions({
   name: 'AlertCompact'

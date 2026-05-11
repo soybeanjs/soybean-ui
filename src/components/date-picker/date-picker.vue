@@ -6,7 +6,7 @@ import { mergeVariants } from '@/theme';
 import Calendar from '../calendar/calendar.vue';
 import { dateFieldVariants } from '../date-field/variants';
 import { datePickerVariants } from './variants';
-import type { DatePickerEmits, DatePickerProps } from './types';
+import type { DatePickerProps, DatePickerEmits } from './types';
 
 defineOptions({
   name: 'SDatePicker'

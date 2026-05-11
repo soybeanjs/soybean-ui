@@ -2,7 +2,7 @@
 import { RovingFocusItem } from '../roving-focus';
 import { Button } from '../button';
 import { useToolbarUi } from './context';
-import type { ToolbarButtonEmits, ToolbarButtonProps } from './types';
+import type { ToolbarButtonProps, ToolbarButtonEmits } from './types';
 
 defineOptions({
   name: 'ToolbarButton'

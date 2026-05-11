@@ -4,7 +4,7 @@ import { transformPropsToContext } from '../../shared';
 import { useControllableState } from '../../composables';
 import { MenuRoot } from '../menu';
 import { provideDropdownMenuHoverContext, provideDropdownMenuRootContext } from './context';
-import type { DropdownMenuRootEmits, DropdownMenuRootProps } from './types';
+import type { DropdownMenuRootProps, DropdownMenuRootEmits } from './types';
 
 defineOptions({
   name: 'DropdownMenuRoot',

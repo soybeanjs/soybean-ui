@@ -13,7 +13,7 @@ import {
   syncTimeouts
 } from './shared';
 import { usePasswordManagerBadge } from './use-password-manager-badge';
-import type { InputOtpRootEmits, InputOtpRootProps, InputOtpRootSlotProps } from './types';
+import type { InputOtpRootProps, InputOtpRootSlotProps, InputOtpRootEmits } from './types';
 
 defineOptions({
   name: 'InputOtpRoot',

@@ -3,7 +3,7 @@ import type { DefinedValue } from '../../types';
 import { useForwardListeners, useOmitProps } from '../../composables';
 import { ToggleGroupRoot } from '../toggle-group';
 import { useToolbarRootContext, useToolbarUi } from './context';
-import type { ToolbarToggleGroupEmits, ToolbarToggleGroupProps } from './types';
+import type { ToolbarToggleGroupProps, ToolbarToggleGroupEmits } from './types';
 
 defineOptions({
   name: 'ToolbarToggleGroup'

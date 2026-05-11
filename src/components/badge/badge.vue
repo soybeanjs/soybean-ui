@@ -5,7 +5,7 @@ import { useOmitProps } from '@soybeanjs/headless/composables';
 import { keysOf } from '@soybeanjs/utils';
 import { mergeVariants } from '@/theme';
 import { badgeVariants } from './variants';
-import type { BadgeEmits, BadgeProps } from './types';
+import type { BadgeProps, BadgeEmits } from './types';
 
 defineOptions({
   name: 'SBadge'

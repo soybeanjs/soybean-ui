@@ -4,7 +4,7 @@ import { useControllableState } from '../../composables';
 import type { AcceptableBooleanValue } from '../../types';
 import { Primitive } from '../primitive';
 import { provideMenuRadioGroupContext, useMenuUi } from './context';
-import type { MenuRadioGroupEmits, MenuRadioGroupProps } from './types';
+import type { MenuRadioGroupProps, MenuRadioGroupEmits } from './types';
 
 defineOptions({
   name: 'MenuRadioGroup'

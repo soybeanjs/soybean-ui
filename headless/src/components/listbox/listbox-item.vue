@@ -5,7 +5,7 @@ import { handleAndDispatchCustomEvent } from '../../shared';
 import type { SelectEvent } from '../../types';
 import { Primitive } from '../primitive';
 import { provideListboxItemContext, useCollectionItem, useListboxRootContext, useListboxUi } from './context';
-import type { ListboxItemEmits, ListboxItemProps } from './types';
+import type { ListboxItemProps, ListboxItemEmits } from './types';
 
 defineOptions({
   name: 'ListboxItem'

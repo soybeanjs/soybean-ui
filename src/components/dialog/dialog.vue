@@ -6,7 +6,7 @@ import { keysOf } from '@soybeanjs/utils';
 import { mergeVariants, miniSizeMap } from '@/theme';
 import { buttonVariants, buttonIconVariants } from '../button/variants';
 import { dialogVariants } from './variants';
-import type { DialogEmits, DialogProps, DialogSlots } from './types';
+import type { DialogProps, DialogEmits, DialogSlots } from './types';
 
 defineOptions({
   name: 'SDialog'

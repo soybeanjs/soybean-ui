@@ -3,8 +3,8 @@ import { useOmitProps } from '../../composables';
 import CheckboxCardCompact from './checkbox-card-compact.vue';
 import CheckboxGroupRoot from './checkbox-group-root.vue';
 import type {
-  CheckboxCardGroupCompactEmits,
   CheckboxCardGroupCompactProps,
+  CheckboxCardGroupCompactEmits,
   CheckboxCardGroupOptionData
 } from './types';
 

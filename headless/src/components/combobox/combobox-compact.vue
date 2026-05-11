@@ -19,7 +19,7 @@ import ComboboxTrigger from './combobox-trigger.vue';
 import ComboboxViewport from './combobox-viewport.vue';
 import { getDisplayValue, getSelectedLabels, isGroupOption } from './shared';
 import { useLocaleMessages } from '../../locale';
-import type { ComboboxCompactEmits, ComboboxCompactProps, ComboboxCompactSlots, ComboboxOptionData } from './types';
+import type { ComboboxCompactProps, ComboboxCompactEmits, ComboboxCompactSlots, ComboboxOptionData } from './types';
 
 defineOptions({
   name: 'ComboboxCompact'

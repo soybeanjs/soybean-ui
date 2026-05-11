@@ -4,7 +4,7 @@ import { useOmitProps } from '../../composables';
 import Link from '../link/link.vue';
 import { useCollectionItem, useNavigationMenuRootContext, useNavigationMenuUi } from './context';
 import { EVENT_ROOT_CONTENT_DISMISS, LINK_SELECT } from './shared';
-import type { NavigationMenuLinkEmits, NavigationMenuLinkProps } from './types';
+import type { NavigationMenuLinkProps, NavigationMenuLinkEmits } from './types';
 
 defineOptions({
   name: 'NavigationMenuLink'

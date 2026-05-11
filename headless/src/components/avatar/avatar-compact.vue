@@ -4,7 +4,7 @@ import { useOmitProps } from '../../composables';
 import AvatarFallback from './avatar-fallback.vue';
 import AvatarImage from './avatar-image.vue';
 import AvatarRoot from './avatar-root.vue';
-import type { AvatarCompactEmits, AvatarCompactProps, AvatarCompactSlots } from './types';
+import type { AvatarCompactProps, AvatarCompactEmits, AvatarCompactSlots } from './types';
 
 defineOptions({
   name: 'AvatarCompact'

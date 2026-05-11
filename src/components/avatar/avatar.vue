@@ -5,7 +5,7 @@ import { useOmitProps } from '@soybeanjs/headless/composables';
 import { keysOf } from '@soybeanjs/utils';
 import { mergeVariants } from '@/theme';
 import { avatarVariants } from './variants';
-import type { AvatarEmits, AvatarProps } from './types';
+import type { AvatarProps, AvatarEmits } from './types';
 
 defineOptions({
   name: 'SAvatar'

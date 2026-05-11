@@ -5,7 +5,7 @@ import { transformPropsToContext } from '../../shared';
 import { Primitive } from '../primitive';
 import { RovingFocusGroup } from '../roving-focus';
 import { provideMenubarCollectionContext, provideMenubarRootContext, useMenubarUi } from './context';
-import type { MenubarRootEmits, MenubarRootProps } from './types';
+import type { MenubarRootProps, MenubarRootEmits } from './types';
 
 defineOptions({
   name: 'MenubarRoot'

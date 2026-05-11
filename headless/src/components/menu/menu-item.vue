@@ -5,7 +5,7 @@ import { useForwardElement } from '../../composables';
 import MenuItemImpl from './menu-item-impl.vue';
 import { useMenuContentContext, useMenuRootContext, useMenuUi } from './context';
 import { ITEM_SELECT } from './shared';
-import type { MenuItemEmits, MenuItemProps } from './types';
+import type { MenuItemProps, MenuItemEmits } from './types';
 
 defineOptions({
   name: 'MenuItem'

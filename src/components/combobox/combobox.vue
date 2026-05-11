@@ -5,7 +5,7 @@ import { ComboboxCompact, provideComboboxUi } from '@soybeanjs/headless/combobox
 import { keysOf } from '@soybeanjs/utils';
 import { mergeVariants } from '@/theme';
 import { comboboxVariants } from './variants';
-import type { ComboboxEmits, ComboboxProps, ComboboxSlots } from './types';
+import type { ComboboxProps, ComboboxEmits, ComboboxSlots } from './types';
 
 defineOptions({
   name: 'SCombobox'

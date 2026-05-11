@@ -4,7 +4,7 @@ import { useControllableState } from '../../composables';
 import { areColorsEqual, formatColor, resolveColorFormat, toColorObject, transformPropsToContext } from '../../shared';
 import type { ColorFormat, ColorSpace, ColorValue } from '../../types';
 import { provideColorPickerRootContext } from './context';
-import type { ColorPickerRootEmits, ColorPickerRootProps } from './types';
+import type { ColorPickerRootProps, ColorPickerRootEmits } from './types';
 
 defineOptions({
   name: 'ColorPickerRoot',

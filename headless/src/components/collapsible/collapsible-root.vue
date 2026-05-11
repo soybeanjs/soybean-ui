@@ -3,7 +3,7 @@ import { useControllableState, useOmitProps } from '../../composables';
 import { transformPropsToContext } from '../../shared';
 import { Primitive } from '../primitive';
 import { provideCollapsibleRootContext, useCollapsibleUi } from './context';
-import type { CollapsibleRootEmits, CollapsibleRootProps } from './types';
+import type { CollapsibleRootProps, CollapsibleRootEmits } from './types';
 
 defineOptions({
   name: 'CollapsibleRoot'

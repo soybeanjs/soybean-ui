@@ -7,7 +7,7 @@ import TabsList from './tabs-list.vue';
 import TabsRoot from './tabs-root.vue';
 import TabsTrigger from './tabs-trigger.vue';
 import { useTabsUi } from './context';
-import type { TabsCompactEmits, TabsCompactProps, TabsCompactSlots, TabsOptionData } from './types';
+import type { TabsCompactProps, TabsCompactEmits, TabsCompactSlots, TabsOptionData } from './types';
 
 defineOptions({
   name: 'TabsCompact'

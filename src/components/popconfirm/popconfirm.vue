@@ -6,7 +6,7 @@ import { keysOf } from '@soybeanjs/utils';
 import { mergeVariants, miniSizeMap } from '@/theme';
 import { buttonVariants, buttonIconVariants } from '../button/variants';
 import { popconfirmVariants } from './variants';
-import type { PopconfirmEmits, PopconfirmProps, PopconfirmSlots } from './types';
+import type { PopconfirmProps, PopconfirmEmits, PopconfirmSlots } from './types';
 
 defineOptions({
   name: 'SPopconfirm'

@@ -3,7 +3,7 @@ import { computed, onBeforeUnmount, shallowRef } from 'vue';
 import { useForwardElement, useOmitProps } from '../../composables';
 import { Primitive } from '../primitive';
 import { useSplitterGroupContext, useSplitterUi } from './context';
-import type { SplitterResizeHandleEmits, SplitterResizeHandleProps } from './types';
+import type { SplitterResizeHandleProps, SplitterResizeHandleEmits } from './types';
 
 defineOptions({
   name: 'SplitterResizeHandle'

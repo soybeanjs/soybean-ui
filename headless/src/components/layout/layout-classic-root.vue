@@ -5,7 +5,7 @@ import { useControllableState } from '../../composables';
 import { transformPropsToContext } from '../../shared';
 import { provideLayoutClassicRootContext, useLayoutUi } from './context';
 import { layoutCssVars } from './shared';
-import type { LayoutClassicRootEmits, LayoutClassicRootProps, LayoutSidebarState } from './types';
+import type { LayoutClassicRootProps, LayoutClassicRootEmits, LayoutSidebarState } from './types';
 
 defineOptions({
   name: 'LayoutClassicRoot'

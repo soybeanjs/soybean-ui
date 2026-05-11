@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useControllableState } from '../../composables';
-import type { TagEmits, TagProps } from './types';
+import type { TagProps, TagEmits } from './types';
 
 defineOptions({
   name: 'STag'

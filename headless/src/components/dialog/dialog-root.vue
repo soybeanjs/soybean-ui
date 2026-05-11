@@ -3,7 +3,7 @@ import { computed } from 'vue';
 import { useControllableState } from '../../composables';
 import { transformPropsToContext } from '../../shared';
 import { provideDialogRootContext } from './context';
-import type { DialogRootEmits, DialogRootProps } from './types';
+import type { DialogRootProps, DialogRootEmits } from './types';
 
 defineOptions({
   name: 'DialogRoot',

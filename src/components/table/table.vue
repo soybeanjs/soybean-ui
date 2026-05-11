@@ -19,7 +19,7 @@ import SCheckbox from '../checkbox/checkbox.vue';
 import TableFilterPopover from './table-filter-popover.vue';
 import TableRadio from './table-radio.vue';
 import { tableVariants } from './variants';
-import type { TableBaseData, TableEmits, TableProps, TableSlots } from './types';
+import type { TableProps, TableBaseData, TableEmits, TableSlots } from './types';
 
 defineOptions({
   name: 'STable'

@@ -5,7 +5,7 @@ import type { DefinedValue } from '@soybeanjs/headless/types';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
 import { mergeVariants } from '@/theme';
 import { toggleGroupVariants } from './variants';
-import type { ToggleGroupEmits, ToggleGroupProps } from './types';
+import type { ToggleGroupProps, ToggleGroupEmits } from './types';
 
 defineOptions({
   name: 'SToggleGroup'

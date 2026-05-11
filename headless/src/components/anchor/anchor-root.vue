@@ -17,7 +17,7 @@ import {
   updateAnchorHistory
 } from './shared';
 import { useLocaleMessages } from '../../locale';
-import type { AnchorContainer, AnchorRootEmits, AnchorRootProps } from './types';
+import type { AnchorRootProps, AnchorRootEmits, AnchorContainer } from './types';
 
 defineOptions({
   name: 'AnchorRoot'

@@ -23,7 +23,7 @@ import TableRoot from './table-root.vue';
 import TableScroll from './table-scroll.vue';
 import TableRow from './table-row.vue';
 import TableVirtualSpacerRow from './table-virtual-spacer-row.vue';
-import type { TableBaseData, TableCompactEmits, TableCompactProps, TableCompactSlots, TableUnifiedKey } from './types';
+import type { TableCompactProps, TableBaseData, TableCompactEmits, TableCompactSlots, TableUnifiedKey } from './types';
 
 defineOptions({
   name: 'TableCompact'

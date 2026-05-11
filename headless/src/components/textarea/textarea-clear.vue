@@ -4,7 +4,7 @@ import { useLocaleMessages } from '../../locale';
 import Button from '../button/button.vue';
 import Icon from '../_icon/icon.vue';
 import { useTextareaRootContext, useTextareaUi } from './context';
-import type { TextareaClearEmits, TextareaClearProps } from './types';
+import type { TextareaClearProps, TextareaClearEmits } from './types';
 
 defineOptions({
   name: 'TextareaClear'

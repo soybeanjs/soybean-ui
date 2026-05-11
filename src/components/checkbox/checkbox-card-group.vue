@@ -4,7 +4,7 @@ import { CheckboxCardGroupCompact, provideCheckboxCardUi } from '@soybeanjs/head
 import { useOmitProps } from '@soybeanjs/headless/composables';
 import { mergeVariants } from '@/theme';
 import { checkboxCardVariants } from './variants';
-import type { CheckboxCardGroupEmits, CheckboxCardGroupOptionData, CheckboxCardGroupProps } from './types';
+import type { CheckboxCardGroupProps, CheckboxCardGroupEmits, CheckboxCardGroupOptionData } from './types';
 
 defineOptions({
   name: 'SCheckboxCardGroup'

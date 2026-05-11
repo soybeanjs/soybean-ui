@@ -4,7 +4,7 @@ import { ColorFieldCompact, provideColorFieldUi } from '@soybeanjs/headless/colo
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
 import { mergeVariants } from '@/theme';
 import { colorFieldVariants } from './variants';
-import type { ColorFieldEmits, ColorFieldProps } from './types';
+import type { ColorFieldProps, ColorFieldEmits } from './types';
 
 defineOptions({
   name: 'SColorField'

@@ -5,7 +5,7 @@ import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composabl
 import { mergeVariants, miniSizeMap } from '@/theme';
 import { buttonIconVariants } from '../button/variants';
 import { tagsInputVariants } from './variants';
-import type { TagsInputEmits, TagsInputProps, TagsInputSlots } from './types';
+import type { TagsInputProps, TagsInputEmits, TagsInputSlots } from './types';
 
 defineOptions({
   name: 'STagsInput'

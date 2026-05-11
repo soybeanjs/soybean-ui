@@ -5,7 +5,7 @@ import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composabl
 import { keysOf } from '@soybeanjs/utils';
 import { mergeVariants } from '@/theme';
 import { breadcrumbVariants } from './variants';
-import type { BreadcrumbEmits, BreadcrumbOptionData, BreadcrumbProps, BreadcrumbSlots } from './types';
+import type { BreadcrumbProps, BreadcrumbEmits, BreadcrumbOptionData, BreadcrumbSlots } from './types';
 
 defineOptions({
   name: 'SBreadcrumb'

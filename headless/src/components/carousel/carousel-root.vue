@@ -5,8 +5,8 @@ import { useDirection } from '../config-provider/context';
 import { provideCarouselRootContext, useCarouselUi } from './context';
 import { useEmblaCarousel } from './hooks';
 import type {
-  CarouselRootEmits,
   CarouselRootProps,
+  CarouselRootEmits,
   CarouselRootSlots,
   EmblaCarouselType,
   EmblaOptionsType,

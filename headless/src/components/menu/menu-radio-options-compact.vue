@@ -11,7 +11,7 @@ import MenuItemIndicator from './menu-item-indicator.vue';
 import MenuItemSlotCompact from './menu-item-slot-compact.vue';
 import MenuRadioGroup from './menu-radio-group.vue';
 import MenuRadioItem from './menu-radio-item.vue';
-import type { MenuRadioOptionsCompactEmits, MenuRadioOptionsCompactProps, MenuRadioOptionsCompactSlots } from './types';
+import type { MenuRadioOptionsCompactProps, MenuRadioOptionsCompactEmits, MenuRadioOptionsCompactSlots } from './types';
 
 defineOptions({
   name: 'MenuRadioOptionsCompact'

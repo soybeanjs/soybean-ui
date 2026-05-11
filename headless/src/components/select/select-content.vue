@@ -4,7 +4,7 @@ import { useForwardListeners, useOmitProps, usePresence } from '../../composable
 import { provideSelectPopupElementContext, useSelectRootContext } from './context';
 import SelectContentImpl from './select-content-impl.vue';
 import SelectTeleportProvider from './select-teleport-provider.vue';
-import type { SelectContentEmits, SelectContentProps } from './types';
+import type { SelectContentProps, SelectContentEmits } from './types';
 
 defineOptions({
   name: 'SelectContent',

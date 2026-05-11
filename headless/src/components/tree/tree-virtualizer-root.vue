@@ -3,7 +3,7 @@ import { useForwardListeners, useOmitProps } from '../../composables';
 import type { MaybeArray } from '../../types';
 import VirtualizerRoot from '../virtualizer/virtualizer-root.vue';
 import TreeRoot from './tree-root.vue';
-import type { TreeItemData, TreeVirtualizerRootEmits, TreeVirtualizerRootProps } from './types';
+import type { TreeVirtualizerRootProps, TreeItemData, TreeVirtualizerRootEmits } from './types';
 
 defineOptions({
   name: 'TreeVirtualizerRoot'

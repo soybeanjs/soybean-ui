@@ -6,7 +6,7 @@ import InputNumberControl from './input-number-control.vue';
 import InputNumberDecrement from './input-number-decrement.vue';
 import InputNumberIncrement from './input-number-increment.vue';
 import InputNumberClear from './input-number-clear.vue';
-import type { InputNumberCompactEmits, InputNumberCompactProps, InputNumberCompactSlots } from './types';
+import type { InputNumberCompactProps, InputNumberCompactEmits, InputNumberCompactSlots } from './types';
 
 defineOptions({
   name: 'InputNumberCompact'

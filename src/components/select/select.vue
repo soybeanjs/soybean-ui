@@ -6,7 +6,7 @@ import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composabl
 import { keysOf } from '@soybeanjs/utils';
 import { mergeVariants } from '@/theme';
 import { selectVariants } from './variants';
-import type { SelectEmits, SelectProps, SelectSlots } from './types';
+import type { SelectProps, SelectEmits, SelectSlots } from './types';
 
 defineOptions({
   name: 'SSelect',

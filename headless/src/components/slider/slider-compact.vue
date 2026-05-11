@@ -4,7 +4,7 @@ import SliderRange from './slider-range.vue';
 import SliderRoot from './slider-root.vue';
 import SliderThumb from './slider-thumb.vue';
 import SliderTrack from './slider-track.vue';
-import type { SliderCompactEmits, SliderCompactProps, SliderCompactSlots } from './types';
+import type { SliderCompactProps, SliderCompactEmits, SliderCompactSlots } from './types';
 
 defineOptions({
   name: 'SliderCompact'

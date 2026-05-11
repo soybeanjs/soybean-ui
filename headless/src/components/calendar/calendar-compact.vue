@@ -13,7 +13,7 @@ import CalendarHeader from './calendar-header.vue';
 import CalendarHeading from './calendar-heading.vue';
 import CalendarNext from './calendar-next.vue';
 import CalendarPrev from './calendar-prev.vue';
-import type { CalendarCompactEmits, CalendarCompactProps, CalendarCompactSlots } from './types';
+import type { CalendarCompactProps, CalendarCompactEmits, CalendarCompactSlots } from './types';
 
 defineOptions({
   name: 'CalendarCompact'

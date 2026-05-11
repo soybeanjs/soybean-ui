@@ -4,7 +4,7 @@ import { ProgressCompact, provideProgressUi } from '@soybeanjs/headless/progress
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
 import { mergeVariants } from '@/theme';
 import { progressVariants } from './variants';
-import type { ProgressEmits, ProgressProps, ProgressSlots } from './types';
+import type { ProgressProps, ProgressEmits, ProgressSlots } from './types';
 
 defineOptions({
   name: 'SProgress'

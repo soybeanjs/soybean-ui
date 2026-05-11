@@ -4,7 +4,7 @@ import { useControllableState, useForwardElement } from '../../composables';
 import { isFormControl, transformPropsToContext } from '../../shared';
 import VisuallyHiddenInput from '../visually-hidden/visually-hidden-input.vue';
 import { provideInputRootContext, useInputUi } from './context';
-import type { InputRootEmits, InputRootProps } from './types';
+import type { InputRootProps, InputRootEmits } from './types';
 
 defineOptions({
   name: 'InputRoot'

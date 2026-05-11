@@ -7,7 +7,7 @@ import { mergeVariants, themeSizeMap, themeSizeRatio } from '@/theme';
 import { drawerVariants } from '../drawer/variants';
 import { buttonIconVariants } from '../button/variants';
 import { layoutVariants } from './variants';
-import type { LayoutEmits, LayoutProps, LayoutSlots } from './types';
+import type { LayoutProps, LayoutEmits, LayoutSlots } from './types';
 
 defineOptions({
   name: 'SLayout'

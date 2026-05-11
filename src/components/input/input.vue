@@ -6,7 +6,7 @@ import { keysOf } from '@soybeanjs/utils';
 import { mergeVariants, miniSizeMap } from '@/theme';
 import { buttonIconVariants } from '../button/variants';
 import { inputVariants } from './variants';
-import type { InputEmits, InputProps, InputSlots } from './types';
+import type { InputProps, InputEmits, InputSlots } from './types';
 
 defineOptions({
   name: 'SInput'

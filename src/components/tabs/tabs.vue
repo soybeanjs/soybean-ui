@@ -5,7 +5,7 @@ import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composabl
 import { keysOf } from '@soybeanjs/utils';
 import { mergeVariants } from '@/theme';
 import { tabsVariants } from './variants';
-import type { TabsEmits, TabsProps, TabsSlots, TabsOptionData } from './types';
+import type { TabsProps, TabsEmits, TabsSlots, TabsOptionData } from './types';
 
 defineOptions({
   name: 'STabs'

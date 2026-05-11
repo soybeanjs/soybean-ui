@@ -3,7 +3,7 @@ import { useForwardListeners, useOmitProps } from '../../composables';
 import { useTimeRangeFieldUi } from './context';
 import TimeRangeFieldRoot from './time-range-field-root.vue';
 import TimeRangeFieldInput from './time-range-field-input.vue';
-import type { TimeRangeFieldCompactEmits, TimeRangeFieldCompactProps, TimeRangeFieldCompactSlots } from './types';
+import type { TimeRangeFieldCompactProps, TimeRangeFieldCompactEmits, TimeRangeFieldCompactSlots } from './types';
 
 defineOptions({
   name: 'TimeRangeFieldCompact'

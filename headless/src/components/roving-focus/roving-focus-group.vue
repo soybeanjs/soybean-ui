@@ -3,7 +3,7 @@ import { useForwardElement } from '../../composables';
 import { transformPropsToContext } from '../../shared';
 import { Primitive } from '../primitive';
 import { provideRovingFocusGroupContext } from './context';
-import type { RovingFocusGroupEmits, RovingFocusGroupProps } from './types';
+import type { RovingFocusGroupProps, RovingFocusGroupEmits } from './types';
 
 defineOptions({
   name: 'RovingFocusGroup'

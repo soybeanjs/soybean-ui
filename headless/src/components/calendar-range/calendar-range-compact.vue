@@ -13,7 +13,7 @@ import CalendarRangeGridRow from './calendar-range-grid-row.vue';
 import CalendarRangeHeadCell from './calendar-range-head-cell.vue';
 import CalendarRangeCell from './calendar-range-cell.vue';
 import CalendarRangeCellTrigger from './calendar-range-cell-trigger.vue';
-import type { CalendarRangeCompactEmits, CalendarRangeCompactProps, CalendarRangeCompactSlots } from './types';
+import type { CalendarRangeCompactProps, CalendarRangeCompactEmits, CalendarRangeCompactSlots } from './types';
 
 defineOptions({
   name: 'CalendarRangeCompact'

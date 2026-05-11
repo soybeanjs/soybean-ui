@@ -7,7 +7,7 @@ import { mergeVariants, miniSizeMap } from '@/theme';
 import { buttonVariants, buttonIconVariants } from '../button/variants';
 import { dialogVariants } from '../dialog/variants';
 import { drawerVariants } from './variants';
-import type { DrawerEmits, DrawerProps, DrawerSlots } from './types';
+import type { DrawerProps, DrawerEmits, DrawerSlots } from './types';
 
 defineOptions({
   name: 'SDrawer'

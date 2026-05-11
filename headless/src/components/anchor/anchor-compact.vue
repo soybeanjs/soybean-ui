@@ -2,7 +2,7 @@
 import { useOmitProps } from '../../composables';
 import AnchorCompactItem from './anchor-item-compact.vue';
 import AnchorRoot from './anchor-root.vue';
-import type { AnchorCompactEmits, AnchorCompactProps } from './types';
+import type { AnchorCompactProps, AnchorCompactEmits } from './types';
 
 defineOptions({
   name: 'AnchorCompact'

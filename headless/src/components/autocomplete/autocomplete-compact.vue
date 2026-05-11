@@ -23,8 +23,8 @@ import AutocompleteInput from './autocomplete-input.vue';
 import { getAutocompleteItemOptions, getAutocompleteSearchOptions, isGroupOption } from './shared';
 import { useLocaleMessages } from '../../locale';
 import type {
-  AutocompleteCompactEmits,
   AutocompleteCompactProps,
+  AutocompleteCompactEmits,
   AutocompleteCompactSlots,
   AutocompleteSearchOptionData,
   AutocompleteSingleOptionData

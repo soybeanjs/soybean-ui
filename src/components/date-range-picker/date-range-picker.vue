@@ -7,7 +7,7 @@ import CalendarRange from '../calendar-range/calendar-range.vue';
 import { dateFieldVariants } from '../date-field/variants';
 import { dateRangeFieldVariants } from '../date-range-field/variants';
 import { datePickerVariants } from '../date-picker/variants';
-import type { DateRangePickerEmits, DateRangePickerProps } from './types';
+import type { DateRangePickerProps, DateRangePickerEmits } from './types';
 
 defineOptions({
   name: 'SDateRangePicker'

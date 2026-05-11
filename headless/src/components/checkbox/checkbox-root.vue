@@ -5,7 +5,7 @@ import { isFormControl, isNullish, isValueEqualOrExist, transformPropsToContext 
 import type { CheckedState } from '../../types';
 import { VisuallyHiddenInput } from '../visually-hidden';
 import { provideCheckboxRootContext, useCheckboxGroupRootContext, useCheckboxUi } from './context';
-import type { CheckboxRootEmits, CheckboxRootProps } from './types';
+import type { CheckboxRootProps, CheckboxRootEmits } from './types';
 
 defineOptions({
   name: 'CheckboxRoot'

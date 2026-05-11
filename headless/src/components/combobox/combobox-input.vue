@@ -5,7 +5,7 @@ import { ListboxFilter } from '../listbox';
 import { useListboxRootContext } from '../listbox/context';
 import type { InputControlProps } from '../input/types';
 import { useComboboxRootContext } from './context';
-import type { ComboboxInputEmits, ComboboxInputProps } from './types';
+import type { ComboboxInputProps, ComboboxInputEmits } from './types';
 
 defineOptions({
   name: 'ComboboxInput'

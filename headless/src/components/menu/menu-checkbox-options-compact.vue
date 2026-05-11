@@ -12,8 +12,8 @@ import MenuGroupLabel from './menu-group-label.vue';
 import MenuItemIndicator from './menu-item-indicator.vue';
 import MenuItemSlotCompact from './menu-item-slot-compact.vue';
 import type {
-  MenuCheckboxOptionsCompactEmits,
   MenuCheckboxOptionsCompactProps,
+  MenuCheckboxOptionsCompactEmits,
   MenuCheckboxOptionsCompactSlots
 } from './types';
 

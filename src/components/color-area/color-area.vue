@@ -4,7 +4,7 @@ import { ColorAreaCompact, provideColorAreaUi } from '@soybeanjs/headless/color-
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
 import { mergeVariants } from '@/theme';
 import { colorAreaVariants } from './variants';
-import type { ColorAreaEmits, ColorAreaProps } from './types';
+import type { ColorAreaProps, ColorAreaEmits } from './types';
 
 defineOptions({
   name: 'SColorArea'

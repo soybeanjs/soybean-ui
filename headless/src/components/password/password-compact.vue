@@ -8,7 +8,7 @@ import InputControl from '../input/input-control.vue';
 import InputRoot from '../input/input-root.vue';
 import { usePasswordUi } from './context';
 import { useLocaleMessages } from '../../locale';
-import type { PasswordCompactEmits, PasswordCompactProps, PasswordCompactSlots } from './types';
+import type { PasswordCompactProps, PasswordCompactEmits, PasswordCompactSlots } from './types';
 
 defineOptions({
   name: 'PasswordCompact'

@@ -5,7 +5,7 @@ import { getCollectionItemElements, isElementHasAttribute, transformPropsToConte
 import { Primitive } from '../primitive';
 import { VisuallyHidden } from '../visually-hidden';
 import { provideStepperRootContext, useStepperUi } from './context';
-import type { StepperRootEmits, StepperRootProps } from './types';
+import type { StepperRootProps, StepperRootEmits } from './types';
 
 defineOptions({
   name: 'StepperRoot'

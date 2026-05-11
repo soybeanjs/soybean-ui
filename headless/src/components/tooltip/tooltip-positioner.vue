@@ -3,7 +3,7 @@ import { shallowRef } from 'vue';
 import { useForwardListeners, useOmitProps, usePresence } from '../../composables';
 import { useTooltipRootContext } from './context';
 import TooltipPositionerImpl from './tooltip-positioner-impl.vue';
-import type { TooltipPositionerEmits, TooltipPositionerProps } from './types';
+import type { TooltipPositionerProps, TooltipPositionerEmits } from './types';
 
 defineOptions({
   name: 'TooltipPositioner'

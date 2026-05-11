@@ -23,7 +23,7 @@ import { CONTENT_MARGIN } from './shared';
 import SelectPopperPopup from './select-popper-popup.vue';
 import SelectItemAlignedPopup from './select-item-aligned-popup.vue';
 import SelectItemAlignedPositioner from './select-item-aligned-positioner.vue';
-import type { SelectContentImplEmits, SelectContentImplProps } from './types';
+import type { SelectContentImplProps, SelectContentImplEmits } from './types';
 
 defineOptions({
   name: 'SelectContentImpl'

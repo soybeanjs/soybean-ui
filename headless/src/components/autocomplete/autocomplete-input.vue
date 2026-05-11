@@ -5,7 +5,7 @@ import { useComboboxRootContext } from '../combobox/context';
 import { InputControl, InputRoot } from '../input';
 import { useListboxRootContext } from '../listbox/context';
 import { useAutocompleteRootContext } from './context';
-import type { AutocompleteInputEmits, AutocompleteInputProps } from './types';
+import type { AutocompleteInputProps, AutocompleteInputEmits } from './types';
 
 defineOptions({
   name: 'AutocompleteInput'

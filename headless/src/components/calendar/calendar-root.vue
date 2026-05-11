@@ -11,7 +11,7 @@ import { VisuallyHidden } from '../visually-hidden';
 import { provideCalendarRootContext, useCalendarUi } from './context';
 import { useCalendar, useCalendarState } from './use-calendar';
 import { getMonthOptions, getYearOptions, handleMonthChange, handleYearChange } from './shared';
-import type { CalendarModelValue, CalendarRootEmits, CalendarRootProps, CalendarRootSlots } from './types';
+import type { CalendarRootProps, CalendarRootEmits, CalendarRootSlots, CalendarModelValue } from './types';
 
 defineOptions({
   name: 'CalendarRoot'

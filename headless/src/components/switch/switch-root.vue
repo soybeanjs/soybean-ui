@@ -5,7 +5,7 @@ import { isFormControl, isNullish, transformPropsToContext } from '../../shared'
 import type { AcceptableBooleanValue } from '../../types';
 import { VisuallyHiddenInput } from '../visually-hidden';
 import { provideSwitchRootContext, useSwitchUi } from './context';
-import type { SwitchRootEmits, SwitchRootProps } from './types';
+import type { SwitchRootProps, SwitchRootEmits } from './types';
 
 defineOptions({
   name: 'SwitchRoot'

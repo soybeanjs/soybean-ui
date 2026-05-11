@@ -6,7 +6,7 @@ import { keysOf } from '@soybeanjs/utils';
 import { mergeVariants, miniSizeMap } from '@/theme';
 import { alertVariants } from './variants';
 import { buttonIconVariants } from '../button/variants';
-import type { AlertEmits, AlertProps, AlertSlots } from './types';
+import type { AlertProps, AlertEmits, AlertSlots } from './types';
 
 defineOptions({
   name: 'SAlert'

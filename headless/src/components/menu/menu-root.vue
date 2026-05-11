@@ -4,7 +4,7 @@ import { transformPropsToContext } from '../../shared';
 import { useDirection } from '../config-provider/context';
 import { PopperRoot } from '../popper';
 import { provideMenuContext, provideMenuRootContext } from './context';
-import type { MenuRootEmits, MenuRootProps } from './types';
+import type { MenuRootProps, MenuRootEmits } from './types';
 
 defineOptions({
   name: 'MenuRoot',

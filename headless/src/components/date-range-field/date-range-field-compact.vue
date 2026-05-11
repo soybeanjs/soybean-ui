@@ -3,7 +3,7 @@ import { useForwardListeners, useOmitProps } from '../../composables';
 import { useDateRangeFieldUi } from './context';
 import DateRangeFieldRoot from './date-range-field-root.vue';
 import DateRangeFieldInput from './date-range-field-input.vue';
-import type { DateRangeFieldCompactEmits, DateRangeFieldCompactProps, DateRangeFieldCompactSlots } from './types';
+import type { DateRangeFieldCompactProps, DateRangeFieldCompactEmits, DateRangeFieldCompactSlots } from './types';
 
 defineOptions({
   name: 'DateRangeFieldCompact'

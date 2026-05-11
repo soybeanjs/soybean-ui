@@ -1,7 +1,7 @@
 <script setup lang="ts" generic="M extends boolean">
 import { useControllableState, useOmitProps } from '../../composables';
 import { ListboxContent, ListboxRoot } from '../listbox';
-import type { ColorSwatchPickerRootEmits, ColorSwatchPickerRootProps } from './types';
+import type { ColorSwatchPickerRootProps, ColorSwatchPickerRootEmits } from './types';
 
 defineOptions({
   name: 'ColorSwatchPickerRoot'

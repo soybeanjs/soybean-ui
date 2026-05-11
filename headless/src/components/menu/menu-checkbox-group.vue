@@ -4,7 +4,7 @@ import { useControllableState } from '../../composables';
 import type { DefinedValue } from '../../types';
 import { Primitive } from '../primitive';
 import { provideMenuCheckboxGroupContext, useMenuUi } from './context';
-import type { MenuCheckboxGroupEmits, MenuCheckboxGroupProps } from './types';
+import type { MenuCheckboxGroupProps, MenuCheckboxGroupEmits } from './types';
 
 defineOptions({
   name: 'MenuCheckboxGroup'

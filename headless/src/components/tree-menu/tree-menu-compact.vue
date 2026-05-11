@@ -4,7 +4,7 @@ import { keysOf } from '@soybeanjs/utils';
 import { useForwardListeners, usePickProps } from '../../composables';
 import TreeMenuCompactOptions from './tree-menu-options-compact.vue';
 import TreeMenuRoot from './tree-menu-root.vue';
-import type { TreeMenuBaseOptionData, TreeMenuCompactEmits, TreeMenuCompactProps, TreeMenuCompactSlots } from './types';
+import type { TreeMenuCompactProps, TreeMenuBaseOptionData, TreeMenuCompactEmits, TreeMenuCompactSlots } from './types';
 
 defineOptions({
   name: 'TreeMenuCompact'

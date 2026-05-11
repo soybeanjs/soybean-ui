@@ -4,7 +4,7 @@ import { useForwardListeners, useOmitProps, usePresence } from '../../composable
 import type { FocusOutsideEvent } from '../../types';
 import { useMenuContext, useMenuRootContext } from './context';
 import MenuContentImpl from './menu-content-impl.vue';
-import type { MenuContentEmits, MenuContentProps } from './types';
+import type { MenuContentProps, MenuContentEmits } from './types';
 
 defineOptions({
   name: 'MenuContent'

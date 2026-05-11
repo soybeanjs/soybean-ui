@@ -6,7 +6,7 @@ import { cn } from '@/theme';
 import Icon from '../icon/icon.vue';
 import { buttonVariants } from '../button/variants';
 import { backtopVariants } from './variants';
-import type { BacktopEmits, BacktopProps } from './types';
+import type { BacktopProps, BacktopEmits } from './types';
 
 defineOptions({
   name: 'SBacktop'

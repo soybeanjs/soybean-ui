@@ -7,7 +7,7 @@ import { RovingFocusGroup } from '../roving-focus';
 import type { RovingFocusGroupProps } from '../roving-focus/types';
 import { VisuallyHiddenInput } from '../visually-hidden';
 import { provideCheckboxGroupRootContext, useCheckboxUi } from './context';
-import type { CheckboxGroupRootEmits, CheckboxGroupRootProps } from './types';
+import type { CheckboxGroupRootProps, CheckboxGroupRootEmits } from './types';
 
 defineOptions({
   name: 'CheckboxGroupRoot'

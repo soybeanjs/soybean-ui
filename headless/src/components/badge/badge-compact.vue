@@ -2,7 +2,7 @@
 import { useOmitProps } from '../../composables';
 import BadgeContent from './badge-content.vue';
 import BadgeRoot from './badge-root.vue';
-import type { BadgeCompactEmits, BadgeCompactProps, BadgeCompactSlots } from './types';
+import type { BadgeCompactProps, BadgeCompactEmits, BadgeCompactSlots } from './types';
 
 defineOptions({
   name: 'BadgeCompact'

@@ -12,7 +12,7 @@ import {
   resizeLayoutPair,
   sortPanels
 } from './shared';
-import type { SplitterGroupEmits, SplitterGroupProps, SplitterPanelRecord, SplitterPanelRegistration } from './types';
+import type { SplitterGroupProps, SplitterGroupEmits, SplitterPanelRecord, SplitterPanelRegistration } from './types';
 
 defineOptions({
   name: 'SplitterGroup'

@@ -18,7 +18,7 @@ import { useDirection } from '../config-provider/context';
 import { SliderRoot } from '../slider';
 import { VisuallyHiddenInput } from '../visually-hidden';
 import { provideColorSliderRootContext, useColorSliderUi } from './context';
-import type { ColorSliderRootEmits, ColorSliderRootProps } from './types';
+import type { ColorSliderRootProps, ColorSliderRootEmits } from './types';
 
 defineOptions({
   name: 'ColorSliderRoot'

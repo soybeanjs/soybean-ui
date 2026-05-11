@@ -8,7 +8,7 @@ import { ListboxRoot } from '../listbox';
 import { provideComboboxRootContext } from '../combobox/context';
 import { PopperRoot } from '../popper';
 import { provideAutocompleteRootContext } from './context';
-import type { AutocompleteRootEmits, AutocompleteRootProps } from './types';
+import type { AutocompleteRootProps, AutocompleteRootEmits } from './types';
 
 defineOptions({
   name: 'AutocompleteRoot',

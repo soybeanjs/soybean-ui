@@ -3,7 +3,7 @@ import { useControllableState } from '../../composables';
 import { transformPropsToContext } from '../../shared';
 import { PopperRoot } from '../popper';
 import { providePopoverRootContext } from './context';
-import type { PopoverRootEmits, PopoverRootProps } from './types';
+import type { PopoverRootProps, PopoverRootEmits } from './types';
 
 defineOptions({
   name: 'PopoverRoot',

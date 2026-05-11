@@ -4,7 +4,7 @@ import { useOmitProps } from '../../composables';
 import { clamp } from '../../shared';
 import { Primitive } from '../primitive';
 import { useSplitterGroupContext, useSplitterUi } from './context';
-import type { SplitterPanelEmits, SplitterPanelProps } from './types';
+import type { SplitterPanelProps, SplitterPanelEmits } from './types';
 
 defineOptions({
   name: 'SplitterPanel'

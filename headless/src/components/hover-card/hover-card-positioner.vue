@@ -3,7 +3,7 @@ import { shallowRef } from 'vue';
 import { useForwardListeners, useOmitProps, usePresence } from '../../composables';
 import { useHoverCardRootContext } from './context';
 import HoverCardPositionerImpl from './hover-card-positioner-impl.vue';
-import type { HoverCardPositionerEmits, HoverCardPositionerProps } from './types';
+import type { HoverCardPositionerProps, HoverCardPositionerEmits } from './types';
 
 defineOptions({
   name: 'HoverCardPositioner'

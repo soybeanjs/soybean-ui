@@ -12,7 +12,7 @@ import { useDirection } from '../config-provider/context';
 import { Primitive } from '../primitive';
 import VisuallyHiddenInput from '../visually-hidden/visually-hidden-input.vue';
 import { provideEditableRootContext, useEditableUi } from './context';
-import type { EditablePlaceholder, EditableRootEmits, EditableRootProps } from './types';
+import type { EditableRootProps, EditablePlaceholder, EditableRootEmits } from './types';
 
 defineOptions({
   name: 'EditableRoot'

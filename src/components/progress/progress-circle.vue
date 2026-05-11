@@ -4,7 +4,7 @@ import { ProgressCircleCompact, provideProgressUi } from '@soybeanjs/headless/pr
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
 import { mergeVariants } from '@/theme';
 import { progressCircleVariants } from './variants';
-import type { ProgressCircleEmits, ProgressCircleProps, ProgressCircleSlots } from './types';
+import type { ProgressCircleProps, ProgressCircleEmits, ProgressCircleSlots } from './types';
 
 defineOptions({
   name: 'SProgressCircle'

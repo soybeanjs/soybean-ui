@@ -11,7 +11,7 @@ import {
 } from '../../composables';
 import { PopperPositioner } from '../popper';
 import { usePopoverRootContext } from './context';
-import type { PopoverPositionerImplEmits, PopoverPositionerImplProps } from './types';
+import type { PopoverPositionerImplProps, PopoverPositionerImplEmits } from './types';
 
 defineOptions({
   name: 'PopoverPositionerImpl'

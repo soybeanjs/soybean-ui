@@ -6,7 +6,7 @@ import type { FocusOutsideEvent } from '../../types';
 import { MenuContent } from '../menu';
 import { useMenubarCollectionContext, useMenubarMenuContext, useMenubarRootContext } from './context';
 import { isTriggerLink } from './shared';
-import type { MenubarContentEmits, MenubarContentProps } from './types';
+import type { MenubarContentProps, MenubarContentEmits } from './types';
 
 defineOptions({
   name: 'MenubarContent'

@@ -3,7 +3,7 @@ import { computed, shallowRef } from 'vue';
 import { useForwardListeners, useOmitProps, usePopupEvents, usePresence } from '../../composables';
 import { usePopoverRootContext } from './context';
 import PopoverPositionerImpl from './popover-positioner-impl.vue';
-import type { PopoverPositionerEmits, PopoverPositionerProps } from './types';
+import type { PopoverPositionerProps, PopoverPositionerEmits } from './types';
 
 defineOptions({
   name: 'PopoverPositioner'

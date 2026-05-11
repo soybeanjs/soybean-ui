@@ -3,7 +3,7 @@ import { watch } from 'vue';
 import { useImageLoadingStatus } from '../../composables';
 import { transformPropsToContext } from '../../shared';
 import { useAvatarRootContext, useAvatarUi } from './context';
-import type { AvatarImageEmits, AvatarImageProps } from './types';
+import type { AvatarImageProps, AvatarImageEmits } from './types';
 
 defineOptions({
   name: 'AvatarImage'

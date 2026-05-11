@@ -11,7 +11,7 @@ import RovingFocusGroup from '../roving-focus/roving-focus-group.vue';
 import { provideTreeRootContext } from './context';
 import { useSelectionBehavior } from './hooks';
 import { findParentPath, flattenItems } from './shared';
-import type { FlattenedItem, TreeItemData, TreeRootEmits, TreeRootProps } from './types';
+import type { TreeRootProps, FlattenedItem, TreeItemData, TreeRootEmits } from './types';
 
 defineOptions({
   name: 'TreeRoot'

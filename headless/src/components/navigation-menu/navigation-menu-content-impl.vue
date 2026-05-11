@@ -10,7 +10,7 @@ import {
   useNavigationMenuUi
 } from './context';
 import { EVENT_ROOT_CONTENT_DISMISS } from './shared';
-import type { MotionAttribute, NavigationMenuContentImplEmits, NavigationMenuContentImplProps } from './types';
+import type { NavigationMenuContentImplProps, MotionAttribute, NavigationMenuContentImplEmits } from './types';
 
 defineOptions({
   name: 'NavigationMenuContentImpl'

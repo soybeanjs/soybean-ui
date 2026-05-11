@@ -19,7 +19,7 @@ import { PopperPopup, PopperPositioner } from '../popper';
 import { popperCssVars } from '../popper/shared';
 import { provideMenuContentContext, useMenuContext, useMenuRootContext, useMenuUi } from './context';
 import { FIRST_LAST_KEYS, LAST_KEYS, MENU_POPUP_DATA_ATTRIBUTE, menuCssVars, subMenuCssVars } from './shared';
-import type { MenuContentImplEmits, MenuContentImplProps } from './types';
+import type { MenuContentImplProps, MenuContentImplEmits } from './types';
 
 defineOptions({
   name: 'MenuContentImpl'

@@ -4,7 +4,7 @@ import { Clipboard } from '@soybeanjs/headless/clipboard';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
 import { cn } from '@/theme';
 import { buttonVariants } from '../button/variants';
-import type { ClipboardEmits, ClipboardProps } from './types';
+import type { ClipboardProps, ClipboardEmits } from './types';
 
 defineOptions({
   name: 'SClipboard'

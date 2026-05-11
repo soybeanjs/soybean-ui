@@ -5,7 +5,7 @@ import { AnchorCompact, provideAnchorUi } from '@soybeanjs/headless/anchor';
 import { useOmitProps, useForwardListeners } from '@soybeanjs/headless/composables';
 import { mergeVariants } from '@/theme';
 import { anchorVariants } from './variants';
-import type { AnchorEmits, AnchorProps } from './types';
+import type { AnchorProps, AnchorEmits } from './types';
 
 defineOptions({
   name: 'SAnchor'

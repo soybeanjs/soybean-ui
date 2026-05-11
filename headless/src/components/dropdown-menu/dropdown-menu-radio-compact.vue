@@ -6,8 +6,8 @@ import type { AcceptableBooleanValue } from '../../types';
 import MenuRadioOptions from '../menu/menu-radio-options-compact.vue';
 import DropdownMenuWrapper from './dropdown-menu-wrapper-compact.vue';
 import type {
-  DropdownMenuRadioCompactEmits,
   DropdownMenuRadioCompactProps,
+  DropdownMenuRadioCompactEmits,
   DropdownMenuRadioCompactSlots
 } from './types';
 

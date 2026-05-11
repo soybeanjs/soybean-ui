@@ -6,7 +6,7 @@ import { Primitive } from '../primitive';
 import RovingFocusItem from '../roving-focus/roving-focus-item.vue';
 import { useTreeRootContext } from './context';
 import { TREE_SELECT, TREE_TOGGLE, recurseCheckChildren } from './shared';
-import type { TreeItemEmits, TreeItemProps } from './types';
+import type { TreeItemProps, TreeItemEmits } from './types';
 
 defineOptions({
   name: 'TreeItem'

@@ -4,7 +4,7 @@ import { InputOtpCompact, provideInputOtpUi } from '@soybeanjs/headless/input-ot
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
 import { mergeVariants } from '@/theme';
 import { inputOtpVariants } from './variants';
-import type { InputOtpEmits, InputOtpProps, InputOtpSlots } from './types';
+import type { InputOtpProps, InputOtpEmits, InputOtpSlots } from './types';
 
 defineOptions({
   name: 'SInputOtp'

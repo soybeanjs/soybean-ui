@@ -4,7 +4,7 @@ import { isClient, isMouseEvent } from '../../shared';
 import { useExposedElement, useForwardListeners, useOmitProps, usePresence } from '../../composables';
 import { useNavigationMenuItemContext, useNavigationMenuRootContext } from './context';
 import NavigationMenuContentImpl from './navigation-menu-content-impl.vue';
-import type { NavigationMenuContentEmits, NavigationMenuContentProps } from './types';
+import type { NavigationMenuContentProps, NavigationMenuContentEmits } from './types';
 
 defineOptions({
   name: 'NavigationMenuContent',

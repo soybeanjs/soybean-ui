@@ -8,7 +8,7 @@ import { buttonIconVariants } from '../button/variants';
 import Icon from '../icon/icon.vue';
 import SSelect from '../select/select.vue';
 import { calendarVariants } from './variants';
-import type { CalendarEmits, CalendarProps, CalendarSlots } from './types';
+import type { CalendarProps, CalendarEmits, CalendarSlots } from './types';
 
 defineOptions({
   name: 'SCalendar'

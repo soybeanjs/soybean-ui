@@ -11,8 +11,8 @@ import BreadcrumbRoot from './breadcrumb-root.vue';
 import BreadcrumbSeparator from './breadcrumb-separator.vue';
 import { getEllipsisRange } from './shared';
 import type {
-  BreadcrumbCompactEmits,
   BreadcrumbCompactProps,
+  BreadcrumbCompactEmits,
   BreadcrumbCompactSlots,
   BreadcrumbOptionData
 } from './types';

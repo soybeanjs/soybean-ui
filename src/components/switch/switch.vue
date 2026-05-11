@@ -6,7 +6,7 @@ import { useOmitProps } from '@soybeanjs/headless/composables';
 import { keysOf } from '@soybeanjs/utils';
 import { mergeVariants } from '@/theme';
 import { switchVariants } from './variants';
-import type { SwitchEmits, SwitchProps, SwitchSlots } from './types';
+import type { SwitchProps, SwitchEmits, SwitchSlots } from './types';
 
 defineOptions({
   name: 'SSwitch'

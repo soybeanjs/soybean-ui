@@ -2,7 +2,7 @@
 import { useForwardListeners, useOmitProps } from '../../composables';
 import DateFieldInput from './date-field-input.vue';
 import DateFieldRoot from './date-field-root.vue';
-import type { DateFieldCompactEmits, DateFieldCompactProps } from './types';
+import type { DateFieldCompactProps, DateFieldCompactEmits } from './types';
 
 defineOptions({
   name: 'DateFieldCompact'

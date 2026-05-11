@@ -6,7 +6,7 @@ import { keysOf } from '@soybeanjs/utils';
 import { mergeVariants } from '@/theme';
 import { dateFieldVariants } from '../date-field/variants';
 import { dateRangeFieldVariants } from './variants';
-import type { DateRangeFieldEmits, DateRangeFieldProps, DateRangeFieldSlots } from './types';
+import type { DateRangeFieldProps, DateRangeFieldEmits, DateRangeFieldSlots } from './types';
 
 defineOptions({
   name: 'SDateRangeField'

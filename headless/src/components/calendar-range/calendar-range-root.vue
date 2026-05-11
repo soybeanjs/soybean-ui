@@ -11,7 +11,7 @@ import { useCalendar } from '../calendar/use-calendar';
 import { provideCalendarRangeRootContext, useCalendarRangeUi } from './context';
 import { useCalendarRangeState } from './use-calendar-range';
 import { getMonthOptions, getYearOptions, handleMonthChange, handleYearChange } from '../calendar/shared';
-import type { CalendarRangeRootEmits, CalendarRangeRootProps, CalendarRangeRootSlots } from './types';
+import type { CalendarRangeRootProps, CalendarRangeRootEmits, CalendarRangeRootSlots } from './types';
 
 defineOptions({
   name: 'CalendarRangeRoot'

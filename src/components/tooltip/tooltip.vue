@@ -4,7 +4,7 @@ import { TooltipCompact, provideTooltipUi } from '@soybeanjs/headless/tooltip';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
 import { mergeVariants } from '@/theme';
 import { tooltipVariants } from './variants';
-import type { TooltipEmits, TooltipProps, TooltipSlots } from './types';
+import type { TooltipProps, TooltipEmits, TooltipSlots } from './types';
 
 defineOptions({
   name: 'STooltip'

@@ -18,7 +18,7 @@ import {
   useSelectUi
 } from './context';
 import { SELECTION_KEYS, SELECT_EVENT } from './shared';
-import type { SelectItemEmits, SelectItemEvent, SelectItemProps } from './types';
+import type { SelectItemProps, SelectItemEmits, SelectItemEvent } from './types';
 
 defineOptions({
   name: 'SelectItem'

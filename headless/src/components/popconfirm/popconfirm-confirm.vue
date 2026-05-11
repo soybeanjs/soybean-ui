@@ -2,7 +2,7 @@
 import Button from '../button/button.vue';
 import { usePopoverRootContext } from '../popover/context';
 import { usePopconfirmUi } from './context';
-import type { PopconfirmConfirmEmits, PopconfirmConfirmProps } from './types';
+import type { PopconfirmConfirmProps, PopconfirmConfirmEmits } from './types';
 
 defineOptions({
   name: 'PopconfirmConfirm'

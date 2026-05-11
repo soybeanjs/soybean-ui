@@ -4,7 +4,7 @@ import { useSelection } from '../../composables';
 import { transformPropsToContext } from '../../shared';
 import { useDirection } from '../config-provider/context';
 import { provideAccordionRootContext, useAccordionUi } from './context';
-import type { AccordionRootEmits, AccordionRootProps } from './types';
+import type { AccordionRootProps, AccordionRootEmits } from './types';
 
 defineOptions({
   name: 'AccordionRoot'

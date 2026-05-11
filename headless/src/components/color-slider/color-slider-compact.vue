@@ -3,7 +3,7 @@ import { useForwardListeners, useOmitProps } from '../../composables';
 import ColorSliderRoot from './color-slider-root.vue';
 import ColorSliderThumb from './color-slider-thumb.vue';
 import ColorSliderTrack from './color-slider-track.vue';
-import type { ColorSliderCompactEmits, ColorSliderCompactProps } from './types';
+import type { ColorSliderCompactProps, ColorSliderCompactEmits } from './types';
 
 defineOptions({
   name: 'ColorSliderCompact'

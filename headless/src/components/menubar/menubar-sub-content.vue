@@ -3,7 +3,7 @@ import { useForwardListeners } from '../../composables';
 import { wrapArray } from '../../shared';
 import { MenuSubContent } from '../menu';
 import { useMenubarCollectionContext, useMenubarMenuContext, useMenubarRootContext } from './context';
-import type { MenubarSubContentEmits, MenubarSubContentProps } from './types';
+import type { MenubarSubContentProps, MenubarSubContentEmits } from './types';
 
 defineOptions({
   name: 'MenubarSubContent'

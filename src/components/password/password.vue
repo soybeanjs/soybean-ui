@@ -6,7 +6,7 @@ import { keysOf } from '@soybeanjs/utils';
 import { mergeVariants, miniSizeMap } from '@/theme';
 import { buttonIconVariants } from '../button/variants';
 import { inputVariants } from '../input/variants';
-import type { PasswordEmits, PasswordProps, PasswordSlots } from './types';
+import type { PasswordProps, PasswordEmits, PasswordSlots } from './types';
 
 defineOptions({
   name: 'SPassword'

@@ -2,7 +2,7 @@
 import { computed } from 'vue';
 import { useOmitProps } from '../../composables';
 import { Primitive } from '../primitive';
-import type { ButtonEmits, ButtonProps } from './types';
+import type { ButtonProps, ButtonEmits } from './types';
 
 defineOptions({
   name: 'Button'

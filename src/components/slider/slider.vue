@@ -4,7 +4,7 @@ import { SliderCompact, provideSliderUi } from '@soybeanjs/headless/slider';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
 import { mergeVariants } from '@/theme';
 import { sliderVariants } from './variants';
-import type { SliderEmits, SliderProps } from './types';
+import type { SliderProps, SliderEmits } from './types';
 
 defineOptions({
   name: 'SSlider'

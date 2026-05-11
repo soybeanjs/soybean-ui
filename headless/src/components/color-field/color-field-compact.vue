@@ -2,7 +2,7 @@
 import { useForwardListeners, useOmitProps } from '../../composables';
 import ColorFieldInput from './color-field-input.vue';
 import ColorFieldRoot from './color-field-root.vue';
-import type { ColorFieldCompactEmits, ColorFieldCompactProps } from './types';
+import type { ColorFieldCompactProps, ColorFieldCompactEmits } from './types';
 
 defineOptions({
   name: 'ColorFieldCompact',

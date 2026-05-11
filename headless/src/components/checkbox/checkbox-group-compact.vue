@@ -2,7 +2,7 @@
 import { useOmitProps } from '../../composables';
 import CheckboxGroupRoot from './checkbox-group-root.vue';
 import CheckboxCompact from './checkbox-compact.vue';
-import type { CheckboxGroupCompactEmits, CheckboxGroupCompactProps, CheckboxGroupOptionData } from './types';
+import type { CheckboxGroupCompactProps, CheckboxGroupCompactEmits, CheckboxGroupOptionData } from './types';
 
 defineOptions({
   name: 'CheckboxGroupCompact'

@@ -5,7 +5,7 @@ import type { DateRange, DateValue } from '../../date';
 import Icon from '../_icon/icon.vue';
 import PopoverCompact from '../popover/popover-compact.vue';
 import DateRangeFieldCompact from '../date-range-field/date-range-field-compact.vue';
-import type { DateRangePickerCompactEmits, DateRangePickerCompactProps } from './types';
+import type { DateRangePickerCompactProps, DateRangePickerCompactEmits } from './types';
 
 defineOptions({
   name: 'DateRangePickerCompact'

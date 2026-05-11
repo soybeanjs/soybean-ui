@@ -3,7 +3,7 @@ import { useControllableState } from '../../composables';
 import { transformPropsToContext } from '../../shared';
 import { PopperRoot } from '../popper';
 import { provideHoverCardRootContext } from './context';
-import type { HoverCardRootEmits, HoverCardRootProps } from './types';
+import type { HoverCardRootProps, HoverCardRootEmits } from './types';
 
 defineOptions({
   name: 'HoverCardRoot',

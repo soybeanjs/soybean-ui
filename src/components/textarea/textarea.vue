@@ -6,7 +6,7 @@ import { keysOf } from '@soybeanjs/utils';
 import { mergeVariants, miniSizeMap } from '@/theme';
 import { buttonIconVariants } from '../button/variants';
 import { textareaVariants } from './variants';
-import type { TextareaEmits, TextareaProps, TextareaSlots } from './types';
+import type { TextareaProps, TextareaEmits, TextareaSlots } from './types';
 
 defineOptions({
   name: 'STextarea'

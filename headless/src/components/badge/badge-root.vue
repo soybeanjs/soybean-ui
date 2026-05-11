@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useControllableState } from '../../composables';
 import { provideBadgeRootContext, useBadgeUi } from './context';
-import type { BadgeRootEmits, BadgeRootProps } from './types';
+import type { BadgeRootProps, BadgeRootEmits } from './types';
 
 defineOptions({
   name: 'BadgeRoot'

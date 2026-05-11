@@ -3,7 +3,7 @@ import { useForwardListeners } from '../../composables';
 import type { FocusOutsideEvent, PointerDownOutsideEvent } from '../../types';
 import { MenuContent } from '../menu';
 import { useContextMenuRootContext } from './context';
-import type { ContextMenuContentEmits, ContextMenuContentProps } from './types';
+import type { ContextMenuContentProps, ContextMenuContentEmits } from './types';
 
 defineOptions({
   name: 'ContextMenuContent'

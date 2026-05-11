@@ -2,7 +2,7 @@
 import { useForwardListeners, useOmitProps } from '../../composables';
 import ProgressIndicator from './progress-indicator.vue';
 import ProgressRoot from './progress-root.vue';
-import type { ProgressCompactEmits, ProgressCompactProps, ProgressCompactSlots } from './types';
+import type { ProgressCompactProps, ProgressCompactEmits, ProgressCompactSlots } from './types';
 
 defineOptions({
   name: 'ProgressCompact'
