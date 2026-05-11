@@ -116,7 +116,7 @@ watchEffect(() => {
 </script>
 
 <template>
-  <div class="md:border md:border-border/50 md:dark:border-border md:rounded-xl">
+  <div class="max-h-full overflow-auto md:border md:border-border/50 md:dark:border-border md:rounded-xl">
     <STreeMenu
       v-model:expanded="expanded"
       :model-value="selected"
