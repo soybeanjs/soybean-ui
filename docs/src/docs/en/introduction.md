@@ -10,7 +10,7 @@ SoybeanUI adopts a modern design language with polished visuals and smooth inter
 
 ### ♿ Accessibility first
 
-All components strictly follow WAI-ARIA design patterns, ensuring they are easy to use for everyone, including users with disabilities. Accessibility features such as keyboard navigation, screen reader support, and focus management are built in—no extra configuration required.
+All components strictly follow WAI-ARIA design patterns, ensuring they are easy to use for everyone, including users with disabilities. Accessibility features such as keyboard navigation, screen reader support, focus management, and RTL-aware direction support are built in—no extra wiring required beyond configuration.
 
 ### 🏗️ Flexible architecture
 
@@ -130,6 +130,7 @@ SoybeanUI includes a powerful theme system that supports:
 - **6 sizes**: `xs` · `sm` · `md` · `lg` · `xl` · `2xl` (base `md` = 16px)
 - **Multiple variants**: `solid`, `outline`, `ghost`, `link`, `plain`, `dashed`, `soft`, `raw`
 - **Dark mode**: full dark theme support
+- **RTL direction**: switch supported components between LTR and RTL layouts with `ConfigProvider.dir`
 - **ConfigProvider**: unified configuration for `dir`, `locale`, `nonce`, and global tooltip options
 - **cn() utility**: Tailwind-aware class merge (`clsx` + `tailwind-merge`) for conflict-free composition
 

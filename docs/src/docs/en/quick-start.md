@@ -222,6 +222,20 @@ const themeConfig = {
 </template>
 ```
 
+## RTL configuration
+
+SoybeanUI components support direction switching through `SConfigProvider`. Set `dir="rtl"` at the app root when your product needs right-to-left layouts:
+
+```vue
+<template>
+  <SConfigProvider dir="rtl">
+    <YourApp />
+  </SConfigProvider>
+</template>
+```
+
+For component-level details and configuration boundaries, see the [ConfigProvider documentation](/components/config-provider).
+
 ## First example
 
 Let’s create a simple example to verify your installation:

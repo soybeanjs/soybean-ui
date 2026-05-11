@@ -42,6 +42,20 @@ import { SConfigProvider } from '@soybeanjs/ui';
 
 你可以使用 `theme` 属性完全自定义主题。更多细节请参见[主题文档](/overview/theming)。
 
+## 方向 / RTL
+
+使用 `dir` 属性即可在已支持组件间切换从左到右和从右到左布局。
+
+```vue
+<template>
+  <SConfigProvider dir="rtl">
+    <App />
+  </SConfigProvider>
+</template>
+```
+
+如果你希望在某个子树内强制使用从左到右布局，也可以显式传入 `dir="ltr"`。
+
 ## 国际化 / Locale
 
 SoybeanUI 内置了英文（`en`）和简体中文（`zh-CN`）两套组件文案，用于驱动无障碍标签、空状态文案等内置文字。

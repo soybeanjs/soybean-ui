@@ -44,6 +44,20 @@ import { SConfigProvider } from '@soybeanjs/ui';
 
 You can fully customize the theme using the `theme` prop. more details can be found in the [theming documentation](/overview/theming).
 
+## Direction / RTL
+
+Use the `dir` prop to switch the supported components between left-to-right and right-to-left layouts.
+
+```vue
+<template>
+  <SConfigProvider dir="rtl">
+    <App />
+  </SConfigProvider>
+</template>
+```
+
+Set `dir="ltr"` explicitly if you want to force left-to-right behavior inside a subtree.
+
 ## Locale / Internationalization
 
 SoybeanUI ships with built-in English (`en`) and Simplified Chinese (`zh-CN`) message sets that drive component-level text such as aria-labels and empty-state copy.

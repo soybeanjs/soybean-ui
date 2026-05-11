@@ -66,7 +66,7 @@ provideAccordionUi(ui); // headless 通过 useAccordionUi() 读取
 
 - **`ThemeColor`** — 8 种语义色：`primary` · `destructive` · `success` · `warning` · `info` · `carbon` · `secondary` · `accent`
 - **`ThemeSize`** — 6 种尺寸：`xs` · `sm` · `md` · `lg` · `xl` · `2xl`（基准尺寸 `md` = 16px）
-- **`ConfigProvider`** — 全局设置 `dir`、`locale`、`nonce` 及默认 `tooltip` 配置，应用于整个组件树
+- **`ConfigProvider`** — 全局设置 `dir`、`locale`、`nonce` 及默认 `tooltip` 配置，应用于整个组件树，并支持 RTL 布局切换
 - **`cn()`** — Tailwind 感知的类名合并工具（`clsx` + `tailwind-merge`），解决类名冲突
 
 ### 包导出
@@ -194,6 +194,7 @@ import { AccordionRoot, AccordionItem, AccordionTrigger, AccordionContent } from
 ## ✨ 特性
 
 - **可访问性**：遵循 WAI-ARIA 模式，内置角色、焦点管理与键盘导航。
+- **RTL 就绪**：通过 `ConfigProvider` 即可在已支持组件间切换 LTR / RTL 布局。
 - **Headless 优先**：逻辑与样式完全分离—单独使用 `@soybeanjs/headless` 可构建任意设计系统。
 - **类型安全**：严格 TypeScript 编写，所有 props、emits、slot 及 context 均有完整类型。
 - **多级自定义**：通过 `ui` prop 覆盖单个橪位类名，也可替换整个样式层。

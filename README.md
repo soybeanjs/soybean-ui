@@ -66,7 +66,7 @@ provideAccordionUi(ui); // headless reads this via useAccordionUi()
 
 - **`ThemeColor`** — 8 semantic colors: `primary` · `destructive` · `success` · `warning` · `info` · `carbon` · `secondary` · `accent`
 - **`ThemeSize`** — 6 sizes: `xs` · `sm` · `md` · `lg` · `xl` · `2xl` (base 16px at `md`)
-- **`ConfigProvider`** — sets global `dir`, `locale`, `nonce`, and default `tooltip` config for the entire component tree
+- **`ConfigProvider`** — sets global `dir`, `locale`, `nonce`, and default `tooltip` config for the entire component tree, including RTL layout switching
 - **`cn()`** — Tailwind-aware class merge (`clsx` + `tailwind-merge`), used for conflict-free class composition
 
 ### Package Exports
@@ -194,6 +194,7 @@ import { AccordionRoot, AccordionItem, AccordionTrigger, AccordionContent } from
 ## ✨ Features
 
 - **Accessible**: Follows WAI-ARIA patterns for roles, focus management, and keyboard navigation.
+- **RTL ready**: Switch supported components between LTR and RTL layouts with `ConfigProvider`.
 - **Headless-first**: Logic and styles are fully separated — use `@soybeanjs/headless` alone to build any design system.
 - **Type Safe**: Written in strict TypeScript. All props, emits, slots, and context values are typed.
 - **Customizable at every level**: Override individual slot classes via the `ui` prop, or swap the entire style layer.
