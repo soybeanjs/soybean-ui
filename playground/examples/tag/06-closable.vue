@@ -7,7 +7,7 @@ const open = shallowRef(true);
 
 <template>
   <div class="flex-y-center">
-    <SSwitch v-model="open" class="mr-4" />
+    <SSwitch v-model="open" class="me-4" />
     <STag v-model:open="open" variant="soft" closable>closable tag</STag>
   </div>
 </template>

@@ -7,7 +7,7 @@ export const colorPickerVariants = tv({
     content: 'flex flex-col',
     trigger: '',
     triggerSwatch: '',
-    triggerValue: 'min-w-0 flex-1 truncate text-left font-mono text-xs',
+    triggerValue: 'min-w-0 flex-1 truncate text-start font-mono text-xs',
     segment: '',
     area: '',
     sliderSwatch: 'flex items-center',

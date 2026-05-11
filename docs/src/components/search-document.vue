@@ -82,7 +82,7 @@ function handleSelect(item: SelectEvent<string>) {
       <SButton color="accent" variant="soft">
         <SIcon icon="lucide:search" class="text-base" />
         <span class="lt-md:hidden">{{ t('layout.header.search') }}</span>
-        <SKbd :value="['command', 'k']" class="ml-auto" />
+        <SKbd :value="['command', 'k']" class="ms-auto" />
       </SButton>
     </template>
 

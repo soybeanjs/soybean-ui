@@ -1,5 +1,5 @@
 .markdown-wrapper {
-  --uno: 'relative min-w-0 max-w-none text-left text-base leading-[1.75] text-foreground';
+  --uno: 'relative min-w-0 max-w-none text-start text-base leading-[1.75] text-foreground';
 
   > :first-child {
     --uno: mt-0;
@@ -34,7 +34,7 @@
   }
 
   > ul {
-    --uno: 'my-5 list-disc pl-6 space-y-3 text-base leading-[1.75] text-muted-foreground';
+    --uno: 'my-5 list-disc ps-6 space-y-3 text-base leading-[1.75] text-muted-foreground';
 
     > li {
       --uno: 'marker:text-foreground/20';
@@ -42,7 +42,7 @@
   }
 
   > ol {
-    --uno: 'my-5 list-decimal pl-6 space-y-3 text-base leading-[1.75] text-muted-foreground';
+    --uno: 'my-5 list-decimal ps-6 space-y-3 text-base leading-[1.75] text-muted-foreground';
 
     > li {
       --uno: 'marker:text-foreground/50';
@@ -148,7 +148,7 @@
   }
 
   > table thead th {
-    --uno: 'px-4 py-3 text-left text-[11px] font-semibold uppercase tracking-[0.16em] text-muted-foreground';
+    --uno: 'px-4 py-3 text-start text-[11px] font-semibold uppercase tracking-[0.16em] text-muted-foreground';
     background: var(--docs-table-head-bg);
   }
 

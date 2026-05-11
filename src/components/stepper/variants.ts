@@ -87,8 +87,8 @@ export const stepperVariants = tv({
       vertical: {
         root: 'flex-col',
         item: 'flex-none flex-col items-start',
-        trigger: 'w-full flex-row items-start text-left',
-        itemContent: 'flex-1 items-start text-left',
+        trigger: 'w-full flex-row items-start text-start',
+        itemContent: 'flex-1 items-start text-start',
         separator: 'w-0.5 min-h-7'
       }
     },

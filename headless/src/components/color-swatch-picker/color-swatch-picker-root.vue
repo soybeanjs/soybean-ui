@@ -9,7 +9,6 @@ defineOptions({
 
 const props = withDefaults(defineProps<ColorSwatchPickerRootProps<M>>(), {
   defaultValue: undefined,
-  dir: 'ltr',
   disabled: false,
   loop: false,
   orientation: 'horizontal'

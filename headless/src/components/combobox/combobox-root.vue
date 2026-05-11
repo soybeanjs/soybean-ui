@@ -5,6 +5,7 @@ import { createEventHook } from '@vueuse/core';
 import { useControllableState, useOmitProps, useSelection } from '../../composables';
 import { transformPropsToContext, getElFromTemplateRef } from '../../shared';
 import type { MaybeArray } from '../../types';
+import { useDirection } from '../config-provider/context';
 import { ListboxRoot } from '../listbox';
 import { PopperRoot } from '../popper';
 import { provideComboboxRootContext } from './context';
@@ -61,6 +62,8 @@ const open = useControllableState(
   },
   props.defaultOpen ?? false
 );
+
+const dir = useDirection(() => props.dir);
 
 const isUserInputted = shallowRef(false);
 const isVirtual = shallowRef(false);
@@ -167,7 +170,6 @@ onUnmounted(() => {
 
 provideComboboxRootContext({
   ...transformPropsToContext(props, [
-    'dir',
     'disabled',
     'ignoreFilter',
     'resetSearchTermOnBlur',
@@ -176,6 +178,7 @@ provideComboboxRootContext({
     'openOnClick',
     'resetModelValueOnClear'
   ]),
+  dir,
   modelValue: modelValue as ShallowRef<MaybeArray<string>>,
   isMultiple,
   onModelValueChange,

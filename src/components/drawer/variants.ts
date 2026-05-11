@@ -4,7 +4,7 @@ import { tv } from 'tailwind-variants';
 export const drawerVariants = tv({
   slots: {
     popup: [
-      `fixed z-50 flex flex-col justify-between items-stretch border bg-background rounded-md outline-none transition ease-in-out`,
+      `fixed z-50 flex flex-col justify-between items-stretch border bg-background outline-none transition ease-in-out`,
       `data-[state=open]:animate-in data-[state=open]:duration-500`,
       `data-[state=closed]:animate-out data-[state=closed]:duration-300`
     ]
@@ -32,16 +32,24 @@ export const drawerVariants = tv({
     },
     side: {
       top: {
-        popup: `inset-x-0 top-0 border-b rounded-t-0 data-[state=open]:slide-in-from-top data-[state=closed]:slide-out-to-top`
+        popup: `inset-x-0 top-0 border-b rounded-b-md data-[state=open]:slide-in-from-top data-[state=closed]:slide-out-to-top`
       },
       bottom: {
-        popup: `inset-x-0 bottom-0 border-t rounded-b-0 data-[state=open]:slide-in-from-bottom data-[state=closed]:slide-out-to-bottom`
+        popup: `inset-x-0 bottom-0 border-t rounded-t-md data-[state=open]:slide-in-from-bottom data-[state=closed]:slide-out-to-bottom`
       },
       left: {
-        popup: `inset-y-0 start-0 h-full w-3/4 border-r rounded-l-0 data-[state=open]:slide-in-from-left data-[state=closed]:slide-out-to-left sm:max-w-sm`
+        popup: [
+          `inset-y-0 start-0 h-full w-3/4 border-r [&:not([dir=rtl])]:rounded-r-md [&[dir=rtl]]:rounded-l-md sm:max-w-sm`,
+          `data-[state=open]:slide-in-from-left data-[state=closed]:slide-out-to-left`,
+          `[&[dir=rtl]]:data-[state=open]:slide-in-from-right [&[dir=rtl]]:data-[state=closed]:slide-out-to-right`
+        ]
       },
       right: {
-        popup: `inset-y-0 end-0 h-full w-3/4 border-l rounded-r-0 data-[state=open]:slide-in-from-right data-[state=closed]:slide-out-to-right sm:max-w-sm`
+        popup: [
+          `inset-y-0 end-0 h-full w-3/4 border-l [&:not([dir=rtl])]:rounded-l-md [&[dir=rtl]]:rounded-r-md sm:max-w-sm`,
+          `data-[state=open]:slide-in-from-right data-[state=closed]:slide-out-to-right`,
+          `[&[dir=rtl]]:data-[state=open]:slide-in-from-left [&[dir=rtl]]:data-[state=closed]:slide-out-to-left`
+        ]
       }
     }
   },

@@ -18,7 +18,7 @@ export const toolbarVariants = tv({
     ],
     button: sharedButtonClasses,
     link: [...sharedButtonClasses, 'select-none no-underline'],
-    linkIcon: 'shrink-0 self-start text-muted-foreground',
+    linkIcon: 'shrink-0 self-start text-muted-foreground rtl:rotate-270',
     separator: [
       'shrink-0 bg-border data-[orientation=vertical]:w-px',
       'data-[orientation=horizontal]:h-px data-[orientation=horizontal]:w-full'
@@ -32,7 +32,7 @@ export const toolbarVariants = tv({
         root: 'gap-0.5 p-0.5 data-[orientation=horizontal]:h-6',
         button: 'h-5 min-w-5 gap-1 px-1 text-2xs',
         link: 'h-5 min-w-5 gap-1 px-1 text-2xs',
-        itemLinkIcon: 'size-2 -ms-1',
+        linkIcon: 'size-2 -ms-1',
         separator: `data-[orientation=vertical]:mx-0.5 data-[orientation=vertical]:h-3 data-[orientation=horizontal]:my-0.5`,
         toggleGroup: 'gap-0.5',
         toggleItem: 'h-5 min-w-5 gap-1 px-1 text-2xs'
@@ -41,7 +41,7 @@ export const toolbarVariants = tv({
         root: 'gap-0.5 p-0.5 data-[orientation=horizontal]:h-7',
         button: 'h-6 min-w-6 gap-1 px-1.5 text-xs',
         link: 'h-6 min-w-6 gap-1 px-1.5 text-xs',
-        itemLinkIcon: 'size-2.5 -ms-1.5',
+        linkIcon: 'size-2.5 -ms-1.5',
         separator: `data-[orientation=vertical]:mx-0.5 data-[orientation=vertical]:h-4 data-[orientation=horizontal]:my-0.5`,
         toggleGroup: 'gap-0.5',
         toggleItem: 'h-6 min-w-6 gap-1 px-1.5 text-xs'
@@ -59,7 +59,7 @@ export const toolbarVariants = tv({
         root: 'gap-1 p-1 data-[orientation=horizontal]:h-10',
         button: 'h-8 min-w-8 gap-2 px-2.5 text-base',
         link: 'h-8 min-w-8 gap-2 px-2.5 text-base',
-        itemLinkIcon: 'size-3.5 -ms-2.5',
+        linkIcon: 'size-3.5 -ms-2.5',
         separator: `data-[orientation=vertical]:mx-1 data-[orientation=vertical]:h-5 data-[orientation=horizontal]:my-1`,
         toggleGroup: 'gap-1',
         toggleItem: 'h-8 min-w-8 gap-2 px-2.5 text-base'
@@ -68,7 +68,7 @@ export const toolbarVariants = tv({
         root: 'gap-1.5 p-1.5 data-[orientation=horizontal]:h-12',
         button: 'h-9 min-w-9 gap-2.5 px-3 text-lg',
         link: 'h-9 min-w-9 gap-2.5 px-3 text-lg',
-        itemLinkIcon: 'size-4 -ms-3',
+        linkIcon: 'size-4 -ms-3',
         separator: `data-[orientation=vertical]:mx-1.5 data-[orientation=vertical]:h-6 data-[orientation=horizontal]:my-1.5`,
         toggleGroup: 'gap-1.5',
         toggleItem: 'h-9 min-w-9 gap-2.5 px-3 text-lg'
@@ -77,7 +77,7 @@ export const toolbarVariants = tv({
         root: 'gap-2 p-2 data-[orientation=horizontal]:h-14',
         button: 'h-10 min-w-10 gap-3 px-3.5 text-xl',
         link: 'h-10 min-w-10 gap-3 px-3.5 text-xl',
-        itemLinkIcon: 'size-4.5 -ms-3.5',
+        linkIcon: 'size-4.5 -ms-3.5',
         separator: `data-[orientation=vertical]:mx-2 data-[orientation=vertical]:h-7 data-[orientation=horizontal]:my-2`,
         toggleGroup: 'gap-2',
         toggleItem: 'h-10 min-w-10 gap-3 px-3.5 text-xl'

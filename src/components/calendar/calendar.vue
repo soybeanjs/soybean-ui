@@ -31,6 +31,8 @@ const monthTriggerProps = computed(() => ({ 'aria-label': messages.value.calenda
 const yearTriggerProps = computed(() => ({ 'aria-label': messages.value.calendar.selectYear }));
 
 const ui = computed(() => {
+  const miniSize = miniSizeMap[props.size || 'md'];
+
   const variants = Object.assign(
     calendarVariants({
       size: props.size
@@ -38,10 +40,12 @@ const ui = computed(() => {
     {
       $base: {
         prev: buttonIconVariants({
-          size: miniSizeMap[props.size ?? 'md']
+          size: miniSize,
+          variant: 'pure'
         }),
         next: buttonIconVariants({
-          size: miniSizeMap[props.size ?? 'md']
+          size: miniSize,
+          variant: 'pure'
         })
       }
     }

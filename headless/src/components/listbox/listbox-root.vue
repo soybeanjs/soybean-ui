@@ -2,6 +2,7 @@
 import { computed, nextTick, watch } from 'vue';
 import { useSelection } from '../../composables';
 import { isFormControl, transformPropsToContext } from '../../shared';
+import { useDirection } from '../config-provider/context';
 import VisuallyHiddenInput from '../visually-hidden/visually-hidden-input.vue';
 import { provideListboxRootContext, useListboxUi } from './context';
 import type { ListboxRootProps, ListboxRootEmits } from './types';
@@ -21,6 +22,8 @@ const emit = defineEmits<ListboxRootEmits<M>>();
 
 const cls = useListboxUi('root');
 
+const dir = useDirection(() => props.dir);
+
 const { modelValue, isMultiple, onModelValueChange } = useSelection(props, value => {
   emit('update:modelValue', value);
 });
@@ -35,7 +38,8 @@ const {
   highlightItem,
   getItems
 } = provideListboxRootContext({
-  ...transformPropsToContext(props, ['dir', 'orientation', 'disabled', 'highlightOnHover', 'selectionBehavior']),
+  ...transformPropsToContext(props, ['orientation', 'disabled', 'highlightOnHover', 'selectionBehavior']),
+  dir,
   modelValue,
   isMultiple,
   onModelValueChange,

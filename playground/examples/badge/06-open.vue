@@ -9,5 +9,5 @@ const open = shallowRef(true);
   <SBadge v-model:open="open">
     <SButton variant="pure">Open</SButton>
   </SBadge>
-  <SSwitch v-model="open" class="ml-3" />
+  <SSwitch v-model="open" class="ms-3" />
 </template>

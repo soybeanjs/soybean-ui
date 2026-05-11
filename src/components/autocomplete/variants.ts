@@ -34,7 +34,7 @@ export const autocompleteVariants = tv({
       'data-[highlighted]:bg-accent data-[highlighted]:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50'
     ],
     itemIcon: 'shrink-0 text-muted-foreground',
-    itemText: 'grow truncate text-left',
+    itemText: 'grow truncate text-start',
     itemIndicator: 'ms-auto shrink-0 text-muted-foreground',
     separator: '-mx-1 my-1 h-px bg-border'
   },

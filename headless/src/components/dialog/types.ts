@@ -1,6 +1,7 @@
 import type { ComputedRef, Ref, ShallowRef, VNode } from 'vue';
 import type {
   BaseProps,
+  Direction,
   DismissableLayerEmits,
   DismissableLayerProps,
   FocusScopeEmits,
@@ -48,6 +49,10 @@ export interface DialogBaseProps {
  * Properties for the DialogRoot component.
  */
 export interface DialogRootProps extends DialogBaseProps {
+  /**
+   * The text direction of the dialog
+   */
+  dir?: Direction;
   /**
    * Whether the dialog is an alert dialog. An alert dialog is a dialog that interrupts the user's workflow to communicate an important message and requires a response.
    *
@@ -338,7 +343,10 @@ export type DialogCompactSlots = {
 /**
  * Parameters used to create the DialogRoot context.
  */
-export interface DialogRootContextParams extends PropsToContext<DialogRootProps, 'modal' | 'isAlert' | 'alertType'> {
+export interface DialogRootContextParams extends PropsToContext<
+  DialogRootProps,
+  'dir' | 'modal' | 'isAlert' | 'alertType'
+> {
   /**
    * Whether the component is open.
    */

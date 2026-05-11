@@ -223,7 +223,7 @@ const featuredGroups = computed(() =>
                 >
                   {{ t('components.home.title') }}
                 </h1>
-                <p class="max-w-2xl text-lg leading-8 text-muted-foreground pl-25 lt-sm:pl-0">
+                <p class="max-w-2xl text-lg leading-8 text-muted-foreground ps-25 lt-sm:ps-0">
                   {{ t('components.home.description') }}
                 </p>
               </div>

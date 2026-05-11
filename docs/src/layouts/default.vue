@@ -26,7 +26,7 @@ const closeDrawer = () => {
     </div>
     <div
       v-if="shouldShowSidebar"
-      class="md:hidden fixed top-[calc(var(--app-header)+0.5rem)] left-0 right-0 z-50 pl-2 py-1"
+      class="md:hidden fixed top-[calc(var(--app-header)+0.5rem)] left-0 right-0 z-50 ps-2 py-1"
     >
       <SDrawer v-model:open="visible" side="left" class="rounded-tl-none! rounded-bl-none!">
         <template #trigger>
@@ -43,7 +43,7 @@ const closeDrawer = () => {
       </SDrawer>
     </div>
     <div
-      :class="shouldShowSidebar ? 'lt-md:ml-0 md:ml-55' : 'ml-0'"
+      :class="shouldShowSidebar ? 'lt-md:ms-0 md:ms-55' : 'ms-0'"
       class="px-4 py-5 md:px-8 md:pb-7 md:pt-5 xl:px-10 lt-md:pt-12!"
     >
       <div

@@ -31,8 +31,8 @@ const items: AccordionOptionData[] = [
 <template>
   <SAccordion v-model="multi" multiple :items="items">
     <template #trigger-icon="{ open }">
-      <Icon v-if="open" icon="lucide:minus" class="ml-auto" />
-      <Icon v-else icon="lucide:plus" class="ml-auto" />
+      <Icon v-if="open" icon="lucide:minus" class="ms-auto" />
+      <Icon v-else icon="lucide:plus" class="ms-auto" />
     </template>
   </SAccordion>
 </template>

@@ -65,7 +65,7 @@ const items: DemoTree[] = [
           <SIcon v-else icon="lucide:folder-open" />
         </template>
         <SIcon v-else :icon="item.data.icon || 'lucide:file'" />
-        <div class="pl-2">
+        <div class="ps-2">
           {{ item.data.title }}
         </div>
       </STreeVirtualizerItem>

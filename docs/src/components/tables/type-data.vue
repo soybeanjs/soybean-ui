@@ -79,7 +79,7 @@ function getFieldDescription(field: TypeFieldDef) {
         <template #name="{ row }">
           <div class="code-btn">
             <span>{{ row.name }}</span>
-            <span v-if="row.required" class="ml-1 text-destructive/80">*</span>
+            <span v-if="row.required" class="ms-1 text-destructive/80">*</span>
           </div>
         </template>
 

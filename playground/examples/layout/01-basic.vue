@@ -176,7 +176,7 @@ const fullContent = shallowRef(false);
                   <STreeMenuStyledItem>
                     <SIcon :icon="activeFramework.icon" class="text-primary" />
                     <span class="truncate font-medium">{{ activeFramework.label }}</span>
-                    <SIcon icon="lucide:chevrons-up-down" class="ml-auto" />
+                    <SIcon icon="lucide:chevrons-up-down" class="ms-auto" />
                   </STreeMenuStyledItem>
                 </template>
               </SDropdownMenu>
@@ -188,7 +188,7 @@ const fullContent = shallowRef(false);
             <SLayoutTrigger v-if="side === 'left'" :size="size" />
             <SSeparator orientation="vertical" class="h-4" />
             <SBreadcrumb :items="breadcrumbItems" :size="size" :ui="{ list: 'gap-2' }" />
-            <SLayoutTrigger v-if="side === 'right'" :size="size" class="ml-auto" />
+            <SLayoutTrigger v-if="side === 'right'" :size="size" class="ms-auto" />
           </div>
         </template>
         <template #tab>

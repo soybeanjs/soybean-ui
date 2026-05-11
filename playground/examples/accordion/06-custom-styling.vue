@@ -36,7 +36,7 @@ const items: AccordionOptionData[] = [
     :ui="{
       item: 'border-b-0',
       content: 'px-3 leading-8',
-      trigger: `mb-2 rounded-md px-3 text-left underline-offset-2 data-[state=closed]:(bg-muted/50 no-underline) data-[state=open]:(bg-secondary-foreground/20 underline hover:bg-secondary-foreground/20 hover:underline) hover:bg-muted`
+      trigger: `mb-2 rounded-md px-3 text-start underline-offset-2 data-[state=closed]:(bg-muted/50 no-underline) data-[state=open]:(bg-secondary-foreground/20 underline hover:bg-secondary-foreground/20 hover:underline) hover:bg-muted`
     }"
   />
 </template>

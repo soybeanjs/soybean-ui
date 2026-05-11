@@ -200,7 +200,7 @@ const fullContent = shallowRef(false);
                   <STreeMenuStyledItem>
                     <SIcon :icon="activeFramework.icon" class="text-primary" />
                     <span class="truncate font-medium">{{ activeFramework.label }}</span>
-                    <SIcon icon="lucide:chevrons-up-down" class="ml-auto" />
+                    <SIcon icon="lucide:chevrons-up-down" class="ms-auto" />
                   </STreeMenuStyledItem>
                 </template>
               </SDropdownMenu>
@@ -221,7 +221,7 @@ const fullContent = shallowRef(false);
                 <STreeMenuStyledItem>
                   <SIcon :icon="activeFramework.icon" class="text-primary" />
                   <span class="truncate font-medium">{{ activeFramework.label }}</span>
-                  <SIcon icon="lucide:chevrons-up-down" class="ml-auto" />
+                  <SIcon icon="lucide:chevrons-up-down" class="ms-auto" />
                 </STreeMenuStyledItem>
               </template>
             </SDropdownMenu>

@@ -31,7 +31,7 @@ export const menuVariants = tv({
       `relative flex items-center rounded-sm outline-none transition-colors-200 cursor-pointer select-none decoration-none`,
       `focus:bg-accent focus:text-accent-foreground data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50`
     ],
-    itemLinkIcon: `shrink-0 self-start text-muted-foreground`,
+    itemLinkIcon: `shrink-0 self-start text-muted-foreground rtl:rotate-270`,
     subTrigger: `group/trigger flex items-center rounded-sm outline-none cursor-pointer select-none focus:bg-accent data-[state=open]:bg-accent data-[child-active]:text-primary`,
     subTriggerIcon: `ms-auto text-muted-foreground group-data-[child-active]/trigger:text-primary`,
     shortcut: `ms-auto tracking-widest opacity-60`,

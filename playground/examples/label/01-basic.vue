@@ -4,7 +4,7 @@ import { SInput, SLabel } from '@soybeanjs/ui';
 
 <template>
   <div class="grid gap-1.5">
-    <SLabel html-for="email">Email</SLabel>
+    <SLabel htms-for="email">Email</SLabel>
     <SInput id="email" type="email" placeholder="Email" />
   </div>
 </template>

@@ -10,7 +10,7 @@ export const selectVariants = tv({
       `placeholder:text-muted-foreground data-[placeholder]:text-muted-foreground`
     ],
     triggerIcon: `shrink-0 text-muted-foreground opacity-70`,
-    value: 'grow truncate text-left',
+    value: 'grow truncate text-start',
     positioner: '',
     popup: [
       `relative z-50 min-w-32 rounded-md border bg-popover text-popover-foreground shadow-md`,

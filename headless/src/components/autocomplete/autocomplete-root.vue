@@ -4,6 +4,7 @@ import type { ComponentPublicInstance } from 'vue';
 import { createEventHook } from '@vueuse/core';
 import { useControllableState, useOmitProps } from '../../composables';
 import { transformPropsToContext } from '../../shared';
+import { useDirection } from '../config-provider/context';
 import { ListboxRoot } from '../listbox';
 import { provideComboboxRootContext } from '../combobox/context';
 import { PopperRoot } from '../popper';
@@ -37,6 +38,8 @@ const forwardedProps = useOmitProps(
   ['modelValue', 'defaultValue', 'open', 'defaultOpen', 'openOnClick', 'openOnFocus'],
   attrs
 );
+
+const dir = useDirection(() => props.dir);
 
 const modelValue = useControllableState(
   () => props.modelValue,
@@ -175,7 +178,8 @@ onUnmounted(() => {
 });
 
 provideComboboxRootContext({
-  ...transformPropsToContext(props, ['dir', 'disabled', 'openOnClick', 'openOnFocus']),
+  ...transformPropsToContext(props, ['disabled', 'openOnClick', 'openOnFocus']),
+  dir,
   ignoreFilter,
   resetSearchTermOnBlur,
   resetSearchTermOnSelect,

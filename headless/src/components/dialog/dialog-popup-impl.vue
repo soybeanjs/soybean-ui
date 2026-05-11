@@ -16,6 +16,7 @@ const props = defineProps<DialogPopupImplProps>();
 const emit = defineEmits<DialogPopupImplEmits>();
 
 const {
+  dir,
   modal,
   isAlert,
   alertType,
@@ -98,6 +99,7 @@ onMounted(() => {
     :id="popupId"
     :ref="setPopupElement"
     :class="cls"
+    :dir="dir"
     :aria-labelledby="titleId"
     :aria-describedby="descriptionId"
     data-dismissable-layer

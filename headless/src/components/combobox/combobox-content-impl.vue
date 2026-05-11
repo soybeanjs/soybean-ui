@@ -30,6 +30,7 @@ const emit = defineEmits<ComboboxContentImplEmits>();
 const attrs = useAttrs();
 
 const {
+  dir,
   contentId,
   open,
   ignoreFilter,
@@ -171,6 +172,7 @@ onUnmounted(() => {
       :ref="setContentElement"
       v-bind="popupProps"
       data-dismissable-layer
+      :dir="dir"
       :data-state="open ? 'open' : 'closed'"
       :data-empty="isEmpty ? '' : undefined"
       :style="popupStyle"
@@ -186,6 +188,7 @@ onUnmounted(() => {
     v-bind="popupProps"
     as="div"
     data-dismissable-layer
+    :dir="dir"
     :data-state="open ? 'open' : 'closed'"
     :data-empty="isEmpty ? '' : undefined"
     :style="popupStyle"
