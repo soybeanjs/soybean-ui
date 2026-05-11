@@ -18,11 +18,12 @@ const props = withDefaults(defineProps<NavigationMenuViewportProps>(), {
 });
 
 const {
+  dir,
   isRoot,
   open,
+  orientation,
   unmountOnHide,
   rootElement,
-  activeTriggerElement,
   modelValue,
   viewportElement,
   setViewportElement,
@@ -47,22 +48,28 @@ const style = computed<CSSProperties>(() => {
   return {
     // Prevent interaction when animating out
     pointerEvents: !open.value && isRoot ? 'none' : undefined,
-    [navigationMenuViewportCssVars.width]: width && `${width}px`,
-    [navigationMenuViewportCssVars.height]: height && `${height}px`,
-    [navigationMenuViewportCssVars.left]: left && `${left}px`,
-    [navigationMenuViewportCssVars.top]: top && `${top}px`
+    [navigationMenuViewportCssVars.width]: width !== undefined ? `${width}px` : undefined,
+    [navigationMenuViewportCssVars.height]: height !== undefined ? `${height}px` : undefined,
+    [navigationMenuViewportCssVars.left]: left !== undefined ? `${left}px` : undefined,
+    [navigationMenuViewportCssVars.top]: top !== undefined ? `${top}px` : undefined
   };
 });
 
 function updatePosition() {
-  if (!rootElement.value || !viewportElement.value || !activeTriggerElement.value) {
+  if (!rootElement.value || !viewportElement.value) {
     return;
   }
 
+  const contentSize = size.value || {
+    width: viewportElement.value.offsetWidth,
+    height: viewportElement.value.offsetHeight
+  };
+
   position.value = getNavigationMenuViewportPosition({
     rootElement: rootElement.value,
-    contentElement: viewportElement.value,
-    activeTriggerElement: activeTriggerElement.value,
+    contentSize,
+    orientation: orientation.value,
+    dir: dir.value,
     align: props.align
   });
 }

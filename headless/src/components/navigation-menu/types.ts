@@ -12,6 +12,7 @@ import type {
 } from '../../types';
 import type { LinkProps, LinkBaseProps } from '../link/types';
 import type { PrimitiveWithBaseProps } from '../primitive/types';
+import { IconValue } from '../_icon/types';
 
 /**
  * Properties for the NavigationMenuRoot component.
@@ -274,10 +275,18 @@ export type NavigationMenuUiSlot =
   | 'indicator'
   | 'viewport'
   | 'item'
+  | 'itemIcon'
   | 'link'
   | 'subList'
   | 'subItem'
-  | 'subLink';
+  | 'subLink'
+  | 'triggerIcon'
+  | 'linkIcon'
+  | 'arrow'
+  | 'subItemContent'
+  | 'subLinkContent'
+  | 'subLinkLabel'
+  | 'subLinkDescription';
 
 /**
  * UI class overrides for the NavigationMenu component.
@@ -285,68 +294,136 @@ export type NavigationMenuUiSlot =
 export type NavigationMenuUi = UiClass<NavigationMenuUiSlot>;
 
 /**
- * Type information for NavigationMenuItemData.
+ * Option data for the NavigationMenu component.
  */
-export interface NavigationMenuItemData extends LinkBaseProps {
-  /** The value of the item. */
+export interface NavigationMenuOptionData extends LinkBaseProps {
+  /** The value of the option. */
   value: string;
-  /** The label to display in the item. */
+  /** The label to display in the option. */
   label: string;
-  /** The description of the item. */
+  /** The description of the option. */
   description?: string;
-  /** Whether the item is disabled. */
+  /**
+   * The icon of the option.
+   *
+   * if it is a string, it will be used as the icon name of the iconify.
+   */
+  icon?: IconValue;
+  /** Whether the option is disabled. */
   disabled?: boolean;
-  /** The children of the item. */
-  children?: NavigationMenuItemData[];
+  /** The children of the option. */
+  children?: NavigationMenuOptionData[];
 }
+
+/**
+ * Properties for the NavigationMenuSubCompact component.
+ */
+export interface NavigationMenuSubOptionCompactProps {
+  /**
+   * Sub item.
+   */
+  subItem: NavigationMenuOptionData;
+  /**
+   * Properties forwarded to the sub item element.
+   */
+  subItemProps?: NavigationMenuItemProps;
+  /**
+   * Properties forwarded to the link element.
+   */
+  linkProps?: NavigationMenuLinkProps;
+}
+
+/**
+ * Events for the NavigationMenuSubOptionCompact component.
+ */
+export type NavigationMenuSubOptionCompactEmits = NavigationMenuLinkEmits;
+
+/**
+ * Slots for the NavigationMenuSubOptionCompact component.
+ */
+export type NavigationMenuSubOptionCompactSlots = {
+  item: (props: { item: NavigationMenuOptionData; isTrigger?: boolean }) => any;
+  'item-leading': (props: { item: NavigationMenuOptionData }) => any;
+  'item-trailing': (props: { item: NavigationMenuOptionData }) => any;
+  'item-link-icon': (props: { item: NavigationMenuOptionData }) => any;
+  'item-children': (props: { item: NavigationMenuOptionData }) => any;
+};
 
 /**
  * Properties for the NavigationMenuCompact component.
  */
-export interface NavigationMenuCompactProps extends NavigationMenuRootProps {
-  /** The items to render in the navigation menu. */
-  items: NavigationMenuItemData[];
-  /** Properties for each NavigationMenuItem. */
+export interface NavigationMenuOptionCompactProps {
+  /**
+   * Current item data.
+   */
+  item: NavigationMenuOptionData;
+  /**
+   * Properties forwarded to the item element.
+   */
   itemProps?: NavigationMenuItemProps;
-  /** Properties for NavigationMenuLink. */
+  /**
+   * Properties forwarded to the link element.
+   */
   linkProps?: NavigationMenuLinkProps;
-  /** Properties for NavigationMenuTrigger. */
+  /**
+   * Properties forwarded to the trigger element.
+   */
   triggerProps?: NavigationMenuTriggerProps;
-  /** Properties for NavigationMenuContent. */
+  /**
+   * Properties forwarded to the content element.
+   */
   contentProps?: NavigationMenuContentProps;
-  /** Properties for NavigationMenuList. */
-  listProps?: NavigationMenuListProps;
-  /** Properties for NavigationMenuSubList. */
-  subListProps?: NavigationMenuListProps;
-  /** Properties for sub-items. */
-  subItemProps?: NavigationMenuItemProps;
-  /** Properties for NavigationMenuViewport. */
+  /**
+   * Properties forwarded to the viewport element.
+   */
   viewportProps?: NavigationMenuViewportProps;
-  /** Properties for NavigationMenuIndicator. */
+  /**
+   * Properties forwarded to the indicator element.
+   */
   indicatorProps?: NavigationMenuIndicatorProps;
+  /**
+   * Properties forwarded to the list element.
+   */
+  listProps?: NavigationMenuListProps;
+  /**
+   * Properties forwarded to the sub list element.
+   */
+  subListProps?: NavigationMenuListProps;
+  /**
+   * Properties forwarded to the sub item element.
+   */
+  subItemProps?: NavigationMenuItemProps;
+}
+
+/**
+ * Events for the NavigationMenuOptionCompact component.
+ */
+export type NavigationMenuOptionCompactEmits = NavigationMenuSubEmits &
+  NavigationMenuContentEmits &
+  NavigationMenuLinkEmits;
+
+/**
+ * Slots for the NavigationMenuOptionCompact component.
+ */
+export type NavigationMenuOptionCompactSlots = NavigationMenuSubOptionCompactSlots & {
+  'item-trigger-icon': (props: { item: NavigationMenuOptionData }) => any;
+};
+
+/**
+ * Properties for the NavigationMenuCompact component.
+ */
+export interface NavigationMenuCompactProps
+  extends NavigationMenuRootProps, Omit<NavigationMenuOptionCompactProps, 'item'> {
+  /** The items to render in the navigation menu. */
+  items: NavigationMenuOptionData[];
 }
 
 /**
  * Events for the NavigationMenuCompact component.
  */
-export type NavigationMenuCompactEmits = NavigationMenuRootEmits & NavigationMenuLinkEmits & NavigationMenuContentEmits;
+export type NavigationMenuCompactEmits = NavigationMenuRootEmits & NavigationMenuOptionCompactEmits;
 
 /**
  * Slots for the NavigationMenuCompact component.
  */
-export type NavigationMenuCompactSlots = {
-  /** Slot for rendering the entire item (for top-level items). */
-  item?: (props: { item: NavigationMenuItemData; isTrigger?: boolean }) => any;
-  /** Slot for rendering leading content of an item. */
-  'item-leading'?: (props: { item: NavigationMenuItemData }) => any;
-  /** Slot for rendering trailing content of an item. */
-  'item-trailing'?: (props: { item: NavigationMenuItemData }) => any;
-  /** Slot for rendering trigger icon (chevron down by default). */
-  'item-trigger-icon'?: (props: { item: NavigationMenuItemData }) => any;
-  /** Slot for rendering link icon (arrow up right by default for external links). */
-  'item-link-icon'?: (props: { item: NavigationMenuItemData }) => any;
-  /** Slot for rendering custom children content. */
-  'item-children'?: (props: { item: NavigationMenuItemData }) => any;
-  /** Slot for rendering indicator arrow. */
-  indicator?: () => any;
-};
+export type NavigationMenuCompactSlots = NavigationMenuOptionCompactSlots;

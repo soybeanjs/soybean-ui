@@ -1,46 +1,40 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import {
-  NavigationMenuContent,
-  NavigationMenuItem,
-  NavigationMenuLink,
-  NavigationMenuSubList,
-  NavigationMenuTrigger
-} from '@soybeanjs/headless/navigation-menu';
-import { useForwardListeners } from '@soybeanjs/headless/composables';
-import Icon from '../icon/icon.vue';
-import NavigationMenuItemSlot from './navigation-menu-item-slot.vue';
-import NavigationMenuSubOption from './navigation-menu-sub-option.vue';
-import { useNavigationMenuExtraUi } from './context';
-import { useCommonSlotKeys } from './shared';
-import type { NavigationMenuOptionData, NavigationMenuOptionEmits, NavigationMenuOptionProps } from './types';
+import { keysOf } from '@soybeanjs/utils';
+import { useForwardListeners } from '../../composables';
+import Icon from '../_icon/icon.vue';
+import { useNavigationMenuUi } from './context';
+import NavigationMenuSubOption from './navigation-menu-sub-option-compact.vue';
+import NavigationMenuItemSlot from './navigation-menu-item-slot-compact.vue';
+import NavigationMenuContent from './navigation-menu-content.vue';
+import NavigationMenuItem from './navigation-menu-item.vue';
+import NavigationMenuLink from './navigation-menu-link.vue';
+import NavigationMenuSubList from './navigation-menu-sub-list.vue';
+import NavigationMenuTrigger from './navigation-menu-trigger.vue';
+import { useCommonSlotNames } from './shared';
+import type {
+  NavigationMenuOptionCompactProps,
+  NavigationMenuOptionCompactEmits,
+  NavigationMenuOptionCompactSlots
+} from './types';
 
 defineOptions({
-  name: 'SNavigationMenuOption'
+  name: 'NavigationMenuOptionCompact'
 });
 
-const props = defineProps<NavigationMenuOptionProps>();
+const props = defineProps<NavigationMenuOptionCompactProps>();
 
-const emit = defineEmits<NavigationMenuOptionEmits>();
+const emit = defineEmits<NavigationMenuOptionCompactEmits>();
 
-type Slots = {
-  item: (props: { item: NavigationMenuOptionData; isTrigger?: boolean }) => any;
-  'item-leading': (props: { item: NavigationMenuOptionData }) => any;
-  'item-trailing': (props: { item: NavigationMenuOptionData }) => any;
-  'item-children': (props: { item: NavigationMenuOptionData }) => any;
-  'item-trigger-icon': (props: { item: NavigationMenuOptionData }) => any;
-  'item-link-icon': (props: { item: NavigationMenuOptionData }) => any;
-};
+const slots = defineSlots<NavigationMenuOptionCompactSlots>();
 
-const slots = defineSlots<Slots>();
+const listeners = useForwardListeners(emit);
 
-const forwardedListeners = useForwardListeners(emit);
+const slotNames = computed(() => keysOf(slots));
 
-const slotKeys = computed(() => Object.keys(slots) as (keyof Slots)[]);
+const commonSlotNames = useCommonSlotNames(slots);
 
-const commonSlotKeys = useCommonSlotKeys(slots);
-
-const ui = useNavigationMenuExtraUi();
+const ui = useNavigationMenuUi();
 
 const isLink = computed(() => Boolean(props.item.to || props.item.href));
 
@@ -68,8 +62,8 @@ const linkProps = computed(() =>
     >
       <NavigationMenuItemSlot :icon="item.icon">
         <span>{{ item.label }}</span>
-        <template v-for="slotKey in commonSlotKeys" :key="slotKey" #[slotKey]>
-          <slot :name="slotKey" :item="item" />
+        <template v-for="slotName in commonSlotNames" :key="slotName" #[slotName]>
+          <slot :name="slotName" :item="item" />
         </template>
         <template v-if="isHref" #link-icon>
           <slot name="item-link-icon" :item="item">
@@ -83,8 +77,8 @@ const linkProps = computed(() =>
         <component :is="isLink ? NavigationMenuLink : 'template'" v-bind="linkProps" @select="emit('select', $event)">
           <NavigationMenuItemSlot :icon="item.icon">
             <span>{{ item.label }}</span>
-            <template v-for="slotKey in commonSlotKeys" :key="slotKey" #[slotKey]>
-              <slot :name="slotKey" :item="item" :is-trigger="true" />
+            <template v-for="slotName in commonSlotNames" :key="slotName" #[slotName]>
+              <slot :name="slotName" :item="item" :is-trigger="true" />
             </template>
             <template #trigger-icon>
               <slot name="item-trigger-icon" :item="item">
@@ -94,7 +88,7 @@ const linkProps = computed(() =>
           </NavigationMenuItemSlot>
         </component>
       </NavigationMenuTrigger>
-      <NavigationMenuContent v-bind="contentProps" v-on="forwardedListeners">
+      <NavigationMenuContent v-bind="contentProps" v-on="listeners">
         <NavigationMenuSubList v-bind="subListProps">
           <NavigationMenuSubOption
             v-for="child in item.children"
@@ -103,8 +97,8 @@ const linkProps = computed(() =>
             :sub-item-props="subItemProps"
             @select="emit('select', $event)"
           >
-            <template v-for="slotKey in slotKeys" :key="slotKey" #[slotKey]>
-              <slot :name="slotKey" :item="child" />
+            <template v-for="slotName in slotNames" :key="slotName" #[slotName]>
+              <slot :name="slotName" :item="child" />
             </template>
             <template #item-children="slotProps">
               <slot name="item-children" :item="slotProps.item" />

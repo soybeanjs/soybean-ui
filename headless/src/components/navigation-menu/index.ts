@@ -1,3 +1,4 @@
+export { default as NavigationMenuCompact } from './navigation-menu-compact.vue';
 export { default as NavigationMenuRoot } from './navigation-menu-root.vue';
 export { default as NavigationMenuList } from './navigation-menu-list.vue';
 export { default as NavigationMenuItem } from './navigation-menu-item.vue';
@@ -7,11 +8,13 @@ export { default as NavigationMenuLink } from './navigation-menu-link.vue';
 export { default as NavigationMenuSubList } from './navigation-menu-sub-list.vue';
 export { default as NavigationMenuViewport } from './navigation-menu-viewport.vue';
 export { default as NavigationMenuIndicator } from './navigation-menu-indicator.vue';
-export { default as NavigationMenuCompact } from './navigation-menu-compact.vue';
 
 export { provideNavigationMenuUi } from './context';
 
 export type {
+  NavigationMenuCompactProps,
+  NavigationMenuCompactEmits,
+  NavigationMenuCompactSlots,
   NavigationMenuRootProps,
   NavigationMenuRootEmits,
   NavigationMenuViewportProps,
@@ -26,10 +29,7 @@ export type {
   NavigationMenuSubProps,
   NavigationMenuSubEmits,
   NavigationMenuSubListProps,
+  NavigationMenuOptionData,
   NavigationMenuUiSlot,
-  NavigationMenuUi,
-  NavigationMenuItemData,
-  NavigationMenuCompactProps,
-  NavigationMenuCompactEmits,
-  NavigationMenuCompactSlots
+  NavigationMenuUi
 } from './types';

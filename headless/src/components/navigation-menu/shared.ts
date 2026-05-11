@@ -1,5 +1,9 @@
-import type { Align } from '../../types';
+import { computed } from 'vue';
+
+import type { Align, DataOrientation, Direction, Size } from '../../types';
 import type { NavigationMenuViewportPosition } from './types';
+
+const COMMON_SLOTS = ['item', 'item-leading', 'item-trailing'];
 
 export const EVENT_ROOT_CONTENT_DISMISS = 'navigationMenu.rootContentDismiss';
 export const LINK_SELECT = 'navigationMenu.linkSelect';
@@ -13,8 +17,13 @@ export const navigationMenuViewportCssVars = {
 
 export const navigationMenuIndicatorCssVars = {
   size: '--soybean-navigation-menu-indicator-size',
-  position: '--soybean-navigation-menu-indicator-position'
+  left: '--soybean-navigation-menu-indicator-left',
+  top: '--soybean-navigation-menu-indicator-top'
 };
+
+export function useCommonSlotNames<T extends Record<string, any>>(slots: T) {
+  return computed(() => Object.keys(slots).filter(key => COMMON_SLOTS.includes(key)) as (keyof T)[]);
+}
 
 export function createTriggerId(baseId: string, value: string) {
   return `${baseId}-trigger-${value}`;
@@ -26,76 +35,94 @@ export function createContentId(baseId: string, value: string) {
 
 interface GetNavigationMenuViewportPositionParams {
   rootElement: HTMLElement;
-  contentElement: HTMLElement;
-  activeTriggerElement: HTMLElement;
+  contentSize: Size;
+  orientation: DataOrientation;
+  dir: Direction;
   align: Align;
 }
 
+interface GetNavigationMenuIndicatorPositionParams {
+  indicatorTrackElement: HTMLElement;
+  activeTriggerElement: HTMLElement;
+  orientation: DataOrientation;
+  dir: Direction;
+}
+
+function getViewportSize() {
+  const visualViewport = globalThis.window?.visualViewport;
+
+  return {
+    width: visualViewport?.width ?? globalThis.window?.innerWidth ?? document.documentElement.clientWidth,
+    height: visualViewport?.height ?? globalThis.window?.innerHeight ?? document.documentElement.clientHeight
+  };
+}
+
+function clampViewportPosition(position: number, contentSize: number, viewportSize: number, screenOffset: number) {
+  const minPosition = screenOffset;
+  const maxPosition = viewportSize - screenOffset - contentSize;
+
+  if (maxPosition <= minPosition) {
+    return minPosition;
+  }
+
+  if (position < minPosition) {
+    return minPosition;
+  }
+
+  if (position > maxPosition) {
+    return maxPosition;
+  }
+
+  return position;
+}
+
 export function getNavigationMenuViewportPosition(params: GetNavigationMenuViewportPositionParams) {
-  const { rootElement, contentElement, activeTriggerElement, align } = params;
+  const { rootElement, contentSize, orientation, dir, align } = params;
 
-  const bodyWidth = document.documentElement.offsetWidth;
-  const bodyHeight = document.documentElement.offsetHeight;
   const rootRect = rootElement.getBoundingClientRect();
-  const rect = activeTriggerElement.getBoundingClientRect();
-  const { offsetWidth, offsetHeight } = contentElement;
+  const { width: viewportWidth, height: viewportHeight } = getViewportSize();
+  const { width: contentWidth, height: contentHeight } = contentSize;
 
-  // Find the beginning of the position of the menu item
-  const startPositionLeft = rect.left - rootRect.left;
-  const startPositionTop = rect.top - rootRect.top;
+  const isRtl = dir === 'rtl';
 
-  const alignPositionMap: Record<Align, NavigationMenuViewportPosition> = {
+  const horizontalAlignPositionMap: Record<Align, NavigationMenuViewportPosition> = {
     start: {
-      left: startPositionLeft,
-      top: startPositionTop + rect.height
+      left: isRtl ? rootRect.right - contentWidth : rootRect.left,
+      top: rootRect.bottom
     },
     center: {
-      left: startPositionLeft - offsetWidth / 2 + rect.width / 2,
-      top: startPositionTop - offsetHeight / 2 + rect.height / 2
+      left: rootRect.left + rootRect.width / 2 - contentWidth / 2,
+      top: rootRect.bottom
     },
     end: {
-      left: startPositionLeft - offsetWidth + rect.width,
-      top: startPositionTop - offsetHeight + rect.height
+      left: isRtl ? rootRect.left : rootRect.right - contentWidth,
+      top: rootRect.bottom
     }
   };
+
+  const verticalAlignPositionMap: Record<Align, NavigationMenuViewportPosition> = {
+    start: {
+      left: isRtl ? rootRect.left - contentWidth : rootRect.right,
+      top: rootRect.top
+    },
+    center: {
+      left: isRtl ? rootRect.left - contentWidth : rootRect.right,
+      top: rootRect.top + rootRect.height / 2 - contentHeight / 2
+    },
+    end: {
+      left: isRtl ? rootRect.left - contentWidth : rootRect.right,
+      top: rootRect.bottom - contentHeight
+    }
+  };
+
+  const alignPositionMap = orientation === 'vertical' ? verticalAlignPositionMap : horizontalAlignPositionMap;
 
   let { left: posLeft, top: posTop } = alignPositionMap[align];
 
   const screenOffset = 10;
 
-  // Do not let go of the left side of the screen
-  if (posLeft + rootRect.left < screenOffset) {
-    posLeft = screenOffset - rootRect.left;
-  }
-
-  // Now also check the right side of the screen
-  const rightOffset = posLeft + rootRect.left + offsetWidth;
-  if (rightOffset > bodyWidth - screenOffset) {
-    posLeft -= rightOffset - bodyWidth + screenOffset;
-
-    // Recheck the left side of the screen
-    if (posLeft < screenOffset - rootRect.left) {
-      // Just set the menu to the full width of the screen
-      posLeft = screenOffset - rootRect.left;
-    }
-  }
-
-  // Do not let go of the top side of the screen
-  if (posTop + rootRect.top < screenOffset) {
-    posTop = screenOffset - rootRect.top;
-  }
-
-  // Now also check the bottom side of the screen
-  const bottomOffset = posTop + rootRect.top + offsetHeight;
-  if (bottomOffset > bodyHeight - screenOffset) {
-    posTop -= bottomOffset - bodyHeight + screenOffset;
-
-    // Recheck the top side of the screen
-    if (posTop < screenOffset - rootRect.top) {
-      // Just set the menu to the full height of the screen
-      posTop = screenOffset - rootRect.top;
-    }
-  }
+  posLeft = clampViewportPosition(posLeft, contentWidth, viewportWidth, screenOffset);
+  posTop = clampViewportPosition(posTop, contentHeight, viewportHeight, screenOffset);
 
   // Possible blurring font with decimal values
   posLeft = Math.round(posLeft);
@@ -107,4 +134,27 @@ export function getNavigationMenuViewportPosition(params: GetNavigationMenuViewp
   };
 
   return position;
+}
+
+export function getNavigationMenuIndicatorPosition(params: GetNavigationMenuIndicatorPositionParams) {
+  const { indicatorTrackElement, activeTriggerElement, orientation, dir } = params;
+
+  const trackRect = indicatorTrackElement.getBoundingClientRect();
+  const triggerRect = activeTriggerElement.getBoundingClientRect();
+
+  const isHorizontal = orientation === 'horizontal';
+  const isRtl = dir === 'rtl';
+  const size = isHorizontal ? triggerRect.width : triggerRect.height;
+
+  const position = {
+    size,
+    left: isHorizontal ? triggerRect.left : isRtl ? trackRect.left - size : trackRect.right,
+    top: isHorizontal ? trackRect.bottom : triggerRect.top + triggerRect.height / 2
+  };
+
+  return {
+    size: Math.round(position.size),
+    left: Math.round(position.left),
+    top: Math.round(position.top)
+  };
 }

@@ -1,33 +1,29 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { NavigationMenuItem, NavigationMenuLink } from '@soybeanjs/headless/navigation-menu';
-import Icon from '../icon/icon.vue';
-import SNavigationMenuItemSlot from './navigation-menu-item-slot.vue';
-import { useNavigationMenuExtraUi } from './context';
-import { useCommonSlotKeys } from './shared';
-import type { NavigationMenuOptionData, NavigationMenuSubOptionEmits, NavigationMenuSubOptionProps } from './types';
+import Icon from '../_icon/icon.vue';
+import NavigationMenuItemSlot from './navigation-menu-item-slot-compact.vue';
+import { useNavigationMenuUi } from './context';
+import { useCommonSlotNames } from './shared';
+import type {
+  NavigationMenuSubOptionCompactProps,
+  NavigationMenuSubOptionCompactEmits,
+  NavigationMenuSubOptionCompactSlots
+} from './types';
 
 defineOptions({
-  name: 'SNavigationMenuSubOption'
+  name: 'NavigationMenuSubOptionCompact'
 });
 
-const props = defineProps<NavigationMenuSubOptionProps>();
+const props = defineProps<NavigationMenuSubOptionCompactProps>();
 
-const emit = defineEmits<NavigationMenuSubOptionEmits>();
+const emit = defineEmits<NavigationMenuSubOptionCompactEmits>();
 
-type Slots = {
-  item: (props: { item: NavigationMenuOptionData; isTrigger?: boolean }) => any;
-  'item-leading': (props: { item: NavigationMenuOptionData }) => any;
-  'item-trailing': (props: { item: NavigationMenuOptionData }) => any;
-  'item-children': (props: { item: NavigationMenuOptionData }) => any;
-  'item-link-icon': (props: { item: NavigationMenuOptionData }) => any;
-};
+const slots = defineSlots<NavigationMenuSubOptionCompactSlots>();
 
-const slots = defineSlots<Slots>();
+const slotNames = useCommonSlotNames(slots);
 
-const commonSlotKeys = useCommonSlotKeys(slots);
-
-const ui = useNavigationMenuExtraUi();
+const ui = useNavigationMenuUi();
 
 const isLink = computed(() => Boolean(props.subItem.to || props.subItem.href));
 
@@ -53,20 +49,20 @@ const linkProps = computed(() =>
       v-bind="linkProps"
       @select="emit('select', $event)"
     >
-      <SNavigationMenuItemSlot :icon="subItem.icon">
+      <NavigationMenuItemSlot :icon="subItem.icon">
         <div :class="ui.subLinkContent">
           <span :class="ui.subLinkLabel">{{ subItem.label }}</span>
           <p :class="ui.subLinkDescription">{{ subItem.description }}</p>
         </div>
-        <template v-for="slotKey in commonSlotKeys" :key="slotKey" #[slotKey]>
-          <slot :name="slotKey" :item="subItem" />
+        <template v-for="slotName in slotNames" :key="slotName" #[slotName]>
+          <slot :name="slotName" :item="subItem" />
         </template>
         <template v-if="slotProps?.isHref" #link-icon>
           <slot name="item-link-icon" :item="subItem">
             <Icon icon="lucide:arrow-up-right" :class="ui.linkIcon" />
           </slot>
         </template>
-      </SNavigationMenuItemSlot>
+      </NavigationMenuItemSlot>
     </component>
     <slot v-if="subItem.children?.length" name="item-children" :item="subItem" />
   </NavigationMenuItem>

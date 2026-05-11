@@ -4,7 +4,7 @@ import type { CSSProperties } from 'vue';
 import { useResizeObserver } from '@vueuse/core';
 import { useForwardElement, usePresence } from '../../composables';
 import { useNavigationMenuRootContext, useNavigationMenuUi } from './context';
-import { navigationMenuIndicatorCssVars } from './shared';
+import { getNavigationMenuIndicatorPosition, navigationMenuIndicatorCssVars } from './shared';
 import type { NavigationMenuIndicatorProps } from './types';
 
 defineOptions({
@@ -16,7 +16,7 @@ const props = defineProps<NavigationMenuIndicatorProps>();
 
 const attrs = useAttrs();
 
-const { orientation, activeTriggerElement, modelValue, indicatorTrackElement } =
+const { dir, rootElement, orientation, activeTriggerElement, modelValue, indicatorTrackElement } =
   useNavigationMenuRootContext('NavigationMenuIndicator');
 const [indicatorElement, setIndicatorElement] = useForwardElement();
 
@@ -27,7 +27,8 @@ const isPresent = props.forceMount ? shallowRef(true) : usePresence(indicatorEle
 
 interface SizePosition {
   size: number;
-  position: number;
+  left: number;
+  top: number;
 }
 
 const sizePosition = shallowRef<SizePosition>();
@@ -35,26 +36,29 @@ const sizePosition = shallowRef<SizePosition>();
 const indicatorStyle = computed<CSSProperties>(() => {
   if (!sizePosition.value) return {};
 
-  const { size, position } = sizePosition.value;
+  const { size, left, top } = sizePosition.value;
 
   return {
     [navigationMenuIndicatorCssVars.size]: `${size}px`,
-    [navigationMenuIndicatorCssVars.position]: `${position}px`
+    [navigationMenuIndicatorCssVars.left]: `${left}px`,
+    [navigationMenuIndicatorCssVars.top]: `${top}px`
   };
 });
 
 const onPositionChange = () => {
-  if (!activeTriggerElement.value) return;
+  if (!activeTriggerElement.value || !indicatorTrackElement.value) return;
 
-  const { offsetWidth, offsetHeight, offsetLeft, offsetTop } = activeTriggerElement.value;
-
-  const isHorizontal = orientation.value === 'horizontal';
-
-  sizePosition.value = {
-    size: isHorizontal ? offsetWidth : offsetHeight,
-    position: isHorizontal ? offsetLeft : offsetTop
-  };
+  sizePosition.value = getNavigationMenuIndicatorPosition({
+    indicatorTrackElement: indicatorTrackElement.value,
+    activeTriggerElement: activeTriggerElement.value,
+    orientation: orientation.value,
+    dir: dir.value
+  });
 };
+
+const teleportTarget = computed(
+  () => indicatorTrackElement.value?.ownerDocument?.body ?? rootElement.value?.ownerDocument?.body
+);
 
 watchEffect(() => {
   if (!modelValue.value) {
@@ -69,7 +73,7 @@ useResizeObserver(indicatorTrackElement, onPositionChange);
 </script>
 
 <template>
-  <Teleport v-if="indicatorTrackElement" :to="indicatorTrackElement">
+  <Teleport v-if="teleportTarget" :to="teleportTarget">
     <div
       v-if="isPresent"
       v-bind="attrs"
@@ -77,6 +81,8 @@ useResizeObserver(indicatorTrackElement, onPositionChange);
       data-soybean-navigation-menu-indicator
       :class="cls"
       aria-hidden="true"
+      :dir="dir"
+      :data-orientation="orientation"
       :data-state="isVisible ? 'visible' : 'hidden'"
       :style="indicatorStyle"
     >
