@@ -1,5 +1,12 @@
 import type { HtmlHTMLAttributes, ShallowRef } from 'vue';
-import type { BaseProps, AcceptableBooleanValue, FormFieldCommonProps, PropsToContext, UiClass } from '../../types';
+import type {
+  BaseProps,
+  AcceptableBooleanValue,
+  Direction,
+  FormFieldCommonProps,
+  PropsToContext,
+  UiClass
+} from '../../types';
 import type { ButtonProps } from '../button/types';
 import type { PrimitiveWithBaseProps } from '../primitive/types';
 
@@ -34,6 +41,8 @@ export interface SwitchRootProps<T extends AcceptableBooleanValue>
   disabled?: boolean;
   /** The value given as data when submitted with a `name`. */
   value?: string;
+  /** The direction the switch should animate towards when changing state. */
+  dir?: Direction;
 }
 
 /**

@@ -3,6 +3,7 @@ import { computed } from 'vue';
 import { useControllableState, useForwardElement } from '../../composables';
 import { isFormControl, isNullish, transformPropsToContext } from '../../shared';
 import type { AcceptableBooleanValue } from '../../types';
+import { useDirection } from '../config-provider/context';
 import { VisuallyHiddenInput } from '../visually-hidden';
 import { provideSwitchRootContext, useSwitchUi } from './context';
 import type { SwitchRootProps, SwitchRootEmits } from './types';
@@ -34,6 +35,8 @@ const modelValue = useControllableState(
   props.defaultValue ?? null
 );
 
+const direction = useDirection(() => props.dir);
+
 const formControl = computed(() => isFormControl(rootElement.value));
 
 function checkSwitchValue() {
@@ -51,7 +54,7 @@ const { dataState } = provideSwitchRootContext({
 </script>
 
 <template>
-  <div :ref="setRootElement" data-soybean-switch-root :class="cls" :data-state="dataState">
+  <div :ref="setRootElement" data-soybean-switch-root :class="cls" :data-state="dataState" :dir="direction">
     <slot :model-value="modelValue" />
     <VisuallyHiddenInput
       v-if="formControl && name"
