@@ -35,29 +35,32 @@ const listeners = useForwardListeners(emit);
 const slotNames = computed(() => keysOf(slots));
 
 const ui = computed(() => {
-  const variants = Object.assign(bottomSheetVariants({ size: props.size }), {
-    $base: {
-      ...dialogVariants({
-        size: props.size,
-        pure: props.pure
-      }),
-      ...drawerVariants({
-        size: props.size,
-        side: 'bottom'
-      }),
-      cancel: buttonVariants({
-        variant: 'pure',
-        size: miniSizeMap[props.size ?? 'md']
-      }),
-      confirm: buttonVariants({
-        variant: 'solid',
-        size: miniSizeMap[props.size ?? 'md']
-      }),
-      close: buttonIconVariants({
-        size: miniSizeMap[props.size ?? 'md']
-      })
+  const variants = Object.assign(
+    bottomSheetVariants({ size: props.size }),
+    dialogVariants({
+      size: props.size,
+      pure: props.pure
+    }),
+    drawerVariants({
+      size: props.size,
+      side: 'bottom'
+    }),
+    {
+      $base: {
+        cancel: buttonVariants({
+          variant: 'pure',
+          size: miniSizeMap[props.size ?? 'md']
+        }),
+        confirm: buttonVariants({
+          variant: 'solid',
+          size: miniSizeMap[props.size ?? 'md']
+        }),
+        close: buttonIconVariants({
+          size: miniSizeMap[props.size ?? 'md']
+        })
+      }
     }
-  });
+  );
 
   return mergeVariants(variants, props.ui, { popup: props.class });
 });
