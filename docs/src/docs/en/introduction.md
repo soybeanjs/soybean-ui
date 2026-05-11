@@ -1,9 +1,3 @@
-<script setup lang="ts">
-import { components } from '../../../../src/constants/components';
-
-const componentCount = Object.keys(components).length;
-</script>
-
 # Introduction
 
 SoybeanUI is an elegant, modern, accessible, and high-quality UI component library designed for Vue 3. With a shadcn-like design style and a powerful Headless foundation, it provides a comprehensive set of accessible, customizable, and high-performance components to help developers build modern web applications quickly.
@@ -119,7 +113,7 @@ For simple atomic components (like Button, Link, Badge):
 
 ### ✨ Rich component ecosystem
 
-SoybeanUI provides {{ componentCount }} high-quality components covering most common web application scenarios:
+SoybeanUI provides more than 80 high-quality components covering most common web application scenarios:
 
 - **Basic**: Button, Input, Card, Badge, etc.
 - **Forms**: Form, Select, Checkbox, RadioGroup, Switch, etc.

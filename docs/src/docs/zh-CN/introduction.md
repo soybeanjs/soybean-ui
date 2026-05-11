@@ -1,9 +1,3 @@
-<script setup lang="ts">
-import { components } from '../../../../src/constants/components';
-
-const componentCount = Object.keys(components).length;
-</script>
-
 # 介绍
 
 SoybeanUI 是一个优雅、现代、可访问且高质量的 UI 组件库，专为 Vue 3 设计，采用 shadcn-like 设计风格，构建在强大的 Headless 基础之上。它提供了一套全面、可访问、可定制且高性能的组件，帮助开发者快速构建现代化的 Web 应用。
@@ -119,7 +113,7 @@ SoybeanUI 支持三种组件模式：
 
 ### ✨ 丰富的组件生态
 
-SoybeanUI 提供了 {{ componentCount }} 个高质量组件，覆盖了 Web 应用开发中的大部分场景：
+SoybeanUI 提供了 80+ 高质量组件，覆盖了 Web 应用开发中的大部分场景：
 
 - **基础组件**：Button、Input、Card、Badge 等
 - **表单组件**：Form、Select、Checkbox、RadioGroup、Switch 等
