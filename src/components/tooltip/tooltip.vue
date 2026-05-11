@@ -21,7 +21,7 @@ const emit = defineEmits<TooltipEmits>();
 
 defineSlots<TooltipSlots>();
 
-const forwardedRootProps = useOmitProps(props, ['class', 'size', 'ui']);
+const forwardedProps = useOmitProps(props, ['class', 'size', 'ui']);
 
 const listeners = useForwardListeners(emit);
 
@@ -37,7 +37,7 @@ provideTooltipUi(ui);
 </script>
 
 <template>
-  <TooltipCompact v-bind="forwardedRootProps" v-on="listeners">
+  <TooltipCompact v-bind="forwardedProps" v-on="listeners">
     <template #trigger>
       <slot name="trigger" />
     </template>
