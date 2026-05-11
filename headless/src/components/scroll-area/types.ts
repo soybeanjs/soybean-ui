@@ -92,12 +92,12 @@ export type ScrollAreaCompactEmits = ScrollAreaRootEmits;
 /**
  * Slots for the ScrollAreaCompact component.
  */
-export interface ScrollAreaCompactSlots {
+export type ScrollAreaCompactSlots = {
   /**
    * Custom content for the default slot.
    */
   default?: () => any;
-}
+};
 
 /**
  * Context for the ScrollAreaRoot component.

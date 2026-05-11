@@ -100,7 +100,7 @@ export type ColorSwatchPickerCompactEmits<M extends boolean = false> = ColorSwat
 /**
  * Slots for the ColorSwatchPickerCompact component.
  */
-export interface ColorSwatchPickerCompactSlots<M extends boolean = false> {
+export type ColorSwatchPickerCompactSlots<M extends boolean = false> = {
   /**
    * Custom content rendered when colors are not provided.
    */
@@ -113,7 +113,7 @@ export interface ColorSwatchPickerCompactSlots<M extends boolean = false> {
    * Custom content rendered inside each indicator.
    */
   indicator?: (props: ColorSwatchPickerCompactColorSlotProps) => any;
-}
+};
 
 /**
  * Available UI slots for the ColorSwatchPicker component.

@@ -39,12 +39,12 @@ export interface SeparatorCompactProps extends SeparatorRootProps {
 /**
  * Slots for the SeparatorCompact component.
  */
-export interface SeparatorCompactSlots {
+export type SeparatorCompactSlots = {
   /**
    * Custom content for the label slot.
    */
   default?: () => any;
-}
+};
 
 /**
  * Available UI slots for the Separator component.

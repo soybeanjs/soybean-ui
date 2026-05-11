@@ -334,7 +334,7 @@ export type NavigationMenuCompactEmits = NavigationMenuRootEmits & NavigationMen
 /**
  * Slots for the NavigationMenuCompact component.
  */
-export interface NavigationMenuCompactSlots {
+export type NavigationMenuCompactSlots = {
   /** Slot for rendering the entire item (for top-level items). */
   item?: (props: { item: NavigationMenuItemData; isTrigger?: boolean }) => any;
   /** Slot for rendering leading content of an item. */
@@ -349,4 +349,4 @@ export interface NavigationMenuCompactSlots {
   'item-children'?: (props: { item: NavigationMenuItemData }) => any;
   /** Slot for rendering indicator arrow. */
   indicator?: () => any;
-}
+};

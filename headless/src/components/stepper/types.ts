@@ -232,7 +232,7 @@ export type StepperCompactEmits = StepperRootEmits;
 /**
  * Slots for the StepperCompact component.
  */
-export interface StepperCompactSlots {
+export type StepperCompactSlots = {
   /**
    * Custom content for the item slot.
    */
@@ -253,4 +253,4 @@ export interface StepperCompactSlots {
    * Custom content for the separator slot.
    */
   separator?: (props: StepperItemData & { step: number; state: StepperState }) => any;
-}
+};

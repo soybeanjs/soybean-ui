@@ -166,7 +166,7 @@ export type PaginationCompactEmits = PaginationRootEmits;
 /**
  * Slots for the PaginationCompact component.
  */
-export interface PaginationCompactSlots {
+export type PaginationCompactSlots = {
   /**
    * Custom content for the leading slot.
    */
@@ -195,4 +195,4 @@ export interface PaginationCompactSlots {
    * Custom content for the ellipsis slot.
    */
   ellipsis?: () => any;
-}
+};

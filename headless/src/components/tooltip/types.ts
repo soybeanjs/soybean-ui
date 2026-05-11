@@ -179,7 +179,7 @@ export type TooltipCompactEmits = TooltipRootEmits & TooltipPositionerEmits;
 /**
  * Slots for the TooltipCompact component.
  */
-export interface TooltipCompactSlots {
+export type TooltipCompactSlots = {
   /**
    * Custom content for the default slot.
    */
@@ -188,4 +188,4 @@ export interface TooltipCompactSlots {
    * Custom content for the trigger slot.
    */
   trigger?: () => any;
-}
+};

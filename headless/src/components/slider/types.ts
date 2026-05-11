@@ -115,12 +115,12 @@ export type SliderCompactEmits = SliderRootEmits;
 /**
  * Slots for the SliderCompact component.
  */
-export interface SliderCompactSlots {
+export type SliderCompactSlots = {
   /**
    * Custom content for the default slot.
    */
   default?: (props: SliderCompactSlotProps) => any;
-}
+};
 
 /**
  * Type information for SliderSlideDirection.

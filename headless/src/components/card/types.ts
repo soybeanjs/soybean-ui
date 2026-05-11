@@ -107,7 +107,7 @@ export type CardCompactEmits = CardRootEmits;
 /**
  * Slots for the CardCompact component.
  */
-export interface CardCompactSlots {
+export type CardCompactSlots = {
   /**
    * Custom content for the default slot.
    */
@@ -140,4 +140,4 @@ export interface CardCompactSlots {
    * Custom content for the description slot.
    */
   description?: () => any;
-}
+};

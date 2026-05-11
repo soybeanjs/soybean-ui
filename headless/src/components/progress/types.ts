@@ -94,12 +94,12 @@ export type ProgressCompactEmits = ProgressRootEmits;
 /**
  * Slots for the ProgressCompact component.
  */
-export interface ProgressCompactSlots {
+export type ProgressCompactSlots = {
   /**
    * Custom content for the default slot.
    */
   default?: (props: ProgressSlotProps) => any;
-}
+};
 
 /**
  * Properties for the ProgressCircleCompact component.
@@ -123,12 +123,12 @@ export type ProgressCircleCompactEmits = ProgressRootEmits;
 /**
  * Slots for the ProgressCircleCompact component.
  */
-export interface ProgressCircleCompactSlots {
+export type ProgressCircleCompactSlots = {
   /**
    * Custom content for the default slot.
    */
   default?: (props: ProgressSlotProps) => any;
-}
+};
 
 /**
  * Properties for the ProgressProvider component.

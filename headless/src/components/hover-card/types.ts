@@ -161,7 +161,7 @@ export type HoverCardCompactEmits = HoverCardRootEmits & HoverCardPositionerEmit
 /**
  * Slots for the HoverCardCompact component.
  */
-export interface HoverCardCompactSlots {
+export type HoverCardCompactSlots = {
   /**
    * Custom content for the default slot.
    */
@@ -170,4 +170,4 @@ export interface HoverCardCompactSlots {
    * Custom content for the trigger slot.
    */
   trigger?: () => any;
-}
+};
