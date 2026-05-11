@@ -288,7 +288,7 @@ export interface EditableCompactSlotProps {
 /**
  * Slots for the EditableCompact component.
  */
-export interface EditableCompactSlots {
+export type EditableCompactSlots = {
   /**
    * Custom content for the default slot.
    */
@@ -313,4 +313,4 @@ export interface EditableCompactSlots {
    * Custom content for the cancel trigger slot.
    */
   'cancel-trigger'?: (props: EditableCompactSlotProps) => any;
-}
+};
