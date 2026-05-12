@@ -11,7 +11,7 @@ import {
 } from '../../../src/components/toolbar';
 import { getA11yViolations } from '../../shared/a11y';
 
-function mountToolbar(props?: Record<string, unknown>) {
+function mountToolbar(props?: Record<string, unknown>, configProviderProps?: Record<string, unknown>) {
   return mount(
     {
       components: {
@@ -25,11 +25,12 @@ function mountToolbar(props?: Record<string, unknown>) {
       },
       setup() {
         return {
-          toolbarProps: props ?? {}
+          toolbarProps: props ?? {},
+          configProviderProps: configProviderProps ?? {}
         };
       },
       template: `
-        <SConfigProvider>
+        <SConfigProvider v-bind="configProviderProps">
           <SToolbar v-bind="toolbarProps">
             <SToolbarButton>Cut</SToolbarButton>
             <SToolbarLink href="#">Website</SToolbarLink>
@@ -85,6 +86,22 @@ describe('SToolbar', () => {
 
       expect(toolbar.attributes('aria-orientation')).toBe('vertical');
       expect(wrapper.find('[role="separator"]').attributes('data-orientation')).toBe('horizontal');
+      wrapper.unmount();
+    });
+
+    it('derives rtl direction from an rtl locale when dir is omitted', () => {
+      const wrapper = mountToolbar(undefined, { locale: 'ar' });
+      const toolbar = wrapper.find('[role="toolbar"]');
+
+      expect(toolbar.attributes('dir')).toBe('rtl');
+      wrapper.unmount();
+    });
+
+    it('prefers an explicit dir over the locale direction', () => {
+      const wrapper = mountToolbar(undefined, { locale: 'ar', dir: 'ltr' });
+      const toolbar = wrapper.find('[role="toolbar"]');
+
+      expect(toolbar.attributes('dir')).toBe('ltr');
       wrapper.unmount();
     });
   });

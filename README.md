@@ -69,6 +69,35 @@ provideAccordionUi(ui); // headless reads this via useAccordionUi()
 - **`ConfigProvider`** — sets global `dir`, `locale`, `nonce`, and default `tooltip` config for the entire component tree, including RTL layout switching
 - **`cn()`** — Tailwind-aware class merge (`clsx` + `tailwind-merge`), used for conflict-free class composition
 
+### Locale Support
+
+`ConfigProvider` supports the following locale bundles:
+
+| Code    | Language            |
+| ------- | ------------------- |
+| `zh-CN` | Simplified Chinese  |
+| `zh-TW` | Traditional Chinese |
+| `en`    | English             |
+| `ar`    | Arabic              |
+| `ja`    | Japanese            |
+| `ko`    | Korean              |
+| `de`    | German              |
+| `fr`    | French              |
+| `es`    | Spanish             |
+| `pt-BR` | Portuguese (Brazil) |
+| `ru`    | Russian             |
+| `tr`    | Turkish             |
+| `id`    | Indonesian          |
+
+Only `en` and `zh-CN` are pre-registered by default. When `dir` is omitted, `ConfigProvider` follows the direction implied by `locale`, so `ar` automatically resolves to `rtl`. To use another supported locale, import it from `@soybeanjs/headless/locale/{code}` and register it once during app setup.
+
+```ts
+import { registerLocale } from '@soybeanjs/headless/locale';
+import ar from '@soybeanjs/headless/locale/ar';
+
+registerLocale('ar', ar);
+```
+
 ### Package Exports
 
 **@soybeanjs/headless** ships fine-grained sub-paths:

@@ -61,6 +61,35 @@ import {
 - **Composable**: Components are designed to be composed together.
 - **Vue 3**: Built for Vue 3 using Composition API.
 
+## 🌐 Locale Support
+
+`@soybeanjs/headless` ships locale message files for the following languages:
+
+| Code    | Language            |
+| ------- | ------------------- |
+| `zh-CN` | Simplified Chinese  |
+| `zh-TW` | Traditional Chinese |
+| `en`    | English             |
+| `ar`    | Arabic              |
+| `ja`    | Japanese            |
+| `ko`    | Korean              |
+| `de`    | German              |
+| `fr`    | French              |
+| `es`    | Spanish             |
+| `pt-BR` | Portuguese (Brazil) |
+| `ru`    | Russian             |
+| `tr`    | Turkish             |
+| `id`    | Indonesian          |
+
+Only `en` and `zh-CN` are pre-registered in the locale registry by default. When `dir` is omitted, `ConfigProvider` follows the direction implied by `locale`, so `ar` automatically resolves to `rtl`. Import other locale files from `@soybeanjs/headless/locale/{code}` and register them once during app setup:
+
+```ts
+import { registerLocale } from '@soybeanjs/headless/locale';
+import ar from '@soybeanjs/headless/locale/ar';
+
+registerLocale('ar', ar);
+```
+
 ## 📚 Package Structure
 
 ```

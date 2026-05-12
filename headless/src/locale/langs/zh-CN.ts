@@ -1,6 +1,6 @@
 import type { LocaleMessages } from '../types';
 
-export const zhCN: LocaleMessages = {
+const zhCN: LocaleMessages = {
   pagination: {
     firstPage: '第一页',
     prevPage: '上一页',
@@ -103,3 +103,5 @@ export const zhCN: LocaleMessages = {
     }
   }
 };
+
+export default zhCN;

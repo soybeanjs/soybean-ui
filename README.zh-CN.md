@@ -69,6 +69,35 @@ provideAccordionUi(ui); // headless 通过 useAccordionUi() 读取
 - **`ConfigProvider`** — 全局设置 `dir`、`locale`、`nonce` 及默认 `tooltip` 配置，应用于整个组件树，并支持 RTL 布局切换
 - **`cn()`** — Tailwind 感知的类名合并工具（`clsx` + `tailwind-merge`），解决类名冲突
 
+### 语言支持
+
+`ConfigProvider` 当前支持以下 locale 文案包：
+
+| 代码    | 语言         |
+| ------- | ------------ |
+| `zh-CN` | 简体中文     |
+| `zh-TW` | 繁體中文     |
+| `en`    | 英语         |
+| `ar`    | 阿拉伯语     |
+| `ja`    | 日语         |
+| `ko`    | 韩语         |
+| `de`    | 德语         |
+| `fr`    | 法语         |
+| `es`    | 西班牙语     |
+| `pt-BR` | 巴西葡萄牙语 |
+| `ru`    | 俄语         |
+| `tr`    | 土耳其语     |
+| `id`    | 印度尼西亚语 |
+
+默认只有 `en` 和 `zh-CN` 会被预注册。未传 `dir` 时，`ConfigProvider` 会跟随 `locale` 对应的方向，因此 `ar` 会自动推导为 `rtl`。若要使用其他已支持的 locale，可从 `@soybeanjs/headless/locale/{code}` 导入并在应用启动时注册一次。
+
+```ts
+import { registerLocale } from '@soybeanjs/headless/locale';
+import ar from '@soybeanjs/headless/locale/ar';
+
+registerLocale('ar', ar);
+```
+
 ### 包导出
 
 **@soybeanjs/headless** 提供精细化子路径导出：

@@ -1,6 +1,6 @@
 import type { LocaleMessages } from '../types';
 
-export const en: LocaleMessages = {
+const en: LocaleMessages = {
   pagination: {
     firstPage: 'First page',
     prevPage: 'Previous page',
@@ -103,3 +103,5 @@ export const en: LocaleMessages = {
     }
   }
 };
+
+export default en;

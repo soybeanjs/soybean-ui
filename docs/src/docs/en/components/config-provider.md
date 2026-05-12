@@ -60,29 +60,56 @@ Set `dir="ltr"` explicitly if you want to force left-to-right behavior inside a 
 
 ## Locale / Internationalization
 
-SoybeanUI ships with built-in English (`en`) and Simplified Chinese (`zh-CN`) message sets that drive component-level text such as aria-labels and empty-state copy.
+SoybeanUI ships with built-in component message sets for the following locales. These messages drive component-level text such as aria-labels and empty-state copy.
 
-### Switching to a built-in locale
+| Code    | Language            |
+| ------- | ------------------- |
+| `zh-CN` | Simplified Chinese  |
+| `zh-TW` | Traditional Chinese |
+| `en`    | English             |
+| `ar`    | Arabic              |
+| `ja`    | Japanese            |
+| `ko`    | Korean              |
+| `de`    | German              |
+| `fr`    | French              |
+| `es`    | Spanish             |
+| `pt-BR` | Portuguese (Brazil) |
+| `ru`    | Russian             |
+| `tr`    | Turkish             |
+| `id`    | Indonesian          |
 
-`en` is the only locale bundled by default. To use another locale, import it from its sub-path and call `registerLocale` once at app startup:
+Only `en` and `zh-CN` are pre-registered by default. Other supported locale files can be imported from `@soybeanjs/headless/locale/{code}` and registered manually.
 
-```ts
-// main.ts (before mounting)
-import { registerLocale } from '@soybeanjs/headless/locale';
-import { zhCN } from '@soybeanjs/headless/locale/zh-CN';
+When `dir` is omitted, `ConfigProvider` automatically follows the direction implied by `locale`. For example, `locale="ar"` resolves to `dir="rtl"`, while `locale="en"` resolves to `dir="ltr"`. Pass `dir` explicitly if you need to override that mapping.
 
-registerLocale('zh-CN', zhCN);
-```
+### Switching to a pre-registered locale
 
-Then pass the locale code to `SConfigProvider`:
+Pass the locale code directly to `SConfigProvider`:
 
 ```vue
 <SConfigProvider locale="zh-CN">
-  <!-- First-batch components now display zh-CN text -->
+  <!-- Built-in component copy now displays in Simplified Chinese -->
 </SConfigProvider>
 ```
 
-Each locale file lives at `@soybeanjs/headless/locale/{code}` and is independently tree-shakeable — unused locales are not included in your bundle.
+### Loading another supported locale
+
+Import the locale file as a default export, register it once during app setup, and then pass the same locale code to `SConfigProvider`:
+
+```ts
+import { registerLocale } from '@soybeanjs/headless/locale';
+import ar from '@soybeanjs/headless/locale/ar';
+
+registerLocale('ar', ar);
+```
+
+```vue
+<SConfigProvider locale="ar">
+  <!-- Component copy now displays in Arabic and dir defaults to rtl -->
+</SConfigProvider>
+```
+
+Supported locale files are also available at `@soybeanjs/headless/locale/{code}` if you want to extend one as the base for your own custom locale.
 
 ### Overriding individual messages
 

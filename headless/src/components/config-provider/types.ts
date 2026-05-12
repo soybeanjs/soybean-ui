@@ -11,7 +11,7 @@ export interface ConfigProviderProps {
   /**
    * The global reading direction of your application. This will be inherited by all components.
    *
-   * @defaultValue 'ltr'
+   * When omitted, the direction follows the current locale and falls back to `'ltr'`.
    */
   dir?: Direction;
   /**

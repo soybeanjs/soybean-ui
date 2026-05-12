@@ -1,5 +1,7 @@
 <script setup lang="ts">
+import { computed } from 'vue';
 import { useStyleTag } from '@vueuse/core';
+import { resolveLocaleDirection } from '../../locale/locales';
 import { transformPropsToContext } from '../../shared';
 import { provideConfigProviderContext } from './context';
 import type { ConfigProviderProps } from './types';
@@ -9,15 +11,17 @@ defineOptions({
 });
 
 const props = withDefaults(defineProps<ConfigProviderProps>(), {
-  dir: 'ltr',
   locale: 'en',
   scrollBody: true,
   nonce: undefined,
   nuxt: false
 });
 
+const dir = computed(() => props.dir ?? resolveLocaleDirection(props.locale));
+
 provideConfigProviderContext({
   ...transformPropsToContext(props),
+  dir,
   iconRender: props.iconRender
 });
 

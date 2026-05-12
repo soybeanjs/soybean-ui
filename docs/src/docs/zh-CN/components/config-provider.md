@@ -58,29 +58,56 @@ import { SConfigProvider } from '@soybeanjs/ui';
 
 ## 国际化 / Locale
 
-SoybeanUI 内置了英文（`en`）和简体中文（`zh-CN`）两套组件文案，用于驱动无障碍标签、空状态文案等内置文字。
+SoybeanUI 目前提供以下 13 套内置组件文案，用于驱动无障碍标签、空状态文案等内置文字。
 
-### 切换内置 locale
+| 代码    | 语言         |
+| ------- | ------------ |
+| `zh-CN` | 简体中文     |
+| `zh-TW` | 繁體中文     |
+| `en`    | 英语         |
+| `ar`    | 阿拉伯语     |
+| `ja`    | 日语         |
+| `ko`    | 韩语         |
+| `de`    | 德语         |
+| `fr`    | 法语         |
+| `es`    | 西班牙语     |
+| `pt-BR` | 巴西葡萄牙语 |
+| `ru`    | 俄语         |
+| `tr`    | 土耳其语     |
+| `id`    | 印度尼西亚语 |
 
-默认仅打包 `en`。使用其他语言包时，从对应子路径导入并在应用启动时调用 `registerLocale` 完成注册：
+默认只有 `en` 和 `zh-CN` 会被预注册。其余受支持的 locale 文件需要从 `@soybeanjs/headless/locale/{code}` 导入后手动注册。
 
-```ts
-// main.ts（mount 之前）
-import { registerLocale } from '@soybeanjs/headless/locale';
-import { zhCN } from '@soybeanjs/headless/locale/zh-CN';
+当未显式传入 `dir` 时，`ConfigProvider` 会自动跟随 `locale` 对应的方向。例如 `locale="ar"` 会推导出 `dir="rtl"`，`locale="en"` 会推导出 `dir="ltr"`。如果你需要覆盖该规则，仍然可以显式传入 `dir`。
 
-registerLocale('zh-CN', zhCN);
-```
+### 切换预注册 locale
 
-然后在 `SConfigProvider` 上传入 locale 代码：
+直接把 locale 代码传给 `SConfigProvider` 即可：
 
 ```vue
 <SConfigProvider locale="zh-CN">
-  <!-- 首批支持的组件将自动显示中文文案 -->
+  <!-- 内置组件文案将自动切换为简体中文 -->
 </SConfigProvider>
 ```
 
-每个 locale 文件独立存放于 `@soybeanjs/headless/locale/{code}` 子路径，支持 tree-shake — 未使用的语言包不会打进产物。
+### 加载其他受支持的 locale
+
+把语言文件按默认导入方式引入，在应用初始化时注册一次，然后再把同样的 locale 代码传给 `SConfigProvider`：
+
+```ts
+import { registerLocale } from '@soybeanjs/headless/locale';
+import ar from '@soybeanjs/headless/locale/ar';
+
+registerLocale('ar', ar);
+```
+
+```vue
+<SConfigProvider locale="ar">
+  <!-- 组件文案将切换为阿拉伯语，dir 默认推导为 rtl -->
+</SConfigProvider>
+```
+
+如果你想基于某个受支持的 locale 做扩展，也可以从 `@soybeanjs/headless/locale/{code}` 对应子路径导入语言文件作为基础。
 
 ### 覆盖部分文案
 

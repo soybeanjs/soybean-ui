@@ -61,6 +61,35 @@ import {
 - **可组合**: 组件设计为可组合使用。
 - **Vue 3**: 使用 Composition API 为 Vue 3 构建。
 
+## 🌐 语言支持
+
+`@soybeanjs/headless` 当前提供以下语言的 locale 文案文件：
+
+| 代码    | 语言         |
+| ------- | ------------ |
+| `zh-CN` | 简体中文     |
+| `zh-TW` | 繁體中文     |
+| `en`    | 英语         |
+| `ar`    | 阿拉伯语     |
+| `ja`    | 日语         |
+| `ko`    | 韩语         |
+| `de`    | 德语         |
+| `fr`    | 法语         |
+| `es`    | 西班牙语     |
+| `pt-BR` | 巴西葡萄牙语 |
+| `ru`    | 俄语         |
+| `tr`    | 土耳其语     |
+| `id`    | 印度尼西亚语 |
+
+默认只有 `en` 和 `zh-CN` 会在 locale 注册表中预注册。未传 `dir` 时，`ConfigProvider` 会跟随 `locale` 对应的方向，因此 `ar` 会自动推导为 `rtl`。其他语言需要从 `@soybeanjs/headless/locale/{code}` 导入后，在应用初始化时注册一次：
+
+```ts
+import { registerLocale } from '@soybeanjs/headless/locale';
+import ar from '@soybeanjs/headless/locale/ar';
+
+registerLocale('ar', ar);
+```
+
 ## 📚 包结构
 
 ```
