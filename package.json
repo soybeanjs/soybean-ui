@@ -69,7 +69,6 @@
     "preview:docs": "pnpm --filter @soybeanjs/ui-docs preview",
     "publish-pkg": "pnpm publish -r --access public",
     "release": "soy release",
-    "stub": "tsx scripts/stub.ts",
     "test": "vitest run",
     "test:coverage": "vitest run --coverage",
     "test:ui": "vitest --ui",

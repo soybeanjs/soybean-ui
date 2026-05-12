@@ -1,4 +1,3 @@
-import { mkdir, rm, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import process from 'node:process';
 import ts from 'typescript';
@@ -6,6 +5,7 @@ import { Application, ReflectionKind } from 'typedoc';
 import type { Comment, DeclarationReflection, ProjectReflection, Reflection, SignatureReflection } from 'typedoc';
 import { kebabCase } from '@soybeanjs/utils';
 import { components as headlessComponents } from '../headless/src/constants/components';
+import { writeGeneratedJsonDirectory } from './_shared';
 
 type ApiSectionKind = 'props' | 'emits' | 'slots' | 'slotProps';
 
@@ -435,25 +435,48 @@ function escapeRegExpForRegExp(value: string): string {
   return value.replace(/[.*+?^${}()|[\]\\]/gu, '\\$&');
 }
 
-function normalizeApiTypeReference(type: ApiTypeReference, componentKey: string): ApiTypeReference {
-  const normalizedName = resolveDisplayTypeName(type.name, componentKey);
-  const aliasMeta = resolveDisplayAliasMeta(type.name, componentKey);
+function resolveNormalizedApiOwner(
+  value: { name: string; sourcePath: string | null },
+  componentKey: string
+): {
+  normalizedName: string;
+  normalizedSourcePath: string | null;
+  normalizedComponentKey: string;
+} {
+  const normalizedName = resolveDisplayTypeName(value.name, componentKey);
+  const aliasMeta = resolveDisplayAliasMeta(value.name, componentKey);
   const normalizedSourcePath =
-    aliasMeta?.ownerComponentKey === componentKey ? aliasMeta.ownerSourcePath : type.sourcePath;
-  const typeComponentKey = getComponentKeyForApiType(normalizedName, normalizedSourcePath) ?? componentKey;
+    aliasMeta?.ownerComponentKey === componentKey ? aliasMeta.ownerSourcePath : value.sourcePath;
+
+  return {
+    normalizedName,
+    normalizedSourcePath,
+    normalizedComponentKey: getComponentKeyForApiType(normalizedName, normalizedSourcePath) ?? componentKey
+  };
+}
+
+function normalizeReferencedTypes(referencedTypes: ApiTypeReference[], componentKey: string): ApiTypeReference[] {
+  return referencedTypes.map(referencedType => normalizeApiTypeReference(referencedType, componentKey));
+}
+
+function normalizeApiTypeReference(type: ApiTypeReference, componentKey: string): ApiTypeReference {
+  const { normalizedName, normalizedSourcePath, normalizedComponentKey } = resolveNormalizedApiOwner(
+    type,
+    componentKey
+  );
 
   return {
     ...type,
     name: normalizedName,
-    type: normalizeTypeTextForComponent(type.type, typeComponentKey) ?? type.type,
-    resolvedType: normalizeTypeTextForComponent(type.resolvedType, typeComponentKey),
+    type: normalizeTypeTextForComponent(type.type, normalizedComponentKey) ?? type.type,
+    resolvedType: normalizeTypeTextForComponent(type.resolvedType, normalizedComponentKey),
     descriptionKey: createDescriptionKey(normalizedSourcePath, normalizedName) ?? type.descriptionKey,
     sourcePath: normalizedSourcePath,
     members: type.members.map(member =>
-      normalizeApiMember(member, normalizedName, normalizedSourcePath, typeComponentKey)
+      normalizeApiMember(member, normalizedName, normalizedSourcePath, normalizedComponentKey)
     ),
     callables: type.callables.map(callable =>
-      normalizeApiCallable(callable, normalizedName, normalizedSourcePath, typeComponentKey)
+      normalizeApiCallable(callable, normalizedName, normalizedSourcePath, normalizedComponentKey)
     )
   };
 }
@@ -470,9 +493,7 @@ function normalizeApiMember(
     descriptionKey:
       createDescriptionKey(ownerSourcePath, ownerTypeName, 'members', member.name) ?? member.descriptionKey,
     inheritedFrom: normalizeTypeTextForComponent(member.inheritedFrom, componentKey),
-    referencedTypes: member.referencedTypes.map(referencedType =>
-      normalizeApiTypeReference(referencedType, componentKey)
-    )
+    referencedTypes: normalizeReferencedTypes(member.referencedTypes, componentKey)
   };
 }
 
@@ -488,35 +509,30 @@ function normalizeApiCallable(
     parameters: normalizeTypeTextForComponent(callable.parameters, componentKey),
     descriptionKey:
       createDescriptionKey(ownerSourcePath, ownerTypeName, 'callables', callable.name) ?? callable.descriptionKey,
-    referencedTypes: callable.referencedTypes.map(referencedType =>
-      normalizeApiTypeReference(referencedType, componentKey)
-    )
+    referencedTypes: normalizeReferencedTypes(callable.referencedTypes, componentKey)
   };
 }
 
 function normalizeApiSection(section: ApiSection, componentKey: string): ApiSection {
-  const normalizedName = resolveDisplayTypeName(section.name, componentKey);
-  const aliasMeta = resolveDisplayAliasMeta(section.name, componentKey);
-  const normalizedSourcePath =
-    aliasMeta?.ownerComponentKey === componentKey ? aliasMeta.ownerSourcePath : section.sourcePath;
-  const sectionComponentKey = getComponentKeyForApiType(normalizedName, normalizedSourcePath) ?? componentKey;
+  const { normalizedName, normalizedSourcePath, normalizedComponentKey } = resolveNormalizedApiOwner(
+    section,
+    componentKey
+  );
 
   return {
     ...section,
     name: normalizedName,
-    type: normalizeTypeTextForComponent(section.type, sectionComponentKey) ?? section.type,
-    resolvedType: normalizeTypeTextForComponent(section.resolvedType, sectionComponentKey),
+    type: normalizeTypeTextForComponent(section.type, normalizedComponentKey) ?? section.type,
+    resolvedType: normalizeTypeTextForComponent(section.resolvedType, normalizedComponentKey),
     descriptionKey: createDescriptionKey(normalizedSourcePath, normalizedName, section.kind) ?? section.descriptionKey,
     sourcePath: normalizedSourcePath,
     members: section.members.map(member =>
-      normalizeApiMember(member, normalizedName, normalizedSourcePath, sectionComponentKey)
+      normalizeApiMember(member, normalizedName, normalizedSourcePath, normalizedComponentKey)
     ),
     callables: section.callables.map(callable =>
-      normalizeApiCallable(callable, normalizedName, normalizedSourcePath, sectionComponentKey)
+      normalizeApiCallable(callable, normalizedName, normalizedSourcePath, normalizedComponentKey)
     ),
-    referencedTypes: section.referencedTypes.map(referencedType =>
-      normalizeApiTypeReference(referencedType, sectionComponentKey)
-    )
+    referencedTypes: normalizeReferencedTypes(section.referencedTypes, normalizedComponentKey)
   };
 }
 
@@ -704,6 +720,23 @@ function getIgnoredPropertyMetadata(
   };
 }
 
+function createTsTypeContext(options: {
+  declaration: TsDeclaration;
+  checker: ts.TypeChecker;
+  memberReflections: Map<string, DeclarationReflection>;
+}): TsTypeContext {
+  const { ignoredPropertyNames, ignoredSourcePaths } = getIgnoredPropertyMetadata(options.declaration, options.checker);
+
+  return {
+    declaration: options.declaration,
+    type: options.checker.getTypeAtLocation(options.declaration.name),
+    checker: options.checker,
+    memberReflections: options.memberReflections,
+    ignoredPropertyNames,
+    ignoredSourcePaths
+  };
+}
+
 function getTsTypeContext(reflection: DeclarationReflection): TsTypeContext | null {
   const sourceFilePath = reflection.sources?.[0]?.fullFileName;
 
@@ -718,30 +751,19 @@ function getTsTypeContext(reflection: DeclarationReflection): TsTypeContext | nu
     return null;
   }
 
-  const type = checker.getTypeAtLocation(declaration.name);
-  const { ignoredPropertyNames, ignoredSourcePaths } = getIgnoredPropertyMetadata(declaration, checker);
-
-  return {
+  return createTsTypeContext({
     declaration,
-    type,
     checker,
-    memberReflections: getTypedocMemberReflections(reflection),
-    ignoredPropertyNames,
-    ignoredSourcePaths
-  };
+    memberReflections: getTypedocMemberReflections(reflection)
+  });
 }
 
 function createNestedTsTypeContext(declaration: TsDeclaration, checker: ts.TypeChecker): TsTypeContext {
-  const { ignoredPropertyNames, ignoredSourcePaths } = getIgnoredPropertyMetadata(declaration, checker);
-
-  return {
+  return createTsTypeContext({
     declaration,
-    type: checker.getTypeAtLocation(declaration.name),
     checker,
-    memberReflections: new Map<string, DeclarationReflection>(),
-    ignoredPropertyNames,
-    ignoredSourcePaths
-  };
+    memberReflections: new Map<string, DeclarationReflection>()
+  });
 }
 
 function isOptionalSymbol(symbol: ts.Symbol, declaration: ts.Declaration | undefined): boolean {
@@ -1480,20 +1502,22 @@ function createComponentApiIndex(generatedAt: string, components: Record<string,
 }
 
 async function writeOutputs(generatedAt: string, components: Record<string, ComponentApi>): Promise<void> {
-  await rm(legacyOutputDir, { force: true, recursive: true });
-  await rm(outputDir, { force: true, recursive: true });
-  await mkdir(outputDir, { recursive: true });
-
   const index = createComponentApiIndex(generatedAt, components);
 
-  await writeFile(path.join(outputDir, 'index.json'), `${JSON.stringify(index, null, 2)}\n`, 'utf8');
-
-  await Promise.all(
-    Object.entries(components).map(async ([componentKey, componentApi]) => {
-      const filePath = path.join(outputDir, `${componentKey}.json`);
-      await writeFile(filePath, `${JSON.stringify(componentApi, null, 2)}\n`, 'utf8');
-    })
-  );
+  await writeGeneratedJsonDirectory({
+    outputDir,
+    resetPaths: [legacyOutputDir],
+    documents: [
+      {
+        fileName: 'index.json',
+        value: index
+      },
+      ...Object.entries(components).map(([componentKey, componentApi]) => ({
+        fileName: `${componentKey}.json`,
+        value: componentApi
+      }))
+    ]
+  });
 }
 
 async function generateComponentApi(): Promise<void> {

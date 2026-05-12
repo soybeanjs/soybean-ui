@@ -1,9 +1,10 @@
-import { mkdir, readFile, rm, writeFile } from 'node:fs/promises';
+import { readFile } from 'node:fs/promises';
 import path from 'node:path';
 import process from 'node:process';
 import { kebabCase } from '@soybeanjs/utils';
 import { components as headlessComponents } from '../headless/src/constants/components';
 import { componentChangelogOverrides } from './changelog-overrides';
+import { writeGeneratedJsonDirectory } from './_shared';
 
 type ChangelogEntryType = 'feature' | 'fix' | 'optimization' | 'refactor' | 'docs' | 'chore' | 'style';
 
@@ -137,21 +138,25 @@ async function main() {
   const documents = createComponentDocuments(versionBlocks, generatedAt);
   const releasesDocument = createReleaseDocument(versionBlocks, generatedAt);
 
-  await rm(outputDir, { recursive: true, force: true });
-  await mkdir(outputDir, { recursive: true });
-
   const index = createIndex(documents, generatedAt);
 
-  await writeFile(path.join(outputDir, 'index.json'), `${JSON.stringify(index, null, 2)}\n`);
-  await writeFile(path.join(outputDir, 'releases.json'), `${JSON.stringify(releasesDocument, null, 2)}\n`);
-
-  await Promise.all(
-    documents.map(document => {
-      const filePath = path.join(outputDir, `${document.component}.json`);
-
-      return writeFile(filePath, `${JSON.stringify(document, null, 2)}\n`);
-    })
-  );
+  await writeGeneratedJsonDirectory({
+    outputDir,
+    documents: [
+      {
+        fileName: 'index.json',
+        value: index
+      },
+      {
+        fileName: 'releases.json',
+        value: releasesDocument
+      },
+      ...documents.map(document => ({
+        fileName: `${document.component}.json`,
+        value: document
+      }))
+    ]
+  });
 }
 
 function parseChangelog(content: string): ParsedVersionBlock[] {

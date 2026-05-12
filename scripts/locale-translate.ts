@@ -1,16 +1,17 @@
-import { readdir, writeFile } from 'node:fs/promises';
+import { writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import process from 'node:process';
 import { pathToFileURL } from 'node:url';
-
-type JsonPrimitive = boolean | null | number | string;
-type JsonValue = JsonArray | JsonObject | JsonPrimitive;
-
-interface JsonArray extends Array<JsonValue> {}
-
-interface JsonObject {
-  [key: string]: JsonValue;
-}
+import { cloneJsonObject, flattenJsonMessages, isJsonObject, listFileBasenames } from './_shared';
+import {
+  getPendingEntries,
+  parseTranslateCliOptions,
+  printTranslateUsage,
+  resolveTargetLocales,
+  translateEntries
+} from './_translate';
+import type { JsonObject, JsonValue } from './_shared';
+import type { TranslateCliOptions, TranslationEntry } from './_translate';
 
 interface LocaleRegistryDocument {
   name: string;
@@ -19,159 +20,15 @@ interface LocaleRegistryDocument {
   messages: JsonObject;
 }
 
-type CliOptions = {
-  locale: string;
-  sourceLocale: string;
-  batchSize: number;
-  limit: number | null;
-  overwrite: boolean;
-  dryRun: boolean;
-  help: boolean;
-};
-
-type TranslationEntry = {
-  key: string;
-  source: string;
-};
-
-type PreparedTranslationEntry = TranslationEntry & {
-  protectedSource: string;
-  placeholderTokens: Map<string, string>;
-};
-
-type DeepLTranslation = {
-  detected_source_language?: string;
-  text?: string;
-};
-
-type DeepLTranslateResponse = {
-  detail?: string;
-  message?: string;
-  translations?: DeepLTranslation[];
-};
-
 const rootDir = process.cwd();
 const localeDir = path.join(rootDir, 'headless/src/locale/langs');
-const defaultBaseUrl = 'https://api-free.deepl.com/v2';
-const defaultRetryCount = 3;
-const defaultRetryDelayMs = 1500;
-const deepLLanguageMap = new Map<string, string>([
-  ['bg', 'BG'],
-  ['cs', 'CS'],
-  ['da', 'DA'],
-  ['de', 'DE'],
-  ['el', 'EL'],
-  ['en', 'EN'],
-  ['en-gb', 'EN-GB'],
-  ['en-us', 'EN-US'],
-  ['es', 'ES'],
-  ['et', 'ET'],
-  ['fi', 'FI'],
-  ['fr', 'FR'],
-  ['hu', 'HU'],
-  ['id', 'ID'],
-  ['it', 'IT'],
-  ['ja', 'JA'],
-  ['ko', 'KO'],
-  ['lt', 'LT'],
-  ['lv', 'LV'],
-  ['nb', 'NB'],
-  ['nb-no', 'NB'],
-  ['nl', 'NL'],
-  ['pl', 'PL'],
-  ['pt', 'PT-PT'],
-  ['pt-br', 'PT-BR'],
-  ['pt-pt', 'PT-PT'],
-  ['ro', 'RO'],
-  ['ru', 'RU'],
-  ['sk', 'SK'],
-  ['sl', 'SL'],
-  ['sv', 'SV'],
-  ['tr', 'TR'],
-  ['uk', 'UK'],
-  ['zh', 'ZH'],
-  ['zh-cn', 'ZH'],
-  ['zh-hans', 'ZH'],
-  ['zh-hk', 'ZH'],
-  ['zh-sg', 'ZH'],
-  ['zh-tw', 'ZH'],
-  ['zh-hant', 'ZH']
-]);
-
 const rtlLanguageCodes = new Set(['ar', 'fa', 'he', 'ur']);
 
 function printUsage() {
-  console.log(`Usage: pnpm translate:locale -- [--locale <locale>] [options]
-
-Options:
-  --locale <locale>         Target locale, for example de, pt-BR, or zh-TW. If omitted, translates all locale files in headless/src/locale/langs except the source locale.
-  --source-locale <locale>  Source locale file, default: en
-  --batch-size <number>     Number of entries per translation request, default: 20
-  --limit <number>          Only translate the first N pending entries
-  --overwrite               Re-translate entries that already have a target value
-  --dry-run                 Show pending translation counts without writing files
-  --help                    Show this help message
-
-Environment:
-  DEEPL_API_KEY             Required. DeepL API key
-  DEEPL_BASE_URL            Optional. Defaults to https://api-free.deepl.com/v2
-  TRANSLATE_API_KEY         Optional fallback for DEEPL_API_KEY
-  TRANSLATE_BASE_URL        Optional fallback for DEEPL_BASE_URL
-`);
-}
-
-function parseCliOptions(argv: string[]): CliOptions {
-  const options: CliOptions = {
-    locale: '',
-    sourceLocale: 'en',
-    batchSize: 20,
-    limit: null,
-    overwrite: false,
-    dryRun: false,
-    help: false
-  };
-
-  for (let index = 0; index < argv.length; index += 1) {
-    const arg = argv[index];
-    const nextArg = argv[index + 1];
-
-    switch (arg) {
-      case '--locale':
-        options.locale = nextArg ?? '';
-        index += 1;
-        break;
-      case '--source-locale':
-        options.sourceLocale = nextArg ?? options.sourceLocale;
-        index += 1;
-        break;
-      case '--batch-size':
-        options.batchSize = Number(nextArg) || options.batchSize;
-        index += 1;
-        break;
-      case '--limit':
-        options.limit = Number(nextArg) || null;
-        index += 1;
-        break;
-      case '--overwrite':
-        options.overwrite = true;
-        break;
-      case '--dry-run':
-        options.dryRun = true;
-        break;
-      case '--help':
-      case '-h':
-        options.help = true;
-        break;
-      default:
-        break;
-    }
-  }
-
-  return options;
-}
-
-function isJsonObject(value: unknown): value is JsonObject {
-  return typeof value === 'object' && value !== null && !Array.isArray(value);
+  printTranslateUsage(
+    'translate:locale',
+    'Target locale, for example de, pt-BR, or zh-TW. If omitted, translates all locale files in headless/src/locale/langs except the source locale.'
+  );
 }
 
 function isMissingModuleError(error: unknown, filePath: string): boolean {
@@ -180,10 +37,6 @@ function isMissingModuleError(error: unknown, filePath: string): boolean {
   }
 
   return error instanceof Error && error.message.includes(path.basename(filePath));
-}
-
-function cloneJsonObject(value: JsonObject): JsonObject {
-  return JSON.parse(JSON.stringify(value)) as JsonObject;
 }
 
 function isLocaleRegistryDocument(value: unknown): value is LocaleRegistryDocument {
@@ -237,7 +90,6 @@ function resolveLocaleDisplayName(locale: string): string {
 
 function toLocaleExportName(locale: string): string {
   const segments = locale.trim().replace(/_/gu, '-').split('-').filter(Boolean);
-
   const [firstSegment, ...remainingSegments] = segments;
 
   if (!firstSegment) {
@@ -248,12 +100,7 @@ function toLocaleExportName(locale: string): string {
 }
 
 async function resolveAvailableLocales(): Promise<string[]> {
-  const fileNames = await readdir(localeDir);
-
-  return fileNames
-    .filter(fileName => fileName.endsWith('.ts'))
-    .map(fileName => fileName.replace(/\.ts$/u, ''))
-    .sort((left, right) => left.localeCompare(right));
+  return listFileBasenames(localeDir, '.ts');
 }
 
 async function readLocaleMessages(locale: string): Promise<JsonObject> {
@@ -273,27 +120,6 @@ async function readLocaleMessages(locale: string): Promise<JsonObject> {
 
     throw error;
   }
-}
-
-function flattenLocaleMessages(messages: JsonObject, prefix: string = ''): Map<string, string> {
-  const flattened = new Map<string, string>();
-
-  for (const [key, value] of Object.entries(messages)) {
-    const nextKey = prefix ? `${prefix}.${key}` : key;
-
-    if (typeof value === 'string') {
-      flattened.set(nextKey, value);
-      continue;
-    }
-
-    if (isJsonObject(value)) {
-      for (const [nestedKey, nestedValue] of flattenLocaleMessages(value, nextKey)) {
-        flattened.set(nestedKey, nestedValue);
-      }
-    }
-  }
-
-  return flattened;
 }
 
 function shouldTranslateKey(key: string): boolean {
@@ -321,78 +147,6 @@ function rebuildLocaleMessages(
   }
 
   return output;
-}
-
-function getPendingEntries(
-  sourceMessages: Map<string, string>,
-  targetMessages: Map<string, string>,
-  overwrite: boolean,
-  limit: number | null
-): TranslationEntry[] {
-  const pendingEntries = Array.from(sourceMessages.entries())
-    .filter(([key]) => shouldTranslateKey(key))
-    .filter(([, source]) => source.trim())
-    .filter(([key]) => overwrite || !targetMessages.get(key)?.trim())
-    .map(([key, source]) => ({ key, source }));
-
-  return limit ? pendingEntries.slice(0, limit) : pendingEntries;
-}
-
-function chunkEntries(entries: TranslationEntry[], batchSize: number): TranslationEntry[][] {
-  const chunks: TranslationEntry[][] = [];
-
-  for (let index = 0; index < entries.length; index += batchSize) {
-    chunks.push(entries.slice(index, index + batchSize));
-  }
-
-  return chunks;
-}
-
-function getEnvNumber(name: string, fallback: number): number {
-  const value = Number(process.env[name]?.trim());
-
-  if (!Number.isFinite(value) || value < 0) {
-    return fallback;
-  }
-
-  return value;
-}
-
-function shouldRetryRequest(status: number): boolean {
-  return status === 429 || status >= 500;
-}
-
-function getRetryDelay(attempt: number, retryDelayMs: number): number {
-  return retryDelayMs * 2 ** attempt;
-}
-
-async function wait(ms: number): Promise<void> {
-  await new Promise(resolve => setTimeout(resolve, ms));
-}
-
-async function readResponseText(response: Response): Promise<string> {
-  try {
-    return (await response.text()).trim();
-  } catch {
-    return '';
-  }
-}
-
-function toDeepLLanguage(locale: string): string {
-  const normalizedLocale = locale.trim().replace(/_/gu, '-').toLowerCase();
-  const mappedLanguage = deepLLanguageMap.get(normalizedLocale);
-
-  if (mappedLanguage) {
-    return mappedLanguage;
-  }
-
-  const [language, region] = normalizedLocale.split('-');
-
-  if (!region) {
-    return language.toUpperCase();
-  }
-
-  return `${language.toUpperCase()}-${region.toUpperCase()}`;
 }
 
 function getEntryDescription(key: string): string {
@@ -520,145 +274,6 @@ function createTranslationContext(locale: string, entries: TranslationEntry[]): 
   ].join(' ');
 }
 
-function protectPlaceholders(source: string): Pick<PreparedTranslationEntry, 'placeholderTokens' | 'protectedSource'> {
-  const placeholderTokens = new Map<string, string>();
-  const placeholders = Array.from(source.matchAll(/\{[^}]+\}/gu), match => match[0]);
-
-  if (!placeholders.length) {
-    return { placeholderTokens, protectedSource: source };
-  }
-
-  let protectedSource = source;
-
-  placeholders.forEach((placeholder, index) => {
-    const token = `SBPH${index}TOKEN`;
-    placeholderTokens.set(token, placeholder);
-    protectedSource = protectedSource.replaceAll(placeholder, token);
-  });
-
-  return { placeholderTokens, protectedSource };
-}
-
-function restorePlaceholders(text: string, placeholderTokens: Map<string, string>): string {
-  let restoredText = text;
-
-  placeholderTokens.forEach((placeholder, token) => {
-    restoredText = restoredText.replaceAll(token, placeholder);
-  });
-
-  return restoredText;
-}
-
-function getTranslateApiKey(): string {
-  const apiKey = process.env.DEEPL_API_KEY?.trim() || process.env.TRANSLATE_API_KEY?.trim();
-
-  if (!apiKey) {
-    throw new Error('Missing required environment variable: DEEPL_API_KEY');
-  }
-
-  return apiKey;
-}
-
-function getTranslateBaseUrl(): string {
-  return (process.env.DEEPL_BASE_URL?.trim() || process.env.TRANSLATE_BASE_URL?.trim() || defaultBaseUrl).replace(
-    /\/$/u,
-    ''
-  );
-}
-
-function getDeepLErrorMessage(payload: DeepLTranslateResponse | null, fallback: string): string {
-  return payload?.message?.trim() || payload?.detail?.trim() || fallback;
-}
-
-function parseDeepLErrorResponse(responseText: string): DeepLTranslateResponse | null {
-  if (!responseText) {
-    return null;
-  }
-
-  try {
-    return JSON.parse(responseText) as DeepLTranslateResponse;
-  } catch {
-    return null;
-  }
-}
-
-async function requestTranslations(
-  entries: TranslationEntry[],
-  locale: string,
-  sourceLocale: string
-): Promise<Map<string, string>> {
-  const apiKey = getTranslateApiKey();
-  const baseUrl = getTranslateBaseUrl();
-  const retryCount = getEnvNumber('TRANSLATE_RETRY_COUNT', defaultRetryCount);
-  const retryDelayMs = getEnvNumber('TRANSLATE_RETRY_DELAY_MS', defaultRetryDelayMs);
-  const sourceLanguage = toDeepLLanguage(process.env.DEEPL_SOURCE_LANG?.trim() || sourceLocale);
-  const targetLanguage = toDeepLLanguage(locale);
-  const preparedEntries = entries.map(entry => ({ ...entry, ...protectPlaceholders(entry.source) }));
-
-  let payload: DeepLTranslateResponse | null = null;
-
-  for (let attempt = 0; attempt <= retryCount; attempt += 1) {
-    const response = await fetch(`${baseUrl}/translate`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `DeepL-Auth-Key ${apiKey}`
-      },
-      body: JSON.stringify({
-        context: createTranslationContext(locale, entries),
-        preserve_formatting: true,
-        source_lang: sourceLanguage,
-        target_lang: targetLanguage,
-        text: preparedEntries.map(entry => entry.protectedSource)
-      })
-    });
-
-    if (response.ok) {
-      payload = (await response.json()) as DeepLTranslateResponse;
-      break;
-    }
-
-    const responseText = await readResponseText(response);
-    const parsedError = parseDeepLErrorResponse(responseText);
-
-    if (attempt < retryCount && shouldRetryRequest(response.status)) {
-      const delayMs = getRetryDelay(attempt, retryDelayMs);
-      console.log(
-        `Translation request failed with ${response.status}. Retrying in ${delayMs}ms (${attempt + 1}/${retryCount})...`
-      );
-      await wait(delayMs);
-      continue;
-    }
-
-    const details = getDeepLErrorMessage(parsedError, responseText || response.statusText);
-    throw new Error(`Translation request failed: ${response.status} ${details}`);
-  }
-
-  if (!payload) {
-    throw new Error('Translation request failed without a response payload.');
-  }
-
-  const translations = payload.translations;
-
-  if (!translations?.length) {
-    throw new Error('Translation response did not include translations.');
-  }
-
-  const translatedEntries = new Map<string, string>();
-
-  preparedEntries.forEach((entry, index) => {
-    const translatedValue = translations[index]?.text;
-
-    if (typeof translatedValue !== 'string') {
-      throw new Error(`Missing translated value for key: ${entry.key}`);
-    }
-
-    translatedEntries.set(entry.key, restorePlaceholders(translatedValue, entry.placeholderTokens));
-  });
-
-  return translatedEntries;
-}
-
 function formatObjectKey(key: string): string {
   return /^[A-Za-z_$][\w$]*$/u.test(key) ? key : JSON.stringify(key);
 }
@@ -721,7 +336,7 @@ async function writeLocaleMessages(locale: string, messages: JsonObject): Promis
   await writeFile(filePath, content, 'utf8');
 }
 
-async function translateLocale(locale: string, options: CliOptions): Promise<void> {
+async function translateLocale(locale: string, options: TranslateCliOptions): Promise<void> {
   const sourceMessagesDocument = await readLocaleMessages(options.sourceLocale);
 
   if (!Object.keys(sourceMessagesDocument).length) {
@@ -729,13 +344,14 @@ async function translateLocale(locale: string, options: CliOptions): Promise<voi
   }
 
   const targetMessagesDocument = await readLocaleMessages(locale);
-  const flattenedSourceMessages = flattenLocaleMessages(sourceMessagesDocument);
-  const flattenedTargetMessages = flattenLocaleMessages(targetMessagesDocument);
+  const flattenedSourceMessages = flattenJsonMessages(sourceMessagesDocument);
+  const flattenedTargetMessages = flattenJsonMessages(targetMessagesDocument);
   const pendingEntries = getPendingEntries(
     flattenedSourceMessages,
     flattenedTargetMessages,
     options.overwrite,
-    options.limit
+    options.limit,
+    shouldTranslateKey
   );
 
   if (!pendingEntries.length) {
@@ -749,33 +365,30 @@ async function translateLocale(locale: string, options: CliOptions): Promise<voi
     return;
   }
 
-  const translatedTextCache = new Map<string, string>();
-  const entryChunks = chunkEntries(pendingEntries, options.batchSize);
-
-  for (const [chunkIndex, entryChunk] of entryChunks.entries()) {
-    const uncachedEntries = entryChunk.filter(entry => !translatedTextCache.has(entry.source));
-
-    if (uncachedEntries.length) {
+  const translatedEntries = await translateEntries({
+    entries: pendingEntries,
+    batchSize: options.batchSize,
+    sourceLocale: options.sourceLocale,
+    targetLocale: locale,
+    createContext: entries => createTranslationContext(locale, entries),
+    sourceLanguage: process.env.DEEPL_SOURCE_LANG?.trim() || undefined,
+    protectPlaceholders: true,
+    onBatchStart: context => {
       console.log(
-        `Translating ${locale} batch ${chunkIndex + 1}/${entryChunks.length} (${uncachedEntries.length} entries)...`
+        `Translating ${context.locale} batch ${context.batchIndex + 1}/${context.batchCount} (${context.entryCount} entries)...`
       );
-      const translatedEntries = await requestTranslations(uncachedEntries, locale, options.sourceLocale);
+    }
+  });
 
-      uncachedEntries.forEach(entry => {
-        translatedTextCache.set(entry.source, translatedEntries.get(entry.key) ?? '');
-      });
+  pendingEntries.forEach(entry => {
+    const translatedValue = translatedEntries.get(entry.key);
+
+    if (translatedValue === undefined) {
+      throw new Error(`Missing translated value for key: ${entry.key}`);
     }
 
-    entryChunk.forEach(entry => {
-      const translatedValue = translatedTextCache.get(entry.source);
-
-      if (translatedValue === undefined) {
-        throw new Error(`Missing cached translation for key: ${entry.key}`);
-      }
-
-      flattenedTargetMessages.set(entry.key, translatedValue);
-    });
-  }
+    flattenedTargetMessages.set(entry.key, translatedValue);
+  });
 
   const outputDocument = rebuildLocaleMessages(sourceMessagesDocument, flattenedTargetMessages);
 
@@ -786,7 +399,7 @@ async function translateLocale(locale: string, options: CliOptions): Promise<voi
 }
 
 async function main(): Promise<void> {
-  const options = parseCliOptions(process.argv.slice(2));
+  const options = parseTranslateCliOptions(process.argv.slice(2));
 
   if (options.help) {
     printUsage();
@@ -798,20 +411,14 @@ async function main(): Promise<void> {
   }
 
   const availableLocales = await resolveAvailableLocales();
-  const targetLocales = options.locale
-    ? [options.locale]
-    : availableLocales.filter(locale => locale !== options.sourceLocale);
-
-  if (!targetLocales.length) {
-    console.log('No target locales found.');
-    return;
-  }
+  const targetLocales = resolveTargetLocales({
+    availableLocales,
+    sourceLocale: options.sourceLocale,
+    requestedLocale: options.locale,
+    emptyMessage: 'No target locales found.'
+  });
 
   for (const locale of targetLocales) {
-    if (locale === options.sourceLocale) {
-      continue;
-    }
-
     await translateLocale(locale, options);
   }
 }
