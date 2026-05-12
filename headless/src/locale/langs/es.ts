@@ -1,6 +1,6 @@
-import type { LocaleMessages } from '../types';
+import type { LocaleMessages, LocaleRegistry } from '../types';
 
-const es: LocaleMessages = {
+const messages: LocaleMessages = {
   pagination: {
     firstPage: 'Primera página',
     prevPage: 'Página anterior',
@@ -102,6 +102,13 @@ const es: LocaleMessages = {
       time: '––'
     }
   }
+};
+
+const es: LocaleRegistry = {
+  name: 'Español',
+  key: 'es',
+  dir: 'ltr',
+  messages
 };
 
 export default es;

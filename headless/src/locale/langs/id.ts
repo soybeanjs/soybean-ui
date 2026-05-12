@@ -1,6 +1,6 @@
-import type { LocaleMessages } from '../types';
+import type { LocaleMessages, LocaleRegistry } from '../types';
 
-const id: LocaleMessages = {
+const messages: LocaleMessages = {
   pagination: {
     firstPage: 'Halaman pertama',
     prevPage: 'Halaman sebelumnya',
@@ -102,6 +102,13 @@ const id: LocaleMessages = {
       time: '––'
     }
   }
+};
+
+const id: LocaleRegistry = {
+  name: 'Bahasa Indonesia',
+  key: 'id',
+  dir: 'ltr',
+  messages
 };
 
 export default id;

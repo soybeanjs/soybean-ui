@@ -1,6 +1,6 @@
-import type { LocaleMessages } from '../types';
+import type { LocaleMessages, LocaleRegistry } from '../types';
 
-const ja: LocaleMessages = {
+const messages: LocaleMessages = {
   pagination: {
     firstPage: '最初のページ',
     prevPage: '前のページ',
@@ -102,6 +102,13 @@ const ja: LocaleMessages = {
       time: '––'
     }
   }
+};
+
+const ja: LocaleRegistry = {
+  name: '日本語',
+  key: 'ja',
+  dir: 'ltr',
+  messages
 };
 
 export default ja;

@@ -1,6 +1,6 @@
-import type { LocaleMessages } from '../types';
+import type { LocaleMessages, LocaleRegistry } from '../types';
 
-const ko: LocaleMessages = {
+const messages: LocaleMessages = {
   pagination: {
     firstPage: '첫 페이지',
     prevPage: '이전 페이지',
@@ -102,6 +102,13 @@ const ko: LocaleMessages = {
       time: '––'
     }
   }
+};
+
+const ko: LocaleRegistry = {
+  name: '한국어',
+  key: 'ko',
+  dir: 'ltr',
+  messages
 };
 
 export default ko;

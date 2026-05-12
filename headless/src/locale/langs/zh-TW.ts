@@ -1,6 +1,6 @@
-import type { LocaleMessages } from '../types';
+import type { LocaleMessages, LocaleRegistry } from '../types';
 
-const zhTW: LocaleMessages = {
+const messages: LocaleMessages = {
   pagination: {
     firstPage: '第一頁',
     prevPage: '上一頁',
@@ -102,6 +102,13 @@ const zhTW: LocaleMessages = {
       time: '––'
     }
   }
+};
+
+const zhTW: LocaleRegistry = {
+  name: '繁體中文',
+  key: 'zh-TW',
+  dir: 'ltr',
+  messages
 };
 
 export default zhTW;

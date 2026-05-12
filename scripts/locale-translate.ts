@@ -12,6 +12,13 @@ interface JsonObject {
   [key: string]: JsonValue;
 }
 
+interface LocaleRegistryDocument {
+  name: string;
+  key: string;
+  dir?: 'ltr' | 'rtl';
+  messages: JsonObject;
+}
+
 type CliOptions = {
   locale: string;
   sourceLocale: string;
@@ -90,6 +97,8 @@ const deepLLanguageMap = new Map<string, string>([
   ['zh-tw', 'ZH'],
   ['zh-hant', 'ZH']
 ]);
+
+const rtlLanguageCodes = new Set(['ar', 'fa', 'he', 'ur']);
 
 function printUsage() {
   console.log(`Usage: pnpm translate:locale -- [--locale <locale>] [options]
@@ -177,6 +186,55 @@ function cloneJsonObject(value: JsonObject): JsonObject {
   return JSON.parse(JSON.stringify(value)) as JsonObject;
 }
 
+function isLocaleRegistryDocument(value: unknown): value is LocaleRegistryDocument {
+  return (
+    isJsonObject(value) &&
+    typeof value.name === 'string' &&
+    typeof value.key === 'string' &&
+    isJsonObject(value.messages) &&
+    (value.dir === undefined || value.dir === 'ltr' || value.dir === 'rtl')
+  );
+}
+
+function getPrimaryLanguageSubtag(locale: string): string {
+  const normalizedLocale = locale.trim().replace(/_/gu, '-').toLowerCase();
+
+  if (!normalizedLocale) {
+    return 'en';
+  }
+
+  return normalizedLocale.split('-')[0] ?? 'en';
+}
+
+function resolveLocaleDirection(locale: string): 'ltr' | 'rtl' {
+  return rtlLanguageCodes.has(getPrimaryLanguageSubtag(locale)) ? 'rtl' : 'ltr';
+}
+
+function resolveLocaleDisplayName(locale: string): string {
+  const normalizedLocale = locale.trim().replace(/_/gu, '-');
+  const [languageCode, regionCode] = normalizedLocale.split('-');
+
+  if (!languageCode) {
+    return 'English';
+  }
+
+  const languageDisplayNames = new Intl.DisplayNames([normalizedLocale, languageCode, 'en'], { type: 'language' });
+  const languageName = languageDisplayNames.of(languageCode) ?? normalizedLocale;
+
+  if (!regionCode) {
+    return languageName;
+  }
+
+  const regionDisplayNames = new Intl.DisplayNames([normalizedLocale, languageCode, 'en'], { type: 'region' });
+  const regionName = regionDisplayNames.of(regionCode.toUpperCase());
+
+  if (!regionName) {
+    return languageName;
+  }
+
+  return `${languageName} (${regionName})`;
+}
+
 function toLocaleExportName(locale: string): string {
   const segments = locale.trim().replace(/_/gu, '-').split('-').filter(Boolean);
 
@@ -204,7 +262,8 @@ async function readLocaleMessages(locale: string): Promise<JsonObject> {
   try {
     const localeModule = (await import(pathToFileURL(filePath).href)) as Record<string, unknown>;
     const exportName = toLocaleExportName(locale);
-    const messages = localeModule.default ?? localeModule[exportName];
+    const localeExport = localeModule.default ?? localeModule[exportName];
+    const messages = isLocaleRegistryDocument(localeExport) ? localeExport.messages : localeExport;
 
     return isJsonObject(messages) ? cloneJsonObject(messages) : {};
   } catch (error) {
@@ -651,7 +710,13 @@ ${indent}}`;
 async function writeLocaleMessages(locale: string, messages: JsonObject): Promise<void> {
   const exportName = toLocaleExportName(locale);
   const filePath = path.join(localeDir, `${locale}.ts`);
-  const content = `import type { LocaleMessages } from '../types';\n\nconst ${exportName}: LocaleMessages = ${serializeTsValue(messages)};\n\nexport default ${exportName};\n`;
+  const localeRegistry = {
+    name: resolveLocaleDisplayName(locale),
+    key: locale,
+    dir: resolveLocaleDirection(locale),
+    messages
+  };
+  const content = `import type { LocaleRegistry } from '../types';\n\nconst ${exportName}: LocaleRegistry = ${serializeTsValue(localeRegistry)};\n\nexport default ${exportName};\n`;
 
   await writeFile(filePath, content, 'utf8');
 }

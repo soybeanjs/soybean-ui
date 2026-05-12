@@ -1,6 +1,6 @@
-import type { LocaleMessages } from '../types';
+import type { LocaleMessages, LocaleRegistry } from '../types';
 
-const ptBR: LocaleMessages = {
+const messages: LocaleMessages = {
   pagination: {
     firstPage: 'Primeira página',
     prevPage: 'Página anterior',
@@ -102,6 +102,13 @@ const ptBR: LocaleMessages = {
       time: '––'
     }
   }
+};
+
+const ptBR: LocaleRegistry = {
+  name: 'Português (Brasil)',
+  key: 'pt-BR',
+  dir: 'ltr',
+  messages
 };
 
 export default ptBR;

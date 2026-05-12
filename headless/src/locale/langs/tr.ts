@@ -1,6 +1,6 @@
-import type { LocaleMessages } from '../types';
+import type { LocaleMessages, LocaleRegistry } from '../types';
 
-const tr: LocaleMessages = {
+const messages: LocaleMessages = {
   pagination: {
     firstPage: 'İlk sayfa',
     prevPage: 'Önceki sayfa',
@@ -102,6 +102,13 @@ const tr: LocaleMessages = {
       time: '––'
     }
   }
+};
+
+const tr: LocaleRegistry = {
+  name: 'Türkçe',
+  key: 'tr',
+  dir: 'ltr',
+  messages
 };
 
 export default tr;

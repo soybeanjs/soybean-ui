@@ -94,13 +94,18 @@ Pass the locale code directly to `SConfigProvider`:
 
 ### Loading another supported locale
 
+`registerLocale` accepts two forms:
+
+- `registerLocale(localeRegistry)` for built-in locale files or any custom registry object when you need explicit `name` and `dir` metadata.
+- `registerLocale(key, messages)` for a lightweight custom locale keyed only by its message table.
+
 Import the locale file as a default export, register it once during app setup, and then pass the same locale code to `SConfigProvider`:
 
 ```ts
 import { registerLocale } from '@soybeanjs/headless/locale';
 import ar from '@soybeanjs/headless/locale/ar';
 
-registerLocale('ar', ar);
+registerLocale(ar);
 ```
 
 ```vue
@@ -136,16 +141,16 @@ const messages: LocaleMessagesOverrides = {
 
 ### Using a custom locale from scratch
 
-Import `en` as a base and override any keys, then register under a custom name:
+Import `en` as a base registry, override any keys from `en.messages`, then register under a custom locale key with the shorthand form:
 
 ```ts
 import { registerLocale, en } from '@soybeanjs/headless/locale';
 import type { LocaleMessages } from '@soybeanjs/headless/locale';
 
 const myLocale: LocaleMessages = {
-  ...en,
+  ...en.messages,
   pagination: {
-    ...en.pagination,
+    ...en.messages.pagination,
     nextPage: 'Next →',
     prevPage: '← Prev'
   }
@@ -154,7 +159,7 @@ const myLocale: LocaleMessages = {
 registerLocale('custom', myLocale);
 ```
 
-Then pass `locale="custom"` to `SConfigProvider`.
+Then pass `locale="custom"` to `SConfigProvider`. If you also need a custom display name or explicit `dir`, pass a full `LocaleRegistry` object to `registerLocale(...)` instead.
 
 ### Locale key reference
 

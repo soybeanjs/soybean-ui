@@ -1,3 +1,5 @@
+import type { Direction } from '../types';
+
 export interface LocaleAnchorMessages {
   /** Aria-label for the anchor `<nav>` landmark. */
   nav: string;
@@ -247,6 +249,13 @@ export interface LocaleMessages {
   table: LocaleTableMessages;
   tagsInput: LocaleTagsInputMessages;
   textarea: LocaleTextareaMessages;
+}
+
+export interface LocaleRegistry {
+  name: string;
+  key: string;
+  dir?: Direction;
+  messages: LocaleMessages;
 }
 
 export type LocaleMessagesOverrides = {

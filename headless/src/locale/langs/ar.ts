@@ -1,6 +1,6 @@
-import type { LocaleMessages } from '../types';
+import type { LocaleMessages, LocaleRegistry } from '../types';
 
-const ar: LocaleMessages = {
+const messages: LocaleMessages = {
   pagination: {
     firstPage: 'الصفحة الأولى',
     prevPage: 'الصفحة السابقة',
@@ -102,6 +102,13 @@ const ar: LocaleMessages = {
       time: '––'
     }
   }
+};
+
+const ar: LocaleRegistry = {
+  name: 'العربية',
+  key: 'ar',
+  dir: 'rtl',
+  messages
 };
 
 export default ar;

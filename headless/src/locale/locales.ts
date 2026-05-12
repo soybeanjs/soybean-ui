@@ -1,38 +1,60 @@
 import type { Direction } from '../types';
 import enLocale from './langs/en';
 import zhCNLocale from './langs/zh-CN';
-import type { LocaleMessages } from './types';
+import type { LocaleMessages, LocaleRegistry } from './types';
 
-const rtlLanguageCodes = new Set(['ar', 'fa', 'he', 'ur']);
-
-const localeRegistry: Record<string, LocaleMessages> = {
-  en: enLocale,
-  'zh-CN': zhCNLocale
+/**
+ * The locale registry is a simple in-memory object that maps locale keys to their corresponding registry entries.
+ */
+const localeRegistry: Record<string, LocaleRegistry> = {
+  [enLocale.key]: enLocale,
+  [zhCNLocale.key]: zhCNLocale
 };
-
-function getPrimaryLanguageSubtag(locale?: string): string {
-  const normalizedLocale = locale?.trim().replace(/_/gu, '-').toLowerCase();
-
-  if (!normalizedLocale) {
-    return 'en';
-  }
-
-  return normalizedLocale.split('-')[0] ?? 'en';
-}
 
 /**
  * Register a locale so `useLocaleMessages()` can resolve it by name.
  *
- * Call this once at app setup before mounting when you need to add a custom locale
- * or opt into one of the non-pre-registered built-in locale files, e.g.:
+ * Call this once at app setup before mounting.
+ *
+ * Supported forms:
+ * 1. `registerLocale(localeRegistry)` for built-in locale files or any custom locale
+ *    that needs explicit `name` and `dir` metadata.
+ * 2. `registerLocale(key, messages)` for a lightweight custom locale keyed only by
+ *    its message table.
+ *
+ * For example:
  * ```ts
  * import { registerLocale } from '@soybeanjs/headless/locale';
+ * import type { LocaleMessages } from '@soybeanjs/headless/locale';
  * import zhTW from '@soybeanjs/headless/locale/zh-TW';
- * registerLocale('zh-TW', zhTW);
+ *
+ * registerLocale(zhTW);
+ *
+ * // or register a custom locale by key:
+ *
+ * const customMessages: LocaleMessages = {
+ *  // ...messages
+ * }
+ * registerLocale('fr', customMessages);
  * ```
  */
-export function registerLocale(name: string, messages: LocaleMessages): void {
-  localeRegistry[name] = messages;
+export function registerLocale(locale: LocaleRegistry): void;
+export function registerLocale(key: string, messages: LocaleMessages): void;
+export function registerLocale(localeOrKey: LocaleRegistry | string, messagesOrLocale?: LocaleMessages): void {
+  const locale =
+    typeof localeOrKey === 'string'
+      ? {
+          key: localeOrKey,
+          name: localeOrKey,
+          messages: messagesOrLocale as LocaleMessages
+        }
+      : localeOrKey;
+
+  localeRegistry[locale.key] = locale;
+}
+
+export function resolveLocaleRegistry(locale?: string): LocaleRegistry {
+  return locale ? (localeRegistry[locale] ?? enLocale) : enLocale;
 }
 
 /**
@@ -40,11 +62,11 @@ export function registerLocale(name: string, messages: LocaleMessages): void {
  * Only `en` and `zh-CN` are pre-registered by default.
  */
 export function resolveLocale(locale: string): LocaleMessages {
-  return localeRegistry[locale] ?? enLocale;
+  return resolveLocaleRegistry(locale).messages;
 }
 
 export function resolveLocaleDirection(locale?: string): Direction {
-  return rtlLanguageCodes.has(getPrimaryLanguageSubtag(locale)) ? 'rtl' : 'ltr';
+  return locale ? (localeRegistry[locale]?.dir ?? 'ltr') : 'ltr';
 }
 
 export { enLocale as en };

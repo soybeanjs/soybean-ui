@@ -92,13 +92,18 @@ SoybeanUI 目前提供以下 13 套内置组件文案，用于驱动无障碍标
 
 ### 加载其他受支持的 locale
 
+`registerLocale` 支持两种形式：
+
+- `registerLocale(localeRegistry)`：适合直接注册内置语言文件，或者需要显式提供 `name` 与 `dir` 元数据的自定义语言。
+- `registerLocale(key, messages)`：适合只按消息表快速注册一个轻量自定义语言。
+
 把语言文件按默认导入方式引入，在应用初始化时注册一次，然后再把同样的 locale 代码传给 `SConfigProvider`：
 
 ```ts
 import { registerLocale } from '@soybeanjs/headless/locale';
 import ar from '@soybeanjs/headless/locale/ar';
 
-registerLocale('ar', ar);
+registerLocale(ar);
 ```
 
 ```vue
@@ -134,16 +139,16 @@ const messages: LocaleMessagesOverrides = {
 
 ### 使用完全自定义的 locale
 
-以 `en` 为基础展开并覆盖所需键，然后注册为自定义名称：
+以 `en` 这个基础注册表为起点，从 `en.messages` 展开并覆盖所需键，然后用简写形式注册为自定义名称：
 
 ```ts
 import { registerLocale, en } from '@soybeanjs/headless/locale';
 import type { LocaleMessages } from '@soybeanjs/headless/locale';
 
 const myLocale: LocaleMessages = {
-  ...en,
+  ...en.messages,
   pagination: {
-    ...en.pagination,
+    ...en.messages.pagination,
     nextPage: '下一页 →',
     prevPage: '← 上一页'
   }
@@ -152,7 +157,7 @@ const myLocale: LocaleMessages = {
 registerLocale('custom', myLocale);
 ```
 
-再将 `locale="custom"` 传给 `SConfigProvider`。
+再将 `locale="custom"` 传给 `SConfigProvider`。如果你还需要自定义显示名称或显式指定 `dir`，请改用完整的 `LocaleRegistry` 对象形式调用 `registerLocale(...)`。
 
 ### Locale key 说明
 

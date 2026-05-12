@@ -81,13 +81,30 @@ import {
 | `tr`    | 土耳其语     |
 | `id`    | 印度尼西亚语 |
 
-默认只有 `en` 和 `zh-CN` 会在 locale 注册表中预注册。未传 `dir` 时，`ConfigProvider` 会跟随 `locale` 对应的方向，因此 `ar` 会自动推导为 `rtl`。其他语言需要从 `@soybeanjs/headless/locale/{code}` 导入后，在应用初始化时注册一次：
+默认只有 `en` 和 `zh-CN` 会在 locale 注册表中预注册。`registerLocale` 支持两种注册方式：
+
+- 直接传入 `LocaleRegistry` 对象。`@soybeanjs/headless/locale/{code}` 导出的内置语言文件已经是这种结构，并且自带 `dir` 元数据。
+- 传入 locale key 和 `LocaleMessages`，用于快速注册一个轻量自定义语言。
+
+简写形式 `registerLocale(key, messages)` 会将 key 作为语言名，并在未显式提供方向时回退到 `ltr`。如果你需要像 `ar` 这样的 `rtl` 元数据，请优先使用对象形式。
 
 ```ts
-import { registerLocale } from '@soybeanjs/headless/locale';
+import { en, registerLocale } from '@soybeanjs/headless/locale';
+import type { LocaleMessages } from '@soybeanjs/headless/locale';
 import ar from '@soybeanjs/headless/locale/ar';
 
-registerLocale('ar', ar);
+registerLocale(ar);
+
+const customMessages: LocaleMessages = {
+  ...en.messages,
+  pagination: {
+    ...en.messages.pagination,
+    nextPage: '下一页 →',
+    prevPage: '← 上一页'
+  }
+};
+
+registerLocale('custom', customMessages);
 ```
 
 ## 📚 包结构

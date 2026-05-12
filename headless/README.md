@@ -81,13 +81,30 @@ import {
 | `tr`    | Turkish             |
 | `id`    | Indonesian          |
 
-Only `en` and `zh-CN` are pre-registered in the locale registry by default. When `dir` is omitted, `ConfigProvider` follows the direction implied by `locale`, so `ar` automatically resolves to `rtl`. Import other locale files from `@soybeanjs/headless/locale/{code}` and register them once during app setup:
+Only `en` and `zh-CN` are pre-registered in the locale registry by default. `registerLocale` supports two registration styles:
+
+- Pass a `LocaleRegistry` object. Built-in locale files from `@soybeanjs/headless/locale/{code}` already export this shape, including `dir` metadata.
+- Pass a locale key plus `LocaleMessages` for a lightweight custom locale.
+
+The shorthand `registerLocale(key, messages)` form uses the key as the locale name and falls back to `ltr`. Use the object form when you need explicit metadata such as `rtl`.
 
 ```ts
-import { registerLocale } from '@soybeanjs/headless/locale';
+import { en, registerLocale } from '@soybeanjs/headless/locale';
+import type { LocaleMessages } from '@soybeanjs/headless/locale';
 import ar from '@soybeanjs/headless/locale/ar';
 
-registerLocale('ar', ar);
+registerLocale(ar);
+
+const customMessages: LocaleMessages = {
+  ...en.messages,
+  pagination: {
+    ...en.messages.pagination,
+    nextPage: 'Next →',
+    prevPage: '← Prev'
+  }
+};
+
+registerLocale('custom', customMessages);
 ```
 
 ## 📚 Package Structure
