@@ -22,17 +22,17 @@ applyTo: '{headless/src/components,src/components}/**/*.{ts,vue}'
 - playground 示例可以说明主要公开能力
 - 中英文文档结构同步
 - `docs/src/constants/menus.ts` 已更新
-- 若公开 API 有变化，已运行 `pnpm gen:api`
-- 非英文 API 描述已通过 `pnpm translate:api:i18n -- --locale <locale>` 同步，或已说明暂未翻译原因
-- 若本轮改动触达 changelog 映射、组件版本日志展示或 release 页面，已运行 `pnpm gen:changelog`
-- 非英文 changelog 文案已通过 `pnpm translate:changelog:i18n -- --locale <locale>` 同步，或已说明暂未翻译原因
+- 若公开 API 有变化，已运行 `pnpm sui api`
+- 非英文 API 描述已通过 `pnpm sui api-translate -- --locale <locale>` 同步，或已说明暂未翻译原因
+- 若本轮改动触达 changelog 映射、组件版本日志展示或 release 页面，已运行 `pnpm sui changelog`
+- 非英文 changelog 文案已通过 `pnpm sui changelog-translate -- --locale <locale>` 同步，或已说明暂未翻译原因
 - 组件测试覆盖 rendering、state、disabled、accessibility 核心场景
 
 ## 出口与生成文件
 
 - `headless/src/index.ts` 与 `src/index.ts` 已更新
-- `pnpm gen:headless` 已运行（更新 `headless/src/constants/components.ts` 与 `headless/src/namespaced/index.ts`）
-- `pnpm gen:ui` 已运行（更新 `src/constants/components.ts`）
+- `pnpm sui headless` 已运行（更新 `headless/src/constants/components.ts` 与 `headless/src/namespaced/index.ts`）
+- `pnpm sui ui` 已运行（更新 `src/constants/components.ts`）
 - 组件名称数据、命名空间数据与 API 生成产物都来自脚本，未手动改生成文件
 
 ## Headless

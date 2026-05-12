@@ -18,7 +18,7 @@ applyTo: 'src/components/**/*.{ts,vue}'
 2. `types.ts`
 3. wrapper `.vue`
 4. `index.ts` 与 `src/index.ts`
-5. 运行 `pnpm gen:ui`
+5. 运行 `pnpm sui ui`
 
 ## Step 1：variants.ts
 
@@ -87,7 +87,7 @@ applyTo: 'src/components/**/*.{ts,vue}'
 ## Step 5：注册到 UI 出口
 
 - 更新 `src/index.ts`
-- 运行 `pnpm gen:ui` 更新 `src/constants/components.ts`（该文件由脚本生成，不要手动编辑）
+- 运行 `pnpm sui ui` 更新 `src/constants/components.ts`（该文件由脚本生成，不要手动编辑）
 
 ## 禁止反模式
 

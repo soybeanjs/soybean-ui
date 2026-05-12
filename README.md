@@ -142,13 +142,13 @@ import '@soybeanjs/ui/styles.css'; // pre-built UnoCSS stylesheet
 If you contribute new public components, exports, or API descriptions, keep generated surfaces in sync through the official scripts instead of editing generated files by hand.
 
 ```bash
-pnpm gen:headless     # sync headless component names and namespaced exports
-pnpm gen:ui           # sync ui component names
-pnpm gen:api          # regenerate docs api json and locale baseline data
-pnpm gen:api:i18n     # refresh api locale template data only
-pnpm gen:changelog    # regenerate docs changelog json and locale baseline data
-pnpm translate:api:i18n -- --locale zh-CN
-pnpm translate:changelog:i18n -- --locale zh-CN
+pnpm sui headless                 # sync headless component names and namespaced exports
+pnpm sui ui                       # sync ui component names
+pnpm sui api                      # regenerate docs api json and locale baseline data
+pnpm sui api-locales              # refresh api locale template data only
+pnpm sui changelog                # regenerate docs changelog json and locale baseline data
+pnpm sui api-translate -- --locale zh-CN
+pnpm sui changelog-translate -- --locale zh-CN
 ```
 
 The docs site now renders component docs through `UsageCode`, `PlaygroundGallery`, and `ComponentApi`. Component detail pages and `/releases` also read generated changelog data from `docs/src/generated/changelog/` and `docs/src/generated/changelog-locales/`.

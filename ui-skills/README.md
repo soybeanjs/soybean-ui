@@ -27,5 +27,5 @@ The `skills` CLI installs every skill shipped in the package and places them int
 Generate the publishable package contents from the source repository:
 
 ```bash
-pnpm gen:skills:dist
+pnpm sui skills
 ```

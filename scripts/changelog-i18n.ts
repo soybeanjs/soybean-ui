@@ -1,7 +1,13 @@
 import { mkdir, readdir } from 'node:fs/promises';
 import path from 'node:path';
 import process from 'node:process';
-import { collectKeyedTextEntries, listFileBasenames, readJsonObject, syncLocaleTemplateFiles } from './_shared';
+import {
+  collectKeyedTextEntries,
+  listFileBasenames,
+  readJsonObject,
+  runCliModule,
+  syncLocaleTemplateFiles
+} from './_shared';
 
 const rootDir = process.cwd();
 const changelogDir = path.join(rootDir, 'docs/src/generated/changelog');
@@ -29,7 +35,7 @@ async function collectChangelogSummaryEntries(): Promise<Map<string, string>> {
   return collected;
 }
 
-async function main(): Promise<void> {
+export async function generateChangelogLocaleTemplates(): Promise<void> {
   const [entries, locales] = await Promise.all([
     collectChangelogSummaryEntries(),
     listFileBasenames(localeDir, '.yml')
@@ -50,4 +56,4 @@ async function main(): Promise<void> {
   );
 }
 
-await main();
+runCliModule(import.meta.url, generateChangelogLocaleTemplates);

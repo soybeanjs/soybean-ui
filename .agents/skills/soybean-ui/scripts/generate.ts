@@ -6,6 +6,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 import { menuData } from '../../../../docs/src/constants/menus';
+import { runCliModule } from '../../../../scripts/_shared';
 
 type FrontmatterResult = {
   content: string;
@@ -74,9 +75,7 @@ const categoryTitleMap: Record<string, string> = {
   other: 'Other'
 };
 
-void generateSoybeanUiSkillFiles();
-
-async function generateSoybeanUiSkillFiles(): Promise<void> {
+export async function generateSkillDocs(): Promise<void> {
   const componentPaths = await collectMarkdownFiles(docsComponentsDir);
   const docs = await Promise.all(componentPaths.map(componentPath => createComponentDoc(componentPath)));
   const sortedDocs = docs.sort((left, right) => left.slug.localeCompare(right.slug));
@@ -97,6 +96,8 @@ async function generateSoybeanUiSkillFiles(): Promise<void> {
 
   console.log(`Generated SoybeanUI skill docs for ${sortedDocs.length} components.`);
 }
+
+runCliModule(import.meta.url, generateSkillDocs);
 
 async function collectMarkdownFiles(directoryPath: string): Promise<string[]> {
   const entries = await readdir(directoryPath, { withFileTypes: true });

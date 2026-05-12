@@ -8,6 +8,7 @@ import {
   translateJsonLocaleFile,
   resolveAvailableLocalesFromI18nModule
 } from './_translate';
+import { runCliModule } from './_shared';
 import type { TranslateCliOptions } from './_translate';
 
 const rootDir = process.cwd();
@@ -16,7 +17,7 @@ const i18nModulePath = path.join(rootDir, 'docs/src/modules/i18n.ts');
 
 function printUsage() {
   printTranslateUsage(
-    'translate:changelog:i18n',
+    'sui changelog-translate --',
     'Target locale, for example zh-CN or ja. If omitted, translates all available locales except the source locale.'
   );
 }
@@ -55,8 +56,8 @@ function createTranslationContext(locale: string): string {
   ].join(' ');
 }
 
-async function main(): Promise<void> {
-  const options = parseTranslateCliOptions(process.argv.slice(2));
+export async function translateChangelogLocales(argv: string[] = process.argv.slice(2)): Promise<void> {
+  const options = parseTranslateCliOptions(argv);
 
   if (options.help) {
     printUsage();
@@ -85,4 +86,4 @@ async function main(): Promise<void> {
   }
 }
 
-await main();
+runCliModule(import.meta.url, translateChangelogLocales);

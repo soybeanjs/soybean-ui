@@ -2,7 +2,13 @@ import { mkdir, readdir } from 'node:fs/promises';
 import path from 'node:path';
 import process from 'node:process';
 
-import { collectKeyedTextEntries, listFileBasenames, readJsonObject, syncLocaleTemplateFiles } from './_shared';
+import {
+  collectKeyedTextEntries,
+  listFileBasenames,
+  readJsonObject,
+  runCliModule,
+  syncLocaleTemplateFiles
+} from './_shared';
 
 const rootDir = process.cwd();
 const apiDir = path.join(rootDir, 'docs/src/generated/api');
@@ -30,7 +36,7 @@ async function collectApiDescriptionEntries(): Promise<Map<string, string>> {
   return collected;
 }
 
-async function main(): Promise<void> {
+export async function generateApiLocaleTemplates(): Promise<void> {
   const [entries, locales] = await Promise.all([collectApiDescriptionEntries(), listFileBasenames(localeDir, '.yml')]);
 
   await mkdir(outputDir, { recursive: true });
@@ -48,4 +54,4 @@ async function main(): Promise<void> {
   );
 }
 
-await main();
+runCliModule(import.meta.url, generateApiLocaleTemplates);

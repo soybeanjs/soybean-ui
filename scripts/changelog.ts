@@ -4,7 +4,7 @@ import process from 'node:process';
 import { kebabCase } from '@soybeanjs/utils';
 import { components as headlessComponents } from '../headless/src/constants/components';
 import { componentChangelogOverrides } from './changelog-overrides';
-import { writeGeneratedJsonDirectory } from './_shared';
+import { runCliModule, writeGeneratedJsonDirectory } from './_shared';
 
 type ChangelogEntryType = 'feature' | 'fix' | 'optimization' | 'refactor' | 'docs' | 'chore' | 'style';
 
@@ -131,7 +131,7 @@ const sharedScopeRelevanceScoreMap: Record<string, number> = {
   styles: -14
 };
 
-async function main() {
+export async function generateChangelogData(): Promise<void> {
   const changelogContent = await readFile(changelogPath, 'utf8');
   const generatedAt = new Date().toISOString();
   const versionBlocks = parseChangelog(changelogContent);
@@ -498,7 +498,4 @@ function createIndex(
   };
 }
 
-void main().catch(error => {
-  console.error(error);
-  process.exitCode = 1;
-});
+runCliModule(import.meta.url, generateChangelogData);

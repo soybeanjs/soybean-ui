@@ -3,6 +3,7 @@ import path from 'node:path';
 import process from 'node:process';
 import ts from 'typescript';
 import { pascalCase, camelCase } from '@soybeanjs/utils';
+import { runCliModule } from './_shared';
 
 type ComponentGroup = {
   key: string;
@@ -158,7 +159,7 @@ function generateNamespacedFile(groups: ComponentGroup[]): string {
   return `${importBlock}\n\n${exports.join('\n\n')}\n`;
 }
 
-async function generateHeadlessFiles(): Promise<void> {
+export async function generateHeadlessMetadata(): Promise<void> {
   const groups = await collectComponentGroups();
 
   await mkdir(path.dirname(componentsOutputPath), { recursive: true });
@@ -167,7 +168,4 @@ async function generateHeadlessFiles(): Promise<void> {
   await writeFile(namespacedOutputPath, generateNamespacedFile(groups), 'utf8');
 }
 
-generateHeadlessFiles().catch(error => {
-  console.error(error instanceof Error ? error.message : error);
-  process.exitCode = 1;
-});
+runCliModule(import.meta.url, generateHeadlessMetadata);

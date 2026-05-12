@@ -5,7 +5,7 @@ import { Application, ReflectionKind } from 'typedoc';
 import type { Comment, DeclarationReflection, ProjectReflection, Reflection, SignatureReflection } from 'typedoc';
 import { kebabCase } from '@soybeanjs/utils';
 import { components as headlessComponents } from '../headless/src/constants/components';
-import { writeGeneratedJsonDirectory } from './_shared';
+import { runCliModule, writeGeneratedJsonDirectory } from './_shared';
 
 type ApiSectionKind = 'props' | 'emits' | 'slots' | 'slotProps';
 
@@ -1520,7 +1520,7 @@ async function writeOutputs(generatedAt: string, components: Record<string, Comp
   });
 }
 
-async function generateComponentApi(): Promise<void> {
+export async function generateApiData(): Promise<void> {
   const app = await Application.bootstrap({
     entryPoints: [path.join(rootDir, 'src/index.ts')],
     tsconfig: typedocTsconfig,
@@ -1539,7 +1539,4 @@ async function generateComponentApi(): Promise<void> {
   await writeOutputs(generatedAt, components);
 }
 
-generateComponentApi().catch(error => {
-  console.error(error instanceof Error ? error.message : error);
-  process.exitCode = 1;
-});
+runCliModule(import.meta.url, generateApiData);

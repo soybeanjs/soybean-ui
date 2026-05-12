@@ -22,7 +22,7 @@ applyTo: 'headless/src/components/**/*.{ts,vue}'
 4. `UiContext`
 5. 必要时新增 `{Name}Compact`
 6. `index.ts` 与 `headless/src/index.ts`
-7. 运行 `pnpm gen:headless`
+7. 运行 `pnpm sui headless`
 
 ## Step 1：types.ts
 
@@ -93,7 +93,7 @@ applyTo: 'headless/src/components/**/*.{ts,vue}'
 
 - `index.ts` 导出组件、`provide{Name}Ui` 和相关 types
 - 正式出口还要同步接入 `headless/src/index.ts`
-- 接入后运行 `pnpm gen:headless` 自动更新生成文件，不要手动编辑
+- 接入后运行 `pnpm sui headless` 自动更新生成文件，不要手动编辑
 
 ## 禁止反模式
 

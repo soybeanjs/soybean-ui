@@ -3,6 +3,7 @@ import path from 'node:path';
 import process from 'node:process';
 import ts from 'typescript';
 import { camelCase } from '@soybeanjs/utils';
+import { runCliModule } from './_shared';
 
 type ComponentGroup = {
   key: string;
@@ -102,14 +103,11 @@ function generateComponentsFile(groups: ComponentGroup[]): string {
   return `export const components = {\n${entries.join(',\n')}\n};\n`;
 }
 
-async function generateUiFiles(): Promise<void> {
+export async function generateUiMetadata(): Promise<void> {
   const groups = await collectComponentGroups();
 
   await mkdir(path.dirname(componentsOutputPath), { recursive: true });
   await writeFile(componentsOutputPath, generateComponentsFile(groups), 'utf8');
 }
 
-generateUiFiles().catch(error => {
-  console.error(error instanceof Error ? error.message : error);
-  process.exitCode = 1;
-});
+runCliModule(import.meta.url, generateUiMetadata);

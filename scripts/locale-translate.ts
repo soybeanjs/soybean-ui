@@ -2,7 +2,7 @@ import { writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import process from 'node:process';
 import { pathToFileURL } from 'node:url';
-import { cloneJsonObject, flattenJsonMessages, isJsonObject, listFileBasenames } from './_shared';
+import { cloneJsonObject, flattenJsonMessages, isJsonObject, listFileBasenames, runCliModule } from './_shared';
 import {
   getPendingEntries,
   parseTranslateCliOptions,
@@ -26,7 +26,7 @@ const rtlLanguageCodes = new Set(['ar', 'fa', 'he', 'ur']);
 
 function printUsage() {
   printTranslateUsage(
-    'translate:locale',
+    'sui locale-translate --',
     'Target locale, for example de, pt-BR, or zh-TW. If omitted, translates all locale files in headless/src/locale/langs except the source locale.'
   );
 }
@@ -398,8 +398,8 @@ async function translateLocale(locale: string, options: TranslateCliOptions): Pr
   );
 }
 
-async function main(): Promise<void> {
-  const options = parseTranslateCliOptions(process.argv.slice(2));
+export async function translateHeadlessLocales(argv: string[] = process.argv.slice(2)): Promise<void> {
+  const options = parseTranslateCliOptions(argv);
 
   if (options.help) {
     printUsage();
@@ -423,7 +423,4 @@ async function main(): Promise<void> {
   }
 }
 
-void main().catch(error => {
-  console.error(error instanceof Error ? error.message : error);
-  process.exitCode = 1;
-});
+runCliModule(import.meta.url, translateHeadlessLocales);

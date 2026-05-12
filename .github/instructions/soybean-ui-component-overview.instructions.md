@@ -86,7 +86,7 @@ applyTo: '{headless/src/components,src/components,playground/examples,test/specs
 ### Phase 4：补齐出口与生成文件
 
 - 更新 `headless/src/index.ts` 与 `src/index.ts`
-- 运行 `pnpm gen:headless` 与 `pnpm gen:ui`
+- 运行 `pnpm sui headless` 与 `pnpm sui ui`
 - 不要手动编辑生成文件
 
 ### Phase 5：补交付面
@@ -94,8 +94,8 @@ applyTo: '{headless/src/components,src/components,playground/examples,test/specs
 - playground：见 `soybean-ui-playground.instructions.md`
 - docs：见 `soybean-ui-docs.instructions.md`
 - tests：见 `soybean-ui-testing.instructions.md`
-- 如果公开 API 变化，运行 `pnpm gen:api`，并为非英文 locale 运行 `pnpm translate:api:i18n -- --locale <locale>`
-- 如果本轮改动触达 changelog 映射、组件版本日志展示或 release 页面，运行 `pnpm gen:changelog`，并为非英文 locale 运行 `pnpm translate:changelog:i18n -- --locale <locale>`
+- 如果公开 API 变化，运行 `pnpm sui api`，并为非英文 locale 运行 `pnpm sui api-translate -- --locale <locale>`
+- 如果本轮改动触达 changelog 映射、组件版本日志展示或 release 页面，运行 `pnpm sui changelog`，并为非英文 locale 运行 `pnpm sui changelog-translate -- --locale <locale>`
 
 ### Phase 6：验证与收尾
 

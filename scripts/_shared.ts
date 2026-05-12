@@ -1,5 +1,7 @@
 import { mkdir, readdir, readFile, rm, writeFile } from 'node:fs/promises';
 import path from 'node:path';
+import process from 'node:process';
+import { fileURLToPath } from 'node:url';
 
 export type JsonPrimitive = boolean | null | number | string;
 export type JsonValue = JsonArray | JsonObject | JsonPrimitive;
@@ -210,6 +212,27 @@ export async function readResponseText(response: Response): Promise<string> {
   } catch {
     return '';
   }
+}
+
+export function isExecutedDirectly(moduleUrl: string): boolean {
+  const entryPath = process.argv[1];
+
+  if (!entryPath) {
+    return false;
+  }
+
+  return path.resolve(entryPath) === path.resolve(fileURLToPath(moduleUrl));
+}
+
+export function runCliModule(moduleUrl: string, runner: () => Promise<void>): void {
+  if (!isExecutedDirectly(moduleUrl)) {
+    return;
+  }
+
+  void runner().catch(error => {
+    console.error(error instanceof Error ? error.message : error);
+    process.exitCode = 1;
+  });
 }
 
 export function collectChangedSourceKeys(

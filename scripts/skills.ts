@@ -3,6 +3,8 @@
 import { cp, mkdir, readFile, rm, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { generateSkillDocs } from '../.agents/skills/soybean-ui/scripts/generate';
+import { runCliModule } from './_shared';
 
 type PackageAuthor = {
   email?: string;
@@ -75,9 +77,9 @@ const distributionDescription = 'Agent skills for SoybeanUI and SoybeanHeadless.
 const distributionKeywords = ['agentskills', 'soybean-ui', 'soybean-headless', 'vue', 'github-copilot', 'claude-code'];
 const distributedSkillDirs = ['soybean-ui', 'soybean-headless'];
 
-void generateSkillsDistribution();
+export async function generateSkillsDistribution(): Promise<void> {
+  await generateSkillDocs();
 
-async function generateSkillsDistribution(): Promise<void> {
   const rootPackage = await readRootPackageManifest();
 
   await rm(skillsDistributionRootDir, { force: true, recursive: true });
@@ -113,6 +115,8 @@ async function generateSkillsDistribution(): Promise<void> {
 
   console.log(`Generated skills distribution in ${path.relative(repoRoot, skillsDistributionRootDir)}.`);
 }
+
+runCliModule(import.meta.url, generateSkillsDistribution);
 
 async function readRootPackageManifest(): Promise<RootPackageManifest> {
   const source = await readFile(rootPackageJsonPath, 'utf8');
@@ -198,7 +202,7 @@ function createDistributionReadme(): string {
     'Generate the publishable package contents from the source repository:',
     '',
     '```bash',
-    'pnpm gen:skills:dist',
+    'pnpm sui skills',
     '```',
     ''
   ].join('\n');
