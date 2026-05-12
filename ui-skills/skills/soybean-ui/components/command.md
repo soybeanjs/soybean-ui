@@ -49,16 +49,16 @@ Properties for the Command component.
 - `inputProps`: Properties forwarded to the input element. (type `CommandInputProps`; optional)
 - `emptyProps`: Properties forwarded to the empty element. (type `CommandEmptyProps`; optional)
 - `emptyLabel`: Empty label. (type `string`; optional)
+- `modelValue`: The controlled value of the selected item(s). Use this when you need to control the state of the items. Can be bound with `v-model` (type `string`; optional)
+- `defaultValue`: The default value of the selected item(s). Use this when you need to set the initial state of the items. (type `string`; optional)
+- `multiple`: Determines whether a "single" or "multiple" items can be selected at a time. This prop will overwrite the inferred type from `modelValue` and `defaultValue`. (type `false`; optional)
+- `selectionBehavior`: How multiple selection should behave in the collection. (type `SelectionBehavior`; default `'toggle'`; optional)
 - `disabled`: When `true`, prevents the user from interacting with listbox (type `boolean`; optional)
 - `dir`: The reading direction of the listbox when applicable. <br> If omitted, inherits globally from `ConfigProvider` or assumes LTR (left-to-right) reading mode. (type `Direction`; optional)
 - `name`: The name of the field. Submitted with its owning form as part of a name/value pair. (type `string`; optional)
-- `defaultValue`: The default value of the selected item(s). Use this when you need to set the initial state of the items. (type `string`; optional)
-- `modelValue`: The controlled value of the selected item(s). Use this when you need to control the state of the items. Can be bound with `v-model` (type `string`; optional)
 - `highlightOnHover`: When `true`, hover over item will trigger highlight (type `boolean`; optional)
 - `required`: When `true`, indicates that the user must set the value before the owning form can be submitted. (type `boolean`; optional)
 - `orientation`: The orientation of the listbox. <br>Mainly so arrow navigation is done accordingly (left & right vs. up & down) (type `DataOrientation`; optional)
-- `selectionBehavior`: How multiple selection should behave in the collection. (type `SelectionBehavior`; default `'toggle'`; optional)
-- `multiple`: Determines whether a "single" or "multiple" items can be selected at a time. This prop will overwrite the inferred type from `modelValue` and `defaultValue`. (type `false`; optional)
 
 #### Emits
 
@@ -104,16 +104,16 @@ Properties for the CommandCompact component.
 - `inputProps`: Properties forwarded to the input element. (type `CommandInputProps`; optional)
 - `emptyProps`: Properties forwarded to the empty element. (type `CommandEmptyProps`; optional)
 - `emptyLabel`: Empty label. (type `string`; optional)
+- `modelValue`: The controlled value of the selected item(s). Use this when you need to control the state of the items. Can be bound with `v-model` (type `string`; optional)
+- `defaultValue`: The default value of the selected item(s). Use this when you need to set the initial state of the items. (type `string`; optional)
+- `multiple`: Determines whether a "single" or "multiple" items can be selected at a time. This prop will overwrite the inferred type from `modelValue` and `defaultValue`. (type `false`; optional)
+- `selectionBehavior`: How multiple selection should behave in the collection. (type `SelectionBehavior`; default `'toggle'`; optional)
 - `disabled`: When `true`, prevents the user from interacting with listbox (type `boolean`; optional)
 - `dir`: The reading direction of the listbox when applicable. <br> If omitted, inherits globally from `ConfigProvider` or assumes LTR (left-to-right) reading mode. (type `Direction`; optional)
 - `name`: The name of the field. Submitted with its owning form as part of a name/value pair. (type `string`; optional)
-- `defaultValue`: The default value of the selected item(s). Use this when you need to set the initial state of the items. (type `string`; optional)
-- `modelValue`: The controlled value of the selected item(s). Use this when you need to control the state of the items. Can be bound with `v-model` (type `string`; optional)
 - `highlightOnHover`: When `true`, hover over item will trigger highlight (type `boolean`; optional)
 - `required`: When `true`, indicates that the user must set the value before the owning form can be submitted. (type `boolean`; optional)
 - `orientation`: The orientation of the listbox. <br>Mainly so arrow navigation is done accordingly (left & right vs. up & down) (type `DataOrientation`; optional)
-- `selectionBehavior`: How multiple selection should behave in the collection. (type `SelectionBehavior`; default `'toggle'`; optional)
-- `multiple`: Determines whether a "single" or "multiple" items can be selected at a time. This prop will overwrite the inferred type from `modelValue` and `defaultValue`. (type `false`; optional)
 
 #### Emits
 
