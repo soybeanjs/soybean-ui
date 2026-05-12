@@ -18,8 +18,8 @@ The `skills` CLI installs every skill shipped in the package and places them int
 ## Claude Code Marketplace
 
 ```bash
-/plugin marketplace add soybean-skills
-/plugin install soybean-skills@soybean-skills
+/plugin marketplace add soybean-ui-skills
+/plugin install soybean-ui-skills@soybean-ui-skills
 ```
 
 ## Development
