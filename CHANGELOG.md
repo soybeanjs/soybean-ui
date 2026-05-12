@@ -1,5 +1,33 @@
 # Changelog
 
+## [v0.22.0](https://github.com/soybeanjs/soybean-ui/compare/v0.21.0...v0.22.0) (2026-05-13)
+
+### &nbsp;&nbsp;&nbsp;🚀 Features
+
+- **docs**: add skills support and documentation for AI tools &nbsp;-&nbsp; by @soybeanjs [<samp>(919a1)</samp>](https://github.com/soybeanjs/soybean-ui/commit/919a1676)
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- **playground**: remove unused modelValue and simplify template &nbsp;-&nbsp; by @soybeanjs [<samp>(8d26b)</samp>](https://github.com/soybeanjs/soybean-ui/commit/8d26b113)
+- **skills**: rename plugin to soybean-ui-skills for consistency &nbsp;-&nbsp; by @soybeanjs [<samp>(700db)</samp>](https://github.com/soybeanjs/soybean-ui/commit/700db2cf)
+
+### &nbsp;&nbsp;&nbsp;🛠 Optimizations
+
+- **accordion**: enable collapsible behavior by default and update related props &nbsp;-&nbsp; by @soybeanjs [<samp>(bec18)</samp>](https://github.com/soybeanjs/soybean-ui/commit/bec18a46)
+- **llms**: remove unnecessary warning log in handleDevRequest &nbsp;-&nbsp; by @soybeanjs [<samp>(52dd5)</samp>](https://github.com/soybeanjs/soybean-ui/commit/52dd5033)
+
+### &nbsp;&nbsp;&nbsp;💅 Refactors
+
+- **scripts**: update CLI commands and improve module execution &nbsp;-&nbsp; by @soybeanjs [<samp>(c3cca)</samp>](https://github.com/soybeanjs/soybean-ui/commit/c3ccaa41)
+
+### &nbsp;&nbsp;&nbsp;📖 Documentation
+
+- **skills**: update skills &nbsp;-&nbsp; by @soybeanjs [<samp>(b258b)</samp>](https://github.com/soybeanjs/soybean-ui/commit/b258b294)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;
+
 ## [v0.21.0](https://github.com/soybeanjs/soybean-ui/compare/v0.20.0...v0.21.0) (2026-05-12)
 
 ### &nbsp;&nbsp;&nbsp;🚀 Features
