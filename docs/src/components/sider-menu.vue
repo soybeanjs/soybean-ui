@@ -54,6 +54,11 @@ const overviewMenus = computed<TreeMenuOptionData[]>(() => [
         label: t('sidebar.theming'),
         value: 'theming',
         to: '/overview/theming'
+      },
+      {
+        label: t('sidebar.llms'),
+        value: 'llms',
+        to: '/overview/llms'
       }
     ]
   }

@@ -14,6 +14,7 @@ import Markdown from 'unplugin-vue-markdown/vite';
 import Shiki from '@shikijs/markdown-exit';
 import VueI18n from '@intlify/unplugin-vue-i18n/vite';
 import generateSitemap from 'vite-ssg-sitemap';
+import { soybeanDocsLlmsPlugin } from './build/llms';
 import { customMarkdownPlugin } from './src/modules/markdown';
 
 export default defineConfig({
@@ -76,7 +77,8 @@ export default defineConfig({
       compositionOnly: true,
       fullInstall: true,
       include: [path.resolve(__dirname, 'locales/**')]
-    })
+    }),
+    soybeanDocsLlmsPlugin()
   ],
   ssgOptions: {
     script: 'sync',

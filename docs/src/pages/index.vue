@@ -24,7 +24,7 @@ const heroStats = computed(() => [
   },
   {
     label: t('components.home.stats.guides'),
-    value: 4
+    value: 5
   }
 ]);
 

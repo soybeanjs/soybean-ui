@@ -620,6 +620,7 @@ sidebar:
   quick_start: Quick Start
   components: Components
   theming: Theming
+  llms: LLMs.txt
   common_types: Common Types
   general: General
   layout: Layout

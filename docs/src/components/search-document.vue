@@ -26,30 +26,38 @@ const componentMenus = Object.keys(components)
       }) satisfies CommandOptionData
   );
 
-const searched: CommandOptionData[] = [
+const searched = computed<CommandOptionData[]>(() => [
   {
-    label: 'Overview',
+    label: t('sidebar.overview'),
     value: 'overview',
     icon: 'lucide:home',
     separator: true,
     items: [
       {
-        label: 'Introduction',
+        label: t('sidebar.introduction'),
         value: 'overview_introduction'
       },
       {
-        label: 'Quick Start',
+        label: t('sidebar.quick_start'),
         value: 'overview_quick-start'
+      },
+      {
+        label: t('sidebar.theming'),
+        value: 'overview_theming'
+      },
+      {
+        label: t('sidebar.llms'),
+        value: 'overview_llms'
       }
     ]
   },
   {
-    label: 'Components',
+    label: t('sidebar.components'),
     value: 'components',
     icon: 'lucide:layout-grid',
     items: componentMenus
   }
-];
+]);
 
 const searchOpen = shallowRef(false);
 
