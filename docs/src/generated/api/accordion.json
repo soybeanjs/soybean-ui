@@ -6,7 +6,7 @@
         "kind": "props",
         "name": "AccordionProps",
         "type": "Interface AccordionProps<T, M>",
-        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<AccordionUi>; items: T[]; itemProps?: AccordionItemProps; headerProps?: AccordionHeaderProps; triggerProps?: AccordionTriggerProps; contentProps?: AccordionContentProps; descriptionProps?: AccordionDescriptionProps; collapsible?: boolean; dir?: Direction; disabled?: boolean; orientation?: DataOrientation; unmountOnHide?: boolean; modelValue?: (M extends true ? string[] : string); defaultValue?: (M extends true ? string[] : string); multiple?: M; clearable?: boolean; selectionBehavior?: SelectionBehavior }",
+        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<AccordionUi>; items: T[]; itemProps?: AccordionItemProps; headerProps?: AccordionHeaderProps; triggerProps?: AccordionTriggerProps; contentProps?: AccordionContentProps; descriptionProps?: AccordionDescriptionProps; collapsible?: boolean; dir?: Direction; disabled?: boolean; orientation?: DataOrientation; unmountOnHide?: boolean; modelValue?: (M extends true ? string[] : string); defaultValue?: (M extends true ? string[] : string); multiple?: M; selectionBehavior?: SelectionBehavior }",
         "description": "Properties for the Accordion component.",
         "descriptionKey": "api.generated.src_components_accordion_types.accordionprops.props",
         "sourcePath": "src/components/accordion/types.ts",
@@ -486,17 +486,6 @@
             "referencedTypes": []
           },
           {
-            "name": "clearable",
-            "type": "boolean",
-            "required": false,
-            "description": "Whether selected item can be cleared when `multiple` is false.",
-            "descriptionKey": "api.generated.src_components_accordion_types.accordionprops.members.clearable",
-            "default": null,
-            "inheritedFrom": "clearable",
-            "sourcePath": "headless/src/types/common.ts",
-            "referencedTypes": []
-          },
-          {
             "name": "selectionBehavior",
             "type": "SelectionBehavior",
             "required": false,
@@ -689,7 +678,7 @@
         "kind": "props",
         "name": "AccordionCompactProps",
         "type": "Interface AccordionCompactProps<T, M>",
-        "resolvedType": "{ items: T[]; itemProps?: AccordionItemProps; headerProps?: AccordionHeaderProps; triggerProps?: AccordionTriggerProps; contentProps?: AccordionContentProps; descriptionProps?: AccordionDescriptionProps; collapsible?: boolean; dir?: Direction; disabled?: boolean; orientation?: DataOrientation; unmountOnHide?: boolean; modelValue?: (M extends true ? string[] : string); defaultValue?: (M extends true ? string[] : string); multiple?: M; clearable?: boolean; selectionBehavior?: SelectionBehavior }",
+        "resolvedType": "{ items: T[]; itemProps?: AccordionItemProps; headerProps?: AccordionHeaderProps; triggerProps?: AccordionTriggerProps; contentProps?: AccordionContentProps; descriptionProps?: AccordionDescriptionProps; collapsible?: boolean; dir?: Direction; disabled?: boolean; orientation?: DataOrientation; unmountOnHide?: boolean; modelValue?: (M extends true ? string[] : string); defaultValue?: (M extends true ? string[] : string); multiple?: M; selectionBehavior?: SelectionBehavior }",
         "description": "Properties for the AccordionCompact component.",
         "descriptionKey": "api.generated.headless_src_components_accordion_types.accordioncompactprops.props",
         "sourcePath": "headless/src/components/accordion/types.ts",
@@ -1090,17 +1079,6 @@
             "descriptionKey": "api.generated.headless_src_components_accordion_types.accordioncompactprops.members.multiple",
             "default": null,
             "inheritedFrom": "multiple",
-            "sourcePath": "headless/src/types/common.ts",
-            "referencedTypes": []
-          },
-          {
-            "name": "clearable",
-            "type": "boolean",
-            "required": false,
-            "description": "Whether selected item can be cleared when `multiple` is false.",
-            "descriptionKey": "api.generated.headless_src_components_accordion_types.accordioncompactprops.members.clearable",
-            "default": null,
-            "inheritedFrom": "clearable",
             "sourcePath": "headless/src/types/common.ts",
             "referencedTypes": []
           },
@@ -1549,7 +1527,7 @@
         "kind": "props",
         "name": "AccordionRootProps",
         "type": "Interface AccordionRootProps<M>",
-        "resolvedType": "{ collapsible?: boolean; dir?: Direction; disabled?: boolean; orientation?: DataOrientation; unmountOnHide?: boolean; modelValue?: (M extends true ? string[] : string); defaultValue?: (M extends true ? string[] : string); multiple?: M; clearable?: boolean; selectionBehavior?: SelectionBehavior }",
+        "resolvedType": "{ collapsible?: boolean; dir?: Direction; disabled?: boolean; orientation?: DataOrientation; unmountOnHide?: boolean; modelValue?: (M extends true ? string[] : string); defaultValue?: (M extends true ? string[] : string); multiple?: M; selectionBehavior?: SelectionBehavior }",
         "description": "Properties for the AccordionRoot component.",
         "descriptionKey": "api.generated.headless_src_components_accordion_types.accordionrootprops.props",
         "sourcePath": "headless/src/components/accordion/types.ts",
@@ -1645,7 +1623,7 @@
             "description": "The controlled value of the selected item(s).\n\nUse this when you need to control the state of the items. Can be bound with `v-model`",
             "descriptionKey": "api.generated.headless_src_components_accordion_types.accordionrootprops.members.modelvalue",
             "default": null,
-            "inheritedFrom": "modelValue",
+            "inheritedFrom": "Omit.modelValue",
             "sourcePath": "headless/src/types/common.ts",
             "referencedTypes": []
           },
@@ -1656,7 +1634,7 @@
             "description": "The default value of the selected item(s).\n\nUse this when you need to set the initial state of the items.",
             "descriptionKey": "api.generated.headless_src_components_accordion_types.accordionrootprops.members.defaultvalue",
             "default": null,
-            "inheritedFrom": "defaultValue",
+            "inheritedFrom": "Omit.defaultValue",
             "sourcePath": "headless/src/types/common.ts",
             "referencedTypes": []
           },
@@ -1667,18 +1645,7 @@
             "description": "Determines whether a \"single\" or \"multiple\" items can be selected at a time.\n\nThis prop will overwrite the inferred type from `modelValue` and `defaultValue`.",
             "descriptionKey": "api.generated.headless_src_components_accordion_types.accordionrootprops.members.multiple",
             "default": null,
-            "inheritedFrom": "multiple",
-            "sourcePath": "headless/src/types/common.ts",
-            "referencedTypes": []
-          },
-          {
-            "name": "clearable",
-            "type": "boolean",
-            "required": false,
-            "description": "Whether selected item can be cleared when `multiple` is false.",
-            "descriptionKey": "api.generated.headless_src_components_accordion_types.accordionrootprops.members.clearable",
-            "default": null,
-            "inheritedFrom": "clearable",
+            "inheritedFrom": "Omit.multiple",
             "sourcePath": "headless/src/types/common.ts",
             "referencedTypes": []
           },

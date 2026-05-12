@@ -13,7 +13,7 @@ defineOptions({
 const props = withDefaults(defineProps<AccordionRootProps<M>>(), {
   disabled: false,
   orientation: 'vertical',
-  collapsible: false,
+  collapsible: true,
   unmountOnHide: true
 });
 
@@ -25,9 +25,15 @@ const rootElement = shallowRef<HTMLElement>();
 
 const dir = useDirection(() => props.dir);
 
-const { modelValue, isMultiple, onModelValueChange } = useSelection(props, value => {
-  emit('update:modelValue', value);
-});
+const { modelValue, isMultiple, onModelValueChange } = useSelection(
+  () => ({
+    ...props,
+    clearable: props.collapsible
+  }),
+  value => {
+    emit('update:modelValue', value);
+  }
+);
 
 provideAccordionRootContext({
   dir,

@@ -31,7 +31,6 @@ const items: AccordionOptionData[] = [
   <SAccordion
     v-model="single"
     type="single"
-    collapsible
     :items="items"
     :ui="{
       item: 'border-b-0',

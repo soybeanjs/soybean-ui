@@ -10,7 +10,6 @@
         },
         "accordioncompactprops": {
           "members": {
-            "clearable": "当 `multiple` 为 false 时，所选项目是否可以清除。",
             "collapsible": "当类型为 \"单一 \"时，允许在点击触发器时关闭打开的内容。\n\n当类型为 \"多 \"时，该道具不起作用。",
             "contentprops": "转发到内容元素的属性。",
             "defaultvalue": "所选项目的默认值。\n\n在需要设置项目的初始状态时使用。",
@@ -80,7 +79,6 @@
         },
         "accordionrootprops": {
           "members": {
-            "clearable": "当 `multiple` 为 false 时，所选项目是否可以清除。",
             "collapsible": "当类型为 \"单一 \"时，允许在点击触发器时关闭打开的内容。\n\n当类型为 \"多 \"时，该道具不起作用。",
             "defaultvalue": "所选项目的默认值。\n\n在需要设置项目的初始状态时使用。",
             "dir": "手风琴的阅读方向（如适用）。如果省略，则假定为 LTR（从左到右）阅读模式。",
@@ -8985,7 +8983,6 @@
         "accordionprops": {
           "members": {
             "class": "根类",
-            "clearable": "当 `multiple` 为 false 时，所选项目是否可以清除。",
             "collapsible": "当类型为 \"单一 \"时，允许在点击触发器时关闭打开的内容。\n\n当类型为 \"多 \"时，该道具不起作用。",
             "contentprops": "转发到内容元素的属性。",
             "defaultvalue": "所选项目的默认值。\n\n在需要设置项目的初始状态时使用。",

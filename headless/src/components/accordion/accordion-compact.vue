@@ -14,7 +14,10 @@ defineOptions({
   name: 'AccordionCompact'
 });
 
-const props = defineProps<AccordionCompactProps<T, M>>();
+const props = withDefaults(defineProps<AccordionCompactProps<T, M>>(), {
+  collapsible: true,
+  unmountOnHide: true
+});
 
 const emit = defineEmits<AccordionCompactEmits<M>>();
 

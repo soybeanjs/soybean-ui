@@ -28,5 +28,5 @@ const items: AccordionOptionData[] = [
 </script>
 
 <template>
-  <SAccordion v-model="single" collapsible :items="items" />
+  <SAccordion v-model="single" :items="items" />
 </template>

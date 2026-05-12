@@ -6,7 +6,7 @@
         "kind": "props",
         "name": "ComboboxProps",
         "type": "Interface ComboboxProps<M>",
-        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<ComboboxUi>; items: ComboboxOptionData[]; placeholder?: string; searchPlaceholder?: string; clearLabel?: string; emptyLabel?: string; anchorProps?: ComboboxAnchorProps; triggerProps?: ComboboxTriggerProps; cancelProps?: ComboboxCancelProps; portalProps?: ComboboxPortalProps; contentProps?: ComboboxContentProps; viewportProps?: ComboboxViewportProps; inputProps?: ComboboxInputProps; emptyProps?: ComboboxEmptyProps; groupProps?: ComboboxGroupProps; groupLabelProps?: ComboboxGroupLabelProps; itemProps?: ComboboxItemProps; itemIndicatorProps?: ComboboxItemIndicatorProps; separatorProps?: ComboboxSeparatorProps; open?: boolean; defaultOpen?: boolean; resetSearchTermOnBlur?: boolean; resetSearchTermOnSelect?: boolean; openOnFocus?: boolean; openOnClick?: boolean; ignoreFilter?: boolean; resetModelValueOnClear?: boolean; disabled?: boolean; dir?: Direction; name?: string; defaultValue?: (M extends true ? string[] : string); modelValue?: (M extends true ? string[] : string); highlightOnHover?: boolean; required?: boolean; multiple?: M; clearable?: boolean }",
+        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<ComboboxUi>; items: ComboboxOptionData[]; placeholder?: string; searchPlaceholder?: string; clearLabel?: string; emptyLabel?: string; anchorProps?: ComboboxAnchorProps; triggerProps?: ComboboxTriggerProps; cancelProps?: ComboboxCancelProps; portalProps?: ComboboxPortalProps; contentProps?: ComboboxContentProps; viewportProps?: ComboboxViewportProps; inputProps?: ComboboxInputProps; emptyProps?: ComboboxEmptyProps; groupProps?: ComboboxGroupProps; groupLabelProps?: ComboboxGroupLabelProps; itemProps?: ComboboxItemProps; itemIndicatorProps?: ComboboxItemIndicatorProps; separatorProps?: ComboboxSeparatorProps; open?: boolean; defaultOpen?: boolean; resetSearchTermOnBlur?: boolean; resetSearchTermOnSelect?: boolean; openOnFocus?: boolean; openOnClick?: boolean; ignoreFilter?: boolean; resetModelValueOnClear?: boolean; clearable?: boolean; modelValue?: (M extends true ? string[] : string); defaultValue?: (M extends true ? string[] : string); multiple?: M; disabled?: boolean; dir?: Direction; name?: string; highlightOnHover?: boolean; required?: boolean }",
         "description": "Properties for the Combobox component.",
         "descriptionKey": "api.generated.src_components_combobox_types.comboboxprops.props",
         "sourcePath": "src/components/combobox/types.ts",
@@ -1292,6 +1292,50 @@
             "referencedTypes": []
           },
           {
+            "name": "clearable",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether selected item can be cleared when `multiple` is false.",
+            "descriptionKey": "api.generated.src_components_combobox_types.comboboxprops.members.clearable",
+            "default": null,
+            "inheritedFrom": "clearable",
+            "sourcePath": "headless/src/types/common.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "modelValue",
+            "type": "(M extends true ? string[] : string)",
+            "required": false,
+            "description": "The controlled value of the selected item(s).\n\nUse this when you need to control the state of the items. Can be bound with `v-model`",
+            "descriptionKey": "api.generated.src_components_combobox_types.comboboxprops.members.modelvalue",
+            "default": null,
+            "inheritedFrom": "modelValue",
+            "sourcePath": "headless/src/types/common.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "defaultValue",
+            "type": "(M extends true ? string[] : string)",
+            "required": false,
+            "description": "The default value of the selected item(s).\n\nUse this when you need to set the initial state of the items.",
+            "descriptionKey": "api.generated.src_components_combobox_types.comboboxprops.members.defaultvalue",
+            "default": null,
+            "inheritedFrom": "defaultValue",
+            "sourcePath": "headless/src/types/common.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "multiple",
+            "type": "M",
+            "required": false,
+            "description": "Determines whether a \"single\" or \"multiple\" items can be selected at a time.\n\nThis prop will overwrite the inferred type from `modelValue` and `defaultValue`.",
+            "descriptionKey": "api.generated.src_components_combobox_types.comboboxprops.members.multiple",
+            "default": null,
+            "inheritedFrom": "multiple",
+            "sourcePath": "headless/src/types/common.ts",
+            "referencedTypes": []
+          },
+          {
             "name": "disabled",
             "type": "boolean",
             "required": false,
@@ -1339,28 +1383,6 @@
             "referencedTypes": []
           },
           {
-            "name": "defaultValue",
-            "type": "(M extends true ? string[] : string)",
-            "required": false,
-            "description": "The default value of the selected item(s).\n\nUse this when you need to set the initial state of the items.",
-            "descriptionKey": "api.generated.src_components_combobox_types.comboboxprops.members.defaultvalue",
-            "default": null,
-            "inheritedFrom": "defaultValue",
-            "sourcePath": "headless/src/types/common.ts",
-            "referencedTypes": []
-          },
-          {
-            "name": "modelValue",
-            "type": "(M extends true ? string[] : string)",
-            "required": false,
-            "description": "The controlled value of the selected item(s).\n\nUse this when you need to control the state of the items. Can be bound with `v-model`",
-            "descriptionKey": "api.generated.src_components_combobox_types.comboboxprops.members.modelvalue",
-            "default": null,
-            "inheritedFrom": "modelValue",
-            "sourcePath": "headless/src/types/common.ts",
-            "referencedTypes": []
-          },
-          {
             "name": "highlightOnHover",
             "type": "boolean",
             "required": false,
@@ -1380,28 +1402,6 @@
             "default": null,
             "inheritedFrom": "required",
             "sourcePath": "headless/src/types/component.ts",
-            "referencedTypes": []
-          },
-          {
-            "name": "multiple",
-            "type": "M",
-            "required": false,
-            "description": "Determines whether a \"single\" or \"multiple\" items can be selected at a time.\n\nThis prop will overwrite the inferred type from `modelValue` and `defaultValue`.",
-            "descriptionKey": "api.generated.src_components_combobox_types.comboboxprops.members.multiple",
-            "default": null,
-            "inheritedFrom": "multiple",
-            "sourcePath": "headless/src/types/common.ts",
-            "referencedTypes": []
-          },
-          {
-            "name": "clearable",
-            "type": "boolean",
-            "required": false,
-            "description": "Whether selected item can be cleared when `multiple` is false.",
-            "descriptionKey": "api.generated.src_components_combobox_types.comboboxprops.members.clearable",
-            "default": null,
-            "inheritedFrom": "clearable",
-            "sourcePath": "headless/src/types/common.ts",
             "referencedTypes": []
           }
         ],
@@ -1996,7 +1996,7 @@
         "kind": "props",
         "name": "ComboboxCompactProps",
         "type": "Interface ComboboxCompactProps<M>",
-        "resolvedType": "{ items: ComboboxOptionData[]; placeholder?: string; searchPlaceholder?: string; clearLabel?: string; emptyLabel?: string; anchorProps?: ComboboxAnchorProps; triggerProps?: ComboboxTriggerProps; cancelProps?: ComboboxCancelProps; portalProps?: ComboboxPortalProps; contentProps?: ComboboxContentProps; viewportProps?: ComboboxViewportProps; inputProps?: ComboboxInputProps; emptyProps?: ComboboxEmptyProps; groupProps?: ComboboxGroupProps; groupLabelProps?: ComboboxGroupLabelProps; itemProps?: ComboboxItemProps; itemIndicatorProps?: ComboboxItemIndicatorProps; separatorProps?: ComboboxSeparatorProps; open?: boolean; defaultOpen?: boolean; resetSearchTermOnBlur?: boolean; resetSearchTermOnSelect?: boolean; openOnFocus?: boolean; openOnClick?: boolean; ignoreFilter?: boolean; resetModelValueOnClear?: boolean; disabled?: boolean; dir?: Direction; name?: string; defaultValue?: (M extends true ? string[] : string); modelValue?: (M extends true ? string[] : string); highlightOnHover?: boolean; required?: boolean; multiple?: M; clearable?: boolean }",
+        "resolvedType": "{ items: ComboboxOptionData[]; placeholder?: string; searchPlaceholder?: string; clearLabel?: string; emptyLabel?: string; anchorProps?: ComboboxAnchorProps; triggerProps?: ComboboxTriggerProps; cancelProps?: ComboboxCancelProps; portalProps?: ComboboxPortalProps; contentProps?: ComboboxContentProps; viewportProps?: ComboboxViewportProps; inputProps?: ComboboxInputProps; emptyProps?: ComboboxEmptyProps; groupProps?: ComboboxGroupProps; groupLabelProps?: ComboboxGroupLabelProps; itemProps?: ComboboxItemProps; itemIndicatorProps?: ComboboxItemIndicatorProps; separatorProps?: ComboboxSeparatorProps; open?: boolean; defaultOpen?: boolean; resetSearchTermOnBlur?: boolean; resetSearchTermOnSelect?: boolean; openOnFocus?: boolean; openOnClick?: boolean; ignoreFilter?: boolean; resetModelValueOnClear?: boolean; clearable?: boolean; modelValue?: (M extends true ? string[] : string); defaultValue?: (M extends true ? string[] : string); multiple?: M; disabled?: boolean; dir?: Direction; name?: string; highlightOnHover?: boolean; required?: boolean }",
         "description": "Properties for the ComboboxCompact component.",
         "descriptionKey": "api.generated.headless_src_components_combobox_types.comboboxcompactprops.props",
         "sourcePath": "headless/src/components/combobox/types.ts",
@@ -3207,6 +3207,50 @@
             "referencedTypes": []
           },
           {
+            "name": "clearable",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether selected item can be cleared when `multiple` is false.",
+            "descriptionKey": "api.generated.headless_src_components_combobox_types.comboboxcompactprops.members.clearable",
+            "default": null,
+            "inheritedFrom": "clearable",
+            "sourcePath": "headless/src/types/common.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "modelValue",
+            "type": "(M extends true ? string[] : string)",
+            "required": false,
+            "description": "The controlled value of the selected item(s).\n\nUse this when you need to control the state of the items. Can be bound with `v-model`",
+            "descriptionKey": "api.generated.headless_src_components_combobox_types.comboboxcompactprops.members.modelvalue",
+            "default": null,
+            "inheritedFrom": "modelValue",
+            "sourcePath": "headless/src/types/common.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "defaultValue",
+            "type": "(M extends true ? string[] : string)",
+            "required": false,
+            "description": "The default value of the selected item(s).\n\nUse this when you need to set the initial state of the items.",
+            "descriptionKey": "api.generated.headless_src_components_combobox_types.comboboxcompactprops.members.defaultvalue",
+            "default": null,
+            "inheritedFrom": "defaultValue",
+            "sourcePath": "headless/src/types/common.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "multiple",
+            "type": "M",
+            "required": false,
+            "description": "Determines whether a \"single\" or \"multiple\" items can be selected at a time.\n\nThis prop will overwrite the inferred type from `modelValue` and `defaultValue`.",
+            "descriptionKey": "api.generated.headless_src_components_combobox_types.comboboxcompactprops.members.multiple",
+            "default": null,
+            "inheritedFrom": "multiple",
+            "sourcePath": "headless/src/types/common.ts",
+            "referencedTypes": []
+          },
+          {
             "name": "disabled",
             "type": "boolean",
             "required": false,
@@ -3254,28 +3298,6 @@
             "referencedTypes": []
           },
           {
-            "name": "defaultValue",
-            "type": "(M extends true ? string[] : string)",
-            "required": false,
-            "description": "The default value of the selected item(s).\n\nUse this when you need to set the initial state of the items.",
-            "descriptionKey": "api.generated.headless_src_components_combobox_types.comboboxcompactprops.members.defaultvalue",
-            "default": null,
-            "inheritedFrom": "defaultValue",
-            "sourcePath": "headless/src/types/common.ts",
-            "referencedTypes": []
-          },
-          {
-            "name": "modelValue",
-            "type": "(M extends true ? string[] : string)",
-            "required": false,
-            "description": "The controlled value of the selected item(s).\n\nUse this when you need to control the state of the items. Can be bound with `v-model`",
-            "descriptionKey": "api.generated.headless_src_components_combobox_types.comboboxcompactprops.members.modelvalue",
-            "default": null,
-            "inheritedFrom": "modelValue",
-            "sourcePath": "headless/src/types/common.ts",
-            "referencedTypes": []
-          },
-          {
             "name": "highlightOnHover",
             "type": "boolean",
             "required": false,
@@ -3295,28 +3317,6 @@
             "default": null,
             "inheritedFrom": "required",
             "sourcePath": "headless/src/types/component.ts",
-            "referencedTypes": []
-          },
-          {
-            "name": "multiple",
-            "type": "M",
-            "required": false,
-            "description": "Determines whether a \"single\" or \"multiple\" items can be selected at a time.\n\nThis prop will overwrite the inferred type from `modelValue` and `defaultValue`.",
-            "descriptionKey": "api.generated.headless_src_components_combobox_types.comboboxcompactprops.members.multiple",
-            "default": null,
-            "inheritedFrom": "multiple",
-            "sourcePath": "headless/src/types/common.ts",
-            "referencedTypes": []
-          },
-          {
-            "name": "clearable",
-            "type": "boolean",
-            "required": false,
-            "description": "Whether selected item can be cleared when `multiple` is false.",
-            "descriptionKey": "api.generated.headless_src_components_combobox_types.comboboxcompactprops.members.clearable",
-            "default": null,
-            "inheritedFrom": "clearable",
-            "sourcePath": "headless/src/types/common.ts",
             "referencedTypes": []
           }
         ],
@@ -4970,7 +4970,7 @@
         "kind": "props",
         "name": "ComboboxRootProps",
         "type": "Interface ComboboxRootProps<M>",
-        "resolvedType": "{ open?: boolean; defaultOpen?: boolean; resetSearchTermOnBlur?: boolean; resetSearchTermOnSelect?: boolean; openOnFocus?: boolean; openOnClick?: boolean; ignoreFilter?: boolean; resetModelValueOnClear?: boolean; disabled?: boolean; dir?: Direction; name?: string; defaultValue?: (M extends true ? string[] : string); modelValue?: (M extends true ? string[] : string); highlightOnHover?: boolean; required?: boolean; multiple?: M; clearable?: boolean }",
+        "resolvedType": "{ open?: boolean; defaultOpen?: boolean; resetSearchTermOnBlur?: boolean; resetSearchTermOnSelect?: boolean; openOnFocus?: boolean; openOnClick?: boolean; ignoreFilter?: boolean; resetModelValueOnClear?: boolean; clearable?: boolean; modelValue?: (M extends true ? string[] : string); defaultValue?: (M extends true ? string[] : string); multiple?: M; disabled?: boolean; dir?: Direction; name?: string; highlightOnHover?: boolean; required?: boolean }",
         "description": "Properties for the ComboboxRoot component.",
         "descriptionKey": "api.generated.headless_src_components_combobox_types.comboboxrootprops.props",
         "sourcePath": "headless/src/components/combobox/types.ts",
@@ -5065,6 +5065,50 @@
             "referencedTypes": []
           },
           {
+            "name": "clearable",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether selected item can be cleared when `multiple` is false.",
+            "descriptionKey": "api.generated.headless_src_components_combobox_types.comboboxrootprops.members.clearable",
+            "default": null,
+            "inheritedFrom": "clearable",
+            "sourcePath": "headless/src/types/common.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "modelValue",
+            "type": "(M extends true ? string[] : string)",
+            "required": false,
+            "description": "The controlled value of the selected item(s).\n\nUse this when you need to control the state of the items. Can be bound with `v-model`",
+            "descriptionKey": "api.generated.headless_src_components_combobox_types.comboboxrootprops.members.modelvalue",
+            "default": null,
+            "inheritedFrom": "Omit.modelValue",
+            "sourcePath": "headless/src/types/common.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "defaultValue",
+            "type": "(M extends true ? string[] : string)",
+            "required": false,
+            "description": "The default value of the selected item(s).\n\nUse this when you need to set the initial state of the items.",
+            "descriptionKey": "api.generated.headless_src_components_combobox_types.comboboxrootprops.members.defaultvalue",
+            "default": null,
+            "inheritedFrom": "Omit.defaultValue",
+            "sourcePath": "headless/src/types/common.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "multiple",
+            "type": "M",
+            "required": false,
+            "description": "Determines whether a \"single\" or \"multiple\" items can be selected at a time.\n\nThis prop will overwrite the inferred type from `modelValue` and `defaultValue`.",
+            "descriptionKey": "api.generated.headless_src_components_combobox_types.comboboxrootprops.members.multiple",
+            "default": null,
+            "inheritedFrom": "Omit.multiple",
+            "sourcePath": "headless/src/types/common.ts",
+            "referencedTypes": []
+          },
+          {
             "name": "disabled",
             "type": "boolean",
             "required": false,
@@ -5112,28 +5156,6 @@
             "referencedTypes": []
           },
           {
-            "name": "defaultValue",
-            "type": "(M extends true ? string[] : string)",
-            "required": false,
-            "description": "The default value of the selected item(s).\n\nUse this when you need to set the initial state of the items.",
-            "descriptionKey": "api.generated.headless_src_components_combobox_types.comboboxrootprops.members.defaultvalue",
-            "default": null,
-            "inheritedFrom": "Omit.defaultValue",
-            "sourcePath": "headless/src/types/common.ts",
-            "referencedTypes": []
-          },
-          {
-            "name": "modelValue",
-            "type": "(M extends true ? string[] : string)",
-            "required": false,
-            "description": "The controlled value of the selected item(s).\n\nUse this when you need to control the state of the items. Can be bound with `v-model`",
-            "descriptionKey": "api.generated.headless_src_components_combobox_types.comboboxrootprops.members.modelvalue",
-            "default": null,
-            "inheritedFrom": "Omit.modelValue",
-            "sourcePath": "headless/src/types/common.ts",
-            "referencedTypes": []
-          },
-          {
             "name": "highlightOnHover",
             "type": "boolean",
             "required": false,
@@ -5153,28 +5175,6 @@
             "default": null,
             "inheritedFrom": "required",
             "sourcePath": "headless/src/types/component.ts",
-            "referencedTypes": []
-          },
-          {
-            "name": "multiple",
-            "type": "M",
-            "required": false,
-            "description": "Determines whether a \"single\" or \"multiple\" items can be selected at a time.\n\nThis prop will overwrite the inferred type from `modelValue` and `defaultValue`.",
-            "descriptionKey": "api.generated.headless_src_components_combobox_types.comboboxrootprops.members.multiple",
-            "default": null,
-            "inheritedFrom": "Omit.multiple",
-            "sourcePath": "headless/src/types/common.ts",
-            "referencedTypes": []
-          },
-          {
-            "name": "clearable",
-            "type": "boolean",
-            "required": false,
-            "description": "Whether selected item can be cleared when `multiple` is false.",
-            "descriptionKey": "api.generated.headless_src_components_combobox_types.comboboxrootprops.members.clearable",
-            "default": null,
-            "inheritedFrom": "clearable",
-            "sourcePath": "headless/src/types/common.ts",
             "referencedTypes": []
           }
         ],

@@ -16,7 +16,7 @@ import type { IconValue } from '../_icon/types';
 /**
  * Properties for the AccordionRoot component.
  */
-export interface AccordionRootProps<M extends boolean = false> extends SelectionProps<M>, BaseProps {
+export interface AccordionRootProps<M extends boolean = false> extends Omit<SelectionProps<M>, 'clearable'>, BaseProps {
   /**
    * When type is "single", allows closing content when clicking trigger for an open item.
    *

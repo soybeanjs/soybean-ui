@@ -6,7 +6,7 @@
         "kind": "props",
         "name": "CommandProps",
         "type": "Interface CommandProps<T>",
-        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<CommandUi>; items: CommandOptionData<T>[]; placeholder?: string; searchTerm?: string; clearable?: boolean; fuseOptions?: UseFuseOptions<CommandSearchOptionData<T>>; listProps?: CommandListProps; itemProps?: CommandItemProps; itemLabelProps?: CommandItemLabelProps; groupProps?: CommandGroupProps; groupLabelProps?: CommandGroupLabelProps; shortcutProps?: CommandShortcutProps; separatorProps?: CommandSeparatorProps; inputProps?: CommandInputProps; emptyProps?: CommandEmptyProps; emptyLabel?: string; disabled?: boolean; dir?: Direction; name?: string; defaultValue?: string; modelValue?: string; highlightOnHover?: boolean; required?: boolean; orientation?: DataOrientation; selectionBehavior?: SelectionBehavior; multiple?: false }",
+        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<CommandUi>; items: CommandOptionData<T>[]; placeholder?: string; searchTerm?: string; clearable?: boolean; fuseOptions?: UseFuseOptions<CommandSearchOptionData<T>>; listProps?: CommandListProps; itemProps?: CommandItemProps; itemLabelProps?: CommandItemLabelProps; groupProps?: CommandGroupProps; groupLabelProps?: CommandGroupLabelProps; shortcutProps?: CommandShortcutProps; separatorProps?: CommandSeparatorProps; inputProps?: CommandInputProps; emptyProps?: CommandEmptyProps; emptyLabel?: string; modelValue?: string; defaultValue?: string; multiple?: false; selectionBehavior?: SelectionBehavior; disabled?: boolean; dir?: Direction; name?: string; highlightOnHover?: boolean; required?: boolean; orientation?: DataOrientation }",
         "description": "Properties for the Command component.",
         "descriptionKey": "api.generated.src_components_command_types.commandprops.props",
         "sourcePath": "src/components/command/types.ts",
@@ -628,6 +628,64 @@
             "referencedTypes": []
           },
           {
+            "name": "modelValue",
+            "type": "string",
+            "required": false,
+            "description": "The controlled value of the selected item(s).\n\nUse this when you need to control the state of the items. Can be bound with `v-model`",
+            "descriptionKey": "api.generated.src_components_command_types.commandprops.members.modelvalue",
+            "default": null,
+            "inheritedFrom": "modelValue",
+            "sourcePath": "headless/src/types/common.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "defaultValue",
+            "type": "string",
+            "required": false,
+            "description": "The default value of the selected item(s).\n\nUse this when you need to set the initial state of the items.",
+            "descriptionKey": "api.generated.src_components_command_types.commandprops.members.defaultvalue",
+            "default": null,
+            "inheritedFrom": "defaultValue",
+            "sourcePath": "headless/src/types/common.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "multiple",
+            "type": "false",
+            "required": false,
+            "description": "Determines whether a \"single\" or \"multiple\" items can be selected at a time.\n\nThis prop will overwrite the inferred type from `modelValue` and `defaultValue`.",
+            "descriptionKey": "api.generated.src_components_command_types.commandprops.members.multiple",
+            "default": null,
+            "inheritedFrom": "multiple",
+            "sourcePath": "headless/src/types/common.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "selectionBehavior",
+            "type": "SelectionBehavior",
+            "required": false,
+            "description": "How multiple selection should behave in the collection.",
+            "descriptionKey": "api.generated.src_components_command_types.commandprops.members.selectionbehavior",
+            "default": "'toggle'",
+            "inheritedFrom": "selectionBehavior",
+            "sourcePath": "headless/src/types/common.ts",
+            "referencedTypes": [
+              {
+                "name": "SelectionBehavior",
+                "kind": "typeAlias",
+                "type": "'toggle' | 'replace'",
+                "resolvedType": "'toggle' | 'replace'",
+                "description": "",
+                "descriptionKey": "api.generated.headless_src_types_common.selectionbehavior",
+                "sourcePath": "headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
             "name": "disabled",
             "type": "boolean",
             "required": false,
@@ -672,28 +730,6 @@
             "default": null,
             "inheritedFrom": "name",
             "sourcePath": "headless/src/types/component.ts",
-            "referencedTypes": []
-          },
-          {
-            "name": "defaultValue",
-            "type": "string",
-            "required": false,
-            "description": "The default value of the selected item(s).\n\nUse this when you need to set the initial state of the items.",
-            "descriptionKey": "api.generated.src_components_command_types.commandprops.members.defaultvalue",
-            "default": null,
-            "inheritedFrom": "defaultValue",
-            "sourcePath": "headless/src/types/common.ts",
-            "referencedTypes": []
-          },
-          {
-            "name": "modelValue",
-            "type": "string",
-            "required": false,
-            "description": "The controlled value of the selected item(s).\n\nUse this when you need to control the state of the items. Can be bound with `v-model`",
-            "descriptionKey": "api.generated.src_components_command_types.commandprops.members.modelvalue",
-            "default": null,
-            "inheritedFrom": "modelValue",
-            "sourcePath": "headless/src/types/common.ts",
             "referencedTypes": []
           },
           {
@@ -742,42 +778,6 @@
                 "callables": []
               }
             ]
-          },
-          {
-            "name": "selectionBehavior",
-            "type": "SelectionBehavior",
-            "required": false,
-            "description": "How multiple selection should behave in the collection.",
-            "descriptionKey": "api.generated.src_components_command_types.commandprops.members.selectionbehavior",
-            "default": "'toggle'",
-            "inheritedFrom": "selectionBehavior",
-            "sourcePath": "headless/src/types/common.ts",
-            "referencedTypes": [
-              {
-                "name": "SelectionBehavior",
-                "kind": "typeAlias",
-                "type": "'toggle' | 'replace'",
-                "resolvedType": "'toggle' | 'replace'",
-                "description": "",
-                "descriptionKey": "api.generated.headless_src_types_common.selectionbehavior",
-                "sourcePath": "headless/src/types/common.ts",
-                "typeParameters": [],
-                "external": false,
-                "members": [],
-                "callables": []
-              }
-            ]
-          },
-          {
-            "name": "multiple",
-            "type": "false",
-            "required": false,
-            "description": "Determines whether a \"single\" or \"multiple\" items can be selected at a time.\n\nThis prop will overwrite the inferred type from `modelValue` and `defaultValue`.",
-            "descriptionKey": "api.generated.src_components_command_types.commandprops.members.multiple",
-            "default": null,
-            "inheritedFrom": "multiple",
-            "sourcePath": "headless/src/types/common.ts",
-            "referencedTypes": []
           }
         ],
         "callables": [],
@@ -1148,7 +1148,7 @@
         "kind": "props",
         "name": "CommandCompactProps",
         "type": "Interface CommandCompactProps<T>",
-        "resolvedType": "{ items: CommandOptionData<T>[]; placeholder?: string; searchTerm?: string; clearable?: boolean; fuseOptions?: UseFuseOptions<CommandSearchOptionData<T>>; listProps?: CommandListProps; itemProps?: CommandItemProps; itemLabelProps?: CommandItemLabelProps; groupProps?: CommandGroupProps; groupLabelProps?: CommandGroupLabelProps; shortcutProps?: CommandShortcutProps; separatorProps?: CommandSeparatorProps; inputProps?: CommandInputProps; emptyProps?: CommandEmptyProps; emptyLabel?: string; disabled?: boolean; dir?: Direction; name?: string; defaultValue?: string; modelValue?: string; highlightOnHover?: boolean; required?: boolean; orientation?: DataOrientation; selectionBehavior?: SelectionBehavior; multiple?: false }",
+        "resolvedType": "{ items: CommandOptionData<T>[]; placeholder?: string; searchTerm?: string; clearable?: boolean; fuseOptions?: UseFuseOptions<CommandSearchOptionData<T>>; listProps?: CommandListProps; itemProps?: CommandItemProps; itemLabelProps?: CommandItemLabelProps; groupProps?: CommandGroupProps; groupLabelProps?: CommandGroupLabelProps; shortcutProps?: CommandShortcutProps; separatorProps?: CommandSeparatorProps; inputProps?: CommandInputProps; emptyProps?: CommandEmptyProps; emptyLabel?: string; modelValue?: string; defaultValue?: string; multiple?: false; selectionBehavior?: SelectionBehavior; disabled?: boolean; dir?: Direction; name?: string; highlightOnHover?: boolean; required?: boolean; orientation?: DataOrientation }",
         "description": "Properties for the CommandCompact component.",
         "descriptionKey": "api.generated.headless_src_components_command_types.commandcompactprops.props",
         "sourcePath": "headless/src/components/command/types.ts",
@@ -1695,6 +1695,64 @@
             "referencedTypes": []
           },
           {
+            "name": "modelValue",
+            "type": "string",
+            "required": false,
+            "description": "The controlled value of the selected item(s).\n\nUse this when you need to control the state of the items. Can be bound with `v-model`",
+            "descriptionKey": "api.generated.headless_src_components_command_types.commandcompactprops.members.modelvalue",
+            "default": null,
+            "inheritedFrom": "Omit.modelValue",
+            "sourcePath": "headless/src/types/common.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "defaultValue",
+            "type": "string",
+            "required": false,
+            "description": "The default value of the selected item(s).\n\nUse this when you need to set the initial state of the items.",
+            "descriptionKey": "api.generated.headless_src_components_command_types.commandcompactprops.members.defaultvalue",
+            "default": null,
+            "inheritedFrom": "Omit.defaultValue",
+            "sourcePath": "headless/src/types/common.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "multiple",
+            "type": "false",
+            "required": false,
+            "description": "Determines whether a \"single\" or \"multiple\" items can be selected at a time.\n\nThis prop will overwrite the inferred type from `modelValue` and `defaultValue`.",
+            "descriptionKey": "api.generated.headless_src_components_command_types.commandcompactprops.members.multiple",
+            "default": null,
+            "inheritedFrom": "Omit.multiple",
+            "sourcePath": "headless/src/types/common.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "selectionBehavior",
+            "type": "SelectionBehavior",
+            "required": false,
+            "description": "How multiple selection should behave in the collection.",
+            "descriptionKey": "api.generated.headless_src_components_command_types.commandcompactprops.members.selectionbehavior",
+            "default": "'toggle'",
+            "inheritedFrom": "selectionBehavior",
+            "sourcePath": "headless/src/types/common.ts",
+            "referencedTypes": [
+              {
+                "name": "SelectionBehavior",
+                "kind": "typeAlias",
+                "type": "'toggle' | 'replace'",
+                "resolvedType": "'toggle' | 'replace'",
+                "description": "",
+                "descriptionKey": "api.generated.headless_src_types_common.selectionbehavior",
+                "sourcePath": "headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
             "name": "disabled",
             "type": "boolean",
             "required": false,
@@ -1739,28 +1797,6 @@
             "default": null,
             "inheritedFrom": "name",
             "sourcePath": "headless/src/types/component.ts",
-            "referencedTypes": []
-          },
-          {
-            "name": "defaultValue",
-            "type": "string",
-            "required": false,
-            "description": "The default value of the selected item(s).\n\nUse this when you need to set the initial state of the items.",
-            "descriptionKey": "api.generated.headless_src_components_command_types.commandcompactprops.members.defaultvalue",
-            "default": null,
-            "inheritedFrom": "Omit.defaultValue",
-            "sourcePath": "headless/src/types/common.ts",
-            "referencedTypes": []
-          },
-          {
-            "name": "modelValue",
-            "type": "string",
-            "required": false,
-            "description": "The controlled value of the selected item(s).\n\nUse this when you need to control the state of the items. Can be bound with `v-model`",
-            "descriptionKey": "api.generated.headless_src_components_command_types.commandcompactprops.members.modelvalue",
-            "default": null,
-            "inheritedFrom": "Omit.modelValue",
-            "sourcePath": "headless/src/types/common.ts",
             "referencedTypes": []
           },
           {
@@ -1809,42 +1845,6 @@
                 "callables": []
               }
             ]
-          },
-          {
-            "name": "selectionBehavior",
-            "type": "SelectionBehavior",
-            "required": false,
-            "description": "How multiple selection should behave in the collection.",
-            "descriptionKey": "api.generated.headless_src_components_command_types.commandcompactprops.members.selectionbehavior",
-            "default": "'toggle'",
-            "inheritedFrom": "selectionBehavior",
-            "sourcePath": "headless/src/types/common.ts",
-            "referencedTypes": [
-              {
-                "name": "SelectionBehavior",
-                "kind": "typeAlias",
-                "type": "'toggle' | 'replace'",
-                "resolvedType": "'toggle' | 'replace'",
-                "description": "",
-                "descriptionKey": "api.generated.headless_src_types_common.selectionbehavior",
-                "sourcePath": "headless/src/types/common.ts",
-                "typeParameters": [],
-                "external": false,
-                "members": [],
-                "callables": []
-              }
-            ]
-          },
-          {
-            "name": "multiple",
-            "type": "false",
-            "required": false,
-            "description": "Determines whether a \"single\" or \"multiple\" items can be selected at a time.\n\nThis prop will overwrite the inferred type from `modelValue` and `defaultValue`.",
-            "descriptionKey": "api.generated.headless_src_components_command_types.commandcompactprops.members.multiple",
-            "default": null,
-            "inheritedFrom": "Omit.multiple",
-            "sourcePath": "headless/src/types/common.ts",
-            "referencedTypes": []
           }
         ],
         "callables": [],

@@ -10,7 +10,6 @@
         },
         "accordioncompactprops": {
           "members": {
-            "clearable": "Whether selected item can be cleared when `multiple` is false.",
             "collapsible": "When type is \"single\", allows closing content when clicking trigger for an open item.\n\nWhen type is \"multiple\", this prop has no effect.",
             "contentprops": "Properties forwarded to the content element.",
             "defaultvalue": "The default value of the selected item(s).\n\nUse this when you need to set the initial state of the items.",
@@ -80,7 +79,6 @@
         },
         "accordionrootprops": {
           "members": {
-            "clearable": "Whether selected item can be cleared when `multiple` is false.",
             "collapsible": "When type is \"single\", allows closing content when clicking trigger for an open item.\n\nWhen type is \"multiple\", this prop has no effect.",
             "defaultvalue": "The default value of the selected item(s).\n\nUse this when you need to set the initial state of the items.",
             "dir": "The reading direction of the accordion when applicable. If omitted, assumes LTR (left-to-right) reading mode.",
@@ -8985,7 +8983,6 @@
         "accordionprops": {
           "members": {
             "class": "root class",
-            "clearable": "Whether selected item can be cleared when `multiple` is false.",
             "collapsible": "When type is \"single\", allows closing content when clicking trigger for an open item.\n\nWhen type is \"multiple\", this prop has no effect.",
             "contentprops": "Properties forwarded to the content element.",
             "defaultvalue": "The default value of the selected item(s).\n\nUse this when you need to set the initial state of the items.",
