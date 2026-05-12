@@ -1,5 +1,47 @@
 # Changelog
 
+## [v0.21.0](https://github.com/soybeanjs/soybean-ui/compare/v0.20.0...v0.21.0) (2026-05-12)
+
+### &nbsp;&nbsp;&nbsp;🚀 Features
+
+- **docs**: add llms.txt support and documentation for AI tools &nbsp;-&nbsp; by **soybeanfe** [<samp>(985a3)</samp>](https://github.com/soybeanjs/soybean-ui/commit/985a32e4e)
+- **projects**: support more locales &nbsp;-&nbsp; by **soybeanfe** [<samp>(70fed)</samp>](https://github.com/soybeanjs/soybean-ui/commit/70fed259d)
+- **releases**: enhance release entry grouping and update component typings &nbsp;-&nbsp; by @soybeanjs [<samp>(7e671)</samp>](https://github.com/soybeanjs/soybean-ui/commit/7e671c2e9)
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- **menubar**: enhance focus management for link triggers and update menu interaction logic &nbsp;-&nbsp; by **soybeanfe** [<samp>(2cddd)</samp>](https://github.com/soybeanjs/soybean-ui/commit/2cddd5d7e)
+
+### &nbsp;&nbsp;&nbsp;🛠 Optimizations
+
+- **scripts**: simplify changelog and translation scripts, remove unused code &nbsp;-&nbsp; by **soybeanfe** [<samp>(6b716)</samp>](https://github.com/soybeanjs/soybean-ui/commit/6b716af8d)
+
+### &nbsp;&nbsp;&nbsp;💅 Refactors
+
+- **locale**: enhance locale registration with new API and support for custom locales &nbsp;-&nbsp; by **soybeanfe** [<samp>(d9090)</samp>](https://github.com/soybeanjs/soybean-ui/commit/d90902bd1)
+
+### &nbsp;&nbsp;&nbsp;📖 Documentation
+
+- **api**: update description for 'dir' prop and change default value to null &nbsp;-&nbsp; by **soybeanfe** [<samp>(458b2)</samp>](https://github.com/soybeanjs/soybean-ui/commit/458b2b7e0)
+- **changelog**: update docs changelog &nbsp;-&nbsp; by @soybeanjs [<samp>(1bbab)</samp>](https://github.com/soybeanjs/soybean-ui/commit/1bbab3187)
+
+### &nbsp;&nbsp;&nbsp;🏡 Chore
+
+- **deps**: update deps and update pnpm to 11 &nbsp;-&nbsp; by **soybeanfe** [<samp>(2fd29)</samp>](https://github.com/soybeanjs/soybean-ui/commit/2fd29f12e)
+
+### &nbsp;&nbsp;&nbsp;✅ Tests
+
+- **toolbar**: register rtl locale for toolbar tests &nbsp;-&nbsp; by **soybeanfe** [<samp>(d9836)</samp>](https://github.com/soybeanjs/soybean-ui/commit/d9836034c)
+
+### &nbsp;&nbsp;&nbsp;🎨 Styles
+
+- **projects**: format code &nbsp;-&nbsp; by **soybeanfe** [<samp>(09d9b)</samp>](https://github.com/soybeanjs/soybean-ui/commit/09d9b0ac7)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;
+[soybeanfe](mailto:honghuangdc@gmail.com),&nbsp;
+
 ## [v0.20.0](https://github.com/soybeanjs/soybean-ui/compare/v0.19.0...v0.20.0) (2026-05-12)
 
 ### &nbsp;&nbsp;&nbsp;🚀 Features
