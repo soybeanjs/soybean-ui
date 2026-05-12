@@ -1,6 +1,8 @@
 import { mount } from '@vue/test-utils';
 import { describe, expect, it, vi } from 'vitest';
 import SConfigProvider from '../../../src/components/config-provider/config-provider.vue';
+import arLocale from '../../../headless/src/locale/langs/ar';
+import { registerLocale } from '../../../headless/src/locale';
 import {
   SToolbar,
   SToolbarButton,
@@ -90,6 +92,7 @@ describe('SToolbar', () => {
     });
 
     it('derives rtl direction from an rtl locale when dir is omitted', () => {
+      registerLocale(arLocale);
       const wrapper = mountToolbar(undefined, { locale: 'ar' });
       const toolbar = wrapper.find('[role="toolbar"]');
 
