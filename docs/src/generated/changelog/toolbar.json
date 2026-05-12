@@ -1,8 +1,25 @@
 {
   "component": "toolbar",
-  "generatedAt": "2026-05-11T16:23:12.289Z",
+  "generatedAt": "2026-05-12T17:34:42.430Z",
   "schemaVersion": 1,
   "versions": [
+    {
+      "version": "v0.21.0",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.20.0...v0.21.0",
+      "date": "2026-05-12",
+      "entries": [
+        {
+          "type": "chore",
+          "scope": "toolbar",
+          "summary": "register rtl locale for toolbar tests",
+          "summaryKey": "changelog.generated.v0.21.0.d9836",
+          "commitHash": "d9836",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/d9836034c",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope"
+        }
+      ]
+    },
     {
       "version": "v0.20.0",
       "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.19.0...v0.20.0",

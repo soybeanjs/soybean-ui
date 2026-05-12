@@ -1,7 +1,241 @@
 {
-  "generatedAt": "2026-05-11T16:23:12.289Z",
+  "generatedAt": "2026-05-12T17:34:42.430Z",
   "schemaVersion": 1,
   "releases": [
+    {
+      "version": "v0.22.0",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.21.0...v0.22.0",
+      "date": "2026-05-13",
+      "entryCount": 7,
+      "componentCount": 1,
+      "components": ["accordion"],
+      "typeCounts": {
+        "optimization": 2,
+        "feature": 1,
+        "fix": 2,
+        "refactor": 1,
+        "docs": 1
+      },
+      "entries": [
+        {
+          "type": "optimization",
+          "scope": "accordion",
+          "summary": "enable collapsible behavior by default and update related props",
+          "summaryKey": "changelog.generated.v0.22.0.bec18",
+          "commitHash": "bec18",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/bec18a46",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope",
+          "components": ["accordion"]
+        },
+        {
+          "type": "feature",
+          "scope": "docs",
+          "summary": "add skills support and documentation for AI tools",
+          "summaryKey": "changelog.generated.v0.22.0.919a1",
+          "commitHash": "919a1",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/919a1676",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "fix",
+          "scope": "playground",
+          "summary": "remove unused modelValue and simplify template",
+          "summaryKey": "changelog.generated.v0.22.0.8d26b",
+          "commitHash": "8d26b",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/8d26b113",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "fix",
+          "scope": "skills",
+          "summary": "rename plugin to soybean-ui-skills for consistency",
+          "summaryKey": "changelog.generated.v0.22.0.700db",
+          "commitHash": "700db",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/700db2cf",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "optimization",
+          "scope": "llms",
+          "summary": "remove unnecessary warning log in handleDevRequest",
+          "summaryKey": "changelog.generated.v0.22.0.52dd5",
+          "commitHash": "52dd5",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/52dd5033",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "refactor",
+          "scope": "scripts",
+          "summary": "update CLI commands and improve module execution",
+          "summaryKey": "changelog.generated.v0.22.0.c3cca",
+          "commitHash": "c3cca",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/c3ccaa41",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "docs",
+          "scope": "skills",
+          "summary": "update skills",
+          "summaryKey": "changelog.generated.v0.22.0.b258b",
+          "commitHash": "b258b",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/b258b294",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope",
+          "components": []
+        }
+      ]
+    },
+    {
+      "version": "v0.21.0",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.20.0...v0.21.0",
+      "date": "2026-05-12",
+      "entryCount": 11,
+      "componentCount": 2,
+      "components": ["menubar", "toolbar"],
+      "typeCounts": {
+        "fix": 1,
+        "chore": 2,
+        "feature": 3,
+        "refactor": 1,
+        "optimization": 1,
+        "docs": 2,
+        "style": 1
+      },
+      "entries": [
+        {
+          "type": "fix",
+          "scope": "menubar",
+          "summary": "enhance focus management for link triggers and update menu interaction logic",
+          "summaryKey": "changelog.generated.v0.21.0.2cddd",
+          "commitHash": "2cddd",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/2cddd5d7e",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope",
+          "components": ["menubar"]
+        },
+        {
+          "type": "chore",
+          "scope": "toolbar",
+          "summary": "register rtl locale for toolbar tests",
+          "summaryKey": "changelog.generated.v0.21.0.d9836",
+          "commitHash": "d9836",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/d9836034c",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope",
+          "components": ["toolbar"]
+        },
+        {
+          "type": "feature",
+          "scope": "releases",
+          "summary": "enhance release entry grouping and update component typings",
+          "summaryKey": "changelog.generated.v0.21.0.7e671",
+          "commitHash": "7e671",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/7e671c2e9",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "feature",
+          "scope": "docs",
+          "summary": "add llms.txt support and documentation for AI tools",
+          "summaryKey": "changelog.generated.v0.21.0.985a3",
+          "commitHash": "985a3",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/985a32e4e",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "feature",
+          "scope": "projects",
+          "summary": "support more locales",
+          "summaryKey": "changelog.generated.v0.21.0.70fed",
+          "commitHash": "70fed",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/70fed259d",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "refactor",
+          "scope": "locale",
+          "summary": "enhance locale registration with new API and support for custom locales",
+          "summaryKey": "changelog.generated.v0.21.0.d9090",
+          "commitHash": "d9090",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/d90902bd1",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "optimization",
+          "scope": "scripts",
+          "summary": "simplify changelog and translation scripts, remove unused code",
+          "summaryKey": "changelog.generated.v0.21.0.6b716",
+          "commitHash": "6b716",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/6b716af8d",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "docs",
+          "scope": "api",
+          "summary": "update description for 'dir' prop and change default value to null",
+          "summaryKey": "changelog.generated.v0.21.0.458b2",
+          "commitHash": "458b2",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/458b2b7e0",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "docs",
+          "scope": "changelog",
+          "summary": "update docs changelog",
+          "summaryKey": "changelog.generated.v0.21.0.1bbab",
+          "commitHash": "1bbab",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/1bbab3187",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "style",
+          "scope": "projects",
+          "summary": "format code",
+          "summaryKey": "changelog.generated.v0.21.0.09d9b",
+          "commitHash": "09d9b",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/09d9b0ac7",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "chore",
+          "scope": "deps",
+          "summary": "update deps and update pnpm to 11",
+          "summaryKey": "changelog.generated.v0.21.0.2fd29",
+          "commitHash": "2fd29",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/2fd29f12e",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope",
+          "components": []
+        }
+      ]
+    },
     {
       "version": "v0.20.0",
       "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.19.0...v0.20.0",

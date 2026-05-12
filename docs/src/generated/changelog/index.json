@@ -1,13 +1,13 @@
 {
-  "generatedAt": "2026-05-11T16:23:12.289Z",
+  "generatedAt": "2026-05-12T17:34:42.430Z",
   "schemaVersion": 1,
   "components": {
     "accordion": {
       "component": "accordion",
       "file": "accordion.json",
-      "latestVersion": "v0.15.0",
-      "versionCount": 4,
-      "entryCount": 9
+      "latestVersion": "v0.22.0",
+      "versionCount": 5,
+      "entryCount": 10
     },
     "affix": {
       "component": "affix",
@@ -355,9 +355,9 @@
     "menubar": {
       "component": "menubar",
       "file": "menubar.json",
-      "latestVersion": "v0.20.0",
-      "versionCount": 1,
-      "entryCount": 1
+      "latestVersion": "v0.21.0",
+      "versionCount": 2,
+      "entryCount": 2
     },
     "navigation-menu": {
       "component": "navigation-menu",
@@ -586,9 +586,9 @@
     "toolbar": {
       "component": "toolbar",
       "file": "toolbar.json",
-      "latestVersion": "v0.20.0",
-      "versionCount": 1,
-      "entryCount": 1
+      "latestVersion": "v0.21.0",
+      "versionCount": 2,
+      "entryCount": 2
     },
     "tooltip": {
       "component": "tooltip",

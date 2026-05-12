@@ -1228,6 +1228,32 @@
             "fbf17": "update component count in introduction",
             "fd3b9": "simplify Pagination component by using PaginationCompact"
           }
+        },
+        "21": {
+          "0": {
+            "09d9b": "format code",
+            "1bbab": "update docs changelog",
+            "2cddd": "enhance focus management for link triggers and update menu interaction logic",
+            "2fd29": "update deps and update pnpm to 11",
+            "458b2": "update description for 'dir' prop and change default value to null",
+            "6b716": "simplify changelog and translation scripts, remove unused code",
+            "70fed": "support more locales",
+            "7e671": "enhance release entry grouping and update component typings",
+            "985a3": "add llms.txt support and documentation for AI tools",
+            "d9090": "enhance locale registration with new API and support for custom locales",
+            "d9836": "register rtl locale for toolbar tests"
+          }
+        },
+        "22": {
+          "0": {
+            "52dd5": "remove unnecessary warning log in handleDevRequest",
+            "700db": "rename plugin to soybean-ui-skills for consistency",
+            "8d26b": "remove unused modelValue and simplify template",
+            "919a1": "add skills support and documentation for AI tools",
+            "b258b": "update skills",
+            "bec18": "enable collapsible behavior by default and update related props",
+            "c3cca": "update CLI commands and improve module execution"
+          }
         }
       }
     }

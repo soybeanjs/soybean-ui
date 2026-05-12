@@ -1,8 +1,25 @@
 {
   "component": "accordion",
-  "generatedAt": "2026-05-11T16:23:12.289Z",
+  "generatedAt": "2026-05-12T17:34:42.430Z",
   "schemaVersion": 1,
   "versions": [
+    {
+      "version": "v0.22.0",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.21.0...v0.22.0",
+      "date": "2026-05-13",
+      "entries": [
+        {
+          "type": "optimization",
+          "scope": "accordion",
+          "summary": "enable collapsible behavior by default and update related props",
+          "summaryKey": "changelog.generated.v0.22.0.bec18",
+          "commitHash": "bec18",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/bec18a46",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    },
     {
       "version": "v0.15.0",
       "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.14.0...v0.15.0",
