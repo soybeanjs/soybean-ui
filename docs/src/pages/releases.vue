@@ -107,8 +107,8 @@ const typeClassMap: Record<GeneratedChangelogEntryType, string> = {
   optimization: 'border-info/25 bg-info/10 text-info',
   refactor: 'border-warning/25 bg-warning/10 text-warning',
   docs: 'border-success/25 bg-success/10 text-success',
-  chore: 'border-muted/40 bg-muted/60 text-foreground/80',
-  style: 'border-accent/25 bg-accent/10 text-accent'
+  chore: 'border-lime/25 bg-lime/10 text-lime',
+  style: 'border-blue/25 bg-blue/10 text-blue'
 };
 
 const actionLinks = computed(() => {
@@ -145,6 +145,23 @@ function resolveSummary(summary: string, summaryKey: string | null) {
   return resolveGeneratedText(summary, summaryKey);
 }
 
+type ReleaseEntry = GeneratedReleaseChangelogVersion['entries'][number];
+
+interface ReleaseEntryScopeGroup {
+  key: string;
+  scope: string;
+  entryCount: number;
+  entries: ReleaseEntry[];
+  component?: string;
+}
+
+interface ReleaseEntryTypeGroup {
+  key: GeneratedChangelogEntryType;
+  type: GeneratedChangelogEntryType;
+  entryCount: number;
+  scopes: ReleaseEntryScopeGroup[];
+}
+
 function getOrderedTypeCounts(release: GeneratedReleaseChangelogVersion) {
   return typeOrder.map(type => ({ type, count: release.typeCounts[type] ?? 0 })).filter(item => item.count > 0);
 }
@@ -159,6 +176,71 @@ function getDisplayedEntries(release: GeneratedReleaseChangelogVersion) {
   }
 
   return getHighlightedEntries(release);
+}
+
+function getDisplayedEntryTypeGroups(release: GeneratedReleaseChangelogVersion): ReleaseEntryTypeGroup[] {
+  const typeGroupMap = new Map<
+    GeneratedChangelogEntryType,
+    {
+      entries: ReleaseEntry[];
+      scopes: Map<string, { scope: string; entries: ReleaseEntry[] }>;
+    }
+  >();
+
+  for (const entry of getDisplayedEntries(release)) {
+    const type = entry.type;
+    const scope = entry.scope.trim();
+    const scopeKey = scope || '__misc';
+
+    let typeGroup = typeGroupMap.get(type);
+
+    if (!typeGroup) {
+      typeGroup = {
+        entries: [],
+        scopes: new Map()
+      };
+
+      typeGroupMap.set(type, typeGroup);
+    }
+
+    typeGroup.entries.push(entry);
+
+    let scopeGroup = typeGroup.scopes.get(scopeKey);
+
+    if (!scopeGroup) {
+      scopeGroup = {
+        scope: scope || 'misc',
+        entries: []
+      };
+
+      typeGroup.scopes.set(scopeKey, scopeGroup);
+    }
+
+    scopeGroup.entries.push(entry);
+  }
+
+  return typeOrder
+    .map(type => {
+      const typeGroup = typeGroupMap.get(type);
+
+      if (!typeGroup) {
+        return null;
+      }
+
+      return {
+        key: type,
+        type,
+        entryCount: typeGroup.entries.length,
+        scopes: Array.from(typeGroup.scopes.entries()).map(([scopeKey, scopeGroup]) => ({
+          key: `${type}-${scopeKey}`,
+          scope: scopeGroup.scope,
+          entryCount: scopeGroup.entries.length,
+          entries: scopeGroup.entries,
+          component: scopeGroup.entries?.[0]?.components?.[0]
+        }))
+      } as ReleaseEntryTypeGroup;
+    })
+    .filter((group): group is ReleaseEntryTypeGroup => group !== null);
 }
 
 function getHighlightedComponents(release: GeneratedReleaseChangelogVersion) {
@@ -187,6 +269,10 @@ function normalizeSearchValue(value: string) {
 
 function formatComponentLabel(component: string) {
   return pascalCase(component);
+}
+
+function formatScopeLabel(scope: string) {
+  return pascalCase(scope);
 }
 
 function isReleaseExpanded(version: string) {
@@ -352,14 +438,20 @@ watch([normalizedComponentQuery, onlyComponentRelated], ([component, related]) =
 
               <div class="flex flex-wrap items-center gap-3 rounded-2xl px-4 py-3">
                 <div class="min-w-0 flex-1">
-                  <input
+                  <SInput
                     v-model="componentQuery"
                     type="text"
                     :placeholder="t('releases_page.filter.placeholder')"
+                    :control-props="{
+                      onBlur: handleFilterInputBlur,
+                      onFocus: handleFilterInputFocus,
+                      onKeydown: event => {
+                        if (event.key === 'Enter') {
+                          handleFilterInputEnter();
+                        }
+                      }
+                    }"
                     class="w-full bg-transparent text-sm text-foreground outline-none placeholder:text-muted-foreground"
-                    @blur="handleFilterInputBlur"
-                    @focus="handleFilterInputFocus"
-                    @keydown.enter.prevent="handleFilterInputEnter"
                   />
                 </div>
 
@@ -638,53 +730,72 @@ watch([normalizedComponentQuery, onlyComponentRelated], ([component, related]) =
                       {{ t('releases_page.sections.highlights.title') }}
                     </div>
 
-                    <div class="space-y-3">
+                    <div class="space-y-4">
                       <div
-                        v-for="entry in getDisplayedEntries(release)"
-                        :key="`${release.version}-${entry.commitHash ?? entry.summary}`"
-                        class="space-y-3 rounded-2xl px-4 py-4"
+                        v-for="typeGroup in getDisplayedEntryTypeGroups(release)"
+                        :key="typeGroup.key"
+                        class="rounded-2xl border border-border/50 bg-muted/20 px-4 py-4 lg:grid lg:grid-cols-[13rem_minmax(0,1fr)] lg:gap-5 lt-lg:space-y-4"
                       >
-                        <div class="flex flex-wrap items-center gap-2.5">
-                          <span
-                            class="inline-flex items-center rounded-full border px-2.5 py-1 text-[11px] font-semibold uppercase tracking-[0.14em]"
-                            :class="typeClassMap[entry.type]"
-                          >
-                            {{ resolveTypeLabel(entry.type) }}
-                          </span>
-
-                          <span class="text-xs text-muted-foreground">
-                            {{ t('changelog.meta.scope') }}: {{ entry.scope }}
-                          </span>
-
-                          <SLink
-                            v-if="entry.commitUrl && entry.commitHash"
-                            :href="entry.commitUrl"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            class="inline-flex items-center gap-1.5 text-xs font-medium text-primary hover:text-primary/80"
-                          >
-                            <span>{{ t('changelog.actions.view_commit') }}</span>
-                            <span class="rounded bg-muted px-1.5 py-0.5 text-[11px] text-foreground">
-                              {{ entry.commitHash }}
+                        <div class="flex justify-between border-border/50 lg:border-r lg:pr-5">
+                          <div>
+                            <span
+                              class="inline-flex items-center rounded-full border px-3 py-2 text-base font-semibold uppercase tracking-[0.14em]"
+                              :class="typeClassMap[typeGroup.type]"
+                            >
+                              {{ resolveTypeLabel(typeGroup.type) }} · {{ typeGroup.entryCount }}
                             </span>
-                          </SLink>
+                          </div>
                         </div>
 
-                        <p class="text-sm leading-7 text-foreground sm:text-[15px]">
-                          {{ resolveSummary(entry.summary, entry.summaryKey) }}
-                        </p>
-
-                        <div v-if="entry.components.length" class="flex flex-wrap gap-2">
-                          <SButtonLink
-                            v-for="component in entry.components"
-                            :key="`${entry.commitHash ?? entry.summary}-${component}`"
-                            :to="toComponentLink(component)"
-                            size="sm"
-                            variant="pure"
-                            shape="rounded"
+                        <div class="space-y-3 lg:min-w-0">
+                          <div
+                            v-for="scopeGroup in typeGroup.scopes"
+                            :key="scopeGroup.key"
+                            class="rounded-xl border border-border/40 bg-background/80 px-3.5 py-3 xl:grid xl:grid-cols-[minmax(0,8rem)_minmax(0,1fr)] xl:gap-4 lt-xl:space-y-2.5"
                           >
-                            {{ formatComponentLabel(component) }}
-                          </SButtonLink>
+                            <SButtonLink
+                              v-if="scopeGroup.component"
+                              :to="toComponentLink(scopeGroup.component)"
+                              size="sm"
+                              variant="pure"
+                              shape="rounded"
+                            >
+                              {{ formatComponentLabel(scopeGroup.component) }}
+                            </SButtonLink>
+
+                            <div v-else class="text-sm font-medium text-foreground">
+                              {{ formatScopeLabel(scopeGroup.scope) }}
+                            </div>
+
+                            <ul class="space-y-2.5 xl:min-w-0">
+                              <li
+                                v-for="entry in scopeGroup.entries"
+                                :key="`${release.version}-${entry.commitHash ?? entry.summary}`"
+                                class="flex items-start gap-3"
+                              >
+                                <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-border/80" />
+
+                                <div class="min-w-0 flex-1 flex gap-8">
+                                  <p class="text-sm leading-6 text-foreground sm:text-[15px]">
+                                    {{ resolveSummary(entry.summary, entry.summaryKey) }}
+                                  </p>
+
+                                  <SLink
+                                    v-if="entry.commitUrl && entry.commitHash"
+                                    :href="entry.commitUrl"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="inline-flex items-center gap-1.5 text-xs font-medium text-primary hover:text-primary/80"
+                                  >
+                                    <span>{{ t('changelog.actions.view_commit') }}</span>
+                                    <span class="rounded bg-muted px-1.5 py-0.5 text-[11px] text-foreground">
+                                      {{ entry.commitHash }}
+                                    </span>
+                                  </SLink>
+                                </div>
+                              </li>
+                            </ul>
+                          </div>
                         </div>
                       </div>
                     </div>
