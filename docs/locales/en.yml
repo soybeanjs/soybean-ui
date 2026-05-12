@@ -621,6 +621,7 @@ sidebar:
   components: Components
   theming: Theming
   llms: LLMs.txt
+  skills: Skills
   common_types: Common Types
   general: General
   layout: Layout

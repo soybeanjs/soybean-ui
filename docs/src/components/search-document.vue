@@ -48,6 +48,10 @@ const searched = computed<CommandOptionData[]>(() => [
       {
         label: t('sidebar.llms'),
         value: 'overview_llms'
+      },
+      {
+        label: t('sidebar.skills'),
+        value: 'overview_skills'
       }
     ]
   },

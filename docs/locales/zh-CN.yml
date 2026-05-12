@@ -617,6 +617,7 @@ sidebar:
   components: 组件
   theming: 主题
   llms: LLMs.txt
+  skills: Skills
   common_types: 公共类型
   general: 通用
   layout: 布局

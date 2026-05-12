@@ -327,6 +327,8 @@ importers:
         specifier: 5.0.6
         version: 5.0.6(@vue/compiler-sfc@3.5.34)(pinia@3.0.4(typescript@6.0.3)(vue@3.5.34(typescript@6.0.3)))(vue@3.5.34(typescript@6.0.3))
 
+  ui-skills: {}
+
 packages:
 
   '@antfu/install-pkg@1.1.0':

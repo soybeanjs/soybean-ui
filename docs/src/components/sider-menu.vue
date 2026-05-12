@@ -59,6 +59,11 @@ const overviewMenus = computed<TreeMenuOptionData[]>(() => [
         label: t('sidebar.llms'),
         value: 'llms',
         to: '/overview/llms'
+      },
+      {
+        label: t('sidebar.skills'),
+        value: 'skills',
+        to: '/overview/skills'
       }
     ]
   }

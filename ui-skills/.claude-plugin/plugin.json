@@ -1,0 +1,8 @@
+{
+  "author": {
+    "email": "soybeanjs@outlook.com",
+    "name": "Soybean"
+  },
+  "description": "Agent skills for SoybeanUI and SoybeanHeadless.",
+  "name": "soybean-skills"
+}

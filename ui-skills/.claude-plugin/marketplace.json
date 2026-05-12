@@ -1,0 +1,20 @@
+{
+  "metadata": {
+    "description": "Agent skills for SoybeanUI and SoybeanHeadless."
+  },
+  "name": "soybean-skills",
+  "owner": {
+    "email": "soybeanjs@outlook.com",
+    "name": "Soybean"
+  },
+  "plugins": [
+    {
+      "category": "frontend",
+      "description": "Agent skills for SoybeanUI and SoybeanHeadless.",
+      "keywords": ["agentskills", "soybean-ui", "soybean-headless", "vue", "github-copilot", "claude-code"],
+      "name": "soybean-skills",
+      "source": "./",
+      "version": "0.21.0"
+    }
+  ]
+}
