@@ -20,14 +20,15 @@ const emit = defineEmits<MenubarContentEmits>();
 
 const listeners = useForwardListeners(emit);
 
-const { dir, loop, modelValue, onMenuOpen, setTriggerLink } = useMenubarRootContext('MenubarContent');
+const { dir, isLinkTriggerHovered, loop, modelValue, onMenuOpen, setTriggerLink } =
+  useMenubarRootContext('MenubarContent');
 const { value, triggerId, contentId, triggerElement, wasKeyboardTriggerOpen } = useMenubarMenuContext('MenubarContent');
 const { getOrderedItems } = useMenubarCollectionContext('MenubarContent');
 
 const hasInteractedOutside = shallowRef(false);
 
 const onCloseAutoFocus = (event: Event) => {
-  if (!modelValue.value && !hasInteractedOutside.value) {
+  if (!modelValue.value && !hasInteractedOutside.value && !isLinkTriggerHovered.value) {
     triggerElement.value?.focus();
   }
 
