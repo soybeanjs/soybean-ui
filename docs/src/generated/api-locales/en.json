@@ -10219,7 +10219,7 @@
         "configproviderprops": {
           "members": {
             "customtoast": "Whether to use custom toast rendering. If set to `true`, the `ToastProvider` will not render the default toast UI, and you can import `ToastProvider` component to render custom toast UI.",
-            "dir": "The global reading direction of your application. This will be inherited by all components.",
+            "dir": "The global reading direction of your application. This will be inherited by all components.\n\nWhen omitted, the direction follows the current locale and falls back to `'ltr'`.",
             "iconify": "The iconify options.",
             "iconrender": "A function to render the icon. This is useful when you want to use a custom icon library or want to wrap the icon with a custom component.",
             "locale": "The global locale of your application. This will be inherited by all components.",
