@@ -96,7 +96,6 @@
   .md-code-block::before {
     content: attr(data-lang);
     --uno: 'absolute left-3 top-3 z-1 border border-border bg-accent rounded-full px-2.5 py-1 text-2xs font-semibold uppercase tracking-[0.2em] text-muted-foreground';
-
   }
 
   .md-code-block > pre {
