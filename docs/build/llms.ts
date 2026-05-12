@@ -133,7 +133,6 @@ async function handleDevRequest(
   }
 
   next();
-  server.config.logger.warn(`[soybean-docs-llms] request not matched: ${requestPath}`);
 }
 
 async function writeLlmsOutput(outDir: string, output: LlmsOutput): Promise<void> {
