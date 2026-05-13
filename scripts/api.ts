@@ -82,7 +82,19 @@ type ComponentApiIndex = {
 const rootDir = process.cwd();
 const outputDir = path.join(rootDir, 'docs/src/generated/api');
 const legacyOutputDir = path.join(rootDir, 'docs/src/generated/component-api');
-const typedocTsconfig = path.join(rootDir, 'tsconfig.typedoc.json');
+const typedocTsconfig = {
+  extends: './tsconfig.base.json',
+  compilerOptions: {
+    paths: {
+      '@/*': ['./src/*'],
+      '@soybeanjs/ui': ['./src/index.ts']
+    },
+    skipLibCheck: true,
+    types: ['vite/client', 'vite-plugin-vue-meta-layouts/client']
+  },
+  include: ['src/**/*', 'headless/**/*', 'typedoc-shims.d.ts'],
+  exclude: ['docs/**/*', 'playground/**/*', 'test/**/*']
+} as const;
 const emptyIgnoredIndexes = Object.freeze([]) satisfies readonly number[];
 const tsTypeFormatFlags =
   ts.TypeFormatFlags.NoTruncation |
@@ -157,6 +169,7 @@ type AliasExportMeta = {
 const declarationCache = new Map<string, Map<string, TsDeclaration>>();
 
 let tsProgramContext: TsProgramContext | null = null;
+let typedocParsedConfig: ts.ParsedCommandLine | null = null;
 
 const reflectionSuffixes = [
   { suffix: 'SlotProps', kind: 'slotProps' },
@@ -549,16 +562,11 @@ function getTsProgramContext(): TsProgramContext {
     return tsProgramContext;
   }
 
-  const config = ts.readConfigFile(typedocTsconfig, ts.sys.readFile);
-
-  if (config.error) {
-    throw new Error(ts.flattenDiagnosticMessageText(config.error.messageText, '\n'));
-  }
-
-  const parsedConfig = ts.parseJsonConfigFileContent(config.config, ts.sys, rootDir, undefined, typedocTsconfig);
+  const parsedConfig = getTypedocParsedConfig();
   const program = ts.createProgram({
     rootNames: parsedConfig.fileNames,
-    options: parsedConfig.options
+    options: parsedConfig.options,
+    projectReferences: parsedConfig.projectReferences
   });
 
   tsProgramContext = {
@@ -567,6 +575,22 @@ function getTsProgramContext(): TsProgramContext {
   };
 
   return tsProgramContext;
+}
+
+function getTypedocParsedConfig(): ts.ParsedCommandLine {
+  if (typedocParsedConfig) {
+    return typedocParsedConfig;
+  }
+
+  typedocParsedConfig = ts.parseJsonConfigFileContent(typedocTsconfig, ts.sys, rootDir, undefined);
+
+  if (typedocParsedConfig.errors.length) {
+    throw new Error(
+      typedocParsedConfig.errors.map(error => ts.flattenDiagnosticMessageText(error.messageText, '\n')).join('\n')
+    );
+  }
+
+  return typedocParsedConfig;
 }
 
 function getDeclarationSourcePath(declaration: ts.Node | undefined): string | null {
@@ -1521,11 +1545,20 @@ async function writeOutputs(generatedAt: string, components: Record<string, Comp
 }
 
 export async function generateApiData(): Promise<void> {
-  const app = await Application.bootstrap({
-    entryPoints: [path.join(rootDir, 'src/index.ts')],
-    tsconfig: typedocTsconfig,
-    logLevel: 'Warn'
-  });
+  const parsedTypedocConfig = getTypedocParsedConfig();
+  const app = await Application.bootstrap(
+    {
+      entryPoints: [path.join(rootDir, 'src/index.ts')],
+      logLevel: 'Warn'
+    },
+    []
+  );
+
+  app.options.setCompilerOptions(
+    parsedTypedocConfig.fileNames,
+    parsedTypedocConfig.options,
+    parsedTypedocConfig.projectReferences
+  );
 
   const project = await app.convert();
 
