@@ -66,7 +66,7 @@ applyTo: 'src/components/**/*.{ts,vue}'
 
 #### 多 slot wrapper
 
-- 计算 `ui = computed(() => mergeSlotVariants(variants, props.ui, { root: props.class }))`
+- 计算 `ui = computed(() => mergeVariants(variants, props.ui, { root: props.class }))`
 - 调用 `provide{Name}Ui(ui)`
 - 如果 headless 已提供 `{Name}Compact`，直接渲染它，不再自己遍历 `items`、拼装默认 icon/title/content，也不再为 Compact 额外编排任何非样式逻辑
 
@@ -94,7 +94,7 @@ applyTo: 'src/components/**/*.{ts,vue}'
 - `variants.ts` 缺少 `// @unocss-include`
 - `slots` key 与 `{Name}UiSlot` 不一致
 - `useOmitProps` 遗漏 `class`
-- `mergeSlotVariants` 第三个参数不传 `{ root: props.class }`
+- `mergeVariants` 第三个参数不传 `{ root: props.class }`
 - 在模板里写 `props.xxx`
 - 组件名缺少 `S` 前缀
 - 从 `@soybeanjs/headless` 根路径粗暴 re-export 所有类型

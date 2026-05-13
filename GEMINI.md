@@ -11,4 +11,4 @@ Before making changes in this repository, read `.github/assistant-rules.md` and 
 
 For SoybeanUI component work, also read the component overview plus the relevant layer, docs, playground, testing, and checklist instruction files.
 
-When public exports or API surfaces change, sync generated files through `pnpm gen:headless`, `pnpm gen:ui`, `pnpm gen:api`, optional `pnpm gen:api:i18n`, and `pnpm translate:api:i18n -- --locale <locale>` instead of hand-editing generated outputs.
+When public exports or API surfaces change, sync generated files through `pnpm sui headless`, `pnpm sui ui`, `pnpm sui api`, optional `pnpm sui api-locales`, and `pnpm sui api-translate -- --locale <locale>` instead of hand-editing generated outputs.

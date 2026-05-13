@@ -66,5 +66,5 @@ export default defineNuxtConfig({
 This skill's per-component references are generated from English component docs and generated API metadata:
 
 ```bash
-pnpm gen:skills:soybean-ui
+pnpm sui skills
 ```

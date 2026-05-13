@@ -19,7 +19,7 @@ The remaining content in this file is package knowledge and local context. Norma
 Dev mode resolves to `./src/...` (source); publishConfig switches to `./dist/...`.
 Core exports include root, `/constants`, `/composables`, `/date`, `/shared`, `/nuxt`, `/resolver`, `/namespaced`, `/types`, plus per-component sub-paths under `./*`.
 
-After public export changes, rerun `pnpm gen:headless` so `headless/src/constants/components.ts` and `headless/src/namespaced/index.ts` stay aligned with `headless/src/index.ts`.
+After public export changes, rerun `pnpm sui headless` so `headless/src/constants/components.ts` and `headless/src/namespaced/index.ts` stay aligned with `headless/src/index.ts`.
 
 ## KEY PATTERNS
 

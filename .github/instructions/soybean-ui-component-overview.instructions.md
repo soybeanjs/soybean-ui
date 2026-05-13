@@ -99,7 +99,7 @@ applyTo: '{headless/src/components,src/components,playground/examples,test/specs
 
 ### Phase 6：验证与收尾
 
-- 至少运行 `pnpm typecheck`、`pnpm lint` 与相关测试
+- 至少运行 `pnpm typecheck`、`pnpm lint` 与相关测试 `pnpm vitest test/specs/components/{component}.spec.ts`
 - 无法运行时必须说明原因
 - 收尾阶段才使用 `soybean-ui-checklist.instructions.md`
 

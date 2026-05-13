@@ -47,7 +47,7 @@ applyTo: '{headless/src/components,src/components}/**/*.{ts,vue}'
 
 - `variants.ts` 第一行是 `// @unocss-include`
 - `slots` key 与 headless `UiSlot` 一致
-- `mergeSlotVariants` 正确合并 `props.class`
+- `mergeVariants` 正确合并 `props.class`
 - `useOmitProps` / `usePickProps` 使用有明确理由
 - 无 ARIA 逻辑、无业务语义泄漏到 UI 层
 

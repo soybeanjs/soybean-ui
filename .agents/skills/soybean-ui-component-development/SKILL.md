@@ -40,15 +40,15 @@ Example: "migrate a compound widget into SoybeanUI" usually means migration scen
    - `index.ts`
 3. Complete exports and generated surfaces:
    - update `headless/src/index.ts` and `src/index.ts`
-   - run `pnpm gen:headless`
-   - run `pnpm gen:ui`
+   - run `pnpm sui headless`
+   - run `pnpm sui ui`
 4. Complete delivery surfaces unless the user explicitly narrows scope:
    - `playground/examples/{component}/`
    - `docs/src/docs/en/components/{component}.md`
    - `docs/src/docs/zh-CN/components/{component}.md`
    - `docs/src/constants/menus.ts`
    - `test/specs/components/{component}.spec.ts`
-   - run `pnpm gen:api` and locale translation when public API changes
+   - run `pnpm sui api` and locale translation when public API changes
 
 ### Existing component fix or extension
 

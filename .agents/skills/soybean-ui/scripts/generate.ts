@@ -202,7 +202,7 @@ function createComponentsIndex(docs: SkillComponentDoc[]): string {
     [
       '# Components',
       '',
-      '> Auto-generated. Run `pnpm gen:skills:soybean-ui` to update.',
+      '> Auto-generated. Run `pnpm sui skills` to update.',
       '',
       'Component index for the SoybeanUI consumer skill. Each file is generated from the English component docs plus build-time API metadata.',
       '',
@@ -249,7 +249,7 @@ function createHeadlessComponentsIndex(docs: SkillComponentDoc[]): string {
     [
       '# Components',
       '',
-      '> Auto-generated. Run `pnpm gen:skills:soybean-ui` to update.',
+      '> Auto-generated. Run `pnpm sui skills` to update.',
       '',
       'Shared component index for the SoybeanHeadless consumer skill.',
       'Links point to the SoybeanUI generated component reference files because those files already include headless exports such as `Root`, `Trigger`, `Content`, and `Compact` symbols from the generated API metadata.',

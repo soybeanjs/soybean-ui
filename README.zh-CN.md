@@ -53,7 +53,7 @@ SoybeanUI 采用严格的**双层分离**设计：
 ```ts
 // 样式包装层 (src/) 中
 const ui = computed(() =>
-  mergeSlotVariants(
+  mergeVariants(
     accordionVariants({ size: props.size }), // tv() 计算结果
     props.ui, // 用户自定义覆盖
     { root: props.class } // class prop 合并

@@ -1,6 +1,6 @@
 # Components
 
-> Auto-generated. Run `pnpm gen:skills:soybean-ui` to update.
+> Auto-generated. Run `pnpm sui skills` to update.
 
 Shared component index for the SoybeanHeadless consumer skill.
 Links point to the SoybeanUI generated component reference files because those files already include headless exports such as `Root`, `Trigger`, `Content`, and `Compact` symbols from the generated API metadata.

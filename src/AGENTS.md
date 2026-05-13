@@ -22,8 +22,8 @@ Every styled component follows this flow:
 2. Define `variants.ts` with `tv()` (MUST have `// @unocss-include` at top)
 3. In wrapper SFC: `useOmitProps` to separate style props from logic props
 4. Inject UI tokens: `provideXUi(ui)` where `ui` = computed slot→class map
-5. Merge classes: `cn(variants(...), props.class)` or `mergeSlotVariants`
-6. Import or re-export wrapper-facing component types from `@soybeanjs/headless/{component}` sub-paths, and import headless global types from `@soybeanjs/headless/types`, then rerun `pnpm gen:ui` after public export changes
+5. Merge classes: `cn(variants(...), props.class)` or `mergeVariants`
+6. Import or re-export wrapper-facing component types from `@soybeanjs/headless/{component}` sub-paths, and import headless global types from `@soybeanjs/headless/types`, then rerun `pnpm sui ui` after public export changes
 
 ## STRUCTURE
 
@@ -54,7 +54,7 @@ Size uses `ThemeSize` (`xs|sm|md|lg|xl|2xl`). Color uses `ThemeColor` (8 values 
 - **Nuxt**: `@soybeanjs/ui/nuxt` module for auto component registration
 - **unplugin**: `@soybeanjs/ui/resolver` for `unplugin-vue-components`
 - **CSS**: `@soybeanjs/ui/styles.css` — built by `unocss build` step
-- **Generated component names**: `src/constants/components.ts` is generated from `src/index.ts`; rerun `pnpm gen:ui` after changing public UI exports
+- **Generated component names**: `src/constants/components.ts` is generated from `src/index.ts`; rerun `pnpm sui ui` after changing public UI exports
 
 ## ANTI-PATTERNS
 

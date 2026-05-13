@@ -1,6 +1,6 @@
 # Components
 
-> Auto-generated. Run `pnpm gen:skills:soybean-ui` to update.
+> Auto-generated. Run `pnpm sui skills` to update.
 
 Component index for the SoybeanUI consumer skill. Each file is generated from the English component docs plus build-time API metadata.
 

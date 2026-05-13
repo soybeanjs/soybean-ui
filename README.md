@@ -53,7 +53,7 @@ Every multi-slot headless component exposes a `provide{Name}Ui` function. The st
 ```ts
 // In the styled wrapper (src/)
 const ui = computed(() =>
-  mergeSlotVariants(
+  mergeVariants(
     accordionVariants({ size: props.size }), // tv() output
     props.ui, // user overrides
     { root: props.class } // class prop

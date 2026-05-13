@@ -42,7 +42,7 @@ If a component task changes public exports, docs rendering, playground delivery,
 ## Generated surfaces
 
 - Public export changes must be synced through the official scripts, not hand-edited generated files.
-- Use `pnpm gen:headless` for `headless/src/constants/components.ts` and `headless/src/namespaced/index.ts`.
-- Use `pnpm gen:ui` for `src/constants/components.ts`.
-- Use `pnpm gen:api` and, when needed, `pnpm gen:api:i18n` for `docs/src/generated/api/` and `docs/src/generated/api-locales/`, then `pnpm translate:api:i18n -- --locale <locale>` for non-English API descriptions.
-- Use `pnpm gen:changelog` for `docs/src/generated/changelog/` and `docs/src/generated/changelog-locales/`, then `pnpm translate:changelog:i18n -- --locale <locale>` for non-English changelog summaries.
+- Use `pnpm sui headless` for `headless/src/constants/components.ts` and `headless/src/namespaced/index.ts`.
+- Use `pnpm sui ui` for `src/constants/components.ts`.
+- Use `pnpm sui api` and, when needed, `pnpm sui api-locales` for `docs/src/generated/api/` and `docs/src/generated/api-locales/`, then `pnpm sui api-translate -- --locale <locale>` for non-English API descriptions.
+- Use `pnpm sui changelog` for `docs/src/generated/changelog/` and `docs/src/generated/changelog-locales/`, then `pnpm sui changelog-translate -- --locale <locale>` for non-English changelog summaries.

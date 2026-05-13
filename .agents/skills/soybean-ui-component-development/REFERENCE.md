@@ -65,10 +65,10 @@
 
 ## Generated surfaces
 
-- Run `pnpm gen:headless` after updating `headless/src/index.ts`.
-- Run `pnpm gen:ui` after updating `src/index.ts`.
-- Run `pnpm gen:api` after public API changes.
-- Run `pnpm translate:api:i18n -- --locale <locale>` for each non-English API locale after the English baseline is regenerated.
+- Run `pnpm sui headless` after updating `headless/src/index.ts`.
+- Run `pnpm sui ui` after updating `src/index.ts`.
+- Run `pnpm sui api` after public API changes.
+- Run `pnpm sui api-translate -- --locale <locale>` for each non-English API locale after the English baseline is regenerated.
 - Do not hand-edit generated component lists, namespaced exports, or API JSON files.
 
 ## Result reporting

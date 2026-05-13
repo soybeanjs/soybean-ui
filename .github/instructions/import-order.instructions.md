@@ -68,6 +68,6 @@ import type { ComputedRef } from 'vue';
 import axios from 'axios';
 import type { Methods } from 'axios';
 import { cn } from '@/theme';
-import { mergeSlotVariants } from '../shared';
+import { mergeVariants } from '../shared';
 import type { ButtonProps } from './types';
 ```
