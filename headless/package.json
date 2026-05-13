@@ -111,6 +111,8 @@
     "@internationalized/date": "^3.12.1",
     "@internationalized/number": "^3.6.6",
     "@soybeanjs/colord": "^0.5.0",
+    "@soybeanjs/hooks": "^0.3.0",
+    "@soybeanjs/utils": "^0.1.1",
     "@standard-schema/spec": "^1.1.0",
     "@tanstack/vue-virtual": "^3.13.24",
     "@vue/shared": "^3.5.34",
@@ -134,7 +136,7 @@
     "unplugin-vue-components": "^32.0.0",
     "unplugin-vue-jsx": "0.9.0",
     "vue": "3.5.34",
-    "vue-router": "5.0.6"
+    "vue-router": "5.0.7"
   },
   "peerDependencies": {
     "@nuxt/kit": "^4.3.0",
