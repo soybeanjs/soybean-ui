@@ -3,8 +3,8 @@
 import { cp, mkdir, readFile, rm, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { generateSkillDocs } from '../.agents/skills/soybean-ui/scripts/generate';
 import { runCliModule } from './_shared';
+import { generateSkillDocs } from './skills-docs';
 
 type PackageAuthor = {
   email?: string;
@@ -67,8 +67,8 @@ type ClaudeMarketplaceManifest = {
 const currentDir = path.dirname(fileURLToPath(import.meta.url));
 const repoRoot = path.resolve(currentDir, '..');
 const rootPackageJsonPath = path.resolve(repoRoot, 'package.json');
-const skillsSourceRootDir = path.resolve(repoRoot, '.agents/skills');
 const skillsDistributionRootDir = path.resolve(repoRoot, 'ui-skills');
+const skillsSourceRootDir = path.resolve(skillsDistributionRootDir, 'skills-source');
 const skillsDistributionSkillsDir = path.resolve(skillsDistributionRootDir, 'skills');
 const claudePluginDir = path.resolve(skillsDistributionRootDir, '.claude-plugin');
 const distributionPackageName = '@soybeanjs/ui-skills';
@@ -78,11 +78,11 @@ const distributionKeywords = ['agentskills', 'soybean-ui', 'soybean-headless', '
 const distributedSkillDirs = ['soybean-ui', 'soybean-headless'];
 
 export async function generateSkillsDistribution(): Promise<void> {
-  await generateSkillDocs();
-
   const rootPackage = await readRootPackageManifest();
 
-  await rm(skillsDistributionRootDir, { force: true, recursive: true });
+  await mkdir(skillsDistributionRootDir, { recursive: true });
+  await rm(skillsDistributionSkillsDir, { force: true, recursive: true });
+  await rm(claudePluginDir, { force: true, recursive: true });
   await mkdir(skillsDistributionSkillsDir, { recursive: true });
   await mkdir(claudePluginDir, { recursive: true });
 
@@ -93,6 +93,8 @@ export async function generateSkillsDistribution(): Promise<void> {
       });
     })
   );
+
+  await generateSkillDocs({ skillsRootDir: skillsDistributionSkillsDir });
 
   await Promise.all([
     writeFile(path.resolve(skillsDistributionRootDir, 'README.md'), createDistributionReadme(), 'utf8'),
