@@ -1,5 +1,16 @@
 # Changelog
 
+## [v0.22.2](https://github.com/soybeanjs/soybean-ui/compare/v0.22.1...v0.22.2) (2026-05-14)
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- **theme**: add isDefinedClassValue utility and enhance tests for empty string handling &nbsp;-&nbsp; by **soybeanfe** [<samp>(f1bc7)</samp>](https://github.com/soybeanjs/soybean-ui/commit/f1bc7b49a)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+
+[soybeanfe](mailto:honghuangdc@gmail.com)
+
 ## [v0.22.1](https://github.com/soybeanjs/soybean-ui/compare/v0.22.0...v0.22.1) (2026-05-14)
 
 ### &nbsp;&nbsp;&nbsp;🚀 Features
