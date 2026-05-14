@@ -8,8 +8,7 @@ defineOptions({
 
 defineProps<InputControlProps>();
 
-const { modelValue, id, autofocus, placeholder, disabled, readonly, maxlength, minlength, pattern, name, required } =
-  useInputRootContext('InputControl');
+const { modelValue, disabled, readonly, inputAttrs } = useInputRootContext('InputControl');
 
 const cls = useInputUi('control');
 
@@ -20,23 +19,16 @@ const onInput = (event: Event) => {
 
 <template>
   <input
-    :id="id"
+    v-bind="inputAttrs"
     data-soybean-input-control
     :class="cls"
     :aria-disabled="disabled ?? undefined"
     aria-roledescription="Input"
     autocorrect="off"
-    :autofocus="autofocus"
     :data-disabled="disabled ? '' : undefined"
     :data-readonly="readonly ? '' : undefined"
     :disabled="disabled"
-    :maxlength="maxlength"
-    :minlength="minlength"
-    :pattern="pattern"
-    :placeholder="placeholder"
     :readonly="readonly"
-    :name="name"
-    :required="required"
     spellcheck="false"
     tabindex="0"
     :value="modelValue"

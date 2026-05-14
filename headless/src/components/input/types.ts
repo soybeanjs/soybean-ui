@@ -1,4 +1,4 @@
-import type { InputHTMLAttributes, ShallowRef } from 'vue';
+import type { Attrs, ComputedRef, InputHTMLAttributes, InputTypeHTMLAttribute, ShallowRef } from 'vue';
 import type { BaseProps, FormFieldCommonProps, PropsToContext, UiClass } from '../../types';
 import type { ButtonProps } from '../button/types';
 
@@ -10,6 +10,10 @@ export interface InputBaseProps {
   id?: string;
   /** When `true`, the input is auto-focused. */
   autofocus?: boolean;
+  /**
+   * The autocomplete attribute of the input
+   */
+  autocomplete?: 'on' | 'off';
   /** When `true`, prevents the user from interacting with the input. */
   disabled?: boolean;
   /** The maximum number of characters allowed in the input */
@@ -22,16 +26,26 @@ export interface InputBaseProps {
   placeholder?: string;
   /** When `true`, the input is read-only. */
   readonly?: boolean;
+  /**
+   * The type of the input element.
+   */
+  type?: InputTypeHTMLAttribute;
 }
 
 /**
  * Properties for the InputRoot component.
  */
-export interface InputRootProps extends InputBaseProps, FormFieldCommonProps, BaseProps {
+export interface InputRootProps extends FormFieldCommonProps, InputBaseProps, BaseProps {
   /** The default value of the input */
   defaultValue?: string;
   /** The controlled value of the input */
   modelValue?: string;
+  /** When `true`, prevents the user from interacting with the input. */
+  disabled?: boolean;
+  /** When `true`, the input is read-only. */
+  readonly?: boolean;
+  /** Properties forwarded to the root element */
+  rootProps?: BaseProps;
 }
 
 /**
@@ -52,7 +66,7 @@ export interface InputControlProps extends BaseProps<InputHTMLAttributes> {}
 /**
  * Context for the InputRoot component.
  */
-export interface InputRootContext extends PropsToContext<InputBaseProps & FormFieldCommonProps> {
+export interface InputRootContext extends PropsToContext<InputRootProps, 'disabled' | 'readonly'> {
   /**
    * Current model value.
    */
@@ -61,6 +75,10 @@ export interface InputRootContext extends PropsToContext<InputBaseProps & FormFi
    * Clear handler.
    */
   onClear: () => void;
+  /**
+   * The attributes to be spread on the input element.
+   */
+  inputAttrs: ComputedRef<Attrs>;
 }
 
 /**
