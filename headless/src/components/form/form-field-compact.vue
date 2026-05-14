@@ -35,8 +35,8 @@ function handleUpdateModelValue(value: unknown) {
     <template #default="slotProps">
       <Slot
         :id="slotProps.formFieldId"
-        :aria-describedby="slotProps['aria-described-by']"
-        :aria-invalid="slotProps['aria-invalid']"
+        :aria-describedby="slotProps.ariaDescribedBy"
+        :aria-invalid="slotProps.ariaInvalid"
         :name="name"
         :model-value="state.value"
         @update:model-value="handleUpdateModelValue"

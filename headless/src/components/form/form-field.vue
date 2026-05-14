@@ -20,10 +20,16 @@ const cls = computed(() => mergeClasses(formCls.value, fieldCls.value));
 const error = computed(() => props.error);
 
 const { formFieldId, ariaDescribedBy, ariaInvalid } = provideFormFieldContext({ error });
+
+const slotProps = computed(() => ({
+  formFieldId: formFieldId,
+  ariaDescribedBy: ariaDescribedBy.value,
+  ariaInvalid: ariaInvalid.value
+}));
 </script>
 
 <template>
   <div :id="isFieldArray ? formFieldId : undefined" :class="cls" :data-field-type="isFieldArray ? 'array' : 'field'">
-    <slot :form-field-id="formFieldId" :aria-described-by="ariaDescribedBy" :aria-invalid="ariaInvalid" />
+    <slot v-bind="slotProps" />
   </div>
 </template>
