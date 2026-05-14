@@ -13,27 +13,20 @@ defineProps<InputNumberControlProps>();
 const cls = useInputNumberUi('control');
 
 const {
-  id,
-  autofocus,
-  maxlength,
-  minlength,
-  pattern,
-  placeholder,
   setInputElement,
   modelValue,
   disabled,
   readonly,
   textValue,
   inputMode,
-  min,
-  max,
   disableWheelChange,
   invertWheelChange,
   onDecrease,
   onIncrease,
   validate,
   onMinMaxValue,
-  applyInputValue
+  applyInputValue,
+  inputAttrs
 } = useInputNumberRootContext('InputNumberControl');
 
 const inputValue = shallowRef(textValue.value);
@@ -119,7 +112,7 @@ watch(
 
 <template>
   <input
-    :id="id"
+    v-bind="inputAttrs"
     :ref="setInputElement"
     data-soybean-input-number-control
     :class="cls"
@@ -129,15 +122,10 @@ watch(
     :aria-valuenow="modelValue ?? undefined"
     autocomplete="off"
     autocorrect="off"
-    :autofocus="autofocus"
     :data-disabled="disabled ? '' : undefined"
     :data-readonly="readonly ? '' : undefined"
     :disabled="disabled"
     :inputmode="inputMode"
-    :maxlength="maxlength"
-    :minlength="minlength"
-    :pattern="pattern"
-    :placeholder="placeholder"
     :value="inputValue"
     :readonly="readonly"
     role="spinbutton"

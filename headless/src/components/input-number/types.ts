@@ -1,4 +1,4 @@
-import type { InputHTMLAttributes, ShallowRef } from 'vue';
+import type { ComputedRef, Attrs, InputHTMLAttributes, ShallowRef } from 'vue';
 import type { BaseProps, FormFieldCommonProps, PropsToContext, UiClass } from '../../types';
 import type { ButtonProps } from '../button/types';
 import type { InputBaseProps } from '../input/types';
@@ -6,7 +6,7 @@ import type { InputBaseProps } from '../input/types';
 /**
  * Properties for the InputNumberRoot component.
  */
-export interface InputNumberRootProps extends InputBaseProps, FormFieldCommonProps, BaseProps {
+export interface InputNumberRootProps extends FormFieldCommonProps, InputBaseProps, BaseProps {
   /** The default value of the input */
   defaultValue?: number;
   /** The controlled value of the input */
@@ -32,6 +32,10 @@ export interface InputNumberRootProps extends InputBaseProps, FormFieldCommonPro
   disableWheelChange?: boolean;
   /** When `true`, inverts the direction of the wheel change. */
   invertWheelChange?: boolean;
+  /**
+   * Properties forwarded to the root element.
+   */
+  rootProps?: BaseProps;
 }
 
 /**
@@ -156,20 +160,14 @@ export type InputNumberCompactSlots = {
  */
 export interface InputNumberRootContextParams extends PropsToContext<
   InputNumberRootProps,
-  | 'id'
-  | 'autofocus'
   | 'disabled'
-  | 'maxlength'
-  | 'minlength'
-  | 'pattern'
-  | 'placeholder'
   | 'readonly'
   | 'locale'
+  | 'min'
+  | 'max'
+  | 'step'
   | 'focusOnChange'
   | 'formatOptions'
-  | 'max'
-  | 'min'
-  | 'step'
   | 'stepSnapping'
   | 'disableWheelChange'
   | 'invertWheelChange'
@@ -182,6 +180,10 @@ export interface InputNumberRootContextParams extends PropsToContext<
    * Clear handler.
    */
   onClear: () => void;
+  /**
+   * The attributes to be spread on the input element.
+   */
+  inputAttrs: ComputedRef<Attrs>;
 }
 
 /**

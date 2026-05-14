@@ -6,7 +6,7 @@
         "kind": "props",
         "name": "InputNumberProps",
         "type": "Interface InputNumberProps",
-        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<InputNumberUi>; center?: boolean; clearable?: boolean; inputRef?: ((el: HTMLInputElement) => void); controlProps?: InputNumberControlProps; incrementProps?: InputNumberIncrementProps; decrementProps?: InputNumberDecrementProps; clearProps?: ButtonProps; defaultValue?: number; modelValue?: number | null; min?: number; max?: number; step?: number; stepSnapping?: boolean; focusOnChange?: boolean; formatOptions?: Intl.NumberFormatOptions; locale?: string; disableWheelChange?: boolean; invertWheelChange?: boolean; id?: string; autofocus?: boolean; disabled?: boolean; maxlength?: number; minlength?: number; pattern?: string; placeholder?: string; readonly?: boolean; name?: string; required?: boolean }",
+        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<InputNumberUi>; center?: boolean; clearable?: boolean; inputRef?: ((el: HTMLInputElement) => void); controlProps?: InputNumberControlProps; incrementProps?: InputNumberIncrementProps; decrementProps?: InputNumberDecrementProps; clearProps?: ButtonProps; defaultValue?: number; modelValue?: number | null; min?: number; max?: number; step?: number; stepSnapping?: boolean; focusOnChange?: boolean; formatOptions?: Intl.NumberFormatOptions; locale?: string; disableWheelChange?: boolean; invertWheelChange?: boolean; rootProps?: BaseProps; name?: string; required?: boolean; id?: string; autofocus?: boolean; autocomplete?: 'on' | 'off'; disabled?: boolean; maxlength?: number; minlength?: number; pattern?: string; placeholder?: string; readonly?: boolean; type?: InputTypeHTMLAttribute }",
         "description": "Properties for the InputNumber component.",
         "descriptionKey": "api.generated.src_components_input_number_types.inputnumberprops.props",
         "sourcePath": "src/components/input-number/types.ts",
@@ -505,6 +505,53 @@
             "referencedTypes": []
           },
           {
+            "name": "rootProps",
+            "type": "BaseProps",
+            "required": false,
+            "description": "Properties forwarded to the root element.",
+            "descriptionKey": "api.generated.src_components_input_number_types.inputnumberprops.members.rootprops",
+            "default": null,
+            "inheritedFrom": "rootProps",
+            "sourcePath": "headless/src/components/input-number/types.ts",
+            "referencedTypes": [
+              {
+                "name": "BaseProps",
+                "kind": "typeAlias",
+                "type": "import(\"../../types\").DataAttributes & import(\"vue\").HTMLAttributes",
+                "resolvedType": "DataAttributes & T",
+                "description": "",
+                "descriptionKey": "api.generated.headless_src_types_vue.baseprops",
+                "sourcePath": "headless/src/types/vue.ts",
+                "typeParameters": ["T = HTMLAttributes"],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "name",
+            "type": "string",
+            "required": false,
+            "description": "The name of the field. Submitted with its owning form as part of a name/value pair.",
+            "descriptionKey": "api.generated.src_components_input_number_types.inputnumberprops.members.name",
+            "default": null,
+            "inheritedFrom": "name",
+            "sourcePath": "headless/src/types/component.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "required",
+            "type": "boolean",
+            "required": false,
+            "description": "When `true`, indicates that the user must set the value before the owning form can be submitted.",
+            "descriptionKey": "api.generated.src_components_input_number_types.inputnumberprops.members.required",
+            "default": null,
+            "inheritedFrom": "required",
+            "sourcePath": "headless/src/types/component.ts",
+            "referencedTypes": []
+          },
+          {
             "name": "id",
             "type": "string",
             "required": false,
@@ -523,6 +570,17 @@
             "descriptionKey": "api.generated.src_components_input_number_types.inputnumberprops.members.autofocus",
             "default": null,
             "inheritedFrom": "autofocus",
+            "sourcePath": "headless/src/components/input/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "autocomplete",
+            "type": "'on' | 'off'",
+            "required": false,
+            "description": "The autocomplete attribute of the input",
+            "descriptionKey": "api.generated.src_components_input_number_types.inputnumberprops.members.autocomplete",
+            "default": null,
+            "inheritedFrom": "autocomplete",
             "sourcePath": "headless/src/components/input/types.ts",
             "referencedTypes": []
           },
@@ -593,26 +651,29 @@
             "referencedTypes": []
           },
           {
-            "name": "name",
-            "type": "string",
+            "name": "type",
+            "type": "InputTypeHTMLAttribute",
             "required": false,
-            "description": "The name of the field. Submitted with its owning form as part of a name/value pair.",
-            "descriptionKey": "api.generated.src_components_input_number_types.inputnumberprops.members.name",
+            "description": "The type of the input element.",
+            "descriptionKey": "api.generated.src_components_input_number_types.inputnumberprops.members.type",
             "default": null,
-            "inheritedFrom": "name",
-            "sourcePath": "headless/src/types/component.ts",
-            "referencedTypes": []
-          },
-          {
-            "name": "required",
-            "type": "boolean",
-            "required": false,
-            "description": "When `true`, indicates that the user must set the value before the owning form can be submitted.",
-            "descriptionKey": "api.generated.src_components_input_number_types.inputnumberprops.members.required",
-            "default": null,
-            "inheritedFrom": "required",
-            "sourcePath": "headless/src/types/component.ts",
-            "referencedTypes": []
+            "inheritedFrom": "type",
+            "sourcePath": "headless/src/components/input/types.ts",
+            "referencedTypes": [
+              {
+                "name": "InputTypeHTMLAttribute",
+                "kind": "typeAlias",
+                "type": "InputTypeHTMLAttribute",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_dom_3_5_34_node_modules_vue_runtime_dom_dist_runtime_dom_d.inputtypehtmlattribute",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-dom@3.5.34/node_modules/@vue/runtime-dom/dist/runtime-dom.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
           }
         ],
         "callables": [],
@@ -906,7 +967,7 @@
         "kind": "props",
         "name": "InputNumberCompactProps",
         "type": "Interface InputNumberCompactProps",
-        "resolvedType": "{ clearable?: boolean; inputRef?: ((el: HTMLInputElement) => void); controlProps?: InputNumberControlProps; incrementProps?: InputNumberIncrementProps; decrementProps?: InputNumberDecrementProps; clearProps?: ButtonProps; defaultValue?: number; modelValue?: number | null; min?: number; max?: number; step?: number; stepSnapping?: boolean; focusOnChange?: boolean; formatOptions?: Intl.NumberFormatOptions; locale?: string; disableWheelChange?: boolean; invertWheelChange?: boolean; id?: string; autofocus?: boolean; disabled?: boolean; maxlength?: number; minlength?: number; pattern?: string; placeholder?: string; readonly?: boolean; name?: string; required?: boolean }",
+        "resolvedType": "{ clearable?: boolean; inputRef?: ((el: HTMLInputElement) => void); controlProps?: InputNumberControlProps; incrementProps?: InputNumberIncrementProps; decrementProps?: InputNumberDecrementProps; clearProps?: ButtonProps; defaultValue?: number; modelValue?: number | null; min?: number; max?: number; step?: number; stepSnapping?: boolean; focusOnChange?: boolean; formatOptions?: Intl.NumberFormatOptions; locale?: string; disableWheelChange?: boolean; invertWheelChange?: boolean; rootProps?: BaseProps; name?: string; required?: boolean; id?: string; autofocus?: boolean; autocomplete?: 'on' | 'off'; disabled?: boolean; maxlength?: number; minlength?: number; pattern?: string; placeholder?: string; readonly?: boolean; type?: InputTypeHTMLAttribute }",
         "description": "Properties for the InputNumberCompact component.",
         "descriptionKey": "api.generated.headless_src_components_input_number_types.inputnumbercompactprops.props",
         "sourcePath": "headless/src/components/input-number/types.ts",
@@ -1319,6 +1380,53 @@
             "referencedTypes": []
           },
           {
+            "name": "rootProps",
+            "type": "BaseProps",
+            "required": false,
+            "description": "Properties forwarded to the root element.",
+            "descriptionKey": "api.generated.headless_src_components_input_number_types.inputnumbercompactprops.members.rootprops",
+            "default": null,
+            "inheritedFrom": "rootProps",
+            "sourcePath": "headless/src/components/input-number/types.ts",
+            "referencedTypes": [
+              {
+                "name": "BaseProps",
+                "kind": "typeAlias",
+                "type": "import(\"../../types\").DataAttributes & import(\"vue\").HTMLAttributes",
+                "resolvedType": "DataAttributes & T",
+                "description": "",
+                "descriptionKey": "api.generated.headless_src_types_vue.baseprops",
+                "sourcePath": "headless/src/types/vue.ts",
+                "typeParameters": ["T = HTMLAttributes"],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "name",
+            "type": "string",
+            "required": false,
+            "description": "The name of the field. Submitted with its owning form as part of a name/value pair.",
+            "descriptionKey": "api.generated.headless_src_components_input_number_types.inputnumbercompactprops.members.name",
+            "default": null,
+            "inheritedFrom": "name",
+            "sourcePath": "headless/src/types/component.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "required",
+            "type": "boolean",
+            "required": false,
+            "description": "When `true`, indicates that the user must set the value before the owning form can be submitted.",
+            "descriptionKey": "api.generated.headless_src_components_input_number_types.inputnumbercompactprops.members.required",
+            "default": null,
+            "inheritedFrom": "required",
+            "sourcePath": "headless/src/types/component.ts",
+            "referencedTypes": []
+          },
+          {
             "name": "id",
             "type": "string",
             "required": false,
@@ -1337,6 +1445,17 @@
             "descriptionKey": "api.generated.headless_src_components_input_number_types.inputnumbercompactprops.members.autofocus",
             "default": null,
             "inheritedFrom": "autofocus",
+            "sourcePath": "headless/src/components/input/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "autocomplete",
+            "type": "'on' | 'off'",
+            "required": false,
+            "description": "The autocomplete attribute of the input",
+            "descriptionKey": "api.generated.headless_src_components_input_number_types.inputnumbercompactprops.members.autocomplete",
+            "default": null,
+            "inheritedFrom": "autocomplete",
             "sourcePath": "headless/src/components/input/types.ts",
             "referencedTypes": []
           },
@@ -1407,26 +1526,29 @@
             "referencedTypes": []
           },
           {
-            "name": "name",
-            "type": "string",
+            "name": "type",
+            "type": "InputTypeHTMLAttribute",
             "required": false,
-            "description": "The name of the field. Submitted with its owning form as part of a name/value pair.",
-            "descriptionKey": "api.generated.headless_src_components_input_number_types.inputnumbercompactprops.members.name",
+            "description": "The type of the input element.",
+            "descriptionKey": "api.generated.headless_src_components_input_number_types.inputnumbercompactprops.members.type",
             "default": null,
-            "inheritedFrom": "name",
-            "sourcePath": "headless/src/types/component.ts",
-            "referencedTypes": []
-          },
-          {
-            "name": "required",
-            "type": "boolean",
-            "required": false,
-            "description": "When `true`, indicates that the user must set the value before the owning form can be submitted.",
-            "descriptionKey": "api.generated.headless_src_components_input_number_types.inputnumbercompactprops.members.required",
-            "default": null,
-            "inheritedFrom": "required",
-            "sourcePath": "headless/src/types/component.ts",
-            "referencedTypes": []
+            "inheritedFrom": "type",
+            "sourcePath": "headless/src/components/input/types.ts",
+            "referencedTypes": [
+              {
+                "name": "InputTypeHTMLAttribute",
+                "kind": "typeAlias",
+                "type": "InputTypeHTMLAttribute",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_dom_3_5_34_node_modules_vue_runtime_dom_dist_runtime_dom_d.inputtypehtmlattribute",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-dom@3.5.34/node_modules/@vue/runtime-dom/dist/runtime-dom.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
           }
         ],
         "callables": [],
@@ -1863,7 +1985,7 @@
         "kind": "props",
         "name": "InputNumberRootProps",
         "type": "Interface InputNumberRootProps",
-        "resolvedType": "{ defaultValue?: number; modelValue?: number | null; min?: number; max?: number; step?: number; stepSnapping?: boolean; focusOnChange?: boolean; formatOptions?: Intl.NumberFormatOptions; locale?: string; disableWheelChange?: boolean; invertWheelChange?: boolean; id?: string; autofocus?: boolean; disabled?: boolean; maxlength?: number; minlength?: number; pattern?: string; placeholder?: string; readonly?: boolean; name?: string; required?: boolean }",
+        "resolvedType": "{ defaultValue?: number; modelValue?: number | null; min?: number; max?: number; step?: number; stepSnapping?: boolean; focusOnChange?: boolean; formatOptions?: Intl.NumberFormatOptions; locale?: string; disableWheelChange?: boolean; invertWheelChange?: boolean; rootProps?: BaseProps; name?: string; required?: boolean; id?: string; autofocus?: boolean; autocomplete?: 'on' | 'off'; disabled?: boolean; maxlength?: number; minlength?: number; pattern?: string; placeholder?: string; readonly?: boolean; type?: InputTypeHTMLAttribute }",
         "description": "Properties for the InputNumberRoot component.",
         "descriptionKey": "api.generated.headless_src_components_input_number_types.inputnumberrootprops.props",
         "sourcePath": "headless/src/components/input-number/types.ts",
@@ -2005,6 +2127,53 @@
             "referencedTypes": []
           },
           {
+            "name": "rootProps",
+            "type": "BaseProps",
+            "required": false,
+            "description": "Properties forwarded to the root element.",
+            "descriptionKey": "api.generated.headless_src_components_input_number_types.inputnumberrootprops.members.rootprops",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/input-number/types.ts",
+            "referencedTypes": [
+              {
+                "name": "BaseProps",
+                "kind": "typeAlias",
+                "type": "import(\"../../types\").DataAttributes & import(\"vue\").HTMLAttributes",
+                "resolvedType": "DataAttributes & T",
+                "description": "",
+                "descriptionKey": "api.generated.headless_src_types_vue.baseprops",
+                "sourcePath": "headless/src/types/vue.ts",
+                "typeParameters": ["T = HTMLAttributes"],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "name",
+            "type": "string",
+            "required": false,
+            "description": "The name of the field. Submitted with its owning form as part of a name/value pair.",
+            "descriptionKey": "api.generated.headless_src_components_input_number_types.inputnumberrootprops.members.name",
+            "default": null,
+            "inheritedFrom": "name",
+            "sourcePath": "headless/src/types/component.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "required",
+            "type": "boolean",
+            "required": false,
+            "description": "When `true`, indicates that the user must set the value before the owning form can be submitted.",
+            "descriptionKey": "api.generated.headless_src_components_input_number_types.inputnumberrootprops.members.required",
+            "default": null,
+            "inheritedFrom": "required",
+            "sourcePath": "headless/src/types/component.ts",
+            "referencedTypes": []
+          },
+          {
             "name": "id",
             "type": "string",
             "required": false,
@@ -2023,6 +2192,17 @@
             "descriptionKey": "api.generated.headless_src_components_input_number_types.inputnumberrootprops.members.autofocus",
             "default": null,
             "inheritedFrom": "InputBaseProps.autofocus",
+            "sourcePath": "headless/src/components/input/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "autocomplete",
+            "type": "'on' | 'off'",
+            "required": false,
+            "description": "The autocomplete attribute of the input",
+            "descriptionKey": "api.generated.headless_src_components_input_number_types.inputnumberrootprops.members.autocomplete",
+            "default": null,
+            "inheritedFrom": "InputBaseProps.autocomplete",
             "sourcePath": "headless/src/components/input/types.ts",
             "referencedTypes": []
           },
@@ -2093,26 +2273,29 @@
             "referencedTypes": []
           },
           {
-            "name": "name",
-            "type": "string",
+            "name": "type",
+            "type": "InputTypeHTMLAttribute",
             "required": false,
-            "description": "The name of the field. Submitted with its owning form as part of a name/value pair.",
-            "descriptionKey": "api.generated.headless_src_components_input_number_types.inputnumberrootprops.members.name",
+            "description": "The type of the input element.",
+            "descriptionKey": "api.generated.headless_src_components_input_number_types.inputnumberrootprops.members.type",
             "default": null,
-            "inheritedFrom": "name",
-            "sourcePath": "headless/src/types/component.ts",
-            "referencedTypes": []
-          },
-          {
-            "name": "required",
-            "type": "boolean",
-            "required": false,
-            "description": "When `true`, indicates that the user must set the value before the owning form can be submitted.",
-            "descriptionKey": "api.generated.headless_src_components_input_number_types.inputnumberrootprops.members.required",
-            "default": null,
-            "inheritedFrom": "required",
-            "sourcePath": "headless/src/types/component.ts",
-            "referencedTypes": []
+            "inheritedFrom": "InputBaseProps.type",
+            "sourcePath": "headless/src/components/input/types.ts",
+            "referencedTypes": [
+              {
+                "name": "InputTypeHTMLAttribute",
+                "kind": "typeAlias",
+                "type": "InputTypeHTMLAttribute",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_dom_3_5_34_node_modules_vue_runtime_dom_dist_runtime_dom_d.inputtypehtmlattribute",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-dom@3.5.34/node_modules/@vue/runtime-dom/dist/runtime-dom.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
           }
         ],
         "callables": [],

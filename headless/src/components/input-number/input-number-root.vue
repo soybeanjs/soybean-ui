@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed } from 'vue';
+import { computed, useAttrs } from 'vue';
 import { useControllableState, useForwardElement } from '../../composables';
 import { isFormControl, transformPropsToContext } from '../../shared';
 import VisuallyHiddenInput from '../visually-hidden/visually-hidden-input.vue';
@@ -7,7 +7,8 @@ import { provideInputNumberRootContext, useInputNumberUi } from './context';
 import type { InputNumberRootProps, InputNumberRootEmits } from './types';
 
 defineOptions({
-  name: 'InputNumberRoot'
+  name: 'InputNumberRoot',
+  inheritAttrs: false
 });
 
 const props = withDefaults(defineProps<InputNumberRootProps>(), {
@@ -18,6 +19,8 @@ const props = withDefaults(defineProps<InputNumberRootProps>(), {
 });
 
 const emit = defineEmits<InputNumberRootEmits>();
+
+const attrs = useAttrs();
 
 const [rootElement, setRootElement] = useForwardElement();
 
@@ -33,38 +36,50 @@ const modelValue = useControllableState(
 
 const formControl = computed(() => isFormControl(rootElement.value));
 
+const inputAttrs = computed(() => ({
+  ...attrs,
+  id: props.id,
+  name: props.name,
+  required: props.required,
+  disabled: props.disabled,
+  readonly: props.readonly,
+  autofocus: props.autofocus,
+  autocomplete: props.autocomplete,
+  maxlength: props.maxlength,
+  minlength: props.minlength,
+  pattern: props.pattern,
+  placeholder: props.placeholder,
+  type: props.type
+}));
+
 const onClear = () => {
   modelValue.value = null;
 };
 
 provideInputNumberRootContext({
   ...transformPropsToContext(props, [
-    'id',
-    'autofocus',
     'disabled',
-    'maxlength',
-    'minlength',
-    'pattern',
-    'placeholder',
     'readonly',
-    'locale',
-    'focusOnChange',
-    'formatOptions',
     'max',
     'min',
     'step',
+    'locale',
+    'focusOnChange',
+    'formatOptions',
     'stepSnapping',
     'disableWheelChange',
     'invertWheelChange'
   ]),
   modelValue,
-  onClear
+  onClear,
+  inputAttrs
 });
 </script>
 
 <template>
   <div
     :ref="setRootElement"
+    v-bind="rootProps"
     data-soybean-input-number-root
     :class="cls"
     role="group"
