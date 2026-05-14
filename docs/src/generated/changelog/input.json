@@ -1,8 +1,25 @@
 {
   "component": "input",
-  "generatedAt": "2026-05-12T17:34:42.430Z",
+  "generatedAt": "2026-05-14T09:51:45.001Z",
   "schemaVersion": 1,
   "versions": [
+    {
+      "version": "v0.22.1",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.22.0...v0.22.1",
+      "date": "2026-05-14",
+      "entries": [
+        {
+          "type": "feature",
+          "scope": "input",
+          "summary": "enhance Input component props and context for better accessibility and usability",
+          "summaryKey": "changelog.generated.v0.22.1.4cf60",
+          "commitHash": "4cf60",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/4cf60f7bb",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope"
+        }
+      ]
+    },
     {
       "version": "v0.19.0",
       "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.18.0...v0.19.0",

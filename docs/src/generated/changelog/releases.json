@@ -1,7 +1,235 @@
 {
-  "generatedAt": "2026-05-12T17:34:42.430Z",
+  "generatedAt": "2026-05-14T09:51:45.001Z",
   "schemaVersion": 1,
   "releases": [
+    {
+      "version": "v0.22.2",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.22.1...v0.22.2",
+      "date": "2026-05-14",
+      "entryCount": 1,
+      "componentCount": 0,
+      "components": [],
+      "typeCounts": {
+        "fix": 1
+      },
+      "entries": [
+        {
+          "type": "fix",
+          "scope": "theme",
+          "summary": "add isDefinedClassValue utility and enhance tests for empty string handling",
+          "summaryKey": "changelog.generated.v0.22.2.f1bc7",
+          "commitHash": "f1bc7",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/f1bc7b49a",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope",
+          "components": []
+        }
+      ]
+    },
+    {
+      "version": "v0.22.1",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.22.0...v0.22.1",
+      "date": "2026-05-14",
+      "entryCount": 17,
+      "componentCount": 3,
+      "components": ["input", "input-number", "password"],
+      "typeCounts": {
+        "feature": 5,
+        "optimization": 1,
+        "refactor": 4,
+        "docs": 4,
+        "chore": 3
+      },
+      "entries": [
+        {
+          "type": "feature",
+          "scope": "input",
+          "summary": "enhance Input component props and context for better accessibility and usability",
+          "summaryKey": "changelog.generated.v0.22.1.4cf60",
+          "commitHash": "4cf60",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/4cf60f7bb",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope",
+          "components": ["input"]
+        },
+        {
+          "type": "feature",
+          "scope": "input-number",
+          "summary": "enhance InputNumber component props for better flexibility and accessibility",
+          "summaryKey": "changelog.generated.v0.22.1.9932d",
+          "commitHash": "9932d",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/9932d9e64",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope",
+          "components": ["input-number"]
+        },
+        {
+          "type": "feature",
+          "scope": "password",
+          "summary": "enhance PasswordCompact component with clear event and improved props",
+          "summaryKey": "changelog.generated.v0.22.1.6b9d0",
+          "commitHash": "6b9d0",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/6b9d09e22",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope",
+          "components": ["password"]
+        },
+        {
+          "type": "feature",
+          "scope": "types",
+          "summary": "add RouteNamedMap to TypesConfig interface in typed-router",
+          "summaryKey": "changelog.generated.v0.22.1.5ac72",
+          "commitHash": "5ac72",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/5ac721bb3",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "feature",
+          "scope": "agents",
+          "summary": "add soybeaner agent for component development guidance",
+          "summaryKey": "changelog.generated.v0.22.1.5c272",
+          "commitHash": "5c272",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/5c272a456",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "optimization",
+          "scope": "composables",
+          "summary": "update contextName type and improve error messaging for `useContext`",
+          "summaryKey": "changelog.generated.v0.22.1.5ff47",
+          "commitHash": "5ff47",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/5ff479373",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "refactor",
+          "scope": "api",
+          "summary": "replace typedoc configuration file with inline configuration",
+          "summaryKey": "changelog.generated.v0.22.1.41cfe",
+          "commitHash": "41cfe",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/41cfe4851",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "refactor",
+          "scope": "form-field",
+          "summary": "update slot props binding for improved accessibility",
+          "summaryKey": "changelog.generated.v0.22.1.7cf7e",
+          "commitHash": "7cf7e",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/7cf7e4874",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "refactor",
+          "scope": "skills",
+          "summary": "add skill documentation generation and update references",
+          "summaryKey": "changelog.generated.v0.22.1.f656a",
+          "commitHash": "f656a",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/f656ad7a8",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "refactor",
+          "scope": "use-context",
+          "summary": "remove implementation and export from hooks",
+          "summaryKey": "changelog.generated.v0.22.1.df4ea",
+          "commitHash": "df4ea",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/df4eab156",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "docs",
+          "scope": "components",
+          "summary": "update auto-generation commands to use `pnpm sui` instead of `pnpm gen`",
+          "summaryKey": "changelog.generated.v0.22.1.fb9a7",
+          "commitHash": "fb9a7",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/fb9a75971",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "docs",
+          "scope": "api",
+          "summary": "update api docs",
+          "summaryKey": "changelog.generated.v0.22.1.920ea",
+          "commitHash": "920ea",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/920ea92f7",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "docs",
+          "scope": "changelog",
+          "summary": "update docs changelog",
+          "summaryKey": "changelog.generated.v0.22.1.d3ceb",
+          "commitHash": "d3ceb",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/d3ceb98cf",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "docs",
+          "scope": "skills",
+          "summary": "move skills to global",
+          "summaryKey": "changelog.generated.v0.22.1.38bde",
+          "commitHash": "38bde",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/38bde6a3a",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "chore",
+          "scope": "deps",
+          "summary": "remove repeated deps and update deps",
+          "summaryKey": "changelog.generated.v0.22.1.5769d",
+          "commitHash": "5769d",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/5769d580c",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "chore",
+          "scope": "deps",
+          "summary": "update pnpm lockfile",
+          "summaryKey": "changelog.generated.v0.22.1.961b9",
+          "commitHash": "961b9",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/961b97451",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "chore",
+          "scope": "deps",
+          "summary": "add missing deps adn fix ts error",
+          "summaryKey": "changelog.generated.v0.22.1.8b321",
+          "commitHash": "8b321",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/8b321d659",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope",
+          "components": []
+        }
+      ]
+    },
     {
       "version": "v0.22.0",
       "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.21.0...v0.22.0",

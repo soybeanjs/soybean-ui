@@ -1253,6 +1253,28 @@
             "b258b": "update skills",
             "bec18": "enable collapsible behavior by default and update related props",
             "c3cca": "update CLI commands and improve module execution"
+          },
+          "1": {
+            "38bde": "move skills to global",
+            "41cfe": "replace typedoc configuration file with inline configuration",
+            "4cf60": "enhance Input component props and context for better accessibility and usability",
+            "5769d": "remove repeated deps and update deps",
+            "5ac72": "add RouteNamedMap to TypesConfig interface in typed-router",
+            "5c272": "add soybeaner agent for component development guidance",
+            "5ff47": "update contextName type and improve error messaging for `useContext`",
+            "6b9d0": "enhance PasswordCompact component with clear event and improved props",
+            "7cf7e": "update slot props binding for improved accessibility",
+            "8b321": "add missing deps adn fix ts error",
+            "920ea": "update api docs",
+            "961b9": "update pnpm lockfile",
+            "9932d": "enhance InputNumber component props for better flexibility and accessibility",
+            "d3ceb": "update docs changelog",
+            "df4ea": "remove implementation and export from hooks",
+            "f656a": "add skill documentation generation and update references",
+            "fb9a7": "update auto-generation commands to use `pnpm sui` instead of `pnpm gen`"
+          },
+          "2": {
+            "f1bc7": "add isDefinedClassValue utility and enhance tests for empty string handling"
           }
         }
       }
