@@ -132,7 +132,7 @@ Properties for the ButtonLink component.
 - `inactiveClass`: The class to apply to the link when it is inactive. (type `string`; optional)
 - `prefetchedClass`: A class to apply to links that have been prefetched. (type `string`; optional)
 - `external`: Forces the link to be considered as external (true) or internal (false). This is helpful to handle edge-cases (type `boolean`; optional)
-- `ariaCurrentValue`: Value passed to the attribute `aria-current` when the link is exact active. (type `'true' | 'false' | 'page' | 'step' | 'location' | 'date' | 'time'`; default `'page'`; optional)
+- `ariaCurrentValue`: Value passed to the attribute `aria-current` when the link is exact active. (type `'true' | 'false' | 'date' | 'time' | 'page' | 'step' | 'location'`; default `'page'`; optional)
 - `viewTransition`: Pass the returned promise of `router.push()` to `document.startViewTransition()` if supported. (type `boolean`; optional)
 - `target`: Where to display the linked URL, as the name for a browsing context. (type `'_blank' | '_parent' | '_self' | '_top' | (string & {}) | null`; optional)
 - `rel`: A rel attribute value to apply on the link. Defaults to "noopener noreferrer" for external links. (type `(string & {}) | 'noopener' | 'noreferrer' | 'nofollow' | 'sponsored' | 'ugc' | null`; default `'noopener noreferrer'`; optional)

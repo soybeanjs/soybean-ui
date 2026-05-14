@@ -267,16 +267,19 @@ Properties for the ComboboxInput component.
 - `controlProps`: The props of the input extra props. (type `InputControlProps`; optional)
 - `defaultValue`: The default value of the input (type `string`; optional)
 - `modelValue`: The controlled value of the input (type `string`; optional)
+- `disabled`: When `true`, prevents the user from interacting with the input. (type `boolean`; optional)
+- `readonly`: When `true`, the input is read-only. (type `boolean`; optional)
+- `rootProps`: Properties forwarded to the root element (type `BaseProps`; optional)
+- `name`: The name of the field. Submitted with its owning form as part of a name/value pair. (type `string`; optional)
+- `required`: When `true`, indicates that the user must set the value before the owning form can be submitted. (type `boolean`; optional)
 - `id`: Id of the input element (type `string`; optional)
 - `autofocus`: When `true`, the input is auto-focused. (type `boolean`; optional)
-- `disabled`: When `true`, prevents the user from interacting with the input. (type `boolean`; optional)
+- `autocomplete`: The autocomplete attribute of the input (type `'on' | 'off'`; optional)
 - `maxlength`: The maximum number of characters allowed in the input (type `number`; optional)
 - `minlength`: The minimum number of characters allowed in the input (type `number`; optional)
 - `pattern`: The pattern attribute of the input (type `string`; optional)
 - `placeholder`: The placeholder of the input (type `string`; optional)
-- `readonly`: When `true`, the input is read-only. (type `boolean`; optional)
-- `name`: The name of the field. Submitted with its owning form as part of a name/value pair. (type `string`; optional)
-- `required`: When `true`, indicates that the user must set the value before the owning form can be submitted. (type `boolean`; optional)
+- `type`: The type of the input element. (type `InputTypeHTMLAttribute`; optional)
 
 #### Emits
 
