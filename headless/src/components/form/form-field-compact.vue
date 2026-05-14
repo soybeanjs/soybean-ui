@@ -29,11 +29,14 @@ function handleUpdateModelValue(value: unknown) {
 
 <template>
   <FormFieldBaseCompact data-soybean-form-field v-bind="props" :error="error">
+    <template #label>
+      <slot v-if="slots.label || label" name="label" v-bind="state" />
+    </template>
     <template #default="slotProps">
       <Slot
         :id="slotProps.formFieldId"
-        :aria-describedby="slotProps.ariaDescribedBy"
-        :aria-invalid="slotProps.ariaInvalid"
+        :aria-describedby="slotProps['aria-described-by']"
+        :aria-invalid="slotProps['aria-invalid']"
         :name="name"
         :model-value="state.value"
         @update:model-value="handleUpdateModelValue"
@@ -44,11 +47,8 @@ function handleUpdateModelValue(value: unknown) {
         <slot v-bind="state" />
       </Slot>
     </template>
-    <template v-if="slots.label || label" #label>
-      <slot name="label" v-bind="state" />
-    </template>
-    <template v-if="slots.description || description" #description>
-      <slot name="description" v-bind="state" />
+    <template #description>
+      <slot v-if="slots.description || description" name="description" v-bind="state" />
     </template>
   </FormFieldBaseCompact>
 </template>
