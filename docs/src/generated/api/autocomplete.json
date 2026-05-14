@@ -262,7 +262,7 @@
                 "name": "AutocompleteInputProps",
                 "kind": "interface",
                 "type": "AutocompleteInputProps",
-                "resolvedType": "{ inputRef?: ((el: HTMLInputElement) => void); controlProps?: InputControlProps; disabled?: boolean; id?: string; placeholder?: string; autofocus?: boolean; name?: string; required?: boolean; maxlength?: number; minlength?: number; pattern?: string; readonly?: boolean }",
+                "resolvedType": "{ inputRef?: ((el: HTMLInputElement) => void); controlProps?: InputControlProps; disabled?: boolean; id?: string; placeholder?: string; type?: InputTypeHTMLAttribute; autofocus?: boolean; name?: string; required?: boolean; readonly?: boolean; rootProps?: BaseProps; autocomplete?: 'on' | 'off'; maxlength?: number; minlength?: number; pattern?: string }",
                 "description": "Properties for the AutocompleteInput component.",
                 "descriptionKey": "api.generated.headless_src_components_autocomplete_types.autocompleteinputprops",
                 "sourcePath": "headless/src/components/autocomplete/types.ts",
@@ -314,6 +314,17 @@
                     "referencedTypes": []
                   },
                   {
+                    "name": "type",
+                    "type": "InputTypeHTMLAttribute",
+                    "required": false,
+                    "description": "The type of the input element.",
+                    "descriptionKey": "api.generated.headless_src_components_autocomplete_types.autocompleteinputprops.members.type",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/input/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
                     "name": "autofocus",
                     "type": "boolean",
                     "required": false,
@@ -347,6 +358,39 @@
                     "referencedTypes": []
                   },
                   {
+                    "name": "readonly",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "When `true`, the input is read-only.",
+                    "descriptionKey": "api.generated.headless_src_components_autocomplete_types.autocompleteinputprops.members.readonly",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/input/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "rootProps",
+                    "type": "BaseProps",
+                    "required": false,
+                    "description": "Properties forwarded to the root element",
+                    "descriptionKey": "api.generated.headless_src_components_autocomplete_types.autocompleteinputprops.members.rootprops",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/input/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "autocomplete",
+                    "type": "'on' | 'off'",
+                    "required": false,
+                    "description": "The autocomplete attribute of the input",
+                    "descriptionKey": "api.generated.headless_src_components_autocomplete_types.autocompleteinputprops.members.autocomplete",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/input/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
                     "name": "maxlength",
                     "type": "number",
                     "required": false,
@@ -374,17 +418,6 @@
                     "required": false,
                     "description": "The pattern attribute of the input",
                     "descriptionKey": "api.generated.headless_src_components_autocomplete_types.autocompleteinputprops.members.pattern",
-                    "default": null,
-                    "inheritedFrom": null,
-                    "sourcePath": "headless/src/components/input/types.ts",
-                    "referencedTypes": []
-                  },
-                  {
-                    "name": "readonly",
-                    "type": "boolean",
-                    "required": false,
-                    "description": "When `true`, the input is read-only.",
-                    "descriptionKey": "api.generated.headless_src_components_autocomplete_types.autocompleteinputprops.members.readonly",
                     "default": null,
                     "inheritedFrom": null,
                     "sourcePath": "headless/src/components/input/types.ts",
@@ -1616,7 +1649,7 @@
                 "name": "AutocompleteInputProps",
                 "kind": "interface",
                 "type": "AutocompleteInputProps",
-                "resolvedType": "{ inputRef?: ((el: HTMLInputElement) => void); controlProps?: InputControlProps; disabled?: boolean; id?: string; placeholder?: string; autofocus?: boolean; name?: string; required?: boolean; maxlength?: number; minlength?: number; pattern?: string; readonly?: boolean }",
+                "resolvedType": "{ inputRef?: ((el: HTMLInputElement) => void); controlProps?: InputControlProps; disabled?: boolean; id?: string; placeholder?: string; type?: InputTypeHTMLAttribute; autofocus?: boolean; name?: string; required?: boolean; readonly?: boolean; rootProps?: BaseProps; autocomplete?: 'on' | 'off'; maxlength?: number; minlength?: number; pattern?: string }",
                 "description": "Properties for the AutocompleteInput component.",
                 "descriptionKey": "api.generated.headless_src_components_autocomplete_types.autocompleteinputprops",
                 "sourcePath": "headless/src/components/autocomplete/types.ts",
@@ -1668,6 +1701,17 @@
                     "referencedTypes": []
                   },
                   {
+                    "name": "type",
+                    "type": "InputTypeHTMLAttribute",
+                    "required": false,
+                    "description": "The type of the input element.",
+                    "descriptionKey": "api.generated.headless_src_components_autocomplete_types.autocompleteinputprops.members.type",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/input/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
                     "name": "autofocus",
                     "type": "boolean",
                     "required": false,
@@ -1701,6 +1745,39 @@
                     "referencedTypes": []
                   },
                   {
+                    "name": "readonly",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "When `true`, the input is read-only.",
+                    "descriptionKey": "api.generated.headless_src_components_autocomplete_types.autocompleteinputprops.members.readonly",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/input/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "rootProps",
+                    "type": "BaseProps",
+                    "required": false,
+                    "description": "Properties forwarded to the root element",
+                    "descriptionKey": "api.generated.headless_src_components_autocomplete_types.autocompleteinputprops.members.rootprops",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/input/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "autocomplete",
+                    "type": "'on' | 'off'",
+                    "required": false,
+                    "description": "The autocomplete attribute of the input",
+                    "descriptionKey": "api.generated.headless_src_components_autocomplete_types.autocompleteinputprops.members.autocomplete",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/input/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
                     "name": "maxlength",
                     "type": "number",
                     "required": false,
@@ -1728,17 +1805,6 @@
                     "required": false,
                     "description": "The pattern attribute of the input",
                     "descriptionKey": "api.generated.headless_src_components_autocomplete_types.autocompleteinputprops.members.pattern",
-                    "default": null,
-                    "inheritedFrom": null,
-                    "sourcePath": "headless/src/components/input/types.ts",
-                    "referencedTypes": []
-                  },
-                  {
-                    "name": "readonly",
-                    "type": "boolean",
-                    "required": false,
-                    "description": "When `true`, the input is read-only.",
-                    "descriptionKey": "api.generated.headless_src_components_autocomplete_types.autocompleteinputprops.members.readonly",
                     "default": null,
                     "inheritedFrom": null,
                     "sourcePath": "headless/src/components/input/types.ts",
@@ -2819,7 +2885,7 @@
         "kind": "props",
         "name": "AutocompleteInputProps",
         "type": "Interface AutocompleteInputProps",
-        "resolvedType": "{ inputRef?: ((el: HTMLInputElement) => void); controlProps?: InputControlProps; disabled?: boolean; id?: string; placeholder?: string; autofocus?: boolean; name?: string; required?: boolean; maxlength?: number; minlength?: number; pattern?: string; readonly?: boolean }",
+        "resolvedType": "{ inputRef?: ((el: HTMLInputElement) => void); controlProps?: InputControlProps; disabled?: boolean; id?: string; placeholder?: string; type?: InputTypeHTMLAttribute; autofocus?: boolean; name?: string; required?: boolean; readonly?: boolean; rootProps?: BaseProps; autocomplete?: 'on' | 'off'; maxlength?: number; minlength?: number; pattern?: string }",
         "description": "Properties for the AutocompleteInput component.",
         "descriptionKey": "api.generated.headless_src_components_autocomplete_types.autocompleteinputprops.props",
         "sourcePath": "headless/src/components/autocomplete/types.ts",
@@ -2909,6 +2975,31 @@
             "referencedTypes": []
           },
           {
+            "name": "type",
+            "type": "InputTypeHTMLAttribute",
+            "required": false,
+            "description": "The type of the input element.",
+            "descriptionKey": "api.generated.headless_src_components_autocomplete_types.autocompleteinputprops.members.type",
+            "default": null,
+            "inheritedFrom": "type",
+            "sourcePath": "headless/src/components/input/types.ts",
+            "referencedTypes": [
+              {
+                "name": "InputTypeHTMLAttribute",
+                "kind": "typeAlias",
+                "type": "InputTypeHTMLAttribute",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_dom_3_5_34_node_modules_vue_runtime_dom_dist_runtime_dom_d.inputtypehtmlattribute",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-dom@3.5.34/node_modules/@vue/runtime-dom/dist/runtime-dom.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
             "name": "autofocus",
             "type": "boolean",
             "required": false,
@@ -2942,6 +3033,53 @@
             "referencedTypes": []
           },
           {
+            "name": "readonly",
+            "type": "boolean",
+            "required": false,
+            "description": "When `true`, the input is read-only.",
+            "descriptionKey": "api.generated.headless_src_components_autocomplete_types.autocompleteinputprops.members.readonly",
+            "default": null,
+            "inheritedFrom": "readonly",
+            "sourcePath": "headless/src/components/input/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "rootProps",
+            "type": "BaseProps",
+            "required": false,
+            "description": "Properties forwarded to the root element",
+            "descriptionKey": "api.generated.headless_src_components_autocomplete_types.autocompleteinputprops.members.rootprops",
+            "default": null,
+            "inheritedFrom": "rootProps",
+            "sourcePath": "headless/src/components/input/types.ts",
+            "referencedTypes": [
+              {
+                "name": "BaseProps",
+                "kind": "typeAlias",
+                "type": "import(\"../../types\").DataAttributes & import(\"vue\").HTMLAttributes",
+                "resolvedType": "DataAttributes & T",
+                "description": "",
+                "descriptionKey": "api.generated.headless_src_types_vue.baseprops",
+                "sourcePath": "headless/src/types/vue.ts",
+                "typeParameters": ["T = HTMLAttributes"],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "autocomplete",
+            "type": "'on' | 'off'",
+            "required": false,
+            "description": "The autocomplete attribute of the input",
+            "descriptionKey": "api.generated.headless_src_components_autocomplete_types.autocompleteinputprops.members.autocomplete",
+            "default": null,
+            "inheritedFrom": "autocomplete",
+            "sourcePath": "headless/src/components/input/types.ts",
+            "referencedTypes": []
+          },
+          {
             "name": "maxlength",
             "type": "number",
             "required": false,
@@ -2971,17 +3109,6 @@
             "descriptionKey": "api.generated.headless_src_components_autocomplete_types.autocompleteinputprops.members.pattern",
             "default": null,
             "inheritedFrom": "pattern",
-            "sourcePath": "headless/src/components/input/types.ts",
-            "referencedTypes": []
-          },
-          {
-            "name": "readonly",
-            "type": "boolean",
-            "required": false,
-            "description": "When `true`, the input is read-only.",
-            "descriptionKey": "api.generated.headless_src_components_autocomplete_types.autocompleteinputprops.members.readonly",
-            "default": null,
-            "inheritedFrom": "readonly",
             "sourcePath": "headless/src/components/input/types.ts",
             "referencedTypes": []
           }

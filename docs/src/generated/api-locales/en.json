@@ -379,6 +379,7 @@
             "inputref": "Input ref."
           },
           "members": {
+            "autocomplete": "The autocomplete attribute of the input",
             "autofocus": "When `true`, the input is auto-focused.",
             "controlprops": "Properties forwarded to the control element.",
             "disabled": "When `true`, prevents the user from interacting with the input.",
@@ -390,7 +391,9 @@
             "pattern": "The pattern attribute of the input",
             "placeholder": "The placeholder of the input",
             "readonly": "When `true`, the input is read-only.",
-            "required": "When `true`, indicates that the user must set the value before the owning form can be submitted."
+            "required": "When `true`, indicates that the user must set the value before the owning form can be submitted.",
+            "rootprops": "Properties forwarded to the root element",
+            "type": "The type of the input element."
           },
           "props": "Properties for the AutocompleteInput component."
         },
@@ -2438,6 +2441,7 @@
             "inputref": "The function to set the input element."
           },
           "members": {
+            "autocomplete": "The autocomplete attribute of the input",
             "autofocus": "When `true`, the input is auto-focused.",
             "controlprops": "The props of the input extra props.",
             "defaultvalue": "The default value of the input",
@@ -2452,7 +2456,9 @@
             "pattern": "The pattern attribute of the input",
             "placeholder": "The placeholder of the input",
             "readonly": "When `true`, the input is read-only.",
-            "required": "When `true`, indicates that the user must set the value before the owning form can be submitted."
+            "required": "When `true`, indicates that the user must set the value before the owning form can be submitted.",
+            "rootprops": "Properties forwarded to the root element",
+            "type": "The type of the input element."
           },
           "props": "Properties for the ComboboxInput component."
         },
@@ -4295,6 +4301,7 @@
         },
         "inputnumbercompactprops": {
           "members": {
+            "autocomplete": "The autocomplete attribute of the input",
             "autofocus": "When `true`, the input is auto-focused.",
             "clearable": "Whether to show the clear trigger.",
             "clearprops": "Properties forwarded to the clear element.",
@@ -4320,8 +4327,10 @@
             "placeholder": "The placeholder of the input",
             "readonly": "When `true`, the input is read-only.",
             "required": "When `true`, indicates that the user must set the value before the owning form can be submitted.",
+            "rootprops": "Properties forwarded to the root element.",
             "step": "The amount that the input value changes with each increment or decrement \"tick\".",
-            "stepsnapping": "When `false`, prevents the value from snapping to the nearest increment of the step value"
+            "stepsnapping": "When `false`, prevents the value from snapping to the nearest increment of the step value",
+            "type": "The type of the input element."
           },
           "props": "Properties for the InputNumberCompact component."
         },
@@ -4371,6 +4380,7 @@
         },
         "inputnumberrootprops": {
           "members": {
+            "autocomplete": "The autocomplete attribute of the input",
             "autofocus": "When `true`, the input is auto-focused.",
             "defaultvalue": "The default value of the input",
             "disabled": "When `true`, prevents the user from interacting with the input.",
@@ -4390,8 +4400,10 @@
             "placeholder": "The placeholder of the input",
             "readonly": "When `true`, the input is read-only.",
             "required": "When `true`, indicates that the user must set the value before the owning form can be submitted.",
+            "rootprops": "Properties forwarded to the root element.",
             "step": "The amount that the input value changes with each increment or decrement \"tick\".",
-            "stepsnapping": "When `false`, prevents the value from snapping to the nearest increment of the step value"
+            "stepsnapping": "When `false`, prevents the value from snapping to the nearest increment of the step value",
+            "type": "The type of the input element."
           },
           "props": "Properties for the InputNumberRoot component."
         },
@@ -4533,6 +4545,7 @@
         },
         "inputcompactprops": {
           "members": {
+            "autocomplete": "The autocomplete attribute of the input",
             "autofocus": "When `true`, the input is auto-focused.",
             "clearable": "Whether to show the clear trigger.",
             "clearprops": "Properties forwarded to the clear element.",
@@ -4548,7 +4561,9 @@
             "pattern": "The pattern attribute of the input",
             "placeholder": "The placeholder of the input",
             "readonly": "When `true`, the input is read-only.",
-            "required": "When `true`, indicates that the user must set the value before the owning form can be submitted."
+            "required": "When `true`, indicates that the user must set the value before the owning form can be submitted.",
+            "rootprops": "Properties forwarded to the root element",
+            "type": "The type of the input element."
           },
           "props": "Properties for the InputCompact component."
         },
@@ -4578,6 +4593,7 @@
         },
         "inputrootprops": {
           "members": {
+            "autocomplete": "The autocomplete attribute of the input",
             "autofocus": "When `true`, the input is auto-focused.",
             "defaultvalue": "The default value of the input",
             "disabled": "When `true`, prevents the user from interacting with the input.",
@@ -4589,7 +4605,9 @@
             "pattern": "The pattern attribute of the input",
             "placeholder": "The placeholder of the input",
             "readonly": "When `true`, the input is read-only.",
-            "required": "When `true`, indicates that the user must set the value before the owning form can be submitted."
+            "required": "When `true`, indicates that the user must set the value before the owning form can be submitted.",
+            "rootprops": "Properties forwarded to the root element",
+            "type": "The type of the input element."
           },
           "props": "Properties for the InputRoot component."
         },
@@ -4890,6 +4908,7 @@
             "inputref": "The function to set the input element."
           },
           "members": {
+            "autocomplete": "The autocomplete attribute of the input",
             "autofocus": "When `true`, the input is auto-focused.",
             "controlprops": "The props of the input extra props.",
             "defaultvalue": "The default value of the input",
@@ -4903,7 +4922,9 @@
             "pattern": "The pattern attribute of the input",
             "placeholder": "The placeholder of the input",
             "readonly": "When `true`, the input is read-only.",
-            "required": "When `true`, indicates that the user must set the value before the owning form can be submitted."
+            "required": "When `true`, indicates that the user must set the value before the owning form can be submitted.",
+            "rootprops": "Properties forwarded to the root element",
+            "type": "The type of the input element."
           },
           "props": "Properties for the ListboxFilter component."
         },
@@ -5956,6 +5977,7 @@
       "headless_src_components_password_types": {
         "passwordcompactemits": {
           "callables": {
+            "clear": "Emitted when the clear button is clicked.",
             "update_modelvalue": "Emitted when the model value changes.",
             "update_visible": "Emitted when the visible state changes."
           },
@@ -5963,6 +5985,7 @@
         },
         "passwordcompactprops": {
           "members": {
+            "autocomplete": "The autocomplete attribute of the input",
             "autofocus": "When `true`, the input is auto-focused.",
             "clearable": "Whether to show the clear trigger.",
             "clearprops": "Properties forwarded to the clear element.",
@@ -5979,6 +6002,8 @@
             "placeholder": "The placeholder of the input",
             "readonly": "When `true`, the input is read-only.",
             "required": "When `true`, indicates that the user must set the value before the owning form can be submitted.",
+            "rootprops": "Properties forwarded to the root element",
+            "type": "The type of the input element.",
             "visible": "Controlled password visibility.",
             "visibleprops": "Properties forwarded to the visible element."
           },
@@ -7725,6 +7750,7 @@
             "addonblur": "Whether to add tags on blur.",
             "addonpaste": "Whether to add tags on paste.",
             "addontab": "Whether to add tags on tab.",
+            "autocomplete": "The autocomplete attribute of the input",
             "autofocus": "When `true`, the input is auto-focused.",
             "clearable": "Whether to render the clear trigger.",
             "clearprops": "Props forwarded to the clear element.",
@@ -7747,7 +7773,8 @@
             "pattern": "The pattern attribute of the input",
             "placeholder": "The placeholder of the input",
             "readonly": "When `true`, the input is read-only.",
-            "required": "When `true`, indicates that the user must set the value before the owning form can be submitted."
+            "required": "When `true`, indicates that the user must set the value before the owning form can be submitted.",
+            "type": "The type of the input element."
           },
           "props": "Properties for the TagsInputCompact component."
         },
@@ -7809,6 +7836,7 @@
             "addonblur": "Whether to add tags on blur.",
             "addonpaste": "Whether to add tags on paste.",
             "addontab": "Whether to add tags on tab.",
+            "autocomplete": "The autocomplete attribute of the input",
             "autofocus": "When `true`, the input is auto-focused.",
             "defaultvalue": "The uncontrolled default value of the tags input.",
             "delimiter": "The delimiter used to add tags.",
@@ -7825,7 +7853,8 @@
             "pattern": "The pattern attribute of the input",
             "placeholder": "The placeholder of the input",
             "readonly": "When `true`, the input is read-only.",
-            "required": "When `true`, indicates that the user must set the value before the owning form can be submitted."
+            "required": "When `true`, indicates that the user must set the value before the owning form can be submitted.",
+            "type": "The type of the input element."
           },
           "props": "Properties for the TagsInputRoot component."
         },
@@ -8958,7 +8987,7 @@
       "node_modules_pnpm_vue_reactivity_3_5_34_node_modules_vue_reactivity_dist_reactivity_d": {
         "computedref": ""
       },
-      "node_modules_pnpm_vue_router_5_0_6_vue_compiler_sfc_3_5_34_pinia_3_0_4_typescript_6_0_3_vue_3_5_34_types_50dd1815d493fa68b45f0a33526446ac_node_modules_vue_router_dist_index_d_veap3p_d": {
+      "node_modules_pnpm_vue_router_5_0_7_vue_compiler_sfc_3_5_34_pinia_3_0_4_typescript_6_0_3_vue_3_5_34_types_f357d1e940226713debf99bc42fbe5c2_node_modules_vue_router_dist_useapi_d6ckosfy_d": {
         "routelocationraw": "Route location that can be passed to `router.push()` and other user-facing APIs."
       },
       "node_modules_pnpm_vue_runtime_core_3_5_34_node_modules_vue_runtime_core_dist_runtime_core_d": {
@@ -8968,6 +8997,7 @@
       "node_modules_pnpm_vue_runtime_dom_3_5_34_node_modules_vue_runtime_dom_dist_runtime_dom_d": {
         "htmlattributes": "",
         "imghtmlattributes": "",
+        "inputtypehtmlattribute": "",
         "lihtmlattributes": ""
       },
       "node_modules_pnpm_vueuse_integrations_14_3_0_fuse_js_7_3_0_vue_3_5_34_typescript_6_0_3_node_modules_vueuse_integrations_dist_usefuse_d": {
@@ -11184,6 +11214,7 @@
         },
         "inputnumberprops": {
           "members": {
+            "autocomplete": "The autocomplete attribute of the input",
             "autofocus": "When `true`, the input is auto-focused.",
             "center": "Whether to center the input.",
             "class": "Additional class names applied to the root element.",
@@ -11211,9 +11242,11 @@
             "placeholder": "The placeholder of the input",
             "readonly": "When `true`, the input is read-only.",
             "required": "When `true`, indicates that the user must set the value before the owning form can be submitted.",
+            "rootprops": "Properties forwarded to the root element.",
             "size": "Visual size of the component.",
             "step": "The amount that the input value changes with each increment or decrement \"tick\".",
             "stepsnapping": "When `false`, prevents the value from snapping to the nearest increment of the step value",
+            "type": "The type of the input element.",
             "ui": "Per-slot class overrides for the component."
           },
           "props": "Properties for the InputNumber component."
@@ -11287,6 +11320,7 @@
         },
         "inputprops": {
           "members": {
+            "autocomplete": "The autocomplete attribute of the input",
             "autofocus": "When `true`, the input is auto-focused.",
             "class": "root class",
             "clearable": "Whether to show the clear trigger.",
@@ -11304,7 +11338,9 @@
             "placeholder": "The placeholder of the input",
             "readonly": "When `true`, the input is read-only.",
             "required": "When `true`, indicates that the user must set the value before the owning form can be submitted.",
+            "rootprops": "Properties forwarded to the root element",
             "size": "Visual size of the component.",
+            "type": "The type of the input element.",
             "ui": "Per-slot class overrides for the component."
           },
           "props": "Properties for the Input component."
@@ -11714,6 +11750,7 @@
       "src_components_password_types": {
         "passwordemits": {
           "callables": {
+            "clear": "Emitted when the clear button is clicked.",
             "update_modelvalue": "Emitted when the model value changes.",
             "update_visible": "Emitted when the visible state changes."
           },
@@ -11721,6 +11758,7 @@
         },
         "passwordprops": {
           "members": {
+            "autocomplete": "The autocomplete attribute of the input",
             "autofocus": "When `true`, the input is auto-focused.",
             "class": "Additional class names applied to the root element.",
             "clearable": "Whether to show the clear trigger.",
@@ -11738,7 +11776,9 @@
             "placeholder": "The placeholder of the input",
             "readonly": "When `true`, the input is read-only.",
             "required": "When `true`, indicates that the user must set the value before the owning form can be submitted.",
+            "rootprops": "Properties forwarded to the root element",
             "size": "Visual size of the component.",
+            "type": "The type of the input element.",
             "ui": "Per-slot class overrides for the component.",
             "visible": "Controlled password visibility.",
             "visibleprops": "Properties forwarded to the visible element."
@@ -12554,6 +12594,7 @@
             "addonblur": "Whether to add tags on blur.",
             "addonpaste": "Whether to add tags on paste.",
             "addontab": "Whether to add tags on tab.",
+            "autocomplete": "The autocomplete attribute of the input",
             "autofocus": "When `true`, the input is auto-focused.",
             "class": "Additional class names applied to the root element.",
             "clearable": "Whether to render the clear trigger.",
@@ -12579,6 +12620,7 @@
             "readonly": "When `true`, the input is read-only.",
             "required": "When `true`, indicates that the user must set the value before the owning form can be submitted.",
             "size": "Visual size of the component.",
+            "type": "The type of the input element.",
             "ui": "Per-slot class overrides for the component."
           },
           "props": "Properties for the TagsInput component."

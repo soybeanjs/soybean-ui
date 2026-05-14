@@ -100,7 +100,7 @@
               {
                 "name": "SliderUi",
                 "kind": "typeAlias",
-                "type": "{ root: ClassValue; thumb: ClassValue; track: ClassValue; range: ClassValue; }",
+                "type": "{ root: ClassValue; range: ClassValue; thumb: ClassValue; track: ClassValue; }",
                 "resolvedType": null,
                 "description": "UI class overrides for the Slider component.",
                 "descriptionKey": "api.generated.headless_src_components_slider_types.sliderui",

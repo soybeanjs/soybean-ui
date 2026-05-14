@@ -6,7 +6,7 @@
         "kind": "props",
         "name": "TagsInputProps",
         "type": "Interface TagsInputProps",
-        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<TagsInputUi>; clearable?: boolean; controlProps?: TagsInputControlProps; clearProps?: TagsInputClearProps; itemProps?: TagsInputItemProps; itemTextProps?: TagsInputItemTextProps; itemDeleteProps?: TagsInputItemDeleteProps; dir?: Direction; modelValue?: string[]; defaultValue?: string[]; addOnPaste?: boolean; addOnTab?: boolean; addOnBlur?: boolean; duplicate?: boolean; delimiter?: string | RegExp; max?: number; displayValue?: ((value: string) => string); id?: string; autofocus?: boolean; disabled?: boolean; maxlength?: number; minlength?: number; pattern?: string; placeholder?: string; readonly?: boolean; name?: string; required?: boolean }",
+        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<TagsInputUi>; clearable?: boolean; controlProps?: TagsInputControlProps; clearProps?: TagsInputClearProps; itemProps?: TagsInputItemProps; itemTextProps?: TagsInputItemTextProps; itemDeleteProps?: TagsInputItemDeleteProps; dir?: Direction; modelValue?: string[]; defaultValue?: string[]; addOnPaste?: boolean; addOnTab?: boolean; addOnBlur?: boolean; duplicate?: boolean; delimiter?: string | RegExp; max?: number; displayValue?: ((value: string) => string); id?: string; autofocus?: boolean; autocomplete?: 'on' | 'off'; disabled?: boolean; maxlength?: number; minlength?: number; pattern?: string; placeholder?: string; readonly?: boolean; type?: InputTypeHTMLAttribute; name?: string; required?: boolean }",
         "description": "Properties for the TagsInput component.",
         "descriptionKey": "api.generated.src_components_tags_input_types.tagsinputprops.props",
         "sourcePath": "src/components/tags-input/types.ts",
@@ -528,6 +528,17 @@
             "referencedTypes": []
           },
           {
+            "name": "autocomplete",
+            "type": "'on' | 'off'",
+            "required": false,
+            "description": "The autocomplete attribute of the input",
+            "descriptionKey": "api.generated.src_components_tags_input_types.tagsinputprops.members.autocomplete",
+            "default": null,
+            "inheritedFrom": "autocomplete",
+            "sourcePath": "headless/src/components/input/types.ts",
+            "referencedTypes": []
+          },
+          {
             "name": "disabled",
             "type": "boolean",
             "required": false,
@@ -592,6 +603,31 @@
             "inheritedFrom": "readonly",
             "sourcePath": "headless/src/components/input/types.ts",
             "referencedTypes": []
+          },
+          {
+            "name": "type",
+            "type": "InputTypeHTMLAttribute",
+            "required": false,
+            "description": "The type of the input element.",
+            "descriptionKey": "api.generated.src_components_tags_input_types.tagsinputprops.members.type",
+            "default": null,
+            "inheritedFrom": "type",
+            "sourcePath": "headless/src/components/input/types.ts",
+            "referencedTypes": [
+              {
+                "name": "InputTypeHTMLAttribute",
+                "kind": "typeAlias",
+                "type": "InputTypeHTMLAttribute",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_dom_3_5_34_node_modules_vue_runtime_dom_dist_runtime_dom_d.inputtypehtmlattribute",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-dom@3.5.34/node_modules/@vue/runtime-dom/dist/runtime-dom.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
           },
           {
             "name": "name",
@@ -893,7 +929,7 @@
         "kind": "props",
         "name": "TagsInputCompactProps",
         "type": "Interface TagsInputCompactProps",
-        "resolvedType": "{ clearable?: boolean; controlProps?: TagsInputControlProps; clearProps?: TagsInputClearProps; itemProps?: TagsInputItemProps; itemTextProps?: TagsInputItemTextProps; itemDeleteProps?: TagsInputItemDeleteProps; dir?: Direction; modelValue?: string[]; defaultValue?: string[]; addOnPaste?: boolean; addOnTab?: boolean; addOnBlur?: boolean; duplicate?: boolean; delimiter?: string | RegExp; max?: number; displayValue?: ((value: string) => string); id?: string; autofocus?: boolean; disabled?: boolean; maxlength?: number; minlength?: number; pattern?: string; placeholder?: string; readonly?: boolean; name?: string; required?: boolean }",
+        "resolvedType": "{ clearable?: boolean; controlProps?: TagsInputControlProps; clearProps?: TagsInputClearProps; itemProps?: TagsInputItemProps; itemTextProps?: TagsInputItemTextProps; itemDeleteProps?: TagsInputItemDeleteProps; dir?: Direction; modelValue?: string[]; defaultValue?: string[]; addOnPaste?: boolean; addOnTab?: boolean; addOnBlur?: boolean; duplicate?: boolean; delimiter?: string | RegExp; max?: number; displayValue?: ((value: string) => string); id?: string; autofocus?: boolean; autocomplete?: 'on' | 'off'; disabled?: boolean; maxlength?: number; minlength?: number; pattern?: string; placeholder?: string; readonly?: boolean; type?: InputTypeHTMLAttribute; name?: string; required?: boolean }",
         "description": "Properties for the TagsInputCompact component.",
         "descriptionKey": "api.generated.headless_src_components_tags_input_types.tagsinputcompactprops.props",
         "sourcePath": "headless/src/components/tags-input/types.ts",
@@ -1340,6 +1376,17 @@
             "referencedTypes": []
           },
           {
+            "name": "autocomplete",
+            "type": "'on' | 'off'",
+            "required": false,
+            "description": "The autocomplete attribute of the input",
+            "descriptionKey": "api.generated.headless_src_components_tags_input_types.tagsinputcompactprops.members.autocomplete",
+            "default": null,
+            "inheritedFrom": "autocomplete",
+            "sourcePath": "headless/src/components/input/types.ts",
+            "referencedTypes": []
+          },
+          {
             "name": "disabled",
             "type": "boolean",
             "required": false,
@@ -1404,6 +1451,31 @@
             "inheritedFrom": "readonly",
             "sourcePath": "headless/src/components/input/types.ts",
             "referencedTypes": []
+          },
+          {
+            "name": "type",
+            "type": "InputTypeHTMLAttribute",
+            "required": false,
+            "description": "The type of the input element.",
+            "descriptionKey": "api.generated.headless_src_components_tags_input_types.tagsinputcompactprops.members.type",
+            "default": null,
+            "inheritedFrom": "type",
+            "sourcePath": "headless/src/components/input/types.ts",
+            "referencedTypes": [
+              {
+                "name": "InputTypeHTMLAttribute",
+                "kind": "typeAlias",
+                "type": "InputTypeHTMLAttribute",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_dom_3_5_34_node_modules_vue_runtime_dom_dist_runtime_dom_d.inputtypehtmlattribute",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-dom@3.5.34/node_modules/@vue/runtime-dom/dist/runtime-dom.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
           },
           {
             "name": "name",
@@ -1906,7 +1978,7 @@
         "kind": "props",
         "name": "TagsInputRootProps",
         "type": "Interface TagsInputRootProps",
-        "resolvedType": "{ dir?: Direction; modelValue?: string[]; defaultValue?: string[]; addOnPaste?: boolean; addOnTab?: boolean; addOnBlur?: boolean; duplicate?: boolean; delimiter?: string | RegExp; max?: number; displayValue?: ((value: string) => string); id?: string; autofocus?: boolean; disabled?: boolean; maxlength?: number; minlength?: number; pattern?: string; placeholder?: string; readonly?: boolean; name?: string; required?: boolean }",
+        "resolvedType": "{ dir?: Direction; modelValue?: string[]; defaultValue?: string[]; addOnPaste?: boolean; addOnTab?: boolean; addOnBlur?: boolean; duplicate?: boolean; delimiter?: string | RegExp; max?: number; displayValue?: ((value: string) => string); id?: string; autofocus?: boolean; autocomplete?: 'on' | 'off'; disabled?: boolean; maxlength?: number; minlength?: number; pattern?: string; placeholder?: string; readonly?: boolean; type?: InputTypeHTMLAttribute; name?: string; required?: boolean }",
         "description": "Properties for the TagsInputRoot component.",
         "descriptionKey": "api.generated.headless_src_components_tags_input_types.tagsinputrootprops.props",
         "sourcePath": "headless/src/components/tags-input/types.ts",
@@ -2059,6 +2131,17 @@
             "referencedTypes": []
           },
           {
+            "name": "autocomplete",
+            "type": "'on' | 'off'",
+            "required": false,
+            "description": "The autocomplete attribute of the input",
+            "descriptionKey": "api.generated.headless_src_components_tags_input_types.tagsinputrootprops.members.autocomplete",
+            "default": null,
+            "inheritedFrom": "InputBaseProps.autocomplete",
+            "sourcePath": "headless/src/components/input/types.ts",
+            "referencedTypes": []
+          },
+          {
             "name": "disabled",
             "type": "boolean",
             "required": false,
@@ -2123,6 +2206,31 @@
             "inheritedFrom": "InputBaseProps.readonly",
             "sourcePath": "headless/src/components/input/types.ts",
             "referencedTypes": []
+          },
+          {
+            "name": "type",
+            "type": "InputTypeHTMLAttribute",
+            "required": false,
+            "description": "The type of the input element.",
+            "descriptionKey": "api.generated.headless_src_components_tags_input_types.tagsinputrootprops.members.type",
+            "default": null,
+            "inheritedFrom": "InputBaseProps.type",
+            "sourcePath": "headless/src/components/input/types.ts",
+            "referencedTypes": [
+              {
+                "name": "InputTypeHTMLAttribute",
+                "kind": "typeAlias",
+                "type": "InputTypeHTMLAttribute",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_dom_3_5_34_node_modules_vue_runtime_dom_dist_runtime_dom_d.inputtypehtmlattribute",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-dom@3.5.34/node_modules/@vue/runtime-dom/dist/runtime-dom.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
           },
           {
             "name": "name",

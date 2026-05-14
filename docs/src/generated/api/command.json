@@ -425,7 +425,7 @@
                 "name": "ListboxFilterProps",
                 "kind": "interface",
                 "type": "CommandInputProps",
-                "resolvedType": "{ inputRef?: ((el: HTMLInputElement) => void); controlProps?: InputControlProps; defaultValue?: string; modelValue?: string; id?: string; autofocus?: boolean; disabled?: boolean; maxlength?: number; minlength?: number; pattern?: string; placeholder?: string; readonly?: boolean; name?: string; required?: boolean }",
+                "resolvedType": "{ inputRef?: ((el: HTMLInputElement) => void); controlProps?: InputControlProps; defaultValue?: string; modelValue?: string; disabled?: boolean; readonly?: boolean; rootProps?: BaseProps; name?: string; required?: boolean; id?: string; autofocus?: boolean; autocomplete?: 'on' | 'off'; maxlength?: number; minlength?: number; pattern?: string; placeholder?: string; type?: InputTypeHTMLAttribute }",
                 "description": "Properties for the ListboxFilter component.",
                 "descriptionKey": "api.generated.headless_src_components_listbox_types.listboxfilterprops",
                 "sourcePath": "headless/src/components/listbox/types.ts",
@@ -466,6 +466,61 @@
                     "referencedTypes": []
                   },
                   {
+                    "name": "disabled",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "When `true`, prevents the user from interacting with the input.",
+                    "descriptionKey": "api.generated.headless_src_components_listbox_types.listboxfilterprops.members.disabled",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/input/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "readonly",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "When `true`, the input is read-only.",
+                    "descriptionKey": "api.generated.headless_src_components_listbox_types.listboxfilterprops.members.readonly",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/input/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "rootProps",
+                    "type": "BaseProps",
+                    "required": false,
+                    "description": "Properties forwarded to the root element",
+                    "descriptionKey": "api.generated.headless_src_components_listbox_types.listboxfilterprops.members.rootprops",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/input/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "name",
+                    "type": "string",
+                    "required": false,
+                    "description": "The name of the field. Submitted with its owning form as part of a name/value pair.",
+                    "descriptionKey": "api.generated.headless_src_components_listbox_types.listboxfilterprops.members.name",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/types/component.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "required",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "When `true`, indicates that the user must set the value before the owning form can be submitted.",
+                    "descriptionKey": "api.generated.headless_src_components_listbox_types.listboxfilterprops.members.required",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/types/component.ts",
+                    "referencedTypes": []
+                  },
+                  {
                     "name": "id",
                     "type": "string",
                     "required": false,
@@ -488,11 +543,11 @@
                     "referencedTypes": []
                   },
                   {
-                    "name": "disabled",
-                    "type": "boolean",
+                    "name": "autocomplete",
+                    "type": "'on' | 'off'",
                     "required": false,
-                    "description": "When `true`, prevents the user from interacting with the input.",
-                    "descriptionKey": "api.generated.headless_src_components_listbox_types.listboxfilterprops.members.disabled",
+                    "description": "The autocomplete attribute of the input",
+                    "descriptionKey": "api.generated.headless_src_components_listbox_types.listboxfilterprops.members.autocomplete",
                     "default": null,
                     "inheritedFrom": null,
                     "sourcePath": "headless/src/components/input/types.ts",
@@ -543,36 +598,14 @@
                     "referencedTypes": []
                   },
                   {
-                    "name": "readonly",
-                    "type": "boolean",
+                    "name": "type",
+                    "type": "InputTypeHTMLAttribute",
                     "required": false,
-                    "description": "When `true`, the input is read-only.",
-                    "descriptionKey": "api.generated.headless_src_components_listbox_types.listboxfilterprops.members.readonly",
+                    "description": "The type of the input element.",
+                    "descriptionKey": "api.generated.headless_src_components_listbox_types.listboxfilterprops.members.type",
                     "default": null,
                     "inheritedFrom": null,
                     "sourcePath": "headless/src/components/input/types.ts",
-                    "referencedTypes": []
-                  },
-                  {
-                    "name": "name",
-                    "type": "string",
-                    "required": false,
-                    "description": "The name of the field. Submitted with its owning form as part of a name/value pair.",
-                    "descriptionKey": "api.generated.headless_src_components_listbox_types.listboxfilterprops.members.name",
-                    "default": null,
-                    "inheritedFrom": null,
-                    "sourcePath": "headless/src/types/component.ts",
-                    "referencedTypes": []
-                  },
-                  {
-                    "name": "required",
-                    "type": "boolean",
-                    "required": false,
-                    "description": "When `true`, indicates that the user must set the value before the owning form can be submitted.",
-                    "descriptionKey": "api.generated.headless_src_components_listbox_types.listboxfilterprops.members.required",
-                    "default": null,
-                    "inheritedFrom": null,
-                    "sourcePath": "headless/src/types/component.ts",
                     "referencedTypes": []
                   }
                 ],
@@ -1492,7 +1525,7 @@
                 "name": "ListboxFilterProps",
                 "kind": "interface",
                 "type": "CommandInputProps",
-                "resolvedType": "{ inputRef?: ((el: HTMLInputElement) => void); controlProps?: InputControlProps; defaultValue?: string; modelValue?: string; id?: string; autofocus?: boolean; disabled?: boolean; maxlength?: number; minlength?: number; pattern?: string; placeholder?: string; readonly?: boolean; name?: string; required?: boolean }",
+                "resolvedType": "{ inputRef?: ((el: HTMLInputElement) => void); controlProps?: InputControlProps; defaultValue?: string; modelValue?: string; disabled?: boolean; readonly?: boolean; rootProps?: BaseProps; name?: string; required?: boolean; id?: string; autofocus?: boolean; autocomplete?: 'on' | 'off'; maxlength?: number; minlength?: number; pattern?: string; placeholder?: string; type?: InputTypeHTMLAttribute }",
                 "description": "Properties for the ListboxFilter component.",
                 "descriptionKey": "api.generated.headless_src_components_listbox_types.listboxfilterprops",
                 "sourcePath": "headless/src/components/listbox/types.ts",
@@ -1533,6 +1566,61 @@
                     "referencedTypes": []
                   },
                   {
+                    "name": "disabled",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "When `true`, prevents the user from interacting with the input.",
+                    "descriptionKey": "api.generated.headless_src_components_listbox_types.listboxfilterprops.members.disabled",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/input/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "readonly",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "When `true`, the input is read-only.",
+                    "descriptionKey": "api.generated.headless_src_components_listbox_types.listboxfilterprops.members.readonly",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/input/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "rootProps",
+                    "type": "BaseProps",
+                    "required": false,
+                    "description": "Properties forwarded to the root element",
+                    "descriptionKey": "api.generated.headless_src_components_listbox_types.listboxfilterprops.members.rootprops",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/input/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "name",
+                    "type": "string",
+                    "required": false,
+                    "description": "The name of the field. Submitted with its owning form as part of a name/value pair.",
+                    "descriptionKey": "api.generated.headless_src_components_listbox_types.listboxfilterprops.members.name",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/types/component.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "required",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "When `true`, indicates that the user must set the value before the owning form can be submitted.",
+                    "descriptionKey": "api.generated.headless_src_components_listbox_types.listboxfilterprops.members.required",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/types/component.ts",
+                    "referencedTypes": []
+                  },
+                  {
                     "name": "id",
                     "type": "string",
                     "required": false,
@@ -1555,11 +1643,11 @@
                     "referencedTypes": []
                   },
                   {
-                    "name": "disabled",
-                    "type": "boolean",
+                    "name": "autocomplete",
+                    "type": "'on' | 'off'",
                     "required": false,
-                    "description": "When `true`, prevents the user from interacting with the input.",
-                    "descriptionKey": "api.generated.headless_src_components_listbox_types.listboxfilterprops.members.disabled",
+                    "description": "The autocomplete attribute of the input",
+                    "descriptionKey": "api.generated.headless_src_components_listbox_types.listboxfilterprops.members.autocomplete",
                     "default": null,
                     "inheritedFrom": null,
                     "sourcePath": "headless/src/components/input/types.ts",
@@ -1610,36 +1698,14 @@
                     "referencedTypes": []
                   },
                   {
-                    "name": "readonly",
-                    "type": "boolean",
+                    "name": "type",
+                    "type": "InputTypeHTMLAttribute",
                     "required": false,
-                    "description": "When `true`, the input is read-only.",
-                    "descriptionKey": "api.generated.headless_src_components_listbox_types.listboxfilterprops.members.readonly",
+                    "description": "The type of the input element.",
+                    "descriptionKey": "api.generated.headless_src_components_listbox_types.listboxfilterprops.members.type",
                     "default": null,
                     "inheritedFrom": null,
                     "sourcePath": "headless/src/components/input/types.ts",
-                    "referencedTypes": []
-                  },
-                  {
-                    "name": "name",
-                    "type": "string",
-                    "required": false,
-                    "description": "The name of the field. Submitted with its owning form as part of a name/value pair.",
-                    "descriptionKey": "api.generated.headless_src_components_listbox_types.listboxfilterprops.members.name",
-                    "default": null,
-                    "inheritedFrom": null,
-                    "sourcePath": "headless/src/types/component.ts",
-                    "referencedTypes": []
-                  },
-                  {
-                    "name": "required",
-                    "type": "boolean",
-                    "required": false,
-                    "description": "When `true`, indicates that the user must set the value before the owning form can be submitted.",
-                    "descriptionKey": "api.generated.headless_src_components_listbox_types.listboxfilterprops.members.required",
-                    "default": null,
-                    "inheritedFrom": null,
-                    "sourcePath": "headless/src/types/component.ts",
                     "referencedTypes": []
                   }
                 ],

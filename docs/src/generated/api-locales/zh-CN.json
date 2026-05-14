@@ -379,6 +379,7 @@
             "inputref": "输入参考。"
           },
           "members": {
+            "autocomplete": "输入的自动完成属性",
             "autofocus": "当 \"true \"时，输入会自动聚焦。",
             "controlprops": "转发到控制元素的属性。",
             "disabled": "为 `true`时，阻止用户与输入进行交互。",
@@ -390,7 +391,9 @@
             "pattern": "输入的模式属性",
             "placeholder": "输入的占位符",
             "readonly": "true \"时，输入为只读。",
-            "required": "true \"时，表示用户必须在提交拥有表单前设置值。"
+            "required": "true \"时，表示用户必须在提交拥有表单前设置值。",
+            "rootprops": "转发到根元素的属性",
+            "type": "输入元素的类型。"
           },
           "props": "AutocompleteInput 组件的属性。"
         },
@@ -2438,6 +2441,7 @@
             "inputref": "设置输入元素的函数。"
           },
           "members": {
+            "autocomplete": "输入的自动完成属性",
             "autofocus": "当 \"true \"时，输入会自动聚焦。",
             "controlprops": "输入额外的道具。",
             "defaultvalue": "输入的默认值为",
@@ -2452,7 +2456,9 @@
             "pattern": "输入的模式属性",
             "placeholder": "输入的占位符",
             "readonly": "true \"时，输入为只读。",
-            "required": "true \"时，表示用户必须在提交拥有表单前设置值。"
+            "required": "true \"时，表示用户必须在提交拥有表单前设置值。",
+            "rootprops": "转发到根元素的属性",
+            "type": "输入元素的类型。"
           },
           "props": "ComboboxInput 组件的属性。"
         },
@@ -4295,6 +4301,7 @@
         },
         "inputnumbercompactprops": {
           "members": {
+            "autocomplete": "输入的自动完成属性",
             "autofocus": "当 \"true \"时，输入会自动聚焦。",
             "clearable": "是否显示清晰的触发器。",
             "clearprops": "属性转发到 clear 元素。",
@@ -4320,8 +4327,10 @@
             "placeholder": "输入的占位符",
             "readonly": "true \"时，输入为只读。",
             "required": "true \"时，表示用户必须在提交拥有表单前设置值。",
+            "rootprops": "转发到根元素的属性。",
             "step": "输入值在每次递增或递减 \"tick \"时的变化量。",
-            "stepsnapping": "当为 \"false \"时，将防止值跳转到与步长值最近的增量上"
+            "stepsnapping": "当为 \"false \"时，将防止值跳转到与步长值最近的增量上",
+            "type": "输入元素的类型。"
           },
           "props": "InputNumberCompact 组件的属性。"
         },
@@ -4371,6 +4380,7 @@
         },
         "inputnumberrootprops": {
           "members": {
+            "autocomplete": "输入的自动完成属性",
             "autofocus": "当 \"true \"时，输入会自动聚焦。",
             "defaultvalue": "输入的默认值为",
             "disabled": "为 `true`时，阻止用户与输入进行交互。",
@@ -4390,8 +4400,10 @@
             "placeholder": "输入的占位符",
             "readonly": "true \"时，输入为只读。",
             "required": "true \"时，表示用户必须在提交拥有表单前设置值。",
+            "rootprops": "转发到根元素的属性。",
             "step": "输入值在每次递增或递减 \"tick \"时的变化量。",
-            "stepsnapping": "当为 \"false \"时，将防止值跳转到与步长值最近的增量上"
+            "stepsnapping": "当为 \"false \"时，将防止值跳转到与步长值最近的增量上",
+            "type": "输入元素的类型。"
           },
           "props": "InputNumberRoot 组件的属性。"
         },
@@ -4533,6 +4545,7 @@
         },
         "inputcompactprops": {
           "members": {
+            "autocomplete": "输入的自动完成属性",
             "autofocus": "当 \"true \"时，输入会自动聚焦。",
             "clearable": "是否显示清晰的触发器。",
             "clearprops": "属性转发到 clear 元素。",
@@ -4548,7 +4561,9 @@
             "pattern": "输入的模式属性",
             "placeholder": "输入的占位符",
             "readonly": "true \"时，输入为只读。",
-            "required": "true \"时，表示用户必须在提交拥有表单前设置值。"
+            "required": "true \"时，表示用户必须在提交拥有表单前设置值。",
+            "rootprops": "转发到根元素的属性",
+            "type": "输入元素的类型。"
           },
           "props": "InputCompact 组件的属性。"
         },
@@ -4578,6 +4593,7 @@
         },
         "inputrootprops": {
           "members": {
+            "autocomplete": "输入的自动完成属性",
             "autofocus": "当 \"true \"时，输入会自动聚焦。",
             "defaultvalue": "输入的默认值为",
             "disabled": "为 `true`时，阻止用户与输入进行交互。",
@@ -4589,7 +4605,9 @@
             "pattern": "输入的模式属性",
             "placeholder": "输入的占位符",
             "readonly": "true \"时，输入为只读。",
-            "required": "true \"时，表示用户必须在提交拥有表单前设置值。"
+            "required": "true \"时，表示用户必须在提交拥有表单前设置值。",
+            "rootprops": "转发到根元素的属性",
+            "type": "输入元素的类型。"
           },
           "props": "InputRoot 组件的属性。"
         },
@@ -4890,6 +4908,7 @@
             "inputref": "设置输入元素的函数。"
           },
           "members": {
+            "autocomplete": "输入的自动完成属性",
             "autofocus": "当 \"true \"时，输入会自动聚焦。",
             "controlprops": "输入额外的道具。",
             "defaultvalue": "输入的默认值为",
@@ -4903,7 +4922,9 @@
             "pattern": "输入的模式属性",
             "placeholder": "输入的占位符",
             "readonly": "true \"时，输入为只读。",
-            "required": "true \"时，表示用户必须在提交拥有表单前设置值。"
+            "required": "true \"时，表示用户必须在提交拥有表单前设置值。",
+            "rootprops": "转发到根元素的属性",
+            "type": "输入元素的类型。"
           },
           "props": "ListboxFilter 组件的属性。"
         },
@@ -5956,6 +5977,7 @@
       "headless_src_components_password_types": {
         "passwordcompactemits": {
           "callables": {
+            "clear": "点击清除按钮时输出。",
             "update_modelvalue": "当模型值发生变化时发出。",
             "update_visible": "当可见状态发生变化时发出。"
           },
@@ -5963,6 +5985,7 @@
         },
         "passwordcompactprops": {
           "members": {
+            "autocomplete": "输入的自动完成属性",
             "autofocus": "当 \"true \"时，输入会自动聚焦。",
             "clearable": "是否显示清晰的触发器。",
             "clearprops": "属性转发到 clear 元素。",
@@ -5979,6 +6002,8 @@
             "placeholder": "输入的占位符",
             "readonly": "true \"时，输入为只读。",
             "required": "true \"时，表示用户必须在提交拥有表单前设置值。",
+            "rootprops": "转发到根元素的属性",
+            "type": "输入元素的类型。",
             "visible": "控制密码可见性。",
             "visibleprops": "转发到可见元素的属性。"
           },
@@ -7725,6 +7750,7 @@
             "addonblur": "是否在模糊处添加标记。",
             "addonpaste": "是否在粘贴时添加标记。",
             "addontab": "是否在标签页上添加标签",
+            "autocomplete": "输入的自动完成属性",
             "autofocus": "当 \"true \"时，输入会自动聚焦。",
             "clearable": "是否渲染清晰的触发器。",
             "clearprops": "道具转发到 clear 元素。",
@@ -7747,7 +7773,8 @@
             "pattern": "输入的模式属性",
             "placeholder": "输入的占位符",
             "readonly": "true \"时，输入为只读。",
-            "required": "true \"时，表示用户必须在提交拥有表单前设置值。"
+            "required": "true \"时，表示用户必须在提交拥有表单前设置值。",
+            "type": "输入元素的类型。"
           },
           "props": "TagsInputCompact 组件的属性。"
         },
@@ -7809,6 +7836,7 @@
             "addonblur": "是否在模糊处添加标记。",
             "addonpaste": "是否在粘贴时添加标记。",
             "addontab": "是否在标签页上添加标签",
+            "autocomplete": "输入的自动完成属性",
             "autofocus": "当 \"true \"时，输入会自动聚焦。",
             "defaultvalue": "输入标签的不受控制的默认值。",
             "delimiter": "用于添加标记的分隔符。",
@@ -7825,7 +7853,8 @@
             "pattern": "输入的模式属性",
             "placeholder": "输入的占位符",
             "readonly": "true \"时，输入为只读。",
-            "required": "true \"时，表示用户必须在提交拥有表单前设置值。"
+            "required": "true \"时，表示用户必须在提交拥有表单前设置值。",
+            "type": "输入元素的类型。"
           },
           "props": "TagsInputRoot 组件的属性。"
         },
@@ -8958,7 +8987,7 @@
       "node_modules_pnpm_vue_reactivity_3_5_34_node_modules_vue_reactivity_dist_reactivity_d": {
         "computedref": ""
       },
-      "node_modules_pnpm_vue_router_5_0_6_vue_compiler_sfc_3_5_34_pinia_3_0_4_typescript_6_0_3_vue_3_5_34_types_50dd1815d493fa68b45f0a33526446ac_node_modules_vue_router_dist_index_d_veap3p_d": {
+      "node_modules_pnpm_vue_router_5_0_7_vue_compiler_sfc_3_5_34_pinia_3_0_4_typescript_6_0_3_vue_3_5_34_types_f357d1e940226713debf99bc42fbe5c2_node_modules_vue_router_dist_useapi_d6ckosfy_d": {
         "routelocationraw": "可传递给 `router.push()` 和其他面向用户的 API 的路由位置。"
       },
       "node_modules_pnpm_vue_runtime_core_3_5_34_node_modules_vue_runtime_core_dist_runtime_core_d": {
@@ -8968,6 +8997,7 @@
       "node_modules_pnpm_vue_runtime_dom_3_5_34_node_modules_vue_runtime_dom_dist_runtime_dom_d": {
         "htmlattributes": "",
         "imghtmlattributes": "",
+        "inputtypehtmlattribute": "",
         "lihtmlattributes": ""
       },
       "node_modules_pnpm_vueuse_integrations_14_3_0_fuse_js_7_3_0_vue_3_5_34_typescript_6_0_3_node_modules_vueuse_integrations_dist_usefuse_d": {
@@ -11184,6 +11214,7 @@
         },
         "inputnumberprops": {
           "members": {
+            "autocomplete": "输入的自动完成属性",
             "autofocus": "当 \"true \"时，输入会自动聚焦。",
             "center": "是否将输入内容居中。",
             "class": "应用于根元素的附加类名。",
@@ -11211,9 +11242,11 @@
             "placeholder": "输入的占位符",
             "readonly": "true \"时，输入为只读。",
             "required": "true \"时，表示用户必须在提交拥有表单前设置值。",
+            "rootprops": "转发到根元素的属性。",
             "size": "组件的可视化尺寸。",
             "step": "输入值在每次递增或递减 \"tick \"时的变化量。",
             "stepsnapping": "当为 \"false \"时，将防止值跳转到与步长值最近的增量上",
+            "type": "输入元素的类型。",
             "ui": "组件的每个插槽类重写。"
           },
           "props": "InputNumber 组件的属性。"
@@ -11287,6 +11320,7 @@
         },
         "inputprops": {
           "members": {
+            "autocomplete": "输入的自动完成属性",
             "autofocus": "当 \"true \"时，输入会自动聚焦。",
             "class": "根类",
             "clearable": "是否显示清晰的触发器。",
@@ -11304,7 +11338,9 @@
             "placeholder": "输入的占位符",
             "readonly": "true \"时，输入为只读。",
             "required": "true \"时，表示用户必须在提交拥有表单前设置值。",
+            "rootprops": "转发到根元素的属性",
             "size": "组件的可视化尺寸。",
+            "type": "输入元素的类型。",
             "ui": "组件的每个插槽类重写。"
           },
           "props": "输入组件的属性"
@@ -11714,6 +11750,7 @@
       "src_components_password_types": {
         "passwordemits": {
           "callables": {
+            "clear": "点击清除按钮时输出。",
             "update_modelvalue": "当模型值发生变化时发出。",
             "update_visible": "当可见状态发生变化时发出。"
           },
@@ -11721,6 +11758,7 @@
         },
         "passwordprops": {
           "members": {
+            "autocomplete": "输入的自动完成属性",
             "autofocus": "当 \"true \"时，输入会自动聚焦。",
             "class": "应用于根元素的附加类名。",
             "clearable": "是否显示清晰的触发器。",
@@ -11738,7 +11776,9 @@
             "placeholder": "输入的占位符",
             "readonly": "true \"时，输入为只读。",
             "required": "true \"时，表示用户必须在提交拥有表单前设置值。",
+            "rootprops": "转发到根元素的属性",
             "size": "组件的可视化尺寸。",
+            "type": "输入元素的类型。",
             "ui": "组件的每个插槽类重写。",
             "visible": "控制密码可见性。",
             "visibleprops": "转发到可见元素的属性。"
@@ -12554,6 +12594,7 @@
             "addonblur": "是否在模糊处添加标记。",
             "addonpaste": "是否在粘贴时添加标记。",
             "addontab": "是否在标签页上添加标签",
+            "autocomplete": "输入的自动完成属性",
             "autofocus": "当 \"true \"时，输入会自动聚焦。",
             "class": "应用于根元素的附加类名。",
             "clearable": "是否渲染清晰的触发器。",
@@ -12579,6 +12620,7 @@
             "readonly": "true \"时，输入为只读。",
             "required": "true \"时，表示用户必须在提交拥有表单前设置值。",
             "size": "组件的可视化尺寸。",
+            "type": "输入元素的类型。",
             "ui": "组件的每个插槽类重写。"
           },
           "props": "TagsInput 组件的属性。"
