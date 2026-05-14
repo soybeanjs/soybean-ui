@@ -1,5 +1,45 @@
 # Changelog
 
+## [v0.22.1](https://github.com/soybeanjs/soybean-ui/compare/v0.22.0...v0.22.1) (2026-05-14)
+
+### &nbsp;&nbsp;&nbsp;🚀 Features
+
+- **agents**: add soybeaner agent for component development guidance &nbsp;-&nbsp; by @soybeanjs [<samp>(5c272)</samp>](https://github.com/soybeanjs/soybean-ui/commit/5c272a456)
+- **input**: enhance Input component props and context for better accessibility and usability &nbsp;-&nbsp; by **soybeanfe** [<samp>(4cf60)</samp>](https://github.com/soybeanjs/soybean-ui/commit/4cf60f7bb)
+- **input-number**: enhance InputNumber component props for better flexibility and accessibility &nbsp;-&nbsp; by **soybeanfe** [<samp>(9932d)</samp>](https://github.com/soybeanjs/soybean-ui/commit/9932d9e64)
+- **password**: enhance PasswordCompact component with clear event and improved props &nbsp;-&nbsp; by **soybeanfe** [<samp>(6b9d0)</samp>](https://github.com/soybeanjs/soybean-ui/commit/6b9d09e22)
+- **types**: add RouteNamedMap to TypesConfig interface in typed-router &nbsp;-&nbsp; by **soybeanfe** [<samp>(5ac72)</samp>](https://github.com/soybeanjs/soybean-ui/commit/5ac721bb3)
+
+### &nbsp;&nbsp;&nbsp;🛠 Optimizations
+
+- **composables**: update contextName type and improve error messaging for `useContext` &nbsp;-&nbsp; by **soybeanfe** [<samp>(5ff47)</samp>](https://github.com/soybeanjs/soybean-ui/commit/5ff479373)
+
+### &nbsp;&nbsp;&nbsp;💅 Refactors
+
+- **api**: replace typedoc configuration file with inline configuration &nbsp;-&nbsp; by **soybeanfe** [<samp>(41cfe)</samp>](https://github.com/soybeanjs/soybean-ui/commit/41cfe4851)
+- **form-field**: update slot props binding for improved accessibility &nbsp;-&nbsp; by **soybeanfe** [<samp>(7cf7e)</samp>](https://github.com/soybeanjs/soybean-ui/commit/7cf7e4874)
+- **skills**: add skill documentation generation and update references &nbsp;-&nbsp; by @soybeanjs [<samp>(f656a)</samp>](https://github.com/soybeanjs/soybean-ui/commit/f656ad7a8)
+- **use-context**: remove implementation and export from hooks &nbsp;-&nbsp; by **soybeanfe** [<samp>(df4ea)</samp>](https://github.com/soybeanjs/soybean-ui/commit/df4eab156)
+
+### &nbsp;&nbsp;&nbsp;📖 Documentation
+
+- **api**: update api docs &nbsp;-&nbsp; by **soybeanfe** [<samp>(920ea)</samp>](https://github.com/soybeanjs/soybean-ui/commit/920ea92f7)
+- **changelog**: update docs changelog &nbsp;-&nbsp; by @soybeanjs [<samp>(d3ceb)</samp>](https://github.com/soybeanjs/soybean-ui/commit/d3ceb98cf)
+- **components**: update auto-generation commands to use `pnpm sui` instead of `pnpm gen` &nbsp;-&nbsp; by @soybeanjs [<samp>(fb9a7)</samp>](https://github.com/soybeanjs/soybean-ui/commit/fb9a75971)
+- **skills**: move skills to global &nbsp;-&nbsp; by @soybeanjs [<samp>(38bde)</samp>](https://github.com/soybeanjs/soybean-ui/commit/38bde6a3a)
+
+### &nbsp;&nbsp;&nbsp;🏡 Chore
+
+- **deps**:
+  - remove repeated deps and update deps &nbsp;-&nbsp; by **soybeanfe** [<samp>(5769d)</samp>](https://github.com/soybeanjs/soybean-ui/commit/5769d580c)
+  - update pnpm lockfile &nbsp;-&nbsp; by **soybeanfe** [<samp>(961b9)</samp>](https://github.com/soybeanjs/soybean-ui/commit/961b97451)
+  - add missing deps adn fix ts error &nbsp;-&nbsp; by @soybeanjs [<samp>(8b321)</samp>](https://github.com/soybeanjs/soybean-ui/commit/8b321d659)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;
+[soybeanfe](mailto:honghuangdc@gmail.com),&nbsp;
+
 ## [v0.22.0](https://github.com/soybeanjs/soybean-ui/compare/v0.21.0...v0.22.0) (2026-05-13)
 
 ### &nbsp;&nbsp;&nbsp;🚀 Features
