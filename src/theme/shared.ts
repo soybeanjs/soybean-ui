@@ -89,6 +89,10 @@ type NormalizedVariantEntry = {
   prepend?: boolean;
 };
 
+function isDefinedClassValue(value: ClassValue): value is Exclude<ClassValue, null | undefined | false> {
+  return value !== null && value !== undefined && value !== false;
+}
+
 export function mergeVariants<const T extends Record<string, unknown>>(
   variants: T & VariantDefinition<T> & { $alias?: VariantInputAliases<T> },
   ...classes: Array<Partial<Record<VariantResultKeys<T>, ClassValue>> | null | undefined>
@@ -193,15 +197,9 @@ function resolveVariantClass(value?: string | (() => string)) {
 }
 
 function appendVariantClasses(target: VariantBucket, key: string, values: ClassValue[], prepend = false) {
-  const classes = values.filter(Boolean);
+  const classes = values.filter(isDefinedClassValue);
 
-  if (classes.length === 0) {
-    return;
-  }
-
-  if (!target[key]) {
-    target[key] = [];
-  }
+  target[key] ??= [];
 
   target[key] = prepend ? [...classes, ...target[key]] : [...target[key], ...classes];
 }

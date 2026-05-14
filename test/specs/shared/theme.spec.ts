@@ -100,4 +100,16 @@ describe('theme shared helpers', () => {
 
     expect(result.cardRoot).toBe('root-class card-root-class');
   });
+
+  it('preserves keys whose variant class resolves to an empty string', () => {
+    const result = mergeVariants({
+      root: () => '',
+      item: () => 'item-class'
+    });
+
+    expect(result).toEqual({
+      root: '',
+      item: 'item-class'
+    });
+  });
 });
