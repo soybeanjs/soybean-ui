@@ -68,7 +68,7 @@ const toggleVisible = () => {
     <InputControl v-bind="controlProps" :ref="setInputElement" :type="visible ? 'text' : 'password'" />
     <template v-if="clearable">
       <slot name="clear" :clear="clear" :model-value="modelValue" :toggle="toggleVisible" :visible="visible">
-        <InputClear v-bind="clearProps" :aria-label="clearAriaLabel" />
+        <InputClear v-bind="clearProps" :aria-label="clearAriaLabel" @clear="emit('clear', $event)" />
       </slot>
     </template>
     <slot name="trailing" :clear="clear" :model-value="modelValue" :toggle="toggleVisible" :visible="visible" />

@@ -1,6 +1,6 @@
 import type { UiClass } from '../../types';
 import type { ButtonProps } from '../button/types';
-import type { InputClearProps, InputControlProps, InputRootEmits, InputRootProps, InputUiSlot } from '../input/types';
+import type { InputCompactProps, InputCompactEmits, InputUiSlot } from '../input/types';
 
 /**
  * Properties for the PasswordVisible component.
@@ -32,29 +32,11 @@ export interface PasswordCompactSlotProps {
 /**
  * Properties for the PasswordCompact component.
  */
-export interface PasswordCompactProps extends InputRootProps {
-  /**
-   * Whether to show the clear trigger.
-   *
-   * @defaultValue false
-   */
-  clearable?: boolean;
+export interface PasswordCompactProps extends InputCompactProps {
   /**
    * Controlled password visibility.
    */
   visible?: boolean;
-  /**
-   * The function to set the input element.
-   */
-  inputRef?: (el: HTMLInputElement) => void;
-  /**
-   * Properties forwarded to the control element.
-   */
-  controlProps?: InputControlProps;
-  /**
-   * Properties forwarded to the clear element.
-   */
-  clearProps?: InputClearProps;
   /**
    * Properties forwarded to the visible element.
    */
@@ -64,7 +46,7 @@ export interface PasswordCompactProps extends InputRootProps {
 /**
  * Events for the PasswordCompact component.
  */
-export type PasswordCompactEmits = InputRootEmits & {
+export type PasswordCompactEmits = InputCompactEmits & {
   /**
    * Emitted when the visible state changes.
    */
