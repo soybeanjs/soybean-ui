@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-14T09:51:45.001Z",
+  "generatedAt": "2026-05-17T06:59:03.016Z",
   "schemaVersion": 1,
   "components": {
     "accordion": {
@@ -243,9 +243,9 @@
     "dialog": {
       "component": "dialog",
       "file": "dialog.json",
-      "latestVersion": "v0.17.0",
-      "versionCount": 10,
-      "entryCount": 13
+      "latestVersion": "v0.22.3",
+      "versionCount": 11,
+      "entryCount": 14
     },
     "dropdown-menu": {
       "component": "dropdown-menu",
@@ -320,9 +320,9 @@
     "layout": {
       "component": "layout",
       "file": "layout.json",
-      "latestVersion": "v0.15.5",
-      "versionCount": 14,
-      "entryCount": 15
+      "latestVersion": "v0.22.3",
+      "versionCount": 15,
+      "entryCount": 16
     },
     "link": {
       "component": "link",

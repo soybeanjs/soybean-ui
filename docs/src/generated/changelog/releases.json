@@ -1,7 +1,77 @@
 {
-  "generatedAt": "2026-05-14T09:51:45.001Z",
+  "generatedAt": "2026-05-17T06:59:03.016Z",
   "schemaVersion": 1,
   "releases": [
+    {
+      "version": "v0.22.3",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.22.2...v0.22.3",
+      "date": "2026-05-17",
+      "entryCount": 5,
+      "componentCount": 2,
+      "components": ["dialog", "layout"],
+      "typeCounts": {
+        "fix": 2,
+        "docs": 1,
+        "chore": 2
+      },
+      "entries": [
+        {
+          "type": "fix",
+          "scope": "dialog",
+          "summary": "adjust popup max height for better responsiveness",
+          "summaryKey": "changelog.generated.v0.22.3.9e115",
+          "commitHash": "9e115",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/9e1154296",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope",
+          "components": ["dialog"]
+        },
+        {
+          "type": "fix",
+          "scope": "layout",
+          "summary": "replace DialogContent with DialogPopup for mobile layout",
+          "summaryKey": "changelog.generated.v0.22.3.1efaa",
+          "commitHash": "1efaa",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/1efaaf576",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope",
+          "components": ["layout"]
+        },
+        {
+          "type": "docs",
+          "scope": "changelog",
+          "summary": "update docs changelog",
+          "summaryKey": "changelog.generated.v0.22.3.962e0",
+          "commitHash": "962e0",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/962e0be68",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "chore",
+          "scope": "skills",
+          "summary": "update skills",
+          "summaryKey": "changelog.generated.v0.22.3.18505",
+          "commitHash": "18505",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/1850569e7",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "chore",
+          "scope": "deps",
+          "summary": "update deps",
+          "summaryKey": "changelog.generated.v0.22.3.aa08d",
+          "commitHash": "aa08d",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/aa08da7b7",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope",
+          "components": []
+        }
+      ]
+    },
     {
       "version": "v0.22.2",
       "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.22.1...v0.22.2",

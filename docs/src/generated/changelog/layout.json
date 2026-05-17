@@ -1,8 +1,25 @@
 {
   "component": "layout",
-  "generatedAt": "2026-05-14T09:51:45.001Z",
+  "generatedAt": "2026-05-17T06:59:03.016Z",
   "schemaVersion": 1,
   "versions": [
+    {
+      "version": "v0.22.3",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.22.2...v0.22.3",
+      "date": "2026-05-17",
+      "entries": [
+        {
+          "type": "fix",
+          "scope": "layout",
+          "summary": "replace DialogContent with DialogPopup for mobile layout",
+          "summaryKey": "changelog.generated.v0.22.3.1efaa",
+          "commitHash": "1efaa",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/1efaaf576",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope"
+        }
+      ]
+    },
     {
       "version": "v0.15.5",
       "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.15.4...v0.15.5",

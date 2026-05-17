@@ -1275,6 +1275,13 @@
           },
           "2": {
             "f1bc7": "add isDefinedClassValue utility and enhance tests for empty string handling"
+          },
+          "3": {
+            "18505": "update skills",
+            "1efaa": "replace DialogContent with DialogPopup for mobile layout",
+            "962e0": "update docs changelog",
+            "9e115": "adjust popup max height for better responsiveness",
+            "aa08d": "update deps"
           }
         }
       }
