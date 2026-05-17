@@ -17,6 +17,8 @@ const {
   modelValue,
   disabled,
   readonly,
+  min,
+  max,
   textValue,
   inputMode,
   disableWheelChange,
