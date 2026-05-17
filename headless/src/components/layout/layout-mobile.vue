@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, useAttrs } from 'vue';
 import type { CSSProperties } from 'vue';
-import { DialogContent, DialogOverlay, DialogPortal, DialogRoot } from '../dialog';
+import { DialogRoot, DialogPortal, DialogOverlay, DialogPopup } from '../dialog';
 import { useLayoutRootContext, useLayoutUi } from './context';
 import { layoutCssVars } from './shared';
 import type { LayoutMobileProps } from './types';
@@ -30,11 +30,11 @@ const style = computed<CSSProperties>(() => {
   <DialogRoot :open="mobileOpen" @update:open="onMobileOpenChange">
     <DialogPortal>
       <DialogOverlay :class="ui.mobileOverlay" />
-      <DialogContent data-soybean-layout-mobile :class="ui.mobileDrawer" :style="style">
+      <DialogPopup data-soybean-layout-mobile :class="ui.mobileDrawer" :style="style">
         <div v-bind="attrs" :class="ui.mobile" data-sidebar="sidebar" data-mobile>
           <slot />
         </div>
-      </DialogContent>
+      </DialogPopup>
     </DialogPortal>
   </DialogRoot>
 </template>
