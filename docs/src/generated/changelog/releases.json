@@ -1,7 +1,43 @@
 {
-  "generatedAt": "2026-05-17T06:59:03.016Z",
+  "generatedAt": "2026-05-17T07:06:44.298Z",
   "schemaVersion": 1,
   "releases": [
+    {
+      "version": "v0.22.4",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.22.3...v0.22.4",
+      "date": "2026-05-17",
+      "entryCount": 2,
+      "componentCount": 1,
+      "components": ["input-number"],
+      "typeCounts": {
+        "fix": 1,
+        "docs": 1
+      },
+      "entries": [
+        {
+          "type": "fix",
+          "scope": "input-number",
+          "summary": "add min and max properties to input number control",
+          "summaryKey": "changelog.generated.v0.22.4.c7c6a",
+          "commitHash": "c7c6a",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/c7c6aaa52",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope",
+          "components": ["input-number"]
+        },
+        {
+          "type": "docs",
+          "scope": "changelog",
+          "summary": "update docs changelog",
+          "summaryKey": "changelog.generated.v0.22.4.f16e8",
+          "commitHash": "f16e8",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/f16e8ac53",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope",
+          "components": []
+        }
+      ]
+    },
     {
       "version": "v0.22.3",
       "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.22.2...v0.22.3",

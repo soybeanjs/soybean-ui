@@ -1,8 +1,25 @@
 {
   "component": "input-number",
-  "generatedAt": "2026-05-17T06:59:03.016Z",
+  "generatedAt": "2026-05-17T07:06:44.298Z",
   "schemaVersion": 1,
   "versions": [
+    {
+      "version": "v0.22.4",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.22.3...v0.22.4",
+      "date": "2026-05-17",
+      "entries": [
+        {
+          "type": "fix",
+          "scope": "input-number",
+          "summary": "add min and max properties to input number control",
+          "summaryKey": "changelog.generated.v0.22.4.c7c6a",
+          "commitHash": "c7c6a",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/c7c6aaa52",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope"
+        }
+      ]
+    },
     {
       "version": "v0.22.1",
       "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.22.0...v0.22.1",

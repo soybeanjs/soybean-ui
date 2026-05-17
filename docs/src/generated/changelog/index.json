@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-17T06:59:03.016Z",
+  "generatedAt": "2026-05-17T07:06:44.298Z",
   "schemaVersion": 1,
   "components": {
     "accordion": {
@@ -292,9 +292,9 @@
     "input-number": {
       "component": "input-number",
       "file": "input-number.json",
-      "latestVersion": "v0.22.1",
-      "versionCount": 2,
-      "entryCount": 2
+      "latestVersion": "v0.22.4",
+      "versionCount": 3,
+      "entryCount": 3
     },
     "input-otp": {
       "component": "input-otp",

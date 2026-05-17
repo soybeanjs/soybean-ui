@@ -1282,6 +1282,10 @@
             "962e0": "update docs changelog",
             "9e115": "adjust popup max height for better responsiveness",
             "aa08d": "update deps"
+          },
+          "4": {
+            "c7c6a": "add min and max properties to input number control",
+            "f16e8": "update docs changelog"
           }
         }
       }
