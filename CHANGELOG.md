@@ -1,5 +1,26 @@
 # Changelog
 
+## [v0.22.3](https://github.com/soybeanjs/soybean-ui/compare/v0.22.2...v0.22.3) (2026-05-17)
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- **dialog**: adjust popup max height for better responsiveness &nbsp;-&nbsp; by **soybeanfe** [<samp>(9e115)</samp>](https://github.com/soybeanjs/soybean-ui/commit/9e1154296)
+- **layout**: replace DialogContent with DialogPopup for mobile layout &nbsp;-&nbsp; by **soybeanfe** [<samp>(1efaa)</samp>](https://github.com/soybeanjs/soybean-ui/commit/1efaaf576)
+
+### &nbsp;&nbsp;&nbsp;📖 Documentation
+
+- **changelog**: update docs changelog &nbsp;-&nbsp; by **soybeanfe** [<samp>(962e0)</samp>](https://github.com/soybeanjs/soybean-ui/commit/962e0be68)
+
+### &nbsp;&nbsp;&nbsp;🏡 Chore
+
+- **deps**: update deps &nbsp;-&nbsp; by **soybeanfe** [<samp>(aa08d)</samp>](https://github.com/soybeanjs/soybean-ui/commit/aa08da7b7)
+- **skills**: update skills &nbsp;-&nbsp; by **soybeanfe** [<samp>(18505)</samp>](https://github.com/soybeanjs/soybean-ui/commit/1850569e7)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+
+[soybeanfe](mailto:honghuangdc@gmail.com)
+
 ## [v0.22.2](https://github.com/soybeanjs/soybean-ui/compare/v0.22.1...v0.22.2) (2026-05-14)
 
 ### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
