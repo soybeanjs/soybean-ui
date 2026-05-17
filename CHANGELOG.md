@@ -1,5 +1,20 @@
 # Changelog
 
+## [v0.22.4](https://github.com/soybeanjs/soybean-ui/compare/v0.22.3...v0.22.4) (2026-05-17)
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- **input-number**: add min and max properties to input number control &nbsp;-&nbsp; by **soybeanfe** [<samp>(c7c6a)</samp>](https://github.com/soybeanjs/soybean-ui/commit/c7c6aaa52)
+
+### &nbsp;&nbsp;&nbsp;📖 Documentation
+
+- **changelog**: update docs changelog &nbsp;-&nbsp; by **soybeanfe** [<samp>(f16e8)</samp>](https://github.com/soybeanjs/soybean-ui/commit/f16e8ac53)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+
+[soybeanfe](mailto:honghuangdc@gmail.com)
+
 ## [v0.22.3](https://github.com/soybeanjs/soybean-ui/compare/v0.22.2...v0.22.3) (2026-05-17)
 
 ### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
