@@ -2,8 +2,7 @@
 import { computed } from 'vue';
 import { Skeleton } from '@soybeanjs/headless/skeleton';
 import { useOmitProps } from '@soybeanjs/headless/composables';
-import { cn } from '@/theme';
-import { skeletonVariants } from './variants';
+import { skeletonVariants } from '@/styles/skeleton';
 import type { SkeletonProps } from './types';
 
 defineOptions({
@@ -17,12 +16,12 @@ const props = withDefaults(defineProps<SkeletonProps>(), {
 const forwardedProps = useOmitProps(props, ['class', 'size', 'animated', 'shape']);
 
 const cls = computed(() =>
-  cn(
-    skeletonVariants({
+  skeletonVariants(
+    {
       size: props.size,
       animated: props.animated,
       shape: props.shape
-    }),
+    },
     props.class
   )
 );

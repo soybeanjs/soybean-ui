@@ -2,8 +2,7 @@
 import { computed } from 'vue';
 import { Clipboard } from '@soybeanjs/headless/clipboard';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
-import { cn } from '@/theme';
-import { buttonVariants } from '../button/variants';
+import { clipboardVariants } from '@/styles/clipboard';
 import type { ClipboardProps, ClipboardEmits } from './types';
 
 defineOptions({
@@ -19,14 +18,14 @@ const listeners = useForwardListeners(emit);
 const forwardedProps = useOmitProps(props, ['class', 'color', 'size', 'variant', 'shape', 'fitContent']);
 
 const cls = computed(() =>
-  cn(
-    buttonVariants({
+  clipboardVariants(
+    {
       color: props.color,
       size: props.size,
       variant: props.variant,
       shape: props.shape,
       fitContent: props.fitContent
-    }),
+    },
     props.class
   )
 );

@@ -4,8 +4,7 @@ import { SwitchCompact, provideSwitchUi } from '@soybeanjs/headless/switch';
 import type { AcceptableBooleanValue } from '@soybeanjs/headless/types';
 import { useOmitProps } from '@soybeanjs/headless/composables';
 import { keysOf } from '@soybeanjs/utils';
-import { mergeVariants } from '@/theme';
-import { switchVariants } from './variants';
+import { switchVariants } from '@/styles/switch';
 import type { SwitchProps, SwitchEmits, SwitchSlots } from './types';
 
 defineOptions({
@@ -26,15 +25,17 @@ const forwardedProps = useOmitProps(props, ['class', 'ui', 'color', 'size', 'sha
 
 const slotNames = computed(() => keysOf(slots));
 
-const ui = computed(() => {
-  const variants = switchVariants({
-    color: props.color,
-    size: props.size,
-    shape: props.shape
-  });
-
-  return mergeVariants(variants, props.ui, { root: props.class });
-});
+const ui = computed(() =>
+  switchVariants(
+    {
+      color: props.color,
+      size: props.size,
+      shape: props.shape
+    },
+    props.ui,
+    { root: props.class }
+  )
+);
 
 provideSwitchUi(ui);
 </script>

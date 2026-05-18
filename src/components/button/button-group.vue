@@ -3,10 +3,9 @@ import { computed } from 'vue';
 import { Primitive } from '@soybeanjs/headless/primitive';
 import { useOmitProps } from '@soybeanjs/headless/composables';
 import { transformPropsToContext } from '@soybeanjs/headless/shared';
-import { cn } from '@/theme';
+import { buttonGroupVariants } from '@/styles/button';
 import { useConfigProvider } from '../config-provider/context';
 import { provideButtonGroupContext } from './context';
-import { buttonGroupVariants } from './variants';
 import type { ButtonGroupProps } from './types';
 
 defineOptions({
@@ -30,13 +29,14 @@ const forwardedProps = useOmitProps(props, [
 
 const config = useConfigProvider('ButtonGroup');
 
-const cls = computed(() => {
-  const variants = buttonGroupVariants({
-    orientation: props.orientation
-  });
-
-  return cn(variants, props.class);
-});
+const cls = computed(() =>
+  buttonGroupVariants(
+    {
+      orientation: props.orientation
+    },
+    props.class
+  )
+);
 
 const dir = computed(() => props.dir ?? config.dir.value);
 

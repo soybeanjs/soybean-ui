@@ -2,9 +2,7 @@
 import { computed } from 'vue';
 import { TagsInputCompact, provideTagsInputUi } from '@soybeanjs/headless/tags-input';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
-import { mergeVariants, miniSizeMap } from '@/theme';
-import { buttonIconVariants } from '../button/variants';
-import { tagsInputVariants } from './variants';
+import { tagsInputVariants } from '@/styles/tags-input';
 import type { TagsInputProps, TagsInputEmits, TagsInputSlots } from './types';
 
 defineOptions({
@@ -21,23 +19,7 @@ const forwardedProps = useOmitProps(props, ['class', 'size', 'ui']);
 
 const listeners = useForwardListeners(emit);
 
-const ui = computed(() => {
-  const miniSize = miniSizeMap[props.size || 'md'];
-
-  const variants = Object.assign(
-    tagsInputVariants({
-      size: props.size
-    }),
-    {
-      $base: {
-        itemDelete: buttonIconVariants({ size: miniSize, shape: 'circle' }),
-        clear: buttonIconVariants({ size: props.size })
-      }
-    }
-  );
-
-  return mergeVariants(variants, props.ui, { root: props.class });
-});
+const ui = computed(() => tagsInputVariants({ size: props.size }, props.ui, { root: props.class }));
 
 provideTagsInputUi(ui);
 </script>

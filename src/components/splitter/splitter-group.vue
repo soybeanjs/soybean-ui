@@ -2,8 +2,7 @@
 import { computed } from 'vue';
 import { SplitterGroup, provideSplitterUi } from '@soybeanjs/headless/splitter';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
-import { mergeVariants } from '@/theme';
-import { splitterVariants } from './variants';
+import { splitterVariants } from '@/styles/splitter';
 import type { SplitterGroupProps, SplitterGroupEmits } from './types';
 
 defineOptions({
@@ -18,7 +17,7 @@ const forwardedProps = useOmitProps(props, ['class', 'ui']);
 
 const listeners = useForwardListeners(emit);
 
-const ui = computed(() => mergeVariants(splitterVariants(), props.ui, { root: props.class }));
+const ui = computed(() => splitterVariants({ size: props.size }, props.ui, { root: props.class }));
 
 provideSplitterUi(ui);
 </script>

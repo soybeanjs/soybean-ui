@@ -2,8 +2,7 @@
 import { computed } from 'vue';
 import { AffixCompact, provideAffixUi } from '@soybeanjs/headless/affix';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
-import { mergeVariants } from '@/theme';
-import { affixVariants } from './variants';
+import { affixVariants } from '@/styles/affix';
 import type { AffixProps, AffixEmits } from './types';
 
 defineOptions({
@@ -18,11 +17,7 @@ const forwardedProps = useOmitProps(props, ['class', 'ui']);
 
 const listeners = useForwardListeners(emit);
 
-const ui = computed(() => {
-  const variants = affixVariants();
-
-  return mergeVariants(variants, props.ui, { content: props.class });
-});
+const ui = computed(() => affixVariants(undefined, props.ui, { content: props.class }));
 
 provideAffixUi(ui);
 </script>

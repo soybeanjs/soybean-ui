@@ -177,16 +177,3 @@ All components support the `class` prop, which intelligently merges with default
   <SButton class="w-full rounded-full">Custom Button</SButton>
 </template>
 ```
-
-### cn() utility function
-
-SoybeanUI provides the `cn()` utility for intelligent Tailwind class merging, automatically handling conflicting class names:
-
-```ts
-import { cn } from '@soybeanjs/ui';
-
-// Conflicting classes are properly handled
-const classes = cn('px-4 py-2', 'px-6'); // Result: 'py-2 px-6'
-```
-
-This utility is especially useful when customizing component styles, ensuring your class names don't accidentally override or conflict with each other.

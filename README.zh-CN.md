@@ -21,7 +21,7 @@ SoybeanUI 采用严格的**双层分离**设计：
 ┌─────────────────────────────────────────┐
 │           @soybeanjs/ui (src/)          │
 │  S 前缀组件   (SButton、SDialog…)        │
-│  UnoCSS 类名 · tailwind-variants         │
+│  UnoCSS 类名 · @soybeanjs/cva            │
 │  provideXUi(ui)  ──────────────────┐    │
 └────────────────────────────────────┼────┘
                                      │ 样式注入
@@ -35,10 +35,10 @@ SoybeanUI 采用严格的**双层分离**设计：
 
 ### 包结构
 
-| 包                      | 职责                        | 组件数量                        |
-| ----------------------- | --------------------------- | ------------------------------- |
-| **@soybeanjs/headless** | 逻辑、状态、a11y，零样式    | 95 个组件目录，25 个 composable |
-| **@soybeanjs/ui**       | 样式包装层。UnoCSS + `tv()` | 91 个带 `S` 前缀的组件          |
+| 包                      | 职责                                         | 组件数量                        |
+| ----------------------- | -------------------------------------------- | ------------------------------- |
+| **@soybeanjs/headless** | 逻辑、状态、a11y，零样式                     | 95 个组件目录，25 个 composable |
+| **@soybeanjs/ui**       | 样式包装层。UnoCSS + `@soybeanjs/cva` recipe | 91 个带 `S` 前缀的组件          |
 
 **数据流严格单向**：`headless` → `src`。样式层不会导入 headless 的内部实现，而是通过 `provideXUi(computedUi)` 注入样式 token，headless 组件再通过 `useUiContext()` 读取。
 
@@ -48,17 +48,11 @@ SoybeanUI 采用严格的**双层分离**设计：
 
 ### 样式注入机制
 
-每个多橪位的 headless 组件都有对应的 `provide{Name}Ui` 函数。样式层通过 `tailwind-variants` 计算类名后注入：
+每个多插槽的 headless 组件都有对应的 `provide{Name}Ui` 函数。样式层通过 `@soybeanjs/cva` 的 recipe 计算类名后注入：
 
 ```ts
 // 样式包装层 (src/) 中
-const ui = computed(() =>
-  mergeVariants(
-    accordionVariants({ size: props.size }), // tv() 计算结果
-    props.ui, // 用户自定义覆盖
-    { root: props.class } // class prop 合并
-  )
-);
+const ui = computed(() => accordionVariants({ size: props.size }, props.ui, { root: props.class }));
 provideAccordionUi(ui); // headless 通过 useAccordionUi() 读取
 ```
 
@@ -67,7 +61,6 @@ provideAccordionUi(ui); // headless 通过 useAccordionUi() 读取
 - **`ThemeColor`** — 8 种语义色：`primary` · `destructive` · `success` · `warning` · `info` · `carbon` · `secondary` · `accent`
 - **`ThemeSize`** — 6 种尺寸：`xs` · `sm` · `md` · `lg` · `xl` · `2xl`（基准尺寸 `md` = 16px）
 - **`ConfigProvider`** — 全局设置 `dir`、`locale`、`nonce` 及默认 `tooltip` 配置，应用于整个组件树，并支持 RTL 布局切换
-- **`cn()`** — Tailwind 感知的类名合并工具（`clsx` + `tailwind-merge`），解决类名冲突
 
 ### 语言支持
 

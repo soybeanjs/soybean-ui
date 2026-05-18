@@ -12,17 +12,17 @@ For any AI assistant editing files under `src/`:
 The remaining content in this file is package knowledge and local context. Normative rules still live in `.github/`.
 
 **Package:** `src/` → publishes as `@soybeanjs/ui`
-**Role:** Styled wrappers over headless primitives. UnoCSS + tailwind-variants.
+**Role:** Styled wrappers over headless primitives. UnoCSS + @soybeanjs/cva.
 
 ## COMPONENT PATTERN
 
 Every styled component follows this flow:
 
 1. Import headless component(s) from `@soybeanjs/headless`
-2. Define `variants.ts` with `tv()` (MUST have `// @unocss-include` at top)
+2. Define the style recipe in `src/styles/{name}.ts` with `cv()` / `scv()` (MUST have `// @unocss-include` at top)
 3. In wrapper SFC: `useOmitProps` to separate style props from logic props
 4. Inject UI tokens: `provideXUi(ui)` where `ui` = computed slot→class map
-5. Merge classes: `cn(variants(...), props.class)` or `mergeVariants`
+5. Merge classes: single-class wrappers use `${name}Variants({...}, props.class)`; multi-slot wrappers pass `props.ui` and `{ root: props.class }` directly into the recipe call
 6. Import or re-export wrapper-facing component types from `@soybeanjs/headless/{component}` sub-paths, and import headless global types from `@soybeanjs/headless/types`, then rerun `pnpm sui ui` after public export changes
 
 ## STRUCTURE
@@ -30,8 +30,9 @@ Every styled component follows this flow:
 ```
 src/
 ├── components/   # 91 styled components (S-prefixed: SButton, SDialog...)
-│   └── [name]/   # index.ts, *.vue, types.ts, variants.ts
-├── theme/        # cn(), size context, ThemeColor/ThemeSize. See theme/AGENTS.md
+│   └── [name]/   # index.ts, *.vue, types.ts
+├── styles/       # cv/scv recipe files consumed by wrappers
+├── theme/        # size context, ThemeColor/ThemeSize. See theme/AGENTS.md
 ├── constants/    # UI-layer constants
 ├── nuxt/         # Nuxt module (auto-registration)
 ├── resolver/     # unplugin-vue-components resolver
@@ -40,7 +41,7 @@ src/
 
 ## VARIANTS
 
-`tailwind-variants` `tv()` definitions per component:
+`@soybeanjs/cva` recipe definitions per component:
 
 - `base` / `slots` — default classes
 - `variants` — `color`, `size`, `variant` axes

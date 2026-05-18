@@ -3,11 +3,7 @@ import { computed } from 'vue';
 import { BottomSheetCompact, provideBottomSheetUi } from '@soybeanjs/headless/bottom-sheet';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
 import { keysOf } from '@soybeanjs/utils';
-import { mergeVariants, miniSizeMap } from '@/theme';
-import { buttonVariants, buttonIconVariants } from '../button/variants';
-import { dialogVariants } from '../dialog/variants';
-import { drawerVariants } from '../drawer/variants';
-import { bottomSheetVariants } from './variants';
+import { bottomSheetVariants } from '@/styles/bottom-sheet';
 import type { BottomSheetProps, BottomSheetEmits, BottomSheetSlots } from './types';
 
 defineOptions({
@@ -34,36 +30,7 @@ const listeners = useForwardListeners(emit);
 
 const slotNames = computed(() => keysOf(slots));
 
-const ui = computed(() => {
-  const variants = Object.assign(
-    bottomSheetVariants({ size: props.size }),
-    dialogVariants({
-      size: props.size,
-      pure: props.pure
-    }),
-    drawerVariants({
-      size: props.size,
-      side: 'bottom'
-    }),
-    {
-      $base: {
-        cancel: buttonVariants({
-          variant: 'pure',
-          size: miniSizeMap[props.size ?? 'md']
-        }),
-        confirm: buttonVariants({
-          variant: 'solid',
-          size: miniSizeMap[props.size ?? 'md']
-        }),
-        close: buttonIconVariants({
-          size: miniSizeMap[props.size ?? 'md']
-        })
-      }
-    }
-  );
-
-  return mergeVariants(variants, props.ui, { popup: props.class });
-});
+const ui = computed(() => bottomSheetVariants({ size: props.size }, props.ui, { popup: props.class }));
 
 provideBottomSheetUi(ui);
 </script>

@@ -575,7 +575,7 @@ components:
         desc: Override local styling precisely through ui slot maps instead of rewriting entire components.
       theme_ready:
         title: Theme-ready Variants
-        desc: Variants are organized with UnoCSS and tailwind-variants so design tokens and themes stay scalable.
+        desc: Variants are organized with UnoCSS and {'@'}soybeanjs/cva so design tokens and themes stay scalable.
       component_coverage:
         title: Broad Component Coverage
         desc: Covers general UI, forms, navigation, overlays, and data display for the screens teams build most often.

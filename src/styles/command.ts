@@ -1,0 +1,103 @@
+// @unocss-include
+import { scv } from '@soybeanjs/cva';
+import { kbdVariants } from './kbd';
+
+export const commandVariants = scv({
+  extendBase: props => ({
+    shortcut: kbdVariants({
+      size: props.size
+    })
+  }),
+  slots: {
+    root: `flex w-full flex-col overflow-hidden rounded-md bg-popover text-popover-foreground`,
+    inputRoot: 'group flex items-center border-b',
+    inputControl: `flex w-full rounded-md bg-transparent outline-none placeholder:text-muted-foreground disabled:cursor-not-allowed disabled:opacity-50`,
+    inputIcon: `shrink-0 opacity-50`,
+    inputClearable: 'hidden group-hover:block size-1em cursor-pointer opacity-50 hover:opacity-100',
+    empty: `text-center`,
+    list: `overflow-y-auto overflow-x-hidden`,
+    group: `overflow-hidden text-foreground`,
+    groupLabel: `flex items-center font-medium text-muted-foreground`,
+    item: [
+      `relative flex cursor-default select-none items-center rounded-sm outline-none`,
+      `data-[highlighted]:bg-accent data-[highlighted]:text-accent-foreground data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50`
+    ],
+    itemLabel: '',
+    itemIcon: 'shrink-0',
+    separator: `h-px bg-border`,
+    shortcut: `ms-auto`
+  },
+  variants: {
+    size: {
+      xs: {
+        root: 'text-2xs',
+        inputRoot: 'px-1.5 py-0.5',
+        inputControl: 'h-6',
+        inputIcon: 'me-1.5',
+        empty: 'py-3',
+        list: 'max-h-70 p-0.75',
+        groupLabel: 'gap-1 p-1 text-3xs',
+        item: 'gap-1 px-1 py-1',
+        separator: '-mx-1 my-0.75'
+      },
+      sm: {
+        root: 'text-xs',
+        inputRoot: 'px-2 py-0.625',
+        inputControl: 'h-7',
+        inputIcon: 'me-1.75',
+        empty: 'py-3.5',
+        list: 'max-h-75 p-0.875',
+        groupLabel: 'gap-1.25 p-1.25 text-2xs',
+        item: 'gap-1.5 px-1.5 py-1',
+        separator: '-mx-1.5 my-1'
+      },
+      md: {
+        root: 'text-sm',
+        inputRoot: 'px-2.5 py-0.75',
+        inputControl: 'h-8',
+        inputIcon: 'me-2',
+        empty: 'py-4 text-sm',
+        list: 'max-h-80 p-1',
+        groupLabel: 'gap-1.75 p-1.75 text-xs',
+        item: 'gap-2 px-2 py-1.5',
+        separator: '-mx-2 my-1'
+      },
+      lg: {
+        root: 'text-base',
+        inputRoot: 'px-3.5 py-0.875',
+        inputControl: 'h-9',
+        inputIcon: 'me-2.5',
+        empty: 'py-4.5',
+        list: 'max-h-90 p-1.25',
+        groupLabel: 'gap-2 p-2 text-sm',
+        item: 'gap-2.5 px-2.5 py-1.5',
+        separator: '-mx-2.5 my-1.25'
+      },
+      xl: {
+        root: 'text-lg',
+        inputRoot: 'px-4 py-1',
+        inputControl: 'h-10',
+        inputIcon: 'me-3',
+        empty: 'py-5',
+        list: 'max-h-100 p-1.5',
+        groupLabel: 'gap-2.5 p-2.5 text-base',
+        item: 'gap-3 px-3 py-2',
+        separator: '-mx-3 my-1.5'
+      },
+      '2xl': {
+        root: 'text-xl',
+        inputRoot: 'px-4.5 py-1.25',
+        inputControl: 'h-12',
+        inputIcon: 'me-3.5',
+        empty: 'py-6',
+        list: 'max-h-115 p-1.75',
+        groupLabel: 'gap-3 p-3 text-lg',
+        item: 'gap-3.5 px-3.5 py-2.5',
+        separator: '-mx-3.5 my-2'
+      }
+    }
+  },
+  defaultVariants: {
+    size: 'md'
+  }
+});

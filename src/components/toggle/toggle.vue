@@ -2,8 +2,7 @@
 import { computed } from 'vue';
 import { Toggle } from '@soybeanjs/headless/toggle';
 import { useOmitProps } from '@soybeanjs/headless/composables';
-import { cn } from '@/theme';
-import { toggleVariants } from './variants';
+import { toggleVariants } from '@/styles/toggle';
 import type { ToggleProps, ToggleEmits } from './types';
 
 defineOptions({
@@ -18,16 +17,14 @@ const emit = defineEmits<ToggleEmits>();
 
 const forwardedProps = useOmitProps(props, ['class', 'color', 'variant', 'size', 'shape']);
 
-const cls = computed(() => {
-  const variants = toggleVariants({
+const cls = computed(() =>
+  toggleVariants({
     color: props.color,
     variant: props.variant,
     size: props.size,
     shape: props.shape
-  });
-
-  return cn(variants, props.class);
-});
+  })
+);
 </script>
 
 <template>

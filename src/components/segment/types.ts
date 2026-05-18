@@ -7,7 +7,7 @@ import type {
 } from '@soybeanjs/headless/segment';
 import type { AcceptableValue, ClassValue } from '@soybeanjs/headless/types';
 import type { ThemeSize } from '@/theme';
-import type { TabsFill as SegmentFill, TabsShape as SegmentShape } from '../tabs/variants';
+import type { TabsFill as SegmentFill, TabsShape as SegmentShape } from '@/styles/tabs';
 
 /**
  * Properties for the Segment component.

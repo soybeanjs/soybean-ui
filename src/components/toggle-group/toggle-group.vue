@@ -3,8 +3,7 @@ import { computed } from 'vue';
 import { ToggleGroupRoot, provideToggleGroupUi } from '@soybeanjs/headless/toggle-group';
 import type { DefinedValue } from '@soybeanjs/headless/types';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
-import { mergeVariants } from '@/theme';
-import { toggleGroupVariants } from './variants';
+import { toggleGroupVariants } from '@/styles/toggle-group';
 import type { ToggleGroupProps, ToggleGroupEmits } from './types';
 
 defineOptions({
@@ -19,16 +18,18 @@ const forwardedProps = useOmitProps(props, ['class', 'color', 'size', 'variant',
 
 const listeners = useForwardListeners(emit);
 
-const ui = computed(() => {
-  const variants = toggleGroupVariants({
-    color: props.color,
-    size: props.size,
-    variant: props.variant,
-    orientation: props.orientation
-  });
-
-  return mergeVariants(variants, props.ui, { root: props.class });
-});
+const ui = computed(() =>
+  toggleGroupVariants(
+    {
+      color: props.color,
+      size: props.size,
+      variant: props.variant,
+      orientation: props.orientation
+    },
+    props.ui,
+    { root: props.class }
+  )
+);
 
 provideToggleGroupUi(ui);
 </script>

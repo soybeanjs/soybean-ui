@@ -4,9 +4,7 @@ import { CommandCompact, provideCommandUi } from '@soybeanjs/headless/command';
 import type { CommandSingleOptionData } from '@soybeanjs/headless/command';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
 import { keysOf } from '@soybeanjs/utils';
-import { mergeVariants } from '@/theme';
-import { kbdVariants } from '../kbd/variants';
-import { commandVariants } from './variants';
+import { commandVariants } from '@/styles/command';
 import type { CommandProps, CommandEmits, CommandSlots } from './types';
 
 defineOptions({
@@ -25,22 +23,7 @@ const listeners = useForwardListeners(emit);
 
 const slotNames = computed(() => keysOf(slots));
 
-const ui = computed(() => {
-  const variants = Object.assign(
-    commandVariants({
-      size: props.size
-    }),
-    {
-      $base: {
-        shortcut: kbdVariants({
-          size: props.size
-        })
-      }
-    }
-  );
-
-  return mergeVariants(variants, props.ui, { root: props.class });
-});
+const ui = computed(() => commandVariants({ size: props.size }, props.ui, { root: props.class }));
 
 provideCommandUi(ui);
 </script>

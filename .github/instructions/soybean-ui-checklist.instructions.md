@@ -45,9 +45,9 @@ applyTo: '{headless/src/components,src/components}/**/*.{ts,vue}'
 
 ## UI
 
-- `variants.ts` 第一行是 `// @unocss-include`
+- 对应的 `src/styles/*.ts` 第一行是 `// @unocss-include`
 - `slots` key 与 headless `UiSlot` 一致
-- `mergeVariants` 正确合并 `props.class`
+- wrapper 通过 recipe 直接合并 `props.ui` 与 `props.class`
 - `useOmitProps` / `usePickProps` 使用有明确理由
 - 无 ARIA 逻辑、无业务语义泄漏到 UI 层
 

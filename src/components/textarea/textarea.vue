@@ -3,9 +3,7 @@ import { computed } from 'vue';
 import { TextareaCompact, provideTextareaUi } from '@soybeanjs/headless/textarea';
 import { useOmitProps } from '@soybeanjs/headless/composables';
 import { keysOf } from '@soybeanjs/utils';
-import { mergeVariants, miniSizeMap } from '@/theme';
-import { buttonIconVariants } from '../button/variants';
-import { textareaVariants } from './variants';
+import { textareaVariants } from '@/styles/textarea';
 import type { TextareaProps, TextareaEmits, TextareaSlots } from './types';
 
 defineOptions({
@@ -22,26 +20,16 @@ const slots = defineSlots<TextareaSlots>();
 
 const slotNames = computed(() => keysOf(slots));
 
-const ui = computed(() => {
-  const miniSize = miniSizeMap[props.size ?? 'md'];
-
-  const variants = Object.assign(
-    textareaVariants({
+const ui = computed(() =>
+  textareaVariants(
+    {
       size: props.size,
       resize: !props.autosize ? props.resize : false
-    }),
-    {
-      $base: {
-        clear: buttonIconVariants({
-          size: miniSize,
-          shape: 'circle'
-        })
-      }
-    }
-  );
-
-  return mergeVariants(variants, props.ui, { root: props.class });
-});
+    },
+    props.ui,
+    { root: props.class }
+  )
+);
 
 provideTextareaUi(ui);
 </script>

@@ -3,8 +3,7 @@ import { computed } from 'vue';
 import { EditableCompact, provideEditableUi } from '@soybeanjs/headless/editable';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
 import { keysOf } from '@soybeanjs/utils';
-import { mergeVariants } from '@/theme';
-import { editableVariants } from './variants';
+import { editableVariants } from '@/styles/editable';
 import type { EditableProps, EditableEmits, EditableSlots } from './types';
 
 defineOptions({
@@ -23,13 +22,7 @@ const listeners = useForwardListeners(emit);
 
 const slotNames = computed(() => keysOf(slots));
 
-const ui = computed(() => {
-  const variants = editableVariants({
-    size: props.size
-  });
-
-  return mergeVariants(variants, props.ui, { root: props.class });
-});
+const ui = computed(() => editableVariants({ size: props.size }, props.ui, { root: props.class }));
 
 provideEditableUi(ui);
 </script>

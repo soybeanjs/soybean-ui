@@ -1,7 +1,7 @@
 import type { TagEmits, TagProps as _TagProps } from '@soybeanjs/headless/tag';
 import type { ClassValue } from '@soybeanjs/headless/types';
 import type { ThemeColor, ThemeSize } from '@/theme';
-import type { TagShape, TagVariant } from './variants';
+import type { TagShape, TagVariant } from '@/styles/tag';
 
 /**
  * Properties for the Tag component.

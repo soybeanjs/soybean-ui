@@ -3,8 +3,7 @@ import { computed } from 'vue';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
 import { ComboboxCompact, provideComboboxUi } from '@soybeanjs/headless/combobox';
 import { keysOf } from '@soybeanjs/utils';
-import { mergeVariants } from '@/theme';
-import { comboboxVariants } from './variants';
+import { comboboxVariants } from '@/styles/combobox';
 import type { ComboboxProps, ComboboxEmits, ComboboxSlots } from './types';
 
 defineOptions({
@@ -26,13 +25,7 @@ const listeners = useForwardListeners(emit);
 
 const slotNames = computed(() => keysOf(slots));
 
-const ui = computed(() => {
-  const variants = comboboxVariants({
-    size: props.size
-  });
-
-  return mergeVariants(variants, props.ui, { trigger: props.class });
-});
+const ui = computed(() => comboboxVariants({ size: props.size }, props.ui, { trigger: props.class }));
 
 provideComboboxUi(ui);
 </script>

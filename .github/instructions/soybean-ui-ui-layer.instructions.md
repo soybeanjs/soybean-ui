@@ -14,15 +14,16 @@ applyTo: 'src/components/**/*.{ts,vue}'
 
 ## 实现顺序
 
-1. `variants.ts`
+1. `src/styles/{name}.ts`
 2. `types.ts`
 3. wrapper `.vue`
 4. `index.ts` 与 `src/index.ts`
 5. 运行 `pnpm sui ui`
 
-## Step 1：variants.ts
+## Step 1：style recipe
 
 - 第一行必须是 `// @unocss-include`
+- 使用 `@soybeanjs/cva` 的 `cv()` 或 `scv()` 定义样式 recipe
 - `slots` key 必须与 headless `{Name}UiSlot` 完全一致
 - 组件有自定义 CSS 变量时，统一使用 `--soybean-` 前缀
 - 方向相关样式遵循 `soybean-ui-accessibility-rtl.instructions.md`：优先逻辑属性与逻辑对齐类，只有无法表达时才用 `rtl:` 修饰符
@@ -66,7 +67,7 @@ applyTo: 'src/components/**/*.{ts,vue}'
 
 #### 多 slot wrapper
 
-- 计算 `ui = computed(() => mergeVariants(variants, props.ui, { root: props.class }))`
+- 计算 `ui = computed(() => nameVariants(variantProps, props.ui, { root: props.class }))`
 - 调用 `provide{Name}Ui(ui)`
 - 如果 headless 已提供 `{Name}Compact`，直接渲染它，不再自己遍历 `items`、拼装默认 icon/title/content，也不再为 Compact 额外编排任何非样式逻辑
 
@@ -74,7 +75,7 @@ applyTo: 'src/components/**/*.{ts,vue}'
 
 #### 单类名组件
 
-- 直接 `cn(variants(...), props.class)`
+- 直接 `{name}Variants(variantProps, props.class)`
 - 不建立 UiContext
 
 ## Step 4：index.ts
@@ -91,10 +92,10 @@ applyTo: 'src/components/**/*.{ts,vue}'
 
 ## 禁止反模式
 
-- `variants.ts` 缺少 `// @unocss-include`
+- `src/styles/{name}.ts` 缺少 `// @unocss-include`
 - `slots` key 与 `{Name}UiSlot` 不一致
 - `useOmitProps` 遗漏 `class`
-- `mergeVariants` 第三个参数不传 `{ root: props.class }`
+- recipe 调用遗漏 `props.ui` 或 `{ root: props.class }`
 - 在模板里写 `props.xxx`
 - 组件名缺少 `S` 前缀
 - 从 `@soybeanjs/headless` 根路径粗暴 re-export 所有类型

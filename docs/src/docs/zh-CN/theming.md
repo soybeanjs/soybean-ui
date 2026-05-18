@@ -177,16 +177,3 @@ const items = [
   <SButton class="w-full rounded-full">自定义按钮</SButton>
 </template>
 ```
-
-### cn() 工具函数
-
-SoybeanUI 提供 `cn()` 工具函数用于 Tailwind 类名的智能合并，它会自动处理冲突的类名：
-
-```ts
-import { cn } from '@soybeanjs/ui';
-
-// 冲突的类名会被正确处理
-const classes = cn('px-4 py-2', 'px-6'); // 结果: 'py-2 px-6'
-```
-
-这个工具在自定义组件样式时特别有用，确保你的类名不会意外地被覆盖或产生冲突。

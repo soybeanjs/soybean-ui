@@ -2,8 +2,7 @@
 import { computed } from 'vue';
 import { CardCompact, provideCardUi } from '@soybeanjs/headless/card';
 import { useOmitProps } from '@soybeanjs/headless/composables';
-import { mergeVariants } from '@/theme';
-import { cardVariants } from './variants';
+import { cardVariants } from '@/styles/card';
 import type { CardProps } from './types';
 
 defineOptions({
@@ -32,15 +31,17 @@ type Slots = {
 
 const slots = defineSlots<Slots>();
 
-const ui = computed(() => {
-  const variants = cardVariants({
-    size: props.size,
-    scrollable: props.scrollable,
-    split: props.split
-  });
-
-  return mergeVariants(variants, props.ui, { root: props.class });
-});
+const ui = computed(() =>
+  cardVariants(
+    {
+      size: props.size,
+      scrollable: props.scrollable,
+      split: props.split
+    },
+    props.ui,
+    { root: props.class }
+  )
+);
 
 provideCardUi(ui);
 </script>

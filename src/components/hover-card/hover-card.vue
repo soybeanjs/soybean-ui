@@ -2,8 +2,7 @@
 import { computed } from 'vue';
 import { HoverCardCompact, provideHoverCardUi } from '@soybeanjs/headless/hover-card';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
-import { mergeVariants } from '@/theme';
-import { hoverCardVariants } from './variants';
+import { hoverCardVariants } from '@/styles/hover-card';
 import type { HoverCardProps, HoverCardEmits, HoverCardSlots } from './types';
 
 defineOptions({
@@ -23,13 +22,7 @@ const forwardedProps = useOmitProps(props, ['class', 'size', 'ui']);
 
 const listeners = useForwardListeners(emit);
 
-const ui = computed(() => {
-  const variants = hoverCardVariants({
-    size: props.size
-  });
-
-  return mergeVariants(variants, props.ui, { popup: props.class });
-});
+const ui = computed(() => hoverCardVariants({ size: props.size }, props.ui, { popup: props.class }));
 
 provideHoverCardUi(ui);
 </script>

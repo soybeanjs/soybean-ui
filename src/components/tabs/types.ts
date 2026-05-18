@@ -7,7 +7,7 @@ import type {
   TabsUi
 } from '@soybeanjs/headless/tabs';
 import type { ThemeSize } from '@/theme';
-import type { TabsFill } from './variants';
+import type { TabsFill } from '@/styles/tabs';
 
 /**
  * Properties for the Tabs component.

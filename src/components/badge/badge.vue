@@ -3,8 +3,7 @@ import { computed, useSlots } from 'vue';
 import { BadgeCompact, provideBadgeUi } from '@soybeanjs/headless/badge';
 import { useOmitProps } from '@soybeanjs/headless/composables';
 import { keysOf } from '@soybeanjs/utils';
-import { mergeVariants } from '@/theme';
-import { badgeVariants } from './variants';
+import { badgeVariants } from '@/styles/badge';
 import type { BadgeProps, BadgeEmits } from './types';
 
 defineOptions({
@@ -23,15 +22,17 @@ const forwardedProps = useOmitProps(props, ['class', 'color', 'size', 'ui', 'pos
 
 const slotNames = computed(() => keysOf(slots));
 
-const ui = computed(() => {
-  const variants = badgeVariants({
-    color: props.color,
-    size: props.size,
-    position: props.position
-  });
-
-  return mergeVariants(variants, props.ui, { root: props.class });
-});
+const ui = computed(() =>
+  badgeVariants(
+    {
+      color: props.color,
+      size: props.size,
+      position: props.position
+    },
+    props.ui,
+    { root: props.class }
+  )
+);
 
 provideBadgeUi(ui);
 </script>

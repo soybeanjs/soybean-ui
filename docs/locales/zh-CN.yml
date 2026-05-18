@@ -574,7 +574,7 @@ components:
         desc: 通过 ui prop 和 slot 映射精确覆盖局部样式，而不是整体重写组件。
       theme_ready:
         title: Theme-ready Variants
-        desc: 基于 UnoCSS 与 tailwind-variants 组织变体，便于统一令牌和主题扩展。
+        desc: 基于 UnoCSS 与 {'@'}soybeanjs/cva 组织变体，便于统一令牌和主题扩展。
       component_coverage:
         title: 完整组件版图
         desc: 覆盖通用、表单、导航、浮层与数据展示等核心界面场景。

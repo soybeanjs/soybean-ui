@@ -3,8 +3,7 @@ import { computed } from 'vue';
 import type { CSSProperties } from 'vue';
 import { AnchorCompact, provideAnchorUi } from '@soybeanjs/headless/anchor';
 import { useOmitProps, useForwardListeners } from '@soybeanjs/headless/composables';
-import { mergeVariants } from '@/theme';
-import { anchorVariants } from './variants';
+import { anchorVariants } from '@/styles/anchor';
 import type { AnchorProps, AnchorEmits } from './types';
 
 defineOptions({
@@ -26,16 +25,18 @@ const style = computed<CSSProperties>(() => ({
   '--soybean-anchor-offset-top': `${props.offsetTop}px`
 }));
 
-const ui = computed(() => {
-  const variants = anchorVariants({
-    color: props.color,
-    orientation: props.orientation,
-    size: props.size,
-    sticky: props.sticky
-  });
-
-  return mergeVariants(variants, props.ui, { root: props.class });
-});
+const ui = computed(() =>
+  anchorVariants(
+    {
+      color: props.color,
+      orientation: props.orientation,
+      size: props.size,
+      sticky: props.sticky
+    },
+    props.ui,
+    { root: props.class }
+  )
+);
 
 provideAnchorUi(ui);
 </script>

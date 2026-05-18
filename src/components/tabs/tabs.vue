@@ -3,8 +3,7 @@ import { computed } from 'vue';
 import { TabsCompact, provideTabsUi } from '@soybeanjs/headless/tabs';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
 import { keysOf } from '@soybeanjs/utils';
-import { mergeVariants } from '@/theme';
-import { tabsVariants } from './variants';
+import { tabsVariants } from '@/styles/tabs';
 import type { TabsProps, TabsEmits, TabsSlots, TabsOptionData } from './types';
 
 defineOptions({
@@ -28,16 +27,18 @@ const forwardedProps = useOmitProps(props, ['class', 'size', 'ui', 'fill']);
 const listeners = useForwardListeners(emit);
 const slotNames = computed(() => keysOf(slots));
 
-const ui = computed(() => {
-  const variants = tabsVariants({
-    size: props.size,
-    orientation: props.orientation,
-    fill: props.fill,
-    enableIndicator: props.enableIndicator
-  });
-
-  return mergeVariants(variants, props.ui, { root: props.class });
-});
+const ui = computed(() =>
+  tabsVariants(
+    {
+      size: props.size,
+      orientation: props.orientation,
+      fill: props.fill,
+      enableIndicator: props.enableIndicator
+    },
+    props.ui,
+    { root: props.class }
+  )
+);
 
 provideTabsUi(ui);
 </script>

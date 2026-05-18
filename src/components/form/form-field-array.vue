@@ -3,8 +3,7 @@ import { computed } from 'vue';
 import { FormFieldArrayCompact, provideFormFieldUi } from '@soybeanjs/headless/form';
 import { useOmitProps } from '@soybeanjs/headless/composables';
 import { keysOf } from '@soybeanjs/utils';
-import { mergeVariants } from '@/theme';
-import { formVariants } from './variants';
+import { formVariants } from '@/styles/form';
 import type { FormFieldArrayProps, FormFieldArraySlots } from './types';
 
 defineOptions({
@@ -19,13 +18,7 @@ const forwardedProps = useOmitProps(props, ['class', 'ui', 'size']);
 
 const slotNames = computed(() => keysOf(slots));
 
-const ui = computed(() => {
-  const variants = formVariants({
-    size: props.size
-  });
-
-  return mergeVariants(variants, props.ui, { field: props.class });
-});
+const ui = computed(() => formVariants({ size: props.size }, props.ui, { field: props.class }));
 
 provideFormFieldUi(ui);
 </script>

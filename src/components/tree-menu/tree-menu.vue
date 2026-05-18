@@ -6,11 +6,10 @@ import type { TreeMenuBaseOptionData } from '@soybeanjs/headless/tree-menu';
 import { provideBadgeUi } from '@soybeanjs/headless/badge';
 import { provideTooltipUi } from '@soybeanjs/headless/tooltip';
 import { keysOf } from '@soybeanjs/utils';
-import { mergeVariants } from '@/theme';
 import { provideMenuUi } from '../menu/context';
-import { badgeVariants } from '../badge/variants';
-import { tooltipVariants } from '../tooltip/variants';
-import { treeMenuVariants } from './variants';
+import { badgeVariants } from '@/styles/badge';
+import { tooltipVariants } from '@/styles/tooltip';
+import { treeMenuVariants } from '@/styles/tree-menu';
 import type { TreeMenuProps, TreeMenuEmits, TreeMenuSlots } from './types';
 
 defineOptions({
@@ -31,13 +30,7 @@ const listeners = useForwardListeners(emit);
 
 const slotNames = computed(() => keysOf(slots));
 
-const ui = computed(() => {
-  const variants = treeMenuVariants({
-    size: props.size
-  });
-
-  return mergeVariants(variants, props.ui, { root: props.class });
-});
+const ui = computed(() => treeMenuVariants({ size: props.size }, props.ui, { root: props.class }));
 
 const badgeUi = computed(() =>
   badgeVariants({

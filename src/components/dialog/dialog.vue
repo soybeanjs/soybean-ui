@@ -3,9 +3,7 @@ import { computed } from 'vue';
 import { DialogCompact, provideDialogUi } from '@soybeanjs/headless/dialog';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
 import { keysOf } from '@soybeanjs/utils';
-import { mergeVariants, miniSizeMap } from '@/theme';
-import { buttonVariants, buttonIconVariants } from '../button/variants';
-import { dialogVariants } from './variants';
+import { dialogVariants } from '@/styles/dialog';
 import type { DialogProps, DialogEmits, DialogSlots } from './types';
 
 defineOptions({
@@ -28,33 +26,16 @@ const listeners = useForwardListeners(emit);
 
 const slotNames = computed(() => keysOf(slots));
 
-const ui = computed(() => {
-  const miniSize = miniSizeMap[props.size ?? 'md'];
-
-  const variants = Object.assign(
-    dialogVariants({
+const ui = computed(() =>
+  dialogVariants(
+    {
       size: props.size,
       pure: props.pure
-    }),
-    {
-      $base: {
-        cancel: buttonVariants({
-          variant: 'pure',
-          size: miniSize
-        }),
-        confirm: buttonVariants({
-          variant: 'solid',
-          size: miniSize
-        }),
-        close: buttonIconVariants({
-          size: miniSize
-        })
-      }
-    }
-  );
-
-  return mergeVariants(variants, props.ui, { popup: props.class });
-});
+    },
+    props.ui,
+    { popup: props.class }
+  )
+);
 
 provideDialogUi(ui);
 </script>

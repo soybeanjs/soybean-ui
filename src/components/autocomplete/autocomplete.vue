@@ -4,8 +4,7 @@ import { AutocompleteCompact, provideAutocompleteUi } from '@soybeanjs/headless/
 import type { AutocompleteSingleOptionData } from '@soybeanjs/headless/autocomplete';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
 import { keysOf } from '@soybeanjs/utils';
-import { mergeVariants } from '@/theme';
-import { autocompleteVariants } from './variants';
+import { autocompleteVariants } from '@/styles/autocomplete';
 import type { AutocompleteProps, AutocompleteEmits, AutocompleteSlots } from './types';
 
 defineOptions({
@@ -30,13 +29,15 @@ const listeners = useForwardListeners(emit);
 
 const slotNames = computed(() => keysOf(slots));
 
-const ui = computed(() => {
-  const variants = autocompleteVariants({
-    size: props.size
-  });
-
-  return mergeVariants(variants, props.ui, { root: props.class });
-});
+const ui = computed(() =>
+  autocompleteVariants(
+    {
+      size: props.size
+    },
+    props.ui,
+    { root: props.class }
+  )
+);
 
 provideAutocompleteUi(ui);
 </script>

@@ -1,8 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { Link } from '@soybeanjs/headless/link';
-import { cn } from '@/theme';
-import { linkVariants } from './variants';
+import { linkVariants } from '@/styles/link';
 import type { LinkProps } from './types';
 
 defineOptions({
@@ -20,9 +19,7 @@ const props = withDefaults(defineProps<LinkProps>(), {
   replace: undefined
 });
 
-const variants = linkVariants();
-
-const cls = computed(() => cn(variants, props.class));
+const cls = computed(() => linkVariants(undefined, props.class));
 </script>
 
 <template>

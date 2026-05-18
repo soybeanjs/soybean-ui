@@ -4,9 +4,8 @@ import { useLocaleMessages } from '@soybeanjs/headless';
 import { CalendarRangeCompact, provideCalendarRangeUi } from '@soybeanjs/headless/calendar-range';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
 import { keysOf } from '@soybeanjs/utils';
-import { mergeVariants, miniSizeMap } from '@/theme';
-import { buttonVariants } from '../button/variants';
-import { calendarRangeVariants } from './variants';
+import { miniSizeMap } from '@/theme';
+import { calendarRangeVariants } from '@/styles/calendar-range';
 import SSelect from '../select/select.vue';
 import type { CalendarRangeProps, CalendarRangeEmits, CalendarRangeSlots } from './types';
 
@@ -32,29 +31,7 @@ const yearTriggerProps = computed(() => ({ 'aria-label': messages.value.calendar
 
 const slotNames = computed(() => keysOf(slots).filter(name => name !== 'heading'));
 
-const ui = computed(() => {
-  const variants = Object.assign(
-    calendarRangeVariants({
-      size: props.size
-    }),
-    {
-      $base: {
-        prev: buttonVariants({
-          size: props.size,
-          variant: 'pure',
-          fitContent: true
-        }),
-        next: buttonVariants({
-          size: props.size,
-          variant: 'pure',
-          fitContent: true
-        })
-      }
-    }
-  );
-
-  return mergeVariants(variants, props.ui, { root: props.class });
-});
+const ui = computed(() => calendarRangeVariants({ size: props.size }, props.ui, { root: props.class }));
 
 const miniSize = computed(() => miniSizeMap[props.size || 'md']);
 

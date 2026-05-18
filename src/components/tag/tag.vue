@@ -1,9 +1,8 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { Tag } from '@soybeanjs/headless/tag';
-import { cn } from '@/theme';
+import { tagVariants } from '@/styles/tag';
 import Icon from '../icon/icon.vue';
-import { tagVariants } from './variants';
 import type { TagProps, TagEmits } from './types';
 
 defineOptions({
@@ -16,16 +15,17 @@ const props = withDefaults(defineProps<TagProps>(), {
 
 const emit = defineEmits<TagEmits>();
 
-const cls = computed(() => {
-  const variants = tagVariants({
-    color: props.color,
-    size: props.size,
-    variant: props.variant,
-    shape: props.shape
-  });
-
-  return cn(variants, props.class);
-});
+const cls = computed(() =>
+  tagVariants(
+    {
+      color: props.color,
+      size: props.size,
+      variant: props.variant,
+      shape: props.shape
+    },
+    props.class
+  )
+);
 </script>
 
 <template>

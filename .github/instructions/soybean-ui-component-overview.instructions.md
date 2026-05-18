@@ -33,7 +33,7 @@ applyTo: '{headless/src/components,src/components,playground/examples,test/specs
 ### 单类名组件
 
 - 无 UiContext
-- UI 直接 `cn(variants(...), props.class)`
+- UI 直接 `${name}Variants({...}, props.class)`
 
 ## 再判任务场景
 

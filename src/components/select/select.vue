@@ -4,8 +4,7 @@ import { SelectCompact, provideSelectUi } from '@soybeanjs/headless/select';
 import type { DefinedValue } from '@soybeanjs/headless/types';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
 import { keysOf } from '@soybeanjs/utils';
-import { mergeVariants } from '@/theme';
-import { selectVariants } from './variants';
+import { selectVariants } from '@/styles/select';
 import type { SelectProps, SelectEmits, SelectSlots } from './types';
 
 defineOptions({
@@ -25,15 +24,10 @@ const slots = defineSlots<SelectSlots<T, M>>();
 const forwardedProps = useOmitProps(props, ['class', 'ui', 'size']);
 
 const listeners = useForwardListeners(emit);
+
 const slotNames = computed(() => keysOf(slots));
 
-const ui = computed(() => {
-  const variants = selectVariants({
-    size: props.size
-  });
-
-  return mergeVariants(variants, props.ui, { trigger: props.class });
-});
+const ui = computed(() => selectVariants({ size: props.size }, props.ui, { trigger: props.class }));
 
 provideSelectUi(ui);
 </script>

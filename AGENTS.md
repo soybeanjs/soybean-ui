@@ -46,33 +46,33 @@ The remaining content in this file is repository knowledge and project context. 
 **Generated:** 2026-05-04
 **Version:** 0.17.0
 **Monorepo:** pnpm workspaces (`headless/`, `docs/`; root = `@soybeanjs/ui`)
-**Stack:** Vue 3 + TypeScript (strict) + UnoCSS + tailwind-variants ^3.2.2
+**Stack:** Vue 3 + TypeScript (strict) + UnoCSS + @soybeanjs/cva
 
 ## ARCHITECTURE
 
 Headless/Styled separation. Two packages ship independently:
 
 - **@soybeanjs/headless** (`headless/`): Logic, state, a11y. Zero styles. 95 component directories, 25 composables. Includes base primitives, date utilities, and Compact aggregations.
-- **@soybeanjs/ui** (`src/`): Styled wrappers. UnoCSS + `tv()`. 91 components, `S`-prefixed.
+- **@soybeanjs/ui** (`src/`): Styled wrappers. UnoCSS + `cv()` / `scv()`. 91 components, `S`-prefixed.
 - **@soybeanjs/ui-docs** (`docs/`): Vite + vite-ssg + unplugin-vue-markdown + markdown-exit. NOT VitePress.
 
 Data flow: `headless` → `src` (never reverse). UI injects styles via `provideXUi(ui)` → headless reads via `useUiContext`.
 
 ## WHERE TO LOOK
 
-| Task                     | Location                            | Key Pattern                                                                     |
-| ------------------------ | ----------------------------------- | ------------------------------------------------------------------------------- |
-| New component (logic)    | `headless/src/components/[name]/`   | types.ts → context.ts → base \*.vue → optional compact/hook files → index.ts    |
-| New component (styled)   | `src/components/[name]/`            | variants.ts → types.ts → `*.vue` → index.ts                                     |
-| Variant definitions      | `src/components/[name]/variants.ts` | `tv()` with `// @unocss-include` at top                                         |
-| Shared hooks             | `headless/src/composables/`         | `use-*.ts`, pure Vue composables (26 total)                                     |
-| Theme/sizing             | `src/theme/`                        | `cn()`, `provideSizeContext`, `ThemeColor` (8), `ThemeSize` (xs…2xl)            |
-| Utility functions        | `headless/src/shared/`              | Pure TS helpers (DOM, focus, tree, form, guard, comparison)                     |
-| Global types             | `headless/src/types/`               | `ClassValue`, `UiClass<S>`, `PropsToContext<T,K>`, `PrimitiveProps`             |
-| Generated API data       | `docs/src/generated/api/`           | `pnpm sui api` baseline + `pnpm sui api-translate` locale descriptions          |
-| Generated changelog data | `docs/src/generated/changelog/`     | `pnpm sui changelog` baseline + `pnpm sui changelog-translate` locale summaries |
-| Docs content             | `docs/src/docs/[en\|zh-CN]/`        | Markdown rendering `<UsageCode>`, `<PlaygroundGallery>`, `<ComponentApi>`       |
-| Demo source              | `playground/examples/[component]/`  | Vue SFCs referenced by docs                                                     |
+| Task                     | Location                                          | Key Pattern                                                                     |
+| ------------------------ | ------------------------------------------------- | ------------------------------------------------------------------------------- |
+| New component (logic)    | `headless/src/components/[name]/`                 | types.ts → context.ts → base \*.vue → optional compact/hook files → index.ts    |
+| New component (styled)   | `src/components/[name]/` + `src/styles/[name].ts` | style recipe → types.ts → `*.vue` → index.ts                                    |
+| Variant definitions      | `src/styles/[name].ts`                            | `cv()` / `scv()` with `// @unocss-include` at top                               |
+| Shared hooks             | `headless/src/composables/`                       | `use-*.ts`, pure Vue composables (26 total)                                     |
+| Theme/sizing             | `src/theme/`                                      | `ThemeColor` (8), `ThemeSize` (xs…2xl)                                          |
+| Utility functions        | `headless/src/shared/`                            | Pure TS helpers (DOM, focus, tree, form, guard, comparison)                     |
+| Global types             | `headless/src/types/`                             | `ClassValue`, `UiClass<S>`, `PropsToContext<T,K>`, `PrimitiveProps`             |
+| Generated API data       | `docs/src/generated/api/`                         | `pnpm sui api` baseline + `pnpm sui api-translate` locale descriptions          |
+| Generated changelog data | `docs/src/generated/changelog/`                   | `pnpm sui changelog` baseline + `pnpm sui changelog-translate` locale summaries |
+| Docs content             | `docs/src/docs/[en\|zh-CN]/`                      | Markdown rendering `<UsageCode>`, `<PlaygroundGallery>`, `<ComponentApi>`       |
+| Demo source              | `playground/examples/[component]/`                | Vue SFCs referenced by docs                                                     |
 
 ## BUILD & CI
 
@@ -130,10 +130,10 @@ pnpm sui changelog-translate -- --locale <locale>  # Translate generated English
 - **Props**: Always `extends /** @vue-ignore */ HTMLAttributes` to suppress IDE noise
 - **Context values**: Must be reactive — use `transformPropsToContext(props, keys)` to wrap in `ComputedRef`
 - **ui() two forms**: `use{Name}Ui('root')` → `ComputedRef<ClassValue>` (single slot); `use{Name}Ui()` → full map
-- **mergeVariants**: Always pass `{ root: props.class }` as third arg to merge the `class` prop
+- **Recipe merges**: For multi-slot wrappers, pass `props.ui` and `{ root: props.class }` directly into the `scv()` recipe call
 - **Multi-slot**: `provide{Name}Ui(ui)` pattern; only export `provide`, not `use`
 - **Compact aggregations**: For stable, data-driven composites, headless owns iteration, default content, and internal composition; UI wrappers stay thin and only handle variants, class injection, and prop/slot forwarding. Current examples span accordion, card, date-field, dialog, editable, hover-card, layout, navigation-menu, pagination, popover, stepper, and table flows.
-- **Single-class**: No UiContext; use `cn(variants({...}), props.class)` directly
+- **Single-class**: No UiContext; use `{name}Variants({...}, props.class)` directly
 - **index.ts re-exports**: UI component barrels re-export headless types from sub-path `@soybeanjs/headless/{component}`; `types.ts` should follow the established import style of neighboring components instead of mixing arbitrary paths
 - **Generated metadata**: after public export, API, or changelog mapping/docs-surface changes, rerun `pnpm sui headless`, `pnpm sui ui`, `pnpm sui api`, and `pnpm sui changelog` as needed; for non-English generated text, also run `pnpm sui api-translate -- --locale <locale>` and `pnpm sui changelog-translate -- --locale <locale>`
 
@@ -152,10 +152,10 @@ pnpm sui changelog-translate -- --locale <locale>  # Translate generated English
 
 组件开发规范入口：`.github/copilot-instructions.md` + `.github/instructions/*.instructions.md`。
 
-Minimal flow: headless types → headless context → headless base SFCs → optional Compact SFCs/hooks → UI variants → UI wrapper → barrel exports.
+Minimal flow: headless types → headless context → headless base SFCs → optional Compact SFCs/hooks → UI style recipe in `src/styles` → UI wrapper → barrel exports.
 
 Three component patterns:
 
-- **Multi-slot base components** (badge, accordion, dialog…): has `UiSlot` + `UiClass`, uses `mergeVariants`
+- **Multi-slot base components** (badge, accordion, dialog…): has `UiSlot` + `UiClass`, uses `scv()` results merged directly in the wrapper
 - **Compact aggregations** (`AccordionCompact`, `TableCompact`): live in headless, compose base primitives, and expose `*CompactProps` / `*CompactEmits` / `*CompactSlots`
-- **Single-class** (button, link…): no UiContext, uses `cn(variants, props.class)` directly
+- **Single-class** (button, link…): no UiContext, uses `{name}Variants({...}, props.class)` directly

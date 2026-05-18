@@ -3,8 +3,7 @@ import { computed } from 'vue';
 import { SegmentCompact } from '@soybeanjs/headless/segment';
 import { provideTabsUi } from '@soybeanjs/headless/tabs';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
-import { mergeVariants } from '@/theme';
-import { tabsVariants } from '../tabs/variants';
+import { segmentVariants } from '@/styles/segment';
 import type { SegmentProps, SegmentEmits, SegmentSlots, SegmentOptionData } from './types';
 
 defineOptions({
@@ -27,17 +26,19 @@ const forwardedProps = useOmitProps(props, ['class', 'size', 'ui', 'fill']);
 
 const listeners = useForwardListeners(emit);
 
-const ui = computed(() => {
-  const variants = tabsVariants({
-    size: props.size,
-    orientation: props.orientation,
-    shape: props.shape,
-    fill: props.fill,
-    enableIndicator: props.enableIndicator
-  });
-
-  return mergeVariants(variants, props.ui, { root: props.class });
-});
+const ui = computed(() =>
+  segmentVariants(
+    {
+      size: props.size,
+      orientation: props.orientation,
+      shape: props.shape,
+      fill: props.fill,
+      enableIndicator: props.enableIndicator
+    },
+    props.ui,
+    { root: props.class }
+  )
+);
 
 provideTabsUi(ui);
 </script>

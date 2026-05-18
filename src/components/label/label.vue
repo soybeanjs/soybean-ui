@@ -1,8 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { Label } from '@soybeanjs/headless/label';
-import { cn } from '@/theme';
-import { labelVariants } from './variants';
+import { labelVariants } from '@/styles/label';
 import type { LabelProps } from './types';
 
 defineOptions({
@@ -11,7 +10,7 @@ defineOptions({
 
 const props = defineProps<LabelProps>();
 
-const cls = computed(() => cn(labelVariants({ size: props.size }), props.class));
+const cls = computed(() => labelVariants({ size: props.size }, props.class));
 </script>
 
 <template>

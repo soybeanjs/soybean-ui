@@ -3,8 +3,7 @@ import { computed } from 'vue';
 import { RadioGroupCardCompact, provideRadioGroupCardUi } from '@soybeanjs/headless/radio-group';
 import type { RadioGroupCardOptionData } from '@soybeanjs/headless/radio-group';
 import { useOmitProps } from '@soybeanjs/headless/composables';
-import { mergeVariants } from '@/theme';
-import { radioGroupVariants } from './variants';
+import { radioGroupCardVariants } from '@/styles/radio-group';
 import type { RadioGroupCardProps, RadioGroupCardEmits, RadioGroupCardSlots } from './types';
 
 defineOptions({
@@ -19,15 +18,17 @@ const slots = defineSlots<RadioGroupCardSlots>();
 
 const forwardedProps = useOmitProps(props, ['class', 'ui', 'variant', 'color', 'size']);
 
-const ui = computed(() => {
-  const variants = radioGroupVariants({
-    variant: props.variant,
-    color: props.color,
-    size: props.size
-  });
-
-  return mergeVariants(variants, props.ui, { root: props.class });
-});
+const ui = computed(() =>
+  radioGroupCardVariants(
+    {
+      variant: props.variant,
+      color: props.color,
+      size: props.size
+    },
+    props.ui,
+    { root: props.class }
+  )
+);
 
 provideRadioGroupCardUi(ui);
 </script>

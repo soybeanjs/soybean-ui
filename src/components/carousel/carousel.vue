@@ -4,9 +4,7 @@ import { CarouselCompact, provideCarouselUi } from '@soybeanjs/headless/carousel
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
 import type { DefinedValue } from '@soybeanjs/headless/types';
 import { keysOf } from '@soybeanjs/utils';
-import { mergeVariants } from '@/theme';
-import { buttonIconVariants } from '../button/variants';
-import { carouselVariants } from './variants';
+import { carouselVariants } from '@/styles/carousel';
 import type { CarouselProps, CarouselEmits, CarouselSlots } from './types';
 
 defineOptions({
@@ -25,31 +23,17 @@ const listeners = useForwardListeners(emit);
 
 const slotNames = computed(() => keysOf(slots).filter(name => name !== 'item'));
 
-const ui = computed(() => {
-  const variants = Object.assign(
-    carouselVariants({
+const ui = computed(() =>
+  carouselVariants(
+    {
       size: props.size,
       orientation: props.orientation,
       floatNav: props.floatNav
-    }),
-    {
-      $base: {
-        previous: buttonIconVariants({
-          size: props.size,
-          variant: 'pure',
-          shape: 'circle'
-        }),
-        next: buttonIconVariants({
-          size: props.size,
-          variant: 'pure',
-          shape: 'circle'
-        })
-      }
-    }
-  );
-
-  return mergeVariants(variants, props.ui, { root: props.class });
-});
+    },
+    props.ui,
+    { root: props.class }
+  )
+);
 
 provideCarouselUi(ui);
 </script>

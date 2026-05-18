@@ -2,8 +2,7 @@
 import { computed } from 'vue';
 import { CheckboxCompact, provideCheckboxUi } from '@soybeanjs/headless/checkbox';
 import { useOmitProps } from '@soybeanjs/headless/composables';
-import { mergeVariants } from '@/theme';
-import { checkboxVariants } from './variants';
+import { checkboxVariants } from '@/styles/checkbox';
 import type { CheckboxProps, CheckboxEmits } from './types';
 
 defineOptions({
@@ -18,15 +17,17 @@ const emit = defineEmits<CheckboxEmits>();
 
 const forwardedProps = useOmitProps(props, ['class', 'ui', 'color', 'size', 'shape']);
 
-const ui = computed(() => {
-  const variants = checkboxVariants({
-    color: props.color,
-    size: props.size,
-    shape: props.shape
-  });
-
-  return mergeVariants(variants, props.ui, { root: props.class });
-});
+const ui = computed(() =>
+  checkboxVariants(
+    {
+      color: props.color,
+      size: props.size,
+      shape: props.shape
+    },
+    props.ui,
+    { root: props.class }
+  )
+);
 
 provideCheckboxUi(ui);
 </script>

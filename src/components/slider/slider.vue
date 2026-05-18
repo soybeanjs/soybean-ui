@@ -2,8 +2,7 @@
 import { computed } from 'vue';
 import { SliderCompact, provideSliderUi } from '@soybeanjs/headless/slider';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
-import { mergeVariants } from '@/theme';
-import { sliderVariants } from './variants';
+import { sliderVariants } from '@/styles/slider';
 import type { SliderProps, SliderEmits } from './types';
 
 defineOptions({
@@ -22,14 +21,16 @@ const listeners = useForwardListeners(emit);
 
 const forwardedProps = useOmitProps(props, ['class', 'color', 'size', 'ui']);
 
-const ui = computed(() => {
-  const variants = sliderVariants({
-    color: props.color,
-    size: props.size
-  });
-
-  return mergeVariants(variants, props.ui, { root: props.class });
-});
+const ui = computed(() =>
+  sliderVariants(
+    {
+      color: props.color,
+      size: props.size
+    },
+    props.ui,
+    { root: props.class }
+  )
+);
 
 provideSliderUi(ui);
 </script>

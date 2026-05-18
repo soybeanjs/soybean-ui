@@ -1,5 +1,6 @@
 import type { ScrollAreaCompactEmits, ScrollAreaCompactProps, ScrollAreaUi } from '@soybeanjs/headless/scroll-area';
 import type { ClassValue } from '@soybeanjs/headless/types';
+import type { ThemeSize } from '@/theme';
 
 /**
  * Properties for the ScrollArea component.
@@ -13,6 +14,10 @@ export interface ScrollAreaProps extends ScrollAreaCompactProps {
    * Per-slot class overrides for the component.
    */
   ui?: Partial<ScrollAreaUi>;
+  /**
+   * Size of the ScrollArea component.
+   */
+  size?: ThemeSize;
 }
 
 /**

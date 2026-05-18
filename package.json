@@ -71,14 +71,12 @@
   },
   "dependencies": {
     "@iconify/vue": "^5.0.1",
+    "@soybeanjs/cva": "^0.0.9",
     "@soybeanjs/headless": "workspace:^",
     "@soybeanjs/hooks": "^0.3.0",
     "@soybeanjs/shadcn-theme": "^0.3.1",
     "@soybeanjs/utils": "^0.1.1",
-    "clsx": "^2.1.1",
     "fuse.js": "^7.3.0",
-    "tailwind-merge": "^3.6.0",
-    "tailwind-variants": "^3.2.2",
     "valibot": "^1.4.0",
     "zod": "^4.4.3"
   },

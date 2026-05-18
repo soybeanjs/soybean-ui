@@ -1,7 +1,7 @@
 import type { SeparatorCompactProps, SeparatorUi } from '@soybeanjs/headless/separator';
 import type { Align, ClassValue } from '@soybeanjs/headless/types';
 import type { ThemeSize } from '@/theme';
-import type { SeparatorBorder } from './variants';
+import type { SeparatorBorder } from '@/styles/separator';
 
 /**
  * Properties for the Separator component.

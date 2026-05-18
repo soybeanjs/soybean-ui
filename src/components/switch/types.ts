@@ -1,7 +1,7 @@
 import type { SwitchCompactEmits, SwitchCompactProps, SwitchCompactSlots, SwitchUi } from '@soybeanjs/headless/switch';
 import type { AcceptableBooleanValue, ClassValue } from '@soybeanjs/headless/types';
 import type { ThemeColor, ThemeSize } from '@/theme';
-import type { SwitchShape } from './variants';
+import type { SwitchShape } from '@/styles/switch';
 
 /**
  * Properties for the Switch component.

@@ -2,8 +2,7 @@
 import { computed } from 'vue';
 import { ProgressCircleCompact, provideProgressUi } from '@soybeanjs/headless/progress';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
-import { mergeVariants } from '@/theme';
-import { progressCircleVariants } from './variants';
+import { progressCircleVariants } from '@/styles/progress';
 import type { ProgressCircleProps, ProgressCircleEmits, ProgressCircleSlots } from './types';
 
 defineOptions({
@@ -20,14 +19,9 @@ const forwardedProps = useOmitProps(props, ['class', 'color', 'size', 'ui', 'str
 
 const listeners = useForwardListeners(emit);
 
-const ui = computed(() => {
-  const variants = progressCircleVariants({
-    color: props.color,
-    size: props.size
-  });
-
-  return mergeVariants(variants, props.ui, { root: props.class });
-});
+const ui = computed(() =>
+  progressCircleVariants({ color: props.color, size: props.size }, props.ui, { root: props.class })
+);
 
 const hasDefaultSlot = computed(() => Boolean(slots.default));
 

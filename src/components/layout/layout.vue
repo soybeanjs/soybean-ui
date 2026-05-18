@@ -3,10 +3,8 @@ import { computed } from 'vue';
 import { LayoutCompact, provideLayoutUi } from '@soybeanjs/headless/layout';
 import { useOmitProps } from '@soybeanjs/headless/composables';
 import { keysOf } from '@soybeanjs/utils';
-import { mergeVariants, themeSizeMap, themeSizeRatio } from '@/theme';
-import { drawerVariants } from '../drawer/variants';
-import { buttonIconVariants } from '../button/variants';
-import { layoutVariants } from './variants';
+import { themeSizeMap, themeSizeRatio } from '@/theme';
+import { layoutVariants } from '@/styles/layout';
 import type { LayoutProps, LayoutEmits, LayoutSlots } from './types';
 
 defineOptions({
@@ -39,37 +37,19 @@ const pxToRem = (px: number) => {
   return (px * themeSizeRatio[props.size]) / themeSizeMap.md;
 };
 
-const ui = computed(() => {
-  const variants = Object.assign(
-    layoutVariants({
+const ui = computed(() =>
+  layoutVariants(
+    {
       size: props.size,
       variant: props.variant,
       side: props.side,
       collapsible: props.collapsible,
       fullContent: props.fullContent
-    }),
-    {
-      $base: {
-        trigger: buttonIconVariants({
-          size: props.size
-        })
-      },
-      $alias: {
-        variants: {
-          ...drawerVariants({
-            size: props.size,
-            side: props.side
-          })
-        },
-        map: {
-          popup: 'mobileDrawer'
-        }
-      }
-    }
-  );
-
-  return mergeVariants(variants, props.ui, { root: props.class });
-});
+    },
+    props.ui,
+    { root: props.class }
+  )
+);
 
 provideLayoutUi(ui);
 </script>

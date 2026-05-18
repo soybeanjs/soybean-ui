@@ -2,8 +2,7 @@
 import { computed } from 'vue';
 import { ToolbarRoot, provideToolbarUi } from '@soybeanjs/headless/toolbar';
 import { useOmitProps } from '@soybeanjs/headless/composables';
-import { mergeVariants } from '@/theme';
-import { toolbarVariants } from './variants';
+import { toolbarVariants } from '@/styles/toolbar';
 import type { ToolbarProps } from './types';
 
 defineOptions({
@@ -14,13 +13,7 @@ const props = defineProps<ToolbarProps>();
 
 const forwardedProps = useOmitProps(props, ['class', 'size', 'ui']);
 
-const ui = computed(() => {
-  const variants = toolbarVariants({
-    size: props.size
-  });
-
-  return mergeVariants(variants, props.ui, { root: props.class });
-});
+const ui = computed(() => toolbarVariants({ size: props.size }, props.ui, { root: props.class }));
 
 provideToolbarUi(ui);
 </script>

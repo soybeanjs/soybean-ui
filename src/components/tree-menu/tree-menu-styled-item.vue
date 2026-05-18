@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { mergeVariants } from '@/theme';
-import { treeMenuVariants } from './variants';
+import { treeMenuVariants } from '@/styles/tree-menu';
 import type { TreeMenuStyledItemProps } from './types';
 
 defineOptions({
@@ -10,13 +9,7 @@ defineOptions({
 
 const props = defineProps<TreeMenuStyledItemProps>();
 
-const ui = computed(() => {
-  const variants = treeMenuVariants({
-    size: props.size
-  });
-
-  return mergeVariants(variants, props.ui, { item: props.class });
-});
+const ui = computed(() => treeMenuVariants({ size: props.size }, props.ui, { item: props.class }));
 </script>
 
 <template>

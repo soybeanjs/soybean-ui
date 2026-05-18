@@ -4,9 +4,8 @@ import { MenubarCompact, provideMenubarUi } from '@soybeanjs/headless/menubar';
 import type { DefinedValue } from '@soybeanjs/headless/types';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
 import { keysOf } from '@soybeanjs/utils';
-import { mergeVariants } from '@/theme';
+import { menubarVariants } from '@/styles/menubar';
 import { provideMenuUi } from '../menu/context';
-import { menubarVariants } from './variants';
 import type { MenubarProps, MenubarEmits, MenubarSlots } from './types';
 
 defineOptions({
@@ -25,13 +24,7 @@ const listeners = useForwardListeners(emit);
 
 const slotNames = computed(() => keysOf(slots));
 
-const ui = computed(() => {
-  const variants = menubarVariants({
-    size: props.size
-  });
-
-  return mergeVariants(variants, props.ui, { root: props.class });
-});
+const ui = computed(() => menubarVariants({ size: props.size }, props.ui, { root: props.class }));
 
 provideMenubarUi(ui);
 provideMenuUi(() => props);

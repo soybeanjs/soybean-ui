@@ -6,7 +6,7 @@ import type {
 } from '@soybeanjs/headless/textarea';
 import type { ClassValue } from '@soybeanjs/headless/types';
 import type { ThemeSize } from '@/theme';
-import type { TextareaResize } from './variants';
+import type { TextareaResize } from '@/styles/textarea';
 
 /**
  * Properties for the Textarea component.

@@ -3,8 +3,7 @@ import { computed } from 'vue';
 import { NavigationMenuCompact, provideNavigationMenuUi } from '@soybeanjs/headless/navigation-menu';
 import { useOmitProps, useForwardListeners } from '@soybeanjs/headless/composables';
 import { keysOf } from '@soybeanjs/utils';
-import { mergeVariants } from '@/theme';
-import { navigationMenuVariants } from './variants';
+import { navigationMenuVariants } from '@/styles/navigation-menu';
 import type { NavigationMenuProps, NavigationMenuEmits, NavigationMenuSlots } from './types';
 
 defineOptions({
@@ -23,13 +22,7 @@ const listeners = useForwardListeners(emit);
 
 const slotNames = computed(() => keysOf(slots));
 
-const ui = computed(() => {
-  const variants = navigationMenuVariants({
-    size: props.size
-  });
-
-  return mergeVariants(variants, props.ui, { root: props.class });
-});
+const ui = computed(() => navigationMenuVariants({ size: props.size }, props.ui, { root: props.class }));
 
 provideNavigationMenuUi(ui);
 </script>

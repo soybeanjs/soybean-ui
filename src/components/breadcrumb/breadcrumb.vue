@@ -3,8 +3,7 @@ import { computed } from 'vue';
 import { BreadcrumbCompact, provideBreadcrumbUi } from '@soybeanjs/headless/breadcrumb';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
 import { keysOf } from '@soybeanjs/utils';
-import { mergeVariants } from '@/theme';
-import { breadcrumbVariants } from './variants';
+import { breadcrumbVariants } from '@/styles/breadcrumb';
 import type { BreadcrumbProps, BreadcrumbEmits, BreadcrumbOptionData, BreadcrumbSlots } from './types';
 
 defineOptions({
@@ -23,13 +22,7 @@ const listeners = useForwardListeners(emit);
 
 const slotNames = computed(() => keysOf(slots));
 
-const ui = computed(() => {
-  const variants = breadcrumbVariants({
-    size: props.size
-  });
-
-  return mergeVariants(variants, props.ui, { root: props.class });
-});
+const ui = computed(() => breadcrumbVariants({ size: props.size }, props.ui, { root: props.class }));
 
 provideBreadcrumbUi(ui);
 </script>

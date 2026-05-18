@@ -6,7 +6,7 @@ import type {
 } from '@soybeanjs/headless/pagination';
 import type { ClassValue } from '@soybeanjs/headless/types';
 import type { ThemeSize } from '@/theme';
-import type { PaginationShape, PaginationVariant } from './variants';
+import type { PaginationShape, PaginationVariant } from '@/styles/pagination';
 
 /**
  * Properties for the Pagination component.

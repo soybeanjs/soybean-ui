@@ -2,8 +2,7 @@
 import { computed } from 'vue';
 import { ProgressCompact, provideProgressUi } from '@soybeanjs/headless/progress';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
-import { mergeVariants } from '@/theme';
-import { progressVariants } from './variants';
+import { progressVariants } from '@/styles/progress';
 import type { ProgressProps, ProgressEmits, ProgressSlots } from './types';
 
 defineOptions({
@@ -20,14 +19,7 @@ const forwardedProps = useOmitProps(props, ['class', 'color', 'size', 'ui', 'ind
 
 const listeners = useForwardListeners(emit);
 
-const ui = computed(() => {
-  const variants = progressVariants({
-    color: props.color,
-    size: props.size
-  });
-
-  return mergeVariants(variants, props.ui, { root: props.class });
-});
+const ui = computed(() => progressVariants({ color: props.color, size: props.size }, props.ui, { root: props.class }));
 
 provideProgressUi(ui);
 </script>

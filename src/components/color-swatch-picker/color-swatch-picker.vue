@@ -2,9 +2,7 @@
 import { computed } from 'vue';
 import { ColorSwatchPickerCompact, provideColorSwatchPickerUi } from '@soybeanjs/headless/color-swatch-picker';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
-import { mergeVariants } from '@/theme';
-import { colorSwatchVariants } from '../color-swatch/variants';
-import { colorSwatchPickerVariants } from './variants';
+import { colorSwatchPickerVariants } from '@/styles/color-swatch-picker';
 import type { ColorSwatchPickerProps, ColorSwatchPickerEmits } from './types';
 
 defineOptions({
@@ -26,20 +24,9 @@ const listeners = useForwardListeners(emit);
 
 const forwardedProps = useOmitProps(props, ['class', 'size', 'ui', 'shape']);
 
-const ui = computed(() => {
-  const variants = Object.assign(colorSwatchPickerVariants({ size: props.size, shape: props.shape }), {
-    $alias: {
-      variants: colorSwatchVariants({ size: props.size }),
-      map: {
-        root: 'swatchRoot',
-        checker: 'swatchChecker',
-        fill: 'swatchFill'
-      }
-    }
-  });
-
-  return mergeVariants(variants, props.ui, { root: props.class });
-});
+const ui = computed(() =>
+  colorSwatchPickerVariants({ size: props.size, shape: props.shape }, props.ui, { root: props.class })
+);
 
 provideColorSwatchPickerUi(ui);
 </script>

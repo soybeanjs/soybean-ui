@@ -3,9 +3,7 @@ import { computed } from 'vue';
 import { PopconfirmCompact, providePopconfirmUi } from '@soybeanjs/headless/popconfirm';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
 import { keysOf } from '@soybeanjs/utils';
-import { mergeVariants, miniSizeMap } from '@/theme';
-import { buttonVariants, buttonIconVariants } from '../button/variants';
-import { popconfirmVariants } from './variants';
+import { popconfirmVariants } from '@/styles/popconfirm';
 import type { PopconfirmProps, PopconfirmEmits, PopconfirmSlots } from './types';
 
 defineOptions({
@@ -29,33 +27,7 @@ const listeners = useForwardListeners(emit);
 
 const slotNames = keysOf(slots);
 
-const ui = computed(() => {
-  const miniSize = miniSizeMap[props.size ?? 'md'];
-
-  const variants = Object.assign(
-    popconfirmVariants({
-      size: props.size,
-      type: props.type
-    }),
-    {
-      $base: {
-        cancel: buttonVariants({
-          variant: 'pure',
-          size: miniSize
-        }),
-        confirm: buttonVariants({
-          variant: 'solid',
-          size: miniSize
-        }),
-        close: buttonIconVariants({
-          size: miniSize
-        })
-      }
-    }
-  );
-
-  return mergeVariants(variants, props.ui, { popup: props.class });
-});
+const ui = computed(() => popconfirmVariants({ size: props.size, type: props.type }, props.ui, { popup: props.class }));
 
 providePopconfirmUi(ui);
 </script>

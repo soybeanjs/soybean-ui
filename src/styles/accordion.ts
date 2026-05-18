@@ -1,0 +1,59 @@
+// @unocss-include
+import { scv } from '@soybeanjs/cva';
+
+export const accordionVariants = scv({
+  slots: {
+    root: '',
+    item: 'border-b',
+    header: 'flex',
+    content: [
+      `overflow-hidden transition will-change-auto`,
+      `data-[state=open]:animate-accordion-down data-[state=closed]:animate-accordion-up`
+    ],
+    description: 'm-0',
+    trigger: [
+      `flex-1 flex items-center justify-start font-medium transition-all-200 bg-transparent`,
+      `outline-none focus-visible:ring-3 focus-visible:ring-offset-background focus-visible:ring-primary/30`,
+      `hover:underline [&[data-state=open]>.trigger-icon]:rotate-180`
+    ],
+    triggerLeadingIcon: `shrink-0`,
+    triggerIcon: `trigger-icon ms-auto shrink-0 text-muted-foreground transition-transform-200`
+  },
+  variants: {
+    size: {
+      xs: {
+        root: 'text-2xs',
+        description: 'pb-3',
+        trigger: 'py-3 gap-2.5'
+      },
+      sm: {
+        root: 'text-xs',
+        description: 'pb-3.5',
+        trigger: 'py-3.5 gap-3'
+      },
+      md: {
+        root: 'text-sm',
+        description: 'pb-4',
+        trigger: 'py-4 gap-3.5'
+      },
+      lg: {
+        root: 'text-base',
+        description: 'pb-4.5',
+        trigger: 'py-4.5 gap-4'
+      },
+      xl: {
+        root: 'text-lg',
+        description: 'pb-5',
+        trigger: 'py-5 gap-4.5'
+      },
+      '2xl': {
+        root: 'text-2xl',
+        description: 'pb-6',
+        trigger: 'py-6 gap-5'
+      }
+    }
+  },
+  defaultVariants: {
+    size: 'md'
+  }
+});

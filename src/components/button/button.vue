@@ -2,9 +2,8 @@
 import { computed } from 'vue';
 import { Button } from '@soybeanjs/headless/button';
 import { useOmitProps } from '@soybeanjs/headless/composables';
-import { cn } from '@/theme';
+import { buttonVariants } from '@/styles/button';
 import { useButtonGroupContext } from './context';
-import { buttonVariants } from './variants';
 import type { ButtonProps, ButtonEmits } from './types';
 
 defineOptions({
@@ -31,16 +30,19 @@ const forwardedProps = useOmitProps(props, [
 const cls = computed(() => {
   const { size, color, variant, shape, shadow, fitContent } = buttonGroupContext || {};
 
-  const variants = buttonVariants({
-    size: props.size || size?.value,
-    color: props.color || color?.value,
-    variant: props.variant || variant?.value,
-    shape: props.shape || shape?.value,
-    shadow: props.shadow || shadow?.value,
-    fitContent: props.fitContent || fitContent?.value
-  });
+  const variants = buttonVariants(
+    {
+      size: props.size || size?.value,
+      color: props.color || color?.value,
+      variant: props.variant || variant?.value,
+      shape: props.shape || shape?.value,
+      shadow: props.shadow || shadow?.value,
+      fitContent: props.fitContent || fitContent?.value
+    },
+    props.class
+  );
 
-  return cn(variants, props.class);
+  return variants;
 });
 
 const disabled = computed(() => props.disabled || buttonGroupContext?.disabled.value);

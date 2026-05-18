@@ -2,8 +2,7 @@
 import { computed } from 'vue';
 import { TimeFieldCompact, provideTimeFieldUi } from '@soybeanjs/headless/time-field';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
-import { mergeVariants } from '@/theme';
-import { dateFieldVariants } from '../date-field/variants';
+import { dateFieldVariants } from '@/styles/date-field';
 import type { TimeFieldProps, TimeFieldEmits } from './types';
 
 defineOptions({
@@ -18,11 +17,7 @@ const listeners = useForwardListeners(emit);
 
 const forwardedProps = useOmitProps(props, ['class', 'size', 'ui']);
 
-const ui = computed(() => {
-  const variants = dateFieldVariants({ size: props.size });
-
-  return mergeVariants(variants, props.ui, { root: props.class });
-});
+const ui = computed(() => dateFieldVariants({ size: props.size }, props.ui, { root: props.class }));
 
 provideTimeFieldUi(ui);
 </script>

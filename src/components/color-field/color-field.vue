@@ -2,8 +2,7 @@
 import { computed } from 'vue';
 import { ColorFieldCompact, provideColorFieldUi } from '@soybeanjs/headless/color-field';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
-import { mergeVariants } from '@/theme';
-import { colorFieldVariants } from './variants';
+import { colorFieldVariants } from '@/styles/color-field';
 import type { ColorFieldProps, ColorFieldEmits } from './types';
 
 defineOptions({
@@ -18,11 +17,7 @@ const listeners = useForwardListeners(emit);
 
 const forwardedProps = useOmitProps(props, ['class', 'size', 'ui']);
 
-const ui = computed(() => {
-  const variants = colorFieldVariants({ size: props.size });
-
-  return mergeVariants(variants, props.ui, { root: props.class });
-});
+const ui = computed(() => colorFieldVariants({ size: props.size }, props.ui, { root: props.class }));
 
 provideColorFieldUi(ui);
 </script>

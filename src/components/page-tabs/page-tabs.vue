@@ -4,9 +4,8 @@ import { PageTabsCompact, providePageTabsUi } from '@soybeanjs/headless/page-tab
 import type { PageTabsOptionData } from '@soybeanjs/headless/page-tabs';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
 import { keysOf } from '@soybeanjs/utils';
-import { mergeVariants } from '@/theme';
 import { provideMenuUi } from '../menu/context';
-import { pageTabsVariants } from './variants';
+import { pageTabsVariants } from '@/styles/page-tabs';
 import type { PageTabsProps, PageTabsEmits, PageTabsSlots } from './types';
 
 defineOptions({
@@ -28,14 +27,16 @@ const listeners = useForwardListeners(emit);
 
 const slotNames = computed(() => keysOf(slots).filter(name => name !== 'indicator'));
 
-const ui = computed(() => {
-  const variants = pageTabsVariants({
-    size: props.size,
-    variant: props.variant
-  });
-
-  return mergeVariants(variants, props.ui, { root: props.class });
-});
+const ui = computed(() =>
+  pageTabsVariants(
+    {
+      size: props.size,
+      variant: props.variant
+    },
+    props.ui,
+    { root: props.class }
+  )
+);
 
 provideMenuUi(() => ({
   size: props.size

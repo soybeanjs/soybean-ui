@@ -67,7 +67,6 @@ import { computed } from 'vue';
 import type { ComputedRef } from 'vue';
 import axios from 'axios';
 import type { Methods } from 'axios';
-import { cn } from '@/theme';
-import { mergeVariants } from '../shared';
+import { buttonVariants } from '@/styles/button';
 import type { ButtonProps } from './types';
 ```

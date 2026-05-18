@@ -2,8 +2,7 @@
 import { computed } from 'vue';
 import { InputOtpCompact, provideInputOtpUi } from '@soybeanjs/headless/input-otp';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
-import { mergeVariants } from '@/theme';
-import { inputOtpVariants } from './variants';
+import { inputOtpVariants } from '@/styles/input-otp';
 import type { InputOtpProps, InputOtpEmits, InputOtpSlots } from './types';
 
 defineOptions({
@@ -20,14 +19,7 @@ const listeners = useForwardListeners(emit);
 
 const rootProps = useOmitProps(props, ['class', 'size', 'align', 'ui']);
 
-const ui = computed(() => {
-  const variants = inputOtpVariants({
-    size: props.size,
-    align: props.align
-  });
-
-  return mergeVariants(variants, props.ui, { root: props.class });
-});
+const ui = computed(() => inputOtpVariants({ size: props.size, align: props.align }, props.ui, { root: props.class }));
 
 provideInputOtpUi(ui);
 </script>

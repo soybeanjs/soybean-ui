@@ -1,7 +1,7 @@
 import { miniSizeMap } from '@/theme';
 import type { ThemeSize } from '@/theme';
+import { buttonVariants } from '@/styles/button';
 import type { ButtonProps } from '../button/types';
-import { buttonVariants } from '../button/variants';
 
 type PopconfirmButtonStyleProps = Pick<ButtonProps, 'color' | 'fitContent' | 'shape' | 'shadow' | 'size' | 'variant'>;
 

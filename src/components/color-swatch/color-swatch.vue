@@ -2,8 +2,7 @@
 import { computed } from 'vue';
 import { useOmitProps } from '@soybeanjs/headless/composables';
 import { ColorSwatchCompact, provideColorSwatchUi } from '@soybeanjs/headless/color-swatch';
-import { mergeVariants } from '@/theme';
-import { colorSwatchVariants } from './variants';
+import { colorSwatchVariants } from '@/styles/color-swatch';
 import type { ColorSwatchProps, ColorSwatchSlots } from './types';
 
 defineOptions({
@@ -16,14 +15,9 @@ defineSlots<ColorSwatchSlots>();
 
 const forwardedProps = useOmitProps(props, ['class', 'ui', 'size', 'shape']);
 
-const ui = computed(() => {
-  const variants = colorSwatchVariants({
-    size: props.size,
-    shape: props.shape
-  });
-
-  return mergeVariants(variants, props.ui, { root: props.class });
-});
+const ui = computed(() =>
+  colorSwatchVariants({ size: props.size, shape: props.shape }, props.ui, { root: props.class })
+);
 
 provideColorSwatchUi(ui);
 </script>

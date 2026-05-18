@@ -12,13 +12,13 @@ import { provideTableUi, TableCompact } from '@soybeanjs/headless/table';
 import type { TableSortOrder } from '@soybeanjs/headless/table';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
 import { useLocaleMessages } from '@soybeanjs/headless';
-import { mergeVariants, miniSizeMap } from '@/theme';
+import { miniSizeMap } from '@/theme';
+import { tableVariants } from '@/styles/table';
 import SButtonIcon from '../button/button-icon.vue';
 import SEmpty from '../empty/empty.vue';
 import SCheckbox from '../checkbox/checkbox.vue';
 import TableFilterPopover from './table-filter-popover.vue';
 import TableRadio from './table-radio.vue';
-import { tableVariants } from './variants';
 import type { TableProps, TableBaseData, TableEmits, TableSlots } from './types';
 
 defineOptions({
@@ -40,17 +40,19 @@ const listeners = useForwardListeners(emit);
 
 const slotNames = computed(() => Object.keys(slots) as Array<keyof TableSlots<T>>);
 
-const ui = computed(() => {
-  const variants = tableVariants({
-    size: props.size,
-    variant: props.variant,
-    bordered: props.bordered,
-    rounded: props.rounded,
-    striped: props.striped
-  });
-
-  return mergeVariants(variants, props.ui, { root: props.class });
-});
+const ui = computed(() =>
+  tableVariants(
+    {
+      size: props.size,
+      variant: props.variant,
+      bordered: props.bordered,
+      rounded: props.rounded,
+      striped: props.striped
+    },
+    props.ui,
+    { root: props.class }
+  )
+);
 
 const miniSize = computed(() => miniSizeMap[props.size ?? 'md']);
 

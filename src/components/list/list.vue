@@ -1,8 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { ListRoot, provideListUi } from '@soybeanjs/headless/list';
-import { mergeVariants } from '@/theme';
-import { listVariants } from './variants';
+import { listVariants } from '@/styles/list';
 import type { ListProps } from './types';
 
 defineOptions({
@@ -11,13 +10,7 @@ defineOptions({
 
 const props = defineProps<ListProps>();
 
-const ui = computed(() => {
-  const variants = listVariants({
-    size: props.size
-  });
-
-  return mergeVariants(variants, props.ui, { root: props.class });
-});
+const ui = computed(() => listVariants({ size: props.size }, props.ui, { root: props.class }));
 
 provideListUi(ui);
 </script>

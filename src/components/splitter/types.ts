@@ -8,6 +8,7 @@ import type {
   SplitterUi
 } from '@soybeanjs/headless/splitter';
 import type { ClassValue } from '@soybeanjs/headless/types';
+import { ThemeSize } from '@/theme';
 
 /**
  * Properties for the SplitterGroup component.
@@ -21,6 +22,10 @@ export interface SplitterGroupProps extends HeadlessSplitterGroupProps {
    * Per-slot class overrides for the component.
    */
   ui?: Partial<SplitterUi>;
+  /**
+   * Visual size of the component.
+   */
+  size?: ThemeSize;
 }
 
 /**

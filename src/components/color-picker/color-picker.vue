@@ -9,16 +9,14 @@ import { provideColorSwatchPickerUi } from '@soybeanjs/headless/color-swatch-pic
 import { provideColorSliderUi } from '@soybeanjs/headless/color-slider';
 import { providePopoverUi } from '@soybeanjs/headless/popover';
 import { provideTabsUi } from '@soybeanjs/headless/tabs';
-import { mergeVariants, miniSizeMap } from '@/theme';
-import { buttonIconVariants, buttonVariants } from '../button/variants';
-import { popoverVariants } from '../popover/variants';
-import { colorAreaVariants } from '../color-area/variants';
-import { colorFieldVariants } from '../color-field/variants';
-import { colorSwatchVariants } from '../color-swatch/variants';
-import { colorSwatchPickerVariants } from '../color-swatch-picker/variants';
-import { sliderVariants } from '../slider/variants';
-import { tabsVariants } from '../tabs/variants';
-import { colorPickerVariants } from './variants';
+import { popoverVariants } from '@/styles/popover';
+import { colorAreaVariants } from '@/styles/color-area';
+import { colorFieldVariants } from '@/styles/color-field';
+import { colorSwatchVariants } from '@/styles/color-swatch';
+import { colorSwatchPickerVariants } from '@/styles/color-swatch-picker';
+import { sliderVariants } from '@/styles/slider';
+import { tabsVariants } from '@/styles/tabs';
+import { colorPickerVariants } from '@/styles/color-picker';
 import type { ColorPickerProps, ColorPickerEmits } from './types';
 
 defineOptions({
@@ -39,65 +37,22 @@ const forwardedProps = useOmitProps(props, ['class', 'size', 'ui']);
 
 const listeners = useForwardListeners(emit);
 
-const miniSize = computed(() => miniSizeMap[props.size ?? 'md']);
-
-const ui = computed(() => {
-  const baseVariants = colorPickerVariants({ size: props.size });
-
-  const variants = Object.assign(baseVariants, {
-    $base: {
-      trigger: buttonVariants({
-        size: props.size,
-        variant: 'pure'
-      }),
-      close: buttonIconVariants({ size: miniSize.value })
-    }
-  });
-
-  return mergeVariants(variants, props.ui, { trigger: props.class });
-});
-
-const popoverUi = computed(() => {
-  const variants = Object.assign(popoverVariants({ size: props.size }), {
-    $base: {
-      close: buttonIconVariants({ size: miniSize.value })
-    }
-  });
-
-  return mergeVariants(variants, props.ui);
-});
-
-const colorAreaUi = computed(() => {
-  const variants = colorAreaVariants({ size: props.size });
-  return mergeVariants(variants);
-});
-const colorFieldUi = computed(() => {
-  const variants = colorFieldVariants({ size: props.size });
-  return mergeVariants(variants);
-});
-const colorSwatchUi = computed(() => {
-  const variants = colorSwatchVariants({ size: props.size, shape: 'square' });
-  return mergeVariants(variants);
-});
-const colorSwatchPickerUi = computed(() => {
-  const variants = colorSwatchPickerVariants({ size: props.size, shape: 'square' });
-  return mergeVariants(variants);
-});
-const colorSliderUi = computed(() => {
-  const variants = sliderVariants({ size: props.size });
-  return mergeVariants(variants);
-});
-const segmentUi = computed(() => {
-  const variants = tabsVariants({
+const ui = computed(() => colorPickerVariants({ size: props.size }, props.ui, { trigger: props.class }));
+const popoverUi = computed(() => popoverVariants({ size: props.size }, { popup: props.ui?.popup }));
+const colorAreaUi = computed(() => colorAreaVariants({ size: props.size }));
+const colorFieldUi = computed(() => colorFieldVariants({ size: props.size }));
+const colorSwatchUi = computed(() => colorSwatchVariants({ size: props.size, shape: 'square' }));
+const colorSwatchPickerUi = computed(() => colorSwatchPickerVariants({ size: props.size, shape: 'square' }));
+const colorSliderUi = computed(() => sliderVariants({ size: props.size }));
+const segmentUi = computed(() =>
+  tabsVariants({
     size: props.size,
     orientation: 'horizontal',
     shape: 'square',
     fill: 'auto',
     enableIndicator: true
-  });
-
-  return mergeVariants(variants);
-});
+  })
+);
 
 provideColorPickerUi(ui);
 providePopoverUi(popoverUi);

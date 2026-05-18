@@ -1,7 +1,7 @@
 import type { ToggleEmits, ToggleProps as _ToggleProps } from '@soybeanjs/headless/toggle';
 import type { ClassValue } from '@soybeanjs/headless/types';
 import type { ThemeSize, ThemeColor } from '@/theme';
-import type { ToggleVariant, ToggleShape } from './variants';
+import type { ToggleVariant, ToggleShape } from '@/styles/toggle';
 
 /**
  * Properties for the Toggle component.

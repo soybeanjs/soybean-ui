@@ -21,7 +21,7 @@ SoybeanUI is built on a strict **two-layer separation** model:
 ┌─────────────────────────────────────────┐
 │           @soybeanjs/ui (src/)          │
 │  S-prefixed components   (SButton…)     │
-│  UnoCSS classes · tailwind-variants     │
+│  UnoCSS classes · @soybeanjs/cva        │
 │  provideXUi(ui)  ──────────────────┐    │
 └────────────────────────────────────┼────┘
                                      │ style injection
@@ -35,10 +35,10 @@ SoybeanUI is built on a strict **two-layer separation** model:
 
 ### Packages
 
-| Package                 | Role                              | Components                        |
-| ----------------------- | --------------------------------- | --------------------------------- |
-| **@soybeanjs/headless** | Logic, state, a11y. Zero styles.  | 95 component dirs, 25 composables |
-| **@soybeanjs/ui**       | Styled wrappers. UnoCSS + `tv()`. | 91 `S`-prefixed components        |
+| Package                 | Role                                                | Components                        |
+| ----------------------- | --------------------------------------------------- | --------------------------------- |
+| **@soybeanjs/headless** | Logic, state, a11y. Zero styles.                    | 95 component dirs, 25 composables |
+| **@soybeanjs/ui**       | Styled wrappers. UnoCSS + `@soybeanjs/cva` recipes. | 91 `S`-prefixed components        |
 
 **Data flow is strictly one-way**: `headless` → `src`. The styled layer never imports from headless's internals — it injects style tokens via `provideXUi(computedUi)` which headless components read through `useUiContext()`.
 
@@ -48,17 +48,11 @@ Current Compact-style coverage also includes flows such as card, date-field, dia
 
 ### Style Injection
 
-Every multi-slot headless component exposes a `provide{Name}Ui` function. The styled wrapper computes classes using `tailwind-variants` and injects them:
+Every multi-slot headless component exposes a `provide{Name}Ui` function. The styled wrapper computes classes with `@soybeanjs/cva` recipes and injects them:
 
 ```ts
 // In the styled wrapper (src/)
-const ui = computed(() =>
-  mergeVariants(
-    accordionVariants({ size: props.size }), // tv() output
-    props.ui, // user overrides
-    { root: props.class } // class prop
-  )
-);
+const ui = computed(() => accordionVariants({ size: props.size }, props.ui, { root: props.class }));
 provideAccordionUi(ui); // headless reads this via useAccordionUi()
 ```
 
@@ -67,7 +61,6 @@ provideAccordionUi(ui); // headless reads this via useAccordionUi()
 - **`ThemeColor`** — 8 semantic colors: `primary` · `destructive` · `success` · `warning` · `info` · `carbon` · `secondary` · `accent`
 - **`ThemeSize`** — 6 sizes: `xs` · `sm` · `md` · `lg` · `xl` · `2xl` (base 16px at `md`)
 - **`ConfigProvider`** — sets global `dir`, `locale`, `nonce`, and default `tooltip` config for the entire component tree, including RTL layout switching
-- **`cn()`** — Tailwind-aware class merge (`clsx` + `tailwind-merge`), used for conflict-free class composition
 
 ### Locale Support
 

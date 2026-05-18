@@ -26,7 +26,7 @@ Built entirely with TypeScript, SoybeanUI provides complete type definitions and
 
 ### 🎨 Highly customizable
 
-Built on UnoCSS and `tailwind-variants`, SoybeanUI supports flexible theming. You can easily adjust colors, sizes, border radius, and more to match your brand.
+Built on UnoCSS and `@soybeanjs/cva`, SoybeanUI supports flexible theming. You can easily adjust colors, sizes, border radius, and more to match your brand.
 
 ### 📦 Lightweight
 
@@ -40,7 +40,7 @@ SoybeanUI is built on a strict **two-layer separation** model:
 ┌─────────────────────────────────────────┐
 │           @soybeanjs/ui (src/)          │
 │  S-prefixed components   (SButton…)     │
-│  UnoCSS classes · tailwind-variants     │
+│  UnoCSS classes · @soybeanjs/cva        │
 │  provideXUi(ui)  ──────────────────┐    │
 └────────────────────────────────────┼────┘
                                      │ style injection
@@ -71,7 +71,7 @@ Headless components contain no styles at all, giving you maximum freedom to buil
 
 This is the styled component library built on top of Headless:
 
-- **Beautiful styling**: modern styles built with UnoCSS and `tailwind-variants`
+- **Beautiful styling**: modern styles built with UnoCSS and `@soybeanjs/cva`
 - **Ready to use**: works out of the box with minimal setup
 - **Theme support**: built-in theme presets, including light/dark mode
 - **Responsive design**: optimized for different screen sizes
@@ -107,7 +107,7 @@ When you have a stable data list to render, Compact components let you accomplis
 For simple atomic components (like Button, Link, Badge):
 
 - No UiContext
-- UI layer directly uses `cn(variants(...), props.class)` to merge styles
+- UI layer directly uses `{name}Variants({...}, props.class)` to merge styles
 
 ## Key features
 
@@ -132,7 +132,6 @@ SoybeanUI includes a powerful theme system that supports:
 - **Dark mode**: full dark theme support
 - **RTL direction**: switch supported components between LTR and RTL layouts with `ConfigProvider.dir`
 - **ConfigProvider**: unified configuration for `dir`, `locale`, `nonce`, and global tooltip options
-- **cn() utility**: Tailwind-aware class merge (`clsx` + `tailwind-merge`) for conflict-free composition
 
 ### 🚀 Performance
 
@@ -165,7 +164,7 @@ SoybeanUI is built with:
 - **Vue 3**: Composition API and `<script setup>`
 - **TypeScript**: full type support
 - **UnoCSS**: atomic CSS engine
-- **tailwind-variants**: variants management
+- **@soybeanjs/cva**: variant recipe management
 
 ## Getting started
 

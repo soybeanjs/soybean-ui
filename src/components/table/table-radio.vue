@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { tableVariants } from './variants';
+import { tableVariants } from '@/styles/table';
 import type { TableRadioProps } from './types';
 
 defineOptions({
@@ -9,14 +9,7 @@ defineOptions({
 
 const props = defineProps<TableRadioProps>();
 
-const ui = computed(() => {
-  const variants = tableVariants({ size: props.size });
-
-  return {
-    radioRoot: variants.radioRoot(),
-    radioIndicator: variants.radioIndicator()
-  };
-});
+const ui = computed(() => tableVariants({ size: props.size }));
 </script>
 
 <template>

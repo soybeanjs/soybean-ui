@@ -5,7 +5,7 @@ import type {
 } from '@soybeanjs/headless/color-swatch-picker';
 import type { ClassValue, UiClass } from '@soybeanjs/headless/types';
 import type { ThemeSize } from '@/theme';
-import type { ColorSwatchPickerShape } from './variants';
+import type { ColorSwatchPickerShape } from '@/styles/color-swatch-picker';
 
 /**
  * Additional UI slots for the color swatch picker component.

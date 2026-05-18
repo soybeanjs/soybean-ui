@@ -3,8 +3,7 @@ import { computed } from 'vue';
 import { StepperCompact, provideStepperUi } from '@soybeanjs/headless/stepper';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
 import { keysOf } from '@soybeanjs/utils';
-import { mergeVariants } from '@/theme';
-import { stepperVariants } from './variants';
+import { stepperVariants } from '@/styles/stepper';
 import type { StepperProps, StepperEmits, StepperSlots } from './types';
 
 defineOptions({
@@ -23,15 +22,17 @@ const listeners = useForwardListeners(emit);
 
 const slotNames = computed(() => keysOf(slots));
 
-const ui = computed(() => {
-  const variants = stepperVariants({
-    color: props.color,
-    size: props.size,
-    orientation: props.orientation
-  });
-
-  return mergeVariants(variants, props.ui, { root: props.class });
-});
+const ui = computed(() =>
+  stepperVariants(
+    {
+      color: props.color,
+      size: props.size,
+      orientation: props.orientation
+    },
+    props.ui,
+    { root: props.class }
+  )
+);
 
 provideStepperUi(ui);
 </script>

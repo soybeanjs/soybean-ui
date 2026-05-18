@@ -14,7 +14,7 @@ import type {
 } from '@soybeanjs/headless/checkbox';
 import type { ClassValue, DefinedValue } from '@soybeanjs/headless/types';
 import type { ThemeColor, ThemeSize } from '@/theme';
-import type { CheckboxShape } from './variants';
+import type { CheckboxShape } from '@/styles/checkbox';
 
 /**
  * Properties for the Checkbox component.

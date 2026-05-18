@@ -2,8 +2,7 @@
 import { computed } from 'vue';
 import { FormCompact, provideFormUi } from '@soybeanjs/headless/form';
 import { useOmitProps } from '@soybeanjs/headless/composables';
-import { mergeVariants } from '@/theme';
-import { formVariants } from './variants';
+import { formVariants } from '@/styles/form';
 import type { FormProps } from './types';
 
 defineOptions({
@@ -14,13 +13,7 @@ const props = defineProps<FormProps>();
 
 const forwardedProps = useOmitProps(props, ['ui', 'class', 'size']);
 
-const ui = computed(() => {
-  const variants = formVariants({
-    size: props.size
-  });
-
-  return mergeVariants(variants, props.ui, { form: props.class });
-});
+const ui = computed(() => formVariants({ size: props.size }, props.ui, { form: props.class }));
 
 provideFormUi(ui);
 </script>

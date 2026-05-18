@@ -3,9 +3,7 @@ import { computed } from 'vue';
 import { InputCompact, provideInputUi } from '@soybeanjs/headless/input';
 import { useOmitProps } from '@soybeanjs/headless/composables';
 import { keysOf } from '@soybeanjs/utils';
-import { mergeVariants, miniSizeMap } from '@/theme';
-import { buttonIconVariants } from '../button/variants';
-import { inputVariants } from './variants';
+import { inputVariants } from '@/styles/input';
 import type { InputProps, InputEmits, InputSlots } from './types';
 
 defineOptions({
@@ -22,25 +20,7 @@ const slots = defineSlots<InputSlots>();
 
 const slotNames = computed(() => keysOf(slots));
 
-const ui = computed(() => {
-  const miniSize = miniSizeMap[props.size ?? 'md'];
-
-  const variants = Object.assign(
-    inputVariants({
-      size: props.size
-    }),
-    {
-      $base: {
-        clear: buttonIconVariants({
-          size: miniSize,
-          shape: 'circle'
-        })
-      }
-    }
-  );
-
-  return mergeVariants(variants, props.ui, { root: props.class });
-});
+const ui = computed(() => inputVariants({ size: props.size }, props.ui, { root: props.class }));
 
 provideInputUi(ui);
 </script>

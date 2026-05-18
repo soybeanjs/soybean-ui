@@ -3,9 +3,7 @@ import { computed } from 'vue';
 import { PopoverCompact, providePopoverUi } from '@soybeanjs/headless/popover';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
 import { keysOf } from '@soybeanjs/utils';
-import { mergeVariants, miniSizeMap } from '@/theme';
-import { buttonIconVariants } from '../button/variants';
-import { popoverVariants } from './variants';
+import { popoverVariants } from '@/styles/popover';
 import type { PopoverProps, PopoverEmits, PopoverSlots } from './types';
 
 defineOptions({
@@ -28,24 +26,7 @@ const listeners = useForwardListeners(emit);
 
 const slotNames = computed(() => keysOf(slots));
 
-const ui = computed(() => {
-  const miniSize = miniSizeMap[props.size ?? 'md'];
-
-  const variants = Object.assign(
-    popoverVariants({
-      size: props.size
-    }),
-    {
-      $base: {
-        close: buttonIconVariants({
-          size: miniSize
-        })
-      }
-    }
-  );
-
-  return mergeVariants(variants, props.ui, { popup: props.class });
-});
+const ui = computed(() => popoverVariants({ size: props.size }, props.ui, { popup: props.class }));
 
 providePopoverUi(ui);
 </script>

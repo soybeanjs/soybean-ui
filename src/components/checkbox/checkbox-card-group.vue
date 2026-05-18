@@ -2,8 +2,7 @@
 import { computed } from 'vue';
 import { CheckboxCardGroupCompact, provideCheckboxCardUi } from '@soybeanjs/headless/checkbox';
 import { useOmitProps } from '@soybeanjs/headless/composables';
-import { mergeVariants } from '@/theme';
-import { checkboxCardVariants } from './variants';
+import { checkboxCardVariants } from '@/styles/checkbox';
 import type { CheckboxCardGroupProps, CheckboxCardGroupEmits, CheckboxCardGroupOptionData } from './types';
 
 defineOptions({
@@ -18,15 +17,17 @@ const emit = defineEmits<CheckboxCardGroupEmits<T['value']>>();
 
 const forwardedProps = useOmitProps(props, ['class', 'ui', 'color', 'size', 'shape']);
 
-const ui = computed(() => {
-  const variants = checkboxCardVariants({
-    color: props.color,
-    size: props.size,
-    shape: props.shape
-  });
-
-  return mergeVariants(variants, props.ui, { groupRoot: props.class });
-});
+const ui = computed(() =>
+  checkboxCardVariants(
+    {
+      color: props.color,
+      size: props.size,
+      shape: props.shape
+    },
+    props.ui,
+    { groupRoot: props.class }
+  )
+);
 
 provideCheckboxCardUi(ui);
 </script>

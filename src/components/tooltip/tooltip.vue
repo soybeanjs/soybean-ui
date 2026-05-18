@@ -2,8 +2,7 @@
 import { computed } from 'vue';
 import { TooltipCompact, provideTooltipUi } from '@soybeanjs/headless/tooltip';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
-import { mergeVariants } from '@/theme';
-import { tooltipVariants } from './variants';
+import { tooltipVariants } from '@/styles/tooltip';
 import type { TooltipProps, TooltipEmits, TooltipSlots } from './types';
 
 defineOptions({
@@ -25,13 +24,7 @@ const forwardedProps = useOmitProps(props, ['class', 'size', 'ui']);
 
 const listeners = useForwardListeners(emit);
 
-const ui = computed(() => {
-  const variants = tooltipVariants({
-    size: props.size
-  });
-
-  return mergeVariants(variants, props.ui, { popup: props.class });
-});
+const ui = computed(() => tooltipVariants({ size: props.size }, props.ui, { popup: props.class }));
 
 provideTooltipUi(ui);
 </script>

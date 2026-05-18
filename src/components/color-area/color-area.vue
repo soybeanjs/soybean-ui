@@ -2,8 +2,7 @@
 import { computed } from 'vue';
 import { ColorAreaCompact, provideColorAreaUi } from '@soybeanjs/headless/color-area';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
-import { mergeVariants } from '@/theme';
-import { colorAreaVariants } from './variants';
+import { colorAreaVariants } from '@/styles/color-area';
 import type { ColorAreaProps, ColorAreaEmits } from './types';
 
 defineOptions({
@@ -18,11 +17,7 @@ const listeners = useForwardListeners(emit);
 
 const forwardedProps = useOmitProps(props, ['class', 'size', 'ui']);
 
-const ui = computed(() => {
-  const variants = colorAreaVariants({ size: props.size });
-
-  return mergeVariants(variants, props.ui, { root: props.class });
-});
+const ui = computed(() => colorAreaVariants({ size: props.size }, props.ui, { root: props.class }));
 
 provideColorAreaUi(ui);
 </script>

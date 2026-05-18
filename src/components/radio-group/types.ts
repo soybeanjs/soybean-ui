@@ -11,7 +11,7 @@ import type {
 } from '@soybeanjs/headless/radio-group';
 import type { DefinedWithBooleanValue, ClassValue } from '@soybeanjs/headless/types';
 import type { ThemeColor, ThemeSize } from '@/theme';
-import type { RadioGroupVariant } from './variants';
+import type { RadioGroupVariant } from '@/styles/radio-group';
 
 /**
  * Properties for the RadioGroup component.

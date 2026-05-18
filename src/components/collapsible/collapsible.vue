@@ -2,8 +2,7 @@
 import { computed } from 'vue';
 import { CollapsibleRoot, provideCollapsibleUi } from '@soybeanjs/headless/collapsible';
 import { useOmitProps } from '@soybeanjs/headless/composables';
-import { mergeVariants } from '@/theme';
-import { collapsibleVariants } from './variants';
+import { collapsibleVariants } from '@/styles/collapsible';
 import type { CollapsibleProps, CollapsibleEmits } from './types';
 
 defineOptions({
@@ -20,13 +19,7 @@ const emit = defineEmits<CollapsibleEmits>();
 
 const forwardedProps = useOmitProps(props, ['class', 'size', 'ui']);
 
-const ui = computed(() => {
-  const variants = collapsibleVariants({
-    size: props.size
-  });
-
-  return mergeVariants(variants, props.ui);
-});
+const ui = computed(() => collapsibleVariants({ size: props.size }, props.ui));
 
 provideCollapsibleUi(ui);
 </script>

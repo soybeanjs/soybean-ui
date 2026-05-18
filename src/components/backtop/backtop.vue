@@ -2,10 +2,8 @@
 import { computed } from 'vue';
 import { Backtop } from '@soybeanjs/headless/backtop';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
-import { cn } from '@/theme';
+import { backtopVariants } from '@/styles/backtop';
 import Icon from '../icon/icon.vue';
-import { buttonVariants } from '../button/variants';
-import { backtopVariants } from './variants';
 import type { BacktopProps, BacktopEmits } from './types';
 
 defineOptions({
@@ -39,20 +37,19 @@ const forwardedProps = useOmitProps(props, [
 
 const listeners = useForwardListeners(emit);
 
-const cls = computed(() => {
-  const fixed = backtopVariants({ size: props.size });
-
-  const button = buttonVariants({
-    color: props.color,
-    size: props.size,
-    variant: props.variant,
-    shape: props.shape,
-    shadow: props.shadow,
-    fitContent: props.fitContent
-  });
-
-  return cn(button, fixed, props.class);
-});
+const cls = computed(() =>
+  backtopVariants(
+    {
+      color: props.color,
+      size: props.size,
+      variant: props.variant,
+      shape: props.shape,
+      shadow: props.shadow,
+      fitContent: props.fitContent
+    },
+    props.class
+  )
+);
 </script>
 
 <template>

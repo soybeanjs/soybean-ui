@@ -3,9 +3,7 @@ import { computed } from 'vue';
 import { useOmitProps } from '@soybeanjs/headless/composables';
 import { PasswordCompact, providePasswordUi } from '@soybeanjs/headless/password';
 import { keysOf } from '@soybeanjs/utils';
-import { mergeVariants, miniSizeMap } from '@/theme';
-import { buttonIconVariants } from '../button/variants';
-import { inputVariants } from '../input/variants';
+import { passwordVariants } from '@/styles/password';
 import type { PasswordProps, PasswordEmits, PasswordSlots } from './types';
 
 defineOptions({
@@ -24,28 +22,7 @@ const slots = defineSlots<PasswordSlots>();
 
 const slotNames = computed(() => keysOf(slots));
 
-const ui = computed(() => {
-  const miniSize = miniSizeMap[props.size ?? 'md'];
-
-  const variants = Object.assign(
-    inputVariants({
-      size: props.size
-    }),
-    {
-      $base: {
-        clear: buttonIconVariants({
-          size: miniSize,
-          shape: 'circle'
-        }),
-        visible: buttonIconVariants({
-          size: miniSize
-        })
-      }
-    }
-  );
-
-  return mergeVariants(variants, props.ui, { root: props.class });
-});
+const ui = computed(() => passwordVariants({ size: props.size }, props.ui, { root: props.class }));
 
 providePasswordUi(ui);
 </script>
