@@ -21,14 +21,14 @@ export const buttonVariants = cv({
       accent: `focus-visible:ring-accent-foreground/20`
     },
     variant: {
-      solid: 'bg-primary text-primary-foreground hover:bg-primary/80 active:bg-primary-600',
-      pure: 'border border-border bg-background text-accent-foreground hover:bg-accent/60 active:bg-accent',
+      solid: `bg-primary text-primary-foreground data-[normal]:hover:bg-primary/80 data-[normal]:active:bg-primary-600`,
+      pure: 'border border-border bg-background text-accent-foreground data-[normal]:hover:bg-accent/60 data-[normal]:active:bg-accent',
       plain: 'border border-border bg-background text-foreground',
       outline: 'border bg-background',
       dashed: 'border border-dashed bg-background',
-      soft: 'bg-primary/10 hover:bg-primary/10 active:bg-primary/20',
+      soft: 'bg-primary/10 data-[normal]:hover:bg-primary/10 data-[normal]:active:bg-primary/20',
       ghost: 'bg-transparent',
-      link: 'bg-transparent underline-offset-4 hover:underline'
+      link: 'bg-transparent underline-offset-4 data-[normal]:hover:underline'
     },
     size: {
       xs: 'gap-1 text-2xs',
@@ -59,37 +59,37 @@ export const buttonVariants = cv({
     {
       color: 'destructive',
       variant: 'solid',
-      class: `bg-destructive text-destructive-foreground hover:bg-destructive/80 active:bg-destructive-600`
+      class: `bg-destructive text-destructive-foreground data-[normal]:hover:bg-destructive/80 data-[normal]:active:bg-destructive-600`
     },
     {
       color: 'success',
       variant: 'solid',
-      class: `bg-success text-success-foreground hover:bg-success/80 active:bg-success-600`
+      class: `bg-success text-success-foreground data-[normal]:hover:bg-success/80 data-[normal]:active:bg-success-600`
     },
     {
       color: 'warning',
       variant: 'solid',
-      class: `bg-warning text-warning-foreground hover:bg-warning/80 active:bg-warning-600`
+      class: `bg-warning text-warning-foreground data-[normal]:hover:bg-warning/80 data-[normal]:active:bg-warning-600`
     },
     {
       color: 'info',
       variant: 'solid',
-      class: `bg-info text-info-foreground hover:bg-info/80 active:bg-info-600`
+      class: `bg-info text-info-foreground data-[normal]:hover:bg-info/80 data-[normal]:active:bg-info-600`
     },
     {
       color: 'carbon',
       variant: 'solid',
-      class: `bg-carbon text-carbon-foreground hover:bg-carbon/80 active:bg-carbon-600`
+      class: `bg-carbon text-carbon-foreground data-[normal]:hover:bg-carbon/80 data-[normal]:active:bg-carbon-600`
     },
     {
       color: 'secondary',
       variant: 'solid',
-      class: `bg-secondary text-secondary-foreground hover:bg-secondary/80 active:bg-secondary-foreground/20`
+      class: `bg-secondary text-secondary-foreground data-[normal]:hover:bg-secondary/80 data-[normal]:active:bg-secondary-foreground/20`
     },
     {
       color: 'accent',
       variant: 'solid',
-      class: `bg-accent text-accent-foreground hover:bg-accent/80 active:bg-accent-foreground/20`
+      class: `bg-accent text-accent-foreground data-[normal]:hover:bg-accent/80 data-[normal]:active:bg-accent-foreground/20`
     },
     {
       color: 'primary',
@@ -134,82 +134,82 @@ export const buttonVariants = cv({
     {
       color: 'primary',
       variant: ['outline', 'dashed', 'ghost'],
-      class: 'hover:bg-primary/10 active:bg-primary/20'
+      class: 'data-[normal]:hover:bg-primary/10 data-[normal]:active:bg-primary/20'
     },
     {
       color: 'destructive',
       variant: ['outline', 'dashed', 'ghost'],
-      class: 'hover:bg-destructive/10 active:bg-destructive/20'
+      class: 'data-[normal]:hover:bg-destructive/10 data-[normal]:active:bg-destructive/20'
     },
     {
       color: 'success',
       variant: ['outline', 'dashed', 'ghost'],
-      class: 'hover:bg-success/10 active:bg-success/20'
+      class: 'data-[normal]:hover:bg-success/10 data-[normal]:active:bg-success/20'
     },
     {
       color: 'warning',
       variant: ['outline', 'dashed', 'ghost'],
-      class: 'hover:bg-warning/10 active:bg-warning/20'
+      class: 'data-[normal]:hover:bg-warning/10 data-[normal]:active:bg-warning/20'
     },
     {
       color: 'info',
       variant: ['outline', 'dashed', 'ghost'],
-      class: 'hover:bg-info/10 active:bg-info/20'
+      class: 'data-[normal]:hover:bg-info/10 data-[normal]:active:bg-info/20'
     },
     {
       color: 'carbon',
       variant: ['outline', 'dashed', 'ghost'],
-      class: 'hover:bg-carbon/10 active:bg-carbon/20'
+      class: 'data-[normal]:hover:bg-carbon/10 data-[normal]:active:bg-carbon/20'
     },
     {
       color: 'secondary',
       variant: ['outline', 'dashed', 'ghost'],
-      class: 'hover:bg-secondary-foreground/10 active:bg-secondary-foreground/20'
+      class: 'data-[normal]:hover:bg-secondary-foreground/10 data-[normal]:active:bg-secondary-foreground/20'
     },
     {
       color: 'accent',
       variant: ['outline', 'dashed', 'ghost'],
-      class: 'hover:bg-accent-foreground/10 active:bg-accent-foreground/20'
+      class: 'data-[normal]:hover:bg-accent-foreground/10 data-[normal]:active:bg-accent-foreground/20'
     },
     {
       color: 'primary',
       variant: 'plain',
-      class: 'hover:border-primary hover:text-primary'
+      class: 'data-[normal]:hover:border-primary data-[normal]:hover:text-primary'
     },
     {
       color: 'destructive',
       variant: 'plain',
-      class: 'hover:border-destructive hover:text-destructive'
+      class: 'data-[normal]:hover:border-destructive data-[normal]:hover:text-destructive'
     },
     {
       color: 'success',
       variant: 'plain',
-      class: 'hover:border-success hover:text-success'
+      class: 'data-[normal]:hover:border-success data-[normal]:hover:text-success'
     },
     {
       color: 'warning',
       variant: 'plain',
-      class: 'hover:border-warning hover:text-warning'
+      class: 'data-[normal]:hover:border-warning data-[normal]:hover:text-warning'
     },
     {
       color: 'info',
       variant: 'plain',
-      class: 'hover:border-info hover:text-info'
+      class: 'data-[normal]:hover:border-info data-[normal]:hover:text-info'
     },
     {
       color: 'carbon',
       variant: 'plain',
-      class: 'hover:border-carbon hover:text-carbon'
+      class: 'data-[normal]:hover:border-carbon data-[normal]:hover:text-carbon'
     },
     {
       color: 'secondary',
       variant: 'plain',
-      class: 'hover:border-secondary-foreground hover:text-secondary-foreground'
+      class: 'data-[normal]:hover:border-secondary-foreground data-[normal]:hover:text-secondary-foreground'
     },
     {
       color: 'accent',
       variant: 'plain',
-      class: 'hover:border-accent-foreground hover:text-accent-foreground'
+      class: 'data-[normal]:hover:border-accent-foreground data-[normal]:hover:text-accent-foreground'
     },
     {
       color: 'primary',
@@ -254,37 +254,39 @@ export const buttonVariants = cv({
     {
       color: 'destructive',
       variant: 'soft',
-      class: 'bg-destructive/10 hover:bg-destructive/10 active:bg-destructive/20'
+      class: 'bg-destructive/10 data-[normal]:hover:bg-destructive/10 data-[normal]:active:bg-destructive/20'
     },
     {
       color: 'success',
       variant: 'soft',
-      class: 'bg-success/10 hover:bg-success/10 active:bg-success/20'
+      class: 'bg-success/10 data-[normal]:hover:bg-success/10 data-[normal]:active:bg-success/20'
     },
     {
       color: 'warning',
       variant: 'soft',
-      class: 'bg-warning/10 hover:bg-warning/10 active:bg-warning/20'
+      class: 'bg-warning/10 data-[normal]:hover:bg-warning/10 data-[normal]:active:bg-warning/20'
     },
     {
       color: 'info',
       variant: 'soft',
-      class: 'bg-info/10 hover:bg-info/10 active:bg-info/20'
+      class: 'bg-info/10 data-[normal]:hover:bg-info/10 data-[normal]:active:bg-info/20'
     },
     {
       color: 'carbon',
       variant: 'soft',
-      class: 'bg-carbon/10 hover:bg-carbon/10 active:bg-carbon/20'
+      class: 'bg-carbon/10 data-[normal]:hover:bg-carbon/10 data-[normal]:active:bg-carbon/20'
     },
     {
       color: 'secondary',
       variant: 'soft',
-      class: 'bg-secondary-foreground/10 hover:bg-secondary-foreground/10 active:bg-secondary-foreground/20'
+      class:
+        'bg-secondary-foreground/10 data-[normal]:hover:bg-secondary-foreground/10 data-[normal]:active:bg-secondary-foreground/20'
     },
     {
       color: 'accent',
       variant: 'soft',
-      class: 'bg-accent-foreground/10 hover:bg-accent-foreground/10 active:bg-accent-foreground/20'
+      class:
+        'bg-accent-foreground/10 data-[normal]:hover:bg-accent-foreground/10 data-[normal]:active:bg-accent-foreground/20'
     },
     {
       size: 'xs',

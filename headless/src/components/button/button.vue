@@ -20,6 +20,8 @@ const disabled = computed(() => (props.as === 'button' ? props.disabled : undefi
 
 const dataDisabled = computed(() => (props.disabled ? '' : undefined));
 
+const dataNormal = computed(() => (props.disabled ? undefined : ''));
+
 const ariaDisabled = computed(() => (props.disabled ? true : undefined));
 
 const buttonType = computed(() => {
@@ -47,6 +49,7 @@ const onClick = (event: PointerEvent) => {
     :disabled="disabled"
     :aria-disabled="ariaDisabled"
     :data-disabled="dataDisabled"
+    :data-normal="dataNormal"
     :tabindex="disabled ? '-1' : undefined"
     :type="buttonType"
     @click="onClick"
