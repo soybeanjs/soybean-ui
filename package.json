@@ -53,8 +53,8 @@
     "commit": "soy git-commit",
     "dev": "vite",
     "dev:docs": "pnpm --filter @soybeanjs/ui-docs dev",
-    "lint": "oxlint --fix && eslint --fix headless/ src/",
     "fmt": "oxfmt",
+    "lint": "oxlint --fix && eslint --fix headless/ src/",
     "prepare": "simple-git-hooks",
     "preview": "vite preview",
     "preview:docs": "pnpm --filter @soybeanjs/ui-docs preview",
@@ -83,6 +83,7 @@
   "devDependencies": {
     "@soybeanjs/cli": "^1.7.2",
     "@soybeanjs/eslint-config-vue": "^0.0.2",
+    "@soybeanjs/oxc-config": "^0.0.2",
     "@soybeanjs/unocss-preset": "^0.2.0",
     "@soybeanjs/unocss-shadcn": "^0.5.0",
     "@types/node": "^25.9.1",
