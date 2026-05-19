@@ -45,7 +45,7 @@
   },
   "scripts": {
     "build": "pnpm build:headless && pnpm build:ui && pnpm build:css && pnpm sui skills",
-    "build:css": "unocss 'src/styles/**/*.ts' -o dist/styles.css --preflights false",
+    "build:css": "unocss 'src/styles/**/*.ts' -o dist/styles.css --minify",
     "build:docs": "pnpm --filter @soybeanjs/ui-docs build",
     "build:headless": "pnpm --filter @soybeanjs/headless build",
     "build:play": "vite build",
