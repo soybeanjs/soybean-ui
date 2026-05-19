@@ -50,7 +50,6 @@
     "build:headless": "pnpm --filter @soybeanjs/headless build",
     "build:play": "vite build",
     "build:ui": "pnpm tsdown",
-    "cleanup": "soy cleanup",
     "commit": "soy git-commit",
     "dev": "vite",
     "dev:docs": "pnpm --filter @soybeanjs/ui-docs dev",
