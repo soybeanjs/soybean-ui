@@ -1,7 +1,43 @@
 {
-  "generatedAt": "2026-05-19T07:11:23.757Z",
+  "generatedAt": "2026-05-19T08:14:35.053Z",
   "schemaVersion": 1,
   "releases": [
+    {
+      "version": "v0.23.1-beta.3",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.23.1-beta.2...v0.23.1-beta.3",
+      "date": "2026-05-19",
+      "entryCount": 2,
+      "componentCount": 0,
+      "components": [],
+      "typeCounts": {
+        "feature": 1,
+        "fix": 1
+      },
+      "entries": [
+        {
+          "type": "feature",
+          "scope": "types",
+          "summary": "export IconifyOptions interface and update type exports in config-provider",
+          "summaryKey": "changelog.generated.v0.23.1-beta.3.46659",
+          "commitHash": "46659",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/46659b71f",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "fix",
+          "scope": "types",
+          "summary": "correct import path for ProgressProviderProps",
+          "summaryKey": "changelog.generated.v0.23.1-beta.3.13a61",
+          "commitHash": "13a61",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/13a61962f",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope",
+          "components": []
+        }
+      ]
+    },
     {
       "version": "v0.23.1-beta.2",
       "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.23.1-beta.1...v0.23.1-beta.2",

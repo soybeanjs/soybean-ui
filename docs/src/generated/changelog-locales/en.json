@@ -1307,6 +1307,10 @@
             "2": {
               "3e9da": "update build:css command to enable minify flag",
               "767d6": "update deps"
+            },
+            "3": {
+              "46659": "export IconifyOptions interface and update type exports in config-provider",
+              "13a61": "correct import path for ProgressProviderProps"
             }
           }
         }

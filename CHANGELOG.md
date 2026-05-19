@@ -1,5 +1,20 @@
 # Changelog
 
+## [v0.23.1-beta.3](https://github.com/soybeanjs/soybean-ui/compare/v0.23.1-beta.2...v0.23.1-beta.3) (2026-05-19)
+
+### &nbsp;&nbsp;&nbsp;🚀 Features
+
+- **types**: export IconifyOptions interface and update type exports in config-provider &nbsp;-&nbsp; by **soybeanfe** [<samp>(46659)</samp>](https://github.com/soybeanjs/soybean-ui/commit/46659b71f)
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- **types**: correct import path for ProgressProviderProps &nbsp;-&nbsp; by **soybeanfe** [<samp>(13a61)</samp>](https://github.com/soybeanjs/soybean-ui/commit/13a61962f)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+
+[soybeanfe](mailto:honghuangdc@gmail.com)
+
 ## [v0.23.1-beta.2](https://github.com/soybeanjs/soybean-ui/compare/v0.23.1-beta.1...v0.23.1-beta.2) (2026-05-19)
 
 ### &nbsp;&nbsp;&nbsp;🛠 Optimizations
