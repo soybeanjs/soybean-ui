@@ -5,7 +5,7 @@ import type { ThemeOptions } from '@soybeanjs/shadcn-theme';
 import type { ThemeSize } from '@/theme';
 import type { ToastProviderProps } from '../toast/types';
 
-interface IconifyOptions {
+export interface IconifyOptions {
   /**
    * The default width of the icon.
    *
