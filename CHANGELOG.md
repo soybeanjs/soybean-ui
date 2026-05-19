@@ -1,5 +1,20 @@
 # Changelog
 
+## [v0.23.1-beta.2](https://github.com/soybeanjs/soybean-ui/compare/v0.23.1-beta.1...v0.23.1-beta.2) (2026-05-19)
+
+### &nbsp;&nbsp;&nbsp;🛠 Optimizations
+
+- **scripts**: update build:css command to enable minify flag &nbsp;-&nbsp; by **soybeanfe** [<samp>(3e9da)</samp>](https://github.com/soybeanjs/soybean-ui/commit/3e9da9820)
+
+### &nbsp;&nbsp;&nbsp;🏡 Chore
+
+- **deps**: update deps &nbsp;-&nbsp; by **soybeanfe** [<samp>(767d6)</samp>](https://github.com/soybeanjs/soybean-ui/commit/767d6ac20)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+
+[soybeanfe](mailto:honghuangdc@gmail.com)
+
 ## [v0.23.1-beta.1](https://github.com/soybeanjs/soybean-ui/compare/v0.23.0...v0.23.1-beta.1) (2026-05-19)
 
 ### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes

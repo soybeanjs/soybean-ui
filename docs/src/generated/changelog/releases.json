@@ -1,7 +1,43 @@
 {
-  "generatedAt": "2026-05-19T05:06:34.983Z",
+  "generatedAt": "2026-05-19T07:11:23.757Z",
   "schemaVersion": 1,
   "releases": [
+    {
+      "version": "v0.23.1-beta.2",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.23.1-beta.1...v0.23.1-beta.2",
+      "date": "2026-05-19",
+      "entryCount": 2,
+      "componentCount": 0,
+      "components": [],
+      "typeCounts": {
+        "optimization": 1,
+        "chore": 1
+      },
+      "entries": [
+        {
+          "type": "optimization",
+          "scope": "scripts",
+          "summary": "update build:css command to enable minify flag",
+          "summaryKey": "changelog.generated.v0.23.1-beta.2.3e9da",
+          "commitHash": "3e9da",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/3e9da9820",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "chore",
+          "scope": "deps",
+          "summary": "update deps",
+          "summaryKey": "changelog.generated.v0.23.1-beta.2.767d6",
+          "commitHash": "767d6",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/767d6ac20",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope",
+          "components": []
+        }
+      ]
+    },
     {
       "version": "v0.23.1-beta.1",
       "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.23.0...v0.23.1-beta.1",

@@ -1303,6 +1303,10 @@
               "604d0": "update docs changelog",
               "7b9c4": "fix class binding",
               "9870f": "simplify CSS generation and improve theme handling"
+            },
+            "2": {
+              "3e9da": "update build:css command to enable minify flag",
+              "767d6": "update deps"
             }
           }
         }
