@@ -61,7 +61,7 @@
     "preview:docs": "pnpm --filter @soybeanjs/ui-docs preview",
     "publish-pkg": "pnpm publish -r --access public",
     "release": "soy release -e 'pnpm release-execute'",
-    "release-execute": "pnpm sui skills && pnpm sui changelog && pnpm sui changelog-translate",
+    "release-execute": "pnpm soy changelog && pnpm sui skills && pnpm sui changelog && pnpm sui changelog-translate",
     "sui": "tsx scripts/cli.ts",
     "test": "vitest run",
     "test:coverage": "vitest run --coverage",
