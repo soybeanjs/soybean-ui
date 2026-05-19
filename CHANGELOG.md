@@ -1,5 +1,38 @@
 # Changelog
 
+## [v0.23.1](https://github.com/soybeanjs/soybean-ui/compare/v0.23.0...v0.23.1) (2026-05-19)
+
+### &nbsp;&nbsp;&nbsp;🚀 Features
+
+- **types**: export IconifyOptions interface and update type exports in config-provider &nbsp;-&nbsp; by **soybeanfe** [<samp>(46659)</samp>](https://github.com/soybeanjs/soybean-ui/commit/46659b71f)
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- **pnpm**: add minimumReleaseAgeExclude entries for various packages &nbsp;-&nbsp; by **soybeanfe** [<samp>(009d4)</samp>](https://github.com/soybeanjs/soybean-ui/commit/009d4c770)
+- **toggle**: fix class binding &nbsp;-&nbsp; by @soybeanjs [<samp>(7b9c4)</samp>](https://github.com/soybeanjs/soybean-ui/commit/7b9c4b1f0)
+- **types**: correct import path for ProgressProviderProps &nbsp;-&nbsp; by **soybeanfe** [<samp>(13a61)</samp>](https://github.com/soybeanjs/soybean-ui/commit/13a61962f)
+
+### &nbsp;&nbsp;&nbsp;🛠 Optimizations
+
+- **scripts**: update build:css command to enable minify flag &nbsp;-&nbsp; by **soybeanfe** [<samp>(3e9da)</samp>](https://github.com/soybeanjs/soybean-ui/commit/3e9da9820)
+- **theme**: simplify CSS generation and improve theme handling &nbsp;-&nbsp; by @soybeanjs [<samp>(9870f)</samp>](https://github.com/soybeanjs/soybean-ui/commit/9870f1d1e)
+
+### &nbsp;&nbsp;&nbsp;📖 Documentation
+
+- **changelog**:
+  - update changelog for v0.23.0 release &nbsp;-&nbsp; by @soybeanjs [<samp>(0779c)</samp>](https://github.com/soybeanjs/soybean-ui/commit/0779cda9e)
+  - update docs changelog &nbsp;-&nbsp; by @soybeanjs [<samp>(604d0)</samp>](https://github.com/soybeanjs/soybean-ui/commit/604d0a576)
+
+### &nbsp;&nbsp;&nbsp;🏡 Chore
+
+- **deps**: update deps &nbsp;-&nbsp; by **soybeanfe** [<samp>(767d6)</samp>](https://github.com/soybeanjs/soybean-ui/commit/767d6ac20)
+- **scripts**: update release-execute command to include changelog generation &nbsp;-&nbsp; by @soybeanjs [<samp>(30446)</samp>](https://github.com/soybeanjs/soybean-ui/commit/304469e04)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;
+[soybeanfe](mailto:honghuangdc@gmail.com),&nbsp;
+
 ## [v0.23.1-beta.4](https://github.com/soybeanjs/soybean-ui/compare/v0.23.1-beta.3...v0.23.1-beta.4) (2026-05-19)
 
 ### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes

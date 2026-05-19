@@ -1296,6 +1296,18 @@
             "be8c3": "使用 `@soybeanjs/cva` 替换 `tailwind-variants",
             "f0300": "更新组件"
           },
+          "1": {
+            "30446": "更新 release-execute 命令，加入更新日志生成功能",
+            "46659": "导出 IconifyOptions 接口并更新 config-provider 中的类型导出",
+            "009d4": "为各种软件包添加 minimumReleaseAgeExclude 条目",
+            "0779c": "更新 v0.23.0 版本的更新日志",
+            "13a61": "更正 ProgressProviderProps 的导入路径",
+            "3e9da": "更新 build:css 命令以启用最小化标志",
+            "604d0": "更新文档更新日志",
+            "767d6": "更新组件",
+            "7b9c4": "修复类绑定",
+            "9870f": "简化 CSS 生成并改进主题处理"
+          },
           "1-beta": {
             "1": {
               "30446": "更新 release-execute 命令，加入更新日志生成功能",

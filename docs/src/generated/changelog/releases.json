@@ -1,7 +1,134 @@
 {
-  "generatedAt": "2026-05-19T08:28:17.593Z",
+  "generatedAt": "2026-05-19T09:12:54.636Z",
   "schemaVersion": 1,
   "releases": [
+    {
+      "version": "v0.23.1",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.23.0...v0.23.1",
+      "date": "2026-05-19",
+      "entryCount": 10,
+      "componentCount": 1,
+      "components": ["toggle"],
+      "typeCounts": {
+        "fix": 3,
+        "feature": 1,
+        "optimization": 2,
+        "docs": 2,
+        "chore": 2
+      },
+      "entries": [
+        {
+          "type": "fix",
+          "scope": "toggle",
+          "summary": "fix class binding",
+          "summaryKey": "changelog.generated.v0.23.1.7b9c4",
+          "commitHash": "7b9c4",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/7b9c4b1f0",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope",
+          "components": ["toggle"]
+        },
+        {
+          "type": "feature",
+          "scope": "types",
+          "summary": "export IconifyOptions interface and update type exports in config-provider",
+          "summaryKey": "changelog.generated.v0.23.1.46659",
+          "commitHash": "46659",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/46659b71f",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "fix",
+          "scope": "types",
+          "summary": "correct import path for ProgressProviderProps",
+          "summaryKey": "changelog.generated.v0.23.1.13a61",
+          "commitHash": "13a61",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/13a61962f",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "fix",
+          "scope": "pnpm",
+          "summary": "add minimumReleaseAgeExclude entries for various packages",
+          "summaryKey": "changelog.generated.v0.23.1.009d4",
+          "commitHash": "009d4",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/009d4c770",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "optimization",
+          "scope": "theme",
+          "summary": "simplify CSS generation and improve theme handling",
+          "summaryKey": "changelog.generated.v0.23.1.9870f",
+          "commitHash": "9870f",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/9870f1d1e",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "optimization",
+          "scope": "scripts",
+          "summary": "update build:css command to enable minify flag",
+          "summaryKey": "changelog.generated.v0.23.1.3e9da",
+          "commitHash": "3e9da",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/3e9da9820",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "docs",
+          "scope": "changelog",
+          "summary": "update changelog for v0.23.0 release",
+          "summaryKey": "changelog.generated.v0.23.1.0779c",
+          "commitHash": "0779c",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/0779cda9e",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "docs",
+          "scope": "changelog",
+          "summary": "update docs changelog",
+          "summaryKey": "changelog.generated.v0.23.1.604d0",
+          "commitHash": "604d0",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/604d0a576",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "chore",
+          "scope": "scripts",
+          "summary": "update release-execute command to include changelog generation",
+          "summaryKey": "changelog.generated.v0.23.1.30446",
+          "commitHash": "30446",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/304469e04",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "chore",
+          "scope": "deps",
+          "summary": "update deps",
+          "summaryKey": "changelog.generated.v0.23.1.767d6",
+          "commitHash": "767d6",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/767d6ac20",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope",
+          "components": []
+        }
+      ]
+    },
     {
       "version": "v0.23.1-beta.4",
       "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.23.1-beta.3...v0.23.1-beta.4",

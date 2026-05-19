@@ -1,8 +1,25 @@
 {
   "component": "toggle",
-  "generatedAt": "2026-05-19T08:28:17.593Z",
+  "generatedAt": "2026-05-19T09:12:54.636Z",
   "schemaVersion": 1,
   "versions": [
+    {
+      "version": "v0.23.1",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.23.0...v0.23.1",
+      "date": "2026-05-19",
+      "entries": [
+        {
+          "type": "fix",
+          "scope": "toggle",
+          "summary": "fix class binding",
+          "summaryKey": "changelog.generated.v0.23.1.7b9c4",
+          "commitHash": "7b9c4",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/7b9c4b1f0",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    },
     {
       "version": "v0.23.1-beta.1",
       "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.23.0...v0.23.1-beta.1",

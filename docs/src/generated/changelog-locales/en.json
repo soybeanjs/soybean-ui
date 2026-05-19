@@ -1296,6 +1296,18 @@
             "be8c3": "use `@soybeanjs/cva` replace `tailwind-variants`",
             "f0300": "update deps"
           },
+          "1": {
+            "30446": "update release-execute command to include changelog generation",
+            "46659": "export IconifyOptions interface and update type exports in config-provider",
+            "009d4": "add minimumReleaseAgeExclude entries for various packages",
+            "0779c": "update changelog for v0.23.0 release",
+            "13a61": "correct import path for ProgressProviderProps",
+            "3e9da": "update build:css command to enable minify flag",
+            "604d0": "update docs changelog",
+            "767d6": "update deps",
+            "7b9c4": "fix class binding",
+            "9870f": "simplify CSS generation and improve theme handling"
+          },
           "1-beta": {
             "1": {
               "30446": "update release-execute command to include changelog generation",
