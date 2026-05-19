@@ -1295,6 +1295,15 @@
             "41e7f": "update docs changelog",
             "be8c3": "use `@soybeanjs/cva` replace `tailwind-variants`",
             "f0300": "update deps"
+          },
+          "1-beta": {
+            "1": {
+              "30446": "update release-execute command to include changelog generation",
+              "0779c": "update changelog for v0.23.0 release",
+              "604d0": "update docs changelog",
+              "7b9c4": "fix class binding",
+              "9870f": "simplify CSS generation and improve theme handling"
+            }
           }
         }
       }

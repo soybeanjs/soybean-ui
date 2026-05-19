@@ -1,7 +1,78 @@
 {
-  "generatedAt": "2026-05-19T02:54:42.189Z",
+  "generatedAt": "2026-05-19T05:06:34.983Z",
   "schemaVersion": 1,
   "releases": [
+    {
+      "version": "v0.23.1-beta.1",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.23.0...v0.23.1-beta.1",
+      "date": "2026-05-19",
+      "entryCount": 5,
+      "componentCount": 1,
+      "components": ["toggle"],
+      "typeCounts": {
+        "fix": 1,
+        "optimization": 1,
+        "docs": 2,
+        "chore": 1
+      },
+      "entries": [
+        {
+          "type": "fix",
+          "scope": "toggle",
+          "summary": "fix class binding",
+          "summaryKey": "changelog.generated.v0.23.1-beta.1.7b9c4",
+          "commitHash": "7b9c4",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/7b9c4b1f",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope",
+          "components": ["toggle"]
+        },
+        {
+          "type": "optimization",
+          "scope": "theme",
+          "summary": "simplify CSS generation and improve theme handling",
+          "summaryKey": "changelog.generated.v0.23.1-beta.1.9870f",
+          "commitHash": "9870f",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/9870f1d1",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "docs",
+          "scope": "changelog",
+          "summary": "update changelog for v0.23.0 release",
+          "summaryKey": "changelog.generated.v0.23.1-beta.1.0779c",
+          "commitHash": "0779c",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/0779cda9",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "docs",
+          "scope": "changelog",
+          "summary": "update docs changelog",
+          "summaryKey": "changelog.generated.v0.23.1-beta.1.604d0",
+          "commitHash": "604d0",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/604d0a57",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "chore",
+          "scope": "scripts",
+          "summary": "update release-execute command to include changelog generation",
+          "summaryKey": "changelog.generated.v0.23.1-beta.1.30446",
+          "commitHash": "30446",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/304469e0",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope",
+          "components": []
+        }
+      ]
+    },
     {
       "version": "v0.23.0",
       "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.22.4...v0.23.0",

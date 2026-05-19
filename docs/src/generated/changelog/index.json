@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-19T02:54:42.189Z",
+  "generatedAt": "2026-05-19T05:06:34.983Z",
   "schemaVersion": 1,
   "components": {
     "accordion": {
@@ -572,9 +572,9 @@
     "toggle": {
       "component": "toggle",
       "file": "toggle.json",
-      "latestVersion": "v0.15.0",
-      "versionCount": 2,
-      "entryCount": 2
+      "latestVersion": "v0.23.1-beta.1",
+      "versionCount": 3,
+      "entryCount": 3
     },
     "toggle-group": {
       "component": "toggle-group",
