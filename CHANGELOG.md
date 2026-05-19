@@ -1,5 +1,30 @@
 # Changelog
 
+## [v0.23.0](https://github.com/soybeanjs/soybean-ui/compare/v0.22.4...v0.23.0) (2026-05-18)
+
+### &nbsp;&nbsp;&nbsp;🛠 Optimizations
+
+- **button**: add data-normal attribute and update styles &nbsp;-&nbsp; by **soybeanfe** [<samp>(28d0a)</samp>](https://github.com/soybeanjs/soybean-ui/commit/28d0a8cb6)
+
+### &nbsp;&nbsp;&nbsp;💅 Refactors
+
+- **variants**: use `@soybeanjs/cva` replace `tailwind-variants` &nbsp;-&nbsp; by **soybeanfe** [<samp>(be8c3)</samp>](https://github.com/soybeanjs/soybean-ui/commit/be8c32279)
+
+### &nbsp;&nbsp;&nbsp;📖 Documentation
+
+- **changelog**: update docs changelog &nbsp;-&nbsp; by **soybeanfe** [<samp>(41e7f)</samp>](https://github.com/soybeanjs/soybean-ui/commit/41e7fadd7)
+
+### &nbsp;&nbsp;&nbsp;🏡 Chore
+
+- **deps**:
+  - update deps &nbsp;-&nbsp; by **soybeanfe** [<samp>(022bf)</samp>](https://github.com/soybeanjs/soybean-ui/commit/022bf712c)
+  - update deps &nbsp;-&nbsp; by **soybeanfe** [<samp>(f0300)</samp>](https://github.com/soybeanjs/soybean-ui/commit/f0300ff0e)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+
+[soybeanfe](mailto:honghuangdc@gmail.com)
+
 ## [v0.22.4](https://github.com/soybeanjs/soybean-ui/compare/v0.22.3...v0.22.4) (2026-05-17)
 
 ### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
