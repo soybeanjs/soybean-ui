@@ -18,12 +18,15 @@ const emit = defineEmits<ToggleEmits>();
 const forwardedProps = useOmitProps(props, ['class', 'color', 'variant', 'size', 'shape']);
 
 const cls = computed(() =>
-  toggleVariants({
-    color: props.color,
-    variant: props.variant,
-    size: props.size,
-    shape: props.shape
-  })
+  toggleVariants(
+    {
+      color: props.color,
+      variant: props.variant,
+      size: props.size,
+      shape: props.shape
+    },
+    props.class
+  )
 );
 </script>
 
