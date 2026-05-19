@@ -1287,6 +1287,15 @@
             "c7c6a": "add min and max properties to input number control",
             "f16e8": "update docs changelog"
           }
+        },
+        "23": {
+          "0": {
+            "022bf": "update deps",
+            "28d0a": "add data-normal attribute and update styles",
+            "41e7f": "update docs changelog",
+            "be8c3": "use `@soybeanjs/cva` replace `tailwind-variants`",
+            "f0300": "update deps"
+          }
         }
       }
     }

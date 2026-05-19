@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-18T14:19:03.981Z",
+  "generatedAt": "2026-05-19T02:54:42.189Z",
   "schemaVersion": 1,
   "components": {
     "accordion": {
@@ -89,9 +89,9 @@
     "button": {
       "component": "button",
       "file": "button.json",
-      "latestVersion": "v0.19.0",
-      "versionCount": 4,
-      "entryCount": 4
+      "latestVersion": "v0.23.0",
+      "versionCount": 5,
+      "entryCount": 5
     },
     "calendar": {
       "component": "calendar",

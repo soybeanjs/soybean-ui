@@ -1,8 +1,25 @@
 {
   "component": "button",
-  "generatedAt": "2026-05-18T14:19:03.981Z",
+  "generatedAt": "2026-05-19T02:54:42.189Z",
   "schemaVersion": 1,
   "versions": [
+    {
+      "version": "v0.23.0",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.22.4...v0.23.0",
+      "date": "2026-05-18",
+      "entries": [
+        {
+          "type": "optimization",
+          "scope": "button",
+          "summary": "add data-normal attribute and update styles",
+          "summaryKey": "changelog.generated.v0.23.0.28d0a",
+          "commitHash": "28d0a",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/28d0a8cb6",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope"
+        }
+      ]
+    },
     {
       "version": "v0.19.0",
       "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.18.0...v0.19.0",

@@ -1,7 +1,78 @@
 {
-  "generatedAt": "2026-05-18T14:19:03.981Z",
+  "generatedAt": "2026-05-19T02:54:42.189Z",
   "schemaVersion": 1,
   "releases": [
+    {
+      "version": "v0.23.0",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.22.4...v0.23.0",
+      "date": "2026-05-18",
+      "entryCount": 5,
+      "componentCount": 1,
+      "components": ["button"],
+      "typeCounts": {
+        "optimization": 1,
+        "refactor": 1,
+        "docs": 1,
+        "chore": 2
+      },
+      "entries": [
+        {
+          "type": "optimization",
+          "scope": "button",
+          "summary": "add data-normal attribute and update styles",
+          "summaryKey": "changelog.generated.v0.23.0.28d0a",
+          "commitHash": "28d0a",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/28d0a8cb6",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope",
+          "components": ["button"]
+        },
+        {
+          "type": "refactor",
+          "scope": "variants",
+          "summary": "use `@soybeanjs/cva` replace `tailwind-variants`",
+          "summaryKey": "changelog.generated.v0.23.0.be8c3",
+          "commitHash": "be8c3",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/be8c32279",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "docs",
+          "scope": "changelog",
+          "summary": "update docs changelog",
+          "summaryKey": "changelog.generated.v0.23.0.41e7f",
+          "commitHash": "41e7f",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/41e7fadd7",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "chore",
+          "scope": "deps",
+          "summary": "update deps",
+          "summaryKey": "changelog.generated.v0.23.0.022bf",
+          "commitHash": "022bf",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/022bf712c",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "chore",
+          "scope": "deps",
+          "summary": "update deps",
+          "summaryKey": "changelog.generated.v0.23.0.f0300",
+          "commitHash": "f0300",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/f0300ff0e",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope",
+          "components": []
+        }
+      ]
+    },
     {
       "version": "v0.22.4",
       "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.22.3...v0.22.4",
