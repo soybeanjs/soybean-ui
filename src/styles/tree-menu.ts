@@ -19,7 +19,7 @@ export const treeMenuVariants = scv({
     collapsibleTrigger: '',
     collapsibleContent: [
       'overflow-hidden transition will-change-auto',
-      'data-[state=closed]:animate-collapsible-up data-[state=open]:animate-collapsible-down'
+      'data-[state=open]:animate-collapsible-down data-[state=closed]:animate-collapsible-up'
     ],
     collapsibleIcon: `shrink-0 ms-auto text-muted-foreground transition-transform-200 group-data-[state=open]/button:rotate-90 group-data-[child-active]/button:text-primary`,
     sub: 'flex flex-col m-0 list-none ms-[--soybean-tree-menu-indent] border-s border-sidebar-border border-solid',

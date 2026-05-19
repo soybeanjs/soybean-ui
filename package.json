@@ -45,7 +45,7 @@
   },
   "scripts": {
     "build": "pnpm build:headless && pnpm build:ui && pnpm build:css && pnpm sui skills",
-    "build:css": "unocss build",
+    "build:css": "unocss 'src/styles/**/*.ts' -o dist/styles.css --preflights false",
     "build:docs": "pnpm --filter @soybeanjs/ui-docs build",
     "build:headless": "pnpm --filter @soybeanjs/headless build",
     "build:play": "vite build",
@@ -85,7 +85,7 @@
     "@soybeanjs/cli": "^1.7.2",
     "@soybeanjs/eslint-config-vue": "^0.0.2",
     "@soybeanjs/unocss-preset": "^0.2.0",
-    "@soybeanjs/unocss-shadcn": "^0.4.0",
+    "@soybeanjs/unocss-shadcn": "^0.5.0",
     "@types/node": "^25.9.0",
     "@unocss/cli": "^66.6.8",
     "@vitejs/plugin-vue": "^6.0.7",

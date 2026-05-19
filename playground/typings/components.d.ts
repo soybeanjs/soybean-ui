@@ -12,7 +12,6 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
-    CodeBlock: typeof import('./../components/code-block.vue')['default']
     DirectionToggler: typeof import('./../components/direction-toggler.vue')['default']
     LocaleToggler: typeof import('./../components/locale-toggler.vue')['default']
     PlaygroundGallery: typeof import('./../components/playground-gallery.vue')['default']
@@ -24,11 +23,9 @@ declare module 'vue' {
     SButton: typeof import('@soybeanjs/ui')['SButton']
     SCard: typeof import('@soybeanjs/ui')['SCard']
     SEditable: typeof import('@soybeanjs/ui')['SEditable']
-    SMenuOption: typeof import('@soybeanjs/ui')['SMenuOption']
     SSplitterGroup: typeof import('@soybeanjs/ui')['SSplitterGroup']
     SSplitterPanel: typeof import('@soybeanjs/ui')['SSplitterPanel']
     SSplitterResizeHandle: typeof import('@soybeanjs/ui')['SSplitterResizeHandle']
-    STabs: typeof import('@soybeanjs/ui')['STabs']
     SToggle: typeof import('@soybeanjs/ui')['SToggle']
     ThemeConfigurator: typeof import('./../components/theme-configurator.vue')['default']
     ThemeSchemaToggler: typeof import('./../components/theme-schema-toggler.vue')['default']
@@ -37,7 +34,6 @@ declare module 'vue' {
 
 // For TSX support
 declare global {
-  const CodeBlock: typeof import('./../components/code-block.vue')['default']
   const DirectionToggler: typeof import('./../components/direction-toggler.vue')['default']
   const LocaleToggler: typeof import('./../components/locale-toggler.vue')['default']
   const PlaygroundGallery: typeof import('./../components/playground-gallery.vue')['default']
@@ -49,11 +45,9 @@ declare global {
   const SButton: typeof import('@soybeanjs/ui')['SButton']
   const SCard: typeof import('@soybeanjs/ui')['SCard']
   const SEditable: typeof import('@soybeanjs/ui')['SEditable']
-  const SMenuOption: typeof import('@soybeanjs/ui')['SMenuOption']
   const SSplitterGroup: typeof import('@soybeanjs/ui')['SSplitterGroup']
   const SSplitterPanel: typeof import('@soybeanjs/ui')['SSplitterPanel']
   const SSplitterResizeHandle: typeof import('@soybeanjs/ui')['SSplitterResizeHandle']
-  const STabs: typeof import('@soybeanjs/ui')['STabs']
   const SToggle: typeof import('@soybeanjs/ui')['SToggle']
   const ThemeConfigurator: typeof import('./../components/theme-configurator.vue')['default']
   const ThemeSchemaToggler: typeof import('./../components/theme-schema-toggler.vue')['default']

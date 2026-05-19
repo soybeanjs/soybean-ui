@@ -8,7 +8,7 @@ export const accordionVariants = scv({
     header: 'flex',
     content: [
       `overflow-hidden transition will-change-auto`,
-      `data-[state=open]:animate-accordion-down data-[state=closed]:animate-accordion-up`
+      `data-[state=open]:animate-collapsible-down data-[state=closed]:animate-collapsible-up`
     ],
     description: 'm-0',
     trigger: [

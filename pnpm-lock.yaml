@@ -49,8 +49,8 @@ importers:
         specifier: ^0.2.0
         version: 0.2.0(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(vite@8.0.13(@types/node@25.9.0)(esbuild@0.28.0)(jiti@2.7.0)(terser@5.47.1)(tsx@4.22.1)(yaml@2.9.0))
       '@soybeanjs/unocss-shadcn':
-        specifier: ^0.4.0
-        version: 0.4.0(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(vite@8.0.13(@types/node@25.9.0)(esbuild@0.28.0)(jiti@2.7.0)(terser@5.47.1)(tsx@4.22.1)(yaml@2.9.0))
+        specifier: ^0.5.0
+        version: 0.5.0(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(vite@8.0.13(@types/node@25.9.0)(esbuild@0.28.0)(jiti@2.7.0)(terser@5.47.1)(tsx@4.22.1)(yaml@2.9.0))
       '@types/node':
         specifier: ^25.9.0
         version: 25.9.0
@@ -2918,8 +2918,8 @@ packages:
   '@soybeanjs/unocss-preset@0.2.0':
     resolution: {integrity: sha512-ELjt4BKoU3NsrvzPHK7EsMMz2ZC8F4Qtpny38qeRvvrS7YzHEj5CwD6LeQF2USEo9msJRYU2uwLTIJRFOClNxA==}
 
-  '@soybeanjs/unocss-shadcn@0.4.0':
-    resolution: {integrity: sha512-G2aaGim4ne9djUG7KSizxoRQ5L/iW7IBf8VgXtw0jD/Eq6IETGznmDy/8APsIW/jq3RLaEXzn5WS1s894OoXaA==}
+  '@soybeanjs/unocss-shadcn@0.5.0':
+    resolution: {integrity: sha512-qLfjl708fi4LsfW3OnsHZFAt0QqIV4uZ/k+PayTZlDFyOMRl0DJXFMC0cg1TI2fBKAZTi4yFu2H8XntExxJskA==}
 
   '@soybeanjs/utils@0.1.1':
     resolution: {integrity: sha512-Esq2pFyhtA1J6LnHvLXyS9xFGeDfVhaw80IMTabxMhVMQUwDFWMa5KAlrkT0TBmQct1hJTszRo9AvvuUCKGp0w==}
@@ -8832,7 +8832,7 @@ snapshots:
       - '@unocss/webpack'
       - vite
 
-  '@soybeanjs/unocss-shadcn@0.4.0(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(vite@8.0.13(@types/node@25.9.0)(esbuild@0.28.0)(jiti@2.7.0)(terser@5.47.1)(tsx@4.22.1)(yaml@2.9.0))':
+  '@soybeanjs/unocss-shadcn@0.5.0(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(vite@8.0.13(@types/node@25.9.0)(esbuild@0.28.0)(jiti@2.7.0)(terser@5.47.1)(tsx@4.22.1)(yaml@2.9.0))':
     dependencies:
       unocss: 66.6.8(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(vite@8.0.13(@types/node@25.9.0)(esbuild@0.28.0)(jiti@2.7.0)(terser@5.47.1)(tsx@4.22.1)(yaml@2.9.0))
     transitivePeerDependencies:

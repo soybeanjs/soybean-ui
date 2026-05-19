@@ -1,19 +1,19 @@
 <script setup lang="ts">
-import { h, watch, watchEffect } from 'vue';
+import { h, watchEffect } from 'vue';
 import { useStorage } from '@vueuse/core';
 import { ConfigProvider } from '@soybeanjs/headless/config-provider';
 import { Primitive } from '@soybeanjs/headless/primitive';
 import { useOmitProps } from '@soybeanjs/headless/composables';
 import { isClient, transformPropsToContext } from '@soybeanjs/headless/shared';
 import { createShadcnTheme } from '@soybeanjs/shadcn-theme';
-import type { ThemeSize } from '@/theme';
-import { themeSizes } from '@/constants/common';
+import { themeSizeMap } from '@/theme';
 import DialogProvider from '../dialog/dialog-provider.vue';
 import Icon from '../icon/icon.vue';
 import type { IconValue } from '../icon/types';
 import ProgressProvider from '../progress/progress-provider.vue';
 import ToastProvider from '../toast/toast-provider.vue';
 import { provideConfigProviderContext } from './context';
+import globalStyles from './global.css?raw';
 import type { ConfigProviderProps } from './types';
 
 defineOptions({
@@ -48,23 +48,22 @@ provideConfigProviderContext({
 
 const { getCss } = createShadcnTheme(props.theme);
 
-const generateCss = () => getCss(props.theme, props.theme.radius);
+const generateCss = () => {
+  const cssVars = getCss(props.theme, props.theme.radius);
+
+  return `${globalStyles}\n${cssVars}`;
+};
 
 const cssVars = useStorage('__SoybeanUI_themeVars', generateCss());
 
-function addSizeClass(size: ThemeSize) {
-  if (!isClient) return;
-  document.documentElement.classList.add(`size-${size}`);
-  const removes = themeSizes.filter(s => s !== size).map(s => `size-${s}`);
-  document.documentElement.classList.remove(...removes);
-}
-
-watch(
-  () => props.size,
-  newVal => {
-    addSizeClass(newVal);
+watchEffect(
+  () => {
+    if (!isClient) return;
+    const size = props.size ?? 'md';
+    const fontSize = themeSizeMap[size];
+    document.documentElement.style.fontSize = `${fontSize}px`;
   },
-  { immediate: true, flush: 'sync' }
+  { flush: 'post' }
 );
 
 watchEffect(() => {

@@ -7,7 +7,7 @@ export const collapsibleVariants = scv({
     trigger: '',
     content: [
       'overflow-hidden transition will-change-auto',
-      'data-[state=closed]:animate-collapsible-up data-[state=open]:animate-collapsible-down'
+      'data-[state=open]:animate-collapsible-down data-[state=closed]:animate-collapsible-up'
     ]
   },
   variants: {
