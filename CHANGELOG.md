@@ -1,5 +1,16 @@
 # Changelog
 
+## [v0.23.1-beta.4](https://github.com/soybeanjs/soybean-ui/compare/v0.23.1-beta.3...v0.23.1-beta.4) (2026-05-19)
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- **pnpm**: add minimumReleaseAgeExclude entries for various packages &nbsp;-&nbsp; by **soybeanfe** [<samp>(009d4)</samp>](https://github.com/soybeanjs/soybean-ui/commit/009d4c770)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+
+[soybeanfe](mailto:honghuangdc@gmail.com)
+
 ## [v0.23.1-beta.3](https://github.com/soybeanjs/soybean-ui/compare/v0.23.1-beta.2...v0.23.1-beta.3) (2026-05-19)
 
 ### &nbsp;&nbsp;&nbsp;🚀 Features

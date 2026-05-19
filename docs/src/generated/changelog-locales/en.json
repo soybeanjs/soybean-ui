@@ -1311,6 +1311,9 @@
             "3": {
               "46659": "export IconifyOptions interface and update type exports in config-provider",
               "13a61": "correct import path for ProgressProviderProps"
+            },
+            "4": {
+              "009d4": "add minimumReleaseAgeExclude entries for various packages"
             }
           }
         }
