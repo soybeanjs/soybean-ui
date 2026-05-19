@@ -1,6 +1,6 @@
 {
   "component": "progress",
-  "generatedAt": "2026-05-19T09:12:54.636Z",
+  "generatedAt": "2026-05-19T15:55:10.230Z",
   "schemaVersion": 1,
   "versions": [
     {
@@ -15,7 +15,9 @@
           "summaryKey": "changelog.generated.v0.20.0.bc952",
           "commitHash": "bc952",
           "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/bc952854",
-          "authors": ["soybeanjs"],
+          "authors": [
+            "soybeanjs"
+          ],
           "source": "exact-scope"
         }
       ]
@@ -32,7 +34,10 @@
           "summaryKey": "changelog.generated.v0.19.0.5e53d",
           "commitHash": "5e53d",
           "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/5e53db69",
-          "authors": ["soybeanjs", "MicrosoftCopilot"],
+          "authors": [
+            "soybeanjs",
+            "MicrosoftCopilot"
+          ],
           "source": "exact-scope"
         }
       ]
@@ -49,7 +54,10 @@
           "summaryKey": "changelog.generated.v0.15.3.d86ac",
           "commitHash": "d86ac",
           "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/d86acef7",
-          "authors": ["soybeanfe", "Copilot"],
+          "authors": [
+            "soybeanfe",
+            "Copilot"
+          ],
           "source": "exact-scope"
         }
       ]
@@ -66,7 +74,9 @@
           "summaryKey": "changelog.generated.v0.15.0.5f90a",
           "commitHash": "5f90a",
           "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/5f90a644",
-          "authors": ["MicrosoftCopilot in https://github.com/soybeanjs/soybean-ui/issues/129"],
+          "authors": [
+            "MicrosoftCopilot in https://github.com/soybeanjs/soybean-ui/issues/129"
+          ],
           "source": "exact-scope"
         },
         {
@@ -76,7 +86,11 @@
           "summaryKey": "changelog.generated.v0.15.0.c60cf",
           "commitHash": "c60cf",
           "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/c60cf09a",
-          "authors": ["soybeanjs", "soybean-js", "MicrosoftCopilot"],
+          "authors": [
+            "soybeanjs",
+            "soybean-js",
+            "MicrosoftCopilot"
+          ],
           "source": "exact-scope"
         },
         {
@@ -86,7 +100,9 @@
           "summaryKey": "changelog.generated.v0.15.0.d1327",
           "commitHash": "d1327",
           "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/d132782f",
-          "authors": ["soybeanjs"],
+          "authors": [
+            "soybeanjs"
+          ],
           "source": "exact-scope"
         }
       ]
@@ -103,7 +119,9 @@
           "summaryKey": "changelog.generated.v0.15.0-beta.3.5f90a",
           "commitHash": "5f90a",
           "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/5f90a644",
-          "authors": ["MicrosoftCopilot in https://github.com/soybeanjs/soybean-ui/issues/129"],
+          "authors": [
+            "MicrosoftCopilot in https://github.com/soybeanjs/soybean-ui/issues/129"
+          ],
           "source": "exact-scope"
         },
         {
@@ -113,7 +131,11 @@
           "summaryKey": "changelog.generated.v0.15.0-beta.3.c60cf",
           "commitHash": "c60cf",
           "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/c60cf09a",
-          "authors": ["soybeanjs", "soybean-js", "MicrosoftCopilot"],
+          "authors": [
+            "soybeanjs",
+            "soybean-js",
+            "MicrosoftCopilot"
+          ],
           "source": "exact-scope"
         }
       ]
@@ -130,7 +152,9 @@
           "summaryKey": "changelog.generated.v0.15.0-beta.1.d1327",
           "commitHash": "d1327",
           "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/d132782f",
-          "authors": ["soybeanjs"],
+          "authors": [
+            "soybeanjs"
+          ],
           "source": "exact-scope"
         }
       ]

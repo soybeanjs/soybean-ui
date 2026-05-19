@@ -8,9 +8,26 @@ export const components = {
     'AccordionContent',
     'AccordionDescription'
   ],
-  affix: ['AffixCompact', 'AffixRoot', 'AffixPlaceholder', 'AffixContent'],
-  alert: ['AlertCompact', 'AlertRoot', 'AlertContent', 'AlertTitle', 'AlertDescription', 'AlertClose'],
-  anchor: ['AnchorCompact', 'AnchorItemCompact', 'AnchorLink', 'AnchorRoot'],
+  affix: [
+    'AffixCompact',
+    'AffixRoot',
+    'AffixPlaceholder',
+    'AffixContent'
+  ],
+  alert: [
+    'AlertCompact',
+    'AlertRoot',
+    'AlertContent',
+    'AlertTitle',
+    'AlertDescription',
+    'AlertClose'
+  ],
+  anchor: [
+    'AnchorCompact',
+    'AnchorItemCompact',
+    'AnchorLink',
+    'AnchorRoot'
+  ],
   arrow: ['Arrow'],
   aspectRatio: ['AspectRatio'],
   autocomplete: [
@@ -28,9 +45,18 @@ export const components = {
     'AutocompleteItemIndicator',
     'AutocompleteSeparator'
   ],
-  avatar: ['AvatarCompact', 'AvatarRoot', 'AvatarImage', 'AvatarFallback'],
+  avatar: [
+    'AvatarCompact',
+    'AvatarRoot',
+    'AvatarImage',
+    'AvatarFallback'
+  ],
   backtop: ['Backtop'],
-  badge: ['BadgeCompact', 'BadgeRoot', 'BadgeContent'],
+  badge: [
+    'BadgeCompact',
+    'BadgeRoot',
+    'BadgeContent'
+  ],
   bottomSheet: [
     'BottomSheetTrigger',
     'BottomSheetPortal',
@@ -124,12 +150,39 @@ export const components = {
     'CheckboxLabel'
   ],
   clipboard: ['Clipboard'],
-  collapsible: ['CollapsibleRoot', 'CollapsibleContent', 'CollapsibleTrigger'],
-  colorArea: ['ColorAreaCompact', 'ColorAreaRoot', 'ColorAreaArea', 'ColorAreaThumb'],
-  colorField: ['ColorFieldCompact', 'ColorFieldRoot', 'ColorFieldInput'],
-  colorPicker: ['ColorPickerCompact', 'ColorPickerRoot', 'ColorPickerTrigger'],
-  colorSlider: ['ColorSliderCompact', 'ColorSliderRoot', 'ColorSliderTrack', 'ColorSliderThumb'],
-  colorSwatch: ['ColorSwatchCompact', 'ColorSwatchRoot', 'ColorSwatchChecker', 'ColorSwatchFill'],
+  collapsible: [
+    'CollapsibleRoot',
+    'CollapsibleContent',
+    'CollapsibleTrigger'
+  ],
+  colorArea: [
+    'ColorAreaCompact',
+    'ColorAreaRoot',
+    'ColorAreaArea',
+    'ColorAreaThumb'
+  ],
+  colorField: [
+    'ColorFieldCompact',
+    'ColorFieldRoot',
+    'ColorFieldInput'
+  ],
+  colorPicker: [
+    'ColorPickerCompact',
+    'ColorPickerRoot',
+    'ColorPickerTrigger'
+  ],
+  colorSlider: [
+    'ColorSliderCompact',
+    'ColorSliderRoot',
+    'ColorSliderTrack',
+    'ColorSliderThumb'
+  ],
+  colorSwatch: [
+    'ColorSwatchCompact',
+    'ColorSwatchRoot',
+    'ColorSwatchChecker',
+    'ColorSwatchFill'
+  ],
   colorSwatchPicker: [
     'ColorSwatchPickerCompact',
     'ColorSwatchPickerRoot',
@@ -182,9 +235,17 @@ export const components = {
     'ContextMenuRadioCompact',
     'ContextMenuWrapperCompact'
   ],
-  dateField: ['DateFieldCompact', 'DateFieldRoot', 'DateFieldInput'],
+  dateField: [
+    'DateFieldCompact',
+    'DateFieldRoot',
+    'DateFieldInput'
+  ],
   datePicker: ['DatePickerCompact'],
-  dateRangeField: ['DateRangeFieldCompact', 'DateRangeFieldRoot', 'DateRangeFieldInput'],
+  dateRangeField: [
+    'DateRangeFieldCompact',
+    'DateRangeFieldRoot',
+    'DateRangeFieldInput'
+  ],
   dateRangePicker: ['DateRangePickerCompact'],
   dialog: [
     'DialogCompact',
@@ -237,7 +298,15 @@ export const components = {
     'EditableSubmitTrigger',
     'EditableCompact'
   ],
-  empty: ['EmptyCompact', 'EmptyRoot', 'EmptyHeader', 'EmptyMedia', 'EmptyContent', 'EmptyTitle', 'EmptyDescription'],
+  empty: [
+    'EmptyCompact',
+    'EmptyRoot',
+    'EmptyHeader',
+    'EmptyMedia',
+    'EmptyContent',
+    'EmptyTitle',
+    'EmptyDescription'
+  ],
   form: [
     'FormCompact',
     'FormFieldCompact',
@@ -258,7 +327,12 @@ export const components = {
     'HoverCardArrow',
     'HoverCardCompact'
   ],
-  input: ['InputCompact', 'InputRoot', 'InputControl', 'InputClear'],
+  input: [
+    'InputCompact',
+    'InputRoot',
+    'InputControl',
+    'InputClear'
+  ],
   inputNumber: [
     'InputNumberCompact',
     'InputNumberRoot',
@@ -266,7 +340,12 @@ export const components = {
     'InputNumberIncrement',
     'InputNumberDecrement'
   ],
-  inputOtp: ['InputOtpCompact', 'InputOtpInput', 'InputOtpPositioner', 'InputOtpRoot'],
+  inputOtp: [
+    'InputOtpCompact',
+    'InputOtpInput',
+    'InputOtpPositioner',
+    'InputOtpRoot'
+  ],
   kbd: ['Kbd'],
   label: ['Label'],
   layout: [
@@ -284,7 +363,13 @@ export const components = {
     'LayoutTrigger'
   ],
   link: ['Link'],
-  list: ['ListRoot', 'ListItem', 'ListTitle', 'ListDescription', 'ListContent'],
+  list: [
+    'ListRoot',
+    'ListItem',
+    'ListTitle',
+    'ListDescription',
+    'ListContent'
+  ],
   listbox: [
     'ListboxRoot',
     'ListboxContent',
@@ -351,7 +436,13 @@ export const components = {
     'NavigationMenuViewport',
     'NavigationMenuIndicator'
   ],
-  pageTabs: ['PageTabsRoot', 'PageTabsItem', 'PageTabsClose', 'PageTabsPin', 'PageTabsCompact'],
+  pageTabs: [
+    'PageTabsRoot',
+    'PageTabsItem',
+    'PageTabsClose',
+    'PageTabsPin',
+    'PageTabsCompact'
+  ],
   pagination: [
     'PaginationRoot',
     'PaginationList',
@@ -392,7 +483,13 @@ export const components = {
     'PopoverArrow',
     'PopoverClose'
   ],
-  popper: ['PopperRoot', 'PopperAnchor', 'PopperPositioner', 'PopperPopup', 'PopperArrow'],
+  popper: [
+    'PopperRoot',
+    'PopperAnchor',
+    'PopperPositioner',
+    'PopperPopup',
+    'PopperArrow'
+  ],
   portal: ['Portal'],
   primitive: ['Primitive'],
   progress: [
@@ -412,7 +509,10 @@ export const components = {
     'RadioGroupIndicator',
     'RadioGroupLabel'
   ],
-  rovingFocus: ['RovingFocusGroup', 'RovingFocusItem'],
+  rovingFocus: [
+    'RovingFocusGroup',
+    'RovingFocusItem'
+  ],
   scrollArea: [
     'ScrollAreaRoot',
     'ScrollAreaViewport',
@@ -421,7 +521,13 @@ export const components = {
     'ScrollAreaCorner',
     'ScrollAreaCompact'
   ],
-  segment: ['SegmentRoot', 'SegmentList', 'SegmentTrigger', 'SegmentIndicator', 'SegmentCompact'],
+  segment: [
+    'SegmentRoot',
+    'SegmentList',
+    'SegmentTrigger',
+    'SegmentIndicator',
+    'SegmentCompact'
+  ],
   select: [
     'SelectRoot',
     'SelectCompact',
@@ -441,11 +547,25 @@ export const components = {
     'SelectSeparator',
     'SelectArrow'
   ],
-  separator: ['SeparatorCompact', 'SeparatorRoot', 'SeparatorLabel'],
+  separator: [
+    'SeparatorCompact',
+    'SeparatorRoot',
+    'SeparatorLabel'
+  ],
   skeleton: ['Skeleton'],
-  slider: ['SliderCompact', 'SliderRoot', 'SliderTrack', 'SliderRange', 'SliderThumb'],
+  slider: [
+    'SliderCompact',
+    'SliderRoot',
+    'SliderTrack',
+    'SliderRange',
+    'SliderThumb'
+  ],
   slot: ['Slot'],
-  splitter: ['SplitterGroup', 'SplitterPanel', 'SplitterResizeHandle'],
+  splitter: [
+    'SplitterGroup',
+    'SplitterPanel',
+    'SplitterResizeHandle'
+  ],
   stepper: [
     'StepperRoot',
     'StepperItem',
@@ -456,7 +576,12 @@ export const components = {
     'StepperDescription',
     'StepperCompact'
   ],
-  switch: ['SwitchRoot', 'SwitchControl', 'SwitchThumb', 'SwitchCompact'],
+  switch: [
+    'SwitchRoot',
+    'SwitchControl',
+    'SwitchThumb',
+    'SwitchCompact'
+  ],
   table: [
     'TableCompact',
     'TableRoot',
@@ -469,7 +594,14 @@ export const components = {
     'TableHead',
     'TableCell'
   ],
-  tabs: ['TabsRoot', 'TabsList', 'TabsTrigger', 'TabsContent', 'TabsIndicator', 'TabsCompact'],
+  tabs: [
+    'TabsRoot',
+    'TabsList',
+    'TabsTrigger',
+    'TabsContent',
+    'TabsIndicator',
+    'TabsCompact'
+  ],
   tag: ['Tag'],
   tagsInput: [
     'TagsInputCompact',
@@ -480,12 +612,32 @@ export const components = {
     'TagsInputControl',
     'TagsInputClear'
   ],
-  textarea: ['TextareaCompact', 'TextareaRoot', 'TextareaControl', 'TextareaClear', 'TextareaCounter'],
-  timeField: ['TimeFieldCompact', 'TimeFieldRoot', 'TimeFieldInput'],
-  timeRangeField: ['TimeRangeFieldCompact', 'TimeRangeFieldRoot', 'TimeRangeFieldInput'],
-  toast: ['Toaster', 'ToastProvider'],
+  textarea: [
+    'TextareaCompact',
+    'TextareaRoot',
+    'TextareaControl',
+    'TextareaClear',
+    'TextareaCounter'
+  ],
+  timeField: [
+    'TimeFieldCompact',
+    'TimeFieldRoot',
+    'TimeFieldInput'
+  ],
+  timeRangeField: [
+    'TimeRangeFieldCompact',
+    'TimeRangeFieldRoot',
+    'TimeRangeFieldInput'
+  ],
+  toast: [
+    'Toaster',
+    'ToastProvider'
+  ],
   toggle: ['Toggle'],
-  toggleGroup: ['ToggleGroupRoot', 'ToggleGroupItem'],
+  toggleGroup: [
+    'ToggleGroupRoot',
+    'ToggleGroupItem'
+  ],
   toolbar: [
     'ToolbarRoot',
     'ToolbarButton',
@@ -503,7 +655,12 @@ export const components = {
     'TooltipPopup',
     'TooltipArrow'
   ],
-  tree: ['TreeRoot', 'TreeItem', 'TreeVirtualizerRoot', 'TreeVirtualizerItem'],
+  tree: [
+    'TreeRoot',
+    'TreeItem',
+    'TreeVirtualizerRoot',
+    'TreeVirtualizerItem'
+  ],
   treeMenu: [
     'TreeMenuCompact',
     'TreeMenuOptionsCompact',
@@ -518,6 +675,18 @@ export const components = {
     'TreeMenuCollapsible',
     'TreeMenuSub'
   ],
-  virtualizer: ['VirtualizerRoot', 'VirtualizerContent', 'VirtualizerItem'],
-  visuallyHidden: ['VisuallyHidden', 'VisuallyHiddenInput']
+  virtualizer: [
+    'VirtualizerRoot',
+    'VirtualizerContent',
+    'VirtualizerItem'
+  ],
+  visuallyHidden: [
+    'VisuallyHidden',
+    'VisuallyHiddenInput'
+  ],
+  watermark: [
+    'WatermarkCompact',
+    'WatermarkOverlay',
+    'WatermarkRoot'
+  ]
 };

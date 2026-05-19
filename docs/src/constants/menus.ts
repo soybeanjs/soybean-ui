@@ -123,7 +123,8 @@ export const menuData: MenuData[] = [
       'skeleton',
       'tag',
       'table',
-      'virtualizer'
+      'virtualizer',
+      'watermark'
     ]
   },
   {

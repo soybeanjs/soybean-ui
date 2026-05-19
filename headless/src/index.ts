@@ -87,6 +87,7 @@ export * from './components/tree';
 export * from './components/tree-menu';
 export * from './components/virtualizer';
 export * from './components/visually-hidden';
+export * from './components/watermark';
 export * from './locale';
 
 export type { IconValue } from './components/_icon/types';

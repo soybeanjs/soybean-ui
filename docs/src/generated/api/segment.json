@@ -10,7 +10,9 @@
         "description": "Properties for the Segment component.",
         "descriptionKey": "api.generated.src_components_segment_types.segmentprops.props",
         "sourcePath": "src/components/segment/types.ts",
-        "typeParameters": ["TypeParameter T"],
+        "typeParameters": [
+          "TypeParameter T"
+        ],
         "members": [
           {
             "name": "class",
@@ -100,11 +102,11 @@
               {
                 "name": "TabsShape",
                 "kind": "typeAlias",
-                "type": "'square' | 'rounded'",
-                "resolvedType": "'square' | 'rounded'",
+                "type": "'rounded' | 'square'",
+                "resolvedType": "'rounded' | 'square'",
                 "description": "",
-                "descriptionKey": "api.generated.src_components_tabs_variants.tabsshape",
-                "sourcePath": "src/components/tabs/variants.ts",
+                "descriptionKey": "api.generated.src_styles_tabs.tabsshape",
+                "sourcePath": "src/styles/tabs.ts",
                 "typeParameters": [],
                 "external": false,
                 "members": [],
@@ -128,8 +130,8 @@
                 "type": "'auto' | 'full'",
                 "resolvedType": "'auto' | 'full'",
                 "description": "",
-                "descriptionKey": "api.generated.src_components_tabs_variants.tabsfill",
-                "sourcePath": "src/components/tabs/variants.ts",
+                "descriptionKey": "api.generated.src_styles_tabs.tabsfill",
+                "sourcePath": "src/styles/tabs.ts",
                 "typeParameters": [],
                 "external": false,
                 "members": [],
@@ -433,7 +435,9 @@
         "description": "Events for the Segment component.",
         "descriptionKey": "api.generated.src_components_segment_types.segmentemits.emits",
         "sourcePath": "src/components/segment/types.ts",
-        "typeParameters": ["TypeParameter T"],
+        "typeParameters": [
+          "TypeParameter T"
+        ],
         "members": [],
         "callables": [
           {
@@ -457,7 +461,9 @@
         "description": "Slots for the Segment component.",
         "descriptionKey": "api.generated.src_components_segment_types.segmentslots.slots",
         "sourcePath": "src/components/segment/types.ts",
-        "typeParameters": ["TypeParameter T"],
+        "typeParameters": [
+          "TypeParameter T"
+        ],
         "members": [],
         "callables": [
           {
@@ -507,7 +513,9 @@
         "description": "Properties for the SegmentCompact component.",
         "descriptionKey": "api.generated.headless_src_components_segment_types.segmentcompactprops.props",
         "sourcePath": "headless/src/components/segment/types.ts",
-        "typeParameters": ["TypeParameter T"],
+        "typeParameters": [
+          "TypeParameter T"
+        ],
         "members": [
           {
             "name": "items",
@@ -805,7 +813,9 @@
         "description": "Events for the SegmentCompact component.",
         "descriptionKey": "api.generated.headless_src_components_segment_types.segmentcompactemits.emits",
         "sourcePath": "headless/src/components/segment/types.ts",
-        "typeParameters": ["TypeParameter T"],
+        "typeParameters": [
+          "TypeParameter T"
+        ],
         "members": [],
         "callables": [
           {
@@ -829,7 +839,9 @@
         "description": "Slots for the SegmentCompact component.",
         "descriptionKey": "api.generated.headless_src_components_segment_types.segmentcompactslots.slots",
         "sourcePath": "headless/src/components/segment/types.ts",
-        "typeParameters": ["TypeParameter T"],
+        "typeParameters": [
+          "TypeParameter T"
+        ],
         "members": [],
         "callables": [
           {
@@ -909,7 +921,9 @@
         "description": "Events for the TabsRoot component.",
         "descriptionKey": "api.generated.headless_src_components_tabs_types.segmentrootemits.emits",
         "sourcePath": "headless/src/components/tabs/types.ts",
-        "typeParameters": ["TypeParameter T"],
+        "typeParameters": [
+          "TypeParameter T"
+        ],
         "members": [],
         "callables": [],
         "referencedTypes": []
@@ -922,7 +936,9 @@
         "description": "Properties for the TabsRoot component.",
         "descriptionKey": "api.generated.headless_src_components_tabs_types.segmentrootprops.props",
         "sourcePath": "headless/src/components/tabs/types.ts",
-        "typeParameters": ["TypeParameter T"],
+        "typeParameters": [
+          "TypeParameter T"
+        ],
         "members": [],
         "callables": [],
         "referencedTypes": []

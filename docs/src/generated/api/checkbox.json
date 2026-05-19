@@ -125,11 +125,11 @@
               {
                 "name": "CheckboxShape",
                 "kind": "typeAlias",
-                "type": "'square' | 'rounded'",
-                "resolvedType": "'square' | 'rounded'",
+                "type": "'rounded' | 'square'",
+                "resolvedType": "'rounded' | 'square'",
                 "description": "",
-                "descriptionKey": "api.generated.src_components_checkbox_variants.checkboxshape",
-                "sourcePath": "src/components/checkbox/variants.ts",
+                "descriptionKey": "api.generated.src_styles_checkbox.checkboxshape",
+                "sourcePath": "src/styles/checkbox.ts",
                 "typeParameters": [],
                 "external": false,
                 "members": [],
@@ -608,11 +608,11 @@
               {
                 "name": "CheckboxShape",
                 "kind": "typeAlias",
-                "type": "'square' | 'rounded'",
-                "resolvedType": "'square' | 'rounded'",
+                "type": "'rounded' | 'square'",
+                "resolvedType": "'rounded' | 'square'",
                 "description": "",
-                "descriptionKey": "api.generated.src_components_checkbox_variants.checkboxshape",
-                "sourcePath": "src/components/checkbox/variants.ts",
+                "descriptionKey": "api.generated.src_styles_checkbox.checkboxshape",
+                "sourcePath": "src/styles/checkbox.ts",
                 "typeParameters": [],
                 "external": false,
                 "members": [],
@@ -1392,7 +1392,9 @@
         "description": "Properties for the CheckboxCardGroup component.",
         "descriptionKey": "api.generated.src_components_checkbox_types.checkboxcardgroupprops.props",
         "sourcePath": "src/components/checkbox/types.ts",
-        "typeParameters": ["TypeParameter T"],
+        "typeParameters": [
+          "TypeParameter T"
+        ],
         "members": [
           {
             "name": "class",
@@ -1507,11 +1509,11 @@
               {
                 "name": "CheckboxShape",
                 "kind": "typeAlias",
-                "type": "'square' | 'rounded'",
-                "resolvedType": "'square' | 'rounded'",
+                "type": "'rounded' | 'square'",
+                "resolvedType": "'rounded' | 'square'",
                 "description": "",
-                "descriptionKey": "api.generated.src_components_checkbox_variants.checkboxshape",
-                "sourcePath": "src/components/checkbox/variants.ts",
+                "descriptionKey": "api.generated.src_styles_checkbox.checkboxshape",
+                "sourcePath": "src/styles/checkbox.ts",
                 "typeParameters": [],
                 "external": false,
                 "members": [],
@@ -1949,7 +1951,9 @@
         "description": "Events for the CheckboxCardGroup component.",
         "descriptionKey": "api.generated.src_components_checkbox_types.checkboxcardgroupemits.emits",
         "sourcePath": "src/components/checkbox/types.ts",
-        "typeParameters": ["TypeParameter T"],
+        "typeParameters": [
+          "TypeParameter T"
+        ],
         "members": [],
         "callables": [
           {
@@ -1975,7 +1979,9 @@
         "description": "Properties for the CheckboxCardGroupCompact component.",
         "descriptionKey": "api.generated.headless_src_components_checkbox_types.checkboxcardgroupcompactprops.props",
         "sourcePath": "headless/src/components/checkbox/types.ts",
-        "typeParameters": ["TypeParameter T"],
+        "typeParameters": [
+          "TypeParameter T"
+        ],
         "members": [
           {
             "name": "items",
@@ -2407,7 +2413,9 @@
         "description": "Events for the CheckboxCardGroupCompact component.",
         "descriptionKey": "api.generated.headless_src_components_checkbox_types.checkboxcardgroupcompactemits.emits",
         "sourcePath": "headless/src/components/checkbox/types.ts",
-        "typeParameters": ["TypeParameter T"],
+        "typeParameters": [
+          "TypeParameter T"
+        ],
         "members": [],
         "callables": [
           {
@@ -2898,7 +2906,9 @@
         "description": "Properties for the CheckboxGroup component.",
         "descriptionKey": "api.generated.src_components_checkbox_types.checkboxgroupprops.props",
         "sourcePath": "src/components/checkbox/types.ts",
-        "typeParameters": ["TypeParameter T"],
+        "typeParameters": [
+          "TypeParameter T"
+        ],
         "members": [
           {
             "name": "class",
@@ -3013,11 +3023,11 @@
               {
                 "name": "CheckboxShape",
                 "kind": "typeAlias",
-                "type": "'square' | 'rounded'",
-                "resolvedType": "'square' | 'rounded'",
+                "type": "'rounded' | 'square'",
+                "resolvedType": "'rounded' | 'square'",
                 "description": "",
-                "descriptionKey": "api.generated.src_components_checkbox_variants.checkboxshape",
-                "sourcePath": "src/components/checkbox/variants.ts",
+                "descriptionKey": "api.generated.src_styles_checkbox.checkboxshape",
+                "sourcePath": "src/styles/checkbox.ts",
                 "typeParameters": [],
                 "external": false,
                 "members": [],
@@ -3455,7 +3465,9 @@
         "description": "Events for the CheckboxGroup component.",
         "descriptionKey": "api.generated.src_components_checkbox_types.checkboxgroupemits.emits",
         "sourcePath": "src/components/checkbox/types.ts",
-        "typeParameters": ["TypeParameter T"],
+        "typeParameters": [
+          "TypeParameter T"
+        ],
         "members": [],
         "callables": [
           {
@@ -3481,7 +3493,9 @@
         "description": "Properties for the CheckboxGroupCompact component.",
         "descriptionKey": "api.generated.headless_src_components_checkbox_types.checkboxgroupcompactprops.props",
         "sourcePath": "headless/src/components/checkbox/types.ts",
-        "typeParameters": ["TypeParameter T"],
+        "typeParameters": [
+          "TypeParameter T"
+        ],
         "members": [
           {
             "name": "items",
@@ -3913,7 +3927,9 @@
         "description": "Events for the CheckboxGroupCompact component.",
         "descriptionKey": "api.generated.headless_src_components_checkbox_types.checkboxgroupcompactemits.emits",
         "sourcePath": "headless/src/components/checkbox/types.ts",
-        "typeParameters": ["TypeParameter T"],
+        "typeParameters": [
+          "TypeParameter T"
+        ],
         "members": [],
         "callables": [
           {
@@ -3939,7 +3955,9 @@
         "description": "Properties for the CheckboxGroupRoot component.",
         "descriptionKey": "api.generated.headless_src_components_checkbox_types.checkboxgrouprootprops.props",
         "sourcePath": "headless/src/components/checkbox/types.ts",
-        "typeParameters": ["TypeParameter T"],
+        "typeParameters": [
+          "TypeParameter T"
+        ],
         "members": [
           {
             "name": "modelValue",
@@ -4080,7 +4098,9 @@
         "description": "Events for the CheckboxGroupRoot component.",
         "descriptionKey": "api.generated.headless_src_components_checkbox_types.checkboxgrouprootemits.emits",
         "sourcePath": "headless/src/components/checkbox/types.ts",
-        "typeParameters": ["TypeParameter T"],
+        "typeParameters": [
+          "TypeParameter T"
+        ],
         "members": [],
         "callables": [
           {

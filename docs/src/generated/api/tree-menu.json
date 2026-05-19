@@ -10,7 +10,9 @@
         "description": "Properties for the TreeMenu component.",
         "descriptionKey": "api.generated.src_components_tree_menu_types.treemenuprops.props",
         "sourcePath": "src/components/tree-menu/types.ts",
-        "typeParameters": ["TypeParameter T"],
+        "typeParameters": [
+          "TypeParameter T"
+        ],
         "members": [
           {
             "name": "class",
@@ -969,7 +971,9 @@
         "description": "Slots for the TreeMenu component.",
         "descriptionKey": "api.generated.src_components_tree_menu_types.treemenuslots.slots",
         "sourcePath": "src/components/tree-menu/types.ts",
-        "typeParameters": ["TypeParameter T"],
+        "typeParameters": [
+          "TypeParameter T"
+        ],
         "members": [],
         "callables": [
           {
@@ -1317,7 +1321,9 @@
         "description": "Properties for the TreeMenuCompact component.",
         "descriptionKey": "api.generated.headless_src_components_tree_menu_types.treemenucompactprops.props",
         "sourcePath": "headless/src/components/tree-menu/types.ts",
-        "typeParameters": ["TypeParameter T"],
+        "typeParameters": [
+          "TypeParameter T"
+        ],
         "members": [
           {
             "name": "modelValue",
@@ -2133,7 +2139,9 @@
         "description": "Slots for the TreeMenuCompact component.",
         "descriptionKey": "api.generated.headless_src_components_tree_menu_types.treemenucompactslots.slots",
         "sourcePath": "headless/src/components/tree-menu/types.ts",
-        "typeParameters": ["TypeParameter T"],
+        "typeParameters": [
+          "TypeParameter T"
+        ],
         "members": [],
         "callables": [
           {
@@ -2495,7 +2503,9 @@
                 "description": "Recursive option data for the TreeMenu component.",
                 "descriptionKey": "api.generated.headless_src_components_tree_menu_types.treemenuoptiondata",
                 "sourcePath": "headless/src/components/tree-menu/types.ts",
-                "typeParameters": ["T extends TreeMenuBaseOptionData = TreeMenuBaseOptionData"],
+                "typeParameters": [
+                  "T extends TreeMenuBaseOptionData = TreeMenuBaseOptionData"
+                ],
                 "external": false,
                 "members": [
                   {
@@ -3350,7 +3360,9 @@
         "description": "Properties for the TreeMenuOptionsCompact component.",
         "descriptionKey": "api.generated.headless_src_components_tree_menu_types.treemenuoptionscompactprops.props",
         "sourcePath": "headless/src/components/tree-menu/types.ts",
-        "typeParameters": ["TypeParameter T"],
+        "typeParameters": [
+          "TypeParameter T"
+        ],
         "members": [
           {
             "name": "items",
@@ -4084,7 +4096,9 @@
                 "description": "Recursive option data for the TreeMenu component.",
                 "descriptionKey": "api.generated.headless_src_components_tree_menu_types.treemenuoptiondata",
                 "sourcePath": "headless/src/components/tree-menu/types.ts",
-                "typeParameters": ["T extends TreeMenuBaseOptionData = TreeMenuBaseOptionData"],
+                "typeParameters": [
+                  "T extends TreeMenuBaseOptionData = TreeMenuBaseOptionData"
+                ],
                 "external": false,
                 "members": [
                   {

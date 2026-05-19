@@ -10,7 +10,9 @@
         "description": "Properties for the Autocomplete component.",
         "descriptionKey": "api.generated.src_components_autocomplete_types.autocompleteprops.props",
         "sourcePath": "src/components/autocomplete/types.ts",
-        "typeParameters": ["TypeParameter T"],
+        "typeParameters": [
+          "TypeParameter T"
+        ],
         "members": [
           {
             "name": "class",
@@ -182,7 +184,9 @@
                 "description": "",
                 "descriptionKey": "api.generated.node_modules_pnpm_vueuse_integrations_14_3_0_fuse_js_7_3_0_vue_3_5_34_typescript_6_0_3_node_modules_vueuse_integrations_dist_usefuse_d.usefuseoptions",
                 "sourcePath": "node_modules/.pnpm/@vueuse+integrations@14.3.0_fuse.js@7.3.0_vue@3.5.34_typescript@6.0.3_/node_modules/@vueuse/integrations/dist/useFuse.d.ts",
-                "typeParameters": ["T"],
+                "typeParameters": [
+                  "T"
+                ],
                 "external": true,
                 "members": [],
                 "callables": []
@@ -1213,7 +1217,9 @@
         "description": "Events for the Autocomplete component.",
         "descriptionKey": "api.generated.src_components_autocomplete_types.autocompleteemits.emits",
         "sourcePath": "src/components/autocomplete/types.ts",
-        "typeParameters": ["TypeParameter T"],
+        "typeParameters": [
+          "TypeParameter T"
+        ],
         "members": [],
         "callables": [
           {
@@ -1281,7 +1287,9 @@
         "description": "Slots for the Autocomplete component.",
         "descriptionKey": "api.generated.src_components_autocomplete_types.autocompleteslots.slots",
         "sourcePath": "src/components/autocomplete/types.ts",
-        "typeParameters": ["TypeParameter T"],
+        "typeParameters": [
+          "TypeParameter T"
+        ],
         "members": [],
         "callables": [
           {
@@ -1472,7 +1480,9 @@
         "description": "Properties for the AutocompleteCompact component.",
         "descriptionKey": "api.generated.headless_src_components_autocomplete_types.autocompletecompactprops.props",
         "sourcePath": "headless/src/components/autocomplete/types.ts",
-        "typeParameters": ["TypeParameter T"],
+        "typeParameters": [
+          "TypeParameter T"
+        ],
         "members": [
           {
             "name": "modelValue",
@@ -1569,7 +1579,9 @@
                 "description": "",
                 "descriptionKey": "api.generated.node_modules_pnpm_vueuse_integrations_14_3_0_fuse_js_7_3_0_vue_3_5_34_typescript_6_0_3_node_modules_vueuse_integrations_dist_usefuse_d.usefuseoptions",
                 "sourcePath": "node_modules/.pnpm/@vueuse+integrations@14.3.0_fuse.js@7.3.0_vue@3.5.34_typescript@6.0.3_/node_modules/@vueuse/integrations/dist/useFuse.d.ts",
-                "typeParameters": ["T"],
+                "typeParameters": [
+                  "T"
+                ],
                 "external": true,
                 "members": [],
                 "callables": []
@@ -2600,7 +2612,9 @@
         "description": "Events for the AutocompleteCompact component.",
         "descriptionKey": "api.generated.headless_src_components_autocomplete_types.autocompletecompactemits.emits",
         "sourcePath": "headless/src/components/autocomplete/types.ts",
-        "typeParameters": ["TypeParameter T"],
+        "typeParameters": [
+          "TypeParameter T"
+        ],
         "members": [],
         "callables": [
           {
@@ -2668,7 +2682,9 @@
         "description": "Slots for the AutocompleteCompact component.",
         "descriptionKey": "api.generated.headless_src_components_autocomplete_types.autocompletecompactslots.slots",
         "sourcePath": "headless/src/components/autocomplete/types.ts",
-        "typeParameters": ["TypeParameter T"],
+        "typeParameters": [
+          "TypeParameter T"
+        ],
         "members": [],
         "callables": [
           {
@@ -3061,7 +3077,9 @@
                 "description": "",
                 "descriptionKey": "api.generated.headless_src_types_vue.baseprops",
                 "sourcePath": "headless/src/types/vue.ts",
-                "typeParameters": ["T = HTMLAttributes"],
+                "typeParameters": [
+                  "T = HTMLAttributes"
+                ],
                 "external": false,
                 "members": [],
                 "callables": []

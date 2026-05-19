@@ -1,6 +1,6 @@
 {
   "component": "avatar",
-  "generatedAt": "2026-05-19T09:12:54.636Z",
+  "generatedAt": "2026-05-19T15:55:10.230Z",
   "schemaVersion": 1,
   "versions": [
     {
@@ -15,7 +15,9 @@
           "summaryKey": "changelog.generated.v0.18.0.7d59d",
           "commitHash": "7d59d",
           "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/7d59d36a",
-          "authors": ["soybeanjs"],
+          "authors": [
+            "soybeanjs"
+          ],
           "source": "exact-scope"
         }
       ]

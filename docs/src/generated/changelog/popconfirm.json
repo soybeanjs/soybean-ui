@@ -1,6 +1,6 @@
 {
   "component": "popconfirm",
-  "generatedAt": "2026-05-19T09:12:54.636Z",
+  "generatedAt": "2026-05-19T15:55:10.230Z",
   "schemaVersion": 1,
   "versions": [
     {
@@ -15,7 +15,11 @@
           "summaryKey": "changelog.generated.v0.19.0.9550a",
           "commitHash": "9550a",
           "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/9550aac2",
-          "authors": ["soybeanjs", "MicrosoftCopilot", "soybeanfe"],
+          "authors": [
+            "soybeanjs",
+            "MicrosoftCopilot",
+            "soybeanfe"
+          ],
           "source": "exact-scope"
         }
       ]

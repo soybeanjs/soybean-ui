@@ -280,7 +280,9 @@
                 "description": "",
                 "descriptionKey": "api.generated.headless_src_types_vue.baseprops",
                 "sourcePath": "headless/src/types/vue.ts",
-                "typeParameters": ["T = HTMLAttributes"],
+                "typeParameters": [
+                  "T = HTMLAttributes"
+                ],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -934,7 +936,9 @@
                 "description": "",
                 "descriptionKey": "api.generated.headless_src_types_vue.baseprops",
                 "sourcePath": "headless/src/types/vue.ts",
-                "typeParameters": ["T = HTMLAttributes"],
+                "typeParameters": [
+                  "T = HTMLAttributes"
+                ],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -1328,7 +1332,9 @@
                 "description": "",
                 "descriptionKey": "api.generated.headless_src_types_vue.baseprops",
                 "sourcePath": "headless/src/types/vue.ts",
-                "typeParameters": ["T = HTMLAttributes"],
+                "typeParameters": [
+                  "T = HTMLAttributes"
+                ],
                 "external": false,
                 "members": [],
                 "callables": []

@@ -1,6 +1,6 @@
 {
   "component": "kbd",
-  "generatedAt": "2026-05-19T09:12:54.636Z",
+  "generatedAt": "2026-05-19T15:55:10.230Z",
   "schemaVersion": 1,
   "versions": [
     {
@@ -15,7 +15,9 @@
           "summaryKey": "changelog.generated.v0.15.1.d70b7",
           "commitHash": "d70b7",
           "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/d70b7e63",
-          "authors": ["soybeanjs"],
+          "authors": [
+            "soybeanjs"
+          ],
           "source": "exact-scope"
         }
       ]

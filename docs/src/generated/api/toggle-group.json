@@ -10,7 +10,10 @@
         "description": "Properties for the ToggleGroup component.",
         "descriptionKey": "api.generated.src_components_toggle_group_types.togglegroupprops.props",
         "sourcePath": "src/components/toggle-group/types.ts",
-        "typeParameters": ["TypeParameter M", "TypeParameter T"],
+        "typeParameters": [
+          "TypeParameter M",
+          "TypeParameter T"
+        ],
         "members": [
           {
             "name": "class",
@@ -100,11 +103,11 @@
               {
                 "name": "ToggleGroupVariant",
                 "kind": "typeAlias",
-                "type": "'soft' | 'ghost' | 'outline'",
-                "resolvedType": "'soft' | 'ghost' | 'outline'",
+                "type": "'outline' | 'soft' | 'ghost'",
+                "resolvedType": "'outline' | 'soft' | 'ghost'",
                 "description": "",
-                "descriptionKey": "api.generated.src_components_toggle_group_variants.togglegroupvariant",
-                "sourcePath": "src/components/toggle-group/variants.ts",
+                "descriptionKey": "api.generated.src_styles_toggle_group.togglegroupvariant",
+                "sourcePath": "src/styles/toggle-group.ts",
                 "typeParameters": [],
                 "external": false,
                 "members": [],
@@ -367,7 +370,10 @@
         "description": "Events for the ToggleGroup component.",
         "descriptionKey": "api.generated.src_components_toggle_group_types.togglegroupemits.emits",
         "sourcePath": "src/components/toggle-group/types.ts",
-        "typeParameters": ["TypeParameter M", "TypeParameter T"],
+        "typeParameters": [
+          "TypeParameter M",
+          "TypeParameter T"
+        ],
         "members": [],
         "callables": [
           {
@@ -393,7 +399,9 @@
         "description": "Properties for the ToggleGroupItem component.",
         "descriptionKey": "api.generated.headless_src_components_toggle_group_types.togglegroupitemprops.props",
         "sourcePath": "headless/src/components/toggle-group/types.ts",
-        "typeParameters": ["TypeParameter T"],
+        "typeParameters": [
+          "TypeParameter T"
+        ],
         "members": [
           {
             "name": "value",
@@ -500,7 +508,10 @@
         "description": "Properties for the ToggleGroupRoot component.",
         "descriptionKey": "api.generated.headless_src_components_toggle_group_types.togglegrouprootprops.props",
         "sourcePath": "headless/src/components/toggle-group/types.ts",
-        "typeParameters": ["TypeParameter M", "TypeParameter T"],
+        "typeParameters": [
+          "TypeParameter M",
+          "TypeParameter T"
+        ],
         "members": [
           {
             "name": "rovingFocus",
@@ -732,7 +743,10 @@
         "description": "Events for the ToggleGroupRoot component.",
         "descriptionKey": "api.generated.headless_src_components_toggle_group_types.togglegrouprootemits.emits",
         "sourcePath": "headless/src/components/toggle-group/types.ts",
-        "typeParameters": ["TypeParameter M", "TypeParameter T"],
+        "typeParameters": [
+          "TypeParameter M",
+          "TypeParameter T"
+        ],
         "members": [],
         "callables": [
           {

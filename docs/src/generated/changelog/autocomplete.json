@@ -1,6 +1,6 @@
 {
   "component": "autocomplete",
-  "generatedAt": "2026-05-19T09:12:54.636Z",
+  "generatedAt": "2026-05-19T15:55:10.230Z",
   "schemaVersion": 1,
   "versions": [
     {
@@ -15,7 +15,9 @@
           "summaryKey": "changelog.generated.v0.16.0.b1396",
           "commitHash": "b1396",
           "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/b13965cd",
-          "authors": ["soybeanfe"],
+          "authors": [
+            "soybeanfe"
+          ],
           "source": "exact-scope"
         }
       ]
@@ -32,7 +34,9 @@
           "summaryKey": "changelog.generated.v0.15.0.1a2ba",
           "commitHash": "1a2ba",
           "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/1a2ba8a5",
-          "authors": ["soybeanjs"],
+          "authors": [
+            "soybeanjs"
+          ],
           "source": "exact-scope"
         }
       ]
@@ -49,7 +53,9 @@
           "summaryKey": "changelog.generated.v0.15.0-beta.1.1a2ba",
           "commitHash": "1a2ba",
           "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/1a2ba8a5",
-          "authors": ["soybeanjs"],
+          "authors": [
+            "soybeanjs"
+          ],
           "source": "exact-scope"
         }
       ]

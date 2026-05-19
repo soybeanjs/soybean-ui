@@ -1,6 +1,6 @@
 {
   "component": "config-provider",
-  "generatedAt": "2026-05-19T09:12:54.636Z",
+  "generatedAt": "2026-05-19T15:55:10.230Z",
   "schemaVersion": 1,
   "versions": [
     {
@@ -15,7 +15,9 @@
           "summaryKey": "changelog.generated.v0.20.0.8f21f",
           "commitHash": "8f21f",
           "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/8f21fba2",
-          "authors": ["soybeanfe"],
+          "authors": [
+            "soybeanfe"
+          ],
           "source": "exact-scope"
         }
       ]
@@ -32,7 +34,9 @@
           "summaryKey": "changelog.generated.v0.17.0.3996e",
           "commitHash": "3996e",
           "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/3996ea3b",
-          "authors": ["soybeanjs"],
+          "authors": [
+            "soybeanjs"
+          ],
           "source": "exact-scope"
         }
       ]
@@ -49,7 +53,9 @@
           "summaryKey": "changelog.generated.v0.6.6.1a002",
           "commitHash": "1a002",
           "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/1a002016",
-          "authors": ["soybeanjs"],
+          "authors": [
+            "soybeanjs"
+          ],
           "source": "exact-scope"
         }
       ]
@@ -66,7 +72,9 @@
           "summaryKey": "changelog.generated.v0.0.17.78e49",
           "commitHash": "78e49",
           "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/78e49459",
-          "authors": ["soybeanjs"],
+          "authors": [
+            "soybeanjs"
+          ],
           "source": "exact-scope"
         },
         {
@@ -76,7 +84,9 @@
           "summaryKey": "changelog.generated.v0.0.17.cb4dd",
           "commitHash": "cb4dd",
           "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/cb4dd886",
-          "authors": ["soybeanjs"],
+          "authors": [
+            "soybeanjs"
+          ],
           "source": "exact-scope"
         },
         {
@@ -86,7 +96,9 @@
           "summaryKey": "changelog.generated.v0.0.17.a3ee0",
           "commitHash": "a3ee0",
           "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/a3ee007e",
-          "authors": ["soybeanjs"],
+          "authors": [
+            "soybeanjs"
+          ],
           "source": "exact-scope"
         },
         {
@@ -96,7 +108,9 @@
           "summaryKey": "changelog.generated.v0.0.17.b731c",
           "commitHash": "b731c",
           "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/b731c8c9",
-          "authors": ["soybeanjs"],
+          "authors": [
+            "soybeanjs"
+          ],
           "source": "exact-scope"
         }
       ]

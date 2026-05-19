@@ -83,6 +83,7 @@ export * from './components/tooltip';
 export * from './components/tree';
 export * from './components/tree-menu';
 export * from './components/virtualizer';
+export * from './components/watermark';
 
 export type {
   ClassValue,

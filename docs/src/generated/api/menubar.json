@@ -10,7 +10,9 @@
         "description": "Properties for the Menubar component.",
         "descriptionKey": "api.generated.src_components_menubar_types.menubarprops.props",
         "sourcePath": "src/components/menubar/types.ts",
-        "typeParameters": ["TypeParameter T"],
+        "typeParameters": [
+          "TypeParameter T"
+        ],
         "members": [
           {
             "name": "class",
@@ -1591,7 +1593,9 @@
         "description": "Events for the Menubar component.",
         "descriptionKey": "api.generated.src_components_menubar_types.menubaremits.emits",
         "sourcePath": "src/components/menubar/types.ts",
-        "typeParameters": ["TypeParameter T"],
+        "typeParameters": [
+          "TypeParameter T"
+        ],
         "members": [],
         "callables": [
           {
@@ -1825,7 +1829,9 @@
                 "description": "Option data for the Menu component.",
                 "descriptionKey": "api.generated.headless_src_components_menu_types.menuoptiondata",
                 "sourcePath": "headless/src/components/menu/types.ts",
-                "typeParameters": ["T extends DefinedValue = DefinedValue"],
+                "typeParameters": [
+                  "T extends DefinedValue = DefinedValue"
+                ],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -1843,7 +1849,9 @@
         "description": "Slots for the Menubar component.",
         "descriptionKey": "api.generated.src_components_menubar_types.menubarslots.slots",
         "sourcePath": "src/components/menubar/types.ts",
-        "typeParameters": ["TypeParameter T"],
+        "typeParameters": [
+          "TypeParameter T"
+        ],
         "members": [],
         "callables": [
           {
@@ -2006,7 +2014,9 @@
         "description": "Properties for the MenubarCompact component.",
         "descriptionKey": "api.generated.headless_src_components_menubar_types.menubarcompactprops.props",
         "sourcePath": "headless/src/components/menubar/types.ts",
-        "typeParameters": ["TypeParameter T"],
+        "typeParameters": [
+          "TypeParameter T"
+        ],
         "members": [
           {
             "name": "disabled",
@@ -3487,7 +3497,9 @@
         "description": "Events for the MenubarCompact component.",
         "descriptionKey": "api.generated.headless_src_components_menubar_types.menubarcompactemits.emits",
         "sourcePath": "headless/src/components/menubar/types.ts",
-        "typeParameters": ["TypeParameter T"],
+        "typeParameters": [
+          "TypeParameter T"
+        ],
         "members": [],
         "callables": [
           {
@@ -3721,7 +3733,9 @@
                 "description": "Option data for the Menu component.",
                 "descriptionKey": "api.generated.headless_src_components_menu_types.menuoptiondata",
                 "sourcePath": "headless/src/components/menu/types.ts",
-                "typeParameters": ["T extends DefinedValue = DefinedValue"],
+                "typeParameters": [
+                  "T extends DefinedValue = DefinedValue"
+                ],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -3739,7 +3753,9 @@
         "description": "Slots for the MenubarCompact component.",
         "descriptionKey": "api.generated.headless_src_components_menubar_types.menubarcompactslots.slots",
         "sourcePath": "headless/src/components/menubar/types.ts",
-        "typeParameters": ["TypeParameter T"],
+        "typeParameters": [
+          "TypeParameter T"
+        ],
         "members": [],
         "callables": [
           {
@@ -4583,7 +4599,9 @@
         "description": "Properties for the MenubarRoot component.",
         "descriptionKey": "api.generated.headless_src_components_menubar_types.menubarrootprops.props",
         "sourcePath": "headless/src/components/menubar/types.ts",
-        "typeParameters": ["TypeParameter T"],
+        "typeParameters": [
+          "TypeParameter T"
+        ],
         "members": [
           {
             "name": "modelValue",
@@ -4699,7 +4717,9 @@
         "description": "Events for the MenubarRoot component.",
         "descriptionKey": "api.generated.headless_src_components_menubar_types.menubarrootemits.emits",
         "sourcePath": "headless/src/components/menubar/types.ts",
-        "typeParameters": ["TypeParameter T"],
+        "typeParameters": [
+          "TypeParameter T"
+        ],
         "members": [],
         "callables": [
           {

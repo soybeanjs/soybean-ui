@@ -10,7 +10,9 @@
         "description": "Properties for the Combobox component.",
         "descriptionKey": "api.generated.src_components_combobox_types.comboboxprops.props",
         "sourcePath": "src/components/combobox/types.ts",
-        "typeParameters": ["TypeParameter M"],
+        "typeParameters": [
+          "TypeParameter M"
+        ],
         "members": [
           {
             "name": "class",
@@ -1449,7 +1451,9 @@
         "description": "Events for the Combobox component.",
         "descriptionKey": "api.generated.src_components_combobox_types.comboboxemits.emits",
         "sourcePath": "src/components/combobox/types.ts",
-        "typeParameters": ["TypeParameter M"],
+        "typeParameters": [
+          "TypeParameter M"
+        ],
         "members": [],
         "callables": [
           {
@@ -1479,7 +1483,9 @@
                 "description": "",
                 "descriptionKey": "api.generated.headless_src_composables_use_collection.collectionitemdata",
                 "sourcePath": "headless/src/composables/use-collection.ts",
-                "typeParameters": ["ItemData = Record<string, any>"],
+                "typeParameters": [
+                  "ItemData = Record<string, any>"
+                ],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -1680,7 +1686,9 @@
                 "description": "",
                 "descriptionKey": "api.generated.headless_src_types_event.selectevent",
                 "sourcePath": "headless/src/types/event.ts",
-                "typeParameters": ["T"],
+                "typeParameters": [
+                  "T"
+                ],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -1698,7 +1706,9 @@
         "description": "Slots for the Combobox component.",
         "descriptionKey": "api.generated.src_components_combobox_types.comboboxslots.slots",
         "sourcePath": "src/components/combobox/types.ts",
-        "typeParameters": ["TypeParameter M"],
+        "typeParameters": [
+          "TypeParameter M"
+        ],
         "members": [],
         "callables": [
           {
@@ -1728,7 +1738,9 @@
                 "description": "Slot properties for the ComboboxCompactTriggerValue component.",
                 "descriptionKey": "api.generated.headless_src_components_combobox_types.comboboxcompacttriggervalueslotprops",
                 "sourcePath": "headless/src/components/combobox/types.ts",
-                "typeParameters": ["M extends boolean = false"],
+                "typeParameters": [
+                  "M extends boolean = false"
+                ],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -2033,7 +2045,9 @@
         "description": "Properties for the ComboboxCompact component.",
         "descriptionKey": "api.generated.headless_src_components_combobox_types.comboboxcompactprops.props",
         "sourcePath": "headless/src/components/combobox/types.ts",
-        "typeParameters": ["TypeParameter M"],
+        "typeParameters": [
+          "TypeParameter M"
+        ],
         "members": [
           {
             "name": "items",
@@ -3397,7 +3411,9 @@
         "description": "Events for the ComboboxCompact component.",
         "descriptionKey": "api.generated.headless_src_components_combobox_types.comboboxcompactemits.emits",
         "sourcePath": "headless/src/components/combobox/types.ts",
-        "typeParameters": ["TypeParameter M"],
+        "typeParameters": [
+          "TypeParameter M"
+        ],
         "members": [],
         "callables": [
           {
@@ -3427,7 +3443,9 @@
                 "description": "",
                 "descriptionKey": "api.generated.headless_src_composables_use_collection.collectionitemdata",
                 "sourcePath": "headless/src/composables/use-collection.ts",
-                "typeParameters": ["ItemData = Record<string, any>"],
+                "typeParameters": [
+                  "ItemData = Record<string, any>"
+                ],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -3628,7 +3646,9 @@
                 "description": "",
                 "descriptionKey": "api.generated.headless_src_types_event.selectevent",
                 "sourcePath": "headless/src/types/event.ts",
-                "typeParameters": ["T"],
+                "typeParameters": [
+                  "T"
+                ],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -3646,7 +3666,9 @@
         "description": "Slots for the ComboboxCompact component.",
         "descriptionKey": "api.generated.headless_src_components_combobox_types.comboboxcompactslots.slots",
         "sourcePath": "headless/src/components/combobox/types.ts",
-        "typeParameters": ["TypeParameter M"],
+        "typeParameters": [
+          "TypeParameter M"
+        ],
         "members": [],
         "callables": [
           {
@@ -3676,7 +3698,9 @@
                 "description": "Slot properties for the ComboboxCompactTriggerValue component.",
                 "descriptionKey": "api.generated.headless_src_components_combobox_types.comboboxcompacttriggervalueslotprops",
                 "sourcePath": "headless/src/components/combobox/types.ts",
-                "typeParameters": ["M extends boolean = false"],
+                "typeParameters": [
+                  "M extends boolean = false"
+                ],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -4749,7 +4773,9 @@
                 "description": "",
                 "descriptionKey": "api.generated.headless_src_types_vue.baseprops",
                 "sourcePath": "headless/src/types/vue.ts",
-                "typeParameters": ["T = HTMLAttributes"],
+                "typeParameters": [
+                  "T = HTMLAttributes"
+                ],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -5054,7 +5080,9 @@
                 "description": "",
                 "descriptionKey": "api.generated.headless_src_types_event.selectevent",
                 "sourcePath": "headless/src/types/event.ts",
-                "typeParameters": ["T"],
+                "typeParameters": [
+                  "T"
+                ],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -5101,7 +5129,9 @@
         "description": "Properties for the ComboboxRoot component.",
         "descriptionKey": "api.generated.headless_src_components_combobox_types.comboboxrootprops.props",
         "sourcePath": "headless/src/components/combobox/types.ts",
-        "typeParameters": ["TypeParameter M"],
+        "typeParameters": [
+          "TypeParameter M"
+        ],
         "members": [
           {
             "name": "open",
@@ -5316,7 +5346,9 @@
         "description": "Events for the ComboboxRoot component.",
         "descriptionKey": "api.generated.headless_src_components_combobox_types.comboboxrootemits.emits",
         "sourcePath": "headless/src/components/combobox/types.ts",
-        "typeParameters": ["TypeParameter M"],
+        "typeParameters": [
+          "TypeParameter M"
+        ],
         "members": [],
         "callables": [
           {
@@ -5346,7 +5378,9 @@
                 "description": "",
                 "descriptionKey": "api.generated.headless_src_composables_use_collection.collectionitemdata",
                 "sourcePath": "headless/src/composables/use-collection.ts",
-                "typeParameters": ["ItemData = Record<string, any>"],
+                "typeParameters": [
+                  "ItemData = Record<string, any>"
+                ],
                 "external": false,
                 "members": [],
                 "callables": []

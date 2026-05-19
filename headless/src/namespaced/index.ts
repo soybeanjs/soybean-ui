@@ -543,7 +543,10 @@ import {
   VirtualizerItem,
   VirtualizerRoot,
   VisuallyHidden,
-  VisuallyHiddenInput
+  VisuallyHiddenInput,
+  WatermarkCompact,
+  WatermarkOverlay,
+  WatermarkRoot
 } from '../index';
 
 export const Accordion = {
@@ -1909,3 +1912,13 @@ export const Virtualizer = {
 };
 
 export { VisuallyHidden, VisuallyHiddenInput };
+
+export const Watermark = {
+  Compact: WatermarkCompact,
+  Overlay: WatermarkOverlay,
+  Root: WatermarkRoot
+} as {
+  Compact: typeof WatermarkCompact;
+  Overlay: typeof WatermarkOverlay;
+  Root: typeof WatermarkRoot;
+};

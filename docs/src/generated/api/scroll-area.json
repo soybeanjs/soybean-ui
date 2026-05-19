@@ -6,7 +6,7 @@
         "kind": "props",
         "name": "ScrollAreaProps",
         "type": "Interface ScrollAreaProps",
-        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; ui?: Partial<ScrollAreaUi>; viewportProps?: ScrollAreaViewportProps; verticalScrollbarProps?: ScrollAreaScrollbarProps; horizontalScrollbarProps?: ScrollAreaScrollbarProps; thumbProps?: ScrollAreaThumbProps; cornerProps?: ScrollAreaCornerProps; type?: ScrollAreaType; dir?: Direction; scrollHideDelay?: number; asChild?: boolean; as?: AsTag | Component }",
+        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; ui?: Partial<ScrollAreaUi>; size?: ThemeSize; viewportProps?: ScrollAreaViewportProps; verticalScrollbarProps?: ScrollAreaScrollbarProps; horizontalScrollbarProps?: ScrollAreaScrollbarProps; thumbProps?: ScrollAreaThumbProps; cornerProps?: ScrollAreaCornerProps; type?: ScrollAreaType; dir?: Direction; scrollHideDelay?: number; asChild?: boolean; as?: AsTag | Component }",
         "description": "Properties for the ScrollArea component.",
         "descriptionKey": "api.generated.src_components_scroll_area_types.scrollareaprops.props",
         "sourcePath": "src/components/scroll-area/types.ts",
@@ -55,6 +55,31 @@
                 "description": "UI class overrides for the ScrollArea component.",
                 "descriptionKey": "api.generated.headless_src_components_scroll_area_types.scrollareaui",
                 "sourcePath": "headless/src/components/scroll-area/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "size",
+            "type": "ThemeSize",
+            "required": false,
+            "description": "Size of the ScrollArea component.",
+            "descriptionKey": "api.generated.src_components_scroll_area_types.scrollareaprops.members.size",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/scroll-area/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ThemeSize",
+                "kind": "typeAlias",
+                "type": "'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'",
+                "resolvedType": "'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'",
+                "description": "",
+                "descriptionKey": "api.generated.src_theme_types.themesize",
+                "sourcePath": "src/theme/types.ts",
                 "typeParameters": [],
                 "external": false,
                 "members": [],

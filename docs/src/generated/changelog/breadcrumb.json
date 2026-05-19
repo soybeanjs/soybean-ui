@@ -1,6 +1,6 @@
 {
   "component": "breadcrumb",
-  "generatedAt": "2026-05-19T09:12:54.636Z",
+  "generatedAt": "2026-05-19T15:55:10.230Z",
   "schemaVersion": 1,
   "versions": [
     {
@@ -15,7 +15,9 @@
           "summaryKey": "changelog.generated.v0.0.7.88be2",
           "commitHash": "88be2",
           "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/88be2285",
-          "authors": ["soybeanjs"],
+          "authors": [
+            "soybeanjs"
+          ],
           "source": "exact-scope"
         }
       ]

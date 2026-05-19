@@ -6,7 +6,7 @@
         "kind": "props",
         "name": "SplitterGroupProps",
         "type": "Interface SplitterGroupProps",
-        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; ui?: Partial<SplitterUi>; direction?: DataOrientation; dir?: Direction; defaultLayout?: number[]; keyboardResizeBy?: number; asChild?: boolean; as?: AsTag | Component }",
+        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; ui?: Partial<SplitterUi>; size?: ThemeSize; direction?: DataOrientation; dir?: Direction; defaultLayout?: number[]; keyboardResizeBy?: number; asChild?: boolean; as?: AsTag | Component }",
         "description": "Properties for the SplitterGroup component.",
         "descriptionKey": "api.generated.src_components_splitter_types.splittergroupprops.props",
         "sourcePath": "src/components/splitter/types.ts",
@@ -55,6 +55,31 @@
                 "description": "UI class overrides for the Splitter component.",
                 "descriptionKey": "api.generated.headless_src_components_splitter_types.splitterui",
                 "sourcePath": "headless/src/components/splitter/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "size",
+            "type": "ThemeSize",
+            "required": false,
+            "description": "Visual size of the component.",
+            "descriptionKey": "api.generated.src_components_splitter_types.splittergroupprops.members.size",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/splitter/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ThemeSize",
+                "kind": "typeAlias",
+                "type": "'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'",
+                "resolvedType": "'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'",
+                "description": "",
+                "descriptionKey": "api.generated.src_theme_types.themesize",
+                "sourcePath": "src/theme/types.ts",
                 "typeParameters": [],
                 "external": false,
                 "members": [],

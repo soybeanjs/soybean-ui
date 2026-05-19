@@ -10,7 +10,11 @@
         "description": "Properties for the Table component.",
         "descriptionKey": "api.generated.src_components_table_types.tableprops.props",
         "sourcePath": "src/components/table/types.ts",
-        "typeParameters": ["TypeParameter T", "TypeParameter R", "TypeParameter M"],
+        "typeParameters": [
+          "TypeParameter T",
+          "TypeParameter R",
+          "TypeParameter M"
+        ],
         "members": [
           {
             "name": "class",
@@ -103,8 +107,8 @@
                 "type": "'TableCell' | 'simple'",
                 "resolvedType": "'TableCell' | 'simple'",
                 "description": "",
-                "descriptionKey": "api.generated.src_components_table_variants.tablevariant",
-                "sourcePath": "src/components/table/variants.ts",
+                "descriptionKey": "api.generated.src_styles_table.tablevariant",
+                "sourcePath": "src/styles/table.ts",
                 "typeParameters": [],
                 "external": false,
                 "members": [],
@@ -392,7 +396,9 @@
                 "description": "Type information for TableRowChildrenResolver.",
                 "descriptionKey": "api.generated.headless_src_components_table_types.tablerowchildrenresolver",
                 "sourcePath": "headless/src/components/table/types.ts",
-                "typeParameters": ["T extends TableBaseData = TableBaseData"],
+                "typeParameters": [
+                  "T extends TableBaseData = TableBaseData"
+                ],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -746,7 +752,10 @@
         "description": "Events for the Table component.",
         "descriptionKey": "api.generated.src_components_table_types.tableemits.emits",
         "sourcePath": "src/components/table/types.ts",
-        "typeParameters": ["TypeParameter R", "TypeParameter M"],
+        "typeParameters": [
+          "TypeParameter R",
+          "TypeParameter M"
+        ],
         "members": [],
         "callables": [
           {
@@ -852,7 +861,9 @@
         "description": "Slots for the Table component.",
         "descriptionKey": "api.generated.src_components_table_types.tableslots.slots",
         "sourcePath": "src/components/table/types.ts",
-        "typeParameters": ["TypeParameter T"],
+        "typeParameters": [
+          "TypeParameter T"
+        ],
         "members": [],
         "callables": [
           {
@@ -882,7 +893,9 @@
                 "description": "Slot properties for the TableHeader component.",
                 "descriptionKey": "api.generated.headless_src_components_table_types.tableheaderslotprops",
                 "sourcePath": "headless/src/components/table/types.ts",
-                "typeParameters": ["T extends TableBaseData = TableBaseData"],
+                "typeParameters": [
+                  "T extends TableBaseData = TableBaseData"
+                ],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -930,7 +943,9 @@
                 "description": "Slot properties for the TableHeaderSelection component.",
                 "descriptionKey": "api.generated.headless_src_components_table_types.tableheaderselectionslotprops",
                 "sourcePath": "headless/src/components/table/types.ts",
-                "typeParameters": ["T extends TableBaseData = TableBaseData"],
+                "typeParameters": [
+                  "T extends TableBaseData = TableBaseData"
+                ],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -978,7 +993,9 @@
                 "description": "Slot properties for the TableHeaderFilter component.",
                 "descriptionKey": "api.generated.headless_src_components_table_types.tableheaderfilterslotprops",
                 "sourcePath": "headless/src/components/table/types.ts",
-                "typeParameters": ["T extends TableBaseData = TableBaseData"],
+                "typeParameters": [
+                  "T extends TableBaseData = TableBaseData"
+                ],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -1002,7 +1019,9 @@
                 "description": "Slot properties for the TableHeaderSort component.",
                 "descriptionKey": "api.generated.headless_src_components_table_types.tableheadersortslotprops",
                 "sourcePath": "headless/src/components/table/types.ts",
-                "typeParameters": ["T extends TableBaseData = TableBaseData"],
+                "typeParameters": [
+                  "T extends TableBaseData = TableBaseData"
+                ],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -1026,7 +1045,9 @@
                 "description": "Slot properties for the TableHeaderResize component.",
                 "descriptionKey": "api.generated.headless_src_components_table_types.tableheaderresizeslotprops",
                 "sourcePath": "headless/src/components/table/types.ts",
-                "typeParameters": ["T extends TableBaseData = TableBaseData"],
+                "typeParameters": [
+                  "T extends TableBaseData = TableBaseData"
+                ],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -1050,7 +1071,9 @@
                 "description": "Slot properties for the TableIndex component.",
                 "descriptionKey": "api.generated.headless_src_components_table_types.tableindexslotprops",
                 "sourcePath": "headless/src/components/table/types.ts",
-                "typeParameters": ["T extends TableBaseData = TableBaseData"],
+                "typeParameters": [
+                  "T extends TableBaseData = TableBaseData"
+                ],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -1074,7 +1097,9 @@
                 "description": "Slot properties for the TableSelection component.",
                 "descriptionKey": "api.generated.headless_src_components_table_types.tableselectionslotprops",
                 "sourcePath": "headless/src/components/table/types.ts",
-                "typeParameters": ["T extends TableBaseData = TableBaseData"],
+                "typeParameters": [
+                  "T extends TableBaseData = TableBaseData"
+                ],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -1098,7 +1123,9 @@
                 "description": "Slot properties for the TableExpand component.",
                 "descriptionKey": "api.generated.headless_src_components_table_types.tableexpandslotprops",
                 "sourcePath": "headless/src/components/table/types.ts",
-                "typeParameters": ["T extends TableBaseData = TableBaseData"],
+                "typeParameters": [
+                  "T extends TableBaseData = TableBaseData"
+                ],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -1122,7 +1149,9 @@
                 "description": "Slot properties for the TableExpandedRow component.",
                 "descriptionKey": "api.generated.headless_src_components_table_types.tableexpandedrowslotprops",
                 "sourcePath": "headless/src/components/table/types.ts",
-                "typeParameters": ["T extends TableBaseData = TableBaseData"],
+                "typeParameters": [
+                  "T extends TableBaseData = TableBaseData"
+                ],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -1146,7 +1175,9 @@
                 "description": "Slot properties for the TableTreeToggle component.",
                 "descriptionKey": "api.generated.headless_src_components_table_types.tabletreetoggleslotprops",
                 "sourcePath": "headless/src/components/table/types.ts",
-                "typeParameters": ["T extends TableBaseData = TableBaseData"],
+                "typeParameters": [
+                  "T extends TableBaseData = TableBaseData"
+                ],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -1242,7 +1273,9 @@
         "description": "Slot properties for the TableCell component.",
         "descriptionKey": "api.generated.headless_src_components_table_types.tablecellslotprops.slotprops",
         "sourcePath": "headless/src/components/table/types.ts",
-        "typeParameters": ["TypeParameter T"],
+        "typeParameters": [
+          "TypeParameter T"
+        ],
         "members": [
           {
             "name": "index",
@@ -1273,7 +1306,9 @@
                 "description": "Type information for TableColumn.",
                 "descriptionKey": "api.generated.headless_src_components_table_types.tablecolumn",
                 "sourcePath": "headless/src/components/table/types.ts",
-                "typeParameters": ["T extends TableBaseData = TableBaseData"],
+                "typeParameters": [
+                  "T extends TableBaseData = TableBaseData"
+                ],
                 "external": false,
                 "members": [
                   {
@@ -1493,7 +1528,11 @@
         "description": "Properties for the TableCompact component.",
         "descriptionKey": "api.generated.headless_src_components_table_types.tablecompactprops.props",
         "sourcePath": "headless/src/components/table/types.ts",
-        "typeParameters": ["TypeParameter T", "TypeParameter R", "TypeParameter M"],
+        "typeParameters": [
+          "TypeParameter T",
+          "TypeParameter R",
+          "TypeParameter M"
+        ],
         "members": [
           {
             "name": "columns",
@@ -1742,7 +1781,9 @@
                 "description": "Type information for TableRowChildrenResolver.",
                 "descriptionKey": "api.generated.headless_src_components_table_types.tablerowchildrenresolver",
                 "sourcePath": "headless/src/components/table/types.ts",
-                "typeParameters": ["T extends TableBaseData = TableBaseData"],
+                "typeParameters": [
+                  "T extends TableBaseData = TableBaseData"
+                ],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -2096,7 +2137,10 @@
         "description": "Events for the TableCompact component.",
         "descriptionKey": "api.generated.headless_src_components_table_types.tablecompactemits.emits",
         "sourcePath": "headless/src/components/table/types.ts",
-        "typeParameters": ["TypeParameter R", "TypeParameter M"],
+        "typeParameters": [
+          "TypeParameter R",
+          "TypeParameter M"
+        ],
         "members": [],
         "callables": [
           {
@@ -2202,7 +2246,9 @@
         "description": "Slots for the TableCompact component.",
         "descriptionKey": "api.generated.headless_src_components_table_types.tablecompactslots.slots",
         "sourcePath": "headless/src/components/table/types.ts",
-        "typeParameters": ["TypeParameter T"],
+        "typeParameters": [
+          "TypeParameter T"
+        ],
         "members": [],
         "callables": [
           {
@@ -2232,7 +2278,9 @@
                 "description": "Slot properties for the TableHeader component.",
                 "descriptionKey": "api.generated.headless_src_components_table_types.tableheaderslotprops",
                 "sourcePath": "headless/src/components/table/types.ts",
-                "typeParameters": ["T extends TableBaseData = TableBaseData"],
+                "typeParameters": [
+                  "T extends TableBaseData = TableBaseData"
+                ],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -2280,7 +2328,9 @@
                 "description": "Slot properties for the TableHeaderSelection component.",
                 "descriptionKey": "api.generated.headless_src_components_table_types.tableheaderselectionslotprops",
                 "sourcePath": "headless/src/components/table/types.ts",
-                "typeParameters": ["T extends TableBaseData = TableBaseData"],
+                "typeParameters": [
+                  "T extends TableBaseData = TableBaseData"
+                ],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -2328,7 +2378,9 @@
                 "description": "Slot properties for the TableHeaderFilter component.",
                 "descriptionKey": "api.generated.headless_src_components_table_types.tableheaderfilterslotprops",
                 "sourcePath": "headless/src/components/table/types.ts",
-                "typeParameters": ["T extends TableBaseData = TableBaseData"],
+                "typeParameters": [
+                  "T extends TableBaseData = TableBaseData"
+                ],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -2352,7 +2404,9 @@
                 "description": "Slot properties for the TableHeaderSort component.",
                 "descriptionKey": "api.generated.headless_src_components_table_types.tableheadersortslotprops",
                 "sourcePath": "headless/src/components/table/types.ts",
-                "typeParameters": ["T extends TableBaseData = TableBaseData"],
+                "typeParameters": [
+                  "T extends TableBaseData = TableBaseData"
+                ],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -2376,7 +2430,9 @@
                 "description": "Slot properties for the TableHeaderResize component.",
                 "descriptionKey": "api.generated.headless_src_components_table_types.tableheaderresizeslotprops",
                 "sourcePath": "headless/src/components/table/types.ts",
-                "typeParameters": ["T extends TableBaseData = TableBaseData"],
+                "typeParameters": [
+                  "T extends TableBaseData = TableBaseData"
+                ],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -2400,7 +2456,9 @@
                 "description": "Slot properties for the TableIndex component.",
                 "descriptionKey": "api.generated.headless_src_components_table_types.tableindexslotprops",
                 "sourcePath": "headless/src/components/table/types.ts",
-                "typeParameters": ["T extends TableBaseData = TableBaseData"],
+                "typeParameters": [
+                  "T extends TableBaseData = TableBaseData"
+                ],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -2424,7 +2482,9 @@
                 "description": "Slot properties for the TableSelection component.",
                 "descriptionKey": "api.generated.headless_src_components_table_types.tableselectionslotprops",
                 "sourcePath": "headless/src/components/table/types.ts",
-                "typeParameters": ["T extends TableBaseData = TableBaseData"],
+                "typeParameters": [
+                  "T extends TableBaseData = TableBaseData"
+                ],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -2448,7 +2508,9 @@
                 "description": "Slot properties for the TableExpand component.",
                 "descriptionKey": "api.generated.headless_src_components_table_types.tableexpandslotprops",
                 "sourcePath": "headless/src/components/table/types.ts",
-                "typeParameters": ["T extends TableBaseData = TableBaseData"],
+                "typeParameters": [
+                  "T extends TableBaseData = TableBaseData"
+                ],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -2472,7 +2534,9 @@
                 "description": "Slot properties for the TableExpandedRow component.",
                 "descriptionKey": "api.generated.headless_src_components_table_types.tableexpandedrowslotprops",
                 "sourcePath": "headless/src/components/table/types.ts",
-                "typeParameters": ["T extends TableBaseData = TableBaseData"],
+                "typeParameters": [
+                  "T extends TableBaseData = TableBaseData"
+                ],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -2496,7 +2560,9 @@
                 "description": "Slot properties for the TableTreeToggle component.",
                 "descriptionKey": "api.generated.headless_src_components_table_types.tabletreetoggleslotprops",
                 "sourcePath": "headless/src/components/table/types.ts",
-                "typeParameters": ["T extends TableBaseData = TableBaseData"],
+                "typeParameters": [
+                  "T extends TableBaseData = TableBaseData"
+                ],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -2597,7 +2663,9 @@
                 "description": "Type information for TableColumn.",
                 "descriptionKey": "api.generated.headless_src_components_table_types.tablecolumn",
                 "sourcePath": "headless/src/components/table/types.ts",
-                "typeParameters": ["T extends TableBaseData = TableBaseData"],
+                "typeParameters": [
+                  "T extends TableBaseData = TableBaseData"
+                ],
                 "external": false,
                 "members": [
                   {
@@ -2855,7 +2923,9 @@
         "description": "Slots for the TableCompactCell component.",
         "descriptionKey": "api.generated.headless_src_components_table_types.tablecompactcellslots.slots",
         "sourcePath": "headless/src/components/table/types.ts",
-        "typeParameters": ["TypeParameter T"],
+        "typeParameters": [
+          "TypeParameter T"
+        ],
         "members": [],
         "callables": [
           {
@@ -2875,7 +2945,9 @@
                 "description": "Slot properties for the TableIndex component.",
                 "descriptionKey": "api.generated.headless_src_components_table_types.tableindexslotprops",
                 "sourcePath": "headless/src/components/table/types.ts",
-                "typeParameters": ["T extends TableBaseData = TableBaseData"],
+                "typeParameters": [
+                  "T extends TableBaseData = TableBaseData"
+                ],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -2899,7 +2971,9 @@
                 "description": "Slot properties for the TableSelection component.",
                 "descriptionKey": "api.generated.headless_src_components_table_types.tableselectionslotprops",
                 "sourcePath": "headless/src/components/table/types.ts",
-                "typeParameters": ["T extends TableBaseData = TableBaseData"],
+                "typeParameters": [
+                  "T extends TableBaseData = TableBaseData"
+                ],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -2923,7 +2997,9 @@
                 "description": "Slot properties for the TableExpand component.",
                 "descriptionKey": "api.generated.headless_src_components_table_types.tableexpandslotprops",
                 "sourcePath": "headless/src/components/table/types.ts",
-                "typeParameters": ["T extends TableBaseData = TableBaseData"],
+                "typeParameters": [
+                  "T extends TableBaseData = TableBaseData"
+                ],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -2947,7 +3023,9 @@
                 "description": "Slot properties for the TableTreeToggle component.",
                 "descriptionKey": "api.generated.headless_src_components_table_types.tabletreetoggleslotprops",
                 "sourcePath": "headless/src/components/table/types.ts",
-                "typeParameters": ["T extends TableBaseData = TableBaseData"],
+                "typeParameters": [
+                  "T extends TableBaseData = TableBaseData"
+                ],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -3122,7 +3200,9 @@
                 "description": "Type information for TableColumn.",
                 "descriptionKey": "api.generated.headless_src_components_table_types.tablecolumn",
                 "sourcePath": "headless/src/components/table/types.ts",
-                "typeParameters": ["T extends TableBaseData = TableBaseData"],
+                "typeParameters": [
+                  "T extends TableBaseData = TableBaseData"
+                ],
                 "external": false,
                 "members": [
                   {
@@ -3446,7 +3526,10 @@
         "description": "Slot properties for the TableDataCell component.",
         "descriptionKey": "api.generated.headless_src_components_table_types.tabledatacellslotprops.slotprops",
         "sourcePath": "headless/src/components/table/types.ts",
-        "typeParameters": ["TypeParameter T", "TypeParameter K"],
+        "typeParameters": [
+          "TypeParameter T",
+          "TypeParameter K"
+        ],
         "members": [
           {
             "name": "value",
@@ -3466,7 +3549,10 @@
                 "description": "",
                 "descriptionKey": "api.generated.headless_src_types_path.pathvalue",
                 "sourcePath": "headless/src/types/path.ts",
-                "typeParameters": ["T", "P extends Path<T> | ArrayPath<T>"],
+                "typeParameters": [
+                  "T",
+                  "P extends Path<T> | ArrayPath<T>"
+                ],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -3479,7 +3565,9 @@
                 "description": "Type information for TableRowValue.",
                 "descriptionKey": "api.generated.headless_src_components_table_types.tablerowvalue",
                 "sourcePath": "headless/src/components/table/types.ts",
-                "typeParameters": ["T extends TableBaseData = TableBaseData"],
+                "typeParameters": [
+                  "T extends TableBaseData = TableBaseData"
+                ],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -3515,7 +3603,9 @@
                 "description": "Type information for TableColumn.",
                 "descriptionKey": "api.generated.headless_src_components_table_types.tablecolumn",
                 "sourcePath": "headless/src/components/table/types.ts",
-                "typeParameters": ["T extends TableBaseData = TableBaseData"],
+                "typeParameters": [
+                  "T extends TableBaseData = TableBaseData"
+                ],
                 "external": false,
                 "members": [
                   {
@@ -3762,7 +3852,9 @@
         "description": "Slot properties for the TableExpand component.",
         "descriptionKey": "api.generated.headless_src_components_table_types.tableexpandslotprops.slotprops",
         "sourcePath": "headless/src/components/table/types.ts",
-        "typeParameters": ["TypeParameter T"],
+        "typeParameters": [
+          "TypeParameter T"
+        ],
         "members": [
           {
             "name": "ariaLabel",
@@ -3804,7 +3896,9 @@
                 "description": "Type information for TableColumn.",
                 "descriptionKey": "api.generated.headless_src_components_table_types.tablecolumn",
                 "sourcePath": "headless/src/components/table/types.ts",
-                "typeParameters": ["T extends TableBaseData = TableBaseData"],
+                "typeParameters": [
+                  "T extends TableBaseData = TableBaseData"
+                ],
                 "external": false,
                 "members": [
                   {
@@ -4024,7 +4118,9 @@
         "description": "Slot properties for the TableExpandedRow component.",
         "descriptionKey": "api.generated.headless_src_components_table_types.tableexpandedrowslotprops.slotprops",
         "sourcePath": "headless/src/components/table/types.ts",
-        "typeParameters": ["TypeParameter T"],
+        "typeParameters": [
+          "TypeParameter T"
+        ],
         "members": [
           {
             "name": "index",
@@ -4084,7 +4180,9 @@
         "description": "Properties for the TableFilterPopover component.",
         "descriptionKey": "api.generated.src_components_table_types.tablefilterpopoverprops.props",
         "sourcePath": "src/components/table/types.ts",
-        "typeParameters": ["TypeParameter T"],
+        "typeParameters": [
+          "TypeParameter T"
+        ],
         "members": [
           {
             "name": "size",
@@ -4452,7 +4550,9 @@
                 "description": "Type information for TableColumn.",
                 "descriptionKey": "api.generated.headless_src_components_table_types.tablecolumn",
                 "sourcePath": "headless/src/components/table/types.ts",
-                "typeParameters": ["T extends TableBaseData = TableBaseData"],
+                "typeParameters": [
+                  "T extends TableBaseData = TableBaseData"
+                ],
                 "external": false,
                 "members": [
                   {
@@ -4845,7 +4945,9 @@
         "description": "Slot properties for the TableHeader component.",
         "descriptionKey": "api.generated.headless_src_components_table_types.tableheaderslotprops.slotprops",
         "sourcePath": "headless/src/components/table/types.ts",
-        "typeParameters": ["TypeParameter T"],
+        "typeParameters": [
+          "TypeParameter T"
+        ],
         "members": [
           {
             "name": "column",
@@ -4865,7 +4967,9 @@
                 "description": "Type information for TableColumn.",
                 "descriptionKey": "api.generated.headless_src_components_table_types.tablecolumn",
                 "sourcePath": "headless/src/components/table/types.ts",
-                "typeParameters": ["T extends TableBaseData = TableBaseData"],
+                "typeParameters": [
+                  "T extends TableBaseData = TableBaseData"
+                ],
                 "external": false,
                 "members": [
                   {
@@ -5364,7 +5468,9 @@
         "description": "Slot properties for the TableHeaderFilter component.",
         "descriptionKey": "api.generated.headless_src_components_table_types.tableheaderfilterslotprops.slotprops",
         "sourcePath": "headless/src/components/table/types.ts",
-        "typeParameters": ["TypeParameter T"],
+        "typeParameters": [
+          "TypeParameter T"
+        ],
         "members": [
           {
             "name": "column",
@@ -5384,7 +5490,9 @@
                 "description": "Type information for TableColumn.",
                 "descriptionKey": "api.generated.headless_src_components_table_types.tablecolumn",
                 "sourcePath": "headless/src/components/table/types.ts",
-                "typeParameters": ["T extends TableBaseData = TableBaseData"],
+                "typeParameters": [
+                  "T extends TableBaseData = TableBaseData"
+                ],
                 "external": false,
                 "members": [
                   {
@@ -5734,7 +5842,9 @@
         "description": "Slot properties for the TableHeaderResize component.",
         "descriptionKey": "api.generated.headless_src_components_table_types.tableheaderresizeslotprops.slotprops",
         "sourcePath": "headless/src/components/table/types.ts",
-        "typeParameters": ["TypeParameter T"],
+        "typeParameters": [
+          "TypeParameter T"
+        ],
         "members": [
           {
             "name": "column",
@@ -5754,7 +5864,9 @@
                 "description": "Type information for TableColumn.",
                 "descriptionKey": "api.generated.headless_src_components_table_types.tablecolumn",
                 "sourcePath": "headless/src/components/table/types.ts",
-                "typeParameters": ["T extends TableBaseData = TableBaseData"],
+                "typeParameters": [
+                  "T extends TableBaseData = TableBaseData"
+                ],
                 "external": false,
                 "members": [
                   {
@@ -5991,7 +6103,9 @@
         "description": "Slot properties for the TableHeaderSelection component.",
         "descriptionKey": "api.generated.headless_src_components_table_types.tableheaderselectionslotprops.slotprops",
         "sourcePath": "headless/src/components/table/types.ts",
-        "typeParameters": ["TypeParameter T"],
+        "typeParameters": [
+          "TypeParameter T"
+        ],
         "members": [
           {
             "name": "column",
@@ -6011,7 +6125,9 @@
                 "description": "Type information for TableColumn.",
                 "descriptionKey": "api.generated.headless_src_components_table_types.tablecolumn",
                 "sourcePath": "headless/src/components/table/types.ts",
-                "typeParameters": ["T extends TableBaseData = TableBaseData"],
+                "typeParameters": [
+                  "T extends TableBaseData = TableBaseData"
+                ],
                 "external": false,
                 "members": [
                   {
@@ -6245,7 +6361,9 @@
         "description": "Slot properties for the TableHeaderSort component.",
         "descriptionKey": "api.generated.headless_src_components_table_types.tableheadersortslotprops.slotprops",
         "sourcePath": "headless/src/components/table/types.ts",
-        "typeParameters": ["TypeParameter T"],
+        "typeParameters": [
+          "TypeParameter T"
+        ],
         "members": [
           {
             "name": "ariaLabel",
@@ -6276,7 +6394,9 @@
                 "description": "Type information for TableColumn.",
                 "descriptionKey": "api.generated.headless_src_components_table_types.tablecolumn",
                 "sourcePath": "headless/src/components/table/types.ts",
-                "typeParameters": ["T extends TableBaseData = TableBaseData"],
+                "typeParameters": [
+                  "T extends TableBaseData = TableBaseData"
+                ],
                 "external": false,
                 "members": [
                   {
@@ -6477,7 +6597,9 @@
         "description": "Slot properties for the TableIndex component.",
         "descriptionKey": "api.generated.headless_src_components_table_types.tableindexslotprops.slotprops",
         "sourcePath": "headless/src/components/table/types.ts",
-        "typeParameters": ["TypeParameter T"],
+        "typeParameters": [
+          "TypeParameter T"
+        ],
         "members": [
           {
             "name": "index",
@@ -6508,7 +6630,9 @@
                 "description": "Type information for TableColumn.",
                 "descriptionKey": "api.generated.headless_src_components_table_types.tablecolumn",
                 "sourcePath": "headless/src/components/table/types.ts",
-                "typeParameters": ["T extends TableBaseData = TableBaseData"],
+                "typeParameters": [
+                  "T extends TableBaseData = TableBaseData"
+                ],
                 "external": false,
                 "members": [
                   {
@@ -6829,7 +6953,10 @@
         "description": "Properties for the TableSelection component.",
         "descriptionKey": "api.generated.headless_src_components_table_types.tableselectionprops.props",
         "sourcePath": "headless/src/components/table/types.ts",
-        "typeParameters": ["TypeParameter R", "TypeParameter M"],
+        "typeParameters": [
+          "TypeParameter R",
+          "TypeParameter M"
+        ],
         "members": [
           {
             "name": "defaultSelected",
@@ -6876,7 +7003,9 @@
         "description": "Slot properties for the TableSelection component.",
         "descriptionKey": "api.generated.headless_src_components_table_types.tableselectionslotprops.slotprops",
         "sourcePath": "headless/src/components/table/types.ts",
-        "typeParameters": ["TypeParameter T"],
+        "typeParameters": [
+          "TypeParameter T"
+        ],
         "members": [
           {
             "name": "multiple",
@@ -6951,7 +7080,9 @@
                 "description": "Type information for TableColumn.",
                 "descriptionKey": "api.generated.headless_src_components_table_types.tablecolumn",
                 "sourcePath": "headless/src/components/table/types.ts",
-                "typeParameters": ["T extends TableBaseData = TableBaseData"],
+                "typeParameters": [
+                  "T extends TableBaseData = TableBaseData"
+                ],
                 "external": false,
                 "members": [
                   {
@@ -7171,7 +7302,9 @@
         "description": "Slot properties for the TableTreeToggle component.",
         "descriptionKey": "api.generated.headless_src_components_table_types.tabletreetoggleslotprops.slotprops",
         "sourcePath": "headless/src/components/table/types.ts",
-        "typeParameters": ["TypeParameter T"],
+        "typeParameters": [
+          "TypeParameter T"
+        ],
         "members": [
           {
             "name": "ariaLabel",
@@ -7213,7 +7346,9 @@
                 "description": "Type information for TableColumn.",
                 "descriptionKey": "api.generated.headless_src_components_table_types.tablecolumn",
                 "sourcePath": "headless/src/components/table/types.ts",
-                "typeParameters": ["T extends TableBaseData = TableBaseData"],
+                "typeParameters": [
+                  "T extends TableBaseData = TableBaseData"
+                ],
                 "external": false,
                 "members": [
                   {

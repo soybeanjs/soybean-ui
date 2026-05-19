@@ -10,7 +10,9 @@
         "description": "Properties for the RadioGroup component.",
         "descriptionKey": "api.generated.src_components_radio_group_types.radiogroupprops.props",
         "sourcePath": "src/components/radio-group/types.ts",
-        "typeParameters": ["TypeParameter T"],
+        "typeParameters": [
+          "TypeParameter T"
+        ],
         "members": [
           {
             "name": "class",
@@ -53,8 +55,8 @@
                 "type": "'outline' | 'dot'",
                 "resolvedType": "'outline' | 'dot'",
                 "description": "",
-                "descriptionKey": "api.generated.src_components_radio_group_variants.radiogroupvariant",
-                "sourcePath": "src/components/radio-group/variants.ts",
+                "descriptionKey": "api.generated.src_styles_radio_group.radiogroupvariant",
+                "sourcePath": "src/styles/radio-group.ts",
                 "typeParameters": [],
                 "external": false,
                 "members": [],
@@ -523,7 +525,9 @@
         "description": "Events for the RadioGroup component.",
         "descriptionKey": "api.generated.src_components_radio_group_types.radiogroupemits.emits",
         "sourcePath": "src/components/radio-group/types.ts",
-        "typeParameters": ["TypeParameter T"],
+        "typeParameters": [
+          "TypeParameter T"
+        ],
         "members": [],
         "callables": [
           {
@@ -549,7 +553,9 @@
         "description": "Properties for the RadioGroupCard component.",
         "descriptionKey": "api.generated.src_components_radio_group_types.radiogroupcardprops.props",
         "sourcePath": "src/components/radio-group/types.ts",
-        "typeParameters": ["TypeParameter T"],
+        "typeParameters": [
+          "TypeParameter T"
+        ],
         "members": [
           {
             "name": "class",
@@ -592,8 +598,8 @@
                 "type": "'outline' | 'dot'",
                 "resolvedType": "'outline' | 'dot'",
                 "description": "",
-                "descriptionKey": "api.generated.src_components_radio_group_variants.radiogroupvariant",
-                "sourcePath": "src/components/radio-group/variants.ts",
+                "descriptionKey": "api.generated.src_styles_radio_group.radiogroupvariant",
+                "sourcePath": "src/styles/radio-group.ts",
                 "typeParameters": [],
                 "external": false,
                 "members": [],
@@ -694,7 +700,9 @@
                 "description": "",
                 "descriptionKey": "api.generated.headless_src_types_vue.baseprops",
                 "sourcePath": "headless/src/types/vue.ts",
-                "typeParameters": ["T = HTMLAttributes"],
+                "typeParameters": [
+                  "T = HTMLAttributes"
+                ],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -719,7 +727,9 @@
                 "description": "",
                 "descriptionKey": "api.generated.headless_src_types_vue.baseprops",
                 "sourcePath": "headless/src/types/vue.ts",
-                "typeParameters": ["T = HTMLAttributes"],
+                "typeParameters": [
+                  "T = HTMLAttributes"
+                ],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -744,7 +754,9 @@
                 "description": "",
                 "descriptionKey": "api.generated.headless_src_types_vue.baseprops",
                 "sourcePath": "headless/src/types/vue.ts",
-                "typeParameters": ["T = HTMLAttributes"],
+                "typeParameters": [
+                  "T = HTMLAttributes"
+                ],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -1137,7 +1149,9 @@
         "description": "Events for the RadioGroupCard component.",
         "descriptionKey": "api.generated.src_components_radio_group_types.radiogroupcardemits.emits",
         "sourcePath": "src/components/radio-group/types.ts",
-        "typeParameters": ["TypeParameter T"],
+        "typeParameters": [
+          "TypeParameter T"
+        ],
         "members": [],
         "callables": [
           {
@@ -1161,7 +1175,9 @@
         "description": "Slots for the RadioGroupCard component.",
         "descriptionKey": "api.generated.src_components_radio_group_types.radiogroupcardslots.slots",
         "sourcePath": "src/components/radio-group/types.ts",
-        "typeParameters": ["TypeParameter T"],
+        "typeParameters": [
+          "TypeParameter T"
+        ],
         "members": [],
         "callables": [
           {
@@ -1201,7 +1217,9 @@
         "description": "Properties for the RadioGroupCard component.",
         "descriptionKey": "api.generated.headless_src_components_radio_group_types.radiogroupcardcompactprops.props",
         "sourcePath": "headless/src/components/radio-group/types.ts",
-        "typeParameters": ["TypeParameter T"],
+        "typeParameters": [
+          "TypeParameter T"
+        ],
         "members": [
           {
             "name": "contentProps",
@@ -1221,7 +1239,9 @@
                 "description": "",
                 "descriptionKey": "api.generated.headless_src_types_vue.baseprops",
                 "sourcePath": "headless/src/types/vue.ts",
-                "typeParameters": ["T = HTMLAttributes"],
+                "typeParameters": [
+                  "T = HTMLAttributes"
+                ],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -1246,7 +1266,9 @@
                 "description": "",
                 "descriptionKey": "api.generated.headless_src_types_vue.baseprops",
                 "sourcePath": "headless/src/types/vue.ts",
-                "typeParameters": ["T = HTMLAttributes"],
+                "typeParameters": [
+                  "T = HTMLAttributes"
+                ],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -1271,7 +1293,9 @@
                 "description": "",
                 "descriptionKey": "api.generated.headless_src_types_vue.baseprops",
                 "sourcePath": "headless/src/types/vue.ts",
-                "typeParameters": ["T = HTMLAttributes"],
+                "typeParameters": [
+                  "T = HTMLAttributes"
+                ],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -1664,7 +1688,9 @@
         "description": "Events for the RadioGroupCardCompact component.",
         "descriptionKey": "api.generated.headless_src_components_radio_group_types.radiogroupcardcompactemits.emits",
         "sourcePath": "headless/src/components/radio-group/types.ts",
-        "typeParameters": ["TypeParameter T"],
+        "typeParameters": [
+          "TypeParameter T"
+        ],
         "members": [],
         "callables": [
           {
@@ -1688,7 +1714,9 @@
         "description": "Slots for the RadioGroupCompact component.",
         "descriptionKey": "api.generated.headless_src_components_radio_group_types.radiogroupcardcompactslots.slots",
         "sourcePath": "headless/src/components/radio-group/types.ts",
-        "typeParameters": ["TypeParameter T"],
+        "typeParameters": [
+          "TypeParameter T"
+        ],
         "members": [],
         "callables": [
           {
@@ -1728,7 +1756,9 @@
         "description": "Properties for the RadioGroupCompact component.",
         "descriptionKey": "api.generated.headless_src_components_radio_group_types.radiogroupcompactprops.props",
         "sourcePath": "headless/src/components/radio-group/types.ts",
-        "typeParameters": ["TypeParameter T"],
+        "typeParameters": [
+          "TypeParameter T"
+        ],
         "members": [
           {
             "name": "items",
@@ -2116,7 +2146,9 @@
         "description": "Events for the RadioGroupCompact component.",
         "descriptionKey": "api.generated.headless_src_components_radio_group_types.radiogroupcompactemits.emits",
         "sourcePath": "headless/src/components/radio-group/types.ts",
-        "typeParameters": ["TypeParameter T"],
+        "typeParameters": [
+          "TypeParameter T"
+        ],
         "members": [],
         "callables": [
           {
@@ -2433,7 +2465,9 @@
         "description": "Properties for the RadioGroupRoot component.",
         "descriptionKey": "api.generated.headless_src_components_radio_group_types.radiogrouprootprops.props",
         "sourcePath": "headless/src/components/radio-group/types.ts",
-        "typeParameters": ["TypeParameter T"],
+        "typeParameters": [
+          "TypeParameter T"
+        ],
         "members": [
           {
             "name": "modelValue",
@@ -2563,7 +2597,9 @@
         "description": "Events for the RadioGroupRoot component.",
         "descriptionKey": "api.generated.headless_src_components_radio_group_types.radiogrouprootemits.emits",
         "sourcePath": "headless/src/components/radio-group/types.ts",
-        "typeParameters": ["TypeParameter T"],
+        "typeParameters": [
+          "TypeParameter T"
+        ],
         "members": [],
         "callables": [
           {

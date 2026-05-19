@@ -396,7 +396,9 @@
                 "description": "Route location that can be passed to `router.push()` and other user-facing APIs.",
                 "descriptionKey": "api.generated.node_modules_pnpm_vue_router_5_0_7_vue_compiler_sfc_3_5_34_pinia_3_0_4_typescript_6_0_3_vue_3_5_34_types_f357d1e940226713debf99bc42fbe5c2_node_modules_vue_router_dist_useapi_d6ckosfy_d.routelocationraw",
                 "sourcePath": "node_modules/.pnpm/vue-router@5.0.7_@vue+compiler-sfc@3.5.34_pinia@3.0.4_typescript@6.0.3_vue@3.5.34_types_f357d1e940226713debf99bc42fbe5c2/node_modules/vue-router/dist/useApi-D6ckOsFy.d.ts",
-                "typeParameters": ["Name extends keyof RouteMap = keyof RouteMap"],
+                "typeParameters": [
+                  "Name extends keyof RouteMap = keyof RouteMap"
+                ],
                 "external": true,
                 "members": [],
                 "callables": []
@@ -810,7 +812,10 @@
         "description": "Properties for the ToolbarToggleGroup component.",
         "descriptionKey": "api.generated.headless_src_components_toolbar_types.toolbartogglegroupprops.props",
         "sourcePath": "headless/src/components/toolbar/types.ts",
-        "typeParameters": ["TypeParameter M", "TypeParameter T"],
+        "typeParameters": [
+          "TypeParameter M",
+          "TypeParameter T"
+        ],
         "members": [
           {
             "name": "rovingFocus",
@@ -1042,7 +1047,10 @@
         "description": "Events for the ToolbarToggleGroup component.",
         "descriptionKey": "api.generated.headless_src_components_toolbar_types.toolbartogglegroupemits.emits",
         "sourcePath": "headless/src/components/toolbar/types.ts",
-        "typeParameters": ["TypeParameter M", "TypeParameter T"],
+        "typeParameters": [
+          "TypeParameter M",
+          "TypeParameter T"
+        ],
         "members": [],
         "callables": [
           {
@@ -1068,7 +1076,9 @@
         "description": "Properties for the ToolbarToggleItem component.",
         "descriptionKey": "api.generated.headless_src_components_toolbar_types.toolbartoggleitemprops.props",
         "sourcePath": "headless/src/components/toolbar/types.ts",
-        "typeParameters": ["TypeParameter T"],
+        "typeParameters": [
+          "TypeParameter T"
+        ],
         "members": [
           {
             "name": "value",

@@ -27,6 +27,7 @@ declare module 'vue' {
     SSplitterPanel: typeof import('@soybeanjs/ui')['SSplitterPanel']
     SSplitterResizeHandle: typeof import('@soybeanjs/ui')['SSplitterResizeHandle']
     SToggle: typeof import('@soybeanjs/ui')['SToggle']
+    SWatermark: typeof import('@soybeanjs/ui')['SWatermark']
     ThemeConfigurator: typeof import('./../components/theme-configurator.vue')['default']
     ThemeSchemaToggler: typeof import('./../components/theme-schema-toggler.vue')['default']
   }
@@ -49,6 +50,7 @@ declare global {
   const SSplitterPanel: typeof import('@soybeanjs/ui')['SSplitterPanel']
   const SSplitterResizeHandle: typeof import('@soybeanjs/ui')['SSplitterResizeHandle']
   const SToggle: typeof import('@soybeanjs/ui')['SToggle']
+  const SWatermark: typeof import('@soybeanjs/ui')['SWatermark']
   const ThemeConfigurator: typeof import('./../components/theme-configurator.vue')['default']
   const ThemeSchemaToggler: typeof import('./../components/theme-schema-toggler.vue')['default']
 }

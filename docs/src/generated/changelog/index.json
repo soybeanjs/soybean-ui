@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-19T09:12:54.636Z",
+  "generatedAt": "2026-05-19T15:55:10.230Z",
   "schemaVersion": 1,
   "components": {
     "accordion": {
@@ -621,6 +621,13 @@
     "visually-hidden": {
       "component": "visually-hidden",
       "file": "visually-hidden.json",
+      "latestVersion": null,
+      "versionCount": 0,
+      "entryCount": 0
+    },
+    "watermark": {
+      "component": "watermark",
+      "file": "watermark.json",
       "latestVersion": null,
       "versionCount": 0,
       "entryCount": 0

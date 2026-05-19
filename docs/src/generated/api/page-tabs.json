@@ -10,7 +10,9 @@
         "description": "Properties for the PageTabs component.",
         "descriptionKey": "api.generated.src_components_page_tabs_types.pagetabsprops.props",
         "sourcePath": "src/components/page-tabs/types.ts",
-        "typeParameters": ["TypeParameter T"],
+        "typeParameters": [
+          "TypeParameter T"
+        ],
         "members": [
           {
             "name": "class",
@@ -78,8 +80,8 @@
                 "type": "'slider' | 'chrome' | 'card'",
                 "resolvedType": "'slider' | 'chrome' | 'card'",
                 "description": "",
-                "descriptionKey": "api.generated.src_components_page_tabs_variants.pagetabsvariant",
-                "sourcePath": "src/components/page-tabs/variants.ts",
+                "descriptionKey": "api.generated.src_styles_page_tabs.pagetabsvariant",
+                "sourcePath": "src/styles/page-tabs.ts",
                 "typeParameters": [],
                 "external": false,
                 "members": [],
@@ -166,7 +168,9 @@
                 "description": "",
                 "descriptionKey": "api.generated.headless_src_types_common.maybepromise",
                 "sourcePath": "headless/src/types/common.ts",
-                "typeParameters": ["T"],
+                "typeParameters": [
+                  "T"
+                ],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -191,7 +195,9 @@
                 "description": "",
                 "descriptionKey": "api.generated.headless_src_types_vue.baseprops",
                 "sourcePath": "headless/src/types/vue.ts",
-                "typeParameters": ["T = HTMLAttributes"],
+                "typeParameters": [
+                  "T = HTMLAttributes"
+                ],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -216,7 +222,9 @@
                 "description": "",
                 "descriptionKey": "api.generated.headless_src_types_vue.baseprops",
                 "sourcePath": "headless/src/types/vue.ts",
-                "typeParameters": ["T = HTMLAttributes"],
+                "typeParameters": [
+                  "T = HTMLAttributes"
+                ],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -241,7 +249,9 @@
                 "description": "",
                 "descriptionKey": "api.generated.headless_src_types_vue.baseprops",
                 "sourcePath": "headless/src/types/vue.ts",
-                "typeParameters": ["T = HTMLAttributes"],
+                "typeParameters": [
+                  "T = HTMLAttributes"
+                ],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -266,7 +276,9 @@
                 "description": "Properties for the ContextMenuCompact component.",
                 "descriptionKey": "api.generated.headless_src_components_context_menu_types.contextmenucompactprops",
                 "sourcePath": "headless/src/components/context-menu/types.ts",
-                "typeParameters": ["T extends DefinedValue = DefinedValue"],
+                "typeParameters": [
+                  "T extends DefinedValue = DefinedValue"
+                ],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -420,7 +432,9 @@
         "description": "Events for the PageTabs component.",
         "descriptionKey": "api.generated.src_components_page_tabs_types.pagetabsemits.emits",
         "sourcePath": "src/components/page-tabs/types.ts",
-        "typeParameters": ["TypeParameter T"],
+        "typeParameters": [
+          "TypeParameter T"
+        ],
         "members": [],
         "callables": [],
         "referencedTypes": []
@@ -433,7 +447,9 @@
         "description": "Slots for the PageTabs component.",
         "descriptionKey": "api.generated.src_components_page_tabs_types.pagetabsslots.slots",
         "sourcePath": "src/components/page-tabs/types.ts",
-        "typeParameters": ["TypeParameter T"],
+        "typeParameters": [
+          "TypeParameter T"
+        ],
         "members": [],
         "callables": [
           {
@@ -453,7 +469,9 @@
                 "description": "Slot props for a compact page tab item.",
                 "descriptionKey": "api.generated.headless_src_components_page_tabs_types.pagetabscompactitemslotprops",
                 "sourcePath": "headless/src/components/page-tabs/types.ts",
-                "typeParameters": ["T extends PageTabsOptionData = PageTabsOptionData"],
+                "typeParameters": [
+                  "T extends PageTabsOptionData = PageTabsOptionData"
+                ],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -477,7 +495,9 @@
                 "description": "Slot props for a compact page tab item.",
                 "descriptionKey": "api.generated.headless_src_components_page_tabs_types.pagetabscompactitemslotprops",
                 "sourcePath": "headless/src/components/page-tabs/types.ts",
-                "typeParameters": ["T extends PageTabsOptionData = PageTabsOptionData"],
+                "typeParameters": [
+                  "T extends PageTabsOptionData = PageTabsOptionData"
+                ],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -501,7 +521,9 @@
                 "description": "Slot props for a compact page tab item.",
                 "descriptionKey": "api.generated.headless_src_components_page_tabs_types.pagetabscompactitemslotprops",
                 "sourcePath": "headless/src/components/page-tabs/types.ts",
-                "typeParameters": ["T extends PageTabsOptionData = PageTabsOptionData"],
+                "typeParameters": [
+                  "T extends PageTabsOptionData = PageTabsOptionData"
+                ],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -525,7 +547,9 @@
                 "description": "Slot props for a compact page tab item.",
                 "descriptionKey": "api.generated.headless_src_components_page_tabs_types.pagetabscompactitemslotprops",
                 "sourcePath": "headless/src/components/page-tabs/types.ts",
-                "typeParameters": ["T extends PageTabsOptionData = PageTabsOptionData"],
+                "typeParameters": [
+                  "T extends PageTabsOptionData = PageTabsOptionData"
+                ],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -661,7 +685,9 @@
         "description": "Properties for the PageTabsCompact component.",
         "descriptionKey": "api.generated.headless_src_components_page_tabs_types.pagetabscompactprops.props",
         "sourcePath": "headless/src/components/page-tabs/types.ts",
-        "typeParameters": ["TypeParameter T"],
+        "typeParameters": [
+          "TypeParameter T"
+        ],
         "members": [
           {
             "name": "items",
@@ -717,7 +743,9 @@
                 "description": "",
                 "descriptionKey": "api.generated.headless_src_types_common.maybepromise",
                 "sourcePath": "headless/src/types/common.ts",
-                "typeParameters": ["T"],
+                "typeParameters": [
+                  "T"
+                ],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -742,7 +770,9 @@
                 "description": "",
                 "descriptionKey": "api.generated.headless_src_types_vue.baseprops",
                 "sourcePath": "headless/src/types/vue.ts",
-                "typeParameters": ["T = HTMLAttributes"],
+                "typeParameters": [
+                  "T = HTMLAttributes"
+                ],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -767,7 +797,9 @@
                 "description": "",
                 "descriptionKey": "api.generated.headless_src_types_vue.baseprops",
                 "sourcePath": "headless/src/types/vue.ts",
-                "typeParameters": ["T = HTMLAttributes"],
+                "typeParameters": [
+                  "T = HTMLAttributes"
+                ],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -792,7 +824,9 @@
                 "description": "",
                 "descriptionKey": "api.generated.headless_src_types_vue.baseprops",
                 "sourcePath": "headless/src/types/vue.ts",
-                "typeParameters": ["T = HTMLAttributes"],
+                "typeParameters": [
+                  "T = HTMLAttributes"
+                ],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -817,7 +851,9 @@
                 "description": "Properties for the ContextMenuCompact component.",
                 "descriptionKey": "api.generated.headless_src_components_context_menu_types.contextmenucompactprops",
                 "sourcePath": "headless/src/components/context-menu/types.ts",
-                "typeParameters": ["T extends DefinedValue = DefinedValue"],
+                "typeParameters": [
+                  "T extends DefinedValue = DefinedValue"
+                ],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -971,7 +1007,9 @@
         "description": "Events for the PageTabsCompact component.",
         "descriptionKey": "api.generated.headless_src_components_page_tabs_types.pagetabscompactemits.emits",
         "sourcePath": "headless/src/components/page-tabs/types.ts",
-        "typeParameters": ["TypeParameter T"],
+        "typeParameters": [
+          "TypeParameter T"
+        ],
         "members": [],
         "callables": [],
         "referencedTypes": []
@@ -984,7 +1022,9 @@
         "description": "Slots for the PageTabsCompact component.",
         "descriptionKey": "api.generated.headless_src_components_page_tabs_types.pagetabscompactslots.slots",
         "sourcePath": "headless/src/components/page-tabs/types.ts",
-        "typeParameters": ["TypeParameter T"],
+        "typeParameters": [
+          "TypeParameter T"
+        ],
         "members": [],
         "callables": [
           {
@@ -1004,7 +1044,9 @@
                 "description": "Slot props for a compact page tab item.",
                 "descriptionKey": "api.generated.headless_src_components_page_tabs_types.pagetabscompactitemslotprops",
                 "sourcePath": "headless/src/components/page-tabs/types.ts",
-                "typeParameters": ["T extends PageTabsOptionData = PageTabsOptionData"],
+                "typeParameters": [
+                  "T extends PageTabsOptionData = PageTabsOptionData"
+                ],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -1028,7 +1070,9 @@
                 "description": "Slot props for a compact page tab item.",
                 "descriptionKey": "api.generated.headless_src_components_page_tabs_types.pagetabscompactitemslotprops",
                 "sourcePath": "headless/src/components/page-tabs/types.ts",
-                "typeParameters": ["T extends PageTabsOptionData = PageTabsOptionData"],
+                "typeParameters": [
+                  "T extends PageTabsOptionData = PageTabsOptionData"
+                ],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -1052,7 +1096,9 @@
                 "description": "Slot props for a compact page tab item.",
                 "descriptionKey": "api.generated.headless_src_components_page_tabs_types.pagetabscompactitemslotprops",
                 "sourcePath": "headless/src/components/page-tabs/types.ts",
-                "typeParameters": ["T extends PageTabsOptionData = PageTabsOptionData"],
+                "typeParameters": [
+                  "T extends PageTabsOptionData = PageTabsOptionData"
+                ],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -1076,7 +1122,9 @@
                 "description": "Slot props for a compact page tab item.",
                 "descriptionKey": "api.generated.headless_src_components_page_tabs_types.pagetabscompactitemslotprops",
                 "sourcePath": "headless/src/components/page-tabs/types.ts",
-                "typeParameters": ["T extends PageTabsOptionData = PageTabsOptionData"],
+                "typeParameters": [
+                  "T extends PageTabsOptionData = PageTabsOptionData"
+                ],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -1116,7 +1164,9 @@
         "description": "Slot props for a compact page tab item.",
         "descriptionKey": "api.generated.headless_src_components_page_tabs_types.pagetabscompactitemslotprops.slotprops",
         "sourcePath": "headless/src/components/page-tabs/types.ts",
-        "typeParameters": ["TypeParameter T"],
+        "typeParameters": [
+          "TypeParameter T"
+        ],
         "members": [
           {
             "name": "item",
