@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import { SButton } from '@soybeanjs/ui';
-import { toast } from '@soybeanjs/ui';
+import { SButton, toast } from '@soybeanjs/ui';
 
 function openDefaultToast() {
   toast('Release created', {

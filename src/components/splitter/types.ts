@@ -8,7 +8,7 @@ import type {
   SplitterUi
 } from '@soybeanjs/headless/splitter';
 import type { ClassValue } from '@soybeanjs/headless/types';
-import { ThemeSize } from '@/theme';
+import type { ThemeSize } from '@/theme';
 
 /**
  * Properties for the SplitterGroup component.

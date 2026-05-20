@@ -1,8 +1,7 @@
 <script setup lang="ts" generic="T extends DefinedValue = DefinedValue, M extends boolean = false">
 import { computed } from 'vue';
 import { useOmitProps } from '../../composables';
-import type { MaybeArray } from '../../types';
-import type { DefinedValue } from '../../types';
+import type { MaybeArray, DefinedValue } from '../../types';
 import Icon from '../_icon/icon.vue';
 import { Portal } from '../portal';
 import { isGroupOption } from './shared';

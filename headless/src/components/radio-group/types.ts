@@ -10,7 +10,7 @@ import type {
   PropsToContext,
   UiClass
 } from '../../types';
-import { IconValue } from '../_icon/types';
+import type { IconValue } from '../_icon/types';
 import type { ButtonProps } from '../button/types';
 import type { LabelProps as RadioGroupLabelProps } from '../label/types';
 import type { PrimitiveWithBaseProps } from '../primitive/types';

@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import { computed } from 'vue';
-import { shallowRef } from 'vue';
+import { computed, shallowRef } from 'vue';
 import { SDateField } from '@soybeanjs/ui';
 import { CalendarDateTime } from '@internationalized/date';
 

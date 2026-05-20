@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import TypeData, { type TypeFieldDef } from './type-data.vue';
+import TypeData from './type-data.vue';
+import type { TypeFieldDef } from './type-data.vue';
 
 export type TypeDataDef = {
   name: string;

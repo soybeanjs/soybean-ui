@@ -5,7 +5,7 @@ import type {
   CarouselUi
 } from '@soybeanjs/headless/carousel';
 import type { ClassValue, DefinedValue } from '@soybeanjs/headless/types';
-import { ThemeSize } from '@/theme';
+import type { ThemeSize } from '@/theme';
 
 /**
  * Properties for the Carousel component.

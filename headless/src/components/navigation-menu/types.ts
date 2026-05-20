@@ -10,7 +10,7 @@ import type {
   PropsToContext,
   UiClass
 } from '../../types';
-import { IconValue } from '../_icon/types';
+import type { IconValue } from '../_icon/types';
 import type { LinkProps, LinkBaseProps } from '../link/types';
 import type { PrimitiveWithBaseProps } from '../primitive/types';
 

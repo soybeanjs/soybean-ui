@@ -1,6 +1,6 @@
 import type { TreeItemData, TreeVirtualizerRootEmits, TreeVirtualizerRootProps } from '@soybeanjs/headless/tree';
 import type { MaybeArray } from '@soybeanjs/headless/types';
-import { VirtualizerContentProps, VirtualizerDynamicContentProps } from '@soybeanjs/headless/virtualizer';
+import type { VirtualizerContentProps, VirtualizerDynamicContentProps } from '@soybeanjs/headless/virtualizer';
 
 /**
  * Properties for the TreeVirtualizer component.

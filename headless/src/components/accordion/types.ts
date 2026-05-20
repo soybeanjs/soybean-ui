@@ -10,8 +10,7 @@ import type {
   UiClass
 } from '../../types';
 import type { IconValue } from '../_icon/types';
-import type { CollapsibleContentProps, CollapsibleTriggerProps } from '../collapsible/types';
-import type { CollapsibleRootProps } from '../collapsible/types';
+import type { CollapsibleContentProps, CollapsibleTriggerProps, CollapsibleRootProps } from '../collapsible/types';
 
 /**
  * Properties for the AccordionRoot component.
