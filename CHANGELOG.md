@@ -1,5 +1,16 @@
 # Changelog
 
+## [v0.24.1](https://github.com/soybeanjs/soybean-ui/compare/v0.24.0...v0.24.1) (2026-05-20)
+
+### &nbsp;&nbsp;&nbsp;🏡 Chore
+
+- **docs**: remove unused date/time picker component docs and references &nbsp;-&nbsp; by **soybeanfe** [<samp>(655c0)</samp>](https://github.com/soybeanjs/soybean-ui/commit/655c0fa88)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+
+[soybeanfe](mailto:honghuangdc@gmail.com)
+
 ## [v0.24.0](https://github.com/soybeanjs/soybean-ui/compare/v0.23.1...v0.24.0) (2026-05-20)
 
 ### &nbsp;&nbsp;&nbsp;🚀 Features

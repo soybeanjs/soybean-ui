@@ -1,7 +1,31 @@
 {
-  "generatedAt": "2026-05-20T06:55:36.867Z",
+  "generatedAt": "2026-05-20T07:08:07.256Z",
   "schemaVersion": 1,
   "releases": [
+    {
+      "version": "v0.24.1",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.24.0...v0.24.1",
+      "date": "2026-05-20",
+      "entryCount": 1,
+      "componentCount": 0,
+      "components": [],
+      "typeCounts": {
+        "chore": 1
+      },
+      "entries": [
+        {
+          "type": "chore",
+          "scope": "docs",
+          "summary": "remove unused date/time picker component docs and references",
+          "summaryKey": "changelog.generated.v0.24.1.655c0",
+          "commitHash": "655c0",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/655c0fa88",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope",
+          "components": []
+        }
+      ]
+    },
     {
       "version": "v0.24.0",
       "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.23.1...v0.24.0",
