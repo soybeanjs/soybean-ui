@@ -46,8 +46,8 @@ importers:
         specifier: ^0.0.2
         version: 0.0.2(eslint@10.4.0(jiti@2.7.0))(typescript@6.0.3)
       '@soybeanjs/oxc-config':
-        specifier: ^0.0.2
-        version: 0.0.2
+        specifier: ^0.0.5
+        version: 0.0.5
       '@soybeanjs/unocss-preset':
         specifier: ^0.2.0
         version: 0.2.0(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(vite@8.0.13(@types/node@25.9.1)(esbuild@0.28.0)(jiti@2.7.0)(terser@5.47.1)(tsx@4.22.3)(yaml@2.9.0))
@@ -2902,8 +2902,8 @@ packages:
   '@soybeanjs/hooks@0.3.0':
     resolution: {integrity: sha512-8OpHhseUXFOs/Az3Q+eO6S+ZJy7FjyEbgEg9a54Kxmz8uMjeU/B06DdN9xDQ/JB1SJ8SSRXaJanbz/9h3hE5jw==}
 
-  '@soybeanjs/oxc-config@0.0.2':
-    resolution: {integrity: sha512-eTs9cYZN+XO9JFE+8tnNah0HeRatLXfJt92hzcCwE+94isgzGi+woSQQesbzsJWYtnolNwnWVhLiVMGp1Vd5DA==}
+  '@soybeanjs/oxc-config@0.0.5':
+    resolution: {integrity: sha512-xo29pD+/3YAKn46Rzrx6P64JoZvnZM5SEcHKOX+zNAjgvhh1v24Y+VWtqhg4JwOw7NDD8XNVvq3iUxOx9iwOOA==}
 
   '@soybeanjs/shadcn-theme@0.3.1':
     resolution: {integrity: sha512-yfVMq0d4gArzxNXfCUtSDHZ1PkajECcT2Rprpp77B0wWoCm9Xotcd03mIJ//s32IgaoYktDdVNOg0IAl+RJzLw==}
@@ -8777,7 +8777,7 @@ snapshots:
 
   '@soybeanjs/hooks@0.3.0': {}
 
-  '@soybeanjs/oxc-config@0.0.2': {}
+  '@soybeanjs/oxc-config@0.0.5': {}
 
   '@soybeanjs/shadcn-theme@0.3.1':
     dependencies:
