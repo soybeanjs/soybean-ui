@@ -4,7 +4,6 @@ globs: '**/*.ts'
 
 # Component Test Files — read these before editing
 
-- `.github/instructions/import-order.instructions.md`
 - `.github/instructions/typescript-functional-style.instructions.md`
 - `.github/instructions/soybean-ui-component-overview.instructions.md` when the tests change is part of component work
 - `.github/instructions/soybean-ui-testing.instructions.md`

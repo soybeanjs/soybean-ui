@@ -11,7 +11,6 @@ For any AI assistant working in this repository:
 
 **Universal rules (read for every edit):**
 
-- `.github/instructions/import-order.instructions.md`
 - `.github/instructions/typescript-functional-style.instructions.md`
 - `.github/instructions/vue-sfc.instructions.md` (for .vue files)
 

@@ -32,16 +32,12 @@ applyTo: '**/*.vue'
 
 ## 详细说明
 
-### 1. import statements
-
-- import 顺序遵循同目录 `import-order.instructions.md`。
-
-### 2. defineOptions
+### 1. defineOptions
 
 - `defineOptions` 尽量靠前，通常紧跟 imports 后。
 - UI 组件名称必须保留 `S` 前缀，例如 `SButton`、`SDialog`，Headless 层组件名称则不带 `S` 前缀，例如 `Button`、`Dialog`。
 
-### 3. props 类型定义
+### 2. props 类型定义
 
 - 优先从同级 `types.ts` 导入 props 类型。
 - 如果类型很简单，也可以在当前文件内直接声明小型 interface。
@@ -54,7 +50,7 @@ interface LocalProps {
 }
 ```
 
-### 4. defineProps
+### 3. defineProps
 
 - 不使用 props 时可直接 `defineProps<Type>()`。
 - 需要在脚本中访问 props 时，使用 `const props = defineProps<Type>()`。
@@ -70,7 +66,7 @@ const props = defineProps<DemoProps>();
 </template>
 ```
 
-### 5. emits 类型定义
+### 4. emits 类型定义
 
 - emits 类型优先从 `types.ts` 导入。
 - 简单场景可以在当前文件内直接声明 tuple-style emits。
@@ -83,17 +79,34 @@ interface LocalEmits {
 }
 ```
 
-### 6. defineEmits
+### 5. defineEmits
 
 - 不使用 emit 时可直接 `defineEmits<Type>()`。
 - 需要在脚本里触发事件时，使用 `const emit = defineEmits<Type>()`。
 
-### 7. hooks / composables 初始化
+### 6. slots 类型定义
+
+- slots 类型优先从 `types.ts` 导入。
+- 简单场景可以在当前文件内直接声明 tuple-style slots。
+
+```ts
+import type { DemoSlots } from './types';
+interface LocalSlots {
+  default: [];
+}
+```
+
+### 7. defineSlots
+
+- 不使用 slots 时可直接 `defineSlots<Type>()`。
+- 需要在脚本里访问 slots 时，使用 `const slots = defineSlots<Type>()`。
+
+### 8. hooks / composables 初始化
 
 - `useRoute`、`useRouter`、`useControllableState`、`useForwardListeners`、`useOmitProps` 这类初始化逻辑放在这里。
 - 这一段只做“拿能力”和“拿基础上下文”，不要混入大量业务计算。
 
-### 8. 组件业务逻辑
+### 9. 组件业务逻辑
 
 - 按业务语义分块，而不是按 API 类型混排。
 - 相关的 `ref`、`computed`、函数尽量靠近放置。
@@ -108,7 +121,7 @@ interface LocalEmits {
 
 只有需要依赖对象内部字段变化触发更新时，才更适合继续使用 `ref`。
 
-### 9. init 函数
+### 10. init 函数
 
 - 只有在确实存在初始化流程时才定义 `init`。
 - 初始化逻辑集中到一个函数里，避免散落到多个生命周期钩子中。
@@ -119,7 +132,7 @@ async function init() {
 }
 ```
 
-### 10. context provider
+### 11. context provider
 
 - `provideXContext`、`provideXUi` 这类 provider 放在业务逻辑之后、watch 与生命周期之前。
 - 先把要提供的数据准备好，再统一注入，避免 provider 之前和之后来回穿插定义状态。
@@ -134,12 +147,12 @@ provideDemoContext({
 });
 ```
 
-### 11. watch / watchEffect
+### 12. watch / watchEffect
 
 - `watch`、`watchEffect` 放在 provider 之后。
 - 没必要时不要引入 watcher；优先考虑 `computed` 或直接事件流。
 
-### 12. 生命周期 hooks
+### 13. 生命周期 hooks
 
 - 生命周期钩子放在 script 末段。
 - 若存在 `init()`，通常在这里或等价创建阶段调用，保持初始化入口集中。
@@ -152,7 +165,7 @@ onMounted(() => {
 });
 ```
 
-### 13. defineExpose
+### 14. defineExpose
 
 - `defineExpose` 放在脚本最后。
 - 只有组件确实需要暴露实例 API 时才使用。
@@ -180,7 +193,6 @@ defineExpose({
 
 ## 检查问题
 
-- import 是否符合同目录 `import-order.instructions.md`？
 - `defineOptions` 是否足够靠前？
 - props / emits 类型与 `defineProps` / `defineEmits` 是否成对且顺序稳定？
 - hooks 初始化、业务逻辑、provider、watch、生命周期是否分层清楚？

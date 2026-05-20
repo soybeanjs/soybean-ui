@@ -14,6 +14,7 @@ applyTo: '{headless/src/components,src/components}/**/*.{ts,vue}'
 
 - 已运行 `pnpm typecheck`
 - 已运行 `pnpm lint`
+- 已运行 `pnpm fmt`
 - 已运行相关 `pnpm test` 或定向组件测试
 - 若有未运行项，已明确记录原因
 

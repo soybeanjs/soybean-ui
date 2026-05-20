@@ -6,12 +6,11 @@ Before editing files here, read and obey these `.github` sources:
 
 1. `.github/assistant-rules.md`
 2. `.github/copilot-instructions.md`
-3. `.github/instructions/import-order.instructions.md`
-4. `.github/instructions/typescript-functional-style.instructions.md`
-5. `.github/instructions/vue-sfc.instructions.md` for `.vue` files
-6. `.github/instructions/soybean-ui-component-overview.instructions.md`
-7. `.github/instructions/soybean-ui-headless.instructions.md`
-8. `.github/instructions/soybean-ui-accessibility-rtl.instructions.md`
+3. `.github/instructions/typescript-functional-style.instructions.md`
+4. `.github/instructions/vue-sfc.instructions.md` for `.vue` files
+5. `.github/instructions/soybean-ui-component-overview.instructions.md`
+6. `.github/instructions/soybean-ui-headless.instructions.md`
+7. `.github/instructions/soybean-ui-accessibility-rtl.instructions.md`
 
 If the task affects public delivery surfaces, also apply the relevant docs, playground, testing, and checklist files under `.github/instructions/`.
 

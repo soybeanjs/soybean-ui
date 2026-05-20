@@ -6,7 +6,6 @@ Read the root `AGENTS.md` first for the repository map and scoped bridge locatio
 
 ## Universal rules (read for every edit)
 
-- `.github/instructions/import-order.instructions.md`
 - `.github/instructions/typescript-functional-style.instructions.md`
 - `.github/instructions/vue-sfc.instructions.md` (for .vue files)
 

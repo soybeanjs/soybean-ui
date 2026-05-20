@@ -68,10 +68,6 @@ applyTo: '**/*.{ts,tsx,js,jsx,vue}'
 - 在新增 helper、composable 或类型之前，先检查仓库现有实现是否已满足。
 - 如果仓库里没有合适的 composable，优先检查 `@vueuse/core`，不要直接从 0 到 1 重写常见能力。
 
-## Import 顺序
-
-- import 顺序统一遵循 `import-order.instructions.md`，不要在这里重复维护第二份规则。
-
 ## 重构检查清单
 
 - 能否提取为纯函数？
@@ -79,7 +75,6 @@ applyTo: '**/*.{ts,tsx,js,jsx,vue}'
 - 能否用 early return 减少缩进？
 - 能否消除重复状态？
 - 能否删掉只转手一次的中间变量？
-- import 顺序是否符合同目录 `import-order.instructions.md`？
 - 导出 API 的参数和返回值是否足够明确？
 - 代码是否在更短之后仍然更容易读？
 
