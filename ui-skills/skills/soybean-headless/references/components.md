@@ -110,6 +110,7 @@ Links point to the SoybeanUI generated component reference files because those f
 | **table**        | A data table component for displaying row and column data. Supports grouped headers, sorting, filtering, selection, expansion, tree rows, virtualization, empty states, and more, with default and simple visual variants plus a rounded toggle. | [soybean-ui/components/table.md](../../soybean-ui/components/table.md)               |
 | **tag**          | A small, interactive component used to categorize or label content.                                                                                                                                                                              | [soybean-ui/components/tag.md](../../soybean-ui/components/tag.md)                   |
 | **virtualizer**  | A virtual scrolling component that efficiently renders large lists by only rendering items currently in the viewport.                                                                                                                            | [soybean-ui/components/virtualizer.md](../../soybean-ui/components/virtualizer.md)   |
+| **watermark**    | Watermark overlays a repeating text or image pattern on top of page content to indicate ownership, confidentiality, or branding.                                                                                                                 | [soybean-ui/components/watermark.md](../../soybean-ui/components/watermark.md)       |
 
 ## Feedback
 

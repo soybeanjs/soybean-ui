@@ -31,6 +31,7 @@ Properties for the ScrollArea component.
 
 - `class`: Additional class names applied to the root element. (type `string | false | Record<string, any> | ClassValue[] | null`; optional)
 - `ui`: Per-slot class overrides for the component. (type `Partial<ScrollAreaUi>`; optional)
+- `size`: Size of the ScrollArea component. (type `ThemeSize`; optional)
 - `viewportProps`: Properties forwarded to the viewport element. (type `ScrollAreaViewportProps`; optional)
 - `verticalScrollbarProps`: Properties forwarded to the vertical scrollbar element. (type `ScrollAreaScrollbarProps`; optional)
 - `horizontalScrollbarProps`: Properties forwarded to the horizontal scrollbar element. (type `ScrollAreaScrollbarProps`; optional)

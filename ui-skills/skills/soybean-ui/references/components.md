@@ -109,6 +109,7 @@ Component index for the SoybeanUI consumer skill. Each file is generated from th
 | **table**        | A data table component for displaying row and column data. Supports grouped headers, sorting, filtering, selection, expansion, tree rows, virtualization, empty states, and more, with default and simple visual variants plus a rounded toggle. | [components/table.md](../components/table.md)               |
 | **tag**          | A small, interactive component used to categorize or label content.                                                                                                                                                                              | [components/tag.md](../components/tag.md)                   |
 | **virtualizer**  | A virtual scrolling component that efficiently renders large lists by only rendering items currently in the viewport.                                                                                                                            | [components/virtualizer.md](../components/virtualizer.md)   |
+| **watermark**    | Watermark overlays a repeating text or image pattern on top of page content to indicate ownership, confidentiality, or branding.                                                                                                                 | [components/watermark.md](../components/watermark.md)       |
 
 ## Feedback
 

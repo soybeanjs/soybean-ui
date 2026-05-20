@@ -1328,6 +1328,20 @@
               "009d4": "为各种软件包添加 minimumReleaseAgeExclude 条目"
             }
           }
+        },
+        "24": {
+          "0": {
+            "28883": "导入语句格式",
+            "00e0c": "更新组件",
+            "45f12": "使用`@soybeanjs/oxc-config`。",
+            "53f29": "导入语句格式",
+            "5ad2a": "更新 @soybeanjs/oxc-config",
+            "5e041": "更新编码标准并删除导入顺序说明",
+            "79ec5": "更新组件",
+            "a79a9": "实现水印组件",
+            "ae20e": "移除清理命令，使用内置的 pnpm clean 代替",
+            "dbc70": "移除 minimumReleaseAgeExclude 条目"
+          }
         }
       }
     }

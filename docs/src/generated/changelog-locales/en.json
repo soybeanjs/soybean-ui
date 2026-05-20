@@ -1328,6 +1328,20 @@
               "009d4": "add minimumReleaseAgeExclude entries for various packages"
             }
           }
+        },
+        "24": {
+          "0": {
+            "28883": "format import statements",
+            "00e0c": "update deps",
+            "45f12": "use `@soybeanjs/oxc-config`",
+            "53f29": "format import statements",
+            "5ad2a": "update @soybeanjs/oxc-config",
+            "5e041": "update coding standards and remove import-order instructions",
+            "79ec5": "update deps",
+            "a79a9": "Implement watermark component",
+            "ae20e": "remove cleanup command, use builtin pnpm clean instead",
+            "dbc70": "remove minimumReleaseAgeExclude entries"
+          }
         }
       }
     }

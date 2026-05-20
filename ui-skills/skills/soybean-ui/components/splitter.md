@@ -31,6 +31,7 @@ Properties for the SplitterGroup component.
 
 - `class`: Additional class names applied to the root element. (type `string | false | Record<string, any> | ClassValue[] | null`; optional)
 - `ui`: Per-slot class overrides for the component. (type `Partial<SplitterUi>`; optional)
+- `size`: Visual size of the component. (type `ThemeSize`; optional)
 - `direction`: The orientation of the splitter group. Either `horizontal` or `vertical`. Defaults to `horizontal`. (type `DataOrientation`; optional)
 - `dir`: The reading direction of the splitter group. (type `Direction`; optional)
 - `defaultLayout`: The initial layout percentages for the panels. (type `number[]`; optional)

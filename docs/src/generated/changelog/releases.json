@@ -1,7 +1,133 @@
 {
-  "generatedAt": "2026-05-19T15:55:10.230Z",
+  "generatedAt": "2026-05-20T06:55:36.867Z",
   "schemaVersion": 1,
   "releases": [
+    {
+      "version": "v0.24.0",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.23.1...v0.24.0",
+      "date": "2026-05-20",
+      "entryCount": 10,
+      "componentCount": 1,
+      "components": ["watermark"],
+      "typeCounts": {
+        "feature": 1,
+        "optimization": 1,
+        "chore": 6,
+        "style": 2
+      },
+      "entries": [
+        {
+          "type": "feature",
+          "scope": "watermark",
+          "summary": "Implement watermark component",
+          "summaryKey": "changelog.generated.v0.24.0.a79a9",
+          "commitHash": "a79a9",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/a79a9e5d9",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope",
+          "components": ["watermark"]
+        },
+        {
+          "type": "optimization",
+          "scope": "docs",
+          "summary": "update coding standards and remove import-order instructions",
+          "summaryKey": "changelog.generated.v0.24.0.5e041",
+          "commitHash": "5e041",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/5e0417fe2",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "chore",
+          "scope": "oxc",
+          "summary": "use `@soybeanjs/oxc-config`",
+          "summaryKey": "changelog.generated.v0.24.0.45f12",
+          "commitHash": "45f12",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/45f128415",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "chore",
+          "scope": "pnpm",
+          "summary": "remove minimumReleaseAgeExclude entries",
+          "summaryKey": "changelog.generated.v0.24.0.dbc70",
+          "commitHash": "dbc70",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/dbc70de35",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "chore",
+          "scope": "scripts",
+          "summary": "remove cleanup command, use builtin pnpm clean instead",
+          "summaryKey": "changelog.generated.v0.24.0.ae20e",
+          "commitHash": "ae20e",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/ae20e750d",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "style",
+          "scope": "projects",
+          "summary": "format import statements",
+          "summaryKey": "changelog.generated.v0.24.0.28883",
+          "commitHash": "28883",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/28883293f",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "style",
+          "scope": "projects",
+          "summary": "format import statements",
+          "summaryKey": "changelog.generated.v0.24.0.53f29",
+          "commitHash": "53f29",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/53f29ffaf",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "chore",
+          "scope": "deps",
+          "summary": "update deps",
+          "summaryKey": "changelog.generated.v0.24.0.79ec5",
+          "commitHash": "79ec5",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/79ec50032",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "chore",
+          "scope": "deps",
+          "summary": "update @soybeanjs/oxc-config",
+          "summaryKey": "changelog.generated.v0.24.0.5ad2a",
+          "commitHash": "5ad2a",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/5ad2a8bfa",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "chore",
+          "scope": "deps",
+          "summary": "update deps",
+          "summaryKey": "changelog.generated.v0.24.0.00e0c",
+          "commitHash": "00e0c",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/00e0cb122",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope",
+          "components": []
+        }
+      ]
+    },
     {
       "version": "v0.23.1",
       "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.23.0...v0.23.1",

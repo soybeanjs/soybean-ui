@@ -1,6 +1,24 @@
 {
   "component": "watermark",
-  "generatedAt": "2026-05-19T15:55:10.230Z",
+  "generatedAt": "2026-05-20T06:55:36.867Z",
   "schemaVersion": 1,
-  "versions": []
+  "versions": [
+    {
+      "version": "v0.24.0",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.23.1...v0.24.0",
+      "date": "2026-05-20",
+      "entries": [
+        {
+          "type": "feature",
+          "scope": "watermark",
+          "summary": "Implement watermark component",
+          "summaryKey": "changelog.generated.v0.24.0.a79a9",
+          "commitHash": "a79a9",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/a79a9e5d9",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    }
+  ]
 }

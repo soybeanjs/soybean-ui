@@ -1,5 +1,39 @@
 # Changelog
 
+## [v0.24.0](https://github.com/soybeanjs/soybean-ui/compare/v0.23.1...v0.24.0) (2026-05-20)
+
+### &nbsp;&nbsp;&nbsp;🚀 Features
+
+- **watermark**: Implement watermark component &nbsp;-&nbsp; by @soybeanjs [<samp>(a79a9)</samp>](https://github.com/soybeanjs/soybean-ui/commit/a79a9e5d9)
+
+### &nbsp;&nbsp;&nbsp;🛠 Optimizations
+
+- **docs**: update coding standards and remove import-order instructions &nbsp;-&nbsp; by @soybeanjs [<samp>(5e041)</samp>](https://github.com/soybeanjs/soybean-ui/commit/5e0417fe2)
+
+### &nbsp;&nbsp;&nbsp;🏡 Chore
+
+- **deps**:
+  - update deps &nbsp;-&nbsp; by @soybeanjs [<samp>(79ec5)</samp>](https://github.com/soybeanjs/soybean-ui/commit/79ec50032)
+  - update @soybeanjs/oxc-config &nbsp;-&nbsp; by @soybeanjs [<samp>(5ad2a)</samp>](https://github.com/soybeanjs/soybean-ui/commit/5ad2a8bfa)
+  - update deps &nbsp;-&nbsp; by **soybeanfe** [<samp>(00e0c)</samp>](https://github.com/soybeanjs/soybean-ui/commit/00e0cb122)
+- **oxc**:
+  - use `@soybeanjs/oxc-config` &nbsp;-&nbsp; by @soybeanjs [<samp>(45f12)</samp>](https://github.com/soybeanjs/soybean-ui/commit/45f128415)
+- **pnpm**:
+  - remove minimumReleaseAgeExclude entries &nbsp;-&nbsp; by @soybeanjs [<samp>(dbc70)</samp>](https://github.com/soybeanjs/soybean-ui/commit/dbc70de35)
+- **scripts**:
+  - remove cleanup command, use builtin pnpm clean instead &nbsp;-&nbsp; by **soybeanfe** [<samp>(ae20e)</samp>](https://github.com/soybeanjs/soybean-ui/commit/ae20e750d)
+
+### &nbsp;&nbsp;&nbsp;🎨 Styles
+
+- **projects**:
+  - format import statements &nbsp;-&nbsp; by @soybeanjs [<samp>(28883)</samp>](https://github.com/soybeanjs/soybean-ui/commit/28883293f)
+  - format import statements &nbsp;-&nbsp; by @soybeanjs [<samp>(53f29)</samp>](https://github.com/soybeanjs/soybean-ui/commit/53f29ffaf)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;
+[soybeanfe](mailto:honghuangdc@gmail.com),&nbsp;
+
 ## [v0.23.1](https://github.com/soybeanjs/soybean-ui/compare/v0.23.0...v0.23.1) (2026-05-19)
 
 ### &nbsp;&nbsp;&nbsp;🚀 Features
