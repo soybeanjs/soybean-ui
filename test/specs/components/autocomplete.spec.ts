@@ -1,9 +1,9 @@
-import { DOMWrapper, flushPromises, mount } from '@vue/test-utils';
-import { nextTick } from 'vue';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
-import SAutocomplete from '../../../src/components/autocomplete/autocomplete.vue';
+import { nextTick } from 'vue';
+import { DOMWrapper, flushPromises, mount } from '@vue/test-utils';
 import { MockResizeObserver, setupMock } from '../../shared';
 import { getA11yViolations } from '../../shared/a11y';
+import SAutocomplete from '../../../src/components/autocomplete/autocomplete.vue';
 
 const items = [
   { value: 'apple', label: 'Apple' },

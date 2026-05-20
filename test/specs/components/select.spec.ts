@@ -1,9 +1,9 @@
-import { DOMWrapper, flushPromises, mount } from '@vue/test-utils';
-import { nextTick } from 'vue';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
-import SSelect from '../../../src/components/select/select.vue';
+import { nextTick } from 'vue';
+import { DOMWrapper, flushPromises, mount } from '@vue/test-utils';
 import { MockResizeObserver, setupMock } from '../../shared';
 import { getA11yViolations } from '../../shared/a11y';
+import SSelect from '../../../src/components/select/select.vue';
 
 const items = [
   { label: 'Apple', value: 'apple' },

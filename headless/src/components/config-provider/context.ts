@@ -1,7 +1,7 @@
 import { computed, toValue } from 'vue';
 import type { MaybeRefOrGetter } from 'vue';
-import type { Direction } from '../../types';
 import { useContext } from '../../composables/use-context';
+import type { Direction } from '../../types';
 import type { ConfigProviderContext } from './types';
 
 export const [provideConfigProviderContext, useConfigProvider] = useContext<ConfigProviderContext>('ConfigProvider');

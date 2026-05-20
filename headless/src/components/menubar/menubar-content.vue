@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import { shallowRef } from 'vue';
-import { useForwardListeners } from '../../composables';
 import { wrapArray } from '../../shared';
+import { useForwardListeners } from '../../composables';
 import type { FocusOutsideEvent } from '../../types';
 import { MenuContent } from '../menu';
-import { useMenubarCollectionContext, useMenubarMenuContext, useMenubarRootContext } from './context';
 import { isTriggerLink } from './shared';
+import { useMenubarCollectionContext, useMenubarMenuContext, useMenubarRootContext } from './context';
 import type { MenubarContentProps, MenubarContentEmits } from './types';
 
 defineOptions({

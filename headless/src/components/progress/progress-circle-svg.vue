@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { computed, useAttrs } from 'vue';
-import { useProgressRootContext, useProgressUi } from './context';
 import {
   DEFAULT_PROGRESS_CIRCLE_STROKE_WIDTH,
   getProgressCircleDasharray,
@@ -10,6 +9,7 @@ import {
   PROGRESS_CIRCLE_CENTER,
   PROGRESS_CIRCLE_VIEWBOX_SIZE
 } from './shared';
+import { useProgressRootContext, useProgressUi } from './context';
 import type { ProgressCircleSvgProps } from './types';
 
 defineOptions({

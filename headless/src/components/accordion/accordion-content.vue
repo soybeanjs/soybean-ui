@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import type { CSSProperties } from 'vue';
-import { CollapsibleContent } from '../collapsible';
 import { collapsibleContentCssVars } from '../collapsible/shared';
-import { useAccordionItemContext, useAccordionRootContext } from './context';
+import { CollapsibleContent } from '../collapsible';
 import { accordionContentCssVars } from './shared';
+import { useAccordionItemContext, useAccordionRootContext } from './context';
 import type { AccordionContentProps } from './types';
 
 defineOptions({

@@ -1,8 +1,8 @@
 <script setup lang="ts" generic="M extends boolean = false, T extends DefinedValue = string">
 import { computed } from 'vue';
+import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
 import { ToggleGroupRoot, provideToggleGroupUi } from '@soybeanjs/headless/toggle-group';
 import type { DefinedValue } from '@soybeanjs/headless/types';
-import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
 import { toggleGroupVariants } from '@/styles/toggle-group';
 import type { ToggleGroupProps, ToggleGroupEmits } from './types';
 

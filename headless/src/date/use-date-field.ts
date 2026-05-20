@@ -2,11 +2,11 @@ import { computed } from 'vue';
 import type { Ref } from 'vue';
 import { DateFormatter } from '@internationalized/date';
 import type { CalendarDateTime, Time, TimeFields } from '@internationalized/date';
-import { getDaysInMonth } from './comparators';
-import { isAcceptableSegmentKey, isNumberString, isSegmentNavigationKey } from './segment';
-import type { Formatter } from './formatter';
 import { useLocaleMessages } from '../locale';
 import type { LocaleDateMessages } from '../locale/types';
+import { getDaysInMonth } from './comparators';
+import type { Formatter } from './formatter';
+import { isAcceptableSegmentKey, isNumberString, isSegmentNavigationKey } from './segment';
 import type {
   DateValue,
   TimeValue,

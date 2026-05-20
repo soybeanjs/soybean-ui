@@ -1,6 +1,5 @@
 import { ref, watchEffect } from 'vue';
 import { isClient } from '../../shared';
-import { useDrawerRootContext } from './context';
 import {
   BOTTOM_SHEET_SCALE_SELECTOR,
   BORDER_RADIUS,
@@ -10,6 +9,7 @@ import {
   chain,
   isVertical
 } from './shared';
+import { useDrawerRootContext } from './context';
 
 const noop = () => () => {};
 

@@ -1,7 +1,7 @@
-import type { ClassValue } from '@soybeanjs/headless/types';
 import type { ColorSwatchCompactProps, ColorSwatchCompactSlots, ColorSwatchUi } from '@soybeanjs/headless/color-swatch';
-import type { ThemeSize } from '@/theme';
+import type { ClassValue } from '@soybeanjs/headless/types';
 import type { ColorSwatchShape } from '@/styles/color-swatch';
+import type { ThemeSize } from '@/theme';
 
 /**
  * Properties for the ColorSwatch component.

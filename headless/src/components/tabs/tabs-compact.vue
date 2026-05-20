@@ -1,12 +1,12 @@
 <script setup lang="ts" generic="T extends TabsOptionData = TabsOptionData">
 import { useOmitProps } from '../../composables';
 import type { AcceptableValue } from '../../types';
+import { useTabsUi } from './context';
 import TabsContent from './tabs-content.vue';
 import TabsIndicator from './tabs-indicator.vue';
 import TabsList from './tabs-list.vue';
 import TabsRoot from './tabs-root.vue';
 import TabsTrigger from './tabs-trigger.vue';
-import { useTabsUi } from './context';
 import type { TabsCompactProps, TabsCompactEmits, TabsCompactSlots, TabsOptionData } from './types';
 
 defineOptions({

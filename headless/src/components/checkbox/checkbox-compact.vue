@@ -3,10 +3,10 @@ import { computed, useId } from 'vue';
 import { useOmitProps } from '../../composables';
 import Icon from '../_icon/icon.vue';
 import { useCheckboxUi } from './context';
-import CheckboxRoot from './checkbox-root.vue';
 import CheckboxControl from './checkbox-control.vue';
 import CheckboxIndicator from './checkbox-indicator.vue';
 import CheckboxLabel from './checkbox-label.vue';
+import CheckboxRoot from './checkbox-root.vue';
 import type { CheckboxCompactProps, CheckboxCompactEmits } from './types';
 
 defineOptions({

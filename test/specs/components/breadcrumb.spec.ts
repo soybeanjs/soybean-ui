@@ -1,8 +1,8 @@
-import { mount } from '@vue/test-utils';
 import { describe, expect, it } from 'vitest';
+import { mount } from '@vue/test-utils';
+import { getA11yViolations } from '../../shared/a11y';
 import SBreadcrumb from '../../../src/components/breadcrumb/breadcrumb.vue';
 import SConfigProvider from '../../../src/components/config-provider/config-provider.vue';
-import { getA11yViolations } from '../../shared/a11y';
 
 const items = [
   { href: '/', label: 'Home', value: 'home' },

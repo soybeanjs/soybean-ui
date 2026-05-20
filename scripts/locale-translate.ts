@@ -3,6 +3,7 @@ import path from 'node:path';
 import process from 'node:process';
 import { pathToFileURL } from 'node:url';
 import { cloneJsonObject, flattenJsonMessages, isJsonObject, listFileBasenames, runCliModule } from './_shared';
+import type { JsonObject, JsonValue } from './_shared';
 import {
   getPendingEntries,
   parseTranslateCliOptions,
@@ -10,7 +11,6 @@ import {
   resolveTargetLocales,
   translateEntries
 } from './_translate';
-import type { JsonObject, JsonValue } from './_shared';
 import type { TranslateCliOptions, TranslationEntry } from './_translate';
 
 interface LocaleRegistryDocument {

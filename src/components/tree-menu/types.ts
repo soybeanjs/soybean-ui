@@ -1,4 +1,3 @@
-import type { BaseProps, ClassValue } from '@soybeanjs/headless/types';
 import type {
   TreeMenuBaseOptionData,
   TreeMenuCompactEmits,
@@ -6,6 +5,7 @@ import type {
   TreeMenuCompactSlots,
   TreeMenuUiSlot
 } from '@soybeanjs/headless/tree-menu';
+import type { BaseProps, ClassValue } from '@soybeanjs/headless/types';
 import type { ThemeSize } from '@/theme';
 
 /**

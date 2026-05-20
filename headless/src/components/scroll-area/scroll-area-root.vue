@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { shallowRef, useAttrs } from 'vue';
-import { useExposedElement, useOmitProps } from '../../composables';
 import { transformPropsToContext } from '../../shared';
 import { useDirection } from '../config-provider/context';
+import { useExposedElement, useOmitProps } from '../../composables';
 import { Primitive } from '../primitive';
 import { provideScrollAreaRootContext, useScrollAreaUi } from './context';
 import type { ScrollAreaOrientation, ScrollAreaRootProps } from './types';

@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { computed, useAttrs } from 'vue';
+import { useLocaleMessages } from '../../locale';
 import Button from '../button/button.vue';
 import { useEditableRootContext, useEditableUi } from './context';
-import { useLocaleMessages } from '../../locale';
 import type { EditableSubmitTriggerProps } from './types';
 
 defineOptions({

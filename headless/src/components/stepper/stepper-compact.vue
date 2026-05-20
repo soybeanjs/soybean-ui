@@ -3,13 +3,13 @@ import { computed } from 'vue';
 import { useForwardListeners, useOmitProps } from '../../composables';
 import Icon from '../_icon/icon.vue';
 import { useStepperUi } from './context';
-import StepperRoot from './stepper-root.vue';
-import StepperItem from './stepper-item.vue';
-import StepperTrigger from './stepper-trigger.vue';
-import StepperIndicator from './stepper-indicator.vue';
-import StepperTitle from './stepper-title.vue';
 import StepperDescription from './stepper-description.vue';
+import StepperIndicator from './stepper-indicator.vue';
+import StepperItem from './stepper-item.vue';
+import StepperRoot from './stepper-root.vue';
 import StepperSeparator from './stepper-separator.vue';
+import StepperTitle from './stepper-title.vue';
+import StepperTrigger from './stepper-trigger.vue';
 import type { StepperCompactProps, StepperCompactEmits, StepperCompactSlots } from './types';
 
 defineOptions({

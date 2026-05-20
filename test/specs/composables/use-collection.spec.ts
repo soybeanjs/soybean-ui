@@ -1,6 +1,6 @@
 import { describe, expect, it, vi } from 'vitest';
-import { useCollection } from '../../../headless/src/composables/use-collection';
 import { createMockElement } from '../../shared';
+import { useCollection } from '../../../headless/src/composables/use-collection';
 
 describe('useCollection', () => {
   describe('basic functionality', () => {

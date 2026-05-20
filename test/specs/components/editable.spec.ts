@@ -1,8 +1,8 @@
+import { describe, expect, it } from 'vitest';
 import { nextTick } from 'vue';
 import { mount } from '@vue/test-utils';
-import { describe, expect, it } from 'vitest';
-import SEditable from '../../../src/components/editable/editable.vue';
 import { getA11yViolations } from '../../shared/a11y';
+import SEditable from '../../../src/components/editable/editable.vue';
 
 describe('SEditable', () => {
   describe('rendering', () => {

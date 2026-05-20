@@ -1,9 +1,9 @@
-import { mount } from '@vue/test-utils';
-import { nextTick } from 'vue';
 import { describe, expect, it, vi } from 'vitest';
+import { nextTick } from 'vue';
+import { mount } from '@vue/test-utils';
 import { Backtop } from '@soybeanjs/headless/backtop';
-import SBacktop from '../../../src/components/backtop/backtop.vue';
 import { getA11yViolations } from '../../shared/a11y';
+import SBacktop from '../../../src/components/backtop/backtop.vue';
 
 interface MockScrollTarget {
   target: HTMLElement;

@@ -1,6 +1,6 @@
-import { mount } from '@vue/test-utils';
-import { nextTick } from 'vue';
 import { describe, expect, it } from 'vitest';
+import { nextTick } from 'vue';
+import { mount } from '@vue/test-utils';
 import SConfigProvider from '../../../src/components/config-provider/config-provider.vue';
 import { SDropdownMenuWrapper } from '../../../src/components/dropdown-menu';
 import { SMenuOptions } from '../../../src/components/menu';

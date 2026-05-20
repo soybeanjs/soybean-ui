@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { EditableCompact, provideEditableUi } from '@soybeanjs/headless/editable';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
+import { EditableCompact, provideEditableUi } from '@soybeanjs/headless/editable';
 import { keysOf } from '@soybeanjs/utils';
 import { editableVariants } from '@/styles/editable';
 import type { EditableProps, EditableEmits, EditableSlots } from './types';

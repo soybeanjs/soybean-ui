@@ -1,5 +1,5 @@
-import type { ButtonProps } from '../button/types';
 import type { BaseProps, Placement, UiClass } from '../../types';
+import type { ButtonProps } from '../button/types';
 import type {
   PopoverCloseProps,
   PopoverPopupProps,

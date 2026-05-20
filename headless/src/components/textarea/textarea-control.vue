@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { nextTick, ref, watch } from 'vue';
-import { useTextareaRootContext, useTextareaUi } from './context';
 import { adjustHeight } from './shared';
+import { useTextareaRootContext, useTextareaUi } from './context';
 import type { TextareaControlProps } from './types';
 
 defineOptions({

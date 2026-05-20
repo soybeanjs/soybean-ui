@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { computed, useAttrs } from 'vue';
 import { useOmitProps } from '../../composables';
-import Button from '../button/button.vue';
 import Icon from '../_icon/icon.vue';
+import Button from '../button/button.vue';
 import { useCarouselRootContext, useCarouselUi } from './context';
 import type { CarouselNextProps } from './types';
 

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, useAttrs } from 'vue';
-import { useControllableState, useForwardElement } from '../../composables';
 import { isFormControl, transformPropsToContext } from '../../shared';
+import { useControllableState, useForwardElement } from '../../composables';
 import VisuallyHiddenInput from '../visually-hidden/visually-hidden-input.vue';
 import { provideInputNumberRootContext, useInputNumberUi } from './context';
 import type { InputNumberRootProps, InputNumberRootEmits } from './types';

@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import Button from '../button/button.vue';
-import Icon from '../_icon/icon.vue';
-import { useLayoutRootContext, useLayoutUi } from './context';
 import { useLocaleMessages } from '../../locale';
+import Icon from '../_icon/icon.vue';
+import Button from '../button/button.vue';
+import { useLayoutRootContext, useLayoutUi } from './context';
 import type { LayoutTriggerProps } from './types';
 
 defineOptions({

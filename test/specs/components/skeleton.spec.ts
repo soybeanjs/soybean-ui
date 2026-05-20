@@ -1,7 +1,7 @@
-import { mount } from '@vue/test-utils';
 import { describe, expect, it } from 'vitest';
-import SSkeleton from '../../../src/components/skeleton/skeleton.vue';
+import { mount } from '@vue/test-utils';
 import { getA11yViolations } from '../../shared/a11y';
+import SSkeleton from '../../../src/components/skeleton/skeleton.vue';
 
 describe('SSkeleton', () => {
   describe('rendering', () => {

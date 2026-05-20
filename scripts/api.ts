@@ -1,9 +1,9 @@
 import path from 'node:path';
 import process from 'node:process';
-import ts from 'typescript';
+import { kebabCase } from '@soybeanjs/utils';
 import { Application, ReflectionKind } from 'typedoc';
 import type { Comment, DeclarationReflection, ProjectReflection, Reflection, SignatureReflection } from 'typedoc';
-import { kebabCase } from '@soybeanjs/utils';
+import ts from 'typescript';
 import { components as headlessComponents } from '../headless/src/constants/components';
 import { runCliModule, writeGeneratedJsonDirectory } from './_shared';
 

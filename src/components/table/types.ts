@@ -14,8 +14,8 @@ import {
   TableUiSlot
 } from '@soybeanjs/headless/table';
 import type { ClassValue, UiClass } from '@soybeanjs/headless/types';
-import type { ThemeSize } from '@/theme';
 import type { TableVariant } from '@/styles/table';
+import type { ThemeSize } from '@/theme';
 
 /**
  * Additional UI slots for the table component.

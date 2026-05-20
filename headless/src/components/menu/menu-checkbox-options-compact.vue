@@ -1,9 +1,9 @@
 <script setup lang="ts" generic="T extends DefinedValue = DefinedValue">
 import { useOmitProps } from '../../composables';
 import type { DefinedValue } from '../../types';
-import MenuSeparator from '../separator/separator-root.vue';
 import Icon from '../_icon/icon.vue';
 import Kbd from '../kbd/kbd.vue';
+import MenuSeparator from '../separator/separator-root.vue';
 import { useMenuUi } from './context';
 import { useCommonSlotNames } from './hooks';
 import MenuCheckboxGroup from './menu-checkbox-group.vue';

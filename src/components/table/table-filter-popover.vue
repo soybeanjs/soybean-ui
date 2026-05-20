@@ -1,8 +1,8 @@
 <script setup lang="ts" generic="T extends TableBaseData = TableBaseData">
 import { computed } from 'vue';
 import { miniSizeMap } from '@/theme';
-import SButton from '../button/button.vue';
 import SButtonIcon from '../button/button-icon.vue';
+import SButton from '../button/button.vue';
 import SCheckbox from '../checkbox/checkbox.vue';
 import SInput from '../input/input.vue';
 import SPopover from '../popover/popover.vue';

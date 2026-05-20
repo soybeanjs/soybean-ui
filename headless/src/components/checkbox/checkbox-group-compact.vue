@@ -1,7 +1,7 @@
 <script setup lang="ts" generic="T extends CheckboxGroupOptionData = CheckboxGroupOptionData">
 import { useOmitProps } from '../../composables';
-import CheckboxGroupRoot from './checkbox-group-root.vue';
 import CheckboxCompact from './checkbox-compact.vue';
+import CheckboxGroupRoot from './checkbox-group-root.vue';
 import type { CheckboxGroupCompactProps, CheckboxGroupCompactEmits, CheckboxGroupOptionData } from './types';
 
 defineOptions({

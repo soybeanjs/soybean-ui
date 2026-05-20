@@ -1,6 +1,6 @@
 import { computed, shallowRef } from 'vue';
-import { useContext, useUiContext } from '../../composables';
 import { getCheckedState, isIndeterminate } from '../../shared';
+import { useContext, useUiContext } from '../../composables';
 import type {
   CheckboxGroupRootContextParams,
   CheckboxRootContextParams,

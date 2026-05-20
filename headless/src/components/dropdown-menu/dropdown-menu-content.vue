@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import { computed, onWatcherCleanup, watchPostEffect } from 'vue';
-import { useForwardListeners, useGraceArea } from '../../composables';
-import { MenuContent } from '../menu';
 import { useMenuContext } from '../menu/context';
+import { useForwardListeners, useGraceArea } from '../../composables';
 import type { FocusOutsideEvent, PointerDownOutsideEvent } from '../../types';
-import { useDropdownMenuHoverContext, useDropdownMenuRootContext } from './context';
+import { MenuContent } from '../menu';
 import { DROPDOWN_MENU_HOVER_OPEN } from './shared';
+import { useDropdownMenuHoverContext, useDropdownMenuRootContext } from './context';
 import type { DropdownMenuContentProps, DropdownMenuContentEmits } from './types';
 
 defineOptions({

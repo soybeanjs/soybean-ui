@@ -1,4 +1,3 @@
-import type { AcceptableValue, ClassValue } from '@soybeanjs/headless/types';
 import type {
   TabsCompactEmits,
   TabsCompactProps,
@@ -6,8 +5,9 @@ import type {
   TabsOptionData,
   TabsUi
 } from '@soybeanjs/headless/tabs';
-import type { ThemeSize } from '@/theme';
+import type { AcceptableValue, ClassValue } from '@soybeanjs/headless/types';
 import type { TabsFill } from '@/styles/tabs';
+import type { ThemeSize } from '@/theme';
 
 /**
  * Properties for the Tabs component.

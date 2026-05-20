@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import { computed, useId, useSlots } from 'vue';
 import { useOmitProps } from '../../composables';
-import CheckboxRoot from './checkbox-root.vue';
+import Icon from '../_icon/icon.vue';
+import { useCheckboxCardUi } from './context';
 import CheckboxControl from './checkbox-control.vue';
 import CheckboxIndicator from './checkbox-indicator.vue';
 import CheckboxLabel from './checkbox-label.vue';
-import Icon from '../_icon/icon.vue';
-import { useCheckboxCardUi } from './context';
+import CheckboxRoot from './checkbox-root.vue';
 import type { CheckboxCardCompactProps, CheckboxCardCompactEmits } from './types';
 
 defineOptions({

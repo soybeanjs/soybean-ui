@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { computed, shallowRef, watch } from 'vue';
-import { useControllableState } from '../../composables';
 import {
   areColorsEqual,
   formatColor,
@@ -13,8 +12,9 @@ import {
   snapValueToStep,
   transformPropsToContext
 } from '../../shared';
-import type { ColorValue } from '../../types';
 import { useDirection } from '../config-provider/context';
+import { useControllableState } from '../../composables';
+import type { ColorValue } from '../../types';
 import { SliderRoot } from '../slider';
 import { VisuallyHiddenInput } from '../visually-hidden';
 import { provideColorSliderRootContext, useColorSliderUi } from './context';

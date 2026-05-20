@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { computed, nextTick, shallowRef } from 'vue';
-import { useForwardElement } from '../../composables';
 import {
   getActiveElement,
   getBinaryCheckedState,
@@ -8,8 +7,10 @@ import {
   isValueEqualOrExist,
   transformPropsToContext
 } from '../../shared';
+import { useForwardElement } from '../../composables';
 import type { DefinedValue } from '../../types';
 import { Primitive } from '../primitive';
+import { SELECTION_KEYS, SELECT_EVENT } from './shared';
 import {
   provideSelectItemContext,
   useCollectionItem,
@@ -17,7 +18,6 @@ import {
   useSelectRootContext,
   useSelectUi
 } from './context';
-import { SELECTION_KEYS, SELECT_EVENT } from './shared';
 import type { SelectItemProps, SelectItemEmits, SelectItemEvent } from './types';
 
 defineOptions({

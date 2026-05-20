@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, useId } from 'vue';
-import { useOmitProps } from '../../composables';
 import { handleAndDispatchCustomEvent } from '../../shared';
+import { useOmitProps } from '../../composables';
 import type { SelectEvent } from '../../types';
 import { Primitive } from '../primitive';
 import { provideListboxItemContext, useCollectionItem, useListboxRootContext, useListboxUi } from './context';

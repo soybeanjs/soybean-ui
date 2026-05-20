@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { transformPropsToContext } from '../../shared';
-import { useTableCompactCell } from './hooks';
 import { useTableUi } from './context';
+import { useTableCompactCell } from './hooks';
 import TableCell from './table-cell.vue';
 import type { TableCompactCellProps } from './types';
 

@@ -1,5 +1,5 @@
-import type { EventHookOn } from '@vueuse/core';
 import type { ComputedRef, ShallowRef } from 'vue';
+import type { EventHookOn } from '@vueuse/core';
 import type {
   BaseProps,
   DismissableLayerEmits,
@@ -11,6 +11,7 @@ import type {
   TrapFocusProps,
   UiClass
 } from '../../types';
+import type { IconValue } from '../_icon/types';
 import type {
   ListboxFilterEmits,
   ListboxFilterProps,
@@ -23,7 +24,6 @@ import type {
   ListboxItemIndicatorProps as ComboboxItemIndicatorProps,
   ListboxVirtualizerProps
 } from '../listbox/types';
-import type { PrimitiveWithBaseProps } from '../primitive/types';
 import type {
   PopperAnchorProps as ComboboxAnchorProps,
   PopperArrowProps as ComboboxArrowProps,
@@ -32,8 +32,8 @@ import type {
   PopperPositionerProps,
   PopperUiSlot
 } from '../popper/types';
-import type { IconValue } from '../_icon/types';
 import type { PortalProps } from '../portal/types';
+import type { PrimitiveWithBaseProps } from '../primitive/types';
 
 /**
  * Properties for the ComboboxRoot component.

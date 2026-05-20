@@ -1,5 +1,5 @@
-import { useContext, useUiContext } from '../../composables';
 import { useDirection } from '../config-provider/context';
+import { useContext, useUiContext } from '../../composables';
 import type { ToggleGroupRootContextParams, ToggleGroupUiSlot } from './types';
 
 export const [provideToggleGroupRootContext, useToggleGroupRootContext] = useContext(

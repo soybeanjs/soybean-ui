@@ -10,8 +10,8 @@ import type {
   TrapFocusProps,
   UiClass
 } from '../../types';
-import type { ButtonProps } from '../button/types';
 import type { IconValue } from '../_icon/types';
+import type { ButtonProps } from '../button/types';
 import type { PortalProps as DialogPortalProps } from '../portal/types';
 import type { PrimitiveWithBaseProps } from '../primitive/types';
 

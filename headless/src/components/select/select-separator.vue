@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import type { SelectSeparatorProps } from './types';
 import { useSelectUi } from './context';
+import type { SelectSeparatorProps } from './types';
 
 defineOptions({
   name: 'SelectSeparator'

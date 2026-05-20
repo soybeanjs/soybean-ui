@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { h, watchEffect } from 'vue';
 import { useStorage } from '@vueuse/core';
+import { useOmitProps } from '@soybeanjs/headless/composables';
 import { ConfigProvider } from '@soybeanjs/headless/config-provider';
 import { Primitive } from '@soybeanjs/headless/primitive';
-import { useOmitProps } from '@soybeanjs/headless/composables';
 import { isClient, transformPropsToContext } from '@soybeanjs/headless/shared';
 import { createShadcnTheme } from '@soybeanjs/shadcn-theme';
 import { themeSizeMap } from '@/theme';

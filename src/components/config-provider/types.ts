@@ -1,6 +1,6 @@
 import type { ConfigProviderProps as _ConfigProviderProps } from '@soybeanjs/headless/config-provider';
-import type { PropsToContext } from '@soybeanjs/headless/types';
 import type { ProgressProviderProps } from '@soybeanjs/headless/progress';
+import type { PropsToContext } from '@soybeanjs/headless/types';
 import type { ThemeOptions } from '@soybeanjs/shadcn-theme';
 import type { ThemeSize } from '@/theme';
 import type { ToastProviderProps } from '../toast/types';

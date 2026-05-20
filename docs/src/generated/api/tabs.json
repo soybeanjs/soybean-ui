@@ -10,9 +10,7 @@
         "description": "Properties for the Tabs component.",
         "descriptionKey": "api.generated.src_components_tabs_types.tabsprops.props",
         "sourcePath": "src/components/tabs/types.ts",
-        "typeParameters": [
-          "TypeParameter T"
-        ],
+        "typeParameters": ["TypeParameter T"],
         "members": [
           {
             "name": "class",
@@ -458,9 +456,7 @@
         "description": "Events for the Tabs component.",
         "descriptionKey": "api.generated.src_components_tabs_types.tabsemits.emits",
         "sourcePath": "src/components/tabs/types.ts",
-        "typeParameters": [
-          "TypeParameter T"
-        ],
+        "typeParameters": ["TypeParameter T"],
         "members": [],
         "callables": [
           {
@@ -484,9 +480,7 @@
         "description": "Slots for the Tabs component.",
         "descriptionKey": "api.generated.src_components_tabs_types.tabsslots.slots",
         "sourcePath": "src/components/tabs/types.ts",
-        "typeParameters": [
-          "TypeParameter T"
-        ],
+        "typeParameters": ["TypeParameter T"],
         "members": [],
         "callables": [
           {
@@ -560,9 +554,7 @@
         "description": "Properties for the TabsCompact component.",
         "descriptionKey": "api.generated.headless_src_components_tabs_types.tabscompactprops.props",
         "sourcePath": "headless/src/components/tabs/types.ts",
-        "typeParameters": [
-          "TypeParameter T"
-        ],
+        "typeParameters": ["TypeParameter T"],
         "members": [
           {
             "name": "items",
@@ -908,9 +900,7 @@
         "description": "Events for the TabsCompact component.",
         "descriptionKey": "api.generated.headless_src_components_tabs_types.tabscompactemits.emits",
         "sourcePath": "headless/src/components/tabs/types.ts",
-        "typeParameters": [
-          "TypeParameter T"
-        ],
+        "typeParameters": ["TypeParameter T"],
         "members": [],
         "callables": [
           {
@@ -934,9 +924,7 @@
         "description": "Slots for the TabsCompact component.",
         "descriptionKey": "api.generated.headless_src_components_tabs_types.tabscompactslots.slots",
         "sourcePath": "headless/src/components/tabs/types.ts",
-        "typeParameters": [
-          "TypeParameter T"
-        ],
+        "typeParameters": ["TypeParameter T"],
         "members": [],
         "callables": [
           {
@@ -1137,9 +1125,7 @@
         "description": "Properties for the TabsRoot component.",
         "descriptionKey": "api.generated.headless_src_components_tabs_types.tabsrootprops.props",
         "sourcePath": "headless/src/components/tabs/types.ts",
-        "typeParameters": [
-          "T extends AcceptableValue = AcceptableValue"
-        ],
+        "typeParameters": ["T extends AcceptableValue = AcceptableValue"],
         "members": [
           {
             "name": "modelValue",
@@ -1272,9 +1258,7 @@
         "description": "Events for the TabsRoot component.",
         "descriptionKey": "api.generated.headless_src_components_tabs_types.tabsrootemits.emits",
         "sourcePath": "headless/src/components/tabs/types.ts",
-        "typeParameters": [
-          "T = AcceptableValue"
-        ],
+        "typeParameters": ["T = AcceptableValue"],
         "members": [],
         "callables": [
           {

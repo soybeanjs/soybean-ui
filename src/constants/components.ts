@@ -10,37 +10,15 @@ export const components = {
   backtop: ['SBacktop'],
   badge: ['SBadge'],
   bottomSheet: ['SBottomSheet'],
-  breadcrumb: [
-    'SBreadcrumb',
-    'SBreadcrumbPage',
-    'SBreadcrumbEllipsis'
-  ],
-  button: [
-    'SButton',
-    'SButtonLoading',
-    'SButtonIcon',
-    'SButtonLink',
-    'SButtonGroup'
-  ],
+  breadcrumb: ['SBreadcrumb', 'SBreadcrumbPage', 'SBreadcrumbEllipsis'],
+  button: ['SButton', 'SButtonLoading', 'SButtonIcon', 'SButtonLink', 'SButtonGroup'],
   calendar: ['SCalendar'],
   calendarRange: ['SCalendarRange'],
-  card: [
-    'SCard',
-    'SCardCollapsibleTrigger'
-  ],
+  card: ['SCard', 'SCardCollapsibleTrigger'],
   carousel: ['SCarousel'],
-  checkbox: [
-    'SCheckboxGroup',
-    'SCheckbox',
-    'SCheckboxCardGroup',
-    'SCheckboxCard'
-  ],
+  checkbox: ['SCheckboxGroup', 'SCheckbox', 'SCheckboxCardGroup', 'SCheckboxCard'],
   clipboard: ['SClipboard'],
-  collapsible: [
-    'SCollapsible',
-    'SCollapsibleTrigger',
-    'SCollapsibleContent'
-  ],
+  collapsible: ['SCollapsible', 'SCollapsibleTrigger', 'SCollapsibleContent'],
   colorArea: ['SColorArea'],
   colorField: ['SColorField'],
   colorPicker: ['SColorPicker'],
@@ -50,78 +28,37 @@ export const components = {
   combobox: ['SCombobox'],
   command: ['SCommand'],
   configProvider: ['SConfigProvider'],
-  contextMenu: [
-    'SContextMenu',
-    'SContextMenuCheckbox',
-    'SContextMenuRadio',
-    'SContextMenuWrapper'
-  ],
+  contextMenu: ['SContextMenu', 'SContextMenuCheckbox', 'SContextMenuRadio', 'SContextMenuWrapper'],
   dateField: ['SDateField'],
   datePicker: ['SDatePicker'],
   dateRangeField: ['SDateRangeField'],
   dateRangePicker: ['SDateRangePicker'],
-  dialog: [
-    'SDialog',
-    'SDialogProvider'
-  ],
+  dialog: ['SDialog', 'SDialogProvider'],
   drawer: ['SDrawer'],
-  dropdownMenu: [
-    'SDropdownMenu',
-    'SDropdownMenuCheckbox',
-    'SDropdownMenuRadio',
-    'SDropdownMenuWrapper'
-  ],
+  dropdownMenu: ['SDropdownMenu', 'SDropdownMenuCheckbox', 'SDropdownMenuRadio', 'SDropdownMenuWrapper'],
   editable: ['SEditable'],
   empty: ['SEmpty'],
-  form: [
-    'SForm',
-    'SFormFieldBase'
-  ],
+  form: ['SForm', 'SFormFieldBase'],
   hoverCard: ['SHoverCard'],
   icon: ['SIcon'],
-  input: [
-    'SInput',
-    'SInputClear'
-  ],
+  input: ['SInput', 'SInputClear'],
   inputNumber: ['SInputNumber'],
   inputOtp: ['SInputOtp'],
   kbd: ['SKbd'],
   label: ['SLabel'],
-  layout: [
-    'SLayout',
-    'SLayoutClassic',
-    'SLayoutTrigger'
-  ],
+  layout: ['SLayout', 'SLayoutClassic', 'SLayoutTrigger'],
   link: ['SLink'],
-  list: [
-    'SList',
-    'SListItem'
-  ],
-  menu: [
-    'SMenuOptions',
-    'SMenuCheckboxOptions',
-    'SMenuRadioOptions'
-  ],
+  list: ['SList', 'SListItem'],
+  menu: ['SMenuOptions', 'SMenuCheckboxOptions', 'SMenuRadioOptions'],
   menubar: ['SMenubar'],
   navigationMenu: ['SNavigationMenu'],
   pageTabs: ['SPageTabs'],
   pagination: ['SPagination'],
   password: ['SPassword'],
-  popconfirm: [
-    'SPopconfirm',
-    'SPopconfirmConfirm',
-    'SPopconfirmCancel'
-  ],
+  popconfirm: ['SPopconfirm', 'SPopconfirmConfirm', 'SPopconfirmCancel'],
   popover: ['SPopover'],
-  progress: [
-    'SProgressProvider',
-    'SProgress',
-    'SProgressCircle'
-  ],
-  radioGroup: [
-    'SRadioGroup',
-    'SRadioGroupCard'
-  ],
+  progress: ['SProgressProvider', 'SProgress', 'SProgressCircle'],
+  radioGroup: ['SRadioGroup', 'SRadioGroupCard'],
   scrollArea: ['SScrollArea'],
   segment: ['SSegment'],
   select: ['SSelect'],
@@ -129,37 +66,19 @@ export const components = {
   skeleton: ['SSkeleton'],
   slider: ['SSlider'],
   spinner: ['SSpinner'],
-  splitter: [
-    'SSplitterGroup',
-    'SSplitterPanel',
-    'SSplitterResizeHandle'
-  ],
+  splitter: ['SSplitterGroup', 'SSplitterPanel', 'SSplitterResizeHandle'],
   stepper: ['SStepper'],
   switch: ['SSwitch'],
-  table: [
-    'STable',
-    'STableRow',
-    'STableCell'
-  ],
+  table: ['STable', 'STableRow', 'STableCell'],
   tabs: ['STabs'],
   tag: ['STag'],
-  tagsInput: [
-    'STagsInput',
-    'STagsInputItemText',
-    'STagsInputItemDelete'
-  ],
-  textarea: [
-    'STextarea',
-    'STextareaClear'
-  ],
+  tagsInput: ['STagsInput', 'STagsInputItemText', 'STagsInputItemDelete'],
+  textarea: ['STextarea', 'STextareaClear'],
   timeField: ['STimeField'],
   timeRangeField: ['STimeRangeField'],
   toast: ['SToastProvider'],
   toggle: ['SToggle'],
-  toggleGroup: [
-    'SToggleGroup',
-    'SToggleGroupItem'
-  ],
+  toggleGroup: ['SToggleGroup', 'SToggleGroupItem'],
   toolbar: [
     'SToolbar',
     'SToolbarButton',
@@ -169,19 +88,8 @@ export const components = {
     'SToolbarToggleItem'
   ],
   tooltip: ['STooltip'],
-  tree: [
-    'STree',
-    'STreeVirtualizer',
-    'STreeItem',
-    'STreeVirtualizerItem'
-  ],
-  treeMenu: [
-    'STreeMenu',
-    'STreeMenuStyledItem'
-  ],
-  virtualizer: [
-    'SVirtualizer',
-    'SVirtualizerItem'
-  ],
+  tree: ['STree', 'STreeVirtualizer', 'STreeItem', 'STreeVirtualizerItem'],
+  treeMenu: ['STreeMenu', 'STreeMenuStyledItem'],
+  virtualizer: ['SVirtualizer', 'SVirtualizerItem'],
   watermark: ['SWatermark']
 };

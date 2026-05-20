@@ -1,15 +1,15 @@
 <script setup lang="ts">
 import { computed, shallowRef, watchEffect } from 'vue';
 import type { CSSProperties } from 'vue';
-import { useArrowNavigation, useDismissableLayer, useExposedElement } from '../../composables';
 import { getActiveElement, getTabbableCandidates, tryFocusFirst } from '../../shared';
+import { useArrowNavigation, useDismissableLayer, useExposedElement } from '../../composables';
+import { EVENT_ROOT_CONTENT_DISMISS } from './shared';
 import {
   useCollectionContext,
   useNavigationMenuItemContext,
   useNavigationMenuRootContext,
   useNavigationMenuUi
 } from './context';
-import { EVENT_ROOT_CONTENT_DISMISS } from './shared';
 import type { NavigationMenuContentImplProps, MotionAttribute, NavigationMenuContentImplEmits } from './types';
 
 defineOptions({

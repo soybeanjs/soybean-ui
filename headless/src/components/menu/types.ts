@@ -13,14 +13,14 @@ import type {
   TrapFocusProps,
   UiClass
 } from '../../types';
-import type { ButtonProps } from '../button/types';
 import type { IconValue } from '../_icon/types';
+import type { ButtonProps } from '../button/types';
+import type { DialogRootEmits, DialogBaseProps } from '../dialog/types';
 import type { KbdProps, KbdValue } from '../kbd/types';
 import type { LinkBaseProps, LinkProps } from '../link/types';
+import type { PopperPopupProps, PopperPositionerProps } from '../popper/types';
 import type { PortalProps as MenuPortalProps } from '../portal/types';
 import type { PrimitiveWithBaseProps } from '../primitive/types';
-import type { DialogRootEmits, DialogBaseProps } from '../dialog/types';
-import type { PopperPopupProps, PopperPositionerProps } from '../popper/types';
 import type { RovingFocusGroupEmits, RovingFocusGroupProps } from '../roving-focus/types';
 import type { SeparatorRootProps as MenuSeparatorProps } from '../separator/types';
 

@@ -1,7 +1,7 @@
-import { mount } from '@vue/test-utils';
 import { describe, expect, it } from 'vitest';
-import SCheckbox from '../../../src/components/checkbox/checkbox.vue';
+import { mount } from '@vue/test-utils';
 import { getA11yViolations } from '../../shared/a11y';
+import SCheckbox from '../../../src/components/checkbox/checkbox.vue';
 
 describe('SCheckbox', () => {
   describe('rendering', () => {

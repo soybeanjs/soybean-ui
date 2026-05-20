@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { nextTick, onBeforeUnmount, onMounted, onWatcherCleanup, shallowRef, watch } from 'vue';
-import { useControllableState, useOmitProps } from '../../composables';
 import { transformPropsToContext, isClient } from '../../shared';
 import { useDirection } from '../config-provider/context';
-import { provideAnchorRootContext, useAnchorUi } from './context';
+import { useControllableState, useOmitProps } from '../../composables';
+import { useLocaleMessages } from '../../locale';
 import {
   getAnchorOffsetTop,
   getAnchorScrollTop,
@@ -16,7 +16,7 @@ import {
   scrollContainerTo,
   updateAnchorHistory
 } from './shared';
-import { useLocaleMessages } from '../../locale';
+import { provideAnchorRootContext, useAnchorUi } from './context';
 import type { AnchorRootProps, AnchorRootEmits, AnchorContainer } from './types';
 
 defineOptions({

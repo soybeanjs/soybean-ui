@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed, onWatcherCleanup, watch, watchEffect } from 'vue';
 import type { CSSProperties } from 'vue';
+import { tryFocusFirst } from '../../shared';
 import {
   useBodyScrollLock,
   useDismissableLayer,
@@ -11,18 +12,17 @@ import {
   useOmitProps,
   useTypeahead
 } from '../../composables';
-import { tryFocusFirst } from '../../shared';
 import { PopperPositioner } from '../popper';
+import { CONTENT_MARGIN } from './shared';
 import {
   provideSelectContentContext,
   useCollectionContext,
   useSelectPopupElementContext,
   useSelectRootContext
 } from './context';
-import { CONTENT_MARGIN } from './shared';
-import SelectPopperPopup from './select-popper-popup.vue';
 import SelectItemAlignedPopup from './select-item-aligned-popup.vue';
 import SelectItemAlignedPositioner from './select-item-aligned-positioner.vue';
+import SelectPopperPopup from './select-popper-popup.vue';
 import type { SelectContentImplProps, SelectContentImplEmits } from './types';
 
 defineOptions({

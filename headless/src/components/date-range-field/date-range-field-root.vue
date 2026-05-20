@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import { computed, nextTick, onMounted, shallowRef, watch } from 'vue';
+import { isNullish, transformPropsToContext } from '../../shared';
+import { useDirection, useLocale } from '../config-provider/context';
 import { useControllableState, useForwardElement } from '../../composables';
 import {
   createContent,
@@ -15,8 +17,6 @@ import {
   syncSegmentValues,
   useDateFormatter
 } from '../../date';
-import { isNullish, transformPropsToContext } from '../../shared';
-import { useDirection, useLocale } from '../config-provider/context';
 import { useLocaleMessages } from '../../locale';
 import { Primitive } from '../primitive';
 import { VisuallyHidden } from '../visually-hidden';

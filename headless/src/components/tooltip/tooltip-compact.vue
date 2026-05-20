@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { useForwardListeners, useOmitProps } from '../../composables';
+import TooltipArrow from '../popper/popper-arrow.vue';
+import TooltipPortal from '../portal/portal.vue';
+import TooltipPopup from './tooltip-popup.vue';
+import TooltipPositioner from './tooltip-positioner.vue';
 import TooltipRoot from './tooltip-root.vue';
 import TooltipTrigger from './tooltip-trigger.vue';
-import TooltipPortal from '../portal/portal.vue';
-import TooltipPositioner from './tooltip-positioner.vue';
-import TooltipPopup from './tooltip-popup.vue';
-import TooltipArrow from '../popper/popper-arrow.vue';
 import type { TooltipCompactProps, TooltipCompactEmits, TooltipCompactSlots } from './types';
 
 defineOptions({

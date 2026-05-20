@@ -1,8 +1,8 @@
-import { mount } from '@vue/test-utils';
 import { describe, expect, it } from 'vitest';
+import { mount } from '@vue/test-utils';
+import { getA11yViolations } from '../../shared/a11y';
 import SIcon from '../../../src/components/icon/icon.vue';
 import SSpinner from '../../../src/components/spinner/spinner.vue';
-import { getA11yViolations } from '../../shared/a11y';
 
 describe('SSpinner', () => {
   describe('rendering', () => {

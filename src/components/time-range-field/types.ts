@@ -1,10 +1,10 @@
-import type { ClassValue } from '@soybeanjs/headless/types';
 import type {
   TimeRangeFieldCompactProps,
   TimeRangeFieldCompactEmits,
   TimeRangeFieldCompactSlots,
   TimeRangeFieldUi
 } from '@soybeanjs/headless/time-range-field';
+import type { ClassValue } from '@soybeanjs/headless/types';
 import type { ThemeSize } from '@/theme';
 
 /**

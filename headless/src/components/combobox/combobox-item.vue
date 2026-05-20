@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { computed, onMounted, onUnmounted, useId } from 'vue';
-import type { SelectEvent } from '../../types';
-import { useExposedElement, useOmitProps } from '../../composables';
-import { ListboxItem } from '../listbox';
 import { useListboxGroupContext, useListboxRootContext } from '../listbox/context';
+import { useExposedElement, useOmitProps } from '../../composables';
+import type { SelectEvent } from '../../types';
+import { ListboxItem } from '../listbox';
 import { useComboboxRootContext } from './context';
 import type { ComboboxItemProps, ComboboxItemEmits } from './types';
 

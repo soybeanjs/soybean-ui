@@ -1,8 +1,8 @@
-import { mount } from '@vue/test-utils';
-import { nextTick } from 'vue';
 import { afterEach, describe, expect, it, vi } from 'vitest';
-import SHoverCard from '../../../src/components/hover-card/hover-card.vue';
+import { nextTick } from 'vue';
+import { mount } from '@vue/test-utils';
 import { getA11yViolations } from '../../shared/a11y';
+import SHoverCard from '../../../src/components/hover-card/hover-card.vue';
 
 describe('SHoverCard', () => {
   const slots = {

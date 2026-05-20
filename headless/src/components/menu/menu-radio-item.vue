@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import { computed, nextTick } from 'vue';
-import { useOmitProps, useForwardElement } from '../../composables';
 import { SELECTION_KEYS } from '../../constants';
 import { getCheckedState, isIndeterminate } from '../../shared';
+import { useOmitProps, useForwardElement } from '../../composables';
+import { ITEM_SELECT } from './shared';
 import {
   provideMenuItemIndicatorContext,
   useMenuRadioGroupContext,
@@ -10,7 +11,6 @@ import {
   useMenuRootContext,
   useMenuUi
 } from './context';
-import { ITEM_SELECT } from './shared';
 import MenuItemImpl from './menu-item-impl.vue';
 import type { MenuRadioItemProps, MenuRadioItemEmits } from './types';
 

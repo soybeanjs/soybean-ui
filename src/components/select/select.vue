@@ -1,8 +1,8 @@
 <script setup lang="ts" generic="T extends DefinedValue, M extends boolean = false">
 import { computed } from 'vue';
+import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
 import { SelectCompact, provideSelectUi } from '@soybeanjs/headless/select';
 import type { DefinedValue } from '@soybeanjs/headless/types';
-import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
 import { keysOf } from '@soybeanjs/utils';
 import { selectVariants } from '@/styles/select';
 import type { SelectProps, SelectEmits, SelectSlots } from './types';

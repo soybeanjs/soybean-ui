@@ -1,7 +1,7 @@
-import { mount } from '@vue/test-utils';
 import { describe, expect, it } from 'vitest';
-import SSeparator from '../../../src/components/separator/separator.vue';
+import { mount } from '@vue/test-utils';
 import { getA11yViolations } from '../../shared/a11y';
+import SSeparator from '../../../src/components/separator/separator.vue';
 
 describe('SSeparator', () => {
   describe('rendering', () => {

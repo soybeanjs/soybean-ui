@@ -1,7 +1,7 @@
-import { mount } from '@vue/test-utils';
 import { describe, expect, it, vi } from 'vitest';
-import SCombobox from '../../../src/components/combobox/combobox.vue';
+import { mount } from '@vue/test-utils';
 import { getA11yViolations } from '../../shared/a11y';
+import SCombobox from '../../../src/components/combobox/combobox.vue';
 
 const items = [
   { label: 'Apple', value: 'apple' },

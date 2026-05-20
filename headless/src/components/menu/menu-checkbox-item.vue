@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import { computed, nextTick } from 'vue';
 import { SELECTION_KEYS } from '../../constants';
-import { useControllableState, useOmitProps, useForwardElement } from '../../composables';
 import { getCheckedState, isIndeterminate, isNullish, isValueEqualOrExist } from '../../shared';
+import { useControllableState, useOmitProps, useForwardElement } from '../../composables';
 import type { CheckedState } from '../../types';
+import { ITEM_SELECT } from './shared';
 import {
   useMenuContentContext,
   useMenuRootContext,
@@ -11,7 +12,6 @@ import {
   useMenuCheckboxGroupContext,
   useMenuUi
 } from './context';
-import { ITEM_SELECT } from './shared';
 import MenuItemImpl from './menu-item-impl.vue';
 import type { MenuCheckboxItemProps, MenuCheckboxItemEmits } from './types';
 

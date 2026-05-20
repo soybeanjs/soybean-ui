@@ -1,7 +1,7 @@
 import { provide, inject } from 'vue';
 import type { StandardSchemaV1 } from '@standard-schema/spec';
-import { useHeadlessForm } from './core/use-form';
 import type { InferStandardSchemaInput, UseHeadlessFormOptions, UseHeadlessFormReturn, FormValues } from './core/types';
+import { useHeadlessForm } from './core/use-form';
 import type { FormFieldComponent, FormFieldArrayComponent, UseFormReturn } from './types';
 
 const USE_FORM_CONTEXT_KEY = Symbol('UseFormContext');

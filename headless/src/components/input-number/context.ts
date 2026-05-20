@@ -2,9 +2,9 @@ import { computed } from 'vue';
 import type { HTMLAttributes } from 'vue';
 import { reactiveComputed } from '@vueuse/core';
 import { NumberFormatter, NumberParser } from '@internationalized/number';
-import { useContext, useForwardElement, useUiContext } from '../../composables';
 import { clamp, isNullish, snapValueToStep } from '../../shared';
 import { useLocale } from '../config-provider/context';
+import { useContext, useForwardElement, useUiContext } from '../../composables';
 import { handleDecimalOperation } from './shared';
 import type { InputNumberRootContextParams, InputNumberUiSlot } from './types';
 

@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { kebabCase, pascalCase } from '@soybeanjs/utils';
 import type { TreeMenuOptionData } from '@soybeanjs/ui';
+import { kebabCase, pascalCase } from '@soybeanjs/utils';
 import { menuData, newlyComponentKeys } from '../constants/menus';
 
 type Emits = {

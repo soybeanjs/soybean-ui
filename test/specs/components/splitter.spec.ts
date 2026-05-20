@@ -1,8 +1,8 @@
-import { mount } from '@vue/test-utils';
-import { nextTick } from 'vue';
 import { describe, expect, it } from 'vitest';
-import { SSplitterGroup, SSplitterPanel, SSplitterResizeHandle } from '../../../src/components/splitter';
+import { nextTick } from 'vue';
+import { mount } from '@vue/test-utils';
 import { getA11yViolations } from '../../shared/a11y';
+import { SSplitterGroup, SSplitterPanel, SSplitterResizeHandle } from '../../../src/components/splitter';
 
 function mockRect(element: Element, rect: { x?: number; y?: number; width?: number; height?: number }) {
   Object.defineProperty(element, 'getBoundingClientRect', {

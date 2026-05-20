@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, useAttrs } from 'vue';
-import { useForwardElement } from '../../composables';
 import { getAriaLabel } from '../../shared';
+import { useForwardElement } from '../../composables';
 import Button from '../button/button.vue';
 import { useSwitchRootContext, useSwitchUi } from './context';
 import type { SwitchControlProps } from './types';

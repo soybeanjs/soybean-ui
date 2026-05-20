@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { Skeleton } from '@soybeanjs/headless/skeleton';
 import { useOmitProps } from '@soybeanjs/headless/composables';
+import { Skeleton } from '@soybeanjs/headless/skeleton';
 import { skeletonVariants } from '@/styles/skeleton';
 import type { SkeletonProps } from './types';
 

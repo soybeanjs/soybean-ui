@@ -1,7 +1,7 @@
-import { mount } from '@vue/test-utils';
 import { describe, expect, it } from 'vitest';
-import SPassword from '../../../src/components/password/password.vue';
+import { mount } from '@vue/test-utils';
 import { getA11yViolations } from '../../shared/a11y';
+import SPassword from '../../../src/components/password/password.vue';
 
 describe('SPassword', () => {
   describe('rendering', () => {

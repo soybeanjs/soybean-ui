@@ -1,6 +1,6 @@
+import { describe, expect, it } from 'vitest';
 import { nextTick } from 'vue';
 import { mount } from '@vue/test-utils';
-import { describe, expect, it } from 'vitest';
 import SColorPicker from '../../../src/components/color-picker/color-picker.vue';
 
 async function openPicker(wrapper: ReturnType<typeof mount<typeof SColorPicker>>) {

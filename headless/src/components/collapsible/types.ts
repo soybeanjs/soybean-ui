@@ -1,7 +1,7 @@
 import type { Ref } from 'vue';
 import type { ForceMountProps, PropsToContext, UiClass } from '../../types';
-import type { PrimitiveWithBaseProps } from '../primitive/types';
 import type { ButtonProps } from '../button/types';
+import type { PrimitiveWithBaseProps } from '../primitive/types';
 
 /**
  * Properties for the CollapsibleRoot component.

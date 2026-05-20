@@ -1,4 +1,6 @@
 import type { ComputedRef } from 'vue';
+import type { UiClass } from '../../types';
+import type { ColorSwatchCompactProps } from '../color-swatch/types';
 import type {
   ListboxItemEmits,
   ListboxItemIndicatorProps,
@@ -6,8 +8,6 @@ import type {
   ListboxRootEmits,
   ListboxRootProps
 } from '../listbox/types';
-import type { UiClass } from '../../types';
-import type { ColorSwatchCompactProps } from '../color-swatch/types';
 
 /**
  * Properties for the ColorSwatchPickerRoot component.

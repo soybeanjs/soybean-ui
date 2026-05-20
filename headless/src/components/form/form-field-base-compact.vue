@@ -3,11 +3,11 @@ import { computed, useSlots, mergeProps } from 'vue';
 import { vAutoAnimate } from '@formkit/auto-animate/vue';
 import { useOmitProps } from '../../composables';
 import { useFormCompactContext } from './context';
-import FormField from './form-field.vue';
-import FormLabel from './form-label.vue';
 import FormControl from './form-control.vue';
 import FormDescription from './form-description.vue';
 import FormError from './form-error.vue';
+import FormField from './form-field.vue';
+import FormLabel from './form-label.vue';
 import type { FormFieldBaseCompactProps } from './types';
 
 defineOptions({

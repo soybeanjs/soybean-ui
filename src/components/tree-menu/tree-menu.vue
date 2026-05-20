@@ -1,15 +1,15 @@
 <script setup lang="ts" generic="T extends TreeMenuBaseOptionData = TreeMenuBaseOptionData">
 import { computed } from 'vue';
+import { provideBadgeUi } from '@soybeanjs/headless/badge';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
+import { provideTooltipUi } from '@soybeanjs/headless/tooltip';
 import { TreeMenuCompact, provideTreeMenuUi } from '@soybeanjs/headless/tree-menu';
 import type { TreeMenuBaseOptionData } from '@soybeanjs/headless/tree-menu';
-import { provideBadgeUi } from '@soybeanjs/headless/badge';
-import { provideTooltipUi } from '@soybeanjs/headless/tooltip';
 import { keysOf } from '@soybeanjs/utils';
-import { provideMenuUi } from '../menu/context';
 import { badgeVariants } from '@/styles/badge';
 import { tooltipVariants } from '@/styles/tooltip';
 import { treeMenuVariants } from '@/styles/tree-menu';
+import { provideMenuUi } from '../menu/context';
 import type { TreeMenuProps, TreeMenuEmits, TreeMenuSlots } from './types';
 
 defineOptions({

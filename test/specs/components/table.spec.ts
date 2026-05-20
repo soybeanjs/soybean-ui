@@ -1,10 +1,10 @@
+import { describe, expect, it } from 'vitest';
 import { h, nextTick } from 'vue';
 import { mount } from '@vue/test-utils';
-import { describe, expect, it } from 'vitest';
-import STable from '../../../src/components/table/table.vue';
-import type { TableColumn } from '../../../src/components/table/types';
 import { MockResizeObserver, createMockResizeObserverEntry, delay, setupMock } from '../../shared';
 import { getA11yViolations } from '../../shared/a11y';
+import STable from '../../../src/components/table/table.vue';
+import type { TableColumn } from '../../../src/components/table/types';
 
 interface TableRowData {
   id: number;

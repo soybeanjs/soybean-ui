@@ -1,26 +1,26 @@
 <script setup lang="ts" generic="T extends DefinedValue = DefinedValue, M extends boolean = false">
 import { computed } from 'vue';
+import { useOmitProps } from '../../composables';
 import type { MaybeArray } from '../../types';
 import type { DefinedValue } from '../../types';
 import Icon from '../_icon/icon.vue';
+import { Portal } from '../portal';
+import { isGroupOption } from './shared';
 import SelectArrow from './select-arrow.vue';
 import SelectContent from './select-content.vue';
-import SelectGroup from './select-group.vue';
 import SelectGroupLabel from './select-group-label.vue';
-import SelectItem from './select-item.vue';
+import SelectGroup from './select-group.vue';
 import SelectItemIndicator from './select-item-indicator.vue';
 import SelectItemText from './select-item-text.vue';
-import { Portal } from '../portal';
+import SelectItem from './select-item.vue';
 import SelectRoot from './select-root.vue';
 import SelectScrollDownButton from './select-scroll-down-button.vue';
 import SelectScrollUpButton from './select-scroll-up-button.vue';
 import SelectSeparator from './select-separator.vue';
-import SelectTrigger from './select-trigger.vue';
 import SelectTriggerIcon from './select-trigger-icon.vue';
+import SelectTrigger from './select-trigger.vue';
 import SelectValue from './select-value.vue';
 import SelectViewport from './select-viewport.vue';
-import { useOmitProps } from '../../composables';
-import { isGroupOption } from './shared';
 import type {
   SelectCompactProps,
   SelectCompactTriggerValueSlotProps,

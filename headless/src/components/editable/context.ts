@@ -1,6 +1,6 @@
 import { computed } from 'vue';
-import { useContext, useForwardElement, useUiContext } from '../../composables';
 import { useDirection } from '../config-provider/context';
+import { useContext, useForwardElement, useUiContext } from '../../composables';
 import type { EditableRootContextParams, EditableUiSlot, EditableViewState } from './types';
 
 export const [provideEditableRootContext, useEditableRootContext] = useContext(

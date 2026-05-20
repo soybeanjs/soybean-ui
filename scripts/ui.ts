@@ -1,8 +1,8 @@
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import process from 'node:process';
-import ts from 'typescript';
 import { camelCase } from '@soybeanjs/utils';
+import ts from 'typescript';
 import { runCliModule } from './_shared';
 
 type ComponentGroup = {

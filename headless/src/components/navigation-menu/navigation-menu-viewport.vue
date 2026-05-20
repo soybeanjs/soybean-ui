@@ -2,11 +2,11 @@
 import { computed, nextTick, shallowRef, watch } from 'vue';
 import type { CSSProperties } from 'vue';
 import { useResizeObserver } from '@vueuse/core';
-import { usePresence } from '../../composables';
 import { getDisclosureState, isMouseEvent } from '../../shared';
+import { usePresence } from '../../composables';
 import type { Size } from '../../types';
-import { useNavigationMenuRootContext, useNavigationMenuUi } from './context';
 import { getNavigationMenuViewportPosition, navigationMenuViewportCssVars } from './shared';
+import { useNavigationMenuRootContext, useNavigationMenuUi } from './context';
 import type { NavigationMenuViewportPosition, NavigationMenuViewportProps } from './types';
 
 defineOptions({

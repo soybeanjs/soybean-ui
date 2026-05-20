@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import { computed, useSlots } from 'vue';
 import { transformPropsToContext } from '../../shared';
-import { useTableCompactExpandedRow } from './hooks';
 import { getTableColumnKey } from './shared';
+import { useTableCompactExpandedRow } from './hooks';
+import TableCell from './table-cell.vue';
 import TableCompactCell from './table-compact-cell.vue';
 import TableRow from './table-row.vue';
-import TableCell from './table-cell.vue';
 import type { TableCompactRowProps } from './types';
 
 defineOptions({

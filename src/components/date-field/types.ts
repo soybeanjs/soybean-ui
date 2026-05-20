@@ -1,5 +1,5 @@
-import type { ClassValue } from '@soybeanjs/headless/types';
 import type { DateFieldCompactProps, DateFieldCompactEmits, DateFieldUi } from '@soybeanjs/headless/date-field';
+import type { ClassValue } from '@soybeanjs/headless/types';
 import type { ThemeSize } from '@/theme';
 
 /**

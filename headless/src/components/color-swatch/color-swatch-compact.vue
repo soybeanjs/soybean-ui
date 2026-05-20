@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { useOmitProps } from '../../composables';
-import ColorSwatchRoot from './color-swatch-root.vue';
 import ColorSwatchChecker from './color-swatch-checker.vue';
 import ColorSwatchFill from './color-swatch-fill.vue';
+import ColorSwatchRoot from './color-swatch-root.vue';
 import type { ColorSwatchCompactProps, ColorSwatchCompactSlots } from './types';
 
 defineOptions({

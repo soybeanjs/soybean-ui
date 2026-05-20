@@ -1,5 +1,5 @@
-import type { ButtonProps } from '../button/types';
 import type { IconValue } from '../_icon/types';
+import type { ButtonProps } from '../button/types';
 
 /**
  * State values for ClipboardState.

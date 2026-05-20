@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { computed, shallowRef } from 'vue';
-import { useArrowNavigation, useControllableState, useForwardElement } from '../../composables';
 import { isFormControl, removeAt, transformPropsToContext } from '../../shared';
 import { useDirection } from '../config-provider/context';
+import { useArrowNavigation, useControllableState, useForwardElement } from '../../composables';
 import { VisuallyHiddenInput } from '../visually-hidden';
 import { provideCollectionContext, provideTagsInputRootContext, useTagsInputUi } from './context';
 import type { TagsInputRootProps, TagsInputRootEmits } from './types';

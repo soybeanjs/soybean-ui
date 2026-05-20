@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { useControllableState, useForwardElement, useOmitProps } from '../../composables';
-import Button from '../button/button.vue';
+import { useLocaleMessages } from '../../locale';
 import Icon from '../_icon/icon.vue';
+import Button from '../button/button.vue';
 import InputClear from '../input/input-clear.vue';
 import InputControl from '../input/input-control.vue';
 import InputRoot from '../input/input-root.vue';
 import { usePasswordUi } from './context';
-import { useLocaleMessages } from '../../locale';
 import type { PasswordCompactProps, PasswordCompactEmits, PasswordCompactSlots } from './types';
 
 defineOptions({

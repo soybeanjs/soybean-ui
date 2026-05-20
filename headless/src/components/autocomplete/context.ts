@@ -1,5 +1,5 @@
-import { useContext, useUiContext } from '../../composables';
 import { provideComboboxUi } from '../combobox/context';
+import { useContext, useUiContext } from '../../composables';
 import type { AutocompleteRootContext, AutocompleteUiSlot } from './types';
 
 export const [provideAutocompleteRootContext, useAutocompleteRootContext] =

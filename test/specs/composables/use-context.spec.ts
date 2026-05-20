@@ -1,6 +1,6 @@
+import { describe, expect, it } from 'vitest';
 import { defineComponent, ref } from 'vue';
 import { mount } from '@vue/test-utils';
-import { describe, expect, it } from 'vitest';
 import { useContext } from '../../../headless/src/composables/use-context';
 
 describe('useContext', () => {

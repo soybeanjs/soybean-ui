@@ -1,5 +1,5 @@
-import { mount } from '@vue/test-utils';
 import { describe, expect, it, vi, beforeEach, afterEach } from 'vitest';
+import { mount } from '@vue/test-utils';
 import { WatermarkCompact, WatermarkRoot } from '@soybeanjs/headless/watermark';
 import SWatermark from '../../../src/components/watermark/watermark.vue';
 

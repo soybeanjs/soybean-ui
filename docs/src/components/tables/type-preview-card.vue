@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { SLink } from '@soybeanjs/ui';
+import CallableTypeTable from './callable-type-table.vue';
 import type { GeneratedApiTypePreview } from './generated-api';
 import { normalizeTypeRenderContext, provideTypeRenderContext, typeRenderContextKey } from './type-anchor';
-import CallableTypeTable from './callable-type-table.vue';
 import TypeData from './type-data.vue';
 import TypePreviewCode from './type-preview-code.vue';
 import { useApiI18n } from './use-api-i18n';

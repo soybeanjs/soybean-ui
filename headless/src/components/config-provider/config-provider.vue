@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { useStyleTag } from '@vueuse/core';
-import { resolveLocaleDirection } from '../../locale/locales';
 import { transformPropsToContext } from '../../shared';
+import { resolveLocaleDirection } from '../../locale/locales';
 import { provideConfigProviderContext } from './context';
 import type { ConfigProviderProps } from './types';
 

@@ -2,8 +2,8 @@
 import { computed } from 'vue';
 import { keysOf } from '@soybeanjs/utils';
 import { useForwardListeners, useOmitProps, usePickProps } from '../../composables';
-import { useNavigationMenuUi } from './context';
 import Arrow from '../arrow/arrow.vue';
+import { useNavigationMenuUi } from './context';
 import NavigationMenuIndicator from './navigation-menu-indicator.vue';
 import NavigationMenuList from './navigation-menu-list.vue';
 import NavigationMenuOptionCompact from './navigation-menu-option-compact.vue';

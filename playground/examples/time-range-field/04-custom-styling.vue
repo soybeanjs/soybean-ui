@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { Time } from '@internationalized/date';
 import { shallowRef } from 'vue';
 import { STimeRangeField } from '@soybeanjs/ui';
+import { Time } from '@internationalized/date';
 
 const value = shallowRef({
   start: new Time(10, 0, 0),

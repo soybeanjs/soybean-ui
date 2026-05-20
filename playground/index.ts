@@ -1,9 +1,9 @@
 import { createApp } from 'vue';
 import '@unocss/reset/tailwind.css';
 import 'uno.css';
-import App from './App.vue';
-import { router } from './router';
 import i18n from './plugins/i18n';
+import { router } from './router';
+import App from './App.vue';
 
 const app = createApp(App);
 

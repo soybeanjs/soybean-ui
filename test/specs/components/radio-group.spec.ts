@@ -1,7 +1,7 @@
-import { mount } from '@vue/test-utils';
 import { describe, expect, it } from 'vitest';
-import SRadioGroup from '../../../src/components/radio-group/radio-group.vue';
+import { mount } from '@vue/test-utils';
 import { getA11yViolations } from '../../shared/a11y';
+import SRadioGroup from '../../../src/components/radio-group/radio-group.vue';
 
 const items = [
   { value: 'option-1', label: 'Option 1' },

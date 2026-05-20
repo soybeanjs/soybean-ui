@@ -1,18 +1,18 @@
 <script setup lang="ts">
 import { useForwardListeners, useOmitProps } from '../../composables';
 import Icon from '../_icon/icon.vue';
-import CalendarRangeRoot from './calendar-range-root.vue';
+import CalendarRangeCellTrigger from './calendar-range-cell-trigger.vue';
+import CalendarRangeCell from './calendar-range-cell.vue';
+import CalendarRangeGridBody from './calendar-range-grid-body.vue';
+import CalendarRangeGridHead from './calendar-range-grid-head.vue';
+import CalendarRangeGridRow from './calendar-range-grid-row.vue';
+import CalendarRangeGrid from './calendar-range-grid.vue';
+import CalendarRangeHeadCell from './calendar-range-head-cell.vue';
 import CalendarRangeHeader from './calendar-range-header.vue';
 import CalendarRangeHeading from './calendar-range-heading.vue';
-import CalendarRangePrev from './calendar-range-prev.vue';
 import CalendarRangeNext from './calendar-range-next.vue';
-import CalendarRangeGrid from './calendar-range-grid.vue';
-import CalendarRangeGridHead from './calendar-range-grid-head.vue';
-import CalendarRangeGridBody from './calendar-range-grid-body.vue';
-import CalendarRangeGridRow from './calendar-range-grid-row.vue';
-import CalendarRangeHeadCell from './calendar-range-head-cell.vue';
-import CalendarRangeCell from './calendar-range-cell.vue';
-import CalendarRangeCellTrigger from './calendar-range-cell-trigger.vue';
+import CalendarRangePrev from './calendar-range-prev.vue';
+import CalendarRangeRoot from './calendar-range-root.vue';
 import type { CalendarRangeCompactProps, CalendarRangeCompactEmits, CalendarRangeCompactSlots } from './types';
 
 defineOptions({

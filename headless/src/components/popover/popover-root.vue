@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { useControllableState } from '../../composables';
 import { transformPropsToContext } from '../../shared';
+import { useControllableState } from '../../composables';
 import { PopperRoot } from '../popper';
 import { providePopoverRootContext } from './context';
 import type { PopoverRootProps, PopoverRootEmits } from './types';

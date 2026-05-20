@@ -1,14 +1,14 @@
 <script setup lang="ts">
 import { useForwardListeners, useOmitProps } from '../../composables';
 import Icon from '../_icon/icon.vue';
-import PaginationRoot from './pagination-root.vue';
-import PaginationList from './pagination-list.vue';
-import PaginationListItem from './pagination-list-item.vue';
 import PaginationEllipsis from './pagination-ellipsis.vue';
 import PaginationFirst from './pagination-first.vue';
-import PaginationPrev from './pagination-prev.vue';
-import PaginationNext from './pagination-next.vue';
 import PaginationLast from './pagination-last.vue';
+import PaginationListItem from './pagination-list-item.vue';
+import PaginationList from './pagination-list.vue';
+import PaginationNext from './pagination-next.vue';
+import PaginationPrev from './pagination-prev.vue';
+import PaginationRoot from './pagination-root.vue';
 import type { PaginationCompactProps, PaginationCompactEmits, PaginationCompactSlots } from './types';
 
 defineOptions({

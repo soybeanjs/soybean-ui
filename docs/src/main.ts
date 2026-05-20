@@ -1,11 +1,11 @@
 import { ViteSSG } from 'vite-ssg';
-import { setupLayouts } from 'virtual:meta-layouts';
 import { routes } from 'vue-router/auto-routes';
 import '@unocss/reset/tailwind.css';
-import 'uno.css';
+import '@soybeanjs/ui/styles.css';
+import { setupLayouts } from 'virtual:meta-layouts';
 // @ts-expect-error - no types for fontsource-variable yet
 import '@fontsource-variable/manrope';
-import '@soybeanjs/ui/styles.css';
+import 'uno.css';
 import './styles/global.css';
 import App from './App.vue';
 import type { UserModule } from './types';

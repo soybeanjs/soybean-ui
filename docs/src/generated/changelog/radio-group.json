@@ -15,9 +15,7 @@
           "summaryKey": "changelog.generated.v0.20.0.de602",
           "commitHash": "de602",
           "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/de6024fc",
-          "authors": [
-            "soybeanfe"
-          ],
+          "authors": ["soybeanfe"],
           "source": "exact-scope"
         }
       ]

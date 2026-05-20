@@ -1,6 +1,6 @@
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { h, nextTick } from 'vue';
 import { mount } from '@vue/test-utils';
-import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { getA11yViolations } from '../../shared/a11y';
 import { SCarousel } from '../../../src/components/carousel';
 

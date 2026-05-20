@@ -4,8 +4,8 @@ import { useForwardElement } from '../../composables';
 import Button from '../button/button.vue';
 import { MenuAnchor } from '../menu';
 import { RovingFocusItem } from '../roving-focus';
-import { useMenubarCollectionItem, useMenubarMenuContext, useMenubarRootContext, useMenubarUi } from './context';
 import { isTriggerLink } from './shared';
+import { useMenubarCollectionItem, useMenubarMenuContext, useMenubarRootContext, useMenubarUi } from './context';
 import type { MenubarTriggerProps } from './types';
 
 defineOptions({

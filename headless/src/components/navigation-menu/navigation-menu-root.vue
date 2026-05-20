@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { watchEffect } from 'vue';
-import { useControllableState, useForwardElement } from '../../composables';
 import { transformPropsToContext } from '../../shared';
 import { useDirection } from '../config-provider/context';
+import { useControllableState, useForwardElement } from '../../composables';
 import { provideCollectionContext, provideNavigationMenuRootContext, useNavigationMenuUi } from './context';
 import type { NavigationMenuRootProps, NavigationMenuRootEmits } from './types';
 

@@ -1,9 +1,9 @@
 <script setup lang="ts" generic="M extends boolean = false">
 import { useForwardListeners, useOmitProps } from '../../composables';
 import Icon from '../_icon/icon.vue';
-import ColorSwatchPickerItem from './color-swatch-picker-item.vue';
 import ColorSwatchPickerItemIndicator from './color-swatch-picker-item-indicator.vue';
 import ColorSwatchPickerItemSwatch from './color-swatch-picker-item-swatch.vue';
+import ColorSwatchPickerItem from './color-swatch-picker-item.vue';
 import ColorSwatchPickerRoot from './color-swatch-picker-root.vue';
 import type {
   ColorSwatchPickerCompactProps,

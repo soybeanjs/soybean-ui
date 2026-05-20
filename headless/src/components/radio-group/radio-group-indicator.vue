@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, shallowRef } from 'vue';
-import { useForwardElement, usePresence } from '../../composables';
 import { getCheckedState } from '../../shared';
+import { useForwardElement, usePresence } from '../../composables';
 import { Primitive } from '../primitive';
 import { useRadioGroupItemContext, useRadioGroupUi } from './context';
 import type { RadioGroupIndicatorProps } from './types';

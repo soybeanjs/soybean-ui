@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { useBreadcrumbUi } from './context';
 import { useLocaleMessages } from '../../locale';
+import { useBreadcrumbUi } from './context';
 import type { BreadcrumbRootProps } from './types';
 
 defineOptions({

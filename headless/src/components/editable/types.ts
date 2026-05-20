@@ -1,7 +1,7 @@
 import type { ComputedRef, ShallowRef } from 'vue';
 import type { Direction, FormFieldCommonProps, PropsToContext, UiClass, VNodeRef } from '../../types';
-import type { PrimitiveWithBaseProps } from '../primitive/types';
 import type { ButtonProps } from '../button/types';
+import type { PrimitiveWithBaseProps } from '../primitive/types';
 
 /**
  * Type information for EditableActivationMode.

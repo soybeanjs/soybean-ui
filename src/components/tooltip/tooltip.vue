@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { TooltipCompact, provideTooltipUi } from '@soybeanjs/headless/tooltip';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
+import { TooltipCompact, provideTooltipUi } from '@soybeanjs/headless/tooltip';
 import { tooltipVariants } from '@/styles/tooltip';
 import type { TooltipProps, TooltipEmits, TooltipSlots } from './types';
 

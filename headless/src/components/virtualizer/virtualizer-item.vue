@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { Primitive } from '../primitive';
-import type { VirtualizerItemProps } from './types';
 import { useVirtualizerContext } from './context';
+import type { VirtualizerItemProps } from './types';
 
 defineOptions({
   name: 'VirtualizerItem'

@@ -1,8 +1,8 @@
 <script setup lang="ts" generic="T extends DefinedValue = DefinedValue">
 import { computed } from 'vue';
+import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
 import { MenubarCompact, provideMenubarUi } from '@soybeanjs/headless/menubar';
 import type { DefinedValue } from '@soybeanjs/headless/types';
-import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
 import { keysOf } from '@soybeanjs/utils';
 import { menubarVariants } from '@/styles/menubar';
 import { provideMenuUi } from '../menu/context';

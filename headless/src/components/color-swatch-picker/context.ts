@@ -1,7 +1,7 @@
 import { computed } from 'vue';
-import { useContext, useUiContext } from '../../composables';
-import { provideListboxUi } from '../listbox/context';
 import { provideColorSwatchUi } from '../color-swatch/context';
+import { provideListboxUi } from '../listbox/context';
+import { useContext, useUiContext } from '../../composables';
 import type { ColorSwatchPickerItemContext, ColorSwatchPickerUiSlot } from './types';
 
 export const [provideColorSwatchPickerItemContext, useColorSwatchPickerItemContext] =

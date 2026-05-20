@@ -1,7 +1,7 @@
 <script setup lang="ts" generic="T extends AcceptableBooleanValue = AcceptableBooleanValue">
 import { computed } from 'vue';
-import { DropdownMenuRadioCompact } from '@soybeanjs/headless/dropdown-menu';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
+import { DropdownMenuRadioCompact } from '@soybeanjs/headless/dropdown-menu';
 import type { AcceptableBooleanValue } from '@soybeanjs/headless/types';
 import { keysOf } from '@soybeanjs/utils';
 import { provideMenuUi } from '../menu/context';

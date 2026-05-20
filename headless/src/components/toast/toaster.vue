@@ -4,8 +4,6 @@ import type { CSSProperties } from 'vue';
 import { getElFromTemplateRef, transformPropsToContext, isClient } from '../../shared';
 import { useDirection } from '../config-provider/context';
 import type { VNodeRef } from '../../types';
-import { ToastState } from './state';
-import { provideToasterContext, useToastUi } from './context';
 import {
   ALL_TOAST_POSITIONS,
   DEFAULT_POSITION,
@@ -18,7 +16,9 @@ import {
   isToastDismiss,
   resolveOffset
 } from './shared';
+import { provideToasterContext, useToastUi } from './context';
 import { useToastState } from './hooks';
+import { ToastState } from './state';
 import Toast from './toast.vue';
 import type { ToastPosition, ToastT, ToasterProps, ToastHeight } from './types';
 

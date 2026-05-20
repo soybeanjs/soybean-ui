@@ -1,7 +1,6 @@
 import { mkdir, readdir, readFile, writeFile } from 'node:fs/promises';
-import path from 'node:path';
 import type { IncomingMessage, ServerResponse } from 'node:http';
-
+import path from 'node:path';
 import type { Plugin, ResolvedConfig, ViteDevServer } from 'vite';
 
 type DocFile = {

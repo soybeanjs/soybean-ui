@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { computed, watch } from 'vue';
 import { useForwardElement } from '../../composables';
-import VisuallyHidden from './visually-hidden.vue';
 import type { VisuallyHiddenInputProps } from './types';
+import VisuallyHidden from './visually-hidden.vue';
 
 defineOptions({
   name: 'VisuallyHiddenInputBubble'

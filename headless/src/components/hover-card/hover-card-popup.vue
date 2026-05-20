@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import type { CSSProperties } from 'vue';
 import { nextTick, onMounted, onUnmounted, shallowRef, watchEffect } from 'vue';
-import { useForwardElement } from '../../composables';
+import type { CSSProperties } from 'vue';
 import { getTabbableCandidates, removeFromTabOrder } from '../../shared';
-import { PopperPopup } from '../popper';
 import { popperCssVars } from '../popper/shared';
-import { useHoverCardRootContext } from './context';
+import { useForwardElement } from '../../composables';
+import { PopperPopup } from '../popper';
 import { hoverCardCssVars } from './shared';
+import { useHoverCardRootContext } from './context';
 import type { HoverCardPopupProps } from './types';
 
 defineOptions({

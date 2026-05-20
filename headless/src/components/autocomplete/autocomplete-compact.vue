@@ -3,6 +3,7 @@ import { computed } from 'vue';
 import { useFuse } from '@vueuse/integrations/useFuse';
 import { defu } from 'defu';
 import { useControllableState, useOmitProps } from '../../composables';
+import { useLocaleMessages } from '../../locale';
 import Icon from '../_icon/icon.vue';
 import {
   ComboboxAnchor as AutocompleteAnchor,
@@ -18,10 +19,9 @@ import {
   ComboboxCancel as AutocompleteCancel
 } from '../combobox';
 import { Portal } from '../portal';
-import AutocompleteRoot from './autocomplete-root.vue';
-import AutocompleteInput from './autocomplete-input.vue';
 import { getAutocompleteItemOptions, getAutocompleteSearchOptions, isGroupOption } from './shared';
-import { useLocaleMessages } from '../../locale';
+import AutocompleteInput from './autocomplete-input.vue';
+import AutocompleteRoot from './autocomplete-root.vue';
 import type {
   AutocompleteCompactProps,
   AutocompleteCompactEmits,

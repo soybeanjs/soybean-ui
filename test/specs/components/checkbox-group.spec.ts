@@ -1,8 +1,8 @@
-import { mount } from '@vue/test-utils';
 import { describe, expect, it } from 'vitest';
+import { mount } from '@vue/test-utils';
+import { getA11yViolations } from '../../shared/a11y';
 import SCheckboxCardGroup from '../../../src/components/checkbox/checkbox-card-group.vue';
 import SCheckboxGroup from '../../../src/components/checkbox/checkbox-group.vue';
-import { getA11yViolations } from '../../shared/a11y';
 
 const items = [
   { value: 'option-1', label: 'Option 1' },

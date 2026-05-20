@@ -1,8 +1,8 @@
 import { computed, ref, shallowRef, useId } from 'vue';
-import { useCollection, useContext, useUiContext } from '../../composables';
 import { getDisclosureState, isValueEqualOrExist, tryFocusFirst } from '../../shared';
 import { useDirection } from '../config-provider/context';
 import { providePopperUi } from '../popper/context';
+import { useCollection, useContext, useUiContext } from '../../composables';
 import type { AcceptableValue, Point } from '../../types';
 import type {
   SelectContentContextParams,

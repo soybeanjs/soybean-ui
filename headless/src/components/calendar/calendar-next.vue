@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { computed } from 'vue';
+import { useLocaleMessages } from '../../locale';
 import Button from '../button/button.vue';
 import { useCalendarRootContext, useCalendarUi } from './context';
-import { useLocaleMessages } from '../../locale';
 import type { CalendarNextProps } from './types';
 
 defineOptions({

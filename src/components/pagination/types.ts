@@ -5,8 +5,8 @@ import type {
   PaginationUi
 } from '@soybeanjs/headless/pagination';
 import type { ClassValue } from '@soybeanjs/headless/types';
-import type { ThemeSize } from '@/theme';
 import type { PaginationShape, PaginationVariant } from '@/styles/pagination';
+import type { ThemeSize } from '@/theme';
 
 /**
  * Properties for the Pagination component.

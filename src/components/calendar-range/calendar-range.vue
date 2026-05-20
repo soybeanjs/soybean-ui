@@ -4,8 +4,8 @@ import { useLocaleMessages } from '@soybeanjs/headless';
 import { CalendarRangeCompact, provideCalendarRangeUi } from '@soybeanjs/headless/calendar-range';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
 import { keysOf } from '@soybeanjs/utils';
-import { miniSizeMap } from '@/theme';
 import { calendarRangeVariants } from '@/styles/calendar-range';
+import { miniSizeMap } from '@/theme';
 import SSelect from '../select/select.vue';
 import type { CalendarRangeProps, CalendarRangeEmits, CalendarRangeSlots } from './types';
 

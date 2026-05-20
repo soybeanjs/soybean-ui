@@ -2,10 +2,10 @@
 import { computed, nextTick, onUnmounted, shallowRef, useId, useTemplateRef, useAttrs } from 'vue';
 import type { ComponentPublicInstance, ShallowRef } from 'vue';
 import { createEventHook } from '@vueuse/core';
-import { useControllableState, useOmitProps, useSelection } from '../../composables';
 import { transformPropsToContext, getElFromTemplateRef } from '../../shared';
-import type { MaybeArray } from '../../types';
 import { useDirection } from '../config-provider/context';
+import { useControllableState, useOmitProps, useSelection } from '../../composables';
+import type { MaybeArray } from '../../types';
 import { ListboxRoot } from '../listbox';
 import { PopperRoot } from '../popper';
 import { provideComboboxRootContext } from './context';

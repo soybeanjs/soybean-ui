@@ -15,9 +15,7 @@
           "summaryKey": "changelog.generated.v0.15.0.50651",
           "commitHash": "50651",
           "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/50651159",
-          "authors": [
-            "soybeanjs"
-          ],
+          "authors": ["soybeanjs"],
           "source": "exact-scope"
         }
       ]
@@ -34,9 +32,7 @@
           "summaryKey": "changelog.generated.v0.15.0-beta.1.50651",
           "commitHash": "50651",
           "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/50651159",
-          "authors": [
-            "soybeanjs"
-          ],
+          "authors": ["soybeanjs"],
           "source": "exact-scope"
         }
       ]

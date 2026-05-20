@@ -1,7 +1,7 @@
-import { mount } from '@vue/test-utils';
 import { describe, expect, it } from 'vitest';
-import SInputNumber from '../../../src/components/input-number/input-number.vue';
+import { mount } from '@vue/test-utils';
 import { getA11yViolations } from '../../shared/a11y';
+import SInputNumber from '../../../src/components/input-number/input-number.vue';
 
 describe('SInputNumber', () => {
   describe('rendering', () => {

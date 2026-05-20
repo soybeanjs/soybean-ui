@@ -1,8 +1,8 @@
-import { mount } from '@vue/test-utils';
 import { describe, expect, it } from 'vitest';
+import { mount } from '@vue/test-utils';
+import { getA11yViolations } from '../../shared/a11y';
 import { SInputClear } from '../../../src/components/input';
 import SInput from '../../../src/components/input/input.vue';
-import { getA11yViolations } from '../../shared/a11y';
 
 describe('SInput', () => {
   describe('rendering', () => {

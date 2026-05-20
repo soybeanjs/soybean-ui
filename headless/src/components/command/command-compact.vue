@@ -3,13 +3,13 @@ import { computed } from 'vue';
 import { useFuse } from '@vueuse/integrations/useFuse';
 import { defu } from 'defu';
 import { useControllableState, useOmitProps } from '../../composables';
+import { useLocaleMessages } from '../../locale';
 import Icon from '../_icon/icon.vue';
 import Kbd from '../kbd/kbd.vue';
 import { ListboxContent, ListboxFilter, ListboxGroup, ListboxGroupLabel, ListboxItem, ListboxRoot } from '../listbox';
 import SeparatorRoot from '../separator/separator-root.vue';
-import { useCommandUi } from './context';
 import { getCommandItemOptions, getCommandSearchOptions, isGroupOption } from './shared';
-import { useLocaleMessages } from '../../locale';
+import { useCommandUi } from './context';
 import type {
   CommandCompactProps,
   CommandCompactEmits,

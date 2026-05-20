@@ -1,7 +1,7 @@
-import { mount } from '@vue/test-utils';
 import { describe, expect, it } from 'vitest';
-import SStepper from '../../../src/components/stepper/stepper.vue';
+import { mount } from '@vue/test-utils';
 import { getA11yViolations } from '../../shared/a11y';
+import SStepper from '../../../src/components/stepper/stepper.vue';
 
 const items = [
   { title: 'Account', description: 'Set up your account' },

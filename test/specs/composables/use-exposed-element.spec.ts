@@ -1,9 +1,9 @@
+import { describe, expect, it, vi } from 'vitest';
 import { defineComponent } from 'vue';
 import { mount } from '@vue/test-utils';
-import { describe, expect, it, vi } from 'vitest';
+import { createMockElement } from '../../shared';
 import { useExposedElement } from '../../../headless/src/composables/use-exposed-element';
 import { useForwardElement } from '../../../headless/src/composables/use-forward-element';
-import { createMockElement } from '../../shared';
 
 // Mock the useForwardElement composable
 vi.mock('../../../headless/src/composables/use-forward-element', () => ({

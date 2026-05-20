@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { CollapsibleRoot } from '../collapsible';
-import { useArrowNavigation, useOmitProps } from '../../composables';
 import { getCollectionItemElements, getOpenFromSingleOrMultiple, transformPropsToContext } from '../../shared';
+import { useArrowNavigation, useOmitProps } from '../../composables';
+import { CollapsibleRoot } from '../collapsible';
 import { provideAccordionItemContext, useAccordionRootContext } from './context';
 import type { AccordionItemProps } from './types';
 

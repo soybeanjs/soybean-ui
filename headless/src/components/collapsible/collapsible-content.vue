@@ -3,8 +3,8 @@ import { computed, nextTick, onMounted, shallowRef, watch } from 'vue';
 import type { CSSProperties } from 'vue';
 import { useForwardElement, usePresence } from '../../composables';
 import { Primitive } from '../primitive';
-import { useCollapsibleRootContext, useCollapsibleUi } from './context';
 import { collapsibleContentCssVars } from './shared';
+import { useCollapsibleRootContext, useCollapsibleUi } from './context';
 import type { CollapsibleContentProps } from './types';
 
 defineOptions({

@@ -10,10 +10,7 @@
         "description": "Properties for the Select component.",
         "descriptionKey": "api.generated.src_components_select_types.selectprops.props",
         "sourcePath": "src/components/select/types.ts",
-        "typeParameters": [
-          "TypeParameter T",
-          "TypeParameter M"
-        ],
+        "typeParameters": ["TypeParameter T", "TypeParameter M"],
         "members": [
           {
             "name": "class",
@@ -1254,10 +1251,7 @@
         "description": "Events for the Select component.",
         "descriptionKey": "api.generated.src_components_select_types.selectemits.emits",
         "sourcePath": "src/components/select/types.ts",
-        "typeParameters": [
-          "TypeParameter T",
-          "TypeParameter M"
-        ],
+        "typeParameters": ["TypeParameter T", "TypeParameter M"],
         "members": [],
         "callables": [
           {
@@ -1369,9 +1363,7 @@
                 "description": "Type information for SelectItemEvent.",
                 "descriptionKey": "api.generated.headless_src_components_select_types.selectitemevent",
                 "sourcePath": "headless/src/components/select/types.ts",
-                "typeParameters": [
-                  "T extends DefinedValue = DefinedValue"
-                ],
+                "typeParameters": ["T extends DefinedValue = DefinedValue"],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -1389,10 +1381,7 @@
         "description": "Slots for the Select component.",
         "descriptionKey": "api.generated.src_components_select_types.selectslots.slots",
         "sourcePath": "src/components/select/types.ts",
-        "typeParameters": [
-          "TypeParameter T",
-          "TypeParameter M"
-        ],
+        "typeParameters": ["TypeParameter T", "TypeParameter M"],
         "members": [],
         "callables": [
           {
@@ -1422,10 +1411,7 @@
                 "description": "Slot properties for the SelectCompactTriggerValue component.",
                 "descriptionKey": "api.generated.headless_src_components_select_types.selectcompacttriggervalueslotprops",
                 "sourcePath": "headless/src/components/select/types.ts",
-                "typeParameters": [
-                  "T extends DefinedValue = DefinedValue",
-                  "M extends boolean = false"
-                ],
+                "typeParameters": ["T extends DefinedValue = DefinedValue", "M extends boolean = false"],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -1489,9 +1475,7 @@
                 "description": "Slot properties for the SelectCompactGroupLabel component.",
                 "descriptionKey": "api.generated.headless_src_components_select_types.selectcompactgrouplabelslotprops",
                 "sourcePath": "headless/src/components/select/types.ts",
-                "typeParameters": [
-                  "T extends DefinedValue = DefinedValue"
-                ],
+                "typeParameters": ["T extends DefinedValue = DefinedValue"],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -1515,9 +1499,7 @@
                 "description": "Slot properties for the SelectCompactItem component.",
                 "descriptionKey": "api.generated.headless_src_components_select_types.selectcompactitemslotprops",
                 "sourcePath": "headless/src/components/select/types.ts",
-                "typeParameters": [
-                  "T extends DefinedValue = DefinedValue"
-                ],
+                "typeParameters": ["T extends DefinedValue = DefinedValue"],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -1541,9 +1523,7 @@
                 "description": "Slot properties for the SelectCompactItem component.",
                 "descriptionKey": "api.generated.headless_src_components_select_types.selectcompactitemslotprops",
                 "sourcePath": "headless/src/components/select/types.ts",
-                "typeParameters": [
-                  "T extends DefinedValue = DefinedValue"
-                ],
+                "typeParameters": ["T extends DefinedValue = DefinedValue"],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -1567,9 +1547,7 @@
                 "description": "Slot properties for the SelectCompactItem component.",
                 "descriptionKey": "api.generated.headless_src_components_select_types.selectcompactitemslotprops",
                 "sourcePath": "headless/src/components/select/types.ts",
-                "typeParameters": [
-                  "T extends DefinedValue = DefinedValue"
-                ],
+                "typeParameters": ["T extends DefinedValue = DefinedValue"],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -1593,9 +1571,7 @@
                 "description": "Slot properties for the SelectCompactItem component.",
                 "descriptionKey": "api.generated.headless_src_components_select_types.selectcompactitemslotprops",
                 "sourcePath": "headless/src/components/select/types.ts",
-                "typeParameters": [
-                  "T extends DefinedValue = DefinedValue"
-                ],
+                "typeParameters": ["T extends DefinedValue = DefinedValue"],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -1616,10 +1592,7 @@
         "description": "Properties for the SelectCompact component.",
         "descriptionKey": "api.generated.headless_src_components_select_types.selectcompactprops.props",
         "sourcePath": "headless/src/components/select/types.ts",
-        "typeParameters": [
-          "TypeParameter T",
-          "TypeParameter M"
-        ],
+        "typeParameters": ["TypeParameter T", "TypeParameter M"],
         "members": [
           {
             "name": "items",
@@ -2785,10 +2758,7 @@
         "description": "Events for the SelectCompact component.",
         "descriptionKey": "api.generated.headless_src_components_select_types.selectcompactemits.emits",
         "sourcePath": "headless/src/components/select/types.ts",
-        "typeParameters": [
-          "TypeParameter T",
-          "TypeParameter M"
-        ],
+        "typeParameters": ["TypeParameter T", "TypeParameter M"],
         "members": [],
         "callables": [
           {
@@ -2900,9 +2870,7 @@
                 "description": "Type information for SelectItemEvent.",
                 "descriptionKey": "api.generated.headless_src_components_select_types.selectitemevent",
                 "sourcePath": "headless/src/components/select/types.ts",
-                "typeParameters": [
-                  "T extends DefinedValue = DefinedValue"
-                ],
+                "typeParameters": ["T extends DefinedValue = DefinedValue"],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -2920,10 +2888,7 @@
         "description": "Slots for the SelectCompact component.",
         "descriptionKey": "api.generated.headless_src_components_select_types.selectcompactslots.slots",
         "sourcePath": "headless/src/components/select/types.ts",
-        "typeParameters": [
-          "TypeParameter T",
-          "TypeParameter M"
-        ],
+        "typeParameters": ["TypeParameter T", "TypeParameter M"],
         "members": [],
         "callables": [
           {
@@ -2953,10 +2918,7 @@
                 "description": "Slot properties for the SelectCompactTriggerValue component.",
                 "descriptionKey": "api.generated.headless_src_components_select_types.selectcompacttriggervalueslotprops",
                 "sourcePath": "headless/src/components/select/types.ts",
-                "typeParameters": [
-                  "T extends DefinedValue = DefinedValue",
-                  "M extends boolean = false"
-                ],
+                "typeParameters": ["T extends DefinedValue = DefinedValue", "M extends boolean = false"],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -3020,9 +2982,7 @@
                 "description": "Slot properties for the SelectCompactGroupLabel component.",
                 "descriptionKey": "api.generated.headless_src_components_select_types.selectcompactgrouplabelslotprops",
                 "sourcePath": "headless/src/components/select/types.ts",
-                "typeParameters": [
-                  "T extends DefinedValue = DefinedValue"
-                ],
+                "typeParameters": ["T extends DefinedValue = DefinedValue"],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -3046,9 +3006,7 @@
                 "description": "Slot properties for the SelectCompactItem component.",
                 "descriptionKey": "api.generated.headless_src_components_select_types.selectcompactitemslotprops",
                 "sourcePath": "headless/src/components/select/types.ts",
-                "typeParameters": [
-                  "T extends DefinedValue = DefinedValue"
-                ],
+                "typeParameters": ["T extends DefinedValue = DefinedValue"],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -3072,9 +3030,7 @@
                 "description": "Slot properties for the SelectCompactItem component.",
                 "descriptionKey": "api.generated.headless_src_components_select_types.selectcompactitemslotprops",
                 "sourcePath": "headless/src/components/select/types.ts",
-                "typeParameters": [
-                  "T extends DefinedValue = DefinedValue"
-                ],
+                "typeParameters": ["T extends DefinedValue = DefinedValue"],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -3098,9 +3054,7 @@
                 "description": "Slot properties for the SelectCompactItem component.",
                 "descriptionKey": "api.generated.headless_src_components_select_types.selectcompactitemslotprops",
                 "sourcePath": "headless/src/components/select/types.ts",
-                "typeParameters": [
-                  "T extends DefinedValue = DefinedValue"
-                ],
+                "typeParameters": ["T extends DefinedValue = DefinedValue"],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -3124,9 +3078,7 @@
                 "description": "Slot properties for the SelectCompactItem component.",
                 "descriptionKey": "api.generated.headless_src_components_select_types.selectcompactitemslotprops",
                 "sourcePath": "headless/src/components/select/types.ts",
-                "typeParameters": [
-                  "T extends DefinedValue = DefinedValue"
-                ],
+                "typeParameters": ["T extends DefinedValue = DefinedValue"],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -3804,9 +3756,7 @@
         "description": "Events for the SelectItem component.",
         "descriptionKey": "api.generated.headless_src_components_select_types.selectitememits.emits",
         "sourcePath": "headless/src/components/select/types.ts",
-        "typeParameters": [
-          "TypeParameter T"
-        ],
+        "typeParameters": ["TypeParameter T"],
         "members": [],
         "callables": [
           {
@@ -3826,9 +3776,7 @@
                 "description": "Type information for SelectItemEvent.",
                 "descriptionKey": "api.generated.headless_src_components_select_types.selectitemevent",
                 "sourcePath": "headless/src/components/select/types.ts",
-                "typeParameters": [
-                  "T extends DefinedValue = DefinedValue"
-                ],
+                "typeParameters": ["T extends DefinedValue = DefinedValue"],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -3939,10 +3887,7 @@
         "description": "Properties for the SelectRoot component.",
         "descriptionKey": "api.generated.headless_src_components_select_types.selectrootprops.props",
         "sourcePath": "headless/src/components/select/types.ts",
-        "typeParameters": [
-          "TypeParameter T",
-          "TypeParameter M"
-        ],
+        "typeParameters": ["TypeParameter T", "TypeParameter M"],
         "members": [
           {
             "name": "open",
@@ -4116,10 +4061,7 @@
         "description": "Events for the SelectRoot component.",
         "descriptionKey": "api.generated.headless_src_components_select_types.selectrootemits.emits",
         "sourcePath": "headless/src/components/select/types.ts",
-        "typeParameters": [
-          "TypeParameter T",
-          "TypeParameter M"
-        ],
+        "typeParameters": ["TypeParameter T", "TypeParameter M"],
         "members": [],
         "callables": [
           {

@@ -1,9 +1,9 @@
 /** Test utility functions and classes */
 
+import { vi } from 'vitest';
 /** Constants for common test delays */
 // Re-export vi for convenience in test files that use shared utilities
 import { createApp, defineComponent, h } from 'vue';
-import { vi } from 'vitest';
 
 export const TEST_DELAYS = {
   /** Short delay for image loading simulation */

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { ProgressCircleCompact, provideProgressUi } from '@soybeanjs/headless/progress';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
+import { ProgressCircleCompact, provideProgressUi } from '@soybeanjs/headless/progress';
 import { progressCircleVariants } from '@/styles/progress';
 import type { ProgressCircleProps, ProgressCircleEmits, ProgressCircleSlots } from './types';
 

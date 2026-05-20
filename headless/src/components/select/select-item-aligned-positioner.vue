@@ -2,6 +2,7 @@
 import { nextTick, onMounted, shallowRef } from 'vue';
 import { useResizeObserver } from '@vueuse/core';
 import { clamp } from '../../shared';
+import { CONTENT_MARGIN } from './shared';
 import {
   provideSelectItemAlignedPositionContext,
   useCollectionContext,
@@ -10,7 +11,6 @@ import {
   useSelectRootContext,
   useSelectUi
 } from './context';
-import { CONTENT_MARGIN } from './shared';
 import type { SelectItemAlignedPositionProps, SelectItemAlignedPositionEmits } from './types';
 
 defineOptions({

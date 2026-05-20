@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { PopoverCompact, providePopoverUi } from '@soybeanjs/headless/popover';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
+import { PopoverCompact, providePopoverUi } from '@soybeanjs/headless/popover';
 import { keysOf } from '@soybeanjs/utils';
 import { popoverVariants } from '@/styles/popover';
 import type { PopoverProps, PopoverEmits, PopoverSlots } from './types';

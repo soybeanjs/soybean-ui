@@ -1,6 +1,7 @@
 import { onWatcherCleanup, ref, watchEffect } from 'vue';
 import type { ShallowRef } from 'vue';
 import { refAutoReset, tryOnScopeDispose } from '@vueuse/core';
+import { GRACE_AREA_TRIGGER_ATTR } from '../constants';
 import {
   getExitSideFromRect,
   getHull,
@@ -9,7 +10,6 @@ import {
   isClient,
   isPointInPolygon
 } from '../shared';
-import { GRACE_AREA_TRIGGER_ATTR } from '../constants';
 import type { Point, Polygon } from '../types';
 
 export interface UseGraceAreaOptions {

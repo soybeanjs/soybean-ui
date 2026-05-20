@@ -1,11 +1,11 @@
 <script setup lang="ts" generic="T extends PageTabsOptionData = PageTabsOptionData">
 import { computed } from 'vue';
+import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
 import { PageTabsCompact, providePageTabsUi } from '@soybeanjs/headless/page-tabs';
 import type { PageTabsOptionData } from '@soybeanjs/headless/page-tabs';
-import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
 import { keysOf } from '@soybeanjs/utils';
-import { provideMenuUi } from '../menu/context';
 import { pageTabsVariants } from '@/styles/page-tabs';
+import { provideMenuUi } from '../menu/context';
 import type { PageTabsProps, PageTabsEmits, PageTabsSlots } from './types';
 
 defineOptions({

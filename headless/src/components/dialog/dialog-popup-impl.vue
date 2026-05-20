@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { computed, onMounted } from 'vue';
 import type { CSSProperties } from 'vue';
-import { useDismissableLayer, useFocusGuards, useFocusScope, useHideOthers, useOmitProps } from '../../composables';
 import { getActiveElement } from '../../shared';
+import { useDismissableLayer, useFocusGuards, useFocusScope, useHideOthers, useOmitProps } from '../../composables';
 import { Primitive } from '../primitive';
 import { useDialogRootContext, useDialogUi } from './context';
 import type { DialogPopupImplProps, DialogPopupImplEmits } from './types';

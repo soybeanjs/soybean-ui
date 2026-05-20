@@ -1,8 +1,8 @@
 <script setup lang="ts" generic="T extends RadioGroupCardOptionData">
 import { computed } from 'vue';
+import { useOmitProps } from '@soybeanjs/headless/composables';
 import { RadioGroupCardCompact, provideRadioGroupCardUi } from '@soybeanjs/headless/radio-group';
 import type { RadioGroupCardOptionData } from '@soybeanjs/headless/radio-group';
-import { useOmitProps } from '@soybeanjs/headless/composables';
 import { radioGroupCardVariants } from '@/styles/radio-group';
 import type { RadioGroupCardProps, RadioGroupCardEmits, RadioGroupCardSlots } from './types';
 

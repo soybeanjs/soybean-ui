@@ -1,7 +1,7 @@
-import { mount } from '@vue/test-utils';
 import { describe, expect, it } from 'vitest';
-import SSlider from '../../../src/components/slider/slider.vue';
+import { mount } from '@vue/test-utils';
 import { getA11yViolations } from '../../shared/a11y';
+import SSlider from '../../../src/components/slider/slider.vue';
 
 function mockRect(element: Element, rect: { x?: number; y?: number; width?: number; height?: number }) {
   Object.defineProperty(element, 'getBoundingClientRect', {

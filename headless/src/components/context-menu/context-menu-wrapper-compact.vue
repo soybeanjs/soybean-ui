@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { useForwardListeners, useOmitProps } from '../../composables';
+import { MenuArrow, MenuPortal } from '../menu';
 import ContextMenuContent from './context-menu-content.vue';
 import ContextMenuRoot from './context-menu-root.vue';
 import ContextMenuTrigger from './context-menu-trigger.vue';
-import { MenuArrow, MenuPortal } from '../menu';
 import type { ContextMenuWrapperCompactProps, ContextMenuWrapperCompactEmits } from './types';
 
 defineOptions({

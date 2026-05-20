@@ -4,21 +4,21 @@ import { useForwardListeners, useOmitProps } from '../../composables';
 import { useLocaleMessages } from '../../locale';
 import Icon from '../_icon/icon.vue';
 import type { IconValue } from '../_icon/types';
-import PopoverPortal from '../portal/portal.vue';
 import PopoverClose from '../popover/popover-close.vue';
 import PopoverPopup from '../popover/popover-popup.vue';
 import PopoverPositioner from '../popover/popover-positioner.vue';
 import PopoverRoot from '../popover/popover-root.vue';
 import PopoverTrigger from '../popover/popover-trigger.vue';
 import PopperArrow from '../popper/popper-arrow.vue';
+import PopoverPortal from '../portal/portal.vue';
 import { usePopconfirmUi } from './context';
-import PopconfirmHeader from './popconfirm-header.vue';
-import PopconfirmTitle from './popconfirm-title.vue';
-import PopconfirmDescription from './popconfirm-description.vue';
-import PopconfirmContent from './popconfirm-content.vue';
-import PopconfirmFooter from './popconfirm-footer.vue';
 import PopconfirmCancel from './popconfirm-cancel.vue';
 import PopconfirmConfirm from './popconfirm-confirm.vue';
+import PopconfirmContent from './popconfirm-content.vue';
+import PopconfirmDescription from './popconfirm-description.vue';
+import PopconfirmFooter from './popconfirm-footer.vue';
+import PopconfirmHeader from './popconfirm-header.vue';
+import PopconfirmTitle from './popconfirm-title.vue';
 import type { PopconfirmCompactProps, PopconfirmCompactEmits, PopconfirmCompactSlots, PopconfirmType } from './types';
 
 defineOptions({

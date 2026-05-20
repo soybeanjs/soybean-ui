@@ -1,6 +1,6 @@
 <script setup lang="ts" generic="M extends boolean = false, T extends DefinedValue = string">
-import type { DefinedValue } from '../../types';
 import { useForwardListeners, useOmitProps } from '../../composables';
+import type { DefinedValue } from '../../types';
 import { ToggleGroupRoot } from '../toggle-group';
 import { useToolbarRootContext, useToolbarUi } from './context';
 import type { ToolbarToggleGroupProps, ToolbarToggleGroupEmits } from './types';

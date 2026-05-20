@@ -13,11 +13,11 @@ import type {
   SelectionProps,
   UiClass
 } from '../../types';
-import type { ButtonProps } from '../button/types';
 import type { IconValue } from '../_icon/types';
-import type { PrimitiveWithBaseProps } from '../primitive/types';
+import type { ButtonProps } from '../button/types';
 import type { PopperAnchorProps, PopperArrowProps, PopperPositionerProps } from '../popper/types';
 import type { PortalProps } from '../portal/types';
+import type { PrimitiveWithBaseProps } from '../primitive/types';
 
 // SelectRoot
 /**

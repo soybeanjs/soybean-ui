@@ -1,7 +1,7 @@
-import { mount } from '@vue/test-utils';
 import { describe, expect, it } from 'vitest';
-import SInputOtp from '../../../src/components/input-otp/input-otp.vue';
+import { mount } from '@vue/test-utils';
 import { getA11yViolations } from '../../shared/a11y';
+import SInputOtp from '../../../src/components/input-otp/input-otp.vue';
 
 describe('SInputOtp', () => {
   describe('rendering', () => {

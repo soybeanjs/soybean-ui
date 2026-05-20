@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, shallowRef, useAttrs } from 'vue';
-import { useControllableState, useForwardElement, useOmitProps } from '../../composables';
 import { getCollectionItemElements, isElementHasAttribute, transformPropsToContext } from '../../shared';
+import { useControllableState, useForwardElement, useOmitProps } from '../../composables';
 import { Primitive } from '../primitive';
 import { VisuallyHidden } from '../visually-hidden';
 import { provideStepperRootContext, useStepperUi } from './context';

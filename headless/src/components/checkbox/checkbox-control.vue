@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { computed, useAttrs, watchEffect } from 'vue';
-import { useForwardElement } from '../../composables';
 import { getAriaLabel, isIndeterminate, isNullish, isValueEqualOrExist } from '../../shared';
-import { RovingFocusItem } from '../roving-focus';
+import { useForwardElement } from '../../composables';
 import Button from '../button/button.vue';
+import { RovingFocusItem } from '../roving-focus';
 import { useCheckboxGroupRootContext, useCheckboxRootContext, useCheckboxUi } from './context';
 import type { CheckboxControlProps } from './types';
 

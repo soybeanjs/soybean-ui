@@ -1,7 +1,7 @@
 <script setup lang="ts" generic="T extends DefinedValue = DefinedValue">
 import { computed } from 'vue';
-import { useControllableState, useForwardElement } from '../../composables';
 import { isFormControl, transformPropsToContext } from '../../shared';
+import { useControllableState, useForwardElement } from '../../composables';
 import type { DefinedValue } from '../../types';
 import { RovingFocusGroup } from '../roving-focus';
 import type { RovingFocusGroupProps } from '../roving-focus/types';

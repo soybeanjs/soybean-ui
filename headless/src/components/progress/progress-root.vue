@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import { computed, useAttrs, watch } from 'vue';
-import { useControllableState, useOmitProps } from '../../composables';
 import { isNullish } from '../../shared';
-import { Primitive } from '../primitive';
 import { useDirection } from '../config-provider/context';
-import { provideProgressRootContext, useProgressUi } from './context';
+import { useControllableState, useOmitProps } from '../../composables';
+import { Primitive } from '../primitive';
 import { DEFAULT_MAX, getValueLabel, getValidMax, getValidModelValue } from './shared';
+import { provideProgressRootContext, useProgressUi } from './context';
 import type { ProgressRootProps, ProgressRootEmits, ProgressState } from './types';
 
 defineOptions({

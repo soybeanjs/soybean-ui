@@ -3,15 +3,15 @@ import { computed } from 'vue';
 import { keysOf } from '@soybeanjs/utils';
 import { useForwardListeners } from '../../composables';
 import Icon from '../_icon/icon.vue';
+import { useCommonSlotNames } from './shared';
 import { useNavigationMenuUi } from './context';
-import NavigationMenuSubOption from './navigation-menu-sub-option-compact.vue';
-import NavigationMenuItemSlot from './navigation-menu-item-slot-compact.vue';
 import NavigationMenuContent from './navigation-menu-content.vue';
+import NavigationMenuItemSlot from './navigation-menu-item-slot-compact.vue';
 import NavigationMenuItem from './navigation-menu-item.vue';
 import NavigationMenuLink from './navigation-menu-link.vue';
 import NavigationMenuSubList from './navigation-menu-sub-list.vue';
+import NavigationMenuSubOption from './navigation-menu-sub-option-compact.vue';
 import NavigationMenuTrigger from './navigation-menu-trigger.vue';
-import { useCommonSlotNames } from './shared';
 import type {
   NavigationMenuOptionCompactProps,
   NavigationMenuOptionCompactEmits,

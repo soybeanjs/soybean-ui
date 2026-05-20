@@ -1,8 +1,8 @@
-import { mount } from '@vue/test-utils';
-import { nextTick, onMounted, shallowRef } from 'vue';
 import { describe, expect, it, vi } from 'vitest';
-import SAnchor from '../../../src/components/anchor/anchor.vue';
+import { nextTick, onMounted, shallowRef } from 'vue';
+import { mount } from '@vue/test-utils';
 import { getA11yViolations } from '../../shared/a11y';
+import SAnchor from '../../../src/components/anchor/anchor.vue';
 
 function createSection(id: string, top: number) {
   const element = document.createElement('section');

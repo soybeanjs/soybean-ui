@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import Button from '../button/button.vue';
-import Icon from '../_icon/icon.vue';
-import { useInputNumberRootContext, useInputNumberUi } from './context';
 import { useLocaleMessages } from '../../locale';
+import Icon from '../_icon/icon.vue';
+import Button from '../button/button.vue';
+import { useInputNumberRootContext, useInputNumberUi } from './context';
 import type { InputNumberClearProps, InputNumberClearEmits } from './types';
 
 defineOptions({

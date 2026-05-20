@@ -2,12 +2,12 @@
 import { spawn } from 'node:child_process';
 import process from 'node:process';
 import { version } from '../package.json';
+import { generateApiData } from './api';
 import { generateApiLocaleTemplates } from './api-i18n';
 import { translateApiLocales } from './api-i18n-translate';
-import { generateApiData } from './api';
+import { generateChangelogData } from './changelog';
 import { generateChangelogLocaleTemplates } from './changelog-i18n';
 import { translateChangelogLocales } from './changelog-i18n-translate';
-import { generateChangelogData } from './changelog';
 import { generateHeadlessMetadata } from './headless';
 import { translateHeadlessLocales } from './locale-translate';
 import { generateSkillsDistribution } from './skills';

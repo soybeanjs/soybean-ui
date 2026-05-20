@@ -1,9 +1,9 @@
-import { mount } from '@vue/test-utils';
-import { computed, nextTick } from 'vue';
 import { describe, expect, it } from 'vitest';
+import { computed, nextTick } from 'vue';
+import { mount } from '@vue/test-utils';
 import { AffixContent, AffixPlaceholder, AffixRoot, provideAffixUi } from '@soybeanjs/headless/affix';
-import SAffix from '../../../src/components/affix/affix.vue';
 import { getA11yViolations } from '../../shared/a11y';
+import SAffix from '../../../src/components/affix/affix.vue';
 
 function createRect(rect: Partial<DOMRect>): DOMRect {
   return {

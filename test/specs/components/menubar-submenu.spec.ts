@@ -1,9 +1,9 @@
-import { mount } from '@vue/test-utils';
-import { nextTick } from 'vue';
 import { describe, expect, it } from 'vitest';
+import { nextTick } from 'vue';
+import { mount } from '@vue/test-utils';
 import SConfigProvider from '../../../src/components/config-provider/config-provider.vue';
-import { SMenubar } from '../../../src/components/menubar';
 import type { MenuOptionData } from '../../../src/components/menu';
+import { SMenubar } from '../../../src/components/menubar';
 
 const items: MenuOptionData<string>[] = [
   {

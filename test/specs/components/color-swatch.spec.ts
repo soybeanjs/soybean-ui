@@ -1,5 +1,5 @@
-import { mount } from '@vue/test-utils';
 import { describe, expect, it } from 'vitest';
+import { mount } from '@vue/test-utils';
 import { getA11yViolations } from '../../shared/a11y';
 import SColorSwatch from '../../../src/components/color-swatch/color-swatch.vue';
 

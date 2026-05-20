@@ -1,5 +1,6 @@
 import type { ComputedRef, ShallowRef } from 'vue';
 import type { DefinedValue, Direction, Placement, PropsToContext, UiClass } from '../../types';
+import type { ButtonProps } from '../button/types';
 import type {
   MenuPopupProps,
   MenuPortalProps,
@@ -15,7 +16,6 @@ import type {
   MenuOptionData,
   MenuUiSlot
 } from '../menu';
-import type { ButtonProps } from '../button/types';
 import type { PrimitiveWithBaseProps } from '../primitive/types';
 
 /**

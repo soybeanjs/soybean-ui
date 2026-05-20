@@ -6,8 +6,8 @@ import type {
   PageTabsUi
 } from '@soybeanjs/headless/page-tabs';
 import type { ClassValue } from '@soybeanjs/headless/types';
-import type { ThemeSize } from '@/theme';
 import type { PageTabsVariant } from '@/styles/page-tabs';
+import type { ThemeSize } from '@/theme';
 
 /**
  * Properties for the PageTabs component.

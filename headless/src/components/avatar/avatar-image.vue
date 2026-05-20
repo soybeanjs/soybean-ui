@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { watch } from 'vue';
-import { useImageLoadingStatus } from '../../composables';
 import { transformPropsToContext } from '../../shared';
+import { useImageLoadingStatus } from '../../composables';
 import { useAvatarRootContext, useAvatarUi } from './context';
 import type { AvatarImageProps, AvatarImageEmits } from './types';
 

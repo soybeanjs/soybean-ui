@@ -19,51 +19,27 @@
     "affix": {
       "component": "affix",
       "file": "affix.json",
-      "symbols": [
-        "Affix",
-        "AffixCompact",
-        "AffixContent",
-        "AffixPlaceholder",
-        "AffixRoot"
-      ]
+      "symbols": ["Affix", "AffixCompact", "AffixContent", "AffixPlaceholder", "AffixRoot"]
     },
     "alert": {
       "component": "alert",
       "file": "alert.json",
-      "symbols": [
-        "Alert",
-        "AlertClose",
-        "AlertCompact",
-        "AlertContent",
-        "AlertDescription",
-        "AlertRoot",
-        "AlertTitle"
-      ]
+      "symbols": ["Alert", "AlertClose", "AlertCompact", "AlertContent", "AlertDescription", "AlertRoot", "AlertTitle"]
     },
     "anchor": {
       "component": "anchor",
       "file": "anchor.json",
-      "symbols": [
-        "Anchor",
-        "AnchorCompact",
-        "AnchorItemCompact",
-        "AnchorLink",
-        "AnchorRoot"
-      ]
+      "symbols": ["Anchor", "AnchorCompact", "AnchorItemCompact", "AnchorLink", "AnchorRoot"]
     },
     "arrow": {
       "component": "arrow",
       "file": "arrow.json",
-      "symbols": [
-        "Arrow"
-      ]
+      "symbols": ["Arrow"]
     },
     "aspect-ratio": {
       "component": "aspect-ratio",
       "file": "aspect-ratio.json",
-      "symbols": [
-        "AspectRatio"
-      ]
+      "symbols": ["AspectRatio"]
     },
     "autocomplete": {
       "component": "autocomplete",
@@ -88,30 +64,17 @@
     "avatar": {
       "component": "avatar",
       "file": "avatar.json",
-      "symbols": [
-        "Avatar",
-        "AvatarCompact",
-        "AvatarFallback",
-        "AvatarImage",
-        "AvatarRoot"
-      ]
+      "symbols": ["Avatar", "AvatarCompact", "AvatarFallback", "AvatarImage", "AvatarRoot"]
     },
     "backtop": {
       "component": "backtop",
       "file": "backtop.json",
-      "symbols": [
-        "Backtop"
-      ]
+      "symbols": ["Backtop"]
     },
     "badge": {
       "component": "badge",
       "file": "badge.json",
-      "symbols": [
-        "Badge",
-        "BadgeCompact",
-        "BadgeContent",
-        "BadgeRoot"
-      ]
+      "symbols": ["Badge", "BadgeCompact", "BadgeContent", "BadgeRoot"]
     },
     "bottom-sheet": {
       "component": "bottom-sheet",
@@ -156,13 +119,7 @@
     "button": {
       "component": "button",
       "file": "button.json",
-      "symbols": [
-        "Button",
-        "ButtonGroup",
-        "ButtonIcon",
-        "ButtonLink",
-        "ButtonLoading"
-      ]
+      "symbols": ["Button", "ButtonGroup", "ButtonIcon", "ButtonLink", "ButtonLoading"]
     },
     "calendar": {
       "component": "calendar",
@@ -258,72 +215,37 @@
     "clipboard": {
       "component": "clipboard",
       "file": "clipboard.json",
-      "symbols": [
-        "Clipboard"
-      ]
+      "symbols": ["Clipboard"]
     },
     "collapsible": {
       "component": "collapsible",
       "file": "collapsible.json",
-      "symbols": [
-        "Collapsible",
-        "CollapsibleContent",
-        "CollapsibleRoot",
-        "CollapsibleTrigger"
-      ]
+      "symbols": ["Collapsible", "CollapsibleContent", "CollapsibleRoot", "CollapsibleTrigger"]
     },
     "color-area": {
       "component": "color-area",
       "file": "color-area.json",
-      "symbols": [
-        "ColorArea",
-        "ColorAreaArea",
-        "ColorAreaCompact",
-        "ColorAreaRoot",
-        "ColorAreaThumb"
-      ]
+      "symbols": ["ColorArea", "ColorAreaArea", "ColorAreaCompact", "ColorAreaRoot", "ColorAreaThumb"]
     },
     "color-field": {
       "component": "color-field",
       "file": "color-field.json",
-      "symbols": [
-        "ColorField",
-        "ColorFieldCompact",
-        "ColorFieldInput",
-        "ColorFieldRoot"
-      ]
+      "symbols": ["ColorField", "ColorFieldCompact", "ColorFieldInput", "ColorFieldRoot"]
     },
     "color-picker": {
       "component": "color-picker",
       "file": "color-picker.json",
-      "symbols": [
-        "ColorPicker",
-        "ColorPickerCompact",
-        "ColorPickerRoot",
-        "ColorPickerTrigger"
-      ]
+      "symbols": ["ColorPicker", "ColorPickerCompact", "ColorPickerRoot", "ColorPickerTrigger"]
     },
     "color-slider": {
       "component": "color-slider",
       "file": "color-slider.json",
-      "symbols": [
-        "ColorSlider",
-        "ColorSliderCompact",
-        "ColorSliderRoot",
-        "ColorSliderThumb",
-        "ColorSliderTrack"
-      ]
+      "symbols": ["ColorSlider", "ColorSliderCompact", "ColorSliderRoot", "ColorSliderThumb", "ColorSliderTrack"]
     },
     "color-swatch": {
       "component": "color-swatch",
       "file": "color-swatch.json",
-      "symbols": [
-        "ColorSwatch",
-        "ColorSwatchChecker",
-        "ColorSwatchCompact",
-        "ColorSwatchFill",
-        "ColorSwatchRoot"
-      ]
+      "symbols": ["ColorSwatch", "ColorSwatchChecker", "ColorSwatchCompact", "ColorSwatchFill", "ColorSwatchRoot"]
     },
     "color-swatch-picker": {
       "component": "color-swatch-picker",
@@ -377,9 +299,7 @@
     "config-provider": {
       "component": "config-provider",
       "file": "config-provider.json",
-      "symbols": [
-        "ConfigProvider"
-      ]
+      "symbols": ["ConfigProvider"]
     },
     "context-menu": {
       "component": "context-menu",
@@ -416,38 +336,22 @@
     "date-field": {
       "component": "date-field",
       "file": "date-field.json",
-      "symbols": [
-        "DateField",
-        "DateFieldCompact",
-        "DateFieldInput",
-        "DateFieldRoot"
-      ]
+      "symbols": ["DateField", "DateFieldCompact", "DateFieldInput", "DateFieldRoot"]
     },
     "date-picker": {
       "component": "date-picker",
       "file": "date-picker.json",
-      "symbols": [
-        "DatePicker",
-        "DatePickerCompact"
-      ]
+      "symbols": ["DatePicker", "DatePickerCompact"]
     },
     "date-range-field": {
       "component": "date-range-field",
       "file": "date-range-field.json",
-      "symbols": [
-        "DateRangeField",
-        "DateRangeFieldCompact",
-        "DateRangeFieldInput",
-        "DateRangeFieldRoot"
-      ]
+      "symbols": ["DateRangeField", "DateRangeFieldCompact", "DateRangeFieldInput", "DateRangeFieldRoot"]
     },
     "date-range-picker": {
       "component": "date-range-picker",
       "file": "date-range-picker.json",
-      "symbols": [
-        "DateRangePicker",
-        "DateRangePickerCompact"
-      ]
+      "symbols": ["DateRangePicker", "DateRangePickerCompact"]
     },
     "dialog": {
       "component": "dialog",
@@ -475,9 +379,7 @@
     "drawer": {
       "component": "drawer",
       "file": "drawer.json",
-      "symbols": [
-        "Drawer"
-      ]
+      "symbols": ["Drawer"]
     },
     "dropdown-menu": {
       "component": "dropdown-menu",
@@ -573,20 +475,12 @@
     "icon": {
       "component": "icon",
       "file": "icon.json",
-      "symbols": [
-        "Icon"
-      ]
+      "symbols": ["Icon"]
     },
     "input": {
       "component": "input",
       "file": "input.json",
-      "symbols": [
-        "Input",
-        "InputClear",
-        "InputCompact",
-        "InputControl",
-        "InputRoot"
-      ]
+      "symbols": ["Input", "InputClear", "InputCompact", "InputControl", "InputRoot"]
     },
     "input-number": {
       "component": "input-number",
@@ -603,27 +497,17 @@
     "input-otp": {
       "component": "input-otp",
       "file": "input-otp.json",
-      "symbols": [
-        "InputOtp",
-        "InputOtpCompact",
-        "InputOtpInput",
-        "InputOtpPositioner",
-        "InputOtpRoot"
-      ]
+      "symbols": ["InputOtp", "InputOtpCompact", "InputOtpInput", "InputOtpPositioner", "InputOtpRoot"]
     },
     "kbd": {
       "component": "kbd",
       "file": "kbd.json",
-      "symbols": [
-        "Kbd"
-      ]
+      "symbols": ["Kbd"]
     },
     "label": {
       "component": "label",
       "file": "label.json",
-      "symbols": [
-        "Label"
-      ]
+      "symbols": ["Label"]
     },
     "layout": {
       "component": "layout",
@@ -648,23 +532,12 @@
     "link": {
       "component": "link",
       "file": "link.json",
-      "symbols": [
-        "Link",
-        "LinkBase",
-        "LinkExtra"
-      ]
+      "symbols": ["Link", "LinkBase", "LinkExtra"]
     },
     "list": {
       "component": "list",
       "file": "list.json",
-      "symbols": [
-        "List",
-        "ListContent",
-        "ListDescription",
-        "ListItem",
-        "ListRoot",
-        "ListTitle"
-      ]
+      "symbols": ["List", "ListContent", "ListDescription", "ListItem", "ListRoot", "ListTitle"]
     },
     "listbox": {
       "component": "listbox",
@@ -794,10 +667,7 @@
     "password": {
       "component": "password",
       "file": "password.json",
-      "symbols": [
-        "Password",
-        "PasswordCompact"
-      ]
+      "symbols": ["Password", "PasswordCompact"]
     },
     "popconfirm": {
       "component": "popconfirm",
@@ -882,14 +752,7 @@
     "segment": {
       "component": "segment",
       "file": "segment.json",
-      "symbols": [
-        "Segment",
-        "SegmentCompact",
-        "SegmentIndicator",
-        "SegmentList",
-        "SegmentRoot",
-        "SegmentTrigger"
-      ]
+      "symbols": ["Segment", "SegmentCompact", "SegmentIndicator", "SegmentList", "SegmentRoot", "SegmentTrigger"]
     },
     "select": {
       "component": "select",
@@ -919,47 +782,27 @@
     "separator": {
       "component": "separator",
       "file": "separator.json",
-      "symbols": [
-        "Separator",
-        "SeparatorCompact",
-        "SeparatorLabel",
-        "SeparatorRoot"
-      ]
+      "symbols": ["Separator", "SeparatorCompact", "SeparatorLabel", "SeparatorRoot"]
     },
     "skeleton": {
       "component": "skeleton",
       "file": "skeleton.json",
-      "symbols": [
-        "Skeleton"
-      ]
+      "symbols": ["Skeleton"]
     },
     "slider": {
       "component": "slider",
       "file": "slider.json",
-      "symbols": [
-        "Slider",
-        "SliderCompact",
-        "SliderRange",
-        "SliderRoot",
-        "SliderThumb",
-        "SliderTrack"
-      ]
+      "symbols": ["Slider", "SliderCompact", "SliderRange", "SliderRoot", "SliderThumb", "SliderTrack"]
     },
     "spinner": {
       "component": "spinner",
       "file": "spinner.json",
-      "symbols": [
-        "Spinner"
-      ]
+      "symbols": ["Spinner"]
     },
     "splitter": {
       "component": "splitter",
       "file": "splitter.json",
-      "symbols": [
-        "SplitterGroup",
-        "SplitterPanel",
-        "SplitterResizeHandle"
-      ]
+      "symbols": ["SplitterGroup", "SplitterPanel", "SplitterResizeHandle"]
     },
     "stepper": {
       "component": "stepper",
@@ -979,13 +822,7 @@
     "switch": {
       "component": "switch",
       "file": "switch.json",
-      "symbols": [
-        "Switch",
-        "SwitchCompact",
-        "SwitchControl",
-        "SwitchRoot",
-        "SwitchThumb"
-      ]
+      "symbols": ["Switch", "SwitchCompact", "SwitchControl", "SwitchRoot", "SwitchThumb"]
     },
     "table": {
       "component": "table",
@@ -1024,22 +861,12 @@
     "tabs": {
       "component": "tabs",
       "file": "tabs.json",
-      "symbols": [
-        "Tabs",
-        "TabsCompact",
-        "TabsContent",
-        "TabsIndicator",
-        "TabsList",
-        "TabsRoot",
-        "TabsTrigger"
-      ]
+      "symbols": ["Tabs", "TabsCompact", "TabsContent", "TabsIndicator", "TabsList", "TabsRoot", "TabsTrigger"]
     },
     "tag": {
       "component": "tag",
       "file": "tag.json",
-      "symbols": [
-        "Tag"
-      ]
+      "symbols": ["Tag"]
     },
     "tags-input": {
       "component": "tags-input",
@@ -1058,58 +885,32 @@
     "textarea": {
       "component": "textarea",
       "file": "textarea.json",
-      "symbols": [
-        "Textarea",
-        "TextareaClear",
-        "TextareaCompact",
-        "TextareaControl",
-        "TextareaCounter",
-        "TextareaRoot"
-      ]
+      "symbols": ["Textarea", "TextareaClear", "TextareaCompact", "TextareaControl", "TextareaCounter", "TextareaRoot"]
     },
     "time-field": {
       "component": "time-field",
       "file": "time-field.json",
-      "symbols": [
-        "TimeField",
-        "TimeFieldCompact",
-        "TimeFieldInput",
-        "TimeFieldRoot"
-      ]
+      "symbols": ["TimeField", "TimeFieldCompact", "TimeFieldInput", "TimeFieldRoot"]
     },
     "time-range-field": {
       "component": "time-range-field",
       "file": "time-range-field.json",
-      "symbols": [
-        "TimeRangeField",
-        "TimeRangeFieldCompact",
-        "TimeRangeFieldInput",
-        "TimeRangeFieldRoot"
-      ]
+      "symbols": ["TimeRangeField", "TimeRangeFieldCompact", "TimeRangeFieldInput", "TimeRangeFieldRoot"]
     },
     "toast": {
       "component": "toast",
       "file": "toast.json",
-      "symbols": [
-        "Toaster",
-        "ToastProvider"
-      ]
+      "symbols": ["Toaster", "ToastProvider"]
     },
     "toggle": {
       "component": "toggle",
       "file": "toggle.json",
-      "symbols": [
-        "Toggle"
-      ]
+      "symbols": ["Toggle"]
     },
     "toggle-group": {
       "component": "toggle-group",
       "file": "toggle-group.json",
-      "symbols": [
-        "ToggleGroup",
-        "ToggleGroupItem",
-        "ToggleGroupRoot"
-      ]
+      "symbols": ["ToggleGroup", "ToggleGroupItem", "ToggleGroupRoot"]
     },
     "toolbar": {
       "component": "toolbar",
@@ -1142,13 +943,7 @@
     "tree": {
       "component": "tree",
       "file": "tree.json",
-      "symbols": [
-        "TreeItem",
-        "TreeRoot",
-        "TreeVirtualizer",
-        "TreeVirtualizerItem",
-        "TreeVirtualizerRoot"
-      ]
+      "symbols": ["TreeItem", "TreeRoot", "TreeVirtualizer", "TreeVirtualizerItem", "TreeVirtualizerRoot"]
     },
     "tree-menu": {
       "component": "tree-menu",
@@ -1186,12 +981,7 @@
     "watermark": {
       "component": "watermark",
       "file": "watermark.json",
-      "symbols": [
-        "Watermark",
-        "WatermarkCompact",
-        "WatermarkOverlay",
-        "WatermarkRoot"
-      ]
+      "symbols": ["Watermark", "WatermarkCompact", "WatermarkOverlay", "WatermarkRoot"]
     }
   }
 }

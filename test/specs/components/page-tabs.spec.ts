@@ -1,7 +1,7 @@
-import { mount } from '@vue/test-utils';
 import { describe, expect, it } from 'vitest';
-import SPageTabs from '../../../src/components/page-tabs/page-tabs.vue';
+import { mount } from '@vue/test-utils';
 import { getA11yViolations } from '../../shared/a11y';
+import SPageTabs from '../../../src/components/page-tabs/page-tabs.vue';
 
 const items = [
   { value: 'home', label: 'Home', pinned: true, hidePinnedIcon: true },

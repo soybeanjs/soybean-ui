@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import Button from '../button/button.vue';
 import { usePopoverRootContext } from '../popover/context';
+import Button from '../button/button.vue';
 import { usePopconfirmUi } from './context';
 import type { PopconfirmConfirmProps, PopconfirmConfirmEmits } from './types';
 

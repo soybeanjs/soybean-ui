@@ -1,8 +1,8 @@
 import { computed, shallowRef, useId } from 'vue';
-import { useContext, useForwardElement, useUiContext } from '../../composables';
 import { getDisclosureState } from '../../shared';
-import type { DisclosureState } from '../../types';
 import { provideCollapsibleUi } from '../collapsible/context';
+import { useContext, useForwardElement, useUiContext } from '../../composables';
+import type { DisclosureState } from '../../types';
 import type { AccordionItemContextParams, AccordionRootContext, AccordionUiSlot } from './types';
 
 export const [provideAccordionRootContext, useAccordionRootContext] = useContext<AccordionRootContext>('AccordionRoot');

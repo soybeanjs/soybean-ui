@@ -1,7 +1,7 @@
-import { mount } from '@vue/test-utils';
 import { describe, expect, it } from 'vitest';
-import SSegment from '../../../src/components/segment/segment.vue';
+import { mount } from '@vue/test-utils';
 import { getA11yViolations } from '../../shared/a11y';
+import SSegment from '../../../src/components/segment/segment.vue';
 
 const items = [
   { value: 'segment-1', label: 'Daily' },

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { shallowRef } from 'vue';
-import { useControllableState, useForwardElement, useOmitProps } from '../../composables';
 import { transformPropsToContext } from '../../shared';
+import { useControllableState, useForwardElement, useOmitProps } from '../../composables';
 import { Primitive } from '../primitive';
 import { RovingFocusGroup } from '../roving-focus';
 import { provideMenubarCollectionContext, provideMenubarRootContext, useMenubarUi } from './context';

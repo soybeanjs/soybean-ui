@@ -1,8 +1,8 @@
-import { mount } from '@vue/test-utils';
 import { describe, expect, it } from 'vitest';
+import { mount } from '@vue/test-utils';
+import { getA11yViolations } from '../../shared/a11y';
 import { STextareaClear } from '../../../src/components/textarea';
 import STextarea from '../../../src/components/textarea/textarea.vue';
-import { getA11yViolations } from '../../shared/a11y';
 
 describe('STextarea', () => {
   describe('rendering', () => {

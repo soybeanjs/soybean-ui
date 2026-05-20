@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { StepperCompact, provideStepperUi } from '@soybeanjs/headless/stepper';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
+import { StepperCompact, provideStepperUi } from '@soybeanjs/headless/stepper';
 import { keysOf } from '@soybeanjs/utils';
 import { stepperVariants } from '@/styles/stepper';
 import type { StepperProps, StepperEmits, StepperSlots } from './types';

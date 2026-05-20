@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { computed, shallowRef } from 'vue';
 import type { CSSProperties } from 'vue';
-import { useControllableState } from '../../composables';
 import { transformPropsToContext } from '../../shared';
-import { provideLayoutRootContext, useLayoutUi } from './context';
+import { useControllableState } from '../../composables';
 import { layoutCssVars } from './shared';
+import { provideLayoutRootContext, useLayoutUi } from './context';
 import type { LayoutRootProps, LayoutRootEmits, LayoutSidebarState } from './types';
 
 defineOptions({

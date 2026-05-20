@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { RovingFocusItem } from '../roving-focus';
 import { Button } from '../button';
+import { RovingFocusItem } from '../roving-focus';
 import { useToolbarUi } from './context';
 import type { ToolbarButtonProps, ToolbarButtonEmits } from './types';
 

@@ -1,9 +1,8 @@
-import { CalendarDateTime, Time } from '@internationalized/date';
-import { mount } from '@vue/test-utils';
 import { describe, expect, it } from 'vitest';
-
-import STimeField from '../../../src/components/time-field/time-field.vue';
+import { mount } from '@vue/test-utils';
+import { CalendarDateTime, Time } from '@internationalized/date';
 import { getA11yViolations } from '../../shared/a11y';
+import STimeField from '../../../src/components/time-field/time-field.vue';
 
 describe('STimeField', () => {
   describe('rendering', () => {

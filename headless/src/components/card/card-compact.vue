@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { useForwardListeners, useOmitProps } from '../../composables';
-import CardRoot from './card-root.vue';
-import CardHeader from './card-header.vue';
 import CardContent from './card-content.vue';
+import CardDescription from './card-description.vue';
 import CardFooter from './card-footer.vue';
+import CardHeader from './card-header.vue';
+import CardRoot from './card-root.vue';
 import CardTitleRoot from './card-title-root.vue';
 import CardTitle from './card-title.vue';
-import CardDescription from './card-description.vue';
 import type { CardCompactProps, CardCompactEmits, CardCompactSlots } from './types';
 
 defineOptions({

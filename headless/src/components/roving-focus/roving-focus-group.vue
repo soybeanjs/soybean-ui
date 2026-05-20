@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { useForwardElement } from '../../composables';
 import { transformPropsToContext } from '../../shared';
+import { useForwardElement } from '../../composables';
 import { Primitive } from '../primitive';
 import { provideRovingFocusGroupContext } from './context';
 import type { RovingFocusGroupProps, RovingFocusGroupEmits } from './types';

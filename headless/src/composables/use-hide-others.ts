@@ -1,7 +1,7 @@
 import { onWatcherCleanup, toValue, watchPostEffect } from 'vue';
 import type { MaybeRefOrGetter } from 'vue';
-import { hideOthers } from 'aria-hidden';
 import { filterNullish } from '@soybeanjs/utils';
+import { hideOthers } from 'aria-hidden';
 import { isClient } from '../shared';
 import type { MaybeArray } from '../types';
 

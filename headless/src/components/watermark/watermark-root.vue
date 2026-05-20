@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { onBeforeUnmount, shallowRef, watch } from 'vue';
 import { useForwardElement } from '../../composables';
-import { provideWatermarkRootContext, useWatermarkUi } from './context';
 import { generateWatermarkDataUrl, resolveWatermarkConfig } from './shared';
+import { provideWatermarkRootContext, useWatermarkUi } from './context';
 import type { WatermarkRootProps } from './types';
 
 defineOptions({

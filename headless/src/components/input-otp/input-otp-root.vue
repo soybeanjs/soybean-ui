@@ -1,9 +1,8 @@
 <script setup lang="ts">
 import { computed, onBeforeUnmount, onMounted, shallowRef, useAttrs, watch, watchEffect } from 'vue';
 import { defaultDocument, defaultWindow, useEventListener, usePrevious } from '@vueuse/core';
-import { useControllableState } from '../../composables';
 import { omit, transformPropsToContext } from '../../shared';
-import { provideInputOtpRootContext, useInputOtpUi } from './context';
+import { useControllableState } from '../../composables';
 import {
   createInputOtpSlots,
   getClampedOtpValue,
@@ -12,8 +11,9 @@ import {
   resolveInputOtpSelection,
   syncTimeouts
 } from './shared';
-import { usePasswordManagerBadge } from './use-password-manager-badge';
+import { provideInputOtpRootContext, useInputOtpUi } from './context';
 import type { InputOtpRootProps, InputOtpRootSlotProps, InputOtpRootEmits } from './types';
+import { usePasswordManagerBadge } from './use-password-manager-badge';
 
 defineOptions({
   name: 'InputOtpRoot',

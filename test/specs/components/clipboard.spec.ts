@@ -1,10 +1,10 @@
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { h, nextTick } from 'vue';
 import { mount } from '@vue/test-utils';
-import { beforeEach, describe, expect, it, vi } from 'vitest';
-import SConfigProvider from '../../../src/components/config-provider/config-provider.vue';
+import { getA11yViolations } from '../../shared/a11y';
 import SClipboard from '../../../src/components/clipboard/clipboard.vue';
 import type { ClipboardProps, ClipboardSlotProps } from '../../../src/components/clipboard/types';
-import { getA11yViolations } from '../../shared/a11y';
+import SConfigProvider from '../../../src/components/config-provider/config-provider.vue';
 
 const writeText = vi.fn(async () => undefined);
 const execCommand = vi.fn(() => true);

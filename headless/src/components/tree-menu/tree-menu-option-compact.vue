@@ -3,14 +3,14 @@ import { computed } from 'vue';
 import { keysOf } from '@soybeanjs/utils';
 import { useOmitProps } from '../../composables';
 import type { Placement } from '../../types';
-import Link from '../link/link.vue';
 import DropdownMenuCompact from '../dropdown-menu/dropdown-menu-compact.vue';
+import Link from '../link/link.vue';
 import TooltipCompact from '../tooltip/tooltip-compact.vue';
 import { useTreeMenuRootContext, useTreeMenuUi } from './context';
 import TreeMenuButton from './tree-menu-button.vue';
 import TreeMenuCollapsible from './tree-menu-collapsible.vue';
-import TreeMenuSlotCompact from './tree-menu-slot-compact.vue';
 import TreeMenuItem from './tree-menu-item.vue';
+import TreeMenuSlotCompact from './tree-menu-slot-compact.vue';
 import TreeMenuSub from './tree-menu-sub.vue';
 import type { TreeMenuOptionCompactProps, TreeMenuOptionCompactEmits, TreeMenuBaseOptionData } from './types';
 

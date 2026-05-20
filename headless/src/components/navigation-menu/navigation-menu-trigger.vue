@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { useAttrs } from 'vue';
 import { refAutoReset } from '@vueuse/core';
-import { useForwardElement } from '../../composables';
 import { isMouseEvent, isNullish } from '../../shared';
+import { useForwardElement } from '../../composables';
 import { Primitive } from '../primitive';
 import { VisuallyHidden } from '../visually-hidden';
 import {

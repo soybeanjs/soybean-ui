@@ -1,7 +1,7 @@
 <script setup lang="ts">
+import { SCalendarRange } from '@soybeanjs/ui';
 import { CalendarDate } from '@internationalized/date';
 import type { DateValue } from '@internationalized/date';
-import { SCalendarRange } from '@soybeanjs/ui';
 
 const value = {
   start: new CalendarDate(2026, 4, 18),

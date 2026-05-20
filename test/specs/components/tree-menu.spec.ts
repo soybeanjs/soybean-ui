@@ -1,8 +1,8 @@
-import { mount } from '@vue/test-utils';
-import { h, nextTick } from 'vue';
 import { describe, expect, it } from 'vitest';
-import STreeMenu from '../../../src/components/tree-menu/tree-menu.vue';
+import { h, nextTick } from 'vue';
+import { mount } from '@vue/test-utils';
 import { getA11yViolations } from '../../shared/a11y';
+import STreeMenu from '../../../src/components/tree-menu/tree-menu.vue';
 
 const items = [
   {

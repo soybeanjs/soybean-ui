@@ -1,9 +1,9 @@
-import { mount } from '@vue/test-utils';
-import { nextTick } from 'vue';
 import { describe, expect, it } from 'vitest';
-import SAvatar from '../../../src/components/avatar/avatar.vue';
-import { getA11yViolations } from '../../shared/a11y';
+import { nextTick } from 'vue';
+import { mount } from '@vue/test-utils';
 import { delay, setupMockImage, TEST_DELAYS } from '../../shared';
+import { getA11yViolations } from '../../shared/a11y';
+import SAvatar from '../../../src/components/avatar/avatar.vue';
 
 describe('SAvatar', () => {
   describe('rendering', () => {

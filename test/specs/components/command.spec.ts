@@ -1,7 +1,7 @@
-import { DOMWrapper, mount } from '@vue/test-utils';
 import { afterEach, describe, expect, it } from 'vitest';
-import SCommand from '../../../src/components/command/command.vue';
+import { DOMWrapper, mount } from '@vue/test-utils';
 import { getA11yViolations } from '../../shared/a11y';
+import SCommand from '../../../src/components/command/command.vue';
 
 const items = [
   {

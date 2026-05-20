@@ -15,10 +15,7 @@
           "summaryKey": "changelog.generated.v0.19.0.8ff3d",
           "commitHash": "8ff3d",
           "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/8ff3d6ff",
-          "authors": [
-            "soybeanjs",
-            "MicrosoftCopilot"
-          ],
+          "authors": ["soybeanjs", "MicrosoftCopilot"],
           "source": "exact-scope"
         },
         {
@@ -28,9 +25,7 @@
           "summaryKey": "changelog.generated.v0.19.0.2518f",
           "commitHash": "2518f",
           "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/2518f9d0",
-          "authors": [
-            "soybeanfe"
-          ],
+          "authors": ["soybeanfe"],
           "source": "exact-scope"
         }
       ]

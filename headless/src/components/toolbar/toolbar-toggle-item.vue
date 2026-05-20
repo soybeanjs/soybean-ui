@@ -1,9 +1,9 @@
 <script setup lang="ts" generic="T extends DefinedValue = string">
 import { computed } from 'vue';
-import type { DefinedValue } from '../../types';
-import { ToggleGroupItem } from '../toggle-group';
 import { useToggleGroupRootContext } from '../toggle-group/context';
+import type { DefinedValue } from '../../types';
 import { RovingFocusItem } from '../roving-focus';
+import { ToggleGroupItem } from '../toggle-group';
 import { useToolbarUi } from './context';
 import type { ToolbarToggleItemProps } from './types';
 

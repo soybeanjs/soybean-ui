@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { EmptyCompact, provideEmptyUi } from '@soybeanjs/headless/empty';
 import { useOmitProps } from '@soybeanjs/headless/composables';
+import { EmptyCompact, provideEmptyUi } from '@soybeanjs/headless/empty';
 import { keysOf } from '@soybeanjs/utils';
 import { emptyVariants } from '@/styles/empty';
 import type { EmptyProps, EmptySlots } from './types';

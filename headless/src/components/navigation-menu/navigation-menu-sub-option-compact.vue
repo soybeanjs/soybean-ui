@@ -2,9 +2,9 @@
 import { computed } from 'vue';
 import { NavigationMenuItem, NavigationMenuLink } from '@soybeanjs/headless/navigation-menu';
 import Icon from '../_icon/icon.vue';
-import NavigationMenuItemSlot from './navigation-menu-item-slot-compact.vue';
-import { useNavigationMenuUi } from './context';
 import { useCommonSlotNames } from './shared';
+import { useNavigationMenuUi } from './context';
+import NavigationMenuItemSlot from './navigation-menu-item-slot-compact.vue';
 import type {
   NavigationMenuSubOptionCompactProps,
   NavigationMenuSubOptionCompactEmits,

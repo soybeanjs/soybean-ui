@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { useControllableState } from '../../composables';
 import { transformPropsToContext } from '../../shared';
+import { useControllableState } from '../../composables';
 import { PopperRoot } from '../popper';
 import { provideHoverCardRootContext } from './context';
 import type { HoverCardRootProps, HoverCardRootEmits } from './types';

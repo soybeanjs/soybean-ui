@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { useForwardListeners, useOmitProps } from '../../composables';
 import { useDateRangeFieldUi } from './context';
-import DateRangeFieldRoot from './date-range-field-root.vue';
 import DateRangeFieldInput from './date-range-field-input.vue';
+import DateRangeFieldRoot from './date-range-field-root.vue';
 import type { DateRangeFieldCompactProps, DateRangeFieldCompactEmits, DateRangeFieldCompactSlots } from './types';
 
 defineOptions({

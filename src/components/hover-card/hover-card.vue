@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { HoverCardCompact, provideHoverCardUi } from '@soybeanjs/headless/hover-card';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
+import { HoverCardCompact, provideHoverCardUi } from '@soybeanjs/headless/hover-card';
 import { hoverCardVariants } from '@/styles/hover-card';
 import type { HoverCardProps, HoverCardEmits, HoverCardSlots } from './types';
 

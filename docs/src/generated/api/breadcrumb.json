@@ -10,9 +10,7 @@
         "description": "Properties for the Breadcrumb component.",
         "descriptionKey": "api.generated.src_components_breadcrumb_types.breadcrumbprops.props",
         "sourcePath": "src/components/breadcrumb/types.ts",
-        "typeParameters": [
-          "TypeParameter T"
-        ],
+        "typeParameters": ["TypeParameter T"],
         "members": [
           {
             "name": "class",
@@ -494,9 +492,7 @@
         "description": "Events for the Breadcrumb component.",
         "descriptionKey": "api.generated.src_components_breadcrumb_types.breadcrumbemits.emits",
         "sourcePath": "src/components/breadcrumb/types.ts",
-        "typeParameters": [
-          "TypeParameter T"
-        ],
+        "typeParameters": ["TypeParameter T"],
         "members": [],
         "callables": [
           {
@@ -520,9 +516,7 @@
         "description": "Slots for the Breadcrumb component.",
         "descriptionKey": "api.generated.src_components_breadcrumb_types.breadcrumbslots.slots",
         "sourcePath": "src/components/breadcrumb/types.ts",
-        "typeParameters": [
-          "TypeParameter T"
-        ],
+        "typeParameters": ["TypeParameter T"],
         "members": [],
         "callables": [
           {
@@ -542,9 +536,7 @@
                 "description": "Slot properties for the BreadcrumbCompactItem component.",
                 "descriptionKey": "api.generated.headless_src_components_breadcrumb_types.breadcrumbcompactitemslotprops",
                 "sourcePath": "headless/src/components/breadcrumb/types.ts",
-                "typeParameters": [
-                  "T extends BreadcrumbOptionData = BreadcrumbOptionData"
-                ],
+                "typeParameters": ["T extends BreadcrumbOptionData = BreadcrumbOptionData"],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -568,9 +560,7 @@
                 "description": "Slot properties for the BreadcrumbCompactEllipsis component.",
                 "descriptionKey": "api.generated.headless_src_components_breadcrumb_types.breadcrumbcompactellipsisslotprops",
                 "sourcePath": "headless/src/components/breadcrumb/types.ts",
-                "typeParameters": [
-                  "T extends BreadcrumbOptionData = BreadcrumbOptionData"
-                ],
+                "typeParameters": ["T extends BreadcrumbOptionData = BreadcrumbOptionData"],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -614,9 +604,7 @@
                 "description": "Slot properties for the BreadcrumbCompactItem component.",
                 "descriptionKey": "api.generated.headless_src_components_breadcrumb_types.breadcrumbcompactitemslotprops",
                 "sourcePath": "headless/src/components/breadcrumb/types.ts",
-                "typeParameters": [
-                  "T extends BreadcrumbOptionData = BreadcrumbOptionData"
-                ],
+                "typeParameters": ["T extends BreadcrumbOptionData = BreadcrumbOptionData"],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -640,9 +628,7 @@
                 "description": "Slot properties for the BreadcrumbCompactItem component.",
                 "descriptionKey": "api.generated.headless_src_components_breadcrumb_types.breadcrumbcompactitemslotprops",
                 "sourcePath": "headless/src/components/breadcrumb/types.ts",
-                "typeParameters": [
-                  "T extends BreadcrumbOptionData = BreadcrumbOptionData"
-                ],
+                "typeParameters": ["T extends BreadcrumbOptionData = BreadcrumbOptionData"],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -666,9 +652,7 @@
                 "description": "Slot properties for the BreadcrumbCompactItem component.",
                 "descriptionKey": "api.generated.headless_src_components_breadcrumb_types.breadcrumbcompactitemslotprops",
                 "sourcePath": "headless/src/components/breadcrumb/types.ts",
-                "typeParameters": [
-                  "T extends BreadcrumbOptionData = BreadcrumbOptionData"
-                ],
+                "typeParameters": ["T extends BreadcrumbOptionData = BreadcrumbOptionData"],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -692,9 +676,7 @@
                 "description": "Slot properties for the BreadcrumbCompactItem component.",
                 "descriptionKey": "api.generated.headless_src_components_breadcrumb_types.breadcrumbcompactitemslotprops",
                 "sourcePath": "headless/src/components/breadcrumb/types.ts",
-                "typeParameters": [
-                  "T extends BreadcrumbOptionData = BreadcrumbOptionData"
-                ],
+                "typeParameters": ["T extends BreadcrumbOptionData = BreadcrumbOptionData"],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -714,9 +696,7 @@
         "description": "Properties for the BreadcrumbCompact component.",
         "descriptionKey": "api.generated.headless_src_components_breadcrumb_types.breadcrumbcompactprops.props",
         "sourcePath": "headless/src/components/breadcrumb/types.ts",
-        "typeParameters": [
-          "TypeParameter T"
-        ],
+        "typeParameters": ["TypeParameter T"],
         "members": [
           {
             "name": "items",
@@ -1123,9 +1103,7 @@
         "description": "Events for the BreadcrumbCompact component.",
         "descriptionKey": "api.generated.headless_src_components_breadcrumb_types.breadcrumbcompactemits.emits",
         "sourcePath": "headless/src/components/breadcrumb/types.ts",
-        "typeParameters": [
-          "TypeParameter T"
-        ],
+        "typeParameters": ["TypeParameter T"],
         "members": [],
         "callables": [
           {
@@ -1149,9 +1127,7 @@
         "description": "Slots for the BreadcrumbCompact component.",
         "descriptionKey": "api.generated.headless_src_components_breadcrumb_types.breadcrumbcompactslots.slots",
         "sourcePath": "headless/src/components/breadcrumb/types.ts",
-        "typeParameters": [
-          "TypeParameter T"
-        ],
+        "typeParameters": ["TypeParameter T"],
         "members": [],
         "callables": [
           {
@@ -1171,9 +1147,7 @@
                 "description": "Slot properties for the BreadcrumbCompactItem component.",
                 "descriptionKey": "api.generated.headless_src_components_breadcrumb_types.breadcrumbcompactitemslotprops",
                 "sourcePath": "headless/src/components/breadcrumb/types.ts",
-                "typeParameters": [
-                  "T extends BreadcrumbOptionData = BreadcrumbOptionData"
-                ],
+                "typeParameters": ["T extends BreadcrumbOptionData = BreadcrumbOptionData"],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -1197,9 +1171,7 @@
                 "description": "Slot properties for the BreadcrumbCompactEllipsis component.",
                 "descriptionKey": "api.generated.headless_src_components_breadcrumb_types.breadcrumbcompactellipsisslotprops",
                 "sourcePath": "headless/src/components/breadcrumb/types.ts",
-                "typeParameters": [
-                  "T extends BreadcrumbOptionData = BreadcrumbOptionData"
-                ],
+                "typeParameters": ["T extends BreadcrumbOptionData = BreadcrumbOptionData"],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -1243,9 +1215,7 @@
                 "description": "Slot properties for the BreadcrumbCompactItem component.",
                 "descriptionKey": "api.generated.headless_src_components_breadcrumb_types.breadcrumbcompactitemslotprops",
                 "sourcePath": "headless/src/components/breadcrumb/types.ts",
-                "typeParameters": [
-                  "T extends BreadcrumbOptionData = BreadcrumbOptionData"
-                ],
+                "typeParameters": ["T extends BreadcrumbOptionData = BreadcrumbOptionData"],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -1269,9 +1239,7 @@
                 "description": "Slot properties for the BreadcrumbCompactItem component.",
                 "descriptionKey": "api.generated.headless_src_components_breadcrumb_types.breadcrumbcompactitemslotprops",
                 "sourcePath": "headless/src/components/breadcrumb/types.ts",
-                "typeParameters": [
-                  "T extends BreadcrumbOptionData = BreadcrumbOptionData"
-                ],
+                "typeParameters": ["T extends BreadcrumbOptionData = BreadcrumbOptionData"],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -1295,9 +1263,7 @@
                 "description": "Slot properties for the BreadcrumbCompactItem component.",
                 "descriptionKey": "api.generated.headless_src_components_breadcrumb_types.breadcrumbcompactitemslotprops",
                 "sourcePath": "headless/src/components/breadcrumb/types.ts",
-                "typeParameters": [
-                  "T extends BreadcrumbOptionData = BreadcrumbOptionData"
-                ],
+                "typeParameters": ["T extends BreadcrumbOptionData = BreadcrumbOptionData"],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -1321,9 +1287,7 @@
                 "description": "Slot properties for the BreadcrumbCompactItem component.",
                 "descriptionKey": "api.generated.headless_src_components_breadcrumb_types.breadcrumbcompactitemslotprops",
                 "sourcePath": "headless/src/components/breadcrumb/types.ts",
-                "typeParameters": [
-                  "T extends BreadcrumbOptionData = BreadcrumbOptionData"
-                ],
+                "typeParameters": ["T extends BreadcrumbOptionData = BreadcrumbOptionData"],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -1343,9 +1307,7 @@
         "description": "Slot properties for the BreadcrumbCompactEllipsis component.",
         "descriptionKey": "api.generated.headless_src_components_breadcrumb_types.breadcrumbcompactellipsisslotprops.slotprops",
         "sourcePath": "headless/src/components/breadcrumb/types.ts",
-        "typeParameters": [
-          "TypeParameter T"
-        ],
+        "typeParameters": ["TypeParameter T"],
         "members": [
           {
             "name": "ellipsisItems",
@@ -1372,9 +1334,7 @@
         "description": "Slot properties for the BreadcrumbCompactItem component.",
         "descriptionKey": "api.generated.headless_src_components_breadcrumb_types.breadcrumbcompactitemslotprops.slotprops",
         "sourcePath": "headless/src/components/breadcrumb/types.ts",
-        "typeParameters": [
-          "TypeParameter T"
-        ],
+        "typeParameters": ["TypeParameter T"],
         "members": [
           {
             "name": "item",
@@ -1462,9 +1422,7 @@
                 "description": "Route location that can be passed to `router.push()` and other user-facing APIs.",
                 "descriptionKey": "api.generated.node_modules_pnpm_vue_router_5_0_7_vue_compiler_sfc_3_5_34_pinia_3_0_4_typescript_6_0_3_vue_3_5_34_types_f357d1e940226713debf99bc42fbe5c2_node_modules_vue_router_dist_useapi_d6ckosfy_d.routelocationraw",
                 "sourcePath": "node_modules/.pnpm/vue-router@5.0.7_@vue+compiler-sfc@3.5.34_pinia@3.0.4_typescript@6.0.3_vue@3.5.34_types_f357d1e940226713debf99bc42fbe5c2/node_modules/vue-router/dist/useApi-D6ckOsFy.d.ts",
-                "typeParameters": [
-                  "Name extends keyof RouteMap = keyof RouteMap"
-                ],
+                "typeParameters": ["Name extends keyof RouteMap = keyof RouteMap"],
                 "external": true,
                 "members": [],
                 "callables": []

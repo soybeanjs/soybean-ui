@@ -3,8 +3,8 @@ import { computed } from 'vue';
 import { useForwardListeners, usePickProps, useOmitProps } from '../../composables';
 import type { DateValue } from '../../date';
 import Icon from '../_icon/icon.vue';
-import PopoverCompact from '../popover/popover-compact.vue';
 import DateFieldCompact from '../date-field/date-field-compact.vue';
+import PopoverCompact from '../popover/popover-compact.vue';
 import type { DatePickerCompactProps, DatePickerCompactEmits } from './types';
 
 defineOptions({

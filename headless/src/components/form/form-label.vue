@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { Label } from '../label';
-import { useFormFieldContext, useFormUi, useFormFieldUi } from './context';
 import { mergeClasses } from './shared';
+import { useFormFieldContext, useFormUi, useFormFieldUi } from './context';
 import type { FormLabelProps } from './types';
 
 defineOptions({

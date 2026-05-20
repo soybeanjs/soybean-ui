@@ -2,14 +2,14 @@
 import { useForwardListeners, usePickProps } from '../../composables';
 import ColorAreaCompact from '../color-area/color-area-compact.vue';
 import ColorFieldCompact from '../color-field/color-field-compact.vue';
-import ColorPickerRoot from './color-picker-root.vue';
 import ColorSliderCompact from '../color-slider/color-slider-compact.vue';
-import ColorSwatchCompact from '../color-swatch/color-swatch-compact.vue';
 import ColorSwatchPickerCompact from '../color-swatch-picker/color-swatch-picker-compact.vue';
+import ColorSwatchCompact from '../color-swatch/color-swatch-compact.vue';
 import PopoverCompact from '../popover/popover-compact.vue';
 import SegmentCompact from '../segment/segment-compact.vue';
-import { useColorPickerUi } from './context';
 import { colorFormats } from './shared';
+import { useColorPickerUi } from './context';
+import ColorPickerRoot from './color-picker-root.vue';
 import ColorPickerTrigger from './color-picker-trigger.vue';
 import type { ColorPickerCompactProps, ColorPickerCompactEmits } from './types';
 

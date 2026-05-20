@@ -1,7 +1,6 @@
 import { mkdir, readdir } from 'node:fs/promises';
 import path from 'node:path';
 import process from 'node:process';
-
 import {
   collectKeyedTextEntries,
   listFileBasenames,

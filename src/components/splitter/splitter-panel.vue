@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { SplitterPanel } from '@soybeanjs/headless/splitter';
 import { useForwardListeners } from '@soybeanjs/headless/composables';
+import { SplitterPanel } from '@soybeanjs/headless/splitter';
 import type { SplitterPanelProps, SplitterPanelEmits } from './types';
 
 defineOptions({

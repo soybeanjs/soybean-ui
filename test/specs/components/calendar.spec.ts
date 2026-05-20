@@ -1,11 +1,10 @@
+import { describe, expect, it } from 'vitest';
+import { defineComponent, nextTick, shallowRef } from 'vue';
+import { DOMWrapper, flushPromises, mount } from '@vue/test-utils';
 import { CalendarDate } from '@internationalized/date';
 import type { DateValue } from '@internationalized/date';
-import { DOMWrapper, flushPromises, mount } from '@vue/test-utils';
-import { defineComponent, nextTick, shallowRef } from 'vue';
-import { describe, expect, it } from 'vitest';
-
-import SCalendar from '../../../src/components/calendar/calendar.vue';
 import { getA11yViolations } from '../../shared/a11y';
+import SCalendar from '../../../src/components/calendar/calendar.vue';
 
 describe('SCalendar', () => {
   describe('rendering', () => {

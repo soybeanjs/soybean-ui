@@ -1,13 +1,13 @@
 <script setup lang="ts">
-import LayoutRoot from './layout-root.vue';
-import LayoutSidebar from './layout-sidebar.vue';
-import LayoutRail from './layout-rail.vue';
-import LayoutMain from './layout-main.vue';
-import LayoutHeader from './layout-header.vue';
-import LayoutTab from './layout-tab.vue';
+import { useOmitProps } from '@soybeanjs/headless/composables';
 import LayoutContent from './layout-content.vue';
 import LayoutFooter from './layout-footer.vue';
-import { useOmitProps } from '@soybeanjs/headless/composables';
+import LayoutHeader from './layout-header.vue';
+import LayoutMain from './layout-main.vue';
+import LayoutRail from './layout-rail.vue';
+import LayoutRoot from './layout-root.vue';
+import LayoutSidebar from './layout-sidebar.vue';
+import LayoutTab from './layout-tab.vue';
 import type { LayoutCompactProps, LayoutCompactEmits, LayoutCompactSlots } from './types';
 
 defineOptions({

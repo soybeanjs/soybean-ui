@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import { useElementSize } from '@vueuse/core';
 import { computed, useAttrs } from 'vue';
+import { useElementSize } from '@vueuse/core';
 import { useForwardElement } from '../../composables';
 import type { Side } from '../../types';
 import { Primitive } from '../primitive';
-import { useSliderRootContext, useSliderUi } from './context';
 import { getThumbInBoundsOffset } from './shared';
+import { useSliderRootContext, useSliderUi } from './context';
 import type { SliderThumbProps } from './types';
 
 defineOptions({

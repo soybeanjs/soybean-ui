@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { CalendarDate } from '@internationalized/date';
 import { SCalendar } from '@soybeanjs/ui';
+import { CalendarDate } from '@internationalized/date';
 </script>
 
 <template>

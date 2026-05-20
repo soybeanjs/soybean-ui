@@ -6,7 +6,6 @@ import type { Point, SwipeDirection } from '../../types';
 import DynamicRender from '../_common/dynamic-render.vue';
 import Icon from '../_icon/icon.vue';
 import Button from '../button/button.vue';
-import { useToasterContext, useToastUi } from './context';
 import {
   toastCssVars,
   SWIPE_THRESHOLD,
@@ -16,6 +15,7 @@ import {
   setSwipeAmount,
   resetSwipeAmount
 } from './shared';
+import { useToasterContext, useToastUi } from './context';
 import type { ToastProps, ToastEmits, ToastType } from './types';
 
 defineOptions({

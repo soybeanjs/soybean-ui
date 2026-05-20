@@ -1,8 +1,8 @@
 import type { VNode } from 'vue';
-import type { Direction, PropsToContext } from '../../types';
-import type { TooltipProviderProps } from '../tooltip/types';
-import type { IconValue } from '../_icon/types';
 import type { LocaleMessagesOverrides } from '../../locale/types';
+import type { Direction, PropsToContext } from '../../types';
+import type { IconValue } from '../_icon/types';
+import type { TooltipProviderProps } from '../tooltip/types';
 
 /**
  * Properties for the ConfigProvider component.

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { usePaginationRootContext, usePaginationUi } from './context';
 import { getRange, transform } from './shared';
+import { usePaginationRootContext, usePaginationUi } from './context';
 import type { PaginationListProps } from './types';
 
 defineOptions({

@@ -1,7 +1,7 @@
 import type { BadgeCompactProps, BadgeRootEmits, BadgeUi } from '@soybeanjs/headless/badge';
 import type { ClassValue } from '@soybeanjs/headless/types';
-import type { ThemeColor, ThemeSize } from '@/theme';
 import type { BadgePosition } from '@/styles/badge';
+import type { ThemeColor, ThemeSize } from '@/theme';
 
 /**
  * Properties for the Badge component.

@@ -1,6 +1,6 @@
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { nextTick } from 'vue';
 import { mount } from '@vue/test-utils';
-import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { useFocusGuards } from '../../../headless/src/composables/use-focus-guards';
 
 // Mock the shared/env module

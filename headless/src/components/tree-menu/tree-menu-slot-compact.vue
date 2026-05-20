@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import Button from '../button/button.vue';
-import BadgeCompact from '../badge/badge-compact.vue';
-import DropdownMenuCompact from '../dropdown-menu/dropdown-menu-compact.vue';
 import Icon from '../_icon/icon.vue';
+import BadgeCompact from '../badge/badge-compact.vue';
+import Button from '../button/button.vue';
+import DropdownMenuCompact from '../dropdown-menu/dropdown-menu-compact.vue';
 import { useTreeMenuRootContext, useTreeMenuUi } from './context';
 import type { TreeMenuOptionSlotCompactProps } from './types';
 

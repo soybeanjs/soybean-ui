@@ -9,8 +9,8 @@ import type {
   SelectionProps,
   UiClass
 } from '../../types';
-import type { PrimitiveWithBaseProps } from '../primitive/types';
 import type { ButtonProps } from '../button/types';
+import type { PrimitiveWithBaseProps } from '../primitive/types';
 
 /**
  * Properties for the ToggleGroupRoot component.

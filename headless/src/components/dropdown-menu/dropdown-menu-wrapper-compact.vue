@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { useForwardListeners, useOmitProps } from '../../composables';
+import { MenuArrow, MenuPortal } from '../menu';
 import DropdownMenuContent from './dropdown-menu-content.vue';
 import DropdownMenuRoot from './dropdown-menu-root.vue';
 import DropdownMenuTrigger from './dropdown-menu-trigger.vue';
-import { MenuArrow, MenuPortal } from '../menu';
 import type { DropdownMenuWrapperCompactProps, DropdownMenuWrapperCompactEmits } from './types';
 
 defineOptions({

@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { Primitive } from '../primitive';
-import { useProgressRootContext, useProgressUi } from './context';
 import { getValuePercent } from './shared';
+import { useProgressRootContext, useProgressUi } from './context';
 import type { ProgressIndicatorProps } from './types';
 
 defineOptions({

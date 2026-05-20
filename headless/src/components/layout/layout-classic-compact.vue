@@ -1,15 +1,15 @@
 <script setup lang="ts">
 import { computed, useId } from 'vue';
 import { useOmitProps } from '@soybeanjs/headless/composables';
+import LayoutClassicPlaceholder from './layout-classic-placeholder.vue';
 import LayoutClassicRoot from './layout-classic-root.vue';
-import LayoutSidebar from './layout-sidebar.vue';
-import LayoutRail from './layout-rail.vue';
-import LayoutMain from './layout-main.vue';
-import LayoutHeader from './layout-header.vue';
-import LayoutTab from './layout-tab.vue';
 import LayoutContent from './layout-content.vue';
 import LayoutFooter from './layout-footer.vue';
-import LayoutClassicPlaceholder from './layout-classic-placeholder.vue';
+import LayoutHeader from './layout-header.vue';
+import LayoutMain from './layout-main.vue';
+import LayoutRail from './layout-rail.vue';
+import LayoutSidebar from './layout-sidebar.vue';
+import LayoutTab from './layout-tab.vue';
 import type { LayoutClassicCompactProps, LayoutClassicCompactEmits, LayoutClassicCompactSlots } from './types';
 
 defineOptions({

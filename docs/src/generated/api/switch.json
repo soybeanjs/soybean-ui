@@ -10,9 +10,7 @@
         "description": "Properties for the Switch component.",
         "descriptionKey": "api.generated.src_components_switch_types.switchprops.props",
         "sourcePath": "src/components/switch/types.ts",
-        "typeParameters": [
-          "TypeParameter T"
-        ],
+        "typeParameters": ["TypeParameter T"],
         "members": [
           {
             "name": "class",
@@ -393,9 +391,7 @@
         "description": "Events for the Switch component.",
         "descriptionKey": "api.generated.src_components_switch_types.switchemits.emits",
         "sourcePath": "src/components/switch/types.ts",
-        "typeParameters": [
-          "TypeParameter T"
-        ],
+        "typeParameters": ["TypeParameter T"],
         "members": [],
         "callables": [
           {
@@ -419,9 +415,7 @@
         "description": "Slots for the Switch component.",
         "descriptionKey": "api.generated.src_components_switch_types.switchslots.slots",
         "sourcePath": "src/components/switch/types.ts",
-        "typeParameters": [
-          "TypeParameter T"
-        ],
+        "typeParameters": ["TypeParameter T"],
         "members": [],
         "callables": [
           {
@@ -441,9 +435,7 @@
                 "description": "Slot properties for the SwitchCompact component.",
                 "descriptionKey": "api.generated.headless_src_components_switch_types.switchcompactslotprops",
                 "sourcePath": "headless/src/components/switch/types.ts",
-                "typeParameters": [
-                  "T extends AcceptableBooleanValue = boolean"
-                ],
+                "typeParameters": ["T extends AcceptableBooleanValue = boolean"],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -467,9 +459,7 @@
                 "description": "Slot properties for the SwitchCompact component.",
                 "descriptionKey": "api.generated.headless_src_components_switch_types.switchcompactslotprops",
                 "sourcePath": "headless/src/components/switch/types.ts",
-                "typeParameters": [
-                  "T extends AcceptableBooleanValue = boolean"
-                ],
+                "typeParameters": ["T extends AcceptableBooleanValue = boolean"],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -493,9 +483,7 @@
                 "description": "Slot properties for the SwitchCompact component.",
                 "descriptionKey": "api.generated.headless_src_components_switch_types.switchcompactslotprops",
                 "sourcePath": "headless/src/components/switch/types.ts",
-                "typeParameters": [
-                  "T extends AcceptableBooleanValue = boolean"
-                ],
+                "typeParameters": ["T extends AcceptableBooleanValue = boolean"],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -515,9 +503,7 @@
         "description": "Slot properties for the SwitchCompact component.",
         "descriptionKey": "api.generated.headless_src_components_switch_types.switchcompactslotprops.slotprops",
         "sourcePath": "headless/src/components/switch/types.ts",
-        "typeParameters": [
-          "TypeParameter T"
-        ],
+        "typeParameters": ["TypeParameter T"],
         "members": [
           {
             "name": "modelValue",
@@ -542,9 +528,7 @@
         "description": "Properties for the SwitchCompact component.",
         "descriptionKey": "api.generated.headless_src_components_switch_types.switchcompactprops.props",
         "sourcePath": "headless/src/components/switch/types.ts",
-        "typeParameters": [
-          "TypeParameter T"
-        ],
+        "typeParameters": ["TypeParameter T"],
         "members": [
           {
             "name": "controlProps",
@@ -800,9 +784,7 @@
         "description": "Events for the SwitchCompact component.",
         "descriptionKey": "api.generated.headless_src_components_switch_types.switchcompactemits.emits",
         "sourcePath": "headless/src/components/switch/types.ts",
-        "typeParameters": [
-          "TypeParameter T"
-        ],
+        "typeParameters": ["TypeParameter T"],
         "members": [],
         "callables": [
           {
@@ -826,9 +808,7 @@
         "description": "Slots for the SwitchCompact component.",
         "descriptionKey": "api.generated.headless_src_components_switch_types.switchcompactslots.slots",
         "sourcePath": "headless/src/components/switch/types.ts",
-        "typeParameters": [
-          "TypeParameter T"
-        ],
+        "typeParameters": ["TypeParameter T"],
         "members": [],
         "callables": [
           {
@@ -848,9 +828,7 @@
                 "description": "Slot properties for the SwitchCompact component.",
                 "descriptionKey": "api.generated.headless_src_components_switch_types.switchcompactslotprops",
                 "sourcePath": "headless/src/components/switch/types.ts",
-                "typeParameters": [
-                  "T extends AcceptableBooleanValue = boolean"
-                ],
+                "typeParameters": ["T extends AcceptableBooleanValue = boolean"],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -874,9 +852,7 @@
                 "description": "Slot properties for the SwitchCompact component.",
                 "descriptionKey": "api.generated.headless_src_components_switch_types.switchcompactslotprops",
                 "sourcePath": "headless/src/components/switch/types.ts",
-                "typeParameters": [
-                  "T extends AcceptableBooleanValue = boolean"
-                ],
+                "typeParameters": ["T extends AcceptableBooleanValue = boolean"],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -900,9 +876,7 @@
                 "description": "Slot properties for the SwitchCompact component.",
                 "descriptionKey": "api.generated.headless_src_components_switch_types.switchcompactslotprops",
                 "sourcePath": "headless/src/components/switch/types.ts",
-                "typeParameters": [
-                  "T extends AcceptableBooleanValue = boolean"
-                ],
+                "typeParameters": ["T extends AcceptableBooleanValue = boolean"],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -1029,9 +1003,7 @@
         "description": "Properties for the SwitchRoot component.",
         "descriptionKey": "api.generated.headless_src_components_switch_types.switchrootprops.props",
         "sourcePath": "headless/src/components/switch/types.ts",
-        "typeParameters": [
-          "TypeParameter T"
-        ],
+        "typeParameters": ["TypeParameter T"],
         "members": [
           {
             "name": "defaultValue",
@@ -1158,9 +1130,7 @@
         "description": "Events for the SwitchRoot component.",
         "descriptionKey": "api.generated.headless_src_components_switch_types.switchrootemits.emits",
         "sourcePath": "headless/src/components/switch/types.ts",
-        "typeParameters": [
-          "TypeParameter T"
-        ],
+        "typeParameters": ["TypeParameter T"],
         "members": [],
         "callables": [
           {

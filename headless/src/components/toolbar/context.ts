@@ -1,5 +1,5 @@
-import { useUiContext, useContext } from '../../composables';
 import { useDirection } from '../config-provider/context';
+import { useUiContext, useContext } from '../../composables';
 import type { ToolbarRootContext, ToolbarRootContextParams, ToolbarUiSlot } from './types';
 
 export const [provideToolbarRootContext, useToolbarRootContext] = useContext(

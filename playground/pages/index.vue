@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import { shallowRef, watch, watchPostEffect, onMounted } from 'vue';
 import type { Component } from 'vue';
-import { kebabCase, pascalCase } from '@soybeanjs/utils';
 import { SButtonIcon, SCard, SLink, STabs } from '@soybeanjs/ui';
 import type { TabsOptionData } from '@soybeanjs/ui';
-import ThemeConfigurator from '../components/theme-configurator.vue';
-import ThemeSchemaToggler from '../components/theme-schema-toggler.vue';
+import { kebabCase, pascalCase } from '@soybeanjs/utils';
 import DirectionToggler from '../components/direction-toggler.vue';
 import LocaleToggler from '../components/locale-toggler.vue';
+import ThemeConfigurator from '../components/theme-configurator.vue';
+import ThemeSchemaToggler from '../components/theme-schema-toggler.vue';
 
 const activeTab = shallowRef('');
 

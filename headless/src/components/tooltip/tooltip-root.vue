@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { computed, watch } from 'vue';
-import { useControllableState } from '../../composables';
 import { useConfigProvider } from '../config-provider/context';
+import { useControllableState } from '../../composables';
 import { PopperRoot } from '../popper';
-import { provideTooltipOpenDelayedContext, provideTooltipRootContext } from './context';
 import { TOOLTIP_OPEN, createDefaultTooltipConfig } from './shared';
+import { provideTooltipOpenDelayedContext, provideTooltipRootContext } from './context';
 import type { TooltipRootProps, TooltipRootEmits } from './types';
 
 defineOptions({

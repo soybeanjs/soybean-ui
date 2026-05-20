@@ -1,11 +1,11 @@
 <script setup lang="ts" generic="T extends Record<string, any>">
 import { computed } from 'vue';
 import { useVirtualizer } from '@tanstack/vue-virtual';
-import { useExposedElement } from '../../composables';
 import { transformPropsToContext } from '../../shared';
+import { useExposedElement } from '../../composables';
 import { Primitive } from '../primitive';
-import { provideVirtualizerContext } from './context';
 import { getVirtualizerPadding } from './shared';
+import { provideVirtualizerContext } from './context';
 import type { VirtualizerRootProps } from './types';
 
 defineOptions({

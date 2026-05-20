@@ -4,8 +4,8 @@ import type { CSSProperties } from 'vue';
 import { autoUpdate } from '@floating-ui/dom';
 import { getAlignment, getSide } from '@floating-ui/utils';
 import { useFloating, useForwardElement } from '../../composables';
-import { providePopperPositionerContext, usePopperRootContext, usePopperUi } from './context';
 import { createPopperPositionerDefaultProps, getFloatingUiMiddleware, getPlacement, popperCssVars } from './shared';
+import { providePopperPositionerContext, usePopperRootContext, usePopperUi } from './context';
 import type { PopperPositionerProps, PopperPositionerEmits } from './types';
 
 defineOptions({

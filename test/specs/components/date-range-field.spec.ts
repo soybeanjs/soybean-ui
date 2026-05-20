@@ -1,9 +1,8 @@
-import { CalendarDate, CalendarDateTime } from '@internationalized/date';
-import { mount } from '@vue/test-utils';
 import { describe, expect, it } from 'vitest';
-
-import SDateRangeField from '../../../src/components/date-range-field/date-range-field.vue';
+import { mount } from '@vue/test-utils';
+import { CalendarDate, CalendarDateTime } from '@internationalized/date';
 import { getA11yViolations } from '../../shared/a11y';
+import SDateRangeField from '../../../src/components/date-range-field/date-range-field.vue';
 
 describe('SDateRangeField', () => {
   describe('rendering', () => {

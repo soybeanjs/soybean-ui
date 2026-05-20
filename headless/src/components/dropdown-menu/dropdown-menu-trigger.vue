@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { computed, nextTick } from 'vue';
-import { useForwardElement } from '../../composables';
 import { SELECTION_KEYS } from '../../constants';
-import { MenuAnchor } from '../menu';
 import { useMenuContext } from '../menu/context';
+import { useForwardElement } from '../../composables';
+import { MenuAnchor } from '../menu';
 import { Primitive } from '../primitive';
 import { useDropdownMenuHoverContext, useDropdownMenuRootContext } from './context';
 import type { DropdownMenuTriggerProps } from './types';

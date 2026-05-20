@@ -1,6 +1,6 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
-import { useBodyScrollLock } from '../../../headless/src/composables/use-body-scroll-lock';
 import { refreshIOSDetection } from '../../../headless/src/shared/env';
+import { useBodyScrollLock } from '../../../headless/src/composables/use-body-scroll-lock';
 
 describe('useBodyScrollLock', () => {
   let originalWindow: any;

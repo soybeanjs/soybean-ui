@@ -1,8 +1,8 @@
 <script setup lang="ts" generic="M extends boolean">
 import { computed, nextTick, watch } from 'vue';
-import { useSelection } from '../../composables';
 import { isFormControl, transformPropsToContext } from '../../shared';
 import { useDirection } from '../config-provider/context';
+import { useSelection } from '../../composables';
 import VisuallyHiddenInput from '../visually-hidden/visually-hidden-input.vue';
 import { provideListboxRootContext, useListboxUi } from './context';
 import type { ListboxRootProps, ListboxRootEmits } from './types';

@@ -1,11 +1,11 @@
 <script setup lang="ts" generic="M extends boolean = false, T extends DefinedValue = string">
 import { computed } from 'vue';
-import type { DefinedValue } from '../../types';
-import { useForwardElement, useSelection } from '../../composables';
 import { isFormControl, transformPropsToContext } from '../../shared';
+import { useForwardElement, useSelection } from '../../composables';
+import type { DefinedValue } from '../../types';
+import { Primitive } from '../primitive';
 import { RovingFocusGroup } from '../roving-focus';
 import { VisuallyHiddenInput } from '../visually-hidden';
-import { Primitive } from '../primitive';
 import { provideToggleGroupRootContext, useToggleGroupUi } from './context';
 import type { ToggleGroupRootProps, ToggleGroupRootEmits } from './types';
 

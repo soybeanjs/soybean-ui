@@ -1,10 +1,10 @@
-import type { ClassValue } from '@soybeanjs/headless/types';
 import type {
   DateRangeFieldCompactProps,
   DateRangeFieldCompactEmits,
   DateRangeFieldCompactSlots,
   DateRangeFieldUi
 } from '@soybeanjs/headless/date-range-field';
+import type { ClassValue } from '@soybeanjs/headless/types';
 import type { ThemeSize } from '@/theme';
 
 /**

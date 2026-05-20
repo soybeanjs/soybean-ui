@@ -1,8 +1,8 @@
 import type { ShallowRef } from 'vue';
 import type { SegmentValueObj, TimeRange, TimeValue } from '../../date';
 import type { UiClass } from '../../types';
-import type { TimeFieldRootProps, TimeFieldRootContext } from '../time-field/types';
 import type { DateFieldInputProps, DateFieldSegment } from '../date-field/types';
+import type { TimeFieldRootProps, TimeFieldRootContext } from '../time-field/types';
 
 /**
  * Properties for the TimeRangeFieldRoot component.

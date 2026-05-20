@@ -1,12 +1,11 @@
 <script setup lang="ts">
 import { computed, nextTick, onBeforeUnmount, shallowRef, watch } from 'vue';
-import { useControllableState, useForwardElement } from '../../composables';
 import { isFormControl, snapValueToStep } from '../../shared';
 import { useDirection } from '../config-provider/context';
+import { useControllableState, useForwardElement } from '../../composables';
 import { useLocaleMessages } from '../../locale';
 import { Primitive } from '../primitive';
 import { VisuallyHiddenInput } from '../visually-hidden';
-import { provideSliderRootContext, useSliderUi } from './context';
 import {
   ARROW_KEYS,
   BACK_KEYS,
@@ -25,6 +24,7 @@ import {
   normalizeSliderValues,
   PAGE_KEYS
 } from './shared';
+import { provideSliderRootContext, useSliderUi } from './context';
 import type { SliderRootProps, SliderRootEmits } from './types';
 
 defineOptions({

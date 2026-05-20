@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, ref, watchEffect } from 'vue';
-import { DialogPopup } from '../dialog';
 import { useDialogRootContext } from '../dialog/context';
+import { DialogPopup } from '../dialog';
 import { useDrawerRootContext } from './context';
 import { useScaleBackground } from './use-scale-background';
 

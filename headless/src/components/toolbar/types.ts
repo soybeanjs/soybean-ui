@@ -1,14 +1,14 @@
 import type { ComputedRef } from 'vue';
 import type { DataOrientation, DefinedValue, Direction, UiClass } from '../../types';
+import type { ButtonEmits, ButtonProps } from '../button/types';
+import type { LinkProps } from '../link/types';
+import type { PrimitiveWithBaseProps } from '../primitive/types';
+import type { SeparatorRootProps } from '../separator/types';
 import type {
   ToggleGroupItemProps as BaseToggleGroupItemProps,
   ToggleGroupRootEmits as BaseToggleGroupRootEmits,
   ToggleGroupRootProps as BaseToggleGroupRootProps
 } from '../toggle-group/types';
-import type { ButtonEmits, ButtonProps } from '../button/types';
-import type { LinkProps } from '../link/types';
-import type { SeparatorRootProps } from '../separator/types';
-import type { PrimitiveWithBaseProps } from '../primitive/types';
 
 /**
  * Properties for the ToolbarRoot component.

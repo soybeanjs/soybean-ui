@@ -1,6 +1,6 @@
+import type { BaseProps, UiClass } from '../../types';
 import type { IconValue } from '../_icon/types';
 import type { LinkBaseProps, LinkProps } from '../link/types';
-import type { BaseProps, UiClass } from '../../types';
 
 /**
  * Properties for the BreadcrumbRoot component.

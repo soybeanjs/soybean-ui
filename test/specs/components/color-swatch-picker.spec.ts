@@ -1,5 +1,5 @@
-import { mount } from '@vue/test-utils';
 import { describe, expect, it } from 'vitest';
+import { mount } from '@vue/test-utils';
 import SColorSwatchPicker from '../../../src/components/color-swatch-picker/color-swatch-picker.vue';
 
 describe('SColorSwatchPicker', () => {

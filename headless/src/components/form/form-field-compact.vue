@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { Slot } from '../slot';
-import { useFormSub } from './use-form';
 import FormFieldBaseCompact from './form-field-base-compact.vue';
 import type { FormFieldCompactProps, FormFieldCompactSlots } from './types';
+import { useFormSub } from './use-form';
 
 defineOptions({
   name: 'FormFieldCompact'

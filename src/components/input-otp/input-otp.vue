@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { InputOtpCompact, provideInputOtpUi } from '@soybeanjs/headless/input-otp';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
+import { InputOtpCompact, provideInputOtpUi } from '@soybeanjs/headless/input-otp';
 import { inputOtpVariants } from '@/styles/input-otp';
 import type { InputOtpProps, InputOtpEmits, InputOtpSlots } from './types';
 

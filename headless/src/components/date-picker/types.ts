@@ -1,8 +1,8 @@
-import type { BaseProps, UiClass } from '../../types';
 import type { DateValue } from '../../date';
-import type { PopoverCompactProps, PopoverCompactEmits, PopoverUiSlot } from '../popover/types';
+import type { BaseProps, UiClass } from '../../types';
 import type { CalendarCompactProps, CalendarCompactEmits } from '../calendar/types';
 import type { DateFieldUiSlot } from '../date-field/types';
+import type { PopoverCompactProps, PopoverCompactEmits, PopoverUiSlot } from '../popover/types';
 
 /**
  * Properties for the DatePickerCompact component.

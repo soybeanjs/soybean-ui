@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import { nextTick, mergeProps, computed } from 'vue';
-import { useForwardElement } from '../../composables';
 import { isMouseEvent } from '../../shared';
+import { useForwardElement } from '../../composables';
 import type { HorizontalSide } from '../../types';
 import { PopperAnchor } from '../popper';
+import { SUB_OPEN_KEYS } from './shared';
 import {
   useMenuContentContext,
   useMenuContext,
@@ -11,7 +12,6 @@ import {
   useMenuUi,
   useMenuSubAttributeContext
 } from './context';
-import { SUB_OPEN_KEYS } from './shared';
 import MenuItemImpl from './menu-item-impl.vue';
 import type { MenuSubTriggerProps } from './types';
 

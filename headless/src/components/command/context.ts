@@ -1,6 +1,6 @@
 import { computed } from 'vue';
-import { useUiContext } from '../../composables';
 import { provideListboxUi } from '../listbox/context';
+import { useUiContext } from '../../composables';
 import type { CommandUiSlot } from './types';
 
 export const [provideCommandUi, useCommandUi] = useUiContext<CommandUiSlot>('CommandUi', ui => {

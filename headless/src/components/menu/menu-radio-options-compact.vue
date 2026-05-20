@@ -1,9 +1,9 @@
 <script setup lang="ts" generic="T extends AcceptableBooleanValue = AcceptableBooleanValue">
 import { useOmitProps, useForwardListeners } from '../../composables';
 import type { AcceptableBooleanValue } from '../../types';
-import MenuSeparator from '../separator/separator-root.vue';
 import Icon from '../_icon/icon.vue';
 import Kbd from '../kbd/kbd.vue';
+import MenuSeparator from '../separator/separator-root.vue';
 import { useMenuUi } from './context';
 import { useCommonSlotNames } from './hooks';
 import MenuGroupLabel from './menu-group-label.vue';

@@ -2,20 +2,20 @@ import path from 'node:path';
 import { defineConfig } from 'vite';
 import Vue from '@vitejs/plugin-vue';
 import VueJsx from '@vitejs/plugin-vue-jsx';
-import UiResolver from '@soybeanjs/ui/resolver';
-import { unheadVueComposablesImports } from '@unhead/vue';
-import VueRouter from 'vue-router/vite';
-import { VueRouterAutoImports } from 'vue-router/unplugin';
 import MetaLayouts from 'vite-plugin-vue-meta-layouts';
-import Unocss from 'unocss/vite';
-import AutoImport from 'unplugin-auto-import/vite';
+import generateSitemap from 'vite-ssg-sitemap';
 import Components from 'unplugin-vue-components/vite';
 import Markdown from 'unplugin-vue-markdown/vite';
-import Shiki from '@shikijs/markdown-exit';
+import AutoImport from 'unplugin-auto-import/vite';
+import { VueRouterAutoImports } from 'vue-router/unplugin';
+import VueRouter from 'vue-router/vite';
+import Unocss from 'unocss/vite';
+import UiResolver from '@soybeanjs/ui/resolver';
 import VueI18n from '@intlify/unplugin-vue-i18n/vite';
-import generateSitemap from 'vite-ssg-sitemap';
-import { soybeanDocsLlmsPlugin } from './build/llms';
+import Shiki from '@shikijs/markdown-exit';
+import { unheadVueComposablesImports } from '@unhead/vue';
 import { customMarkdownPlugin } from './src/modules/markdown';
+import { soybeanDocsLlmsPlugin } from './build/llms';
 
 export default defineConfig({
   resolve: {

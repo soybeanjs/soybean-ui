@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { SIcon } from '@soybeanjs/ui';
 import { VisuallyHidden } from '@soybeanjs/headless';
+import { SIcon } from '@soybeanjs/ui';
 </script>
 
 <template>

@@ -1,8 +1,8 @@
-import { mount } from '@vue/test-utils';
-import { nextTick } from 'vue';
 import { describe, expect, it } from 'vitest';
-import STooltip from '../../../src/components/tooltip/tooltip.vue';
+import { nextTick } from 'vue';
+import { mount } from '@vue/test-utils';
 import { getA11yViolations } from '../../shared/a11y';
+import STooltip from '../../../src/components/tooltip/tooltip.vue';
 
 describe('STooltip', () => {
   const slots = {

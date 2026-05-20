@@ -2,16 +2,16 @@
 import { computed, onMounted, watch } from 'vue';
 import { isEqualDay, isSameDay } from '@internationalized/date';
 import type { DateValue } from '@internationalized/date';
-import { useControllableState, useForwardElement } from '../../composables';
-import { getDefaultDate, getWeekStartsOn, handleCalendarInitialFocus } from '../../date';
 import { getVueBooleanCasting, transformPropsToContext } from '../../shared';
 import { useDirection, useLocale } from '../config-provider/context';
+import { useControllableState, useForwardElement } from '../../composables';
+import { getDefaultDate, getWeekStartsOn, handleCalendarInitialFocus } from '../../date';
 import { Primitive } from '../primitive';
 import { VisuallyHidden } from '../visually-hidden';
-import { provideCalendarRootContext, useCalendarUi } from './context';
-import { useCalendar, useCalendarState } from './use-calendar';
 import { getMonthOptions, getYearOptions, handleMonthChange, handleYearChange } from './shared';
+import { provideCalendarRootContext, useCalendarUi } from './context';
 import type { CalendarRootProps, CalendarRootEmits, CalendarRootSlots, CalendarModelValue } from './types';
+import { useCalendar, useCalendarState } from './use-calendar';
 
 defineOptions({
   name: 'CalendarRoot'

@@ -13,8 +13,8 @@ import type {
   CheckboxCardUi
 } from '@soybeanjs/headless/checkbox';
 import type { ClassValue, DefinedValue } from '@soybeanjs/headless/types';
-import type { ThemeColor, ThemeSize } from '@/theme';
 import type { CheckboxShape } from '@/styles/checkbox';
+import type { ThemeColor, ThemeSize } from '@/theme';
 
 /**
  * Properties for the Checkbox component.

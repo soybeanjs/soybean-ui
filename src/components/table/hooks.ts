@@ -1,6 +1,6 @@
 import { shallowRef, watch } from 'vue';
-import { useTable as _useTable } from '@soybeanjs/hooks';
 import { getTableColumnKey, isTableGroupColumn } from '@soybeanjs/headless/table';
+import { useTable as _useTable } from '@soybeanjs/hooks';
 import type { UseTableOptions as _UseTableOptions, TableColumnCheck } from '@soybeanjs/hooks';
 import type { TableBaseData, TableColumn, TableColumnType } from './types';
 

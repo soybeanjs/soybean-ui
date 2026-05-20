@@ -2,8 +2,8 @@
 import { computed, watch } from 'vue';
 import type { CSSProperties } from 'vue';
 import { useControllableState } from '../../composables';
-import { provideTreeMenuRootContext, useTreeMenuUi } from './context';
 import { treeMenuCssVars } from './shared';
+import { provideTreeMenuRootContext, useTreeMenuUi } from './context';
 import type { TreeMenuRootProps, TreeMenuCollapsedState, TreeMenuRootEmits } from './types';
 
 defineOptions({

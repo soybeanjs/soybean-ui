@@ -1,9 +1,8 @@
-import { mount } from '@vue/test-utils';
-import { CalendarDate } from '@internationalized/date';
 import { describe, expect, it } from 'vitest';
 import { nextTick } from 'vue';
-
+import { mount } from '@vue/test-utils';
 import { SDatePicker } from '@soybeanjs/ui';
+import { CalendarDate } from '@internationalized/date';
 
 describe('sDatePicker', () => {
   const findPopup = () => document.body.querySelector('[data-dismissable-layer][role="dialog"]');

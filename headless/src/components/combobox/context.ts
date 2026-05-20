@@ -1,8 +1,8 @@
 import { computed } from 'vue';
 import type { ComputedRef } from 'vue';
-import { useContext, useUiContext } from '../../composables';
 import { provideListboxUi } from '../listbox/context';
 import { providePopperUi } from '../popper/context';
+import { useContext, useUiContext } from '../../composables';
 import type { ComboboxRootContext, ComboboxUiSlot } from './types';
 
 export const [provideComboboxRootContext, useComboboxRootContext] = useContext<ComboboxRootContext>('ComboboxRoot');

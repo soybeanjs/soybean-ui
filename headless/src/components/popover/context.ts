@@ -1,8 +1,8 @@
 import { computed, shallowRef, useId } from 'vue';
-import { useContext, useUiContext } from '../../composables';
 import { getDisclosureState } from '../../shared';
-import type { DisclosureState } from '../../types';
 import { providePopperUi } from '../popper/context';
+import { useContext, useUiContext } from '../../composables';
+import type { DisclosureState } from '../../types';
 import type { PopoverRootContextParams, PopoverUiSlot } from './types';
 
 export const [providePopoverRootContext, usePopoverRootContext] = useContext(

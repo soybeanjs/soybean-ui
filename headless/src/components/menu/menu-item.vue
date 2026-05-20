@@ -2,9 +2,9 @@
 import { nextTick } from 'vue';
 import { SELECTION_KEYS } from '../../constants';
 import { useForwardElement } from '../../composables';
-import MenuItemImpl from './menu-item-impl.vue';
-import { useMenuContentContext, useMenuRootContext, useMenuUi } from './context';
 import { ITEM_SELECT } from './shared';
+import { useMenuContentContext, useMenuRootContext, useMenuUi } from './context';
+import MenuItemImpl from './menu-item-impl.vue';
 import type { MenuItemProps, MenuItemEmits } from './types';
 
 defineOptions({

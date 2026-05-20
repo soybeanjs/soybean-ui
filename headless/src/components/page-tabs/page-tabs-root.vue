@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { useControllableState, usePickProps } from '../../composables';
 import { transformPropsToContext } from '../../shared';
+import { useControllableState, usePickProps } from '../../composables';
 import RovingFocusGroup from '../roving-focus/roving-focus-group.vue';
 import { providePageTabsRootContext, usePageTabsUi } from './context';
 import { usePageTabsScroll } from './hooks';

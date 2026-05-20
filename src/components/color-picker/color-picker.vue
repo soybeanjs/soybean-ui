@@ -1,22 +1,22 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
-import { ColorPickerCompact, provideColorPickerUi } from '@soybeanjs/headless/color-picker';
 import { provideColorAreaUi } from '@soybeanjs/headless/color-area';
 import { provideColorFieldUi } from '@soybeanjs/headless/color-field';
+import { ColorPickerCompact, provideColorPickerUi } from '@soybeanjs/headless/color-picker';
+import { provideColorSliderUi } from '@soybeanjs/headless/color-slider';
 import { provideColorSwatchUi } from '@soybeanjs/headless/color-swatch';
 import { provideColorSwatchPickerUi } from '@soybeanjs/headless/color-swatch-picker';
-import { provideColorSliderUi } from '@soybeanjs/headless/color-slider';
+import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
 import { providePopoverUi } from '@soybeanjs/headless/popover';
 import { provideTabsUi } from '@soybeanjs/headless/tabs';
-import { popoverVariants } from '@/styles/popover';
 import { colorAreaVariants } from '@/styles/color-area';
 import { colorFieldVariants } from '@/styles/color-field';
+import { colorPickerVariants } from '@/styles/color-picker';
 import { colorSwatchVariants } from '@/styles/color-swatch';
 import { colorSwatchPickerVariants } from '@/styles/color-swatch-picker';
+import { popoverVariants } from '@/styles/popover';
 import { sliderVariants } from '@/styles/slider';
 import { tabsVariants } from '@/styles/tabs';
-import { colorPickerVariants } from '@/styles/color-picker';
 import type { ColorPickerProps, ColorPickerEmits } from './types';
 
 defineOptions({

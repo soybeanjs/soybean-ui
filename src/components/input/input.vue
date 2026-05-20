@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { InputCompact, provideInputUi } from '@soybeanjs/headless/input';
 import { useOmitProps } from '@soybeanjs/headless/composables';
+import { InputCompact, provideInputUi } from '@soybeanjs/headless/input';
 import { keysOf } from '@soybeanjs/utils';
 import { inputVariants } from '@/styles/input';
 import type { InputProps, InputEmits, InputSlots } from './types';

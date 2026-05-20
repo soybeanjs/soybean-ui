@@ -1,7 +1,7 @@
 import type { ComputedRef, ShallowRef } from 'vue';
 import type { EventHook } from '@vueuse/core';
-import type { Direction, FocusIntent, MaybeArray, PropsToContext, TreeSelectEvent, TreeToggleEvent } from '../../types';
 import type { CollectionItemData } from '../../composables/use-collection';
+import type { Direction, FocusIntent, MaybeArray, PropsToContext, TreeSelectEvent, TreeToggleEvent } from '../../types';
 import type { PrimitiveWithBaseProps } from '../primitive/types';
 import type { VirtualizerItemProps, VirtualizerRootProps } from '../virtualizer/types';
 

@@ -1,7 +1,7 @@
 <script setup lang="ts" generic="T extends DefinedValue, M extends boolean = false">
 import { computed } from 'vue';
-import { useControllableState, useSelection } from '../../composables';
 import { isFormControl, isNullish, transformPropsToContext } from '../../shared';
+import { useControllableState, useSelection } from '../../composables';
 import type { DefinedValue } from '../../types';
 import { PopperRoot } from '../popper';
 import { provideCollectionContext, provideSelectRootContext } from './context';

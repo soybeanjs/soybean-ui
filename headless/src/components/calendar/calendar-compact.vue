@@ -1,18 +1,18 @@
 <script setup lang="ts" generic="M extends boolean = false">
 import { useForwardListeners, useOmitProps } from '../../composables';
 import Icon from '../_icon/icon.vue';
-import CalendarRoot from './calendar-root.vue';
-import CalendarCell from './calendar-cell.vue';
 import CalendarCellTrigger from './calendar-cell-trigger.vue';
-import CalendarGrid from './calendar-grid.vue';
+import CalendarCell from './calendar-cell.vue';
 import CalendarGridBody from './calendar-grid-body.vue';
 import CalendarGridHead from './calendar-grid-head.vue';
 import CalendarGridRow from './calendar-grid-row.vue';
+import CalendarGrid from './calendar-grid.vue';
 import CalendarHeadCell from './calendar-head-cell.vue';
 import CalendarHeader from './calendar-header.vue';
 import CalendarHeading from './calendar-heading.vue';
 import CalendarNext from './calendar-next.vue';
 import CalendarPrev from './calendar-prev.vue';
+import CalendarRoot from './calendar-root.vue';
 import type { CalendarCompactProps, CalendarCompactEmits, CalendarCompactSlots } from './types';
 
 defineOptions({

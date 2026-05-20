@@ -2,13 +2,13 @@
 import { computed } from 'vue';
 import { useForwardListeners, useOmitProps } from '../../composables';
 import Icon from '../_icon/icon.vue';
+import PopoverArrow from '../popper/popper-arrow.vue';
+import PopoverPortal from '../portal/portal.vue';
+import PopoverClose from './popover-close.vue';
+import PopoverPopup from './popover-popup.vue';
+import PopoverPositioner from './popover-positioner.vue';
 import PopoverRoot from './popover-root.vue';
 import PopoverTrigger from './popover-trigger.vue';
-import PopoverPortal from '../portal/portal.vue';
-import PopoverPositioner from './popover-positioner.vue';
-import PopoverPopup from './popover-popup.vue';
-import PopoverArrow from '../popper/popper-arrow.vue';
-import PopoverClose from './popover-close.vue';
 import type { PopoverCompactProps, PopoverCompactEmits, PopoverCompactSlots } from './types';
 
 defineOptions({

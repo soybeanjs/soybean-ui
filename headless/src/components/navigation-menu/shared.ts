@@ -1,5 +1,4 @@
 import { computed } from 'vue';
-
 import type { Align, DataOrientation, Direction, Size } from '../../types';
 import type { NavigationMenuViewportPosition } from './types';
 

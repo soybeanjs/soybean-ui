@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { useForwardElement } from '../../composables';
 import { formatChannelValue, getChannelName } from '../../shared';
+import { useForwardElement } from '../../composables';
 import { Primitive } from '../primitive';
-import { useColorAreaRootContext, useColorAreaUi } from './context';
 import { convertValueToPercentage } from './shared';
+import { useColorAreaRootContext, useColorAreaUi } from './context';
 import type { ColorAreaThumbProps } from './types';
 
 defineOptions({

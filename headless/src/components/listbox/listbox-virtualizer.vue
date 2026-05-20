@@ -6,8 +6,8 @@ import { useVirtualizer } from '@tanstack/vue-virtual';
 import { MAP_KEY_TO_FOCUS_INTENT } from '../../constants';
 import { findValuesBetween, getActiveElement, getNextMatch } from '../../shared';
 import type { MaybeArray, NavigationKey } from '../../types';
-import { useCollectionContext, useListboxRootContext, useListboxUi } from './context';
 import { getVirtualizerItems, getVirtualizerPadding, queryCheckedElement } from './shared';
+import { useCollectionContext, useListboxRootContext, useListboxUi } from './context';
 import type { ListboxVirtualizerProps, ListboxVirtualizerSlots } from './types';
 
 defineOptions({

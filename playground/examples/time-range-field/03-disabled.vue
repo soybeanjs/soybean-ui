@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { Time } from '@internationalized/date';
 import { STimeRangeField } from '@soybeanjs/ui';
+import { Time } from '@internationalized/date';
 
 const value = {
   start: new Time(9, 0, 0),

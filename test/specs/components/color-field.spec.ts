@@ -1,5 +1,5 @@
-import { mount } from '@vue/test-utils';
 import { describe, expect, it } from 'vitest';
+import { mount } from '@vue/test-utils';
 import SColorField from '../../../src/components/color-field/color-field.vue';
 
 describe('SColorField', () => {

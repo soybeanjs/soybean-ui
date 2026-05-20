@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { shallowRef, watch } from 'vue';
 import { getActiveElement } from '../../shared';
-import type { InputNumberControlProps } from './types';
 import { useInputNumberRootContext, useInputNumberUi } from './context';
+import type { InputNumberControlProps } from './types';
 
 defineOptions({
   name: 'InputNumberControl'

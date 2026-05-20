@@ -1,7 +1,7 @@
 <script setup lang="ts" generic="T extends DefinedWithBooleanValue">
 import { computed, useTemplateRef } from 'vue';
-import { useControllableState } from '../../composables';
 import { isFormControl, transformPropsToContext } from '../../shared';
+import { useControllableState } from '../../composables';
 import type { DefinedWithBooleanValue } from '../../types';
 import { RovingFocusGroup } from '../roving-focus';
 import { VisuallyHiddenInput } from '../visually-hidden';

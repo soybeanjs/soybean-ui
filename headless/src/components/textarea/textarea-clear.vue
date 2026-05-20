@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { computed, useAttrs } from 'vue';
 import { useLocaleMessages } from '../../locale';
-import Button from '../button/button.vue';
 import Icon from '../_icon/icon.vue';
+import Button from '../button/button.vue';
 import { useTextareaRootContext, useTextareaUi } from './context';
 import type { TextareaClearProps, TextareaClearEmits } from './types';
 

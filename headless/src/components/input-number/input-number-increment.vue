@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { useForwardElement } from '../../composables';
-import Button from '../button/button.vue';
-import { useInputNumberRootContext, useInputNumberUi } from './context';
-import { usePressedHold } from './shared';
 import { useLocaleMessages } from '../../locale';
+import Button from '../button/button.vue';
+import { usePressedHold } from './shared';
+import { useInputNumberRootContext, useInputNumberUi } from './context';
 import type { InputNumberIncrementProps } from './types';
 
 defineOptions({

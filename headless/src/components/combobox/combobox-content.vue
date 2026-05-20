@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { shallowRef } from 'vue';
 import { useForwardListeners, useOmitProps, usePresence } from '../../composables';
-import ComboboxContentImpl from './combobox-content-impl.vue';
 import { useComboboxRootContext } from './context';
+import ComboboxContentImpl from './combobox-content-impl.vue';
 import type { ComboboxContentProps, ComboboxContentEmits } from './types';
 
 defineOptions({

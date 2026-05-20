@@ -2,6 +2,7 @@ import type { ShallowRef } from 'vue';
 import type { UseFuseOptions } from '@vueuse/integrations/useFuse';
 import type { CollectionItemData } from '../../composables';
 import type { BaseProps, Direction, FormFieldCommonProps } from '../../types';
+import type { IconValue } from '../_icon/types';
 import type {
   ComboboxAnchorProps as AutocompleteAnchorProps,
   ComboboxContentProps as AutocompleteContentProps,
@@ -17,7 +18,6 @@ import type {
   ComboboxUi as AutocompleteUi
 } from '../combobox/types';
 import type { InputControlProps, InputRootEmits as AutocompleteInputEmits, InputRootProps } from '../input/types';
-import type { IconValue } from '../_icon/types';
 import type { ListboxCollectionItemData } from '../listbox/types';
 import type { PortalProps as AutocompletePortalProps } from '../portal/types';
 

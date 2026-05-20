@@ -2,7 +2,6 @@
 import { computed, shallowRef, useId } from 'vue';
 import { useForwardElement, useOmitProps } from '../../composables';
 import { Primitive } from '../primitive';
-import { provideSplitterGroupContext, useSplitterUi } from './context';
 import {
   areLayoutsEqual,
   getDefaultLayout,
@@ -12,6 +11,7 @@ import {
   resizeLayoutPair,
   sortPanels
 } from './shared';
+import { provideSplitterGroupContext, useSplitterUi } from './context';
 import type { SplitterGroupProps, SplitterGroupEmits, SplitterPanelRecord, SplitterPanelRegistration } from './types';
 
 defineOptions({

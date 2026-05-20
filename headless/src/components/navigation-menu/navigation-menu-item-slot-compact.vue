@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { useNavigationMenuUi } from './context';
 import Icon from '../_icon/icon.vue';
 import type { IconValue } from '../_icon/types';
+import { useNavigationMenuUi } from './context';
 
 interface Props {
   icon?: IconValue;

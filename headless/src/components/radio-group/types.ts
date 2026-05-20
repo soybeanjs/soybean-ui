@@ -10,10 +10,10 @@ import type {
   PropsToContext,
   UiClass
 } from '../../types';
-import type { ButtonProps } from '../button/types';
-import type { PrimitiveWithBaseProps } from '../primitive/types';
-import type { LabelProps as RadioGroupLabelProps } from '../label/types';
 import { IconValue } from '../_icon/types';
+import type { ButtonProps } from '../button/types';
+import type { LabelProps as RadioGroupLabelProps } from '../label/types';
+import type { PrimitiveWithBaseProps } from '../primitive/types';
 
 /**
  * Properties for the RadioGroupRoot component.

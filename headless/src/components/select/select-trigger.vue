@@ -3,8 +3,8 @@ import { computed } from 'vue';
 import { useForwardElement, useTypeahead } from '../../composables';
 import { PopperAnchor } from '../popper';
 import { Primitive } from '../primitive';
-import { useCollectionContext, useSelectRootContext, useSelectUi } from './context';
 import { OPEN_KEYS, shouldShowPlaceholder } from './shared';
+import { useCollectionContext, useSelectRootContext, useSelectUi } from './context';
 import type { SelectTriggerProps } from './types';
 
 defineOptions({

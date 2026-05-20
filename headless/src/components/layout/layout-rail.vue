@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { useLayoutRootContext, useLayoutUi } from './context';
 import { useLocaleMessages } from '../../locale';
+import { useLayoutRootContext, useLayoutUi } from './context';
 import type { LayoutRailProps } from './types';
 
 defineOptions({

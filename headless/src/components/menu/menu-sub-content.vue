@@ -2,10 +2,10 @@
 import { computed, shallowRef, mergeProps } from 'vue';
 import { useForwardListeners, usePresence } from '../../composables';
 import type { FocusOutsideEvent, HorizontalSide } from '../../types';
+import { SUB_CLOSE_KEYS } from './shared';
 import { useMenuContext, useMenuRootContext, useMenuSubAttributeContext } from './context';
 import MenuContentImpl from './menu-content-impl.vue';
 import type { MenuSubContentProps, MenuSubContentEmits } from './types';
-import { SUB_CLOSE_KEYS } from './shared';
 
 defineOptions({
   name: 'MenuSubContent'

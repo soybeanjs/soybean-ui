@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, useTemplateRef } from 'vue';
-import { useControllableState } from '../../composables';
 import { isFormControl, isNullish, isValueEqualOrExist, transformPropsToContext } from '../../shared';
+import { useControllableState } from '../../composables';
 import type { CheckedState } from '../../types';
 import { VisuallyHiddenInput } from '../visually-hidden';
 import { provideCheckboxRootContext, useCheckboxGroupRootContext, useCheckboxUi } from './context';

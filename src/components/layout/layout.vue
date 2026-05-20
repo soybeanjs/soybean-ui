@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { LayoutCompact, provideLayoutUi } from '@soybeanjs/headless/layout';
 import { useOmitProps } from '@soybeanjs/headless/composables';
+import { LayoutCompact, provideLayoutUi } from '@soybeanjs/headless/layout';
 import { keysOf } from '@soybeanjs/utils';
-import { themeSizeMap, themeSizeRatio } from '@/theme';
 import { layoutVariants } from '@/styles/layout';
+import { themeSizeMap, themeSizeRatio } from '@/theme';
 import type { LayoutProps, LayoutEmits, LayoutSlots } from './types';
 
 defineOptions({

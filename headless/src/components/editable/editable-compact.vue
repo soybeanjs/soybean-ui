@@ -2,13 +2,13 @@
 import { useForwardListeners, useOmitProps } from '../../composables';
 import Icon from '../_icon/icon.vue';
 import { useEditableUi } from './context';
-import EditableRoot from './editable-root.vue';
 import EditableArea from './editable-area.vue';
-import EditablePreview from './editable-preview.vue';
-import EditableInput from './editable-input.vue';
-import EditableEditTrigger from './editable-edit-trigger.vue';
-import EditableSubmitTrigger from './editable-submit-trigger.vue';
 import EditableCancelTrigger from './editable-cancel-trigger.vue';
+import EditableEditTrigger from './editable-edit-trigger.vue';
+import EditableInput from './editable-input.vue';
+import EditablePreview from './editable-preview.vue';
+import EditableRoot from './editable-root.vue';
+import EditableSubmitTrigger from './editable-submit-trigger.vue';
 import type { EditableCompactProps, EditableCompactEmits, EditableCompactSlots } from './types';
 
 defineOptions({

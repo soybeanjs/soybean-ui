@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { useControllableState, useForwardElement } from '../../composables';
 import { isFormControl, transformPropsToContext } from '../../shared';
+import { useControllableState, useForwardElement } from '../../composables';
 import VisuallyHiddenInput from '../visually-hidden/visually-hidden-input.vue';
 import { provideTextareaRootContext, useTextareaUi } from './context';
 import type { TextareaRootProps, TextareaRootEmits } from './types';

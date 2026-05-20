@@ -1,6 +1,6 @@
 import { computed } from 'vue';
-import { useContext, useUiContext } from '../../composables';
 import { isNullish } from '../../shared';
+import { useContext, useUiContext } from '../../composables';
 import type { AcceptableBooleanValue } from '../../types';
 import type { SwitchRootContextParams, SwitchUiSlot } from './types';
 

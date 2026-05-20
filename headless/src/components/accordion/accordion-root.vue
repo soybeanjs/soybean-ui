@@ -1,8 +1,8 @@
 <script setup lang="ts" generic="M extends boolean = false">
 import { shallowRef } from 'vue';
-import { useSelection } from '../../composables';
 import { transformPropsToContext } from '../../shared';
 import { useDirection } from '../config-provider/context';
+import { useSelection } from '../../composables';
 import { provideAccordionRootContext, useAccordionUi } from './context';
 import type { AccordionRootProps, AccordionRootEmits } from './types';
 

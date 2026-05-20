@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { transformPropsToContext } from '../../shared';
 import { provideFormCompactContext, useFormUi } from './context';
-import { provideFormSub } from './use-form';
 import type { FormCompactProps } from './types';
+import { provideFormSub } from './use-form';
 
 defineOptions({
   name: 'SFormCompact'

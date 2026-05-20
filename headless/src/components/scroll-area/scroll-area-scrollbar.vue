@@ -3,8 +3,8 @@ import { computed, onUnmounted, shallowRef, useAttrs, watch } from 'vue';
 import { useResizeObserver } from '@vueuse/core';
 import { useForwardElement, useOmitProps } from '../../composables';
 import { Primitive } from '../primitive';
-import { provideScrollAreaScrollbarContext, useScrollAreaRootContext, useScrollAreaUi } from './context';
 import { clamp, getScrollPosition, getScrollSize, getThumbOffset, getThumbSize, setViewportScroll } from './shared';
+import { provideScrollAreaScrollbarContext, useScrollAreaRootContext, useScrollAreaUi } from './context';
 import type { ScrollAreaOrientation, ScrollAreaScrollbarProps, ScrollAreaState } from './types';
 
 defineOptions({

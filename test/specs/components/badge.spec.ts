@@ -1,7 +1,7 @@
-import { mount } from '@vue/test-utils';
 import { describe, expect, it } from 'vitest';
-import SBadge from '../../../src/components/badge/badge.vue';
+import { mount } from '@vue/test-utils';
 import { getA11yViolations } from '../../shared/a11y';
+import SBadge from '../../../src/components/badge/badge.vue';
 
 describe('SBadge', () => {
   describe('rendering', () => {

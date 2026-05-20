@@ -1,6 +1,6 @@
 import path from 'node:path';
 import process from 'node:process';
-
+import { runCliModule } from './_shared';
 import {
   parseTranslateCliOptions,
   printTranslateUsage,
@@ -8,7 +8,6 @@ import {
   translateJsonLocaleFile,
   resolveAvailableLocalesFromI18nModule
 } from './_translate';
-import { runCliModule } from './_shared';
 import type { TranslateCliOptions } from './_translate';
 
 const rootDir = process.cwd();

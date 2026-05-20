@@ -1,8 +1,8 @@
 import type { AlertUi } from '@soybeanjs/headless/alert';
 import type { AlertCompactEmits, AlertCompactProps, AlertCompactSlots } from '@soybeanjs/headless/alert';
 import type { ClassValue } from '@soybeanjs/headless/types';
-import type { ThemeColor, ThemeSize } from '@/theme';
 import type { AlertVariant } from '@/styles/alert';
+import type { ThemeColor, ThemeSize } from '@/theme';
 
 /**
  * Extended UI class overrides for the Alert component.

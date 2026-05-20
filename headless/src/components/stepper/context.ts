@@ -1,6 +1,6 @@
 import { shallowRef, useId } from 'vue';
-import { useContext, useUiContext } from '../../composables';
 import { useDirection } from '../config-provider/context';
+import { useContext, useUiContext } from '../../composables';
 import type { StepperItemContext, StepperItemContextParams, StepperRootContext, StepperUiSlot } from './types';
 
 export const [provideStepperRootContext, useStepperRootContext] = useContext(

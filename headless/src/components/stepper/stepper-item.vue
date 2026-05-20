@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { useOmitProps } from '../../composables';
 import { transformPropsToContext } from '../../shared';
+import { useOmitProps } from '../../composables';
 import { Primitive } from '../primitive';
 import { provideStepperItemContext, useStepperRootContext, useStepperUi } from './context';
 import type { StepperItemProps, StepperState } from './types';

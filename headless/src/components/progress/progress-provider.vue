@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { watchEffect } from 'vue';
-import { progress } from './state';
-import { useProgressProviderUi } from './context';
 import { useLocaleMessages } from '../../locale';
+import { useProgressProviderUi } from './context';
+import { progress } from './state';
 import type { ProgressProviderProps } from './types';
 
 defineOptions({

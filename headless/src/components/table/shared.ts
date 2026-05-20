@@ -1,4 +1,6 @@
 import type { CSSProperties } from 'vue';
+import { interpolate } from '../../shared';
+import type { LocaleTableMessages } from '../../locale/types';
 import type { CheckedState, Direction, Path, PathValue } from '../../types';
 import type {
   TableBaseData,
@@ -22,8 +24,6 @@ import type {
   TableVisibleRow,
   TableVirtualMeasurement
 } from './types';
-import type { LocaleTableMessages } from '../../locale/types';
-import { interpolate } from '../../shared';
 
 const tableColumnFallbackKeys = new WeakMap<object, string>();
 

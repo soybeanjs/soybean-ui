@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, shallowRef, watch } from 'vue';
-import { useControllableState } from '../../composables';
 import { areColorsEqual, formatColor, resolveColorFormat, toColorObject, transformPropsToContext } from '../../shared';
+import { useControllableState } from '../../composables';
 import type { ColorFormat, ColorSpace, ColorValue } from '../../types';
 import { provideColorPickerRootContext } from './context';
 import type { ColorPickerRootProps, ColorPickerRootEmits } from './types';

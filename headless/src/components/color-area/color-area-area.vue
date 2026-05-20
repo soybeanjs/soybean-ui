@@ -2,8 +2,8 @@
 import { shallowRef } from 'vue';
 import { useForwardElement } from '../../composables';
 import { Primitive } from '../primitive';
-import { useColorAreaRootContext, useColorAreaUi } from './context';
 import { createLinearScale } from './shared';
+import { useColorAreaRootContext, useColorAreaUi } from './context';
 import type { ColorAreaAreaProps } from './types';
 
 defineOptions({

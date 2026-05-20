@@ -1,8 +1,8 @@
 import { defineConfig, presetWind3, transformerDirectives, transformerVariantGroup } from 'unocss';
-import { presetShadcn } from '@soybeanjs/unocss-shadcn';
-import { presetSoybean } from '@soybeanjs/unocss-preset';
-import { presetAnimations } from 'unocss-preset-animations';
 import type { Theme } from 'unocss/preset-mini';
+import { presetAnimations } from 'unocss-preset-animations';
+import { presetSoybean } from '@soybeanjs/unocss-preset';
+import { presetShadcn } from '@soybeanjs/unocss-shadcn';
 
 export default defineConfig<Theme>({
   content: {

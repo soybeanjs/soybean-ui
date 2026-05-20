@@ -2,8 +2,8 @@
 import { computed } from 'vue';
 import { useOmitProps } from '../../composables';
 import type { DefinedValue } from '../../types';
-import { RovingFocusItem } from '../roving-focus';
 import Button from '../button/button.vue';
+import { RovingFocusItem } from '../roving-focus';
 import { useToggleGroupRootContext, useToggleGroupUi } from './context';
 import type { ToggleGroupItemProps } from './types';
 

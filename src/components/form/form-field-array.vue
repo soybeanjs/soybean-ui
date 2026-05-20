@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { FormFieldArrayCompact, provideFormFieldUi } from '@soybeanjs/headless/form';
 import { useOmitProps } from '@soybeanjs/headless/composables';
+import { FormFieldArrayCompact, provideFormFieldUi } from '@soybeanjs/headless/form';
 import { keysOf } from '@soybeanjs/utils';
 import { formVariants } from '@/styles/form';
 import type { FormFieldArrayProps, FormFieldArraySlots } from './types';

@@ -8,15 +8,15 @@
   "
 >
 import { computed } from 'vue';
+import { useLocaleMessages } from '@soybeanjs/headless';
+import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
 import { provideTableUi, TableCompact } from '@soybeanjs/headless/table';
 import type { TableSortOrder } from '@soybeanjs/headless/table';
-import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
-import { useLocaleMessages } from '@soybeanjs/headless';
-import { miniSizeMap } from '@/theme';
 import { tableVariants } from '@/styles/table';
+import { miniSizeMap } from '@/theme';
 import SButtonIcon from '../button/button-icon.vue';
-import SEmpty from '../empty/empty.vue';
 import SCheckbox from '../checkbox/checkbox.vue';
+import SEmpty from '../empty/empty.vue';
 import TableFilterPopover from './table-filter-popover.vue';
 import TableRadio from './table-radio.vue';
 import type { TableProps, TableBaseData, TableEmits, TableSlots } from './types';

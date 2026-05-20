@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, onMounted, onUnmounted, useId, watch } from 'vue';
-import { useOmitProps } from '../../composables';
 import { clamp } from '../../shared';
+import { useOmitProps } from '../../composables';
 import { Primitive } from '../primitive';
 import { useSplitterGroupContext, useSplitterUi } from './context';
 import type { SplitterPanelProps, SplitterPanelEmits } from './types';

@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { computed, shallowRef, useId, watch } from 'vue';
 import { wrapArray } from '../../shared';
-import { MenuRoot } from '../menu';
 import { provideMenuSubAttributeContext } from '../menu/context';
+import { MenuRoot } from '../menu';
 import { provideMenubarMenuContext, useMenubarCollectionContext, useMenubarRootContext } from './context';
 import type { MenubarMenuProps } from './types';
 

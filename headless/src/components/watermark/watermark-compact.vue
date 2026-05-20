@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { useOmitProps } from '../../composables';
+import type { WatermarkCompactProps } from './types';
 import WatermarkOverlay from './watermark-overlay.vue';
 import WatermarkRoot from './watermark-root.vue';
-import type { WatermarkCompactProps } from './types';
 
 defineOptions({
   name: 'WatermarkCompact'

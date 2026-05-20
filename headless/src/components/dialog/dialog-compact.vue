@@ -6,18 +6,18 @@ import Icon from '../_icon/icon.vue';
 import type { IconValue } from '../_icon/types';
 import DialogPortal from '../portal/portal.vue';
 import { useDialogUi, useDialogProviderContext, provideDialogCompactContext } from './context';
+import DialogCancel from './dialog-cancel.vue';
 import DialogClose from './dialog-close.vue';
-import DialogPopup from './dialog-popup.vue';
+import DialogConfirm from './dialog-confirm.vue';
 import DialogContent from './dialog-content.vue';
 import DialogDescription from './dialog-description.vue';
 import DialogFooter from './dialog-footer.vue';
 import DialogHeader from './dialog-header.vue';
 import DialogOverlay from './dialog-overlay.vue';
+import DialogPopup from './dialog-popup.vue';
 import DialogRoot from './dialog-root.vue';
 import DialogTitle from './dialog-title.vue';
 import DialogTrigger from './dialog-trigger.vue';
-import DialogCancel from './dialog-cancel.vue';
-import DialogConfirm from './dialog-confirm.vue';
 import type { DialogCompactProps, DialogCompactEmits, DialogCompactSlots, DialogAlertType } from './types';
 
 defineOptions({

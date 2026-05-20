@@ -1,16 +1,16 @@
 <script setup lang="ts" generic="T extends DefinedValue = DefinedValue">
 import { computed } from 'vue';
 import { keysOf } from '@soybeanjs/utils';
+import { useMenuUi } from '../menu/context';
 import { usePickProps, useForwardListeners } from '../../composables';
 import type { DefinedValue } from '../../types';
 import Icon from '../_icon/icon.vue';
 import Link from '../link/link.vue';
 import { MenuPortal, MenuOptionsCompact } from '../menu';
-import { useMenuUi } from '../menu/context';
-import MenubarRoot from './menubar-root.vue';
-import MenubarMenu from './menubar-menu.vue';
-import MenubarTrigger from './menubar-trigger.vue';
 import MenubarContent from './menubar-content.vue';
+import MenubarMenu from './menubar-menu.vue';
+import MenubarRoot from './menubar-root.vue';
+import MenubarTrigger from './menubar-trigger.vue';
 import type { MenubarCompactProps, MenubarCompactEmits, MenubarCompactSlots } from './types';
 
 defineOptions({

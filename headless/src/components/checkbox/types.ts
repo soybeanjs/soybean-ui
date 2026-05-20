@@ -8,10 +8,10 @@ import type {
   PropsToContext,
   UiClass
 } from '../../types';
-import type { ButtonProps } from '../button/types';
-import type { PrimitiveWithBaseProps } from '../primitive/types';
-import type { LabelProps as CheckboxLabelProps } from '../label/types';
 import type { IconValue } from '../_icon/types';
+import type { ButtonProps } from '../button/types';
+import type { LabelProps as CheckboxLabelProps } from '../label/types';
+import type { PrimitiveWithBaseProps } from '../primitive/types';
 import type { RovingFocusGroupProps } from '../roving-focus/types';
 
 /**

@@ -1,8 +1,7 @@
 import { computed, ref, watch, watchEffect } from 'vue';
-import { useContext, useUiContext, useForwardElement } from '../../composables';
 import { isClient } from '../../shared';
 import { provideDialogUi } from '../dialog/context';
-import { useSnapPoints } from './use-snap-points';
+import { useContext, useUiContext, useForwardElement } from '../../composables';
 import {
   BOTTOM_SHEET_SCALE_SELECTOR,
   BORDER_RADIUS,
@@ -19,6 +18,7 @@ import {
   set
 } from './shared';
 import type { BottomSheetRootContext, BottomSheetRootContextParams, BottomSheetUiSlot } from './types';
+import { useSnapPoints } from './use-snap-points';
 
 export const [provideDrawerRootContext, useDrawerRootContext] = useContext(
   'BottomSheetRoot',

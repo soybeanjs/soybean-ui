@@ -1,7 +1,7 @@
-import { mount } from '@vue/test-utils';
 import { describe, expect, it } from 'vitest';
-import { STagsInput } from '../../../src';
+import { mount } from '@vue/test-utils';
 import { getA11yViolations } from '../../shared/a11y';
+import { STagsInput } from '../../../src';
 
 const mountCompactTagsInput = (props: Record<string, unknown> = {}) => {
   return mount(STagsInput, {

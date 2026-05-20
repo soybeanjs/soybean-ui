@@ -361,9 +361,7 @@
                 "description": "Model value type for the calendar component.",
                 "descriptionKey": "api.generated.headless_src_components_calendar_types.calendarmodelvalue",
                 "sourcePath": "headless/src/components/calendar/types.ts",
-                "typeParameters": [
-                  "M extends boolean = false"
-                ],
+                "typeParameters": ["M extends boolean = false"],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -388,9 +386,7 @@
                 "description": "Model value type for the calendar component.",
                 "descriptionKey": "api.generated.headless_src_components_calendar_types.calendarmodelvalue",
                 "sourcePath": "headless/src/components/calendar/types.ts",
-                "typeParameters": [
-                  "M extends boolean = false"
-                ],
+                "typeParameters": ["M extends boolean = false"],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -1011,9 +1007,7 @@
                 "description": "Model value type for the calendar component.",
                 "descriptionKey": "api.generated.headless_src_components_calendar_types.calendarmodelvalue",
                 "sourcePath": "headless/src/components/calendar/types.ts",
-                "typeParameters": [
-                  "M extends boolean = false"
-                ],
+                "typeParameters": ["M extends boolean = false"],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -1038,9 +1032,7 @@
                 "description": "Model value type for the calendar component.",
                 "descriptionKey": "api.generated.headless_src_components_calendar_types.calendarmodelvalue",
                 "sourcePath": "headless/src/components/calendar/types.ts",
-                "typeParameters": [
-                  "M extends boolean = false"
-                ],
+                "typeParameters": ["M extends boolean = false"],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -1687,9 +1679,7 @@
                 "description": "Model value type for the calendar component.",
                 "descriptionKey": "api.generated.headless_src_components_calendar_types.calendarmodelvalue",
                 "sourcePath": "headless/src/components/calendar/types.ts",
-                "typeParameters": [
-                  "M extends boolean = false"
-                ],
+                "typeParameters": ["M extends boolean = false"],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -1714,9 +1704,7 @@
                 "description": "Model value type for the calendar component.",
                 "descriptionKey": "api.generated.headless_src_components_calendar_types.calendarmodelvalue",
                 "sourcePath": "headless/src/components/calendar/types.ts",
-                "typeParameters": [
-                  "M extends boolean = false"
-                ],
+                "typeParameters": ["M extends boolean = false"],
                 "external": false,
                 "members": [],
                 "callables": []

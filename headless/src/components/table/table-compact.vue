@@ -9,19 +9,19 @@
 >
 import { computed, useSlots } from 'vue';
 import { transformPropsToContext } from '../../shared';
+import { useDirection } from '../config-provider/context';
 import { provideTableCompactContext } from './context';
 import { useTableCompactData, useTableCompactResize, useTableCompactState, useTableCompactVirtual } from './hooks';
-import { useDirection } from '../config-provider/context';
 import TableBody from './table-body.vue';
 import TableCell from './table-cell.vue';
-import TableCompactRow from './table-compact-row.vue';
 import TableCompactHead from './table-compact-head.vue';
+import TableCompactRow from './table-compact-row.vue';
 import TableContent from './table-content.vue';
 import TableFooter from './table-footer.vue';
 import TableHeader from './table-header.vue';
 import TableRoot from './table-root.vue';
-import TableScroll from './table-scroll.vue';
 import TableRow from './table-row.vue';
+import TableScroll from './table-scroll.vue';
 import TableVirtualSpacerRow from './table-virtual-spacer-row.vue';
 import type { TableCompactProps, TableBaseData, TableCompactEmits, TableCompactSlots, TableUnifiedKey } from './types';
 

@@ -2,11 +2,11 @@
 import { computed, nextTick, onUnmounted, shallowRef, useAttrs, useId, useTemplateRef } from 'vue';
 import type { ComponentPublicInstance } from 'vue';
 import { createEventHook } from '@vueuse/core';
-import { useControllableState, useOmitProps } from '../../composables';
 import { transformPropsToContext } from '../../shared';
-import { useDirection } from '../config-provider/context';
-import { ListboxRoot } from '../listbox';
 import { provideComboboxRootContext } from '../combobox/context';
+import { useDirection } from '../config-provider/context';
+import { useControllableState, useOmitProps } from '../../composables';
+import { ListboxRoot } from '../listbox';
 import { PopperRoot } from '../popper';
 import { provideAutocompleteRootContext } from './context';
 import type { AutocompleteRootProps, AutocompleteRootEmits } from './types';

@@ -1,7 +1,7 @@
-import { mount } from '@vue/test-utils';
 import { describe, expect, it } from 'vitest';
-import SToggle from '../../../src/components/toggle/toggle.vue';
+import { mount } from '@vue/test-utils';
 import { getA11yViolations } from '../../shared/a11y';
+import SToggle from '../../../src/components/toggle/toggle.vue';
 
 describe('SToggle', () => {
   describe('rendering', () => {

@@ -1,7 +1,7 @@
 import { computed, shallowRef, useId, nextTick } from 'vue';
+import { getDisclosureState } from '../../shared';
 import { useContext, useForwardElement, useUiContext } from '../../composables';
 import type { UseUiConsumer } from '../../composables';
-import { getDisclosureState } from '../../shared';
 import type { ClassValue, DisclosureState } from '../../types';
 import type { DialogRootContextParams, DialogProviderContext, DialogCompactContext, DialogUiSlot } from './types';
 

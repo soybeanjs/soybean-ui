@@ -1,15 +1,15 @@
 <script setup lang="ts" generic="T extends TreeMenuBaseOptionData = TreeMenuBaseOptionData">
 import { computed } from 'vue';
 import { keysOf } from '@soybeanjs/utils';
-import { usePickProps } from '../../composables';
 import { getTreePaths } from '../../shared';
+import { usePickProps } from '../../composables';
 import Icon from '../_icon/icon.vue';
-import { useTreeMenuRootContext } from './context';
 import { filterHiddenTreeMenuOptions } from './shared';
-import TreeMenuOptionCompact from './tree-menu-option-compact.vue';
-import TreeMenuGroup from './tree-menu-group.vue';
+import { useTreeMenuRootContext } from './context';
 import TreeMenuGroupLabel from './tree-menu-group-label.vue';
 import TreeMenuGroupRoot from './tree-menu-group-root.vue';
+import TreeMenuGroup from './tree-menu-group.vue';
+import TreeMenuOptionCompact from './tree-menu-option-compact.vue';
 import type {
   TreeMenuBaseOptionData,
   TreeMenuOptionsCompactProps,

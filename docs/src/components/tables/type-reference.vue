@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { SHoverCard } from '@soybeanjs/ui';
 import { getCommonTypePreview, getComponentTypePreview, getExternalTypeImportSignature } from './generated-api';
-import TypePreviewCard from './type-preview-card.vue';
 import { normalizeTypeRenderContext, typeRenderContextKey } from './type-anchor';
+import TypePreviewCard from './type-preview-card.vue';
 
 interface Props {
   name: string;

@@ -2,8 +2,8 @@
 import { computed, shallowRef, watchEffect } from 'vue';
 import type { ShallowRef } from 'vue';
 import { useControllableState, useOmitProps } from '../../composables';
-import ContextMenuCompact from '../context-menu/context-menu-compact.vue';
 import Icon from '../_icon/icon.vue';
+import ContextMenuCompact from '../context-menu/context-menu-compact.vue';
 import type { MenuOptionData } from '../menu/types';
 import { usePageTabsUi } from './context';
 import { usePageTabsState } from './hooks';

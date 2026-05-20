@@ -2,8 +2,8 @@
 import { computed, useAttrs } from 'vue';
 import type { CSSProperties } from 'vue';
 import { DialogRoot, DialogPortal, DialogOverlay, DialogPopup } from '../dialog';
-import { useLayoutRootContext, useLayoutUi } from './context';
 import { layoutCssVars } from './shared';
+import { useLayoutRootContext, useLayoutUi } from './context';
 import type { LayoutMobileProps } from './types';
 
 defineOptions({

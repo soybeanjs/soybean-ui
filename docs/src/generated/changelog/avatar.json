@@ -15,9 +15,7 @@
           "summaryKey": "changelog.generated.v0.18.0.7d59d",
           "commitHash": "7d59d",
           "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/7d59d36a",
-          "authors": [
-            "soybeanjs"
-          ],
+          "authors": ["soybeanjs"],
           "source": "exact-scope"
         }
       ]

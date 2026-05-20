@@ -1,7 +1,7 @@
 import { computed, toRef } from 'vue';
 import type { Ref } from 'vue';
-import type { ArrayElement, Path, PathValue } from '../../../types';
 import { appendAt, insertAt, moveAt, prependAt, removeAt, swapAt, updateAt } from '../../../shared';
+import type { ArrayElement, Path, PathValue } from '../../../types';
 import type {
   FormFieldArrayState,
   FormFieldArrayStates,

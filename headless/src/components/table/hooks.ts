@@ -1,11 +1,10 @@
 import { computed, nextTick, onBeforeUnmount, onMounted, shallowRef, toValue, watch, mergeProps } from 'vue';
 import type { ComputedRef, MaybeRefOrGetter, ShallowRef } from 'vue';
 import { useEventListener, useResizeObserver } from '@vueuse/core';
-import { useTableCompactContext, useTableUi } from './context';
-import { useControllableState, useForwardElement, useSelection } from '../../composables';
 import { getElFromTemplateRef, getMergedRefsValue, pick } from '../../shared';
-import type { CheckedState, VNodeRef, PropsToContext } from '../../types';
+import { useControllableState, useForwardElement, useSelection } from '../../composables';
 import { useLocaleMessages } from '../../locale';
+import type { CheckedState, VNodeRef, PropsToContext } from '../../types';
 import {
   buildTableTree,
   filterTableColumns,
@@ -70,6 +69,7 @@ import {
   toggleTableFilterOption,
   toggleTableSortState
 } from './shared';
+import { useTableCompactContext, useTableUi } from './context';
 import type {
   TableCellSlotProps,
   TableColumnWidthState,

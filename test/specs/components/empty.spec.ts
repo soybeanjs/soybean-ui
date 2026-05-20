@@ -1,7 +1,7 @@
-import { mount } from '@vue/test-utils';
 import { describe, expect, it } from 'vitest';
-import SEmpty from '../../../src/components/empty/empty.vue';
+import { mount } from '@vue/test-utils';
 import { getA11yViolations } from '../../shared/a11y';
+import SEmpty from '../../../src/components/empty/empty.vue';
 
 describe('SEmpty', () => {
   describe('rendering', () => {

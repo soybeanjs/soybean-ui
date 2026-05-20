@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { useForwardListeners, useOmitProps } from '../../composables';
+import HoverCardArrow from '../popper/popper-arrow.vue';
+import HoverCardPortal from '../portal/portal.vue';
+import HoverCardPopup from './hover-card-popup.vue';
+import HoverCardPositioner from './hover-card-positioner.vue';
 import HoverCardRoot from './hover-card-root.vue';
 import HoverCardTrigger from './hover-card-trigger.vue';
-import HoverCardPortal from '../portal/portal.vue';
-import HoverCardPositioner from './hover-card-positioner.vue';
-import HoverCardPopup from './hover-card-popup.vue';
-import HoverCardArrow from '../popper/popper-arrow.vue';
 import type { HoverCardCompactProps, HoverCardCompactEmits, HoverCardCompactSlots } from './types';
 
 defineOptions({

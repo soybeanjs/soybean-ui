@@ -1,10 +1,9 @@
+import { describe, expect, it } from 'vitest';
+import { nextTick } from 'vue';
 import { mount } from '@vue/test-utils';
 import { CalendarDate } from '@internationalized/date';
-import { nextTick } from 'vue';
-import { describe, expect, it } from 'vitest';
-
-import SDateRangePicker from '../../../src/components/date-range-picker/date-range-picker.vue';
 import { getA11yViolations } from '../../shared/a11y';
+import SDateRangePicker from '../../../src/components/date-range-picker/date-range-picker.vue';
 
 function getPopup() {
   return document.body.querySelector('[data-soybean-popover-popup]') as HTMLElement | null;

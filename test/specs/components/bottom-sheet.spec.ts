@@ -1,6 +1,6 @@
-import { mount } from '@vue/test-utils';
-import { nextTick } from 'vue';
 import { describe, expect, it } from 'vitest';
+import { nextTick } from 'vue';
+import { mount } from '@vue/test-utils';
 import SBottomSheet from '../../../src/components/bottom-sheet/bottom-sheet.vue';
 
 function mockRect(element: Element, rect: { x?: number; y?: number; width?: number; height?: number }) {

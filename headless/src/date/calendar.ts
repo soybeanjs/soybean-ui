@@ -7,10 +7,9 @@ import {
   startOfWeek,
   startOfYear
 } from '@internationalized/date';
-import type { DateValue, DateRange, DayOfWeek, DateGrid, WeekStartsOn } from './types';
-
-import { getDaysInMonth, getLastFirstDayOfWeek, getNextLastDayOfWeek } from './comparators';
 import { chunk } from '../shared';
+import { getDaysInMonth, getLastFirstDayOfWeek, getNextLastDayOfWeek } from './comparators';
+import type { DateValue, DateRange, DayOfWeek, DateGrid, WeekStartsOn } from './types';
 
 export const DEFAULT_DATE_LOCALE = 'en-US';
 

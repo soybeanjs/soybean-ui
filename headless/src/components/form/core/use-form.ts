@@ -1,10 +1,8 @@
-import { klona } from 'klona/full';
 import type { StandardSchemaV1 } from '@standard-schema/spec';
+import { klona } from 'klona/full';
 import { isNullish, keysOf } from '../../../shared';
 import type { Path, PathValue } from '../../../types';
 import { updateFormState } from './shared';
-import { useFormState } from './use-form-state';
-import { useRegisterFieldArray } from './use-field-array';
 import type {
   UseHeadlessFormReturn,
   FormRegisterOptions,
@@ -12,6 +10,8 @@ import type {
   InferStandardSchemaInput,
   UseHeadlessFormOptions
 } from './types';
+import { useRegisterFieldArray } from './use-field-array';
+import { useFormState } from './use-form-state';
 
 export function useHeadlessForm<S extends StandardSchemaV1<FormValues, FormValues>>(
   options: UseHeadlessFormOptions<S>

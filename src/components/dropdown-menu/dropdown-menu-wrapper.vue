@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { DropdownMenuWrapperCompact } from '@soybeanjs/headless/dropdown-menu';
 import { useOmitProps, useForwardListeners } from '@soybeanjs/headless/composables';
+import { DropdownMenuWrapperCompact } from '@soybeanjs/headless/dropdown-menu';
 import { provideMenuUi } from '../menu/context';
 import type { DropdownMenuWrapperProps, DropdownMenuWrapperEmits } from './types';
 

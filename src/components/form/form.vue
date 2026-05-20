@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { FormCompact, provideFormUi } from '@soybeanjs/headless/form';
 import { useOmitProps } from '@soybeanjs/headless/composables';
+import { FormCompact, provideFormUi } from '@soybeanjs/headless/form';
 import { formVariants } from '@/styles/form';
 import type { FormProps } from './types';
 

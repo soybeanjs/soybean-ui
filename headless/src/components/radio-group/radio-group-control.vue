@@ -2,8 +2,8 @@
 import { computed, onBeforeMount, onMounted, useAttrs, useTemplateRef, watchEffect } from 'vue';
 import { getAriaLabel, handleAndDispatchCustomEvent, isFormControl } from '../../shared';
 import type { NavigationKey } from '../../types';
-import { RovingFocusItem } from '../roving-focus';
 import Button from '../button/button.vue';
+import { RovingFocusItem } from '../roving-focus';
 import { useRadioGroupItemContext, useRadioGroupRootContext, useRadioGroupUi } from './context';
 import type { RadioGroupControlProps, RadioSelectEvent } from './types';
 

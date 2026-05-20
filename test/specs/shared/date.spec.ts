@@ -1,5 +1,4 @@
-import { CalendarDate, CalendarDateTime, parseDate } from '@internationalized/date';
-import { chunk } from '@soybeanjs/headless/shared';
+import { describe, expect, it } from 'vitest';
 import {
   areAllDaysBetweenValid,
   compareYearMonth,
@@ -13,7 +12,8 @@ import {
   isMonthBetweenInclusive,
   parseStringToDateValue
 } from '@soybeanjs/headless/date';
-import { describe, expect, it } from 'vitest';
+import { chunk } from '@soybeanjs/headless/shared';
+import { CalendarDate, CalendarDateTime, parseDate } from '@internationalized/date';
 
 describe('shared date helpers', () => {
   it('creates a fixed six-week month grid', () => {

@@ -1,5 +1,5 @@
-import { compareYearMonth } from '../../date/comparators';
 import type { DateValue } from '../../date';
+import { compareYearMonth } from '../../date/comparators';
 import type { CalendarRootSlotProps } from './types';
 
 export function getMonthOptions(

@@ -1,6 +1,6 @@
+import { afterEach, describe, expect, it, vi } from 'vitest';
 import { nextTick } from 'vue';
 import { mount } from '@vue/test-utils';
-import { afterEach, describe, expect, it, vi } from 'vitest';
 import { SToastProvider, toast } from '../../../src/components/toast';
 
 afterEach(() => {

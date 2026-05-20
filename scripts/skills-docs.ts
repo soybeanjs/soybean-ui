@@ -4,7 +4,6 @@ import type { Dirent } from 'node:fs';
 import { mkdir, readdir, readFile, rm, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-
 import { menuData } from '../docs/src/constants/menus';
 import { runCliModule } from './_shared';
 

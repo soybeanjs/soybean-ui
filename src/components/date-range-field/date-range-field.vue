@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { DateRangeFieldCompact, provideDateRangeFieldUi } from '@soybeanjs/headless/date-range-field';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
+import { DateRangeFieldCompact, provideDateRangeFieldUi } from '@soybeanjs/headless/date-range-field';
 import { keysOf } from '@soybeanjs/utils';
 import { dateRangeFieldVariants } from '@/styles/date-range-field';
 import type { DateRangeFieldProps, DateRangeFieldEmits, DateRangeFieldSlots } from './types';

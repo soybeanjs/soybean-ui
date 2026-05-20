@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { NavigationMenuCompact, provideNavigationMenuUi } from '@soybeanjs/headless/navigation-menu';
 import { useOmitProps, useForwardListeners } from '@soybeanjs/headless/composables';
+import { NavigationMenuCompact, provideNavigationMenuUi } from '@soybeanjs/headless/navigation-menu';
 import { keysOf } from '@soybeanjs/utils';
 import { navigationMenuVariants } from '@/styles/navigation-menu';
 import type { NavigationMenuProps, NavigationMenuEmits, NavigationMenuSlots } from './types';

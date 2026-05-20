@@ -1,10 +1,10 @@
 import { readFileSync } from 'node:fs';
-import { defineConfig } from 'tsdown';
 import type { RolldownPluginOption } from 'rolldown';
+import { defineConfig } from 'tsdown';
 import unpluginVue from 'unplugin-vue/rolldown';
 import unpluginVueJsx from 'unplugin-vue-jsx/rolldown';
-import pkg from './package.json' with { type: 'json' };
 import headlessPkg from './headless/package.json' with { type: 'json' };
+import pkg from './package.json' with { type: 'json' };
 
 export default defineConfig({
   entry: ['src/index.ts', 'src/nuxt/index.ts', 'src/resolver/index.ts'],

@@ -1,9 +1,9 @@
+import type { CalendarRangeUi } from '@soybeanjs/headless/calendar-range';
 import type {
   DateRangePickerCompactProps,
   DateRangePickerCompactEmits,
   DateRangePickerUi
 } from '@soybeanjs/headless/date-range-picker';
-import type { CalendarRangeUi } from '@soybeanjs/headless/calendar-range';
 import type { ClassValue } from '@soybeanjs/headless/types';
 import type { ThemeSize } from '@/theme';
 

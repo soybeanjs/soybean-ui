@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { useControllableState, useOmitProps } from '../../composables';
 import { transformPropsToContext } from '../../shared';
+import { useControllableState, useOmitProps } from '../../composables';
 import { Primitive } from '../primitive';
 import { provideCollapsibleRootContext, useCollapsibleUi } from './context';
 import type { CollapsibleRootProps, CollapsibleRootEmits } from './types';

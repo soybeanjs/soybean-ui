@@ -2,15 +2,15 @@
 import { computed, nextTick, shallowRef, useTemplateRef } from 'vue';
 import type { ComputedRef, ShallowRef } from 'vue';
 import { createEventHook } from '@vueuse/core';
-import { useControllableState, useTypeahead } from '../../composables';
-import { flattenChildren, getActiveElement, isNullish, transformPropsToContext } from '../../shared';
 import { MAP_KEY_TO_FOCUS_INTENT } from '../../constants';
+import { flattenChildren, getActiveElement, isNullish, transformPropsToContext } from '../../shared';
+import { useControllableState, useTypeahead } from '../../composables';
 import type { MaybeArray, NavigationKey } from '../../types';
 import { Primitive } from '../primitive';
 import RovingFocusGroup from '../roving-focus/roving-focus-group.vue';
+import { findParentPath, flattenItems } from './shared';
 import { provideTreeRootContext } from './context';
 import { useSelectionBehavior } from './hooks';
-import { findParentPath, flattenItems } from './shared';
 import type { TreeRootProps, FlattenedItem, TreeItemData, TreeRootEmits } from './types';
 
 defineOptions({

@@ -1,7 +1,7 @@
 import type { ButtonEmits, ButtonProps as _ButtonProps } from '@soybeanjs/headless/button';
 import type { Align, ClassValue, DataOrientation, Direction, PropsToContext } from '@soybeanjs/headless/types';
-import type { ThemeColor, ThemeSize } from '@/theme';
 import type { ButtonShadow, ButtonShape, ButtonVariant } from '@/styles/button';
+import type { ThemeColor, ThemeSize } from '@/theme';
 import type { IconProps } from '../icon/types';
 import type { LinkProps } from '../link/types';
 

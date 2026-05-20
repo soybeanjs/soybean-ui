@@ -2,8 +2,8 @@
 import { computed } from 'vue';
 import { useClipboard } from '@vueuse/core';
 import { useOmitProps } from '../../composables';
-import { Button } from '../button';
 import Icon from '../_icon/icon.vue';
+import { Button } from '../button';
 import type { ClipboardProps, ClipboardSlotProps, ClipboardEmits, ClipboardState } from './types';
 
 defineOptions({

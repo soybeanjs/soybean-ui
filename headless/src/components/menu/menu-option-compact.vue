@@ -6,17 +6,17 @@ import type { DefinedValue } from '../../types';
 import Icon from '../_icon/icon.vue';
 import Kbd from '../kbd/kbd.vue';
 import Link from '../link/link.vue';
+import MenuPortal from '../portal/portal.vue';
 import MenuSeparator from '../separator/separator-root.vue';
 import { useMenuOptionsCompactContext, useMenuUi } from './context';
 import { useCommonSlotNames } from './hooks';
-import MenuGroup from './menu-group.vue';
 import MenuGroupLabel from './menu-group-label.vue';
-import MenuItem from './menu-item.vue';
+import MenuGroup from './menu-group.vue';
 import MenuItemSlotCompact from './menu-item-slot-compact.vue';
-import MenuPortal from '../portal/portal.vue';
-import MenuSub from './menu-sub.vue';
+import MenuItem from './menu-item.vue';
 import MenuSubContent from './menu-sub-content.vue';
 import MenuSubTrigger from './menu-sub-trigger.vue';
+import MenuSub from './menu-sub.vue';
 import type { MenuOptionCompactProps, MenuOptionCompactEmits, MenuOptionCompactSlots } from './types';
 
 defineOptions({

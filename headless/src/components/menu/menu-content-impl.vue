@@ -1,6 +1,9 @@
 <script setup lang="ts">
 import { computed, onWatcherCleanup, useTemplateRef, watchEffect } from 'vue';
 import type { CSSProperties } from 'vue';
+import { COLLECTION_ITEM_ATTRIBUTE } from '../../constants';
+import { getActiveElement, isMouseEvent, tryFocusFirst } from '../../shared';
+import { popperCssVars } from '../popper/shared';
 import {
   useArrowNavigation,
   useBodyScrollLock,
@@ -12,13 +15,10 @@ import {
   useOmitProps,
   useTypeahead
 } from '../../composables';
-import { COLLECTION_ITEM_ATTRIBUTE } from '../../constants';
-import { getActiveElement, isMouseEvent, tryFocusFirst } from '../../shared';
-import { RovingFocusGroup } from '../roving-focus';
 import { PopperPopup, PopperPositioner } from '../popper';
-import { popperCssVars } from '../popper/shared';
-import { provideMenuContentContext, useMenuContext, useMenuRootContext, useMenuUi } from './context';
+import { RovingFocusGroup } from '../roving-focus';
 import { FIRST_LAST_KEYS, LAST_KEYS, MENU_POPUP_DATA_ATTRIBUTE, menuCssVars, subMenuCssVars } from './shared';
+import { provideMenuContentContext, useMenuContext, useMenuRootContext, useMenuUi } from './context';
 import type { MenuContentImplProps, MenuContentImplEmits } from './types';
 
 defineOptions({

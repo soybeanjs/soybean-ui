@@ -1,6 +1,6 @@
 import { computed } from 'vue';
-import { useContext, useUiContext } from '../../composables';
 import { provideCollapsibleUi } from '../collapsible/context';
+import { useContext, useUiContext } from '../../composables';
 import type { TreeMenuItemContext, TreeMenuRootContextParams, TreeMenuUiSlot } from './types';
 
 export const [provideTreeMenuRootContext, useTreeMenuRootContext] = useContext(

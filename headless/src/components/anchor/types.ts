@@ -1,7 +1,7 @@
 import type { HTMLAttributes, ShallowRef } from 'vue';
-import type { PrimitiveWithBaseProps } from '../primitive/types';
-import type { LinkBaseProps } from '../link/types';
 import type { BaseProps, DataOrientation, Direction, PropsToContext, UiClass } from '../../types';
+import type { LinkBaseProps } from '../link/types';
+import type { PrimitiveWithBaseProps } from '../primitive/types';
 
 /**
  * Type information for AnchorContainer.

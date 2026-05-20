@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { computed, shallowRef, watch } from 'vue';
-import { useControllableState, useForwardElement } from '../../composables';
 import {
   formatColor,
   getAreaBackgroundStyle,
@@ -12,6 +11,7 @@ import {
   isFormControl,
   transformPropsToContext
 } from '../../shared';
+import { useControllableState, useForwardElement } from '../../composables';
 import type { ColorValue } from '../../types';
 import { Primitive } from '../primitive';
 import { VisuallyHiddenInput } from '../visually-hidden';

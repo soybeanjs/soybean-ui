@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import { useForwardElement, useOmitProps } from '../../composables';
 import Icon from '../_icon/icon.vue';
-import InputNumberRoot from './input-number-root.vue';
+import InputNumberClear from './input-number-clear.vue';
 import InputNumberControl from './input-number-control.vue';
 import InputNumberDecrement from './input-number-decrement.vue';
 import InputNumberIncrement from './input-number-increment.vue';
-import InputNumberClear from './input-number-clear.vue';
+import InputNumberRoot from './input-number-root.vue';
 import type { InputNumberCompactProps, InputNumberCompactEmits, InputNumberCompactSlots } from './types';
 
 defineOptions({

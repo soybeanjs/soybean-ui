@@ -1,7 +1,7 @@
-import { mount } from '@vue/test-utils';
 import { describe, expect, it } from 'vitest';
-import SSwitch from '../../../src/components/switch/switch.vue';
+import { mount } from '@vue/test-utils';
 import { getA11yViolations } from '../../shared/a11y';
+import SSwitch from '../../../src/components/switch/switch.vue';
 
 describe('SSwitch', () => {
   describe('rendering', () => {

@@ -1,17 +1,17 @@
 <script setup lang="ts">
-import { isSameDay } from '@internationalized/date';
 import { computed, onMounted, shallowRef, watch } from 'vue';
+import { isSameDay } from '@internationalized/date';
+import { transformPropsToContext } from '../../shared';
+import { getMonthOptions, getYearOptions, handleMonthChange, handleYearChange } from '../calendar/shared';
+import { useDirection, useLocale } from '../config-provider/context';
 import { useControllableState, useForwardElement } from '../../composables';
 import { getDefaultDate, getWeekStartsOn, handleCalendarInitialFocus, isBefore, useDateFormatter } from '../../date';
 import type { DateValue } from '../../date';
-import { transformPropsToContext } from '../../shared';
-import { useDirection, useLocale } from '../config-provider/context';
-import { Primitive } from '../primitive';
 import { useCalendar } from '../calendar/use-calendar';
+import { Primitive } from '../primitive';
 import { provideCalendarRangeRootContext, useCalendarRangeUi } from './context';
-import { useCalendarRangeState } from './use-calendar-range';
-import { getMonthOptions, getYearOptions, handleMonthChange, handleYearChange } from '../calendar/shared';
 import type { CalendarRangeRootProps, CalendarRangeRootEmits, CalendarRangeRootSlots } from './types';
+import { useCalendarRangeState } from './use-calendar-range';
 
 defineOptions({
   name: 'CalendarRangeRoot'

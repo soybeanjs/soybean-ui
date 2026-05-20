@@ -2,12 +2,12 @@
 import { useForwardListeners, useOmitProps } from '../../composables';
 import Icon from '../_icon/icon.vue';
 import { useAccordionUi } from './context';
-import AccordionRoot from './accordion-root.vue';
-import AccordionItem from './accordion-item.vue';
-import AccordionHeader from './accordion-header.vue';
-import AccordionTrigger from './accordion-trigger.vue';
 import AccordionContent from './accordion-content.vue';
 import AccordionDescription from './accordion-description.vue';
+import AccordionHeader from './accordion-header.vue';
+import AccordionItem from './accordion-item.vue';
+import AccordionRoot from './accordion-root.vue';
+import AccordionTrigger from './accordion-trigger.vue';
 import type { AccordionCompactProps, AccordionCompactEmits, AccordionCompactSlots, AccordionOptionData } from './types';
 
 defineOptions({

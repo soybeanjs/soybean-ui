@@ -10,9 +10,7 @@
         "description": "Properties for the Carousel component.",
         "descriptionKey": "api.generated.src_components_carousel_types.carouselprops.props",
         "sourcePath": "src/components/carousel/types.ts",
-        "typeParameters": [
-          "TypeParameter T"
-        ],
+        "typeParameters": ["TypeParameter T"],
         "members": [
           {
             "name": "class",
@@ -551,9 +549,7 @@
         "description": "Slots for the Carousel component.",
         "descriptionKey": "api.generated.src_components_carousel_types.carouselslots.slots",
         "sourcePath": "src/components/carousel/types.ts",
-        "typeParameters": [
-          "TypeParameter T"
-        ],
+        "typeParameters": ["TypeParameter T"],
         "members": [],
         "callables": [
           {
@@ -678,9 +674,7 @@
         "description": "Properties for the CarouselCompact component.",
         "descriptionKey": "api.generated.headless_src_components_carousel_types.carouselcompactprops.props",
         "sourcePath": "headless/src/components/carousel/types.ts",
-        "typeParameters": [
-          "TypeParameter T"
-        ],
+        "typeParameters": ["TypeParameter T"],
         "members": [
           {
             "name": "slides",
@@ -1133,9 +1127,7 @@
         "description": "Slots for the CarouselCompact component.",
         "descriptionKey": "api.generated.headless_src_components_carousel_types.carouselcompactslots.slots",
         "sourcePath": "headless/src/components/carousel/types.ts",
-        "typeParameters": [
-          "TypeParameter T"
-        ],
+        "typeParameters": ["TypeParameter T"],
         "members": [],
         "callables": [
           {

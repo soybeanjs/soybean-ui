@@ -1,8 +1,8 @@
 <script setup lang="ts" generic="T extends SegmentOptionData = SegmentOptionData">
 import { computed } from 'vue';
+import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
 import { SegmentCompact } from '@soybeanjs/headless/segment';
 import { provideTabsUi } from '@soybeanjs/headless/tabs';
-import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
 import { segmentVariants } from '@/styles/segment';
 import type { SegmentProps, SegmentEmits, SegmentSlots, SegmentOptionData } from './types';
 

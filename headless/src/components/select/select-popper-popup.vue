@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import type { CSSProperties } from 'vue';
+import { popperCssVars } from '../popper/shared';
 import { useForwardElement } from '../../composables';
 import { PopperPopup } from '../popper';
-import { popperCssVars } from '../popper/shared';
-import { useSelectPopupElementContext } from './context';
 import { selectCssVars } from './shared';
+import { useSelectPopupElementContext } from './context';
 import type { SelectPopupProps } from './types';
 
 defineOptions({

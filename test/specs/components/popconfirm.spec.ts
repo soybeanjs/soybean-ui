@@ -1,8 +1,8 @@
-import { mount } from '@vue/test-utils';
-import { nextTick } from 'vue';
 import { describe, expect, it } from 'vitest';
-import SPopconfirm from '../../../src/components/popconfirm/popconfirm.vue';
+import { nextTick } from 'vue';
+import { mount } from '@vue/test-utils';
 import { getA11yViolations } from '../../shared/a11y';
+import SPopconfirm from '../../../src/components/popconfirm/popconfirm.vue';
 
 describe('SPopconfirm', () => {
   const slots = {

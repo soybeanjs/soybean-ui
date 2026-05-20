@@ -1,7 +1,7 @@
-import { computed, ref } from 'vue';
 import { describe, expect, it } from 'vitest';
-import { provideConfigProviderContext, useDirection } from '../../../headless/src/components/config-provider/context';
+import { computed, ref } from 'vue';
 import { withSetup } from '../../shared';
+import { provideConfigProviderContext, useDirection } from '../../../headless/src/components/config-provider/context';
 
 describe('useDirection', () => {
   it('should return ltr as default direction', () => {

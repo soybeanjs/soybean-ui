@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { computed, nextTick, onMounted, watch, mergeProps } from 'vue';
-import { useControllableState, useOmitProps } from '../../composables';
-import { ListboxFilter } from '../listbox';
 import { useListboxRootContext } from '../listbox/context';
+import { useControllableState, useOmitProps } from '../../composables';
 import type { InputControlProps } from '../input/types';
+import { ListboxFilter } from '../listbox';
 import { useComboboxRootContext } from './context';
 import type { ComboboxInputProps, ComboboxInputEmits } from './types';
 

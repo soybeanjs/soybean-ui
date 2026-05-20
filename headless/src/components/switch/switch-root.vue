@@ -1,9 +1,9 @@
 <script setup lang="ts" generic="T extends AcceptableBooleanValue = boolean">
 import { computed } from 'vue';
-import { useControllableState, useForwardElement } from '../../composables';
 import { isFormControl, isNullish, transformPropsToContext } from '../../shared';
-import type { AcceptableBooleanValue } from '../../types';
 import { useDirection } from '../config-provider/context';
+import { useControllableState, useForwardElement } from '../../composables';
+import type { AcceptableBooleanValue } from '../../types';
 import { VisuallyHiddenInput } from '../visually-hidden';
 import { provideSwitchRootContext, useSwitchUi } from './context';
 import type { SwitchRootProps, SwitchRootEmits } from './types';

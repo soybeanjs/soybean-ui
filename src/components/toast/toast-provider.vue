@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { useStyleTag } from '@vueuse/core';
-import { ToastProvider, provideToastUi } from '@soybeanjs/headless/toast';
 import { useOmitProps } from '@soybeanjs/headless/composables';
+import { ToastProvider, provideToastUi } from '@soybeanjs/headless/toast';
 import { toastVariants } from '@/styles/toast';
-import type { ToastProviderProps } from './types';
 import toastStyles from './styles.css?raw';
+import type { ToastProviderProps } from './types';
 
 defineOptions({
   name: 'SToastProvider'

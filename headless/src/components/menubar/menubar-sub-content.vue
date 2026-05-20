@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { useForwardListeners } from '../../composables';
 import { wrapArray } from '../../shared';
+import { useForwardListeners } from '../../composables';
 import { MenuSubContent } from '../menu';
 import { useMenubarCollectionContext, useMenubarMenuContext, useMenubarRootContext } from './context';
 import type { MenubarSubContentProps, MenubarSubContentEmits } from './types';

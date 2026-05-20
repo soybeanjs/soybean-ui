@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { useAttrs } from 'vue';
 import { useForwardElement } from '../../composables';
-import { useSelectContentContext, useSelectItemAlignedPositionContext, useSelectUi } from './context';
 import { CONTENT_MARGIN } from './shared';
+import { useSelectContentContext, useSelectItemAlignedPositionContext, useSelectUi } from './context';
 import type { SelectViewportProps } from './types';
 
 defineOptions({

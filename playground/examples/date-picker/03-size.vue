@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { CalendarDate } from '@internationalized/date';
 import { SDatePicker } from '@soybeanjs/ui';
+import { CalendarDate } from '@internationalized/date';
 import { themeSizeOptions } from '../../constants/theme';
 
 const selectedDate = ref<any>();

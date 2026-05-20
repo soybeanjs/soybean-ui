@@ -1,7 +1,6 @@
 <script setup lang="ts">
-import { useControllableState } from '../../composables';
 import { transformPropsToContext } from '../../shared';
-
+import { useControllableState } from '../../composables';
 import { provideTabsRootContext, useTabsUi } from './context';
 import type { TabsRootProps, TabsRootEmits } from './types';
 

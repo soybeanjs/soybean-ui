@@ -1,5 +1,5 @@
-import { useContext, useUiContext } from '../../composables';
 import { useDirection } from '../config-provider/context';
+import { useContext, useUiContext } from '../../composables';
 import type { AnchorRootContextParams, AnchorUiSlot } from './types';
 
 export const [provideAnchorRootContext, useAnchorRootContext] = useContext(

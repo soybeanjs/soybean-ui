@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { CalendarDate } from '@internationalized/date';
 import { shallowRef } from 'vue';
 import { SDateField } from '@soybeanjs/ui';
+import { CalendarDate } from '@internationalized/date';
 
 const value = shallowRef(new CalendarDate(2026, 4, 19));
 </script>

@@ -2,8 +2,8 @@
 import { computed, ref, watch, watchPostEffect } from 'vue';
 import { useResizeObserver } from '@vueuse/core';
 import { Primitive } from '../primitive';
-import { useTabsRootContext, useTabsUi } from './context';
 import { tabsCssVars } from './shared';
+import { useTabsRootContext, useTabsUi } from './context';
 import type { TabsIndicatorProps } from './types';
 
 defineOptions({

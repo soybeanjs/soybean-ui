@@ -10,8 +10,8 @@ import type {
   RadioGroupCardUi
 } from '@soybeanjs/headless/radio-group';
 import type { DefinedWithBooleanValue, ClassValue } from '@soybeanjs/headless/types';
-import type { ThemeColor, ThemeSize } from '@/theme';
 import type { RadioGroupVariant } from '@/styles/radio-group';
+import type { ThemeColor, ThemeSize } from '@/theme';
 
 /**
  * Properties for the RadioGroup component.

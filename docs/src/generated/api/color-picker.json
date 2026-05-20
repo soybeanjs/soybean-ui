@@ -241,9 +241,7 @@
                 "description": "Properties for the SegmentCompact component.",
                 "descriptionKey": "api.generated.headless_src_components_segment_types.segmentcompactprops",
                 "sourcePath": "headless/src/components/segment/types.ts",
-                "typeParameters": [
-                  "T extends SegmentOptionData"
-                ],
+                "typeParameters": ["T extends SegmentOptionData"],
                 "external": false,
                 "members": [
                   {
@@ -1378,9 +1376,7 @@
                 "description": "Properties for the ColorSwatchPickerCompact component.",
                 "descriptionKey": "api.generated.headless_src_components_color_swatch_picker_types.colorswatchpickercompactprops",
                 "sourcePath": "headless/src/components/color-swatch-picker/types.ts",
-                "typeParameters": [
-                  "M extends boolean = false"
-                ],
+                "typeParameters": ["M extends boolean = false"],
                 "external": false,
                 "members": [
                   {
@@ -2788,9 +2784,7 @@
                 "description": "Properties for the SegmentCompact component.",
                 "descriptionKey": "api.generated.headless_src_components_segment_types.segmentcompactprops",
                 "sourcePath": "headless/src/components/segment/types.ts",
-                "typeParameters": [
-                  "T extends SegmentOptionData"
-                ],
+                "typeParameters": ["T extends SegmentOptionData"],
                 "external": false,
                 "members": [
                   {
@@ -3925,9 +3919,7 @@
                 "description": "Properties for the ColorSwatchPickerCompact component.",
                 "descriptionKey": "api.generated.headless_src_components_color_swatch_picker_types.colorswatchpickercompactprops",
                 "sourcePath": "headless/src/components/color-swatch-picker/types.ts",
-                "typeParameters": [
-                  "M extends boolean = false"
-                ],
+                "typeParameters": ["M extends boolean = false"],
                 "external": false,
                 "members": [
                   {
@@ -5300,9 +5292,7 @@
                 "description": "",
                 "descriptionKey": "api.generated.node_modules_pnpm_vue_reactivity_3_5_34_node_modules_vue_reactivity_dist_reactivity_d.computedref",
                 "sourcePath": "node_modules/.pnpm/@vue+reactivity@3.5.34/node_modules/@vue/reactivity/dist/reactivity.d.ts",
-                "typeParameters": [
-                  "T = any"
-                ],
+                "typeParameters": ["T = any"],
                 "external": true,
                 "members": [],
                 "callables": []
@@ -5327,9 +5317,7 @@
                 "description": "",
                 "descriptionKey": "api.generated.node_modules_pnpm_vue_reactivity_3_5_34_node_modules_vue_reactivity_dist_reactivity_d.computedref",
                 "sourcePath": "node_modules/.pnpm/@vue+reactivity@3.5.34/node_modules/@vue/reactivity/dist/reactivity.d.ts",
-                "typeParameters": [
-                  "T = any"
-                ],
+                "typeParameters": ["T = any"],
                 "external": true,
                 "members": [],
                 "callables": []
@@ -5354,9 +5342,7 @@
                 "description": "",
                 "descriptionKey": "api.generated.node_modules_pnpm_vue_reactivity_3_5_34_node_modules_vue_reactivity_dist_reactivity_d.computedref",
                 "sourcePath": "node_modules/.pnpm/@vue+reactivity@3.5.34/node_modules/@vue/reactivity/dist/reactivity.d.ts",
-                "typeParameters": [
-                  "T = any"
-                ],
+                "typeParameters": ["T = any"],
                 "external": true,
                 "members": [],
                 "callables": []
@@ -5381,9 +5367,7 @@
                 "description": "",
                 "descriptionKey": "api.generated.node_modules_pnpm_vue_reactivity_3_5_34_node_modules_vue_reactivity_dist_reactivity_d.computedref",
                 "sourcePath": "node_modules/.pnpm/@vue+reactivity@3.5.34/node_modules/@vue/reactivity/dist/reactivity.d.ts",
-                "typeParameters": [
-                  "T = any"
-                ],
+                "typeParameters": ["T = any"],
                 "external": true,
                 "members": [],
                 "callables": []
@@ -5408,9 +5392,7 @@
                 "description": "",
                 "descriptionKey": "api.generated.node_modules_pnpm_vue_reactivity_3_5_34_node_modules_vue_reactivity_dist_reactivity_d.computedref",
                 "sourcePath": "node_modules/.pnpm/@vue+reactivity@3.5.34/node_modules/@vue/reactivity/dist/reactivity.d.ts",
-                "typeParameters": [
-                  "T = any"
-                ],
+                "typeParameters": ["T = any"],
                 "external": true,
                 "members": [],
                 "callables": []
@@ -5435,9 +5417,7 @@
                 "description": "",
                 "descriptionKey": "api.generated.node_modules_pnpm_vue_reactivity_3_5_34_node_modules_vue_reactivity_dist_reactivity_d.computedref",
                 "sourcePath": "node_modules/.pnpm/@vue+reactivity@3.5.34/node_modules/@vue/reactivity/dist/reactivity.d.ts",
-                "typeParameters": [
-                  "T = any"
-                ],
+                "typeParameters": ["T = any"],
                 "external": true,
                 "members": [],
                 "callables": []
@@ -5462,9 +5442,7 @@
                 "description": "",
                 "descriptionKey": "api.generated.node_modules_pnpm_vue_reactivity_3_5_34_node_modules_vue_reactivity_dist_reactivity_d.computedref",
                 "sourcePath": "node_modules/.pnpm/@vue+reactivity@3.5.34/node_modules/@vue/reactivity/dist/reactivity.d.ts",
-                "typeParameters": [
-                  "T = any"
-                ],
+                "typeParameters": ["T = any"],
                 "external": true,
                 "members": [],
                 "callables": []

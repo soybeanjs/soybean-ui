@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, shallowRef, watch, watchEffect, onWatcherCleanup, useAttrs } from 'vue';
-import { useForwardElement } from '../../composables';
 import { useDirection } from '../config-provider/context';
+import { useForwardElement } from '../../composables';
 import { provideCarouselRootContext, useCarouselUi } from './context';
 import { useEmblaCarousel } from './hooks';
 import type {

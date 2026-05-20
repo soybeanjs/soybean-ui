@@ -2,6 +2,7 @@
 import { computed } from 'vue';
 import { useOmitProps } from '../../composables';
 import Icon from '../_icon/icon.vue';
+import { getEllipsisRange } from './shared';
 import BreadcrumbEllipsis from './breadcrumb-ellipsis.vue';
 import BreadcrumbItem from './breadcrumb-item.vue';
 import BreadcrumbLink from './breadcrumb-link.vue';
@@ -9,7 +10,6 @@ import BreadcrumbList from './breadcrumb-list.vue';
 import BreadcrumbPage from './breadcrumb-page.vue';
 import BreadcrumbRoot from './breadcrumb-root.vue';
 import BreadcrumbSeparator from './breadcrumb-separator.vue';
-import { getEllipsisRange } from './shared';
 import type {
   BreadcrumbCompactProps,
   BreadcrumbCompactEmits,

@@ -3,8 +3,8 @@ import { computed, shallowRef, useAttrs, watchEffect } from 'vue';
 import type { CSSProperties } from 'vue';
 import { useResizeObserver } from '@vueuse/core';
 import { useForwardElement, usePresence } from '../../composables';
-import { useNavigationMenuRootContext, useNavigationMenuUi } from './context';
 import { getNavigationMenuIndicatorPosition, navigationMenuIndicatorCssVars } from './shared';
+import { useNavigationMenuRootContext, useNavigationMenuUi } from './context';
 import type { NavigationMenuIndicatorProps } from './types';
 
 defineOptions({

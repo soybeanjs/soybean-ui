@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { useForwardElement } from '../../composables';
 import { isFormControl } from '../../shared';
-import { VisuallyHiddenInput } from '../visually-hidden';
+import { useForwardElement } from '../../composables';
 import Button from '../button/button.vue';
 import ColorSwatchCompact from '../color-swatch/color-swatch-compact.vue';
+import { VisuallyHiddenInput } from '../visually-hidden';
 import { useColorPickerRootContext, useColorPickerUi } from './context';
 import type { ColorPickerTriggerProps } from './types';
 

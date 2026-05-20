@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { useForwardElement, useOmitProps } from '../../composables';
-import InputRoot from './input-root.vue';
 import InputClear from './input-clear.vue';
 import InputControl from './input-control.vue';
+import InputRoot from './input-root.vue';
 import type { InputCompactProps, InputCompactEmits, InputCompactSlots } from './types';
 
 defineOptions({

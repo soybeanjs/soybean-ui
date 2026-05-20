@@ -3,13 +3,13 @@ import { computed, onBeforeUnmount, useId } from 'vue';
 import { getActiveElement, getTabbableCandidates, removeFromTabOrder, tryFocusFirst } from '../../shared';
 import { useArrowNavigation } from '../../composables';
 import type { Align } from '../../types';
+import { createContentId, createTriggerId } from './shared';
 import {
   provideNavigationMenuItemContext,
   useCollectionContext,
   useNavigationMenuRootContext,
   useNavigationMenuUi
 } from './context';
-import { createContentId, createTriggerId } from './shared';
 import type { NavigationMenuItemProps } from './types';
 
 defineOptions({

@@ -2,8 +2,8 @@
 import { computed, nextTick, ref, watchEffect, onWatcherCleanup, useAttrs } from 'vue';
 import { useForwardElement, useOmitProps } from '../../composables';
 import type { Point } from '../../types';
-import { Primitive } from '../primitive';
 import { MenuAnchor } from '../menu';
+import { Primitive } from '../primitive';
 import { useContextMenuRootContext } from './context';
 import type { ContextMenuTriggerProps } from './types';
 

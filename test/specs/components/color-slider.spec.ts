@@ -1,6 +1,6 @@
-import { mount } from '@vue/test-utils';
 import { describe, expect, it } from 'vitest';
 import { nextTick } from 'vue';
+import { mount } from '@vue/test-utils';
 import SColorSlider from '../../../src/components/color-slider/color-slider.vue';
 
 function mockRect(element: Element, rect: { x?: number; y?: number; width?: number; height?: number }) {

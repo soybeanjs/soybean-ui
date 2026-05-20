@@ -27,9 +27,7 @@
         "description": "Properties for the MenuCheckboxGroup component.",
         "descriptionKey": "api.generated.headless_src_components_menu_types.menucheckboxgroupprops.props",
         "sourcePath": "headless/src/components/menu/types.ts",
-        "typeParameters": [
-          "T extends DefinedValue = DefinedValue"
-        ],
+        "typeParameters": ["T extends DefinedValue = DefinedValue"],
         "members": [
           {
             "name": "modelValue",
@@ -120,9 +118,7 @@
         "description": "Events for the MenuCheckboxGroup component.",
         "descriptionKey": "api.generated.headless_src_components_menu_types.menucheckboxgroupemits.emits",
         "sourcePath": "headless/src/components/menu/types.ts",
-        "typeParameters": [
-          "T extends DefinedValue = DefinedValue"
-        ],
+        "typeParameters": ["T extends DefinedValue = DefinedValue"],
         "members": [],
         "callables": [
           {
@@ -342,9 +338,7 @@
         "description": "Properties for the MenuCheckboxOptionsCompact component.",
         "descriptionKey": "api.generated.headless_src_components_menu_types.menucheckboxoptionscompactprops.props",
         "sourcePath": "headless/src/components/menu/types.ts",
-        "typeParameters": [
-          "TypeParameter T"
-        ],
+        "typeParameters": ["TypeParameter T"],
         "members": [
           {
             "name": "items",
@@ -707,9 +701,7 @@
         "description": "Events for the MenuCheckboxOptionsCompact component.",
         "descriptionKey": "api.generated.headless_src_components_menu_types.menucheckboxoptionscompactemits.emits",
         "sourcePath": "headless/src/components/menu/types.ts",
-        "typeParameters": [
-          "TypeParameter T"
-        ],
+        "typeParameters": ["TypeParameter T"],
         "members": [],
         "callables": [
           {
@@ -752,9 +744,7 @@
                 "description": "Option data for the MenuCheckbox component.",
                 "descriptionKey": "api.generated.headless_src_components_menu_types.menucheckboxoptiondata",
                 "sourcePath": "headless/src/components/menu/types.ts",
-                "typeParameters": [
-                  "T extends DefinedValue = DefinedValue"
-                ],
+                "typeParameters": ["T extends DefinedValue = DefinedValue"],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -772,9 +762,7 @@
         "description": "Slots for the MenuCheckboxOptionsCompact component.",
         "descriptionKey": "api.generated.headless_src_components_menu_types.menucheckboxoptionscompactslots.slots",
         "sourcePath": "headless/src/components/menu/types.ts",
-        "typeParameters": [
-          "TypeParameter T"
-        ],
+        "typeParameters": ["TypeParameter T"],
         "members": [],
         "callables": [
           {
@@ -794,9 +782,7 @@
                 "description": "Option data for the MenuCheckbox component.",
                 "descriptionKey": "api.generated.headless_src_components_menu_types.menucheckboxoptiondata",
                 "sourcePath": "headless/src/components/menu/types.ts",
-                "typeParameters": [
-                  "T extends DefinedValue = DefinedValue"
-                ],
+                "typeParameters": ["T extends DefinedValue = DefinedValue"],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -820,9 +806,7 @@
                 "description": "Option data for the MenuCheckbox component.",
                 "descriptionKey": "api.generated.headless_src_components_menu_types.menucheckboxoptiondata",
                 "sourcePath": "headless/src/components/menu/types.ts",
-                "typeParameters": [
-                  "T extends DefinedValue = DefinedValue"
-                ],
+                "typeParameters": ["T extends DefinedValue = DefinedValue"],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -846,9 +830,7 @@
                 "description": "Option data for the MenuCheckbox component.",
                 "descriptionKey": "api.generated.headless_src_components_menu_types.menucheckboxoptiondata",
                 "sourcePath": "headless/src/components/menu/types.ts",
-                "typeParameters": [
-                  "T extends DefinedValue = DefinedValue"
-                ],
+                "typeParameters": ["T extends DefinedValue = DefinedValue"],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -872,9 +854,7 @@
                 "description": "Option data for the MenuCheckbox component.",
                 "descriptionKey": "api.generated.headless_src_components_menu_types.menucheckboxoptiondata",
                 "sourcePath": "headless/src/components/menu/types.ts",
-                "typeParameters": [
-                  "T extends DefinedValue = DefinedValue"
-                ],
+                "typeParameters": ["T extends DefinedValue = DefinedValue"],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -894,9 +874,7 @@
         "description": "Events for the MenuCheckboxOptionsCompactSelect component.",
         "descriptionKey": "api.generated.headless_src_components_menu_types.menucheckboxoptionscompactselectemits.emits",
         "sourcePath": "headless/src/components/menu/types.ts",
-        "typeParameters": [
-          "TypeParameter T"
-        ],
+        "typeParameters": ["TypeParameter T"],
         "members": [],
         "callables": [
           {
@@ -929,9 +907,7 @@
                 "description": "Option data for the MenuCheckbox component.",
                 "descriptionKey": "api.generated.headless_src_components_menu_types.menucheckboxoptiondata",
                 "sourcePath": "headless/src/components/menu/types.ts",
-                "typeParameters": [
-                  "T extends DefinedValue = DefinedValue"
-                ],
+                "typeParameters": ["T extends DefinedValue = DefinedValue"],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -1853,9 +1829,7 @@
         "description": "Properties for the MenuOptionCompact component.",
         "descriptionKey": "api.generated.headless_src_components_menu_types.menuoptioncompactprops.props",
         "sourcePath": "headless/src/components/menu/types.ts",
-        "typeParameters": [
-          "TypeParameter T"
-        ],
+        "typeParameters": ["TypeParameter T"],
         "members": [
           {
             "name": "item",
@@ -1875,9 +1849,7 @@
                 "description": "Option data for the Menu component.",
                 "descriptionKey": "api.generated.headless_src_components_menu_types.menuoptiondata",
                 "sourcePath": "headless/src/components/menu/types.ts",
-                "typeParameters": [
-                  "T extends DefinedValue = DefinedValue"
-                ],
+                "typeParameters": ["T extends DefinedValue = DefinedValue"],
                 "external": false,
                 "members": [
                   {
@@ -2948,9 +2920,7 @@
         "description": "Events for the MenuOptionCompact component.",
         "descriptionKey": "api.generated.headless_src_components_menu_types.menuoptioncompactemits.emits",
         "sourcePath": "headless/src/components/menu/types.ts",
-        "typeParameters": [
-          "TypeParameter T"
-        ],
+        "typeParameters": ["TypeParameter T"],
         "members": [],
         "callables": [
           {
@@ -3174,9 +3144,7 @@
                 "description": "Option data for the Menu component.",
                 "descriptionKey": "api.generated.headless_src_components_menu_types.menuoptiondata",
                 "sourcePath": "headless/src/components/menu/types.ts",
-                "typeParameters": [
-                  "T extends DefinedValue = DefinedValue"
-                ],
+                "typeParameters": ["T extends DefinedValue = DefinedValue"],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -3194,9 +3162,7 @@
         "description": "Slots for the MenuOptionCompact component.",
         "descriptionKey": "api.generated.headless_src_components_menu_types.menuoptioncompactslots.slots",
         "sourcePath": "headless/src/components/menu/types.ts",
-        "typeParameters": [
-          "TypeParameter T"
-        ],
+        "typeParameters": ["TypeParameter T"],
         "members": [],
         "callables": [
           {
@@ -3332,9 +3298,7 @@
         "description": "Events for the MenuOptionCompactSelect component.",
         "descriptionKey": "api.generated.headless_src_components_menu_types.menuoptioncompactselectemits.emits",
         "sourcePath": "headless/src/components/menu/types.ts",
-        "typeParameters": [
-          "TypeParameter T"
-        ],
+        "typeParameters": ["TypeParameter T"],
         "members": [],
         "callables": [
           {
@@ -3367,9 +3331,7 @@
                 "description": "Option data for the Menu component.",
                 "descriptionKey": "api.generated.headless_src_components_menu_types.menuoptiondata",
                 "sourcePath": "headless/src/components/menu/types.ts",
-                "typeParameters": [
-                  "T extends DefinedValue = DefinedValue"
-                ],
+                "typeParameters": ["T extends DefinedValue = DefinedValue"],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -3389,9 +3351,7 @@
         "description": "Properties for the MenuOptionsCompact component.",
         "descriptionKey": "api.generated.headless_src_components_menu_types.menuoptionscompactprops.props",
         "sourcePath": "headless/src/components/menu/types.ts",
-        "typeParameters": [
-          "TypeParameter T"
-        ],
+        "typeParameters": ["TypeParameter T"],
         "members": [
           {
             "name": "items",
@@ -4335,9 +4295,7 @@
         "description": "Events for the MenuOptionsCompact component.",
         "descriptionKey": "api.generated.headless_src_components_menu_types.menuoptionscompactemits.emits",
         "sourcePath": "headless/src/components/menu/types.ts",
-        "typeParameters": [
-          "TypeParameter T"
-        ],
+        "typeParameters": ["TypeParameter T"],
         "members": [],
         "callables": [
           {
@@ -4561,9 +4519,7 @@
                 "description": "Option data for the Menu component.",
                 "descriptionKey": "api.generated.headless_src_components_menu_types.menuoptiondata",
                 "sourcePath": "headless/src/components/menu/types.ts",
-                "typeParameters": [
-                  "T extends DefinedValue = DefinedValue"
-                ],
+                "typeParameters": ["T extends DefinedValue = DefinedValue"],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -4581,9 +4537,7 @@
         "description": "Slots for the MenuOptionsCompact component.",
         "descriptionKey": "api.generated.headless_src_components_menu_types.menuoptionscompactslots.slots",
         "sourcePath": "headless/src/components/menu/types.ts",
-        "typeParameters": [
-          "TypeParameter T"
-        ],
+        "typeParameters": ["TypeParameter T"],
         "members": [],
         "callables": [
           {
@@ -4720,9 +4674,7 @@
         "description": "Properties for the MenuRadioGroup component.",
         "descriptionKey": "api.generated.headless_src_components_menu_types.menuradiogroupprops.props",
         "sourcePath": "headless/src/components/menu/types.ts",
-        "typeParameters": [
-          "T = AcceptableBooleanValue"
-        ],
+        "typeParameters": ["T = AcceptableBooleanValue"],
         "members": [
           {
             "name": "modelValue",
@@ -4813,9 +4765,7 @@
         "description": "Events for the MenuRadioGroup component.",
         "descriptionKey": "api.generated.headless_src_components_menu_types.menuradiogroupemits.emits",
         "sourcePath": "headless/src/components/menu/types.ts",
-        "typeParameters": [
-          "T = AcceptableBooleanValue"
-        ],
+        "typeParameters": ["T = AcceptableBooleanValue"],
         "members": [],
         "callables": [
           {
@@ -5011,9 +4961,7 @@
         "description": "Properties for the MenuRadioOptionsCompact component.",
         "descriptionKey": "api.generated.headless_src_components_menu_types.menuradiooptionscompactprops.props",
         "sourcePath": "headless/src/components/menu/types.ts",
-        "typeParameters": [
-          "TypeParameter T"
-        ],
+        "typeParameters": ["TypeParameter T"],
         "members": [
           {
             "name": "items",
@@ -5365,9 +5313,7 @@
         "description": "Events for the MenuRadioOptionsCompact component.",
         "descriptionKey": "api.generated.headless_src_components_menu_types.menuradiooptionscompactemits.emits",
         "sourcePath": "headless/src/components/menu/types.ts",
-        "typeParameters": [
-          "TypeParameter T"
-        ],
+        "typeParameters": ["TypeParameter T"],
         "members": [],
         "callables": [
           {
@@ -5410,9 +5356,7 @@
                 "description": "Option data for the MenuRadio component.",
                 "descriptionKey": "api.generated.headless_src_components_menu_types.menuradiooptiondata",
                 "sourcePath": "headless/src/components/menu/types.ts",
-                "typeParameters": [
-                  "T extends AcceptableBooleanValue = AcceptableBooleanValue"
-                ],
+                "typeParameters": ["T extends AcceptableBooleanValue = AcceptableBooleanValue"],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -5430,9 +5374,7 @@
         "description": "Slots for the MenuRadioOptionsCompact component.",
         "descriptionKey": "api.generated.headless_src_components_menu_types.menuradiooptionscompactslots.slots",
         "sourcePath": "headless/src/components/menu/types.ts",
-        "typeParameters": [
-          "TypeParameter T"
-        ],
+        "typeParameters": ["TypeParameter T"],
         "members": [],
         "callables": [
           {
@@ -5452,9 +5394,7 @@
                 "description": "Option data for the MenuRadio component.",
                 "descriptionKey": "api.generated.headless_src_components_menu_types.menuradiooptiondata",
                 "sourcePath": "headless/src/components/menu/types.ts",
-                "typeParameters": [
-                  "T extends AcceptableBooleanValue = AcceptableBooleanValue"
-                ],
+                "typeParameters": ["T extends AcceptableBooleanValue = AcceptableBooleanValue"],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -5478,9 +5418,7 @@
                 "description": "Option data for the MenuRadio component.",
                 "descriptionKey": "api.generated.headless_src_components_menu_types.menuradiooptiondata",
                 "sourcePath": "headless/src/components/menu/types.ts",
-                "typeParameters": [
-                  "T extends AcceptableBooleanValue = AcceptableBooleanValue"
-                ],
+                "typeParameters": ["T extends AcceptableBooleanValue = AcceptableBooleanValue"],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -5504,9 +5442,7 @@
                 "description": "Option data for the MenuRadio component.",
                 "descriptionKey": "api.generated.headless_src_components_menu_types.menuradiooptiondata",
                 "sourcePath": "headless/src/components/menu/types.ts",
-                "typeParameters": [
-                  "T extends AcceptableBooleanValue = AcceptableBooleanValue"
-                ],
+                "typeParameters": ["T extends AcceptableBooleanValue = AcceptableBooleanValue"],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -5530,9 +5466,7 @@
                 "description": "Option data for the MenuRadio component.",
                 "descriptionKey": "api.generated.headless_src_components_menu_types.menuradiooptiondata",
                 "sourcePath": "headless/src/components/menu/types.ts",
-                "typeParameters": [
-                  "T extends AcceptableBooleanValue = AcceptableBooleanValue"
-                ],
+                "typeParameters": ["T extends AcceptableBooleanValue = AcceptableBooleanValue"],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -5552,9 +5486,7 @@
         "description": "Events for the MenuRadioOptionsCompactSelect component.",
         "descriptionKey": "api.generated.headless_src_components_menu_types.menuradiooptionscompactselectemits.emits",
         "sourcePath": "headless/src/components/menu/types.ts",
-        "typeParameters": [
-          "TypeParameter T"
-        ],
+        "typeParameters": ["TypeParameter T"],
         "members": [],
         "callables": [
           {
@@ -5587,9 +5519,7 @@
                 "description": "Option data for the MenuRadio component.",
                 "descriptionKey": "api.generated.headless_src_components_menu_types.menuradiooptiondata",
                 "sourcePath": "headless/src/components/menu/types.ts",
-                "typeParameters": [
-                  "T extends AcceptableBooleanValue = AcceptableBooleanValue"
-                ],
+                "typeParameters": ["T extends AcceptableBooleanValue = AcceptableBooleanValue"],
                 "external": false,
                 "members": [],
                 "callables": []

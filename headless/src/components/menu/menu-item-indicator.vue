@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, shallowRef } from 'vue';
-import { useForwardElement, usePresence } from '../../composables';
 import { isIndeterminate } from '../../shared';
+import { useForwardElement, usePresence } from '../../composables';
 import { Primitive } from '../primitive';
 import { useMenuItemIndicatorContext, useMenuUi } from './context';
 import type { MenuItemIndicatorProps } from './types';

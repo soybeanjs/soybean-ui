@@ -1,7 +1,7 @@
-import { mount } from '@vue/test-utils';
 import { describe, expect, it } from 'vitest';
-import SButton from '../../../src/components/button/button.vue';
+import { mount } from '@vue/test-utils';
 import { getA11yViolations } from '../../shared/a11y';
+import SButton from '../../../src/components/button/button.vue';
 
 describe('SButton', () => {
   describe('rendering', () => {

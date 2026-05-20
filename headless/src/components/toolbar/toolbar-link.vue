@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { useOmitProps } from '../../composables';
-import { RovingFocusItem } from '../roving-focus';
-import Link from '../link/link.vue';
 import Icon from '../_icon/icon.vue';
+import Link from '../link/link.vue';
+import { RovingFocusItem } from '../roving-focus';
 import { useToolbarUi } from './context';
 import type { ToolbarLinkProps } from './types';
 

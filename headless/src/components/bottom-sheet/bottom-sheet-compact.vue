@@ -4,7 +4,6 @@ import { useForwardListeners, useOmitProps } from '../../composables';
 import { useLocaleMessages } from '../../locale';
 import Icon from '../_icon/icon.vue';
 import type { IconValue } from '../_icon/types';
-import DialogPortal from '../portal/portal.vue';
 import {
   DialogClose,
   DialogContent,
@@ -17,12 +16,13 @@ import {
   DialogConfirm
 } from '../dialog';
 import type { DialogAlertType } from '../dialog/types';
+import DialogPortal from '../portal/portal.vue';
 import { useBottomSheetUi } from './context';
+import BottomSheetHandle from './bottom-sheet-handle.vue';
+import BottomSheetOverlay from './bottom-sheet-overlay.vue';
+import BottomSheetPopup from './bottom-sheet-popup.vue';
 import BottomSheetRootNested from './bottom-sheet-root-nested.vue';
 import BottomSheetRoot from './bottom-sheet-root.vue';
-import BottomSheetPopup from './bottom-sheet-popup.vue';
-import BottomSheetOverlay from './bottom-sheet-overlay.vue';
-import BottomSheetHandle from './bottom-sheet-handle.vue';
 import type { BottomSheetCompactProps, BottomSheetCompactEmits, BottomSheetCompactSlots } from './types';
 
 defineOptions({

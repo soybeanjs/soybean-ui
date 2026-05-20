@@ -10,10 +10,7 @@
         "description": "Properties for the Accordion component.",
         "descriptionKey": "api.generated.src_components_accordion_types.accordionprops.props",
         "sourcePath": "src/components/accordion/types.ts",
-        "typeParameters": [
-          "TypeParameter T",
-          "TypeParameter M"
-        ],
+        "typeParameters": ["TypeParameter T", "TypeParameter M"],
         "members": [
           {
             "name": "class",
@@ -525,9 +522,7 @@
         "description": "Events for the Accordion component.",
         "descriptionKey": "api.generated.src_components_accordion_types.accordionemits.emits",
         "sourcePath": "src/components/accordion/types.ts",
-        "typeParameters": [
-          "TypeParameter M"
-        ],
+        "typeParameters": ["TypeParameter M"],
         "members": [],
         "callables": [
           {
@@ -551,10 +546,7 @@
         "description": "Slots for the Accordion component.",
         "descriptionKey": "api.generated.src_components_accordion_types.accordionslots.slots",
         "sourcePath": "src/components/accordion/types.ts",
-        "typeParameters": [
-          "TypeParameter T",
-          "TypeParameter M"
-        ],
+        "typeParameters": ["TypeParameter T", "TypeParameter M"],
         "members": [],
         "callables": [
           {
@@ -574,10 +566,7 @@
                 "description": "Slot properties for the AccordionCompact component.",
                 "descriptionKey": "api.generated.headless_src_components_accordion_types.accordioncompactslotprops",
                 "sourcePath": "headless/src/components/accordion/types.ts",
-                "typeParameters": [
-                  "T extends AccordionOptionData = AccordionOptionData",
-                  "M extends boolean = false"
-                ],
+                "typeParameters": ["T extends AccordionOptionData = AccordionOptionData", "M extends boolean = false"],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -601,10 +590,7 @@
                 "description": "Slot properties for the AccordionCompact component.",
                 "descriptionKey": "api.generated.headless_src_components_accordion_types.accordioncompactslotprops",
                 "sourcePath": "headless/src/components/accordion/types.ts",
-                "typeParameters": [
-                  "T extends AccordionOptionData = AccordionOptionData",
-                  "M extends boolean = false"
-                ],
+                "typeParameters": ["T extends AccordionOptionData = AccordionOptionData", "M extends boolean = false"],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -628,10 +614,7 @@
                 "description": "Slot properties for the AccordionCompact component.",
                 "descriptionKey": "api.generated.headless_src_components_accordion_types.accordioncompactslotprops",
                 "sourcePath": "headless/src/components/accordion/types.ts",
-                "typeParameters": [
-                  "T extends AccordionOptionData = AccordionOptionData",
-                  "M extends boolean = false"
-                ],
+                "typeParameters": ["T extends AccordionOptionData = AccordionOptionData", "M extends boolean = false"],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -655,10 +638,7 @@
                 "description": "Slot properties for the AccordionCompact component.",
                 "descriptionKey": "api.generated.headless_src_components_accordion_types.accordioncompactslotprops",
                 "sourcePath": "headless/src/components/accordion/types.ts",
-                "typeParameters": [
-                  "T extends AccordionOptionData = AccordionOptionData",
-                  "M extends boolean = false"
-                ],
+                "typeParameters": ["T extends AccordionOptionData = AccordionOptionData", "M extends boolean = false"],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -682,10 +662,7 @@
                 "description": "Slot properties for the AccordionCompact component.",
                 "descriptionKey": "api.generated.headless_src_components_accordion_types.accordioncompactslotprops",
                 "sourcePath": "headless/src/components/accordion/types.ts",
-                "typeParameters": [
-                  "T extends AccordionOptionData = AccordionOptionData",
-                  "M extends boolean = false"
-                ],
+                "typeParameters": ["T extends AccordionOptionData = AccordionOptionData", "M extends boolean = false"],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -705,10 +682,7 @@
         "description": "Properties for the AccordionCompact component.",
         "descriptionKey": "api.generated.headless_src_components_accordion_types.accordioncompactprops.props",
         "sourcePath": "headless/src/components/accordion/types.ts",
-        "typeParameters": [
-          "TypeParameter T",
-          "TypeParameter M"
-        ],
+        "typeParameters": ["TypeParameter T", "TypeParameter M"],
         "members": [
           {
             "name": "items",
@@ -1145,9 +1119,7 @@
         "description": "Events for the AccordionCompact component.",
         "descriptionKey": "api.generated.headless_src_components_accordion_types.accordioncompactemits.emits",
         "sourcePath": "headless/src/components/accordion/types.ts",
-        "typeParameters": [
-          "TypeParameter M"
-        ],
+        "typeParameters": ["TypeParameter M"],
         "members": [],
         "callables": [
           {
@@ -1171,10 +1143,7 @@
         "description": "Slots for the AccordionCompact component.",
         "descriptionKey": "api.generated.headless_src_components_accordion_types.accordioncompactslots.slots",
         "sourcePath": "headless/src/components/accordion/types.ts",
-        "typeParameters": [
-          "TypeParameter T",
-          "TypeParameter M"
-        ],
+        "typeParameters": ["TypeParameter T", "TypeParameter M"],
         "members": [],
         "callables": [
           {
@@ -1194,10 +1163,7 @@
                 "description": "Slot properties for the AccordionCompact component.",
                 "descriptionKey": "api.generated.headless_src_components_accordion_types.accordioncompactslotprops",
                 "sourcePath": "headless/src/components/accordion/types.ts",
-                "typeParameters": [
-                  "T extends AccordionOptionData = AccordionOptionData",
-                  "M extends boolean = false"
-                ],
+                "typeParameters": ["T extends AccordionOptionData = AccordionOptionData", "M extends boolean = false"],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -1221,10 +1187,7 @@
                 "description": "Slot properties for the AccordionCompact component.",
                 "descriptionKey": "api.generated.headless_src_components_accordion_types.accordioncompactslotprops",
                 "sourcePath": "headless/src/components/accordion/types.ts",
-                "typeParameters": [
-                  "T extends AccordionOptionData = AccordionOptionData",
-                  "M extends boolean = false"
-                ],
+                "typeParameters": ["T extends AccordionOptionData = AccordionOptionData", "M extends boolean = false"],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -1248,10 +1211,7 @@
                 "description": "Slot properties for the AccordionCompact component.",
                 "descriptionKey": "api.generated.headless_src_components_accordion_types.accordioncompactslotprops",
                 "sourcePath": "headless/src/components/accordion/types.ts",
-                "typeParameters": [
-                  "T extends AccordionOptionData = AccordionOptionData",
-                  "M extends boolean = false"
-                ],
+                "typeParameters": ["T extends AccordionOptionData = AccordionOptionData", "M extends boolean = false"],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -1275,10 +1235,7 @@
                 "description": "Slot properties for the AccordionCompact component.",
                 "descriptionKey": "api.generated.headless_src_components_accordion_types.accordioncompactslotprops",
                 "sourcePath": "headless/src/components/accordion/types.ts",
-                "typeParameters": [
-                  "T extends AccordionOptionData = AccordionOptionData",
-                  "M extends boolean = false"
-                ],
+                "typeParameters": ["T extends AccordionOptionData = AccordionOptionData", "M extends boolean = false"],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -1302,10 +1259,7 @@
                 "description": "Slot properties for the AccordionCompact component.",
                 "descriptionKey": "api.generated.headless_src_components_accordion_types.accordioncompactslotprops",
                 "sourcePath": "headless/src/components/accordion/types.ts",
-                "typeParameters": [
-                  "T extends AccordionOptionData = AccordionOptionData",
-                  "M extends boolean = false"
-                ],
+                "typeParameters": ["T extends AccordionOptionData = AccordionOptionData", "M extends boolean = false"],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -1323,10 +1277,7 @@
         "description": "Slot properties for the AccordionCompact component.",
         "descriptionKey": "api.generated.headless_src_components_accordion_types.accordioncompactslotprops.slotprops",
         "sourcePath": "headless/src/components/accordion/types.ts",
-        "typeParameters": [
-          "TypeParameter T",
-          "TypeParameter M"
-        ],
+        "typeParameters": ["TypeParameter T", "TypeParameter M"],
         "members": [
           {
             "name": "item",
@@ -1580,9 +1531,7 @@
         "description": "Properties for the AccordionRoot component.",
         "descriptionKey": "api.generated.headless_src_components_accordion_types.accordionrootprops.props",
         "sourcePath": "headless/src/components/accordion/types.ts",
-        "typeParameters": [
-          "TypeParameter M"
-        ],
+        "typeParameters": ["TypeParameter M"],
         "members": [
           {
             "name": "collapsible",
@@ -1737,9 +1686,7 @@
         "description": "Events for the AccordionRoot component.",
         "descriptionKey": "api.generated.headless_src_components_accordion_types.accordionrootemits.emits",
         "sourcePath": "headless/src/components/accordion/types.ts",
-        "typeParameters": [
-          "TypeParameter M"
-        ],
+        "typeParameters": ["TypeParameter M"],
         "members": [],
         "callables": [
           {

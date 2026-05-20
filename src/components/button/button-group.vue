@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { Primitive } from '@soybeanjs/headless/primitive';
 import { useOmitProps } from '@soybeanjs/headless/composables';
+import { Primitive } from '@soybeanjs/headless/primitive';
 import { transformPropsToContext } from '@soybeanjs/headless/shared';
 import { buttonGroupVariants } from '@/styles/button';
 import { useConfigProvider } from '../config-provider/context';

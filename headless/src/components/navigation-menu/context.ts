@@ -1,7 +1,7 @@
 import { computed, shallowRef } from 'vue';
 import { refAutoReset, useDebounceFn, useEventListener } from '@vueuse/core';
-import { useCollection, useContext, useForwardElement, useUiContext } from '../../composables';
 import { getDisclosureState } from '../../shared';
+import { useCollection, useContext, useForwardElement, useUiContext } from '../../composables';
 import { EVENT_ROOT_CONTENT_DISMISS } from './shared';
 import type { NavigationMenuItemContextParams, NavigationMenuRootContextParams, NavigationMenuUiSlot } from './types';
 

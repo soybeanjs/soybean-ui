@@ -1,7 +1,7 @@
 import type { SkeletonProps as _SkeletonProps } from '@soybeanjs/headless/skeleton';
 import type { ClassValue } from '@soybeanjs/headless/types';
-import type { ThemeSize } from '@/theme';
 import type { SkeletonShape } from '@/styles/skeleton';
+import type { ThemeSize } from '@/theme';
 
 /**
  * Properties for the Skeleton component.

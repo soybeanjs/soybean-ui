@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import Button from '../button/button.vue';
 import Icon from '../_icon/icon.vue';
+import Button from '../button/button.vue';
 import { useDialogRootContext, useDialogUi } from './context';
 import type { DialogCloseProps, DialogCloseEmits } from './types';
 

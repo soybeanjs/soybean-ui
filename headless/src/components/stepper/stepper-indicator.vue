@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { useOmitProps } from '../../composables';
 import { interpolate } from '../../shared';
+import { useOmitProps } from '../../composables';
+import { useLocaleMessages } from '../../locale';
 import { Primitive } from '../primitive';
 import { useStepperItemContext, useStepperUi } from './context';
-import { useLocaleMessages } from '../../locale';
 import type { StepperIndicatorProps } from './types';
 
 defineOptions({

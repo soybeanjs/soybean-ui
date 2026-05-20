@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { useControllableState } from '../../composables';
 import { transformPropsToContext } from '../../shared';
 import { useDirection } from '../config-provider/context';
+import { useControllableState } from '../../composables';
 import { provideDialogRootContext } from './context';
 import type { DialogRootProps, DialogRootEmits } from './types';
 

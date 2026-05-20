@@ -1,7 +1,7 @@
-import { mount } from '@vue/test-utils';
 import { describe, expect, it } from 'vitest';
-import SAlert from '../../../src/components/alert/alert.vue';
+import { mount } from '@vue/test-utils';
 import { getA11yViolations } from '../../shared/a11y';
+import SAlert from '../../../src/components/alert/alert.vue';
 
 describe('SAlert', () => {
   describe('rendering', () => {

@@ -1,11 +1,11 @@
-import type { ClassValue } from '@soybeanjs/headless/types';
 import type {
   ClipboardEmits,
   ClipboardProps as _ClipboardProps,
   ClipboardSlotProps
 } from '@soybeanjs/headless/clipboard';
-import type { ThemeColor, ThemeSize } from '@/theme';
+import type { ClassValue } from '@soybeanjs/headless/types';
 import type { ClipboardShape, ClipboardVariant } from '@/styles/clipboard';
+import type { ThemeColor, ThemeSize } from '@/theme';
 
 /**
  * Properties for the Clipboard component.

@@ -2,8 +2,8 @@
 import { computed, useAttrs } from 'vue';
 import { isArrayValue, parseFormValue } from '../../shared';
 import type { FormNameValueProps } from '../../types';
-import VisuallyHiddenInputBubble from './visually-hidden-input-bubble.vue';
 import type { VisuallyHiddenInputProps } from './types';
+import VisuallyHiddenInputBubble from './visually-hidden-input-bubble.vue';
 
 defineOptions({
   name: 'VisuallyHiddenInput',

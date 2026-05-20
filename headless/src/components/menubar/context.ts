@@ -1,8 +1,8 @@
 import { shallowRef } from 'vue';
-import { useCollection, useContext, useUiContext } from '../../composables';
-import { DefinedValue } from '../../types';
 import { useDirection } from '../config-provider/context';
 import { provideMenuUi } from '../menu/context';
+import { useCollection, useContext, useUiContext } from '../../composables';
+import { DefinedValue } from '../../types';
 import type {
   MenubarCollectionItemData,
   MenubarMenuContextParams,

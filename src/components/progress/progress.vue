@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { ProgressCompact, provideProgressUi } from '@soybeanjs/headless/progress';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
+import { ProgressCompact, provideProgressUi } from '@soybeanjs/headless/progress';
 import { progressVariants } from '@/styles/progress';
 import type { ProgressProps, ProgressEmits, ProgressSlots } from './types';
 

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue';
-import type { ColorValue } from '@soybeanjs/headless/types';
 import { formatColor } from '@soybeanjs/headless/shared';
+import type { ColorValue } from '@soybeanjs/headless/types';
 import { SColorSlider, SColorSwatch } from '@soybeanjs/ui';
 
 const color = ref<ColorValue>('rgba(236, 72, 153, 0.85)');

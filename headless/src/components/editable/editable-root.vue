@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import { computed, shallowRef, watch } from 'vue';
+import { isFormControl, transformPropsToContext } from '../../shared';
+import { useDirection } from '../config-provider/context';
 import {
   useControllableState,
   useFocusOutside,
@@ -7,8 +9,6 @@ import {
   useOmitProps,
   usePointerdownOutside
 } from '../../composables';
-import { isFormControl, transformPropsToContext } from '../../shared';
-import { useDirection } from '../config-provider/context';
 import { Primitive } from '../primitive';
 import VisuallyHiddenInput from '../visually-hidden/visually-hidden-input.vue';
 import { provideEditableRootContext, useEditableUi } from './context';

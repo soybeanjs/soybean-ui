@@ -4,8 +4,8 @@ import { useI18n } from 'vue-i18n';
 import { SDropdownMenuRadio, SButtonIcon, SIcon } from '@soybeanjs/ui';
 import type { MenuOptionData } from '@soybeanjs/ui';
 import { snakeCase } from 'es-toolkit';
-import { useTheme } from '../theme';
 import { loadLanguageAsync } from '../../docs/src/modules/i18n';
+import { useTheme } from '../theme';
 
 const { locale, setLocale } = useTheme('LocaleToggler');
 

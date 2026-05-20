@@ -4,8 +4,8 @@ import type {
   ToggleGroupUi
 } from '@soybeanjs/headless/toggle-group';
 import type { ClassValue, DefinedValue } from '@soybeanjs/headless/types';
-import type { ThemeColor, ThemeSize } from '@/theme';
 import type { ToggleGroupVariant } from '@/styles/toggle-group';
+import type { ThemeColor, ThemeSize } from '@/theme';
 
 /**
  * Properties for the ToggleGroup component.

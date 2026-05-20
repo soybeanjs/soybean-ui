@@ -2,12 +2,12 @@
 import { useSlots } from 'vue';
 import { useOmitProps } from '../../composables';
 import Icon from '../_icon/icon.vue';
+import { useAlertUi } from './context';
 import AlertClose from './alert-close.vue';
 import AlertContent from './alert-content.vue';
 import AlertDescription from './alert-description.vue';
 import AlertRoot from './alert-root.vue';
 import AlertTitle from './alert-title.vue';
-import { useAlertUi } from './context';
 import type { AlertCompactProps, AlertCompactEmits, AlertCompactSlots } from './types';
 
 defineOptions({

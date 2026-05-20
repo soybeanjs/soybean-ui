@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import Button from '../button/button.vue';
 import Icon from '../_icon/icon.vue';
+import Button from '../button/button.vue';
 import { useInputRootContext, useInputUi } from './context';
 import type { InputClearProps, InputClearEmits } from './types';
 

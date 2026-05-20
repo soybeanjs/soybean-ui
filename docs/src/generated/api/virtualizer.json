@@ -10,9 +10,7 @@
         "description": "Properties for the Virtualizer component.",
         "descriptionKey": "api.generated.src_components_virtualizer_types.virtualizerprops.props",
         "sourcePath": "src/components/virtualizer/types.ts",
-        "typeParameters": [
-          "TypeParameter T"
-        ],
+        "typeParameters": ["TypeParameter T"],
         "members": [
           {
             "name": "contentProps",
@@ -410,9 +408,7 @@
         "description": "Properties for the VirtualizerRoot component.",
         "descriptionKey": "api.generated.headless_src_components_virtualizer_types.virtualizerrootprops.props",
         "sourcePath": "headless/src/components/virtualizer/types.ts",
-        "typeParameters": [
-          "TypeParameter T"
-        ],
+        "typeParameters": ["TypeParameter T"],
         "members": [
           {
             "name": "height",

@@ -1,11 +1,9 @@
-import type { DateValue } from '@internationalized/date';
-
-import { CalendarDate } from '@internationalized/date';
-import { mount } from '@vue/test-utils';
 import { describe, expect, it } from 'vitest';
-
-import SCalendarRange from '../../../src/components/calendar-range/calendar-range.vue';
+import { mount } from '@vue/test-utils';
+import { CalendarDate } from '@internationalized/date';
+import type { DateValue } from '@internationalized/date';
 import { getA11yViolations } from '../../shared/a11y';
+import SCalendarRange from '../../../src/components/calendar-range/calendar-range.vue';
 
 describe('SCalendarRange', () => {
   describe('rendering', () => {

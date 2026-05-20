@@ -1,6 +1,6 @@
 import { computed, shallowRef } from 'vue';
-import { useContext } from '../../composables';
 import { getDisclosureState } from '../../shared';
+import { useContext } from '../../composables';
 import type { HoverCardRootContext, HoverCardRootContextParams } from './types';
 
 export const [provideHoverCardRootContext, useHoverCardRootContext] = useContext(

@@ -1,6 +1,8 @@
 import type { Ref } from 'vue';
-import type { Formatter } from './formatter';
+import type { LocaleDateMessages } from '../locale/types';
+import { getOptsByGranularity, normalizeHourCycle } from './utils';
 import { isTime, isZonedDateTime, toDate } from './comparators';
+import type { Formatter } from './formatter';
 import {
   DATE_SEGMENT_PARTS,
   EDITABLE_SEGMENT_PARTS,
@@ -9,8 +11,6 @@ import {
   isSegmentPart
 } from './parts';
 import { getPlaceholder } from './placeholders';
-import { getOptsByGranularity, normalizeHourCycle } from './utils';
-import type { LocaleDateMessages } from '../locale/types';
 import type {
   DateSegmentPart,
   DateValue,

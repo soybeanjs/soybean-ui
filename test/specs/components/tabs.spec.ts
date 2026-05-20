@@ -1,8 +1,8 @@
-import { mount } from '@vue/test-utils';
-import { nextTick } from 'vue';
 import { describe, expect, it } from 'vitest';
-import STabs from '../../../src/components/tabs/tabs.vue';
+import { nextTick } from 'vue';
+import { mount } from '@vue/test-utils';
 import { getA11yViolations } from '../../shared/a11y';
+import STabs from '../../../src/components/tabs/tabs.vue';
 
 const items = [
   { value: 'tab-1', label: 'Account' },

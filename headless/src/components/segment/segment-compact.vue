@@ -1,8 +1,8 @@
 <script setup lang="ts" generic="T extends SegmentOptionData = SegmentOptionData">
+import { useTabsUi } from '../tabs/context';
 import { useOmitProps } from '../../composables';
 import type { AcceptableValue } from '../../types';
 import { TabsIndicator, TabsList, TabsRoot, TabsTrigger } from '../tabs';
-import { useTabsUi } from '../tabs/context';
 import type { SegmentCompactProps, SegmentCompactEmits, SegmentCompactSlots, SegmentOptionData } from './types';
 
 defineOptions({

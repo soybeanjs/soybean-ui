@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { useFormUi, useFormFieldUi } from './context';
 import { mergeClasses } from './shared';
+import { useFormUi, useFormFieldUi } from './context';
 import type { FormControlProps } from './types';
 
 defineOptions({

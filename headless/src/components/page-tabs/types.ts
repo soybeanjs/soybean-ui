@@ -1,10 +1,10 @@
 import type { ComputedRef, ShallowRef } from 'vue';
-import type { ButtonProps } from '../button/types';
-import type { IconValue } from '../_icon/types';
-import type { MenuOptionData } from '../menu/types';
-import type { ContextMenuCompactProps } from '../context-menu/types';
-import type { RovingFocusGroupProps } from '../roving-focus/types';
 import type { BaseProps, MaybePromise, PropsToContext, UiClass } from '../../types';
+import type { IconValue } from '../_icon/types';
+import type { ButtonProps } from '../button/types';
+import type { ContextMenuCompactProps } from '../context-menu/types';
+import type { MenuOptionData } from '../menu/types';
+import type { RovingFocusGroupProps } from '../roving-focus/types';
 
 /**
  * Properties for the PageTabsRoot component.

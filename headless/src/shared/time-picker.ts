@@ -1,5 +1,3 @@
-import type { DateStep, Formatter, HourCycle, TimeGranularity, TimeMatcher, TimeValue } from '../date';
-
 import {
   getOptsByGranularity,
   isAfter,
@@ -10,6 +8,7 @@ import {
   isTime,
   isZonedDateTime
 } from '../date';
+import type { DateStep, Formatter, HourCycle, TimeGranularity, TimeMatcher, TimeValue } from '../date';
 
 export interface TimePickerOption {
   value: TimeValue;

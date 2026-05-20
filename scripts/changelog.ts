@@ -3,8 +3,8 @@ import path from 'node:path';
 import process from 'node:process';
 import { kebabCase } from '@soybeanjs/utils';
 import { components as headlessComponents } from '../headless/src/constants/components';
-import { componentChangelogOverrides } from './changelog-overrides';
 import { runCliModule, writeGeneratedJsonDirectory } from './_shared';
+import { componentChangelogOverrides } from './changelog-overrides';
 
 type ChangelogEntryType = 'feature' | 'fix' | 'optimization' | 'refactor' | 'docs' | 'chore' | 'style';
 

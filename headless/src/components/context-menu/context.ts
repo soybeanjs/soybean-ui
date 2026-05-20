@@ -1,7 +1,7 @@
 import { computed, shallowRef } from 'vue';
-import { useContext } from '../../composables';
 import { getDisclosureState } from '../../shared';
 import { useDirection } from '../config-provider/context';
+import { useContext } from '../../composables';
 import type { ContextMenuRootContextParams } from './types';
 
 export const [provideContextMenuRootContext, useContextMenuRootContext] = useContext(

@@ -1,7 +1,7 @@
-import { mount } from '@vue/test-utils';
 import { describe, expect, it } from 'vitest';
-import SAccordion from '../../../src/components/accordion/accordion.vue';
+import { mount } from '@vue/test-utils';
 import { getA11yViolations } from '../../shared/a11y';
+import SAccordion from '../../../src/components/accordion/accordion.vue';
 
 const items = [
   { value: 'item-1', title: 'Section One', description: 'Content for section one.' },

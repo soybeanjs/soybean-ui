@@ -1,12 +1,14 @@
 <script setup lang="ts" generic="M extends boolean = false">
 import { computed } from 'vue';
-import type { MaybeArray } from '../../types';
 import { useOmitProps } from '../../composables';
+import { useLocaleMessages } from '../../locale';
+import type { MaybeArray } from '../../types';
 import Icon from '../_icon/icon.vue';
-import ComboboxAnchor from '../popper/popper-anchor.vue';
-import ComboboxPortal from '../portal/portal.vue';
 import ComboboxGroupLabel from '../listbox/listbox-group-label.vue';
 import ComboboxItemIndicator from '../listbox/listbox-item-indicator.vue';
+import ComboboxAnchor from '../popper/popper-anchor.vue';
+import ComboboxPortal from '../portal/portal.vue';
+import { getDisplayValue, getSelectedLabels, isGroupOption } from './shared';
 import ComboboxCancel from './combobox-cancel.vue';
 import ComboboxContent from './combobox-content.vue';
 import ComboboxEmpty from './combobox-empty.vue';
@@ -17,8 +19,6 @@ import ComboboxRoot from './combobox-root.vue';
 import ComboboxSeparator from './combobox-separator.vue';
 import ComboboxTrigger from './combobox-trigger.vue';
 import ComboboxViewport from './combobox-viewport.vue';
-import { getDisplayValue, getSelectedLabels, isGroupOption } from './shared';
-import { useLocaleMessages } from '../../locale';
 import type { ComboboxCompactProps, ComboboxCompactEmits, ComboboxCompactSlots, ComboboxOptionData } from './types';
 
 defineOptions({

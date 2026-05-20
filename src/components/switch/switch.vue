@@ -1,8 +1,8 @@
 <script setup lang="ts" generic="T extends AcceptableBooleanValue = boolean">
 import { computed } from 'vue';
+import { useOmitProps } from '@soybeanjs/headless/composables';
 import { SwitchCompact, provideSwitchUi } from '@soybeanjs/headless/switch';
 import type { AcceptableBooleanValue } from '@soybeanjs/headless/types';
-import { useOmitProps } from '@soybeanjs/headless/composables';
 import { keysOf } from '@soybeanjs/utils';
 import { switchVariants } from '@/styles/switch';
 import type { SwitchProps, SwitchEmits, SwitchSlots } from './types';

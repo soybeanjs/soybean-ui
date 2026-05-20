@@ -1,10 +1,10 @@
-import { mount } from '@vue/test-utils';
 import { afterEach, describe, expect, it, vi } from 'vitest';
+import { mount } from '@vue/test-utils';
+import { getA11yViolations } from '../../shared/a11y';
 import SConfigProvider from '../../../src/components/config-provider/config-provider.vue';
+import { progress } from '../../../src/components/progress';
 import SProgressCircle from '../../../src/components/progress/progress-circle.vue';
 import SProgress from '../../../src/components/progress/progress.vue';
-import { progress } from '../../../src/components/progress';
-import { getA11yViolations } from '../../shared/a11y';
 
 describe('SProgress', () => {
   afterEach(() => {

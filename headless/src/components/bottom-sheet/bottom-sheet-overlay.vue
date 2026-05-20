@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { watchEffect } from 'vue';
-import { DialogOverlay } from '../dialog';
 import { useDialogRootContext } from '../dialog/context';
+import { DialogOverlay } from '../dialog';
 import { useDrawerRootContext } from './context';
 
 defineOptions({

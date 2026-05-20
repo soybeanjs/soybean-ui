@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { shallowRef } from 'vue';
+import { isIndeterminate } from '../../shared';
 import { useForwardElement, usePresence } from '../../composables';
 import { Primitive } from '../primitive';
-import { isIndeterminate } from '../../shared';
 import { useCheckboxRootContext, useCheckboxUi } from './context';
 import type { CheckboxIndicatorProps } from './types';
 

@@ -2,8 +2,8 @@
 import { computed, toRefs } from 'vue';
 import { useControllableState } from '../../composables';
 import { DialogRoot } from '../dialog';
-import { provideDrawerRootContext } from './context';
 import { CLOSE_THRESHOLD, SCROLL_LOCK_TIMEOUT } from './shared';
+import { provideDrawerRootContext } from './context';
 import type {
   BottomSheetRootProps,
   BottomSheetRootEmits,

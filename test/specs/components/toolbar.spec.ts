@@ -1,8 +1,9 @@
-import { mount } from '@vue/test-utils';
 import { describe, expect, it, vi } from 'vitest';
-import SConfigProvider from '../../../src/components/config-provider/config-provider.vue';
-import arLocale from '../../../headless/src/locale/langs/ar';
+import { mount } from '@vue/test-utils';
+import { getA11yViolations } from '../../shared/a11y';
 import { registerLocale } from '../../../headless/src/locale';
+import arLocale from '../../../headless/src/locale/langs/ar';
+import SConfigProvider from '../../../src/components/config-provider/config-provider.vue';
 import {
   SToolbar,
   SToolbarButton,
@@ -11,7 +12,6 @@ import {
   SToolbarToggleGroup,
   SToolbarToggleItem
 } from '../../../src/components/toolbar';
-import { getA11yViolations } from '../../shared/a11y';
 
 function mountToolbar(props?: Record<string, unknown>, configProviderProps?: Record<string, unknown>) {
   return mount(

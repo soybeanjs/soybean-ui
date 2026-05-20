@@ -143,9 +143,7 @@
                 "description": "",
                 "descriptionKey": "api.generated.headless_src_types_event.treeselectevent",
                 "sourcePath": "headless/src/types/event.ts",
-                "typeParameters": [
-                  "T = AcceptableValue"
-                ],
+                "typeParameters": ["T = AcceptableValue"],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -169,9 +167,7 @@
                 "description": "",
                 "descriptionKey": "api.generated.headless_src_types_event.treetoggleevent",
                 "sourcePath": "headless/src/types/event.ts",
-                "typeParameters": [
-                  "T = AcceptableValue"
-                ],
+                "typeParameters": ["T = AcceptableValue"],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -191,11 +187,7 @@
         "description": "Properties for the TreeRoot component.",
         "descriptionKey": "api.generated.headless_src_components_tree_types.treerootprops.props",
         "sourcePath": "headless/src/components/tree/types.ts",
-        "typeParameters": [
-          "TypeParameter T",
-          "TypeParameter U",
-          "TypeParameter M"
-        ],
+        "typeParameters": ["TypeParameter T", "TypeParameter U", "TypeParameter M"],
         "members": [
           {
             "name": "modelValue",
@@ -237,10 +229,7 @@
                 "description": "",
                 "descriptionKey": "api.generated.headless_src_components_tree_types.ismultiple",
                 "sourcePath": "headless/src/components/tree/types.ts",
-                "typeParameters": [
-                  "U extends MaybeArray<string> | undefined",
-                  "M extends boolean"
-                ],
+                "typeParameters": ["U extends MaybeArray<string> | undefined", "M extends boolean"],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -466,9 +455,7 @@
         "description": "Events for the TreeRoot component.",
         "descriptionKey": "api.generated.headless_src_components_tree_types.treerootemits.emits",
         "sourcePath": "headless/src/components/tree/types.ts",
-        "typeParameters": [
-          "TypeParameter M"
-        ],
+        "typeParameters": ["TypeParameter M"],
         "members": [],
         "callables": [
           {
@@ -504,11 +491,7 @@
         "description": "Properties for the TreeVirtualizer component.",
         "descriptionKey": "api.generated.src_components_tree_types.treevirtualizerprops.props",
         "sourcePath": "src/components/tree/types.ts",
-        "typeParameters": [
-          "TypeParameter T",
-          "TypeParameter U",
-          "TypeParameter M"
-        ],
+        "typeParameters": ["TypeParameter T", "TypeParameter U", "TypeParameter M"],
         "members": [
           {
             "name": "contentProps",
@@ -634,10 +617,7 @@
                 "description": "",
                 "descriptionKey": "api.generated.headless_src_components_tree_types.ismultiple",
                 "sourcePath": "headless/src/components/tree/types.ts",
-                "typeParameters": [
-                  "U extends MaybeArray<string> | undefined",
-                  "M extends boolean"
-                ],
+                "typeParameters": ["U extends MaybeArray<string> | undefined", "M extends boolean"],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -910,9 +890,7 @@
         "description": "Events for the TreeVirtualizer component.",
         "descriptionKey": "api.generated.src_components_tree_types.treevirtualizeremits.emits",
         "sourcePath": "src/components/tree/types.ts",
-        "typeParameters": [
-          "TypeParameter M"
-        ],
+        "typeParameters": ["TypeParameter M"],
         "members": [],
         "callables": [
           {
@@ -1117,9 +1095,7 @@
                 "description": "",
                 "descriptionKey": "api.generated.headless_src_types_event.treeselectevent",
                 "sourcePath": "headless/src/types/event.ts",
-                "typeParameters": [
-                  "T = AcceptableValue"
-                ],
+                "typeParameters": ["T = AcceptableValue"],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -1143,9 +1119,7 @@
                 "description": "",
                 "descriptionKey": "api.generated.headless_src_types_event.treetoggleevent",
                 "sourcePath": "headless/src/types/event.ts",
-                "typeParameters": [
-                  "T = AcceptableValue"
-                ],
+                "typeParameters": ["T = AcceptableValue"],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -1200,11 +1174,7 @@
         "description": "Properties for the TreeVirtualizerRoot component.",
         "descriptionKey": "api.generated.headless_src_components_tree_types.treevirtualizerrootprops.props",
         "sourcePath": "headless/src/components/tree/types.ts",
-        "typeParameters": [
-          "TypeParameter T",
-          "TypeParameter U",
-          "TypeParameter M"
-        ],
+        "typeParameters": ["TypeParameter T", "TypeParameter U", "TypeParameter M"],
         "members": [
           {
             "name": "modelValue",
@@ -1246,10 +1216,7 @@
                 "description": "",
                 "descriptionKey": "api.generated.headless_src_components_tree_types.ismultiple",
                 "sourcePath": "headless/src/components/tree/types.ts",
-                "typeParameters": [
-                  "U extends MaybeArray<string> | undefined",
-                  "M extends boolean"
-                ],
+                "typeParameters": ["U extends MaybeArray<string> | undefined", "M extends boolean"],
                 "external": false,
                 "members": [],
                 "callables": []
@@ -1522,9 +1489,7 @@
         "description": "Events for the TreeVirtualizerRoot component.",
         "descriptionKey": "api.generated.headless_src_components_tree_types.treevirtualizerrootemits.emits",
         "sourcePath": "headless/src/components/tree/types.ts",
-        "typeParameters": [
-          "TypeParameter M"
-        ],
+        "typeParameters": ["TypeParameter M"],
         "members": [],
         "callables": [
           {

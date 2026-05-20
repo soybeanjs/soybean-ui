@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { nextTick, shallowRef } from 'vue';
-import { useOmitProps } from '../../composables';
 import { isMouseEvent } from '../../shared';
-import { Primitive } from '../primitive';
 import { useCollectionItem } from '../roving-focus/context';
+import { useOmitProps } from '../../composables';
+import { Primitive } from '../primitive';
 import { useMenuContext, useMenuContentContext } from './context';
 import type { MenuItemImplProps } from './types';
 

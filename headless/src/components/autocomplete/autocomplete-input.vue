@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { computed, nextTick, onMounted, onUnmounted, shallowRef, useId, watchSyncEffect } from 'vue';
-import { useForwardElement, useOmitProps } from '../../composables';
 import { useComboboxRootContext } from '../combobox/context';
-import { InputControl, InputRoot } from '../input';
 import { useListboxRootContext } from '../listbox/context';
+import { useForwardElement, useOmitProps } from '../../composables';
+import { InputControl, InputRoot } from '../input';
 import { useAutocompleteRootContext } from './context';
 import type { AutocompleteInputProps, AutocompleteInputEmits } from './types';
 

@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { CalendarDate } from '@internationalized/date';
 import { SDateField } from '@soybeanjs/ui';
+import { CalendarDate } from '@internationalized/date';
 
 const value = new CalendarDate(2026, 4, 19);
 </script>

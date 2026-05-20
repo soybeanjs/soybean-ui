@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { InputNumberCompact, provideInputNumberUi } from '@soybeanjs/headless/input-number';
 import { useOmitProps } from '@soybeanjs/headless/composables';
+import { InputNumberCompact, provideInputNumberUi } from '@soybeanjs/headless/input-number';
 import { keysOf } from '@soybeanjs/utils';
-import { miniSizeMap } from '@/theme';
 import { buttonIconVariants } from '@/styles/button';
 import { inputNumberVariants } from '@/styles/input-number';
+import { miniSizeMap } from '@/theme';
 import type { InputNumberProps, InputNumberEmits, InputNumberSlots } from './types';
 
 defineOptions({

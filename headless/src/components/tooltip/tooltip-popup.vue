@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import { computed } from 'vue';
+import { popperCssVars } from '../popper/shared';
 import { useForwardElement } from '../../composables';
 import { PopperPopup } from '../popper';
-import { popperCssVars } from '../popper/shared';
 import { VisuallyHidden } from '../visually-hidden';
-import { useTooltipRootContext } from './context';
 import { tooltipCssVars } from './shared';
+import { useTooltipRootContext } from './context';
 import type { TooltipPopupProps } from './types';
 
 defineOptions({

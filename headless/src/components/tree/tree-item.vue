@@ -4,8 +4,8 @@ import { flattenChildren, getActiveElement, handleAndDispatchCustomEvent } from 
 import type { HorizontalSide, TreeSelectEvent, TreeToggleEvent } from '../../types';
 import { Primitive } from '../primitive';
 import RovingFocusItem from '../roving-focus/roving-focus-item.vue';
-import { useTreeRootContext } from './context';
 import { TREE_SELECT, TREE_TOGGLE, recurseCheckChildren } from './shared';
+import { useTreeRootContext } from './context';
 import type { TreeItemProps, TreeItemEmits } from './types';
 
 defineOptions({

@@ -1,5 +1,6 @@
 import type { ComputedRef, ShallowRef } from 'vue';
 import type { VirtualItem, Virtualizer } from '@tanstack/vue-virtual';
+import type { CollectionItemData } from '../../composables';
 import type {
   BaseProps,
   DataOrientation,
@@ -12,9 +13,8 @@ import type {
   SelectionProps,
   UiClass
 } from '../../types';
-import type { CollectionItemData } from '../../composables';
-import type { PrimitiveWithBaseProps } from '../primitive/types';
 import type { InputControlProps, InputRootEmits, InputRootProps } from '../input/types';
+import type { PrimitiveWithBaseProps } from '../primitive/types';
 
 /**
  * Properties for the ListboxRoot component.

@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed, onMounted, onUnmounted, onWatcherCleanup, ref, useAttrs, watchEffect } from 'vue';
 import type { CSSProperties } from 'vue';
+import { popperCssVars } from '../popper/shared';
 import {
   useBodyScrollLock,
   useDismissableLayer,
@@ -11,7 +12,6 @@ import {
   useOmitProps
 } from '../../composables';
 import { PopperPopup, PopperPositioner } from '../popper';
-import { popperCssVars } from '../popper/shared';
 import { Primitive } from '../primitive';
 import { provideComboboxContentContext, useComboboxRootContext } from './context';
 import type { ComboboxContentImplProps, ComboboxContentImplEmits } from './types';

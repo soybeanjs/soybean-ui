@@ -1,7 +1,7 @@
 <script setup lang="ts" generic="T extends TabsOptionData = TabsOptionData">
 import { computed } from 'vue';
-import { TabsCompact, provideTabsUi } from '@soybeanjs/headless/tabs';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
+import { TabsCompact, provideTabsUi } from '@soybeanjs/headless/tabs';
 import { keysOf } from '@soybeanjs/utils';
 import { tabsVariants } from '@/styles/tabs';
 import type { TabsProps, TabsEmits, TabsSlots, TabsOptionData } from './types';

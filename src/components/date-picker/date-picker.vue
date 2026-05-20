@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { DatePickerCompact, provideDatePickerUi } from '@soybeanjs/headless/date-picker';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
+import { DatePickerCompact, provideDatePickerUi } from '@soybeanjs/headless/date-picker';
 import { datePickerVariants } from '@/styles/date-picker';
 import Calendar from '../calendar/calendar.vue';
 import type { DatePickerProps, DatePickerEmits } from './types';

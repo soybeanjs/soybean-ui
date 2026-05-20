@@ -1,14 +1,14 @@
 <script setup lang="ts" generic="T extends DefinedValue = DefinedValue">
 import { useOmitProps } from '../../composables';
 import type { DefinedValue } from '../../types';
-import CarouselRoot from './carousel-root.vue';
-import CarouselContent from './carousel-content.vue';
 import CarouselContainer from './carousel-container.vue';
-import CarouselItem from './carousel-item.vue';
+import CarouselContent from './carousel-content.vue';
 import CarouselControl from './carousel-control.vue';
+import CarouselItem from './carousel-item.vue';
 import CarouselNavigation from './carousel-navigation.vue';
-import CarouselPrevious from './carousel-previous.vue';
 import CarouselNext from './carousel-next.vue';
+import CarouselPrevious from './carousel-previous.vue';
+import CarouselRoot from './carousel-root.vue';
 import type { CarouselCompactProps, CarouselCompactEmits, CarouselCompactSlots } from './types';
 
 defineOptions({
