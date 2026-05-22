@@ -1,7 +1,17 @@
 import { describe, expect, it, vi, beforeEach, afterEach } from 'vitest';
+import { nextTick } from 'vue';
 import { mount } from '@vue/test-utils';
 import { WatermarkCompact, WatermarkRoot } from '@soybeanjs/headless/watermark';
 import SWatermark from '../../../src/components/watermark/watermark.vue';
+
+async function flushMutationObserver() {
+  await Promise.resolve();
+  await nextTick();
+  await Promise.resolve();
+  await nextTick();
+  await Promise.resolve();
+  await nextTick();
+}
 
 // Mock canvas API for happy-dom test environment
 function setupCanvasMock() {
@@ -137,6 +147,33 @@ describe('SWatermark', () => {
       expect(overlay.attributes('aria-hidden')).toBe('true');
       wrapper.unmount();
     });
+
+    it('repairs a tampered overlay when defense is enabled', async () => {
+      const wrapper = mount(WatermarkCompact, {
+        props: { content: 'TEST', defense: true },
+        slots: { default: 'Content' },
+        attachTo: document.body
+      });
+
+      const overlay = wrapper.find('[data-soybean-watermark-overlay]').element as HTMLDivElement;
+
+      overlay.removeAttribute('data-soybean-watermark-overlay');
+      overlay.removeAttribute('aria-hidden');
+      overlay.className = 'tampered';
+      overlay.style.cssText = 'display: none;';
+      overlay.setAttribute('hidden', '');
+
+      await flushMutationObserver();
+
+      const repairedOverlay = wrapper.find('[data-soybean-watermark-overlay]');
+
+      expect(repairedOverlay.exists()).toBe(true);
+      expect(repairedOverlay.attributes('aria-hidden')).toBe('true');
+      expect(repairedOverlay.attributes()).not.toHaveProperty('hidden');
+      expect((repairedOverlay.element as HTMLDivElement).style.backgroundImage).toContain('url(');
+      expect((repairedOverlay.element as HTMLDivElement).className).toBe('');
+      wrapper.unmount();
+    });
   });
 
   describe('props', () => {
@@ -210,6 +247,24 @@ describe('SWatermark', () => {
         slots: { default: 'Content' },
         attachTo: document.body
       });
+
+      expect(wrapper.find('[data-soybean-watermark-overlay]').exists()).toBe(true);
+      wrapper.unmount();
+    });
+
+    it('restores a removed overlay when defense is enabled', async () => {
+      const wrapper = mount(SWatermark, {
+        props: {
+          content: 'DEFENSE',
+          defense: true
+        },
+        slots: { default: 'Content' },
+        attachTo: document.body
+      });
+
+      wrapper.find('[data-soybean-watermark-overlay]').element.remove();
+
+      await flushMutationObserver();
 
       expect(wrapper.find('[data-soybean-watermark-overlay]').exists()).toBe(true);
       wrapper.unmount();

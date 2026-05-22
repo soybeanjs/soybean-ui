@@ -10,7 +10,7 @@ export const watermarkVariants = scv({
     fullscreen: {
       true: {
         root: 'static',
-        overlay: 'fixed inset-0 z-10 pointer-events-none bg-repeat'
+        overlay: 'fixed inset-0 z-9999 pointer-events-none bg-repeat'
       }
     }
   }

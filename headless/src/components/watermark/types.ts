@@ -1,4 +1,4 @@
-import type { ShallowRef } from 'vue';
+import type { ComputedRef, ShallowRef } from 'vue';
 import type { BaseProps, UiClass } from '../../types';
 
 /**
@@ -72,6 +72,12 @@ export interface WatermarkRootProps extends BaseProps {
    * @defaultValue false
    */
   cross?: boolean;
+  /**
+   * When true, observes and restores the watermark overlay if it is tampered with or removed.
+   *
+   * @defaultValue false
+   */
+  defense?: boolean;
 }
 
 /**
@@ -97,6 +103,24 @@ export interface WatermarkRootContext {
    * The generated background-image data URL for the watermark pattern.
    */
   overlayStyle: ShallowRef<Record<string, string> | undefined>;
+  /**
+   * Whether overlay defense is enabled.
+   */
+  defense: ComputedRef<boolean>;
+}
+
+/**
+ * Internal context shared by the WatermarkCompact composition.
+ */
+export interface WatermarkCompactContext {
+  /**
+   * A render key used to recreate the overlay from the parent composition.
+   */
+  overlayRenderKey: ShallowRef<number>;
+  /**
+   * Recreates the overlay when it is removed from the DOM or tampered with.
+   */
+  repairOverlay: () => void;
 }
 
 /**

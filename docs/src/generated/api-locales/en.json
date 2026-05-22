@@ -8813,6 +8813,49 @@
           "props": "Properties for the VirtualizerRoot component."
         }
       },
+      "headless_src_components_watermark_types": {
+        "watermarkcompactprops": {
+          "members": {
+            "content": "The text content of the watermark.",
+            "cross": "When true, renders a diagonal cross pattern with two overlapping watermarks.",
+            "defense": "When true, observes and restores the watermark overlay if it is tampered with or removed.",
+            "fontcolor": "The font color of the watermark text.",
+            "fontfamily": "The font family of the watermark text.",
+            "fontsize": "The font size of the watermark text in pixels.",
+            "fontweight": "The font weight of the watermark text.",
+            "gap": "The gap between watermark tiles in pixels, as [x, y].",
+            "height": "The height of a single watermark tile in pixels.\nWhen not provided, it is calculated automatically based on text dimensions and gap.",
+            "image": "The image URL of the watermark.\nWhen both content and image are provided, image takes priority.",
+            "offset": "The offset of the watermark within each tile in pixels, as [x, y].",
+            "overlayprops": "Properties forwarded to the overlay element.",
+            "rotate": "The rotation angle of the watermark in degrees.",
+            "width": "The width of a single watermark tile in pixels.\nWhen not provided, it is calculated automatically based on text dimensions and gap."
+          },
+          "props": "Properties for the WatermarkCompact component."
+        },
+        "watermarkoverlayprops": {
+          "props": "Properties for the WatermarkOverlay component."
+        },
+        "watermarkrootprops": {
+          "members": {
+            "content": "The text content of the watermark.",
+            "cross": "When true, renders a diagonal cross pattern with two overlapping watermarks.",
+            "defense": "When true, observes and restores the watermark overlay if it is tampered with or removed.",
+            "fontcolor": "The font color of the watermark text.",
+            "fontfamily": "The font family of the watermark text.",
+            "fontsize": "The font size of the watermark text in pixels.",
+            "fontweight": "The font weight of the watermark text.",
+            "gap": "The gap between watermark tiles in pixels, as [x, y].",
+            "height": "The height of a single watermark tile in pixels.\nWhen not provided, it is calculated automatically based on text dimensions and gap.",
+            "image": "The image URL of the watermark.\nWhen both content and image are provided, image takes priority.",
+            "offset": "The offset of the watermark within each tile in pixels, as [x, y].",
+            "rotate": "The rotation angle of the watermark in degrees.",
+            "width": "The width of a single watermark tile in pixels.\nWhen not provided, it is calculated automatically based on text dimensions and gap."
+          },
+          "props": "Properties for the WatermarkRoot component."
+        },
+        "watermarkui": "UI class overrides for the Watermark component."
+      },
       "headless_src_composables_use_collection": {
         "collectionitemdata": ""
       },
@@ -8965,7 +9008,7 @@
       "node_modules_pnpm_soybeanjs_shadcn_theme_0_3_1_node_modules_soybeanjs_shadcn_theme_dist_index_d": {
         "themeoptions": "theme options"
       },
-      "node_modules_pnpm_tanstack_virtual_core_3_14_0_node_modules_tanstack_virtual_core_dist_esm_index_d": {
+      "node_modules_pnpm_tanstack_virtual_core_3_15_0_node_modules_tanstack_virtual_core_dist_esm_index_d": {
         "virtualitem": ""
       },
       "node_modules_pnpm_typescript_6_0_3_node_modules_typescript_lib_lib_dom_d": {
@@ -9102,9 +9145,6 @@
           },
           "slots": "Slots for the Alert component."
         }
-      },
-      "src_components_alert_variants": {
-        "alertvariant": ""
       },
       "src_components_anchor_types": {
         "anchoremits": {
@@ -9276,9 +9316,6 @@
           },
           "props": "Properties for the Badge component."
         }
-      },
-      "src_components_badge_variants": {
-        "badgeposition": ""
       },
       "src_components_bottom_sheet_types": {
         "bottomsheetemits": {
@@ -9511,11 +9548,6 @@
           },
           "props": "Properties for the Button component."
         }
-      },
-      "src_components_button_variants": {
-        "buttonshadow": "",
-        "buttonshape": "",
-        "buttonvariant": ""
       },
       "src_components_calendar_range_types": {
         "calendarrangeemits": {
@@ -9833,9 +9865,6 @@
           "props": "Properties for the Checkbox component."
         }
       },
-      "src_components_checkbox_variants": {
-        "checkboxshape": ""
-      },
       "src_components_clipboard_types": {
         "clipboardprops": {
           "members": {
@@ -10077,9 +10106,6 @@
           "props": "Properties for the ColorSwatchPicker component."
         }
       },
-      "src_components_color_swatch_picker_variants": {
-        "colorswatchpickershape": ""
-      },
       "src_components_color_swatch_types": {
         "colorswatchprops": {
           "members": {
@@ -10102,9 +10128,6 @@
           },
           "slots": "Slots for the ColorSwatch component."
         }
-      },
-      "src_components_color_swatch_variants": {
-        "colorswatchshape": ""
       },
       "src_components_combobox_types": {
         "comboboxemits": {
@@ -11367,9 +11390,6 @@
           "props": "Properties for the Kbd component."
         }
       },
-      "src_components_kbd_variants": {
-        "kbdvariant": ""
-      },
       "src_components_label_types": {
         "labelprops": {
           "members": {
@@ -11692,9 +11712,6 @@
           "slots": "Slots for the PageTabs component."
         }
       },
-      "src_components_page_tabs_variants": {
-        "pagetabsvariant": ""
-      },
       "src_components_pagination_types": {
         "paginationemits": {
           "callables": {
@@ -11742,10 +11759,6 @@
           },
           "slots": "Slots for the Pagination component."
         }
-      },
-      "src_components_pagination_variants": {
-        "paginationshape": "",
-        "paginationvariant": ""
       },
       "src_components_password_types": {
         "passwordemits": {
@@ -12031,9 +12044,6 @@
           "props": "Properties for the RadioGroup component."
         }
       },
-      "src_components_radio_group_variants": {
-        "radiogroupvariant": ""
-      },
       "src_components_scroll_area_types": {
         "scrollareaemits": {
           "emits": "Events for the ScrollArea component."
@@ -12047,6 +12057,7 @@
             "dir": "The reading direction of the scroll area.",
             "horizontalscrollbarprops": "Properties forwarded to the horizontal scrollbar element.",
             "scrollhidedelay": "Delay before transient scrollbars are hidden.",
+            "size": "Size of the ScrollArea component.",
             "thumbprops": "Properties forwarded to the thumb elements.",
             "type": "Controls scrollbar visibility behavior.",
             "ui": "Per-slot class overrides for the component.",
@@ -12178,9 +12189,6 @@
           "props": "Properties for the Separator component."
         }
       },
-      "src_components_separator_variants": {
-        "separatorborder": ""
-      },
       "src_components_skeleton_types": {
         "skeletonprops": {
           "members": {
@@ -12193,9 +12201,6 @@
           },
           "props": "Properties for the Skeleton component."
         }
-      },
-      "src_components_skeleton_variants": {
-        "skeletonshape": ""
       },
       "src_components_slider_types": {
         "slideremits": {
@@ -12260,6 +12265,7 @@
             "dir": "The reading direction of the splitter group.",
             "direction": "The orientation of the splitter group.\n\nEither `horizontal` or `vertical`. Defaults to `horizontal`.",
             "keyboardresizeby": "The percentage step size used for keyboard resizing.",
+            "size": "Visual size of the component.",
             "ui": "Per-slot class overrides for the component."
           },
           "props": "Properties for the SplitterGroup component."
@@ -12381,9 +12387,6 @@
           },
           "slots": "Slots for the Switch component."
         }
-      },
-      "src_components_switch_variants": {
-        "switchshape": ""
       },
       "src_components_table_types": {
         "tableemits": {
@@ -12515,9 +12518,6 @@
           "slots": "Slots for the Table component."
         }
       },
-      "src_components_table_variants": {
-        "tablevariant": ""
-      },
       "src_components_tabs_types": {
         "tabsemits": {
           "callables": {
@@ -12556,10 +12556,6 @@
           "slots": "Slots for the Tabs component."
         }
       },
-      "src_components_tabs_variants": {
-        "tabsfill": "",
-        "tabsshape": ""
-      },
       "src_components_tag_types": {
         "tagprops": {
           "members": {
@@ -12574,10 +12570,6 @@
           },
           "props": "Properties for the Tag component."
         }
-      },
-      "src_components_tag_variants": {
-        "tagshape": "",
-        "tagvariant": ""
       },
       "src_components_tags_input_types": {
         "tagsinputemits": {
@@ -12675,9 +12667,6 @@
           },
           "slots": "Slots for the Textarea component."
         }
-      },
-      "src_components_textarea_variants": {
-        "textarearesize": ""
       },
       "src_components_time_field_types": {
         "timefieldemits": {
@@ -12834,9 +12823,6 @@
           "props": "Properties for the ToggleGroup component."
         }
       },
-      "src_components_toggle_group_variants": {
-        "togglegroupvariant": ""
-      },
       "src_components_toggle_types": {
         "toggleprops": {
           "members": {
@@ -12854,10 +12840,6 @@
           },
           "props": "Properties for the Toggle component."
         }
-      },
-      "src_components_toggle_variants": {
-        "toggleshape": "",
-        "togglevariant": ""
       },
       "src_components_toolbar_types": {
         "toolbarprops": {
@@ -13022,6 +13004,93 @@
           },
           "props": "Properties for the Virtualizer component."
         }
+      },
+      "src_components_watermark_types": {
+        "watermarkprops": {
+          "members": {
+            "class": "The class attribute for the root element.",
+            "content": "The text content of the watermark.",
+            "cross": "When true, renders a diagonal cross pattern with two overlapping watermarks.",
+            "defense": "When true, observes and restores the watermark overlay if it is tampered with or removed.",
+            "fontcolor": "The font color of the watermark text.",
+            "fontfamily": "The font family of the watermark text.",
+            "fontsize": "The font size of the watermark text in pixels.",
+            "fontweight": "The font weight of the watermark text.",
+            "fullscreen": "When true, the watermark overlay is fixed to the viewport instead of the parent container.",
+            "gap": "The gap between watermark tiles in pixels, as [x, y].",
+            "height": "The height of a single watermark tile in pixels.\nWhen not provided, it is calculated automatically based on text dimensions and gap.",
+            "image": "The image URL of the watermark.\nWhen both content and image are provided, image takes priority.",
+            "offset": "The offset of the watermark within each tile in pixels, as [x, y].",
+            "overlayprops": "Properties forwarded to the overlay element.",
+            "rotate": "The rotation angle of the watermark in degrees.",
+            "ui": "UI class overrides for each slot.",
+            "width": "The width of a single watermark tile in pixels.\nWhen not provided, it is calculated automatically based on text dimensions and gap."
+          },
+          "props": "Properties for the SWatermark component."
+        }
+      },
+      "src_styles_alert": {
+        "alertvariant": ""
+      },
+      "src_styles_badge": {
+        "badgeposition": ""
+      },
+      "src_styles_button": {
+        "buttonshadow": "",
+        "buttonshape": "",
+        "buttonvariant": ""
+      },
+      "src_styles_checkbox": {
+        "checkboxshape": ""
+      },
+      "src_styles_color_swatch": {
+        "colorswatchshape": ""
+      },
+      "src_styles_color_swatch_picker": {
+        "colorswatchpickershape": ""
+      },
+      "src_styles_kbd": {
+        "kbdvariant": ""
+      },
+      "src_styles_page_tabs": {
+        "pagetabsvariant": ""
+      },
+      "src_styles_pagination": {
+        "paginationshape": "",
+        "paginationvariant": ""
+      },
+      "src_styles_radio_group": {
+        "radiogroupvariant": ""
+      },
+      "src_styles_separator": {
+        "separatorborder": ""
+      },
+      "src_styles_skeleton": {
+        "skeletonshape": ""
+      },
+      "src_styles_switch": {
+        "switchshape": ""
+      },
+      "src_styles_table": {
+        "tablevariant": ""
+      },
+      "src_styles_tabs": {
+        "tabsfill": "",
+        "tabsshape": ""
+      },
+      "src_styles_tag": {
+        "tagshape": "",
+        "tagvariant": ""
+      },
+      "src_styles_textarea": {
+        "textarearesize": ""
+      },
+      "src_styles_toggle": {
+        "toggleshape": "",
+        "togglevariant": ""
+      },
+      "src_styles_toggle_group": {
+        "togglegroupvariant": ""
       },
       "src_theme_types": {
         "themecolor": "",

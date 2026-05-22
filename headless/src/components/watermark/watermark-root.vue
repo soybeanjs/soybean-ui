@@ -1,8 +1,9 @@
 <script setup lang="ts">
-import { onBeforeUnmount, shallowRef, watch } from 'vue';
+import { computed, onBeforeUnmount, shallowRef, watch } from 'vue';
+import { useMutationObserver } from '@vueuse/core';
 import { useForwardElement } from '../../composables';
 import { generateWatermarkDataUrl, resolveWatermarkConfig } from './shared';
-import { provideWatermarkRootContext, useWatermarkUi } from './context';
+import { provideWatermarkRootContext, useWatermarkCompactContext, useWatermarkUi } from './context';
 import type { WatermarkRootProps } from './types';
 
 defineOptions({
@@ -12,11 +13,13 @@ defineOptions({
 const props = defineProps<WatermarkRootProps>();
 
 const cls = useWatermarkUi('root');
+const compactContext = useWatermarkCompactContext();
 
 const [rootElement, setRootElement] = useForwardElement<HTMLDivElement>();
 
 const dataUrl = shallowRef<string | undefined>();
 const overlayStyle = shallowRef<Record<string, string> | undefined>();
+const defense = computed(() => props.defense ?? false);
 
 const imageElement = shallowRef<HTMLImageElement | null>(null);
 
@@ -110,7 +113,8 @@ watch(
     props.offset,
     props.width,
     props.height,
-    props.cross
+    props.cross,
+    props.defense
   ],
   () => {
     updateWatermark();
@@ -118,8 +122,41 @@ watch(
   { immediate: true }
 );
 
+useMutationObserver(
+  rootElement,
+  mutations => {
+    if (!defense.value || !overlayStyle.value) {
+      return;
+    }
+
+    const overlayRemoved = mutations.some(mutation => {
+      if (mutation.type !== 'childList') {
+        return false;
+      }
+
+      return Array.from(mutation.removedNodes).some(node => {
+        return node instanceof HTMLElement && node.hasAttribute('data-soybean-watermark-overlay');
+      });
+    });
+
+    if (!overlayRemoved) {
+      return;
+    }
+
+    const overlay = rootElement.value?.querySelector('[data-soybean-watermark-overlay]');
+
+    if (!overlay) {
+      compactContext?.repairOverlay();
+    }
+  },
+  {
+    childList: true
+  }
+);
+
 provideWatermarkRootContext({
-  overlayStyle
+  overlayStyle,
+  defense
 });
 
 onBeforeUnmount(() => {

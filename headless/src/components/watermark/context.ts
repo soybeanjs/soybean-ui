@@ -1,5 +1,10 @@
 import { useContext, useUiContext } from '../../composables';
-import type { WatermarkRootContext, WatermarkUiSlot } from './types';
+import type { WatermarkCompactContext, WatermarkRootContext, WatermarkUiSlot } from './types';
+
+export const [provideWatermarkCompactContext, useWatermarkCompactContext] = useContext(
+  'WatermarkCompact',
+  (params: WatermarkCompactContext) => params
+);
 
 export const [provideWatermarkRootContext, useWatermarkRootContext] = useContext(
   'WatermarkRoot',

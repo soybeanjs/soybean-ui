@@ -6,7 +6,7 @@
         "kind": "props",
         "name": "WatermarkProps",
         "type": "Interface WatermarkProps",
-        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; ui?: Partial<WatermarkUi>; fullscreen?: boolean; overlayProps?: WatermarkOverlayProps; content?: string; image?: string; fontSize?: number; fontFamily?: string; fontColor?: string; fontWeight?: string | number; rotate?: number; gap?: [number, number]; offset?: [number, number]; width?: number; height?: number; cross?: boolean }",
+        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; ui?: Partial<WatermarkUi>; fullscreen?: boolean; overlayProps?: WatermarkOverlayProps; content?: string; image?: string; fontSize?: number; fontFamily?: string; fontColor?: string; fontWeight?: string | number; rotate?: number; gap?: [number, number]; offset?: [number, number]; width?: number; height?: number; cross?: boolean; defense?: boolean }",
         "description": "Properties for the SWatermark component.",
         "descriptionKey": "api.generated.src_components_watermark_types.watermarkprops.props",
         "sourcePath": "src/components/watermark/types.ts",
@@ -229,6 +229,17 @@
             "inheritedFrom": "cross",
             "sourcePath": "headless/src/components/watermark/types.ts",
             "referencedTypes": []
+          },
+          {
+            "name": "defense",
+            "type": "boolean",
+            "required": false,
+            "description": "When true, observes and restores the watermark overlay if it is tampered with or removed.",
+            "descriptionKey": "api.generated.src_components_watermark_types.watermarkprops.members.defense",
+            "default": "false",
+            "inheritedFrom": "defense",
+            "sourcePath": "headless/src/components/watermark/types.ts",
+            "referencedTypes": []
           }
         ],
         "callables": [],
@@ -240,7 +251,7 @@
         "kind": "props",
         "name": "WatermarkCompactProps",
         "type": "Interface WatermarkCompactProps",
-        "resolvedType": "{ overlayProps?: WatermarkOverlayProps; content?: string; image?: string; fontSize?: number; fontFamily?: string; fontColor?: string; fontWeight?: string | number; rotate?: number; gap?: [number, number]; offset?: [number, number]; width?: number; height?: number; cross?: boolean }",
+        "resolvedType": "{ overlayProps?: WatermarkOverlayProps; content?: string; image?: string; fontSize?: number; fontFamily?: string; fontColor?: string; fontWeight?: string | number; rotate?: number; gap?: [number, number]; offset?: [number, number]; width?: number; height?: number; cross?: boolean; defense?: boolean }",
         "description": "Properties for the WatermarkCompact component.",
         "descriptionKey": "api.generated.headless_src_components_watermark_types.watermarkcompactprops.props",
         "sourcePath": "headless/src/components/watermark/types.ts",
@@ -402,6 +413,17 @@
             "inheritedFrom": "cross",
             "sourcePath": "headless/src/components/watermark/types.ts",
             "referencedTypes": []
+          },
+          {
+            "name": "defense",
+            "type": "boolean",
+            "required": false,
+            "description": "When true, observes and restores the watermark overlay if it is tampered with or removed.",
+            "descriptionKey": "api.generated.headless_src_components_watermark_types.watermarkcompactprops.members.defense",
+            "default": "false",
+            "inheritedFrom": "defense",
+            "sourcePath": "headless/src/components/watermark/types.ts",
+            "referencedTypes": []
           }
         ],
         "callables": [],
@@ -428,7 +450,7 @@
         "kind": "props",
         "name": "WatermarkRootProps",
         "type": "Interface WatermarkRootProps",
-        "resolvedType": "{ content?: string; image?: string; fontSize?: number; fontFamily?: string; fontColor?: string; fontWeight?: string | number; rotate?: number; gap?: [number, number]; offset?: [number, number]; width?: number; height?: number; cross?: boolean }",
+        "resolvedType": "{ content?: string; image?: string; fontSize?: number; fontFamily?: string; fontColor?: string; fontWeight?: string | number; rotate?: number; gap?: [number, number]; offset?: [number, number]; width?: number; height?: number; cross?: boolean; defense?: boolean }",
         "description": "Properties for the WatermarkRoot component.",
         "descriptionKey": "api.generated.headless_src_components_watermark_types.watermarkrootprops.props",
         "sourcePath": "headless/src/components/watermark/types.ts",
@@ -561,6 +583,17 @@
             "required": false,
             "description": "When true, renders a diagonal cross pattern with two overlapping watermarks.",
             "descriptionKey": "api.generated.headless_src_components_watermark_types.watermarkrootprops.members.cross",
+            "default": "false",
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/watermark/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "defense",
+            "type": "boolean",
+            "required": false,
+            "description": "When true, observes and restores the watermark overlay if it is tampered with or removed.",
+            "descriptionKey": "api.generated.headless_src_components_watermark_types.watermarkrootprops.members.defense",
             "default": "false",
             "inheritedFrom": null,
             "sourcePath": "headless/src/components/watermark/types.ts",
