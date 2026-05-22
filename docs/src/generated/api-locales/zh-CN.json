@@ -9030,7 +9030,7 @@
       "node_modules_pnpm_vue_reactivity_3_5_34_node_modules_vue_reactivity_dist_reactivity_d": {
         "computedref": ""
       },
-      "node_modules_pnpm_vue_router_5_0_7_vue_compiler_sfc_3_5_34_pinia_3_0_4_typescript_6_0_3_vue_3_5_34_types_f357d1e940226713debf99bc42fbe5c2_node_modules_vue_router_dist_useapi_d6ckosfy_d": {
+      "node_modules_pnpm_vue_router_5_0_7_vue_compiler_sfc_3_5_34_vue_3_5_34_typescript_6_0_3_node_modules_vue_router_dist_useapi_d6ckosfy_d": {
         "routelocationraw": "可传递给 `router.push()` 和其他面向用户的 API 的路由位置。"
       },
       "node_modules_pnpm_vue_runtime_core_3_5_34_node_modules_vue_runtime_core_dist_runtime_core_d": {
@@ -9043,7 +9043,7 @@
         "inputtypehtmlattribute": "",
         "lihtmlattributes": ""
       },
-      "node_modules_pnpm_vueuse_integrations_14_3_0_fuse_js_7_3_0_vue_3_5_34_typescript_6_0_3_node_modules_vueuse_integrations_dist_usefuse_d": {
+      "node_modules_pnpm_vueuse_integrations_14_3_0_vue_3_5_34_typescript_6_0_3_node_modules_vueuse_integrations_dist_usefuse_d": {
         "usefuseoptions": ""
       },
       "src_components_accordion_types": {
