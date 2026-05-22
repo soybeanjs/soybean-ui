@@ -1,6 +1,5 @@
 import { defineConfig } from 'tsdown';
 import unpluginVue from 'unplugin-vue/rolldown';
-import unpluginVueJsx from 'unplugin-vue-jsx/rolldown';
 import fg from 'fast-glob';
 import pkg from './package.json' with { type: 'json' };
 
@@ -22,7 +21,7 @@ export default defineConfig({
     vue: true
   },
   unbundle: true,
-  plugins: [unpluginVue({ isProduction: true }), unpluginVueJsx()],
+  plugins: [unpluginVue({ isProduction: true })],
   sourcemap: false,
   minify: true
 });

@@ -3,7 +3,6 @@ import { URL, fileURLToPath } from 'node:url';
 import { defineConfig } from 'vite';
 import Vue from '@vitejs/plugin-vue';
 import VueJsx from '@vitejs/plugin-vue-jsx';
-import VueDevtools from 'vite-plugin-vue-devtools';
 import MetaLayouts from 'vite-plugin-vue-meta-layouts';
 import Components from 'unplugin-vue-components/vite';
 import VueRouter from 'vue-router/vite';
@@ -39,8 +38,7 @@ export default defineConfig({
       compositionOnly: true,
       fullInstall: true,
       include: [path.resolve(__dirname, 'docs/locales/**')]
-    }),
-    VueDevtools()
+    })
   ],
   server: {
     open: true

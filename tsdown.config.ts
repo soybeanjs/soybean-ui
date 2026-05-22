@@ -2,7 +2,6 @@ import { readFileSync } from 'node:fs';
 import type { RolldownPluginOption } from 'rolldown';
 import { defineConfig } from 'tsdown';
 import unpluginVue from 'unplugin-vue/rolldown';
-import unpluginVueJsx from 'unplugin-vue-jsx/rolldown';
 import headlessPkg from './headless/package.json' with { type: 'json' };
 import pkg from './package.json' with { type: 'json' };
 
@@ -23,7 +22,7 @@ export default defineConfig({
     vue: true
   },
   unbundle: true,
-  plugins: [cssRawPlugin(), unpluginVue({ isProduction: true }), unpluginVueJsx()],
+  plugins: [cssRawPlugin(), unpluginVue({ isProduction: true })],
   sourcemap: false,
   minify: true
 });
