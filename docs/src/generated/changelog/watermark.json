@@ -1,8 +1,25 @@
 {
   "component": "watermark",
-  "generatedAt": "2026-05-20T07:08:07.256Z",
+  "generatedAt": "2026-05-22T07:07:58.838Z",
   "schemaVersion": 1,
   "versions": [
+    {
+      "version": "v0.24.2",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.24.1...v0.24.2",
+      "date": "2026-05-22",
+      "entries": [
+        {
+          "type": "feature",
+          "scope": "watermark",
+          "summary": "add defense feature to restore tampered overlays",
+          "summaryKey": "changelog.generated.v0.24.2.ef6e2",
+          "commitHash": "ef6e2",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/ef6e26327",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope"
+        }
+      ]
+    },
     {
       "version": "v0.24.0",
       "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.23.1...v0.24.0",

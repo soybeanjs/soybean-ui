@@ -47,6 +47,7 @@ Properties for the SWatermark component.
 - `width`: The width of a single watermark tile in pixels. When not provided, it is calculated automatically based on text dimensions and gap. (type `number`; optional)
 - `height`: The height of a single watermark tile in pixels. When not provided, it is calculated automatically based on text dimensions and gap. (type `number`; optional)
 - `cross`: When true, renders a diagonal cross pattern with two overlapping watermarks. (type `boolean`; default `false`; optional)
+- `defense`: When true, observes and restores the watermark overlay if it is tampered with or removed. (type `boolean`; default `false`; optional)
 
 ### WatermarkCompact
 
@@ -67,6 +68,7 @@ Properties for the WatermarkCompact component.
 - `width`: The width of a single watermark tile in pixels. When not provided, it is calculated automatically based on text dimensions and gap. (type `number`; optional)
 - `height`: The height of a single watermark tile in pixels. When not provided, it is calculated automatically based on text dimensions and gap. (type `number`; optional)
 - `cross`: When true, renders a diagonal cross pattern with two overlapping watermarks. (type `boolean`; default `false`; optional)
+- `defense`: When true, observes and restores the watermark overlay if it is tampered with or removed. (type `boolean`; default `false`; optional)
 
 ### WatermarkOverlay
 
@@ -90,6 +92,7 @@ Properties for the WatermarkRoot component.
 - `width`: The width of a single watermark tile in pixels. When not provided, it is calculated automatically based on text dimensions and gap. (type `number`; optional)
 - `height`: The height of a single watermark tile in pixels. When not provided, it is calculated automatically based on text dimensions and gap. (type `number`; optional)
 - `cross`: When true, renders a diagonal cross pattern with two overlapping watermarks. (type `boolean`; default `false`; optional)
+- `defense`: When true, observes and restores the watermark overlay if it is tampered with or removed. (type `boolean`; default `false`; optional)
 
 ## Headless Composition
 

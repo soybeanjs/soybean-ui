@@ -1,5 +1,27 @@
 # Changelog
 
+## [v0.24.2](https://github.com/soybeanjs/soybean-ui/compare/v0.24.1...v0.24.2) (2026-05-22)
+
+### &nbsp;&nbsp;&nbsp;🚀 Features
+
+- **tests**: add the missing test cases. closed #136 &nbsp;-&nbsp; by **soybeanfe** in https://github.com/soybeanjs/soybean-ui/issues/136 [<samp>(6a74b)</samp>](https://github.com/soybeanjs/soybean-ui/commit/6a74b0f20)
+- **watermark**: add defense feature to restore tampered overlays &nbsp;-&nbsp; by **soybeanfe** [<samp>(ef6e2)</samp>](https://github.com/soybeanjs/soybean-ui/commit/ef6e26327)
+
+### &nbsp;&nbsp;&nbsp;🏡 Chore
+
+- **deps**:
+  - update deps &nbsp;-&nbsp; by **soybeanfe** [<samp>(6c68e)</samp>](https://github.com/soybeanjs/soybean-ui/commit/6c68ed258)
+- **docs**:
+  - add npm version and download badges to README files &nbsp;-&nbsp; by **soybeanfe** [<samp>(ff3d9)</samp>](https://github.com/soybeanjs/soybean-ui/commit/ff3d9b4ae)
+  - update virtual-core version in API documentation &nbsp;-&nbsp; by **soybeanfe** [<samp>(19f3f)</samp>](https://github.com/soybeanjs/soybean-ui/commit/19f3f6e1c)
+- **license**:
+  - add MIT License file &nbsp;-&nbsp; by **soybeanfe** [<samp>(3cfed)</samp>](https://github.com/soybeanjs/soybean-ui/commit/3cfed3cd6)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+
+[soybeanfe](mailto:honghuangdc@gmail.com)
+
 ## [v0.24.1](https://github.com/soybeanjs/soybean-ui/compare/v0.24.0...v0.24.1) (2026-05-20)
 
 ### &nbsp;&nbsp;&nbsp;🏡 Chore

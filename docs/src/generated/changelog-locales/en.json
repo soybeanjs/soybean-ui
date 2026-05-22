@@ -1344,6 +1344,14 @@
           },
           "1": {
             "655c0": "remove unused date/time picker component docs and references"
+          },
+          "2": {
+            "19f3f": "update virtual-core version in API documentation",
+            "3cfed": "add MIT License file",
+            "6a74b": "add the missing test cases. closed #136",
+            "6c68e": "update deps",
+            "ef6e2": "add defense feature to restore tampered overlays",
+            "ff3d9": "add npm version and download badges to README files"
           }
         }
       }
