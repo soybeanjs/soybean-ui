@@ -5,7 +5,7 @@
       "@/*": ["./src/*"],
       "@soybeanjs/ui": ["./src/index.ts"]
     },
-    "types": ["vite/client", "vite-plugin-vue-meta-layouts/client"]
+    "types": ["vite/client", "vite-plugin-vue-meta-layouts/client", "vitest/config"]
   },
   "include": ["src/**/*", "headless/**/*", "playground/**/*", "test/**/*", "scripts/*", "vite.config.ts"]
 }
