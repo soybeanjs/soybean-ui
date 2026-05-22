@@ -92,7 +92,7 @@ const typedocTsconfig = {
     skipLibCheck: true,
     types: ['vite/client', 'vite-plugin-vue-meta-layouts/client']
   },
-  include: ['src/**/*', 'headless/**/*', 'typedoc-shims.d.ts'],
+  include: ['src/**/*', 'headless/**/*', 'typings/typedoc.d.ts'],
   exclude: ['docs/**/*', 'playground/**/*', 'test/**/*']
 } as const;
 const emptyIgnoredIndexes = Object.freeze([]) satisfies readonly number[];
