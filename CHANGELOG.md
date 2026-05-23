@@ -1,5 +1,35 @@
 # Changelog
 
+## [v0.25.0](https://github.com/soybeanjs/soybean-ui/compare/v0.24.2...v0.25.0) (2026-05-23)
+
+### &nbsp;&nbsp;&nbsp;🚀 Features
+
+- **docs**: add markdown directory with why-choose.md &nbsp;-&nbsp; by **soybeanfe** [<samp>(31aab)</samp>](https://github.com/soybeanjs/soybean-ui/commit/31aabec7)
+- **typings**: add typedoc declaration for Vue components &nbsp;-&nbsp; by **soybeanfe** [<samp>(f2420)</samp>](https://github.com/soybeanjs/soybean-ui/commit/f242041a)
+
+### &nbsp;&nbsp;&nbsp;🛠 Optimizations
+
+- **tests**: add test configuration to vite.config.ts and update types in tsconfig.json &nbsp;-&nbsp; by **soybeanfe** [<samp>(96d40)</samp>](https://github.com/soybeanjs/soybean-ui/commit/96d40192)
+- **theme**: optimize theme config &nbsp;-&nbsp; by @soybeanjs [<samp>(db7c1)</samp>](https://github.com/soybeanjs/soybean-ui/commit/db7c13a9)
+- **tsconfig**: simplify configuration by removing unused compiler options &nbsp;-&nbsp; by **soybeanfe** [<samp>(a8d87)</samp>](https://github.com/soybeanjs/soybean-ui/commit/a8d87ede)
+
+### &nbsp;&nbsp;&nbsp;📖 Documentation
+
+- **api**: update docs api &nbsp;-&nbsp; by **soybeanfe** [<samp>(5d072)</samp>](https://github.com/soybeanjs/soybean-ui/commit/5d07286a)
+
+### &nbsp;&nbsp;&nbsp;🏡 Chore
+
+- **deps**:
+  - update deps &nbsp;-&nbsp; by **soybeanfe** [<samp>(3f23c)</samp>](https://github.com/soybeanjs/soybean-ui/commit/3f23cfd4)
+  - update deps &nbsp;-&nbsp; by @soybeanjs [<samp>(95c14)</samp>](https://github.com/soybeanjs/soybean-ui/commit/95c14aa4)
+- **projects**:
+  - remove unneeded Vue JSX and Vue Devtools plugins from configuration files &nbsp;-&nbsp; by **soybeanfe** [<samp>(ba893)</samp>](https://github.com/soybeanjs/soybean-ui/commit/ba8934ef)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;
+[soybeanfe](mailto:honghuangdc@gmail.com)
+
 ## [v0.24.2](https://github.com/soybeanjs/soybean-ui/compare/v0.24.1...v0.24.2) (2026-05-22)
 
 ### &nbsp;&nbsp;&nbsp;🚀 Features

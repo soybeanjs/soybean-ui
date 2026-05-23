@@ -1,7 +1,122 @@
 {
-  "generatedAt": "2026-05-22T07:07:58.838Z",
+  "generatedAt": "2026-05-23T15:26:40.164Z",
   "schemaVersion": 1,
   "releases": [
+    {
+      "version": "v0.25.0",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.24.2...v0.25.0",
+      "date": "2026-05-23",
+      "entryCount": 9,
+      "componentCount": 0,
+      "components": [],
+      "typeCounts": {
+        "feature": 2,
+        "optimization": 3,
+        "docs": 1,
+        "chore": 3
+      },
+      "entries": [
+        {
+          "type": "feature",
+          "scope": "typings",
+          "summary": "add typedoc declaration for Vue components",
+          "summaryKey": "changelog.generated.v0.25.0.f2420",
+          "commitHash": "f2420",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/f242041a",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "feature",
+          "scope": "docs",
+          "summary": "add markdown directory with why-choose.md",
+          "summaryKey": "changelog.generated.v0.25.0.31aab",
+          "commitHash": "31aab",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/31aabec7",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "optimization",
+          "scope": "tests",
+          "summary": "add test configuration to vite.config.ts and update types in tsconfig.json",
+          "summaryKey": "changelog.generated.v0.25.0.96d40",
+          "commitHash": "96d40",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/96d40192",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "optimization",
+          "scope": "theme",
+          "summary": "optimize theme config",
+          "summaryKey": "changelog.generated.v0.25.0.db7c1",
+          "commitHash": "db7c1",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/db7c13a9",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "optimization",
+          "scope": "tsconfig",
+          "summary": "simplify configuration by removing unused compiler options",
+          "summaryKey": "changelog.generated.v0.25.0.a8d87",
+          "commitHash": "a8d87",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/a8d87ede",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "docs",
+          "scope": "api",
+          "summary": "update docs api",
+          "summaryKey": "changelog.generated.v0.25.0.5d072",
+          "commitHash": "5d072",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/5d07286a",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "chore",
+          "scope": "projects",
+          "summary": "remove unneeded Vue JSX and Vue Devtools plugins from configuration files",
+          "summaryKey": "changelog.generated.v0.25.0.ba893",
+          "commitHash": "ba893",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/ba8934ef",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "chore",
+          "scope": "deps",
+          "summary": "update deps",
+          "summaryKey": "changelog.generated.v0.25.0.3f23c",
+          "commitHash": "3f23c",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/3f23cfd4",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "chore",
+          "scope": "deps",
+          "summary": "update deps",
+          "summaryKey": "changelog.generated.v0.25.0.95c14",
+          "commitHash": "95c14",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/95c14aa4",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope",
+          "components": []
+        }
+      ]
+    },
     {
       "version": "v0.24.2",
       "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.24.1...v0.24.2",
