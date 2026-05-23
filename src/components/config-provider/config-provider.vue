@@ -1,9 +1,8 @@
 <script setup lang="ts">
-import { h, watchEffect } from 'vue';
-import { useStorage } from '@vueuse/core';
+import { h, shallowRef, watch, watchEffect } from 'vue';
+import { useStyleTag } from '@vueuse/core';
 import { useOmitProps } from '@soybeanjs/headless/composables';
 import { ConfigProvider } from '@soybeanjs/headless/config-provider';
-import { Primitive } from '@soybeanjs/headless/primitive';
 import { isClient, transformPropsToContext } from '@soybeanjs/headless/shared';
 import { createShadcnTheme } from '@soybeanjs/shadcn-theme';
 import { themeSizeMap } from '@/theme';
@@ -13,7 +12,6 @@ import type { IconValue } from '../icon/types';
 import ProgressProvider from '../progress/progress-provider.vue';
 import ToastProvider from '../toast/toast-provider.vue';
 import { provideConfigProviderContext } from './context';
-import globalStyles from './global.css?raw';
 import type { ConfigProviderProps } from './types';
 
 defineOptions({
@@ -46,15 +44,17 @@ provideConfigProviderContext({
   iconRender
 });
 
-const { getCss } = createShadcnTheme(props.theme);
+const css = shallowRef('');
 
 const generateCss = () => {
-  const cssVars = getCss(props.theme, props.theme.radius);
-
-  return `${globalStyles}\n${cssVars}`;
+  const { getCss } = createShadcnTheme(props.theme);
+  const value = getCss(props.theme, props.theme.radius);
+  css.value = value;
 };
 
-const cssVars = useStorage('__SoybeanUI_themeVars', generateCss());
+useStyleTag(css, {
+  id: '__SoybeanUI_theme'
+});
 
 watchEffect(
   () => {
@@ -66,16 +66,21 @@ watchEffect(
   { flush: 'post' }
 );
 
-watchEffect(() => {
-  cssVars.value = generateCss();
-});
+watch(
+  () => props.theme,
+  (newVal, oldVal) => {
+    if (!isClient) return;
+
+    if (Object.keys(newVal).length > 0 && Object.keys(oldVal).length > 0) {
+      generateCss();
+    }
+  },
+  { deep: true, flush: 'post' }
+);
 </script>
 
 <template>
   <ConfigProvider v-bind="forwardedProps" :icon-render="iconRender">
-    <Primitive id="__SoybeanUI_themeVars" as="style">
-      {{ cssVars }}
-    </Primitive>
     <slot />
     <ToastProvider v-if="!props.customToast" v-bind="props.toast" />
     <DialogProvider />

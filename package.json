@@ -85,7 +85,7 @@
     "@soybeanjs/eslint-config-vue": "^0.1.0",
     "@soybeanjs/oxc-config": "^0.1.4",
     "@soybeanjs/unocss-preset": "^0.2.0",
-    "@soybeanjs/unocss-shadcn": "^0.6.0",
+    "@soybeanjs/unocss-shadcn": "^0.6.1",
     "@types/node": "^25.9.1",
     "@unocss/cli": "^66.7.0",
     "@vitejs/plugin-vue": "^6.0.7",
