@@ -1,5 +1,15 @@
 # Changelog
 
+## [v0.25.1](https://github.com/soybeanjs/soybean-ui/compare/v0.25.0...v0.25.1) (2026-05-23)
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- **link**: get config provider can be null &nbsp;-&nbsp; by @soybeanjs [<samp>(866e4)</samp>](https://github.com/soybeanjs/soybean-ui/commit/866e42fb)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;
+
 ## [v0.25.0](https://github.com/soybeanjs/soybean-ui/compare/v0.24.2...v0.25.0) (2026-05-23)
 
 ### &nbsp;&nbsp;&nbsp;🚀 Features

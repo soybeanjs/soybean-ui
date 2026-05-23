@@ -1,8 +1,25 @@
 {
   "component": "link",
-  "generatedAt": "2026-05-23T15:26:40.164Z",
+  "generatedAt": "2026-05-23T15:50:10.002Z",
   "schemaVersion": 1,
   "versions": [
+    {
+      "version": "v0.25.1",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.25.0...v0.25.1",
+      "date": "2026-05-23",
+      "entries": [
+        {
+          "type": "fix",
+          "scope": "link",
+          "summary": "get config provider can be null",
+          "summaryKey": "changelog.generated.v0.25.1.866e4",
+          "commitHash": "866e4",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/866e42fb",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    },
     {
       "version": "v0.2.3",
       "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.2.2...v0.2.3",

@@ -1365,6 +1365,9 @@
             "ba893": "remove unneeded Vue JSX and Vue Devtools plugins from configuration files",
             "db7c1": "optimize theme config",
             "f2420": "add typedoc declaration for Vue components"
+          },
+          "1": {
+            "866e4": "get config provider can be null"
           }
         }
       }
