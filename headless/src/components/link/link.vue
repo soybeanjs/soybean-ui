@@ -29,10 +29,10 @@ defineSlots<Slots>();
 
 const attrs = useAttrs();
 
-const { nuxt } = useConfigProvider('Link');
+const config = useConfigProvider();
 
 const LinkComponent = computed(() => {
-  if (nuxt.value) {
+  if (config?.nuxt?.value) {
     return resolveComponent('NuxtLink');
   }
   return resolveComponent('RouterLink');
@@ -72,7 +72,7 @@ const forwardedProps = computed(() => {
     result.to = props.to;
   }
 
-  if ((isHref.value || !nuxt.value) && href) {
+  if ((isHref.value || !config?.nuxt?.value) && href) {
     result.href = href;
   }
 
