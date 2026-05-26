@@ -1,7 +1,31 @@
 {
-  "generatedAt": "2026-05-26T12:43:57.590Z",
+  "generatedAt": "2026-05-26T12:54:29.950Z",
   "schemaVersion": 1,
   "releases": [
+    {
+      "version": "v0.25.3",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.25.2...v0.25.3",
+      "date": "2026-05-26",
+      "entryCount": 1,
+      "componentCount": 0,
+      "components": [],
+      "typeCounts": {
+        "feature": 1
+      },
+      "entries": [
+        {
+          "type": "feature",
+          "scope": "nuxt",
+          "summary": "add Vite config hooks for environment variables in module setup",
+          "summaryKey": "changelog.generated.v0.25.3.e5a1e",
+          "commitHash": "e5a1e",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/e5a1e39d0",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope",
+          "components": []
+        }
+      ]
+    },
     {
       "version": "v0.25.2",
       "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.25.1...v0.25.2",

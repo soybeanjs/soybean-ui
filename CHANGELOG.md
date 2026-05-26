@@ -1,5 +1,16 @@
 # Changelog
 
+## [v0.25.3](https://github.com/soybeanjs/soybean-ui/compare/v0.25.2...v0.25.3) (2026-05-26)
+
+### &nbsp;&nbsp;&nbsp;🚀 Features
+
+- **nuxt**: add Vite config hooks for environment variables in module setup &nbsp;-&nbsp; by **soybeanfe** [<samp>(e5a1e)</samp>](https://github.com/soybeanjs/soybean-ui/commit/e5a1e39d0)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+
+[soybeanfe](mailto:honghuangdc@gmail.com)
+
 ## [v0.25.2](https://github.com/soybeanjs/soybean-ui/compare/v0.25.1...v0.25.2) (2026-05-26)
 
 ### &nbsp;&nbsp;&nbsp;🚀 Features

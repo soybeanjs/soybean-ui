@@ -1372,6 +1372,9 @@
           "2": {
             "6c28f": "add Vite config hooks for environment variables",
             "8a50f": "update deps"
+          },
+          "3": {
+            "e5a1e": "add Vite config hooks for environment variables in module setup"
           }
         }
       }
