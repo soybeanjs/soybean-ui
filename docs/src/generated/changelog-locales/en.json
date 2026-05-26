@@ -1375,6 +1375,9 @@
           },
           "3": {
             "e5a1e": "add Vite config hooks for environment variables in module setup"
+          },
+          "4": {
+            "f6a8d": "add environment variable definitions for DEV and MODE"
           }
         }
       }

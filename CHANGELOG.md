@@ -1,5 +1,16 @@
 # Changelog
 
+## [v0.25.4](https://github.com/soybeanjs/soybean-ui/compare/v0.25.3...v0.25.4) (2026-05-26)
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- **tsdown**: add environment variable definitions for DEV and MODE &nbsp;-&nbsp; by **soybeanfe** [<samp>(f6a8d)</samp>](https://github.com/soybeanjs/soybean-ui/commit/f6a8dc1ae)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+
+[soybeanfe](mailto:honghuangdc@gmail.com)
+
 ## [v0.25.3](https://github.com/soybeanjs/soybean-ui/compare/v0.25.2...v0.25.3) (2026-05-26)
 
 ### &nbsp;&nbsp;&nbsp;🚀 Features
