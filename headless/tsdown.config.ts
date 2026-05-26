@@ -23,5 +23,9 @@ export default defineConfig({
   unbundle: true,
   plugins: [unpluginVue({ isProduction: true })],
   sourcemap: false,
-  minify: true
+  minify: true,
+  define: {
+    'import.meta.env.DEV': 'undefined',
+    'import.meta.env.MODE': 'undefined'
+  }
 });

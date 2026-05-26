@@ -16,14 +16,7 @@ export default defineNuxtModule({
   defaults: {
     components: true
   },
-  setup(options: ModuleOptions, nuxt) {
-    nuxt.hook('vite:extendConfig', config => {
-      if (config.define) {
-        config.define['import.meta.env.DEV'] = config.define?.['import.meta.dev'];
-        config.define['import.meta.env.MODE'] = config.define?.['import.meta.test'] ? 'test' : 'development';
-      }
-    });
-
+  setup(options: ModuleOptions) {
     function getComponents() {
       if (typeof options.components === 'object') {
         return Object.entries(components)
