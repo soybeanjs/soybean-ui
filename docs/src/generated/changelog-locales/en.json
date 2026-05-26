@@ -1368,6 +1368,10 @@
           },
           "1": {
             "866e4": "get config provider can be null"
+          },
+          "2": {
+            "6c28f": "add Vite config hooks for environment variables",
+            "8a50f": "update deps"
           }
         }
       }

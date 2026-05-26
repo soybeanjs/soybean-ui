@@ -1,7 +1,43 @@
 {
-  "generatedAt": "2026-05-23T15:50:10.002Z",
+  "generatedAt": "2026-05-26T12:43:57.590Z",
   "schemaVersion": 1,
   "releases": [
+    {
+      "version": "v0.25.2",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.25.1...v0.25.2",
+      "date": "2026-05-26",
+      "entryCount": 2,
+      "componentCount": 0,
+      "components": [],
+      "typeCounts": {
+        "feature": 1,
+        "chore": 1
+      },
+      "entries": [
+        {
+          "type": "feature",
+          "scope": "nuxt",
+          "summary": "add Vite config hooks for environment variables",
+          "summaryKey": "changelog.generated.v0.25.2.6c28f",
+          "commitHash": "6c28f",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/6c28f7f50",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "chore",
+          "scope": "deps",
+          "summary": "update deps",
+          "summaryKey": "changelog.generated.v0.25.2.8a50f",
+          "commitHash": "8a50f",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/8a50fc269",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope",
+          "components": []
+        }
+      ]
+    },
     {
       "version": "v0.25.1",
       "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.25.0...v0.25.1",

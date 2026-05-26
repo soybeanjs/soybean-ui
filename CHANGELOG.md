@@ -1,5 +1,20 @@
 # Changelog
 
+## [v0.25.2](https://github.com/soybeanjs/soybean-ui/compare/v0.25.1...v0.25.2) (2026-05-26)
+
+### &nbsp;&nbsp;&nbsp;🚀 Features
+
+- **nuxt**: add Vite config hooks for environment variables &nbsp;-&nbsp; by **soybeanfe** [<samp>(6c28f)</samp>](https://github.com/soybeanjs/soybean-ui/commit/6c28f7f50)
+
+### &nbsp;&nbsp;&nbsp;🏡 Chore
+
+- **deps**: update deps &nbsp;-&nbsp; by **soybeanfe** [<samp>(8a50f)</samp>](https://github.com/soybeanjs/soybean-ui/commit/8a50fc269)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+
+[soybeanfe](mailto:honghuangdc@gmail.com)
+
 ## [v0.25.1](https://github.com/soybeanjs/soybean-ui/compare/v0.25.0...v0.25.1) (2026-05-23)
 
 ### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
