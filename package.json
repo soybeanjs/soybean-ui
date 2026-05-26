@@ -77,15 +77,15 @@
     "@soybeanjs/shadcn-theme": "^0.3.3",
     "@soybeanjs/utils": "^0.1.1",
     "fuse.js": "^7.3.0",
-    "valibot": "^1.4.0",
+    "valibot": "^1.4.1",
     "zod": "^4.4.3"
   },
   "devDependencies": {
     "@soybeanjs/cli": "^1.7.2",
     "@soybeanjs/eslint-config-vue": "^0.1.0",
-    "@soybeanjs/oxc-config": "^0.1.4",
+    "@soybeanjs/oxc-config": "^0.2.0",
     "@soybeanjs/unocss-preset": "^0.2.0",
-    "@soybeanjs/unocss-shadcn": "^0.6.1",
+    "@soybeanjs/unocss-shadcn": "^0.6.2",
     "@types/node": "^25.9.1",
     "@unocss/cli": "^66.7.0",
     "@vitejs/plugin-vue": "^6.0.7",
@@ -97,8 +97,8 @@
     "eslint": "^10.4.0",
     "happy-dom": "^20.9.0",
     "lint-staged": "^17.0.5",
-    "oxfmt": "^0.51.0",
-    "oxlint": "^1.66.0",
+    "oxfmt": "^0.52.0",
+    "oxlint": "^1.67.0",
     "simple-git-hooks": "^2.13.1",
     "tsdown": "0.22.0",
     "tsx": "^4.22.3",
@@ -114,7 +114,7 @@
     "vitest": "^4.1.7",
     "vue": "^3.5.34",
     "vue-router": "^5.0.7",
-    "vue-tsc": "^3.3.1"
+    "vue-tsc": "^3.3.2"
   },
   "simple-git-hooks": {
     "commit-msg": "pnpm soy git-commit-verify",
@@ -123,5 +123,5 @@
   "lint-staged": {
     "*": "oxlint . --fix && oxfmt"
   },
-  "packageManager": "pnpm@11.2.2"
+  "packageManager": "pnpm@11.3.0"
 }
