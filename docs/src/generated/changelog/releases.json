@@ -1,7 +1,121 @@
 {
-  "generatedAt": "2026-05-26T13:06:26.777Z",
+  "generatedAt": "2026-05-27T06:16:28.282Z",
   "schemaVersion": 1,
   "releases": [
+    {
+      "version": "v0.26.0",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.25.4...v0.26.0",
+      "date": "2026-05-27",
+      "entryCount": 9,
+      "componentCount": 2,
+      "components": ["config-provider", "tree-menu"],
+      "typeCounts": {
+        "feature": 4,
+        "optimization": 2,
+        "fix": 3
+      },
+      "entries": [
+        {
+          "type": "feature",
+          "scope": "config-provider",
+          "summary": "integrate Nuxt detection and remove nuxt prop",
+          "summaryKey": "changelog.generated.v0.26.0.1cd2f",
+          "commitHash": "1cd2f",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/1cd2f3b77",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope",
+          "components": ["config-provider"]
+        },
+        {
+          "type": "optimization",
+          "scope": "tree-menu",
+          "summary": "enhance tooltip and badge integration in tree menu styles and components",
+          "summaryKey": "changelog.generated.v0.26.0.07bc0",
+          "commitHash": "07bc0",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/07bc02ca7",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope",
+          "components": ["tree-menu"]
+        },
+        {
+          "type": "feature",
+          "scope": "components",
+          "summary": "add direction prop to Popper components",
+          "summaryKey": "changelog.generated.v0.26.0.90584",
+          "commitHash": "90584",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/905843856",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "feature",
+          "scope": "nuxt",
+          "summary": "initialize Nuxt project structure with essential files and configurations",
+          "summaryKey": "changelog.generated.v0.26.0.36fb8",
+          "commitHash": "36fb8",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/36fb8f652",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "feature",
+          "scope": "typings",
+          "summary": "add SWatermark component to global typings",
+          "summaryKey": "changelog.generated.v0.26.0.cfb01",
+          "commitHash": "cfb01",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/cfb01f625",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "fix",
+          "scope": "icon",
+          "summary": "update icon prop type to IconValue and enhance Nuxt support",
+          "summaryKey": "changelog.generated.v0.26.0.b372a",
+          "commitHash": "b372a",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/b372a8c47",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "fix",
+          "scope": "icon",
+          "summary": "improve Nuxt icon handling and condition checks",
+          "summaryKey": "changelog.generated.v0.26.0.8002e",
+          "commitHash": "8002e",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/8002e2c83",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "fix",
+          "scope": "package",
+          "summary": "remove unnecessary postinstall script from package.json",
+          "summaryKey": "changelog.generated.v0.26.0.b8bb1",
+          "commitHash": "b8bb1",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/b8bb1a115",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "optimization",
+          "scope": "css",
+          "summary": "remove unused reset CSS import",
+          "summaryKey": "changelog.generated.v0.26.0.18677",
+          "commitHash": "18677",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/1867763d4",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope",
+          "components": []
+        }
+      ]
+    },
     {
       "version": "v0.25.4",
       "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.25.3...v0.25.4",

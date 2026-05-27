@@ -1,5 +1,32 @@
 # Changelog
 
+## [v0.26.0](https://github.com/soybeanjs/soybean-ui/compare/v0.25.4...v0.26.0) (2026-05-27)
+
+### &nbsp;&nbsp;&nbsp;🚀 Features
+
+- **components**: add direction prop to Popper components &nbsp;-&nbsp; by **soybeanfe** [<samp>(90584)</samp>](https://github.com/soybeanjs/soybean-ui/commit/905843856)
+- **config-provider**: integrate Nuxt detection and remove nuxt prop &nbsp;-&nbsp; by **soybeanfe** [<samp>(1cd2f)</samp>](https://github.com/soybeanjs/soybean-ui/commit/1cd2f3b77)
+- **nuxt**: initialize Nuxt project structure with essential files and configurations &nbsp;-&nbsp; by **soybeanfe** [<samp>(36fb8)</samp>](https://github.com/soybeanjs/soybean-ui/commit/36fb8f652)
+- **typings**: add SWatermark component to global typings &nbsp;-&nbsp; by **soybeanfe** [<samp>(cfb01)</samp>](https://github.com/soybeanjs/soybean-ui/commit/cfb01f625)
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- **icon**:
+  - update icon prop type to IconValue and enhance Nuxt support &nbsp;-&nbsp; by **soybeanfe** [<samp>(b372a)</samp>](https://github.com/soybeanjs/soybean-ui/commit/b372a8c47)
+  - improve Nuxt icon handling and condition checks &nbsp;-&nbsp; by **soybeanfe** [<samp>(8002e)</samp>](https://github.com/soybeanjs/soybean-ui/commit/8002e2c83)
+- **package**:
+  - remove unnecessary postinstall script from package.json &nbsp;-&nbsp; by **soybeanfe** [<samp>(b8bb1)</samp>](https://github.com/soybeanjs/soybean-ui/commit/b8bb1a115)
+
+### &nbsp;&nbsp;&nbsp;🛠 Optimizations
+
+- **css**: remove unused reset CSS import &nbsp;-&nbsp; by **soybeanfe** [<samp>(18677)</samp>](https://github.com/soybeanjs/soybean-ui/commit/1867763d4)
+- **tree-menu**: enhance tooltip and badge integration in tree menu styles and components &nbsp;-&nbsp; by **soybeanfe** [<samp>(07bc0)</samp>](https://github.com/soybeanjs/soybean-ui/commit/07bc02ca7)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+
+[soybeanfe](mailto:honghuangdc@gmail.com)
+
 ## [v0.25.4](https://github.com/soybeanjs/soybean-ui/compare/v0.25.3...v0.25.4) (2026-05-26)
 
 ### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes

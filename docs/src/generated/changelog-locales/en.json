@@ -1379,6 +1379,19 @@
           "4": {
             "f6a8d": "add environment variable definitions for DEV and MODE"
           }
+        },
+        "26": {
+          "0": {
+            "18677": "remove unused reset CSS import",
+            "90584": "add direction prop to Popper components",
+            "07bc0": "enhance tooltip and badge integration in tree menu styles and components",
+            "1cd2f": "integrate Nuxt detection and remove nuxt prop",
+            "36fb8": "initialize Nuxt project structure with essential files and configurations",
+            "8002e": "improve Nuxt icon handling and condition checks",
+            "b372a": "update icon prop type to IconValue and enhance Nuxt support",
+            "b8bb1": "remove unnecessary postinstall script from package.json",
+            "cfb01": "add SWatermark component to global typings"
+          }
         }
       }
     }
