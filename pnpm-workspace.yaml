@@ -1,6 +1,7 @@
 packages:
   - 'headless'
   - 'docs'
+  - 'nuxt'
   - 'ui-skills'
 overrides:
   vite-ssg>jsdom: 27.0.1
