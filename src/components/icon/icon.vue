@@ -30,18 +30,14 @@ const forwardedProps = computed(() => ({
   ...iconifySize.value
 }));
 
-const NuxtIcon = resolveComponent('Icon');
+const NuxtIcon = isNuxt ? resolveComponent('Icon') : null;
 
-const renderNuxtIcon = computed(() => isNuxt && typeof props.icon === 'string' && NuxtIcon);
+const renderNuxtIcon = computed(() => NuxtIcon && typeof props.icon === 'string');
 
 const nuxtIconMode = computed(() => ((props.mode ?? 'svg') === 'svg' ? 'svg' : 'css'));
 
 function isIconifyIcon(icon: IconValue): icon is IconifyIcon | string {
-  if (!icon) {
-    return false;
-  }
-
-  if (isNuxt && NuxtIcon) {
+  if (!icon || renderNuxtIcon.value) {
     return false;
   }
 
