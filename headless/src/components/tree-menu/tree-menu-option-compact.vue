@@ -5,13 +5,13 @@ import { useOmitProps } from '../../composables';
 import type { Placement } from '../../types';
 import DropdownMenuCompact from '../dropdown-menu/dropdown-menu-compact.vue';
 import Link from '../link/link.vue';
-import TooltipCompact from '../tooltip/tooltip-compact.vue';
 import { useTreeMenuRootContext, useTreeMenuUi } from './context';
 import TreeMenuButton from './tree-menu-button.vue';
 import TreeMenuCollapsible from './tree-menu-collapsible.vue';
 import TreeMenuItem from './tree-menu-item.vue';
 import TreeMenuSlotCompact from './tree-menu-slot-compact.vue';
 import TreeMenuSub from './tree-menu-sub.vue';
+import TreeMenuTooltipCompact from './tree-menu-tooltip-compact.vue';
 import type { TreeMenuOptionCompactProps, TreeMenuOptionCompactEmits, TreeMenuBaseOptionData } from './types';
 
 defineOptions({
@@ -120,12 +120,12 @@ const handleDropdownMenuSelect = (item: TreeMenuBaseOptionData) => {
         </template>
       </TreeMenuSlotCompact>
     </TreeMenuButton>
-    <TooltipCompact v-if="tooltip" v-bind="tooltipProps" :content="tooltip">
+    <TreeMenuTooltipCompact v-if="tooltip" v-bind="tooltipProps" :content="tooltip">
       <template #trigger>
         <Link v-if="isLink" v-bind="linkProps" :class="ui.itemAbsolute" @click="handleActive" />
         <div v-else :class="ui.itemAbsolute" @click="handleActive" />
       </template>
-    </TooltipCompact>
+    </TreeMenuTooltipCompact>
   </TreeMenuItem>
   <TreeMenuItem v-else v-bind="itemProps" as-child :value="item.value" :disabled="item.disabled">
     <TreeMenuCollapsible v-bind="collapsibleProps" :as="as" :disabled-collapsible="collapsed">

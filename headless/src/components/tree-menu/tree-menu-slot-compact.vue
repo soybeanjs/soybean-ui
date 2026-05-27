@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
+import { provideBadgeUi } from '../badge/context';
 import Icon from '../_icon/icon.vue';
 import BadgeCompact from '../badge/badge-compact.vue';
 import Button from '../button/button.vue';
@@ -20,6 +21,13 @@ const ui = useTreeMenuUi();
 const hasChildren = computed(() => Boolean(props.item.children?.some(child => !child.hidden)));
 
 const actionAriaLabel = computed(() => `Open ${props.item.label} actions`);
+
+const badgeUi = computed(() => ({
+  root: ui.value?.badgeRoot,
+  content: ui.value?.badgeContent
+}));
+
+provideBadgeUi(badgeUi);
 </script>
 
 <template>
@@ -28,7 +36,7 @@ const actionAriaLabel = computed(() => `Open ${props.item.label} actions`);
   </slot>
 
   <slot name="item" :item="item">
-    <BadgeCompact v-if="item.badge" v-bind="item.badgeProps" :content="item.badge" :class="ui.itemBadge">
+    <BadgeCompact v-if="item.badge" v-bind="item.badgeProps" :content="item.badge">
       <span :class="ui.itemLabel">{{ item.label }}</span>
     </BadgeCompact>
     <span v-else :class="ui.itemLabel">{{ item.label }}</span>

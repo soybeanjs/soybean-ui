@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { useOmitProps } from '../../composables';
 import Button from '../button/button.vue';
 import { useCollapsibleRootContext, useCollapsibleUi } from './context';
 import type { CollapsibleTriggerProps } from './types';
@@ -9,21 +10,25 @@ defineOptions({
 
 const props = defineProps<CollapsibleTriggerProps>();
 
+const forwardedProps = useOmitProps(props, ['disabledCollapsible']);
+
 const { open, onOpenToggle, contentId, disabled, dataState } = useCollapsibleRootContext('CollapsibleTrigger');
 
 const cls = useCollapsibleUi('trigger');
 
 const onTriggerClick = () => {
+  if (props.disabledCollapsible) return;
+
   onOpenToggle();
 };
 </script>
 
 <template>
   <Button
-    v-bind="props"
+    v-bind="forwardedProps"
     data-soybean-collapsible-trigger
     :class="cls"
-    :disabled="disabled || disabledCollapsible"
+    :disabled="disabled"
     :aria-controls="contentId"
     :aria-expanded="open"
     :data-state="dataState"

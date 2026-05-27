@@ -440,7 +440,6 @@ export type TreeMenuUiSlot =
   | 'button'
   | 'itemLabel'
   | 'itemAbsolute'
-  | 'itemBadge'
   | 'itemTag'
   | 'itemAction'
   | 'itemLinkIcon'
@@ -450,7 +449,12 @@ export type TreeMenuUiSlot =
   | 'subButton'
   | 'collapsibleRoot'
   | 'collapsibleTrigger'
-  | 'collapsibleContent';
+  | 'collapsibleContent'
+  | 'tooltipPositioner'
+  | 'tooltipPopup'
+  | 'tooltipArrow'
+  | 'badgeRoot'
+  | 'badgeContent';
 
 /**
  * UI class overrides for the TreeMenu component.

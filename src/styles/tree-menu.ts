@@ -1,7 +1,32 @@
 // @unocss-include
 import { scv } from '@soybeanjs/cva';
+import { badgeVariants } from './badge';
+import { tooltipVariants } from './tooltip';
 
 export const treeMenuVariants = scv({
+  extendBase: props => {
+    const {
+      positioner: tooltipPositioner,
+      popup: tooltipPopup,
+      arrow: tooltipArrow
+    } = tooltipVariants({
+      size: props.size
+    });
+
+    const { root: badgeRoot, content: badgeContent } = badgeVariants({
+      size: props.size,
+      color: 'accent',
+      position: 'top-right'
+    });
+
+    return {
+      tooltipPositioner,
+      tooltipPopup,
+      tooltipArrow,
+      badgeRoot,
+      badgeContent
+    };
+  },
   slots: {
     root: 'group flex-1 flex flex-col w-full h-full overflow-auto data-[state=collapsed]:w-[--soybean-tree-menu-collapsed-width] transition-[width,height]-200 ease-out',
     groupRoot: 'group-data-[state=collapsed]:mb-0',
@@ -25,14 +50,18 @@ export const treeMenuVariants = scv({
     sub: 'flex flex-col m-0 list-none ms-[--soybean-tree-menu-indent] border-s border-sidebar-border border-solid',
     itemLabel: 'truncate',
     itemLinkIcon: `shrink-0 self-start text-muted-foreground rtl:rotate-270`,
-    itemBadge: ``,
     itemTag: `shrink-0 ms-auto inline-flex items-center rounded-sm bg-accent/15 text-accent-foreground`,
     itemAction: [
       `absolute end-0 top-1/2 -translate-y-1/2 z-2 inline-flex items-center justify-center rounded-sm text-muted-foreground outline-none transition-colors`,
       `focus-visible:bg-sidebar-accent focus-visible:text-foreground focus-visible:ring-3 focus-visible:ring-accent-foreground/20`,
       `disabled:pointer-events-none disabled:opacity-50`
     ],
-    itemAbsolute: `absolute inset-0 z-1 cursor-pointer`
+    itemAbsolute: `absolute inset-0 z-1 cursor-pointer`,
+    tooltipPositioner: '',
+    tooltipPopup: '',
+    tooltipArrow: '',
+    badgeRoot: '',
+    badgeContent: ''
   },
   variants: {
     size: {
