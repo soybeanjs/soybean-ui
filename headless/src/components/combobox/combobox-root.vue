@@ -226,7 +226,7 @@ defineExpose({
 </script>
 
 <template>
-  <PopperRoot>
+  <PopperRoot :dir="dir">
     <ListboxRoot
       ref="listboxElement"
       v-bind="forwardedProps"

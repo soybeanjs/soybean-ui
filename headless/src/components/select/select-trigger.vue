@@ -22,7 +22,6 @@ const {
   disabled,
   required,
   contentId,
-  dir,
   initContentId,
   onTriggerElementChange,
   onOpenChange,
@@ -131,7 +130,6 @@ initContentId();
       :aria-required="required"
       aria-autocomplete="none"
       :disabled="isDisabled"
-      :dir="dir"
       :data-state="dataState"
       :data-disabled="isDisabled ? '' : undefined"
       :data-placeholder="dataPlaceholder"

@@ -13,7 +13,7 @@ defineProps<PopperPopupProps>();
 
 const cls = usePopperUi('popup');
 
-const { onPopupElementChange } = usePopperRootContext('PopperPopup');
+const { dir, onPopupElementChange } = usePopperRootContext('PopperPopup');
 const { placedSide, placedAlign, isPositioned } = usePopperPositionerContext('PopperPopup');
 
 const [_, setPopupElement] = useForwardElement(onPopupElementChange);
@@ -32,6 +32,7 @@ const style = computed<CSSProperties>(() => {
     data-soybean-popper-popup
     :data-side="placedSide"
     :data-align="placedAlign"
+    :dir="dir"
     :style="style"
   >
     <slot />

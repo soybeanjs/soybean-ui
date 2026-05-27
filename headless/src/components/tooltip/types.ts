@@ -1,6 +1,12 @@
 import type { Ref, ShallowRef } from 'vue';
 import type { DismissableLayerEmits, ForceMountProps, PropsToContext, Placement } from '../../types';
-import type { PopperAnchorProps, PopperArrowProps, PopperPopupProps, PopperPositionerProps } from '../popper/types';
+import type {
+  PopperRootProps,
+  PopperAnchorProps,
+  PopperArrowProps,
+  PopperPopupProps,
+  PopperPositionerProps
+} from '../popper/types';
 import type { PortalProps } from '../portal/types';
 
 /**
@@ -59,7 +65,7 @@ export type TooltipOpenDelayedContextParams = PropsToContext<TooltipProviderProp
 /**
  * Properties for the TooltipRoot component.
  */
-export interface TooltipRootProps extends TooltipProviderProps {
+export interface TooltipRootProps extends PopperRootProps, TooltipProviderProps {
   /** The open state of the tooltip when it is initially rendered. Use when you do not need to control its open state. */
   defaultOpen?: boolean;
   /** The controlled open state of the tooltip. */

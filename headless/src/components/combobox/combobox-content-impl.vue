@@ -172,7 +172,6 @@ onUnmounted(() => {
       :ref="setContentElement"
       v-bind="popupProps"
       data-dismissable-layer
-      :dir="dir"
       :data-state="open ? 'open' : 'closed'"
       :data-empty="isEmpty ? '' : undefined"
       :style="popupStyle"

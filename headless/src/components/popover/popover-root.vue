@@ -36,7 +36,7 @@ providePopoverRootContext({
 </script>
 
 <template>
-  <PopperRoot>
+  <PopperRoot :dir="dir">
     <slot :open="open" :close="close" />
   </PopperRoot>
 </template>

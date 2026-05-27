@@ -1,7 +1,17 @@
 import type { ComputedRef } from 'vue';
 import type { Padding, ReferenceElement, Side } from '@floating-ui/dom';
-import type { BaseProps, Align, Placement, UiClass, VNodeRef } from '../../types';
+import type { BaseProps, Align, Placement, UiClass, VNodeRef, Direction } from '../../types';
 import type { PrimitiveWithBaseProps } from '../primitive/types';
+
+/**
+ * Properties for the PopperRoot component.
+ */
+export interface PopperRootProps {
+  /**
+   * The direction of the content. Used to determine the placement when not explicitly provided and for RTL flipping behavior.
+   */
+  dir?: Direction;
+}
 
 /**
  * Properties for the PopperAnchor component.
@@ -159,6 +169,14 @@ export interface PopperPopupProps extends BaseProps {}
  * Properties for the PopperArrow component.
  */
 export interface PopperArrowProps extends BaseProps {}
+
+/**
+ * Context interface for PopperRoot
+ */
+export interface PopperRootContextParams {
+  /** The direction of the content. */
+  dir: ComputedRef<Direction>;
+}
 
 /** Context interface for PopperPositioner */
 export interface PopperPositionerContextParams {

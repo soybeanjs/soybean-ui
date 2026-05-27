@@ -234,11 +234,12 @@ defineExpose({
 </script>
 
 <template>
-  <PopperRoot>
+  <PopperRoot :dir="dir">
     <ListboxRoot
       ref="listboxElement"
       v-bind="forwardedProps"
       :model-value="modelValue"
+      :dir="dir"
       :highlight-on-hover="highlightOnHover"
       selection-behavior="replace"
       data-soybean-autocomplete-root

@@ -36,7 +36,7 @@ const open = useControllableState(
   props.defaultOpen
 );
 
-const { triggerElement, options, nativeSelectKey } = provideSelectRootContext({
+const { dir, triggerElement, options, nativeSelectKey } = provideSelectRootContext({
   ...transformPropsToContext(props, ['dir', 'autocomplete', 'disabled', 'required', 'clearable']),
   open,
   modelValue,
@@ -51,7 +51,7 @@ const formControl = computed(() => isFormControl(triggerElement.value));
 </script>
 
 <template>
-  <PopperRoot>
+  <PopperRoot :dir="dir">
     <slot :model-value="modelValue" :open="Boolean(open)" />
 
     <SelectBubbleSelect

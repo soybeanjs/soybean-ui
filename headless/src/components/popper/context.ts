@@ -1,26 +1,30 @@
 import { shallowRef } from 'vue';
 import type { ReferenceElement } from '@floating-ui/dom';
 import { useContext, useUiContext } from '../../composables';
-import type { PopperPositionerContextParams, PopperUiSlot } from './types';
+import type { PopperRootContextParams, PopperPositionerContextParams, PopperUiSlot } from './types';
 
-export const [providePopperRootContext, usePopperRootContext] = useContext('PopperRoot', () => {
-  const popupElement = shallowRef<HTMLElement>();
-  const onPopupElementChange = (element: HTMLElement) => {
-    popupElement.value = element;
-  };
+export const [providePopperRootContext, usePopperRootContext] = useContext(
+  'PopperRoot',
+  (params: PopperRootContextParams) => {
+    const popupElement = shallowRef<HTMLElement>();
+    const onPopupElementChange = (element: HTMLElement) => {
+      popupElement.value = element;
+    };
 
-  const anchorElement = shallowRef<ReferenceElement>();
-  const onAnchorElementChange = (element: ReferenceElement | undefined) => {
-    anchorElement.value = element;
-  };
+    const anchorElement = shallowRef<ReferenceElement>();
+    const onAnchorElementChange = (element: ReferenceElement | undefined) => {
+      anchorElement.value = element;
+    };
 
-  return {
-    popupElement,
-    onPopupElementChange,
-    anchorElement,
-    onAnchorElementChange
-  };
-});
+    return {
+      ...params,
+      popupElement,
+      onPopupElementChange,
+      anchorElement,
+      onAnchorElementChange
+    };
+  }
+);
 
 export const [providePopperPositionerContext, usePopperPositionerContext] = useContext(
   'PopperPositioner',

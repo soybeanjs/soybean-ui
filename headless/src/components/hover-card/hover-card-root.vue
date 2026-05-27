@@ -34,7 +34,7 @@ provideHoverCardRootContext({
 </script>
 
 <template>
-  <PopperRoot>
+  <PopperRoot :dir="dir">
     <slot :open="open" />
   </PopperRoot>
 </template>

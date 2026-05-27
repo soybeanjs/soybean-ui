@@ -577,6 +577,10 @@ export interface MenuRootContext extends PropsToContext<MenuRootProps, 'modal'> 
  */
 export interface MenuContextParams {
   /**
+   * Reading direction of the component.
+   */
+  dir: ComputedRef<Direction>;
+  /**
    * Whether this context is the root.
    */
   isRoot?: boolean;

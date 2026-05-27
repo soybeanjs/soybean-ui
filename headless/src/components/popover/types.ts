@@ -10,13 +10,19 @@ import type {
 } from '../../types';
 import type { ButtonProps } from '../button/types';
 import type { DialogRootEmits, DialogBaseProps } from '../dialog/types';
-import type { PopperPopupProps, PopperPositionerProps, PopperArrowProps, PopperUiSlot } from '../popper/types';
+import type {
+  PopperRootProps,
+  PopperPopupProps,
+  PopperPositionerProps,
+  PopperArrowProps,
+  PopperUiSlot
+} from '../popper/types';
 import type { PortalProps } from '../portal/types';
 
 /**
  * Properties for the PopoverRoot component.
  */
-export interface PopoverRootProps extends DialogBaseProps {
+export interface PopoverRootProps extends PopperRootProps, DialogBaseProps {
   /**
    * Whether the component is disabled.
    */

@@ -229,7 +229,6 @@ watchEffect(() => {
       v-bind="popupProps"
       data-dismissable-layer
       :data-state="dataState"
-      :dir="dir"
       role="listbox"
       tabindex="-1"
       :style="popupStyle"

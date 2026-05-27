@@ -15,7 +15,7 @@ const forwardedProps = useOmitProps(props, ['reference']);
 
 const cls = usePopperUi('anchor');
 
-const { onAnchorElementChange } = usePopperRootContext('PopperAnchor');
+const { dir, onAnchorElementChange } = usePopperRootContext('PopperAnchor');
 const [_, setAnchorElement] = useForwardElement(el => {
   if (props.reference) return;
 
@@ -30,7 +30,7 @@ watchEffect(() => {
 </script>
 
 <template>
-  <Primitive v-bind="forwardedProps" :ref="setAnchorElement" data-soybean-popper-anchor :class="cls">
+  <Primitive v-bind="forwardedProps" :ref="setAnchorElement" data-soybean-popper-anchor :class="cls" :dir="dir">
     <slot />
   </Primitive>
 </template>

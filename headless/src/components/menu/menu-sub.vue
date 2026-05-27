@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onWatcherCleanup, watchEffect } from 'vue';
+import { computed, onWatcherCleanup, watchEffect } from 'vue';
 import { useControllableState } from '../../composables';
 import { PopperRoot } from '../popper';
 import { provideMenuContext, useMenuContext } from './context';
@@ -26,6 +26,8 @@ const open = useControllableState(
 
 const parentContext = useMenuContext('MenuSub');
 
+const dir = computed(() => parentContext.dir.value);
+
 // Prevent the parent menu from reopening with open submenus.
 watchEffect(() => {
   if (parentContext.open.value === false) {
@@ -38,12 +40,13 @@ watchEffect(() => {
 });
 
 provideMenuContext({
+  dir,
   open
 });
 </script>
 
 <template>
-  <PopperRoot>
+  <PopperRoot :dir="dir">
     <slot />
   </PopperRoot>
 </template>

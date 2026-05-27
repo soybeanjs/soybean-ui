@@ -1,12 +1,18 @@
 import type { ComputedRef, ShallowRef } from 'vue';
 import type { DismissableLayerEmits, DisclosureState, ForceMountProps, PropsToContext } from '../../types';
-import type { PopperAnchorProps, PopperArrowProps, PopperPopupProps, PopperPositionerProps } from '../popper/types';
+import type {
+  PopperRootProps,
+  PopperAnchorProps,
+  PopperArrowProps,
+  PopperPopupProps,
+  PopperPositionerProps
+} from '../popper/types';
 import type { PortalProps } from '../portal/types';
 
 /**
  * Properties for the HoverCardRoot component.
  */
-export interface HoverCardRootProps {
+export interface HoverCardRootProps extends PopperRootProps {
   /** The open state of the hover card when it is initially rendered. Use when you do not need to control its open state. */
   defaultOpen?: boolean;
   /** The controlled open state of the hover card. */

@@ -52,8 +52,7 @@ export const [provideMenuContext, useMenuContext] = useContext('Menu', (params: 
   };
 
   return {
-    isRoot,
-    open,
+    ...params,
     onOpenChange,
     dataState,
     dataPopupAttr,
