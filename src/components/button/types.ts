@@ -2,7 +2,7 @@ import type { ButtonEmits, ButtonProps as _ButtonProps } from '@soybeanjs/headle
 import type { Align, ClassValue, DataOrientation, Direction, PropsToContext } from '@soybeanjs/headless/types';
 import type { ButtonShadow, ButtonShape, ButtonVariant } from '@/styles/button';
 import type { ThemeColor, ThemeSize } from '@/theme';
-import type { IconProps } from '../icon/types';
+import type { IconValue, IconProps } from '../icon/types';
 import type { LinkProps } from '../link/types';
 
 /**
@@ -43,8 +43,8 @@ export interface ButtonProps extends _ButtonProps {
  * Properties for the ButtonIcon component.
  */
 export interface ButtonIconProps extends ButtonProps {
-  /** The icon name of iconify. */
-  icon: string;
+  /** The icon value of iconify. */
+  icon: IconValue;
   /**
    * The class of the icon.
    */
@@ -87,7 +87,7 @@ export interface ButtonLoadingProps extends ButtonProps {
    *
    * @default 'svg-spinners:270-ring'
    */
-  loadingIcon?: string;
+  loadingIcon?: IconValue;
   /** The props of the loading icon. */
   loadingIconProps?: Partial<IconProps>;
   /**
