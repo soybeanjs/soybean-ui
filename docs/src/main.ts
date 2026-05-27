@@ -1,6 +1,5 @@
 import { ViteSSG } from 'vite-ssg';
 import { routes } from 'vue-router/auto-routes';
-import '@unocss/reset/tailwind.css';
 import '@soybeanjs/ui/styles.css';
 import { setupLayouts } from 'virtual:meta-layouts';
 // @ts-expect-error - no types for fontsource-variable yet
