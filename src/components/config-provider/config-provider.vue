@@ -3,7 +3,7 @@ import { h, shallowRef, watch, watchEffect } from 'vue';
 import { useStyleTag } from '@vueuse/core';
 import { useOmitProps } from '@soybeanjs/headless/composables';
 import { ConfigProvider } from '@soybeanjs/headless/config-provider';
-import { isClient, transformPropsToContext } from '@soybeanjs/headless/shared';
+import { isNuxt, isClient, transformPropsToContext } from '@soybeanjs/headless/shared';
 import { createShadcnTheme } from '@soybeanjs/shadcn-theme';
 import { themeSizeMap } from '@/theme';
 import DialogProvider from '../dialog/dialog-provider.vue';
@@ -37,7 +37,7 @@ const forwardedProps = useOmitProps(props, [
   'customToast'
 ]);
 
-const iconRender = props.iconRender ?? ((icon: IconValue) => h(Icon, { icon }));
+const iconRender = props.iconRender ?? ((icon: IconValue) => h(Icon, { icon, ssr: isNuxt }));
 
 provideConfigProviderContext({
   ...transformPropsToContext(props),

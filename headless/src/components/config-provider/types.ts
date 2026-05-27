@@ -33,12 +33,6 @@ export interface ConfigProviderProps {
    */
   tooltip?: Partial<TooltipProviderProps>;
   /**
-   * Whether the application is running in Nuxt.
-   *
-   * @type boolean
-   */
-  nuxt?: boolean;
-  /**
    * A function to render the icon. This is useful when you want to use a custom icon library or want to wrap the icon with a custom component.
    *
    * @param icon The icon to be rendered. It can be a string, a VNode, or a Component.

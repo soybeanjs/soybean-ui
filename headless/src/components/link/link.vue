@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, resolveComponent, useAttrs } from 'vue';
-import { useConfigProvider } from '../config-provider/context';
+import { isNuxt } from '../../shared';
 import { Primitive } from '../primitive';
 import type { LinkProps } from './types';
 
@@ -29,10 +29,8 @@ defineSlots<Slots>();
 
 const attrs = useAttrs();
 
-const config = useConfigProvider();
-
 const LinkComponent = computed(() => {
-  if (config?.nuxt?.value) {
+  if (isNuxt) {
     return resolveComponent('NuxtLink');
   }
   return resolveComponent('RouterLink');
@@ -72,7 +70,7 @@ const forwardedProps = computed(() => {
     result.to = props.to;
   }
 
-  if ((isHref.value || !config?.nuxt?.value) && href) {
+  if ((isHref.value || !isNuxt) && href) {
     result.href = href;
   }
 

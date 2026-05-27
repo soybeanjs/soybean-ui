@@ -1,5 +1,6 @@
 export const isBrowser = typeof document !== 'undefined';
 export const isClient = typeof window !== 'undefined' && typeof document !== 'undefined';
+export const isNuxt = typeof __NUXT_VERSION__ !== 'undefined';
 
 // iOS detection - lazy calculation and cached result
 let cachedIOSResult: boolean | null = null;
