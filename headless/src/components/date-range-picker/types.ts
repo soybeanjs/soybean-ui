@@ -33,3 +33,5 @@ export type DateRangePickerUiSlot = PopoverUiSlot | DateRangeFieldUiSlot;
  * UI class for the DateRangePicker component.
  */
 export type DateRangePickerUi = UiClass<DateRangePickerUiSlot>;
+
+export type { DateRange };

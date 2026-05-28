@@ -6,5 +6,6 @@ export type {
   DateRangePickerCompactProps,
   DateRangePickerCompactEmits,
   DateRangePickerUiSlot,
-  DateRangePickerUi
+  DateRangePickerUi,
+  DateRange
 } from './types';
