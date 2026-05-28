@@ -113,6 +113,7 @@
     "@soybeanjs/colord": "^0.5.0",
     "@soybeanjs/hooks": "^0.3.0",
     "@soybeanjs/utils": "^0.1.1",
+    "@standard-schema/spec": "^1.1.0",
     "@tanstack/vue-virtual": "^3.13.26",
     "@vueuse/core": "^14.3.0",
     "@vueuse/shared": "^14.3.0",
@@ -127,7 +128,7 @@
   "devDependencies": {
     "@nuxt/kit": "^4.4.6",
     "@nuxt/schema": "^4.4.6",
-    "@standard-schema/spec": "^1.1.0",
+    "nuxt": ">=4.4.6",
     "tsdown": "0.22.0",
     "typescript": "6.0.3",
     "unplugin-vue": "7.2.0",

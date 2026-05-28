@@ -13,7 +13,7 @@ export default defineConfig({
   platform: 'browser',
   target: 'es2020',
   deps: {
-    neverBundle: Object.keys({ ...pkg.dependencies, ...pkg.devDependencies, ...pkg.peerDependencies })
+    neverBundle: Object.keys({ ...pkg.dependencies, ...pkg.devDependencies })
   },
   clean: true,
   dts: {
