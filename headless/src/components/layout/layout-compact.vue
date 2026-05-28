@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useOmitProps } from '@soybeanjs/headless/composables';
+import { useOmitProps } from '../../composables';
 import LayoutContent from './layout-content.vue';
 import LayoutFooter from './layout-footer.vue';
 import LayoutHeader from './layout-header.vue';

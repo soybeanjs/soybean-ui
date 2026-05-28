@@ -1,10 +1,11 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { NavigationMenuItem, NavigationMenuLink } from '@soybeanjs/headless/navigation-menu';
 import Icon from '../_icon/icon.vue';
 import { useCommonSlotNames } from './shared';
 import { useNavigationMenuUi } from './context';
 import NavigationMenuItemSlot from './navigation-menu-item-slot-compact.vue';
+import NavigationMenuItem from './navigation-menu-item.vue';
+import NavigationMenuLink from './navigation-menu-link.vue';
 import type {
   NavigationMenuSubOptionCompactProps,
   NavigationMenuSubOptionCompactEmits,

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, useId } from 'vue';
-import { useOmitProps } from '@soybeanjs/headless/composables';
+import { useOmitProps } from '../../composables';
 import LayoutClassicPlaceholder from './layout-classic-placeholder.vue';
 import LayoutClassicRoot from './layout-classic-root.vue';
 import LayoutContent from './layout-content.vue';
