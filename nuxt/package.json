@@ -12,7 +12,7 @@
     "@nuxt/icon": "2.2.2",
     "@soybeanjs/ui": "workspace:^",
     "nuxt": "^4.4.6",
-    "vue": "^3.5.34",
+    "vue": "^3.5.35",
     "vue-router": "^5.0.7"
   }
 }
