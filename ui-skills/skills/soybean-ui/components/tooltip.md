@@ -42,6 +42,7 @@ Properties for the Tooltip component.
 - `arrowProps`: Properties forwarded to the arrow element. (type `TooltipArrowProps`; optional)
 - `defaultOpen`: The open state of the tooltip when it is initially rendered. Use when you do not need to control its open state. (type `boolean`; optional)
 - `open`: The controlled open state of the tooltip. (type `boolean`; optional)
+- `dir`: The direction of the content. Used to determine the placement when not explicitly provided and for RTL flipping behavior. (type `Direction`; optional)
 - `delayDuration`: The duration from when the pointer enters the trigger until the tooltip gets opened. (type `number`; default `150`; optional)
 - `skipDelayDuration`: How much time a user has to enter another trigger without incurring a delay again. (type `number`; default `300`; optional)
 - `disableHoverableContent`: When `true`, trying to hover the content will result in the tooltip closing as the pointer leaves the trigger. (type `boolean`; default `false`; optional)
@@ -84,6 +85,7 @@ Properties for the TooltipCompact component.
 - `arrowProps`: Properties forwarded to the arrow element. (type `TooltipArrowProps`; optional)
 - `defaultOpen`: The open state of the tooltip when it is initially rendered. Use when you do not need to control its open state. (type `boolean`; optional)
 - `open`: The controlled open state of the tooltip. (type `boolean`; optional)
+- `dir`: The direction of the content. Used to determine the placement when not explicitly provided and for RTL flipping behavior. (type `Direction`; optional)
 - `delayDuration`: The duration from when the pointer enters the trigger until the tooltip gets opened. (type `number`; default `150`; optional)
 - `skipDelayDuration`: How much time a user has to enter another trigger without incurring a delay again. (type `number`; default `300`; optional)
 - `disableHoverableContent`: When `true`, trying to hover the content will result in the tooltip closing as the pointer leaves the trigger. (type `boolean`; default `false`; optional)
@@ -174,6 +176,7 @@ Properties for the TooltipRoot component.
 
 - `defaultOpen`: The open state of the tooltip when it is initially rendered. Use when you do not need to control its open state. (type `boolean`; optional)
 - `open`: The controlled open state of the tooltip. (type `boolean`; optional)
+- `dir`: The direction of the content. Used to determine the placement when not explicitly provided and for RTL flipping behavior. (type `Direction`; optional)
 - `delayDuration`: The duration from when the pointer enters the trigger until the tooltip gets opened. (type `number`; default `150`; optional)
 - `skipDelayDuration`: How much time a user has to enter another trigger without incurring a delay again. (type `number`; default `300`; optional)
 - `disableHoverableContent`: When `true`, trying to hover the content will result in the tooltip closing as the pointer leaves the trigger. (type `boolean`; default `false`; optional)

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-28T07:18:50.273Z",
+  "generatedAt": "2026-05-28T09:41:59.667Z",
   "schemaVersion": 1,
   "components": {
     "accordion": {
@@ -201,9 +201,9 @@
     "config-provider": {
       "component": "config-provider",
       "file": "config-provider.json",
-      "latestVersion": "v0.26.0",
-      "versionCount": 5,
-      "entryCount": 8
+      "latestVersion": "v0.27.1",
+      "versionCount": 6,
+      "entryCount": 9
     },
     "context-menu": {
       "component": "context-menu",

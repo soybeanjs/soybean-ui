@@ -43,6 +43,7 @@ Properties for the HoverCard component.
 - `open`: The controlled open state of the hover card. (type `boolean`; optional)
 - `openDelay`: The duration from when the pointer enters the trigger until the hover card opens. (type `number`; optional)
 - `closeDelay`: The duration from when the pointer leaves the trigger or popup until the hover card closes. (type `number`; optional)
+- `dir`: The direction of the content. Used to determine the placement when not explicitly provided and for RTL flipping behavior. (type `Direction`; optional)
 
 #### Emits
 
@@ -81,6 +82,7 @@ Properties for the HoverCardCompact component.
 - `open`: The controlled open state of the hover card. (type `boolean`; optional)
 - `openDelay`: The duration from when the pointer enters the trigger until the hover card opens. (type `number`; optional)
 - `closeDelay`: The duration from when the pointer leaves the trigger or popup until the hover card closes. (type `number`; optional)
+- `dir`: The direction of the content. Used to determine the placement when not explicitly provided and for RTL flipping behavior. (type `Direction`; optional)
 
 #### Emits
 
@@ -151,6 +153,7 @@ Properties for the HoverCardRoot component.
 - `open`: The controlled open state of the hover card. (type `boolean`; optional)
 - `openDelay`: The duration from when the pointer enters the trigger until the hover card opens. (type `number`; optional)
 - `closeDelay`: The duration from when the pointer leaves the trigger or popup until the hover card closes. (type `number`; optional)
+- `dir`: The direction of the content. Used to determine the placement when not explicitly provided and for RTL flipping behavior. (type `Direction`; optional)
 
 #### Emits
 

@@ -92,7 +92,7 @@ Properties for the ButtonGroup component.
 
 Properties for the ButtonIcon component.
 
-- `icon`: The icon name of iconify. (type `string`; required)
+- `icon`: The icon value of iconify. (type `string | import("vue").Component | import("vue").VNode<import("vue").RendererNode, import("vue").RendererElement, { [...`; required)
 - `iconClass`: The class of the icon. (type `string | false | Record<string, any> | ClassValue[] | null`; optional)
 - `iconProps`: The props of the icon. (type `Partial<IconProps>`; optional)
 - `class`: Additional class names applied to the root element. (type `string | false | Record<string, any> | ClassValue[] | null`; optional)
@@ -152,7 +152,7 @@ Properties for the ButtonLoading component.
 - `loadingText`: The text to display when the button is loading. It will be displayed when the loading position is center. (type `string`; optional)
 - `loadingDuration`: The duration of the loading state in milliseconds. (type `number`; default `150 ms`; optional)
 - `autoLoading`: Whether to automatically handle loading state during click event. When true, the button will show loading state during click event execution. When false, you need to manually control the loading state. (type `boolean`; default `false`; optional)
-- `loadingIcon`: The icon name of iconify to display when the button is loading. (type `string`; default `'svg-spinners:270-ring'`; optional)
+- `loadingIcon`: The icon name of iconify to display when the button is loading. (type `string | import("vue").Component | import("vue").VNode<import("vue").RendererNode, import("vue").RendererElement, { [...`; default `'svg-spinners:270-ring'`; optional)
 - `loadingIconProps`: The props of the loading icon. (type `Partial<IconProps>`; optional)
 - `loadingPosition`: The position of the loading icon. (type `Align`; default `'start'`; optional)
 - `class`: Additional class names applied to the root element. (type `string | false | Record<string, any> | ClassValue[] | null`; optional)

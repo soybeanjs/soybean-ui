@@ -41,6 +41,7 @@ Properties for the Popover component.
 - `arrowProps`: Properties forwarded to the arrow element. (type `PopoverArrowProps`; optional)
 - `closeProps`: Properties forwarded to the close element. (type `PopoverCloseProps`; optional)
 - `disabled`: Whether the component is disabled. (type `boolean`; optional)
+- `dir`: The direction of the content. Used to determine the placement when not explicitly provided and for RTL flipping behavior. (type `Direction`; optional)
 - `open`: The controlled open state of the dialog. Can be bound with `v-model:open`. (type `boolean`; default `undefined`; optional)
 - `defaultOpen`: The open state of the dialog when it is initially rendered. Use when you do not need to control its open state. (type `boolean`; default `false`; optional)
 - `modal`: The modality of the dialog. When set to `true`, interaction with outside elements will be disabled and only dialog content will be visible to screen readers. (type `boolean`; default `true`; optional)
@@ -105,6 +106,7 @@ Properties for the PopoverCompact component.
 - `arrowProps`: Properties forwarded to the arrow element. (type `PopoverArrowProps`; optional)
 - `closeProps`: Properties forwarded to the close element. (type `PopoverCloseProps`; optional)
 - `disabled`: Whether the component is disabled. (type `boolean`; optional)
+- `dir`: The direction of the content. Used to determine the placement when not explicitly provided and for RTL flipping behavior. (type `Direction`; optional)
 - `open`: The controlled open state of the dialog. Can be bound with `v-model:open`. (type `boolean`; default `undefined`; optional)
 - `defaultOpen`: The open state of the dialog when it is initially rendered. Use when you do not need to control its open state. (type `boolean`; default `false`; optional)
 - `modal`: The modality of the dialog. When set to `true`, interaction with outside elements will be disabled and only dialog content will be visible to screen readers. (type `boolean`; default `true`; optional)
@@ -182,6 +184,7 @@ Events for the PopoverPositioner component.
 Properties for the PopoverRoot component.
 
 - `disabled`: Whether the component is disabled. (type `boolean`; optional)
+- `dir`: The direction of the content. Used to determine the placement when not explicitly provided and for RTL flipping behavior. (type `Direction`; optional)
 - `open`: The controlled open state of the dialog. Can be bound with `v-model:open`. (type `boolean`; default `undefined`; optional)
 - `defaultOpen`: The open state of the dialog when it is initially rendered. Use when you do not need to control its open state. (type `boolean`; default `false`; optional)
 - `modal`: The modality of the dialog. When set to `true`, interaction with outside elements will be disabled and only dialog content will be visible to screen readers. (type `boolean`; default `true`; optional)

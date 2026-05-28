@@ -1,8 +1,25 @@
 {
   "component": "config-provider",
-  "generatedAt": "2026-05-28T07:18:50.273Z",
+  "generatedAt": "2026-05-28T09:41:59.667Z",
   "schemaVersion": 1,
   "versions": [
+    {
+      "version": "v0.27.1",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.27.0...v0.27.1",
+      "date": "2026-05-28",
+      "entries": [
+        {
+          "type": "fix",
+          "scope": "config-provider",
+          "summary": "simplify theme watch logic and ensure immediate execution",
+          "summaryKey": "changelog.generated.v0.27.1.8ac58",
+          "commitHash": "8ac58",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/8ac5808e2",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope"
+        }
+      ]
+    },
     {
       "version": "v0.26.0",
       "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.25.4...v0.26.0",

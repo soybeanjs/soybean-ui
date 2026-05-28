@@ -1417,6 +1417,10 @@
         "27": {
           "0": {
             "93440": "add row interaction events with metadata and update related types"
+          },
+          "1": {
+            "8ac58": "simplify theme watch logic and ensure immediate execution",
+            "ce637": "update docs api"
           }
         }
       }

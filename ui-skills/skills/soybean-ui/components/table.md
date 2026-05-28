@@ -75,6 +75,11 @@ Events for the Table component.
 - `update:columnWidths`: Emitted when the column widths value changes. (type `[state: TableColumnWidthState]`; parameters `state: TableColumnWidthState`)
 - `update:expanded`: Emitted when the expanded state changes. (type `[expanded: R[]]`; parameters `expanded: R[]`)
 - `update:selected`: Emitted when the selected state changes. (type `[selected: M extends true ? R[] : R | undefined]`; parameters `selected: M extends true ? R[] : R | undefined`)
+- `rowClick`: Emitted when a row is clicked. (type `[event: MouseEvent, payload: TableRowEventPayload<T, R>]`; parameters `event: MouseEvent, payload: TableRowEventPayload<T, R>`)
+- `rowDblclick`: Emitted when a row is double clicked. (type `[event: MouseEvent, payload: TableRowEventPayload<T, R>]`; parameters `event: MouseEvent, payload: TableRowEventPayload<T, R>`)
+- `rowContextmenu`: Emitted when a row context menu is triggered. (type `[event: MouseEvent, payload: TableRowEventPayload<T, R>]`; parameters `event: MouseEvent, payload: TableRowEventPayload<T, R>`)
+- `rowMouseenter`: Emitted when the pointer enters a row. (type `[event: MouseEvent, payload: TableRowEventPayload<T, R>]`; parameters `event: MouseEvent, payload: TableRowEventPayload<T, R>`)
+- `rowMouseleave`: Emitted when the pointer leaves a row. (type `[event: MouseEvent, payload: TableRowEventPayload<T, R>]`; parameters `event: MouseEvent, payload: TableRowEventPayload<T, R>`)
 
 #### Slots
 
@@ -159,6 +164,11 @@ Events for the TableCompact component.
 - `update:columnWidths`: Emitted when the column widths value changes. (type `[state: TableColumnWidthState]`; parameters `state: TableColumnWidthState`)
 - `update:expanded`: Emitted when the expanded state changes. (type `[expanded: R[]]`; parameters `expanded: R[]`)
 - `update:selected`: Emitted when the selected state changes. (type `[selected: M extends true ? R[] : R | undefined]`; parameters `selected: M extends true ? R[] : R | undefined`)
+- `rowClick`: Emitted when a row is clicked. (type `[event: MouseEvent, payload: TableRowEventPayload<T, R>]`; parameters `event: MouseEvent, payload: TableRowEventPayload<T, R>`)
+- `rowDblclick`: Emitted when a row is double clicked. (type `[event: MouseEvent, payload: TableRowEventPayload<T, R>]`; parameters `event: MouseEvent, payload: TableRowEventPayload<T, R>`)
+- `rowContextmenu`: Emitted when a row context menu is triggered. (type `[event: MouseEvent, payload: TableRowEventPayload<T, R>]`; parameters `event: MouseEvent, payload: TableRowEventPayload<T, R>`)
+- `rowMouseenter`: Emitted when the pointer enters a row. (type `[event: MouseEvent, payload: TableRowEventPayload<T, R>]`; parameters `event: MouseEvent, payload: TableRowEventPayload<T, R>`)
+- `rowMouseleave`: Emitted when the pointer leaves a row. (type `[event: MouseEvent, payload: TableRowEventPayload<T, R>]`; parameters `event: MouseEvent, payload: TableRowEventPayload<T, R>`)
 
 #### Slots
 

@@ -49,6 +49,25 @@ Properties for the Card component.
 - `asChild`: Change the default rendered element for the one passed as a child, merging their props and behavior. (type `boolean`; optional)
 - `as`: The element or component this component should render as. Can be overwrite by `asChild` (type `AsTag | Component`; default `'div'`; optional)
 
+#### Emits
+
+Events for the Card component.
+
+- `update:open`: Event handler called when the open state of the collapsible changes. (type `[value: boolean]`; parameters `value: boolean`)
+
+#### Slots
+
+Slots for the Card component.
+
+- `default`: Custom content for the default slot. (type `(() => any) | undefined`)
+- `header`: Custom content for the header slot. (type `(() => any) | undefined`)
+- `title`: Custom content for the title slot. (type `(() => any) | undefined`)
+- `title-leading`: Custom content for the title leading slot. (type `(() => any) | undefined`)
+- `title-trailing`: Custom content for the title trailing slot. (type `(() => any) | undefined`)
+- `extra`: Custom content for the extra slot. (type `(() => any) | undefined`)
+- `footer`: Custom content for the footer slot. (type `(() => any) | undefined`)
+- `description`: Custom content for the description slot. (type `(() => any) | undefined`)
+
 ### CardCollapsibleTrigger
 
 #### Props

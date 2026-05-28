@@ -1,5 +1,20 @@
 # Changelog
 
+## [v0.27.1](https://github.com/soybeanjs/soybean-ui/compare/v0.27.0...v0.27.1) (2026-05-28)
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- **config-provider**: simplify theme watch logic and ensure immediate execution &nbsp;-&nbsp; by **soybeanfe** [<samp>(8ac58)</samp>](https://github.com/soybeanjs/soybean-ui/commit/8ac5808e2)
+
+### &nbsp;&nbsp;&nbsp;📖 Documentation
+
+- **api**: update docs api &nbsp;-&nbsp; by **soybeanfe** [<samp>(ce637)</samp>](https://github.com/soybeanjs/soybean-ui/commit/ce637eb1a)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+
+[soybeanfe](mailto:honghuangdc@gmail.com)
+
 ## [v0.27.0](https://github.com/soybeanjs/soybean-ui/compare/v0.26.5...v0.27.0) (2026-05-28)
 
 ### &nbsp;&nbsp;&nbsp;🚀 Features
