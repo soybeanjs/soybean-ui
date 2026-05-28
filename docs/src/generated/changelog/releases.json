@@ -1,7 +1,99 @@
 {
-  "generatedAt": "2026-05-28T09:41:59.667Z",
+  "generatedAt": "2026-05-28T12:54:14.231Z",
   "schemaVersion": 1,
   "releases": [
+    {
+      "version": "v0.27.2",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.27.1...v0.27.2",
+      "date": "2026-05-28",
+      "entryCount": 7,
+      "componentCount": 3,
+      "components": ["date-range-picker", "link", "time-field"],
+      "typeCounts": {
+        "fix": 4,
+        "feature": 2,
+        "chore": 1
+      },
+      "entries": [
+        {
+          "type": "fix",
+          "scope": "date-range-picker",
+          "summary": "add DateRange type export to types",
+          "summaryKey": "changelog.generated.v0.27.2.3bcca",
+          "commitHash": "3bcca",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/3bccae751",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope",
+          "components": ["date-range-picker"]
+        },
+        {
+          "type": "fix",
+          "scope": "link",
+          "summary": "refactor LinkComponent to use shallowRef and improve NuxtLink handling",
+          "summaryKey": "changelog.generated.v0.27.2.90090",
+          "commitHash": "90090",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/900906c2a",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope",
+          "components": ["link"]
+        },
+        {
+          "type": "fix",
+          "scope": "time-field",
+          "summary": "export TimeValue type in index and types",
+          "summaryKey": "changelog.generated.v0.27.2.82a23",
+          "commitHash": "82a23",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/82a23cbe7",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope",
+          "components": ["time-field"]
+        },
+        {
+          "type": "fix",
+          "scope": "headless",
+          "summary": "update import paths avoid circular dependencies",
+          "summaryKey": "changelog.generated.v0.27.2.8d649",
+          "commitHash": "8d649",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/8d649ae05",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "feature",
+          "scope": "nuxt",
+          "summary": "add SLink and SIcon components to app.vue",
+          "summaryKey": "changelog.generated.v0.27.2.445f3",
+          "commitHash": "445f3",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/445f3b845",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "feature",
+          "scope": "stub",
+          "summary": "add stub script for handling headless package exports",
+          "summaryKey": "changelog.generated.v0.27.2.7232e",
+          "commitHash": "7232e",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/7232e1c0a",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "chore",
+          "scope": "headless",
+          "summary": "update package.json and tsdown.config.ts to manage dependencies correctly",
+          "summaryKey": "changelog.generated.v0.27.2.c2df1",
+          "commitHash": "c2df1",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/c2df152a6",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope",
+          "components": []
+        }
+      ]
+    },
     {
       "version": "v0.27.1",
       "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.27.0...v0.27.1",

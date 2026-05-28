@@ -1,5 +1,28 @@
 # Changelog
 
+## [v0.27.2](https://github.com/soybeanjs/soybean-ui/compare/v0.27.1...v0.27.2) (2026-05-28)
+
+### &nbsp;&nbsp;&nbsp;🚀 Features
+
+- **nuxt**: add SLink and SIcon components to app.vue &nbsp;-&nbsp; by **soybeanfe** [<samp>(445f3)</samp>](https://github.com/soybeanjs/soybean-ui/commit/445f3b845)
+- **stub**: add stub script for handling headless package exports &nbsp;-&nbsp; by **soybeanfe** [<samp>(7232e)</samp>](https://github.com/soybeanjs/soybean-ui/commit/7232e1c0a)
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- **date-range-picker**: add DateRange type export to types &nbsp;-&nbsp; by **soybeanfe** [<samp>(3bcca)</samp>](https://github.com/soybeanjs/soybean-ui/commit/3bccae751)
+- **headless**: update import paths avoid circular dependencies &nbsp;-&nbsp; by **soybeanfe** [<samp>(8d649)</samp>](https://github.com/soybeanjs/soybean-ui/commit/8d649ae05)
+- **link**: refactor LinkComponent to use shallowRef and improve NuxtLink handling &nbsp;-&nbsp; by **soybeanfe** [<samp>(90090)</samp>](https://github.com/soybeanjs/soybean-ui/commit/900906c2a)
+- **time-field**: export TimeValue type in index and types &nbsp;-&nbsp; by **soybeanfe** [<samp>(82a23)</samp>](https://github.com/soybeanjs/soybean-ui/commit/82a23cbe7)
+
+### &nbsp;&nbsp;&nbsp;🏡 Chore
+
+- **headless**: update package.json and tsdown.config.ts to manage dependencies correctly &nbsp;-&nbsp; by **soybeanfe** [<samp>(c2df1)</samp>](https://github.com/soybeanjs/soybean-ui/commit/c2df152a6)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+
+[soybeanfe](mailto:honghuangdc@gmail.com)
+
 ## [v0.27.1](https://github.com/soybeanjs/soybean-ui/compare/v0.27.0...v0.27.1) (2026-05-28)
 
 ### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes

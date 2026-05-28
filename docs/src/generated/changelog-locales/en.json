@@ -1421,6 +1421,15 @@
           "1": {
             "8ac58": "simplify theme watch logic and ensure immediate execution",
             "ce637": "update docs api"
+          },
+          "2": {
+            "90090": "refactor LinkComponent to use shallowRef and improve NuxtLink handling",
+            "3bcca": "add DateRange type export to types",
+            "445f3": "add SLink and SIcon components to app.vue",
+            "7232e": "add stub script for handling headless package exports",
+            "82a23": "export TimeValue type in index and types",
+            "8d649": "update import paths avoid circular dependencies",
+            "c2df1": "update package.json and tsdown.config.ts to manage dependencies correctly"
           }
         }
       }

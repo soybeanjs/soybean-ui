@@ -1,6 +1,24 @@
 {
   "component": "time-field",
-  "generatedAt": "2026-05-28T09:41:59.667Z",
+  "generatedAt": "2026-05-28T12:54:14.231Z",
   "schemaVersion": 1,
-  "versions": []
+  "versions": [
+    {
+      "version": "v0.27.2",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.27.1...v0.27.2",
+      "date": "2026-05-28",
+      "entries": [
+        {
+          "type": "fix",
+          "scope": "time-field",
+          "summary": "export TimeValue type in index and types",
+          "summaryKey": "changelog.generated.v0.27.2.82a23",
+          "commitHash": "82a23",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/82a23cbe7",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope"
+        }
+      ]
+    }
+  ]
 }

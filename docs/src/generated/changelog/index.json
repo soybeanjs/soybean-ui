@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-28T09:41:59.667Z",
+  "generatedAt": "2026-05-28T12:54:14.231Z",
   "schemaVersion": 1,
   "components": {
     "accordion": {
@@ -236,9 +236,9 @@
     "date-range-picker": {
       "component": "date-range-picker",
       "file": "date-range-picker.json",
-      "latestVersion": null,
-      "versionCount": 0,
-      "entryCount": 0
+      "latestVersion": "v0.27.2",
+      "versionCount": 1,
+      "entryCount": 1
     },
     "dialog": {
       "component": "dialog",
@@ -327,9 +327,9 @@
     "link": {
       "component": "link",
       "file": "link.json",
-      "latestVersion": "v0.25.1",
-      "versionCount": 8,
-      "entryCount": 8
+      "latestVersion": "v0.27.2",
+      "versionCount": 9,
+      "entryCount": 9
     },
     "list": {
       "component": "list",
@@ -551,9 +551,9 @@
     "time-field": {
       "component": "time-field",
       "file": "time-field.json",
-      "latestVersion": null,
-      "versionCount": 0,
-      "entryCount": 0
+      "latestVersion": "v0.27.2",
+      "versionCount": 1,
+      "entryCount": 1
     },
     "time-range-field": {
       "component": "time-range-field",

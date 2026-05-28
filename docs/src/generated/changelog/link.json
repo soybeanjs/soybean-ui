@@ -1,8 +1,25 @@
 {
   "component": "link",
-  "generatedAt": "2026-05-28T09:41:59.667Z",
+  "generatedAt": "2026-05-28T12:54:14.231Z",
   "schemaVersion": 1,
   "versions": [
+    {
+      "version": "v0.27.2",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.27.1...v0.27.2",
+      "date": "2026-05-28",
+      "entries": [
+        {
+          "type": "fix",
+          "scope": "link",
+          "summary": "refactor LinkComponent to use shallowRef and improve NuxtLink handling",
+          "summaryKey": "changelog.generated.v0.27.2.90090",
+          "commitHash": "90090",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/900906c2a",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope"
+        }
+      ]
+    },
     {
       "version": "v0.25.1",
       "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.25.0...v0.25.1",

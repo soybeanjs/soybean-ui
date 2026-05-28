@@ -1421,6 +1421,15 @@
           "1": {
             "8ac58": "简化主题监视逻辑并确保立即执行",
             "ce637": "更新文档 api"
+          },
+          "2": {
+            "90090": "重构 LinkComponent 以使用 shallowRef 并改进对 NuxtLink 的处理",
+            "3bcca": "在类型中添加 DateRange 类型导出",
+            "445f3": "在 app.vue 中添加 SLink 和 SIcon 组件",
+            "7232e": "添加处理无头软件包导出的存根脚本",
+            "82a23": "在索引和类型中导出 TimeValue 类型",
+            "8d649": "更新导入路径，避免循环依赖",
+            "c2df1": "更新 package.json 和 tsdown.config.ts，以正确管理依赖关系"
           }
         }
       }
