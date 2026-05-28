@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, resolveComponent, useAttrs } from 'vue';
+import { computed, shallowRef, resolveComponent, useAttrs } from 'vue';
 import { isNuxt } from '../../shared';
 import { Primitive } from '../primitive';
 import type { LinkProps } from './types';
@@ -29,12 +29,27 @@ defineSlots<Slots>();
 
 const attrs = useAttrs();
 
-const LinkComponent = computed(() => {
+const LinkComponent = shallowRef<any>();
+
+async function getLinkComponent() {
   if (isNuxt) {
-    return resolveComponent('NuxtLink');
+    const { defineNuxtLink } = await import('nuxt/app');
+    LinkComponent.value = defineNuxtLink({
+      componentName: 'NuxtLink',
+      activeClass: props.activeClass,
+      exactActiveClass: props.exactActiveClass,
+      prefetch: props.prefetch,
+      prefetchedClass: props.prefetchedClass,
+      externalRelAttribute: props.rel,
+      trailingSlash: props.trailingSlash
+    });
+  } else {
+    const resolved = resolveComponent('RouterLink');
+    if (resolved && typeof resolved !== 'string') {
+      LinkComponent.value = resolved;
+    }
   }
-  return resolveComponent('RouterLink');
-});
+}
 
 const isHref = computed(() => {
   if (props.external || props.disabled) {
@@ -51,6 +66,8 @@ const isHref = computed(() => {
 
   return false;
 });
+
+const renderA = computed(() => isHref.value || !LinkComponent.value);
 
 const target = computed(() => {
   if (props.target) {
@@ -93,11 +110,13 @@ const handleClick = (event: Event) => {
     event.stopPropagation();
   }
 };
+
+getLinkComponent();
 </script>
 
 <template>
   <Primitive
-    v-if="isHref"
+    v-if="renderA"
     v-bind="forwardedProps"
     :as="as"
     :as-child="asChild"
