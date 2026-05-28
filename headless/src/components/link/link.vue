@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import { computed, shallowRef, resolveComponent, useAttrs } from 'vue';
-import { isNuxt } from '../../shared';
+import { computed, resolveComponent, useAttrs } from 'vue';
 import { Primitive } from '../primitive';
 import type { LinkProps } from './types';
 
@@ -29,27 +28,8 @@ defineSlots<Slots>();
 
 const attrs = useAttrs();
 
-const LinkComponent = shallowRef<any>();
-
-async function getLinkComponent() {
-  if (isNuxt) {
-    const { defineNuxtLink } = await import('nuxt/app');
-    LinkComponent.value = defineNuxtLink({
-      componentName: 'NuxtLink',
-      activeClass: props.activeClass,
-      exactActiveClass: props.exactActiveClass,
-      prefetch: props.prefetch,
-      prefetchedClass: props.prefetchedClass,
-      externalRelAttribute: props.rel,
-      trailingSlash: props.trailingSlash
-    });
-  } else {
-    const resolved = resolveComponent('RouterLink');
-    if (resolved && typeof resolved !== 'string') {
-      LinkComponent.value = resolved;
-    }
-  }
-}
+const resolvedRouterLink = resolveComponent('RouterLink');
+const RouterLink = typeof resolvedRouterLink === 'string' ? null : resolvedRouterLink;
 
 const isHref = computed(() => {
   if (props.external || props.disabled) {
@@ -67,7 +47,7 @@ const isHref = computed(() => {
   return false;
 });
 
-const renderA = computed(() => isHref.value || !LinkComponent.value);
+const renderA = computed(() => isHref.value || !RouterLink);
 
 const target = computed(() => {
   if (props.target) {
@@ -87,7 +67,7 @@ const forwardedProps = computed(() => {
     result.to = props.to;
   }
 
-  if ((isHref.value || !isNuxt) && href) {
+  if (isHref.value && href) {
     result.href = href;
   }
 
@@ -110,8 +90,6 @@ const handleClick = (event: Event) => {
     event.stopPropagation();
   }
 };
-
-getLinkComponent();
 </script>
 
 <template>
@@ -127,7 +105,7 @@ getLinkComponent();
     <slot :is-href="true" />
   </Primitive>
   <component
-    :is="LinkComponent"
+    :is="RouterLink"
     v-else
     v-slot="slotProps"
     v-bind="forwardedProps"
