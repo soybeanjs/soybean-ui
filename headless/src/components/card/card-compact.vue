@@ -36,10 +36,17 @@ const listeners = useForwardListeners(emit);
 const showHeader = computed(() => {
   return Boolean(slots.header || slots.title || slots.description || slots.extra || props.title || props.description);
 });
+
+const showFooter = computed(() => Boolean(slots.footer));
 </script>
 
 <template>
-  <CardRoot v-bind="forwardedProps" v-on="listeners">
+  <CardRoot
+    v-bind="forwardedProps"
+    :data-header-visible="showHeader"
+    :data-footer-visible="showFooter"
+    v-on="listeners"
+  >
     <CardHeader v-if="showHeader" v-bind="headerProps">
       <slot name="header">
         <CardTitleRoot v-bind="titleRootProps">
@@ -55,10 +62,10 @@ const showHeader = computed(() => {
         </CardDescription>
       </slot>
     </CardHeader>
-    <CardContent v-bind="contentProps">
+    <CardContent v-bind="contentProps" :data-header-visible="showHeader" :data-footer-visible="showFooter">
       <slot />
     </CardContent>
-    <CardFooter v-if="slots.footer" v-bind="footerProps">
+    <CardFooter v-if="showFooter" v-bind="footerProps">
       <slot name="footer" />
     </CardFooter>
   </CardRoot>

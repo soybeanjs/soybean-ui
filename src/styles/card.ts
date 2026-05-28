@@ -82,6 +82,50 @@ export const cardVariants = scv({
       }
     }
   },
+  compoundVariants: [
+    {
+      size: 'xs',
+      split: false,
+      class: {
+        content: `data-[header-visible=true]:data-[state=open]:pt-0.75 data-[footer-visible=true]:data-[state=open]:pb-0.75`
+      }
+    },
+    {
+      size: 'sm',
+      split: false,
+      class: {
+        content: `data-[header-visible=true]:data-[state=open]:pt-1 data-[footer-visible=true]:data-[state=open]:pb-1`
+      }
+    },
+    {
+      size: 'md',
+      split: false,
+      class: {
+        content: `data-[header-visible=true]:data-[state=open]:pt-1.5 data-[footer-visible=true]:data-[state=open]:pb-1.5`
+      }
+    },
+    {
+      size: 'lg',
+      split: false,
+      class: {
+        content: `data-[header-visible=true]:data-[state=open]:pt-2 data-[footer-visible=true]:data-[state=open]:pb-2`
+      }
+    },
+    {
+      size: 'xl',
+      split: false,
+      class: {
+        content: `data-[header-visible=true]:data-[state=open]:pt-2.5 data-[footer-visible=true]:data-[state=open]:pb-2.5`
+      }
+    },
+    {
+      size: '2xl',
+      split: false,
+      class: {
+        content: `data-[header-visible=true]:data-[state=open]:pt-3 data-[footer-visible=true]:data-[state=open]:pb-3`
+      }
+    }
+  ],
   defaultVariants: {
     size: 'md',
     scrollable: true,

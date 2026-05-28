@@ -1,4 +1,4 @@
-import type { CardCompactProps, CardUi } from '@soybeanjs/headless/card';
+import type { CardCompactProps, CardCompactEmits, CardCompactSlots, CardUi } from '@soybeanjs/headless/card';
 import type { ClassValue } from '@soybeanjs/headless/types';
 import type { ThemeSize } from '@/theme';
 
@@ -31,3 +31,13 @@ export interface CardProps extends CardCompactProps {
    */
   split?: boolean;
 }
+
+/**
+ * Events for the Card component.
+ */
+export type CardEmits = CardCompactEmits;
+
+/**
+ * Slots for the Card component.
+ */
+export type CardSlots = CardCompactSlots;
