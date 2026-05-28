@@ -386,8 +386,8 @@
                 "type": "Component",
                 "resolvedType": null,
                 "description": "A type used in public APIs where a component type is expected.\nThe constructor type is an artificial type returned by defineComponent().",
-                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_34_node_modules_vue_runtime_core_dist_runtime_core_d.component",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.34/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_35_node_modules_vue_runtime_core_dist_runtime_core_d.component",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.35/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
                 "typeParameters": [
                   "PropsOrInstance = any",
                   "RawBindings = any",
@@ -406,6 +406,244 @@
         ],
         "callables": [],
         "referencedTypes": []
+      },
+      "emits": {
+        "kind": "emits",
+        "name": "CardEmits",
+        "type": "TypeAlias CardEmits: CardCompactEmits",
+        "resolvedType": "{ \"update:open\": [value: boolean] }",
+        "description": "Events for the Card component.",
+        "descriptionKey": "api.generated.src_components_card_types.cardemits.emits",
+        "sourcePath": "src/components/card/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [
+          {
+            "name": "update:open",
+            "type": "[value: boolean]",
+            "parameters": "value: boolean",
+            "required": true,
+            "description": "Event handler called when the open state of the collapsible changes.",
+            "descriptionKey": "api.generated.src_components_card_types.cardemits.callables.update_open",
+            "sourcePath": "headless/src/components/collapsible/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "referencedTypes": [
+          {
+            "name": "CollapsibleRootEmits",
+            "kind": "typeAlias",
+            "type": "{ 'update:open': [value: boolean]; }",
+            "resolvedType": "{ \"update:open\": [value: boolean] }",
+            "description": "Events for the CollapsibleRoot component.",
+            "descriptionKey": "api.generated.headless_src_components_collapsible_types.collapsiblerootemits",
+            "sourcePath": "headless/src/components/collapsible/types.ts",
+            "typeParameters": [],
+            "external": false,
+            "members": [],
+            "callables": [
+              {
+                "name": "update:open",
+                "type": "[value: boolean]",
+                "parameters": "value: boolean",
+                "required": true,
+                "description": "Event handler called when the open state of the collapsible changes.",
+                "descriptionKey": "api.generated.headless_src_components_collapsible_types.collapsiblerootemits.callables.update_open",
+                "sourcePath": "headless/src/components/collapsible/types.ts",
+                "referencedTypes": []
+              }
+            ]
+          }
+        ]
+      },
+      "slots": {
+        "kind": "slots",
+        "name": "CardSlots",
+        "type": "TypeAlias CardSlots: CardCompactSlots",
+        "resolvedType": "{ CardCompact?: (() => any); header?: (() => any); title?: (() => any); \"title-leading\"?: (() => any); \"title-trailing\"?: (() => any); extra?: (() => any); footer?: (() => any); description?: (() => any) }",
+        "description": "Slots for the Card component.",
+        "descriptionKey": "api.generated.src_components_card_types.cardslots.slots",
+        "sourcePath": "src/components/card/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [
+          {
+            "name": "default",
+            "type": "(() => any) | undefined",
+            "parameters": "(() => any) | undefined",
+            "required": false,
+            "description": "Custom content for the default slot.",
+            "descriptionKey": "api.generated.src_components_card_types.cardslots.callables.default",
+            "sourcePath": "headless/src/components/card/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "header",
+            "type": "(() => any) | undefined",
+            "parameters": "(() => any) | undefined",
+            "required": false,
+            "description": "Custom content for the header slot.",
+            "descriptionKey": "api.generated.src_components_card_types.cardslots.callables.header",
+            "sourcePath": "headless/src/components/card/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "title",
+            "type": "(() => any) | undefined",
+            "parameters": "(() => any) | undefined",
+            "required": false,
+            "description": "Custom content for the title slot.",
+            "descriptionKey": "api.generated.src_components_card_types.cardslots.callables.title",
+            "sourcePath": "headless/src/components/card/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "title-leading",
+            "type": "(() => any) | undefined",
+            "parameters": "(() => any) | undefined",
+            "required": false,
+            "description": "Custom content for the title leading slot.",
+            "descriptionKey": "api.generated.src_components_card_types.cardslots.callables.title_leading",
+            "sourcePath": "headless/src/components/card/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "title-trailing",
+            "type": "(() => any) | undefined",
+            "parameters": "(() => any) | undefined",
+            "required": false,
+            "description": "Custom content for the title trailing slot.",
+            "descriptionKey": "api.generated.src_components_card_types.cardslots.callables.title_trailing",
+            "sourcePath": "headless/src/components/card/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "extra",
+            "type": "(() => any) | undefined",
+            "parameters": "(() => any) | undefined",
+            "required": false,
+            "description": "Custom content for the extra slot.",
+            "descriptionKey": "api.generated.src_components_card_types.cardslots.callables.extra",
+            "sourcePath": "headless/src/components/card/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "footer",
+            "type": "(() => any) | undefined",
+            "parameters": "(() => any) | undefined",
+            "required": false,
+            "description": "Custom content for the footer slot.",
+            "descriptionKey": "api.generated.src_components_card_types.cardslots.callables.footer",
+            "sourcePath": "headless/src/components/card/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "description",
+            "type": "(() => any) | undefined",
+            "parameters": "(() => any) | undefined",
+            "required": false,
+            "description": "Custom content for the description slot.",
+            "descriptionKey": "api.generated.src_components_card_types.cardslots.callables.description",
+            "sourcePath": "headless/src/components/card/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "referencedTypes": [
+          {
+            "name": "CardCompactSlots",
+            "kind": "typeAlias",
+            "type": "{ CardCompact?: () => any; header?: () => any; title?: () => any; 'title-leading'?: () => any; 'title-trailing'?: () => any; extra?: () => any; footer?: () => any; description?: () => any; }",
+            "resolvedType": "{ CardCompact?: (() => any); header?: (() => any); title?: (() => any); \"title-leading\"?: (() => any); \"title-trailing\"?: (() => any); extra?: (() => any); footer?: (() => any); description?: (() => any) }",
+            "description": "Slots for the CardCompact component.",
+            "descriptionKey": "api.generated.headless_src_components_card_types.cardcompactslots",
+            "sourcePath": "headless/src/components/card/types.ts",
+            "typeParameters": [],
+            "external": false,
+            "members": [],
+            "callables": [
+              {
+                "name": "default",
+                "type": "(() => any) | undefined",
+                "parameters": "(() => any) | undefined",
+                "required": false,
+                "description": "Custom content for the default slot.",
+                "descriptionKey": "api.generated.headless_src_components_card_types.cardcompactslots.callables.default",
+                "sourcePath": "headless/src/components/card/types.ts",
+                "referencedTypes": []
+              },
+              {
+                "name": "header",
+                "type": "(() => any) | undefined",
+                "parameters": "(() => any) | undefined",
+                "required": false,
+                "description": "Custom content for the header slot.",
+                "descriptionKey": "api.generated.headless_src_components_card_types.cardcompactslots.callables.header",
+                "sourcePath": "headless/src/components/card/types.ts",
+                "referencedTypes": []
+              },
+              {
+                "name": "title",
+                "type": "(() => any) | undefined",
+                "parameters": "(() => any) | undefined",
+                "required": false,
+                "description": "Custom content for the title slot.",
+                "descriptionKey": "api.generated.headless_src_components_card_types.cardcompactslots.callables.title",
+                "sourcePath": "headless/src/components/card/types.ts",
+                "referencedTypes": []
+              },
+              {
+                "name": "title-leading",
+                "type": "(() => any) | undefined",
+                "parameters": "(() => any) | undefined",
+                "required": false,
+                "description": "Custom content for the title leading slot.",
+                "descriptionKey": "api.generated.headless_src_components_card_types.cardcompactslots.callables.title_leading",
+                "sourcePath": "headless/src/components/card/types.ts",
+                "referencedTypes": []
+              },
+              {
+                "name": "title-trailing",
+                "type": "(() => any) | undefined",
+                "parameters": "(() => any) | undefined",
+                "required": false,
+                "description": "Custom content for the title trailing slot.",
+                "descriptionKey": "api.generated.headless_src_components_card_types.cardcompactslots.callables.title_trailing",
+                "sourcePath": "headless/src/components/card/types.ts",
+                "referencedTypes": []
+              },
+              {
+                "name": "extra",
+                "type": "(() => any) | undefined",
+                "parameters": "(() => any) | undefined",
+                "required": false,
+                "description": "Custom content for the extra slot.",
+                "descriptionKey": "api.generated.headless_src_components_card_types.cardcompactslots.callables.extra",
+                "sourcePath": "headless/src/components/card/types.ts",
+                "referencedTypes": []
+              },
+              {
+                "name": "footer",
+                "type": "(() => any) | undefined",
+                "parameters": "(() => any) | undefined",
+                "required": false,
+                "description": "Custom content for the footer slot.",
+                "descriptionKey": "api.generated.headless_src_components_card_types.cardcompactslots.callables.footer",
+                "sourcePath": "headless/src/components/card/types.ts",
+                "referencedTypes": []
+              },
+              {
+                "name": "description",
+                "type": "(() => any) | undefined",
+                "parameters": "(() => any) | undefined",
+                "required": false,
+                "description": "Custom content for the description slot.",
+                "descriptionKey": "api.generated.headless_src_components_card_types.cardcompactslots.callables.description",
+                "sourcePath": "headless/src/components/card/types.ts",
+                "referencedTypes": []
+              }
+            ]
+          }
+        ]
       }
     },
     "CardCollapsibleTrigger": {
@@ -493,8 +731,8 @@
                 "type": "Component",
                 "resolvedType": null,
                 "description": "A type used in public APIs where a component type is expected.\nThe constructor type is an artificial type returned by defineComponent().",
-                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_34_node_modules_vue_runtime_core_dist_runtime_core_d.component",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.34/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_35_node_modules_vue_runtime_core_dist_runtime_core_d.component",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.35/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
                 "typeParameters": [
                   "PropsOrInstance = any",
                   "RawBindings = any",
@@ -803,8 +1041,8 @@
                 "type": "Component",
                 "resolvedType": null,
                 "description": "A type used in public APIs where a component type is expected.\nThe constructor type is an artificial type returned by defineComponent().",
-                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_34_node_modules_vue_runtime_core_dist_runtime_core_d.component",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.34/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_35_node_modules_vue_runtime_core_dist_runtime_core_d.component",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.35/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
                 "typeParameters": [
                   "PropsOrInstance = any",
                   "RawBindings = any",
@@ -1017,8 +1255,8 @@
                 "type": "Component",
                 "resolvedType": null,
                 "description": "A type used in public APIs where a component type is expected.\nThe constructor type is an artificial type returned by defineComponent().",
-                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_34_node_modules_vue_runtime_core_dist_runtime_core_d.component",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.34/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_35_node_modules_vue_runtime_core_dist_runtime_core_d.component",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.35/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
                 "typeParameters": [
                   "PropsOrInstance = any",
                   "RawBindings = any",
@@ -1166,8 +1404,8 @@
                 "type": "Component",
                 "resolvedType": null,
                 "description": "A type used in public APIs where a component type is expected.\nThe constructor type is an artificial type returned by defineComponent().",
-                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_34_node_modules_vue_runtime_core_dist_runtime_core_d.component",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.34/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_35_node_modules_vue_runtime_core_dist_runtime_core_d.component",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.35/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
                 "typeParameters": [
                   "PropsOrInstance = any",
                   "RawBindings = any",

@@ -236,8 +236,8 @@
                 "type": "Component",
                 "resolvedType": null,
                 "description": "A type used in public APIs where a component type is expected.\nThe constructor type is an artificial type returned by defineComponent().",
-                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_34_node_modules_vue_runtime_core_dist_runtime_core_d.component",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.34/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_35_node_modules_vue_runtime_core_dist_runtime_core_d.component",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.35/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
                 "typeParameters": [
                   "PropsOrInstance = any",
                   "RawBindings = any",
@@ -581,8 +581,8 @@
                 "type": "Component",
                 "resolvedType": null,
                 "description": "A type used in public APIs where a component type is expected.\nThe constructor type is an artificial type returned by defineComponent().",
-                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_34_node_modules_vue_runtime_core_dist_runtime_core_d.component",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.34/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_35_node_modules_vue_runtime_core_dist_runtime_core_d.component",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.35/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
                 "typeParameters": [
                   "PropsOrInstance = any",
                   "RawBindings = any",
@@ -608,7 +608,7 @@
         "kind": "props",
         "name": "ButtonIconProps",
         "type": "Interface ButtonIconProps",
-        "resolvedType": "{ icon: string; iconClass?: string | false | Record<string, any> | ClassValue[] | null; iconProps?: Partial<IconProps>; class?: string | false | Record<string, any> | ClassValue[] | null; color?: ThemeColor; size?: ThemeSize; variant?: ButtonVariant; shape?: ButtonShape; shadow?: ButtonShadow; fitContent?: boolean; type?: ButtonType; disabled?: boolean; asChild?: boolean; as?: AsTag | Component }",
+        "resolvedType": "{ icon: string | import(\"vue\").Component | import(\"vue\").VNode<import(\"vue\").RendererNode, import(\"vue\").RendererElement, { [key: string]: any; }> | null | undefined; iconClass?: string | false | Record<string, any> | ClassValue[] | null; iconProps?: Partial<IconProps>; class?: string | false | Record<string, any> | ClassValue[] | null; color?: ThemeColor; size?: ThemeSize; variant?: ButtonVariant; shape?: ButtonShape; shadow?: ButtonShadow; fitContent?: boolean; type?: ButtonType; disabled?: boolean; asChild?: boolean; as?: AsTag | Component }",
         "description": "Properties for the ButtonIcon component.",
         "descriptionKey": "api.generated.src_components_button_types.buttoniconprops.props",
         "sourcePath": "src/components/button/types.ts",
@@ -616,14 +616,28 @@
         "members": [
           {
             "name": "icon",
-            "type": "string",
+            "type": "string | import(\"vue\").Component | import(\"vue\").VNode<import(\"vue\").RendererNode, import(\"vue\").RendererElement, { [key: string]: any; }> | null | undefined",
             "required": true,
-            "description": "The icon name of iconify.",
+            "description": "The icon value of iconify.",
             "descriptionKey": "api.generated.src_components_button_types.buttoniconprops.members.icon",
             "default": null,
             "inheritedFrom": null,
             "sourcePath": "src/components/button/types.ts",
-            "referencedTypes": []
+            "referencedTypes": [
+              {
+                "name": "IconValue",
+                "kind": "typeAlias",
+                "type": "string | import(\"vue\").Component | import(\"vue\").VNode<import(\"vue\").RendererNode, import(\"vue\").RendererElement, { [key: string]: any; }> | null | undefined",
+                "resolvedType": "string | Component | VNode<import(\"vue\").RendererNode, import(\"vue\").RendererElement, { [key: string]: any; }> | null | undefined",
+                "description": "Type information for IconValue.",
+                "descriptionKey": "api.generated.headless_src_components_icon_types.iconvalue",
+                "sourcePath": "headless/src/components/_icon/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
           },
           {
             "name": "iconClass",
@@ -899,8 +913,8 @@
                 "type": "Component",
                 "resolvedType": null,
                 "description": "A type used in public APIs where a component type is expected.\nThe constructor type is an artificial type returned by defineComponent().",
-                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_34_node_modules_vue_runtime_core_dist_runtime_core_d.component",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.34/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_35_node_modules_vue_runtime_core_dist_runtime_core_d.component",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.35/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
                 "typeParameters": [
                   "PropsOrInstance = any",
                   "RawBindings = any",
@@ -1156,8 +1170,8 @@
                 "type": "Component",
                 "resolvedType": null,
                 "description": "A type used in public APIs where a component type is expected.\nThe constructor type is an artificial type returned by defineComponent().",
-                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_34_node_modules_vue_runtime_core_dist_runtime_core_d.component",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.34/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_35_node_modules_vue_runtime_core_dist_runtime_core_d.component",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.35/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
                 "typeParameters": [
                   "PropsOrInstance = any",
                   "RawBindings = any",
@@ -1189,8 +1203,8 @@
                 "type": "RouteLocationRaw",
                 "resolvedType": null,
                 "description": "Route location that can be passed to `router.push()` and other user-facing APIs.",
-                "descriptionKey": "api.generated.node_modules_pnpm_vue_router_5_0_7_vue_compiler_sfc_3_5_34_vue_3_5_34_typescript_6_0_3_node_modules_vue_router_dist_useapi_d6ckosfy_d.routelocationraw",
-                "sourcePath": "node_modules/.pnpm/vue-router@5.0.7_@vue+compiler-sfc@3.5.34_vue@3.5.34_typescript@6.0.3_/node_modules/vue-router/dist/useApi-D6ckOsFy.d.ts",
+                "descriptionKey": "api.generated.node_modules_pnpm_vue_router_5_0_7_vue_compiler_sfc_3_5_35_pinia_3_0_4_typescript_6_0_3_vue_3_5_35_types_7931d4f66b0cace2893a738c1776d796_node_modules_vue_router_dist_useapi_d6ckosfy_d.routelocationraw",
+                "sourcePath": "node_modules/.pnpm/vue-router@5.0.7_@vue+compiler-sfc@3.5.35_pinia@3.0.4_typescript@6.0.3_vue@3.5.35_types_7931d4f66b0cace2893a738c1776d796/node_modules/vue-router/dist/useApi-D6ckOsFy.d.ts",
                 "typeParameters": ["Name extends keyof RouteMap = keyof RouteMap"],
                 "external": true,
                 "members": [],
@@ -1398,7 +1412,7 @@
         "kind": "props",
         "name": "ButtonLoadingProps",
         "type": "Interface ButtonLoadingProps",
-        "resolvedType": "{ loading?: boolean; loadingText?: string; loadingDuration?: number; autoLoading?: boolean; loadingIcon?: string; loadingIconProps?: Partial<IconProps>; loadingPosition?: Align; class?: string | false | Record<string, any> | ClassValue[] | null; color?: ThemeColor; size?: ThemeSize; variant?: ButtonVariant; shape?: ButtonShape; shadow?: ButtonShadow; fitContent?: boolean; type?: ButtonType; disabled?: boolean; asChild?: boolean; as?: AsTag | Component }",
+        "resolvedType": "{ loading?: boolean; loadingText?: string; loadingDuration?: number; autoLoading?: boolean; loadingIcon?: string | import(\"vue\").Component | import(\"vue\").VNode<import(\"vue\").RendererNode, import(\"vue\").RendererElement, { [key: string]: any; }> | null; loadingIconProps?: Partial<IconProps>; loadingPosition?: Align; class?: string | false | Record<string, any> | ClassValue[] | null; color?: ThemeColor; size?: ThemeSize; variant?: ButtonVariant; shape?: ButtonShape; shadow?: ButtonShadow; fitContent?: boolean; type?: ButtonType; disabled?: boolean; asChild?: boolean; as?: AsTag | Component }",
         "description": "Properties for the ButtonLoading component.",
         "descriptionKey": "api.generated.src_components_button_types.buttonloadingprops.props",
         "sourcePath": "src/components/button/types.ts",
@@ -1450,14 +1464,28 @@
           },
           {
             "name": "loadingIcon",
-            "type": "string",
+            "type": "string | import(\"vue\").Component | import(\"vue\").VNode<import(\"vue\").RendererNode, import(\"vue\").RendererElement, { [key: string]: any; }> | null",
             "required": false,
             "description": "The icon name of iconify to display when the button is loading.",
             "descriptionKey": "api.generated.src_components_button_types.buttonloadingprops.members.loadingicon",
             "default": "'svg-spinners:270-ring'",
             "inheritedFrom": null,
             "sourcePath": "src/components/button/types.ts",
-            "referencedTypes": []
+            "referencedTypes": [
+              {
+                "name": "IconValue",
+                "kind": "typeAlias",
+                "type": "string | import(\"vue\").Component | import(\"vue\").VNode<import(\"vue\").RendererNode, import(\"vue\").RendererElement, { [key: string]: any; }> | null | undefined",
+                "resolvedType": "string | Component | VNode<import(\"vue\").RendererNode, import(\"vue\").RendererElement, { [key: string]: any; }> | null | undefined",
+                "description": "Type information for IconValue.",
+                "descriptionKey": "api.generated.headless_src_components_icon_types.iconvalue",
+                "sourcePath": "headless/src/components/_icon/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
           },
           {
             "name": "loadingIconProps",
@@ -1733,8 +1761,8 @@
                 "type": "Component",
                 "resolvedType": null,
                 "description": "A type used in public APIs where a component type is expected.\nThe constructor type is an artificial type returned by defineComponent().",
-                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_34_node_modules_vue_runtime_core_dist_runtime_core_d.component",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.34/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_35_node_modules_vue_runtime_core_dist_runtime_core_d.component",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.35/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
                 "typeParameters": [
                   "PropsOrInstance = any",
                   "RawBindings = any",

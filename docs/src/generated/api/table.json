@@ -741,12 +741,12 @@
       "emits": {
         "kind": "emits",
         "name": "TableEmits",
-        "type": "TypeAlias TableEmits<R, M>: TableCompactEmits<R, M>",
-        "resolvedType": "{ \"update:sortState\": [state: TableSortState | undefined]; \"update:filterState\": [state: TableFilterState]; \"update:columnWidths\": [state: TableColumnWidthState]; \"update:expanded\": [expanded: R[]]; \"update:selected\": [selected: M extends true ? R[] : R | undefined] }",
+        "type": "TypeAlias TableEmits<T, R, M>: TableCompactEmits<T, R, M>",
+        "resolvedType": "{ \"update:sortState\": [state: TableSortState | undefined]; \"update:filterState\": [state: TableFilterState]; \"update:columnWidths\": [state: TableColumnWidthState]; \"update:expanded\": [expanded: R[]]; \"update:selected\": [selected: M extends true ? R[] : R | undefined]; rowClick: [event: MouseEvent, payload: TableRowEventPayload<T, R>]; rowDblclick: [event: MouseEvent, payload: TableRowEventPayload<T, R>]; rowContextmenu: [event: MouseEvent, payload: TableRowEventPayload<T, R>]; rowMouseenter: [event: MouseEvent, payload: TableRowEventPayload<T, R>]; rowMouseleave: [event: MouseEvent, payload: TableRowEventPayload<T, R>] }",
         "description": "Events for the Table component.",
         "descriptionKey": "api.generated.src_components_table_types.tableemits.emits",
         "sourcePath": "src/components/table/types.ts",
-        "typeParameters": ["TypeParameter R", "TypeParameter M"],
+        "typeParameters": ["TypeParameter T", "TypeParameter R", "TypeParameter M"],
         "members": [],
         "callables": [
           {
@@ -840,6 +840,206 @@
             "descriptionKey": "api.generated.src_components_table_types.tableemits.callables.update_selected",
             "sourcePath": "headless/src/components/table/types.ts",
             "referencedTypes": []
+          },
+          {
+            "name": "rowClick",
+            "type": "[event: MouseEvent, payload: TableRowEventPayload<T, R>]",
+            "parameters": "event: MouseEvent, payload: TableRowEventPayload<T, R>",
+            "required": true,
+            "description": "Emitted when a row is clicked.",
+            "descriptionKey": "api.generated.src_components_table_types.tableemits.callables.rowclick",
+            "sourcePath": "headless/src/components/table/types.ts",
+            "referencedTypes": [
+              {
+                "name": "MouseEvent",
+                "kind": "interface",
+                "type": "MouseEvent",
+                "resolvedType": null,
+                "description": "The **`MouseEvent`** interface represents events that occur due to the user interacting with a pointing device (such as a mouse). Common events using this interface include click, dblclick, mouseup, mousedown.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent)",
+                "descriptionKey": "api.generated.node_modules_pnpm_typescript_6_0_3_node_modules_typescript_lib_lib_dom_d.mouseevent",
+                "sourcePath": "node_modules/.pnpm/typescript@6.0.3/node_modules/typescript/lib/lib.dom.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "TableRowEventPayload",
+                "kind": "interface",
+                "type": "TableRowEventPayload<T, R>",
+                "resolvedType": null,
+                "description": "Payload emitted for table row interaction events.",
+                "descriptionKey": "api.generated.headless_src_components_table_types.tableroweventpayload",
+                "sourcePath": "headless/src/components/table/types.ts",
+                "typeParameters": [
+                  "T extends TableBaseData = TableBaseData",
+                  "R extends TableUnifiedKey = TableUnifiedKey"
+                ],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "rowDblclick",
+            "type": "[event: MouseEvent, payload: TableRowEventPayload<T, R>]",
+            "parameters": "event: MouseEvent, payload: TableRowEventPayload<T, R>",
+            "required": true,
+            "description": "Emitted when a row is double clicked.",
+            "descriptionKey": "api.generated.src_components_table_types.tableemits.callables.rowdblclick",
+            "sourcePath": "headless/src/components/table/types.ts",
+            "referencedTypes": [
+              {
+                "name": "MouseEvent",
+                "kind": "interface",
+                "type": "MouseEvent",
+                "resolvedType": null,
+                "description": "The **`MouseEvent`** interface represents events that occur due to the user interacting with a pointing device (such as a mouse). Common events using this interface include click, dblclick, mouseup, mousedown.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent)",
+                "descriptionKey": "api.generated.node_modules_pnpm_typescript_6_0_3_node_modules_typescript_lib_lib_dom_d.mouseevent",
+                "sourcePath": "node_modules/.pnpm/typescript@6.0.3/node_modules/typescript/lib/lib.dom.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "TableRowEventPayload",
+                "kind": "interface",
+                "type": "TableRowEventPayload<T, R>",
+                "resolvedType": null,
+                "description": "Payload emitted for table row interaction events.",
+                "descriptionKey": "api.generated.headless_src_components_table_types.tableroweventpayload",
+                "sourcePath": "headless/src/components/table/types.ts",
+                "typeParameters": [
+                  "T extends TableBaseData = TableBaseData",
+                  "R extends TableUnifiedKey = TableUnifiedKey"
+                ],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "rowContextmenu",
+            "type": "[event: MouseEvent, payload: TableRowEventPayload<T, R>]",
+            "parameters": "event: MouseEvent, payload: TableRowEventPayload<T, R>",
+            "required": true,
+            "description": "Emitted when a row context menu is triggered.",
+            "descriptionKey": "api.generated.src_components_table_types.tableemits.callables.rowcontextmenu",
+            "sourcePath": "headless/src/components/table/types.ts",
+            "referencedTypes": [
+              {
+                "name": "MouseEvent",
+                "kind": "interface",
+                "type": "MouseEvent",
+                "resolvedType": null,
+                "description": "The **`MouseEvent`** interface represents events that occur due to the user interacting with a pointing device (such as a mouse). Common events using this interface include click, dblclick, mouseup, mousedown.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent)",
+                "descriptionKey": "api.generated.node_modules_pnpm_typescript_6_0_3_node_modules_typescript_lib_lib_dom_d.mouseevent",
+                "sourcePath": "node_modules/.pnpm/typescript@6.0.3/node_modules/typescript/lib/lib.dom.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "TableRowEventPayload",
+                "kind": "interface",
+                "type": "TableRowEventPayload<T, R>",
+                "resolvedType": null,
+                "description": "Payload emitted for table row interaction events.",
+                "descriptionKey": "api.generated.headless_src_components_table_types.tableroweventpayload",
+                "sourcePath": "headless/src/components/table/types.ts",
+                "typeParameters": [
+                  "T extends TableBaseData = TableBaseData",
+                  "R extends TableUnifiedKey = TableUnifiedKey"
+                ],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "rowMouseenter",
+            "type": "[event: MouseEvent, payload: TableRowEventPayload<T, R>]",
+            "parameters": "event: MouseEvent, payload: TableRowEventPayload<T, R>",
+            "required": true,
+            "description": "Emitted when the pointer enters a row.",
+            "descriptionKey": "api.generated.src_components_table_types.tableemits.callables.rowmouseenter",
+            "sourcePath": "headless/src/components/table/types.ts",
+            "referencedTypes": [
+              {
+                "name": "MouseEvent",
+                "kind": "interface",
+                "type": "MouseEvent",
+                "resolvedType": null,
+                "description": "The **`MouseEvent`** interface represents events that occur due to the user interacting with a pointing device (such as a mouse). Common events using this interface include click, dblclick, mouseup, mousedown.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent)",
+                "descriptionKey": "api.generated.node_modules_pnpm_typescript_6_0_3_node_modules_typescript_lib_lib_dom_d.mouseevent",
+                "sourcePath": "node_modules/.pnpm/typescript@6.0.3/node_modules/typescript/lib/lib.dom.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "TableRowEventPayload",
+                "kind": "interface",
+                "type": "TableRowEventPayload<T, R>",
+                "resolvedType": null,
+                "description": "Payload emitted for table row interaction events.",
+                "descriptionKey": "api.generated.headless_src_components_table_types.tableroweventpayload",
+                "sourcePath": "headless/src/components/table/types.ts",
+                "typeParameters": [
+                  "T extends TableBaseData = TableBaseData",
+                  "R extends TableUnifiedKey = TableUnifiedKey"
+                ],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "rowMouseleave",
+            "type": "[event: MouseEvent, payload: TableRowEventPayload<T, R>]",
+            "parameters": "event: MouseEvent, payload: TableRowEventPayload<T, R>",
+            "required": true,
+            "description": "Emitted when the pointer leaves a row.",
+            "descriptionKey": "api.generated.src_components_table_types.tableemits.callables.rowmouseleave",
+            "sourcePath": "headless/src/components/table/types.ts",
+            "referencedTypes": [
+              {
+                "name": "MouseEvent",
+                "kind": "interface",
+                "type": "MouseEvent",
+                "resolvedType": null,
+                "description": "The **`MouseEvent`** interface represents events that occur due to the user interacting with a pointing device (such as a mouse). Common events using this interface include click, dblclick, mouseup, mousedown.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent)",
+                "descriptionKey": "api.generated.node_modules_pnpm_typescript_6_0_3_node_modules_typescript_lib_lib_dom_d.mouseevent",
+                "sourcePath": "node_modules/.pnpm/typescript@6.0.3/node_modules/typescript/lib/lib.dom.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "TableRowEventPayload",
+                "kind": "interface",
+                "type": "TableRowEventPayload<T, R>",
+                "resolvedType": null,
+                "description": "Payload emitted for table row interaction events.",
+                "descriptionKey": "api.generated.headless_src_components_table_types.tableroweventpayload",
+                "sourcePath": "headless/src/components/table/types.ts",
+                "typeParameters": [
+                  "T extends TableBaseData = TableBaseData",
+                  "R extends TableUnifiedKey = TableUnifiedKey"
+                ],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
           }
         ],
         "referencedTypes": []
@@ -2091,12 +2291,12 @@
       "emits": {
         "kind": "emits",
         "name": "TableCompactEmits",
-        "type": "TypeAlias TableCompactEmits<R, M>",
-        "resolvedType": "{ \"update:sortState\": [state: TableSortState | undefined]; \"update:filterState\": [state: TableFilterState]; \"update:columnWidths\": [state: TableColumnWidthState]; \"update:expanded\": [expanded: R[]]; \"update:selected\": [selected: M extends true ? R[] : R | undefined] }",
+        "type": "TypeAlias TableCompactEmits<T, R, M>",
+        "resolvedType": "{ \"update:sortState\": [state: TableSortState | undefined]; \"update:filterState\": [state: TableFilterState]; \"update:columnWidths\": [state: TableColumnWidthState]; \"update:expanded\": [expanded: R[]]; \"update:selected\": [selected: M extends true ? R[] : R | undefined]; rowClick: [event: MouseEvent, payload: TableRowEventPayload<T, R>]; rowDblclick: [event: MouseEvent, payload: TableRowEventPayload<T, R>]; rowContextmenu: [event: MouseEvent, payload: TableRowEventPayload<T, R>]; rowMouseenter: [event: MouseEvent, payload: TableRowEventPayload<T, R>]; rowMouseleave: [event: MouseEvent, payload: TableRowEventPayload<T, R>] }",
         "description": "Events for the TableCompact component.",
         "descriptionKey": "api.generated.headless_src_components_table_types.tablecompactemits.emits",
         "sourcePath": "headless/src/components/table/types.ts",
-        "typeParameters": ["TypeParameter R", "TypeParameter M"],
+        "typeParameters": ["TypeParameter T", "TypeParameter R", "TypeParameter M"],
         "members": [],
         "callables": [
           {
@@ -2190,6 +2390,206 @@
             "descriptionKey": "api.generated.headless_src_components_table_types.tablecompactemits.callables.update_selected",
             "sourcePath": "headless/src/components/table/types.ts",
             "referencedTypes": []
+          },
+          {
+            "name": "rowClick",
+            "type": "[event: MouseEvent, payload: TableRowEventPayload<T, R>]",
+            "parameters": "event: MouseEvent, payload: TableRowEventPayload<T, R>",
+            "required": true,
+            "description": "Emitted when a row is clicked.",
+            "descriptionKey": "api.generated.headless_src_components_table_types.tablecompactemits.callables.rowclick",
+            "sourcePath": "headless/src/components/table/types.ts",
+            "referencedTypes": [
+              {
+                "name": "MouseEvent",
+                "kind": "interface",
+                "type": "MouseEvent",
+                "resolvedType": null,
+                "description": "The **`MouseEvent`** interface represents events that occur due to the user interacting with a pointing device (such as a mouse). Common events using this interface include click, dblclick, mouseup, mousedown.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent)",
+                "descriptionKey": "api.generated.node_modules_pnpm_typescript_6_0_3_node_modules_typescript_lib_lib_dom_d.mouseevent",
+                "sourcePath": "node_modules/.pnpm/typescript@6.0.3/node_modules/typescript/lib/lib.dom.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "TableRowEventPayload",
+                "kind": "interface",
+                "type": "TableRowEventPayload<T, R>",
+                "resolvedType": null,
+                "description": "Payload emitted for table row interaction events.",
+                "descriptionKey": "api.generated.headless_src_components_table_types.tableroweventpayload",
+                "sourcePath": "headless/src/components/table/types.ts",
+                "typeParameters": [
+                  "T extends TableBaseData = TableBaseData",
+                  "R extends TableUnifiedKey = TableUnifiedKey"
+                ],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "rowDblclick",
+            "type": "[event: MouseEvent, payload: TableRowEventPayload<T, R>]",
+            "parameters": "event: MouseEvent, payload: TableRowEventPayload<T, R>",
+            "required": true,
+            "description": "Emitted when a row is double clicked.",
+            "descriptionKey": "api.generated.headless_src_components_table_types.tablecompactemits.callables.rowdblclick",
+            "sourcePath": "headless/src/components/table/types.ts",
+            "referencedTypes": [
+              {
+                "name": "MouseEvent",
+                "kind": "interface",
+                "type": "MouseEvent",
+                "resolvedType": null,
+                "description": "The **`MouseEvent`** interface represents events that occur due to the user interacting with a pointing device (such as a mouse). Common events using this interface include click, dblclick, mouseup, mousedown.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent)",
+                "descriptionKey": "api.generated.node_modules_pnpm_typescript_6_0_3_node_modules_typescript_lib_lib_dom_d.mouseevent",
+                "sourcePath": "node_modules/.pnpm/typescript@6.0.3/node_modules/typescript/lib/lib.dom.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "TableRowEventPayload",
+                "kind": "interface",
+                "type": "TableRowEventPayload<T, R>",
+                "resolvedType": null,
+                "description": "Payload emitted for table row interaction events.",
+                "descriptionKey": "api.generated.headless_src_components_table_types.tableroweventpayload",
+                "sourcePath": "headless/src/components/table/types.ts",
+                "typeParameters": [
+                  "T extends TableBaseData = TableBaseData",
+                  "R extends TableUnifiedKey = TableUnifiedKey"
+                ],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "rowContextmenu",
+            "type": "[event: MouseEvent, payload: TableRowEventPayload<T, R>]",
+            "parameters": "event: MouseEvent, payload: TableRowEventPayload<T, R>",
+            "required": true,
+            "description": "Emitted when a row context menu is triggered.",
+            "descriptionKey": "api.generated.headless_src_components_table_types.tablecompactemits.callables.rowcontextmenu",
+            "sourcePath": "headless/src/components/table/types.ts",
+            "referencedTypes": [
+              {
+                "name": "MouseEvent",
+                "kind": "interface",
+                "type": "MouseEvent",
+                "resolvedType": null,
+                "description": "The **`MouseEvent`** interface represents events that occur due to the user interacting with a pointing device (such as a mouse). Common events using this interface include click, dblclick, mouseup, mousedown.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent)",
+                "descriptionKey": "api.generated.node_modules_pnpm_typescript_6_0_3_node_modules_typescript_lib_lib_dom_d.mouseevent",
+                "sourcePath": "node_modules/.pnpm/typescript@6.0.3/node_modules/typescript/lib/lib.dom.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "TableRowEventPayload",
+                "kind": "interface",
+                "type": "TableRowEventPayload<T, R>",
+                "resolvedType": null,
+                "description": "Payload emitted for table row interaction events.",
+                "descriptionKey": "api.generated.headless_src_components_table_types.tableroweventpayload",
+                "sourcePath": "headless/src/components/table/types.ts",
+                "typeParameters": [
+                  "T extends TableBaseData = TableBaseData",
+                  "R extends TableUnifiedKey = TableUnifiedKey"
+                ],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "rowMouseenter",
+            "type": "[event: MouseEvent, payload: TableRowEventPayload<T, R>]",
+            "parameters": "event: MouseEvent, payload: TableRowEventPayload<T, R>",
+            "required": true,
+            "description": "Emitted when the pointer enters a row.",
+            "descriptionKey": "api.generated.headless_src_components_table_types.tablecompactemits.callables.rowmouseenter",
+            "sourcePath": "headless/src/components/table/types.ts",
+            "referencedTypes": [
+              {
+                "name": "MouseEvent",
+                "kind": "interface",
+                "type": "MouseEvent",
+                "resolvedType": null,
+                "description": "The **`MouseEvent`** interface represents events that occur due to the user interacting with a pointing device (such as a mouse). Common events using this interface include click, dblclick, mouseup, mousedown.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent)",
+                "descriptionKey": "api.generated.node_modules_pnpm_typescript_6_0_3_node_modules_typescript_lib_lib_dom_d.mouseevent",
+                "sourcePath": "node_modules/.pnpm/typescript@6.0.3/node_modules/typescript/lib/lib.dom.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "TableRowEventPayload",
+                "kind": "interface",
+                "type": "TableRowEventPayload<T, R>",
+                "resolvedType": null,
+                "description": "Payload emitted for table row interaction events.",
+                "descriptionKey": "api.generated.headless_src_components_table_types.tableroweventpayload",
+                "sourcePath": "headless/src/components/table/types.ts",
+                "typeParameters": [
+                  "T extends TableBaseData = TableBaseData",
+                  "R extends TableUnifiedKey = TableUnifiedKey"
+                ],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "rowMouseleave",
+            "type": "[event: MouseEvent, payload: TableRowEventPayload<T, R>]",
+            "parameters": "event: MouseEvent, payload: TableRowEventPayload<T, R>",
+            "required": true,
+            "description": "Emitted when the pointer leaves a row.",
+            "descriptionKey": "api.generated.headless_src_components_table_types.tablecompactemits.callables.rowmouseleave",
+            "sourcePath": "headless/src/components/table/types.ts",
+            "referencedTypes": [
+              {
+                "name": "MouseEvent",
+                "kind": "interface",
+                "type": "MouseEvent",
+                "resolvedType": null,
+                "description": "The **`MouseEvent`** interface represents events that occur due to the user interacting with a pointing device (such as a mouse). Common events using this interface include click, dblclick, mouseup, mousedown.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent)",
+                "descriptionKey": "api.generated.node_modules_pnpm_typescript_6_0_3_node_modules_typescript_lib_lib_dom_d.mouseevent",
+                "sourcePath": "node_modules/.pnpm/typescript@6.0.3/node_modules/typescript/lib/lib.dom.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "TableRowEventPayload",
+                "kind": "interface",
+                "type": "TableRowEventPayload<T, R>",
+                "resolvedType": null,
+                "description": "Payload emitted for table row interaction events.",
+                "descriptionKey": "api.generated.headless_src_components_table_types.tableroweventpayload",
+                "sourcePath": "headless/src/components/table/types.ts",
+                "typeParameters": [
+                  "T extends TableBaseData = TableBaseData",
+                  "R extends TableUnifiedKey = TableUnifiedKey"
+                ],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
           }
         ],
         "referencedTypes": []

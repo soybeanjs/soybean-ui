@@ -6,7 +6,7 @@
         "kind": "props",
         "name": "ConfigProviderProps",
         "type": "Interface ConfigProviderProps",
-        "resolvedType": "{ theme?: ThemeOptions; size?: ThemeSize; iconify?: IconifyOptions; progress?: Partial<ProgressProviderProps>; toast?: Partial<ToastProviderProps>; customToast?: boolean; dir?: Direction; locale?: string; nonce?: string; tooltip?: Partial<TooltipProviderProps>; nuxt?: boolean; iconRender?: ((icon: IconValue) => VNode); messages?: LocaleMessagesOverrides }",
+        "resolvedType": "{ theme?: ThemeOptions; size?: ThemeSize; iconify?: IconifyOptions; progress?: Partial<ProgressProviderProps>; toast?: Partial<ToastProviderProps>; customToast?: boolean; dir?: Direction; locale?: string; nonce?: string; tooltip?: Partial<TooltipProviderProps>; iconRender?: ((icon: IconValue) => VNode); messages?: LocaleMessagesOverrides }",
         "description": "Properties for the ConfigProvider component.",
         "descriptionKey": "api.generated.src_components_config_provider_types.configproviderprops.props",
         "sourcePath": "src/components/config-provider/types.ts",
@@ -28,8 +28,8 @@
                 "type": "ThemeOptions",
                 "resolvedType": null,
                 "description": "theme options",
-                "descriptionKey": "api.generated.node_modules_pnpm_soybeanjs_shadcn_theme_0_3_1_node_modules_soybeanjs_shadcn_theme_dist_index_d.themeoptions",
-                "sourcePath": "node_modules/.pnpm/@soybeanjs+shadcn-theme@0.3.1/node_modules/@soybeanjs/shadcn-theme/dist/index.d.ts",
+                "descriptionKey": "api.generated.node_modules_pnpm_soybeanjs_shadcn_theme_0_3_3_node_modules_soybeanjs_shadcn_theme_dist_index_d.themeoptions",
+                "sourcePath": "node_modules/.pnpm/@soybeanjs+shadcn-theme@0.3.3/node_modules/@soybeanjs/shadcn-theme/dist/index.d.ts",
                 "typeParameters": [],
                 "external": true,
                 "members": [],
@@ -244,17 +244,6 @@
             ]
           },
           {
-            "name": "nuxt",
-            "type": "boolean",
-            "required": false,
-            "description": "Whether the application is running in Nuxt.",
-            "descriptionKey": "api.generated.src_components_config_provider_types.configproviderprops.members.nuxt",
-            "default": null,
-            "inheritedFrom": "_ConfigProviderProps.nuxt",
-            "sourcePath": "headless/src/components/config-provider/types.ts",
-            "referencedTypes": []
-          },
-          {
             "name": "iconRender",
             "type": "((icon: IconValue) => VNode)",
             "required": false,
@@ -283,8 +272,8 @@
                 "type": "VNode",
                 "resolvedType": null,
                 "description": "",
-                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_34_node_modules_vue_runtime_core_dist_runtime_core_d.vnode",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.34/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_35_node_modules_vue_runtime_core_dist_runtime_core_d.vnode",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.35/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
                 "typeParameters": [
                   "HostNode = RendererNode",
                   "HostElement = RendererElement",

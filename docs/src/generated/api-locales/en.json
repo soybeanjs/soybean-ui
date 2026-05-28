@@ -1947,6 +1947,7 @@
             "defaultformat": "Default format.",
             "defaultopen": "The open state of the dialog when it is initially rendered. Use when you do not need to control its open state.",
             "defaultvalue": "Default value.",
+            "dir": "The direction of the content. Used to determine the placement when not explicitly provided and for RTL flipping behavior.",
             "disabled": "Whether the component is disabled.",
             "fieldprops": "Properties forwarded to the field element.",
             "format": "Format.",
@@ -3097,7 +3098,7 @@
             "defaultopen": "The open state of the dialog when it is initially rendered. Use when you do not need to control its open state.",
             "defaultplaceholder": "Default placeholder.",
             "defaultvalue": "Default value.",
-            "dir": "Reading direction of the component.",
+            "dir": "The direction of the content. Used to determine the placement when not explicitly provided and for RTL flipping behavior.",
             "disabled": "Whether the component is disabled.",
             "disabledaysoutsidecurrentview": "Whether to disable days outside current view.",
             "fixedweeks": "Whether fixed weeks.",
@@ -3290,7 +3291,7 @@
             "defaultopen": "The open state of the dialog when it is initially rendered. Use when you do not need to control its open state.",
             "defaultplaceholder": "Default placeholder.",
             "defaultvalue": "Default value.",
-            "dir": "Reading direction of the component.",
+            "dir": "The direction of the content. Used to determine the placement when not explicitly provided and for RTL flipping behavior.",
             "disabled": "Whether the component is disabled.",
             "disabledaysoutsidecurrentview": "Whether to disable days outside current view.",
             "fixeddate": "Fixed date.",
@@ -4211,6 +4212,7 @@
             "arrowprops": "Properties forwarded to the arrow element.",
             "closedelay": "The duration from when the pointer leaves the trigger or popup until the hover card closes.",
             "defaultopen": "The open state of the hover card when it is initially rendered. Use when you do not need to control its open state.",
+            "dir": "The direction of the content. Used to determine the placement when not explicitly provided and for RTL flipping behavior.",
             "open": "The controlled open state of the hover card.",
             "opendelay": "The duration from when the pointer enters the trigger until the hover card opens.",
             "placement": "Placement.",
@@ -4282,6 +4284,7 @@
           "members": {
             "closedelay": "The duration from when the pointer leaves the trigger or popup until the hover card closes.",
             "defaultopen": "The open state of the hover card when it is initially rendered. Use when you do not need to control its open state.",
+            "dir": "The direction of the content. Used to determine the placement when not explicitly provided and for RTL flipping behavior.",
             "open": "The controlled open state of the hover card.",
             "opendelay": "The duration from when the pointer enters the trigger until the hover card opens."
           },
@@ -6139,6 +6142,7 @@
             "defaultopen": "The open state of the dialog when it is initially rendered. Use when you do not need to control its open state.",
             "description": "Description text rendered by the component.",
             "descriptionprops": "Properties forwarded to the description element.",
+            "dir": "The direction of the content. Used to determine the placement when not explicitly provided and for RTL flipping behavior.",
             "disabled": "Whether the component is disabled.",
             "footerprops": "Properties forwarded to the footer element.",
             "headerprops": "Properties forwarded to the header element.",
@@ -6246,6 +6250,7 @@
             "arrowprops": "Properties forwarded to the arrow element.",
             "closeprops": "Properties forwarded to the close element.",
             "defaultopen": "The open state of the dialog when it is initially rendered. Use when you do not need to control its open state.",
+            "dir": "The direction of the content. Used to determine the placement when not explicitly provided and for RTL flipping behavior.",
             "disabled": "Whether the component is disabled.",
             "modal": "The modality of the dialog. When set to `true`, interaction with outside elements will be disabled and only dialog\ncontent will be visible to screen readers.",
             "open": "The controlled open state of the dialog. Can be bound with `v-model:open`.",
@@ -6324,6 +6329,7 @@
         "popoverrootprops": {
           "members": {
             "defaultopen": "The open state of the dialog when it is initially rendered. Use when you do not need to control its open state.",
+            "dir": "The direction of the content. Used to determine the placement when not explicitly provided and for RTL flipping behavior.",
             "disabled": "Whether the component is disabled.",
             "modal": "The modality of the dialog. When set to `true`, interaction with outside elements will be disabled and only dialog\ncontent will be visible to screen readers.",
             "open": "The controlled open state of the dialog. Can be bound with `v-model:open`."
@@ -7327,6 +7333,11 @@
         },
         "tablecompactemits": {
           "callables": {
+            "rowclick": "Emitted when a row is clicked.",
+            "rowcontextmenu": "Emitted when a row context menu is triggered.",
+            "rowdblclick": "Emitted when a row is double clicked.",
+            "rowmouseenter": "Emitted when the pointer enters a row.",
+            "rowmouseleave": "Emitted when the pointer leaves a row.",
             "update_columnwidths": "Emitted when the column widths value changes.",
             "update_expanded": "Emitted when the expanded state changes.",
             "update_filterstate": "Emitted when the filter state value changes.",
@@ -7560,6 +7571,7 @@
           "props": "Properties for the TableRoot component."
         },
         "tablerowchildrenresolver": "Type information for TableRowChildrenResolver.",
+        "tableroweventpayload": "Payload emitted for table row interaction events.",
         "tablerowprops": {
           "props": "Properties for the TableRow component."
         },
@@ -8369,6 +8381,7 @@
             "content": "Content.",
             "defaultopen": "The open state of the tooltip when it is initially rendered. Use when you do not need to control its open state.",
             "delayduration": "The duration from when the pointer enters the trigger until the tooltip gets opened.",
+            "dir": "The direction of the content. Used to determine the placement when not explicitly provided and for RTL flipping behavior.",
             "disableclosingtrigger": "When `true`, clicking on trigger will not close the content.",
             "disabled": "When `true`, disable tooltip",
             "disablehoverablecontent": "When `true`, trying to hover the content will result in the tooltip closing as the pointer leaves the trigger.",
@@ -8457,6 +8470,7 @@
           "members": {
             "defaultopen": "The open state of the tooltip when it is initially rendered. Use when you do not need to control its open state.",
             "delayduration": "The duration from when the pointer enters the trigger until the tooltip gets opened.",
+            "dir": "The direction of the content. Used to determine the placement when not explicitly provided and for RTL flipping behavior.",
             "disableclosingtrigger": "When `true`, clicking on trigger will not close the content.",
             "disabled": "When `true`, disable tooltip",
             "disablehoverablecontent": "When `true`, trying to hover the content will result in the tooltip closing as the pointer leaves the trigger.",
@@ -8859,6 +8873,15 @@
       "headless_src_composables_use_collection": {
         "collectionitemdata": ""
       },
+      "headless_src_composables_use_fuse": {
+        "usefuseoptions": {
+          "members": {
+            "fuseoptions": "",
+            "matchallwhensearchempty": "",
+            "resultlimit": ""
+          }
+        }
+      },
       "headless_src_date_formatter": {
         "formatter": {
           "callables": {
@@ -9005,10 +9028,10 @@
       "node_modules_pnpm_internationalized_date_3_12_1_node_modules_internationalized_date_dist_types_src_calendardate_d": {
         "datevalue": ""
       },
-      "node_modules_pnpm_soybeanjs_shadcn_theme_0_3_1_node_modules_soybeanjs_shadcn_theme_dist_index_d": {
+      "node_modules_pnpm_soybeanjs_shadcn_theme_0_3_3_node_modules_soybeanjs_shadcn_theme_dist_index_d": {
         "themeoptions": "theme options"
       },
-      "node_modules_pnpm_tanstack_virtual_core_3_15_0_node_modules_tanstack_virtual_core_dist_esm_index_d": {
+      "node_modules_pnpm_tanstack_virtual_core_3_16_0_node_modules_tanstack_virtual_core_dist_esm_index_d": {
         "virtualitem": ""
       },
       "node_modules_pnpm_typescript_6_0_3_node_modules_typescript_lib_lib_dom_d": {
@@ -9027,24 +9050,21 @@
       "node_modules_pnpm_typescript_6_0_3_node_modules_typescript_lib_lib_es5_d": {
         "numberformatoptions": ""
       },
-      "node_modules_pnpm_vue_reactivity_3_5_34_node_modules_vue_reactivity_dist_reactivity_d": {
+      "node_modules_pnpm_vue_reactivity_3_5_35_node_modules_vue_reactivity_dist_reactivity_d": {
         "computedref": ""
       },
-      "node_modules_pnpm_vue_router_5_0_7_vue_compiler_sfc_3_5_34_vue_3_5_34_typescript_6_0_3_node_modules_vue_router_dist_useapi_d6ckosfy_d": {
+      "node_modules_pnpm_vue_router_5_0_7_vue_compiler_sfc_3_5_35_pinia_3_0_4_typescript_6_0_3_vue_3_5_35_types_7931d4f66b0cace2893a738c1776d796_node_modules_vue_router_dist_useapi_d6ckosfy_d": {
         "routelocationraw": "Route location that can be passed to `router.push()` and other user-facing APIs."
       },
-      "node_modules_pnpm_vue_runtime_core_3_5_34_node_modules_vue_runtime_core_dist_runtime_core_d": {
+      "node_modules_pnpm_vue_runtime_core_3_5_35_node_modules_vue_runtime_core_dist_runtime_core_d": {
         "component": "A type used in public APIs where a component type is expected.\nThe constructor type is an artificial type returned by defineComponent().",
         "vnode": ""
       },
-      "node_modules_pnpm_vue_runtime_dom_3_5_34_node_modules_vue_runtime_dom_dist_runtime_dom_d": {
+      "node_modules_pnpm_vue_runtime_dom_3_5_35_node_modules_vue_runtime_dom_dist_runtime_dom_d": {
         "htmlattributes": "",
         "imghtmlattributes": "",
         "inputtypehtmlattribute": "",
         "lihtmlattributes": ""
-      },
-      "node_modules_pnpm_vueuse_integrations_14_3_0_vue_3_5_34_typescript_6_0_3_node_modules_vueuse_integrations_dist_usefuse_d": {
-        "usefuseoptions": ""
       },
       "src_components_accordion_types": {
         "accordionemits": {
@@ -9465,7 +9485,7 @@
             "color": "Theme color of the component.",
             "disabled": "Whether the component is disabled.",
             "fitcontent": "Whether the component should fit its content width.",
-            "icon": "The icon name of iconify.",
+            "icon": "The icon value of iconify.",
             "iconclass": "The class of the icon.",
             "iconprops": "The props of the icon.",
             "shadow": "Shadow style of the component.",
@@ -9684,6 +9704,12 @@
         }
       },
       "src_components_card_types": {
+        "cardemits": {
+          "callables": {
+            "update_open": "Event handler called when the open state of the collapsible changes."
+          },
+          "emits": "Events for the Card component."
+        },
         "cardprops": {
           "members": {
             "as": "The element or component this component should render as. Can be overwrite by `asChild`",
@@ -9707,6 +9733,19 @@
             "unmountonhide": "When `true`, the element will be unmounted on closed state."
           },
           "props": "Properties for the Card component."
+        },
+        "cardslots": {
+          "callables": {
+            "default": "Custom content for the default slot.",
+            "description": "Custom content for the description slot.",
+            "extra": "Custom content for the extra slot.",
+            "footer": "Custom content for the footer slot.",
+            "header": "Custom content for the header slot.",
+            "title": "Custom content for the title slot.",
+            "title_leading": "Custom content for the title leading slot.",
+            "title_trailing": "Custom content for the title trailing slot."
+          },
+          "slots": "Slots for the Card component."
         }
       },
       "src_components_carousel_types": {
@@ -10005,6 +10044,7 @@
             "defaultformat": "Default format.",
             "defaultopen": "The open state of the dialog when it is initially rendered. Use when you do not need to control its open state.",
             "defaultvalue": "Default value.",
+            "dir": "The direction of the content. Used to determine the placement when not explicitly provided and for RTL flipping behavior.",
             "disabled": "Whether the component is disabled.",
             "fieldprops": "Properties forwarded to the field element.",
             "format": "Format.",
@@ -10275,7 +10315,6 @@
             "locale": "The global locale of your application. This will be inherited by all components.",
             "messages": "Overrides for built-in component locale messages. Merged on top of the locale selected by the\n`locale` prop, so you only need to supply the keys you want to change.",
             "nonce": "The global `nonce` value of your application. This will be inherited by the related components.",
-            "nuxt": "Whether the application is running in Nuxt.",
             "progress": "The global top progress configuration of your application.",
             "size": "The size options.",
             "theme": "The theme options.",
@@ -10555,7 +10594,7 @@
             "defaultopen": "The open state of the dialog when it is initially rendered. Use when you do not need to control its open state.",
             "defaultplaceholder": "Default placeholder.",
             "defaultvalue": "Default value.",
-            "dir": "Reading direction of the component.",
+            "dir": "The direction of the content. Used to determine the placement when not explicitly provided and for RTL flipping behavior.",
             "disabled": "Whether the component is disabled.",
             "disabledaysoutsidecurrentview": "Whether to disable days outside current view.",
             "fixedweeks": "Whether fixed weeks.",
@@ -10682,7 +10721,7 @@
             "defaultopen": "The open state of the dialog when it is initially rendered. Use when you do not need to control its open state.",
             "defaultplaceholder": "Default placeholder.",
             "defaultvalue": "Default value.",
-            "dir": "Reading direction of the component.",
+            "dir": "The direction of the content. Used to determine the placement when not explicitly provided and for RTL flipping behavior.",
             "disabled": "Whether the component is disabled.",
             "disabledaysoutsidecurrentview": "Whether to disable days outside current view.",
             "fixeddate": "Fixed date.",
@@ -11198,6 +11237,7 @@
             "class": "class of popup",
             "closedelay": "The duration from when the pointer leaves the trigger or popup until the hover card closes.",
             "defaultopen": "The open state of the hover card when it is initially rendered. Use when you do not need to control its open state.",
+            "dir": "The direction of the content. Used to determine the placement when not explicitly provided and for RTL flipping behavior.",
             "open": "The controlled open state of the hover card.",
             "opendelay": "The duration from when the pointer enters the trigger until the hover card opens.",
             "placement": "Placement.",
@@ -11837,6 +11877,7 @@
             "defaultopen": "The open state of the dialog when it is initially rendered. Use when you do not need to control its open state.",
             "description": "Description text rendered by the component.",
             "descriptionprops": "Properties forwarded to the description element.",
+            "dir": "The direction of the content. Used to determine the placement when not explicitly provided and for RTL flipping behavior.",
             "disabled": "Whether the component is disabled.",
             "footerprops": "Properties forwarded to the footer element.",
             "headerprops": "Properties forwarded to the header element.",
@@ -11889,6 +11930,7 @@
             "class": "class of popup",
             "closeprops": "Properties forwarded to the close element.",
             "defaultopen": "The open state of the dialog when it is initially rendered. Use when you do not need to control its open state.",
+            "dir": "The direction of the content. Used to determine the placement when not explicitly provided and for RTL flipping behavior.",
             "disabled": "Whether the component is disabled.",
             "modal": "The modality of the dialog. When set to `true`, interaction with outside elements will be disabled and only dialog\ncontent will be visible to screen readers.",
             "open": "The controlled open state of the dialog. Can be bound with `v-model:open`.",
@@ -12391,6 +12433,11 @@
       "src_components_table_types": {
         "tableemits": {
           "callables": {
+            "rowclick": "Emitted when a row is clicked.",
+            "rowcontextmenu": "Emitted when a row context menu is triggered.",
+            "rowdblclick": "Emitted when a row is double clicked.",
+            "rowmouseenter": "Emitted when the pointer enters a row.",
+            "rowmouseleave": "Emitted when the pointer leaves a row.",
             "update_columnwidths": "Emitted when the column widths value changes.",
             "update_expanded": "Emitted when the expanded state changes.",
             "update_filterstate": "Emitted when the filter state value changes.",
@@ -12872,6 +12919,7 @@
             "content": "Content.",
             "defaultopen": "The open state of the tooltip when it is initially rendered. Use when you do not need to control its open state.",
             "delayduration": "The duration from when the pointer enters the trigger until the tooltip gets opened.",
+            "dir": "The direction of the content. Used to determine the placement when not explicitly provided and for RTL flipping behavior.",
             "disableclosingtrigger": "When `true`, clicking on trigger will not close the content.",
             "disabled": "When `true`, disable tooltip",
             "disablehoverablecontent": "When `true`, trying to hover the content will result in the tooltip closing as the pointer leaves the trigger.",

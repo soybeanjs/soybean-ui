@@ -6,7 +6,7 @@
         "kind": "props",
         "name": "PopconfirmProps",
         "type": "Interface PopconfirmProps",
-        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<PopconfirmUi>; type?: PopconfirmType; placement?: Placement; title?: string; description?: string; content?: string; showArrow?: boolean; showIcon?: boolean; confirmText?: string; cancelText?: string; showCancel?: boolean | 'onlyWarning'; triggerProps?: PopconfirmTriggerProps; portalProps?: PopconfirmPortalProps; positionerProps?: PopconfirmPositionerProps; popupProps?: PopconfirmPopupProps; arrowProps?: PopconfirmArrowProps; closeProps?: PopconfirmCloseProps; headerProps?: PopconfirmHeaderProps; titleProps?: PopconfirmTitleProps; descriptionProps?: PopconfirmDescriptionProps; contentProps?: PopconfirmContentProps; footerProps?: PopconfirmFooterProps; confirmProps?: PopconfirmConfirmProps; cancelProps?: PopconfirmCancelProps; disabled?: boolean; open?: boolean; defaultOpen?: boolean; modal?: boolean }",
+        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<PopconfirmUi>; type?: PopconfirmType; placement?: Placement; title?: string; description?: string; content?: string; showArrow?: boolean; showIcon?: boolean; confirmText?: string; cancelText?: string; showCancel?: boolean | 'onlyWarning'; triggerProps?: PopconfirmTriggerProps; portalProps?: PopconfirmPortalProps; positionerProps?: PopconfirmPositionerProps; popupProps?: PopconfirmPopupProps; arrowProps?: PopconfirmArrowProps; closeProps?: PopconfirmCloseProps; headerProps?: PopconfirmHeaderProps; titleProps?: PopconfirmTitleProps; descriptionProps?: PopconfirmDescriptionProps; contentProps?: PopconfirmContentProps; footerProps?: PopconfirmFooterProps; confirmProps?: PopconfirmConfirmProps; cancelProps?: PopconfirmCancelProps; disabled?: boolean; dir?: Direction; open?: boolean; defaultOpen?: boolean; modal?: boolean }",
         "description": "Properties for the Popconfirm component.",
         "descriptionKey": "api.generated.src_components_popconfirm_types.popconfirmprops.props",
         "sourcePath": "src/components/popconfirm/types.ts",
@@ -1008,6 +1008,31 @@
             "referencedTypes": []
           },
           {
+            "name": "dir",
+            "type": "Direction",
+            "required": false,
+            "description": "The direction of the content. Used to determine the placement when not explicitly provided and for RTL flipping behavior.",
+            "descriptionKey": "api.generated.src_components_popconfirm_types.popconfirmprops.members.dir",
+            "default": null,
+            "inheritedFrom": "PopconfirmCompactProps.dir",
+            "sourcePath": "headless/src/components/popper/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Direction",
+                "kind": "typeAlias",
+                "type": "'ltr' | 'rtl'",
+                "resolvedType": "'ltr' | 'rtl'",
+                "description": "",
+                "descriptionKey": "api.generated.headless_src_types_common.direction",
+                "sourcePath": "headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
             "name": "open",
             "type": "boolean",
             "required": false,
@@ -1687,8 +1712,8 @@
                 "type": "Component",
                 "resolvedType": null,
                 "description": "A type used in public APIs where a component type is expected.\nThe constructor type is an artificial type returned by defineComponent().",
-                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_34_node_modules_vue_runtime_core_dist_runtime_core_d.component",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.34/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_35_node_modules_vue_runtime_core_dist_runtime_core_d.component",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.35/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
                 "typeParameters": [
                   "PropsOrInstance = any",
                   "RawBindings = any",
@@ -1767,7 +1792,7 @@
         "kind": "props",
         "name": "PopconfirmCompactProps",
         "type": "Interface PopconfirmCompactProps",
-        "resolvedType": "{ type?: PopconfirmType; placement?: Placement; title?: string; description?: string; content?: string; showArrow?: boolean; showIcon?: boolean; confirmText?: string; cancelText?: string; showCancel?: boolean | 'onlyWarning'; triggerProps?: PopconfirmTriggerProps; portalProps?: PopconfirmPortalProps; positionerProps?: PopconfirmPositionerProps; popupProps?: PopconfirmPopupProps; arrowProps?: PopconfirmArrowProps; closeProps?: PopconfirmCloseProps; headerProps?: PopconfirmHeaderProps; titleProps?: PopconfirmTitleProps; descriptionProps?: PopconfirmDescriptionProps; contentProps?: PopconfirmContentProps; footerProps?: PopconfirmFooterProps; confirmProps?: PopconfirmConfirmProps; cancelProps?: PopconfirmCancelProps; disabled?: boolean; open?: boolean; defaultOpen?: boolean; modal?: boolean }",
+        "resolvedType": "{ type?: PopconfirmType; placement?: Placement; title?: string; description?: string; content?: string; showArrow?: boolean; showIcon?: boolean; confirmText?: string; cancelText?: string; showCancel?: boolean | 'onlyWarning'; triggerProps?: PopconfirmTriggerProps; portalProps?: PopconfirmPortalProps; positionerProps?: PopconfirmPositionerProps; popupProps?: PopconfirmPopupProps; arrowProps?: PopconfirmArrowProps; closeProps?: PopconfirmCloseProps; headerProps?: PopconfirmHeaderProps; titleProps?: PopconfirmTitleProps; descriptionProps?: PopconfirmDescriptionProps; contentProps?: PopconfirmContentProps; footerProps?: PopconfirmFooterProps; confirmProps?: PopconfirmConfirmProps; cancelProps?: PopconfirmCancelProps; disabled?: boolean; dir?: Direction; open?: boolean; defaultOpen?: boolean; modal?: boolean }",
         "description": "Properties for the PopconfirmCompact component.",
         "descriptionKey": "api.generated.headless_src_components_popconfirm_types.popconfirmcompactprops.props",
         "sourcePath": "headless/src/components/popconfirm/types.ts",
@@ -2694,6 +2719,31 @@
             "referencedTypes": []
           },
           {
+            "name": "dir",
+            "type": "Direction",
+            "required": false,
+            "description": "The direction of the content. Used to determine the placement when not explicitly provided and for RTL flipping behavior.",
+            "descriptionKey": "api.generated.headless_src_components_popconfirm_types.popconfirmcompactprops.members.dir",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/popper/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Direction",
+                "kind": "typeAlias",
+                "type": "'ltr' | 'rtl'",
+                "resolvedType": "'ltr' | 'rtl'",
+                "description": "",
+                "descriptionKey": "api.generated.headless_src_types_common.direction",
+                "sourcePath": "headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
             "name": "open",
             "type": "boolean",
             "required": false,
@@ -3192,8 +3242,8 @@
                 "type": "Component",
                 "resolvedType": null,
                 "description": "A type used in public APIs where a component type is expected.\nThe constructor type is an artificial type returned by defineComponent().",
-                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_34_node_modules_vue_runtime_core_dist_runtime_core_d.component",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.34/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_35_node_modules_vue_runtime_core_dist_runtime_core_d.component",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.35/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
                 "typeParameters": [
                   "PropsOrInstance = any",
                   "RawBindings = any",

@@ -6,7 +6,7 @@
         "kind": "props",
         "name": "PopoverProps",
         "type": "Interface PopoverProps",
-        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<PopoverUi>; placement?: import(\"@/index\").Placement; showArrow?: boolean; triggerProps?: PopoverTriggerProps; portalProps?: PopoverPortalProps; positionerProps?: PopoverPositionerProps; popupProps?: PopoverPopupProps; arrowProps?: PopoverArrowProps; closeProps?: PopoverCloseProps; disabled?: boolean; open?: boolean; defaultOpen?: boolean; modal?: boolean }",
+        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<PopoverUi>; placement?: import(\"@/index\").Placement; showArrow?: boolean; triggerProps?: PopoverTriggerProps; portalProps?: PopoverPortalProps; positionerProps?: PopoverPositionerProps; popupProps?: PopoverPopupProps; arrowProps?: PopoverArrowProps; closeProps?: PopoverCloseProps; disabled?: boolean; dir?: Direction; open?: boolean; defaultOpen?: boolean; modal?: boolean }",
         "description": "Properties for the Popover component.",
         "descriptionKey": "api.generated.src_components_popover_types.popoverprops.props",
         "sourcePath": "src/components/popover/types.ts",
@@ -627,6 +627,31 @@
             "referencedTypes": []
           },
           {
+            "name": "dir",
+            "type": "Direction",
+            "required": false,
+            "description": "The direction of the content. Used to determine the placement when not explicitly provided and for RTL flipping behavior.",
+            "descriptionKey": "api.generated.src_components_popover_types.popoverprops.members.dir",
+            "default": null,
+            "inheritedFrom": "dir",
+            "sourcePath": "headless/src/components/popper/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Direction",
+                "kind": "typeAlias",
+                "type": "'ltr' | 'rtl'",
+                "resolvedType": "'ltr' | 'rtl'",
+                "description": "",
+                "descriptionKey": "api.generated.headless_src_types_common.direction",
+                "sourcePath": "headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
             "name": "open",
             "type": "boolean",
             "required": false,
@@ -1147,8 +1172,8 @@
                 "type": "Component",
                 "resolvedType": null,
                 "description": "A type used in public APIs where a component type is expected.\nThe constructor type is an artificial type returned by defineComponent().",
-                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_34_node_modules_vue_runtime_core_dist_runtime_core_d.component",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.34/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_35_node_modules_vue_runtime_core_dist_runtime_core_d.component",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.35/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
                 "typeParameters": [
                   "PropsOrInstance = any",
                   "RawBindings = any",
@@ -1174,7 +1199,7 @@
         "kind": "props",
         "name": "PopoverCompactProps",
         "type": "Interface PopoverCompactProps",
-        "resolvedType": "{ placement?: import(\"@/index\").Placement; showArrow?: boolean; triggerProps?: PopoverTriggerProps; portalProps?: PopoverPortalProps; positionerProps?: PopoverPositionerProps; popupProps?: PopoverPopupProps; arrowProps?: PopoverArrowProps; closeProps?: PopoverCloseProps; disabled?: boolean; open?: boolean; defaultOpen?: boolean; modal?: boolean }",
+        "resolvedType": "{ placement?: import(\"@/index\").Placement; showArrow?: boolean; triggerProps?: PopoverTriggerProps; portalProps?: PopoverPortalProps; positionerProps?: PopoverPositionerProps; popupProps?: PopoverPopupProps; arrowProps?: PopoverArrowProps; closeProps?: PopoverCloseProps; disabled?: boolean; dir?: Direction; open?: boolean; defaultOpen?: boolean; modal?: boolean }",
         "description": "Properties for the PopoverCompact component.",
         "descriptionKey": "api.generated.headless_src_components_popover_types.popovercompactprops.props",
         "sourcePath": "headless/src/components/popover/types.ts",
@@ -1718,6 +1743,31 @@
             "inheritedFrom": "disabled",
             "sourcePath": "headless/src/components/popover/types.ts",
             "referencedTypes": []
+          },
+          {
+            "name": "dir",
+            "type": "Direction",
+            "required": false,
+            "description": "The direction of the content. Used to determine the placement when not explicitly provided and for RTL flipping behavior.",
+            "descriptionKey": "api.generated.headless_src_components_popover_types.popovercompactprops.members.dir",
+            "default": null,
+            "inheritedFrom": "dir",
+            "sourcePath": "headless/src/components/popper/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Direction",
+                "kind": "typeAlias",
+                "type": "'ltr' | 'rtl'",
+                "resolvedType": "'ltr' | 'rtl'",
+                "description": "",
+                "descriptionKey": "api.generated.headless_src_types_common.direction",
+                "sourcePath": "headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
           },
           {
             "name": "open",
@@ -2583,7 +2633,7 @@
         "kind": "props",
         "name": "PopoverRootProps",
         "type": "Interface PopoverRootProps",
-        "resolvedType": "{ disabled?: boolean; open?: boolean; defaultOpen?: boolean; modal?: boolean }",
+        "resolvedType": "{ disabled?: boolean; dir?: Direction; open?: boolean; defaultOpen?: boolean; modal?: boolean }",
         "description": "Properties for the PopoverRoot component.",
         "descriptionKey": "api.generated.headless_src_components_popover_types.popoverrootprops.props",
         "sourcePath": "headless/src/components/popover/types.ts",
@@ -2599,6 +2649,31 @@
             "inheritedFrom": null,
             "sourcePath": "headless/src/components/popover/types.ts",
             "referencedTypes": []
+          },
+          {
+            "name": "dir",
+            "type": "Direction",
+            "required": false,
+            "description": "The direction of the content. Used to determine the placement when not explicitly provided and for RTL flipping behavior.",
+            "descriptionKey": "api.generated.headless_src_components_popover_types.popoverrootprops.members.dir",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/popper/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Direction",
+                "kind": "typeAlias",
+                "type": "'ltr' | 'rtl'",
+                "resolvedType": "'ltr' | 'rtl'",
+                "description": "",
+                "descriptionKey": "api.generated.headless_src_types_common.direction",
+                "sourcePath": "headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
           },
           {
             "name": "open",
@@ -2761,8 +2836,8 @@
                 "type": "Component",
                 "resolvedType": null,
                 "description": "A type used in public APIs where a component type is expected.\nThe constructor type is an artificial type returned by defineComponent().",
-                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_34_node_modules_vue_runtime_core_dist_runtime_core_d.component",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.34/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_35_node_modules_vue_runtime_core_dist_runtime_core_d.component",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.35/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
                 "typeParameters": [
                   "PropsOrInstance = any",
                   "RawBindings = any",

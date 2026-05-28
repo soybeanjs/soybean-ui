@@ -1947,6 +1947,7 @@
             "defaultformat": "默认格式",
             "defaultopen": "对话框初始呈现时的打开状态。在不需要控制其打开状态时使用。",
             "defaultvalue": "默认值。",
+            "dir": "内容的方向。用于在未明确提供时确定位置，并用于 RTL 翻转行为。",
             "disabled": "组件是否禁用。",
             "fieldprops": "转发到字段元素的属性。",
             "format": "格式。",
@@ -3097,7 +3098,7 @@
             "defaultopen": "对话框初始呈现时的打开状态。在不需要控制其打开状态时使用。",
             "defaultplaceholder": "默认占位符。",
             "defaultvalue": "默认值。",
-            "dir": "组件的阅读方向。",
+            "dir": "内容的方向。用于在未明确提供时确定位置，并用于 RTL 翻转行为。",
             "disabled": "组件是否禁用。",
             "disabledaysoutsidecurrentview": "是否禁用当前视图以外的天数。",
             "fixedweeks": "是否固定周数。",
@@ -3290,7 +3291,7 @@
             "defaultopen": "对话框初始呈现时的打开状态。在不需要控制其打开状态时使用。",
             "defaultplaceholder": "默认占位符。",
             "defaultvalue": "默认值。",
-            "dir": "组件的阅读方向。",
+            "dir": "内容的方向。用于在未明确提供时确定位置，并用于 RTL 翻转行为。",
             "disabled": "组件是否禁用。",
             "disabledaysoutsidecurrentview": "是否禁用当前视图以外的天数。",
             "fixeddate": "固定日期。",
@@ -4211,6 +4212,7 @@
             "arrowprops": "转发到箭头元素的属性。",
             "closedelay": "从指针离开触发器或弹出窗口到悬浮卡关闭的持续时间。",
             "defaultopen": "悬浮卡初始呈现时的打开状态。在不需要控制其打开状态时使用。",
+            "dir": "内容的方向。用于在未明确提供时确定位置，并用于 RTL 翻转行为。",
             "open": "悬浮卡的受控打开状态。",
             "opendelay": "从指针进入触发器到悬停卡打开的持续时间。",
             "placement": "放置。",
@@ -4282,6 +4284,7 @@
           "members": {
             "closedelay": "从指针离开触发器或弹出窗口到悬浮卡关闭的持续时间。",
             "defaultopen": "悬浮卡初始呈现时的打开状态。在不需要控制其打开状态时使用。",
+            "dir": "内容的方向。用于在未明确提供时确定位置，并用于 RTL 翻转行为。",
             "open": "悬浮卡的受控打开状态。",
             "opendelay": "从指针进入触发器到悬停卡打开的持续时间。"
           },
@@ -6139,6 +6142,7 @@
             "defaultopen": "对话框初始呈现时的打开状态。在不需要控制其打开状态时使用。",
             "description": "组件呈现的描述文本。",
             "descriptionprops": "转发到描述元素的属性。",
+            "dir": "内容的方向。用于在未明确提供时确定位置，并用于 RTL 翻转行为。",
             "disabled": "组件是否禁用。",
             "footerprops": "转发到页脚元素的属性。",
             "headerprops": "转发到标题元素的属性。",
@@ -6246,6 +6250,7 @@
             "arrowprops": "转发到箭头元素的属性。",
             "closeprops": "属性转发到 close 元素。",
             "defaultopen": "对话框初始呈现时的打开状态。在不需要控制其打开状态时使用。",
+            "dir": "内容的方向。用于在未明确提供时确定位置，并用于 RTL 翻转行为。",
             "disabled": "组件是否禁用。",
             "modal": "对话框的模式。设置为 \"true \"时，与外部元素的交互将被禁用，屏幕阅读器只能看到对话框的内容。\n内容对屏幕阅读器可见。",
             "open": "对话框的受控打开状态。可与 `v-model:open`绑定。",
@@ -6324,6 +6329,7 @@
         "popoverrootprops": {
           "members": {
             "defaultopen": "对话框初始呈现时的打开状态。在不需要控制其打开状态时使用。",
+            "dir": "内容的方向。用于在未明确提供时确定位置，并用于 RTL 翻转行为。",
             "disabled": "组件是否禁用。",
             "modal": "对话框的模式。设置为 \"true \"时，与外部元素的交互将被禁用，屏幕阅读器只能看到对话框的内容。\n内容对屏幕阅读器可见。",
             "open": "对话框的受控打开状态。可与 `v-model:open`绑定。"
@@ -7327,6 +7333,11 @@
         },
         "tablecompactemits": {
           "callables": {
+            "rowclick": "点击一行时发出。",
+            "rowcontextmenu": "触发行上下文菜单时发出。",
+            "rowdblclick": "当双击一行时发出。",
+            "rowmouseenter": "当指针进入一行时发出。",
+            "rowmouseleave": "当指针离开一行时发出。",
             "update_columnwidths": "在列宽值发生变化时发出。",
             "update_expanded": "当扩展状态发生变化时输出。",
             "update_filterstate": "当过滤器状态值发生变化时发出。",
@@ -7560,6 +7571,7 @@
           "props": "TableRoot 组件的属性。"
         },
         "tablerowchildrenresolver": "TableRowChildrenResolver 的类型信息。",
+        "tableroweventpayload": "表行交互事件的有效载荷。",
         "tablerowprops": {
           "props": "TableRow 组件的属性。"
         },
@@ -8369,6 +8381,7 @@
             "content": "内容。",
             "defaultopen": "工具提示最初呈现时的打开状态。在不需要控制其打开状态时使用。",
             "delayduration": "从指针进入触发器到打开工具提示的持续时间。",
+            "dir": "内容的方向。用于在未明确提供时确定位置，并用于 RTL 翻转行为。",
             "disableclosingtrigger": "true \"时，点击触发器不会关闭内容。",
             "disabled": "true \"时，禁用工具提示",
             "disablehoverablecontent": "当 \"true \"时，尝试悬停内容将导致工具提示在指针离开触发器时关闭。",
@@ -8457,6 +8470,7 @@
           "members": {
             "defaultopen": "工具提示最初呈现时的打开状态。在不需要控制其打开状态时使用。",
             "delayduration": "从指针进入触发器到打开工具提示的持续时间。",
+            "dir": "内容的方向。用于在未明确提供时确定位置，并用于 RTL 翻转行为。",
             "disableclosingtrigger": "true \"时，点击触发器不会关闭内容。",
             "disabled": "true \"时，禁用工具提示",
             "disablehoverablecontent": "当 \"true \"时，尝试悬停内容将导致工具提示在指针离开触发器时关闭。",
@@ -8859,6 +8873,15 @@
       "headless_src_composables_use_collection": {
         "collectionitemdata": ""
       },
+      "headless_src_composables_use_fuse": {
+        "usefuseoptions": {
+          "members": {
+            "fuseoptions": "",
+            "matchallwhensearchempty": "",
+            "resultlimit": ""
+          }
+        }
+      },
       "headless_src_date_formatter": {
         "formatter": {
           "callables": {
@@ -9005,10 +9028,10 @@
       "node_modules_pnpm_internationalized_date_3_12_1_node_modules_internationalized_date_dist_types_src_calendardate_d": {
         "datevalue": ""
       },
-      "node_modules_pnpm_soybeanjs_shadcn_theme_0_3_1_node_modules_soybeanjs_shadcn_theme_dist_index_d": {
+      "node_modules_pnpm_soybeanjs_shadcn_theme_0_3_3_node_modules_soybeanjs_shadcn_theme_dist_index_d": {
         "themeoptions": "主题选项"
       },
-      "node_modules_pnpm_tanstack_virtual_core_3_15_0_node_modules_tanstack_virtual_core_dist_esm_index_d": {
+      "node_modules_pnpm_tanstack_virtual_core_3_16_0_node_modules_tanstack_virtual_core_dist_esm_index_d": {
         "virtualitem": ""
       },
       "node_modules_pnpm_typescript_6_0_3_node_modules_typescript_lib_lib_dom_d": {
@@ -9027,24 +9050,21 @@
       "node_modules_pnpm_typescript_6_0_3_node_modules_typescript_lib_lib_es5_d": {
         "numberformatoptions": ""
       },
-      "node_modules_pnpm_vue_reactivity_3_5_34_node_modules_vue_reactivity_dist_reactivity_d": {
+      "node_modules_pnpm_vue_reactivity_3_5_35_node_modules_vue_reactivity_dist_reactivity_d": {
         "computedref": ""
       },
-      "node_modules_pnpm_vue_router_5_0_7_vue_compiler_sfc_3_5_34_vue_3_5_34_typescript_6_0_3_node_modules_vue_router_dist_useapi_d6ckosfy_d": {
+      "node_modules_pnpm_vue_router_5_0_7_vue_compiler_sfc_3_5_35_pinia_3_0_4_typescript_6_0_3_vue_3_5_35_types_7931d4f66b0cace2893a738c1776d796_node_modules_vue_router_dist_useapi_d6ckosfy_d": {
         "routelocationraw": "可传递给 `router.push()` 和其他面向用户的 API 的路由位置。"
       },
-      "node_modules_pnpm_vue_runtime_core_3_5_34_node_modules_vue_runtime_core_dist_runtime_core_d": {
+      "node_modules_pnpm_vue_runtime_core_3_5_35_node_modules_vue_runtime_core_dist_runtime_core_d": {
         "component": "在公共 API 中使用的一种类型，该类型应具有组件类型。\n构造函数类型是 defineComponent() 返回的人工类型。",
         "vnode": ""
       },
-      "node_modules_pnpm_vue_runtime_dom_3_5_34_node_modules_vue_runtime_dom_dist_runtime_dom_d": {
+      "node_modules_pnpm_vue_runtime_dom_3_5_35_node_modules_vue_runtime_dom_dist_runtime_dom_d": {
         "htmlattributes": "",
         "imghtmlattributes": "",
         "inputtypehtmlattribute": "",
         "lihtmlattributes": ""
-      },
-      "node_modules_pnpm_vueuse_integrations_14_3_0_vue_3_5_34_typescript_6_0_3_node_modules_vueuse_integrations_dist_usefuse_d": {
-        "usefuseoptions": ""
       },
       "src_components_accordion_types": {
         "accordionemits": {
@@ -9465,7 +9485,7 @@
             "color": "组件的主题颜色。",
             "disabled": "组件是否禁用。",
             "fitcontent": "组件是否应适合其内容宽度。",
-            "icon": "iconify 的图标名称",
+            "icon": "iconify 的图标值",
             "iconclass": "图标的类别。",
             "iconprops": "图标的道具",
             "shadow": "组件的阴影风格。",
@@ -9684,6 +9704,12 @@
         }
       },
       "src_components_card_types": {
+        "cardemits": {
+          "callables": {
+            "update_open": "当可折叠控件的打开状态发生变化时，调用事件处理程序。"
+          },
+          "emits": "卡片组件的事件"
+        },
         "cardprops": {
           "members": {
             "as": "该组件应呈现为的元素或组件。可被 `asChild` 改写",
@@ -9707,6 +9733,19 @@
             "unmountonhide": "true \"时，元素将在关闭状态下卸载。"
           },
           "props": "卡片组件的属性"
+        },
+        "cardslots": {
+          "callables": {
+            "default": "默认插槽的自定义内容。",
+            "description": "自定义描述槽的内容。",
+            "extra": "额外插槽的自定义内容。",
+            "footer": "页脚槽的自定义内容。",
+            "header": "标题槽的自定义内容。",
+            "title": "标题槽的自定义内容。",
+            "title_leading": "标题前导槽的自定义内容。",
+            "title_trailing": "标题尾部槽的自定义内容。"
+          },
+          "slots": "卡片组件的插槽。"
         }
       },
       "src_components_carousel_types": {
@@ -10005,6 +10044,7 @@
             "defaultformat": "默认格式",
             "defaultopen": "对话框初始呈现时的打开状态。在不需要控制其打开状态时使用。",
             "defaultvalue": "默认值。",
+            "dir": "内容的方向。用于在未明确提供时确定位置，并用于 RTL 翻转行为。",
             "disabled": "组件是否禁用。",
             "fieldprops": "转发到字段元素的属性。",
             "format": "格式。",
@@ -10275,7 +10315,6 @@
             "locale": "应用程序的全局语言。这将由所有组件继承。",
             "messages": "覆盖内置组件的本地化信息。在由\n`locale` prop 所选的 locale 上合并，因此你只需提供你想更改的键值。",
             "nonce": "应用程序的全局 `nonce` 值。相关组件将继承该值。",
-            "nuxt": "应用程序是否在 Nuxt.NET 中运行。",
             "progress": "应用程序的全局最高进度配置。",
             "size": "大小选项",
             "theme": "主题选项",
@@ -10555,7 +10594,7 @@
             "defaultopen": "对话框初始呈现时的打开状态。在不需要控制其打开状态时使用。",
             "defaultplaceholder": "默认占位符。",
             "defaultvalue": "默认值。",
-            "dir": "组件的阅读方向。",
+            "dir": "内容的方向。用于在未明确提供时确定位置，并用于 RTL 翻转行为。",
             "disabled": "组件是否禁用。",
             "disabledaysoutsidecurrentview": "是否禁用当前视图以外的天数。",
             "fixedweeks": "是否固定周数。",
@@ -10682,7 +10721,7 @@
             "defaultopen": "对话框初始呈现时的打开状态。在不需要控制其打开状态时使用。",
             "defaultplaceholder": "默认占位符。",
             "defaultvalue": "默认值。",
-            "dir": "组件的阅读方向。",
+            "dir": "内容的方向。用于在未明确提供时确定位置，并用于 RTL 翻转行为。",
             "disabled": "组件是否禁用。",
             "disabledaysoutsidecurrentview": "是否禁用当前视图以外的天数。",
             "fixeddate": "固定日期。",
@@ -11198,6 +11237,7 @@
             "class": "弹出类",
             "closedelay": "从指针离开触发器或弹出窗口到悬浮卡关闭的持续时间。",
             "defaultopen": "悬浮卡初始呈现时的打开状态。在不需要控制其打开状态时使用。",
+            "dir": "内容的方向。用于在未明确提供时确定位置，并用于 RTL 翻转行为。",
             "open": "悬浮卡的受控打开状态。",
             "opendelay": "从指针进入触发器到悬停卡打开的持续时间。",
             "placement": "放置。",
@@ -11837,6 +11877,7 @@
             "defaultopen": "对话框初始呈现时的打开状态。在不需要控制其打开状态时使用。",
             "description": "组件呈现的描述文本。",
             "descriptionprops": "转发到描述元素的属性。",
+            "dir": "内容的方向。用于在未明确提供时确定位置，并用于 RTL 翻转行为。",
             "disabled": "组件是否禁用。",
             "footerprops": "转发到页脚元素的属性。",
             "headerprops": "转发到标题元素的属性。",
@@ -11889,6 +11930,7 @@
             "class": "弹出类",
             "closeprops": "属性转发到 close 元素。",
             "defaultopen": "对话框初始呈现时的打开状态。在不需要控制其打开状态时使用。",
+            "dir": "内容的方向。用于在未明确提供时确定位置，并用于 RTL 翻转行为。",
             "disabled": "组件是否禁用。",
             "modal": "对话框的模式。设置为 \"true \"时，与外部元素的交互将被禁用，屏幕阅读器只能看到对话框的内容。\n内容对屏幕阅读器可见。",
             "open": "对话框的受控打开状态。可与 `v-model:open`绑定。",
@@ -12391,6 +12433,11 @@
       "src_components_table_types": {
         "tableemits": {
           "callables": {
+            "rowclick": "点击一行时发出。",
+            "rowcontextmenu": "触发行上下文菜单时发出。",
+            "rowdblclick": "当双击一行时发出。",
+            "rowmouseenter": "当指针进入一行时发出。",
+            "rowmouseleave": "当指针离开一行时发出。",
             "update_columnwidths": "在列宽值发生变化时发出。",
             "update_expanded": "当扩展状态发生变化时输出。",
             "update_filterstate": "当过滤器状态值发生变化时发出。",
@@ -12872,6 +12919,7 @@
             "content": "内容。",
             "defaultopen": "工具提示最初呈现时的打开状态。在不需要控制其打开状态时使用。",
             "delayduration": "从指针进入触发器到打开工具提示的持续时间。",
+            "dir": "内容的方向。用于在未明确提供时确定位置，并用于 RTL 翻转行为。",
             "disableclosingtrigger": "true \"时，点击触发器不会关闭内容。",
             "disabled": "true \"时，禁用工具提示",
             "disablehoverablecontent": "当 \"true \"时，尝试悬停内容将导致工具提示在指针离开触发器时关闭。",

@@ -6,7 +6,7 @@
         "kind": "props",
         "name": "DatePickerProps",
         "type": "Interface DatePickerProps",
-        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<DatePickerUi>; calendarUi?: Partial<CalendarUi>; dateFieldProps?: BaseProps; placement?: import(\"@/index\").Placement; showArrow?: boolean; triggerProps?: PopoverTriggerProps; portalProps?: PortalProps; positionerProps?: PopoverPositionerProps; popupProps?: PopoverPopupProps; arrowProps?: PopperArrowProps; closeProps?: PopoverCloseProps; disabled?: boolean; open?: boolean; defaultOpen?: boolean; modal?: boolean; headerProps?: CalendarHeaderProps; headingProps?: CalendarHeadingProps; prevProps?: CalendarPrevProps; nextProps?: CalendarNextProps; gridProps?: CalendarGridProps; gridHeadProps?: CalendarGridHeadProps; gridBodyProps?: CalendarGridBodyProps; gridRowProps?: CalendarGridRowProps; headCellProps?: CalendarHeadCellProps; cellProps?: CalendarCellProps; cellTriggerProps?: CalendarCellTriggerProps; dir?: Direction; locale?: string; modelValue?: DateValue; defaultValue?: DateValue; multiple?: false; placeholder?: DateValue; defaultPlaceholder?: DateValue; readonly?: boolean; pagedNavigation?: boolean; preventDeselect?: boolean; weekStartsOn?: WeekStartsOn; weekdayFormat?: WeekDayFormat; calendarLabel?: string; fixedWeeks?: boolean; maxValue?: DateValue; minValue?: DateValue; numberOfMonths?: number; initialFocus?: boolean; isDateDisabled?: DateMatcher; isDateUnavailable?: DateMatcher; nextPage?: ((placeholder: DateValue) => DateValue); prevPage?: ((placeholder: DateValue) => DateValue); disableDaysOutsideCurrentView?: boolean; asChild?: boolean; as?: AsTag | Component }",
+        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<DatePickerUi>; calendarUi?: Partial<CalendarUi>; dateFieldProps?: BaseProps; placement?: import(\"@/index\").Placement; showArrow?: boolean; triggerProps?: PopoverTriggerProps; portalProps?: PortalProps; positionerProps?: PopoverPositionerProps; popupProps?: PopoverPopupProps; arrowProps?: PopperArrowProps; closeProps?: PopoverCloseProps; disabled?: boolean; dir?: Direction; open?: boolean; defaultOpen?: boolean; modal?: boolean; headerProps?: CalendarHeaderProps; headingProps?: CalendarHeadingProps; prevProps?: CalendarPrevProps; nextProps?: CalendarNextProps; gridProps?: CalendarGridProps; gridHeadProps?: CalendarGridHeadProps; gridBodyProps?: CalendarGridBodyProps; gridRowProps?: CalendarGridRowProps; headCellProps?: CalendarHeadCellProps; cellProps?: CalendarCellProps; cellTriggerProps?: CalendarCellTriggerProps; locale?: string; modelValue?: DateValue; defaultValue?: DateValue; multiple?: false; placeholder?: DateValue; defaultPlaceholder?: DateValue; readonly?: boolean; pagedNavigation?: boolean; preventDeselect?: boolean; weekStartsOn?: WeekStartsOn; weekdayFormat?: WeekDayFormat; calendarLabel?: string; fixedWeeks?: boolean; maxValue?: DateValue; minValue?: DateValue; numberOfMonths?: number; initialFocus?: boolean; isDateDisabled?: DateMatcher; isDateUnavailable?: DateMatcher; nextPage?: ((placeholder: DateValue) => DateValue); prevPage?: ((placeholder: DateValue) => DateValue); disableDaysOutsideCurrentView?: boolean; asChild?: boolean; as?: AsTag | Component }",
         "description": "Properties for the DatePicker component.",
         "descriptionKey": "api.generated.src_components_date_picker_types.datepickerprops.props",
         "sourcePath": "src/components/date-picker/types.ts",
@@ -675,6 +675,31 @@
             "inheritedFrom": "disabled",
             "sourcePath": "headless/src/components/popover/types.ts",
             "referencedTypes": []
+          },
+          {
+            "name": "dir",
+            "type": "Direction",
+            "required": false,
+            "description": "The direction of the content. Used to determine the placement when not explicitly provided and for RTL flipping behavior.",
+            "descriptionKey": "api.generated.src_components_date_picker_types.datepickerprops.members.dir",
+            "default": null,
+            "inheritedFrom": "dir",
+            "sourcePath": "headless/src/components/popper/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Direction",
+                "kind": "typeAlias",
+                "type": "'ltr' | 'rtl'",
+                "resolvedType": "'ltr' | 'rtl'",
+                "description": "",
+                "descriptionKey": "api.generated.headless_src_types_common.direction",
+                "sourcePath": "headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
           },
           {
             "name": "open",
@@ -1359,31 +1384,6 @@
             ]
           },
           {
-            "name": "dir",
-            "type": "Direction",
-            "required": false,
-            "description": "Reading direction of the component.",
-            "descriptionKey": "api.generated.src_components_date_picker_types.datepickerprops.members.dir",
-            "default": null,
-            "inheritedFrom": "dir",
-            "sourcePath": "headless/src/components/calendar/types.ts",
-            "referencedTypes": [
-              {
-                "name": "Direction",
-                "kind": "typeAlias",
-                "type": "'ltr' | 'rtl'",
-                "resolvedType": "'ltr' | 'rtl'",
-                "description": "",
-                "descriptionKey": "api.generated.headless_src_types_common.direction",
-                "sourcePath": "headless/src/types/common.ts",
-                "typeParameters": [],
-                "external": false,
-                "members": [],
-                "callables": []
-              }
-            ]
-          },
-          {
             "name": "locale",
             "type": "string",
             "required": false,
@@ -1820,8 +1820,8 @@
                 "type": "Component",
                 "resolvedType": null,
                 "description": "A type used in public APIs where a component type is expected.\nThe constructor type is an artificial type returned by defineComponent().",
-                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_34_node_modules_vue_runtime_core_dist_runtime_core_d.component",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.34/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_35_node_modules_vue_runtime_core_dist_runtime_core_d.component",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.35/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
                 "typeParameters": [
                   "PropsOrInstance = any",
                   "RawBindings = any",
@@ -2181,7 +2181,7 @@
         "kind": "props",
         "name": "DatePickerCompactProps",
         "type": "Interface DatePickerCompactProps",
-        "resolvedType": "{ dateFieldProps?: BaseProps; placement?: import(\"@/index\").Placement; showArrow?: boolean; triggerProps?: PopoverTriggerProps; portalProps?: PortalProps; positionerProps?: PopoverPositionerProps; popupProps?: PopoverPopupProps; arrowProps?: PopperArrowProps; closeProps?: PopoverCloseProps; disabled?: boolean; open?: boolean; defaultOpen?: boolean; modal?: boolean; headerProps?: CalendarHeaderProps; headingProps?: CalendarHeadingProps; prevProps?: CalendarPrevProps; nextProps?: CalendarNextProps; gridProps?: CalendarGridProps; gridHeadProps?: CalendarGridHeadProps; gridBodyProps?: CalendarGridBodyProps; gridRowProps?: CalendarGridRowProps; headCellProps?: CalendarHeadCellProps; cellProps?: CalendarCellProps; cellTriggerProps?: CalendarCellTriggerProps; dir?: Direction; locale?: string; modelValue?: DateValue; defaultValue?: DateValue; multiple?: false; placeholder?: DateValue; defaultPlaceholder?: DateValue; readonly?: boolean; pagedNavigation?: boolean; preventDeselect?: boolean; weekStartsOn?: WeekStartsOn; weekdayFormat?: WeekDayFormat; calendarLabel?: string; fixedWeeks?: boolean; maxValue?: DateValue; minValue?: DateValue; numberOfMonths?: number; initialFocus?: boolean; isDateDisabled?: DateMatcher; isDateUnavailable?: DateMatcher; nextPage?: ((placeholder: DateValue) => DateValue); prevPage?: ((placeholder: DateValue) => DateValue); disableDaysOutsideCurrentView?: boolean; asChild?: boolean; as?: AsTag | Component }",
+        "resolvedType": "{ dateFieldProps?: BaseProps; placement?: import(\"@/index\").Placement; showArrow?: boolean; triggerProps?: PopoverTriggerProps; portalProps?: PortalProps; positionerProps?: PopoverPositionerProps; popupProps?: PopoverPopupProps; arrowProps?: PopperArrowProps; closeProps?: PopoverCloseProps; disabled?: boolean; dir?: Direction; open?: boolean; defaultOpen?: boolean; modal?: boolean; headerProps?: CalendarHeaderProps; headingProps?: CalendarHeadingProps; prevProps?: CalendarPrevProps; nextProps?: CalendarNextProps; gridProps?: CalendarGridProps; gridHeadProps?: CalendarGridHeadProps; gridBodyProps?: CalendarGridBodyProps; gridRowProps?: CalendarGridRowProps; headCellProps?: CalendarHeadCellProps; cellProps?: CalendarCellProps; cellTriggerProps?: CalendarCellTriggerProps; locale?: string; modelValue?: DateValue; defaultValue?: DateValue; multiple?: false; placeholder?: DateValue; defaultPlaceholder?: DateValue; readonly?: boolean; pagedNavigation?: boolean; preventDeselect?: boolean; weekStartsOn?: WeekStartsOn; weekdayFormat?: WeekDayFormat; calendarLabel?: string; fixedWeeks?: boolean; maxValue?: DateValue; minValue?: DateValue; numberOfMonths?: number; initialFocus?: boolean; isDateDisabled?: DateMatcher; isDateUnavailable?: DateMatcher; nextPage?: ((placeholder: DateValue) => DateValue); prevPage?: ((placeholder: DateValue) => DateValue); disableDaysOutsideCurrentView?: boolean; asChild?: boolean; as?: AsTag | Component }",
         "description": "Properties for the DatePickerCompact component.",
         "descriptionKey": "api.generated.headless_src_components_date_picker_types.datepickercompactprops.props",
         "sourcePath": "headless/src/components/date-picker/types.ts",
@@ -2750,6 +2750,31 @@
             "inheritedFrom": "disabled",
             "sourcePath": "headless/src/components/popover/types.ts",
             "referencedTypes": []
+          },
+          {
+            "name": "dir",
+            "type": "Direction",
+            "required": false,
+            "description": "The direction of the content. Used to determine the placement when not explicitly provided and for RTL flipping behavior.",
+            "descriptionKey": "api.generated.headless_src_components_date_picker_types.datepickercompactprops.members.dir",
+            "default": null,
+            "inheritedFrom": "dir",
+            "sourcePath": "headless/src/components/popper/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Direction",
+                "kind": "typeAlias",
+                "type": "'ltr' | 'rtl'",
+                "resolvedType": "'ltr' | 'rtl'",
+                "description": "",
+                "descriptionKey": "api.generated.headless_src_types_common.direction",
+                "sourcePath": "headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
           },
           {
             "name": "open",
@@ -3434,31 +3459,6 @@
             ]
           },
           {
-            "name": "dir",
-            "type": "Direction",
-            "required": false,
-            "description": "Reading direction of the component.",
-            "descriptionKey": "api.generated.headless_src_components_date_picker_types.datepickercompactprops.members.dir",
-            "default": null,
-            "inheritedFrom": "dir",
-            "sourcePath": "headless/src/components/calendar/types.ts",
-            "referencedTypes": [
-              {
-                "name": "Direction",
-                "kind": "typeAlias",
-                "type": "'ltr' | 'rtl'",
-                "resolvedType": "'ltr' | 'rtl'",
-                "description": "",
-                "descriptionKey": "api.generated.headless_src_types_common.direction",
-                "sourcePath": "headless/src/types/common.ts",
-                "typeParameters": [],
-                "external": false,
-                "members": [],
-                "callables": []
-              }
-            ]
-          },
-          {
             "name": "locale",
             "type": "string",
             "required": false,
@@ -3895,8 +3895,8 @@
                 "type": "Component",
                 "resolvedType": null,
                 "description": "A type used in public APIs where a component type is expected.\nThe constructor type is an artificial type returned by defineComponent().",
-                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_34_node_modules_vue_runtime_core_dist_runtime_core_d.component",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.34/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "descriptionKey": "api.generated.node_modules_pnpm_vue_runtime_core_3_5_35_node_modules_vue_runtime_core_dist_runtime_core_d.component",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.35/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
                 "typeParameters": [
                   "PropsOrInstance = any",
                   "RawBindings = any",

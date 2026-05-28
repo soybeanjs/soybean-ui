@@ -6,7 +6,7 @@
         "kind": "props",
         "name": "HoverCardProps",
         "type": "Interface HoverCardProps",
-        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<HoverCardUi>; placement?: import(\"@/index\").Placement; showArrow?: boolean; triggerProps?: PopperAnchorProps; portalProps?: HoverCardPortalProps; positionerProps?: HoverCardPositionerProps; popupProps?: HoverCardPopupProps; arrowProps?: HoverCardArrowProps; defaultOpen?: boolean; open?: boolean; openDelay?: number; closeDelay?: number }",
+        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<HoverCardUi>; placement?: import(\"@/index\").Placement; showArrow?: boolean; triggerProps?: PopperAnchorProps; portalProps?: HoverCardPortalProps; positionerProps?: HoverCardPositionerProps; popupProps?: HoverCardPopupProps; arrowProps?: HoverCardArrowProps; defaultOpen?: boolean; open?: boolean; openDelay?: number; closeDelay?: number; dir?: Direction }",
         "description": "Properties for the HoverCard component.",
         "descriptionKey": "api.generated.src_components_hover_card_types.hovercardprops.props",
         "sourcePath": "src/components/hover-card/types.ts",
@@ -577,6 +577,31 @@
             "inheritedFrom": "closeDelay",
             "sourcePath": "headless/src/components/hover-card/types.ts",
             "referencedTypes": []
+          },
+          {
+            "name": "dir",
+            "type": "Direction",
+            "required": false,
+            "description": "The direction of the content. Used to determine the placement when not explicitly provided and for RTL flipping behavior.",
+            "descriptionKey": "api.generated.src_components_hover_card_types.hovercardprops.members.dir",
+            "default": null,
+            "inheritedFrom": "dir",
+            "sourcePath": "headless/src/components/popper/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Direction",
+                "kind": "typeAlias",
+                "type": "'ltr' | 'rtl'",
+                "resolvedType": "'ltr' | 'rtl'",
+                "description": "",
+                "descriptionKey": "api.generated.headless_src_types_common.direction",
+                "sourcePath": "headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
           }
         ],
         "callables": [],
@@ -809,7 +834,7 @@
         "kind": "props",
         "name": "HoverCardCompactProps",
         "type": "Interface HoverCardCompactProps",
-        "resolvedType": "{ placement?: import(\"@/index\").Placement; showArrow?: boolean; triggerProps?: PopperAnchorProps; portalProps?: HoverCardPortalProps; positionerProps?: HoverCardPositionerProps; popupProps?: HoverCardPopupProps; arrowProps?: HoverCardArrowProps; defaultOpen?: boolean; open?: boolean; openDelay?: number; closeDelay?: number }",
+        "resolvedType": "{ placement?: import(\"@/index\").Placement; showArrow?: boolean; triggerProps?: PopperAnchorProps; portalProps?: HoverCardPortalProps; positionerProps?: HoverCardPositionerProps; popupProps?: HoverCardPopupProps; arrowProps?: HoverCardArrowProps; defaultOpen?: boolean; open?: boolean; openDelay?: number; closeDelay?: number; dir?: Direction }",
         "description": "Properties for the HoverCardCompact component.",
         "descriptionKey": "api.generated.headless_src_components_hover_card_types.hovercardcompactprops.props",
         "sourcePath": "headless/src/components/hover-card/types.ts",
@@ -1305,6 +1330,31 @@
             "inheritedFrom": "closeDelay",
             "sourcePath": "headless/src/components/hover-card/types.ts",
             "referencedTypes": []
+          },
+          {
+            "name": "dir",
+            "type": "Direction",
+            "required": false,
+            "description": "The direction of the content. Used to determine the placement when not explicitly provided and for RTL flipping behavior.",
+            "descriptionKey": "api.generated.headless_src_components_hover_card_types.hovercardcompactprops.members.dir",
+            "default": null,
+            "inheritedFrom": "dir",
+            "sourcePath": "headless/src/components/popper/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Direction",
+                "kind": "typeAlias",
+                "type": "'ltr' | 'rtl'",
+                "resolvedType": "'ltr' | 'rtl'",
+                "description": "",
+                "descriptionKey": "api.generated.headless_src_types_common.direction",
+                "sourcePath": "headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
           }
         ],
         "callables": [],
@@ -1913,7 +1963,7 @@
         "kind": "props",
         "name": "HoverCardRootProps",
         "type": "Interface HoverCardRootProps",
-        "resolvedType": "{ defaultOpen?: boolean; open?: boolean; openDelay?: number; closeDelay?: number }",
+        "resolvedType": "{ defaultOpen?: boolean; open?: boolean; openDelay?: number; closeDelay?: number; dir?: Direction }",
         "description": "Properties for the HoverCardRoot component.",
         "descriptionKey": "api.generated.headless_src_components_hover_card_types.hovercardrootprops.props",
         "sourcePath": "headless/src/components/hover-card/types.ts",
@@ -1962,6 +2012,31 @@
             "inheritedFrom": null,
             "sourcePath": "headless/src/components/hover-card/types.ts",
             "referencedTypes": []
+          },
+          {
+            "name": "dir",
+            "type": "Direction",
+            "required": false,
+            "description": "The direction of the content. Used to determine the placement when not explicitly provided and for RTL flipping behavior.",
+            "descriptionKey": "api.generated.headless_src_components_hover_card_types.hovercardrootprops.members.dir",
+            "default": null,
+            "inheritedFrom": "PopperRootProps.dir",
+            "sourcePath": "headless/src/components/popper/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Direction",
+                "kind": "typeAlias",
+                "type": "'ltr' | 'rtl'",
+                "resolvedType": "'ltr' | 'rtl'",
+                "description": "",
+                "descriptionKey": "api.generated.headless_src_types_common.direction",
+                "sourcePath": "headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
           }
         ],
         "callables": [],

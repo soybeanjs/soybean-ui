@@ -145,13 +145,47 @@
                 "name": "UseFuseOptions",
                 "kind": "interface",
                 "type": "UseFuseOptions<CommandSearchOptionData<T>>",
-                "resolvedType": null,
+                "resolvedType": "{ fuseOptions?: FuseOptions<T>; resultLimit?: number; matchAllWhenSearchEmpty?: boolean }",
                 "description": "",
-                "descriptionKey": "api.generated.node_modules_pnpm_vueuse_integrations_14_3_0_vue_3_5_34_typescript_6_0_3_node_modules_vueuse_integrations_dist_usefuse_d.usefuseoptions",
-                "sourcePath": "node_modules/.pnpm/@vueuse+integrations@14.3.0_vue@3.5.34_typescript@6.0.3_/node_modules/@vueuse/integrations/dist/useFuse.d.ts",
+                "descriptionKey": "api.generated.headless_src_composables_use_fuse.usefuseoptions",
+                "sourcePath": "headless/src/composables/use-fuse.ts",
                 "typeParameters": ["T"],
-                "external": true,
-                "members": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "fuseOptions",
+                    "type": "FuseOptions<T>",
+                    "required": false,
+                    "description": "",
+                    "descriptionKey": "api.generated.headless_src_composables_use_fuse.usefuseoptions.members.fuseoptions",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/composables/use-fuse.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "resultLimit",
+                    "type": "number",
+                    "required": false,
+                    "description": "",
+                    "descriptionKey": "api.generated.headless_src_composables_use_fuse.usefuseoptions.members.resultlimit",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/composables/use-fuse.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "matchAllWhenSearchEmpty",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "",
+                    "descriptionKey": "api.generated.headless_src_composables_use_fuse.usefuseoptions.members.matchallwhensearchempty",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/composables/use-fuse.ts",
+                    "referencedTypes": []
+                  }
+                ],
                 "callables": []
               }
             ]
@@ -1245,13 +1279,47 @@
                 "name": "UseFuseOptions",
                 "kind": "interface",
                 "type": "UseFuseOptions<CommandSearchOptionData<T>>",
-                "resolvedType": null,
+                "resolvedType": "{ fuseOptions?: FuseOptions<T>; resultLimit?: number; matchAllWhenSearchEmpty?: boolean }",
                 "description": "",
-                "descriptionKey": "api.generated.node_modules_pnpm_vueuse_integrations_14_3_0_vue_3_5_34_typescript_6_0_3_node_modules_vueuse_integrations_dist_usefuse_d.usefuseoptions",
-                "sourcePath": "node_modules/.pnpm/@vueuse+integrations@14.3.0_vue@3.5.34_typescript@6.0.3_/node_modules/@vueuse/integrations/dist/useFuse.d.ts",
+                "descriptionKey": "api.generated.headless_src_composables_use_fuse.usefuseoptions",
+                "sourcePath": "headless/src/composables/use-fuse.ts",
                 "typeParameters": ["T"],
-                "external": true,
-                "members": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "fuseOptions",
+                    "type": "FuseOptions<T>",
+                    "required": false,
+                    "description": "",
+                    "descriptionKey": "api.generated.headless_src_composables_use_fuse.usefuseoptions.members.fuseoptions",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/composables/use-fuse.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "resultLimit",
+                    "type": "number",
+                    "required": false,
+                    "description": "",
+                    "descriptionKey": "api.generated.headless_src_composables_use_fuse.usefuseoptions.members.resultlimit",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/composables/use-fuse.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "matchAllWhenSearchEmpty",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "",
+                    "descriptionKey": "api.generated.headless_src_composables_use_fuse.usefuseoptions.members.matchallwhensearchempty",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/composables/use-fuse.ts",
+                    "referencedTypes": []
+                  }
+                ],
                 "callables": []
               }
             ]

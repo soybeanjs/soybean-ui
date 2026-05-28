@@ -6,7 +6,7 @@
         "kind": "props",
         "name": "TooltipProps",
         "type": "Interface TooltipProps",
-        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<TooltipUi>; content?: string; placement?: Placement; showArrow?: boolean; triggerProps?: PopperAnchorProps; portalProps?: TooltipPortalProps; positionerProps?: TooltipPositionerProps; popupProps?: TooltipPopupProps; arrowProps?: TooltipArrowProps; defaultOpen?: boolean; open?: boolean; delayDuration?: number; skipDelayDuration?: number; disableHoverableContent?: boolean; disableClosingTrigger?: boolean; disabled?: boolean; ignoreNonKeyboardFocus?: boolean }",
+        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<TooltipUi>; content?: string; placement?: Placement; showArrow?: boolean; triggerProps?: PopperAnchorProps; portalProps?: TooltipPortalProps; positionerProps?: TooltipPositionerProps; popupProps?: TooltipPopupProps; arrowProps?: TooltipArrowProps; defaultOpen?: boolean; open?: boolean; dir?: Direction; delayDuration?: number; skipDelayDuration?: number; disableHoverableContent?: boolean; disableClosingTrigger?: boolean; disabled?: boolean; ignoreNonKeyboardFocus?: boolean }",
         "description": "Properties for the Tooltip component.",
         "descriptionKey": "api.generated.src_components_tooltip_types.tooltipprops.props",
         "sourcePath": "src/components/tooltip/types.ts",
@@ -594,6 +594,31 @@
             "referencedTypes": []
           },
           {
+            "name": "dir",
+            "type": "Direction",
+            "required": false,
+            "description": "The direction of the content. Used to determine the placement when not explicitly provided and for RTL flipping behavior.",
+            "descriptionKey": "api.generated.src_components_tooltip_types.tooltipprops.members.dir",
+            "default": null,
+            "inheritedFrom": "dir",
+            "sourcePath": "headless/src/components/popper/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Direction",
+                "kind": "typeAlias",
+                "type": "'ltr' | 'rtl'",
+                "resolvedType": "'ltr' | 'rtl'",
+                "description": "",
+                "descriptionKey": "api.generated.headless_src_types_common.direction",
+                "sourcePath": "headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
             "name": "delayDuration",
             "type": "number",
             "required": false,
@@ -856,7 +881,7 @@
         "kind": "props",
         "name": "TooltipCompactProps",
         "type": "Interface TooltipCompactProps",
-        "resolvedType": "{ content?: string; placement?: Placement; showArrow?: boolean; triggerProps?: PopperAnchorProps; portalProps?: TooltipPortalProps; positionerProps?: TooltipPositionerProps; popupProps?: TooltipPopupProps; arrowProps?: TooltipArrowProps; defaultOpen?: boolean; open?: boolean; delayDuration?: number; skipDelayDuration?: number; disableHoverableContent?: boolean; disableClosingTrigger?: boolean; disabled?: boolean; ignoreNonKeyboardFocus?: boolean }",
+        "resolvedType": "{ content?: string; placement?: Placement; showArrow?: boolean; triggerProps?: PopperAnchorProps; portalProps?: TooltipPortalProps; positionerProps?: TooltipPositionerProps; popupProps?: TooltipPopupProps; arrowProps?: TooltipArrowProps; defaultOpen?: boolean; open?: boolean; dir?: Direction; delayDuration?: number; skipDelayDuration?: number; disableHoverableContent?: boolean; disableClosingTrigger?: boolean; disabled?: boolean; ignoreNonKeyboardFocus?: boolean }",
         "description": "Properties for the TooltipCompact component.",
         "descriptionKey": "api.generated.headless_src_components_tooltip_types.tooltipcompactprops.props",
         "sourcePath": "headless/src/components/tooltip/types.ts",
@@ -1367,6 +1392,31 @@
             "inheritedFrom": "open",
             "sourcePath": "headless/src/components/tooltip/types.ts",
             "referencedTypes": []
+          },
+          {
+            "name": "dir",
+            "type": "Direction",
+            "required": false,
+            "description": "The direction of the content. Used to determine the placement when not explicitly provided and for RTL flipping behavior.",
+            "descriptionKey": "api.generated.headless_src_components_tooltip_types.tooltipcompactprops.members.dir",
+            "default": null,
+            "inheritedFrom": "dir",
+            "sourcePath": "headless/src/components/popper/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Direction",
+                "kind": "typeAlias",
+                "type": "'ltr' | 'rtl'",
+                "resolvedType": "'ltr' | 'rtl'",
+                "description": "",
+                "descriptionKey": "api.generated.headless_src_types_common.direction",
+                "sourcePath": "headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
           },
           {
             "name": "delayDuration",
@@ -2323,7 +2373,7 @@
         "kind": "props",
         "name": "TooltipRootProps",
         "type": "Interface TooltipRootProps",
-        "resolvedType": "{ defaultOpen?: boolean; open?: boolean; delayDuration?: number; skipDelayDuration?: number; disableHoverableContent?: boolean; disableClosingTrigger?: boolean; disabled?: boolean; ignoreNonKeyboardFocus?: boolean; positionerProps?: TooltipPositionerProps }",
+        "resolvedType": "{ defaultOpen?: boolean; open?: boolean; dir?: Direction; delayDuration?: number; skipDelayDuration?: number; disableHoverableContent?: boolean; disableClosingTrigger?: boolean; disabled?: boolean; ignoreNonKeyboardFocus?: boolean; positionerProps?: TooltipPositionerProps }",
         "description": "Properties for the TooltipRoot component.",
         "descriptionKey": "api.generated.headless_src_components_tooltip_types.tooltiprootprops.props",
         "sourcePath": "headless/src/components/tooltip/types.ts",
@@ -2350,6 +2400,31 @@
             "inheritedFrom": null,
             "sourcePath": "headless/src/components/tooltip/types.ts",
             "referencedTypes": []
+          },
+          {
+            "name": "dir",
+            "type": "Direction",
+            "required": false,
+            "description": "The direction of the content. Used to determine the placement when not explicitly provided and for RTL flipping behavior.",
+            "descriptionKey": "api.generated.headless_src_components_tooltip_types.tooltiprootprops.members.dir",
+            "default": null,
+            "inheritedFrom": "PopperRootProps.dir",
+            "sourcePath": "headless/src/components/popper/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Direction",
+                "kind": "typeAlias",
+                "type": "'ltr' | 'rtl'",
+                "resolvedType": "'ltr' | 'rtl'",
+                "description": "",
+                "descriptionKey": "api.generated.headless_src_types_common.direction",
+                "sourcePath": "headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
           },
           {
             "name": "delayDuration",
