@@ -1402,6 +1402,10 @@
             "3350e": "update button label to 'Default'",
             "a488b": "simplify bundle deps configuration",
             "e5874": "adjust size properties for tag variants"
+          },
+          "3": {
+            "cb8cc": "update deps",
+            "e2004": "enhance Claude plugin manifest with additional fields"
           }
         }
       }

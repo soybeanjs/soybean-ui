@@ -1,5 +1,20 @@
 # Changelog
 
+## [v0.26.3](https://github.com/soybeanjs/soybean-ui/compare/v0.26.2...v0.26.3) (2026-05-28)
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- **skills**: enhance Claude plugin manifest with additional fields &nbsp;-&nbsp; by **soybeanfe** [<samp>(e2004)</samp>](https://github.com/soybeanjs/soybean-ui/commit/e2004ff7a)
+
+### &nbsp;&nbsp;&nbsp;🏡 Chore
+
+- **deps**: update deps &nbsp;-&nbsp; by **soybeanfe** [<samp>(cb8cc)</samp>](https://github.com/soybeanjs/soybean-ui/commit/cb8cce019)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+
+[soybeanfe](mailto:honghuangdc@gmail.com)
+
 ## [v0.26.2](https://github.com/soybeanjs/soybean-ui/compare/v0.26.1...v0.26.2) (2026-05-28)
 
 ### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
