@@ -13,5 +13,6 @@ export type {
   TimeFieldRootSlotProps,
   TimeFieldInputProps,
   TimeFieldUi,
-  TimeFieldUiSlot
+  TimeFieldUiSlot,
+  TimeValue
 } from './types';

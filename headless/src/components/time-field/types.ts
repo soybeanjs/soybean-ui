@@ -152,4 +152,4 @@ export type TimeFieldUiSlot = 'root' | 'input';
  */
 export type TimeFieldUi = UiClass<TimeFieldUiSlot>;
 
-export type { TimeFieldInputProps };
+export type { TimeFieldInputProps, TimeValue };
