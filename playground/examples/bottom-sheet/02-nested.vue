@@ -2,17 +2,10 @@
 import { ref } from 'vue';
 import { SBottomSheet, SButton } from '@soybeanjs/ui';
 
-const nestedSnapPoints = ['120px', '260px', 1] as const;
-
 const nestedOpen = ref(false);
-const nestedActiveSnapPoint = ref<number | string | null>(nestedSnapPoints[0]);
 
 function closeNestedSheet() {
   nestedOpen.value = false;
-}
-
-function setNestedSnapPoint(point: number | string) {
-  nestedActiveSnapPoint.value = point;
 }
 </script>
 
@@ -27,11 +20,7 @@ function setNestedSnapPoint(point: number | string) {
         The inner sheet uses BottomSheetRootNested so drag, release, and open state stay coordinated with the parent.
       </p>
 
-      <SBottomSheet
-        v-model:open="nestedOpen"
-        v-model:active-snap-point="nestedActiveSnapPoint"
-        :snap-points="nestedSnapPoints"
-      >
+      <SBottomSheet v-model:open="nestedOpen" nested>
         <template #trigger>
           <SButton variant="outline" class="w-fit">Open Nested</SButton>
         </template>
@@ -43,20 +32,6 @@ function setNestedSnapPoint(point: number | string) {
               Use the handle to drag between snap points, or jump directly with the quick actions below.
             </p>
           </div>
-
-          <div class="flex flex-wrap gap-2">
-            <SButton
-              v-for="point in nestedSnapPoints"
-              :key="String(point)"
-              variant="outline"
-              size="sm"
-              @click="setNestedSnapPoint(point)"
-            >
-              {{ point }}
-            </SButton>
-          </div>
-
-          <div class="text-sm text-muted-foreground">Current nested snap point: {{ nestedActiveSnapPoint }}</div>
 
           <SButton size="sm" class="w-fit" @click="closeNestedSheet">Close Nested Sheet</SButton>
         </div>
