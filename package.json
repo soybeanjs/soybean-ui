@@ -75,7 +75,7 @@
     "@soybeanjs/cva": "^0.0.9",
     "@soybeanjs/headless": "workspace:^",
     "@soybeanjs/hooks": "^0.3.0",
-    "@soybeanjs/shadcn-theme": "^0.3.3",
+    "@soybeanjs/shadcn-theme": "^0.3.4",
     "@soybeanjs/utils": "^0.1.1",
     "valibot": "^1.4.1",
     "zod": "^4.4.3"

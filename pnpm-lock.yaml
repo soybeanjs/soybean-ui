@@ -27,8 +27,8 @@ importers:
         specifier: ^0.3.0
         version: 0.3.0
       '@soybeanjs/shadcn-theme':
-        specifier: ^0.3.3
-        version: 0.3.3
+        specifier: ^0.3.4
+        version: 0.3.4
       '@soybeanjs/utils':
         specifier: ^0.1.1
         version: 0.1.1
@@ -2730,6 +2730,9 @@ packages:
 
   '@soybeanjs/shadcn-theme@0.3.3':
     resolution: {integrity: sha512-Xba2R0BjvRf5JevM5+FzHRAvnpepDbjIWoRO/u1M24fhW2eNp6pSjSGJClb9uDAk0UgLXUFk1aPPG4VSePyc3w==}
+
+  '@soybeanjs/shadcn-theme@0.3.4':
+    resolution: {integrity: sha512-JHusGjofBHIyefzBYa7HVggX+qH0br1fckTIx/TixjXZz8yallxREbnEjzSmbpL7lleZyQVm8xR2H6ETYxEYrQ==}
 
   '@soybeanjs/unocss-preset@0.2.0':
     resolution: {integrity: sha512-ELjt4BKoU3NsrvzPHK7EsMMz2ZC8F4Qtpny38qeRvvrS7YzHEj5CwD6LeQF2USEo9msJRYU2uwLTIJRFOClNxA==}
@@ -8422,6 +8425,10 @@ snapshots:
   '@soybeanjs/oxc-config@0.2.0': {}
 
   '@soybeanjs/shadcn-theme@0.3.3':
+    dependencies:
+      '@soybeanjs/colord': 0.5.0
+
+  '@soybeanjs/shadcn-theme@0.3.4':
     dependencies:
       '@soybeanjs/colord': 0.5.0
 

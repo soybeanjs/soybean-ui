@@ -4,7 +4,7 @@ import { useStyleTag } from '@vueuse/core';
 import { useOmitProps } from '@soybeanjs/headless/composables';
 import { ConfigProvider } from '@soybeanjs/headless/config-provider';
 import { isNuxt, isClient, transformPropsToContext } from '@soybeanjs/headless/shared';
-import { createShadcnTheme } from '@soybeanjs/shadcn-theme';
+import { createShadcnTheme, isDefaultPresetOptions } from '@soybeanjs/shadcn-theme';
 import { themeSizeMap } from '@/theme';
 import DialogProvider from '../dialog/dialog-provider.vue';
 import Icon from '../icon/icon.vue';
@@ -70,6 +70,10 @@ watch(
   () => props.theme,
   () => {
     if (!isClient) return;
+    const isDefault = isDefaultPresetOptions(props.theme);
+    if (isDefault) {
+      return;
+    }
 
     generateCss();
   },
