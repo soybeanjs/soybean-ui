@@ -1,5 +1,16 @@
 # Changelog
 
+## [v0.27.0](https://github.com/soybeanjs/soybean-ui/compare/v0.26.5...v0.27.0) (2026-05-28)
+
+### &nbsp;&nbsp;&nbsp;🚀 Features
+
+- **table**: add row interaction events with metadata and update related types &nbsp;-&nbsp; by **soybeanfe** [<samp>(93440)</samp>](https://github.com/soybeanjs/soybean-ui/commit/93440f5e9)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+
+[soybeanfe](mailto:honghuangdc@gmail.com)
+
 ## [v0.26.5](https://github.com/soybeanjs/soybean-ui/compare/v0.26.4...v0.26.5) (2026-05-28)
 
 ### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes

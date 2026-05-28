@@ -1,8 +1,25 @@
 {
   "component": "table",
-  "generatedAt": "2026-05-28T06:23:42.019Z",
+  "generatedAt": "2026-05-28T07:18:50.273Z",
   "schemaVersion": 1,
   "versions": [
+    {
+      "version": "v0.27.0",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.26.5...v0.27.0",
+      "date": "2026-05-28",
+      "entries": [
+        {
+          "type": "feature",
+          "scope": "table",
+          "summary": "add row interaction events with metadata and update related types",
+          "summaryKey": "changelog.generated.v0.27.0.93440",
+          "commitHash": "93440",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/93440f5e9",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope"
+        }
+      ]
+    },
     {
       "version": "v0.15.3",
       "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.15.2...v0.15.3",

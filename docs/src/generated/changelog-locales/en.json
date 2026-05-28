@@ -1413,6 +1413,11 @@
           "5": {
             "9284c": "update installation command for skills to use correct package path"
           }
+        },
+        "27": {
+          "0": {
+            "93440": "add row interaction events with metadata and update related types"
+          }
         }
       }
     }
