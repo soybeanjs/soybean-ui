@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-28T12:54:14.231Z",
+  "generatedAt": "2026-05-28T13:51:22.919Z",
   "schemaVersion": 1,
   "components": {
     "accordion": {
@@ -327,9 +327,9 @@
     "link": {
       "component": "link",
       "file": "link.json",
-      "latestVersion": "v0.27.2",
-      "versionCount": 9,
-      "entryCount": 9
+      "latestVersion": "v0.28.0",
+      "versionCount": 10,
+      "entryCount": 10
     },
     "list": {
       "component": "list",

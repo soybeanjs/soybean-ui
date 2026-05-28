@@ -1431,6 +1431,12 @@
             "8d649": "update import paths avoid circular dependencies",
             "c2df1": "update package.json and tsdown.config.ts to manage dependencies correctly"
           }
+        },
+        "28": {
+          "0": {
+            "68630": "simplify link component logic and remove unused Nuxt integration",
+            "3af93": "enhance theme handling in ConfigProvider"
+          }
         }
       }
     }

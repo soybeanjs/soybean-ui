@@ -1,8 +1,25 @@
 {
   "component": "link",
-  "generatedAt": "2026-05-28T12:54:14.231Z",
+  "generatedAt": "2026-05-28T13:51:22.919Z",
   "schemaVersion": 1,
   "versions": [
+    {
+      "version": "v0.28.0",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.27.2...v0.28.0",
+      "date": "2026-05-28",
+      "entries": [
+        {
+          "type": "refactor",
+          "scope": "link",
+          "summary": "simplify link component logic and remove unused Nuxt integration",
+          "summaryKey": "changelog.generated.v0.28.0.68630",
+          "commitHash": "68630",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/686304a32",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope"
+        }
+      ]
+    },
     {
       "version": "v0.27.2",
       "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.27.1...v0.27.2",

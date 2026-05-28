@@ -1,5 +1,20 @@
 # Changelog
 
+## [v0.28.0](https://github.com/soybeanjs/soybean-ui/compare/v0.27.2...v0.28.0) (2026-05-28)
+
+### &nbsp;&nbsp;&nbsp;🛠 Optimizations
+
+- **theme**: enhance theme handling in ConfigProvider &nbsp;-&nbsp; by **soybeanfe** [<samp>(3af93)</samp>](https://github.com/soybeanjs/soybean-ui/commit/3af93fe6c)
+
+### &nbsp;&nbsp;&nbsp;💅 Refactors
+
+- **link**: simplify link component logic and remove unused Nuxt integration &nbsp;-&nbsp; by **soybeanfe** [<samp>(68630)</samp>](https://github.com/soybeanjs/soybean-ui/commit/686304a32)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+
+[soybeanfe](mailto:honghuangdc@gmail.com)
+
 ## [v0.27.2](https://github.com/soybeanjs/soybean-ui/compare/v0.27.1...v0.27.2) (2026-05-28)
 
 ### &nbsp;&nbsp;&nbsp;🚀 Features
