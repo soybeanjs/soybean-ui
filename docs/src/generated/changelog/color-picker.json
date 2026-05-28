@@ -1,8 +1,25 @@
 {
   "component": "color-picker",
-  "generatedAt": "2026-05-28T02:55:25.453Z",
+  "generatedAt": "2026-05-28T04:11:33.795Z",
   "schemaVersion": 1,
   "versions": [
+    {
+      "version": "v0.26.2",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.26.1...v0.26.2",
+      "date": "2026-05-28",
+      "entries": [
+        {
+          "type": "fix",
+          "scope": "color-picker",
+          "summary": "replace miniButtonVariants with buttonVariants for trigger",
+          "summaryKey": "changelog.generated.v0.26.2.88444",
+          "commitHash": "88444",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/88444f379",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope"
+        }
+      ]
+    },
     {
       "version": "v0.19.0",
       "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.18.0...v0.19.0",

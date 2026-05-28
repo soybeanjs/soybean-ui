@@ -1,7 +1,77 @@
 {
-  "generatedAt": "2026-05-28T02:55:25.453Z",
+  "generatedAt": "2026-05-28T04:11:33.795Z",
   "schemaVersion": 1,
   "releases": [
+    {
+      "version": "v0.26.2",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.26.1...v0.26.2",
+      "date": "2026-05-28",
+      "entryCount": 5,
+      "componentCount": 2,
+      "components": ["color-picker", "tag"],
+      "typeCounts": {
+        "fix": 2,
+        "optimization": 2,
+        "refactor": 1
+      },
+      "entries": [
+        {
+          "type": "fix",
+          "scope": "color-picker",
+          "summary": "replace miniButtonVariants with buttonVariants for trigger",
+          "summaryKey": "changelog.generated.v0.26.2.88444",
+          "commitHash": "88444",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/88444f379",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope",
+          "components": ["color-picker"]
+        },
+        {
+          "type": "fix",
+          "scope": "tag",
+          "summary": "adjust size properties for tag variants",
+          "summaryKey": "changelog.generated.v0.26.2.e5874",
+          "commitHash": "e5874",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/e58744b99",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope",
+          "components": ["tag"]
+        },
+        {
+          "type": "optimization",
+          "scope": "playground",
+          "summary": "update avatar image sources and fallback labels",
+          "summaryKey": "changelog.generated.v0.26.2.24520",
+          "commitHash": "24520",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/245206b31",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "optimization",
+          "scope": "playground",
+          "summary": "update button label to 'Default'",
+          "summaryKey": "changelog.generated.v0.26.2.3350e",
+          "commitHash": "3350e",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/3350e4337",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "refactor",
+          "scope": "deps",
+          "summary": "simplify bundle deps configuration",
+          "summaryKey": "changelog.generated.v0.26.2.a488b",
+          "commitHash": "a488b",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/a488bbea7",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope",
+          "components": []
+        }
+      ]
+    },
     {
       "version": "v0.26.1",
       "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.26.0...v0.26.1",

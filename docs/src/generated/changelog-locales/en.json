@@ -1395,6 +1395,13 @@
           "1": {
             "52095": "remove BottomSheet unused snap points and related logic in playground",
             "0de1e": "enhance Card component with header and footer visibility props and optimize style"
+          },
+          "2": {
+            "24520": "update avatar image sources and fallback labels",
+            "88444": "replace miniButtonVariants with buttonVariants for trigger",
+            "3350e": "update button label to 'Default'",
+            "a488b": "simplify bundle deps configuration",
+            "e5874": "adjust size properties for tag variants"
           }
         }
       }

@@ -1,6 +1,24 @@
 {
   "component": "tag",
-  "generatedAt": "2026-05-28T02:55:25.453Z",
+  "generatedAt": "2026-05-28T04:11:33.795Z",
   "schemaVersion": 1,
-  "versions": []
+  "versions": [
+    {
+      "version": "v0.26.2",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.26.1...v0.26.2",
+      "date": "2026-05-28",
+      "entries": [
+        {
+          "type": "fix",
+          "scope": "tag",
+          "summary": "adjust size properties for tag variants",
+          "summaryKey": "changelog.generated.v0.26.2.e5874",
+          "commitHash": "e5874",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/e58744b99",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope"
+        }
+      ]
+    }
+  ]
 }

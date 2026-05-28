@@ -1,5 +1,27 @@
 # Changelog
 
+## [v0.26.2](https://github.com/soybeanjs/soybean-ui/compare/v0.26.1...v0.26.2) (2026-05-28)
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- **color-picker**: replace miniButtonVariants with buttonVariants for trigger &nbsp;-&nbsp; by **soybeanfe** [<samp>(88444)</samp>](https://github.com/soybeanjs/soybean-ui/commit/88444f379)
+- **tag**: adjust size properties for tag variants &nbsp;-&nbsp; by **soybeanfe** [<samp>(e5874)</samp>](https://github.com/soybeanjs/soybean-ui/commit/e58744b99)
+
+### &nbsp;&nbsp;&nbsp;🛠 Optimizations
+
+- **playground**:
+  - update avatar image sources and fallback labels &nbsp;-&nbsp; by **soybeanfe** [<samp>(24520)</samp>](https://github.com/soybeanjs/soybean-ui/commit/245206b31)
+  - update button label to 'Default' &nbsp;-&nbsp; by **soybeanfe** [<samp>(3350e)</samp>](https://github.com/soybeanjs/soybean-ui/commit/3350e4337)
+
+### &nbsp;&nbsp;&nbsp;💅 Refactors
+
+- **deps**: simplify bundle deps configuration &nbsp;-&nbsp; by **soybeanfe** [<samp>(a488b)</samp>](https://github.com/soybeanjs/soybean-ui/commit/a488bbea7)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+
+[soybeanfe](mailto:honghuangdc@gmail.com)
+
 ## [v0.26.1](https://github.com/soybeanjs/soybean-ui/compare/v0.26.0...v0.26.1) (2026-05-28)
 
 ### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
