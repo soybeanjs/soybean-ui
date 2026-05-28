@@ -12,6 +12,8 @@ import '@soybeanjs/ui/styles.css';
         </template>
         <p>This is a dialog content.</p>
       </SDialog>
+      <SLink to="/demo">A</SLink>
+      <SIcon icon="lucide:a-arrow-up" />
       <NuxtRouteAnnouncer />
       <NuxtWelcome />
     </div>
