@@ -913,6 +913,35 @@ export interface TableExpandedRowSlotProps<T extends TableBaseData = TableBaseDa
 }
 
 /**
+ * Payload emitted for table row interaction events.
+ */
+export interface TableRowEventPayload<
+  T extends TableBaseData = TableBaseData,
+  R extends TableUnifiedKey = TableUnifiedKey
+> {
+  /**
+   * Current row data.
+   */
+  rowData: T;
+  /**
+   * Current row key.
+   */
+  rowKey: R;
+  /**
+   * Index of the current item.
+   */
+  index: number;
+  /**
+   * Nesting level of the current row.
+   */
+  level: number;
+  /**
+   * Whether the current row has children.
+   */
+  hasChildren: boolean;
+}
+
+/**
  * Slot properties for the TableEmpty component.
  */
 export interface TableEmptySlotProps {
@@ -1049,7 +1078,11 @@ export interface TableCompactProps<
 /**
  * Events for the TableCompact component.
  */
-export type TableCompactEmits<R extends TableUnifiedKey = TableUnifiedKey, M extends boolean = false> = {
+export type TableCompactEmits<
+  T extends TableBaseData = TableBaseData,
+  R extends TableUnifiedKey = TableUnifiedKey,
+  M extends boolean = false
+> = {
   /**
    * Emitted when the sort state value changes.
    */
@@ -1070,6 +1103,26 @@ export type TableCompactEmits<R extends TableUnifiedKey = TableUnifiedKey, M ext
    * Emitted when the selected state changes.
    */
   'update:selected': [selected: M extends true ? R[] : R | undefined];
+  /**
+   * Emitted when a row is clicked.
+   */
+  rowClick: [event: MouseEvent, payload: TableRowEventPayload<T, R>];
+  /**
+   * Emitted when a row is double clicked.
+   */
+  rowDblclick: [event: MouseEvent, payload: TableRowEventPayload<T, R>];
+  /**
+   * Emitted when a row context menu is triggered.
+   */
+  rowContextmenu: [event: MouseEvent, payload: TableRowEventPayload<T, R>];
+  /**
+   * Emitted when the pointer enters a row.
+   */
+  rowMouseenter: [event: MouseEvent, payload: TableRowEventPayload<T, R>];
+  /**
+   * Emitted when the pointer leaves a row.
+   */
+  rowMouseleave: [event: MouseEvent, payload: TableRowEventPayload<T, R>];
 };
 
 /**

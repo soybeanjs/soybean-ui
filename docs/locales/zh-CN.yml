@@ -375,6 +375,7 @@ playground:
       grouped: 分组
       multiple-selection: 多选
       resizable: 可调整列宽
+      row-events: 行事件
       rounded: 圆角
       single-selection: 单选
       sizes: 尺寸组

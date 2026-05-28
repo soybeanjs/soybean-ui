@@ -375,6 +375,7 @@ playground:
       grouped: Grouped
       multiple-selection: Multiple Selection
       resizable: Resizable
+      row-events: Row Events
       rounded: Rounded
       single-selection: Single Selection
       sizes: Sizes

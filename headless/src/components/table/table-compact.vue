@@ -23,7 +23,14 @@ import TableRoot from './table-root.vue';
 import TableRow from './table-row.vue';
 import TableScroll from './table-scroll.vue';
 import TableVirtualSpacerRow from './table-virtual-spacer-row.vue';
-import type { TableCompactProps, TableBaseData, TableCompactEmits, TableCompactSlots, TableUnifiedKey } from './types';
+import type {
+  TableCompactProps,
+  TableBaseData,
+  TableCompactEmits,
+  TableCompactSlots,
+  TableRowEventPayload,
+  TableUnifiedKey
+} from './types';
 
 defineOptions({
   name: 'TableCompact'
@@ -39,7 +46,7 @@ const props = withDefaults(defineProps<TableCompactProps<T, R, M>>(), {
   indent: 16
 });
 
-const emit = defineEmits<TableCompactEmits<R, M>>();
+const emit = defineEmits<TableCompactEmits<T, R, M>>();
 
 defineSlots<TableCompactSlots<T>>();
 
@@ -113,6 +120,31 @@ const { isVirtual, setTableScrollRef, tableScrollStyle, virtualPaddingStart, vir
 const columnSize = computed(() => Math.max(leafColumns.value.length, 1));
 const showEmpty = computed(() => displayRows.value.length === 0);
 
+type TableCompactRowEventHandler = (
+  event: MouseEvent,
+  payload: TableRowEventPayload<TableBaseData, TableUnifiedKey>
+) => void;
+
+const handleRowClick: TableCompactRowEventHandler = (event, payload) => {
+  emit('rowClick', event, payload as TableRowEventPayload<T, R>);
+};
+
+const handleRowDblclick: TableCompactRowEventHandler = (event, payload) => {
+  emit('rowDblclick', event, payload as TableRowEventPayload<T, R>);
+};
+
+const handleRowContextmenu: TableCompactRowEventHandler = (event, payload) => {
+  emit('rowContextmenu', event, payload as TableRowEventPayload<T, R>);
+};
+
+const handleRowMouseenter: TableCompactRowEventHandler = (event, payload) => {
+  emit('rowMouseenter', event, payload as TableRowEventPayload<T, R>);
+};
+
+const handleRowMouseleave: TableCompactRowEventHandler = (event, payload) => {
+  emit('rowMouseleave', event, payload as TableRowEventPayload<T, R>);
+};
+
 provideTableCompactContext({
   ...transformPropsToContext(props, ['indent', 'headProps', 'cellProps', 'rowProps']),
   dir,
@@ -182,6 +214,11 @@ provideTableCompactContext({
               :row="item"
               :index="index"
               :leaf-columns="leafColumns"
+              @row-click="handleRowClick"
+              @row-dblclick="handleRowDblclick"
+              @row-contextmenu="handleRowContextmenu"
+              @row-mouseenter="handleRowMouseenter"
+              @row-mouseleave="handleRowMouseleave"
             >
               <template v-for="slotName in slotNames" :key="slotName" #[slotName]="slotProps">
                 <slot :name="slotName" v-bind="slotProps" />

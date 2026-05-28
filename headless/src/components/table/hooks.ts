@@ -71,6 +71,7 @@ import {
 } from './shared';
 import { useTableCompactContext, useTableUi } from './context';
 import type {
+  TableBaseData,
   TableCellSlotProps,
   TableColumnWidthState,
   TableColumn,
@@ -95,18 +96,27 @@ import type {
   TableCompactHeadProps
 } from './types';
 
-type TableCompactEmitFn<R extends string | number, M extends boolean> = <K extends keyof TableCompactEmits<R, M>>(
-  event: K,
-  ...args: TableCompactEmits<R, M>[K]
-) => void;
+type TableCompactEmitFn<
+  T extends TableBaseData = TableBaseData,
+  R extends string | number = string | number,
+  M extends boolean = boolean
+> = <K extends keyof TableCompactEmits<T, R, M>>(event: K, ...args: TableCompactEmits<T, R, M>[K]) => void;
 
-interface UseTableCompactStateOptions {
-  props: TableCompactProps;
-  emit: TableCompactEmitFn<TableUnifiedKey, boolean>;
+interface UseTableCompactStateOptions<
+  T extends TableBaseData = TableBaseData,
+  R extends TableUnifiedKey = TableUnifiedKey,
+  M extends boolean = boolean
+> {
+  props: TableCompactProps<T, R, M>;
+  emit: TableCompactEmitFn<T, R, M>;
   hasExpandedRowSlot: MaybeRefOrGetter<boolean>;
 }
 
-export function useTableCompactState(options: UseTableCompactStateOptions) {
+export function useTableCompactState<
+  T extends TableBaseData = TableBaseData,
+  R extends TableUnifiedKey = TableUnifiedKey,
+  M extends boolean = boolean
+>(options: UseTableCompactStateOptions<T, R, M>) {
   const { props, emit, hasExpandedRowSlot } = options;
 
   const expanded = useControllableState(

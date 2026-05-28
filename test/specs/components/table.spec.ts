@@ -265,6 +265,43 @@ describe('STable', () => {
   });
 
   describe('selection state', () => {
+    it('emits row interaction events with row metadata', async () => {
+      const wrapper = mount(STable, {
+        props: {
+          columns: columns as TableColumn[],
+          data,
+          rowKey: row => row.id
+        },
+        attachTo: document.body
+      });
+
+      const firstRow = wrapper.findAll('tbody tr')[0];
+      const expectedPayload = {
+        rowData: data[0],
+        rowKey: 1,
+        index: 0,
+        level: 1,
+        hasChildren: false
+      };
+
+      const rowEvents = [
+        ['click', 'rowClick'],
+        ['dblclick', 'rowDblclick'],
+        ['contextmenu', 'rowContextmenu'],
+        ['mouseenter', 'rowMouseenter'],
+        ['mouseleave', 'rowMouseleave']
+      ] as const;
+
+      for (const [domEvent, emittedEvent] of rowEvents) {
+        await firstRow.trigger(domEvent);
+
+        expect(wrapper.emitted(emittedEvent)?.[0]?.[0]).toBeInstanceOf(MouseEvent);
+        expect(wrapper.emitted(emittedEvent)?.[0]?.[1]).toMatchObject(expectedPayload);
+      }
+
+      wrapper.unmount();
+    });
+
     it('uses the UI header-selection slot to toggle all visible rows', async () => {
       const wrapper = mount(STable, {
         props: {

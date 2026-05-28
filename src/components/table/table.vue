@@ -30,7 +30,7 @@ const props = withDefaults(defineProps<TableProps<T, R, M>>(), {
   rounded: true
 });
 
-const emit = defineEmits<TableEmits<R, M>>();
+const emit = defineEmits<TableEmits<T, R, M>>();
 
 const slots = defineSlots<TableSlots<T>>();
 

@@ -79,10 +79,11 @@ export interface TableProps<
 /**
  * Events for the Table component.
  */
-export type TableEmits<R extends TableUnifiedKey = TableUnifiedKey, M extends boolean = false> = TableCompactEmits<
-  R,
-  M
->;
+export type TableEmits<
+  T extends TableBaseData = TableBaseData,
+  R extends TableUnifiedKey = TableUnifiedKey,
+  M extends boolean = false
+> = TableCompactEmits<T, R, M>;
 
 /**
  * Slots for the Table component.
