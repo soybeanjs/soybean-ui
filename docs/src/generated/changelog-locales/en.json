@@ -1406,6 +1406,9 @@
           "3": {
             "cb8cc": "update deps",
             "e2004": "enhance Claude plugin manifest with additional fields"
+          },
+          "4": {
+            "d7f54": "update installation commands for skills to use correct package path"
           }
         }
       }
