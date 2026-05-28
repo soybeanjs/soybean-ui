@@ -68,14 +68,12 @@ watchEffect(
 
 watch(
   () => props.theme,
-  (newVal, oldVal) => {
+  () => {
     if (!isClient) return;
 
-    if (Object.keys(newVal).length > 0 && Object.keys(oldVal).length > 0) {
-      generateCss();
-    }
+    generateCss();
   },
-  { deep: true, flush: 'post' }
+  { deep: true, flush: 'post', immediate: true }
 );
 </script>
 
