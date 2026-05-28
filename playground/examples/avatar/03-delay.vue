@@ -4,7 +4,7 @@ import { SAvatar } from '@soybeanjs/ui';
 
 <template>
   <SAvatar
-    src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face"
+    src="https://soybeanjs-1300612522.cos.ap-guangzhou.myqcloud.com/uPic/logo.png?v=202605281124"
     fallback-label="DL"
     :delay-ms="1000"
   />
