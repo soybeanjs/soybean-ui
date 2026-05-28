@@ -1,10 +1,10 @@
 // @unocss-include
 import { scv } from '@soybeanjs/cva';
-import { miniButtonVariants } from './button';
+import { buttonVariants } from './button';
 
 export const colorPickerVariants = scv({
   extendBase: props => ({
-    trigger: miniButtonVariants({
+    trigger: buttonVariants({
       size: props.size,
       variant: 'pure'
     })
