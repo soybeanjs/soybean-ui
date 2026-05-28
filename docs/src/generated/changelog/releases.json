@@ -1,7 +1,31 @@
 {
-  "generatedAt": "2026-05-28T06:19:01.822Z",
+  "generatedAt": "2026-05-28T06:23:42.019Z",
   "schemaVersion": 1,
   "releases": [
+    {
+      "version": "v0.26.5",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.26.4...v0.26.5",
+      "date": "2026-05-28",
+      "entryCount": 1,
+      "componentCount": 0,
+      "components": [],
+      "typeCounts": {
+        "fix": 1
+      },
+      "entries": [
+        {
+          "type": "fix",
+          "scope": "docs",
+          "summary": "update installation command for skills to use correct package path",
+          "summaryKey": "changelog.generated.v0.26.5.9284c",
+          "commitHash": "9284c",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/9284cfe42",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope",
+          "components": []
+        }
+      ]
+    },
     {
       "version": "v0.26.4",
       "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.26.3...v0.26.4",

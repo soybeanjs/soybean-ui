@@ -1,5 +1,16 @@
 # Changelog
 
+## [v0.26.5](https://github.com/soybeanjs/soybean-ui/compare/v0.26.4...v0.26.5) (2026-05-28)
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- **docs**: update installation command for skills to use correct package path &nbsp;-&nbsp; by **soybeanfe** [<samp>(9284c)</samp>](https://github.com/soybeanjs/soybean-ui/commit/9284cfe42)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+
+[soybeanfe](mailto:honghuangdc@gmail.com)
+
 ## [v0.26.4](https://github.com/soybeanjs/soybean-ui/compare/v0.26.3...v0.26.4) (2026-05-28)
 
 ### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes

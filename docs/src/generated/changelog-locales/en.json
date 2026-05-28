@@ -1409,6 +1409,9 @@
           },
           "4": {
             "d7f54": "update installation commands for skills to use correct package path"
+          },
+          "5": {
+            "9284c": "update installation command for skills to use correct package path"
           }
         }
       }
