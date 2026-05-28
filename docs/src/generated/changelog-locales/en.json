@@ -1391,6 +1391,10 @@
             "b372a": "update icon prop type to IconValue and enhance Nuxt support",
             "b8bb1": "remove unnecessary postinstall script from package.json",
             "cfb01": "add SWatermark component to global typings"
+          },
+          "1": {
+            "52095": "remove BottomSheet unused snap points and related logic in playground",
+            "0de1e": "enhance Card component with header and footer visibility props and optimize style"
           }
         }
       }

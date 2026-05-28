@@ -1,8 +1,25 @@
 {
   "component": "card",
-  "generatedAt": "2026-05-27T06:16:28.282Z",
+  "generatedAt": "2026-05-28T02:55:25.453Z",
   "schemaVersion": 1,
   "versions": [
+    {
+      "version": "v0.26.1",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.26.0...v0.26.1",
+      "date": "2026-05-28",
+      "entries": [
+        {
+          "type": "optimization",
+          "scope": "card",
+          "summary": "enhance Card component with header and footer visibility props and optimize style",
+          "summaryKey": "changelog.generated.v0.26.1.0de1e",
+          "commitHash": "0de1e",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/0de1e57f8",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope"
+        }
+      ]
+    },
     {
       "version": "v0.16.0",
       "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.15.5...v0.16.0",

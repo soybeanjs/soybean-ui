@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-27T06:16:28.282Z",
+  "generatedAt": "2026-05-28T02:55:25.453Z",
   "schemaVersion": 1,
   "components": {
     "accordion": {
@@ -110,9 +110,9 @@
     "card": {
       "component": "card",
       "file": "card.json",
-      "latestVersion": "v0.16.0",
-      "versionCount": 6,
-      "entryCount": 7
+      "latestVersion": "v0.26.1",
+      "versionCount": 7,
+      "entryCount": 8
     },
     "carousel": {
       "component": "carousel",

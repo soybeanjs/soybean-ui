@@ -1,5 +1,20 @@
 # Changelog
 
+## [v0.26.1](https://github.com/soybeanjs/soybean-ui/compare/v0.26.0...v0.26.1) (2026-05-28)
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- **playground**: remove BottomSheet unused snap points and related logic in playground &nbsp;-&nbsp; by **soybeanfe** [<samp>(52095)</samp>](https://github.com/soybeanjs/soybean-ui/commit/52095ba0b)
+
+### &nbsp;&nbsp;&nbsp;🛠 Optimizations
+
+- **card**: enhance Card component with header and footer visibility props and optimize style &nbsp;-&nbsp; by **soybeanfe** [<samp>(0de1e)</samp>](https://github.com/soybeanjs/soybean-ui/commit/0de1e57f8)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+
+[soybeanfe](mailto:honghuangdc@gmail.com)
+
 ## [v0.26.0](https://github.com/soybeanjs/soybean-ui/compare/v0.25.4...v0.26.0) (2026-05-27)
 
 ### &nbsp;&nbsp;&nbsp;🚀 Features
