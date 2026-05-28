@@ -45,7 +45,12 @@ type DistributionPackageManifest = {
 type ClaudePluginManifest = {
   author?: Pick<PackageAuthor, 'email' | 'name'>;
   description: string;
+  homepage?: string;
+  keywords: string[];
+  license?: string;
   name: string;
+  repository?: string;
+  version: string;
 };
 
 type ClaudeMarketplaceManifest = {
@@ -149,7 +154,12 @@ function createClaudePluginManifest(rootPackage: RootPackageManifest): ClaudePlu
   return {
     author: rootPackage.author ? { email: rootPackage.author.email, name: rootPackage.author.name } : undefined,
     description: distributionDescription,
-    name: distributionPluginName
+    homepage: rootPackage.homepage,
+    keywords: distributionKeywords,
+    license: rootPackage.license,
+    name: distributionPluginName,
+    repository: rootPackage.repository?.url,
+    version: rootPackage.version
   };
 }
 
