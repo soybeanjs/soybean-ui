@@ -61,6 +61,7 @@
     "publish-pkg": "pnpm publish -r --access public",
     "release": "soy release -e 'pnpm release-execute'",
     "release-execute": "pnpm soy changelog && pnpm sui skills && pnpm sui changelog && pnpm sui changelog-translate",
+    "stub": "tsx scripts/stub.ts",
     "sui": "tsx scripts/cli.ts",
     "test": "vitest run",
     "test:coverage": "vitest run --coverage",
