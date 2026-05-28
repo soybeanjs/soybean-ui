@@ -192,7 +192,7 @@ function createDistributionReadme(): string {
     '## Installation',
     '',
     '```bash',
-    `npx skills add ${distributionPackageName}`,
+    `npx skills add soybeanjs/soybean-ui/ui-skills`,
     '```',
     '',
     'The `skills` CLI installs every skill shipped in the package and places them into the correct agent-specific skills directory.',
