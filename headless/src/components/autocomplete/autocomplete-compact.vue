@@ -1,8 +1,7 @@
 <script setup lang="ts" generic="T extends AutocompleteSingleOptionData = AutocompleteSingleOptionData">
 import { computed } from 'vue';
-import { useFuse } from '@vueuse/integrations/useFuse';
 import { defu } from 'defu';
-import { useControllableState, useOmitProps } from '../../composables';
+import { useFuse, useControllableState, useOmitProps } from '../../composables';
 import { useLocaleMessages } from '../../locale';
 import Icon from '../_icon/icon.vue';
 import {

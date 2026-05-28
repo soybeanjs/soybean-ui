@@ -1,6 +1,5 @@
 import type { ShallowRef } from 'vue';
-import type { UseFuseOptions } from '@vueuse/integrations/useFuse';
-import type { CollectionItemData } from '../../composables';
+import type { UseFuseOptions, CollectionItemData } from '../../composables';
 import type { BaseProps, Direction, FormFieldCommonProps } from '../../types';
 import type { IconValue } from '../_icon/types';
 import type {

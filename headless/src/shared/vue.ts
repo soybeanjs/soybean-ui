@@ -1,7 +1,26 @@
 import { Comment, Fragment, computed, getCurrentInstance, toValue } from 'vue';
 import type { ComponentPublicInstance, MaybeRefOrGetter, VNode } from 'vue';
-import { PatchFlags } from '@vue/shared';
 import type { PropsToContext, VNodeRef } from '../types';
+
+/**
+ * Vue's compiler generates blocks with a `patchFlag` property
+ *
+ * following `@vue/shared`'s `PatchFlags` enum
+ */
+const PatchFlags = {
+  /**
+   * Indicates a fragment with keyed or partially keyed children
+   */
+  KEYED_FRAGMENT: 128,
+  /**
+   * A special flag that indicates that the diffing algorithm should bail out
+   * of optimized mode. For example, on block fragments created by renderSlot()
+   * when encountering non-compiler generated slots (i.e. manually written
+   * render functions, which should always be fully diffed)
+   * OR manually cloneVNodes
+   */
+  BAIL: -2
+};
 
 export function getLifeCycleTarget(target?: any) {
   return target || getCurrentInstance();

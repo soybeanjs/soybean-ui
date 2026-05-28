@@ -113,23 +113,21 @@
     "@soybeanjs/colord": "^0.5.0",
     "@soybeanjs/hooks": "^0.3.0",
     "@soybeanjs/utils": "^0.1.1",
-    "@standard-schema/spec": "^1.1.0",
     "@tanstack/vue-virtual": "^3.13.26",
-    "@vue/shared": "^3.5.34",
     "@vueuse/core": "^14.3.0",
-    "@vueuse/integrations": "^14.3.0",
-    "@vueuse/router": "^14.3.0",
     "@vueuse/shared": "^14.3.0",
     "aria-hidden": "^1.2.6",
     "defu": "^6.1.7",
     "embla-carousel": "^8.6.0",
     "embla-carousel-reactive-utils": "^8.6.0",
+    "fuse.js": "^7.3.0",
     "klona": "^2.0.6",
     "ohash": "^2.0.11"
   },
   "devDependencies": {
     "@nuxt/kit": "^4.4.6",
     "@nuxt/schema": "^4.4.6",
+    "@standard-schema/spec": "^1.1.0",
     "tsdown": "0.22.0",
     "typescript": "6.0.3",
     "unplugin-vue": "7.2.0",
@@ -146,6 +144,12 @@
     "vue-router": ">=4.0.0"
   },
   "peerDependenciesMeta": {
+    "@nuxt/kit": {
+      "optional": true
+    },
+    "@nuxt/schema": {
+      "optional": true
+    },
     "nuxt": {
       "optional": true
     },

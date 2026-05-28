@@ -13,8 +13,7 @@ export default defineConfig({
   platform: 'browser',
   target: 'es2020',
   deps: {
-    neverBundle: [...Object.keys(pkg.peerDependencies), ...Object.keys(pkg.dependencies)],
-    alwaysBundle: ['aria-hidden']
+    neverBundle: Object.keys({ ...pkg.dependencies, ...pkg.devDependencies, ...pkg.peerDependencies })
   },
   clean: true,
   dts: {

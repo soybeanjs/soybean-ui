@@ -9,13 +9,12 @@ export default defineConfig({
   entry: ['src/index.ts', 'src/nuxt/index.ts', 'src/resolver/index.ts'],
   platform: 'neutral',
   deps: {
-    neverBundle: [
-      ...Object.keys(headlessPkg.dependencies),
-      ...Object.keys(headlessPkg.devDependencies),
-      ...Object.keys(pkg.dependencies),
-      ...Object.keys(pkg.devDependencies),
-      '@vueuse/integrations/useFuse'
-    ]
+    neverBundle: Object.keys({
+      ...headlessPkg.dependencies,
+      ...headlessPkg.devDependencies,
+      ...pkg.dependencies,
+      ...pkg.devDependencies
+    })
   },
   clean: true,
   dts: {

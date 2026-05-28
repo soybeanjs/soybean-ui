@@ -1,4 +1,4 @@
-import type { UseFuseOptions } from '@vueuse/integrations/useFuse';
+import type { UseFuseOptions } from '../../composables';
 import type { BaseProps, UiClass } from '../../types';
 import type { IconValue } from '../_icon/types';
 import type { KbdProps, KbdValue } from '../kbd/types';

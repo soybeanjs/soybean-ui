@@ -76,11 +76,11 @@
     "@soybeanjs/hooks": "^0.3.0",
     "@soybeanjs/shadcn-theme": "^0.3.3",
     "@soybeanjs/utils": "^0.1.1",
-    "fuse.js": "^7.3.0",
     "valibot": "^1.4.1",
     "zod": "^4.4.3"
   },
   "devDependencies": {
+    "@nuxt/kit": "^4.4.6",
     "@soybeanjs/cli": "^1.7.2",
     "@soybeanjs/eslint-config-vue": "^0.1.0",
     "@soybeanjs/oxc-config": "^0.2.0",
@@ -97,6 +97,7 @@
     "eslint": "^10.4.0",
     "happy-dom": "^20.9.0",
     "lint-staged": "^17.0.5",
+    "nuxt": ">=4.0.0",
     "oxfmt": "^0.52.0",
     "oxlint": "^1.67.0",
     "simple-git-hooks": "^2.13.1",
@@ -115,6 +116,31 @@
     "vue": "^3.5.34",
     "vue-router": "^5.0.7",
     "vue-tsc": "^3.3.2"
+  },
+  "peerDependencies": {
+    "@nuxt/kit": "^4.3.0",
+    "@nuxt/schema": "^4.3.0",
+    "nuxt": ">=4.0.0",
+    "unplugin-vue-components": "^31.0.0",
+    "vue": ">=3.2.0",
+    "vue-router": ">=4.0.0"
+  },
+  "peerDependenciesMeta": {
+    "@nuxt/kit": {
+      "optional": true
+    },
+    "@nuxt/schema": {
+      "optional": true
+    },
+    "nuxt": {
+      "optional": true
+    },
+    "unplugin-vue-components": {
+      "optional": true
+    },
+    "vue-router": {
+      "optional": true
+    }
   },
   "simple-git-hooks": {
     "commit-msg": "pnpm soy git-commit-verify",
