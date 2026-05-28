@@ -34,20 +34,20 @@ The bundled skills help agents answer tasks such as:
 The easiest installation path is the `skills` CLI:
 
 ```bash
-npx skills add @soybeanjs/ui-skills
+npx skills add soybeanjs/soybean-ui/ui-skills
 ```
 
 You can target a specific agent:
 
 ```bash
-npx skills add @soybeanjs/ui-skills --agent cursor
-npx skills add @soybeanjs/ui-skills --agent claude-code
+npx skills add soybeanjs/soybean-ui/ui-skills --agent cursor
+npx skills add soybeanjs/soybean-ui/ui-skills --agent claude-code
 ```
 
 Or install globally so the skills are available across projects:
 
 ```bash
-npx skills add @soybeanjs/ui-skills --global
+npx skills add soybeanjs/soybean-ui/ui-skills --global
 ```
 
 Installing the package adds both `soybean-ui` and `soybean-headless`.

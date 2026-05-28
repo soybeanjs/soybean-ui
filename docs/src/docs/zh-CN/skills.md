@@ -34,20 +34,20 @@ SoybeanUI 目前公开提供两个 skill：
 最直接的安装方式是使用 `skills` CLI：
 
 ```bash
-npx skills add @soybeanjs/ui-skills
+npx skills add soybeanjs/soybean-ui/ui-skills
 ```
 
 你也可以指定目标代理：
 
 ```bash
-npx skills add @soybeanjs/ui-skills --agent cursor
-npx skills add @soybeanjs/ui-skills --agent claude-code
+npx skills add soybeanjs/soybean-ui/ui-skills --agent cursor
+npx skills add soybeanjs/soybean-ui/ui-skills --agent claude-code
 ```
 
 如果希望全局安装，使其在多个项目里都可用：
 
 ```bash
-npx skills add @soybeanjs/ui-skills --global
+npx skills add soybeanjs/soybean-ui/ui-skills --global
 ```
 
 安装这个包会同时提供 `soybean-ui` 和 `soybean-headless`。
