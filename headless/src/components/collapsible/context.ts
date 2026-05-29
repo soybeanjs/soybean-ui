@@ -15,10 +15,11 @@ export const [provideCollapsibleRootContext, useCollapsibleRootContext] = useCon
     };
 
     const contentId = shallowRef('');
+    const generatedContentId = `soybean-collapsible-content-${useId()}`;
 
     const initContentId = () => {
       if (contentId.value) return;
-      contentId.value = `soybean-collapsible-content-${useId()}`;
+      contentId.value = generatedContentId;
     };
 
     const dataDisabled = computed(() => (disabled.value ? '' : undefined));

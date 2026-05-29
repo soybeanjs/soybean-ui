@@ -85,10 +85,12 @@ const allItems = shallowRef<Map<string, string>>(new Map());
 const allGroups = shallowRef<Map<string, Set<string>>>(new Map());
 let resetSearchTermTimer: ReturnType<typeof setTimeout> | undefined;
 
+const generatedContentId = `soybean-autocomplete-content-${useId()}`;
+
 const initContentId = () => {
   if (contentId.value) return;
 
-  contentId.value = `soybean-autocomplete-content-${useId()}`;
+  contentId.value = generatedContentId;
 };
 
 const filterState = computed<{

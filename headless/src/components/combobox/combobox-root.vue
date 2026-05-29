@@ -69,12 +69,14 @@ const isUserInputted = shallowRef(false);
 const isVirtual = shallowRef(false);
 
 const contentId = shallowRef('');
+const generatedContentId = `soybean-combobox-content-${useId()}`;
+
 const initContentId = () => {
   if (contentId.value) {
     return;
   }
 
-  contentId.value = `soybean-combobox-content-${useId()}`;
+  contentId.value = generatedContentId;
 };
 
 const inputElement = shallowRef<HTMLInputElement>();

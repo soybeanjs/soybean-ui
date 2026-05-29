@@ -40,15 +40,17 @@ export const [provideMenuContext, useMenuContext] = useContext('Menu', (params: 
   const prefix = isRoot ? 'soybean-menu' : 'soybean-menu-sub';
 
   const popupId = shallowRef('');
+  const generatedPopupId = `${prefix}-popup-${useId()}`;
   const initPopupId = () => {
     if (popupId.value) return;
-    popupId.value = `${prefix}-popup-${useId()}`;
+    popupId.value = generatedPopupId;
   };
 
   const triggerId = shallowRef('');
+  const generatedTriggerId = `${prefix}-trigger-${useId()}`;
   const initTriggerId = () => {
     if (triggerId.value) return;
-    triggerId.value = `${prefix}-trigger-${useId()}`;
+    triggerId.value = generatedTriggerId;
   };
 
   return {

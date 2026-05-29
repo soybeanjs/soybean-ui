@@ -26,9 +26,10 @@ export const [providePopoverRootContext, usePopoverRootContext] = useContext(
     };
 
     const triggerId = shallowRef('');
+    const generatedTriggerId = `soybean-popover-trigger-${useId()}`;
     const initTriggerId = () => {
       if (triggerId.value) return;
-      triggerId.value = `soybean-popover-trigger-${useId()}`;
+      triggerId.value = generatedTriggerId;
     };
 
     const popupElement = shallowRef<HTMLElement>();
@@ -37,9 +38,10 @@ export const [providePopoverRootContext, usePopoverRootContext] = useContext(
     };
 
     const popupId = shallowRef('');
+    const generatedPopupId = `soybean-popover-popup-${useId()}`;
     const initPopupId = () => {
       if (popupId.value) return;
-      popupId.value = `soybean-popover-popup-${useId()}`;
+      popupId.value = generatedPopupId;
     };
 
     const hasCustomAnchor = shallowRef(false);

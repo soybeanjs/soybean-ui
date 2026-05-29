@@ -25,21 +25,26 @@ export const [provideDialogRootContext, useDialogRootContext] = useContext(
     const dataState = computed<DisclosureState>(() => getDisclosureState(open.value));
 
     const popupId = shallowRef('');
+    const generatedPopupId = `soybean-dialog-popup-${useId()}`;
     const initPopupId = () => {
       if (popupId.value) return;
-      popupId.value = `soybean-dialog-popup-${useId()}`;
+      popupId.value = generatedPopupId;
     };
 
     const titleId = shallowRef('');
+    const generatedTitleId = `soybean-dialog-title-${useId()}`;
+
     const initTitleId = () => {
       if (titleId.value) return;
-      titleId.value = `soybean-dialog-title-${useId()}`;
+      titleId.value = generatedTitleId;
     };
 
     const descriptionId = shallowRef('');
+    const generatedDescriptionId = `soybean-dialog-description-${useId()}`;
+
     const initDescriptionId = () => {
       if (descriptionId.value) return;
-      descriptionId.value = `soybean-dialog-description-${useId()}`;
+      descriptionId.value = generatedDescriptionId;
     };
 
     const focusCancel = async () => {

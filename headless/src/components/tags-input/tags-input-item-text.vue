@@ -13,8 +13,10 @@ const cls = useTagsInputUi('itemText');
 
 const { displayedValue, textId } = useTagsInputItemContext('TagsInputItemText');
 
+const generatedTextId = `soybean-tags-input-item-text-${useId()}`;
+
 if (!textId.value) {
-  textId.value = `soybean-tags-input-item-text-${useId()}`;
+  textId.value = generatedTextId;
 }
 </script>
 

@@ -139,7 +139,9 @@ function useRovingFocusItem(options: UseRovingFocusItemOptions = {}) {
 
   const { active, allowShiftKey } = options;
 
-  const tabStopId = computed(() => options.tabStopId?.value ?? useId());
+  const generatedTabStopId = useId();
+
+  const tabStopId = computed(() => options.tabStopId?.value ?? generatedTabStopId);
   const focusable = computed(() => options.focusable?.value ?? true);
 
   const isCurrentTabStop = computed(() => currentTabStopId.value === tabStopId.value);

@@ -28,9 +28,10 @@ export const [provideSelectRootContext, useSelectRootContext] = useContext(
     const dir = useDirection(params.dir);
 
     const contentId = shallowRef('');
+    const generatedContentId = `soybean-select-content-${useId()}`;
     const initContentId = () => {
       if (contentId.value) return;
-      contentId.value = `soybean-select-content-${useId()}`;
+      contentId.value = generatedContentId;
     };
 
     const triggerElement = shallowRef<HTMLElement>();
@@ -179,11 +180,12 @@ export const [provideSelectContentContext, useSelectContentContext] = useContext
 
 export const [provideSelectGroupContext, useSelectGroupContext] = useContext('SelectGroup', () => {
   const labelId = shallowRef('');
+  const generatedLabelId = `soybean-select-group-label-${useId()}`;
 
   const initLabelId = () => {
     if (labelId.value) return;
 
-    labelId.value = `soybean-select-group-label-${useId()}`;
+    labelId.value = generatedLabelId;
   };
 
   return {
@@ -205,11 +207,12 @@ export const [provideSelectItemContext, useSelectItemContext] = useContext(
     };
 
     const textId = shallowRef('');
+    const generatedTextId = `soybean-select-item-text-${useId()}`;
 
     const initTextId = () => {
       if (textId.value) return;
 
-      textId.value = `soybean-select-item-text-${useId()}`;
+      textId.value = generatedTextId;
     };
 
     return {
