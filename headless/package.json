@@ -108,8 +108,8 @@
     "@floating-ui/dom": "^1.7.6",
     "@floating-ui/utils": "^0.2.11",
     "@formkit/auto-animate": "^0.9.0",
-    "@internationalized/date": "^3.12.1",
-    "@internationalized/number": "^3.6.6",
+    "@internationalized/date": "^3.12.2",
+    "@internationalized/number": "^3.6.7",
     "@soybeanjs/colord": "^0.5.0",
     "@soybeanjs/hooks": "^0.3.0",
     "@soybeanjs/utils": "^0.1.1",
@@ -129,12 +129,12 @@
     "@nuxt/kit": "^4.4.6",
     "@nuxt/schema": "^4.4.6",
     "nuxt": ">=4.4.6",
-    "tsdown": "0.22.0",
+    "tsdown": "0.22.1",
     "typescript": "6.0.3",
     "unplugin-vue": "7.2.0",
     "unplugin-vue-components": "^32.1.0",
     "vue": "3.5.35",
-    "vue-router": "5.0.7"
+    "vue-router": "5.1.0"
   },
   "peerDependencies": {
     "@nuxt/kit": "^4.3.0",

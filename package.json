@@ -102,7 +102,7 @@
     "oxfmt": "^0.52.0",
     "oxlint": "^1.67.0",
     "simple-git-hooks": "^2.13.1",
-    "tsdown": "0.22.0",
+    "tsdown": "0.22.1",
     "tsx": "^4.22.3",
     "typedoc": "^0.28.19",
     "typescript": "^6.0.3",
@@ -115,7 +115,7 @@
     "vite-plugin-vue-meta-layouts": "^0.6.1",
     "vitest": "^4.1.7",
     "vue": "^3.5.35",
-    "vue-router": "^5.0.7",
+    "vue-router": "^5.1.0",
     "vue-tsc": "^3.3.2"
   },
   "peerDependencies": {

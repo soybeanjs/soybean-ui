@@ -14,7 +14,7 @@
     "@soybeanjs/ui": "workspace:^",
     "nuxt": "^4.4.6",
     "vue": "^3.5.35",
-    "vue-router": "^5.0.7"
+    "vue-router": "^5.1.0"
   },
   "devDependencies": {
     "@unocss/nuxt": "^66.7.0",
