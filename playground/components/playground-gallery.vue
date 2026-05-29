@@ -37,7 +37,7 @@ const components = computed(() =>
         <SAlert
           v-else
           color="destructive"
-          :title="`${component}/${item.rawFileName} ${t('not_found')}`"
+          :title="`${component}/${item.rawFileName}未找到`"
           icon="lucide:alert-circle"
         />
       </SCard>
