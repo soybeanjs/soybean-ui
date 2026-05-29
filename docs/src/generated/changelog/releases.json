@@ -1,7 +1,55 @@
 {
-  "generatedAt": "2026-05-28T13:51:22.919Z",
+  "generatedAt": "2026-05-29T10:00:16.591Z",
   "schemaVersion": 1,
   "releases": [
+    {
+      "version": "v0.28.1",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.28.0...v0.28.1",
+      "date": "2026-05-29",
+      "entryCount": 3,
+      "componentCount": 0,
+      "components": [],
+      "typeCounts": {
+        "feature": 1,
+        "optimization": 1,
+        "chore": 1
+      },
+      "entries": [
+        {
+          "type": "feature",
+          "scope": "nuxt",
+          "summary": "support playground in nuxt",
+          "summaryKey": "changelog.generated.v0.28.1.2822e",
+          "commitHash": "2822e",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/2822ed6b2",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "optimization",
+          "scope": "headless",
+          "summary": "unify ID generation logic avoid hydration mismatch",
+          "summaryKey": "changelog.generated.v0.28.1.be9c0",
+          "commitHash": "be9c0",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/be9c02157",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "chore",
+          "scope": "deps",
+          "summary": "update deps",
+          "summaryKey": "changelog.generated.v0.28.1.ffb45",
+          "commitHash": "ffb45",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/ffb455441",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope",
+          "components": []
+        }
+      ]
+    },
     {
       "version": "v0.28.0",
       "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.27.2...v0.28.0",

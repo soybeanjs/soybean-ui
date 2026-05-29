@@ -1,5 +1,24 @@
 # Changelog
 
+## [v0.28.1](https://github.com/soybeanjs/soybean-ui/compare/v0.28.0...v0.28.1) (2026-05-29)
+
+### &nbsp;&nbsp;&nbsp;🚀 Features
+
+- **nuxt**: support playground in nuxt &nbsp;-&nbsp; by **soybeanfe** [<samp>(2822e)</samp>](https://github.com/soybeanjs/soybean-ui/commit/2822ed6b2)
+
+### &nbsp;&nbsp;&nbsp;🛠 Optimizations
+
+- **headless**: unify ID generation logic avoid hydration mismatch &nbsp;-&nbsp; by **soybeanfe** [<samp>(be9c0)</samp>](https://github.com/soybeanjs/soybean-ui/commit/be9c02157)
+
+### &nbsp;&nbsp;&nbsp;🏡 Chore
+
+- **deps**: update deps &nbsp;-&nbsp; by **soybeanfe** [<samp>(ffb45)</samp>](https://github.com/soybeanjs/soybean-ui/commit/ffb455441)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+
+[soybeanfe](mailto:honghuangdc@gmail.com)
+
 ## [v0.28.0](https://github.com/soybeanjs/soybean-ui/compare/v0.27.2...v0.28.0) (2026-05-28)
 
 ### &nbsp;&nbsp;&nbsp;🛠 Optimizations
