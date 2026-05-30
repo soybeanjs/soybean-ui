@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import { computed, resolveComponent } from 'vue';
-import { isNuxt } from '@soybeanjs/headless/shared';
+import { computed } from 'vue';
 import { Icon as Iconify } from '@iconify/vue';
 import type { IconifyIcon } from '@iconify/vue';
 import { useConfigProvider } from '../config-provider';
@@ -30,14 +29,19 @@ const forwardedProps = computed(() => ({
   ...iconifySize.value
 }));
 
-const NuxtIcon = isNuxt ? resolveComponent('Icon') : null;
+const iconifyProps = computed(() => {
+  if (!isIconifyIcon(props.icon)) {
+    return null;
+  }
 
-const renderNuxtIcon = computed(() => NuxtIcon && typeof props.icon === 'string');
-
-const nuxtIconMode = computed(() => ((props.mode ?? 'svg') === 'svg' ? 'svg' : 'css'));
+  return {
+    ...forwardedProps.value,
+    icon: props.icon
+  };
+});
 
 function isIconifyIcon(icon: IconValue): icon is IconifyIcon | string {
-  if (!icon || renderNuxtIcon.value) {
+  if (!icon) {
     return false;
   }
 
@@ -46,16 +50,7 @@ function isIconifyIcon(icon: IconValue): icon is IconifyIcon | string {
 </script>
 
 <template>
-  <Iconify v-if="isIconifyIcon(icon)" v-bind="forwardedProps" :icon="icon" :ssr="isNuxt" style="flex-shrink: 0" />
-  <NuxtIcon
-    v-else-if="renderNuxtIcon"
-    :name="icon"
-    :mode="nuxtIconMode"
-    :width="iconifySize.width"
-    :height="iconifySize.height"
-    :customize="customise"
-    style="flex-shrink: 0"
-  />
+  <Iconify v-if="iconifyProps" v-bind="iconifyProps" style="flex-shrink: 0" />
   <component
     :is="icon"
     v-else-if="icon"
