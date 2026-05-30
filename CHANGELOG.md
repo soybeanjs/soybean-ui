@@ -1,5 +1,35 @@
 # Changelog
 
+## [v0.28.2](https://github.com/soybeanjs/soybean-ui/compare/v0.28.1...v0.28.2) (2026-05-30)
+
+### &nbsp;&nbsp;&nbsp;🚀 Features
+
+- **playground**: add internationalization setup and locale management &nbsp;-&nbsp; by **soybeanfe** [<samp>(ce7d7)</samp>](https://github.com/soybeanjs/soybean-ui/commit/ce7d7626f)
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- **i18n**: update locale file extensions from .yml to .json in translation scripts &nbsp;-&nbsp; by **soybeanfe** [<samp>(3b054)</samp>](https://github.com/soybeanjs/soybean-ui/commit/3b054f1ad)
+- **styles**: adjust layout for dialog, drawer, and popconfirm components &nbsp;-&nbsp; by **soybeanfe** [<samp>(f8a09)</samp>](https://github.com/soybeanjs/soybean-ui/commit/f8a09efd9)
+- **types**: update TypesConfig and add pathParamNames to route definitions &nbsp;-&nbsp; by **soybeanfe** [<samp>(9d18c)</samp>](https://github.com/soybeanjs/soybean-ui/commit/9d18c4845)
+
+### &nbsp;&nbsp;&nbsp;🛠 Optimizations
+
+- **affix**: remove function type from AffixTarget definition &nbsp;-&nbsp; by **soybeanfe** [<samp>(b33e9)</samp>](https://github.com/soybeanjs/soybean-ui/commit/b33e9d960)
+
+### &nbsp;&nbsp;&nbsp;💅 Refactors
+
+- **icon**: simplify icon handling and remove Nuxt-specific logic &nbsp;-&nbsp; by **soybeanfe** [<samp>(63725)</samp>](https://github.com/soybeanjs/soybean-ui/commit/637257084)
+
+### &nbsp;&nbsp;&nbsp;🏡 Chore
+
+- **deps**: update deps &nbsp;-&nbsp; by **soybeanfe** [<samp>(fe5bf)</samp>](https://github.com/soybeanjs/soybean-ui/commit/fe5bf240d)
+- **docs**: use json for locales &nbsp;-&nbsp; by **soybeanfe** [<samp>(06cad)</samp>](https://github.com/soybeanjs/soybean-ui/commit/06cada75d)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+
+[soybeanfe](mailto:honghuangdc@gmail.com)
+
 ## [v0.28.1](https://github.com/soybeanjs/soybean-ui/compare/v0.28.0...v0.28.1) (2026-05-29)
 
 ### &nbsp;&nbsp;&nbsp;🚀 Features

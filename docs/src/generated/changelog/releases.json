@@ -1,7 +1,112 @@
 {
-  "generatedAt": "2026-05-29T10:00:16.591Z",
+  "generatedAt": "2026-05-30T08:11:48.807Z",
   "schemaVersion": 1,
   "releases": [
+    {
+      "version": "v0.28.2",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.28.1...v0.28.2",
+      "date": "2026-05-30",
+      "entryCount": 8,
+      "componentCount": 1,
+      "components": ["affix"],
+      "typeCounts": {
+        "optimization": 1,
+        "fix": 3,
+        "feature": 1,
+        "refactor": 1,
+        "chore": 2
+      },
+      "entries": [
+        {
+          "type": "optimization",
+          "scope": "affix",
+          "summary": "remove function type from AffixTarget definition",
+          "summaryKey": "changelog.generated.v0.28.2.b33e9",
+          "commitHash": "b33e9",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/b33e9d960",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope",
+          "components": ["affix"]
+        },
+        {
+          "type": "fix",
+          "scope": "types",
+          "summary": "update TypesConfig and add pathParamNames to route definitions",
+          "summaryKey": "changelog.generated.v0.28.2.9d18c",
+          "commitHash": "9d18c",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/9d18c4845",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "feature",
+          "scope": "playground",
+          "summary": "add internationalization setup and locale management",
+          "summaryKey": "changelog.generated.v0.28.2.ce7d7",
+          "commitHash": "ce7d7",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/ce7d7626f",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "fix",
+          "scope": "i18n",
+          "summary": "update locale file extensions from .yml to .json in translation scripts",
+          "summaryKey": "changelog.generated.v0.28.2.3b054",
+          "commitHash": "3b054",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/3b054f1ad",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "fix",
+          "scope": "styles",
+          "summary": "adjust layout for dialog, drawer, and popconfirm components",
+          "summaryKey": "changelog.generated.v0.28.2.f8a09",
+          "commitHash": "f8a09",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/f8a09efd9",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "refactor",
+          "scope": "icon",
+          "summary": "simplify icon handling and remove Nuxt-specific logic",
+          "summaryKey": "changelog.generated.v0.28.2.63725",
+          "commitHash": "63725",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/637257084",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "chore",
+          "scope": "docs",
+          "summary": "use json for locales",
+          "summaryKey": "changelog.generated.v0.28.2.06cad",
+          "commitHash": "06cad",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/06cada75d",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "chore",
+          "scope": "deps",
+          "summary": "update deps",
+          "summaryKey": "changelog.generated.v0.28.2.fe5bf",
+          "commitHash": "fe5bf",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/fe5bf240d",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope",
+          "components": []
+        }
+      ]
+    },
     {
       "version": "v0.28.1",
       "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.28.0...v0.28.1",

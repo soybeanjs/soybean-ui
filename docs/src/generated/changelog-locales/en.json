@@ -1441,6 +1441,16 @@
             "2822e": "support playground in nuxt",
             "be9c0": "unify ID generation logic avoid hydration mismatch",
             "ffb45": "update deps"
+          },
+          "2": {
+            "63725": "simplify icon handling and remove Nuxt-specific logic",
+            "06cad": "use json for locales",
+            "3b054": "update locale file extensions from .yml to .json in translation scripts",
+            "9d18c": "update TypesConfig and add pathParamNames to route definitions",
+            "b33e9": "remove function type from AffixTarget definition",
+            "ce7d7": "add internationalization setup and locale management",
+            "f8a09": "adjust layout for dialog, drawer, and popconfirm components",
+            "fe5bf": "update deps"
           }
         }
       }
