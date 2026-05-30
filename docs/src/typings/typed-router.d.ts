@@ -20,9 +20,9 @@ import type {
 
 declare module 'vue-router' {
   interface TypesConfig {
-    ParamParsers:
-      | never
+    _ParamParsers: {}
     RouteNamedMap: import('vue-router/auto-routes').RouteNamedMap
+    _RouteFileInfoMap: import('vue-router/auto-routes')._RouteFileInfoMap
   }
 }
 
@@ -133,17 +133,23 @@ declare module 'vue-router/auto-routes' {
         | '/'
       views:
         | never
+      pathParamNames:
+        | never
     }
     'src/pages/[...all].vue': {
       routes:
         | '/[...all]'
       views:
         | never
+      pathParamNames:
+        | 'all'
     }
     'src/pages/about.md': {
       routes:
         | '/about'
       views:
+        | never
+      pathParamNames:
         | never
     }
     'src/pages/components/index.vue': {
@@ -151,17 +157,23 @@ declare module 'vue-router/auto-routes' {
         | '/components/'
       views:
         | never
+      pathParamNames:
+        | never
     }
     'src/pages/components/[name].vue': {
       routes:
         | '/components/[name]'
       views:
         | never
+      pathParamNames:
+        | 'name'
     }
     'src/pages/overview/index.vue': {
       routes:
         | '/overview/'
       views:
+        | never
+      pathParamNames:
         | never
     }
     'src/pages/overview/introduction.vue': {
@@ -169,11 +181,15 @@ declare module 'vue-router/auto-routes' {
         | '/overview/introduction'
       views:
         | never
+      pathParamNames:
+        | never
     }
     'src/pages/overview/llms.vue': {
       routes:
         | '/overview/llms'
       views:
+        | never
+      pathParamNames:
         | never
     }
     'src/pages/overview/quick-start.vue': {
@@ -181,11 +197,15 @@ declare module 'vue-router/auto-routes' {
         | '/overview/quick-start'
       views:
         | never
+      pathParamNames:
+        | never
     }
     'src/pages/overview/skills.vue': {
       routes:
         | '/overview/skills'
       views:
+        | never
+      pathParamNames:
         | never
     }
     'src/pages/overview/theming.vue': {
@@ -193,11 +213,15 @@ declare module 'vue-router/auto-routes' {
         | '/overview/theming'
       views:
         | never
+      pathParamNames:
+        | never
     }
     'src/pages/releases.vue': {
       routes:
         | '/releases'
       views:
+        | never
+      pathParamNames:
         | never
     }
   }
