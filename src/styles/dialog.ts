@@ -20,13 +20,13 @@ export const dialogVariants = scv({
       `data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95 data-[state=open]:slide-in-from-left-1/2`,
       `data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[state=closed]:slide-out-to-left-1/2`
     ],
-    header: `flex flex-col text-center sm:text-start`,
+    header: `flex flex-col lt-sm:text-center`,
     title: `flex items-center font-semibold leading-none tracking-tight m-0`,
     icon: 'group-data-[type=info]:text-info group-data-[type=success]:text-success group-data-[type=warning]:text-warning group-data-[type=error]:text-destructive',
     description: `text-muted-foreground m-0`,
     close: `absolute`,
     content: `grow overflow-auto`,
-    footer: `flex flex-col-reverse sm:flex-row sm:justify-end`,
+    footer: `flex justify-end lt-sm:flex-col-reverse`,
     cancel: '',
     confirm: ''
   },

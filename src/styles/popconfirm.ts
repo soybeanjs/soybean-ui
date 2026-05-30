@@ -17,12 +17,12 @@ export const popconfirmVariants = scv({
       `data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2`
     ],
     arrow: 'w-1em h-0.5em fill-popover stroke-border',
-    header: `flex flex-col text-center sm:text-start`,
+    header: `flex flex-col lt-sm:text-center`,
     icon: `shrink-0`,
     title: `flex items-center font-semibold leading-none tracking-tight m-0`,
     description: `text-muted-foreground m-0`,
     content: '',
-    footer: `flex flex-col-reverse sm:flex-row sm:justify-end`,
+    footer: `flex justify-end lt-sm:flex-col-reverse`,
     cancel: '',
     confirm: '',
     close: 'absolute'

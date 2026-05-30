@@ -42,14 +42,14 @@ export const drawerVariants = scv({
       },
       left: {
         popup: [
-          `inset-y-0 start-0 h-full w-3/4 border-e rounded-e-md sm:max-w-sm`,
+          `inset-y-0 start-0 h-full max-w-sm lt-sm:w-3/4 border-e rounded-e-md`,
           `data-[state=open]:slide-in-from-left data-[state=closed]:slide-out-to-left`,
           `[&[dir=rtl]]:data-[state=open]:slide-in-from-right [&[dir=rtl]]:data-[state=closed]:slide-out-to-right`
         ]
       },
       right: {
         popup: [
-          `inset-y-0 end-0 h-full w-3/4 border-s rounded-s-md sm:max-w-sm`,
+          `inset-y-0 end-0 h-full max-w-sm lt-sm:w-3/4 border-s rounded-s-md`,
           `data-[state=open]:slide-in-from-right data-[state=closed]:slide-out-to-right`,
           `[&[dir=rtl]]:data-[state=open]:slide-in-from-left [&[dir=rtl]]:data-[state=closed]:slide-out-to-left`
         ]
