@@ -197,7 +197,7 @@ describe('SAffix', () => {
       document.body.appendChild(target);
 
       const wrapper = mount(SAffix, {
-        props: { offsetTop: 16, target: () => target },
+        props: { offsetTop: 16, target },
         slots: { default: 'Pinned content' },
         attachTo: document.body
       });
@@ -237,7 +237,7 @@ describe('SAffix', () => {
       document.body.appendChild(target);
 
       const wrapper = mount(SAffix, {
-        props: { offsetBottom: 24, target: () => target },
+        props: { offsetBottom: 24, target },
         slots: { default: 'Pinned content' },
         attachTo: document.body
       });

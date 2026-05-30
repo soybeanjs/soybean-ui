@@ -4,7 +4,7 @@ import type { BaseProps, UiClass } from '../../types';
 /**
  * Type information for AffixTarget.
  */
-export type AffixTarget = string | Window | HTMLElement | (() => HTMLElement);
+export type AffixTarget = string | Window | HTMLElement;
 
 /**
  * State values for AffixState.
