@@ -164,7 +164,7 @@ export async function resolveAvailableLocalesFromI18nModule(
   i18nModulePath: string
 ): Promise<string[]> {
   const moduleContent = await readFile(i18nModulePath, 'utf8');
-  const localesGlobMatch = moduleContent.match(/import\.meta\.glob\('([^']*locales\/\*\.yml)'\)/u);
+  const localesGlobMatch = moduleContent.match(/import\.meta\.glob\('([^']*locales\/\*\.json)'\)/u);
 
   if (!localesGlobMatch) {
     throw new Error(`Unable to resolve availableLocales from ${path.relative(rootDir, i18nModulePath)}.`);
@@ -175,8 +175,8 @@ export async function resolveAvailableLocalesFromI18nModule(
   const fileNames = await readdir(localesDirectory);
 
   return fileNames
-    .filter(fileName => fileName.endsWith('.yml'))
-    .map(fileName => fileName.replace(/\.yml$/u, ''))
+    .filter(fileName => fileName.endsWith('.json'))
+    .map(fileName => fileName.replace(/\.json$/u, ''))
     .sort((left, right) => left.localeCompare(right));
 }
 

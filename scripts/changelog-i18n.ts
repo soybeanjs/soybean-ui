@@ -38,7 +38,7 @@ async function collectChangelogSummaryEntries(): Promise<Map<string, string>> {
 export async function generateChangelogLocaleTemplates(): Promise<void> {
   const [entries, locales] = await Promise.all([
     collectChangelogSummaryEntries(),
-    listFileBasenames(localeDir, '.yml')
+    listFileBasenames(localeDir, '.json')
   ]);
 
   await mkdir(outputDir, { recursive: true });

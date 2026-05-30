@@ -36,7 +36,7 @@ async function collectApiDescriptionEntries(): Promise<Map<string, string>> {
 }
 
 export async function generateApiLocaleTemplates(): Promise<void> {
-  const [entries, locales] = await Promise.all([collectApiDescriptionEntries(), listFileBasenames(localeDir, '.yml')]);
+  const [entries, locales] = await Promise.all([collectApiDescriptionEntries(), listFileBasenames(localeDir, '.json')]);
 
   await mkdir(outputDir, { recursive: true });
 
