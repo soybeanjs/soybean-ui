@@ -1,0 +1,905 @@
+{
+  "common": {
+    "copy_to_clipboard": "Copy to clipboard",
+    "copied": "Copied"
+  },
+  "button": {
+    "about": "About",
+    "back": "Back",
+    "go": "GO",
+    "home": "Home",
+    "toggle_dark": "Toggle dark mode",
+    "toggle_langs": "Change languages"
+  },
+  "not_found": "Not found",
+  "not_found_page": "Not found page",
+  "playground": {
+    "preview": "Preview",
+    "code": "Code",
+    "examples": {
+      "accordion": {
+        "always-one": "Always One",
+        "basic": "Basic",
+        "custom-icon": "Custom Icon",
+        "custom-styling": "Custom Styling",
+        "multiple": "Multiple",
+        "single": "Single"
+      },
+      "affix": {
+        "basic": "Basic",
+        "custom-styling": "Custom Styling",
+        "offset-bottom": "Offset Bottom",
+        "target": "Target"
+      },
+      "alert": {
+        "basic": "Basic",
+        "closable": "Closable",
+        "color": "Color",
+        "desc-icon": "Description Icon",
+        "description": "Description",
+        "icon": "Icon",
+        "size": "Size",
+        "slot": "Slot",
+        "variant": "Variant"
+      },
+      "anchor": {
+        "basic": "Basic",
+        "color": "Color",
+        "custom-styling": "Custom Styling",
+        "size": "Size",
+        "sticky": "Sticky"
+      },
+      "arrow": {
+        "basic": "Basic"
+      },
+      "aspect-ratio": {
+        "basic": "Basic"
+      },
+      "autocomplete": {
+        "basic": "Basic",
+        "custom-styling": "Custom Styling",
+        "disabled": "Disabled",
+        "grouped": "Grouped",
+        "open-on-focus": "Open On Focus"
+      },
+      "avatar": {
+        "basic": "Basic",
+        "delay": "Delay",
+        "fallback": "Fallback",
+        "size": "Size"
+      },
+      "backtop": {
+        "basic": "Basic",
+        "custom-styling": "Custom Styling",
+        "disabled": "Disabled",
+        "target": "Target"
+      },
+      "badge": {
+        "basic": "Basic",
+        "color": "Color",
+        "content": "Content",
+        "open": "Open",
+        "position": "Position",
+        "slot": "Slot"
+      },
+      "bottom-sheet": {
+        "basic": "Basic",
+        "nested": "Nested"
+      },
+      "breadcrumb": {
+        "basic": "Basic",
+        "ellipsis-dropdown": "Ellipsis Dropdown",
+        "item-dropdown": "Item Dropdown",
+        "link": "Link",
+        "separator": "Separator"
+      },
+      "button": {
+        "basic": "Basic",
+        "color": "Color",
+        "disabled": "Disabled",
+        "group": "Group",
+        "icon": "Icon",
+        "link": "Link",
+        "loading": "Loading",
+        "shadow": "Shadow",
+        "shape": "Shape",
+        "size": "Size",
+        "slot": "Slot",
+        "variant": "Variant"
+      },
+      "calendar": {
+        "basic": "Basic",
+        "custom-styling": "Custom Styling",
+        "disabled": "Disabled",
+        "multiple": "Multiple"
+      },
+      "card": {
+        "basic": "Basic",
+        "collapsible": "Collapsible",
+        "only-content": "Only Content",
+        "split": "Split",
+        "title-slot": "Title Slot"
+      },
+      "carousel": {
+        "basic": "Basic",
+        "dot": "Dot",
+        "float": "Float",
+        "multi": "Multi",
+        "progress": "Progress",
+        "snap": "Snap",
+        "vertical": "Vertical"
+      },
+      "checkbox": {
+        "basic": "Basic",
+        "card": "Card",
+        "card-group": "Card Group",
+        "color": "Color",
+        "group": "Group",
+        "icon": "Icon",
+        "shape": "Shape",
+        "single": "Single",
+        "size": "Size"
+      },
+      "clipboard": {
+        "basic": "Basic",
+        "color": "Color",
+        "custom-styling": "Custom Styling",
+        "disabled": "Disabled",
+        "size": "Size",
+        "variant": "Variant"
+      },
+      "collapsible": {
+        "basic": "Basic"
+      },
+      "color-area": {
+        "basic": "Basic",
+        "oklch": "OKLCH"
+      },
+      "color-field": {
+        "basic": "Basic"
+      },
+      "color-picker": {
+        "basic": "Basic",
+        "oklch": "OKLCH"
+      },
+      "color-slider": {
+        "basic": "Basic"
+      },
+      "color-swatch": {
+        "basic": "Basic"
+      },
+      "color-swatch-picker": {
+        "basic": "Basic",
+        "shape": "Shape"
+      },
+      "combobox": {
+        "basic": "Basic",
+        "clearable": "Clearable",
+        "custom-styling": "Custom Styling",
+        "disabled": "Disabled",
+        "group": "Group",
+        "multiple": "Multiple"
+      },
+      "command": {
+        "basic": "Basic",
+        "dialog": "Dialog"
+      },
+      "context-menu": {
+        "basic": "Basic",
+        "checkbox": "Checkbox",
+        "mix": "Mixed",
+        "radio": "Radio",
+        "trigger": "Trigger"
+      },
+      "date-field": {
+        "basic": "Basic",
+        "custom-styling": "Custom Styling",
+        "disabled": "Disabled",
+        "with-time": "With Time"
+      },
+      "date-picker": {
+        "basic": "Basic",
+        "custom-styling": "Custom Styling",
+        "disabled": "Disabled",
+        "size": "Size"
+      },
+      "date-range-field": {
+        "basic": "Basic",
+        "custom-styling": "Custom Styling",
+        "disabled": "Disabled",
+        "with-time": "With Time"
+      },
+      "date-range-picker": {
+        "basic": "Basic",
+        "custom-styling": "Custom Styling",
+        "disabled": "Disabled",
+        "size": "Size"
+      },
+      "dialog": {
+        "basic": "Basic",
+        "dialog-api": "Dialog API",
+        "footer": "Footer",
+        "prevent": "Prevent",
+        "pure": "Pure",
+        "state": "State"
+      },
+      "drawer": {
+        "basic": "Basic",
+        "scroll": "Scroll",
+        "side": "Side"
+      },
+      "dropdown-menu": {
+        "arrow": "Arrow",
+        "basic": "Basic",
+        "checkbox": "Checkbox",
+        "mix": "Mixed",
+        "radio": "Radio",
+        "trigger": "Trigger"
+      },
+      "editable": {
+        "activation-mode": "Activation Mode",
+        "basic": "Basic",
+        "custom-styling": "Custom Styling",
+        "disabled": "Disabled",
+        "size": "Size"
+      },
+      "empty": {
+        "basic": "Basic",
+        "custom-styling": "Custom Styling",
+        "icon": "Icon",
+        "slot": "Slot"
+      },
+      "form": {
+        "basic": "Basic",
+        "horizontal": "Horizontal",
+        "zod": "Zod"
+      },
+      "hover-card": {
+        "basic": "Basic",
+        "custom-styling": "Custom Styling",
+        "delay": "Delay"
+      },
+      "input": {
+        "basic": "Basic",
+        "clearable": "Clearable",
+        "disabled": "Disabled",
+        "slot": "Slot"
+      },
+      "input-number": {
+        "basic": "Basic",
+        "center": "Center",
+        "clearable": "Clearable",
+        "slot": "Slot"
+      },
+      "input-otp": {
+        "basic": "Basic",
+        "custom-slot": "Custom Slot",
+        "disabled": "Disabled",
+        "placeholder": "Placeholder"
+      },
+      "kbd": {
+        "basic": "Basic",
+        "raised": "Raised",
+        "size": "Size",
+        "variant": "Variant"
+      },
+      "label": {
+        "basic": "Basic"
+      },
+      "layout": {
+        "basic": "Basic",
+        "classic": "Classic"
+      },
+      "link": {
+        "basic": "Basic",
+        "href": "Href"
+      },
+      "list": {
+        "basic": "Basic"
+      },
+      "menu": {
+        "basic": "Basic"
+      },
+      "menubar": {
+        "basic": "Basic",
+        "controlled": "Controlled",
+        "rtl": "RTL"
+      },
+      "month-picker": {
+        "basic": "Basic",
+        "custom-styling": "Custom Styling",
+        "disabled": "Disabled",
+        "size": "Size"
+      },
+      "month-range-picker": {
+        "basic": "Basic",
+        "custom-styling": "Custom Styling",
+        "disabled": "Disabled",
+        "size": "Size"
+      },
+      "navigation-menu": {
+        "basic": "Basic",
+        "horizontal": "Horizontal",
+        "vertical": "Vertical"
+      },
+      "page-tabs": {
+        "basic": "Basic"
+      },
+      "pagination": {
+        "action": "Action",
+        "basic": "Basic",
+        "shape": "Shape",
+        "show": "Show",
+        "size": "Size",
+        "slot": "Slot",
+        "variant": "Variant"
+      },
+      "password": {
+        "basic": "Basic",
+        "clearable": "Clearable",
+        "disabled": "Disabled",
+        "icon": "Icon"
+      },
+      "popconfirm": {
+        "basic": "Basic"
+      },
+      "popover": {
+        "basic": "Basic"
+      },
+      "progress": {
+        "basic": "Basic",
+        "circle": "Circle",
+        "color": "Color",
+        "provider": "Provider",
+        "size": "Size",
+        "slot": "Slot",
+        "state": "State"
+      },
+      "radio-group": {
+        "basic": "Basic",
+        "card": "Card",
+        "color": "Color",
+        "size": "Size",
+        "variant": "Variant"
+      },
+      "calendar-range": {
+        "basic": "Basic",
+        "custom-styling": "Custom Styling",
+        "disabled": "Disabled",
+        "two-months": "Two Months"
+      },
+      "scroll-area": {
+        "basic": "Basic",
+        "custom-styling": "Custom Styling",
+        "horizontal": "Horizontal",
+        "type": "Type"
+      },
+      "segment": {
+        "basic": "Basic",
+        "icon": "Icon",
+        "shape": "Shape",
+        "vertical": "Vertical"
+      },
+      "select": {
+        "basic": "Basic",
+        "default-value": "Default Value",
+        "disabled": "Disabled",
+        "group": "Group",
+        "multiple": "Multiple",
+        "separator": "Separator",
+        "single-clearable": "Single Clearable"
+      },
+      "separator": {
+        "align": "Align",
+        "basic": "Basic",
+        "border": "Border",
+        "orientation": "Orientation"
+      },
+      "skeleton": {
+        "animated": "Animated",
+        "basic": "Basic",
+        "custom-size": "Custom Size",
+        "shape": "Shape",
+        "size": "Size"
+      },
+      "slider": {
+        "basic": "Basic",
+        "color": "Color",
+        "disabled": "Disabled",
+        "orientation": "Orientation",
+        "range": "Range",
+        "size": "Size"
+      },
+      "spinner": {
+        "basic": "Basic",
+        "color": "Color",
+        "custom-styling": "Custom Styling",
+        "icon": "Icon",
+        "size": "Size"
+      },
+      "splitter": {
+        "basic": "Basic",
+        "collapsible": "Collapsible",
+        "custom-handle": "Custom Handle",
+        "disabled": "Disabled",
+        "vertical": "Vertical"
+      },
+      "stepper": {
+        "basic": "Basic",
+        "custom-styling": "Custom Styling",
+        "linear": "Linear",
+        "vertical": "Vertical"
+      },
+      "switch": {
+        "basic": "Basic",
+        "shape": "Shape",
+        "size": "Size",
+        "slot": "Slot"
+      },
+      "table": {
+        "basic": "Basic",
+        "bordered": "Bordered",
+        "bottom": "Bottom",
+        "empty": "Empty",
+        "expandable": "Expandable",
+        "filtering": "Filtering",
+        "fixed": "Fixed",
+        "footer": "Footer",
+        "grouped": "Grouped",
+        "multiple-selection": "Multiple Selection",
+        "resizable": "Resizable",
+        "row-events": "Row Events",
+        "rounded": "Rounded",
+        "single-selection": "Single Selection",
+        "sizes": "Sizes",
+        "sorting": "Sorting",
+        "striped": "Striped",
+        "tree": "Tree",
+        "variant": "Variant",
+        "virtualized": "Virtualized"
+      },
+      "tabs": {
+        "basic": "Basic",
+        "custom": "Custom",
+        "fill": "Fill",
+        "horizontal": "Horizontal",
+        "vertical": "Vertical"
+      },
+      "tag": {
+        "basic": "Basic",
+        "closable": "Closable",
+        "color": "Color",
+        "shape": "Shape",
+        "size": "Size",
+        "slot": "Slot",
+        "variant": "Variant"
+      },
+      "tags-input": {
+        "basic": "Basic",
+        "clear": "Clear",
+        "disabled": "Disabled",
+        "object-value": "Object Value"
+      },
+      "textarea": {
+        "autosize": "Autosize",
+        "basic": "Basic",
+        "clearable": "Clearable",
+        "counter": "Counter",
+        "disabled": "Disabled",
+        "footer": "Footer"
+      },
+      "time-field": {
+        "basic": "Basic",
+        "custom-styling": "Custom Styling",
+        "disabled": "Disabled",
+        "seconds": "Seconds"
+      },
+      "time-picker": {
+        "basic": "Basic",
+        "custom-styling": "Custom Styling",
+        "disabled": "Disabled",
+        "size": "Size"
+      },
+      "time-range-field": {
+        "basic": "Basic",
+        "custom-styling": "Custom Styling",
+        "disabled": "Disabled",
+        "seconds": "Seconds"
+      },
+      "time-range-picker": {
+        "basic": "Basic",
+        "custom-styling": "Custom Styling",
+        "disabled": "Disabled",
+        "size": "Size"
+      },
+      "toast": {
+        "action": "Action",
+        "appearance": "Appearance",
+        "basic": "Basic",
+        "control": "Control",
+        "position": "Position",
+        "promise": "Promise",
+        "stack": "Stack",
+        "types": "Types"
+      },
+      "toggle": {
+        "basic": "Basic",
+        "disabled": "Disabled",
+        "shape": "Shape",
+        "size": "Size",
+        "variant": "Variant"
+      },
+      "toggle-group": {
+        "basic": "Basic",
+        "multiple": "Multiple",
+        "variant": "Variant",
+        "vertical": "Vertical"
+      },
+      "toolbar": {
+        "basic": "Basic",
+        "link": "Link",
+        "toggle-group": "Toggle Group",
+        "vertical": "Vertical"
+      },
+      "tooltip": {
+        "basic": "Basic"
+      },
+      "tree": {
+        "basic": "Basic",
+        "virtualizer": "Virtualizer"
+      },
+      "tree-menu": {
+        "basic": "Basic"
+      },
+      "virtualizer": {
+        "basic": "Basic",
+        "dynamic": "Dynamic",
+        "horizontal": "Horizontal"
+      },
+      "visually-hidden": {
+        "basic": "Basic"
+      },
+      "year-picker": {
+        "basic": "Basic",
+        "custom-styling": "Custom Styling",
+        "disabled": "Disabled",
+        "size": "Size"
+      },
+      "year-range-picker": {
+        "basic": "Basic",
+        "custom-styling": "Custom Styling",
+        "disabled": "Disabled",
+        "size": "Size"
+      }
+    }
+  },
+  "locale": {
+    "en": "English",
+    "zh_cn": "Chinese"
+  },
+  "layout": {
+    "default": "Default Layout",
+    "home": "Home Layout",
+    "about": "About Layout",
+    "header": {
+      "search": "Search documentation",
+      "search_empty": "No related documents found",
+      "docs": "Docs",
+      "getting_started": "Getting Started",
+      "components": "Components",
+      "releases": "Releases",
+      "version": "Version",
+      "github": "GitHub",
+      "theme": "Theme",
+      "theme_configurator": "Theme Configurator",
+      "frosted_glass": "Frosted Glass",
+      "language": "Language",
+      "others": "Others"
+    }
+  },
+  "components": {
+    "common": {
+      "demo": "Demos"
+    },
+    "catalog": {
+      "title": "Component Catalog",
+      "description": "Browse every Soybean UI component by category and jump straight into the dedicated docs page for each one.",
+      "helper": "Use the category view below or press Command + K to jump to a component directly.",
+      "kicker": "Component catalog and entry points",
+      "group_count": "{count} components",
+      "actions": {
+        "open": "Open documentation",
+        "start": "Quick Start",
+        "learn": "Learn the architecture"
+      },
+      "badges": {
+        "new": "New"
+      },
+      "stats": {
+        "total": "Total components",
+        "categories": "Categories",
+        "featured": "Featured",
+        "new": "New components"
+      },
+      "stats_title": "Catalog at a glance",
+      "quick_actions": {
+        "quick_start": {
+          "title": "Set up first",
+          "desc": "If the package is not installed yet, start from the quick-start guide before browsing deeper."
+        },
+        "introduction": {
+          "title": "Understand the layers",
+          "desc": "Learn the headless and UI split first so component choices stay intentional."
+        },
+        "theming": {
+          "title": "Review theming early",
+          "desc": "If styling and slot overrides matter, the theming guide saves time before implementation."
+        }
+      },
+      "featured": {
+        "button": "The starting point for actions, decisions, and primary user flows.",
+        "input": "A reliable base for plain text entry and more complex form composition.",
+        "select": "A high-frequency choice for filtering, picking, and structured input flows.",
+        "dialog": "The core overlay for confirmations, editing, and interruptive flows.",
+        "table": "A key surface for dense data reading, comparison, and structured display.",
+        "form": "The entry point for aligning validation, inputs, and submission feedback."
+      },
+      "sections": {
+        "featured": {
+          "title": "High-signal components",
+          "desc": "If you are unsure where to begin, these components best represent the system in real work."
+        }
+      }
+    },
+    "button": {
+      "title": "Button",
+      "desc": "Button component"
+    },
+    "home": {
+      "title": "SoybeanUI",
+      "description": "A powerful, elegant Vue 3 component system with headless primitives and ready-to-use styled wrappers.",
+      "kicker": "Vue 3 Component System",
+      "actions": {
+        "start": "Get Started",
+        "browse": "Browse Components",
+        "github": "GitHub"
+      },
+      "stats_title": "Library overview",
+      "stats": {
+        "components": "Components",
+        "categories": "Categories",
+        "packages": "Packages",
+        "guides": "Guides"
+      },
+      "features": {
+        "headless_first": {
+          "title": "Headless First",
+          "desc": "{'@'}soybeanjs/headless focuses on state, behavior, and accessibility semantics without shipping any visual styling."
+        },
+        "styled_wrappers": {
+          "title": "Styled Wrappers",
+          "desc": "{'@'}soybeanjs/ui ships S-prefixed styled components so common product surfaces can be delivered without rebuilding presentation from scratch."
+        },
+        "accessible": {
+          "title": "Accessibility Built In",
+          "desc": "Follows WAI-ARIA patterns with keyboard navigation, focus management, and semantic state handling included."
+        },
+        "type_safe": {
+          "title": "Type-safe APIs",
+          "desc": "Built with TypeScript so components, slots, and configuration surfaces stay explicit during implementation."
+        },
+        "slot_overrides": {
+          "title": "Slot-level Overrides",
+          "desc": "Override local styling precisely through ui slot maps instead of rewriting entire components."
+        },
+        "theme_ready": {
+          "title": "Theme-ready Variants",
+          "desc": "Variants are organized with UnoCSS and {'@'}soybeanjs/cva so design tokens and themes stay scalable."
+        },
+        "component_coverage": {
+          "title": "Broad Component Coverage",
+          "desc": "Covers general UI, forms, navigation, overlays, and data display for the screens teams build most often."
+        },
+        "ecosystem": {
+          "title": "Vue Ecosystem Friendly",
+          "desc": "Works smoothly with Nuxt, auto-import workflows, and living examples that shorten adoption time."
+        }
+      },
+      "quick_links": {
+        "get_started": {
+          "title": "Quick Setup",
+          "desc": "Install the package, wire the styling layer, and get the first screen rendering end to end."
+        },
+        "introduction": {
+          "title": "Understand the Split",
+          "desc": "Review how the unstyled headless layer and the styled UI layer divide responsibility before choosing an integration strategy."
+        },
+        "components": {
+          "title": "Browse the Catalog",
+          "desc": "Narrow the component choice set quickly by scanning primitives, patterns, and utilities by category."
+        },
+        "theming": {
+          "title": "Configure Theming",
+          "desc": "Learn how tokens, variants, and ui slot overrides work together before deeper customization."
+        }
+      },
+      "sections": {
+        "highlights": {
+          "title": "Core Features"
+        },
+        "featured": {
+          "title": "High-signal Components",
+          "desc": "If you want to feel the system quickly, these components show the most representative interaction surfaces."
+        },
+        "categories": {
+          "title": "Browse by Scenario",
+          "unit": "components"
+        },
+        "architecture": {
+          "title": "Core Architecture",
+          "desc": "The two-layer split lets logic reuse and visual expression evolve independently without breaking composition."
+        }
+      },
+      "featured": {
+        "button": "A foundational entry point for actions, state transitions, and forward motion in a flow.",
+        "input": "A reliable starting point for entry, search, and richer form composition.",
+        "select": "Covers filtering, mapping, and structured option selection in frequent product scenarios.",
+        "dialog": "A core overlay capability for confirmations, editing flows, and interruptive tasks.",
+        "table": "A key component for dense data reading, comparison, and structured presentation.",
+        "form": "Aligns field composition, validation, and submission feedback inside one workflow."
+      }
+    }
+  },
+  "sidebar": {
+    "overview": "Overview",
+    "introduction": "Introduction",
+    "quick_start": "Quick Start",
+    "components": "Components",
+    "theming": "Theming",
+    "llms": "LLMs.txt",
+    "skills": "Skills",
+    "common_types": "Common Types",
+    "general": "General",
+    "layout": "Layout",
+    "navigation": "Navigation",
+    "forms": "Forms",
+    "data_display": "Data Display",
+    "feedback": "Feedback",
+    "overlay": "Overlay",
+    "utilities": "Utilities"
+  },
+  "api": {
+    "ui_layer": "UI Layer",
+    "headless_layer": "Headless Layer",
+    "props": "Props",
+    "emits": "Emits",
+    "slots": "Slots",
+    "columns": {
+      "prop_name": "Prop",
+      "emit_name": "Emit Name",
+      "slot_name": "Slot Name",
+      "field_name": "Field",
+      "type": "Type",
+      "default": "Default",
+      "parameters": "Parameters",
+      "description": "Description"
+    },
+    "actions": {
+      "open_full_type": "Open full type"
+    },
+    "local_types": "Local Types",
+    "common_types_note": "Shared repeated types are centralized on the",
+    "common_types_link": "Common Types page."
+  },
+  "changelog": {
+    "actions": {
+      "compare_release": "Compare release",
+      "view_commit": "View commit"
+    },
+    "meta": {
+      "scope": "Scope",
+      "authors": "Authors"
+    },
+    "sources": {
+      "curated": "Curated mapping"
+    },
+    "empty": {
+      "title": "No component-specific release notes yet",
+      "desc": "Release entries appear here when CHANGELOG items are scoped to this component or manually mapped."
+    },
+    "types": {
+      "feature": "Feature",
+      "fix": "Fix",
+      "optimization": "Optimization",
+      "refactor": "Refactor",
+      "docs": "Docs",
+      "chore": "Chore",
+      "style": "Style"
+    }
+  },
+  "releases_page": {
+    "kicker": "Release overview",
+    "title": "Releases",
+    "summary": "Track recent releases, see which components changed, and jump directly into the parts of the system most relevant to your upgrade.",
+    "filter": {
+      "title": "Filter by component",
+      "desc": "Narrow the release timeline to the components you actually use, then jump back into their docs from the matched entries.",
+      "placeholder": "Search components like dialog, table, or date-picker",
+      "clear": "Clear",
+      "suggestions": "Suggestions",
+      "enter_hint": "Press Enter to pick the first match.",
+      "related_only": "Only component-related entries",
+      "related_only_desc": "Hide shared release items like docs, deps, workflow, and other non-component changes.",
+      "no_match": "No matching component found in tracked release data."
+    },
+    "latest": {
+      "title": "Latest snapshot",
+      "desc": "Start with the newest release, then scan older versions only if your upgrade path crosses multiple published tags."
+    },
+    "sections": {
+      "recent": {
+        "title": "Recent releases",
+        "desc": "Each release groups shipped entries, affected components, and the fastest links back into component docs."
+      },
+      "impacted": {
+        "title": "Affected components"
+      },
+      "highlights": {
+        "title": "Selected highlights"
+      }
+    },
+    "stats": {
+      "entries": "Entries",
+      "components": "Components",
+      "versions": "Releases tracked"
+    },
+    "actions": {
+      "compare_release": "Compare release",
+      "full_changelog": "Full changelog",
+      "browse_components": "Browse components",
+      "view_full_release": "View full release",
+      "collapse_release": "Collapse full release"
+    },
+    "empty": {
+      "title": "No release data yet",
+      "desc": "Run the changelog generation command to populate this page.",
+      "filtered_title": "No matching releases",
+      "filtered_desc": "No tracked release currently matches this component filter."
+    },
+    "more_entries": "+ {count} more entries in the full changelog"
+  },
+  "component_detail": {
+    "kicker": "Component detail entry",
+    "helper": "Use the top shortcuts to reach overview, usage, demos, and API first, then continue through the full page.",
+    "summary": "{component} belongs to the {category} category. Start with demos and usage, then use the API tables to finish integration and styling decisions.",
+    "changelog": {
+      "desc": "Version history is grouped by release so you can quickly see what changed for this component across published versions."
+    },
+    "meta": {
+      "category": "Category",
+      "import": "Import",
+      "route": "Route"
+    },
+    "actions": {
+      "demos": "View demos",
+      "api": "View API",
+      "changelog": "View changelog",
+      "catalog": "Back to catalog"
+    },
+    "sections": {
+      "overview": "Overview",
+      "usage": "Usage",
+      "demos": "Demos",
+      "api": "API",
+      "changelog": "Changelog"
+    },
+    "quick_jump": {
+      "title": "Quick jump",
+      "desc": "Jump straight to the sections most people use first."
+    },
+    "related": {
+      "title": "Related components",
+      "desc": "If you are composing interactions in the same family, these components usually pair well together."
+    }
+  }
+}
