@@ -105,17 +105,17 @@ export async function generateSkillsDistribution(): Promise<void> {
     writeFile(path.resolve(skillsDistributionRootDir, 'README.md'), createDistributionReadme(), 'utf8'),
     writeFile(
       path.resolve(skillsDistributionRootDir, 'package.json'),
-      JSON.stringify(createDistributionPackageManifest(rootPackage), null, 2) + '\n',
+      `${JSON.stringify(createDistributionPackageManifest(rootPackage), null, 2)}\n`,
       'utf8'
     ),
     writeFile(
       path.resolve(claudePluginDir, 'plugin.json'),
-      JSON.stringify(createClaudePluginManifest(rootPackage), null, 2) + '\n',
+      `${JSON.stringify(createClaudePluginManifest(rootPackage), null, 2)}\n`,
       'utf8'
     ),
     writeFile(
       path.resolve(claudePluginDir, 'marketplace.json'),
-      JSON.stringify(createClaudeMarketplaceManifest(rootPackage), null, 2) + '\n',
+      `${JSON.stringify(createClaudeMarketplaceManifest(rootPackage), null, 2)}\n`,
       'utf8'
     )
   ]);

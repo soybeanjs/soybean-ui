@@ -22,7 +22,7 @@ const error = computed(() => props.error);
 const { formFieldId, ariaDescribedBy, ariaInvalid } = provideFormFieldContext({ error });
 
 const slotProps = computed(() => ({
-  formFieldId: formFieldId,
+  formFieldId,
   ariaDescribedBy: ariaDescribedBy.value,
   ariaInvalid: ariaInvalid.value
 }));

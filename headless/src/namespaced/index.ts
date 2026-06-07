@@ -1810,7 +1810,7 @@ export const TimeRangeField = {
 };
 
 export const Toast = {
-  Toaster: Toaster,
+  Toaster,
   Provider: ToastProvider
 } as {
   Toaster: typeof Toaster;

@@ -39,7 +39,7 @@ const onDelete = () => {
 
 provideTagsInputItemContext({
   value: computed(() => props.value),
-  displayedValue: displayedValue,
+  displayedValue,
   isSelected,
   disabled,
   itemElement,
