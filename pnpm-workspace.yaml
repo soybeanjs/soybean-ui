@@ -5,6 +5,7 @@ packages:
   - 'ui-skills'
 overrides:
   vite-ssg>jsdom: 27.0.1
+  markdown-exit: 1.1.0-beta.2
 shamefullyHoist: true
 ignoreWorkspaceRootCheck: true
 linkWorkspacePackages: true
