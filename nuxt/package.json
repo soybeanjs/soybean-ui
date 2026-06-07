@@ -9,10 +9,10 @@
     "preview": "nuxt preview"
   },
   "dependencies": {
-    "@nuxt/icon": "2.2.2",
+    "@nuxt/icon": "2.2.3",
     "@nuxtjs/i18n": "10.4.0",
     "@soybeanjs/ui": "workspace:^",
-    "nuxt": "^4.4.6",
+    "nuxt": "^4.4.7",
     "vue": "^3.5.35",
     "vue-router": "^5.1.0"
   },
