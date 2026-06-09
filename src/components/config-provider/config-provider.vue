@@ -4,15 +4,15 @@ import { useStyleTag } from '@vueuse/core';
 import { useOmitProps } from '@soybeanjs/headless/composables';
 import { ConfigProvider } from '@soybeanjs/headless/config-provider';
 import { isNuxt, isClient, transformPropsToContext } from '@soybeanjs/headless/shared';
-import { createShadcnTheme, isDefaultPresetOptions } from '@soybeanjs/shadcn-theme';
+import { createShadcnTheme } from '@soybeanjs/shadcn-theme';
 import { themeSizeMap } from '@/theme';
 import DialogProvider from '../dialog/dialog-provider.vue';
 import Icon from '../icon/icon.vue';
-import type { IconValue } from '../icon/types';
+import type { IconValue } from '../icon/types.js';
 import ProgressProvider from '../progress/progress-provider.vue';
 import ToastProvider from '../toast/toast-provider.vue';
-import { provideConfigProviderContext } from './context';
-import type { ConfigProviderProps } from './types';
+import { provideConfigProviderContext } from './context.js';
+import type { ConfigProviderProps } from './types.js';
 
 defineOptions({
   name: 'SConfigProvider'
@@ -70,10 +70,6 @@ watch(
   () => props.theme,
   () => {
     if (!isClient) return;
-    const isDefault = isDefaultPresetOptions(props.theme);
-    if (isDefault) {
-      return;
-    }
 
     generateCss();
   },
