@@ -1,0 +1,1211 @@
+{
+  "component": "switch",
+  "symbols": {
+    "Switch": {
+      "props": {
+        "kind": "props",
+        "name": "SwitchProps",
+        "type": "Interface SwitchProps<T>",
+        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; ui?: Partial<SwitchUi>; color?: ThemeColor; size?: ThemeSize; shape?: SwitchShape; controlProps?: SwitchControlProps; thumbProps?: SwitchThumbProps; defaultValue?: NonNullable<T>; modelValue?: T; disabled?: boolean; value?: string; dir?: Direction; name?: string; required?: boolean; trueValue?: NonNullable<T>; falseValue?: NonNullable<T> }",
+        "description": "Properties for the Switch component.",
+        "descriptionKey": "api.generated.packages_ui_src_components_switch_types.switchprops.props",
+        "sourcePath": "packages/ui/src/components/switch/types.ts",
+        "typeParameters": ["TypeParameter T"],
+        "members": [
+          {
+            "name": "class",
+            "type": "string | false | Record<string, any> | ClassValue[] | null",
+            "required": false,
+            "description": "Additional class names applied to the root element.",
+            "descriptionKey": "api.generated.packages_ui_src_components_switch_types.switchprops.members.class",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui/src/components/switch/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ClassValue",
+                "kind": "typeAlias",
+                "type": "string | false | Record<string, any> | ClassValue[] | null | undefined",
+                "resolvedType": "string | false | Record<string, any> | ClassValue[] | null | undefined",
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_types_common.classvalue",
+                "sourcePath": "packages/headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "ui",
+            "type": "Partial<SwitchUi>",
+            "required": false,
+            "description": "Per-slot class overrides for the component.",
+            "descriptionKey": "api.generated.packages_ui_src_components_switch_types.switchprops.members.ui",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui/src/components/switch/types.ts",
+            "referencedTypes": [
+              {
+                "name": "SwitchUi",
+                "kind": "typeAlias",
+                "type": "{ root: ClassValue; control: ClassValue; thumb: ClassValue; }",
+                "resolvedType": null,
+                "description": "UI class overrides for the Switch component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_switch_types.switchui",
+                "sourcePath": "packages/headless/src/components/switch/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "color",
+            "type": "ThemeColor",
+            "required": false,
+            "description": "Theme color of the component.",
+            "descriptionKey": "api.generated.packages_ui_src_components_switch_types.switchprops.members.color",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui/src/components/switch/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ThemeColor",
+                "kind": "typeAlias",
+                "type": "'primary' | 'destructive' | 'success' | 'warning' | 'info' | 'carbon' | 'secondary' | 'accent'",
+                "resolvedType": "'primary' | 'destructive' | 'success' | 'warning' | 'info' | 'carbon' | 'secondary' | 'accent'",
+                "description": "",
+                "descriptionKey": "api.generated.packages_ui_src_theme_types.themecolor",
+                "sourcePath": "packages/ui/src/theme/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "size",
+            "type": "ThemeSize",
+            "required": false,
+            "description": "Visual size of the component.",
+            "descriptionKey": "api.generated.packages_ui_src_components_switch_types.switchprops.members.size",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui/src/components/switch/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ThemeSize",
+                "kind": "typeAlias",
+                "type": "'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'",
+                "resolvedType": "'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'",
+                "description": "",
+                "descriptionKey": "api.generated.packages_ui_src_theme_types.themesize",
+                "sourcePath": "packages/ui/src/theme/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "shape",
+            "type": "SwitchShape",
+            "required": false,
+            "description": "Shape of the component.",
+            "descriptionKey": "api.generated.packages_ui_src_components_switch_types.switchprops.members.shape",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui/src/components/switch/types.ts",
+            "referencedTypes": [
+              {
+                "name": "SwitchShape",
+                "kind": "typeAlias",
+                "type": "'rounded' | 'square'",
+                "resolvedType": "'rounded' | 'square'",
+                "description": "",
+                "descriptionKey": "api.generated.packages_ui_src_styles_switch.switchshape",
+                "sourcePath": "packages/ui/src/styles/switch.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "controlProps",
+            "type": "SwitchControlProps",
+            "required": false,
+            "description": "Properties forwarded to the control element.",
+            "descriptionKey": "api.generated.packages_ui_src_components_switch_types.switchprops.members.controlprops",
+            "default": null,
+            "inheritedFrom": "controlProps",
+            "sourcePath": "packages/headless/src/components/switch/types.ts",
+            "referencedTypes": [
+              {
+                "name": "SwitchControlProps",
+                "kind": "interface",
+                "type": "SwitchControlProps",
+                "resolvedType": "{ id?: string; type?: ButtonType; disabled?: boolean; asChild?: boolean; as?: AsTag | Component }",
+                "description": "Properties for the SwitchControl component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_switch_types.switchcontrolprops",
+                "sourcePath": "packages/headless/src/components/switch/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "id",
+                    "type": "string",
+                    "required": false,
+                    "description": "Id of the element",
+                    "descriptionKey": "api.generated.packages_headless_src_components_switch_types.switchcontrolprops.members.id",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/switch/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "type",
+                    "type": "ButtonType",
+                    "required": false,
+                    "description": "The type of the button element. Can be one of 'button', 'submit', or 'reset'.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_switch_types.switchcontrolprops.members.type",
+                    "default": "'button'",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/button/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "disabled",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Whether the component is disabled.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_switch_types.switchcontrolprops.members.disabled",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/button/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "asChild",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_switch_types.switchcontrolprops.members.aschild",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "as",
+                    "type": "AsTag | Component",
+                    "required": false,
+                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+                    "descriptionKey": "api.generated.packages_headless_src_components_switch_types.switchcontrolprops.members.as",
+                    "default": "'div'",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "thumbProps",
+            "type": "SwitchThumbProps",
+            "required": false,
+            "description": "Properties forwarded to the thumb element.",
+            "descriptionKey": "api.generated.packages_ui_src_components_switch_types.switchprops.members.thumbprops",
+            "default": null,
+            "inheritedFrom": "thumbProps",
+            "sourcePath": "packages/headless/src/components/switch/types.ts",
+            "referencedTypes": [
+              {
+                "name": "SwitchThumbProps",
+                "kind": "interface",
+                "type": "SwitchThumbProps",
+                "resolvedType": "{ asChild?: boolean; as?: AsTag | Component }",
+                "description": "Properties for the SwitchThumb component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_switch_types.switchthumbprops",
+                "sourcePath": "packages/headless/src/components/switch/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "asChild",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_switch_types.switchthumbprops.members.aschild",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "as",
+                    "type": "AsTag | Component",
+                    "required": false,
+                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+                    "descriptionKey": "api.generated.packages_headless_src_components_switch_types.switchthumbprops.members.as",
+                    "default": "'div'",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "defaultValue",
+            "type": "NonNullable<T>",
+            "required": false,
+            "description": "The state of the switch when it is initially rendered. Use when you do not need to control its state.",
+            "descriptionKey": "api.generated.packages_ui_src_components_switch_types.switchprops.members.defaultvalue",
+            "default": null,
+            "inheritedFrom": "defaultValue",
+            "sourcePath": "packages/headless/src/components/switch/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "modelValue",
+            "type": "T",
+            "required": false,
+            "description": "The controlled state of the switch. Can be bind as `v-model`.",
+            "descriptionKey": "api.generated.packages_ui_src_components_switch_types.switchprops.members.modelvalue",
+            "default": null,
+            "inheritedFrom": "modelValue",
+            "sourcePath": "packages/headless/src/components/switch/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "disabled",
+            "type": "boolean",
+            "required": false,
+            "description": "When `true`, prevents the user from interacting with the switch.",
+            "descriptionKey": "api.generated.packages_ui_src_components_switch_types.switchprops.members.disabled",
+            "default": null,
+            "inheritedFrom": "disabled",
+            "sourcePath": "packages/headless/src/components/switch/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "value",
+            "type": "string",
+            "required": false,
+            "description": "The value given as data when submitted with a `name`.",
+            "descriptionKey": "api.generated.packages_ui_src_components_switch_types.switchprops.members.value",
+            "default": null,
+            "inheritedFrom": "value",
+            "sourcePath": "packages/headless/src/components/switch/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "dir",
+            "type": "Direction",
+            "required": false,
+            "description": "The direction the switch should animate towards when changing state.",
+            "descriptionKey": "api.generated.packages_ui_src_components_switch_types.switchprops.members.dir",
+            "default": null,
+            "inheritedFrom": "dir",
+            "sourcePath": "packages/headless/src/components/switch/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Direction",
+                "kind": "typeAlias",
+                "type": "'ltr' | 'rtl'",
+                "resolvedType": "'ltr' | 'rtl'",
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_types_common.direction",
+                "sourcePath": "packages/headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "name",
+            "type": "string",
+            "required": false,
+            "description": "The name of the field. Submitted with its owning form as part of a name/value pair.",
+            "descriptionKey": "api.generated.packages_ui_src_components_switch_types.switchprops.members.name",
+            "default": null,
+            "inheritedFrom": "name",
+            "sourcePath": "packages/headless/src/types/component.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "required",
+            "type": "boolean",
+            "required": false,
+            "description": "When `true`, indicates that the user must set the value before the owning form can be submitted.",
+            "descriptionKey": "api.generated.packages_ui_src_components_switch_types.switchprops.members.required",
+            "default": null,
+            "inheritedFrom": "required",
+            "sourcePath": "packages/headless/src/types/component.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "trueValue",
+            "type": "NonNullable<T>",
+            "required": false,
+            "description": "The value given as data when submitted with a `name`.",
+            "descriptionKey": "api.generated.packages_ui_src_components_switch_types.switchprops.members.truevalue",
+            "default": "true",
+            "inheritedFrom": "trueValue",
+            "sourcePath": "packages/headless/src/components/switch/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "falseValue",
+            "type": "NonNullable<T>",
+            "required": false,
+            "description": "The value given as data when submitted with a `name`.",
+            "descriptionKey": "api.generated.packages_ui_src_components_switch_types.switchprops.members.falsevalue",
+            "default": "false",
+            "inheritedFrom": "falseValue",
+            "sourcePath": "packages/headless/src/components/switch/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      },
+      "emits": {
+        "kind": "emits",
+        "name": "SwitchEmits",
+        "type": "TypeAlias SwitchEmits<T>: SwitchCompactEmits<T>",
+        "resolvedType": "{ \"update:modelValue\": [payload: NonNullable<T>] }",
+        "description": "Events for the Switch component.",
+        "descriptionKey": "api.generated.packages_ui_src_components_switch_types.switchemits.emits",
+        "sourcePath": "packages/ui/src/components/switch/types.ts",
+        "typeParameters": ["TypeParameter T"],
+        "members": [],
+        "callables": [
+          {
+            "name": "update:modelValue",
+            "type": "[payload: NonNullable<T>]",
+            "parameters": "payload: NonNullable<T>",
+            "required": true,
+            "description": "Event handler called when the value of the switch changes.",
+            "descriptionKey": "api.generated.packages_ui_src_components_switch_types.switchemits.callables.update_modelvalue",
+            "sourcePath": "packages/headless/src/components/switch/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "referencedTypes": []
+      },
+      "slots": {
+        "kind": "slots",
+        "name": "SwitchSlots",
+        "type": "TypeAlias SwitchSlots<T>: SwitchCompactSlots<T>",
+        "resolvedType": "{ SwitchCompact?: ((props: SwitchCompactSlotProps<T>) => any); leading?: ((props: SwitchCompactSlotProps<T>) => any); trailing?: ((props: SwitchCompactSlotProps<T>) => any) }",
+        "description": "Slots for the Switch component.",
+        "descriptionKey": "api.generated.packages_ui_src_components_switch_types.switchslots.slots",
+        "sourcePath": "packages/ui/src/components/switch/types.ts",
+        "typeParameters": ["TypeParameter T"],
+        "members": [],
+        "callables": [
+          {
+            "name": "default",
+            "type": "((props: SwitchCompactSlotProps<T>) => any) | undefined",
+            "parameters": "((props: SwitchCompactSlotProps<T>) => any) | undefined",
+            "required": false,
+            "description": "Custom content for the default slot.",
+            "descriptionKey": "api.generated.packages_ui_src_components_switch_types.switchslots.callables.default",
+            "sourcePath": "packages/headless/src/components/switch/types.ts",
+            "referencedTypes": [
+              {
+                "name": "SwitchCompactSlotProps",
+                "kind": "interface",
+                "type": "SwitchCompactSlotProps<T>",
+                "resolvedType": null,
+                "description": "Slot properties for the SwitchCompact component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_switch_types.switchcompactslotprops",
+                "sourcePath": "packages/headless/src/components/switch/types.ts",
+                "typeParameters": ["T extends AcceptableBooleanValue = boolean"],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "leading",
+            "type": "((props: SwitchCompactSlotProps<T>) => any) | undefined",
+            "parameters": "((props: SwitchCompactSlotProps<T>) => any) | undefined",
+            "required": false,
+            "description": "Custom content for the leading slot.",
+            "descriptionKey": "api.generated.packages_ui_src_components_switch_types.switchslots.callables.leading",
+            "sourcePath": "packages/headless/src/components/switch/types.ts",
+            "referencedTypes": [
+              {
+                "name": "SwitchCompactSlotProps",
+                "kind": "interface",
+                "type": "SwitchCompactSlotProps<T>",
+                "resolvedType": null,
+                "description": "Slot properties for the SwitchCompact component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_switch_types.switchcompactslotprops",
+                "sourcePath": "packages/headless/src/components/switch/types.ts",
+                "typeParameters": ["T extends AcceptableBooleanValue = boolean"],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "trailing",
+            "type": "((props: SwitchCompactSlotProps<T>) => any) | undefined",
+            "parameters": "((props: SwitchCompactSlotProps<T>) => any) | undefined",
+            "required": false,
+            "description": "Custom content for the trailing slot.",
+            "descriptionKey": "api.generated.packages_ui_src_components_switch_types.switchslots.callables.trailing",
+            "sourcePath": "packages/headless/src/components/switch/types.ts",
+            "referencedTypes": [
+              {
+                "name": "SwitchCompactSlotProps",
+                "kind": "interface",
+                "type": "SwitchCompactSlotProps<T>",
+                "resolvedType": null,
+                "description": "Slot properties for the SwitchCompact component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_switch_types.switchcompactslotprops",
+                "sourcePath": "packages/headless/src/components/switch/types.ts",
+                "typeParameters": ["T extends AcceptableBooleanValue = boolean"],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "referencedTypes": []
+      }
+    },
+    "SwitchCompact": {
+      "slotProps": {
+        "kind": "slotProps",
+        "name": "SwitchCompactSlotProps",
+        "type": "Interface SwitchCompactSlotProps<T>",
+        "resolvedType": "{ modelValue: T | undefined }",
+        "description": "Slot properties for the SwitchCompact component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_switch_types.switchcompactslotprops.slotprops",
+        "sourcePath": "packages/headless/src/components/switch/types.ts",
+        "typeParameters": ["TypeParameter T"],
+        "members": [
+          {
+            "name": "modelValue",
+            "type": "T | undefined",
+            "required": true,
+            "description": "Current model value.",
+            "descriptionKey": "api.generated.packages_headless_src_components_switch_types.switchcompactslotprops.members.modelvalue",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/switch/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      },
+      "props": {
+        "kind": "props",
+        "name": "SwitchCompactProps",
+        "type": "Interface SwitchCompactProps<T>",
+        "resolvedType": "{ controlProps?: SwitchControlProps; thumbProps?: SwitchThumbProps; defaultValue?: NonNullable<T>; modelValue?: T; disabled?: boolean; value?: string; dir?: Direction; name?: string; required?: boolean; trueValue?: NonNullable<T>; falseValue?: NonNullable<T> }",
+        "description": "Properties for the SwitchCompact component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_switch_types.switchcompactprops.props",
+        "sourcePath": "packages/headless/src/components/switch/types.ts",
+        "typeParameters": ["TypeParameter T"],
+        "members": [
+          {
+            "name": "controlProps",
+            "type": "SwitchControlProps",
+            "required": false,
+            "description": "Properties forwarded to the control element.",
+            "descriptionKey": "api.generated.packages_headless_src_components_switch_types.switchcompactprops.members.controlprops",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/switch/types.ts",
+            "referencedTypes": [
+              {
+                "name": "SwitchControlProps",
+                "kind": "interface",
+                "type": "SwitchControlProps",
+                "resolvedType": "{ id?: string; type?: ButtonType; disabled?: boolean; asChild?: boolean; as?: AsTag | Component }",
+                "description": "Properties for the SwitchControl component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_switch_types.switchcontrolprops",
+                "sourcePath": "packages/headless/src/components/switch/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "id",
+                    "type": "string",
+                    "required": false,
+                    "description": "Id of the element",
+                    "descriptionKey": "api.generated.packages_headless_src_components_switch_types.switchcontrolprops.members.id",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/switch/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "type",
+                    "type": "ButtonType",
+                    "required": false,
+                    "description": "The type of the button element. Can be one of 'button', 'submit', or 'reset'.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_switch_types.switchcontrolprops.members.type",
+                    "default": "'button'",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/button/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "disabled",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Whether the component is disabled.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_switch_types.switchcontrolprops.members.disabled",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/button/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "asChild",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_switch_types.switchcontrolprops.members.aschild",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "as",
+                    "type": "AsTag | Component",
+                    "required": false,
+                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+                    "descriptionKey": "api.generated.packages_headless_src_components_switch_types.switchcontrolprops.members.as",
+                    "default": "'div'",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "thumbProps",
+            "type": "SwitchThumbProps",
+            "required": false,
+            "description": "Properties forwarded to the thumb element.",
+            "descriptionKey": "api.generated.packages_headless_src_components_switch_types.switchcompactprops.members.thumbprops",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/switch/types.ts",
+            "referencedTypes": [
+              {
+                "name": "SwitchThumbProps",
+                "kind": "interface",
+                "type": "SwitchThumbProps",
+                "resolvedType": "{ asChild?: boolean; as?: AsTag | Component }",
+                "description": "Properties for the SwitchThumb component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_switch_types.switchthumbprops",
+                "sourcePath": "packages/headless/src/components/switch/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "asChild",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_switch_types.switchthumbprops.members.aschild",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "as",
+                    "type": "AsTag | Component",
+                    "required": false,
+                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+                    "descriptionKey": "api.generated.packages_headless_src_components_switch_types.switchthumbprops.members.as",
+                    "default": "'div'",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "defaultValue",
+            "type": "NonNullable<T>",
+            "required": false,
+            "description": "The state of the switch when it is initially rendered. Use when you do not need to control its state.",
+            "descriptionKey": "api.generated.packages_headless_src_components_switch_types.switchcompactprops.members.defaultvalue",
+            "default": null,
+            "inheritedFrom": "defaultValue",
+            "sourcePath": "packages/headless/src/components/switch/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "modelValue",
+            "type": "T",
+            "required": false,
+            "description": "The controlled state of the switch. Can be bind as `v-model`.",
+            "descriptionKey": "api.generated.packages_headless_src_components_switch_types.switchcompactprops.members.modelvalue",
+            "default": null,
+            "inheritedFrom": "modelValue",
+            "sourcePath": "packages/headless/src/components/switch/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "disabled",
+            "type": "boolean",
+            "required": false,
+            "description": "When `true`, prevents the user from interacting with the switch.",
+            "descriptionKey": "api.generated.packages_headless_src_components_switch_types.switchcompactprops.members.disabled",
+            "default": null,
+            "inheritedFrom": "disabled",
+            "sourcePath": "packages/headless/src/components/switch/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "value",
+            "type": "string",
+            "required": false,
+            "description": "The value given as data when submitted with a `name`.",
+            "descriptionKey": "api.generated.packages_headless_src_components_switch_types.switchcompactprops.members.value",
+            "default": null,
+            "inheritedFrom": "value",
+            "sourcePath": "packages/headless/src/components/switch/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "dir",
+            "type": "Direction",
+            "required": false,
+            "description": "The direction the switch should animate towards when changing state.",
+            "descriptionKey": "api.generated.packages_headless_src_components_switch_types.switchcompactprops.members.dir",
+            "default": null,
+            "inheritedFrom": "dir",
+            "sourcePath": "packages/headless/src/components/switch/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Direction",
+                "kind": "typeAlias",
+                "type": "'ltr' | 'rtl'",
+                "resolvedType": "'ltr' | 'rtl'",
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_types_common.direction",
+                "sourcePath": "packages/headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "name",
+            "type": "string",
+            "required": false,
+            "description": "The name of the field. Submitted with its owning form as part of a name/value pair.",
+            "descriptionKey": "api.generated.packages_headless_src_components_switch_types.switchcompactprops.members.name",
+            "default": null,
+            "inheritedFrom": "name",
+            "sourcePath": "packages/headless/src/types/component.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "required",
+            "type": "boolean",
+            "required": false,
+            "description": "When `true`, indicates that the user must set the value before the owning form can be submitted.",
+            "descriptionKey": "api.generated.packages_headless_src_components_switch_types.switchcompactprops.members.required",
+            "default": null,
+            "inheritedFrom": "required",
+            "sourcePath": "packages/headless/src/types/component.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "trueValue",
+            "type": "NonNullable<T>",
+            "required": false,
+            "description": "The value given as data when submitted with a `name`.",
+            "descriptionKey": "api.generated.packages_headless_src_components_switch_types.switchcompactprops.members.truevalue",
+            "default": "true",
+            "inheritedFrom": "trueValue",
+            "sourcePath": "packages/headless/src/components/switch/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "falseValue",
+            "type": "NonNullable<T>",
+            "required": false,
+            "description": "The value given as data when submitted with a `name`.",
+            "descriptionKey": "api.generated.packages_headless_src_components_switch_types.switchcompactprops.members.falsevalue",
+            "default": "false",
+            "inheritedFrom": "falseValue",
+            "sourcePath": "packages/headless/src/components/switch/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      },
+      "emits": {
+        "kind": "emits",
+        "name": "SwitchCompactEmits",
+        "type": "TypeAlias SwitchCompactEmits<T>: SwitchRootEmits<T>",
+        "resolvedType": "{ \"update:modelValue\": [payload: NonNullable<T>] }",
+        "description": "Events for the SwitchCompact component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_switch_types.switchcompactemits.emits",
+        "sourcePath": "packages/headless/src/components/switch/types.ts",
+        "typeParameters": ["TypeParameter T"],
+        "members": [],
+        "callables": [
+          {
+            "name": "update:modelValue",
+            "type": "[payload: NonNullable<T>]",
+            "parameters": "payload: NonNullable<T>",
+            "required": true,
+            "description": "Event handler called when the value of the switch changes.",
+            "descriptionKey": "api.generated.packages_headless_src_components_switch_types.switchcompactemits.callables.update_modelvalue",
+            "sourcePath": "packages/headless/src/components/switch/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "referencedTypes": []
+      },
+      "slots": {
+        "kind": "slots",
+        "name": "SwitchCompactSlots",
+        "type": "TypeAlias SwitchCompactSlots<T>",
+        "resolvedType": "{ SwitchCompact?: ((props: SwitchCompactSlotProps<T>) => any); leading?: ((props: SwitchCompactSlotProps<T>) => any); trailing?: ((props: SwitchCompactSlotProps<T>) => any) }",
+        "description": "Slots for the SwitchCompact component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_switch_types.switchcompactslots.slots",
+        "sourcePath": "packages/headless/src/components/switch/types.ts",
+        "typeParameters": ["TypeParameter T"],
+        "members": [],
+        "callables": [
+          {
+            "name": "default",
+            "type": "((props: SwitchCompactSlotProps<T>) => any) | undefined",
+            "parameters": "((props: SwitchCompactSlotProps<T>) => any) | undefined",
+            "required": false,
+            "description": "Custom content for the default slot.",
+            "descriptionKey": "api.generated.packages_headless_src_components_switch_types.switchcompactslots.callables.default",
+            "sourcePath": "packages/headless/src/components/switch/types.ts",
+            "referencedTypes": [
+              {
+                "name": "SwitchCompactSlotProps",
+                "kind": "interface",
+                "type": "SwitchCompactSlotProps<T>",
+                "resolvedType": null,
+                "description": "Slot properties for the SwitchCompact component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_switch_types.switchcompactslotprops",
+                "sourcePath": "packages/headless/src/components/switch/types.ts",
+                "typeParameters": ["T extends AcceptableBooleanValue = boolean"],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "leading",
+            "type": "((props: SwitchCompactSlotProps<T>) => any) | undefined",
+            "parameters": "((props: SwitchCompactSlotProps<T>) => any) | undefined",
+            "required": false,
+            "description": "Custom content for the leading slot.",
+            "descriptionKey": "api.generated.packages_headless_src_components_switch_types.switchcompactslots.callables.leading",
+            "sourcePath": "packages/headless/src/components/switch/types.ts",
+            "referencedTypes": [
+              {
+                "name": "SwitchCompactSlotProps",
+                "kind": "interface",
+                "type": "SwitchCompactSlotProps<T>",
+                "resolvedType": null,
+                "description": "Slot properties for the SwitchCompact component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_switch_types.switchcompactslotprops",
+                "sourcePath": "packages/headless/src/components/switch/types.ts",
+                "typeParameters": ["T extends AcceptableBooleanValue = boolean"],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "trailing",
+            "type": "((props: SwitchCompactSlotProps<T>) => any) | undefined",
+            "parameters": "((props: SwitchCompactSlotProps<T>) => any) | undefined",
+            "required": false,
+            "description": "Custom content for the trailing slot.",
+            "descriptionKey": "api.generated.packages_headless_src_components_switch_types.switchcompactslots.callables.trailing",
+            "sourcePath": "packages/headless/src/components/switch/types.ts",
+            "referencedTypes": [
+              {
+                "name": "SwitchCompactSlotProps",
+                "kind": "interface",
+                "type": "SwitchCompactSlotProps<T>",
+                "resolvedType": null,
+                "description": "Slot properties for the SwitchCompact component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_switch_types.switchcompactslotprops",
+                "sourcePath": "packages/headless/src/components/switch/types.ts",
+                "typeParameters": ["T extends AcceptableBooleanValue = boolean"],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "referencedTypes": []
+      }
+    },
+    "SwitchControl": {
+      "props": {
+        "kind": "props",
+        "name": "SwitchControlProps",
+        "type": "Interface SwitchControlProps",
+        "resolvedType": "{ id?: string; type?: ButtonType; disabled?: boolean; asChild?: boolean; as?: AsTag | Component }",
+        "description": "Properties for the SwitchControl component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_switch_types.switchcontrolprops.props",
+        "sourcePath": "packages/headless/src/components/switch/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "id",
+            "type": "string",
+            "required": false,
+            "description": "Id of the element",
+            "descriptionKey": "api.generated.packages_headless_src_components_switch_types.switchcontrolprops.members.id",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/switch/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "type",
+            "type": "ButtonType",
+            "required": false,
+            "description": "The type of the button element. Can be one of 'button', 'submit', or 'reset'.",
+            "descriptionKey": "api.generated.packages_headless_src_components_switch_types.switchcontrolprops.members.type",
+            "default": "'button'",
+            "inheritedFrom": "ButtonProps.type",
+            "sourcePath": "packages/headless/src/components/button/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ButtonType",
+                "kind": "typeAlias",
+                "type": "'button' | 'submit' | 'reset'",
+                "resolvedType": "'button' | 'submit' | 'reset'",
+                "description": "Supported button values.",
+                "descriptionKey": "api.generated.packages_headless_src_components_button_types.buttontype",
+                "sourcePath": "packages/headless/src/components/button/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "disabled",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether the component is disabled.",
+            "descriptionKey": "api.generated.packages_headless_src_components_switch_types.switchcontrolprops.members.disabled",
+            "default": null,
+            "inheritedFrom": "ButtonProps.disabled",
+            "sourcePath": "packages/headless/src/components/button/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "asChild",
+            "type": "boolean",
+            "required": false,
+            "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+            "descriptionKey": "api.generated.packages_headless_src_components_switch_types.switchcontrolprops.members.aschild",
+            "default": null,
+            "inheritedFrom": "ButtonProps.asChild",
+            "sourcePath": "packages/headless/src/components/primitive/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "as",
+            "type": "AsTag | Component",
+            "required": false,
+            "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+            "descriptionKey": "api.generated.packages_headless_src_components_switch_types.switchcontrolprops.members.as",
+            "default": "'div'",
+            "inheritedFrom": "ButtonProps.as",
+            "sourcePath": "packages/headless/src/components/primitive/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Component",
+                "kind": "typeAlias",
+                "type": "Component",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": null,
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.35/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [
+                  "PropsOrInstance = any",
+                  "RawBindings = any",
+                  "D = any",
+                  "C extends ComputedOptions = ComputedOptions",
+                  "M extends MethodOptions = MethodOptions",
+                  "E extends EmitsOptions | Record<string, any[]> = {}",
+                  "S extends Record<string, any> = any"
+                ],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "SwitchRoot": {
+      "props": {
+        "kind": "props",
+        "name": "SwitchRootProps",
+        "type": "Interface SwitchRootProps<T>",
+        "resolvedType": "{ defaultValue?: NonNullable<T>; modelValue?: T; disabled?: boolean; value?: string; dir?: Direction; name?: string; required?: boolean; trueValue?: NonNullable<T>; falseValue?: NonNullable<T> }",
+        "description": "Properties for the SwitchRoot component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_switch_types.switchrootprops.props",
+        "sourcePath": "packages/headless/src/components/switch/types.ts",
+        "typeParameters": ["TypeParameter T"],
+        "members": [
+          {
+            "name": "defaultValue",
+            "type": "NonNullable<T>",
+            "required": false,
+            "description": "The state of the switch when it is initially rendered. Use when you do not need to control its state.",
+            "descriptionKey": "api.generated.packages_headless_src_components_switch_types.switchrootprops.members.defaultvalue",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/switch/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "modelValue",
+            "type": "T",
+            "required": false,
+            "description": "The controlled state of the switch. Can be bind as `v-model`.",
+            "descriptionKey": "api.generated.packages_headless_src_components_switch_types.switchrootprops.members.modelvalue",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/switch/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "disabled",
+            "type": "boolean",
+            "required": false,
+            "description": "When `true`, prevents the user from interacting with the switch.",
+            "descriptionKey": "api.generated.packages_headless_src_components_switch_types.switchrootprops.members.disabled",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/switch/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "value",
+            "type": "string",
+            "required": false,
+            "description": "The value given as data when submitted with a `name`.",
+            "descriptionKey": "api.generated.packages_headless_src_components_switch_types.switchrootprops.members.value",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/switch/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "dir",
+            "type": "Direction",
+            "required": false,
+            "description": "The direction the switch should animate towards when changing state.",
+            "descriptionKey": "api.generated.packages_headless_src_components_switch_types.switchrootprops.members.dir",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/switch/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Direction",
+                "kind": "typeAlias",
+                "type": "'ltr' | 'rtl'",
+                "resolvedType": "'ltr' | 'rtl'",
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_types_common.direction",
+                "sourcePath": "packages/headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "name",
+            "type": "string",
+            "required": false,
+            "description": "The name of the field. Submitted with its owning form as part of a name/value pair.",
+            "descriptionKey": "api.generated.packages_headless_src_components_switch_types.switchrootprops.members.name",
+            "default": null,
+            "inheritedFrom": "name",
+            "sourcePath": "packages/headless/src/types/component.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "required",
+            "type": "boolean",
+            "required": false,
+            "description": "When `true`, indicates that the user must set the value before the owning form can be submitted.",
+            "descriptionKey": "api.generated.packages_headless_src_components_switch_types.switchrootprops.members.required",
+            "default": null,
+            "inheritedFrom": "required",
+            "sourcePath": "packages/headless/src/types/component.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "trueValue",
+            "type": "NonNullable<T>",
+            "required": false,
+            "description": "The value given as data when submitted with a `name`.",
+            "descriptionKey": "api.generated.packages_headless_src_components_switch_types.switchrootprops.members.truevalue",
+            "default": "true",
+            "inheritedFrom": "SwitchValueConfig.trueValue",
+            "sourcePath": "packages/headless/src/components/switch/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "falseValue",
+            "type": "NonNullable<T>",
+            "required": false,
+            "description": "The value given as data when submitted with a `name`.",
+            "descriptionKey": "api.generated.packages_headless_src_components_switch_types.switchrootprops.members.falsevalue",
+            "default": "false",
+            "inheritedFrom": "SwitchValueConfig.falseValue",
+            "sourcePath": "packages/headless/src/components/switch/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      },
+      "emits": {
+        "kind": "emits",
+        "name": "SwitchRootEmits",
+        "type": "TypeAlias SwitchRootEmits<T>",
+        "resolvedType": "{ \"update:modelValue\": [payload: NonNullable<T>] }",
+        "description": "Events for the SwitchRoot component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_switch_types.switchrootemits.emits",
+        "sourcePath": "packages/headless/src/components/switch/types.ts",
+        "typeParameters": ["TypeParameter T"],
+        "members": [],
+        "callables": [
+          {
+            "name": "update:modelValue",
+            "type": "[payload: NonNullable<T>]",
+            "parameters": "payload: NonNullable<T>",
+            "required": true,
+            "description": "Event handler called when the value of the switch changes.",
+            "descriptionKey": "api.generated.packages_headless_src_components_switch_types.switchrootemits.callables.update_modelvalue",
+            "sourcePath": "packages/headless/src/components/switch/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "referencedTypes": []
+      }
+    },
+    "SwitchThumb": {
+      "props": {
+        "kind": "props",
+        "name": "SwitchThumbProps",
+        "type": "Interface SwitchThumbProps",
+        "resolvedType": "{ asChild?: boolean; as?: AsTag | Component }",
+        "description": "Properties for the SwitchThumb component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_switch_types.switchthumbprops.props",
+        "sourcePath": "packages/headless/src/components/switch/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "asChild",
+            "type": "boolean",
+            "required": false,
+            "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+            "descriptionKey": "api.generated.packages_headless_src_components_switch_types.switchthumbprops.members.aschild",
+            "default": null,
+            "inheritedFrom": "PrimitiveWithBaseProps.asChild",
+            "sourcePath": "packages/headless/src/components/primitive/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "as",
+            "type": "AsTag | Component",
+            "required": false,
+            "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+            "descriptionKey": "api.generated.packages_headless_src_components_switch_types.switchthumbprops.members.as",
+            "default": "'div'",
+            "inheritedFrom": "PrimitiveWithBaseProps.as",
+            "sourcePath": "packages/headless/src/components/primitive/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Component",
+                "kind": "typeAlias",
+                "type": "Component",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": null,
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.35/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [
+                  "PropsOrInstance = any",
+                  "RawBindings = any",
+                  "D = any",
+                  "C extends ComputedOptions = ComputedOptions",
+                  "M extends MethodOptions = MethodOptions",
+                  "E extends EmitsOptions | Record<string, any[]> = {}",
+                  "S extends Record<string, any> = any"
+                ],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      }
+    }
+  }
+}

@@ -1,0 +1,129 @@
+{
+  "component": "kbd",
+  "symbols": {
+    "Kbd": {
+      "props": {
+        "kind": "props",
+        "name": "KbdProps",
+        "type": "Interface KbdProps",
+        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; size?: ThemeSize; variant?: KbdVariant; raised?: boolean; value?: KbdValue | KbdValue[]; symbolize?: boolean }",
+        "description": "Properties for the Kbd component.",
+        "descriptionKey": "api.generated.packages_ui_src_components_kbd_types.kbdprops.props",
+        "sourcePath": "packages/ui/src/components/kbd/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "class",
+            "type": "string | false | Record<string, any> | ClassValue[] | null",
+            "required": false,
+            "description": "Additional class names applied to the root element.",
+            "descriptionKey": "api.generated.packages_ui_src_components_kbd_types.kbdprops.members.class",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui/src/components/kbd/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ClassValue",
+                "kind": "typeAlias",
+                "type": "string | false | Record<string, any> | ClassValue[] | null | undefined",
+                "resolvedType": "string | false | Record<string, any> | ClassValue[] | null | undefined",
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_types_common.classvalue",
+                "sourcePath": "packages/headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "size",
+            "type": "ThemeSize",
+            "required": false,
+            "description": "Visual size of the component.",
+            "descriptionKey": "api.generated.packages_ui_src_components_kbd_types.kbdprops.members.size",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui/src/components/kbd/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ThemeSize",
+                "kind": "typeAlias",
+                "type": "'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'",
+                "resolvedType": "'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'",
+                "description": "",
+                "descriptionKey": "api.generated.packages_ui_src_theme_types.themesize",
+                "sourcePath": "packages/ui/src/theme/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "variant",
+            "type": "KbdVariant",
+            "required": false,
+            "description": "Visual variant of the component.",
+            "descriptionKey": "api.generated.packages_ui_src_components_kbd_types.kbdprops.members.variant",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui/src/components/kbd/types.ts",
+            "referencedTypes": [
+              {
+                "name": "KbdVariant",
+                "kind": "typeAlias",
+                "type": "'solid' | 'outline' | 'ghost'",
+                "resolvedType": "'solid' | 'outline' | 'ghost'",
+                "description": "",
+                "descriptionKey": "api.generated.packages_ui_src_styles_kbd.kbdvariant",
+                "sourcePath": "packages/ui/src/styles/kbd.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "raised",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether raised.",
+            "descriptionKey": "api.generated.packages_ui_src_components_kbd_types.kbdprops.members.raised",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui/src/components/kbd/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "value",
+            "type": "KbdValue | KbdValue[]",
+            "required": false,
+            "description": "The value of the component.",
+            "descriptionKey": "api.generated.packages_ui_src_components_kbd_types.kbdprops.members.value",
+            "default": null,
+            "inheritedFrom": "value",
+            "sourcePath": "packages/headless/src/components/kbd/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "symbolize",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether to convert the command value to symbol representation.",
+            "descriptionKey": "api.generated.packages_ui_src_components_kbd_types.kbdprops.members.symbolize",
+            "default": "true",
+            "inheritedFrom": "_KbdProps.symbolize",
+            "sourcePath": "packages/headless/src/components/kbd/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      }
+    }
+  }
+}

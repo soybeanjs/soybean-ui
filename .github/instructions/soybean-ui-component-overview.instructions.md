@@ -1,5 +1,5 @@
 ---
-applyTo: '{headless/src/components,src/components,playground/examples,test/specs/components,docs/src/docs}/**/*.{ts,vue,md}'
+applyTo: '{packages/headless/src/components,packages/ui/src/components,apps/playground/src/examples,packages/ui/test/specs/components,apps/docs/src/docs}/**/*.{ts,vue,md}'
 ---
 
 # SoybeanUI 组件开发总览
@@ -57,7 +57,7 @@ applyTo: '{headless/src/components,src/components,playground/examples,test/specs
 - headless 负责逻辑、状态、a11y、结构聚合与默认语义
 - UI 负责样式包装、variants、`ui` 注入与 wrapper 组合
 - 不要在 headless 写样式，不要在 UI 写 ARIA、role、键盘交互和状态语义
-- 新增逻辑前，优先复用 `headless/src/composables/`、`headless/src/shared/`、`headless/src/types/`
+- 新增逻辑前，优先复用 `packages/headless/src/composables/`、`packages/headless/src/shared/`、`packages/headless/src/types/`
 - 只有仓库现有能力不足时，才检查 `@vueuse/core`
 
 ## 执行顺序
@@ -85,7 +85,7 @@ applyTo: '{headless/src/components,src/components,playground/examples,test/specs
 
 ### Phase 4：补齐出口与生成文件
 
-- 更新 `headless/src/index.ts` 与 `src/index.ts`
+- 更新 `packages/headless/src/index.ts` 与 `packages/ui/src/index.ts`
 - 运行 `pnpm sui headless` 与 `pnpm sui ui`
 - 不要手动编辑生成文件
 
@@ -99,7 +99,7 @@ applyTo: '{headless/src/components,src/components,playground/examples,test/specs
 
 ### Phase 6：验证与收尾
 
-- 至少运行 `pnpm typecheck`、`pnpm lint`、`pnpm fmt` 与相关测试 `pnpm vitest test/specs/components/{component}.spec.ts`
+- 至少运行 `pnpm typecheck`、`pnpm lint`、`pnpm fmt` 与相关测试 `pnpm vitest packages/ui/test/specs/components/{component}.spec.ts`
 - 无法运行时必须说明原因
 - 收尾阶段才使用 `soybean-ui-checklist.instructions.md`
 
@@ -107,15 +107,15 @@ applyTo: '{headless/src/components,src/components,playground/examples,test/specs
 
 新建组件默认检查以下入口；现有组件改动时也要同步判断这些面是否受影响：
 
-- `headless/src/components/{component}/`
-- `src/components/{component}/`
-- `headless/src/index.ts`
-- `src/index.ts`
-- `playground/examples/{component}/`
-- `docs/src/docs/en/components/{component}.md`
-- `docs/src/docs/zh-CN/components/{component}.md`
-- `docs/src/constants/menus.ts`
-- `test/specs/components/{component}.spec.ts`
+- `packages/headless/src/components/{component}/`
+- `packages/ui/src/components/{component}/`
+- `packages/headless/src/index.ts`
+- `packages/ui/src/index.ts`
+- `apps/playground/src/examples/{component}/`
+- `apps/docs/src/docs/en/components/{component}.md`
+- `apps/docs/src/docs/zh-CN/components/{component}.md`
+- `apps/docs/src/constants/menus.ts`
+- `packages/ui/test/specs/components/{component}.spec.ts`
 
 ## 何时读哪个细分文件
 

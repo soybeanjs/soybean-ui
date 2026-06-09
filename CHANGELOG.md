@@ -27,7 +27,6 @@
 
 ### &nbsp;&nbsp;&nbsp;❤️ Contributors
 
-
 [soybeanfe](mailto:honghuangdc@gmail.com)
 
 ## [v0.28.1](https://github.com/soybeanjs/soybean-ui/compare/v0.28.0...v0.28.1) (2026-05-29)
@@ -46,7 +45,6 @@
 
 ### &nbsp;&nbsp;&nbsp;❤️ Contributors
 
-
 [soybeanfe](mailto:honghuangdc@gmail.com)
 
 ## [v0.28.0](https://github.com/soybeanjs/soybean-ui/compare/v0.27.2...v0.28.0) (2026-05-28)
@@ -60,7 +58,6 @@
 - **link**: simplify link component logic and remove unused Nuxt integration &nbsp;-&nbsp; by **soybeanfe** [<samp>(68630)</samp>](https://github.com/soybeanjs/soybean-ui/commit/686304a32)
 
 ### &nbsp;&nbsp;&nbsp;❤️ Contributors
-
 
 [soybeanfe](mailto:honghuangdc@gmail.com)
 
@@ -84,7 +81,6 @@
 
 ### &nbsp;&nbsp;&nbsp;❤️ Contributors
 
-
 [soybeanfe](mailto:honghuangdc@gmail.com)
 
 ## [v0.27.1](https://github.com/soybeanjs/soybean-ui/compare/v0.27.0...v0.27.1) (2026-05-28)
@@ -99,7 +95,6 @@
 
 ### &nbsp;&nbsp;&nbsp;❤️ Contributors
 
-
 [soybeanfe](mailto:honghuangdc@gmail.com)
 
 ## [v0.27.0](https://github.com/soybeanjs/soybean-ui/compare/v0.26.5...v0.27.0) (2026-05-28)
@@ -109,7 +104,6 @@
 - **table**: add row interaction events with metadata and update related types &nbsp;-&nbsp; by **soybeanfe** [<samp>(93440)</samp>](https://github.com/soybeanjs/soybean-ui/commit/93440f5e9)
 
 ### &nbsp;&nbsp;&nbsp;❤️ Contributors
-
 
 [soybeanfe](mailto:honghuangdc@gmail.com)
 
@@ -121,7 +115,6 @@
 
 ### &nbsp;&nbsp;&nbsp;❤️ Contributors
 
-
 [soybeanfe](mailto:honghuangdc@gmail.com)
 
 ## [v0.26.4](https://github.com/soybeanjs/soybean-ui/compare/v0.26.3...v0.26.4) (2026-05-28)
@@ -131,7 +124,6 @@
 - **docs**: update installation commands for skills to use correct package path &nbsp;-&nbsp; by **soybeanfe** [<samp>(d7f54)</samp>](https://github.com/soybeanjs/soybean-ui/commit/d7f54d76a)
 
 ### &nbsp;&nbsp;&nbsp;❤️ Contributors
-
 
 [soybeanfe](mailto:honghuangdc@gmail.com)
 
@@ -146,7 +138,6 @@
 - **deps**: update deps &nbsp;-&nbsp; by **soybeanfe** [<samp>(cb8cc)</samp>](https://github.com/soybeanjs/soybean-ui/commit/cb8cce019)
 
 ### &nbsp;&nbsp;&nbsp;❤️ Contributors
-
 
 [soybeanfe](mailto:honghuangdc@gmail.com)
 
@@ -169,7 +160,6 @@
 
 ### &nbsp;&nbsp;&nbsp;❤️ Contributors
 
-
 [soybeanfe](mailto:honghuangdc@gmail.com)
 
 ## [v0.26.1](https://github.com/soybeanjs/soybean-ui/compare/v0.26.0...v0.26.1) (2026-05-28)
@@ -183,7 +173,6 @@
 - **card**: enhance Card component with header and footer visibility props and optimize style &nbsp;-&nbsp; by **soybeanfe** [<samp>(0de1e)</samp>](https://github.com/soybeanjs/soybean-ui/commit/0de1e57f8)
 
 ### &nbsp;&nbsp;&nbsp;❤️ Contributors
-
 
 [soybeanfe](mailto:honghuangdc@gmail.com)
 
@@ -211,7 +200,6 @@
 
 ### &nbsp;&nbsp;&nbsp;❤️ Contributors
 
-
 [soybeanfe](mailto:honghuangdc@gmail.com)
 
 ## [v0.25.4](https://github.com/soybeanjs/soybean-ui/compare/v0.25.3...v0.25.4) (2026-05-26)
@@ -222,7 +210,6 @@
 
 ### &nbsp;&nbsp;&nbsp;❤️ Contributors
 
-
 [soybeanfe](mailto:honghuangdc@gmail.com)
 
 ## [v0.25.3](https://github.com/soybeanjs/soybean-ui/compare/v0.25.2...v0.25.3) (2026-05-26)
@@ -232,7 +219,6 @@
 - **nuxt**: add Vite config hooks for environment variables in module setup &nbsp;-&nbsp; by **soybeanfe** [<samp>(e5a1e)</samp>](https://github.com/soybeanjs/soybean-ui/commit/e5a1e39d0)
 
 ### &nbsp;&nbsp;&nbsp;❤️ Contributors
-
 
 [soybeanfe](mailto:honghuangdc@gmail.com)
 
@@ -247,7 +233,6 @@
 - **deps**: update deps &nbsp;-&nbsp; by **soybeanfe** [<samp>(8a50f)</samp>](https://github.com/soybeanjs/soybean-ui/commit/8a50fc269)
 
 ### &nbsp;&nbsp;&nbsp;❤️ Contributors
-
 
 [soybeanfe](mailto:honghuangdc@gmail.com)
 
@@ -310,7 +295,6 @@
 
 ### &nbsp;&nbsp;&nbsp;❤️ Contributors
 
-
 [soybeanfe](mailto:honghuangdc@gmail.com)
 
 ## [v0.24.1](https://github.com/soybeanjs/soybean-ui/compare/v0.24.0...v0.24.1) (2026-05-20)
@@ -320,7 +304,6 @@
 - **docs**: remove unused date/time picker component docs and references &nbsp;-&nbsp; by **soybeanfe** [<samp>(655c0)</samp>](https://github.com/soybeanjs/soybean-ui/commit/655c0fa88)
 
 ### &nbsp;&nbsp;&nbsp;❤️ Contributors
-
 
 [soybeanfe](mailto:honghuangdc@gmail.com)
 
@@ -399,7 +382,6 @@
 
 ### &nbsp;&nbsp;&nbsp;❤️ Contributors
 
-
 [soybeanfe](mailto:honghuangdc@gmail.com)
 
 ## [v0.23.1-beta.3](https://github.com/soybeanjs/soybean-ui/compare/v0.23.1-beta.2...v0.23.1-beta.3) (2026-05-19)
@@ -414,7 +396,6 @@
 
 ### &nbsp;&nbsp;&nbsp;❤️ Contributors
 
-
 [soybeanfe](mailto:honghuangdc@gmail.com)
 
 ## [v0.23.1-beta.2](https://github.com/soybeanjs/soybean-ui/compare/v0.23.1-beta.1...v0.23.1-beta.2) (2026-05-19)
@@ -428,7 +409,6 @@
 - **deps**: update deps &nbsp;-&nbsp; by **soybeanfe** [<samp>(767d6)</samp>](https://github.com/soybeanjs/soybean-ui/commit/767d6ac20)
 
 ### &nbsp;&nbsp;&nbsp;❤️ Contributors
-
 
 [soybeanfe](mailto:honghuangdc@gmail.com)
 
@@ -478,7 +458,6 @@
 
 ### &nbsp;&nbsp;&nbsp;❤️ Contributors
 
-
 [soybeanfe](mailto:honghuangdc@gmail.com)
 
 ## [v0.22.4](https://github.com/soybeanjs/soybean-ui/compare/v0.22.3...v0.22.4) (2026-05-17)
@@ -492,7 +471,6 @@
 - **changelog**: update docs changelog &nbsp;-&nbsp; by **soybeanfe** [<samp>(f16e8)</samp>](https://github.com/soybeanjs/soybean-ui/commit/f16e8ac53)
 
 ### &nbsp;&nbsp;&nbsp;❤️ Contributors
-
 
 [soybeanfe](mailto:honghuangdc@gmail.com)
 
@@ -514,7 +492,6 @@
 
 ### &nbsp;&nbsp;&nbsp;❤️ Contributors
 
-
 [soybeanfe](mailto:honghuangdc@gmail.com)
 
 ## [v0.22.2](https://github.com/soybeanjs/soybean-ui/compare/v0.22.1...v0.22.2) (2026-05-14)
@@ -524,7 +501,6 @@
 - **theme**: add isDefinedClassValue utility and enhance tests for empty string handling &nbsp;-&nbsp; by **soybeanfe** [<samp>(f1bc7)</samp>](https://github.com/soybeanjs/soybean-ui/commit/f1bc7b49a)
 
 ### &nbsp;&nbsp;&nbsp;❤️ Contributors
-
 
 [soybeanfe](mailto:honghuangdc@gmail.com)
 
@@ -1136,7 +1112,6 @@
 
 ### &nbsp;&nbsp;&nbsp;❤️ Contributors
 
-
 [soybeanfe](mailto:honghuangdc@gmail.com)
 
 ## [v0.15.4](https://github.com/soybeanjs/soybean-ui/compare/v0.15.3...v0.15.4) (2026-04-30)
@@ -1184,7 +1159,6 @@
 
 ### &nbsp;&nbsp;&nbsp;❤️ Contributors
 
-
 [soybeanfe](mailto:honghuangdc@gmail.com),&nbsp;[Copilot](mailto:copilot@github.com)
 
 ## [v0.15.2](https://github.com/soybeanjs/soybean-ui/compare/v0.15.1...v0.15.2) (2026-04-27)
@@ -1200,7 +1174,6 @@
 - **table**: set default value for multiple prop in STable component &nbsp;-&nbsp; by **soybeanfe** [<samp>(1964c)</samp>](https://github.com/soybeanjs/soybean-ui/commit/1964c4c5)
 
 ### &nbsp;&nbsp;&nbsp;❤️ Contributors
-
 
 [soybeanfe](mailto:honghuangdc@gmail.com),&nbsp;[Copilot](mailto:copilot@github.com)
 

@@ -1,9 +1,13 @@
 packages:
-  - 'headless'
-  - 'docs'
-  - 'nuxt'
-  - 'ui-skills'
+  - 'packages/**'
+  - 'apps/**'
+catalog:
+  vite: npm:@voidzero-dev/vite-plus-core@latest
+  vitest: npm:@voidzero-dev/vite-plus-test@latest
+  vite-plus: ^0.1.24
 overrides:
+  oxfmt: '^0.51.0'
+  oxlint: '^1.66.0'
   vite-ssg>jsdom: 27.0.1
   markdown-exit: 1.1.0-beta.2
 shamefullyHoist: true
@@ -14,5 +18,8 @@ allowBuilds:
   esbuild: false
   simple-git-hooks: false
 minimumReleaseAgeExclude:
-  - '@soybeanjs/oxc-config@0.2.3'
-  - happy-dom@20.10.2
+  - '@nuxt/kit@4.4.8'
+  - '@nuxt/nitro-server@4.4.8'
+  - '@nuxt/schema@4.4.8'
+  - '@nuxt/vite-builder@4.4.8'
+  - nuxt@4.4.8

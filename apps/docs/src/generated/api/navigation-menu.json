@@ -1,0 +1,3473 @@
+{
+  "component": "navigation-menu",
+  "symbols": {
+    "NavigationMenu": {
+      "props": {
+        "kind": "props",
+        "name": "NavigationMenuProps",
+        "type": "Interface NavigationMenuProps",
+        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<NavigationMenuUi>; items: NavigationMenuOptionData[]; modelValue?: string; defaultValue?: string; dir?: Direction; orientation?: DataOrientation; delayDuration?: number; skipDelayDuration?: number; disableClickTrigger?: boolean; disableHoverTrigger?: boolean; disablePointerLeaveClose?: boolean; unmountOnHide?: boolean; itemProps?: NavigationMenuItemProps; linkProps?: NavigationMenuLinkProps; triggerProps?: NavigationMenuTriggerProps; contentProps?: NavigationMenuContentProps; viewportProps?: NavigationMenuViewportProps; indicatorProps?: NavigationMenuIndicatorProps; listProps?: NavigationMenuListProps; subListProps?: NavigationMenuListProps; subItemProps?: NavigationMenuItemProps }",
+        "description": "Properties for the NavigationMenu component.",
+        "descriptionKey": "api.generated.packages_ui_src_components_navigation_menu_types.navigationmenuprops.props",
+        "sourcePath": "packages/ui/src/components/navigation-menu/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "class",
+            "type": "string | false | Record<string, any> | ClassValue[] | null",
+            "required": false,
+            "description": "Additional class names applied to the root element.",
+            "descriptionKey": "api.generated.packages_ui_src_components_navigation_menu_types.navigationmenuprops.members.class",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui/src/components/navigation-menu/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ClassValue",
+                "kind": "typeAlias",
+                "type": "string | false | Record<string, any> | ClassValue[] | null | undefined",
+                "resolvedType": "string | false | Record<string, any> | ClassValue[] | null | undefined",
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_types_common.classvalue",
+                "sourcePath": "packages/headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "size",
+            "type": "ThemeSize",
+            "required": false,
+            "description": "Visual size of the component.",
+            "descriptionKey": "api.generated.packages_ui_src_components_navigation_menu_types.navigationmenuprops.members.size",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui/src/components/navigation-menu/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ThemeSize",
+                "kind": "typeAlias",
+                "type": "'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'",
+                "resolvedType": "'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'",
+                "description": "",
+                "descriptionKey": "api.generated.packages_ui_src_theme_types.themesize",
+                "sourcePath": "packages/ui/src/theme/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "ui",
+            "type": "Partial<NavigationMenuUi>",
+            "required": false,
+            "description": "Per-slot class overrides for the component.",
+            "descriptionKey": "api.generated.packages_ui_src_components_navigation_menu_types.navigationmenuprops.members.ui",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui/src/components/navigation-menu/types.ts",
+            "referencedTypes": [
+              {
+                "name": "NavigationMenuUi",
+                "kind": "typeAlias",
+                "type": "{ root: ClassValue; item: ClassValue; trigger: ClassValue; content: ClassValue; triggerIcon: ClassValue; link: ClassValue; indicator: ClassValue; arrow: ClassValue; viewport: ClassValue; list: ClassValue; itemIcon: ClassValue; subList: ClassValue; subItem: ClassValue; subLink: ClassValue; linkIcon: ClassValue; subItemContent: ClassValue; subLinkContent: ClassValue; subLinkLabel: ClassValue; subLinkDescription: ClassValue; }",
+                "resolvedType": null,
+                "description": "UI class overrides for the NavigationMenu component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenuui",
+                "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "items",
+            "type": "NavigationMenuOptionData[]",
+            "required": true,
+            "description": "The items to render in the navigation menu.",
+            "descriptionKey": "api.generated.packages_ui_src_components_navigation_menu_types.navigationmenuprops.members.items",
+            "default": null,
+            "inheritedFrom": "items",
+            "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "modelValue",
+            "type": "string",
+            "required": false,
+            "description": "The controlled value of the menu item to activate. Can be used as `v-model`.",
+            "descriptionKey": "api.generated.packages_ui_src_components_navigation_menu_types.navigationmenuprops.members.modelvalue",
+            "default": null,
+            "inheritedFrom": "modelValue",
+            "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "defaultValue",
+            "type": "string",
+            "required": false,
+            "description": "The value of the menu item that should be active when initially rendered.\n\nUse when you do not need to control the value state.",
+            "descriptionKey": "api.generated.packages_ui_src_components_navigation_menu_types.navigationmenuprops.members.defaultvalue",
+            "default": null,
+            "inheritedFrom": "defaultValue",
+            "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "dir",
+            "type": "Direction",
+            "required": false,
+            "description": "The reading direction of the combobox when applicable.\n\nIf omitted, inherits globally from `ConfigProvider` or assumes LTR (left-to-right) reading mode.",
+            "descriptionKey": "api.generated.packages_ui_src_components_navigation_menu_types.navigationmenuprops.members.dir",
+            "default": null,
+            "inheritedFrom": "dir",
+            "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Direction",
+                "kind": "typeAlias",
+                "type": "'ltr' | 'rtl'",
+                "resolvedType": "'ltr' | 'rtl'",
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_types_common.direction",
+                "sourcePath": "packages/headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "orientation",
+            "type": "DataOrientation",
+            "required": false,
+            "description": "The orientation of the menu.",
+            "descriptionKey": "api.generated.packages_ui_src_components_navigation_menu_types.navigationmenuprops.members.orientation",
+            "default": null,
+            "inheritedFrom": "orientation",
+            "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
+            "referencedTypes": [
+              {
+                "name": "DataOrientation",
+                "kind": "typeAlias",
+                "type": "'vertical' | 'horizontal'",
+                "resolvedType": "'vertical' | 'horizontal'",
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_types_common.dataorientation",
+                "sourcePath": "packages/headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "delayDuration",
+            "type": "number",
+            "required": false,
+            "description": "The duration from when the pointer enters the trigger until the tooltip gets opened.",
+            "descriptionKey": "api.generated.packages_ui_src_components_navigation_menu_types.navigationmenuprops.members.delayduration",
+            "default": "200",
+            "inheritedFrom": "delayDuration",
+            "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "skipDelayDuration",
+            "type": "number",
+            "required": false,
+            "description": "How much time a user has to enter another trigger without incurring a delay again.",
+            "descriptionKey": "api.generated.packages_ui_src_components_navigation_menu_types.navigationmenuprops.members.skipdelayduration",
+            "default": "300",
+            "inheritedFrom": "skipDelayDuration",
+            "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "disableClickTrigger",
+            "type": "boolean",
+            "required": false,
+            "description": "If `true`, menu cannot be open by click on trigger",
+            "descriptionKey": "api.generated.packages_ui_src_components_navigation_menu_types.navigationmenuprops.members.disableclicktrigger",
+            "default": "false",
+            "inheritedFrom": "disableClickTrigger",
+            "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "disableHoverTrigger",
+            "type": "boolean",
+            "required": false,
+            "description": "If `true`, menu cannot be open by hover on trigger",
+            "descriptionKey": "api.generated.packages_ui_src_components_navigation_menu_types.navigationmenuprops.members.disablehovertrigger",
+            "default": "false",
+            "inheritedFrom": "disableHoverTrigger",
+            "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "disablePointerLeaveClose",
+            "type": "boolean",
+            "required": false,
+            "description": "If `true`, menu will not close during pointer leave event",
+            "descriptionKey": "api.generated.packages_ui_src_components_navigation_menu_types.navigationmenuprops.members.disablepointerleaveclose",
+            "default": "false",
+            "inheritedFrom": "disablePointerLeaveClose",
+            "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "unmountOnHide",
+            "type": "boolean",
+            "required": false,
+            "description": "When `true`, the element will be unmounted on closed state.",
+            "descriptionKey": "api.generated.packages_ui_src_components_navigation_menu_types.navigationmenuprops.members.unmountonhide",
+            "default": "`true`",
+            "inheritedFrom": "unmountOnHide",
+            "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "itemProps",
+            "type": "NavigationMenuItemProps",
+            "required": false,
+            "description": "Properties forwarded to the item element.",
+            "descriptionKey": "api.generated.packages_ui_src_components_navigation_menu_types.navigationmenuprops.members.itemprops",
+            "default": null,
+            "inheritedFrom": "itemProps",
+            "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
+            "referencedTypes": [
+              {
+                "name": "NavigationMenuItemProps",
+                "kind": "interface",
+                "type": "NavigationMenuItemProps",
+                "resolvedType": "{ value?: string }",
+                "description": "Properties for the NavigationMenuItem component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenuitemprops",
+                "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "value",
+                    "type": "string",
+                    "required": false,
+                    "description": "Value associated with the current item.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenuitemprops.members.value",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "linkProps",
+            "type": "NavigationMenuLinkProps",
+            "required": false,
+            "description": "Properties forwarded to the link element.",
+            "descriptionKey": "api.generated.packages_ui_src_components_navigation_menu_types.navigationmenuprops.members.linkprops",
+            "default": null,
+            "inheritedFrom": "linkProps",
+            "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
+            "referencedTypes": [
+              {
+                "name": "NavigationMenuLinkProps",
+                "kind": "interface",
+                "type": "NavigationMenuLinkProps",
+                "resolvedType": "{ active?: boolean; replace?: boolean; disabled?: boolean; asChild?: boolean; as?: AsTag | Component; to?: string | import(\"vue-router\").RouteLocationAsRelativeGeneric | import(\"vue-router\").RouteLocationAsPathGeneric; href?: string; activeClass?: string; exactActiveClass?: string; inactiveClass?: string; prefetchedClass?: string; external?: boolean; ariaCurrentValue?: 'true' | 'false' | 'date' | 'time' | 'page' | 'step' | 'location'; viewTransition?: boolean; target?: '_blank' | '_parent' | '_self' | '_top' | (string & {}) | null; rel?: (string & {}) | 'noopener' | 'noreferrer' | 'nofollow' | 'sponsored' | 'ugc' | null; noRel?: boolean; prefetch?: boolean; prefetchOn?: 'visibility' | 'interaction' | Partial<{ visibility: boolean; interaction: boolean; }>; noPrefetch?: boolean; trailingSlash?: 'append' | 'remove' }",
+                "description": "Properties for the NavigationMenuLink component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenulinkprops",
+                "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "active",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Used to identify the link as the currently active page.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenulinkprops.members.active",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "replace",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Calls `router.replace` instead of `router.push`.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenulinkprops.members.replace",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "disabled",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "When `true`, the link is disabled.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenulinkprops.members.disabled",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "asChild",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenulinkprops.members.aschild",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "as",
+                    "type": "AsTag | Component",
+                    "required": false,
+                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+                    "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenulinkprops.members.as",
+                    "default": "'div'",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "to",
+                    "type": "string | import(\"vue-router\").RouteLocationAsRelativeGeneric | import(\"vue-router\").RouteLocationAsPathGeneric",
+                    "required": false,
+                    "description": "Route Location the link should navigate to when clicked on.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenulinkprops.members.to",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "href",
+                    "type": "string",
+                    "required": false,
+                    "description": "The URL the link should navigate to when clicked on.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenulinkprops.members.href",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "activeClass",
+                    "type": "string",
+                    "required": false,
+                    "description": "Class to apply when the link is active",
+                    "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenulinkprops.members.activeclass",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "exactActiveClass",
+                    "type": "string",
+                    "required": false,
+                    "description": "Class to apply when the link is exact active",
+                    "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenulinkprops.members.exactactiveclass",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "inactiveClass",
+                    "type": "string",
+                    "required": false,
+                    "description": "The class to apply to the link when it is inactive.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenulinkprops.members.inactiveclass",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "prefetchedClass",
+                    "type": "string",
+                    "required": false,
+                    "description": "A class to apply to links that have been prefetched.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenulinkprops.members.prefetchedclass",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "external",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Forces the link to be considered as external (true) or internal (false). This is helpful to handle edge-cases",
+                    "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenulinkprops.members.external",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "ariaCurrentValue",
+                    "type": "'true' | 'false' | 'date' | 'time' | 'page' | 'step' | 'location'",
+                    "required": false,
+                    "description": "Value passed to the attribute `aria-current` when the link is exact active.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenulinkprops.members.ariacurrentvalue",
+                    "default": "`'page'`",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "viewTransition",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Pass the returned promise of `router.push()` to `document.startViewTransition()` if supported.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenulinkprops.members.viewtransition",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "target",
+                    "type": "'_blank' | '_parent' | '_self' | '_top' | (string & {}) | null",
+                    "required": false,
+                    "description": "Where to display the linked URL, as the name for a browsing context.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenulinkprops.members.target",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "rel",
+                    "type": "(string & {}) | 'noopener' | 'noreferrer' | 'nofollow' | 'sponsored' | 'ugc' | null",
+                    "required": false,
+                    "description": "A rel attribute value to apply on the link. Defaults to \"noopener noreferrer\" for external links.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenulinkprops.members.rel",
+                    "default": "'noopener noreferrer'",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "noRel",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "If set to true, no rel attribute will be added to the link",
+                    "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenulinkprops.members.norel",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "prefetch",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "When enabled will prefetch middleware, layouts and payloads of links in the viewport.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenulinkprops.members.prefetch",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "prefetchOn",
+                    "type": "'visibility' | 'interaction' | Partial<{ visibility: boolean; interaction: boolean; }>",
+                    "required": false,
+                    "description": "Allows controlling when to prefetch links. By default, prefetch is triggered only on visibility.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenulinkprops.members.prefetchon",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "noPrefetch",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Escape hatch to disable `prefetch` attribute.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenulinkprops.members.noprefetch",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "trailingSlash",
+                    "type": "'append' | 'remove'",
+                    "required": false,
+                    "description": "An option to either add or remove trailing slashes in the `href` for this specific link.\nOverrides the global `trailingSlash` option if provided.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenulinkprops.members.trailingslash",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "triggerProps",
+            "type": "NavigationMenuTriggerProps",
+            "required": false,
+            "description": "Properties forwarded to the trigger element.",
+            "descriptionKey": "api.generated.packages_ui_src_components_navigation_menu_types.navigationmenuprops.members.triggerprops",
+            "default": null,
+            "inheritedFrom": "triggerProps",
+            "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
+            "referencedTypes": [
+              {
+                "name": "NavigationMenuTriggerProps",
+                "kind": "interface",
+                "type": "NavigationMenuTriggerProps",
+                "resolvedType": "{ disabled?: boolean; asChild?: boolean; as?: AsTag | Component }",
+                "description": "Properties for the NavigationMenuTrigger component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenutriggerprops",
+                "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "disabled",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Whether the component is disabled.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenutriggerprops.members.disabled",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "asChild",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenutriggerprops.members.aschild",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "as",
+                    "type": "AsTag | Component",
+                    "required": false,
+                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+                    "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenutriggerprops.members.as",
+                    "default": "'div'",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "contentProps",
+            "type": "NavigationMenuContentProps",
+            "required": false,
+            "description": "Properties forwarded to the content element.",
+            "descriptionKey": "api.generated.packages_ui_src_components_navigation_menu_types.navigationmenuprops.members.contentprops",
+            "default": null,
+            "inheritedFrom": "contentProps",
+            "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
+            "referencedTypes": [
+              {
+                "name": "NavigationMenuContentProps",
+                "kind": "interface",
+                "type": "NavigationMenuContentProps",
+                "resolvedType": "{ disableOutsidePointerEvents?: boolean; forceMount?: boolean }",
+                "description": "Properties for the NavigationMenuContent component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenucontentprops",
+                "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "disableOutsidePointerEvents",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "When `true`, hover/focus/click interactions will be disabled on elements outside the `DismissableLayer`. Users will\nneed to click twice on outside elements to interact with them: once to close the `DismissableLayer`, and again to\ntrigger the element.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenucontentprops.members.disableoutsidepointerevents",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/types/component.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "forceMount",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Used to force mounting when more control is needed.\n\nUseful when controlling animation with Vue animation libraries.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenucontentprops.members.forcemount",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/types/component.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "viewportProps",
+            "type": "NavigationMenuViewportProps",
+            "required": false,
+            "description": "Properties forwarded to the viewport element.",
+            "descriptionKey": "api.generated.packages_ui_src_components_navigation_menu_types.navigationmenuprops.members.viewportprops",
+            "default": null,
+            "inheritedFrom": "viewportProps",
+            "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
+            "referencedTypes": [
+              {
+                "name": "NavigationMenuViewportProps",
+                "kind": "interface",
+                "type": "NavigationMenuViewportProps",
+                "resolvedType": "{ align?: Align; forceMount?: boolean }",
+                "description": "Properties for the NavigationMenuViewport component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenuviewportprops",
+                "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "align",
+                    "type": "Align",
+                    "required": false,
+                    "description": "Align.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenuviewportprops.members.align",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "forceMount",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Used to force mounting when more control is needed.\n\nUseful when controlling animation with Vue animation libraries.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenuviewportprops.members.forcemount",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/types/component.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "indicatorProps",
+            "type": "NavigationMenuIndicatorProps",
+            "required": false,
+            "description": "Properties forwarded to the indicator element.",
+            "descriptionKey": "api.generated.packages_ui_src_components_navigation_menu_types.navigationmenuprops.members.indicatorprops",
+            "default": null,
+            "inheritedFrom": "indicatorProps",
+            "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
+            "referencedTypes": [
+              {
+                "name": "NavigationMenuIndicatorProps",
+                "kind": "interface",
+                "type": "NavigationMenuIndicatorProps",
+                "resolvedType": "{ forceMount?: boolean }",
+                "description": "Properties for the NavigationMenuIndicator component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenuindicatorprops",
+                "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "forceMount",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Used to force mounting when more control is needed.\n\nUseful when controlling animation with Vue animation libraries.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenuindicatorprops.members.forcemount",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/types/component.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "listProps",
+            "type": "NavigationMenuListProps",
+            "required": false,
+            "description": "Properties forwarded to the list element.",
+            "descriptionKey": "api.generated.packages_ui_src_components_navigation_menu_types.navigationmenuprops.members.listprops",
+            "default": null,
+            "inheritedFrom": "listProps",
+            "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
+            "referencedTypes": [
+              {
+                "name": "NavigationMenuListProps",
+                "kind": "interface",
+                "type": "NavigationMenuListProps",
+                "resolvedType": null,
+                "description": "Properties for the NavigationMenuList component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenulistprops",
+                "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "subListProps",
+            "type": "NavigationMenuListProps",
+            "required": false,
+            "description": "Properties forwarded to the sub list element.",
+            "descriptionKey": "api.generated.packages_ui_src_components_navigation_menu_types.navigationmenuprops.members.sublistprops",
+            "default": null,
+            "inheritedFrom": "subListProps",
+            "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
+            "referencedTypes": [
+              {
+                "name": "NavigationMenuListProps",
+                "kind": "interface",
+                "type": "NavigationMenuListProps",
+                "resolvedType": null,
+                "description": "Properties for the NavigationMenuList component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenulistprops",
+                "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "subItemProps",
+            "type": "NavigationMenuItemProps",
+            "required": false,
+            "description": "Properties forwarded to the sub item element.",
+            "descriptionKey": "api.generated.packages_ui_src_components_navigation_menu_types.navigationmenuprops.members.subitemprops",
+            "default": null,
+            "inheritedFrom": "subItemProps",
+            "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
+            "referencedTypes": [
+              {
+                "name": "NavigationMenuItemProps",
+                "kind": "interface",
+                "type": "NavigationMenuItemProps",
+                "resolvedType": "{ value?: string }",
+                "description": "Properties for the NavigationMenuItem component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenuitemprops",
+                "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "value",
+                    "type": "string",
+                    "required": false,
+                    "description": "Value associated with the current item.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenuitemprops.members.value",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      },
+      "emits": {
+        "kind": "emits",
+        "name": "NavigationMenuEmits",
+        "type": "TypeAlias NavigationMenuEmits: NavigationMenuCompactEmits",
+        "resolvedType": "{ \"update:modelValue\": [value: string]; escapeKeyDown: [event: KeyboardEvent]; pointerDownOutside: [event: PointerDownOutsideEvent]; focusOutside: [event: FocusOutsideEvent]; interactOutside: [event: PointerDownOutsideEvent | FocusOutsideEvent]; select: [payload: CustomEvent<{ originalEvent: Event; }>] }",
+        "description": "Events for the NavigationMenu component.",
+        "descriptionKey": "api.generated.packages_ui_src_components_navigation_menu_types.navigationmenuemits.emits",
+        "sourcePath": "packages/ui/src/components/navigation-menu/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [
+          {
+            "name": "update:modelValue",
+            "type": "[value: string]",
+            "parameters": "value: string",
+            "required": true,
+            "description": "Emitted when the model value changes.",
+            "descriptionKey": "api.generated.packages_ui_src_components_navigation_menu_types.navigationmenuemits.callables.update_modelvalue",
+            "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "escapeKeyDown",
+            "type": "[event: KeyboardEvent]",
+            "parameters": "event: KeyboardEvent",
+            "required": true,
+            "description": "Event handler called when the escape key is down. Can be prevented.",
+            "descriptionKey": "api.generated.packages_ui_src_components_navigation_menu_types.navigationmenuemits.callables.escapekeydown",
+            "sourcePath": "packages/headless/src/types/component.ts",
+            "referencedTypes": [
+              {
+                "name": "KeyboardEvent",
+                "kind": "interface",
+                "type": "KeyboardEvent",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": null,
+                "sourcePath": "node_modules/.pnpm/typescript@6.0.3/node_modules/typescript/lib/lib.dom.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "pointerDownOutside",
+            "type": "[event: PointerDownOutsideEvent]",
+            "parameters": "event: PointerDownOutsideEvent",
+            "required": true,
+            "description": "Event handler called when a `pointerdown` event happens outside of the `DismissableLayer`. Can be prevented.",
+            "descriptionKey": "api.generated.packages_ui_src_components_navigation_menu_types.navigationmenuemits.callables.pointerdownoutside",
+            "sourcePath": "packages/headless/src/types/component.ts",
+            "referencedTypes": [
+              {
+                "name": "PointerDownOutsideEvent",
+                "kind": "typeAlias",
+                "type": "CustomEvent<{ originalEvent: PointerEvent; }>",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_types_event.pointerdownoutsideevent",
+                "sourcePath": "packages/headless/src/types/event.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "focusOutside",
+            "type": "[event: FocusOutsideEvent]",
+            "parameters": "event: FocusOutsideEvent",
+            "required": true,
+            "description": "Event handler called when the focus moves outside of the `DismissableLayer`. Can be prevented.",
+            "descriptionKey": "api.generated.packages_ui_src_components_navigation_menu_types.navigationmenuemits.callables.focusoutside",
+            "sourcePath": "packages/headless/src/types/component.ts",
+            "referencedTypes": [
+              {
+                "name": "FocusOutsideEvent",
+                "kind": "typeAlias",
+                "type": "CustomEvent<{ originalEvent: FocusEvent; }>",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_types_event.focusoutsideevent",
+                "sourcePath": "packages/headless/src/types/event.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "interactOutside",
+            "type": "[event: PointerDownOutsideEvent | FocusOutsideEvent]",
+            "parameters": "event: PointerDownOutsideEvent | FocusOutsideEvent",
+            "required": true,
+            "description": "Event handler called when an interaction happens outside the `DismissableLayer`. Specifically, when a `pointerdown`\nevent happens outside or focus moves outside of it. Can be prevented.",
+            "descriptionKey": "api.generated.packages_ui_src_components_navigation_menu_types.navigationmenuemits.callables.interactoutside",
+            "sourcePath": "packages/headless/src/types/component.ts",
+            "referencedTypes": [
+              {
+                "name": "FocusOutsideEvent",
+                "kind": "typeAlias",
+                "type": "CustomEvent<{ originalEvent: FocusEvent; }>",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_types_event.focusoutsideevent",
+                "sourcePath": "packages/headless/src/types/event.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "PointerDownOutsideEvent",
+                "kind": "typeAlias",
+                "type": "CustomEvent<{ originalEvent: PointerEvent; }>",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_types_event.pointerdownoutsideevent",
+                "sourcePath": "packages/headless/src/types/event.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "select",
+            "type": "[payload: CustomEvent<{ originalEvent: Event; }>]",
+            "parameters": "payload: CustomEvent<{ originalEvent: Event; }>",
+            "required": true,
+            "description": "Emitted when select occurs.",
+            "descriptionKey": "api.generated.packages_ui_src_components_navigation_menu_types.navigationmenuemits.callables.select",
+            "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
+            "referencedTypes": [
+              {
+                "name": "CustomEvent",
+                "kind": "interface",
+                "type": "CustomEvent<{ originalEvent: Event }>",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": null,
+                "sourcePath": "node_modules/.pnpm/typescript@6.0.3/node_modules/typescript/lib/lib.dom.d.ts",
+                "typeParameters": ["T = any"],
+                "external": true,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "Event",
+                "kind": "interface",
+                "type": "Event",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": null,
+                "sourcePath": "node_modules/.pnpm/typescript@6.0.3/node_modules/typescript/lib/lib.dom.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "referencedTypes": [
+          {
+            "name": "NavigationMenuCompactEmits",
+            "kind": "typeAlias",
+            "type": "import(\"@soybeanjs/headless\").NavigationMenuRootEmits & import(\"@soybeanjs/headless\").DismissableLayerEmits & import(\"@soybeanjs/headless\").NavigationMenuLinkEmits",
+            "resolvedType": "{ \"update:modelValue\": [value: string]; escapeKeyDown: [event: KeyboardEvent]; pointerDownOutside: [event: PointerDownOutsideEvent]; focusOutside: [event: FocusOutsideEvent]; interactOutside: [event: PointerDownOutsideEvent | FocusOutsideEvent]; select: [payload: CustomEvent<{ originalEvent: Event; }>] }",
+            "description": "Events for the NavigationMenuCompact component.",
+            "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenucompactemits",
+            "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
+            "typeParameters": [],
+            "external": false,
+            "members": [],
+            "callables": [
+              {
+                "name": "update:modelValue",
+                "type": "[value: string]",
+                "parameters": "value: string",
+                "required": true,
+                "description": "Emitted when the model value changes.",
+                "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenucompactemits.callables.update_modelvalue",
+                "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
+                "referencedTypes": []
+              },
+              {
+                "name": "escapeKeyDown",
+                "type": "[event: KeyboardEvent]",
+                "parameters": "event: KeyboardEvent",
+                "required": true,
+                "description": "Event handler called when the escape key is down. Can be prevented.",
+                "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenucompactemits.callables.escapekeydown",
+                "sourcePath": "packages/headless/src/types/component.ts",
+                "referencedTypes": []
+              },
+              {
+                "name": "pointerDownOutside",
+                "type": "[event: PointerDownOutsideEvent]",
+                "parameters": "event: PointerDownOutsideEvent",
+                "required": true,
+                "description": "Event handler called when a `pointerdown` event happens outside of the `DismissableLayer`. Can be prevented.",
+                "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenucompactemits.callables.pointerdownoutside",
+                "sourcePath": "packages/headless/src/types/component.ts",
+                "referencedTypes": []
+              },
+              {
+                "name": "focusOutside",
+                "type": "[event: FocusOutsideEvent]",
+                "parameters": "event: FocusOutsideEvent",
+                "required": true,
+                "description": "Event handler called when the focus moves outside of the `DismissableLayer`. Can be prevented.",
+                "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenucompactemits.callables.focusoutside",
+                "sourcePath": "packages/headless/src/types/component.ts",
+                "referencedTypes": []
+              },
+              {
+                "name": "interactOutside",
+                "type": "[event: PointerDownOutsideEvent | FocusOutsideEvent]",
+                "parameters": "event: PointerDownOutsideEvent | FocusOutsideEvent",
+                "required": true,
+                "description": "Event handler called when an interaction happens outside the `DismissableLayer`. Specifically, when a `pointerdown`\nevent happens outside or focus moves outside of it. Can be prevented.",
+                "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenucompactemits.callables.interactoutside",
+                "sourcePath": "packages/headless/src/types/component.ts",
+                "referencedTypes": []
+              },
+              {
+                "name": "select",
+                "type": "[payload: CustomEvent<{ originalEvent: Event; }>]",
+                "parameters": "payload: CustomEvent<{ originalEvent: Event; }>",
+                "required": true,
+                "description": "Emitted when select occurs.",
+                "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenucompactemits.callables.select",
+                "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
+                "referencedTypes": []
+              }
+            ]
+          }
+        ]
+      },
+      "slots": {
+        "kind": "slots",
+        "name": "NavigationMenuSlots",
+        "type": "TypeAlias NavigationMenuSlots: NavigationMenuCompactSlots",
+        "resolvedType": "{ item: (props: { item: NavigationMenuOptionData; isTrigger?: boolean; }) => any; \"item-leading\": (props: { item: NavigationMenuOptionData; }) => any; \"item-trailing\": (props: { item: NavigationMenuOptionData; }) => any; \"item-link-icon\": (props: { item: NavigationMenuOptionData; }) => any; \"item-children\": (props: { item: NavigationMenuOptionData; }) => any; \"item-trigger-icon\": (props: { item: NavigationMenuOptionData; }) => any }",
+        "description": "Slots for the NavigationMenu component.",
+        "descriptionKey": "api.generated.packages_ui_src_components_navigation_menu_types.navigationmenuslots.slots",
+        "sourcePath": "packages/ui/src/components/navigation-menu/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [
+          {
+            "name": "item",
+            "type": "(props: { item: NavigationMenuOptionData; isTrigger?: boolean; }) => any",
+            "parameters": "props: { item: NavigationMenuOptionData; isTrigger?: boolean; }",
+            "required": true,
+            "description": "",
+            "descriptionKey": "api.generated.packages_ui_src_components_navigation_menu_types.navigationmenuslots.callables.item",
+            "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
+            "referencedTypes": [
+              {
+                "name": "__type",
+                "kind": "typeLiteral",
+                "type": "{ item: NavigationMenuOptionData; isTrigger?: boolean; }",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.type",
+                "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "item-leading",
+            "type": "(props: { item: NavigationMenuOptionData; }) => any",
+            "parameters": "props: { item: NavigationMenuOptionData; }",
+            "required": true,
+            "description": "",
+            "descriptionKey": "api.generated.packages_ui_src_components_navigation_menu_types.navigationmenuslots.callables.item_leading",
+            "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
+            "referencedTypes": [
+              {
+                "name": "__type",
+                "kind": "typeLiteral",
+                "type": "{ item: NavigationMenuOptionData; }",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.type",
+                "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "item-trailing",
+            "type": "(props: { item: NavigationMenuOptionData; }) => any",
+            "parameters": "props: { item: NavigationMenuOptionData; }",
+            "required": true,
+            "description": "",
+            "descriptionKey": "api.generated.packages_ui_src_components_navigation_menu_types.navigationmenuslots.callables.item_trailing",
+            "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
+            "referencedTypes": [
+              {
+                "name": "__type",
+                "kind": "typeLiteral",
+                "type": "{ item: NavigationMenuOptionData; }",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.type",
+                "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "item-link-icon",
+            "type": "(props: { item: NavigationMenuOptionData; }) => any",
+            "parameters": "props: { item: NavigationMenuOptionData; }",
+            "required": true,
+            "description": "",
+            "descriptionKey": "api.generated.packages_ui_src_components_navigation_menu_types.navigationmenuslots.callables.item_link_icon",
+            "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
+            "referencedTypes": [
+              {
+                "name": "__type",
+                "kind": "typeLiteral",
+                "type": "{ item: NavigationMenuOptionData; }",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.type",
+                "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "item-children",
+            "type": "(props: { item: NavigationMenuOptionData; }) => any",
+            "parameters": "props: { item: NavigationMenuOptionData; }",
+            "required": true,
+            "description": "",
+            "descriptionKey": "api.generated.packages_ui_src_components_navigation_menu_types.navigationmenuslots.callables.item_children",
+            "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
+            "referencedTypes": [
+              {
+                "name": "__type",
+                "kind": "typeLiteral",
+                "type": "{ item: NavigationMenuOptionData; }",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.type",
+                "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "item-trigger-icon",
+            "type": "(props: { item: NavigationMenuOptionData; }) => any",
+            "parameters": "props: { item: NavigationMenuOptionData; }",
+            "required": true,
+            "description": "",
+            "descriptionKey": "api.generated.packages_ui_src_components_navigation_menu_types.navigationmenuslots.callables.item_trigger_icon",
+            "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
+            "referencedTypes": [
+              {
+                "name": "__type",
+                "kind": "typeLiteral",
+                "type": "{ item: NavigationMenuOptionData; }",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.type",
+                "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "referencedTypes": [
+          {
+            "name": "NavigationMenuOptionCompactSlots",
+            "kind": "typeAlias",
+            "type": "import(\"../../../node_modules/@soybeanjs/headless/src/components/navigation-menu/types\").NavigationMenuSubOptionCompactSlots & { 'item-trigger-icon': (props: { item: import(\"@soybeanjs/headless\").NavigationMenuOptionData; }) => any; }",
+            "resolvedType": "{ item: (props: { item: NavigationMenuOptionData; isTrigger?: boolean; }) => any; \"item-leading\": (props: { item: NavigationMenuOptionData; }) => any; \"item-trailing\": (props: { item: NavigationMenuOptionData; }) => any; \"item-link-icon\": (props: { item: NavigationMenuOptionData; }) => any; \"item-children\": (props: { item: NavigationMenuOptionData; }) => any; \"item-trigger-icon\": (props: { item: NavigationMenuOptionData; }) => any }",
+            "description": "Slots for the NavigationMenuOptionCompact component.",
+            "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenuoptioncompactslots",
+            "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
+            "typeParameters": [],
+            "external": false,
+            "members": [],
+            "callables": [
+              {
+                "name": "item",
+                "type": "(props: { item: NavigationMenuOptionData; isTrigger?: boolean; }) => any",
+                "parameters": "props: { item: NavigationMenuOptionData; isTrigger?: boolean; }",
+                "required": true,
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenuoptioncompactslots.callables.item",
+                "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
+                "referencedTypes": []
+              },
+              {
+                "name": "item-leading",
+                "type": "(props: { item: NavigationMenuOptionData; }) => any",
+                "parameters": "props: { item: NavigationMenuOptionData; }",
+                "required": true,
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenuoptioncompactslots.callables.item_leading",
+                "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
+                "referencedTypes": []
+              },
+              {
+                "name": "item-trailing",
+                "type": "(props: { item: NavigationMenuOptionData; }) => any",
+                "parameters": "props: { item: NavigationMenuOptionData; }",
+                "required": true,
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenuoptioncompactslots.callables.item_trailing",
+                "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
+                "referencedTypes": []
+              },
+              {
+                "name": "item-link-icon",
+                "type": "(props: { item: NavigationMenuOptionData; }) => any",
+                "parameters": "props: { item: NavigationMenuOptionData; }",
+                "required": true,
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenuoptioncompactslots.callables.item_link_icon",
+                "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
+                "referencedTypes": []
+              },
+              {
+                "name": "item-children",
+                "type": "(props: { item: NavigationMenuOptionData; }) => any",
+                "parameters": "props: { item: NavigationMenuOptionData; }",
+                "required": true,
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenuoptioncompactslots.callables.item_children",
+                "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
+                "referencedTypes": []
+              },
+              {
+                "name": "item-trigger-icon",
+                "type": "(props: { item: NavigationMenuOptionData; }) => any",
+                "parameters": "props: { item: NavigationMenuOptionData; }",
+                "required": true,
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenuoptioncompactslots.callables.item_trigger_icon",
+                "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
+                "referencedTypes": []
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "NavigationMenuCompact": {
+      "props": {
+        "kind": "props",
+        "name": "NavigationMenuCompactProps",
+        "type": "Interface NavigationMenuCompactProps",
+        "resolvedType": "{ items: NavigationMenuOptionData[]; modelValue?: string; defaultValue?: string; dir?: Direction; orientation?: DataOrientation; delayDuration?: number; skipDelayDuration?: number; disableClickTrigger?: boolean; disableHoverTrigger?: boolean; disablePointerLeaveClose?: boolean; unmountOnHide?: boolean; itemProps?: NavigationMenuItemProps; linkProps?: NavigationMenuLinkProps; triggerProps?: NavigationMenuTriggerProps; contentProps?: NavigationMenuContentProps; viewportProps?: NavigationMenuViewportProps; indicatorProps?: NavigationMenuIndicatorProps; listProps?: NavigationMenuListProps; subListProps?: NavigationMenuListProps; subItemProps?: NavigationMenuItemProps }",
+        "description": "Properties for the NavigationMenuCompact component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenucompactprops.props",
+        "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "items",
+            "type": "NavigationMenuOptionData[]",
+            "required": true,
+            "description": "The items to render in the navigation menu.",
+            "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenucompactprops.members.items",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "modelValue",
+            "type": "string",
+            "required": false,
+            "description": "The controlled value of the menu item to activate. Can be used as `v-model`.",
+            "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenucompactprops.members.modelvalue",
+            "default": null,
+            "inheritedFrom": "modelValue",
+            "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "defaultValue",
+            "type": "string",
+            "required": false,
+            "description": "The value of the menu item that should be active when initially rendered.\n\nUse when you do not need to control the value state.",
+            "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenucompactprops.members.defaultvalue",
+            "default": null,
+            "inheritedFrom": "defaultValue",
+            "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "dir",
+            "type": "Direction",
+            "required": false,
+            "description": "The reading direction of the combobox when applicable.\n\nIf omitted, inherits globally from `ConfigProvider` or assumes LTR (left-to-right) reading mode.",
+            "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenucompactprops.members.dir",
+            "default": null,
+            "inheritedFrom": "dir",
+            "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Direction",
+                "kind": "typeAlias",
+                "type": "'ltr' | 'rtl'",
+                "resolvedType": "'ltr' | 'rtl'",
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_types_common.direction",
+                "sourcePath": "packages/headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "orientation",
+            "type": "DataOrientation",
+            "required": false,
+            "description": "The orientation of the menu.",
+            "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenucompactprops.members.orientation",
+            "default": null,
+            "inheritedFrom": "orientation",
+            "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
+            "referencedTypes": [
+              {
+                "name": "DataOrientation",
+                "kind": "typeAlias",
+                "type": "'vertical' | 'horizontal'",
+                "resolvedType": "'vertical' | 'horizontal'",
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_types_common.dataorientation",
+                "sourcePath": "packages/headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "delayDuration",
+            "type": "number",
+            "required": false,
+            "description": "The duration from when the pointer enters the trigger until the tooltip gets opened.",
+            "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenucompactprops.members.delayduration",
+            "default": "200",
+            "inheritedFrom": "delayDuration",
+            "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "skipDelayDuration",
+            "type": "number",
+            "required": false,
+            "description": "How much time a user has to enter another trigger without incurring a delay again.",
+            "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenucompactprops.members.skipdelayduration",
+            "default": "300",
+            "inheritedFrom": "skipDelayDuration",
+            "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "disableClickTrigger",
+            "type": "boolean",
+            "required": false,
+            "description": "If `true`, menu cannot be open by click on trigger",
+            "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenucompactprops.members.disableclicktrigger",
+            "default": "false",
+            "inheritedFrom": "disableClickTrigger",
+            "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "disableHoverTrigger",
+            "type": "boolean",
+            "required": false,
+            "description": "If `true`, menu cannot be open by hover on trigger",
+            "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenucompactprops.members.disablehovertrigger",
+            "default": "false",
+            "inheritedFrom": "disableHoverTrigger",
+            "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "disablePointerLeaveClose",
+            "type": "boolean",
+            "required": false,
+            "description": "If `true`, menu will not close during pointer leave event",
+            "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenucompactprops.members.disablepointerleaveclose",
+            "default": "false",
+            "inheritedFrom": "disablePointerLeaveClose",
+            "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "unmountOnHide",
+            "type": "boolean",
+            "required": false,
+            "description": "When `true`, the element will be unmounted on closed state.",
+            "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenucompactprops.members.unmountonhide",
+            "default": "`true`",
+            "inheritedFrom": "unmountOnHide",
+            "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "itemProps",
+            "type": "NavigationMenuItemProps",
+            "required": false,
+            "description": "Properties forwarded to the item element.",
+            "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenucompactprops.members.itemprops",
+            "default": null,
+            "inheritedFrom": "Omit.itemProps",
+            "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
+            "referencedTypes": [
+              {
+                "name": "NavigationMenuItemProps",
+                "kind": "interface",
+                "type": "NavigationMenuItemProps",
+                "resolvedType": "{ value?: string }",
+                "description": "Properties for the NavigationMenuItem component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenuitemprops",
+                "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "value",
+                    "type": "string",
+                    "required": false,
+                    "description": "Value associated with the current item.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenuitemprops.members.value",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "linkProps",
+            "type": "NavigationMenuLinkProps",
+            "required": false,
+            "description": "Properties forwarded to the link element.",
+            "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenucompactprops.members.linkprops",
+            "default": null,
+            "inheritedFrom": "Omit.linkProps",
+            "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
+            "referencedTypes": [
+              {
+                "name": "NavigationMenuLinkProps",
+                "kind": "interface",
+                "type": "NavigationMenuLinkProps",
+                "resolvedType": "{ active?: boolean; replace?: boolean; disabled?: boolean; asChild?: boolean; as?: AsTag | Component; to?: string | import(\"vue-router\").RouteLocationAsRelativeGeneric | import(\"vue-router\").RouteLocationAsPathGeneric; href?: string; activeClass?: string; exactActiveClass?: string; inactiveClass?: string; prefetchedClass?: string; external?: boolean; ariaCurrentValue?: 'true' | 'false' | 'date' | 'time' | 'page' | 'step' | 'location'; viewTransition?: boolean; target?: '_blank' | '_parent' | '_self' | '_top' | (string & {}) | null; rel?: (string & {}) | 'noopener' | 'noreferrer' | 'nofollow' | 'sponsored' | 'ugc' | null; noRel?: boolean; prefetch?: boolean; prefetchOn?: 'visibility' | 'interaction' | Partial<{ visibility: boolean; interaction: boolean; }>; noPrefetch?: boolean; trailingSlash?: 'append' | 'remove' }",
+                "description": "Properties for the NavigationMenuLink component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenulinkprops",
+                "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "active",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Used to identify the link as the currently active page.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenulinkprops.members.active",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "replace",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Calls `router.replace` instead of `router.push`.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenulinkprops.members.replace",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "disabled",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "When `true`, the link is disabled.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenulinkprops.members.disabled",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "asChild",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenulinkprops.members.aschild",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "as",
+                    "type": "AsTag | Component",
+                    "required": false,
+                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+                    "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenulinkprops.members.as",
+                    "default": "'div'",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "to",
+                    "type": "string | import(\"vue-router\").RouteLocationAsRelativeGeneric | import(\"vue-router\").RouteLocationAsPathGeneric",
+                    "required": false,
+                    "description": "Route Location the link should navigate to when clicked on.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenulinkprops.members.to",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "href",
+                    "type": "string",
+                    "required": false,
+                    "description": "The URL the link should navigate to when clicked on.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenulinkprops.members.href",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "activeClass",
+                    "type": "string",
+                    "required": false,
+                    "description": "Class to apply when the link is active",
+                    "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenulinkprops.members.activeclass",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "exactActiveClass",
+                    "type": "string",
+                    "required": false,
+                    "description": "Class to apply when the link is exact active",
+                    "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenulinkprops.members.exactactiveclass",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "inactiveClass",
+                    "type": "string",
+                    "required": false,
+                    "description": "The class to apply to the link when it is inactive.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenulinkprops.members.inactiveclass",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "prefetchedClass",
+                    "type": "string",
+                    "required": false,
+                    "description": "A class to apply to links that have been prefetched.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenulinkprops.members.prefetchedclass",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "external",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Forces the link to be considered as external (true) or internal (false). This is helpful to handle edge-cases",
+                    "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenulinkprops.members.external",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "ariaCurrentValue",
+                    "type": "'true' | 'false' | 'date' | 'time' | 'page' | 'step' | 'location'",
+                    "required": false,
+                    "description": "Value passed to the attribute `aria-current` when the link is exact active.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenulinkprops.members.ariacurrentvalue",
+                    "default": "`'page'`",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "viewTransition",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Pass the returned promise of `router.push()` to `document.startViewTransition()` if supported.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenulinkprops.members.viewtransition",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "target",
+                    "type": "'_blank' | '_parent' | '_self' | '_top' | (string & {}) | null",
+                    "required": false,
+                    "description": "Where to display the linked URL, as the name for a browsing context.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenulinkprops.members.target",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "rel",
+                    "type": "(string & {}) | 'noopener' | 'noreferrer' | 'nofollow' | 'sponsored' | 'ugc' | null",
+                    "required": false,
+                    "description": "A rel attribute value to apply on the link. Defaults to \"noopener noreferrer\" for external links.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenulinkprops.members.rel",
+                    "default": "'noopener noreferrer'",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "noRel",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "If set to true, no rel attribute will be added to the link",
+                    "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenulinkprops.members.norel",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "prefetch",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "When enabled will prefetch middleware, layouts and payloads of links in the viewport.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenulinkprops.members.prefetch",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "prefetchOn",
+                    "type": "'visibility' | 'interaction' | Partial<{ visibility: boolean; interaction: boolean; }>",
+                    "required": false,
+                    "description": "Allows controlling when to prefetch links. By default, prefetch is triggered only on visibility.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenulinkprops.members.prefetchon",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "noPrefetch",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Escape hatch to disable `prefetch` attribute.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenulinkprops.members.noprefetch",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "trailingSlash",
+                    "type": "'append' | 'remove'",
+                    "required": false,
+                    "description": "An option to either add or remove trailing slashes in the `href` for this specific link.\nOverrides the global `trailingSlash` option if provided.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenulinkprops.members.trailingslash",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "triggerProps",
+            "type": "NavigationMenuTriggerProps",
+            "required": false,
+            "description": "Properties forwarded to the trigger element.",
+            "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenucompactprops.members.triggerprops",
+            "default": null,
+            "inheritedFrom": "Omit.triggerProps",
+            "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
+            "referencedTypes": [
+              {
+                "name": "NavigationMenuTriggerProps",
+                "kind": "interface",
+                "type": "NavigationMenuTriggerProps",
+                "resolvedType": "{ disabled?: boolean; asChild?: boolean; as?: AsTag | Component }",
+                "description": "Properties for the NavigationMenuTrigger component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenutriggerprops",
+                "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "disabled",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Whether the component is disabled.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenutriggerprops.members.disabled",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "asChild",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenutriggerprops.members.aschild",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "as",
+                    "type": "AsTag | Component",
+                    "required": false,
+                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+                    "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenutriggerprops.members.as",
+                    "default": "'div'",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "contentProps",
+            "type": "NavigationMenuContentProps",
+            "required": false,
+            "description": "Properties forwarded to the content element.",
+            "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenucompactprops.members.contentprops",
+            "default": null,
+            "inheritedFrom": "Omit.contentProps",
+            "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
+            "referencedTypes": [
+              {
+                "name": "NavigationMenuContentProps",
+                "kind": "interface",
+                "type": "NavigationMenuContentProps",
+                "resolvedType": "{ disableOutsidePointerEvents?: boolean; forceMount?: boolean }",
+                "description": "Properties for the NavigationMenuContent component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenucontentprops",
+                "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "disableOutsidePointerEvents",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "When `true`, hover/focus/click interactions will be disabled on elements outside the `DismissableLayer`. Users will\nneed to click twice on outside elements to interact with them: once to close the `DismissableLayer`, and again to\ntrigger the element.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenucontentprops.members.disableoutsidepointerevents",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/types/component.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "forceMount",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Used to force mounting when more control is needed.\n\nUseful when controlling animation with Vue animation libraries.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenucontentprops.members.forcemount",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/types/component.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "viewportProps",
+            "type": "NavigationMenuViewportProps",
+            "required": false,
+            "description": "Properties forwarded to the viewport element.",
+            "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenucompactprops.members.viewportprops",
+            "default": null,
+            "inheritedFrom": "Omit.viewportProps",
+            "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
+            "referencedTypes": [
+              {
+                "name": "NavigationMenuViewportProps",
+                "kind": "interface",
+                "type": "NavigationMenuViewportProps",
+                "resolvedType": "{ align?: Align; forceMount?: boolean }",
+                "description": "Properties for the NavigationMenuViewport component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenuviewportprops",
+                "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "align",
+                    "type": "Align",
+                    "required": false,
+                    "description": "Align.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenuviewportprops.members.align",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "forceMount",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Used to force mounting when more control is needed.\n\nUseful when controlling animation with Vue animation libraries.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenuviewportprops.members.forcemount",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/types/component.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "indicatorProps",
+            "type": "NavigationMenuIndicatorProps",
+            "required": false,
+            "description": "Properties forwarded to the indicator element.",
+            "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenucompactprops.members.indicatorprops",
+            "default": null,
+            "inheritedFrom": "Omit.indicatorProps",
+            "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
+            "referencedTypes": [
+              {
+                "name": "NavigationMenuIndicatorProps",
+                "kind": "interface",
+                "type": "NavigationMenuIndicatorProps",
+                "resolvedType": "{ forceMount?: boolean }",
+                "description": "Properties for the NavigationMenuIndicator component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenuindicatorprops",
+                "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "forceMount",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Used to force mounting when more control is needed.\n\nUseful when controlling animation with Vue animation libraries.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenuindicatorprops.members.forcemount",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/types/component.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "listProps",
+            "type": "NavigationMenuListProps",
+            "required": false,
+            "description": "Properties forwarded to the list element.",
+            "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenucompactprops.members.listprops",
+            "default": null,
+            "inheritedFrom": "Omit.listProps",
+            "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
+            "referencedTypes": [
+              {
+                "name": "NavigationMenuListProps",
+                "kind": "interface",
+                "type": "NavigationMenuListProps",
+                "resolvedType": null,
+                "description": "Properties for the NavigationMenuList component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenulistprops",
+                "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "subListProps",
+            "type": "NavigationMenuListProps",
+            "required": false,
+            "description": "Properties forwarded to the sub list element.",
+            "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenucompactprops.members.sublistprops",
+            "default": null,
+            "inheritedFrom": "Omit.subListProps",
+            "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
+            "referencedTypes": [
+              {
+                "name": "NavigationMenuListProps",
+                "kind": "interface",
+                "type": "NavigationMenuListProps",
+                "resolvedType": null,
+                "description": "Properties for the NavigationMenuList component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenulistprops",
+                "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "subItemProps",
+            "type": "NavigationMenuItemProps",
+            "required": false,
+            "description": "Properties forwarded to the sub item element.",
+            "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenucompactprops.members.subitemprops",
+            "default": null,
+            "inheritedFrom": "Omit.subItemProps",
+            "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
+            "referencedTypes": [
+              {
+                "name": "NavigationMenuItemProps",
+                "kind": "interface",
+                "type": "NavigationMenuItemProps",
+                "resolvedType": "{ value?: string }",
+                "description": "Properties for the NavigationMenuItem component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenuitemprops",
+                "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "value",
+                    "type": "string",
+                    "required": false,
+                    "description": "Value associated with the current item.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenuitemprops.members.value",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      },
+      "emits": {
+        "kind": "emits",
+        "name": "NavigationMenuCompactEmits",
+        "type": "TypeAlias NavigationMenuCompactEmits: NavigationMenuRootEmits & NavigationMenuOptionCompactEmits",
+        "resolvedType": "{ \"update:modelValue\": [value: string]; escapeKeyDown: [event: KeyboardEvent]; pointerDownOutside: [event: PointerDownOutsideEvent]; focusOutside: [event: FocusOutsideEvent]; interactOutside: [event: PointerDownOutsideEvent | FocusOutsideEvent]; select: [payload: CustomEvent<{ originalEvent: Event; }>] }",
+        "description": "Events for the NavigationMenuCompact component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenucompactemits.emits",
+        "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [
+          {
+            "name": "update:modelValue",
+            "type": "[value: string]",
+            "parameters": "value: string",
+            "required": true,
+            "description": "Emitted when the model value changes.",
+            "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenucompactemits.callables.update_modelvalue",
+            "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "escapeKeyDown",
+            "type": "[event: KeyboardEvent]",
+            "parameters": "event: KeyboardEvent",
+            "required": true,
+            "description": "Event handler called when the escape key is down. Can be prevented.",
+            "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenucompactemits.callables.escapekeydown",
+            "sourcePath": "packages/headless/src/types/component.ts",
+            "referencedTypes": [
+              {
+                "name": "KeyboardEvent",
+                "kind": "interface",
+                "type": "KeyboardEvent",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": null,
+                "sourcePath": "node_modules/.pnpm/typescript@6.0.3/node_modules/typescript/lib/lib.dom.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "pointerDownOutside",
+            "type": "[event: PointerDownOutsideEvent]",
+            "parameters": "event: PointerDownOutsideEvent",
+            "required": true,
+            "description": "Event handler called when a `pointerdown` event happens outside of the `DismissableLayer`. Can be prevented.",
+            "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenucompactemits.callables.pointerdownoutside",
+            "sourcePath": "packages/headless/src/types/component.ts",
+            "referencedTypes": [
+              {
+                "name": "PointerDownOutsideEvent",
+                "kind": "typeAlias",
+                "type": "CustomEvent<{ originalEvent: PointerEvent; }>",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_types_event.pointerdownoutsideevent",
+                "sourcePath": "packages/headless/src/types/event.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "focusOutside",
+            "type": "[event: FocusOutsideEvent]",
+            "parameters": "event: FocusOutsideEvent",
+            "required": true,
+            "description": "Event handler called when the focus moves outside of the `DismissableLayer`. Can be prevented.",
+            "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenucompactemits.callables.focusoutside",
+            "sourcePath": "packages/headless/src/types/component.ts",
+            "referencedTypes": [
+              {
+                "name": "FocusOutsideEvent",
+                "kind": "typeAlias",
+                "type": "CustomEvent<{ originalEvent: FocusEvent; }>",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_types_event.focusoutsideevent",
+                "sourcePath": "packages/headless/src/types/event.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "interactOutside",
+            "type": "[event: PointerDownOutsideEvent | FocusOutsideEvent]",
+            "parameters": "event: PointerDownOutsideEvent | FocusOutsideEvent",
+            "required": true,
+            "description": "Event handler called when an interaction happens outside the `DismissableLayer`. Specifically, when a `pointerdown`\nevent happens outside or focus moves outside of it. Can be prevented.",
+            "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenucompactemits.callables.interactoutside",
+            "sourcePath": "packages/headless/src/types/component.ts",
+            "referencedTypes": [
+              {
+                "name": "FocusOutsideEvent",
+                "kind": "typeAlias",
+                "type": "CustomEvent<{ originalEvent: FocusEvent; }>",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_types_event.focusoutsideevent",
+                "sourcePath": "packages/headless/src/types/event.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "PointerDownOutsideEvent",
+                "kind": "typeAlias",
+                "type": "CustomEvent<{ originalEvent: PointerEvent; }>",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_types_event.pointerdownoutsideevent",
+                "sourcePath": "packages/headless/src/types/event.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "select",
+            "type": "[payload: CustomEvent<{ originalEvent: Event; }>]",
+            "parameters": "payload: CustomEvent<{ originalEvent: Event; }>",
+            "required": true,
+            "description": "Emitted when select occurs.",
+            "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenucompactemits.callables.select",
+            "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
+            "referencedTypes": [
+              {
+                "name": "CustomEvent",
+                "kind": "interface",
+                "type": "CustomEvent<{ originalEvent: Event }>",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": null,
+                "sourcePath": "node_modules/.pnpm/typescript@6.0.3/node_modules/typescript/lib/lib.dom.d.ts",
+                "typeParameters": ["T = any"],
+                "external": true,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "Event",
+                "kind": "interface",
+                "type": "Event",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": null,
+                "sourcePath": "node_modules/.pnpm/typescript@6.0.3/node_modules/typescript/lib/lib.dom.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "referencedTypes": []
+      },
+      "slots": {
+        "kind": "slots",
+        "name": "NavigationMenuCompactSlots",
+        "type": "TypeAlias NavigationMenuCompactSlots: NavigationMenuOptionCompactSlots",
+        "resolvedType": "{ item: (props: { item: NavigationMenuOptionData; isTrigger?: boolean; }) => any; \"item-leading\": (props: { item: NavigationMenuOptionData; }) => any; \"item-trailing\": (props: { item: NavigationMenuOptionData; }) => any; \"item-link-icon\": (props: { item: NavigationMenuOptionData; }) => any; \"item-children\": (props: { item: NavigationMenuOptionData; }) => any; \"item-trigger-icon\": (props: { item: NavigationMenuOptionData; }) => any }",
+        "description": "Slots for the NavigationMenuCompact component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenucompactslots.slots",
+        "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [
+          {
+            "name": "item",
+            "type": "(props: { item: NavigationMenuOptionData; isTrigger?: boolean; }) => any",
+            "parameters": "props: { item: NavigationMenuOptionData; isTrigger?: boolean; }",
+            "required": true,
+            "description": "",
+            "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenucompactslots.callables.item",
+            "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
+            "referencedTypes": [
+              {
+                "name": "__type",
+                "kind": "typeLiteral",
+                "type": "{ item: NavigationMenuOptionData; isTrigger?: boolean; }",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.type",
+                "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "item-leading",
+            "type": "(props: { item: NavigationMenuOptionData; }) => any",
+            "parameters": "props: { item: NavigationMenuOptionData; }",
+            "required": true,
+            "description": "",
+            "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenucompactslots.callables.item_leading",
+            "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
+            "referencedTypes": [
+              {
+                "name": "__type",
+                "kind": "typeLiteral",
+                "type": "{ item: NavigationMenuOptionData; }",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.type",
+                "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "item-trailing",
+            "type": "(props: { item: NavigationMenuOptionData; }) => any",
+            "parameters": "props: { item: NavigationMenuOptionData; }",
+            "required": true,
+            "description": "",
+            "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenucompactslots.callables.item_trailing",
+            "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
+            "referencedTypes": [
+              {
+                "name": "__type",
+                "kind": "typeLiteral",
+                "type": "{ item: NavigationMenuOptionData; }",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.type",
+                "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "item-link-icon",
+            "type": "(props: { item: NavigationMenuOptionData; }) => any",
+            "parameters": "props: { item: NavigationMenuOptionData; }",
+            "required": true,
+            "description": "",
+            "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenucompactslots.callables.item_link_icon",
+            "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
+            "referencedTypes": [
+              {
+                "name": "__type",
+                "kind": "typeLiteral",
+                "type": "{ item: NavigationMenuOptionData; }",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.type",
+                "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "item-children",
+            "type": "(props: { item: NavigationMenuOptionData; }) => any",
+            "parameters": "props: { item: NavigationMenuOptionData; }",
+            "required": true,
+            "description": "",
+            "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenucompactslots.callables.item_children",
+            "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
+            "referencedTypes": [
+              {
+                "name": "__type",
+                "kind": "typeLiteral",
+                "type": "{ item: NavigationMenuOptionData; }",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.type",
+                "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "item-trigger-icon",
+            "type": "(props: { item: NavigationMenuOptionData; }) => any",
+            "parameters": "props: { item: NavigationMenuOptionData; }",
+            "required": true,
+            "description": "",
+            "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenucompactslots.callables.item_trigger_icon",
+            "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
+            "referencedTypes": [
+              {
+                "name": "__type",
+                "kind": "typeLiteral",
+                "type": "{ item: NavigationMenuOptionData; }",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.type",
+                "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "referencedTypes": [
+          {
+            "name": "NavigationMenuOptionCompactSlots",
+            "kind": "typeAlias",
+            "type": "NavigationMenuSubOptionCompactSlots & { 'item-trigger-icon': (props: { item: NavigationMenuOptionData; }) => any; }",
+            "resolvedType": "{ item: (props: { item: NavigationMenuOptionData; isTrigger?: boolean; }) => any; \"item-leading\": (props: { item: NavigationMenuOptionData; }) => any; \"item-trailing\": (props: { item: NavigationMenuOptionData; }) => any; \"item-link-icon\": (props: { item: NavigationMenuOptionData; }) => any; \"item-children\": (props: { item: NavigationMenuOptionData; }) => any; \"item-trigger-icon\": (props: { item: NavigationMenuOptionData; }) => any }",
+            "description": "Slots for the NavigationMenuOptionCompact component.",
+            "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenuoptioncompactslots",
+            "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
+            "typeParameters": [],
+            "external": false,
+            "members": [],
+            "callables": [
+              {
+                "name": "item",
+                "type": "(props: { item: NavigationMenuOptionData; isTrigger?: boolean; }) => any",
+                "parameters": "props: { item: NavigationMenuOptionData; isTrigger?: boolean; }",
+                "required": true,
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenuoptioncompactslots.callables.item",
+                "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
+                "referencedTypes": []
+              },
+              {
+                "name": "item-leading",
+                "type": "(props: { item: NavigationMenuOptionData; }) => any",
+                "parameters": "props: { item: NavigationMenuOptionData; }",
+                "required": true,
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenuoptioncompactslots.callables.item_leading",
+                "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
+                "referencedTypes": []
+              },
+              {
+                "name": "item-trailing",
+                "type": "(props: { item: NavigationMenuOptionData; }) => any",
+                "parameters": "props: { item: NavigationMenuOptionData; }",
+                "required": true,
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenuoptioncompactslots.callables.item_trailing",
+                "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
+                "referencedTypes": []
+              },
+              {
+                "name": "item-link-icon",
+                "type": "(props: { item: NavigationMenuOptionData; }) => any",
+                "parameters": "props: { item: NavigationMenuOptionData; }",
+                "required": true,
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenuoptioncompactslots.callables.item_link_icon",
+                "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
+                "referencedTypes": []
+              },
+              {
+                "name": "item-children",
+                "type": "(props: { item: NavigationMenuOptionData; }) => any",
+                "parameters": "props: { item: NavigationMenuOptionData; }",
+                "required": true,
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenuoptioncompactslots.callables.item_children",
+                "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
+                "referencedTypes": []
+              },
+              {
+                "name": "item-trigger-icon",
+                "type": "(props: { item: NavigationMenuOptionData; }) => any",
+                "parameters": "props: { item: NavigationMenuOptionData; }",
+                "required": true,
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenuoptioncompactslots.callables.item_trigger_icon",
+                "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
+                "referencedTypes": []
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "NavigationMenuContent": {
+      "props": {
+        "kind": "props",
+        "name": "NavigationMenuContentProps",
+        "type": "Interface NavigationMenuContentProps",
+        "resolvedType": "{ disableOutsidePointerEvents?: boolean; forceMount?: boolean }",
+        "description": "Properties for the NavigationMenuContent component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenucontentprops.props",
+        "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "disableOutsidePointerEvents",
+            "type": "boolean",
+            "required": false,
+            "description": "When `true`, hover/focus/click interactions will be disabled on elements outside the `DismissableLayer`. Users will\nneed to click twice on outside elements to interact with them: once to close the `DismissableLayer`, and again to\ntrigger the element.",
+            "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenucontentprops.members.disableoutsidepointerevents",
+            "default": null,
+            "inheritedFrom": "NavigationMenuContentImplProps.disableOutsidePointerEvents",
+            "sourcePath": "packages/headless/src/types/component.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "forceMount",
+            "type": "boolean",
+            "required": false,
+            "description": "Used to force mounting when more control is needed.\n\nUseful when controlling animation with Vue animation libraries.",
+            "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenucontentprops.members.forcemount",
+            "default": null,
+            "inheritedFrom": "forceMount",
+            "sourcePath": "packages/headless/src/types/component.ts",
+            "referencedTypes": []
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      },
+      "emits": {
+        "kind": "emits",
+        "name": "NavigationMenuContentEmits",
+        "type": "TypeAlias NavigationMenuContentEmits: NavigationMenuContentImplEmits",
+        "resolvedType": "{ escapeKeyDown: [event: KeyboardEvent]; pointerDownOutside: [event: PointerDownOutsideEvent]; focusOutside: [event: FocusOutsideEvent]; interactOutside: [event: PointerDownOutsideEvent | FocusOutsideEvent] }",
+        "description": "Events for the NavigationMenuContent component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenucontentemits.emits",
+        "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [
+          {
+            "name": "escapeKeyDown",
+            "type": "[event: KeyboardEvent]",
+            "parameters": "event: KeyboardEvent",
+            "required": true,
+            "description": "Event handler called when the escape key is down. Can be prevented.",
+            "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenucontentemits.callables.escapekeydown",
+            "sourcePath": "packages/headless/src/types/component.ts",
+            "referencedTypes": [
+              {
+                "name": "KeyboardEvent",
+                "kind": "interface",
+                "type": "KeyboardEvent",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": null,
+                "sourcePath": "node_modules/.pnpm/typescript@6.0.3/node_modules/typescript/lib/lib.dom.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "pointerDownOutside",
+            "type": "[event: PointerDownOutsideEvent]",
+            "parameters": "event: PointerDownOutsideEvent",
+            "required": true,
+            "description": "Event handler called when a `pointerdown` event happens outside of the `DismissableLayer`. Can be prevented.",
+            "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenucontentemits.callables.pointerdownoutside",
+            "sourcePath": "packages/headless/src/types/component.ts",
+            "referencedTypes": [
+              {
+                "name": "PointerDownOutsideEvent",
+                "kind": "typeAlias",
+                "type": "CustomEvent<{ originalEvent: PointerEvent; }>",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_types_event.pointerdownoutsideevent",
+                "sourcePath": "packages/headless/src/types/event.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "focusOutside",
+            "type": "[event: FocusOutsideEvent]",
+            "parameters": "event: FocusOutsideEvent",
+            "required": true,
+            "description": "Event handler called when the focus moves outside of the `DismissableLayer`. Can be prevented.",
+            "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenucontentemits.callables.focusoutside",
+            "sourcePath": "packages/headless/src/types/component.ts",
+            "referencedTypes": [
+              {
+                "name": "FocusOutsideEvent",
+                "kind": "typeAlias",
+                "type": "CustomEvent<{ originalEvent: FocusEvent; }>",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_types_event.focusoutsideevent",
+                "sourcePath": "packages/headless/src/types/event.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "interactOutside",
+            "type": "[event: PointerDownOutsideEvent | FocusOutsideEvent]",
+            "parameters": "event: PointerDownOutsideEvent | FocusOutsideEvent",
+            "required": true,
+            "description": "Event handler called when an interaction happens outside the `DismissableLayer`. Specifically, when a `pointerdown`\nevent happens outside or focus moves outside of it. Can be prevented.",
+            "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenucontentemits.callables.interactoutside",
+            "sourcePath": "packages/headless/src/types/component.ts",
+            "referencedTypes": [
+              {
+                "name": "FocusOutsideEvent",
+                "kind": "typeAlias",
+                "type": "CustomEvent<{ originalEvent: FocusEvent; }>",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_types_event.focusoutsideevent",
+                "sourcePath": "packages/headless/src/types/event.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "PointerDownOutsideEvent",
+                "kind": "typeAlias",
+                "type": "CustomEvent<{ originalEvent: PointerEvent; }>",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_types_event.pointerdownoutsideevent",
+                "sourcePath": "packages/headless/src/types/event.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "referencedTypes": [
+          {
+            "name": "DismissableLayerEmits",
+            "kind": "typeAlias",
+            "type": "{ escapeKeyDown: [event: KeyboardEvent]; pointerDownOutside: [event: import(\"@/index\").PointerDownOutsideEvent]; focusOutside: [event: import(\"@/index\").FocusOutsideEvent]; interactOutside: [event: import(\"@/index\").PointerDownOutsideEvent | import(\"@/index\").FocusOutsideEvent]; }",
+            "resolvedType": "{ escapeKeyDown: [event: KeyboardEvent]; pointerDownOutside: [event: PointerDownOutsideEvent]; focusOutside: [event: FocusOutsideEvent]; interactOutside: [event: PointerDownOutsideEvent | FocusOutsideEvent] }",
+            "description": "",
+            "descriptionKey": "api.generated.packages_headless_src_types_component.dismissablelayeremits",
+            "sourcePath": "packages/headless/src/types/component.ts",
+            "typeParameters": [],
+            "external": false,
+            "members": [],
+            "callables": [
+              {
+                "name": "escapeKeyDown",
+                "type": "[event: KeyboardEvent]",
+                "parameters": "event: KeyboardEvent",
+                "required": true,
+                "description": "Event handler called when the escape key is down. Can be prevented.",
+                "descriptionKey": "api.generated.packages_headless_src_types_component.dismissablelayeremits.callables.escapekeydown",
+                "sourcePath": "packages/headless/src/types/component.ts",
+                "referencedTypes": []
+              },
+              {
+                "name": "pointerDownOutside",
+                "type": "[event: PointerDownOutsideEvent]",
+                "parameters": "event: PointerDownOutsideEvent",
+                "required": true,
+                "description": "Event handler called when a `pointerdown` event happens outside of the `DismissableLayer`. Can be prevented.",
+                "descriptionKey": "api.generated.packages_headless_src_types_component.dismissablelayeremits.callables.pointerdownoutside",
+                "sourcePath": "packages/headless/src/types/component.ts",
+                "referencedTypes": []
+              },
+              {
+                "name": "focusOutside",
+                "type": "[event: FocusOutsideEvent]",
+                "parameters": "event: FocusOutsideEvent",
+                "required": true,
+                "description": "Event handler called when the focus moves outside of the `DismissableLayer`. Can be prevented.",
+                "descriptionKey": "api.generated.packages_headless_src_types_component.dismissablelayeremits.callables.focusoutside",
+                "sourcePath": "packages/headless/src/types/component.ts",
+                "referencedTypes": []
+              },
+              {
+                "name": "interactOutside",
+                "type": "[event: PointerDownOutsideEvent | FocusOutsideEvent]",
+                "parameters": "event: PointerDownOutsideEvent | FocusOutsideEvent",
+                "required": true,
+                "description": "Event handler called when an interaction happens outside the `DismissableLayer`. Specifically, when a `pointerdown`\nevent happens outside or focus moves outside of it. Can be prevented.",
+                "descriptionKey": "api.generated.packages_headless_src_types_component.dismissablelayeremits.callables.interactoutside",
+                "sourcePath": "packages/headless/src/types/component.ts",
+                "referencedTypes": []
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "NavigationMenuIndicator": {
+      "props": {
+        "kind": "props",
+        "name": "NavigationMenuIndicatorProps",
+        "type": "Interface NavigationMenuIndicatorProps",
+        "resolvedType": "{ forceMount?: boolean }",
+        "description": "Properties for the NavigationMenuIndicator component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenuindicatorprops.props",
+        "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "forceMount",
+            "type": "boolean",
+            "required": false,
+            "description": "Used to force mounting when more control is needed.\n\nUseful when controlling animation with Vue animation libraries.",
+            "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenuindicatorprops.members.forcemount",
+            "default": null,
+            "inheritedFrom": "forceMount",
+            "sourcePath": "packages/headless/src/types/component.ts",
+            "referencedTypes": []
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "NavigationMenuItem": {
+      "props": {
+        "kind": "props",
+        "name": "NavigationMenuItemProps",
+        "type": "Interface NavigationMenuItemProps",
+        "resolvedType": "{ value?: string }",
+        "description": "Properties for the NavigationMenuItem component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenuitemprops.props",
+        "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "value",
+            "type": "string",
+            "required": false,
+            "description": "Value associated with the current item.",
+            "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenuitemprops.members.value",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "NavigationMenuLink": {
+      "props": {
+        "kind": "props",
+        "name": "NavigationMenuLinkProps",
+        "type": "Interface NavigationMenuLinkProps",
+        "resolvedType": "{ active?: boolean; replace?: boolean; disabled?: boolean; asChild?: boolean; as?: AsTag | Component; to?: string | import(\"vue-router\").RouteLocationAsRelativeGeneric | import(\"vue-router\").RouteLocationAsPathGeneric; href?: string; activeClass?: string; exactActiveClass?: string; inactiveClass?: string; prefetchedClass?: string; external?: boolean; ariaCurrentValue?: 'true' | 'false' | 'date' | 'time' | 'page' | 'step' | 'location'; viewTransition?: boolean; target?: '_blank' | '_parent' | '_self' | '_top' | (string & {}) | null; rel?: (string & {}) | 'noopener' | 'noreferrer' | 'nofollow' | 'sponsored' | 'ugc' | null; noRel?: boolean; prefetch?: boolean; prefetchOn?: 'visibility' | 'interaction' | Partial<{ visibility: boolean; interaction: boolean; }>; noPrefetch?: boolean; trailingSlash?: 'append' | 'remove' }",
+        "description": "Properties for the NavigationMenuLink component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenulinkprops.props",
+        "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "active",
+            "type": "boolean",
+            "required": false,
+            "description": "Used to identify the link as the currently active page.",
+            "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenulinkprops.members.active",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "replace",
+            "type": "boolean",
+            "required": false,
+            "description": "Calls `router.replace` instead of `router.push`.",
+            "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenulinkprops.members.replace",
+            "default": null,
+            "inheritedFrom": "replace",
+            "sourcePath": "packages/headless/src/components/link/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "disabled",
+            "type": "boolean",
+            "required": false,
+            "description": "When `true`, the link is disabled.",
+            "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenulinkprops.members.disabled",
+            "default": null,
+            "inheritedFrom": "disabled",
+            "sourcePath": "packages/headless/src/components/link/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "asChild",
+            "type": "boolean",
+            "required": false,
+            "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+            "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenulinkprops.members.aschild",
+            "default": null,
+            "inheritedFrom": "asChild",
+            "sourcePath": "packages/headless/src/components/primitive/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "as",
+            "type": "AsTag | Component",
+            "required": false,
+            "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+            "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenulinkprops.members.as",
+            "default": "'div'",
+            "inheritedFrom": "as",
+            "sourcePath": "packages/headless/src/components/primitive/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Component",
+                "kind": "typeAlias",
+                "type": "Component",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": null,
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.35/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [
+                  "PropsOrInstance = any",
+                  "RawBindings = any",
+                  "D = any",
+                  "C extends ComputedOptions = ComputedOptions",
+                  "M extends MethodOptions = MethodOptions",
+                  "E extends EmitsOptions | Record<string, any[]> = {}",
+                  "S extends Record<string, any> = any"
+                ],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "to",
+            "type": "string | import(\"vue-router\").RouteLocationAsRelativeGeneric | import(\"vue-router\").RouteLocationAsPathGeneric",
+            "required": false,
+            "description": "Route Location the link should navigate to when clicked on.",
+            "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenulinkprops.members.to",
+            "default": null,
+            "inheritedFrom": "to",
+            "sourcePath": "packages/headless/src/components/link/types.ts",
+            "referencedTypes": [
+              {
+                "name": "RouteLocationRaw",
+                "kind": "typeAlias",
+                "type": "RouteLocationRaw",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": null,
+                "sourcePath": "node_modules/.pnpm/vue-router@5.1.0_@vue+compiler-sfc@3.5.35_pinia@3.0.4_typescript@6.0.3_vue@3.5.35_types_9bb8ebf4a906d5546f9e8c0e7db96d4f/node_modules/vue-router/dist/index-BQLwgiyK.d.ts",
+                "typeParameters": ["Name extends keyof RouteMap = keyof RouteMap"],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "href",
+            "type": "string",
+            "required": false,
+            "description": "The URL the link should navigate to when clicked on.",
+            "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenulinkprops.members.href",
+            "default": null,
+            "inheritedFrom": "href",
+            "sourcePath": "packages/headless/src/components/link/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "activeClass",
+            "type": "string",
+            "required": false,
+            "description": "Class to apply when the link is active",
+            "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenulinkprops.members.activeclass",
+            "default": null,
+            "inheritedFrom": "activeClass",
+            "sourcePath": "packages/headless/src/components/link/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "exactActiveClass",
+            "type": "string",
+            "required": false,
+            "description": "Class to apply when the link is exact active",
+            "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenulinkprops.members.exactactiveclass",
+            "default": null,
+            "inheritedFrom": "exactActiveClass",
+            "sourcePath": "packages/headless/src/components/link/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "inactiveClass",
+            "type": "string",
+            "required": false,
+            "description": "The class to apply to the link when it is inactive.",
+            "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenulinkprops.members.inactiveclass",
+            "default": null,
+            "inheritedFrom": "inactiveClass",
+            "sourcePath": "packages/headless/src/components/link/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "prefetchedClass",
+            "type": "string",
+            "required": false,
+            "description": "A class to apply to links that have been prefetched.",
+            "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenulinkprops.members.prefetchedclass",
+            "default": null,
+            "inheritedFrom": "prefetchedClass",
+            "sourcePath": "packages/headless/src/components/link/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "external",
+            "type": "boolean",
+            "required": false,
+            "description": "Forces the link to be considered as external (true) or internal (false). This is helpful to handle edge-cases",
+            "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenulinkprops.members.external",
+            "default": null,
+            "inheritedFrom": "external",
+            "sourcePath": "packages/headless/src/components/link/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "ariaCurrentValue",
+            "type": "'true' | 'false' | 'date' | 'time' | 'page' | 'step' | 'location'",
+            "required": false,
+            "description": "Value passed to the attribute `aria-current` when the link is exact active.",
+            "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenulinkprops.members.ariacurrentvalue",
+            "default": "`'page'`",
+            "inheritedFrom": "ariaCurrentValue",
+            "sourcePath": "packages/headless/src/components/link/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "viewTransition",
+            "type": "boolean",
+            "required": false,
+            "description": "Pass the returned promise of `router.push()` to `document.startViewTransition()` if supported.",
+            "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenulinkprops.members.viewtransition",
+            "default": null,
+            "inheritedFrom": "viewTransition",
+            "sourcePath": "packages/headless/src/components/link/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "target",
+            "type": "'_blank' | '_parent' | '_self' | '_top' | (string & {}) | null",
+            "required": false,
+            "description": "Where to display the linked URL, as the name for a browsing context.",
+            "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenulinkprops.members.target",
+            "default": null,
+            "inheritedFrom": "target",
+            "sourcePath": "packages/headless/src/components/link/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "rel",
+            "type": "(string & {}) | 'noopener' | 'noreferrer' | 'nofollow' | 'sponsored' | 'ugc' | null",
+            "required": false,
+            "description": "A rel attribute value to apply on the link. Defaults to \"noopener noreferrer\" for external links.",
+            "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenulinkprops.members.rel",
+            "default": "'noopener noreferrer'",
+            "inheritedFrom": "rel",
+            "sourcePath": "packages/headless/src/components/link/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "noRel",
+            "type": "boolean",
+            "required": false,
+            "description": "If set to true, no rel attribute will be added to the link",
+            "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenulinkprops.members.norel",
+            "default": null,
+            "inheritedFrom": "noRel",
+            "sourcePath": "packages/headless/src/components/link/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "prefetch",
+            "type": "boolean",
+            "required": false,
+            "description": "When enabled will prefetch middleware, layouts and payloads of links in the viewport.",
+            "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenulinkprops.members.prefetch",
+            "default": null,
+            "inheritedFrom": "prefetch",
+            "sourcePath": "packages/headless/src/components/link/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "prefetchOn",
+            "type": "'visibility' | 'interaction' | Partial<{ visibility: boolean; interaction: boolean; }>",
+            "required": false,
+            "description": "Allows controlling when to prefetch links. By default, prefetch is triggered only on visibility.",
+            "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenulinkprops.members.prefetchon",
+            "default": null,
+            "inheritedFrom": "Omit.prefetchOn",
+            "sourcePath": "packages/headless/src/components/link/types.ts",
+            "referencedTypes": [
+              {
+                "name": "__type",
+                "kind": "typeLiteral",
+                "type": "{ visibility: boolean; interaction: boolean; }",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_components_link_types.type",
+                "sourcePath": "packages/headless/src/components/link/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "noPrefetch",
+            "type": "boolean",
+            "required": false,
+            "description": "Escape hatch to disable `prefetch` attribute.",
+            "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenulinkprops.members.noprefetch",
+            "default": null,
+            "inheritedFrom": "noPrefetch",
+            "sourcePath": "packages/headless/src/components/link/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "trailingSlash",
+            "type": "'append' | 'remove'",
+            "required": false,
+            "description": "An option to either add or remove trailing slashes in the `href` for this specific link.\nOverrides the global `trailingSlash` option if provided.",
+            "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenulinkprops.members.trailingslash",
+            "default": null,
+            "inheritedFrom": "trailingSlash",
+            "sourcePath": "packages/headless/src/components/link/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      },
+      "emits": {
+        "kind": "emits",
+        "name": "NavigationMenuLinkEmits",
+        "type": "TypeAlias NavigationMenuLinkEmits",
+        "resolvedType": "{ select: [payload: CustomEvent<{ originalEvent: Event; }>] }",
+        "description": "Events for the NavigationMenuLink component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenulinkemits.emits",
+        "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [
+          {
+            "name": "select",
+            "type": "[payload: CustomEvent<{ originalEvent: Event; }>]",
+            "parameters": "payload: CustomEvent<{ originalEvent: Event; }>",
+            "required": true,
+            "description": "Emitted when select occurs.",
+            "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenulinkemits.callables.select",
+            "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
+            "referencedTypes": [
+              {
+                "name": "CustomEvent",
+                "kind": "interface",
+                "type": "CustomEvent<{ originalEvent: Event }>",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": null,
+                "sourcePath": "node_modules/.pnpm/typescript@6.0.3/node_modules/typescript/lib/lib.dom.d.ts",
+                "typeParameters": ["T = any"],
+                "external": true,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "Event",
+                "kind": "interface",
+                "type": "Event",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": null,
+                "sourcePath": "node_modules/.pnpm/typescript@6.0.3/node_modules/typescript/lib/lib.dom.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "referencedTypes": []
+      }
+    },
+    "NavigationMenuList": {
+      "props": {
+        "kind": "props",
+        "name": "NavigationMenuListProps",
+        "type": "Interface NavigationMenuListProps",
+        "resolvedType": null,
+        "description": "Properties for the NavigationMenuList component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenulistprops.props",
+        "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "NavigationMenuRoot": {
+      "props": {
+        "kind": "props",
+        "name": "NavigationMenuRootProps",
+        "type": "Interface NavigationMenuRootProps",
+        "resolvedType": "{ modelValue?: string; defaultValue?: string; dir?: Direction; orientation?: DataOrientation; delayDuration?: number; skipDelayDuration?: number; disableClickTrigger?: boolean; disableHoverTrigger?: boolean; disablePointerLeaveClose?: boolean; unmountOnHide?: boolean }",
+        "description": "Properties for the NavigationMenuRoot component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenurootprops.props",
+        "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "modelValue",
+            "type": "string",
+            "required": false,
+            "description": "The controlled value of the menu item to activate. Can be used as `v-model`.",
+            "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenurootprops.members.modelvalue",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "defaultValue",
+            "type": "string",
+            "required": false,
+            "description": "The value of the menu item that should be active when initially rendered.\n\nUse when you do not need to control the value state.",
+            "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenurootprops.members.defaultvalue",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "dir",
+            "type": "Direction",
+            "required": false,
+            "description": "The reading direction of the combobox when applicable.\n\nIf omitted, inherits globally from `ConfigProvider` or assumes LTR (left-to-right) reading mode.",
+            "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenurootprops.members.dir",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Direction",
+                "kind": "typeAlias",
+                "type": "'ltr' | 'rtl'",
+                "resolvedType": "'ltr' | 'rtl'",
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_types_common.direction",
+                "sourcePath": "packages/headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "orientation",
+            "type": "DataOrientation",
+            "required": false,
+            "description": "The orientation of the menu.",
+            "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenurootprops.members.orientation",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
+            "referencedTypes": [
+              {
+                "name": "DataOrientation",
+                "kind": "typeAlias",
+                "type": "'vertical' | 'horizontal'",
+                "resolvedType": "'vertical' | 'horizontal'",
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_types_common.dataorientation",
+                "sourcePath": "packages/headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "delayDuration",
+            "type": "number",
+            "required": false,
+            "description": "The duration from when the pointer enters the trigger until the tooltip gets opened.",
+            "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenurootprops.members.delayduration",
+            "default": "200",
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "skipDelayDuration",
+            "type": "number",
+            "required": false,
+            "description": "How much time a user has to enter another trigger without incurring a delay again.",
+            "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenurootprops.members.skipdelayduration",
+            "default": "300",
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "disableClickTrigger",
+            "type": "boolean",
+            "required": false,
+            "description": "If `true`, menu cannot be open by click on trigger",
+            "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenurootprops.members.disableclicktrigger",
+            "default": "false",
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "disableHoverTrigger",
+            "type": "boolean",
+            "required": false,
+            "description": "If `true`, menu cannot be open by hover on trigger",
+            "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenurootprops.members.disablehovertrigger",
+            "default": "false",
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "disablePointerLeaveClose",
+            "type": "boolean",
+            "required": false,
+            "description": "If `true`, menu will not close during pointer leave event",
+            "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenurootprops.members.disablepointerleaveclose",
+            "default": "false",
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "unmountOnHide",
+            "type": "boolean",
+            "required": false,
+            "description": "When `true`, the element will be unmounted on closed state.",
+            "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenurootprops.members.unmountonhide",
+            "default": "`true`",
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      },
+      "emits": {
+        "kind": "emits",
+        "name": "NavigationMenuRootEmits",
+        "type": "TypeAlias NavigationMenuRootEmits",
+        "resolvedType": "{ \"update:modelValue\": [value: string] }",
+        "description": "Events for the NavigationMenuRoot component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenurootemits.emits",
+        "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [
+          {
+            "name": "update:modelValue",
+            "type": "[value: string]",
+            "parameters": "value: string",
+            "required": true,
+            "description": "Emitted when the model value changes.",
+            "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenurootemits.callables.update_modelvalue",
+            "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "referencedTypes": []
+      }
+    },
+    "NavigationMenuSub": {
+      "props": {
+        "kind": "props",
+        "name": "NavigationMenuSubProps",
+        "type": "Interface NavigationMenuSubProps",
+        "resolvedType": "{ modelValue?: string; defaultValue?: string }",
+        "description": "Properties for the NavigationMenuSub component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenusubprops.props",
+        "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "modelValue",
+            "type": "string",
+            "required": false,
+            "description": "Current model value.",
+            "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenusubprops.members.modelvalue",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "defaultValue",
+            "type": "string",
+            "required": false,
+            "description": "Default value.",
+            "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenusubprops.members.defaultvalue",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      },
+      "emits": {
+        "kind": "emits",
+        "name": "NavigationMenuSubEmits",
+        "type": "TypeAlias NavigationMenuSubEmits: NavigationMenuRootEmits",
+        "resolvedType": "{ \"update:modelValue\": [value: string] }",
+        "description": "Events for the NavigationMenuSub component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenusubemits.emits",
+        "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [
+          {
+            "name": "update:modelValue",
+            "type": "[value: string]",
+            "parameters": "value: string",
+            "required": true,
+            "description": "Emitted when the model value changes.",
+            "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenusubemits.callables.update_modelvalue",
+            "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "referencedTypes": [
+          {
+            "name": "NavigationMenuRootEmits",
+            "kind": "typeAlias",
+            "type": "{ 'update:modelValue': [value: string]; }",
+            "resolvedType": "{ \"update:modelValue\": [value: string] }",
+            "description": "Events for the NavigationMenuRoot component.",
+            "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenurootemits",
+            "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
+            "typeParameters": [],
+            "external": false,
+            "members": [],
+            "callables": [
+              {
+                "name": "update:modelValue",
+                "type": "[value: string]",
+                "parameters": "value: string",
+                "required": true,
+                "description": "Emitted when the model value changes.",
+                "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenurootemits.callables.update_modelvalue",
+                "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
+                "referencedTypes": []
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "NavigationMenuSubList": {
+      "props": {
+        "kind": "props",
+        "name": "NavigationMenuSubListProps",
+        "type": "Interface NavigationMenuSubListProps",
+        "resolvedType": null,
+        "description": "Properties for the NavigationMenuSubList component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenusublistprops.props",
+        "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "NavigationMenuTrigger": {
+      "props": {
+        "kind": "props",
+        "name": "NavigationMenuTriggerProps",
+        "type": "Interface NavigationMenuTriggerProps",
+        "resolvedType": "{ disabled?: boolean; asChild?: boolean; as?: AsTag | Component }",
+        "description": "Properties for the NavigationMenuTrigger component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenutriggerprops.props",
+        "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "disabled",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether the component is disabled.",
+            "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenutriggerprops.members.disabled",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "asChild",
+            "type": "boolean",
+            "required": false,
+            "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+            "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenutriggerprops.members.aschild",
+            "default": null,
+            "inheritedFrom": "PrimitiveWithBaseProps.asChild",
+            "sourcePath": "packages/headless/src/components/primitive/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "as",
+            "type": "AsTag | Component",
+            "required": false,
+            "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+            "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenutriggerprops.members.as",
+            "default": "'div'",
+            "inheritedFrom": "PrimitiveWithBaseProps.as",
+            "sourcePath": "packages/headless/src/components/primitive/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Component",
+                "kind": "typeAlias",
+                "type": "Component",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": null,
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.35/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [
+                  "PropsOrInstance = any",
+                  "RawBindings = any",
+                  "D = any",
+                  "C extends ComputedOptions = ComputedOptions",
+                  "M extends MethodOptions = MethodOptions",
+                  "E extends EmitsOptions | Record<string, any[]> = {}",
+                  "S extends Record<string, any> = any"
+                ],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "NavigationMenuViewport": {
+      "props": {
+        "kind": "props",
+        "name": "NavigationMenuViewportProps",
+        "type": "Interface NavigationMenuViewportProps",
+        "resolvedType": "{ align?: Align; forceMount?: boolean }",
+        "description": "Properties for the NavigationMenuViewport component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenuviewportprops.props",
+        "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "align",
+            "type": "Align",
+            "required": false,
+            "description": "Align.",
+            "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenuviewportprops.members.align",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/navigation-menu/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Align",
+                "kind": "typeAlias",
+                "type": "'start' | 'center' | 'end'",
+                "resolvedType": "'start' | 'center' | 'end'",
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_types_common.align",
+                "sourcePath": "packages/headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "forceMount",
+            "type": "boolean",
+            "required": false,
+            "description": "Used to force mounting when more control is needed.\n\nUseful when controlling animation with Vue animation libraries.",
+            "descriptionKey": "api.generated.packages_headless_src_components_navigation_menu_types.navigationmenuviewportprops.members.forcemount",
+            "default": null,
+            "inheritedFrom": "forceMount",
+            "sourcePath": "packages/headless/src/types/component.ts",
+            "referencedTypes": []
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      }
+    }
+  }
+}

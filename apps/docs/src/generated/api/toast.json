@@ -1,0 +1,1203 @@
+{
+  "component": "toast",
+  "symbols": {
+    "Toaster": {
+      "props": {
+        "kind": "props",
+        "name": "ToasterProps",
+        "type": "Interface ToasterProps",
+        "resolvedType": "{ id?: string; dir?: Direction; hotkey?: string[]; customAriaLabel?: string; containerAriaLabel?: string; position?: ToastPosition; defaultExpanded?: boolean; duration?: number; gap?: number; offset?: ToastOffset; visibleCounts?: number; swipeDirections?: SwipeDirection[]; showIcon?: boolean; showClose?: boolean; icons?: Partial<Record<ToastIconType, IconValue>>; toastProps?: LiHTMLAttributes; wrapperProps?: HTMLAttributes; contentProps?: HTMLAttributes; titleProps?: HTMLAttributes; descriptionProps?: HTMLAttributes; iconProps?: HTMLAttributes; footerProps?: HTMLAttributes; actionProps?: HTMLAttributes; cancelProps?: HTMLAttributes; closeProps?: HTMLAttributes }",
+        "description": "Properties for the Toaster component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_toast_types.toasterprops.props",
+        "sourcePath": "packages/headless/src/components/toast/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "id",
+            "type": "string",
+            "required": false,
+            "description": "Id.",
+            "descriptionKey": "api.generated.packages_headless_src_components_toast_types.toasterprops.members.id",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/toast/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "dir",
+            "type": "Direction",
+            "required": false,
+            "description": "Reading direction of the component.",
+            "descriptionKey": "api.generated.packages_headless_src_components_toast_types.toasterprops.members.dir",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/toast/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Direction",
+                "kind": "typeAlias",
+                "type": "'ltr' | 'rtl'",
+                "resolvedType": "'ltr' | 'rtl'",
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_types_common.direction",
+                "sourcePath": "packages/headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "hotkey",
+            "type": "string[]",
+            "required": false,
+            "description": "Hotkey.",
+            "descriptionKey": "api.generated.packages_headless_src_components_toast_types.toasterprops.members.hotkey",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/toast/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "customAriaLabel",
+            "type": "string",
+            "required": false,
+            "description": "Custom aria label.",
+            "descriptionKey": "api.generated.packages_headless_src_components_toast_types.toasterprops.members.customarialabel",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/toast/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "containerAriaLabel",
+            "type": "string",
+            "required": false,
+            "description": "Container aria label.",
+            "descriptionKey": "api.generated.packages_headless_src_components_toast_types.toasterprops.members.containerarialabel",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/toast/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "position",
+            "type": "ToastPosition",
+            "required": false,
+            "description": "Position.",
+            "descriptionKey": "api.generated.packages_headless_src_components_toast_types.toasterprops.members.position",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/toast/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ToastPosition",
+                "kind": "typeAlias",
+                "type": "'top-right' | 'bottom-right' | 'top-left' | 'bottom-left' | 'top-center' | 'bottom-center'",
+                "resolvedType": "'top-right' | 'bottom-right' | 'top-left' | 'bottom-left' | 'top-center' | 'bottom-center'",
+                "description": "Type information for ToastPosition.",
+                "descriptionKey": "api.generated.packages_headless_src_components_toast_types.toastposition",
+                "sourcePath": "packages/headless/src/components/toast/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "defaultExpanded",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether default expanded.",
+            "descriptionKey": "api.generated.packages_headless_src_components_toast_types.toasterprops.members.defaultexpanded",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/toast/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "duration",
+            "type": "number",
+            "required": false,
+            "description": "The duration (in milliseconds) before the toast automatically closes. Set to `0` or `Infinity` to disable auto-dismissal.",
+            "descriptionKey": "api.generated.packages_headless_src_components_toast_types.toasterprops.members.duration",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/toast/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "gap",
+            "type": "number",
+            "required": false,
+            "description": "Gap.",
+            "descriptionKey": "api.generated.packages_headless_src_components_toast_types.toasterprops.members.gap",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/toast/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "offset",
+            "type": "ToastOffset",
+            "required": false,
+            "description": "The maximum number of visible toasts per position.",
+            "descriptionKey": "api.generated.packages_headless_src_components_toast_types.toasterprops.members.offset",
+            "default": "3",
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/toast/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Side",
+                "kind": "typeAlias",
+                "type": "'top' | 'right' | 'bottom' | 'left'",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_types_common.side",
+                "sourcePath": "packages/headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "ToastOffset",
+                "kind": "typeAlias",
+                "type": "number | Partial<Record<Side, number>>",
+                "resolvedType": "number | Partial<Record<Side, number>>",
+                "description": "Type information for ToastOffset.",
+                "descriptionKey": "api.generated.packages_headless_src_components_toast_types.toastoffset",
+                "sourcePath": "packages/headless/src/components/toast/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "visibleCounts",
+            "type": "number",
+            "required": false,
+            "description": "Visible counts.",
+            "descriptionKey": "api.generated.packages_headless_src_components_toast_types.toasterprops.members.visiblecounts",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/toast/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "swipeDirections",
+            "type": "SwipeDirection[]",
+            "required": false,
+            "description": "Swipe directions.",
+            "descriptionKey": "api.generated.packages_headless_src_components_toast_types.toasterprops.members.swipedirections",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/toast/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "showIcon",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether to show an icon.",
+            "descriptionKey": "api.generated.packages_headless_src_components_toast_types.toasterprops.members.showicon",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/toast/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "showClose",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether to show the close button on the toast.",
+            "descriptionKey": "api.generated.packages_headless_src_components_toast_types.toasterprops.members.showclose",
+            "default": "true",
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/toast/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "icons",
+            "type": "Partial<Record<ToastIconType, IconValue>>",
+            "required": false,
+            "description": "Icons.",
+            "descriptionKey": "api.generated.packages_headless_src_components_toast_types.toasterprops.members.icons",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/toast/types.ts",
+            "referencedTypes": [
+              {
+                "name": "IconValue",
+                "kind": "typeAlias",
+                "type": "string | import(\"vue\").Component | VNode<import(\"vue\").RendererNode, import(\"vue\").RendererElement, { [key: string]: any; }> | null | undefined",
+                "resolvedType": null,
+                "description": "Type information for IconValue.",
+                "descriptionKey": "api.generated.packages_headless_src_components_icon_types.iconvalue",
+                "sourcePath": "packages/headless/src/components/_icon/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "ToastIconType",
+                "kind": "typeAlias",
+                "type": "'success' | 'warning' | 'info' | 'close' | 'loading' | 'error'",
+                "resolvedType": null,
+                "description": "Supported toast icon values.",
+                "descriptionKey": "api.generated.packages_headless_src_components_toast_types.toasticontype",
+                "sourcePath": "packages/headless/src/components/toast/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "toastProps",
+            "type": "LiHTMLAttributes",
+            "required": false,
+            "description": "Properties forwarded to the toast element.",
+            "descriptionKey": "api.generated.packages_headless_src_components_toast_types.toasterprops.members.toastprops",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/toast/types.ts",
+            "referencedTypes": [
+              {
+                "name": "LiHTMLAttributes",
+                "kind": "interface",
+                "type": "LiHTMLAttributes",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": null,
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-dom@3.5.35/node_modules/@vue/runtime-dom/dist/runtime-dom.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "wrapperProps",
+            "type": "HTMLAttributes",
+            "required": false,
+            "description": "Properties forwarded to the wrapper element.",
+            "descriptionKey": "api.generated.packages_headless_src_components_toast_types.toasterprops.members.wrapperprops",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/toast/types.ts",
+            "referencedTypes": [
+              {
+                "name": "HTMLAttributes",
+                "kind": "interface",
+                "type": "HTMLAttributes",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": null,
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-dom@3.5.35/node_modules/@vue/runtime-dom/dist/runtime-dom.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "contentProps",
+            "type": "HTMLAttributes",
+            "required": false,
+            "description": "Properties forwarded to the content element.",
+            "descriptionKey": "api.generated.packages_headless_src_components_toast_types.toasterprops.members.contentprops",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/toast/types.ts",
+            "referencedTypes": [
+              {
+                "name": "HTMLAttributes",
+                "kind": "interface",
+                "type": "HTMLAttributes",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": null,
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-dom@3.5.35/node_modules/@vue/runtime-dom/dist/runtime-dom.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "titleProps",
+            "type": "HTMLAttributes",
+            "required": false,
+            "description": "Properties forwarded to the title element.",
+            "descriptionKey": "api.generated.packages_headless_src_components_toast_types.toasterprops.members.titleprops",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/toast/types.ts",
+            "referencedTypes": [
+              {
+                "name": "HTMLAttributes",
+                "kind": "interface",
+                "type": "HTMLAttributes",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": null,
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-dom@3.5.35/node_modules/@vue/runtime-dom/dist/runtime-dom.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "descriptionProps",
+            "type": "HTMLAttributes",
+            "required": false,
+            "description": "Properties forwarded to the description element.",
+            "descriptionKey": "api.generated.packages_headless_src_components_toast_types.toasterprops.members.descriptionprops",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/toast/types.ts",
+            "referencedTypes": [
+              {
+                "name": "HTMLAttributes",
+                "kind": "interface",
+                "type": "HTMLAttributes",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": null,
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-dom@3.5.35/node_modules/@vue/runtime-dom/dist/runtime-dom.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "iconProps",
+            "type": "HTMLAttributes",
+            "required": false,
+            "description": "Properties forwarded to the icon component.",
+            "descriptionKey": "api.generated.packages_headless_src_components_toast_types.toasterprops.members.iconprops",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/toast/types.ts",
+            "referencedTypes": [
+              {
+                "name": "HTMLAttributes",
+                "kind": "interface",
+                "type": "HTMLAttributes",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": null,
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-dom@3.5.35/node_modules/@vue/runtime-dom/dist/runtime-dom.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "footerProps",
+            "type": "HTMLAttributes",
+            "required": false,
+            "description": "Properties forwarded to the footer element.",
+            "descriptionKey": "api.generated.packages_headless_src_components_toast_types.toasterprops.members.footerprops",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/toast/types.ts",
+            "referencedTypes": [
+              {
+                "name": "HTMLAttributes",
+                "kind": "interface",
+                "type": "HTMLAttributes",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": null,
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-dom@3.5.35/node_modules/@vue/runtime-dom/dist/runtime-dom.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "actionProps",
+            "type": "HTMLAttributes",
+            "required": false,
+            "description": "Properties forwarded to the action element.",
+            "descriptionKey": "api.generated.packages_headless_src_components_toast_types.toasterprops.members.actionprops",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/toast/types.ts",
+            "referencedTypes": [
+              {
+                "name": "HTMLAttributes",
+                "kind": "interface",
+                "type": "HTMLAttributes",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": null,
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-dom@3.5.35/node_modules/@vue/runtime-dom/dist/runtime-dom.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "cancelProps",
+            "type": "HTMLAttributes",
+            "required": false,
+            "description": "Properties forwarded to the cancel element.",
+            "descriptionKey": "api.generated.packages_headless_src_components_toast_types.toasterprops.members.cancelprops",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/toast/types.ts",
+            "referencedTypes": [
+              {
+                "name": "HTMLAttributes",
+                "kind": "interface",
+                "type": "HTMLAttributes",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": null,
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-dom@3.5.35/node_modules/@vue/runtime-dom/dist/runtime-dom.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "closeProps",
+            "type": "HTMLAttributes",
+            "required": false,
+            "description": "Properties forwarded to the close element.",
+            "descriptionKey": "api.generated.packages_headless_src_components_toast_types.toasterprops.members.closeprops",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/toast/types.ts",
+            "referencedTypes": [
+              {
+                "name": "HTMLAttributes",
+                "kind": "interface",
+                "type": "HTMLAttributes",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": null,
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-dom@3.5.35/node_modules/@vue/runtime-dom/dist/runtime-dom.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "ToastProvider": {
+      "props": {
+        "kind": "props",
+        "name": "ToastProviderProps",
+        "type": "Interface ToastProviderProps",
+        "resolvedType": "{ size?: ThemeSize; ui?: ToastUi; id?: string; dir?: Direction; hotkey?: string[]; customAriaLabel?: string; containerAriaLabel?: string; position?: ToastPosition; defaultExpanded?: boolean; duration?: number; gap?: number; offset?: ToastOffset; visibleCounts?: number; swipeDirections?: SwipeDirection[]; showIcon?: boolean; showClose?: boolean; icons?: Partial<Record<ToastIconType, IconValue>>; toastProps?: LiHTMLAttributes; wrapperProps?: HTMLAttributes; contentProps?: HTMLAttributes; titleProps?: HTMLAttributes; descriptionProps?: HTMLAttributes; iconProps?: HTMLAttributes; footerProps?: HTMLAttributes; actionProps?: HTMLAttributes; cancelProps?: HTMLAttributes; closeProps?: HTMLAttributes }",
+        "description": "Properties for the ToastProvider component.",
+        "descriptionKey": "api.generated.packages_ui_src_components_toast_types.toastproviderprops.props",
+        "sourcePath": "packages/ui/src/components/toast/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "size",
+            "type": "ThemeSize",
+            "required": false,
+            "description": "Visual size of the component.",
+            "descriptionKey": "api.generated.packages_ui_src_components_toast_types.toastproviderprops.members.size",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui/src/components/toast/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ThemeSize",
+                "kind": "typeAlias",
+                "type": "'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'",
+                "resolvedType": "'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'",
+                "description": "",
+                "descriptionKey": "api.generated.packages_ui_src_theme_types.themesize",
+                "sourcePath": "packages/ui/src/theme/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "ui",
+            "type": "ToastUi",
+            "required": false,
+            "description": "Per-slot class overrides for the component.",
+            "descriptionKey": "api.generated.packages_ui_src_components_toast_types.toastproviderprops.members.ui",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui/src/components/toast/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ToastUi",
+                "kind": "typeAlias",
+                "type": "{ content: import(\"@soybeanjs/headless\").ClassValue; description: import(\"@soybeanjs/headless\").ClassValue; title: import(\"@soybeanjs/headless\").ClassValue; icon: import(\"@soybeanjs/headless\").ClassValue; close: import(\"@soybeanjs/headless\").ClassValue; cancel: import(\"@soybeanjs/headless\").ClassValue; footer: import(\"@soybeanjs/headless\").ClassValue; wrapper: import(\"@soybeanjs/headless\").ClassValue; toaster: import(\"@soybeanjs/headless\").ClassValue; toast: import(\"@soybeanjs/headless\").ClassValue; action: import(\"@soybeanjs/headless\").ClassValue; }",
+                "resolvedType": "{ content: string | false | Record<string, any> | import(\"@/index\").ClassValue[] | null | undefined; description: string | false | Record<string, any> | import(\"@/index\").ClassValue[] | null | undefined; title: string | false | Record<string, any> | import(\"@/index\").ClassValue[] | null | undefined; icon: string | false | Record<string, any> | import(\"@/index\").ClassValue[] | null | undefined; close: string | false | Record<string, any> | import(\"@/index\").ClassValue[] | null | undefined; cancel: string | false | Record<string, any> | import(\"@/index\").ClassValue[] | null | undefined; footer: string | false | Record<string, any> | import(\"@/index\").ClassValue[] | null | undefined; wrapper: string | false | Record<string, any> | import(\"@/index\").ClassValue[] | null | undefined; toaster: string | false | Record<string, any> | import(\"@/index\").ClassValue[] | null | undefined; toast: string | false | Record<string, any> | import(\"@/index\").ClassValue[] | null | undefined; action: string | false | Record<string, any> | import(\"@/index\").ClassValue[] | null | undefined }",
+                "description": "UI class overrides for the Toast component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_toast_types.toastui",
+                "sourcePath": "packages/headless/src/components/toast/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "content",
+                    "type": "string | false | Record<string, any> | import(\"@/index\").ClassValue[] | null | undefined",
+                    "required": true,
+                    "description": "",
+                    "descriptionKey": "api.generated.packages_headless_src_components_toast_types.toastui.members.content",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": null,
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "description",
+                    "type": "string | false | Record<string, any> | import(\"@/index\").ClassValue[] | null | undefined",
+                    "required": true,
+                    "description": "",
+                    "descriptionKey": "api.generated.packages_headless_src_components_toast_types.toastui.members.description",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": null,
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "title",
+                    "type": "string | false | Record<string, any> | import(\"@/index\").ClassValue[] | null | undefined",
+                    "required": true,
+                    "description": "",
+                    "descriptionKey": "api.generated.packages_headless_src_components_toast_types.toastui.members.title",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": null,
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "icon",
+                    "type": "string | false | Record<string, any> | import(\"@/index\").ClassValue[] | null | undefined",
+                    "required": true,
+                    "description": "",
+                    "descriptionKey": "api.generated.packages_headless_src_components_toast_types.toastui.members.icon",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": null,
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "close",
+                    "type": "string | false | Record<string, any> | import(\"@/index\").ClassValue[] | null | undefined",
+                    "required": true,
+                    "description": "",
+                    "descriptionKey": "api.generated.packages_headless_src_components_toast_types.toastui.members.close",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": null,
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "cancel",
+                    "type": "string | false | Record<string, any> | import(\"@/index\").ClassValue[] | null | undefined",
+                    "required": true,
+                    "description": "",
+                    "descriptionKey": "api.generated.packages_headless_src_components_toast_types.toastui.members.cancel",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": null,
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "footer",
+                    "type": "string | false | Record<string, any> | import(\"@/index\").ClassValue[] | null | undefined",
+                    "required": true,
+                    "description": "",
+                    "descriptionKey": "api.generated.packages_headless_src_components_toast_types.toastui.members.footer",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": null,
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "wrapper",
+                    "type": "string | false | Record<string, any> | import(\"@/index\").ClassValue[] | null | undefined",
+                    "required": true,
+                    "description": "",
+                    "descriptionKey": "api.generated.packages_headless_src_components_toast_types.toastui.members.wrapper",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": null,
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "toaster",
+                    "type": "string | false | Record<string, any> | import(\"@/index\").ClassValue[] | null | undefined",
+                    "required": true,
+                    "description": "",
+                    "descriptionKey": "api.generated.packages_headless_src_components_toast_types.toastui.members.toaster",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": null,
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "toast",
+                    "type": "string | false | Record<string, any> | import(\"@/index\").ClassValue[] | null | undefined",
+                    "required": true,
+                    "description": "",
+                    "descriptionKey": "api.generated.packages_headless_src_components_toast_types.toastui.members.toast",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": null,
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "action",
+                    "type": "string | false | Record<string, any> | import(\"@/index\").ClassValue[] | null | undefined",
+                    "required": true,
+                    "description": "",
+                    "descriptionKey": "api.generated.packages_headless_src_components_toast_types.toastui.members.action",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": null,
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "id",
+            "type": "string",
+            "required": false,
+            "description": "Id.",
+            "descriptionKey": "api.generated.packages_ui_src_components_toast_types.toastproviderprops.members.id",
+            "default": null,
+            "inheritedFrom": "_ToastProviderProps.id",
+            "sourcePath": "packages/headless/src/components/toast/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "dir",
+            "type": "Direction",
+            "required": false,
+            "description": "Reading direction of the component.",
+            "descriptionKey": "api.generated.packages_ui_src_components_toast_types.toastproviderprops.members.dir",
+            "default": null,
+            "inheritedFrom": "_ToastProviderProps.dir",
+            "sourcePath": "packages/headless/src/components/toast/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Direction",
+                "kind": "typeAlias",
+                "type": "'ltr' | 'rtl'",
+                "resolvedType": "'ltr' | 'rtl'",
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_types_common.direction",
+                "sourcePath": "packages/headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "hotkey",
+            "type": "string[]",
+            "required": false,
+            "description": "Hotkey.",
+            "descriptionKey": "api.generated.packages_ui_src_components_toast_types.toastproviderprops.members.hotkey",
+            "default": null,
+            "inheritedFrom": "_ToastProviderProps.hotkey",
+            "sourcePath": "packages/headless/src/components/toast/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "customAriaLabel",
+            "type": "string",
+            "required": false,
+            "description": "Custom aria label.",
+            "descriptionKey": "api.generated.packages_ui_src_components_toast_types.toastproviderprops.members.customarialabel",
+            "default": null,
+            "inheritedFrom": "_ToastProviderProps.customAriaLabel",
+            "sourcePath": "packages/headless/src/components/toast/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "containerAriaLabel",
+            "type": "string",
+            "required": false,
+            "description": "Container aria label.",
+            "descriptionKey": "api.generated.packages_ui_src_components_toast_types.toastproviderprops.members.containerarialabel",
+            "default": null,
+            "inheritedFrom": "_ToastProviderProps.containerAriaLabel",
+            "sourcePath": "packages/headless/src/components/toast/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "position",
+            "type": "ToastPosition",
+            "required": false,
+            "description": "Position.",
+            "descriptionKey": "api.generated.packages_ui_src_components_toast_types.toastproviderprops.members.position",
+            "default": null,
+            "inheritedFrom": "_ToastProviderProps.position",
+            "sourcePath": "packages/headless/src/components/toast/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ToastPosition",
+                "kind": "typeAlias",
+                "type": "'top-right' | 'bottom-right' | 'top-left' | 'bottom-left' | 'top-center' | 'bottom-center'",
+                "resolvedType": "'top-right' | 'bottom-right' | 'top-left' | 'bottom-left' | 'top-center' | 'bottom-center'",
+                "description": "Type information for ToastPosition.",
+                "descriptionKey": "api.generated.packages_headless_src_components_toast_types.toastposition",
+                "sourcePath": "packages/headless/src/components/toast/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "defaultExpanded",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether default expanded.",
+            "descriptionKey": "api.generated.packages_ui_src_components_toast_types.toastproviderprops.members.defaultexpanded",
+            "default": null,
+            "inheritedFrom": "_ToastProviderProps.defaultExpanded",
+            "sourcePath": "packages/headless/src/components/toast/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "duration",
+            "type": "number",
+            "required": false,
+            "description": "The duration (in milliseconds) before the toast automatically closes. Set to `0` or `Infinity` to disable auto-dismissal.",
+            "descriptionKey": "api.generated.packages_ui_src_components_toast_types.toastproviderprops.members.duration",
+            "default": null,
+            "inheritedFrom": "_ToastProviderProps.duration",
+            "sourcePath": "packages/headless/src/components/toast/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "gap",
+            "type": "number",
+            "required": false,
+            "description": "Gap.",
+            "descriptionKey": "api.generated.packages_ui_src_components_toast_types.toastproviderprops.members.gap",
+            "default": null,
+            "inheritedFrom": "_ToastProviderProps.gap",
+            "sourcePath": "packages/headless/src/components/toast/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "offset",
+            "type": "ToastOffset",
+            "required": false,
+            "description": "The maximum number of visible toasts per position.",
+            "descriptionKey": "api.generated.packages_ui_src_components_toast_types.toastproviderprops.members.offset",
+            "default": "3",
+            "inheritedFrom": "_ToastProviderProps.offset",
+            "sourcePath": "packages/headless/src/components/toast/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Side",
+                "kind": "typeAlias",
+                "type": "'top' | 'right' | 'bottom' | 'left'",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_types_common.side",
+                "sourcePath": "packages/headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "ToastOffset",
+                "kind": "typeAlias",
+                "type": "number | Partial<Record<Side, number>>",
+                "resolvedType": "number | Partial<Record<Side, number>>",
+                "description": "Type information for ToastOffset.",
+                "descriptionKey": "api.generated.packages_headless_src_components_toast_types.toastoffset",
+                "sourcePath": "packages/headless/src/components/toast/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "visibleCounts",
+            "type": "number",
+            "required": false,
+            "description": "Visible counts.",
+            "descriptionKey": "api.generated.packages_ui_src_components_toast_types.toastproviderprops.members.visiblecounts",
+            "default": null,
+            "inheritedFrom": "_ToastProviderProps.visibleCounts",
+            "sourcePath": "packages/headless/src/components/toast/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "swipeDirections",
+            "type": "SwipeDirection[]",
+            "required": false,
+            "description": "Swipe directions.",
+            "descriptionKey": "api.generated.packages_ui_src_components_toast_types.toastproviderprops.members.swipedirections",
+            "default": null,
+            "inheritedFrom": "_ToastProviderProps.swipeDirections",
+            "sourcePath": "packages/headless/src/components/toast/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "showIcon",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether to show an icon.",
+            "descriptionKey": "api.generated.packages_ui_src_components_toast_types.toastproviderprops.members.showicon",
+            "default": null,
+            "inheritedFrom": "_ToastProviderProps.showIcon",
+            "sourcePath": "packages/headless/src/components/toast/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "showClose",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether to show the close button on the toast.",
+            "descriptionKey": "api.generated.packages_ui_src_components_toast_types.toastproviderprops.members.showclose",
+            "default": "true",
+            "inheritedFrom": "_ToastProviderProps.showClose",
+            "sourcePath": "packages/headless/src/components/toast/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "icons",
+            "type": "Partial<Record<ToastIconType, IconValue>>",
+            "required": false,
+            "description": "Icons.",
+            "descriptionKey": "api.generated.packages_ui_src_components_toast_types.toastproviderprops.members.icons",
+            "default": null,
+            "inheritedFrom": "_ToastProviderProps.icons",
+            "sourcePath": "packages/headless/src/components/toast/types.ts",
+            "referencedTypes": [
+              {
+                "name": "IconValue",
+                "kind": "typeAlias",
+                "type": "string | import(\"vue\").Component | VNode<import(\"vue\").RendererNode, import(\"vue\").RendererElement, { [key: string]: any; }> | null | undefined",
+                "resolvedType": null,
+                "description": "Type information for IconValue.",
+                "descriptionKey": "api.generated.packages_headless_src_components_icon_types.iconvalue",
+                "sourcePath": "packages/headless/src/components/_icon/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "ToastIconType",
+                "kind": "typeAlias",
+                "type": "'success' | 'warning' | 'info' | 'close' | 'loading' | 'error'",
+                "resolvedType": null,
+                "description": "Supported toast icon values.",
+                "descriptionKey": "api.generated.packages_headless_src_components_toast_types.toasticontype",
+                "sourcePath": "packages/headless/src/components/toast/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "toastProps",
+            "type": "LiHTMLAttributes",
+            "required": false,
+            "description": "Properties forwarded to the toast element.",
+            "descriptionKey": "api.generated.packages_ui_src_components_toast_types.toastproviderprops.members.toastprops",
+            "default": null,
+            "inheritedFrom": "_ToastProviderProps.toastProps",
+            "sourcePath": "packages/headless/src/components/toast/types.ts",
+            "referencedTypes": [
+              {
+                "name": "LiHTMLAttributes",
+                "kind": "interface",
+                "type": "LiHTMLAttributes",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": null,
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-dom@3.5.35/node_modules/@vue/runtime-dom/dist/runtime-dom.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "wrapperProps",
+            "type": "HTMLAttributes",
+            "required": false,
+            "description": "Properties forwarded to the wrapper element.",
+            "descriptionKey": "api.generated.packages_ui_src_components_toast_types.toastproviderprops.members.wrapperprops",
+            "default": null,
+            "inheritedFrom": "_ToastProviderProps.wrapperProps",
+            "sourcePath": "packages/headless/src/components/toast/types.ts",
+            "referencedTypes": [
+              {
+                "name": "HTMLAttributes",
+                "kind": "interface",
+                "type": "HTMLAttributes",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": null,
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-dom@3.5.35/node_modules/@vue/runtime-dom/dist/runtime-dom.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "contentProps",
+            "type": "HTMLAttributes",
+            "required": false,
+            "description": "Properties forwarded to the content element.",
+            "descriptionKey": "api.generated.packages_ui_src_components_toast_types.toastproviderprops.members.contentprops",
+            "default": null,
+            "inheritedFrom": "_ToastProviderProps.contentProps",
+            "sourcePath": "packages/headless/src/components/toast/types.ts",
+            "referencedTypes": [
+              {
+                "name": "HTMLAttributes",
+                "kind": "interface",
+                "type": "HTMLAttributes",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": null,
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-dom@3.5.35/node_modules/@vue/runtime-dom/dist/runtime-dom.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "titleProps",
+            "type": "HTMLAttributes",
+            "required": false,
+            "description": "Properties forwarded to the title element.",
+            "descriptionKey": "api.generated.packages_ui_src_components_toast_types.toastproviderprops.members.titleprops",
+            "default": null,
+            "inheritedFrom": "_ToastProviderProps.titleProps",
+            "sourcePath": "packages/headless/src/components/toast/types.ts",
+            "referencedTypes": [
+              {
+                "name": "HTMLAttributes",
+                "kind": "interface",
+                "type": "HTMLAttributes",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": null,
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-dom@3.5.35/node_modules/@vue/runtime-dom/dist/runtime-dom.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "descriptionProps",
+            "type": "HTMLAttributes",
+            "required": false,
+            "description": "Properties forwarded to the description element.",
+            "descriptionKey": "api.generated.packages_ui_src_components_toast_types.toastproviderprops.members.descriptionprops",
+            "default": null,
+            "inheritedFrom": "_ToastProviderProps.descriptionProps",
+            "sourcePath": "packages/headless/src/components/toast/types.ts",
+            "referencedTypes": [
+              {
+                "name": "HTMLAttributes",
+                "kind": "interface",
+                "type": "HTMLAttributes",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": null,
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-dom@3.5.35/node_modules/@vue/runtime-dom/dist/runtime-dom.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "iconProps",
+            "type": "HTMLAttributes",
+            "required": false,
+            "description": "Properties forwarded to the icon component.",
+            "descriptionKey": "api.generated.packages_ui_src_components_toast_types.toastproviderprops.members.iconprops",
+            "default": null,
+            "inheritedFrom": "_ToastProviderProps.iconProps",
+            "sourcePath": "packages/headless/src/components/toast/types.ts",
+            "referencedTypes": [
+              {
+                "name": "HTMLAttributes",
+                "kind": "interface",
+                "type": "HTMLAttributes",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": null,
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-dom@3.5.35/node_modules/@vue/runtime-dom/dist/runtime-dom.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "footerProps",
+            "type": "HTMLAttributes",
+            "required": false,
+            "description": "Properties forwarded to the footer element.",
+            "descriptionKey": "api.generated.packages_ui_src_components_toast_types.toastproviderprops.members.footerprops",
+            "default": null,
+            "inheritedFrom": "_ToastProviderProps.footerProps",
+            "sourcePath": "packages/headless/src/components/toast/types.ts",
+            "referencedTypes": [
+              {
+                "name": "HTMLAttributes",
+                "kind": "interface",
+                "type": "HTMLAttributes",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": null,
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-dom@3.5.35/node_modules/@vue/runtime-dom/dist/runtime-dom.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "actionProps",
+            "type": "HTMLAttributes",
+            "required": false,
+            "description": "Properties forwarded to the action element.",
+            "descriptionKey": "api.generated.packages_ui_src_components_toast_types.toastproviderprops.members.actionprops",
+            "default": null,
+            "inheritedFrom": "_ToastProviderProps.actionProps",
+            "sourcePath": "packages/headless/src/components/toast/types.ts",
+            "referencedTypes": [
+              {
+                "name": "HTMLAttributes",
+                "kind": "interface",
+                "type": "HTMLAttributes",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": null,
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-dom@3.5.35/node_modules/@vue/runtime-dom/dist/runtime-dom.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "cancelProps",
+            "type": "HTMLAttributes",
+            "required": false,
+            "description": "Properties forwarded to the cancel element.",
+            "descriptionKey": "api.generated.packages_ui_src_components_toast_types.toastproviderprops.members.cancelprops",
+            "default": null,
+            "inheritedFrom": "_ToastProviderProps.cancelProps",
+            "sourcePath": "packages/headless/src/components/toast/types.ts",
+            "referencedTypes": [
+              {
+                "name": "HTMLAttributes",
+                "kind": "interface",
+                "type": "HTMLAttributes",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": null,
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-dom@3.5.35/node_modules/@vue/runtime-dom/dist/runtime-dom.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "closeProps",
+            "type": "HTMLAttributes",
+            "required": false,
+            "description": "Properties forwarded to the close element.",
+            "descriptionKey": "api.generated.packages_ui_src_components_toast_types.toastproviderprops.members.closeprops",
+            "default": null,
+            "inheritedFrom": "_ToastProviderProps.closeProps",
+            "sourcePath": "packages/headless/src/components/toast/types.ts",
+            "referencedTypes": [
+              {
+                "name": "HTMLAttributes",
+                "kind": "interface",
+                "type": "HTMLAttributes",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": null,
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-dom@3.5.35/node_modules/@vue/runtime-dom/dist/runtime-dom.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      }
+    }
+  }
+}

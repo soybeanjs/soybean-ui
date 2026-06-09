@@ -21,14 +21,14 @@ SoybeanUI 采用严格的**双层分离**设计：
 
 ```
 ┌─────────────────────────────────────────┐
-│           @soybeanjs/ui (src/)          │
+│           @soybeanjs/ui (packages/ui/)  │
 │  S 前缀组件   (SButton、SDialog…)        │
 │  UnoCSS 类名 · @soybeanjs/cva            │
 │  provideXUi(ui)  ──────────────────┐    │
 └────────────────────────────────────┼────┘
                                      │ 样式注入
 ┌────────────────────────────────────▼────┐
-│     @soybeanjs/headless (headless/)     │
+│  @soybeanjs/headless (packages/headless/) │
 │  逻辑 · 状态 · A11y · 键盘导航             │
 │  useUiContext() 读取注入的样式类名      │
 │  零样式 — 可配合任意 CSS 方案         │
@@ -53,7 +53,7 @@ SoybeanUI 采用严格的**双层分离**设计：
 每个多插槽的 headless 组件都有对应的 `provide{Name}Ui` 函数。样式层通过 `@soybeanjs/cva` 的 recipe 计算类名后注入：
 
 ```ts
-// 样式包装层 (src/) 中
+// 样式包装层 (packages/ui/) 中
 const ui = computed(() => accordionVariants({ size: props.size }, props.ui, { root: props.class }));
 provideAccordionUi(ui); // headless 通过 useAccordionUi() 读取
 ```
@@ -146,7 +146,7 @@ pnpm sui api-translate -- --locale zh-CN
 pnpm sui changelog-translate -- --locale zh-CN
 ```
 
-当前文档站默认通过 `UsageCode`、`PlaygroundGallery` 与 `ComponentApi` 渲染组件文档；组件详情页与 `/releases` 还会消费 `docs/src/generated/changelog/` 和 `docs/src/generated/changelog-locales/` 下的版本日志生成数据。
+当前文档站默认通过 `UsageCode`、`PlaygroundGallery` 与 `ComponentApi` 渲染组件文档；组件详情页与 `/releases` 还会消费 `apps/docs/src/generated/changelog/` 和 `apps/docs/src/generated/changelog-locales/` 下的版本日志生成数据。
 
 因此，一旦公共 API 或示例交付面变化，也要同步维护 docs、playground 示例和 API 生成数据；如果调整了 changelog 映射、发布页展示或 changelog locale 模板，也要同步更新 changelog 生成数据。
 

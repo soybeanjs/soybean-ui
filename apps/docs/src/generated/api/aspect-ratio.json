@@ -1,0 +1,76 @@
+{
+  "component": "aspect-ratio",
+  "symbols": {
+    "AspectRatio": {
+      "props": {
+        "kind": "props",
+        "name": "AspectRatioProps",
+        "type": "Interface AspectRatioProps",
+        "resolvedType": "{ ratio?: number; asChild?: boolean; as?: AsTag | Component }",
+        "description": "Properties for the AspectRatio component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_aspect_ratio_types.aspectratioprops.props",
+        "sourcePath": "packages/headless/src/components/aspect-ratio/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "ratio",
+            "type": "number",
+            "required": false,
+            "description": "The desired ratio. Eg: 16/9",
+            "descriptionKey": "api.generated.packages_headless_src_components_aspect_ratio_types.aspectratioprops.members.ratio",
+            "default": "1",
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/aspect-ratio/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "asChild",
+            "type": "boolean",
+            "required": false,
+            "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+            "descriptionKey": "api.generated.packages_headless_src_components_aspect_ratio_types.aspectratioprops.members.aschild",
+            "default": null,
+            "inheritedFrom": "PrimitiveWithBaseProps.asChild",
+            "sourcePath": "packages/headless/src/components/primitive/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "as",
+            "type": "AsTag | Component",
+            "required": false,
+            "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+            "descriptionKey": "api.generated.packages_headless_src_components_aspect_ratio_types.aspectratioprops.members.as",
+            "default": "'div'",
+            "inheritedFrom": "PrimitiveWithBaseProps.as",
+            "sourcePath": "packages/headless/src/components/primitive/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Component",
+                "kind": "typeAlias",
+                "type": "Component",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": null,
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.35/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [
+                  "PropsOrInstance = any",
+                  "RawBindings = any",
+                  "D = any",
+                  "C extends ComputedOptions = ComputedOptions",
+                  "M extends MethodOptions = MethodOptions",
+                  "E extends EmitsOptions | Record<string, any[]> = {}",
+                  "S extends Record<string, any> = any"
+                ],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      }
+    }
+  }
+}

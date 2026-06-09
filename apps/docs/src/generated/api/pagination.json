@@ -1,0 +1,1959 @@
+{
+  "component": "pagination",
+  "symbols": {
+    "Pagination": {
+      "props": {
+        "kind": "props",
+        "name": "PaginationProps",
+        "type": "Interface PaginationProps",
+        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; ui?: Partial<PaginationUi>; size?: ThemeSize; variant?: PaginationVariant; shape?: PaginationShape; actionAsSelected?: boolean; showFirstOrLast?: boolean; listProps?: PaginationListProps; listItemProps?: PaginationListItemProps; ellipsisProps?: PaginationEllipsisProps; firstProps?: PaginationButtonProps; prevProps?: PaginationButtonProps; nextProps?: PaginationButtonProps; lastProps?: PaginationButtonProps; page?: number; defaultPage?: number; pageSize?: number; defaultPageSize?: number; total?: number; siblingCount?: number; disabled?: boolean; showEdges?: boolean }",
+        "description": "Properties for the Pagination component.",
+        "descriptionKey": "api.generated.packages_ui_src_components_pagination_types.paginationprops.props",
+        "sourcePath": "packages/ui/src/components/pagination/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "class",
+            "type": "string | false | Record<string, any> | ClassValue[] | null",
+            "required": false,
+            "description": "Additional class names applied to the root element.",
+            "descriptionKey": "api.generated.packages_ui_src_components_pagination_types.paginationprops.members.class",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui/src/components/pagination/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ClassValue",
+                "kind": "typeAlias",
+                "type": "string | false | Record<string, any> | ClassValue[] | null | undefined",
+                "resolvedType": "string | false | Record<string, any> | ClassValue[] | null | undefined",
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_types_common.classvalue",
+                "sourcePath": "packages/headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "ui",
+            "type": "Partial<PaginationUi>",
+            "required": false,
+            "description": "The custom ui class names",
+            "descriptionKey": "api.generated.packages_ui_src_components_pagination_types.paginationprops.members.ui",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui/src/components/pagination/types.ts",
+            "referencedTypes": [
+              {
+                "name": "PaginationUi",
+                "kind": "typeAlias",
+                "type": "{ root: ClassValue; list: ClassValue; ellipsis: ClassValue; prev: ClassValue; next: ClassValue; listItem: ClassValue; first: ClassValue; last: ClassValue; }",
+                "resolvedType": null,
+                "description": "UI class overrides for the Pagination component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_pagination_types.paginationui",
+                "sourcePath": "packages/headless/src/components/pagination/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "size",
+            "type": "ThemeSize",
+            "required": false,
+            "description": "The size of the pagination",
+            "descriptionKey": "api.generated.packages_ui_src_components_pagination_types.paginationprops.members.size",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui/src/components/pagination/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ThemeSize",
+                "kind": "typeAlias",
+                "type": "'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'",
+                "resolvedType": "'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'",
+                "description": "",
+                "descriptionKey": "api.generated.packages_ui_src_theme_types.themesize",
+                "sourcePath": "packages/ui/src/theme/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "variant",
+            "type": "PaginationVariant",
+            "required": false,
+            "description": "The variant of the pagination",
+            "descriptionKey": "api.generated.packages_ui_src_components_pagination_types.paginationprops.members.variant",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui/src/components/pagination/types.ts",
+            "referencedTypes": [
+              {
+                "name": "PaginationVariant",
+                "kind": "typeAlias",
+                "type": "'solid' | 'pure' | 'outline' | 'soft'",
+                "resolvedType": "'solid' | 'pure' | 'outline' | 'soft'",
+                "description": "",
+                "descriptionKey": "api.generated.packages_ui_src_styles_pagination.paginationvariant",
+                "sourcePath": "packages/ui/src/styles/pagination.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "shape",
+            "type": "PaginationShape",
+            "required": false,
+            "description": "The shape of the pagination",
+            "descriptionKey": "api.generated.packages_ui_src_components_pagination_types.paginationprops.members.shape",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui/src/components/pagination/types.ts",
+            "referencedTypes": [
+              {
+                "name": "PaginationShape",
+                "kind": "typeAlias",
+                "type": "'rounded' | 'square'",
+                "resolvedType": "'rounded' | 'square'",
+                "description": "",
+                "descriptionKey": "api.generated.packages_ui_src_styles_pagination.paginationshape",
+                "sourcePath": "packages/ui/src/styles/pagination.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "actionAsSelected",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether to apply the selected state to the action button",
+            "descriptionKey": "api.generated.packages_ui_src_components_pagination_types.paginationprops.members.actionasselected",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui/src/components/pagination/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "showFirstOrLast",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether to show a first or last.",
+            "descriptionKey": "api.generated.packages_ui_src_components_pagination_types.paginationprops.members.showfirstorlast",
+            "default": null,
+            "inheritedFrom": "showFirstOrLast",
+            "sourcePath": "packages/headless/src/components/pagination/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "listProps",
+            "type": "PaginationListProps",
+            "required": false,
+            "description": "Properties forwarded to the list element.",
+            "descriptionKey": "api.generated.packages_ui_src_components_pagination_types.paginationprops.members.listprops",
+            "default": null,
+            "inheritedFrom": "listProps",
+            "sourcePath": "packages/headless/src/components/pagination/types.ts",
+            "referencedTypes": [
+              {
+                "name": "PaginationListProps",
+                "kind": "interface",
+                "type": "PaginationListProps",
+                "resolvedType": null,
+                "description": "Properties for the PaginationList component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_pagination_types.paginationlistprops",
+                "sourcePath": "packages/headless/src/components/pagination/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "listItemProps",
+            "type": "PaginationListItemProps",
+            "required": false,
+            "description": "Properties forwarded to the list item element.",
+            "descriptionKey": "api.generated.packages_ui_src_components_pagination_types.paginationprops.members.listitemprops",
+            "default": null,
+            "inheritedFrom": "listItemProps",
+            "sourcePath": "packages/headless/src/components/pagination/types.ts",
+            "referencedTypes": [
+              {
+                "name": "PaginationListItemProps",
+                "kind": "interface",
+                "type": "PaginationListItemProps",
+                "resolvedType": "{ value: number; type?: ButtonType; disabled?: boolean; asChild?: boolean; as?: AsTag | Component }",
+                "description": "Properties for the PaginationListItem component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_pagination_types.paginationlistitemprops",
+                "sourcePath": "packages/headless/src/components/pagination/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "value",
+                    "type": "number",
+                    "required": true,
+                    "description": "Value for the page",
+                    "descriptionKey": "api.generated.packages_headless_src_components_pagination_types.paginationlistitemprops.members.value",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/pagination/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "type",
+                    "type": "ButtonType",
+                    "required": false,
+                    "description": "The type of the button element. Can be one of 'button', 'submit', or 'reset'.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_pagination_types.paginationlistitemprops.members.type",
+                    "default": "'button'",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/button/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "disabled",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Whether the component is disabled.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_pagination_types.paginationlistitemprops.members.disabled",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/button/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "asChild",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_pagination_types.paginationlistitemprops.members.aschild",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "as",
+                    "type": "AsTag | Component",
+                    "required": false,
+                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+                    "descriptionKey": "api.generated.packages_headless_src_components_pagination_types.paginationlistitemprops.members.as",
+                    "default": "'div'",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "ellipsisProps",
+            "type": "PaginationEllipsisProps",
+            "required": false,
+            "description": "Properties forwarded to the ellipsis element.",
+            "descriptionKey": "api.generated.packages_ui_src_components_pagination_types.paginationprops.members.ellipsisprops",
+            "default": null,
+            "inheritedFrom": "ellipsisProps",
+            "sourcePath": "packages/headless/src/components/pagination/types.ts",
+            "referencedTypes": [
+              {
+                "name": "PaginationEllipsisProps",
+                "kind": "interface",
+                "type": "PaginationEllipsisProps",
+                "resolvedType": null,
+                "description": "Properties for the PaginationEllipsis component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_pagination_types.paginationellipsisprops",
+                "sourcePath": "packages/headless/src/components/pagination/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "firstProps",
+            "type": "PaginationButtonProps",
+            "required": false,
+            "description": "Properties forwarded to the first element.",
+            "descriptionKey": "api.generated.packages_ui_src_components_pagination_types.paginationprops.members.firstprops",
+            "default": null,
+            "inheritedFrom": "firstProps",
+            "sourcePath": "packages/headless/src/components/pagination/types.ts",
+            "referencedTypes": [
+              {
+                "name": "PaginationButtonProps",
+                "kind": "interface",
+                "type": "PaginationButtonProps",
+                "resolvedType": "{ type?: ButtonType; disabled?: boolean; asChild?: boolean; as?: AsTag | Component }",
+                "description": "Properties for the PaginationButton component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_pagination_types.paginationbuttonprops",
+                "sourcePath": "packages/headless/src/components/pagination/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "type",
+                    "type": "ButtonType",
+                    "required": false,
+                    "description": "The type of the button element. Can be one of 'button', 'submit', or 'reset'.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_pagination_types.paginationbuttonprops.members.type",
+                    "default": "'button'",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/button/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "disabled",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Whether the component is disabled.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_pagination_types.paginationbuttonprops.members.disabled",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/button/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "asChild",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_pagination_types.paginationbuttonprops.members.aschild",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "as",
+                    "type": "AsTag | Component",
+                    "required": false,
+                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+                    "descriptionKey": "api.generated.packages_headless_src_components_pagination_types.paginationbuttonprops.members.as",
+                    "default": "'div'",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "prevProps",
+            "type": "PaginationButtonProps",
+            "required": false,
+            "description": "Properties forwarded to the prev element.",
+            "descriptionKey": "api.generated.packages_ui_src_components_pagination_types.paginationprops.members.prevprops",
+            "default": null,
+            "inheritedFrom": "prevProps",
+            "sourcePath": "packages/headless/src/components/pagination/types.ts",
+            "referencedTypes": [
+              {
+                "name": "PaginationButtonProps",
+                "kind": "interface",
+                "type": "PaginationButtonProps",
+                "resolvedType": "{ type?: ButtonType; disabled?: boolean; asChild?: boolean; as?: AsTag | Component }",
+                "description": "Properties for the PaginationButton component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_pagination_types.paginationbuttonprops",
+                "sourcePath": "packages/headless/src/components/pagination/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "type",
+                    "type": "ButtonType",
+                    "required": false,
+                    "description": "The type of the button element. Can be one of 'button', 'submit', or 'reset'.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_pagination_types.paginationbuttonprops.members.type",
+                    "default": "'button'",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/button/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "disabled",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Whether the component is disabled.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_pagination_types.paginationbuttonprops.members.disabled",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/button/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "asChild",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_pagination_types.paginationbuttonprops.members.aschild",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "as",
+                    "type": "AsTag | Component",
+                    "required": false,
+                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+                    "descriptionKey": "api.generated.packages_headless_src_components_pagination_types.paginationbuttonprops.members.as",
+                    "default": "'div'",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "nextProps",
+            "type": "PaginationButtonProps",
+            "required": false,
+            "description": "Properties forwarded to the next element.",
+            "descriptionKey": "api.generated.packages_ui_src_components_pagination_types.paginationprops.members.nextprops",
+            "default": null,
+            "inheritedFrom": "nextProps",
+            "sourcePath": "packages/headless/src/components/pagination/types.ts",
+            "referencedTypes": [
+              {
+                "name": "PaginationButtonProps",
+                "kind": "interface",
+                "type": "PaginationButtonProps",
+                "resolvedType": "{ type?: ButtonType; disabled?: boolean; asChild?: boolean; as?: AsTag | Component }",
+                "description": "Properties for the PaginationButton component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_pagination_types.paginationbuttonprops",
+                "sourcePath": "packages/headless/src/components/pagination/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "type",
+                    "type": "ButtonType",
+                    "required": false,
+                    "description": "The type of the button element. Can be one of 'button', 'submit', or 'reset'.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_pagination_types.paginationbuttonprops.members.type",
+                    "default": "'button'",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/button/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "disabled",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Whether the component is disabled.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_pagination_types.paginationbuttonprops.members.disabled",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/button/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "asChild",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_pagination_types.paginationbuttonprops.members.aschild",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "as",
+                    "type": "AsTag | Component",
+                    "required": false,
+                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+                    "descriptionKey": "api.generated.packages_headless_src_components_pagination_types.paginationbuttonprops.members.as",
+                    "default": "'div'",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "lastProps",
+            "type": "PaginationButtonProps",
+            "required": false,
+            "description": "Properties forwarded to the last element.",
+            "descriptionKey": "api.generated.packages_ui_src_components_pagination_types.paginationprops.members.lastprops",
+            "default": null,
+            "inheritedFrom": "lastProps",
+            "sourcePath": "packages/headless/src/components/pagination/types.ts",
+            "referencedTypes": [
+              {
+                "name": "PaginationButtonProps",
+                "kind": "interface",
+                "type": "PaginationButtonProps",
+                "resolvedType": "{ type?: ButtonType; disabled?: boolean; asChild?: boolean; as?: AsTag | Component }",
+                "description": "Properties for the PaginationButton component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_pagination_types.paginationbuttonprops",
+                "sourcePath": "packages/headless/src/components/pagination/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "type",
+                    "type": "ButtonType",
+                    "required": false,
+                    "description": "The type of the button element. Can be one of 'button', 'submit', or 'reset'.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_pagination_types.paginationbuttonprops.members.type",
+                    "default": "'button'",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/button/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "disabled",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Whether the component is disabled.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_pagination_types.paginationbuttonprops.members.disabled",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/button/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "asChild",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_pagination_types.paginationbuttonprops.members.aschild",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "as",
+                    "type": "AsTag | Component",
+                    "required": false,
+                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+                    "descriptionKey": "api.generated.packages_headless_src_components_pagination_types.paginationbuttonprops.members.as",
+                    "default": "'div'",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "page",
+            "type": "number",
+            "required": false,
+            "description": "The controlled value of the current page. Can be bound as `v-model:page`.",
+            "descriptionKey": "api.generated.packages_ui_src_components_pagination_types.paginationprops.members.page",
+            "default": null,
+            "inheritedFrom": "page",
+            "sourcePath": "packages/headless/src/components/pagination/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "defaultPage",
+            "type": "number",
+            "required": false,
+            "description": "The value of the page that should be active when initially rendered. Use when you do not need to control the value\nstate.",
+            "descriptionKey": "api.generated.packages_ui_src_components_pagination_types.paginationprops.members.defaultpage",
+            "default": null,
+            "inheritedFrom": "defaultPage",
+            "sourcePath": "packages/headless/src/components/pagination/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "pageSize",
+            "type": "number",
+            "required": false,
+            "description": "Number of items per page",
+            "descriptionKey": "api.generated.packages_ui_src_components_pagination_types.paginationprops.members.pagesize",
+            "default": null,
+            "inheritedFrom": "pageSize",
+            "sourcePath": "packages/headless/src/components/pagination/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "defaultPageSize",
+            "type": "number",
+            "required": false,
+            "description": "The default value of `pageSize` when initially rendered. Use when you do not need to control the value state.",
+            "descriptionKey": "api.generated.packages_ui_src_components_pagination_types.paginationprops.members.defaultpagesize",
+            "default": "10",
+            "inheritedFrom": "defaultPageSize",
+            "sourcePath": "packages/headless/src/components/pagination/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "total",
+            "type": "number",
+            "required": false,
+            "description": "Number of items in your list",
+            "descriptionKey": "api.generated.packages_ui_src_components_pagination_types.paginationprops.members.total",
+            "default": null,
+            "inheritedFrom": "total",
+            "sourcePath": "packages/headless/src/components/pagination/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "siblingCount",
+            "type": "number",
+            "required": false,
+            "description": "Number of sibling should be shown around the current page",
+            "descriptionKey": "api.generated.packages_ui_src_components_pagination_types.paginationprops.members.siblingcount",
+            "default": null,
+            "inheritedFrom": "siblingCount",
+            "sourcePath": "packages/headless/src/components/pagination/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "disabled",
+            "type": "boolean",
+            "required": false,
+            "description": "When `true`, prevents the user from interacting with item",
+            "descriptionKey": "api.generated.packages_ui_src_components_pagination_types.paginationprops.members.disabled",
+            "default": null,
+            "inheritedFrom": "disabled",
+            "sourcePath": "packages/headless/src/components/pagination/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "showEdges",
+            "type": "boolean",
+            "required": false,
+            "description": "When `true`, always show first page, last page, and ellipsis",
+            "descriptionKey": "api.generated.packages_ui_src_components_pagination_types.paginationprops.members.showedges",
+            "default": null,
+            "inheritedFrom": "showEdges",
+            "sourcePath": "packages/headless/src/components/pagination/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      },
+      "emits": {
+        "kind": "emits",
+        "name": "PaginationEmits",
+        "type": "TypeAlias PaginationEmits: PaginationCompactEmits",
+        "resolvedType": "{ \"update:page\": [value: number]; \"update:pageSize\": [value: number] }",
+        "description": "Events for the Pagination component.",
+        "descriptionKey": "api.generated.packages_ui_src_components_pagination_types.paginationemits.emits",
+        "sourcePath": "packages/ui/src/components/pagination/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [
+          {
+            "name": "update:page",
+            "type": "[value: number]",
+            "parameters": "value: number",
+            "required": true,
+            "description": "Event handler called when the page value changes",
+            "descriptionKey": "api.generated.packages_ui_src_components_pagination_types.paginationemits.callables.update_page",
+            "sourcePath": "packages/headless/src/components/pagination/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "update:pageSize",
+            "type": "[value: number]",
+            "parameters": "value: number",
+            "required": true,
+            "description": "Event handler called when the page size value changes",
+            "descriptionKey": "api.generated.packages_ui_src_components_pagination_types.paginationemits.callables.update_pagesize",
+            "sourcePath": "packages/headless/src/components/pagination/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "referencedTypes": [
+          {
+            "name": "PaginationRootEmits",
+            "kind": "typeAlias",
+            "type": "{ 'update:page': [value: number]; 'update:pageSize': [value: number]; }",
+            "resolvedType": "{ \"update:page\": [value: number]; \"update:pageSize\": [value: number] }",
+            "description": "Events for the PaginationRoot component.",
+            "descriptionKey": "api.generated.packages_headless_src_components_pagination_types.paginationrootemits",
+            "sourcePath": "packages/headless/src/components/pagination/types.ts",
+            "typeParameters": [],
+            "external": false,
+            "members": [],
+            "callables": [
+              {
+                "name": "update:page",
+                "type": "[value: number]",
+                "parameters": "value: number",
+                "required": true,
+                "description": "Event handler called when the page value changes",
+                "descriptionKey": "api.generated.packages_headless_src_components_pagination_types.paginationrootemits.callables.update_page",
+                "sourcePath": "packages/headless/src/components/pagination/types.ts",
+                "referencedTypes": []
+              },
+              {
+                "name": "update:pageSize",
+                "type": "[value: number]",
+                "parameters": "value: number",
+                "required": true,
+                "description": "Event handler called when the page size value changes",
+                "descriptionKey": "api.generated.packages_headless_src_components_pagination_types.paginationrootemits.callables.update_pagesize",
+                "sourcePath": "packages/headless/src/components/pagination/types.ts",
+                "referencedTypes": []
+              }
+            ]
+          }
+        ]
+      },
+      "slots": {
+        "kind": "slots",
+        "name": "PaginationSlots",
+        "type": "TypeAlias PaginationSlots: PaginationCompactSlots",
+        "resolvedType": "{ leading?: (() => any); trailing?: (() => any); first?: (() => any); prev?: (() => any); next?: (() => any); last?: (() => any); ellipsis?: (() => any) }",
+        "description": "Slots for the Pagination component.",
+        "descriptionKey": "api.generated.packages_ui_src_components_pagination_types.paginationslots.slots",
+        "sourcePath": "packages/ui/src/components/pagination/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [
+          {
+            "name": "leading",
+            "type": "(() => any) | undefined",
+            "parameters": "(() => any) | undefined",
+            "required": false,
+            "description": "Custom content for the leading slot.",
+            "descriptionKey": "api.generated.packages_ui_src_components_pagination_types.paginationslots.callables.leading",
+            "sourcePath": "packages/headless/src/components/pagination/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "trailing",
+            "type": "(() => any) | undefined",
+            "parameters": "(() => any) | undefined",
+            "required": false,
+            "description": "Custom content for the trailing slot.",
+            "descriptionKey": "api.generated.packages_ui_src_components_pagination_types.paginationslots.callables.trailing",
+            "sourcePath": "packages/headless/src/components/pagination/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "first",
+            "type": "(() => any) | undefined",
+            "parameters": "(() => any) | undefined",
+            "required": false,
+            "description": "Custom content for the first slot.",
+            "descriptionKey": "api.generated.packages_ui_src_components_pagination_types.paginationslots.callables.first",
+            "sourcePath": "packages/headless/src/components/pagination/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "prev",
+            "type": "(() => any) | undefined",
+            "parameters": "(() => any) | undefined",
+            "required": false,
+            "description": "Custom content for the prev slot.",
+            "descriptionKey": "api.generated.packages_ui_src_components_pagination_types.paginationslots.callables.prev",
+            "sourcePath": "packages/headless/src/components/pagination/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "next",
+            "type": "(() => any) | undefined",
+            "parameters": "(() => any) | undefined",
+            "required": false,
+            "description": "Custom content for the next slot.",
+            "descriptionKey": "api.generated.packages_ui_src_components_pagination_types.paginationslots.callables.next",
+            "sourcePath": "packages/headless/src/components/pagination/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "last",
+            "type": "(() => any) | undefined",
+            "parameters": "(() => any) | undefined",
+            "required": false,
+            "description": "Custom content for the last slot.",
+            "descriptionKey": "api.generated.packages_ui_src_components_pagination_types.paginationslots.callables.last",
+            "sourcePath": "packages/headless/src/components/pagination/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "ellipsis",
+            "type": "(() => any) | undefined",
+            "parameters": "(() => any) | undefined",
+            "required": false,
+            "description": "Custom content for the ellipsis slot.",
+            "descriptionKey": "api.generated.packages_ui_src_components_pagination_types.paginationslots.callables.ellipsis",
+            "sourcePath": "packages/headless/src/components/pagination/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "referencedTypes": [
+          {
+            "name": "PaginationCompactSlots",
+            "kind": "typeAlias",
+            "type": "{ leading?: () => any; trailing?: () => any; first?: () => any; prev?: () => any; next?: () => any; last?: () => any; ellipsis?: () => any; }",
+            "resolvedType": "{ leading?: (() => any); trailing?: (() => any); first?: (() => any); prev?: (() => any); next?: (() => any); last?: (() => any); ellipsis?: (() => any) }",
+            "description": "Slots for the PaginationCompact component.",
+            "descriptionKey": "api.generated.packages_headless_src_components_pagination_types.paginationcompactslots",
+            "sourcePath": "packages/headless/src/components/pagination/types.ts",
+            "typeParameters": [],
+            "external": false,
+            "members": [],
+            "callables": [
+              {
+                "name": "leading",
+                "type": "(() => any) | undefined",
+                "parameters": "(() => any) | undefined",
+                "required": false,
+                "description": "Custom content for the leading slot.",
+                "descriptionKey": "api.generated.packages_headless_src_components_pagination_types.paginationcompactslots.callables.leading",
+                "sourcePath": "packages/headless/src/components/pagination/types.ts",
+                "referencedTypes": []
+              },
+              {
+                "name": "trailing",
+                "type": "(() => any) | undefined",
+                "parameters": "(() => any) | undefined",
+                "required": false,
+                "description": "Custom content for the trailing slot.",
+                "descriptionKey": "api.generated.packages_headless_src_components_pagination_types.paginationcompactslots.callables.trailing",
+                "sourcePath": "packages/headless/src/components/pagination/types.ts",
+                "referencedTypes": []
+              },
+              {
+                "name": "first",
+                "type": "(() => any) | undefined",
+                "parameters": "(() => any) | undefined",
+                "required": false,
+                "description": "Custom content for the first slot.",
+                "descriptionKey": "api.generated.packages_headless_src_components_pagination_types.paginationcompactslots.callables.first",
+                "sourcePath": "packages/headless/src/components/pagination/types.ts",
+                "referencedTypes": []
+              },
+              {
+                "name": "prev",
+                "type": "(() => any) | undefined",
+                "parameters": "(() => any) | undefined",
+                "required": false,
+                "description": "Custom content for the prev slot.",
+                "descriptionKey": "api.generated.packages_headless_src_components_pagination_types.paginationcompactslots.callables.prev",
+                "sourcePath": "packages/headless/src/components/pagination/types.ts",
+                "referencedTypes": []
+              },
+              {
+                "name": "next",
+                "type": "(() => any) | undefined",
+                "parameters": "(() => any) | undefined",
+                "required": false,
+                "description": "Custom content for the next slot.",
+                "descriptionKey": "api.generated.packages_headless_src_components_pagination_types.paginationcompactslots.callables.next",
+                "sourcePath": "packages/headless/src/components/pagination/types.ts",
+                "referencedTypes": []
+              },
+              {
+                "name": "last",
+                "type": "(() => any) | undefined",
+                "parameters": "(() => any) | undefined",
+                "required": false,
+                "description": "Custom content for the last slot.",
+                "descriptionKey": "api.generated.packages_headless_src_components_pagination_types.paginationcompactslots.callables.last",
+                "sourcePath": "packages/headless/src/components/pagination/types.ts",
+                "referencedTypes": []
+              },
+              {
+                "name": "ellipsis",
+                "type": "(() => any) | undefined",
+                "parameters": "(() => any) | undefined",
+                "required": false,
+                "description": "Custom content for the ellipsis slot.",
+                "descriptionKey": "api.generated.packages_headless_src_components_pagination_types.paginationcompactslots.callables.ellipsis",
+                "sourcePath": "packages/headless/src/components/pagination/types.ts",
+                "referencedTypes": []
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "PaginationButton": {
+      "props": {
+        "kind": "props",
+        "name": "PaginationButtonProps",
+        "type": "Interface PaginationButtonProps",
+        "resolvedType": "{ type?: ButtonType; disabled?: boolean; asChild?: boolean; as?: AsTag | Component }",
+        "description": "Properties for the PaginationButton component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_pagination_types.paginationbuttonprops.props",
+        "sourcePath": "packages/headless/src/components/pagination/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "type",
+            "type": "ButtonType",
+            "required": false,
+            "description": "The type of the button element. Can be one of 'button', 'submit', or 'reset'.",
+            "descriptionKey": "api.generated.packages_headless_src_components_pagination_types.paginationbuttonprops.members.type",
+            "default": "'button'",
+            "inheritedFrom": "ButtonProps.type",
+            "sourcePath": "packages/headless/src/components/button/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ButtonType",
+                "kind": "typeAlias",
+                "type": "'button' | 'submit' | 'reset'",
+                "resolvedType": "'button' | 'submit' | 'reset'",
+                "description": "Supported button values.",
+                "descriptionKey": "api.generated.packages_headless_src_components_button_types.buttontype",
+                "sourcePath": "packages/headless/src/components/button/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "disabled",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether the component is disabled.",
+            "descriptionKey": "api.generated.packages_headless_src_components_pagination_types.paginationbuttonprops.members.disabled",
+            "default": null,
+            "inheritedFrom": "ButtonProps.disabled",
+            "sourcePath": "packages/headless/src/components/button/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "asChild",
+            "type": "boolean",
+            "required": false,
+            "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+            "descriptionKey": "api.generated.packages_headless_src_components_pagination_types.paginationbuttonprops.members.aschild",
+            "default": null,
+            "inheritedFrom": "ButtonProps.asChild",
+            "sourcePath": "packages/headless/src/components/primitive/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "as",
+            "type": "AsTag | Component",
+            "required": false,
+            "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+            "descriptionKey": "api.generated.packages_headless_src_components_pagination_types.paginationbuttonprops.members.as",
+            "default": "'div'",
+            "inheritedFrom": "ButtonProps.as",
+            "sourcePath": "packages/headless/src/components/primitive/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Component",
+                "kind": "typeAlias",
+                "type": "Component",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": null,
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.35/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [
+                  "PropsOrInstance = any",
+                  "RawBindings = any",
+                  "D = any",
+                  "C extends ComputedOptions = ComputedOptions",
+                  "M extends MethodOptions = MethodOptions",
+                  "E extends EmitsOptions | Record<string, any[]> = {}",
+                  "S extends Record<string, any> = any"
+                ],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "PaginationCompact": {
+      "props": {
+        "kind": "props",
+        "name": "PaginationCompactProps",
+        "type": "Interface PaginationCompactProps",
+        "resolvedType": "{ showFirstOrLast?: boolean; listProps?: PaginationListProps; listItemProps?: PaginationListItemProps; ellipsisProps?: PaginationEllipsisProps; firstProps?: PaginationButtonProps; prevProps?: PaginationButtonProps; nextProps?: PaginationButtonProps; lastProps?: PaginationButtonProps; page?: number; defaultPage?: number; pageSize?: number; defaultPageSize?: number; total?: number; siblingCount?: number; disabled?: boolean; showEdges?: boolean }",
+        "description": "Properties for the PaginationCompact component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_pagination_types.paginationcompactprops.props",
+        "sourcePath": "packages/headless/src/components/pagination/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "showFirstOrLast",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether to show a first or last.",
+            "descriptionKey": "api.generated.packages_headless_src_components_pagination_types.paginationcompactprops.members.showfirstorlast",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/pagination/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "listProps",
+            "type": "PaginationListProps",
+            "required": false,
+            "description": "Properties forwarded to the list element.",
+            "descriptionKey": "api.generated.packages_headless_src_components_pagination_types.paginationcompactprops.members.listprops",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/pagination/types.ts",
+            "referencedTypes": [
+              {
+                "name": "PaginationListProps",
+                "kind": "interface",
+                "type": "PaginationListProps",
+                "resolvedType": null,
+                "description": "Properties for the PaginationList component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_pagination_types.paginationlistprops",
+                "sourcePath": "packages/headless/src/components/pagination/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "listItemProps",
+            "type": "PaginationListItemProps",
+            "required": false,
+            "description": "Properties forwarded to the list item element.",
+            "descriptionKey": "api.generated.packages_headless_src_components_pagination_types.paginationcompactprops.members.listitemprops",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/pagination/types.ts",
+            "referencedTypes": [
+              {
+                "name": "PaginationListItemProps",
+                "kind": "interface",
+                "type": "PaginationListItemProps",
+                "resolvedType": "{ value: number; type?: ButtonType; disabled?: boolean; asChild?: boolean; as?: AsTag | Component }",
+                "description": "Properties for the PaginationListItem component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_pagination_types.paginationlistitemprops",
+                "sourcePath": "packages/headless/src/components/pagination/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "value",
+                    "type": "number",
+                    "required": true,
+                    "description": "Value for the page",
+                    "descriptionKey": "api.generated.packages_headless_src_components_pagination_types.paginationlistitemprops.members.value",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/pagination/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "type",
+                    "type": "ButtonType",
+                    "required": false,
+                    "description": "The type of the button element. Can be one of 'button', 'submit', or 'reset'.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_pagination_types.paginationlistitemprops.members.type",
+                    "default": "'button'",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/button/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "disabled",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Whether the component is disabled.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_pagination_types.paginationlistitemprops.members.disabled",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/button/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "asChild",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_pagination_types.paginationlistitemprops.members.aschild",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "as",
+                    "type": "AsTag | Component",
+                    "required": false,
+                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+                    "descriptionKey": "api.generated.packages_headless_src_components_pagination_types.paginationlistitemprops.members.as",
+                    "default": "'div'",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "ellipsisProps",
+            "type": "PaginationEllipsisProps",
+            "required": false,
+            "description": "Properties forwarded to the ellipsis element.",
+            "descriptionKey": "api.generated.packages_headless_src_components_pagination_types.paginationcompactprops.members.ellipsisprops",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/pagination/types.ts",
+            "referencedTypes": [
+              {
+                "name": "PaginationEllipsisProps",
+                "kind": "interface",
+                "type": "PaginationEllipsisProps",
+                "resolvedType": null,
+                "description": "Properties for the PaginationEllipsis component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_pagination_types.paginationellipsisprops",
+                "sourcePath": "packages/headless/src/components/pagination/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "firstProps",
+            "type": "PaginationButtonProps",
+            "required": false,
+            "description": "Properties forwarded to the first element.",
+            "descriptionKey": "api.generated.packages_headless_src_components_pagination_types.paginationcompactprops.members.firstprops",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/pagination/types.ts",
+            "referencedTypes": [
+              {
+                "name": "PaginationButtonProps",
+                "kind": "interface",
+                "type": "PaginationButtonProps",
+                "resolvedType": "{ type?: ButtonType; disabled?: boolean; asChild?: boolean; as?: AsTag | Component }",
+                "description": "Properties for the PaginationButton component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_pagination_types.paginationbuttonprops",
+                "sourcePath": "packages/headless/src/components/pagination/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "type",
+                    "type": "ButtonType",
+                    "required": false,
+                    "description": "The type of the button element. Can be one of 'button', 'submit', or 'reset'.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_pagination_types.paginationbuttonprops.members.type",
+                    "default": "'button'",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/button/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "disabled",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Whether the component is disabled.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_pagination_types.paginationbuttonprops.members.disabled",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/button/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "asChild",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_pagination_types.paginationbuttonprops.members.aschild",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "as",
+                    "type": "AsTag | Component",
+                    "required": false,
+                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+                    "descriptionKey": "api.generated.packages_headless_src_components_pagination_types.paginationbuttonprops.members.as",
+                    "default": "'div'",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "prevProps",
+            "type": "PaginationButtonProps",
+            "required": false,
+            "description": "Properties forwarded to the prev element.",
+            "descriptionKey": "api.generated.packages_headless_src_components_pagination_types.paginationcompactprops.members.prevprops",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/pagination/types.ts",
+            "referencedTypes": [
+              {
+                "name": "PaginationButtonProps",
+                "kind": "interface",
+                "type": "PaginationButtonProps",
+                "resolvedType": "{ type?: ButtonType; disabled?: boolean; asChild?: boolean; as?: AsTag | Component }",
+                "description": "Properties for the PaginationButton component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_pagination_types.paginationbuttonprops",
+                "sourcePath": "packages/headless/src/components/pagination/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "type",
+                    "type": "ButtonType",
+                    "required": false,
+                    "description": "The type of the button element. Can be one of 'button', 'submit', or 'reset'.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_pagination_types.paginationbuttonprops.members.type",
+                    "default": "'button'",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/button/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "disabled",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Whether the component is disabled.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_pagination_types.paginationbuttonprops.members.disabled",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/button/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "asChild",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_pagination_types.paginationbuttonprops.members.aschild",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "as",
+                    "type": "AsTag | Component",
+                    "required": false,
+                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+                    "descriptionKey": "api.generated.packages_headless_src_components_pagination_types.paginationbuttonprops.members.as",
+                    "default": "'div'",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "nextProps",
+            "type": "PaginationButtonProps",
+            "required": false,
+            "description": "Properties forwarded to the next element.",
+            "descriptionKey": "api.generated.packages_headless_src_components_pagination_types.paginationcompactprops.members.nextprops",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/pagination/types.ts",
+            "referencedTypes": [
+              {
+                "name": "PaginationButtonProps",
+                "kind": "interface",
+                "type": "PaginationButtonProps",
+                "resolvedType": "{ type?: ButtonType; disabled?: boolean; asChild?: boolean; as?: AsTag | Component }",
+                "description": "Properties for the PaginationButton component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_pagination_types.paginationbuttonprops",
+                "sourcePath": "packages/headless/src/components/pagination/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "type",
+                    "type": "ButtonType",
+                    "required": false,
+                    "description": "The type of the button element. Can be one of 'button', 'submit', or 'reset'.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_pagination_types.paginationbuttonprops.members.type",
+                    "default": "'button'",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/button/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "disabled",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Whether the component is disabled.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_pagination_types.paginationbuttonprops.members.disabled",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/button/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "asChild",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_pagination_types.paginationbuttonprops.members.aschild",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "as",
+                    "type": "AsTag | Component",
+                    "required": false,
+                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+                    "descriptionKey": "api.generated.packages_headless_src_components_pagination_types.paginationbuttonprops.members.as",
+                    "default": "'div'",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "lastProps",
+            "type": "PaginationButtonProps",
+            "required": false,
+            "description": "Properties forwarded to the last element.",
+            "descriptionKey": "api.generated.packages_headless_src_components_pagination_types.paginationcompactprops.members.lastprops",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/pagination/types.ts",
+            "referencedTypes": [
+              {
+                "name": "PaginationButtonProps",
+                "kind": "interface",
+                "type": "PaginationButtonProps",
+                "resolvedType": "{ type?: ButtonType; disabled?: boolean; asChild?: boolean; as?: AsTag | Component }",
+                "description": "Properties for the PaginationButton component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_pagination_types.paginationbuttonprops",
+                "sourcePath": "packages/headless/src/components/pagination/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "type",
+                    "type": "ButtonType",
+                    "required": false,
+                    "description": "The type of the button element. Can be one of 'button', 'submit', or 'reset'.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_pagination_types.paginationbuttonprops.members.type",
+                    "default": "'button'",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/button/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "disabled",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Whether the component is disabled.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_pagination_types.paginationbuttonprops.members.disabled",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/button/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "asChild",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_pagination_types.paginationbuttonprops.members.aschild",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "as",
+                    "type": "AsTag | Component",
+                    "required": false,
+                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+                    "descriptionKey": "api.generated.packages_headless_src_components_pagination_types.paginationbuttonprops.members.as",
+                    "default": "'div'",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "page",
+            "type": "number",
+            "required": false,
+            "description": "The controlled value of the current page. Can be bound as `v-model:page`.",
+            "descriptionKey": "api.generated.packages_headless_src_components_pagination_types.paginationcompactprops.members.page",
+            "default": null,
+            "inheritedFrom": "page",
+            "sourcePath": "packages/headless/src/components/pagination/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "defaultPage",
+            "type": "number",
+            "required": false,
+            "description": "The value of the page that should be active when initially rendered. Use when you do not need to control the value\nstate.",
+            "descriptionKey": "api.generated.packages_headless_src_components_pagination_types.paginationcompactprops.members.defaultpage",
+            "default": null,
+            "inheritedFrom": "defaultPage",
+            "sourcePath": "packages/headless/src/components/pagination/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "pageSize",
+            "type": "number",
+            "required": false,
+            "description": "Number of items per page",
+            "descriptionKey": "api.generated.packages_headless_src_components_pagination_types.paginationcompactprops.members.pagesize",
+            "default": null,
+            "inheritedFrom": "pageSize",
+            "sourcePath": "packages/headless/src/components/pagination/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "defaultPageSize",
+            "type": "number",
+            "required": false,
+            "description": "The default value of `pageSize` when initially rendered. Use when you do not need to control the value state.",
+            "descriptionKey": "api.generated.packages_headless_src_components_pagination_types.paginationcompactprops.members.defaultpagesize",
+            "default": "10",
+            "inheritedFrom": "defaultPageSize",
+            "sourcePath": "packages/headless/src/components/pagination/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "total",
+            "type": "number",
+            "required": false,
+            "description": "Number of items in your list",
+            "descriptionKey": "api.generated.packages_headless_src_components_pagination_types.paginationcompactprops.members.total",
+            "default": null,
+            "inheritedFrom": "total",
+            "sourcePath": "packages/headless/src/components/pagination/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "siblingCount",
+            "type": "number",
+            "required": false,
+            "description": "Number of sibling should be shown around the current page",
+            "descriptionKey": "api.generated.packages_headless_src_components_pagination_types.paginationcompactprops.members.siblingcount",
+            "default": null,
+            "inheritedFrom": "siblingCount",
+            "sourcePath": "packages/headless/src/components/pagination/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "disabled",
+            "type": "boolean",
+            "required": false,
+            "description": "When `true`, prevents the user from interacting with item",
+            "descriptionKey": "api.generated.packages_headless_src_components_pagination_types.paginationcompactprops.members.disabled",
+            "default": null,
+            "inheritedFrom": "disabled",
+            "sourcePath": "packages/headless/src/components/pagination/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "showEdges",
+            "type": "boolean",
+            "required": false,
+            "description": "When `true`, always show first page, last page, and ellipsis",
+            "descriptionKey": "api.generated.packages_headless_src_components_pagination_types.paginationcompactprops.members.showedges",
+            "default": null,
+            "inheritedFrom": "showEdges",
+            "sourcePath": "packages/headless/src/components/pagination/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      },
+      "emits": {
+        "kind": "emits",
+        "name": "PaginationCompactEmits",
+        "type": "TypeAlias PaginationCompactEmits: PaginationRootEmits",
+        "resolvedType": "{ \"update:page\": [value: number]; \"update:pageSize\": [value: number] }",
+        "description": "Events for the PaginationCompact component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_pagination_types.paginationcompactemits.emits",
+        "sourcePath": "packages/headless/src/components/pagination/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [
+          {
+            "name": "update:page",
+            "type": "[value: number]",
+            "parameters": "value: number",
+            "required": true,
+            "description": "Event handler called when the page value changes",
+            "descriptionKey": "api.generated.packages_headless_src_components_pagination_types.paginationcompactemits.callables.update_page",
+            "sourcePath": "packages/headless/src/components/pagination/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "update:pageSize",
+            "type": "[value: number]",
+            "parameters": "value: number",
+            "required": true,
+            "description": "Event handler called when the page size value changes",
+            "descriptionKey": "api.generated.packages_headless_src_components_pagination_types.paginationcompactemits.callables.update_pagesize",
+            "sourcePath": "packages/headless/src/components/pagination/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "referencedTypes": [
+          {
+            "name": "PaginationRootEmits",
+            "kind": "typeAlias",
+            "type": "{ 'update:page': [value: number]; 'update:pageSize': [value: number]; }",
+            "resolvedType": "{ \"update:page\": [value: number]; \"update:pageSize\": [value: number] }",
+            "description": "Events for the PaginationRoot component.",
+            "descriptionKey": "api.generated.packages_headless_src_components_pagination_types.paginationrootemits",
+            "sourcePath": "packages/headless/src/components/pagination/types.ts",
+            "typeParameters": [],
+            "external": false,
+            "members": [],
+            "callables": [
+              {
+                "name": "update:page",
+                "type": "[value: number]",
+                "parameters": "value: number",
+                "required": true,
+                "description": "Event handler called when the page value changes",
+                "descriptionKey": "api.generated.packages_headless_src_components_pagination_types.paginationrootemits.callables.update_page",
+                "sourcePath": "packages/headless/src/components/pagination/types.ts",
+                "referencedTypes": []
+              },
+              {
+                "name": "update:pageSize",
+                "type": "[value: number]",
+                "parameters": "value: number",
+                "required": true,
+                "description": "Event handler called when the page size value changes",
+                "descriptionKey": "api.generated.packages_headless_src_components_pagination_types.paginationrootemits.callables.update_pagesize",
+                "sourcePath": "packages/headless/src/components/pagination/types.ts",
+                "referencedTypes": []
+              }
+            ]
+          }
+        ]
+      },
+      "slots": {
+        "kind": "slots",
+        "name": "PaginationCompactSlots",
+        "type": "TypeAlias PaginationCompactSlots",
+        "resolvedType": "{ leading?: (() => any); trailing?: (() => any); first?: (() => any); prev?: (() => any); next?: (() => any); last?: (() => any); ellipsis?: (() => any) }",
+        "description": "Slots for the PaginationCompact component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_pagination_types.paginationcompactslots.slots",
+        "sourcePath": "packages/headless/src/components/pagination/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [
+          {
+            "name": "leading",
+            "type": "(() => any) | undefined",
+            "parameters": "(() => any) | undefined",
+            "required": false,
+            "description": "Custom content for the leading slot.",
+            "descriptionKey": "api.generated.packages_headless_src_components_pagination_types.paginationcompactslots.callables.leading",
+            "sourcePath": "packages/headless/src/components/pagination/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "trailing",
+            "type": "(() => any) | undefined",
+            "parameters": "(() => any) | undefined",
+            "required": false,
+            "description": "Custom content for the trailing slot.",
+            "descriptionKey": "api.generated.packages_headless_src_components_pagination_types.paginationcompactslots.callables.trailing",
+            "sourcePath": "packages/headless/src/components/pagination/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "first",
+            "type": "(() => any) | undefined",
+            "parameters": "(() => any) | undefined",
+            "required": false,
+            "description": "Custom content for the first slot.",
+            "descriptionKey": "api.generated.packages_headless_src_components_pagination_types.paginationcompactslots.callables.first",
+            "sourcePath": "packages/headless/src/components/pagination/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "prev",
+            "type": "(() => any) | undefined",
+            "parameters": "(() => any) | undefined",
+            "required": false,
+            "description": "Custom content for the prev slot.",
+            "descriptionKey": "api.generated.packages_headless_src_components_pagination_types.paginationcompactslots.callables.prev",
+            "sourcePath": "packages/headless/src/components/pagination/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "next",
+            "type": "(() => any) | undefined",
+            "parameters": "(() => any) | undefined",
+            "required": false,
+            "description": "Custom content for the next slot.",
+            "descriptionKey": "api.generated.packages_headless_src_components_pagination_types.paginationcompactslots.callables.next",
+            "sourcePath": "packages/headless/src/components/pagination/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "last",
+            "type": "(() => any) | undefined",
+            "parameters": "(() => any) | undefined",
+            "required": false,
+            "description": "Custom content for the last slot.",
+            "descriptionKey": "api.generated.packages_headless_src_components_pagination_types.paginationcompactslots.callables.last",
+            "sourcePath": "packages/headless/src/components/pagination/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "ellipsis",
+            "type": "(() => any) | undefined",
+            "parameters": "(() => any) | undefined",
+            "required": false,
+            "description": "Custom content for the ellipsis slot.",
+            "descriptionKey": "api.generated.packages_headless_src_components_pagination_types.paginationcompactslots.callables.ellipsis",
+            "sourcePath": "packages/headless/src/components/pagination/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "referencedTypes": []
+      }
+    },
+    "PaginationEllipsis": {
+      "props": {
+        "kind": "props",
+        "name": "PaginationEllipsisProps",
+        "type": "Interface PaginationEllipsisProps",
+        "resolvedType": null,
+        "description": "Properties for the PaginationEllipsis component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_pagination_types.paginationellipsisprops.props",
+        "sourcePath": "packages/headless/src/components/pagination/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "PaginationFirst": {},
+    "PaginationLast": {},
+    "PaginationList": {
+      "props": {
+        "kind": "props",
+        "name": "PaginationListProps",
+        "type": "Interface PaginationListProps",
+        "resolvedType": null,
+        "description": "Properties for the PaginationList component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_pagination_types.paginationlistprops.props",
+        "sourcePath": "packages/headless/src/components/pagination/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "PaginationListItem": {
+      "props": {
+        "kind": "props",
+        "name": "PaginationListItemProps",
+        "type": "Interface PaginationListItemProps",
+        "resolvedType": "{ value: number; type?: ButtonType; disabled?: boolean; asChild?: boolean; as?: AsTag | Component }",
+        "description": "Properties for the PaginationListItem component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_pagination_types.paginationlistitemprops.props",
+        "sourcePath": "packages/headless/src/components/pagination/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "value",
+            "type": "number",
+            "required": true,
+            "description": "Value for the page",
+            "descriptionKey": "api.generated.packages_headless_src_components_pagination_types.paginationlistitemprops.members.value",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/pagination/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "type",
+            "type": "ButtonType",
+            "required": false,
+            "description": "The type of the button element. Can be one of 'button', 'submit', or 'reset'.",
+            "descriptionKey": "api.generated.packages_headless_src_components_pagination_types.paginationlistitemprops.members.type",
+            "default": "'button'",
+            "inheritedFrom": "ButtonProps.type",
+            "sourcePath": "packages/headless/src/components/button/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ButtonType",
+                "kind": "typeAlias",
+                "type": "'button' | 'submit' | 'reset'",
+                "resolvedType": "'button' | 'submit' | 'reset'",
+                "description": "Supported button values.",
+                "descriptionKey": "api.generated.packages_headless_src_components_button_types.buttontype",
+                "sourcePath": "packages/headless/src/components/button/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "disabled",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether the component is disabled.",
+            "descriptionKey": "api.generated.packages_headless_src_components_pagination_types.paginationlistitemprops.members.disabled",
+            "default": null,
+            "inheritedFrom": "ButtonProps.disabled",
+            "sourcePath": "packages/headless/src/components/button/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "asChild",
+            "type": "boolean",
+            "required": false,
+            "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+            "descriptionKey": "api.generated.packages_headless_src_components_pagination_types.paginationlistitemprops.members.aschild",
+            "default": null,
+            "inheritedFrom": "ButtonProps.asChild",
+            "sourcePath": "packages/headless/src/components/primitive/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "as",
+            "type": "AsTag | Component",
+            "required": false,
+            "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+            "descriptionKey": "api.generated.packages_headless_src_components_pagination_types.paginationlistitemprops.members.as",
+            "default": "'div'",
+            "inheritedFrom": "ButtonProps.as",
+            "sourcePath": "packages/headless/src/components/primitive/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Component",
+                "kind": "typeAlias",
+                "type": "Component",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": null,
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.35/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [
+                  "PropsOrInstance = any",
+                  "RawBindings = any",
+                  "D = any",
+                  "C extends ComputedOptions = ComputedOptions",
+                  "M extends MethodOptions = MethodOptions",
+                  "E extends EmitsOptions | Record<string, any[]> = {}",
+                  "S extends Record<string, any> = any"
+                ],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "PaginationNext": {},
+    "PaginationPrev": {},
+    "PaginationRoot": {
+      "props": {
+        "kind": "props",
+        "name": "PaginationRootProps",
+        "type": "Interface PaginationRootProps",
+        "resolvedType": "{ page?: number; defaultPage?: number; pageSize?: number; defaultPageSize?: number; total?: number; siblingCount?: number; disabled?: boolean; showEdges?: boolean }",
+        "description": "Properties for the PaginationRoot component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_pagination_types.paginationrootprops.props",
+        "sourcePath": "packages/headless/src/components/pagination/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "page",
+            "type": "number",
+            "required": false,
+            "description": "The controlled value of the current page. Can be bound as `v-model:page`.",
+            "descriptionKey": "api.generated.packages_headless_src_components_pagination_types.paginationrootprops.members.page",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/pagination/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "defaultPage",
+            "type": "number",
+            "required": false,
+            "description": "The value of the page that should be active when initially rendered. Use when you do not need to control the value\nstate.",
+            "descriptionKey": "api.generated.packages_headless_src_components_pagination_types.paginationrootprops.members.defaultpage",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/pagination/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "pageSize",
+            "type": "number",
+            "required": false,
+            "description": "Number of items per page",
+            "descriptionKey": "api.generated.packages_headless_src_components_pagination_types.paginationrootprops.members.pagesize",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/pagination/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "defaultPageSize",
+            "type": "number",
+            "required": false,
+            "description": "The default value of `pageSize` when initially rendered. Use when you do not need to control the value state.",
+            "descriptionKey": "api.generated.packages_headless_src_components_pagination_types.paginationrootprops.members.defaultpagesize",
+            "default": "10",
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/pagination/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "total",
+            "type": "number",
+            "required": false,
+            "description": "Number of items in your list",
+            "descriptionKey": "api.generated.packages_headless_src_components_pagination_types.paginationrootprops.members.total",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/pagination/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "siblingCount",
+            "type": "number",
+            "required": false,
+            "description": "Number of sibling should be shown around the current page",
+            "descriptionKey": "api.generated.packages_headless_src_components_pagination_types.paginationrootprops.members.siblingcount",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/pagination/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "disabled",
+            "type": "boolean",
+            "required": false,
+            "description": "When `true`, prevents the user from interacting with item",
+            "descriptionKey": "api.generated.packages_headless_src_components_pagination_types.paginationrootprops.members.disabled",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/pagination/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "showEdges",
+            "type": "boolean",
+            "required": false,
+            "description": "When `true`, always show first page, last page, and ellipsis",
+            "descriptionKey": "api.generated.packages_headless_src_components_pagination_types.paginationrootprops.members.showedges",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/pagination/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      },
+      "emits": {
+        "kind": "emits",
+        "name": "PaginationRootEmits",
+        "type": "TypeAlias PaginationRootEmits",
+        "resolvedType": "{ \"update:page\": [value: number]; \"update:pageSize\": [value: number] }",
+        "description": "Events for the PaginationRoot component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_pagination_types.paginationrootemits.emits",
+        "sourcePath": "packages/headless/src/components/pagination/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [
+          {
+            "name": "update:page",
+            "type": "[value: number]",
+            "parameters": "value: number",
+            "required": true,
+            "description": "Event handler called when the page value changes",
+            "descriptionKey": "api.generated.packages_headless_src_components_pagination_types.paginationrootemits.callables.update_page",
+            "sourcePath": "packages/headless/src/components/pagination/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "update:pageSize",
+            "type": "[value: number]",
+            "parameters": "value: number",
+            "required": true,
+            "description": "Event handler called when the page size value changes",
+            "descriptionKey": "api.generated.packages_headless_src_components_pagination_types.paginationrootemits.callables.update_pagesize",
+            "sourcePath": "packages/headless/src/components/pagination/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "referencedTypes": []
+      }
+    }
+  }
+}

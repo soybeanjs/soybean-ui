@@ -4,7 +4,7 @@ import { kebabCase } from '@soybeanjs/utils';
 import { Application, ReflectionKind } from 'typedoc';
 import type { Comment, DeclarationReflection, ProjectReflection, Reflection, SignatureReflection } from 'typedoc';
 import ts from 'typescript';
-import { components as headlessComponents } from '../headless/src/constants/components';
+import { components as headlessComponents } from '../packages/headless/src/constants/components';
 import { runCliModule, writeGeneratedJsonDirectory } from './_shared';
 
 type ApiSectionKind = 'props' | 'emits' | 'slots' | 'slotProps';
@@ -80,20 +80,20 @@ type ComponentApiIndex = {
 };
 
 const rootDir = process.cwd();
-const outputDir = path.join(rootDir, 'docs/src/generated/api');
-const legacyOutputDir = path.join(rootDir, 'docs/src/generated/component-api');
+const outputDir = path.join(rootDir, 'apps/docs/src/generated/api');
+const legacyOutputDir = path.join(rootDir, 'apps/docs/src/generated/component-api');
 const typedocTsconfig = {
-  extends: './tsconfig.base.json',
+  extends: './tsconfig.json',
   compilerOptions: {
     paths: {
-      '@/*': ['./src/*'],
-      '@soybeanjs/ui': ['./src/index.ts']
+      '@/*': ['./packages/ui/src/*'],
+      '@soybeanjs/ui': ['./packages/ui/src/index.ts']
     },
     skipLibCheck: true,
-    types: ['vite/client', 'vite-plugin-vue-meta-layouts/client']
+    types: ['vite/client']
   },
-  include: ['src/**/*', 'headless/**/*', 'typings/typedoc.d.ts'],
-  exclude: ['docs/**/*', 'playground/**/*', 'test/**/*']
+  include: ['packages/ui/src/**/*', 'packages/headless/src/**/*', 'typings/typedoc.d.ts'],
+  exclude: ['apps/docs/**/*', 'apps/playground/**/*', 'test/**/*']
 } as const;
 const emptyIgnoredIndexes = Object.freeze([]) satisfies readonly number[];
 const tsTypeFormatFlags =
@@ -223,7 +223,7 @@ function buildAliasExportRegistry(): AliasExportMeta[] {
   const aliasExports: AliasExportMeta[] = [];
 
   for (const componentKey of Object.keys(componentSymbolsByKey)) {
-    const componentIndexFilePath = path.join(rootDir, 'headless/src/components', componentKey, 'index.ts');
+    const componentIndexFilePath = path.join(rootDir, 'packages/headless/src/components', componentKey, 'index.ts');
     const source = ts.sys.readFile(componentIndexFilePath);
 
     if (!source) {
@@ -344,7 +344,7 @@ function getComponentKeyFromPath(sourcePath: string | null): string | null {
     return null;
   }
 
-  const match = sourcePath.match(/(?:^|\/)(?:src|headless\/src)\/components\/([^/]+)\//);
+  const match = sourcePath.match(/(?:^|\/)(?:packages\/ui\/src|packages\/headless\/src)\/components\/([^/]+)\//);
 
   return match?.[1] ?? null;
 }
@@ -483,7 +483,9 @@ function normalizeApiTypeReference(type: ApiTypeReference, componentKey: string)
     name: normalizedName,
     type: normalizeTypeTextForComponent(type.type, normalizedComponentKey) ?? type.type,
     resolvedType: normalizeTypeTextForComponent(type.resolvedType, normalizedComponentKey),
-    descriptionKey: createDescriptionKey(normalizedSourcePath, normalizedName) ?? type.descriptionKey,
+    descriptionKey: type.external
+      ? null
+      : (createDescriptionKey(normalizedSourcePath, normalizedName) ?? type.descriptionKey),
     sourcePath: normalizedSourcePath,
     members: type.members.map(member =>
       normalizeApiMember(member, normalizedName, normalizedSourcePath, normalizedComponentKey)
@@ -972,17 +974,18 @@ function createApiTypeReference(
   name: string = symbol.name
 ): ApiTypeReference {
   const sourcePath = getDeclarationSourcePath(declaration);
+  const isExternal = isDependencySourcePath(sourcePath);
 
   return {
     name,
     kind: getTsDeclarationKind(declaration),
     type: typeText,
     resolvedType: null,
-    description: getSymbolDescription(symbol, checker),
-    descriptionKey: createDescriptionKey(sourcePath, name),
+    description: isExternal ? '' : getSymbolDescription(symbol, checker),
+    descriptionKey: isExternal ? null : createDescriptionKey(sourcePath, name),
     sourcePath,
     typeParameters: getTsDeclarationTypeParameters(declaration),
-    external: isDependencySourcePath(sourcePath),
+    external: isExternal,
     members: [],
     callables: []
   };
@@ -1404,8 +1407,8 @@ function sortEntries<T>(record: Record<string, T>): Record<string, T> {
 
 function getComponentTypeFilePaths(componentKey: string): string[] {
   return [
-    path.join(rootDir, 'src/components', componentKey, 'types.ts'),
-    path.join(rootDir, 'headless/src/components', componentKey, 'types.ts')
+    path.join(rootDir, 'packages/ui/src/components', componentKey, 'types.ts'),
+    path.join(rootDir, 'packages/headless/src/components', componentKey, 'types.ts')
   ];
 }
 
@@ -1548,7 +1551,7 @@ export async function generateApiData(): Promise<void> {
   const parsedTypedocConfig = getTypedocParsedConfig();
   const app = await Application.bootstrap(
     {
-      entryPoints: [path.join(rootDir, 'src/index.ts')],
+      entryPoints: [path.join(rootDir, 'packages/ui/src/index.ts')],
       logLevel: 'Warn'
     },
     []

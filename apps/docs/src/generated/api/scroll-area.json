@@ -1,0 +1,1356 @@
+{
+  "component": "scroll-area",
+  "symbols": {
+    "ScrollArea": {
+      "props": {
+        "kind": "props",
+        "name": "ScrollAreaProps",
+        "type": "Interface ScrollAreaProps",
+        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; ui?: Partial<ScrollAreaUi>; size?: ThemeSize; viewportProps?: ScrollAreaViewportProps; verticalScrollbarProps?: ScrollAreaScrollbarProps; horizontalScrollbarProps?: ScrollAreaScrollbarProps; thumbProps?: ScrollAreaThumbProps; cornerProps?: ScrollAreaCornerProps; type?: ScrollAreaType; dir?: Direction; scrollHideDelay?: number; asChild?: boolean; as?: AsTag | Component }",
+        "description": "Properties for the ScrollArea component.",
+        "descriptionKey": "api.generated.packages_ui_src_components_scroll_area_types.scrollareaprops.props",
+        "sourcePath": "packages/ui/src/components/scroll-area/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "class",
+            "type": "string | false | Record<string, any> | ClassValue[] | null",
+            "required": false,
+            "description": "Additional class names applied to the root element.",
+            "descriptionKey": "api.generated.packages_ui_src_components_scroll_area_types.scrollareaprops.members.class",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui/src/components/scroll-area/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ClassValue",
+                "kind": "typeAlias",
+                "type": "string | false | Record<string, any> | ClassValue[] | null | undefined",
+                "resolvedType": "string | false | Record<string, any> | ClassValue[] | null | undefined",
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_types_common.classvalue",
+                "sourcePath": "packages/headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "ui",
+            "type": "Partial<ScrollAreaUi>",
+            "required": false,
+            "description": "Per-slot class overrides for the component.",
+            "descriptionKey": "api.generated.packages_ui_src_components_scroll_area_types.scrollareaprops.members.ui",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui/src/components/scroll-area/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ScrollAreaUi",
+                "kind": "typeAlias",
+                "type": "{ root: ClassValue; viewport: ClassValue; thumb: ClassValue; scrollbar: ClassValue; corner: ClassValue; }",
+                "resolvedType": null,
+                "description": "UI class overrides for the ScrollArea component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_scroll_area_types.scrollareaui",
+                "sourcePath": "packages/headless/src/components/scroll-area/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "size",
+            "type": "ThemeSize",
+            "required": false,
+            "description": "Size of the ScrollArea component.",
+            "descriptionKey": "api.generated.packages_ui_src_components_scroll_area_types.scrollareaprops.members.size",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui/src/components/scroll-area/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ThemeSize",
+                "kind": "typeAlias",
+                "type": "'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'",
+                "resolvedType": "'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'",
+                "description": "",
+                "descriptionKey": "api.generated.packages_ui_src_theme_types.themesize",
+                "sourcePath": "packages/ui/src/theme/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "viewportProps",
+            "type": "ScrollAreaViewportProps",
+            "required": false,
+            "description": "Properties forwarded to the viewport element.",
+            "descriptionKey": "api.generated.packages_ui_src_components_scroll_area_types.scrollareaprops.members.viewportprops",
+            "default": null,
+            "inheritedFrom": "viewportProps",
+            "sourcePath": "packages/headless/src/components/scroll-area/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ScrollAreaViewportProps",
+                "kind": "interface",
+                "type": "ScrollAreaViewportProps",
+                "resolvedType": "{ nonce?: string; asChild?: boolean; as?: AsTag | Component }",
+                "description": "Properties for the ScrollAreaViewport component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_scroll_area_types.scrollareaviewportprops",
+                "sourcePath": "packages/headless/src/components/scroll-area/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "nonce",
+                    "type": "string",
+                    "required": false,
+                    "description": "Adds a nonce to the injected style tag.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_scroll_area_types.scrollareaviewportprops.members.nonce",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/scroll-area/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "asChild",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_scroll_area_types.scrollareaviewportprops.members.aschild",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "as",
+                    "type": "AsTag | Component",
+                    "required": false,
+                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+                    "descriptionKey": "api.generated.packages_headless_src_components_scroll_area_types.scrollareaviewportprops.members.as",
+                    "default": "'div'",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "verticalScrollbarProps",
+            "type": "ScrollAreaScrollbarProps",
+            "required": false,
+            "description": "Properties forwarded to the vertical scrollbar element.",
+            "descriptionKey": "api.generated.packages_ui_src_components_scroll_area_types.scrollareaprops.members.verticalscrollbarprops",
+            "default": null,
+            "inheritedFrom": "verticalScrollbarProps",
+            "sourcePath": "packages/headless/src/components/scroll-area/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ScrollAreaScrollbarProps",
+                "kind": "interface",
+                "type": "ScrollAreaScrollbarProps",
+                "resolvedType": "{ orientation?: ScrollAreaOrientation; asChild?: boolean; as?: AsTag | Component }",
+                "description": "Properties for the ScrollAreaScrollbar component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_scroll_area_types.scrollareascrollbarprops",
+                "sourcePath": "packages/headless/src/components/scroll-area/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "orientation",
+                    "type": "ScrollAreaOrientation",
+                    "required": false,
+                    "description": "The scrollbar orientation.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_scroll_area_types.scrollareascrollbarprops.members.orientation",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/scroll-area/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "asChild",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_scroll_area_types.scrollareascrollbarprops.members.aschild",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "as",
+                    "type": "AsTag | Component",
+                    "required": false,
+                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+                    "descriptionKey": "api.generated.packages_headless_src_components_scroll_area_types.scrollareascrollbarprops.members.as",
+                    "default": "'div'",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "horizontalScrollbarProps",
+            "type": "ScrollAreaScrollbarProps",
+            "required": false,
+            "description": "Properties forwarded to the horizontal scrollbar element.",
+            "descriptionKey": "api.generated.packages_ui_src_components_scroll_area_types.scrollareaprops.members.horizontalscrollbarprops",
+            "default": null,
+            "inheritedFrom": "horizontalScrollbarProps",
+            "sourcePath": "packages/headless/src/components/scroll-area/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ScrollAreaScrollbarProps",
+                "kind": "interface",
+                "type": "ScrollAreaScrollbarProps",
+                "resolvedType": "{ orientation?: ScrollAreaOrientation; asChild?: boolean; as?: AsTag | Component }",
+                "description": "Properties for the ScrollAreaScrollbar component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_scroll_area_types.scrollareascrollbarprops",
+                "sourcePath": "packages/headless/src/components/scroll-area/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "orientation",
+                    "type": "ScrollAreaOrientation",
+                    "required": false,
+                    "description": "The scrollbar orientation.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_scroll_area_types.scrollareascrollbarprops.members.orientation",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/scroll-area/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "asChild",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_scroll_area_types.scrollareascrollbarprops.members.aschild",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "as",
+                    "type": "AsTag | Component",
+                    "required": false,
+                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+                    "descriptionKey": "api.generated.packages_headless_src_components_scroll_area_types.scrollareascrollbarprops.members.as",
+                    "default": "'div'",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "thumbProps",
+            "type": "ScrollAreaThumbProps",
+            "required": false,
+            "description": "Properties forwarded to the thumb elements.",
+            "descriptionKey": "api.generated.packages_ui_src_components_scroll_area_types.scrollareaprops.members.thumbprops",
+            "default": null,
+            "inheritedFrom": "thumbProps",
+            "sourcePath": "packages/headless/src/components/scroll-area/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ScrollAreaThumbProps",
+                "kind": "interface",
+                "type": "ScrollAreaThumbProps",
+                "resolvedType": "{ asChild?: boolean; as?: AsTag | Component }",
+                "description": "Properties for the ScrollAreaThumb component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_scroll_area_types.scrollareathumbprops",
+                "sourcePath": "packages/headless/src/components/scroll-area/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "asChild",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_scroll_area_types.scrollareathumbprops.members.aschild",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "as",
+                    "type": "AsTag | Component",
+                    "required": false,
+                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+                    "descriptionKey": "api.generated.packages_headless_src_components_scroll_area_types.scrollareathumbprops.members.as",
+                    "default": "'div'",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "cornerProps",
+            "type": "ScrollAreaCornerProps",
+            "required": false,
+            "description": "Properties forwarded to the corner element.",
+            "descriptionKey": "api.generated.packages_ui_src_components_scroll_area_types.scrollareaprops.members.cornerprops",
+            "default": null,
+            "inheritedFrom": "cornerProps",
+            "sourcePath": "packages/headless/src/components/scroll-area/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ScrollAreaCornerProps",
+                "kind": "interface",
+                "type": "ScrollAreaCornerProps",
+                "resolvedType": "{ asChild?: boolean; as?: AsTag | Component }",
+                "description": "Properties for the ScrollAreaCorner component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_scroll_area_types.scrollareacornerprops",
+                "sourcePath": "packages/headless/src/components/scroll-area/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "asChild",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_scroll_area_types.scrollareacornerprops.members.aschild",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "as",
+                    "type": "AsTag | Component",
+                    "required": false,
+                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+                    "descriptionKey": "api.generated.packages_headless_src_components_scroll_area_types.scrollareacornerprops.members.as",
+                    "default": "'div'",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "type",
+            "type": "ScrollAreaType",
+            "required": false,
+            "description": "Controls scrollbar visibility behavior.",
+            "descriptionKey": "api.generated.packages_ui_src_components_scroll_area_types.scrollareaprops.members.type",
+            "default": null,
+            "inheritedFrom": "type",
+            "sourcePath": "packages/headless/src/components/scroll-area/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ScrollAreaType",
+                "kind": "typeAlias",
+                "type": "'auto' | 'always' | 'hover' | 'scroll' | 'glimpse'",
+                "resolvedType": "'auto' | 'always' | 'hover' | 'scroll' | 'glimpse'",
+                "description": "Supported scroll area values.",
+                "descriptionKey": "api.generated.packages_headless_src_components_scroll_area_types.scrollareatype",
+                "sourcePath": "packages/headless/src/components/scroll-area/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "dir",
+            "type": "Direction",
+            "required": false,
+            "description": "The reading direction of the scroll area.",
+            "descriptionKey": "api.generated.packages_ui_src_components_scroll_area_types.scrollareaprops.members.dir",
+            "default": null,
+            "inheritedFrom": "dir",
+            "sourcePath": "packages/headless/src/components/scroll-area/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Direction",
+                "kind": "typeAlias",
+                "type": "'ltr' | 'rtl'",
+                "resolvedType": "'ltr' | 'rtl'",
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_types_common.direction",
+                "sourcePath": "packages/headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "scrollHideDelay",
+            "type": "number",
+            "required": false,
+            "description": "Delay before transient scrollbars are hidden.",
+            "descriptionKey": "api.generated.packages_ui_src_components_scroll_area_types.scrollareaprops.members.scrollhidedelay",
+            "default": null,
+            "inheritedFrom": "scrollHideDelay",
+            "sourcePath": "packages/headless/src/components/scroll-area/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "asChild",
+            "type": "boolean",
+            "required": false,
+            "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+            "descriptionKey": "api.generated.packages_ui_src_components_scroll_area_types.scrollareaprops.members.aschild",
+            "default": null,
+            "inheritedFrom": "asChild",
+            "sourcePath": "packages/headless/src/components/primitive/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "as",
+            "type": "AsTag | Component",
+            "required": false,
+            "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+            "descriptionKey": "api.generated.packages_ui_src_components_scroll_area_types.scrollareaprops.members.as",
+            "default": "'div'",
+            "inheritedFrom": "as",
+            "sourcePath": "packages/headless/src/components/primitive/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Component",
+                "kind": "typeAlias",
+                "type": "Component",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": null,
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.35/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [
+                  "PropsOrInstance = any",
+                  "RawBindings = any",
+                  "D = any",
+                  "C extends ComputedOptions = ComputedOptions",
+                  "M extends MethodOptions = MethodOptions",
+                  "E extends EmitsOptions | Record<string, any[]> = {}",
+                  "S extends Record<string, any> = any"
+                ],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      },
+      "emits": {
+        "kind": "emits",
+        "name": "ScrollAreaEmits",
+        "type": "TypeAlias ScrollAreaEmits: ScrollAreaCompactEmits",
+        "resolvedType": "{}",
+        "description": "Events for the ScrollArea component.",
+        "descriptionKey": "api.generated.packages_ui_src_components_scroll_area_types.scrollareaemits.emits",
+        "sourcePath": "packages/ui/src/components/scroll-area/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [],
+        "referencedTypes": [
+          {
+            "name": "ScrollAreaRootEmits",
+            "kind": "typeAlias",
+            "type": "{}",
+            "resolvedType": "{}",
+            "description": "Events for the ScrollAreaRoot component.",
+            "descriptionKey": "api.generated.packages_headless_src_components_scroll_area_types.scrollarearootemits",
+            "sourcePath": "packages/headless/src/components/scroll-area/types.ts",
+            "typeParameters": [],
+            "external": false,
+            "members": [],
+            "callables": []
+          }
+        ]
+      }
+    },
+    "ScrollAreaCompact": {
+      "props": {
+        "kind": "props",
+        "name": "ScrollAreaCompactProps",
+        "type": "Interface ScrollAreaCompactProps",
+        "resolvedType": "{ viewportProps?: ScrollAreaViewportProps; verticalScrollbarProps?: ScrollAreaScrollbarProps; horizontalScrollbarProps?: ScrollAreaScrollbarProps; thumbProps?: ScrollAreaThumbProps; cornerProps?: ScrollAreaCornerProps; type?: ScrollAreaType; dir?: Direction; scrollHideDelay?: number; asChild?: boolean; as?: AsTag | Component }",
+        "description": "Properties for the ScrollAreaCompact component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_scroll_area_types.scrollareacompactprops.props",
+        "sourcePath": "packages/headless/src/components/scroll-area/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "viewportProps",
+            "type": "ScrollAreaViewportProps",
+            "required": false,
+            "description": "Properties forwarded to the viewport element.",
+            "descriptionKey": "api.generated.packages_headless_src_components_scroll_area_types.scrollareacompactprops.members.viewportprops",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/scroll-area/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ScrollAreaViewportProps",
+                "kind": "interface",
+                "type": "ScrollAreaViewportProps",
+                "resolvedType": "{ nonce?: string; asChild?: boolean; as?: AsTag | Component }",
+                "description": "Properties for the ScrollAreaViewport component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_scroll_area_types.scrollareaviewportprops",
+                "sourcePath": "packages/headless/src/components/scroll-area/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "nonce",
+                    "type": "string",
+                    "required": false,
+                    "description": "Adds a nonce to the injected style tag.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_scroll_area_types.scrollareaviewportprops.members.nonce",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/scroll-area/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "asChild",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_scroll_area_types.scrollareaviewportprops.members.aschild",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "as",
+                    "type": "AsTag | Component",
+                    "required": false,
+                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+                    "descriptionKey": "api.generated.packages_headless_src_components_scroll_area_types.scrollareaviewportprops.members.as",
+                    "default": "'div'",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "verticalScrollbarProps",
+            "type": "ScrollAreaScrollbarProps",
+            "required": false,
+            "description": "Properties forwarded to the vertical scrollbar element.",
+            "descriptionKey": "api.generated.packages_headless_src_components_scroll_area_types.scrollareacompactprops.members.verticalscrollbarprops",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/scroll-area/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ScrollAreaScrollbarProps",
+                "kind": "interface",
+                "type": "ScrollAreaScrollbarProps",
+                "resolvedType": "{ orientation?: ScrollAreaOrientation; asChild?: boolean; as?: AsTag | Component }",
+                "description": "Properties for the ScrollAreaScrollbar component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_scroll_area_types.scrollareascrollbarprops",
+                "sourcePath": "packages/headless/src/components/scroll-area/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "orientation",
+                    "type": "ScrollAreaOrientation",
+                    "required": false,
+                    "description": "The scrollbar orientation.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_scroll_area_types.scrollareascrollbarprops.members.orientation",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/scroll-area/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "asChild",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_scroll_area_types.scrollareascrollbarprops.members.aschild",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "as",
+                    "type": "AsTag | Component",
+                    "required": false,
+                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+                    "descriptionKey": "api.generated.packages_headless_src_components_scroll_area_types.scrollareascrollbarprops.members.as",
+                    "default": "'div'",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "horizontalScrollbarProps",
+            "type": "ScrollAreaScrollbarProps",
+            "required": false,
+            "description": "Properties forwarded to the horizontal scrollbar element.",
+            "descriptionKey": "api.generated.packages_headless_src_components_scroll_area_types.scrollareacompactprops.members.horizontalscrollbarprops",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/scroll-area/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ScrollAreaScrollbarProps",
+                "kind": "interface",
+                "type": "ScrollAreaScrollbarProps",
+                "resolvedType": "{ orientation?: ScrollAreaOrientation; asChild?: boolean; as?: AsTag | Component }",
+                "description": "Properties for the ScrollAreaScrollbar component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_scroll_area_types.scrollareascrollbarprops",
+                "sourcePath": "packages/headless/src/components/scroll-area/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "orientation",
+                    "type": "ScrollAreaOrientation",
+                    "required": false,
+                    "description": "The scrollbar orientation.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_scroll_area_types.scrollareascrollbarprops.members.orientation",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/scroll-area/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "asChild",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_scroll_area_types.scrollareascrollbarprops.members.aschild",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "as",
+                    "type": "AsTag | Component",
+                    "required": false,
+                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+                    "descriptionKey": "api.generated.packages_headless_src_components_scroll_area_types.scrollareascrollbarprops.members.as",
+                    "default": "'div'",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "thumbProps",
+            "type": "ScrollAreaThumbProps",
+            "required": false,
+            "description": "Properties forwarded to the thumb elements.",
+            "descriptionKey": "api.generated.packages_headless_src_components_scroll_area_types.scrollareacompactprops.members.thumbprops",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/scroll-area/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ScrollAreaThumbProps",
+                "kind": "interface",
+                "type": "ScrollAreaThumbProps",
+                "resolvedType": "{ asChild?: boolean; as?: AsTag | Component }",
+                "description": "Properties for the ScrollAreaThumb component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_scroll_area_types.scrollareathumbprops",
+                "sourcePath": "packages/headless/src/components/scroll-area/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "asChild",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_scroll_area_types.scrollareathumbprops.members.aschild",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "as",
+                    "type": "AsTag | Component",
+                    "required": false,
+                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+                    "descriptionKey": "api.generated.packages_headless_src_components_scroll_area_types.scrollareathumbprops.members.as",
+                    "default": "'div'",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "cornerProps",
+            "type": "ScrollAreaCornerProps",
+            "required": false,
+            "description": "Properties forwarded to the corner element.",
+            "descriptionKey": "api.generated.packages_headless_src_components_scroll_area_types.scrollareacompactprops.members.cornerprops",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/scroll-area/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ScrollAreaCornerProps",
+                "kind": "interface",
+                "type": "ScrollAreaCornerProps",
+                "resolvedType": "{ asChild?: boolean; as?: AsTag | Component }",
+                "description": "Properties for the ScrollAreaCorner component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_scroll_area_types.scrollareacornerprops",
+                "sourcePath": "packages/headless/src/components/scroll-area/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "asChild",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_scroll_area_types.scrollareacornerprops.members.aschild",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "as",
+                    "type": "AsTag | Component",
+                    "required": false,
+                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+                    "descriptionKey": "api.generated.packages_headless_src_components_scroll_area_types.scrollareacornerprops.members.as",
+                    "default": "'div'",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "type",
+            "type": "ScrollAreaType",
+            "required": false,
+            "description": "Controls scrollbar visibility behavior.",
+            "descriptionKey": "api.generated.packages_headless_src_components_scroll_area_types.scrollareacompactprops.members.type",
+            "default": null,
+            "inheritedFrom": "type",
+            "sourcePath": "packages/headless/src/components/scroll-area/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ScrollAreaType",
+                "kind": "typeAlias",
+                "type": "'auto' | 'always' | 'hover' | 'scroll' | 'glimpse'",
+                "resolvedType": "'auto' | 'always' | 'hover' | 'scroll' | 'glimpse'",
+                "description": "Supported scroll area values.",
+                "descriptionKey": "api.generated.packages_headless_src_components_scroll_area_types.scrollareatype",
+                "sourcePath": "packages/headless/src/components/scroll-area/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "dir",
+            "type": "Direction",
+            "required": false,
+            "description": "The reading direction of the scroll area.",
+            "descriptionKey": "api.generated.packages_headless_src_components_scroll_area_types.scrollareacompactprops.members.dir",
+            "default": null,
+            "inheritedFrom": "dir",
+            "sourcePath": "packages/headless/src/components/scroll-area/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Direction",
+                "kind": "typeAlias",
+                "type": "'ltr' | 'rtl'",
+                "resolvedType": "'ltr' | 'rtl'",
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_types_common.direction",
+                "sourcePath": "packages/headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "scrollHideDelay",
+            "type": "number",
+            "required": false,
+            "description": "Delay before transient scrollbars are hidden.",
+            "descriptionKey": "api.generated.packages_headless_src_components_scroll_area_types.scrollareacompactprops.members.scrollhidedelay",
+            "default": null,
+            "inheritedFrom": "scrollHideDelay",
+            "sourcePath": "packages/headless/src/components/scroll-area/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "asChild",
+            "type": "boolean",
+            "required": false,
+            "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+            "descriptionKey": "api.generated.packages_headless_src_components_scroll_area_types.scrollareacompactprops.members.aschild",
+            "default": null,
+            "inheritedFrom": "asChild",
+            "sourcePath": "packages/headless/src/components/primitive/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "as",
+            "type": "AsTag | Component",
+            "required": false,
+            "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+            "descriptionKey": "api.generated.packages_headless_src_components_scroll_area_types.scrollareacompactprops.members.as",
+            "default": "'div'",
+            "inheritedFrom": "as",
+            "sourcePath": "packages/headless/src/components/primitive/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Component",
+                "kind": "typeAlias",
+                "type": "Component",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": null,
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.35/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [
+                  "PropsOrInstance = any",
+                  "RawBindings = any",
+                  "D = any",
+                  "C extends ComputedOptions = ComputedOptions",
+                  "M extends MethodOptions = MethodOptions",
+                  "E extends EmitsOptions | Record<string, any[]> = {}",
+                  "S extends Record<string, any> = any"
+                ],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      },
+      "emits": {
+        "kind": "emits",
+        "name": "ScrollAreaCompactEmits",
+        "type": "TypeAlias ScrollAreaCompactEmits: ScrollAreaRootEmits",
+        "resolvedType": "{}",
+        "description": "Events for the ScrollAreaCompact component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_scroll_area_types.scrollareacompactemits.emits",
+        "sourcePath": "packages/headless/src/components/scroll-area/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [],
+        "referencedTypes": [
+          {
+            "name": "ScrollAreaRootEmits",
+            "kind": "typeAlias",
+            "type": "{}",
+            "resolvedType": "{}",
+            "description": "Events for the ScrollAreaRoot component.",
+            "descriptionKey": "api.generated.packages_headless_src_components_scroll_area_types.scrollarearootemits",
+            "sourcePath": "packages/headless/src/components/scroll-area/types.ts",
+            "typeParameters": [],
+            "external": false,
+            "members": [],
+            "callables": []
+          }
+        ]
+      },
+      "slots": {
+        "kind": "slots",
+        "name": "ScrollAreaCompactSlots",
+        "type": "TypeAlias ScrollAreaCompactSlots",
+        "resolvedType": "{ ScrollAreaCompact?: (() => any) }",
+        "description": "Slots for the ScrollAreaCompact component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_scroll_area_types.scrollareacompactslots.slots",
+        "sourcePath": "packages/headless/src/components/scroll-area/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [
+          {
+            "name": "default",
+            "type": "(() => any) | undefined",
+            "parameters": "(() => any) | undefined",
+            "required": false,
+            "description": "Custom content for the default slot.",
+            "descriptionKey": "api.generated.packages_headless_src_components_scroll_area_types.scrollareacompactslots.callables.default",
+            "sourcePath": "packages/headless/src/components/scroll-area/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "referencedTypes": []
+      }
+    },
+    "ScrollAreaCorner": {
+      "props": {
+        "kind": "props",
+        "name": "ScrollAreaCornerProps",
+        "type": "Interface ScrollAreaCornerProps",
+        "resolvedType": "{ asChild?: boolean; as?: AsTag | Component }",
+        "description": "Properties for the ScrollAreaCorner component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_scroll_area_types.scrollareacornerprops.props",
+        "sourcePath": "packages/headless/src/components/scroll-area/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "asChild",
+            "type": "boolean",
+            "required": false,
+            "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+            "descriptionKey": "api.generated.packages_headless_src_components_scroll_area_types.scrollareacornerprops.members.aschild",
+            "default": null,
+            "inheritedFrom": "PrimitiveWithBaseProps.asChild",
+            "sourcePath": "packages/headless/src/components/primitive/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "as",
+            "type": "AsTag | Component",
+            "required": false,
+            "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+            "descriptionKey": "api.generated.packages_headless_src_components_scroll_area_types.scrollareacornerprops.members.as",
+            "default": "'div'",
+            "inheritedFrom": "PrimitiveWithBaseProps.as",
+            "sourcePath": "packages/headless/src/components/primitive/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Component",
+                "kind": "typeAlias",
+                "type": "Component",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": null,
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.35/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [
+                  "PropsOrInstance = any",
+                  "RawBindings = any",
+                  "D = any",
+                  "C extends ComputedOptions = ComputedOptions",
+                  "M extends MethodOptions = MethodOptions",
+                  "E extends EmitsOptions | Record<string, any[]> = {}",
+                  "S extends Record<string, any> = any"
+                ],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "ScrollAreaRoot": {
+      "props": {
+        "kind": "props",
+        "name": "ScrollAreaRootProps",
+        "type": "Interface ScrollAreaRootProps",
+        "resolvedType": "{ type?: ScrollAreaType; dir?: Direction; scrollHideDelay?: number; asChild?: boolean; as?: AsTag | Component }",
+        "description": "Properties for the ScrollAreaRoot component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_scroll_area_types.scrollarearootprops.props",
+        "sourcePath": "packages/headless/src/components/scroll-area/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "type",
+            "type": "ScrollAreaType",
+            "required": false,
+            "description": "Controls scrollbar visibility behavior.",
+            "descriptionKey": "api.generated.packages_headless_src_components_scroll_area_types.scrollarearootprops.members.type",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/scroll-area/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ScrollAreaType",
+                "kind": "typeAlias",
+                "type": "'auto' | 'always' | 'hover' | 'scroll' | 'glimpse'",
+                "resolvedType": "'auto' | 'always' | 'hover' | 'scroll' | 'glimpse'",
+                "description": "Supported scroll area values.",
+                "descriptionKey": "api.generated.packages_headless_src_components_scroll_area_types.scrollareatype",
+                "sourcePath": "packages/headless/src/components/scroll-area/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "dir",
+            "type": "Direction",
+            "required": false,
+            "description": "The reading direction of the scroll area.",
+            "descriptionKey": "api.generated.packages_headless_src_components_scroll_area_types.scrollarearootprops.members.dir",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/scroll-area/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Direction",
+                "kind": "typeAlias",
+                "type": "'ltr' | 'rtl'",
+                "resolvedType": "'ltr' | 'rtl'",
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_types_common.direction",
+                "sourcePath": "packages/headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "scrollHideDelay",
+            "type": "number",
+            "required": false,
+            "description": "Delay before transient scrollbars are hidden.",
+            "descriptionKey": "api.generated.packages_headless_src_components_scroll_area_types.scrollarearootprops.members.scrollhidedelay",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/scroll-area/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "asChild",
+            "type": "boolean",
+            "required": false,
+            "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+            "descriptionKey": "api.generated.packages_headless_src_components_scroll_area_types.scrollarearootprops.members.aschild",
+            "default": null,
+            "inheritedFrom": "PrimitiveWithBaseProps.asChild",
+            "sourcePath": "packages/headless/src/components/primitive/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "as",
+            "type": "AsTag | Component",
+            "required": false,
+            "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+            "descriptionKey": "api.generated.packages_headless_src_components_scroll_area_types.scrollarearootprops.members.as",
+            "default": "'div'",
+            "inheritedFrom": "PrimitiveWithBaseProps.as",
+            "sourcePath": "packages/headless/src/components/primitive/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Component",
+                "kind": "typeAlias",
+                "type": "Component",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": null,
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.35/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [
+                  "PropsOrInstance = any",
+                  "RawBindings = any",
+                  "D = any",
+                  "C extends ComputedOptions = ComputedOptions",
+                  "M extends MethodOptions = MethodOptions",
+                  "E extends EmitsOptions | Record<string, any[]> = {}",
+                  "S extends Record<string, any> = any"
+                ],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      },
+      "emits": {
+        "kind": "emits",
+        "name": "ScrollAreaRootEmits",
+        "type": "TypeAlias ScrollAreaRootEmits: {}",
+        "resolvedType": "{}",
+        "description": "Events for the ScrollAreaRoot component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_scroll_area_types.scrollarearootemits.emits",
+        "sourcePath": "packages/headless/src/components/scroll-area/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "ScrollAreaScrollbar": {
+      "props": {
+        "kind": "props",
+        "name": "ScrollAreaScrollbarProps",
+        "type": "Interface ScrollAreaScrollbarProps",
+        "resolvedType": "{ orientation?: ScrollAreaOrientation; asChild?: boolean; as?: AsTag | Component }",
+        "description": "Properties for the ScrollAreaScrollbar component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_scroll_area_types.scrollareascrollbarprops.props",
+        "sourcePath": "packages/headless/src/components/scroll-area/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "orientation",
+            "type": "ScrollAreaOrientation",
+            "required": false,
+            "description": "The scrollbar orientation.",
+            "descriptionKey": "api.generated.packages_headless_src_components_scroll_area_types.scrollareascrollbarprops.members.orientation",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/scroll-area/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ScrollAreaOrientation",
+                "kind": "typeAlias",
+                "type": "'vertical' | 'horizontal'",
+                "resolvedType": "'vertical' | 'horizontal'",
+                "description": "Type information for ScrollAreaOrientation.",
+                "descriptionKey": "api.generated.packages_headless_src_components_scroll_area_types.scrollareaorientation",
+                "sourcePath": "packages/headless/src/components/scroll-area/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "asChild",
+            "type": "boolean",
+            "required": false,
+            "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+            "descriptionKey": "api.generated.packages_headless_src_components_scroll_area_types.scrollareascrollbarprops.members.aschild",
+            "default": null,
+            "inheritedFrom": "PrimitiveWithBaseProps.asChild",
+            "sourcePath": "packages/headless/src/components/primitive/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "as",
+            "type": "AsTag | Component",
+            "required": false,
+            "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+            "descriptionKey": "api.generated.packages_headless_src_components_scroll_area_types.scrollareascrollbarprops.members.as",
+            "default": "'div'",
+            "inheritedFrom": "PrimitiveWithBaseProps.as",
+            "sourcePath": "packages/headless/src/components/primitive/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Component",
+                "kind": "typeAlias",
+                "type": "Component",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": null,
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.35/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [
+                  "PropsOrInstance = any",
+                  "RawBindings = any",
+                  "D = any",
+                  "C extends ComputedOptions = ComputedOptions",
+                  "M extends MethodOptions = MethodOptions",
+                  "E extends EmitsOptions | Record<string, any[]> = {}",
+                  "S extends Record<string, any> = any"
+                ],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "ScrollAreaThumb": {
+      "props": {
+        "kind": "props",
+        "name": "ScrollAreaThumbProps",
+        "type": "Interface ScrollAreaThumbProps",
+        "resolvedType": "{ asChild?: boolean; as?: AsTag | Component }",
+        "description": "Properties for the ScrollAreaThumb component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_scroll_area_types.scrollareathumbprops.props",
+        "sourcePath": "packages/headless/src/components/scroll-area/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "asChild",
+            "type": "boolean",
+            "required": false,
+            "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+            "descriptionKey": "api.generated.packages_headless_src_components_scroll_area_types.scrollareathumbprops.members.aschild",
+            "default": null,
+            "inheritedFrom": "PrimitiveWithBaseProps.asChild",
+            "sourcePath": "packages/headless/src/components/primitive/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "as",
+            "type": "AsTag | Component",
+            "required": false,
+            "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+            "descriptionKey": "api.generated.packages_headless_src_components_scroll_area_types.scrollareathumbprops.members.as",
+            "default": "'div'",
+            "inheritedFrom": "PrimitiveWithBaseProps.as",
+            "sourcePath": "packages/headless/src/components/primitive/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Component",
+                "kind": "typeAlias",
+                "type": "Component",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": null,
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.35/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [
+                  "PropsOrInstance = any",
+                  "RawBindings = any",
+                  "D = any",
+                  "C extends ComputedOptions = ComputedOptions",
+                  "M extends MethodOptions = MethodOptions",
+                  "E extends EmitsOptions | Record<string, any[]> = {}",
+                  "S extends Record<string, any> = any"
+                ],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "ScrollAreaViewport": {
+      "props": {
+        "kind": "props",
+        "name": "ScrollAreaViewportProps",
+        "type": "Interface ScrollAreaViewportProps",
+        "resolvedType": "{ nonce?: string; asChild?: boolean; as?: AsTag | Component }",
+        "description": "Properties for the ScrollAreaViewport component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_scroll_area_types.scrollareaviewportprops.props",
+        "sourcePath": "packages/headless/src/components/scroll-area/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "nonce",
+            "type": "string",
+            "required": false,
+            "description": "Adds a nonce to the injected style tag.",
+            "descriptionKey": "api.generated.packages_headless_src_components_scroll_area_types.scrollareaviewportprops.members.nonce",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/scroll-area/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "asChild",
+            "type": "boolean",
+            "required": false,
+            "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+            "descriptionKey": "api.generated.packages_headless_src_components_scroll_area_types.scrollareaviewportprops.members.aschild",
+            "default": null,
+            "inheritedFrom": "PrimitiveWithBaseProps.asChild",
+            "sourcePath": "packages/headless/src/components/primitive/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "as",
+            "type": "AsTag | Component",
+            "required": false,
+            "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+            "descriptionKey": "api.generated.packages_headless_src_components_scroll_area_types.scrollareaviewportprops.members.as",
+            "default": "'div'",
+            "inheritedFrom": "PrimitiveWithBaseProps.as",
+            "sourcePath": "packages/headless/src/components/primitive/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Component",
+                "kind": "typeAlias",
+                "type": "Component",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": null,
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.35/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [
+                  "PropsOrInstance = any",
+                  "RawBindings = any",
+                  "D = any",
+                  "C extends ComputedOptions = ComputedOptions",
+                  "M extends MethodOptions = MethodOptions",
+                  "E extends EmitsOptions | Record<string, any[]> = {}",
+                  "S extends Record<string, any> = any"
+                ],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      }
+    }
+  }
+}

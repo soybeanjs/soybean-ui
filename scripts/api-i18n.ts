@@ -10,9 +10,9 @@ import {
 } from './_shared';
 
 const rootDir = process.cwd();
-const apiDir = path.join(rootDir, 'docs/src/generated/api');
-const localeDir = path.join(rootDir, 'docs/locales');
-const outputDir = path.join(rootDir, 'docs/src/generated/api-locales');
+const apiDir = path.join(rootDir, 'apps/docs/src/generated/api');
+const localeDir = path.join(rootDir, 'apps/docs/locales');
+const outputDir = path.join(rootDir, 'apps/docs/src/generated/api-locales');
 const defaultLocale = 'en';
 
 function collectDescriptionEntries(value: unknown, collected: Map<string, string>): void {

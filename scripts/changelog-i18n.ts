@@ -10,9 +10,9 @@ import {
 } from './_shared';
 
 const rootDir = process.cwd();
-const changelogDir = path.join(rootDir, 'docs/src/generated/changelog');
-const localeDir = path.join(rootDir, 'docs/locales');
-const outputDir = path.join(rootDir, 'docs/src/generated/changelog-locales');
+const changelogDir = path.join(rootDir, 'apps/docs/src/generated/changelog');
+const localeDir = path.join(rootDir, 'apps/docs/locales');
+const outputDir = path.join(rootDir, 'apps/docs/src/generated/changelog-locales');
 const defaultLocale = 'en';
 
 function collectSummaryEntries(value: unknown, collected: Map<string, string>): void {

@@ -1,0 +1,1375 @@
+{
+  "component": "tabs",
+  "symbols": {
+    "Tabs": {
+      "props": {
+        "kind": "props",
+        "name": "TabsProps",
+        "type": "Interface TabsProps<T>",
+        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<TabsUi>; fill?: TabsFill; items: T[]; enableIndicator?: boolean; listProps?: TabsListProps; triggerProps?: TabsTriggerProps; contentProps?: TabsContentProps; indicatorProps?: TabsIndicatorProps; modelValue?: T['value'] | null; defaultValue?: T['value'] | null; activationMode?: TabsActivationMode; unmountOnHide?: boolean; dir?: Direction; orientation?: DataOrientation; loop?: boolean }",
+        "description": "Properties for the Tabs component.",
+        "descriptionKey": "api.generated.packages_ui_src_components_tabs_types.tabsprops.props",
+        "sourcePath": "packages/ui/src/components/tabs/types.ts",
+        "typeParameters": ["TypeParameter T"],
+        "members": [
+          {
+            "name": "class",
+            "type": "string | false | Record<string, any> | ClassValue[] | null",
+            "required": false,
+            "description": "Additional class names applied to the root element.",
+            "descriptionKey": "api.generated.packages_ui_src_components_tabs_types.tabsprops.members.class",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui/src/components/tabs/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ClassValue",
+                "kind": "typeAlias",
+                "type": "string | false | Record<string, any> | ClassValue[] | null | undefined",
+                "resolvedType": "string | false | Record<string, any> | ClassValue[] | null | undefined",
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_types_common.classvalue",
+                "sourcePath": "packages/headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "size",
+            "type": "ThemeSize",
+            "required": false,
+            "description": "Visual size of the component.",
+            "descriptionKey": "api.generated.packages_ui_src_components_tabs_types.tabsprops.members.size",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui/src/components/tabs/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ThemeSize",
+                "kind": "typeAlias",
+                "type": "'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'",
+                "resolvedType": "'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'",
+                "description": "",
+                "descriptionKey": "api.generated.packages_ui_src_theme_types.themesize",
+                "sourcePath": "packages/ui/src/theme/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "ui",
+            "type": "Partial<TabsUi>",
+            "required": false,
+            "description": "Styled tabs ui slots, including `indicatorContent` for the compact indicator body.",
+            "descriptionKey": "api.generated.packages_ui_src_components_tabs_types.tabsprops.members.ui",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui/src/components/tabs/types.ts",
+            "referencedTypes": [
+              {
+                "name": "TabsUi",
+                "kind": "typeAlias",
+                "type": "{ root: ClassValue; trigger: ClassValue; content: ClassValue; indicator: ClassValue; list: ClassValue; indicatorContent: ClassValue; }",
+                "resolvedType": null,
+                "description": "UI class overrides for the Tabs component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_tabs_types.tabsui",
+                "sourcePath": "packages/headless/src/components/tabs/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "fill",
+            "type": "TabsFill",
+            "required": false,
+            "description": "Fill.",
+            "descriptionKey": "api.generated.packages_ui_src_components_tabs_types.tabsprops.members.fill",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui/src/components/tabs/types.ts",
+            "referencedTypes": [
+              {
+                "name": "TabsFill",
+                "kind": "typeAlias",
+                "type": "'auto' | 'full'",
+                "resolvedType": "'auto' | 'full'",
+                "description": "",
+                "descriptionKey": "api.generated.packages_ui_src_styles_tabs.tabsfill",
+                "sourcePath": "packages/ui/src/styles/tabs.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "items",
+            "type": "T[]",
+            "required": true,
+            "description": "Items rendered by the component.",
+            "descriptionKey": "api.generated.packages_ui_src_components_tabs_types.tabsprops.members.items",
+            "default": null,
+            "inheritedFrom": "items",
+            "sourcePath": "packages/headless/src/components/tabs/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "enableIndicator",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether to enable indicator.",
+            "descriptionKey": "api.generated.packages_ui_src_components_tabs_types.tabsprops.members.enableindicator",
+            "default": null,
+            "inheritedFrom": "enableIndicator",
+            "sourcePath": "packages/headless/src/components/tabs/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "listProps",
+            "type": "TabsListProps",
+            "required": false,
+            "description": "Properties forwarded to the list element.",
+            "descriptionKey": "api.generated.packages_ui_src_components_tabs_types.tabsprops.members.listprops",
+            "default": null,
+            "inheritedFrom": "listProps",
+            "sourcePath": "packages/headless/src/components/tabs/types.ts",
+            "referencedTypes": [
+              {
+                "name": "TabsListProps",
+                "kind": "interface",
+                "type": "TabsListProps",
+                "resolvedType": null,
+                "description": "Properties for the TabsList component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_tabs_types.tabslistprops",
+                "sourcePath": "packages/headless/src/components/tabs/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "triggerProps",
+            "type": "TabsTriggerProps",
+            "required": false,
+            "description": "Properties forwarded to the trigger element.",
+            "descriptionKey": "api.generated.packages_ui_src_components_tabs_types.tabsprops.members.triggerprops",
+            "default": null,
+            "inheritedFrom": "triggerProps",
+            "sourcePath": "packages/headless/src/components/tabs/types.ts",
+            "referencedTypes": [
+              {
+                "name": "TabsTriggerProps",
+                "kind": "interface",
+                "type": "TabsTriggerProps",
+                "resolvedType": "{ value: string | number; disabled?: boolean; asChild?: boolean; as?: AsTag | Component }",
+                "description": "Properties for the TabsTrigger component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_tabs_types.tabstriggerprops",
+                "sourcePath": "packages/headless/src/components/tabs/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "value",
+                    "type": "string | number",
+                    "required": true,
+                    "description": "A unique value that associates the trigger with a content.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_tabs_types.tabstriggerprops.members.value",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/tabs/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "disabled",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "When `true`, prevents the user from interacting with the tab.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_tabs_types.tabstriggerprops.members.disabled",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/tabs/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "asChild",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_tabs_types.tabstriggerprops.members.aschild",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "as",
+                    "type": "AsTag | Component",
+                    "required": false,
+                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+                    "descriptionKey": "api.generated.packages_headless_src_components_tabs_types.tabstriggerprops.members.as",
+                    "default": "'div'",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "contentProps",
+            "type": "TabsContentProps",
+            "required": false,
+            "description": "Properties forwarded to the content element.",
+            "descriptionKey": "api.generated.packages_ui_src_components_tabs_types.tabsprops.members.contentprops",
+            "default": null,
+            "inheritedFrom": "contentProps",
+            "sourcePath": "packages/headless/src/components/tabs/types.ts",
+            "referencedTypes": [
+              {
+                "name": "TabsContentProps",
+                "kind": "interface",
+                "type": "TabsContentProps",
+                "resolvedType": "{ value: string | number; forceMount?: boolean }",
+                "description": "Properties for the TabsContent component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_tabs_types.tabscontentprops",
+                "sourcePath": "packages/headless/src/components/tabs/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "value",
+                    "type": "string | number",
+                    "required": true,
+                    "description": "A unique value that associates the content with a trigger.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_tabs_types.tabscontentprops.members.value",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/tabs/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "forceMount",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Used to force mounting when more control is needed.\n\nUseful when controlling animation with Vue animation libraries.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_tabs_types.tabscontentprops.members.forcemount",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/types/component.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "indicatorProps",
+            "type": "TabsIndicatorProps",
+            "required": false,
+            "description": "Properties forwarded to the indicator element.",
+            "descriptionKey": "api.generated.packages_ui_src_components_tabs_types.tabsprops.members.indicatorprops",
+            "default": null,
+            "inheritedFrom": "indicatorProps",
+            "sourcePath": "packages/headless/src/components/tabs/types.ts",
+            "referencedTypes": [
+              {
+                "name": "TabsIndicatorProps",
+                "kind": "interface",
+                "type": "TabsIndicatorProps",
+                "resolvedType": "{ asChild?: boolean; as?: AsTag | Component }",
+                "description": "Properties for the TabsIndicator component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_tabs_types.tabsindicatorprops",
+                "sourcePath": "packages/headless/src/components/tabs/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "asChild",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_tabs_types.tabsindicatorprops.members.aschild",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "as",
+                    "type": "AsTag | Component",
+                    "required": false,
+                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+                    "descriptionKey": "api.generated.packages_headless_src_components_tabs_types.tabsindicatorprops.members.as",
+                    "default": "'div'",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "modelValue",
+            "type": "T['value'] | null",
+            "required": false,
+            "description": "The controlled value of the tab to activate. Can be bind as `v-model`.",
+            "descriptionKey": "api.generated.packages_ui_src_components_tabs_types.tabsprops.members.modelvalue",
+            "default": null,
+            "inheritedFrom": "modelValue",
+            "sourcePath": "packages/headless/src/components/tabs/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "defaultValue",
+            "type": "T['value'] | null",
+            "required": false,
+            "description": "The value of the tab that should be active when initially rendered. Use when you do not need to control the state\nof the tabs",
+            "descriptionKey": "api.generated.packages_ui_src_components_tabs_types.tabsprops.members.defaultvalue",
+            "default": null,
+            "inheritedFrom": "defaultValue",
+            "sourcePath": "packages/headless/src/components/tabs/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "activationMode",
+            "type": "TabsActivationMode",
+            "required": false,
+            "description": "Whether a tab is activated automatically (on focus) or manually (on click).",
+            "descriptionKey": "api.generated.packages_ui_src_components_tabs_types.tabsprops.members.activationmode",
+            "default": "automatic",
+            "inheritedFrom": "activationMode",
+            "sourcePath": "packages/headless/src/components/tabs/types.ts",
+            "referencedTypes": [
+              {
+                "name": "TabsActivationMode",
+                "kind": "typeAlias",
+                "type": "'automatic' | 'manual'",
+                "resolvedType": "'automatic' | 'manual'",
+                "description": "Type information for TabsActivationMode.",
+                "descriptionKey": "api.generated.packages_headless_src_components_tabs_types.tabsactivationmode",
+                "sourcePath": "packages/headless/src/components/tabs/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "unmountOnHide",
+            "type": "boolean",
+            "required": false,
+            "description": "When `true`, the element will be unmounted on closed state.",
+            "descriptionKey": "api.generated.packages_ui_src_components_tabs_types.tabsprops.members.unmountonhide",
+            "default": "`true`",
+            "inheritedFrom": "unmountOnHide",
+            "sourcePath": "packages/headless/src/components/tabs/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "dir",
+            "type": "Direction",
+            "required": false,
+            "description": "The direction of navigation between items.",
+            "descriptionKey": "api.generated.packages_ui_src_components_tabs_types.tabsprops.members.dir",
+            "default": null,
+            "inheritedFrom": "dir",
+            "sourcePath": "packages/headless/src/components/roving-focus/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Direction",
+                "kind": "typeAlias",
+                "type": "'ltr' | 'rtl'",
+                "resolvedType": "'ltr' | 'rtl'",
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_types_common.direction",
+                "sourcePath": "packages/headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "orientation",
+            "type": "DataOrientation",
+            "required": false,
+            "description": "The orientation of the group. Mainly so arrow navigation is done accordingly (left & right vs. up & down)",
+            "descriptionKey": "api.generated.packages_ui_src_components_tabs_types.tabsprops.members.orientation",
+            "default": null,
+            "inheritedFrom": "orientation",
+            "sourcePath": "packages/headless/src/components/roving-focus/types.ts",
+            "referencedTypes": [
+              {
+                "name": "DataOrientation",
+                "kind": "typeAlias",
+                "type": "'vertical' | 'horizontal'",
+                "resolvedType": "'vertical' | 'horizontal'",
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_types_common.dataorientation",
+                "sourcePath": "packages/headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "loop",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether keyboard navigation should loop around",
+            "descriptionKey": "api.generated.packages_ui_src_components_tabs_types.tabsprops.members.loop",
+            "default": "false",
+            "inheritedFrom": "loop",
+            "sourcePath": "packages/headless/src/components/roving-focus/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      },
+      "emits": {
+        "kind": "emits",
+        "name": "TabsEmits",
+        "type": "TypeAlias TabsEmits<T>: TabsCompactEmits<T>",
+        "resolvedType": "{ \"update:modelValue\": [payload: Exclude<T, undefined>] }",
+        "description": "Events for the Tabs component.",
+        "descriptionKey": "api.generated.packages_ui_src_components_tabs_types.tabsemits.emits",
+        "sourcePath": "packages/ui/src/components/tabs/types.ts",
+        "typeParameters": ["TypeParameter T"],
+        "members": [],
+        "callables": [
+          {
+            "name": "update:modelValue",
+            "type": "[payload: Exclude<T, undefined>]",
+            "parameters": "payload: Exclude<T, undefined>",
+            "required": true,
+            "description": "Event handler called when the value changes",
+            "descriptionKey": "api.generated.packages_ui_src_components_tabs_types.tabsemits.callables.update_modelvalue",
+            "sourcePath": "packages/headless/src/components/tabs/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "referencedTypes": []
+      },
+      "slots": {
+        "kind": "slots",
+        "name": "TabsSlots",
+        "type": "TypeAlias TabsSlots<T>: TabsCompactSlots<T>",
+        "resolvedType": "{ trigger?: ((props: T & { active: boolean; }) => any); content?: ((props: T & { active: boolean; }) => any); indicator?: (() => any) }",
+        "description": "Slots for the Tabs component.",
+        "descriptionKey": "api.generated.packages_ui_src_components_tabs_types.tabsslots.slots",
+        "sourcePath": "packages/ui/src/components/tabs/types.ts",
+        "typeParameters": ["TypeParameter T"],
+        "members": [],
+        "callables": [
+          {
+            "name": "trigger",
+            "type": "((props: T & { active: boolean; }) => any) | undefined",
+            "parameters": "((props: T & { active: boolean; }) => any) | undefined",
+            "required": false,
+            "description": "Custom content for the trigger slot.",
+            "descriptionKey": "api.generated.packages_ui_src_components_tabs_types.tabsslots.callables.trigger",
+            "sourcePath": "packages/headless/src/components/tabs/types.ts",
+            "referencedTypes": [
+              {
+                "name": "__type",
+                "kind": "typeLiteral",
+                "type": "{ active: boolean; }",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_components_tabs_types.type",
+                "sourcePath": "packages/headless/src/components/tabs/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "content",
+            "type": "((props: T & { active: boolean; }) => any) | undefined",
+            "parameters": "((props: T & { active: boolean; }) => any) | undefined",
+            "required": false,
+            "description": "Custom content for the content slot.",
+            "descriptionKey": "api.generated.packages_ui_src_components_tabs_types.tabsslots.callables.content",
+            "sourcePath": "packages/headless/src/components/tabs/types.ts",
+            "referencedTypes": [
+              {
+                "name": "__type",
+                "kind": "typeLiteral",
+                "type": "{ active: boolean; }",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_components_tabs_types.type",
+                "sourcePath": "packages/headless/src/components/tabs/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "indicator",
+            "type": "(() => any) | undefined",
+            "parameters": "(() => any) | undefined",
+            "required": false,
+            "description": "Custom content for the indicator slot.",
+            "descriptionKey": "api.generated.packages_ui_src_components_tabs_types.tabsslots.callables.indicator",
+            "sourcePath": "packages/headless/src/components/tabs/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "referencedTypes": []
+      }
+    },
+    "TabsCompact": {
+      "props": {
+        "kind": "props",
+        "name": "TabsCompactProps",
+        "type": "Interface TabsCompactProps<T>",
+        "resolvedType": "{ items: T[]; enableIndicator?: boolean; listProps?: TabsListProps; triggerProps?: TabsTriggerProps; contentProps?: TabsContentProps; indicatorProps?: TabsIndicatorProps; modelValue?: T['value'] | null; defaultValue?: T['value'] | null; activationMode?: TabsActivationMode; unmountOnHide?: boolean; dir?: Direction; orientation?: DataOrientation; loop?: boolean }",
+        "description": "Properties for the TabsCompact component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_tabs_types.tabscompactprops.props",
+        "sourcePath": "packages/headless/src/components/tabs/types.ts",
+        "typeParameters": ["TypeParameter T"],
+        "members": [
+          {
+            "name": "items",
+            "type": "T[]",
+            "required": true,
+            "description": "Items rendered by the component.",
+            "descriptionKey": "api.generated.packages_headless_src_components_tabs_types.tabscompactprops.members.items",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/tabs/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "enableIndicator",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether to enable indicator.",
+            "descriptionKey": "api.generated.packages_headless_src_components_tabs_types.tabscompactprops.members.enableindicator",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/tabs/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "listProps",
+            "type": "TabsListProps",
+            "required": false,
+            "description": "Properties forwarded to the list element.",
+            "descriptionKey": "api.generated.packages_headless_src_components_tabs_types.tabscompactprops.members.listprops",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/tabs/types.ts",
+            "referencedTypes": [
+              {
+                "name": "TabsListProps",
+                "kind": "interface",
+                "type": "TabsListProps",
+                "resolvedType": null,
+                "description": "Properties for the TabsList component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_tabs_types.tabslistprops",
+                "sourcePath": "packages/headless/src/components/tabs/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "triggerProps",
+            "type": "TabsTriggerProps",
+            "required": false,
+            "description": "Properties forwarded to the trigger element.",
+            "descriptionKey": "api.generated.packages_headless_src_components_tabs_types.tabscompactprops.members.triggerprops",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/tabs/types.ts",
+            "referencedTypes": [
+              {
+                "name": "TabsTriggerProps",
+                "kind": "interface",
+                "type": "TabsTriggerProps",
+                "resolvedType": "{ value: string | number; disabled?: boolean; asChild?: boolean; as?: AsTag | Component }",
+                "description": "Properties for the TabsTrigger component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_tabs_types.tabstriggerprops",
+                "sourcePath": "packages/headless/src/components/tabs/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "value",
+                    "type": "string | number",
+                    "required": true,
+                    "description": "A unique value that associates the trigger with a content.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_tabs_types.tabstriggerprops.members.value",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/tabs/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "disabled",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "When `true`, prevents the user from interacting with the tab.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_tabs_types.tabstriggerprops.members.disabled",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/tabs/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "asChild",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_tabs_types.tabstriggerprops.members.aschild",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "as",
+                    "type": "AsTag | Component",
+                    "required": false,
+                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+                    "descriptionKey": "api.generated.packages_headless_src_components_tabs_types.tabstriggerprops.members.as",
+                    "default": "'div'",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "contentProps",
+            "type": "TabsContentProps",
+            "required": false,
+            "description": "Properties forwarded to the content element.",
+            "descriptionKey": "api.generated.packages_headless_src_components_tabs_types.tabscompactprops.members.contentprops",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/tabs/types.ts",
+            "referencedTypes": [
+              {
+                "name": "TabsContentProps",
+                "kind": "interface",
+                "type": "TabsContentProps",
+                "resolvedType": "{ value: string | number; forceMount?: boolean }",
+                "description": "Properties for the TabsContent component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_tabs_types.tabscontentprops",
+                "sourcePath": "packages/headless/src/components/tabs/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "value",
+                    "type": "string | number",
+                    "required": true,
+                    "description": "A unique value that associates the content with a trigger.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_tabs_types.tabscontentprops.members.value",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/tabs/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "forceMount",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Used to force mounting when more control is needed.\n\nUseful when controlling animation with Vue animation libraries.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_tabs_types.tabscontentprops.members.forcemount",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/types/component.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "indicatorProps",
+            "type": "TabsIndicatorProps",
+            "required": false,
+            "description": "Properties forwarded to the indicator element.",
+            "descriptionKey": "api.generated.packages_headless_src_components_tabs_types.tabscompactprops.members.indicatorprops",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/tabs/types.ts",
+            "referencedTypes": [
+              {
+                "name": "TabsIndicatorProps",
+                "kind": "interface",
+                "type": "TabsIndicatorProps",
+                "resolvedType": "{ asChild?: boolean; as?: AsTag | Component }",
+                "description": "Properties for the TabsIndicator component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_tabs_types.tabsindicatorprops",
+                "sourcePath": "packages/headless/src/components/tabs/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "asChild",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_tabs_types.tabsindicatorprops.members.aschild",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "as",
+                    "type": "AsTag | Component",
+                    "required": false,
+                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+                    "descriptionKey": "api.generated.packages_headless_src_components_tabs_types.tabsindicatorprops.members.as",
+                    "default": "'div'",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "modelValue",
+            "type": "T['value'] | null",
+            "required": false,
+            "description": "The controlled value of the tab to activate. Can be bind as `v-model`.",
+            "descriptionKey": "api.generated.packages_headless_src_components_tabs_types.tabscompactprops.members.modelvalue",
+            "default": null,
+            "inheritedFrom": "modelValue",
+            "sourcePath": "packages/headless/src/components/tabs/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "defaultValue",
+            "type": "T['value'] | null",
+            "required": false,
+            "description": "The value of the tab that should be active when initially rendered. Use when you do not need to control the state\nof the tabs",
+            "descriptionKey": "api.generated.packages_headless_src_components_tabs_types.tabscompactprops.members.defaultvalue",
+            "default": null,
+            "inheritedFrom": "defaultValue",
+            "sourcePath": "packages/headless/src/components/tabs/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "activationMode",
+            "type": "TabsActivationMode",
+            "required": false,
+            "description": "Whether a tab is activated automatically (on focus) or manually (on click).",
+            "descriptionKey": "api.generated.packages_headless_src_components_tabs_types.tabscompactprops.members.activationmode",
+            "default": "automatic",
+            "inheritedFrom": "activationMode",
+            "sourcePath": "packages/headless/src/components/tabs/types.ts",
+            "referencedTypes": [
+              {
+                "name": "TabsActivationMode",
+                "kind": "typeAlias",
+                "type": "'automatic' | 'manual'",
+                "resolvedType": "'automatic' | 'manual'",
+                "description": "Type information for TabsActivationMode.",
+                "descriptionKey": "api.generated.packages_headless_src_components_tabs_types.tabsactivationmode",
+                "sourcePath": "packages/headless/src/components/tabs/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "unmountOnHide",
+            "type": "boolean",
+            "required": false,
+            "description": "When `true`, the element will be unmounted on closed state.",
+            "descriptionKey": "api.generated.packages_headless_src_components_tabs_types.tabscompactprops.members.unmountonhide",
+            "default": "`true`",
+            "inheritedFrom": "unmountOnHide",
+            "sourcePath": "packages/headless/src/components/tabs/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "dir",
+            "type": "Direction",
+            "required": false,
+            "description": "The direction of navigation between items.",
+            "descriptionKey": "api.generated.packages_headless_src_components_tabs_types.tabscompactprops.members.dir",
+            "default": null,
+            "inheritedFrom": "dir",
+            "sourcePath": "packages/headless/src/components/roving-focus/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Direction",
+                "kind": "typeAlias",
+                "type": "'ltr' | 'rtl'",
+                "resolvedType": "'ltr' | 'rtl'",
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_types_common.direction",
+                "sourcePath": "packages/headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "orientation",
+            "type": "DataOrientation",
+            "required": false,
+            "description": "The orientation of the group. Mainly so arrow navigation is done accordingly (left & right vs. up & down)",
+            "descriptionKey": "api.generated.packages_headless_src_components_tabs_types.tabscompactprops.members.orientation",
+            "default": null,
+            "inheritedFrom": "orientation",
+            "sourcePath": "packages/headless/src/components/roving-focus/types.ts",
+            "referencedTypes": [
+              {
+                "name": "DataOrientation",
+                "kind": "typeAlias",
+                "type": "'vertical' | 'horizontal'",
+                "resolvedType": "'vertical' | 'horizontal'",
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_types_common.dataorientation",
+                "sourcePath": "packages/headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "loop",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether keyboard navigation should loop around",
+            "descriptionKey": "api.generated.packages_headless_src_components_tabs_types.tabscompactprops.members.loop",
+            "default": "false",
+            "inheritedFrom": "loop",
+            "sourcePath": "packages/headless/src/components/roving-focus/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      },
+      "emits": {
+        "kind": "emits",
+        "name": "TabsCompactEmits",
+        "type": "TypeAlias TabsCompactEmits<T>: SegmentRootEmits<T>",
+        "resolvedType": "{ \"update:modelValue\": [payload: Exclude<T, undefined>] }",
+        "description": "Events for the TabsCompact component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_tabs_types.tabscompactemits.emits",
+        "sourcePath": "packages/headless/src/components/tabs/types.ts",
+        "typeParameters": ["TypeParameter T"],
+        "members": [],
+        "callables": [
+          {
+            "name": "update:modelValue",
+            "type": "[payload: Exclude<T, undefined>]",
+            "parameters": "payload: Exclude<T, undefined>",
+            "required": true,
+            "description": "Event handler called when the value changes",
+            "descriptionKey": "api.generated.packages_headless_src_components_tabs_types.tabscompactemits.callables.update_modelvalue",
+            "sourcePath": "packages/headless/src/components/tabs/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "referencedTypes": []
+      },
+      "slots": {
+        "kind": "slots",
+        "name": "TabsCompactSlots",
+        "type": "TypeAlias TabsCompactSlots<T>",
+        "resolvedType": "{ trigger?: ((props: T & { active: boolean; }) => any); content?: ((props: T & { active: boolean; }) => any); indicator?: (() => any) }",
+        "description": "Slots for the TabsCompact component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_tabs_types.tabscompactslots.slots",
+        "sourcePath": "packages/headless/src/components/tabs/types.ts",
+        "typeParameters": ["TypeParameter T"],
+        "members": [],
+        "callables": [
+          {
+            "name": "trigger",
+            "type": "((props: T & { active: boolean; }) => any) | undefined",
+            "parameters": "((props: T & { active: boolean; }) => any) | undefined",
+            "required": false,
+            "description": "Custom content for the trigger slot.",
+            "descriptionKey": "api.generated.packages_headless_src_components_tabs_types.tabscompactslots.callables.trigger",
+            "sourcePath": "packages/headless/src/components/tabs/types.ts",
+            "referencedTypes": [
+              {
+                "name": "__type",
+                "kind": "typeLiteral",
+                "type": "{ active: boolean; }",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_components_tabs_types.type",
+                "sourcePath": "packages/headless/src/components/tabs/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "content",
+            "type": "((props: T & { active: boolean; }) => any) | undefined",
+            "parameters": "((props: T & { active: boolean; }) => any) | undefined",
+            "required": false,
+            "description": "Custom content for the content slot.",
+            "descriptionKey": "api.generated.packages_headless_src_components_tabs_types.tabscompactslots.callables.content",
+            "sourcePath": "packages/headless/src/components/tabs/types.ts",
+            "referencedTypes": [
+              {
+                "name": "__type",
+                "kind": "typeLiteral",
+                "type": "{ active: boolean; }",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_components_tabs_types.type",
+                "sourcePath": "packages/headless/src/components/tabs/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "indicator",
+            "type": "(() => any) | undefined",
+            "parameters": "(() => any) | undefined",
+            "required": false,
+            "description": "Custom content for the indicator slot.",
+            "descriptionKey": "api.generated.packages_headless_src_components_tabs_types.tabscompactslots.callables.indicator",
+            "sourcePath": "packages/headless/src/components/tabs/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "referencedTypes": []
+      }
+    },
+    "TabsContent": {
+      "props": {
+        "kind": "props",
+        "name": "TabsContentProps",
+        "type": "Interface TabsContentProps",
+        "resolvedType": "{ value: string | number; forceMount?: boolean }",
+        "description": "Properties for the TabsContent component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_tabs_types.tabscontentprops.props",
+        "sourcePath": "packages/headless/src/components/tabs/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "value",
+            "type": "string | number",
+            "required": true,
+            "description": "A unique value that associates the content with a trigger.",
+            "descriptionKey": "api.generated.packages_headless_src_components_tabs_types.tabscontentprops.members.value",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/tabs/types.ts",
+            "referencedTypes": [
+              {
+                "name": "DefinedValue",
+                "kind": "typeAlias",
+                "type": "string | number",
+                "resolvedType": "string | number",
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_types_common.definedvalue",
+                "sourcePath": "packages/headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "forceMount",
+            "type": "boolean",
+            "required": false,
+            "description": "Used to force mounting when more control is needed.\n\nUseful when controlling animation with Vue animation libraries.",
+            "descriptionKey": "api.generated.packages_headless_src_components_tabs_types.tabscontentprops.members.forcemount",
+            "default": null,
+            "inheritedFrom": "forceMount",
+            "sourcePath": "packages/headless/src/types/component.ts",
+            "referencedTypes": []
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "TabsIndicator": {
+      "props": {
+        "kind": "props",
+        "name": "TabsIndicatorProps",
+        "type": "Interface TabsIndicatorProps",
+        "resolvedType": "{ asChild?: boolean; as?: AsTag | Component }",
+        "description": "Properties for the TabsIndicator component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_tabs_types.tabsindicatorprops.props",
+        "sourcePath": "packages/headless/src/components/tabs/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "asChild",
+            "type": "boolean",
+            "required": false,
+            "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+            "descriptionKey": "api.generated.packages_headless_src_components_tabs_types.tabsindicatorprops.members.aschild",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/primitive/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "as",
+            "type": "AsTag | Component",
+            "required": false,
+            "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+            "descriptionKey": "api.generated.packages_headless_src_components_tabs_types.tabsindicatorprops.members.as",
+            "default": "'div'",
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/primitive/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Component",
+                "kind": "typeAlias",
+                "type": "Component",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": null,
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.35/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [
+                  "PropsOrInstance = any",
+                  "RawBindings = any",
+                  "D = any",
+                  "C extends ComputedOptions = ComputedOptions",
+                  "M extends MethodOptions = MethodOptions",
+                  "E extends EmitsOptions | Record<string, any[]> = {}",
+                  "S extends Record<string, any> = any"
+                ],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "TabsList": {
+      "props": {
+        "kind": "props",
+        "name": "TabsListProps",
+        "type": "Interface TabsListProps",
+        "resolvedType": null,
+        "description": "Properties for the TabsList component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_tabs_types.tabslistprops.props",
+        "sourcePath": "packages/headless/src/components/tabs/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "TabsRoot": {
+      "props": {
+        "kind": "props",
+        "name": "TabsRootProps",
+        "type": "Interface TabsRootProps<T>",
+        "resolvedType": "{ modelValue?: T; defaultValue?: T; activationMode?: TabsActivationMode; unmountOnHide?: boolean; dir?: Direction; orientation?: DataOrientation; loop?: boolean }",
+        "description": "Properties for the TabsRoot component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_tabs_types.tabsrootprops.props",
+        "sourcePath": "packages/headless/src/components/tabs/types.ts",
+        "typeParameters": ["T extends AcceptableValue = AcceptableValue"],
+        "members": [
+          {
+            "name": "modelValue",
+            "type": "T",
+            "required": false,
+            "description": "The controlled value of the tab to activate. Can be bind as `v-model`.",
+            "descriptionKey": "api.generated.packages_headless_src_components_tabs_types.tabsrootprops.members.modelvalue",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/tabs/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "defaultValue",
+            "type": "T",
+            "required": false,
+            "description": "The value of the tab that should be active when initially rendered. Use when you do not need to control the state\nof the tabs",
+            "descriptionKey": "api.generated.packages_headless_src_components_tabs_types.tabsrootprops.members.defaultvalue",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/tabs/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "activationMode",
+            "type": "TabsActivationMode",
+            "required": false,
+            "description": "Whether a tab is activated automatically (on focus) or manually (on click).",
+            "descriptionKey": "api.generated.packages_headless_src_components_tabs_types.tabsrootprops.members.activationmode",
+            "default": "automatic",
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/tabs/types.ts",
+            "referencedTypes": [
+              {
+                "name": "TabsActivationMode",
+                "kind": "typeAlias",
+                "type": "'automatic' | 'manual'",
+                "resolvedType": "'automatic' | 'manual'",
+                "description": "Type information for TabsActivationMode.",
+                "descriptionKey": "api.generated.packages_headless_src_components_tabs_types.tabsactivationmode",
+                "sourcePath": "packages/headless/src/components/tabs/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "unmountOnHide",
+            "type": "boolean",
+            "required": false,
+            "description": "When `true`, the element will be unmounted on closed state.",
+            "descriptionKey": "api.generated.packages_headless_src_components_tabs_types.tabsrootprops.members.unmountonhide",
+            "default": "`true`",
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/tabs/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "dir",
+            "type": "Direction",
+            "required": false,
+            "description": "The direction of navigation between items.",
+            "descriptionKey": "api.generated.packages_headless_src_components_tabs_types.tabsrootprops.members.dir",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/roving-focus/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Direction",
+                "kind": "typeAlias",
+                "type": "'ltr' | 'rtl'",
+                "resolvedType": "'ltr' | 'rtl'",
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_types_common.direction",
+                "sourcePath": "packages/headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "orientation",
+            "type": "DataOrientation",
+            "required": false,
+            "description": "The orientation of the group. Mainly so arrow navigation is done accordingly (left & right vs. up & down)",
+            "descriptionKey": "api.generated.packages_headless_src_components_tabs_types.tabsrootprops.members.orientation",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/roving-focus/types.ts",
+            "referencedTypes": [
+              {
+                "name": "DataOrientation",
+                "kind": "typeAlias",
+                "type": "'vertical' | 'horizontal'",
+                "resolvedType": "'vertical' | 'horizontal'",
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_types_common.dataorientation",
+                "sourcePath": "packages/headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "loop",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether keyboard navigation should loop around",
+            "descriptionKey": "api.generated.packages_headless_src_components_tabs_types.tabsrootprops.members.loop",
+            "default": "false",
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/roving-focus/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      },
+      "emits": {
+        "kind": "emits",
+        "name": "TabsRootEmits",
+        "type": "TypeAlias TabsRootEmits<T>",
+        "resolvedType": "{ \"update:modelValue\": [payload: Exclude<T, undefined>] }",
+        "description": "Events for the TabsRoot component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_tabs_types.tabsrootemits.emits",
+        "sourcePath": "packages/headless/src/components/tabs/types.ts",
+        "typeParameters": ["T = AcceptableValue"],
+        "members": [],
+        "callables": [
+          {
+            "name": "update:modelValue",
+            "type": "[payload: Exclude<T, undefined>]",
+            "parameters": "payload: Exclude<T, undefined>",
+            "required": true,
+            "description": "Event handler called when the value changes",
+            "descriptionKey": "api.generated.packages_headless_src_components_tabs_types.tabsrootemits.callables.update_modelvalue",
+            "sourcePath": "packages/headless/src/components/tabs/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "referencedTypes": []
+      }
+    },
+    "TabsTrigger": {
+      "props": {
+        "kind": "props",
+        "name": "TabsTriggerProps",
+        "type": "Interface TabsTriggerProps",
+        "resolvedType": "{ value: string | number; disabled?: boolean; asChild?: boolean; as?: AsTag | Component }",
+        "description": "Properties for the TabsTrigger component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_tabs_types.tabstriggerprops.props",
+        "sourcePath": "packages/headless/src/components/tabs/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "value",
+            "type": "string | number",
+            "required": true,
+            "description": "A unique value that associates the trigger with a content.",
+            "descriptionKey": "api.generated.packages_headless_src_components_tabs_types.tabstriggerprops.members.value",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/tabs/types.ts",
+            "referencedTypes": [
+              {
+                "name": "DefinedValue",
+                "kind": "typeAlias",
+                "type": "string | number",
+                "resolvedType": "string | number",
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_types_common.definedvalue",
+                "sourcePath": "packages/headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "disabled",
+            "type": "boolean",
+            "required": false,
+            "description": "When `true`, prevents the user from interacting with the tab.",
+            "descriptionKey": "api.generated.packages_headless_src_components_tabs_types.tabstriggerprops.members.disabled",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/tabs/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "asChild",
+            "type": "boolean",
+            "required": false,
+            "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+            "descriptionKey": "api.generated.packages_headless_src_components_tabs_types.tabstriggerprops.members.aschild",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/primitive/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "as",
+            "type": "AsTag | Component",
+            "required": false,
+            "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+            "descriptionKey": "api.generated.packages_headless_src_components_tabs_types.tabstriggerprops.members.as",
+            "default": "'div'",
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/primitive/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Component",
+                "kind": "typeAlias",
+                "type": "Component",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": null,
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.35/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [
+                  "PropsOrInstance = any",
+                  "RawBindings = any",
+                  "D = any",
+                  "C extends ComputedOptions = ComputedOptions",
+                  "M extends MethodOptions = MethodOptions",
+                  "E extends EmitsOptions | Record<string, any[]> = {}",
+                  "S extends Record<string, any> = any"
+                ],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      }
+    }
+  }
+}

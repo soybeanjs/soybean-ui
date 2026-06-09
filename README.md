@@ -21,14 +21,14 @@ SoybeanUI is built on a strict **two-layer separation** model:
 
 ```
 ┌─────────────────────────────────────────┐
-│           @soybeanjs/ui (src/)          │
+│           @soybeanjs/ui (packages/ui/)  │
 │  S-prefixed components   (SButton…)     │
 │  UnoCSS classes · @soybeanjs/cva        │
 │  provideXUi(ui)  ──────────────────┐    │
 └────────────────────────────────────┼────┘
                                      │ style injection
 ┌────────────────────────────────────▼────┐
-│        @soybeanjs/headless (headless/)  │
+│   @soybeanjs/headless (packages/headless/) │
 │  Logic · State · A11y · Keyboard nav    │
 │  useUiContext() reads injected classes  │
 │  Zero styles — works with any CSS       │
@@ -53,7 +53,7 @@ Current Compact-style coverage also includes flows such as card, date-field, dia
 Every multi-slot headless component exposes a `provide{Name}Ui` function. The styled wrapper computes classes with `@soybeanjs/cva` recipes and injects them:
 
 ```ts
-// In the styled wrapper (src/)
+// In the styled wrapper (packages/ui/)
 const ui = computed(() => accordionVariants({ size: props.size }, props.ui, { root: props.class }));
 provideAccordionUi(ui); // headless reads this via useAccordionUi()
 ```
@@ -146,7 +146,7 @@ pnpm sui api-translate -- --locale zh-CN
 pnpm sui changelog-translate -- --locale zh-CN
 ```
 
-The docs site now renders component docs through `UsageCode`, `PlaygroundGallery`, and `ComponentApi`. Component detail pages and `/releases` also read generated changelog data from `docs/src/generated/changelog/` and `docs/src/generated/changelog-locales/`.
+The docs site now renders component docs through `UsageCode`, `PlaygroundGallery`, and `ComponentApi`. Component detail pages and `/releases` also read generated changelog data from `apps/docs/src/generated/changelog/` and `apps/docs/src/generated/changelog-locales/`.
 
 Public API or demo delivery changes should keep docs, playground examples, and generated API data aligned. Changelog mapping, release presentation, and changelog locale template changes should keep generated changelog data aligned as well.
 

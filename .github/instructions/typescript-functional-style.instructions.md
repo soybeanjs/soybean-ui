@@ -19,7 +19,7 @@ applyTo: '**/*.{ts,tsx,js,jsx,vue}'
 - 不依赖生命周期、DOM、I/O 的逻辑，优先提取为纯函数。
 - 输入输出应稳定可预测，避免隐藏副作用。
 - 只服务当前模块的纯函数，放到同级 `shared.ts`。
-- 具备跨模块复用价值的纯函数，放到现有全局 shared 目录，例如 `headless/src/shared/`。
+- 具备跨模块复用价值的纯函数，放到现有全局 shared 目录，例如 `packages/headless/src/shared/`。
 
 2. 优先组合而非命令式堆叠
 

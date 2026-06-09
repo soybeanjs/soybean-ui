@@ -1,0 +1,1424 @@
+{
+  "component": "form",
+  "symbols": {
+    "Form": {
+      "props": {
+        "kind": "props",
+        "name": "FormProps",
+        "type": "Interface FormProps",
+        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<FormUi>; fieldProps?: FormFieldProps; fieldArrayProps?: FormFieldProps; orientation?: DataOrientation; labelProps?: FormLabelProps; controlProps?: FormControlProps; descriptionProps?: FormDescriptionProps; errorProps?: FormErrorProps }",
+        "description": "Properties for the FormCompact component.",
+        "descriptionKey": "api.generated.packages_ui_src_components_form_types.formprops.props",
+        "sourcePath": "packages/ui/src/components/form/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "class",
+            "type": "string | false | Record<string, any> | ClassValue[] | null",
+            "required": false,
+            "description": "Additional class names applied to the form element.",
+            "descriptionKey": "api.generated.packages_ui_src_components_form_types.formprops.members.class",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui/src/components/form/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ClassValue",
+                "kind": "typeAlias",
+                "type": "string | false | Record<string, any> | ClassValue[] | null | undefined",
+                "resolvedType": "string | false | Record<string, any> | ClassValue[] | null | undefined",
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_types_common.classvalue",
+                "sourcePath": "packages/headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "size",
+            "type": "ThemeSize",
+            "required": false,
+            "description": "Visual size of the component.",
+            "descriptionKey": "api.generated.packages_ui_src_components_form_types.formprops.members.size",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui/src/components/form/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ThemeSize",
+                "kind": "typeAlias",
+                "type": "'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'",
+                "resolvedType": "'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'",
+                "description": "",
+                "descriptionKey": "api.generated.packages_ui_src_theme_types.themesize",
+                "sourcePath": "packages/ui/src/theme/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "ui",
+            "type": "Partial<FormUi>",
+            "required": false,
+            "description": "Per-slot class overrides for the component.",
+            "descriptionKey": "api.generated.packages_ui_src_components_form_types.formprops.members.ui",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui/src/components/form/types.ts",
+            "referencedTypes": [
+              {
+                "name": "FormUi",
+                "kind": "typeAlias",
+                "type": "{ description: ClassValue; form: ClassValue; label: ClassValue; error: ClassValue; control: ClassValue; field: ClassValue; fieldArray: ClassValue; }",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_components_form_types.formui",
+                "sourcePath": "packages/headless/src/components/form/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "fieldProps",
+            "type": "FormFieldProps",
+            "required": false,
+            "description": "",
+            "descriptionKey": "api.generated.packages_ui_src_components_form_types.formprops.members.fieldprops",
+            "default": null,
+            "inheritedFrom": "fieldProps",
+            "sourcePath": "packages/headless/src/components/form/types.ts",
+            "referencedTypes": [
+              {
+                "name": "FormFieldProps",
+                "kind": "interface",
+                "type": "FormFieldProps",
+                "resolvedType": "{ error?: string; isFieldArray?: boolean }",
+                "description": "Properties for the FormField component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_form_types.formfieldprops",
+                "sourcePath": "packages/headless/src/components/form/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "error",
+                    "type": "string",
+                    "required": false,
+                    "description": "Error.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_form_types.formfieldprops.members.error",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/form/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "isFieldArray",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Whether the field is an array.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_form_types.formfieldprops.members.isfieldarray",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/form/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "fieldArrayProps",
+            "type": "FormFieldProps",
+            "required": false,
+            "description": "",
+            "descriptionKey": "api.generated.packages_ui_src_components_form_types.formprops.members.fieldarrayprops",
+            "default": null,
+            "inheritedFrom": "fieldArrayProps",
+            "sourcePath": "packages/headless/src/components/form/types.ts",
+            "referencedTypes": [
+              {
+                "name": "FormFieldProps",
+                "kind": "interface",
+                "type": "FormFieldProps",
+                "resolvedType": "{ error?: string; isFieldArray?: boolean }",
+                "description": "Properties for the FormField component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_form_types.formfieldprops",
+                "sourcePath": "packages/headless/src/components/form/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "error",
+                    "type": "string",
+                    "required": false,
+                    "description": "Error.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_form_types.formfieldprops.members.error",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/form/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "isFieldArray",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Whether the field is an array.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_form_types.formfieldprops.members.isfieldarray",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/form/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "orientation",
+            "type": "DataOrientation",
+            "required": false,
+            "description": "Orientation of the form field.",
+            "descriptionKey": "api.generated.packages_ui_src_components_form_types.formprops.members.orientation",
+            "default": "'vertical'",
+            "inheritedFrom": "orientation",
+            "sourcePath": "packages/headless/src/components/form/types.ts",
+            "referencedTypes": [
+              {
+                "name": "DataOrientation",
+                "kind": "typeAlias",
+                "type": "'vertical' | 'horizontal'",
+                "resolvedType": "'vertical' | 'horizontal'",
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_types_common.dataorientation",
+                "sourcePath": "packages/headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "labelProps",
+            "type": "FormLabelProps",
+            "required": false,
+            "description": "Properties forwarded to the label element.",
+            "descriptionKey": "api.generated.packages_ui_src_components_form_types.formprops.members.labelprops",
+            "default": null,
+            "inheritedFrom": "labelProps",
+            "sourcePath": "packages/headless/src/components/form/types.ts",
+            "referencedTypes": [
+              {
+                "name": "FormLabelProps",
+                "kind": "interface",
+                "type": "FormLabelProps",
+                "resolvedType": "{ for?: string }",
+                "description": "Properties for the FormLabel component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_form_types.formlabelprops",
+                "sourcePath": "packages/headless/src/components/form/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "for",
+                    "type": "string",
+                    "required": false,
+                    "description": "The id of the element the label is associated with.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_form_types.formlabelprops.members.for",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/label/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "controlProps",
+            "type": "FormControlProps",
+            "required": false,
+            "description": "Properties forwarded to the control element.",
+            "descriptionKey": "api.generated.packages_ui_src_components_form_types.formprops.members.controlprops",
+            "default": null,
+            "inheritedFrom": "controlProps",
+            "sourcePath": "packages/headless/src/components/form/types.ts",
+            "referencedTypes": [
+              {
+                "name": "FormControlProps",
+                "kind": "interface",
+                "type": "FormControlProps",
+                "resolvedType": null,
+                "description": "Properties for the FormControl component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_form_types.formcontrolprops",
+                "sourcePath": "packages/headless/src/components/form/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "descriptionProps",
+            "type": "FormDescriptionProps",
+            "required": false,
+            "description": "Properties forwarded to the description element.",
+            "descriptionKey": "api.generated.packages_ui_src_components_form_types.formprops.members.descriptionprops",
+            "default": null,
+            "inheritedFrom": "descriptionProps",
+            "sourcePath": "packages/headless/src/components/form/types.ts",
+            "referencedTypes": [
+              {
+                "name": "FormDescriptionProps",
+                "kind": "interface",
+                "type": "FormDescriptionProps",
+                "resolvedType": null,
+                "description": "Properties for the FormDescription component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_form_types.formdescriptionprops",
+                "sourcePath": "packages/headless/src/components/form/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "errorProps",
+            "type": "FormErrorProps",
+            "required": false,
+            "description": "Properties forwarded to the error element.",
+            "descriptionKey": "api.generated.packages_ui_src_components_form_types.formprops.members.errorprops",
+            "default": null,
+            "inheritedFrom": "errorProps",
+            "sourcePath": "packages/headless/src/components/form/types.ts",
+            "referencedTypes": [
+              {
+                "name": "FormErrorProps",
+                "kind": "interface",
+                "type": "FormErrorProps",
+                "resolvedType": null,
+                "description": "Properties for the FormError component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_form_types.formerrorprops",
+                "sourcePath": "packages/headless/src/components/form/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "FormCompact": {
+      "props": {
+        "kind": "props",
+        "name": "FormCompactProps",
+        "type": "Interface FormCompactProps",
+        "resolvedType": "{ fieldProps?: FormFieldProps; fieldArrayProps?: FormFieldProps; orientation?: DataOrientation; labelProps?: FormLabelProps; controlProps?: FormControlProps; descriptionProps?: FormDescriptionProps; errorProps?: FormErrorProps }",
+        "description": "Properties for the FormCompact component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_form_types.formcompactprops.props",
+        "sourcePath": "packages/headless/src/components/form/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "fieldProps",
+            "type": "FormFieldProps",
+            "required": false,
+            "description": "",
+            "descriptionKey": "api.generated.packages_headless_src_components_form_types.formcompactprops.members.fieldprops",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/form/types.ts",
+            "referencedTypes": [
+              {
+                "name": "FormFieldProps",
+                "kind": "interface",
+                "type": "FormFieldProps",
+                "resolvedType": "{ error?: string; isFieldArray?: boolean }",
+                "description": "Properties for the FormField component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_form_types.formfieldprops",
+                "sourcePath": "packages/headless/src/components/form/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "error",
+                    "type": "string",
+                    "required": false,
+                    "description": "Error.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_form_types.formfieldprops.members.error",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/form/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "isFieldArray",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Whether the field is an array.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_form_types.formfieldprops.members.isfieldarray",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/form/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "fieldArrayProps",
+            "type": "FormFieldProps",
+            "required": false,
+            "description": "",
+            "descriptionKey": "api.generated.packages_headless_src_components_form_types.formcompactprops.members.fieldarrayprops",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/form/types.ts",
+            "referencedTypes": [
+              {
+                "name": "FormFieldProps",
+                "kind": "interface",
+                "type": "FormFieldProps",
+                "resolvedType": "{ error?: string; isFieldArray?: boolean }",
+                "description": "Properties for the FormField component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_form_types.formfieldprops",
+                "sourcePath": "packages/headless/src/components/form/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "error",
+                    "type": "string",
+                    "required": false,
+                    "description": "Error.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_form_types.formfieldprops.members.error",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/form/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "isFieldArray",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Whether the field is an array.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_form_types.formfieldprops.members.isfieldarray",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/form/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "orientation",
+            "type": "DataOrientation",
+            "required": false,
+            "description": "Orientation of the form field.",
+            "descriptionKey": "api.generated.packages_headless_src_components_form_types.formcompactprops.members.orientation",
+            "default": "'vertical'",
+            "inheritedFrom": "orientation",
+            "sourcePath": "packages/headless/src/components/form/types.ts",
+            "referencedTypes": [
+              {
+                "name": "DataOrientation",
+                "kind": "typeAlias",
+                "type": "'vertical' | 'horizontal'",
+                "resolvedType": "'vertical' | 'horizontal'",
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_types_common.dataorientation",
+                "sourcePath": "packages/headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "labelProps",
+            "type": "FormLabelProps",
+            "required": false,
+            "description": "Properties forwarded to the label element.",
+            "descriptionKey": "api.generated.packages_headless_src_components_form_types.formcompactprops.members.labelprops",
+            "default": null,
+            "inheritedFrom": "labelProps",
+            "sourcePath": "packages/headless/src/components/form/types.ts",
+            "referencedTypes": [
+              {
+                "name": "FormLabelProps",
+                "kind": "interface",
+                "type": "FormLabelProps",
+                "resolvedType": "{ for?: string }",
+                "description": "Properties for the FormLabel component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_form_types.formlabelprops",
+                "sourcePath": "packages/headless/src/components/form/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "for",
+                    "type": "string",
+                    "required": false,
+                    "description": "The id of the element the label is associated with.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_form_types.formlabelprops.members.for",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/label/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "controlProps",
+            "type": "FormControlProps",
+            "required": false,
+            "description": "Properties forwarded to the control element.",
+            "descriptionKey": "api.generated.packages_headless_src_components_form_types.formcompactprops.members.controlprops",
+            "default": null,
+            "inheritedFrom": "controlProps",
+            "sourcePath": "packages/headless/src/components/form/types.ts",
+            "referencedTypes": [
+              {
+                "name": "FormControlProps",
+                "kind": "interface",
+                "type": "FormControlProps",
+                "resolvedType": null,
+                "description": "Properties for the FormControl component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_form_types.formcontrolprops",
+                "sourcePath": "packages/headless/src/components/form/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "descriptionProps",
+            "type": "FormDescriptionProps",
+            "required": false,
+            "description": "Properties forwarded to the description element.",
+            "descriptionKey": "api.generated.packages_headless_src_components_form_types.formcompactprops.members.descriptionprops",
+            "default": null,
+            "inheritedFrom": "descriptionProps",
+            "sourcePath": "packages/headless/src/components/form/types.ts",
+            "referencedTypes": [
+              {
+                "name": "FormDescriptionProps",
+                "kind": "interface",
+                "type": "FormDescriptionProps",
+                "resolvedType": null,
+                "description": "Properties for the FormDescription component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_form_types.formdescriptionprops",
+                "sourcePath": "packages/headless/src/components/form/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "errorProps",
+            "type": "FormErrorProps",
+            "required": false,
+            "description": "Properties forwarded to the error element.",
+            "descriptionKey": "api.generated.packages_headless_src_components_form_types.formcompactprops.members.errorprops",
+            "default": null,
+            "inheritedFrom": "errorProps",
+            "sourcePath": "packages/headless/src/components/form/types.ts",
+            "referencedTypes": [
+              {
+                "name": "FormErrorProps",
+                "kind": "interface",
+                "type": "FormErrorProps",
+                "resolvedType": null,
+                "description": "Properties for the FormError component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_form_types.formerrorprops",
+                "sourcePath": "packages/headless/src/components/form/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "FormControl": {
+      "props": {
+        "kind": "props",
+        "name": "FormControlProps",
+        "type": "Interface FormControlProps",
+        "resolvedType": null,
+        "description": "Properties for the FormControl component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_form_types.formcontrolprops.props",
+        "sourcePath": "packages/headless/src/components/form/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "FormDescription": {
+      "props": {
+        "kind": "props",
+        "name": "FormDescriptionProps",
+        "type": "Interface FormDescriptionProps",
+        "resolvedType": null,
+        "description": "Properties for the FormDescription component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_form_types.formdescriptionprops.props",
+        "sourcePath": "packages/headless/src/components/form/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "FormError": {
+      "props": {
+        "kind": "props",
+        "name": "FormErrorProps",
+        "type": "Interface FormErrorProps",
+        "resolvedType": null,
+        "description": "Properties for the FormError component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_form_types.formerrorprops.props",
+        "sourcePath": "packages/headless/src/components/form/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "FormField": {
+      "props": {
+        "kind": "props",
+        "name": "FormFieldProps",
+        "type": "Interface FormFieldProps",
+        "resolvedType": "{ error?: string; isFieldArray?: boolean }",
+        "description": "Properties for the FormField component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_form_types.formfieldprops.props",
+        "sourcePath": "packages/headless/src/components/form/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "error",
+            "type": "string",
+            "required": false,
+            "description": "Error.",
+            "descriptionKey": "api.generated.packages_headless_src_components_form_types.formfieldprops.members.error",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/form/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "isFieldArray",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether the field is an array.",
+            "descriptionKey": "api.generated.packages_headless_src_components_form_types.formfieldprops.members.isfieldarray",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/form/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      },
+      "slots": {
+        "kind": "slots",
+        "name": "FormFieldSlots",
+        "type": "TypeAlias FormFieldSlots",
+        "resolvedType": "{ FormError?: ((props: FormFieldState<any, any>) => any); label?: ((props: FormFieldState<any, any>) => any); description?: ((props: FormFieldState<any, any>) => any) }",
+        "description": "Slots for the FormField component.",
+        "descriptionKey": "api.generated.packages_ui_src_components_form_types.formfieldslots.slots",
+        "sourcePath": "packages/ui/src/components/form/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [
+          {
+            "name": "default",
+            "type": "((props: FormFieldState<any, any>) => any) | undefined",
+            "parameters": "((props: FormFieldState<any, any>) => any) | undefined",
+            "required": false,
+            "description": "Custom content for the default slot.",
+            "descriptionKey": "api.generated.packages_ui_src_components_form_types.formfieldslots.callables.default",
+            "sourcePath": "packages/headless/src/components/form/types.ts",
+            "referencedTypes": [
+              {
+                "name": "FormFieldState",
+                "kind": "interface",
+                "type": "FormFieldState<Values, Name>",
+                "resolvedType": null,
+                "description": "State values for FormFieldState.",
+                "descriptionKey": "api.generated.packages_headless_src_components_form_core_types.formfieldstate",
+                "sourcePath": "packages/headless/src/components/form/core/types.ts",
+                "typeParameters": ["Values extends FormValues", "Name extends Path<Values>"],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "label",
+            "type": "((props: FormFieldState<any, any>) => any) | undefined",
+            "parameters": "((props: FormFieldState<any, any>) => any) | undefined",
+            "required": false,
+            "description": "Custom content for the label slot.",
+            "descriptionKey": "api.generated.packages_ui_src_components_form_types.formfieldslots.callables.label",
+            "sourcePath": "packages/headless/src/components/form/types.ts",
+            "referencedTypes": [
+              {
+                "name": "FormFieldState",
+                "kind": "interface",
+                "type": "FormFieldState<Values, Name>",
+                "resolvedType": null,
+                "description": "State values for FormFieldState.",
+                "descriptionKey": "api.generated.packages_headless_src_components_form_core_types.formfieldstate",
+                "sourcePath": "packages/headless/src/components/form/core/types.ts",
+                "typeParameters": ["Values extends FormValues", "Name extends Path<Values>"],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "description",
+            "type": "((props: FormFieldState<any, any>) => any) | undefined",
+            "parameters": "((props: FormFieldState<any, any>) => any) | undefined",
+            "required": false,
+            "description": "Custom content for the description slot.",
+            "descriptionKey": "api.generated.packages_ui_src_components_form_types.formfieldslots.callables.description",
+            "sourcePath": "packages/headless/src/components/form/types.ts",
+            "referencedTypes": [
+              {
+                "name": "FormFieldState",
+                "kind": "interface",
+                "type": "FormFieldState<Values, Name>",
+                "resolvedType": null,
+                "description": "State values for FormFieldState.",
+                "descriptionKey": "api.generated.packages_headless_src_components_form_core_types.formfieldstate",
+                "sourcePath": "packages/headless/src/components/form/core/types.ts",
+                "typeParameters": ["Values extends FormValues", "Name extends Path<Values>"],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "referencedTypes": []
+      }
+    },
+    "FormFieldArrayCompact": {
+      "slots": {
+        "kind": "slots",
+        "name": "FormFieldArrayCompactSlots",
+        "type": "TypeAlias FormFieldArrayCompactSlots<Values, Name>",
+        "resolvedType": "{ FormError?: ((props: FormFieldArrayStates<Values, Name>) => any); label?: ((props: FormFieldArrayStates<Values, Name>) => any); description?: ((props: FormFieldArrayStates<Values, Name>) => any) }",
+        "description": "Slots for the FormFieldArrayCompact component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_form_types.formfieldarraycompactslots.slots",
+        "sourcePath": "packages/headless/src/components/form/types.ts",
+        "typeParameters": ["TypeParameter Values", "TypeParameter Name"],
+        "members": [],
+        "callables": [
+          {
+            "name": "default",
+            "type": "((props: FormFieldArrayStates<Values, Name>) => any) | undefined",
+            "parameters": "((props: FormFieldArrayStates<Values, Name>) => any) | undefined",
+            "required": false,
+            "description": "Custom content for the default slot.",
+            "descriptionKey": "api.generated.packages_headless_src_components_form_types.formfieldarraycompactslots.callables.default",
+            "sourcePath": "packages/headless/src/components/form/types.ts",
+            "referencedTypes": [
+              {
+                "name": "FormFieldArrayStates",
+                "kind": "interface",
+                "type": "FormFieldArrayStates<Values, Name>",
+                "resolvedType": null,
+                "description": "Type information for FormFieldArrayStates.",
+                "descriptionKey": "api.generated.packages_headless_src_components_form_core_types.formfieldarraystates",
+                "sourcePath": "packages/headless/src/components/form/core/types.ts",
+                "typeParameters": ["Values extends FormValues", "Name extends Path<Values>"],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "label",
+            "type": "((props: FormFieldArrayStates<Values, Name>) => any) | undefined",
+            "parameters": "((props: FormFieldArrayStates<Values, Name>) => any) | undefined",
+            "required": false,
+            "description": "Custom content for the label slot.",
+            "descriptionKey": "api.generated.packages_headless_src_components_form_types.formfieldarraycompactslots.callables.label",
+            "sourcePath": "packages/headless/src/components/form/types.ts",
+            "referencedTypes": [
+              {
+                "name": "FormFieldArrayStates",
+                "kind": "interface",
+                "type": "FormFieldArrayStates<Values, Name>",
+                "resolvedType": null,
+                "description": "Type information for FormFieldArrayStates.",
+                "descriptionKey": "api.generated.packages_headless_src_components_form_core_types.formfieldarraystates",
+                "sourcePath": "packages/headless/src/components/form/core/types.ts",
+                "typeParameters": ["Values extends FormValues", "Name extends Path<Values>"],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "description",
+            "type": "((props: FormFieldArrayStates<Values, Name>) => any) | undefined",
+            "parameters": "((props: FormFieldArrayStates<Values, Name>) => any) | undefined",
+            "required": false,
+            "description": "Custom content for the description slot.",
+            "descriptionKey": "api.generated.packages_headless_src_components_form_types.formfieldarraycompactslots.callables.description",
+            "sourcePath": "packages/headless/src/components/form/types.ts",
+            "referencedTypes": [
+              {
+                "name": "FormFieldArrayStates",
+                "kind": "interface",
+                "type": "FormFieldArrayStates<Values, Name>",
+                "resolvedType": null,
+                "description": "Type information for FormFieldArrayStates.",
+                "descriptionKey": "api.generated.packages_headless_src_components_form_core_types.formfieldarraystates",
+                "sourcePath": "packages/headless/src/components/form/core/types.ts",
+                "typeParameters": ["Values extends FormValues", "Name extends Path<Values>"],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "referencedTypes": []
+      }
+    },
+    "FormFieldBaseCompact": {
+      "props": {
+        "kind": "props",
+        "name": "FormFieldBaseCompactProps",
+        "type": "Interface FormFieldBaseCompactProps",
+        "resolvedType": "{ error?: string; isFieldArray?: boolean; orientation?: DataOrientation; label?: string; description?: string; labelProps?: FormLabelProps; controlProps?: FormControlProps; descriptionProps?: FormDescriptionProps; errorProps?: FormErrorProps }",
+        "description": "Properties for the FormFieldBaseCompact component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_form_types.formfieldbasecompactprops.props",
+        "sourcePath": "packages/headless/src/components/form/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "error",
+            "type": "string",
+            "required": false,
+            "description": "Error.",
+            "descriptionKey": "api.generated.packages_headless_src_components_form_types.formfieldbasecompactprops.members.error",
+            "default": null,
+            "inheritedFrom": "error",
+            "sourcePath": "packages/headless/src/components/form/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "isFieldArray",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether the field is an array.",
+            "descriptionKey": "api.generated.packages_headless_src_components_form_types.formfieldbasecompactprops.members.isfieldarray",
+            "default": null,
+            "inheritedFrom": "isFieldArray",
+            "sourcePath": "packages/headless/src/components/form/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "orientation",
+            "type": "DataOrientation",
+            "required": false,
+            "description": "Orientation of the form field.",
+            "descriptionKey": "api.generated.packages_headless_src_components_form_types.formfieldbasecompactprops.members.orientation",
+            "default": "'vertical'",
+            "inheritedFrom": "FormFieldCommonProps.orientation",
+            "sourcePath": "packages/headless/src/components/form/types.ts",
+            "referencedTypes": [
+              {
+                "name": "DataOrientation",
+                "kind": "typeAlias",
+                "type": "'vertical' | 'horizontal'",
+                "resolvedType": "'vertical' | 'horizontal'",
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_types_common.dataorientation",
+                "sourcePath": "packages/headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "label",
+            "type": "string",
+            "required": false,
+            "description": "Label text rendered by the component.",
+            "descriptionKey": "api.generated.packages_headless_src_components_form_types.formfieldbasecompactprops.members.label",
+            "default": null,
+            "inheritedFrom": "FormFieldCommonProps.label",
+            "sourcePath": "packages/headless/src/components/form/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "description",
+            "type": "string",
+            "required": false,
+            "description": "Description text rendered by the component.",
+            "descriptionKey": "api.generated.packages_headless_src_components_form_types.formfieldbasecompactprops.members.description",
+            "default": null,
+            "inheritedFrom": "FormFieldCommonProps.description",
+            "sourcePath": "packages/headless/src/components/form/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "labelProps",
+            "type": "FormLabelProps",
+            "required": false,
+            "description": "Properties forwarded to the label element.",
+            "descriptionKey": "api.generated.packages_headless_src_components_form_types.formfieldbasecompactprops.members.labelprops",
+            "default": null,
+            "inheritedFrom": "FormFieldCommonProps.labelProps",
+            "sourcePath": "packages/headless/src/components/form/types.ts",
+            "referencedTypes": [
+              {
+                "name": "FormLabelProps",
+                "kind": "interface",
+                "type": "FormLabelProps",
+                "resolvedType": "{ for?: string }",
+                "description": "Properties for the FormLabel component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_form_types.formlabelprops",
+                "sourcePath": "packages/headless/src/components/form/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "for",
+                    "type": "string",
+                    "required": false,
+                    "description": "The id of the element the label is associated with.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_form_types.formlabelprops.members.for",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/label/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "controlProps",
+            "type": "FormControlProps",
+            "required": false,
+            "description": "Properties forwarded to the control element.",
+            "descriptionKey": "api.generated.packages_headless_src_components_form_types.formfieldbasecompactprops.members.controlprops",
+            "default": null,
+            "inheritedFrom": "FormFieldCommonProps.controlProps",
+            "sourcePath": "packages/headless/src/components/form/types.ts",
+            "referencedTypes": [
+              {
+                "name": "FormControlProps",
+                "kind": "interface",
+                "type": "FormControlProps",
+                "resolvedType": null,
+                "description": "Properties for the FormControl component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_form_types.formcontrolprops",
+                "sourcePath": "packages/headless/src/components/form/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "descriptionProps",
+            "type": "FormDescriptionProps",
+            "required": false,
+            "description": "Properties forwarded to the description element.",
+            "descriptionKey": "api.generated.packages_headless_src_components_form_types.formfieldbasecompactprops.members.descriptionprops",
+            "default": null,
+            "inheritedFrom": "FormFieldCommonProps.descriptionProps",
+            "sourcePath": "packages/headless/src/components/form/types.ts",
+            "referencedTypes": [
+              {
+                "name": "FormDescriptionProps",
+                "kind": "interface",
+                "type": "FormDescriptionProps",
+                "resolvedType": null,
+                "description": "Properties for the FormDescription component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_form_types.formdescriptionprops",
+                "sourcePath": "packages/headless/src/components/form/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "errorProps",
+            "type": "FormErrorProps",
+            "required": false,
+            "description": "Properties forwarded to the error element.",
+            "descriptionKey": "api.generated.packages_headless_src_components_form_types.formfieldbasecompactprops.members.errorprops",
+            "default": null,
+            "inheritedFrom": "FormFieldCommonProps.errorProps",
+            "sourcePath": "packages/headless/src/components/form/types.ts",
+            "referencedTypes": [
+              {
+                "name": "FormErrorProps",
+                "kind": "interface",
+                "type": "FormErrorProps",
+                "resolvedType": null,
+                "description": "Properties for the FormError component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_form_types.formerrorprops",
+                "sourcePath": "packages/headless/src/components/form/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      },
+      "slots": {
+        "kind": "slots",
+        "name": "FormFieldBaseCompactSlots",
+        "type": "TypeAlias FormFieldBaseCompactSlots",
+        "resolvedType": "{ FormError?: (() => any); label?: (() => any); description?: (() => any) }",
+        "description": "Slots for the FormFieldBaseCompact component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_form_types.formfieldbasecompactslots.slots",
+        "sourcePath": "packages/headless/src/components/form/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [
+          {
+            "name": "default",
+            "type": "(() => any) | undefined",
+            "parameters": "(() => any) | undefined",
+            "required": false,
+            "description": "Custom content for the default slot.",
+            "descriptionKey": "api.generated.packages_headless_src_components_form_types.formfieldbasecompactslots.callables.default",
+            "sourcePath": "packages/headless/src/components/form/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "label",
+            "type": "(() => any) | undefined",
+            "parameters": "(() => any) | undefined",
+            "required": false,
+            "description": "Custom content for the label slot.",
+            "descriptionKey": "api.generated.packages_headless_src_components_form_types.formfieldbasecompactslots.callables.label",
+            "sourcePath": "packages/headless/src/components/form/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "description",
+            "type": "(() => any) | undefined",
+            "parameters": "(() => any) | undefined",
+            "required": false,
+            "description": "Custom content for the description slot.",
+            "descriptionKey": "api.generated.packages_headless_src_components_form_types.formfieldbasecompactslots.callables.description",
+            "sourcePath": "packages/headless/src/components/form/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "referencedTypes": []
+      }
+    },
+    "FormFieldCompact": {
+      "props": {
+        "kind": "props",
+        "name": "FormFieldCompactProps",
+        "type": "Interface FormFieldCompactProps<Values, Name>",
+        "resolvedType": "{ name: Name; orientation?: DataOrientation; label?: string; description?: string; labelProps?: FormLabelProps; controlProps?: FormControlProps; descriptionProps?: FormDescriptionProps; errorProps?: FormErrorProps; validate?: FormFieldValidator<PathValue<Values, Name>>; reset?: (() => void) }",
+        "description": "State and methods provided by the form field context.",
+        "descriptionKey": "api.generated.packages_headless_src_components_form_types.formfieldcompactprops.props",
+        "sourcePath": "packages/headless/src/components/form/types.ts",
+        "typeParameters": ["TypeParameter Values", "TypeParameter Name"],
+        "members": [
+          {
+            "name": "name",
+            "type": "Name",
+            "required": true,
+            "description": "The name of the form field, used for registration and value retrieval.",
+            "descriptionKey": "api.generated.packages_headless_src_components_form_types.formfieldcompactprops.members.name",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/form/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "orientation",
+            "type": "DataOrientation",
+            "required": false,
+            "description": "Orientation of the form field.",
+            "descriptionKey": "api.generated.packages_headless_src_components_form_types.formfieldcompactprops.members.orientation",
+            "default": "'vertical'",
+            "inheritedFrom": "FormFieldCommonProps.orientation",
+            "sourcePath": "packages/headless/src/components/form/types.ts",
+            "referencedTypes": [
+              {
+                "name": "DataOrientation",
+                "kind": "typeAlias",
+                "type": "'vertical' | 'horizontal'",
+                "resolvedType": "'vertical' | 'horizontal'",
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_types_common.dataorientation",
+                "sourcePath": "packages/headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "label",
+            "type": "string",
+            "required": false,
+            "description": "Label text rendered by the component.",
+            "descriptionKey": "api.generated.packages_headless_src_components_form_types.formfieldcompactprops.members.label",
+            "default": null,
+            "inheritedFrom": "FormFieldCommonProps.label",
+            "sourcePath": "packages/headless/src/components/form/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "description",
+            "type": "string",
+            "required": false,
+            "description": "Description text rendered by the component.",
+            "descriptionKey": "api.generated.packages_headless_src_components_form_types.formfieldcompactprops.members.description",
+            "default": null,
+            "inheritedFrom": "FormFieldCommonProps.description",
+            "sourcePath": "packages/headless/src/components/form/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "labelProps",
+            "type": "FormLabelProps",
+            "required": false,
+            "description": "Properties forwarded to the label element.",
+            "descriptionKey": "api.generated.packages_headless_src_components_form_types.formfieldcompactprops.members.labelprops",
+            "default": null,
+            "inheritedFrom": "FormFieldCommonProps.labelProps",
+            "sourcePath": "packages/headless/src/components/form/types.ts",
+            "referencedTypes": [
+              {
+                "name": "FormLabelProps",
+                "kind": "interface",
+                "type": "FormLabelProps",
+                "resolvedType": "{ for?: string }",
+                "description": "Properties for the FormLabel component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_form_types.formlabelprops",
+                "sourcePath": "packages/headless/src/components/form/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "for",
+                    "type": "string",
+                    "required": false,
+                    "description": "The id of the element the label is associated with.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_form_types.formlabelprops.members.for",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/label/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "controlProps",
+            "type": "FormControlProps",
+            "required": false,
+            "description": "Properties forwarded to the control element.",
+            "descriptionKey": "api.generated.packages_headless_src_components_form_types.formfieldcompactprops.members.controlprops",
+            "default": null,
+            "inheritedFrom": "FormFieldCommonProps.controlProps",
+            "sourcePath": "packages/headless/src/components/form/types.ts",
+            "referencedTypes": [
+              {
+                "name": "FormControlProps",
+                "kind": "interface",
+                "type": "FormControlProps",
+                "resolvedType": null,
+                "description": "Properties for the FormControl component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_form_types.formcontrolprops",
+                "sourcePath": "packages/headless/src/components/form/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "descriptionProps",
+            "type": "FormDescriptionProps",
+            "required": false,
+            "description": "Properties forwarded to the description element.",
+            "descriptionKey": "api.generated.packages_headless_src_components_form_types.formfieldcompactprops.members.descriptionprops",
+            "default": null,
+            "inheritedFrom": "FormFieldCommonProps.descriptionProps",
+            "sourcePath": "packages/headless/src/components/form/types.ts",
+            "referencedTypes": [
+              {
+                "name": "FormDescriptionProps",
+                "kind": "interface",
+                "type": "FormDescriptionProps",
+                "resolvedType": null,
+                "description": "Properties for the FormDescription component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_form_types.formdescriptionprops",
+                "sourcePath": "packages/headless/src/components/form/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "errorProps",
+            "type": "FormErrorProps",
+            "required": false,
+            "description": "Properties forwarded to the error element.",
+            "descriptionKey": "api.generated.packages_headless_src_components_form_types.formfieldcompactprops.members.errorprops",
+            "default": null,
+            "inheritedFrom": "FormFieldCommonProps.errorProps",
+            "sourcePath": "packages/headless/src/components/form/types.ts",
+            "referencedTypes": [
+              {
+                "name": "FormErrorProps",
+                "kind": "interface",
+                "type": "FormErrorProps",
+                "resolvedType": null,
+                "description": "Properties for the FormError component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_form_types.formerrorprops",
+                "sourcePath": "packages/headless/src/components/form/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "validate",
+            "type": "FormFieldValidator<PathValue<Values, Name>>",
+            "required": false,
+            "description": "Validate.",
+            "descriptionKey": "api.generated.packages_headless_src_components_form_types.formfieldcompactprops.members.validate",
+            "default": null,
+            "inheritedFrom": "validate",
+            "sourcePath": "packages/headless/src/components/form/core/types.ts",
+            "referencedTypes": [
+              {
+                "name": "FormFieldValidator",
+                "kind": "typeAlias",
+                "type": "(value: Value) => MaybePromise<string | undefined>",
+                "resolvedType": "(value: Value) => string | Promise<string | undefined> | undefined",
+                "description": "Type information for FormFieldValidator.",
+                "descriptionKey": "api.generated.packages_headless_src_components_form_core_types.formfieldvalidator",
+                "sourcePath": "packages/headless/src/components/form/core/types.ts",
+                "typeParameters": ["Value"],
+                "external": false,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "PathValue",
+                "kind": "typeAlias",
+                "type": "Values extends any ? Name extends `${infer Key}.${infer Rest}` ? Key extends keyof Values ? Rest extends Path<Values[Key]> ? PathValue<Values[Key], Rest> : never : Key extends `${number}` ? Values extends readonly (infer V)[] ? PathValue<V, Rest & Path<V>> : never : never : Name extends keyof Values ? Values[Name] : Name extends `${number}` ? Values extends readonly (infer V)[] ? V : never : never : never",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_types_path.pathvalue",
+                "sourcePath": "packages/headless/src/types/path.ts",
+                "typeParameters": ["T", "P extends Path<T> | ArrayPath<T>"],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "reset",
+            "type": "(() => void)",
+            "required": false,
+            "description": "Reset.",
+            "descriptionKey": "api.generated.packages_headless_src_components_form_types.formfieldcompactprops.members.reset",
+            "default": null,
+            "inheritedFrom": "reset",
+            "sourcePath": "packages/headless/src/components/form/core/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      },
+      "slots": {
+        "kind": "slots",
+        "name": "FormFieldCompactSlots",
+        "type": "TypeAlias FormFieldCompactSlots<Values, Name>",
+        "resolvedType": "{ FormError?: ((props: FormFieldState<Values, Name>) => any); label?: ((props: FormFieldState<Values, Name>) => any); description?: ((props: FormFieldState<Values, Name>) => any) }",
+        "description": "Slots for the FormFieldCompact component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_form_types.formfieldcompactslots.slots",
+        "sourcePath": "packages/headless/src/components/form/types.ts",
+        "typeParameters": ["TypeParameter Values", "TypeParameter Name"],
+        "members": [],
+        "callables": [
+          {
+            "name": "default",
+            "type": "((props: FormFieldState<Values, Name>) => any) | undefined",
+            "parameters": "((props: FormFieldState<Values, Name>) => any) | undefined",
+            "required": false,
+            "description": "Custom content for the default slot.",
+            "descriptionKey": "api.generated.packages_headless_src_components_form_types.formfieldcompactslots.callables.default",
+            "sourcePath": "packages/headless/src/components/form/types.ts",
+            "referencedTypes": [
+              {
+                "name": "FormFieldState",
+                "kind": "interface",
+                "type": "FormFieldState<Values, Name>",
+                "resolvedType": null,
+                "description": "State values for FormFieldState.",
+                "descriptionKey": "api.generated.packages_headless_src_components_form_core_types.formfieldstate",
+                "sourcePath": "packages/headless/src/components/form/core/types.ts",
+                "typeParameters": ["Values extends FormValues", "Name extends Path<Values>"],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "label",
+            "type": "((props: FormFieldState<Values, Name>) => any) | undefined",
+            "parameters": "((props: FormFieldState<Values, Name>) => any) | undefined",
+            "required": false,
+            "description": "Custom content for the label slot.",
+            "descriptionKey": "api.generated.packages_headless_src_components_form_types.formfieldcompactslots.callables.label",
+            "sourcePath": "packages/headless/src/components/form/types.ts",
+            "referencedTypes": [
+              {
+                "name": "FormFieldState",
+                "kind": "interface",
+                "type": "FormFieldState<Values, Name>",
+                "resolvedType": null,
+                "description": "State values for FormFieldState.",
+                "descriptionKey": "api.generated.packages_headless_src_components_form_core_types.formfieldstate",
+                "sourcePath": "packages/headless/src/components/form/core/types.ts",
+                "typeParameters": ["Values extends FormValues", "Name extends Path<Values>"],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "description",
+            "type": "((props: FormFieldState<Values, Name>) => any) | undefined",
+            "parameters": "((props: FormFieldState<Values, Name>) => any) | undefined",
+            "required": false,
+            "description": "Custom content for the description slot.",
+            "descriptionKey": "api.generated.packages_headless_src_components_form_types.formfieldcompactslots.callables.description",
+            "sourcePath": "packages/headless/src/components/form/types.ts",
+            "referencedTypes": [
+              {
+                "name": "FormFieldState",
+                "kind": "interface",
+                "type": "FormFieldState<Values, Name>",
+                "resolvedType": null,
+                "description": "State values for FormFieldState.",
+                "descriptionKey": "api.generated.packages_headless_src_components_form_core_types.formfieldstate",
+                "sourcePath": "packages/headless/src/components/form/core/types.ts",
+                "typeParameters": ["Values extends FormValues", "Name extends Path<Values>"],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "referencedTypes": []
+      }
+    },
+    "FormLabel": {
+      "props": {
+        "kind": "props",
+        "name": "FormLabelProps",
+        "type": "Interface FormLabelProps",
+        "resolvedType": "{ for?: string }",
+        "description": "Properties for the FormLabel component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_form_types.formlabelprops.props",
+        "sourcePath": "packages/headless/src/components/form/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "for",
+            "type": "string",
+            "required": false,
+            "description": "The id of the element the label is associated with.",
+            "descriptionKey": "api.generated.packages_headless_src_components_form_types.formlabelprops.members.for",
+            "default": null,
+            "inheritedFrom": "for",
+            "sourcePath": "packages/headless/src/components/label/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      }
+    }
+  }
+}

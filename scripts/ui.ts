@@ -11,7 +11,7 @@ type ComponentGroup = {
 };
 
 const rootDir = process.cwd();
-const uiSrcDir = path.join(rootDir, 'src');
+const uiSrcDir = path.join(rootDir, 'packages/ui/src');
 const uiIndexPath = path.join(uiSrcDir, 'index.ts');
 const componentsDir = path.join(uiSrcDir, 'components');
 const componentsOutputPath = path.join(uiSrcDir, 'constants/components.ts');

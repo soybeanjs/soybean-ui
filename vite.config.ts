@@ -1,52 +1,39 @@
-import path from 'node:path';
-import { URL, fileURLToPath } from 'node:url';
-import { defineConfig } from 'vite';
-import Vue from '@vitejs/plugin-vue';
-import VueJsx from '@vitejs/plugin-vue-jsx';
-import MetaLayouts from 'vite-plugin-vue-meta-layouts';
-import Components from 'unplugin-vue-components/vite';
-import VueRouter from 'vue-router/vite';
-import Unocss from 'unocss/vite';
-import VueI18n from '@intlify/unplugin-vue-i18n/vite';
-import UiResolver from './src/resolver/index';
+import { defineConfig } from 'vite-plus';
+import { lint, fmt } from '@soybeanjs/oxc-config';
 
 export default defineConfig({
-  resolve: {
-    alias: {
-      '@': fileURLToPath(new URL('./src', import.meta.url)),
-      '@soybeanjs/ui': fileURLToPath(new URL('./src/index.ts', import.meta.url))
+  staged: {
+    '*': 'vp check --fix'
+  },
+  fmt: {
+    ...fmt,
+    ignorePatterns: ['apps/playground/src/typings', 'apps/docs/src/typings']
+  },
+  lint,
+  run: {
+    tasks: {
+      'build:headless': {
+        command: 'pnpm --filter @soybeanjs/headless build'
+      },
+      'build:ui': {
+        command: 'pnpm --filter @soybeanjs/ui build',
+        dependsOn: ['build:headless']
+      },
+      'dev:playground': {
+        command: 'pnpm --filter @soybeanjs/ui-playground dev'
+      },
+      'build:playground': {
+        command: 'pnpm --filter @soybeanjs/ui-playground build',
+        dependsOn: ['build:headless']
+      },
+      'dev:docs': {
+        command: 'pnpm --filter @soybeanjs/ui-docs dev',
+        dependsOn: ['build:ui']
+      },
+      'build:docs': {
+        command: 'pnpm --filter @soybeanjs/ui-docs build',
+        dependsOn: ['build:ui']
+      }
     }
-  },
-  plugins: [
-    Vue(),
-    VueJsx(),
-    Unocss(),
-    VueRouter({
-      routesFolder: 'playground/pages',
-      dts: 'playground/typings/typed-router.d.ts'
-    }),
-    MetaLayouts({
-      target: 'playground/layouts'
-    }),
-    Components({
-      dirs: ['playground/components'],
-      dts: 'playground/typings/components.d.ts',
-      resolvers: [UiResolver()]
-    }),
-    VueI18n({
-      runtimeOnly: true,
-      compositionOnly: true,
-      fullInstall: true,
-      include: [path.resolve(__dirname, 'docs/locales/**')]
-    })
-  ],
-  server: {
-    open: true
-  },
-  test: {
-    globals: true,
-    include: ['test/specs/**/*.spec.ts'],
-    environment: 'happy-dom',
-    setupFiles: ['./test/setup.ts']
   }
 });

@@ -1,5 +1,5 @@
 ---
-applyTo: 'headless/src/components/**/*.{ts,vue}'
+applyTo: 'packages/headless/src/components/**/*.{ts,vue}'
 ---
 
 # SoybeanUI Headless 规范
@@ -11,7 +11,7 @@ applyTo: 'headless/src/components/**/*.{ts,vue}'
 - headless 只负责逻辑、状态、a11y、结构聚合和默认语义
 - 禁止添加 UnoCSS 类名、`<style>`、内联样式或任何视觉样式
 - 禁止从 `@soybeanjs/ui` 导入
-- 写新逻辑前，先检查 `headless/src/composables/`、`headless/src/shared/`、`headless/src/types/`
+- 写新逻辑前，先检查 `packages/headless/src/composables/`、`packages/headless/src/shared/`、`packages/headless/src/types/`
 - `role`、`aria-*`、`tabindex`、键盘交互、焦点管理、`dir` 等语义要求以 `soybean-ui-accessibility-rtl.instructions.md` 为准，headless 负责落地
 
 ## 实现顺序
@@ -21,15 +21,15 @@ applyTo: 'headless/src/components/**/*.{ts,vue}'
 3. 基础分片组件 SFC
 4. `UiContext`
 5. 必要时新增 `{Name}Compact`
-6. `index.ts` 与 `headless/src/index.ts`
+6. `index.ts` 与 `packages/headless/src/index.ts`
 7. 运行 `pnpm sui headless`
 
 ## Step 1：types.ts
 
 - 多 slot 组件使用 `UiClass<{Name}UiSlot>` 定义 `{Name}Ui`
 - Props 使用 `interface`，并 `extends BaseProps` 或更具体的 HTML 属性类型, 如果组件基于 `Primitive` 则直接 `extends PrimitiveWithBaseProps`
-- 先复用 `headless/src/types/common.ts` 中已有类型，不要重复定义 `Side`、`Align`、`Direction` 等公共类型
-- 写新类型前，先检查 `headless/src/types/` 中现有定义，不要在组件目录里重复造类型
+- 先复用 `packages/headless/src/types/common.ts` 中已有类型，不要重复定义 `Side`、`Align`、`Direction` 等公共类型
+- 写新类型前，先检查 `packages/headless/src/types/` 中现有定义，不要在组件目录里重复造类型
 - 受控/非受控状态用 `useControllableState`
 - 多选组件优先复用 `SelectionProps<M>` / `SelectionEmits<M>`
 
@@ -37,8 +37,8 @@ applyTo: 'headless/src/components/**/*.{ts,vue}'
 
 - context 中的值必须是响应式，使用 `ComputedRef` 或 `ShallowRef`
 - 直接来自 props 的字段优先使用 `transformPropsToContext` 或 `PropsToContext`
-- 需要新的 composable 或状态工具时，先检查 `headless/src/composables/` 是否已有对应能力
-- 如果 `headless/src/composables/` 没有，再检查 `@vueuse/core` 是否已有可直接使用的 composable
+- 需要新的 composable 或状态工具时，先检查 `packages/headless/src/composables/` 是否已有对应能力
+- 如果 `packages/headless/src/composables/` 没有，再检查 `@vueuse/core` 是否已有可直接使用的 composable
 - 方向敏感组件的 `dir` 解析与下发也放在这里，具体约束遵循 `soybean-ui-accessibility-rtl.instructions.md`
 - 只在 provider 之外也需要消费的派生值放在组件里先算好，再传给 `provideXContext`
 - 只供子组件消费的基础设施状态，如 element ref、生成的 id，可放在 `useContext` 的回调里派生
@@ -92,7 +92,7 @@ applyTo: 'headless/src/components/**/*.{ts,vue}'
 ## Step 7：导出与注册
 
 - `index.ts` 导出组件、`provide{Name}Ui` 和相关 types
-- 正式出口还要同步接入 `headless/src/index.ts`
+- 正式出口还要同步接入 `packages/headless/src/index.ts`
 - 接入后运行 `pnpm sui headless` 自动更新生成文件，不要手动编辑
 
 ## 禁止反模式

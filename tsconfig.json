@@ -1,11 +1,21 @@
 {
-  "extends": "./tsconfig.base.json",
   "compilerOptions": {
-    "paths": {
-      "@/*": ["./src/*"],
-      "@soybeanjs/ui": ["./src/index.ts"]
-    },
-    "types": ["vite/client", "vite-plugin-vue-meta-layouts/client", "vitest/config"]
+    "target": "ESNext",
+    "jsx": "preserve",
+    "jsxImportSource": "vue",
+    "lib": ["DOM", "ESNext"],
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "types": ["node"],
+    "resolveJsonModule": true,
+    "strict": true,
+    "strictNullChecks": true,
+    "noUnusedLocals": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "isolatedModules": true,
+    "skipLibCheck": true
   },
-  "include": ["src/**/*", "headless/**/*", "playground/**/*", "test/**/*", "scripts/*", "vite.config.ts"]
+  "exclude": ["node_modules", "dist"]
 }

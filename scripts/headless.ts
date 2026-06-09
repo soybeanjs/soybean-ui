@@ -12,7 +12,7 @@ type ComponentGroup = {
 };
 
 const rootDir = process.cwd();
-const headlessSrcDir = path.join(rootDir, 'headless/src');
+const headlessSrcDir = path.join(rootDir, 'packages/headless/src');
 const headlessIndexPath = path.join(headlessSrcDir, 'index.ts');
 const componentsDir = path.join(headlessSrcDir, 'components');
 const componentsOutputPath = path.join(headlessSrcDir, 'constants/components.ts');

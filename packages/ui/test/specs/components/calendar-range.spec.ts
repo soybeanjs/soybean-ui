@@ -1,0 +1,117 @@
+import { describe, expect, it } from 'vitest';
+import { mount } from '@vue/test-utils';
+import { CalendarDate } from '@internationalized/date';
+import type { DateValue } from '@internationalized/date';
+import SCalendarRange from '@/components/calendar-range/calendar-range.vue';
+import { getA11yViolations } from '../../shared/a11y';
+
+describe('SCalendarRange', () => {
+  describe('rendering', () => {
+    it('renders the heading controls and weekday cells', () => {
+      const wrapper = mount(SCalendarRange, {
+        props: {
+          defaultPlaceholder: new CalendarDate(2026, 4, 18)
+        },
+        attachTo: document.body
+      });
+
+      expect(wrapper.find('[aria-label="Select month"]').exists()).toBe(true);
+      expect(wrapper.find('[aria-label="Select year"]').exists()).toBe(true);
+      expect(wrapper.text()).toContain('S');
+      wrapper.unmount();
+    });
+
+    it('applies custom root classes', () => {
+      const wrapper = mount(SCalendarRange, {
+        props: {
+          class: 'calendar-range-root-test',
+          defaultPlaceholder: new CalendarDate(2026, 4, 18)
+        },
+        attachTo: document.body
+      });
+
+      expect(wrapper.classes()).toContain('calendar-range-root-test');
+      wrapper.unmount();
+    });
+  });
+
+  describe('selected state', () => {
+    it('marks the controlled range as selected', () => {
+      const wrapper = mount(SCalendarRange, {
+        props: {
+          defaultPlaceholder: new CalendarDate(2026, 4, 18),
+          modelValue: {
+            start: new CalendarDate(2026, 4, 18),
+            end: new CalendarDate(2026, 4, 20)
+          }
+        },
+        attachTo: document.body
+      });
+
+      expect(wrapper.get('[data-value="2026-04-18"]').attributes('data-selection-start')).toBeDefined();
+      expect(wrapper.get('[data-value="2026-04-20"]').attributes('data-selection-end')).toBeDefined();
+      expect(wrapper.get('[data-value="2026-04-19"]').attributes('data-selected')).toBeDefined();
+      wrapper.unmount();
+    });
+
+    it('emits update:modelValue after selecting a range', async () => {
+      const wrapper = mount(SCalendarRange, {
+        props: {
+          defaultPlaceholder: new CalendarDate(2026, 4, 18)
+        },
+        attachTo: document.body
+      });
+
+      await wrapper.get('[data-value="2026-04-18"]').trigger('click');
+      await wrapper.get('[data-value="2026-04-21"]').trigger('click');
+      const emitted = wrapper.emitted('update:modelValue');
+
+      expect(emitted).toBeTruthy();
+      const hasCompleteRange = (emitted as NonNullable<typeof emitted>).some(([value]) => {
+        const range = value as { start?: CalendarDate; end?: CalendarDate };
+        return range.start?.toString() === '2026-04-18' && range.end?.toString() === '2026-04-21';
+      });
+
+      expect(hasCompleteRange).toBe(true);
+      wrapper.unmount();
+    });
+  });
+
+  describe('disabled state', () => {
+    it('disables matching dates and prevents range completion', async () => {
+      const wrapper = mount(SCalendarRange, {
+        props: {
+          defaultPlaceholder: new CalendarDate(2026, 4, 18),
+          isDateDisabled: (date: DateValue) => date.day === 19
+        },
+        attachTo: document.body
+      });
+
+      const disabled = wrapper.get('[data-value="2026-04-19"]');
+      expect(disabled.attributes('data-disabled')).toBeDefined();
+      expect((disabled.element as HTMLButtonElement).disabled).toBe(true);
+
+      await wrapper.get('[data-value="2026-04-18"]').trigger('click');
+      await disabled.trigger('click');
+      const emitted = wrapper.emitted('update:modelValue');
+      const last = emitted?.at(-1)?.[0] as { start?: CalendarDate; end?: CalendarDate } | undefined;
+      expect(last?.end).toBeUndefined();
+      wrapper.unmount();
+    });
+  });
+
+  describe('accessibility', () => {
+    it('has no a11y violations in the default state', async () => {
+      const wrapper = mount(SCalendarRange, {
+        props: {
+          defaultPlaceholder: new CalendarDate(2026, 4, 18)
+        },
+        attachTo: document.body
+      });
+
+      const violations = await getA11yViolations(wrapper.element);
+      expect(violations).toHaveLength(0);
+      wrapper.unmount();
+    });
+  });
+});

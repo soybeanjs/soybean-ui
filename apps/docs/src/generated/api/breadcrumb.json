@@ -1,0 +1,1743 @@
+{
+  "component": "breadcrumb",
+  "symbols": {
+    "Breadcrumb": {
+      "props": {
+        "kind": "props",
+        "name": "BreadcrumbProps",
+        "type": "Interface BreadcrumbProps<T>",
+        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<BreadcrumbUi>; items: T[]; ellipsis?: true | [number, number] | null; listProps?: BreadcrumbListProps; itemProps?: BreadcrumbItemProps; linkProps?: BreadcrumbLinkProps; pageProps?: BreadcrumbPageProps; separatorProps?: BreadcrumbSeparatorProps; ellipsisProps?: BreadcrumbEllipsisProps }",
+        "description": "Properties for the Breadcrumb component.",
+        "descriptionKey": "api.generated.packages_ui_src_components_breadcrumb_types.breadcrumbprops.props",
+        "sourcePath": "packages/ui/src/components/breadcrumb/types.ts",
+        "typeParameters": ["TypeParameter T"],
+        "members": [
+          {
+            "name": "class",
+            "type": "string | false | Record<string, any> | ClassValue[] | null",
+            "required": false,
+            "description": "root class",
+            "descriptionKey": "api.generated.packages_ui_src_components_breadcrumb_types.breadcrumbprops.members.class",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui/src/components/breadcrumb/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ClassValue",
+                "kind": "typeAlias",
+                "type": "string | false | Record<string, any> | ClassValue[] | null | undefined",
+                "resolvedType": "string | false | Record<string, any> | ClassValue[] | null | undefined",
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_types_common.classvalue",
+                "sourcePath": "packages/headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "size",
+            "type": "ThemeSize",
+            "required": false,
+            "description": "Visual size of the component.",
+            "descriptionKey": "api.generated.packages_ui_src_components_breadcrumb_types.breadcrumbprops.members.size",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui/src/components/breadcrumb/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ThemeSize",
+                "kind": "typeAlias",
+                "type": "'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'",
+                "resolvedType": "'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'",
+                "description": "",
+                "descriptionKey": "api.generated.packages_ui_src_theme_types.themesize",
+                "sourcePath": "packages/ui/src/theme/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "ui",
+            "type": "Partial<BreadcrumbUi>",
+            "required": false,
+            "description": "Per-slot class overrides for the component.",
+            "descriptionKey": "api.generated.packages_ui_src_components_breadcrumb_types.breadcrumbprops.members.ui",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui/src/components/breadcrumb/types.ts",
+            "referencedTypes": [
+              {
+                "name": "BreadcrumbUi",
+                "kind": "typeAlias",
+                "type": "{ root: ClassValue; item: ClassValue; link: ClassValue; separator: ClassValue; list: ClassValue; page: ClassValue; ellipsis: ClassValue; }",
+                "resolvedType": null,
+                "description": "UI class overrides for the Breadcrumb component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_breadcrumb_types.breadcrumbui",
+                "sourcePath": "packages/headless/src/components/breadcrumb/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "items",
+            "type": "T[]",
+            "required": true,
+            "description": "Items rendered by the component.",
+            "descriptionKey": "api.generated.packages_ui_src_components_breadcrumb_types.breadcrumbprops.members.items",
+            "default": null,
+            "inheritedFrom": "items",
+            "sourcePath": "packages/headless/src/components/breadcrumb/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "ellipsis",
+            "type": "true | [number, number] | null",
+            "required": false,
+            "description": "The range of items to show ellipsis.\n\nWhen the item count is greater than 4, we will show ellipsis.",
+            "descriptionKey": "api.generated.packages_ui_src_components_breadcrumb_types.breadcrumbprops.members.ellipsis",
+            "default": null,
+            "inheritedFrom": "ellipsis",
+            "sourcePath": "packages/headless/src/components/breadcrumb/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "listProps",
+            "type": "BreadcrumbListProps",
+            "required": false,
+            "description": "Properties forwarded to the list element.",
+            "descriptionKey": "api.generated.packages_ui_src_components_breadcrumb_types.breadcrumbprops.members.listprops",
+            "default": null,
+            "inheritedFrom": "listProps",
+            "sourcePath": "packages/headless/src/components/breadcrumb/types.ts",
+            "referencedTypes": [
+              {
+                "name": "BreadcrumbListProps",
+                "kind": "interface",
+                "type": "BreadcrumbListProps",
+                "resolvedType": null,
+                "description": "Properties for the BreadcrumbList component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_breadcrumb_types.breadcrumblistprops",
+                "sourcePath": "packages/headless/src/components/breadcrumb/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "itemProps",
+            "type": "BreadcrumbItemProps",
+            "required": false,
+            "description": "Properties forwarded to the item element.",
+            "descriptionKey": "api.generated.packages_ui_src_components_breadcrumb_types.breadcrumbprops.members.itemprops",
+            "default": null,
+            "inheritedFrom": "itemProps",
+            "sourcePath": "packages/headless/src/components/breadcrumb/types.ts",
+            "referencedTypes": [
+              {
+                "name": "BreadcrumbItemProps",
+                "kind": "interface",
+                "type": "BreadcrumbItemProps",
+                "resolvedType": null,
+                "description": "Properties for the BreadcrumbItem component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_breadcrumb_types.breadcrumbitemprops",
+                "sourcePath": "packages/headless/src/components/breadcrumb/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "linkProps",
+            "type": "BreadcrumbLinkProps",
+            "required": false,
+            "description": "Properties forwarded to the link element.",
+            "descriptionKey": "api.generated.packages_ui_src_components_breadcrumb_types.breadcrumbprops.members.linkprops",
+            "default": null,
+            "inheritedFrom": "linkProps",
+            "sourcePath": "packages/headless/src/components/breadcrumb/types.ts",
+            "referencedTypes": [
+              {
+                "name": "BreadcrumbLinkProps",
+                "kind": "interface",
+                "type": "BreadcrumbLinkProps",
+                "resolvedType": "{ to?: string | import(\"vue-router\").RouteLocationAsRelativeGeneric | import(\"vue-router\").RouteLocationAsPathGeneric; replace?: boolean; href?: string; disabled?: boolean; activeClass?: string; exactActiveClass?: string; inactiveClass?: string; prefetchedClass?: string; external?: boolean; ariaCurrentValue?: 'true' | 'false' | 'date' | 'time' | 'page' | 'step' | 'location'; viewTransition?: boolean; target?: '_blank' | '_parent' | '_self' | '_top' | (string & {}) | null; rel?: (string & {}) | 'noopener' | 'noreferrer' | 'nofollow' | 'sponsored' | 'ugc' | null; noRel?: boolean; prefetch?: boolean; prefetchOn?: 'visibility' | 'interaction' | Partial<{ visibility: boolean; interaction: boolean; }>; noPrefetch?: boolean; trailingSlash?: 'append' | 'remove'; asChild?: boolean; as?: AsTag | Component }",
+                "description": "Properties for the BreadcrumbLink component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_breadcrumb_types.breadcrumblinkprops",
+                "sourcePath": "packages/headless/src/components/breadcrumb/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "to",
+                    "type": "string | import(\"vue-router\").RouteLocationAsRelativeGeneric | import(\"vue-router\").RouteLocationAsPathGeneric",
+                    "required": false,
+                    "description": "Route Location the link should navigate to when clicked on.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_breadcrumb_types.breadcrumblinkprops.members.to",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "replace",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Calls `router.replace` instead of `router.push`.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_breadcrumb_types.breadcrumblinkprops.members.replace",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "href",
+                    "type": "string",
+                    "required": false,
+                    "description": "The URL the link should navigate to when clicked on.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_breadcrumb_types.breadcrumblinkprops.members.href",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "disabled",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "When `true`, the link is disabled.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_breadcrumb_types.breadcrumblinkprops.members.disabled",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "activeClass",
+                    "type": "string",
+                    "required": false,
+                    "description": "Class to apply when the link is active",
+                    "descriptionKey": "api.generated.packages_headless_src_components_breadcrumb_types.breadcrumblinkprops.members.activeclass",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "exactActiveClass",
+                    "type": "string",
+                    "required": false,
+                    "description": "Class to apply when the link is exact active",
+                    "descriptionKey": "api.generated.packages_headless_src_components_breadcrumb_types.breadcrumblinkprops.members.exactactiveclass",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "inactiveClass",
+                    "type": "string",
+                    "required": false,
+                    "description": "The class to apply to the link when it is inactive.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_breadcrumb_types.breadcrumblinkprops.members.inactiveclass",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "prefetchedClass",
+                    "type": "string",
+                    "required": false,
+                    "description": "A class to apply to links that have been prefetched.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_breadcrumb_types.breadcrumblinkprops.members.prefetchedclass",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "external",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Forces the link to be considered as external (true) or internal (false). This is helpful to handle edge-cases",
+                    "descriptionKey": "api.generated.packages_headless_src_components_breadcrumb_types.breadcrumblinkprops.members.external",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "ariaCurrentValue",
+                    "type": "'true' | 'false' | 'date' | 'time' | 'page' | 'step' | 'location'",
+                    "required": false,
+                    "description": "Value passed to the attribute `aria-current` when the link is exact active.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_breadcrumb_types.breadcrumblinkprops.members.ariacurrentvalue",
+                    "default": "`'page'`",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "viewTransition",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Pass the returned promise of `router.push()` to `document.startViewTransition()` if supported.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_breadcrumb_types.breadcrumblinkprops.members.viewtransition",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "target",
+                    "type": "'_blank' | '_parent' | '_self' | '_top' | (string & {}) | null",
+                    "required": false,
+                    "description": "Where to display the linked URL, as the name for a browsing context.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_breadcrumb_types.breadcrumblinkprops.members.target",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "rel",
+                    "type": "(string & {}) | 'noopener' | 'noreferrer' | 'nofollow' | 'sponsored' | 'ugc' | null",
+                    "required": false,
+                    "description": "A rel attribute value to apply on the link. Defaults to \"noopener noreferrer\" for external links.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_breadcrumb_types.breadcrumblinkprops.members.rel",
+                    "default": "'noopener noreferrer'",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "noRel",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "If set to true, no rel attribute will be added to the link",
+                    "descriptionKey": "api.generated.packages_headless_src_components_breadcrumb_types.breadcrumblinkprops.members.norel",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "prefetch",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "When enabled will prefetch middleware, layouts and payloads of links in the viewport.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_breadcrumb_types.breadcrumblinkprops.members.prefetch",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "prefetchOn",
+                    "type": "'visibility' | 'interaction' | Partial<{ visibility: boolean; interaction: boolean; }>",
+                    "required": false,
+                    "description": "Allows controlling when to prefetch links. By default, prefetch is triggered only on visibility.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_breadcrumb_types.breadcrumblinkprops.members.prefetchon",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "noPrefetch",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Escape hatch to disable `prefetch` attribute.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_breadcrumb_types.breadcrumblinkprops.members.noprefetch",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "trailingSlash",
+                    "type": "'append' | 'remove'",
+                    "required": false,
+                    "description": "An option to either add or remove trailing slashes in the `href` for this specific link.\nOverrides the global `trailingSlash` option if provided.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_breadcrumb_types.breadcrumblinkprops.members.trailingslash",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "asChild",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_breadcrumb_types.breadcrumblinkprops.members.aschild",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "as",
+                    "type": "AsTag | Component",
+                    "required": false,
+                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+                    "descriptionKey": "api.generated.packages_headless_src_components_breadcrumb_types.breadcrumblinkprops.members.as",
+                    "default": "'div'",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "pageProps",
+            "type": "BreadcrumbPageProps",
+            "required": false,
+            "description": "Properties forwarded to the page element.",
+            "descriptionKey": "api.generated.packages_ui_src_components_breadcrumb_types.breadcrumbprops.members.pageprops",
+            "default": null,
+            "inheritedFrom": "pageProps",
+            "sourcePath": "packages/headless/src/components/breadcrumb/types.ts",
+            "referencedTypes": [
+              {
+                "name": "BreadcrumbPageProps",
+                "kind": "interface",
+                "type": "BreadcrumbPageProps",
+                "resolvedType": null,
+                "description": "Properties for the BreadcrumbPage component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_breadcrumb_types.breadcrumbpageprops",
+                "sourcePath": "packages/headless/src/components/breadcrumb/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "separatorProps",
+            "type": "BreadcrumbSeparatorProps",
+            "required": false,
+            "description": "Properties forwarded to the separator element.",
+            "descriptionKey": "api.generated.packages_ui_src_components_breadcrumb_types.breadcrumbprops.members.separatorprops",
+            "default": null,
+            "inheritedFrom": "separatorProps",
+            "sourcePath": "packages/headless/src/components/breadcrumb/types.ts",
+            "referencedTypes": [
+              {
+                "name": "BreadcrumbSeparatorProps",
+                "kind": "interface",
+                "type": "BreadcrumbSeparatorProps",
+                "resolvedType": null,
+                "description": "Properties for the BreadcrumbSeparator component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_breadcrumb_types.breadcrumbseparatorprops",
+                "sourcePath": "packages/headless/src/components/breadcrumb/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "ellipsisProps",
+            "type": "BreadcrumbEllipsisProps",
+            "required": false,
+            "description": "Properties forwarded to the ellipsis element.",
+            "descriptionKey": "api.generated.packages_ui_src_components_breadcrumb_types.breadcrumbprops.members.ellipsisprops",
+            "default": null,
+            "inheritedFrom": "ellipsisProps",
+            "sourcePath": "packages/headless/src/components/breadcrumb/types.ts",
+            "referencedTypes": [
+              {
+                "name": "BreadcrumbEllipsisProps",
+                "kind": "interface",
+                "type": "BreadcrumbEllipsisProps",
+                "resolvedType": null,
+                "description": "Properties for the BreadcrumbEllipsis component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_breadcrumb_types.breadcrumbellipsisprops",
+                "sourcePath": "packages/headless/src/components/breadcrumb/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      },
+      "emits": {
+        "kind": "emits",
+        "name": "BreadcrumbEmits",
+        "type": "TypeAlias BreadcrumbEmits<T>: BreadcrumbCompactEmits<T>",
+        "resolvedType": "{ click: [item: T] }",
+        "description": "Events for the Breadcrumb component.",
+        "descriptionKey": "api.generated.packages_ui_src_components_breadcrumb_types.breadcrumbemits.emits",
+        "sourcePath": "packages/ui/src/components/breadcrumb/types.ts",
+        "typeParameters": ["TypeParameter T"],
+        "members": [],
+        "callables": [
+          {
+            "name": "click",
+            "type": "[item: T]",
+            "parameters": "item: T",
+            "required": true,
+            "description": "Emitted when click occurs.",
+            "descriptionKey": "api.generated.packages_ui_src_components_breadcrumb_types.breadcrumbemits.callables.click",
+            "sourcePath": "packages/headless/src/components/breadcrumb/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "referencedTypes": []
+      },
+      "slots": {
+        "kind": "slots",
+        "name": "BreadcrumbSlots",
+        "type": "TypeAlias BreadcrumbSlots<T>: BreadcrumbCompactSlots<T>",
+        "resolvedType": "{ BreadcrumbEllipsis?: ((props: BreadcrumbCompactItemSlotProps<T>) => any); ellipsis?: ((props: BreadcrumbCompactEllipsisSlotProps<T>) => any); \"ellipsis-icon\"?: (() => any); separator?: (() => any); \"item-leading\"?: ((props: BreadcrumbCompactItemSlotProps<T>) => any); \"item-link\"?: ((props: BreadcrumbCompactItemSlotProps<T>) => any); \"item-label\"?: ((props: BreadcrumbCompactItemSlotProps<T>) => any); \"item-trailing\"?: ((props: BreadcrumbCompactItemSlotProps<T>) => any) }",
+        "description": "Slots for the Breadcrumb component.",
+        "descriptionKey": "api.generated.packages_ui_src_components_breadcrumb_types.breadcrumbslots.slots",
+        "sourcePath": "packages/ui/src/components/breadcrumb/types.ts",
+        "typeParameters": ["TypeParameter T"],
+        "members": [],
+        "callables": [
+          {
+            "name": "default",
+            "type": "((props: BreadcrumbCompactItemSlotProps<T>) => any) | undefined",
+            "parameters": "((props: BreadcrumbCompactItemSlotProps<T>) => any) | undefined",
+            "required": false,
+            "description": "Custom content for the default slot.",
+            "descriptionKey": "api.generated.packages_ui_src_components_breadcrumb_types.breadcrumbslots.callables.default",
+            "sourcePath": "packages/headless/src/components/breadcrumb/types.ts",
+            "referencedTypes": [
+              {
+                "name": "BreadcrumbCompactItemSlotProps",
+                "kind": "interface",
+                "type": "BreadcrumbCompactItemSlotProps<T>",
+                "resolvedType": null,
+                "description": "Slot properties for the BreadcrumbCompactItem component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_breadcrumb_types.breadcrumbcompactitemslotprops",
+                "sourcePath": "packages/headless/src/components/breadcrumb/types.ts",
+                "typeParameters": ["T extends BreadcrumbOptionData = BreadcrumbOptionData"],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "ellipsis",
+            "type": "((props: BreadcrumbCompactEllipsisSlotProps<T>) => any) | undefined",
+            "parameters": "((props: BreadcrumbCompactEllipsisSlotProps<T>) => any) | undefined",
+            "required": false,
+            "description": "Custom content for the ellipsis slot.",
+            "descriptionKey": "api.generated.packages_ui_src_components_breadcrumb_types.breadcrumbslots.callables.ellipsis",
+            "sourcePath": "packages/headless/src/components/breadcrumb/types.ts",
+            "referencedTypes": [
+              {
+                "name": "BreadcrumbCompactEllipsisSlotProps",
+                "kind": "interface",
+                "type": "BreadcrumbCompactEllipsisSlotProps<T>",
+                "resolvedType": null,
+                "description": "Slot properties for the BreadcrumbCompactEllipsis component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_breadcrumb_types.breadcrumbcompactellipsisslotprops",
+                "sourcePath": "packages/headless/src/components/breadcrumb/types.ts",
+                "typeParameters": ["T extends BreadcrumbOptionData = BreadcrumbOptionData"],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "ellipsis-icon",
+            "type": "(() => any) | undefined",
+            "parameters": "(() => any) | undefined",
+            "required": false,
+            "description": "Custom content for the ellipsis icon slot.",
+            "descriptionKey": "api.generated.packages_ui_src_components_breadcrumb_types.breadcrumbslots.callables.ellipsis_icon",
+            "sourcePath": "packages/headless/src/components/breadcrumb/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "separator",
+            "type": "(() => any) | undefined",
+            "parameters": "(() => any) | undefined",
+            "required": false,
+            "description": "Custom content for the separator slot.",
+            "descriptionKey": "api.generated.packages_ui_src_components_breadcrumb_types.breadcrumbslots.callables.separator",
+            "sourcePath": "packages/headless/src/components/breadcrumb/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "item-leading",
+            "type": "((props: BreadcrumbCompactItemSlotProps<T>) => any) | undefined",
+            "parameters": "((props: BreadcrumbCompactItemSlotProps<T>) => any) | undefined",
+            "required": false,
+            "description": "Custom content for the item leading slot.",
+            "descriptionKey": "api.generated.packages_ui_src_components_breadcrumb_types.breadcrumbslots.callables.item_leading",
+            "sourcePath": "packages/headless/src/components/breadcrumb/types.ts",
+            "referencedTypes": [
+              {
+                "name": "BreadcrumbCompactItemSlotProps",
+                "kind": "interface",
+                "type": "BreadcrumbCompactItemSlotProps<T>",
+                "resolvedType": null,
+                "description": "Slot properties for the BreadcrumbCompactItem component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_breadcrumb_types.breadcrumbcompactitemslotprops",
+                "sourcePath": "packages/headless/src/components/breadcrumb/types.ts",
+                "typeParameters": ["T extends BreadcrumbOptionData = BreadcrumbOptionData"],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "item-link",
+            "type": "((props: BreadcrumbCompactItemSlotProps<T>) => any) | undefined",
+            "parameters": "((props: BreadcrumbCompactItemSlotProps<T>) => any) | undefined",
+            "required": false,
+            "description": "Custom content for the item link slot.",
+            "descriptionKey": "api.generated.packages_ui_src_components_breadcrumb_types.breadcrumbslots.callables.item_link",
+            "sourcePath": "packages/headless/src/components/breadcrumb/types.ts",
+            "referencedTypes": [
+              {
+                "name": "BreadcrumbCompactItemSlotProps",
+                "kind": "interface",
+                "type": "BreadcrumbCompactItemSlotProps<T>",
+                "resolvedType": null,
+                "description": "Slot properties for the BreadcrumbCompactItem component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_breadcrumb_types.breadcrumbcompactitemslotprops",
+                "sourcePath": "packages/headless/src/components/breadcrumb/types.ts",
+                "typeParameters": ["T extends BreadcrumbOptionData = BreadcrumbOptionData"],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "item-label",
+            "type": "((props: BreadcrumbCompactItemSlotProps<T>) => any) | undefined",
+            "parameters": "((props: BreadcrumbCompactItemSlotProps<T>) => any) | undefined",
+            "required": false,
+            "description": "Custom content for the item label slot.",
+            "descriptionKey": "api.generated.packages_ui_src_components_breadcrumb_types.breadcrumbslots.callables.item_label",
+            "sourcePath": "packages/headless/src/components/breadcrumb/types.ts",
+            "referencedTypes": [
+              {
+                "name": "BreadcrumbCompactItemSlotProps",
+                "kind": "interface",
+                "type": "BreadcrumbCompactItemSlotProps<T>",
+                "resolvedType": null,
+                "description": "Slot properties for the BreadcrumbCompactItem component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_breadcrumb_types.breadcrumbcompactitemslotprops",
+                "sourcePath": "packages/headless/src/components/breadcrumb/types.ts",
+                "typeParameters": ["T extends BreadcrumbOptionData = BreadcrumbOptionData"],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "item-trailing",
+            "type": "((props: BreadcrumbCompactItemSlotProps<T>) => any) | undefined",
+            "parameters": "((props: BreadcrumbCompactItemSlotProps<T>) => any) | undefined",
+            "required": false,
+            "description": "Custom content for the item trailing slot.",
+            "descriptionKey": "api.generated.packages_ui_src_components_breadcrumb_types.breadcrumbslots.callables.item_trailing",
+            "sourcePath": "packages/headless/src/components/breadcrumb/types.ts",
+            "referencedTypes": [
+              {
+                "name": "BreadcrumbCompactItemSlotProps",
+                "kind": "interface",
+                "type": "BreadcrumbCompactItemSlotProps<T>",
+                "resolvedType": null,
+                "description": "Slot properties for the BreadcrumbCompactItem component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_breadcrumb_types.breadcrumbcompactitemslotprops",
+                "sourcePath": "packages/headless/src/components/breadcrumb/types.ts",
+                "typeParameters": ["T extends BreadcrumbOptionData = BreadcrumbOptionData"],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "referencedTypes": []
+      }
+    },
+    "BreadcrumbCompact": {
+      "props": {
+        "kind": "props",
+        "name": "BreadcrumbCompactProps",
+        "type": "Interface BreadcrumbCompactProps<T>",
+        "resolvedType": "{ items: T[]; ellipsis?: true | [number, number] | null; listProps?: BreadcrumbListProps; itemProps?: BreadcrumbItemProps; linkProps?: BreadcrumbLinkProps; pageProps?: BreadcrumbPageProps; separatorProps?: BreadcrumbSeparatorProps; ellipsisProps?: BreadcrumbEllipsisProps }",
+        "description": "Properties for the BreadcrumbCompact component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_breadcrumb_types.breadcrumbcompactprops.props",
+        "sourcePath": "packages/headless/src/components/breadcrumb/types.ts",
+        "typeParameters": ["TypeParameter T"],
+        "members": [
+          {
+            "name": "items",
+            "type": "T[]",
+            "required": true,
+            "description": "Items rendered by the component.",
+            "descriptionKey": "api.generated.packages_headless_src_components_breadcrumb_types.breadcrumbcompactprops.members.items",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/breadcrumb/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "ellipsis",
+            "type": "true | [number, number] | null",
+            "required": false,
+            "description": "The range of items to show ellipsis.\n\nWhen the item count is greater than 4, we will show ellipsis.",
+            "descriptionKey": "api.generated.packages_headless_src_components_breadcrumb_types.breadcrumbcompactprops.members.ellipsis",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/breadcrumb/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "listProps",
+            "type": "BreadcrumbListProps",
+            "required": false,
+            "description": "Properties forwarded to the list element.",
+            "descriptionKey": "api.generated.packages_headless_src_components_breadcrumb_types.breadcrumbcompactprops.members.listprops",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/breadcrumb/types.ts",
+            "referencedTypes": [
+              {
+                "name": "BreadcrumbListProps",
+                "kind": "interface",
+                "type": "BreadcrumbListProps",
+                "resolvedType": null,
+                "description": "Properties for the BreadcrumbList component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_breadcrumb_types.breadcrumblistprops",
+                "sourcePath": "packages/headless/src/components/breadcrumb/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "itemProps",
+            "type": "BreadcrumbItemProps",
+            "required": false,
+            "description": "Properties forwarded to the item element.",
+            "descriptionKey": "api.generated.packages_headless_src_components_breadcrumb_types.breadcrumbcompactprops.members.itemprops",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/breadcrumb/types.ts",
+            "referencedTypes": [
+              {
+                "name": "BreadcrumbItemProps",
+                "kind": "interface",
+                "type": "BreadcrumbItemProps",
+                "resolvedType": null,
+                "description": "Properties for the BreadcrumbItem component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_breadcrumb_types.breadcrumbitemprops",
+                "sourcePath": "packages/headless/src/components/breadcrumb/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "linkProps",
+            "type": "BreadcrumbLinkProps",
+            "required": false,
+            "description": "Properties forwarded to the link element.",
+            "descriptionKey": "api.generated.packages_headless_src_components_breadcrumb_types.breadcrumbcompactprops.members.linkprops",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/breadcrumb/types.ts",
+            "referencedTypes": [
+              {
+                "name": "BreadcrumbLinkProps",
+                "kind": "interface",
+                "type": "BreadcrumbLinkProps",
+                "resolvedType": "{ to?: string | import(\"vue-router\").RouteLocationAsRelativeGeneric | import(\"vue-router\").RouteLocationAsPathGeneric; replace?: boolean; href?: string; disabled?: boolean; activeClass?: string; exactActiveClass?: string; inactiveClass?: string; prefetchedClass?: string; external?: boolean; ariaCurrentValue?: 'true' | 'false' | 'date' | 'time' | 'page' | 'step' | 'location'; viewTransition?: boolean; target?: '_blank' | '_parent' | '_self' | '_top' | (string & {}) | null; rel?: (string & {}) | 'noopener' | 'noreferrer' | 'nofollow' | 'sponsored' | 'ugc' | null; noRel?: boolean; prefetch?: boolean; prefetchOn?: 'visibility' | 'interaction' | Partial<{ visibility: boolean; interaction: boolean; }>; noPrefetch?: boolean; trailingSlash?: 'append' | 'remove'; asChild?: boolean; as?: AsTag | Component }",
+                "description": "Properties for the BreadcrumbLink component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_breadcrumb_types.breadcrumblinkprops",
+                "sourcePath": "packages/headless/src/components/breadcrumb/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "to",
+                    "type": "string | import(\"vue-router\").RouteLocationAsRelativeGeneric | import(\"vue-router\").RouteLocationAsPathGeneric",
+                    "required": false,
+                    "description": "Route Location the link should navigate to when clicked on.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_breadcrumb_types.breadcrumblinkprops.members.to",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "replace",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Calls `router.replace` instead of `router.push`.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_breadcrumb_types.breadcrumblinkprops.members.replace",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "href",
+                    "type": "string",
+                    "required": false,
+                    "description": "The URL the link should navigate to when clicked on.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_breadcrumb_types.breadcrumblinkprops.members.href",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "disabled",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "When `true`, the link is disabled.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_breadcrumb_types.breadcrumblinkprops.members.disabled",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "activeClass",
+                    "type": "string",
+                    "required": false,
+                    "description": "Class to apply when the link is active",
+                    "descriptionKey": "api.generated.packages_headless_src_components_breadcrumb_types.breadcrumblinkprops.members.activeclass",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "exactActiveClass",
+                    "type": "string",
+                    "required": false,
+                    "description": "Class to apply when the link is exact active",
+                    "descriptionKey": "api.generated.packages_headless_src_components_breadcrumb_types.breadcrumblinkprops.members.exactactiveclass",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "inactiveClass",
+                    "type": "string",
+                    "required": false,
+                    "description": "The class to apply to the link when it is inactive.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_breadcrumb_types.breadcrumblinkprops.members.inactiveclass",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "prefetchedClass",
+                    "type": "string",
+                    "required": false,
+                    "description": "A class to apply to links that have been prefetched.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_breadcrumb_types.breadcrumblinkprops.members.prefetchedclass",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "external",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Forces the link to be considered as external (true) or internal (false). This is helpful to handle edge-cases",
+                    "descriptionKey": "api.generated.packages_headless_src_components_breadcrumb_types.breadcrumblinkprops.members.external",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "ariaCurrentValue",
+                    "type": "'true' | 'false' | 'date' | 'time' | 'page' | 'step' | 'location'",
+                    "required": false,
+                    "description": "Value passed to the attribute `aria-current` when the link is exact active.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_breadcrumb_types.breadcrumblinkprops.members.ariacurrentvalue",
+                    "default": "`'page'`",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "viewTransition",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Pass the returned promise of `router.push()` to `document.startViewTransition()` if supported.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_breadcrumb_types.breadcrumblinkprops.members.viewtransition",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "target",
+                    "type": "'_blank' | '_parent' | '_self' | '_top' | (string & {}) | null",
+                    "required": false,
+                    "description": "Where to display the linked URL, as the name for a browsing context.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_breadcrumb_types.breadcrumblinkprops.members.target",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "rel",
+                    "type": "(string & {}) | 'noopener' | 'noreferrer' | 'nofollow' | 'sponsored' | 'ugc' | null",
+                    "required": false,
+                    "description": "A rel attribute value to apply on the link. Defaults to \"noopener noreferrer\" for external links.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_breadcrumb_types.breadcrumblinkprops.members.rel",
+                    "default": "'noopener noreferrer'",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "noRel",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "If set to true, no rel attribute will be added to the link",
+                    "descriptionKey": "api.generated.packages_headless_src_components_breadcrumb_types.breadcrumblinkprops.members.norel",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "prefetch",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "When enabled will prefetch middleware, layouts and payloads of links in the viewport.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_breadcrumb_types.breadcrumblinkprops.members.prefetch",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "prefetchOn",
+                    "type": "'visibility' | 'interaction' | Partial<{ visibility: boolean; interaction: boolean; }>",
+                    "required": false,
+                    "description": "Allows controlling when to prefetch links. By default, prefetch is triggered only on visibility.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_breadcrumb_types.breadcrumblinkprops.members.prefetchon",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "noPrefetch",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Escape hatch to disable `prefetch` attribute.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_breadcrumb_types.breadcrumblinkprops.members.noprefetch",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "trailingSlash",
+                    "type": "'append' | 'remove'",
+                    "required": false,
+                    "description": "An option to either add or remove trailing slashes in the `href` for this specific link.\nOverrides the global `trailingSlash` option if provided.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_breadcrumb_types.breadcrumblinkprops.members.trailingslash",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "asChild",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_breadcrumb_types.breadcrumblinkprops.members.aschild",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "as",
+                    "type": "AsTag | Component",
+                    "required": false,
+                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+                    "descriptionKey": "api.generated.packages_headless_src_components_breadcrumb_types.breadcrumblinkprops.members.as",
+                    "default": "'div'",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "pageProps",
+            "type": "BreadcrumbPageProps",
+            "required": false,
+            "description": "Properties forwarded to the page element.",
+            "descriptionKey": "api.generated.packages_headless_src_components_breadcrumb_types.breadcrumbcompactprops.members.pageprops",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/breadcrumb/types.ts",
+            "referencedTypes": [
+              {
+                "name": "BreadcrumbPageProps",
+                "kind": "interface",
+                "type": "BreadcrumbPageProps",
+                "resolvedType": null,
+                "description": "Properties for the BreadcrumbPage component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_breadcrumb_types.breadcrumbpageprops",
+                "sourcePath": "packages/headless/src/components/breadcrumb/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "separatorProps",
+            "type": "BreadcrumbSeparatorProps",
+            "required": false,
+            "description": "Properties forwarded to the separator element.",
+            "descriptionKey": "api.generated.packages_headless_src_components_breadcrumb_types.breadcrumbcompactprops.members.separatorprops",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/breadcrumb/types.ts",
+            "referencedTypes": [
+              {
+                "name": "BreadcrumbSeparatorProps",
+                "kind": "interface",
+                "type": "BreadcrumbSeparatorProps",
+                "resolvedType": null,
+                "description": "Properties for the BreadcrumbSeparator component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_breadcrumb_types.breadcrumbseparatorprops",
+                "sourcePath": "packages/headless/src/components/breadcrumb/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "ellipsisProps",
+            "type": "BreadcrumbEllipsisProps",
+            "required": false,
+            "description": "Properties forwarded to the ellipsis element.",
+            "descriptionKey": "api.generated.packages_headless_src_components_breadcrumb_types.breadcrumbcompactprops.members.ellipsisprops",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/breadcrumb/types.ts",
+            "referencedTypes": [
+              {
+                "name": "BreadcrumbEllipsisProps",
+                "kind": "interface",
+                "type": "BreadcrumbEllipsisProps",
+                "resolvedType": null,
+                "description": "Properties for the BreadcrumbEllipsis component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_breadcrumb_types.breadcrumbellipsisprops",
+                "sourcePath": "packages/headless/src/components/breadcrumb/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      },
+      "emits": {
+        "kind": "emits",
+        "name": "BreadcrumbCompactEmits",
+        "type": "TypeAlias BreadcrumbCompactEmits<T>",
+        "resolvedType": "{ click: [item: T] }",
+        "description": "Events for the BreadcrumbCompact component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_breadcrumb_types.breadcrumbcompactemits.emits",
+        "sourcePath": "packages/headless/src/components/breadcrumb/types.ts",
+        "typeParameters": ["TypeParameter T"],
+        "members": [],
+        "callables": [
+          {
+            "name": "click",
+            "type": "[item: T]",
+            "parameters": "item: T",
+            "required": true,
+            "description": "Emitted when click occurs.",
+            "descriptionKey": "api.generated.packages_headless_src_components_breadcrumb_types.breadcrumbcompactemits.callables.click",
+            "sourcePath": "packages/headless/src/components/breadcrumb/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "referencedTypes": []
+      },
+      "slots": {
+        "kind": "slots",
+        "name": "BreadcrumbCompactSlots",
+        "type": "TypeAlias BreadcrumbCompactSlots<T>",
+        "resolvedType": "{ BreadcrumbEllipsis?: ((props: BreadcrumbCompactItemSlotProps<T>) => any); ellipsis?: ((props: BreadcrumbCompactEllipsisSlotProps<T>) => any); \"ellipsis-icon\"?: (() => any); separator?: (() => any); \"item-leading\"?: ((props: BreadcrumbCompactItemSlotProps<T>) => any); \"item-link\"?: ((props: BreadcrumbCompactItemSlotProps<T>) => any); \"item-label\"?: ((props: BreadcrumbCompactItemSlotProps<T>) => any); \"item-trailing\"?: ((props: BreadcrumbCompactItemSlotProps<T>) => any) }",
+        "description": "Slots for the BreadcrumbCompact component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_breadcrumb_types.breadcrumbcompactslots.slots",
+        "sourcePath": "packages/headless/src/components/breadcrumb/types.ts",
+        "typeParameters": ["TypeParameter T"],
+        "members": [],
+        "callables": [
+          {
+            "name": "default",
+            "type": "((props: BreadcrumbCompactItemSlotProps<T>) => any) | undefined",
+            "parameters": "((props: BreadcrumbCompactItemSlotProps<T>) => any) | undefined",
+            "required": false,
+            "description": "Custom content for the default slot.",
+            "descriptionKey": "api.generated.packages_headless_src_components_breadcrumb_types.breadcrumbcompactslots.callables.default",
+            "sourcePath": "packages/headless/src/components/breadcrumb/types.ts",
+            "referencedTypes": [
+              {
+                "name": "BreadcrumbCompactItemSlotProps",
+                "kind": "interface",
+                "type": "BreadcrumbCompactItemSlotProps<T>",
+                "resolvedType": null,
+                "description": "Slot properties for the BreadcrumbCompactItem component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_breadcrumb_types.breadcrumbcompactitemslotprops",
+                "sourcePath": "packages/headless/src/components/breadcrumb/types.ts",
+                "typeParameters": ["T extends BreadcrumbOptionData = BreadcrumbOptionData"],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "ellipsis",
+            "type": "((props: BreadcrumbCompactEllipsisSlotProps<T>) => any) | undefined",
+            "parameters": "((props: BreadcrumbCompactEllipsisSlotProps<T>) => any) | undefined",
+            "required": false,
+            "description": "Custom content for the ellipsis slot.",
+            "descriptionKey": "api.generated.packages_headless_src_components_breadcrumb_types.breadcrumbcompactslots.callables.ellipsis",
+            "sourcePath": "packages/headless/src/components/breadcrumb/types.ts",
+            "referencedTypes": [
+              {
+                "name": "BreadcrumbCompactEllipsisSlotProps",
+                "kind": "interface",
+                "type": "BreadcrumbCompactEllipsisSlotProps<T>",
+                "resolvedType": null,
+                "description": "Slot properties for the BreadcrumbCompactEllipsis component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_breadcrumb_types.breadcrumbcompactellipsisslotprops",
+                "sourcePath": "packages/headless/src/components/breadcrumb/types.ts",
+                "typeParameters": ["T extends BreadcrumbOptionData = BreadcrumbOptionData"],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "ellipsis-icon",
+            "type": "(() => any) | undefined",
+            "parameters": "(() => any) | undefined",
+            "required": false,
+            "description": "Custom content for the ellipsis icon slot.",
+            "descriptionKey": "api.generated.packages_headless_src_components_breadcrumb_types.breadcrumbcompactslots.callables.ellipsis_icon",
+            "sourcePath": "packages/headless/src/components/breadcrumb/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "separator",
+            "type": "(() => any) | undefined",
+            "parameters": "(() => any) | undefined",
+            "required": false,
+            "description": "Custom content for the separator slot.",
+            "descriptionKey": "api.generated.packages_headless_src_components_breadcrumb_types.breadcrumbcompactslots.callables.separator",
+            "sourcePath": "packages/headless/src/components/breadcrumb/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "item-leading",
+            "type": "((props: BreadcrumbCompactItemSlotProps<T>) => any) | undefined",
+            "parameters": "((props: BreadcrumbCompactItemSlotProps<T>) => any) | undefined",
+            "required": false,
+            "description": "Custom content for the item leading slot.",
+            "descriptionKey": "api.generated.packages_headless_src_components_breadcrumb_types.breadcrumbcompactslots.callables.item_leading",
+            "sourcePath": "packages/headless/src/components/breadcrumb/types.ts",
+            "referencedTypes": [
+              {
+                "name": "BreadcrumbCompactItemSlotProps",
+                "kind": "interface",
+                "type": "BreadcrumbCompactItemSlotProps<T>",
+                "resolvedType": null,
+                "description": "Slot properties for the BreadcrumbCompactItem component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_breadcrumb_types.breadcrumbcompactitemslotprops",
+                "sourcePath": "packages/headless/src/components/breadcrumb/types.ts",
+                "typeParameters": ["T extends BreadcrumbOptionData = BreadcrumbOptionData"],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "item-link",
+            "type": "((props: BreadcrumbCompactItemSlotProps<T>) => any) | undefined",
+            "parameters": "((props: BreadcrumbCompactItemSlotProps<T>) => any) | undefined",
+            "required": false,
+            "description": "Custom content for the item link slot.",
+            "descriptionKey": "api.generated.packages_headless_src_components_breadcrumb_types.breadcrumbcompactslots.callables.item_link",
+            "sourcePath": "packages/headless/src/components/breadcrumb/types.ts",
+            "referencedTypes": [
+              {
+                "name": "BreadcrumbCompactItemSlotProps",
+                "kind": "interface",
+                "type": "BreadcrumbCompactItemSlotProps<T>",
+                "resolvedType": null,
+                "description": "Slot properties for the BreadcrumbCompactItem component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_breadcrumb_types.breadcrumbcompactitemslotprops",
+                "sourcePath": "packages/headless/src/components/breadcrumb/types.ts",
+                "typeParameters": ["T extends BreadcrumbOptionData = BreadcrumbOptionData"],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "item-label",
+            "type": "((props: BreadcrumbCompactItemSlotProps<T>) => any) | undefined",
+            "parameters": "((props: BreadcrumbCompactItemSlotProps<T>) => any) | undefined",
+            "required": false,
+            "description": "Custom content for the item label slot.",
+            "descriptionKey": "api.generated.packages_headless_src_components_breadcrumb_types.breadcrumbcompactslots.callables.item_label",
+            "sourcePath": "packages/headless/src/components/breadcrumb/types.ts",
+            "referencedTypes": [
+              {
+                "name": "BreadcrumbCompactItemSlotProps",
+                "kind": "interface",
+                "type": "BreadcrumbCompactItemSlotProps<T>",
+                "resolvedType": null,
+                "description": "Slot properties for the BreadcrumbCompactItem component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_breadcrumb_types.breadcrumbcompactitemslotprops",
+                "sourcePath": "packages/headless/src/components/breadcrumb/types.ts",
+                "typeParameters": ["T extends BreadcrumbOptionData = BreadcrumbOptionData"],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "item-trailing",
+            "type": "((props: BreadcrumbCompactItemSlotProps<T>) => any) | undefined",
+            "parameters": "((props: BreadcrumbCompactItemSlotProps<T>) => any) | undefined",
+            "required": false,
+            "description": "Custom content for the item trailing slot.",
+            "descriptionKey": "api.generated.packages_headless_src_components_breadcrumb_types.breadcrumbcompactslots.callables.item_trailing",
+            "sourcePath": "packages/headless/src/components/breadcrumb/types.ts",
+            "referencedTypes": [
+              {
+                "name": "BreadcrumbCompactItemSlotProps",
+                "kind": "interface",
+                "type": "BreadcrumbCompactItemSlotProps<T>",
+                "resolvedType": null,
+                "description": "Slot properties for the BreadcrumbCompactItem component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_breadcrumb_types.breadcrumbcompactitemslotprops",
+                "sourcePath": "packages/headless/src/components/breadcrumb/types.ts",
+                "typeParameters": ["T extends BreadcrumbOptionData = BreadcrumbOptionData"],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "referencedTypes": []
+      }
+    },
+    "BreadcrumbCompactEllipsis": {
+      "slotProps": {
+        "kind": "slotProps",
+        "name": "BreadcrumbCompactEllipsisSlotProps",
+        "type": "Interface BreadcrumbCompactEllipsisSlotProps<T>",
+        "resolvedType": "{ ellipsisItems: T[] }",
+        "description": "Slot properties for the BreadcrumbCompactEllipsis component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_breadcrumb_types.breadcrumbcompactellipsisslotprops.slotprops",
+        "sourcePath": "packages/headless/src/components/breadcrumb/types.ts",
+        "typeParameters": ["TypeParameter T"],
+        "members": [
+          {
+            "name": "ellipsisItems",
+            "type": "T[]",
+            "required": true,
+            "description": "Ellipsis items exposed in the slot scope.",
+            "descriptionKey": "api.generated.packages_headless_src_components_breadcrumb_types.breadcrumbcompactellipsisslotprops.members.ellipsisitems",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/breadcrumb/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "BreadcrumbCompactItem": {
+      "slotProps": {
+        "kind": "slotProps",
+        "name": "BreadcrumbCompactItemSlotProps",
+        "type": "Interface BreadcrumbCompactItemSlotProps<T>",
+        "resolvedType": "{ item: T; index: number }",
+        "description": "Slot properties for the BreadcrumbCompactItem component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_breadcrumb_types.breadcrumbcompactitemslotprops.slotprops",
+        "sourcePath": "packages/headless/src/components/breadcrumb/types.ts",
+        "typeParameters": ["TypeParameter T"],
+        "members": [
+          {
+            "name": "item",
+            "type": "T",
+            "required": true,
+            "description": "Current item data.",
+            "descriptionKey": "api.generated.packages_headless_src_components_breadcrumb_types.breadcrumbcompactitemslotprops.members.item",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/breadcrumb/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "index",
+            "type": "number",
+            "required": true,
+            "description": "Index of the current item.",
+            "descriptionKey": "api.generated.packages_headless_src_components_breadcrumb_types.breadcrumbcompactitemslotprops.members.index",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/breadcrumb/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "BreadcrumbEllipsis": {
+      "props": {
+        "kind": "props",
+        "name": "BreadcrumbEllipsisProps",
+        "type": "Interface BreadcrumbEllipsisProps",
+        "resolvedType": null,
+        "description": "Properties for the BreadcrumbEllipsis component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_breadcrumb_types.breadcrumbellipsisprops.props",
+        "sourcePath": "packages/headless/src/components/breadcrumb/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "BreadcrumbItem": {
+      "props": {
+        "kind": "props",
+        "name": "BreadcrumbItemProps",
+        "type": "Interface BreadcrumbItemProps",
+        "resolvedType": null,
+        "description": "Properties for the BreadcrumbItem component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_breadcrumb_types.breadcrumbitemprops.props",
+        "sourcePath": "packages/headless/src/components/breadcrumb/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "BreadcrumbLink": {
+      "props": {
+        "kind": "props",
+        "name": "BreadcrumbLinkProps",
+        "type": "Interface BreadcrumbLinkProps",
+        "resolvedType": "{ to?: string | import(\"vue-router\").RouteLocationAsRelativeGeneric | import(\"vue-router\").RouteLocationAsPathGeneric; replace?: boolean; href?: string; disabled?: boolean; activeClass?: string; exactActiveClass?: string; inactiveClass?: string; prefetchedClass?: string; external?: boolean; ariaCurrentValue?: 'true' | 'false' | 'date' | 'time' | 'page' | 'step' | 'location'; viewTransition?: boolean; target?: '_blank' | '_parent' | '_self' | '_top' | (string & {}) | null; rel?: (string & {}) | 'noopener' | 'noreferrer' | 'nofollow' | 'sponsored' | 'ugc' | null; noRel?: boolean; prefetch?: boolean; prefetchOn?: 'visibility' | 'interaction' | Partial<{ visibility: boolean; interaction: boolean; }>; noPrefetch?: boolean; trailingSlash?: 'append' | 'remove'; asChild?: boolean; as?: AsTag | Component }",
+        "description": "Properties for the BreadcrumbLink component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_breadcrumb_types.breadcrumblinkprops.props",
+        "sourcePath": "packages/headless/src/components/breadcrumb/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "to",
+            "type": "string | import(\"vue-router\").RouteLocationAsRelativeGeneric | import(\"vue-router\").RouteLocationAsPathGeneric",
+            "required": false,
+            "description": "Route Location the link should navigate to when clicked on.",
+            "descriptionKey": "api.generated.packages_headless_src_components_breadcrumb_types.breadcrumblinkprops.members.to",
+            "default": null,
+            "inheritedFrom": "LinkProps.to",
+            "sourcePath": "packages/headless/src/components/link/types.ts",
+            "referencedTypes": [
+              {
+                "name": "RouteLocationRaw",
+                "kind": "typeAlias",
+                "type": "RouteLocationRaw",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": null,
+                "sourcePath": "node_modules/.pnpm/vue-router@5.1.0_@vue+compiler-sfc@3.5.35_pinia@3.0.4_typescript@6.0.3_vue@3.5.35_types_9bb8ebf4a906d5546f9e8c0e7db96d4f/node_modules/vue-router/dist/index-BQLwgiyK.d.ts",
+                "typeParameters": ["Name extends keyof RouteMap = keyof RouteMap"],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "replace",
+            "type": "boolean",
+            "required": false,
+            "description": "Calls `router.replace` instead of `router.push`.",
+            "descriptionKey": "api.generated.packages_headless_src_components_breadcrumb_types.breadcrumblinkprops.members.replace",
+            "default": null,
+            "inheritedFrom": "LinkProps.replace",
+            "sourcePath": "packages/headless/src/components/link/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "href",
+            "type": "string",
+            "required": false,
+            "description": "The URL the link should navigate to when clicked on.",
+            "descriptionKey": "api.generated.packages_headless_src_components_breadcrumb_types.breadcrumblinkprops.members.href",
+            "default": null,
+            "inheritedFrom": "LinkProps.href",
+            "sourcePath": "packages/headless/src/components/link/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "disabled",
+            "type": "boolean",
+            "required": false,
+            "description": "When `true`, the link is disabled.",
+            "descriptionKey": "api.generated.packages_headless_src_components_breadcrumb_types.breadcrumblinkprops.members.disabled",
+            "default": null,
+            "inheritedFrom": "LinkProps.disabled",
+            "sourcePath": "packages/headless/src/components/link/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "activeClass",
+            "type": "string",
+            "required": false,
+            "description": "Class to apply when the link is active",
+            "descriptionKey": "api.generated.packages_headless_src_components_breadcrumb_types.breadcrumblinkprops.members.activeclass",
+            "default": null,
+            "inheritedFrom": "LinkProps.activeClass",
+            "sourcePath": "packages/headless/src/components/link/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "exactActiveClass",
+            "type": "string",
+            "required": false,
+            "description": "Class to apply when the link is exact active",
+            "descriptionKey": "api.generated.packages_headless_src_components_breadcrumb_types.breadcrumblinkprops.members.exactactiveclass",
+            "default": null,
+            "inheritedFrom": "LinkProps.exactActiveClass",
+            "sourcePath": "packages/headless/src/components/link/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "inactiveClass",
+            "type": "string",
+            "required": false,
+            "description": "The class to apply to the link when it is inactive.",
+            "descriptionKey": "api.generated.packages_headless_src_components_breadcrumb_types.breadcrumblinkprops.members.inactiveclass",
+            "default": null,
+            "inheritedFrom": "LinkProps.inactiveClass",
+            "sourcePath": "packages/headless/src/components/link/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "prefetchedClass",
+            "type": "string",
+            "required": false,
+            "description": "A class to apply to links that have been prefetched.",
+            "descriptionKey": "api.generated.packages_headless_src_components_breadcrumb_types.breadcrumblinkprops.members.prefetchedclass",
+            "default": null,
+            "inheritedFrom": "LinkProps.prefetchedClass",
+            "sourcePath": "packages/headless/src/components/link/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "external",
+            "type": "boolean",
+            "required": false,
+            "description": "Forces the link to be considered as external (true) or internal (false). This is helpful to handle edge-cases",
+            "descriptionKey": "api.generated.packages_headless_src_components_breadcrumb_types.breadcrumblinkprops.members.external",
+            "default": null,
+            "inheritedFrom": "LinkProps.external",
+            "sourcePath": "packages/headless/src/components/link/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "ariaCurrentValue",
+            "type": "'true' | 'false' | 'date' | 'time' | 'page' | 'step' | 'location'",
+            "required": false,
+            "description": "Value passed to the attribute `aria-current` when the link is exact active.",
+            "descriptionKey": "api.generated.packages_headless_src_components_breadcrumb_types.breadcrumblinkprops.members.ariacurrentvalue",
+            "default": "`'page'`",
+            "inheritedFrom": "ariaCurrentValue",
+            "sourcePath": "packages/headless/src/components/link/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "viewTransition",
+            "type": "boolean",
+            "required": false,
+            "description": "Pass the returned promise of `router.push()` to `document.startViewTransition()` if supported.",
+            "descriptionKey": "api.generated.packages_headless_src_components_breadcrumb_types.breadcrumblinkprops.members.viewtransition",
+            "default": null,
+            "inheritedFrom": "LinkProps.viewTransition",
+            "sourcePath": "packages/headless/src/components/link/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "target",
+            "type": "'_blank' | '_parent' | '_self' | '_top' | (string & {}) | null",
+            "required": false,
+            "description": "Where to display the linked URL, as the name for a browsing context.",
+            "descriptionKey": "api.generated.packages_headless_src_components_breadcrumb_types.breadcrumblinkprops.members.target",
+            "default": null,
+            "inheritedFrom": "target",
+            "sourcePath": "packages/headless/src/components/link/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "rel",
+            "type": "(string & {}) | 'noopener' | 'noreferrer' | 'nofollow' | 'sponsored' | 'ugc' | null",
+            "required": false,
+            "description": "A rel attribute value to apply on the link. Defaults to \"noopener noreferrer\" for external links.",
+            "descriptionKey": "api.generated.packages_headless_src_components_breadcrumb_types.breadcrumblinkprops.members.rel",
+            "default": "'noopener noreferrer'",
+            "inheritedFrom": "rel",
+            "sourcePath": "packages/headless/src/components/link/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "noRel",
+            "type": "boolean",
+            "required": false,
+            "description": "If set to true, no rel attribute will be added to the link",
+            "descriptionKey": "api.generated.packages_headless_src_components_breadcrumb_types.breadcrumblinkprops.members.norel",
+            "default": null,
+            "inheritedFrom": "LinkProps.noRel",
+            "sourcePath": "packages/headless/src/components/link/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "prefetch",
+            "type": "boolean",
+            "required": false,
+            "description": "When enabled will prefetch middleware, layouts and payloads of links in the viewport.",
+            "descriptionKey": "api.generated.packages_headless_src_components_breadcrumb_types.breadcrumblinkprops.members.prefetch",
+            "default": null,
+            "inheritedFrom": "LinkProps.prefetch",
+            "sourcePath": "packages/headless/src/components/link/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "prefetchOn",
+            "type": "'visibility' | 'interaction' | Partial<{ visibility: boolean; interaction: boolean; }>",
+            "required": false,
+            "description": "Allows controlling when to prefetch links. By default, prefetch is triggered only on visibility.",
+            "descriptionKey": "api.generated.packages_headless_src_components_breadcrumb_types.breadcrumblinkprops.members.prefetchon",
+            "default": null,
+            "inheritedFrom": "LinkProps.prefetchOn",
+            "sourcePath": "packages/headless/src/components/link/types.ts",
+            "referencedTypes": [
+              {
+                "name": "__type",
+                "kind": "typeLiteral",
+                "type": "{ visibility: boolean; interaction: boolean; }",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_components_link_types.type",
+                "sourcePath": "packages/headless/src/components/link/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "noPrefetch",
+            "type": "boolean",
+            "required": false,
+            "description": "Escape hatch to disable `prefetch` attribute.",
+            "descriptionKey": "api.generated.packages_headless_src_components_breadcrumb_types.breadcrumblinkprops.members.noprefetch",
+            "default": null,
+            "inheritedFrom": "LinkProps.noPrefetch",
+            "sourcePath": "packages/headless/src/components/link/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "trailingSlash",
+            "type": "'append' | 'remove'",
+            "required": false,
+            "description": "An option to either add or remove trailing slashes in the `href` for this specific link.\nOverrides the global `trailingSlash` option if provided.",
+            "descriptionKey": "api.generated.packages_headless_src_components_breadcrumb_types.breadcrumblinkprops.members.trailingslash",
+            "default": null,
+            "inheritedFrom": "trailingSlash",
+            "sourcePath": "packages/headless/src/components/link/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "asChild",
+            "type": "boolean",
+            "required": false,
+            "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+            "descriptionKey": "api.generated.packages_headless_src_components_breadcrumb_types.breadcrumblinkprops.members.aschild",
+            "default": null,
+            "inheritedFrom": "LinkProps.asChild",
+            "sourcePath": "packages/headless/src/components/primitive/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "as",
+            "type": "AsTag | Component",
+            "required": false,
+            "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+            "descriptionKey": "api.generated.packages_headless_src_components_breadcrumb_types.breadcrumblinkprops.members.as",
+            "default": "'div'",
+            "inheritedFrom": "LinkProps.as",
+            "sourcePath": "packages/headless/src/components/primitive/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Component",
+                "kind": "typeAlias",
+                "type": "Component",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": null,
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.35/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [
+                  "PropsOrInstance = any",
+                  "RawBindings = any",
+                  "D = any",
+                  "C extends ComputedOptions = ComputedOptions",
+                  "M extends MethodOptions = MethodOptions",
+                  "E extends EmitsOptions | Record<string, any[]> = {}",
+                  "S extends Record<string, any> = any"
+                ],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "BreadcrumbList": {
+      "props": {
+        "kind": "props",
+        "name": "BreadcrumbListProps",
+        "type": "Interface BreadcrumbListProps",
+        "resolvedType": null,
+        "description": "Properties for the BreadcrumbList component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_breadcrumb_types.breadcrumblistprops.props",
+        "sourcePath": "packages/headless/src/components/breadcrumb/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "BreadcrumbPage": {
+      "props": {
+        "kind": "props",
+        "name": "BreadcrumbPageProps",
+        "type": "Interface BreadcrumbPageProps",
+        "resolvedType": null,
+        "description": "Properties for the BreadcrumbPage component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_breadcrumb_types.breadcrumbpageprops.props",
+        "sourcePath": "packages/headless/src/components/breadcrumb/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "BreadcrumbRoot": {
+      "props": {
+        "kind": "props",
+        "name": "BreadcrumbRootProps",
+        "type": "Interface BreadcrumbRootProps",
+        "resolvedType": null,
+        "description": "Properties for the BreadcrumbRoot component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_breadcrumb_types.breadcrumbrootprops.props",
+        "sourcePath": "packages/headless/src/components/breadcrumb/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "BreadcrumbSeparator": {
+      "props": {
+        "kind": "props",
+        "name": "BreadcrumbSeparatorProps",
+        "type": "Interface BreadcrumbSeparatorProps",
+        "resolvedType": null,
+        "description": "Properties for the BreadcrumbSeparator component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_breadcrumb_types.breadcrumbseparatorprops.props",
+        "sourcePath": "packages/headless/src/components/breadcrumb/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [],
+        "referencedTypes": []
+      }
+    }
+  }
+}

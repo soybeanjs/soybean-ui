@@ -1,0 +1,269 @@
+{
+  "component": "list",
+  "symbols": {
+    "List": {
+      "props": {
+        "kind": "props",
+        "name": "ListProps",
+        "type": "Interface ListProps",
+        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<ListUi> }",
+        "description": "Properties for the List component.",
+        "descriptionKey": "api.generated.packages_ui_src_components_list_types.listprops.props",
+        "sourcePath": "packages/ui/src/components/list/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "class",
+            "type": "string | false | Record<string, any> | ClassValue[] | null",
+            "required": false,
+            "description": "Additional class names applied to the root element.",
+            "descriptionKey": "api.generated.packages_ui_src_components_list_types.listprops.members.class",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui/src/components/list/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ClassValue",
+                "kind": "typeAlias",
+                "type": "string | false | Record<string, any> | ClassValue[] | null | undefined",
+                "resolvedType": "string | false | Record<string, any> | ClassValue[] | null | undefined",
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_types_common.classvalue",
+                "sourcePath": "packages/headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "size",
+            "type": "ThemeSize",
+            "required": false,
+            "description": "Visual size of the component.",
+            "descriptionKey": "api.generated.packages_ui_src_components_list_types.listprops.members.size",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui/src/components/list/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ThemeSize",
+                "kind": "typeAlias",
+                "type": "'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'",
+                "resolvedType": "'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'",
+                "description": "",
+                "descriptionKey": "api.generated.packages_ui_src_theme_types.themesize",
+                "sourcePath": "packages/ui/src/theme/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "ui",
+            "type": "Partial<ListUi>",
+            "required": false,
+            "description": "Per-slot class overrides for the component.",
+            "descriptionKey": "api.generated.packages_ui_src_components_list_types.listprops.members.ui",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui/src/components/list/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ListUi",
+                "kind": "typeAlias",
+                "type": "{ root: ClassValue; item: ClassValue; content: ClassValue; description: ClassValue; title: ClassValue; }",
+                "resolvedType": null,
+                "description": "UI class overrides for the List component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_list_types.listui",
+                "sourcePath": "packages/headless/src/components/list/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "ListContent": {
+      "props": {
+        "kind": "props",
+        "name": "ListContentProps",
+        "type": "Interface ListContentProps",
+        "resolvedType": null,
+        "description": "Properties for the ListContent component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_list_types.listcontentprops.props",
+        "sourcePath": "packages/headless/src/components/list/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "ListDescription": {
+      "props": {
+        "kind": "props",
+        "name": "ListDescriptionProps",
+        "type": "Interface ListDescriptionProps",
+        "resolvedType": null,
+        "description": "Properties for the ListDescription component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_list_types.listdescriptionprops.props",
+        "sourcePath": "packages/headless/src/components/list/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "ListItem": {
+      "props": {
+        "kind": "props",
+        "name": "ListItemProps",
+        "type": "Interface ListItemProps",
+        "resolvedType": "{ title?: string; description?: string; contentProps?: ListContentProps; titleProps?: ListTitleProps; descriptionProps?: ListDescriptionProps }",
+        "description": "Properties for the ListItem component.",
+        "descriptionKey": "api.generated.packages_ui_src_components_list_types.listitemprops.props",
+        "sourcePath": "packages/ui/src/components/list/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "title",
+            "type": "string",
+            "required": false,
+            "description": "Title text rendered by the component.",
+            "descriptionKey": "api.generated.packages_ui_src_components_list_types.listitemprops.members.title",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui/src/components/list/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "description",
+            "type": "string",
+            "required": false,
+            "description": "Description text rendered by the component.",
+            "descriptionKey": "api.generated.packages_ui_src_components_list_types.listitemprops.members.description",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui/src/components/list/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "contentProps",
+            "type": "ListContentProps",
+            "required": false,
+            "description": "Properties forwarded to the content element.",
+            "descriptionKey": "api.generated.packages_ui_src_components_list_types.listitemprops.members.contentprops",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui/src/components/list/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ListContentProps",
+                "kind": "interface",
+                "type": "ListContentProps",
+                "resolvedType": null,
+                "description": "Properties for the ListContent component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_list_types.listcontentprops",
+                "sourcePath": "packages/headless/src/components/list/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "titleProps",
+            "type": "ListTitleProps",
+            "required": false,
+            "description": "Properties forwarded to the title element.",
+            "descriptionKey": "api.generated.packages_ui_src_components_list_types.listitemprops.members.titleprops",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui/src/components/list/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ListTitleProps",
+                "kind": "interface",
+                "type": "ListTitleProps",
+                "resolvedType": null,
+                "description": "Properties for the ListTitle component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_list_types.listtitleprops",
+                "sourcePath": "packages/headless/src/components/list/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "descriptionProps",
+            "type": "ListDescriptionProps",
+            "required": false,
+            "description": "Properties forwarded to the description element.",
+            "descriptionKey": "api.generated.packages_ui_src_components_list_types.listitemprops.members.descriptionprops",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui/src/components/list/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ListDescriptionProps",
+                "kind": "interface",
+                "type": "ListDescriptionProps",
+                "resolvedType": null,
+                "description": "Properties for the ListDescription component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_list_types.listdescriptionprops",
+                "sourcePath": "packages/headless/src/components/list/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "ListRoot": {
+      "props": {
+        "kind": "props",
+        "name": "ListRootProps",
+        "type": "Interface ListRootProps",
+        "resolvedType": null,
+        "description": "Properties for the ListRoot component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_list_types.listrootprops.props",
+        "sourcePath": "packages/headless/src/components/list/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "ListTitle": {
+      "props": {
+        "kind": "props",
+        "name": "ListTitleProps",
+        "type": "Interface ListTitleProps",
+        "resolvedType": null,
+        "description": "Properties for the ListTitle component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_list_types.listtitleprops.props",
+        "sourcePath": "packages/headless/src/components/list/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [],
+        "referencedTypes": []
+      }
+    }
+  }
+}

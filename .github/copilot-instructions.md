@@ -13,8 +13,8 @@ assistant-neutral 总入口是 `.github/assistant-rules.md`。本文件只负责
 ## 仓库基线
 
 - 先读取根目录 `AGENTS.md`
-- 这是 SoybeanUI monorepo：`headless/` 负责逻辑、状态、a11y；`src/` 负责样式包装
-- 数据流只能是 `headless -> src`，禁止反向依赖
+- 这是 SoybeanUI monorepo：`packages/headless/` 负责逻辑、状态、a11y；`packages/ui/` 负责样式包装
+- 数据流只能是 `headless -> ui`，禁止反向依赖
 - 组件开发默认要求覆盖完整交付面，而不是只改局部骨架
 - 组件开发时，优先复用 `headless` 内已有的 `composables`、`shared`、`types`，不要先写新的工具函数、常量或类型
 - 当仓库里没有合适的 composable 时，先检查 `@vueuse/core` 是否已有可用实现；只有两边都不满足时，才允许手动新增函数，并且要在结果总结中明确说明原因

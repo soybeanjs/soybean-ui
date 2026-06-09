@@ -14,18 +14,18 @@ For any AI assistant working in this repository:
 - `.github/instructions/typescript-functional-style.instructions.md`
 - `.github/instructions/vue-sfc.instructions.md` (for .vue files)
 
-**Component work (editing `headless/` or `src/components/`):**
+**Component work (editing `packages/headless/` or `packages/ui/src/components/`):**
 
 - `.github/instructions/soybean-ui-component-overview.instructions.md`
-- `.github/instructions/soybean-ui-headless.instructions.md` (for `headless/src/components/`)
-- `.github/instructions/soybean-ui-ui-layer.instructions.md` (for `src/components/`)
+- `.github/instructions/soybean-ui-headless.instructions.md` (for `packages/headless/src/components/`)
+- `.github/instructions/soybean-ui-ui-layer.instructions.md` (for `packages/ui/src/components/`)
 - `.github/instructions/soybean-ui-accessibility-rtl.instructions.md`
 
 **Delivery surfaces:**
 
-- `.github/instructions/soybean-ui-playground.instructions.md` (for `playground/`)
-- `.github/instructions/soybean-ui-docs.instructions.md` (for `docs/`)
-- `.github/instructions/soybean-ui-testing.instructions.md` (for `test/`)
+- `.github/instructions/soybean-ui-playground.instructions.md` (for `apps/playground/`)
+- `.github/instructions/soybean-ui-docs.instructions.md` (for `apps/docs/`)
+- `.github/instructions/soybean-ui-testing.instructions.md` (for `packages/ui/test/`)
 
 **Commit / changelog:** `.github/instructions/git-commit-convention.instructions.md`
 
@@ -33,45 +33,45 @@ The remaining content in this file is repository knowledge and project context. 
 
 ### Scoped AGENTS map
 
-- `headless/src/components/AGENTS.md` routes headless component work to the relevant `.github` rules
-- `headless/src/composables/AGENTS.md` routes headless composable work to the relevant `.github` rules
-- `headless/src/shared/AGENTS.md` routes headless shared utility work to the relevant `.github` rules
-- `src/components/AGENTS.md` routes styled wrapper work to the relevant `.github` rules
-- `src/theme/AGENTS.md` routes theme-layer work to the relevant `.github` rules
-- `playground/examples/AGENTS.md` routes playground demo work to the relevant `.github` rules
-- `docs/src/docs/AGENTS.md` routes component docs work to the relevant `.github` rules
-- `test/specs/components/AGENTS.md` routes component test work to the relevant `.github` rules
+- `packages/headless/src/components/AGENTS.md` routes headless component work to the relevant `.github` rules
+- `packages/headless/src/composables/AGENTS.md` routes headless composable work to the relevant `.github` rules
+- `packages/headless/src/shared/AGENTS.md` routes headless shared utility work to the relevant `.github` rules
+- `packages/ui/src/components/AGENTS.md` routes styled wrapper work to the relevant `.github` rules
+- `packages/ui/src/theme/AGENTS.md` routes theme-layer work to the relevant `.github` rules
+- `apps/playground/src/examples/AGENTS.md` routes playground demo work to the relevant `.github` rules
+- `apps/docs/src/docs/AGENTS.md` routes component docs work to the relevant `.github` rules
+- `packages/ui/test/specs/components/AGENTS.md` routes component test work to the relevant `.github` rules
 
 **Generated:** 2026-05-04
 **Version:** 0.17.0
-**Monorepo:** pnpm workspaces (`headless/`, `docs/`; root = `@soybeanjs/ui`)
+**Monorepo:** pnpm workspaces (`packages/`, `apps/`; root = `@soybeanjs/ui`)
 **Stack:** Vue 3 + TypeScript (strict) + UnoCSS + @soybeanjs/cva
 
 ## ARCHITECTURE
 
 Headless/Styled separation. Two packages ship independently:
 
-- **@soybeanjs/headless** (`headless/`): Logic, state, a11y. Zero styles. 95 component directories, 25 composables. Includes base primitives, date utilities, and Compact aggregations.
-- **@soybeanjs/ui** (`src/`): Styled wrappers. UnoCSS + `cv()` / `scv()`. 91 components, `S`-prefixed.
-- **@soybeanjs/ui-docs** (`docs/`): Vite + vite-ssg + unplugin-vue-markdown + markdown-exit. NOT VitePress.
+- **@soybeanjs/headless** (`packages/headless/`): Logic, state, a11y. Zero styles. 95 component directories, 25 composables. Includes base primitives, date utilities, and Compact aggregations.
+- **@soybeanjs/ui** (`packages/ui/`): Styled wrappers. UnoCSS + `cv()` / `scv()`. 91 components, `S`-prefixed.
+- **@soybeanjs/ui-docs** (`apps/docs/`): Vite + vite-ssg + unplugin-vue-markdown + markdown-exit. NOT VitePress.
 
-Data flow: `headless` → `src` (never reverse). UI injects styles via `provideXUi(ui)` → headless reads via `useUiContext`.
+Data flow: `packages/headless` → `packages/ui` (never reverse). UI injects styles via `provideXUi(ui)` → headless reads via `useUiContext`.
 
 ## WHERE TO LOOK
 
-| Task                     | Location                                          | Key Pattern                                                                     |
-| ------------------------ | ------------------------------------------------- | ------------------------------------------------------------------------------- |
-| New component (logic)    | `headless/src/components/[name]/`                 | types.ts → context.ts → base \*.vue → optional compact/hook files → index.ts    |
-| New component (styled)   | `src/components/[name]/` + `src/styles/[name].ts` | style recipe → types.ts → `*.vue` → index.ts                                    |
-| Variant definitions      | `src/styles/[name].ts`                            | `cv()` / `scv()` with `// @unocss-include` at top                               |
-| Shared hooks             | `headless/src/composables/`                       | `use-*.ts`, pure Vue composables (26 total)                                     |
-| Theme/sizing             | `src/theme/`                                      | `ThemeColor` (8), `ThemeSize` (xs…2xl)                                          |
-| Utility functions        | `headless/src/shared/`                            | Pure TS helpers (DOM, focus, tree, form, guard, comparison)                     |
-| Global types             | `headless/src/types/`                             | `ClassValue`, `UiClass<S>`, `PropsToContext<T,K>`, `PrimitiveProps`             |
-| Generated API data       | `docs/src/generated/api/`                         | `pnpm sui api` baseline + `pnpm sui api-translate` locale descriptions          |
-| Generated changelog data | `docs/src/generated/changelog/`                   | `pnpm sui changelog` baseline + `pnpm sui changelog-translate` locale summaries |
-| Docs content             | `docs/src/docs/[en\|zh-CN]/`                      | Markdown rendering `<UsageCode>`, `<PlaygroundGallery>`, `<ComponentApi>`       |
-| Demo source              | `playground/examples/[component]/`                | Vue SFCs referenced by docs                                                     |
+| Task                     | Location                                                                  | Key Pattern                                                                     |
+| ------------------------ | ------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
+| New component (logic)    | `packages/headless/src/components/[name]/`                                | types.ts → context.ts → base \*.vue → optional compact/hook files → index.ts    |
+| New component (styled)   | `packages/ui/src/components/[name]/` + `packages/ui/src/styles/[name].ts` | style recipe → types.ts → `*.vue` → index.ts                                    |
+| Variant definitions      | `packages/ui/src/styles/[name].ts`                                        | `cv()` / `scv()` with `// @unocss-include` at top                               |
+| Shared hooks             | `packages/headless/src/composables/`                                      | `use-*.ts`, pure Vue composables (26 total)                                     |
+| Theme/sizing             | `packages/ui/src/theme/`                                                  | `ThemeColor` (8), `ThemeSize` (xs…2xl)                                          |
+| Utility functions        | `packages/headless/src/shared/`                                           | Pure TS helpers (DOM, focus, tree, form, guard, comparison)                     |
+| Global types             | `packages/headless/src/types/`                                            | `ClassValue`, `UiClass<S>`, `PropsToContext<T,K>`, `PrimitiveProps`             |
+| Generated API data       | `apps/docs/src/generated/api/`                                            | `pnpm sui api` baseline + `pnpm sui api-translate` locale descriptions          |
+| Generated changelog data | `apps/docs/src/generated/changelog/`                                      | `pnpm sui changelog` baseline + `pnpm sui changelog-translate` locale summaries |
+| Docs content             | `apps/docs/src/docs/[en\|zh-CN]/`                                         | Markdown rendering `<UsageCode>`, `<PlaygroundGallery>`, `<ComponentApi>`       |
+| Demo source              | `apps/playground/src/examples/[component]/`                               | Vue SFCs referenced by docs                                                     |
 
 ## BUILD & CI
 
@@ -84,12 +84,12 @@ pnpm test             # vitest run (happy-dom, @vue/test-utils)
 pnpm typecheck        # vue-tsc --noEmit --skipLibCheck
 pnpm release          # Publish packages (soy release)
 pnpm stub             # tsx scripts/stub.ts — link src to dist for local dev
-pnpm sui headless     # Regenerate headless/src/constants/components.ts + headless/src/namespaced/index.ts from headless/src/index.ts
-pnpm sui ui           # Regenerate src/constants/components.ts from src/index.ts
-pnpm sui api          # Regenerate docs/src/generated/api/*.json and docs/src/generated/api-locales/*.json base data
+pnpm sui headless     # Regenerate packages/headless/src/constants/components.ts + packages/headless/src/namespaced/index.ts from packages/headless/src/index.ts
+pnpm sui ui           # Regenerate packages/ui/src/constants/components.ts from packages/ui/src/index.ts
+pnpm sui api          # Regenerate apps/docs/src/generated/api/*.json and apps/docs/src/generated/api-locales/*.json base data
 pnpm sui api-locales     # Regenerate API i18n locale template data without re-running type extraction
 pnpm sui api-translate -- --locale <locale>  # Translate generated English API descriptions into a non-English locale
-pnpm sui changelog    # Regenerate docs/src/generated/changelog/*.json and docs/src/generated/changelog-locales/*.json base data
+pnpm sui changelog    # Regenerate apps/docs/src/generated/changelog/*.json and apps/docs/src/generated/changelog-locales/*.json base data
 pnpm sui changelog-translate -- --locale <locale>  # Translate generated English changelog summaries into a non-English locale
 ```
 
@@ -119,13 +119,13 @@ pnpm sui changelog-translate -- --locale <locale>  # Translate generated English
 
 ## DEPENDENCY RULES
 
-- `headless` → MUST NOT import from `@soybeanjs/ui` (circular dep)
-- `src` → imports `@soybeanjs/headless` (via package.json alias, dev points to source)
-- Components re-exported from barrel files: `headless/src/index.ts`, `src/index.ts`
+- `packages/headless` → MUST NOT import from `@soybeanjs/ui` (circular dep)
+- `packages/ui` → imports `@soybeanjs/headless` (via package.json alias, dev points to source)
+- Components re-exported from barrel files: `packages/headless/src/index.ts`, `packages/ui/src/index.ts`
 
 ## KEY PATTERNS (verified from source)
 
-- **UiClass**: Use `UiClass<UiSlot>` (from `headless/src/types`), not `Record<UiSlot, ClassValue>`
+- **UiClass**: Use `UiClass<UiSlot>` (from `packages/headless/src/types`), not `Record<UiSlot, ClassValue>`
 - **Props**: Always `extends /** @vue-ignore */ HTMLAttributes` to suppress IDE noise
 - **Context values**: Must be reactive — use `transformPropsToContext(props, keys)` to wrap in `ComputedRef`
 - **ui() two forms**: `use{Name}Ui('root')` → `ComputedRef<ClassValue>` (single slot); `use{Name}Ui()` → full map
@@ -138,8 +138,8 @@ pnpm sui changelog-translate -- --locale <locale>  # Translate generated English
 
 ## ANTI-PATTERNS
 
-- **DO NOT** add styles/classes to `headless` components (not even `hidden`, `sr-only`)
-- **DO NOT** put ARIA/state logic in `src` (UI) layer
+- **DO NOT** add styles/classes to `packages/headless` components (not even `hidden`, `sr-only`)
+- **DO NOT** put ARIA/state logic in `packages/ui` (UI) layer
 - **DO NOT** use raw CSS/SCSS — UnoCSS utility classes only
 - **DO NOT** use `as any` / `@ts-ignore` / `@ts-expect-error`
 - **DO NOT** store non-reactive values in context (breaks reactivity)
@@ -151,7 +151,7 @@ pnpm sui changelog-translate -- --locale <locale>  # Translate generated English
 
 组件开发规范入口：`.github/copilot-instructions.md` + `.github/instructions/*.instructions.md`。
 
-Minimal flow: headless types → headless context → headless base SFCs → optional Compact SFCs/hooks → UI style recipe in `src/styles` → UI wrapper → barrel exports.
+Minimal flow: headless types → headless context → headless base SFCs → optional Compact SFCs/hooks → UI style recipe in `packages/ui/src/styles` → UI wrapper → barrel exports.
 
 Three component patterns:
 

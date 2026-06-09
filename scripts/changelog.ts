@@ -2,7 +2,7 @@ import { readFile } from 'node:fs/promises';
 import path from 'node:path';
 import process from 'node:process';
 import { kebabCase } from '@soybeanjs/utils';
-import { components as headlessComponents } from '../headless/src/constants/components';
+import { components as headlessComponents } from '../packages/headless/src/constants/components';
 import { runCliModule, writeGeneratedJsonDirectory } from './_shared';
 import { componentChangelogOverrides } from './changelog-overrides';
 
@@ -88,7 +88,7 @@ interface GeneratedComponentChangelogIndex {
 
 const rootDir = process.cwd();
 const changelogPath = path.join(rootDir, 'CHANGELOG.md');
-const outputDir = path.join(rootDir, 'docs/src/generated/changelog');
+const outputDir = path.join(rootDir, 'apps/docs/src/generated/changelog');
 const componentNames = Object.keys(headlessComponents)
   .map(component => kebabCase(component))
   .sort((left, right) => left.localeCompare(right));

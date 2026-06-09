@@ -72,7 +72,7 @@ type ClaudeMarketplaceManifest = {
 const currentDir = path.dirname(fileURLToPath(import.meta.url));
 const repoRoot = path.resolve(currentDir, '..');
 const rootPackageJsonPath = path.resolve(repoRoot, 'package.json');
-const skillsDistributionRootDir = path.resolve(repoRoot, 'ui-skills');
+const skillsDistributionRootDir = path.resolve(repoRoot, 'packages/ui-skills');
 const skillsSourceRootDir = path.resolve(skillsDistributionRootDir, 'skills-source');
 const skillsDistributionSkillsDir = path.resolve(skillsDistributionRootDir, 'skills');
 const claudePluginDir = path.resolve(skillsDistributionRootDir, '.claude-plugin');
@@ -136,7 +136,7 @@ function createDistributionPackageManifest(rootPackage: RootPackageManifest): Di
     author: rootPackage.author,
     description: distributionDescription,
     files: ['skills', '.claude-plugin', 'README.md'],
-    homepage: rootPackage.homepage,
+    homepage: `${rootPackage.homepage}/packages/ui-skills`,
     keywords: distributionKeywords,
     license: rootPackage.license ?? 'MIT',
     name: distributionPackageName,
@@ -154,7 +154,7 @@ function createClaudePluginManifest(rootPackage: RootPackageManifest): ClaudePlu
   return {
     author: rootPackage.author ? { email: rootPackage.author.email, name: rootPackage.author.name } : undefined,
     description: distributionDescription,
-    homepage: rootPackage.homepage,
+    homepage: `${rootPackage.homepage}/packages/ui-skills`,
     keywords: distributionKeywords,
     license: rootPackage.license,
     name: distributionPluginName,

@@ -1,7 +1,7 @@
 import { writeFile } from 'node:fs/promises';
 import process from 'node:process';
 import type { Options } from 'execa';
-import headlessPkg from '../headless/package.json' with { type: 'json' };
+import headlessPkg from '../packages/headless/package.json' with { type: 'json' };
 
 const headlessExports = {
   '.': './src/index.ts',
@@ -18,7 +18,7 @@ const headlessExports = {
   './*': './src/components/*/index.ts'
 };
 
-const pkgPath = 'headless/package.json';
+const pkgPath = 'packages/headless/package.json';
 
 async function handleStub(reset?: boolean) {
   const pkgExports = reset ? headlessPkg.publishConfig.exports : headlessExports;

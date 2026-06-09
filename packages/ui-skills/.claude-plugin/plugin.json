@@ -1,0 +1,13 @@
+{
+  "author": {
+    "email": "soybeanjs@outlook.com",
+    "name": "Soybean"
+  },
+  "description": "Agent skills for SoybeanUI and SoybeanHeadless.",
+  "homepage": "https://github.com/soybeanjs/soybean-ui/packages/ui-skills",
+  "keywords": ["agentskills", "soybean-ui", "soybean-headless", "vue", "github-copilot", "claude-code"],
+  "license": "MIT",
+  "name": "soybean-ui-skills",
+  "repository": "https://github.com/soybeanjs/soybean-ui.git",
+  "version": "0.28.2"
+}

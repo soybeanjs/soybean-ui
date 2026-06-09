@@ -1,0 +1,529 @@
+{
+  "component": "config-provider",
+  "symbols": {
+    "ConfigProvider": {
+      "props": {
+        "kind": "props",
+        "name": "ConfigProviderProps",
+        "type": "Interface ConfigProviderProps",
+        "resolvedType": "{ theme?: ThemeOptions; size?: ThemeSize; iconify?: IconifyOptions; progress?: Partial<ProgressProviderProps>; toast?: Partial<ToastProviderProps>; customToast?: boolean; dir?: Direction; locale?: string; nonce?: string; tooltip?: Partial<TooltipProviderProps>; iconRender?: ((icon: IconValue) => VNode); messages?: LocaleMessagesOverrides }",
+        "description": "Properties for the ConfigProvider component.",
+        "descriptionKey": "api.generated.packages_ui_src_components_config_provider_types.configproviderprops.props",
+        "sourcePath": "packages/ui/src/components/config-provider/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "theme",
+            "type": "ThemeOptions",
+            "required": false,
+            "description": "The theme options.",
+            "descriptionKey": "api.generated.packages_ui_src_components_config_provider_types.configproviderprops.members.theme",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui/src/components/config-provider/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ThemeOptions",
+                "kind": "interface",
+                "type": "ThemeOptions",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": null,
+                "sourcePath": "node_modules/.pnpm/@soybeanjs+shadcn-theme@0.3.4/node_modules/@soybeanjs/shadcn-theme/dist/index.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "size",
+            "type": "ThemeSize",
+            "required": false,
+            "description": "The size options.",
+            "descriptionKey": "api.generated.packages_ui_src_components_config_provider_types.configproviderprops.members.size",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui/src/components/config-provider/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ThemeSize",
+                "kind": "typeAlias",
+                "type": "'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'",
+                "resolvedType": "'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'",
+                "description": "",
+                "descriptionKey": "api.generated.packages_ui_src_theme_types.themesize",
+                "sourcePath": "packages/ui/src/theme/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "iconify",
+            "type": "IconifyOptions",
+            "required": false,
+            "description": "The iconify options.",
+            "descriptionKey": "api.generated.packages_ui_src_components_config_provider_types.configproviderprops.members.iconify",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui/src/components/config-provider/types.ts",
+            "referencedTypes": [
+              {
+                "name": "IconifyOptions",
+                "kind": "interface",
+                "type": "IconifyOptions",
+                "resolvedType": "{ width?: string; height?: string }",
+                "description": "",
+                "descriptionKey": "api.generated.packages_ui_src_components_config_provider_types.iconifyoptions",
+                "sourcePath": "packages/ui/src/components/config-provider/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "width",
+                    "type": "string",
+                    "required": false,
+                    "description": "The default width of the icon.",
+                    "descriptionKey": "api.generated.packages_ui_src_components_config_provider_types.iconifyoptions.members.width",
+                    "default": "'1.25em'",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/ui/src/components/config-provider/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "height",
+                    "type": "string",
+                    "required": false,
+                    "description": "The default height of the icon.",
+                    "descriptionKey": "api.generated.packages_ui_src_components_config_provider_types.iconifyoptions.members.height",
+                    "default": "'1.25em'",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/ui/src/components/config-provider/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "progress",
+            "type": "Partial<ProgressProviderProps>",
+            "required": false,
+            "description": "The global top progress configuration of your application.",
+            "descriptionKey": "api.generated.packages_ui_src_components_config_provider_types.configproviderprops.members.progress",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui/src/components/config-provider/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ProgressProviderProps",
+                "kind": "interface",
+                "type": "ProgressProviderProps",
+                "resolvedType": null,
+                "description": "Properties for the ProgressProvider component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_progress_types.progressproviderprops",
+                "sourcePath": "packages/headless/src/components/progress/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "toast",
+            "type": "Partial<ToastProviderProps>",
+            "required": false,
+            "description": "The global toast configuration of your application. This will be inherited by the related components.",
+            "descriptionKey": "api.generated.packages_ui_src_components_config_provider_types.configproviderprops.members.toast",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui/src/components/config-provider/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ToastProviderProps",
+                "kind": "interface",
+                "type": "ToastProviderProps",
+                "resolvedType": null,
+                "description": "Properties for the ToastProvider component.",
+                "descriptionKey": "api.generated.packages_ui_src_components_toast_types.toastproviderprops",
+                "sourcePath": "packages/ui/src/components/toast/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "customToast",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether to use custom toast rendering. If set to `true`, the `ToastProvider` will not render the default toast UI, and you can import `ToastProvider` component to render custom toast UI.",
+            "descriptionKey": "api.generated.packages_ui_src_components_config_provider_types.configproviderprops.members.customtoast",
+            "default": "false",
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui/src/components/config-provider/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "dir",
+            "type": "Direction",
+            "required": false,
+            "description": "The global reading direction of your application. This will be inherited by all components.\n\nWhen omitted, the direction follows the current locale and falls back to `'ltr'`.",
+            "descriptionKey": "api.generated.packages_ui_src_components_config_provider_types.configproviderprops.members.dir",
+            "default": null,
+            "inheritedFrom": "_ConfigProviderProps.dir",
+            "sourcePath": "packages/headless/src/components/config-provider/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Direction",
+                "kind": "typeAlias",
+                "type": "'ltr' | 'rtl'",
+                "resolvedType": "'ltr' | 'rtl'",
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_types_common.direction",
+                "sourcePath": "packages/headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "locale",
+            "type": "string",
+            "required": false,
+            "description": "The global locale of your application. This will be inherited by all components.",
+            "descriptionKey": "api.generated.packages_ui_src_components_config_provider_types.configproviderprops.members.locale",
+            "default": "'en'",
+            "inheritedFrom": "_ConfigProviderProps.locale",
+            "sourcePath": "packages/headless/src/components/config-provider/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "nonce",
+            "type": "string",
+            "required": false,
+            "description": "The global `nonce` value of your application. This will be inherited by the related components.",
+            "descriptionKey": "api.generated.packages_ui_src_components_config_provider_types.configproviderprops.members.nonce",
+            "default": null,
+            "inheritedFrom": "_ConfigProviderProps.nonce",
+            "sourcePath": "packages/headless/src/components/config-provider/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "tooltip",
+            "type": "Partial<TooltipProviderProps>",
+            "required": false,
+            "description": "The global tooltip configuration of your application. This will be inherited by the related components.",
+            "descriptionKey": "api.generated.packages_ui_src_components_config_provider_types.configproviderprops.members.tooltip",
+            "default": null,
+            "inheritedFrom": "_ConfigProviderProps.tooltip",
+            "sourcePath": "packages/headless/src/components/config-provider/types.ts",
+            "referencedTypes": [
+              {
+                "name": "TooltipProviderProps",
+                "kind": "interface",
+                "type": "TooltipProviderProps",
+                "resolvedType": null,
+                "description": "Properties for the TooltipProvider component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_tooltip_types.tooltipproviderprops",
+                "sourcePath": "packages/headless/src/components/tooltip/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "iconRender",
+            "type": "((icon: IconValue) => VNode)",
+            "required": false,
+            "description": "A function to render the icon. This is useful when you want to use a custom icon library or want to wrap the icon with a custom component.",
+            "descriptionKey": "api.generated.packages_ui_src_components_config_provider_types.configproviderprops.members.iconrender",
+            "default": null,
+            "inheritedFrom": "_ConfigProviderProps.iconRender",
+            "sourcePath": "packages/headless/src/components/config-provider/types.ts",
+            "referencedTypes": [
+              {
+                "name": "IconValue",
+                "kind": "typeAlias",
+                "type": "string | import(\"vue\").Component | VNode<import(\"vue\").RendererNode, import(\"vue\").RendererElement, { [key: string]: any; }> | null | undefined",
+                "resolvedType": null,
+                "description": "Type information for IconValue.",
+                "descriptionKey": "api.generated.packages_headless_src_components_icon_types.iconvalue",
+                "sourcePath": "packages/headless/src/components/_icon/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "VNode",
+                "kind": "interface",
+                "type": "VNode",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": null,
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.35/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [
+                  "HostNode = RendererNode",
+                  "HostElement = RendererElement",
+                  "ExtraProps = {\n    [key: string]: any;\n}"
+                ],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "messages",
+            "type": "LocaleMessagesOverrides",
+            "required": false,
+            "description": "Overrides for built-in component locale messages. Merged on top of the locale selected by the\n`locale` prop, so you only need to supply the keys you want to change.",
+            "descriptionKey": "api.generated.packages_ui_src_components_config_provider_types.configproviderprops.members.messages",
+            "default": null,
+            "inheritedFrom": "_ConfigProviderProps.messages",
+            "sourcePath": "packages/headless/src/components/config-provider/types.ts",
+            "referencedTypes": [
+              {
+                "name": "LocaleMessagesOverrides",
+                "kind": "typeAlias",
+                "type": "{ anchor?: Partial<import(\"../../locale/types\").LocaleAnchorMessages> | undefined; autocomplete?: Partial<import(\"../../locale/types\").LocaleAutocompleteMessages> | undefined; breadcrumb?: Partial<import(\"../../locale/types\").LocaleBreadcrumbMessages> | undefined; calendar?: Partial<import(\"../../locale/types\").LocaleCalendarMessages> | undefined; combobox?: Partial<import(\"../../locale/types\").LocaleComboboxMessages> | undefined; command?: Partial<import(\"../../locale/types\").LocaleCommandMessages> | undefined; date?: Partial<import(\"../../locale/types\").LocaleDateMessages> | undefined; dialog?: Partial<import(\"../../locale/types\").LocaleDialogMessages> | undefined; editable?: Partial<import(\"../../locale/types\").LocaleEditableMessages> | undefined; inputNumber?: Partial<import(\"../../locale/types\").LocaleInputNumberMessages> | undefined; layout?: Partial<import(\"../../locale/types\").LocaleLayoutMessages> | undefined; pagination?: Partial<import(\"../../locale/types\").LocalePaginationMessages> | undefined; password?: Partial<import(\"../../locale/types\").LocalePasswordMessages> | undefined; progress?: Partial<import(\"../../locale/types\").LocaleProgressMessages> | undefined; slider?: Partial<import(\"../../locale/types\").LocaleSliderMessages> | undefined; stepper?: Partial<import(\"../../locale/types\").LocaleStepperMessages> | undefined; table?: Partial<import(\"../../locale/types\").LocaleTableMessages> | undefined; tagsInput?: Partial<import(\"../../locale/types\").LocaleTagsInputMessages> | undefined; textarea?: Partial<import(\"../../locale/types\").LocaleTextareaMessages> | undefined; }",
+                "resolvedType": "{ anchor?: Partial<LocaleAnchorMessages>; autocomplete?: Partial<LocaleAutocompleteMessages>; breadcrumb?: Partial<LocaleBreadcrumbMessages>; calendar?: Partial<LocaleCalendarMessages>; combobox?: Partial<LocaleComboboxMessages>; command?: Partial<LocaleCommandMessages>; date?: Partial<LocaleDateMessages>; dialog?: Partial<LocaleDialogMessages>; editable?: Partial<LocaleEditableMessages>; inputNumber?: Partial<LocaleInputNumberMessages>; layout?: Partial<LocaleLayoutMessages>; pagination?: Partial<LocalePaginationMessages>; password?: Partial<LocalePasswordMessages>; progress?: Partial<LocaleProgressMessages>; slider?: Partial<LocaleSliderMessages>; stepper?: Partial<LocaleStepperMessages>; table?: Partial<LocaleTableMessages>; tagsInput?: Partial<LocaleTagsInputMessages>; textarea?: Partial<LocaleTextareaMessages> }",
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_locale_types.localemessagesoverrides",
+                "sourcePath": "packages/headless/src/locale/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "anchor",
+                    "type": "Partial<LocaleAnchorMessages>",
+                    "required": false,
+                    "description": "",
+                    "descriptionKey": "api.generated.packages_headless_src_locale_types.localemessagesoverrides.members.anchor",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/locale/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "autocomplete",
+                    "type": "Partial<LocaleAutocompleteMessages>",
+                    "required": false,
+                    "description": "",
+                    "descriptionKey": "api.generated.packages_headless_src_locale_types.localemessagesoverrides.members.autocomplete",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/locale/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "breadcrumb",
+                    "type": "Partial<LocaleBreadcrumbMessages>",
+                    "required": false,
+                    "description": "",
+                    "descriptionKey": "api.generated.packages_headless_src_locale_types.localemessagesoverrides.members.breadcrumb",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/locale/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "calendar",
+                    "type": "Partial<LocaleCalendarMessages>",
+                    "required": false,
+                    "description": "",
+                    "descriptionKey": "api.generated.packages_headless_src_locale_types.localemessagesoverrides.members.calendar",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/locale/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "combobox",
+                    "type": "Partial<LocaleComboboxMessages>",
+                    "required": false,
+                    "description": "",
+                    "descriptionKey": "api.generated.packages_headless_src_locale_types.localemessagesoverrides.members.combobox",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/locale/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "command",
+                    "type": "Partial<LocaleCommandMessages>",
+                    "required": false,
+                    "description": "",
+                    "descriptionKey": "api.generated.packages_headless_src_locale_types.localemessagesoverrides.members.command",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/locale/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "date",
+                    "type": "Partial<LocaleDateMessages>",
+                    "required": false,
+                    "description": "",
+                    "descriptionKey": "api.generated.packages_headless_src_locale_types.localemessagesoverrides.members.date",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/locale/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "dialog",
+                    "type": "Partial<LocaleDialogMessages>",
+                    "required": false,
+                    "description": "",
+                    "descriptionKey": "api.generated.packages_headless_src_locale_types.localemessagesoverrides.members.dialog",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/locale/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "editable",
+                    "type": "Partial<LocaleEditableMessages>",
+                    "required": false,
+                    "description": "",
+                    "descriptionKey": "api.generated.packages_headless_src_locale_types.localemessagesoverrides.members.editable",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/locale/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "inputNumber",
+                    "type": "Partial<LocaleInputNumberMessages>",
+                    "required": false,
+                    "description": "",
+                    "descriptionKey": "api.generated.packages_headless_src_locale_types.localemessagesoverrides.members.inputnumber",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/locale/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "layout",
+                    "type": "Partial<LocaleLayoutMessages>",
+                    "required": false,
+                    "description": "",
+                    "descriptionKey": "api.generated.packages_headless_src_locale_types.localemessagesoverrides.members.layout",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/locale/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "pagination",
+                    "type": "Partial<LocalePaginationMessages>",
+                    "required": false,
+                    "description": "",
+                    "descriptionKey": "api.generated.packages_headless_src_locale_types.localemessagesoverrides.members.pagination",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/locale/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "password",
+                    "type": "Partial<LocalePasswordMessages>",
+                    "required": false,
+                    "description": "",
+                    "descriptionKey": "api.generated.packages_headless_src_locale_types.localemessagesoverrides.members.password",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/locale/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "progress",
+                    "type": "Partial<LocaleProgressMessages>",
+                    "required": false,
+                    "description": "",
+                    "descriptionKey": "api.generated.packages_headless_src_locale_types.localemessagesoverrides.members.progress",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/locale/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "slider",
+                    "type": "Partial<LocaleSliderMessages>",
+                    "required": false,
+                    "description": "",
+                    "descriptionKey": "api.generated.packages_headless_src_locale_types.localemessagesoverrides.members.slider",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/locale/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "stepper",
+                    "type": "Partial<LocaleStepperMessages>",
+                    "required": false,
+                    "description": "",
+                    "descriptionKey": "api.generated.packages_headless_src_locale_types.localemessagesoverrides.members.stepper",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/locale/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "table",
+                    "type": "Partial<LocaleTableMessages>",
+                    "required": false,
+                    "description": "",
+                    "descriptionKey": "api.generated.packages_headless_src_locale_types.localemessagesoverrides.members.table",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/locale/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "tagsInput",
+                    "type": "Partial<LocaleTagsInputMessages>",
+                    "required": false,
+                    "description": "",
+                    "descriptionKey": "api.generated.packages_headless_src_locale_types.localemessagesoverrides.members.tagsinput",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/locale/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "textarea",
+                    "type": "Partial<LocaleTextareaMessages>",
+                    "required": false,
+                    "description": "",
+                    "descriptionKey": "api.generated.packages_headless_src_locale_types.localemessagesoverrides.members.textarea",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/locale/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      }
+    }
+  }
+}

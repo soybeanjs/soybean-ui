@@ -30,11 +30,11 @@ type CommandConfig = {
 };
 
 const isWindows = process.platform === 'win32';
-const oxfmtBinary = isWindows ? 'oxfmt.cmd' : 'oxfmt';
+const fmtBinary = isWindows ? 'vp.cmd' : 'vp';
 
 async function formatPaths(paths: string[]): Promise<void> {
   await new Promise<void>((resolve, reject) => {
-    const child = spawn(oxfmtBinary, paths, {
+    const child = spawn(fmtBinary, ['fmt', ...paths], {
       env: process.env,
       stdio: 'inherit'
     });
@@ -46,7 +46,7 @@ async function formatPaths(paths: string[]): Promise<void> {
         return;
       }
 
-      reject(new Error(`${oxfmtBinary} ${paths.join(' ')} exited with code ${code ?? 'unknown'}.`));
+      reject(new Error(`vp fmt ${paths.join(' ')} exited with code ${code ?? 'unknown'}.`));
     });
   });
 }
@@ -57,7 +57,7 @@ const commandConfigs: Record<Command, CommandConfig> = {
     run: async () => {
       await generateApiData();
       await generateApiLocaleTemplates();
-      await formatPaths(['docs/src/generated/api/']);
+      await formatPaths(['apps/docs/src/generated/api/']);
     }
   },
   'api-locales': {
@@ -75,7 +75,7 @@ const commandConfigs: Record<Command, CommandConfig> = {
     run: async () => {
       await generateChangelogData();
       await generateChangelogLocaleTemplates();
-      await formatPaths(['docs/src/generated/changelog/', 'docs/src/generated/changelog-locales/']);
+      await formatPaths(['apps/docs/src/generated/changelog/', 'apps/docs/src/generated/changelog-locales/']);
     }
   },
   'changelog-translate': {
@@ -86,7 +86,7 @@ const commandConfigs: Record<Command, CommandConfig> = {
     description: 'Generate headless component metadata.',
     run: async () => {
       await generateHeadlessMetadata();
-      await formatPaths(['headless/src/constants/components.ts', 'headless/src/namespaced/index.ts']);
+      await formatPaths(['packages/headless/src/constants/components.ts', 'packages/headless/src/namespaced/index.ts']);
     }
   },
   'locale-translate': {
@@ -97,14 +97,14 @@ const commandConfigs: Record<Command, CommandConfig> = {
     description: 'Generate skill docs and distribution files.',
     run: async () => {
       await generateSkillsDistribution();
-      await formatPaths(['ui-skills']);
+      await formatPaths(['packages/ui-skills']);
     }
   },
   ui: {
     description: 'Generate UI component metadata.',
     run: async () => {
       await generateUiMetadata();
-      await formatPaths(['src/constants/components.ts']);
+      await formatPaths(['packages/ui/src/constants/components.ts']);
     }
   }
 };

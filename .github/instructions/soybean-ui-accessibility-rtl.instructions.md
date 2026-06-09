@@ -1,5 +1,5 @@
 ---
-applyTo: '{headless/src/components,src/components}/**/*.{ts,vue}'
+applyTo: '{packages/headless/src/components,packages/ui/src/components}/**/*.{ts,vue}'
 ---
 
 # SoybeanUI A11y 与 RTL 规范

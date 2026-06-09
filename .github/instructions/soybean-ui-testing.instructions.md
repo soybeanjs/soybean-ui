@@ -1,5 +1,5 @@
 ---
-applyTo: 'test/specs/components/**/*.ts'
+applyTo: 'packages/ui/test/specs/components/**/*.ts'
 ---
 
 # SoybeanUI 组件测试规范

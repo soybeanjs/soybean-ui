@@ -1,0 +1,1520 @@
+{
+  "component": "tree",
+  "symbols": {
+    "TreeItem": {
+      "props": {
+        "kind": "props",
+        "name": "TreeItemProps",
+        "type": "Interface TreeItemProps",
+        "resolvedType": "{ value: string; level: number; disabled?: boolean; disabledSelect?: boolean; disabledToggle?: boolean; asChild?: boolean; as?: AsTag | Component }",
+        "description": "Properties for the TreeItem component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_tree_types.treeitemprops.props",
+        "sourcePath": "packages/headless/src/components/tree/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "value",
+            "type": "string",
+            "required": true,
+            "description": "Value associated with the current item.",
+            "descriptionKey": "api.generated.packages_headless_src_components_tree_types.treeitemprops.members.value",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/tree/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "level",
+            "type": "number",
+            "required": true,
+            "description": "Level.",
+            "descriptionKey": "api.generated.packages_headless_src_components_tree_types.treeitemprops.members.level",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/tree/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "disabled",
+            "type": "boolean",
+            "required": false,
+            "description": "When `true`, prevents the user from selecting or toggling the item.",
+            "descriptionKey": "api.generated.packages_headless_src_components_tree_types.treeitemprops.members.disabled",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/tree/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "disabledSelect",
+            "type": "boolean",
+            "required": false,
+            "description": "When `true`, prevents the user from selecting the item.",
+            "descriptionKey": "api.generated.packages_headless_src_components_tree_types.treeitemprops.members.disabledselect",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/tree/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "disabledToggle",
+            "type": "boolean",
+            "required": false,
+            "description": "When `true`, prevents the user from toggling the item.",
+            "descriptionKey": "api.generated.packages_headless_src_components_tree_types.treeitemprops.members.disabledtoggle",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/tree/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "asChild",
+            "type": "boolean",
+            "required": false,
+            "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+            "descriptionKey": "api.generated.packages_headless_src_components_tree_types.treeitemprops.members.aschild",
+            "default": null,
+            "inheritedFrom": "asChild",
+            "sourcePath": "packages/headless/src/components/primitive/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "as",
+            "type": "AsTag | Component",
+            "required": false,
+            "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+            "descriptionKey": "api.generated.packages_headless_src_components_tree_types.treeitemprops.members.as",
+            "default": "'div'",
+            "inheritedFrom": "as",
+            "sourcePath": "packages/headless/src/components/primitive/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Component",
+                "kind": "typeAlias",
+                "type": "Component",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": null,
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.35/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [
+                  "PropsOrInstance = any",
+                  "RawBindings = any",
+                  "D = any",
+                  "C extends ComputedOptions = ComputedOptions",
+                  "M extends MethodOptions = MethodOptions",
+                  "E extends EmitsOptions | Record<string, any[]> = {}",
+                  "S extends Record<string, any> = any"
+                ],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      },
+      "emits": {
+        "kind": "emits",
+        "name": "TreeItemEmits",
+        "type": "TypeAlias TreeItemEmits",
+        "resolvedType": "{ select: [event: TreeSelectEvent<string>]; toggle: [event: TreeToggleEvent<string>] }",
+        "description": "Events for the TreeItem component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_tree_types.treeitememits.emits",
+        "sourcePath": "packages/headless/src/components/tree/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [
+          {
+            "name": "select",
+            "type": "[event: TreeSelectEvent<string>]",
+            "parameters": "event: TreeSelectEvent<string>",
+            "required": true,
+            "description": "Event handler called when selecting item.",
+            "descriptionKey": "api.generated.packages_headless_src_components_tree_types.treeitememits.callables.select",
+            "sourcePath": "packages/headless/src/components/tree/types.ts",
+            "referencedTypes": [
+              {
+                "name": "TreeSelectEvent",
+                "kind": "typeAlias",
+                "type": "CustomEvent<{ originalEvent: PointerEvent | KeyboardEvent; value?: string | undefined; isExpanded: boolean; isSelected: boolean; }>",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_types_event.treeselectevent",
+                "sourcePath": "packages/headless/src/types/event.ts",
+                "typeParameters": ["T = AcceptableValue"],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "toggle",
+            "type": "[event: TreeToggleEvent<string>]",
+            "parameters": "event: TreeToggleEvent<string>",
+            "required": true,
+            "description": "Event handler called when toggling item.",
+            "descriptionKey": "api.generated.packages_headless_src_components_tree_types.treeitememits.callables.toggle",
+            "sourcePath": "packages/headless/src/components/tree/types.ts",
+            "referencedTypes": [
+              {
+                "name": "TreeToggleEvent",
+                "kind": "typeAlias",
+                "type": "CustomEvent<{ originalEvent: PointerEvent | KeyboardEvent; value?: string | undefined; isExpanded: boolean; isSelected: boolean; }>",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_types_event.treetoggleevent",
+                "sourcePath": "packages/headless/src/types/event.ts",
+                "typeParameters": ["T = AcceptableValue"],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "referencedTypes": []
+      }
+    },
+    "TreeRoot": {
+      "props": {
+        "kind": "props",
+        "name": "TreeRootProps",
+        "type": "Interface TreeRootProps<T, U, M>",
+        "resolvedType": "{ modelValue?: U; defaultValue?: U; multiple?: IsMultiple<U, M>; items?: T[]; expanded?: string[]; defaultExpanded?: string[]; selectionBehavior?: TreeSelectBehavior; toggleBehavior?: TreeToggleBehavior; dir?: Direction; loop?: boolean; disabled?: boolean; propagateSelect?: boolean; bubbleSelect?: boolean; allowParentSelect?: boolean; asChild?: boolean; as?: AsTag | Component }",
+        "description": "Properties for the TreeRoot component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_tree_types.treerootprops.props",
+        "sourcePath": "packages/headless/src/components/tree/types.ts",
+        "typeParameters": ["TypeParameter T", "TypeParameter U", "TypeParameter M"],
+        "members": [
+          {
+            "name": "modelValue",
+            "type": "U",
+            "required": false,
+            "description": "The controlled value of the tree. Can be bound-with with `v-model`.",
+            "descriptionKey": "api.generated.packages_headless_src_components_tree_types.treerootprops.members.modelvalue",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/tree/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "defaultValue",
+            "type": "U",
+            "required": false,
+            "description": "The value of the tree when initially rendered. Use when you do not need to control the state of the tree",
+            "descriptionKey": "api.generated.packages_headless_src_components_tree_types.treerootprops.members.defaultvalue",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/tree/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "multiple",
+            "type": "IsMultiple<U, M>",
+            "required": false,
+            "description": "Determines whether a \"single\" or \"multiple\" items can be selected at a time.",
+            "descriptionKey": "api.generated.packages_headless_src_components_tree_types.treerootprops.members.multiple",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/tree/types.ts",
+            "referencedTypes": [
+              {
+                "name": "IsMultiple",
+                "kind": "typeAlias",
+                "type": "U extends string ? false : M extends true ? true : false",
+                "resolvedType": "U extends string ? false : M extends true ? true : false",
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_components_tree_types.ismultiple",
+                "sourcePath": "packages/headless/src/components/tree/types.ts",
+                "typeParameters": ["U extends MaybeArray<string> | undefined", "M extends boolean"],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "items",
+            "type": "T[]",
+            "required": false,
+            "description": "List of items",
+            "descriptionKey": "api.generated.packages_headless_src_components_tree_types.treerootprops.members.items",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/tree/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "expanded",
+            "type": "string[]",
+            "required": false,
+            "description": "The controlled value of the expanded item. Can be bound-with with `v-model`.",
+            "descriptionKey": "api.generated.packages_headless_src_components_tree_types.treerootprops.members.expanded",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/tree/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "defaultExpanded",
+            "type": "string[]",
+            "required": false,
+            "description": "The value of the expanded tree when initially rendered.",
+            "descriptionKey": "api.generated.packages_headless_src_components_tree_types.treerootprops.members.defaultexpanded",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/tree/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "selectionBehavior",
+            "type": "TreeSelectBehavior",
+            "required": false,
+            "description": "How multiple selection should behave in the collection.",
+            "descriptionKey": "api.generated.packages_headless_src_components_tree_types.treerootprops.members.selectionbehavior",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/tree/types.ts",
+            "referencedTypes": [
+              {
+                "name": "TreeSelectBehavior",
+                "kind": "typeAlias",
+                "type": "'toggle' | 'replace'",
+                "resolvedType": "'toggle' | 'replace'",
+                "description": "Type information for TreeSelectBehavior.",
+                "descriptionKey": "api.generated.packages_headless_src_components_tree_types.treeselectbehavior",
+                "sourcePath": "packages/headless/src/components/tree/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "toggleBehavior",
+            "type": "TreeToggleBehavior",
+            "required": false,
+            "description": "Determines whether a \"single\" or \"multiple\" items can be toggled at a time.",
+            "descriptionKey": "api.generated.packages_headless_src_components_tree_types.treerootprops.members.togglebehavior",
+            "default": "'multiple'",
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/tree/types.ts",
+            "referencedTypes": [
+              {
+                "name": "TreeToggleBehavior",
+                "kind": "typeAlias",
+                "type": "'multiple' | 'single'",
+                "resolvedType": "'multiple' | 'single'",
+                "description": "Type information for TreeToggleBehavior.",
+                "descriptionKey": "api.generated.packages_headless_src_components_tree_types.treetogglebehavior",
+                "sourcePath": "packages/headless/src/components/tree/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "dir",
+            "type": "Direction",
+            "required": false,
+            "description": "The reading direction.",
+            "descriptionKey": "api.generated.packages_headless_src_components_tree_types.treerootprops.members.dir",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/tree/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Direction",
+                "kind": "typeAlias",
+                "type": "'ltr' | 'rtl'",
+                "resolvedType": "'ltr' | 'rtl'",
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_types_common.direction",
+                "sourcePath": "packages/headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "loop",
+            "type": "boolean",
+            "required": false,
+            "description": "When `true`, keyboard navigation will loop from last item to first, and vice versa.",
+            "descriptionKey": "api.generated.packages_headless_src_components_tree_types.treerootprops.members.loop",
+            "default": "true",
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/tree/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "disabled",
+            "type": "boolean",
+            "required": false,
+            "description": "When `true`, prevents the user from interacting with tree",
+            "descriptionKey": "api.generated.packages_headless_src_components_tree_types.treerootprops.members.disabled",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/tree/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "propagateSelect",
+            "type": "boolean",
+            "required": false,
+            "description": "When `true`, selecting parent will select the descendants.",
+            "descriptionKey": "api.generated.packages_headless_src_components_tree_types.treerootprops.members.propagateselect",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/tree/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "bubbleSelect",
+            "type": "boolean",
+            "required": false,
+            "description": "When `true`, selecting children will update the parent state.",
+            "descriptionKey": "api.generated.packages_headless_src_components_tree_types.treerootprops.members.bubbleselect",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/tree/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "allowParentSelect",
+            "type": "boolean",
+            "required": false,
+            "description": "When `true`, parent can be selected.",
+            "descriptionKey": "api.generated.packages_headless_src_components_tree_types.treerootprops.members.allowparentselect",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/tree/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "asChild",
+            "type": "boolean",
+            "required": false,
+            "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+            "descriptionKey": "api.generated.packages_headless_src_components_tree_types.treerootprops.members.aschild",
+            "default": null,
+            "inheritedFrom": "asChild",
+            "sourcePath": "packages/headless/src/components/primitive/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "as",
+            "type": "AsTag | Component",
+            "required": false,
+            "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+            "descriptionKey": "api.generated.packages_headless_src_components_tree_types.treerootprops.members.as",
+            "default": "'div'",
+            "inheritedFrom": "as",
+            "sourcePath": "packages/headless/src/components/primitive/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Component",
+                "kind": "typeAlias",
+                "type": "Component",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": null,
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.35/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [
+                  "PropsOrInstance = any",
+                  "RawBindings = any",
+                  "D = any",
+                  "C extends ComputedOptions = ComputedOptions",
+                  "M extends MethodOptions = MethodOptions",
+                  "E extends EmitsOptions | Record<string, any[]> = {}",
+                  "S extends Record<string, any> = any"
+                ],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      },
+      "emits": {
+        "kind": "emits",
+        "name": "TreeRootEmits",
+        "type": "TypeAlias TreeRootEmits<M>",
+        "resolvedType": "{ \"update:modelValue\": [value: M extends true ? string[] : string]; \"update:expanded\": [value: string[]] }",
+        "description": "Events for the TreeRoot component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_tree_types.treerootemits.emits",
+        "sourcePath": "packages/headless/src/components/tree/types.ts",
+        "typeParameters": ["TypeParameter M"],
+        "members": [],
+        "callables": [
+          {
+            "name": "update:modelValue",
+            "type": "[value: M extends true ? string[] : string]",
+            "parameters": "value: M extends true ? string[] : string",
+            "required": true,
+            "description": "Emitted when the model value changes.",
+            "descriptionKey": "api.generated.packages_headless_src_components_tree_types.treerootemits.callables.update_modelvalue",
+            "sourcePath": "packages/headless/src/components/tree/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "update:expanded",
+            "type": "[value: string[]]",
+            "parameters": "value: string[]",
+            "required": true,
+            "description": "Emitted when the expanded state changes.",
+            "descriptionKey": "api.generated.packages_headless_src_components_tree_types.treerootemits.callables.update_expanded",
+            "sourcePath": "packages/headless/src/components/tree/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "referencedTypes": []
+      }
+    },
+    "TreeVirtualizer": {
+      "props": {
+        "kind": "props",
+        "name": "TreeVirtualizerProps",
+        "type": "Interface TreeVirtualizerProps<T, U, M>",
+        "resolvedType": "{ contentProps?: VirtualizerContentProps; dynamicContentProps?: VirtualizerDynamicContentProps; modelValue?: U; defaultValue?: U; multiple?: IsMultiple<U, M>; items?: T[]; expanded?: string[]; defaultExpanded?: string[]; selectionBehavior?: TreeSelectBehavior; toggleBehavior?: TreeToggleBehavior; dir?: Direction; loop?: boolean; disabled?: boolean; propagateSelect?: boolean; bubbleSelect?: boolean; allowParentSelect?: boolean; asChild?: boolean; as?: AsTag | Component; height: string | number; options?: VirtualizerOptions; dynamic?: boolean }",
+        "description": "Properties for the TreeVirtualizer component.",
+        "descriptionKey": "api.generated.packages_ui_src_components_tree_types.treevirtualizerprops.props",
+        "sourcePath": "packages/ui/src/components/tree/types.ts",
+        "typeParameters": ["TypeParameter T", "TypeParameter U", "TypeParameter M"],
+        "members": [
+          {
+            "name": "contentProps",
+            "type": "VirtualizerContentProps",
+            "required": false,
+            "description": "Properties forwarded to the content element.",
+            "descriptionKey": "api.generated.packages_ui_src_components_tree_types.treevirtualizerprops.members.contentprops",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui/src/components/tree/types.ts",
+            "referencedTypes": [
+              {
+                "name": "VirtualizerContentProps",
+                "kind": "interface",
+                "type": "VirtualizerContentProps",
+                "resolvedType": "{ dynamicContentProps?: VirtualizerDynamicContentProps; asChild?: boolean; as?: AsTag | Component }",
+                "description": "Properties for the VirtualizerContent component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_virtualizer_types.virtualizercontentprops",
+                "sourcePath": "packages/headless/src/components/virtualizer/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "dynamicContentProps",
+                    "type": "VirtualizerDynamicContentProps",
+                    "required": false,
+                    "description": "Properties forwarded to the dynamic content element.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_virtualizer_types.virtualizercontentprops.members.dynamiccontentprops",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/virtualizer/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "asChild",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_virtualizer_types.virtualizercontentprops.members.aschild",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "as",
+                    "type": "AsTag | Component",
+                    "required": false,
+                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+                    "descriptionKey": "api.generated.packages_headless_src_components_virtualizer_types.virtualizercontentprops.members.as",
+                    "default": "'div'",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "dynamicContentProps",
+            "type": "VirtualizerDynamicContentProps",
+            "required": false,
+            "description": "Properties forwarded to the dynamic content element.",
+            "descriptionKey": "api.generated.packages_ui_src_components_tree_types.treevirtualizerprops.members.dynamiccontentprops",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui/src/components/tree/types.ts",
+            "referencedTypes": [
+              {
+                "name": "VirtualizerDynamicContentProps",
+                "kind": "interface",
+                "type": "VirtualizerDynamicContentProps",
+                "resolvedType": null,
+                "description": "Properties for the VirtualizerDynamicContent component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_virtualizer_types.virtualizerdynamiccontentprops",
+                "sourcePath": "packages/headless/src/components/virtualizer/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "modelValue",
+            "type": "U",
+            "required": false,
+            "description": "The controlled value of the tree. Can be bound-with with `v-model`.",
+            "descriptionKey": "api.generated.packages_ui_src_components_tree_types.treevirtualizerprops.members.modelvalue",
+            "default": null,
+            "inheritedFrom": "modelValue",
+            "sourcePath": "packages/headless/src/components/tree/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "defaultValue",
+            "type": "U",
+            "required": false,
+            "description": "The value of the tree when initially rendered. Use when you do not need to control the state of the tree",
+            "descriptionKey": "api.generated.packages_ui_src_components_tree_types.treevirtualizerprops.members.defaultvalue",
+            "default": null,
+            "inheritedFrom": "defaultValue",
+            "sourcePath": "packages/headless/src/components/tree/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "multiple",
+            "type": "IsMultiple<U, M>",
+            "required": false,
+            "description": "Determines whether a \"single\" or \"multiple\" items can be selected at a time.",
+            "descriptionKey": "api.generated.packages_ui_src_components_tree_types.treevirtualizerprops.members.multiple",
+            "default": null,
+            "inheritedFrom": "multiple",
+            "sourcePath": "packages/headless/src/components/tree/types.ts",
+            "referencedTypes": [
+              {
+                "name": "IsMultiple",
+                "kind": "typeAlias",
+                "type": "U extends string ? false : M extends true ? true : false",
+                "resolvedType": "U extends string ? false : M extends true ? true : false",
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_components_tree_types.ismultiple",
+                "sourcePath": "packages/headless/src/components/tree/types.ts",
+                "typeParameters": ["U extends MaybeArray<string> | undefined", "M extends boolean"],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "items",
+            "type": "T[]",
+            "required": false,
+            "description": "List of items",
+            "descriptionKey": "api.generated.packages_ui_src_components_tree_types.treevirtualizerprops.members.items",
+            "default": null,
+            "inheritedFrom": "items",
+            "sourcePath": "packages/headless/src/components/tree/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "expanded",
+            "type": "string[]",
+            "required": false,
+            "description": "The controlled value of the expanded item. Can be bound-with with `v-model`.",
+            "descriptionKey": "api.generated.packages_ui_src_components_tree_types.treevirtualizerprops.members.expanded",
+            "default": null,
+            "inheritedFrom": "expanded",
+            "sourcePath": "packages/headless/src/components/tree/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "defaultExpanded",
+            "type": "string[]",
+            "required": false,
+            "description": "The value of the expanded tree when initially rendered.",
+            "descriptionKey": "api.generated.packages_ui_src_components_tree_types.treevirtualizerprops.members.defaultexpanded",
+            "default": null,
+            "inheritedFrom": "defaultExpanded",
+            "sourcePath": "packages/headless/src/components/tree/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "selectionBehavior",
+            "type": "TreeSelectBehavior",
+            "required": false,
+            "description": "How multiple selection should behave in the collection.",
+            "descriptionKey": "api.generated.packages_ui_src_components_tree_types.treevirtualizerprops.members.selectionbehavior",
+            "default": null,
+            "inheritedFrom": "selectionBehavior",
+            "sourcePath": "packages/headless/src/components/tree/types.ts",
+            "referencedTypes": [
+              {
+                "name": "TreeSelectBehavior",
+                "kind": "typeAlias",
+                "type": "'toggle' | 'replace'",
+                "resolvedType": "'toggle' | 'replace'",
+                "description": "Type information for TreeSelectBehavior.",
+                "descriptionKey": "api.generated.packages_headless_src_components_tree_types.treeselectbehavior",
+                "sourcePath": "packages/headless/src/components/tree/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "toggleBehavior",
+            "type": "TreeToggleBehavior",
+            "required": false,
+            "description": "Determines whether a \"single\" or \"multiple\" items can be toggled at a time.",
+            "descriptionKey": "api.generated.packages_ui_src_components_tree_types.treevirtualizerprops.members.togglebehavior",
+            "default": "'multiple'",
+            "inheritedFrom": "toggleBehavior",
+            "sourcePath": "packages/headless/src/components/tree/types.ts",
+            "referencedTypes": [
+              {
+                "name": "TreeToggleBehavior",
+                "kind": "typeAlias",
+                "type": "'multiple' | 'single'",
+                "resolvedType": "'multiple' | 'single'",
+                "description": "Type information for TreeToggleBehavior.",
+                "descriptionKey": "api.generated.packages_headless_src_components_tree_types.treetogglebehavior",
+                "sourcePath": "packages/headless/src/components/tree/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "dir",
+            "type": "Direction",
+            "required": false,
+            "description": "The reading direction.",
+            "descriptionKey": "api.generated.packages_ui_src_components_tree_types.treevirtualizerprops.members.dir",
+            "default": null,
+            "inheritedFrom": "dir",
+            "sourcePath": "packages/headless/src/components/tree/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Direction",
+                "kind": "typeAlias",
+                "type": "'ltr' | 'rtl'",
+                "resolvedType": "'ltr' | 'rtl'",
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_types_common.direction",
+                "sourcePath": "packages/headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "loop",
+            "type": "boolean",
+            "required": false,
+            "description": "When `true`, keyboard navigation will loop from last item to first, and vice versa.",
+            "descriptionKey": "api.generated.packages_ui_src_components_tree_types.treevirtualizerprops.members.loop",
+            "default": "true",
+            "inheritedFrom": "loop",
+            "sourcePath": "packages/headless/src/components/tree/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "disabled",
+            "type": "boolean",
+            "required": false,
+            "description": "When `true`, prevents the user from interacting with tree",
+            "descriptionKey": "api.generated.packages_ui_src_components_tree_types.treevirtualizerprops.members.disabled",
+            "default": null,
+            "inheritedFrom": "disabled",
+            "sourcePath": "packages/headless/src/components/tree/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "propagateSelect",
+            "type": "boolean",
+            "required": false,
+            "description": "When `true`, selecting parent will select the descendants.",
+            "descriptionKey": "api.generated.packages_ui_src_components_tree_types.treevirtualizerprops.members.propagateselect",
+            "default": null,
+            "inheritedFrom": "propagateSelect",
+            "sourcePath": "packages/headless/src/components/tree/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "bubbleSelect",
+            "type": "boolean",
+            "required": false,
+            "description": "When `true`, selecting children will update the parent state.",
+            "descriptionKey": "api.generated.packages_ui_src_components_tree_types.treevirtualizerprops.members.bubbleselect",
+            "default": null,
+            "inheritedFrom": "bubbleSelect",
+            "sourcePath": "packages/headless/src/components/tree/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "allowParentSelect",
+            "type": "boolean",
+            "required": false,
+            "description": "When `true`, parent can be selected.",
+            "descriptionKey": "api.generated.packages_ui_src_components_tree_types.treevirtualizerprops.members.allowparentselect",
+            "default": null,
+            "inheritedFrom": "allowParentSelect",
+            "sourcePath": "packages/headless/src/components/tree/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "asChild",
+            "type": "boolean",
+            "required": false,
+            "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+            "descriptionKey": "api.generated.packages_ui_src_components_tree_types.treevirtualizerprops.members.aschild",
+            "default": null,
+            "inheritedFrom": "asChild",
+            "sourcePath": "packages/headless/src/components/primitive/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "as",
+            "type": "AsTag | Component",
+            "required": false,
+            "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+            "descriptionKey": "api.generated.packages_ui_src_components_tree_types.treevirtualizerprops.members.as",
+            "default": "'div'",
+            "inheritedFrom": "as",
+            "sourcePath": "packages/headless/src/components/primitive/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Component",
+                "kind": "typeAlias",
+                "type": "Component",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": null,
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.35/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [
+                  "PropsOrInstance = any",
+                  "RawBindings = any",
+                  "D = any",
+                  "C extends ComputedOptions = ComputedOptions",
+                  "M extends MethodOptions = MethodOptions",
+                  "E extends EmitsOptions | Record<string, any[]> = {}",
+                  "S extends Record<string, any> = any"
+                ],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "height",
+            "type": "string | number",
+            "required": true,
+            "description": "The height of the virtualizer root",
+            "descriptionKey": "api.generated.packages_ui_src_components_tree_types.treevirtualizerprops.members.height",
+            "default": null,
+            "inheritedFrom": "height",
+            "sourcePath": "packages/headless/src/components/virtualizer/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "options",
+            "type": "VirtualizerOptions",
+            "required": false,
+            "description": "Options.",
+            "descriptionKey": "api.generated.packages_ui_src_components_tree_types.treevirtualizerprops.members.options",
+            "default": null,
+            "inheritedFrom": "options",
+            "sourcePath": "packages/headless/src/components/virtualizer/types.ts",
+            "referencedTypes": [
+              {
+                "name": "VirtualizerOptions",
+                "kind": "interface",
+                "type": "VirtualizerOptions",
+                "resolvedType": null,
+                "description": "Type information for VirtualizerOptions.",
+                "descriptionKey": "api.generated.packages_headless_src_components_virtualizer_types.virtualizeroptions",
+                "sourcePath": "packages/headless/src/components/virtualizer/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "dynamic",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether dynamic.",
+            "descriptionKey": "api.generated.packages_ui_src_components_tree_types.treevirtualizerprops.members.dynamic",
+            "default": null,
+            "inheritedFrom": "dynamic",
+            "sourcePath": "packages/headless/src/components/virtualizer/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      },
+      "emits": {
+        "kind": "emits",
+        "name": "TreeVirtualizerEmits",
+        "type": "TypeAlias TreeVirtualizerEmits<M>: TreeVirtualizerRootEmits<M>",
+        "resolvedType": "{ \"update:modelValue\": [value: M extends true ? string[] : string]; \"update:expanded\": [value: string[]] }",
+        "description": "Events for the TreeVirtualizer component.",
+        "descriptionKey": "api.generated.packages_ui_src_components_tree_types.treevirtualizeremits.emits",
+        "sourcePath": "packages/ui/src/components/tree/types.ts",
+        "typeParameters": ["TypeParameter M"],
+        "members": [],
+        "callables": [
+          {
+            "name": "update:modelValue",
+            "type": "[value: M extends true ? string[] : string]",
+            "parameters": "value: M extends true ? string[] : string",
+            "required": true,
+            "description": "Emitted when the model value changes.",
+            "descriptionKey": "api.generated.packages_ui_src_components_tree_types.treevirtualizeremits.callables.update_modelvalue",
+            "sourcePath": "packages/headless/src/components/tree/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "update:expanded",
+            "type": "[value: string[]]",
+            "parameters": "value: string[]",
+            "required": true,
+            "description": "Emitted when the expanded state changes.",
+            "descriptionKey": "api.generated.packages_ui_src_components_tree_types.treevirtualizeremits.callables.update_expanded",
+            "sourcePath": "packages/headless/src/components/tree/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "referencedTypes": []
+      }
+    },
+    "TreeVirtualizerItem": {
+      "props": {
+        "kind": "props",
+        "name": "TreeVirtualizerItemProps",
+        "type": "Interface TreeVirtualizerItemProps",
+        "resolvedType": "{ value: string; level: number; disabled?: boolean; disabledSelect?: boolean; disabledToggle?: boolean; asChild?: boolean; as?: AsTag | Component; data: VirtualItem; customStyle?: boolean }",
+        "description": "Properties for the TreeVirtualizerItem component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_tree_types.treevirtualizeritemprops.props",
+        "sourcePath": "packages/headless/src/components/tree/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "value",
+            "type": "string",
+            "required": true,
+            "description": "Value associated with the current item.",
+            "descriptionKey": "api.generated.packages_headless_src_components_tree_types.treevirtualizeritemprops.members.value",
+            "default": null,
+            "inheritedFrom": "value",
+            "sourcePath": "packages/headless/src/components/tree/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "level",
+            "type": "number",
+            "required": true,
+            "description": "Level.",
+            "descriptionKey": "api.generated.packages_headless_src_components_tree_types.treevirtualizeritemprops.members.level",
+            "default": null,
+            "inheritedFrom": "level",
+            "sourcePath": "packages/headless/src/components/tree/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "disabled",
+            "type": "boolean",
+            "required": false,
+            "description": "When `true`, prevents the user from selecting or toggling the item.",
+            "descriptionKey": "api.generated.packages_headless_src_components_tree_types.treevirtualizeritemprops.members.disabled",
+            "default": null,
+            "inheritedFrom": "disabled",
+            "sourcePath": "packages/headless/src/components/tree/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "disabledSelect",
+            "type": "boolean",
+            "required": false,
+            "description": "When `true`, prevents the user from selecting the item.",
+            "descriptionKey": "api.generated.packages_headless_src_components_tree_types.treevirtualizeritemprops.members.disabledselect",
+            "default": null,
+            "inheritedFrom": "disabledSelect",
+            "sourcePath": "packages/headless/src/components/tree/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "disabledToggle",
+            "type": "boolean",
+            "required": false,
+            "description": "When `true`, prevents the user from toggling the item.",
+            "descriptionKey": "api.generated.packages_headless_src_components_tree_types.treevirtualizeritemprops.members.disabledtoggle",
+            "default": null,
+            "inheritedFrom": "disabledToggle",
+            "sourcePath": "packages/headless/src/components/tree/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "asChild",
+            "type": "boolean",
+            "required": false,
+            "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+            "descriptionKey": "api.generated.packages_headless_src_components_tree_types.treevirtualizeritemprops.members.aschild",
+            "default": null,
+            "inheritedFrom": "asChild",
+            "sourcePath": "packages/headless/src/components/primitive/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "as",
+            "type": "AsTag | Component",
+            "required": false,
+            "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+            "descriptionKey": "api.generated.packages_headless_src_components_tree_types.treevirtualizeritemprops.members.as",
+            "default": "'div'",
+            "inheritedFrom": "as",
+            "sourcePath": "packages/headless/src/components/primitive/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Component",
+                "kind": "typeAlias",
+                "type": "Component",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": null,
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.35/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [
+                  "PropsOrInstance = any",
+                  "RawBindings = any",
+                  "D = any",
+                  "C extends ComputedOptions = ComputedOptions",
+                  "M extends MethodOptions = MethodOptions",
+                  "E extends EmitsOptions | Record<string, any[]> = {}",
+                  "S extends Record<string, any> = any"
+                ],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "data",
+            "type": "VirtualItem",
+            "required": true,
+            "description": "Data.",
+            "descriptionKey": "api.generated.packages_headless_src_components_tree_types.treevirtualizeritemprops.members.data",
+            "default": null,
+            "inheritedFrom": "data",
+            "sourcePath": "packages/headless/src/components/virtualizer/types.ts",
+            "referencedTypes": [
+              {
+                "name": "VirtualItem",
+                "kind": "interface",
+                "type": "VirtualItem",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": null,
+                "sourcePath": "node_modules/.pnpm/@tanstack+virtual-core@3.17.0/node_modules/@tanstack/virtual-core/dist/esm/index.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "customStyle",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether custom style.",
+            "descriptionKey": "api.generated.packages_headless_src_components_tree_types.treevirtualizeritemprops.members.customstyle",
+            "default": null,
+            "inheritedFrom": "customStyle",
+            "sourcePath": "packages/headless/src/components/virtualizer/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      },
+      "emits": {
+        "kind": "emits",
+        "name": "TreeVirtualizerItemEmits",
+        "type": "TypeAlias TreeVirtualizerItemEmits: TreeItemEmits",
+        "resolvedType": "{ select: [event: TreeSelectEvent<string>]; toggle: [event: TreeToggleEvent<string>] }",
+        "description": "Events for the TreeVirtualizerItem component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_tree_types.treevirtualizeritememits.emits",
+        "sourcePath": "packages/headless/src/components/tree/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [
+          {
+            "name": "select",
+            "type": "[event: TreeSelectEvent<string>]",
+            "parameters": "event: TreeSelectEvent<string>",
+            "required": true,
+            "description": "Event handler called when selecting item.",
+            "descriptionKey": "api.generated.packages_headless_src_components_tree_types.treevirtualizeritememits.callables.select",
+            "sourcePath": "packages/headless/src/components/tree/types.ts",
+            "referencedTypes": [
+              {
+                "name": "TreeSelectEvent",
+                "kind": "typeAlias",
+                "type": "CustomEvent<{ originalEvent: PointerEvent | KeyboardEvent; value?: string | undefined; isExpanded: boolean; isSelected: boolean; }>",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_types_event.treeselectevent",
+                "sourcePath": "packages/headless/src/types/event.ts",
+                "typeParameters": ["T = AcceptableValue"],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "toggle",
+            "type": "[event: TreeToggleEvent<string>]",
+            "parameters": "event: TreeToggleEvent<string>",
+            "required": true,
+            "description": "Event handler called when toggling item.",
+            "descriptionKey": "api.generated.packages_headless_src_components_tree_types.treevirtualizeritememits.callables.toggle",
+            "sourcePath": "packages/headless/src/components/tree/types.ts",
+            "referencedTypes": [
+              {
+                "name": "TreeToggleEvent",
+                "kind": "typeAlias",
+                "type": "CustomEvent<{ originalEvent: PointerEvent | KeyboardEvent; value?: string | undefined; isExpanded: boolean; isSelected: boolean; }>",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_types_event.treetoggleevent",
+                "sourcePath": "packages/headless/src/types/event.ts",
+                "typeParameters": ["T = AcceptableValue"],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "referencedTypes": [
+          {
+            "name": "TreeItemEmits",
+            "kind": "typeAlias",
+            "type": "{ select: [event: TreeSelectEvent<string>]; toggle: [event: TreeToggleEvent<string>]; }",
+            "resolvedType": "{ select: [event: TreeSelectEvent<string>]; toggle: [event: TreeToggleEvent<string>] }",
+            "description": "Events for the TreeItem component.",
+            "descriptionKey": "api.generated.packages_headless_src_components_tree_types.treeitememits",
+            "sourcePath": "packages/headless/src/components/tree/types.ts",
+            "typeParameters": [],
+            "external": false,
+            "members": [],
+            "callables": [
+              {
+                "name": "select",
+                "type": "[event: TreeSelectEvent<string>]",
+                "parameters": "event: TreeSelectEvent<string>",
+                "required": true,
+                "description": "Event handler called when selecting item.",
+                "descriptionKey": "api.generated.packages_headless_src_components_tree_types.treeitememits.callables.select",
+                "sourcePath": "packages/headless/src/components/tree/types.ts",
+                "referencedTypes": []
+              },
+              {
+                "name": "toggle",
+                "type": "[event: TreeToggleEvent<string>]",
+                "parameters": "event: TreeToggleEvent<string>",
+                "required": true,
+                "description": "Event handler called when toggling item.",
+                "descriptionKey": "api.generated.packages_headless_src_components_tree_types.treeitememits.callables.toggle",
+                "sourcePath": "packages/headless/src/components/tree/types.ts",
+                "referencedTypes": []
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "TreeVirtualizerRoot": {
+      "props": {
+        "kind": "props",
+        "name": "TreeVirtualizerRootProps",
+        "type": "Interface TreeVirtualizerRootProps<T, U, M>",
+        "resolvedType": "{ modelValue?: U; defaultValue?: U; multiple?: IsMultiple<U, M>; items?: T[]; expanded?: string[]; defaultExpanded?: string[]; selectionBehavior?: TreeSelectBehavior; toggleBehavior?: TreeToggleBehavior; dir?: Direction; loop?: boolean; disabled?: boolean; propagateSelect?: boolean; bubbleSelect?: boolean; allowParentSelect?: boolean; asChild?: boolean; as?: AsTag | Component; height: string | number; options?: VirtualizerOptions; dynamic?: boolean }",
+        "description": "Properties for the TreeVirtualizerRoot component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_tree_types.treevirtualizerrootprops.props",
+        "sourcePath": "packages/headless/src/components/tree/types.ts",
+        "typeParameters": ["TypeParameter T", "TypeParameter U", "TypeParameter M"],
+        "members": [
+          {
+            "name": "modelValue",
+            "type": "U",
+            "required": false,
+            "description": "The controlled value of the tree. Can be bound-with with `v-model`.",
+            "descriptionKey": "api.generated.packages_headless_src_components_tree_types.treevirtualizerrootprops.members.modelvalue",
+            "default": null,
+            "inheritedFrom": "modelValue",
+            "sourcePath": "packages/headless/src/components/tree/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "defaultValue",
+            "type": "U",
+            "required": false,
+            "description": "The value of the tree when initially rendered. Use when you do not need to control the state of the tree",
+            "descriptionKey": "api.generated.packages_headless_src_components_tree_types.treevirtualizerrootprops.members.defaultvalue",
+            "default": null,
+            "inheritedFrom": "defaultValue",
+            "sourcePath": "packages/headless/src/components/tree/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "multiple",
+            "type": "IsMultiple<U, M>",
+            "required": false,
+            "description": "Determines whether a \"single\" or \"multiple\" items can be selected at a time.",
+            "descriptionKey": "api.generated.packages_headless_src_components_tree_types.treevirtualizerrootprops.members.multiple",
+            "default": null,
+            "inheritedFrom": "multiple",
+            "sourcePath": "packages/headless/src/components/tree/types.ts",
+            "referencedTypes": [
+              {
+                "name": "IsMultiple",
+                "kind": "typeAlias",
+                "type": "U extends string ? false : M extends true ? true : false",
+                "resolvedType": "U extends string ? false : M extends true ? true : false",
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_components_tree_types.ismultiple",
+                "sourcePath": "packages/headless/src/components/tree/types.ts",
+                "typeParameters": ["U extends MaybeArray<string> | undefined", "M extends boolean"],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "items",
+            "type": "T[]",
+            "required": false,
+            "description": "List of items",
+            "descriptionKey": "api.generated.packages_headless_src_components_tree_types.treevirtualizerrootprops.members.items",
+            "default": null,
+            "inheritedFrom": "items",
+            "sourcePath": "packages/headless/src/components/tree/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "expanded",
+            "type": "string[]",
+            "required": false,
+            "description": "The controlled value of the expanded item. Can be bound-with with `v-model`.",
+            "descriptionKey": "api.generated.packages_headless_src_components_tree_types.treevirtualizerrootprops.members.expanded",
+            "default": null,
+            "inheritedFrom": "expanded",
+            "sourcePath": "packages/headless/src/components/tree/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "defaultExpanded",
+            "type": "string[]",
+            "required": false,
+            "description": "The value of the expanded tree when initially rendered.",
+            "descriptionKey": "api.generated.packages_headless_src_components_tree_types.treevirtualizerrootprops.members.defaultexpanded",
+            "default": null,
+            "inheritedFrom": "defaultExpanded",
+            "sourcePath": "packages/headless/src/components/tree/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "selectionBehavior",
+            "type": "TreeSelectBehavior",
+            "required": false,
+            "description": "How multiple selection should behave in the collection.",
+            "descriptionKey": "api.generated.packages_headless_src_components_tree_types.treevirtualizerrootprops.members.selectionbehavior",
+            "default": null,
+            "inheritedFrom": "selectionBehavior",
+            "sourcePath": "packages/headless/src/components/tree/types.ts",
+            "referencedTypes": [
+              {
+                "name": "TreeSelectBehavior",
+                "kind": "typeAlias",
+                "type": "'toggle' | 'replace'",
+                "resolvedType": "'toggle' | 'replace'",
+                "description": "Type information for TreeSelectBehavior.",
+                "descriptionKey": "api.generated.packages_headless_src_components_tree_types.treeselectbehavior",
+                "sourcePath": "packages/headless/src/components/tree/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "toggleBehavior",
+            "type": "TreeToggleBehavior",
+            "required": false,
+            "description": "Determines whether a \"single\" or \"multiple\" items can be toggled at a time.",
+            "descriptionKey": "api.generated.packages_headless_src_components_tree_types.treevirtualizerrootprops.members.togglebehavior",
+            "default": "'multiple'",
+            "inheritedFrom": "toggleBehavior",
+            "sourcePath": "packages/headless/src/components/tree/types.ts",
+            "referencedTypes": [
+              {
+                "name": "TreeToggleBehavior",
+                "kind": "typeAlias",
+                "type": "'multiple' | 'single'",
+                "resolvedType": "'multiple' | 'single'",
+                "description": "Type information for TreeToggleBehavior.",
+                "descriptionKey": "api.generated.packages_headless_src_components_tree_types.treetogglebehavior",
+                "sourcePath": "packages/headless/src/components/tree/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "dir",
+            "type": "Direction",
+            "required": false,
+            "description": "The reading direction.",
+            "descriptionKey": "api.generated.packages_headless_src_components_tree_types.treevirtualizerrootprops.members.dir",
+            "default": null,
+            "inheritedFrom": "dir",
+            "sourcePath": "packages/headless/src/components/tree/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Direction",
+                "kind": "typeAlias",
+                "type": "'ltr' | 'rtl'",
+                "resolvedType": "'ltr' | 'rtl'",
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_types_common.direction",
+                "sourcePath": "packages/headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "loop",
+            "type": "boolean",
+            "required": false,
+            "description": "When `true`, keyboard navigation will loop from last item to first, and vice versa.",
+            "descriptionKey": "api.generated.packages_headless_src_components_tree_types.treevirtualizerrootprops.members.loop",
+            "default": "true",
+            "inheritedFrom": "loop",
+            "sourcePath": "packages/headless/src/components/tree/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "disabled",
+            "type": "boolean",
+            "required": false,
+            "description": "When `true`, prevents the user from interacting with tree",
+            "descriptionKey": "api.generated.packages_headless_src_components_tree_types.treevirtualizerrootprops.members.disabled",
+            "default": null,
+            "inheritedFrom": "disabled",
+            "sourcePath": "packages/headless/src/components/tree/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "propagateSelect",
+            "type": "boolean",
+            "required": false,
+            "description": "When `true`, selecting parent will select the descendants.",
+            "descriptionKey": "api.generated.packages_headless_src_components_tree_types.treevirtualizerrootprops.members.propagateselect",
+            "default": null,
+            "inheritedFrom": "propagateSelect",
+            "sourcePath": "packages/headless/src/components/tree/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "bubbleSelect",
+            "type": "boolean",
+            "required": false,
+            "description": "When `true`, selecting children will update the parent state.",
+            "descriptionKey": "api.generated.packages_headless_src_components_tree_types.treevirtualizerrootprops.members.bubbleselect",
+            "default": null,
+            "inheritedFrom": "bubbleSelect",
+            "sourcePath": "packages/headless/src/components/tree/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "allowParentSelect",
+            "type": "boolean",
+            "required": false,
+            "description": "When `true`, parent can be selected.",
+            "descriptionKey": "api.generated.packages_headless_src_components_tree_types.treevirtualizerrootprops.members.allowparentselect",
+            "default": null,
+            "inheritedFrom": "allowParentSelect",
+            "sourcePath": "packages/headless/src/components/tree/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "asChild",
+            "type": "boolean",
+            "required": false,
+            "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+            "descriptionKey": "api.generated.packages_headless_src_components_tree_types.treevirtualizerrootprops.members.aschild",
+            "default": null,
+            "inheritedFrom": "asChild",
+            "sourcePath": "packages/headless/src/components/primitive/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "as",
+            "type": "AsTag | Component",
+            "required": false,
+            "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+            "descriptionKey": "api.generated.packages_headless_src_components_tree_types.treevirtualizerrootprops.members.as",
+            "default": "'div'",
+            "inheritedFrom": "as",
+            "sourcePath": "packages/headless/src/components/primitive/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Component",
+                "kind": "typeAlias",
+                "type": "Component",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": null,
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.35/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [
+                  "PropsOrInstance = any",
+                  "RawBindings = any",
+                  "D = any",
+                  "C extends ComputedOptions = ComputedOptions",
+                  "M extends MethodOptions = MethodOptions",
+                  "E extends EmitsOptions | Record<string, any[]> = {}",
+                  "S extends Record<string, any> = any"
+                ],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "height",
+            "type": "string | number",
+            "required": true,
+            "description": "The height of the virtualizer root",
+            "descriptionKey": "api.generated.packages_headless_src_components_tree_types.treevirtualizerrootprops.members.height",
+            "default": null,
+            "inheritedFrom": "height",
+            "sourcePath": "packages/headless/src/components/virtualizer/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "options",
+            "type": "VirtualizerOptions",
+            "required": false,
+            "description": "Options.",
+            "descriptionKey": "api.generated.packages_headless_src_components_tree_types.treevirtualizerrootprops.members.options",
+            "default": null,
+            "inheritedFrom": "options",
+            "sourcePath": "packages/headless/src/components/virtualizer/types.ts",
+            "referencedTypes": [
+              {
+                "name": "VirtualizerOptions",
+                "kind": "interface",
+                "type": "VirtualizerOptions",
+                "resolvedType": null,
+                "description": "Type information for VirtualizerOptions.",
+                "descriptionKey": "api.generated.packages_headless_src_components_virtualizer_types.virtualizeroptions",
+                "sourcePath": "packages/headless/src/components/virtualizer/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "dynamic",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether dynamic.",
+            "descriptionKey": "api.generated.packages_headless_src_components_tree_types.treevirtualizerrootprops.members.dynamic",
+            "default": null,
+            "inheritedFrom": "dynamic",
+            "sourcePath": "packages/headless/src/components/virtualizer/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      },
+      "emits": {
+        "kind": "emits",
+        "name": "TreeVirtualizerRootEmits",
+        "type": "TypeAlias TreeVirtualizerRootEmits<M>: TreeRootEmits<M>",
+        "resolvedType": "{ \"update:modelValue\": [value: M extends true ? string[] : string]; \"update:expanded\": [value: string[]] }",
+        "description": "Events for the TreeVirtualizerRoot component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_tree_types.treevirtualizerrootemits.emits",
+        "sourcePath": "packages/headless/src/components/tree/types.ts",
+        "typeParameters": ["TypeParameter M"],
+        "members": [],
+        "callables": [
+          {
+            "name": "update:modelValue",
+            "type": "[value: M extends true ? string[] : string]",
+            "parameters": "value: M extends true ? string[] : string",
+            "required": true,
+            "description": "Emitted when the model value changes.",
+            "descriptionKey": "api.generated.packages_headless_src_components_tree_types.treevirtualizerrootemits.callables.update_modelvalue",
+            "sourcePath": "packages/headless/src/components/tree/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "update:expanded",
+            "type": "[value: string[]]",
+            "parameters": "value: string[]",
+            "required": true,
+            "description": "Emitted when the expanded state changes.",
+            "descriptionKey": "api.generated.packages_headless_src_components_tree_types.treevirtualizerrootemits.callables.update_expanded",
+            "sourcePath": "packages/headless/src/components/tree/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "referencedTypes": []
+      }
+    }
+  }
+}

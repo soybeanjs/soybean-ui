@@ -11,8 +11,8 @@ import {
 import type { TranslateCliOptions } from './_translate';
 
 const rootDir = process.cwd();
-const localeDir = path.join(rootDir, 'docs/src/generated/api-locales');
-const i18nModulePath = path.join(rootDir, 'docs/src/modules/i18n.ts');
+const localeDir = path.join(rootDir, 'apps/docs/src/generated/api-locales');
+const i18nModulePath = path.join(rootDir, 'apps/docs/src/modules/i18n.ts');
 
 function printUsage() {
   printTranslateUsage(

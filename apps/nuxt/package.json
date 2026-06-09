@@ -1,0 +1,23 @@
+{
+  "name": "@soybeanjs/ui-nuxt",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview"
+  },
+  "dependencies": {
+    "@nuxt/icon": "2.2.3",
+    "@nuxtjs/i18n": "10.4.0",
+    "@soybeanjs/ui": "workspace:^",
+    "nuxt": "^4.4.8",
+    "vue": "^3.5.35",
+    "vue-router": "^5.1.0"
+  },
+  "devDependencies": {
+    "@unocss/nuxt": "^66.7.0",
+    "unocss": "^66.7.0"
+  }
+}

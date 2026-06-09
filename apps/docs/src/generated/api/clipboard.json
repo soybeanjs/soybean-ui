@@ -1,0 +1,519 @@
+{
+  "component": "clipboard",
+  "symbols": {
+    "Clipboard": {
+      "props": {
+        "kind": "props",
+        "name": "ClipboardProps",
+        "type": "Interface ClipboardProps",
+        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; color?: ThemeColor; size?: ThemeSize; variant?: ClipboardVariant; shape?: ClipboardShape; fitContent?: boolean; value: string; copiedDuration?: number; legacy?: boolean; copyIcon?: string | import(\"vue\").Component | import(\"vue\").VNode<import(\"vue\").RendererNode, import(\"vue\").RendererElement, { [key: string]: any; }> | null; copiedIcon?: string | import(\"vue\").Component | import(\"vue\").VNode<import(\"vue\").RendererNode, import(\"vue\").RendererElement, { [key: string]: any; }> | null; copyText?: string; copiedText?: string; type?: ButtonType; disabled?: boolean; asChild?: boolean; as?: AsTag | Component }",
+        "description": "Properties for the Clipboard component.",
+        "descriptionKey": "api.generated.packages_ui_src_components_clipboard_types.clipboardprops.props",
+        "sourcePath": "packages/ui/src/components/clipboard/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "class",
+            "type": "string | false | Record<string, any> | ClassValue[] | null",
+            "required": false,
+            "description": "Additional class names applied to the root element.",
+            "descriptionKey": "api.generated.packages_ui_src_components_clipboard_types.clipboardprops.members.class",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui/src/components/clipboard/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ClassValue",
+                "kind": "typeAlias",
+                "type": "string | false | Record<string, any> | ClassValue[] | null | undefined",
+                "resolvedType": "string | false | Record<string, any> | ClassValue[] | null | undefined",
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_types_common.classvalue",
+                "sourcePath": "packages/headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "color",
+            "type": "ThemeColor",
+            "required": false,
+            "description": "Theme color of the component.",
+            "descriptionKey": "api.generated.packages_ui_src_components_clipboard_types.clipboardprops.members.color",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui/src/components/clipboard/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ThemeColor",
+                "kind": "typeAlias",
+                "type": "'primary' | 'destructive' | 'success' | 'warning' | 'info' | 'carbon' | 'secondary' | 'accent'",
+                "resolvedType": "'primary' | 'destructive' | 'success' | 'warning' | 'info' | 'carbon' | 'secondary' | 'accent'",
+                "description": "",
+                "descriptionKey": "api.generated.packages_ui_src_theme_types.themecolor",
+                "sourcePath": "packages/ui/src/theme/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "size",
+            "type": "ThemeSize",
+            "required": false,
+            "description": "Visual size of the component.",
+            "descriptionKey": "api.generated.packages_ui_src_components_clipboard_types.clipboardprops.members.size",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui/src/components/clipboard/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ThemeSize",
+                "kind": "typeAlias",
+                "type": "'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'",
+                "resolvedType": "'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'",
+                "description": "",
+                "descriptionKey": "api.generated.packages_ui_src_theme_types.themesize",
+                "sourcePath": "packages/ui/src/theme/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "variant",
+            "type": "ClipboardVariant",
+            "required": false,
+            "description": "Visual variant of the component.",
+            "descriptionKey": "api.generated.packages_ui_src_components_clipboard_types.clipboardprops.members.variant",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui/src/components/clipboard/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ButtonVariant",
+                "kind": "typeAlias",
+                "type": "'link' | 'solid' | 'pure' | 'outline' | 'soft' | 'ghost' | 'plain' | 'dashed'",
+                "resolvedType": "'link' | 'solid' | 'pure' | 'outline' | 'soft' | 'ghost' | 'plain' | 'dashed'",
+                "description": "",
+                "descriptionKey": "api.generated.packages_ui_src_styles_button.buttonvariant",
+                "sourcePath": "packages/ui/src/styles/button.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "shape",
+            "type": "ClipboardShape",
+            "required": false,
+            "description": "Shape of the component.",
+            "descriptionKey": "api.generated.packages_ui_src_components_clipboard_types.clipboardprops.members.shape",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui/src/components/clipboard/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ButtonShape",
+                "kind": "typeAlias",
+                "type": "'auto' | 'rounded' | 'square' | 'circle'",
+                "resolvedType": "'auto' | 'rounded' | 'square' | 'circle'",
+                "description": "",
+                "descriptionKey": "api.generated.packages_ui_src_styles_button.buttonshape",
+                "sourcePath": "packages/ui/src/styles/button.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "fitContent",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether the component should fit its content width.",
+            "descriptionKey": "api.generated.packages_ui_src_components_clipboard_types.clipboardprops.members.fitcontent",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui/src/components/clipboard/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "value",
+            "type": "string",
+            "required": true,
+            "description": "The text value to copy.",
+            "descriptionKey": "api.generated.packages_ui_src_components_clipboard_types.clipboardprops.members.value",
+            "default": null,
+            "inheritedFrom": "_ClipboardProps.value",
+            "sourcePath": "packages/headless/src/components/clipboard/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "copiedDuration",
+            "type": "number",
+            "required": false,
+            "description": "The duration in milliseconds to keep the copied state.",
+            "descriptionKey": "api.generated.packages_ui_src_components_clipboard_types.clipboardprops.members.copiedduration",
+            "default": "2000",
+            "inheritedFrom": "_ClipboardProps.copiedDuration",
+            "sourcePath": "packages/headless/src/components/clipboard/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "legacy",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether to enable the legacy `execCommand` fallback.",
+            "descriptionKey": "api.generated.packages_ui_src_components_clipboard_types.clipboardprops.members.legacy",
+            "default": "true",
+            "inheritedFrom": "_ClipboardProps.legacy",
+            "sourcePath": "packages/headless/src/components/clipboard/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "copyIcon",
+            "type": "string | import(\"vue\").Component | import(\"vue\").VNode<import(\"vue\").RendererNode, import(\"vue\").RendererElement, { [key: string]: any; }> | null",
+            "required": false,
+            "description": "The icon to display before copying.",
+            "descriptionKey": "api.generated.packages_ui_src_components_clipboard_types.clipboardprops.members.copyicon",
+            "default": "'lucide:copy'",
+            "inheritedFrom": "_ClipboardProps.copyIcon",
+            "sourcePath": "packages/headless/src/components/clipboard/types.ts",
+            "referencedTypes": [
+              {
+                "name": "IconValue",
+                "kind": "typeAlias",
+                "type": "string | import(\"vue\").Component | import(\"vue\").VNode<import(\"vue\").RendererNode, import(\"vue\").RendererElement, { [key: string]: any; }> | null | undefined",
+                "resolvedType": "string | Component | VNode<import(\"vue\").RendererNode, import(\"vue\").RendererElement, { [key: string]: any; }> | null | undefined",
+                "description": "Type information for IconValue.",
+                "descriptionKey": "api.generated.packages_headless_src_components_icon_types.iconvalue",
+                "sourcePath": "packages/headless/src/components/_icon/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "copiedIcon",
+            "type": "string | import(\"vue\").Component | import(\"vue\").VNode<import(\"vue\").RendererNode, import(\"vue\").RendererElement, { [key: string]: any; }> | null",
+            "required": false,
+            "description": "The icon to display after copying.",
+            "descriptionKey": "api.generated.packages_ui_src_components_clipboard_types.clipboardprops.members.copiedicon",
+            "default": "'lucide:check'",
+            "inheritedFrom": "_ClipboardProps.copiedIcon",
+            "sourcePath": "packages/headless/src/components/clipboard/types.ts",
+            "referencedTypes": [
+              {
+                "name": "IconValue",
+                "kind": "typeAlias",
+                "type": "string | import(\"vue\").Component | import(\"vue\").VNode<import(\"vue\").RendererNode, import(\"vue\").RendererElement, { [key: string]: any; }> | null | undefined",
+                "resolvedType": "string | Component | VNode<import(\"vue\").RendererNode, import(\"vue\").RendererElement, { [key: string]: any; }> | null | undefined",
+                "description": "Type information for IconValue.",
+                "descriptionKey": "api.generated.packages_headless_src_components_icon_types.iconvalue",
+                "sourcePath": "packages/headless/src/components/_icon/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "copyText",
+            "type": "string",
+            "required": false,
+            "description": "The text to display before copying.",
+            "descriptionKey": "api.generated.packages_ui_src_components_clipboard_types.clipboardprops.members.copytext",
+            "default": "'Copy'",
+            "inheritedFrom": "_ClipboardProps.copyText",
+            "sourcePath": "packages/headless/src/components/clipboard/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "copiedText",
+            "type": "string",
+            "required": false,
+            "description": "The text to display after copying.",
+            "descriptionKey": "api.generated.packages_ui_src_components_clipboard_types.clipboardprops.members.copiedtext",
+            "default": "'Copied'",
+            "inheritedFrom": "_ClipboardProps.copiedText",
+            "sourcePath": "packages/headless/src/components/clipboard/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "type",
+            "type": "ButtonType",
+            "required": false,
+            "description": "The type of the button element. Can be one of 'button', 'submit', or 'reset'.",
+            "descriptionKey": "api.generated.packages_ui_src_components_clipboard_types.clipboardprops.members.type",
+            "default": "'button'",
+            "inheritedFrom": "_ClipboardProps.type",
+            "sourcePath": "packages/headless/src/components/button/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ButtonType",
+                "kind": "typeAlias",
+                "type": "'button' | 'submit' | 'reset'",
+                "resolvedType": "'button' | 'submit' | 'reset'",
+                "description": "Supported button values.",
+                "descriptionKey": "api.generated.packages_headless_src_components_button_types.buttontype",
+                "sourcePath": "packages/headless/src/components/button/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "disabled",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether the component is disabled.",
+            "descriptionKey": "api.generated.packages_ui_src_components_clipboard_types.clipboardprops.members.disabled",
+            "default": null,
+            "inheritedFrom": "_ClipboardProps.disabled",
+            "sourcePath": "packages/headless/src/components/button/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "asChild",
+            "type": "boolean",
+            "required": false,
+            "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+            "descriptionKey": "api.generated.packages_ui_src_components_clipboard_types.clipboardprops.members.aschild",
+            "default": null,
+            "inheritedFrom": "_ClipboardProps.asChild",
+            "sourcePath": "packages/headless/src/components/primitive/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "as",
+            "type": "AsTag | Component",
+            "required": false,
+            "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+            "descriptionKey": "api.generated.packages_ui_src_components_clipboard_types.clipboardprops.members.as",
+            "default": "'div'",
+            "inheritedFrom": "_ClipboardProps.as",
+            "sourcePath": "packages/headless/src/components/primitive/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Component",
+                "kind": "typeAlias",
+                "type": "Component",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": null,
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.35/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [
+                  "PropsOrInstance = any",
+                  "RawBindings = any",
+                  "D = any",
+                  "C extends ComputedOptions = ComputedOptions",
+                  "M extends MethodOptions = MethodOptions",
+                  "E extends EmitsOptions | Record<string, any[]> = {}",
+                  "S extends Record<string, any> = any"
+                ],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      },
+      "emits": {
+        "kind": "emits",
+        "name": "ClipboardEmits",
+        "type": "TypeAlias ClipboardEmits",
+        "resolvedType": "{ click: [event: PointerEvent]; copied: [value: string]; copyError: [error: unknown] }",
+        "description": "Events for the Clipboard component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_clipboard_types.clipboardemits.emits",
+        "sourcePath": "packages/headless/src/components/clipboard/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [
+          {
+            "name": "click",
+            "type": "[event: PointerEvent]",
+            "parameters": "event: PointerEvent",
+            "required": true,
+            "description": "Emitted when click occurs.",
+            "descriptionKey": "api.generated.packages_headless_src_components_clipboard_types.clipboardemits.callables.click",
+            "sourcePath": "packages/headless/src/components/clipboard/types.ts",
+            "referencedTypes": [
+              {
+                "name": "PointerEvent",
+                "kind": "interface",
+                "type": "PointerEvent",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": null,
+                "sourcePath": "node_modules/.pnpm/typescript@6.0.3/node_modules/typescript/lib/lib.dom.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "copied",
+            "type": "[value: string]",
+            "parameters": "value: string",
+            "required": true,
+            "description": "Emitted when copied occurs.",
+            "descriptionKey": "api.generated.packages_headless_src_components_clipboard_types.clipboardemits.callables.copied",
+            "sourcePath": "packages/headless/src/components/clipboard/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "copyError",
+            "type": "[error: unknown]",
+            "parameters": "error: unknown",
+            "required": true,
+            "description": "Emitted when copy error occurs.",
+            "descriptionKey": "api.generated.packages_headless_src_components_clipboard_types.clipboardemits.callables.copyerror",
+            "sourcePath": "packages/headless/src/components/clipboard/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "referencedTypes": []
+      },
+      "slotProps": {
+        "kind": "slotProps",
+        "name": "ClipboardSlotProps",
+        "type": "Interface ClipboardSlotProps",
+        "resolvedType": "{ copied: boolean; disabled: boolean; icon: string | import(\"vue\").Component | import(\"vue\").VNode<import(\"vue\").RendererNode, import(\"vue\").RendererElement, { [key: string]: any; }> | null | undefined; supported: boolean; state: 'ready' | 'copied' | 'unsupported'; text: string; copy: () => Promise<void> }",
+        "description": "Slot properties for the Clipboard component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_clipboard_types.clipboardslotprops.slotprops",
+        "sourcePath": "packages/headless/src/components/clipboard/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "copied",
+            "type": "boolean",
+            "required": true,
+            "description": "Whether copied.",
+            "descriptionKey": "api.generated.packages_headless_src_components_clipboard_types.clipboardslotprops.members.copied",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/clipboard/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "disabled",
+            "type": "boolean",
+            "required": true,
+            "description": "Whether the component is disabled.",
+            "descriptionKey": "api.generated.packages_headless_src_components_clipboard_types.clipboardslotprops.members.disabled",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/clipboard/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "icon",
+            "type": "string | import(\"vue\").Component | import(\"vue\").VNode<import(\"vue\").RendererNode, import(\"vue\").RendererElement, { [key: string]: any; }> | null | undefined",
+            "required": true,
+            "description": "Icon rendered by the component.",
+            "descriptionKey": "api.generated.packages_headless_src_components_clipboard_types.clipboardslotprops.members.icon",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/clipboard/types.ts",
+            "referencedTypes": [
+              {
+                "name": "IconValue",
+                "kind": "typeAlias",
+                "type": "string | import(\"vue\").Component | import(\"vue\").VNode<import(\"vue\").RendererNode, import(\"vue\").RendererElement, { [key: string]: any; }> | null | undefined",
+                "resolvedType": "string | Component | VNode<import(\"vue\").RendererNode, import(\"vue\").RendererElement, { [key: string]: any; }> | null | undefined",
+                "description": "Type information for IconValue.",
+                "descriptionKey": "api.generated.packages_headless_src_components_icon_types.iconvalue",
+                "sourcePath": "packages/headless/src/components/_icon/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "supported",
+            "type": "boolean",
+            "required": true,
+            "description": "Whether supported.",
+            "descriptionKey": "api.generated.packages_headless_src_components_clipboard_types.clipboardslotprops.members.supported",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/clipboard/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "state",
+            "type": "'ready' | 'copied' | 'unsupported'",
+            "required": true,
+            "description": "State exposed in the slot scope.",
+            "descriptionKey": "api.generated.packages_headless_src_components_clipboard_types.clipboardslotprops.members.state",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/clipboard/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ClipboardState",
+                "kind": "typeAlias",
+                "type": "'ready' | 'copied' | 'unsupported'",
+                "resolvedType": "'ready' | 'copied' | 'unsupported'",
+                "description": "State values for ClipboardState.",
+                "descriptionKey": "api.generated.packages_headless_src_components_clipboard_types.clipboardstate",
+                "sourcePath": "packages/headless/src/components/clipboard/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "text",
+            "type": "string",
+            "required": true,
+            "description": "Text exposed in the slot scope.",
+            "descriptionKey": "api.generated.packages_headless_src_components_clipboard_types.clipboardslotprops.members.text",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/clipboard/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "copy",
+            "type": "() => Promise<void>",
+            "required": true,
+            "description": "Copy exposed in the slot scope.",
+            "descriptionKey": "api.generated.packages_headless_src_components_clipboard_types.clipboardslotprops.members.copy",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/clipboard/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      }
+    }
+  }
+}

@@ -1,0 +1,2382 @@
+{
+  "component": "command",
+  "symbols": {
+    "Command": {
+      "props": {
+        "kind": "props",
+        "name": "CommandProps",
+        "type": "Interface CommandProps<T>",
+        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<CommandUi>; items: CommandOptionData<T>[]; placeholder?: string; searchTerm?: string; clearable?: boolean; fuseOptions?: UseFuseOptions<CommandSearchOptionData<T>>; listProps?: CommandListProps; itemProps?: CommandItemProps; itemLabelProps?: CommandItemLabelProps; groupProps?: CommandGroupProps; groupLabelProps?: CommandGroupLabelProps; shortcutProps?: CommandShortcutProps; separatorProps?: CommandSeparatorProps; inputProps?: CommandInputProps; emptyProps?: CommandEmptyProps; emptyLabel?: string; modelValue?: string; defaultValue?: string; multiple?: false; selectionBehavior?: SelectionBehavior; disabled?: boolean; dir?: Direction; name?: string; highlightOnHover?: boolean; required?: boolean; orientation?: DataOrientation }",
+        "description": "Properties for the Command component.",
+        "descriptionKey": "api.generated.packages_ui_src_components_command_types.commandprops.props",
+        "sourcePath": "packages/ui/src/components/command/types.ts",
+        "typeParameters": ["TypeParameter T"],
+        "members": [
+          {
+            "name": "class",
+            "type": "string | false | Record<string, any> | ClassValue[] | null",
+            "required": false,
+            "description": "Root class.",
+            "descriptionKey": "api.generated.packages_ui_src_components_command_types.commandprops.members.class",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui/src/components/command/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ClassValue",
+                "kind": "typeAlias",
+                "type": "string | false | Record<string, any> | ClassValue[] | null | undefined",
+                "resolvedType": "string | false | Record<string, any> | ClassValue[] | null | undefined",
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_types_common.classvalue",
+                "sourcePath": "packages/headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "size",
+            "type": "ThemeSize",
+            "required": false,
+            "description": "Visual size of the component.",
+            "descriptionKey": "api.generated.packages_ui_src_components_command_types.commandprops.members.size",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui/src/components/command/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ThemeSize",
+                "kind": "typeAlias",
+                "type": "'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'",
+                "resolvedType": "'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'",
+                "description": "",
+                "descriptionKey": "api.generated.packages_ui_src_theme_types.themesize",
+                "sourcePath": "packages/ui/src/theme/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "ui",
+            "type": "Partial<CommandUi>",
+            "required": false,
+            "description": "Per-slot class overrides for the component.",
+            "descriptionKey": "api.generated.packages_ui_src_components_command_types.commandprops.members.ui",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui/src/components/command/types.ts",
+            "referencedTypes": [
+              {
+                "name": "CommandUi",
+                "kind": "typeAlias",
+                "type": "{ root: ClassValue; item: ClassValue; inputRoot: ClassValue; inputControl: ClassValue; group: ClassValue; groupLabel: ClassValue; empty: ClassValue; separator: ClassValue; list: ClassValue; inputClearable: ClassValue; itemLabel: ClassValue; shortcut: ClassValue; }",
+                "resolvedType": null,
+                "description": "UI class overrides for the Command component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_command_types.commandui",
+                "sourcePath": "packages/headless/src/components/command/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "items",
+            "type": "CommandOptionData<T>[]",
+            "required": true,
+            "description": "Items rendered by the component.",
+            "descriptionKey": "api.generated.packages_ui_src_components_command_types.commandprops.members.items",
+            "default": null,
+            "inheritedFrom": "items",
+            "sourcePath": "packages/headless/src/components/command/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "placeholder",
+            "type": "string",
+            "required": false,
+            "description": "Placeholder.",
+            "descriptionKey": "api.generated.packages_ui_src_components_command_types.commandprops.members.placeholder",
+            "default": null,
+            "inheritedFrom": "placeholder",
+            "sourcePath": "packages/headless/src/components/command/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "searchTerm",
+            "type": "string",
+            "required": false,
+            "description": "Search term.",
+            "descriptionKey": "api.generated.packages_ui_src_components_command_types.commandprops.members.searchterm",
+            "default": null,
+            "inheritedFrom": "searchTerm",
+            "sourcePath": "packages/headless/src/components/command/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "clearable",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether clearable.",
+            "descriptionKey": "api.generated.packages_ui_src_components_command_types.commandprops.members.clearable",
+            "default": null,
+            "inheritedFrom": "clearable",
+            "sourcePath": "packages/headless/src/components/command/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "fuseOptions",
+            "type": "UseFuseOptions<CommandSearchOptionData<T>>",
+            "required": false,
+            "description": "Fuse options.",
+            "descriptionKey": "api.generated.packages_ui_src_components_command_types.commandprops.members.fuseoptions",
+            "default": null,
+            "inheritedFrom": "fuseOptions",
+            "sourcePath": "packages/headless/src/components/command/types.ts",
+            "referencedTypes": [
+              {
+                "name": "UseFuseOptions",
+                "kind": "interface",
+                "type": "UseFuseOptions<CommandSearchOptionData<T>>",
+                "resolvedType": "{ fuseOptions?: FuseOptions<T>; resultLimit?: number; matchAllWhenSearchEmpty?: boolean }",
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_composables_use_fuse.usefuseoptions",
+                "sourcePath": "packages/headless/src/composables/use-fuse.ts",
+                "typeParameters": ["T"],
+                "external": false,
+                "members": [
+                  {
+                    "name": "fuseOptions",
+                    "type": "FuseOptions<T>",
+                    "required": false,
+                    "description": "",
+                    "descriptionKey": "api.generated.packages_headless_src_composables_use_fuse.usefuseoptions.members.fuseoptions",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/composables/use-fuse.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "resultLimit",
+                    "type": "number",
+                    "required": false,
+                    "description": "",
+                    "descriptionKey": "api.generated.packages_headless_src_composables_use_fuse.usefuseoptions.members.resultlimit",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/composables/use-fuse.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "matchAllWhenSearchEmpty",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "",
+                    "descriptionKey": "api.generated.packages_headless_src_composables_use_fuse.usefuseoptions.members.matchallwhensearchempty",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/composables/use-fuse.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "listProps",
+            "type": "CommandListProps",
+            "required": false,
+            "description": "Properties forwarded to the list element.",
+            "descriptionKey": "api.generated.packages_ui_src_components_command_types.commandprops.members.listprops",
+            "default": null,
+            "inheritedFrom": "listProps",
+            "sourcePath": "packages/headless/src/components/command/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ListboxContentProps",
+                "kind": "interface",
+                "type": "CommandListProps",
+                "resolvedType": null,
+                "description": "Properties for the ListboxContent component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_listbox_types.listboxcontentprops",
+                "sourcePath": "packages/headless/src/components/listbox/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "itemProps",
+            "type": "CommandItemProps",
+            "required": false,
+            "description": "Properties forwarded to the item element.",
+            "descriptionKey": "api.generated.packages_ui_src_components_command_types.commandprops.members.itemprops",
+            "default": null,
+            "inheritedFrom": "itemProps",
+            "sourcePath": "packages/headless/src/components/command/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ListboxItemProps",
+                "kind": "interface",
+                "type": "CommandItemProps",
+                "resolvedType": "{ value: string; disabled?: boolean; asChild?: boolean; as?: AsTag | Component }",
+                "description": "Properties for the ListboxItem component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_listbox_types.listboxitemprops",
+                "sourcePath": "packages/headless/src/components/listbox/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "value",
+                    "type": "string",
+                    "required": true,
+                    "description": "The value given as data when submitted with a `name`.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_listbox_types.listboxitemprops.members.value",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/listbox/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "disabled",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "When `true`, prevents the user from interacting with the item.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_listbox_types.listboxitemprops.members.disabled",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/listbox/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "asChild",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_listbox_types.listboxitemprops.members.aschild",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "as",
+                    "type": "AsTag | Component",
+                    "required": false,
+                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+                    "descriptionKey": "api.generated.packages_headless_src_components_listbox_types.listboxitemprops.members.as",
+                    "default": "'div'",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "itemLabelProps",
+            "type": "CommandItemLabelProps",
+            "required": false,
+            "description": "Properties forwarded to the item label element.",
+            "descriptionKey": "api.generated.packages_ui_src_components_command_types.commandprops.members.itemlabelprops",
+            "default": null,
+            "inheritedFrom": "itemLabelProps",
+            "sourcePath": "packages/headless/src/components/command/types.ts",
+            "referencedTypes": [
+              {
+                "name": "CommandItemLabelProps",
+                "kind": "interface",
+                "type": "CommandItemLabelProps",
+                "resolvedType": null,
+                "description": "Properties for the CommandItemLabel component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_command_types.commanditemlabelprops",
+                "sourcePath": "packages/headless/src/components/command/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "groupProps",
+            "type": "CommandGroupProps",
+            "required": false,
+            "description": "Properties forwarded to the group element.",
+            "descriptionKey": "api.generated.packages_ui_src_components_command_types.commandprops.members.groupprops",
+            "default": null,
+            "inheritedFrom": "groupProps",
+            "sourcePath": "packages/headless/src/components/command/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ListboxGroupProps",
+                "kind": "interface",
+                "type": "CommandGroupProps",
+                "resolvedType": null,
+                "description": "Properties for the ListboxGroup component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_listbox_types.listboxgroupprops",
+                "sourcePath": "packages/headless/src/components/listbox/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "groupLabelProps",
+            "type": "CommandGroupLabelProps",
+            "required": false,
+            "description": "Properties forwarded to the group label element.",
+            "descriptionKey": "api.generated.packages_ui_src_components_command_types.commandprops.members.grouplabelprops",
+            "default": null,
+            "inheritedFrom": "groupLabelProps",
+            "sourcePath": "packages/headless/src/components/command/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ListboxGroupLabelProps",
+                "kind": "interface",
+                "type": "CommandGroupLabelProps",
+                "resolvedType": null,
+                "description": "Properties for the ListboxGroupLabel component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_listbox_types.listboxgrouplabelprops",
+                "sourcePath": "packages/headless/src/components/listbox/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "shortcutProps",
+            "type": "CommandShortcutProps",
+            "required": false,
+            "description": "Properties forwarded to the shortcut element.",
+            "descriptionKey": "api.generated.packages_ui_src_components_command_types.commandprops.members.shortcutprops",
+            "default": null,
+            "inheritedFrom": "shortcutProps",
+            "sourcePath": "packages/headless/src/components/command/types.ts",
+            "referencedTypes": [
+              {
+                "name": "CommandShortcutProps",
+                "kind": "interface",
+                "type": "CommandShortcutProps",
+                "resolvedType": "{ symbolize?: boolean }",
+                "description": "Properties for the CommandShortcut component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_command_types.commandshortcutprops",
+                "sourcePath": "packages/headless/src/components/command/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "symbolize",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Whether to convert the command value to symbol representation.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_command_types.commandshortcutprops.members.symbolize",
+                    "default": "true",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/kbd/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "separatorProps",
+            "type": "CommandSeparatorProps",
+            "required": false,
+            "description": "Properties forwarded to the separator element.",
+            "descriptionKey": "api.generated.packages_ui_src_components_command_types.commandprops.members.separatorprops",
+            "default": null,
+            "inheritedFrom": "separatorProps",
+            "sourcePath": "packages/headless/src/components/command/types.ts",
+            "referencedTypes": [
+              {
+                "name": "CommandSeparatorProps",
+                "kind": "interface",
+                "type": "CommandSeparatorProps",
+                "resolvedType": "{ orientation?: DataOrientation; decorative?: boolean }",
+                "description": "Properties for the CommandSeparator component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_command_types.commandseparatorprops",
+                "sourcePath": "packages/headless/src/components/command/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "orientation",
+                    "type": "DataOrientation",
+                    "required": false,
+                    "description": "Orientation of the component.\n\nEither `vertical` or `horizontal`. Defaults to `horizontal`.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_command_types.commandseparatorprops.members.orientation",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/separator/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "decorative",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Whether or not the component is purely decorative. <br>When `true`, accessibility-related attributes are updated so\nthat that the rendered element is removed from the accessibility tree.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_command_types.commandseparatorprops.members.decorative",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/separator/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "inputProps",
+            "type": "CommandInputProps",
+            "required": false,
+            "description": "Properties forwarded to the input element.",
+            "descriptionKey": "api.generated.packages_ui_src_components_command_types.commandprops.members.inputprops",
+            "default": null,
+            "inheritedFrom": "inputProps",
+            "sourcePath": "packages/headless/src/components/command/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ListboxFilterProps",
+                "kind": "interface",
+                "type": "CommandInputProps",
+                "resolvedType": "{ inputRef?: ((el: HTMLInputElement) => void); controlProps?: InputControlProps; defaultValue?: string; modelValue?: string; disabled?: boolean; readonly?: boolean; rootProps?: BaseProps; name?: string; required?: boolean; id?: string; autofocus?: boolean; autocomplete?: 'on' | 'off'; maxlength?: number; minlength?: number; pattern?: string; placeholder?: string; type?: InputTypeHTMLAttribute }",
+                "description": "Properties for the ListboxFilter component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_listbox_types.listboxfilterprops",
+                "sourcePath": "packages/headless/src/components/listbox/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "controlProps",
+                    "type": "InputControlProps",
+                    "required": false,
+                    "description": "The props of the input extra props.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_listbox_types.listboxfilterprops.members.controlprops",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/listbox/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "defaultValue",
+                    "type": "string",
+                    "required": false,
+                    "description": "The default value of the input",
+                    "descriptionKey": "api.generated.packages_headless_src_components_listbox_types.listboxfilterprops.members.defaultvalue",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/input/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "modelValue",
+                    "type": "string",
+                    "required": false,
+                    "description": "The controlled value of the input",
+                    "descriptionKey": "api.generated.packages_headless_src_components_listbox_types.listboxfilterprops.members.modelvalue",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/input/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "disabled",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "When `true`, prevents the user from interacting with the input.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_listbox_types.listboxfilterprops.members.disabled",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/input/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "readonly",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "When `true`, the input is read-only.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_listbox_types.listboxfilterprops.members.readonly",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/input/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "rootProps",
+                    "type": "BaseProps",
+                    "required": false,
+                    "description": "Properties forwarded to the root element",
+                    "descriptionKey": "api.generated.packages_headless_src_components_listbox_types.listboxfilterprops.members.rootprops",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/input/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "name",
+                    "type": "string",
+                    "required": false,
+                    "description": "The name of the field. Submitted with its owning form as part of a name/value pair.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_listbox_types.listboxfilterprops.members.name",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/types/component.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "required",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "When `true`, indicates that the user must set the value before the owning form can be submitted.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_listbox_types.listboxfilterprops.members.required",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/types/component.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "id",
+                    "type": "string",
+                    "required": false,
+                    "description": "Id of the input element",
+                    "descriptionKey": "api.generated.packages_headless_src_components_listbox_types.listboxfilterprops.members.id",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/input/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "autofocus",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "When `true`, the input is auto-focused.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_listbox_types.listboxfilterprops.members.autofocus",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/input/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "autocomplete",
+                    "type": "'on' | 'off'",
+                    "required": false,
+                    "description": "The autocomplete attribute of the input",
+                    "descriptionKey": "api.generated.packages_headless_src_components_listbox_types.listboxfilterprops.members.autocomplete",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/input/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "maxlength",
+                    "type": "number",
+                    "required": false,
+                    "description": "The maximum number of characters allowed in the input",
+                    "descriptionKey": "api.generated.packages_headless_src_components_listbox_types.listboxfilterprops.members.maxlength",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/input/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "minlength",
+                    "type": "number",
+                    "required": false,
+                    "description": "The minimum number of characters allowed in the input",
+                    "descriptionKey": "api.generated.packages_headless_src_components_listbox_types.listboxfilterprops.members.minlength",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/input/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "pattern",
+                    "type": "string",
+                    "required": false,
+                    "description": "The pattern attribute of the input",
+                    "descriptionKey": "api.generated.packages_headless_src_components_listbox_types.listboxfilterprops.members.pattern",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/input/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "placeholder",
+                    "type": "string",
+                    "required": false,
+                    "description": "The placeholder of the input",
+                    "descriptionKey": "api.generated.packages_headless_src_components_listbox_types.listboxfilterprops.members.placeholder",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/input/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "type",
+                    "type": "InputTypeHTMLAttribute",
+                    "required": false,
+                    "description": "The type of the input element.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_listbox_types.listboxfilterprops.members.type",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/input/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": [
+                  {
+                    "name": "inputRef",
+                    "type": "((el: HTMLInputElement) => void) | undefined",
+                    "parameters": "((el: HTMLInputElement) => void) | undefined",
+                    "required": false,
+                    "description": "The function to set the input element.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_listbox_types.listboxfilterprops.callables.inputref",
+                    "sourcePath": "packages/headless/src/components/listbox/types.ts",
+                    "referencedTypes": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "emptyProps",
+            "type": "CommandEmptyProps",
+            "required": false,
+            "description": "Properties forwarded to the empty element.",
+            "descriptionKey": "api.generated.packages_ui_src_components_command_types.commandprops.members.emptyprops",
+            "default": null,
+            "inheritedFrom": "emptyProps",
+            "sourcePath": "packages/headless/src/components/command/types.ts",
+            "referencedTypes": [
+              {
+                "name": "CommandEmptyProps",
+                "kind": "interface",
+                "type": "CommandEmptyProps",
+                "resolvedType": null,
+                "description": "Properties for the CommandEmpty component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_command_types.commandemptyprops",
+                "sourcePath": "packages/headless/src/components/command/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "emptyLabel",
+            "type": "string",
+            "required": false,
+            "description": "Empty label.",
+            "descriptionKey": "api.generated.packages_ui_src_components_command_types.commandprops.members.emptylabel",
+            "default": null,
+            "inheritedFrom": "emptyLabel",
+            "sourcePath": "packages/headless/src/components/command/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "modelValue",
+            "type": "string",
+            "required": false,
+            "description": "The controlled value of the selected item(s).\n\nUse this when you need to control the state of the items. Can be bound with `v-model`",
+            "descriptionKey": "api.generated.packages_ui_src_components_command_types.commandprops.members.modelvalue",
+            "default": null,
+            "inheritedFrom": "modelValue",
+            "sourcePath": "packages/headless/src/types/common.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "defaultValue",
+            "type": "string",
+            "required": false,
+            "description": "The default value of the selected item(s).\n\nUse this when you need to set the initial state of the items.",
+            "descriptionKey": "api.generated.packages_ui_src_components_command_types.commandprops.members.defaultvalue",
+            "default": null,
+            "inheritedFrom": "defaultValue",
+            "sourcePath": "packages/headless/src/types/common.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "multiple",
+            "type": "false",
+            "required": false,
+            "description": "Determines whether a \"single\" or \"multiple\" items can be selected at a time.\n\nThis prop will overwrite the inferred type from `modelValue` and `defaultValue`.",
+            "descriptionKey": "api.generated.packages_ui_src_components_command_types.commandprops.members.multiple",
+            "default": null,
+            "inheritedFrom": "multiple",
+            "sourcePath": "packages/headless/src/types/common.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "selectionBehavior",
+            "type": "SelectionBehavior",
+            "required": false,
+            "description": "How multiple selection should behave in the collection.",
+            "descriptionKey": "api.generated.packages_ui_src_components_command_types.commandprops.members.selectionbehavior",
+            "default": "'toggle'",
+            "inheritedFrom": "selectionBehavior",
+            "sourcePath": "packages/headless/src/types/common.ts",
+            "referencedTypes": [
+              {
+                "name": "SelectionBehavior",
+                "kind": "typeAlias",
+                "type": "'toggle' | 'replace'",
+                "resolvedType": "'toggle' | 'replace'",
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_types_common.selectionbehavior",
+                "sourcePath": "packages/headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "disabled",
+            "type": "boolean",
+            "required": false,
+            "description": "When `true`, prevents the user from interacting with listbox",
+            "descriptionKey": "api.generated.packages_ui_src_components_command_types.commandprops.members.disabled",
+            "default": null,
+            "inheritedFrom": "disabled",
+            "sourcePath": "packages/headless/src/components/listbox/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "dir",
+            "type": "Direction",
+            "required": false,
+            "description": "The reading direction of the listbox when applicable. <br> If omitted, inherits globally from `ConfigProvider` or\nassumes LTR (left-to-right) reading mode.",
+            "descriptionKey": "api.generated.packages_ui_src_components_command_types.commandprops.members.dir",
+            "default": null,
+            "inheritedFrom": "dir",
+            "sourcePath": "packages/headless/src/components/listbox/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Direction",
+                "kind": "typeAlias",
+                "type": "'ltr' | 'rtl'",
+                "resolvedType": "'ltr' | 'rtl'",
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_types_common.direction",
+                "sourcePath": "packages/headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "name",
+            "type": "string",
+            "required": false,
+            "description": "The name of the field. Submitted with its owning form as part of a name/value pair.",
+            "descriptionKey": "api.generated.packages_ui_src_components_command_types.commandprops.members.name",
+            "default": null,
+            "inheritedFrom": "name",
+            "sourcePath": "packages/headless/src/types/component.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "highlightOnHover",
+            "type": "boolean",
+            "required": false,
+            "description": "When `true`, hover over item will trigger highlight",
+            "descriptionKey": "api.generated.packages_ui_src_components_command_types.commandprops.members.highlightonhover",
+            "default": null,
+            "inheritedFrom": "highlightOnHover",
+            "sourcePath": "packages/headless/src/components/listbox/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "required",
+            "type": "boolean",
+            "required": false,
+            "description": "When `true`, indicates that the user must set the value before the owning form can be submitted.",
+            "descriptionKey": "api.generated.packages_ui_src_components_command_types.commandprops.members.required",
+            "default": null,
+            "inheritedFrom": "required",
+            "sourcePath": "packages/headless/src/types/component.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "orientation",
+            "type": "DataOrientation",
+            "required": false,
+            "description": "The orientation of the listbox. <br>Mainly so arrow navigation is done accordingly (left & right vs. up & down)",
+            "descriptionKey": "api.generated.packages_ui_src_components_command_types.commandprops.members.orientation",
+            "default": null,
+            "inheritedFrom": "orientation",
+            "sourcePath": "packages/headless/src/components/listbox/types.ts",
+            "referencedTypes": [
+              {
+                "name": "DataOrientation",
+                "kind": "typeAlias",
+                "type": "'vertical' | 'horizontal'",
+                "resolvedType": "'vertical' | 'horizontal'",
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_types_common.dataorientation",
+                "sourcePath": "packages/headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      },
+      "emits": {
+        "kind": "emits",
+        "name": "CommandEmits",
+        "type": "TypeAlias CommandEmits: CommandCompactEmits",
+        "resolvedType": "{ \"update:modelValue\": [value: string]; highlight: [payload?: CollectionItemData<ListboxCollectionItemData> | undefined]; entryFocus: [event: CustomEvent<any>]; leave: [event: Event]; select: [event: SelectEvent<string>]; \"update:searchTerm\": [value: string] }",
+        "description": "Events for the Command component.",
+        "descriptionKey": "api.generated.packages_ui_src_components_command_types.commandemits.emits",
+        "sourcePath": "packages/ui/src/components/command/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [
+          {
+            "name": "update:modelValue",
+            "type": "[value: string]",
+            "parameters": "value: string",
+            "required": true,
+            "description": "",
+            "descriptionKey": "api.generated.packages_ui_src_components_command_types.commandemits.callables.update_modelvalue",
+            "sourcePath": "packages/headless/src/types/common.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "highlight",
+            "type": "[payload?: CollectionItemData<ListboxCollectionItemData> | undefined]",
+            "parameters": "payload?: CollectionItemData<ListboxCollectionItemData> | undefined",
+            "required": true,
+            "description": "Event handler when highlighted element changes.",
+            "descriptionKey": "api.generated.packages_ui_src_components_command_types.commandemits.callables.highlight",
+            "sourcePath": "packages/headless/src/components/listbox/types.ts",
+            "referencedTypes": [
+              {
+                "name": "CollectionItemData",
+                "kind": "interface",
+                "type": "CollectionItemData<ListboxCollectionItemData>",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_composables_use_collection.collectionitemdata",
+                "sourcePath": "packages/headless/src/composables/use-collection.ts",
+                "typeParameters": ["ItemData = Record<string, any>"],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "entryFocus",
+            "type": "[event: CustomEvent<any>]",
+            "parameters": "event: CustomEvent<any>",
+            "required": true,
+            "description": "Event handler called when container is being focused. Can be prevented.",
+            "descriptionKey": "api.generated.packages_ui_src_components_command_types.commandemits.callables.entryfocus",
+            "sourcePath": "packages/headless/src/components/listbox/types.ts",
+            "referencedTypes": [
+              {
+                "name": "CustomEvent",
+                "kind": "interface",
+                "type": "CustomEvent",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": null,
+                "sourcePath": "node_modules/.pnpm/typescript@6.0.3/node_modules/typescript/lib/lib.dom.d.ts",
+                "typeParameters": ["T = any"],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "leave",
+            "type": "[event: Event]",
+            "parameters": "event: Event",
+            "required": true,
+            "description": "Event handler called when the mouse leave the container",
+            "descriptionKey": "api.generated.packages_ui_src_components_command_types.commandemits.callables.leave",
+            "sourcePath": "packages/headless/src/components/listbox/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Event",
+                "kind": "interface",
+                "type": "Event",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": null,
+                "sourcePath": "node_modules/.pnpm/typescript@6.0.3/node_modules/typescript/lib/lib.dom.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "select",
+            "type": "[event: SelectEvent<string>]",
+            "parameters": "event: SelectEvent<string>",
+            "required": true,
+            "description": "Event handler called when the selecting item. <br> It can be prevented by calling `event.preventDefault`.",
+            "descriptionKey": "api.generated.packages_ui_src_components_command_types.commandemits.callables.select",
+            "sourcePath": "packages/headless/src/components/listbox/types.ts",
+            "referencedTypes": [
+              {
+                "name": "SelectEvent",
+                "kind": "typeAlias",
+                "type": "CustomEvent<{ originalEvent: MouseEvent; value?: string | undefined; }>",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_types_event.selectevent",
+                "sourcePath": "packages/headless/src/types/event.ts",
+                "typeParameters": ["T"],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "update:searchTerm",
+            "type": "[value: string]",
+            "parameters": "value: string",
+            "required": true,
+            "description": "Emitted when the search term value changes.",
+            "descriptionKey": "api.generated.packages_ui_src_components_command_types.commandemits.callables.update_searchterm",
+            "sourcePath": "packages/headless/src/components/command/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "referencedTypes": [
+          {
+            "name": "CommandCompactEmits",
+            "kind": "typeAlias",
+            "type": "import(\"@soybeanjs/headless\").SelectionEmits<false> & { highlight: [payload?: import(\"@soybeanjs/headless/composables\").CollectionItemData<import(\"@soybeanjs/headless\").ListboxCollectionItemData>]; entryFocus: [event: CustomEvent]; leave: [event: Event]; } & import(\"@soybeanjs/headless\").CommandItemEmits & import(\"../../../node_modules/@soybeanjs/headless/src/components/command/types\").CommandSearchTermEmits",
+            "resolvedType": "{ \"update:modelValue\": [value: string]; highlight: [payload?: CollectionItemData<ListboxCollectionItemData> | undefined]; entryFocus: [event: CustomEvent<any>]; leave: [event: Event]; select: [event: SelectEvent<string>]; \"update:searchTerm\": [value: string] }",
+            "description": "Events for the CommandCompact component.",
+            "descriptionKey": "api.generated.packages_headless_src_components_command_types.commandcompactemits",
+            "sourcePath": "packages/headless/src/components/command/types.ts",
+            "typeParameters": [],
+            "external": false,
+            "members": [],
+            "callables": [
+              {
+                "name": "update:modelValue",
+                "type": "[value: string]",
+                "parameters": "value: string",
+                "required": true,
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_components_command_types.commandcompactemits.callables.update_modelvalue",
+                "sourcePath": "packages/headless/src/types/common.ts",
+                "referencedTypes": []
+              },
+              {
+                "name": "highlight",
+                "type": "[payload?: CollectionItemData<ListboxCollectionItemData> | undefined]",
+                "parameters": "payload?: CollectionItemData<ListboxCollectionItemData> | undefined",
+                "required": true,
+                "description": "Event handler when highlighted element changes.",
+                "descriptionKey": "api.generated.packages_headless_src_components_command_types.commandcompactemits.callables.highlight",
+                "sourcePath": "packages/headless/src/components/listbox/types.ts",
+                "referencedTypes": []
+              },
+              {
+                "name": "entryFocus",
+                "type": "[event: CustomEvent<any>]",
+                "parameters": "event: CustomEvent<any>",
+                "required": true,
+                "description": "Event handler called when container is being focused. Can be prevented.",
+                "descriptionKey": "api.generated.packages_headless_src_components_command_types.commandcompactemits.callables.entryfocus",
+                "sourcePath": "packages/headless/src/components/listbox/types.ts",
+                "referencedTypes": []
+              },
+              {
+                "name": "leave",
+                "type": "[event: Event]",
+                "parameters": "event: Event",
+                "required": true,
+                "description": "Event handler called when the mouse leave the container",
+                "descriptionKey": "api.generated.packages_headless_src_components_command_types.commandcompactemits.callables.leave",
+                "sourcePath": "packages/headless/src/components/listbox/types.ts",
+                "referencedTypes": []
+              },
+              {
+                "name": "select",
+                "type": "[event: SelectEvent<string>]",
+                "parameters": "event: SelectEvent<string>",
+                "required": true,
+                "description": "Event handler called when the selecting item. <br> It can be prevented by calling `event.preventDefault`.",
+                "descriptionKey": "api.generated.packages_headless_src_components_command_types.commandcompactemits.callables.select",
+                "sourcePath": "packages/headless/src/components/listbox/types.ts",
+                "referencedTypes": []
+              },
+              {
+                "name": "update:searchTerm",
+                "type": "[value: string]",
+                "parameters": "value: string",
+                "required": true,
+                "description": "Emitted when the search term value changes.",
+                "descriptionKey": "api.generated.packages_headless_src_components_command_types.commandcompactemits.callables.update_searchterm",
+                "sourcePath": "packages/headless/src/components/command/types.ts",
+                "referencedTypes": []
+              }
+            ]
+          }
+        ]
+      },
+      "slots": {
+        "kind": "slots",
+        "name": "CommandSlots",
+        "type": "TypeAlias CommandSlots<T>: CommandCompactSlots<T>",
+        "resolvedType": "{ \"input-leading\"?: ((props: CommandCompactInputSlotProps) => any); \"input-trailing\"?: ((props: CommandCompactInputSlotProps) => any); empty?: (() => any); \"item-leading\"?: ((props: CommandCompactItemSlotProps<T>) => any); \"item-trailing\"?: ((props: CommandCompactItemSlotProps<T>) => any); \"item-label\"?: ((props: CommandCompactItemSlotProps<T>) => any); bottom?: (() => any) }",
+        "description": "Slots for the Command component.",
+        "descriptionKey": "api.generated.packages_ui_src_components_command_types.commandslots.slots",
+        "sourcePath": "packages/ui/src/components/command/types.ts",
+        "typeParameters": ["TypeParameter T"],
+        "members": [],
+        "callables": [
+          {
+            "name": "input-leading",
+            "type": "((props: CommandCompactInputSlotProps) => any) | undefined",
+            "parameters": "((props: CommandCompactInputSlotProps) => any) | undefined",
+            "required": false,
+            "description": "Custom content for the input leading slot.",
+            "descriptionKey": "api.generated.packages_ui_src_components_command_types.commandslots.callables.input_leading",
+            "sourcePath": "packages/headless/src/components/command/types.ts",
+            "referencedTypes": [
+              {
+                "name": "CommandCompactInputSlotProps",
+                "kind": "interface",
+                "type": "CommandCompactInputSlotProps",
+                "resolvedType": null,
+                "description": "Slot properties for the CommandCompactInput component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_command_types.commandcompactinputslotprops",
+                "sourcePath": "packages/headless/src/components/command/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "input-trailing",
+            "type": "((props: CommandCompactInputSlotProps) => any) | undefined",
+            "parameters": "((props: CommandCompactInputSlotProps) => any) | undefined",
+            "required": false,
+            "description": "Custom content for the input trailing slot.",
+            "descriptionKey": "api.generated.packages_ui_src_components_command_types.commandslots.callables.input_trailing",
+            "sourcePath": "packages/headless/src/components/command/types.ts",
+            "referencedTypes": [
+              {
+                "name": "CommandCompactInputSlotProps",
+                "kind": "interface",
+                "type": "CommandCompactInputSlotProps",
+                "resolvedType": null,
+                "description": "Slot properties for the CommandCompactInput component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_command_types.commandcompactinputslotprops",
+                "sourcePath": "packages/headless/src/components/command/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "empty",
+            "type": "(() => any) | undefined",
+            "parameters": "(() => any) | undefined",
+            "required": false,
+            "description": "Custom content for the empty slot.",
+            "descriptionKey": "api.generated.packages_ui_src_components_command_types.commandslots.callables.empty",
+            "sourcePath": "packages/headless/src/components/command/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "item-leading",
+            "type": "((props: CommandCompactItemSlotProps<T>) => any) | undefined",
+            "parameters": "((props: CommandCompactItemSlotProps<T>) => any) | undefined",
+            "required": false,
+            "description": "Custom content for the item leading slot.",
+            "descriptionKey": "api.generated.packages_ui_src_components_command_types.commandslots.callables.item_leading",
+            "sourcePath": "packages/headless/src/components/command/types.ts",
+            "referencedTypes": [
+              {
+                "name": "CommandCompactItemSlotProps",
+                "kind": "interface",
+                "type": "CommandCompactItemSlotProps<T>",
+                "resolvedType": null,
+                "description": "Slot properties for the CommandCompactItem component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_command_types.commandcompactitemslotprops",
+                "sourcePath": "packages/headless/src/components/command/types.ts",
+                "typeParameters": ["T extends CommandSingleOptionData = CommandSingleOptionData"],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "item-trailing",
+            "type": "((props: CommandCompactItemSlotProps<T>) => any) | undefined",
+            "parameters": "((props: CommandCompactItemSlotProps<T>) => any) | undefined",
+            "required": false,
+            "description": "Custom content for the item trailing slot.",
+            "descriptionKey": "api.generated.packages_ui_src_components_command_types.commandslots.callables.item_trailing",
+            "sourcePath": "packages/headless/src/components/command/types.ts",
+            "referencedTypes": [
+              {
+                "name": "CommandCompactItemSlotProps",
+                "kind": "interface",
+                "type": "CommandCompactItemSlotProps<T>",
+                "resolvedType": null,
+                "description": "Slot properties for the CommandCompactItem component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_command_types.commandcompactitemslotprops",
+                "sourcePath": "packages/headless/src/components/command/types.ts",
+                "typeParameters": ["T extends CommandSingleOptionData = CommandSingleOptionData"],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "item-label",
+            "type": "((props: CommandCompactItemSlotProps<T>) => any) | undefined",
+            "parameters": "((props: CommandCompactItemSlotProps<T>) => any) | undefined",
+            "required": false,
+            "description": "Custom content for the item label slot.",
+            "descriptionKey": "api.generated.packages_ui_src_components_command_types.commandslots.callables.item_label",
+            "sourcePath": "packages/headless/src/components/command/types.ts",
+            "referencedTypes": [
+              {
+                "name": "CommandCompactItemSlotProps",
+                "kind": "interface",
+                "type": "CommandCompactItemSlotProps<T>",
+                "resolvedType": null,
+                "description": "Slot properties for the CommandCompactItem component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_command_types.commandcompactitemslotprops",
+                "sourcePath": "packages/headless/src/components/command/types.ts",
+                "typeParameters": ["T extends CommandSingleOptionData = CommandSingleOptionData"],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "bottom",
+            "type": "(() => any) | undefined",
+            "parameters": "(() => any) | undefined",
+            "required": false,
+            "description": "Custom content for the bottom slot.",
+            "descriptionKey": "api.generated.packages_ui_src_components_command_types.commandslots.callables.bottom",
+            "sourcePath": "packages/headless/src/components/command/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "referencedTypes": []
+      }
+    },
+    "CommandCompact": {
+      "props": {
+        "kind": "props",
+        "name": "CommandCompactProps",
+        "type": "Interface CommandCompactProps<T>",
+        "resolvedType": "{ items: CommandOptionData<T>[]; placeholder?: string; searchTerm?: string; clearable?: boolean; fuseOptions?: UseFuseOptions<CommandSearchOptionData<T>>; listProps?: CommandListProps; itemProps?: CommandItemProps; itemLabelProps?: CommandItemLabelProps; groupProps?: CommandGroupProps; groupLabelProps?: CommandGroupLabelProps; shortcutProps?: CommandShortcutProps; separatorProps?: CommandSeparatorProps; inputProps?: CommandInputProps; emptyProps?: CommandEmptyProps; emptyLabel?: string; modelValue?: string; defaultValue?: string; multiple?: false; selectionBehavior?: SelectionBehavior; disabled?: boolean; dir?: Direction; name?: string; highlightOnHover?: boolean; required?: boolean; orientation?: DataOrientation }",
+        "description": "Properties for the CommandCompact component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_command_types.commandcompactprops.props",
+        "sourcePath": "packages/headless/src/components/command/types.ts",
+        "typeParameters": ["TypeParameter T"],
+        "members": [
+          {
+            "name": "items",
+            "type": "CommandOptionData<T>[]",
+            "required": true,
+            "description": "Items rendered by the component.",
+            "descriptionKey": "api.generated.packages_headless_src_components_command_types.commandcompactprops.members.items",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/command/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "placeholder",
+            "type": "string",
+            "required": false,
+            "description": "Placeholder.",
+            "descriptionKey": "api.generated.packages_headless_src_components_command_types.commandcompactprops.members.placeholder",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/command/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "searchTerm",
+            "type": "string",
+            "required": false,
+            "description": "Search term.",
+            "descriptionKey": "api.generated.packages_headless_src_components_command_types.commandcompactprops.members.searchterm",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/command/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "clearable",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether clearable.",
+            "descriptionKey": "api.generated.packages_headless_src_components_command_types.commandcompactprops.members.clearable",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/command/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "fuseOptions",
+            "type": "UseFuseOptions<CommandSearchOptionData<T>>",
+            "required": false,
+            "description": "Fuse options.",
+            "descriptionKey": "api.generated.packages_headless_src_components_command_types.commandcompactprops.members.fuseoptions",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/command/types.ts",
+            "referencedTypes": [
+              {
+                "name": "UseFuseOptions",
+                "kind": "interface",
+                "type": "UseFuseOptions<CommandSearchOptionData<T>>",
+                "resolvedType": "{ fuseOptions?: FuseOptions<T>; resultLimit?: number; matchAllWhenSearchEmpty?: boolean }",
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_composables_use_fuse.usefuseoptions",
+                "sourcePath": "packages/headless/src/composables/use-fuse.ts",
+                "typeParameters": ["T"],
+                "external": false,
+                "members": [
+                  {
+                    "name": "fuseOptions",
+                    "type": "FuseOptions<T>",
+                    "required": false,
+                    "description": "",
+                    "descriptionKey": "api.generated.packages_headless_src_composables_use_fuse.usefuseoptions.members.fuseoptions",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/composables/use-fuse.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "resultLimit",
+                    "type": "number",
+                    "required": false,
+                    "description": "",
+                    "descriptionKey": "api.generated.packages_headless_src_composables_use_fuse.usefuseoptions.members.resultlimit",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/composables/use-fuse.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "matchAllWhenSearchEmpty",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "",
+                    "descriptionKey": "api.generated.packages_headless_src_composables_use_fuse.usefuseoptions.members.matchallwhensearchempty",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/composables/use-fuse.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "listProps",
+            "type": "CommandListProps",
+            "required": false,
+            "description": "Properties forwarded to the list element.",
+            "descriptionKey": "api.generated.packages_headless_src_components_command_types.commandcompactprops.members.listprops",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/command/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ListboxContentProps",
+                "kind": "interface",
+                "type": "CommandListProps",
+                "resolvedType": null,
+                "description": "Properties for the ListboxContent component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_listbox_types.listboxcontentprops",
+                "sourcePath": "packages/headless/src/components/listbox/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "itemProps",
+            "type": "CommandItemProps",
+            "required": false,
+            "description": "Properties forwarded to the item element.",
+            "descriptionKey": "api.generated.packages_headless_src_components_command_types.commandcompactprops.members.itemprops",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/command/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ListboxItemProps",
+                "kind": "interface",
+                "type": "CommandItemProps",
+                "resolvedType": "{ value: string; disabled?: boolean; asChild?: boolean; as?: AsTag | Component }",
+                "description": "Properties for the ListboxItem component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_listbox_types.listboxitemprops",
+                "sourcePath": "packages/headless/src/components/listbox/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "value",
+                    "type": "string",
+                    "required": true,
+                    "description": "The value given as data when submitted with a `name`.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_listbox_types.listboxitemprops.members.value",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/listbox/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "disabled",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "When `true`, prevents the user from interacting with the item.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_listbox_types.listboxitemprops.members.disabled",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/listbox/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "asChild",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_listbox_types.listboxitemprops.members.aschild",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "as",
+                    "type": "AsTag | Component",
+                    "required": false,
+                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+                    "descriptionKey": "api.generated.packages_headless_src_components_listbox_types.listboxitemprops.members.as",
+                    "default": "'div'",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "itemLabelProps",
+            "type": "CommandItemLabelProps",
+            "required": false,
+            "description": "Properties forwarded to the item label element.",
+            "descriptionKey": "api.generated.packages_headless_src_components_command_types.commandcompactprops.members.itemlabelprops",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/command/types.ts",
+            "referencedTypes": [
+              {
+                "name": "CommandItemLabelProps",
+                "kind": "interface",
+                "type": "CommandItemLabelProps",
+                "resolvedType": null,
+                "description": "Properties for the CommandItemLabel component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_command_types.commanditemlabelprops",
+                "sourcePath": "packages/headless/src/components/command/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "groupProps",
+            "type": "CommandGroupProps",
+            "required": false,
+            "description": "Properties forwarded to the group element.",
+            "descriptionKey": "api.generated.packages_headless_src_components_command_types.commandcompactprops.members.groupprops",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/command/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ListboxGroupProps",
+                "kind": "interface",
+                "type": "CommandGroupProps",
+                "resolvedType": null,
+                "description": "Properties for the ListboxGroup component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_listbox_types.listboxgroupprops",
+                "sourcePath": "packages/headless/src/components/listbox/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "groupLabelProps",
+            "type": "CommandGroupLabelProps",
+            "required": false,
+            "description": "Properties forwarded to the group label element.",
+            "descriptionKey": "api.generated.packages_headless_src_components_command_types.commandcompactprops.members.grouplabelprops",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/command/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ListboxGroupLabelProps",
+                "kind": "interface",
+                "type": "CommandGroupLabelProps",
+                "resolvedType": null,
+                "description": "Properties for the ListboxGroupLabel component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_listbox_types.listboxgrouplabelprops",
+                "sourcePath": "packages/headless/src/components/listbox/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "shortcutProps",
+            "type": "CommandShortcutProps",
+            "required": false,
+            "description": "Properties forwarded to the shortcut element.",
+            "descriptionKey": "api.generated.packages_headless_src_components_command_types.commandcompactprops.members.shortcutprops",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/command/types.ts",
+            "referencedTypes": [
+              {
+                "name": "CommandShortcutProps",
+                "kind": "interface",
+                "type": "CommandShortcutProps",
+                "resolvedType": "{ symbolize?: boolean }",
+                "description": "Properties for the CommandShortcut component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_command_types.commandshortcutprops",
+                "sourcePath": "packages/headless/src/components/command/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "symbolize",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Whether to convert the command value to symbol representation.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_command_types.commandshortcutprops.members.symbolize",
+                    "default": "true",
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/kbd/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "separatorProps",
+            "type": "CommandSeparatorProps",
+            "required": false,
+            "description": "Properties forwarded to the separator element.",
+            "descriptionKey": "api.generated.packages_headless_src_components_command_types.commandcompactprops.members.separatorprops",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/command/types.ts",
+            "referencedTypes": [
+              {
+                "name": "CommandSeparatorProps",
+                "kind": "interface",
+                "type": "CommandSeparatorProps",
+                "resolvedType": "{ orientation?: DataOrientation; decorative?: boolean }",
+                "description": "Properties for the CommandSeparator component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_command_types.commandseparatorprops",
+                "sourcePath": "packages/headless/src/components/command/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "orientation",
+                    "type": "DataOrientation",
+                    "required": false,
+                    "description": "Orientation of the component.\n\nEither `vertical` or `horizontal`. Defaults to `horizontal`.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_command_types.commandseparatorprops.members.orientation",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/separator/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "decorative",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Whether or not the component is purely decorative. <br>When `true`, accessibility-related attributes are updated so\nthat that the rendered element is removed from the accessibility tree.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_command_types.commandseparatorprops.members.decorative",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/separator/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "inputProps",
+            "type": "CommandInputProps",
+            "required": false,
+            "description": "Properties forwarded to the input element.",
+            "descriptionKey": "api.generated.packages_headless_src_components_command_types.commandcompactprops.members.inputprops",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/command/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ListboxFilterProps",
+                "kind": "interface",
+                "type": "CommandInputProps",
+                "resolvedType": "{ inputRef?: ((el: HTMLInputElement) => void); controlProps?: InputControlProps; defaultValue?: string; modelValue?: string; disabled?: boolean; readonly?: boolean; rootProps?: BaseProps; name?: string; required?: boolean; id?: string; autofocus?: boolean; autocomplete?: 'on' | 'off'; maxlength?: number; minlength?: number; pattern?: string; placeholder?: string; type?: InputTypeHTMLAttribute }",
+                "description": "Properties for the ListboxFilter component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_listbox_types.listboxfilterprops",
+                "sourcePath": "packages/headless/src/components/listbox/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "controlProps",
+                    "type": "InputControlProps",
+                    "required": false,
+                    "description": "The props of the input extra props.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_listbox_types.listboxfilterprops.members.controlprops",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/listbox/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "defaultValue",
+                    "type": "string",
+                    "required": false,
+                    "description": "The default value of the input",
+                    "descriptionKey": "api.generated.packages_headless_src_components_listbox_types.listboxfilterprops.members.defaultvalue",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/input/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "modelValue",
+                    "type": "string",
+                    "required": false,
+                    "description": "The controlled value of the input",
+                    "descriptionKey": "api.generated.packages_headless_src_components_listbox_types.listboxfilterprops.members.modelvalue",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/input/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "disabled",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "When `true`, prevents the user from interacting with the input.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_listbox_types.listboxfilterprops.members.disabled",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/input/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "readonly",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "When `true`, the input is read-only.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_listbox_types.listboxfilterprops.members.readonly",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/input/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "rootProps",
+                    "type": "BaseProps",
+                    "required": false,
+                    "description": "Properties forwarded to the root element",
+                    "descriptionKey": "api.generated.packages_headless_src_components_listbox_types.listboxfilterprops.members.rootprops",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/input/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "name",
+                    "type": "string",
+                    "required": false,
+                    "description": "The name of the field. Submitted with its owning form as part of a name/value pair.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_listbox_types.listboxfilterprops.members.name",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/types/component.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "required",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "When `true`, indicates that the user must set the value before the owning form can be submitted.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_listbox_types.listboxfilterprops.members.required",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/types/component.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "id",
+                    "type": "string",
+                    "required": false,
+                    "description": "Id of the input element",
+                    "descriptionKey": "api.generated.packages_headless_src_components_listbox_types.listboxfilterprops.members.id",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/input/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "autofocus",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "When `true`, the input is auto-focused.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_listbox_types.listboxfilterprops.members.autofocus",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/input/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "autocomplete",
+                    "type": "'on' | 'off'",
+                    "required": false,
+                    "description": "The autocomplete attribute of the input",
+                    "descriptionKey": "api.generated.packages_headless_src_components_listbox_types.listboxfilterprops.members.autocomplete",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/input/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "maxlength",
+                    "type": "number",
+                    "required": false,
+                    "description": "The maximum number of characters allowed in the input",
+                    "descriptionKey": "api.generated.packages_headless_src_components_listbox_types.listboxfilterprops.members.maxlength",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/input/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "minlength",
+                    "type": "number",
+                    "required": false,
+                    "description": "The minimum number of characters allowed in the input",
+                    "descriptionKey": "api.generated.packages_headless_src_components_listbox_types.listboxfilterprops.members.minlength",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/input/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "pattern",
+                    "type": "string",
+                    "required": false,
+                    "description": "The pattern attribute of the input",
+                    "descriptionKey": "api.generated.packages_headless_src_components_listbox_types.listboxfilterprops.members.pattern",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/input/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "placeholder",
+                    "type": "string",
+                    "required": false,
+                    "description": "The placeholder of the input",
+                    "descriptionKey": "api.generated.packages_headless_src_components_listbox_types.listboxfilterprops.members.placeholder",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/input/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "type",
+                    "type": "InputTypeHTMLAttribute",
+                    "required": false,
+                    "description": "The type of the input element.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_listbox_types.listboxfilterprops.members.type",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "packages/headless/src/components/input/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": [
+                  {
+                    "name": "inputRef",
+                    "type": "((el: HTMLInputElement) => void) | undefined",
+                    "parameters": "((el: HTMLInputElement) => void) | undefined",
+                    "required": false,
+                    "description": "The function to set the input element.",
+                    "descriptionKey": "api.generated.packages_headless_src_components_listbox_types.listboxfilterprops.callables.inputref",
+                    "sourcePath": "packages/headless/src/components/listbox/types.ts",
+                    "referencedTypes": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "emptyProps",
+            "type": "CommandEmptyProps",
+            "required": false,
+            "description": "Properties forwarded to the empty element.",
+            "descriptionKey": "api.generated.packages_headless_src_components_command_types.commandcompactprops.members.emptyprops",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/command/types.ts",
+            "referencedTypes": [
+              {
+                "name": "CommandEmptyProps",
+                "kind": "interface",
+                "type": "CommandEmptyProps",
+                "resolvedType": null,
+                "description": "Properties for the CommandEmpty component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_command_types.commandemptyprops",
+                "sourcePath": "packages/headless/src/components/command/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "emptyLabel",
+            "type": "string",
+            "required": false,
+            "description": "Empty label.",
+            "descriptionKey": "api.generated.packages_headless_src_components_command_types.commandcompactprops.members.emptylabel",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/command/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "modelValue",
+            "type": "string",
+            "required": false,
+            "description": "The controlled value of the selected item(s).\n\nUse this when you need to control the state of the items. Can be bound with `v-model`",
+            "descriptionKey": "api.generated.packages_headless_src_components_command_types.commandcompactprops.members.modelvalue",
+            "default": null,
+            "inheritedFrom": "Omit.modelValue",
+            "sourcePath": "packages/headless/src/types/common.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "defaultValue",
+            "type": "string",
+            "required": false,
+            "description": "The default value of the selected item(s).\n\nUse this when you need to set the initial state of the items.",
+            "descriptionKey": "api.generated.packages_headless_src_components_command_types.commandcompactprops.members.defaultvalue",
+            "default": null,
+            "inheritedFrom": "Omit.defaultValue",
+            "sourcePath": "packages/headless/src/types/common.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "multiple",
+            "type": "false",
+            "required": false,
+            "description": "Determines whether a \"single\" or \"multiple\" items can be selected at a time.\n\nThis prop will overwrite the inferred type from `modelValue` and `defaultValue`.",
+            "descriptionKey": "api.generated.packages_headless_src_components_command_types.commandcompactprops.members.multiple",
+            "default": null,
+            "inheritedFrom": "Omit.multiple",
+            "sourcePath": "packages/headless/src/types/common.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "selectionBehavior",
+            "type": "SelectionBehavior",
+            "required": false,
+            "description": "How multiple selection should behave in the collection.",
+            "descriptionKey": "api.generated.packages_headless_src_components_command_types.commandcompactprops.members.selectionbehavior",
+            "default": "'toggle'",
+            "inheritedFrom": "selectionBehavior",
+            "sourcePath": "packages/headless/src/types/common.ts",
+            "referencedTypes": [
+              {
+                "name": "SelectionBehavior",
+                "kind": "typeAlias",
+                "type": "'toggle' | 'replace'",
+                "resolvedType": "'toggle' | 'replace'",
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_types_common.selectionbehavior",
+                "sourcePath": "packages/headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "disabled",
+            "type": "boolean",
+            "required": false,
+            "description": "When `true`, prevents the user from interacting with listbox",
+            "descriptionKey": "api.generated.packages_headless_src_components_command_types.commandcompactprops.members.disabled",
+            "default": null,
+            "inheritedFrom": "disabled",
+            "sourcePath": "packages/headless/src/components/listbox/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "dir",
+            "type": "Direction",
+            "required": false,
+            "description": "The reading direction of the listbox when applicable. <br> If omitted, inherits globally from `ConfigProvider` or\nassumes LTR (left-to-right) reading mode.",
+            "descriptionKey": "api.generated.packages_headless_src_components_command_types.commandcompactprops.members.dir",
+            "default": null,
+            "inheritedFrom": "dir",
+            "sourcePath": "packages/headless/src/components/listbox/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Direction",
+                "kind": "typeAlias",
+                "type": "'ltr' | 'rtl'",
+                "resolvedType": "'ltr' | 'rtl'",
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_types_common.direction",
+                "sourcePath": "packages/headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "name",
+            "type": "string",
+            "required": false,
+            "description": "The name of the field. Submitted with its owning form as part of a name/value pair.",
+            "descriptionKey": "api.generated.packages_headless_src_components_command_types.commandcompactprops.members.name",
+            "default": null,
+            "inheritedFrom": "name",
+            "sourcePath": "packages/headless/src/types/component.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "highlightOnHover",
+            "type": "boolean",
+            "required": false,
+            "description": "When `true`, hover over item will trigger highlight",
+            "descriptionKey": "api.generated.packages_headless_src_components_command_types.commandcompactprops.members.highlightonhover",
+            "default": null,
+            "inheritedFrom": "highlightOnHover",
+            "sourcePath": "packages/headless/src/components/listbox/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "required",
+            "type": "boolean",
+            "required": false,
+            "description": "When `true`, indicates that the user must set the value before the owning form can be submitted.",
+            "descriptionKey": "api.generated.packages_headless_src_components_command_types.commandcompactprops.members.required",
+            "default": null,
+            "inheritedFrom": "required",
+            "sourcePath": "packages/headless/src/types/component.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "orientation",
+            "type": "DataOrientation",
+            "required": false,
+            "description": "The orientation of the listbox. <br>Mainly so arrow navigation is done accordingly (left & right vs. up & down)",
+            "descriptionKey": "api.generated.packages_headless_src_components_command_types.commandcompactprops.members.orientation",
+            "default": null,
+            "inheritedFrom": "orientation",
+            "sourcePath": "packages/headless/src/components/listbox/types.ts",
+            "referencedTypes": [
+              {
+                "name": "DataOrientation",
+                "kind": "typeAlias",
+                "type": "'vertical' | 'horizontal'",
+                "resolvedType": "'vertical' | 'horizontal'",
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_types_common.dataorientation",
+                "sourcePath": "packages/headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      },
+      "emits": {
+        "kind": "emits",
+        "name": "CommandCompactEmits",
+        "type": "TypeAlias CommandCompactEmits: CommandRootEmits & CommandItemEmits & CommandSearchTermEmits",
+        "resolvedType": "{ \"update:modelValue\": [value: string]; highlight: [payload?: CollectionItemData<ListboxCollectionItemData> | undefined]; entryFocus: [event: CustomEvent<any>]; leave: [event: Event]; select: [event: SelectEvent<string>]; \"update:searchTerm\": [value: string] }",
+        "description": "Events for the CommandCompact component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_command_types.commandcompactemits.emits",
+        "sourcePath": "packages/headless/src/components/command/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [
+          {
+            "name": "update:modelValue",
+            "type": "[value: string]",
+            "parameters": "value: string",
+            "required": true,
+            "description": "",
+            "descriptionKey": "api.generated.packages_headless_src_components_command_types.commandcompactemits.callables.update_modelvalue",
+            "sourcePath": "packages/headless/src/types/common.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "highlight",
+            "type": "[payload?: CollectionItemData<ListboxCollectionItemData> | undefined]",
+            "parameters": "payload?: CollectionItemData<ListboxCollectionItemData> | undefined",
+            "required": true,
+            "description": "Event handler when highlighted element changes.",
+            "descriptionKey": "api.generated.packages_headless_src_components_command_types.commandcompactemits.callables.highlight",
+            "sourcePath": "packages/headless/src/components/listbox/types.ts",
+            "referencedTypes": [
+              {
+                "name": "CollectionItemData",
+                "kind": "interface",
+                "type": "CollectionItemData<ListboxCollectionItemData>",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_composables_use_collection.collectionitemdata",
+                "sourcePath": "packages/headless/src/composables/use-collection.ts",
+                "typeParameters": ["ItemData = Record<string, any>"],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "entryFocus",
+            "type": "[event: CustomEvent<any>]",
+            "parameters": "event: CustomEvent<any>",
+            "required": true,
+            "description": "Event handler called when container is being focused. Can be prevented.",
+            "descriptionKey": "api.generated.packages_headless_src_components_command_types.commandcompactemits.callables.entryfocus",
+            "sourcePath": "packages/headless/src/components/listbox/types.ts",
+            "referencedTypes": [
+              {
+                "name": "CustomEvent",
+                "kind": "interface",
+                "type": "CustomEvent",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": null,
+                "sourcePath": "node_modules/.pnpm/typescript@6.0.3/node_modules/typescript/lib/lib.dom.d.ts",
+                "typeParameters": ["T = any"],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "leave",
+            "type": "[event: Event]",
+            "parameters": "event: Event",
+            "required": true,
+            "description": "Event handler called when the mouse leave the container",
+            "descriptionKey": "api.generated.packages_headless_src_components_command_types.commandcompactemits.callables.leave",
+            "sourcePath": "packages/headless/src/components/listbox/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Event",
+                "kind": "interface",
+                "type": "Event",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": null,
+                "sourcePath": "node_modules/.pnpm/typescript@6.0.3/node_modules/typescript/lib/lib.dom.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "select",
+            "type": "[event: SelectEvent<string>]",
+            "parameters": "event: SelectEvent<string>",
+            "required": true,
+            "description": "Event handler called when the selecting item. <br> It can be prevented by calling `event.preventDefault`.",
+            "descriptionKey": "api.generated.packages_headless_src_components_command_types.commandcompactemits.callables.select",
+            "sourcePath": "packages/headless/src/components/listbox/types.ts",
+            "referencedTypes": [
+              {
+                "name": "SelectEvent",
+                "kind": "typeAlias",
+                "type": "CustomEvent<{ originalEvent: MouseEvent; value?: string | undefined; }>",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_types_event.selectevent",
+                "sourcePath": "packages/headless/src/types/event.ts",
+                "typeParameters": ["T"],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "update:searchTerm",
+            "type": "[value: string]",
+            "parameters": "value: string",
+            "required": true,
+            "description": "Emitted when the search term value changes.",
+            "descriptionKey": "api.generated.packages_headless_src_components_command_types.commandcompactemits.callables.update_searchterm",
+            "sourcePath": "packages/headless/src/components/command/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "referencedTypes": []
+      },
+      "slots": {
+        "kind": "slots",
+        "name": "CommandCompactSlots",
+        "type": "TypeAlias CommandCompactSlots<T>",
+        "resolvedType": "{ \"input-leading\"?: ((props: CommandCompactInputSlotProps) => any); \"input-trailing\"?: ((props: CommandCompactInputSlotProps) => any); empty?: (() => any); \"item-leading\"?: ((props: CommandCompactItemSlotProps<T>) => any); \"item-trailing\"?: ((props: CommandCompactItemSlotProps<T>) => any); \"item-label\"?: ((props: CommandCompactItemSlotProps<T>) => any); bottom?: (() => any) }",
+        "description": "Slots for the CommandCompact component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_command_types.commandcompactslots.slots",
+        "sourcePath": "packages/headless/src/components/command/types.ts",
+        "typeParameters": ["TypeParameter T"],
+        "members": [],
+        "callables": [
+          {
+            "name": "input-leading",
+            "type": "((props: CommandCompactInputSlotProps) => any) | undefined",
+            "parameters": "((props: CommandCompactInputSlotProps) => any) | undefined",
+            "required": false,
+            "description": "Custom content for the input leading slot.",
+            "descriptionKey": "api.generated.packages_headless_src_components_command_types.commandcompactslots.callables.input_leading",
+            "sourcePath": "packages/headless/src/components/command/types.ts",
+            "referencedTypes": [
+              {
+                "name": "CommandCompactInputSlotProps",
+                "kind": "interface",
+                "type": "CommandCompactInputSlotProps",
+                "resolvedType": null,
+                "description": "Slot properties for the CommandCompactInput component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_command_types.commandcompactinputslotprops",
+                "sourcePath": "packages/headless/src/components/command/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "input-trailing",
+            "type": "((props: CommandCompactInputSlotProps) => any) | undefined",
+            "parameters": "((props: CommandCompactInputSlotProps) => any) | undefined",
+            "required": false,
+            "description": "Custom content for the input trailing slot.",
+            "descriptionKey": "api.generated.packages_headless_src_components_command_types.commandcompactslots.callables.input_trailing",
+            "sourcePath": "packages/headless/src/components/command/types.ts",
+            "referencedTypes": [
+              {
+                "name": "CommandCompactInputSlotProps",
+                "kind": "interface",
+                "type": "CommandCompactInputSlotProps",
+                "resolvedType": null,
+                "description": "Slot properties for the CommandCompactInput component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_command_types.commandcompactinputslotprops",
+                "sourcePath": "packages/headless/src/components/command/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "empty",
+            "type": "(() => any) | undefined",
+            "parameters": "(() => any) | undefined",
+            "required": false,
+            "description": "Custom content for the empty slot.",
+            "descriptionKey": "api.generated.packages_headless_src_components_command_types.commandcompactslots.callables.empty",
+            "sourcePath": "packages/headless/src/components/command/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "item-leading",
+            "type": "((props: CommandCompactItemSlotProps<T>) => any) | undefined",
+            "parameters": "((props: CommandCompactItemSlotProps<T>) => any) | undefined",
+            "required": false,
+            "description": "Custom content for the item leading slot.",
+            "descriptionKey": "api.generated.packages_headless_src_components_command_types.commandcompactslots.callables.item_leading",
+            "sourcePath": "packages/headless/src/components/command/types.ts",
+            "referencedTypes": [
+              {
+                "name": "CommandCompactItemSlotProps",
+                "kind": "interface",
+                "type": "CommandCompactItemSlotProps<T>",
+                "resolvedType": null,
+                "description": "Slot properties for the CommandCompactItem component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_command_types.commandcompactitemslotprops",
+                "sourcePath": "packages/headless/src/components/command/types.ts",
+                "typeParameters": ["T extends CommandSingleOptionData = CommandSingleOptionData"],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "item-trailing",
+            "type": "((props: CommandCompactItemSlotProps<T>) => any) | undefined",
+            "parameters": "((props: CommandCompactItemSlotProps<T>) => any) | undefined",
+            "required": false,
+            "description": "Custom content for the item trailing slot.",
+            "descriptionKey": "api.generated.packages_headless_src_components_command_types.commandcompactslots.callables.item_trailing",
+            "sourcePath": "packages/headless/src/components/command/types.ts",
+            "referencedTypes": [
+              {
+                "name": "CommandCompactItemSlotProps",
+                "kind": "interface",
+                "type": "CommandCompactItemSlotProps<T>",
+                "resolvedType": null,
+                "description": "Slot properties for the CommandCompactItem component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_command_types.commandcompactitemslotprops",
+                "sourcePath": "packages/headless/src/components/command/types.ts",
+                "typeParameters": ["T extends CommandSingleOptionData = CommandSingleOptionData"],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "item-label",
+            "type": "((props: CommandCompactItemSlotProps<T>) => any) | undefined",
+            "parameters": "((props: CommandCompactItemSlotProps<T>) => any) | undefined",
+            "required": false,
+            "description": "Custom content for the item label slot.",
+            "descriptionKey": "api.generated.packages_headless_src_components_command_types.commandcompactslots.callables.item_label",
+            "sourcePath": "packages/headless/src/components/command/types.ts",
+            "referencedTypes": [
+              {
+                "name": "CommandCompactItemSlotProps",
+                "kind": "interface",
+                "type": "CommandCompactItemSlotProps<T>",
+                "resolvedType": null,
+                "description": "Slot properties for the CommandCompactItem component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_command_types.commandcompactitemslotprops",
+                "sourcePath": "packages/headless/src/components/command/types.ts",
+                "typeParameters": ["T extends CommandSingleOptionData = CommandSingleOptionData"],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "bottom",
+            "type": "(() => any) | undefined",
+            "parameters": "(() => any) | undefined",
+            "required": false,
+            "description": "Custom content for the bottom slot.",
+            "descriptionKey": "api.generated.packages_headless_src_components_command_types.commandcompactslots.callables.bottom",
+            "sourcePath": "packages/headless/src/components/command/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "referencedTypes": []
+      }
+    },
+    "CommandEmpty": {
+      "props": {
+        "kind": "props",
+        "name": "CommandEmptyProps",
+        "type": "Interface CommandEmptyProps",
+        "resolvedType": null,
+        "description": "Properties for the CommandEmpty component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_command_types.commandemptyprops.props",
+        "sourcePath": "packages/headless/src/components/command/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "CommandItemLabel": {
+      "props": {
+        "kind": "props",
+        "name": "CommandItemLabelProps",
+        "type": "Interface CommandItemLabelProps",
+        "resolvedType": null,
+        "description": "Properties for the CommandItemLabel component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_command_types.commanditemlabelprops.props",
+        "sourcePath": "packages/headless/src/components/command/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "CommandSeparator": {
+      "props": {
+        "kind": "props",
+        "name": "CommandSeparatorProps",
+        "type": "Interface CommandSeparatorProps",
+        "resolvedType": "{ orientation?: DataOrientation; decorative?: boolean }",
+        "description": "Properties for the CommandSeparator component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_command_types.commandseparatorprops.props",
+        "sourcePath": "packages/headless/src/components/command/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "orientation",
+            "type": "DataOrientation",
+            "required": false,
+            "description": "Orientation of the component.\n\nEither `vertical` or `horizontal`. Defaults to `horizontal`.",
+            "descriptionKey": "api.generated.packages_headless_src_components_command_types.commandseparatorprops.members.orientation",
+            "default": null,
+            "inheritedFrom": "orientation",
+            "sourcePath": "packages/headless/src/components/separator/types.ts",
+            "referencedTypes": [
+              {
+                "name": "DataOrientation",
+                "kind": "typeAlias",
+                "type": "'vertical' | 'horizontal'",
+                "resolvedType": "'vertical' | 'horizontal'",
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_types_common.dataorientation",
+                "sourcePath": "packages/headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "decorative",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether or not the component is purely decorative. <br>When `true`, accessibility-related attributes are updated so\nthat that the rendered element is removed from the accessibility tree.",
+            "descriptionKey": "api.generated.packages_headless_src_components_command_types.commandseparatorprops.members.decorative",
+            "default": null,
+            "inheritedFrom": "decorative",
+            "sourcePath": "packages/headless/src/components/separator/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "CommandShortcut": {
+      "props": {
+        "kind": "props",
+        "name": "CommandShortcutProps",
+        "type": "Interface CommandShortcutProps",
+        "resolvedType": "{ symbolize?: boolean }",
+        "description": "Properties for the CommandShortcut component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_command_types.commandshortcutprops.props",
+        "sourcePath": "packages/headless/src/components/command/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "symbolize",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether to convert the command value to symbol representation.",
+            "descriptionKey": "api.generated.packages_headless_src_components_command_types.commandshortcutprops.members.symbolize",
+            "default": "true",
+            "inheritedFrom": "symbolize",
+            "sourcePath": "packages/headless/src/components/kbd/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      }
+    }
+  }
+}

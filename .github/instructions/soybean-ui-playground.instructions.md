@@ -1,5 +1,5 @@
 ---
-applyTo: 'playground/examples/**/*.vue'
+applyTo: 'apps/playground/src/examples/**/*.vue'
 ---
 
 # SoybeanUI Playground 规范
@@ -8,7 +8,7 @@ applyTo: 'playground/examples/**/*.vue'
 
 ## 目录结构
 
-每个组件的 playground 放在 `playground/examples/{component}/`。
+每个组件的 playground 放在 `apps/playground/src/examples/{component}/`。
 
 推荐结构：
 

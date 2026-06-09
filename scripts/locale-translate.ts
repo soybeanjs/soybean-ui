@@ -21,13 +21,13 @@ interface LocaleRegistryDocument {
 }
 
 const rootDir = process.cwd();
-const localeDir = path.join(rootDir, 'headless/src/locale/langs');
+const localeDir = path.join(rootDir, 'packages/headless/src/locale/langs');
 const rtlLanguageCodes = new Set(['ar', 'fa', 'he', 'ur']);
 
 function printUsage() {
   printTranslateUsage(
     'sui locale-translate --',
-    'Target locale, for example de, pt-BR, or zh-TW. If omitted, translates all locale files in headless/src/locale/langs except the source locale.'
+    'Target locale, for example de, pt-BR, or zh-TW. If omitted, translates all locale files in packages/headless/src/locale/langs except the source locale.'
   );
 }
 

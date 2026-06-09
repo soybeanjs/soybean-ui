@@ -1,0 +1,203 @@
+{
+  "component": "tag",
+  "symbols": {
+    "Tag": {
+      "props": {
+        "kind": "props",
+        "name": "TagProps",
+        "type": "Interface TagProps",
+        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; color?: ThemeColor; size?: ThemeSize; variant?: TagVariant; shape?: TagShape; content?: string; closable?: boolean; open?: boolean }",
+        "description": "Properties for the Tag component.",
+        "descriptionKey": "api.generated.packages_ui_src_components_tag_types.tagprops.props",
+        "sourcePath": "packages/ui/src/components/tag/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "class",
+            "type": "string | false | Record<string, any> | ClassValue[] | null",
+            "required": false,
+            "description": "Additional class names applied to the root element.",
+            "descriptionKey": "api.generated.packages_ui_src_components_tag_types.tagprops.members.class",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui/src/components/tag/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ClassValue",
+                "kind": "typeAlias",
+                "type": "string | false | Record<string, any> | ClassValue[] | null | undefined",
+                "resolvedType": "string | false | Record<string, any> | ClassValue[] | null | undefined",
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_types_common.classvalue",
+                "sourcePath": "packages/headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "color",
+            "type": "ThemeColor",
+            "required": false,
+            "description": "Theme color of the component.",
+            "descriptionKey": "api.generated.packages_ui_src_components_tag_types.tagprops.members.color",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui/src/components/tag/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ThemeColor",
+                "kind": "typeAlias",
+                "type": "'primary' | 'destructive' | 'success' | 'warning' | 'info' | 'carbon' | 'secondary' | 'accent'",
+                "resolvedType": "'primary' | 'destructive' | 'success' | 'warning' | 'info' | 'carbon' | 'secondary' | 'accent'",
+                "description": "",
+                "descriptionKey": "api.generated.packages_ui_src_theme_types.themecolor",
+                "sourcePath": "packages/ui/src/theme/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "size",
+            "type": "ThemeSize",
+            "required": false,
+            "description": "Visual size of the component.",
+            "descriptionKey": "api.generated.packages_ui_src_components_tag_types.tagprops.members.size",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui/src/components/tag/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ThemeSize",
+                "kind": "typeAlias",
+                "type": "'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'",
+                "resolvedType": "'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'",
+                "description": "",
+                "descriptionKey": "api.generated.packages_ui_src_theme_types.themesize",
+                "sourcePath": "packages/ui/src/theme/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "variant",
+            "type": "TagVariant",
+            "required": false,
+            "description": "Visual variant of the component.",
+            "descriptionKey": "api.generated.packages_ui_src_components_tag_types.tagprops.members.variant",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui/src/components/tag/types.ts",
+            "referencedTypes": [
+              {
+                "name": "TagVariant",
+                "kind": "typeAlias",
+                "type": "'solid' | 'pure' | 'outline' | 'soft' | 'ghost' | 'raw'",
+                "resolvedType": "'solid' | 'pure' | 'outline' | 'soft' | 'ghost' | 'raw'",
+                "description": "",
+                "descriptionKey": "api.generated.packages_ui_src_styles_tag.tagvariant",
+                "sourcePath": "packages/ui/src/styles/tag.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "shape",
+            "type": "TagShape",
+            "required": false,
+            "description": "Shape of the component.",
+            "descriptionKey": "api.generated.packages_ui_src_components_tag_types.tagprops.members.shape",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui/src/components/tag/types.ts",
+            "referencedTypes": [
+              {
+                "name": "TagShape",
+                "kind": "typeAlias",
+                "type": "'auto' | 'rounded'",
+                "resolvedType": "'auto' | 'rounded'",
+                "description": "",
+                "descriptionKey": "api.generated.packages_ui_src_styles_tag.tagshape",
+                "sourcePath": "packages/ui/src/styles/tag.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "content",
+            "type": "string",
+            "required": false,
+            "description": "Content.",
+            "descriptionKey": "api.generated.packages_ui_src_components_tag_types.tagprops.members.content",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui/src/components/tag/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "closable",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether the component can be closed.",
+            "descriptionKey": "api.generated.packages_ui_src_components_tag_types.tagprops.members.closable",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui/src/components/tag/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "open",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether the component is open.",
+            "descriptionKey": "api.generated.packages_ui_src_components_tag_types.tagprops.members.open",
+            "default": null,
+            "inheritedFrom": "_TagProps.open",
+            "sourcePath": "packages/headless/src/components/tag/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      },
+      "emits": {
+        "kind": "emits",
+        "name": "TagEmits",
+        "type": "TypeAlias TagEmits",
+        "resolvedType": "{ \"update:open\": [open: boolean] }",
+        "description": "Events for the Tag component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_tag_types.tagemits.emits",
+        "sourcePath": "packages/headless/src/components/tag/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [
+          {
+            "name": "update:open",
+            "type": "[open: boolean]",
+            "parameters": "open: boolean",
+            "required": true,
+            "description": "Emitted when the open state changes.",
+            "descriptionKey": "api.generated.packages_headless_src_components_tag_types.tagemits.callables.update_open",
+            "sourcePath": "packages/headless/src/components/tag/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "referencedTypes": []
+      }
+    }
+  }
+}

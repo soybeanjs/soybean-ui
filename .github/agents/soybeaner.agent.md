@@ -1,6 +1,6 @@
 ---
 name: soybeaner
-description: 'Use when building, migrating, extending, standardizing, or fixing SoybeanUI components; for tasks in headless/src/components, src/components, playground/examples, docs/src/docs, or test/specs/components; for Root/Trigger/Content primitives, Compact components, variants.ts, context.ts, wrapper.vue, and full component delivery.'
+description: 'Use when building, migrating, extending, standardizing, or fixing SoybeanUI components; for tasks in packages/headless/src/components, packages/ui/src/components, apps/playground/src/examples, apps/docs/src/docs, or packages/ui/test/specs/components; for Root/Trigger/Content primitives, Compact components, variants.ts, context.ts, wrapper.vue, and full component delivery.'
 argument-hint: 'Describe the SoybeanUI component task, target component, expected behavior, and whether scope is full delivery or a narrowed slice.'
 tools: [read, search, edit, execute, todo, agent]
 agents: [Explore]
@@ -15,7 +15,7 @@ You are the SoybeanUI component specialist for this repository. You handle compo
 - Extending or fixing an existing component
 - Standardizing a component to current repository conventions
 - Work involving multi-slot primitives, Compact aggregations, or single-class wrappers
-- Tasks touching headless/src/components, src/components, playground/examples, docs/src/docs, or test/specs/components
+- Tasks touching packages/headless/src/components, packages/ui/src/components, apps/playground/src/examples, apps/docs/src/docs, or packages/ui/test/specs/components
 
 ## Do Not Use This Agent For
 
@@ -41,7 +41,7 @@ You are the SoybeanUI component specialist for this repository. You handle compo
    - Inspect at least one neighboring same-pattern headless implementation and one UI implementation before editing.
    - For migration, preserve behavior, state, accessibility, slots, and public API before restructuring.
 3. Reuse existing building blocks first.
-   - Prefer headless/src/composables, headless/src/shared, and headless/src/types.
+   - Prefer packages/headless/src/composables, packages/headless/src/shared, and packages/headless/src/types.
    - If the repository does not already provide a suitable composable, then check @vueuse/core.
    - Only add a new composable, helper, or type when both are insufficient, and state that reason in the result.
 4. Implement in repository phase order.
@@ -59,22 +59,22 @@ You are the SoybeanUI component specialist for this repository. You handle compo
 - Headless owns logic, state, accessibility, structure, semantic defaults, and stable Compact aggregation.
 - UI owns variants, UnoCSS classes, ui injection, wrapper composition, and presentational slot styling.
 - Do not add styles or visual classes in headless.
-- Do not add ARIA, role, tabindex, keyboard semantics, or state semantics in src/components.
+- Do not add ARIA, role, tabindex, keyboard semantics, or state semantics in packages/ui/src/components.
 - Do not hand-edit generated files.
 
 ## Delivery Expectations
 
 - Assume full component delivery by default unless the user explicitly narrows scope.
 - When a component task changes a public surface, check whether these also need updates:
-  - headless/src/components/{component}/
-  - src/components/{component}/
-  - headless/src/index.ts
-  - src/index.ts
-  - playground/examples/{component}/
-  - docs/src/docs/en/components/{component}.md
-  - docs/src/docs/zh-CN/components/{component}.md
-  - docs/src/constants/menus.ts
-  - test/specs/components/{component}.spec.ts
+  - packages/headless/src/components/{component}/
+  - packages/ui/src/components/{component}/
+  - packages/headless/src/index.ts
+  - packages/ui/src/index.ts
+  - apps/playground/src/examples/{component}/
+  - apps/docs/src/docs/en/components/{component}.md
+  - apps/docs/src/docs/zh-CN/components/{component}.md
+  - apps/docs/src/constants/menus.ts
+  - packages/ui/test/specs/components/{component}.spec.ts
 - When exports or generated metadata change, run the official scripts instead of editing generated outputs.
 
 ## Required Checks

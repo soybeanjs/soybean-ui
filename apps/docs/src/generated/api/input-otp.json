@@ -1,0 +1,1900 @@
+{
+  "component": "input-otp",
+  "symbols": {
+    "InputOtp": {
+      "props": {
+        "kind": "props",
+        "name": "InputOtpProps",
+        "type": "Interface InputOtpProps",
+        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; size?: ThemeSize; align?: Align; ui?: Partial<InputOtpUi>; id?: string; autocomplete?: string; autofocus?: boolean; disabled?: boolean; minlength?: number; placeholder?: string; readonly?: boolean; \"aria-label\"?: string; modelValue?: string; defaultValue?: string; maxlength: number; inputmode?: InputOtpInputMode; pattern?: string | RegExp; pushPasswordManagerStrategy?: InputOtpPushPasswordManagerStrategy; pasteTransformer?: ((pasted: string) => string); name?: string; required?: boolean }",
+        "description": "Properties for the InputOtp component.",
+        "descriptionKey": "api.generated.packages_ui_src_components_input_otp_types.inputotpprops.props",
+        "sourcePath": "packages/ui/src/components/input-otp/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "class",
+            "type": "string | false | Record<string, any> | ClassValue[] | null",
+            "required": false,
+            "description": "Root class.",
+            "descriptionKey": "api.generated.packages_ui_src_components_input_otp_types.inputotpprops.members.class",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui/src/components/input-otp/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ClassValue",
+                "kind": "typeAlias",
+                "type": "string | false | Record<string, any> | ClassValue[] | null | undefined",
+                "resolvedType": "string | false | Record<string, any> | ClassValue[] | null | undefined",
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_types_common.classvalue",
+                "sourcePath": "packages/headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "size",
+            "type": "ThemeSize",
+            "required": false,
+            "description": "Visual size of the component.",
+            "descriptionKey": "api.generated.packages_ui_src_components_input_otp_types.inputotpprops.members.size",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui/src/components/input-otp/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ThemeSize",
+                "kind": "typeAlias",
+                "type": "'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'",
+                "resolvedType": "'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'",
+                "description": "",
+                "descriptionKey": "api.generated.packages_ui_src_theme_types.themesize",
+                "sourcePath": "packages/ui/src/theme/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "align",
+            "type": "Align",
+            "required": false,
+            "description": "Align.",
+            "descriptionKey": "api.generated.packages_ui_src_components_input_otp_types.inputotpprops.members.align",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui/src/components/input-otp/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Align",
+                "kind": "typeAlias",
+                "type": "'start' | 'center' | 'end'",
+                "resolvedType": "'start' | 'center' | 'end'",
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_types_common.align",
+                "sourcePath": "packages/headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "ui",
+            "type": "Partial<InputOtpUi>",
+            "required": false,
+            "description": "Per-slot class overrides for the component.",
+            "descriptionKey": "api.generated.packages_ui_src_components_input_otp_types.inputotpprops.members.ui",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui/src/components/input-otp/types.ts",
+            "referencedTypes": [
+              {
+                "name": "InputOtpUi",
+                "kind": "typeAlias",
+                "type": "{ root: ClassValue; placeholder: ClassValue; input: ClassValue; positioner: ClassValue; group: ClassValue; slot: ClassValue; char: ClassValue; caret: ClassValue; }",
+                "resolvedType": null,
+                "description": "UI class overrides for the InputOtp component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_input_otp_types.inputotpui",
+                "sourcePath": "packages/headless/src/components/input-otp/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "id",
+            "type": "string",
+            "required": false,
+            "description": "The id of the native input element.",
+            "descriptionKey": "api.generated.packages_ui_src_components_input_otp_types.inputotpprops.members.id",
+            "default": null,
+            "inheritedFrom": "id",
+            "sourcePath": "packages/headless/src/components/input-otp/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "autocomplete",
+            "type": "string",
+            "required": false,
+            "description": "Autocomplete hint passed to the native input.",
+            "descriptionKey": "api.generated.packages_ui_src_components_input_otp_types.inputotpprops.members.autocomplete",
+            "default": null,
+            "inheritedFrom": "autocomplete",
+            "sourcePath": "packages/headless/src/components/input-otp/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "autofocus",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether the input should be focused on mount.",
+            "descriptionKey": "api.generated.packages_ui_src_components_input_otp_types.inputotpprops.members.autofocus",
+            "default": null,
+            "inheritedFrom": "autofocus",
+            "sourcePath": "packages/headless/src/components/input-otp/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "disabled",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether the input is disabled.",
+            "descriptionKey": "api.generated.packages_ui_src_components_input_otp_types.inputotpprops.members.disabled",
+            "default": null,
+            "inheritedFrom": "disabled",
+            "sourcePath": "packages/headless/src/components/input-otp/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "minlength",
+            "type": "number",
+            "required": false,
+            "description": "Minimum length forwarded to the native input.",
+            "descriptionKey": "api.generated.packages_ui_src_components_input_otp_types.inputotpprops.members.minlength",
+            "default": null,
+            "inheritedFrom": "minlength",
+            "sourcePath": "packages/headless/src/components/input-otp/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "placeholder",
+            "type": "string",
+            "required": false,
+            "description": "Placeholder characters used by the visual slots.",
+            "descriptionKey": "api.generated.packages_ui_src_components_input_otp_types.inputotpprops.members.placeholder",
+            "default": null,
+            "inheritedFrom": "placeholder",
+            "sourcePath": "packages/headless/src/components/input-otp/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "readonly",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether the input is readonly.",
+            "descriptionKey": "api.generated.packages_ui_src_components_input_otp_types.inputotpprops.members.readonly",
+            "default": null,
+            "inheritedFrom": "readonly",
+            "sourcePath": "packages/headless/src/components/input-otp/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "aria-label",
+            "type": "string",
+            "required": false,
+            "description": "Accessible label forwarded to the native input.",
+            "descriptionKey": "api.generated.packages_ui_src_components_input_otp_types.inputotpprops.members.aria_label",
+            "default": null,
+            "inheritedFrom": "aria-label",
+            "sourcePath": "packages/headless/src/components/input-otp/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "modelValue",
+            "type": "string",
+            "required": false,
+            "description": "The controlled value of the OTP input.",
+            "descriptionKey": "api.generated.packages_ui_src_components_input_otp_types.inputotpprops.members.modelvalue",
+            "default": null,
+            "inheritedFrom": "modelValue",
+            "sourcePath": "packages/headless/src/components/input-otp/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "defaultValue",
+            "type": "string",
+            "required": false,
+            "description": "The uncontrolled default value of the OTP input.",
+            "descriptionKey": "api.generated.packages_ui_src_components_input_otp_types.inputotpprops.members.defaultvalue",
+            "default": null,
+            "inheritedFrom": "defaultValue",
+            "sourcePath": "packages/headless/src/components/input-otp/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "maxlength",
+            "type": "number",
+            "required": true,
+            "description": "The number of OTP slots.",
+            "descriptionKey": "api.generated.packages_ui_src_components_input_otp_types.inputotpprops.members.maxlength",
+            "default": null,
+            "inheritedFrom": "maxlength",
+            "sourcePath": "packages/headless/src/components/input-otp/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "inputmode",
+            "type": "InputOtpInputMode",
+            "required": false,
+            "description": "Virtual keyboard mode for mobile devices.",
+            "descriptionKey": "api.generated.packages_ui_src_components_input_otp_types.inputotpprops.members.inputmode",
+            "default": null,
+            "inheritedFrom": "inputmode",
+            "sourcePath": "packages/headless/src/components/input-otp/types.ts",
+            "referencedTypes": [
+              {
+                "name": "InputOtpInputMode",
+                "kind": "typeAlias",
+                "type": "'text' | 'numeric'",
+                "resolvedType": "'text' | 'numeric'",
+                "description": "Type information for InputOtpInputMode.",
+                "descriptionKey": "api.generated.packages_headless_src_components_input_otp_types.inputotpinputmode",
+                "sourcePath": "packages/headless/src/components/input-otp/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "pattern",
+            "type": "string | RegExp",
+            "required": false,
+            "description": "Pattern used to validate the whole OTP value.",
+            "descriptionKey": "api.generated.packages_ui_src_components_input_otp_types.inputotpprops.members.pattern",
+            "default": null,
+            "inheritedFrom": "pattern",
+            "sourcePath": "packages/headless/src/components/input-otp/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "pushPasswordManagerStrategy",
+            "type": "InputOtpPushPasswordManagerStrategy",
+            "required": false,
+            "description": "Strategy used to avoid overlapping password manager badges.",
+            "descriptionKey": "api.generated.packages_ui_src_components_input_otp_types.inputotpprops.members.pushpasswordmanagerstrategy",
+            "default": null,
+            "inheritedFrom": "pushPasswordManagerStrategy",
+            "sourcePath": "packages/headless/src/components/input-otp/types.ts",
+            "referencedTypes": [
+              {
+                "name": "InputOtpPushPasswordManagerStrategy",
+                "kind": "typeAlias",
+                "type": "'none' | 'increase-width'",
+                "resolvedType": "'none' | 'increase-width'",
+                "description": "Type information for InputOtpPushPasswordManagerStrategy.",
+                "descriptionKey": "api.generated.packages_headless_src_components_input_otp_types.inputotppushpasswordmanagerstrategy",
+                "sourcePath": "packages/headless/src/components/input-otp/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "pasteTransformer",
+            "type": "((pasted: string) => string)",
+            "required": false,
+            "description": "Transform pasted content before it is inserted.",
+            "descriptionKey": "api.generated.packages_ui_src_components_input_otp_types.inputotpprops.members.pastetransformer",
+            "default": null,
+            "inheritedFrom": "pasteTransformer",
+            "sourcePath": "packages/headless/src/components/input-otp/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "name",
+            "type": "string",
+            "required": false,
+            "description": "The name of the field. Submitted with its owning form as part of a name/value pair.",
+            "descriptionKey": "api.generated.packages_ui_src_components_input_otp_types.inputotpprops.members.name",
+            "default": null,
+            "inheritedFrom": "name",
+            "sourcePath": "packages/headless/src/types/component.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "required",
+            "type": "boolean",
+            "required": false,
+            "description": "When `true`, indicates that the user must set the value before the owning form can be submitted.",
+            "descriptionKey": "api.generated.packages_ui_src_components_input_otp_types.inputotpprops.members.required",
+            "default": null,
+            "inheritedFrom": "required",
+            "sourcePath": "packages/headless/src/types/component.ts",
+            "referencedTypes": []
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      },
+      "emits": {
+        "kind": "emits",
+        "name": "InputOtpEmits",
+        "type": "TypeAlias InputOtpEmits: InputOtpCompactEmits",
+        "resolvedType": "{ \"update:modelValue\": [value: string]; complete: [value: string]; input: [value: string]; change: [event: Event]; select: [event: Event]; focus: [event: FocusEvent]; blur: [event: FocusEvent]; mouseover: [event: MouseEvent]; mouseleave: [event: MouseEvent]; paste: [event: ClipboardEvent] }",
+        "description": "Events for the InputOtp component.",
+        "descriptionKey": "api.generated.packages_ui_src_components_input_otp_types.inputotpemits.emits",
+        "sourcePath": "packages/ui/src/components/input-otp/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [
+          {
+            "name": "update:modelValue",
+            "type": "[value: string]",
+            "parameters": "value: string",
+            "required": true,
+            "description": "Emitted when the model value changes.",
+            "descriptionKey": "api.generated.packages_ui_src_components_input_otp_types.inputotpemits.callables.update_modelvalue",
+            "sourcePath": "packages/headless/src/components/input-otp/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "complete",
+            "type": "[value: string]",
+            "parameters": "value: string",
+            "required": true,
+            "description": "Emitted when complete occurs.",
+            "descriptionKey": "api.generated.packages_ui_src_components_input_otp_types.inputotpemits.callables.complete",
+            "sourcePath": "packages/headless/src/components/input-otp/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "input",
+            "type": "[value: string]",
+            "parameters": "value: string",
+            "required": true,
+            "description": "Emitted when input occurs.",
+            "descriptionKey": "api.generated.packages_ui_src_components_input_otp_types.inputotpemits.callables.input",
+            "sourcePath": "packages/headless/src/components/input-otp/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "change",
+            "type": "[event: Event]",
+            "parameters": "event: Event",
+            "required": true,
+            "description": "Emitted when change occurs.",
+            "descriptionKey": "api.generated.packages_ui_src_components_input_otp_types.inputotpemits.callables.change",
+            "sourcePath": "packages/headless/src/components/input-otp/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Event",
+                "kind": "interface",
+                "type": "Event",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": null,
+                "sourcePath": "node_modules/.pnpm/typescript@6.0.3/node_modules/typescript/lib/lib.dom.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "select",
+            "type": "[event: Event]",
+            "parameters": "event: Event",
+            "required": true,
+            "description": "Emitted when select occurs.",
+            "descriptionKey": "api.generated.packages_ui_src_components_input_otp_types.inputotpemits.callables.select",
+            "sourcePath": "packages/headless/src/components/input-otp/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Event",
+                "kind": "interface",
+                "type": "Event",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": null,
+                "sourcePath": "node_modules/.pnpm/typescript@6.0.3/node_modules/typescript/lib/lib.dom.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "focus",
+            "type": "[event: FocusEvent]",
+            "parameters": "event: FocusEvent",
+            "required": true,
+            "description": "Emitted when focus occurs.",
+            "descriptionKey": "api.generated.packages_ui_src_components_input_otp_types.inputotpemits.callables.focus",
+            "sourcePath": "packages/headless/src/components/input-otp/types.ts",
+            "referencedTypes": [
+              {
+                "name": "FocusEvent",
+                "kind": "interface",
+                "type": "FocusEvent",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": null,
+                "sourcePath": "node_modules/.pnpm/typescript@6.0.3/node_modules/typescript/lib/lib.dom.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "blur",
+            "type": "[event: FocusEvent]",
+            "parameters": "event: FocusEvent",
+            "required": true,
+            "description": "Emitted when blur occurs.",
+            "descriptionKey": "api.generated.packages_ui_src_components_input_otp_types.inputotpemits.callables.blur",
+            "sourcePath": "packages/headless/src/components/input-otp/types.ts",
+            "referencedTypes": [
+              {
+                "name": "FocusEvent",
+                "kind": "interface",
+                "type": "FocusEvent",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": null,
+                "sourcePath": "node_modules/.pnpm/typescript@6.0.3/node_modules/typescript/lib/lib.dom.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "mouseover",
+            "type": "[event: MouseEvent]",
+            "parameters": "event: MouseEvent",
+            "required": true,
+            "description": "Emitted when mouseover occurs.",
+            "descriptionKey": "api.generated.packages_ui_src_components_input_otp_types.inputotpemits.callables.mouseover",
+            "sourcePath": "packages/headless/src/components/input-otp/types.ts",
+            "referencedTypes": [
+              {
+                "name": "MouseEvent",
+                "kind": "interface",
+                "type": "MouseEvent",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": null,
+                "sourcePath": "node_modules/.pnpm/typescript@6.0.3/node_modules/typescript/lib/lib.dom.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "mouseleave",
+            "type": "[event: MouseEvent]",
+            "parameters": "event: MouseEvent",
+            "required": true,
+            "description": "Emitted when mouseleave occurs.",
+            "descriptionKey": "api.generated.packages_ui_src_components_input_otp_types.inputotpemits.callables.mouseleave",
+            "sourcePath": "packages/headless/src/components/input-otp/types.ts",
+            "referencedTypes": [
+              {
+                "name": "MouseEvent",
+                "kind": "interface",
+                "type": "MouseEvent",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": null,
+                "sourcePath": "node_modules/.pnpm/typescript@6.0.3/node_modules/typescript/lib/lib.dom.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "paste",
+            "type": "[event: ClipboardEvent]",
+            "parameters": "event: ClipboardEvent",
+            "required": true,
+            "description": "Emitted when paste occurs.",
+            "descriptionKey": "api.generated.packages_ui_src_components_input_otp_types.inputotpemits.callables.paste",
+            "sourcePath": "packages/headless/src/components/input-otp/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ClipboardEvent",
+                "kind": "interface",
+                "type": "ClipboardEvent",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": null,
+                "sourcePath": "node_modules/.pnpm/typescript@6.0.3/node_modules/typescript/lib/lib.dom.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "referencedTypes": [
+          {
+            "name": "InputOtpRootEmits",
+            "kind": "typeAlias",
+            "type": "{ 'update:modelValue': [value: string]; complete: [value: string]; input: [value: string]; change: [event: Event]; select: [event: Event]; focus: [event: FocusEvent]; blur: [event: FocusEvent]; mouseover: [event: MouseEvent]; mouseleave: [event: MouseEvent]; paste: [event: ClipboardEvent]; }",
+            "resolvedType": "{ \"update:modelValue\": [value: string]; complete: [value: string]; input: [value: string]; change: [event: Event]; select: [event: Event]; focus: [event: FocusEvent]; blur: [event: FocusEvent]; mouseover: [event: MouseEvent]; mouseleave: [event: MouseEvent]; paste: [event: ClipboardEvent] }",
+            "description": "Events for the InputOtpRoot component.",
+            "descriptionKey": "api.generated.packages_headless_src_components_input_otp_types.inputotprootemits",
+            "sourcePath": "packages/headless/src/components/input-otp/types.ts",
+            "typeParameters": [],
+            "external": false,
+            "members": [],
+            "callables": [
+              {
+                "name": "update:modelValue",
+                "type": "[value: string]",
+                "parameters": "value: string",
+                "required": true,
+                "description": "Emitted when the model value changes.",
+                "descriptionKey": "api.generated.packages_headless_src_components_input_otp_types.inputotprootemits.callables.update_modelvalue",
+                "sourcePath": "packages/headless/src/components/input-otp/types.ts",
+                "referencedTypes": []
+              },
+              {
+                "name": "complete",
+                "type": "[value: string]",
+                "parameters": "value: string",
+                "required": true,
+                "description": "Emitted when complete occurs.",
+                "descriptionKey": "api.generated.packages_headless_src_components_input_otp_types.inputotprootemits.callables.complete",
+                "sourcePath": "packages/headless/src/components/input-otp/types.ts",
+                "referencedTypes": []
+              },
+              {
+                "name": "input",
+                "type": "[value: string]",
+                "parameters": "value: string",
+                "required": true,
+                "description": "Emitted when input occurs.",
+                "descriptionKey": "api.generated.packages_headless_src_components_input_otp_types.inputotprootemits.callables.input",
+                "sourcePath": "packages/headless/src/components/input-otp/types.ts",
+                "referencedTypes": []
+              },
+              {
+                "name": "change",
+                "type": "[event: Event]",
+                "parameters": "event: Event",
+                "required": true,
+                "description": "Emitted when change occurs.",
+                "descriptionKey": "api.generated.packages_headless_src_components_input_otp_types.inputotprootemits.callables.change",
+                "sourcePath": "packages/headless/src/components/input-otp/types.ts",
+                "referencedTypes": []
+              },
+              {
+                "name": "select",
+                "type": "[event: Event]",
+                "parameters": "event: Event",
+                "required": true,
+                "description": "Emitted when select occurs.",
+                "descriptionKey": "api.generated.packages_headless_src_components_input_otp_types.inputotprootemits.callables.select",
+                "sourcePath": "packages/headless/src/components/input-otp/types.ts",
+                "referencedTypes": []
+              },
+              {
+                "name": "focus",
+                "type": "[event: FocusEvent]",
+                "parameters": "event: FocusEvent",
+                "required": true,
+                "description": "Emitted when focus occurs.",
+                "descriptionKey": "api.generated.packages_headless_src_components_input_otp_types.inputotprootemits.callables.focus",
+                "sourcePath": "packages/headless/src/components/input-otp/types.ts",
+                "referencedTypes": []
+              },
+              {
+                "name": "blur",
+                "type": "[event: FocusEvent]",
+                "parameters": "event: FocusEvent",
+                "required": true,
+                "description": "Emitted when blur occurs.",
+                "descriptionKey": "api.generated.packages_headless_src_components_input_otp_types.inputotprootemits.callables.blur",
+                "sourcePath": "packages/headless/src/components/input-otp/types.ts",
+                "referencedTypes": []
+              },
+              {
+                "name": "mouseover",
+                "type": "[event: MouseEvent]",
+                "parameters": "event: MouseEvent",
+                "required": true,
+                "description": "Emitted when mouseover occurs.",
+                "descriptionKey": "api.generated.packages_headless_src_components_input_otp_types.inputotprootemits.callables.mouseover",
+                "sourcePath": "packages/headless/src/components/input-otp/types.ts",
+                "referencedTypes": []
+              },
+              {
+                "name": "mouseleave",
+                "type": "[event: MouseEvent]",
+                "parameters": "event: MouseEvent",
+                "required": true,
+                "description": "Emitted when mouseleave occurs.",
+                "descriptionKey": "api.generated.packages_headless_src_components_input_otp_types.inputotprootemits.callables.mouseleave",
+                "sourcePath": "packages/headless/src/components/input-otp/types.ts",
+                "referencedTypes": []
+              },
+              {
+                "name": "paste",
+                "type": "[event: ClipboardEvent]",
+                "parameters": "event: ClipboardEvent",
+                "required": true,
+                "description": "Emitted when paste occurs.",
+                "descriptionKey": "api.generated.packages_headless_src_components_input_otp_types.inputotprootemits.callables.paste",
+                "sourcePath": "packages/headless/src/components/input-otp/types.ts",
+                "referencedTypes": []
+              }
+            ]
+          }
+        ]
+      },
+      "slots": {
+        "kind": "slots",
+        "name": "InputOtpSlots",
+        "type": "TypeAlias InputOtpSlots: InputOtpCompactSlots",
+        "resolvedType": "{ InputOtpRoot?: ((props: InputOtpRootSlotProps) => any) }",
+        "description": "Slots for the InputOtp component.",
+        "descriptionKey": "api.generated.packages_ui_src_components_input_otp_types.inputotpslots.slots",
+        "sourcePath": "packages/ui/src/components/input-otp/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [
+          {
+            "name": "default",
+            "type": "((props: InputOtpRootSlotProps) => any) | undefined",
+            "parameters": "((props: InputOtpRootSlotProps) => any) | undefined",
+            "required": false,
+            "description": "Custom content for the default slot.",
+            "descriptionKey": "api.generated.packages_ui_src_components_input_otp_types.inputotpslots.callables.default",
+            "sourcePath": "packages/headless/src/components/input-otp/types.ts",
+            "referencedTypes": [
+              {
+                "name": "InputOtpRootSlotProps",
+                "kind": "interface",
+                "type": "InputOtpRootSlotProps",
+                "resolvedType": null,
+                "description": "Slot properties for the InputOtpRoot component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_input_otp_types.inputotprootslotprops",
+                "sourcePath": "packages/headless/src/components/input-otp/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "referencedTypes": [
+          {
+            "name": "InputOtpCompactSlots",
+            "kind": "typeAlias",
+            "type": "{ InputOtpRoot?: (props: import(\"@soybeanjs/headless\").InputOtpRootSlotProps) => any; }",
+            "resolvedType": "{ InputOtpRoot?: ((props: InputOtpRootSlotProps) => any) }",
+            "description": "Slots for the InputOtpCompact component.",
+            "descriptionKey": "api.generated.packages_headless_src_components_input_otp_types.inputotpcompactslots",
+            "sourcePath": "packages/headless/src/components/input-otp/types.ts",
+            "typeParameters": [],
+            "external": false,
+            "members": [],
+            "callables": [
+              {
+                "name": "default",
+                "type": "((props: InputOtpRootSlotProps) => any) | undefined",
+                "parameters": "((props: InputOtpRootSlotProps) => any) | undefined",
+                "required": false,
+                "description": "Custom content for the default slot.",
+                "descriptionKey": "api.generated.packages_headless_src_components_input_otp_types.inputotpcompactslots.callables.default",
+                "sourcePath": "packages/headless/src/components/input-otp/types.ts",
+                "referencedTypes": []
+              }
+            ]
+          }
+        ]
+      },
+      "slotProps": {
+        "kind": "slotProps",
+        "name": "InputOtpSlotProps",
+        "type": "Interface InputOtpSlotProps",
+        "resolvedType": "{ char: string | null; placeholderChar: string | null; isActive: boolean; hasFakeCaret: boolean }",
+        "description": "Slot properties for the InputOtp component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_input_otp_types.inputotpslotprops.slotprops",
+        "sourcePath": "packages/headless/src/components/input-otp/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "char",
+            "type": "string | null",
+            "required": true,
+            "description": "The typed character at the current slot.",
+            "descriptionKey": "api.generated.packages_headless_src_components_input_otp_types.inputotpslotprops.members.char",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/input-otp/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "placeholderChar",
+            "type": "string | null",
+            "required": true,
+            "description": "Placeholder character rendered when the slot is empty.",
+            "descriptionKey": "api.generated.packages_headless_src_components_input_otp_types.inputotpslotprops.members.placeholderchar",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/input-otp/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "isActive",
+            "type": "boolean",
+            "required": true,
+            "description": "Whether the slot is covered by the current selection or caret.",
+            "descriptionKey": "api.generated.packages_headless_src_components_input_otp_types.inputotpslotprops.members.isactive",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/input-otp/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "hasFakeCaret",
+            "type": "boolean",
+            "required": true,
+            "description": "Whether the slot should render a fake caret.",
+            "descriptionKey": "api.generated.packages_headless_src_components_input_otp_types.inputotpslotprops.members.hasfakecaret",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/input-otp/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "InputOtpCompact": {
+      "emits": {
+        "kind": "emits",
+        "name": "InputOtpCompactEmits",
+        "type": "TypeAlias InputOtpCompactEmits: InputOtpRootEmits",
+        "resolvedType": "{ \"update:modelValue\": [value: string]; complete: [value: string]; input: [value: string]; change: [event: Event]; select: [event: Event]; focus: [event: FocusEvent]; blur: [event: FocusEvent]; mouseover: [event: MouseEvent]; mouseleave: [event: MouseEvent]; paste: [event: ClipboardEvent] }",
+        "description": "Events for the InputOtpCompact component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_input_otp_types.inputotpcompactemits.emits",
+        "sourcePath": "packages/headless/src/components/input-otp/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [
+          {
+            "name": "update:modelValue",
+            "type": "[value: string]",
+            "parameters": "value: string",
+            "required": true,
+            "description": "Emitted when the model value changes.",
+            "descriptionKey": "api.generated.packages_headless_src_components_input_otp_types.inputotpcompactemits.callables.update_modelvalue",
+            "sourcePath": "packages/headless/src/components/input-otp/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "complete",
+            "type": "[value: string]",
+            "parameters": "value: string",
+            "required": true,
+            "description": "Emitted when complete occurs.",
+            "descriptionKey": "api.generated.packages_headless_src_components_input_otp_types.inputotpcompactemits.callables.complete",
+            "sourcePath": "packages/headless/src/components/input-otp/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "input",
+            "type": "[value: string]",
+            "parameters": "value: string",
+            "required": true,
+            "description": "Emitted when input occurs.",
+            "descriptionKey": "api.generated.packages_headless_src_components_input_otp_types.inputotpcompactemits.callables.input",
+            "sourcePath": "packages/headless/src/components/input-otp/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "change",
+            "type": "[event: Event]",
+            "parameters": "event: Event",
+            "required": true,
+            "description": "Emitted when change occurs.",
+            "descriptionKey": "api.generated.packages_headless_src_components_input_otp_types.inputotpcompactemits.callables.change",
+            "sourcePath": "packages/headless/src/components/input-otp/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Event",
+                "kind": "interface",
+                "type": "Event",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": null,
+                "sourcePath": "node_modules/.pnpm/typescript@6.0.3/node_modules/typescript/lib/lib.dom.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "select",
+            "type": "[event: Event]",
+            "parameters": "event: Event",
+            "required": true,
+            "description": "Emitted when select occurs.",
+            "descriptionKey": "api.generated.packages_headless_src_components_input_otp_types.inputotpcompactemits.callables.select",
+            "sourcePath": "packages/headless/src/components/input-otp/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Event",
+                "kind": "interface",
+                "type": "Event",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": null,
+                "sourcePath": "node_modules/.pnpm/typescript@6.0.3/node_modules/typescript/lib/lib.dom.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "focus",
+            "type": "[event: FocusEvent]",
+            "parameters": "event: FocusEvent",
+            "required": true,
+            "description": "Emitted when focus occurs.",
+            "descriptionKey": "api.generated.packages_headless_src_components_input_otp_types.inputotpcompactemits.callables.focus",
+            "sourcePath": "packages/headless/src/components/input-otp/types.ts",
+            "referencedTypes": [
+              {
+                "name": "FocusEvent",
+                "kind": "interface",
+                "type": "FocusEvent",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": null,
+                "sourcePath": "node_modules/.pnpm/typescript@6.0.3/node_modules/typescript/lib/lib.dom.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "blur",
+            "type": "[event: FocusEvent]",
+            "parameters": "event: FocusEvent",
+            "required": true,
+            "description": "Emitted when blur occurs.",
+            "descriptionKey": "api.generated.packages_headless_src_components_input_otp_types.inputotpcompactemits.callables.blur",
+            "sourcePath": "packages/headless/src/components/input-otp/types.ts",
+            "referencedTypes": [
+              {
+                "name": "FocusEvent",
+                "kind": "interface",
+                "type": "FocusEvent",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": null,
+                "sourcePath": "node_modules/.pnpm/typescript@6.0.3/node_modules/typescript/lib/lib.dom.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "mouseover",
+            "type": "[event: MouseEvent]",
+            "parameters": "event: MouseEvent",
+            "required": true,
+            "description": "Emitted when mouseover occurs.",
+            "descriptionKey": "api.generated.packages_headless_src_components_input_otp_types.inputotpcompactemits.callables.mouseover",
+            "sourcePath": "packages/headless/src/components/input-otp/types.ts",
+            "referencedTypes": [
+              {
+                "name": "MouseEvent",
+                "kind": "interface",
+                "type": "MouseEvent",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": null,
+                "sourcePath": "node_modules/.pnpm/typescript@6.0.3/node_modules/typescript/lib/lib.dom.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "mouseleave",
+            "type": "[event: MouseEvent]",
+            "parameters": "event: MouseEvent",
+            "required": true,
+            "description": "Emitted when mouseleave occurs.",
+            "descriptionKey": "api.generated.packages_headless_src_components_input_otp_types.inputotpcompactemits.callables.mouseleave",
+            "sourcePath": "packages/headless/src/components/input-otp/types.ts",
+            "referencedTypes": [
+              {
+                "name": "MouseEvent",
+                "kind": "interface",
+                "type": "MouseEvent",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": null,
+                "sourcePath": "node_modules/.pnpm/typescript@6.0.3/node_modules/typescript/lib/lib.dom.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "paste",
+            "type": "[event: ClipboardEvent]",
+            "parameters": "event: ClipboardEvent",
+            "required": true,
+            "description": "Emitted when paste occurs.",
+            "descriptionKey": "api.generated.packages_headless_src_components_input_otp_types.inputotpcompactemits.callables.paste",
+            "sourcePath": "packages/headless/src/components/input-otp/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ClipboardEvent",
+                "kind": "interface",
+                "type": "ClipboardEvent",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": null,
+                "sourcePath": "node_modules/.pnpm/typescript@6.0.3/node_modules/typescript/lib/lib.dom.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "referencedTypes": [
+          {
+            "name": "InputOtpRootEmits",
+            "kind": "typeAlias",
+            "type": "{ 'update:modelValue': [value: string]; complete: [value: string]; input: [value: string]; change: [event: Event]; select: [event: Event]; focus: [event: FocusEvent]; blur: [event: FocusEvent]; mouseover: [event: MouseEvent]; mouseleave: [event: MouseEvent]; paste: [event: ClipboardEvent]; }",
+            "resolvedType": "{ \"update:modelValue\": [value: string]; complete: [value: string]; input: [value: string]; change: [event: Event]; select: [event: Event]; focus: [event: FocusEvent]; blur: [event: FocusEvent]; mouseover: [event: MouseEvent]; mouseleave: [event: MouseEvent]; paste: [event: ClipboardEvent] }",
+            "description": "Events for the InputOtpRoot component.",
+            "descriptionKey": "api.generated.packages_headless_src_components_input_otp_types.inputotprootemits",
+            "sourcePath": "packages/headless/src/components/input-otp/types.ts",
+            "typeParameters": [],
+            "external": false,
+            "members": [],
+            "callables": [
+              {
+                "name": "update:modelValue",
+                "type": "[value: string]",
+                "parameters": "value: string",
+                "required": true,
+                "description": "Emitted when the model value changes.",
+                "descriptionKey": "api.generated.packages_headless_src_components_input_otp_types.inputotprootemits.callables.update_modelvalue",
+                "sourcePath": "packages/headless/src/components/input-otp/types.ts",
+                "referencedTypes": []
+              },
+              {
+                "name": "complete",
+                "type": "[value: string]",
+                "parameters": "value: string",
+                "required": true,
+                "description": "Emitted when complete occurs.",
+                "descriptionKey": "api.generated.packages_headless_src_components_input_otp_types.inputotprootemits.callables.complete",
+                "sourcePath": "packages/headless/src/components/input-otp/types.ts",
+                "referencedTypes": []
+              },
+              {
+                "name": "input",
+                "type": "[value: string]",
+                "parameters": "value: string",
+                "required": true,
+                "description": "Emitted when input occurs.",
+                "descriptionKey": "api.generated.packages_headless_src_components_input_otp_types.inputotprootemits.callables.input",
+                "sourcePath": "packages/headless/src/components/input-otp/types.ts",
+                "referencedTypes": []
+              },
+              {
+                "name": "change",
+                "type": "[event: Event]",
+                "parameters": "event: Event",
+                "required": true,
+                "description": "Emitted when change occurs.",
+                "descriptionKey": "api.generated.packages_headless_src_components_input_otp_types.inputotprootemits.callables.change",
+                "sourcePath": "packages/headless/src/components/input-otp/types.ts",
+                "referencedTypes": []
+              },
+              {
+                "name": "select",
+                "type": "[event: Event]",
+                "parameters": "event: Event",
+                "required": true,
+                "description": "Emitted when select occurs.",
+                "descriptionKey": "api.generated.packages_headless_src_components_input_otp_types.inputotprootemits.callables.select",
+                "sourcePath": "packages/headless/src/components/input-otp/types.ts",
+                "referencedTypes": []
+              },
+              {
+                "name": "focus",
+                "type": "[event: FocusEvent]",
+                "parameters": "event: FocusEvent",
+                "required": true,
+                "description": "Emitted when focus occurs.",
+                "descriptionKey": "api.generated.packages_headless_src_components_input_otp_types.inputotprootemits.callables.focus",
+                "sourcePath": "packages/headless/src/components/input-otp/types.ts",
+                "referencedTypes": []
+              },
+              {
+                "name": "blur",
+                "type": "[event: FocusEvent]",
+                "parameters": "event: FocusEvent",
+                "required": true,
+                "description": "Emitted when blur occurs.",
+                "descriptionKey": "api.generated.packages_headless_src_components_input_otp_types.inputotprootemits.callables.blur",
+                "sourcePath": "packages/headless/src/components/input-otp/types.ts",
+                "referencedTypes": []
+              },
+              {
+                "name": "mouseover",
+                "type": "[event: MouseEvent]",
+                "parameters": "event: MouseEvent",
+                "required": true,
+                "description": "Emitted when mouseover occurs.",
+                "descriptionKey": "api.generated.packages_headless_src_components_input_otp_types.inputotprootemits.callables.mouseover",
+                "sourcePath": "packages/headless/src/components/input-otp/types.ts",
+                "referencedTypes": []
+              },
+              {
+                "name": "mouseleave",
+                "type": "[event: MouseEvent]",
+                "parameters": "event: MouseEvent",
+                "required": true,
+                "description": "Emitted when mouseleave occurs.",
+                "descriptionKey": "api.generated.packages_headless_src_components_input_otp_types.inputotprootemits.callables.mouseleave",
+                "sourcePath": "packages/headless/src/components/input-otp/types.ts",
+                "referencedTypes": []
+              },
+              {
+                "name": "paste",
+                "type": "[event: ClipboardEvent]",
+                "parameters": "event: ClipboardEvent",
+                "required": true,
+                "description": "Emitted when paste occurs.",
+                "descriptionKey": "api.generated.packages_headless_src_components_input_otp_types.inputotprootemits.callables.paste",
+                "sourcePath": "packages/headless/src/components/input-otp/types.ts",
+                "referencedTypes": []
+              }
+            ]
+          }
+        ]
+      },
+      "props": {
+        "kind": "props",
+        "name": "InputOtpCompactProps",
+        "type": "Interface InputOtpCompactProps",
+        "resolvedType": "{ id?: string; autocomplete?: string; autofocus?: boolean; disabled?: boolean; minlength?: number; placeholder?: string; readonly?: boolean; \"aria-label\"?: string; modelValue?: string; defaultValue?: string; maxlength: number; inputmode?: InputOtpInputMode; pattern?: string | RegExp; pushPasswordManagerStrategy?: InputOtpPushPasswordManagerStrategy; pasteTransformer?: ((pasted: string) => string); name?: string; required?: boolean }",
+        "description": "Properties for the InputOtpCompact component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_input_otp_types.inputotpcompactprops.props",
+        "sourcePath": "packages/headless/src/components/input-otp/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "id",
+            "type": "string",
+            "required": false,
+            "description": "The id of the native input element.",
+            "descriptionKey": "api.generated.packages_headless_src_components_input_otp_types.inputotpcompactprops.members.id",
+            "default": null,
+            "inheritedFrom": "id",
+            "sourcePath": "packages/headless/src/components/input-otp/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "autocomplete",
+            "type": "string",
+            "required": false,
+            "description": "Autocomplete hint passed to the native input.",
+            "descriptionKey": "api.generated.packages_headless_src_components_input_otp_types.inputotpcompactprops.members.autocomplete",
+            "default": null,
+            "inheritedFrom": "autocomplete",
+            "sourcePath": "packages/headless/src/components/input-otp/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "autofocus",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether the input should be focused on mount.",
+            "descriptionKey": "api.generated.packages_headless_src_components_input_otp_types.inputotpcompactprops.members.autofocus",
+            "default": null,
+            "inheritedFrom": "autofocus",
+            "sourcePath": "packages/headless/src/components/input-otp/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "disabled",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether the input is disabled.",
+            "descriptionKey": "api.generated.packages_headless_src_components_input_otp_types.inputotpcompactprops.members.disabled",
+            "default": null,
+            "inheritedFrom": "disabled",
+            "sourcePath": "packages/headless/src/components/input-otp/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "minlength",
+            "type": "number",
+            "required": false,
+            "description": "Minimum length forwarded to the native input.",
+            "descriptionKey": "api.generated.packages_headless_src_components_input_otp_types.inputotpcompactprops.members.minlength",
+            "default": null,
+            "inheritedFrom": "minlength",
+            "sourcePath": "packages/headless/src/components/input-otp/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "placeholder",
+            "type": "string",
+            "required": false,
+            "description": "Placeholder characters used by the visual slots.",
+            "descriptionKey": "api.generated.packages_headless_src_components_input_otp_types.inputotpcompactprops.members.placeholder",
+            "default": null,
+            "inheritedFrom": "placeholder",
+            "sourcePath": "packages/headless/src/components/input-otp/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "readonly",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether the input is readonly.",
+            "descriptionKey": "api.generated.packages_headless_src_components_input_otp_types.inputotpcompactprops.members.readonly",
+            "default": null,
+            "inheritedFrom": "readonly",
+            "sourcePath": "packages/headless/src/components/input-otp/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "aria-label",
+            "type": "string",
+            "required": false,
+            "description": "Accessible label forwarded to the native input.",
+            "descriptionKey": "api.generated.packages_headless_src_components_input_otp_types.inputotpcompactprops.members.aria_label",
+            "default": null,
+            "inheritedFrom": "aria-label",
+            "sourcePath": "packages/headless/src/components/input-otp/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "modelValue",
+            "type": "string",
+            "required": false,
+            "description": "The controlled value of the OTP input.",
+            "descriptionKey": "api.generated.packages_headless_src_components_input_otp_types.inputotpcompactprops.members.modelvalue",
+            "default": null,
+            "inheritedFrom": "modelValue",
+            "sourcePath": "packages/headless/src/components/input-otp/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "defaultValue",
+            "type": "string",
+            "required": false,
+            "description": "The uncontrolled default value of the OTP input.",
+            "descriptionKey": "api.generated.packages_headless_src_components_input_otp_types.inputotpcompactprops.members.defaultvalue",
+            "default": null,
+            "inheritedFrom": "defaultValue",
+            "sourcePath": "packages/headless/src/components/input-otp/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "maxlength",
+            "type": "number",
+            "required": true,
+            "description": "The number of OTP slots.",
+            "descriptionKey": "api.generated.packages_headless_src_components_input_otp_types.inputotpcompactprops.members.maxlength",
+            "default": null,
+            "inheritedFrom": "maxlength",
+            "sourcePath": "packages/headless/src/components/input-otp/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "inputmode",
+            "type": "InputOtpInputMode",
+            "required": false,
+            "description": "Virtual keyboard mode for mobile devices.",
+            "descriptionKey": "api.generated.packages_headless_src_components_input_otp_types.inputotpcompactprops.members.inputmode",
+            "default": null,
+            "inheritedFrom": "inputmode",
+            "sourcePath": "packages/headless/src/components/input-otp/types.ts",
+            "referencedTypes": [
+              {
+                "name": "InputOtpInputMode",
+                "kind": "typeAlias",
+                "type": "'text' | 'numeric'",
+                "resolvedType": "'text' | 'numeric'",
+                "description": "Type information for InputOtpInputMode.",
+                "descriptionKey": "api.generated.packages_headless_src_components_input_otp_types.inputotpinputmode",
+                "sourcePath": "packages/headless/src/components/input-otp/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "pattern",
+            "type": "string | RegExp",
+            "required": false,
+            "description": "Pattern used to validate the whole OTP value.",
+            "descriptionKey": "api.generated.packages_headless_src_components_input_otp_types.inputotpcompactprops.members.pattern",
+            "default": null,
+            "inheritedFrom": "pattern",
+            "sourcePath": "packages/headless/src/components/input-otp/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "pushPasswordManagerStrategy",
+            "type": "InputOtpPushPasswordManagerStrategy",
+            "required": false,
+            "description": "Strategy used to avoid overlapping password manager badges.",
+            "descriptionKey": "api.generated.packages_headless_src_components_input_otp_types.inputotpcompactprops.members.pushpasswordmanagerstrategy",
+            "default": null,
+            "inheritedFrom": "pushPasswordManagerStrategy",
+            "sourcePath": "packages/headless/src/components/input-otp/types.ts",
+            "referencedTypes": [
+              {
+                "name": "InputOtpPushPasswordManagerStrategy",
+                "kind": "typeAlias",
+                "type": "'none' | 'increase-width'",
+                "resolvedType": "'none' | 'increase-width'",
+                "description": "Type information for InputOtpPushPasswordManagerStrategy.",
+                "descriptionKey": "api.generated.packages_headless_src_components_input_otp_types.inputotppushpasswordmanagerstrategy",
+                "sourcePath": "packages/headless/src/components/input-otp/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "pasteTransformer",
+            "type": "((pasted: string) => string)",
+            "required": false,
+            "description": "Transform pasted content before it is inserted.",
+            "descriptionKey": "api.generated.packages_headless_src_components_input_otp_types.inputotpcompactprops.members.pastetransformer",
+            "default": null,
+            "inheritedFrom": "pasteTransformer",
+            "sourcePath": "packages/headless/src/components/input-otp/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "name",
+            "type": "string",
+            "required": false,
+            "description": "The name of the field. Submitted with its owning form as part of a name/value pair.",
+            "descriptionKey": "api.generated.packages_headless_src_components_input_otp_types.inputotpcompactprops.members.name",
+            "default": null,
+            "inheritedFrom": "name",
+            "sourcePath": "packages/headless/src/types/component.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "required",
+            "type": "boolean",
+            "required": false,
+            "description": "When `true`, indicates that the user must set the value before the owning form can be submitted.",
+            "descriptionKey": "api.generated.packages_headless_src_components_input_otp_types.inputotpcompactprops.members.required",
+            "default": null,
+            "inheritedFrom": "required",
+            "sourcePath": "packages/headless/src/types/component.ts",
+            "referencedTypes": []
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      },
+      "slots": {
+        "kind": "slots",
+        "name": "InputOtpCompactSlots",
+        "type": "TypeAlias InputOtpCompactSlots",
+        "resolvedType": "{ InputOtpRoot?: ((props: InputOtpRootSlotProps) => any) }",
+        "description": "Slots for the InputOtpCompact component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_input_otp_types.inputotpcompactslots.slots",
+        "sourcePath": "packages/headless/src/components/input-otp/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [
+          {
+            "name": "default",
+            "type": "((props: InputOtpRootSlotProps) => any) | undefined",
+            "parameters": "((props: InputOtpRootSlotProps) => any) | undefined",
+            "required": false,
+            "description": "Custom content for the default slot.",
+            "descriptionKey": "api.generated.packages_headless_src_components_input_otp_types.inputotpcompactslots.callables.default",
+            "sourcePath": "packages/headless/src/components/input-otp/types.ts",
+            "referencedTypes": [
+              {
+                "name": "InputOtpRootSlotProps",
+                "kind": "interface",
+                "type": "InputOtpRootSlotProps",
+                "resolvedType": null,
+                "description": "Slot properties for the InputOtpRoot component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_input_otp_types.inputotprootslotprops",
+                "sourcePath": "packages/headless/src/components/input-otp/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "referencedTypes": []
+      }
+    },
+    "InputOtpInput": {
+      "props": {
+        "kind": "props",
+        "name": "InputOtpInputProps",
+        "type": "Interface InputOtpInputProps",
+        "resolvedType": null,
+        "description": "Properties for the InputOtpInput component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_input_otp_types.inputotpinputprops.props",
+        "sourcePath": "packages/headless/src/components/input-otp/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "InputOtpPositioner": {
+      "props": {
+        "kind": "props",
+        "name": "InputOtpPositionerProps",
+        "type": "Interface InputOtpPositionerProps",
+        "resolvedType": null,
+        "description": "Properties for the InputOtpPositioner component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_input_otp_types.inputotppositionerprops.props",
+        "sourcePath": "packages/headless/src/components/input-otp/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "InputOtpRoot": {
+      "emits": {
+        "kind": "emits",
+        "name": "InputOtpRootEmits",
+        "type": "TypeAlias InputOtpRootEmits",
+        "resolvedType": "{ \"update:modelValue\": [value: string]; complete: [value: string]; input: [value: string]; change: [event: Event]; select: [event: Event]; focus: [event: FocusEvent]; blur: [event: FocusEvent]; mouseover: [event: MouseEvent]; mouseleave: [event: MouseEvent]; paste: [event: ClipboardEvent] }",
+        "description": "Events for the InputOtpRoot component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_input_otp_types.inputotprootemits.emits",
+        "sourcePath": "packages/headless/src/components/input-otp/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [
+          {
+            "name": "update:modelValue",
+            "type": "[value: string]",
+            "parameters": "value: string",
+            "required": true,
+            "description": "Emitted when the model value changes.",
+            "descriptionKey": "api.generated.packages_headless_src_components_input_otp_types.inputotprootemits.callables.update_modelvalue",
+            "sourcePath": "packages/headless/src/components/input-otp/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "complete",
+            "type": "[value: string]",
+            "parameters": "value: string",
+            "required": true,
+            "description": "Emitted when complete occurs.",
+            "descriptionKey": "api.generated.packages_headless_src_components_input_otp_types.inputotprootemits.callables.complete",
+            "sourcePath": "packages/headless/src/components/input-otp/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "input",
+            "type": "[value: string]",
+            "parameters": "value: string",
+            "required": true,
+            "description": "Emitted when input occurs.",
+            "descriptionKey": "api.generated.packages_headless_src_components_input_otp_types.inputotprootemits.callables.input",
+            "sourcePath": "packages/headless/src/components/input-otp/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "change",
+            "type": "[event: Event]",
+            "parameters": "event: Event",
+            "required": true,
+            "description": "Emitted when change occurs.",
+            "descriptionKey": "api.generated.packages_headless_src_components_input_otp_types.inputotprootemits.callables.change",
+            "sourcePath": "packages/headless/src/components/input-otp/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Event",
+                "kind": "interface",
+                "type": "Event",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": null,
+                "sourcePath": "node_modules/.pnpm/typescript@6.0.3/node_modules/typescript/lib/lib.dom.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "select",
+            "type": "[event: Event]",
+            "parameters": "event: Event",
+            "required": true,
+            "description": "Emitted when select occurs.",
+            "descriptionKey": "api.generated.packages_headless_src_components_input_otp_types.inputotprootemits.callables.select",
+            "sourcePath": "packages/headless/src/components/input-otp/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Event",
+                "kind": "interface",
+                "type": "Event",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": null,
+                "sourcePath": "node_modules/.pnpm/typescript@6.0.3/node_modules/typescript/lib/lib.dom.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "focus",
+            "type": "[event: FocusEvent]",
+            "parameters": "event: FocusEvent",
+            "required": true,
+            "description": "Emitted when focus occurs.",
+            "descriptionKey": "api.generated.packages_headless_src_components_input_otp_types.inputotprootemits.callables.focus",
+            "sourcePath": "packages/headless/src/components/input-otp/types.ts",
+            "referencedTypes": [
+              {
+                "name": "FocusEvent",
+                "kind": "interface",
+                "type": "FocusEvent",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": null,
+                "sourcePath": "node_modules/.pnpm/typescript@6.0.3/node_modules/typescript/lib/lib.dom.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "blur",
+            "type": "[event: FocusEvent]",
+            "parameters": "event: FocusEvent",
+            "required": true,
+            "description": "Emitted when blur occurs.",
+            "descriptionKey": "api.generated.packages_headless_src_components_input_otp_types.inputotprootemits.callables.blur",
+            "sourcePath": "packages/headless/src/components/input-otp/types.ts",
+            "referencedTypes": [
+              {
+                "name": "FocusEvent",
+                "kind": "interface",
+                "type": "FocusEvent",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": null,
+                "sourcePath": "node_modules/.pnpm/typescript@6.0.3/node_modules/typescript/lib/lib.dom.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "mouseover",
+            "type": "[event: MouseEvent]",
+            "parameters": "event: MouseEvent",
+            "required": true,
+            "description": "Emitted when mouseover occurs.",
+            "descriptionKey": "api.generated.packages_headless_src_components_input_otp_types.inputotprootemits.callables.mouseover",
+            "sourcePath": "packages/headless/src/components/input-otp/types.ts",
+            "referencedTypes": [
+              {
+                "name": "MouseEvent",
+                "kind": "interface",
+                "type": "MouseEvent",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": null,
+                "sourcePath": "node_modules/.pnpm/typescript@6.0.3/node_modules/typescript/lib/lib.dom.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "mouseleave",
+            "type": "[event: MouseEvent]",
+            "parameters": "event: MouseEvent",
+            "required": true,
+            "description": "Emitted when mouseleave occurs.",
+            "descriptionKey": "api.generated.packages_headless_src_components_input_otp_types.inputotprootemits.callables.mouseleave",
+            "sourcePath": "packages/headless/src/components/input-otp/types.ts",
+            "referencedTypes": [
+              {
+                "name": "MouseEvent",
+                "kind": "interface",
+                "type": "MouseEvent",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": null,
+                "sourcePath": "node_modules/.pnpm/typescript@6.0.3/node_modules/typescript/lib/lib.dom.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "paste",
+            "type": "[event: ClipboardEvent]",
+            "parameters": "event: ClipboardEvent",
+            "required": true,
+            "description": "Emitted when paste occurs.",
+            "descriptionKey": "api.generated.packages_headless_src_components_input_otp_types.inputotprootemits.callables.paste",
+            "sourcePath": "packages/headless/src/components/input-otp/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ClipboardEvent",
+                "kind": "interface",
+                "type": "ClipboardEvent",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": null,
+                "sourcePath": "node_modules/.pnpm/typescript@6.0.3/node_modules/typescript/lib/lib.dom.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "referencedTypes": []
+      },
+      "props": {
+        "kind": "props",
+        "name": "InputOtpRootProps",
+        "type": "Interface InputOtpRootProps",
+        "resolvedType": "{ id?: string; autocomplete?: string; autofocus?: boolean; disabled?: boolean; minlength?: number; placeholder?: string; readonly?: boolean; \"aria-label\"?: string; modelValue?: string; defaultValue?: string; maxlength: number; inputmode?: InputOtpInputMode; pattern?: string | RegExp; pushPasswordManagerStrategy?: InputOtpPushPasswordManagerStrategy; pasteTransformer?: ((pasted: string) => string); name?: string; required?: boolean }",
+        "description": "Properties for the InputOtpRoot component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_input_otp_types.inputotprootprops.props",
+        "sourcePath": "packages/headless/src/components/input-otp/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "id",
+            "type": "string",
+            "required": false,
+            "description": "The id of the native input element.",
+            "descriptionKey": "api.generated.packages_headless_src_components_input_otp_types.inputotprootprops.members.id",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/input-otp/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "autocomplete",
+            "type": "string",
+            "required": false,
+            "description": "Autocomplete hint passed to the native input.",
+            "descriptionKey": "api.generated.packages_headless_src_components_input_otp_types.inputotprootprops.members.autocomplete",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/input-otp/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "autofocus",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether the input should be focused on mount.",
+            "descriptionKey": "api.generated.packages_headless_src_components_input_otp_types.inputotprootprops.members.autofocus",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/input-otp/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "disabled",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether the input is disabled.",
+            "descriptionKey": "api.generated.packages_headless_src_components_input_otp_types.inputotprootprops.members.disabled",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/input-otp/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "minlength",
+            "type": "number",
+            "required": false,
+            "description": "Minimum length forwarded to the native input.",
+            "descriptionKey": "api.generated.packages_headless_src_components_input_otp_types.inputotprootprops.members.minlength",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/input-otp/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "placeholder",
+            "type": "string",
+            "required": false,
+            "description": "Placeholder characters used by the visual slots.",
+            "descriptionKey": "api.generated.packages_headless_src_components_input_otp_types.inputotprootprops.members.placeholder",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/input-otp/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "readonly",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether the input is readonly.",
+            "descriptionKey": "api.generated.packages_headless_src_components_input_otp_types.inputotprootprops.members.readonly",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/input-otp/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "aria-label",
+            "type": "string",
+            "required": false,
+            "description": "Accessible label forwarded to the native input.",
+            "descriptionKey": "api.generated.packages_headless_src_components_input_otp_types.inputotprootprops.members.aria_label",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/input-otp/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "modelValue",
+            "type": "string",
+            "required": false,
+            "description": "The controlled value of the OTP input.",
+            "descriptionKey": "api.generated.packages_headless_src_components_input_otp_types.inputotprootprops.members.modelvalue",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/input-otp/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "defaultValue",
+            "type": "string",
+            "required": false,
+            "description": "The uncontrolled default value of the OTP input.",
+            "descriptionKey": "api.generated.packages_headless_src_components_input_otp_types.inputotprootprops.members.defaultvalue",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/input-otp/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "maxlength",
+            "type": "number",
+            "required": true,
+            "description": "The number of OTP slots.",
+            "descriptionKey": "api.generated.packages_headless_src_components_input_otp_types.inputotprootprops.members.maxlength",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/input-otp/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "inputmode",
+            "type": "InputOtpInputMode",
+            "required": false,
+            "description": "Virtual keyboard mode for mobile devices.",
+            "descriptionKey": "api.generated.packages_headless_src_components_input_otp_types.inputotprootprops.members.inputmode",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/input-otp/types.ts",
+            "referencedTypes": [
+              {
+                "name": "InputOtpInputMode",
+                "kind": "typeAlias",
+                "type": "'text' | 'numeric'",
+                "resolvedType": "'text' | 'numeric'",
+                "description": "Type information for InputOtpInputMode.",
+                "descriptionKey": "api.generated.packages_headless_src_components_input_otp_types.inputotpinputmode",
+                "sourcePath": "packages/headless/src/components/input-otp/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "pattern",
+            "type": "string | RegExp",
+            "required": false,
+            "description": "Pattern used to validate the whole OTP value.",
+            "descriptionKey": "api.generated.packages_headless_src_components_input_otp_types.inputotprootprops.members.pattern",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/input-otp/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "pushPasswordManagerStrategy",
+            "type": "InputOtpPushPasswordManagerStrategy",
+            "required": false,
+            "description": "Strategy used to avoid overlapping password manager badges.",
+            "descriptionKey": "api.generated.packages_headless_src_components_input_otp_types.inputotprootprops.members.pushpasswordmanagerstrategy",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/input-otp/types.ts",
+            "referencedTypes": [
+              {
+                "name": "InputOtpPushPasswordManagerStrategy",
+                "kind": "typeAlias",
+                "type": "'none' | 'increase-width'",
+                "resolvedType": "'none' | 'increase-width'",
+                "description": "Type information for InputOtpPushPasswordManagerStrategy.",
+                "descriptionKey": "api.generated.packages_headless_src_components_input_otp_types.inputotppushpasswordmanagerstrategy",
+                "sourcePath": "packages/headless/src/components/input-otp/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "pasteTransformer",
+            "type": "((pasted: string) => string)",
+            "required": false,
+            "description": "Transform pasted content before it is inserted.",
+            "descriptionKey": "api.generated.packages_headless_src_components_input_otp_types.inputotprootprops.members.pastetransformer",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/input-otp/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "name",
+            "type": "string",
+            "required": false,
+            "description": "The name of the field. Submitted with its owning form as part of a name/value pair.",
+            "descriptionKey": "api.generated.packages_headless_src_components_input_otp_types.inputotprootprops.members.name",
+            "default": null,
+            "inheritedFrom": "name",
+            "sourcePath": "packages/headless/src/types/component.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "required",
+            "type": "boolean",
+            "required": false,
+            "description": "When `true`, indicates that the user must set the value before the owning form can be submitted.",
+            "descriptionKey": "api.generated.packages_headless_src_components_input_otp_types.inputotprootprops.members.required",
+            "default": null,
+            "inheritedFrom": "required",
+            "sourcePath": "packages/headless/src/types/component.ts",
+            "referencedTypes": []
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      },
+      "slotProps": {
+        "kind": "slotProps",
+        "name": "InputOtpRootSlotProps",
+        "type": "Interface InputOtpRootSlotProps",
+        "resolvedType": "{ slots: InputOtpSlotProps[]; isFocused: boolean; isHovering: boolean }",
+        "description": "Slot properties for the InputOtpRoot component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_input_otp_types.inputotprootslotprops.slotprops",
+        "sourcePath": "packages/headless/src/components/input-otp/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "slots",
+            "type": "InputOtpSlotProps[]",
+            "required": true,
+            "description": "Slots exposed in the slot scope.",
+            "descriptionKey": "api.generated.packages_headless_src_components_input_otp_types.inputotprootslotprops.members.slots",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/input-otp/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "isFocused",
+            "type": "boolean",
+            "required": true,
+            "description": "Whether the item is focused.",
+            "descriptionKey": "api.generated.packages_headless_src_components_input_otp_types.inputotprootslotprops.members.isfocused",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/input-otp/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "isHovering",
+            "type": "boolean",
+            "required": true,
+            "description": "Whether the item is hovered.",
+            "descriptionKey": "api.generated.packages_headless_src_components_input_otp_types.inputotprootslotprops.members.ishovering",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/input-otp/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      }
+    }
+  }
+}

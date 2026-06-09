@@ -1,5 +1,5 @@
 ---
-applyTo: 'src/components/**/*.{ts,vue}'
+applyTo: 'packages/ui/src/components/**/*.{ts,vue}'
 ---
 
 # SoybeanUI UI 层规范
@@ -14,10 +14,10 @@ applyTo: 'src/components/**/*.{ts,vue}'
 
 ## 实现顺序
 
-1. `src/styles/{name}.ts`
+1. `packages/ui/src/styles/{name}.ts`
 2. `types.ts`
 3. wrapper `.vue`
-4. `index.ts` 与 `src/index.ts`
+4. `index.ts` 与 `packages/ui/src/index.ts`
 5. 运行 `pnpm sui ui`
 
 ## Step 1：style recipe
@@ -87,12 +87,12 @@ applyTo: 'src/components/**/*.{ts,vue}'
 
 ## Step 5：注册到 UI 出口
 
-- 更新 `src/index.ts`
-- 运行 `pnpm sui ui` 更新 `src/constants/components.ts`（该文件由脚本生成，不要手动编辑）
+- 更新 `packages/ui/src/index.ts`
+- 运行 `pnpm sui ui` 更新 `packages/ui/src/constants/components.ts`（该文件由脚本生成，不要手动编辑）
 
 ## 禁止反模式
 
-- `src/styles/{name}.ts` 缺少 `// @unocss-include`
+- `packages/ui/src/styles/{name}.ts` 缺少 `// @unocss-include`
 - `slots` key 与 `{Name}UiSlot` 不一致
 - `useOmitProps` 遗漏 `class`
 - recipe 调用遗漏 `props.ui` 或 `{ root: props.class }`
