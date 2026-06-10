@@ -1,5 +1,15 @@
 # Changelog
 
+## [v0.29.0-beta.5](https://github.com/soybeanjs/soybean-ui/compare/v0.29.0-beta.4...v0.29.0-beta.5) (2026-06-10)
+
+### &nbsp;&nbsp;&nbsp;🚀 Features
+
+- **sbean**: add registry fetching capabilities and enhance configuration &nbsp;-&nbsp; by **soybeanfe** [<samp>(06c40)</samp>](https://github.com/soybeanjs/soybean-ui/commit/06c40eb26)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[soybeanfe](mailto:honghuangdc@gmail.com)
+
 ## [v0.29.0-beta.4](https://github.com/soybeanjs/soybean-ui/compare/v0.29.0-beta.3...v0.29.0-beta.4) (2026-06-10)
 
 ### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes

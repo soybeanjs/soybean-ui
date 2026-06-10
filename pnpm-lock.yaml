@@ -134,15 +134,6 @@ importers:
         specifier: ^0.10.0
         version: 0.10.0
 
-  apps/example:
-    dependencies:
-      '@soybeanjs/cva':
-        specifier: ^0.0.9
-        version: 0.0.9
-      '@soybeanjs/headless':
-        specifier: ^0.29.0-beta.4
-        version: link:../../packages/headless
-
   apps/nuxt:
     dependencies:
       '@nuxt/icon':
