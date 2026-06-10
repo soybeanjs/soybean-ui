@@ -1,6 +1,6 @@
 {
   "name": "@soybeanjs/ui-docs",
-  "version": "0.29.0-beta.2",
+  "version": "0.29.0-beta.3",
   "private": true,
   "description": "SoybeanUI Docs is a documentation for SoybeanUI. It is designed to be easy to use and understand.",
   "author": {
@@ -10,8 +10,8 @@
   },
   "type": "module",
   "scripts": {
-    "build": "node ../../packages/sbean/dist/index.mjs build registry.json -o public/r --cwd ../.. && vite-ssg build",
-    "build:registry": "node ../../packages/sbean/dist/index.mjs build registry.json -o public/r --cwd ../..",
+    "build": "pnpm build:registry && vite-ssg build",
+    "build:registry": "tsx ../../packages/sbean/src/index.ts build registry.json -o public/r --cwd ../..",
     "dev": "vite",
     "preview": "vite preview",
     "typecheck": "vue-tsc --noEmit --skipLibCheck"

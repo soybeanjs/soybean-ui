@@ -1,5 +1,15 @@
 # Changelog
 
+## [v0.29.0-beta.3](https://github.com/soybeanjs/soybean-ui/compare/v0.29.0-beta.2...v0.29.0-beta.3) (2026-06-10)
+
+### &nbsp;&nbsp;&nbsp;🚀 Features
+
+- **sbean**: add sbean CLI tool for component copy-paste &nbsp;-&nbsp; by **soybeanfe** [<samp>(faeb1)</samp>](https://github.com/soybeanjs/soybean-ui/commit/faeb1b1c2)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[soybeanfe](mailto:honghuangdc@gmail.com)
+
 ## [v0.29.0-beta.2](https://github.com/soybeanjs/soybean-ui/compare/v0.29.0-beta.1...v0.29.0-beta.2) (2026-06-10)
 
 ### &nbsp;&nbsp;&nbsp;🛠 Optimizations

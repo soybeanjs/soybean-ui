@@ -719,5 +719,6 @@
         }
       ]
     }
-  ]
+  ],
+  "$schema": "https://ui.soybeanjs.cn/schema/registry.json"
 }
