@@ -18,6 +18,21 @@
       "path": "packages/ui/src/styles/skeleton.ts",
       "type": "registry:style",
       "content": "// @unocss-include\nimport { cv } from '@soybeanjs/cva';\nimport type { VariantProps } from '@soybeanjs/cva';\n\nexport const skeletonVariants = cv({\n  base: 'block shrink-0 bg-muted',\n  variants: {\n    size: {\n      xs: 'h-3 w-16',\n      sm: 'h-4 w-24',\n      md: 'h-5 w-32',\n      lg: 'h-6 w-40',\n      xl: 'h-8 w-48',\n      '2xl': 'h-10 w-56'\n    },\n    shape: {\n      auto: 'rounded-md',\n      rounded: 'rounded-full'\n    },\n    animated: {\n      true: 'animate-pulse',\n      false: ''\n    }\n  },\n  defaultVariants: {\n    size: 'md',\n    shape: 'auto',\n    animated: true\n  }\n});\n\ntype SkeletonVariants = VariantProps<typeof skeletonVariants>;\n\nexport type SkeletonShape = NonNullable<SkeletonVariants['shape']>;\n"
+    },
+    {
+      "path": "packages/ui/src/theme/index.ts",
+      "type": "registry:theme",
+      "content": "export * from './config';\n\nexport type * from './types';\n"
+    },
+    {
+      "path": "packages/ui/src/theme/config.ts",
+      "type": "registry:theme",
+      "content": "import type { ThemeSize } from './types';\n\nexport const themeSizeMap: Record<ThemeSize, number> = {\n  xs: 12,\n  sm: 14,\n  md: 16,\n  lg: 18,\n  xl: 20,\n  '2xl': 24\n};\nexport const miniSizeMap: Record<ThemeSize, ThemeSize> = {\n  xs: 'xs',\n  sm: 'xs',\n  md: 'sm',\n  lg: 'md',\n  xl: 'lg',\n  '2xl': 'xl'\n};\n\nexport const themeSizeRatio = Object.fromEntries(\n  Object.entries(themeSizeMap).map(([key, value]) => [key, value / themeSizeMap.md])\n) as Record<ThemeSize, number>;\n"
+    },
+    {
+      "path": "packages/ui/src/theme/types.ts",
+      "type": "registry:theme",
+      "content": "export type ThemeColor = 'primary' | 'destructive' | 'success' | 'warning' | 'info' | 'carbon' | 'secondary' | 'accent';\n\nexport type ThemeSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl';\n"
     }
   ],
   "categories": ["display", "feedback"],

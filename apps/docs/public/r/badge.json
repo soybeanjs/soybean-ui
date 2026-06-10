@@ -18,6 +18,21 @@
       "path": "packages/ui/src/styles/badge.ts",
       "type": "registry:style",
       "content": "// @unocss-include\nimport { scv } from '@soybeanjs/cva';\nimport type { VariantProps } from '@soybeanjs/cva';\n\nexport const badgeVariants = scv({\n  slots: {\n    root: 'relative inline-block',\n    content: `absolute flex justify-center items-center leading-relaxed whitespace-nowrap rounded-full transform`\n  },\n  variants: {\n    color: {\n      primary: {\n        content: 'bg-primary text-primary-foreground'\n      },\n      destructive: {\n        content: 'bg-destructive text-destructive-foreground'\n      },\n      success: {\n        content: 'bg-success text-success-foreground'\n      },\n      warning: {\n        content: 'bg-warning text-warning-foreground'\n      },\n      info: {\n        content: 'bg-info text-info-foreground'\n      },\n      carbon: {\n        content: 'bg-carbon text-carbon-foreground'\n      },\n      secondary: {\n        content: 'bg-secondary text-secondary-foreground'\n      },\n      accent: {\n        content: 'bg-accent text-accent-foreground'\n      }\n    },\n    size: {\n      xs: {\n        content: `min-h-2 px-1 text-4xs`\n      },\n      sm: {\n        content: `min-h-2.5 px-1.25 text-3xs`\n      },\n      md: {\n        content: `min-h-3 px-1.5 text-2xs`\n      },\n      lg: {\n        content: `min-h-3.5 px-1.75 text-xs`\n      },\n      xl: {\n        content: `min-h-4 px-2 text-sm`\n      },\n      '2xl': {\n        content: `min-h-5 px-2.5 text-base`\n      }\n    },\n    position: {\n      'top-right': {\n        content: 'end-0 top-0 translate-x-1/2 -translate-y-1/2 rtl:-translate-x-1/2'\n      },\n      'bottom-right': {\n        content: 'end-0 bottom-0 translate-x-1/2 translate-y-1/2 rtl:-translate-x-1/2'\n      },\n      'top-left': {\n        content: 'start-0 top-0 -translate-x-1/2 -translate-y-1/2 rtl:translate-x-1/2'\n      },\n      'bottom-left': {\n        content: 'start-0 bottom-0 -translate-x-1/2 translate-y-1/2 rtl:translate-x-1/2'\n      }\n    }\n  },\n  defaultVariants: {\n    color: 'primary',\n    size: 'md',\n    position: 'top-right'\n  }\n});\n\ntype BadgeVariants = VariantProps<typeof badgeVariants>;\n\nexport type BadgePosition = NonNullable<BadgeVariants['position']>;\n"
+    },
+    {
+      "path": "packages/ui/src/theme/index.ts",
+      "type": "registry:theme",
+      "content": "export * from './config';\n\nexport type * from './types';\n"
+    },
+    {
+      "path": "packages/ui/src/theme/config.ts",
+      "type": "registry:theme",
+      "content": "import type { ThemeSize } from './types';\n\nexport const themeSizeMap: Record<ThemeSize, number> = {\n  xs: 12,\n  sm: 14,\n  md: 16,\n  lg: 18,\n  xl: 20,\n  '2xl': 24\n};\nexport const miniSizeMap: Record<ThemeSize, ThemeSize> = {\n  xs: 'xs',\n  sm: 'xs',\n  md: 'sm',\n  lg: 'md',\n  xl: 'lg',\n  '2xl': 'xl'\n};\n\nexport const themeSizeRatio = Object.fromEntries(\n  Object.entries(themeSizeMap).map(([key, value]) => [key, value / themeSizeMap.md])\n) as Record<ThemeSize, number>;\n"
+    },
+    {
+      "path": "packages/ui/src/theme/types.ts",
+      "type": "registry:theme",
+      "content": "export type ThemeColor = 'primary' | 'destructive' | 'success' | 'warning' | 'info' | 'carbon' | 'secondary' | 'accent';\n\nexport type ThemeSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl';\n"
     }
   ],
   "categories": ["display", "status"],

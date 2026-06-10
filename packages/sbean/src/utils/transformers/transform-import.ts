@@ -50,11 +50,10 @@ export function transformImports(source: string, ctx: TransformContext, style: s
   result = result.replace(new RegExp(`@/registry/${style}/lib/utils`, 'g'), ctx.utilsAlias);
 
   // Rewrite @/styles/ → user's ui alias/styles
-  const uiDir = ctx.uiAlias.replace(/\/ui$/, '');
-  result = result.replace(/@\/styles\//g, `${uiDir}/styles/`);
+  result = result.replace(/@\/styles\//g, `${ctx.uiAlias}/styles/`);
 
-  // Rewrite @/theme → user's lib alias/theme
-  result = result.replace(/@\/theme/g, `${ctx.libAlias}/theme`);
+  // Rewrite @/theme → user's ui alias/theme
+  result = result.replace(/@\/theme/g, `${ctx.uiAlias}/theme`);
 
   // Rewrite @/components/ → user's components alias
   if (ctx.componentsAlias !== '@/components') {

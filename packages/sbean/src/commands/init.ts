@@ -74,6 +74,36 @@ function generateUnoConfigContent(base: string, primary: string, radius: string)
   ].join('\n')}\n`;
 }
 
+function generateTsConfigContent(): string {
+  return `${[
+    '{',
+    '  "compilerOptions": {',
+    '    "target": "ESNext",',
+    '    "jsx": "preserve",',
+    '    "jsxImportSource": "vue",',
+    '    "lib": ["DOM", "ESNext"],',
+    '    "module": "ESNext",',
+    '    "moduleResolution": "bundler",',
+    '    "paths": {',
+    '      "@/*": ["./src/*"]',
+    '    },',
+    '    "types": ["node", "vite/client"],',
+    '    "resolveJsonModule": true,',
+    '    "strict": true,',
+    '    "strictNullChecks": true,',
+    '    "noUnusedLocals": true,',
+    '    "allowSyntheticDefaultImports": true,',
+    '    "esModuleInterop": true,',
+    '    "forceConsistentCasingInFileNames": true,',
+    '    "isolatedModules": true',
+    '   },',
+    '  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue", "vite.config.ts", "uno.config.ts"]',
+    '  "exclude": ["node_modules", "dist"]',
+    '}'
+  ].join('\n')}\n`;
+}
+// '  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue", "vite.config.ts", "uno.config.ts"]',
+
 // ---------------------------------------------------------------------------
 // Command definition
 // ---------------------------------------------------------------------------
@@ -228,6 +258,8 @@ export async function runInit(opts: InitActionOptions) {
     console.log('  Required: presetShadcn({ generated: true, ... })');
   }
 
+  await ensureTypeScriptConfig(cwd);
+
   console.log('\nDone! Run "sbean add <component>" to add components.');
 }
 
@@ -256,6 +288,7 @@ async function scaffoldProject(cwd: string, name?: string) {
     },
     devDependencies: {
       '@vitejs/plugin-vue': '^5.0.0',
+      typescript: '^5.8.0',
       vite: '^6.0.0'
     }
   };
@@ -296,4 +329,30 @@ async function scaffoldProject(cwd: string, name?: string) {
   );
 
   console.log(`✔ Scaffolded Vue + Vite project: ${projectName}`);
+}
+
+async function ensureTypeScriptConfig(cwd: string) {
+  const tsconfigPath = path.join(cwd, 'tsconfig.json');
+  const viteEnvPath = path.join(cwd, 'src', 'vite-env.d.ts');
+
+  const tsconfigExists = await fileExists(tsconfigPath);
+  if (!tsconfigExists) {
+    await fs.writeFile(tsconfigPath, generateTsConfigContent(), 'utf-8');
+    console.log('✔ Created tsconfig.json');
+  }
+
+  const viteEnvExists = await fileExists(viteEnvPath);
+  if (!viteEnvExists) {
+    await fs.writeFile(viteEnvPath, '/// <reference types="vite/client" />\n', 'utf-8');
+    console.log('✔ Created src/vite-env.d.ts');
+  }
+}
+
+async function fileExists(filePath: string): Promise<boolean> {
+  try {
+    await fs.access(filePath);
+    return true;
+  } catch {
+    return false;
+  }
 }

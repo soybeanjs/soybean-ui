@@ -8,6 +8,12 @@ export interface UpdateFilesOptions {
   overwrite: boolean;
   style: string;
   transformCtx: TransformContext;
+  libDir: string;
+}
+
+interface ResolveTargetPathOptions {
+  uiDir: string;
+  libDir: string;
 }
 
 /**
@@ -23,7 +29,10 @@ export async function updateFiles(
   for (const file of files) {
     if (!file.content) continue;
 
-    const targetPath = resolveTargetPath(file, targetDir);
+    const targetPath = resolveTargetPath(file, {
+      uiDir: targetDir,
+      libDir: options.libDir
+    });
 
     // Check if file exists and handle overwrite
     const exists = await fileExists(targetPath);
@@ -55,32 +64,59 @@ export async function updateFiles(
 /**
  * Resolve where a registry file should be placed in the user's project.
  */
-function resolveTargetPath(file: RegistryItemFile, targetDir: string): string {
+export function resolveTargetPath(file: RegistryItemFile, options: ResolveTargetPathOptions): string {
   // If the file has an explicit target, use it
   if (file.target) {
-    return path.join(targetDir, file.target);
+    return path.join(options.uiDir, file.target);
   }
 
-  // For ui components, place in ui directory
-  if (file.type === 'registry:ui') {
-    const fileName = path.basename(file.path);
-    return path.join(targetDir, fileName);
+  const normalizedPath = normalizePath(file.path);
+  const componentRelativePath = getRelativePathFromSegment(normalizedPath, '/components/');
+
+  if (componentRelativePath) {
+    return path.join(options.uiDir, componentRelativePath);
   }
 
-  // For style files
+  const styleRelativePath = getRelativePathFromSegment(normalizedPath, '/styles/');
+
+  if (styleRelativePath) {
+    return path.join(options.uiDir, 'styles', styleRelativePath);
+  }
+
+  const themeRelativePath = getRelativePathFromSegment(normalizedPath, '/theme/');
+
+  if (themeRelativePath || file.type === 'registry:theme') {
+    return path.join(options.uiDir, 'theme', themeRelativePath ?? path.basename(normalizedPath));
+  }
+
   if (file.type === 'registry:style') {
-    const fileName = path.basename(file.path);
-    return path.join(targetDir, 'styles', fileName);
+    return path.join(options.uiDir, 'styles', path.basename(normalizedPath));
   }
 
-  // For lib/utils files
   if (file.type === 'registry:lib') {
-    const fileName = path.basename(file.path);
-    return path.join(targetDir, fileName);
+    return path.join(options.libDir, path.basename(normalizedPath));
+  }
+
+  if (file.type === 'registry:ui') {
+    return path.join(options.uiDir, path.basename(normalizedPath));
   }
 
   // Default: preserve relative path
-  return path.join(targetDir, file.path);
+  return path.join(options.uiDir, normalizedPath);
+}
+
+function normalizePath(filePath: string): string {
+  return filePath.replace(/\\/g, '/');
+}
+
+function getRelativePathFromSegment(filePath: string, segment: string): string | null {
+  const segmentIndex = filePath.indexOf(segment);
+
+  if (segmentIndex < 0) {
+    return null;
+  }
+
+  return filePath.slice(segmentIndex + segment.length);
 }
 
 async function fileExists(filePath: string): Promise<boolean> {

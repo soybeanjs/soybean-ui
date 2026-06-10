@@ -23,21 +23,46 @@ const RADIUS_LABEL_MAP: Record<string, string> = {
 };
 
 export const infoOptionsSchema = v.object({
-  cwd: v.string()
+  cwd: v.string(),
+  json: v.boolean()
 });
 
 export const info = new Command()
   .name('info')
   .description('show project and registry information')
   .option('-c, --cwd <cwd>', 'the working directory. defaults to the current directory.', process.cwd())
+  .option('--json', 'output as JSON', false)
   .action(async opts => {
     const options = v.parse(infoOptionsSchema, {
-      cwd: path.resolve(opts.cwd)
+      cwd: path.resolve(opts.cwd),
+      json: opts.json
     });
 
     // Detect project
     const projectInfo = await getProjectInfo(options.cwd);
     const config = await getConfig(options.cwd);
+
+    if (options.json) {
+      console.log(
+        JSON.stringify(
+          {
+            project: projectInfo,
+            config,
+            presets: {
+              styles: PRESET_STYLES,
+              base: PRESET_BASE_COLORS,
+              primary: PRESET_PRIMARY_COLORS,
+              radius: PRESET_RADII,
+              icons: PRESET_ICON_LIBRARIES
+            }
+          },
+          null,
+          2
+        )
+      );
+
+      return;
+    }
 
     console.log();
     console.log('  Project Info');
@@ -77,6 +102,15 @@ export const info = new Command()
       console.log(`  Menu color:     ${config.menu.color}`);
       console.log(`  RTL:            ${config.rtl ? 'yes' : 'no'}`);
       console.log(`  Pointer:        ${config.pointer ? 'yes' : 'no'}`);
+
+      if (config.registries && Object.keys(config.registries).length > 0) {
+        console.log();
+        console.log('  Registries');
+
+        for (const [name, registryUrl] of Object.entries(config.registries)) {
+          console.log(`    ${name} -> ${registryUrl}`);
+        }
+      }
 
       console.log();
       console.log('  Aliases');

@@ -5,6 +5,7 @@ import { Command } from 'commander';
 import { getConfig } from '../utils/get-config';
 import { transformImports, transformIcons } from '../utils/transformers/transform-import';
 import type { TransformContext } from '../utils/transformers/transform-import';
+import { resolveTargetPath } from '../utils/updaters/update-files';
 import { readRegistryWithIncludes, createRegistryItem } from '../registry/loader';
 
 export const diffOptionsSchema = v.object({
@@ -84,7 +85,10 @@ export const diff = new Command()
       }
 
       // Resolve the local file path
-      const localPath = resolveLocalPath(regFile, config.resolvedPaths);
+      const localPath = resolveTargetPath(regFile, {
+        uiDir: config.resolvedPaths.ui,
+        libDir: config.resolvedPaths.lib
+      });
 
       // Check if local file exists
       let localContent: string | null = null;
@@ -148,34 +152,6 @@ export const diff = new Command()
 
     console.log();
   });
-
-/**
- * Resolve the local file path for a registry file.
- */
-function resolveLocalPath(
-  regFile: { path: string; type: string; target?: string },
-  resolvedPaths: { ui: string; components: string; lib: string }
-): string {
-  if (regFile.target) {
-    return path.join(resolvedPaths.components, '..', regFile.target);
-  }
-
-  const fileName = path.basename(regFile.path);
-
-  if (regFile.type === 'registry:ui') {
-    return path.join(resolvedPaths.ui, fileName);
-  }
-
-  if (regFile.type === 'registry:style') {
-    return path.join(resolvedPaths.ui, 'styles', fileName);
-  }
-
-  if (regFile.type === 'registry:lib') {
-    return path.join(resolvedPaths.lib, fileName);
-  }
-
-  return path.join(resolvedPaths.components, fileName);
-}
 
 /**
  * Normalize content for comparison (trim whitespace).

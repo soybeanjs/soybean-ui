@@ -18,6 +18,21 @@
       "path": "packages/ui/src/styles/tooltip.ts",
       "type": "registry:style",
       "content": "// @unocss-include\nimport { scv } from '@soybeanjs/cva';\n\nexport const tooltipVariants = scv({\n  slots: {\n    positioner: 'w-max',\n    popup: [\n      `w-auto rounded-md border bg-popover text-popover-foreground shadow-md outline-none z-50 will-change-transform`,\n      `animate-in fade-in-0 zoom-in-95`,\n      `data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95`,\n      `data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2`\n    ],\n    arrow: 'w-1em h-0.5em fill-popover stroke-border'\n  },\n  variants: {\n    size: {\n      xs: {\n        popup: 'px-2 py-1 text-2xs',\n        arrow: 'text-3xs'\n      },\n      sm: {\n        popup: 'px-2.5 py-1.25 text-xs',\n        arrow: 'text-2xs'\n      },\n      md: {\n        popup: 'px-3 py-1.5 text-sm',\n        arrow: 'text-xs'\n      },\n      lg: {\n        popup: 'px-3.5 py-1.75 text-base',\n        arrow: 'text-sm'\n      },\n      xl: {\n        popup: 'px-4 py-2 text-lg',\n        arrow: 'text-base'\n      },\n      '2xl': {\n        popup: 'px-4.5 py-2.5 text-xl',\n        arrow: 'text-lg'\n      }\n    }\n  },\n  defaultVariants: {\n    size: 'md'\n  }\n});\n"
+    },
+    {
+      "path": "packages/ui/src/theme/index.ts",
+      "type": "registry:theme",
+      "content": "export * from './config';\n\nexport type * from './types';\n"
+    },
+    {
+      "path": "packages/ui/src/theme/config.ts",
+      "type": "registry:theme",
+      "content": "import type { ThemeSize } from './types';\n\nexport const themeSizeMap: Record<ThemeSize, number> = {\n  xs: 12,\n  sm: 14,\n  md: 16,\n  lg: 18,\n  xl: 20,\n  '2xl': 24\n};\nexport const miniSizeMap: Record<ThemeSize, ThemeSize> = {\n  xs: 'xs',\n  sm: 'xs',\n  md: 'sm',\n  lg: 'md',\n  xl: 'lg',\n  '2xl': 'xl'\n};\n\nexport const themeSizeRatio = Object.fromEntries(\n  Object.entries(themeSizeMap).map(([key, value]) => [key, value / themeSizeMap.md])\n) as Record<ThemeSize, number>;\n"
+    },
+    {
+      "path": "packages/ui/src/theme/types.ts",
+      "type": "registry:theme",
+      "content": "export type ThemeColor = 'primary' | 'destructive' | 'success' | 'warning' | 'info' | 'carbon' | 'secondary' | 'accent';\n\nexport type ThemeSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl';\n"
     }
   ],
   "categories": ["overlay"],

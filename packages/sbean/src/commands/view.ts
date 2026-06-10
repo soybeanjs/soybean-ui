@@ -2,6 +2,7 @@ import path from 'path';
 import * as v from 'valibot';
 import { Command } from 'commander';
 import { getConfig } from '../utils/get-config';
+import { fetchRegistryItem } from '../registry/fetcher';
 import { readRegistryWithIncludes, createRegistryItem } from '../registry/loader';
 
 export const viewOptionsSchema = v.object({
@@ -29,27 +30,35 @@ export const view = new Command()
 
     const registryFile = path.join(config.resolvedPaths.cwd, 'registry.json');
 
-    let result;
+    let registryResult: any = null;
     try {
-      result = await readRegistryWithIncludes(registryFile, {
+      registryResult = await readRegistryWithIncludes(registryFile, {
         cwd: config.resolvedPaths.cwd
       });
     } catch {
-      console.error('No registry.json found. Run "sbean build" first.');
-      process.exit(1);
+      registryResult = null;
     }
 
-    const item = result.registry.items.find(i => i.name === options.component);
+    const rootDir = registryResult?.usesInclude ? path.dirname(registryFile) : config.resolvedPaths.cwd;
 
-    if (!item) {
+    // Try local first, then remote
+    let resolvedItem = registryResult?.registry.items.find((i: any) => i.name === options.component) ?? null;
+
+    if (!resolvedItem) {
+      console.log('  Fetching from ui.soybeanjs.cn...');
+      resolvedItem = await fetchRegistryItem(options.component, config);
+    }
+
+    if (!resolvedItem) {
       console.error(`Component "${options.component}" not found in registry.`);
       console.log('Run "sbean search" to see available components.');
       process.exit(1);
     }
 
-    const rootDir = result.usesInclude ? path.dirname(registryFile) : config.resolvedPaths.cwd;
-
-    const resolvedItem = await createRegistryItem(item, rootDir);
+    // If we have a local registry, resolve file contents; remote items already have content
+    if (registryResult) {
+      resolvedItem = await createRegistryItem(resolvedItem as any, rootDir);
+    }
 
     console.log();
     console.log(`  ${resolvedItem.name}`);

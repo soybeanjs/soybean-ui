@@ -2,6 +2,7 @@ import path from 'path';
 import * as v from 'valibot';
 import { Command } from 'commander';
 import { getConfig } from '../utils/get-config';
+import { fetchRegistryCatalog } from '../registry/fetcher';
 import { readRegistryWithIncludes } from '../registry/loader';
 import type { RegistryItem } from '../registry/schema';
 
@@ -41,15 +42,19 @@ export const search = new Command()
       });
       items = result.registry.items;
     } catch {
-      console.log('  No local registry.json found.');
-      console.log('  Run "sbean build" to generate one from your UI source.');
-      console.log();
-      console.log('  Or add a remote registry in sbean.json:');
-      console.log('    "registries": {');
-      console.log('      "@custom": "https://example.com/r/{name}.json"');
-      console.log('    }');
-      console.log();
-      process.exit(0);
+      // No local registry, try remote
+    }
+
+    if (items.length === 0) {
+      console.log('  Fetching registry catalog from ui.soybeanjs.cn...');
+      items = await fetchRegistryCatalog(config);
+
+      if (items.length === 0) {
+        console.log('  No components found in remote registry either.');
+        console.log('  Run "sbean init" first to create sbean.json, then try again.');
+        console.log();
+        process.exit(0);
+      }
     }
 
     // Filter by query

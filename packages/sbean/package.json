@@ -29,6 +29,31 @@
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js",
       "require": "./dist/index.js"
+    },
+    "./registry": {
+      "types": "./dist/registry/index.d.ts",
+      "import": "./dist/registry/index.js",
+      "require": "./dist/registry/index.js"
+    },
+    "./schema": {
+      "types": "./dist/schema/index.d.ts",
+      "import": "./dist/schema/index.js",
+      "require": "./dist/schema/index.js"
+    },
+    "./preset": {
+      "types": "./dist/preset/index.d.ts",
+      "import": "./dist/preset/index.js",
+      "require": "./dist/preset/index.js"
+    },
+    "./utils": {
+      "types": "./dist/utils/index.d.ts",
+      "import": "./dist/utils/index.js",
+      "require": "./dist/utils/index.js"
+    },
+    "./mcp": {
+      "types": "./dist/mcp/index.d.ts",
+      "import": "./dist/mcp/index.js",
+      "require": "./dist/mcp/index.js"
     }
   },
   "scripts": {
@@ -46,7 +71,6 @@
     "fast-glob": "^3.3.3",
     "fs-extra": "^11.3.1",
     "kleur": "^4.1.5",
-    "node-fetch": "^3.3.2",
     "ora": "^8.2.0",
     "prompts": "^2.4.2",
     "valibot": "^1.0.0"

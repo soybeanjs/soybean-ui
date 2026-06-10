@@ -8,6 +8,67 @@ import type { PresetConfig } from '../registry/preset';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
+async function resolvePresetConfig(presetArg: string): Promise<PresetConfig | null> {
+  if (isPresetCode(presetArg)) {
+    return decodePreset(presetArg);
+  }
+
+  const presetsDir = path.resolve(__dirname, '../../presets');
+  const presetFile = path.join(presetsDir, `${presetArg}.json`);
+
+  try {
+    const content = JSON.parse(await fs.readFile(presetFile, 'utf-8'));
+
+    return {
+      style: content.style ?? 'soybean',
+      base: content.base ?? 'zinc',
+      primary: content.primary ?? 'indigo',
+      iconLibrary: content.iconLibrary ?? 'lucide',
+      radius: content.radius ?? 'md',
+      menuAccent: content.menuAccent ?? 'subtle',
+      menuColor: content.menuColor ?? 'default'
+    };
+  } catch {
+    return null;
+  }
+}
+
+export async function applyPresetToProject(presetArg: string, cwd: string): Promise<void> {
+  const config = await resolvePresetConfig(presetArg);
+
+  if (!config) {
+    console.error(`Preset "${presetArg}" not found.`);
+    process.exit(1);
+  }
+
+  const existingConfig = await getConfig(cwd);
+
+  if (!existingConfig) {
+    console.error('No sbean.json found. Run "sbean init" first.');
+    process.exit(1);
+  }
+
+  const updated = {
+    ...existingConfig,
+    style: config.style as 'soybean' | 'clean' | 'dense',
+    iconLibrary: config.iconLibrary as typeof existingConfig.iconLibrary,
+    uno: {
+      ...existingConfig.uno,
+      base: config.base as typeof existingConfig.uno.base,
+      primary: config.primary as typeof existingConfig.uno.primary,
+      radius: config.radius as typeof existingConfig.uno.radius
+    },
+    menu: {
+      accent: config.menuAccent as 'subtle' | 'bold',
+      color: config.menuColor as 'default' | 'inverted' | 'default-translucent' | 'inverted-translucent'
+    }
+  };
+
+  await writeConfig(cwd, updated);
+  console.log(`✔ Applied preset "${presetArg}" to sbean.json`);
+  console.log('  Run "sbean info" to see the updated config.');
+}
+
 export const preset = new Command()
   .name('preset')
   .description('manage design system presets')
@@ -51,35 +112,10 @@ export const preset = new Command()
       .description('show the config for a given preset name or code')
       .argument('<preset>', 'preset name (soybean/clean/dense) or code (e.g. a0)')
       .action(async (presetArg: string) => {
-        let config: PresetConfig | null = null;
-
-        // Try as base62 code first
-        if (isPresetCode(presetArg)) {
-          config = decodePreset(presetArg);
-        } else {
-          // Try as built-in preset name
-          const presetsDir = path.resolve(__dirname, '../../presets');
-          const presetFile = path.join(presetsDir, `${presetArg}.json`);
-
-          try {
-            const content = JSON.parse(await fs.readFile(presetFile, 'utf-8'));
-            config = {
-              style: content.style ?? 'soybean',
-              base: content.base ?? 'zinc',
-              primary: content.primary ?? 'indigo',
-              iconLibrary: content.iconLibrary ?? 'lucide',
-              radius: content.radius ?? 'md',
-              menuAccent: content.menuAccent ?? 'subtle',
-              menuColor: content.menuColor ?? 'default'
-            };
-          } catch {
-            console.error(`Preset "${presetArg}" not found. Available: soybean, clean, dense`);
-            process.exit(1);
-          }
-        }
+        const config = await resolvePresetConfig(presetArg);
 
         if (!config) {
-          console.error(`Failed to resolve preset: ${presetArg}`);
+          console.error(`Preset "${presetArg}" not found. Available: soybean, clean, dense`);
           process.exit(1);
         }
 
@@ -108,64 +144,6 @@ export const preset = new Command()
       .argument('<preset>', 'preset name or code')
       .option('-c, --cwd <cwd>', 'the working directory', process.cwd())
       .action(async (presetArg: string, opts) => {
-        const cwd = path.resolve(opts.cwd);
-
-        // Decode preset
-        let config: PresetConfig | null = null;
-
-        if (isPresetCode(presetArg)) {
-          config = decodePreset(presetArg);
-        } else {
-          const presetsDir = path.resolve(__dirname, '../../presets');
-          const presetFile = path.join(presetsDir, `${presetArg}.json`);
-          try {
-            const content = JSON.parse(await fs.readFile(presetFile, 'utf-8'));
-            config = {
-              style: content.style ?? 'soybean',
-              base: content.base ?? 'zinc',
-              primary: content.primary ?? 'indigo',
-              iconLibrary: content.iconLibrary ?? 'lucide',
-              radius: content.radius ?? 'md',
-              menuAccent: content.menuAccent ?? 'subtle',
-              menuColor: content.menuColor ?? 'default'
-            };
-          } catch {
-            console.error(`Preset "${presetArg}" not found.`);
-            process.exit(1);
-          }
-        }
-
-        if (!config) {
-          console.error(`Failed to decode preset: ${presetArg}`);
-          process.exit(1);
-        }
-
-        const existingConfig = await getConfig(cwd);
-
-        if (!existingConfig) {
-          console.error('No sbean.json found. Run "sbean init" first.');
-          process.exit(1);
-        }
-
-        // Update config with preset values
-        const updated = {
-          ...existingConfig,
-          style: config.style as 'soybean' | 'clean' | 'dense',
-          iconLibrary: config.iconLibrary as typeof existingConfig.iconLibrary,
-          uno: {
-            ...existingConfig.uno,
-            base: config.base as typeof existingConfig.uno.base,
-            primary: config.primary as typeof existingConfig.uno.primary,
-            radius: config.radius as typeof existingConfig.uno.radius
-          },
-          menu: {
-            accent: config.menuAccent as 'subtle' | 'bold',
-            color: config.menuColor as 'default' | 'inverted' | 'default-translucent' | 'inverted-translucent'
-          }
-        };
-
-        await writeConfig(cwd, updated);
-        console.log(`✔ Applied preset "${presetArg}" to sbean.json`);
-        console.log(`  Run "sbean info" to see the updated config.`);
+        await applyPresetToProject(presetArg, path.resolve(opts.cwd));
       })
   );

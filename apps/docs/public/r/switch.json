@@ -18,6 +18,21 @@
       "path": "packages/ui/src/styles/switch.ts",
       "type": "registry:style",
       "content": "// @unocss-include\nimport { scv } from '@soybeanjs/cva';\nimport type { VariantProps } from '@soybeanjs/cva';\n\nexport const switchVariants = scv({\n  slots: {\n    root: 'inline-flex',\n    control: [\n      `peer shrink-0 inline-flex items-center rounded-full border-0 shadow-sm transition-colors-200`,\n      `outline-none focus-visible:ring-3  focus-visible:ring-offset-background disabled:cursor-not-allowed disabled:opacity-50 data-[state=unchecked]:bg-input`\n    ],\n    thumb: [\n      `flex justify-center items-center rounded-full shadow-lg transition-transform-200 bg-background pointer-events-none`,\n      `data-[state=unchecked]:translate-x-0.5 rtl:data-[state=unchecked]:-translate-x-0.5`\n    ]\n  },\n  variants: {\n    color: {\n      primary: {\n        control: `data-[state=checked]:bg-primary focus-visible:ring-primary/30`\n      },\n      destructive: {\n        control: `data-[state=checked]:bg-destructive focus-visible:ring-destructive/30`\n      },\n      success: {\n        control: `data-[state=checked]:bg-success focus-visible:ring-success/30`\n      },\n      warning: {\n        control: `data-[state=checked]:bg-warning focus-visible:ring-warning/30`\n      },\n      info: {\n        control: `data-[state=checked]:bg-info focus-visible:ring-info/30`\n      },\n      carbon: {\n        control: `data-[state=checked]:bg-carbon focus-visible:ring-carbon/30`\n      },\n      secondary: {\n        control: `data-[state=checked]:bg-secondary-foreground/20 focus-visible:ring-secondary-foreground/20`\n      },\n      accent: {\n        control: `data-[state=checked]:bg-accent-foreground/20 focus-visible:ring-accent-foreground/20`\n      }\n    },\n    size: {\n      xs: {\n        control: 'h-4 w-7',\n        thumb: 'size-3 data-[state=checked]:translate-x-3.5 rtl:data-[state=checked]:-translate-x-3.5'\n      },\n      sm: {\n        control: 'h-4.5 w-8',\n        thumb: 'size-3.5 data-[state=checked]:translate-x-4 rtl:data-[state=checked]:-translate-x-4'\n      },\n      md: {\n        control: 'h-5 w-9',\n        thumb: 'size-4 data-[state=checked]:translate-x-4.5 rtl:data-[state=checked]:-translate-x-4.5'\n      },\n      lg: {\n        control: 'h-5.5 w-10',\n        thumb: 'size-4.5 data-[state=checked]:translate-x-5 rtl:data-[state=checked]:-translate-x-5'\n      },\n      xl: {\n        control: 'h-6 w-11',\n        thumb: 'size-5 data-[state=checked]:translate-x-5.5 rtl:data-[state=checked]:-translate-x-5.5'\n      },\n      '2xl': {\n        control: 'h-7 w-13',\n        thumb: 'size-6 data-[state=checked]:translate-x-6.5 rtl:data-[state=checked]:-translate-x-6.5'\n      }\n    },\n    shape: {\n      rounded: {\n        control: 'rounded-full',\n        thumb: 'rounded-full'\n      },\n      square: {\n        control: 'rounded-md',\n        thumb: 'rounded-sm'\n      }\n    }\n  },\n  defaultVariants: {\n    color: 'primary',\n    size: 'md',\n    shape: 'rounded'\n  }\n});\n\ntype SwitchVariants = VariantProps<typeof switchVariants>;\n\nexport type SwitchShape = NonNullable<SwitchVariants['shape']>;\n"
+    },
+    {
+      "path": "packages/ui/src/theme/index.ts",
+      "type": "registry:theme",
+      "content": "export * from './config';\n\nexport type * from './types';\n"
+    },
+    {
+      "path": "packages/ui/src/theme/config.ts",
+      "type": "registry:theme",
+      "content": "import type { ThemeSize } from './types';\n\nexport const themeSizeMap: Record<ThemeSize, number> = {\n  xs: 12,\n  sm: 14,\n  md: 16,\n  lg: 18,\n  xl: 20,\n  '2xl': 24\n};\nexport const miniSizeMap: Record<ThemeSize, ThemeSize> = {\n  xs: 'xs',\n  sm: 'xs',\n  md: 'sm',\n  lg: 'md',\n  xl: 'lg',\n  '2xl': 'xl'\n};\n\nexport const themeSizeRatio = Object.fromEntries(\n  Object.entries(themeSizeMap).map(([key, value]) => [key, value / themeSizeMap.md])\n) as Record<ThemeSize, number>;\n"
+    },
+    {
+      "path": "packages/ui/src/theme/types.ts",
+      "type": "registry:theme",
+      "content": "export type ThemeColor = 'primary' | 'destructive' | 'success' | 'warning' | 'info' | 'carbon' | 'secondary' | 'accent';\n\nexport type ThemeSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl';\n"
     }
   ],
   "categories": ["form", "selection"],

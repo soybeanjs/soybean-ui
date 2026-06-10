@@ -18,6 +18,21 @@
       "path": "packages/ui/src/styles/breadcrumb.ts",
       "type": "registry:style",
       "content": "// @unocss-include\nimport { scv } from '@soybeanjs/cva';\n\nexport const breadcrumbVariants = scv({\n  slots: {\n    root: '',\n    list: 'flex flex-wrap items-center my-0 px-0 break-words text-muted-foreground',\n    item: 'inline-flex items-center list-none',\n    page: 'font-normal text-foreground',\n    separator: 'text-muted-foreground flex-shrink-0 list-none',\n    ellipsis: 'flex items-center justify-center',\n    link: 'decoration-none hover:text-foreground transition-colors-200 rounded-sm outline-none focus-visible:ring-3 focus-visible:ring-offset-background focus-visible:ring-primary/30'\n  },\n  variants: {\n    size: {\n      xs: {\n        root: 'text-2xs',\n        list: 'gap-2',\n        item: 'gap-1.5'\n      },\n      sm: {\n        root: 'text-xs',\n        list: 'gap-2.5',\n        item: 'gap-1.75'\n      },\n      md: {\n        root: 'text-sm',\n        list: 'gap-3',\n        item: 'gap-2'\n      },\n      lg: {\n        root: 'text-base',\n        list: 'gap-3.5',\n        item: 'gap-2.5'\n      },\n      xl: {\n        root: 'text-lg',\n        list: 'gap-4',\n        item: 'gap-3'\n      },\n      '2xl': {\n        root: 'text-xl',\n        list: 'gap-4.5',\n        item: 'gap-3.5'\n      }\n    }\n  },\n  defaultVariants: {\n    size: 'md'\n  }\n});\n"
+    },
+    {
+      "path": "packages/ui/src/theme/index.ts",
+      "type": "registry:theme",
+      "content": "export * from './config';\n\nexport type * from './types';\n"
+    },
+    {
+      "path": "packages/ui/src/theme/config.ts",
+      "type": "registry:theme",
+      "content": "import type { ThemeSize } from './types';\n\nexport const themeSizeMap: Record<ThemeSize, number> = {\n  xs: 12,\n  sm: 14,\n  md: 16,\n  lg: 18,\n  xl: 20,\n  '2xl': 24\n};\nexport const miniSizeMap: Record<ThemeSize, ThemeSize> = {\n  xs: 'xs',\n  sm: 'xs',\n  md: 'sm',\n  lg: 'md',\n  xl: 'lg',\n  '2xl': 'xl'\n};\n\nexport const themeSizeRatio = Object.fromEntries(\n  Object.entries(themeSizeMap).map(([key, value]) => [key, value / themeSizeMap.md])\n) as Record<ThemeSize, number>;\n"
+    },
+    {
+      "path": "packages/ui/src/theme/types.ts",
+      "type": "registry:theme",
+      "content": "export type ThemeColor = 'primary' | 'destructive' | 'success' | 'warning' | 'info' | 'carbon' | 'secondary' | 'accent';\n\nexport type ThemeSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl';\n"
     }
   ],
   "categories": ["navigation"],

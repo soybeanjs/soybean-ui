@@ -2,6 +2,7 @@ import fs from 'fs/promises';
 import path from 'path';
 import * as v from 'valibot';
 import { Command } from 'commander';
+import { expandRegistryItemFiles } from '../utils/add-components';
 import { readRegistryWithIncludes, createRegistryItem, createRegistryCatalog } from '../registry/loader';
 import { registryItemSchema } from '../registry/schema';
 
@@ -51,6 +52,11 @@ export const build = new Command()
       console.log(`  Building ${registryItem.name}...`);
 
       const itemWithContent = await createRegistryItem(registryItem, registryRootDir);
+      const expandedFiles = itemWithContent.files?.length ? await expandRegistryItemFiles(itemWithContent.files) : [];
+
+      if (expandedFiles.length > 0) {
+        itemWithContent.files = expandedFiles;
+      }
 
       // Validate the final output
       v.parse(registryItemSchema, itemWithContent);

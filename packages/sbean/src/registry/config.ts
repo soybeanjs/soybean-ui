@@ -69,6 +69,7 @@ export const rawConfigSchema = v.object({
   }),
   rtl: v.optional(v.boolean(), false),
   pointer: v.optional(v.boolean(), false),
+  registries: v.optional(v.record(v.string(), v.string())),
   aliases: v.object({
     components: v.string(),
     utils: v.string(),

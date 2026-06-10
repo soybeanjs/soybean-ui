@@ -18,6 +18,21 @@
       "path": "packages/ui/src/styles/avatar.ts",
       "type": "registry:style",
       "content": "// @unocss-include\nimport { scv } from '@soybeanjs/cva';\n\nexport const avatarVariants = scv({\n  slots: {\n    root: 'relative flex shrink-0 overflow-hidden rounded-full',\n    fallback: 'flex justify-center items-center w-full h-full rounded-full bg-muted font-medium',\n    image: 'aspect-square w-full h-full object-cover m-0'\n  },\n  variants: {\n    size: {\n      xs: {\n        root: 'size-6'\n      },\n      sm: {\n        root: 'size-8'\n      },\n      md: {\n        root: 'size-10'\n      },\n      lg: {\n        root: 'size-12'\n      },\n      xl: {\n        root: 'size-14'\n      },\n      '2xl': {\n        root: 'size-16'\n      }\n    }\n  },\n  defaultVariants: {\n    size: 'md'\n  }\n});\n"
+    },
+    {
+      "path": "packages/ui/src/theme/index.ts",
+      "type": "registry:theme",
+      "content": "export * from './config';\n\nexport type * from './types';\n"
+    },
+    {
+      "path": "packages/ui/src/theme/config.ts",
+      "type": "registry:theme",
+      "content": "import type { ThemeSize } from './types';\n\nexport const themeSizeMap: Record<ThemeSize, number> = {\n  xs: 12,\n  sm: 14,\n  md: 16,\n  lg: 18,\n  xl: 20,\n  '2xl': 24\n};\nexport const miniSizeMap: Record<ThemeSize, ThemeSize> = {\n  xs: 'xs',\n  sm: 'xs',\n  md: 'sm',\n  lg: 'md',\n  xl: 'lg',\n  '2xl': 'xl'\n};\n\nexport const themeSizeRatio = Object.fromEntries(\n  Object.entries(themeSizeMap).map(([key, value]) => [key, value / themeSizeMap.md])\n) as Record<ThemeSize, number>;\n"
+    },
+    {
+      "path": "packages/ui/src/theme/types.ts",
+      "type": "registry:theme",
+      "content": "export type ThemeColor = 'primary' | 'destructive' | 'success' | 'warning' | 'info' | 'carbon' | 'secondary' | 'accent';\n\nexport type ThemeSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl';\n"
     }
   ],
   "categories": ["display"],

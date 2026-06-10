@@ -1,4 +1,5 @@
 {
+  "$schema": "https://ui.soybeanjs.cn/schema/registry.json",
   "name": "soybean-ui",
   "homepage": "https://ui.soybeanjs.cn",
   "items": [
@@ -719,6 +720,5 @@
         }
       ]
     }
-  ],
-  "$schema": "https://ui.soybeanjs.cn/schema/registry.json"
+  ]
 }

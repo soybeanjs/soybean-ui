@@ -2,11 +2,15 @@
 import { Command } from 'commander';
 import pkg from '../package.json' with { type: 'json' };
 import { add } from './commands/add';
+import { apply } from './commands/apply';
 import { build } from './commands/build';
 import { diff } from './commands/diff';
+import { docs } from './commands/docs';
 import { info } from './commands/info';
 import { init } from './commands/init';
+import { mcp } from './commands/mcp';
 import { preset } from './commands/preset';
+import { registry } from './commands/registry';
 import { search } from './commands/search';
 import { view } from './commands/view';
 
@@ -21,12 +25,16 @@ async function main() {
 
   program
     .addCommand(init)
+    .addCommand(apply)
     .addCommand(add)
     .addCommand(build)
     .addCommand(diff)
+    .addCommand(docs)
     .addCommand(view)
     .addCommand(search)
     .addCommand(info)
+    .addCommand(mcp)
+    .addCommand(registry)
     .addCommand(preset);
   await program.parseAsync();
 }

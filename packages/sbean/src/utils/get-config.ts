@@ -88,6 +88,7 @@ export async function createDefaultConfig(
     },
     rtl: false,
     pointer: false,
+    registries: {},
     aliases: {
       components: DEFAULT_COMPONENTS,
       utils: DEFAULT_UTILS,

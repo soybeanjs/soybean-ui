@@ -79,6 +79,9 @@ describe('config schema', () => {
         sans: 'inter',
         heading: 'inherit'
       },
+      registries: {
+        '@acme': 'https://example.com/r/{name}.json'
+      },
       rtl: false,
       pointer: false
     };
