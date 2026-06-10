@@ -1,7 +1,42 @@
 {
-  "generatedAt": "2026-06-10T03:46:54.893Z",
+  "generatedAt": "2026-06-10T08:18:33.049Z",
   "schemaVersion": 1,
   "releases": [
+    {
+      "version": "v0.29.0-beta.2",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.29.0-beta.1...v0.29.0-beta.2",
+      "date": "2026-06-10",
+      "entryCount": 2,
+      "componentCount": 1,
+      "components": ["navigation-menu"],
+      "typeCounts": {
+        "optimization": 2
+      },
+      "entries": [
+        {
+          "type": "optimization",
+          "scope": "navigation-menu",
+          "summary": "enhance viewport positioning with active trigger element and add transition effects",
+          "summaryKey": "changelog.generated.v0.29.0-beta.2.02dfc",
+          "commitHash": "02dfc",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/02dfc0fe3",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope",
+          "components": ["navigation-menu"]
+        },
+        {
+          "type": "optimization",
+          "scope": "imports",
+          "summary": "update type imports to remove .js extension across components",
+          "summaryKey": "changelog.generated.v0.29.0-beta.2.c43e8",
+          "commitHash": "c43e8",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/c43e87f6a",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope",
+          "components": []
+        }
+      ]
+    },
     {
       "version": "v0.29.0-beta.1",
       "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.28.2...v0.29.0-beta.1",

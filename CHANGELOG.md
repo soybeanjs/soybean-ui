@@ -1,5 +1,16 @@
 # Changelog
 
+## [v0.29.0-beta.2](https://github.com/soybeanjs/soybean-ui/compare/v0.29.0-beta.1...v0.29.0-beta.2) (2026-06-10)
+
+### &nbsp;&nbsp;&nbsp;🛠 Optimizations
+
+- **imports**: update type imports to remove .js extension across components &nbsp;-&nbsp; by **soybeanfe** [<samp>(c43e8)</samp>](https://github.com/soybeanjs/soybean-ui/commit/c43e87f6a)
+- **navigation-menu**: enhance viewport positioning with active trigger element and add transition effects &nbsp;-&nbsp; by **soybeanfe** [<samp>(02dfc)</samp>](https://github.com/soybeanjs/soybean-ui/commit/02dfc0fe3)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[soybeanfe](mailto:honghuangdc@gmail.com)
+
 ## [v0.29.0-beta.1](https://github.com/soybeanjs/soybean-ui/compare/v0.28.2...v0.29.0-beta.1) (2026-06-10)
 
 ### &nbsp;&nbsp;&nbsp;🚀 Features
