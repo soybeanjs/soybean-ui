@@ -97,7 +97,7 @@ function generateTsConfigContent(): string {
     '    "forceConsistentCasingInFileNames": true,',
     '    "isolatedModules": true',
     '   },',
-    '  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue", "vite.config.ts", "uno.config.ts"]',
+    '  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue", "vite.config.ts", "uno.config.ts"],',
     '  "exclude": ["node_modules", "dist"]',
     '}'
   ].join('\n')}\n`;
