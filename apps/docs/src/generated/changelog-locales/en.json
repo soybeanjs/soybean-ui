@@ -1479,6 +1479,10 @@
             },
             "5": {
               "06c40": "add registry fetching capabilities and enhance configuration"
+            },
+            "6": {
+              "68994": "correct JSON syntax in TypeScript configuration generation",
+              "dd11b": "add current todo list for shadcn parity"
             }
           }
         }

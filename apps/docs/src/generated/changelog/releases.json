@@ -1,7 +1,43 @@
 {
-  "generatedAt": "2026-06-10T13:34:40.353Z",
+  "generatedAt": "2026-06-10T13:59:53.342Z",
   "schemaVersion": 1,
   "releases": [
+    {
+      "version": "v0.29.0-beta.6",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.29.0-beta.5...v0.29.0-beta.6",
+      "date": "2026-06-10",
+      "entryCount": 2,
+      "componentCount": 0,
+      "components": [],
+      "typeCounts": {
+        "feature": 1,
+        "fix": 1
+      },
+      "entries": [
+        {
+          "type": "feature",
+          "scope": "sbean",
+          "summary": "add current todo list for shadcn parity",
+          "summaryKey": "changelog.generated.v0.29.0-beta.6.dd11b",
+          "commitHash": "dd11b",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/dd11bbe1d",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "fix",
+          "scope": "init",
+          "summary": "correct JSON syntax in TypeScript configuration generation",
+          "summaryKey": "changelog.generated.v0.29.0-beta.6.68994",
+          "commitHash": "68994",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/689945196",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope",
+          "components": []
+        }
+      ]
+    },
     {
       "version": "v0.29.0-beta.5",
       "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.29.0-beta.4...v0.29.0-beta.5",

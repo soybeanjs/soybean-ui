@@ -1,5 +1,19 @@
 # Changelog
 
+## [v0.29.0-beta.6](https://github.com/soybeanjs/soybean-ui/compare/v0.29.0-beta.5...v0.29.0-beta.6) (2026-06-10)
+
+### &nbsp;&nbsp;&nbsp;🚀 Features
+
+- **sbean**: add current todo list for shadcn parity &nbsp;-&nbsp; by **soybeanfe** [<samp>(dd11b)</samp>](https://github.com/soybeanjs/soybean-ui/commit/dd11bbe1d)
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- **init**: correct JSON syntax in TypeScript configuration generation &nbsp;-&nbsp; by **soybeanfe** [<samp>(68994)</samp>](https://github.com/soybeanjs/soybean-ui/commit/689945196)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[soybeanfe](mailto:honghuangdc@gmail.com)
+
 ## [v0.29.0-beta.5](https://github.com/soybeanjs/soybean-ui/compare/v0.29.0-beta.4...v0.29.0-beta.5) (2026-06-10)
 
 ### &nbsp;&nbsp;&nbsp;🚀 Features
