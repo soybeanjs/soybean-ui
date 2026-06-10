@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import CollapsibleRoot from '../collapsible/collapsible-root.vue';
-import type { CardRootProps, CardRootEmits } from './types.js';
+import type { CardRootProps, CardRootEmits } from './types';
 
 defineOptions({
   name: 'CardRoot'

@@ -6,7 +6,7 @@ export { default as HoverCardPopup } from './hover-card-popup.vue';
 export { default as HoverCardArrow } from '../popper/popper-arrow.vue';
 export { default as HoverCardCompact } from './hover-card-compact.vue';
 
-export { providePopperUi as provideHoverCardUi } from '../popper/context.js';
+export { providePopperUi as provideHoverCardUi } from '../popper/context';
 
 export type {
   HoverCardRootProps,
@@ -18,10 +18,10 @@ export type {
   HoverCardCompactProps,
   HoverCardCompactEmits,
   HoverCardCompactSlots
-} from './types.js';
+} from './types';
 export type {
   PopperArrowProps as HoverCardArrowProps,
   PopperUiSlot as HoverCardUiSlot,
   PopperUi as HoverCardUi
-} from '../popper/types.js';
-export type { PortalProps as HoverCardPortalProps } from '../portal/types.js';
+} from '../popper/types';
+export type { PortalProps as HoverCardPortalProps } from '../portal/types';

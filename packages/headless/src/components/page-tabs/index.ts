@@ -4,7 +4,7 @@ export { default as PageTabsClose } from './page-tabs-close.vue';
 export { default as PageTabsPin } from './page-tabs-pin.vue';
 export { default as PageTabsCompact } from './page-tabs-compact.vue';
 
-export { providePageTabsUi } from './context.js';
+export { providePageTabsUi } from './context';
 
 export type {
   PageTabsRootProps,
@@ -22,4 +22,4 @@ export type {
   PageTabsCompactSlots,
   PageTabsUiSlot,
   PageTabsUi
-} from './types.js';
+} from './types';

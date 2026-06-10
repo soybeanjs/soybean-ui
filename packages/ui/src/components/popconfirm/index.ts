@@ -17,4 +17,4 @@ export type {
   PopconfirmArrowProps
 } from '@soybeanjs/headless/popconfirm';
 
-export type * from './types.js';
+export type * from './types';

@@ -1,16 +1,16 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import Icon from '../_icon/icon.vue';
-import { useNavigationMenuUi } from './context.js';
+import { useCommonSlotNames } from './shared';
+import { useNavigationMenuUi } from './context';
 import NavigationMenuItemSlot from './navigation-menu-item-slot-compact.vue';
 import NavigationMenuItem from './navigation-menu-item.vue';
 import NavigationMenuLink from './navigation-menu-link.vue';
-import { useCommonSlotNames } from './shared.js';
 import type {
   NavigationMenuSubOptionCompactProps,
   NavigationMenuSubOptionCompactEmits,
   NavigationMenuSubOptionCompactSlots
-} from './types.js';
+} from './types';
 
 defineOptions({
   name: 'NavigationMenuSubOptionCompact'

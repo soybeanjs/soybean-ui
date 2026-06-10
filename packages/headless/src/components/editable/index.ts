@@ -7,7 +7,7 @@ export { default as EditableRoot } from './editable-root.vue';
 export { default as EditableSubmitTrigger } from './editable-submit-trigger.vue';
 export { default as EditableCompact } from './editable-compact.vue';
 
-export { provideEditableUi } from './context.js';
+export { provideEditableUi } from './context';
 
 export type {
   EditableActivationMode,
@@ -28,4 +28,4 @@ export type {
   EditableCompactProps,
   EditableCompactEmits,
   EditableCompactSlots
-} from './types.js';
+} from './types';

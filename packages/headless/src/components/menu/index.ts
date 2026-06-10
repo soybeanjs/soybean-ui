@@ -20,11 +20,11 @@ export { default as MenuOptionsCompact } from './menu-options-compact.vue';
 export { default as MenuCheckboxOptionsCompact } from './menu-checkbox-options-compact.vue';
 export { default as MenuRadioOptionsCompact } from './menu-radio-options-compact.vue';
 
-export { provideMenuUi, useMenuUi } from './context.js';
+export { provideMenuUi, useMenuUi } from './context';
 
-export type { SeparatorRootProps as MenuSeparatorProps } from '../separator/types.js';
-export type { PopperAnchorProps as MenuAnchorProps, PopperArrowProps as MenuArrowProps } from '../popper/types.js';
-export type { PortalProps as MenuPortalProps } from '../portal/types.js';
+export type { SeparatorRootProps as MenuSeparatorProps } from '../separator/types';
+export type { PopperAnchorProps as MenuAnchorProps, PopperArrowProps as MenuArrowProps } from '../popper/types';
+export type { PortalProps as MenuPortalProps } from '../portal/types';
 export type {
   MenuRootProps,
   MenuRootEmits,
@@ -71,4 +71,4 @@ export type {
   MenuItemIndicatorProps,
   MenuUiSlot,
   MenuUi
-} from './types.js';
+} from './types';

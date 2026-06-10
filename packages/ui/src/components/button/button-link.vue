@@ -2,7 +2,7 @@
 import { useOmitProps, usePickProps } from '@soybeanjs/headless/composables';
 import Link from '../link/link.vue';
 import Button from './button.vue';
-import type { ButtonLinkProps } from './types.js';
+import type { ButtonLinkProps } from './types';
 
 defineOptions({
   name: 'SButtonLink'

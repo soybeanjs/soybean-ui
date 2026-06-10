@@ -4,7 +4,7 @@ export { default as ColorSwatchPickerItem } from './color-swatch-picker-item.vue
 export { default as ColorSwatchPickerItemIndicator } from './color-swatch-picker-item-indicator.vue';
 export { default as ColorSwatchPickerItemSwatch } from './color-swatch-picker-item-swatch.vue';
 
-export { provideColorSwatchPickerUi } from './context.js';
+export { provideColorSwatchPickerUi } from './context';
 
 export type {
   ColorSwatchPickerCompactProps,
@@ -20,4 +20,4 @@ export type {
   ColorSwatchPickerItemSwatchProps,
   ColorSwatchPickerUiSlot,
   ColorSwatchPickerUi
-} from './types.js';
+} from './types';

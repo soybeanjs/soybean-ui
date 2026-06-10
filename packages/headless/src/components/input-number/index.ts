@@ -4,7 +4,7 @@ export { default as InputNumberControl } from './input-number-control.vue';
 export { default as InputNumberIncrement } from './input-number-increment.vue';
 export { default as InputNumberDecrement } from './input-number-decrement.vue';
 
-export { provideInputNumberUi } from './context.js';
+export { provideInputNumberUi } from './context';
 
 export type {
   InputNumberCompactProps,
@@ -18,4 +18,4 @@ export type {
   InputNumberDecrementProps,
   InputNumberUiSlot,
   InputNumberUi
-} from './types.js';
+} from './types';

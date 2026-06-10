@@ -4,7 +4,7 @@ import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composabl
 import { DateRangePickerCompact, provideDateRangePickerUi } from '@soybeanjs/headless/date-range-picker';
 import { dateRangePickerVariants } from '@/styles/date-range-picker';
 import CalendarRange from '../calendar-range/calendar-range.vue';
-import type { DateRangePickerProps, DateRangePickerEmits } from './types.js';
+import type { DateRangePickerProps, DateRangePickerEmits } from './types';
 
 defineOptions({
   name: 'SDateRangePicker'

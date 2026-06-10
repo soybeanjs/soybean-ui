@@ -1,6 +1,6 @@
 export { default as PasswordCompact } from './password-compact.vue';
 
-export { providePasswordUi } from './context.js';
+export { providePasswordUi } from './context';
 
 export type {
   PasswordCompactProps,
@@ -9,4 +9,4 @@ export type {
   PasswordCompactSlots,
   PasswordUiSlot,
   PasswordUi
-} from './types.js';
+} from './types';

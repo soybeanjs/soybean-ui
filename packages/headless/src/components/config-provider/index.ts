@@ -1,3 +1,3 @@
 export { default as ConfigProvider } from './config-provider.vue';
 
-export type { ConfigProviderProps } from './types.js';
+export type { ConfigProviderProps } from './types';

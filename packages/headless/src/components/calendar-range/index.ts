@@ -12,7 +12,7 @@ export { default as CalendarRangeHeadCell } from './calendar-range-head-cell.vue
 export { default as CalendarRangeCell } from './calendar-range-cell.vue';
 export { default as CalendarRangeCellTrigger } from './calendar-range-cell-trigger.vue';
 
-export { provideCalendarRangeUi } from './context.js';
+export { provideCalendarRangeUi } from './context';
 
 export type {
   CalendarRangeCompactProps,
@@ -33,4 +33,4 @@ export type {
   CalendarRangeCellTriggerProps,
   CalendarRangeUi,
   CalendarRangeUiSlot
-} from './types.js';
+} from './types';

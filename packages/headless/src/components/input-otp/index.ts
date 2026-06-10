@@ -3,7 +3,7 @@ export { default as InputOtpInput } from './input-otp-input.vue';
 export { default as InputOtpPositioner } from './input-otp-positioner.vue';
 export { default as InputOtpRoot } from './input-otp-root.vue';
 
-export { provideInputOtpUi } from './context.js';
+export { provideInputOtpUi } from './context';
 
 export type {
   InputOtpCompactEmits,
@@ -20,4 +20,4 @@ export type {
   InputOtpSlotProps,
   InputOtpUi,
   InputOtpUiSlot
-} from './types.js';
+} from './types';

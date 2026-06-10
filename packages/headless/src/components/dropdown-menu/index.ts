@@ -1,21 +1,21 @@
 export { default as DropdownMenuRoot } from './dropdown-menu-root.vue';
 export { default as DropdownMenuTrigger } from './dropdown-menu-trigger.vue';
-export { MenuPortal as DropdownMenuPortal } from '../menu/index.js';
+export { MenuPortal as DropdownMenuPortal } from '../menu/index';
 export { default as DropdownMenuContent } from './dropdown-menu-content.vue';
-export { MenuAnchor as DropdownMenuAnchor } from '../menu/index.js';
-export { MenuArrow as DropdownMenuArrow } from '../menu/index.js';
-export { MenuGroup as DropdownMenuGroup } from '../menu/index.js';
-export { MenuGroupLabel as DropdownMenuGroupLabel } from '../menu/index.js';
-export { MenuItem as DropdownMenuItem } from '../menu/index.js';
-export { MenuItemIndicator as DropdownMenuItemIndicator } from '../menu/index.js';
-export { MenuCheckboxItem as DropdownMenuCheckboxItem } from '../menu/index.js';
-export { MenuRadioItem as DropdownMenuRadioItem } from '../menu/index.js';
-export { MenuSub as DropdownMenuSub } from '../menu/index.js';
-export { MenuSubTrigger as DropdownMenuSubTrigger } from '../menu/index.js';
-export { MenuSubContent as DropdownMenuSubContent } from '../menu/index.js';
-export { MenuSeparator as DropdownMenuSeparator } from '../menu/index.js';
-export { MenuCheckboxGroup as DropdownMenuCheckboxGroup } from '../menu/index.js';
-export { MenuRadioGroup as DropdownMenuRadioGroup } from '../menu/index.js';
+export { MenuAnchor as DropdownMenuAnchor } from '../menu/index';
+export { MenuArrow as DropdownMenuArrow } from '../menu/index';
+export { MenuGroup as DropdownMenuGroup } from '../menu/index';
+export { MenuGroupLabel as DropdownMenuGroupLabel } from '../menu/index';
+export { MenuItem as DropdownMenuItem } from '../menu/index';
+export { MenuItemIndicator as DropdownMenuItemIndicator } from '../menu/index';
+export { MenuCheckboxItem as DropdownMenuCheckboxItem } from '../menu/index';
+export { MenuRadioItem as DropdownMenuRadioItem } from '../menu/index';
+export { MenuSub as DropdownMenuSub } from '../menu/index';
+export { MenuSubTrigger as DropdownMenuSubTrigger } from '../menu/index';
+export { MenuSubContent as DropdownMenuSubContent } from '../menu/index';
+export { MenuSeparator as DropdownMenuSeparator } from '../menu/index';
+export { MenuCheckboxGroup as DropdownMenuCheckboxGroup } from '../menu/index';
+export { MenuRadioGroup as DropdownMenuRadioGroup } from '../menu/index';
 export { default as DropdownMenuCompact } from './dropdown-menu-compact.vue';
 export { default as DropdownMenuCheckboxCompact } from './dropdown-menu-checkbox-compact.vue';
 export { default as DropdownMenuRadioCompact } from './dropdown-menu-radio-compact.vue';
@@ -39,7 +39,7 @@ export type {
   DropdownMenuRadioCompactEmits,
   DropdownMenuRadioCompactProps,
   DropdownMenuRadioCompactSlots
-} from './types.js';
+} from './types';
 export type {
   MenuPopupProps as DropdownMenuPopupProps,
   MenuPortalProps as DropdownMenuPortalProps,
@@ -66,4 +66,4 @@ export type {
   MenuSeparatorProps as DropdownMenuSeparatorProps,
   MenuUiSlot as DropdownMenuUiSlot,
   MenuUi as DropdownMenuUi
-} from '../menu/index.js';
+} from '../menu/index';

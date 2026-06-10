@@ -1,3 +1,3 @@
 export { default as AspectRatio } from './aspect-ratio.vue';
 
-export type { AspectRatioProps } from './types.js';
+export type { AspectRatioProps } from './types';

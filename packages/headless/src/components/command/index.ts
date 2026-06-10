@@ -1,6 +1,6 @@
 export { default as CommandCompact } from './command-compact.vue';
 
-export { provideCommandUi } from './context.js';
+export { provideCommandUi } from './context';
 
 export type {
   CommandCompactProps,
@@ -24,4 +24,4 @@ export type {
   CommandSearchOptionData,
   CommandUiSlot,
   CommandUi
-} from './types.js';
+} from './types';

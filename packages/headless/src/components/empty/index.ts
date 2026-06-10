@@ -6,7 +6,7 @@ export { default as EmptyContent } from './empty-content.vue';
 export { default as EmptyTitle } from './empty-title.vue';
 export { default as EmptyDescription } from './empty-description.vue';
 
-export { provideEmptyUi } from './context.js';
+export { provideEmptyUi } from './context';
 
 export type {
   EmptyCompactProps,
@@ -19,4 +19,4 @@ export type {
   EmptyDescriptionProps,
   EmptyUiSlot,
   EmptyUi
-} from './types.js';
+} from './types';

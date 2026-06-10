@@ -4,4 +4,4 @@ export { default as SDropdownMenuRadio } from './dropdown-menu-radio.vue';
 export { default as SDropdownMenuWrapper } from './dropdown-menu-wrapper.vue';
 
 export type * from '@soybeanjs/headless/dropdown-menu';
-export type * from './types.js';
+export type * from './types';

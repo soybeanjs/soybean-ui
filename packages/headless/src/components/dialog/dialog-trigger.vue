@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import Button from '../button/button.vue';
-import { useDialogRootContext } from './context.js';
-import type { DialogTriggerProps, DialogTriggerEmits } from './types.js';
+import { useDialogRootContext } from './context';
+import type { DialogTriggerProps, DialogTriggerEmits } from './types';
 
 defineOptions({
   name: 'DialogTrigger'

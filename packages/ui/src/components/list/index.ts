@@ -9,4 +9,4 @@ export type {
   ListUiSlot,
   ListUi
 } from '@soybeanjs/headless/list';
-export type * from './types.js';
+export type * from './types';

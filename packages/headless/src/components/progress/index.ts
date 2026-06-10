@@ -5,8 +5,8 @@ export { default as ProgressRoot } from './progress-root.vue';
 export { default as ProgressIndicator } from './progress-indicator.vue';
 export { default as ProgressCircle } from './progress-circle-svg.vue';
 
-export { provideProgressUi, provideProgressProviderUi } from './context.js';
-export { progress } from './state.js';
+export { provideProgressUi, provideProgressProviderUi } from './context';
+export { progress } from './state';
 
 export type {
   ProgressProviderProps,
@@ -25,4 +25,4 @@ export type {
   ProgressOptions,
   ProgressUiSlot,
   ProgressUi
-} from './types.js';
+} from './types';

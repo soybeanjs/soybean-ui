@@ -11,7 +11,7 @@ export { default as TreeMenuButton } from './tree-menu-button.vue';
 export { default as TreeMenuCollapsible } from './tree-menu-collapsible.vue';
 export { default as TreeMenuSub } from './tree-menu-sub.vue';
 
-export { provideTreeMenuUi, provideTreeMenuRootContext, useTreeMenuRootContext } from './context.js';
+export { provideTreeMenuUi, provideTreeMenuRootContext, useTreeMenuRootContext } from './context';
 
 export type {
   TreeMenuCompactProps,
@@ -37,4 +37,4 @@ export type {
   TreeMenuOptionData,
   TreeMenuUiSlot,
   TreeMenuUi
-} from './types.js';
+} from './types';

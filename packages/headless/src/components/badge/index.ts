@@ -2,7 +2,7 @@ export { default as BadgeCompact } from './badge-compact.vue';
 export { default as BadgeRoot } from './badge-root.vue';
 export { default as BadgeContent } from './badge-content.vue';
 
-export { provideBadgeUi } from './context.js';
+export { provideBadgeUi } from './context';
 
 export type {
   BadgeCompactProps,
@@ -13,4 +13,4 @@ export type {
   BadgeContentProps,
   BadgeUiSlot,
   BadgeUi
-} from './types.js';
+} from './types';

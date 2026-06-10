@@ -4,7 +4,7 @@ import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composabl
 import { DatePickerCompact, provideDatePickerUi } from '@soybeanjs/headless/date-picker';
 import { datePickerVariants } from '@/styles/date-picker';
 import Calendar from '../calendar/calendar.vue';
-import type { DatePickerProps, DatePickerEmits } from './types.js';
+import type { DatePickerProps, DatePickerEmits } from './types';
 
 defineOptions({
   name: 'SDatePicker'

@@ -6,7 +6,7 @@ export { default as RadioGroupControl } from './radio-group-control.vue';
 export { default as RadioGroupIndicator } from './radio-group-indicator.vue';
 export { default as RadioGroupLabel } from './radio-group-label.vue';
 
-export { provideRadioGroupUi, provideRadioGroupCardUi } from './context.js';
+export { provideRadioGroupUi, provideRadioGroupCardUi } from './context';
 
 export type {
   RadioGroupCompactProps,
@@ -28,4 +28,4 @@ export type {
   RadioGroupUi,
   RadioGroupCardUiSlot,
   RadioGroupCardUi
-} from './types.js';
+} from './types';

@@ -2,7 +2,7 @@
 import { useOmitProps } from '@soybeanjs/headless/composables';
 import Icon from '../icon/icon.vue';
 import Button from './button.vue';
-import type { ButtonIconProps } from './types.js';
+import type { ButtonIconProps } from './types';
 
 defineOptions({
   name: 'SButtonIcon'

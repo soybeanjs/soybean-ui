@@ -1,21 +1,21 @@
 export { default as ContextMenuRoot } from './context-menu-root.vue';
 export { default as ContextMenuTrigger } from './context-menu-trigger.vue';
-export { MenuPortal as ContextMenuPortal } from '../menu/index.js';
+export { MenuPortal as ContextMenuPortal } from '../menu/index';
 export { default as ContextMenuContent } from './context-menu-content.vue';
-export { MenuAnchor as ContextMenuAnchor } from '../menu/index.js';
-export { MenuArrow as ContextMenuArrow } from '../menu/index.js';
-export { MenuGroup as ContextMenuGroup } from '../menu/index.js';
-export { MenuGroupLabel as ContextMenuGroupLabel } from '../menu/index.js';
-export { MenuItem as ContextMenuItem } from '../menu/index.js';
-export { MenuItemIndicator as ContextMenuItemIndicator } from '../menu/index.js';
-export { MenuCheckboxItem as ContextMenuCheckboxItem } from '../menu/index.js';
-export { MenuRadioItem as ContextMenuRadioItem } from '../menu/index.js';
-export { MenuSub as ContextMenuSub } from '../menu/index.js';
-export { MenuSubTrigger as ContextMenuSubTrigger } from '../menu/index.js';
-export { MenuSubContent as ContextMenuSubContent } from '../menu/index.js';
-export { MenuSeparator as ContextMenuSeparator } from '../menu/index.js';
-export { MenuCheckboxGroup as ContextMenuCheckboxGroup } from '../menu/index.js';
-export { MenuRadioGroup as ContextMenuRadioGroup } from '../menu/index.js';
+export { MenuAnchor as ContextMenuAnchor } from '../menu/index';
+export { MenuArrow as ContextMenuArrow } from '../menu/index';
+export { MenuGroup as ContextMenuGroup } from '../menu/index';
+export { MenuGroupLabel as ContextMenuGroupLabel } from '../menu/index';
+export { MenuItem as ContextMenuItem } from '../menu/index';
+export { MenuItemIndicator as ContextMenuItemIndicator } from '../menu/index';
+export { MenuCheckboxItem as ContextMenuCheckboxItem } from '../menu/index';
+export { MenuRadioItem as ContextMenuRadioItem } from '../menu/index';
+export { MenuSub as ContextMenuSub } from '../menu/index';
+export { MenuSubTrigger as ContextMenuSubTrigger } from '../menu/index';
+export { MenuSubContent as ContextMenuSubContent } from '../menu/index';
+export { MenuSeparator as ContextMenuSeparator } from '../menu/index';
+export { MenuCheckboxGroup as ContextMenuCheckboxGroup } from '../menu/index';
+export { MenuRadioGroup as ContextMenuRadioGroup } from '../menu/index';
 export { default as ContextMenuCompact } from './context-menu-compact.vue';
 export { default as ContextMenuCheckboxCompact } from './context-menu-checkbox-compact.vue';
 export { default as ContextMenuRadioCompact } from './context-menu-radio-compact.vue';
@@ -38,7 +38,7 @@ export type {
   ContextMenuRadioCompactProps,
   ContextMenuRadioCompactEmits,
   ContextMenuRadioCompactSlots
-} from './types.js';
+} from './types';
 export type {
   MenuAnchorProps as ContextMenuAnchorProps,
   MenuArrowProps as ContextMenuArrowProps,
@@ -65,4 +65,4 @@ export type {
   MenuSubTriggerProps as ContextMenuSubTriggerProps,
   MenuUiSlot as ContextMenuUiSlot,
   MenuUi as ContextMenuUi
-} from '../menu/index.js';
+} from '../menu/index';

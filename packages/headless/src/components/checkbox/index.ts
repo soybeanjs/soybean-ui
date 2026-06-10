@@ -8,7 +8,7 @@ export { default as CheckboxControl } from './checkbox-control.vue';
 export { default as CheckboxIndicator } from './checkbox-indicator.vue';
 export { default as CheckboxLabel } from './checkbox-label.vue';
 
-export { provideCheckboxUi, provideCheckboxCardUi } from './context.js';
+export { provideCheckboxUi, provideCheckboxCardUi } from './context';
 
 export type {
   CheckboxCompactProps,
@@ -32,4 +32,4 @@ export type {
   CheckboxUi,
   CheckboxCardUiSlot,
   CheckboxCardUi
-} from './types.js';
+} from './types';

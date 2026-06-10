@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { shallowRef, watchEffect, nextTick, onWatcherCleanup } from 'vue';
 import DynamicRender from '../_common/dynamic-render.vue';
-import { provideDialogProviderContext } from './context.js';
+import { provideDialogProviderContext } from './context';
 import DialogCompact from './dialog-compact.vue';
-import { DialogState } from './state.js';
-import type { DialogT } from './types.js';
+import { DialogState } from './state';
+import type { DialogT } from './types';
 
 defineOptions({
   name: 'DialogProvider',

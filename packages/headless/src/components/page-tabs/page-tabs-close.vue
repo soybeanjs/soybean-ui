@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { computed, useAttrs } from 'vue';
 import Button from '../button/button.vue';
-import { usePageTabsUi, usePageTabsItemContext } from './context.js';
-import type { PageTabsCloseProps } from './types.js';
+import { usePageTabsUi, usePageTabsItemContext } from './context';
+import type { PageTabsCloseProps } from './types';
 
 defineOptions({
   name: 'PageTabsClose'

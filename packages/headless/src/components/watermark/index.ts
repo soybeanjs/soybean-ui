@@ -2,7 +2,7 @@ export { default as WatermarkCompact } from './watermark-compact.vue';
 export { default as WatermarkOverlay } from './watermark-overlay.vue';
 export { default as WatermarkRoot } from './watermark-root.vue';
 
-export { provideWatermarkUi } from './context.js';
+export { provideWatermarkUi } from './context';
 
 export type {
   WatermarkCompactProps,
@@ -10,4 +10,4 @@ export type {
   WatermarkOverlayProps,
   WatermarkUiSlot,
   WatermarkUi
-} from './types.js';
+} from './types';

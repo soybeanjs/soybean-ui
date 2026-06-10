@@ -4,7 +4,7 @@ import { useOmitProps } from '@soybeanjs/headless/composables';
 import type { Align } from '@soybeanjs/headless/types';
 import Icon from '../icon/icon.vue';
 import Button from './button.vue';
-import type { ButtonLoadingProps } from './types.js';
+import type { ButtonLoadingProps } from './types';
 
 defineOptions({
   name: 'SButtonLoading',

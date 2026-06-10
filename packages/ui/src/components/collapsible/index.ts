@@ -5,4 +5,4 @@ export {
 } from '@soybeanjs/headless/collapsible';
 
 export type * from '@soybeanjs/headless/collapsible';
-export type * from './types.js';
+export type * from './types';

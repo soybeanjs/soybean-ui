@@ -8,4 +8,4 @@ export {
 } from '@soybeanjs/headless/toolbar';
 
 export type * from '@soybeanjs/headless/toolbar';
-export type * from './types.js';
+export type * from './types';

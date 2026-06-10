@@ -3,7 +3,7 @@ export { default as AvatarRoot } from './avatar-root.vue';
 export { default as AvatarImage } from './avatar-image.vue';
 export { default as AvatarFallback } from './avatar-fallback.vue';
 
-export { provideAvatarUi } from './context.js';
+export { provideAvatarUi } from './context';
 
 export type {
   AvatarCompactProps,
@@ -15,4 +15,4 @@ export type {
   AvatarFallbackProps,
   AvatarUiSlot,
   AvatarUi
-} from './types.js';
+} from './types';

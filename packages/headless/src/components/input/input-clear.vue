@@ -2,8 +2,8 @@
 import { computed } from 'vue';
 import Icon from '../_icon/icon.vue';
 import Button from '../button/button.vue';
-import { useInputRootContext, useInputUi } from './context.js';
-import type { InputClearProps, InputClearEmits } from './types.js';
+import { useInputRootContext, useInputUi } from './context';
+import type { InputClearProps, InputClearEmits } from './types';
 
 defineOptions({
   name: 'InputClear'

@@ -12,7 +12,7 @@ export { default as CalendarHeadCell } from './calendar-head-cell.vue';
 export { default as CalendarCell } from './calendar-cell.vue';
 export { default as CalendarCellTrigger } from './calendar-cell-trigger.vue';
 
-export { provideCalendarUi } from './context.js';
+export { provideCalendarUi } from './context';
 
 export type {
   CalendarCompactProps,
@@ -36,4 +36,4 @@ export type {
   CalendarPrevProps,
   CalendarUi,
   CalendarUiSlot
-} from './types.js';
+} from './types';

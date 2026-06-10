@@ -2,7 +2,7 @@ export { default as CollapsibleRoot } from './collapsible-root.vue';
 export { default as CollapsibleContent } from './collapsible-content.vue';
 export { default as CollapsibleTrigger } from './collapsible-trigger.vue';
 
-export { provideCollapsibleUi } from './context.js';
+export { provideCollapsibleUi } from './context';
 
 export type {
   CollapsibleRootProps,
@@ -11,4 +11,4 @@ export type {
   CollapsibleTriggerProps,
   CollapsibleUiSlot,
   CollapsibleUi
-} from './types.js';
+} from './types';

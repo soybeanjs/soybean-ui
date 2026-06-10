@@ -8,7 +8,7 @@ export { default as PopoverPopup } from './popover-popup.vue';
 export { default as PopoverArrow } from '../popper/popper-arrow.vue';
 export { default as PopoverClose } from './popover-close.vue';
 
-export { providePopoverUi } from './context.js';
+export { providePopoverUi } from './context';
 
 export type {
   PopoverCompactProps,
@@ -25,6 +25,6 @@ export type {
   PopoverTriggerProps,
   PopoverUiSlot,
   PopoverUi
-} from './types.js';
-export type { PopperArrowProps as PopoverArrowProps } from '../popper/types.js';
-export type { PortalProps as PopoverPortalProps } from '../portal/types.js';
+} from './types';
+export type { PopperArrowProps as PopoverArrowProps } from '../popper/types';
+export type { PortalProps as PopoverPortalProps } from '../portal/types';

@@ -1,8 +1,8 @@
 export { default as Toaster } from './toaster.vue';
 export { default as ToastProvider } from './toast-provider.vue';
-export { toast } from './state.js';
+export { toast } from './state';
 
-export { provideToastUi } from './context.js';
+export { provideToastUi } from './context';
 
 export type {
   ToastType,
@@ -13,4 +13,4 @@ export type {
   ToastProviderProps,
   ToastUiSlot,
   ToastUi
-} from './types.js';
+} from './types';

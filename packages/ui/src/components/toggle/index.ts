@@ -1,3 +1,3 @@
 export { default as SToggle } from './toggle.vue';
 
-export type * from './types.js';
+export type * from './types';

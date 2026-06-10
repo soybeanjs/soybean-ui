@@ -7,7 +7,7 @@ export { default as StepperTitle } from './stepper-title.vue';
 export { default as StepperDescription } from './stepper-description.vue';
 export { default as StepperCompact } from './stepper-compact.vue';
 
-export { provideStepperUi } from './context.js';
+export { provideStepperUi } from './context';
 
 export type {
   StepperRootProps,
@@ -25,4 +25,4 @@ export type {
   StepperCompactProps,
   StepperCompactEmits,
   StepperCompactSlots
-} from './types.js';
+} from './types';

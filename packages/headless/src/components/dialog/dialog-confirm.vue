@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import Button from '../button/button.vue';
-import { useDialogRootContext, useDialogUi } from './context.js';
-import type { DialogConfirmProps, DialogConfirmEmits } from './types.js';
+import { useDialogRootContext, useDialogUi } from './context';
+import type { DialogConfirmProps, DialogConfirmEmits } from './types';
 
 defineOptions({
   name: 'DialogConfirm'

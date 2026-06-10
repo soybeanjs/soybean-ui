@@ -7,7 +7,7 @@ export { default as BreadcrumbPage } from './breadcrumb-page.vue';
 export { default as BreadcrumbSeparator } from './breadcrumb-separator.vue';
 export { default as BreadcrumbEllipsis } from './breadcrumb-ellipsis.vue';
 
-export { provideBreadcrumbUi } from './context.js';
+export { provideBreadcrumbUi } from './context';
 
 export type {
   BreadcrumbCompactProps,
@@ -25,4 +25,4 @@ export type {
   BreadcrumbOptionData,
   BreadcrumbUiSlot,
   BreadcrumbUi
-} from './types.js';
+} from './types';

@@ -5,7 +5,7 @@ export { default as TabsContent } from './tabs-content.vue';
 export { default as TabsIndicator } from './tabs-indicator.vue';
 export { default as TabsCompact } from './tabs-compact.vue';
 
-export { provideTabsUi } from './context.js';
+export { provideTabsUi } from './context';
 
 export type {
   TabsRootProps,
@@ -20,4 +20,4 @@ export type {
   TabsCompactSlots,
   TabsUiSlot,
   TabsUi
-} from './types.js';
+} from './types';

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import ColorSwatchCompact from '../color-swatch/color-swatch-compact.vue';
-import { useColorSwatchPickerItemContext } from './context.js';
-import type { ColorSwatchPickerItemSwatchProps } from './types.js';
+import { useColorSwatchPickerItemContext } from './context';
+import type { ColorSwatchPickerItemSwatchProps } from './types';
 
 defineOptions({
   name: 'ColorSwatchPickerItemSwatch'

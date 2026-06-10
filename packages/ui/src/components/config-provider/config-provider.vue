@@ -8,11 +8,11 @@ import { createShadcnTheme } from '@soybeanjs/shadcn-theme';
 import { themeSizeMap } from '@/theme';
 import DialogProvider from '../dialog/dialog-provider.vue';
 import Icon from '../icon/icon.vue';
-import type { IconValue } from '../icon/types.js';
+import type { IconValue } from '../icon/types';
 import ProgressProvider from '../progress/progress-provider.vue';
 import ToastProvider from '../toast/toast-provider.vue';
-import { provideConfigProviderContext } from './context.js';
-import type { ConfigProviderProps } from './types.js';
+import { provideConfigProviderContext } from './context';
+import type { ConfigProviderProps } from './types';
 
 defineOptions({
   name: 'SConfigProvider'

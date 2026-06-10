@@ -8,7 +8,7 @@ export { default as PaginationLast } from './pagination-last.vue';
 export { default as PaginationEllipsis } from './pagination-ellipsis.vue';
 export { default as PaginationCompact } from './pagination-compact.vue';
 
-export { providePaginationUi } from './context.js';
+export { providePaginationUi } from './context';
 
 export type {
   PaginationRootProps,
@@ -22,4 +22,4 @@ export type {
   PaginationCompactProps,
   PaginationCompactEmits,
   PaginationCompactSlots
-} from './types.js';
+} from './types';

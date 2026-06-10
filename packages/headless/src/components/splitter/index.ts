@@ -2,7 +2,7 @@ export { default as SplitterGroup } from './splitter-group.vue';
 export { default as SplitterPanel } from './splitter-panel.vue';
 export { default as SplitterResizeHandle } from './splitter-resize-handle.vue';
 
-export { provideSplitterUi } from './context.js';
+export { provideSplitterUi } from './context';
 
 export type {
   SplitterGroupContext,
@@ -14,4 +14,4 @@ export type {
   SplitterResizeHandleProps,
   SplitterUi,
   SplitterUiSlot
-} from './types.js';
+} from './types';

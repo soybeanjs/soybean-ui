@@ -5,7 +5,7 @@ export { default as ScrollAreaThumb } from './scroll-area-thumb.vue';
 export { default as ScrollAreaCorner } from './scroll-area-corner.vue';
 export { default as ScrollAreaCompact } from './scroll-area-compact.vue';
 
-export { provideScrollAreaUi } from './context.js';
+export { provideScrollAreaUi } from './context';
 
 export type {
   ScrollAreaRootProps,
@@ -22,4 +22,4 @@ export type {
   ScrollAreaType,
   ScrollAreaOrientation,
   ScrollAreaState
-} from './types.js';
+} from './types';

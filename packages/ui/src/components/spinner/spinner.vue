@@ -3,7 +3,7 @@ import { computed } from 'vue';
 import { useOmitProps } from '@soybeanjs/headless/composables';
 import { spinnerVariants } from '@/styles/spinner';
 import SIcon from '../icon/icon.vue';
-import type { SpinnerProps } from './types.js';
+import type { SpinnerProps } from './types';
 
 defineOptions({
   name: 'SSpinner'

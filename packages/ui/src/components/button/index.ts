@@ -14,4 +14,4 @@ export type {
   ButtonVariant,
   ButtonShape,
   ButtonShadow
-} from './types.js';
+} from './types';

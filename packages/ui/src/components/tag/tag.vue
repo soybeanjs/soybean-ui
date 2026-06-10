@@ -3,7 +3,7 @@ import { computed } from 'vue';
 import { Tag } from '@soybeanjs/headless/tag';
 import { tagVariants } from '@/styles/tag';
 import Icon from '../icon/icon.vue';
-import type { TagProps, TagEmits } from './types.js';
+import type { TagProps, TagEmits } from './types';
 
 defineOptions({
   name: 'STag'

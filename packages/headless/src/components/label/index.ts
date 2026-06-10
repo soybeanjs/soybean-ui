@@ -1,3 +1,3 @@
 export { default as Label } from './label.vue';
 
-export type { LabelProps } from './types.js';
+export type { LabelProps } from './types';

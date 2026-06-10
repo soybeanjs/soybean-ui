@@ -9,7 +9,7 @@ export { default as TableRow } from './table-row.vue';
 export { default as TableHead } from './table-head.vue';
 export { default as TableCell } from './table-cell.vue';
 
-export { provideTableUi } from './context.js';
+export { provideTableUi } from './context';
 export {
   filterTableColumns,
   getNextTableFilterKeywordState,
@@ -38,6 +38,6 @@ export {
   sortTableData,
   toggleTableFilterOption,
   toggleTableSortState
-} from './shared.js';
+} from './shared';
 
-export type * from './types.js';
+export type * from './types';

@@ -11,7 +11,7 @@ export { default as LayoutFooter } from './layout-footer.vue';
 export { default as LayoutMobile } from './layout-mobile.vue';
 export { default as LayoutTrigger } from './layout-trigger.vue';
 
-export { provideLayoutUi, provideLayoutClassicUi } from './context.js';
+export { provideLayoutUi, provideLayoutClassicUi } from './context';
 
 export type {
   LayoutClassicCompactProps,
@@ -40,4 +40,4 @@ export type {
   LayoutUi,
   LayoutClassicUiSlot,
   LayoutClassicUi
-} from './types.js';
+} from './types';

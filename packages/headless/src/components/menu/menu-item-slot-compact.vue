@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import Icon from '../_icon/icon.vue';
-import type { IconValue } from '../_icon/types.js';
-import { useMenuUi } from './context.js';
+import type { IconValue } from '../_icon/types';
+import { useMenuUi } from './context';
 
 interface Props {
   icon?: IconValue;

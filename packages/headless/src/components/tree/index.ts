@@ -17,4 +17,4 @@ export type {
   TreeVirtualizerItemProps,
   TreeVirtualizerItemEmits,
   FlattenedItem
-} from './types.js';
+} from './types';

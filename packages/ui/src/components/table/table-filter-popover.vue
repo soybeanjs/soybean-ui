@@ -6,7 +6,7 @@ import SButton from '../button/button.vue';
 import SCheckbox from '../checkbox/checkbox.vue';
 import SInput from '../input/input.vue';
 import SPopover from '../popover/popover.vue';
-import type { TableBaseData, TableFilterPopoverProps } from './types.js';
+import type { TableBaseData, TableFilterPopoverProps } from './types';
 
 defineOptions({
   name: 'STableFilterPopover'

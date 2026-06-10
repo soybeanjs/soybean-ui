@@ -3,7 +3,7 @@ export { default as ColorAreaRoot } from './color-area-root.vue';
 export { default as ColorAreaArea } from './color-area-area.vue';
 export { default as ColorAreaThumb } from './color-area-thumb.vue';
 
-export { provideColorAreaUi } from './context.js';
+export { provideColorAreaUi } from './context';
 
 export type {
   ColorAreaCompactProps,
@@ -15,4 +15,4 @@ export type {
   ColorAreaAxisChannel,
   ColorAreaUiSlot,
   ColorAreaUi
-} from './types.js';
+} from './types';

@@ -3,7 +3,7 @@ export { default as AnchorItemCompact } from './anchor-item-compact.vue';
 export { default as AnchorLink } from './anchor-link.vue';
 export { default as AnchorRoot } from './anchor-root.vue';
 
-export { provideAnchorUi } from './context.js';
+export { provideAnchorUi } from './context';
 
 export type {
   AnchorCompactProps,
@@ -16,4 +16,4 @@ export type {
   AnchorOptionData,
   AnchorUi,
   AnchorUiSlot
-} from './types.js';
+} from './types';

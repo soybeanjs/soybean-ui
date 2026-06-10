@@ -1,6 +1,6 @@
 export { default as DateRangePickerCompact } from './date-range-picker-compact.vue';
 
-export { provideDateRangePickerUi } from './context.js';
+export { provideDateRangePickerUi } from './context';
 
 export type {
   DateRangePickerCompactProps,
@@ -8,4 +8,4 @@ export type {
   DateRangePickerUiSlot,
   DateRangePickerUi,
   DateRange
-} from './types.js';
+} from './types';

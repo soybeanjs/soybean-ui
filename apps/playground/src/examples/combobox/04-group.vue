@@ -18,7 +18,7 @@ const items: ComboboxOptionData[] = [
     label: 'Backend',
     separator: true,
     items: [
-      { label: 'Node.js', value: 'node', icon: 'logos:nodejs-icon' },
+      { label: 'Node', value: 'node', icon: 'logos:nodejs-icon' },
       { label: 'Go', value: 'go', icon: 'logos:go' }
     ]
   }

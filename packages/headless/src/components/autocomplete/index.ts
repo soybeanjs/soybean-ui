@@ -1,18 +1,18 @@
 export { default as AutocompleteCompact } from './autocomplete-compact.vue';
 export { default as AutocompleteRoot } from './autocomplete-root.vue';
-export { ComboboxAnchor as AutocompleteAnchor } from '../combobox/index.js';
+export { ComboboxAnchor as AutocompleteAnchor } from '../combobox/index';
 export { default as AutocompleteInput } from './autocomplete-input.vue';
-export { ComboboxTrigger as AutocompleteTrigger } from '../combobox/index.js';
-export { Portal as AutocompletePortal } from '../portal/index.js';
-export { ComboboxContent as AutocompleteContent } from '../combobox/index.js';
-export { ComboboxViewport as AutocompleteViewport } from '../combobox/index.js';
-export { ComboboxGroup as AutocompleteGroup } from '../combobox/index.js';
-export { ComboboxGroupLabel as AutocompleteGroupLabel } from '../combobox/index.js';
-export { ComboboxItem as AutocompleteItem } from '../combobox/index.js';
-export { ComboboxItemIndicator as AutocompleteItemIndicator } from '../combobox/index.js';
-export { ComboboxSeparator as AutocompleteSeparator } from '../combobox/index.js';
+export { ComboboxTrigger as AutocompleteTrigger } from '../combobox/index';
+export { Portal as AutocompletePortal } from '../portal/index';
+export { ComboboxContent as AutocompleteContent } from '../combobox/index';
+export { ComboboxViewport as AutocompleteViewport } from '../combobox/index';
+export { ComboboxGroup as AutocompleteGroup } from '../combobox/index';
+export { ComboboxGroupLabel as AutocompleteGroupLabel } from '../combobox/index';
+export { ComboboxItem as AutocompleteItem } from '../combobox/index';
+export { ComboboxItemIndicator as AutocompleteItemIndicator } from '../combobox/index';
+export { ComboboxSeparator as AutocompleteSeparator } from '../combobox/index';
 
-export { provideAutocompleteUi } from './context.js';
+export { provideAutocompleteUi } from './context';
 
 export type {
   AutocompleteCompactProps,
@@ -40,4 +40,4 @@ export type {
   AutocompleteSearchOptionData,
   AutocompleteUiSlot,
   AutocompleteUi
-} from './types.js';
+} from './types';

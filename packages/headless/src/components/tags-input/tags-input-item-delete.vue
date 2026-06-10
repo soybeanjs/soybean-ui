@@ -2,8 +2,8 @@
 import { computed } from 'vue';
 import Icon from '../_icon/icon.vue';
 import Button from '../button/button.vue';
-import { useTagsInputItemContext, useTagsInputUi } from './context.js';
-import type { TagsInputItemDeleteProps } from './types.js';
+import { useTagsInputItemContext, useTagsInputUi } from './context';
+import type { TagsInputItemDeleteProps } from './types';
 
 defineOptions({
   name: 'TagsInputItemDelete'

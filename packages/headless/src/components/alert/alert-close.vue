@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { computed, useAttrs } from 'vue';
 import Button from '../button/button.vue';
-import { useAlertRootContext, useAlertUi } from './context.js';
-import type { AlertCloseProps, AlertCloseEmits } from './types.js';
+import { useAlertRootContext, useAlertUi } from './context';
+import type { AlertCloseProps, AlertCloseEmits } from './types';
 
 defineOptions({
   name: 'AlertClose'

@@ -5,7 +5,7 @@ export { default as ToolbarSeparator } from './toolbar-separator.vue';
 export { default as ToolbarToggleGroup } from './toolbar-toggle-group.vue';
 export { default as ToolbarToggleItem } from './toolbar-toggle-item.vue';
 
-export { provideToolbarUi } from './context.js';
+export { provideToolbarUi } from './context';
 
 export type {
   ToolbarRootProps,
@@ -20,4 +20,4 @@ export type {
   ToolbarToggleGroupProps,
   ToolbarToggleGroupEmits,
   ToolbarToggleItemProps
-} from './types.js';
+} from './types';

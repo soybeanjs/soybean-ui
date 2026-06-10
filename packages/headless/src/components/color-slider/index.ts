@@ -3,7 +3,7 @@ export { default as ColorSliderRoot } from './color-slider-root.vue';
 export { default as ColorSliderTrack } from './color-slider-track.vue';
 export { default as ColorSliderThumb } from './color-slider-thumb.vue';
 
-export { provideColorSliderUi } from './context.js';
+export { provideColorSliderUi } from './context';
 
 export type {
   ColorSliderCompactProps,
@@ -14,4 +14,4 @@ export type {
   ColorSliderThumbProps,
   ColorSliderUiSlot,
   ColorSliderUi
-} from './types.js';
+} from './types';

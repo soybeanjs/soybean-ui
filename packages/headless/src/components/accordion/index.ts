@@ -6,7 +6,7 @@ export { default as AccordionTrigger } from './accordion-trigger.vue';
 export { default as AccordionContent } from './accordion-content.vue';
 export { default as AccordionDescription } from './accordion-description.vue';
 
-export { provideAccordionUi } from './context.js';
+export { provideAccordionUi } from './context';
 
 export type {
   AccordionCompactProps,
@@ -23,4 +23,4 @@ export type {
   AccordionOptionData,
   AccordionUiSlot,
   AccordionUi
-} from './types.js';
+} from './types';

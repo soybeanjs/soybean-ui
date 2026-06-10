@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import CollapsibleContent from '../collapsible/collapsible-content.vue';
-import type { CardContentProps } from './types.js';
+import type { CardContentProps } from './types';
 
 defineOptions({
   name: 'CardContent'

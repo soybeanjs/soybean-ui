@@ -5,4 +5,4 @@ export {
 } from '@soybeanjs/headless/breadcrumb';
 
 export type * from '@soybeanjs/headless/breadcrumb';
-export type * from './types.js';
+export type * from './types';

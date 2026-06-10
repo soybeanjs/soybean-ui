@@ -7,7 +7,7 @@ import { keysOf } from '@soybeanjs/utils';
 import { calendarRangeVariants } from '@/styles/calendar-range';
 import { miniSizeMap } from '@/theme';
 import SSelect from '../select/select.vue';
-import type { CalendarRangeProps, CalendarRangeEmits, CalendarRangeSlots } from './types.js';
+import type { CalendarRangeProps, CalendarRangeEmits, CalendarRangeSlots } from './types';
 
 defineOptions({
   name: 'SCalendarRange'

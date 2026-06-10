@@ -4,7 +4,7 @@ export { default as TextareaControl } from './textarea-control.vue';
 export { default as TextareaClear } from './textarea-clear.vue';
 export { default as TextareaCounter } from './textarea-counter.vue';
 
-export { provideTextareaUi } from './context.js';
+export { provideTextareaUi } from './context';
 
 export type {
   TextareaCompactProps,
@@ -19,4 +19,4 @@ export type {
   TextareaCounterProps,
   TextareaUiSlot,
   TextareaUi
-} from './types.js';
+} from './types';

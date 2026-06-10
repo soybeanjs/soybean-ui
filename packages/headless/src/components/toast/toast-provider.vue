@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import Toaster from './toaster.vue';
-import type { ToastProviderProps } from './types.js';
+import type { ToastProviderProps } from './types';
 
 defineOptions({
   name: 'ToastProvider'

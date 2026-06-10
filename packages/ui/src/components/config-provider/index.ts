@@ -1,5 +1,5 @@
 export { default as SConfigProvider } from './config-provider.vue';
-export { useConfigProvider } from './context.js';
+export { useConfigProvider } from './context';
 
 export type * from '@soybeanjs/headless/config-provider';
-export type { ConfigProviderProps, IconifyOptions, ThemeOptions } from './types.js';
+export type { ConfigProviderProps, IconifyOptions, ThemeOptions } from './types';

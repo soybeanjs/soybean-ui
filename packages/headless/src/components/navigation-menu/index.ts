@@ -9,7 +9,7 @@ export { default as NavigationMenuSubList } from './navigation-menu-sub-list.vue
 export { default as NavigationMenuViewport } from './navigation-menu-viewport.vue';
 export { default as NavigationMenuIndicator } from './navigation-menu-indicator.vue';
 
-export { provideNavigationMenuUi } from './context.js';
+export { provideNavigationMenuUi } from './context';
 
 export type {
   NavigationMenuCompactProps,
@@ -32,4 +32,4 @@ export type {
   NavigationMenuOptionData,
   NavigationMenuUiSlot,
   NavigationMenuUi
-} from './types.js';
+} from './types';

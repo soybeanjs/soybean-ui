@@ -4,7 +4,7 @@ export { default as SliderTrack } from './slider-track.vue';
 export { default as SliderRange } from './slider-range.vue';
 export { default as SliderThumb } from './slider-thumb.vue';
 
-export { provideSliderUi } from './context.js';
+export { provideSliderUi } from './context';
 
 export type {
   SliderCompactProps,
@@ -21,4 +21,4 @@ export type {
   SliderThumbAlignment,
   SliderUiSlot,
   SliderUi
-} from './types.js';
+} from './types';

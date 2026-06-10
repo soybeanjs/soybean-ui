@@ -8,7 +8,7 @@ export { default as CarouselNavigation } from './carousel-navigation.vue';
 export { default as CarouselNext } from './carousel-next.vue';
 export { default as CarouselPrevious } from './carousel-previous.vue';
 
-export { provideCarouselUi } from './context.js';
+export { provideCarouselUi } from './context';
 
 export type {
   CarouselCompactProps,
@@ -30,4 +30,4 @@ export type {
   EmblaCarouselType,
   EmblaOptionsType,
   EmblaPluginType
-} from './types.js';
+} from './types';

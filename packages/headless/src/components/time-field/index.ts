@@ -2,7 +2,7 @@ export { default as TimeFieldCompact } from './time-field-compact.vue';
 export { default as TimeFieldRoot } from './time-field-root.vue';
 export { default as TimeFieldInput } from './time-field-input.vue';
 
-export { provideTimeFieldUi } from './context.js';
+export { provideTimeFieldUi } from './context';
 
 export type {
   TimeFieldCompactProps,
@@ -15,4 +15,4 @@ export type {
   TimeFieldUi,
   TimeFieldUiSlot,
   TimeValue
-} from './types.js';
+} from './types';

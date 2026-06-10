@@ -5,7 +5,7 @@ export { default as AlertTitle } from './alert-title.vue';
 export { default as AlertDescription } from './alert-description.vue';
 export { default as AlertClose } from './alert-close.vue';
 
-export { provideAlertUi } from './context.js';
+export { provideAlertUi } from './context';
 
 export type {
   AlertCompactProps,
@@ -19,4 +19,4 @@ export type {
   AlertCloseProps,
   AlertUiSlot,
   AlertUi
-} from './types.js';
+} from './types';

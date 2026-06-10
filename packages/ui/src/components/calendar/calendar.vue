@@ -7,7 +7,7 @@ import { calendarVariants } from '@/styles/calendar';
 import { miniSizeMap } from '@/theme';
 import Icon from '../icon/icon.vue';
 import SSelect from '../select/select.vue';
-import type { CalendarProps, CalendarEmits, CalendarSlots } from './types.js';
+import type { CalendarProps, CalendarEmits, CalendarSlots } from './types';
 
 defineOptions({
   name: 'SCalendar'

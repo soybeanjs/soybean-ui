@@ -6,7 +6,7 @@ export { default as TooltipPositioner } from './tooltip-positioner.vue';
 export { default as TooltipPopup } from './tooltip-popup.vue';
 export { default as TooltipArrow } from '../popper/popper-arrow.vue';
 
-export { providePopperUi as provideTooltipUi } from '../popper/context.js';
+export { providePopperUi as provideTooltipUi } from '../popper/context';
 
 export type {
   TooltipCompactProps,
@@ -20,11 +20,11 @@ export type {
   TooltipPositionerProps,
   TooltipPositionerEmits,
   TooltipDataState
-} from './types.js';
+} from './types';
 
 export type {
   PopperArrowProps as TooltipArrowProps,
   PopperUiSlot as TooltipUiSlot,
   PopperUi as TooltipUi
-} from '../popper/types.js';
-export type { PortalProps as TooltipPortalProps } from '../portal/types.js';
+} from '../popper/types';
+export type { PortalProps as TooltipPortalProps } from '../portal/types';

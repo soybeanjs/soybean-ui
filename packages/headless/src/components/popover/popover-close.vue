@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import Button from '../button/button.vue';
-import { usePopoverRootContext, usePopoverUi } from './context.js';
-import type { PopoverCloseProps, PopoverCloseEmits } from './types.js';
+import { usePopoverRootContext, usePopoverUi } from './context';
+import type { PopoverCloseProps, PopoverCloseEmits } from './types';
 
 defineOptions({
   name: 'PopoverClose'

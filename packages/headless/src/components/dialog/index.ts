@@ -14,8 +14,8 @@ export { default as DialogClose } from './dialog-close.vue';
 export { default as DialogCancel } from './dialog-cancel.vue';
 export { default as DialogConfirm } from './dialog-confirm.vue';
 
-export { provideDialogUi } from './context.js';
-export { dialog } from './state.js';
+export { provideDialogUi } from './context';
+export { dialog } from './state';
 
 export type {
   DialogCompactProps,
@@ -42,4 +42,4 @@ export type {
   DialogCancelEmits,
   DialogUiSlot,
   DialogUi
-} from './types.js';
+} from './types';

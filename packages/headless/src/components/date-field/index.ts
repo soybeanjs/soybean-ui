@@ -2,7 +2,7 @@ export { default as DateFieldCompact } from './date-field-compact.vue';
 export { default as DateFieldRoot } from './date-field-root.vue';
 export { default as DateFieldInput } from './date-field-input.vue';
 
-export { provideDateFieldUi } from './context.js';
+export { provideDateFieldUi } from './context';
 
 export type {
   DateFieldCompactProps,
@@ -15,4 +15,4 @@ export type {
   DateFieldSegment,
   DateFieldUi,
   DateFieldUiSlot
-} from './types.js';
+} from './types';

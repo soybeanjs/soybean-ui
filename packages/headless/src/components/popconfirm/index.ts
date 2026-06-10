@@ -14,7 +14,7 @@ export { default as PopconfirmFooter } from './popconfirm-footer.vue';
 export { default as PopconfirmConfirm } from './popconfirm-confirm.vue';
 export { default as PopconfirmCancel } from './popconfirm-cancel.vue';
 
-export { providePopconfirmUi } from './context.js';
+export { providePopconfirmUi } from './context';
 
 export type {
   PopconfirmCompactProps,
@@ -33,7 +33,7 @@ export type {
   PopconfirmType,
   PopconfirmUiSlot,
   PopconfirmUi
-} from './types.js';
+} from './types';
 export type {
   PopoverAnchorProps as PopconfirmAnchorProps,
   PopoverCloseProps as PopconfirmCloseProps,
@@ -43,6 +43,6 @@ export type {
   PopoverRootEmits as PopconfirmRootEmits,
   PopoverRootProps as PopconfirmRootProps,
   PopoverTriggerProps as PopconfirmTriggerProps
-} from '../popover/types.js';
-export type { PopperArrowProps as PopconfirmArrowProps } from '../popper/types.js';
-export type { PortalProps as PopconfirmPortalProps } from '../portal/types.js';
+} from '../popover/types';
+export type { PopperArrowProps as PopconfirmArrowProps } from '../popper/types';
+export type { PortalProps as PopconfirmPortalProps } from '../portal/types';

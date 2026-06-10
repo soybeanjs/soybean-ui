@@ -8,4 +8,4 @@ export type {
   VirtualizerContentProps,
   VirtualizerDynamicContentProps,
   VirtualizerOptions
-} from './types.js';
+} from './types';

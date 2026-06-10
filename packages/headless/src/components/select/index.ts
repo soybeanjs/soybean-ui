@@ -16,9 +16,9 @@ export { default as SelectScrollDownButton } from './select-scroll-down-button.v
 export { default as SelectSeparator } from './select-separator.vue';
 export { default as SelectArrow } from './select-arrow.vue';
 
-export { provideSelectUi } from './context.js';
+export { provideSelectUi } from './context';
 
-export type { PortalProps as SelectPortalProps } from '../portal/types.js';
+export type { PortalProps as SelectPortalProps } from '../portal/types';
 export type {
   SelectCompactProps,
   SelectCompactEmits,
@@ -49,4 +49,4 @@ export type {
   SelectPosition,
   SelectUiSlot,
   SelectUi
-} from './types.js';
+} from './types';

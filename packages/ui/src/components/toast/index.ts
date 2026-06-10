@@ -10,4 +10,4 @@ export type {
   ToastUiSlot,
   ToastUi
 } from '@soybeanjs/headless/toast';
-export type * from './types.js';
+export type * from './types';

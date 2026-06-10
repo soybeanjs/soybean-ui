@@ -4,4 +4,4 @@ export { default as SCheckboxCardGroup } from './checkbox-card-group.vue';
 export { default as SCheckboxCard } from './checkbox-card.vue';
 
 export type * from '@soybeanjs/headless/checkbox';
-export type * from './types.js';
+export type * from './types';

@@ -8,8 +8,8 @@ export { default as FormControl } from './form-control.vue';
 export { default as FormDescription } from './form-description.vue';
 export { default as FormError } from './form-error.vue';
 
-export { provideFormUi, provideFormFieldUi } from './context.js';
-export { useForm } from './use-form.js';
+export { provideFormUi, provideFormFieldUi } from './context';
+export { useForm } from './use-form';
 
 export type { StandardSchemaV1 } from '@standard-schema/spec';
 export type {
@@ -31,7 +31,7 @@ export type {
   FormFieldComponent,
   FormFieldArrayComponent,
   UseFormReturn
-} from './types.js';
+} from './types';
 export type {
   InferStandardSchemaInput,
   FormValues,
@@ -53,4 +53,4 @@ export type {
   UseRegisterFieldArrayOptions,
   UseHeadlessFormOptions,
   UseHeadlessFormReturn
-} from './core/types.js';
+} from './core/types';

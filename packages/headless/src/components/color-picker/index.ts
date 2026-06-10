@@ -2,7 +2,7 @@ export { default as ColorPickerCompact } from './color-picker-compact.vue';
 export { default as ColorPickerRoot } from './color-picker-root.vue';
 export { default as ColorPickerTrigger } from './color-picker-trigger.vue';
 
-export { provideColorPickerUi } from './context.js';
+export { provideColorPickerUi } from './context';
 
 export type {
   ColorPickerCompactProps,
@@ -14,4 +14,4 @@ export type {
   ColorPickerFormatOptionData,
   ColorPickerUi,
   ColorPickerUiSlot
-} from './types.js';
+} from './types';

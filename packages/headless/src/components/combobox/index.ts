@@ -16,9 +16,9 @@ export { default as ComboboxEmpty } from './combobox-empty.vue';
 export { default as ComboboxSeparator } from './combobox-separator.vue';
 export { default as ComboboxVirtualizer } from './combobox-virtualizer.vue';
 
-export { provideComboboxUi } from './context.js';
+export { provideComboboxUi } from './context';
 
-export type { PortalProps as ComboboxPortalProps } from '../portal/types.js';
+export type { PortalProps as ComboboxPortalProps } from '../portal/types';
 export type {
   ComboboxCompactProps,
   ComboboxCompactEmits,
@@ -47,4 +47,4 @@ export type {
   ComboboxOptionData,
   ComboboxUiSlot,
   ComboboxUi
-} from './types.js';
+} from './types';

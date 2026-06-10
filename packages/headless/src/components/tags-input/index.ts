@@ -6,7 +6,7 @@ export { default as TagsInputItemDelete } from './tags-input-item-delete.vue';
 export { default as TagsInputControl } from './tags-input-control.vue';
 export { default as TagsInputClear } from './tags-input-clear.vue';
 
-export { provideTagsInputUi } from './context.js';
+export { provideTagsInputUi } from './context';
 
 export type {
   TagsInputCompactProps,
@@ -22,4 +22,4 @@ export type {
   TagsInputCompactSlotProps,
   TagsInputUiSlot,
   TagsInputUi
-} from './types.js';
+} from './types';

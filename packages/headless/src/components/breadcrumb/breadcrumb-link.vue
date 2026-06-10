@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import Link from '../link/link.vue';
-import { useBreadcrumbUi } from './context.js';
-import type { BreadcrumbLinkProps } from './types.js';
+import { useBreadcrumbUi } from './context';
+import type { BreadcrumbLinkProps } from './types';
 
 defineOptions({
   name: 'BreadcrumbLink'

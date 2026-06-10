@@ -7,7 +7,7 @@ export { default as ListboxItemIndicator } from './listbox-item-indicator.vue';
 export { default as ListboxFilter } from './listbox-filter.vue';
 export { default as ListboxVirtualizer } from './listbox-virtualizer.vue';
 
-export { provideListboxUi } from './context.js';
+export { provideListboxUi } from './context';
 
 export type {
   ListboxRootProps,
@@ -24,4 +24,4 @@ export type {
   ListboxCollectionItemData,
   ListboxUiSlot,
   ListboxUi
-} from './types.js';
+} from './types';

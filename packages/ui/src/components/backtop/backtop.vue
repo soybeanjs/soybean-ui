@@ -4,7 +4,7 @@ import { Backtop } from '@soybeanjs/headless/backtop';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
 import { backtopVariants } from '@/styles/backtop';
 import Icon from '../icon/icon.vue';
-import type { BacktopProps, BacktopEmits } from './types.js';
+import type { BacktopProps, BacktopEmits } from './types';
 
 defineOptions({
   name: 'SBacktop'
