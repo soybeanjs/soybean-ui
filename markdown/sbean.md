@@ -473,3 +473,41 @@ export default defineConfig({
 2. 测试覆盖
 3. 文档
 4. Web UI 预设构建器（sbean.soybeanjs.cn/create）
+
+## 当前待办清单（2026-06-10）
+
+下面的清单用于记录当前版本相对 shadcn 仍需补齐的必要能力；已完成的组件分发、registry 依赖展开、docs / mcp / preset / registry 基础命令不再重复列入。
+
+### 必要实现能力
+
+- [ ] `add` 支持 `--all`，可一次性安装全部非废弃组件
+- [ ] `add` 支持 `--dry-run`，在不落盘的前提下预览文件与依赖变更
+- [ ] `add` 将 `--diff` / `--view` 合并为工作流内能力，而不是依赖独立命令手动串联
+- [ ] `add` 在无参数时提供交互式组件选择，而不是直接退出
+- [ ] `add` 支持 URL / 本地路径 / registry item address 输入，而不只是不带上下文的组件名
+- [ ] `add` 在缺失 `sbean.json` 时自动引导初始化并继续安装，而不是要求用户手动二次执行
+- [ ] `add` 在空目录或无项目骨架时自动创建项目并继续安装组件
+- [ ] `init` / `create` 支持把组件参数直接带入初始化流程，形成一次性 scaffold + init + add
+- [ ] `init` / `create` 增加 template 选择与解析，而不只生成最小 Vue + Vite 模板
+- [ ] `init` / `create` 增加 monorepo 初始化路径与 workspace 目标选择
+- [ ] `init` / `create` 支持 preset URL / remote init URL，而不只支持本地 preset 名称或 preset code
+- [ ] `info` 输出已安装组件、preset 解析结果、项目链接与更完整的项目检测结果
+- [ ] `registry add` 支持公共 registry 索引发现与交互选择，而不只接受 `@namespace=url`
+- [ ] `mcp init` 合并已有配置并处理依赖安装，而不是仅写入静态配置文件
+- [ ] 增加 `migrate` 命令，用于批量迁移 icon library / RTL / 结构变更
+- [ ] 增加 `eject` 命令，提供对等的一次性样式或依赖脱钩能力
+
+### 专项：对标 `shadcn create`
+
+目标：补齐一个真正的一站式 `sbean create` 体验，而不是当前 `init` 的别名。
+
+- [ ] `sbean create [components...]` 支持把项目创建、配置初始化、组件安装合并为一次命令
+- [ ] `create` 支持在新项目场景下选择 template，例如 `vue-vite`、`nuxt`、后续可扩展模板
+- [ ] `create` 支持项目名、目标目录、是否 monorepo 的交互式或命令行配置
+- [ ] `create` 能在新项目初始化时联动 preset 选择，包括 style / base / primary / iconLibrary / rtl / pointer
+- [ ] `create` 支持 remote preset / preset code / 本地 preset 三种入口统一落到同一初始化管道
+- [ ] `create` 在完成 scaffold 后自动写入 `sbean.json`、`uno.config.ts`、`tsconfig.json`、`vite-env.d.ts`
+- [ ] `create` 可选自动安装 starter 组件，而不是要求用户初始化后再单独执行 `add`
+- [ ] `create` 对现有非空目录、已存在 `package.json`、已存在 `sbean.json` 的场景有明确 preflight 与回退策略
+- [ ] `create` 输出最终项目摘要，包括模板、preset、已安装组件、registry 与后续启动命令
+- [ ] `create` 后续对齐 Web 端预设构建器，允许命令行与 `sbean.soybeanjs.cn/create` 使用同一份 preset 协议
