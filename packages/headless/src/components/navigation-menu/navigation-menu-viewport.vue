@@ -25,6 +25,7 @@ const {
   unmountOnHide,
   rootElement,
   modelValue,
+  activeTriggerElement,
   viewportElement,
   setViewportElement,
   onContentEnter,
@@ -67,6 +68,7 @@ function updatePosition() {
 
   position.value = getNavigationMenuViewportPosition({
     rootElement: rootElement.value,
+    activeTriggerElement: activeTriggerElement.value,
     contentSize,
     orientation: orientation.value,
     dir: dir.value,
@@ -117,7 +119,7 @@ watch(
   { immediate: true }
 );
 
-useResizeObserver([() => globalThis?.document?.body, rootElement], () => {
+useResizeObserver([() => globalThis?.document?.body, rootElement, activeTriggerElement], () => {
   updatePosition();
 });
 </script>

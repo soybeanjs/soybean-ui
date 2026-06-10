@@ -8,6 +8,7 @@ export const navigationMenuVariants = scv({
       `fixed z-50 origin-top-center overflow-hidden rounded-md border bg-popover text-popover-foreground shadow-lg`,
       `start-[--soybean-navigation-menu-viewport-left] top-[--soybean-navigation-menu-viewport-top]`,
       `h-[--soybean-navigation-menu-viewport-height] w-[--soybean-navigation-menu-viewport-width]`,
+      `transition-all duration-200 ease-out`,
       `data-[state=open]:animate-in data-[state=open]:zoom-in-90 data-[state=closed]:animate-out data-[state=closed]:zoom-out-95`,
       `group-data-[orientation=vertical]:mt-0`
     ],

@@ -34,6 +34,7 @@ export function createContentId(baseId: string, value: string) {
 
 interface GetNavigationMenuViewportPositionParams {
   rootElement: HTMLElement;
+  activeTriggerElement?: HTMLElement | null;
   contentSize: Size;
   orientation: DataOrientation;
   dir: Direction;
@@ -86,7 +87,7 @@ function getLogicalStartPosition(left: number, width: number, dir: Direction) {
 }
 
 export function getNavigationMenuViewportPosition(params: GetNavigationMenuViewportPositionParams) {
-  const { rootElement, contentSize, orientation, dir, align } = params;
+  const { rootElement, activeTriggerElement, contentSize, orientation, dir, align } = params;
 
   const rootRect = rootElement.getBoundingClientRect();
   const { width: viewportWidth, height: viewportHeight } = getViewportSize();
@@ -94,17 +95,21 @@ export function getNavigationMenuViewportPosition(params: GetNavigationMenuViewp
 
   const isRtl = dir === 'rtl';
 
+  // Position viewport relative to the active trigger when available,
+  // otherwise fall back to the root element.
+  const referenceRect = activeTriggerElement ? activeTriggerElement.getBoundingClientRect() : rootRect;
+
   const horizontalAlignPositionMap: Record<Align, NavigationMenuViewportPosition> = {
     start: {
-      left: isRtl ? rootRect.right - contentWidth : rootRect.left,
+      left: isRtl ? referenceRect.right - contentWidth : referenceRect.left,
       top: rootRect.bottom
     },
     center: {
-      left: rootRect.left + rootRect.width / 2 - contentWidth / 2,
+      left: referenceRect.left + referenceRect.width / 2 - contentWidth / 2,
       top: rootRect.bottom
     },
     end: {
-      left: isRtl ? rootRect.left : rootRect.right - contentWidth,
+      left: isRtl ? referenceRect.left : referenceRect.right - contentWidth,
       top: rootRect.bottom
     }
   };
@@ -112,15 +117,15 @@ export function getNavigationMenuViewportPosition(params: GetNavigationMenuViewp
   const verticalAlignPositionMap: Record<Align, NavigationMenuViewportPosition> = {
     start: {
       left: isRtl ? rootRect.left - contentWidth : rootRect.right,
-      top: rootRect.top
+      top: referenceRect.top
     },
     center: {
       left: isRtl ? rootRect.left - contentWidth : rootRect.right,
-      top: rootRect.top + rootRect.height / 2 - contentHeight / 2
+      top: referenceRect.top + referenceRect.height / 2 - contentHeight / 2
     },
     end: {
       left: isRtl ? rootRect.left - contentWidth : rootRect.right,
-      top: rootRect.bottom - contentHeight
+      top: referenceRect.bottom - contentHeight
     }
   };
 
