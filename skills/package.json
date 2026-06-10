@@ -10,7 +10,7 @@
     "soybean-ui",
     "vue"
   ],
-  "homepage": "https://github.com/soybeanjs/soybean-ui/packages/ui-skills",
+  "homepage": "https://github.com/soybeanjs/soybean-ui/tree/main/skills",
   "license": "MIT",
   "author": {
     "name": "Soybean",

@@ -5,7 +5,7 @@ Agent skills for `@soybeanjs/ui` and `@soybeanjs/headless`.
 ## Installation
 
 ```bash
-npx skills add soybeanjs/soybean-ui/ui-skills
+npx skills add soybeanjs/soybean-ui/skills
 ```
 
 The `skills` CLI installs every skill shipped in the package and places them into the correct agent-specific skills directory.

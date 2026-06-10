@@ -59,7 +59,7 @@ const currentDir = path.dirname(fileURLToPath(import.meta.url));
 const repoRoot = path.resolve(currentDir, '..');
 const docsComponentsDir = path.resolve(repoRoot, 'apps/docs/src/docs/en/components');
 const generatedApiDir = path.resolve(repoRoot, 'apps/docs/src/generated/api');
-const defaultSkillsRootDir = path.resolve(repoRoot, 'packages/ui-skills/skills');
+const defaultSkillsRootDir = path.resolve(repoRoot, 'skills/skills');
 const categoryTitleMap: Record<string, string> = {
   general: 'General',
   groupLayout: 'Layout',

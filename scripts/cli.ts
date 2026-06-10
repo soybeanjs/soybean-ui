@@ -97,7 +97,7 @@ const commandConfigs: Record<Command, CommandConfig> = {
     description: 'Generate skill docs and distribution files.',
     run: async () => {
       await generateSkillsDistribution();
-      await formatPaths(['packages/ui-skills']);
+      await formatPaths(['skills']);
     }
   },
   ui: {

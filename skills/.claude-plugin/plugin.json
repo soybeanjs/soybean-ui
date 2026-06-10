@@ -4,7 +4,7 @@
     "name": "Soybean"
   },
   "description": "Agent skills for SoybeanUI and SoybeanHeadless.",
-  "homepage": "https://github.com/soybeanjs/soybean-ui/packages/ui-skills",
+  "homepage": "https://github.com/soybeanjs/soybean-ui/tree/main/skills",
   "keywords": ["agentskills", "soybean-ui", "soybean-headless", "vue", "github-copilot", "claude-code"],
   "license": "MIT",
   "name": "soybean-ui-skills",

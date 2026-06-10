@@ -72,7 +72,7 @@ type ClaudeMarketplaceManifest = {
 const currentDir = path.dirname(fileURLToPath(import.meta.url));
 const repoRoot = path.resolve(currentDir, '..');
 const rootPackageJsonPath = path.resolve(repoRoot, 'package.json');
-const skillsDistributionRootDir = path.resolve(repoRoot, 'packages/ui-skills');
+const skillsDistributionRootDir = path.resolve(repoRoot, 'skills');
 const skillsSourceRootDir = path.resolve(skillsDistributionRootDir, 'skills-source');
 const skillsDistributionSkillsDir = path.resolve(skillsDistributionRootDir, 'skills');
 const claudePluginDir = path.resolve(skillsDistributionRootDir, '.claude-plugin');
@@ -136,7 +136,7 @@ function createDistributionPackageManifest(rootPackage: RootPackageManifest): Di
     author: rootPackage.author,
     description: distributionDescription,
     files: ['skills', '.claude-plugin', 'README.md'],
-    homepage: `${rootPackage.homepage}/packages/ui-skills`,
+    homepage: `${rootPackage.homepage}/tree/main/skills`,
     keywords: distributionKeywords,
     license: rootPackage.license ?? 'MIT',
     name: distributionPackageName,
@@ -154,7 +154,7 @@ function createClaudePluginManifest(rootPackage: RootPackageManifest): ClaudePlu
   return {
     author: rootPackage.author ? { email: rootPackage.author.email, name: rootPackage.author.name } : undefined,
     description: distributionDescription,
-    homepage: `${rootPackage.homepage}/packages/ui-skills`,
+    homepage: `${rootPackage.homepage}/tree/main/skills`,
     keywords: distributionKeywords,
     license: rootPackage.license,
     name: distributionPluginName,
@@ -192,7 +192,7 @@ function createDistributionReadme(): string {
     '## Installation',
     '',
     '```bash',
-    `npx skills add soybeanjs/soybean-ui/ui-skills`,
+    `npx skills add soybeanjs/soybean-ui/skills`,
     '```',
     '',
     'The `skills` CLI installs every skill shipped in the package and places them into the correct agent-specific skills directory.',
