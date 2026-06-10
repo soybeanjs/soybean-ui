@@ -1,75 +1,51 @@
-# Nuxt Minimal Starter
+# @soybeanjs/ui-nuxt
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+English | [中文](./README.zh-CN.md)
 
-## Setup
+Example Nuxt application demonstrating `@soybeanjs/ui` integration.
 
-Make sure to install dependencies:
+## 📖 Overview
+
+This app shows how to use `@soybeanjs/ui` in a Nuxt application with:
+
+- Auto-import of `S`-prefixed components via the Nuxt module
+- UnoCSS integration for utility-first styling
+- Internationalization with `vue-i18n`
+- Full TypeScript support
+
+## 🛠 Development
 
 ```bash
-# npm
-npm install
-
-# pnpm
+# Install dependencies
 pnpm install
 
-# yarn
-yarn install
-
-# bun
-bun install
-```
-
-## Development Server
-
-Start the development server on `http://localhost:3000`:
-
-```bash
-# npm
-npm run dev
-
-# pnpm
+# Start Nuxt dev server
 pnpm dev
 
-# yarn
-yarn dev
-
-# bun
-bun run dev
-```
-
-## Production
-
-Build the application for production:
-
-```bash
-# npm
-npm run build
-
-# pnpm
+# Build for production
 pnpm build
 
-# yarn
-yarn build
-
-# bun
-bun run build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
+# Preview production build
 pnpm preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
 ```
 
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+## 🏗 Tech Stack
+
+- **Nuxt 4** — Vue framework
+- **@soybeanjs/ui** — Styled component library
+- **@soybeanjs/ui/nuxt** — Nuxt module for auto-registration
+- **UnoCSS** — Utility-first CSS engine
+- **Vue I18n** — Internationalization
+
+## 📁 Project Structure
+
+```
+apps/nuxt/
+├── src/
+│   ├── components/   # App components
+│   ├── pages/        # Route pages (file-based routing)
+│   ├── layouts/      # Page layouts
+│   └── styles/       # App styles
+├── public/           # Static assets
+└── dist/             # Build output (git-ignored)
+```
