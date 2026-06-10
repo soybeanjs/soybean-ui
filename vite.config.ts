@@ -15,6 +15,9 @@ export default defineConfig({
       'build:headless': {
         command: 'pnpm --filter @soybeanjs/headless build'
       },
+      'build:sbean': {
+        command: 'pnpm --filter sbean build'
+      },
       'build:ui': {
         command: 'pnpm --filter @soybeanjs/ui build',
         dependsOn: ['build:headless']

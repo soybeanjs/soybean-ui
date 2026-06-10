@@ -18,7 +18,7 @@
   },
   "type": "module",
   "scripts": {
-    "build": "vp run build:ui",
+    "build": "vp run build:ui && vp run build:sbean",
     "commit": "soy git-commit",
     "fmt": "vp fmt",
     "lint": "vp lint --fix && pnpm lint:vue",
