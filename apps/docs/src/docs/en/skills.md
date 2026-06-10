@@ -34,20 +34,20 @@ The bundled skills help agents answer tasks such as:
 The easiest installation path is the `skills` CLI:
 
 ```bash
-npx skills add soybeanjs/soybean-ui/ui-skills
+npx skills add soybeanjs/soybean-ui/skills
 ```
 
 You can target a specific agent:
 
 ```bash
-npx skills add soybeanjs/soybean-ui/ui-skills --agent cursor
-npx skills add soybeanjs/soybean-ui/ui-skills --agent claude-code
+npx skills add soybeanjs/soybean-ui/skills --agent cursor
+npx skills add soybeanjs/soybean-ui/skills --agent claude-code
 ```
 
 Or install globally so the skills are available across projects:
 
 ```bash
-npx skills add soybeanjs/soybean-ui/ui-skills --global
+npx skills add soybeanjs/soybean-ui/skills --global
 ```
 
 Installing the package adds both `soybean-ui` and `soybean-headless`.
@@ -73,8 +73,8 @@ https://github.com/soybeanjs/soybean-ui/tree/main/ui-skills/skills/soybean-headl
 Claude Code can install an individual skill directly from the GitHub directory:
 
 ```bash
-claude skill add https://github.com/soybeanjs/soybean-ui/tree/main/ui-skills/skills/soybean-ui
-claude skill add https://github.com/soybeanjs/soybean-ui/tree/main/ui-skills/skills/soybean-headless
+claude skill add https://github.com/soybeanjs/soybean-ui/tree/main/skills/skills/soybean-ui
+claude skill add https://github.com/soybeanjs/soybean-ui/tree/main/skills/skills/soybean-headless
 ```
 
 The repository also ships Claude marketplace metadata inside the published skills package.
@@ -83,10 +83,10 @@ The repository also ships Claude marketplace metadata inside the published skill
 
 Any tool that supports GitHub-hosted skill folders or custom instruction directories can use the same sources.
 
-- **SoybeanUI skill entry**: https://github.com/soybeanjs/soybean-ui/tree/main/ui-skills/skills/soybean-ui/SKILL.md
-- **SoybeanUI skill directory**: https://github.com/soybeanjs/soybean-ui/tree/main/ui-skills/skills/soybean-ui
-- **SoybeanHeadless skill entry**: https://github.com/soybeanjs/soybean-ui/tree/main/ui-skills/skills/soybean-headless/SKILL.md
-- **SoybeanHeadless skill directory**: https://github.com/soybeanjs/soybean-ui/tree/main/ui-skills/skills/soybean-headless
+- **SoybeanUI skill entry**: https://github.com/soybeanjs/soybean-ui/tree/main/skills/skills/soybean-ui/SKILL.md
+- **SoybeanUI skill directory**: https://github.com/soybeanjs/soybean-ui/tree/main/skills/skills/soybean-ui
+- **SoybeanHeadless skill entry**: https://github.com/soybeanjs/soybean-ui/tree/main/skills/skills/soybean-headless/SKILL.md
+- **SoybeanHeadless skill directory**: https://github.com/soybeanjs/soybean-ui/tree/main/skills/skills/soybean-headless
 
 ## Practical recommendations
 

@@ -34,20 +34,20 @@ SoybeanUI 目前公开提供两个 skill：
 最直接的安装方式是使用 `skills` CLI：
 
 ```bash
-npx skills add soybeanjs/soybean-ui/ui-skills
+npx skills add soybeanjs/soybean-ui/skills
 ```
 
 你也可以指定目标代理：
 
 ```bash
-npx skills add soybeanjs/soybean-ui/ui-skills --agent cursor
-npx skills add soybeanjs/soybean-ui/ui-skills --agent claude-code
+npx skills add soybeanjs/soybean-ui/skills --agent cursor
+npx skills add soybeanjs/soybean-ui/skills --agent claude-code
 ```
 
 如果希望全局安装，使其在多个项目里都可用：
 
 ```bash
-npx skills add soybeanjs/soybean-ui/ui-skills --global
+npx skills add soybeanjs/soybean-ui/skills --global
 ```
 
 安装这个包会同时提供 `soybean-ui` 和 `soybean-headless`。
@@ -59,13 +59,13 @@ npx skills add soybeanjs/soybean-ui/ui-skills --global
 样式层 skill：
 
 ```text
-https://github.com/soybeanjs/soybean-ui/tree/main/ui-skills/skills/soybean-ui
+https://github.com/soybeanjs/soybean-ui/tree/main/skills/skills/soybean-ui
 ```
 
 Headless skill：
 
 ```text
-https://github.com/soybeanjs/soybean-ui/tree/main/ui-skills/skills/soybean-headless
+https://github.com/soybeanjs/soybean-ui/tree/main/skills/skills/soybean-headless
 ```
 
 ### Claude Code
@@ -73,8 +73,8 @@ https://github.com/soybeanjs/soybean-ui/tree/main/ui-skills/skills/soybean-headl
 Claude Code 也可以直接从 GitHub 目录安装单个 skill：
 
 ```bash
-claude skill add https://github.com/soybeanjs/soybean-ui/tree/main/ui-skills/skills/soybean-ui
-claude skill add https://github.com/soybeanjs/soybean-ui/tree/main/ui-skills/skills/soybean-headless
+claude skill add https://github.com/soybeanjs/soybean-ui/tree/main/skills/skills/soybean-ui
+claude skill add https://github.com/soybeanjs/soybean-ui/tree/main/skills/skills/soybean-headless
 ```
 
 发布出来的 skills 包中也包含 Claude marketplace 所需的元数据。
@@ -83,10 +83,10 @@ claude skill add https://github.com/soybeanjs/soybean-ui/tree/main/ui-skills/ski
 
 任何支持 GitHub skill 目录或自定义说明目录的 AI 工具，都可以复用同一套来源。
 
-- **SoybeanUI skill 入口**：https://github.com/soybeanjs/soybean-ui/tree/main/ui-skills/skills/soybean-ui/SKILL.md
-- **SoybeanUI skill 目录**：https://github.com/soybeanjs/soybean-ui/tree/main/ui-skills/skills/soybean-ui
-- **SoybeanHeadless skill 入口**：https://github.com/soybeanjs/soybean-ui/tree/main/ui-skills/skills/soybean-headless/SKILL.md
-- **SoybeanHeadless skill 目录**：https://github.com/soybeanjs/soybean-ui/tree/main/ui-skills/skills/soybean-headless
+- **SoybeanUI skill 入口**：https://github.com/soybeanjs/soybean-ui/tree/main/skills/skills/soybean-ui/SKILL.md
+- **SoybeanUI skill 目录**：https://github.com/soybeanjs/soybean-ui/tree/main/skills/skills/soybean-ui
+- **SoybeanHeadless skill 入口**：https://github.com/soybeanjs/soybean-ui/tree/main/skills/skills/soybean-headless/SKILL.md
+- **SoybeanHeadless skill 目录**：https://github.com/soybeanjs/soybean-ui/tree/main/skills/skills/soybean-headless
 
 ## 实际建议
 
