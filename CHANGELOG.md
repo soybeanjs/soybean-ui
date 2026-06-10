@@ -1,5 +1,15 @@
 # Changelog
 
+## [v0.29.0-beta.4](https://github.com/soybeanjs/soybean-ui/compare/v0.29.0-beta.3...v0.29.0-beta.4) (2026-06-10)
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- **build**: add sbean build script to the build process &nbsp;-&nbsp; by **soybeanfe** [<samp>(7864f)</samp>](https://github.com/soybeanjs/soybean-ui/commit/7864f410f)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[soybeanfe](mailto:honghuangdc@gmail.com)
+
 ## [v0.29.0-beta.3](https://github.com/soybeanjs/soybean-ui/compare/v0.29.0-beta.2...v0.29.0-beta.3) (2026-06-10)
 
 ### &nbsp;&nbsp;&nbsp;🚀 Features

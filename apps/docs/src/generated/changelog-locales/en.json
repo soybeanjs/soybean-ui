@@ -1473,6 +1473,9 @@
             },
             "3": {
               "faeb1": "add sbean CLI tool for component copy-paste"
+            },
+            "4": {
+              "7864f": "add sbean build script to the build process"
             }
           }
         }
