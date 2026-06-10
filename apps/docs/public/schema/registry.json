@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft-07/schema#",
+  "description": "A sbean registry of components, styles, utilities, and themes.",
+  "type": "object",
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "description": "JSON Schema reference for this registry. Set to \"https://ui.soybeanjs.cn/schema/registry.json\" for validation."
+    },
+    "name": {
+      "type": "string",
+      "description": "The registry name. Required when this file is used as the root registry, optional for included registry chunks."
+    },
+    "homepage": {
+      "type": "string",
+      "description": "The registry homepage URL. Required when this file is used as the root registry."
+    },
+    "include": {
+      "type": "array",
+      "description": "An array of relative paths to registry.json files to include. The included items are merged into this registry.",
+      "items": {
+        "type": "string"
+      }
+    },
+    "items": {
+      "type": "array",
+      "description": "The registry items — components, styles, utilities, and themes.",
+      "default": [],
+      "items": {
+        "$ref": "https://ui.soybeanjs.cn/schema/registry-item.json"
+      }
+    }
+  },
+  "anyOf": [
+    {
+      "required": ["items"]
+    },
+    {
+      "required": ["include"]
+    }
+  ]
+}

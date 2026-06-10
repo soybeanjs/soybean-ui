@@ -1,0 +1,25 @@
+{
+  "name": "kbd",
+  "description": "Displays keyboard shortcuts.",
+  "dependencies": ["@soybeanjs/headless", "@soybeanjs/cva"],
+  "registryDependencies": ["utils"],
+  "files": [
+    {
+      "path": "packages/ui/src/components/kbd/kbd.vue",
+      "type": "registry:ui",
+      "content": "<script setup lang=\"ts\">\nimport { computed } from 'vue';\nimport { useOmitProps } from '@soybeanjs/headless/composables';\nimport { Kbd } from '@soybeanjs/headless/kbd';\nimport { kbdVariants } from '@/styles/kbd';\nimport type { KbdProps } from './types';\n\ndefineOptions({\n  name: 'SKbd'\n});\n\nconst props = withDefaults(defineProps<KbdProps>(), {\n  symbolize: true,\n  raised: true\n});\n\nconst delegatedProps = useOmitProps(props, ['class', 'size', 'variant', 'raised']);\n\nconst cls = computed(() =>\n  kbdVariants(\n    {\n      size: props.size,\n      variant: props.variant,\n      raised: props.raised\n    },\n    props.class\n  )\n);\n</script>\n\n<template>\n  <Kbd v-bind=\"delegatedProps\" :class=\"cls\" />\n</template>\n"
+    },
+    {
+      "path": "packages/ui/src/components/kbd/types.ts",
+      "type": "registry:lib",
+      "content": "import type { KbdProps as _KbdProps } from '@soybeanjs/headless/kbd';\nimport type { ClassValue } from '@soybeanjs/headless/types';\nimport type { KbdVariant } from '@/styles/kbd';\nimport type { ThemeSize } from '@/theme';\n\n/**\n * Properties for the Kbd component.\n */\nexport interface KbdProps extends _KbdProps {\n  /**\n   * Additional class names applied to the root element.\n   */\n  class?: ClassValue;\n  /**\n   * Visual size of the component.\n   */\n  size?: ThemeSize;\n  /**\n   * Visual variant of the component.\n   */\n  variant?: KbdVariant;\n  /**\n   * Whether raised.\n   */\n  raised?: boolean;\n}\n\nexport type { KbdVariant };\n"
+    },
+    {
+      "path": "packages/ui/src/styles/kbd.ts",
+      "type": "registry:style",
+      "content": "// @unocss-include\nimport { cv } from '@soybeanjs/cva';\nimport type { VariantProps } from '@soybeanjs/cva';\n\nexport const kbdVariants = cv({\n  base: `inline-flex items-center justify-center w-fit text-center font-medium border border-border rounded-sm font-inherit`,\n  variants: {\n    variant: {\n      solid: 'border-muted-foreground bg-muted-foreground text-muted shadow-muted-foreground/50',\n      outline: 'border-border bg-background text-muted-foreground shadow-border',\n      ghost: 'border-border bg-muted text-muted-foreground shadow-border/50'\n    },\n    size: {\n      xs: 'h-4 min-w-4 px-0.5 text-3xs data-[group]:tracking-0.5',\n      sm: 'h-4.5 min-w-4.5 px-0.625 text-2xs data-[group]:tracking-0.625',\n      md: 'h-5 min-w-5 px-0.75 text-xs data-[group]:tracking-0.75',\n      lg: 'h-6 min-w-6 px-1 text-sm data-[group]:tracking-1',\n      xl: 'h-7 min-w-7 px-1.25 text-base data-[group]:tracking-1.25',\n      '2xl': 'h-8 min-w-8 px-1.5 text-xl data-[group]:tracking-1.5'\n    },\n    raised: {\n      true: 'shadow-[0_2px_0_0]'\n    }\n  },\n  defaultVariants: {\n    size: 'md',\n    variant: 'outline',\n    raised: true\n  }\n});\n\ntype KbdVariants = VariantProps<typeof kbdVariants>;\n\nexport type KbdVariant = NonNullable<KbdVariants['variant']>;\n"
+    }
+  ],
+  "categories": ["display"],
+  "type": "registry:ui"
+}

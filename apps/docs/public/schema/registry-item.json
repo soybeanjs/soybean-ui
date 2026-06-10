@@ -1,0 +1,198 @@
+{
+  "$schema": "https://json-schema.org/draft-07/schema#",
+  "description": "A single item in the sbean registry. Represents a component, style, utility, or theme.",
+  "type": "object",
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "description": "JSON Schema reference for this item."
+    },
+    "name": {
+      "type": "string",
+      "description": "The name of the item. Unique within the registry. This is the identifier used by `sbean add <name>`."
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "registry:ui",
+        "registry:component",
+        "registry:style",
+        "registry:lib",
+        "registry:hook",
+        "registry:theme",
+        "registry:base",
+        "registry:font",
+        "registry:block"
+      ],
+      "description": "The item type. Determines the target directory and how the item is resolved in the user's project."
+    },
+    "title": {
+      "type": "string",
+      "description": "A human-readable title. Keep it short and descriptive."
+    },
+    "author": {
+      "type": "string",
+      "description": "The author of the item. Recommended format: username <url>"
+    },
+    "description": {
+      "type": "string",
+      "description": "A brief description of the item. Shown in search results."
+    },
+    "extends": {
+      "type": "string",
+      "description": "Name of a parent registry item this item extends."
+    },
+    "dependencies": {
+      "type": "array",
+      "description": "NPM packages required by this item. Installed when the item is added.",
+      "items": {
+        "type": "string"
+      }
+    },
+    "devDependencies": {
+      "type": "array",
+      "description": "NPM devDependencies required by this item.",
+      "items": {
+        "type": "string"
+      }
+    },
+    "registryDependencies": {
+      "type": "array",
+      "description": "Other registry items this item depends on. Will be resolved and added together.",
+      "items": {
+        "type": "string"
+      }
+    },
+    "files": {
+      "type": "array",
+      "description": "The source files that make up this item. Each file object describes a file path, its type, and optional target.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "path": {
+            "type": "string",
+            "description": "Path to the file, relative to the registry root. During build, the file content is read and inlined."
+          },
+          "content": {
+            "type": "string",
+            "description": "The file content. Populated by `sbean build`. Empty in source registry.json."
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "registry:ui",
+              "registry:component",
+              "registry:style",
+              "registry:lib",
+              "registry:hook",
+              "registry:theme"
+            ],
+            "description": "The file type. Determines where it's placed in the user's project."
+          },
+          "target": {
+            "type": "string",
+            "description": "Optional explicit target path. Overrides the default placement based on file type."
+          }
+        },
+        "required": ["path", "type"]
+      }
+    },
+    "cssVars": {
+      "type": "object",
+      "description": "CSS custom properties defined by this item.",
+      "properties": {
+        "light": {
+          "type": "object",
+          "description": "CSS variables for light mode. Keys are variable names, values are CSS values.",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "dark": {
+          "type": "object",
+          "description": "CSS variables for dark mode.",
+          "additionalProperties": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "css": {
+      "type": "string",
+      "description": "A CSS string to append to the user's stylesheet."
+    },
+    "uno": {
+      "type": "object",
+      "description": "UnoCSS configuration for this item.",
+      "properties": {
+        "config": {
+          "type": "object",
+          "description": "Additional UnoCSS configuration to merge."
+        }
+      }
+    },
+    "meta": {
+      "type": "object",
+      "description": "Arbitrary metadata attached to this item.",
+      "additionalProperties": true
+    },
+    "categories": {
+      "type": "array",
+      "description": "Categories for filtering and search.",
+      "items": {
+        "type": "string"
+      }
+    },
+    "docs": {
+      "type": "string",
+      "description": "URL to the documentation page for this item."
+    },
+    "font": {
+      "type": "object",
+      "description": "Font configuration. Only used when type is `registry:font`.",
+      "properties": {
+        "family": {
+          "type": "string",
+          "description": "Font family name (e.g., 'Inter', 'JetBrains Mono')."
+        },
+        "weight": {
+          "type": "string",
+          "description": "Font weight (e.g., '400', '400;500;700')."
+        },
+        "style": {
+          "type": "string",
+          "description": "Font style (e.g., 'normal', 'italic')."
+        },
+        "display": {
+          "type": "string",
+          "description": "Font display strategy (e.g., 'swap', 'block')."
+        },
+        "src": {
+          "type": "string",
+          "description": "Font source URL or import statement."
+        }
+      },
+      "required": ["family", "src"]
+    },
+    "config": {
+      "type": "object",
+      "description": "Base configuration. Only used when type is `registry:base`.",
+      "additionalProperties": true
+    }
+  },
+  "required": ["name", "type"],
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "type": {
+            "const": "registry:font"
+          }
+        }
+      },
+      "then": {
+        "required": ["name", "type", "font"]
+      }
+    }
+  ]
+}

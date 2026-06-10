@@ -1,0 +1,25 @@
+{
+  "name": "accordion",
+  "description": "A vertically stacked set of interactive headings that reveal or hide associated content.",
+  "dependencies": ["@soybeanjs/headless", "@soybeanjs/cva"],
+  "registryDependencies": ["utils"],
+  "files": [
+    {
+      "path": "packages/ui/src/components/accordion/accordion.vue",
+      "type": "registry:ui",
+      "content": "<script setup lang=\"ts\" generic=\"T extends AccordionOptionData = AccordionOptionData, M extends boolean = false\">\nimport { computed } from 'vue';\nimport { AccordionCompact, provideAccordionUi } from '@soybeanjs/headless/accordion';\nimport type { AccordionOptionData } from '@soybeanjs/headless/accordion';\nimport { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';\nimport { keysOf } from '@soybeanjs/utils';\nimport { accordionVariants } from '@/styles/accordion';\nimport type { AccordionProps, AccordionEmits, AccordionSlots } from './types';\n\ndefineOptions({\n  name: 'SAccordion'\n});\n\nconst props = withDefaults(defineProps<AccordionProps<T, M>>(), {\n  collapsible: true,\n  unmountOnHide: true\n});\n\nconst emit = defineEmits<AccordionEmits<M>>();\n\nconst slots = defineSlots<AccordionSlots<T, M>>();\n\nconst forwardedProps = useOmitProps(props, ['class', 'size', 'ui']);\n\nconst listeners = useForwardListeners(emit);\n\nconst slotNames = computed(() => keysOf(slots).filter(name => name !== 'item'));\n\nconst ui = computed(() =>\n  accordionVariants(\n    {\n      size: props.size\n    },\n    props.ui,\n    { root: props.class }\n  )\n);\n\nprovideAccordionUi(ui);\n</script>\n\n<template>\n  <AccordionCompact v-bind=\"forwardedProps\" v-on=\"listeners\">\n    <template #item=\"slotProps\">\n      <slot name=\"item\" v-bind=\"slotProps\" />\n    </template>\n    <template v-for=\"slotName in slotNames\" #[slotName]=\"slotProps\">\n      <slot :name=\"slotName\" v-bind=\"slotProps\" />\n    </template>\n  </AccordionCompact>\n</template>\n"
+    },
+    {
+      "path": "packages/ui/src/components/accordion/types.ts",
+      "type": "registry:lib",
+      "content": "import type {\n  AccordionCompactProps,\n  AccordionCompactEmits,\n  AccordionCompactSlots,\n  AccordionOptionData,\n  AccordionUi\n} from '@soybeanjs/headless/accordion';\nimport type { ClassValue } from '@soybeanjs/headless/types';\nimport type { ThemeSize } from '@/theme';\n\n/**\n * Properties for the Accordion component.\n */\nexport interface AccordionProps<\n  T extends AccordionOptionData = AccordionOptionData,\n  M extends boolean = false\n> extends AccordionCompactProps<T, M> {\n  /**\n   * root class\n   */\n  class?: ClassValue;\n  /**\n   * Visual size of the component.\n   */\n  size?: ThemeSize;\n  /**\n   * Per-slot class overrides for the component.\n   */\n  ui?: Partial<AccordionUi>;\n}\n\n/**\n * Events for the Accordion component.\n */\nexport type AccordionEmits<M extends boolean = false> = AccordionCompactEmits<M>;\n\n/**\n * Slots for the Accordion component.\n */\nexport type AccordionSlots<\n  T extends AccordionOptionData = AccordionOptionData,\n  M extends boolean = false\n> = AccordionCompactSlots<T, M>;\n"
+    },
+    {
+      "path": "packages/ui/src/styles/accordion.ts",
+      "type": "registry:style",
+      "content": "// @unocss-include\nimport { scv } from '@soybeanjs/cva';\n\nexport const accordionVariants = scv({\n  slots: {\n    root: '',\n    item: 'border-b',\n    header: 'flex',\n    content: [\n      `overflow-hidden transition will-change-auto`,\n      `data-[state=open]:animate-collapsible-down data-[state=closed]:animate-collapsible-up`\n    ],\n    description: 'm-0',\n    trigger: [\n      `flex-1 flex items-center justify-start font-medium transition-all-200 bg-transparent`,\n      `outline-none focus-visible:ring-3 focus-visible:ring-offset-background focus-visible:ring-primary/30`,\n      `hover:underline [&[data-state=open]>.trigger-icon]:rotate-180`\n    ],\n    triggerLeadingIcon: `shrink-0`,\n    triggerIcon: `trigger-icon ms-auto shrink-0 text-muted-foreground transition-transform-200`\n  },\n  variants: {\n    size: {\n      xs: {\n        root: 'text-2xs',\n        description: 'pb-3',\n        trigger: 'py-3 gap-2.5'\n      },\n      sm: {\n        root: 'text-xs',\n        description: 'pb-3.5',\n        trigger: 'py-3.5 gap-3'\n      },\n      md: {\n        root: 'text-sm',\n        description: 'pb-4',\n        trigger: 'py-4 gap-3.5'\n      },\n      lg: {\n        root: 'text-base',\n        description: 'pb-4.5',\n        trigger: 'py-4.5 gap-4'\n      },\n      xl: {\n        root: 'text-lg',\n        description: 'pb-5',\n        trigger: 'py-5 gap-4.5'\n      },\n      '2xl': {\n        root: 'text-2xl',\n        description: 'pb-6',\n        trigger: 'py-6 gap-5'\n      }\n    }\n  },\n  defaultVariants: {\n    size: 'md'\n  }\n});\n"
+    }
+  ],
+  "categories": ["layout", "disclosure"],
+  "type": "registry:ui"
+}

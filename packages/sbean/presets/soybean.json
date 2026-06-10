@@ -1,0 +1,13 @@
+{
+  "name": "soybean",
+  "title": "Soybean (Default)",
+  "description": "The default Soybean style with generous spacing and rounded corners. A balanced, modern look suitable for most applications.",
+  "base": "zinc",
+  "primary": "indigo",
+  "iconLibrary": "lucide",
+  "radius": "md",
+  "font": "inter",
+  "menuAccent": "subtle",
+  "menuColor": "default",
+  "cssVariables": true
+}

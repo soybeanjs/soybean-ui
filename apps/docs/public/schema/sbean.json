@@ -1,0 +1,197 @@
+{
+  "$schema": "https://json-schema.org/draft-07/schema#",
+  "description": "SBean project configuration file. Defines component style, aliases, and UnoCSS settings.",
+  "type": "object",
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "description": "JSON Schema reference for this config. Set to \"https://ui.soybeanjs.cn/schema/sbean.json\" for validation."
+    },
+    "style": {
+      "type": "string",
+      "enum": ["soybean", "clean", "dense"],
+      "description": "The design style preset. \"soybean\" is the default — a balanced, modern look. \"clean\" is minimal with sharper corners. \"dense\" is compact for data-heavy interfaces.",
+      "default": "soybean"
+    },
+    "iconLibrary": {
+      "type": "string",
+      "enum": ["lucide", "material-symbols", "ph", "tabler", "solar", "radix-icons"],
+      "description": "The Iconify icon set to use. Components use icons from this set via SIcon.",
+      "default": "lucide"
+    },
+    "uno": {
+      "type": "object",
+      "description": "UnoCSS theme configuration. Controls the CSS variable system via @soybeanjs/unocss-shadcn.",
+      "properties": {
+        "base": {
+          "type": "string",
+          "enum": ["zinc", "neutral", "stone", "slate", "gray"],
+          "description": "Base color palette for backgrounds, borders, and muted elements.",
+          "default": "zinc"
+        },
+        "primary": {
+          "type": "string",
+          "enum": [
+            "indigo",
+            "blue",
+            "green",
+            "red",
+            "amber",
+            "cyan",
+            "emerald",
+            "fuchsia",
+            "lime",
+            "orange",
+            "pink",
+            "purple",
+            "rose",
+            "sky",
+            "teal",
+            "violet",
+            "yellow"
+          ],
+          "description": "Primary brand color for buttons, links, and accents.",
+          "default": "indigo"
+        },
+        "chart": {
+          "type": "string",
+          "enum": [
+            "indigo",
+            "blue",
+            "green",
+            "red",
+            "amber",
+            "cyan",
+            "emerald",
+            "fuchsia",
+            "lime",
+            "orange",
+            "pink",
+            "purple",
+            "rose",
+            "sky",
+            "teal",
+            "violet",
+            "yellow"
+          ],
+          "description": "Chart color palette. Defaults to primary if not set."
+        },
+        "radius": {
+          "type": "string",
+          "enum": ["none", "2xs", "xs", "sm", "md", "lg", "xl", "2xl"],
+          "description": "Border radius preset. Semantic sizes: none(0), 2xs(0.25rem), xs(0.375rem), sm(0.5rem), md(0.625rem), lg(0.75rem), xl(0.875rem), 2xl(1rem).",
+          "default": "md"
+        },
+        "cssVariables": {
+          "type": "boolean",
+          "description": "Whether to use CSS variables for theming. When true, @soybeanjs/unocss-shadcn injects all color and radius variables at build time.",
+          "default": true
+        }
+      },
+      "required": ["base", "primary", "radius"]
+    },
+    "font": {
+      "type": "object",
+      "description": "Font family configuration.",
+      "properties": {
+        "sans": {
+          "type": "string",
+          "enum": [
+            "inter",
+            "noto-sans",
+            "roboto",
+            "raleway",
+            "dm-sans",
+            "public-sans",
+            "outfit",
+            "jetbrains-mono",
+            "geist",
+            "montserrat",
+            "ibm-plex-sans",
+            "source-sans-3",
+            "instrument-sans"
+          ],
+          "description": "Primary sans-serif font for body text."
+        },
+        "heading": {
+          "type": "string",
+          "enum": [
+            "inherit",
+            "inter",
+            "noto-sans",
+            "roboto",
+            "raleway",
+            "dm-sans",
+            "public-sans",
+            "outfit",
+            "jetbrains-mono",
+            "geist",
+            "montserrat",
+            "ibm-plex-sans",
+            "source-sans-3",
+            "instrument-sans"
+          ],
+          "description": "Font for headings. \"inherit\" uses the sans font.",
+          "default": "inherit"
+        }
+      }
+    },
+    "menu": {
+      "type": "object",
+      "description": "Menu component styling.",
+      "properties": {
+        "accent": {
+          "type": "string",
+          "enum": ["subtle", "bold"],
+          "description": "Menu accent style.",
+          "default": "subtle"
+        },
+        "color": {
+          "type": "string",
+          "enum": ["default", "inverted", "default-translucent", "inverted-translucent"],
+          "description": "Menu color scheme.",
+          "default": "default"
+        }
+      },
+      "required": ["accent", "color"]
+    },
+    "rtl": {
+      "type": "boolean",
+      "description": "Enable RTL (right-to-left) support.",
+      "default": false
+    },
+    "pointer": {
+      "type": "boolean",
+      "description": "Show pointer cursor on buttons.",
+      "default": false
+    },
+    "aliases": {
+      "type": "object",
+      "description": "Import path aliases matching your tsconfig paths.",
+      "properties": {
+        "components": {
+          "type": "string",
+          "description": "Alias for the components directory (e.g., \"@/components\").",
+          "default": "@/components"
+        },
+        "ui": {
+          "type": "string",
+          "description": "Alias for the UI components directory (e.g., \"@/components/ui\"). Defaults to {components}/ui.",
+          "default": "@/components/ui"
+        },
+        "utils": {
+          "type": "string",
+          "description": "Alias for the utils file (e.g., \"@/lib/utils\").",
+          "default": "@/lib/utils"
+        },
+        "lib": {
+          "type": "string",
+          "description": "Alias for the lib directory (e.g., \"@/lib\").",
+          "default": "@/lib"
+        }
+      },
+      "required": ["components", "utils"]
+    }
+  },
+  "required": ["style", "iconLibrary", "uno", "aliases"]
+}

@@ -1,0 +1,25 @@
+{
+  "name": "tooltip",
+  "description": "A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.",
+  "dependencies": ["@soybeanjs/headless", "@soybeanjs/cva"],
+  "registryDependencies": ["utils"],
+  "files": [
+    {
+      "path": "packages/ui/src/components/tooltip/tooltip.vue",
+      "type": "registry:ui",
+      "content": "<script setup lang=\"ts\">\nimport { computed } from 'vue';\nimport { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';\nimport { TooltipCompact, provideTooltipUi } from '@soybeanjs/headless/tooltip';\nimport { tooltipVariants } from '@/styles/tooltip';\nimport type { TooltipProps, TooltipEmits, TooltipSlots } from './types';\n\ndefineOptions({\n  name: 'STooltip'\n});\n\nconst props = withDefaults(defineProps<TooltipProps>(), {\n  open: undefined,\n  defaultOpen: false,\n  avoidCollisions: true,\n  showArrow: true\n});\n\nconst emit = defineEmits<TooltipEmits>();\n\ndefineSlots<TooltipSlots>();\n\nconst forwardedProps = useOmitProps(props, ['class', 'size', 'ui']);\n\nconst listeners = useForwardListeners(emit);\n\nconst ui = computed(() => tooltipVariants({ size: props.size }, props.ui, { popup: props.class }));\n\nprovideTooltipUi(ui);\n</script>\n\n<template>\n  <TooltipCompact v-bind=\"forwardedProps\" v-on=\"listeners\">\n    <template #trigger>\n      <slot name=\"trigger\" />\n    </template>\n    <slot />\n  </TooltipCompact>\n</template>\n"
+    },
+    {
+      "path": "packages/ui/src/components/tooltip/types.ts",
+      "type": "registry:lib",
+      "content": "import type {\n  TooltipCompactEmits,\n  TooltipCompactProps,\n  TooltipCompactSlots,\n  TooltipUi\n} from '@soybeanjs/headless/tooltip';\nimport type { ClassValue } from '@soybeanjs/headless/types';\nimport type { ThemeSize } from '@/theme';\n\n/**\n * Properties for the Tooltip component.\n */\nexport interface TooltipProps extends TooltipCompactProps {\n  /**\n   * class of popup\n   */\n  class?: ClassValue;\n  /**\n   * Visual size of the component.\n   */\n  size?: ThemeSize;\n  /**\n   * Per-slot class overrides for the component.\n   */\n  ui?: Partial<TooltipUi>;\n}\n\n/**\n * Events for the Tooltip component.\n */\nexport type TooltipEmits = TooltipCompactEmits;\n\n/**\n * Slots for the Tooltip component.\n */\nexport type TooltipSlots = TooltipCompactSlots;\n"
+    },
+    {
+      "path": "packages/ui/src/styles/tooltip.ts",
+      "type": "registry:style",
+      "content": "// @unocss-include\nimport { scv } from '@soybeanjs/cva';\n\nexport const tooltipVariants = scv({\n  slots: {\n    positioner: 'w-max',\n    popup: [\n      `w-auto rounded-md border bg-popover text-popover-foreground shadow-md outline-none z-50 will-change-transform`,\n      `animate-in fade-in-0 zoom-in-95`,\n      `data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95`,\n      `data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2`\n    ],\n    arrow: 'w-1em h-0.5em fill-popover stroke-border'\n  },\n  variants: {\n    size: {\n      xs: {\n        popup: 'px-2 py-1 text-2xs',\n        arrow: 'text-3xs'\n      },\n      sm: {\n        popup: 'px-2.5 py-1.25 text-xs',\n        arrow: 'text-2xs'\n      },\n      md: {\n        popup: 'px-3 py-1.5 text-sm',\n        arrow: 'text-xs'\n      },\n      lg: {\n        popup: 'px-3.5 py-1.75 text-base',\n        arrow: 'text-sm'\n      },\n      xl: {\n        popup: 'px-4 py-2 text-lg',\n        arrow: 'text-base'\n      },\n      '2xl': {\n        popup: 'px-4.5 py-2.5 text-xl',\n        arrow: 'text-lg'\n      }\n    }\n  },\n  defaultVariants: {\n    size: 'md'\n  }\n});\n"
+    }
+  ],
+  "categories": ["overlay"],
+  "type": "registry:ui"
+}

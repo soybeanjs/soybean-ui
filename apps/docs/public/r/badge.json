@@ -1,0 +1,25 @@
+{
+  "name": "badge",
+  "description": "Displays a badge or a small count/label.",
+  "dependencies": ["@soybeanjs/headless", "@soybeanjs/cva"],
+  "registryDependencies": ["utils"],
+  "files": [
+    {
+      "path": "packages/ui/src/components/badge/badge.vue",
+      "type": "registry:ui",
+      "content": "<script setup lang=\"ts\">\nimport { computed, useSlots } from 'vue';\nimport { BadgeCompact, provideBadgeUi } from '@soybeanjs/headless/badge';\nimport { useOmitProps } from '@soybeanjs/headless/composables';\nimport { keysOf } from '@soybeanjs/utils';\nimport { badgeVariants } from '@/styles/badge';\nimport type { BadgeProps, BadgeEmits } from './types';\n\ndefineOptions({\n  name: 'SBadge'\n});\n\nconst props = withDefaults(defineProps<BadgeProps>(), {\n  open: undefined\n});\n\nconst emit = defineEmits<BadgeEmits>();\n\nconst slots = useSlots();\n\nconst forwardedProps = useOmitProps(props, ['class', 'color', 'size', 'ui', 'position']);\n\nconst slotNames = computed(() => keysOf(slots));\n\nconst ui = computed(() =>\n  badgeVariants(\n    {\n      color: props.color,\n      size: props.size,\n      position: props.position\n    },\n    props.ui,\n    { root: props.class }\n  )\n);\n\nprovideBadgeUi(ui);\n</script>\n\n<template>\n  <BadgeCompact v-bind=\"forwardedProps\" @update:open=\"emit('update:open', $event)\">\n    <template v-for=\"slotName in slotNames\" #[slotName]>\n      <slot :name=\"slotName\" />\n    </template>\n  </BadgeCompact>\n</template>\n"
+    },
+    {
+      "path": "packages/ui/src/components/badge/types.ts",
+      "type": "registry:lib",
+      "content": "import type { BadgeCompactProps, BadgeRootEmits, BadgeUi } from '@soybeanjs/headless/badge';\nimport type { ClassValue } from '@soybeanjs/headless/types';\nimport type { BadgePosition } from '@/styles/badge';\nimport type { ThemeColor, ThemeSize } from '@/theme';\n\n/**\n * Properties for the Badge component.\n */\nexport interface BadgeProps extends BadgeCompactProps {\n  /**\n   * root class\n   */\n  class?: ClassValue;\n  /**\n   * Theme color of the component.\n   */\n  color?: ThemeColor;\n  /**\n   * Visual size of the component.\n   */\n  size?: ThemeSize;\n  /**\n   * Per-slot class overrides for the component.\n   */\n  ui?: Partial<BadgeUi>;\n  /**\n   * Position.\n   */\n  position?: BadgePosition;\n}\n\n/**\n * Events for the Badge component.\n */\nexport type BadgeEmits = BadgeRootEmits;\n\nexport type { BadgePosition };\n"
+    },
+    {
+      "path": "packages/ui/src/styles/badge.ts",
+      "type": "registry:style",
+      "content": "// @unocss-include\nimport { scv } from '@soybeanjs/cva';\nimport type { VariantProps } from '@soybeanjs/cva';\n\nexport const badgeVariants = scv({\n  slots: {\n    root: 'relative inline-block',\n    content: `absolute flex justify-center items-center leading-relaxed whitespace-nowrap rounded-full transform`\n  },\n  variants: {\n    color: {\n      primary: {\n        content: 'bg-primary text-primary-foreground'\n      },\n      destructive: {\n        content: 'bg-destructive text-destructive-foreground'\n      },\n      success: {\n        content: 'bg-success text-success-foreground'\n      },\n      warning: {\n        content: 'bg-warning text-warning-foreground'\n      },\n      info: {\n        content: 'bg-info text-info-foreground'\n      },\n      carbon: {\n        content: 'bg-carbon text-carbon-foreground'\n      },\n      secondary: {\n        content: 'bg-secondary text-secondary-foreground'\n      },\n      accent: {\n        content: 'bg-accent text-accent-foreground'\n      }\n    },\n    size: {\n      xs: {\n        content: `min-h-2 px-1 text-4xs`\n      },\n      sm: {\n        content: `min-h-2.5 px-1.25 text-3xs`\n      },\n      md: {\n        content: `min-h-3 px-1.5 text-2xs`\n      },\n      lg: {\n        content: `min-h-3.5 px-1.75 text-xs`\n      },\n      xl: {\n        content: `min-h-4 px-2 text-sm`\n      },\n      '2xl': {\n        content: `min-h-5 px-2.5 text-base`\n      }\n    },\n    position: {\n      'top-right': {\n        content: 'end-0 top-0 translate-x-1/2 -translate-y-1/2 rtl:-translate-x-1/2'\n      },\n      'bottom-right': {\n        content: 'end-0 bottom-0 translate-x-1/2 translate-y-1/2 rtl:-translate-x-1/2'\n      },\n      'top-left': {\n        content: 'start-0 top-0 -translate-x-1/2 -translate-y-1/2 rtl:translate-x-1/2'\n      },\n      'bottom-left': {\n        content: 'start-0 bottom-0 -translate-x-1/2 translate-y-1/2 rtl:translate-x-1/2'\n      }\n    }\n  },\n  defaultVariants: {\n    color: 'primary',\n    size: 'md',\n    position: 'top-right'\n  }\n});\n\ntype BadgeVariants = VariantProps<typeof badgeVariants>;\n\nexport type BadgePosition = NonNullable<BadgeVariants['position']>;\n"
+    }
+  ],
+  "categories": ["display", "status"],
+  "type": "registry:ui"
+}

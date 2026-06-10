@@ -1,0 +1,25 @@
+{
+  "name": "popover",
+  "description": "Displays rich content in a portal, triggered by a button.",
+  "dependencies": ["@soybeanjs/headless", "@soybeanjs/cva"],
+  "registryDependencies": ["utils"],
+  "files": [
+    {
+      "path": "packages/ui/src/components/popover/popover.vue",
+      "type": "registry:ui",
+      "content": "<script setup lang=\"ts\">\nimport { computed } from 'vue';\nimport { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';\nimport { PopoverCompact, providePopoverUi } from '@soybeanjs/headless/popover';\nimport { keysOf } from '@soybeanjs/utils';\nimport { popoverVariants } from '@/styles/popover';\nimport type { PopoverProps, PopoverEmits, PopoverSlots } from './types';\n\ndefineOptions({\n  name: 'SPopover'\n});\n\nconst props = withDefaults(defineProps<PopoverProps>(), {\n  open: undefined,\n  defaultOpen: false,\n  showArrow: true\n});\n\nconst emit = defineEmits<PopoverEmits>();\n\nconst slots = defineSlots<PopoverSlots>();\n\nconst forwardedProps = useOmitProps(props, ['class', 'ui', 'size']);\n\nconst listeners = useForwardListeners(emit);\n\nconst slotNames = computed(() => keysOf(slots));\n\nconst ui = computed(() => popoverVariants({ size: props.size }, props.ui, { popup: props.class }));\n\nprovidePopoverUi(ui);\n</script>\n\n<template>\n  <PopoverCompact v-bind=\"forwardedProps\" v-on=\"listeners\">\n    <template v-for=\"slotName in slotNames\" :key=\"slotName\" #[slotName]=\"slotProps\">\n      <!-- @vue-expect-error ignore slot type error -->\n      <slot :name=\"slotName\" v-bind=\"slotProps\" />\n    </template>\n  </PopoverCompact>\n</template>\n"
+    },
+    {
+      "path": "packages/ui/src/components/popover/types.ts",
+      "type": "registry:lib",
+      "content": "import type {\n  PopoverCompactProps,\n  PopoverCompactEmits,\n  PopoverCompactSlots,\n  PopoverUi\n} from '@soybeanjs/headless/popover';\nimport type { ClassValue } from '@soybeanjs/headless/types';\nimport type { ThemeSize } from '@/theme';\n\n/**\n * Properties for the Popover component.\n */\nexport interface PopoverProps extends PopoverCompactProps {\n  /**\n   * class of popup\n   */\n  class?: ClassValue;\n  /**\n   * Visual size of the component.\n   */\n  size?: ThemeSize;\n  /**\n   * Per-slot class overrides for the component.\n   */\n  ui?: Partial<PopoverUi>;\n}\n\n/**\n * Events for the Popover component.\n */\nexport type PopoverEmits = PopoverCompactEmits;\n\n/**\n * Slots for the Popover component.\n */\nexport type PopoverSlots = PopoverCompactSlots;\n"
+    },
+    {
+      "path": "packages/ui/src/styles/popover.ts",
+      "type": "registry:style",
+      "content": "// @unocss-include\nimport { scv } from '@soybeanjs/cva';\nimport { miniButtonIconVariants } from './button';\n\nexport const popoverVariants = scv({\n  extendBase: props => ({\n    close: miniButtonIconVariants({ size: props.size })\n  }),\n  slots: {\n    positioner: 'w-max',\n    popup: [\n      `w-auto rounded-md border bg-popover text-popover-foreground shadow-md outline-none z-50 will-change-transform`,\n      `data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95`,\n      `data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95`,\n      `data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2`\n    ],\n    arrow: 'w-1em h-0.5em fill-popover stroke-border',\n    close: 'absolute'\n  },\n  variants: {\n    size: {\n      xs: {\n        popup: 'p-3 text-2xs',\n        arrow: 'text-3xs',\n        close: 'top-0.5 end-0.5'\n      },\n      sm: {\n        popup: 'p-3.5 text-xs',\n        arrow: 'text-2xs',\n        close: 'top-0.75 end-0.75'\n      },\n      md: {\n        popup: 'p-4 text-sm',\n        arrow: 'text-xs',\n        close: 'top-1 end-1'\n      },\n      lg: {\n        popup: 'p-4.5 text-base',\n        arrow: 'text-sm',\n        close: 'top-1.25 end-1.25'\n      },\n      xl: {\n        popup: 'p-5 text-lg',\n        arrow: 'text-base',\n        close: 'top-1.5 end-1.5'\n      },\n      '2xl': {\n        popup: 'p-5.5 text-xl',\n        arrow: 'text-lg',\n        close: 'top-2 end-2'\n      }\n    }\n  },\n  defaultVariants: {\n    size: 'md'\n  }\n});\n"
+    }
+  ],
+  "categories": ["overlay"],
+  "type": "registry:ui"
+}

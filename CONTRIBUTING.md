@@ -28,12 +28,12 @@ follow our conventions, and submit a pull request.
 
 SoybeanUI is a Vue 3 component library built on a **headless / styled separation**:
 
-| Package | Path | Responsibility |
-| --- | --- | --- |
+| Package               | Path                 | Responsibility                                             |
+| --------------------- | -------------------- | ---------------------------------------------------------- |
 | `@soybeanjs/headless` | `packages/headless/` | Logic, state, accessibility, composables. **Zero styles.** |
-| `@soybeanjs/ui` | `packages/ui/` | Styled wrappers (UnoCSS). Variants, theme, UI injection. |
-| Playground | `apps/playground/` | Interactive demos (Vite). |
-| Docs | `apps/docs/` | Bilingual docs (en / zh-CN). Vite + vite-ssg. |
+| `@soybeanjs/ui`       | `packages/ui/`       | Styled wrappers (UnoCSS). Variants, theme, UI injection.   |
+| Playground            | `apps/playground/`   | Interactive demos (Vite).                                  |
+| Docs                  | `apps/docs/`         | Bilingual docs (en / zh-CN). Vite + vite-ssg.              |
 
 Data flows one way: `headless` → `ui` (never reverse). The UI layer injects styles via
 `provideXUi(ui)`; headless reads them through `useUiContext`.
@@ -69,18 +69,18 @@ Open the playground URL shown in the terminal to preview your changes in real ti
 
 ### Common Commands
 
-| Command | Purpose |
-| --- | --- |
-| `pnpm dev` | Start playground dev server |
-| `pnpm build` | Build headless → ui → CSS |
-| `pnpm lint` | oxlint + eslint (Vue) |
-| `pnpm fmt` | oxfmt (formatter) |
-| `pnpm test` | Vitest (happy-dom) |
-| `pnpm typecheck` | vue-tsc --noEmit |
-| `pnpm sui headless` | Regenerate headless barrel constants |
-| `pnpm sui ui` | Regenerate UI barrel constants |
-| `pnpm sui api` | Regenerate API reference data |
-| `pnpm sui changelog` | Regenerate changelog data |
+| Command              | Purpose                              |
+| -------------------- | ------------------------------------ |
+| `pnpm dev`           | Start playground dev server          |
+| `pnpm build`         | Build headless → ui → CSS            |
+| `pnpm lint`          | oxlint + eslint (Vue)                |
+| `pnpm fmt`           | oxfmt (formatter)                    |
+| `pnpm test`          | Vitest (happy-dom)                   |
+| `pnpm typecheck`     | vue-tsc --noEmit                     |
+| `pnpm sui headless`  | Regenerate headless barrel constants |
+| `pnpm sui ui`        | Regenerate UI barrel constants       |
+| `pnpm sui api`       | Regenerate API reference data        |
+| `pnpm sui changelog` | Regenerate changelog data            |
 
 ## Development Workflow
 
@@ -102,11 +102,12 @@ consistently.
 
 ### Project-Local Skill
 
-| Skill | Trigger | What it does |
-| --- | --- | --- |
+| Skill                               | Trigger                                                     | What it does                                                                                                                                                                                  |
+| ----------------------------------- | ----------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `$soybean-ui-component-development` | Any component work (new, migrate, fix, extend, standardize) | Classifies the component pattern, enforces headless/UI split, guides through all six delivery phases, and checks boundary rules. Lives at `.agents/skills/soybean-ui-component-development/`. |
 
 When you invoke `$soybean-ui-component-development`, the skill:
+
 - Classifies the task (new component / migration / standards alignment).
 - Determines the component pattern (multi-slot / compact / single-class).
 - Enforces the correct phase order: headless → UI → exports → delivery surfaces → verification.
@@ -117,56 +118,55 @@ When you invoke `$soybean-ui-component-development`, the skill:
 These skills are available in your Codex environment and are especially useful during
 SoybeanUI development:
 
-| Skill | Use when |
-| --- | --- |
-| `$a11y-auditor` | Scanning HTML/JSX output for WCAG violations. |
-| `$a11y-checker` | AI-powered accessibility fix suggestions for components. |
-| `$a11y-debugging` | Chrome DevTools-based accessibility debugging (focus, labels, contrast). |
+| Skill                  | Use when                                                                          |
+| ---------------------- | --------------------------------------------------------------------------------- |
+| `$a11y-auditor`        | Scanning HTML/JSX output for WCAG violations.                                     |
+| `$a11y-checker`        | AI-powered accessibility fix suggestions for components.                          |
+| `$a11y-debugging`      | Chrome DevTools-based accessibility debugging (focus, labels, contrast).          |
 | `$accessibility-check` | Full semantic structure, keyboard, focus, and label audit with a Markdown report. |
-| `$code-review` | Comprehensive code review across all concerns before opening a PR. |
-| `$ai-slop-cleaner` | Anti-slop cleanup and refactoring pass. |
-| `$analyze` | Read-only deep repository analysis with ranked synthesis. |
+| `$code-review`         | Comprehensive code review across all concerns before opening a PR.                |
+| `$ai-slop-cleaner`     | Anti-slop cleanup and refactoring pass.                                           |
+| `$analyze`             | Read-only deep repository analysis with ranked synthesis.                         |
 
 ### Agent Roles
 
 Codex provides specialized **agent roles** (prompt surfaces) that you can route complex
 subtasks to:
 
-| Role | Best for |
-| --- | --- |
-| `executor` | Implementation, refactoring, feature work — the default for coding tasks. |
-| `architect` | System design, boundary decisions, long-horizon tradeoffs. |
-| `debugger` | Root-cause analysis and regression isolation. |
-| `code-reviewer` | Comprehensive review before merging. |
-| `test-engineer` | Test strategy, coverage gaps, flaky-test hardening. |
-| `designer` | UX/UI architecture and interaction design. |
-| `verifier` | Completion evidence, claim validation, test adequacy. |
-| `explore` | Fast repo-local file, symbol, and pattern lookup. |
-| `code-simplifier` | Simplifies recently modified code without changing behavior. |
+| Role              | Best for                                                                  |
+| ----------------- | ------------------------------------------------------------------------- |
+| `executor`        | Implementation, refactoring, feature work — the default for coding tasks. |
+| `architect`       | System design, boundary decisions, long-horizon tradeoffs.                |
+| `debugger`        | Root-cause analysis and regression isolation.                             |
+| `code-reviewer`   | Comprehensive review before merging.                                      |
+| `test-engineer`   | Test strategy, coverage gaps, flaky-test hardening.                       |
+| `designer`        | UX/UI architecture and interaction design.                                |
+| `verifier`        | Completion evidence, claim validation, test adequacy.                     |
+| `explore`         | Fast repo-local file, symbol, and pattern lookup.                         |
+| `code-simplifier` | Simplifies recently modified code without changing behavior.              |
 
 **Default routing:** Use `executor` for implementation. Use `code-reviewer` before
 opening a PR. Use `explore` to map existing patterns before starting a new component.
 Route to specialists only when the task clearly benefits from deeper analysis or
 specialized review.
 
-
 ## Coding Conventions
 
 All code under this repository follows the instruction files in `.github/instructions/`:
 
-| File | Applies to |
-| --- | --- |
-| `typescript-functional-style.instructions.md` | All `.ts`, `.tsx`, `.vue` files |
-| `vue-sfc.instructions.md` | All `.vue` files |
-| `git-commit-convention.instructions.md` | Commit messages, changelogs |
-| `soybean-ui-component-overview.instructions.md` | Component tasks |
-| `soybean-ui-headless.instructions.md` | `packages/headless/src/components/` |
-| `soybean-ui-ui-layer.instructions.md` | `packages/ui/src/components/` |
-| `soybean-ui-accessibility-rtl.instructions.md` | ARIA, keyboard, RTL |
-| `soybean-ui-testing.instructions.md` | `packages/ui/test/` |
-| `soybean-ui-playground.instructions.md` | `apps/playground/` |
-| `soybean-ui-docs.instructions.md` | `apps/docs/` |
-| `soybean-ui-checklist.instructions.md` | Component completion checklist |
+| File                                            | Applies to                          |
+| ----------------------------------------------- | ----------------------------------- |
+| `typescript-functional-style.instructions.md`   | All `.ts`, `.tsx`, `.vue` files     |
+| `vue-sfc.instructions.md`                       | All `.vue` files                    |
+| `git-commit-convention.instructions.md`         | Commit messages, changelogs         |
+| `soybean-ui-component-overview.instructions.md` | Component tasks                     |
+| `soybean-ui-headless.instructions.md`           | `packages/headless/src/components/` |
+| `soybean-ui-ui-layer.instructions.md`           | `packages/ui/src/components/`       |
+| `soybean-ui-accessibility-rtl.instructions.md`  | ARIA, keyboard, RTL                 |
+| `soybean-ui-testing.instructions.md`            | `packages/ui/test/`                 |
+| `soybean-ui-playground.instructions.md`         | `apps/playground/`                  |
+| `soybean-ui-docs.instructions.md`               | `apps/docs/`                        |
+| `soybean-ui-checklist.instructions.md`          | Component completion checklist      |
 
 ### Key Rules
 
@@ -330,12 +330,12 @@ Full rules: `.github/instructions/git-commit-convention.instructions.md`.
 
 SoybeanUI 是一个基于 **headless / styled 分层架构** 的 Vue 3 组件库：
 
-| 包 | 路径 | 职责 |
-| --- | --- | --- |
+| 包                    | 路径                 | 职责                                         |
+| --------------------- | -------------------- | -------------------------------------------- |
 | `@soybeanjs/headless` | `packages/headless/` | 逻辑、状态、无障碍、composable。**零样式。** |
-| `@soybeanjs/ui` | `packages/ui/` | 样式包装（UnoCSS）。变体、主题、UI 注入。 |
-| Playground | `apps/playground/` | 交互式示例（Vite）。 |
-| Docs | `apps/docs/` | 中英文档。Vite + vite-ssg。 |
+| `@soybeanjs/ui`       | `packages/ui/`       | 样式包装（UnoCSS）。变体、主题、UI 注入。    |
+| Playground            | `apps/playground/`   | 交互式示例（Vite）。                         |
+| Docs                  | `apps/docs/`         | 中英文档。Vite + vite-ssg。                  |
 
 数据流单向：`headless` → `ui`（不可反向）。UI 层通过 `provideXUi(ui)` 注入样式；
 headless 通过 `useUiContext` 读取。
@@ -371,18 +371,18 @@ pnpm dev
 
 ### 常用命令
 
-| 命令 | 用途 |
-| --- | --- |
-| `pnpm dev` | 启动 playground 开发服务器 |
-| `pnpm build` | 构建 headless → ui → CSS |
-| `pnpm lint` | oxlint + eslint（Vue） |
-| `pnpm fmt` | oxfmt（格式化） |
-| `pnpm test` | Vitest（happy-dom） |
-| `pnpm typecheck` | vue-tsc --noEmit |
-| `pnpm sui headless` | 重新生成 headless barrel 常量 |
-| `pnpm sui ui` | 重新生成 UI barrel 常量 |
-| `pnpm sui api` | 重新生成 API 参考数据 |
-| `pnpm sui changelog` | 重新生成 changelog 数据 |
+| 命令                 | 用途                          |
+| -------------------- | ----------------------------- |
+| `pnpm dev`           | 启动 playground 开发服务器    |
+| `pnpm build`         | 构建 headless → ui → CSS      |
+| `pnpm lint`          | oxlint + eslint（Vue）        |
+| `pnpm fmt`           | oxfmt（格式化）               |
+| `pnpm test`          | Vitest（happy-dom）           |
+| `pnpm typecheck`     | vue-tsc --noEmit              |
+| `pnpm sui headless`  | 重新生成 headless barrel 常量 |
+| `pnpm sui ui`        | 重新生成 UI barrel 常量       |
+| `pnpm sui api`       | 重新生成 API 参考数据         |
+| `pnpm sui changelog` | 重新生成 changelog 数据       |
 
 ## 开发流程
 
@@ -403,11 +403,12 @@ pnpm dev
 
 ### 项目本地 Skill
 
-| Skill | 触发条件 | 功能 |
-| --- | --- | --- |
+| Skill                               | 触发条件                                       | 功能                                                                                                                                         |
+| ----------------------------------- | ---------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
 | `$soybean-ui-component-development` | 任何组件工作（新建、迁移、修复、扩展、规范化） | 分类组件模式，强制执行 headless/UI 分层，引导完成全部六个交付阶段，并检查边界规则。位于 `.agents/skills/soybean-ui-component-development/`。 |
 
 当你调用 `$soybean-ui-component-development` 时，该 skill 会：
+
 - 分类任务（新建组件 / 迁移 / 规范化对齐）。
 - 确定组件模式（多 slot / compact 聚合 / 单类名）。
 - 强制执行正确的阶段顺序：headless → UI → 导出 → 交付面 → 验证。
@@ -417,53 +418,52 @@ pnpm dev
 
 以下 skills 在你的 Codex 环境中可用，在 SoybeanUI 开发中尤其有用：
 
-| Skill | 使用场景 |
-| --- | --- |
-| `$a11y-auditor` | 扫描 HTML/JSX 输出中的 WCAG 违规。 |
-| `$a11y-checker` | AI 驱动的组件无障碍修复建议。 |
-| `$a11y-debugging` | 基于 Chrome DevTools 的无障碍调试（焦点、标签、对比度）。 |
+| Skill                  | 使用场景                                                   |
+| ---------------------- | ---------------------------------------------------------- |
+| `$a11y-auditor`        | 扫描 HTML/JSX 输出中的 WCAG 违规。                         |
+| `$a11y-checker`        | AI 驱动的组件无障碍修复建议。                              |
+| `$a11y-debugging`      | 基于 Chrome DevTools 的无障碍调试（焦点、标签、对比度）。  |
 | `$accessibility-check` | 完整的语义结构、键盘、焦点和标签审计，生成 Markdown 报告。 |
-| `$code-review` | 提 PR 前的全面代码审查。 |
-| `$ai-slop-cleaner` | 反 AI slop 清理和重构。 |
-| `$analyze` | 只读深度仓库分析，带排序综合报告。 |
+| `$code-review`         | 提 PR 前的全面代码审查。                                   |
+| `$ai-slop-cleaner`     | 反 AI slop 清理和重构。                                    |
+| `$analyze`             | 只读深度仓库分析，带排序综合报告。                         |
 
 ### Agent 角色
 
 Codex 提供专门的 **agent 角色**（prompt 面），你可以将复杂子任务路由给它们：
 
-| 角色 | 最适合 |
-| --- | --- |
-| `executor` | 实现、重构、功能开发 —— 编码任务的默认选择。 |
-| `architect` | 系统设计、边界决策、长期权衡。 |
-| `debugger` | 根因分析和回归隔离。 |
-| `code-reviewer` | 合并前的全面审查。 |
-| `test-engineer` | 测试策略、覆盖率缺口、flake 测试加固。 |
-| `designer` | UX/UI 架构和交互设计。 |
-| `verifier` | 完成证据、声明验证、测试充分性。 |
-| `explore` | 快速仓库内文件、符号和模式查找。 |
-| `code-simplifier` | 简化最近修改的代码而不改变行为。 |
+| 角色              | 最适合                                       |
+| ----------------- | -------------------------------------------- |
+| `executor`        | 实现、重构、功能开发 —— 编码任务的默认选择。 |
+| `architect`       | 系统设计、边界决策、长期权衡。               |
+| `debugger`        | 根因分析和回归隔离。                         |
+| `code-reviewer`   | 合并前的全面审查。                           |
+| `test-engineer`   | 测试策略、覆盖率缺口、flake 测试加固。       |
+| `designer`        | UX/UI 架构和交互设计。                       |
+| `verifier`        | 完成证据、声明验证、测试充分性。             |
+| `explore`         | 快速仓库内文件、符号和模式查找。             |
+| `code-simplifier` | 简化最近修改的代码而不改变行为。             |
 
 **默认路由：** 实现用 `executor`。提 PR 前用 `code-reviewer`。开始新组件前用
 `explore` 映射已有模式。仅在任务明确受益于更深入分析或专项审查时路由到专家角色。
-
 
 ## 编码规范
 
 本仓库所有代码遵循 `.github/instructions/` 下的规范文件：
 
-| 文件 | 适用范围 |
-| --- | --- |
-| `typescript-functional-style.instructions.md` | 所有 `.ts`、`.tsx`、`.vue` 文件 |
-| `vue-sfc.instructions.md` | 所有 `.vue` 文件 |
-| `git-commit-convention.instructions.md` | Commit message、changelog |
-| `soybean-ui-component-overview.instructions.md` | 组件任务 |
-| `soybean-ui-headless.instructions.md` | `packages/headless/src/components/` |
-| `soybean-ui-ui-layer.instructions.md` | `packages/ui/src/components/` |
-| `soybean-ui-accessibility-rtl.instructions.md` | ARIA、键盘、RTL |
-| `soybean-ui-testing.instructions.md` | `packages/ui/test/` |
-| `soybean-ui-playground.instructions.md` | `apps/playground/` |
-| `soybean-ui-docs.instructions.md` | `apps/docs/` |
-| `soybean-ui-checklist.instructions.md` | 组件完成清单 |
+| 文件                                            | 适用范围                            |
+| ----------------------------------------------- | ----------------------------------- |
+| `typescript-functional-style.instructions.md`   | 所有 `.ts`、`.tsx`、`.vue` 文件     |
+| `vue-sfc.instructions.md`                       | 所有 `.vue` 文件                    |
+| `git-commit-convention.instructions.md`         | Commit message、changelog           |
+| `soybean-ui-component-overview.instructions.md` | 组件任务                            |
+| `soybean-ui-headless.instructions.md`           | `packages/headless/src/components/` |
+| `soybean-ui-ui-layer.instructions.md`           | `packages/ui/src/components/`       |
+| `soybean-ui-accessibility-rtl.instructions.md`  | ARIA、键盘、RTL                     |
+| `soybean-ui-testing.instructions.md`            | `packages/ui/test/`                 |
+| `soybean-ui-playground.instructions.md`         | `apps/playground/`                  |
+| `soybean-ui-docs.instructions.md`               | `apps/docs/`                        |
+| `soybean-ui-checklist.instructions.md`          | 组件完成清单                        |
 
 ### 核心规则
 

@@ -1,0 +1,25 @@
+{
+  "name": "skeleton",
+  "description": "Used to show a placeholder while content is loading.",
+  "dependencies": ["@soybeanjs/headless", "@soybeanjs/cva"],
+  "registryDependencies": ["utils"],
+  "files": [
+    {
+      "path": "packages/ui/src/components/skeleton/skeleton.vue",
+      "type": "registry:ui",
+      "content": "<script setup lang=\"ts\">\nimport { computed } from 'vue';\nimport { useOmitProps } from '@soybeanjs/headless/composables';\nimport { Skeleton } from '@soybeanjs/headless/skeleton';\nimport { skeletonVariants } from '@/styles/skeleton';\nimport type { SkeletonProps } from './types';\n\ndefineOptions({\n  name: 'SSkeleton'\n});\n\nconst props = withDefaults(defineProps<SkeletonProps>(), {\n  animated: true\n});\n\nconst forwardedProps = useOmitProps(props, ['class', 'size', 'animated', 'shape']);\n\nconst cls = computed(() =>\n  skeletonVariants(\n    {\n      size: props.size,\n      animated: props.animated,\n      shape: props.shape\n    },\n    props.class\n  )\n);\n</script>\n\n<template>\n  <Skeleton v-bind=\"forwardedProps\" :class=\"cls\">\n    <slot />\n  </Skeleton>\n</template>\n"
+    },
+    {
+      "path": "packages/ui/src/components/skeleton/types.ts",
+      "type": "registry:lib",
+      "content": "import type { SkeletonProps as _SkeletonProps } from '@soybeanjs/headless/skeleton';\nimport type { ClassValue } from '@soybeanjs/headless/types';\nimport type { SkeletonShape } from '@/styles/skeleton';\nimport type { ThemeSize } from '@/theme';\n\n/**\n * Properties for the Skeleton component.\n */\nexport interface SkeletonProps extends _SkeletonProps {\n  /**\n   * Additional class names applied to the root element.\n   */\n  class?: ClassValue;\n  /**\n   * Visual size of the component.\n   */\n  size?: ThemeSize;\n  /**\n   * Whether the skeleton should have an animation effect. Defaults to `true`.\n   */\n  animated?: boolean;\n  /**\n   * Shape of the component.\n   */\n  shape?: SkeletonShape;\n}\n\nexport type { SkeletonShape };\n"
+    },
+    {
+      "path": "packages/ui/src/styles/skeleton.ts",
+      "type": "registry:style",
+      "content": "// @unocss-include\nimport { cv } from '@soybeanjs/cva';\nimport type { VariantProps } from '@soybeanjs/cva';\n\nexport const skeletonVariants = cv({\n  base: 'block shrink-0 bg-muted',\n  variants: {\n    size: {\n      xs: 'h-3 w-16',\n      sm: 'h-4 w-24',\n      md: 'h-5 w-32',\n      lg: 'h-6 w-40',\n      xl: 'h-8 w-48',\n      '2xl': 'h-10 w-56'\n    },\n    shape: {\n      auto: 'rounded-md',\n      rounded: 'rounded-full'\n    },\n    animated: {\n      true: 'animate-pulse',\n      false: ''\n    }\n  },\n  defaultVariants: {\n    size: 'md',\n    shape: 'auto',\n    animated: true\n  }\n});\n\ntype SkeletonVariants = VariantProps<typeof skeletonVariants>;\n\nexport type SkeletonShape = NonNullable<SkeletonVariants['shape']>;\n"
+    }
+  ],
+  "categories": ["display", "feedback"],
+  "type": "registry:ui"
+}

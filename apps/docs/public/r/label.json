@@ -1,0 +1,25 @@
+{
+  "name": "label",
+  "description": "Renders an accessible label associated with a form control.",
+  "dependencies": ["@soybeanjs/headless"],
+  "registryDependencies": ["utils"],
+  "files": [
+    {
+      "path": "packages/ui/src/components/label/label.vue",
+      "type": "registry:ui",
+      "content": "<script setup lang=\"ts\">\nimport { computed } from 'vue';\nimport { Label } from '@soybeanjs/headless/label';\nimport { labelVariants } from '@/styles/label';\nimport type { LabelProps } from './types';\n\ndefineOptions({\n  name: 'SLabel'\n});\n\nconst props = defineProps<LabelProps>();\n\nconst cls = computed(() => labelVariants({ size: props.size }, props.class));\n</script>\n\n<template>\n  <Label :for=\"props.for\" :class=\"cls\">\n    <slot />\n  </Label>\n</template>\n"
+    },
+    {
+      "path": "packages/ui/src/components/label/types.ts",
+      "type": "registry:lib",
+      "content": "import type { LabelProps as _LabelProps } from '@soybeanjs/headless/label';\nimport type { ClassValue } from '@soybeanjs/headless/types';\nimport type { ThemeSize } from '@/theme';\n\n/**\n * Properties for the Label component.\n */\nexport interface LabelProps extends _LabelProps {\n  /**\n   * Additional class names applied to the root element.\n   */\n  class?: ClassValue;\n  /**\n   * Visual size of the component.\n   */\n  size?: ThemeSize;\n}\n"
+    },
+    {
+      "path": "packages/ui/src/styles/label.ts",
+      "type": "registry:style",
+      "content": "// @unocss-include\nimport { cv } from '@soybeanjs/cva';\n\nexport const labelVariants = cv({\n  base: 'font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-50',\n  variants: {\n    size: {\n      xs: 'text-2xs',\n      sm: 'text-xs',\n      md: 'text-sm',\n      lg: 'text-base',\n      xl: 'text-lg',\n      '2xl': 'text-xl'\n    }\n  },\n  defaultVariants: {\n    size: 'md'\n  }\n});\n"
+    }
+  ],
+  "categories": ["form"],
+  "type": "registry:ui"
+}

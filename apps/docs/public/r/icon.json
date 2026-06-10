@@ -1,0 +1,20 @@
+{
+  "name": "icon",
+  "description": "Renders an icon from Iconify (via @iconify/vue) or a custom Vue component.",
+  "dependencies": ["@soybeanjs/headless", "@iconify/vue"],
+  "registryDependencies": ["utils"],
+  "files": [
+    {
+      "path": "packages/ui/src/components/icon/icon.vue",
+      "type": "registry:ui",
+      "content": "<script setup lang=\"ts\">\nimport { computed } from 'vue';\nimport { Icon as Iconify } from '@iconify/vue';\nimport type { IconifyIcon } from '@iconify/vue';\nimport { useConfigProvider } from '../config-provider';\nimport type { IconProps, IconValue } from './types';\n\ndefineOptions({\n  name: 'SIcon'\n});\n\nconst props = defineProps<IconProps>();\n\nconst configProvider = useConfigProvider();\n\nconst iconifySize = computed(() => {\n  const { width, height } = props;\n\n  const config = configProvider?.iconify?.value || {};\n\n  return {\n    width: width || config.width,\n    height: height || config.height\n  };\n});\n\nconst forwardedProps = computed(() => ({\n  ...props,\n  ...iconifySize.value\n}));\n\nconst iconifyProps = computed(() => {\n  if (!isIconifyIcon(props.icon)) {\n    return null;\n  }\n\n  return {\n    ...forwardedProps.value,\n    icon: props.icon\n  };\n});\n\nfunction isIconifyIcon(icon: IconValue): icon is IconifyIcon | string {\n  if (!icon) {\n    return false;\n  }\n\n  return typeof icon === 'string' || (typeof icon === 'object' && 'body' in icon);\n}\n</script>\n\n<template>\n  <Iconify v-if=\"iconifyProps\" v-bind=\"iconifyProps\" style=\"flex-shrink: 0\" />\n  <component\n    :is=\"icon\"\n    v-else-if=\"icon\"\n    style=\"flex-shrink: 0\"\n    :style=\"{\n      width: iconifySize.width,\n      height: iconifySize.height\n    }\"\n  />\n</template>\n"
+    },
+    {
+      "path": "packages/ui/src/components/icon/types.ts",
+      "type": "registry:lib",
+      "content": "import type { IconValue } from '@soybeanjs/headless';\nimport type { IconProps as IconifyIconProps } from '@iconify/vue';\n\n/**\n * Properties for the Icon component.\n */\nexport interface IconProps extends Omit<IconifyIconProps, 'icon'> {\n  /**\n   * Icon rendered by the component.\n   */\n  icon: IconValue;\n}\n\nexport type { IconValue };\n"
+    }
+  ],
+  "categories": ["display"],
+  "type": "registry:ui"
+}

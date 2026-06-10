@@ -10,7 +10,8 @@
   },
   "type": "module",
   "scripts": {
-    "build": "vite-ssg build",
+    "build": "node ../../packages/sbean/dist/index.mjs build registry.json -o public/r --cwd ../.. && vite-ssg build",
+    "build:registry": "node ../../packages/sbean/dist/index.mjs build registry.json -o public/r --cwd ../..",
     "dev": "vite",
     "preview": "vite preview",
     "typecheck": "vue-tsc --noEmit --skipLibCheck"
@@ -18,6 +19,7 @@
   "dependencies": {
     "@fontsource-variable/manrope": "^5.2.8",
     "@soybeanjs/headless": "workspace:^",
+    "@soybeanjs/sbean": "workspace:^",
     "@soybeanjs/ui": "workspace:^",
     "es-toolkit": "^1.47.0",
     "pinia": "^3.0.4",

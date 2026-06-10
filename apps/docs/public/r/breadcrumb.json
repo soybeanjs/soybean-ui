@@ -1,0 +1,25 @@
+{
+  "name": "breadcrumb",
+  "description": "Displays the path to the current resource using a hierarchy of links.",
+  "dependencies": ["@soybeanjs/headless", "@soybeanjs/cva"],
+  "registryDependencies": ["utils"],
+  "files": [
+    {
+      "path": "packages/ui/src/components/breadcrumb/breadcrumb.vue",
+      "type": "registry:ui",
+      "content": "<script setup lang=\"ts\" generic=\"T extends BreadcrumbOptionData = BreadcrumbOptionData\">\nimport { computed } from 'vue';\nimport { BreadcrumbCompact, provideBreadcrumbUi } from '@soybeanjs/headless/breadcrumb';\nimport { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';\nimport { keysOf } from '@soybeanjs/utils';\nimport { breadcrumbVariants } from '@/styles/breadcrumb';\nimport type { BreadcrumbProps, BreadcrumbEmits, BreadcrumbOptionData, BreadcrumbSlots } from './types';\n\ndefineOptions({\n  name: 'SBreadcrumb'\n});\n\nconst props = defineProps<BreadcrumbProps<T>>();\n\nconst emit = defineEmits<BreadcrumbEmits<T>>();\n\nconst slots = defineSlots<BreadcrumbSlots<T>>();\n\nconst forwardedProps = useOmitProps(props, ['class', 'size', 'ui']);\n\nconst listeners = useForwardListeners(emit);\n\nconst slotNames = computed(() => keysOf(slots));\n\nconst ui = computed(() => breadcrumbVariants({ size: props.size }, props.ui, { root: props.class }));\n\nprovideBreadcrumbUi(ui);\n</script>\n\n<template>\n  <BreadcrumbCompact v-bind=\"forwardedProps\" v-on=\"listeners\">\n    <template v-for=\"slotName in slotNames\" #[slotName]=\"slotProps\">\n      <!-- @vue-ignore ignore vue slot props type -->\n      <slot :name=\"slotName\" v-bind=\"slotProps\" />\n    </template>\n  </BreadcrumbCompact>\n</template>\n"
+    },
+    {
+      "path": "packages/ui/src/components/breadcrumb/types.ts",
+      "type": "registry:lib",
+      "content": "import type {\n  BreadcrumbCompactEmits,\n  BreadcrumbCompactProps,\n  BreadcrumbCompactSlots,\n  BreadcrumbOptionData,\n  BreadcrumbUi\n} from '@soybeanjs/headless/breadcrumb';\nimport type { ClassValue } from '@soybeanjs/headless/types';\nimport type { ThemeSize } from '@/theme';\n\n/**\n * Properties for the Breadcrumb component.\n */\nexport interface BreadcrumbProps<\n  T extends BreadcrumbOptionData = BreadcrumbOptionData\n> extends BreadcrumbCompactProps<T> {\n  /**\n   * root class\n   */\n  class?: ClassValue;\n  /**\n   * Visual size of the component.\n   */\n  size?: ThemeSize;\n  /**\n   * Per-slot class overrides for the component.\n   */\n  ui?: Partial<BreadcrumbUi>;\n}\n\n/**\n * Events for the Breadcrumb component.\n */\nexport type BreadcrumbEmits<T extends BreadcrumbOptionData = BreadcrumbOptionData> = BreadcrumbCompactEmits<T>;\n\n/**\n * Slots for the Breadcrumb component.\n */\nexport type BreadcrumbSlots<T extends BreadcrumbOptionData = BreadcrumbOptionData> = BreadcrumbCompactSlots<T>;\n\nexport type { BreadcrumbOptionData } from '@soybeanjs/headless/breadcrumb';\n"
+    },
+    {
+      "path": "packages/ui/src/styles/breadcrumb.ts",
+      "type": "registry:style",
+      "content": "// @unocss-include\nimport { scv } from '@soybeanjs/cva';\n\nexport const breadcrumbVariants = scv({\n  slots: {\n    root: '',\n    list: 'flex flex-wrap items-center my-0 px-0 break-words text-muted-foreground',\n    item: 'inline-flex items-center list-none',\n    page: 'font-normal text-foreground',\n    separator: 'text-muted-foreground flex-shrink-0 list-none',\n    ellipsis: 'flex items-center justify-center',\n    link: 'decoration-none hover:text-foreground transition-colors-200 rounded-sm outline-none focus-visible:ring-3 focus-visible:ring-offset-background focus-visible:ring-primary/30'\n  },\n  variants: {\n    size: {\n      xs: {\n        root: 'text-2xs',\n        list: 'gap-2',\n        item: 'gap-1.5'\n      },\n      sm: {\n        root: 'text-xs',\n        list: 'gap-2.5',\n        item: 'gap-1.75'\n      },\n      md: {\n        root: 'text-sm',\n        list: 'gap-3',\n        item: 'gap-2'\n      },\n      lg: {\n        root: 'text-base',\n        list: 'gap-3.5',\n        item: 'gap-2.5'\n      },\n      xl: {\n        root: 'text-lg',\n        list: 'gap-4',\n        item: 'gap-3'\n      },\n      '2xl': {\n        root: 'text-xl',\n        list: 'gap-4.5',\n        item: 'gap-3.5'\n      }\n    }\n  },\n  defaultVariants: {\n    size: 'md'\n  }\n});\n"
+    }
+  ],
+  "categories": ["navigation"],
+  "type": "registry:ui"
+}
