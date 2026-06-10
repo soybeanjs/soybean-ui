@@ -243,6 +243,10 @@ import { AccordionRoot, AccordionItem, AccordionTrigger, AccordionContent } from
 - **Nuxt ready**: First-class Nuxt module with auto-registration (`@soybeanjs/ui/nuxt`).
 - **unplugin support**: Auto-import resolver for `unplugin-vue-components` (`@soybeanjs/ui/resolver`).
 
+## 🤝 How to Contribute
+
+We welcome contributions of all kinds! Please read [CONTRIBUTING.md](./CONTRIBUTING.md) for setup instructions, coding conventions, and the pull request process.
+
 ## 💝 Credits
 
 - [reka-ui](https://github.com/unovue/reka-ui)

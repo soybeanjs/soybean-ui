@@ -243,6 +243,10 @@ import { AccordionRoot, AccordionItem, AccordionTrigger, AccordionContent } from
 - **Nuxt 就绪**：提供官方 Nuxt 模块，支持组件自动注册（`@soybeanjs/ui/nuxt`）。
 - **unplugin 支持**：提供 `unplugin-vue-components` 自动导入解析器（`@soybeanjs/ui/resolver`）。
 
+## 🤝 如何贡献
+
+欢迎各种形式的贡献！请阅读 [CONTRIBUTING.md](./CONTRIBUTING.md) 了解环境搭建、编码规范和 Pull Request 流程。
+
 ## 💝 致谢
 
 - [reka-ui](https://github.com/unovue/reka-ui)
