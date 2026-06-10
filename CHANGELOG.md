@@ -1,5 +1,39 @@
 # Changelog
 
+## [v0.29.0-beta.1](https://github.com/soybeanjs/soybean-ui/compare/v0.28.2...v0.29.0-beta.1) (2026-06-10)
+
+### &nbsp;&nbsp;&nbsp;🚀 Features
+
+- **docs**:
+  - add contribution guidelines and link to CONTRIBUTING.md in README files &nbsp;-&nbsp; by **soybeanfe** [<samp>(5f571)</samp>](https://github.com/soybeanjs/soybean-ui/commit/5f5711aff)
+  - add README files for documentation and playground apps in English and Chinese &nbsp;-&nbsp; by **soybeanfe** [<samp>(4a41c)</samp>](https://github.com/soybeanjs/soybean-ui/commit/4a41c8c49)
+- **pre-commit**:
+  - add pre-commit hook to stage changes &nbsp;-&nbsp; by **soybeanfe** [<samp>(8e99b)</samp>](https://github.com/soybeanjs/soybean-ui/commit/8e99b3c80)
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- **config-provider**: clean up imports and remove unused default preset options check &nbsp;-&nbsp; by **soybeanfe** [<samp>(2b18c)</samp>](https://github.com/soybeanjs/soybean-ui/commit/2b18c5ec7)
+- **deps**: update markdown-exit to version 1.1.0-beta.2 &nbsp;-&nbsp; by @soybeanjs [<samp>(b7603)</samp>](https://github.com/soybeanjs/soybean-ui/commit/b76038612)
+- **docs**: update installation instructions and links for skills &nbsp;-&nbsp; by **soybeanfe** [<samp>(a5e1f)</samp>](https://github.com/soybeanjs/soybean-ui/commit/a5e1fb7d8)
+
+### &nbsp;&nbsp;&nbsp;💅 Refactors
+
+- **projects**: refactor code structure &nbsp;-&nbsp; by @soybeanjs [<samp>(3dd67)</samp>](https://github.com/soybeanjs/soybean-ui/commit/3dd679f66)
+- **skills**: move skill source to top-level `skills` directory &nbsp;-&nbsp; by **soybeanfe** [<samp>(cbe33)</samp>](https://github.com/soybeanjs/soybean-ui/commit/cbe33c20b)
+
+### &nbsp;&nbsp;&nbsp;🏡 Chore
+
+- **deps**: update deps &nbsp;-&nbsp; by @soybeanjs [<samp>(94835)</samp>](https://github.com/soybeanjs/soybean-ui/commit/94835dab3)
+
+### &nbsp;&nbsp;&nbsp;🎨 Styles
+
+- **components**: simplify object property shorthand in form-field and tags-input components &nbsp;-&nbsp; by @soybeanjs [<samp>(8b585)</samp>](https://github.com/soybeanjs/soybean-ui/commit/8b585a940)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;
+[soybeanfe](mailto:honghuangdc@gmail.com),&nbsp;
+
 ## [v0.28.2](https://github.com/soybeanjs/soybean-ui/compare/v0.28.1...v0.28.2) (2026-05-30)
 
 ### &nbsp;&nbsp;&nbsp;🚀 Features

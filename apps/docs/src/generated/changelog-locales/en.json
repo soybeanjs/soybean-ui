@@ -1452,6 +1452,22 @@
             "f8a09": "adjust layout for dialog, drawer, and popconfirm components",
             "fe5bf": "update deps"
           }
+        },
+        "29": {
+          "0-beta": {
+            "1": {
+              "94835": "update deps",
+              "2b18c": "clean up imports and remove unused default preset options check",
+              "3dd67": "refactor code structure",
+              "4a41c": "add README files for documentation and playground apps in English and Chinese",
+              "5f571": "add contribution guidelines and link to CONTRIBUTING.md in README files",
+              "8b585": "simplify object property shorthand in form-field and tags-input components",
+              "8e99b": "add pre-commit hook to stage changes",
+              "a5e1f": "update installation instructions and links for skills",
+              "b7603": "update markdown-exit to version 1.1.0-beta.2",
+              "cbe33": "move skill source to top-level `skills` directory"
+            }
+          }
         }
       }
     }

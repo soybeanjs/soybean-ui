@@ -1,7 +1,134 @@
 {
-  "generatedAt": "2026-05-30T08:11:48.807Z",
+  "generatedAt": "2026-06-10T03:46:54.893Z",
   "schemaVersion": 1,
   "releases": [
+    {
+      "version": "v0.29.0-beta.1",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.28.2...v0.29.0-beta.1",
+      "date": "2026-06-10",
+      "entryCount": 10,
+      "componentCount": 1,
+      "components": ["config-provider"],
+      "typeCounts": {
+        "fix": 3,
+        "feature": 3,
+        "refactor": 2,
+        "style": 1,
+        "chore": 1
+      },
+      "entries": [
+        {
+          "type": "fix",
+          "scope": "config-provider",
+          "summary": "clean up imports and remove unused default preset options check",
+          "summaryKey": "changelog.generated.v0.29.0-beta.1.2b18c",
+          "commitHash": "2b18c",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/2b18c5ec7",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope",
+          "components": ["config-provider"]
+        },
+        {
+          "type": "feature",
+          "scope": "pre-commit",
+          "summary": "add pre-commit hook to stage changes",
+          "summaryKey": "changelog.generated.v0.29.0-beta.1.8e99b",
+          "commitHash": "8e99b",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/8e99b3c80",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "feature",
+          "scope": "docs",
+          "summary": "add contribution guidelines and link to CONTRIBUTING.md in README files",
+          "summaryKey": "changelog.generated.v0.29.0-beta.1.5f571",
+          "commitHash": "5f571",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/5f5711aff",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "feature",
+          "scope": "docs",
+          "summary": "add README files for documentation and playground apps in English and Chinese",
+          "summaryKey": "changelog.generated.v0.29.0-beta.1.4a41c",
+          "commitHash": "4a41c",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/4a41c8c49",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "fix",
+          "scope": "docs",
+          "summary": "update installation instructions and links for skills",
+          "summaryKey": "changelog.generated.v0.29.0-beta.1.a5e1f",
+          "commitHash": "a5e1f",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/a5e1fb7d8",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "fix",
+          "scope": "deps",
+          "summary": "update markdown-exit to version 1.1.0-beta.2",
+          "summaryKey": "changelog.generated.v0.29.0-beta.1.b7603",
+          "commitHash": "b7603",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/b76038612",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "refactor",
+          "scope": "skills",
+          "summary": "move skill source to top-level `skills` directory",
+          "summaryKey": "changelog.generated.v0.29.0-beta.1.cbe33",
+          "commitHash": "cbe33",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/cbe33c20b",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "style",
+          "scope": "components",
+          "summary": "simplify object property shorthand in form-field and tags-input components",
+          "summaryKey": "changelog.generated.v0.29.0-beta.1.8b585",
+          "commitHash": "8b585",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/8b585a940",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "refactor",
+          "scope": "projects",
+          "summary": "refactor code structure",
+          "summaryKey": "changelog.generated.v0.29.0-beta.1.3dd67",
+          "commitHash": "3dd67",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/3dd679f66",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "chore",
+          "scope": "deps",
+          "summary": "update deps",
+          "summaryKey": "changelog.generated.v0.29.0-beta.1.94835",
+          "commitHash": "94835",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/94835dab3",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope",
+          "components": []
+        }
+      ]
+    },
     {
       "version": "v0.28.2",
       "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.28.1...v0.28.2",

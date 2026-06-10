@@ -1,8 +1,25 @@
 {
   "component": "config-provider",
-  "generatedAt": "2026-05-30T08:11:48.807Z",
+  "generatedAt": "2026-06-10T03:46:54.893Z",
   "schemaVersion": 1,
   "versions": [
+    {
+      "version": "v0.29.0-beta.1",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.28.2...v0.29.0-beta.1",
+      "date": "2026-06-10",
+      "entries": [
+        {
+          "type": "fix",
+          "scope": "config-provider",
+          "summary": "clean up imports and remove unused default preset options check",
+          "summaryKey": "changelog.generated.v0.29.0-beta.1.2b18c",
+          "commitHash": "2b18c",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/2b18c5ec7",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope"
+        }
+      ]
+    },
     {
       "version": "v0.27.1",
       "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.27.0...v0.27.1",
