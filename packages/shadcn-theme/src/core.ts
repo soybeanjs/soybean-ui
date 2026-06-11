@@ -2,7 +2,32 @@ import { DEFAULT_PRESET_OPTIONS } from './constants';
 import { mergeObjects, getColorPresetCacheKey } from './shared';
 import { generateCSSVariables, generateRadiusCSSVariable } from './css';
 import { generateThemePreset } from './preset';
-import type { PresetConfig, PresetKeyConfig, ThemeOptions, RequiredThemeOptions, Radii } from './types';
+import type { PresetConfig, PresetKeyConfig, ThemeOptions, RequiredThemeOptions, Radii, ThemeSize } from './types';
+
+/** Size → root font-size mapping (in pixels). */
+const SIZE_FONT_SIZE_MAP: Record<ThemeSize, number> = {
+  xs: 12,
+  sm: 14,
+  md: 16,
+  lg: 18,
+  xl: 20,
+  '2xl': 24
+};
+
+/** Generate root font-size CSS from the size option. */
+export function generateSizeCSS(size?: ThemeSize, styleTarget: string = ':root'): string {
+  const fontSize = SIZE_FONT_SIZE_MAP[size ?? 'md'];
+
+  // Always set the base font-size, and add [data-size] variants
+  // for runtime switching (used by ConfigProvider).
+  let css = `${styleTarget} {\n  font-size: ${fontSize}px;\n}`;
+
+  for (const [key, value] of Object.entries(SIZE_FONT_SIZE_MAP)) {
+    css += `\n\n${styleTarget}[data-size="${key}"] {\n  font-size: ${value}px;\n}`;
+  }
+
+  return css;
+}
 
 export function createShadcnTheme(options?: ThemeOptions) {
   const opts = mergeObjects<RequiredThemeOptions>(
@@ -10,11 +35,12 @@ export function createShadcnTheme(options?: ThemeOptions) {
       ...DEFAULT_PRESET_OPTIONS,
       styleTarget: ':root',
       darkSelector: 'class',
-      format: 'hsl'
+      format: 'hsl',
+      size: 'md'
     },
     options ?? {}
   );
-  const { base, primary, feedback, sidebar, radius, styleTarget, darkSelector, format, preset } = opts;
+  const { base, primary, feedback, sidebar, radius, styleTarget, darkSelector, format, preset, size } = opts;
 
   const colorCssCache = new Map<string, string>();
 
@@ -50,10 +76,11 @@ export function createShadcnTheme(options?: ThemeOptions) {
   const getRadiusCss = (update?: Radii | (string & {})) => generateRadiusCSSVariable(update ?? radius, styleTarget);
 
   const getCss = (config?: PresetConfig, radiusValue?: Radii | (string & {})) => {
+    const sizeCss = generateSizeCSS(size, styleTarget);
     const radiusCss = getRadiusCss(radiusValue ?? radius);
     const css = getColorCss(config);
 
-    return `${radiusCss}\n\n${css}`;
+    return `${sizeCss}\n\n${radiusCss}\n\n${css}`;
   };
 
   return {

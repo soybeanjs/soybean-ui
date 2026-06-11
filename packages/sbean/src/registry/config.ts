@@ -22,6 +22,8 @@ export const PRESET_STYLES = ['soybean', 'clean', 'dense'] as const;
 
 export const PRESET_FEEDBACK_COLORS = builtinFeedbackPresetKeys;
 
+export const PRESET_SIZES = ['xs', 'sm', 'md', 'lg', 'xl', '2xl'] as const;
+
 export const PRESET_FONTS = [
   // sans-serif
   'inter',
@@ -62,6 +64,7 @@ export const rawConfigSchema = v.object({
     base: v.picklist(PRESET_BASE_COLORS),
     primary: v.picklist(PRESET_PRIMARY_COLORS),
     feedback: v.optional(v.picklist(PRESET_FEEDBACK_COLORS)),
+    size: v.optional(v.picklist(PRESET_SIZES)),
     radius: v.picklist(PRESET_RADII)
   }),
   font: v.object({

@@ -10,6 +10,7 @@ import {
   PRESET_RADII,
   PRESET_ICON_LIBRARIES,
   PRESET_FEEDBACK_COLORS,
+  PRESET_SIZES,
   PRESET_FONTS
 } from '../registry/config';
 import { createDefaultConfig, getConfig, writeConfig } from '../utils/get-config';
@@ -26,6 +27,7 @@ export const initOptionsSchema = v.object({
   base: v.optional(v.picklist(PRESET_BASE_COLORS)),
   primary: v.optional(v.picklist(PRESET_PRIMARY_COLORS)),
   feedback: v.optional(v.picklist(PRESET_FEEDBACK_COLORS)),
+  size: v.optional(v.picklist(PRESET_SIZES)),
   radius: v.optional(v.picklist(PRESET_RADII)),
   iconLibrary: v.optional(v.picklist(PRESET_ICON_LIBRARIES)),
   fontSans: v.optional(v.picklist(PRESET_FONTS)),
@@ -98,6 +100,7 @@ export const init = new Command()
     '--feedback <feedback>',
     `feedback colors: classic/vivid/subtle/warm/cool/nature/modern/vibrant/professional/soft/bold/calm/candy/deep/light`
   )
+  .option('--size <size>', `component size: xs/sm/md/lg/xl/2xl`)
   .option('-p, --preset <code>', 'preset code (base62 encoded config)')
   .option('--icon-library <library>', `icon library: ${PRESET_ICON_LIBRARIES.join('/')}`)
   .option('--font-sans <font>', `sans-serif font: ${PRESET_FONTS.join('/')}`)
@@ -118,6 +121,7 @@ type InitActionOptions = {
   base?: string;
   primary?: string;
   feedback?: string;
+  size?: string;
   radius?: string;
   iconLibrary?: string;
   fontSans?: string;
@@ -174,6 +178,7 @@ export async function runInit(opts: InitActionOptions) {
   const base = opts.base || 'zinc';
   const primary = opts.primary || 'indigo';
   const feedback = opts.feedback || 'classic';
+  const size = opts.size || 'md';
   const radius = opts.radius || 'md';
   const iconLibrary = opts.iconLibrary || 'lucide';
 
@@ -235,6 +240,20 @@ export async function runInit(opts: InitActionOptions) {
       },
       {
         type: 'select',
+        name: 'size',
+        message: 'Which component size / density?',
+        choices: [
+          { title: 'md (recommended — 16px base)', value: 'md' },
+          { title: 'xs — extra small (12px)', value: 'xs' },
+          { title: 'sm — small (14px)', value: 'sm' },
+          { title: 'lg — large (18px)', value: 'lg' },
+          { title: 'xl — extra large (20px)', value: 'xl' },
+          { title: '2xl — huge (24px)', value: '2xl' }
+        ],
+        initial: 0
+      },
+      {
+        type: 'select',
         name: 'fontSans',
         message: 'Which sans-serif font? (skip for system default)',
         choices: [
@@ -265,6 +284,7 @@ export async function runInit(opts: InitActionOptions) {
     if (answers.base) opts.base = answers.base as (typeof PRESET_BASE_COLORS)[number];
     if (answers.primary) opts.primary = answers.primary as (typeof PRESET_PRIMARY_COLORS)[number];
     if (answers.feedback) opts.feedback = answers.feedback as (typeof PRESET_FEEDBACK_COLORS)[number];
+    if (answers.size) opts.size = answers.size as (typeof PRESET_SIZES)[number];
     if (answers.fontSans !== undefined && answers.fontSans !== '') {
       opts.fontSans = answers.fontSans as (typeof PRESET_FONTS)[number];
     }
@@ -299,6 +319,7 @@ export async function runInit(opts: InitActionOptions) {
       base: (opts.base || base) as (typeof PRESET_BASE_COLORS)[number],
       primary: (opts.primary || primary) as (typeof PRESET_PRIMARY_COLORS)[number],
       feedback: (opts.feedback || feedback) as (typeof PRESET_FEEDBACK_COLORS)[number],
+      size: (opts.size || size) as (typeof PRESET_SIZES)[number],
       radius: (opts.radius || radius) as (typeof PRESET_RADII)[number]
     },
     font: fontOverrides

@@ -9,10 +9,12 @@ export {
   RADII,
   radiiKeys
 } from './constants';
-export { createShadcnTheme } from './core';
+export { createShadcnTheme, generateSizeCSS } from './core';
 
 export type {
   ThemeRadius,
+  ThemeSize,
+  Radii,
   HSLColor,
   OKLCHColor,
   ColorValue,

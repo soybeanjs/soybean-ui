@@ -5,7 +5,6 @@ import { useOmitProps } from '@soybeanjs/headless/composables';
 import { ConfigProvider } from '@soybeanjs/headless/config-provider';
 import { isClient, transformPropsToContext } from '@soybeanjs/headless/shared';
 import { createShadcnTheme } from '@soybeanjs/shadcn-theme';
-import { themeSizeMap } from '@/theme';
 import DialogProvider from '../dialog/dialog-provider.vue';
 import Icon from '../icon/icon.vue';
 import type { IconValue } from '../icon/types';
@@ -60,8 +59,7 @@ watchEffect(
   () => {
     if (!isClient) return;
     const size = props.size ?? 'md';
-    const fontSize = themeSizeMap[size];
-    document.documentElement.style.fontSize = `${fontSize}px`;
+    document.documentElement.dataset.size = size;
   },
   { flush: 'post' }
 );

@@ -10,6 +10,13 @@ import type {
  */
 export type Radii = 'none' | '2xs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | 'full';
 
+/**
+ * the theme size key
+ *
+ * Controls the root font-size, scaling all rem-based values proportionally.
+ */
+export type ThemeSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl';
+
 export interface ThemeRadius {
   /**
    * the border radius
@@ -288,6 +295,14 @@ export interface ThemeOptions extends PresetConfig, ThemeRadius {
    * @default 'md'
    */
   radius?: Radii | (string & {});
+  /**
+   * the component size / density
+   *
+   * Controls the root font-size (`<html>`), scaling all rem-based sizes.
+   *
+   * @default 'md'
+   */
+  size?: ThemeSize;
   /**
    * the style target
    *

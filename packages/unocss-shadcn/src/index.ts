@@ -365,7 +365,7 @@ export interface SbeanPresetOptions {
 
 interface SbeanConfig {
   style?: string;
-  uno?: { base?: string; primary?: string; feedback?: string; radius?: string };
+  uno?: { base?: string; primary?: string; feedback?: string; radius?: string; size?: string };
   font?: { sans?: string; heading?: string };
 }
 
@@ -384,7 +384,8 @@ interface SbeanConfig {
  * ```
  *
  * The preset reads `sbean.json`, extracts `uno.base`, `uno.primary`,
- * `uno.feedback`, `uno.radius`, and `font.*`, and forwards them to {@link presetShadcn}.
+ * `uno.feedback`, `uno.radius`, `uno.size`, and `font.*`, and forwards
+ * them to {@link presetShadcn}.
  * If `sbean.json` is missing or unreadable, it falls back to the default
  * shadcn theme (zinc / indigo / md).
  */
@@ -398,7 +399,8 @@ export function presetSbean(options?: SbeanPresetOptions): Preset<Theme>[] {
     base: (config?.uno?.base as ShadcnPresetOptions['base']) ?? 'zinc',
     primary: (config?.uno?.primary as ShadcnPresetOptions['primary']) ?? 'indigo',
     feedback: (config?.uno?.feedback as ShadcnPresetOptions['feedback']) ?? 'classic',
-    radius: (config?.uno?.radius as ShadcnPresetOptions['radius']) ?? 'md'
+    radius: (config?.uno?.radius as ShadcnPresetOptions['radius']) ?? 'md',
+    size: (config?.uno?.size as ShadcnPresetOptions['size']) ?? 'md'
   };
 
   // Fonts

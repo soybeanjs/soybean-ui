@@ -80,7 +80,8 @@ export const DEFAULT_PRESET_OPTIONS = {
   primary: 'indigo',
   feedback: 'classic',
   sidebar: 'extended',
-  radius: 'md'
+  radius: 'md',
+  size: 'md'
 } as const satisfies ThemeOptions;
 
 /**
