@@ -6,7 +6,8 @@ export {
   builtinPrimaryPresetKeys,
   builtinFeedbackPresetKeys,
   DEFAULT_PRESET_OPTIONS,
-  RADII
+  RADII,
+  radiiKeys
 } from './constants';
 export { createShadcnTheme } from './core';
 

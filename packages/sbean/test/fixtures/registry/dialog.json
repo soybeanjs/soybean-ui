@@ -1,0 +1,15 @@
+{
+  "name": "dialog",
+  "type": "registry:ui",
+  "description": "A modal dialog that interrupts the user with important content.",
+  "dependencies": ["@soybeanjs/headless", "@soybeanjs/cva"],
+  "registryDependencies": ["utils", "button"],
+  "categories": ["overlay", "feedback"],
+  "files": [
+    {
+      "path": "packages/ui/src/components/dialog/dialog.vue",
+      "type": "registry:ui",
+      "content": "<script setup lang=\"ts\">\nimport { ref } from 'vue';\n\nconst open = ref(false);\n</script>\n\n<template>\n  <div v-if=\"open\" class=\"dialog-overlay\">\n    <div class=\"dialog-content\">\n      <slot />\n    </div>\n  </div>\n</template>\n"
+    }
+  ]
+}

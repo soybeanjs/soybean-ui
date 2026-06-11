@@ -59,6 +59,7 @@
   },
   "scripts": {
     "build": "vp pack",
+    "build:registry": "tsx src/index.ts build packages/sbean/registry.json -o ../../apps/docs/public/r --cwd ../..",
     "clean": "rimraf dist",
     "dev": "tsx src/index.ts",
     "start": "node dist/index.js",

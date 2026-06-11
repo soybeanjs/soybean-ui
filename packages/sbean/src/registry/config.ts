@@ -1,3 +1,9 @@
+import {
+  radiiKeys,
+  builtinBasePresetKeys,
+  builtinPrimaryPresetKeys,
+  builtinFeedbackPresetKeys
+} from '@soybeanjs/shadcn-theme';
 import * as v from 'valibot';
 
 // ---------------------------------------------------------------------------
@@ -6,31 +12,15 @@ import * as v from 'valibot';
 
 export const PRESET_ICON_LIBRARIES = ['lucide', 'material-symbols', 'ph', 'tabler', 'solar', 'radix-icons'] as const;
 
-export const PRESET_RADII = ['md', 'none', '2xs', 'xs', 'sm', 'lg', 'xl', '2xl'] as const;
+export const PRESET_RADII = radiiKeys;
 
-export const PRESET_BASE_COLORS = ['zinc', 'neutral', 'stone', 'slate', 'gray'] as const;
+export const PRESET_BASE_COLORS = builtinBasePresetKeys;
 
-export const PRESET_PRIMARY_COLORS = [
-  'indigo',
-  'blue',
-  'green',
-  'red',
-  'amber',
-  'cyan',
-  'emerald',
-  'fuchsia',
-  'lime',
-  'orange',
-  'pink',
-  'purple',
-  'rose',
-  'sky',
-  'teal',
-  'violet',
-  'yellow'
-] as const;
+export const PRESET_PRIMARY_COLORS = builtinPrimaryPresetKeys;
 
 export const PRESET_STYLES = ['soybean', 'clean', 'dense'] as const;
+
+export const PRESET_FEEDBACK_COLORS = builtinFeedbackPresetKeys;
 
 export const PRESET_FONTS = [
   // sans-serif
@@ -71,7 +61,7 @@ export const rawConfigSchema = v.object({
   uno: v.object({
     base: v.picklist(PRESET_BASE_COLORS),
     primary: v.picklist(PRESET_PRIMARY_COLORS),
-    chart: v.optional(v.picklist(PRESET_PRIMARY_COLORS)),
+    feedback: v.optional(v.picklist(PRESET_FEEDBACK_COLORS)),
     radius: v.picklist(PRESET_RADII)
   }),
   font: v.object({

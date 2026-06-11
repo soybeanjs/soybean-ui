@@ -1,0 +1,15 @@
+{
+  "name": "button",
+  "type": "registry:ui",
+  "description": "Displays a button or a component that looks like a button.",
+  "dependencies": ["@soybeanjs/headless", "@soybeanjs/cva"],
+  "registryDependencies": ["utils"],
+  "categories": ["form", "action"],
+  "files": [
+    {
+      "path": "packages/ui/src/components/button/button.vue",
+      "type": "registry:ui",
+      "content": "<script setup lang=\"ts\">\nimport { computed } from 'vue';\nimport { buttonVariants } from '@/styles/button';\n\nconst props = defineProps<{\n  variant?: 'default' | 'outline';\n  size?: 'sm' | 'md' | 'lg';\n}>();\n\nconst classes = computed(() => buttonVariants({\n  variant: props.variant,\n  size: props.size,\n}));\n</script>\n\n<template>\n  <button :class=\"classes\">\n    <slot />\n  </button>\n</template>\n"
+    }
+  ]
+}

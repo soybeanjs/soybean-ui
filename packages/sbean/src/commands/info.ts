@@ -84,7 +84,7 @@ export const info = new Command()
       console.log(`  Style:          ${config.style}`);
       console.log(`  Base color:     ${config.uno.base}`);
       console.log(`  Primary color:  ${config.uno.primary}`);
-      console.log(`  Chart color:    ${config.uno.chart ?? '(same as primary)'}`);
+      console.log(`  Feedback:       ${config.uno.feedback ?? 'classic'}`);
       console.log(
         `  Radius:         ${config.uno.radius} (${RADIUS_LABEL_MAP[config.uno.radius] ?? config.uno.radius})`
       );

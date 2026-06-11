@@ -20,7 +20,7 @@ async function resolvePresetConfig(presetArg: string): Promise<PresetConfig | nu
     const content = JSON.parse(await fs.readFile(presetFile, 'utf-8'));
 
     return {
-      style: content.style ?? 'soybean',
+      style: (content.name as string) ?? content.style ?? 'soybean',
       base: content.base ?? 'zinc',
       primary: content.primary ?? 'indigo',
       iconLibrary: content.iconLibrary ?? 'lucide',

@@ -9,6 +9,7 @@ import {
   PRESET_PRIMARY_COLORS,
   PRESET_RADII,
   PRESET_ICON_LIBRARIES,
+  PRESET_FEEDBACK_COLORS,
   PRESET_FONTS
 } from '../registry/config';
 import { createDefaultConfig, getConfig, writeConfig } from '../utils/get-config';
@@ -24,6 +25,7 @@ export const initOptionsSchema = v.object({
   style: v.optional(v.picklist(PRESET_STYLES)),
   base: v.optional(v.picklist(PRESET_BASE_COLORS)),
   primary: v.optional(v.picklist(PRESET_PRIMARY_COLORS)),
+  feedback: v.optional(v.picklist(PRESET_FEEDBACK_COLORS)),
   radius: v.optional(v.picklist(PRESET_RADII)),
   iconLibrary: v.optional(v.picklist(PRESET_ICON_LIBRARIES)),
   fontSans: v.optional(v.picklist(PRESET_FONTS)),
@@ -37,103 +39,16 @@ export const initOptionsSchema = v.object({
 export type InitOptions = v.InferOutput<typeof initOptionsSchema>;
 
 // ---------------------------------------------------------------------------
-// Radius semantic → rem mapping
-// ---------------------------------------------------------------------------
-
-const RADIUS_MAP: Record<string, string> = {
-  none: '0',
-  '2xs': '0.25rem',
-  xs: '0.375rem',
-  sm: '0.5rem',
-  md: '0.625rem',
-  lg: '0.75rem',
-  xl: '0.875rem',
-  '2xl': '1rem'
-};
-
-// ---------------------------------------------------------------------------
-// Font name mapping (sbean preset name → Google/Bunny font name)
-// ---------------------------------------------------------------------------
-
-const FONT_NAMES: Record<string, string> = {
-  // sans-serif
-  inter: 'Inter',
-  'noto-sans': 'Noto Sans',
-  'nunito-sans': 'Nunito Sans',
-  figtree: 'Figtree',
-  roboto: 'Roboto',
-  raleway: 'Raleway',
-  'dm-sans': 'DM Sans',
-  'public-sans': 'Public Sans',
-  outfit: 'Outfit',
-  oxanium: 'Oxanium',
-  manrope: 'Manrope',
-  'space-grotesk': 'Space Grotesk',
-  geist: 'Geist',
-  montserrat: 'Montserrat',
-  'ibm-plex-sans': 'IBM Plex Sans',
-  'source-sans-3': 'Source Sans 3',
-  'instrument-sans': 'Instrument Sans',
-  // monospace
-  'jetbrains-mono': 'JetBrains Mono',
-  'geist-mono': 'Geist Mono',
-  // serif
-  'noto-serif': 'Noto Serif',
-  'roboto-slab': 'Roboto Slab',
-  merriweather: 'Merriweather',
-  lora: 'Lora',
-  'playfair-display': 'Playfair Display',
-  'eb-garamond': 'EB Garamond',
-  'instrument-serif': 'Instrument Serif'
-};
-
-function toWebFontName(fontName: string): string {
-  return FONT_NAMES[fontName] ?? fontName;
-}
-
-// ---------------------------------------------------------------------------
 // uno.config.ts template
 // ---------------------------------------------------------------------------
 
-interface FontConfig {
-  sans?: string;
-  heading?: string;
-}
-
-function generateUnoConfigContent(base: string, primary: string, radius: string, font?: FontConfig): string {
-  const options: string[] = [
-    `      base: '${base}',`,
-    `      primary: '${primary}',`,
-    `      radius: '${radius}',`,
-    `      darkSelector: 'class',`,
-    `      generated: true,`
-  ];
-
-  if (font?.sans) {
-    const sansName = toWebFontName(font.sans);
-    const hasHeading = font.heading && font.heading !== 'inherit';
-
-    options.push(`      fonts: {`);
-    options.push(`        sans: '${sansName}',`);
-
-    if (hasHeading) {
-      const headingName = toWebFontName(font.heading!);
-      options.push(`        heading: '${headingName}',`);
-    }
-
-    options.push(`      },`);
-  }
-
+function generateUnoConfigContent(): string {
   return `${[
     `import { defineConfig } from 'unocss'`,
-    `import { presetShadcn } from '@soybeanjs/unocss-shadcn'`,
+    `import { presetSbean } from '@soybeanjs/unocss-shadcn'`,
     ``,
     `export default defineConfig({`,
-    `  presets: [`,
-    `    presetShadcn({`,
-    ...options,
-    `    }),`,
-    `  ],`,
+    `  presets: [presetSbean()],`,
     `})`
   ].join('\n')}\n`;
 }
@@ -179,6 +94,10 @@ export const init = new Command()
   .option('-b, --base <base>', `base color: ${PRESET_BASE_COLORS.join('/')}`)
   .option('--primary <primary>', `primary color: ${PRESET_PRIMARY_COLORS.join('/')}`)
   .option('--radius <radius>', `border radius: ${PRESET_RADII.join('/')}`)
+  .option(
+    '--feedback <feedback>',
+    `feedback colors: classic/vivid/subtle/warm/cool/nature/modern/vibrant/professional/soft/bold/calm/candy/deep/light`
+  )
   .option('-p, --preset <code>', 'preset code (base62 encoded config)')
   .option('--icon-library <library>', `icon library: ${PRESET_ICON_LIBRARIES.join('/')}`)
   .option('--font-sans <font>', `sans-serif font: ${PRESET_FONTS.join('/')}`)
@@ -198,6 +117,7 @@ type InitActionOptions = {
   style?: string;
   base?: string;
   primary?: string;
+  feedback?: string;
   radius?: string;
   iconLibrary?: string;
   fontSans?: string;
@@ -244,6 +164,7 @@ export async function runInit(opts: InitActionOptions) {
     opts.style = opts.style || preset.style;
     opts.base = opts.base || preset.base;
     opts.primary = opts.primary || preset.primary;
+    opts.feedback = opts.feedback || preset.feedback;
     opts.radius = opts.radius || preset.radius;
     opts.iconLibrary = opts.iconLibrary || preset.iconLibrary;
     opts.fontSans = opts.fontSans || preset.fontSans;
@@ -252,6 +173,7 @@ export async function runInit(opts: InitActionOptions) {
   const style = opts.style || 'soybean';
   const base = opts.base || 'zinc';
   const primary = opts.primary || 'indigo';
+  const feedback = opts.feedback || 'classic';
   const radius = opts.radius || 'md';
   const iconLibrary = opts.iconLibrary || 'lucide';
 
@@ -290,6 +212,29 @@ export async function runInit(opts: InitActionOptions) {
       },
       {
         type: 'select',
+        name: 'feedback',
+        message: 'Which feedback color preset?',
+        choices: [
+          { title: 'classic (recommended)', value: 'classic' },
+          { title: 'vivid — high saturation, youthful', value: 'vivid' },
+          { title: 'subtle — low contrast, elegant', value: 'subtle' },
+          { title: 'warm — friendly and cozy', value: 'warm' },
+          { title: 'cool — tech and professional', value: 'cool' },
+          { title: 'nature — eco and health', value: 'nature' },
+          { title: 'modern — minimal, SaaS', value: 'modern' },
+          { title: 'vibrant — sports and gaming', value: 'vibrant' },
+          { title: 'professional — enterprise, B2B', value: 'professional' },
+          { title: 'soft — design tools, creative', value: 'soft' },
+          { title: 'bold — high contrast, striking', value: 'bold' },
+          { title: 'calm — low saturation, soothing', value: 'calm' },
+          { title: 'candy — playful, children', value: 'candy' },
+          { title: 'deep — dark and mysterious', value: 'deep' },
+          { title: 'light — clean and refreshing', value: 'light' }
+        ],
+        initial: 0
+      },
+      {
+        type: 'select',
         name: 'fontSans',
         message: 'Which sans-serif font? (skip for system default)',
         choices: [
@@ -319,6 +264,7 @@ export async function runInit(opts: InitActionOptions) {
     if (answers.style) opts.style = answers.style as (typeof PRESET_STYLES)[number];
     if (answers.base) opts.base = answers.base as (typeof PRESET_BASE_COLORS)[number];
     if (answers.primary) opts.primary = answers.primary as (typeof PRESET_PRIMARY_COLORS)[number];
+    if (answers.feedback) opts.feedback = answers.feedback as (typeof PRESET_FEEDBACK_COLORS)[number];
     if (answers.fontSans !== undefined && answers.fontSans !== '') {
       opts.fontSans = answers.fontSans as (typeof PRESET_FONTS)[number];
     }
@@ -352,6 +298,7 @@ export async function runInit(opts: InitActionOptions) {
     uno: {
       base: (opts.base || base) as (typeof PRESET_BASE_COLORS)[number],
       primary: (opts.primary || primary) as (typeof PRESET_PRIMARY_COLORS)[number],
+      feedback: (opts.feedback || feedback) as (typeof PRESET_FEEDBACK_COLORS)[number],
       radius: (opts.radius || radius) as (typeof PRESET_RADII)[number]
     },
     font: fontOverrides
@@ -369,22 +316,13 @@ export async function runInit(opts: InitActionOptions) {
     .catch(() => false);
 
   if (!unoExists) {
-    const radiusValue = RADIUS_MAP[config.uno.radius] || '0.625rem';
-    const font: FontConfig = {};
-    if (config.font.sans) font.sans = config.font.sans;
-    if (config.font.heading && config.font.heading !== 'inherit') font.heading = config.font.heading;
-
-    const content = generateUnoConfigContent(
-      config.uno.base,
-      config.uno.primary,
-      radiusValue,
-      font.sans ? font : undefined
-    );
+    const content = generateUnoConfigContent();
     await fs.writeFile(unoConfigPath, content, 'utf-8');
     console.log('✔ Created uno.config.ts');
   } else if (!opts.silent) {
-    console.log('⚠ uno.config.ts already exists. Please add presetShadcn() to it manually.');
-    console.log('  Required: presetShadcn({ generated: true, ... })');
+    console.log('⚠ uno.config.ts already exists. Please add presetSbean() to it manually.');
+    console.log("  import { presetSbean } from '@soybeanjs/unocss-shadcn';");
+    console.log('  presets: [presetSbean()]');
   }
 
   await ensureTypeScriptConfig(cwd);

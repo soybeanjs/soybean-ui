@@ -1,0 +1,15 @@
+{
+  "name": "accordion",
+  "type": "registry:ui",
+  "description": "A vertically stacked set of interactive headings.",
+  "dependencies": ["@soybeanjs/headless"],
+  "registryDependencies": ["utils"],
+  "categories": ["layout", "disclosure"],
+  "files": [
+    {
+      "path": "packages/ui/src/components/accordion/accordion.vue",
+      "type": "registry:ui",
+      "content": "<script setup lang=\"ts\">\nimport { ref } from 'vue';\n\nconst items = ref<string[]>([]);\n</script>\n\n<template>\n  <div class=\"accordion\">\n    <div v-for=\"item in items\" :key=\"item\" class=\"accordion-item\">\n      {{ item }}\n    </div>\n  </div>\n</template>\n"
+    }
+  ]
+}

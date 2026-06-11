@@ -107,6 +107,8 @@ export const RADII = {
   full: '9999px'
 } satisfies Record<Radii, string>;
 
+export const radiiKeys = keysOf(RADII) as ['none', '2xs', 'xs', 'sm', 'md', 'lg', 'xl', '2xl', 'full'];
+
 /**
  * builtin base color preset
  */

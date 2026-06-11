@@ -1,3 +1,5 @@
+import fs from 'node:fs';
+import path from 'node:path';
 import { presetWind3, presetWebFonts } from 'unocss';
 import type { Preflight, Preset } from 'unocss';
 import type { Theme } from 'unocss/preset-mini';
@@ -311,6 +313,120 @@ export function presetShadcn(options?: ShadcnPresetOptions): Preset<Theme>[] {
   presets.push(selfPreset);
 
   return presets as Preset<Theme>[];
+}
+
+// ---------------------------------------------------------------------------
+// SBean config → UnoCSS preset bridge
+// ---------------------------------------------------------------------------
+
+/** Web font name mapping: sbean preset name → web font family name. */
+const WEB_FONT_NAMES: Record<string, string> = {
+  inter: 'Inter',
+  'noto-sans': 'Noto Sans',
+  'nunito-sans': 'Nunito Sans',
+  figtree: 'Figtree',
+  roboto: 'Roboto',
+  raleway: 'Raleway',
+  'dm-sans': 'DM Sans',
+  'public-sans': 'Public Sans',
+  outfit: 'Outfit',
+  oxanium: 'Oxanium',
+  manrope: 'Manrope',
+  'space-grotesk': 'Space Grotesk',
+  geist: 'Geist',
+  montserrat: 'Montserrat',
+  'ibm-plex-sans': 'IBM Plex Sans',
+  'source-sans-3': 'Source Sans 3',
+  'instrument-sans': 'Instrument Sans',
+  'jetbrains-mono': 'JetBrains Mono',
+  'geist-mono': 'Geist Mono',
+  'noto-serif': 'Noto Serif',
+  'roboto-slab': 'Roboto Slab',
+  merriweather: 'Merriweather',
+  lora: 'Lora',
+  'playfair-display': 'Playfair Display',
+  'eb-garamond': 'EB Garamond',
+  'instrument-serif': 'Instrument Serif'
+};
+
+/** Options for {@link presetSbean}. */
+export interface SbeanPresetOptions {
+  /**
+   * Project root directory where `sbean.json` lives.
+   * @default process.cwd()
+   */
+  cwd?: string;
+  /**
+   * Override any {@link ShadcnPresetOptions} that would otherwise be
+   * derived from `sbean.json`.
+   */
+  overrides?: ShadcnPresetOptions;
+}
+
+interface SbeanConfig {
+  style?: string;
+  uno?: { base?: string; primary?: string; feedback?: string; radius?: string };
+  font?: { sans?: string; heading?: string };
+}
+
+/**
+ * UnoCSS preset that reads theme configuration from `sbean.json`.
+ *
+ * After `sbean init`, the user's `uno.config.ts` can be reduced to:
+ *
+ * ```ts
+ * import { defineConfig } from 'unocss'
+ * import { presetSbean } from '@soybeanjs/unocss-shadcn'
+ *
+ * export default defineConfig({
+ *   presets: [presetSbean()],
+ * })
+ * ```
+ *
+ * The preset reads `sbean.json`, extracts `uno.base`, `uno.primary`,
+ * `uno.feedback`, `uno.radius`, and `font.*`, and forwards them to {@link presetShadcn}.
+ * If `sbean.json` is missing or unreadable, it falls back to the default
+ * shadcn theme (zinc / indigo / md).
+ */
+export function presetSbean(options?: SbeanPresetOptions): Preset<Theme>[] {
+  const cwd = options?.cwd ?? process.cwd();
+  const config = readSbeanConfig(cwd);
+
+  const shadcnOptions: ShadcnPresetOptions = {
+    generated: true,
+    darkSelector: 'class',
+    base: (config?.uno?.base as ShadcnPresetOptions['base']) ?? 'zinc',
+    primary: (config?.uno?.primary as ShadcnPresetOptions['primary']) ?? 'indigo',
+    feedback: (config?.uno?.feedback as ShadcnPresetOptions['feedback']) ?? 'classic',
+    radius: (config?.uno?.radius as ShadcnPresetOptions['radius']) ?? 'md'
+  };
+
+  // Fonts
+  if (config?.font?.sans) {
+    const sansName = WEB_FONT_NAMES[config.font.sans] ?? config.font.sans;
+    const fonts: ShadcnPresetOptions['fonts'] = { sans: sansName };
+    if (config.font.heading && config.font.heading !== 'inherit') {
+      fonts.heading = WEB_FONT_NAMES[config.font.heading] ?? config.font.heading;
+    }
+    shadcnOptions.fonts = fonts;
+  }
+
+  // Merge user overrides (take precedence)
+  if (options?.overrides) {
+    Object.assign(shadcnOptions, options.overrides);
+  }
+
+  return presetShadcn(shadcnOptions);
+}
+
+function readSbeanConfig(cwd: string): SbeanConfig | null {
+  const configPath = path.join(cwd, 'sbean.json');
+  try {
+    const raw = fs.readFileSync(configPath, 'utf-8');
+    return JSON.parse(raw) as SbeanConfig;
+  } catch {
+    return null;
+  }
 }
 
 function resolveWind3Dark(darkSelector: string | undefined | null) {

@@ -1,0 +1,19 @@
+{
+  "name": "input",
+  "type": "registry:ui",
+  "description": "Displays a form input field or a textarea.",
+  "dependencies": ["@soybeanjs/headless"],
+  "registryDependencies": ["utils"],
+  "categories": ["form", "input"],
+  "meta": {
+    "tags": ["form", "input", "text"],
+    "updated": "2026-01-15"
+  },
+  "files": [
+    {
+      "path": "packages/ui/src/components/input/input.vue",
+      "type": "registry:ui",
+      "content": "<script setup lang=\"ts\">\ndefineProps<{\n  modelValue?: string;\n  placeholder?: string;\n}>();\n</script>\n\n<template>\n  <input\n    :value=\"modelValue\"\n    :placeholder=\"placeholder\"\n    class=\"input\"\n  />\n</template>\n"
+    }
+  ]
+}

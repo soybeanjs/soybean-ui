@@ -1,0 +1,106 @@
+{
+  "name": "test-registry",
+  "homepage": "https://ui.soybeanjs.cn",
+  "items": [
+    {
+      "name": "button",
+      "type": "registry:ui",
+      "description": "Displays a button or a component that looks like a button.",
+      "dependencies": ["@soybeanjs/headless", "@soybeanjs/cva"],
+      "registryDependencies": ["utils"],
+      "categories": ["form", "action"],
+      "files": [
+        {
+          "path": "packages/ui/src/components/button/button.vue",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "dialog",
+      "type": "registry:ui",
+      "description": "A modal dialog that interrupts the user with important content.",
+      "dependencies": ["@soybeanjs/headless", "@soybeanjs/cva"],
+      "registryDependencies": ["utils", "button"],
+      "categories": ["overlay", "feedback"],
+      "files": [
+        {
+          "path": "packages/ui/src/components/dialog/dialog.vue",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "utils",
+      "type": "registry:lib",
+      "description": "Utility functions used by all components.",
+      "files": []
+    },
+    {
+      "name": "accordion",
+      "type": "registry:ui",
+      "description": "A vertically stacked set of interactive headings.",
+      "dependencies": ["@soybeanjs/headless"],
+      "registryDependencies": ["utils"],
+      "categories": ["layout", "disclosure"],
+      "files": [
+        {
+          "path": "packages/ui/src/components/accordion/accordion.vue",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "input",
+      "type": "registry:ui",
+      "description": "Displays a form input field or a textarea.",
+      "dependencies": ["@soybeanjs/headless"],
+      "registryDependencies": ["utils"],
+      "categories": ["form", "input"],
+      "meta": {
+        "tags": ["form", "input", "text"],
+        "updated": "2026-01-15"
+      },
+      "files": [
+        {
+          "path": "packages/ui/src/components/input/input.vue",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "test-theme",
+      "type": "registry:theme",
+      "description": "Theme variables for testing.",
+      "files": [],
+      "cssVars": {
+        "light": {
+          "--background": "0 0% 100%",
+          "--foreground": "0 0% 3.9%"
+        },
+        "dark": {
+          "--background": "0 0% 3.9%",
+          "--foreground": "0 0% 98%"
+        }
+      }
+    },
+    {
+      "name": "test-base",
+      "type": "registry:base",
+      "description": "Base styles for testing.",
+      "config": {},
+      "files": []
+    },
+    {
+      "name": "test-font",
+      "type": "registry:font",
+      "description": "Font for testing.",
+      "font": {
+        "family": "Inter",
+        "weight": "400",
+        "src": "https://fonts.example.com/inter.woff2"
+      },
+      "files": []
+    }
+  ]
+}

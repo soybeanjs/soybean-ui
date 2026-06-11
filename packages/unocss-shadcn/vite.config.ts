@@ -8,7 +8,7 @@ export default defineConfig({
   },
   pack: {
     entry: ['src/index.ts'],
-    platform: 'neutral',
+    platform: 'node',
     deps: {
       neverBundle: [...Object.keys(pkg.dependencies), ...Object.keys(pkg.devDependencies)]
     },
@@ -16,6 +16,7 @@ export default defineConfig({
     clean: true,
     dts: true,
     sourcemap: false,
-    minify: true
+    minify: true,
+    fixedExtension: false
   }
 });

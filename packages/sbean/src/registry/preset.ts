@@ -14,7 +14,8 @@ import {
   PRESET_BASE_COLORS,
   PRESET_PRIMARY_COLORS,
   PRESET_RADII,
-  PRESET_ICON_LIBRARIES
+  PRESET_ICON_LIBRARIES,
+  PRESET_FEEDBACK_COLORS
 } from '../registry/config';
 
 // ---------------------------------------------------------------------------
@@ -32,6 +33,7 @@ export const PRESET_FIELDS = [
   { key: 'iconLibrary', values: PRESET_ICON_LIBRARIES as readonly string[] },
   { key: 'primary', values: PRESET_PRIMARY_COLORS as readonly string[] },
   { key: 'base', values: PRESET_BASE_COLORS as readonly string[] },
+  { key: 'feedback', values: PRESET_FEEDBACK_COLORS as readonly string[] },
   { key: 'style', values: PRESET_STYLES as readonly string[] }
 ] as const;
 
@@ -39,6 +41,7 @@ export interface PresetConfig {
   style: string;
   base: string;
   primary: string;
+  feedback?: string;
   iconLibrary: string;
   radius: string;
   menuAccent: string;

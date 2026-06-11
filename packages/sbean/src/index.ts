@@ -11,6 +11,7 @@ import { init } from './commands/init';
 import { mcp } from './commands/mcp';
 import { preset } from './commands/preset';
 import { registry } from './commands/registry';
+import { scan } from './commands/scan';
 import { search } from './commands/search';
 import { template } from './commands/template';
 import { view } from './commands/view';
@@ -37,7 +38,8 @@ async function main() {
     .addCommand(info)
     .addCommand(mcp)
     .addCommand(registry)
-    .addCommand(preset);
+    .addCommand(preset)
+    .addCommand(scan);
   await program.parseAsync();
 }
 
