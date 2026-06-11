@@ -1,8 +1,7 @@
-import { readFileSync } from 'node:fs';
 import { defineConfig } from 'vite-plus';
 import vue from '@vitejs/plugin-vue';
-import type { RolldownPluginOption } from 'rolldown';
 import unpluginVue from 'unplugin-vue/rolldown';
+import { cssRawPlugin } from '../_shared/css';
 import headlessPkg from '../headless/package.json' with { type: 'json' };
 import pkg from './package.json' with { type: 'json' };
 
@@ -42,21 +41,3 @@ export default defineConfig({
     setupFiles: ['./test/setup.ts']
   }
 });
-
-function cssRawPlugin(): RolldownPluginOption {
-  const rawCssQueryRE = /\.css\?raw$/;
-
-  const plugin: RolldownPluginOption = {
-    name: 'raw-css-loader',
-    load(id) {
-      if (!rawCssQueryRE.test(id)) return null;
-
-      const filePath = id.replace(/\?raw$/, '');
-      const css = readFileSync(filePath, 'utf8');
-
-      return `export default ${JSON.stringify(css)};`;
-    }
-  };
-
-  return plugin;
-}
