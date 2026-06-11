@@ -43,6 +43,8 @@ export interface PresetConfig {
   radius: string;
   menuAccent: string;
   menuColor: string;
+  fontSans?: string;
+  fontHeading?: string;
 }
 
 export const DEFAULT_PRESET_CONFIG: PresetConfig = Object.fromEntries(

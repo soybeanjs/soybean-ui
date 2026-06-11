@@ -72,8 +72,7 @@ describe('config schema', () => {
       $schema: 'https://ui.soybeanjs.cn/schema.json',
       uno: {
         ...minimalConfig.uno,
-        chart: 'blue',
-        cssVariables: true
+        chart: 'blue'
       },
       font: {
         sans: 'inter',
@@ -81,9 +80,7 @@ describe('config schema', () => {
       },
       registries: {
         '@acme': 'https://example.com/r/{name}.json'
-      },
-      rtl: false,
-      pointer: false
+      }
     };
 
     const result = v.safeParse(rawConfigSchema, fullConfig);

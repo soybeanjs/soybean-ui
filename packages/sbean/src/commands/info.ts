@@ -88,7 +88,6 @@ export const info = new Command()
       console.log(
         `  Radius:         ${config.uno.radius} (${RADIUS_LABEL_MAP[config.uno.radius] ?? config.uno.radius})`
       );
-      console.log(`  CSS Variables:  ${config.uno.cssVariables ? 'yes' : 'no'}`);
       console.log(`  Icon library:   ${config.iconLibrary}`);
 
       if (config.font.sans) {
@@ -100,8 +99,6 @@ export const info = new Command()
 
       console.log(`  Menu accent:    ${config.menu.accent}`);
       console.log(`  Menu color:     ${config.menu.color}`);
-      console.log(`  RTL:            ${config.rtl ? 'yes' : 'no'}`);
-      console.log(`  Pointer:        ${config.pointer ? 'yes' : 'no'}`);
 
       if (config.registries && Object.keys(config.registries).length > 0) {
         console.log();

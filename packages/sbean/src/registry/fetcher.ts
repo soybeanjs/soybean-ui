@@ -1,7 +1,16 @@
 import * as v from 'valibot';
 import type { Config } from './config';
 import { BUILTIN_REGISTRIES, DEFAULT_REGISTRY_NAMESPACE } from './constants';
-import { getCachedRegistryItem, setCachedRegistryItem } from './cache';
+import {
+  getCachedRegistryItem,
+  getCachedRegistryItemEtag,
+  getCachedRegistryItemRaw,
+  setCachedRegistryItem,
+  getCachedRegistryCatalog,
+  getCachedRegistryCatalogEtag,
+  getCachedRegistryCatalogRaw,
+  setCachedRegistryCatalog
+} from './cache';
 import { registryItemSchema } from './schema';
 import type { RegistryItem } from './schema';
 
@@ -118,7 +127,7 @@ export async function fetchRegistryItem(
     : resolveRegistryTargets(name, config);
 
   for (const target of targets) {
-    // Check cache first
+    // Check cache first (non-ETag path)
     const cached = await getCachedRegistryItem<RegistryItem>(target.namespace, target.itemName);
     if (cached) {
       return attachRegistryMeta(cached, target.namespace, target.registryUrl, target.displayName);
@@ -127,7 +136,24 @@ export async function fetchRegistryItem(
     const url = buildRegistryItemUrl(target.registryUrl, target.itemName);
 
     try {
-      const response = await fetch(url);
+      // Build conditional request headers with ETag if available
+      const headers: Record<string, string> = {};
+      const cachedEtag = await getCachedRegistryItemEtag(target.namespace, target.itemName);
+      if (cachedEtag) {
+        headers['If-None-Match'] = cachedEtag;
+      }
+
+      const response = await fetch(url, { headers });
+
+      // 304 Not Modified — use cached version even if expired
+      if (response.status === 304 && cachedEtag) {
+        const raw = await getCachedRegistryItemRaw<RegistryItem>(target.namespace, target.itemName);
+        if (raw) {
+          // Re-cache with fresh timestamp
+          await setCachedRegistryItem(target.namespace, target.itemName, raw.data, raw.etag ?? cachedEtag);
+          return attachRegistryMeta(raw.data, target.namespace, target.registryUrl, target.displayName);
+        }
+      }
 
       if (!response.ok) {
         if (response.status === 404) {
@@ -140,8 +166,9 @@ export async function fetchRegistryItem(
       const json = await response.json();
       const item = v.parse(registryItemSchema, json);
 
-      // Cache the result
-      await setCachedRegistryItem(target.namespace, target.itemName, item);
+      // Cache the result with ETag
+      const responseEtag = response.headers.get('etag') || undefined;
+      await setCachedRegistryItem(target.namespace, target.itemName, item, responseEtag);
 
       return attachRegistryMeta(item, target.namespace, target.registryUrl, target.displayName);
     } catch (error) {
@@ -172,10 +199,60 @@ export async function fetchRegistryCatalog(
   const seen = new Set<string>();
 
   for (const [namespace, sourceUrl] of entries) {
+    // Check catalog cache first
+    const cachedCatalog = await getCachedRegistryCatalog<RegistryItem[]>(namespace);
+    if (cachedCatalog) {
+      for (const item of cachedCatalog) {
+        const displayName =
+          namespace === DEFAULT_REGISTRY_NAMESPACE || namespace === '@sbean' ? item.name : `${namespace}/${item.name}`;
+
+        if (seen.has(displayName)) {
+          continue;
+        }
+
+        seen.add(displayName);
+        items.push(attachRegistryMeta(item, namespace, sourceUrl, displayName));
+      }
+      continue;
+    }
+
     const url = buildRegistryCatalogUrl(sourceUrl);
 
     try {
-      const response = await fetch(url);
+      // Build conditional request headers with ETag if available
+      const headers: Record<string, string> = {};
+      const cachedEtag = await getCachedRegistryCatalogEtag(namespace);
+      if (cachedEtag) {
+        headers['If-None-Match'] = cachedEtag;
+      }
+
+      const response = await fetch(url, { headers });
+
+      const responseEtag = response.headers.get('etag') || undefined;
+
+      // 304 Not Modified — try stale cache
+      if (response.status === 304 && cachedEtag) {
+        const rawCatalog = await getCachedRegistryCatalogRaw<RegistryItem[]>(namespace);
+        if (rawCatalog) {
+          // Re-cache with fresh timestamp
+          await setCachedRegistryCatalog(namespace, rawCatalog.data, rawCatalog.etag ?? cachedEtag);
+
+          for (const item of rawCatalog.data) {
+            const displayName =
+              namespace === DEFAULT_REGISTRY_NAMESPACE || namespace === '@sbean'
+                ? item.name
+                : `${namespace}/${item.name}`;
+
+            if (seen.has(displayName)) {
+              continue;
+            }
+
+            seen.add(displayName);
+            items.push(attachRegistryMeta(item, namespace, sourceUrl, displayName));
+          }
+        }
+        continue;
+      }
 
       if (!response.ok) {
         if (response.status === 404) {
@@ -192,6 +269,9 @@ export async function fetchRegistryCatalog(
           ? (((json as Record<string, unknown>).items as unknown[]) ?? [])
           : [];
 
+      // Parse and cache catalog items
+      const parsedItems: RegistryItem[] = [];
+
       for (const entry of catalogItems) {
         const item = v.parse(registryItemSchema, entry);
         const displayName =
@@ -202,8 +282,13 @@ export async function fetchRegistryCatalog(
         }
 
         seen.add(displayName);
-        items.push(attachRegistryMeta(item, namespace, sourceUrl, displayName));
+        const itemWithMeta = attachRegistryMeta(item, namespace, sourceUrl, displayName);
+        items.push(itemWithMeta);
+        parsedItems.push(item);
       }
+
+      // Cache the catalog
+      await setCachedRegistryCatalog(namespace, parsedItems, responseEtag);
     } catch (error) {
       if (error instanceof v.ValiError) {
         console.warn(`  ⚠ Remote registry catalog validation failed for ${namespace}`);

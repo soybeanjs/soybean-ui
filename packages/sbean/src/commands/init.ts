@@ -8,7 +8,8 @@ import {
   PRESET_BASE_COLORS,
   PRESET_PRIMARY_COLORS,
   PRESET_RADII,
-  PRESET_ICON_LIBRARIES
+  PRESET_ICON_LIBRARIES,
+  PRESET_FONTS
 } from '../registry/config';
 import { createDefaultConfig, getConfig, writeConfig } from '../utils/get-config';
 import { getProjectInfo } from '../utils/get-project-info';
@@ -25,6 +26,8 @@ export const initOptionsSchema = v.object({
   primary: v.optional(v.picklist(PRESET_PRIMARY_COLORS)),
   radius: v.optional(v.picklist(PRESET_RADII)),
   iconLibrary: v.optional(v.picklist(PRESET_ICON_LIBRARIES)),
+  fontSans: v.optional(v.picklist(PRESET_FONTS)),
+  fontHeading: v.optional(v.picklist(['inherit' as const, ...PRESET_FONTS])),
   yes: v.optional(v.boolean(), false),
   defaults: v.optional(v.boolean(), false),
   force: v.optional(v.boolean(), false),
@@ -49,17 +52,84 @@ const RADIUS_MAP: Record<string, string> = {
 };
 
 // ---------------------------------------------------------------------------
+// Font name mapping (sbean preset name → Google/Bunny font name)
+// ---------------------------------------------------------------------------
+
+const GOOGLE_FONT_NAMES: Record<string, string> = {
+  inter: 'Inter',
+  'noto-sans': 'Noto Sans',
+  roboto: 'Roboto',
+  raleway: 'Raleway',
+  'dm-sans': 'DM Sans',
+  'public-sans': 'Public Sans',
+  outfit: 'Outfit',
+  'jetbrains-mono': 'JetBrains Mono',
+  montserrat: 'Montserrat',
+  'ibm-plex-sans': 'IBM Plex Sans',
+  'source-sans-3': 'Source Sans 3',
+  'instrument-sans': 'Instrument Sans'
+};
+
+function toWebFontProvider(fontName: string): string | null {
+  if (fontName === 'geist') return 'bunny';
+  if (GOOGLE_FONT_NAMES[fontName]) return 'google';
+  return null;
+}
+
+function toWebFontName(fontName: string): string {
+  if (fontName === 'geist') return 'Geist';
+  return GOOGLE_FONT_NAMES[fontName] ?? fontName;
+}
+
+// ---------------------------------------------------------------------------
 // uno.config.ts template
 // ---------------------------------------------------------------------------
 
-function generateUnoConfigContent(base: string, primary: string, radius: string): string {
-  return `${[
+interface FontConfig {
+  sans?: string;
+  heading?: string;
+}
+
+function generateUnoConfigContent(base: string, primary: string, radius: string, font?: FontConfig): string {
+  const hasFont = font?.sans;
+  const hasHeadingFont = font?.heading && font.heading !== 'inherit';
+
+  // Build the font entries for presetWebFonts
+  const fontEntries: string[] = [];
+
+  if (hasFont) {
+    const sansName = toWebFontName(font.sans!);
+    const sansProvider = toWebFontProvider(font.sans!);
+
+    if (sansProvider === 'google') {
+      fontEntries.push(`      sans: '${sansName}'`);
+    } else {
+      fontEntries.push(`      sans: { name: '${sansName}', provider: '${sansProvider}' }`);
+    }
+
+    if (hasHeadingFont) {
+      const headingName = toWebFontName(font.heading!);
+      const headingProvider = toWebFontProvider(font.heading!);
+
+      if (headingProvider === 'google') {
+        fontEntries.push(`      heading: '${headingName}'`);
+      } else {
+        fontEntries.push(`      heading: { name: '${headingName}', provider: '${headingProvider}' }`);
+      }
+    }
+  }
+
+  const imports = [
     `import { defineConfig, presetWind3 } from 'unocss'`,
     `import { presetShadcn } from '@soybeanjs/unocss-shadcn'`,
-    `import { presetAnimations } from 'unocss-preset-animations'`,
-    ``,
-    `export default defineConfig({`,
-    `  presets: [`,
+    `import { presetAnimations } from 'unocss-preset-animations'`
+  ];
+
+  if (hasFont) {
+    imports.push(`import { presetWebFonts } from 'unocss'`);
+  }
+
+  const presetLines = [
     `    presetWind3({ dark: 'class' }),`,
     `    presetAnimations(),`,
     `    presetShadcn({`,
@@ -68,10 +138,25 @@ function generateUnoConfigContent(base: string, primary: string, radius: string)
     `      radius: '${radius}',`,
     `      darkSelector: 'class',`,
     `      generated: true,`,
-    `    }),`,
-    `  ],`,
-    `})`
-  ].join('\n')}\n`;
+    `    }),`
+  ];
+
+  if (hasFont) {
+    presetLines.push(`    presetWebFonts({`);
+    presetLines.push(`      provider: 'google',`);
+    presetLines.push(`      fonts: {`);
+    presetLines.push(...fontEntries);
+    presetLines.push(`      },`);
+    presetLines.push(`    }),`);
+  }
+
+  return (
+    `${imports.join('\n')}\n\n` +
+    `export default defineConfig({\n` +
+    `  presets: [\n${presetLines.join('\n')}\n` +
+    `  ],\n` +
+    `})\n`
+  );
 }
 
 function generateTsConfigContent(): string {
@@ -112,12 +197,14 @@ export const init = new Command()
   .name('init')
   .alias('create')
   .description('initialize your project and install dependencies')
-  .option('-s, --style <style>', `style preset: ${PRESET_STYLES.join('/')}`)
+  .option('--style <style>', `style preset: ${PRESET_STYLES.join('/')}`)
   .option('-b, --base <base>', `base color: ${PRESET_BASE_COLORS.join('/')}`)
   .option('--primary <primary>', `primary color: ${PRESET_PRIMARY_COLORS.join('/')}`)
   .option('--radius <radius>', `border radius: ${PRESET_RADII.join('/')}`)
   .option('-p, --preset <code>', 'preset code (base62 encoded config)')
   .option('--icon-library <library>', `icon library: ${PRESET_ICON_LIBRARIES.join('/')}`)
+  .option('--font-sans <font>', `sans-serif font: ${PRESET_FONTS.join('/')}`)
+  .option('--font-heading <font>', `heading font: inherit/${PRESET_FONTS.join('/')}`)
   .option('-y, --yes', 'skip confirmation prompt', false)
   .option('-d, --defaults', 'use default configuration', false)
   .option('-f, --force', 'force overwrite of existing configuration', false)
@@ -135,6 +222,8 @@ type InitActionOptions = {
   primary?: string;
   radius?: string;
   iconLibrary?: string;
+  fontSans?: string;
+  fontHeading?: string;
   yes: boolean;
   defaults: boolean;
   force: boolean;
@@ -179,6 +268,8 @@ export async function runInit(opts: InitActionOptions) {
     opts.primary = opts.primary || preset.primary;
     opts.radius = opts.radius || preset.radius;
     opts.iconLibrary = opts.iconLibrary || preset.iconLibrary;
+    opts.fontSans = opts.fontSans || preset.fontSans;
+    opts.fontHeading = opts.fontHeading || preset.fontHeading;
   }
   const style = opts.style || 'soybean';
   const base = opts.base || 'zinc';
@@ -218,12 +309,62 @@ export async function runInit(opts: InitActionOptions) {
           value: p
         })),
         initial: 0
+      },
+      {
+        type: 'select',
+        name: 'fontSans',
+        message: 'Which sans-serif font? (skip for system default)',
+        choices: [
+          { title: 'none (system default)', value: '' },
+          ...PRESET_FONTS.map(f => ({
+            title: f === 'inter' ? `${f} (recommended)` : f,
+            value: f
+          }))
+        ],
+        initial: 0
+      },
+      {
+        type: (prev: string) => (prev ? 'select' : (null as any)),
+        name: 'fontHeading',
+        message: 'Which heading font? (or inherit from sans)',
+        choices: [
+          { title: 'inherit', value: 'inherit' },
+          ...PRESET_FONTS.map(f => ({
+            title: f === 'inter' ? `${f} (recommended)` : f,
+            value: f
+          }))
+        ],
+        initial: 0
       }
     ]);
 
     if (answers.style) opts.style = answers.style as (typeof PRESET_STYLES)[number];
     if (answers.base) opts.base = answers.base as (typeof PRESET_BASE_COLORS)[number];
     if (answers.primary) opts.primary = answers.primary as (typeof PRESET_PRIMARY_COLORS)[number];
+    if (answers.fontSans !== undefined && answers.fontSans !== '') {
+      opts.fontSans = answers.fontSans as (typeof PRESET_FONTS)[number];
+    }
+    if (answers.fontHeading !== undefined) {
+      opts.fontHeading = answers.fontHeading as 'inherit' | (typeof PRESET_FONTS)[number];
+    }
+  }
+
+  // Build font config for sbean.json
+  const fontOverrides: {
+    sans?: (typeof PRESET_FONTS)[number];
+    heading?: 'inherit' | (typeof PRESET_FONTS)[number];
+  } = {};
+
+  if (opts.fontSans && PRESET_FONTS.includes(opts.fontSans as (typeof PRESET_FONTS)[number])) {
+    fontOverrides.sans = opts.fontSans as (typeof PRESET_FONTS)[number];
+  }
+  if (opts.fontHeading) {
+    const heading = opts.fontHeading;
+    if (heading === 'inherit') {
+      fontOverrides.heading = 'inherit';
+    } else if (PRESET_FONTS.includes(heading as (typeof PRESET_FONTS)[number])) {
+      fontOverrides.heading = heading as (typeof PRESET_FONTS)[number];
+    }
   }
 
   // Write sbean.json
@@ -233,9 +374,9 @@ export async function runInit(opts: InitActionOptions) {
     uno: {
       base: (opts.base || base) as (typeof PRESET_BASE_COLORS)[number],
       primary: (opts.primary || primary) as (typeof PRESET_PRIMARY_COLORS)[number],
-      radius: (opts.radius || radius) as (typeof PRESET_RADII)[number],
-      cssVariables: true
-    }
+      radius: (opts.radius || radius) as (typeof PRESET_RADII)[number]
+    },
+    font: fontOverrides
   });
   await writeConfig(cwd, config);
 
@@ -251,7 +392,16 @@ export async function runInit(opts: InitActionOptions) {
 
   if (!unoExists) {
     const radiusValue = RADIUS_MAP[config.uno.radius] || '0.625rem';
-    const content = generateUnoConfigContent(config.uno.base, config.uno.primary, radiusValue);
+    const font: FontConfig = {};
+    if (config.font.sans) font.sans = config.font.sans;
+    if (config.font.heading && config.font.heading !== 'inherit') font.heading = config.font.heading;
+
+    const content = generateUnoConfigContent(
+      config.uno.base,
+      config.uno.primary,
+      radiusValue,
+      font.sans ? font : undefined
+    );
     await fs.writeFile(unoConfigPath, content, 'utf-8');
     console.log('✔ Created uno.config.ts');
   } else if (!opts.silent) {

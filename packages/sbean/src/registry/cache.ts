@@ -35,6 +35,24 @@ function isCacheValid(entry: CacheEntry<unknown>): boolean {
 }
 
 /**
+ * Read cached registry item regardless of TTL (for 304 Not Modified handling).
+ */
+export async function getCachedRegistryItemRaw<T>(
+  namespace: string,
+  itemName: string
+): Promise<{ data: T; etag?: string } | null> {
+  try {
+    const filePath = getCacheFilePath(namespace, itemName);
+    const content = await fs.readFile(filePath, 'utf-8');
+    const entry = JSON.parse(content) as CacheEntry<T>;
+
+    return { data: entry.data, etag: entry.etag };
+  } catch {
+    return null;
+  }
+}
+
+/**
  * Read cached registry item.
  */
 export async function getCachedRegistryItem<T>(namespace: string, itemName: string): Promise<T | null> {
@@ -106,6 +124,108 @@ export async function clearRegistryCacheByNamespace(namespace: string): Promise<
     }
   } catch {
     // Silently fail
+  }
+}
+
+/**
+ * Get the cached ETag for a registry item.
+ */
+export async function getCachedRegistryItemEtag(namespace: string, itemName: string): Promise<string | null> {
+  try {
+    const filePath = getCacheFilePath(namespace, itemName);
+    const content = await fs.readFile(filePath, 'utf-8');
+    const entry = JSON.parse(content) as CacheEntry<unknown>;
+
+    if (entry.etag) {
+      return entry.etag;
+    }
+
+    return null;
+  } catch {
+    return null;
+  }
+}
+
+/**
+ * Get the cache file path for the registry catalog.
+ */
+function getCatalogCacheFilePath(namespace: string): string {
+  const sanitizedNamespace = namespace.replace(/[@/]/g, '_');
+  return path.join(CACHE_DIR, `${sanitizedNamespace}-catalog.json`);
+}
+
+/**
+ * Read cached registry catalog regardless of TTL (for 304 Not Modified handling).
+ */
+export async function getCachedRegistryCatalogRaw<T>(namespace: string): Promise<{ data: T; etag?: string } | null> {
+  try {
+    const filePath = getCatalogCacheFilePath(namespace);
+    const content = await fs.readFile(filePath, 'utf-8');
+    const entry = JSON.parse(content) as CacheEntry<T>;
+
+    return { data: entry.data, etag: entry.etag };
+  } catch {
+    return null;
+  }
+}
+
+/**
+ * Read cached registry catalog.
+ */
+export async function getCachedRegistryCatalog<T>(namespace: string): Promise<T | null> {
+  try {
+    const filePath = getCatalogCacheFilePath(namespace);
+    const content = await fs.readFile(filePath, 'utf-8');
+    const entry = JSON.parse(content) as CacheEntry<T>;
+
+    if (isCacheValid(entry)) {
+      return entry.data;
+    }
+
+    // Cache expired, delete it
+    await fs.unlink(filePath).catch(() => {});
+    return null;
+  } catch {
+    return null;
+  }
+}
+
+/**
+ * Write registry catalog to cache.
+ */
+export async function setCachedRegistryCatalog<T>(namespace: string, data: T, etag?: string): Promise<void> {
+  try {
+    await fs.mkdir(CACHE_DIR, { recursive: true });
+
+    const filePath = getCatalogCacheFilePath(namespace);
+    const entry: CacheEntry<T> = {
+      data,
+      timestamp: Date.now(),
+      etag
+    };
+
+    await fs.writeFile(filePath, JSON.stringify(entry, null, 2), 'utf-8');
+  } catch {
+    // Silently fail — caching is optional
+  }
+}
+
+/**
+ * Get the cached ETag for the registry catalog.
+ */
+export async function getCachedRegistryCatalogEtag(namespace: string): Promise<string | null> {
+  try {
+    const filePath = getCatalogCacheFilePath(namespace);
+    const content = await fs.readFile(filePath, 'utf-8');
+    const entry = JSON.parse(content) as CacheEntry<unknown>;
+
+    if (entry.etag) {
+      return entry.etag;
+    }
+
+    return null;
+  } catch {
+    return null;
   }
 }
 

@@ -78,16 +78,13 @@ export async function createDefaultConfig(
     uno: {
       base: 'zinc',
       primary: 'indigo',
-      radius: 'md',
-      cssVariables: true
+      radius: 'md'
     },
     font: {},
     menu: {
       accent: 'subtle',
       color: 'default'
     },
-    rtl: false,
-    pointer: false,
     registries: {},
     aliases: {
       components: DEFAULT_COMPONENTS,

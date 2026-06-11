@@ -56,8 +56,7 @@ export const rawConfigSchema = v.object({
     base: v.picklist(PRESET_BASE_COLORS),
     primary: v.picklist(PRESET_PRIMARY_COLORS),
     chart: v.optional(v.picklist(PRESET_PRIMARY_COLORS)),
-    radius: v.picklist(PRESET_RADII),
-    cssVariables: v.optional(v.boolean(), true)
+    radius: v.picklist(PRESET_RADII)
   }),
   font: v.object({
     sans: v.optional(v.picklist(PRESET_FONTS)),
@@ -67,8 +66,6 @@ export const rawConfigSchema = v.object({
     accent: v.picklist(['subtle', 'bold'] as const),
     color: v.picklist(['default', 'inverted', 'default-translucent', 'inverted-translucent'] as const)
   }),
-  rtl: v.optional(v.boolean(), false),
-  pointer: v.optional(v.boolean(), false),
   registries: v.optional(v.record(v.string(), v.string())),
   aliases: v.object({
     components: v.string(),

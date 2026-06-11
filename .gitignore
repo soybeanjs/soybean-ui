@@ -43,3 +43,6 @@ coverage
 .omx/
 .kunsdd
 .tmp
+.codegraph
+.pnpm-store
+.reasonix

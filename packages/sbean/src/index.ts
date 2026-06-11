@@ -12,6 +12,7 @@ import { mcp } from './commands/mcp';
 import { preset } from './commands/preset';
 import { registry } from './commands/registry';
 import { search } from './commands/search';
+import { template } from './commands/template';
 import { view } from './commands/view';
 
 process.on('SIGINT', () => process.exit(0));
@@ -32,6 +33,7 @@ async function main() {
     .addCommand(docs)
     .addCommand(view)
     .addCommand(search)
+    .addCommand(template)
     .addCommand(info)
     .addCommand(mcp)
     .addCommand(registry)

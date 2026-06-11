@@ -8,6 +8,5 @@
   "radius": "md",
   "font": "inter",
   "menuAccent": "subtle",
-  "menuColor": "default",
-  "cssVariables": true
+  "menuColor": "default"
 }

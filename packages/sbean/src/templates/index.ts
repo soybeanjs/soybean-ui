@@ -6,7 +6,8 @@
 
 import fs from 'fs/promises';
 import path from 'path';
-import { getTemplate } from './templates';
+import { getTemplate, listTemplates } from './templates';
+import type { FrameworkType } from './templates';
 
 /**
  * Scaffold a new project from template.
@@ -16,7 +17,7 @@ export async function scaffoldFromTemplate(
   templateName: string,
   projectName: string
 ): Promise<void> {
-  const template = getTemplate(templateName as any);
+  const template = getTemplate(templateName as FrameworkType);
 
   if (!template) {
     throw new Error(`Unknown template: ${templateName}`);
@@ -55,7 +56,7 @@ export async function scaffoldFromTemplate(
  * Adds template files to an existing project without overwriting.
  */
 export async function mergeTemplateFiles(projectDir: string, templateName: string, overwrite = false): Promise<void> {
-  const template = getTemplate(templateName as any);
+  const template = getTemplate(templateName as FrameworkType);
 
   if (!template) {
     throw new Error(`Unknown template: ${templateName}`);
@@ -92,10 +93,30 @@ export function getTemplateConfig(templateName: string): Record<string, any> {
       componentPath: 'src/components',
       composablePath: 'src/composables',
       stylePath: 'src/styles'
+    },
+    nuxt: {
+      componentPath: 'components',
+      composablePath: 'composables',
+      stylePath: 'assets/styles'
+    },
+    'vue-bare': {
+      componentPath: 'components',
+      stylePath: 'styles'
+    },
+    library: {
+      componentPath: 'src/components',
+      stylePath: 'src/styles'
     }
   };
 
   return configs[templateName] ?? {};
+}
+
+/**
+ * List all available templates with descriptions.
+ */
+export function listAllTemplates(): Array<{ name: string; description: string; framework: string }> {
+  return listTemplates();
 }
 
 /**

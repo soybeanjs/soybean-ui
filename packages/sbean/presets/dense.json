@@ -8,6 +8,5 @@
   "radius": "xs",
   "font": "noto-sans",
   "menuAccent": "bold",
-  "menuColor": "inverted",
-  "cssVariables": true
+  "menuColor": "inverted"
 }
