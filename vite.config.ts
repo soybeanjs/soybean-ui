@@ -15,6 +15,10 @@ export default defineConfig({
       'init:lib': {
         command: 'pnpm --filter @soybeanjs/shadcn-theme build && pnpm --filter @soybeanjs/unocss-shadcn build'
       },
+      'type-check': {
+        command: `pnpm --filter './packages/*' typecheck`,
+        dependsOn: ['init:lib']
+      },
       'build:headless': {
         command: 'pnpm --filter @soybeanjs/headless build'
       },

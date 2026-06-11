@@ -29,7 +29,7 @@
     "stub": "tsx scripts/stub.ts",
     "sui": "tsx scripts/cli.ts",
     "test": "pnpm -r run test",
-    "typecheck": "pnpm --filter './packages/*' typecheck",
+    "typecheck": "vp run type-check",
     "upkg": "soy ncu"
   },
   "dependencies": {
