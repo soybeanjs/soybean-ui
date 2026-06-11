@@ -1,79 +1,32 @@
-import {
-  DEFAULT_PRESET_OPTIONS,
-  builtinBasePreset,
-  builtinFeedbackPreset,
-  builtinPrimaryPreset,
-  basePresetColorKeys,
-  primaryPresetColorKeys,
-  feedbackPresetColorKeys,
-  sidebarPresetColorKeys
-} from './constants';
+import { builtinBasePreset, builtinFeedbackPreset, builtinPrimaryPreset } from './constants';
+import { mergeObjects } from './shared';
 import type {
   PresetKeyConfig,
   ThemeColorPreset,
   CustomPreset,
   CustomThemeColorPreset,
   SidebarPreset,
-  SidebarExtendedPreset
+  SidebarExtendedPreset,
+  ThemeColors
 } from './types';
 
 export function generateThemePreset(config: Required<PresetKeyConfig>, customPreset?: CustomThemeColorPreset) {
-  const { base, primary, feedback, sidebar } = config;
-
   const preset = getBuiltinThemePreset(config);
 
   if (!customPreset) {
     return preset;
   }
 
-  if (base === 'custom') {
-    basePresetColorKeys.forEach(key => {
-      preset.light[key] = customPreset.light[key] ?? preset.light[key];
-      preset.dark[key] = customPreset.dark?.[key] ?? preset.dark[key];
-    });
-  }
-  if (primary === 'custom') {
-    primaryPresetColorKeys.forEach(key => {
-      preset.light[key] = customPreset.light[key] ?? preset.light[key];
-      preset.dark[key] = customPreset.dark?.[key] ?? preset.dark[key];
-    });
-  }
-  if (feedback === 'custom') {
-    feedbackPresetColorKeys.forEach(key => {
-      preset.light[key] = customPreset.light[key] ?? preset.light[key];
-      preset.dark[key] = customPreset.dark?.[key] ?? preset.dark[key];
-    });
-  }
-  // regenerate sidebar preset
-  const sidebarPreset = generateSidebarPreset(preset);
-  Object.assign(preset.light, sidebarPreset.light);
-  Object.assign(preset.dark, sidebarPreset.dark);
+  const custom: ThemeColorPreset = {
+    light: mergeObjects<Required<ThemeColors>>(preset.light, customPreset.light),
+    dark: mergeObjects<Required<ThemeColors>>(preset.dark, customPreset.dark || {})
+  };
 
-  if (sidebar === 'custom') {
-    sidebarPresetColorKeys.forEach(key => {
-      preset.light[key] = customPreset.light[key] ?? preset.light[key];
-      preset.dark[key] = customPreset.dark?.[key] ?? preset.dark[key];
-    });
-  }
-
-  return preset;
+  return custom;
 }
 
-function getBuiltinThemePreset(config: Required<PresetKeyConfig>) {
-  let { base, primary, feedback, sidebar } = config;
-
-  if (base === 'custom') {
-    base = DEFAULT_PRESET_OPTIONS.base;
-  }
-  if (primary === 'custom') {
-    primary = DEFAULT_PRESET_OPTIONS.primary;
-  }
-  if (feedback === 'custom') {
-    feedback = DEFAULT_PRESET_OPTIONS.feedback;
-  }
-  if (sidebar === 'custom') {
-    sidebar = DEFAULT_PRESET_OPTIONS.sidebar;
-  }
+function getBuiltinThemePreset(config: Required<PresetKeyConfig>): ThemeColorPreset {
+  const { base, primary, feedback } = config;
 
   const basePreset = builtinBasePreset[base];
   const primaryPreset = builtinPrimaryPreset[primary];
@@ -83,7 +36,7 @@ function getBuiltinThemePreset(config: Required<PresetKeyConfig>) {
     dark: { ...basePreset.dark, ...primaryPreset.dark }
   });
 
-  const preset: ThemeColorPreset = {
+  return {
     light: {
       ...basePreset.light,
       ...primaryPreset.light,
@@ -97,8 +50,6 @@ function getBuiltinThemePreset(config: Required<PresetKeyConfig>) {
       ...sidebarPreset.dark
     }
   };
-
-  return preset;
 }
 
 /**
@@ -136,30 +87,73 @@ function generateSidebarPreset(extendedPreset: SidebarExtendedPreset) {
 export function generateCustomPreset(preset: ThemeColorPreset) {
   const { light, dark } = preset;
 
+  const {
+    background,
+    foreground,
+    card,
+    cardForeground,
+    popover,
+    popoverForeground,
+    primaryForeground,
+    secondary,
+    secondaryForeground,
+    muted,
+    mutedForeground,
+    accent,
+    accentForeground,
+    destructiveForeground,
+    successForeground,
+    warningForeground,
+    infoForeground,
+    carbon,
+    carbonForeground,
+    border,
+    input,
+    primary,
+    destructive,
+    success,
+    warning,
+    info,
+    ring,
+    chart1,
+    chart2,
+    chart3,
+    chart4,
+    chart5,
+    sidebar,
+    sidebarForeground,
+    sidebarPrimary,
+    sidebarPrimaryForeground,
+    sidebarAccent,
+    sidebarAccentForeground,
+    sidebarBorder,
+    sidebarRing
+  } = light;
+
   const classified: CustomPreset = {
     base: {
       light: {
-        background: light.background,
-        foreground: light.foreground,
-        card: light.card,
-        cardForeground: light.cardForeground,
-        popover: light.popover,
-        popoverForeground: light.popoverForeground,
-        primaryForeground: light.primaryForeground,
-        secondary: light.secondary,
-        secondaryForeground: light.secondaryForeground,
-        muted: light.muted,
-        mutedForeground: light.mutedForeground,
-        accent: light.accent,
-        accentForeground: light.accentForeground,
-        destructiveForeground: light.destructiveForeground,
-        successForeground: light.successForeground,
-        warningForeground: light.warningForeground,
-        infoForeground: light.infoForeground,
-        carbon: light.carbon,
-        carbonForeground: light.carbonForeground,
-        border: light.border,
-        input: light.input
+        background,
+        foreground,
+        card,
+        cardForeground,
+        popover,
+        popoverForeground,
+        primaryForeground,
+        secondary,
+        secondaryForeground,
+        muted,
+        mutedForeground,
+        accent,
+        accentForeground,
+        destructiveForeground,
+        successForeground,
+        warningForeground,
+        infoForeground,
+        carbon,
+        carbonForeground,
+        border,
+        input
       },
       dark: {
         background: dark.background,
@@ -187,13 +181,13 @@ export function generateCustomPreset(preset: ThemeColorPreset) {
     },
     primary: {
       light: {
-        primary: light.primary,
-        ring: light.ring,
-        chart1: light.chart1,
-        chart2: light.chart2,
-        chart3: light.chart3,
-        chart4: light.chart4,
-        chart5: light.chart5
+        primary,
+        ring,
+        chart1,
+        chart2,
+        chart3,
+        chart4,
+        chart5
       },
       dark: {
         primary: dark.primary,
@@ -207,10 +201,10 @@ export function generateCustomPreset(preset: ThemeColorPreset) {
     },
     feedback: {
       light: {
-        destructive: light.destructive,
-        success: light.success,
-        warning: light.warning,
-        info: light.info
+        destructive,
+        success,
+        warning,
+        info
       },
       dark: {
         destructive: dark.destructive,
@@ -221,14 +215,14 @@ export function generateCustomPreset(preset: ThemeColorPreset) {
     },
     sidebar: {
       light: {
-        sidebar: light.sidebar,
-        sidebarForeground: light.sidebarForeground,
-        sidebarPrimary: light.sidebarPrimary,
-        sidebarPrimaryForeground: light.sidebarPrimaryForeground,
-        sidebarAccent: light.sidebarAccent,
-        sidebarAccentForeground: light.sidebarAccentForeground,
-        sidebarBorder: light.sidebarBorder,
-        sidebarRing: light.sidebarRing
+        sidebar,
+        sidebarForeground,
+        sidebarPrimary,
+        sidebarPrimaryForeground,
+        sidebarAccent,
+        sidebarAccentForeground,
+        sidebarBorder,
+        sidebarRing
       },
       dark: {
         sidebar: dark.sidebar,

@@ -249,32 +249,31 @@ export interface PresetKeyConfig {
    *
    * @default 'zinc'
    */
-  base?: BuiltinBasePresetKey | 'custom';
+  base?: BuiltinBasePresetKey;
   /**
    * the primary color key
    *
    * @default 'indigo'
    */
-  primary?: BuiltinPrimaryPresetKey | 'custom';
+  primary?: BuiltinPrimaryPresetKey;
   /**
    * the feedback color key
    *
    * @default 'classic'
    */
-  feedback?: BuiltinFeedbackPresetKey | 'custom';
+  feedback?: BuiltinFeedbackPresetKey;
   /**
    * the sidebar style key
    *
    * @default 'extended'
    */
-  sidebar?: BuiltinSidebarPresetKey | 'custom';
+  sidebar?: BuiltinSidebarPresetKey;
 }
 
 export interface PresetConfig extends PresetKeyConfig {
   /**
-   * custom preset colors
-   *
-   * @description only used when preset is provided and one of the preset keys is 'custom'
+   * custom preset colors that override built-in preset values.
+   * When provided, matching keys are replaced in the final theme.
    */
   preset?: CustomThemeColorPreset;
 }
@@ -318,9 +317,7 @@ export interface ThemeOptions extends PresetConfig, ThemeRadius {
 
 export interface RequiredThemeOptions extends Required<Omit<ThemeOptions, 'preset'>> {
   /**
-   * custom preset colors
-   *
-   * @description only used when preset is provided and one of the preset keys is 'custom'
+   * custom preset colors that override built-in preset values.
    */
   preset?: CustomThemeColorPreset;
 }

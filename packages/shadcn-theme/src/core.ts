@@ -26,11 +26,9 @@ export function createShadcnTheme(options?: ThemeOptions) {
       sidebar: config?.sidebar ?? sidebar
     };
 
-    const shouldUseColorCssCache =
-      mergedConfig.base !== 'custom' &&
-      mergedConfig.primary !== 'custom' &&
-      mergedConfig.feedback !== 'custom' &&
-      mergedConfig.sidebar !== 'custom';
+    const hasCustomPreset = !!(config?.preset ?? preset);
+
+    const shouldUseColorCssCache = !hasCustomPreset;
 
     const cacheKey = getColorPresetCacheKey(mergedConfig);
 
