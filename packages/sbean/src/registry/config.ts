@@ -33,19 +33,35 @@ export const PRESET_PRIMARY_COLORS = [
 export const PRESET_STYLES = ['soybean', 'clean', 'dense'] as const;
 
 export const PRESET_FONTS = [
+  // sans-serif
   'inter',
   'noto-sans',
+  'nunito-sans',
+  'figtree',
   'roboto',
   'raleway',
   'dm-sans',
   'public-sans',
   'outfit',
-  'jetbrains-mono',
+  'oxanium',
+  'manrope',
+  'space-grotesk',
   'geist',
   'montserrat',
   'ibm-plex-sans',
   'source-sans-3',
-  'instrument-sans'
+  'instrument-sans',
+  // monospace
+  'jetbrains-mono',
+  'geist-mono',
+  // serif
+  'noto-serif',
+  'roboto-slab',
+  'merriweather',
+  'lora',
+  'playfair-display',
+  'eb-garamond',
+  'instrument-serif'
 ] as const;
 
 export const rawConfigSchema = v.object({

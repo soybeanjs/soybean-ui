@@ -1,6 +1,7 @@
-import { definePreset } from 'unocss';
-import type { Preflight } from 'unocss';
+import { presetWind3, presetWebFonts } from 'unocss';
+import type { Preflight, Preset } from 'unocss';
 import type { Theme } from 'unocss/preset-mini';
+import { presetAnimations } from 'unocss-preset-animations';
 import { createShadcnTheme } from '@soybeanjs/shadcn-theme';
 import type { ThemeOptions } from '@soybeanjs/shadcn-theme';
 import globalStyle from './global.css?raw';
@@ -8,30 +9,99 @@ import resetStyle from './reset.css?raw';
 
 export interface ShadcnPresetOptions extends ThemeOptions {
   /**
-   * whether to generate the CSS for the theme
+   * Whether to generate the CSS theme (CSS variables + preflights).
+   *
+   * @default false
    */
   generated?: boolean;
   /**
-   * whether to include the global CSS preflight (including border color, background color, etc.)
-   *
-   * only effective when `generated` is true, as the global CSS relies on the generated CSS variables
+   * Whether to include the global CSS preflight (border color, background, etc.).
+   * Only effective when `generated` is `true`.
    *
    * @default true
    */
   globalCss?: boolean;
   /**
-   * whether to include the reset CSS preflight (including box-sizing, border-width, etc.)
-   *
-   * only effective when `generated` is true, as the reset CSS relies on the generated CSS variables
+   * Whether to include the reset CSS preflight (box-sizing, border-width, etc.).
+   * Only effective when `generated` is `true`.
    *
    * @default true
    */
   resetCss?: boolean;
+  /**
+   * Font configuration forwarded to `@unocss/preset-web-fonts`.
+   * When provided, `presetWebFonts` is automatically included in the returned presets.
+   *
+   * Keys (sans / heading / mono) map to web font names understood
+   * by the configured provider (default: 'fontsource').
+   */
+  fonts?: {
+    sans?: string;
+    heading?: string;
+    mono?: string;
+  };
+  /**
+   * Web font provider.
+   *
+   * Uses `@fontsource-variable/*` npm packages (self-hosted, no CDN requests).
+   *
+   * @default 'fontsource'
+   */
+  fontProvider?: 'google' | 'bunny' | 'fontshare' | 'fontsource' | 'coollabs' | 'none';
 }
 
-export const presetShadcn = definePreset<ShadcnPresetOptions, Theme>((options?: ShadcnPresetOptions) => {
-  const { globalCss = true, resetCss = true } = options || {};
+/**
+ * The SoybeanUI shadcn preset.
+ *
+ * Returns **multiple presets** so that a single call composes the full
+ * recommendation stack:
+ *
+ * ```ts
+ * // uno.config.ts
+ * import { defineConfig } from 'unocss'
+ * import { presetShadcn } from '@soybeanjs/unocss-shadcn'
+ *
+ * export default defineConfig({
+ *   presets: [presetShadcn({ base: 'zinc', primary: 'indigo', generated: true })],
+ * })
+ * ```
+ *
+ * The returned array is:
+ *   [
+ *     presetWind3({ dark }),
+ *     presetAnimations(),
+ *     presetWebFonts({ … }),        // only when `fonts` option is provided
+ *     shadcn-theme + preflights,
+ *   ]
+ */
+/**
+ * The SoybeanUI shadcn preset.
+ *
+ * Returns **multiple presets** so that a single call composes the full
+ * recommendation stack:
+ *
+ * ```ts
+ * // uno.config.ts
+ * import { defineConfig } from 'unocss'
+ * import { presetShadcn } from '@soybeanjs/unocss-shadcn'
+ *
+ * export default defineConfig({
+ *   presets: [presetShadcn({ base: 'zinc', primary: 'indigo', generated: true })],
+ * })
+ * ```
+ *
+ * The returned array is:
+ *   [
+ *     presetWind3({ dark }),
+ *     presetAnimations(),
+ *     presetWebFonts({ ... }),        // only when `fonts` option is provided
+ *     shadcn-theme + preflights,
+ *   ]
+ */
+export function presetShadcn(options?: ShadcnPresetOptions): Preset<Theme>[] {
+  const { globalCss = true, resetCss = true, fonts, fontProvider = 'fontsource' } = options || {};
 
+  // ---- shadcn-theme preflights -------------------------------------------
   const preflights: Preflight[] = [];
 
   if (options?.generated) {
@@ -40,6 +110,7 @@ export const presetShadcn = definePreset<ShadcnPresetOptions, Theme>((options?: 
         getCSS: () => resetStyle
       });
     }
+
     if (globalCss) {
       preflights.push({
         getCSS: () => globalStyle
@@ -48,19 +119,14 @@ export const presetShadcn = definePreset<ShadcnPresetOptions, Theme>((options?: 
 
     preflights.push({
       getCSS: () => {
-        let css = '';
-
-        if (options?.generated) {
-          const { getCss } = createShadcnTheme(options);
-          css = getCss();
-        }
-
-        return css;
+        const { getCss } = createShadcnTheme(options);
+        return getCss();
       }
     });
   }
 
-  return {
+  // ---- Self preset (theme layer) ----------------------------------------
+  const selfPreset: Preset<Theme> = {
     name: 'unocss-preset-shadcn',
     preflights,
     theme: {
@@ -221,4 +287,41 @@ export const presetShadcn = definePreset<ShadcnPresetOptions, Theme>((options?: 
       }
     }
   };
-});
+
+  // ---- Build the presets array ------------------------------------------
+
+  const presets: Preset[] = [
+    // 1. Wind3 — required for utility classes
+    presetWind3({ dark: resolveWind3Dark(options?.darkSelector) }),
+    // 2. Animations
+    presetAnimations()
+  ];
+
+  // 3. Web fonts (only when fonts are explicitly configured)
+  if (fonts) {
+    presets.push(
+      presetWebFonts({
+        provider: fontProvider,
+        fonts: fonts as Record<string, string>
+      })
+    );
+  }
+
+  // 4. Self — shadcn theme layer
+  presets.push(selfPreset);
+
+  return presets as Preset<Theme>[];
+}
+
+function resolveWind3Dark(darkSelector: string | undefined | null) {
+  if (!darkSelector || darkSelector === 'class') {
+    return 'class' as const;
+  }
+
+  if (darkSelector === 'media') {
+    return 'media' as const;
+  }
+
+  // Custom dark selector — e.g. ".dark", "[data-theme=dark]"
+  return { dark: [darkSelector] };
+}

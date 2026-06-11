@@ -55,30 +55,40 @@ const RADIUS_MAP: Record<string, string> = {
 // Font name mapping (sbean preset name → Google/Bunny font name)
 // ---------------------------------------------------------------------------
 
-const GOOGLE_FONT_NAMES: Record<string, string> = {
+const FONT_NAMES: Record<string, string> = {
+  // sans-serif
   inter: 'Inter',
   'noto-sans': 'Noto Sans',
+  'nunito-sans': 'Nunito Sans',
+  figtree: 'Figtree',
   roboto: 'Roboto',
   raleway: 'Raleway',
   'dm-sans': 'DM Sans',
   'public-sans': 'Public Sans',
   outfit: 'Outfit',
-  'jetbrains-mono': 'JetBrains Mono',
+  oxanium: 'Oxanium',
+  manrope: 'Manrope',
+  'space-grotesk': 'Space Grotesk',
+  geist: 'Geist',
   montserrat: 'Montserrat',
   'ibm-plex-sans': 'IBM Plex Sans',
   'source-sans-3': 'Source Sans 3',
-  'instrument-sans': 'Instrument Sans'
+  'instrument-sans': 'Instrument Sans',
+  // monospace
+  'jetbrains-mono': 'JetBrains Mono',
+  'geist-mono': 'Geist Mono',
+  // serif
+  'noto-serif': 'Noto Serif',
+  'roboto-slab': 'Roboto Slab',
+  merriweather: 'Merriweather',
+  lora: 'Lora',
+  'playfair-display': 'Playfair Display',
+  'eb-garamond': 'EB Garamond',
+  'instrument-serif': 'Instrument Serif'
 };
 
-function toWebFontProvider(fontName: string): string | null {
-  if (fontName === 'geist') return 'bunny';
-  if (GOOGLE_FONT_NAMES[fontName]) return 'google';
-  return null;
-}
-
 function toWebFontName(fontName: string): string {
-  if (fontName === 'geist') return 'Geist';
-  return GOOGLE_FONT_NAMES[fontName] ?? fontName;
+  return FONT_NAMES[fontName] ?? fontName;
 }
 
 // ---------------------------------------------------------------------------
@@ -91,72 +101,41 @@ interface FontConfig {
 }
 
 function generateUnoConfigContent(base: string, primary: string, radius: string, font?: FontConfig): string {
-  const hasFont = font?.sans;
-  const hasHeadingFont = font?.heading && font.heading !== 'inherit';
-
-  // Build the font entries for presetWebFonts
-  const fontEntries: string[] = [];
-
-  if (hasFont) {
-    const sansName = toWebFontName(font.sans!);
-    const sansProvider = toWebFontProvider(font.sans!);
-
-    if (sansProvider === 'google') {
-      fontEntries.push(`      sans: '${sansName}'`);
-    } else {
-      fontEntries.push(`      sans: { name: '${sansName}', provider: '${sansProvider}' }`);
-    }
-
-    if (hasHeadingFont) {
-      const headingName = toWebFontName(font.heading!);
-      const headingProvider = toWebFontProvider(font.heading!);
-
-      if (headingProvider === 'google') {
-        fontEntries.push(`      heading: '${headingName}'`);
-      } else {
-        fontEntries.push(`      heading: { name: '${headingName}', provider: '${headingProvider}' }`);
-      }
-    }
-  }
-
-  const imports = [
-    `import { defineConfig, presetWind3 } from 'unocss'`,
-    `import { presetShadcn } from '@soybeanjs/unocss-shadcn'`,
-    `import { presetAnimations } from 'unocss-preset-animations'`
-  ];
-
-  if (hasFont) {
-    imports.push(`import { presetWebFonts } from 'unocss'`);
-  }
-
-  const presetLines = [
-    `    presetWind3({ dark: 'class' }),`,
-    `    presetAnimations(),`,
-    `    presetShadcn({`,
+  const options: string[] = [
     `      base: '${base}',`,
     `      primary: '${primary}',`,
     `      radius: '${radius}',`,
     `      darkSelector: 'class',`,
-    `      generated: true,`,
-    `    }),`
+    `      generated: true,`
   ];
 
-  if (hasFont) {
-    presetLines.push(`    presetWebFonts({`);
-    presetLines.push(`      provider: 'google',`);
-    presetLines.push(`      fonts: {`);
-    presetLines.push(...fontEntries);
-    presetLines.push(`      },`);
-    presetLines.push(`    }),`);
+  if (font?.sans) {
+    const sansName = toWebFontName(font.sans);
+    const hasHeading = font.heading && font.heading !== 'inherit';
+
+    options.push(`      fonts: {`);
+    options.push(`        sans: '${sansName}',`);
+
+    if (hasHeading) {
+      const headingName = toWebFontName(font.heading!);
+      options.push(`        heading: '${headingName}',`);
+    }
+
+    options.push(`      },`);
   }
 
-  return (
-    `${imports.join('\n')}\n\n` +
-    `export default defineConfig({\n` +
-    `  presets: [\n${presetLines.join('\n')}\n` +
-    `  ],\n` +
-    `})\n`
-  );
+  return `${[
+    `import { defineConfig } from 'unocss'`,
+    `import { presetShadcn } from '@soybeanjs/unocss-shadcn'`,
+    ``,
+    `export default defineConfig({`,
+    `  presets: [`,
+    `    presetShadcn({`,
+    ...options,
+    `    }),`,
+    `  ],`,
+    `})`
+  ].join('\n')}\n`;
 }
 
 function generateTsConfigContent(): string {
@@ -187,7 +166,6 @@ function generateTsConfigContent(): string {
     '}'
   ].join('\n')}\n`;
 }
-// '  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue", "vite.config.ts", "uno.config.ts"]',
 
 // ---------------------------------------------------------------------------
 // Command definition
