@@ -12,6 +12,9 @@ export default defineConfig({
   lint,
   run: {
     tasks: {
+      'init:lib': {
+        command: 'pnpm --filter @soybeanjs/shadcn-theme build && pnpm --filter @soybeanjs/unocss-shadcn build'
+      },
       'build:headless': {
         command: 'pnpm --filter @soybeanjs/headless build'
       },

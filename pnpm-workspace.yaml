@@ -1,6 +1,7 @@
 packages:
   - 'packages/**'
   - 'apps/**'
+  - 'shared/**'
   - 'skills'
 catalog:
   vite: npm:@voidzero-dev/vite-plus-core@latest
@@ -19,8 +20,4 @@ allowBuilds:
   esbuild: false
   simple-git-hooks: false
 minimumReleaseAgeExclude:
-  - '@nuxt/kit@4.4.8'
-  - '@nuxt/nitro-server@4.4.8'
-  - '@nuxt/schema@4.4.8'
-  - '@nuxt/vite-builder@4.4.8'
-  - nuxt@4.4.8
+  - '@soybeanjs/colord@0.6.1'

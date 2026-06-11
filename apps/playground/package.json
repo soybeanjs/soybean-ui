@@ -18,7 +18,7 @@
   "dependencies": {
     "@iconify/vue": "^5.0.1",
     "@soybeanjs/headless": "workspace:^",
-    "@soybeanjs/shadcn-theme": "^0.3.4",
+    "@soybeanjs/shadcn-theme": "workspace:^",
     "@soybeanjs/ui": "workspace:^",
     "@soybeanjs/utils": "^0.1.1",
     "@vueuse/core": "^14.3.0",
@@ -30,7 +30,7 @@
   },
   "devDependencies": {
     "@soybeanjs/unocss-preset": "^0.2.0",
-    "@soybeanjs/unocss-shadcn": "^0.7.0",
+    "@soybeanjs/unocss-shadcn": "workspace:^",
     "@vitejs/plugin-vue": "^6.0.7",
     "@vitejs/plugin-vue-jsx": "^5.1.5",
     "typescript": "^6.0.3",

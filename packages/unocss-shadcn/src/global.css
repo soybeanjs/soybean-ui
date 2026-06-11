@@ -1,0 +1,10 @@
+* {
+  border-color: hsl(var(--border) / var(--border-alpha, 1));
+}
+body {
+  color: hsl(var(--foreground));
+  background: hsl(var(--background));
+}
+button {
+  background-color: transparent;
+}
