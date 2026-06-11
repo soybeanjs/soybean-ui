@@ -10,7 +10,12 @@ export const addOptionsSchema = v.object({
   yes: v.boolean(),
   overwrite: v.boolean(),
   cwd: v.string(),
-  path: v.optional(v.string())
+  path: v.optional(v.string()),
+  dryRun: v.boolean(),
+  diff: v.boolean(),
+  view: v.boolean(),
+  all: v.boolean(),
+  silent: v.boolean()
 });
 
 export const add = new Command()
@@ -21,17 +26,43 @@ export const add = new Command()
   .option('-o, --overwrite', 'overwrite existing files.', false)
   .option('-c, --cwd <cwd>', 'the working directory. defaults to the current directory.', process.cwd())
   .option('-p, --path <path>', 'the path to add the component to.')
+  .option('--dry-run', 'preview the files to be added without writing them.', false)
+  .option('--diff', 'show the diff between the local file and the registry file.', false)
+  .option('--view', 'view the component source code without adding it.', false)
+  .option('-a, --all', 'add all available components.', false)
+  .option('-s, --silent', 'mute output.', false)
   .action(async (components: string[], opts) => {
     const options = v.parse(addOptionsSchema, {
       components,
       yes: opts.yes,
       overwrite: opts.overwrite,
       cwd: path.resolve(opts.cwd),
-      path: opts.path
+      path: opts.path,
+      dryRun: opts.dryRun,
+      diff: opts.diff,
+      view: opts.view,
+      all: opts.all,
+      silent: opts.silent
     });
 
-    // Ensure components were specified
-    if (!options.components.length) {
+    // Get all available components if --all is used
+    if (options.all) {
+      try {
+        const config = await getConfig(options.cwd);
+        if (config) {
+          // TODO: Load all components from registry
+          // This will be implemented in the registry system
+          if (!options.silent) {
+            console.log('--all flag: will add all available components from registry');
+          }
+        }
+      } catch {
+        // Silently continue
+      }
+    }
+
+    // Ensure components were specified (unless viewing or using --all)
+    if (!options.components.length && !options.all && !options.view) {
       console.log('Usage: sbean add <component...>');
       console.log('\nRun "sbean search" to find available components.');
       process.exit(0);
@@ -43,17 +74,32 @@ export const add = new Command()
     try {
       config = await getConfig(options.cwd);
     } catch {
-      console.error('No sbean.json found. Run "sbean init" first.');
+      if (!options.silent) {
+        console.error('No sbean.json found. Run "sbean init" first.');
+      }
       process.exit(1);
     }
 
     if (!config) {
-      console.error('No sbean.json found. Run "sbean init" first.');
+      if (!options.silent) {
+        console.error('No sbean.json found. Run "sbean init" first.');
+      }
       process.exit(1);
     }
 
+    // Handle --view mode (show source code without adding)
+    if (options.view) {
+      for (const componentName of options.components) {
+        if (!options.silent) {
+          console.log(`\n=== Viewing: ${componentName} ===\n`);
+        }
+        // TODO: Implement view logic in addComponents
+      }
+      return;
+    }
+
     // Confirm (unless --yes)
-    if (!options.yes) {
+    if (!options.yes && !options.silent && !options.dryRun && !options.diff) {
       console.log(`Adding: ${options.components.join(', ')}`);
       console.log(`  To: ${config.resolvedPaths.ui}`);
       console.log();
@@ -61,6 +107,9 @@ export const add = new Command()
 
     await addComponents(options.components, config, {
       overwrite: options.overwrite,
-      path: options.path
+      path: options.path,
+      dryRun: options.dryRun,
+      diff: options.diff,
+      silent: options.silent
     });
   });

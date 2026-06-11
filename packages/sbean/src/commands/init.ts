@@ -123,6 +123,7 @@ export const init = new Command()
   .option('-f, --force', 'force overwrite of existing configuration', false)
   .option('-c, --cwd <cwd>', 'the working directory', process.cwd())
   .option('-n, --name <name>', 'project name (for new projects)')
+  .option('-s, --silent', 'mute output', false)
   .action(async opts => {
     await runInit(opts);
   });
@@ -237,16 +238,16 @@ export async function runInit(opts: InitActionOptions) {
     }
   });
   await writeConfig(cwd, config);
-  console.log('✔ Created sbean.json');
 
-  // Ensure uno.config.ts exists with presetShadcn
-  const unoConfigPath = path.join(cwd, 'uno.config.ts');
-  let unoExists = true;
-  try {
-    await fs.access(unoConfigPath);
-  } catch {
-    unoExists = false;
+  if (!opts.silent) {
+    console.log('✔ Created sbean.json');
   }
+
+  const unoConfigPath = path.join(cwd, 'uno.config.ts');
+  const unoExists = await fs
+    .stat(unoConfigPath)
+    .then(() => true)
+    .catch(() => false);
 
   if (!unoExists) {
     const radiusValue = RADIUS_MAP[config.uno.radius] || '0.625rem';

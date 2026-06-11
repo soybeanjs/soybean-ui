@@ -6,7 +6,6 @@ export default defineConfig({
     entry: ['src/index.ts'],
     platform: 'node',
     target: 'esnext',
-    unbundle: true,
     clean: true,
     dts: true,
     deps: {
@@ -14,10 +13,6 @@ export default defineConfig({
         ...pkg.dependencies,
         ...pkg.devDependencies
       })
-    },
-    define: {
-      'import.meta.env.DEV': 'undefined',
-      'import.meta.env.MODE': 'undefined'
     },
     sourcemap: false,
     minify: true,

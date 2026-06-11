@@ -9,6 +9,9 @@ export interface UpdateFilesOptions {
   style: string;
   transformCtx: TransformContext;
   libDir: string;
+  dryRun?: boolean;
+  diff?: boolean;
+  silent?: boolean;
 }
 
 interface ResolveTargetPathOptions {
@@ -18,6 +21,12 @@ interface ResolveTargetPathOptions {
 
 /**
  * Write registry item files to the user's project directory.
+ *
+ * Supports multiple modes:
+ * - Normal: write files to disk
+ * - dryRun: preview what would be written
+ * - diff: show differences between new and existing files
+ * - silent: suppress console output
  */
 export async function updateFiles(
   files: RegistryItemFile[],
@@ -25,6 +34,9 @@ export async function updateFiles(
   options: UpdateFilesOptions
 ): Promise<string[]> {
   const written: string[] = [];
+  const dryRun = options.dryRun ?? false;
+  const diff = options.diff ?? false;
+  const silent = options.silent ?? false;
 
   for (const file of files) {
     if (!file.content) continue;
@@ -34,18 +46,45 @@ export async function updateFiles(
       libDir: options.libDir
     });
 
-    // Check if file exists and handle overwrite
-    const exists = await fileExists(targetPath);
-    if (exists && !options.overwrite) {
-      console.log(`  ⚠ Skipped (exists): ${path.basename(targetPath)}`);
-      written.push(targetPath);
-      continue;
-    }
-
     // Apply transformers
     let content = file.content;
     content = transformImports(content, options.transformCtx, options.style);
     content = transformIcons(content, options.transformCtx.iconLibrary);
+
+    // Check if file exists
+    const exists = await fileExists(targetPath);
+
+    // Handle diff mode
+    if (diff && exists) {
+      const existingContent = await fs.readFile(targetPath, 'utf-8');
+      if (existingContent !== content) {
+        if (!silent) {
+          console.log(`\n📝 Diff for: ${path.relative(targetDir, targetPath)}`);
+          console.log('━'.repeat(60));
+          printSimpleDiff(existingContent, content);
+          console.log('━'.repeat(60));
+        }
+      } else if (!silent) {
+        console.log(`  ✔ No changes: ${path.basename(targetPath)}`);
+      }
+      written.push(targetPath);
+      continue;
+    }
+
+    // Handle existing file without overwrite
+    if (exists && !options.overwrite) {
+      if (!silent) {
+        console.log(`  ⚠ Skipped (exists): ${path.basename(targetPath)}`);
+      }
+      written.push(targetPath);
+      continue;
+    }
+
+    // Handle dry-run mode
+    if (dryRun) {
+      written.push(targetPath);
+      continue;
+    }
 
     // Ensure directory exists
     await fs.mkdir(path.dirname(targetPath), { recursive: true });
@@ -53,12 +92,40 @@ export async function updateFiles(
     // Write file
     await fs.writeFile(targetPath, content, 'utf-8');
 
-    const action = exists ? 'Updated' : 'Created';
-    console.log(`  ✔ ${action}: ${path.basename(targetPath)}`);
+    if (!silent) {
+      const action = exists ? 'Updated' : 'Created';
+      console.log(`  ✔ ${action}: ${path.basename(targetPath)}`);
+    }
     written.push(targetPath);
   }
 
   return written;
+}
+
+/**
+ * Print a simple line-based diff.
+ */
+function printSimpleDiff(oldContent: string, newContent: string): void {
+  const oldLines = oldContent.split('\n');
+  const newLines = newContent.split('\n');
+
+  const maxLines = Math.max(oldLines.length, newLines.length);
+  let diffCount = 0;
+
+  for (let i = 0; i < Math.min(maxLines, 10); i++) {
+    const oldLine = oldLines[i] ?? '';
+    const newLine = newLines[i] ?? '';
+
+    if (oldLine !== newLine) {
+      if (oldLine) console.log(`  - ${oldLine}`);
+      if (newLine) console.log(`  + ${newLine}`);
+      diffCount++;
+    }
+  }
+
+  if (maxLines > 10) {
+    console.log(`  ... and ${maxLines - 10} more lines`);
+  }
 }
 
 /**

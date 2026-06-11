@@ -82,6 +82,9 @@ export const registryItemCommonSchema = v.object({
   title: v.optional(v.string()),
   author: v.optional(v.pipe(v.string(), v.minLength(2))),
   description: v.optional(v.string()),
+  keywords: v.optional(v.array(v.string())),
+  license: v.optional(v.string()),
+  version: v.optional(v.string()),
   dependencies: v.optional(v.array(v.string())),
   devDependencies: v.optional(v.array(v.string())),
   registryDependencies: v.optional(v.array(v.string())),
@@ -91,7 +94,10 @@ export const registryItemCommonSchema = v.object({
   css: v.optional(v.string()),
   meta: v.optional(v.record(v.string(), v.any())),
   docs: v.optional(v.string()),
-  categories: v.optional(v.array(v.string()))
+  categories: v.optional(v.array(v.string())),
+  tags: v.optional(v.array(v.string())),
+  preview: v.optional(v.string()),
+  deprecated: v.optional(v.boolean())
 });
 
 // ---------------------------------------------------------------------------

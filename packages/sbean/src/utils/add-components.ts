@@ -13,6 +13,9 @@ import type { UpdateFilesOptions } from './updaters/update-files';
 export interface AddComponentsOptions {
   overwrite: boolean;
   path?: string;
+  dryRun?: boolean;
+  diff?: boolean;
+  silent?: boolean;
 }
 
 const WRITABLE_FILE_TYPES = new Set(['registry:ui', 'registry:style', 'registry:lib', 'registry:theme']);
@@ -20,6 +23,11 @@ const SOURCE_ROOT = findWorkspaceSourceRoot();
 
 /**
  * Add components to a project — the core copy-paste engine.
+ *
+ * Supports multiple modes:
+ * - Normal: write files to disk, install dependencies
+ * - dry-run: preview what would be written without modifying files
+ * - diff: show differences between existing files and registry
  *
  * First tries the local registry.json, then falls back to remote fetching
  * from https://ui.soybeanjs.cn/r/{name}.json.
@@ -30,6 +38,7 @@ export async function addComponents(
   options: AddComponentsOptions
 ): Promise<void> {
   const targetDir = options.path ? path.resolve(config.resolvedPaths.cwd, options.path) : config.resolvedPaths.ui;
+  const silent = options.silent ?? false;
 
   const transformCtx = {
     componentsAlias: config.aliases.components,
@@ -43,7 +52,10 @@ export async function addComponents(
     overwrite: options.overwrite,
     style: config.style,
     transformCtx,
-    libDir: config.resolvedPaths.lib
+    libDir: config.resolvedPaths.lib,
+    dryRun: options.dryRun,
+    diff: options.diff,
+    silent
   };
 
   const allDeps: string[] = [];
@@ -63,6 +75,7 @@ export async function addComponents(
   }
 
   let added = 0;
+  const addedFiles: string[] = [];
 
   const resolveRegistryDependencyName = (dependencyName: string, item: RegistryItem): string => {
     if (dependencyName.startsWith('@')) {
@@ -94,8 +107,10 @@ export async function addComponents(
     const item = await loadRegistryItem(componentName, localItems, config);
 
     if (!item) {
-      console.warn(`  ⚠ Component "${componentName}" not found in local or remote registry.`);
-      console.warn(`    Run "sbean search" to see available components.`);
+      if (!silent) {
+        console.warn(`  ⚠ Component "${componentName}" not found in local or remote registry.`);
+        console.warn(`    Run "sbean search" to see available components.`);
+      }
       continue;
     }
 
@@ -105,8 +120,9 @@ export async function addComponents(
     const filesToAdd = expandedFiles.filter(file => WRITABLE_FILE_TYPES.has(file.type));
 
     if (filesToAdd.length > 0) {
-      await updateFiles(filesToAdd, targetDir, updateOpts);
+      const filesAdded = await updateFiles(filesToAdd, targetDir, updateOpts);
       added += filesToAdd.length;
+      addedFiles.push(...filesAdded);
     }
 
     const registryDependencies = [...(item.registryDependencies ?? []), ...inferRegistryDependencies(expandedFiles)];
@@ -123,12 +139,38 @@ export async function addComponents(
     }
   }
 
+  // Handle dry-run mode
+  if (options.dryRun) {
+    if (!silent) {
+      console.log('\n📋 Dry-run preview: The following changes would be made:\n');
+      if (addedFiles.length > 0) {
+        console.log('📝 Files:');
+        for (const file of addedFiles) {
+          console.log(`   + ${file}`);
+        }
+      }
+      if (allDeps.length > 0 || allDevDeps.length > 0) {
+        console.log('\n📦 Dependencies:');
+        if (allDeps.length > 0) {
+          console.log(`   + ${allDeps.join(', ')}`);
+        }
+        if (allDevDeps.length > 0) {
+          console.log(`   + ${allDevDeps.join(', ')} (dev)`);
+        }
+      }
+      console.log(`\n✨ Use without --dry-run to apply these changes.`);
+    }
+    return;
+  }
+
   // Install collected dependencies
   if (allDeps.length > 0 || allDevDeps.length > 0) {
     await updateDependencies(allDeps, allDevDeps, config);
   }
 
-  console.log(`\n✔ Added ${added} file(s) to ${path.relative(config.resolvedPaths.cwd, targetDir)}`);
+  if (!silent) {
+    console.log(`\n✔ Added ${added} file(s) to ${path.relative(config.resolvedPaths.cwd, targetDir)}`);
+  }
 }
 
 async function loadRegistryItem(

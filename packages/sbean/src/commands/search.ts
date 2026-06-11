@@ -5,6 +5,7 @@ import { getConfig } from '../utils/get-config';
 import { fetchRegistryCatalog } from '../registry/fetcher';
 import { readRegistryWithIncludes } from '../registry/loader';
 import type { RegistryItem } from '../registry/schema';
+import { searchRegistry } from '../registry/search';
 
 export const searchOptionsSchema = v.object({
   query: v.optional(v.string()),
@@ -57,17 +58,16 @@ export const search = new Command()
       }
     }
 
-    // Filter by query
+    // Filter by query using advanced search engine
     let filtered = items;
 
     if (!options.all && options.query) {
-      const q = options.query.toLowerCase();
-      filtered = items.filter(item => {
-        const name = item.name.toLowerCase();
-        const desc = (item.description ?? '').toLowerCase();
-        const cats = (item.categories ?? []).join(' ').toLowerCase();
-        return name.includes(q) || desc.includes(q) || cats.includes(q);
+      const result = searchRegistry(items, {
+        query: options.query,
+        sortBy: 'relevance',
+        limit: 50
       });
+      filtered = result.items;
     }
 
     if (filtered.length === 0) {

@@ -1,6 +1,7 @@
 import * as v from 'valibot';
 import type { Config } from './config';
 import { BUILTIN_REGISTRIES, DEFAULT_REGISTRY_NAMESPACE } from './constants';
+import { getCachedRegistryItem, setCachedRegistryItem } from './cache';
 import { registryItemSchema } from './schema';
 import type { RegistryItem } from './schema';
 
@@ -96,6 +97,7 @@ function attachRegistryMeta(
 
 /**
  * Fetch a single registry item from the remote registry.
+ * Checks local cache first, falls back to network if not cached.
  *
  * URL pattern: https://ui.soybeanjs.cn/r/{name}.json
  */
@@ -116,6 +118,12 @@ export async function fetchRegistryItem(
     : resolveRegistryTargets(name, config);
 
   for (const target of targets) {
+    // Check cache first
+    const cached = await getCachedRegistryItem<RegistryItem>(target.namespace, target.itemName);
+    if (cached) {
+      return attachRegistryMeta(cached, target.namespace, target.registryUrl, target.displayName);
+    }
+
     const url = buildRegistryItemUrl(target.registryUrl, target.itemName);
 
     try {
@@ -131,6 +139,9 @@ export async function fetchRegistryItem(
 
       const json = await response.json();
       const item = v.parse(registryItemSchema, json);
+
+      // Cache the result
+      await setCachedRegistryItem(target.namespace, target.itemName, item);
 
       return attachRegistryMeta(item, target.namespace, target.registryUrl, target.displayName);
     } catch (error) {
