@@ -1,4 +1,5 @@
 import {
+  themeSizeKeys,
   themeRadiusKeys,
   builtinBasePresetKeys,
   builtinPrimaryPresetKeys,
@@ -22,7 +23,7 @@ export const PRESET_STYLES = ['soybean', 'clean', 'dense'] as const;
 
 export const PRESET_FEEDBACK_COLORS = builtinFeedbackPresetKeys;
 
-export const PRESET_SIZES = ['xs', 'sm', 'md', 'lg', 'xl', '2xl'] as const;
+export const PRESET_SIZES = themeSizeKeys;
 
 export const PRESET_FONTS = [
   // sans-serif
