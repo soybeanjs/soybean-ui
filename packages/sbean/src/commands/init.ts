@@ -84,7 +84,7 @@ function generateTsConfigContent(uiDir: string): string {
     '    "isolatedModules": true',
     '   },',
     '  "include": ["./**/*.ts", "./**/*.d.ts", "./**/*.tsx", "./**/*.vue"],',
-    '  "exclude": ["node_modules", "dist"]',
+    '  "exclude": ["node_modules", "dist", "src/typings"]',
     '}'
   ].join('\n')}\n`;
 }

@@ -25,10 +25,12 @@ export const vueViteTemplate: ProjectTemplate = {
   description: 'Vue 3 + Vite + UnoCSS',
   framework: 'vue-vite',
   files: {
-    'vite.config.ts': `import { defineConfig } from 'vite'
+    'vite.config.ts': `import { URL, fileURLToPath } from 'node:url'
+import { defineConfig } from 'vite'
 import Vue from '@vitejs/plugin-vue'
 import UnoCSS from 'unocss/vite'
-import path from 'path'
+import Components from 'unplugin-vue-components/vite'
+import SbeanResolver from './src/ui/resolver'
 
 export default defineConfig({
   resolve: {
@@ -37,14 +39,18 @@ export default defineConfig({
   plugins: [
     Vue(),
     UnoCSS(),
-  ],
+    Components({
+      dts: fileURLToPath(new URL('./src/typings/components.d.ts', import.meta.url)),
+      resolvers: [SbeanResolver()]
+    })
+  ]
 })
 `,
     'uno.config.ts': `import { defineConfig } from 'unocss'
 import { presetSbean } from '@soybeanjs/unocss-shadcn'
 
 export default defineConfig({
-  presets: [presetSbean()],
+  presets: [presetSbean()]
 })
 `,
     'tsconfig.json': `{
@@ -55,10 +61,10 @@ export default defineConfig({
     "lib": ["DOM", "ESNext"],
     "module": "ESNext",
     "moduleResolution": "bundler",
-    "types": ["node", "vite/client"],
     "paths": {
-      "@/*": ["./src/*"]
+      "#ui/*": ["./src/ui/*"]
     },
+    "types": ["node", "vite/client"],
     "resolveJsonModule": true,
     "strict": true,
     "strictNullChecks": true,
@@ -66,15 +72,15 @@ export default defineConfig({
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
-    "isolatedModules": true,
-    "skipLibCheck": true
+    "isolatedModules": true
   },
-  "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.vue"],
-  "exclude": ["node_modules", "dist"]
+  "include": ["./**/*.ts", "./**/*.d.ts", "./**/*.tsx", "./**/*.vue"],
+  "exclude": ["node_modules", "dist", "src/typings"]
 }
 `,
     'sbean.json': `{
   "style": "soybean",
+  "isMonorepo": false,
   "iconLibrary": "lucide",
   "uno": {
     "size": "md",
@@ -88,12 +94,7 @@ export default defineConfig({
     "accent": "subtle",
     "color": "default"
   },
-  "aliases": {
-    "components": "@/components",
-    "utils": "@/lib/utils",
-    "ui": "@/components/ui",
-    "lib": "@/lib"
-  }
+  "uiDir": "src/ui"
 }
 `,
     'src/main.ts': `import { createApp } from 'vue'
@@ -101,7 +102,6 @@ import 'uno.css'
 import App from './App.vue'
 
 const app = createApp(App)
-
 app.mount('#app')
 `,
     'src/App.vue': `<script setup lang="ts">
@@ -130,21 +130,26 @@ app.mount('#app')
 `
   },
   scripts: {
-    dev: 'vite',
-    build: 'vue-tsc --noEmit && vite build',
-    preview: 'vite preview'
+    dev: 'vp dev',
+    build: 'vp build',
+    preview: 'vp preview'
   },
   dependencies: {
-    vue: '^3.5.0',
-    '@soybeanjs/headless': 'latest',
-    '@soybeanjs/cva': 'latest',
-    '@soybeanjs/unocss-shadcn': 'latest'
+    '@iconify/vue': '^5.0.1',
+    '@soybeanjs/cva': '^0.0.9',
+    '@soybeanjs/headless': '^0.29.0-beta.6',
+    '@soybeanjs/hooks': '^0.3.0',
+    '@soybeanjs/shadcn-theme': '^0.29.0-beta.6',
+    '@soybeanjs/utils': '^0.1.1',
+    vue: '^3.5.0'
   },
   devDependencies: {
+    '@soybeanjs/unocss-shadcn': '^0.29.0-beta.6',
     '@vitejs/plugin-vue': '^5.0.0',
-    typescript: '^5.8.0',
-    unocss: '^66.0.0',
-    vite: '^6.0.0',
+    typescript: '^6.0.3',
+    unocss: '^66.7.0',
+    'unplugin-vue-components': '^31.1.0',
+    'vite-plus': '^0.1.24',
     'vue-tsc': '^2.1.0'
   }
 };
@@ -158,39 +163,49 @@ export const nuxtTemplate: ProjectTemplate = {
   description: 'Nuxt 3 + UnoCSS',
   framework: 'nuxt',
   files: {
-    'nuxt.config.ts': `export default defineNuxtConfig({
-  modules: ['@unocss/nuxt'],
-  compatibilityDate: '2026-01-01'
+    'nuxt.config.ts': `import UiModule from './ui/nuxt'
+
+export default defineNuxtConfig({
+  modules: ['@unocss/nuxt', UiModule],
+  compatibilityDate: '2026-01-01',
+  alias: {
+    '#ui': './ui'
+  }
 })
 `,
     'uno.config.ts': `import { defineConfig } from 'unocss'
 import { presetSbean } from '@soybeanjs/unocss-shadcn'
 
 export default defineConfig({
-  presets: [presetSbean()],
+  presets: [presetSbean()]
 })
+`,
+    'tsconfig.json': `{
+  "extends": "./.nuxt/tsconfig.json",
+  "compilerOptions": {
+    "paths": {
+      "#ui/*": ["./ui/*"]
+    }
+  }
+}
 `,
     'sbean.json': `{
   "style": "soybean",
+  "isMonorepo": false,
   "iconLibrary": "lucide",
   "uno": {
+    "size": "md",
+    "radius": "md",
     "base": "zinc",
     "primary": "indigo",
-    "feedback": "classic",
-    "size": "md",
-    "radius": "md"
+    "feedback": "classic"
   },
   "font": {},
   "menu": {
     "accent": "subtle",
     "color": "default"
   },
-  "aliases": {
-    "components": "~/components",
-    "utils": "~/lib/utils",
-    "ui": "~/components/ui",
-    "lib": "~/lib"
-  }
+  "uiDir": "ui"
 }
 `,
     'app.vue': `<template>
@@ -211,15 +226,17 @@ export default defineConfig({
 `
   },
   dependencies: {
-    nuxt: '^3.16.0',
-    vue: 'latest',
-    '@soybeanjs/headless': 'latest',
-    '@soybeanjs/cva': 'latest',
-    '@soybeanjs/unocss-shadcn': 'latest'
+    '@iconify/vue': '^5.0.1',
+    '@soybeanjs/cva': '^0.0.9',
+    '@soybeanjs/headless': '^0.29.0-beta.6',
+    '@soybeanjs/hooks': '^0.3.0',
+    '@soybeanjs/shadcn-theme': '^0.29.0-beta.6',
+    '@soybeanjs/utils': '^0.1.1',
+    nuxt: '^4.4.8'
   },
   devDependencies: {
-    '@unocss/nuxt': '^66.0.0',
-    unocss: '^66.0.0'
+    '@unocss/nuxt': '^66.7.0',
+    unocss: '^66.7.0'
   },
   scripts: {
     dev: 'nuxt dev',

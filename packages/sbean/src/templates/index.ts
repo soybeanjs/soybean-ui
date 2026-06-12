@@ -90,14 +90,10 @@ export async function mergeTemplateFiles(projectDir: string, templateName: strin
 export function getTemplateConfig(templateName: string): Record<string, any> {
   const configs: Record<string, Record<string, any>> = {
     'vue-vite': {
-      componentPath: 'src/components',
-      composablePath: 'src/composables',
-      stylePath: 'src/styles'
+      uiDir: 'src/ui'
     },
     nuxt: {
-      componentPath: 'components',
-      composablePath: 'composables',
-      stylePath: 'assets/styles'
+      uiDir: 'ui'
     }
   };
 

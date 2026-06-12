@@ -28,6 +28,7 @@ const ICONIFY_PREFIX_MAP: Record<string, string> = {
  *   components → {uiAlias}/components
  *   styles     → {uiAlias}/styles
  *   theme      → {uiAlias}/theme
+ *   registry   → {uiAlias}/
  *
  * @param source - The original source code
  * @param ctx - User's configured aliases (just uiAlias + iconLibrary)
@@ -35,21 +36,14 @@ const ICONIFY_PREFIX_MAP: Record<string, string> = {
  */
 export function transformImports(source: string, ctx: TransformContext, style: string): string {
   const a = ctx.uiAlias;
-  const comp = `${a}/components`;
 
   let result = source;
 
-  // Rewrite @/registry/<style>/ui → user's ui alias
+  // Rewrite @/registry/<style>/ui → {a} (strip trailing /ui)
   result = result.replace(new RegExp(`@/registry/${style}/ui`, 'g'), a);
 
-  // Rewrite @/registry/<style>/components → {a}/components
-  result = result.replace(new RegExp(`@/registry/${style}/components`, 'g'), comp);
-
-  // Rewrite @/registry/<style>/lib → {a}/lib
-  result = result.replace(new RegExp(`@/registry/${style}/lib`, 'g'), `${a}/lib`);
-
-  // Rewrite @/registry/<style>/lib/utils → {a}/lib/utils
-  result = result.replace(new RegExp(`@/registry/${style}/lib/utils`, 'g'), `${a}/lib/utils`);
+  // Rewrite @/registry/<style>/* → {a}/* (everything else)
+  result = result.replace(new RegExp(`@/registry/${style}/`, 'g'), `${a}/`);
 
   // Rewrite @/styles/ → {a}/styles/
   result = result.replace(/@\/styles\//g, `${a}/styles/`);
@@ -58,28 +52,20 @@ export function transformImports(source: string, ctx: TransformContext, style: s
   result = result.replace(/@\/theme/g, `${a}/theme`);
 
   // Rewrite @/components/ → {a}/components/
-  result = result.replace(/@\/components\//g, `${comp}/`);
+  result = result.replace(/@\/components\//g, `${a}/components/`);
 
   return result;
 }
 
 /**
  * Transform icon library prefix in source code.
- *
- * Replaces the iconify prefix used in component source (e.g. "lucide:chevron-left")
- * with the user's chosen icon library prefix.
  */
 export function transformIcons(source: string, iconLibrary: string): string {
   const newPrefix = ICONIFY_PREFIX_MAP[iconLibrary] || iconLibrary;
 
-  // Replace known iconify prefixes with the user's choice
-  const KNOWN_PREFIXES = Object.values(ICONIFY_PREFIX_MAP);
-
-  for (const prefix of KNOWN_PREFIXES) {
+  for (const prefix of Object.values(ICONIFY_PREFIX_MAP)) {
     if (prefix === newPrefix) continue;
-    // Match iconify string references like "prefix:icon-name"
-    const regex = new RegExp(`(["'])${prefix}:`, 'g');
-    source = source.replace(regex, `$1${newPrefix}:`);
+    source = source.replace(new RegExp(`(["'])${prefix}:`, 'g'), `$1${newPrefix}:`);
   }
 
   return source;
