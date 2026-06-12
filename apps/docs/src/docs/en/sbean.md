@@ -7,8 +7,6 @@ description: sbean CLI tool reference
 
 `sbean` is the command-line tool for SoybeanUI. It helps you initialize projects, add components, and manage your UI configuration.
 
-[[toc]]
-
 ## Installation
 
 ```bash
@@ -33,18 +31,18 @@ sbean init [options]
 
 | Option                  | Description                                                                 | Default                                      |
 | ----------------------- | --------------------------------------------------------------------------- | -------------------------------------------- |
+| `-m, --monorepo`        | Use monorepo (pnpm workspaces) structure                                    | `false`                                      |
+| `--ui-dir <path>`       | Component output directory                                                  | `src/ui` (single) / `packages/ui` (monorepo) |
+| `--size <size>`         | Component size: xs / sm / md / lg / xl / 2xl                                | `md`                                         |
 | `--style <style>`       | Style preset: soybean / clean / dense                                       | `soybean`                                    |
 | `-b, --base <base>`     | Base color: zinc / neutral / stone / slate / gray                           | `zinc`                                       |
 | `--primary <primary>`   | Primary color: indigo / blue / green / ...                                  | `indigo`                                     |
 | `--feedback <feedback>` | Feedback color preset: classic / vivid / subtle / ...                       | `classic`                                    |
-| `--size <size>`         | Component size: xs / sm / md / lg / xl / 2xl                                | `md`                                         |
 | `--radius <radius>`     | Border radius: none / xs / sm / md / lg / xl / 2xl                          | `md`                                         |
 | `-p, --preset <code>`   | Preset code (base62 encoded config)                                         | —                                            |
 | `--icon-library <lib>`  | Icon library: lucide / material-symbols / ph / tabler / solar / radix-icons | `lucide`                                     |
 | `--font-sans <font>`    | Sans-serif font: inter / roboto / geist / ...                               | —                                            |
 | `--font-heading <font>` | Heading font or `inherit`                                                   | —                                            |
-| `-m, --monorepo`        | Use monorepo (pnpm workspaces) structure                                    | `false`                                      |
-| `--ui-dir <path>`       | Component output directory                                                  | `src/ui` (single) / `packages/ui` (monorepo) |
 | `-y, --yes`             | Skip confirmation prompt                                                    | `false`                                      |
 | `-d, --defaults`        | Use default configuration                                                   | `false`                                      |
 | `-f, --force`           | Overwrite existing configuration                                            | `false`                                      |
@@ -172,6 +170,7 @@ The `sbean.json` file stores your project configuration:
 | -------------- | --------- | --------------------------------------------------- |
 | `style`        | `string`  | Style preset name                                   |
 | `isMonorepo`   | `boolean` | Whether the project is a monorepo                   |
+| `uiDir`        | `string`  | Component output directory relative to project root |
 | `iconLibrary`  | `string`  | Icon library prefix                                 |
 | `uno.base`     | `string`  | Base (neutral) color                                |
 | `uno.primary`  | `string`  | Primary (brand) color                               |
@@ -182,7 +181,6 @@ The `sbean.json` file stores your project configuration:
 | `font.heading` | `string`  | Heading font or `"inherit"`                         |
 | `menu.accent`  | `string`  | Menu accent style: subtle / bold                    |
 | `menu.color`   | `string`  | Menu color scheme                                   |
-| `uiDir`        | `string`  | Component output directory relative to project root |
 
 ## Project Structure
 

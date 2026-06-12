@@ -7,8 +7,6 @@ description: sbean 命令行工具参考
 
 `sbean` 是 SoybeanUI 的命令行工具，用于初始化项目、添加组件和管理 UI 配置。
 
-[[toc]]
-
 ## 安装
 
 ```bash
@@ -33,18 +31,18 @@ sbean init [options]
 
 | 选项                    | 描述                                                                  | 默认值                                        |
 | ----------------------- | --------------------------------------------------------------------- | --------------------------------------------- |
+| `-m, --monorepo`        | 使用 monorepo（pnpm workspaces）结构                                  | `false`                                       |
+| `--ui-dir <path>`       | 组件输出目录                                                          | `src/ui`（单仓库）/ `packages/ui`（monorepo） |
+| `--size <size>`         | 组件尺寸：xs / sm / md / lg / xl / 2xl                                | `md`                                          |
 | `--style <style>`       | 样式预设：soybean / clean / dense                                     | `soybean`                                     |
 | `-b, --base <base>`     | 基础色：zinc / neutral / stone / slate / gray                         | `zinc`                                        |
 | `--primary <primary>`   | 主色：indigo / blue / green / ...                                     | `indigo`                                      |
 | `--feedback <feedback>` | 反馈色预设：classic / vivid / subtle / ...                            | `classic`                                     |
-| `--size <size>`         | 组件尺寸：xs / sm / md / lg / xl / 2xl                                | `md`                                          |
 | `--radius <radius>`     | 圆角：none / xs / sm / md / lg / xl / 2xl                             | `md`                                          |
 | `-p, --preset <code>`   | 预设编码（base62 编码的配置）                                         | —                                             |
 | `--icon-library <lib>`  | 图标库：lucide / material-symbols / ph / tabler / solar / radix-icons | `lucide`                                      |
 | `--font-sans <font>`    | 无衬线字体：inter / roboto / geist / ...                              | —                                             |
 | `--font-heading <font>` | 标题字体或 `inherit`                                                  | —                                             |
-| `-m, --monorepo`        | 使用 monorepo（pnpm workspaces）结构                                  | `false`                                       |
-| `--ui-dir <path>`       | 组件输出目录                                                          | `src/ui`（单仓库）/ `packages/ui`（monorepo） |
 | `-y, --yes`             | 跳过确认提示                                                          | `false`                                       |
 | `-d, --defaults`        | 使用默认配置                                                          | `false`                                       |
 | `-f, --force`           | 覆盖已有配置                                                          | `false`                                       |
@@ -170,19 +168,19 @@ sbean preset <preset>
 
 | 字段           | 类型      | 描述                             |
 | -------------- | --------- | -------------------------------- |
-| `style`        | `string`  | 样式预设名称                     |
 | `isMonorepo`   | `boolean` | 是否为 monorepo                  |
+| `uiDir`        | `string`  | 组件输出目录（相对于项目根目录） |
+| `style`        | `string`  | 样式预设名称                     |
 | `iconLibrary`  | `string`  | 图标库前缀                       |
+| `uno.size`     | `string`  | 基础组件尺寸                     |
 | `uno.base`     | `string`  | 基础（中性）色                   |
 | `uno.primary`  | `string`  | 主（品牌）色                     |
 | `uno.feedback` | `string`  | 反馈色预设                       |
-| `uno.size`     | `string`  | 基础组件尺寸                     |
 | `uno.radius`   | `string`  | 圆角大小                         |
 | `font.sans`    | `string`  | 无衬线字体名称                   |
 | `font.heading` | `string`  | 标题字体或 `"inherit"`           |
 | `menu.accent`  | `string`  | 菜单强调样式：subtle / bold      |
 | `menu.color`   | `string`  | 菜单颜色方案                     |
-| `uiDir`        | `string`  | 组件输出目录（相对于项目根目录） |
 
 ## 项目结构
 

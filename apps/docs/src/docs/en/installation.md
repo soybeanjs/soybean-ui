@@ -6,8 +6,6 @@ title: Installation
 
 SoybeanUI offers two ways to add components to your project. Choose the one that fits your workflow.
 
-[[toc]]
-
 ## Comparison
 
 |                   | npm Package                             | CLI (sbean)                                          |
@@ -27,16 +25,10 @@ Install the styled component library with a single command:
 pnpm add @soybeanjs/ui
 ```
 
-Then configure UnoCSS to use the SoybeanUI preset:
+Import styles:
 
 ```ts
-// uno.config.ts
-import { defineConfig } from 'unocss';
-import { presetSbean } from '@soybeanjs/unocss-shadcn';
-
-export default defineConfig({
-  presets: [presetSbean({ base: 'zinc', primary: 'indigo', radius: 'md' })]
-});
+import '@soybeanjs/ui/styles.css';
 ```
 
 Import components directly from the package:
