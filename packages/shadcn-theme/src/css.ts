@@ -69,7 +69,7 @@ export function generateSizeCSSVariable(size: ThemeSize, styleTarget: string = '
 }
 
 export function generateRadiusCSSVariable(radius: ThemeRadius, styleTarget: StyleTarget = ':root') {
-  const radiusValue = THEME_RADIUS[radius];
+  const radiusValue = THEME_RADIUS[radius] ?? (Number.parseFloat(radius) ? radius : THEME_RADIUS['md']);
 
   const css = `${styleTarget} {\n${RADIUS_VARIABLE}: ${radiusValue};\n}`;
 
