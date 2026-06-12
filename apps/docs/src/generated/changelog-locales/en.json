@@ -1483,6 +1483,29 @@
             "6": {
               "68994": "correct JSON syntax in TypeScript configuration generation",
               "dd11b": "add current todo list for shadcn parity"
+            },
+            "7": {
+              "0ad22": "update typecheck command and add type-check task",
+              "168d1": "update registry with new components and styles",
+              "31a20": "update deps",
+              "396a9": "add monorepo support and customizable UI output directory",
+              "46a81": "add size to theme options",
+              "46b75": "add shadcn-theme and unocss-shadcn packages",
+              "46d3a": "add theme size and radius options with corresponding CSS variable generation",
+              "4f1b9": "support monorepo",
+              "5edb9": "enhance font configuration with additional font options and update preset handling",
+              "655b5": "update template configurations and paths for improved structure",
+              "6d688": "add monorepo and uiDir options to init command",
+              "7419c": "update init config and add registry scripts",
+              "927d9": "remove unused cssRawPlugin function and clean up imports",
+              "a736e": "remove unused sidebar from color preset cache key",
+              "b4096": "enhance search command with pagination and type filtering",
+              "c2b4f": "simplify templates and update dependencies",
+              "c67f6": "update preset sizes to use themeSizeKeys",
+              "cdd18": "update sbean",
+              "db519": "simplify preset handling and cache logic",
+              "e4611": "update build dependencies to include init:lib for ui and playground",
+              "e5175": "simplify CSS generation by removing radius parameter"
             }
           }
         }

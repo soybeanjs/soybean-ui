@@ -1,5 +1,53 @@
 # Changelog
 
+## [v0.29.0-beta.7](https://github.com/soybeanjs/soybean-ui/compare/v0.29.0-beta.6...v0.29.0-beta.7) (2026-06-12)
+
+### &nbsp;&nbsp;&nbsp;🚀 Features
+
+- **packages**:
+  - add shadcn-theme and unocss-shadcn packages &nbsp;-&nbsp; by **soybeanfe** [<samp>(46b75)</samp>](https://github.com/soybeanjs/soybean-ui/commit/46b751d6c)
+- **sbean**:
+  - enhance search command with pagination and type filtering &nbsp;-&nbsp; by **soybeanfe** [<samp>(b4096)</samp>](https://github.com/soybeanjs/soybean-ui/commit/b4096583c)
+  - enhance font configuration with additional font options and update preset handling &nbsp;-&nbsp; by **soybeanfe** [<samp>(5edb9)</samp>](https://github.com/soybeanjs/soybean-ui/commit/5edb99cf8)
+  - update init config and add registry scripts &nbsp;-&nbsp; by @soybeanjs [<samp>(7419c)</samp>](https://github.com/soybeanjs/soybean-ui/commit/7419ca590)
+  - support monorepo &nbsp;-&nbsp; by @soybeanjs [<samp>(4f1b9)</samp>](https://github.com/soybeanjs/soybean-ui/commit/4f1b990a7)
+  - update preset sizes to use themeSizeKeys &nbsp;-&nbsp; by @soybeanjs [<samp>(c67f6)</samp>](https://github.com/soybeanjs/soybean-ui/commit/c67f6f2f4)
+  - add monorepo support and customizable UI output directory &nbsp;-&nbsp; by **soybeanfe** [<samp>(396a9)</samp>](https://github.com/soybeanjs/soybean-ui/commit/396a9c37e)
+  - add monorepo and uiDir options to init command &nbsp;-&nbsp; by **soybeanfe** [<samp>(6d688)</samp>](https://github.com/soybeanjs/soybean-ui/commit/6d688fec3)
+  - update registry with new components and styles &nbsp;-&nbsp; by **soybeanfe** [<samp>(168d1)</samp>](https://github.com/soybeanjs/soybean-ui/commit/168d1ee22)
+  - update template configurations and paths for improved structure &nbsp;-&nbsp; by **soybeanfe** [<samp>(655b5)</samp>](https://github.com/soybeanjs/soybean-ui/commit/655b5e4a9)
+- **theme**:
+  - add size to theme options &nbsp;-&nbsp; by @soybeanjs [<samp>(46a81)</samp>](https://github.com/soybeanjs/soybean-ui/commit/46a817b14)
+  - add theme size and radius options with corresponding CSS variable generation &nbsp;-&nbsp; by @soybeanjs [<samp>(46d3a)</samp>](https://github.com/soybeanjs/soybean-ui/commit/46d3a9627)
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- **theme**:
+  - remove unused sidebar from color preset cache key &nbsp;-&nbsp; by @soybeanjs [<samp>(a736e)</samp>](https://github.com/soybeanjs/soybean-ui/commit/a736e6b89)
+  - simplify CSS generation by removing radius parameter &nbsp;-&nbsp; by @soybeanjs [<samp>(e5175)</samp>](https://github.com/soybeanjs/soybean-ui/commit/e51756569)
+- **vite**:
+  - update build dependencies to include init:lib for ui and playground &nbsp;-&nbsp; by **soybeanfe** [<samp>(e4611)</samp>](https://github.com/soybeanjs/soybean-ui/commit/e4611ba48)
+
+### &nbsp;&nbsp;&nbsp;🛠 Optimizations
+
+- **sbean**: update sbean &nbsp;-&nbsp; by **soybeanfe** [<samp>(cdd18)</samp>](https://github.com/soybeanjs/soybean-ui/commit/cdd188f5d)
+
+### &nbsp;&nbsp;&nbsp;💅 Refactors
+
+- **template**: simplify templates and update dependencies &nbsp;-&nbsp; by @soybeanjs [<samp>(c2b4f)</samp>](https://github.com/soybeanjs/soybean-ui/commit/c2b4fa10f)
+- **theme**: simplify preset handling and cache logic &nbsp;-&nbsp; by @soybeanjs [<samp>(db519)</samp>](https://github.com/soybeanjs/soybean-ui/commit/db5191842)
+
+### &nbsp;&nbsp;&nbsp;🏡 Chore
+
+- **config**: update typecheck command and add type-check task &nbsp;-&nbsp; by @soybeanjs [<samp>(0ad22)</samp>](https://github.com/soybeanjs/soybean-ui/commit/0ad226b80)
+- **deps**: update deps &nbsp;-&nbsp; by **soybeanfe** [<samp>(31a20)</samp>](https://github.com/soybeanjs/soybean-ui/commit/31a20e6bf)
+- **ui**: remove unused cssRawPlugin function and clean up imports &nbsp;-&nbsp; by **soybeanfe** [<samp>(927d9)</samp>](https://github.com/soybeanjs/soybean-ui/commit/927d91e60)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;
+[soybeanfe](mailto:honghuangdc@gmail.com),&nbsp;
+
 ## [v0.29.0-beta.6](https://github.com/soybeanjs/soybean-ui/compare/v0.29.0-beta.5...v0.29.0-beta.6) (2026-06-10)
 
 ### &nbsp;&nbsp;&nbsp;🚀 Features

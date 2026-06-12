@@ -1,7 +1,255 @@
 {
-  "generatedAt": "2026-06-10T13:59:53.342Z",
+  "generatedAt": "2026-06-12T12:30:04.596Z",
   "schemaVersion": 1,
   "releases": [
+    {
+      "version": "v0.29.0-beta.7",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.29.0-beta.6...v0.29.0-beta.7",
+      "date": "2026-06-12",
+      "entryCount": 21,
+      "componentCount": 0,
+      "components": [],
+      "typeCounts": {
+        "feature": 12,
+        "fix": 3,
+        "optimization": 1,
+        "refactor": 2,
+        "chore": 3
+      },
+      "entries": [
+        {
+          "type": "feature",
+          "scope": "packages",
+          "summary": "add shadcn-theme and unocss-shadcn packages",
+          "summaryKey": "changelog.generated.v0.29.0-beta.7.46b75",
+          "commitHash": "46b75",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/46b751d6c",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "feature",
+          "scope": "sbean",
+          "summary": "enhance search command with pagination and type filtering",
+          "summaryKey": "changelog.generated.v0.29.0-beta.7.b4096",
+          "commitHash": "b4096",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/b4096583c",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "feature",
+          "scope": "sbean",
+          "summary": "enhance font configuration with additional font options and update preset handling",
+          "summaryKey": "changelog.generated.v0.29.0-beta.7.5edb9",
+          "commitHash": "5edb9",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/5edb99cf8",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "feature",
+          "scope": "sbean",
+          "summary": "update init config and add registry scripts",
+          "summaryKey": "changelog.generated.v0.29.0-beta.7.7419c",
+          "commitHash": "7419c",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/7419ca590",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "feature",
+          "scope": "sbean",
+          "summary": "support monorepo",
+          "summaryKey": "changelog.generated.v0.29.0-beta.7.4f1b9",
+          "commitHash": "4f1b9",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/4f1b990a7",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "feature",
+          "scope": "sbean",
+          "summary": "update preset sizes to use themeSizeKeys",
+          "summaryKey": "changelog.generated.v0.29.0-beta.7.c67f6",
+          "commitHash": "c67f6",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/c67f6f2f4",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "feature",
+          "scope": "sbean",
+          "summary": "add monorepo support and customizable UI output directory",
+          "summaryKey": "changelog.generated.v0.29.0-beta.7.396a9",
+          "commitHash": "396a9",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/396a9c37e",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "feature",
+          "scope": "sbean",
+          "summary": "add monorepo and uiDir options to init command",
+          "summaryKey": "changelog.generated.v0.29.0-beta.7.6d688",
+          "commitHash": "6d688",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/6d688fec3",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "feature",
+          "scope": "sbean",
+          "summary": "update registry with new components and styles",
+          "summaryKey": "changelog.generated.v0.29.0-beta.7.168d1",
+          "commitHash": "168d1",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/168d1ee22",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "feature",
+          "scope": "sbean",
+          "summary": "update template configurations and paths for improved structure",
+          "summaryKey": "changelog.generated.v0.29.0-beta.7.655b5",
+          "commitHash": "655b5",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/655b5e4a9",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "feature",
+          "scope": "theme",
+          "summary": "add size to theme options",
+          "summaryKey": "changelog.generated.v0.29.0-beta.7.46a81",
+          "commitHash": "46a81",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/46a817b14",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "feature",
+          "scope": "theme",
+          "summary": "add theme size and radius options with corresponding CSS variable generation",
+          "summaryKey": "changelog.generated.v0.29.0-beta.7.46d3a",
+          "commitHash": "46d3a",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/46d3a9627",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "fix",
+          "scope": "theme",
+          "summary": "remove unused sidebar from color preset cache key",
+          "summaryKey": "changelog.generated.v0.29.0-beta.7.a736e",
+          "commitHash": "a736e",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/a736e6b89",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "fix",
+          "scope": "theme",
+          "summary": "simplify CSS generation by removing radius parameter",
+          "summaryKey": "changelog.generated.v0.29.0-beta.7.e5175",
+          "commitHash": "e5175",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/e51756569",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "fix",
+          "scope": "vite",
+          "summary": "update build dependencies to include init:lib for ui and playground",
+          "summaryKey": "changelog.generated.v0.29.0-beta.7.e4611",
+          "commitHash": "e4611",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/e4611ba48",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "optimization",
+          "scope": "sbean",
+          "summary": "update sbean",
+          "summaryKey": "changelog.generated.v0.29.0-beta.7.cdd18",
+          "commitHash": "cdd18",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/cdd188f5d",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "refactor",
+          "scope": "template",
+          "summary": "simplify templates and update dependencies",
+          "summaryKey": "changelog.generated.v0.29.0-beta.7.c2b4f",
+          "commitHash": "c2b4f",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/c2b4fa10f",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "refactor",
+          "scope": "theme",
+          "summary": "simplify preset handling and cache logic",
+          "summaryKey": "changelog.generated.v0.29.0-beta.7.db519",
+          "commitHash": "db519",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/db5191842",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "chore",
+          "scope": "ui",
+          "summary": "remove unused cssRawPlugin function and clean up imports",
+          "summaryKey": "changelog.generated.v0.29.0-beta.7.927d9",
+          "commitHash": "927d9",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/927d91e60",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "chore",
+          "scope": "config",
+          "summary": "update typecheck command and add type-check task",
+          "summaryKey": "changelog.generated.v0.29.0-beta.7.0ad22",
+          "commitHash": "0ad22",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/0ad226b80",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "chore",
+          "scope": "deps",
+          "summary": "update deps",
+          "summaryKey": "changelog.generated.v0.29.0-beta.7.31a20",
+          "commitHash": "31a20",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/31a20e6bf",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope",
+          "components": []
+        }
+      ]
+    },
     {
       "version": "v0.29.0-beta.6",
       "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.29.0-beta.5...v0.29.0-beta.6",
