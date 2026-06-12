@@ -8,6 +8,7 @@ catalog:
   vitest: npm:@voidzero-dev/vite-plus-test@latest
   vite-plus: ^0.1.24
 overrides:
+  vue: '^3.5.38'
   oxfmt: '^0.51.0'
   oxlint: '^1.66.0'
   vite-ssg>jsdom: 27.0.1
@@ -21,3 +22,13 @@ allowBuilds:
   simple-git-hooks: false
 minimumReleaseAgeExclude:
   - '@soybeanjs/colord@0.6.1'
+  - '@vue/compiler-core@3.5.38'
+  - '@vue/compiler-dom@3.5.38'
+  - '@vue/compiler-sfc@3.5.38'
+  - '@vue/compiler-ssr@3.5.38'
+  - '@vue/reactivity@3.5.38'
+  - '@vue/runtime-core@3.5.38'
+  - '@vue/runtime-dom@3.5.38'
+  - '@vue/server-renderer@3.5.38'
+  - '@vue/shared@3.5.38'
+  - vue@3.5.38
