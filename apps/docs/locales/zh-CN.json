@@ -761,7 +761,9 @@
     "data_display": "数据展示",
     "feedback": "反馈",
     "overlay": "浮层",
-    "utilities": "工具"
+    "utilities": "工具",
+    "installation": "安装",
+    "cli": "CLI"
   },
   "api": {
     "ui_layer": "UI 层",

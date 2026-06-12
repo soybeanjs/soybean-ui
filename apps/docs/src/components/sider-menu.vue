@@ -41,6 +41,11 @@ const overviewMenus = computed<TreeMenuOptionData[]>(() => [
     icon: 'lucide:rocket',
     children: [
       {
+        label: t('sidebar.installation'),
+        value: 'installation',
+        to: '/overview/installation'
+      },
+      {
         label: t('sidebar.introduction'),
         value: 'introduction',
         to: '/overview/introduction'
@@ -64,6 +69,11 @@ const overviewMenus = computed<TreeMenuOptionData[]>(() => [
         label: t('sidebar.skills'),
         value: 'skills',
         to: '/overview/skills'
+      },
+      {
+        label: t('sidebar.cli'),
+        value: 'cli',
+        to: '/sbean'
       }
     ]
   }

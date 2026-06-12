@@ -766,7 +766,9 @@
     "data_display": "Data Display",
     "feedback": "Feedback",
     "overlay": "Overlay",
-    "utilities": "Utilities"
+    "utilities": "Utilities",
+    "installation": "Installation",
+    "cli": "CLI"
   },
   "api": {
     "ui_layer": "UI Layer",

@@ -73,6 +73,13 @@ declare module 'vue-router/auto-routes' {
       Record<never, never>,
       | never
     >,
+    '/overview/installation': RouteRecordInfo<
+      '/overview/installation',
+      '/overview/installation',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
     '/overview/introduction': RouteRecordInfo<
       '/overview/introduction',
       '/overview/introduction',
@@ -111,6 +118,13 @@ declare module 'vue-router/auto-routes' {
     '/releases': RouteRecordInfo<
       '/releases',
       '/releases',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
+    '/sbean': RouteRecordInfo<
+      '/sbean',
+      '/sbean',
       Record<never, never>,
       Record<never, never>,
       | never
@@ -176,6 +190,14 @@ declare module 'vue-router/auto-routes' {
       pathParamNames:
         | never
     }
+    'src/pages/overview/installation.vue': {
+      routes:
+        | '/overview/installation'
+      views:
+        | never
+      pathParamNames:
+        | never
+    }
     'src/pages/overview/introduction.vue': {
       routes:
         | '/overview/introduction'
@@ -219,6 +241,14 @@ declare module 'vue-router/auto-routes' {
     'src/pages/releases.vue': {
       routes:
         | '/releases'
+      views:
+        | never
+      pathParamNames:
+        | never
+    }
+    'src/pages/sbean.vue': {
+      routes:
+        | '/sbean'
       views:
         | never
       pathParamNames:
