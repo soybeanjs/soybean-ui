@@ -233,11 +233,9 @@ describe('command integration tests', () => {
   describe('template flow', () => {
     it('lists available templates', () => {
       const templates = listAllTemplates();
-      expect(templates.length).toBeGreaterThanOrEqual(4);
+      expect(templates.length).toBeGreaterThanOrEqual(2);
       expect(templates.some(t => t.name === 'vue-vite')).toBe(true);
       expect(templates.some(t => t.name === 'nuxt')).toBe(true);
-      expect(templates.some(t => t.name === 'vue-bare')).toBe(true);
-      expect(templates.some(t => t.name === 'library')).toBe(true);
     });
 
     it('scaffolds vue-vite template', async () => {
@@ -247,6 +245,8 @@ describe('command integration tests', () => {
       const files = await fs.readdir(outputDir);
       expect(files).toContain('vite.config.ts');
       expect(files).toContain('tsconfig.json');
+      expect(files).toContain('uno.config.ts');
+      expect(files).toContain('sbean.json');
       expect(files).toContain('index.html');
 
       const srcFiles = await fs.readdir(path.join(outputDir, 'src'));
@@ -260,18 +260,9 @@ describe('command integration tests', () => {
 
       const files = await fs.readdir(outputDir);
       expect(files).toContain('nuxt.config.ts');
+      expect(files).toContain('uno.config.ts');
+      expect(files).toContain('sbean.json');
       expect(files).toContain('app.vue');
-    });
-
-    it('scaffolds library template', async () => {
-      const outputDir = path.join(tmpDir, 'my-lib');
-      await scaffoldFromTemplate(outputDir, 'library', 'my-lib');
-
-      const files = await fs.readdir(outputDir);
-      expect(files).toContain('vite.config.ts');
-
-      const srcFiles = await fs.readdir(path.join(outputDir, 'src'));
-      expect(srcFiles).toContain('index.ts');
     });
 
     it('returns config recommendations per template', () => {

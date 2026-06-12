@@ -98,28 +98,16 @@ export const template = new Command()
 function showTemplateDetails(name: string): void {
   const details: Record<string, { description: string; deps: string[]; devDeps: string[]; scripts: string[] }> = {
     'vue-vite': {
-      description: 'Full-featured Vue 3 application with Vite build tool',
-      deps: ['vue'],
-      devDeps: ['@vitejs/plugin-vue', 'typescript', 'vite', 'vue-tsc'],
+      description: 'Vue 3 + Vite + UnoCSS — copy-paste components',
+      deps: ['vue', '@soybeanjs/headless', '@soybeanjs/cva', '@soybeanjs/unocss-shadcn'],
+      devDeps: ['@vitejs/plugin-vue', 'typescript', 'unocss', 'vite', 'vue-tsc'],
       scripts: ['dev', 'build', 'preview']
     },
     nuxt: {
-      description: 'Nuxt 3 full-stack application with SSR support',
-      deps: ['nuxt', 'vue', '@soybeanjs/ui'],
-      devDeps: [],
+      description: 'Nuxt 3 + UnoCSS — copy-paste components',
+      deps: ['nuxt', 'vue', '@soybeanjs/headless', '@soybeanjs/cva', '@soybeanjs/unocss-shadcn'],
+      devDeps: ['unocss', '@unocss/nuxt'],
       scripts: ['dev', 'build', 'generate', 'preview']
-    },
-    'vue-bare': {
-      description: 'Minimal Vue 3 project — bring your own build tool',
-      deps: ['vue'],
-      devDeps: ['typescript'],
-      scripts: ['dev', 'build']
-    },
-    library: {
-      description: 'Vue 3 component library — ready for npm publishing',
-      deps: ['vue'],
-      devDeps: ['@vitejs/plugin-vue', 'typescript', 'vite'],
-      scripts: ['dev', 'build', 'preview']
     }
   };
 

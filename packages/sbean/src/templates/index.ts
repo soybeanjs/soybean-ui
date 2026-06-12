@@ -98,14 +98,6 @@ export function getTemplateConfig(templateName: string): Record<string, any> {
       componentPath: 'components',
       composablePath: 'composables',
       stylePath: 'assets/styles'
-    },
-    'vue-bare': {
-      componentPath: 'components',
-      stylePath: 'styles'
-    },
-    library: {
-      componentPath: 'src/components',
-      stylePath: 'src/styles'
     }
   };
 
