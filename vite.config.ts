@@ -41,7 +41,7 @@ export default defineConfig({
         dependsOn: ['build:ui']
       },
       'build:docs': {
-        command: 'pnpm --filter @soybeanjs/ui-docs build',
+        command: 'pnpm --filter @soybeanjs/ui-docs build && vp fmt',
         dependsOn: ['build:ui']
       }
     }
