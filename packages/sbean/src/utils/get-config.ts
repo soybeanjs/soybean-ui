@@ -12,23 +12,72 @@ export const DEFAULT_LIB = '@/lib';
 export type { Config };
 
 /**
- * Find and read sbean.json from the project root.
+ * Walk up from `cwd` to find the nearest `sbean.json`.
+ * Returns the config file path and the config directory (where sbean.json lives).
+ * Returns null if no sbean.json is found in the directory tree.
  */
-export async function getConfig(cwd: string): Promise<Config | null> {
-  const configPath = path.join(cwd, 'sbean.json');
+export async function findConfigFile(cwd: string): Promise<{ configPath: string; configDir: string } | null> {
+  let dir = path.resolve(cwd);
+  const root = path.parse(dir).root;
 
-  try {
-    await fs.access(configPath);
-  } catch {
-    return null;
+  while (true) {
+    const configPath = path.join(dir, 'sbean.json');
+    try {
+      await fs.access(configPath);
+      return { configPath, configDir: dir };
+    } catch {
+      // Not found here — go up
+    }
+
+    if (dir === root) break;
+    dir = path.dirname(dir);
   }
 
-  const raw = await fs.readFile(configPath, 'utf-8');
+  return null;
+}
+
+/**
+ * Detect if the project is a monorepo (has a pnpm-workspace.yaml or similar workspace config).
+ */
+export async function detectMonorepo(cwd: string): Promise<boolean> {
+  let dir = path.resolve(cwd);
+  const root = path.parse(dir).root;
+
+  while (true) {
+    // pnpm workspace
+    try {
+      await fs.access(path.join(dir, 'pnpm-workspace.yaml'));
+      return true;
+    } catch {}
+
+    // npm/yarn workspaces are in package.json
+    try {
+      const pkg = JSON.parse(await fs.readFile(path.join(dir, 'package.json'), 'utf-8'));
+      if (pkg.workspaces) return true;
+    } catch {}
+
+    if (dir === root) break;
+    dir = path.dirname(dir);
+  }
+
+  return false;
+}
+
+/**
+ * Find and read sbean.json from the project root.
+ * Walks up directories to find the nearest sbean.json (monorepo-friendly).
+ */
+export async function getConfig(cwd: string): Promise<Config | null> {
+  const found = await findConfigFile(cwd);
+  if (!found) return null;
+
+  const raw = await fs.readFile(found.configPath, 'utf-8');
   const parsed = JSON.parse(raw);
 
   const rawConfig = v.parse(rawConfigSchema, parsed);
 
-  return resolveConfigPaths(cwd, rawConfig);
+  // Resolve paths relative to the config file's directory
+  return resolveConfigPaths(found.configDir, rawConfig);
 }
 
 /**

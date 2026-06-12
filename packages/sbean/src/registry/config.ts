@@ -1,5 +1,5 @@
 import {
-  radiiKeys,
+  themeRadiusKeys,
   builtinBasePresetKeys,
   builtinPrimaryPresetKeys,
   builtinFeedbackPresetKeys
@@ -12,7 +12,7 @@ import * as v from 'valibot';
 
 export const PRESET_ICON_LIBRARIES = ['lucide', 'material-symbols', 'ph', 'tabler', 'solar', 'radix-icons'] as const;
 
-export const PRESET_RADII = radiiKeys;
+export const PRESET_RADII = themeRadiusKeys;
 
 export const PRESET_BASE_COLORS = builtinBasePresetKeys;
 

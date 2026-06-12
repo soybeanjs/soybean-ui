@@ -4,6 +4,7 @@ import { Command } from 'commander';
 import { addComponents } from '../utils/add-components';
 import { getConfig } from '../utils/get-config';
 import type { Config } from '../utils/get-config';
+import { fetchRegistryCatalog, fetchRegistryItem } from '../registry/fetcher';
 
 export const addOptionsSchema = v.object({
   components: v.array(v.string()),
@@ -46,18 +47,28 @@ export const add = new Command()
     });
 
     // Get all available components if --all is used
+    let componentList = options.components;
     if (options.all) {
-      try {
-        const config = await getConfig(options.cwd);
-        if (config) {
-          // TODO: Load all components from registry
-          // This will be implemented in the registry system
+      const config = await getConfig(options.cwd);
+      if (config) {
+        try {
+          const catalog = await fetchRegistryCatalog(config);
+          if (catalog.length > 0) {
+            componentList = catalog.map(item => item.name);
+            if (!options.silent) {
+              console.log(`Found ${componentList.length} components in registry.`);
+            }
+          }
+        } catch {
           if (!options.silent) {
-            console.log('--all flag: will add all available components from registry');
+            console.warn('⚠ Could not fetch registry catalog. Using local registry if available.');
           }
         }
-      } catch {
-        // Silently continue
+      }
+
+      if (!componentList.length) {
+        console.error('No components found. Make sure registry is configured.');
+        process.exit(1);
       }
     }
 
@@ -91,21 +102,38 @@ export const add = new Command()
     if (options.view) {
       for (const componentName of options.components) {
         if (!options.silent) {
-          console.log(`\n=== Viewing: ${componentName} ===\n`);
+          console.log(`\n=== ${componentName} ===\n`);
         }
-        // TODO: Implement view logic in addComponents
+        const item = await fetchRegistryItem(componentName, config);
+        if (!item) {
+          console.error(`  Component "${componentName}" not found.`);
+          continue;
+        }
+        if (item.description && !options.silent) {
+          console.log(`  ${item.description}\n`);
+        }
+        for (const file of item.files ?? []) {
+          console.log(`  ── ${file.path} ──`);
+          if (file.content) {
+            const lines = file.content.split('\n');
+            for (let i = 0; i < lines.length; i++) {
+              console.log(`  ${String(i + 1).padStart(4)} │ ${lines[i]}`);
+            }
+          }
+          console.log();
+        }
       }
       return;
     }
 
     // Confirm (unless --yes)
     if (!options.yes && !options.silent && !options.dryRun && !options.diff) {
-      console.log(`Adding: ${options.components.join(', ')}`);
+      console.log(`Adding: ${componentList.join(', ')}`);
       console.log(`  To: ${config.resolvedPaths.ui}`);
       console.log();
     }
 
-    await addComponents(options.components, config, {
+    await addComponents(componentList, config, {
       overwrite: options.overwrite,
       path: options.path,
       dryRun: options.dryRun,
