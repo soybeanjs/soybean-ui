@@ -26,11 +26,13 @@ import { decodePreset, isPresetCode } from '../registry/preset';
 
 export const initOptionsSchema = v.object({
   cwd: v.string(),
+  monorepo: v.optional(v.boolean()),
+  uiDir: v.optional(v.string()),
   style: v.optional(v.picklist(PRESET_STYLES)),
+  size: v.optional(v.picklist(PRESET_SIZES)),
   base: v.optional(v.picklist(PRESET_BASE_COLORS)),
   primary: v.optional(v.picklist(PRESET_PRIMARY_COLORS)),
   feedback: v.optional(v.picklist(PRESET_FEEDBACK_COLORS)),
-  size: v.optional(v.picklist(PRESET_SIZES)),
   radius: v.optional(v.picklist(PRESET_RADII)),
   iconLibrary: v.optional(v.picklist(PRESET_ICON_LIBRARIES)),
   fontSans: v.optional(v.picklist(PRESET_FONTS)),
@@ -38,9 +40,7 @@ export const initOptionsSchema = v.object({
   yes: v.optional(v.boolean(), false),
   defaults: v.optional(v.boolean(), false),
   force: v.optional(v.boolean(), false),
-  silent: v.optional(v.boolean(), false),
-  monorepo: v.optional(v.boolean()),
-  uiDir: v.optional(v.string())
+  silent: v.optional(v.boolean(), false)
 });
 
 export type InitOptions = v.InferOutput<typeof initOptionsSchema>;
@@ -97,8 +97,11 @@ export const init = new Command()
   .name('init')
   .alias('create')
   .description('initialize your project and install dependencies')
+  .option('-c, --cwd <cwd>', 'the working directory', process.cwd())
+  .option('-m, --monorepo', 'use monorepo (pnpm workspaces) structure', false)
+  .option('--ui-dir <path>', 'component output directory (default: src/ui or packages/ui)')
   .option('--style <style>', `style preset: ${PRESET_STYLES.join('/')}`)
-  .option('--size <size>', `component size: xs/sm/md/lg/xl/2xl`)
+  .option('--size <size>', `component size: ${PRESET_SIZES.join('/')}`)
   .option('-b, --base <base>', `base color: ${PRESET_BASE_COLORS.join('/')}`)
   .option('--primary <primary>', `primary color: ${PRESET_PRIMARY_COLORS.join('/')}`)
   .option('--feedback <feedback>', `feedback colors: ${PRESET_FEEDBACK_COLORS.join('/')}`)
@@ -110,9 +113,6 @@ export const init = new Command()
   .option('-y, --yes', 'skip confirmation prompt', false)
   .option('-d, --defaults', 'use default configuration', false)
   .option('-f, --force', 'force overwrite of existing configuration', false)
-  .option('-m, --monorepo', 'use monorepo (pnpm workspaces) structure', false)
-  .option('--ui-dir <path>', 'component output directory (default: src/ui or packages/ui)')
-  .option('-c, --cwd <cwd>', 'the working directory', process.cwd())
   .option('-n, --name <name>', 'project name (for new projects)')
   .option('-s, --silent', 'mute output', false)
   .action(async opts => {
@@ -121,6 +121,8 @@ export const init = new Command()
 
 type InitActionOptions = {
   cwd: string;
+  monorepo?: boolean;
+  uiDir?: string;
   style?: string;
   size?: string;
   base?: string;
@@ -134,8 +136,6 @@ type InitActionOptions = {
   defaults: boolean;
   force: boolean;
   silent: boolean;
-  monorepo?: boolean;
-  uiDir?: string;
   preset?: string;
   name?: string;
 };
@@ -199,6 +199,22 @@ export async function runInit(opts: InitActionOptions) {
     const answers = await prompts([
       {
         type: 'select',
+        name: 'monorepo',
+        message: 'Project structure?',
+        choices: [
+          { title: `Monorepo (${autoMonorepo ? 'detected' : 'pnpm workspaces — recommended'})`, value: 'monorepo' },
+          { title: 'Single package', value: 'single' }
+        ],
+        initial: 0
+      },
+      {
+        type: 'text',
+        name: 'uiDir',
+        message: 'Component output directory?',
+        initial: isMonorepo ? 'packages/ui' : 'src/ui'
+      },
+      {
+        type: 'select',
         name: 'style',
         message: 'Which style would you like to use?',
         choices: PRESET_STYLES.map(s => ({
@@ -253,22 +269,6 @@ export async function runInit(opts: InitActionOptions) {
       },
       {
         type: 'select',
-        name: 'monorepo',
-        message: 'Project structure?',
-        choices: [
-          { title: `Monorepo (${autoMonorepo ? 'detected' : 'pnpm workspaces — recommended'})`, value: 'monorepo' },
-          { title: 'Single package', value: 'single' }
-        ],
-        initial: 0
-      },
-      {
-        type: 'text',
-        name: 'uiDir',
-        message: 'Component output directory?',
-        initial: isMonorepo ? 'packages/ui' : 'src/ui'
-      },
-      {
-        type: 'select',
         name: 'fontSans',
         message: 'Which sans-serif font? (skip for system default)',
         choices: [
@@ -296,6 +296,12 @@ export async function runInit(opts: InitActionOptions) {
       }
     ]);
 
+    if (answers.monorepo) {
+      isMonorepo = answers.monorepo === 'monorepo';
+    }
+    if (answers.uiDir !== undefined && answers.uiDir !== '') {
+      opts.uiDir = answers.uiDir;
+    }
     if (answers.style) opts.style = answers.style as (typeof PRESET_STYLES)[number];
     if (answers.size) opts.size = answers.size as (typeof PRESET_SIZES)[number];
     if (answers.base) opts.base = answers.base as (typeof PRESET_BASE_COLORS)[number];
@@ -306,12 +312,6 @@ export async function runInit(opts: InitActionOptions) {
     }
     if (answers.fontHeading !== undefined) {
       opts.fontHeading = answers.fontHeading as 'inherit' | (typeof PRESET_FONTS)[number];
-    }
-    if (answers.monorepo) {
-      isMonorepo = answers.monorepo === 'monorepo';
-    }
-    if (answers.uiDir !== undefined && answers.uiDir !== '') {
-      opts.uiDir = answers.uiDir;
     }
   }
 
