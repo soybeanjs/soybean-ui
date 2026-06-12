@@ -47,7 +47,7 @@ const css = shallowRef('');
 
 const generateCss = () => {
   const { getCss } = createShadcnTheme(props.theme);
-  const value = getCss(props.theme, props.theme.radius);
+  const value = getCss(props.theme);
   css.value = value;
 };
 
