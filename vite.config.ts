@@ -27,14 +27,14 @@ export default defineConfig({
       },
       'build:ui': {
         command: 'pnpm --filter @soybeanjs/ui build',
-        dependsOn: ['build:headless']
+        dependsOn: ['init:lib', 'build:headless']
       },
       'dev:playground': {
         command: 'pnpm --filter @soybeanjs/ui-playground dev'
       },
       'build:playground': {
         command: 'pnpm --filter @soybeanjs/ui-playground build',
-        dependsOn: ['build:headless']
+        dependsOn: ['init:lib', 'build:headless']
       },
       'dev:docs': {
         command: 'pnpm --filter @soybeanjs/ui-docs dev',
