@@ -61,10 +61,7 @@ export const diff = new Command()
     }
 
     const transformCtx: TransformContext = {
-      componentsAlias: config.aliases.components,
-      uiAlias: config.aliases.ui ?? `${config.aliases.components}/ui`,
-      utilsAlias: config.aliases.utils,
-      libAlias: config.aliases.lib ?? '',
+      uiAlias: '#ui',
       iconLibrary: config.iconLibrary
     };
 
@@ -86,8 +83,7 @@ export const diff = new Command()
 
       // Resolve the local file path
       const localPath = resolveTargetPath(regFile, {
-        uiDir: config.resolvedPaths.ui,
-        libDir: config.resolvedPaths.lib
+        uiDir: config.resolvedPaths.ui
       });
 
       // Check if local file exists

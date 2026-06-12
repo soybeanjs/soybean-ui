@@ -4,17 +4,10 @@ import * as v from 'valibot';
 import { rawConfigSchema, configSchema } from '../registry/config';
 import type { Config } from '../registry/config';
 
-export const DEFAULT_COMPONENTS = '@/components';
-export const DEFAULT_UTILS = '@/lib/utils';
-export const DEFAULT_UI = '@/components/ui';
-export const DEFAULT_LIB = '@/lib';
-
 export type { Config };
 
 /**
  * Walk up from `cwd` to find the nearest `sbean.json`.
- * Returns the config file path and the config directory (where sbean.json lives).
- * Returns null if no sbean.json is found in the directory tree.
  */
 export async function findConfigFile(cwd: string): Promise<{ configPath: string; configDir: string } | null> {
   let dir = path.resolve(cwd);
@@ -25,9 +18,7 @@ export async function findConfigFile(cwd: string): Promise<{ configPath: string;
     try {
       await fs.access(configPath);
       return { configPath, configDir: dir };
-    } catch {
-      // Not found here — go up
-    }
+    } catch {}
 
     if (dir === root) break;
     dir = path.dirname(dir);
@@ -37,20 +28,18 @@ export async function findConfigFile(cwd: string): Promise<{ configPath: string;
 }
 
 /**
- * Detect if the project is a monorepo (has a pnpm-workspace.yaml or similar workspace config).
+ * Detect if the project is a monorepo.
  */
 export async function detectMonorepo(cwd: string): Promise<boolean> {
   let dir = path.resolve(cwd);
   const root = path.parse(dir).root;
 
   while (true) {
-    // pnpm workspace
     try {
       await fs.access(path.join(dir, 'pnpm-workspace.yaml'));
       return true;
     } catch {}
 
-    // npm/yarn workspaces are in package.json
     try {
       const pkg = JSON.parse(await fs.readFile(path.join(dir, 'package.json'), 'utf-8'));
       if (pkg.workspaces) return true;
@@ -64,8 +53,7 @@ export async function detectMonorepo(cwd: string): Promise<boolean> {
 }
 
 /**
- * Find and read sbean.json from the project root.
- * Walks up directories to find the nearest sbean.json (monorepo-friendly).
+ * Find and read sbean.json.
  */
 export async function getConfig(cwd: string): Promise<Config | null> {
   const found = await findConfigFile(cwd);
@@ -73,45 +61,30 @@ export async function getConfig(cwd: string): Promise<Config | null> {
 
   const raw = await fs.readFile(found.configPath, 'utf-8');
   const parsed = JSON.parse(raw);
-
   const rawConfig = v.parse(rawConfigSchema, parsed);
 
-  // Resolve paths relative to the config file's directory
   return resolveConfigPaths(found.configDir, rawConfig);
 }
 
+/** Default uiDir for single-repo and monorepo. */
+const DEFAULT_UI_DIR_SINGLE = 'src/ui';
+const DEFAULT_UI_DIR_MONOREPO = 'packages/ui';
+
 /**
- * Resolve alias paths to absolute paths.
+ * Resolve uiDir to an absolute path.
  */
 export async function resolveConfigPaths(cwd: string, config: v.InferOutput<typeof rawConfigSchema>): Promise<Config> {
-  const componentsDir = resolveAlias(cwd, config.aliases.components);
-  const utilsPath = resolveAlias(cwd, config.aliases.utils);
-  const uiDir = config.aliases.ui ? resolveAlias(cwd, config.aliases.ui) : path.join(componentsDir, 'ui');
-  const libDir = config.aliases.lib ? resolveAlias(cwd, config.aliases.lib) : path.dirname(utilsPath);
+  const isMonorepo = config.isMonorepo ?? false;
+  const uiRel = config.uiDir ?? (isMonorepo ? DEFAULT_UI_DIR_MONOREPO : DEFAULT_UI_DIR_SINGLE);
+  const uiAbs = path.resolve(cwd, uiRel);
 
   return v.parse(configSchema, {
     ...config,
     resolvedPaths: {
       cwd,
-      components: componentsDir,
-      utils: utilsPath,
-      ui: uiDir,
-      lib: libDir
+      ui: uiAbs
     }
   });
-}
-
-/**
- * Convert a tsconfig alias like "@/components" to an absolute path.
- */
-function resolveAlias(cwd: string, alias: string): string {
-  if (alias.startsWith('@/')) {
-    return path.join(cwd, 'src', alias.slice(2));
-  }
-  if (alias.startsWith('~/')) {
-    return path.join(cwd, alias.slice(2));
-  }
-  return path.resolve(cwd, alias);
 }
 
 /**
@@ -121,8 +94,11 @@ export async function createDefaultConfig(
   cwd: string,
   overrides?: Partial<v.InferOutput<typeof rawConfigSchema>>
 ): Promise<Config> {
+  const isMonorepo = overrides?.isMonorepo ?? false;
+
   const raw: v.InferOutput<typeof rawConfigSchema> = {
     style: 'soybean',
+    isMonorepo,
     iconLibrary: 'lucide',
     uno: {
       base: 'zinc',
@@ -135,12 +111,7 @@ export async function createDefaultConfig(
       color: 'default'
     },
     registries: {},
-    aliases: {
-      components: DEFAULT_COMPONENTS,
-      utils: DEFAULT_UTILS,
-      ui: DEFAULT_UI,
-      lib: DEFAULT_LIB
-    },
+    uiDir: isMonorepo ? DEFAULT_UI_DIR_MONOREPO : DEFAULT_UI_DIR_SINGLE,
     ...overrides
   };
 

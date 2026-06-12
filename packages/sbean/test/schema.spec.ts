@@ -17,10 +17,7 @@ describe('config schema', () => {
       accent: 'subtle',
       color: 'default'
     },
-    aliases: {
-      components: '@/components',
-      utils: '@/lib/utils'
-    }
+    uiDir: 'src/ui'
   };
 
   it('parses a minimal valid config', () => {

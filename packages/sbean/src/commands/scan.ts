@@ -1,7 +1,7 @@
 /**
  * `sbean scan` — auto-generate registry.json from the component source tree.
  *
- * Scans `packages/ui/src/components/` and produces a registry.json with:
+ * Scans `${UI_SOURCE_PATH}/components/` and produces a registry.json with:
  *   - name, type, files (auto-detected)
  *   - dependencies (npm packages extracted from imports)
  *   - registryDependencies (cross-component imports)
@@ -11,6 +11,7 @@ import fs from 'fs/promises';
 import path from 'path';
 import * as v from 'valibot';
 import { Command } from 'commander';
+import { UI_SOURCE_PATH } from '../registry/constants';
 import { registrySchema } from '../registry/schema';
 import type { RegistryItem, RegistryItemFile } from '../registry/schema';
 
@@ -46,7 +47,7 @@ export const scan = new Command()
       merge: opts.merge
     });
 
-    const componentsDir = path.join(options.cwd, 'packages/ui/src/components');
+    const componentsDir = path.join(options.cwd, `${UI_SOURCE_PATH}/components`);
 
     try {
       await fs.access(componentsDir);

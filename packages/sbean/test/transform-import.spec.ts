@@ -6,54 +6,57 @@ import { transformImports, transformIcons } from '../src/utils/transformers/tran
 import type { TransformContext } from '../src/utils/transformers/transform-import';
 
 const DEFAULT_CTX: TransformContext = {
-  componentsAlias: '@/components',
-  uiAlias: '@/components/ui',
-  utilsAlias: '@/lib/utils',
-  libAlias: '@/lib',
+  uiAlias: '#ui',
   iconLibrary: 'lucide'
 };
 
 describe('transformImports', () => {
-  it('rewrites @/styles/ imports to ui alias', () => {
+  it('rewrites @/styles/ imports to #ui/styles/', () => {
     const input = `import { buttonVariants } from '@/styles/button';`;
     const output = transformImports(input, DEFAULT_CTX, 'soybean');
-    expect(output).toContain(`@/components/ui/styles/button`);
+    expect(output).toContain(`#ui/styles/button`);
   });
 
-  it('rewrites @/theme imports to ui alias', () => {
+  it('rewrites @/theme imports to #ui/theme', () => {
     const input = `import type { ThemeSize } from '@/theme';`;
     const output = transformImports(input, DEFAULT_CTX, 'soybean');
-    expect(output).toContain(`@/components/ui/theme`);
+    expect(output).toContain(`#ui/theme`);
   });
 
   it('rewrites @/theme/ sub-path imports', () => {
     const input = `import { ColorPalette } from '@/theme/colors';`;
     const output = transformImports(input, DEFAULT_CTX, 'soybean');
-    expect(output).toContain(`@/components/ui/theme/colors`);
+    expect(output).toContain(`#ui/theme/colors`);
   });
 
-  it('rewrites @/registry/<style>/ui to user ui alias', () => {
+  it('rewrites @/components/ imports to #ui/components/', () => {
+    const input = `import Icon from '@/components/icon/icon.vue';`;
+    const output = transformImports(input, DEFAULT_CTX, 'soybean');
+    expect(output).toContain(`#ui/components/icon/icon.vue`);
+  });
+
+  it('rewrites @/registry/<style>/ui to #ui', () => {
     const input = `import Button from '@/registry/soybean/ui/button';`;
     const output = transformImports(input, DEFAULT_CTX, 'soybean');
-    expect(output).toContain(`@/components/ui/button`);
+    expect(output).toContain(`#ui/button`);
   });
 
-  it('rewrites @/registry/<style>/components to user components alias', () => {
+  it('rewrites @/registry/<style>/components to #ui/components', () => {
     const input = `import { Something } from '@/registry/soybean/components/something';`;
     const output = transformImports(input, DEFAULT_CTX, 'soybean');
-    expect(output).toContain(`@/components/something`);
+    expect(output).toContain(`#ui/components/something`);
   });
 
-  it('rewrites @/registry/<style>/lib to user lib alias', () => {
+  it('rewrites @/registry/<style>/lib to #ui/lib', () => {
     const input = `import { cn } from '@/registry/soybean/lib/utils';`;
     const output = transformImports(input, DEFAULT_CTX, 'soybean');
-    expect(output).toContain(`@/lib/utils`);
+    expect(output).toContain(`#ui/lib/utils`);
   });
 
   it('handles different style preset names', () => {
     const input = `import Button from '@/registry/clean/ui/button';`;
     const output = transformImports(input, DEFAULT_CTX, 'clean');
-    expect(output).toContain(`@/components/ui/button`);
+    expect(output).toContain(`#ui/button`);
   });
 
   it('does not rewrite non-matching imports', () => {
@@ -62,24 +65,19 @@ describe('transformImports', () => {
     expect(output).toBe(input);
   });
 
-  it('rewrites @/components/ when alias differs', () => {
-    const ctx: TransformContext = { ...DEFAULT_CTX, componentsAlias: '@/my-components' };
-    const input = `import Icon from '@/components/icon';`;
-    const output = transformImports(input, ctx, 'soybean');
-    expect(output).toContain(`@/my-components/icon`);
-  });
-
   it('handles multiple imports in one source', () => {
     const input = [
       `import { buttonVariants } from '@/styles/button';`,
       `import type { ThemeSize } from '@/theme';`,
-      `import { ref } from 'vue';`
+      `import { ref } from 'vue';`,
+      `import Icon from '@/components/icon/icon.vue';`
     ].join('\n');
 
     const output = transformImports(input, DEFAULT_CTX, 'soybean');
 
-    expect(output).toContain(`@/components/ui/styles/button`);
-    expect(output).toContain(`@/components/ui/theme`);
+    expect(output).toContain(`#ui/styles/button`);
+    expect(output).toContain(`#ui/theme`);
+    expect(output).toContain(`#ui/components/icon/icon.vue`);
     expect(output).toContain(`import { ref } from 'vue'`);
   });
 });

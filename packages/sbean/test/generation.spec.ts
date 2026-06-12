@@ -1,57 +1,72 @@
 import { describe, expect, it } from 'vitest';
+import { UI_SOURCE_PATH } from '../src/registry/constants';
 import { expandRegistryItemFiles } from '../src/utils/add-components';
 import { transformImports } from '../src/utils/transformers/transform-import';
 import { resolveTargetPath } from '../src/utils/updaters/update-files';
 import type { RegistryItemFile } from '../src/registry/schema';
 
 describe('generated file mapping', () => {
-  it('preserves component folders', () => {
+  it('preserves the source package structure under ui/src', () => {
     const targetPath = resolveTargetPath(
       {
-        path: 'packages/ui/src/components/button/button-icon.vue',
+        path: `${UI_SOURCE_PATH}/components/button/button-icon.vue`,
         type: 'registry:ui'
       },
       {
-        uiDir: '/tmp/project/src/components/ui',
-        libDir: '/tmp/project/src/lib'
+        uiDir: '/tmp/project/src/ui'
       }
     );
 
-    expect(targetPath).toBe('/tmp/project/src/components/ui/button/button-icon.vue');
+    expect(targetPath).toBe('/tmp/project/src/ui/components/button/button-icon.vue');
   });
 
-  it('maps theme files into the ui theme directory', () => {
+  it('maps theme files preserving the source path', () => {
     const targetPath = resolveTargetPath(
       {
-        path: 'packages/ui/src/theme/index.ts',
+        path: `${UI_SOURCE_PATH}/theme/index.ts`,
         type: 'registry:theme'
       },
       {
-        uiDir: '/tmp/project/src/components/ui',
-        libDir: '/tmp/project/src/lib'
+        uiDir: '/tmp/project/src/ui'
       }
     );
 
-    expect(targetPath).toBe('/tmp/project/src/components/ui/theme/index.ts');
+    expect(targetPath).toBe('/tmp/project/src/ui/theme/index.ts');
+  });
+
+  it('maps style files preserving the source path', () => {
+    const targetPath = resolveTargetPath(
+      {
+        path: `${UI_SOURCE_PATH}/styles/button.ts`,
+        type: 'registry:style'
+      },
+      {
+        uiDir: '/tmp/project/src/ui'
+      }
+    );
+
+    expect(targetPath).toBe('/tmp/project/src/ui/styles/button.ts');
   });
 });
 
 describe('generated import mapping', () => {
-  it('rewrites styles and theme imports under the ui alias', () => {
+  it('rewrites @/ styles, theme, components under #ui/ prefix', () => {
     const output = transformImports(
-      ["import { buttonVariants } from '@/styles/button';", "import type { ThemeSize } from '@/theme';"].join('\n'),
+      [
+        "import { buttonVariants } from '@/styles/button';",
+        "import type { ThemeSize } from '@/theme';",
+        "import Icon from '@/components/icon/icon.vue';"
+      ].join('\n'),
       {
-        componentsAlias: '@/components',
-        uiAlias: '@/components/ui',
-        utilsAlias: '@/lib/utils',
-        libAlias: '@/lib',
+        uiAlias: '#ui',
         iconLibrary: 'lucide'
       },
       'soybean'
     );
 
-    expect(output).toContain('@/components/ui/styles/button');
-    expect(output).toContain('@/components/ui/theme');
+    expect(output).toContain('#ui/styles/button');
+    expect(output).toContain('#ui/theme');
+    expect(output).toContain('#ui/components/icon/icon.vue');
   });
 });
 
@@ -59,7 +74,7 @@ describe('registry source expansion', () => {
   it('pulls sibling ui dependencies from local source files', async () => {
     const files: RegistryItemFile[] = [
       {
-        path: 'packages/ui/src/components/button/button-icon.vue',
+        path: `${UI_SOURCE_PATH}/components/button/button-icon.vue`,
         type: 'registry:ui',
         content: [
           '<script setup lang="ts">',
@@ -70,14 +85,14 @@ describe('registry source expansion', () => {
         ].join('\n')
       },
       {
-        path: 'packages/ui/src/components/button/button.vue',
+        path: `${UI_SOURCE_PATH}/components/button/button.vue`,
         type: 'registry:ui',
         content: ['<script setup lang="ts">', "import { buttonVariants } from '@/styles/button';", '</script>'].join(
           '\n'
         )
       },
       {
-        path: 'packages/ui/src/components/button/types.ts',
+        path: `${UI_SOURCE_PATH}/components/button/types.ts`,
         type: 'registry:lib',
         content: "import type { ThemeColor } from '@/theme';"
       }
@@ -86,9 +101,9 @@ describe('registry source expansion', () => {
     const expandedFiles = await expandRegistryItemFiles(files);
     const expandedPaths = expandedFiles.map(file => file.path);
 
-    expect(expandedPaths).toContain('packages/ui/src/components/icon/icon.vue');
-    expect(expandedPaths).toContain('packages/ui/src/components/config-provider/context.ts');
-    expect(expandedPaths).toContain('packages/ui/src/styles/button.ts');
-    expect(expandedPaths).toContain('packages/ui/src/theme/index.ts');
+    expect(expandedPaths).toContain(`${UI_SOURCE_PATH}/components/icon/icon.vue`);
+    expect(expandedPaths).toContain(`${UI_SOURCE_PATH}/components/config-provider/context.ts`);
+    expect(expandedPaths).toContain(`${UI_SOURCE_PATH}/styles/button.ts`);
+    expect(expandedPaths).toContain(`${UI_SOURCE_PATH}/theme/index.ts`);
   });
 });

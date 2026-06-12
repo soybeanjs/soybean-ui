@@ -60,6 +60,7 @@ export const PRESET_FONTS = [
 export const rawConfigSchema = v.object({
   $schema: v.optional(v.string()),
   style: v.picklist(PRESET_STYLES),
+  isMonorepo: v.optional(v.boolean(), false),
   iconLibrary: v.picklist(PRESET_ICON_LIBRARIES),
   uno: v.object({
     base: v.picklist(PRESET_BASE_COLORS),
@@ -77,12 +78,8 @@ export const rawConfigSchema = v.object({
     color: v.picklist(['default', 'inverted', 'default-translucent', 'inverted-translucent'] as const)
   }),
   registries: v.optional(v.record(v.string(), v.string())),
-  aliases: v.object({
-    components: v.string(),
-    utils: v.string(),
-    ui: v.optional(v.string()),
-    lib: v.optional(v.string())
-  })
+  /** Directory where component sources are placed. Default: src/ui (single) or packages/ui (monorepo). */
+  uiDir: v.optional(v.string())
 });
 
 export type RawConfig = v.InferOutput<typeof rawConfigSchema>;
@@ -95,10 +92,7 @@ export const configSchema = v.object({
   ...rawConfigSchema.entries,
   resolvedPaths: v.object({
     cwd: v.string(),
-    components: v.string(),
-    utils: v.string(),
-    ui: v.string(),
-    lib: v.string()
+    ui: v.string()
   })
 });
 

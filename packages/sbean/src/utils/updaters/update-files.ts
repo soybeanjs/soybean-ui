@@ -8,7 +8,6 @@ export interface UpdateFilesOptions {
   overwrite: boolean;
   style: string;
   transformCtx: TransformContext;
-  libDir: string;
   dryRun?: boolean;
   diff?: boolean;
   silent?: boolean;
@@ -16,7 +15,6 @@ export interface UpdateFilesOptions {
 
 interface ResolveTargetPathOptions {
   uiDir: string;
-  libDir: string;
 }
 
 /**
@@ -42,8 +40,7 @@ export async function updateFiles(
     if (!file.content) continue;
 
     const targetPath = resolveTargetPath(file, {
-      uiDir: targetDir,
-      libDir: options.libDir
+      uiDir: targetDir
     });
 
     // Apply transformers
@@ -130,46 +127,26 @@ function printSimpleDiff(oldContent: string, newContent: string): void {
 
 /**
  * Resolve where a registry file should be placed in the user's project.
+ *
+ * Mirrors the source package structure: everything under `/ui/src/`
+ * in the registry path is preserved as-is under the target `uiDir`.
  */
 export function resolveTargetPath(file: RegistryItemFile, options: ResolveTargetPathOptions): string {
-  // If the file has an explicit target, use it
   if (file.target) {
     return path.join(options.uiDir, file.target);
   }
 
   const normalizedPath = normalizePath(file.path);
-  const componentRelativePath = getRelativePathFromSegment(normalizedPath, '/components/');
 
-  if (componentRelativePath) {
-    return path.join(options.uiDir, componentRelativePath);
+  // Preserve the full relative path within the UI source package
+  // e.g. "${UI_SOURCE_PATH}/components/button/button.vue" → "components/button/button.vue"
+  const uiSrcRelative = getRelativePathFromSegment(normalizedPath, '/ui/src/');
+  if (uiSrcRelative) {
+    return path.join(options.uiDir, uiSrcRelative);
   }
 
-  const styleRelativePath = getRelativePathFromSegment(normalizedPath, '/styles/');
-
-  if (styleRelativePath) {
-    return path.join(options.uiDir, 'styles', styleRelativePath);
-  }
-
-  const themeRelativePath = getRelativePathFromSegment(normalizedPath, '/theme/');
-
-  if (themeRelativePath || file.type === 'registry:theme') {
-    return path.join(options.uiDir, 'theme', themeRelativePath ?? path.basename(normalizedPath));
-  }
-
-  if (file.type === 'registry:style') {
-    return path.join(options.uiDir, 'styles', path.basename(normalizedPath));
-  }
-
-  if (file.type === 'registry:lib') {
-    return path.join(options.libDir, path.basename(normalizedPath));
-  }
-
-  if (file.type === 'registry:ui') {
-    return path.join(options.uiDir, path.basename(normalizedPath));
-  }
-
-  // Default: preserve relative path
-  return path.join(options.uiDir, normalizedPath);
+  // Fallback: use basename in uiDir
+  return path.join(options.uiDir, path.basename(normalizedPath));
 }
 
 function normalizePath(filePath: string): string {

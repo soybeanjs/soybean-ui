@@ -1,4 +1,6 @@
+import { existsSync } from 'fs';
 import fs from 'fs/promises';
+import { fileURLToPath } from 'node:url';
 import path from 'path';
 import * as v from 'valibot';
 import { Command } from 'commander';
@@ -13,7 +15,8 @@ import {
   PRESET_SIZES,
   PRESET_FONTS
 } from '../registry/config';
-import { createDefaultConfig, getConfig, writeConfig } from '../utils/get-config';
+import { UI_SOURCE_PATH } from '../registry/constants';
+import { createDefaultConfig, detectMonorepo, getConfig, writeConfig } from '../utils/get-config';
 import { getProjectInfo } from '../utils/get-project-info';
 import { decodePreset, isPresetCode } from '../registry/preset';
 
@@ -35,7 +38,9 @@ export const initOptionsSchema = v.object({
   yes: v.optional(v.boolean(), false),
   defaults: v.optional(v.boolean(), false),
   force: v.optional(v.boolean(), false),
-  silent: v.optional(v.boolean(), false)
+  silent: v.optional(v.boolean(), false),
+  monorepo: v.optional(v.boolean()),
+  uiDir: v.optional(v.string())
 });
 
 export type InitOptions = v.InferOutput<typeof initOptionsSchema>;
@@ -55,7 +60,7 @@ function generateUnoConfigContent(): string {
   ].join('\n')}\n`;
 }
 
-function generateTsConfigContent(): string {
+function generateTsConfigContent(uiDir: string): string {
   return `${[
     '{',
     '  "compilerOptions": {',
@@ -66,7 +71,7 @@ function generateTsConfigContent(): string {
     '    "module": "ESNext",',
     '    "moduleResolution": "bundler",',
     '    "paths": {',
-    '      "@/*": ["./src/*"]',
+    `      "#ui/*": ["./${uiDir}/*"]`,
     '    },',
     '    "types": ["node", "vite/client"],',
     '    "resolveJsonModule": true,',
@@ -78,7 +83,7 @@ function generateTsConfigContent(): string {
     '    "forceConsistentCasingInFileNames": true,',
     '    "isolatedModules": true',
     '   },',
-    '  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue", "vite.config.ts", "uno.config.ts"],',
+    '  "include": ["./**/*.ts", "./**/*.d.ts", "./**/*.tsx", "./**/*.vue"],',
     '  "exclude": ["node_modules", "dist"]',
     '}'
   ].join('\n')}\n`;
@@ -93,14 +98,11 @@ export const init = new Command()
   .alias('create')
   .description('initialize your project and install dependencies')
   .option('--style <style>', `style preset: ${PRESET_STYLES.join('/')}`)
+  .option('--size <size>', `component size: xs/sm/md/lg/xl/2xl`)
   .option('-b, --base <base>', `base color: ${PRESET_BASE_COLORS.join('/')}`)
   .option('--primary <primary>', `primary color: ${PRESET_PRIMARY_COLORS.join('/')}`)
+  .option('--feedback <feedback>', `feedback colors: ${PRESET_FEEDBACK_COLORS.join('/')}`)
   .option('--radius <radius>', `border radius: ${PRESET_RADII.join('/')}`)
-  .option(
-    '--feedback <feedback>',
-    `feedback colors: classic/vivid/subtle/warm/cool/nature/modern/vibrant/professional/soft/bold/calm/candy/deep/light`
-  )
-  .option('--size <size>', `component size: xs/sm/md/lg/xl/2xl`)
   .option('-p, --preset <code>', 'preset code (base62 encoded config)')
   .option('--icon-library <library>', `icon library: ${PRESET_ICON_LIBRARIES.join('/')}`)
   .option('--font-sans <font>', `sans-serif font: ${PRESET_FONTS.join('/')}`)
@@ -108,6 +110,8 @@ export const init = new Command()
   .option('-y, --yes', 'skip confirmation prompt', false)
   .option('-d, --defaults', 'use default configuration', false)
   .option('-f, --force', 'force overwrite of existing configuration', false)
+  .option('-m, --monorepo', 'use monorepo (pnpm workspaces) structure', false)
+  .option('--ui-dir <path>', 'component output directory (default: src/ui or packages/ui)')
   .option('-c, --cwd <cwd>', 'the working directory', process.cwd())
   .option('-n, --name <name>', 'project name (for new projects)')
   .option('-s, --silent', 'mute output', false)
@@ -118,10 +122,10 @@ export const init = new Command()
 type InitActionOptions = {
   cwd: string;
   style?: string;
+  size?: string;
   base?: string;
   primary?: string;
   feedback?: string;
-  size?: string;
   radius?: string;
   iconLibrary?: string;
   fontSans?: string;
@@ -130,6 +134,8 @@ type InitActionOptions = {
   defaults: boolean;
   force: boolean;
   silent: boolean;
+  monorepo?: boolean;
+  uiDir?: string;
   preset?: string;
   name?: string;
 };
@@ -147,10 +153,9 @@ export async function runInit(opts: InitActionOptions) {
   // Detect project info
   const projectInfo = await getProjectInfo(cwd);
 
-  if (!projectInfo) {
-    console.log('No package.json found. Creating a new Vue + Vite project...');
-    await scaffoldProject(cwd, opts.name);
-  }
+  // Detect monorepo status (from CLI flag, then auto-detect, then prompt)
+  const autoMonorepo = await detectMonorepo(cwd);
+  let isMonorepo = opts.monorepo ?? autoMonorepo;
 
   // Determine config values
   // Handle preset code (overrides defaults, but CLI flags take precedence)
@@ -182,6 +187,13 @@ export async function runInit(opts: InitActionOptions) {
   const radius = opts.radius || 'md';
   const iconLibrary = opts.iconLibrary || 'lucide';
 
+  const recommended = {
+    style: 'soybean',
+    base: 'zinc',
+    primary: 'indigo',
+    feedback: 'classic'
+  } as const;
+
   // Prompt if not using defaults/yes
   if (!opts.defaults && !opts.yes) {
     const answers = await prompts([
@@ -193,49 +205,6 @@ export async function runInit(opts: InitActionOptions) {
           title: s === 'soybean' ? `${s} (recommended)` : s,
           value: s
         })),
-        initial: 0
-      },
-      {
-        type: 'select',
-        name: 'base',
-        message: 'Which base color?',
-        choices: PRESET_BASE_COLORS.map(b => ({
-          title: b === 'zinc' ? `${b} (recommended)` : b,
-          value: b
-        })),
-        initial: 0
-      },
-      {
-        type: 'select',
-        name: 'primary',
-        message: 'Which primary color?',
-        choices: PRESET_PRIMARY_COLORS.map(p => ({
-          title: p === 'indigo' ? `${p} (recommended)` : p,
-          value: p
-        })),
-        initial: 0
-      },
-      {
-        type: 'select',
-        name: 'feedback',
-        message: 'Which feedback color preset?',
-        choices: [
-          { title: 'classic (recommended)', value: 'classic' },
-          { title: 'vivid — high saturation, youthful', value: 'vivid' },
-          { title: 'subtle — low contrast, elegant', value: 'subtle' },
-          { title: 'warm — friendly and cozy', value: 'warm' },
-          { title: 'cool — tech and professional', value: 'cool' },
-          { title: 'nature — eco and health', value: 'nature' },
-          { title: 'modern — minimal, SaaS', value: 'modern' },
-          { title: 'vibrant — sports and gaming', value: 'vibrant' },
-          { title: 'professional — enterprise, B2B', value: 'professional' },
-          { title: 'soft — design tools, creative', value: 'soft' },
-          { title: 'bold — high contrast, striking', value: 'bold' },
-          { title: 'calm — low saturation, soothing', value: 'calm' },
-          { title: 'candy — playful, children', value: 'candy' },
-          { title: 'deep — dark and mysterious', value: 'deep' },
-          { title: 'light — clean and refreshing', value: 'light' }
-        ],
         initial: 0
       },
       {
@@ -254,12 +223,59 @@ export async function runInit(opts: InitActionOptions) {
       },
       {
         type: 'select',
+        name: 'base',
+        message: 'Which base color?',
+        choices: [recommended.base, ...PRESET_BASE_COLORS.filter(b => b !== recommended.base)].map(b => ({
+          title: b === recommended.base ? `${b} (recommended)` : b,
+          value: b
+        })),
+        initial: 0
+      },
+      {
+        type: 'select',
+        name: 'primary',
+        message: 'Which primary color?',
+        choices: [recommended.primary, ...PRESET_PRIMARY_COLORS.filter(p => p !== recommended.primary)].map(p => ({
+          title: p === recommended.primary ? `${p} (recommended)` : p,
+          value: p
+        })),
+        initial: 0
+      },
+      {
+        type: 'select',
+        name: 'feedback',
+        message: 'Which feedback color preset?',
+        choices: [recommended.feedback, ...PRESET_FEEDBACK_COLORS.filter(f => f !== recommended.feedback)].map(f => ({
+          title: f === recommended.feedback ? `${f} (recommended)` : f,
+          value: f
+        })),
+        initial: 0
+      },
+      {
+        type: 'select',
+        name: 'monorepo',
+        message: 'Project structure?',
+        choices: [
+          { title: `Monorepo (${autoMonorepo ? 'detected' : 'pnpm workspaces — recommended'})`, value: 'monorepo' },
+          { title: 'Single package', value: 'single' }
+        ],
+        initial: 0
+      },
+      {
+        type: 'text',
+        name: 'uiDir',
+        message: 'Component output directory?',
+        initial: isMonorepo ? 'packages/ui' : 'src/ui'
+      },
+      {
+        type: 'select',
         name: 'fontSans',
         message: 'Which sans-serif font? (skip for system default)',
         choices: [
+          { title: 'inter (recommended)', value: 'inter' },
           { title: 'none (system default)', value: '' },
-          ...PRESET_FONTS.map(f => ({
-            title: f === 'inter' ? `${f} (recommended)` : f,
+          ...PRESET_FONTS.filter(f => f !== 'inter').map(f => ({
+            title: f,
             value: f
           }))
         ],
@@ -270,9 +286,9 @@ export async function runInit(opts: InitActionOptions) {
         name: 'fontHeading',
         message: 'Which heading font? (or inherit from sans)',
         choices: [
-          { title: 'inherit', value: 'inherit' },
+          { title: 'inherit (recommended)', value: 'inherit' },
           ...PRESET_FONTS.map(f => ({
-            title: f === 'inter' ? `${f} (recommended)` : f,
+            title: f,
             value: f
           }))
         ],
@@ -281,16 +297,29 @@ export async function runInit(opts: InitActionOptions) {
     ]);
 
     if (answers.style) opts.style = answers.style as (typeof PRESET_STYLES)[number];
+    if (answers.size) opts.size = answers.size as (typeof PRESET_SIZES)[number];
     if (answers.base) opts.base = answers.base as (typeof PRESET_BASE_COLORS)[number];
     if (answers.primary) opts.primary = answers.primary as (typeof PRESET_PRIMARY_COLORS)[number];
     if (answers.feedback) opts.feedback = answers.feedback as (typeof PRESET_FEEDBACK_COLORS)[number];
-    if (answers.size) opts.size = answers.size as (typeof PRESET_SIZES)[number];
     if (answers.fontSans !== undefined && answers.fontSans !== '') {
       opts.fontSans = answers.fontSans as (typeof PRESET_FONTS)[number];
     }
     if (answers.fontHeading !== undefined) {
       opts.fontHeading = answers.fontHeading as 'inherit' | (typeof PRESET_FONTS)[number];
     }
+    if (answers.monorepo) {
+      isMonorepo = answers.monorepo === 'monorepo';
+    }
+    if (answers.uiDir !== undefined && answers.uiDir !== '') {
+      opts.uiDir = answers.uiDir;
+    }
+  }
+
+  // Scaffold new project if no package.json exists
+  if (!projectInfo) {
+    console.log('No package.json found. Creating a new Vue + Vite project...');
+    const uiDirForScaffold = opts.uiDir ?? (isMonorepo ? 'packages/ui' : 'src/ui');
+    await scaffoldProject(cwd, opts.name, uiDirForScaffold);
   }
 
   // Build font config for sbean.json
@@ -313,6 +342,8 @@ export async function runInit(opts: InitActionOptions) {
 
   // Write sbean.json
   const config = await createDefaultConfig(cwd, {
+    isMonorepo,
+    uiDir: opts.uiDir,
     style: (opts.style as (typeof PRESET_STYLES)[number]) || style,
     iconLibrary: (opts.iconLibrary as (typeof PRESET_ICON_LIBRARIES)[number]) || iconLibrary,
     uno: {
@@ -330,6 +361,9 @@ export async function runInit(opts: InitActionOptions) {
     console.log('✔ Created sbean.json');
   }
 
+  // Generate pnpm-workspace.yaml (always needed for pnpm projects)
+  await ensurePnpmWorkspace(cwd, isMonorepo);
+
   const unoConfigPath = path.join(cwd, 'uno.config.ts');
   const unoExists = await fs
     .stat(unoConfigPath)
@@ -346,7 +380,10 @@ export async function runInit(opts: InitActionOptions) {
     console.log('  presets: [presetSbean()]');
   }
 
-  await ensureTypeScriptConfig(cwd);
+  await ensureTypeScriptConfig(cwd, config.uiDir ?? 'src/ui');
+
+  // Generate resolver, nuxt module, and constants from source
+  await generatePackModules(cwd, config.uiDir ?? 'src/ui');
 
   console.log('\nDone! Run "sbean add <component>" to add components.');
 }
@@ -355,11 +392,11 @@ export async function runInit(opts: InitActionOptions) {
 // Project scaffolding (minimal Vue + Vite)
 // ---------------------------------------------------------------------------
 
-async function scaffoldProject(cwd: string, name?: string) {
+async function scaffoldProject(cwd: string, name?: string, uiDir = 'src/ui') {
   const projectName = name || path.basename(cwd);
 
   await fs.mkdir(cwd, { recursive: true });
-  await fs.mkdir(path.join(cwd, 'src'), { recursive: true });
+  await fs.mkdir(path.join(cwd, uiDir), { recursive: true });
 
   const pkg = {
     name: projectName,
@@ -367,36 +404,55 @@ async function scaffoldProject(cwd: string, name?: string) {
     version: '0.0.0',
     type: 'module',
     scripts: {
-      dev: 'vite',
-      build: 'vite build',
-      preview: 'vite preview'
+      dev: 'vp dev',
+      build: 'vp build',
+      preview: 'vp preview'
     },
     dependencies: {
-      vue: '^3.5.0'
+      '@iconify/vue': 'latest',
+      '@soybeanjs/cva': 'latest',
+      '@soybeanjs/headless': 'latest',
+      '@soybeanjs/hooks': 'latest',
+      '@soybeanjs/shadcn-theme': 'latest',
+      '@soybeanjs/utils': 'latest',
+      vue: 'latest'
     },
     devDependencies: {
-      '@vitejs/plugin-vue': '^5.0.0',
-      typescript: '^5.8.0',
-      vite: '^6.0.0'
+      '@vitejs/plugin-vue': 'latest',
+      typescript: 'latest',
+      unocss: 'latest',
+      'unplugin-vue-components': 'latest',
+      'vite-plus': 'latest'
     }
   };
 
   await fs.writeFile(path.join(cwd, 'package.json'), JSON.stringify(pkg, null, 2), 'utf-8');
 
+  const resolverPath = `./${uiDir}/resolver`;
+
   // Basic vite.config.ts
   await fs.writeFile(
     path.join(cwd, 'vite.config.ts'),
     [
-      `import { defineConfig } from 'vite'`,
-      `import vue from '@vitejs/plugin-vue'`,
+      `import { URL, fileURLToPath } from 'node:url';`,
+      `import { defineConfig } from 'vite-plus';`,
+      `import Vue from '@vitejs/plugin-vue';`,
+      `import UnoCSS from 'unocss/vite';`,
+      `import Components from 'unplugin-vue-components/vite';`,
+      `import UiResolver from '${resolverPath}';`,
       ``,
       `export default defineConfig({`,
-      `  plugins: [vue()],`,
       `  resolve: {`,
-      `    alias: {`,
-      `      '@': '/src',`,
-      `    },`,
+      `    tsconfigPaths: true`,
       `  },`,
+      `  plugins: [`,
+      `    Vue(),`,
+      `    UnoCSS(),`,
+      `    Components({`,
+      `      dts: fileURLToPath(new URL('./src/typings/components.d.ts', import.meta.url)),`,
+      `      resolvers: [UiResolver()]`,
+      `    })`,
+      `  ]`,
       `})`
     ].join('\n'),
     'utf-8'
@@ -404,7 +460,7 @@ async function scaffoldProject(cwd: string, name?: string) {
 
   // Basic App.vue
   await fs.writeFile(
-    path.join(cwd, 'src', 'App.vue'),
+    path.join(cwd, uiDir, 'App.vue'),
     [
       `<script setup lang="ts">`,
       `</script>`,
@@ -419,20 +475,70 @@ async function scaffoldProject(cwd: string, name?: string) {
   console.log(`✔ Scaffolded Vue + Vite project: ${projectName}`);
 }
 
-async function ensureTypeScriptConfig(cwd: string) {
+async function ensurePnpmWorkspace(cwd: string, isMonorepo: boolean) {
+  const workspacePath = path.join(cwd, 'pnpm-workspace.yaml');
+
+  if (await fileExists(workspacePath)) {
+    return;
+  }
+
+  const content = isMonorepo
+    ? `packages:
+  - 'packages/**'
+shamefullyHoist: true
+strictDepBuilds: false
+`
+    : `packages:
+  - '.'
+`;
+
+  await fs.writeFile(workspacePath, content, 'utf-8');
+  console.log('✔ Created pnpm-workspace.yaml');
+}
+
+async function ensureTypeScriptConfig(cwd: string, uiDir: string) {
   const tsconfigPath = path.join(cwd, 'tsconfig.json');
-  const viteEnvPath = path.join(cwd, 'src', 'vite-env.d.ts');
 
   const tsconfigExists = await fileExists(tsconfigPath);
   if (!tsconfigExists) {
-    await fs.writeFile(tsconfigPath, generateTsConfigContent(), 'utf-8');
+    await fs.writeFile(tsconfigPath, generateTsConfigContent(uiDir), 'utf-8');
     console.log('✔ Created tsconfig.json');
   }
+}
 
-  const viteEnvExists = await fileExists(viteEnvPath);
-  if (!viteEnvExists) {
-    await fs.writeFile(viteEnvPath, '/// <reference types="vite/client" />\n', 'utf-8');
-    console.log('✔ Created src/vite-env.d.ts');
+async function generatePackModules(cwd: string, uiDir: string) {
+  const sourceRoot = findSourceRoot();
+  if (!sourceRoot) return;
+
+  const files: Record<string, string> = {
+    'resolver/index.ts': `${UI_SOURCE_PATH}/resolver/index.ts`,
+    'nuxt/index.ts': `${UI_SOURCE_PATH}/nuxt/index.ts`,
+    'constants/components.ts': `${UI_SOURCE_PATH}/constants/components.ts`
+  };
+
+  for (const [relPath, srcPath] of Object.entries(files)) {
+    const src = path.join(sourceRoot, srcPath);
+    if (!existsSync(src)) continue;
+
+    const dest = path.join(cwd, uiDir, relPath);
+    if (existsSync(dest)) continue;
+
+    let content = await fs.readFile(src, 'utf-8');
+    content = content.replace(/@soybeanjs\/ui/g, '#ui');
+
+    await fs.mkdir(path.dirname(dest), { recursive: true });
+    await fs.writeFile(dest, content, 'utf-8');
+    console.log(`✔ Created ${uiDir}/${relPath}`);
+  }
+}
+
+function findSourceRoot(): string | null {
+  let dir = path.dirname(fileURLToPath(import.meta.url));
+  while (true) {
+    if (existsSync(path.join(dir, UI_SOURCE_PATH))) return dir;
+    const parent = path.dirname(dir);
+    if (parent === dir) return null;
+    dir = parent;
   }
 }
 

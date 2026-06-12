@@ -2,6 +2,7 @@ import { existsSync, statSync } from 'fs';
 import fs from 'fs/promises';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { UI_SOURCE_PATH } from '../registry/constants';
 import { fetchRegistryItem } from '../registry/fetcher';
 import { readRegistryWithIncludes } from '../registry/loader';
 import type { RegistryItem, RegistryItemFile } from '../registry/schema';
@@ -41,10 +42,7 @@ export async function addComponents(
   const silent = options.silent ?? false;
 
   const transformCtx = {
-    componentsAlias: config.aliases.components,
-    uiAlias: config.aliases.ui ?? `${config.aliases.components}/ui`,
-    utilsAlias: config.aliases.utils,
-    libAlias: config.aliases.lib ?? '',
+    uiAlias: '#ui',
     iconLibrary: config.iconLibrary
   };
 
@@ -52,7 +50,6 @@ export async function addComponents(
     overwrite: options.overwrite,
     style: config.style,
     transformCtx,
-    libDir: config.resolvedPaths.lib,
     dryRun: options.dryRun,
     diff: options.diff,
     silent
@@ -117,6 +114,10 @@ export async function addComponents(
     collectPackageDependencies(item, allDeps, allDevDeps);
 
     const expandedFiles = item.files?.length ? await expandRegistryItemFiles(item.files) : [];
+
+    // Include barrel index.ts from component source directories
+    await includeBarrelFiles(expandedFiles, SOURCE_ROOT);
+
     const filesToAdd = expandedFiles.filter(file => WRITABLE_FILE_TYPES.has(file.type));
 
     if (filesToAdd.length > 0) {
@@ -247,6 +248,57 @@ export async function expandRegistryItemFiles(files: RegistryItemFile[]): Promis
   return [...expandedFiles.values()];
 }
 
+/**
+ * Include barrel index.ts files from component source directories
+ * that are referenced by the expanded files.
+ */
+async function includeBarrelFiles(expandedFiles: RegistryItemFile[], sourceRoot: string | null): Promise<void> {
+  if (!sourceRoot) return;
+
+  // Collect unique component source directories
+  const dirs = new Set<string>();
+  for (const file of expandedFiles) {
+    const normalizedPath = normalizePath(file.path);
+    if (normalizedPath.includes('/components/') && normalizedPath.endsWith('.vue')) {
+      dirs.add(path.dirname(normalizedPath));
+    }
+  }
+
+  // Check each directory for an index.ts
+  for (const dir of dirs) {
+    const indexPath = path.join(sourceRoot, dir, 'index.ts');
+    if (!isExistingFile(indexPath)) continue;
+
+    const normalizedPath = normalizePath(path.relative(sourceRoot, indexPath));
+    if (expandedFiles.some(f => normalizePath(f.path) === normalizedPath)) continue;
+
+    const content = await readSourceFile(indexPath);
+    if (!content) continue;
+
+    const barrelFile: RegistryItemFile = {
+      path: normalizedPath,
+      type: 'registry:lib',
+      content
+    };
+
+    expandedFiles.push(barrelFile);
+
+    // Expand barrel's own dependencies (e.g. ./types)
+    const depPaths = resolveSourceDependencyPaths(barrelFile);
+    for (const dep of depPaths) {
+      const depNormalized = normalizePath(path.relative(sourceRoot, dep));
+      if (expandedFiles.some(f => normalizePath(f.path) === depNormalized)) continue;
+      const depContent = await readSourceFile(dep);
+      if (!depContent) continue;
+      expandedFiles.push({
+        path: depNormalized,
+        type: inferRegistryFileType(depNormalized),
+        content: depContent
+      });
+    }
+  }
+}
+
 function inferRegistryDependencies(files: RegistryItemFile[]): string[] {
   const dependencies = new Set<string>();
 
@@ -322,20 +374,22 @@ function resolveSourceDependencyPath(filePath: string, specifier: string): strin
   }
 
   if (specifier === '@/theme') {
-    return resolveWithExtensions(path.join(SOURCE_ROOT, 'packages/ui/src/theme/index'));
+    return resolveWithExtensions(path.join(SOURCE_ROOT, `${UI_SOURCE_PATH}/theme/index`));
   }
 
   if (specifier.startsWith('@/theme/')) {
-    return resolveWithExtensions(path.join(SOURCE_ROOT, 'packages/ui/src/theme', specifier.slice('@/theme/'.length)));
+    return resolveWithExtensions(path.join(SOURCE_ROOT, `${UI_SOURCE_PATH}/theme`, specifier.slice('@/theme/'.length)));
   }
 
   if (specifier.startsWith('@/styles/')) {
-    return resolveWithExtensions(path.join(SOURCE_ROOT, 'packages/ui/src/styles', specifier.slice('@/styles/'.length)));
+    return resolveWithExtensions(
+      path.join(SOURCE_ROOT, `${UI_SOURCE_PATH}/styles`, specifier.slice('@/styles/'.length))
+    );
   }
 
   if (specifier.startsWith('@/components/')) {
     return resolveWithExtensions(
-      path.join(SOURCE_ROOT, 'packages/ui/src/components', specifier.slice('@/components/'.length))
+      path.join(SOURCE_ROOT, `${UI_SOURCE_PATH}/components`, specifier.slice('@/components/'.length))
     );
   }
 
@@ -383,7 +437,7 @@ function extractImportSpecifiers(source: string): string[] {
 
 function getComponentSourcePath(filePath: string): string | null {
   const normalizedPath = normalizePath(filePath);
-  const componentMarker = 'packages/ui/src';
+  const componentMarker = UI_SOURCE_PATH;
 
   if (!normalizedPath.startsWith(componentMarker)) {
     return null;
@@ -408,7 +462,7 @@ function findWorkspaceSourceRoot(): string | null {
   let currentDir = path.dirname(fileURLToPath(import.meta.url));
 
   while (true) {
-    if (existsSync(path.join(currentDir, 'packages/ui/src'))) {
+    if (existsSync(path.join(currentDir, UI_SOURCE_PATH))) {
       return currentDir;
     }
 

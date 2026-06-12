@@ -1,19 +1,13 @@
 /**
  * Transform import paths in component source code.
  *
- * This rewrites workspace-internal imports (like @/styles/button or
- * @/registry/ui/button) to match the user's configured aliases.
+ * All workspace-internal imports (like @/styles/button, @/theme,
+ * @/components/icon) are rewritten to use the single `#ui/` namespace.
  */
 
 export interface TransformContext {
-  /** User's tsconfig alias for components, e.g. "@/components" */
-  componentsAlias: string;
-  /** User's tsconfig alias for ui, e.g. "@/components/ui" */
+  /** User's tsconfig alias prefix for ui, e.g. "#ui" */
   uiAlias: string;
-  /** User's tsconfig alias for utils, e.g. "@/lib/utils" */
-  utilsAlias: string;
-  /** User's tsconfig alias for lib, e.g. "@/lib" */
-  libAlias: string;
   /** Iconify prefix to use, e.g. "lucide" / "material-symbols" */
   iconLibrary: string;
 }
@@ -28,37 +22,43 @@ const ICONIFY_PREFIX_MAP: Record<string, string> = {
 };
 
 /**
- * Transform import paths in source code based on user config.
+ * Transform import paths in source code based on a single `#ui/` alias.
+ *
+ * All sub-aliases are derived from the single prefix:
+ *   components → {uiAlias}/components
+ *   styles     → {uiAlias}/styles
+ *   theme      → {uiAlias}/theme
  *
  * @param source - The original source code
- * @param ctx - User's configured aliases
+ * @param ctx - User's configured aliases (just uiAlias + iconLibrary)
  * @param style - The style preset being used (e.g. "soybean")
  */
 export function transformImports(source: string, ctx: TransformContext, style: string): string {
+  const a = ctx.uiAlias;
+  const comp = `${a}/components`;
+
   let result = source;
 
   // Rewrite @/registry/<style>/ui → user's ui alias
-  result = result.replace(new RegExp(`@/registry/${style}/ui`, 'g'), ctx.uiAlias);
+  result = result.replace(new RegExp(`@/registry/${style}/ui`, 'g'), a);
 
-  // Rewrite @/registry/<style>/components → user's components alias
-  result = result.replace(new RegExp(`@/registry/${style}/components`, 'g'), ctx.componentsAlias);
+  // Rewrite @/registry/<style>/components → {a}/components
+  result = result.replace(new RegExp(`@/registry/${style}/components`, 'g'), comp);
 
-  // Rewrite @/registry/<style>/lib → user's lib alias
-  result = result.replace(new RegExp(`@/registry/${style}/lib`, 'g'), ctx.libAlias);
+  // Rewrite @/registry/<style>/lib → {a}/lib
+  result = result.replace(new RegExp(`@/registry/${style}/lib`, 'g'), `${a}/lib`);
 
-  // Rewrite @/registry/<style>/lib/utils → user's utils alias
-  result = result.replace(new RegExp(`@/registry/${style}/lib/utils`, 'g'), ctx.utilsAlias);
+  // Rewrite @/registry/<style>/lib/utils → {a}/lib/utils
+  result = result.replace(new RegExp(`@/registry/${style}/lib/utils`, 'g'), `${a}/lib/utils`);
 
-  // Rewrite @/styles/ → user's ui alias/styles
-  result = result.replace(/@\/styles\//g, `${ctx.uiAlias}/styles/`);
+  // Rewrite @/styles/ → {a}/styles/
+  result = result.replace(/@\/styles\//g, `${a}/styles/`);
 
-  // Rewrite @/theme → user's ui alias/theme
-  result = result.replace(/@\/theme/g, `${ctx.uiAlias}/theme`);
+  // Rewrite @/theme → {a}/theme
+  result = result.replace(/@\/theme/g, `${a}/theme`);
 
-  // Rewrite @/components/ → user's components alias
-  if (ctx.componentsAlias !== '@/components') {
-    result = result.replace(/@\/components\//g, `${ctx.componentsAlias}/`);
-  }
+  // Rewrite @/components/ → {a}/components/
+  result = result.replace(/@\/components\//g, `${comp}/`);
 
   return result;
 }

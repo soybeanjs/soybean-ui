@@ -38,8 +38,6 @@ describe('config management', () => {
 
       expect(config.resolvedPaths).toBeDefined();
       expect(config.resolvedPaths.cwd).toBe(tmpDir);
-      expect(config.resolvedPaths.components).toContain('components');
-      expect(config.resolvedPaths.utils).toContain('utils');
       expect(config.resolvedPaths.ui).toContain('ui');
     });
 
@@ -90,7 +88,7 @@ describe('config management', () => {
           uno: { base: 'zinc', primary: 'indigo', radius: 'md' },
           font: {},
           menu: { accent: 'subtle', color: 'default' },
-          aliases: { components: '@/components', utils: '@/lib/utils' }
+          uiDir: 'src/ui'
         }),
         'utf-8'
       );
@@ -109,34 +107,32 @@ describe('config management', () => {
   });
 
   describe('resolveConfigPaths', () => {
-    it('resolves @/ aliases to src/ paths', async () => {
+    it('resolves uiDir to absolute path (single repo)', async () => {
       const resolved = await resolveConfigPaths(tmpDir, {
         style: 'soybean',
+        isMonorepo: false,
         iconLibrary: 'lucide',
         uno: { base: 'zinc', primary: 'indigo', radius: 'md' },
         font: {},
         menu: { accent: 'subtle', color: 'default' },
-        aliases: { components: '@/components', utils: '@/lib/utils', ui: '@/components/ui', lib: '@/lib' }
+        uiDir: 'src/ui'
       });
 
-      expect(resolved.resolvedPaths.components).toBe(path.join(tmpDir, 'src', 'components'));
-      expect(resolved.resolvedPaths.utils).toBe(path.join(tmpDir, 'src', 'lib', 'utils'));
-      expect(resolved.resolvedPaths.ui).toBe(path.join(tmpDir, 'src', 'components', 'ui'));
-      expect(resolved.resolvedPaths.lib).toBe(path.join(tmpDir, 'src', 'lib'));
+      expect(resolved.resolvedPaths.ui).toBe(path.join(tmpDir, 'src', 'ui'));
     });
 
-    it('falls back for ui and lib when not specified', async () => {
+    it('resolves uiDir to absolute path (monorepo)', async () => {
       const resolved = await resolveConfigPaths(tmpDir, {
         style: 'soybean',
+        isMonorepo: true,
         iconLibrary: 'lucide',
         uno: { base: 'zinc', primary: 'indigo', radius: 'md' },
         font: {},
         menu: { accent: 'subtle', color: 'default' },
-        aliases: { components: '@/components', utils: '@/lib/utils' }
+        uiDir: 'packages/ui'
       });
 
-      expect(resolved.resolvedPaths.ui).toContain('ui');
-      expect(resolved.resolvedPaths.lib).toContain('lib');
+      expect(resolved.resolvedPaths.ui).toBe(path.join(tmpDir, 'packages', 'ui'));
     });
   });
 });
@@ -144,11 +140,12 @@ describe('config management', () => {
 describe('config schema validation', () => {
   const minimalConfig = {
     style: 'soybean',
+    isMonorepo: false,
     iconLibrary: 'lucide',
     uno: { base: 'zinc', primary: 'indigo', radius: 'md' },
     font: {},
     menu: { accent: 'subtle', color: 'default' },
-    aliases: { components: '@/components', utils: '@/lib/utils' }
+    uiDir: 'src/ui'
   };
 
   it('validates minimal config', () => {

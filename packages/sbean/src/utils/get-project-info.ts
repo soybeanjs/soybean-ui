@@ -82,7 +82,8 @@ async function detectPackageManager(cwd: string): Promise<ProjectInfo['packageMa
   if (await fileExists(path.join(cwd, 'pnpm-lock.yaml'))) return 'pnpm';
   if (await fileExists(path.join(cwd, 'yarn.lock'))) return 'yarn';
   if (await fileExists(path.join(cwd, 'bun.lockb'))) return 'bun';
-  return 'npm';
+  if (await fileExists(path.join(cwd, 'package-lock.json'))) return 'npm';
+  return 'pnpm';
 }
 
 async function fileExists(filePath: string): Promise<boolean> {
