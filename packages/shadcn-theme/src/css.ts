@@ -1,5 +1,12 @@
 import { generatePalette } from '@soybeanjs/colord/palette';
-import { COLOR_VARIABLES, DARK_SELECTOR, EXTENDED_THEME_VARIABLES, RADIUS_VARIABLE, RADII } from './constants';
+import {
+  COLOR_VARIABLES,
+  DARK_SELECTOR,
+  EXTENDED_THEME_VARIABLES,
+  THEME_SIZE,
+  RADIUS_VARIABLE,
+  THEME_RADIUS
+} from './constants';
 import { getColorValue, keysOf, removeHslBrackets, isUnTransformedColor } from './shared';
 import type {
   ColorFormat,
@@ -11,7 +18,8 @@ import type {
   ThemeColorWithAlphaKey,
   ThemeColors,
   ThemeOptions,
-  Radii
+  ThemeSize,
+  ThemeRadius
 } from './types';
 
 export function generateCSSVariables(
@@ -45,8 +53,23 @@ export function generateCSSVariables(
   return css;
 }
 
-export function generateRadiusCSSVariable(radius: Radii | (string & {}), styleTarget: StyleTarget = ':root') {
-  const radiusValue = RADII[radius as Radii] ?? radius;
+/** Generate root font-size CSS from the size option. */
+export function generateSizeCSSVariable(size: ThemeSize, styleTarget: string = ':root'): string {
+  const fontSize = THEME_SIZE[size];
+
+  // Always set the base font-size, and add [data-size] variants
+  // for runtime switching (used by ConfigProvider).
+  let css = `${styleTarget} {\n  font-size: ${fontSize}px;\n}`;
+
+  for (const [key, value] of Object.entries(THEME_SIZE)) {
+    css += `\n\n${styleTarget}[data-size="${key}"] {\n  font-size: ${value}px;\n}`;
+  }
+
+  return css;
+}
+
+export function generateRadiusCSSVariable(radius: ThemeRadius, styleTarget: StyleTarget = ':root') {
+  const radiusValue = THEME_RADIUS[radius];
 
   const css = `${styleTarget} {\n${RADIUS_VARIABLE}: ${radiusValue};\n}`;
 

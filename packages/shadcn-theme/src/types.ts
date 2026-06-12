@@ -8,7 +8,16 @@ import type {
 /**
  * the theme options
  */
-export type Radii = 'none' | '2xs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | 'full';
+export type ThemeRadius = 'none' | '2xs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | 'full';
+
+export interface ThemeRadiusConfig {
+  /**
+   * the border radius
+   *
+   * @default 'md'
+   */
+  radius?: ThemeRadius;
+}
 
 /**
  * the theme size key
@@ -17,13 +26,15 @@ export type Radii = 'none' | '2xs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | 
  */
 export type ThemeSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl';
 
-export interface ThemeRadius {
+export interface ThemeSizeConfig {
   /**
-   * the border radius
+   * the component size / density
+   *
+   * Controls the root font-size (`<html>`), scaling all rem-based sizes.
    *
    * @default 'md'
    */
-  radius?: Radii | (string & {});
+  size?: ThemeSize;
 }
 
 export type HSLColor = `hsl(${number} ${number}% ${number}%)` | `hsl(${number} ${number}% ${number}% / ${number})`;
@@ -269,12 +280,6 @@ export interface PresetKeyConfig {
    * @default 'classic'
    */
   feedback?: BuiltinFeedbackPresetKey;
-  /**
-   * the sidebar style key
-   *
-   * @default 'extended'
-   */
-  sidebar?: BuiltinSidebarPresetKey;
 }
 
 export interface PresetConfig extends PresetKeyConfig {
@@ -288,21 +293,7 @@ export interface PresetConfig extends PresetKeyConfig {
 /**
  * theme options
  */
-export interface ThemeOptions extends PresetConfig, ThemeRadius {
-  /**
-   * the border radius
-   *
-   * @default 'md'
-   */
-  radius?: Radii | (string & {});
-  /**
-   * the component size / density
-   *
-   * Controls the root font-size (`<html>`), scaling all rem-based sizes.
-   *
-   * @default 'md'
-   */
-  size?: ThemeSize;
+export interface ThemeOptions extends ThemeSizeConfig, ThemeRadiusConfig, PresetConfig {
   /**
    * the style target
    *
@@ -330,9 +321,6 @@ export interface ThemeOptions extends PresetConfig, ThemeRadius {
   format?: ColorFormat;
 }
 
-export interface RequiredThemeOptions extends Required<Omit<ThemeOptions, 'preset'>> {
-  /**
-   * custom preset colors that override built-in preset values.
-   */
-  preset?: CustomThemeColorPreset;
-}
+export interface RequiredThemeOptions extends Required<Omit<ThemeOptions, 'preset'>>, Pick<ThemeOptions, 'preset'> {}
+
+export interface BaseThemeOptions extends ThemeSizeConfig, ThemeRadiusConfig, Omit<PresetConfig, 'preset'> {}

@@ -1,33 +1,16 @@
 import { DEFAULT_PRESET_OPTIONS } from './constants';
 import { mergeObjects, getColorPresetCacheKey } from './shared';
-import { generateCSSVariables, generateRadiusCSSVariable } from './css';
+import { generateCSSVariables, generateSizeCSSVariable, generateRadiusCSSVariable } from './css';
 import { generateThemePreset } from './preset';
-import type { PresetConfig, PresetKeyConfig, ThemeOptions, RequiredThemeOptions, Radii, ThemeSize } from './types';
-
-/** Size → root font-size mapping (in pixels). */
-const SIZE_FONT_SIZE_MAP: Record<ThemeSize, number> = {
-  xs: 12,
-  sm: 14,
-  md: 16,
-  lg: 18,
-  xl: 20,
-  '2xl': 24
-};
-
-/** Generate root font-size CSS from the size option. */
-export function generateSizeCSS(size?: ThemeSize, styleTarget: string = ':root'): string {
-  const fontSize = SIZE_FONT_SIZE_MAP[size ?? 'md'];
-
-  // Always set the base font-size, and add [data-size] variants
-  // for runtime switching (used by ConfigProvider).
-  let css = `${styleTarget} {\n  font-size: ${fontSize}px;\n}`;
-
-  for (const [key, value] of Object.entries(SIZE_FONT_SIZE_MAP)) {
-    css += `\n\n${styleTarget}[data-size="${key}"] {\n  font-size: ${value}px;\n}`;
-  }
-
-  return css;
-}
+import type {
+  PresetConfig,
+  PresetKeyConfig,
+  ThemeOptions,
+  BaseThemeOptions,
+  RequiredThemeOptions,
+  ThemeSize,
+  ThemeRadius
+} from './types';
 
 export function createShadcnTheme(options?: ThemeOptions) {
   const opts = mergeObjects<RequiredThemeOptions>(
@@ -35,12 +18,11 @@ export function createShadcnTheme(options?: ThemeOptions) {
       ...DEFAULT_PRESET_OPTIONS,
       styleTarget: ':root',
       darkSelector: 'class',
-      format: 'hsl',
-      size: 'md'
+      format: 'hsl'
     },
     options ?? {}
   );
-  const { base, primary, feedback, sidebar, radius, styleTarget, darkSelector, format, preset, size } = opts;
+  const { size, radius, base, primary, feedback, styleTarget, darkSelector, format, preset } = opts;
 
   const colorCssCache = new Map<string, string>();
 
@@ -48,11 +30,10 @@ export function createShadcnTheme(options?: ThemeOptions) {
     const mergedConfig: Required<PresetKeyConfig> = {
       base: config?.base ?? base,
       primary: config?.primary ?? primary,
-      feedback: config?.feedback ?? feedback,
-      sidebar: config?.sidebar ?? sidebar
+      feedback: config?.feedback ?? feedback
     };
 
-    const hasCustomPreset = !!(config?.preset ?? preset);
+    const hasCustomPreset = Boolean(config?.preset ?? preset);
 
     const shouldUseColorCssCache = !hasCustomPreset;
 
@@ -73,11 +54,15 @@ export function createShadcnTheme(options?: ThemeOptions) {
     return css;
   };
 
-  const getRadiusCss = (update?: Radii | (string & {})) => generateRadiusCSSVariable(update ?? radius, styleTarget);
+  const getSizeCss = (sizeValue?: ThemeSize) => generateSizeCSSVariable(sizeValue ?? size, styleTarget);
 
-  const getCss = (config?: PresetConfig, radiusValue?: Radii | (string & {})) => {
-    const sizeCss = generateSizeCSS(size, styleTarget);
-    const radiusCss = getRadiusCss(radiusValue ?? radius);
+  const getRadiusCss = (update?: ThemeRadius) => generateRadiusCSSVariable(update ?? radius, styleTarget);
+
+  const getCss = (config?: BaseThemeOptions) => {
+    const { size: sizeValue = size, radius: radiusValue = radius } = config ?? {};
+
+    const sizeCss = getSizeCss(sizeValue);
+    const radiusCss = getRadiusCss(radiusValue);
     const css = getColorCss(config);
 
     return `${sizeCss}\n\n${radiusCss}\n\n${css}`;
@@ -87,16 +72,20 @@ export function createShadcnTheme(options?: ThemeOptions) {
     /**
      * get the complete css variables string
      *
-     * the result is the combination of color css variables and radius css variable
+     * the result is the combination of size css variables, radius css variables, and color css variables
      */
     getCss,
     /**
-     * get the color css variables string
+     * get the size css variables string
      */
-    getColorCss,
+    getSizeCss,
     /**
      * get the radius css variable string
      */
-    getRadiusCss
+    getRadiusCss,
+    /**
+     * get the color css variables string
+     */
+    getColorCss
   };
 }

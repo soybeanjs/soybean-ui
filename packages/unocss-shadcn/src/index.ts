@@ -5,7 +5,7 @@ import type { Preflight, Preset } from 'unocss';
 import type { Theme } from 'unocss/preset-mini';
 import { presetAnimations } from 'unocss-preset-animations';
 import { createShadcnTheme } from '@soybeanjs/shadcn-theme';
-import type { ThemeOptions } from '@soybeanjs/shadcn-theme';
+import type { ThemeOptions, BaseThemeOptions } from '@soybeanjs/shadcn-theme';
 import globalStyle from './global.css?raw';
 import resetStyle from './reset.css?raw';
 
@@ -17,19 +17,19 @@ export interface ShadcnPresetOptions extends ThemeOptions {
    */
   generated?: boolean;
   /**
-   * Whether to include the global CSS preflight (border color, background, etc.).
-   * Only effective when `generated` is `true`.
-   *
-   * @default true
-   */
-  globalCss?: boolean;
-  /**
    * Whether to include the reset CSS preflight (box-sizing, border-width, etc.).
    * Only effective when `generated` is `true`.
    *
    * @default true
    */
   resetCss?: boolean;
+  /**
+   * Whether to include the global CSS preflight (border color, background, etc.).
+   * Only effective when `generated` is `true`.
+   *
+   * @default true
+   */
+  globalCss?: boolean;
   /**
    * Font configuration forwarded to `@unocss/preset-web-fonts`.
    * When provided, `presetWebFonts` is automatically included in the returned presets.
@@ -365,7 +365,7 @@ export interface SbeanPresetOptions {
 
 interface SbeanConfig {
   style?: string;
-  uno?: { base?: string; primary?: string; feedback?: string; radius?: string; size?: string };
+  uno?: BaseThemeOptions;
   font?: { sans?: string; heading?: string };
 }
 
@@ -394,13 +394,7 @@ export function presetSbean(options?: SbeanPresetOptions): Preset<Theme>[] {
   const config = readSbeanConfig(cwd);
 
   const shadcnOptions: ShadcnPresetOptions = {
-    generated: true,
-    darkSelector: 'class',
-    base: (config?.uno?.base as ShadcnPresetOptions['base']) ?? 'zinc',
-    primary: (config?.uno?.primary as ShadcnPresetOptions['primary']) ?? 'indigo',
-    feedback: (config?.uno?.feedback as ShadcnPresetOptions['feedback']) ?? 'classic',
-    radius: (config?.uno?.radius as ShadcnPresetOptions['radius']) ?? 'md',
-    size: (config?.uno?.size as ShadcnPresetOptions['size']) ?? 'md'
+    ...config?.uno
   };
 
   // Fonts

@@ -14,7 +14,8 @@ import type {
   DarkSelector,
   OKLCHColor,
   ThemeOptions,
-  Radii
+  ThemeSize,
+  ThemeRadius
 } from './types';
 
 export const RADIUS_VARIABLE = '--radius';
@@ -76,12 +77,11 @@ export const EXTENDED_THEME_VARIABLES = {
 };
 
 export const DEFAULT_PRESET_OPTIONS = {
+  size: 'md',
+  radius: 'md',
   base: 'zinc',
   primary: 'indigo',
-  feedback: 'classic',
-  sidebar: 'extended',
-  radius: 'md',
-  size: 'md'
+  feedback: 'classic'
 } as const satisfies ThemeOptions;
 
 /**
@@ -96,7 +96,19 @@ const DARK_BORDER: OKLCHColor = 'oklch(100% 0 0 / 0.1)';
 
 const DARK_INPUT: OKLCHColor = 'oklch(100% 0 0 / 0.15)';
 
-export const RADII = {
+/** Size → root font-size mapping (in pixels). */
+export const THEME_SIZE = {
+  xs: 12,
+  sm: 14,
+  md: 16,
+  lg: 18,
+  xl: 20,
+  '2xl': 24
+} satisfies Record<ThemeSize, number>;
+
+export const themeSizeKeys = keysOf(THEME_SIZE) as ['xs', 'sm', 'md', 'lg', 'xl', '2xl'];
+
+export const THEME_RADIUS = {
   none: '0px',
   '2xs': '0.25rem',
   xs: '0.375rem',
@@ -106,9 +118,9 @@ export const RADII = {
   xl: '0.875rem',
   '2xl': '1rem',
   full: '9999px'
-} satisfies Record<Radii, string>;
+} satisfies Record<ThemeRadius, string>;
 
-export const radiiKeys = keysOf(RADII) as ['none', '2xs', 'xs', 'sm', 'md', 'lg', 'xl', '2xl', 'full'];
+export const themeRadiusKeys = keysOf(THEME_RADIUS) as ['none', '2xs', 'xs', 'sm', 'md', 'lg', 'xl', '2xl', 'full'];
 
 /**
  * builtin base color preset

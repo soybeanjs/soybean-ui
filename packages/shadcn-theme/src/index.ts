@@ -6,15 +6,16 @@ export {
   builtinPrimaryPresetKeys,
   builtinFeedbackPresetKeys,
   DEFAULT_PRESET_OPTIONS,
-  RADII,
-  radiiKeys
+  THEME_SIZE,
+  themeSizeKeys,
+  THEME_RADIUS,
+  themeRadiusKeys
 } from './constants';
-export { createShadcnTheme, generateSizeCSS } from './core';
+export { createShadcnTheme } from './core';
 
 export type {
-  ThemeRadius,
   ThemeSize,
-  Radii,
+  ThemeRadius,
   HSLColor,
   OKLCHColor,
   ColorValue,
@@ -40,5 +41,6 @@ export type {
   DarkSelector,
   ColorFormat,
   PresetConfig,
-  ThemeOptions
+  ThemeOptions,
+  BaseThemeOptions
 } from './types';
