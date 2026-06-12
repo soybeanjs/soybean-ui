@@ -1,0 +1,42 @@
+{
+  "name": "color-swatch",
+  "dependencies": ["@soybeanjs/headless"],
+  "files": [
+    {
+      "path": "packages/ui/src/components/color-swatch/color-swatch.vue",
+      "type": "registry:ui",
+      "content": "<script setup lang=\"ts\">\nimport { computed } from 'vue';\nimport { ColorSwatchCompact, provideColorSwatchUi } from '@soybeanjs/headless/color-swatch';\nimport { useOmitProps } from '@soybeanjs/headless/composables';\nimport { colorSwatchVariants } from '@/styles/color-swatch';\nimport type { ColorSwatchProps, ColorSwatchSlots } from './types';\n\ndefineOptions({\n  name: 'SColorSwatch'\n});\n\nconst props = defineProps<ColorSwatchProps>();\n\ndefineSlots<ColorSwatchSlots>();\n\nconst forwardedProps = useOmitProps(props, ['class', 'ui', 'size', 'shape']);\n\nconst ui = computed(() =>\n  colorSwatchVariants({ size: props.size, shape: props.shape }, props.ui, { root: props.class })\n);\n\nprovideColorSwatchUi(ui);\n</script>\n\n<template>\n  <ColorSwatchCompact v-slot=\"slotProps\" v-bind=\"forwardedProps\">\n    <slot v-bind=\"slotProps\" />\n  </ColorSwatchCompact>\n</template>\n"
+    },
+    {
+      "path": "packages/ui/src/components/color-swatch/index.ts",
+      "type": "registry:lib",
+      "content": "export { default as SColorSwatch } from './color-swatch.vue';\n\nexport type * from '@soybeanjs/headless/color-swatch';\nexport type * from './types';\n"
+    },
+    {
+      "path": "packages/ui/src/components/color-swatch/types.ts",
+      "type": "registry:lib",
+      "content": "import type { ColorSwatchCompactProps, ColorSwatchCompactSlots, ColorSwatchUi } from '@soybeanjs/headless/color-swatch';\nimport type { ClassValue } from '@soybeanjs/headless/types';\nimport type { ColorSwatchShape } from '@/styles/color-swatch';\nimport type { ThemeSize } from '@/theme';\n\n/**\n * Properties for the ColorSwatch component.\n */\nexport interface ColorSwatchProps extends ColorSwatchCompactProps {\n  /**\n   * Additional class names applied to the root element.\n   */\n  class?: ClassValue;\n  /**\n   * Visual size of the component.\n   */\n  size?: ThemeSize;\n  /**\n   * Per-slot class overrides for the component.\n   */\n  ui?: Partial<ColorSwatchUi>;\n  /**\n   * Shape of the component.\n   */\n  shape?: ColorSwatchShape;\n}\n\n/**\n * Slots for the ColorSwatch component.\n */\nexport type ColorSwatchSlots = ColorSwatchCompactSlots;\n\nexport type { ColorSwatchShape };\n"
+    },
+    {
+      "path": "packages/ui/src/styles/color-swatch.ts",
+      "type": "registry:style",
+      "content": "// @unocss-include\nimport { scv } from '@soybeanjs/cva';\nimport type { VariantProps } from '@soybeanjs/cva';\n\nexport const colorSwatchVariants = scv({\n  slots: {\n    root: [\n      'relative isolate inline-flex shrink-0 overflow-hidden border border-input bg-background shadow-sm',\n      'data-[no-color]:bg-muted/40'\n    ],\n    checker: `absolute inset-0 bg-[linear-gradient(45deg,rgba(0,0,0,0.08)_25%,transparent_25%,transparent_75%,rgba(0,0,0,0.08)_75%),linear-gradient(45deg,rgba(0,0,0,0.08)_25%,transparent_25%,transparent_75%,rgba(0,0,0,0.08)_75%)] bg-[length:8px_8px] bg-[position:0_0,4px_4px]`,\n    fill: 'absolute inset-0 bg-[var(--soybean-color-swatch-color)]'\n  },\n  variants: {\n    size: {\n      xs: {\n        root: 'size-5 text-2xs'\n      },\n      sm: {\n        root: 'size-5.5 text-xs'\n      },\n      md: {\n        root: 'size-6 text-sm'\n      },\n      lg: {\n        root: 'size-6.5 text-base'\n      },\n      xl: {\n        root: 'size-7 text-lg'\n      },\n      '2xl': {\n        root: 'size-8 text-xl'\n      }\n    },\n    shape: {\n      square: {\n        root: 'rounded-md'\n      },\n      circle: {\n        root: 'rounded-full'\n      }\n    }\n  },\n  defaultVariants: {\n    size: 'md',\n    shape: 'square'\n  }\n});\n\ntype ColorSwatchVariants = VariantProps<typeof colorSwatchVariants>;\n\nexport type ColorSwatchShape = NonNullable<ColorSwatchVariants['shape']>;\n"
+    },
+    {
+      "path": "packages/ui/src/theme/index.ts",
+      "type": "registry:theme",
+      "content": "export * from './config';\n\nexport type * from './types';\n"
+    },
+    {
+      "path": "packages/ui/src/theme/config.ts",
+      "type": "registry:theme",
+      "content": "import type { ThemeSize } from './types';\n\nexport const themeSizeMap: Record<ThemeSize, number> = {\n  xs: 12,\n  sm: 14,\n  md: 16,\n  lg: 18,\n  xl: 20,\n  '2xl': 24\n};\nexport const miniSizeMap: Record<ThemeSize, ThemeSize> = {\n  xs: 'xs',\n  sm: 'xs',\n  md: 'sm',\n  lg: 'md',\n  xl: 'lg',\n  '2xl': 'xl'\n};\n\nexport const themeSizeRatio = Object.fromEntries(\n  Object.entries(themeSizeMap).map(([key, value]) => [key, value / themeSizeMap.md])\n) as Record<ThemeSize, number>;\n"
+    },
+    {
+      "path": "packages/ui/src/theme/types.ts",
+      "type": "registry:theme",
+      "content": "export type ThemeColor = 'primary' | 'destructive' | 'success' | 'warning' | 'info' | 'carbon' | 'secondary' | 'accent';\n\nexport type ThemeSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl';\n"
+    }
+  ],
+  "type": "registry:ui"
+}

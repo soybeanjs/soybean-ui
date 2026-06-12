@@ -1,0 +1,27 @@
+{
+  "name": "tree",
+  "dependencies": ["@formkit/auto-animate", "@soybeanjs/headless"],
+  "files": [
+    {
+      "path": "packages/ui/src/components/tree/index.ts",
+      "type": "registry:lib",
+      "content": "export { default as STree } from './tree.vue';\nexport { default as STreeVirtualizer } from './tree-virtualizer.vue';\nexport { TreeItem as STreeItem, TreeVirtualizerItem as STreeVirtualizerItem } from '@soybeanjs/headless/tree';\n\nexport type * from '@soybeanjs/headless/tree';\nexport type * from './types';\n"
+    },
+    {
+      "path": "packages/ui/src/components/tree/tree-virtualizer.vue",
+      "type": "registry:ui",
+      "content": "<script setup lang=\"ts\" generic=\"T extends TreeItemData, U extends MaybeArray<string> | undefined, M extends boolean\">\nimport { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';\nimport { TreeVirtualizerRoot } from '@soybeanjs/headless/tree';\nimport type { TreeItemData } from '@soybeanjs/headless/tree';\nimport type { MaybeArray } from '@soybeanjs/headless/types';\nimport { VirtualizerContent } from '@soybeanjs/headless/virtualizer';\nimport type { TreeVirtualizerProps, TreeVirtualizerEmits } from './types';\n\ndefineOptions({\n  name: 'STreeVirtualizer'\n});\n\nconst props = defineProps<TreeVirtualizerProps<T, U, M>>();\n\nconst emit = defineEmits<TreeVirtualizerEmits<TreeVirtualizerProps<T, U, M>['multiple']>>();\n\nconst forwardedProps = useOmitProps(props, ['contentProps', 'dynamicContentProps']);\n\nconst listeners = useForwardListeners(emit);\n</script>\n\n<template>\n  <TreeVirtualizerRoot\n    v-slot=\"{ virtualItems, flattenItems, modelValue, expanded }\"\n    v-bind=\"forwardedProps\"\n    v-on=\"listeners\"\n  >\n    <VirtualizerContent v-bind=\"contentProps\" :dynamic-content-props=\"dynamicContentProps\">\n      <slot\n        v-for=\"item in virtualItems\"\n        :key=\"item.index\"\n        name=\"item\"\n        :virtual-item=\"item\"\n        :item=\"flattenItems[item.index]\"\n        :model-value=\"modelValue as U\"\n        :expanded=\"expanded\"\n      />\n    </VirtualizerContent>\n  </TreeVirtualizerRoot>\n</template>\n"
+    },
+    {
+      "path": "packages/ui/src/components/tree/tree.vue",
+      "type": "registry:ui",
+      "content": "<script setup lang=\"ts\" generic=\"T extends TreeItemData, U extends MaybeArray<string> | undefined, M extends boolean\">\nimport { useForwardListeners } from '@soybeanjs/headless/composables';\nimport { TreeRoot } from '@soybeanjs/headless/tree';\nimport type { TreeRootProps, TreeItemData, TreeRootEmits } from '@soybeanjs/headless/tree';\nimport type { MaybeArray } from '@soybeanjs/headless/types';\nimport { vAutoAnimate } from '@formkit/auto-animate';\n\ndefineOptions({\n  name: 'STree'\n});\n\nconst props = withDefaults(defineProps<TreeRootProps<T, U, M>>(), {\n  loop: true\n});\n\nconst emit = defineEmits<TreeRootEmits<TreeRootProps<T, U, M>['multiple']>>();\n\nconst listeners = useForwardListeners(emit);\n</script>\n\n<template>\n  <TreeRoot v-slot=\"{ flattenItems, modelValue, expanded }\" v-auto-animate v-bind=\"props\" v-on=\"listeners\">\n    <slot name=\"top\" />\n    <slot\n      v-for=\"item in flattenItems\"\n      :key=\"item.value\"\n      name=\"item\"\n      :item=\"item\"\n      :model-value=\"modelValue\"\n      :expanded=\"expanded\"\n    />\n    <slot name=\"bottom\" />\n  </TreeRoot>\n</template>\n"
+    },
+    {
+      "path": "packages/ui/src/components/tree/types.ts",
+      "type": "registry:lib",
+      "content": "import type { TreeItemData, TreeVirtualizerRootEmits, TreeVirtualizerRootProps } from '@soybeanjs/headless/tree';\nimport type { MaybeArray } from '@soybeanjs/headless/types';\nimport type { VirtualizerContentProps, VirtualizerDynamicContentProps } from '@soybeanjs/headless/virtualizer';\n\n/**\n * Properties for the TreeVirtualizer component.\n */\nexport interface TreeVirtualizerProps<\n  T extends TreeItemData,\n  U extends MaybeArray<string> | undefined,\n  M extends boolean\n> extends TreeVirtualizerRootProps<T, U, M> {\n  /**\n   * Properties forwarded to the content element.\n   */\n  contentProps?: VirtualizerContentProps;\n  /**\n   * Properties forwarded to the dynamic content element.\n   */\n  dynamicContentProps?: VirtualizerDynamicContentProps;\n}\n\n/**\n * Events for the TreeVirtualizer component.\n */\nexport type TreeVirtualizerEmits<M extends boolean | undefined> = TreeVirtualizerRootEmits<M>;\n"
+    }
+  ],
+  "type": "registry:ui"
+}

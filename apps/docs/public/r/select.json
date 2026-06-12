@@ -1,9 +1,14 @@
 {
   "name": "select",
   "description": "Displays a list of options for the user to pick from.",
-  "dependencies": ["@soybeanjs/headless", "@soybeanjs/cva"],
-  "registryDependencies": ["utils", "button"],
+  "dependencies": ["@soybeanjs/cva", "@soybeanjs/headless", "@soybeanjs/utils"],
+  "registryDependencies": ["button", "utils"],
   "files": [
+    {
+      "path": "packages/ui/src/components/select/index.ts",
+      "type": "registry:lib",
+      "content": "export { default as SSelect } from './select.vue';\n\nexport type * from '@soybeanjs/headless/select';\nexport type * from './types';\n"
+    },
     {
       "path": "packages/ui/src/components/select/select.vue",
       "type": "registry:ui",

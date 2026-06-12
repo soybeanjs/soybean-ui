@@ -1,13 +1,18 @@
 {
   "name": "avatar",
   "description": "An image element with a fallback for representing the user.",
-  "dependencies": ["@soybeanjs/headless", "@soybeanjs/cva"],
+  "dependencies": ["@soybeanjs/cva", "@soybeanjs/headless", "@soybeanjs/utils"],
   "registryDependencies": ["utils"],
   "files": [
     {
       "path": "packages/ui/src/components/avatar/avatar.vue",
       "type": "registry:ui",
       "content": "<script setup lang=\"ts\">\nimport { computed, useSlots } from 'vue';\nimport { AvatarCompact, provideAvatarUi } from '@soybeanjs/headless/avatar';\nimport { useOmitProps } from '@soybeanjs/headless/composables';\nimport { keysOf } from '@soybeanjs/utils';\nimport { avatarVariants } from '@/styles/avatar';\nimport type { AvatarProps, AvatarEmits } from './types';\n\ndefineOptions({\n  name: 'SAvatar'\n});\n\nconst props = defineProps<AvatarProps>();\n\nconst emit = defineEmits<AvatarEmits>();\n\nconst slots = useSlots();\n\nconst forwardedProps = useOmitProps(props, ['class', 'size', 'ui']);\n\nconst slotNames = computed(() => keysOf(slots));\n\nconst ui = computed(() => avatarVariants({ size: props.size }, props.ui, { root: props.class }));\n\nprovideAvatarUi(ui);\n</script>\n\n<template>\n  <AvatarCompact v-bind=\"forwardedProps\" @loading-status-change=\"emit('loadingStatusChange', $event)\">\n    <template v-for=\"slotName in slotNames\" #[slotName]>\n      <slot :name=\"slotName\" />\n    </template>\n  </AvatarCompact>\n</template>\n"
+    },
+    {
+      "path": "packages/ui/src/components/avatar/index.ts",
+      "type": "registry:lib",
+      "content": "export { default as SAvatar } from './avatar.vue';\n\nexport type * from '@soybeanjs/headless/avatar';\nexport type * from './types';\n"
     },
     {
       "path": "packages/ui/src/components/avatar/types.ts",

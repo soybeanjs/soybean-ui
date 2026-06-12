@@ -1,18 +1,23 @@
 {
   "name": "dialog",
   "description": "A modal dialog that interrupts the user with important content.",
-  "dependencies": ["@soybeanjs/headless", "@soybeanjs/cva"],
-  "registryDependencies": ["utils", "button"],
+  "dependencies": ["@soybeanjs/cva", "@soybeanjs/headless", "@soybeanjs/utils"],
+  "registryDependencies": ["button", "utils"],
   "files": [
+    {
+      "path": "packages/ui/src/components/dialog/dialog-provider.vue",
+      "type": "registry:ui",
+      "content": "<script setup lang=\"ts\">\nimport { computed } from 'vue';\nimport { DialogProvider, provideDialogUi } from '@soybeanjs/headless/dialog';\nimport { dialogVariants } from '@/styles/dialog';\n\ndefineOptions({\n  name: 'SDialogProvider'\n});\n\nconst ui = computed(() => dialogVariants({ size: 'md' }));\n\nprovideDialogUi(ui);\n</script>\n\n<template>\n  <DialogProvider />\n</template>\n"
+    },
     {
       "path": "packages/ui/src/components/dialog/dialog.vue",
       "type": "registry:ui",
       "content": "<script setup lang=\"ts\">\nimport { computed } from 'vue';\nimport { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';\nimport { DialogCompact, provideDialogUi } from '@soybeanjs/headless/dialog';\nimport { keysOf } from '@soybeanjs/utils';\nimport { dialogVariants } from '@/styles/dialog';\nimport type { DialogProps, DialogEmits, DialogSlots } from './types';\n\ndefineOptions({\n  name: 'SDialog'\n});\n\nconst props = withDefaults(defineProps<DialogProps>(), {\n  open: undefined,\n  modal: true,\n  showClose: true\n});\n\nconst emit = defineEmits<DialogEmits>();\n\nconst slots = defineSlots<DialogSlots>();\n\nconst forwardedProps = useOmitProps(props, ['class', 'size', 'ui']);\n\nconst listeners = useForwardListeners(emit);\n\nconst slotNames = computed(() => keysOf(slots));\n\nconst ui = computed(() =>\n  dialogVariants(\n    {\n      size: props.size,\n      pure: props.pure\n    },\n    props.ui,\n    { popup: props.class }\n  )\n);\n\nprovideDialogUi(ui);\n</script>\n\n<template>\n  <DialogCompact v-bind=\"forwardedProps\" v-on=\"listeners\">\n    <template v-for=\"slotName in slotNames\" #[slotName]=\"slotProps\">\n      <slot :name=\"slotName\" v-bind=\"slotProps\" />\n    </template>\n  </DialogCompact>\n</template>\n"
     },
     {
-      "path": "packages/ui/src/components/dialog/dialog-provider.vue",
-      "type": "registry:ui",
-      "content": "<script setup lang=\"ts\">\nimport { computed } from 'vue';\nimport { DialogProvider, provideDialogUi } from '@soybeanjs/headless/dialog';\nimport { dialogVariants } from '@/styles/dialog';\n\ndefineOptions({\n  name: 'SDialogProvider'\n});\n\nconst ui = computed(() => dialogVariants({ size: 'md' }));\n\nprovideDialogUi(ui);\n</script>\n\n<template>\n  <DialogProvider />\n</template>\n"
+      "path": "packages/ui/src/components/dialog/index.ts",
+      "type": "registry:lib",
+      "content": "export { dialog } from '@soybeanjs/headless/dialog';\nexport { default as SDialog } from './dialog.vue';\nexport { default as SDialogProvider } from './dialog-provider.vue';\n\nexport type * from '@soybeanjs/headless/dialog';\nexport type * from './types';\n"
     },
     {
       "path": "packages/ui/src/components/dialog/types.ts",

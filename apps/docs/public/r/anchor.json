@@ -1,0 +1,42 @@
+{
+  "name": "anchor",
+  "dependencies": ["@soybeanjs/headless"],
+  "files": [
+    {
+      "path": "packages/ui/src/components/anchor/anchor.vue",
+      "type": "registry:ui",
+      "content": "<script setup lang=\"ts\">\nimport { computed } from 'vue';\nimport type { CSSProperties } from 'vue';\nimport { AnchorCompact, provideAnchorUi } from '@soybeanjs/headless/anchor';\nimport { useOmitProps, useForwardListeners } from '@soybeanjs/headless/composables';\nimport { anchorVariants } from '@/styles/anchor';\nimport type { AnchorProps, AnchorEmits } from './types';\n\ndefineOptions({\n  name: 'SAnchor'\n});\n\nconst props = withDefaults(defineProps<AnchorProps>(), {\n  offsetTop: 0,\n  sticky: true\n});\n\nconst emit = defineEmits<AnchorEmits>();\n\nconst forwardedProps = useOmitProps(props, ['color', 'size', 'ui', 'class', 'sticky']);\n\nconst events = useForwardListeners(emit);\n\nconst style = computed<CSSProperties>(() => ({\n  '--soybean-anchor-offset-top': `${props.offsetTop}px`\n}));\n\nconst ui = computed(() =>\n  anchorVariants(\n    {\n      color: props.color,\n      orientation: props.orientation,\n      size: props.size,\n      sticky: props.sticky\n    },\n    props.ui,\n    { root: props.class }\n  )\n);\n\nprovideAnchorUi(ui);\n</script>\n\n<template>\n  <AnchorCompact v-bind=\"forwardedProps\" :items=\"items\" :style=\"style\" v-on=\"events\" />\n</template>\n"
+    },
+    {
+      "path": "packages/ui/src/components/anchor/index.ts",
+      "type": "registry:lib",
+      "content": "export { default as SAnchor } from './anchor.vue';\n\nexport type * from '@soybeanjs/headless/anchor';\nexport type * from './types';\n"
+    },
+    {
+      "path": "packages/ui/src/components/anchor/types.ts",
+      "type": "registry:lib",
+      "content": "import type { AnchorCompactEmits, AnchorCompactProps, AnchorUiSlot } from '@soybeanjs/headless/anchor';\nimport type { ClassValue, UiClass } from '@soybeanjs/headless/types';\nimport type { ThemeColor, ThemeSize } from '@/theme';\n\n/**\n * Additional UI slots for the anchor component.\n */\nexport type AnchorExtraUiSlot = Exclude<AnchorUiSlot, 'root' | 'link'>;\n\n/**\n * Extended UI class overrides for the Anchor component.\n */\nexport type AnchorExtendedUi = UiClass<AnchorUiSlot>;\n\n/**\n * Properties for the Anchor component.\n */\nexport interface AnchorProps extends AnchorCompactProps {\n  /**\n   * Theme color of the component.\n   */\n  color?: ThemeColor;\n  /**\n   * Visual size of the component.\n   */\n  size?: ThemeSize;\n  /**\n   * Per-slot class overrides for the component.\n   */\n  ui?: Partial<AnchorExtendedUi>;\n  /**\n   * Additional class names applied to the root element.\n   */\n  class?: ClassValue;\n  /**\n   * Whether sticky.\n   */\n  sticky?: boolean;\n}\n\n/**\n * Events for the Anchor component.\n */\nexport type AnchorEmits = AnchorCompactEmits;\n"
+    },
+    {
+      "path": "packages/ui/src/styles/anchor.ts",
+      "type": "registry:style",
+      "content": "// @unocss-include\nimport { scv } from '@soybeanjs/cva';\n\nexport const anchorVariants = scv({\n  slots: {\n    root: 'relative flex flex-col gap-1 text-sm',\n    link: [\n      'group inline-flex w-full items-center gap-2 rounded-md px-3 py-2 text-muted-foreground outline-none transition-colors',\n      'hover:bg-accent/60 hover:text-accent-foreground',\n      'focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background',\n      'data-[disabled]:pointer-events-none data-[disabled]:opacity-50',\n      'data-[state=active]:bg-accent data-[state=active]:text-foreground'\n    ],\n    sub: 'ms-4 flex flex-col gap-1 border-s border-border/60 ps-3',\n    item: 'flex flex-col gap-1',\n    indicator: `size-1.5 shrink-0 rounded-full bg-primary opacity-0 transition-opacity group-data-[state=active]:opacity-100`,\n    title: 'min-w-0 truncate'\n  },\n  variants: {\n    color: {\n      primary: {\n        indicator: 'bg-primary',\n        link: 'data-[state=active]:bg-primary/10 data-[state=active]:text-primary'\n      },\n      destructive: {\n        indicator: 'bg-destructive',\n        link: 'data-[state=active]:bg-destructive/10 data-[state=active]:text-destructive'\n      },\n      success: {\n        indicator: 'bg-success',\n        link: 'data-[state=active]:bg-success/10 data-[state=active]:text-success'\n      },\n      warning: {\n        indicator: 'bg-warning',\n        link: 'data-[state=active]:bg-warning/10 data-[state=active]:text-warning'\n      },\n      info: {\n        indicator: 'bg-info',\n        link: 'data-[state=active]:bg-info/10 data-[state=active]:text-info'\n      },\n      carbon: {\n        indicator: 'bg-carbon',\n        link: 'data-[state=active]:bg-carbon/10 data-[state=active]:text-carbon'\n      },\n      secondary: {\n        indicator: 'bg-secondary-foreground/50',\n        link: 'data-[state=active]:bg-secondary-foreground/10 data-[state=active]:text-secondary-foreground'\n      },\n      accent: {\n        indicator: 'bg-accent-foreground/50',\n        link: 'data-[state=active]:bg-accent-foreground/10 data-[state=active]:text-accent-foreground'\n      }\n    },\n    orientation: {\n      vertical: {},\n      horizontal: {\n        root: 'flex-row flex-wrap items-start gap-2',\n        item: 'min-w-36 flex-1',\n        sub: 'ms-0 mt-2 border-s-0 border-t ps-0 pt-2'\n      }\n    },\n    size: {\n      xs: {\n        link: 'px-2 py-1.5 text-3xs'\n      },\n      sm: {\n        link: 'px-2.5 py-1.5 text-2xs'\n      },\n      md: {\n        link: 'px-3 py-2 text-xs'\n      },\n      lg: {\n        link: 'px-3.5 py-2.5 text-sm',\n        indicator: 'size-2'\n      },\n      xl: {\n        link: 'px-4 py-3 text-base',\n        indicator: 'size-2'\n      },\n      '2xl': {\n        link: 'px-4.5 py-3.5 text-lg',\n        indicator: 'size-2'\n      }\n    },\n    sticky: {\n      true: {\n        root: 'sticky self-start top-[var(--soybean-anchor-offset-top,0px)] max-h-[calc(100vh-var(--soybean-anchor-offset-top,0px))] overflow-auto pe-1'\n      },\n      false: {}\n    }\n  },\n  defaultVariants: {\n    color: 'primary',\n    orientation: 'vertical',\n    size: 'md',\n    sticky: true\n  }\n});\n"
+    },
+    {
+      "path": "packages/ui/src/theme/index.ts",
+      "type": "registry:theme",
+      "content": "export * from './config';\n\nexport type * from './types';\n"
+    },
+    {
+      "path": "packages/ui/src/theme/config.ts",
+      "type": "registry:theme",
+      "content": "import type { ThemeSize } from './types';\n\nexport const themeSizeMap: Record<ThemeSize, number> = {\n  xs: 12,\n  sm: 14,\n  md: 16,\n  lg: 18,\n  xl: 20,\n  '2xl': 24\n};\nexport const miniSizeMap: Record<ThemeSize, ThemeSize> = {\n  xs: 'xs',\n  sm: 'xs',\n  md: 'sm',\n  lg: 'md',\n  xl: 'lg',\n  '2xl': 'xl'\n};\n\nexport const themeSizeRatio = Object.fromEntries(\n  Object.entries(themeSizeMap).map(([key, value]) => [key, value / themeSizeMap.md])\n) as Record<ThemeSize, number>;\n"
+    },
+    {
+      "path": "packages/ui/src/theme/types.ts",
+      "type": "registry:theme",
+      "content": "export type ThemeColor = 'primary' | 'destructive' | 'success' | 'warning' | 'info' | 'carbon' | 'secondary' | 'accent';\n\nexport type ThemeSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl';\n"
+    }
+  ],
+  "type": "registry:ui"
+}

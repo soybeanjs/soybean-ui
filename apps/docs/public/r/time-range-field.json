@@ -1,0 +1,52 @@
+{
+  "name": "time-range-field",
+  "dependencies": ["@soybeanjs/headless", "@soybeanjs/utils"],
+  "files": [
+    {
+      "path": "packages/ui/src/components/time-range-field/index.ts",
+      "type": "registry:lib",
+      "content": "export { default as STimeRangeField } from './time-range-field.vue';\n\nexport type * from '@soybeanjs/headless/time-range-field';\nexport type * from './types';\n"
+    },
+    {
+      "path": "packages/ui/src/components/time-range-field/time-range-field.vue",
+      "type": "registry:ui",
+      "content": "<script setup lang=\"ts\">\nimport { computed } from 'vue';\nimport { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';\nimport { TimeRangeFieldCompact, provideTimeRangeFieldUi } from '@soybeanjs/headless/time-range-field';\nimport { keysOf } from '@soybeanjs/utils';\nimport { timeRangeFieldVariants } from '@/styles/time-range-field';\nimport type { TimeRangeFieldProps, TimeRangeFieldEmits, TimeRangeFieldSlots } from './types';\n\ndefineOptions({\n  name: 'STimeRangeField'\n});\n\nconst props = defineProps<TimeRangeFieldProps>();\n\nconst emit = defineEmits<TimeRangeFieldEmits>();\n\nconst slots = defineSlots<TimeRangeFieldSlots>();\n\nconst listeners = useForwardListeners(emit);\n\nconst forwardedProps = useOmitProps(props, ['class', 'size', 'ui']);\n\nconst slotNames = computed(() => keysOf(slots));\n\nconst ui = computed(() => timeRangeFieldVariants({ size: props.size }, props.ui, { root: props.class }));\n\nprovideTimeRangeFieldUi(ui);\n</script>\n\n<template>\n  <TimeRangeFieldCompact v-bind=\"forwardedProps\" v-on=\"listeners\">\n    <template v-for=\"slotName in slotNames\" :key=\"slotName\" #[slotName]>\n      <slot :name=\"slotName\" />\n    </template>\n  </TimeRangeFieldCompact>\n</template>\n"
+    },
+    {
+      "path": "packages/ui/src/components/time-range-field/types.ts",
+      "type": "registry:lib",
+      "content": "import type {\n  TimeRangeFieldCompactProps,\n  TimeRangeFieldCompactEmits,\n  TimeRangeFieldCompactSlots,\n  TimeRangeFieldUi\n} from '@soybeanjs/headless/time-range-field';\nimport type { ClassValue } from '@soybeanjs/headless/types';\nimport type { ThemeSize } from '@/theme';\n\n/**\n * Properties for the TimeRangeField component.\n */\nexport interface TimeRangeFieldProps extends TimeRangeFieldCompactProps {\n  /**\n   * Additional class names applied to the root element.\n   */\n  class?: ClassValue;\n  /**\n   * Visual size of the component.\n   */\n  size?: ThemeSize;\n  /**\n   * Per-slot class overrides for the component.\n   */\n  ui?: Partial<TimeRangeFieldUi>;\n}\n\n/**\n * Events for the TimeRangeField component.\n */\nexport type TimeRangeFieldEmits = TimeRangeFieldCompactEmits;\n\n/**\n * Slots for the TimeRangeField component.\n */\nexport type TimeRangeFieldSlots = TimeRangeFieldCompactSlots;\n"
+    },
+    {
+      "path": "packages/ui/src/styles/time-range-field.ts",
+      "type": "registry:style",
+      "content": "export { dateRangeFieldVariants as timeRangeFieldVariants } from './date-range-field';\n"
+    },
+    {
+      "path": "packages/ui/src/theme/index.ts",
+      "type": "registry:theme",
+      "content": "export * from './config';\n\nexport type * from './types';\n"
+    },
+    {
+      "path": "packages/ui/src/styles/date-range-field.ts",
+      "type": "registry:style",
+      "content": "// @unocss-include\nimport { scv } from '@soybeanjs/cva';\nimport { dateFieldVariants } from './date-field';\n\nexport const dateRangeFieldVariants = scv({\n  extend: [dateFieldVariants],\n  slots: {\n    startRoot: 'inline-flex items-center',\n    endRoot: 'inline-flex items-center',\n    separator: ['inline-flex items-center justify-center text-muted-foreground', 'select-none']\n  },\n  variants: {\n    size: {\n      xs: {\n        separator: 'px-0.5'\n      },\n      sm: {\n        separator: 'px-0.75'\n      },\n      md: {\n        separator: 'px-1'\n      },\n      lg: {\n        separator: 'px-1.25'\n      },\n      xl: {\n        separator: 'px-1.5'\n      },\n      '2xl': {\n        separator: 'px-2'\n      }\n    }\n  },\n  defaultVariants: {\n    size: 'md'\n  }\n});\n"
+    },
+    {
+      "path": "packages/ui/src/theme/config.ts",
+      "type": "registry:theme",
+      "content": "import type { ThemeSize } from './types';\n\nexport const themeSizeMap: Record<ThemeSize, number> = {\n  xs: 12,\n  sm: 14,\n  md: 16,\n  lg: 18,\n  xl: 20,\n  '2xl': 24\n};\nexport const miniSizeMap: Record<ThemeSize, ThemeSize> = {\n  xs: 'xs',\n  sm: 'xs',\n  md: 'sm',\n  lg: 'md',\n  xl: 'lg',\n  '2xl': 'xl'\n};\n\nexport const themeSizeRatio = Object.fromEntries(\n  Object.entries(themeSizeMap).map(([key, value]) => [key, value / themeSizeMap.md])\n) as Record<ThemeSize, number>;\n"
+    },
+    {
+      "path": "packages/ui/src/theme/types.ts",
+      "type": "registry:theme",
+      "content": "export type ThemeColor = 'primary' | 'destructive' | 'success' | 'warning' | 'info' | 'carbon' | 'secondary' | 'accent';\n\nexport type ThemeSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl';\n"
+    },
+    {
+      "path": "packages/ui/src/styles/date-field.ts",
+      "type": "registry:style",
+      "content": "// @unocss-include\nimport { scv } from '@soybeanjs/cva';\n\nexport const dateFieldVariants = scv({\n  slots: {\n    root: [\n      'group inline-flex items-center w-fit lt-md:max-w-auto rounded-md border border-input bg-background transition-all-150',\n      'outline-none focus-within:ring-3 focus-within:ring-offset-background focus-within:ring-primary/30',\n      'data-[disabled]:opacity-50 data-[readonly]:bg-muted/40',\n      'data-[invalid]:border-destructive data-[invalid]:ring-3 data-[invalid]:ring-destructive/20'\n    ],\n    input: [\n      'inline-flex items-center justify-center rounded-sm text-center outline-none',\n      'tabular-nums leading-none',\n      'data-[segment=literal]:min-w-0 data-[segment=literal]:px-0 data-[segment=literal]:text-muted-foreground',\n      'data-[segment=timeZoneName]:min-w-fit data-[segment=timeZoneName]:px-1 data-[segment=timeZoneName]:text-muted-foreground',\n      'data-[placeholder]:text-muted-foreground',\n      'focus-visible:bg-accent/60 focus-visible:ring-2 focus-visible:ring-primary/20',\n      'data-[disabled]:cursor-not-allowed data-[readonly]:cursor-default'\n    ]\n  },\n  variants: {\n    size: {\n      xs: {\n        root: 'gap-0.5 h-6 px-1.5 text-2xs',\n        input: 'min-w-4.5 p-0.5 data-[segment=timeZoneName]:px-0.5'\n      },\n      sm: {\n        root: 'gap-0.75 h-7 px-2 text-xs',\n        input: 'min-w-5 p-0.5 data-[segment=timeZoneName]:px-0.75'\n      },\n      md: {\n        root: 'gap-1 h-8 px-2.5 text-sm',\n        input: 'min-w-5.5 p-0.625 data-[segment=timeZoneName]:px-1'\n      },\n      lg: {\n        root: 'gap-1.25 h-9 px-3 text-base',\n        input: 'min-w-6 p-0.75 data-[segment=timeZoneName]:px-1.25'\n      },\n      xl: {\n        root: 'gap-1.5 h-10 px-3.5 text-lg',\n        input: 'min-w-6.5 p-0.875 data-[segment=timeZoneName]:px-1.5'\n      },\n      '2xl': {\n        root: 'gap-2 h-12 px-4 text-xl',\n        input: 'min-w-8 p-1 data-[segment=timeZoneName]:px-2'\n      }\n    }\n  },\n  defaultVariants: {\n    size: 'md'\n  }\n});\n"
+    }
+  ],
+  "type": "registry:ui"
+}

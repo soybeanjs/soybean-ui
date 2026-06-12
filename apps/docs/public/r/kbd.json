@@ -1,9 +1,14 @@
 {
   "name": "kbd",
   "description": "Displays keyboard shortcuts.",
-  "dependencies": ["@soybeanjs/headless", "@soybeanjs/cva"],
+  "dependencies": ["@soybeanjs/cva", "@soybeanjs/headless"],
   "registryDependencies": ["utils"],
   "files": [
+    {
+      "path": "packages/ui/src/components/kbd/index.ts",
+      "type": "registry:lib",
+      "content": "export { default as SKbd } from './kbd.vue';\n\nexport type { KbdValue } from '@soybeanjs/headless/kbd';\nexport type * from './types';\n"
+    },
     {
       "path": "packages/ui/src/components/kbd/kbd.vue",
       "type": "registry:ui",

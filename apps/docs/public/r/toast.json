@@ -1,9 +1,14 @@
 {
   "name": "toast",
   "description": "A succinct message that is displayed temporarily.",
-  "dependencies": ["@soybeanjs/headless", "@soybeanjs/cva"],
+  "dependencies": ["@soybeanjs/cva", "@soybeanjs/headless", "@vueuse/core"],
   "registryDependencies": ["utils"],
   "files": [
+    {
+      "path": "packages/ui/src/components/toast/index.ts",
+      "type": "registry:lib",
+      "content": "export { toast } from '@soybeanjs/headless/toast';\nexport { default as SToastProvider } from './toast-provider.vue';\n\nexport type {\n  ToastType,\n  ToastIconType,\n  ToastPosition,\n  ToastCreateOptions,\n  ToasterProps,\n  ToastUiSlot,\n  ToastUi\n} from '@soybeanjs/headless/toast';\nexport type * from './types';\n"
+    },
     {
       "path": "packages/ui/src/components/toast/toast-provider.vue",
       "type": "registry:ui",

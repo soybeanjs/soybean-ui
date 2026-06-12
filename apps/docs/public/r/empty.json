@@ -1,0 +1,42 @@
+{
+  "name": "empty",
+  "dependencies": ["@soybeanjs/headless", "@soybeanjs/utils"],
+  "files": [
+    {
+      "path": "packages/ui/src/components/empty/empty.vue",
+      "type": "registry:ui",
+      "content": "<script setup lang=\"ts\">\nimport { computed } from 'vue';\nimport { useOmitProps } from '@soybeanjs/headless/composables';\nimport { EmptyCompact, provideEmptyUi } from '@soybeanjs/headless/empty';\nimport { keysOf } from '@soybeanjs/utils';\nimport { emptyVariants } from '@/styles/empty';\nimport type { EmptyProps, EmptySlots } from './types';\n\ndefineOptions({\n  name: 'SEmpty'\n});\n\nconst props = defineProps<EmptyProps>();\n\nconst forwardedProps = useOmitProps(props, ['class', 'ui', 'size']);\n\nconst slots = defineSlots<EmptySlots>();\n\nconst slotNames = computed(() => keysOf(slots));\n\nconst ui = computed(() => emptyVariants({ size: props.size }, props.ui, { root: props.class }));\n\nprovideEmptyUi(ui);\n</script>\n\n<template>\n  <EmptyCompact v-bind=\"forwardedProps\">\n    <template v-for=\"slotName in slotNames\" :key=\"slotName\" #[slotName]>\n      <slot :name=\"slotName\" />\n    </template>\n  </EmptyCompact>\n</template>\n"
+    },
+    {
+      "path": "packages/ui/src/components/empty/index.ts",
+      "type": "registry:lib",
+      "content": "export { default as SEmpty } from './empty.vue';\n\nexport type * from '@soybeanjs/headless/empty';\nexport type * from './types';\n"
+    },
+    {
+      "path": "packages/ui/src/components/empty/types.ts",
+      "type": "registry:lib",
+      "content": "import type { EmptyCompactProps, EmptyCompactSlots, EmptyUi } from '@soybeanjs/headless/empty';\nimport type { ClassValue } from '@soybeanjs/headless/types';\nimport type { ThemeSize } from '@/theme';\n\n/**\n * Properties for the Empty component.\n */\nexport interface EmptyProps extends EmptyCompactProps {\n  /**\n   * Additional class names applied to the root element.\n   */\n  class?: ClassValue;\n  /**\n   * Per-slot class overrides for the component.\n   */\n  ui?: Partial<EmptyUi>;\n  /**\n   * Size variant of the component.\n   */\n  size?: ThemeSize;\n}\n\n/**\n * Slots for the Empty component.\n */\nexport type EmptySlots = EmptyCompactSlots;\n"
+    },
+    {
+      "path": "packages/ui/src/styles/empty.ts",
+      "type": "registry:style",
+      "content": "// @unocss-include\nimport { scv } from '@soybeanjs/cva';\n\nexport const emptyVariants = scv({\n  slots: {\n    root: 'flex flex-col items-center justify-center min-w-0 grow rounded-md border border-dashed text-center',\n    header: 'flex flex-col items-center max-w-sm text-center',\n    media: 'flex shrink-0 items-center justify-center rounded-md bg-muted text-foreground',\n    title: 'font-medium tracking-tight',\n    description: `leading-relaxed text-muted-foreground`,\n    content: 'flex w-full min-w-0 max-w-sm flex-col items-center'\n  },\n  variants: {\n    size: {\n      xs: {\n        root: 'text-2xs gap-3',\n        title: 'text-xs',\n        header: 'gap-1.5',\n        media: 'my-1.5'\n      },\n      sm: {\n        root: 'text-xs gap-3.5',\n        title: 'text-sm',\n        header: 'gap-1.75',\n        media: 'my-1.75'\n      },\n      md: {\n        root: 'text-sm gap-4',\n        title: 'text-base',\n        header: 'gap-2',\n        media: 'my-2 size-10'\n      },\n      lg: {\n        root: 'text-base gap-4.5',\n        title: 'text-lg',\n        header: 'gap-2.5',\n        media: 'my-2.5'\n      },\n      xl: {\n        root: 'text-lg gap-5',\n        title: 'text-xl',\n        header: 'gap-3',\n        media: 'my-3'\n      },\n      '2xl': {\n        root: 'text-xl gap-6',\n        title: 'text-2xl',\n        header: 'gap-3.5',\n        media: 'my-3.5'\n      }\n    }\n  },\n  defaultVariants: {\n    size: 'md'\n  }\n});\n"
+    },
+    {
+      "path": "packages/ui/src/theme/index.ts",
+      "type": "registry:theme",
+      "content": "export * from './config';\n\nexport type * from './types';\n"
+    },
+    {
+      "path": "packages/ui/src/theme/config.ts",
+      "type": "registry:theme",
+      "content": "import type { ThemeSize } from './types';\n\nexport const themeSizeMap: Record<ThemeSize, number> = {\n  xs: 12,\n  sm: 14,\n  md: 16,\n  lg: 18,\n  xl: 20,\n  '2xl': 24\n};\nexport const miniSizeMap: Record<ThemeSize, ThemeSize> = {\n  xs: 'xs',\n  sm: 'xs',\n  md: 'sm',\n  lg: 'md',\n  xl: 'lg',\n  '2xl': 'xl'\n};\n\nexport const themeSizeRatio = Object.fromEntries(\n  Object.entries(themeSizeMap).map(([key, value]) => [key, value / themeSizeMap.md])\n) as Record<ThemeSize, number>;\n"
+    },
+    {
+      "path": "packages/ui/src/theme/types.ts",
+      "type": "registry:theme",
+      "content": "export type ThemeColor = 'primary' | 'destructive' | 'success' | 'warning' | 'info' | 'carbon' | 'secondary' | 'accent';\n\nexport type ThemeSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl';\n"
+    }
+  ],
+  "type": "registry:ui"
+}

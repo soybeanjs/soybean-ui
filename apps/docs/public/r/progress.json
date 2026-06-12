@@ -1,9 +1,24 @@
 {
   "name": "progress",
   "description": "Displays an indicator showing the completion progress of a task.",
-  "dependencies": ["@soybeanjs/headless", "@soybeanjs/cva"],
+  "dependencies": ["@soybeanjs/cva", "@soybeanjs/headless"],
   "registryDependencies": ["utils"],
   "files": [
+    {
+      "path": "packages/ui/src/components/progress/index.ts",
+      "type": "registry:lib",
+      "content": "export { progress } from '@soybeanjs/headless/progress';\nexport { default as SProgressProvider } from './progress-provider.vue';\nexport { default as SProgress } from './progress.vue';\nexport { default as SProgressCircle } from './progress-circle.vue';\n\nexport type * from '@soybeanjs/headless/progress';\nexport type * from './types';\n"
+    },
+    {
+      "path": "packages/ui/src/components/progress/progress-circle.vue",
+      "type": "registry:ui",
+      "content": "<script setup lang=\"ts\">\nimport { computed } from 'vue';\nimport { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';\nimport { ProgressCircleCompact, provideProgressUi } from '@soybeanjs/headless/progress';\nimport { progressCircleVariants } from '@/styles/progress';\nimport type { ProgressCircleProps, ProgressCircleEmits, ProgressCircleSlots } from './types';\n\ndefineOptions({\n  name: 'SProgressCircle'\n});\n\nconst props = defineProps<ProgressCircleProps>();\n\nconst emit = defineEmits<ProgressCircleEmits>();\n\nconst slots = defineSlots<ProgressCircleSlots>();\n\nconst forwardedProps = useOmitProps(props, ['class', 'color', 'size', 'ui', 'strokeWidth']);\n\nconst listeners = useForwardListeners(emit);\n\nconst ui = computed(() =>\n  progressCircleVariants({ color: props.color, size: props.size }, props.ui, { root: props.class })\n);\n\nconst hasDefaultSlot = computed(() => Boolean(slots.default));\n\nprovideProgressUi(ui);\n</script>\n\n<template>\n  <ProgressCircleCompact v-bind=\"forwardedProps\" v-on=\"listeners\">\n    <template v-if=\"hasDefaultSlot\" #default=\"slotProps\">\n      <slot v-bind=\"slotProps\" />\n    </template>\n  </ProgressCircleCompact>\n</template>\n"
+    },
+    {
+      "path": "packages/ui/src/components/progress/progress-provider.vue",
+      "type": "registry:ui",
+      "content": "<script setup lang=\"ts\">\nimport { computed } from 'vue';\nimport { ProgressProvider, provideProgressProviderUi } from '@soybeanjs/headless/progress';\nimport type { ProgressProviderProps } from '@soybeanjs/headless/progress';\nimport { progressProviderVariants } from '@/styles/progress';\n\ndefineOptions({\n  name: 'SProgressProvider'\n});\n\nconst props = defineProps<ProgressProviderProps>();\n\nconst ui = computed(() => progressProviderVariants());\n\nprovideProgressProviderUi(ui);\n</script>\n\n<template>\n  <ProgressProvider v-bind=\"props\" />\n</template>\n"
+    },
     {
       "path": "packages/ui/src/components/progress/progress.vue",
       "type": "registry:ui",

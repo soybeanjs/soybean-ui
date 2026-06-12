@@ -1,0 +1,47 @@
+{
+  "name": "list",
+  "dependencies": ["@soybeanjs/headless"],
+  "files": [
+    {
+      "path": "packages/ui/src/components/list/index.ts",
+      "type": "registry:lib",
+      "content": "export { default as SList } from './list.vue';\nexport { default as SListItem } from './list-item.vue';\n\nexport type {\n  ListRootProps,\n  ListContentProps,\n  ListTitleProps,\n  ListDescriptionProps,\n  ListUiSlot,\n  ListUi\n} from '@soybeanjs/headless/list';\nexport type * from './types';\n"
+    },
+    {
+      "path": "packages/ui/src/components/list/list-item.vue",
+      "type": "registry:ui",
+      "content": "<script setup lang=\"ts\">\nimport { useSlots } from 'vue';\nimport { ListContent, ListDescription, ListItem, ListTitle } from '@soybeanjs/headless/list';\nimport type { ListItemProps } from './types';\n\ndefineOptions({\n  name: 'SListItem'\n});\n\ndefineProps<ListItemProps>();\n\nconst slots = useSlots();\n</script>\n\n<template>\n  <ListItem>\n    <slot name=\"leading\" />\n    <ListContent v-bind=\"contentProps\">\n      <ListTitle v-if=\"slots.title || title\" v-bind=\"titleProps\">\n        <slot name=\"title\">{{ title }}</slot>\n      </ListTitle>\n      <ListDescription v-if=\"slots.description || description\" v-bind=\"descriptionProps\">\n        <slot name=\"description\">{{ description }}</slot>\n      </ListDescription>\n      <slot />\n    </ListContent>\n    <slot name=\"trailing\" />\n  </ListItem>\n</template>\n"
+    },
+    {
+      "path": "packages/ui/src/components/list/list.vue",
+      "type": "registry:ui",
+      "content": "<script setup lang=\"ts\">\nimport { computed } from 'vue';\nimport { ListRoot, provideListUi } from '@soybeanjs/headless/list';\nimport { listVariants } from '@/styles/list';\nimport type { ListProps } from './types';\n\ndefineOptions({\n  name: 'SList'\n});\n\nconst props = defineProps<ListProps>();\n\nconst ui = computed(() => listVariants({ size: props.size }, props.ui, { root: props.class }));\n\nprovideListUi(ui);\n</script>\n\n<template>\n  <ListRoot>\n    <slot />\n  </ListRoot>\n</template>\n"
+    },
+    {
+      "path": "packages/ui/src/components/list/types.ts",
+      "type": "registry:lib",
+      "content": "import type {\n  ListContentProps,\n  ListDescriptionProps,\n  ListRootProps,\n  ListTitleProps,\n  ListUi,\n  ListItemProps as _ListItemProps\n} from '@soybeanjs/headless/list';\nimport type { ClassValue } from '@soybeanjs/headless/types';\nimport type { ThemeSize } from '@/theme';\n\n/**\n * Properties for the List component.\n */\nexport interface ListProps extends ListRootProps {\n  /**\n   * Additional class names applied to the root element.\n   */\n  class?: ClassValue;\n  /**\n   * Visual size of the component.\n   */\n  size?: ThemeSize;\n  /**\n   * Per-slot class overrides for the component.\n   */\n  ui?: Partial<ListUi>;\n}\n\n/**\n * Properties for the ListItem component.\n */\nexport interface ListItemProps extends _ListItemProps {\n  /**\n   * Title text rendered by the component.\n   */\n  title?: string;\n  /**\n   * Description text rendered by the component.\n   */\n  description?: string;\n  /**\n   * Properties forwarded to the content element.\n   */\n  contentProps?: ListContentProps;\n  /**\n   * Properties forwarded to the title element.\n   */\n  titleProps?: ListTitleProps;\n  /**\n   * Properties forwarded to the description element.\n   */\n  descriptionProps?: ListDescriptionProps;\n}\n"
+    },
+    {
+      "path": "packages/ui/src/styles/list.ts",
+      "type": "registry:style",
+      "content": "// @unocss-include\nimport { scv } from '@soybeanjs/cva';\n\nexport const listVariants = scv({\n  slots: {\n    root: 'flex flex-col',\n    item: 'flex list-none',\n    content: 'grow flex flex-col',\n    title: 'font-medium tracking-tight m-0',\n    description: '[&_p]:leading-relaxed text-muted-foreground m-0'\n  },\n  variants: {\n    size: {\n      xs: {\n        root: 'gap-2 text-2xs',\n        item: 'gap-2',\n        content: 'gap-0.75',\n        title: 'text-xs leading-3.125'\n      },\n      sm: {\n        root: 'gap-3 text-xs',\n        item: 'gap-3',\n        content: 'gap-1',\n        title: 'text-sm leading-3.75'\n      },\n      md: {\n        root: 'gap-4 text-sm',\n        item: 'gap-4',\n        content: 'gap-1',\n        title: 'text-base leading-4.375'\n      },\n      lg: {\n        root: 'gap-5 text-base',\n        item: 'gap-5',\n        content: 'gap-1.25',\n        title: 'text-lg leading-5'\n      },\n      xl: {\n        root: 'gap-6 text-lg',\n        item: 'gap-6',\n        content: 'gap-1.5',\n        title: 'text-xl leading-5.625'\n      },\n      '2xl': {\n        root: 'gap-7 text-xl',\n        item: 'gap-7',\n        content: 'gap-2',\n        title: 'text-2xl leading-6.25'\n      }\n    }\n  },\n  defaultVariants: {\n    size: 'md'\n  }\n});\n"
+    },
+    {
+      "path": "packages/ui/src/theme/index.ts",
+      "type": "registry:theme",
+      "content": "export * from './config';\n\nexport type * from './types';\n"
+    },
+    {
+      "path": "packages/ui/src/theme/config.ts",
+      "type": "registry:theme",
+      "content": "import type { ThemeSize } from './types';\n\nexport const themeSizeMap: Record<ThemeSize, number> = {\n  xs: 12,\n  sm: 14,\n  md: 16,\n  lg: 18,\n  xl: 20,\n  '2xl': 24\n};\nexport const miniSizeMap: Record<ThemeSize, ThemeSize> = {\n  xs: 'xs',\n  sm: 'xs',\n  md: 'sm',\n  lg: 'md',\n  xl: 'lg',\n  '2xl': 'xl'\n};\n\nexport const themeSizeRatio = Object.fromEntries(\n  Object.entries(themeSizeMap).map(([key, value]) => [key, value / themeSizeMap.md])\n) as Record<ThemeSize, number>;\n"
+    },
+    {
+      "path": "packages/ui/src/theme/types.ts",
+      "type": "registry:theme",
+      "content": "export type ThemeColor = 'primary' | 'destructive' | 'success' | 'warning' | 'info' | 'carbon' | 'secondary' | 'accent';\n\nexport type ThemeSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl';\n"
+    }
+  ],
+  "type": "registry:ui"
+}

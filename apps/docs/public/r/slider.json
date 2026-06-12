@@ -1,9 +1,14 @@
 {
   "name": "slider",
   "description": "Allows the user to select a value from a range with a slider.",
-  "dependencies": ["@soybeanjs/headless", "@soybeanjs/cva"],
+  "dependencies": ["@soybeanjs/cva", "@soybeanjs/headless"],
   "registryDependencies": ["utils"],
   "files": [
+    {
+      "path": "packages/ui/src/components/slider/index.ts",
+      "type": "registry:lib",
+      "content": "export { default as SSlider } from './slider.vue';\n\nexport type * from '@soybeanjs/headless/slider';\nexport type * from './types';\n"
+    },
     {
       "path": "packages/ui/src/components/slider/slider.vue",
       "type": "registry:ui",

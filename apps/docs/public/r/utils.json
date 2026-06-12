@@ -1,6 +1,0 @@
-{
-  "name": "utils",
-  "description": "Utility functions used by all components (cn helper, etc.)",
-  "files": [],
-  "type": "registry:lib"
-}

@@ -1,0 +1,42 @@
+{
+  "name": "hover-card",
+  "dependencies": ["@soybeanjs/headless"],
+  "files": [
+    {
+      "path": "packages/ui/src/components/hover-card/hover-card.vue",
+      "type": "registry:ui",
+      "content": "<script setup lang=\"ts\">\nimport { computed } from 'vue';\nimport { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';\nimport { HoverCardCompact, provideHoverCardUi } from '@soybeanjs/headless/hover-card';\nimport { hoverCardVariants } from '@/styles/hover-card';\nimport type { HoverCardProps, HoverCardEmits, HoverCardSlots } from './types';\n\ndefineOptions({\n  name: 'SHoverCard'\n});\n\nconst props = withDefaults(defineProps<HoverCardProps>(), {\n  open: undefined,\n  showArrow: true\n});\n\nconst emit = defineEmits<HoverCardEmits>();\n\ndefineSlots<HoverCardSlots>();\n\nconst forwardedProps = useOmitProps(props, ['class', 'size', 'ui']);\n\nconst listeners = useForwardListeners(emit);\n\nconst ui = computed(() => hoverCardVariants({ size: props.size }, props.ui, { popup: props.class }));\n\nprovideHoverCardUi(ui);\n</script>\n\n<template>\n  <HoverCardCompact v-bind=\"forwardedProps\" v-on=\"listeners\">\n    <template #trigger>\n      <slot name=\"trigger\" />\n    </template>\n    <slot />\n  </HoverCardCompact>\n</template>\n"
+    },
+    {
+      "path": "packages/ui/src/components/hover-card/index.ts",
+      "type": "registry:lib",
+      "content": "export { default as SHoverCard } from './hover-card.vue';\n\nexport type * from '@soybeanjs/headless/hover-card';\nexport type * from './types';\n"
+    },
+    {
+      "path": "packages/ui/src/components/hover-card/types.ts",
+      "type": "registry:lib",
+      "content": "import type {\n  HoverCardCompactProps,\n  HoverCardCompactEmits,\n  HoverCardCompactSlots,\n  HoverCardUi\n} from '@soybeanjs/headless/hover-card';\nimport type { ClassValue } from '@soybeanjs/headless/types';\nimport type { ThemeSize } from '@/theme';\n\n/**\n * Properties for the HoverCard component.\n */\nexport interface HoverCardProps extends HoverCardCompactProps {\n  /**\n   * class of popup\n   */\n  class?: ClassValue;\n  /**\n   * Visual size of the component.\n   */\n  size?: ThemeSize;\n  /**\n   * Per-slot class overrides for the component.\n   */\n  ui?: Partial<HoverCardUi>;\n}\n\n/**\n * Events for the HoverCard component.\n */\nexport type HoverCardEmits = HoverCardCompactEmits;\n\n/**\n * Slots for the HoverCard component.\n */\nexport type HoverCardSlots = HoverCardCompactSlots;\n"
+    },
+    {
+      "path": "packages/ui/src/styles/hover-card.ts",
+      "type": "registry:style",
+      "content": "// @unocss-include\nimport { scv } from '@soybeanjs/cva';\n\nexport const hoverCardVariants = scv({\n  slots: {\n    positioner: 'w-max',\n    popup: [\n      'z-50 w-64 rounded-md border bg-popover text-popover-foreground shadow-md outline-none will-change-transform',\n      'data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95',\n      'data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95',\n      'data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2'\n    ],\n    arrow: 'w-1em h-0.5em fill-popover stroke-border'\n  },\n  variants: {\n    size: {\n      xs: {\n        popup: 'w-48 p-3 text-2xs',\n        arrow: 'text-3xs'\n      },\n      sm: {\n        popup: 'w-56 p-3.5 text-xs',\n        arrow: 'text-2xs'\n      },\n      md: {\n        popup: 'w-64 p-4 text-sm',\n        arrow: 'text-xs'\n      },\n      lg: {\n        popup: 'w-72 p-4.5 text-base',\n        arrow: 'text-sm'\n      },\n      xl: {\n        popup: 'w-80 p-5 text-lg',\n        arrow: 'text-base'\n      },\n      '2xl': {\n        popup: 'w-96 p-5.5 text-xl',\n        arrow: 'text-lg'\n      }\n    }\n  },\n  defaultVariants: {\n    size: 'md'\n  }\n});\n"
+    },
+    {
+      "path": "packages/ui/src/theme/index.ts",
+      "type": "registry:theme",
+      "content": "export * from './config';\n\nexport type * from './types';\n"
+    },
+    {
+      "path": "packages/ui/src/theme/config.ts",
+      "type": "registry:theme",
+      "content": "import type { ThemeSize } from './types';\n\nexport const themeSizeMap: Record<ThemeSize, number> = {\n  xs: 12,\n  sm: 14,\n  md: 16,\n  lg: 18,\n  xl: 20,\n  '2xl': 24\n};\nexport const miniSizeMap: Record<ThemeSize, ThemeSize> = {\n  xs: 'xs',\n  sm: 'xs',\n  md: 'sm',\n  lg: 'md',\n  xl: 'lg',\n  '2xl': 'xl'\n};\n\nexport const themeSizeRatio = Object.fromEntries(\n  Object.entries(themeSizeMap).map(([key, value]) => [key, value / themeSizeMap.md])\n) as Record<ThemeSize, number>;\n"
+    },
+    {
+      "path": "packages/ui/src/theme/types.ts",
+      "type": "registry:theme",
+      "content": "export type ThemeColor = 'primary' | 'destructive' | 'success' | 'warning' | 'info' | 'carbon' | 'secondary' | 'accent';\n\nexport type ThemeSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl';\n"
+    }
+  ],
+  "type": "registry:ui"
+}

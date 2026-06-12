@@ -1,0 +1,42 @@
+{
+  "name": "collapsible",
+  "dependencies": ["@soybeanjs/headless"],
+  "files": [
+    {
+      "path": "packages/ui/src/components/collapsible/collapsible.vue",
+      "type": "registry:ui",
+      "content": "<script setup lang=\"ts\">\nimport { computed } from 'vue';\nimport { CollapsibleRoot, provideCollapsibleUi } from '@soybeanjs/headless/collapsible';\nimport { useOmitProps } from '@soybeanjs/headless/composables';\nimport { collapsibleVariants } from '@/styles/collapsible';\nimport type { CollapsibleProps, CollapsibleEmits } from './types';\n\ndefineOptions({\n  name: 'SCollapsible'\n});\n\nconst props = withDefaults(defineProps<CollapsibleProps>(), {\n  open: undefined,\n  defaultOpen: false,\n  unmountOnHide: true\n});\n\nconst emit = defineEmits<CollapsibleEmits>();\n\nconst forwardedProps = useOmitProps(props, ['class', 'size', 'ui']);\n\nconst ui = computed(() => collapsibleVariants({ size: props.size }, props.ui));\n\nprovideCollapsibleUi(ui);\n</script>\n\n<template>\n  <CollapsibleRoot v-slot=\"slotProps\" v-bind=\"forwardedProps\" @update:open=\"emit('update:open', $event)\">\n    <slot v-bind=\"slotProps\" />\n  </CollapsibleRoot>\n</template>\n"
+    },
+    {
+      "path": "packages/ui/src/components/collapsible/index.ts",
+      "type": "registry:lib",
+      "content": "export { default as SCollapsible } from './collapsible.vue';\nexport {\n  CollapsibleTrigger as SCollapsibleTrigger,\n  CollapsibleContent as SCollapsibleContent\n} from '@soybeanjs/headless/collapsible';\n\nexport type * from '@soybeanjs/headless/collapsible';\nexport type * from './types';\n"
+    },
+    {
+      "path": "packages/ui/src/components/collapsible/types.ts",
+      "type": "registry:lib",
+      "content": "import type { CollapsibleRootEmits, CollapsibleRootProps, CollapsibleUi } from '@soybeanjs/headless/collapsible';\nimport type { ThemeSize } from '@/theme';\n\n/**\n * Properties for the Collapsible component.\n */\nexport interface CollapsibleProps extends CollapsibleRootProps {\n  /**\n   * Visual size of the component.\n   */\n  size?: ThemeSize;\n  /**\n   * Per-slot class overrides for the component.\n   */\n  ui?: Partial<CollapsibleUi>;\n}\n\n/**\n * Events for the Collapsible component.\n */\nexport type CollapsibleEmits = CollapsibleRootEmits;\n"
+    },
+    {
+      "path": "packages/ui/src/styles/collapsible.ts",
+      "type": "registry:style",
+      "content": "// @unocss-include\nimport { scv } from '@soybeanjs/cva';\n\nexport const collapsibleVariants = scv({\n  slots: {\n    root: '',\n    trigger: '',\n    content: [\n      'overflow-hidden transition will-change-auto',\n      'data-[state=open]:animate-collapsible-down data-[state=closed]:animate-collapsible-up'\n    ]\n  },\n  variants: {\n    size: {\n      xs: {\n        root: 'text-2xs'\n      },\n      sm: {\n        root: 'text-xs'\n      },\n      md: {\n        root: 'text-sm'\n      },\n      lg: {\n        root: 'text-base'\n      },\n      xl: {\n        root: 'text-lg'\n      },\n      '2xl': {\n        root: 'text-xl'\n      }\n    }\n  }\n});\n"
+    },
+    {
+      "path": "packages/ui/src/theme/index.ts",
+      "type": "registry:theme",
+      "content": "export * from './config';\n\nexport type * from './types';\n"
+    },
+    {
+      "path": "packages/ui/src/theme/config.ts",
+      "type": "registry:theme",
+      "content": "import type { ThemeSize } from './types';\n\nexport const themeSizeMap: Record<ThemeSize, number> = {\n  xs: 12,\n  sm: 14,\n  md: 16,\n  lg: 18,\n  xl: 20,\n  '2xl': 24\n};\nexport const miniSizeMap: Record<ThemeSize, ThemeSize> = {\n  xs: 'xs',\n  sm: 'xs',\n  md: 'sm',\n  lg: 'md',\n  xl: 'lg',\n  '2xl': 'xl'\n};\n\nexport const themeSizeRatio = Object.fromEntries(\n  Object.entries(themeSizeMap).map(([key, value]) => [key, value / themeSizeMap.md])\n) as Record<ThemeSize, number>;\n"
+    },
+    {
+      "path": "packages/ui/src/theme/types.ts",
+      "type": "registry:theme",
+      "content": "export type ThemeColor = 'primary' | 'destructive' | 'success' | 'warning' | 'info' | 'carbon' | 'secondary' | 'accent';\n\nexport type ThemeSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl';\n"
+    }
+  ],
+  "type": "registry:ui"
+}

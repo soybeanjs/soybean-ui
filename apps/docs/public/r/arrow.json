@@ -1,0 +1,12 @@
+{
+  "name": "arrow",
+  "dependencies": ["@soybeanjs/headless"],
+  "files": [
+    {
+      "path": "packages/ui/src/components/arrow/index.ts",
+      "type": "registry:lib",
+      "content": "export { Arrow as SArrow } from '@soybeanjs/headless/arrow';\nexport type { ArrowProps } from '@soybeanjs/headless/arrow';\n"
+    }
+  ],
+  "type": "registry:ui"
+}

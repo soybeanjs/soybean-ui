@@ -5,6 +5,11 @@
   "registryDependencies": ["utils"],
   "files": [
     {
+      "path": "packages/ui/src/components/label/index.ts",
+      "type": "registry:lib",
+      "content": "export { default as SLabel } from './label.vue';\n\nexport type * from './types';\n"
+    },
+    {
       "path": "packages/ui/src/components/label/label.vue",
       "type": "registry:ui",
       "content": "<script setup lang=\"ts\">\nimport { computed } from 'vue';\nimport { Label } from '@soybeanjs/headless/label';\nimport { labelVariants } from '@/styles/label';\nimport type { LabelProps } from './types';\n\ndefineOptions({\n  name: 'SLabel'\n});\n\nconst props = defineProps<LabelProps>();\n\nconst cls = computed(() => labelVariants({ size: props.size }, props.class));\n</script>\n\n<template>\n  <Label :for=\"props.for\" :class=\"cls\">\n    <slot />\n  </Label>\n</template>\n"

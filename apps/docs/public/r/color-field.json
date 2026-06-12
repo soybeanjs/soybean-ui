@@ -1,0 +1,42 @@
+{
+  "name": "color-field",
+  "dependencies": ["@soybeanjs/headless"],
+  "files": [
+    {
+      "path": "packages/ui/src/components/color-field/color-field.vue",
+      "type": "registry:ui",
+      "content": "<script setup lang=\"ts\">\nimport { computed } from 'vue';\nimport { ColorFieldCompact, provideColorFieldUi } from '@soybeanjs/headless/color-field';\nimport { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';\nimport { colorFieldVariants } from '@/styles/color-field';\nimport type { ColorFieldProps, ColorFieldEmits } from './types';\n\ndefineOptions({\n  name: 'SColorField'\n});\n\nconst props = defineProps<ColorFieldProps>();\n\nconst emit = defineEmits<ColorFieldEmits>();\n\nconst listeners = useForwardListeners(emit);\n\nconst forwardedProps = useOmitProps(props, ['class', 'size', 'ui']);\n\nconst ui = computed(() => colorFieldVariants({ size: props.size }, props.ui, { root: props.class }));\n\nprovideColorFieldUi(ui);\n</script>\n\n<template>\n  <ColorFieldCompact v-bind=\"forwardedProps\" v-on=\"listeners\" />\n</template>\n"
+    },
+    {
+      "path": "packages/ui/src/components/color-field/index.ts",
+      "type": "registry:lib",
+      "content": "export { default as SColorField } from './color-field.vue';\n\nexport type * from '@soybeanjs/headless/color-field';\nexport type * from './types';\n"
+    },
+    {
+      "path": "packages/ui/src/components/color-field/types.ts",
+      "type": "registry:lib",
+      "content": "import type { ColorFieldCompactEmits, ColorFieldCompactProps, ColorFieldUi } from '@soybeanjs/headless/color-field';\nimport type { ClassValue } from '@soybeanjs/headless/types';\nimport type { ThemeSize } from '@/theme';\n\n/**\n * Properties for the ColorField component.\n */\nexport interface ColorFieldProps extends ColorFieldCompactProps {\n  /**\n   * Additional class names applied to the root element.\n   */\n  class?: ClassValue;\n  /**\n   * Visual size of the component.\n   */\n  size?: ThemeSize;\n  /**\n   * Per-slot class overrides for the component.\n   */\n  ui?: Partial<ColorFieldUi>;\n}\n\n/**\n * Events for the ColorField component.\n */\nexport type ColorFieldEmits = ColorFieldCompactEmits;\n"
+    },
+    {
+      "path": "packages/ui/src/styles/color-field.ts",
+      "type": "registry:style",
+      "content": "// @unocss-include\nimport { scv } from '@soybeanjs/cva';\n\nexport const colorFieldVariants = scv({\n  slots: {\n    root: [\n      'group flex items-center min-w-0 rounded-md border border-input bg-background transition-all-150',\n      'outline-none focus-within:ring-3 focus-within:ring-offset-background focus-within:ring-primary/30',\n      'data-[disabled]:opacity-60 data-[readonly]:bg-muted/40'\n    ],\n    input: [\n      'flex-1 min-w-0 bg-transparent outline-none',\n      'placeholder:text-muted-foreground',\n      'disabled:cursor-not-allowed disabled:opacity-50'\n    ]\n  },\n  variants: {\n    size: {\n      xs: {\n        root: 'h-6 px-1.5 text-2xs gap-1'\n      },\n      sm: {\n        root: 'h-7 px-2 text-xs gap-1.5'\n      },\n      md: {\n        root: 'h-8 px-2.5 text-sm gap-2'\n      },\n      lg: {\n        root: 'h-9 px-3 text-base gap-2.5'\n      },\n      xl: {\n        root: 'h-10 px-3.5 text-lg gap-3'\n      },\n      '2xl': {\n        root: 'h-12 px-4 text-xl gap-3.5'\n      }\n    }\n  },\n  defaultVariants: {\n    size: 'md'\n  }\n});\n"
+    },
+    {
+      "path": "packages/ui/src/theme/index.ts",
+      "type": "registry:theme",
+      "content": "export * from './config';\n\nexport type * from './types';\n"
+    },
+    {
+      "path": "packages/ui/src/theme/config.ts",
+      "type": "registry:theme",
+      "content": "import type { ThemeSize } from './types';\n\nexport const themeSizeMap: Record<ThemeSize, number> = {\n  xs: 12,\n  sm: 14,\n  md: 16,\n  lg: 18,\n  xl: 20,\n  '2xl': 24\n};\nexport const miniSizeMap: Record<ThemeSize, ThemeSize> = {\n  xs: 'xs',\n  sm: 'xs',\n  md: 'sm',\n  lg: 'md',\n  xl: 'lg',\n  '2xl': 'xl'\n};\n\nexport const themeSizeRatio = Object.fromEntries(\n  Object.entries(themeSizeMap).map(([key, value]) => [key, value / themeSizeMap.md])\n) as Record<ThemeSize, number>;\n"
+    },
+    {
+      "path": "packages/ui/src/theme/types.ts",
+      "type": "registry:theme",
+      "content": "export type ThemeColor = 'primary' | 'destructive' | 'success' | 'warning' | 'info' | 'carbon' | 'secondary' | 'accent';\n\nexport type ThemeSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl';\n"
+    }
+  ],
+  "type": "registry:ui"
+}

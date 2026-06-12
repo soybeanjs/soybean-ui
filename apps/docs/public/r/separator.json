@@ -1,9 +1,14 @@
 {
   "name": "separator",
   "description": "Visually or semantically separates content.",
-  "dependencies": ["@soybeanjs/headless", "@soybeanjs/cva"],
+  "dependencies": ["@soybeanjs/cva", "@soybeanjs/headless"],
   "registryDependencies": ["utils"],
   "files": [
+    {
+      "path": "packages/ui/src/components/separator/index.ts",
+      "type": "registry:lib",
+      "content": "export { default as SSeparator } from './separator.vue';\n\nexport type * from '@soybeanjs/headless/separator';\nexport type * from './types';\n"
+    },
     {
       "path": "packages/ui/src/components/separator/separator.vue",
       "type": "registry:ui",

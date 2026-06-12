@@ -1,13 +1,18 @@
 {
   "name": "breadcrumb",
   "description": "Displays the path to the current resource using a hierarchy of links.",
-  "dependencies": ["@soybeanjs/headless", "@soybeanjs/cva"],
+  "dependencies": ["@soybeanjs/cva", "@soybeanjs/headless", "@soybeanjs/utils"],
   "registryDependencies": ["utils"],
   "files": [
     {
       "path": "packages/ui/src/components/breadcrumb/breadcrumb.vue",
       "type": "registry:ui",
       "content": "<script setup lang=\"ts\" generic=\"T extends BreadcrumbOptionData = BreadcrumbOptionData\">\nimport { computed } from 'vue';\nimport { BreadcrumbCompact, provideBreadcrumbUi } from '@soybeanjs/headless/breadcrumb';\nimport { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';\nimport { keysOf } from '@soybeanjs/utils';\nimport { breadcrumbVariants } from '@/styles/breadcrumb';\nimport type { BreadcrumbProps, BreadcrumbEmits, BreadcrumbOptionData, BreadcrumbSlots } from './types';\n\ndefineOptions({\n  name: 'SBreadcrumb'\n});\n\nconst props = defineProps<BreadcrumbProps<T>>();\n\nconst emit = defineEmits<BreadcrumbEmits<T>>();\n\nconst slots = defineSlots<BreadcrumbSlots<T>>();\n\nconst forwardedProps = useOmitProps(props, ['class', 'size', 'ui']);\n\nconst listeners = useForwardListeners(emit);\n\nconst slotNames = computed(() => keysOf(slots));\n\nconst ui = computed(() => breadcrumbVariants({ size: props.size }, props.ui, { root: props.class }));\n\nprovideBreadcrumbUi(ui);\n</script>\n\n<template>\n  <BreadcrumbCompact v-bind=\"forwardedProps\" v-on=\"listeners\">\n    <template v-for=\"slotName in slotNames\" #[slotName]=\"slotProps\">\n      <!-- @vue-ignore ignore vue slot props type -->\n      <slot :name=\"slotName\" v-bind=\"slotProps\" />\n    </template>\n  </BreadcrumbCompact>\n</template>\n"
+    },
+    {
+      "path": "packages/ui/src/components/breadcrumb/index.ts",
+      "type": "registry:lib",
+      "content": "export { default as SBreadcrumb } from './breadcrumb.vue';\nexport {\n  BreadcrumbPage as SBreadcrumbPage,\n  BreadcrumbEllipsis as SBreadcrumbEllipsis\n} from '@soybeanjs/headless/breadcrumb';\n\nexport type * from '@soybeanjs/headless/breadcrumb';\nexport type * from './types';\n"
     },
     {
       "path": "packages/ui/src/components/breadcrumb/types.ts",

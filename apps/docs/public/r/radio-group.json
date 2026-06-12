@@ -1,9 +1,19 @@
 {
   "name": "radio-group",
   "description": "A set of checkable buttons known as radio buttons where no more than one can be checked at a time.",
-  "dependencies": ["@soybeanjs/headless", "@soybeanjs/cva"],
+  "dependencies": ["@soybeanjs/cva", "@soybeanjs/headless"],
   "registryDependencies": ["utils"],
   "files": [
+    {
+      "path": "packages/ui/src/components/radio-group/index.ts",
+      "type": "registry:lib",
+      "content": "export { default as SRadioGroup } from './radio-group.vue';\nexport { default as SRadioGroupCard } from './radio-group-card.vue';\n\nexport type * from '@soybeanjs/headless/radio-group';\nexport type * from './types';\n"
+    },
+    {
+      "path": "packages/ui/src/components/radio-group/radio-group-card.vue",
+      "type": "registry:ui",
+      "content": "<script setup lang=\"ts\" generic=\"T extends RadioGroupCardOptionData\">\nimport { computed } from 'vue';\nimport { useOmitProps } from '@soybeanjs/headless/composables';\nimport { RadioGroupCardCompact, provideRadioGroupCardUi } from '@soybeanjs/headless/radio-group';\nimport type { RadioGroupCardOptionData } from '@soybeanjs/headless/radio-group';\nimport { radioGroupCardVariants } from '@/styles/radio-group';\nimport type { RadioGroupCardProps, RadioGroupCardEmits, RadioGroupCardSlots } from './types';\n\ndefineOptions({\n  name: 'SRadioGroupCard'\n});\n\nconst props = defineProps<RadioGroupCardProps<T>>();\n\nconst emit = defineEmits<RadioGroupCardEmits<T['value']>>();\n\nconst slots = defineSlots<RadioGroupCardSlots>();\n\nconst forwardedProps = useOmitProps(props, ['class', 'ui', 'variant', 'color', 'size']);\n\nconst ui = computed(() =>\n  radioGroupCardVariants(\n    {\n      variant: props.variant,\n      color: props.color,\n      size: props.size\n    },\n    props.ui,\n    { root: props.class }\n  )\n);\n\nprovideRadioGroupCardUi(ui);\n</script>\n\n<template>\n  <RadioGroupCardCompact v-bind=\"forwardedProps\" :items=\"items\" @update:model-value=\"emit('update:modelValue', $event)\">\n    <template v-if=\"slots.description\" #description=\"{ item }\">\n      <slot name=\"description\" :item=\"item\" />\n    </template>\n  </RadioGroupCardCompact>\n</template>\n"
+    },
     {
       "path": "packages/ui/src/components/radio-group/radio-group.vue",
       "type": "registry:ui",

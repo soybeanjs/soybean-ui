@@ -31,12 +31,6 @@
       ]
     },
     {
-      "name": "utils",
-      "type": "registry:lib",
-      "description": "Utility functions used by all components.",
-      "files": []
-    },
-    {
       "name": "accordion",
       "type": "registry:ui",
       "description": "A vertically stacked set of interactive headings.",

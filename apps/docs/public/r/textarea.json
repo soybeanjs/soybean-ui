@@ -1,9 +1,14 @@
 {
   "name": "textarea",
   "description": "Displays a form textarea for multi-line text input.",
-  "dependencies": ["@soybeanjs/headless", "@soybeanjs/cva"],
+  "dependencies": ["@soybeanjs/cva", "@soybeanjs/headless", "@soybeanjs/utils"],
   "registryDependencies": ["utils"],
   "files": [
+    {
+      "path": "packages/ui/src/components/textarea/index.ts",
+      "type": "registry:lib",
+      "content": "export { default as STextarea } from './textarea.vue';\nexport { TextareaClear as STextareaClear } from '@soybeanjs/headless/textarea';\n\nexport type * from '@soybeanjs/headless/textarea';\nexport type * from './types';\n"
+    },
     {
       "path": "packages/ui/src/components/textarea/textarea.vue",
       "type": "registry:ui",

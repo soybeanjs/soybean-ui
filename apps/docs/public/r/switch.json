@@ -1,9 +1,14 @@
 {
   "name": "switch",
   "description": "A control that allows the user to toggle between checked and not checked.",
-  "dependencies": ["@soybeanjs/headless", "@soybeanjs/cva"],
+  "dependencies": ["@soybeanjs/cva", "@soybeanjs/headless", "@soybeanjs/utils"],
   "registryDependencies": ["utils"],
   "files": [
+    {
+      "path": "packages/ui/src/components/switch/index.ts",
+      "type": "registry:lib",
+      "content": "export { default as SSwitch } from './switch.vue';\n\nexport type * from '@soybeanjs/headless/switch';\nexport type * from './types';\n"
+    },
     {
       "path": "packages/ui/src/components/switch/switch.vue",
       "type": "registry:ui",

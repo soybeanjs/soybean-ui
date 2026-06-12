@@ -1,9 +1,14 @@
 {
   "name": "tooltip",
   "description": "A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.",
-  "dependencies": ["@soybeanjs/headless", "@soybeanjs/cva"],
+  "dependencies": ["@soybeanjs/cva", "@soybeanjs/headless"],
   "registryDependencies": ["utils"],
   "files": [
+    {
+      "path": "packages/ui/src/components/tooltip/index.ts",
+      "type": "registry:lib",
+      "content": "export { default as STooltip } from './tooltip.vue';\n\nexport type * from '@soybeanjs/headless/tooltip';\nexport type * from './types';\n"
+    },
     {
       "path": "packages/ui/src/components/tooltip/tooltip.vue",
       "type": "registry:ui",

@@ -1,0 +1,62 @@
+{
+  "name": "form",
+  "dependencies": ["@soybeanjs/headless", "@soybeanjs/utils"],
+  "files": [
+    {
+      "path": "packages/ui/src/components/form/form-field-array.vue",
+      "type": "registry:ui",
+      "content": "<script setup lang=\"ts\">\nimport { computed } from 'vue';\nimport { useOmitProps } from '@soybeanjs/headless/composables';\nimport { FormFieldArrayCompact, provideFormFieldUi } from '@soybeanjs/headless/form';\nimport { keysOf } from '@soybeanjs/utils';\nimport { formVariants } from '@/styles/form';\nimport type { FormFieldArrayProps, FormFieldArraySlots } from './types';\n\ndefineOptions({\n  name: 'SFormFieldArray'\n});\n\nconst props = defineProps<FormFieldArrayProps>();\n\nconst slots = defineSlots<FormFieldArraySlots>();\n\nconst forwardedProps = useOmitProps(props, ['class', 'ui', 'size']);\n\nconst slotNames = computed(() => keysOf(slots));\n\nconst ui = computed(() => formVariants({ size: props.size }, props.ui, { field: props.class }));\n\nprovideFormFieldUi(ui);\n</script>\n\n<template>\n  <FormFieldArrayCompact v-bind=\"forwardedProps\">\n    <template v-for=\"slotName in slotNames\" :key=\"slotName\" #[slotName]=\"slotProps\">\n      <slot :name=\"slotName\" v-bind=\"slotProps\" />\n    </template>\n  </FormFieldArrayCompact>\n</template>\n"
+    },
+    {
+      "path": "packages/ui/src/components/form/form-field-base.vue",
+      "type": "registry:ui",
+      "content": "<script setup lang=\"ts\">\nimport { computed } from 'vue';\nimport { useOmitProps } from '@soybeanjs/headless/composables';\nimport { FormFieldBaseCompact, provideFormFieldUi } from '@soybeanjs/headless/form';\nimport { keysOf } from '@soybeanjs/utils';\nimport { formVariants } from '@/styles/form';\nimport type { FormFieldBaseProps, FormFieldBaseSlots } from './types';\n\ndefineOptions({\n  name: 'SFormFieldBase'\n});\n\nconst props = defineProps<FormFieldBaseProps>();\n\nconst slots = defineSlots<FormFieldBaseSlots>();\n\nconst forwardedProps = useOmitProps(props, ['class', 'ui', 'size']);\n\nconst slotNames = computed(() => keysOf(slots));\n\nconst ui = computed(() => formVariants({ size: props.size }, props.ui, { field: props.class }));\n\nprovideFormFieldUi(ui);\n</script>\n\n<template>\n  <FormFieldBaseCompact v-bind=\"forwardedProps\">\n    <template v-for=\"slotName in slotNames\" :key=\"slotName\" #[slotName]>\n      <slot :name=\"slotName\" />\n    </template>\n  </FormFieldBaseCompact>\n</template>\n"
+    },
+    {
+      "path": "packages/ui/src/components/form/form-field.vue",
+      "type": "registry:ui",
+      "content": "<script setup lang=\"ts\">\nimport { computed } from 'vue';\nimport { useOmitProps } from '@soybeanjs/headless/composables';\nimport { FormFieldCompact, provideFormFieldUi } from '@soybeanjs/headless/form';\nimport { keysOf } from '@soybeanjs/utils';\nimport { formVariants } from '@/styles/form';\nimport type { FormFieldProps, FormFieldSlots } from './types';\n\ndefineOptions({\n  name: 'SFormField'\n});\n\nconst props = defineProps<FormFieldProps>();\n\nconst slots = defineSlots<FormFieldSlots>();\n\nconst forwardedProps = useOmitProps(props, ['class', 'ui', 'size']);\n\nconst slotNames = computed(() => keysOf(slots));\n\nconst ui = computed(() => formVariants({ size: props.size }, props.ui, { field: props.class }));\n\nprovideFormFieldUi(ui);\n</script>\n\n<template>\n  <FormFieldCompact v-bind=\"forwardedProps\">\n    <template v-for=\"slotName in slotNames\" :key=\"slotName\" #[slotName]=\"slotProps\">\n      <slot :name=\"slotName\" v-bind=\"slotProps\" />\n    </template>\n  </FormFieldCompact>\n</template>\n"
+    },
+    {
+      "path": "packages/ui/src/components/form/form.vue",
+      "type": "registry:ui",
+      "content": "<script setup lang=\"ts\">\nimport { computed } from 'vue';\nimport { useOmitProps } from '@soybeanjs/headless/composables';\nimport { FormCompact, provideFormUi } from '@soybeanjs/headless/form';\nimport { formVariants } from '@/styles/form';\nimport type { FormProps } from './types';\n\ndefineOptions({\n  name: 'SForm'\n});\n\nconst props = defineProps<FormProps>();\n\nconst forwardedProps = useOmitProps(props, ['ui', 'class', 'size']);\n\nconst ui = computed(() => formVariants({ size: props.size }, props.ui, { form: props.class }));\n\nprovideFormUi(ui);\n</script>\n\n<template>\n  <FormCompact v-bind=\"forwardedProps\">\n    <slot />\n  </FormCompact>\n</template>\n"
+    },
+    {
+      "path": "packages/ui/src/components/form/index.ts",
+      "type": "registry:lib",
+      "content": "export { default as SForm } from './form.vue';\nexport { default as SFormFieldBase } from './form-field-base.vue';\nexport { useForm } from './use-form';\n\nexport type * from '@soybeanjs/headless/form';\nexport type { FormProps } from './types';\n"
+    },
+    {
+      "path": "packages/ui/src/components/form/types.ts",
+      "type": "registry:lib",
+      "content": "import type {\n  FormCompactProps,\n  FormFieldCompactProps,\n  FormFieldCompactSlots,\n  FormFieldArrayCompactSlots,\n  FormFieldBaseCompactProps,\n  FormFieldBaseCompactSlots,\n  FormUi,\n  FormFieldUi,\n  UseHeadlessFormOptions as UseFormOptions,\n  UseHeadlessFormReturn,\n  FormValues,\n  FormFieldComponent,\n  FormFieldArrayComponent\n} from '@soybeanjs/headless/form';\nimport type { ClassValue } from '@soybeanjs/headless/types';\nimport type { ThemeSize } from '@/theme';\n\nexport interface FormProps extends FormCompactProps {\n  /**\n   * Additional class names applied to the form element.\n   */\n  class?: ClassValue;\n  /**\n   * Visual size of the component.\n   */\n  size?: ThemeSize;\n  /**\n   * Per-slot class overrides for the component.\n   */\n  ui?: Partial<FormUi>;\n}\n\n/**\n * Additional properties for form field components, including styling and UI customization options.\n */\nexport interface FormFieldExtraProps {\n  /**\n   * Additional class names applied to the root element.\n   */\n  class?: ClassValue;\n  /**\n   * Visual size of the component.\n   */\n  size?: ThemeSize;\n  /**\n   * Per-slot class overrides for the component.\n   */\n  ui?: Partial<FormFieldUi>;\n}\n\n/**\n * Properties for the FormField component.\n */\nexport interface FormFieldProps extends FormFieldCompactProps<any, any>, FormFieldExtraProps {}\n\n/**\n * Slots for the FormField component.\n */\nexport type FormFieldSlots = FormFieldCompactSlots<any, any>;\n\n/**\n * Combined properties for the FormFieldArray component\n */\nexport interface FormFieldArrayProps extends FormFieldCompactProps<any, any>, FormFieldExtraProps {}\n\n/**\n * Slots for the FormFieldArray component.\n */\nexport type FormFieldArraySlots = FormFieldArrayCompactSlots<any, any>;\n\n/**\n * Properties for the FormFieldBase component.\n */\nexport interface FormFieldBaseProps extends FormFieldBaseCompactProps, FormFieldExtraProps {}\n\n/**\n * Slots for the FormFieldBase component.\n */\nexport type FormFieldBaseSlots = FormFieldBaseCompactSlots;\n\nexport interface UseFormReturn<Values extends FormValues> extends UseHeadlessFormReturn<Values> {\n  SFormField: FormFieldComponent<Values, FormFieldExtraProps>;\n  SFormFieldArray: FormFieldArrayComponent<Values, FormFieldExtraProps>;\n}\n\nexport type { UseFormOptions };\n"
+    },
+    {
+      "path": "packages/ui/src/components/form/use-form.ts",
+      "type": "registry:lib",
+      "content": "import { useForm as _useForm } from '@soybeanjs/headless/form';\nimport type { StandardSchemaV1, FormValues, InferStandardSchemaInput } from '@soybeanjs/headless/form';\nimport FormFieldArray from './form-field-array.vue';\nimport FormField from './form-field.vue';\nimport type { UseFormOptions, FormFieldExtraProps, UseFormReturn } from './types';\n\nexport function useForm<S extends StandardSchemaV1<FormValues, FormValues>>(options: UseFormOptions<S>) {\n  const [context, SFormField, SFormFieldArray] = _useForm<S, FormFieldExtraProps, FormFieldExtraProps>(\n    options,\n    // @ts-expect-error - ignore\n    FormField,\n    FormFieldArray\n  );\n\n  return {\n    ...context,\n    SFormField,\n    SFormFieldArray\n  } as UseFormReturn<InferStandardSchemaInput<S>>;\n}\n"
+    },
+    {
+      "path": "packages/ui/src/styles/form.ts",
+      "type": "registry:style",
+      "content": "// @unocss-include\nimport { scv } from '@soybeanjs/cva';\n\nexport const formVariants = scv({\n  slots: {\n    form: 'grid',\n    field: [\n      'group flex data-[orientation=vertical]:flex-col',\n      'data-[orientation=horizontal]:flex-row data-[orientation=horizontal]:flex-wrap data-[orientation=horizontal]:justify-between data-[orientation=horizontal]:items-center'\n    ],\n    fieldArray: [\n      'group flex data-[orientation=vertical]:flex-col',\n      'data-[orientation=horizontal]:flex-row data-[orientation=horizontal]:flex-wrap data-[orientation=horizontal]:justify-between'\n    ],\n    label: [\n      'flex items-center whitespace-nowrap',\n      'group-data-[orientation=horizontal]:justify-end group-data-[orientation=horizontal]:shrink-0'\n    ],\n    control: 'group-data-[orientation=horizontal]:flex-1 group-data-[orientation=horizontal]:min-w-0',\n    description: `text-muted-foreground m-0 group-data-[orientation=horizontal]:w-full`,\n    error: [\n      'font-medium text-destructive m-0',\n      'group-data-[orientation=horizontal]:absolute group-data-[orientation=horizontal]:start-0 group-data-[orientation=horizontal]:top-full group-data-[orientation=horizontal]:w-full'\n    ]\n  },\n  variants: {\n    size: {\n      xs: {\n        field: 'text-2xs gap-x-2.25 gap-y-1.5',\n        fieldArray: 'text-2xs gap-x-2.25 gap-y-1.5',\n        label: 'gap-1.5',\n        description: 'group-data-[error]:pt-1.75'\n      },\n      sm: {\n        field: 'text-xs gap-x-2.5 gap-y-1.75',\n        fieldArray: 'text-xs gap-x-2.5 gap-y-1.75',\n        label: 'gap-1.75',\n        description: 'group-data-[error]:pt-2'\n      },\n      md: {\n        field: 'text-sm gap-x-3 gap-y-2',\n        fieldArray: 'text-sm gap-x-3 gap-y-2',\n        label: 'gap-2',\n        description: 'group-data-[error]:pt-2.5'\n      },\n      lg: {\n        field: 'text-base gap-x-3.75 gap-y-2.5',\n        fieldArray: 'text-base gap-x-3.75 gap-y-2.5',\n        label: 'gap-2.5',\n        description: 'group-data-[error]:pt-3'\n      },\n      xl: {\n        field: 'text-lg gap-x-4.5 gap-y-3',\n        fieldArray: 'text-lg gap-x-4.5 gap-y-3',\n        label: 'gap-3',\n        description: 'group-data-[error]:pt-3.5'\n      },\n      '2xl': {\n        field: 'text-xl gap-x-5.25 gap-y-3.5',\n        fieldArray: 'text-xl gap-x-5.25 gap-y-3.5',\n        label: 'gap-3.5',\n        description: 'group-data-[error]:pt-4.5'\n      }\n    }\n  },\n  defaultVariants: {\n    size: 'md'\n  }\n});\n"
+    },
+    {
+      "path": "packages/ui/src/theme/index.ts",
+      "type": "registry:theme",
+      "content": "export * from './config';\n\nexport type * from './types';\n"
+    },
+    {
+      "path": "packages/ui/src/theme/config.ts",
+      "type": "registry:theme",
+      "content": "import type { ThemeSize } from './types';\n\nexport const themeSizeMap: Record<ThemeSize, number> = {\n  xs: 12,\n  sm: 14,\n  md: 16,\n  lg: 18,\n  xl: 20,\n  '2xl': 24\n};\nexport const miniSizeMap: Record<ThemeSize, ThemeSize> = {\n  xs: 'xs',\n  sm: 'xs',\n  md: 'sm',\n  lg: 'md',\n  xl: 'lg',\n  '2xl': 'xl'\n};\n\nexport const themeSizeRatio = Object.fromEntries(\n  Object.entries(themeSizeMap).map(([key, value]) => [key, value / themeSizeMap.md])\n) as Record<ThemeSize, number>;\n"
+    },
+    {
+      "path": "packages/ui/src/theme/types.ts",
+      "type": "registry:theme",
+      "content": "export type ThemeColor = 'primary' | 'destructive' | 'success' | 'warning' | 'info' | 'carbon' | 'secondary' | 'accent';\n\nexport type ThemeSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl';\n"
+    }
+  ],
+  "type": "registry:ui"
+}

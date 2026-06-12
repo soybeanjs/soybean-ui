@@ -1,0 +1,42 @@
+{
+  "name": "toggle",
+  "dependencies": ["@soybeanjs/headless"],
+  "files": [
+    {
+      "path": "packages/ui/src/components/toggle/index.ts",
+      "type": "registry:lib",
+      "content": "export { default as SToggle } from './toggle.vue';\n\nexport type * from './types';\n"
+    },
+    {
+      "path": "packages/ui/src/components/toggle/toggle.vue",
+      "type": "registry:ui",
+      "content": "<script setup lang=\"ts\">\nimport { computed } from 'vue';\nimport { useOmitProps } from '@soybeanjs/headless/composables';\nimport { Toggle } from '@soybeanjs/headless/toggle';\nimport { toggleVariants } from '@/styles/toggle';\nimport type { ToggleProps, ToggleEmits } from './types';\n\ndefineOptions({\n  name: 'SToggle'\n});\n\nconst props = withDefaults(defineProps<ToggleProps>(), {\n  modelValue: undefined\n});\n\nconst emit = defineEmits<ToggleEmits>();\n\nconst forwardedProps = useOmitProps(props, ['class', 'color', 'variant', 'size', 'shape']);\n\nconst cls = computed(() =>\n  toggleVariants(\n    {\n      color: props.color,\n      variant: props.variant,\n      size: props.size,\n      shape: props.shape\n    },\n    props.class\n  )\n);\n</script>\n\n<template>\n  <Toggle\n    v-slot=\"slotProps\"\n    v-bind=\"forwardedProps\"\n    :class=\"cls\"\n    @update:model-value=\"emit('update:modelValue', $event)\"\n  >\n    <slot v-bind=\"slotProps\" />\n  </Toggle>\n</template>\n"
+    },
+    {
+      "path": "packages/ui/src/components/toggle/types.ts",
+      "type": "registry:lib",
+      "content": "import type { ToggleEmits, ToggleProps as _ToggleProps } from '@soybeanjs/headless/toggle';\nimport type { ClassValue } from '@soybeanjs/headless/types';\nimport type { ToggleVariant, ToggleShape } from '@/styles/toggle';\nimport type { ThemeSize, ThemeColor } from '@/theme';\n\n/**\n * Properties for the Toggle component.\n */\nexport interface ToggleProps extends _ToggleProps {\n  /**\n   * Additional class names applied to the root element.\n   */\n  class?: ClassValue;\n  /**\n   * Theme color of the component.\n   */\n  color?: ThemeColor;\n  /**\n   * Visual size of the component.\n   */\n  size?: ThemeSize;\n  /**\n   * Visual variant of the component.\n   */\n  variant?: ToggleVariant;\n  /**\n   * Shape of the component.\n   */\n  shape?: ToggleShape;\n}\n\nexport type { ToggleEmits, ToggleVariant, ToggleShape };\n"
+    },
+    {
+      "path": "packages/ui/src/styles/toggle.ts",
+      "type": "registry:style",
+      "content": "// @unocss-include\nimport { cv } from '@soybeanjs/cva';\nimport type { VariantProps } from '@soybeanjs/cva';\n\nexport const toggleVariants = cv({\n  base: [\n    'inline-flex items-center justify-center rounded-md whitespace-nowrap font-medium transition-all-150',\n    'outline-none focus-visible:ring-3 focus-visible:ring-offset-background',\n    'data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50',\n    '[&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*=size-])]:size-4'\n  ],\n  variants: {\n    color: {\n      primary: `focus-visible:ring-primary/30`,\n      destructive: `focus-visible:ring-destructive/30`,\n      success: `focus-visible:ring-success/30`,\n      warning: `focus-visible:ring-warning/30`,\n      info: `focus-visible:ring-info/30`,\n      carbon: `focus-visible:ring-carbon/30`,\n      secondary: `focus-visible:ring-secondary-foreground/20`,\n      accent: `focus-visible:ring-accent-foreground/20`\n    },\n    variant: {\n      outline: `border border-border bg-background text-foreground hover:bg-accent data-[state=on]:bg-accent`,\n      soft: 'bg-accent data-[state=off]:hover:bg-accent',\n      ghost: 'bg-transparent data-[state=off]:hover:bg-accent'\n    },\n    size: {\n      xs: 'gap-1 h-6 px-1.5 text-2xs',\n      sm: 'gap-2 h-7 px-2 text-xs',\n      md: 'gap-3 h-8 px-4 text-sm',\n      lg: 'gap-4 h-9 px-6 text-base',\n      xl: 'gap-5 h-10 px-8 text-lg',\n      '2xl': 'gap-6 h-12 px-10 text-xl'\n    },\n    shape: {\n      auto: 'rounded-md',\n      rounded: 'rounded-full',\n      square: 'h-8 w-8 p-0 gap-0 rounded-md',\n      circle: 'h-8 w-8 p-0 gap-0 rounded-full'\n    }\n  },\n  compoundVariants: [\n    {\n      color: 'primary',\n      variant: 'soft',\n      class: 'data-[state=on]:bg-primary/20 data-[state=on]:text-primary'\n    },\n    {\n      color: 'destructive',\n      variant: 'soft',\n      class: 'data-[state=on]:bg-destructive/20 data-[state=on]:text-destructive'\n    },\n    {\n      color: 'success',\n      variant: 'soft',\n      class: 'data-[state=on]:bg-success/20 data-[state=on]:text-success'\n    },\n    {\n      color: 'warning',\n      variant: 'soft',\n      class: 'data-[state=on]:bg-warning/20 data-[state=on]:text-warning'\n    },\n    {\n      color: 'info',\n      variant: 'soft',\n      class: 'data-[state=on]:bg-info/20 data-[state=on]:text-info'\n    },\n    {\n      color: 'carbon',\n      variant: 'soft',\n      class: 'data-[state=on]:bg-carbon/20 data-[state=on]:text-carbon'\n    },\n    {\n      color: 'secondary',\n      variant: 'soft',\n      class: 'data-[state=on]:bg-secondary-foreground/10 data-[state=on]:text-secondary-foreground'\n    },\n    {\n      color: 'accent',\n      variant: 'soft',\n      class: 'data-[state=on]:bg-accent-foreground/10 data-[state=on]:text-accent-foreground'\n    },\n    {\n      color: 'primary',\n      variant: 'ghost',\n      class: 'data-[state=on]:bg-primary/20 data-[state=on]:text-primary'\n    },\n    {\n      color: 'destructive',\n      variant: 'ghost',\n      class: 'data-[state=on]:bg-destructive/20 data-[state=on]:text-destructive'\n    },\n    {\n      color: 'success',\n      variant: 'ghost',\n      class: 'data-[state=on]:bg-success/20 data-[state=on]:text-success'\n    },\n    {\n      color: 'warning',\n      variant: 'ghost',\n      class: 'data-[state=on]:bg-warning/20 data-[state=on]:text-warning'\n    },\n    {\n      color: 'info',\n      variant: 'ghost',\n      class: 'data-[state=on]:bg-info/20 data-[state=on]:text-info'\n    },\n    {\n      color: 'carbon',\n      variant: 'ghost',\n      class: 'data-[state=on]:bg-carbon/20 data-[state=on]:text-carbon'\n    },\n    {\n      color: 'secondary',\n      variant: 'ghost',\n      class: 'data-[state=on]:bg-secondary-foreground/10 data-[state=on]:text-secondary-foreground'\n    },\n    {\n      color: 'accent',\n      variant: 'ghost',\n      class: 'data-[state=on]:bg-accent-foreground/10 data-[state=on]:text-accent-foreground'\n    },\n    {\n      size: 'xs',\n      shape: ['square', 'circle'],\n      class: 'w-6'\n    },\n    {\n      size: 'sm',\n      shape: ['square', 'circle'],\n      class: 'w-7'\n    },\n    {\n      size: 'md',\n      shape: ['square', 'circle'],\n      class: 'w-8'\n    },\n    {\n      size: 'lg',\n      shape: ['square', 'circle'],\n      class: 'w-9'\n    },\n    {\n      size: 'xl',\n      shape: ['square', 'circle'],\n      class: 'w-10'\n    },\n    {\n      size: '2xl',\n      shape: ['square', 'circle'],\n      class: 'w-12'\n    }\n  ],\n  defaultVariants: {\n    color: 'accent',\n    variant: 'ghost',\n    size: 'md',\n    shape: 'auto'\n  }\n});\n\ntype ToggleVariants = VariantProps<typeof toggleVariants>;\n\nexport type ToggleVariant = NonNullable<ToggleVariants['variant']>;\n\nexport type ToggleShape = NonNullable<ToggleVariants['shape']>;\n"
+    },
+    {
+      "path": "packages/ui/src/theme/index.ts",
+      "type": "registry:theme",
+      "content": "export * from './config';\n\nexport type * from './types';\n"
+    },
+    {
+      "path": "packages/ui/src/theme/config.ts",
+      "type": "registry:theme",
+      "content": "import type { ThemeSize } from './types';\n\nexport const themeSizeMap: Record<ThemeSize, number> = {\n  xs: 12,\n  sm: 14,\n  md: 16,\n  lg: 18,\n  xl: 20,\n  '2xl': 24\n};\nexport const miniSizeMap: Record<ThemeSize, ThemeSize> = {\n  xs: 'xs',\n  sm: 'xs',\n  md: 'sm',\n  lg: 'md',\n  xl: 'lg',\n  '2xl': 'xl'\n};\n\nexport const themeSizeRatio = Object.fromEntries(\n  Object.entries(themeSizeMap).map(([key, value]) => [key, value / themeSizeMap.md])\n) as Record<ThemeSize, number>;\n"
+    },
+    {
+      "path": "packages/ui/src/theme/types.ts",
+      "type": "registry:theme",
+      "content": "export type ThemeColor = 'primary' | 'destructive' | 'success' | 'warning' | 'info' | 'carbon' | 'secondary' | 'accent';\n\nexport type ThemeSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl';\n"
+    }
+  ],
+  "type": "registry:ui"
+}

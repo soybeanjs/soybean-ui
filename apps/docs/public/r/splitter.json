@@ -1,0 +1,52 @@
+{
+  "name": "splitter",
+  "dependencies": ["@soybeanjs/headless"],
+  "files": [
+    {
+      "path": "packages/ui/src/components/splitter/index.ts",
+      "type": "registry:lib",
+      "content": "export { default as SSplitterGroup } from './splitter-group.vue';\nexport { default as SSplitterPanel } from './splitter-panel.vue';\nexport { default as SSplitterResizeHandle } from './splitter-resize-handle.vue';\n\nexport type * from './types';\n"
+    },
+    {
+      "path": "packages/ui/src/components/splitter/splitter-group.vue",
+      "type": "registry:ui",
+      "content": "<script setup lang=\"ts\">\nimport { computed } from 'vue';\nimport { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';\nimport { SplitterGroup, provideSplitterUi } from '@soybeanjs/headless/splitter';\nimport { splitterVariants } from '@/styles/splitter';\nimport type { SplitterGroupProps, SplitterGroupEmits } from './types';\n\ndefineOptions({\n  name: 'SSplitterGroup'\n});\n\nconst props = defineProps<SplitterGroupProps>();\n\nconst emit = defineEmits<SplitterGroupEmits>();\n\nconst forwardedProps = useOmitProps(props, ['class', 'ui']);\n\nconst listeners = useForwardListeners(emit);\n\nconst ui = computed(() => splitterVariants({ size: props.size }, props.ui, { root: props.class }));\n\nprovideSplitterUi(ui);\n</script>\n\n<template>\n  <SplitterGroup v-bind=\"forwardedProps\" v-on=\"listeners\">\n    <slot />\n  </SplitterGroup>\n</template>\n"
+    },
+    {
+      "path": "packages/ui/src/components/splitter/splitter-panel.vue",
+      "type": "registry:ui",
+      "content": "<script setup lang=\"ts\">\nimport { useForwardListeners } from '@soybeanjs/headless/composables';\nimport { SplitterPanel } from '@soybeanjs/headless/splitter';\nimport type { SplitterPanelProps, SplitterPanelEmits } from './types';\n\ndefineOptions({\n  name: 'SSplitterPanel'\n});\n\nconst props = defineProps<SplitterPanelProps>();\n\nconst emit = defineEmits<SplitterPanelEmits>();\n\nconst listeners = useForwardListeners(emit);\n</script>\n\n<template>\n  <SplitterPanel v-slot=\"slotProps\" v-bind=\"props\" v-on=\"listeners\">\n    <slot v-bind=\"slotProps\" />\n  </SplitterPanel>\n</template>\n"
+    },
+    {
+      "path": "packages/ui/src/components/splitter/splitter-resize-handle.vue",
+      "type": "registry:ui",
+      "content": "<script lang=\"ts\">\nimport { computed, defineComponent, h } from 'vue';\nimport type { PropType } from 'vue';\nimport { SplitterResizeHandle } from '@soybeanjs/headless/splitter';\nimport type { SplitterResizeHandleProps } from './types';\n\nexport default defineComponent({\n  name: 'SSplitterResizeHandle',\n  inheritAttrs: false,\n  props: {\n    withHandle: {\n      type: Boolean,\n      default: false\n    },\n    disabled: {\n      type: Boolean,\n      default: false\n    },\n    tabindex: {\n      type: Number,\n      default: 0\n    },\n    asChild: {\n      type: Boolean,\n      default: undefined\n    },\n    as: {\n      type: [String, Object, Function],\n      default: undefined\n    },\n    class: {\n      type: null as unknown as PropType<SplitterResizeHandleProps['class']>,\n      default: undefined\n    }\n  },\n  emits: {\n    dragging: (_value: boolean) => true\n  },\n  setup(props: SplitterResizeHandleProps, { attrs, emit, slots }) {\n    const forwardedProps = computed(() => ({\n      ...attrs,\n      disabled: props.disabled,\n      tabindex: props.tabindex,\n      asChild: props.asChild,\n      as: props.as\n    }));\n\n    const defaultHandle = computed(() =>\n      h(\n        'div',\n        {\n          class: 'bg-background z-10 flex h-4 w-3 items-center justify-center rounded-xs border border-border',\n          'aria-hidden': 'true'\n        },\n        [\n          h('div', { class: 'flex flex-col items-center gap-0.5' }, [\n            h('span', { class: 'h-0.75 w-0.75 rounded-full bg-muted-foreground/70' }),\n            h('span', { class: 'h-0.75 w-0.75 rounded-full bg-muted-foreground/70' }),\n            h('span', { class: 'h-0.75 w-0.75 rounded-full bg-muted-foreground/70' })\n          ])\n        ]\n      )\n    );\n\n    return () =>\n      h(\n        SplitterResizeHandle,\n        {\n          'data-soybean-splitter-resize-handle': '',\n          ...forwardedProps.value,\n          class: props.class,\n          onDragging: (value: boolean) => emit('dragging', value)\n        },\n        {\n          default: () => {\n            if (slots.default) {\n              return slots.default();\n            }\n\n            if (props.withHandle) {\n              return [defaultHandle.value];\n            }\n\n            return undefined;\n          }\n        }\n      );\n  }\n});\n</script>\n"
+    },
+    {
+      "path": "packages/ui/src/components/splitter/types.ts",
+      "type": "registry:lib",
+      "content": "import type {\n  SplitterGroupEmits as HeadlessSplitterGroupEmits,\n  SplitterGroupProps as HeadlessSplitterGroupProps,\n  SplitterPanelEmits as HeadlessSplitterPanelEmits,\n  SplitterPanelProps as HeadlessSplitterPanelProps,\n  SplitterResizeHandleEmits as HeadlessSplitterResizeHandleEmits,\n  SplitterResizeHandleProps as HeadlessSplitterResizeHandleProps,\n  SplitterUi\n} from '@soybeanjs/headless/splitter';\nimport type { ClassValue } from '@soybeanjs/headless/types';\nimport type { ThemeSize } from '@/theme';\n\n/**\n * Properties for the SplitterGroup component.\n */\nexport interface SplitterGroupProps extends HeadlessSplitterGroupProps {\n  /**\n   * Additional class names applied to the root element.\n   */\n  class?: ClassValue;\n  /**\n   * Per-slot class overrides for the component.\n   */\n  ui?: Partial<SplitterUi>;\n  /**\n   * Visual size of the component.\n   */\n  size?: ThemeSize;\n}\n\n/**\n * Events for the SplitterGroup component.\n */\nexport type SplitterGroupEmits = HeadlessSplitterGroupEmits;\n\n/**\n * Properties for the SplitterPanel component.\n */\nexport interface SplitterPanelProps extends HeadlessSplitterPanelProps {\n  /**\n   * Additional class names applied to the root element.\n   */\n  class?: ClassValue;\n}\n\n/**\n * Events for the SplitterPanel component.\n */\nexport type SplitterPanelEmits = HeadlessSplitterPanelEmits;\n\n/**\n * Properties for the SplitterResizeHandle component.\n */\nexport interface SplitterResizeHandleProps extends HeadlessSplitterResizeHandleProps {\n  /**\n   * Additional class names applied to the root element.\n   */\n  class?: ClassValue;\n  /**\n   * Whether with handle.\n   */\n  withHandle?: boolean;\n}\n\n/**\n * Events for the SplitterResizeHandle component.\n */\nexport type SplitterResizeHandleEmits = HeadlessSplitterResizeHandleEmits;\n"
+    },
+    {
+      "path": "packages/ui/src/styles/splitter.ts",
+      "type": "registry:style",
+      "content": "// @unocss-include\nimport { scv } from '@soybeanjs/cva';\n\nexport const splitterVariants = scv({\n  slots: {\n    root: 'flex h-full w-full data-[orientation=vertical]:flex-col',\n    panel: 'min-h-0 min-w-0',\n    resizeHandle: [\n      'bg-border focus-visible:ring-ring relative flex w-px cursor-col-resize items-center justify-center transition-colors duration-200 after:absolute after:inset-y-0',\n      'after:start-1/2 after:-translate-x-1/2 outline-none focus-visible:ring-1 focus-visible:ring-offset-1',\n      'data-[state=hover]:bg-accent data-[state=drag]:bg-accent',\n      'data-[disabled]:cursor-not-allowed data-[disabled]:opacity-60',\n      'data-[orientation=vertical]:h-px data-[orientation=vertical]:w-full',\n      'data-[orientation=vertical]:cursor-row-resize',\n      'data-[orientation=vertical]:after:start-0 data-[orientation=vertical]:after:w-full',\n      'data-[orientation=vertical]:after:-translate-y-1/2 data-[orientation=vertical]:after:translate-x-0'\n    ]\n  },\n  variants: {\n    size: {\n      xs: {\n        resizeHandle: 'after:w-0.5 data-[orientation=vertical]:after:h-0.5'\n      },\n      sm: {\n        resizeHandle: 'after:w-0.75 data-[orientation=vertical]:after:h-0.75'\n      },\n      md: {\n        resizeHandle: 'after:w-1 data-[orientation=vertical]:after:h-1'\n      },\n      lg: {\n        resizeHandle: 'after:w-1.25 data-[orientation=vertical]:after:h-1.25'\n      },\n      xl: {\n        resizeHandle: 'after:w-1.5 data-[orientation=vertical]:after:h-1.5'\n      },\n      '2xl': {\n        resizeHandle: 'after:w-2 data-[orientation=vertical]:after:h-2'\n      }\n    }\n  },\n  defaultVariants: {\n    size: 'md'\n  }\n});\n"
+    },
+    {
+      "path": "packages/ui/src/theme/index.ts",
+      "type": "registry:theme",
+      "content": "export * from './config';\n\nexport type * from './types';\n"
+    },
+    {
+      "path": "packages/ui/src/theme/config.ts",
+      "type": "registry:theme",
+      "content": "import type { ThemeSize } from './types';\n\nexport const themeSizeMap: Record<ThemeSize, number> = {\n  xs: 12,\n  sm: 14,\n  md: 16,\n  lg: 18,\n  xl: 20,\n  '2xl': 24\n};\nexport const miniSizeMap: Record<ThemeSize, ThemeSize> = {\n  xs: 'xs',\n  sm: 'xs',\n  md: 'sm',\n  lg: 'md',\n  xl: 'lg',\n  '2xl': 'xl'\n};\n\nexport const themeSizeRatio = Object.fromEntries(\n  Object.entries(themeSizeMap).map(([key, value]) => [key, value / themeSizeMap.md])\n) as Record<ThemeSize, number>;\n"
+    },
+    {
+      "path": "packages/ui/src/theme/types.ts",
+      "type": "registry:theme",
+      "content": "export type ThemeColor = 'primary' | 'destructive' | 'success' | 'warning' | 'info' | 'carbon' | 'secondary' | 'accent';\n\nexport type ThemeSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl';\n"
+    }
+  ],
+  "type": "registry:ui"
+}
