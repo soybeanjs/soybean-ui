@@ -67,9 +67,9 @@ export function getColorValue(colorValue: ColorValue, format: ColorFormat) {
 }
 
 export function getColorPresetCacheKey(config: PresetConfig) {
-  const { base, primary, feedback, sidebar } = config;
+  const { base, primary, feedback } = config;
 
-  const key = `base:${base};primary:${primary};feedback:${feedback};sidebar:${sidebar}`;
+  const key = `base:${base};primary:${primary};feedback:${feedback}`;
 
   return key;
 }
