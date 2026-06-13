@@ -34,7 +34,7 @@
     "@vitejs/plugin-vue": "^6.0.7",
     "@vitejs/plugin-vue-jsx": "^5.1.5",
     "typescript": "^6.0.3",
-    "unocss": "^66.7.0",
+    "unocss": "^66.7.2",
     "unplugin-vue-components": "^32.1.0"
   },
   "packageManager": "pnpm@11.6.0"
