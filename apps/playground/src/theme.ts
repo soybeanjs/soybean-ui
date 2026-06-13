@@ -20,12 +20,12 @@ export const [provideThemeContext, useTheme] = useContext('ThemeContext', () => 
 
   const configProviderProps = computed<ConfigProviderProps>(() => ({
     theme: {
+      size: size.value,
       base: base.value,
       primary: primary.value,
       feedback: feedback.value,
       radius: radius.value
     },
-    size: size.value,
     dir: direction.value,
     locale: locale.value
   }));
