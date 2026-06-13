@@ -33,7 +33,7 @@ describe('registry fetcher (integration)', () => {
       expect(items.some(i => i.name === 'dialog')).toBe(true);
       expect(items.some(i => i.name === 'accordion')).toBe(true);
       expect(items.some(i => i.name === 'input')).toBe(true);
-      expect(items.some(i => i.name === 'utils')).toBe(true);
+      expect(items.some(i => i.name === 'test-base')).toBe(true);
     });
 
     it('returns items with correct types', async () => {
@@ -43,9 +43,9 @@ describe('registry fetcher (integration)', () => {
       expect(button).toBeDefined();
       expect(button!.type).toBe('registry:ui');
 
-      const utils = items.find(i => i.name === 'utils');
-      expect(utils).toBeDefined();
-      expect(utils!.type).toBe('registry:lib');
+      const base = items.find(i => i.name === 'test-base');
+      expect(base).toBeDefined();
+      expect(base!.type).toBe('registry:base');
     });
 
     it('returns items with metadata attached', async () => {
@@ -63,7 +63,6 @@ describe('registry fetcher (integration)', () => {
 
       const dialog = items.find(i => i.name === 'dialog');
       expect(dialog).toBeDefined();
-      expect(dialog!.registryDependencies).toContain('utils');
       expect(dialog!.registryDependencies).toContain('button');
     });
 

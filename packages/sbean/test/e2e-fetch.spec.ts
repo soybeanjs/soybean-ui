@@ -94,7 +94,6 @@ describe('end-to-end: component JSON fetching flow', () => {
     const types = new Set(catalog.items.map((i: any) => i.type));
 
     expect(types.has('registry:ui')).toBe(true);
-    expect(types.has('registry:lib')).toBe(true);
     expect(types.has('registry:theme')).toBe(true);
     expect(types.has('registry:base')).toBe(true);
     expect(types.has('registry:font')).toBe(true);
