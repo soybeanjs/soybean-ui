@@ -21,17 +21,19 @@ import type {
   ColorFormat,
   ColorValue,
   DarkSelector,
+  StyleTarget,
   ThemeColorKey,
   ThemeColorPreset,
   ThemeColorWithAlphaKey,
   ThemeColors,
-  ThemeOptions
+  ThemeOptions,
+  ThemeSize
 } from './types';
 
 export function generateAllCss(options: Required<Pick<ThemeOptions, 'styleTarget' | 'darkSelector' | 'format'>>) {
   const { styleTarget, darkSelector, format } = options;
 
-  const sizeCss = generateSizeCss();
+  const sizeCss = generateSizeCss(styleTarget);
   const radiusCss = generateRadiusCss();
   const menuCss = generateMenuCss();
   const baseCss = generateBaseCss({ darkSelector, format });
@@ -50,7 +52,7 @@ export function generateCss(
     Pick<ThemeOptions, 'styleTarget' | 'darkSelector' | 'format' | 'size' | 'radius' | 'menuColor' | 'menuAccent'>
   >
 ) {
-  const sizeCss = generateSizeCss(options);
+  const sizeCss = generateSizeCss(options.styleTarget, options.size);
   const radiusCss = generateRadiusCss(options);
   const menuCss = generateMenuCss(options);
   const colorCss = generateColorCss(preset, options);
@@ -60,12 +62,10 @@ export function generateCss(
   return css;
 }
 
-export function generateSizeCss(options?: Pick<ThemeOptions, 'styleTarget' | 'size'>) {
-  const { styleTarget, size } = options ?? {};
+export function generateSizeCss(styleTarget: StyleTarget, size?: ThemeSize) {
+  let css = `${styleTarget} {\n  font-size: var(${SIZE_VARIABLE});\n}\n\n`;
 
-  let css = ``;
-
-  if (styleTarget && size) {
+  if (size) {
     css = `${styleTarget} {\n  ${SIZE_VARIABLE}: ${THEME_SIZE[size]}px;\n}`;
   }
 
