@@ -1,6 +1,12 @@
 import { DEFAULT_PRESET_OPTIONS } from './constants';
-import { mergeObjects, getColorPresetCacheKey } from './shared';
-import { generateCSSVariables, generateSizeCSSVariable, generateRadiusCSSVariable } from './css';
+import { mergeObjects } from './shared';
+import {
+  generateCSSVariables,
+  generateAllColorCSSVariables,
+  generateSizeCSSVariable,
+  generateAllRadiusCSSVariable,
+  generateMenuCSSVariable
+} from './css';
 import { generateThemePreset } from './preset';
 import type {
   PresetConfig,
@@ -8,8 +14,7 @@ import type {
   ThemeOptions,
   BaseThemeOptions,
   RequiredThemeOptions,
-  ThemeSize,
-  ThemeRadius
+  ThemeSize
 } from './types';
 
 export function createShadcnTheme(options?: ThemeOptions) {
@@ -22,70 +27,35 @@ export function createShadcnTheme(options?: ThemeOptions) {
     },
     options ?? {}
   );
-  const { size, radius, base, primary, feedback, styleTarget, darkSelector, format, preset } = opts;
+  const { size, base, primary, feedback, menuColor, menuAccent, styleTarget, darkSelector, format, preset } = opts;
 
-  const colorCssCache = new Map<string, string>();
+  // The all-variant color CSS includes ALL built-in base/primary/feedback/sidebar combos.
+  // Default values are in :root, variants use [data-*] selectors.
+  const allColorCss = generateAllColorCSSVariables({ styleTarget, darkSelector, format });
 
+  const getSizeCss = (sizeValue?: ThemeSize) => generateSizeCSSVariable(sizeValue ?? size, styleTarget);
+  const getMenuCss = () => generateMenuCSSVariable(menuColor, menuAccent, styleTarget);
+
+  const getCss = (config?: BaseThemeOptions) => {
+    const { size: sizeValue = size } = config ?? {};
+
+    const menuCss = getMenuCss();
+    const sizeCss = getSizeCss(sizeValue);
+    const radiusCss = generateAllRadiusCSSVariable(styleTarget);
+
+    return `${menuCss}\n\n${sizeCss}\n\n${radiusCss}\n\n${allColorCss}`;
+  };
+
+  // Legacy: per-config color CSS (for dynamic updates via ConfigProvider)
   const getColorCss = (config?: PresetConfig) => {
     const mergedConfig: Required<PresetKeyConfig> = {
       base: config?.base ?? base,
       primary: config?.primary ?? primary,
       feedback: config?.feedback ?? feedback
     };
-
-    const hasCustomPreset = Boolean(config?.preset ?? preset);
-
-    const shouldUseColorCssCache = !hasCustomPreset;
-
-    const cacheKey = getColorPresetCacheKey(mergedConfig);
-
-    if (shouldUseColorCssCache && colorCssCache.has(cacheKey)) {
-      return colorCssCache.get(cacheKey)!;
-    }
-
     const themePreset = generateThemePreset(mergedConfig, config?.preset ?? preset);
-
-    const css = generateCSSVariables(themePreset, { styleTarget, darkSelector, format });
-
-    if (shouldUseColorCssCache) {
-      colorCssCache.set(cacheKey, css);
-    }
-
-    return css;
+    return generateCSSVariables(themePreset, { styleTarget, darkSelector, format });
   };
 
-  const getSizeCss = (sizeValue?: ThemeSize) => generateSizeCSSVariable(sizeValue ?? size, styleTarget);
-
-  const getRadiusCss = (update?: ThemeRadius) => generateRadiusCSSVariable(update ?? radius, styleTarget);
-
-  const getCss = (config?: BaseThemeOptions) => {
-    const { size: sizeValue = size, radius: radiusValue = radius } = config ?? {};
-
-    const sizeCss = getSizeCss(sizeValue);
-    const radiusCss = getRadiusCss(radiusValue);
-    const css = getColorCss(config);
-
-    return `${sizeCss}\n\n${radiusCss}\n\n${css}`;
-  };
-
-  return {
-    /**
-     * get the complete css variables string
-     *
-     * the result is the combination of size css variables, radius css variables, and color css variables
-     */
-    getCss,
-    /**
-     * get the size css variables string
-     */
-    getSizeCss,
-    /**
-     * get the radius css variable string
-     */
-    getRadiusCss,
-    /**
-     * get the color css variables string
-     */
-    getColorCss
-  };
+  return { getCss, getSizeCss, getColorCss };
 }

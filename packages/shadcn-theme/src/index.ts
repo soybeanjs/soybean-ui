@@ -16,6 +16,8 @@ export { createShadcnTheme } from './core';
 export type {
   ThemeSize,
   ThemeRadius,
+  MenuColor,
+  MenuAccent,
   HSLColor,
   OKLCHColor,
   ColorValue,

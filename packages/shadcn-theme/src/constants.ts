@@ -81,7 +81,9 @@ export const DEFAULT_PRESET_OPTIONS = {
   radius: 'md',
   base: 'zinc',
   primary: 'indigo',
-  feedback: 'classic'
+  feedback: 'classic',
+  menuColor: 'default',
+  menuAccent: 'subtle'
 } as const satisfies ThemeOptions;
 
 /**

@@ -5,38 +5,6 @@ import type {
   SimplePaletteKey
 } from '@soybeanjs/colord/palette';
 
-/**
- * the theme options
- */
-export type ThemeRadius = 'none' | '2xs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | 'full';
-
-export interface ThemeRadiusConfig {
-  /**
-   * the border radius
-   *
-   * @default 'md'
-   */
-  radius?: ThemeRadius;
-}
-
-/**
- * the theme size key
- *
- * Controls the root font-size, scaling all rem-based values proportionally.
- */
-export type ThemeSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl';
-
-export interface ThemeSizeConfig {
-  /**
-   * the component size / density
-   *
-   * Controls the root font-size (`<html>`), scaling all rem-based sizes.
-   *
-   * @default 'md'
-   */
-  size?: ThemeSize;
-}
-
 export type HSLColor = `hsl(${number} ${number}% ${number}%)` | `hsl(${number} ${number}% ${number}% / ${number})`;
 
 export type OKLCHColor = `oklch(${number}% ${number} ${number})` | `oklch(${number}% ${number} ${number} / ${number})`;
@@ -291,9 +259,78 @@ export interface PresetConfig extends PresetKeyConfig {
 }
 
 /**
+ * the theme options
+ */
+export type ThemeRadius = 'none' | '2xs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | 'full';
+
+export interface ThemeRadiusConfig {
+  /**
+   * the border radius
+   *
+   * @default 'md'
+   */
+  radius?: ThemeRadius;
+}
+
+/**
+ * the theme size key
+ *
+ * Controls the root font-size, scaling all rem-based values proportionally.
+ */
+export type ThemeSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl';
+
+export interface ThemeSizeConfig {
+  /**
+   * the component size / density
+   *
+   * Controls the root font-size (`<html>`), scaling all rem-based sizes.
+   *
+   * @default 'md'
+   */
+  size?: ThemeSize;
+}
+
+/**
+ * the menu color preset key
+ *
+ * Controls menu background style (default, inverted, or translucent variants).
+ */
+export type MenuColor = 'default' | 'inverted' | 'default-translucent' | 'inverted-translucent';
+
+/**
+ * the menu accent preset key
+ *
+ * Controls menu item highlight style.
+ */
+export type MenuAccent = 'subtle' | 'bold';
+
+export interface ThemeMenuConfig {
+  /**
+   * the menu color style
+   *
+   * - default: normal popover background
+   * - inverted: dark card background
+   * - default-translucent: popover with backdrop blur
+   * - inverted-translucent: dark card with backdrop blur
+   *
+   * @default 'default'
+   */
+  menuColor?: MenuColor;
+  /**
+   * the menu accent style
+   *
+   * - subtle: muted foreground highlight
+   * - bold: primary color highlight
+   *
+   * @default 'subtle'
+   */
+  menuAccent?: MenuAccent;
+}
+
+/**
  * theme options
  */
-export interface ThemeOptions extends ThemeSizeConfig, ThemeRadiusConfig, PresetConfig {
+export interface ThemeOptions extends ThemeSizeConfig, ThemeRadiusConfig, ThemeMenuConfig, PresetConfig {
   /**
    * the style target
    *
@@ -323,4 +360,4 @@ export interface ThemeOptions extends ThemeSizeConfig, ThemeRadiusConfig, Preset
 
 export interface RequiredThemeOptions extends Required<Omit<ThemeOptions, 'preset'>>, Pick<ThemeOptions, 'preset'> {}
 
-export interface BaseThemeOptions extends ThemeSizeConfig, ThemeRadiusConfig, Omit<PresetConfig, 'preset'> {}
+export interface BaseThemeOptions extends Omit<ThemeOptions, 'styleTarget' | 'darkSelector' | 'format' | 'preset'> {}
