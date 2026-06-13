@@ -139,18 +139,16 @@ export const THEME_SIZE = {
 export const themeSizeKeys = keysOf(THEME_SIZE) as ['xs', 'sm', 'md', 'lg', 'xl', '2xl'];
 
 export const THEME_RADIUS = {
-  none: '0px',
   '2xs': '0.25rem',
   xs: '0.375rem',
   sm: '0.5rem',
   md: '0.625rem',
   lg: '0.75rem',
   xl: '0.875rem',
-  '2xl': '1rem',
-  full: '9999px'
+  '2xl': '1rem'
 } as const satisfies Record<ThemeRadius, string>;
 
-export const themeRadiusKeys = keysOf(THEME_RADIUS) as ['none', '2xs', 'xs', 'sm', 'md', 'lg', 'xl', '2xl', 'full'];
+export const themeRadiusKeys = keysOf(THEME_RADIUS) as ['2xs', 'xs', 'sm', 'md', 'lg', 'xl', '2xl'];
 
 export const menuColorCss: Record<MenuColor, Record<string, string>> = {
   default: {

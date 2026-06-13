@@ -269,7 +269,7 @@ export interface PresetConfig extends PresetKeyConfig {
 /**
  * the theme options
  */
-export type ThemeRadius = 'none' | '2xs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | 'full';
+export type ThemeRadius = '2xs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl';
 
 export interface ThemeRadiusConfig {
   /**
