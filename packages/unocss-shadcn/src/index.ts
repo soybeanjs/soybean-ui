@@ -6,6 +6,7 @@ import type { Theme } from 'unocss/preset-mini';
 import { presetAnimations } from 'unocss-preset-animations';
 import { createShadcnTheme } from '@soybeanjs/shadcn-theme';
 import type { ThemeOptions, BaseThemeOptions } from '@soybeanjs/shadcn-theme';
+import { transform } from 'lightningcss';
 import globalStyle from './global.css?raw';
 import resetStyle from './reset.css?raw';
 
@@ -107,22 +108,29 @@ export function presetShadcn(options?: ShadcnPresetOptions): Preset<Theme>[] {
   const preflights: Preflight[] = [];
 
   if (options?.generated) {
-    if (resetCss) {
-      preflights.push({
-        getCSS: () => resetStyle
-      });
-    }
-
-    if (globalCss) {
-      preflights.push({
-        getCSS: () => globalStyle
-      });
-    }
-
     preflights.push({
       getCSS: () => {
+        let css = '';
+
+        if (resetCss) {
+          css += `${resetStyle}\n`;
+        }
+
+        if (globalCss) {
+          css += `${globalStyle}\n`;
+        }
+
         const { getCss } = createShadcnTheme(options);
-        return getCss();
+
+        css += getCss();
+
+        const r = transform({
+          filename: 'shadcn-theme.css',
+          code: Buffer.from(css),
+          minify: true
+        });
+
+        return new TextDecoder().decode(r.code);
       }
     });
   }
