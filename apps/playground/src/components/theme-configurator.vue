@@ -1,8 +1,18 @@
 <script lang="ts" setup>
 import { useMediaQuery } from '@vueuse/core';
 import { tailwindPalette } from '@soybeanjs/colord/palette';
-import { builtinBasePresetKeys, builtinFeedbackPresetKeys, builtinPrimaryPresetKeys } from '@soybeanjs/shadcn-theme';
-import type { BuiltinBasePresetKey, BuiltinFeedbackPresetKey, BuiltinPrimaryPresetKey } from '@soybeanjs/shadcn-theme';
+import {
+  builtinBasePresetKeys,
+  builtinFeedbackPresetKeys,
+  builtinPrimaryPresetKeys,
+  THEME_RADIUS
+} from '@soybeanjs/shadcn-theme';
+import type {
+  BuiltinBasePresetKey,
+  BuiltinFeedbackPresetKey,
+  BuiltinPrimaryPresetKey,
+  ThemeRadius
+} from '@soybeanjs/shadcn-theme';
 import { SButton, SButtonIcon, SLabel, SPopover, SSelect } from '@soybeanjs/ui';
 import type { SelectOptionData, ThemeSize } from '@soybeanjs/ui';
 import { useTheme } from '../theme';
@@ -13,7 +23,7 @@ const { base, primary, feedback, radius, size, setRadius, setSize } = useTheme('
 
 const sizes: ThemeSize[] = ['xs', 'sm', 'md', 'lg', 'xl', '2xl'];
 
-const radiuses: number[] = [0, 0.25, 0.375, 0.5, 0.625, 0.75, 0.875, 1];
+const radiuses = Object.keys(THEME_RADIUS) as ThemeRadius[];
 
 const baseOptions: SelectOptionData<BuiltinBasePresetKey>[] = builtinBasePresetKeys.map(key => ({
   label: key,

@@ -219,6 +219,14 @@ export type DarkSelector = 'class' | 'media';
 
 export type ColorFormat = 'hsl' | 'oklch';
 
+/**
+ * CSS generation scope
+ *
+ * - 'all': generate CSS for all built-in preset variants with [data-*] selectors for runtime switching
+ * - 'current': only generate CSS for the currently passed parameters (no variant selectors, smaller output)
+ */
+export type ThemeScope = 'all' | 'current';
+
 export interface CustomPreset {
   base: BasePreset;
   primary: PrimaryPreset;
@@ -332,6 +340,15 @@ export interface ThemeMenuConfig {
  */
 export interface ThemeOptions extends ThemeSizeConfig, ThemeRadiusConfig, ThemeMenuConfig, PresetConfig {
   /**
+   * CSS generation scope
+   *
+   * - 'all': generate CSS for all built-in preset variants with [data-*] selectors for runtime switching
+   * - 'current': only generate CSS for the currently passed parameters (no variant selectors, smaller output)
+   *
+   * @default 'all'
+   */
+  scope?: ThemeScope;
+  /**
    * the style target
    *
    * @default ':root'
@@ -360,4 +377,7 @@ export interface ThemeOptions extends ThemeSizeConfig, ThemeRadiusConfig, ThemeM
 
 export interface RequiredThemeOptions extends Required<Omit<ThemeOptions, 'preset'>>, Pick<ThemeOptions, 'preset'> {}
 
-export interface BaseThemeOptions extends Omit<ThemeOptions, 'styleTarget' | 'darkSelector' | 'format' | 'preset'> {}
+export interface BaseThemeOptions extends Omit<
+  ThemeOptions,
+  'scope' | 'styleTarget' | 'darkSelector' | 'format' | 'preset'
+> {}

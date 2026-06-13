@@ -13,10 +13,25 @@ import type {
   SidebarPresetColorKey,
   DarkSelector,
   OKLCHColor,
-  ThemeOptions,
+  RequiredThemeOptions,
   ThemeSize,
-  ThemeRadius
+  ThemeRadius,
+  SidebarColors,
+  MenuAccent,
+  MenuColor
 } from './types';
+
+export const UI_DATA_ATTRIBUTE = {
+  size: 'data-ui-size',
+  radius: 'data-ui-radius',
+  menuColor: 'data-ui-menu-color',
+  menuAccent: 'data-ui-menu-accent',
+  base: 'data-ui-base-color',
+  primary: 'data-ui-primary-color',
+  feedback: 'data-ui-feedback-color'
+};
+
+export const SIZE_VARIABLE = '--root-font-size';
 
 export const RADIUS_VARIABLE = '--radius';
 
@@ -74,7 +89,16 @@ export const EXTENDED_THEME_VARIABLES = {
   borderAlpha: '--border-alpha',
   inputAlpha: '--input-alpha',
   sidebarBorderAlpha: '--sidebar-border-alpha'
-};
+} as const;
+
+export const MENU_VARIABLES = {
+  bg: '--menu-bg',
+  bgAlpha: '--menu-bg-alpha',
+  dropBlur: '--menu-drop-blur',
+  backdropSaturate: '--menu-backdrop-saturate',
+  itemAccentBackground: '--menu-item-accent-background',
+  itemAccentForeground: '--menu-item-accent-foreground'
+} as const;
 
 export const DEFAULT_PRESET_OPTIONS = {
   size: 'md',
@@ -83,8 +107,12 @@ export const DEFAULT_PRESET_OPTIONS = {
   primary: 'indigo',
   feedback: 'classic',
   menuColor: 'default',
-  menuAccent: 'subtle'
-} as const satisfies ThemeOptions;
+  menuAccent: 'subtle',
+  scope: 'all',
+  styleTarget: ':root',
+  darkSelector: 'class',
+  format: 'hsl'
+} as const satisfies RequiredThemeOptions;
 
 /**
  * dark mode selectors
@@ -106,7 +134,7 @@ export const THEME_SIZE = {
   lg: 18,
   xl: 20,
   '2xl': 24
-} satisfies Record<ThemeSize, number>;
+} as const satisfies Record<ThemeSize, number>;
 
 export const themeSizeKeys = keysOf(THEME_SIZE) as ['xs', 'sm', 'md', 'lg', 'xl', '2xl'];
 
@@ -120,9 +148,62 @@ export const THEME_RADIUS = {
   xl: '0.875rem',
   '2xl': '1rem',
   full: '9999px'
-} satisfies Record<ThemeRadius, string>;
+} as const satisfies Record<ThemeRadius, string>;
 
 export const themeRadiusKeys = keysOf(THEME_RADIUS) as ['none', '2xs', 'xs', 'sm', 'md', 'lg', 'xl', '2xl', 'full'];
+
+export const menuColorCss: Record<MenuColor, Record<string, string>> = {
+  default: {
+    [MENU_VARIABLES.bg]: `var(${COLOR_VARIABLES.popover})`,
+    [MENU_VARIABLES.bgAlpha]: '1',
+    [MENU_VARIABLES.dropBlur]: '0px',
+    [MENU_VARIABLES.backdropSaturate]: '1'
+  },
+  'default-translucent': {
+    [MENU_VARIABLES.bg]: `var(${COLOR_VARIABLES.popover})`,
+    [MENU_VARIABLES.bgAlpha]: '0.7',
+    [MENU_VARIABLES.dropBlur]: '40px',
+    [MENU_VARIABLES.backdropSaturate]: '1.5'
+  },
+  inverted: {
+    [MENU_VARIABLES.bg]: `var(${COLOR_VARIABLES.card})`,
+    [MENU_VARIABLES.bgAlpha]: '1',
+    [MENU_VARIABLES.dropBlur]: '0px',
+    [MENU_VARIABLES.backdropSaturate]: '1'
+  },
+  'inverted-translucent': {
+    [MENU_VARIABLES.bg]: `var(${COLOR_VARIABLES.card})`,
+    [MENU_VARIABLES.bgAlpha]: '0.7',
+    [MENU_VARIABLES.dropBlur]: '40px',
+    [MENU_VARIABLES.backdropSaturate]: '1.5'
+  }
+};
+
+export const menuAccentCss: Record<MenuAccent, Record<string, string>> = {
+  subtle: {
+    [MENU_VARIABLES.itemAccentBackground]: `hsl(var(${COLOR_VARIABLES.foreground}) / 0.05)`,
+    [MENU_VARIABLES.itemAccentForeground]: `var(${COLOR_VARIABLES.foreground})`
+  },
+  bold: {
+    [MENU_VARIABLES.itemAccentBackground]: `hsl(var(${COLOR_VARIABLES.primary}) / 0.1)`,
+    [MENU_VARIABLES.itemAccentForeground]: `var(${COLOR_VARIABLES.primary})`
+  }
+};
+
+export const sidebarCssVars: Record<keyof SidebarColors, string> = {
+  sidebar: `var(${COLOR_VARIABLES.background})`,
+  sidebarForeground: `var(${COLOR_VARIABLES.foreground})`,
+  sidebarPrimary: `var(${COLOR_VARIABLES.primary})`,
+  sidebarPrimaryForeground: `var(${COLOR_VARIABLES.primaryForeground})`,
+  sidebarAccent: `var(${COLOR_VARIABLES.accent})`,
+  sidebarAccentForeground: `var(${COLOR_VARIABLES.accentForeground})`,
+  sidebarBorder: `var(${COLOR_VARIABLES.border})`,
+  sidebarRing: `var(${COLOR_VARIABLES.ring})`
+};
+
+export const darkSidebarCss: Partial<Record<keyof SidebarColors, string>> = {
+  sidebar: `var(${COLOR_VARIABLES.card})`
+};
 
 /**
  * builtin base color preset

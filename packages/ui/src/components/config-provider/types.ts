@@ -26,7 +26,11 @@ export interface IconifyOptions {
 export interface ConfigProviderProps extends _ConfigProviderProps {
   /** The theme options. */
   theme?: ThemeOptions;
-  /** The size options. */
+  /**
+   * The size options.
+   *
+   * @deprecated Use `theme.size` instead.
+   */
   size?: ThemeSize;
   /** The iconify options. */
   iconify?: IconifyOptions;
