@@ -12,12 +12,8 @@ export default defineConfig({
   lint,
   run: {
     tasks: {
-      'init:lib': {
-        command: 'pnpm --filter @soybeanjs/shadcn-theme build && pnpm --filter @soybeanjs/unocss-shadcn build'
-      },
       'type-check': {
-        command: `pnpm --filter './packages/*' typecheck`,
-        dependsOn: ['init:lib']
+        command: `pnpm --filter './packages/*' typecheck`
       },
       'build:headless': {
         command: 'pnpm --filter @soybeanjs/headless build'
@@ -27,14 +23,14 @@ export default defineConfig({
       },
       'build:ui': {
         command: 'pnpm --filter @soybeanjs/ui build',
-        dependsOn: ['init:lib', 'build:headless']
+        dependsOn: ['build:headless']
       },
-      'dev:playground': {
+      dev: {
         command: 'pnpm --filter @soybeanjs/ui-playground dev'
       },
       'build:playground': {
         command: 'pnpm --filter @soybeanjs/ui-playground build',
-        dependsOn: ['init:lib', 'build:headless']
+        dependsOn: ['build:headless']
       },
       'dev:docs': {
         command: 'pnpm --filter @soybeanjs/ui-docs dev',

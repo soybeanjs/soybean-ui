@@ -19,10 +19,12 @@
   "type": "module",
   "scripts": {
     "build": "vp run build:ui && vp run build:sbean",
+    "build:libs": "pnpm --filter @soybeanjs/shadcn-theme build && pnpm --filter @soybeanjs/unocss-shadcn build",
     "commit": "soy git-commit",
     "fmt": "vp fmt",
     "lint": "vp lint --fix && pnpm lint:vue",
     "lint:vue": "eslint packages/ --ext .vue --fix",
+    "prepare": "pnpm build:libs",
     "publish-pkg": "pnpm publish -r --access public",
     "release": "soy release -e 'pnpm release-execute'",
     "release-execute": "pnpm soy changelog && pnpm sui skills && pnpm sui changelog && pnpm sui changelog-translate",
