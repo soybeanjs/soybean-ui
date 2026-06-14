@@ -11,7 +11,7 @@
   "type": "module",
   "scripts": {
     "build": "pnpm build:registry && vite-ssg build",
-    "build:registry": "pnpm --filter sbean build:registry",
+    "build:registry": "pnpm --filter sbean build:registry && vp fmt public/r --write",
     "dev": "vite",
     "preview": "vite preview",
     "typecheck": "vue-tsc --noEmit --skipLibCheck"

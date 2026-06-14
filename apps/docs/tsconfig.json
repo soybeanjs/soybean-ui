@@ -9,7 +9,8 @@
     "paths": {
       "@/*": ["./src/*"],
       "@ui/*": ["../../packages/ui/src/*"],
-      "@playground/*": ["../playground/src/*"]
+      "@playground/*": ["../playground/src/*"],
+      "@soybeanjs/ui": ["../../packages/ui/src/index.ts"]
     },
     "types": ["node", "vite/client", "vite-plugin-vue-meta-layouts/client"],
     "resolveJsonModule": true,
