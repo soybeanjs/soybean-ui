@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useDocOutline } from '@/composables/use-doc-outline';
+import { useDocOutline } from '~/composables/use-doc-outline';
 
 const visible = shallowRef(false);
 const docOutline = useDocOutline();

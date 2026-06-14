@@ -1,5 +1,5 @@
 import { useI18n } from 'vue-i18n';
-import { useGeneratedI18n } from '@/composables/use-generated-i18n';
+import { useGeneratedI18n } from '~/composables/use-generated-i18n';
 
 export function useApiI18n() {
   const { t } = useI18n({ useScope: 'global' });

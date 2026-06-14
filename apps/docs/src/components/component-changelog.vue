@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { getComponentChangelogDocument } from '@/shared/generated-changelog';
-import type { GeneratedChangelogEntryType } from '@/shared/generated-changelog';
-import { useGeneratedI18n } from '@/composables/use-generated-i18n';
+import { useGeneratedI18n } from '~/composables/use-generated-i18n';
+import { getComponentChangelogDocument } from '~/shared/generated-changelog';
+import type { GeneratedChangelogEntryType } from '~/shared/generated-changelog';
 
 interface Props {
   component: string;

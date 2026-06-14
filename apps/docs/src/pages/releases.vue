@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { pascalCase } from '@soybeanjs/utils';
-import { getReleaseChangelogDocument } from '@/shared/generated-changelog';
-import type { GeneratedChangelogEntryType, GeneratedReleaseChangelogVersion } from '@/shared/generated-changelog';
-import { useGeneratedI18n } from '@/composables/use-generated-i18n';
+import { useGeneratedI18n } from '~/composables/use-generated-i18n';
+import { getReleaseChangelogDocument } from '~/shared/generated-changelog';
+import type { GeneratedChangelogEntryType, GeneratedReleaseChangelogVersion } from '~/shared/generated-changelog';
 
 const route = useRoute();
 const router = useRouter();

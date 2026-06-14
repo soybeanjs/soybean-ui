@@ -2,7 +2,7 @@
 import { useMagicKeys } from '@vueuse/core';
 import type { CommandOptionData, SelectEvent } from '@soybeanjs/ui';
 import { kebabCase, pascalCase } from '@soybeanjs/utils';
-import { components } from '@ui/constants/components';
+import { components } from '@/constants/components';
 
 defineOptions({
   name: 'SearchDocument'

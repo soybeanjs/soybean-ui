@@ -1,4 +1,4 @@
-import generatedChangelogIndex from '@/generated/changelog/index.json';
+import generatedChangelogIndex from '~/generated/changelog/index.json';
 
 export type GeneratedChangelogEntryType = 'feature' | 'fix' | 'optimization' | 'refactor' | 'docs' | 'chore' | 'style';
 
@@ -62,7 +62,7 @@ interface GeneratedChangelogIndex {
   components: Record<string, GeneratedChangelogIndexEntry>;
 }
 
-const generatedReleaseDocument = (await import('@/generated/changelog/releases.json'))
+const generatedReleaseDocument = (await import('~/generated/changelog/releases.json'))
   .default as GeneratedReleaseChangelogDocument;
 
 const generatedChangelogModules = import.meta.glob<GeneratedChangelogDocument>('../generated/changelog/*.json', {

@@ -1,5 +1,5 @@
 import { progress } from '@soybeanjs/ui';
-import type { UserModule } from '@/types';
+import type { UserModule } from '~/types';
 
 export const install: UserModule = ({ router }) => {
   if (!import.meta.env.SSR) {

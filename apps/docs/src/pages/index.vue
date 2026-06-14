@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { kebabCase, pascalCase } from '@soybeanjs/utils';
-import BackgroundDecoration from '@/motion/background-decoration.vue';
+import BackgroundDecoration from '~/motion/background-decoration.vue';
 import { menuData } from '../constants/menus';
 
 const { t } = useI18n();

@@ -10,9 +10,9 @@ import AutoImport from 'unplugin-auto-import/vite';
 import { VueRouterAutoImports } from 'vue-router/unplugin';
 import VueRouter from 'vue-router/vite';
 import Unocss from 'unocss/vite';
-import UiResolver from '@soybeanjs/ui/resolver';
 import Shiki from '@shikijs/markdown-exit';
 import { unheadVueComposablesImports } from '@unhead/vue';
+import UiResolver from '../../packages/ui/src/resolver';
 import { customMarkdownPlugin } from './src/modules/markdown';
 import { soybeanDocsLlmsPlugin } from './build/llms';
 

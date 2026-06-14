@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { kebabCase, pascalCase } from '@soybeanjs/utils';
-import { resetDocOutline, setDocOutline } from '@/composables/use-doc-outline';
+import { resetDocOutline, setDocOutline } from '~/composables/use-doc-outline';
 import { menuData, newlyComponentKeys } from '../../constants/menus';
 
 const { t } = useI18n();

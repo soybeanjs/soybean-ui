@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { kebabCase, pascalCase } from '@soybeanjs/utils';
-import { menuData } from '@/constants/menus';
-import { getComponentChangelogMeta } from '@/shared/generated-changelog';
+import { menuData } from '~/constants/menus';
+import { getComponentChangelogMeta } from '~/shared/generated-changelog';
 
 const router = useRouter();
 const route = useRoute('/components/[name]');

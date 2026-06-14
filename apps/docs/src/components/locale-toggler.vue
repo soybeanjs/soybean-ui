@@ -2,7 +2,7 @@
 import type { MenuOptionData } from '@soybeanjs/ui';
 import { snakeCase } from 'es-toolkit';
 import { useTheme } from '@playground/theme';
-import { availableLocales, loadLanguageAsync } from '@/modules/i18n';
+import { availableLocales, loadLanguageAsync } from '~/modules/i18n';
 
 const { setLocale } = useTheme('LocaleToggler');
 const { t, locale } = useI18n();

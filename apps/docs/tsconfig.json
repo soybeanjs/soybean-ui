@@ -7,8 +7,8 @@
     "module": "ESNext",
     "moduleResolution": "bundler",
     "paths": {
-      "@/*": ["./src/*"],
-      "@ui/*": ["../../packages/ui/src/*"],
+      "~/*": ["./src/*"],
+      "@/*": ["../../packages/ui/src/*"],
       "@playground/*": ["../playground/src/*"],
       "@soybeanjs/ui": ["../../packages/ui/src/index.ts"]
     },

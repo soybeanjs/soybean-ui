@@ -1,4 +1,4 @@
-import generatedApiIndex from '@/generated/api/index.json';
+import generatedApiIndex from '~/generated/api/index.json';
 
 export interface GeneratedApiReferencedType {
   name: string;
@@ -520,7 +520,7 @@ function collectExternalImportedTypes(source: string) {
 }
 
 function isExternalImportSource(importSource: string) {
-  return !importSource.startsWith('.') && !importSource.startsWith('@/') && !importSource.startsWith('@soybeanjs/');
+  return !importSource.startsWith('.') && !importSource.startsWith('~/') && !importSource.startsWith('@soybeanjs/');
 }
 
 function normalizeSourceModulePath(path: string) {

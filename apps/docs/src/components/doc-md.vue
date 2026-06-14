@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { Component } from 'vue';
 import type { AnchorOptionData } from '@soybeanjs/headless/anchor';
-import { resetDocOutline, setDocOutline } from '@/composables/use-doc-outline';
+import { resetDocOutline, setDocOutline } from '~/composables/use-doc-outline';
 
 interface Props {
   /**
