@@ -2,7 +2,7 @@
 import { computed } from 'vue';
 import { Icon as Iconify } from '@iconify/vue';
 import type { IconifyIcon } from '@iconify/vue';
-import { useConfigProvider } from '../config-provider';
+import { useConfigProvider } from '../config-provider/context';
 import type { IconProps, IconValue } from './types';
 
 defineOptions({
