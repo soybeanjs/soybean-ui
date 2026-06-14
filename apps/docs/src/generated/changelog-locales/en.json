@@ -1506,6 +1506,26 @@
               "db519": "simplify preset handling and cache logic",
               "e4611": "update build dependencies to include init:lib for ui and playground",
               "e5175": "simplify CSS generation by removing radius parameter"
+            },
+            "8": {
+              "54181": "remove unused radius values from theme radius definitions",
+              "047b3": "update unocss root path",
+              "11aff": "simplify theme handling and improve CSS generation",
+              "2ba39": "update component names in fetcher integration tests",
+              "4f4d4": "add lightningcss as a dev dependency",
+              "5ac32": "update generateSizeCss to accept styleTarget and size parameters",
+              "5f954": "remove table of contents and update import statements",
+              "6de36": "update scripts for consistency and clarity",
+              "8e1d2": "add installation and CLI documentation in English and Chinese",
+              "979e9": "refactor ui theme configurator",
+              "b9c2f": "enhance build:registry script for formatting",
+              "bde98": "update deps",
+              "c0b7c": "move size property to theme object in configProviderProps",
+              "ca250": "update sbean registry",
+              "d7e62": "add formatting step to build:docs command",
+              "da282": "streamline build tasks and add prepare script",
+              "e723a": "handle fallback for radius value in generateRadiusCSSVariable",
+              "ee455": "disable minification for better debugging"
             }
           }
         }

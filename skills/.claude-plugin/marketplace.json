@@ -14,7 +14,7 @@
       "keywords": ["agentskills", "soybean-ui", "soybean-headless", "vue", "github-copilot", "claude-code"],
       "name": "soybean-ui-skills",
       "source": "./",
-      "version": "0.29.0-beta.7"
+      "version": "0.29.0-beta.8"
     }
   ]
 }

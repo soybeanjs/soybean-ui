@@ -1506,6 +1506,26 @@
               "db519": "简化预设处理和缓存逻辑",
               "e4611": "更新构建依赖项，为 ui 和 playground 添加 init:lib",
               "e5175": "通过移除 radius 参数来简化 CSS 生成"
+            },
+            "8": {
+              "54181": "从主题半径定义中移除未使用的半径值",
+              "047b3": "更新 unocss 的根路径",
+              "11aff": "简化主题处理并改进 CSS 生成",
+              "2ba39": "在 fetcher 集成测试中更新组件名称",
+              "4f4d4": "将 lightningcss 添加为开发依赖项",
+              "5ac32": "更新 generateSizeCss 函数，使其支持 styleTarget 和 size 参数",
+              "5f954": "删除目录并更新导入语句",
+              "6de36": "为保持一致性和清晰度，更新脚本",
+              "8e1d2": "添加英文和中文的安装及 CLI 文档",
+              "979e9": "重构 UI 主题配置器",
+              "b9c2f": "改进 build:registry 脚本以优化格式",
+              "bde98": "更新依赖项",
+              "c0b7c": "将 size 属性移至 configProviderProps 中的 theme 对象",
+              "ca250": "更新 sbean 注册表",
+              "d7e62": "在 build:docs 命令中添加格式化步骤",
+              "da282": "简化构建任务并添加准备脚本",
+              "e723a": "处理 generateRadiusCSSVariable 中半径值的回退逻辑",
+              "ee455": "为便于调试，请禁用代码压缩"
             }
           }
         }

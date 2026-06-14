@@ -1,7 +1,223 @@
 {
-  "generatedAt": "2026-06-12T12:30:04.596Z",
+  "generatedAt": "2026-06-14T03:40:24.379Z",
   "schemaVersion": 1,
   "releases": [
+    {
+      "version": "v0.29.0-beta.8",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.29.0-beta.7...v0.29.0-beta.8",
+      "date": "2026-06-14",
+      "entryCount": 18,
+      "componentCount": 1,
+      "components": ["config-provider"],
+      "typeCounts": {
+        "refactor": 5,
+        "feature": 2,
+        "fix": 2,
+        "optimization": 3,
+        "chore": 2,
+        "style": 4
+      },
+      "entries": [
+        {
+          "type": "refactor",
+          "scope": "config-provider",
+          "summary": "simplify theme handling and improve CSS generation",
+          "summaryKey": "changelog.generated.v0.29.0-beta.8.11aff",
+          "commitHash": "11aff",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/11afffe4",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope",
+          "components": ["config-provider"]
+        },
+        {
+          "type": "feature",
+          "scope": "registry",
+          "summary": "update sbean registry",
+          "summaryKey": "changelog.generated.v0.29.0-beta.8.ca250",
+          "commitHash": "ca250",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/ca2509aa",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "feature",
+          "scope": "docs",
+          "summary": "add installation and CLI documentation in English and Chinese",
+          "summaryKey": "changelog.generated.v0.29.0-beta.8.8e1d2",
+          "commitHash": "8e1d2",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/8e1d29e0",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "fix",
+          "scope": "css",
+          "summary": "handle fallback for radius value in generateRadiusCSSVariable",
+          "summaryKey": "changelog.generated.v0.29.0-beta.8.e723a",
+          "commitHash": "e723a",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/e723a75d",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "fix",
+          "scope": "css",
+          "summary": "update generateSizeCss to accept styleTarget and size parameters",
+          "summaryKey": "changelog.generated.v0.29.0-beta.8.5ac32",
+          "commitHash": "5ac32",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/5ac3260b",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "optimization",
+          "scope": "docs",
+          "summary": "remove table of contents and update import statements",
+          "summaryKey": "changelog.generated.v0.29.0-beta.8.5f954",
+          "commitHash": "5f954",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/5f9544d5",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "optimization",
+          "scope": "docs",
+          "summary": "enhance build:registry script for formatting",
+          "summaryKey": "changelog.generated.v0.29.0-beta.8.b9c2f",
+          "commitHash": "b9c2f",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/b9c2fd56",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "refactor",
+          "scope": "theme",
+          "summary": "refactor ui theme configurator",
+          "summaryKey": "changelog.generated.v0.29.0-beta.8.979e9",
+          "commitHash": "979e9",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/979e9398",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "refactor",
+          "scope": "theme",
+          "summary": "remove unused radius values from theme radius definitions",
+          "summaryKey": "changelog.generated.v0.29.0-beta.8.54181",
+          "commitHash": "54181",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/5418133f",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "refactor",
+          "scope": "unocss-shadcn",
+          "summary": "add lightningcss as a dev dependency",
+          "summaryKey": "changelog.generated.v0.29.0-beta.8.4f4d4",
+          "commitHash": "4f4d4",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/4f4d41d2",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "optimization",
+          "scope": "scripts",
+          "summary": "update scripts for consistency and clarity",
+          "summaryKey": "changelog.generated.v0.29.0-beta.8.6de36",
+          "commitHash": "6de36",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/6de36cd1",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "refactor",
+          "scope": "build",
+          "summary": "streamline build tasks and add prepare script",
+          "summaryKey": "changelog.generated.v0.29.0-beta.8.da282",
+          "commitHash": "da282",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/da28233f",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "chore",
+          "scope": "vscode",
+          "summary": "update unocss root path",
+          "summaryKey": "changelog.generated.v0.29.0-beta.8.047b3",
+          "commitHash": "047b3",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/047b3c81",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "style",
+          "scope": "tests",
+          "summary": "update component names in fetcher integration tests",
+          "summaryKey": "changelog.generated.v0.29.0-beta.8.2ba39",
+          "commitHash": "2ba39",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/2ba39592",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "style",
+          "scope": "theme",
+          "summary": "move size property to theme object in configProviderProps",
+          "summaryKey": "changelog.generated.v0.29.0-beta.8.c0b7c",
+          "commitHash": "c0b7c",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/c0b7c1a1",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "style",
+          "scope": "vite.config",
+          "summary": "disable minification for better debugging",
+          "summaryKey": "changelog.generated.v0.29.0-beta.8.ee455",
+          "commitHash": "ee455",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/ee455262",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "style",
+          "scope": "vite.config",
+          "summary": "add formatting step to build:docs command",
+          "summaryKey": "changelog.generated.v0.29.0-beta.8.d7e62",
+          "commitHash": "d7e62",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/d7e62907",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "chore",
+          "scope": "deps",
+          "summary": "update deps",
+          "summaryKey": "changelog.generated.v0.29.0-beta.8.bde98",
+          "commitHash": "bde98",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/bde9842d",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope",
+          "components": []
+        }
+      ]
+    },
     {
       "version": "v0.29.0-beta.7",
       "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.29.0-beta.6...v0.29.0-beta.7",
