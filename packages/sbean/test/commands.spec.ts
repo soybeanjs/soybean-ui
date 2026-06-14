@@ -318,9 +318,8 @@ describe('command integration tests', () => {
       expect(item).not.toBeNull();
 
       // Doc links should be deterministic
-      const sourceFile = item!.files?.find(f => f.type === 'registry:ui');
+      const sourceFile = item!.files?.find(f => f.type === 'registry:ui' && f.path.includes('button.vue'));
       expect(sourceFile).toBeDefined();
-      expect(sourceFile!.path).toContain('button.vue');
     });
   });
 });

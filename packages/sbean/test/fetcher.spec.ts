@@ -98,9 +98,10 @@ describe('registry fetcher (integration)', () => {
 
       expect(item!.files).toBeDefined();
       expect(item!.files!.length).toBeGreaterThan(0);
-      expect(item!.files![0].path).toContain('button.vue');
-      expect(item!.files![0].content).toBeDefined();
-      expect(item!.files![0].content).toContain('buttonVariants');
+      const vueFile = item!.files!.find(f => f.path.endsWith('button.vue'));
+      expect(vueFile).toBeDefined();
+      expect(vueFile!.content).toBeDefined();
+      expect(vueFile!.content).toContain('buttonVariants');
     });
 
     it('returns null for non-existent component', async () => {

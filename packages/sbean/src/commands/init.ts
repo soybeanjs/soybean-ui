@@ -99,6 +99,7 @@ export const init = new Command()
   .description('initialize your project and install dependencies')
   .option('-c, --cwd <cwd>', 'the working directory', process.cwd())
   .option('-m, --monorepo', 'use monorepo (pnpm workspaces) structure', false)
+  .option('--nuxt', 'initialize as a Nuxt 3 project', false)
   .option('--ui-dir <path>', 'component output directory (default: src/ui or packages/ui)')
   .option('--style <style>', `style preset: ${PRESET_STYLES.join('/')}`)
   .option('--size <size>', `component size: ${PRESET_SIZES.join('/')}`)
@@ -122,6 +123,7 @@ export const init = new Command()
 type InitActionOptions = {
   cwd: string;
   monorepo?: boolean;
+  nuxt?: boolean;
   uiDir?: string;
   style?: string;
   size?: string;
@@ -317,9 +319,15 @@ export async function runInit(opts: InitActionOptions) {
 
   // Scaffold new project if no package.json exists
   if (!projectInfo) {
-    console.log('No package.json found. Creating a new Vue + Vite project...');
-    const uiDirForScaffold = opts.uiDir ?? (isMonorepo ? 'packages/ui' : 'src/ui');
-    await scaffoldProject(cwd, opts.name, uiDirForScaffold);
+    const isNuxt = opts.nuxt ?? false;
+    if (isNuxt) {
+      console.log('No package.json found. Creating a new Nuxt 3 project...');
+      await scaffoldNuxtProject(cwd, opts.name);
+    } else {
+      console.log('No package.json found. Creating a new Vue + Vite project...');
+      const uiDirForScaffold = opts.uiDir ?? (isMonorepo ? 'packages/ui' : 'src/ui');
+      await scaffoldProject(cwd, opts.name, uiDirForScaffold);
+    }
   }
 
   // Build font config for sbean.json
@@ -458,9 +466,11 @@ async function scaffoldProject(cwd: string, name?: string, uiDir = 'src/ui') {
     'utf-8'
   );
 
-  // Basic App.vue
+  // Basic App.vue — goes in src/, not uiDir
+  const srcDir = path.join(cwd, 'src');
+  await fs.mkdir(srcDir, { recursive: true });
   await fs.writeFile(
-    path.join(cwd, uiDir, 'App.vue'),
+    path.join(srcDir, 'App.vue'),
     [
       `<script setup lang="ts">`,
       `</script>`,
@@ -473,6 +483,86 @@ async function scaffoldProject(cwd: string, name?: string, uiDir = 'src/ui') {
   );
 
   console.log(`✔ Scaffolded Vue + Vite project: ${projectName}`);
+}
+
+// ---------------------------------------------------------------------------
+// Nuxt 3 scaffolding
+// ---------------------------------------------------------------------------
+
+async function scaffoldNuxtProject(cwd: string, name?: string) {
+  const projectName = name || path.basename(cwd);
+
+  await fs.mkdir(cwd, { recursive: true });
+  await fs.mkdir(path.join(cwd, 'pages'), { recursive: true });
+
+  const pkg = {
+    name: projectName,
+    private: true,
+    version: '0.0.0',
+    type: 'module',
+    scripts: {
+      dev: 'nuxt dev',
+      build: 'nuxt build',
+      generate: 'nuxt generate',
+      preview: 'nuxt preview'
+    },
+    dependencies: {
+      nuxt: '^3.16.0',
+      vue: 'latest',
+      '@soybeanjs/cva': 'latest',
+      '@soybeanjs/headless': 'latest',
+      '@soybeanjs/shadcn-theme': 'latest',
+      '@soybeanjs/unocss-shadcn': 'latest'
+    },
+    devDependencies: {
+      '@unocss/nuxt': 'latest',
+      unocss: 'latest',
+      typescript: 'latest'
+    }
+  };
+
+  await fs.writeFile(path.join(cwd, 'package.json'), JSON.stringify(pkg, null, 2), 'utf-8');
+
+  // nuxt.config.ts
+  await fs.writeFile(
+    path.join(cwd, 'nuxt.config.ts'),
+    [
+      `export default defineNuxtConfig({`,
+      `  modules: ['@unocss/nuxt'],`,
+      `  compatibilityDate: '2026-01-01'`,
+      `})`
+    ].join('\n'),
+    'utf-8'
+  );
+
+  // uno.config.ts
+  await fs.writeFile(path.join(cwd, 'uno.config.ts'), generateUnoConfigContent(), 'utf-8');
+
+  // app.vue
+  await fs.writeFile(
+    path.join(cwd, 'app.vue'),
+    [`<template>`, `  <div>`, `    <NuxtPage />`, `  </div>`, `</template>`].join('\n'),
+    'utf-8'
+  );
+
+  // pages/index.vue
+  await fs.writeFile(
+    path.join(cwd, 'pages', 'index.vue'),
+    [
+      `<script setup lang="ts">`,
+      `</script>`,
+      ``,
+      `<template>`,
+      `  <div>`,
+      `    <h1>Welcome to ${projectName} + SBean + Nuxt</h1>`,
+      `    <p>Run <code>sbean add &lt;component&gt;</code> to add components.</p>`,
+      `  </div>`,
+      `</template>`
+    ].join('\n'),
+    'utf-8'
+  );
+
+  console.log(`✔ Scaffolded Nuxt 3 project: ${projectName}`);
 }
 
 async function ensurePnpmWorkspace(cwd: string, isMonorepo: boolean) {
