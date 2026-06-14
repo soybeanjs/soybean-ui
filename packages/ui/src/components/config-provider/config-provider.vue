@@ -3,7 +3,7 @@ import { h, watch } from 'vue';
 import { useOmitProps } from '@soybeanjs/headless/composables';
 import { ConfigProvider } from '@soybeanjs/headless/config-provider';
 import { isClient, transformPropsToContext } from '@soybeanjs/headless/shared';
-import { updateUiAttribute } from '../../../../shadcn-theme/src/shared';
+import { updateUiAttribute } from '@soybeanjs/shadcn-theme';
 import DialogProvider from '../dialog/dialog-provider.vue';
 import Icon from '../icon/icon.vue';
 import type { IconValue } from '../icon/types';

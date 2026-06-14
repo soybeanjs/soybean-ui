@@ -12,6 +12,7 @@ export {
   themeRadiusKeys
 } from './constants';
 export { createShadcnTheme } from './core';
+export { updateUiAttribute } from './shared';
 
 export type {
   ThemeSize,
