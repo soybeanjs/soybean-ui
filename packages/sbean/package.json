@@ -1,7 +1,6 @@
 {
   "name": "sbean",
   "version": "0.29.0-beta.8",
-  "private": true,
   "description": "CLI tool for adding SoybeanUI components to your Vue apps — copy-paste, like shadcn/ui.",
   "homepage": "https://github.com/soybeanjs/soybean-ui/tree/main/packages/sbean",
   "bugs": {
