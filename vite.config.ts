@@ -12,33 +12,21 @@ export default defineConfig({
   lint,
   run: {
     tasks: {
-      'type-check': {
-        command: `pnpm --filter './packages/*' typecheck`
-      },
-      'build:headless': {
-        command: 'pnpm --filter @soybeanjs/headless build'
-      },
-      'build:sbean': {
-        command: 'pnpm --filter sbean build'
-      },
-      'build:ui': {
+      'build-ui': {
         command: 'pnpm --filter @soybeanjs/ui build',
-        dependsOn: ['build:headless']
+        dependsOn: ['build-headless']
       },
-      dev: {
-        command: 'pnpm --filter @soybeanjs/ui-playground dev'
-      },
-      'build:playground': {
+      'build-playground': {
         command: 'pnpm --filter @soybeanjs/ui-playground build',
-        dependsOn: ['build:headless']
+        dependsOn: ['build-headless']
       },
-      'dev:docs': {
+      'dev-docs': {
         command: 'pnpm --filter @soybeanjs/ui-docs dev',
-        dependsOn: ['build:ui']
+        dependsOn: ['build-ui']
       },
-      'build:docs': {
+      'build-docs': {
         command: 'pnpm --filter @soybeanjs/ui-docs build && vp fmt',
-        dependsOn: ['build:ui']
+        dependsOn: ['build-ui']
       }
     }
   }
