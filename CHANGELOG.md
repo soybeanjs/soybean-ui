@@ -1,5 +1,35 @@
 # Changelog
 
+## [v0.29.0-beta.9](https://github.com/soybeanjs/soybean-ui/compare/v0.29.0-beta.8...v0.29.0-beta.9) (2026-06-15)
+
+### &nbsp;&nbsp;&nbsp;🚀 Features
+
+- **config-provider**: import updateUiAttribute from shadcn-theme &nbsp;-&nbsp; by @soybeanjs [<samp>(6679f)</samp>](https://github.com/soybeanjs/soybean-ui/commit/6679f337)
+- **registry**: update sbean registry &nbsp;-&nbsp; by @soybeanjs [<samp>(fb31b)</samp>](https://github.com/soybeanjs/soybean-ui/commit/fb31bdff)
+- **sbean**: add Nuxt 3 project initialization support &nbsp;-&nbsp; by @soybeanjs [<samp>(5ac6c)</samp>](https://github.com/soybeanjs/soybean-ui/commit/5ac6c6d6)
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- **icon**: correct import path for useConfigProvider &nbsp;-&nbsp; by @soybeanjs [<samp>(7ad9c)</samp>](https://github.com/soybeanjs/soybean-ui/commit/7ad9ca87)
+
+### &nbsp;&nbsp;&nbsp;💅 Refactors
+
+- **docs**: update import paths to use tilde prefix &nbsp;-&nbsp; by @soybeanjs [<samp>(fd373)</samp>](https://github.com/soybeanjs/soybean-ui/commit/fd373d87)
+
+### &nbsp;&nbsp;&nbsp;🏡 Chore
+
+- **sbean**: remove private flag from package.json &nbsp;-&nbsp; by @soybeanjs [<samp>(ce88d)</samp>](https://github.com/soybeanjs/soybean-ui/commit/ce88d34a)
+
+### &nbsp;&nbsp;&nbsp;🎨 Styles
+
+- **docs**:
+  - remove unused CSS import and format presets in uno.config &nbsp;-&nbsp; by @soybeanjs [<samp>(e28d0)</samp>](https://github.com/soybeanjs/soybean-ui/commit/e28d0362)
+  - add UI attributes to the HTML tag for improved styling &nbsp;-&nbsp; by @soybeanjs [<samp>(d7e71)</samp>](https://github.com/soybeanjs/soybean-ui/commit/d7e71961)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;
+
 ## [v0.29.0-beta.8](https://github.com/soybeanjs/soybean-ui/compare/v0.29.0-beta.7...v0.29.0-beta.8) (2026-06-14)
 
 ### &nbsp;&nbsp;&nbsp;🚀 Features

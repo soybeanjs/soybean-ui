@@ -1526,6 +1526,16 @@
               "da282": "streamline build tasks and add prepare script",
               "e723a": "handle fallback for radius value in generateRadiusCSSVariable",
               "ee455": "disable minification for better debugging"
+            },
+            "9": {
+              "5ac6c": "add Nuxt 3 project initialization support",
+              "6679f": "import updateUiAttribute from shadcn-theme",
+              "7ad9c": "correct import path for useConfigProvider",
+              "ce88d": "remove private flag from package.json",
+              "d7e71": "add UI attributes to the HTML tag for improved styling",
+              "e28d0": "remove unused CSS import and format presets in uno.config",
+              "fb31b": "update sbean registry",
+              "fd373": "update import paths to use tilde prefix"
             }
           }
         }

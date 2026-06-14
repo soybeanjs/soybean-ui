@@ -1526,6 +1526,16 @@
               "da282": "简化构建任务并添加准备脚本",
               "e723a": "处理 generateRadiusCSSVariable 中半径值的回退逻辑",
               "ee455": "为便于调试，请禁用代码压缩"
+            },
+            "9": {
+              "5ac6c": "添加对 Nuxt 3 项目初始化的支持",
+              "6679f": "import updateUiAttribute from shadcn-theme",
+              "7ad9c": "修正 useConfigProvider 的导入路径",
+              "ce88d": "从 package.json 中移除 private 标记",
+              "d7e71": "为 HTML 标签添加 UI 属性以优化样式",
+              "e28d0": "移除 uno.config 中未使用的 CSS 导入及格式预设",
+              "fb31b": "更新 sbean 注册表",
+              "fd373": "更新导入路径，使用波浪线前缀"
             }
           }
         }
