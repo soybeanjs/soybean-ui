@@ -210,10 +210,18 @@ export async function runInit(opts: InitActionOptions) {
         initial: 0
       },
       {
+        type: 'toggle',
+        name: 'nuxt',
+        message: 'Are you using Nuxt 3?',
+        initial: false,
+        active: 'yes',
+        inactive: 'no'
+      },
+      {
         type: 'text',
         name: 'uiDir',
         message: 'Component output directory?',
-        initial: isMonorepo ? 'packages/ui' : 'src/ui'
+        initial: (prev: Record<string, unknown>) => (prev.nuxt ? 'src/ui' : isMonorepo ? 'packages/ui' : 'src/ui')
       },
       {
         type: 'select',
@@ -301,6 +309,9 @@ export async function runInit(opts: InitActionOptions) {
     if (answers.monorepo) {
       isMonorepo = answers.monorepo === 'monorepo';
     }
+    if (answers.nuxt !== undefined) {
+      opts.nuxt = answers.nuxt as boolean;
+    }
     if (answers.uiDir !== undefined && answers.uiDir !== '') {
       opts.uiDir = answers.uiDir;
     }
@@ -317,9 +328,11 @@ export async function runInit(opts: InitActionOptions) {
     }
   }
 
+  // Determine Nuxt status
+  const isNuxt = opts.nuxt ?? false;
+
   // Scaffold new project if no package.json exists
   if (!projectInfo) {
-    const isNuxt = opts.nuxt ?? false;
     if (isNuxt) {
       console.log('No package.json found. Creating a new Nuxt 3 project...');
       await scaffoldNuxtProject(cwd, opts.name);
@@ -351,6 +364,7 @@ export async function runInit(opts: InitActionOptions) {
   // Write sbean.json
   const config = await createDefaultConfig(cwd, {
     isMonorepo,
+    isNuxt,
     uiDir: opts.uiDir,
     style: (opts.style as (typeof PRESET_STYLES)[number]) || style,
     iconLibrary: (opts.iconLibrary as (typeof PRESET_ICON_LIBRARIES)[number]) || iconLibrary,
@@ -391,7 +405,7 @@ export async function runInit(opts: InitActionOptions) {
   await ensureTypeScriptConfig(cwd, config.uiDir ?? 'src/ui');
 
   // Generate resolver, nuxt module, and constants from source
-  await generatePackModules(cwd, config.uiDir ?? 'src/ui');
+  await generatePackModules(cwd, config.uiDir ?? 'src/ui', isNuxt);
 
   console.log('\nDone! Run "sbean add <component>" to add components.');
 }
@@ -596,15 +610,19 @@ async function ensureTypeScriptConfig(cwd: string, uiDir: string) {
   }
 }
 
-async function generatePackModules(cwd: string, uiDir: string) {
+async function generatePackModules(cwd: string, uiDir: string, isNuxt = false) {
   const sourceRoot = findSourceRoot();
   if (!sourceRoot) return;
 
   const files: Record<string, string> = {
     'resolver/index.ts': `${UI_SOURCE_PATH}/resolver/index.ts`,
-    'nuxt/index.ts': `${UI_SOURCE_PATH}/nuxt/index.ts`,
     'constants/components.ts': `${UI_SOURCE_PATH}/constants/components.ts`
   };
+
+  // Only generate the Nuxt module for Nuxt projects
+  if (isNuxt) {
+    files['nuxt/index.ts'] = `${UI_SOURCE_PATH}/nuxt/index.ts`;
+  }
 
   for (const [relPath, srcPath] of Object.entries(files)) {
     const src = path.join(sourceRoot, srcPath);

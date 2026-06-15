@@ -312,7 +312,28 @@ function inferRegistryDependencies(files: RegistryItemFile[]): string[] {
     for (const specifier of importSpecifiers) {
       const dependencyName = resolveRegistryDependencyFromSpecifier(file.path, specifier);
 
-      if (dependencyName) {
+      if (!dependencyName) {
+        continue;
+      }
+
+      // Skip if file-level expansion already added files from this component
+      // This prevents inferring a full registry dependency when only specific
+      // files (e.g. context.ts, types.ts) are actually imported via relative paths
+      const alreadyCoveredByFiles = files.some(f => {
+        const normalizedPath = normalizePath(f.path);
+        const componentsMarker = '/components/';
+        const markerIndex = normalizedPath.indexOf(componentsMarker);
+
+        if (markerIndex < 0) {
+          return false;
+        }
+
+        const componentRelativePath = normalizedPath.slice(markerIndex + componentsMarker.length);
+
+        return componentRelativePath.startsWith(`${dependencyName}/`);
+      });
+
+      if (!alreadyCoveredByFiles) {
         dependencies.add(dependencyName);
       }
     }

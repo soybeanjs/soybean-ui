@@ -95,10 +95,12 @@ export async function createDefaultConfig(
   overrides?: Partial<v.InferOutput<typeof rawConfigSchema>>
 ): Promise<Config> {
   const isMonorepo = overrides?.isMonorepo ?? false;
+  const isNuxt = overrides?.isNuxt ?? false;
 
   const raw: v.InferOutput<typeof rawConfigSchema> = {
     style: 'soybean',
     isMonorepo,
+    isNuxt,
     iconLibrary: 'lucide',
     uno: {
       base: 'zinc',

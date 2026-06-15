@@ -111,6 +111,7 @@ describe('config management', () => {
       const resolved = await resolveConfigPaths(tmpDir, {
         style: 'soybean',
         isMonorepo: false,
+        isNuxt: false,
         iconLibrary: 'lucide',
         uno: { base: 'zinc', primary: 'indigo', radius: 'md' },
         font: {},
@@ -125,6 +126,7 @@ describe('config management', () => {
       const resolved = await resolveConfigPaths(tmpDir, {
         style: 'soybean',
         isMonorepo: true,
+        isNuxt: false,
         iconLibrary: 'lucide',
         uno: { base: 'zinc', primary: 'indigo', radius: 'md' },
         font: {},

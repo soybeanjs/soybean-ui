@@ -61,6 +61,7 @@ export const rawConfigSchema = v.object({
   $schema: v.optional(v.string()),
   style: v.picklist(PRESET_STYLES),
   isMonorepo: v.optional(v.boolean(), false),
+  isNuxt: v.optional(v.boolean(), false),
   iconLibrary: v.picklist(PRESET_ICON_LIBRARIES),
   uno: v.object({
     base: v.picklist(PRESET_BASE_COLORS),

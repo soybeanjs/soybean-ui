@@ -236,7 +236,7 @@
       "description": "Displays a button or a component that looks like a button.",
       "categories": ["form", "action"],
       "dependencies": ["@soybeanjs/cva", "@soybeanjs/headless"],
-      "registryDependencies": ["config-provider", "icon", "link", "utils"],
+      "registryDependencies": ["icon", "link", "utils"],
       "files": [
         {
           "path": "packages/ui/src/components/button/button-group.vue",
