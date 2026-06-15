@@ -1,14 +1,7 @@
 {
   "name": "tooltip",
-  "description": "A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.",
-  "dependencies": ["@soybeanjs/cva", "@soybeanjs/headless"],
-  "registryDependencies": ["utils"],
+  "dependencies": ["@soybeanjs/headless"],
   "files": [
-    {
-      "path": "packages/ui/src/components/tooltip/index.ts",
-      "type": "registry:lib",
-      "content": "export { default as STooltip } from './tooltip.vue';\n\nexport type * from '@soybeanjs/headless/tooltip';\nexport type * from './types';\n"
-    },
     {
       "path": "packages/ui/src/components/tooltip/tooltip.vue",
       "type": "registry:ui",
@@ -18,6 +11,11 @@
       "path": "packages/ui/src/components/tooltip/types.ts",
       "type": "registry:lib",
       "content": "import type {\n  TooltipCompactEmits,\n  TooltipCompactProps,\n  TooltipCompactSlots,\n  TooltipUi\n} from '@soybeanjs/headless/tooltip';\nimport type { ClassValue } from '@soybeanjs/headless/types';\nimport type { ThemeSize } from '@/theme';\n\n/**\n * Properties for the Tooltip component.\n */\nexport interface TooltipProps extends TooltipCompactProps {\n  /**\n   * class of popup\n   */\n  class?: ClassValue;\n  /**\n   * Visual size of the component.\n   */\n  size?: ThemeSize;\n  /**\n   * Per-slot class overrides for the component.\n   */\n  ui?: Partial<TooltipUi>;\n}\n\n/**\n * Events for the Tooltip component.\n */\nexport type TooltipEmits = TooltipCompactEmits;\n\n/**\n * Slots for the Tooltip component.\n */\nexport type TooltipSlots = TooltipCompactSlots;\n"
+    },
+    {
+      "path": "packages/ui/src/components/tooltip/index.ts",
+      "type": "registry:lib",
+      "content": "export { default as STooltip } from './tooltip.vue';\n\nexport type * from '@soybeanjs/headless/tooltip';\nexport type * from './types';\n"
     },
     {
       "path": "packages/ui/src/styles/tooltip.ts",
@@ -40,6 +38,5 @@
       "content": "export type ThemeColor = 'primary' | 'destructive' | 'success' | 'warning' | 'info' | 'carbon' | 'secondary' | 'accent';\n\nexport type ThemeSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl';\n"
     }
   ],
-  "categories": ["overlay"],
   "type": "registry:ui"
 }

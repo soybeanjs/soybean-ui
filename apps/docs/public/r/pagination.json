@@ -1,14 +1,7 @@
 {
   "name": "pagination",
-  "description": "Pagination with page navigation, next and previous links.",
-  "dependencies": ["@soybeanjs/cva", "@soybeanjs/headless", "@soybeanjs/utils"],
-  "registryDependencies": ["button", "utils"],
+  "dependencies": ["@soybeanjs/headless", "@soybeanjs/utils"],
   "files": [
-    {
-      "path": "packages/ui/src/components/pagination/index.ts",
-      "type": "registry:lib",
-      "content": "export { default as SPagination } from './pagination.vue';\n\nexport type * from '@soybeanjs/headless/pagination';\nexport type * from './types';\n"
-    },
     {
       "path": "packages/ui/src/components/pagination/pagination.vue",
       "type": "registry:ui",
@@ -18,6 +11,11 @@
       "path": "packages/ui/src/components/pagination/types.ts",
       "type": "registry:lib",
       "content": "import type {\n  PaginationCompactProps,\n  PaginationCompactEmits,\n  PaginationCompactSlots,\n  PaginationUi\n} from '@soybeanjs/headless/pagination';\nimport type { ClassValue } from '@soybeanjs/headless/types';\nimport type { PaginationShape, PaginationVariant } from '@/styles/pagination';\nimport type { ThemeSize } from '@/theme';\n\n/**\n * Properties for the Pagination component.\n */\nexport interface PaginationProps extends PaginationCompactProps {\n  /**\n   * Additional class names applied to the root element.\n   */\n  class?: ClassValue;\n  /** The custom ui class names */\n  ui?: Partial<PaginationUi>;\n  /** The size of the pagination */\n  size?: ThemeSize;\n  /** The variant of the pagination */\n  variant?: PaginationVariant;\n  /** The shape of the pagination */\n  shape?: PaginationShape;\n  /** Whether to apply the selected state to the action button */\n  actionAsSelected?: boolean;\n}\n\n/**\n * Events for the Pagination component.\n */\nexport type PaginationEmits = PaginationCompactEmits;\n\n/**\n * Slots for the Pagination component.\n */\nexport type PaginationSlots = PaginationCompactSlots;\n"
+    },
+    {
+      "path": "packages/ui/src/components/pagination/index.ts",
+      "type": "registry:lib",
+      "content": "export { default as SPagination } from './pagination.vue';\n\nexport type * from '@soybeanjs/headless/pagination';\nexport type * from './types';\n"
     },
     {
       "path": "packages/ui/src/styles/pagination.ts",
@@ -40,6 +38,5 @@
       "content": "export type ThemeColor = 'primary' | 'destructive' | 'success' | 'warning' | 'info' | 'carbon' | 'secondary' | 'accent';\n\nexport type ThemeSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl';\n"
     }
   ],
-  "categories": ["navigation"],
   "type": "registry:ui"
 }

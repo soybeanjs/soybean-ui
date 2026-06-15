@@ -6,7 +6,6 @@ import * as v from 'valibot';
 import { Command } from 'commander';
 import prompts from 'prompts';
 import {
-  PRESET_STYLES,
   PRESET_BASE_COLORS,
   PRESET_PRIMARY_COLORS,
   PRESET_RADII,
@@ -27,7 +26,6 @@ import { decodePreset, isPresetCode } from '../registry/preset';
 export const initOptionsSchema = v.object({
   cwd: v.string(),
   monorepo: v.optional(v.boolean()),
-  style: v.optional(v.picklist(PRESET_STYLES)),
   size: v.optional(v.picklist(PRESET_SIZES)),
   base: v.optional(v.picklist(PRESET_BASE_COLORS)),
   primary: v.optional(v.picklist(PRESET_PRIMARY_COLORS)),
@@ -100,7 +98,6 @@ export const init = new Command()
   .option('-m, --monorepo', 'use monorepo (pnpm workspaces) structure', false)
   .option('--nuxt', 'initialize as a Nuxt 3 project', false)
   .option('--ui-dir <path>', 'component output directory (default: src/ui)', 'src/ui')
-  .option('--style <style>', `style preset: ${PRESET_STYLES.join('/')}`)
   .option('--size <size>', `component size: ${PRESET_SIZES.join('/')}`)
   .option('-b, --base <base>', `base color: ${PRESET_BASE_COLORS.join('/')}`)
   .option('--primary <primary>', `primary color: ${PRESET_PRIMARY_COLORS.join('/')}`)
@@ -124,7 +121,6 @@ type InitActionOptions = {
   monorepo?: boolean;
   nuxt?: boolean;
   uiDir: string;
-  style?: string;
   size?: string;
   base?: string;
   primary?: string;
@@ -171,7 +167,6 @@ export async function runInit(opts: InitActionOptions) {
       console.error(`Failed to decode preset: ${opts.preset}`);
       process.exit(1);
     }
-    opts.style = opts.style || preset.style;
     opts.base = opts.base || preset.base;
     opts.primary = opts.primary || preset.primary;
     opts.feedback = opts.feedback || preset.feedback;
@@ -180,7 +175,6 @@ export async function runInit(opts: InitActionOptions) {
     opts.fontSans = opts.fontSans || preset.fontSans;
     opts.fontHeading = opts.fontHeading || preset.fontHeading;
   }
-  const style = opts.style || 'soybean';
   const base = opts.base || 'zinc';
   const primary = opts.primary || 'indigo';
   const feedback = opts.feedback || 'classic';
@@ -189,7 +183,6 @@ export async function runInit(opts: InitActionOptions) {
   const iconLibrary = opts.iconLibrary || 'lucide';
 
   const recommended = {
-    style: 'soybean',
     base: 'zinc',
     primary: 'indigo',
     feedback: 'classic'
@@ -198,16 +191,6 @@ export async function runInit(opts: InitActionOptions) {
   // Prompt if not using defaults/yes
   if (!opts.defaults && !opts.yes) {
     const answers = await prompts([
-      {
-        type: 'select',
-        name: 'style',
-        message: 'Which style would you like to use?',
-        choices: PRESET_STYLES.map(s => ({
-          title: s === 'soybean' ? `${s} (recommended)` : s,
-          value: s
-        })),
-        initial: 0
-      },
       {
         type: 'select',
         name: 'size',
@@ -280,7 +263,6 @@ export async function runInit(opts: InitActionOptions) {
         initial: 0
       }
     ]);
-    if (answers.style) opts.style = answers.style as (typeof PRESET_STYLES)[number];
     if (answers.size) opts.size = answers.size as (typeof PRESET_SIZES)[number];
     if (answers.base) opts.base = answers.base as (typeof PRESET_BASE_COLORS)[number];
     if (answers.primary) opts.primary = answers.primary as (typeof PRESET_PRIMARY_COLORS)[number];
@@ -327,7 +309,6 @@ export async function runInit(opts: InitActionOptions) {
 
   // Write sbean.json
   const config = await createDefaultConfig(cwd, {
-    style: (opts.style as (typeof PRESET_STYLES)[number]) || style,
     iconLibrary: (opts.iconLibrary as (typeof PRESET_ICON_LIBRARIES)[number]) || iconLibrary,
     uno: {
       base: (opts.base || base) as (typeof PRESET_BASE_COLORS)[number],

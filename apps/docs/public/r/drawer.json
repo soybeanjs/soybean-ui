@@ -1,7 +1,6 @@
 {
   "name": "drawer",
   "dependencies": ["@soybeanjs/headless", "@soybeanjs/utils"],
-  "registryDependencies": ["dialog"],
   "files": [
     {
       "path": "packages/ui/src/components/drawer/drawer.vue",
@@ -9,14 +8,14 @@
       "content": "<script setup lang=\"ts\">\nimport { computed } from 'vue';\nimport { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';\nimport { DialogCompact, provideDialogUi } from '@soybeanjs/headless/dialog';\nimport { keysOf } from '@soybeanjs/utils';\nimport { drawerVariants } from '@/styles/drawer';\nimport type { DrawerProps, DrawerEmits, DrawerSlots } from './types';\n\ndefineOptions({\n  name: 'SDrawer'\n});\n\nconst props = withDefaults(defineProps<DrawerProps>(), {\n  open: undefined,\n  modal: true,\n  showClose: true\n});\n\nconst emit = defineEmits<DrawerEmits>();\n\nconst slots = defineSlots<DrawerSlots>();\n\nconst forwardedProps = useOmitProps(props, ['class', 'size', 'ui']);\n\nconst listeners = useForwardListeners(emit);\n\nconst slotNames = computed(() => keysOf(slots));\n\nconst ui = computed(() => drawerVariants({ size: props.size, side: props.side }, props.ui, { popup: props.class }));\n\nprovideDialogUi(ui);\n</script>\n\n<template>\n  <DialogCompact v-bind=\"forwardedProps\" v-on=\"listeners\">\n    <template v-for=\"slotName in slotNames\" #[slotName]=\"slotProps\">\n      <slot :name=\"slotName\" v-bind=\"slotProps\" />\n    </template>\n  </DialogCompact>\n</template>\n"
     },
     {
-      "path": "packages/ui/src/components/drawer/index.ts",
-      "type": "registry:lib",
-      "content": "export { default as SDrawer } from './drawer.vue';\n\nexport type * from './types';\n"
-    },
-    {
       "path": "packages/ui/src/components/drawer/types.ts",
       "type": "registry:lib",
       "content": "import type { Side } from '@soybeanjs/headless/types';\nimport type { DialogEmits, DialogProps, DialogSlots } from '../dialog/types';\n\n/**\n * Properties for the Drawer component.\n */\nexport interface DrawerProps extends DialogProps {\n  /**\n   * Side placement of the component.\n   */\n  side?: Side;\n}\n\n/**\n * Events for the Drawer component.\n */\nexport type DrawerEmits = DialogEmits;\n\n/**\n * Slots for the Drawer component.\n */\nexport type DrawerSlots = DialogSlots;\n"
+    },
+    {
+      "path": "packages/ui/src/components/drawer/index.ts",
+      "type": "registry:lib",
+      "content": "export { default as SDrawer } from './drawer.vue';\n\nexport type * from './types';\n"
     },
     {
       "path": "packages/ui/src/styles/drawer.ts",

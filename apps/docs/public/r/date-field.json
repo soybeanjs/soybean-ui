@@ -8,14 +8,14 @@
       "content": "<script setup lang=\"ts\">\nimport { computed } from 'vue';\nimport { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';\nimport { DateFieldCompact, provideDateFieldUi } from '@soybeanjs/headless/date-field';\nimport { dateFieldVariants } from '@/styles/date-field';\nimport type { DateFieldProps, DateFieldEmits } from './types';\n\ndefineOptions({\n  name: 'SDateField'\n});\n\nconst props = defineProps<DateFieldProps>();\n\nconst emit = defineEmits<DateFieldEmits>();\n\nconst listeners = useForwardListeners(emit);\n\nconst forwardedProps = useOmitProps(props, ['class', 'size', 'ui']);\n\nconst ui = computed(() => dateFieldVariants({ size: props.size }, props.ui, { root: props.class }));\n\nprovideDateFieldUi(ui);\n</script>\n\n<template>\n  <DateFieldCompact v-bind=\"forwardedProps\" v-on=\"listeners\" />\n</template>\n"
     },
     {
-      "path": "packages/ui/src/components/date-field/index.ts",
-      "type": "registry:lib",
-      "content": "export { default as SDateField } from './date-field.vue';\n\nexport type * from '@soybeanjs/headless/date-field';\nexport type * from './types';\n"
-    },
-    {
       "path": "packages/ui/src/components/date-field/types.ts",
       "type": "registry:lib",
       "content": "import type { DateFieldCompactProps, DateFieldCompactEmits, DateFieldUi } from '@soybeanjs/headless/date-field';\nimport type { ClassValue } from '@soybeanjs/headless/types';\nimport type { ThemeSize } from '@/theme';\n\n/**\n * Properties for the DateField component.\n */\nexport interface DateFieldProps extends DateFieldCompactProps {\n  /**\n   * Additional class names applied to the root element.\n   */\n  class?: ClassValue;\n  /**\n   * Visual size of the component.\n   */\n  size?: ThemeSize;\n  /**\n   * Per-slot class overrides for the component.\n   */\n  ui?: Partial<DateFieldUi>;\n}\n\n/**\n * Events for the DateField component.\n */\nexport type DateFieldEmits = DateFieldCompactEmits;\n"
+    },
+    {
+      "path": "packages/ui/src/components/date-field/index.ts",
+      "type": "registry:lib",
+      "content": "export { default as SDateField } from './date-field.vue';\n\nexport type * from '@soybeanjs/headless/date-field';\nexport type * from './types';\n"
     },
     {
       "path": "packages/ui/src/styles/date-field.ts",

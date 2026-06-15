@@ -8,14 +8,14 @@
       "content": "<script setup lang=\"ts\">\nimport { computed } from 'vue';\nimport { useOmitProps } from '@soybeanjs/headless/composables';\nimport { EmptyCompact, provideEmptyUi } from '@soybeanjs/headless/empty';\nimport { keysOf } from '@soybeanjs/utils';\nimport { emptyVariants } from '@/styles/empty';\nimport type { EmptyProps, EmptySlots } from './types';\n\ndefineOptions({\n  name: 'SEmpty'\n});\n\nconst props = defineProps<EmptyProps>();\n\nconst forwardedProps = useOmitProps(props, ['class', 'ui', 'size']);\n\nconst slots = defineSlots<EmptySlots>();\n\nconst slotNames = computed(() => keysOf(slots));\n\nconst ui = computed(() => emptyVariants({ size: props.size }, props.ui, { root: props.class }));\n\nprovideEmptyUi(ui);\n</script>\n\n<template>\n  <EmptyCompact v-bind=\"forwardedProps\">\n    <template v-for=\"slotName in slotNames\" :key=\"slotName\" #[slotName]>\n      <slot :name=\"slotName\" />\n    </template>\n  </EmptyCompact>\n</template>\n"
     },
     {
-      "path": "packages/ui/src/components/empty/index.ts",
-      "type": "registry:lib",
-      "content": "export { default as SEmpty } from './empty.vue';\n\nexport type * from '@soybeanjs/headless/empty';\nexport type * from './types';\n"
-    },
-    {
       "path": "packages/ui/src/components/empty/types.ts",
       "type": "registry:lib",
       "content": "import type { EmptyCompactProps, EmptyCompactSlots, EmptyUi } from '@soybeanjs/headless/empty';\nimport type { ClassValue } from '@soybeanjs/headless/types';\nimport type { ThemeSize } from '@/theme';\n\n/**\n * Properties for the Empty component.\n */\nexport interface EmptyProps extends EmptyCompactProps {\n  /**\n   * Additional class names applied to the root element.\n   */\n  class?: ClassValue;\n  /**\n   * Per-slot class overrides for the component.\n   */\n  ui?: Partial<EmptyUi>;\n  /**\n   * Size variant of the component.\n   */\n  size?: ThemeSize;\n}\n\n/**\n * Slots for the Empty component.\n */\nexport type EmptySlots = EmptyCompactSlots;\n"
+    },
+    {
+      "path": "packages/ui/src/components/empty/index.ts",
+      "type": "registry:lib",
+      "content": "export { default as SEmpty } from './empty.vue';\n\nexport type * from '@soybeanjs/headless/empty';\nexport type * from './types';\n"
     },
     {
       "path": "packages/ui/src/styles/empty.ts",

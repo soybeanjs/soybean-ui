@@ -126,7 +126,13 @@ export async function addComponents(
       addedFiles.push(...filesAdded);
     }
 
-    const registryDependencies = [...(item.registryDependencies ?? []), ...inferRegistryDependencies(expandedFiles)];
+    // Filter explicit registryDependencies: skip those already covered by
+    // file-level expansion (e.g. when only context.ts from a component was
+    // pulled, don't re-add the entire component).
+    const explicitDeps = (item.registryDependencies ?? []).filter(
+      dep => !isDependencyCoveredByFiles(dep, expandedFiles)
+    );
+    const registryDependencies = [...explicitDeps, ...inferRegistryDependencies(expandedFiles)];
 
     for (const dependencyName of registryDependencies) {
       const resolvedDependencyName = resolveRegistryDependencyName(dependencyName, item);
@@ -317,29 +323,35 @@ function inferRegistryDependencies(files: RegistryItemFile[]): string[] {
       }
 
       // Skip if file-level expansion already added files from this component
-      // This prevents inferring a full registry dependency when only specific
-      // files (e.g. context.ts, types.ts) are actually imported via relative paths
-      const alreadyCoveredByFiles = files.some(f => {
-        const normalizedPath = normalizePath(f.path);
-        const componentsMarker = '/components/';
-        const markerIndex = normalizedPath.indexOf(componentsMarker);
-
-        if (markerIndex < 0) {
-          return false;
-        }
-
-        const componentRelativePath = normalizedPath.slice(markerIndex + componentsMarker.length);
-
-        return componentRelativePath.startsWith(`${dependencyName}/`);
-      });
-
-      if (!alreadyCoveredByFiles) {
+      if (!isDependencyCoveredByFiles(dependencyName, files)) {
         dependencies.add(dependencyName);
       }
     }
   }
 
   return [...dependencies];
+}
+
+/**
+ * Check whether a registry dependency is already covered by files that
+ * file-level expansion has pulled in.  If at least one file from
+ * `components/{depName}/` is in the expanded set, the dependency is
+ * considered covered — no need to pull the entire component.
+ */
+function isDependencyCoveredByFiles(depName: string, files: RegistryItemFile[]): boolean {
+  return files.some(f => {
+    const normalizedPath = normalizePath(f.path);
+    const componentsMarker = '/components/';
+    const markerIndex = normalizedPath.indexOf(componentsMarker);
+
+    if (markerIndex < 0) {
+      return false;
+    }
+
+    const componentRelativePath = normalizedPath.slice(markerIndex + componentsMarker.length);
+
+    return componentRelativePath.startsWith(`${depName}/`);
+  });
 }
 
 function resolveRegistryDependencyFromSpecifier(filePath: string, specifier: string): string | null {

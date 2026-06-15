@@ -1,8 +1,6 @@
 {
   "name": "menu",
-  "description": "A dropdown menu for displaying a list of actions or options.",
-  "dependencies": ["@soybeanjs/cva", "@soybeanjs/headless"],
-  "registryDependencies": ["separator", "utils"],
+  "dependencies": ["@soybeanjs/headless"],
   "files": [
     {
       "path": "packages/ui/src/components/menu/context.ts",
@@ -10,14 +8,14 @@
       "content": "import { computed, toValue } from 'vue';\nimport type { MaybeRefOrGetter } from 'vue';\nimport { provideMenuUi as _provideMenuUi } from '@soybeanjs/headless/menu';\nimport { menuVariants } from '@/styles/menu';\nimport type { MenuUiBaseProps } from './types';\n\nexport const provideMenuUi = (options: MaybeRefOrGetter<MenuUiBaseProps>) => {\n  const ui = computed(() => {\n    const props = toValue(options);\n\n    return menuVariants(\n      {\n        size: props.size,\n        indicatorPosition: props.indicatorPosition\n      },\n      props.ui,\n      { popup: props.class }\n    );\n  });\n\n  _provideMenuUi(ui);\n};\n"
     },
     {
-      "path": "packages/ui/src/components/menu/index.ts",
-      "type": "registry:lib",
-      "content": "export {\n  MenuOptionsCompact as SMenuOptions,\n  MenuCheckboxOptionsCompact as SMenuCheckboxOptions,\n  MenuRadioOptionsCompact as SMenuRadioOptions\n} from '@soybeanjs/headless/menu';\n\nexport type * from '@soybeanjs/headless/menu';\n"
-    },
-    {
       "path": "packages/ui/src/components/menu/types.ts",
       "type": "registry:lib",
       "content": "import type { MenuUi } from '@soybeanjs/headless/menu';\nimport type { ClassValue, AlignSide } from '@soybeanjs/headless/types';\nimport type { ThemeSize } from '@/theme';\n\n/**\n * Properties for the MenuUiBase component.\n */\nexport interface MenuUiBaseProps {\n  /**\n   * class of menu popup\n   */\n  class?: ClassValue;\n  /**\n   * Visual size of the component.\n   */\n  size?: ThemeSize;\n  /**\n   * Per-slot class overrides for the component.\n   */\n  ui?: Partial<MenuUi>;\n  /**\n   * Indicator position.\n   */\n  indicatorPosition?: AlignSide;\n}\n"
+    },
+    {
+      "path": "packages/ui/src/components/menu/index.ts",
+      "type": "registry:lib",
+      "content": "export {\n  MenuOptionsCompact as SMenuOptions,\n  MenuCheckboxOptionsCompact as SMenuCheckboxOptions,\n  MenuRadioOptionsCompact as SMenuRadioOptions\n} from '@soybeanjs/headless/menu';\n\nexport type * from '@soybeanjs/headless/menu';\n"
     },
     {
       "path": "packages/ui/src/styles/menu.ts",
@@ -45,6 +43,5 @@
       "content": "export type ThemeColor = 'primary' | 'destructive' | 'success' | 'warning' | 'info' | 'carbon' | 'secondary' | 'accent';\n\nexport type ThemeSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl';\n"
     }
   ],
-  "categories": ["navigation", "overlay"],
   "type": "registry:ui"
 }

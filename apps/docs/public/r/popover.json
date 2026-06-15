@@ -1,14 +1,7 @@
 {
   "name": "popover",
-  "description": "Displays rich content in a portal, triggered by a button.",
-  "dependencies": ["@soybeanjs/cva", "@soybeanjs/headless", "@soybeanjs/utils"],
-  "registryDependencies": ["utils"],
+  "dependencies": ["@soybeanjs/headless", "@soybeanjs/utils"],
   "files": [
-    {
-      "path": "packages/ui/src/components/popover/index.ts",
-      "type": "registry:lib",
-      "content": "export { default as SPopover } from './popover.vue';\n\nexport type * from '@soybeanjs/headless/popover';\nexport type * from './types';\n"
-    },
     {
       "path": "packages/ui/src/components/popover/popover.vue",
       "type": "registry:ui",
@@ -18,6 +11,11 @@
       "path": "packages/ui/src/components/popover/types.ts",
       "type": "registry:lib",
       "content": "import type {\n  PopoverCompactProps,\n  PopoverCompactEmits,\n  PopoverCompactSlots,\n  PopoverUi\n} from '@soybeanjs/headless/popover';\nimport type { ClassValue } from '@soybeanjs/headless/types';\nimport type { ThemeSize } from '@/theme';\n\n/**\n * Properties for the Popover component.\n */\nexport interface PopoverProps extends PopoverCompactProps {\n  /**\n   * class of popup\n   */\n  class?: ClassValue;\n  /**\n   * Visual size of the component.\n   */\n  size?: ThemeSize;\n  /**\n   * Per-slot class overrides for the component.\n   */\n  ui?: Partial<PopoverUi>;\n}\n\n/**\n * Events for the Popover component.\n */\nexport type PopoverEmits = PopoverCompactEmits;\n\n/**\n * Slots for the Popover component.\n */\nexport type PopoverSlots = PopoverCompactSlots;\n"
+    },
+    {
+      "path": "packages/ui/src/components/popover/index.ts",
+      "type": "registry:lib",
+      "content": "export { default as SPopover } from './popover.vue';\n\nexport type * from '@soybeanjs/headless/popover';\nexport type * from './types';\n"
     },
     {
       "path": "packages/ui/src/styles/popover.ts",
@@ -45,6 +43,5 @@
       "content": "export type ThemeColor = 'primary' | 'destructive' | 'success' | 'warning' | 'info' | 'carbon' | 'secondary' | 'accent';\n\nexport type ThemeSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl';\n"
     }
   ],
-  "categories": ["overlay"],
   "type": "registry:ui"
 }

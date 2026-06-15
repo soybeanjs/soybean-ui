@@ -3,11 +3,6 @@
   "dependencies": ["@soybeanjs/headless"],
   "files": [
     {
-      "path": "packages/ui/src/components/scroll-area/index.ts",
-      "type": "registry:lib",
-      "content": "export { default as SScrollArea } from './scroll-area.vue';\n\nexport type * from '@soybeanjs/headless/scroll-area';\nexport type * from './types';\n"
-    },
-    {
       "path": "packages/ui/src/components/scroll-area/scroll-area.vue",
       "type": "registry:ui",
       "content": "<script setup lang=\"ts\">\nimport { computed } from 'vue';\nimport { useOmitProps } from '@soybeanjs/headless/composables';\nimport { ScrollAreaCompact, provideScrollAreaUi } from '@soybeanjs/headless/scroll-area';\nimport { scrollAreaVariants } from '@/styles/scroll-area';\nimport type { ScrollAreaProps } from './types';\n\ndefineOptions({\n  name: 'SScrollArea'\n});\n\nconst props = defineProps<ScrollAreaProps>();\n\nconst forwardedProps = useOmitProps(props, ['class', 'ui', 'size']);\n\nconst ui = computed(() => scrollAreaVariants({ size: props.size }, props.ui, { root: props.class }));\n\nprovideScrollAreaUi(ui);\n</script>\n\n<template>\n  <ScrollAreaCompact v-bind=\"forwardedProps\">\n    <slot />\n  </ScrollAreaCompact>\n</template>\n"
@@ -16,6 +11,11 @@
       "path": "packages/ui/src/components/scroll-area/types.ts",
       "type": "registry:lib",
       "content": "import type { ScrollAreaCompactEmits, ScrollAreaCompactProps, ScrollAreaUi } from '@soybeanjs/headless/scroll-area';\nimport type { ClassValue } from '@soybeanjs/headless/types';\nimport type { ThemeSize } from '@/theme';\n\n/**\n * Properties for the ScrollArea component.\n */\nexport interface ScrollAreaProps extends ScrollAreaCompactProps {\n  /**\n   * Additional class names applied to the root element.\n   */\n  class?: ClassValue;\n  /**\n   * Per-slot class overrides for the component.\n   */\n  ui?: Partial<ScrollAreaUi>;\n  /**\n   * Size of the ScrollArea component.\n   */\n  size?: ThemeSize;\n}\n\n/**\n * Events for the ScrollArea component.\n */\nexport type ScrollAreaEmits = ScrollAreaCompactEmits;\n"
+    },
+    {
+      "path": "packages/ui/src/components/scroll-area/index.ts",
+      "type": "registry:lib",
+      "content": "export { default as SScrollArea } from './scroll-area.vue';\n\nexport type * from '@soybeanjs/headless/scroll-area';\nexport type * from './types';\n"
     },
     {
       "path": "packages/ui/src/styles/scroll-area.ts",

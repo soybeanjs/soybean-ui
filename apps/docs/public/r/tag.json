@@ -1,14 +1,8 @@
 {
   "name": "tag",
-  "description": "Tag component for categorizing or markup.",
-  "dependencies": ["@soybeanjs/cva", "@soybeanjs/headless"],
-  "registryDependencies": ["icon", "utils"],
+  "dependencies": ["@soybeanjs/headless"],
+  "registryDependencies": ["icon"],
   "files": [
-    {
-      "path": "packages/ui/src/components/tag/index.ts",
-      "type": "registry:lib",
-      "content": "export { default as STag } from './tag.vue';\n\nexport type * from './types';\n"
-    },
     {
       "path": "packages/ui/src/components/tag/tag.vue",
       "type": "registry:ui",
@@ -18,6 +12,11 @@
       "path": "packages/ui/src/components/tag/types.ts",
       "type": "registry:lib",
       "content": "import type { TagEmits, TagProps as _TagProps } from '@soybeanjs/headless/tag';\nimport type { ClassValue } from '@soybeanjs/headless/types';\nimport type { TagShape, TagVariant } from '@/styles/tag';\nimport type { ThemeColor, ThemeSize } from '@/theme';\n\n/**\n * Properties for the Tag component.\n */\nexport interface TagProps extends _TagProps {\n  /**\n   * Additional class names applied to the root element.\n   */\n  class?: ClassValue;\n  /**\n   * Theme color of the component.\n   */\n  color?: ThemeColor;\n  /**\n   * Visual size of the component.\n   */\n  size?: ThemeSize;\n  /**\n   * Visual variant of the component.\n   */\n  variant?: TagVariant;\n  /**\n   * Shape of the component.\n   */\n  shape?: TagShape;\n  /**\n   * Content.\n   */\n  content?: string;\n  /**\n   * Whether the component can be closed.\n   */\n  closable?: boolean;\n}\n\nexport type { TagEmits, TagVariant, TagShape };\n"
+    },
+    {
+      "path": "packages/ui/src/components/tag/index.ts",
+      "type": "registry:lib",
+      "content": "export { default as STag } from './tag.vue';\n\nexport type * from './types';\n"
     },
     {
       "path": "packages/ui/src/styles/tag.ts",
@@ -65,6 +64,5 @@
       "content": "import type { ToastProviderProps as _ToastProviderProps, ToastUi } from '@soybeanjs/headless/toast';\nimport type { ThemeSize } from '@/theme';\n\n/**\n * Properties for the ToastProvider component.\n */\nexport interface ToastProviderProps extends _ToastProviderProps {\n  /**\n   * Visual size of the component.\n   */\n  size?: ThemeSize;\n  /**\n   * Per-slot class overrides for the component.\n   */\n  ui?: ToastUi;\n}\n"
     }
   ],
-  "categories": ["display"],
   "type": "registry:ui"
 }

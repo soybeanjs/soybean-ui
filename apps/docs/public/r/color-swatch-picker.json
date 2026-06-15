@@ -8,14 +8,14 @@
       "content": "<script setup lang=\"ts\">\nimport { computed } from 'vue';\nimport { ColorSwatchPickerCompact, provideColorSwatchPickerUi } from '@soybeanjs/headless/color-swatch-picker';\nimport { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';\nimport { colorSwatchPickerVariants } from '@/styles/color-swatch-picker';\nimport type { ColorSwatchPickerProps, ColorSwatchPickerEmits } from './types';\n\ndefineOptions({\n  name: 'SColorSwatchPicker'\n});\n\nconst props = withDefaults(defineProps<ColorSwatchPickerProps>(), {\n  shape: 'square'\n});\n\nconst emit = defineEmits<ColorSwatchPickerEmits>();\n\nconst slots = defineSlots<{\n  default?: (props: { modelValue: string | string[] }) => any;\n  indicator?: (props: { color: string }) => any;\n}>();\n\nconst listeners = useForwardListeners(emit);\n\nconst forwardedProps = useOmitProps(props, ['class', 'size', 'ui', 'shape']);\n\nconst ui = computed(() =>\n  colorSwatchPickerVariants({ size: props.size, shape: props.shape }, props.ui, { root: props.class })\n);\n\nprovideColorSwatchPickerUi(ui);\n</script>\n\n<template>\n  <ColorSwatchPickerCompact v-bind=\"forwardedProps\" v-on=\"listeners\">\n    <template v-if=\"slots.indicator\" #indicator=\"slotProps\">\n      <slot name=\"indicator\" v-bind=\"slotProps\" />\n    </template>\n    <template v-if=\"slots.default\" #default=\"slotProps\">\n      <slot v-bind=\"slotProps\" />\n    </template>\n  </ColorSwatchPickerCompact>\n</template>\n"
     },
     {
-      "path": "packages/ui/src/components/color-swatch-picker/index.ts",
-      "type": "registry:lib",
-      "content": "export { default as SColorSwatchPicker } from './color-swatch-picker.vue';\n\nexport type * from '@soybeanjs/headless/color-swatch-picker';\nexport type * from './types';\n"
-    },
-    {
       "path": "packages/ui/src/components/color-swatch-picker/types.ts",
       "type": "registry:lib",
       "content": "import type {\n  ColorSwatchPickerCompactEmits,\n  ColorSwatchPickerCompactProps,\n  ColorSwatchPickerUiSlot\n} from '@soybeanjs/headless/color-swatch-picker';\nimport type { ClassValue, UiClass } from '@soybeanjs/headless/types';\nimport type { ColorSwatchPickerShape } from '@/styles/color-swatch-picker';\nimport type { ThemeSize } from '@/theme';\n\n/**\n * Additional UI slots for the color swatch picker component.\n */\nexport type ColorSwatchPickerExtraUiSlot = 'checker' | 'fill';\n\n/**\n * Extended UI class overrides for the ColorSwatchPicker component.\n */\nexport type ColorSwatchPickerExtendedUi = UiClass<ColorSwatchPickerUiSlot | ColorSwatchPickerExtraUiSlot>;\n\n/**\n * Properties for the ColorSwatchPicker component.\n */\nexport interface ColorSwatchPickerProps extends ColorSwatchPickerCompactProps<boolean> {\n  /**\n   * Additional class names applied to the root element.\n   */\n  class?: ClassValue;\n  /**\n   * Visual size of the component.\n   */\n  size?: ThemeSize;\n  /**\n   * Per-slot class overrides for the component.\n   */\n  ui?: Partial<ColorSwatchPickerExtendedUi>;\n  /**\n   * Shape of the component.\n   */\n  shape?: ColorSwatchPickerShape;\n}\n\n/**\n * Events for the ColorSwatchPicker component.\n */\nexport type ColorSwatchPickerEmits = ColorSwatchPickerCompactEmits<boolean>;\n\nexport type { ColorSwatchPickerShape };\n"
+    },
+    {
+      "path": "packages/ui/src/components/color-swatch-picker/index.ts",
+      "type": "registry:lib",
+      "content": "export { default as SColorSwatchPicker } from './color-swatch-picker.vue';\n\nexport type * from '@soybeanjs/headless/color-swatch-picker';\nexport type * from './types';\n"
     },
     {
       "path": "packages/ui/src/styles/color-swatch-picker.ts",

@@ -3,9 +3,9 @@
   "dependencies": ["@soybeanjs/headless"],
   "files": [
     {
-      "path": "packages/ui/src/components/color-area/color-area.vue",
-      "type": "registry:ui",
-      "content": "<script setup lang=\"ts\">\nimport { computed } from 'vue';\nimport { ColorAreaCompact, provideColorAreaUi } from '@soybeanjs/headless/color-area';\nimport { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';\nimport { colorAreaVariants } from '@/styles/color-area';\nimport type { ColorAreaProps, ColorAreaEmits } from './types';\n\ndefineOptions({\n  name: 'SColorArea'\n});\n\nconst props = defineProps<ColorAreaProps>();\n\nconst emit = defineEmits<ColorAreaEmits>();\n\nconst listeners = useForwardListeners(emit);\n\nconst forwardedProps = useOmitProps(props, ['class', 'size', 'ui']);\n\nconst ui = computed(() => colorAreaVariants({ size: props.size }, props.ui, { root: props.class }));\n\nprovideColorAreaUi(ui);\n</script>\n\n<template>\n  <ColorAreaCompact v-bind=\"forwardedProps\" v-on=\"listeners\" />\n</template>\n"
+      "path": "packages/ui/src/components/color-area/types.ts",
+      "type": "registry:lib",
+      "content": "import type { ColorAreaCompactEmits, ColorAreaCompactProps, ColorAreaUi } from '@soybeanjs/headless/color-area';\nimport type { ClassValue } from '@soybeanjs/headless/types';\nimport type { ThemeSize } from '@/theme';\n\n/**\n * Properties for the ColorArea component.\n */\nexport interface ColorAreaProps extends ColorAreaCompactProps {\n  /**\n   * Additional class names applied to the root element.\n   */\n  class?: ClassValue;\n  /**\n   * Visual size of the component.\n   */\n  size?: ThemeSize;\n  /**\n   * Per-slot class overrides for the component.\n   */\n  ui?: Partial<ColorAreaUi>;\n}\n\n/**\n * Events for the ColorArea component.\n */\nexport type ColorAreaEmits = ColorAreaCompactEmits;\n"
     },
     {
       "path": "packages/ui/src/components/color-area/index.ts",
@@ -13,19 +13,19 @@
       "content": "export { default as SColorArea } from './color-area.vue';\n\nexport type * from '@soybeanjs/headless/color-area';\nexport type * from './types';\n"
     },
     {
-      "path": "packages/ui/src/components/color-area/types.ts",
-      "type": "registry:lib",
-      "content": "import type { ColorAreaCompactEmits, ColorAreaCompactProps, ColorAreaUi } from '@soybeanjs/headless/color-area';\nimport type { ClassValue } from '@soybeanjs/headless/types';\nimport type { ThemeSize } from '@/theme';\n\n/**\n * Properties for the ColorArea component.\n */\nexport interface ColorAreaProps extends ColorAreaCompactProps {\n  /**\n   * Additional class names applied to the root element.\n   */\n  class?: ClassValue;\n  /**\n   * Visual size of the component.\n   */\n  size?: ThemeSize;\n  /**\n   * Per-slot class overrides for the component.\n   */\n  ui?: Partial<ColorAreaUi>;\n}\n\n/**\n * Events for the ColorArea component.\n */\nexport type ColorAreaEmits = ColorAreaCompactEmits;\n"
-    },
-    {
-      "path": "packages/ui/src/styles/color-area.ts",
-      "type": "registry:style",
-      "content": "// @unocss-include\nimport { scv } from '@soybeanjs/cva';\n\nexport const colorAreaVariants = scv({\n  slots: {\n    root: 'relative select-none',\n    area: [\n      'relative overflow-hidden min-w-25 min-h-25 w-full h-full rounded-xl border border-input shadow-inner outline-none',\n      'focus-visible:ring-3 focus-visible:ring-primary/20 data-[disabled]:opacity-60'\n    ],\n    thumb: [\n      'absolute block rounded-full border-2 border-white bg-transparent shadow-lg',\n      'ring-1 ring-black/20 transition-[transform,box-shadow] duration-150',\n      'hover:scale-105 outline-none focus-visible:ring-4 focus-visible:ring-primary/25'\n    ]\n  },\n  variants: {\n    size: {\n      xs: {\n        root: 'text-2xs',\n        thumb: 'size-3'\n      },\n      sm: {\n        root: 'text-xs',\n        thumb: 'size-3.5'\n      },\n      md: {\n        root: 'text-sm',\n        thumb: 'size-4'\n      },\n      lg: {\n        root: 'text-base',\n        thumb: 'size-4.5'\n      },\n      xl: {\n        root: 'text-lg',\n        thumb: 'size-5'\n      },\n      '2xl': {\n        root: 'text-xl',\n        thumb: 'size-6'\n      }\n    }\n  },\n  defaultVariants: {\n    size: 'md'\n  }\n});\n"
+      "path": "packages/ui/src/components/color-area/color-area.vue",
+      "type": "registry:ui",
+      "content": "<script setup lang=\"ts\">\nimport { computed } from 'vue';\nimport { ColorAreaCompact, provideColorAreaUi } from '@soybeanjs/headless/color-area';\nimport { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';\nimport { colorAreaVariants } from '@/styles/color-area';\nimport type { ColorAreaProps, ColorAreaEmits } from './types';\n\ndefineOptions({\n  name: 'SColorArea'\n});\n\nconst props = defineProps<ColorAreaProps>();\n\nconst emit = defineEmits<ColorAreaEmits>();\n\nconst listeners = useForwardListeners(emit);\n\nconst forwardedProps = useOmitProps(props, ['class', 'size', 'ui']);\n\nconst ui = computed(() => colorAreaVariants({ size: props.size }, props.ui, { root: props.class }));\n\nprovideColorAreaUi(ui);\n</script>\n\n<template>\n  <ColorAreaCompact v-bind=\"forwardedProps\" v-on=\"listeners\" />\n</template>\n"
     },
     {
       "path": "packages/ui/src/theme/index.ts",
       "type": "registry:theme",
       "content": "export * from './config';\n\nexport type * from './types';\n"
+    },
+    {
+      "path": "packages/ui/src/styles/color-area.ts",
+      "type": "registry:style",
+      "content": "// @unocss-include\nimport { scv } from '@soybeanjs/cva';\n\nexport const colorAreaVariants = scv({\n  slots: {\n    root: 'relative select-none',\n    area: [\n      'relative overflow-hidden min-w-25 min-h-25 w-full h-full rounded-xl border border-input shadow-inner outline-none',\n      'focus-visible:ring-3 focus-visible:ring-primary/20 data-[disabled]:opacity-60'\n    ],\n    thumb: [\n      'absolute block rounded-full border-2 border-white bg-transparent shadow-lg',\n      'ring-1 ring-black/20 transition-[transform,box-shadow] duration-150',\n      'hover:scale-105 outline-none focus-visible:ring-4 focus-visible:ring-primary/25'\n    ]\n  },\n  variants: {\n    size: {\n      xs: {\n        root: 'text-2xs',\n        thumb: 'size-3'\n      },\n      sm: {\n        root: 'text-xs',\n        thumb: 'size-3.5'\n      },\n      md: {\n        root: 'text-sm',\n        thumb: 'size-4'\n      },\n      lg: {\n        root: 'text-base',\n        thumb: 'size-4.5'\n      },\n      xl: {\n        root: 'text-lg',\n        thumb: 'size-5'\n      },\n      '2xl': {\n        root: 'text-xl',\n        thumb: 'size-6'\n      }\n    }\n  },\n  defaultVariants: {\n    size: 'md'\n  }\n});\n"
     },
     {
       "path": "packages/ui/src/theme/config.ts",

@@ -3,29 +3,14 @@
   "dependencies": ["@soybeanjs/headless", "@soybeanjs/utils"],
   "files": [
     {
-      "path": "packages/ui/src/components/form/form-field-array.vue",
-      "type": "registry:ui",
-      "content": "<script setup lang=\"ts\">\nimport { computed } from 'vue';\nimport { useOmitProps } from '@soybeanjs/headless/composables';\nimport { FormFieldArrayCompact, provideFormFieldUi } from '@soybeanjs/headless/form';\nimport { keysOf } from '@soybeanjs/utils';\nimport { formVariants } from '@/styles/form';\nimport type { FormFieldArrayProps, FormFieldArraySlots } from './types';\n\ndefineOptions({\n  name: 'SFormFieldArray'\n});\n\nconst props = defineProps<FormFieldArrayProps>();\n\nconst slots = defineSlots<FormFieldArraySlots>();\n\nconst forwardedProps = useOmitProps(props, ['class', 'ui', 'size']);\n\nconst slotNames = computed(() => keysOf(slots));\n\nconst ui = computed(() => formVariants({ size: props.size }, props.ui, { field: props.class }));\n\nprovideFormFieldUi(ui);\n</script>\n\n<template>\n  <FormFieldArrayCompact v-bind=\"forwardedProps\">\n    <template v-for=\"slotName in slotNames\" :key=\"slotName\" #[slotName]=\"slotProps\">\n      <slot :name=\"slotName\" v-bind=\"slotProps\" />\n    </template>\n  </FormFieldArrayCompact>\n</template>\n"
-    },
-    {
-      "path": "packages/ui/src/components/form/form-field-base.vue",
-      "type": "registry:ui",
-      "content": "<script setup lang=\"ts\">\nimport { computed } from 'vue';\nimport { useOmitProps } from '@soybeanjs/headless/composables';\nimport { FormFieldBaseCompact, provideFormFieldUi } from '@soybeanjs/headless/form';\nimport { keysOf } from '@soybeanjs/utils';\nimport { formVariants } from '@/styles/form';\nimport type { FormFieldBaseProps, FormFieldBaseSlots } from './types';\n\ndefineOptions({\n  name: 'SFormFieldBase'\n});\n\nconst props = defineProps<FormFieldBaseProps>();\n\nconst slots = defineSlots<FormFieldBaseSlots>();\n\nconst forwardedProps = useOmitProps(props, ['class', 'ui', 'size']);\n\nconst slotNames = computed(() => keysOf(slots));\n\nconst ui = computed(() => formVariants({ size: props.size }, props.ui, { field: props.class }));\n\nprovideFormFieldUi(ui);\n</script>\n\n<template>\n  <FormFieldBaseCompact v-bind=\"forwardedProps\">\n    <template v-for=\"slotName in slotNames\" :key=\"slotName\" #[slotName]>\n      <slot :name=\"slotName\" />\n    </template>\n  </FormFieldBaseCompact>\n</template>\n"
-    },
-    {
       "path": "packages/ui/src/components/form/form-field.vue",
       "type": "registry:ui",
       "content": "<script setup lang=\"ts\">\nimport { computed } from 'vue';\nimport { useOmitProps } from '@soybeanjs/headless/composables';\nimport { FormFieldCompact, provideFormFieldUi } from '@soybeanjs/headless/form';\nimport { keysOf } from '@soybeanjs/utils';\nimport { formVariants } from '@/styles/form';\nimport type { FormFieldProps, FormFieldSlots } from './types';\n\ndefineOptions({\n  name: 'SFormField'\n});\n\nconst props = defineProps<FormFieldProps>();\n\nconst slots = defineSlots<FormFieldSlots>();\n\nconst forwardedProps = useOmitProps(props, ['class', 'ui', 'size']);\n\nconst slotNames = computed(() => keysOf(slots));\n\nconst ui = computed(() => formVariants({ size: props.size }, props.ui, { field: props.class }));\n\nprovideFormFieldUi(ui);\n</script>\n\n<template>\n  <FormFieldCompact v-bind=\"forwardedProps\">\n    <template v-for=\"slotName in slotNames\" :key=\"slotName\" #[slotName]=\"slotProps\">\n      <slot :name=\"slotName\" v-bind=\"slotProps\" />\n    </template>\n  </FormFieldCompact>\n</template>\n"
     },
     {
-      "path": "packages/ui/src/components/form/form.vue",
+      "path": "packages/ui/src/components/form/form-field-array.vue",
       "type": "registry:ui",
-      "content": "<script setup lang=\"ts\">\nimport { computed } from 'vue';\nimport { useOmitProps } from '@soybeanjs/headless/composables';\nimport { FormCompact, provideFormUi } from '@soybeanjs/headless/form';\nimport { formVariants } from '@/styles/form';\nimport type { FormProps } from './types';\n\ndefineOptions({\n  name: 'SForm'\n});\n\nconst props = defineProps<FormProps>();\n\nconst forwardedProps = useOmitProps(props, ['ui', 'class', 'size']);\n\nconst ui = computed(() => formVariants({ size: props.size }, props.ui, { form: props.class }));\n\nprovideFormUi(ui);\n</script>\n\n<template>\n  <FormCompact v-bind=\"forwardedProps\">\n    <slot />\n  </FormCompact>\n</template>\n"
-    },
-    {
-      "path": "packages/ui/src/components/form/index.ts",
-      "type": "registry:lib",
-      "content": "export { default as SForm } from './form.vue';\nexport { default as SFormFieldBase } from './form-field-base.vue';\nexport { useForm } from './use-form';\n\nexport type * from '@soybeanjs/headless/form';\nexport type { FormProps } from './types';\n"
+      "content": "<script setup lang=\"ts\">\nimport { computed } from 'vue';\nimport { useOmitProps } from '@soybeanjs/headless/composables';\nimport { FormFieldArrayCompact, provideFormFieldUi } from '@soybeanjs/headless/form';\nimport { keysOf } from '@soybeanjs/utils';\nimport { formVariants } from '@/styles/form';\nimport type { FormFieldArrayProps, FormFieldArraySlots } from './types';\n\ndefineOptions({\n  name: 'SFormFieldArray'\n});\n\nconst props = defineProps<FormFieldArrayProps>();\n\nconst slots = defineSlots<FormFieldArraySlots>();\n\nconst forwardedProps = useOmitProps(props, ['class', 'ui', 'size']);\n\nconst slotNames = computed(() => keysOf(slots));\n\nconst ui = computed(() => formVariants({ size: props.size }, props.ui, { field: props.class }));\n\nprovideFormFieldUi(ui);\n</script>\n\n<template>\n  <FormFieldArrayCompact v-bind=\"forwardedProps\">\n    <template v-for=\"slotName in slotNames\" :key=\"slotName\" #[slotName]=\"slotProps\">\n      <slot :name=\"slotName\" v-bind=\"slotProps\" />\n    </template>\n  </FormFieldArrayCompact>\n</template>\n"
     },
     {
       "path": "packages/ui/src/components/form/types.ts",
@@ -36,6 +21,21 @@
       "path": "packages/ui/src/components/form/use-form.ts",
       "type": "registry:lib",
       "content": "import { useForm as _useForm } from '@soybeanjs/headless/form';\nimport type { StandardSchemaV1, FormValues, InferStandardSchemaInput } from '@soybeanjs/headless/form';\nimport FormFieldArray from './form-field-array.vue';\nimport FormField from './form-field.vue';\nimport type { UseFormOptions, FormFieldExtraProps, UseFormReturn } from './types';\n\nexport function useForm<S extends StandardSchemaV1<FormValues, FormValues>>(options: UseFormOptions<S>) {\n  const [context, SFormField, SFormFieldArray] = _useForm<S, FormFieldExtraProps, FormFieldExtraProps>(\n    options,\n    // @ts-expect-error - ignore\n    FormField,\n    FormFieldArray\n  );\n\n  return {\n    ...context,\n    SFormField,\n    SFormFieldArray\n  } as UseFormReturn<InferStandardSchemaInput<S>>;\n}\n"
+    },
+    {
+      "path": "packages/ui/src/components/form/form-field-base.vue",
+      "type": "registry:ui",
+      "content": "<script setup lang=\"ts\">\nimport { computed } from 'vue';\nimport { useOmitProps } from '@soybeanjs/headless/composables';\nimport { FormFieldBaseCompact, provideFormFieldUi } from '@soybeanjs/headless/form';\nimport { keysOf } from '@soybeanjs/utils';\nimport { formVariants } from '@/styles/form';\nimport type { FormFieldBaseProps, FormFieldBaseSlots } from './types';\n\ndefineOptions({\n  name: 'SFormFieldBase'\n});\n\nconst props = defineProps<FormFieldBaseProps>();\n\nconst slots = defineSlots<FormFieldBaseSlots>();\n\nconst forwardedProps = useOmitProps(props, ['class', 'ui', 'size']);\n\nconst slotNames = computed(() => keysOf(slots));\n\nconst ui = computed(() => formVariants({ size: props.size }, props.ui, { field: props.class }));\n\nprovideFormFieldUi(ui);\n</script>\n\n<template>\n  <FormFieldBaseCompact v-bind=\"forwardedProps\">\n    <template v-for=\"slotName in slotNames\" :key=\"slotName\" #[slotName]>\n      <slot :name=\"slotName\" />\n    </template>\n  </FormFieldBaseCompact>\n</template>\n"
+    },
+    {
+      "path": "packages/ui/src/components/form/index.ts",
+      "type": "registry:lib",
+      "content": "export { default as SForm } from './form.vue';\nexport { default as SFormFieldBase } from './form-field-base.vue';\nexport { useForm } from './use-form';\n\nexport type * from '@soybeanjs/headless/form';\nexport type { FormProps } from './types';\n"
+    },
+    {
+      "path": "packages/ui/src/components/form/form.vue",
+      "type": "registry:ui",
+      "content": "<script setup lang=\"ts\">\nimport { computed } from 'vue';\nimport { useOmitProps } from '@soybeanjs/headless/composables';\nimport { FormCompact, provideFormUi } from '@soybeanjs/headless/form';\nimport { formVariants } from '@/styles/form';\nimport type { FormProps } from './types';\n\ndefineOptions({\n  name: 'SForm'\n});\n\nconst props = defineProps<FormProps>();\n\nconst forwardedProps = useOmitProps(props, ['ui', 'class', 'size']);\n\nconst ui = computed(() => formVariants({ size: props.size }, props.ui, { form: props.class }));\n\nprovideFormUi(ui);\n</script>\n\n<template>\n  <FormCompact v-bind=\"forwardedProps\">\n    <slot />\n  </FormCompact>\n</template>\n"
     },
     {
       "path": "packages/ui/src/styles/form.ts",

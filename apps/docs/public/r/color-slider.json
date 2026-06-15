@@ -8,14 +8,14 @@
       "content": "<script setup lang=\"ts\">\nimport { computed } from 'vue';\nimport { ColorSliderCompact, provideColorSliderUi } from '@soybeanjs/headless/color-slider';\nimport { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';\nimport { sliderVariants } from '@/styles/slider';\nimport type { ColorSliderProps, ColorSliderEmits } from './types';\n\ndefineOptions({\n  name: 'SColorSlider'\n});\n\nconst props = withDefaults(defineProps<ColorSliderProps>(), {\n  color: 'accent',\n  size: 'md'\n});\n\nconst emit = defineEmits<ColorSliderEmits>();\n\nconst listeners = useForwardListeners(emit);\n\nconst forwardedProps = useOmitProps(props, ['class', 'size', 'ui']);\n\nconst ui = computed(() => sliderVariants({ color: props.color, size: props.size }, props.ui, { root: props.class }));\n\nprovideColorSliderUi(ui);\n</script>\n\n<template>\n  <ColorSliderCompact v-bind=\"forwardedProps\" v-on=\"listeners\" />\n</template>\n"
     },
     {
-      "path": "packages/ui/src/components/color-slider/index.ts",
-      "type": "registry:lib",
-      "content": "export { default as SColorSlider } from './color-slider.vue';\n\nexport type * from '@soybeanjs/headless/color-slider';\nexport type * from './types';\n"
-    },
-    {
       "path": "packages/ui/src/components/color-slider/types.ts",
       "type": "registry:lib",
       "content": "import type { ColorSliderCompactEmits, ColorSliderCompactProps, ColorSliderUi } from '@soybeanjs/headless/color-slider';\nimport type { ClassValue } from '@soybeanjs/headless/types';\nimport type { ThemeColor, ThemeSize } from '@/theme';\n\n/**\n * Properties for the ColorSlider component.\n */\nexport interface ColorSliderProps extends ColorSliderCompactProps {\n  /**\n   * Additional class names applied to the root element.\n   */\n  class?: ClassValue;\n  /**\n   * Theme color of the component.\n   */\n  color?: ThemeColor;\n  /**\n   * Visual size of the component.\n   */\n  size?: ThemeSize;\n  /**\n   * Per-slot class overrides for the component.\n   */\n  ui?: Partial<ColorSliderUi>;\n}\n\n/**\n * Events for the ColorSlider component.\n */\nexport type ColorSliderEmits = ColorSliderCompactEmits;\n"
+    },
+    {
+      "path": "packages/ui/src/components/color-slider/index.ts",
+      "type": "registry:lib",
+      "content": "export { default as SColorSlider } from './color-slider.vue';\n\nexport type * from '@soybeanjs/headless/color-slider';\nexport type * from './types';\n"
     },
     {
       "path": "packages/ui/src/styles/slider.ts",

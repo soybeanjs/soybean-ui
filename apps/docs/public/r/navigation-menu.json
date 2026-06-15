@@ -3,11 +3,6 @@
   "dependencies": ["@soybeanjs/headless", "@soybeanjs/utils"],
   "files": [
     {
-      "path": "packages/ui/src/components/navigation-menu/index.ts",
-      "type": "registry:lib",
-      "content": "export { default as SNavigationMenu } from './navigation-menu.vue';\n\nexport type * from '@soybeanjs/headless/navigation-menu';\nexport type * from './types';\n"
-    },
-    {
       "path": "packages/ui/src/components/navigation-menu/navigation-menu.vue",
       "type": "registry:ui",
       "content": "<script setup lang=\"ts\">\nimport { computed } from 'vue';\nimport { useOmitProps, useForwardListeners } from '@soybeanjs/headless/composables';\nimport { NavigationMenuCompact, provideNavigationMenuUi } from '@soybeanjs/headless/navigation-menu';\nimport { keysOf } from '@soybeanjs/utils';\nimport { navigationMenuVariants } from '@/styles/navigation-menu';\nimport type { NavigationMenuProps, NavigationMenuEmits, NavigationMenuSlots } from './types';\n\ndefineOptions({\n  name: 'SNavigationMenu'\n});\n\nconst props = defineProps<NavigationMenuProps>();\n\nconst emit = defineEmits<NavigationMenuEmits>();\n\nconst slots = defineSlots<NavigationMenuSlots>();\n\nconst forwardedProps = useOmitProps(props, ['class', 'size', 'ui']);\n\nconst listeners = useForwardListeners(emit);\n\nconst slotNames = computed(() => keysOf(slots));\n\nconst ui = computed(() => navigationMenuVariants({ size: props.size }, props.ui, { root: props.class }));\n\nprovideNavigationMenuUi(ui);\n</script>\n\n<template>\n  <NavigationMenuCompact v-bind=\"forwardedProps\" v-on=\"listeners\">\n    <template v-for=\"slotName in slotNames\" #[slotName]=\"slotProps\">\n      <slot :name=\"slotName\" v-bind=\"slotProps\" />\n    </template>\n  </NavigationMenuCompact>\n</template>\n"
@@ -16,6 +11,11 @@
       "path": "packages/ui/src/components/navigation-menu/types.ts",
       "type": "registry:lib",
       "content": "import type {\n  NavigationMenuCompactProps,\n  NavigationMenuCompactEmits,\n  NavigationMenuCompactSlots,\n  NavigationMenuUi\n} from '@soybeanjs/headless/navigation-menu';\nimport type { ClassValue } from '@soybeanjs/headless/types';\nimport type { ThemeSize } from '@/theme';\n\n/**\n * Properties for the NavigationMenu component.\n */\nexport interface NavigationMenuProps extends NavigationMenuCompactProps {\n  /**\n   * Additional class names applied to the root element.\n   */\n  class?: ClassValue;\n  /**\n   * Visual size of the component.\n   */\n  size?: ThemeSize;\n  /**\n   * Per-slot class overrides for the component.\n   */\n  ui?: Partial<NavigationMenuUi>;\n}\n\n/**\n * Events for the NavigationMenu component.\n */\nexport type NavigationMenuEmits = NavigationMenuCompactEmits;\n\n/**\n * Slots for the NavigationMenu component.\n */\nexport type NavigationMenuSlots = NavigationMenuCompactSlots;\n"
+    },
+    {
+      "path": "packages/ui/src/components/navigation-menu/index.ts",
+      "type": "registry:lib",
+      "content": "export { default as SNavigationMenu } from './navigation-menu.vue';\n\nexport type * from '@soybeanjs/headless/navigation-menu';\nexport type * from './types';\n"
     },
     {
       "path": "packages/ui/src/styles/navigation-menu.ts",

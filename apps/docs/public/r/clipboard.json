@@ -8,14 +8,14 @@
       "content": "<script setup lang=\"ts\">\nimport { computed } from 'vue';\nimport { Clipboard } from '@soybeanjs/headless/clipboard';\nimport { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';\nimport { clipboardVariants } from '@/styles/clipboard';\nimport type { ClipboardProps, ClipboardEmits } from './types';\n\ndefineOptions({\n  name: 'SClipboard'\n});\n\nconst props = defineProps<ClipboardProps>();\n\nconst emit = defineEmits<ClipboardEmits>();\n\nconst listeners = useForwardListeners(emit);\n\nconst forwardedProps = useOmitProps(props, ['class', 'color', 'size', 'variant', 'shape', 'fitContent']);\n\nconst cls = computed(() =>\n  clipboardVariants(\n    {\n      color: props.color,\n      size: props.size,\n      variant: props.variant,\n      shape: props.shape,\n      fitContent: props.fitContent\n    },\n    props.class\n  )\n);\n</script>\n\n<template>\n  <Clipboard v-bind=\"forwardedProps\" :class=\"cls\" v-on=\"listeners\">\n    <template #leading=\"slotProps\">\n      <slot name=\"leading\" v-bind=\"slotProps\" />\n    </template>\n    <template #default=\"slotProps\">\n      <slot v-bind=\"slotProps\" />\n    </template>\n    <template #trailing=\"slotProps\">\n      <slot name=\"trailing\" v-bind=\"slotProps\" />\n    </template>\n  </Clipboard>\n</template>\n"
     },
     {
-      "path": "packages/ui/src/components/clipboard/index.ts",
-      "type": "registry:lib",
-      "content": "export { default as SClipboard } from './clipboard.vue';\n\nexport type * from '@soybeanjs/headless/clipboard';\nexport type { ClipboardProps, ClipboardEmits, ClipboardSlotProps, ClipboardVariant, ClipboardShape } from './types';\n"
-    },
-    {
       "path": "packages/ui/src/components/clipboard/types.ts",
       "type": "registry:lib",
       "content": "import type {\n  ClipboardEmits,\n  ClipboardProps as _ClipboardProps,\n  ClipboardSlotProps\n} from '@soybeanjs/headless/clipboard';\nimport type { ClassValue } from '@soybeanjs/headless/types';\nimport type { ClipboardShape, ClipboardVariant } from '@/styles/clipboard';\nimport type { ThemeColor, ThemeSize } from '@/theme';\n\n/**\n * Properties for the Clipboard component.\n */\nexport interface ClipboardProps extends _ClipboardProps {\n  /**\n   * Additional class names applied to the root element.\n   */\n  class?: ClassValue;\n  /**\n   * Theme color of the component.\n   */\n  color?: ThemeColor;\n  /**\n   * Visual size of the component.\n   */\n  size?: ThemeSize;\n  /**\n   * Visual variant of the component.\n   */\n  variant?: ClipboardVariant;\n  /**\n   * Shape of the component.\n   */\n  shape?: ClipboardShape;\n  /**\n   * Whether the component should fit its content width.\n   */\n  fitContent?: boolean;\n}\n\nexport type { ClipboardEmits, ClipboardSlotProps, ClipboardVariant, ClipboardShape };\n"
+    },
+    {
+      "path": "packages/ui/src/components/clipboard/index.ts",
+      "type": "registry:lib",
+      "content": "export { default as SClipboard } from './clipboard.vue';\n\nexport type * from '@soybeanjs/headless/clipboard';\nexport type { ClipboardProps, ClipboardEmits, ClipboardSlotProps, ClipboardVariant, ClipboardShape } from './types';\n"
     },
     {
       "path": "packages/ui/src/styles/clipboard.ts",

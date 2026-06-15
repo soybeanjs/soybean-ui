@@ -3,6 +3,11 @@
   "dependencies": ["@soybeanjs/headless"],
   "files": [
     {
+      "path": "packages/ui/src/components/toggle/types.ts",
+      "type": "registry:lib",
+      "content": "import type { ToggleEmits, ToggleProps as _ToggleProps } from '@soybeanjs/headless/toggle';\nimport type { ClassValue } from '@soybeanjs/headless/types';\nimport type { ToggleVariant, ToggleShape } from '@/styles/toggle';\nimport type { ThemeSize, ThemeColor } from '@/theme';\n\n/**\n * Properties for the Toggle component.\n */\nexport interface ToggleProps extends _ToggleProps {\n  /**\n   * Additional class names applied to the root element.\n   */\n  class?: ClassValue;\n  /**\n   * Theme color of the component.\n   */\n  color?: ThemeColor;\n  /**\n   * Visual size of the component.\n   */\n  size?: ThemeSize;\n  /**\n   * Visual variant of the component.\n   */\n  variant?: ToggleVariant;\n  /**\n   * Shape of the component.\n   */\n  shape?: ToggleShape;\n}\n\nexport type { ToggleEmits, ToggleVariant, ToggleShape };\n"
+    },
+    {
       "path": "packages/ui/src/components/toggle/index.ts",
       "type": "registry:lib",
       "content": "export { default as SToggle } from './toggle.vue';\n\nexport type * from './types';\n"
@@ -11,11 +16,6 @@
       "path": "packages/ui/src/components/toggle/toggle.vue",
       "type": "registry:ui",
       "content": "<script setup lang=\"ts\">\nimport { computed } from 'vue';\nimport { useOmitProps } from '@soybeanjs/headless/composables';\nimport { Toggle } from '@soybeanjs/headless/toggle';\nimport { toggleVariants } from '@/styles/toggle';\nimport type { ToggleProps, ToggleEmits } from './types';\n\ndefineOptions({\n  name: 'SToggle'\n});\n\nconst props = withDefaults(defineProps<ToggleProps>(), {\n  modelValue: undefined\n});\n\nconst emit = defineEmits<ToggleEmits>();\n\nconst forwardedProps = useOmitProps(props, ['class', 'color', 'variant', 'size', 'shape']);\n\nconst cls = computed(() =>\n  toggleVariants(\n    {\n      color: props.color,\n      variant: props.variant,\n      size: props.size,\n      shape: props.shape\n    },\n    props.class\n  )\n);\n</script>\n\n<template>\n  <Toggle\n    v-slot=\"slotProps\"\n    v-bind=\"forwardedProps\"\n    :class=\"cls\"\n    @update:model-value=\"emit('update:modelValue', $event)\"\n  >\n    <slot v-bind=\"slotProps\" />\n  </Toggle>\n</template>\n"
-    },
-    {
-      "path": "packages/ui/src/components/toggle/types.ts",
-      "type": "registry:lib",
-      "content": "import type { ToggleEmits, ToggleProps as _ToggleProps } from '@soybeanjs/headless/toggle';\nimport type { ClassValue } from '@soybeanjs/headless/types';\nimport type { ToggleVariant, ToggleShape } from '@/styles/toggle';\nimport type { ThemeSize, ThemeColor } from '@/theme';\n\n/**\n * Properties for the Toggle component.\n */\nexport interface ToggleProps extends _ToggleProps {\n  /**\n   * Additional class names applied to the root element.\n   */\n  class?: ClassValue;\n  /**\n   * Theme color of the component.\n   */\n  color?: ThemeColor;\n  /**\n   * Visual size of the component.\n   */\n  size?: ThemeSize;\n  /**\n   * Visual variant of the component.\n   */\n  variant?: ToggleVariant;\n  /**\n   * Shape of the component.\n   */\n  shape?: ToggleShape;\n}\n\nexport type { ToggleEmits, ToggleVariant, ToggleShape };\n"
     },
     {
       "path": "packages/ui/src/styles/toggle.ts",

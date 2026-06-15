@@ -1,12 +1,11 @@
 {
   "name": "tree-menu",
   "dependencies": ["@soybeanjs/headless", "@soybeanjs/utils"],
-  "registryDependencies": ["menu"],
   "files": [
     {
-      "path": "packages/ui/src/components/tree-menu/index.ts",
-      "type": "registry:lib",
-      "content": "export { default as STreeMenu } from './tree-menu.vue';\nexport { default as STreeMenuStyledItem } from './tree-menu-styled-item.vue';\n\nexport type * from '@soybeanjs/headless/tree-menu';\nexport type * from './types';\n"
+      "path": "packages/ui/src/components/tree-menu/tree-menu.vue",
+      "type": "registry:ui",
+      "content": "<script setup lang=\"ts\" generic=\"T extends TreeMenuBaseOptionData = TreeMenuBaseOptionData\">\nimport { computed } from 'vue';\nimport { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';\nimport { TreeMenuCompact, provideTreeMenuUi } from '@soybeanjs/headless/tree-menu';\nimport type { TreeMenuBaseOptionData } from '@soybeanjs/headless/tree-menu';\nimport { keysOf } from '@soybeanjs/utils';\nimport { treeMenuVariants } from '@/styles/tree-menu';\nimport { provideMenuUi } from '../menu/context';\nimport type { TreeMenuProps, TreeMenuEmits, TreeMenuSlots } from './types';\n\ndefineOptions({\n  name: 'STreeMenu'\n});\n\nconst props = withDefaults(defineProps<TreeMenuProps<T>>(), {\n  collapsed: undefined\n});\n\nconst emit = defineEmits<TreeMenuEmits>();\n\nconst slots = defineSlots<TreeMenuSlots<T>>();\n\nconst forwardedProps = useOmitProps(props, ['class', 'size', 'ui']);\n\nconst listeners = useForwardListeners(emit);\n\nconst slotNames = computed(() => keysOf(slots));\n\nconst ui = computed(() => treeMenuVariants({ size: props.size }, props.ui, { root: props.class }));\n\nprovideMenuUi(() => ({\n  size: props.size\n}));\nprovideTreeMenuUi(ui);\n</script>\n\n<template>\n  <TreeMenuCompact v-bind=\"forwardedProps\" v-on=\"listeners\">\n    <template v-for=\"slotName in slotNames\" #[slotName]=\"slotProps\">\n      <!-- @vue-expect-error ignore slot type -->\n      <slot :name=\"slotName\" v-bind=\"slotProps\" />\n    </template>\n  </TreeMenuCompact>\n</template>\n"
     },
     {
       "path": "packages/ui/src/components/tree-menu/tree-menu-styled-item.vue",
@@ -14,14 +13,14 @@
       "content": "<script setup lang=\"ts\">\nimport { computed } from 'vue';\nimport { treeMenuVariants } from '@/styles/tree-menu';\nimport type { TreeMenuStyledItemProps } from './types';\n\ndefineOptions({\n  name: 'STreeMenuStyledItem'\n});\n\nconst props = defineProps<TreeMenuStyledItemProps>();\n\nconst ui = computed(() => treeMenuVariants({ size: props.size }, props.ui, { item: props.class }));\n</script>\n\n<template>\n  <div :class=\"ui.item\">\n    <button :class=\"ui.button\">\n      <slot />\n    </button>\n  </div>\n</template>\n"
     },
     {
-      "path": "packages/ui/src/components/tree-menu/tree-menu.vue",
-      "type": "registry:ui",
-      "content": "<script setup lang=\"ts\" generic=\"T extends TreeMenuBaseOptionData = TreeMenuBaseOptionData\">\nimport { computed } from 'vue';\nimport { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';\nimport { TreeMenuCompact, provideTreeMenuUi } from '@soybeanjs/headless/tree-menu';\nimport type { TreeMenuBaseOptionData } from '@soybeanjs/headless/tree-menu';\nimport { keysOf } from '@soybeanjs/utils';\nimport { treeMenuVariants } from '@/styles/tree-menu';\nimport { provideMenuUi } from '../menu/context';\nimport type { TreeMenuProps, TreeMenuEmits, TreeMenuSlots } from './types';\n\ndefineOptions({\n  name: 'STreeMenu'\n});\n\nconst props = withDefaults(defineProps<TreeMenuProps<T>>(), {\n  collapsed: undefined\n});\n\nconst emit = defineEmits<TreeMenuEmits>();\n\nconst slots = defineSlots<TreeMenuSlots<T>>();\n\nconst forwardedProps = useOmitProps(props, ['class', 'size', 'ui']);\n\nconst listeners = useForwardListeners(emit);\n\nconst slotNames = computed(() => keysOf(slots));\n\nconst ui = computed(() => treeMenuVariants({ size: props.size }, props.ui, { root: props.class }));\n\nprovideMenuUi(() => ({\n  size: props.size\n}));\nprovideTreeMenuUi(ui);\n</script>\n\n<template>\n  <TreeMenuCompact v-bind=\"forwardedProps\" v-on=\"listeners\">\n    <template v-for=\"slotName in slotNames\" #[slotName]=\"slotProps\">\n      <!-- @vue-expect-error ignore slot type -->\n      <slot :name=\"slotName\" v-bind=\"slotProps\" />\n    </template>\n  </TreeMenuCompact>\n</template>\n"
-    },
-    {
       "path": "packages/ui/src/components/tree-menu/types.ts",
       "type": "registry:lib",
       "content": "import type {\n  TreeMenuBaseOptionData,\n  TreeMenuCompactEmits,\n  TreeMenuCompactProps,\n  TreeMenuCompactSlots,\n  TreeMenuUiSlot\n} from '@soybeanjs/headless/tree-menu';\nimport type { BaseProps, ClassValue } from '@soybeanjs/headless/types';\nimport type { ThemeSize } from '@/theme';\n\n/**\n * Properties for the TreeMenu component.\n */\nexport interface TreeMenuProps<\n  T extends TreeMenuBaseOptionData = TreeMenuBaseOptionData\n> extends TreeMenuCompactProps<T> {\n  /**\n   * Additional class names applied to the root element.\n   */\n  class?: ClassValue;\n  /**\n   * Visual size of the component.\n   */\n  size?: ThemeSize;\n  /**\n   * Per-slot class overrides for the component.\n   */\n  ui?: Partial<Record<TreeMenuUiSlot, ClassValue>>;\n}\n\n/**\n * Events for the TreeMenu component.\n */\nexport type TreeMenuEmits = TreeMenuCompactEmits;\n\n/**\n * Slots for the TreeMenu component.\n */\nexport type TreeMenuSlots<T extends TreeMenuBaseOptionData = TreeMenuBaseOptionData> = TreeMenuCompactSlots<T>;\n\n/**\n * Properties for the TreeMenuStyledItem component.\n */\nexport interface TreeMenuStyledItemProps extends BaseProps {\n  /**\n   * Additional class names applied to the root element.\n   */\n  class?: ClassValue;\n  /**\n   * Visual size of the component.\n   */\n  size?: ThemeSize;\n  /**\n   * Per-slot class overrides for the component.\n   */\n  ui?: Partial<Record<'button' | 'item', ClassValue>>;\n}\n"
+    },
+    {
+      "path": "packages/ui/src/components/tree-menu/index.ts",
+      "type": "registry:lib",
+      "content": "export { default as STreeMenu } from './tree-menu.vue';\nexport { default as STreeMenuStyledItem } from './tree-menu-styled-item.vue';\n\nexport type * from '@soybeanjs/headless/tree-menu';\nexport type * from './types';\n"
     },
     {
       "path": "packages/ui/src/styles/tree-menu.ts",

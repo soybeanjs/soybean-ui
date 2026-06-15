@@ -9,14 +9,14 @@
       "content": "<script setup lang=\"ts\">\nimport { computed } from 'vue';\nimport { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';\nimport { DateRangePickerCompact, provideDateRangePickerUi } from '@soybeanjs/headless/date-range-picker';\nimport { dateRangePickerVariants } from '@/styles/date-range-picker';\nimport CalendarRange from '../calendar-range/calendar-range.vue';\nimport type { DateRangePickerProps, DateRangePickerEmits } from './types';\n\ndefineOptions({\n  name: 'SDateRangePicker'\n});\n\nconst props = withDefaults(defineProps<DateRangePickerProps>(), {\n  open: undefined\n});\n\nconst emit = defineEmits<DateRangePickerEmits>();\n\nconst forwardedProps = useOmitProps(props, ['class', 'size', 'ui']);\n\nconst listeners = useForwardListeners(emit);\n\nconst ui = computed(() => dateRangePickerVariants({ size: props.size }, props.ui, { root: props.class }));\n\nprovideDateRangePickerUi(ui);\n</script>\n\n<template>\n  <DateRangePickerCompact\n    v-slot=\"{ calendarRangeProps, close, onUpdateModelValue, onUpdatePlaceholder }\"\n    v-bind=\"forwardedProps\"\n    v-on=\"listeners\"\n  >\n    <CalendarRange\n      v-bind=\"calendarRangeProps\"\n      :size=\"size\"\n      :ui=\"calendarRangeUi\"\n      @update:model-value=\"\n        value => {\n          onUpdateModelValue(value);\n          if (value.start && value.end) {\n            close();\n          }\n        }\n      \"\n      @update:placeholder=\"onUpdatePlaceholder\"\n    />\n  </DateRangePickerCompact>\n</template>\n"
     },
     {
-      "path": "packages/ui/src/components/date-range-picker/index.ts",
-      "type": "registry:lib",
-      "content": "export { default as SDateRangePicker } from './date-range-picker.vue';\n\nexport type * from '@soybeanjs/headless/date-range-picker';\nexport type * from './types';\n"
-    },
-    {
       "path": "packages/ui/src/components/date-range-picker/types.ts",
       "type": "registry:lib",
       "content": "import type { CalendarRangeUi } from '@soybeanjs/headless/calendar-range';\nimport type {\n  DateRangePickerCompactProps,\n  DateRangePickerCompactEmits,\n  DateRangePickerUi\n} from '@soybeanjs/headless/date-range-picker';\nimport type { ClassValue } from '@soybeanjs/headless/types';\nimport type { ThemeSize } from '@/theme';\n\n/**\n * Properties for the DateRangePicker component.\n */\nexport interface DateRangePickerProps extends DateRangePickerCompactProps {\n  /**\n   * Additional class names applied to the root element.\n   */\n  class?: ClassValue;\n  /**\n   * Visual size of the component.\n   */\n  size?: ThemeSize;\n  /**\n   * Per-slot class overrides for the component.\n   */\n  ui?: Partial<DateRangePickerUi>;\n  /**\n   * Per-slot class overrides for the CalendarRange component within the DateRangePicker.\n   */\n  calendarRangeUi?: Partial<CalendarRangeUi>;\n}\n\n/**\n * Events for the DateRangePicker component.\n */\nexport type DateRangePickerEmits = DateRangePickerCompactEmits;\n"
+    },
+    {
+      "path": "packages/ui/src/components/date-range-picker/index.ts",
+      "type": "registry:lib",
+      "content": "export { default as SDateRangePicker } from './date-range-picker.vue';\n\nexport type * from '@soybeanjs/headless/date-range-picker';\nexport type * from './types';\n"
     },
     {
       "path": "packages/ui/src/styles/date-range-picker.ts",

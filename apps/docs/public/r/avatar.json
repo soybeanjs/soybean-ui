@@ -1,9 +1,12 @@
 {
   "name": "avatar",
-  "description": "An image element with a fallback for representing the user.",
-  "dependencies": ["@soybeanjs/cva", "@soybeanjs/headless", "@soybeanjs/utils"],
-  "registryDependencies": ["utils"],
+  "dependencies": ["@soybeanjs/headless", "@soybeanjs/utils"],
   "files": [
+    {
+      "path": "packages/ui/src/components/avatar/types.ts",
+      "type": "registry:lib",
+      "content": "import type { AvatarCompactProps, AvatarImageEmits, AvatarUi } from '@soybeanjs/headless/avatar';\nimport type { ClassValue } from '@soybeanjs/headless/types';\nimport type { ThemeSize } from '@/theme';\n\n/**\n * Properties for the Avatar component.\n */\nexport interface AvatarProps extends AvatarCompactProps {\n  /**\n   * root class\n   */\n  class?: ClassValue;\n  /**\n   * Visual size of the component.\n   */\n  size?: ThemeSize;\n  /**\n   * Per-slot class overrides for the component.\n   */\n  ui?: Partial<AvatarUi>;\n}\n\n/**\n * Events for the Avatar component.\n */\nexport type AvatarEmits = AvatarImageEmits;\n"
+    },
     {
       "path": "packages/ui/src/components/avatar/avatar.vue",
       "type": "registry:ui",
@@ -15,19 +18,14 @@
       "content": "export { default as SAvatar } from './avatar.vue';\n\nexport type * from '@soybeanjs/headless/avatar';\nexport type * from './types';\n"
     },
     {
-      "path": "packages/ui/src/components/avatar/types.ts",
-      "type": "registry:lib",
-      "content": "import type { AvatarCompactProps, AvatarImageEmits, AvatarUi } from '@soybeanjs/headless/avatar';\nimport type { ClassValue } from '@soybeanjs/headless/types';\nimport type { ThemeSize } from '@/theme';\n\n/**\n * Properties for the Avatar component.\n */\nexport interface AvatarProps extends AvatarCompactProps {\n  /**\n   * root class\n   */\n  class?: ClassValue;\n  /**\n   * Visual size of the component.\n   */\n  size?: ThemeSize;\n  /**\n   * Per-slot class overrides for the component.\n   */\n  ui?: Partial<AvatarUi>;\n}\n\n/**\n * Events for the Avatar component.\n */\nexport type AvatarEmits = AvatarImageEmits;\n"
+      "path": "packages/ui/src/theme/index.ts",
+      "type": "registry:theme",
+      "content": "export * from './config';\n\nexport type * from './types';\n"
     },
     {
       "path": "packages/ui/src/styles/avatar.ts",
       "type": "registry:style",
       "content": "// @unocss-include\nimport { scv } from '@soybeanjs/cva';\n\nexport const avatarVariants = scv({\n  slots: {\n    root: 'relative flex shrink-0 overflow-hidden rounded-full',\n    fallback: 'flex justify-center items-center w-full h-full rounded-full bg-muted font-medium',\n    image: 'aspect-square w-full h-full object-cover m-0'\n  },\n  variants: {\n    size: {\n      xs: {\n        root: 'size-6'\n      },\n      sm: {\n        root: 'size-8'\n      },\n      md: {\n        root: 'size-10'\n      },\n      lg: {\n        root: 'size-12'\n      },\n      xl: {\n        root: 'size-14'\n      },\n      '2xl': {\n        root: 'size-16'\n      }\n    }\n  },\n  defaultVariants: {\n    size: 'md'\n  }\n});\n"
-    },
-    {
-      "path": "packages/ui/src/theme/index.ts",
-      "type": "registry:theme",
-      "content": "export * from './config';\n\nexport type * from './types';\n"
     },
     {
       "path": "packages/ui/src/theme/config.ts",
@@ -40,6 +38,5 @@
       "content": "export type ThemeColor = 'primary' | 'destructive' | 'success' | 'warning' | 'info' | 'carbon' | 'secondary' | 'accent';\n\nexport type ThemeSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl';\n"
     }
   ],
-  "categories": ["display"],
   "type": "registry:ui"
 }

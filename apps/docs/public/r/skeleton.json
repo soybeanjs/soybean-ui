@@ -1,9 +1,12 @@
 {
   "name": "skeleton",
-  "description": "Used to show a placeholder while content is loading.",
-  "dependencies": ["@soybeanjs/cva", "@soybeanjs/headless"],
-  "registryDependencies": ["utils"],
+  "dependencies": ["@soybeanjs/headless"],
   "files": [
+    {
+      "path": "packages/ui/src/components/skeleton/types.ts",
+      "type": "registry:lib",
+      "content": "import type { SkeletonProps as _SkeletonProps } from '@soybeanjs/headless/skeleton';\nimport type { ClassValue } from '@soybeanjs/headless/types';\nimport type { SkeletonShape } from '@/styles/skeleton';\nimport type { ThemeSize } from '@/theme';\n\n/**\n * Properties for the Skeleton component.\n */\nexport interface SkeletonProps extends _SkeletonProps {\n  /**\n   * Additional class names applied to the root element.\n   */\n  class?: ClassValue;\n  /**\n   * Visual size of the component.\n   */\n  size?: ThemeSize;\n  /**\n   * Whether the skeleton should have an animation effect. Defaults to `true`.\n   */\n  animated?: boolean;\n  /**\n   * Shape of the component.\n   */\n  shape?: SkeletonShape;\n}\n\nexport type { SkeletonShape };\n"
+    },
     {
       "path": "packages/ui/src/components/skeleton/index.ts",
       "type": "registry:lib",
@@ -13,11 +16,6 @@
       "path": "packages/ui/src/components/skeleton/skeleton.vue",
       "type": "registry:ui",
       "content": "<script setup lang=\"ts\">\nimport { computed } from 'vue';\nimport { useOmitProps } from '@soybeanjs/headless/composables';\nimport { Skeleton } from '@soybeanjs/headless/skeleton';\nimport { skeletonVariants } from '@/styles/skeleton';\nimport type { SkeletonProps } from './types';\n\ndefineOptions({\n  name: 'SSkeleton'\n});\n\nconst props = withDefaults(defineProps<SkeletonProps>(), {\n  animated: true\n});\n\nconst forwardedProps = useOmitProps(props, ['class', 'size', 'animated', 'shape']);\n\nconst cls = computed(() =>\n  skeletonVariants(\n    {\n      size: props.size,\n      animated: props.animated,\n      shape: props.shape\n    },\n    props.class\n  )\n);\n</script>\n\n<template>\n  <Skeleton v-bind=\"forwardedProps\" :class=\"cls\">\n    <slot />\n  </Skeleton>\n</template>\n"
-    },
-    {
-      "path": "packages/ui/src/components/skeleton/types.ts",
-      "type": "registry:lib",
-      "content": "import type { SkeletonProps as _SkeletonProps } from '@soybeanjs/headless/skeleton';\nimport type { ClassValue } from '@soybeanjs/headless/types';\nimport type { SkeletonShape } from '@/styles/skeleton';\nimport type { ThemeSize } from '@/theme';\n\n/**\n * Properties for the Skeleton component.\n */\nexport interface SkeletonProps extends _SkeletonProps {\n  /**\n   * Additional class names applied to the root element.\n   */\n  class?: ClassValue;\n  /**\n   * Visual size of the component.\n   */\n  size?: ThemeSize;\n  /**\n   * Whether the skeleton should have an animation effect. Defaults to `true`.\n   */\n  animated?: boolean;\n  /**\n   * Shape of the component.\n   */\n  shape?: SkeletonShape;\n}\n\nexport type { SkeletonShape };\n"
     },
     {
       "path": "packages/ui/src/styles/skeleton.ts",
@@ -40,6 +38,5 @@
       "content": "export type ThemeColor = 'primary' | 'destructive' | 'success' | 'warning' | 'info' | 'carbon' | 'secondary' | 'accent';\n\nexport type ThemeSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl';\n"
     }
   ],
-  "categories": ["display", "feedback"],
   "type": "registry:ui"
 }

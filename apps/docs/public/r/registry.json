@@ -5,21 +5,18 @@
     {
       "name": "accordion",
       "type": "registry:ui",
-      "description": "A vertically stacked set of interactive headings that reveal or hide associated content.",
-      "categories": ["layout", "disclosure"],
-      "dependencies": ["@soybeanjs/cva", "@soybeanjs/headless", "@soybeanjs/utils"],
-      "registryDependencies": ["utils"],
+      "dependencies": ["@soybeanjs/headless", "@soybeanjs/utils"],
       "files": [
         {
           "path": "packages/ui/src/components/accordion/accordion.vue",
           "type": "registry:ui"
         },
         {
-          "path": "packages/ui/src/components/accordion/index.ts",
+          "path": "packages/ui/src/components/accordion/types.ts",
           "type": "registry:lib"
         },
         {
-          "path": "packages/ui/src/components/accordion/types.ts",
+          "path": "packages/ui/src/components/accordion/index.ts",
           "type": "registry:lib"
         }
       ]
@@ -34,11 +31,11 @@
           "type": "registry:ui"
         },
         {
-          "path": "packages/ui/src/components/affix/index.ts",
+          "path": "packages/ui/src/components/affix/types.ts",
           "type": "registry:lib"
         },
         {
-          "path": "packages/ui/src/components/affix/types.ts",
+          "path": "packages/ui/src/components/affix/index.ts",
           "type": "registry:lib"
         }
       ]
@@ -46,21 +43,18 @@
     {
       "name": "alert",
       "type": "registry:ui",
-      "description": "Displays a callout for user attention.",
-      "categories": ["feedback"],
-      "dependencies": ["@soybeanjs/cva", "@soybeanjs/headless", "@soybeanjs/utils"],
-      "registryDependencies": ["icon", "utils"],
+      "dependencies": ["@soybeanjs/headless", "@soybeanjs/utils"],
       "files": [
         {
           "path": "packages/ui/src/components/alert/alert.vue",
           "type": "registry:ui"
         },
         {
-          "path": "packages/ui/src/components/alert/index.ts",
+          "path": "packages/ui/src/components/alert/types.ts",
           "type": "registry:lib"
         },
         {
-          "path": "packages/ui/src/components/alert/types.ts",
+          "path": "packages/ui/src/components/alert/index.ts",
           "type": "registry:lib"
         }
       ]
@@ -71,16 +65,16 @@
       "dependencies": ["@soybeanjs/headless"],
       "files": [
         {
-          "path": "packages/ui/src/components/anchor/anchor.vue",
-          "type": "registry:ui"
+          "path": "packages/ui/src/components/anchor/types.ts",
+          "type": "registry:lib"
         },
         {
           "path": "packages/ui/src/components/anchor/index.ts",
           "type": "registry:lib"
         },
         {
-          "path": "packages/ui/src/components/anchor/types.ts",
-          "type": "registry:lib"
+          "path": "packages/ui/src/components/anchor/anchor.vue",
+          "type": "registry:ui"
         }
       ]
     },
@@ -112,37 +106,34 @@
       "dependencies": ["@soybeanjs/headless", "@soybeanjs/utils"],
       "files": [
         {
-          "path": "packages/ui/src/components/autocomplete/autocomplete.vue",
-          "type": "registry:ui"
+          "path": "packages/ui/src/components/autocomplete/types.ts",
+          "type": "registry:lib"
         },
         {
           "path": "packages/ui/src/components/autocomplete/index.ts",
           "type": "registry:lib"
         },
         {
-          "path": "packages/ui/src/components/autocomplete/types.ts",
-          "type": "registry:lib"
+          "path": "packages/ui/src/components/autocomplete/autocomplete.vue",
+          "type": "registry:ui"
         }
       ]
     },
     {
       "name": "avatar",
       "type": "registry:ui",
-      "description": "An image element with a fallback for representing the user.",
-      "categories": ["display"],
-      "dependencies": ["@soybeanjs/cva", "@soybeanjs/headless", "@soybeanjs/utils"],
-      "registryDependencies": ["utils"],
+      "dependencies": ["@soybeanjs/headless", "@soybeanjs/utils"],
       "files": [
+        {
+          "path": "packages/ui/src/components/avatar/types.ts",
+          "type": "registry:lib"
+        },
         {
           "path": "packages/ui/src/components/avatar/avatar.vue",
           "type": "registry:ui"
         },
         {
           "path": "packages/ui/src/components/avatar/index.ts",
-          "type": "registry:lib"
-        },
-        {
-          "path": "packages/ui/src/components/avatar/types.ts",
           "type": "registry:lib"
         }
       ]
@@ -151,18 +142,18 @@
       "name": "backtop",
       "type": "registry:ui",
       "dependencies": ["@soybeanjs/headless"],
-      "registryDependencies": ["button", "icon"],
+      "registryDependencies": ["icon"],
       "files": [
         {
           "path": "packages/ui/src/components/backtop/backtop.vue",
           "type": "registry:ui"
         },
         {
-          "path": "packages/ui/src/components/backtop/index.ts",
+          "path": "packages/ui/src/components/backtop/types.ts",
           "type": "registry:lib"
         },
         {
-          "path": "packages/ui/src/components/backtop/types.ts",
+          "path": "packages/ui/src/components/backtop/index.ts",
           "type": "registry:lib"
         }
       ]
@@ -170,21 +161,18 @@
     {
       "name": "badge",
       "type": "registry:ui",
-      "description": "Displays a badge or a small count/label.",
-      "categories": ["display", "status"],
-      "dependencies": ["@soybeanjs/cva", "@soybeanjs/headless", "@soybeanjs/utils"],
-      "registryDependencies": ["utils"],
+      "dependencies": ["@soybeanjs/headless", "@soybeanjs/utils"],
       "files": [
+        {
+          "path": "packages/ui/src/components/badge/types.ts",
+          "type": "registry:lib"
+        },
         {
           "path": "packages/ui/src/components/badge/badge.vue",
           "type": "registry:ui"
         },
         {
           "path": "packages/ui/src/components/badge/index.ts",
-          "type": "registry:lib"
-        },
-        {
-          "path": "packages/ui/src/components/badge/types.ts",
           "type": "registry:lib"
         }
       ]
@@ -199,11 +187,11 @@
           "type": "registry:ui"
         },
         {
-          "path": "packages/ui/src/components/bottom-sheet/index.ts",
+          "path": "packages/ui/src/components/bottom-sheet/types.ts",
           "type": "registry:lib"
         },
         {
-          "path": "packages/ui/src/components/bottom-sheet/types.ts",
+          "path": "packages/ui/src/components/bottom-sheet/index.ts",
           "type": "registry:lib"
         }
       ]
@@ -211,21 +199,18 @@
     {
       "name": "breadcrumb",
       "type": "registry:ui",
-      "description": "Displays the path to the current resource using a hierarchy of links.",
-      "categories": ["navigation"],
-      "dependencies": ["@soybeanjs/cva", "@soybeanjs/headless", "@soybeanjs/utils"],
-      "registryDependencies": ["utils"],
+      "dependencies": ["@soybeanjs/headless", "@soybeanjs/utils"],
       "files": [
         {
           "path": "packages/ui/src/components/breadcrumb/breadcrumb.vue",
           "type": "registry:ui"
         },
         {
-          "path": "packages/ui/src/components/breadcrumb/index.ts",
+          "path": "packages/ui/src/components/breadcrumb/types.ts",
           "type": "registry:lib"
         },
         {
-          "path": "packages/ui/src/components/breadcrumb/types.ts",
+          "path": "packages/ui/src/components/breadcrumb/index.ts",
           "type": "registry:lib"
         }
       ]
@@ -233,29 +218,11 @@
     {
       "name": "button",
       "type": "registry:ui",
-      "description": "Displays a button or a component that looks like a button.",
-      "categories": ["form", "action"],
-      "dependencies": ["@soybeanjs/cva", "@soybeanjs/headless"],
-      "registryDependencies": ["icon", "link", "utils"],
+      "dependencies": ["@soybeanjs/headless"],
+      "registryDependencies": ["icon", "link"],
       "files": [
         {
           "path": "packages/ui/src/components/button/button-group.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "packages/ui/src/components/button/button-icon.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "packages/ui/src/components/button/button-link.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "packages/ui/src/components/button/button-loading.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "packages/ui/src/components/button/button.vue",
           "type": "registry:ui"
         },
         {
@@ -263,33 +230,47 @@
           "type": "registry:lib"
         },
         {
-          "path": "packages/ui/src/components/button/index.ts",
-          "type": "registry:lib"
+          "path": "packages/ui/src/components/button/button-loading.vue",
+          "type": "registry:ui"
         },
         {
           "path": "packages/ui/src/components/button/types.ts",
           "type": "registry:lib"
+        },
+        {
+          "path": "packages/ui/src/components/button/index.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "packages/ui/src/components/button/button-icon.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "packages/ui/src/components/button/button.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "packages/ui/src/components/button/button-link.vue",
+          "type": "registry:ui"
         }
       ]
     },
     {
       "name": "calendar",
       "type": "registry:ui",
-      "description": "A date calendar component for selecting dates.",
-      "categories": ["form", "date"],
-      "dependencies": ["@internationalized/date", "@soybeanjs/cva", "@soybeanjs/headless"],
-      "registryDependencies": ["button", "icon", "select", "utils"],
+      "dependencies": ["@soybeanjs/headless"],
+      "registryDependencies": ["icon", "select"],
       "files": [
         {
           "path": "packages/ui/src/components/calendar/calendar.vue",
           "type": "registry:ui"
         },
         {
-          "path": "packages/ui/src/components/calendar/index.ts",
+          "path": "packages/ui/src/components/calendar/types.ts",
           "type": "registry:lib"
         },
         {
-          "path": "packages/ui/src/components/calendar/types.ts",
+          "path": "packages/ui/src/components/calendar/index.ts",
           "type": "registry:lib"
         }
       ]
@@ -301,15 +282,15 @@
       "registryDependencies": ["select"],
       "files": [
         {
+          "path": "packages/ui/src/components/calendar-range/types.ts",
+          "type": "registry:lib"
+        },
+        {
           "path": "packages/ui/src/components/calendar-range/calendar-range.vue",
           "type": "registry:ui"
         },
         {
           "path": "packages/ui/src/components/calendar-range/index.ts",
-          "type": "registry:lib"
-        },
-        {
-          "path": "packages/ui/src/components/calendar-range/types.ts",
           "type": "registry:lib"
         }
       ]
@@ -317,25 +298,23 @@
     {
       "name": "card",
       "type": "registry:ui",
-      "description": "Displays a card with header, content, and footer.",
-      "categories": ["layout", "container"],
-      "dependencies": ["@soybeanjs/cva", "@soybeanjs/headless", "@soybeanjs/utils"],
-      "registryDependencies": ["button", "utils"],
+      "dependencies": ["@soybeanjs/headless", "@soybeanjs/utils"],
+      "registryDependencies": ["button"],
       "files": [
-        {
-          "path": "packages/ui/src/components/card/card-collapsible-trigger.vue",
-          "type": "registry:ui"
-        },
         {
           "path": "packages/ui/src/components/card/card.vue",
           "type": "registry:ui"
         },
         {
-          "path": "packages/ui/src/components/card/index.ts",
-          "type": "registry:lib"
+          "path": "packages/ui/src/components/card/card-collapsible-trigger.vue",
+          "type": "registry:ui"
         },
         {
           "path": "packages/ui/src/components/card/types.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "packages/ui/src/components/card/index.ts",
           "type": "registry:lib"
         }
       ]
@@ -346,41 +325,38 @@
       "dependencies": ["@soybeanjs/headless", "@soybeanjs/utils"],
       "files": [
         {
-          "path": "packages/ui/src/components/carousel/carousel.vue",
-          "type": "registry:ui"
+          "path": "packages/ui/src/components/carousel/types.ts",
+          "type": "registry:lib"
         },
         {
           "path": "packages/ui/src/components/carousel/index.ts",
           "type": "registry:lib"
         },
         {
-          "path": "packages/ui/src/components/carousel/types.ts",
-          "type": "registry:lib"
+          "path": "packages/ui/src/components/carousel/carousel.vue",
+          "type": "registry:ui"
         }
       ]
     },
     {
       "name": "checkbox",
       "type": "registry:ui",
-      "description": "A control that allows the user to toggle between checked and not checked.",
-      "categories": ["form", "selection"],
-      "dependencies": ["@soybeanjs/cva", "@soybeanjs/headless"],
-      "registryDependencies": ["utils"],
+      "dependencies": ["@soybeanjs/headless"],
       "files": [
-        {
-          "path": "packages/ui/src/components/checkbox/checkbox-card-group.vue",
-          "type": "registry:ui"
-        },
         {
           "path": "packages/ui/src/components/checkbox/checkbox-card.vue",
           "type": "registry:ui"
+        },
+        {
+          "path": "packages/ui/src/components/checkbox/types.ts",
+          "type": "registry:lib"
         },
         {
           "path": "packages/ui/src/components/checkbox/checkbox-group.vue",
           "type": "registry:ui"
         },
         {
-          "path": "packages/ui/src/components/checkbox/checkbox.vue",
+          "path": "packages/ui/src/components/checkbox/checkbox-card-group.vue",
           "type": "registry:ui"
         },
         {
@@ -388,8 +364,8 @@
           "type": "registry:lib"
         },
         {
-          "path": "packages/ui/src/components/checkbox/types.ts",
-          "type": "registry:lib"
+          "path": "packages/ui/src/components/checkbox/checkbox.vue",
+          "type": "registry:ui"
         }
       ]
     },
@@ -403,11 +379,11 @@
           "type": "registry:ui"
         },
         {
-          "path": "packages/ui/src/components/clipboard/index.ts",
+          "path": "packages/ui/src/components/clipboard/types.ts",
           "type": "registry:lib"
         },
         {
-          "path": "packages/ui/src/components/clipboard/types.ts",
+          "path": "packages/ui/src/components/clipboard/index.ts",
           "type": "registry:lib"
         }
       ]
@@ -418,16 +394,16 @@
       "dependencies": ["@soybeanjs/headless"],
       "files": [
         {
-          "path": "packages/ui/src/components/collapsible/collapsible.vue",
-          "type": "registry:ui"
+          "path": "packages/ui/src/components/collapsible/types.ts",
+          "type": "registry:lib"
         },
         {
           "path": "packages/ui/src/components/collapsible/index.ts",
           "type": "registry:lib"
         },
         {
-          "path": "packages/ui/src/components/collapsible/types.ts",
-          "type": "registry:lib"
+          "path": "packages/ui/src/components/collapsible/collapsible.vue",
+          "type": "registry:ui"
         }
       ]
     },
@@ -437,16 +413,16 @@
       "dependencies": ["@soybeanjs/headless"],
       "files": [
         {
-          "path": "packages/ui/src/components/color-area/color-area.vue",
-          "type": "registry:ui"
+          "path": "packages/ui/src/components/color-area/types.ts",
+          "type": "registry:lib"
         },
         {
           "path": "packages/ui/src/components/color-area/index.ts",
           "type": "registry:lib"
         },
         {
-          "path": "packages/ui/src/components/color-area/types.ts",
-          "type": "registry:lib"
+          "path": "packages/ui/src/components/color-area/color-area.vue",
+          "type": "registry:ui"
         }
       ]
     },
@@ -456,16 +432,16 @@
       "dependencies": ["@soybeanjs/headless"],
       "files": [
         {
-          "path": "packages/ui/src/components/color-field/color-field.vue",
-          "type": "registry:ui"
+          "path": "packages/ui/src/components/color-field/types.ts",
+          "type": "registry:lib"
         },
         {
           "path": "packages/ui/src/components/color-field/index.ts",
           "type": "registry:lib"
         },
         {
-          "path": "packages/ui/src/components/color-field/types.ts",
-          "type": "registry:lib"
+          "path": "packages/ui/src/components/color-field/color-field.vue",
+          "type": "registry:ui"
         }
       ]
     },
@@ -475,15 +451,15 @@
       "dependencies": ["@soybeanjs/headless"],
       "files": [
         {
+          "path": "packages/ui/src/components/color-picker/types.ts",
+          "type": "registry:lib"
+        },
+        {
           "path": "packages/ui/src/components/color-picker/color-picker.vue",
           "type": "registry:ui"
         },
         {
           "path": "packages/ui/src/components/color-picker/index.ts",
-          "type": "registry:lib"
-        },
-        {
-          "path": "packages/ui/src/components/color-picker/types.ts",
           "type": "registry:lib"
         }
       ]
@@ -498,11 +474,11 @@
           "type": "registry:ui"
         },
         {
-          "path": "packages/ui/src/components/color-slider/index.ts",
+          "path": "packages/ui/src/components/color-slider/types.ts",
           "type": "registry:lib"
         },
         {
-          "path": "packages/ui/src/components/color-slider/types.ts",
+          "path": "packages/ui/src/components/color-slider/index.ts",
           "type": "registry:lib"
         }
       ]
@@ -513,15 +489,15 @@
       "dependencies": ["@soybeanjs/headless"],
       "files": [
         {
+          "path": "packages/ui/src/components/color-swatch/types.ts",
+          "type": "registry:lib"
+        },
+        {
           "path": "packages/ui/src/components/color-swatch/color-swatch.vue",
           "type": "registry:ui"
         },
         {
           "path": "packages/ui/src/components/color-swatch/index.ts",
-          "type": "registry:lib"
-        },
-        {
-          "path": "packages/ui/src/components/color-swatch/types.ts",
           "type": "registry:lib"
         }
       ]
@@ -536,11 +512,11 @@
           "type": "registry:ui"
         },
         {
-          "path": "packages/ui/src/components/color-swatch-picker/index.ts",
+          "path": "packages/ui/src/components/color-swatch-picker/types.ts",
           "type": "registry:lib"
         },
         {
-          "path": "packages/ui/src/components/color-swatch-picker/types.ts",
+          "path": "packages/ui/src/components/color-swatch-picker/index.ts",
           "type": "registry:lib"
         }
       ]
@@ -555,11 +531,11 @@
           "type": "registry:ui"
         },
         {
-          "path": "packages/ui/src/components/combobox/index.ts",
+          "path": "packages/ui/src/components/combobox/types.ts",
           "type": "registry:lib"
         },
         {
-          "path": "packages/ui/src/components/combobox/types.ts",
+          "path": "packages/ui/src/components/combobox/index.ts",
           "type": "registry:lib"
         }
       ]
@@ -570,15 +546,15 @@
       "dependencies": ["@soybeanjs/headless", "@soybeanjs/utils"],
       "files": [
         {
+          "path": "packages/ui/src/components/command/types.ts",
+          "type": "registry:lib"
+        },
+        {
           "path": "packages/ui/src/components/command/command.vue",
           "type": "registry:ui"
         },
         {
           "path": "packages/ui/src/components/command/index.ts",
-          "type": "registry:lib"
-        },
-        {
-          "path": "packages/ui/src/components/command/types.ts",
           "type": "registry:lib"
         }
       ]
@@ -586,23 +562,23 @@
     {
       "name": "config-provider",
       "type": "registry:ui",
-      "dependencies": ["@soybeanjs/headless", "@soybeanjs/shadcn-theme", "@vueuse/core"],
+      "dependencies": ["@soybeanjs/headless", "@soybeanjs/shadcn-theme"],
       "registryDependencies": ["dialog", "icon", "progress", "toast"],
       "files": [
-        {
-          "path": "packages/ui/src/components/config-provider/config-provider.vue",
-          "type": "registry:ui"
-        },
         {
           "path": "packages/ui/src/components/config-provider/context.ts",
           "type": "registry:lib"
         },
         {
-          "path": "packages/ui/src/components/config-provider/index.ts",
-          "type": "registry:lib"
+          "path": "packages/ui/src/components/config-provider/config-provider.vue",
+          "type": "registry:ui"
         },
         {
           "path": "packages/ui/src/components/config-provider/types.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "packages/ui/src/components/config-provider/index.ts",
           "type": "registry:lib"
         }
       ]
@@ -611,22 +587,17 @@
       "name": "context-menu",
       "type": "registry:ui",
       "dependencies": ["@soybeanjs/headless", "@soybeanjs/utils"],
-      "registryDependencies": ["menu"],
       "files": [
-        {
-          "path": "packages/ui/src/components/context-menu/context-menu-checkbox.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "packages/ui/src/components/context-menu/context-menu-radio.vue",
-          "type": "registry:ui"
-        },
         {
           "path": "packages/ui/src/components/context-menu/context-menu-wrapper.vue",
           "type": "registry:ui"
         },
         {
-          "path": "packages/ui/src/components/context-menu/context-menu.vue",
+          "path": "packages/ui/src/components/context-menu/types.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "packages/ui/src/components/context-menu/context-menu-checkbox.vue",
           "type": "registry:ui"
         },
         {
@@ -634,8 +605,12 @@
           "type": "registry:lib"
         },
         {
-          "path": "packages/ui/src/components/context-menu/types.ts",
-          "type": "registry:lib"
+          "path": "packages/ui/src/components/context-menu/context-menu-radio.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "packages/ui/src/components/context-menu/context-menu.vue",
+          "type": "registry:ui"
         }
       ]
     },
@@ -649,11 +624,11 @@
           "type": "registry:ui"
         },
         {
-          "path": "packages/ui/src/components/date-field/index.ts",
+          "path": "packages/ui/src/components/date-field/types.ts",
           "type": "registry:lib"
         },
         {
-          "path": "packages/ui/src/components/date-field/types.ts",
+          "path": "packages/ui/src/components/date-field/index.ts",
           "type": "registry:lib"
         }
       ]
@@ -669,11 +644,11 @@
           "type": "registry:ui"
         },
         {
-          "path": "packages/ui/src/components/date-picker/index.ts",
+          "path": "packages/ui/src/components/date-picker/types.ts",
           "type": "registry:lib"
         },
         {
-          "path": "packages/ui/src/components/date-picker/types.ts",
+          "path": "packages/ui/src/components/date-picker/index.ts",
           "type": "registry:lib"
         }
       ]
@@ -684,15 +659,15 @@
       "dependencies": ["@soybeanjs/headless", "@soybeanjs/utils"],
       "files": [
         {
+          "path": "packages/ui/src/components/date-range-field/types.ts",
+          "type": "registry:lib"
+        },
+        {
           "path": "packages/ui/src/components/date-range-field/date-range-field.vue",
           "type": "registry:ui"
         },
         {
           "path": "packages/ui/src/components/date-range-field/index.ts",
-          "type": "registry:lib"
-        },
-        {
-          "path": "packages/ui/src/components/date-range-field/types.ts",
           "type": "registry:lib"
         }
       ]
@@ -708,11 +683,11 @@
           "type": "registry:ui"
         },
         {
-          "path": "packages/ui/src/components/date-range-picker/index.ts",
+          "path": "packages/ui/src/components/date-range-picker/types.ts",
           "type": "registry:lib"
         },
         {
-          "path": "packages/ui/src/components/date-range-picker/types.ts",
+          "path": "packages/ui/src/components/date-range-picker/index.ts",
           "type": "registry:lib"
         }
       ]
@@ -720,14 +695,15 @@
     {
       "name": "dialog",
       "type": "registry:ui",
-      "description": "A modal dialog that interrupts the user with important content.",
-      "categories": ["overlay", "feedback"],
-      "dependencies": ["@soybeanjs/cva", "@soybeanjs/headless", "@soybeanjs/utils"],
-      "registryDependencies": ["button", "utils"],
+      "dependencies": ["@soybeanjs/headless", "@soybeanjs/utils"],
       "files": [
         {
           "path": "packages/ui/src/components/dialog/dialog-provider.vue",
           "type": "registry:ui"
+        },
+        {
+          "path": "packages/ui/src/components/dialog/types.ts",
+          "type": "registry:lib"
         },
         {
           "path": "packages/ui/src/components/dialog/dialog.vue",
@@ -736,10 +712,6 @@
         {
           "path": "packages/ui/src/components/dialog/index.ts",
           "type": "registry:lib"
-        },
-        {
-          "path": "packages/ui/src/components/dialog/types.ts",
-          "type": "registry:lib"
         }
       ]
     },
@@ -747,18 +719,17 @@
       "name": "drawer",
       "type": "registry:ui",
       "dependencies": ["@soybeanjs/headless", "@soybeanjs/utils"],
-      "registryDependencies": ["dialog"],
       "files": [
         {
           "path": "packages/ui/src/components/drawer/drawer.vue",
           "type": "registry:ui"
         },
         {
-          "path": "packages/ui/src/components/drawer/index.ts",
+          "path": "packages/ui/src/components/drawer/types.ts",
           "type": "registry:lib"
         },
         {
-          "path": "packages/ui/src/components/drawer/types.ts",
+          "path": "packages/ui/src/components/drawer/index.ts",
           "type": "registry:lib"
         }
       ]
@@ -767,10 +738,9 @@
       "name": "dropdown-menu",
       "type": "registry:ui",
       "dependencies": ["@soybeanjs/headless", "@soybeanjs/utils"],
-      "registryDependencies": ["menu"],
       "files": [
         {
-          "path": "packages/ui/src/components/dropdown-menu/dropdown-menu-checkbox.vue",
+          "path": "packages/ui/src/components/dropdown-menu/dropdown-menu-wrapper.vue",
           "type": "registry:ui"
         },
         {
@@ -778,20 +748,20 @@
           "type": "registry:ui"
         },
         {
-          "path": "packages/ui/src/components/dropdown-menu/dropdown-menu-wrapper.vue",
+          "path": "packages/ui/src/components/dropdown-menu/dropdown-menu-checkbox.vue",
           "type": "registry:ui"
         },
         {
-          "path": "packages/ui/src/components/dropdown-menu/dropdown-menu.vue",
-          "type": "registry:ui"
+          "path": "packages/ui/src/components/dropdown-menu/types.ts",
+          "type": "registry:lib"
         },
         {
           "path": "packages/ui/src/components/dropdown-menu/index.ts",
           "type": "registry:lib"
         },
         {
-          "path": "packages/ui/src/components/dropdown-menu/types.ts",
-          "type": "registry:lib"
+          "path": "packages/ui/src/components/dropdown-menu/dropdown-menu.vue",
+          "type": "registry:ui"
         }
       ]
     },
@@ -805,11 +775,11 @@
           "type": "registry:ui"
         },
         {
-          "path": "packages/ui/src/components/editable/index.ts",
+          "path": "packages/ui/src/components/editable/types.ts",
           "type": "registry:lib"
         },
         {
-          "path": "packages/ui/src/components/editable/types.ts",
+          "path": "packages/ui/src/components/editable/index.ts",
           "type": "registry:lib"
         }
       ]
@@ -824,11 +794,11 @@
           "type": "registry:ui"
         },
         {
-          "path": "packages/ui/src/components/empty/index.ts",
+          "path": "packages/ui/src/components/empty/types.ts",
           "type": "registry:lib"
         },
         {
-          "path": "packages/ui/src/components/empty/types.ts",
+          "path": "packages/ui/src/components/empty/index.ts",
           "type": "registry:lib"
         }
       ]
@@ -839,24 +809,12 @@
       "dependencies": ["@soybeanjs/headless", "@soybeanjs/utils"],
       "files": [
         {
-          "path": "packages/ui/src/components/form/form-field-array.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "packages/ui/src/components/form/form-field-base.vue",
-          "type": "registry:ui"
-        },
-        {
           "path": "packages/ui/src/components/form/form-field.vue",
           "type": "registry:ui"
         },
         {
-          "path": "packages/ui/src/components/form/form.vue",
+          "path": "packages/ui/src/components/form/form-field-array.vue",
           "type": "registry:ui"
-        },
-        {
-          "path": "packages/ui/src/components/form/index.ts",
-          "type": "registry:lib"
         },
         {
           "path": "packages/ui/src/components/form/types.ts",
@@ -865,6 +823,18 @@
         {
           "path": "packages/ui/src/components/form/use-form.ts",
           "type": "registry:lib"
+        },
+        {
+          "path": "packages/ui/src/components/form/form-field-base.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "packages/ui/src/components/form/index.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "packages/ui/src/components/form/form.vue",
+          "type": "registry:ui"
         }
       ]
     },
@@ -878,11 +848,11 @@
           "type": "registry:ui"
         },
         {
-          "path": "packages/ui/src/components/hover-card/index.ts",
+          "path": "packages/ui/src/components/hover-card/types.ts",
           "type": "registry:lib"
         },
         {
-          "path": "packages/ui/src/components/hover-card/types.ts",
+          "path": "packages/ui/src/components/hover-card/index.ts",
           "type": "registry:lib"
         }
       ]
@@ -890,21 +860,18 @@
     {
       "name": "icon",
       "type": "registry:ui",
-      "description": "Renders an icon from Iconify (via @iconify/vue) or a custom Vue component.",
-      "categories": ["display"],
       "dependencies": ["@iconify/vue", "@soybeanjs/headless"],
-      "registryDependencies": ["config-provider", "utils"],
       "files": [
         {
           "path": "packages/ui/src/components/icon/icon.vue",
           "type": "registry:ui"
         },
         {
-          "path": "packages/ui/src/components/icon/index.ts",
+          "path": "packages/ui/src/components/icon/types.ts",
           "type": "registry:lib"
         },
         {
-          "path": "packages/ui/src/components/icon/types.ts",
+          "path": "packages/ui/src/components/icon/index.ts",
           "type": "registry:lib"
         }
       ]
@@ -912,11 +879,12 @@
     {
       "name": "input",
       "type": "registry:ui",
-      "description": "Displays a form input field or a textarea.",
-      "categories": ["form", "input"],
-      "dependencies": ["@soybeanjs/cva", "@soybeanjs/headless", "@soybeanjs/utils"],
-      "registryDependencies": ["utils"],
+      "dependencies": ["@soybeanjs/headless", "@soybeanjs/utils"],
       "files": [
+        {
+          "path": "packages/ui/src/components/input/types.ts",
+          "type": "registry:lib"
+        },
         {
           "path": "packages/ui/src/components/input/index.ts",
           "type": "registry:lib"
@@ -924,10 +892,6 @@
         {
           "path": "packages/ui/src/components/input/input.vue",
           "type": "registry:ui"
-        },
-        {
-          "path": "packages/ui/src/components/input/types.ts",
-          "type": "registry:lib"
         }
       ]
     },
@@ -937,16 +901,16 @@
       "dependencies": ["@soybeanjs/headless", "@soybeanjs/utils"],
       "files": [
         {
+          "path": "packages/ui/src/components/input-number/types.ts",
+          "type": "registry:lib"
+        },
+        {
           "path": "packages/ui/src/components/input-number/index.ts",
           "type": "registry:lib"
         },
         {
           "path": "packages/ui/src/components/input-number/input-number.vue",
           "type": "registry:ui"
-        },
-        {
-          "path": "packages/ui/src/components/input-number/types.ts",
-          "type": "registry:lib"
         }
       ]
     },
@@ -956,15 +920,15 @@
       "dependencies": ["@soybeanjs/headless"],
       "files": [
         {
-          "path": "packages/ui/src/components/input-otp/index.ts",
-          "type": "registry:lib"
-        },
-        {
           "path": "packages/ui/src/components/input-otp/input-otp.vue",
           "type": "registry:ui"
         },
         {
           "path": "packages/ui/src/components/input-otp/types.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "packages/ui/src/components/input-otp/index.ts",
           "type": "registry:lib"
         }
       ]
@@ -972,13 +936,10 @@
     {
       "name": "kbd",
       "type": "registry:ui",
-      "description": "Displays keyboard shortcuts.",
-      "categories": ["display"],
-      "dependencies": ["@soybeanjs/cva", "@soybeanjs/headless"],
-      "registryDependencies": ["utils"],
+      "dependencies": ["@soybeanjs/headless"],
       "files": [
         {
-          "path": "packages/ui/src/components/kbd/index.ts",
+          "path": "packages/ui/src/components/kbd/types.ts",
           "type": "registry:lib"
         },
         {
@@ -986,7 +947,7 @@
           "type": "registry:ui"
         },
         {
-          "path": "packages/ui/src/components/kbd/types.ts",
+          "path": "packages/ui/src/components/kbd/index.ts",
           "type": "registry:lib"
         }
       ]
@@ -994,21 +955,18 @@
     {
       "name": "label",
       "type": "registry:ui",
-      "description": "Renders an accessible label associated with a form control.",
-      "categories": ["form"],
       "dependencies": ["@soybeanjs/headless"],
-      "registryDependencies": ["utils"],
       "files": [
-        {
-          "path": "packages/ui/src/components/label/index.ts",
-          "type": "registry:lib"
-        },
         {
           "path": "packages/ui/src/components/label/label.vue",
           "type": "registry:ui"
         },
         {
           "path": "packages/ui/src/components/label/types.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "packages/ui/src/components/label/index.ts",
           "type": "registry:lib"
         }
       ]
@@ -1019,19 +977,19 @@
       "dependencies": ["@soybeanjs/headless", "@soybeanjs/utils"],
       "files": [
         {
-          "path": "packages/ui/src/components/layout/index.ts",
+          "path": "packages/ui/src/components/layout/types.ts",
           "type": "registry:lib"
-        },
-        {
-          "path": "packages/ui/src/components/layout/layout-classic.vue",
-          "type": "registry:ui"
         },
         {
           "path": "packages/ui/src/components/layout/layout.vue",
           "type": "registry:ui"
         },
         {
-          "path": "packages/ui/src/components/layout/types.ts",
+          "path": "packages/ui/src/components/layout/layout-classic.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "packages/ui/src/components/layout/index.ts",
           "type": "registry:lib"
         }
       ]
@@ -1042,15 +1000,15 @@
       "dependencies": ["@soybeanjs/headless"],
       "files": [
         {
-          "path": "packages/ui/src/components/link/index.ts",
-          "type": "registry:lib"
-        },
-        {
           "path": "packages/ui/src/components/link/link.vue",
           "type": "registry:ui"
         },
         {
           "path": "packages/ui/src/components/link/types.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "packages/ui/src/components/link/index.ts",
           "type": "registry:lib"
         }
       ]
@@ -1061,7 +1019,11 @@
       "dependencies": ["@soybeanjs/headless"],
       "files": [
         {
-          "path": "packages/ui/src/components/list/index.ts",
+          "path": "packages/ui/src/components/list/list.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "packages/ui/src/components/list/types.ts",
           "type": "registry:lib"
         },
         {
@@ -1069,11 +1031,7 @@
           "type": "registry:ui"
         },
         {
-          "path": "packages/ui/src/components/list/list.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "packages/ui/src/components/list/types.ts",
+          "path": "packages/ui/src/components/list/index.ts",
           "type": "registry:lib"
         }
       ]
@@ -1081,21 +1039,18 @@
     {
       "name": "menu",
       "type": "registry:ui",
-      "description": "A dropdown menu for displaying a list of actions or options.",
-      "categories": ["navigation", "overlay"],
-      "dependencies": ["@soybeanjs/cva", "@soybeanjs/headless"],
-      "registryDependencies": ["separator", "utils"],
+      "dependencies": ["@soybeanjs/headless"],
       "files": [
         {
           "path": "packages/ui/src/components/menu/context.ts",
           "type": "registry:lib"
         },
         {
-          "path": "packages/ui/src/components/menu/index.ts",
+          "path": "packages/ui/src/components/menu/types.ts",
           "type": "registry:lib"
         },
         {
-          "path": "packages/ui/src/components/menu/types.ts",
+          "path": "packages/ui/src/components/menu/index.ts",
           "type": "registry:lib"
         }
       ]
@@ -1104,10 +1059,9 @@
       "name": "menubar",
       "type": "registry:ui",
       "dependencies": ["@soybeanjs/headless", "@soybeanjs/utils"],
-      "registryDependencies": ["menu"],
       "files": [
         {
-          "path": "packages/ui/src/components/menubar/index.ts",
+          "path": "packages/ui/src/components/menubar/types.ts",
           "type": "registry:lib"
         },
         {
@@ -1115,7 +1069,7 @@
           "type": "registry:ui"
         },
         {
-          "path": "packages/ui/src/components/menubar/types.ts",
+          "path": "packages/ui/src/components/menubar/index.ts",
           "type": "registry:lib"
         }
       ]
@@ -1126,15 +1080,15 @@
       "dependencies": ["@soybeanjs/headless", "@soybeanjs/utils"],
       "files": [
         {
-          "path": "packages/ui/src/components/navigation-menu/index.ts",
-          "type": "registry:lib"
-        },
-        {
           "path": "packages/ui/src/components/navigation-menu/navigation-menu.vue",
           "type": "registry:ui"
         },
         {
           "path": "packages/ui/src/components/navigation-menu/types.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "packages/ui/src/components/navigation-menu/index.ts",
           "type": "registry:lib"
         }
       ]
@@ -1143,10 +1097,9 @@
       "name": "page-tabs",
       "type": "registry:ui",
       "dependencies": ["@soybeanjs/headless", "@soybeanjs/utils"],
-      "registryDependencies": ["menu"],
       "files": [
         {
-          "path": "packages/ui/src/components/page-tabs/index.ts",
+          "path": "packages/ui/src/components/page-tabs/types.ts",
           "type": "registry:lib"
         },
         {
@@ -1154,7 +1107,7 @@
           "type": "registry:ui"
         },
         {
-          "path": "packages/ui/src/components/page-tabs/types.ts",
+          "path": "packages/ui/src/components/page-tabs/index.ts",
           "type": "registry:lib"
         }
       ]
@@ -1162,21 +1115,18 @@
     {
       "name": "pagination",
       "type": "registry:ui",
-      "description": "Pagination with page navigation, next and previous links.",
-      "categories": ["navigation"],
-      "dependencies": ["@soybeanjs/cva", "@soybeanjs/headless", "@soybeanjs/utils"],
-      "registryDependencies": ["button", "utils"],
+      "dependencies": ["@soybeanjs/headless", "@soybeanjs/utils"],
       "files": [
-        {
-          "path": "packages/ui/src/components/pagination/index.ts",
-          "type": "registry:lib"
-        },
         {
           "path": "packages/ui/src/components/pagination/pagination.vue",
           "type": "registry:ui"
         },
         {
           "path": "packages/ui/src/components/pagination/types.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "packages/ui/src/components/pagination/index.ts",
           "type": "registry:lib"
         }
       ]
@@ -1187,7 +1137,7 @@
       "dependencies": ["@soybeanjs/headless", "@soybeanjs/utils"],
       "files": [
         {
-          "path": "packages/ui/src/components/password/index.ts",
+          "path": "packages/ui/src/components/password/types.ts",
           "type": "registry:lib"
         },
         {
@@ -1195,7 +1145,7 @@
           "type": "registry:ui"
         },
         {
-          "path": "packages/ui/src/components/password/types.ts",
+          "path": "packages/ui/src/components/password/index.ts",
           "type": "registry:lib"
         }
       ]
@@ -1204,10 +1154,9 @@
       "name": "popconfirm",
       "type": "registry:ui",
       "dependencies": ["@soybeanjs/headless", "@soybeanjs/utils"],
-      "registryDependencies": ["button"],
       "files": [
         {
-          "path": "packages/ui/src/components/popconfirm/index.ts",
+          "path": "packages/ui/src/components/popconfirm/shared.ts",
           "type": "registry:lib"
         },
         {
@@ -1215,11 +1164,11 @@
           "type": "registry:ui"
         },
         {
-          "path": "packages/ui/src/components/popconfirm/shared.ts",
+          "path": "packages/ui/src/components/popconfirm/types.ts",
           "type": "registry:lib"
         },
         {
-          "path": "packages/ui/src/components/popconfirm/types.ts",
+          "path": "packages/ui/src/components/popconfirm/index.ts",
           "type": "registry:lib"
         }
       ]
@@ -1227,15 +1176,8 @@
     {
       "name": "popover",
       "type": "registry:ui",
-      "description": "Displays rich content in a portal, triggered by a button.",
-      "categories": ["overlay"],
-      "dependencies": ["@soybeanjs/cva", "@soybeanjs/headless", "@soybeanjs/utils"],
-      "registryDependencies": ["utils"],
+      "dependencies": ["@soybeanjs/headless", "@soybeanjs/utils"],
       "files": [
-        {
-          "path": "packages/ui/src/components/popover/index.ts",
-          "type": "registry:lib"
-        },
         {
           "path": "packages/ui/src/components/popover/popover.vue",
           "type": "registry:ui"
@@ -1243,29 +1185,18 @@
         {
           "path": "packages/ui/src/components/popover/types.ts",
           "type": "registry:lib"
+        },
+        {
+          "path": "packages/ui/src/components/popover/index.ts",
+          "type": "registry:lib"
         }
       ]
     },
     {
       "name": "progress",
       "type": "registry:ui",
-      "description": "Displays an indicator showing the completion progress of a task.",
-      "categories": ["status", "display"],
-      "dependencies": ["@soybeanjs/cva", "@soybeanjs/headless"],
-      "registryDependencies": ["utils"],
+      "dependencies": ["@soybeanjs/headless"],
       "files": [
-        {
-          "path": "packages/ui/src/components/progress/index.ts",
-          "type": "registry:lib"
-        },
-        {
-          "path": "packages/ui/src/components/progress/progress-circle.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "packages/ui/src/components/progress/progress-provider.vue",
-          "type": "registry:ui"
-        },
         {
           "path": "packages/ui/src/components/progress/progress.vue",
           "type": "registry:ui"
@@ -1273,31 +1204,40 @@
         {
           "path": "packages/ui/src/components/progress/types.ts",
           "type": "registry:lib"
+        },
+        {
+          "path": "packages/ui/src/components/progress/progress-provider.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "packages/ui/src/components/progress/index.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "packages/ui/src/components/progress/progress-circle.vue",
+          "type": "registry:ui"
         }
       ]
     },
     {
       "name": "radio-group",
       "type": "registry:ui",
-      "description": "A set of checkable buttons known as radio buttons where no more than one can be checked at a time.",
-      "categories": ["form", "selection"],
-      "dependencies": ["@soybeanjs/cva", "@soybeanjs/headless"],
-      "registryDependencies": ["utils"],
+      "dependencies": ["@soybeanjs/headless"],
       "files": [
-        {
-          "path": "packages/ui/src/components/radio-group/index.ts",
-          "type": "registry:lib"
-        },
         {
           "path": "packages/ui/src/components/radio-group/radio-group-card.vue",
           "type": "registry:ui"
+        },
+        {
+          "path": "packages/ui/src/components/radio-group/types.ts",
+          "type": "registry:lib"
         },
         {
           "path": "packages/ui/src/components/radio-group/radio-group.vue",
           "type": "registry:ui"
         },
         {
-          "path": "packages/ui/src/components/radio-group/types.ts",
+          "path": "packages/ui/src/components/radio-group/index.ts",
           "type": "registry:lib"
         }
       ]
@@ -1308,15 +1248,15 @@
       "dependencies": ["@soybeanjs/headless"],
       "files": [
         {
-          "path": "packages/ui/src/components/scroll-area/index.ts",
-          "type": "registry:lib"
-        },
-        {
           "path": "packages/ui/src/components/scroll-area/scroll-area.vue",
           "type": "registry:ui"
         },
         {
           "path": "packages/ui/src/components/scroll-area/types.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "packages/ui/src/components/scroll-area/index.ts",
           "type": "registry:lib"
         }
       ]
@@ -1327,15 +1267,15 @@
       "dependencies": ["@soybeanjs/headless"],
       "files": [
         {
-          "path": "packages/ui/src/components/segment/index.ts",
-          "type": "registry:lib"
-        },
-        {
           "path": "packages/ui/src/components/segment/segment.vue",
           "type": "registry:ui"
         },
         {
           "path": "packages/ui/src/components/segment/types.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "packages/ui/src/components/segment/index.ts",
           "type": "registry:lib"
         }
       ]
@@ -1343,11 +1283,12 @@
     {
       "name": "select",
       "type": "registry:ui",
-      "description": "Displays a list of options for the user to pick from.",
-      "categories": ["form", "selection"],
-      "dependencies": ["@soybeanjs/cva", "@soybeanjs/headless", "@soybeanjs/utils"],
-      "registryDependencies": ["button", "utils"],
+      "dependencies": ["@soybeanjs/headless", "@soybeanjs/utils"],
       "files": [
+        {
+          "path": "packages/ui/src/components/select/types.ts",
+          "type": "registry:lib"
+        },
         {
           "path": "packages/ui/src/components/select/index.ts",
           "type": "registry:lib"
@@ -1355,21 +1296,18 @@
         {
           "path": "packages/ui/src/components/select/select.vue",
           "type": "registry:ui"
-        },
-        {
-          "path": "packages/ui/src/components/select/types.ts",
-          "type": "registry:lib"
         }
       ]
     },
     {
       "name": "separator",
       "type": "registry:ui",
-      "description": "Visually or semantically separates content.",
-      "categories": ["layout"],
-      "dependencies": ["@soybeanjs/cva", "@soybeanjs/headless"],
-      "registryDependencies": ["utils"],
+      "dependencies": ["@soybeanjs/headless"],
       "files": [
+        {
+          "path": "packages/ui/src/components/separator/types.ts",
+          "type": "registry:lib"
+        },
         {
           "path": "packages/ui/src/components/separator/index.ts",
           "type": "registry:lib"
@@ -1377,21 +1315,18 @@
         {
           "path": "packages/ui/src/components/separator/separator.vue",
           "type": "registry:ui"
-        },
-        {
-          "path": "packages/ui/src/components/separator/types.ts",
-          "type": "registry:lib"
         }
       ]
     },
     {
       "name": "skeleton",
       "type": "registry:ui",
-      "description": "Used to show a placeholder while content is loading.",
-      "categories": ["display", "feedback"],
-      "dependencies": ["@soybeanjs/cva", "@soybeanjs/headless"],
-      "registryDependencies": ["utils"],
+      "dependencies": ["@soybeanjs/headless"],
       "files": [
+        {
+          "path": "packages/ui/src/components/skeleton/types.ts",
+          "type": "registry:lib"
+        },
         {
           "path": "packages/ui/src/components/skeleton/index.ts",
           "type": "registry:lib"
@@ -1399,31 +1334,24 @@
         {
           "path": "packages/ui/src/components/skeleton/skeleton.vue",
           "type": "registry:ui"
-        },
-        {
-          "path": "packages/ui/src/components/skeleton/types.ts",
-          "type": "registry:lib"
         }
       ]
     },
     {
       "name": "slider",
       "type": "registry:ui",
-      "description": "Allows the user to select a value from a range with a slider.",
-      "categories": ["form", "input"],
-      "dependencies": ["@soybeanjs/cva", "@soybeanjs/headless"],
-      "registryDependencies": ["utils"],
+      "dependencies": ["@soybeanjs/headless"],
       "files": [
-        {
-          "path": "packages/ui/src/components/slider/index.ts",
-          "type": "registry:lib"
-        },
         {
           "path": "packages/ui/src/components/slider/slider.vue",
           "type": "registry:ui"
         },
         {
           "path": "packages/ui/src/components/slider/types.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "packages/ui/src/components/slider/index.ts",
           "type": "registry:lib"
         }
       ]
@@ -1435,16 +1363,16 @@
       "registryDependencies": ["icon"],
       "files": [
         {
+          "path": "packages/ui/src/components/spinner/types.ts",
+          "type": "registry:lib"
+        },
+        {
           "path": "packages/ui/src/components/spinner/index.ts",
           "type": "registry:lib"
         },
         {
           "path": "packages/ui/src/components/spinner/spinner.vue",
           "type": "registry:ui"
-        },
-        {
-          "path": "packages/ui/src/components/spinner/types.ts",
-          "type": "registry:lib"
         }
       ]
     },
@@ -1454,11 +1382,15 @@
       "dependencies": ["@soybeanjs/headless"],
       "files": [
         {
-          "path": "packages/ui/src/components/splitter/index.ts",
+          "path": "packages/ui/src/components/splitter/splitter-group.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "packages/ui/src/components/splitter/types.ts",
           "type": "registry:lib"
         },
         {
-          "path": "packages/ui/src/components/splitter/splitter-group.vue",
+          "path": "packages/ui/src/components/splitter/splitter-resize-handle.vue",
           "type": "registry:ui"
         },
         {
@@ -1466,11 +1398,7 @@
           "type": "registry:ui"
         },
         {
-          "path": "packages/ui/src/components/splitter/splitter-resize-handle.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "packages/ui/src/components/splitter/types.ts",
+          "path": "packages/ui/src/components/splitter/index.ts",
           "type": "registry:lib"
         }
       ]
@@ -1481,31 +1409,24 @@
       "dependencies": ["@soybeanjs/headless", "@soybeanjs/utils"],
       "files": [
         {
+          "path": "packages/ui/src/components/stepper/types.ts",
+          "type": "registry:lib"
+        },
+        {
           "path": "packages/ui/src/components/stepper/index.ts",
           "type": "registry:lib"
         },
         {
           "path": "packages/ui/src/components/stepper/stepper.vue",
           "type": "registry:ui"
-        },
-        {
-          "path": "packages/ui/src/components/stepper/types.ts",
-          "type": "registry:lib"
         }
       ]
     },
     {
       "name": "switch",
       "type": "registry:ui",
-      "description": "A control that allows the user to toggle between checked and not checked.",
-      "categories": ["form", "selection"],
-      "dependencies": ["@soybeanjs/cva", "@soybeanjs/headless", "@soybeanjs/utils"],
-      "registryDependencies": ["utils"],
+      "dependencies": ["@soybeanjs/headless", "@soybeanjs/utils"],
       "files": [
-        {
-          "path": "packages/ui/src/components/switch/index.ts",
-          "type": "registry:lib"
-        },
         {
           "path": "packages/ui/src/components/switch/switch.vue",
           "type": "registry:ui"
@@ -1513,23 +1434,25 @@
         {
           "path": "packages/ui/src/components/switch/types.ts",
           "type": "registry:lib"
+        },
+        {
+          "path": "packages/ui/src/components/switch/index.ts",
+          "type": "registry:lib"
         }
       ]
     },
     {
       "name": "table",
       "type": "registry:ui",
-      "description": "A responsive table component for displaying tabular data.",
-      "categories": ["data", "layout"],
-      "dependencies": ["@soybeanjs/cva", "@soybeanjs/headless", "@soybeanjs/hooks"],
-      "registryDependencies": ["button", "checkbox", "empty", "input", "popover", "utils"],
+      "dependencies": ["@soybeanjs/headless", "@soybeanjs/hooks"],
+      "registryDependencies": ["button", "checkbox", "empty", "input", "popover"],
       "files": [
         {
-          "path": "packages/ui/src/components/table/hooks.ts",
-          "type": "registry:lib"
+          "path": "packages/ui/src/components/table/table-radio.vue",
+          "type": "registry:ui"
         },
         {
-          "path": "packages/ui/src/components/table/index.ts",
+          "path": "packages/ui/src/components/table/types.ts",
           "type": "registry:lib"
         },
         {
@@ -1537,15 +1460,15 @@
           "type": "registry:ui"
         },
         {
-          "path": "packages/ui/src/components/table/table-radio.vue",
-          "type": "registry:ui"
+          "path": "packages/ui/src/components/table/index.ts",
+          "type": "registry:lib"
         },
         {
           "path": "packages/ui/src/components/table/table.vue",
           "type": "registry:ui"
         },
         {
-          "path": "packages/ui/src/components/table/types.ts",
+          "path": "packages/ui/src/components/table/hooks.ts",
           "type": "registry:lib"
         }
       ]
@@ -1553,15 +1476,8 @@
     {
       "name": "tabs",
       "type": "registry:ui",
-      "description": "A set of layered sections of content that display one panel at a time.",
-      "categories": ["navigation", "layout"],
-      "dependencies": ["@soybeanjs/cva", "@soybeanjs/headless", "@soybeanjs/utils"],
-      "registryDependencies": ["utils"],
+      "dependencies": ["@soybeanjs/headless", "@soybeanjs/utils"],
       "files": [
-        {
-          "path": "packages/ui/src/components/tabs/index.ts",
-          "type": "registry:lib"
-        },
         {
           "path": "packages/ui/src/components/tabs/tabs.vue",
           "type": "registry:ui"
@@ -1569,27 +1485,29 @@
         {
           "path": "packages/ui/src/components/tabs/types.ts",
           "type": "registry:lib"
+        },
+        {
+          "path": "packages/ui/src/components/tabs/index.ts",
+          "type": "registry:lib"
         }
       ]
     },
     {
       "name": "tag",
       "type": "registry:ui",
-      "description": "Tag component for categorizing or markup.",
-      "categories": ["display"],
-      "dependencies": ["@soybeanjs/cva", "@soybeanjs/headless"],
-      "registryDependencies": ["icon", "utils"],
+      "dependencies": ["@soybeanjs/headless"],
+      "registryDependencies": ["icon"],
       "files": [
-        {
-          "path": "packages/ui/src/components/tag/index.ts",
-          "type": "registry:lib"
-        },
         {
           "path": "packages/ui/src/components/tag/tag.vue",
           "type": "registry:ui"
         },
         {
           "path": "packages/ui/src/components/tag/types.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "packages/ui/src/components/tag/index.ts",
           "type": "registry:lib"
         }
       ]
@@ -1600,27 +1518,28 @@
       "dependencies": ["@soybeanjs/headless"],
       "files": [
         {
+          "path": "packages/ui/src/components/tags-input/types.ts",
+          "type": "registry:lib"
+        },
+        {
           "path": "packages/ui/src/components/tags-input/index.ts",
           "type": "registry:lib"
         },
         {
           "path": "packages/ui/src/components/tags-input/tags-input.vue",
           "type": "registry:ui"
-        },
-        {
-          "path": "packages/ui/src/components/tags-input/types.ts",
-          "type": "registry:lib"
         }
       ]
     },
     {
       "name": "textarea",
       "type": "registry:ui",
-      "description": "Displays a form textarea for multi-line text input.",
-      "categories": ["form", "input"],
-      "dependencies": ["@soybeanjs/cva", "@soybeanjs/headless", "@soybeanjs/utils"],
-      "registryDependencies": ["utils"],
+      "dependencies": ["@soybeanjs/headless", "@soybeanjs/utils"],
       "files": [
+        {
+          "path": "packages/ui/src/components/textarea/types.ts",
+          "type": "registry:lib"
+        },
         {
           "path": "packages/ui/src/components/textarea/index.ts",
           "type": "registry:lib"
@@ -1628,10 +1547,6 @@
         {
           "path": "packages/ui/src/components/textarea/textarea.vue",
           "type": "registry:ui"
-        },
-        {
-          "path": "packages/ui/src/components/textarea/types.ts",
-          "type": "registry:lib"
         }
       ]
     },
@@ -1641,15 +1556,15 @@
       "dependencies": ["@soybeanjs/headless"],
       "files": [
         {
-          "path": "packages/ui/src/components/time-field/index.ts",
-          "type": "registry:lib"
-        },
-        {
           "path": "packages/ui/src/components/time-field/time-field.vue",
           "type": "registry:ui"
         },
         {
           "path": "packages/ui/src/components/time-field/types.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "packages/ui/src/components/time-field/index.ts",
           "type": "registry:lib"
         }
       ]
@@ -1660,15 +1575,15 @@
       "dependencies": ["@soybeanjs/headless", "@soybeanjs/utils"],
       "files": [
         {
-          "path": "packages/ui/src/components/time-range-field/index.ts",
-          "type": "registry:lib"
-        },
-        {
           "path": "packages/ui/src/components/time-range-field/time-range-field.vue",
           "type": "registry:ui"
         },
         {
           "path": "packages/ui/src/components/time-range-field/types.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "packages/ui/src/components/time-range-field/index.ts",
           "type": "registry:lib"
         }
       ]
@@ -1676,21 +1591,18 @@
     {
       "name": "toast",
       "type": "registry:ui",
-      "description": "A succinct message that is displayed temporarily.",
-      "categories": ["feedback", "overlay"],
-      "dependencies": ["@soybeanjs/cva", "@soybeanjs/headless", "@vueuse/core"],
-      "registryDependencies": ["utils"],
+      "dependencies": ["@soybeanjs/headless", "@vueuse/core"],
       "files": [
-        {
-          "path": "packages/ui/src/components/toast/index.ts",
-          "type": "registry:lib"
-        },
         {
           "path": "packages/ui/src/components/toast/toast-provider.vue",
           "type": "registry:ui"
         },
         {
           "path": "packages/ui/src/components/toast/types.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "packages/ui/src/components/toast/index.ts",
           "type": "registry:lib"
         }
       ]
@@ -1701,16 +1613,16 @@
       "dependencies": ["@soybeanjs/headless"],
       "files": [
         {
+          "path": "packages/ui/src/components/toggle/types.ts",
+          "type": "registry:lib"
+        },
+        {
           "path": "packages/ui/src/components/toggle/index.ts",
           "type": "registry:lib"
         },
         {
           "path": "packages/ui/src/components/toggle/toggle.vue",
           "type": "registry:ui"
-        },
-        {
-          "path": "packages/ui/src/components/toggle/types.ts",
-          "type": "registry:lib"
         }
       ]
     },
@@ -1720,7 +1632,7 @@
       "dependencies": ["@soybeanjs/headless"],
       "files": [
         {
-          "path": "packages/ui/src/components/toggle-group/index.ts",
+          "path": "packages/ui/src/components/toggle-group/types.ts",
           "type": "registry:lib"
         },
         {
@@ -1728,7 +1640,7 @@
           "type": "registry:ui"
         },
         {
-          "path": "packages/ui/src/components/toggle-group/types.ts",
+          "path": "packages/ui/src/components/toggle-group/index.ts",
           "type": "registry:lib"
         }
       ]
@@ -1739,15 +1651,15 @@
       "dependencies": ["@soybeanjs/headless"],
       "files": [
         {
-          "path": "packages/ui/src/components/toolbar/index.ts",
-          "type": "registry:lib"
-        },
-        {
           "path": "packages/ui/src/components/toolbar/toolbar.vue",
           "type": "registry:ui"
         },
         {
           "path": "packages/ui/src/components/toolbar/types.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "packages/ui/src/components/toolbar/index.ts",
           "type": "registry:lib"
         }
       ]
@@ -1755,21 +1667,18 @@
     {
       "name": "tooltip",
       "type": "registry:ui",
-      "description": "A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.",
-      "categories": ["overlay"],
-      "dependencies": ["@soybeanjs/cva", "@soybeanjs/headless"],
-      "registryDependencies": ["utils"],
+      "dependencies": ["@soybeanjs/headless"],
       "files": [
-        {
-          "path": "packages/ui/src/components/tooltip/index.ts",
-          "type": "registry:lib"
-        },
         {
           "path": "packages/ui/src/components/tooltip/tooltip.vue",
           "type": "registry:ui"
         },
         {
           "path": "packages/ui/src/components/tooltip/types.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "packages/ui/src/components/tooltip/index.ts",
           "type": "registry:lib"
         }
       ]
@@ -1779,10 +1688,6 @@
       "type": "registry:ui",
       "dependencies": ["@formkit/auto-animate", "@soybeanjs/headless"],
       "files": [
-        {
-          "path": "packages/ui/src/components/tree/index.ts",
-          "type": "registry:lib"
-        },
         {
           "path": "packages/ui/src/components/tree/tree-virtualizer.vue",
           "type": "registry:ui"
@@ -1794,6 +1699,10 @@
         {
           "path": "packages/ui/src/components/tree/types.ts",
           "type": "registry:lib"
+        },
+        {
+          "path": "packages/ui/src/components/tree/index.ts",
+          "type": "registry:lib"
         }
       ]
     },
@@ -1801,22 +1710,21 @@
       "name": "tree-menu",
       "type": "registry:ui",
       "dependencies": ["@soybeanjs/headless", "@soybeanjs/utils"],
-      "registryDependencies": ["menu"],
       "files": [
         {
-          "path": "packages/ui/src/components/tree-menu/index.ts",
-          "type": "registry:lib"
+          "path": "packages/ui/src/components/tree-menu/tree-menu.vue",
+          "type": "registry:ui"
         },
         {
           "path": "packages/ui/src/components/tree-menu/tree-menu-styled-item.vue",
           "type": "registry:ui"
         },
         {
-          "path": "packages/ui/src/components/tree-menu/tree-menu.vue",
-          "type": "registry:ui"
+          "path": "packages/ui/src/components/tree-menu/types.ts",
+          "type": "registry:lib"
         },
         {
-          "path": "packages/ui/src/components/tree-menu/types.ts",
+          "path": "packages/ui/src/components/tree-menu/index.ts",
           "type": "registry:lib"
         }
       ]
@@ -1827,16 +1735,16 @@
       "dependencies": ["@soybeanjs/headless"],
       "files": [
         {
-          "path": "packages/ui/src/components/virtualizer/index.ts",
-          "type": "registry:lib"
-        },
-        {
           "path": "packages/ui/src/components/virtualizer/types.ts",
           "type": "registry:lib"
         },
         {
           "path": "packages/ui/src/components/virtualizer/virtualizer.vue",
           "type": "registry:ui"
+        },
+        {
+          "path": "packages/ui/src/components/virtualizer/index.ts",
+          "type": "registry:lib"
         }
       ]
     },
@@ -1846,16 +1754,16 @@
       "dependencies": ["@soybeanjs/headless"],
       "files": [
         {
-          "path": "packages/ui/src/components/watermark/index.ts",
-          "type": "registry:lib"
+          "path": "packages/ui/src/components/watermark/watermark.vue",
+          "type": "registry:ui"
         },
         {
           "path": "packages/ui/src/components/watermark/types.ts",
           "type": "registry:lib"
         },
         {
-          "path": "packages/ui/src/components/watermark/watermark.vue",
-          "type": "registry:ui"
+          "path": "packages/ui/src/components/watermark/index.ts",
+          "type": "registry:lib"
         }
       ]
     }

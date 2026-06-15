@@ -3,11 +3,6 @@
   "dependencies": ["@soybeanjs/headless"],
   "files": [
     {
-      "path": "packages/ui/src/components/time-field/index.ts",
-      "type": "registry:lib",
-      "content": "export { default as STimeField } from './time-field.vue';\n\nexport type * from '@soybeanjs/headless/time-field';\nexport type * from './types';\n"
-    },
-    {
       "path": "packages/ui/src/components/time-field/time-field.vue",
       "type": "registry:ui",
       "content": "<script setup lang=\"ts\">\nimport { computed } from 'vue';\nimport { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';\nimport { TimeFieldCompact, provideTimeFieldUi } from '@soybeanjs/headless/time-field';\nimport { dateFieldVariants } from '@/styles/date-field';\nimport type { TimeFieldProps, TimeFieldEmits } from './types';\n\ndefineOptions({\n  name: 'STimeField'\n});\n\nconst props = defineProps<TimeFieldProps>();\n\nconst emit = defineEmits<TimeFieldEmits>();\n\nconst listeners = useForwardListeners(emit);\n\nconst forwardedProps = useOmitProps(props, ['class', 'size', 'ui']);\n\nconst ui = computed(() => dateFieldVariants({ size: props.size }, props.ui, { root: props.class }));\n\nprovideTimeFieldUi(ui);\n</script>\n\n<template>\n  <TimeFieldCompact v-bind=\"forwardedProps\" v-on=\"listeners\" />\n</template>\n"
@@ -16,6 +11,11 @@
       "path": "packages/ui/src/components/time-field/types.ts",
       "type": "registry:lib",
       "content": "import type { TimeFieldCompactProps, TimeFieldCompactEmits, TimeFieldUi } from '@soybeanjs/headless/time-field';\nimport type { ClassValue } from '@soybeanjs/headless/types';\nimport type { ThemeSize } from '@/theme';\n\n/**\n * Properties for the TimeField component.\n */\nexport interface TimeFieldProps extends TimeFieldCompactProps {\n  /**\n   * Additional class names applied to the root element.\n   */\n  class?: ClassValue;\n  /**\n   * Visual size of the component.\n   */\n  size?: ThemeSize;\n  /**\n   * Per-slot class overrides for the component.\n   */\n  ui?: Partial<TimeFieldUi>;\n}\n\n/**\n * Events for the TimeField component.\n */\nexport type TimeFieldEmits = TimeFieldCompactEmits;\n"
+    },
+    {
+      "path": "packages/ui/src/components/time-field/index.ts",
+      "type": "registry:lib",
+      "content": "export { default as STimeField } from './time-field.vue';\n\nexport type * from '@soybeanjs/headless/time-field';\nexport type * from './types';\n"
     },
     {
       "path": "packages/ui/src/styles/date-field.ts",

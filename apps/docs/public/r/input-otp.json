@@ -3,11 +3,6 @@
   "dependencies": ["@soybeanjs/headless"],
   "files": [
     {
-      "path": "packages/ui/src/components/input-otp/index.ts",
-      "type": "registry:lib",
-      "content": "export { default as SInputOtp } from './input-otp.vue';\n\nexport type * from '@soybeanjs/headless/input-otp';\nexport type * from './types';\n"
-    },
-    {
       "path": "packages/ui/src/components/input-otp/input-otp.vue",
       "type": "registry:ui",
       "content": "<script setup lang=\"ts\">\nimport { computed } from 'vue';\nimport { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';\nimport { InputOtpCompact, provideInputOtpUi } from '@soybeanjs/headless/input-otp';\nimport { inputOtpVariants } from '@/styles/input-otp';\nimport type { InputOtpProps, InputOtpEmits, InputOtpSlots } from './types';\n\ndefineOptions({\n  name: 'SInputOtp'\n});\n\nconst props = defineProps<InputOtpProps>();\n\nconst emit = defineEmits<InputOtpEmits>();\n\ndefineSlots<InputOtpSlots>();\n\nconst listeners = useForwardListeners(emit);\n\nconst rootProps = useOmitProps(props, ['class', 'size', 'align', 'ui']);\n\nconst ui = computed(() => inputOtpVariants({ size: props.size, align: props.align }, props.ui, { root: props.class }));\n\nprovideInputOtpUi(ui);\n</script>\n\n<template>\n  <InputOtpCompact v-slot=\"slotProps\" v-bind=\"rootProps\" v-on=\"listeners\">\n    <slot v-bind=\"slotProps\" />\n  </InputOtpCompact>\n</template>\n"
@@ -16,6 +11,11 @@
       "path": "packages/ui/src/components/input-otp/types.ts",
       "type": "registry:lib",
       "content": "import type {\n  InputOtpCompactEmits,\n  InputOtpCompactProps,\n  InputOtpCompactSlots,\n  InputOtpUi\n} from '@soybeanjs/headless/input-otp';\nimport type { ClassValue, Align } from '@soybeanjs/headless/types';\nimport type { ThemeSize } from '@/theme';\n\n/**\n * Properties for the InputOtp component.\n */\nexport interface InputOtpProps extends InputOtpCompactProps {\n  /** Root class. */\n  class?: ClassValue;\n  /**\n   * Visual size of the component.\n   */\n  size?: ThemeSize;\n  /**\n   * Align.\n   */\n  align?: Align;\n  /**\n   * Per-slot class overrides for the component.\n   */\n  ui?: Partial<InputOtpUi>;\n}\n\n/**\n * Events for the InputOtp component.\n */\nexport type InputOtpEmits = InputOtpCompactEmits;\n\n/**\n * Slots for the InputOtp component.\n */\nexport type InputOtpSlots = InputOtpCompactSlots;\n"
+    },
+    {
+      "path": "packages/ui/src/components/input-otp/index.ts",
+      "type": "registry:lib",
+      "content": "export { default as SInputOtp } from './input-otp.vue';\n\nexport type * from '@soybeanjs/headless/input-otp';\nexport type * from './types';\n"
     },
     {
       "path": "packages/ui/src/styles/input-otp.ts",

@@ -7,6 +7,7 @@
  *   - registryDependencies (cross-component imports)
  *   - description, categories (preserved from existing registry.json if available)
  */
+import { existsSync } from 'fs';
 import fs from 'fs/promises';
 import path from 'path';
 import * as v from 'valibot';
@@ -219,7 +220,9 @@ function extractDependencies(
       if (spec.startsWith('.')) {
         // Relative import — check if it points to another component
         const dep = resolveRegistryDep(file.path, spec, rootDir, componentName, allComponents);
-        if (dep) registry.add(dep);
+        if (dep && isComponentEntryImport(file.path, spec, rootDir)) {
+          registry.add(dep);
+        }
       } else if (!spec.startsWith('@/') && !spec.startsWith('node:')) {
         // External package
         const pkgName = extractPackageName(spec);
@@ -260,6 +263,41 @@ function resolveRegistryDep(
   if (!allComponents.has(depName)) return null;
 
   return depName;
+}
+
+/**
+ * Resolve a relative import specifier to the actual file on disk.
+ * Returns the resolved absolute path, or null if not found.
+ */
+function resolveActualFile(filePath: string, specifier: string, rootDir: string): string | null {
+  const absDir = path.resolve(rootDir, path.dirname(filePath));
+  const resolved = path.resolve(absDir, specifier);
+
+  const candidates = [
+    `${resolved}.ts`,
+    `${resolved}.vue`,
+    `${resolved}.js`,
+    path.join(resolved, 'index.ts'),
+    path.join(resolved, 'index.vue'),
+    path.join(resolved, 'index.js'),
+    resolved
+  ];
+
+  return candidates.find(c => existsSync(c)) ?? null;
+}
+
+/**
+ * Check whether a relative cross-component import should create a registry
+ * dependency.  Only .vue files and index.ts (barrel) count as "real" component
+ * dependencies — other .ts files (context.ts, types.ts, hooks.ts, …) are utility
+ * imports that file-level expansion handles on its own.
+ */
+function isComponentEntryImport(filePath: string, specifier: string, rootDir: string): boolean {
+  const actualFile = resolveActualFile(filePath, specifier, rootDir);
+  if (!actualFile) return false;
+
+  const normalized = actualFile.replace(/\\/g, '/');
+  return normalized.endsWith('.vue') || normalized.endsWith('/index.ts');
 }
 
 function extractPackageName(specifier: string): string | null {

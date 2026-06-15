@@ -1,27 +1,27 @@
 {
   "name": "config-provider",
-  "dependencies": ["@soybeanjs/headless", "@soybeanjs/shadcn-theme", "@vueuse/core"],
+  "dependencies": ["@soybeanjs/headless", "@soybeanjs/shadcn-theme"],
   "registryDependencies": ["dialog", "icon", "progress", "toast"],
   "files": [
-    {
-      "path": "packages/ui/src/components/config-provider/config-provider.vue",
-      "type": "registry:ui",
-      "content": "<script setup lang=\"ts\">\nimport { h, watch } from 'vue';\nimport { useOmitProps } from '@soybeanjs/headless/composables';\nimport { ConfigProvider } from '@soybeanjs/headless/config-provider';\nimport { isClient, transformPropsToContext } from '@soybeanjs/headless/shared';\nimport { updateUiAttribute } from '@soybeanjs/shadcn-theme';\nimport DialogProvider from '../dialog/dialog-provider.vue';\nimport Icon from '../icon/icon.vue';\nimport type { IconValue } from '../icon/types';\nimport ProgressProvider from '../progress/progress-provider.vue';\nimport ToastProvider from '../toast/toast-provider.vue';\nimport { provideConfigProviderContext } from './context';\nimport type { ConfigProviderProps } from './types';\n\ndefineOptions({\n  name: 'SConfigProvider'\n});\n\nconst props = withDefaults(defineProps<ConfigProviderProps>(), {\n  theme: () => ({}),\n  size: 'md',\n  iconify: () => ({\n    width: '1.25em',\n    height: '1.25em'\n  })\n});\n\nconst forwardedProps = useOmitProps(props, [\n  'iconRender',\n  'theme',\n  'size',\n  'iconify',\n  'progress',\n  'toast',\n  'customToast'\n]);\n\nconst iconRender = props.iconRender ?? ((icon: IconValue) => h(Icon, { icon, ssr: import.meta.env.SSR }));\n\nprovideConfigProviderContext({\n  ...transformPropsToContext(props),\n  iconRender\n});\n\nwatch(\n  () => props.theme,\n  (theme, oldTheme) => {\n    if (!isClient) return;\n\n    updateUiAttribute(theme, oldTheme);\n  },\n  { deep: true, immediate: true, flush: 'post' }\n);\n</script>\n\n<template>\n  <ConfigProvider v-bind=\"forwardedProps\" :icon-render=\"iconRender\">\n    <slot />\n    <ToastProvider v-if=\"!props.customToast\" v-bind=\"props.toast\" />\n    <DialogProvider />\n    <ProgressProvider v-bind=\"props.progress\" />\n  </ConfigProvider>\n</template>\n"
-    },
     {
       "path": "packages/ui/src/components/config-provider/context.ts",
       "type": "registry:lib",
       "content": "import { useContext } from '@soybeanjs/headless/composables';\nimport type { ConfigProviderContext } from './types';\n\nexport const [provideConfigProviderContext, useConfigProvider] = useContext<ConfigProviderContext>('UiConfigProvider');\n"
     },
     {
-      "path": "packages/ui/src/components/config-provider/index.ts",
-      "type": "registry:lib",
-      "content": "export { default as SConfigProvider } from './config-provider.vue';\nexport { useConfigProvider } from './context';\n\nexport type * from '@soybeanjs/headless/config-provider';\nexport type { ConfigProviderProps, IconifyOptions, ThemeOptions } from './types';\n"
+      "path": "packages/ui/src/components/config-provider/config-provider.vue",
+      "type": "registry:ui",
+      "content": "<script setup lang=\"ts\">\nimport { h, watch } from 'vue';\nimport { useOmitProps } from '@soybeanjs/headless/composables';\nimport { ConfigProvider } from '@soybeanjs/headless/config-provider';\nimport { isClient, transformPropsToContext } from '@soybeanjs/headless/shared';\nimport { updateUiAttribute } from '@soybeanjs/shadcn-theme';\nimport DialogProvider from '../dialog/dialog-provider.vue';\nimport Icon from '../icon/icon.vue';\nimport type { IconValue } from '../icon/types';\nimport ProgressProvider from '../progress/progress-provider.vue';\nimport ToastProvider from '../toast/toast-provider.vue';\nimport { provideConfigProviderContext } from './context';\nimport type { ConfigProviderProps } from './types';\n\ndefineOptions({\n  name: 'SConfigProvider'\n});\n\nconst props = withDefaults(defineProps<ConfigProviderProps>(), {\n  theme: () => ({}),\n  size: 'md',\n  iconify: () => ({\n    width: '1.25em',\n    height: '1.25em'\n  })\n});\n\nconst forwardedProps = useOmitProps(props, [\n  'iconRender',\n  'theme',\n  'size',\n  'iconify',\n  'progress',\n  'toast',\n  'customToast'\n]);\n\nconst iconRender = props.iconRender ?? ((icon: IconValue) => h(Icon, { icon, ssr: import.meta.env.SSR }));\n\nprovideConfigProviderContext({\n  ...transformPropsToContext(props),\n  iconRender\n});\n\nwatch(\n  () => props.theme,\n  (theme, oldTheme) => {\n    if (!isClient) return;\n\n    updateUiAttribute(theme, oldTheme);\n  },\n  { deep: true, immediate: true, flush: 'post' }\n);\n</script>\n\n<template>\n  <ConfigProvider v-bind=\"forwardedProps\" :icon-render=\"iconRender\">\n    <slot />\n    <ToastProvider v-if=\"!props.customToast\" v-bind=\"props.toast\" />\n    <DialogProvider />\n    <ProgressProvider v-bind=\"props.progress\" />\n  </ConfigProvider>\n</template>\n"
     },
     {
       "path": "packages/ui/src/components/config-provider/types.ts",
       "type": "registry:lib",
       "content": "import type { ConfigProviderProps as _ConfigProviderProps } from '@soybeanjs/headless/config-provider';\nimport type { ProgressProviderProps } from '@soybeanjs/headless/progress';\nimport type { PropsToContext } from '@soybeanjs/headless/types';\nimport type { ThemeOptions } from '@soybeanjs/shadcn-theme';\nimport type { ThemeSize } from '@/theme';\nimport type { ToastProviderProps } from '../toast/types';\n\nexport interface IconifyOptions {\n  /**\n   * The default width of the icon.\n   *\n   * @defaultValue '1.25em'\n   */\n  width?: string;\n  /**\n   * The default height of the icon.\n   *\n   * @defaultValue '1.25em'\n   */\n  height?: string;\n}\n\n/**\n * Properties for the ConfigProvider component.\n */\nexport interface ConfigProviderProps extends _ConfigProviderProps {\n  /** The theme options. */\n  theme?: ThemeOptions;\n  /**\n   * The size options.\n   *\n   * @deprecated Use `theme.size` instead.\n   */\n  size?: ThemeSize;\n  /** The iconify options. */\n  iconify?: IconifyOptions;\n  /** The global top progress configuration of your application. */\n  progress?: Partial<ProgressProviderProps>;\n  /** The global toast configuration of your application. This will be inherited by the related components. */\n  toast?: Partial<ToastProviderProps>;\n  /**\n   * Whether to use custom toast rendering. If set to `true`, the `ToastProvider` will not render the default toast UI, and you can import `ToastProvider` component to render custom toast UI.\n   *\n   * @default false\n   */\n  customToast?: boolean;\n}\n\n/**\n * Context for the ConfigProvider component.\n */\nexport interface ConfigProviderContext\n  extends PropsToContext<Omit<ConfigProviderProps, 'iconRender'>>, Pick<ConfigProviderProps, 'iconRender'> {}\n\nexport type { ThemeOptions };\n"
+    },
+    {
+      "path": "packages/ui/src/components/config-provider/index.ts",
+      "type": "registry:lib",
+      "content": "export { default as SConfigProvider } from './config-provider.vue';\nexport { useConfigProvider } from './context';\n\nexport type * from '@soybeanjs/headless/config-provider';\nexport type { ConfigProviderProps, IconifyOptions, ThemeOptions } from './types';\n"
     },
     {
       "path": "packages/ui/src/components/dialog/dialog-provider.vue",

@@ -9,14 +9,14 @@
       "content": "<script setup lang=\"ts\">\nimport { computed } from 'vue';\nimport { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';\nimport { DatePickerCompact, provideDatePickerUi } from '@soybeanjs/headless/date-picker';\nimport { datePickerVariants } from '@/styles/date-picker';\nimport Calendar from '../calendar/calendar.vue';\nimport type { DatePickerProps, DatePickerEmits } from './types';\n\ndefineOptions({\n  name: 'SDatePicker'\n});\n\nconst props = withDefaults(defineProps<DatePickerProps>(), {\n  open: undefined\n});\n\nconst emit = defineEmits<DatePickerEmits>();\n\nconst forwardedProps = useOmitProps(props, ['class', 'size', 'ui']);\n\nconst listeners = useForwardListeners(emit);\n\nconst ui = computed(() => datePickerVariants({ size: props.size }, props.ui, { root: props.class }));\n\nprovideDatePickerUi(ui);\n</script>\n\n<template>\n  <DatePickerCompact\n    v-slot=\"{ calendarProps, close, onUpdateModelValue, onUpdatePlaceholder }\"\n    v-bind=\"forwardedProps\"\n    v-on=\"listeners\"\n  >\n    <Calendar\n      v-bind=\"calendarProps\"\n      :size=\"size\"\n      :ui=\"calendarUi\"\n      @update:model-value=\"\n        value => {\n          onUpdateModelValue(value);\n          close();\n        }\n      \"\n      @update:placeholder=\"onUpdatePlaceholder\"\n    />\n  </DatePickerCompact>\n</template>\n"
     },
     {
-      "path": "packages/ui/src/components/date-picker/index.ts",
-      "type": "registry:lib",
-      "content": "export { default as SDatePicker } from './date-picker.vue';\n\nexport type * from '@soybeanjs/headless/date-picker';\nexport type * from './types';\n"
-    },
-    {
       "path": "packages/ui/src/components/date-picker/types.ts",
       "type": "registry:lib",
       "content": "import type { CalendarUi } from '@soybeanjs/headless/calendar';\nimport type { DatePickerUi, DatePickerCompactProps, DatePickerCompactEmits } from '@soybeanjs/headless/date-picker';\nimport type { ClassValue } from '@soybeanjs/headless/types';\nimport type { ThemeSize } from '@/theme';\n\n/**\n * Properties for the DatePicker component.\n */\nexport interface DatePickerProps extends DatePickerCompactProps {\n  /**\n   * Additional class names applied to the root element.\n   */\n  class?: ClassValue;\n  /**\n   * Visual size of the component.\n   */\n  size?: ThemeSize;\n  /**\n   * Per-slot class overrides for the component.\n   */\n  ui?: Partial<DatePickerUi>;\n  /**\n   * Per-slot class overrides for the Calendar component within the DatePicker.\n   */\n  calendarUi?: Partial<CalendarUi>;\n}\n\n/**\n * Events for the DatePicker component.\n */\nexport type DatePickerEmits = DatePickerCompactEmits;\n"
+    },
+    {
+      "path": "packages/ui/src/components/date-picker/index.ts",
+      "type": "registry:lib",
+      "content": "export { default as SDatePicker } from './date-picker.vue';\n\nexport type * from '@soybeanjs/headless/date-picker';\nexport type * from './types';\n"
     },
     {
       "path": "packages/ui/src/styles/date-picker.ts",

@@ -1,14 +1,7 @@
 {
   "name": "tabs",
-  "description": "A set of layered sections of content that display one panel at a time.",
-  "dependencies": ["@soybeanjs/cva", "@soybeanjs/headless", "@soybeanjs/utils"],
-  "registryDependencies": ["utils"],
+  "dependencies": ["@soybeanjs/headless", "@soybeanjs/utils"],
   "files": [
-    {
-      "path": "packages/ui/src/components/tabs/index.ts",
-      "type": "registry:lib",
-      "content": "export { default as STabs } from './tabs.vue';\n\nexport type * from '@soybeanjs/headless/tabs';\nexport type * from './types';\n"
-    },
     {
       "path": "packages/ui/src/components/tabs/tabs.vue",
       "type": "registry:ui",
@@ -18,6 +11,11 @@
       "path": "packages/ui/src/components/tabs/types.ts",
       "type": "registry:lib",
       "content": "import type {\n  TabsCompactEmits,\n  TabsCompactProps,\n  TabsCompactSlots,\n  TabsOptionData,\n  TabsUi\n} from '@soybeanjs/headless/tabs';\nimport type { AcceptableValue, ClassValue } from '@soybeanjs/headless/types';\nimport type { TabsFill } from '@/styles/tabs';\nimport type { ThemeSize } from '@/theme';\n\n/**\n * Properties for the Tabs component.\n */\nexport interface TabsProps<T extends TabsOptionData = TabsOptionData> extends TabsCompactProps<T> {\n  /**\n   * Additional class names applied to the root element.\n   */\n  class?: ClassValue;\n  /**\n   * Visual size of the component.\n   */\n  size?: ThemeSize;\n  /** Styled tabs ui slots, including `indicatorContent` for the compact indicator body. */\n  ui?: Partial<TabsUi>;\n  /**\n   * Fill.\n   */\n  fill?: TabsFill;\n}\n\n/**\n * Events for the Tabs component.\n */\nexport type TabsEmits<T extends AcceptableValue = AcceptableValue> = TabsCompactEmits<T>;\n\n/**\n * Slots for the Tabs component.\n */\nexport type TabsSlots<T extends TabsOptionData = TabsOptionData> = TabsCompactSlots<T>;\n\nexport type { TabsOptionData } from '@soybeanjs/headless/tabs';\n"
+    },
+    {
+      "path": "packages/ui/src/components/tabs/index.ts",
+      "type": "registry:lib",
+      "content": "export { default as STabs } from './tabs.vue';\n\nexport type * from '@soybeanjs/headless/tabs';\nexport type * from './types';\n"
     },
     {
       "path": "packages/ui/src/styles/tabs.ts",
@@ -40,6 +38,5 @@
       "content": "export type ThemeColor = 'primary' | 'destructive' | 'success' | 'warning' | 'info' | 'carbon' | 'secondary' | 'accent';\n\nexport type ThemeSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl';\n"
     }
   ],
-  "categories": ["navigation", "layout"],
   "type": "registry:ui"
 }

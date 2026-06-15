@@ -1,8 +1,6 @@
 {
   "name": "breadcrumb",
-  "description": "Displays the path to the current resource using a hierarchy of links.",
-  "dependencies": ["@soybeanjs/cva", "@soybeanjs/headless", "@soybeanjs/utils"],
-  "registryDependencies": ["utils"],
+  "dependencies": ["@soybeanjs/headless", "@soybeanjs/utils"],
   "files": [
     {
       "path": "packages/ui/src/components/breadcrumb/breadcrumb.vue",
@@ -10,14 +8,14 @@
       "content": "<script setup lang=\"ts\" generic=\"T extends BreadcrumbOptionData = BreadcrumbOptionData\">\nimport { computed } from 'vue';\nimport { BreadcrumbCompact, provideBreadcrumbUi } from '@soybeanjs/headless/breadcrumb';\nimport { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';\nimport { keysOf } from '@soybeanjs/utils';\nimport { breadcrumbVariants } from '@/styles/breadcrumb';\nimport type { BreadcrumbProps, BreadcrumbEmits, BreadcrumbOptionData, BreadcrumbSlots } from './types';\n\ndefineOptions({\n  name: 'SBreadcrumb'\n});\n\nconst props = defineProps<BreadcrumbProps<T>>();\n\nconst emit = defineEmits<BreadcrumbEmits<T>>();\n\nconst slots = defineSlots<BreadcrumbSlots<T>>();\n\nconst forwardedProps = useOmitProps(props, ['class', 'size', 'ui']);\n\nconst listeners = useForwardListeners(emit);\n\nconst slotNames = computed(() => keysOf(slots));\n\nconst ui = computed(() => breadcrumbVariants({ size: props.size }, props.ui, { root: props.class }));\n\nprovideBreadcrumbUi(ui);\n</script>\n\n<template>\n  <BreadcrumbCompact v-bind=\"forwardedProps\" v-on=\"listeners\">\n    <template v-for=\"slotName in slotNames\" #[slotName]=\"slotProps\">\n      <!-- @vue-ignore ignore vue slot props type -->\n      <slot :name=\"slotName\" v-bind=\"slotProps\" />\n    </template>\n  </BreadcrumbCompact>\n</template>\n"
     },
     {
-      "path": "packages/ui/src/components/breadcrumb/index.ts",
-      "type": "registry:lib",
-      "content": "export { default as SBreadcrumb } from './breadcrumb.vue';\nexport {\n  BreadcrumbPage as SBreadcrumbPage,\n  BreadcrumbEllipsis as SBreadcrumbEllipsis\n} from '@soybeanjs/headless/breadcrumb';\n\nexport type * from '@soybeanjs/headless/breadcrumb';\nexport type * from './types';\n"
-    },
-    {
       "path": "packages/ui/src/components/breadcrumb/types.ts",
       "type": "registry:lib",
       "content": "import type {\n  BreadcrumbCompactEmits,\n  BreadcrumbCompactProps,\n  BreadcrumbCompactSlots,\n  BreadcrumbOptionData,\n  BreadcrumbUi\n} from '@soybeanjs/headless/breadcrumb';\nimport type { ClassValue } from '@soybeanjs/headless/types';\nimport type { ThemeSize } from '@/theme';\n\n/**\n * Properties for the Breadcrumb component.\n */\nexport interface BreadcrumbProps<\n  T extends BreadcrumbOptionData = BreadcrumbOptionData\n> extends BreadcrumbCompactProps<T> {\n  /**\n   * root class\n   */\n  class?: ClassValue;\n  /**\n   * Visual size of the component.\n   */\n  size?: ThemeSize;\n  /**\n   * Per-slot class overrides for the component.\n   */\n  ui?: Partial<BreadcrumbUi>;\n}\n\n/**\n * Events for the Breadcrumb component.\n */\nexport type BreadcrumbEmits<T extends BreadcrumbOptionData = BreadcrumbOptionData> = BreadcrumbCompactEmits<T>;\n\n/**\n * Slots for the Breadcrumb component.\n */\nexport type BreadcrumbSlots<T extends BreadcrumbOptionData = BreadcrumbOptionData> = BreadcrumbCompactSlots<T>;\n\nexport type { BreadcrumbOptionData } from '@soybeanjs/headless/breadcrumb';\n"
+    },
+    {
+      "path": "packages/ui/src/components/breadcrumb/index.ts",
+      "type": "registry:lib",
+      "content": "export { default as SBreadcrumb } from './breadcrumb.vue';\nexport {\n  BreadcrumbPage as SBreadcrumbPage,\n  BreadcrumbEllipsis as SBreadcrumbEllipsis\n} from '@soybeanjs/headless/breadcrumb';\n\nexport type * from '@soybeanjs/headless/breadcrumb';\nexport type * from './types';\n"
     },
     {
       "path": "packages/ui/src/styles/breadcrumb.ts",
@@ -40,6 +38,5 @@
       "content": "export type ThemeColor = 'primary' | 'destructive' | 'success' | 'warning' | 'info' | 'carbon' | 'secondary' | 'accent';\n\nexport type ThemeSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl';\n"
     }
   ],
-  "categories": ["navigation"],
   "type": "registry:ui"
 }

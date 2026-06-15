@@ -3,6 +3,11 @@
   "dependencies": ["@soybeanjs/headless", "@soybeanjs/utils"],
   "files": [
     {
+      "path": "packages/ui/src/components/input-number/types.ts",
+      "type": "registry:lib",
+      "content": "import type {\n  InputNumberCompactEmits,\n  InputNumberCompactProps,\n  InputNumberCompactSlots,\n  InputNumberUi\n} from '@soybeanjs/headless/input-number';\nimport type { ClassValue } from '@soybeanjs/headless/types';\nimport type { ThemeSize } from '@/theme';\n\n/**\n * Properties for the InputNumber component.\n */\nexport interface InputNumberProps extends InputNumberCompactProps {\n  /**\n   * Additional class names applied to the root element.\n   */\n  class?: ClassValue;\n  /**\n   * Visual size of the component.\n   */\n  size?: ThemeSize;\n  /**\n   * Per-slot class overrides for the component.\n   */\n  ui?: Partial<InputNumberUi>;\n  /**\n   * Whether to center the input.\n   *\n   * @defaultValue false\n   */\n  center?: boolean;\n}\n\n/**\n * Events for the InputNumber component.\n */\nexport type InputNumberEmits = InputNumberCompactEmits;\n\n/**\n * Slots for the InputNumber component.\n */\nexport type InputNumberSlots = InputNumberCompactSlots;\n"
+    },
+    {
       "path": "packages/ui/src/components/input-number/index.ts",
       "type": "registry:lib",
       "content": "export { default as SInputNumber } from './input-number.vue';\n\nexport type * from '@soybeanjs/headless/input-number';\nexport type * from './types';\n"
@@ -13,9 +18,9 @@
       "content": "<script setup lang=\"ts\">\nimport { computed } from 'vue';\nimport { useOmitProps } from '@soybeanjs/headless/composables';\nimport { InputNumberCompact, provideInputNumberUi } from '@soybeanjs/headless/input-number';\nimport { keysOf } from '@soybeanjs/utils';\nimport { buttonIconVariants } from '@/styles/button';\nimport { inputNumberVariants } from '@/styles/input-number';\nimport { miniSizeMap } from '@/theme';\nimport type { InputNumberProps, InputNumberEmits, InputNumberSlots } from './types';\n\ndefineOptions({\n  name: 'SInputNumber'\n});\n\nconst props = defineProps<InputNumberProps>();\n\nconst emit = defineEmits<InputNumberEmits>();\n\nconst forwardedProps = useOmitProps(props, ['class', 'size', 'ui', 'center']);\n\nconst slots = defineSlots<InputNumberSlots>();\n\nconst slotNames = computed(() => keysOf(slots));\n\nconst ui = computed(() => {\n  const miniSize = miniSizeMap[props.size ?? 'md'];\n\n  return inputNumberVariants(\n    {\n      size: props.size,\n      center: props.center\n    },\n    {\n      decrement: buttonIconVariants({ size: miniSize }),\n      increment: buttonIconVariants({ size: miniSize }),\n      clear: buttonIconVariants({ size: miniSize, shape: 'circle' })\n    },\n    props.ui,\n    { root: props.class }\n  );\n});\n\nprovideInputNumberUi(ui);\n</script>\n\n<template>\n  <InputNumberCompact v-bind=\"forwardedProps\" @update:model-value=\"emit('update:modelValue', $event)\">\n    <template v-for=\"slotName in slotNames\" :key=\"slotName\" #[slotName]=\"slotProps\">\n      <slot :name=\"slotName\" v-bind=\"slotProps\" />\n    </template>\n  </InputNumberCompact>\n</template>\n"
     },
     {
-      "path": "packages/ui/src/components/input-number/types.ts",
-      "type": "registry:lib",
-      "content": "import type {\n  InputNumberCompactEmits,\n  InputNumberCompactProps,\n  InputNumberCompactSlots,\n  InputNumberUi\n} from '@soybeanjs/headless/input-number';\nimport type { ClassValue } from '@soybeanjs/headless/types';\nimport type { ThemeSize } from '@/theme';\n\n/**\n * Properties for the InputNumber component.\n */\nexport interface InputNumberProps extends InputNumberCompactProps {\n  /**\n   * Additional class names applied to the root element.\n   */\n  class?: ClassValue;\n  /**\n   * Visual size of the component.\n   */\n  size?: ThemeSize;\n  /**\n   * Per-slot class overrides for the component.\n   */\n  ui?: Partial<InputNumberUi>;\n  /**\n   * Whether to center the input.\n   *\n   * @defaultValue false\n   */\n  center?: boolean;\n}\n\n/**\n * Events for the InputNumber component.\n */\nexport type InputNumberEmits = InputNumberCompactEmits;\n\n/**\n * Slots for the InputNumber component.\n */\nexport type InputNumberSlots = InputNumberCompactSlots;\n"
+      "path": "packages/ui/src/theme/index.ts",
+      "type": "registry:theme",
+      "content": "export * from './config';\n\nexport type * from './types';\n"
     },
     {
       "path": "packages/ui/src/styles/button.ts",
@@ -26,11 +31,6 @@
       "path": "packages/ui/src/styles/input-number.ts",
       "type": "registry:style",
       "content": "// @unocss-include\nimport { scv } from '@soybeanjs/cva';\nimport { miniButtonIconVariants } from './button';\n\nexport const inputNumberVariants = scv({\n  extendBase: props => ({\n    decrement: miniButtonIconVariants({ size: props.size }),\n    increment: miniButtonIconVariants({ size: props.size }),\n    clear: miniButtonIconVariants({ size: props.size, shape: 'circle' })\n  }),\n  slots: {\n    root: 'group flex items-center w-full rounded-md border border-input bg-background transition-all-150 focus-within:border-input focus-within:ring-3  focus-within:ring-offset-background focus-within:ring-primary/30 disabled:cursor-not-allowed disabled:opacity-50',\n    decrement: `shrink-0`,\n    increment: `shrink-0`,\n    control: [\n      `grow min-w-0 h-full bg-transparent outline-none`,\n      `placeholder:text-muted-foreground`,\n      'disabled:cursor-not-allowed disabled:opacity-50'\n    ],\n    clear: [\n      'hidden shrink-0 opacity-50',\n      'group-hover:inline-flex group-focus-within:inline-flex hover:opacity-100 focus-visible:opacity-100'\n    ]\n  },\n  variants: {\n    size: {\n      xs: {\n        root: 'h-6 px-1.5 text-2xs gap-1'\n      },\n      sm: {\n        root: 'h-7 px-2 text-xs gap-1.5'\n      },\n      md: {\n        root: 'h-8 px-2.5 text-sm gap-2'\n      },\n      lg: {\n        root: 'h-9 px-3 text-base gap-2.5'\n      },\n      xl: {\n        root: 'h-10 px-3.5 text-lg gap-3'\n      },\n      '2xl': {\n        root: 'h-12 px-4 text-xl gap-3.5'\n      }\n    },\n    center: {\n      true: {\n        decrement: '-order-1',\n        control: 'text-center'\n      }\n    }\n  },\n  defaultVariants: {\n    size: 'md',\n    center: false\n  }\n});\n"
-    },
-    {
-      "path": "packages/ui/src/theme/index.ts",
-      "type": "registry:theme",
-      "content": "export * from './config';\n\nexport type * from './types';\n"
     },
     {
       "path": "packages/ui/src/theme/config.ts",

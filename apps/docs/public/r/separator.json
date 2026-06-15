@@ -1,9 +1,12 @@
 {
   "name": "separator",
-  "description": "Visually or semantically separates content.",
-  "dependencies": ["@soybeanjs/cva", "@soybeanjs/headless"],
-  "registryDependencies": ["utils"],
+  "dependencies": ["@soybeanjs/headless"],
   "files": [
+    {
+      "path": "packages/ui/src/components/separator/types.ts",
+      "type": "registry:lib",
+      "content": "import type { SeparatorCompactProps, SeparatorUi } from '@soybeanjs/headless/separator';\nimport type { Align, ClassValue } from '@soybeanjs/headless/types';\nimport type { SeparatorBorder } from '@/styles/separator';\nimport type { ThemeSize } from '@/theme';\n\n/**\n * Properties for the Separator component.\n */\nexport interface SeparatorProps extends SeparatorCompactProps {\n  /**\n   * Additional class names applied to the root element.\n   */\n  class?: ClassValue;\n  /**\n   * Visual size of the component.\n   */\n  size?: ThemeSize;\n  /**\n   * Per-slot class overrides for the component.\n   */\n  ui?: Partial<SeparatorUi>;\n  /**\n   * Align.\n   */\n  align?: Align;\n  /**\n   * Border.\n   */\n  border?: SeparatorBorder;\n}\n"
+    },
     {
       "path": "packages/ui/src/components/separator/index.ts",
       "type": "registry:lib",
@@ -13,11 +16,6 @@
       "path": "packages/ui/src/components/separator/separator.vue",
       "type": "registry:ui",
       "content": "<script setup lang=\"ts\">\nimport { computed, useSlots } from 'vue';\nimport { useOmitProps } from '@soybeanjs/headless/composables';\nimport { SeparatorCompact, provideSeparatorUi } from '@soybeanjs/headless/separator';\nimport { separatorVariants } from '@/styles/separator';\nimport type { SeparatorProps } from './types';\n\ndefineOptions({\n  name: 'SSeparator'\n});\n\nconst props = withDefaults(defineProps<SeparatorProps>(), {\n  orientation: 'horizontal'\n});\n\nconst slots = useSlots();\n\nconst forwardedProps = useOmitProps(props, ['class', 'size', 'ui', 'align', 'border']);\n\nconst ui = computed(() =>\n  separatorVariants(\n    {\n      size: props.size,\n      orientation: props.orientation,\n      align: props.align,\n      border: props.border\n    },\n    props.ui,\n    { root: props.class }\n  )\n);\n\nprovideSeparatorUi(ui);\n</script>\n\n<template>\n  <SeparatorCompact v-bind=\"forwardedProps\">\n    <template v-if=\"slots.default\" #label>\n      <slot />\n    </template>\n  </SeparatorCompact>\n</template>\n"
-    },
-    {
-      "path": "packages/ui/src/components/separator/types.ts",
-      "type": "registry:lib",
-      "content": "import type { SeparatorCompactProps, SeparatorUi } from '@soybeanjs/headless/separator';\nimport type { Align, ClassValue } from '@soybeanjs/headless/types';\nimport type { SeparatorBorder } from '@/styles/separator';\nimport type { ThemeSize } from '@/theme';\n\n/**\n * Properties for the Separator component.\n */\nexport interface SeparatorProps extends SeparatorCompactProps {\n  /**\n   * Additional class names applied to the root element.\n   */\n  class?: ClassValue;\n  /**\n   * Visual size of the component.\n   */\n  size?: ThemeSize;\n  /**\n   * Per-slot class overrides for the component.\n   */\n  ui?: Partial<SeparatorUi>;\n  /**\n   * Align.\n   */\n  align?: Align;\n  /**\n   * Border.\n   */\n  border?: SeparatorBorder;\n}\n"
     },
     {
       "path": "packages/ui/src/styles/separator.ts",
@@ -40,6 +38,5 @@
       "content": "export type ThemeColor = 'primary' | 'destructive' | 'success' | 'warning' | 'info' | 'carbon' | 'secondary' | 'accent';\n\nexport type ThemeSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl';\n"
     }
   ],
-  "categories": ["layout"],
   "type": "registry:ui"
 }

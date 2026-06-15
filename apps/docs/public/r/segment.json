@@ -3,11 +3,6 @@
   "dependencies": ["@soybeanjs/headless"],
   "files": [
     {
-      "path": "packages/ui/src/components/segment/index.ts",
-      "type": "registry:lib",
-      "content": "export { default as SSegment } from './segment.vue';\n\nexport type * from '@soybeanjs/headless/segment';\nexport type * from './types';\n"
-    },
-    {
       "path": "packages/ui/src/components/segment/segment.vue",
       "type": "registry:ui",
       "content": "<script setup lang=\"ts\" generic=\"T extends SegmentOptionData = SegmentOptionData\">\nimport { computed } from 'vue';\nimport { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';\nimport { SegmentCompact } from '@soybeanjs/headless/segment';\nimport { provideTabsUi } from '@soybeanjs/headless/tabs';\nimport { segmentVariants } from '@/styles/segment';\nimport type { SegmentProps, SegmentEmits, SegmentSlots, SegmentOptionData } from './types';\n\ndefineOptions({\n  name: 'SSegment'\n});\n\nconst props = withDefaults(defineProps<SegmentProps<T>>(), {\n  modelValue: undefined,\n  unmountOnHide: true,\n  loop: true,\n  fill: 'auto',\n  enableIndicator: true\n});\n\nconst emit = defineEmits<SegmentEmits<T['value']>>();\n\ndefineSlots<SegmentSlots<T>>();\n\nconst forwardedProps = useOmitProps(props, ['class', 'size', 'ui', 'fill']);\n\nconst listeners = useForwardListeners(emit);\n\nconst ui = computed(() =>\n  segmentVariants(\n    {\n      size: props.size,\n      orientation: props.orientation,\n      shape: props.shape,\n      fill: props.fill,\n      enableIndicator: props.enableIndicator\n    },\n    props.ui,\n    { root: props.class }\n  )\n);\n\nprovideTabsUi(ui);\n</script>\n\n<template>\n  <SegmentCompact v-bind=\"forwardedProps\" v-on=\"listeners\">\n    <template #item=\"slotProps\">\n      <slot name=\"item\" v-bind=\"slotProps\" />\n    </template>\n    <template #indicator>\n      <slot name=\"indicator\" />\n    </template>\n  </SegmentCompact>\n</template>\n"
@@ -16,6 +11,11 @@
       "path": "packages/ui/src/components/segment/types.ts",
       "type": "registry:lib",
       "content": "import type {\n  SegmentCompactEmits,\n  SegmentCompactProps,\n  SegmentCompactSlots,\n  SegmentUi,\n  SegmentOptionData\n} from '@soybeanjs/headless/segment';\nimport type { AcceptableValue, ClassValue } from '@soybeanjs/headless/types';\nimport type { TabsFill as SegmentFill, TabsShape as SegmentShape } from '@/styles/tabs';\nimport type { ThemeSize } from '@/theme';\n\n/**\n * Properties for the Segment component.\n */\nexport interface SegmentProps<T extends SegmentOptionData> extends SegmentCompactProps<T> {\n  /**\n   * Additional class names applied to the root element.\n   */\n  class?: ClassValue;\n  /**\n   * Per-slot class overrides for the component.\n   */\n  ui?: Partial<SegmentUi>;\n  /**\n   * Visual size of the component.\n   */\n  size?: ThemeSize;\n  /**\n   * Shape of the component.\n   */\n  shape?: SegmentShape;\n  /**\n   * Fill.\n   */\n  fill?: SegmentFill;\n}\n\n/**\n * Events for the Segment component.\n */\nexport type SegmentEmits<T extends AcceptableValue = AcceptableValue> = SegmentCompactEmits<T>;\n\n/**\n * Slots for the Segment component.\n */\nexport type SegmentSlots<T extends SegmentOptionData = SegmentOptionData> = SegmentCompactSlots<T>;\n\nexport type { SegmentOptionData, SegmentFill, SegmentShape };\n"
+    },
+    {
+      "path": "packages/ui/src/components/segment/index.ts",
+      "type": "registry:lib",
+      "content": "export { default as SSegment } from './segment.vue';\n\nexport type * from '@soybeanjs/headless/segment';\nexport type * from './types';\n"
     },
     {
       "path": "packages/ui/src/styles/segment.ts",

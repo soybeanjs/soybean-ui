@@ -1,14 +1,7 @@
 {
   "name": "switch",
-  "description": "A control that allows the user to toggle between checked and not checked.",
-  "dependencies": ["@soybeanjs/cva", "@soybeanjs/headless", "@soybeanjs/utils"],
-  "registryDependencies": ["utils"],
+  "dependencies": ["@soybeanjs/headless", "@soybeanjs/utils"],
   "files": [
-    {
-      "path": "packages/ui/src/components/switch/index.ts",
-      "type": "registry:lib",
-      "content": "export { default as SSwitch } from './switch.vue';\n\nexport type * from '@soybeanjs/headless/switch';\nexport type * from './types';\n"
-    },
     {
       "path": "packages/ui/src/components/switch/switch.vue",
       "type": "registry:ui",
@@ -18,6 +11,11 @@
       "path": "packages/ui/src/components/switch/types.ts",
       "type": "registry:lib",
       "content": "import type { SwitchCompactEmits, SwitchCompactProps, SwitchCompactSlots, SwitchUi } from '@soybeanjs/headless/switch';\nimport type { AcceptableBooleanValue, ClassValue } from '@soybeanjs/headless/types';\nimport type { SwitchShape } from '@/styles/switch';\nimport type { ThemeColor, ThemeSize } from '@/theme';\n\n/**\n * Properties for the Switch component.\n */\nexport interface SwitchProps<T extends AcceptableBooleanValue = boolean> extends SwitchCompactProps<T> {\n  /**\n   * Additional class names applied to the root element.\n   */\n  class?: ClassValue;\n  /**\n   * Per-slot class overrides for the component.\n   */\n  ui?: Partial<SwitchUi>;\n  /**\n   * Theme color of the component.\n   */\n  color?: ThemeColor;\n  /**\n   * Visual size of the component.\n   */\n  size?: ThemeSize;\n  /**\n   * Shape of the component.\n   */\n  shape?: SwitchShape;\n}\n\n/**\n * Events for the Switch component.\n */\nexport type SwitchEmits<T extends AcceptableBooleanValue = boolean> = SwitchCompactEmits<T>;\n\n/**\n * Slots for the Switch component.\n */\nexport type SwitchSlots<T extends AcceptableBooleanValue = boolean> = SwitchCompactSlots<T>;\n\nexport type { SwitchShape };\n"
+    },
+    {
+      "path": "packages/ui/src/components/switch/index.ts",
+      "type": "registry:lib",
+      "content": "export { default as SSwitch } from './switch.vue';\n\nexport type * from '@soybeanjs/headless/switch';\nexport type * from './types';\n"
     },
     {
       "path": "packages/ui/src/styles/switch.ts",
@@ -40,6 +38,5 @@
       "content": "export type ThemeColor = 'primary' | 'destructive' | 'success' | 'warning' | 'info' | 'carbon' | 'secondary' | 'accent';\n\nexport type ThemeSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl';\n"
     }
   ],
-  "categories": ["form", "selection"],
   "type": "registry:ui"
 }

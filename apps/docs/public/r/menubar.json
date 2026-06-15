@@ -1,12 +1,11 @@
 {
   "name": "menubar",
   "dependencies": ["@soybeanjs/headless", "@soybeanjs/utils"],
-  "registryDependencies": ["menu"],
   "files": [
     {
-      "path": "packages/ui/src/components/menubar/index.ts",
+      "path": "packages/ui/src/components/menubar/types.ts",
       "type": "registry:lib",
-      "content": "export { default as SMenubar } from './menubar.vue';\n\nexport type * from '@soybeanjs/headless/menubar';\nexport type * from './types';\n"
+      "content": "import type {\n  MenubarCompactProps,\n  MenubarCompactEmits,\n  MenubarCompactSlots,\n  MenubarUi\n} from '@soybeanjs/headless/menubar';\nimport type { ClassValue, AlignSide, DefinedValue } from '@soybeanjs/headless/types';\nimport type { ThemeSize } from '@/theme';\n\n/**\n * Properties for the Menubar component.\n */\nexport interface MenubarProps<T extends DefinedValue = DefinedValue> extends MenubarCompactProps<T> {\n  /**\n   * class of menubar root\n   */\n  class?: ClassValue;\n  /**\n   * Visual size of the component.\n   */\n  size?: ThemeSize;\n  /**\n   * Per-slot class overrides for the component.\n   */\n  ui?: Partial<MenubarUi>;\n  /**\n   * Indicator position.\n   */\n  indicatorPosition?: AlignSide;\n}\n\n/**\n * Events for the Menubar component.\n */\nexport type MenubarEmits<T extends DefinedValue = DefinedValue> = MenubarCompactEmits<T>;\n\n/**\n * Slots for the Menubar component.\n */\nexport type MenubarSlots<T extends DefinedValue = DefinedValue> = MenubarCompactSlots<T>;\n"
     },
     {
       "path": "packages/ui/src/components/menubar/menubar.vue",
@@ -14,9 +13,14 @@
       "content": "<script setup lang=\"ts\" generic=\"T extends DefinedValue = DefinedValue\">\nimport { computed } from 'vue';\nimport { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';\nimport { MenubarCompact, provideMenubarUi } from '@soybeanjs/headless/menubar';\nimport type { DefinedValue } from '@soybeanjs/headless/types';\nimport { keysOf } from '@soybeanjs/utils';\nimport { menubarVariants } from '@/styles/menubar';\nimport { provideMenuUi } from '../menu/context';\nimport type { MenubarProps, MenubarEmits, MenubarSlots } from './types';\n\ndefineOptions({\n  name: 'SMenubar'\n});\n\nconst props = defineProps<MenubarProps<T>>();\n\nconst emit = defineEmits<MenubarEmits<T>>();\n\nconst slots = defineSlots<MenubarSlots<T>>();\n\nconst forwardedProps = useOmitProps(props, ['class', 'size', 'ui', 'indicatorPosition']);\n\nconst listeners = useForwardListeners(emit);\n\nconst slotNames = computed(() => keysOf(slots));\n\nconst ui = computed(() => menubarVariants({ size: props.size }, props.ui, { root: props.class }));\n\nprovideMenubarUi(ui);\nprovideMenuUi(() => props);\n</script>\n\n<template>\n  <MenubarCompact v-bind=\"forwardedProps\" v-on=\"listeners\">\n    <template v-for=\"slotName in slotNames\" :key=\"slotName\" #[slotName]=\"slotProps\">\n      <slot :name=\"slotName\" v-bind=\"slotProps\" />\n    </template>\n  </MenubarCompact>\n</template>\n"
     },
     {
-      "path": "packages/ui/src/components/menubar/types.ts",
+      "path": "packages/ui/src/components/menubar/index.ts",
       "type": "registry:lib",
-      "content": "import type {\n  MenubarCompactProps,\n  MenubarCompactEmits,\n  MenubarCompactSlots,\n  MenubarUi\n} from '@soybeanjs/headless/menubar';\nimport type { ClassValue, AlignSide, DefinedValue } from '@soybeanjs/headless/types';\nimport type { ThemeSize } from '@/theme';\n\n/**\n * Properties for the Menubar component.\n */\nexport interface MenubarProps<T extends DefinedValue = DefinedValue> extends MenubarCompactProps<T> {\n  /**\n   * class of menubar root\n   */\n  class?: ClassValue;\n  /**\n   * Visual size of the component.\n   */\n  size?: ThemeSize;\n  /**\n   * Per-slot class overrides for the component.\n   */\n  ui?: Partial<MenubarUi>;\n  /**\n   * Indicator position.\n   */\n  indicatorPosition?: AlignSide;\n}\n\n/**\n * Events for the Menubar component.\n */\nexport type MenubarEmits<T extends DefinedValue = DefinedValue> = MenubarCompactEmits<T>;\n\n/**\n * Slots for the Menubar component.\n */\nexport type MenubarSlots<T extends DefinedValue = DefinedValue> = MenubarCompactSlots<T>;\n"
+      "content": "export { default as SMenubar } from './menubar.vue';\n\nexport type * from '@soybeanjs/headless/menubar';\nexport type * from './types';\n"
+    },
+    {
+      "path": "packages/ui/src/theme/index.ts",
+      "type": "registry:theme",
+      "content": "export * from './config';\n\nexport type * from './types';\n"
     },
     {
       "path": "packages/ui/src/styles/menubar.ts",
@@ -29,9 +33,14 @@
       "content": "import { computed, toValue } from 'vue';\nimport type { MaybeRefOrGetter } from 'vue';\nimport { provideMenuUi as _provideMenuUi } from '@soybeanjs/headless/menu';\nimport { menuVariants } from '@/styles/menu';\nimport type { MenuUiBaseProps } from './types';\n\nexport const provideMenuUi = (options: MaybeRefOrGetter<MenuUiBaseProps>) => {\n  const ui = computed(() => {\n    const props = toValue(options);\n\n    return menuVariants(\n      {\n        size: props.size,\n        indicatorPosition: props.indicatorPosition\n      },\n      props.ui,\n      { popup: props.class }\n    );\n  });\n\n  _provideMenuUi(ui);\n};\n"
     },
     {
-      "path": "packages/ui/src/theme/index.ts",
+      "path": "packages/ui/src/theme/config.ts",
       "type": "registry:theme",
-      "content": "export * from './config';\n\nexport type * from './types';\n"
+      "content": "import type { ThemeSize } from './types';\n\nexport const themeSizeMap: Record<ThemeSize, number> = {\n  xs: 12,\n  sm: 14,\n  md: 16,\n  lg: 18,\n  xl: 20,\n  '2xl': 24\n};\nexport const miniSizeMap: Record<ThemeSize, ThemeSize> = {\n  xs: 'xs',\n  sm: 'xs',\n  md: 'sm',\n  lg: 'md',\n  xl: 'lg',\n  '2xl': 'xl'\n};\n\nexport const themeSizeRatio = Object.fromEntries(\n  Object.entries(themeSizeMap).map(([key, value]) => [key, value / themeSizeMap.md])\n) as Record<ThemeSize, number>;\n"
+    },
+    {
+      "path": "packages/ui/src/theme/types.ts",
+      "type": "registry:theme",
+      "content": "export type ThemeColor = 'primary' | 'destructive' | 'success' | 'warning' | 'info' | 'carbon' | 'secondary' | 'accent';\n\nexport type ThemeSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl';\n"
     },
     {
       "path": "packages/ui/src/styles/menu.ts",
@@ -42,16 +51,6 @@
       "path": "packages/ui/src/components/menu/types.ts",
       "type": "registry:lib",
       "content": "import type { MenuUi } from '@soybeanjs/headless/menu';\nimport type { ClassValue, AlignSide } from '@soybeanjs/headless/types';\nimport type { ThemeSize } from '@/theme';\n\n/**\n * Properties for the MenuUiBase component.\n */\nexport interface MenuUiBaseProps {\n  /**\n   * class of menu popup\n   */\n  class?: ClassValue;\n  /**\n   * Visual size of the component.\n   */\n  size?: ThemeSize;\n  /**\n   * Per-slot class overrides for the component.\n   */\n  ui?: Partial<MenuUi>;\n  /**\n   * Indicator position.\n   */\n  indicatorPosition?: AlignSide;\n}\n"
-    },
-    {
-      "path": "packages/ui/src/theme/config.ts",
-      "type": "registry:theme",
-      "content": "import type { ThemeSize } from './types';\n\nexport const themeSizeMap: Record<ThemeSize, number> = {\n  xs: 12,\n  sm: 14,\n  md: 16,\n  lg: 18,\n  xl: 20,\n  '2xl': 24\n};\nexport const miniSizeMap: Record<ThemeSize, ThemeSize> = {\n  xs: 'xs',\n  sm: 'xs',\n  md: 'sm',\n  lg: 'md',\n  xl: 'lg',\n  '2xl': 'xl'\n};\n\nexport const themeSizeRatio = Object.fromEntries(\n  Object.entries(themeSizeMap).map(([key, value]) => [key, value / themeSizeMap.md])\n) as Record<ThemeSize, number>;\n"
-    },
-    {
-      "path": "packages/ui/src/theme/types.ts",
-      "type": "registry:theme",
-      "content": "export type ThemeColor = 'primary' | 'destructive' | 'success' | 'warning' | 'info' | 'carbon' | 'secondary' | 'accent';\n\nexport type ThemeSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl';\n"
     },
     {
       "path": "packages/ui/src/styles/kbd.ts",

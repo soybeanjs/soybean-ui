@@ -1,8 +1,6 @@
 {
   "name": "accordion",
-  "description": "A vertically stacked set of interactive headings that reveal or hide associated content.",
-  "dependencies": ["@soybeanjs/cva", "@soybeanjs/headless", "@soybeanjs/utils"],
-  "registryDependencies": ["utils"],
+  "dependencies": ["@soybeanjs/headless", "@soybeanjs/utils"],
   "files": [
     {
       "path": "packages/ui/src/components/accordion/accordion.vue",
@@ -10,14 +8,14 @@
       "content": "<script setup lang=\"ts\" generic=\"T extends AccordionOptionData = AccordionOptionData, M extends boolean = false\">\nimport { computed } from 'vue';\nimport { AccordionCompact, provideAccordionUi } from '@soybeanjs/headless/accordion';\nimport type { AccordionOptionData } from '@soybeanjs/headless/accordion';\nimport { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';\nimport { keysOf } from '@soybeanjs/utils';\nimport { accordionVariants } from '@/styles/accordion';\nimport type { AccordionProps, AccordionEmits, AccordionSlots } from './types';\n\ndefineOptions({\n  name: 'SAccordion'\n});\n\nconst props = withDefaults(defineProps<AccordionProps<T, M>>(), {\n  collapsible: true,\n  unmountOnHide: true\n});\n\nconst emit = defineEmits<AccordionEmits<M>>();\n\nconst slots = defineSlots<AccordionSlots<T, M>>();\n\nconst forwardedProps = useOmitProps(props, ['class', 'size', 'ui']);\n\nconst listeners = useForwardListeners(emit);\n\nconst slotNames = computed(() => keysOf(slots).filter(name => name !== 'item'));\n\nconst ui = computed(() =>\n  accordionVariants(\n    {\n      size: props.size\n    },\n    props.ui,\n    { root: props.class }\n  )\n);\n\nprovideAccordionUi(ui);\n</script>\n\n<template>\n  <AccordionCompact v-bind=\"forwardedProps\" v-on=\"listeners\">\n    <template #item=\"slotProps\">\n      <slot name=\"item\" v-bind=\"slotProps\" />\n    </template>\n    <template v-for=\"slotName in slotNames\" #[slotName]=\"slotProps\">\n      <slot :name=\"slotName\" v-bind=\"slotProps\" />\n    </template>\n  </AccordionCompact>\n</template>\n"
     },
     {
-      "path": "packages/ui/src/components/accordion/index.ts",
-      "type": "registry:lib",
-      "content": "export { default as SAccordion } from './accordion.vue';\n\nexport type * from '@soybeanjs/headless/accordion';\nexport type * from './types';\n"
-    },
-    {
       "path": "packages/ui/src/components/accordion/types.ts",
       "type": "registry:lib",
       "content": "import type {\n  AccordionCompactProps,\n  AccordionCompactEmits,\n  AccordionCompactSlots,\n  AccordionOptionData,\n  AccordionUi\n} from '@soybeanjs/headless/accordion';\nimport type { ClassValue } from '@soybeanjs/headless/types';\nimport type { ThemeSize } from '@/theme';\n\n/**\n * Properties for the Accordion component.\n */\nexport interface AccordionProps<\n  T extends AccordionOptionData = AccordionOptionData,\n  M extends boolean = false\n> extends AccordionCompactProps<T, M> {\n  /**\n   * root class\n   */\n  class?: ClassValue;\n  /**\n   * Visual size of the component.\n   */\n  size?: ThemeSize;\n  /**\n   * Per-slot class overrides for the component.\n   */\n  ui?: Partial<AccordionUi>;\n}\n\n/**\n * Events for the Accordion component.\n */\nexport type AccordionEmits<M extends boolean = false> = AccordionCompactEmits<M>;\n\n/**\n * Slots for the Accordion component.\n */\nexport type AccordionSlots<\n  T extends AccordionOptionData = AccordionOptionData,\n  M extends boolean = false\n> = AccordionCompactSlots<T, M>;\n"
+    },
+    {
+      "path": "packages/ui/src/components/accordion/index.ts",
+      "type": "registry:lib",
+      "content": "export { default as SAccordion } from './accordion.vue';\n\nexport type * from '@soybeanjs/headless/accordion';\nexport type * from './types';\n"
     },
     {
       "path": "packages/ui/src/styles/accordion.ts",
@@ -40,6 +38,5 @@
       "content": "export type ThemeColor = 'primary' | 'destructive' | 'success' | 'warning' | 'info' | 'carbon' | 'secondary' | 'accent';\n\nexport type ThemeSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl';\n"
     }
   ],
-  "categories": ["layout", "disclosure"],
   "type": "registry:ui"
 }

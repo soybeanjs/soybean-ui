@@ -1,7 +1,7 @@
 {
   "name": "backtop",
   "dependencies": ["@soybeanjs/headless"],
-  "registryDependencies": ["button", "icon"],
+  "registryDependencies": ["icon"],
   "files": [
     {
       "path": "packages/ui/src/components/backtop/backtop.vue",
@@ -9,14 +9,14 @@
       "content": "<script setup lang=\"ts\">\nimport { computed } from 'vue';\nimport { Backtop } from '@soybeanjs/headless/backtop';\nimport { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';\nimport { backtopVariants } from '@/styles/backtop';\nimport Icon from '../icon/icon.vue';\nimport type { BacktopProps, BacktopEmits } from './types';\n\ndefineOptions({\n  name: 'SBacktop'\n});\n\nconst props = withDefaults(defineProps<BacktopProps>(), {\n  color: 'primary',\n  size: 'lg',\n  variant: 'solid',\n  shape: 'circle',\n  shadow: 'lg',\n  fitContent: true,\n  icon: 'lucide:arrow-up'\n});\n\nconst emit = defineEmits<BacktopEmits>();\n\nconst forwardedProps = useOmitProps(props, [\n  'class',\n  'color',\n  'size',\n  'variant',\n  'shape',\n  'shadow',\n  'fitContent',\n  'icon',\n  'iconClass',\n  'iconProps'\n]);\n\nconst listeners = useForwardListeners(emit);\n\nconst cls = computed(() =>\n  backtopVariants(\n    {\n      color: props.color,\n      size: props.size,\n      variant: props.variant,\n      shape: props.shape,\n      shadow: props.shadow,\n      fitContent: props.fitContent\n    },\n    props.class\n  )\n);\n</script>\n\n<template>\n  <Backtop v-bind=\"forwardedProps\" :class=\"cls\" v-on=\"listeners\">\n    <slot>\n      <Icon v-bind=\"iconProps\" :icon=\"icon\" :class=\"iconClass\" />\n    </slot>\n  </Backtop>\n</template>\n"
     },
     {
-      "path": "packages/ui/src/components/backtop/index.ts",
-      "type": "registry:lib",
-      "content": "export { default as SBacktop } from './backtop.vue';\n\nexport type { BacktopTarget, BacktopState } from '@soybeanjs/headless/backtop';\nexport type * from './types';\n"
-    },
-    {
       "path": "packages/ui/src/components/backtop/types.ts",
       "type": "registry:lib",
       "content": "import type { BacktopEmits as _BacktopEmits, BacktopProps as _BacktopProps } from '@soybeanjs/headless/backtop';\nimport type { ClassValue } from '@soybeanjs/headless/types';\nimport type { ThemeColor, ThemeSize } from '@/theme';\nimport type { ButtonShadow, ButtonShape, ButtonVariant } from '../button/types';\nimport type { IconProps } from '../icon/types';\n\n/**\n * Properties for the Backtop component.\n */\nexport interface BacktopProps extends _BacktopProps {\n  /**\n   * Additional class names applied to the root element.\n   */\n  class?: ClassValue;\n  /**\n   * Theme color of the component.\n   */\n  color?: ThemeColor;\n  /**\n   * Visual size of the component.\n   */\n  size?: ThemeSize;\n  /**\n   * Visual variant of the component.\n   */\n  variant?: ButtonVariant;\n  /**\n   * Shape of the component.\n   */\n  shape?: ButtonShape;\n  /**\n   * Shadow style of the component.\n   */\n  shadow?: ButtonShadow;\n  /**\n   * Whether the component should fit its content width.\n   */\n  fitContent?: boolean;\n  /**\n   * The icon name of iconify.\n   *\n   * @default 'lucide:arrow-up'\n   */\n  icon?: string;\n  /**\n   * The class of the icon.\n   */\n  iconClass?: ClassValue;\n  /**\n   * The props of the icon.\n   */\n  iconProps?: Partial<IconProps>;\n}\n\n/**\n * Events for the Backtop component.\n */\nexport type BacktopEmits = _BacktopEmits;\n"
+    },
+    {
+      "path": "packages/ui/src/components/backtop/index.ts",
+      "type": "registry:lib",
+      "content": "export { default as SBacktop } from './backtop.vue';\n\nexport type { BacktopTarget, BacktopState } from '@soybeanjs/headless/backtop';\nexport type * from './types';\n"
     },
     {
       "path": "packages/ui/src/styles/backtop.ts",
