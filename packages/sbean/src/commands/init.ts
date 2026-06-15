@@ -27,7 +27,6 @@ import { decodePreset, isPresetCode } from '../registry/preset';
 export const initOptionsSchema = v.object({
   cwd: v.string(),
   monorepo: v.optional(v.boolean()),
-  uiDir: v.optional(v.string()),
   style: v.optional(v.picklist(PRESET_STYLES)),
   size: v.optional(v.picklist(PRESET_SIZES)),
   base: v.optional(v.picklist(PRESET_BASE_COLORS)),
@@ -100,7 +99,7 @@ export const init = new Command()
   .option('-c, --cwd <cwd>', 'the working directory', process.cwd())
   .option('-m, --monorepo', 'use monorepo (pnpm workspaces) structure', false)
   .option('--nuxt', 'initialize as a Nuxt 3 project', false)
-  .option('--ui-dir <path>', 'component output directory (default: src/ui or packages/ui)')
+  .option('--ui-dir <path>', 'component output directory (default: src/ui)', 'src/ui')
   .option('--style <style>', `style preset: ${PRESET_STYLES.join('/')}`)
   .option('--size <size>', `component size: ${PRESET_SIZES.join('/')}`)
   .option('-b, --base <base>', `base color: ${PRESET_BASE_COLORS.join('/')}`)
@@ -124,7 +123,7 @@ type InitActionOptions = {
   cwd: string;
   monorepo?: boolean;
   nuxt?: boolean;
-  uiDir?: string;
+  uiDir: string;
   style?: string;
   size?: string;
   base?: string;
@@ -157,7 +156,7 @@ export async function runInit(opts: InitActionOptions) {
 
   // Detect monorepo status (from CLI flag, then auto-detect, then prompt)
   const autoMonorepo = await detectMonorepo(cwd);
-  let isMonorepo = opts.monorepo ?? autoMonorepo;
+  const isMonorepo = opts.monorepo ?? autoMonorepo;
 
   // Determine config values
   // Handle preset code (overrides defaults, but CLI flags take precedence)
@@ -199,30 +198,6 @@ export async function runInit(opts: InitActionOptions) {
   // Prompt if not using defaults/yes
   if (!opts.defaults && !opts.yes) {
     const answers = await prompts([
-      {
-        type: 'select',
-        name: 'monorepo',
-        message: 'Project structure?',
-        choices: [
-          { title: `Monorepo (${autoMonorepo ? 'detected' : 'pnpm workspaces — recommended'})`, value: 'monorepo' },
-          { title: 'Single package', value: 'single' }
-        ],
-        initial: 0
-      },
-      {
-        type: 'toggle',
-        name: 'nuxt',
-        message: 'Are you using Nuxt 3?',
-        initial: false,
-        active: 'yes',
-        inactive: 'no'
-      },
-      {
-        type: 'text',
-        name: 'uiDir',
-        message: 'Component output directory?',
-        initial: (prev: Record<string, unknown>) => (prev.nuxt ? 'src/ui' : isMonorepo ? 'packages/ui' : 'src/ui')
-      },
       {
         type: 'select',
         name: 'style',
@@ -305,16 +280,6 @@ export async function runInit(opts: InitActionOptions) {
         initial: 0
       }
     ]);
-
-    if (answers.monorepo) {
-      isMonorepo = answers.monorepo === 'monorepo';
-    }
-    if (answers.nuxt !== undefined) {
-      opts.nuxt = answers.nuxt as boolean;
-    }
-    if (answers.uiDir !== undefined && answers.uiDir !== '') {
-      opts.uiDir = answers.uiDir;
-    }
     if (answers.style) opts.style = answers.style as (typeof PRESET_STYLES)[number];
     if (answers.size) opts.size = answers.size as (typeof PRESET_SIZES)[number];
     if (answers.base) opts.base = answers.base as (typeof PRESET_BASE_COLORS)[number];
@@ -338,8 +303,7 @@ export async function runInit(opts: InitActionOptions) {
       await scaffoldNuxtProject(cwd, opts.name);
     } else {
       console.log('No package.json found. Creating a new Vue + Vite project...');
-      const uiDirForScaffold = opts.uiDir ?? (isMonorepo ? 'packages/ui' : 'src/ui');
-      await scaffoldProject(cwd, opts.name, uiDirForScaffold);
+      await scaffoldProject(cwd, opts.name, opts.uiDir);
     }
   }
 
@@ -363,9 +327,6 @@ export async function runInit(opts: InitActionOptions) {
 
   // Write sbean.json
   const config = await createDefaultConfig(cwd, {
-    isMonorepo,
-    isNuxt,
-    uiDir: opts.uiDir,
     style: (opts.style as (typeof PRESET_STYLES)[number]) || style,
     iconLibrary: (opts.iconLibrary as (typeof PRESET_ICON_LIBRARIES)[number]) || iconLibrary,
     uno: {
@@ -402,10 +363,10 @@ export async function runInit(opts: InitActionOptions) {
     console.log('  presets: [presetSbean()]');
   }
 
-  await ensureTypeScriptConfig(cwd, config.uiDir ?? 'src/ui');
+  await ensureTypeScriptConfig(cwd, opts.uiDir);
 
   // Generate resolver, nuxt module, and constants from source
-  await generatePackModules(cwd, config.uiDir ?? 'src/ui', isNuxt);
+  await generatePackModules(cwd, opts.uiDir, isNuxt);
 
   console.log('\nDone! Run "sbean add <component>" to add components.');
 }

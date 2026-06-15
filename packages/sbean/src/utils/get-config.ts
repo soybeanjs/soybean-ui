@@ -66,17 +66,11 @@ export async function getConfig(cwd: string): Promise<Config | null> {
   return resolveConfigPaths(found.configDir, rawConfig);
 }
 
-/** Default uiDir for single-repo and monorepo. */
-const DEFAULT_UI_DIR_SINGLE = 'src/ui';
-const DEFAULT_UI_DIR_MONOREPO = 'packages/ui';
-
 /**
- * Resolve uiDir to an absolute path.
+ * Resolve uiDir to an absolute path. Always defaults to `src/ui`.
  */
 export async function resolveConfigPaths(cwd: string, config: v.InferOutput<typeof rawConfigSchema>): Promise<Config> {
-  const isMonorepo = config.isMonorepo ?? false;
-  const uiRel = config.uiDir ?? (isMonorepo ? DEFAULT_UI_DIR_MONOREPO : DEFAULT_UI_DIR_SINGLE);
-  const uiAbs = path.resolve(cwd, uiRel);
+  const uiAbs = path.resolve(cwd, 'src/ui');
 
   return v.parse(configSchema, {
     ...config,
@@ -94,13 +88,8 @@ export async function createDefaultConfig(
   cwd: string,
   overrides?: Partial<v.InferOutput<typeof rawConfigSchema>>
 ): Promise<Config> {
-  const isMonorepo = overrides?.isMonorepo ?? false;
-  const isNuxt = overrides?.isNuxt ?? false;
-
   const raw: v.InferOutput<typeof rawConfigSchema> = {
     style: 'soybean',
-    isMonorepo,
-    isNuxt,
     iconLibrary: 'lucide',
     uno: {
       base: 'zinc',
@@ -113,7 +102,6 @@ export async function createDefaultConfig(
       color: 'default'
     },
     registries: {},
-    uiDir: isMonorepo ? DEFAULT_UI_DIR_MONOREPO : DEFAULT_UI_DIR_SINGLE,
     ...overrides
   };
 

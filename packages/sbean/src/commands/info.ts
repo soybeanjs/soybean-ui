@@ -82,7 +82,6 @@ export const info = new Command()
       console.log('  ─────────────────');
 
       console.log(`  Style:          ${config.style}`);
-      console.log(`  Structure:      ${config.isMonorepo ? 'monorepo' : 'single package'}`);
       console.log(`  Base color:     ${config.uno.base}`);
       console.log(`  Primary color:  ${config.uno.primary}`);
       console.log(`  Feedback:       ${config.uno.feedback ?? 'classic'}`);
@@ -113,7 +112,7 @@ export const info = new Command()
 
       console.log();
       console.log('  Paths');
-      console.log(`    ui  →  ${config.uiDir ?? 'src/ui'}  →  ${config.resolvedPaths.ui}`);
+      console.log(`    ui  →  src/ui  →  ${config.resolvedPaths.ui}`);
     } else {
       console.log('  No sbean.json found. Run "sbean init" to create one.');
     }

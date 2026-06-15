@@ -87,17 +87,8 @@ export async function mergeTemplateFiles(projectDir: string, templateName: strin
 /**
  * Get recommended config for template.
  */
-export function getTemplateConfig(templateName: string): Record<string, any> {
-  const configs: Record<string, Record<string, any>> = {
-    'vue-vite': {
-      uiDir: 'src/ui'
-    },
-    nuxt: {
-      uiDir: 'ui'
-    }
-  };
-
-  return configs[templateName] ?? {};
+export function getTemplateConfig(_templateName: string): Record<string, any> {
+  return {};
 }
 
 /**

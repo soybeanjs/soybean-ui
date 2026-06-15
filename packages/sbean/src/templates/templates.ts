@@ -80,7 +80,6 @@ export default defineConfig({
 `,
     'sbean.json': `{
   "style": "soybean",
-  "isMonorepo": false,
   "iconLibrary": "lucide",
   "uno": {
     "size": "md",
@@ -93,8 +92,7 @@ export default defineConfig({
   "menu": {
     "accent": "subtle",
     "color": "default"
-  },
-  "uiDir": "src/ui"
+  }
 }
 `,
     'src/main.ts': `import { createApp } from 'vue'
@@ -191,7 +189,6 @@ export default defineConfig({
 `,
     'sbean.json': `{
   "style": "soybean",
-  "isMonorepo": false,
   "iconLibrary": "lucide",
   "uno": {
     "size": "md",
@@ -204,8 +201,7 @@ export default defineConfig({
   "menu": {
     "accent": "subtle",
     "color": "default"
-  },
-  "uiDir": "ui"
+  }
 }
 `,
     'app.vue': `<template>

@@ -87,8 +87,7 @@ describe('config management', () => {
           iconLibrary: 'lucide',
           uno: { base: 'zinc', primary: 'indigo', radius: 'md' },
           font: {},
-          menu: { accent: 'subtle', color: 'default' },
-          uiDir: 'src/ui'
+          menu: { accent: 'subtle', color: 'default' }
         }),
         'utf-8'
       );
@@ -107,34 +106,16 @@ describe('config management', () => {
   });
 
   describe('resolveConfigPaths', () => {
-    it('resolves uiDir to absolute path (single repo)', async () => {
+    it('resolves ui to correct absolute path', async () => {
       const resolved = await resolveConfigPaths(tmpDir, {
         style: 'soybean',
-        isMonorepo: false,
-        isNuxt: false,
         iconLibrary: 'lucide',
         uno: { base: 'zinc', primary: 'indigo', radius: 'md' },
         font: {},
-        menu: { accent: 'subtle', color: 'default' },
-        uiDir: 'src/ui'
+        menu: { accent: 'subtle', color: 'default' }
       });
 
       expect(resolved.resolvedPaths.ui).toBe(path.join(tmpDir, 'src', 'ui'));
-    });
-
-    it('resolves uiDir to absolute path (monorepo)', async () => {
-      const resolved = await resolveConfigPaths(tmpDir, {
-        style: 'soybean',
-        isMonorepo: true,
-        isNuxt: false,
-        iconLibrary: 'lucide',
-        uno: { base: 'zinc', primary: 'indigo', radius: 'md' },
-        font: {},
-        menu: { accent: 'subtle', color: 'default' },
-        uiDir: 'packages/ui'
-      });
-
-      expect(resolved.resolvedPaths.ui).toBe(path.join(tmpDir, 'packages', 'ui'));
     });
   });
 });
@@ -142,12 +123,10 @@ describe('config management', () => {
 describe('config schema validation', () => {
   const minimalConfig = {
     style: 'soybean',
-    isMonorepo: false,
     iconLibrary: 'lucide',
     uno: { base: 'zinc', primary: 'indigo', radius: 'md' },
     font: {},
-    menu: { accent: 'subtle', color: 'default' },
-    uiDir: 'src/ui'
+    menu: { accent: 'subtle', color: 'default' }
   };
 
   it('validates minimal config', () => {

@@ -16,8 +16,7 @@ describe('config schema', () => {
     menu: {
       accent: 'subtle',
       color: 'default'
-    },
-    uiDir: 'src/ui'
+    }
   };
 
   it('parses a minimal valid config', () => {
