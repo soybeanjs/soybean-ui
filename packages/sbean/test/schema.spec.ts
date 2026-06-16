@@ -1,11 +1,10 @@
 import { describe, it, expect } from 'vitest';
 import * as v from 'valibot';
-import { rawConfigSchema, PRESET_STYLES, PRESET_RADII, PRESET_ICON_LIBRARIES } from '../src/registry/config';
+import { rawConfigSchema, PRESET_RADII, PRESET_ICON_LIBRARIES } from '../src/registry/config';
 import { registryItemSchema, registrySchema } from '../src/registry/schema';
 
 describe('config schema', () => {
   const minimalConfig = {
-    style: 'soybean',
     iconLibrary: 'lucide',
     uno: {
       base: 'zinc',
@@ -22,24 +21,6 @@ describe('config schema', () => {
   it('parses a minimal valid config', () => {
     const result = v.safeParse(rawConfigSchema, minimalConfig);
     expect(result.success).toBe(true);
-  });
-
-  it('rejects invalid style', () => {
-    const result = v.safeParse(rawConfigSchema, {
-      ...minimalConfig,
-      style: 'invalid-style'
-    });
-    expect(result.success).toBe(false);
-  });
-
-  it('accepts all valid styles', () => {
-    for (const style of PRESET_STYLES) {
-      const result = v.safeParse(rawConfigSchema, {
-        ...minimalConfig,
-        style
-      });
-      expect(result.success).toBe(true);
-    }
   });
 
   it('accepts all valid radius values', () => {

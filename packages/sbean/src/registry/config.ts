@@ -19,8 +19,6 @@ export const PRESET_BASE_COLORS = builtinBasePresetKeys;
 
 export const PRESET_PRIMARY_COLORS = builtinPrimaryPresetKeys;
 
-export const PRESET_STYLES = ['soybean', 'clean', 'dense'] as const;
-
 export const PRESET_FEEDBACK_COLORS = builtinFeedbackPresetKeys;
 
 export const PRESET_SIZES = themeSizeKeys;
@@ -59,7 +57,6 @@ export const PRESET_FONTS = [
 
 export const rawConfigSchema = v.object({
   $schema: v.optional(v.string()),
-  style: v.picklist(PRESET_STYLES),
   iconLibrary: v.picklist(PRESET_ICON_LIBRARIES),
   uno: v.object({
     base: v.picklist(PRESET_BASE_COLORS),

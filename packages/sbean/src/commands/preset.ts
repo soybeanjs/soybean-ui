@@ -20,7 +20,6 @@ async function resolvePresetConfig(presetArg: string): Promise<PresetConfig | nu
     const content = JSON.parse(await fs.readFile(presetFile, 'utf-8'));
 
     return {
-      style: (content.name as string) ?? content.style ?? 'soybean',
       base: content.base ?? 'zinc',
       primary: content.primary ?? 'indigo',
       iconLibrary: content.iconLibrary ?? 'lucide',
@@ -50,7 +49,6 @@ export async function applyPresetToProject(presetArg: string, cwd: string): Prom
 
   const updated = {
     ...existingConfig,
-    style: config.style as 'soybean' | 'clean' | 'dense',
     iconLibrary: config.iconLibrary as typeof existingConfig.iconLibrary,
     uno: {
       ...existingConfig.uno,
@@ -102,7 +100,7 @@ export const preset = new Command()
           console.log();
         }
 
-        console.log(`  Use "sbean init --style <name>" to apply a preset.`);
+        console.log(`  Use "sbean init <name>" to apply a preset.`);
         console.log();
       })
   )
@@ -123,7 +121,6 @@ export const preset = new Command()
         console.log(`  Preset: ${presetArg}`);
         console.log(`  ${'─'.repeat(8 + presetArg.length)}`);
         console.log();
-        console.log(`  Style:         ${config.style}`);
         console.log(`  Base:          ${config.base}`);
         console.log(`  Primary:       ${config.primary}`);
         console.log(`  Icon Library:  ${config.iconLibrary}`);

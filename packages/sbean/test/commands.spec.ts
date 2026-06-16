@@ -167,25 +167,21 @@ describe('command integration tests', () => {
   describe('config flow (sbean.json)', () => {
     it('creates, writes, and reads config roundtrip', async () => {
       const config = await createDefaultConfig(tmpDir, {
-        style: 'clean',
         uno: { base: 'stone', primary: 'green', radius: 'lg' }
       });
       await writeConfig(tmpDir, config);
 
       const read = await getConfig(tmpDir);
       expect(read).not.toBeNull();
-      expect(read!.style).toBe('clean');
     });
 
     it('info shows config details', async () => {
       const config = await createDefaultConfig(tmpDir, {
-        style: 'dense',
         uno: { base: 'slate', primary: 'amber', radius: 'xs' }
       });
       await writeConfig(tmpDir, config);
 
       const read = await getConfig(tmpDir);
-      expect(read!.style).toBe('dense');
       expect(read!.uno.base).toBe('slate');
       expect(read!.uno.primary).toBe('amber');
       expect(read!.uno.radius).toBe('xs');
@@ -203,7 +199,6 @@ describe('command integration tests', () => {
 
       const updated = await getConfig(tmpDir);
       expect(updated).not.toBeNull();
-      expect(updated!.style).toBe('clean');
     });
 
     it('applies the "dense" preset', async () => {
@@ -214,7 +209,6 @@ describe('command integration tests', () => {
 
       const updated = await getConfig(tmpDir);
       expect(updated).not.toBeNull();
-      expect(updated!.style).toBe('dense');
     });
 
     it('applies a base62 preset code', async () => {
@@ -226,7 +220,6 @@ describe('command integration tests', () => {
 
       const updated = await getConfig(tmpDir);
       expect(updated).not.toBeNull();
-      expect(updated!.style).toBe('soybean');
     });
   });
 

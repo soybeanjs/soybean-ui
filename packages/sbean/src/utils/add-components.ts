@@ -48,7 +48,6 @@ export async function addComponents(
 
   const updateOpts: UpdateFilesOptions = {
     overwrite: options.overwrite,
-    style: config.style,
     transformCtx,
     dryRun: options.dryRun,
     diff: options.diff,

@@ -60,8 +60,7 @@ describe('generated import mapping', () => {
       {
         uiAlias: '#ui',
         iconLibrary: 'lucide'
-      },
-      'soybean'
+      }
     );
 
     expect(output).toContain('#ui/styles/button');

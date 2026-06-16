@@ -28,22 +28,14 @@ const ICONIFY_PREFIX_MAP: Record<string, string> = {
  *   components → {uiAlias}/components
  *   styles     → {uiAlias}/styles
  *   theme      → {uiAlias}/theme
- *   registry   → {uiAlias}/
  *
  * @param source - The original source code
  * @param ctx - User's configured aliases (just uiAlias + iconLibrary)
- * @param style - The style preset being used (e.g. "soybean")
  */
-export function transformImports(source: string, ctx: TransformContext, style: string): string {
+export function transformImports(source: string, ctx: TransformContext): string {
   const a = ctx.uiAlias;
 
   let result = source;
-
-  // Rewrite @/registry/<style>/ui → {a} (strip trailing /ui)
-  result = result.replace(new RegExp(`@/registry/${style}/ui`, 'g'), a);
-
-  // Rewrite @/registry/<style>/* → {a}/* (everything else)
-  result = result.replace(new RegExp(`@/registry/${style}/`, 'g'), `${a}/`);
 
   // Rewrite @/styles/ → {a}/styles/
   result = result.replace(/@\/styles\//g, `${a}/styles/`);

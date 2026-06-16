@@ -24,7 +24,6 @@ describe('config management', () => {
     it('creates a default config with correct values', async () => {
       const config = await createDefaultConfig(tmpDir);
 
-      expect(config.style).toBe('soybean');
       expect(config.iconLibrary).toBe('lucide');
       expect(config.uno.base).toBe('zinc');
       expect(config.uno.primary).toBe('indigo');
@@ -43,12 +42,10 @@ describe('config management', () => {
 
     it('accepts overrides', async () => {
       const config = await createDefaultConfig(tmpDir, {
-        style: 'clean',
         uno: { base: 'stone', primary: 'green', radius: 'lg' },
         iconLibrary: 'tabler'
       });
 
-      expect(config.style).toBe('clean');
       expect(config.uno.base).toBe('stone');
       expect(config.uno.primary).toBe('green');
       expect(config.uno.radius).toBe('lg');
@@ -59,7 +56,6 @@ describe('config management', () => {
   describe('writeConfig / getConfig', () => {
     it('writes and reads config roundtrip', async () => {
       const config = await createDefaultConfig(tmpDir, {
-        style: 'dense',
         uno: { base: 'slate', primary: 'amber', radius: 'xs' }
       });
 
@@ -67,7 +63,6 @@ describe('config management', () => {
       const read = await getConfig(tmpDir);
 
       expect(read).not.toBeNull();
-      expect(read!.style).toBe('dense');
       expect(read!.uno.base).toBe('slate');
       expect(read!.uno.primary).toBe('amber');
       expect(read!.uno.radius).toBe('xs');
@@ -78,13 +73,12 @@ describe('config management', () => {
       expect(config).toBeNull();
     });
 
-    it('validates config on read (rejects invalid)', async () => {
+    it('rejects invalid icon library', async () => {
       // Write an invalid config manually
       await fs.writeFile(
         path.join(tmpDir, 'sbean.json'),
         JSON.stringify({
-          style: 'invalid-style',
-          iconLibrary: 'lucide',
+          iconLibrary: 'invalid-library',
           uno: { base: 'zinc', primary: 'indigo', radius: 'md' },
           font: {},
           menu: { accent: 'subtle', color: 'default' }
@@ -101,14 +95,12 @@ describe('config management', () => {
 
       const raw = JSON.parse(await fs.readFile(path.join(tmpDir, 'sbean.json'), 'utf-8'));
       expect(raw.resolvedPaths).toBeUndefined();
-      expect(raw.style).toBe('soybean');
     });
   });
 
   describe('resolveConfigPaths', () => {
     it('resolves ui to correct absolute path', async () => {
       const resolved = await resolveConfigPaths(tmpDir, {
-        style: 'soybean',
         iconLibrary: 'lucide',
         uno: { base: 'zinc', primary: 'indigo', radius: 'md' },
         font: {},
@@ -122,7 +114,6 @@ describe('config management', () => {
 
 describe('config schema validation', () => {
   const minimalConfig = {
-    style: 'soybean',
     iconLibrary: 'lucide',
     uno: { base: 'zinc', primary: 'indigo', radius: 'md' },
     font: {},

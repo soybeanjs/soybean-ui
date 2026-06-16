@@ -10,8 +10,7 @@ import { readRegistryWithIncludes, createRegistryItem } from '../registry/loader
 
 export const diffOptionsSchema = v.object({
   component: v.string(),
-  cwd: v.string(),
-  style: v.optional(v.string())
+  cwd: v.string()
 });
 
 export const diff = new Command()
@@ -65,11 +64,8 @@ export const diff = new Command()
       iconLibrary: config.iconLibrary
     };
 
-    const style = options.style ?? config.style;
-
     console.log();
     console.log(`  Diff: ${options.component}`);
-    console.log(`  Style: ${style}`);
     console.log();
 
     let hasDiff = false;
@@ -98,7 +94,7 @@ export const diff = new Command()
       }
 
       // Transform registry content to match user's aliases for comparison
-      const transformedRegContent = transformImports(regFile.content, transformCtx, style);
+      const transformedRegContent = transformImports(regFile.content, transformCtx);
       const transformedRegContentWithIcons = transformIcons(transformedRegContent, config.iconLibrary);
 
       // Compare

@@ -38,13 +38,12 @@ describe('preset system', () => {
     });
 
     it('encodes partial configs', () => {
-      const code = encodePreset({ style: 'clean', primary: 'green' });
+      const code = encodePreset({ primary: 'green' });
       expect(code).toMatch(/^a[0-9A-Za-z]+$/);
     });
 
     it('encodes full config', () => {
       const code = encodePreset({
-        style: 'dense',
         base: 'stone',
         primary: 'amber',
         iconLibrary: 'tabler',
@@ -61,7 +60,6 @@ describe('preset system', () => {
     it('decodes default config from "a0"', () => {
       const decoded = decodePreset('a0');
       expect(decoded).not.toBeNull();
-      expect(decoded!.style).toBe(DEFAULT_PRESET_CONFIG.style);
       expect(decoded!.base).toBe(DEFAULT_PRESET_CONFIG.base);
       expect(decoded!.primary).toBe(DEFAULT_PRESET_CONFIG.primary);
       expect(decoded!.radius).toBe(DEFAULT_PRESET_CONFIG.radius);
@@ -79,11 +77,9 @@ describe('preset system', () => {
     it('roundtrips configs', () => {
       const configs = [
         {},
-        { style: 'clean' },
         { primary: 'green', radius: 'lg' },
         { base: 'stone', primary: 'amber', iconLibrary: 'ph' },
         {
-          style: 'dense',
           base: 'slate',
           primary: 'emerald',
           iconLibrary: 'tabler',
@@ -116,7 +112,6 @@ describe('preset system', () => {
     it('validates correct codes', () => {
       expect(isPresetCode('a0')).toBe(true);
       expect(isPresetCode('a1A2b')).toBe(true);
-      expect(isPresetCode(encodePreset({ style: 'clean' }))).toBe(true);
     });
 
     it('rejects invalid codes', () => {

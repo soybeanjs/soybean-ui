@@ -89,7 +89,6 @@ export async function createDefaultConfig(
   overrides?: Partial<v.InferOutput<typeof rawConfigSchema>>
 ): Promise<Config> {
   const raw: v.InferOutput<typeof rawConfigSchema> = {
-    style: 'soybean',
     iconLibrary: 'lucide',
     uno: {
       base: 'zinc',

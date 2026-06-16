@@ -79,7 +79,6 @@ export default defineConfig({
 }
 `,
     'sbean.json': `{
-  "style": "soybean",
   "iconLibrary": "lucide",
   "uno": {
     "size": "md",
@@ -188,7 +187,6 @@ export default defineConfig({
 }
 `,
     'sbean.json': `{
-  "style": "soybean",
   "iconLibrary": "lucide",
   "uno": {
     "size": "md",

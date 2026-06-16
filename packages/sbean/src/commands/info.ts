@@ -1,13 +1,7 @@
 import path from 'path';
 import * as v from 'valibot';
 import { Command } from 'commander';
-import {
-  PRESET_BASE_COLORS,
-  PRESET_PRIMARY_COLORS,
-  PRESET_RADII,
-  PRESET_ICON_LIBRARIES,
-  PRESET_STYLES
-} from '../registry/config';
+import { PRESET_BASE_COLORS, PRESET_PRIMARY_COLORS, PRESET_RADII, PRESET_ICON_LIBRARIES } from '../registry/config';
 import { getConfig } from '../utils/get-config';
 import { getProjectInfo } from '../utils/get-project-info';
 
@@ -49,7 +43,6 @@ export const info = new Command()
             project: projectInfo,
             config,
             presets: {
-              styles: PRESET_STYLES,
               base: PRESET_BASE_COLORS,
               primary: PRESET_PRIMARY_COLORS,
               radius: PRESET_RADII,
@@ -81,7 +74,6 @@ export const info = new Command()
       console.log('  sbean.json Config');
       console.log('  ─────────────────');
 
-      console.log(`  Style:          ${config.style}`);
       console.log(`  Base color:     ${config.uno.base}`);
       console.log(`  Primary color:  ${config.uno.primary}`);
       console.log(`  Feedback:       ${config.uno.feedback ?? 'classic'}`);
@@ -120,7 +112,6 @@ export const info = new Command()
     console.log();
     console.log('  Available Preset Values');
     console.log('  ───────────────────────');
-    console.log(`  Styles:     ${PRESET_STYLES.join(', ')}`);
     console.log(`  Base:       ${PRESET_BASE_COLORS.join(', ')}`);
     console.log(`  Primary:    ${PRESET_PRIMARY_COLORS.join(', ')}`);
     console.log(`  Radius:     ${PRESET_RADII.join(', ')}`);

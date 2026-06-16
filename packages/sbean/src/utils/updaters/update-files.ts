@@ -6,7 +6,6 @@ import type { TransformContext } from '../transformers/transform-import';
 
 export interface UpdateFilesOptions {
   overwrite: boolean;
-  style: string;
   transformCtx: TransformContext;
   dryRun?: boolean;
   diff?: boolean;
@@ -45,7 +44,7 @@ export async function updateFiles(
 
     // Apply transformers
     let content = file.content;
-    content = transformImports(content, options.transformCtx, options.style);
+    content = transformImports(content, options.transformCtx);
     content = transformIcons(content, options.transformCtx.iconLibrary);
 
     // Check if file exists
