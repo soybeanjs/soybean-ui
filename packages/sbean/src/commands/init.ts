@@ -463,12 +463,14 @@ async function scaffoldNuxtProject(cwd: string, name?: string) {
       preview: 'nuxt preview'
     },
     dependencies: {
-      nuxt: '^3.16.0',
-      vue: 'latest',
+      '@iconify/vue': 'latest',
       '@soybeanjs/cva': 'latest',
       '@soybeanjs/headless': 'latest',
       '@soybeanjs/shadcn-theme': 'latest',
-      '@soybeanjs/unocss-shadcn': 'latest'
+      '@soybeanjs/unocss-shadcn': 'latest',
+      '@soybeanjs/utils': 'latest',
+      nuxt: '^3.16.0',
+      vue: 'latest'
     },
     devDependencies: {
       '@unocss/nuxt': 'latest',
@@ -574,7 +576,9 @@ async function generatePackModules(cwd: string, uiDir: string, isNuxt = false) {
     if (existsSync(dest)) continue;
 
     let content = await fs.readFile(src, 'utf-8');
-    content = content.replace(/@soybeanjs\/ui/g, '#ui');
+    content = content.replaceAll('//---', '');
+    content = content.replace("from: '@soybeanjs/ui'", 'from: `#ui/components/${path}`');
+    content = content.replace("filePath: '@soybeanjs/ui'", 'filePath: `#ui/components/${path}`');
 
     await fs.mkdir(path.dirname(dest), { recursive: true });
     await fs.writeFile(dest, content, 'utf-8');
