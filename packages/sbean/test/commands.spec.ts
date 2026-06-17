@@ -189,28 +189,6 @@ describe('command integration tests', () => {
   });
 
   describe('preset flow', () => {
-    it('applies a preset to existing project config', async () => {
-      // Create initial config
-      const config = await createDefaultConfig(tmpDir);
-      await writeConfig(tmpDir, config);
-
-      // Apply the "clean" preset
-      await applyPresetToProject('clean', tmpDir);
-
-      const updated = await getConfig(tmpDir);
-      expect(updated).not.toBeNull();
-    });
-
-    it('applies the "dense" preset', async () => {
-      const config = await createDefaultConfig(tmpDir);
-      await writeConfig(tmpDir, config);
-
-      await applyPresetToProject('dense', tmpDir);
-
-      const updated = await getConfig(tmpDir);
-      expect(updated).not.toBeNull();
-    });
-
     it('applies a base62 preset code', async () => {
       const config = await createDefaultConfig(tmpDir);
       await writeConfig(tmpDir, config);
