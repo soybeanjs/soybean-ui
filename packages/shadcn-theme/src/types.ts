@@ -266,8 +266,21 @@ export interface PresetConfig extends PresetKeyConfig {
   preset?: CustomThemeColorPreset;
 }
 
+export type ThemeColor = Extract<
+  ThemeColorKey,
+  'primary' | 'secondary' | 'accent' | 'destructive' | 'success' | 'warning' | 'info' | 'carbon'
+>;
+
 /**
- * the theme options
+ * the theme radius
+ *
+ * - 2xs: 0.25rem
+ * - xs: 0.375rem
+ * - sm: 0.5rem
+ * - md: 0.625rem
+ * - lg: 0.75rem
+ * - xl: 0.875rem
+ * - 2xl: 1rem
  */
 export type ThemeRadius = '2xs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl';
 
@@ -277,13 +290,20 @@ export interface ThemeRadiusConfig {
    *
    * @default 'md'
    */
-  radius?: ThemeRadius;
+  radius?: ThemeRadius | (string & {});
 }
 
 /**
  * the theme size key
  *
  * Controls the root font-size, scaling all rem-based values proportionally.
+ *
+ * - xs: 12px
+ * - sm: 14px
+ * - md: 16px
+ * - lg: 18px
+ * - xl: 20px
+ * - 2xl: 24px
  */
 export type ThemeSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl';
 
@@ -295,7 +315,7 @@ export interface ThemeSizeConfig {
    *
    * @default 'md'
    */
-  size?: ThemeSize;
+  size?: ThemeSize | (string & {});
 }
 
 /**
@@ -310,7 +330,7 @@ export type MenuColor = 'default' | 'inverted' | 'default-translucent' | 'invert
  *
  * Controls menu item highlight style.
  */
-export type MenuAccent = 'subtle' | 'bold';
+export type MenuAccent = 'default' | 'bold';
 
 export interface ThemeMenuConfig {
   /**
@@ -327,10 +347,10 @@ export interface ThemeMenuConfig {
   /**
    * the menu accent style
    *
-   * - subtle: muted foreground highlight
+   * - default: muted foreground highlight
    * - bold: primary color highlight
    *
-   * @default 'subtle'
+   * @default 'default'
    */
   menuAccent?: MenuAccent;
 }
@@ -339,15 +359,6 @@ export interface ThemeMenuConfig {
  * theme options
  */
 export interface ThemeOptions extends ThemeSizeConfig, ThemeRadiusConfig, ThemeMenuConfig, PresetConfig {
-  /**
-   * CSS generation scope
-   *
-   * - 'all': generate CSS for all built-in preset variants with [data-*] selectors for runtime switching
-   * - 'current': only generate CSS for the currently passed parameters (no variant selectors, smaller output)
-   *
-   * @default 'all'
-   */
-  scope?: ThemeScope;
   /**
    * the style target
    *

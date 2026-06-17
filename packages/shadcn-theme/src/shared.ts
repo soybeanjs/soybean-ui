@@ -1,7 +1,7 @@
 import { colord } from '@soybeanjs/colord';
 import { tailwindPalette, simplePalette } from '@soybeanjs/colord/palette';
 import type { PaletteColorLevel, TailwindPaletteKey, TailwindPaletteLevelColorKey } from '@soybeanjs/colord/palette';
-import { DARK_SELECTOR, DEFAULT_PRESET_OPTIONS, UI_DATA_ATTRIBUTE } from './constants';
+import { DARK_SELECTOR, DEFAULT_PRESET_OPTIONS, UI_DATA_ATTRIBUTE, THEME_SIZE, THEME_RADIUS } from './constants';
 import type { ColorFormat, ColorValue, DarkSelector, ThemeOptions } from './types';
 
 export function keysOf<TRecord extends Record<string, unknown>>(record: TRecord) {
@@ -75,21 +75,34 @@ export function getColorValue(colorValue: ColorValue, format: ColorFormat) {
   return color;
 }
 
-type UpdateUiAttributeTheme = Pick<
-  ThemeOptions,
-  'size' | 'radius' | 'menuColor' | 'menuAccent' | 'base' | 'primary' | 'feedback'
->;
+export function resolveSizeValue(size?: ThemeOptions['size']) {
+  if (!size) {
+    return `${THEME_SIZE[DEFAULT_PRESET_OPTIONS.size]}px`;
+  }
+
+  if (Object.keys(THEME_SIZE).includes(size)) {
+    return `${THEME_SIZE[size as keyof typeof THEME_SIZE]}px`;
+  }
+
+  return size;
+}
+
+export function resolveRadiusValue(radius?: ThemeOptions['radius']): string {
+  if (!radius) {
+    return THEME_RADIUS[DEFAULT_PRESET_OPTIONS.radius];
+  }
+
+  if (Object.keys(THEME_RADIUS).includes(radius)) {
+    return THEME_RADIUS[radius as keyof typeof THEME_RADIUS];
+  }
+
+  return radius;
+}
+
+type UpdateUiAttributeTheme = Pick<ThemeOptions, 'size' | 'radius' | 'menuColor' | 'menuAccent'>;
 
 export function updateUiAttribute(newTheme?: UpdateUiAttributeTheme, oldTheme?: UpdateUiAttributeTheme) {
-  const keys: (keyof UpdateUiAttributeTheme)[] = [
-    'size',
-    'radius',
-    'base',
-    'primary',
-    'feedback',
-    'menuColor',
-    'menuAccent'
-  ];
+  const keys: (keyof UpdateUiAttributeTheme)[] = ['size', 'radius', 'menuColor', 'menuAccent'];
 
   const html = document.documentElement;
 

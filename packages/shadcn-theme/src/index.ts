@@ -15,6 +15,7 @@ export { createShadcnTheme } from './core';
 export { updateUiAttribute } from './shared';
 
 export type {
+  ThemeColor,
   ThemeSize,
   ThemeRadius,
   ThemeScope,

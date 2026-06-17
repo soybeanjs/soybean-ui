@@ -3,48 +3,30 @@ import {
   COLOR_VARIABLES,
   DARK_SELECTOR,
   EXTENDED_THEME_VARIABLES,
-  THEME_SIZE,
   SIZE_VARIABLE,
   RADIUS_VARIABLE,
-  THEME_RADIUS,
   UI_DATA_ATTRIBUTE,
   menuColorCss,
-  menuAccentCss,
-  sidebarCssVars,
-  darkSidebarCss,
-  builtinBasePreset,
-  builtinPrimaryPreset,
-  builtinFeedbackPreset
+  menuAccentCss
 } from './constants';
-import { getColorValue, keysOf, removeHslBrackets, isUnTransformedColor } from './shared';
+import {
+  getColorValue,
+  keysOf,
+  removeHslBrackets,
+  isUnTransformedColor,
+  resolveSizeValue,
+  resolveRadiusValue
+} from './shared';
 import type {
   ColorFormat,
   ColorValue,
   DarkSelector,
-  StyleTarget,
+  ThemeColor,
   ThemeColorKey,
   ThemeColorPreset,
   ThemeColorWithAlphaKey,
-  ThemeColors,
-  ThemeOptions,
-  ThemeSize
+  ThemeOptions
 } from './types';
-
-export function generateAllCss(options: Required<Pick<ThemeOptions, 'styleTarget' | 'darkSelector' | 'format'>>) {
-  const { styleTarget, darkSelector, format } = options;
-
-  const sizeCss = generateSizeCss(styleTarget);
-  const radiusCss = generateRadiusCss();
-  const menuCss = generateMenuCss();
-  const baseCss = generateBaseCss({ darkSelector, format });
-  const primaryCss = generatePrimaryCss({ darkSelector, format });
-  const feedbackCss = generateFeedbackCss({ darkSelector, format });
-  const sidebarCss = generateSidebarCss({ styleTarget, darkSelector });
-
-  const css = `${sizeCss}\n\n${radiusCss}\n\n${menuCss}\n\n${baseCss}\n\n${primaryCss}\n\n${feedbackCss}\n\n${sidebarCss}`;
-
-  return css;
-}
 
 export function generateCss(
   preset: ThemeColorPreset,
@@ -52,69 +34,39 @@ export function generateCss(
     Pick<ThemeOptions, 'styleTarget' | 'darkSelector' | 'format' | 'size' | 'radius' | 'menuColor' | 'menuAccent'>
   >
 ) {
-  const sizeCss = generateSizeCss(options.styleTarget, options.size);
-  const radiusCss = generateRadiusCss(options);
-  const menuCss = generateMenuCss(options);
+  const baseCss = generateBaseCss(options);
   const colorCss = generateColorCss(preset, options);
 
-  const css = `${sizeCss}\n\n${radiusCss}\n\n${menuCss}\n\n${colorCss}`;
+  const css = `${baseCss}\n\n${colorCss}`;
 
   return css;
 }
 
-export function generateSizeCss(styleTarget: StyleTarget, size?: ThemeSize) {
-  let css = `${styleTarget} {\n  font-size: var(${SIZE_VARIABLE});\n}\n\n`;
-
-  if (size) {
-    css = `${styleTarget} {\n  ${SIZE_VARIABLE}: ${THEME_SIZE[size]}px;\n}`;
-  }
-
-  keysOf(THEME_SIZE).forEach(key => {
-    const fontSize = THEME_SIZE[key];
-    css += `\n\n[${UI_DATA_ATTRIBUTE.size}="${key}"] {\n  ${SIZE_VARIABLE}: ${fontSize}px;\n}`;
-  });
-
-  return css;
-}
-
-export function generateRadiusCss(options?: Pick<ThemeOptions, 'styleTarget' | 'radius'>) {
-  const { styleTarget, radius } = options ?? {};
-
-  let css = ``;
-  if (styleTarget && radius) {
-    css = `${styleTarget} {\n  ${RADIUS_VARIABLE}: ${THEME_RADIUS[radius]};\n}`;
-  }
-
-  keysOf(THEME_RADIUS).forEach(key => {
-    const radiusValue = THEME_RADIUS[key];
-    css += `\n\n[${UI_DATA_ATTRIBUTE.radius}="${key}"] {\n  ${RADIUS_VARIABLE}: ${radiusValue};\n}`;
-  });
-
-  return css;
-}
-
-export function generateMenuCss(options?: Pick<ThemeOptions, 'styleTarget' | 'menuColor' | 'menuAccent'>) {
-  const { styleTarget, menuColor, menuAccent } = options ?? {};
+function generateBaseCss(
+  options: Required<Pick<ThemeOptions, 'styleTarget' | 'size' | 'radius' | 'menuColor' | 'menuAccent'>>
+) {
+  const { styleTarget, size, radius, menuColor, menuAccent } = options;
 
   let css = '';
-  if (styleTarget) {
-    css += `${styleTarget} {\n`;
-    if (menuColor) {
-      const vars = menuColorCss[menuColor];
-      keysOf(vars).forEach(varKey => {
-        css += `  ${varKey}: ${vars[varKey]};\n`;
-      });
-    }
-    if (menuAccent) {
-      const vars = menuAccentCss[menuAccent];
-      keysOf(vars).forEach(varKey => {
-        css += `  ${varKey}: ${vars[varKey]};\n`;
-      });
-    }
-    css += `}`;
-  }
+  css += `${styleTarget} {\n`;
+  css += `  ${SIZE_VARIABLE}: ${resolveSizeValue(size)};\n`;
+  css += `  ${RADIUS_VARIABLE}: ${resolveRadiusValue(radius)};\n`;
+
+  const mCVars = menuColorCss[menuColor];
+  keysOf(mCVars).forEach(varKey => {
+    css += `  ${varKey}: ${mCVars[varKey]};\n`;
+  });
+
+  const aCVars = menuAccentCss[menuAccent];
+  keysOf(aCVars).forEach(varKey => {
+    css += `  ${varKey}: ${aCVars[varKey]};\n`;
+  });
+
+  css += `}\n\n`;
 
   keysOf(menuColorCss).forEach(key => {
+    if (key === 'default') return;
+
     const vars = menuColorCss[key];
     css += `\n\n[${UI_DATA_ATTRIBUTE.menuColor}="${key}"] {\n`;
     keysOf(vars).forEach(varKey => {
@@ -124,6 +76,8 @@ export function generateMenuCss(options?: Pick<ThemeOptions, 'styleTarget' | 'me
   });
 
   keysOf(menuAccentCss).forEach(key => {
+    if (key === 'default') return;
+
     const vars = menuAccentCss[key];
     css += `\n\n[${UI_DATA_ATTRIBUTE.menuAccent}="${key}"] {\n`;
     keysOf(vars).forEach(varKey => {
@@ -131,115 +85,6 @@ export function generateMenuCss(options?: Pick<ThemeOptions, 'styleTarget' | 'me
     });
     css += `}`;
   });
-
-  return css;
-}
-
-export function generateBaseCss(options: Required<Pick<ThemeOptions, 'darkSelector' | 'format'>>) {
-  const { format, darkSelector } = options;
-
-  let css = '';
-
-  keysOf(builtinBasePreset).forEach(key => {
-    const { light, dark } = builtinBasePreset[key];
-
-    let lightCss = '';
-    let darkCss = '';
-
-    keysOf(light).forEach(colorKey => {
-      lightCss += getItemColorCss(colorKey, format, light);
-      darkCss += getItemColorCss(colorKey, format, dark);
-    });
-
-    const lightPaletteCss = generatePaletteItemCss(light.carbon, 'carbon', format);
-    const darkPaletteCss = generatePaletteItemCss(dark.carbon, 'carbon', format);
-
-    lightCss += lightPaletteCss;
-    darkCss += darkPaletteCss;
-
-    lightCss = `[${UI_DATA_ATTRIBUTE.base}="${key}"] {\n${lightCss}\n}`;
-    darkCss = `${darkSelector}[${UI_DATA_ATTRIBUTE.base}="${key}"] {\n${darkCss}\n}`;
-
-    css += `${lightCss}\n\n${darkCss}`;
-  });
-
-  return css;
-}
-
-export function generatePrimaryCss(options: Required<Pick<ThemeOptions, 'darkSelector' | 'format'>>) {
-  const { format, darkSelector } = options;
-
-  let css = '';
-
-  keysOf(builtinPrimaryPreset).forEach(key => {
-    const { light, dark } = builtinPrimaryPreset[key];
-
-    let lightCss = '';
-    let darkCss = '';
-
-    keysOf(light).forEach(colorKey => {
-      lightCss += getItemColorCss(colorKey, format, light);
-      darkCss += getItemColorCss(colorKey, format, dark);
-    });
-
-    const lightPaletteCss = generatePaletteItemCss(light.primary, 'primary', format);
-    const darkPaletteCss = generatePaletteItemCss(dark.primary, 'primary', format);
-
-    lightCss += lightPaletteCss;
-    darkCss += darkPaletteCss;
-
-    lightCss = `[${UI_DATA_ATTRIBUTE.primary}="${key}"] {\n${lightCss}\n}`;
-    darkCss = `${darkSelector}[${UI_DATA_ATTRIBUTE.primary}="${key}"] {\n${darkCss}\n}`;
-
-    css += `${lightCss}\n\n${darkCss}`;
-  });
-
-  return css;
-}
-
-export function generateFeedbackCss(options: Required<Pick<ThemeOptions, 'darkSelector' | 'format'>>) {
-  const { format, darkSelector } = options;
-
-  let css = '';
-
-  keysOf(builtinFeedbackPreset).forEach(key => {
-    const { light, dark } = builtinFeedbackPreset[key];
-
-    let lightCss = '';
-    let darkCss = '';
-
-    keysOf(light).forEach(colorKey => {
-      lightCss += getItemColorCss(colorKey, format, light);
-      darkCss += getItemColorCss(colorKey, format, dark);
-    });
-
-    const lightPaletteCss = generatePaletteCss(light, format);
-    const darkPaletteCss = generatePaletteCss(dark, format);
-
-    lightCss += lightPaletteCss;
-    darkCss += darkPaletteCss;
-
-    lightCss = `[${UI_DATA_ATTRIBUTE.feedback}="${key}"] {\n${lightCss}\n}`;
-    darkCss = `${darkSelector}[${UI_DATA_ATTRIBUTE.feedback}="${key}"] {\n${darkCss}\n}`;
-
-    css += `${lightCss}\n\n${darkCss}`;
-  });
-
-  return css;
-}
-
-export function generateSidebarCss(options: Required<Pick<ThemeOptions, 'styleTarget' | 'darkSelector'>>) {
-  const { styleTarget, darkSelector } = options;
-
-  let lightCss = '';
-  let darkCss = '';
-
-  keysOf(sidebarCssVars).forEach(key => {
-    lightCss += `${COLOR_VARIABLES[key]}: ${sidebarCssVars[key]};\n`;
-    darkCss += `${COLOR_VARIABLES[key]}: ${darkSidebarCss[key]};\n`;
-  });
-
-  const css = `${styleTarget} {\n${lightCss}\n}\n\n${darkSelector} {\n${darkCss}\n}`;
 
   return css;
 }
@@ -255,11 +100,28 @@ export function generateColorCss(
   let darkCss = '';
 
   keysOf(COLOR_VARIABLES).forEach(key => {
-    lightCss += getItemColorCss(key, format, light);
-    darkCss += getItemColorCss(key, format, dark);
+    const lightValue = getItemColorCss(key, format, light);
+    const darkValue = getItemColorCss(key, format, dark);
+
+    lightCss += lightValue;
+    if (darkValue !== lightValue) {
+      darkCss += darkValue;
+    }
   });
 
-  const lightPaletteCss = generatePaletteCss(light, format);
+  let lightPaletteCss = '';
+  let darkPaletteCss = '';
+
+  const keys: ThemeColor[] = ['primary', 'destructive', 'success', 'warning', 'info', 'carbon'];
+  keys.forEach(key => {
+    const lightValue = generatePaletteItemCss(light[key], key, format);
+    const darkValue = generatePaletteItemCss(dark[key], key, format);
+
+    lightPaletteCss += lightValue;
+    if (darkValue !== lightValue) {
+      darkPaletteCss += darkValue;
+    }
+  });
 
   let css = `${styleTarget} {\n${lightCss}\n${lightPaletteCss}\n}`;
 
@@ -267,8 +129,6 @@ export function generateColorCss(
   if (darkSelector === 'class' || darkSelector === 'media') {
     darkSelector = DARK_SELECTOR[darkSelector as DarkSelector];
   }
-
-  const darkPaletteCss = generatePaletteCss(dark, format);
 
   css += `\n\n${darkSelector} {\n${darkCss}\n${darkPaletteCss}\n}`;
 
@@ -340,37 +200,7 @@ function getAlphaCss(colorValue: string, format: ColorFormat, key: string) {
   };
 }
 
-type CSSVariablesColor = Pick<
-  Required<ThemeColors>,
-  'primary' | 'destructive' | 'success' | 'warning' | 'info' | 'carbon'
->;
-
-function generatePaletteCss(themeColors: Partial<CSSVariablesColor>, format: ColorFormat) {
-  const keys: (keyof CSSVariablesColor)[] = ['primary', 'destructive', 'success', 'warning', 'info', 'carbon'];
-
-  let css = '';
-
-  keys.forEach(key => {
-    const val = themeColors[key];
-    if (!val) return;
-
-    const color = getColorValue(val, format);
-    const palette = generatePalette(color, format === 'hsl' ? 'hslString' : 'oklchString');
-
-    keysOf(palette).forEach(level => {
-      let value = palette[level];
-      if (format === 'hsl') {
-        value = removeHslBrackets(value);
-      }
-
-      css += `--${key}-${level}: ${value};\n`;
-    });
-  });
-
-  return css;
-}
-
-function generatePaletteItemCss(color: ColorValue, paletteKey: keyof CSSVariablesColor, format: ColorFormat) {
+function generatePaletteItemCss(color: ColorValue, paletteKey: ThemeColor, format: ColorFormat) {
   let css = '';
   const colorValue = getColorValue(color, format);
   const palette = generatePalette(colorValue, format === 'hsl' ? 'hslString' : 'oklchString');

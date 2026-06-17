@@ -1,6 +1,6 @@
 import { DEFAULT_PRESET_OPTIONS } from './constants';
 import { mergeObjects, getDarkSelector } from './shared';
-import { generateAllCss, generateCss } from './css';
+import { generateCss } from './css';
 import { generateThemePreset } from './preset';
 import type { PresetConfig, PresetKeyConfig, ThemeOptions, RequiredThemeOptions } from './types';
 
@@ -13,7 +13,6 @@ export function createShadcnTheme(options?: ThemeOptions) {
     feedback,
     menuColor,
     menuAccent,
-    scope,
     styleTarget,
     darkSelector: rawDarkSelector,
     format,
@@ -32,15 +31,10 @@ export function createShadcnTheme(options?: ThemeOptions) {
       primary: config?.primary ?? primary,
       feedback: config?.feedback ?? feedback
     };
+
     const themePreset = generateThemePreset(mergedConfig, config?.preset ?? preset);
-    let css = generateCss(themePreset, { styleTarget, darkSelector, format, size, radius, menuColor, menuAccent });
 
-    if (scope === 'all') {
-      css += '\n\n';
-      css += generateAllCss({ styleTarget, darkSelector, format });
-    }
-
-    return css;
+    return generateCss(themePreset, { styleTarget, darkSelector, format, size, radius, menuColor, menuAccent });
   };
 
   return { getCss };
