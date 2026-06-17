@@ -168,9 +168,9 @@ app.mount('#app')
     '@iconify/vue': '^5.0.1',
     '@soybeanjs/cva': `^0.0.9`,
     '@soybeanjs/headless': `^${SOYBEAN_VERSION}`,
-    '@soybeanjs/hooks': `^${SOYBEAN_VERSION}`,
+    '@soybeanjs/hooks': `^0.3.0`,
     '@soybeanjs/shadcn-theme': `^${SOYBEAN_VERSION}`,
-    '@soybeanjs/utils': `^${SOYBEAN_VERSION}`,
+    '@soybeanjs/utils': `^0.1.1`,
     vue: '^3.5.38',
     'vue-router': '^5.1.0'
   },
