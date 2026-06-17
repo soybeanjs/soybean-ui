@@ -2,6 +2,14 @@
  * SBean project templates.
  *
  * Vite + Nuxt 3 — ready for sbean components.
+ *
+ * Template file content may contain `{{variable}}` placeholders that are
+ * resolved at scaffold time by {@link scaffoldFromTemplate}.
+ *
+ * Supported placeholders:
+ *   - `{{projectName}}`    — the project name
+ *   - `{{uiDir}}`          — the component output directory (e.g. "src/ui")
+ *   - `{{resolverPath}}`   — relative import path for the SBean resolver
  */
 
 export type FrameworkType = 'vue-vite' | 'nuxt';
@@ -10,11 +18,52 @@ export interface ProjectTemplate {
   name: string;
   description: string;
   framework: FrameworkType;
+  /** File path → content (may contain `{{variable}}` placeholders). */
   files: Record<string, string>;
   dependencies: Record<string, string>;
   devDependencies: Record<string, string>;
   scripts: Record<string, string>;
 }
+
+/** Variables that can be interpolated into template file content. */
+export interface TemplateVariables {
+  projectName: string;
+  uiDir: string;
+  resolverPath: string;
+}
+
+// ---------------------------------------------------------------------------
+// Shared snippet: uno.config.ts (used by both templates)
+// ---------------------------------------------------------------------------
+
+const UNO_CONFIG_CONTENT = `import { defineConfig } from 'unocss'
+import { presetSbean } from '@soybeanjs/unocss-shadcn'
+
+export default defineConfig({
+  presets: [presetSbean()]
+})
+`;
+
+// ---------------------------------------------------------------------------
+// Shared snippet: sbean.json (used by both templates)
+// ---------------------------------------------------------------------------
+
+const SBEAN_JSON_CONTENT = `{
+  "iconLibrary": "lucide",
+  "uno": {
+    "size": "md",
+    "radius": "md",
+    "base": "zinc",
+    "primary": "indigo",
+    "feedback": "classic"
+  },
+  "font": {},
+  "menu": {
+    "accent": "subtle",
+    "color": "default"
+  }
+}
+`;
 
 // ---------------------------------------------------------------------------
 // Vue 3 + Vite
@@ -30,7 +79,7 @@ import { defineConfig } from 'vite'
 import Vue from '@vitejs/plugin-vue'
 import UnoCSS from 'unocss/vite'
 import Components from 'unplugin-vue-components/vite'
-import SbeanResolver from './src/ui/resolver'
+import SbeanResolver from '{{resolverPath}}'
 
 export default defineConfig({
   resolve: {
@@ -46,13 +95,7 @@ export default defineConfig({
   ]
 })
 `,
-    'uno.config.ts': `import { defineConfig } from 'unocss'
-import { presetSbean } from '@soybeanjs/unocss-shadcn'
-
-export default defineConfig({
-  presets: [presetSbean()]
-})
-`,
+    'uno.config.ts': UNO_CONFIG_CONTENT,
     'tsconfig.json': `{
   "compilerOptions": {
     "target": "ESNext",
@@ -62,7 +105,7 @@ export default defineConfig({
     "module": "ESNext",
     "moduleResolution": "bundler",
     "paths": {
-      "#ui/*": ["./src/ui/*"]
+      "#ui/*": ["./{{uiDir}}/*"]
     },
     "types": ["node", "vite/client"],
     "resolveJsonModule": true,
@@ -78,22 +121,7 @@ export default defineConfig({
   "exclude": ["node_modules", "dist", "src/typings"]
 }
 `,
-    'sbean.json': `{
-  "iconLibrary": "lucide",
-  "uno": {
-    "size": "md",
-    "radius": "md",
-    "base": "zinc",
-    "primary": "indigo",
-    "feedback": "classic"
-  },
-  "font": {},
-  "menu": {
-    "accent": "subtle",
-    "color": "default"
-  }
-}
-`,
+    'sbean.json': SBEAN_JSON_CONTENT,
     'src/main.ts': `import { createApp } from 'vue'
 import 'uno.css'
 import App from './App.vue'
@@ -117,7 +145,7 @@ app.mount('#app')
     <meta charset="UTF-8" />
     <link rel="icon" href="/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SoybeanUI</title>
+    <title>{{projectName}}</title>
   </head>
   <body>
     <div id="app"></div>
@@ -132,22 +160,22 @@ app.mount('#app')
     preview: 'vp preview'
   },
   dependencies: {
-    '@iconify/vue': '^5.0.1',
-    '@soybeanjs/cva': '^0.0.9',
-    '@soybeanjs/headless': '^0.29.0-beta.6',
-    '@soybeanjs/hooks': '^0.3.0',
-    '@soybeanjs/shadcn-theme': '^0.29.0-beta.6',
-    '@soybeanjs/utils': '^0.1.1',
-    vue: '^3.5.0'
+    '@iconify/vue': 'latest',
+    '@soybeanjs/cva': 'latest',
+    '@soybeanjs/headless': 'latest',
+    '@soybeanjs/hooks': 'latest',
+    '@soybeanjs/shadcn-theme': 'latest',
+    '@soybeanjs/utils': 'latest',
+    vue: 'latest'
   },
   devDependencies: {
-    '@soybeanjs/unocss-shadcn': '^0.29.0-beta.6',
-    '@vitejs/plugin-vue': '^5.0.0',
-    typescript: '^6.0.3',
-    unocss: '^66.7.0',
-    'unplugin-vue-components': '^31.1.0',
-    'vite-plus': '^0.1.24',
-    'vue-tsc': '^2.1.0'
+    '@soybeanjs/unocss-shadcn': 'latest',
+    '@vitejs/plugin-vue': 'latest',
+    typescript: 'latest',
+    unocss: 'latest',
+    'unplugin-vue-components': 'latest',
+    'vite-plus': 'latest',
+    'vue-tsc': 'latest'
   }
 };
 
@@ -160,48 +188,27 @@ export const nuxtTemplate: ProjectTemplate = {
   description: 'Nuxt 3 + UnoCSS',
   framework: 'nuxt',
   files: {
-    'nuxt.config.ts': `import UiModule from './ui/nuxt'
+    'nuxt.config.ts': `import UiModule from './{{uiDir}}/nuxt'
 
 export default defineNuxtConfig({
   modules: ['@unocss/nuxt', UiModule],
   compatibilityDate: '2026-01-01',
   alias: {
-    '#ui': './ui'
+    '#ui': './{{uiDir}}'
   }
 })
 `,
-    'uno.config.ts': `import { defineConfig } from 'unocss'
-import { presetSbean } from '@soybeanjs/unocss-shadcn'
-
-export default defineConfig({
-  presets: [presetSbean()]
-})
-`,
+    'uno.config.ts': UNO_CONFIG_CONTENT,
     'tsconfig.json': `{
   "extends": "./.nuxt/tsconfig.json",
   "compilerOptions": {
     "paths": {
-      "#ui/*": ["./ui/*"]
+      "#ui/*": ["./{{uiDir}}/*"]
     }
   }
 }
 `,
-    'sbean.json': `{
-  "iconLibrary": "lucide",
-  "uno": {
-    "size": "md",
-    "radius": "md",
-    "base": "zinc",
-    "primary": "indigo",
-    "feedback": "classic"
-  },
-  "font": {},
-  "menu": {
-    "accent": "subtle",
-    "color": "default"
-  }
-}
-`,
+    'sbean.json': SBEAN_JSON_CONTENT,
     'app.vue': `<template>
   <div>
     <NuxtPage />
@@ -220,17 +227,17 @@ export default defineConfig({
 `
   },
   dependencies: {
-    '@iconify/vue': '^5.0.1',
-    '@soybeanjs/cva': '^0.0.9',
-    '@soybeanjs/headless': '^0.29.0-beta.6',
-    '@soybeanjs/hooks': '^0.3.0',
-    '@soybeanjs/shadcn-theme': '^0.29.0-beta.6',
-    '@soybeanjs/utils': '^0.1.1',
-    nuxt: '^4.4.8'
+    '@iconify/vue': 'latest',
+    '@soybeanjs/cva': 'latest',
+    '@soybeanjs/headless': 'latest',
+    '@soybeanjs/hooks': 'latest',
+    '@soybeanjs/shadcn-theme': 'latest',
+    '@soybeanjs/utils': 'latest',
+    nuxt: 'latest'
   },
   devDependencies: {
-    '@unocss/nuxt': '^66.7.0',
-    unocss: '^66.7.0'
+    '@unocss/nuxt': 'latest',
+    unocss: 'latest'
   },
   scripts: {
     dev: 'nuxt dev',

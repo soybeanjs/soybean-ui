@@ -1,7 +1,8 @@
 import path from 'path';
 import * as v from 'valibot';
 import { Command } from 'commander';
-import { listAllTemplates, scaffoldFromTemplate, getTemplateConfig } from '../templates';
+import { listAllTemplates, scaffoldFromTemplate, getTemplate } from '../templates';
+import type { FrameworkType } from '../templates';
 
 export const templateOptionsSchema = v.object({
   name: v.optional(v.string()),
@@ -13,7 +14,7 @@ export const templateOptionsSchema = v.object({
 export const template = new Command()
   .name('template')
   .description('list or scaffold project templates')
-  .argument('[name]', 'template name to scaffold (vue-vite, nuxt, vue-bare, library)')
+  .argument('[name]', 'template name to scaffold (vue-vite, nuxt)')
   .option('-l, --list', 'list available templates', false)
   .option('-o, --output <dir>', 'output directory for scaffolded project')
   .option('-c, --cwd <cwd>', 'the working directory. defaults to the current directory.', process.cwd())
@@ -44,15 +45,13 @@ export const template = new Command()
       console.log();
 
       if (options.name) {
-        const detailName: string = options.name;
-        showTemplateDetails(detailName);
+        showTemplateDetails(options.name);
       }
 
       return;
     }
 
     // Scaffold mode
-    // name is guaranteed non-null here (handled by list mode above)
     const templateName = name ?? 'vue-vite';
     const projectName: string = options.output ?? templateName;
 
@@ -63,21 +62,11 @@ export const template = new Command()
     const outputDir = path.join(options.cwd, projectName);
 
     try {
-      await scaffoldFromTemplate(outputDir, templateName, projectName);
+      await scaffoldFromTemplate(outputDir, templateName, { projectName });
 
       console.log();
       console.log(`  ✔ Project scaffolded at: ${outputDir}`);
       console.log();
-
-      // Show recommended config
-      const config = getTemplateConfig(templateName);
-      if (Object.keys(config).length > 0) {
-        console.log('  Recommended sbean.json config:');
-        for (const [key, value] of Object.entries(config)) {
-          console.log(`    "${key}": "${value}"`);
-        }
-        console.log();
-      }
 
       // Show next steps
       console.log('  Next steps:');
@@ -93,31 +82,16 @@ export const template = new Command()
   });
 
 /**
- * Show detailed information about a specific template.
+ * Show detailed information about a specific template (read from template definitions).
  */
 function showTemplateDetails(name: string): void {
-  const details: Record<string, { description: string; deps: string[]; devDeps: string[]; scripts: string[] }> = {
-    'vue-vite': {
-      description: 'Vue 3 + Vite + UnoCSS — copy-paste components',
-      deps: ['vue', '@soybeanjs/headless', '@soybeanjs/cva', '@soybeanjs/unocss-shadcn'],
-      devDeps: ['@vitejs/plugin-vue', 'typescript', 'unocss', 'vite', 'vue-tsc'],
-      scripts: ['dev', 'build', 'preview']
-    },
-    nuxt: {
-      description: 'Nuxt 3 + UnoCSS — copy-paste components',
-      deps: ['nuxt', 'vue', '@soybeanjs/headless', '@soybeanjs/cva', '@soybeanjs/unocss-shadcn'],
-      devDeps: ['unocss', '@unocss/nuxt'],
-      scripts: ['dev', 'build', 'generate', 'preview']
-    }
-  };
-
-  const detail = details[name];
-  if (!detail) return;
+  const tpl = getTemplate(name as FrameworkType);
+  if (!tpl) return;
 
   console.log();
-  console.log(`  ${detail.description}`);
-  console.log(`  Dependencies: ${detail.deps.join(', ') || 'none'}`);
-  console.log(`  Dev Dependencies: ${detail.devDeps.join(', ') || 'none'}`);
-  console.log(`  Scripts: ${detail.scripts.join(', ')}`);
+  console.log(`  ${tpl.description}`);
+  console.log(`  Dependencies: ${Object.keys(tpl.dependencies).join(', ') || 'none'}`);
+  console.log(`  Dev Dependencies: ${Object.keys(tpl.devDependencies).join(', ') || 'none'}`);
+  console.log(`  Scripts: ${Object.keys(tpl.scripts).join(', ')}`);
   console.log();
 }

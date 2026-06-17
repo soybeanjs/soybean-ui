@@ -1,6 +1,3 @@
-import { existsSync } from 'fs';
-import fs from 'fs/promises';
-import { fileURLToPath } from 'node:url';
 import path from 'path';
 import * as v from 'valibot';
 import { Command } from 'commander';
@@ -14,10 +11,10 @@ import {
   PRESET_SIZES,
   PRESET_FONTS
 } from '../registry/config';
-import { UI_SOURCE_PATH } from '../registry/constants';
 import { createDefaultConfig, detectMonorepo, getConfig, writeConfig } from '../utils/get-config';
 import { getProjectInfo } from '../utils/get-project-info';
 import { decodePreset, isPresetCode } from '../registry/preset';
+import { scaffoldFromTemplate, ensurePnpmWorkspace, generatePackModules, ensureTypeScriptConfig } from '../templates';
 
 // ---------------------------------------------------------------------------
 // Options schema
@@ -41,50 +38,6 @@ export const initOptionsSchema = v.object({
 });
 
 export type InitOptions = v.InferOutput<typeof initOptionsSchema>;
-
-// ---------------------------------------------------------------------------
-// uno.config.ts template
-// ---------------------------------------------------------------------------
-
-function generateUnoConfigContent(): string {
-  return `${[
-    `import { defineConfig } from 'unocss'`,
-    `import { presetSbean } from '@soybeanjs/unocss-shadcn'`,
-    ``,
-    `export default defineConfig({`,
-    `  presets: [presetSbean()],`,
-    `})`
-  ].join('\n')}\n`;
-}
-
-function generateTsConfigContent(uiDir: string): string {
-  return `${[
-    '{',
-    '  "compilerOptions": {',
-    '    "target": "ESNext",',
-    '    "jsx": "preserve",',
-    '    "jsxImportSource": "vue",',
-    '    "lib": ["DOM", "ESNext"],',
-    '    "module": "ESNext",',
-    '    "moduleResolution": "bundler",',
-    '    "paths": {',
-    `      "#ui/*": ["./${uiDir}/*"]`,
-    '    },',
-    '    "types": ["node", "vite/client"],',
-    '    "resolveJsonModule": true,',
-    '    "strict": true,',
-    '    "strictNullChecks": true,',
-    '    "noUnusedLocals": true,',
-    '    "allowSyntheticDefaultImports": true,',
-    '    "esModuleInterop": true,',
-    '    "forceConsistentCasingInFileNames": true,',
-    '    "isolatedModules": true',
-    '   },',
-    '  "include": ["./**/*.ts", "./**/*.d.ts", "./**/*.tsx", "./**/*.vue"],',
-    '  "exclude": ["node_modules", "dist", "src/typings"]',
-    '}'
-  ].join('\n')}\n`;
-}
 
 // ---------------------------------------------------------------------------
 // Command definition
@@ -154,7 +107,6 @@ export async function runInit(opts: InitActionOptions) {
   const autoMonorepo = await detectMonorepo(cwd);
   const isMonorepo = opts.monorepo ?? autoMonorepo;
 
-  // Determine config values
   // Handle preset code (overrides defaults, but CLI flags take precedence)
   if (opts.preset) {
     if (!isPresetCode(opts.preset)) {
@@ -175,104 +127,10 @@ export async function runInit(opts: InitActionOptions) {
     opts.fontSans = opts.fontSans || preset.fontSans;
     opts.fontHeading = opts.fontHeading || preset.fontHeading;
   }
-  const base = opts.base || 'zinc';
-  const primary = opts.primary || 'indigo';
-  const feedback = opts.feedback || 'classic';
-  const size = opts.size || 'md';
-  const radius = opts.radius || 'md';
-  const iconLibrary = opts.iconLibrary || 'lucide';
-
-  const recommended = {
-    base: 'zinc',
-    primary: 'indigo',
-    feedback: 'classic'
-  } as const;
 
   // Prompt if not using defaults/yes
   if (!opts.defaults && !opts.yes) {
-    const answers = await prompts([
-      {
-        type: 'select',
-        name: 'size',
-        message: 'Which component size / density?',
-        choices: [
-          { title: 'md (recommended — 16px base)', value: 'md' },
-          { title: 'xs — extra small (12px)', value: 'xs' },
-          { title: 'sm — small (14px)', value: 'sm' },
-          { title: 'lg — large (18px)', value: 'lg' },
-          { title: 'xl — extra large (20px)', value: 'xl' },
-          { title: '2xl — huge (24px)', value: '2xl' }
-        ],
-        initial: 0
-      },
-      {
-        type: 'select',
-        name: 'base',
-        message: 'Which base color?',
-        choices: [recommended.base, ...PRESET_BASE_COLORS.filter(b => b !== recommended.base)].map(b => ({
-          title: b === recommended.base ? `${b} (recommended)` : b,
-          value: b
-        })),
-        initial: 0
-      },
-      {
-        type: 'select',
-        name: 'primary',
-        message: 'Which primary color?',
-        choices: [recommended.primary, ...PRESET_PRIMARY_COLORS.filter(p => p !== recommended.primary)].map(p => ({
-          title: p === recommended.primary ? `${p} (recommended)` : p,
-          value: p
-        })),
-        initial: 0
-      },
-      {
-        type: 'select',
-        name: 'feedback',
-        message: 'Which feedback color preset?',
-        choices: [recommended.feedback, ...PRESET_FEEDBACK_COLORS.filter(f => f !== recommended.feedback)].map(f => ({
-          title: f === recommended.feedback ? `${f} (recommended)` : f,
-          value: f
-        })),
-        initial: 0
-      },
-      {
-        type: 'select',
-        name: 'fontSans',
-        message: 'Which sans-serif font? (skip for system default)',
-        choices: [
-          { title: 'inter (recommended)', value: 'inter' },
-          { title: 'none (system default)', value: '' },
-          ...PRESET_FONTS.filter(f => f !== 'inter').map(f => ({
-            title: f,
-            value: f
-          }))
-        ],
-        initial: 0
-      },
-      {
-        type: (prev: string) => (prev ? 'select' : (null as any)),
-        name: 'fontHeading',
-        message: 'Which heading font? (or inherit from sans)',
-        choices: [
-          { title: 'inherit (recommended)', value: 'inherit' },
-          ...PRESET_FONTS.map(f => ({
-            title: f,
-            value: f
-          }))
-        ],
-        initial: 0
-      }
-    ]);
-    if (answers.size) opts.size = answers.size as (typeof PRESET_SIZES)[number];
-    if (answers.base) opts.base = answers.base as (typeof PRESET_BASE_COLORS)[number];
-    if (answers.primary) opts.primary = answers.primary as (typeof PRESET_PRIMARY_COLORS)[number];
-    if (answers.feedback) opts.feedback = answers.feedback as (typeof PRESET_FEEDBACK_COLORS)[number];
-    if (answers.fontSans !== undefined && answers.fontSans !== '') {
-      opts.fontSans = answers.fontSans as (typeof PRESET_FONTS)[number];
-    }
-    if (answers.fontHeading !== undefined) {
-      opts.fontHeading = answers.fontHeading as 'inherit' | (typeof PRESET_FONTS)[number];
-    }
+    await promptConfig(opts);
   }
 
   // Determine Nuxt status
@@ -280,44 +138,26 @@ export async function runInit(opts: InitActionOptions) {
 
   // Scaffold new project if no package.json exists
   if (!projectInfo) {
-    if (isNuxt) {
-      console.log('No package.json found. Creating a new Nuxt 3 project...');
-      await scaffoldNuxtProject(cwd, opts.name);
-    } else {
-      console.log('No package.json found. Creating a new Vue + Vite project...');
-      await scaffoldProject(cwd, opts.name, opts.uiDir);
-    }
+    const framework = isNuxt ? 'nuxt' : 'vue-vite';
+    console.log(`No package.json found. Creating a new ${isNuxt ? 'Nuxt 3' : 'Vue + Vite'} project...`);
+    await scaffoldFromTemplate(cwd, framework, {
+      projectName: opts.name,
+      uiDir: opts.uiDir,
+      nuxt: isNuxt
+    });
   }
 
-  // Build font config for sbean.json
-  const fontOverrides: {
-    sans?: (typeof PRESET_FONTS)[number];
-    heading?: 'inherit' | (typeof PRESET_FONTS)[number];
-  } = {};
-
-  if (opts.fontSans && PRESET_FONTS.includes(opts.fontSans as (typeof PRESET_FONTS)[number])) {
-    fontOverrides.sans = opts.fontSans as (typeof PRESET_FONTS)[number];
-  }
-  if (opts.fontHeading) {
-    const heading = opts.fontHeading;
-    if (heading === 'inherit') {
-      fontOverrides.heading = 'inherit';
-    } else if (PRESET_FONTS.includes(heading as (typeof PRESET_FONTS)[number])) {
-      fontOverrides.heading = heading as (typeof PRESET_FONTS)[number];
-    }
-  }
-
-  // Write sbean.json
+  // Write sbean.json with all config values
   const config = await createDefaultConfig(cwd, {
-    iconLibrary: (opts.iconLibrary as (typeof PRESET_ICON_LIBRARIES)[number]) || iconLibrary,
+    iconLibrary: (opts.iconLibrary as (typeof PRESET_ICON_LIBRARIES)[number]) || 'lucide',
     uno: {
-      base: (opts.base || base) as (typeof PRESET_BASE_COLORS)[number],
-      primary: (opts.primary || primary) as (typeof PRESET_PRIMARY_COLORS)[number],
-      feedback: (opts.feedback || feedback) as (typeof PRESET_FEEDBACK_COLORS)[number],
-      size: (opts.size || size) as (typeof PRESET_SIZES)[number],
-      radius: (opts.radius || radius) as (typeof PRESET_RADII)[number]
+      base: (opts.base || 'zinc') as (typeof PRESET_BASE_COLORS)[number],
+      primary: (opts.primary || 'indigo') as (typeof PRESET_PRIMARY_COLORS)[number],
+      feedback: (opts.feedback || 'classic') as (typeof PRESET_FEEDBACK_COLORS)[number],
+      size: (opts.size || 'md') as (typeof PRESET_SIZES)[number],
+      radius: (opts.radius || 'md') as (typeof PRESET_RADII)[number]
     },
-    font: fontOverrides
+    font: buildFontConfig(opts)
   });
   await writeConfig(cwd, config);
 
@@ -325,282 +165,134 @@ export async function runInit(opts: InitActionOptions) {
     console.log('✔ Created sbean.json');
   }
 
-  // Generate pnpm-workspace.yaml (always needed for pnpm projects)
-  await ensurePnpmWorkspace(cwd, isMonorepo);
-
-  const unoConfigPath = path.join(cwd, 'uno.config.ts');
-  const unoExists = await fs
-    .stat(unoConfigPath)
-    .then(() => true)
-    .catch(() => false);
-
-  if (!unoExists) {
-    const content = generateUnoConfigContent();
-    await fs.writeFile(unoConfigPath, content, 'utf-8');
-    console.log('✔ Created uno.config.ts');
-  } else if (!opts.silent) {
-    console.log('⚠ uno.config.ts already exists. Please add presetSbean() to it manually.');
-    console.log("  import { presetSbean } from '@soybeanjs/unocss-shadcn';");
-    console.log('  presets: [presetSbean()]');
+  // For existing projects (no scaffolding), still ensure infra files exist
+  if (projectInfo) {
+    await ensurePnpmWorkspace(cwd, isMonorepo);
+    await ensureTypeScriptConfig(cwd, opts.uiDir);
+    await generatePackModules(cwd, opts.uiDir, isNuxt);
   }
-
-  await ensureTypeScriptConfig(cwd, opts.uiDir);
-
-  // Generate resolver, nuxt module, and constants from source
-  await generatePackModules(cwd, opts.uiDir, isNuxt);
 
   console.log('\nDone! Run "sbean add <component>" to add components.');
 }
 
 // ---------------------------------------------------------------------------
-// Project scaffolding (minimal Vue + Vite)
+// Interactive prompts
 // ---------------------------------------------------------------------------
 
-async function scaffoldProject(cwd: string, name?: string, uiDir = 'src/ui') {
-  const projectName = name || path.basename(cwd);
+async function promptConfig(opts: InitActionOptions) {
+  const recommended = {
+    base: 'zinc',
+    primary: 'indigo',
+    feedback: 'classic'
+  } as const;
 
-  await fs.mkdir(cwd, { recursive: true });
-  await fs.mkdir(path.join(cwd, uiDir), { recursive: true });
-
-  const pkg = {
-    name: projectName,
-    private: true,
-    version: '0.0.0',
-    type: 'module',
-    scripts: {
-      dev: 'vp dev',
-      build: 'vp build',
-      preview: 'vp preview'
+  const answers = await prompts([
+    {
+      type: 'select',
+      name: 'size',
+      message: 'Which component size / density?',
+      choices: [
+        { title: 'md (recommended — 16px base)', value: 'md' },
+        { title: 'xs — extra small (12px)', value: 'xs' },
+        { title: 'sm — small (14px)', value: 'sm' },
+        { title: 'lg — large (18px)', value: 'lg' },
+        { title: 'xl — extra large (20px)', value: 'xl' },
+        { title: '2xl — huge (24px)', value: '2xl' }
+      ],
+      initial: 0
     },
-    dependencies: {
-      '@iconify/vue': 'latest',
-      '@soybeanjs/cva': 'latest',
-      '@soybeanjs/headless': 'latest',
-      '@soybeanjs/hooks': 'latest',
-      '@soybeanjs/shadcn-theme': 'latest',
-      '@soybeanjs/utils': 'latest',
-      vue: 'latest'
+    {
+      type: 'select',
+      name: 'base',
+      message: 'Which base color?',
+      choices: [recommended.base, ...PRESET_BASE_COLORS.filter(b => b !== recommended.base)].map(b => ({
+        title: b === recommended.base ? `${b} (recommended)` : b,
+        value: b
+      })),
+      initial: 0
     },
-    devDependencies: {
-      '@vitejs/plugin-vue': 'latest',
-      typescript: 'latest',
-      unocss: 'latest',
-      'unplugin-vue-components': 'latest',
-      'vite-plus': 'latest'
+    {
+      type: 'select',
+      name: 'primary',
+      message: 'Which primary color?',
+      choices: [recommended.primary, ...PRESET_PRIMARY_COLORS.filter(p => p !== recommended.primary)].map(p => ({
+        title: p === recommended.primary ? `${p} (recommended)` : p,
+        value: p
+      })),
+      initial: 0
+    },
+    {
+      type: 'select',
+      name: 'feedback',
+      message: 'Which feedback color preset?',
+      choices: [recommended.feedback, ...PRESET_FEEDBACK_COLORS.filter(f => f !== recommended.feedback)].map(f => ({
+        title: f === recommended.feedback ? `${f} (recommended)` : f,
+        value: f
+      })),
+      initial: 0
+    },
+    {
+      type: 'select',
+      name: 'fontSans',
+      message: 'Which sans-serif font? (skip for system default)',
+      choices: [
+        { title: 'inter (recommended)', value: 'inter' },
+        { title: 'none (system default)', value: '' },
+        ...PRESET_FONTS.filter(f => f !== 'inter').map(f => ({
+          title: f,
+          value: f
+        }))
+      ],
+      initial: 0
+    },
+    {
+      type: (prev: string) => (prev ? 'select' : (null as any)),
+      name: 'fontHeading',
+      message: 'Which heading font? (or inherit from sans)',
+      choices: [
+        { title: 'inherit (recommended)', value: 'inherit' },
+        ...PRESET_FONTS.map(f => ({
+          title: f,
+          value: f
+        }))
+      ],
+      initial: 0
     }
-  };
+  ]);
 
-  await fs.writeFile(path.join(cwd, 'package.json'), JSON.stringify(pkg, null, 2), 'utf-8');
-
-  const resolverPath = `./${uiDir}/resolver`;
-
-  // Basic vite.config.ts
-  await fs.writeFile(
-    path.join(cwd, 'vite.config.ts'),
-    [
-      `import { URL, fileURLToPath } from 'node:url';`,
-      `import { defineConfig } from 'vite-plus';`,
-      `import Vue from '@vitejs/plugin-vue';`,
-      `import UnoCSS from 'unocss/vite';`,
-      `import Components from 'unplugin-vue-components/vite';`,
-      `import UiResolver from '${resolverPath}';`,
-      ``,
-      `export default defineConfig({`,
-      `  resolve: {`,
-      `    tsconfigPaths: true`,
-      `  },`,
-      `  plugins: [`,
-      `    Vue(),`,
-      `    UnoCSS(),`,
-      `    Components({`,
-      `      dts: fileURLToPath(new URL('./src/typings/components.d.ts', import.meta.url)),`,
-      `      resolvers: [UiResolver()]`,
-      `    })`,
-      `  ]`,
-      `})`
-    ].join('\n'),
-    'utf-8'
-  );
-
-  // Basic App.vue — goes in src/, not uiDir
-  const srcDir = path.join(cwd, 'src');
-  await fs.mkdir(srcDir, { recursive: true });
-  await fs.writeFile(
-    path.join(srcDir, 'App.vue'),
-    [
-      `<script setup lang="ts">`,
-      `</script>`,
-      ``,
-      `<template>`,
-      `  <div>Hello from ${projectName} + SBean!</div>`,
-      `</template>`
-    ].join('\n'),
-    'utf-8'
-  );
-
-  console.log(`✔ Scaffolded Vue + Vite project: ${projectName}`);
+  if (answers.size) opts.size = answers.size as (typeof PRESET_SIZES)[number];
+  if (answers.base) opts.base = answers.base as (typeof PRESET_BASE_COLORS)[number];
+  if (answers.primary) opts.primary = answers.primary as (typeof PRESET_PRIMARY_COLORS)[number];
+  if (answers.feedback) opts.feedback = answers.feedback as (typeof PRESET_FEEDBACK_COLORS)[number];
+  if (answers.fontSans !== undefined && answers.fontSans !== '') {
+    opts.fontSans = answers.fontSans as (typeof PRESET_FONTS)[number];
+  }
+  if (answers.fontHeading !== undefined) {
+    opts.fontHeading = answers.fontHeading as 'inherit' | (typeof PRESET_FONTS)[number];
+  }
 }
 
 // ---------------------------------------------------------------------------
-// Nuxt 3 scaffolding
+// Helpers
 // ---------------------------------------------------------------------------
 
-async function scaffoldNuxtProject(cwd: string, name?: string) {
-  const projectName = name || path.basename(cwd);
+function buildFontConfig(opts: InitActionOptions): {
+  sans?: (typeof PRESET_FONTS)[number];
+  heading?: 'inherit' | (typeof PRESET_FONTS)[number];
+} {
+  const overrides: ReturnType<typeof buildFontConfig> = {};
 
-  await fs.mkdir(cwd, { recursive: true });
-  await fs.mkdir(path.join(cwd, 'pages'), { recursive: true });
-
-  const pkg = {
-    name: projectName,
-    private: true,
-    version: '0.0.0',
-    type: 'module',
-    scripts: {
-      dev: 'nuxt dev',
-      build: 'nuxt build',
-      generate: 'nuxt generate',
-      preview: 'nuxt preview'
-    },
-    dependencies: {
-      '@iconify/vue': 'latest',
-      '@soybeanjs/cva': 'latest',
-      '@soybeanjs/headless': 'latest',
-      '@soybeanjs/shadcn-theme': 'latest',
-      '@soybeanjs/unocss-shadcn': 'latest',
-      '@soybeanjs/utils': 'latest',
-      nuxt: '^3.16.0',
-      vue: 'latest'
-    },
-    devDependencies: {
-      '@unocss/nuxt': 'latest',
-      unocss: 'latest',
-      typescript: 'latest'
+  if (opts.fontSans && PRESET_FONTS.includes(opts.fontSans as (typeof PRESET_FONTS)[number])) {
+    overrides.sans = opts.fontSans as (typeof PRESET_FONTS)[number];
+  }
+  if (opts.fontHeading) {
+    const heading = opts.fontHeading;
+    if (heading === 'inherit') {
+      overrides.heading = 'inherit';
+    } else if (PRESET_FONTS.includes(heading as (typeof PRESET_FONTS)[number])) {
+      overrides.heading = heading as (typeof PRESET_FONTS)[number];
     }
-  };
-
-  await fs.writeFile(path.join(cwd, 'package.json'), JSON.stringify(pkg, null, 2), 'utf-8');
-
-  // nuxt.config.ts
-  await fs.writeFile(
-    path.join(cwd, 'nuxt.config.ts'),
-    [
-      `export default defineNuxtConfig({`,
-      `  modules: ['@unocss/nuxt'],`,
-      `  compatibilityDate: '2026-01-01'`,
-      `})`
-    ].join('\n'),
-    'utf-8'
-  );
-
-  // uno.config.ts
-  await fs.writeFile(path.join(cwd, 'uno.config.ts'), generateUnoConfigContent(), 'utf-8');
-
-  // app.vue
-  await fs.writeFile(
-    path.join(cwd, 'app.vue'),
-    [`<template>`, `  <div>`, `    <NuxtPage />`, `  </div>`, `</template>`].join('\n'),
-    'utf-8'
-  );
-
-  // pages/index.vue
-  await fs.writeFile(
-    path.join(cwd, 'pages', 'index.vue'),
-    [
-      `<script setup lang="ts">`,
-      `</script>`,
-      ``,
-      `<template>`,
-      `  <div>`,
-      `    <h1>Welcome to ${projectName} + SBean + Nuxt</h1>`,
-      `    <p>Run <code>sbean add &lt;component&gt;</code> to add components.</p>`,
-      `  </div>`,
-      `</template>`
-    ].join('\n'),
-    'utf-8'
-  );
-
-  console.log(`✔ Scaffolded Nuxt 3 project: ${projectName}`);
-}
-
-async function ensurePnpmWorkspace(cwd: string, isMonorepo: boolean) {
-  const workspacePath = path.join(cwd, 'pnpm-workspace.yaml');
-
-  if (await fileExists(workspacePath)) {
-    return;
   }
 
-  const content = isMonorepo
-    ? `packages:
-  - 'packages/**'
-shamefullyHoist: true
-strictDepBuilds: false
-`
-    : `packages:
-  - '.'
-`;
-
-  await fs.writeFile(workspacePath, content, 'utf-8');
-  console.log('✔ Created pnpm-workspace.yaml');
-}
-
-async function ensureTypeScriptConfig(cwd: string, uiDir: string) {
-  const tsconfigPath = path.join(cwd, 'tsconfig.json');
-
-  const tsconfigExists = await fileExists(tsconfigPath);
-  if (!tsconfigExists) {
-    await fs.writeFile(tsconfigPath, generateTsConfigContent(uiDir), 'utf-8');
-    console.log('✔ Created tsconfig.json');
-  }
-}
-
-async function generatePackModules(cwd: string, uiDir: string, isNuxt = false) {
-  const sourceRoot = findSourceRoot();
-  if (!sourceRoot) return;
-
-  const files: Record<string, string> = {
-    'resolver/index.ts': `${UI_SOURCE_PATH}/resolver/index.ts`,
-    'constants/components.ts': `${UI_SOURCE_PATH}/constants/components.ts`
-  };
-
-  // Only generate the Nuxt module for Nuxt projects
-  if (isNuxt) {
-    files['nuxt/index.ts'] = `${UI_SOURCE_PATH}/nuxt/index.ts`;
-  }
-
-  for (const [relPath, srcPath] of Object.entries(files)) {
-    const src = path.join(sourceRoot, srcPath);
-    if (!existsSync(src)) continue;
-
-    const dest = path.join(cwd, uiDir, relPath);
-    if (existsSync(dest)) continue;
-
-    let content = await fs.readFile(src, 'utf-8');
-    content = content.replaceAll('//---', '');
-    content = content.replace("from: '@soybeanjs/ui'", 'from: `#ui/components/${path}`');
-    content = content.replace("filePath: '@soybeanjs/ui'", 'filePath: `#ui/components/${path}`');
-
-    await fs.mkdir(path.dirname(dest), { recursive: true });
-    await fs.writeFile(dest, content, 'utf-8');
-    console.log(`✔ Created ${uiDir}/${relPath}`);
-  }
-}
-
-function findSourceRoot(): string | null {
-  let dir = path.dirname(fileURLToPath(import.meta.url));
-  while (true) {
-    if (existsSync(path.join(dir, UI_SOURCE_PATH))) return dir;
-    const parent = path.dirname(dir);
-    if (parent === dir) return null;
-    dir = parent;
-  }
-}
-
-async function fileExists(filePath: string): Promise<boolean> {
-  try {
-    await fs.access(filePath);
-    return true;
-  } catch {
-    return false;
-  }
+  return overrides;
 }

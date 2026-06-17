@@ -233,7 +233,7 @@ describe('command integration tests', () => {
 
     it('scaffolds vue-vite template', async () => {
       const outputDir = path.join(tmpDir, 'my-app');
-      await scaffoldFromTemplate(outputDir, 'vue-vite', 'my-app');
+      await scaffoldFromTemplate(outputDir, 'vue-vite', { projectName: 'my-app' });
 
       const files = await fs.readdir(outputDir);
       expect(files).toContain('vite.config.ts');
@@ -249,7 +249,7 @@ describe('command integration tests', () => {
 
     it('scaffolds nuxt template', async () => {
       const outputDir = path.join(tmpDir, 'nuxt-app');
-      await scaffoldFromTemplate(outputDir, 'nuxt', 'nuxt-app');
+      await scaffoldFromTemplate(outputDir, 'nuxt', { projectName: 'nuxt-app' });
 
       const files = await fs.readdir(outputDir);
       expect(files).toContain('nuxt.config.ts');
