@@ -10,7 +10,12 @@
  *   - `{{projectName}}`    — the project name
  *   - `{{uiDir}}`          — the component output directory (e.g. "src/ui")
  *   - `{{resolverPath}}`   — relative import path for the SBean resolver
+ *
+ * @soybeanjs/* package versions are pinned to `{@link SOYBEAN_VERSION}` and
+ * kept in sync during release via `scripts/sync-template-versions.ts`.
  */
+
+import { SOYBEAN_VERSION } from './versions';
 
 export type FrameworkType = 'vue-vite' | 'nuxt';
 
@@ -160,22 +165,23 @@ app.mount('#app')
     preview: 'vp preview'
   },
   dependencies: {
-    '@iconify/vue': 'latest',
-    '@soybeanjs/cva': 'latest',
-    '@soybeanjs/headless': 'latest',
-    '@soybeanjs/hooks': 'latest',
-    '@soybeanjs/shadcn-theme': 'latest',
-    '@soybeanjs/utils': 'latest',
-    vue: 'latest'
+    '@iconify/vue': '^5.0.1',
+    '@soybeanjs/cva': `^0.0.9`,
+    '@soybeanjs/headless': `^${SOYBEAN_VERSION}`,
+    '@soybeanjs/hooks': `^${SOYBEAN_VERSION}`,
+    '@soybeanjs/shadcn-theme': `^${SOYBEAN_VERSION}`,
+    '@soybeanjs/utils': `^${SOYBEAN_VERSION}`,
+    vue: '^3.5.38',
+    'vue-router': '^5.1.0'
   },
   devDependencies: {
-    '@soybeanjs/unocss-shadcn': 'latest',
-    '@vitejs/plugin-vue': 'latest',
-    typescript: 'latest',
-    unocss: 'latest',
-    'unplugin-vue-components': 'latest',
-    'vite-plus': 'latest',
-    'vue-tsc': 'latest'
+    '@soybeanjs/unocss-shadcn': `^${SOYBEAN_VERSION}`,
+    '@vitejs/plugin-vue': '^6.0.7',
+    typescript: '^6.0.3',
+    unocss: '^66.7.2',
+    'unplugin-vue-components': '^32.1.0',
+    'vite-plus': '^0.1.24',
+    'vue-tsc': '^3.3.5'
   }
 };
 
@@ -227,17 +233,17 @@ export default defineNuxtConfig({
 `
   },
   dependencies: {
-    '@iconify/vue': 'latest',
-    '@soybeanjs/cva': 'latest',
-    '@soybeanjs/headless': 'latest',
-    '@soybeanjs/hooks': 'latest',
-    '@soybeanjs/shadcn-theme': 'latest',
-    '@soybeanjs/utils': 'latest',
-    nuxt: 'latest'
+    '@iconify/vue': '^5.0.1',
+    '@soybeanjs/cva': `^0.0.9`,
+    '@soybeanjs/headless': `^${SOYBEAN_VERSION}`,
+    '@soybeanjs/hooks': `^0.3.0`,
+    '@soybeanjs/shadcn-theme': `^${SOYBEAN_VERSION}`,
+    '@soybeanjs/utils': '^0.1.1',
+    nuxt: '^4.4.8'
   },
   devDependencies: {
-    '@unocss/nuxt': 'latest',
-    unocss: 'latest'
+    '@unocss/nuxt': '^66.7.2',
+    unocss: '^66.7.2'
   },
   scripts: {
     dev: 'nuxt dev',

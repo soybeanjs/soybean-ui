@@ -34,9 +34,10 @@
     "prepare": "pnpm build:libs",
     "publish-pkg": "pnpm publish -r --access public",
     "release": "soy release -e 'pnpm release-execute'",
-    "release-execute": "pnpm soy changelog && pnpm sui skills && pnpm sui changelog && pnpm sui changelog-translate",
+    "release-execute": "pnpm soy changelog && pnpm sui skills && pnpm sui changelog && pnpm sui changelog-translate && pnpm sync-template-versions",
     "stub": "tsx scripts/stub.ts",
     "sui": "tsx scripts/cli.ts",
+    "sync-template-versions": "tsx scripts/sync-template-versions.ts",
     "test": "pnpm -r run test",
     "typecheck": "pnpm -r typecheck",
     "upkg": "soy ncu"
