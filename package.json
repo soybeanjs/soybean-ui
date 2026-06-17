@@ -20,7 +20,7 @@
   "scripts": {
     "build": "pnpm build:headless && pnpm build:ui && pnpm build:sbean",
     "build:docs": "pnpm --filter @soybeanjs/ui-docs build",
-    "build:headless": "pnpm --filter @soybeanjs/shadcn-theme build",
+    "build:headless": "pnpm --filter @soybeanjs/headless build",
     "build:libs": "pnpm --filter @soybeanjs/shadcn-theme build && pnpm --filter @soybeanjs/unocss-shadcn build",
     "build:playground": "pnpm --filter @soybeanjs/ui-playground build",
     "build:sbean": "pnpm --filter sbean build",
