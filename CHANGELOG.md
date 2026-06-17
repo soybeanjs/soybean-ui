@@ -1,5 +1,35 @@
 # Changelog
 
+## [v0.29.0-beta.10](https://github.com/soybeanjs/soybean-ui/compare/v0.29.0-beta.9...v0.29.0-beta.10) (2026-06-17)
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- **sbean**: correct build script for headless component &nbsp;-&nbsp; by **soybeanfe** [<samp>(00b07)</samp>](https://github.com/soybeanjs/soybean-ui/commit/00b07cc4a)
+
+### &nbsp;&nbsp;&nbsp;🛠 Optimizations
+
+- **sbean**:
+  - add Nuxt 3 support flag and config option &nbsp;-&nbsp; by **soybeanfe** [<samp>(e2cff)</samp>](https://github.com/soybeanjs/soybean-ui/commit/e2cffbb39)
+  - streamline configuration handling and remove deprecated options &nbsp;-&nbsp; by **soybeanfe** [<samp>(c4c42)</samp>](https://github.com/soybeanjs/soybean-ui/commit/c4c4200f7)
+  - optimize registry &nbsp;-&nbsp; by @soybeanjs [<samp>(22362)</samp>](https://github.com/soybeanjs/soybean-ui/commit/2236236b7)
+  - optimize ui resolver for sbean &nbsp;-&nbsp; by **soybeanfe** [<samp>(63a3d)</samp>](https://github.com/soybeanjs/soybean-ui/commit/63a3d055b)
+  - enhance template scaffolding with variable interpolation and improved project structure &nbsp;-&nbsp; by **soybeanfe** [<samp>(0bca6)</samp>](https://github.com/soybeanjs/soybean-ui/commit/0bca60e4e)
+
+### &nbsp;&nbsp;&nbsp;💅 Refactors
+
+- **sbean**:
+  - remove style option from various components and configurations &nbsp;-&nbsp; by **soybeanfe** [<samp>(fb1e3)</samp>](https://github.com/soybeanjs/soybean-ui/commit/fb1e3414e)
+  - remove preset styles for clean, dense, and soybean &nbsp;-&nbsp; by **soybeanfe** [<samp>(a0bf7)</samp>](https://github.com/soybeanjs/soybean-ui/commit/a0bf753c9)
+
+### &nbsp;&nbsp;&nbsp;🏡 Chore
+
+- **deps**: update deps &nbsp;-&nbsp; by **soybeanfe** [<samp>(0c4c5)</samp>](https://github.com/soybeanjs/soybean-ui/commit/0c4c505fa)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;
+[soybeanfe](mailto:honghuangdc@gmail.com),&nbsp;
+
 ## [v0.29.0-beta.9](https://github.com/soybeanjs/soybean-ui/compare/v0.29.0-beta.8...v0.29.0-beta.9) (2026-06-15)
 
 ### &nbsp;&nbsp;&nbsp;🚀 Features

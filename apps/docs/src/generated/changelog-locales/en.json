@@ -1536,6 +1536,17 @@
               "e28d0": "remove unused CSS import and format presets in uno.config",
               "fb31b": "update sbean registry",
               "fd373": "update import paths to use tilde prefix"
+            },
+            "10": {
+              "22362": "optimize registry",
+              "00b07": "correct build script for headless component",
+              "0bca6": "enhance template scaffolding with variable interpolation and improved project structure",
+              "0c4c5": "update deps",
+              "63a3d": "optimize ui resolver for sbean",
+              "a0bf7": "remove preset styles for clean, dense, and soybean",
+              "c4c42": "streamline configuration handling and remove deprecated options",
+              "e2cff": "add Nuxt 3 support flag and config option",
+              "fb1e3": "remove style option from various components and configurations"
             }
           }
         }
