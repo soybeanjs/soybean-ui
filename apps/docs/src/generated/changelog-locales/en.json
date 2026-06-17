@@ -1547,6 +1547,10 @@
               "c4c42": "streamline configuration handling and remove deprecated options",
               "e2cff": "add Nuxt 3 support flag and config option",
               "fb1e3": "remove style option from various components and configurations"
+            },
+            "11": {
+              "406d2": "add version syncing script and update dependencies",
+              "e9ecb": "remove useless registry-item.json schema file"
             }
           }
         }

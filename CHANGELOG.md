@@ -1,5 +1,19 @@
 # Changelog
 
+## [v0.29.0-beta.11](https://github.com/soybeanjs/soybean-ui/compare/v0.29.0-beta.10...v0.29.0-beta.11) (2026-06-17)
+
+### &nbsp;&nbsp;&nbsp;🚀 Features
+
+- **template**: add version syncing script and update dependencies &nbsp;-&nbsp; by **soybeanfe** [<samp>(406d2)</samp>](https://github.com/soybeanjs/soybean-ui/commit/406d21410)
+
+### &nbsp;&nbsp;&nbsp;🛠 Optimizations
+
+- **schema**: remove useless registry-item.json schema file &nbsp;-&nbsp; by **soybeanfe** [<samp>(e9ecb)</samp>](https://github.com/soybeanjs/soybean-ui/commit/e9ecbb6e7)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[soybeanfe](mailto:honghuangdc@gmail.com)
+
 ## [v0.29.0-beta.10](https://github.com/soybeanjs/soybean-ui/compare/v0.29.0-beta.9...v0.29.0-beta.10) (2026-06-17)
 
 ### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes

@@ -1,7 +1,43 @@
 {
-  "generatedAt": "2026-06-17T10:19:33.782Z",
+  "generatedAt": "2026-06-17T11:33:10.323Z",
   "schemaVersion": 1,
   "releases": [
+    {
+      "version": "v0.29.0-beta.11",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.29.0-beta.10...v0.29.0-beta.11",
+      "date": "2026-06-17",
+      "entryCount": 2,
+      "componentCount": 0,
+      "components": [],
+      "typeCounts": {
+        "feature": 1,
+        "optimization": 1
+      },
+      "entries": [
+        {
+          "type": "feature",
+          "scope": "template",
+          "summary": "add version syncing script and update dependencies",
+          "summaryKey": "changelog.generated.v0.29.0-beta.11.406d2",
+          "commitHash": "406d2",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/406d21410",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "optimization",
+          "scope": "schema",
+          "summary": "remove useless registry-item.json schema file",
+          "summaryKey": "changelog.generated.v0.29.0-beta.11.e9ecb",
+          "commitHash": "e9ecb",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/e9ecbb6e7",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope",
+          "components": []
+        }
+      ]
+    },
     {
       "version": "v0.29.0-beta.10",
       "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.29.0-beta.9...v0.29.0-beta.10",
