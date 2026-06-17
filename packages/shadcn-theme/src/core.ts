@@ -27,19 +27,20 @@ export function createShadcnTheme(options?: ThemeOptions) {
    * @param config the preset config, only when scope is 'current', the config will be used to generate CSS.
    */
   const getCss = (config?: PresetConfig) => {
-    if (scope === 'all') {
-      return generateAllCss({ styleTarget, darkSelector, format });
-    }
-
     const mergedConfig: Required<PresetKeyConfig> = {
       base: config?.base ?? base,
       primary: config?.primary ?? primary,
       feedback: config?.feedback ?? feedback
     };
-
     const themePreset = generateThemePreset(mergedConfig, config?.preset ?? preset);
+    let css = generateCss(themePreset, { styleTarget, darkSelector, format, size, radius, menuColor, menuAccent });
 
-    return generateCss(themePreset, { styleTarget, darkSelector, format, size, radius, menuColor, menuAccent });
+    if (scope === 'all') {
+      css += '\n\n';
+      css += generateAllCss({ styleTarget, darkSelector, format });
+    }
+
+    return css;
   };
 
   return { getCss };
