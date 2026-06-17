@@ -114,7 +114,7 @@
     "@soybeanjs/hooks": "^0.3.0",
     "@soybeanjs/utils": "^0.1.1",
     "@standard-schema/spec": "^1.1.0",
-    "@tanstack/vue-virtual": "^3.13.28",
+    "@tanstack/vue-virtual": "^3.13.29",
     "@vueuse/core": "^14.3.0",
     "@vueuse/shared": "^14.3.0",
     "aria-hidden": "^1.2.6",
@@ -161,5 +161,5 @@
       "optional": true
     }
   },
-  "packageManager": "pnpm@11.6.0"
+  "packageManager": "pnpm@11.7.0"
 }

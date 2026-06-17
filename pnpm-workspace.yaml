@@ -21,8 +21,4 @@ allowBuilds:
   esbuild: false
   simple-git-hooks: false
 minimumReleaseAgeExclude:
-  - '@soybeanjs/colord@0.6.2'
-  - '@vue/language-core@3.3.5'
-  - eslint@10.5.0
-  - happy-dom@20.10.3
-  - vue-tsc@3.3.5
+  - happy-dom@20.10.5
