@@ -138,9 +138,10 @@ app.mount('#app')
 </script>
 
 <template>
-  <div id="app">
+  <div>
     <h1>Welcome to SoybeanUI</h1>
     <p>Run <code>sbean add &lt;component&gt;</code> to add components.</p>
+    <SButton>SoybeanUI</SButton>
   </div>
 </template>
 `,
@@ -228,6 +229,7 @@ export default defineNuxtConfig({
   <div>
     <h1>Welcome to SoybeanUI + Nuxt</h1>
     <p>Run <code>sbean add &lt;component&gt;</code> to add components.</p>
+    <SButton>SoybeanUI</SButton>
   </div>
 </template>
 `
