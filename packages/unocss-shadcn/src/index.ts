@@ -10,27 +10,34 @@ import { transform } from 'lightningcss';
 import globalStyle from './global.css?raw';
 import resetStyle from './reset.css?raw';
 
+interface CssGeneratedConfig {
+  /**
+   * Whether to include the reset CSS preflight (box-sizing, border-width, etc.).
+   *
+   * @default true
+   */
+  reset?: boolean;
+  /**
+   * Whether to include the global CSS preflight (border color, background, etc.).
+   *
+   * @default true
+   */
+  global?: boolean;
+  /**
+   * Whether to include the UI CSS preflight (buttons, inputs, etc.).
+   *
+   * @default false
+   */
+  ui?: boolean;
+}
+
 export interface ShadcnPresetOptions extends ThemeOptions {
   /**
    * Whether to generate the CSS theme (CSS variables + preflights).
    *
    * @default false
    */
-  generated?: boolean;
-  /**
-   * Whether to include the reset CSS preflight (box-sizing, border-width, etc.).
-   * Only effective when `generated` is `true`.
-   *
-   * @default true
-   */
-  resetCss?: boolean;
-  /**
-   * Whether to include the global CSS preflight (border color, background, etc.).
-   * Only effective when `generated` is `true`.
-   *
-   * @default true
-   */
-  globalCss?: boolean;
+  generated?: false | CssGeneratedConfig;
   /**
    * Font configuration forwarded to `@unocss/preset-web-fonts`.
    * When provided, `presetWebFonts` is automatically included in the returned presets.
@@ -102,27 +109,31 @@ export interface ShadcnPresetOptions extends ThemeOptions {
  *   ]
  */
 export function presetShadcn(options?: ShadcnPresetOptions): Preset<Theme>[] {
-  const { globalCss = true, resetCss = true, fonts, fontProvider = 'fontsource' } = options || {};
+  const { generated = { reset: true, global: true, ui: false }, fonts, fontProvider = 'fontsource' } = options || {};
 
   // ---- shadcn-theme preflights -------------------------------------------
   const preflights: Preflight[] = [];
 
-  if (options?.generated) {
+  if (generated && (generated.reset || generated.global || generated.ui)) {
+    const { reset, global, ui } = generated;
+
     preflights.push({
       getCSS: () => {
         let css = '';
 
-        if (resetCss) {
+        if (reset) {
           css += `${resetStyle}\n`;
         }
 
-        if (globalCss) {
+        if (global) {
           css += `${globalStyle}\n`;
         }
 
-        const { getCss } = createShadcnTheme(options);
+        if (ui) {
+          const { getCss } = createShadcnTheme(options);
 
-        css += getCss();
+          css += getCss();
+        }
 
         const r = transform({
           filename: 'shadcn-theme.css',

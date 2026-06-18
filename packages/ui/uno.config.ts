@@ -8,7 +8,9 @@ export default defineConfig<Theme>({
     presetWind3({ dark: 'class' }),
     presetAnimations(),
     presetShadcn({
-      generated: true
+      generated: {
+        ui: true
+      }
     })
   ]
 });

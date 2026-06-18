@@ -1,9 +1,10 @@
 <script setup lang="ts">
-import { h, watch } from 'vue';
+import { h, computed } from 'vue';
 import { useOmitProps } from '@soybeanjs/headless/composables';
 import { ConfigProvider } from '@soybeanjs/headless/config-provider';
-import { isClient, transformPropsToContext } from '@soybeanjs/headless/shared';
-import { updateUiAttribute } from '@soybeanjs/shadcn-theme';
+import { Primitive } from '@soybeanjs/headless/primitive';
+import { transformPropsToContext } from '@soybeanjs/headless/shared';
+import { createShadcnTheme } from '@soybeanjs/shadcn-theme';
 import DialogProvider from '../dialog/dialog-provider.vue';
 import Icon from '../icon/icon.vue';
 import type { IconValue } from '../icon/types';
@@ -37,24 +38,27 @@ const forwardedProps = useOmitProps(props, [
 
 const iconRender = props.iconRender ?? ((icon: IconValue) => h(Icon, { icon, ssr: import.meta.env.SSR }));
 
+const css = computed(() => {
+  const { getCss } = createShadcnTheme({
+    ...props.theme,
+    size: props.theme.size || props.size || 'md'
+  });
+
+  const result = getCss();
+  return result;
+});
+
 provideConfigProviderContext({
   ...transformPropsToContext(props),
   iconRender
 });
-
-watch(
-  () => props.theme,
-  (theme, oldTheme) => {
-    if (!isClient) return;
-
-    updateUiAttribute(theme, oldTheme);
-  },
-  { deep: true, immediate: true, flush: 'post' }
-);
 </script>
 
 <template>
   <ConfigProvider v-bind="forwardedProps" :icon-render="iconRender">
+    <Teleport to="head">
+      <Primitive as="style">{{ css }}</Primitive>
+    </Teleport>
     <slot />
     <ToastProvider v-if="!props.customToast" v-bind="props.toast" />
     <DialogProvider />
