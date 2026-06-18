@@ -7,12 +7,6 @@
       "type": "string",
       "description": "JSON Schema reference for this config. Set to \"https://ui.soybeanjs.cn/schema/sbean.json\" for validation."
     },
-    "style": {
-      "enum": ["soybean", "clean", "dense"],
-      "type": "string",
-      "description": "The design style preset. \"soybean\" is the default — a balanced, modern look. \"clean\" is minimal with sharper corners. \"dense\" is compact for data-heavy interfaces.",
-      "default": "soybean"
-    },
     "iconLibrary": {
       "enum": ["lucide", "material-symbols", "ph", "tabler", "solar", "radix-icons"],
       "type": "string",
@@ -197,7 +191,11 @@
         "type": "string"
       },
       "description": "Additional registry URLs for extending the component catalog."
+    },
+    "style": {
+      "description": "The design style preset. \"soybean\" is the default — a balanced, modern look. \"clean\" is minimal with sharper corners. \"dense\" is compact for data-heavy interfaces.",
+      "default": "soybean"
     }
   },
-  "required": ["style", "iconLibrary", "uno", "font", "menu"]
+  "required": ["iconLibrary", "uno", "font", "menu"]
 }
