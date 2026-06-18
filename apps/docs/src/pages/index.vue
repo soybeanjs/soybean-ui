@@ -338,7 +338,7 @@ const featuredGroups = computed(() =>
                 variant="solid"
                 :color="mode.key === 'npm' ? 'primary' : 'warning'"
                 shape="rounded"
-                class="group mt-auto w-full"
+                class="group mt-auto w-40"
               >
                 {{ mode.cta }}
                 <SIcon icon="lucide:arrow-right" class="transition-transform duration-200 group-hover:translate-x-1" />
