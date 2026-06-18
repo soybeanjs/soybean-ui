@@ -1,5 +1,35 @@
 # Changelog
 
+## [v0.29.0-beta.12](https://github.com/soybeanjs/soybean-ui/compare/v0.29.0-beta.11...v0.29.0-beta.12) (2026-06-18)
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- **sbean**: fix template deps versions &nbsp;-&nbsp; by **soybeanfe** [<samp>(a8921)</samp>](https://github.com/soybeanjs/soybean-ui/commit/a892179a3)
+- **tests**: remove redundant preset application tests &nbsp;-&nbsp; by **soybeanfe** [<samp>(d525a)</samp>](https://github.com/soybeanjs/soybean-ui/commit/d525a4976)
+
+### &nbsp;&nbsp;&nbsp;🛠 Optimizations
+
+- **sbean**:
+  - add SButton component to sbean template &nbsp;-&nbsp; by **soybeanfe** [<samp>(b2682)</samp>](https://github.com/soybeanjs/soybean-ui/commit/b2682aa5e)
+- **theme**:
+  - refactor getCss function to improve CSS generation logic &nbsp;-&nbsp; by **soybeanfe** [<samp>(6f95e)</samp>](https://github.com/soybeanjs/soybean-ui/commit/6f95e1b4d)
+  - remove unused UI_DATA_ATTRIBUTE and update menuAccent options &nbsp;-&nbsp; by **soybeanfe** [<samp>(5fb91)</samp>](https://github.com/soybeanjs/soybean-ui/commit/5fb91f959)
+
+### &nbsp;&nbsp;&nbsp;💅 Refactors
+
+- **theme**:
+  - streamline CSS generation and update theme attributes &nbsp;-&nbsp; by **soybeanfe** [<samp>(6b301)</samp>](https://github.com/soybeanjs/soybean-ui/commit/6b301cb04)
+  - update Shadcn preset options and improve CSS generation logic &nbsp;-&nbsp; by **soybeanfe** [<samp>(0d107)</samp>](https://github.com/soybeanjs/soybean-ui/commit/0d107ac2d)
+
+### &nbsp;&nbsp;&nbsp;🏡 Chore
+
+- **deps**: add vite-plus dependency to package.json and pnpm-lock.yaml &nbsp;-&nbsp; by @soybeanjs [<samp>(34277)</samp>](https://github.com/soybeanjs/soybean-ui/commit/34277adc1)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;
+[soybeanfe](mailto:honghuangdc@gmail.com),&nbsp;
+
 ## [v0.29.0-beta.11](https://github.com/soybeanjs/soybean-ui/compare/v0.29.0-beta.10...v0.29.0-beta.11) (2026-06-17)
 
 ### &nbsp;&nbsp;&nbsp;🚀 Features

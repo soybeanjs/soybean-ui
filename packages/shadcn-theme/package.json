@@ -1,6 +1,6 @@
 {
   "name": "@soybeanjs/shadcn-theme",
-  "version": "0.29.0-beta.11",
+  "version": "0.29.0-beta.12",
   "description": "A powerful and flexible shadcn/ui theme generator with support for dynamic CSS variable injection, preset color schemes, and light/dark mode switching.",
   "homepage": "https://github.com/soybeanjs/shadcn-theme",
   "bugs": {

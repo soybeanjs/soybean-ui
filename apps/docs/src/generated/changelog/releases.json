@@ -1,7 +1,111 @@
 {
-  "generatedAt": "2026-06-17T11:33:10.323Z",
+  "generatedAt": "2026-06-18T07:10:59.803Z",
   "schemaVersion": 1,
   "releases": [
+    {
+      "version": "v0.29.0-beta.12",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.29.0-beta.11...v0.29.0-beta.12",
+      "date": "2026-06-18",
+      "entryCount": 8,
+      "componentCount": 0,
+      "components": [],
+      "typeCounts": {
+        "fix": 2,
+        "optimization": 3,
+        "refactor": 2,
+        "chore": 1
+      },
+      "entries": [
+        {
+          "type": "fix",
+          "scope": "sbean",
+          "summary": "fix template deps versions",
+          "summaryKey": "changelog.generated.v0.29.0-beta.12.a8921",
+          "commitHash": "a8921",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/a892179a3",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "fix",
+          "scope": "tests",
+          "summary": "remove redundant preset application tests",
+          "summaryKey": "changelog.generated.v0.29.0-beta.12.d525a",
+          "commitHash": "d525a",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/d525a4976",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "optimization",
+          "scope": "sbean",
+          "summary": "add SButton component to sbean template",
+          "summaryKey": "changelog.generated.v0.29.0-beta.12.b2682",
+          "commitHash": "b2682",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/b2682aa5e",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "optimization",
+          "scope": "theme",
+          "summary": "refactor getCss function to improve CSS generation logic",
+          "summaryKey": "changelog.generated.v0.29.0-beta.12.6f95e",
+          "commitHash": "6f95e",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/6f95e1b4d",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "optimization",
+          "scope": "theme",
+          "summary": "remove unused UI_DATA_ATTRIBUTE and update menuAccent options",
+          "summaryKey": "changelog.generated.v0.29.0-beta.12.5fb91",
+          "commitHash": "5fb91",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/5fb91f959",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "refactor",
+          "scope": "theme",
+          "summary": "streamline CSS generation and update theme attributes",
+          "summaryKey": "changelog.generated.v0.29.0-beta.12.6b301",
+          "commitHash": "6b301",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/6b301cb04",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "refactor",
+          "scope": "theme",
+          "summary": "update Shadcn preset options and improve CSS generation logic",
+          "summaryKey": "changelog.generated.v0.29.0-beta.12.0d107",
+          "commitHash": "0d107",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/0d107ac2d",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "chore",
+          "scope": "deps",
+          "summary": "add vite-plus dependency to package.json and pnpm-lock.yaml",
+          "summaryKey": "changelog.generated.v0.29.0-beta.12.34277",
+          "commitHash": "34277",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/34277adc1",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope",
+          "components": []
+        }
+      ]
+    },
     {
       "version": "v0.29.0-beta.11",
       "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.29.0-beta.10...v0.29.0-beta.11",

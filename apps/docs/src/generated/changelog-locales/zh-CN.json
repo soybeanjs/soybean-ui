@@ -1551,6 +1551,16 @@
             "11": {
               "406d2": "添加版本同步脚本并更新依赖项",
               "e9ecb": "删除无用的 registry-item.json 模式文件"
+            },
+            "12": {
+              "34277": "在 package.json 和 pnpm-lock.yaml 中添加 vite-plus 依赖项",
+              "0d107": "更新 Shadcn 预设选项并改进 CSS 生成逻辑",
+              "5fb91": "移除未使用的 UI_DATA_ATTRIBUTE 并更新 menuAccent 选项",
+              "6b301": "优化 CSS 生成流程并更新主题属性",
+              "6f95e": "重构 getCss 函数以改进 CSS 生成逻辑",
+              "a8921": "修复模板依赖项的版本号",
+              "b2682": "在 sbean 模板中添加 SButton 组件",
+              "d525a": "移除冗余的预设应用程序测试"
             }
           }
         }

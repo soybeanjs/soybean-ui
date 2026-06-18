@@ -1551,6 +1551,16 @@
             "11": {
               "406d2": "add version syncing script and update dependencies",
               "e9ecb": "remove useless registry-item.json schema file"
+            },
+            "12": {
+              "34277": "add vite-plus dependency to package.json and pnpm-lock.yaml",
+              "0d107": "update Shadcn preset options and improve CSS generation logic",
+              "5fb91": "remove unused UI_DATA_ATTRIBUTE and update menuAccent options",
+              "6b301": "streamline CSS generation and update theme attributes",
+              "6f95e": "refactor getCss function to improve CSS generation logic",
+              "a8921": "fix template deps versions",
+              "b2682": "add SButton component to sbean template",
+              "d525a": "remove redundant preset application tests"
             }
           }
         }
