@@ -1,5 +1,18 @@
 # Changelog
 
+## [v0.29.0-beta.13](https://github.com/soybeanjs/soybean-ui/compare/v0.29.0-beta.12...v0.29.0-beta.13) (2026-06-18)
+
+### &nbsp;&nbsp;&nbsp;🛠 Optimizations
+
+- **sbean**:
+  - update component paths and wrap templates in SConfigProvider &nbsp;-&nbsp; by **soybeanfe** [<samp>(215bc)</samp>](https://github.com/soybeanjs/soybean-ui/commit/215bc78e9)
+  - enhance file type detection and support additional extensions &nbsp;-&nbsp; by **soybeanfe** [<samp>(d5209)</samp>](https://github.com/soybeanjs/soybean-ui/commit/d520971c5)
+  - reorganize style property and update registry &nbsp;-&nbsp; by **soybeanfe** [<samp>(1e424)</samp>](https://github.com/soybeanjs/soybean-ui/commit/1e4246fbe)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[soybeanfe](mailto:honghuangdc@gmail.com)
+
 ## [v0.29.0-beta.12](https://github.com/soybeanjs/soybean-ui/compare/v0.29.0-beta.11...v0.29.0-beta.12) (2026-06-18)
 
 ### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes

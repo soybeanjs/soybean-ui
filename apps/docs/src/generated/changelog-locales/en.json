@@ -1561,6 +1561,11 @@
               "a8921": "fix template deps versions",
               "b2682": "add SButton component to sbean template",
               "d525a": "remove redundant preset application tests"
+            },
+            "13": {
+              "1e424": "reorganize style property and update registry",
+              "215bc": "update component paths and wrap templates in SConfigProvider",
+              "d5209": "enhance file type detection and support additional extensions"
             }
           }
         }

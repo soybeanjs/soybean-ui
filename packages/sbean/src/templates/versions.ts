@@ -7,4 +7,4 @@
  * The version is read from the root `package.json` at release time so that
  * project templates always scaffold with the latest published version.
  */
-export const SOYBEAN_VERSION = '0.29.0-beta.12';
+export const SOYBEAN_VERSION = '0.29.0-beta.13';

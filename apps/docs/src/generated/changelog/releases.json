@@ -1,7 +1,53 @@
 {
-  "generatedAt": "2026-06-18T07:10:59.803Z",
+  "generatedAt": "2026-06-18T09:54:42.717Z",
   "schemaVersion": 1,
   "releases": [
+    {
+      "version": "v0.29.0-beta.13",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.29.0-beta.12...v0.29.0-beta.13",
+      "date": "2026-06-18",
+      "entryCount": 3,
+      "componentCount": 0,
+      "components": [],
+      "typeCounts": {
+        "optimization": 3
+      },
+      "entries": [
+        {
+          "type": "optimization",
+          "scope": "sbean",
+          "summary": "update component paths and wrap templates in SConfigProvider",
+          "summaryKey": "changelog.generated.v0.29.0-beta.13.215bc",
+          "commitHash": "215bc",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/215bc78e9",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "optimization",
+          "scope": "sbean",
+          "summary": "enhance file type detection and support additional extensions",
+          "summaryKey": "changelog.generated.v0.29.0-beta.13.d5209",
+          "commitHash": "d5209",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/d520971c5",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "optimization",
+          "scope": "sbean",
+          "summary": "reorganize style property and update registry",
+          "summaryKey": "changelog.generated.v0.29.0-beta.13.1e424",
+          "commitHash": "1e424",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/1e4246fbe",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope",
+          "components": []
+        }
+      ]
+    },
     {
       "version": "v0.29.0-beta.12",
       "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.29.0-beta.11...v0.29.0-beta.12",
