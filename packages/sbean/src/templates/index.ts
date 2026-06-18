@@ -245,10 +245,12 @@ export async function generatePackModules(cwd: string, uiDir: string, isNuxt = f
     const dest = path.join(cwd, uiDir, relPath);
     if (existsSync(dest)) continue;
 
+    const fullUiDir = path.join(cwd, uiDir);
+
     let content = await fs.readFile(src, 'utf-8');
     content = content.replaceAll('//---', '');
-    content = content.replace("from: '@soybeanjs/ui'", 'from: `#ui/components/${path}`');
-    content = content.replace("filePath: '@soybeanjs/ui'", 'filePath: `#ui/components/${path}`');
+    content = content.replace("from: '@soybeanjs/ui'", `from: \`${fullUiDir}/components/\${path}\``);
+    content = content.replace("filePath: '@soybeanjs/ui'", `filePath: \`${fullUiDir}/components/\${path}\``);
 
     await fs.mkdir(path.dirname(dest), { recursive: true });
     await fs.writeFile(dest, content, 'utf-8');

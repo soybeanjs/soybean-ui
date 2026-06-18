@@ -1,5 +1,5 @@
 import type { ComponentResolver } from 'unplugin-vue-components';
-//---import { keysOf } from '@soybeanjs/utils';
+//---import { keysOf, kebabCase } from '@soybeanjs/utils';
 import { components } from '../constants/components';
 
 function createResolver() {
@@ -11,7 +11,7 @@ function createResolver() {
       const values = Object.values(components).flat();
 
       if (values.includes($name)) {
-        //---const path = keysOf(components).find(key => components[key].includes($name));
+        //---const path = kebabCase(keysOf(components).find(key => components[key].includes($name))!);
 
         return {
           name: $name,

@@ -134,15 +134,16 @@ import App from './App.vue'
 const app = createApp(App)
 app.mount('#app')
 `,
-    'src/App.vue': `<script setup lang="ts">
-</script>
+    'src/App.vue': `<script setup lang="ts"></script>
 
 <template>
-  <div>
-    <h1>Welcome to SoybeanUI</h1>
-    <p>Run <code>sbean add &lt;component&gt;</code> to add components.</p>
-    <SButton>SoybeanUI</SButton>
-  </div>
+  <SConfigProvider>
+    <div>
+      <h1>Welcome to SoybeanUI</h1>
+      <p>Run <code>sbean add &lt;component&gt;</code> to add components.</p>
+      <SButton>SoybeanUI</SButton>
+    </div>
+  </SConfigProvider>
 </template>
 `,
     'index.html': `<!doctype html>
@@ -222,15 +223,16 @@ export default defineNuxtConfig({
   </div>
 </template>
 `,
-    'pages/index.vue': `<script setup lang="ts">
-</script>
+    'pages/index.vue': `<script setup lang="ts"></script>
 
 <template>
-  <div>
-    <h1>Welcome to SoybeanUI + Nuxt</h1>
-    <p>Run <code>sbean add &lt;component&gt;</code> to add components.</p>
-    <SButton>SoybeanUI</SButton>
-  </div>
+  <SConfigProvider>
+    <div>
+      <h1>Welcome to SoybeanUI + Nuxt</h1>
+      <p>Run <code>sbean add &lt;component&gt;</code> to add components.</p>
+      <SButton>SoybeanUI</SButton>
+    </div>
+  </SConfigProvider>
 </template>
 `
   },

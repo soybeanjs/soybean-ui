@@ -1,5 +1,5 @@
 import { addComponent, defineNuxtModule } from '@nuxt/kit';
-//---import { keysOf } from '@soybeanjs/utils';
+//---import { keysOf, kebabCase } from '@soybeanjs/utils';
 import { components } from '../constants/components';
 
 export interface ModuleOptions {
@@ -33,7 +33,7 @@ export default defineNuxtModule({
     }
 
     for (const component of getComponents()) {
-      //---const path = keysOf(components).find(key => components[key].includes(component));
+      //---const path = kebabCase(keysOf(components).find(key => components[key].includes(component))!);
 
       addComponent({
         name: `${component}`,
