@@ -1,8 +1,45 @@
 {
   "component": "config-provider",
-  "generatedAt": "2026-06-18T09:54:42.717Z",
+  "generatedAt": "2026-06-18T10:36:55.362Z",
   "schemaVersion": 1,
   "versions": [
+    {
+      "version": "v0.29.0",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.28.2...v0.29.0",
+      "date": "2026-06-18",
+      "entries": [
+        {
+          "type": "feature",
+          "scope": "config-provider",
+          "summary": "import updateUiAttribute from shadcn-theme",
+          "summaryKey": "changelog.generated.v0.29.0.6679f",
+          "commitHash": "6679f",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/6679f3375",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "fix",
+          "scope": "config-provider",
+          "summary": "clean up imports and remove unused default preset options check",
+          "summaryKey": "changelog.generated.v0.29.0.2b18c",
+          "commitHash": "2b18c",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/2b18c5ec7",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope"
+        },
+        {
+          "type": "refactor",
+          "scope": "config-provider",
+          "summary": "simplify theme handling and improve CSS generation",
+          "summaryKey": "changelog.generated.v0.29.0.11aff",
+          "commitHash": "11aff",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/11afffe41",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope"
+        }
+      ]
+    },
     {
       "version": "v0.29.0-beta.9",
       "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.29.0-beta.8...v0.29.0-beta.9",

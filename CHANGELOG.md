@@ -1,5 +1,164 @@
 # Changelog
 
+## [v0.29.0](https://github.com/soybeanjs/soybean-ui/compare/v0.28.2...v0.29.0) (2026-06-18)
+
+### &nbsp;&nbsp;&nbsp;🚀 Features
+
+- **config-provider**:
+  - import updateUiAttribute from shadcn-theme &nbsp;-&nbsp; by @soybeanjs [<samp>(6679f)</samp>](https://github.com/soybeanjs/soybean-ui/commit/6679f3375)
+- **docs**:
+  - add contribution guidelines and link to CONTRIBUTING.md in README files &nbsp;-&nbsp; by **soybeanfe** [<samp>(5f571)</samp>](https://github.com/soybeanjs/soybean-ui/commit/5f5711aff)
+  - add README files for documentation and playground apps in English and Chinese &nbsp;-&nbsp; by **soybeanfe** [<samp>(4a41c)</samp>](https://github.com/soybeanjs/soybean-ui/commit/4a41c8c49)
+  - add installation and CLI documentation in English and Chinese &nbsp;-&nbsp; by **soybeanfe** [<samp>(8e1d2)</samp>](https://github.com/soybeanjs/soybean-ui/commit/8e1d29e0b)
+  - enhance introduction and quick start guides with two distribution modes &nbsp;-&nbsp; by **soybeanfe** [<samp>(66f60)</samp>](https://github.com/soybeanjs/soybean-ui/commit/66f60dab2)
+- **packages**:
+  - add shadcn-theme and unocss-shadcn packages &nbsp;-&nbsp; by **soybeanfe** [<samp>(46b75)</samp>](https://github.com/soybeanjs/soybean-ui/commit/46b751d6c)
+- **pre-commit**:
+  - add pre-commit hook to stage changes &nbsp;-&nbsp; by **soybeanfe** [<samp>(8e99b)</samp>](https://github.com/soybeanjs/soybean-ui/commit/8e99b3c80)
+- **registry**:
+  - update sbean registry &nbsp;-&nbsp; by @soybeanjs [<samp>(ca250)</samp>](https://github.com/soybeanjs/soybean-ui/commit/ca2509aa1)
+  - update sbean registry &nbsp;-&nbsp; by @soybeanjs [<samp>(fb31b)</samp>](https://github.com/soybeanjs/soybean-ui/commit/fb31bdffe)
+- **sbean**:
+  - add sbean CLI tool for component copy-paste &nbsp;-&nbsp; by **soybeanfe** [<samp>(faeb1)</samp>](https://github.com/soybeanjs/soybean-ui/commit/faeb1b1c2)
+  - add registry fetching capabilities and enhance configuration &nbsp;-&nbsp; by **soybeanfe** [<samp>(06c40)</samp>](https://github.com/soybeanjs/soybean-ui/commit/06c40eb26)
+  - add current todo list for shadcn parity &nbsp;-&nbsp; by **soybeanfe** [<samp>(dd11b)</samp>](https://github.com/soybeanjs/soybean-ui/commit/dd11bbe1d)
+  - enhance search command with pagination and type filtering &nbsp;-&nbsp; by **soybeanfe** [<samp>(b4096)</samp>](https://github.com/soybeanjs/soybean-ui/commit/b4096583c)
+  - enhance font configuration with additional font options and update preset handling &nbsp;-&nbsp; by **soybeanfe** [<samp>(5edb9)</samp>](https://github.com/soybeanjs/soybean-ui/commit/5edb99cf8)
+  - update init config and add registry scripts &nbsp;-&nbsp; by @soybeanjs [<samp>(7419c)</samp>](https://github.com/soybeanjs/soybean-ui/commit/7419ca590)
+  - support monorepo &nbsp;-&nbsp; by @soybeanjs [<samp>(4f1b9)</samp>](https://github.com/soybeanjs/soybean-ui/commit/4f1b990a7)
+  - update preset sizes to use themeSizeKeys &nbsp;-&nbsp; by @soybeanjs [<samp>(c67f6)</samp>](https://github.com/soybeanjs/soybean-ui/commit/c67f6f2f4)
+  - add monorepo support and customizable UI output directory &nbsp;-&nbsp; by **soybeanfe** [<samp>(396a9)</samp>](https://github.com/soybeanjs/soybean-ui/commit/396a9c37e)
+  - add monorepo and uiDir options to init command &nbsp;-&nbsp; by **soybeanfe** [<samp>(6d688)</samp>](https://github.com/soybeanjs/soybean-ui/commit/6d688fec3)
+  - update registry with new components and styles &nbsp;-&nbsp; by **soybeanfe** [<samp>(168d1)</samp>](https://github.com/soybeanjs/soybean-ui/commit/168d1ee22)
+  - update template configurations and paths for improved structure &nbsp;-&nbsp; by **soybeanfe** [<samp>(655b5)</samp>](https://github.com/soybeanjs/soybean-ui/commit/655b5e4a9)
+  - add Nuxt 3 project initialization support &nbsp;-&nbsp; by @soybeanjs [<samp>(5ac6c)</samp>](https://github.com/soybeanjs/soybean-ui/commit/5ac6c6d66)
+- **template**:
+  - add version syncing script and update dependencies &nbsp;-&nbsp; by **soybeanfe** [<samp>(406d2)</samp>](https://github.com/soybeanjs/soybean-ui/commit/406d21410)
+- **theme**:
+  - add size to theme options &nbsp;-&nbsp; by @soybeanjs [<samp>(46a81)</samp>](https://github.com/soybeanjs/soybean-ui/commit/46a817b14)
+  - add theme size and radius options with corresponding CSS variable generation &nbsp;-&nbsp; by @soybeanjs [<samp>(46d3a)</samp>](https://github.com/soybeanjs/soybean-ui/commit/46d3a9627)
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- **build**:
+  - add sbean build script to the build process &nbsp;-&nbsp; by **soybeanfe** [<samp>(7864f)</samp>](https://github.com/soybeanjs/soybean-ui/commit/7864f410f)
+- **config-provider**:
+  - clean up imports and remove unused default preset options check &nbsp;-&nbsp; by **soybeanfe** [<samp>(2b18c)</samp>](https://github.com/soybeanjs/soybean-ui/commit/2b18c5ec7)
+- **css**:
+  - handle fallback for radius value in generateRadiusCSSVariable &nbsp;-&nbsp; by **soybeanfe** [<samp>(e723a)</samp>](https://github.com/soybeanjs/soybean-ui/commit/e723a75d1)
+  - update generateSizeCss to accept styleTarget and size parameters &nbsp;-&nbsp; by @soybeanjs [<samp>(5ac32)</samp>](https://github.com/soybeanjs/soybean-ui/commit/5ac3260b9)
+- **deps**:
+  - update markdown-exit to version 1.1.0-beta.2 &nbsp;-&nbsp; by @soybeanjs [<samp>(b7603)</samp>](https://github.com/soybeanjs/soybean-ui/commit/b76038612)
+- **docs**:
+  - update installation instructions and links for skills &nbsp;-&nbsp; by **soybeanfe** [<samp>(a5e1f)</samp>](https://github.com/soybeanjs/soybean-ui/commit/a5e1fb7d8)
+- **icon**:
+  - correct import path for useConfigProvider &nbsp;-&nbsp; by @soybeanjs [<samp>(7ad9c)</samp>](https://github.com/soybeanjs/soybean-ui/commit/7ad9ca875)
+- **init**:
+  - correct JSON syntax in TypeScript configuration generation &nbsp;-&nbsp; by **soybeanfe** [<samp>(68994)</samp>](https://github.com/soybeanjs/soybean-ui/commit/689945196)
+- **sbean**:
+  - correct build script for headless component &nbsp;-&nbsp; by **soybeanfe** [<samp>(00b07)</samp>](https://github.com/soybeanjs/soybean-ui/commit/00b07cc4a)
+  - fix template deps versions &nbsp;-&nbsp; by **soybeanfe** [<samp>(a8921)</samp>](https://github.com/soybeanjs/soybean-ui/commit/a892179a3)
+- **styles**:
+  - update dialog and drawer styles for responsiveness &nbsp;-&nbsp; by @soybeanjs [<samp>(098e7)</samp>](https://github.com/soybeanjs/soybean-ui/commit/098e76ea2)
+- **tests**:
+  - update component names in fetcher integration tests &nbsp;-&nbsp; by @soybeanjs [<samp>(2ba39)</samp>](https://github.com/soybeanjs/soybean-ui/commit/2ba395926)
+  - remove redundant preset application tests &nbsp;-&nbsp; by **soybeanfe** [<samp>(d525a)</samp>](https://github.com/soybeanjs/soybean-ui/commit/d525a4976)
+- **theme**:
+  - remove unused sidebar from color preset cache key &nbsp;-&nbsp; by @soybeanjs [<samp>(a736e)</samp>](https://github.com/soybeanjs/soybean-ui/commit/a736e6b89)
+  - simplify CSS generation by removing radius parameter &nbsp;-&nbsp; by @soybeanjs [<samp>(e5175)</samp>](https://github.com/soybeanjs/soybean-ui/commit/e51756569)
+  - move size property to theme object in configProviderProps &nbsp;-&nbsp; by @soybeanjs [<samp>(c0b7c)</samp>](https://github.com/soybeanjs/soybean-ui/commit/c0b7c1a1a)
+- **vite**:
+  - update build dependencies to include init:lib for ui and playground &nbsp;-&nbsp; by **soybeanfe** [<samp>(e4611)</samp>](https://github.com/soybeanjs/soybean-ui/commit/e4611ba48)
+- **vite.config**:
+  - disable minification for better debugging &nbsp;-&nbsp; by **soybeanfe** [<samp>(ee455)</samp>](https://github.com/soybeanjs/soybean-ui/commit/ee4552627)
+  - add formatting step to build:docs command &nbsp;-&nbsp; by **soybeanfe** [<samp>(d7e62)</samp>](https://github.com/soybeanjs/soybean-ui/commit/d7e629078)
+
+### &nbsp;&nbsp;&nbsp;🛠 Optimizations
+
+- **docs**:
+  - remove table of contents and update import statements &nbsp;-&nbsp; by @soybeanjs [<samp>(5f954)</samp>](https://github.com/soybeanjs/soybean-ui/commit/5f9544d54)
+  - enhance build:registry script for formatting &nbsp;-&nbsp; by @soybeanjs [<samp>(b9c2f)</samp>](https://github.com/soybeanjs/soybean-ui/commit/b9c2fd56d)
+- **imports**:
+  - update type imports to remove .js extension across components &nbsp;-&nbsp; by **soybeanfe** [<samp>(c43e8)</samp>](https://github.com/soybeanjs/soybean-ui/commit/c43e87f6a)
+- **navigation-menu**:
+  - enhance viewport positioning with active trigger element and add transition effects &nbsp;-&nbsp; by **soybeanfe** [<samp>(02dfc)</samp>](https://github.com/soybeanjs/soybean-ui/commit/02dfc0fe3)
+- **sbean**:
+  - update sbean &nbsp;-&nbsp; by **soybeanfe** [<samp>(cdd18)</samp>](https://github.com/soybeanjs/soybean-ui/commit/cdd188f5d)
+  - add Nuxt 3 support flag and config option &nbsp;-&nbsp; by **soybeanfe** [<samp>(e2cff)</samp>](https://github.com/soybeanjs/soybean-ui/commit/e2cffbb39)
+  - streamline configuration handling and remove deprecated options &nbsp;-&nbsp; by **soybeanfe** [<samp>(c4c42)</samp>](https://github.com/soybeanjs/soybean-ui/commit/c4c4200f7)
+  - optimize registry &nbsp;-&nbsp; by @soybeanjs [<samp>(22362)</samp>](https://github.com/soybeanjs/soybean-ui/commit/2236236b7)
+  - optimize ui resolver for sbean &nbsp;-&nbsp; by **soybeanfe** [<samp>(63a3d)</samp>](https://github.com/soybeanjs/soybean-ui/commit/63a3d055b)
+  - enhance template scaffolding with variable interpolation and improved project structure &nbsp;-&nbsp; by **soybeanfe** [<samp>(0bca6)</samp>](https://github.com/soybeanjs/soybean-ui/commit/0bca60e4e)
+  - add SButton component to sbean template &nbsp;-&nbsp; by **soybeanfe** [<samp>(b2682)</samp>](https://github.com/soybeanjs/soybean-ui/commit/b2682aa5e)
+  - update component paths and wrap templates in SConfigProvider &nbsp;-&nbsp; by **soybeanfe** [<samp>(215bc)</samp>](https://github.com/soybeanjs/soybean-ui/commit/215bc78e9)
+  - enhance file type detection and support additional extensions &nbsp;-&nbsp; by **soybeanfe** [<samp>(d5209)</samp>](https://github.com/soybeanjs/soybean-ui/commit/d520971c5)
+  - reorganize style property and update registry &nbsp;-&nbsp; by **soybeanfe** [<samp>(1e424)</samp>](https://github.com/soybeanjs/soybean-ui/commit/1e4246fbe)
+- **schema**:
+  - remove useless registry-item.json schema file &nbsp;-&nbsp; by **soybeanfe** [<samp>(e9ecb)</samp>](https://github.com/soybeanjs/soybean-ui/commit/e9ecbb6e7)
+- **scripts**:
+  - update scripts for consistency and clarity &nbsp;-&nbsp; by @soybeanjs [<samp>(6de36)</samp>](https://github.com/soybeanjs/soybean-ui/commit/6de36cd19)
+- **theme**:
+  - refactor getCss function to improve CSS generation logic &nbsp;-&nbsp; by **soybeanfe** [<samp>(6f95e)</samp>](https://github.com/soybeanjs/soybean-ui/commit/6f95e1b4d)
+  - remove unused UI_DATA_ATTRIBUTE and update menuAccent options &nbsp;-&nbsp; by **soybeanfe** [<samp>(5fb91)</samp>](https://github.com/soybeanjs/soybean-ui/commit/5fb91f959)
+
+### &nbsp;&nbsp;&nbsp;💅 Refactors
+
+- **build**:
+  - streamline build tasks and add prepare script &nbsp;-&nbsp; by @soybeanjs [<samp>(da282)</samp>](https://github.com/soybeanjs/soybean-ui/commit/da28233fb)
+- **config-provider**:
+  - simplify theme handling and improve CSS generation &nbsp;-&nbsp; by @soybeanjs [<samp>(11aff)</samp>](https://github.com/soybeanjs/soybean-ui/commit/11afffe41)
+- **docs**:
+  - update import paths to use tilde prefix &nbsp;-&nbsp; by @soybeanjs [<samp>(fd373)</samp>](https://github.com/soybeanjs/soybean-ui/commit/fd373d877)
+- **projects**:
+  - refactor code structure &nbsp;-&nbsp; by @soybeanjs [<samp>(3dd67)</samp>](https://github.com/soybeanjs/soybean-ui/commit/3dd679f66)
+- **sbean**:
+  - remove style option from various components and configurations &nbsp;-&nbsp; by **soybeanfe** [<samp>(fb1e3)</samp>](https://github.com/soybeanjs/soybean-ui/commit/fb1e3414e)
+  - remove preset styles for clean, dense, and soybean &nbsp;-&nbsp; by **soybeanfe** [<samp>(a0bf7)</samp>](https://github.com/soybeanjs/soybean-ui/commit/a0bf753c9)
+- **skills**:
+  - move skill source to top-level `skills` directory &nbsp;-&nbsp; by **soybeanfe** [<samp>(cbe33)</samp>](https://github.com/soybeanjs/soybean-ui/commit/cbe33c20b)
+- **template**:
+  - simplify templates and update dependencies &nbsp;-&nbsp; by @soybeanjs [<samp>(c2b4f)</samp>](https://github.com/soybeanjs/soybean-ui/commit/c2b4fa10f)
+- **theme**:
+  - simplify preset handling and cache logic &nbsp;-&nbsp; by @soybeanjs [<samp>(db519)</samp>](https://github.com/soybeanjs/soybean-ui/commit/db5191842)
+  - refactor ui theme configurator &nbsp;-&nbsp; by **soybeanfe** [<samp>(979e9)</samp>](https://github.com/soybeanjs/soybean-ui/commit/979e93989)
+  - remove unused radius values from theme radius definitions &nbsp;-&nbsp; by **soybeanfe** [<samp>(54181)</samp>](https://github.com/soybeanjs/soybean-ui/commit/5418133f0)
+  - streamline CSS generation and update theme attributes &nbsp;-&nbsp; by **soybeanfe** [<samp>(6b301)</samp>](https://github.com/soybeanjs/soybean-ui/commit/6b301cb04)
+  - update Shadcn preset options and improve CSS generation logic &nbsp;-&nbsp; by **soybeanfe** [<samp>(085ea)</samp>](https://github.com/soybeanjs/soybean-ui/commit/085ea9265)
+
+### &nbsp;&nbsp;&nbsp;📦 Build
+
+- **unocss-shadcn**: add lightningcss as a dev dependency &nbsp;-&nbsp; by @soybeanjs [<samp>(4f4d4)</samp>](https://github.com/soybeanjs/soybean-ui/commit/4f4d41d2c)
+
+### &nbsp;&nbsp;&nbsp;🏡 Chore
+
+- **config**:
+  - update typecheck command and add type-check task &nbsp;-&nbsp; by @soybeanjs [<samp>(0ad22)</samp>](https://github.com/soybeanjs/soybean-ui/commit/0ad226b80)
+- **deps**:
+  - update deps &nbsp;-&nbsp; by @soybeanjs [<samp>(94835)</samp>](https://github.com/soybeanjs/soybean-ui/commit/94835dab3)
+  - update deps &nbsp;-&nbsp; by **soybeanfe** [<samp>(31a20)</samp>](https://github.com/soybeanjs/soybean-ui/commit/31a20e6bf)
+  - update deps &nbsp;-&nbsp; by **soybeanfe** [<samp>(bde98)</samp>](https://github.com/soybeanjs/soybean-ui/commit/bde9842d2)
+  - update deps &nbsp;-&nbsp; by **soybeanfe** [<samp>(0c4c5)</samp>](https://github.com/soybeanjs/soybean-ui/commit/0c4c505fa)
+  - add vite-plus dependency to package.json and pnpm-lock.yaml &nbsp;-&nbsp; by @soybeanjs [<samp>(34277)</samp>](https://github.com/soybeanjs/soybean-ui/commit/34277adc1)
+- **sbean**:
+  - remove private flag from package.json &nbsp;-&nbsp; by @soybeanjs [<samp>(ce88d)</samp>](https://github.com/soybeanjs/soybean-ui/commit/ce88d34ac)
+- **ui**:
+  - remove unused cssRawPlugin function and clean up imports &nbsp;-&nbsp; by **soybeanfe** [<samp>(927d9)</samp>](https://github.com/soybeanjs/soybean-ui/commit/927d91e60)
+- **vscode**:
+  - update unocss root path &nbsp;-&nbsp; by @soybeanjs [<samp>(047b3)</samp>](https://github.com/soybeanjs/soybean-ui/commit/047b3c816)
+
+### &nbsp;&nbsp;&nbsp;🎨 Styles
+
+- **components**:
+  - simplify object property shorthand in form-field and tags-input components &nbsp;-&nbsp; by @soybeanjs [<samp>(8b585)</samp>](https://github.com/soybeanjs/soybean-ui/commit/8b585a940)
+- **docs**:
+  - remove unused CSS import and format presets in uno.config &nbsp;-&nbsp; by @soybeanjs [<samp>(e28d0)</samp>](https://github.com/soybeanjs/soybean-ui/commit/e28d03625)
+  - add UI attributes to the HTML tag for improved styling &nbsp;-&nbsp; by @soybeanjs [<samp>(d7e71)</samp>](https://github.com/soybeanjs/soybean-ui/commit/d7e71961b)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;
+[soybeanfe](mailto:honghuangdc@gmail.com),&nbsp;
+
 ## [v0.29.0-beta.13](https://github.com/soybeanjs/soybean-ui/compare/v0.29.0-beta.12...v0.29.0-beta.13) (2026-06-18)
 
 ### &nbsp;&nbsp;&nbsp;🛠 Optimizations

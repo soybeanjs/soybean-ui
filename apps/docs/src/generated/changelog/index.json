@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-18T09:54:42.717Z",
+  "generatedAt": "2026-06-18T10:36:55.362Z",
   "schemaVersion": 1,
   "components": {
     "accordion": {
@@ -201,9 +201,9 @@
     "config-provider": {
       "component": "config-provider",
       "file": "config-provider.json",
-      "latestVersion": "v0.29.0-beta.9",
-      "versionCount": 9,
-      "entryCount": 12
+      "latestVersion": "v0.29.0",
+      "versionCount": 10,
+      "entryCount": 15
     },
     "context-menu": {
       "component": "context-menu",
@@ -362,9 +362,9 @@
     "navigation-menu": {
       "component": "navigation-menu",
       "file": "navigation-menu.json",
-      "latestVersion": "v0.29.0-beta.2",
-      "versionCount": 5,
-      "entryCount": 6
+      "latestVersion": "v0.29.0",
+      "versionCount": 6,
+      "entryCount": 7
     },
     "page-tabs": {
       "component": "page-tabs",
