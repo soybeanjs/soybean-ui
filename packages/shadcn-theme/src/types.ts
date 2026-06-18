@@ -330,7 +330,7 @@ export type MenuColor = 'default' | 'inverted' | 'default-translucent' | 'invert
  *
  * Controls menu item highlight style.
  */
-export type MenuAccent = 'default' | 'bold';
+export type MenuAccent = 'subtle' | 'bold';
 
 export interface ThemeMenuConfig {
   /**
@@ -347,10 +347,10 @@ export interface ThemeMenuConfig {
   /**
    * the menu accent style
    *
-   * - default: muted foreground highlight
+   * - subtle: muted foreground highlight
    * - bold: primary color highlight
    *
-   * @default 'default'
+   * @default 'subtle'
    */
   menuAccent?: MenuAccent;
 }

@@ -5,7 +5,6 @@ import {
   EXTENDED_THEME_VARIABLES,
   SIZE_VARIABLE,
   RADIUS_VARIABLE,
-  UI_DATA_ATTRIBUTE,
   menuColorCss,
   menuAccentCss
 } from './constants';
@@ -63,28 +62,6 @@ function generateBaseCss(
   });
 
   css += `}\n\n`;
-
-  keysOf(menuColorCss).forEach(key => {
-    if (key === 'default') return;
-
-    const vars = menuColorCss[key];
-    css += `\n\n[${UI_DATA_ATTRIBUTE.menuColor}="${key}"] {\n`;
-    keysOf(vars).forEach(varKey => {
-      css += `  ${varKey}: ${vars[varKey]};\n`;
-    });
-    css += `}`;
-  });
-
-  keysOf(menuAccentCss).forEach(key => {
-    if (key === 'default') return;
-
-    const vars = menuAccentCss[key];
-    css += `\n\n[${UI_DATA_ATTRIBUTE.menuAccent}="${key}"] {\n`;
-    keysOf(vars).forEach(varKey => {
-      css += `  ${varKey}: ${vars[varKey]};\n`;
-    });
-    css += `}`;
-  });
 
   return css;
 }

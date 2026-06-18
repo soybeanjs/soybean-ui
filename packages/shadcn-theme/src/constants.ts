@@ -21,13 +21,6 @@ import type {
   MenuColor
 } from './types';
 
-export const UI_DATA_ATTRIBUTE = {
-  size: 'data-size',
-  radius: 'data-radius',
-  menuColor: 'data-menu-color',
-  menuAccent: 'data-menu-accent'
-};
-
 export const SIZE_VARIABLE = '--size';
 
 export const RADIUS_VARIABLE = '--radius';
@@ -104,7 +97,7 @@ export const DEFAULT_PRESET_OPTIONS = {
   primary: 'indigo',
   feedback: 'classic',
   menuColor: 'default',
-  menuAccent: 'default',
+  menuAccent: 'subtle',
   styleTarget: ':root',
   darkSelector: 'class',
   format: 'hsl'
@@ -174,7 +167,7 @@ export const menuColorCss: Record<MenuColor, Record<string, string>> = {
 };
 
 export const menuAccentCss: Record<MenuAccent, Record<string, string>> = {
-  default: {
+  subtle: {
     [MENU_VARIABLES.itemAccentBackground]: `hsl(var(${COLOR_VARIABLES.foreground}) / 0.05)`,
     [MENU_VARIABLES.itemAccentForeground]: `var(${COLOR_VARIABLES.foreground})`
   },
