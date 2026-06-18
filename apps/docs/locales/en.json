@@ -727,6 +727,32 @@
         "highlights": {
           "title": "Core Features"
         },
+        "two_modes": {
+          "title": "Two Ways to Use SoybeanUI",
+          "description": "Choose the distribution mode that fits your workflow — npm package for quick integration, or CLI copy-paste for full source control.",
+          "npm": {
+            "title": "npm Package",
+            "subtitle": "Traditional dependency",
+            "description": "Install {'@'}soybeanjs/ui as a dependency. Auto-import, tree-shaking, and seamless updates via your package manager.",
+            "feature_0": "One-command install",
+            "feature_1": "Auto-import with unplugin-vue-components",
+            "feature_2": "Tree-shaking — only bundle what you use",
+            "feature_3": "Seamless updates via package manager",
+            "feature_4": "Nuxt module support",
+            "cta": "Install Package"
+          },
+          "cli": {
+            "title": "CLI · Copy-Paste",
+            "subtitle": "shadcn-style",
+            "description": "Copy source code into your project with sbean CLI. Full control, full customization — you own the code.",
+            "feature_0": "Components live in your source tree",
+            "feature_1": "Edit any file — full customization",
+            "feature_2": "sbean diff to review upstream changes",
+            "feature_3": "Only the components you add exist",
+            "feature_4": "Perfect for custom design systems",
+            "cta": "Try the CLI"
+          }
+        },
         "featured": {
           "title": "High-signal Components",
           "desc": "If you want to feel the system quickly, these components show the most representative interaction surfaces."

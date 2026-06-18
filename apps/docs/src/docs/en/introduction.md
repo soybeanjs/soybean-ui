@@ -1,6 +1,29 @@
 # Introduction
 
-SoybeanUI is an elegant, modern, accessible, and high-quality UI component library designed for Vue 3. With a shadcn-like design style and a powerful Headless foundation, it provides a comprehensive set of accessible, customizable, and high-performance components to help developers build modern web applications quickly.
+SoybeanUI is an elegant, modern, accessible, and high-quality UI component system designed for Vue 3. It supports **two distribution modes** — install as a traditional npm package, or copy source code directly into your project via the `sbean` CLI (shadcn-style). Built on a powerful Headless foundation, it provides a comprehensive set of accessible, customizable, and high-performance components to help developers build modern web applications quickly.
+
+## Two Ways to Use SoybeanUI
+
+SoybeanUI gives you the freedom to choose how components live in your project:
+
+### npm Package — Quick Integration
+
+Install `@soybeanjs/ui` as a dependency and get started in minutes. Auto-import with `unplugin-vue-components`, tree-shaking, and seamless updates via your package manager. This is the recommended path for most projects.
+
+```bash
+pnpm add @soybeanjs/ui
+```
+
+### CLI · Copy-Paste — Full Source Control
+
+Prefer owning the source code? Use `sbean` CLI to copy components directly into your project. Edit any file, customize anything — the code is yours. Pull upstream updates with `sbean diff` when you want them.
+
+```bash
+npx sbean init
+npx sbean add button
+```
+
+See the [Installation](/overview/installation) guide for a detailed comparison, or jump directly to the [CLI documentation](/sbean).
 
 ## Why SoybeanUI?
 

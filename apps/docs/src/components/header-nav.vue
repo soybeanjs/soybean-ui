@@ -21,7 +21,7 @@ const menus = computed<HeaderNavItem[]>(() => [
     value: 'getting-started',
     label: t('layout.header.getting_started'),
     icon: 'lucide:rocket',
-    to: '/overview/quick-start',
+    to: '/overview/installation',
     isActive: route.path.startsWith('/overview')
   },
   {

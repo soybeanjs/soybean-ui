@@ -1,6 +1,29 @@
 # 介绍
 
-SoybeanUI 是一个优雅、现代、可访问且高质量的 UI 组件库，专为 Vue 3 设计，采用 shadcn-like 设计风格，构建在强大的 Headless 基础之上。它提供了一套全面、可访问、可定制且高性能的组件，帮助开发者快速构建现代化的 Web 应用。
+SoybeanUI 是一个优雅、现代、可访问且高质量的 UI 组件系统，专为 Vue 3 设计。它支持**两种分发模式** — 作为传统的 npm 包安装，或通过 `sbean` CLI 将源码直接复制到你的项目中（shadcn 风格）。构建在强大的 Headless 基础之上，提供了一套全面、可访问、可定制且高性能的组件，帮助开发者快速构建现代化的 Web 应用。
+
+## 两种使用方式
+
+SoybeanUI 让你自由选择组件在项目中的存在方式：
+
+### npm 包 — 快速集成
+
+将 `@soybeanjs/ui` 作为依赖安装，几分钟即可上手。通过 `unplugin-vue-components` 自动导入、Tree-shaking 优化体积，以及包管理器无缝升级。这是大多数项目的推荐方式。
+
+```bash
+pnpm add @soybeanjs/ui
+```
+
+### CLI · 复制粘贴 — 完全掌控源码
+
+想要完全拥有源码？使用 `sbean` CLI 将组件直接复制到你的项目中。可编辑任何文件，完全自定义 — 代码属于你。随时通过 `sbean diff` 查看上游更新并按需合并。
+
+```bash
+npx sbean init
+npx sbean add button
+```
+
+查看[安装指南](/overview/installation)了解详细对比，或直接跳转到 [CLI 文档](/sbean)。
 
 ## 为什么选择 SoybeanUI？
 
@@ -36,7 +59,7 @@ SoybeanUI 采用 Headless 架构，将逻辑层和表现层完全分离。这意
 
 SoybeanUI 采用严格的 **双层分离** 架构模型：
 
-```
+```text
 ┌─────────────────────────────────────────┐
 │           @soybeanjs/ui (src/)          │
 │  S-prefixed 组件   (SButton…)           │

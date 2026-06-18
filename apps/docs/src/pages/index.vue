@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { computed } from 'vue';
 import { kebabCase, pascalCase } from '@soybeanjs/utils';
 import BackgroundDecoration from '~/motion/background-decoration.vue';
 import { menuData } from '../constants/menus';
@@ -158,6 +159,31 @@ const featuredComponents = computed(() => {
   });
 });
 
+const twoModes = computed(() => [
+  {
+    key: 'npm',
+    title: t('components.home.sections.two_modes.npm.title'),
+    subtitle: t('components.home.sections.two_modes.npm.subtitle'),
+    description: t('components.home.sections.two_modes.npm.description'),
+    features: Array.from({ length: 5 }, (_, i) => t(`components.home.sections.two_modes.npm.feature_${i}`)),
+    cta: t('components.home.sections.two_modes.npm.cta'),
+    to: '/overview/installation',
+    icon: 'lucide:package',
+    iconClass: 'text-primary bg-primary/10'
+  },
+  {
+    key: 'cli',
+    title: t('components.home.sections.two_modes.cli.title'),
+    subtitle: t('components.home.sections.two_modes.cli.subtitle'),
+    description: t('components.home.sections.two_modes.cli.description'),
+    features: Array.from({ length: 5 }, (_, i) => t(`components.home.sections.two_modes.cli.feature_${i}`)),
+    cta: t('components.home.sections.two_modes.cli.cta'),
+    to: '/sbean',
+    icon: 'lucide:terminal',
+    iconClass: 'text-warning bg-warning/10'
+  }
+]);
+
 const featuredGroupMeta = {
   general: {
     icon: 'lucide:layout-grid',
@@ -231,7 +257,7 @@ const featuredGroups = computed(() =>
 
             <div class="grid gap-4 lt-sm:grid-cols-1 lt-md:grid-cols-2 md:grid-cols-3 max-w-3xl">
               <SButtonLink
-                to="/overview/quick-start"
+                to="/overview/installation"
                 size="lg"
                 variant="solid"
                 shape="rounded"
@@ -271,6 +297,56 @@ const featuredGroups = computed(() =>
           </SCard>
         </div>
       </section>
+
+      <SCard :title="t('components.home.sections.two_modes.title')" split class="docs-card overflow-hidden">
+        <template #description>{{ t('components.home.sections.two_modes.description') }}</template>
+
+        <template #default>
+          <div class="grid gap-6 lg:grid-cols-2">
+            <div v-for="mode in twoModes" :key="mode.key" class="docs-subtle-card flex flex-col p-6">
+              <div class="mb-4 flex items-center gap-3">
+                <div class="rounded-2xl p-3 text-xl" :class="mode.iconClass">
+                  <SIcon :icon="mode.icon" />
+                </div>
+                <div>
+                  <h3 class="text-lg leading-7 font-semibold tracking-[-0.02em] text-foreground">
+                    {{ mode.title }}
+                  </h3>
+                  <span class="text-xs font-medium uppercase tracking-[0.1em] text-muted-foreground">
+                    {{ mode.subtitle }}
+                  </span>
+                </div>
+              </div>
+
+              <p class="mb-4 text-sm leading-6 text-muted-foreground flex-1">
+                {{ mode.description }}
+              </p>
+
+              <ul class="mb-5 space-y-2">
+                <li
+                  v-for="(feature, i) in mode.features"
+                  :key="i"
+                  class="flex items-start gap-2 text-sm text-muted-foreground"
+                >
+                  <SIcon icon="lucide:check" class="mt-0.5 shrink-0 text-xs text-success" />
+                  <span>{{ feature }}</span>
+                </li>
+              </ul>
+
+              <SButtonLink
+                :to="mode.to"
+                variant="solid"
+                :color="mode.key === 'npm' ? 'primary' : 'warning'"
+                shape="rounded"
+                class="group mt-auto w-full"
+              >
+                {{ mode.cta }}
+                <SIcon icon="lucide:arrow-right" class="transition-transform duration-200 group-hover:translate-x-1" />
+              </SButtonLink>
+            </div>
+          </div>
+        </template>
+      </SCard>
 
       <section class="grid gap-4 p-4 lg:grid-cols-2 xl:grid-cols-4">
         <SLink v-for="item in quickLinks" :key="item.to" :to="item.to" class="group px-5 py-4 hover:border-primary/35">

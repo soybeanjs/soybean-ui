@@ -1,6 +1,8 @@
 # Quick Start
 
-This guide helps you integrate SoybeanUI into your project quickly so you can start using the components in just a few minutes.
+SoybeanUI offers two ways to integrate components into your project. This guide covers both paths — choose the one that fits your workflow.
+
+> **Which should I choose?** Use the **npm package** for quick integration with automatic updates. Use the **CLI (sbean)** when you want full control over source code — edit any file, customize anything. See the [Installation](/overview/installation) guide for a detailed comparison.
 
 ## Requirements
 
@@ -10,11 +12,52 @@ Before you start, make sure your project meets the following requirements:
 - **Vue** >= 3.3.0
 - **Package manager**: pnpm (recommended), npm, or yarn
 
-## Installation
+## Path A: CLI · Copy-Paste (shadcn-style)
 
-### Use the styled UI library (recommended)
+Prefer owning your component source code? Use `sbean` to copy components directly into your project.
 
-If you want to use beautifully styled components out of the box, install `@soybeanjs/ui`:
+### 1. Initialize your project
+
+```bash
+npx sbean init
+```
+
+This creates an `sbean.json` config and sets up UnoCSS. Follow the interactive prompts to choose your colors, font, icon library, and more.
+
+### 2. Add components
+
+```bash
+npx sbean add button
+npx sbean add dialog select
+```
+
+Components are copied to `src/ui/components/` — they're now part of your project. Import them using the `#ui` alias:
+
+```vue
+<script setup lang="ts">
+import SButton from '#ui/components/button';
+</script>
+
+<template>
+  <SButton>Click me</SButton>
+</template>
+```
+
+### 3. Update components
+
+```bash
+# See what changed upstream
+npx sbean diff button
+
+# Update to the latest version
+npx sbean add button --overwrite
+```
+
+See the [CLI documentation](/sbean) for all available commands, configuration options, and project structure details.
+
+## Path B: npm Package
+
+If you prefer a traditional dependency workflow, install `@soybeanjs/ui`:
 
 ```bash
 # pnpm (recommended)
@@ -27,17 +70,15 @@ npm install @soybeanjs/ui
 yarn add @soybeanjs/ui
 ```
 
-### Use the Headless library
-
 If you want to build your own design system, install `@soybeanjs/headless`:
 
 ```bash
 pnpm add @soybeanjs/headless
 ```
 
-## Basic setup
+## Path B (continued): Basic setup
 
-### 1. Import styles
+### Import styles
 
 If you use `@soybeanjs/ui`, import the stylesheet in your project entry file:
 

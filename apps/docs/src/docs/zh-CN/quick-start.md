@@ -1,6 +1,8 @@
 # 快速开始
 
-本指南将帮助你快速在项目中集成 SoybeanUI，让你在几分钟内开始使用我们的组件。
+SoybeanUI 提供两种方式将组件集成到项目中。本指南涵盖两种路径 — 选择适合你工作流程的方式。
+
+> **我应该选择哪种？** 使用 **npm 包**进行快速集成和自动更新。使用 **CLI（sbean）**完全掌控源码 — 可编辑任何文件，完全自定义。查看[安装指南](/overview/installation)了解详细对比。
 
 ## 环境要求
 
@@ -10,11 +12,52 @@
 - **Vue** >= 3.3.0
 - **包管理器**：pnpm（推荐）、npm 或 yarn
 
-## 安装
+## 路径 A：CLI · 复制粘贴（shadcn 风格）
 
-### 使用带样式的 UI 库（推荐）
+想要拥有组件源码？使用 `sbean` 将组件直接复制到你的项目中。
 
-如果你想要直接使用带有精美样式的组件，安装 `@soybeanjs/ui`：
+### 1. 初始化项目
+
+```bash
+npx sbean init
+```
+
+这会创建 `sbean.json` 配置并设置 UnoCSS。根据交互提示选择颜色、字体、图标库等。
+
+### 2. 添加组件
+
+```bash
+npx sbean add button
+npx sbean add dialog select
+```
+
+组件被复制到 `src/ui/components/` — 它们现在是项目的一部分。使用 `#ui` 别名导入：
+
+```vue
+<script setup lang="ts">
+import SButton from '#ui/components/button';
+</script>
+
+<template>
+  <SButton>点击</SButton>
+</template>
+```
+
+### 3. 更新组件
+
+```bash
+# 查看上游变更
+npx sbean diff button
+
+# 更新到最新版本
+npx sbean add button --overwrite
+```
+
+查看 [CLI 文档](/sbean) 了解所有可用命令、配置选项和项目结构详情。
+
+## 路径 B：npm 包
+
+如果你偏好传统的依赖工作流，安装 `@soybeanjs/ui`：
 
 ```bash
 # 使用 pnpm（推荐）
@@ -27,17 +70,15 @@ npm install @soybeanjs/ui
 yarn add @soybeanjs/ui
 ```
 
-### 使用 Headless 库
-
 如果你想要构建自己的设计系统，安装 `@soybeanjs/headless`：
 
 ```bash
 pnpm add @soybeanjs/headless
 ```
 
-## 基础配置
+## 路径 B（续）：基础配置
 
-### 1. 引入样式
+### 引入样式
 
 如果使用 `@soybeanjs/ui`，需要在项目入口文件中引入样式文件：
 

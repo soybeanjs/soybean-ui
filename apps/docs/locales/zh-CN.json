@@ -726,6 +726,32 @@
         "highlights": {
           "title": "核心特性"
         },
+        "two_modes": {
+          "title": "两种使用方式",
+          "description": "选择适合你工作流程的分发模式 — npm 包快速集成，或 CLI 复制粘贴完全掌控源码。",
+          "npm": {
+            "title": "npm 包",
+            "subtitle": "传统依赖",
+            "description": "将 {'@'}soybeanjs/ui 作为依赖安装。自动导入、Tree-shaking，通过包管理器无缝升级。",
+            "feature_0": "一行命令安装",
+            "feature_1": "支持 unplugin-vue-components 自动导入",
+            "feature_2": "Tree-shaking — 只打包使用的代码",
+            "feature_3": "通过包管理器无缝升级",
+            "feature_4": "Nuxt 模块支持",
+            "cta": "安装 npm 包"
+          },
+          "cli": {
+            "title": "CLI · 复制粘贴",
+            "subtitle": "shadcn 风格",
+            "description": "通过 sbean CLI 将源码复制到你的项目中。完全控制、完全自定义 — 你拥有代码。",
+            "feature_0": "组件存在于你的源码树中",
+            "feature_1": "可编辑任何文件 — 完全自定义",
+            "feature_2": "sbean diff 查看上游变更",
+            "feature_3": "只有你添加的组件才会存在",
+            "feature_4": "自定义设计系统的最佳选择",
+            "cta": "尝试 CLI"
+          }
+        },
         "featured": {
           "title": "高频组件入口",
           "desc": "如果你想先感受体系能力，这些组件最能代表 SoybeanUI 的常用交互面。"
