@@ -1,7 +1,7 @@
 import { colord } from '@soybeanjs/colord';
 import { tailwindPalette, simplePalette } from '@soybeanjs/colord/palette';
 import type { PaletteColorLevel, TailwindPaletteKey, TailwindPaletteLevelColorKey } from '@soybeanjs/colord/palette';
-import { DARK_SELECTOR, DEFAULT_PRESET_OPTIONS, UI_DATA_ATTRIBUTE, THEME_SIZE, THEME_RADIUS } from './constants';
+import { DARK_SELECTOR, DEFAULT_PRESET_OPTIONS, THEME_SIZE, THEME_RADIUS } from './constants';
 import type { ColorFormat, ColorValue, DarkSelector, ThemeOptions } from './types';
 
 export function keysOf<TRecord extends Record<string, unknown>>(record: TRecord) {
@@ -97,30 +97,4 @@ export function resolveRadiusValue(radius?: ThemeOptions['radius']): string {
   }
 
   return radius;
-}
-
-type UpdateUiAttributeTheme = Pick<ThemeOptions, 'size' | 'radius' | 'menuColor' | 'menuAccent'>;
-
-export function updateUiAttribute(newTheme?: UpdateUiAttributeTheme, oldTheme?: UpdateUiAttributeTheme) {
-  const keys: (keyof UpdateUiAttributeTheme)[] = ['size', 'radius', 'menuColor', 'menuAccent'];
-
-  const html = document.documentElement;
-
-  keys.forEach(key => {
-    const name = UI_DATA_ATTRIBUTE[key];
-    const value = newTheme?.[key];
-    const defaultValue = DEFAULT_PRESET_OPTIONS[key];
-
-    if (!newTheme || !value) {
-      html.setAttribute(name, defaultValue);
-
-      return;
-    }
-
-    const isChanged = value !== oldTheme?.[key];
-
-    if (isChanged) {
-      html.setAttribute(name, value || defaultValue);
-    }
-  });
 }
