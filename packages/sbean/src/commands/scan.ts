@@ -179,7 +179,13 @@ async function scanFiles(dir: string): Promise<string[]> {
     if (entry.isDirectory()) {
       const nested = await scanFiles(fullPath);
       result.push(...nested);
-    } else if (entry.isFile() && /\.(vue|ts|js)$/.test(entry.name) && !entry.name.endsWith('.d.ts')) {
+    } else if (
+      entry.isFile() &&
+      // Supported file types: vue SFCs, TypeScript/JS (incl. JSX/TSX, ESM/CJS variants),
+      // CSS and preprocessors, JSON data files. Exclude .d.ts declaration files.
+      /\.(?:vue|tsx?|jsx?|m[tj]s|cjs|css|s[ac]ss|less|json)$/.test(entry.name) &&
+      !entry.name.endsWith('.d.ts')
+    ) {
       result.push(fullPath);
     }
   }
@@ -190,9 +196,10 @@ async function scanFiles(dir: string): Promise<string[]> {
 function inferFileType(filePath: string): RegistryItemFile['type'] {
   const normalized = filePath.replace(/\\/g, '/');
 
+  if (/\.(css|scss|sass|less)$/.test(normalized)) return 'registry:style';
   if (normalized.includes('/styles/')) return 'registry:style';
   if (normalized.includes('/theme/')) return 'registry:theme';
-  if (normalized.endsWith('.vue')) return 'registry:ui';
+  if (/\.(vue|tsx|jsx)$/.test(normalized)) return 'registry:ui';
   return 'registry:lib';
 }
 

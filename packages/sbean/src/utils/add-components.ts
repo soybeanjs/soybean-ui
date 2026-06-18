@@ -429,14 +429,26 @@ function resolveSourceDependencyPath(filePath: string, specifier: string): strin
 }
 
 function resolveWithExtensions(basePath: string): string | null {
+  // Strip Vite query params (?raw, ?inline, ?url, etc.)
+  const cleaned = basePath.split('?')[0];
+
+  /** Extensions to try (most-to-least common in SoybeanUI projects). */
   const candidates = [
-    `${basePath}.ts`,
-    `${basePath}.vue`,
-    `${basePath}.js`,
-    path.join(basePath, 'index.ts'),
-    path.join(basePath, 'index.vue'),
-    path.join(basePath, 'index.js'),
-    basePath
+    `${cleaned}.ts`,
+    `${cleaned}.vue`,
+    `${cleaned}.tsx`,
+    `${cleaned}.js`,
+    `${cleaned}.jsx`,
+    `${cleaned}.mts`,
+    `${cleaned}.mjs`,
+    `${cleaned}.css`,
+    `${cleaned}.scss`,
+    `${cleaned}.less`,
+    path.join(cleaned, 'index.ts'),
+    path.join(cleaned, 'index.vue'),
+    path.join(cleaned, 'index.tsx'),
+    path.join(cleaned, 'index.js'),
+    cleaned
   ];
 
   return candidates.find(candidate => isExistingFile(candidate)) ?? null;
@@ -444,6 +456,10 @@ function resolveWithExtensions(basePath: string): string | null {
 
 function inferRegistryFileType(filePath: string): RegistryItemFile['type'] {
   const normalizedPath = normalizePath(filePath);
+
+  if (/\.(css|scss|sass|less)$/.test(normalizedPath)) {
+    return 'registry:style';
+  }
 
   if (normalizedPath.includes('/styles/')) {
     return 'registry:style';
@@ -453,7 +469,7 @@ function inferRegistryFileType(filePath: string): RegistryItemFile['type'] {
     return 'registry:theme';
   }
 
-  if (normalizedPath.endsWith('.vue')) {
+  if (/\.(vue|tsx|jsx)$/.test(normalizedPath)) {
     return 'registry:ui';
   }
 
