@@ -9,6 +9,8 @@ export default defineConfig<Theme>({
     presetAnimations(),
     presetShadcn({
       generated: {
+        reset: true,
+        global: true,
         ui: true
       }
     })
