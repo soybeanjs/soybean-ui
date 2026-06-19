@@ -17,8 +17,6 @@ export default defineConfig<Theme>({
     presetSoybean(),
     presetShadcn({
       generated: {
-        reset: true,
-        global: true,
         ui: true
       }
     })

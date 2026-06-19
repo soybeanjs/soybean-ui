@@ -109,13 +109,17 @@ export interface ShadcnPresetOptions extends ThemeOptions {
  *   ]
  */
 export function presetShadcn(options?: ShadcnPresetOptions): Preset<Theme>[] {
-  const { generated = { reset: true, global: true, ui: false }, fonts, fontProvider = 'fontsource' } = options || {};
+  const { generated = false, fonts, fontProvider = 'fontsource' } = options || {};
 
   // ---- shadcn-theme preflights -------------------------------------------
   const preflights: Preflight[] = [];
 
-  if (generated && (generated.reset || generated.global || generated.ui)) {
-    const { reset, global, ui } = generated;
+  const genConfig: CssGeneratedConfig = generated
+    ? { reset: generated.reset ?? true, global: generated.global ?? true, ui: generated.ui ?? false }
+    : {};
+
+  if (genConfig.reset || genConfig.global || genConfig.ui) {
+    const { reset, global, ui } = genConfig;
 
     preflights.push({
       getCSS: () => {
