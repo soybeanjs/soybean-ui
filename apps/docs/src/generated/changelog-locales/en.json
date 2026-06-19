@@ -1543,6 +1543,10 @@
             "fb31b": "update sbean registry",
             "fd373": "update import paths to use tilde prefix"
           },
+          "1": {
+            "66d24": "add reset and global options to presetShadcn configuration",
+            "f9d66": "clean up HTML structure and improve styling in index.vue and uno.config.ts"
+          },
           "0-beta": {
             "1": {
               "94835": "update deps",

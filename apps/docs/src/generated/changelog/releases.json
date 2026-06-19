@@ -1,7 +1,43 @@
 {
-  "generatedAt": "2026-06-18T10:36:55.362Z",
+  "generatedAt": "2026-06-19T07:08:16.362Z",
   "schemaVersion": 1,
   "releases": [
+    {
+      "version": "v0.29.1",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.29.0...v0.29.1",
+      "date": "2026-06-19",
+      "entryCount": 2,
+      "componentCount": 0,
+      "components": [],
+      "typeCounts": {
+        "fix": 1,
+        "optimization": 1
+      },
+      "entries": [
+        {
+          "type": "fix",
+          "scope": "unocss",
+          "summary": "add reset and global options to presetShadcn configuration",
+          "summaryKey": "changelog.generated.v0.29.1.66d24",
+          "commitHash": "66d24",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/66d24862",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "optimization",
+          "scope": "docs",
+          "summary": "clean up HTML structure and improve styling in index.vue and uno.config.ts",
+          "summaryKey": "changelog.generated.v0.29.1.f9d66",
+          "commitHash": "f9d66",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/f9d664d6",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope",
+          "components": []
+        }
+      ]
+    },
     {
       "version": "v0.29.0",
       "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.28.2...v0.29.0",

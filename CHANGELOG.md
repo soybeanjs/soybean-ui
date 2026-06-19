@@ -1,5 +1,20 @@
 # Changelog
 
+## [v0.29.1](https://github.com/soybeanjs/soybean-ui/compare/v0.29.0...v0.29.1) (2026-06-19)
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- **unocss**: add reset and global options to presetShadcn configuration &nbsp;-&nbsp; by @soybeanjs [<samp>(66d24)</samp>](https://github.com/soybeanjs/soybean-ui/commit/66d24862)
+
+### &nbsp;&nbsp;&nbsp;🛠 Optimizations
+
+- **docs**: clean up HTML structure and improve styling in index.vue and uno.config.ts &nbsp;-&nbsp; by **soybeanfe** [<samp>(f9d66)</samp>](https://github.com/soybeanjs/soybean-ui/commit/f9d664d6)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;
+[soybeanfe](mailto:honghuangdc@gmail.com)
+
 ## [v0.29.0](https://github.com/soybeanjs/soybean-ui/compare/v0.28.2...v0.29.0) (2026-06-18)
 
 ### &nbsp;&nbsp;&nbsp;🚀 Features
