@@ -11,5 +11,12 @@ export default defineConfig<Theme>({
     }
   },
   transformers: [transformerDirectives(), transformerVariantGroup()],
-  presets: [presetWind3({ dark: 'class' }), presetAnimations(), presetSoybean(), presetShadcn()]
+  presets: [
+    presetWind3({ dark: 'class' }),
+    presetAnimations(),
+    presetSoybean(),
+    presetShadcn({
+      generated: true
+    })
+  ]
 });
