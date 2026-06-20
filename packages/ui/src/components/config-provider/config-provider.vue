@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { h, computed } from 'vue';
+import { useStyleTag } from '@vueuse/core';
 import { useOmitProps } from '@soybeanjs/headless/composables';
 import { ConfigProvider } from '@soybeanjs/headless/config-provider';
-import { Primitive } from '@soybeanjs/headless/primitive';
 import { transformPropsToContext } from '@soybeanjs/headless/shared';
 import { createShadcnTheme } from '@soybeanjs/shadcn-theme';
 import DialogProvider from '../dialog/dialog-provider.vue';
@@ -48,6 +48,8 @@ const css = computed(() => {
   return result;
 });
 
+useStyleTag(css, { id: '__SoybeanUI_theme' });
+
 provideConfigProviderContext({
   ...transformPropsToContext(props),
   iconRender
@@ -56,9 +58,6 @@ provideConfigProviderContext({
 
 <template>
   <ConfigProvider v-bind="forwardedProps" :icon-render="iconRender">
-    <Teleport to="head">
-      <Primitive as="style">{{ css }}</Primitive>
-    </Teleport>
     <slot />
     <ToastProvider v-if="!props.customToast" v-bind="props.toast" />
     <DialogProvider />
