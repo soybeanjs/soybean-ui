@@ -27,7 +27,7 @@
     "shiki": "^4.2.0",
     "valibot": "^1.4.1",
     "vue": "^3.5.38",
-    "vue-i18n": "^11.4.5",
+    "vue-i18n": "^11.4.6",
     "vue-router": "^5.1.0",
     "zod": "^4.4.3"
   },
@@ -46,5 +46,5 @@
     "vite-ssg": "^28.3.0",
     "vite-ssg-sitemap": "^0.10.0"
   },
-  "packageManager": "pnpm@11.7.0"
+  "packageManager": "pnpm@11.8.0"
 }

@@ -6,11 +6,9 @@ packages:
 catalog:
   vite: npm:@voidzero-dev/vite-plus-core@latest
   vitest: npm:@voidzero-dev/vite-plus-test@latest
-  vite-plus: ^0.1.24
+  vite-plus: ^0.2.1
 overrides:
   vue: '^3.5.38'
-  oxfmt: '^0.51.0'
-  oxlint: '^1.66.0'
   vite-ssg>jsdom: 27.0.1
   markdown-exit: 1.1.0-beta.2
 shamefullyHoist: true
@@ -21,4 +19,3 @@ allowBuilds:
   esbuild: false
   simple-git-hooks: false
 minimumReleaseAgeExclude:
-  - happy-dom@20.10.5

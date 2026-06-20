@@ -63,11 +63,11 @@
   "devDependencies": {
     "@nuxt/kit": "^4.4.8",
     "@soybeanjs/unocss-shadcn": "workspace:^",
-    "@types/node": "^25.9.3",
+    "@types/node": "^26.0.0",
     "@unocss/cli": "^66.7.2",
     "@vue/test-utils": "^2.4.11",
     "axe-core": "^4.12.1",
-    "happy-dom": "^20.10.5",
+    "happy-dom": "^20.10.6",
     "nuxt": "^4.4.8",
     "typescript": "^6.0.3",
     "unocss": "^66.7.2",
@@ -105,5 +105,5 @@
       "optional": true
     }
   },
-  "packageManager": "pnpm@11.7.0"
+  "packageManager": "pnpm@11.8.0"
 }
