@@ -1,7 +1,67 @@
 {
-  "generatedAt": "2026-06-19T07:08:16.362Z",
+  "generatedAt": "2026-06-20T10:14:28.452Z",
   "schemaVersion": 1,
   "releases": [
+    {
+      "version": "v0.29.2",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.29.1...v0.29.2",
+      "date": "2026-06-20",
+      "entryCount": 4,
+      "componentCount": 0,
+      "components": [],
+      "typeCounts": {
+        "fix": 1,
+        "optimization": 1,
+        "style": 1,
+        "chore": 1
+      },
+      "entries": [
+        {
+          "type": "fix",
+          "scope": "sbean",
+          "summary": "update path handling in generatePackModules for improved compatibility",
+          "summaryKey": "changelog.generated.v0.29.2.9c579",
+          "commitHash": "9c579",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/9c579a820",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "optimization",
+          "scope": "unocss-shadcn",
+          "summary": "remove reset and global options from presetShadcn configuration",
+          "summaryKey": "changelog.generated.v0.29.2.3c6f7",
+          "commitHash": "3c6f7",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/3c6f7268e",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "style",
+          "scope": "docs",
+          "summary": "increase button width for better visibility",
+          "summaryKey": "changelog.generated.v0.29.2.32ddf",
+          "commitHash": "32ddf",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/32ddfd0f0",
+          "authors": ["soybeanjs"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "chore",
+          "scope": "deps",
+          "summary": "update deps",
+          "summaryKey": "changelog.generated.v0.29.2.2eeb5",
+          "commitHash": "2eeb5",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/2eeb589b3",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope",
+          "components": []
+        }
+      ]
+    },
     {
       "version": "v0.29.1",
       "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.29.0...v0.29.1",

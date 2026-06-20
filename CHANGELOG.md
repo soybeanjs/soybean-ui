@@ -1,5 +1,28 @@
 # Changelog
 
+## [v0.29.2](https://github.com/soybeanjs/soybean-ui/compare/v0.29.1...v0.29.2) (2026-06-20)
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- **sbean**: update path handling in generatePackModules for improved compatibility &nbsp;-&nbsp; by **soybeanfe** [<samp>(9c579)</samp>](https://github.com/soybeanjs/soybean-ui/commit/9c579a820)
+
+### &nbsp;&nbsp;&nbsp;🛠 Optimizations
+
+- **unocss-shadcn**: remove reset and global options from presetShadcn configuration &nbsp;-&nbsp; by @soybeanjs [<samp>(3c6f7)</samp>](https://github.com/soybeanjs/soybean-ui/commit/3c6f7268e)
+
+### &nbsp;&nbsp;&nbsp;🏡 Chore
+
+- **deps**: update deps &nbsp;-&nbsp; by **soybeanfe** [<samp>(2eeb5)</samp>](https://github.com/soybeanjs/soybean-ui/commit/2eeb589b3)
+
+### &nbsp;&nbsp;&nbsp;🎨 Styles
+
+- **docs**: increase button width for better visibility &nbsp;-&nbsp; by @soybeanjs [<samp>(32ddf)</samp>](https://github.com/soybeanjs/soybean-ui/commit/32ddfd0f0)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;
+[soybeanfe](mailto:honghuangdc@gmail.com),&nbsp;
+
 ## [v0.29.1](https://github.com/soybeanjs/soybean-ui/compare/v0.29.0...v0.29.1) (2026-06-19)
 
 ### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes

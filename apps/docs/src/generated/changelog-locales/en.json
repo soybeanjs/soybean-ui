@@ -1547,6 +1547,12 @@
             "66d24": "add reset and global options to presetShadcn configuration",
             "f9d66": "clean up HTML structure and improve styling in index.vue and uno.config.ts"
           },
+          "2": {
+            "2eeb5": "update deps",
+            "32ddf": "increase button width for better visibility",
+            "3c6f7": "remove reset and global options from presetShadcn configuration",
+            "9c579": "update path handling in generatePackModules for improved compatibility"
+          },
           "0-beta": {
             "1": {
               "94835": "update deps",

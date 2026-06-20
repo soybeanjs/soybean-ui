@@ -1547,6 +1547,12 @@
             "66d24": "在 presetShadcn 配置中添加重置和全局选项",
             "f9d66": "整理 index.vue 和 uno.config.ts 中的 HTML 结构并优化样式"
           },
+          "2": {
+            "2eeb5": "更新依赖项",
+            "32ddf": "增加按钮宽度以提高可见性",
+            "3c6f7": "从 presetShadcn 配置中移除 reset 和 global 选项",
+            "9c579": "更新 generatePackModules 中的路径处理逻辑，以提升兼容性"
+          },
           "0-beta": {
             "1": {
               "94835": "更新依赖项",
