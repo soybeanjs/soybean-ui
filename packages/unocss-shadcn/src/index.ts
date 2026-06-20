@@ -37,7 +37,7 @@ export interface ShadcnPresetOptions extends ThemeOptions {
    *
    * @default false
    */
-  generated?: false | CssGeneratedConfig;
+  generated?: boolean | CssGeneratedConfig;
   /**
    * Font configuration forwarded to `@unocss/preset-web-fonts`.
    * When provided, `presetWebFonts` is automatically included in the returned presets.
@@ -114,9 +114,16 @@ export function presetShadcn(options?: ShadcnPresetOptions): Preset<Theme>[] {
   // ---- shadcn-theme preflights -------------------------------------------
   const preflights: Preflight[] = [];
 
-  const genConfig: CssGeneratedConfig = generated
-    ? { reset: generated.reset ?? true, global: generated.global ?? true, ui: generated.ui ?? false }
-    : {};
+  const genConfig: CssGeneratedConfig = {};
+  const defaultGenConfig: CssGeneratedConfig = { reset: true, global: true, ui: false };
+
+  if (generated === true) {
+    Object.assign(genConfig, defaultGenConfig);
+  }
+
+  if (typeof generated === 'object') {
+    Object.assign(genConfig, defaultGenConfig, generated);
+  }
 
   if (genConfig.reset || genConfig.global || genConfig.ui) {
     const { reset, global, ui } = genConfig;
