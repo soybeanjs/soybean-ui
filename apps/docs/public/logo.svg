@@ -19,6 +19,15 @@
     <path
       d="M 788,500 C 816,554 797,606 750,640 L 500,827 C 497,851 513,862 540,866 L 800,866 C 900,866 950,779.4 900,692.8 L 788,500"
       fill="url(#LinearGradient_7)" fill-rule="nonzero" opacity="1" stroke="none" />
+
+    <!-- Triangle, centered at (210, 762), 120×110, angle 57.2° -->
+    <path d="M 150 707 L 270 707 L 210 817 Z" fill="none" stroke="#ffffff" stroke-width="12" stroke-linejoin="round"
+      stroke-linecap="round" />
+
+    <!-- V, angle 56.9° matches triangle, arms extended for better proportions -->
+    <path d="M 184 728 L 210 776 L 236 728" fill="none" stroke="#ffffff" stroke-width="12" stroke-linejoin="round"
+      stroke-linecap="round" />
+
   </g>
   <defs>
     <linearGradient gradientTransform="matrix(104.391 -73.3432 73.3432 104.391 277.441 710.122)"

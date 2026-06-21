@@ -3,6 +3,11 @@ import { URL, fileURLToPath } from 'node:url';
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
+  app: {
+    head: {
+      link: [{ rel: 'icon', type: 'image/x-icon', href: 'https://r2.soybeanjs.tech/soybeanjs/logo-soybean-ui.svg' }]
+    }
+  },
   devtools: { enabled: true },
   css: ['@soybeanjs/ui/styles.css'],
   modules: ['@nuxt/icon', '@nuxtjs/i18n', '@unocss/nuxt', '@soybeanjs/ui/nuxt'],

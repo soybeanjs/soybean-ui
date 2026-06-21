@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import '@soybeanjs/ui/styles.css';
 import PlaygroundHome from '../../playground/src/pages/index.vue';
 import { provideThemeContext } from '../../playground/src/theme';
 

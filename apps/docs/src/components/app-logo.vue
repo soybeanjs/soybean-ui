@@ -58,6 +58,25 @@
           opacity="1"
           stroke="none"
         />
+        <!-- Triangle, centered at (210, 762), 120×110, angle 57.2° -->
+        <path
+          d="M 150 707 L 270 707 L 210 817 Z"
+          fill="none"
+          stroke="#ffffff"
+          stroke-width="12"
+          stroke-linejoin="round"
+          stroke-linecap="round"
+        />
+
+        <!-- V, angle 56.9° matches triangle, arms extended for better proportions -->
+        <path
+          d="M 184 728 L 210 776 L 236 728"
+          fill="none"
+          stroke="#ffffff"
+          stroke-width="12"
+          stroke-linejoin="round"
+          stroke-linecap="round"
+        />
       </g>
       <defs>
         <linearGradient
