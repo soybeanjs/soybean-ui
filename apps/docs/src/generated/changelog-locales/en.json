@@ -1553,6 +1553,12 @@
             "3c6f7": "remove reset and global options from presetShadcn configuration",
             "9c579": "update path handling in generatePackModules for improved compatibility"
           },
+          "3": {
+            "0be4d": "update generated option type and improve configuration handling",
+            "600c3": "integrate useStyleTag for dynamic CSS handling",
+            "97d86": "format presets for better readability in uno.config.ts",
+            "c6050": "update logo source to a remote URL and enhance SVG design"
+          },
           "0-beta": {
             "1": {
               "94835": "update deps",

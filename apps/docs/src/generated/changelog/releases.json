@@ -1,7 +1,65 @@
 {
-  "generatedAt": "2026-06-20T10:14:28.452Z",
+  "generatedAt": "2026-06-22T09:41:07.525Z",
   "schemaVersion": 1,
   "releases": [
+    {
+      "version": "v0.29.3",
+      "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.29.2...v0.29.3",
+      "date": "2026-06-22",
+      "entryCount": 4,
+      "componentCount": 1,
+      "components": ["config-provider"],
+      "typeCounts": {
+        "fix": 3,
+        "style": 1
+      },
+      "entries": [
+        {
+          "type": "fix",
+          "scope": "config-provider",
+          "summary": "integrate useStyleTag for dynamic CSS handling",
+          "summaryKey": "changelog.generated.v0.29.3.600c3",
+          "commitHash": "600c3",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/600c3ba5a",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope",
+          "components": ["config-provider"]
+        },
+        {
+          "type": "fix",
+          "scope": "logo",
+          "summary": "update logo source to a remote URL and enhance SVG design",
+          "summaryKey": "changelog.generated.v0.29.3.c6050",
+          "commitHash": "c6050",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/c60504824",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "fix",
+          "scope": "shadcn",
+          "summary": "update generated option type and improve configuration handling",
+          "summaryKey": "changelog.generated.v0.29.3.0be4d",
+          "commitHash": "0be4d",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/0be4d6d20",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope",
+          "components": []
+        },
+        {
+          "type": "style",
+          "scope": "config",
+          "summary": "format presets for better readability in uno.config.ts",
+          "summaryKey": "changelog.generated.v0.29.3.97d86",
+          "commitHash": "97d86",
+          "commitUrl": "https://github.com/soybeanjs/soybean-ui/commit/97d86b52c",
+          "authors": ["soybeanfe"],
+          "source": "exact-scope",
+          "components": []
+        }
+      ]
+    },
     {
       "version": "v0.29.2",
       "compareUrl": "https://github.com/soybeanjs/soybean-ui/compare/v0.29.1...v0.29.2",

@@ -1553,6 +1553,12 @@
             "3c6f7": "从 presetShadcn 配置中移除 reset 和 global 选项",
             "9c579": "更新 generatePackModules 中的路径处理逻辑，以提升兼容性"
           },
+          "3": {
+            "0be4d": "更新生成的选项类型并改进配置处理",
+            "600c3": "集成 useStyleTag 以实现动态 CSS 处理",
+            "97d86": "在 uno.config.ts 中设置格式预设以提高可读性",
+            "c6050": "将徽标源更新为远程 URL，并优化 SVG 设计"
+          },
           "0-beta": {
             "1": {
               "94835": "更新依赖项",

@@ -1,5 +1,21 @@
 # Changelog
 
+## [v0.29.3](https://github.com/soybeanjs/soybean-ui/compare/v0.29.2...v0.29.3) (2026-06-22)
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- **config-provider**: integrate useStyleTag for dynamic CSS handling &nbsp;-&nbsp; by **soybeanfe** [<samp>(600c3)</samp>](https://github.com/soybeanjs/soybean-ui/commit/600c3ba5a)
+- **logo**: update logo source to a remote URL and enhance SVG design &nbsp;-&nbsp; by **soybeanfe** [<samp>(c6050)</samp>](https://github.com/soybeanjs/soybean-ui/commit/c60504824)
+- **shadcn**: update generated option type and improve configuration handling &nbsp;-&nbsp; by **soybeanfe** [<samp>(0be4d)</samp>](https://github.com/soybeanjs/soybean-ui/commit/0be4d6d20)
+
+### &nbsp;&nbsp;&nbsp;🎨 Styles
+
+- **config**: format presets for better readability in uno.config.ts &nbsp;-&nbsp; by **soybeanfe** [<samp>(97d86)</samp>](https://github.com/soybeanjs/soybean-ui/commit/97d86b52c)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[soybeanfe](mailto:honghuangdc@gmail.com)
+
 ## [v0.29.2](https://github.com/soybeanjs/soybean-ui/compare/v0.29.1...v0.29.2) (2026-06-20)
 
 ### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
