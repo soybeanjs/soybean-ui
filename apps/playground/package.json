@@ -22,20 +22,20 @@
     "@soybeanjs/ui": "workspace:^",
     "@soybeanjs/utils": "^0.1.1",
     "@vueuse/core": "^14.3.0",
-    "valibot": "^1.4.1",
-    "vue": "^3.5.38",
+    "valibot": "^1.4.2",
+    "vue": "^3.5.40",
     "vue-i18n": "^11.4.6",
-    "vue-router": "^5.1.0",
+    "vue-router": "^5.2.0",
     "zod": "^4.4.3"
   },
   "devDependencies": {
     "@soybeanjs/unocss-preset": "^0.2.0",
     "@soybeanjs/unocss-shadcn": "workspace:^",
-    "@vitejs/plugin-vue": "^6.0.7",
-    "@vitejs/plugin-vue-jsx": "^5.1.5",
-    "typescript": "^6.0.3",
-    "unocss": "^66.7.2",
+    "@vitejs/plugin-vue": "^6.0.8",
+    "@vitejs/plugin-vue-jsx": "^5.1.6",
+    "typescript": "6.0.3",
+    "unocss": "^66.7.5",
     "unplugin-vue-components": "^32.1.0"
   },
-  "packageManager": "pnpm@11.8.0"
+  "packageManager": "pnpm@11.13.1"
 }

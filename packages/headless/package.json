@@ -105,23 +105,23 @@
     "build": "vp pack"
   },
   "dependencies": {
-    "@floating-ui/dom": "^1.7.6",
-    "@floating-ui/utils": "^0.2.11",
-    "@formkit/auto-animate": "^0.9.0",
+    "@floating-ui/dom": "^1.8.0",
+    "@floating-ui/utils": "^0.2.12",
+    "@formkit/auto-animate": "^0.10.0",
     "@internationalized/date": "^3.12.2",
     "@internationalized/number": "^3.6.7",
     "@soybeanjs/colord": "^0.6.2",
     "@soybeanjs/hooks": "^0.3.0",
     "@soybeanjs/utils": "^0.1.1",
     "@standard-schema/spec": "^1.1.0",
-    "@tanstack/vue-virtual": "^3.13.29",
+    "@tanstack/vue-virtual": "^3.13.32",
     "@vueuse/core": "^14.3.0",
     "@vueuse/shared": "^14.3.0",
     "aria-hidden": "^1.2.6",
     "defu": "^6.1.7",
     "embla-carousel": "^8.6.0",
     "embla-carousel-reactive-utils": "^8.6.0",
-    "fuse.js": "^7.4.2",
+    "fuse.js": "^7.5.0",
     "klona": "^2.0.6",
     "ohash": "^2.0.11"
   },
@@ -134,8 +134,8 @@
     "unplugin-vue": "7.2.0",
     "unplugin-vue-components": "^32.1.0",
     "vite-plus": "catalog:",
-    "vue": "3.5.38",
-    "vue-router": "5.1.0"
+    "vue": "3.5.40",
+    "vue-router": "5.2.0"
   },
   "peerDependencies": {
     "@nuxt/kit": "^4.3.0",
@@ -162,5 +162,5 @@
       "optional": true
     }
   },
-  "packageManager": "pnpm@11.8.0"
+  "packageManager": "pnpm@11.13.1"
 }
