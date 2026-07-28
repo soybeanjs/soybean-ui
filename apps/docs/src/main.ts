@@ -1,7 +1,6 @@
 import { ViteSSG } from 'vite-ssg';
 import { routes } from 'vue-router/auto-routes';
 import { setupLayouts } from 'virtual:meta-layouts';
-// @ts-expect-error - no types for fontsource-variable yet
 import '@fontsource-variable/manrope';
 import 'uno.css';
 import './styles/global.css';
