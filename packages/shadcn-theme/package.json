@@ -40,8 +40,8 @@
     "@soybeanjs/colord": "^0.6.2"
   },
   "devDependencies": {
-    "typescript": "6.0.3",
+    "typescript": "7.0.2",
     "vite-plus": "catalog:"
   },
-  "packageManager": "pnpm@11.13.1"
+  "packageManager": "pnpm@11.17.0"
 }
