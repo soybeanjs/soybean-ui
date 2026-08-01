@@ -2,45 +2,24 @@
 
 ## AI ASSISTANT ENTRYPOINT
 
-This repository keeps the normative AI coding rules under `.github/`.
+Component development rules live in the self-contained skill at `.agents/skills/soybean-ui-component-development/`:
 
-For any AI assistant working in this repository:
+- [SKILL.md](.agents/skills/soybean-ui-component-development/SKILL.md) — pattern classification, phase order, workflows, guardrails, delivery surfaces, generation workflow.
+- [layers.md](.agents/skills/soybean-ui-component-development/layers.md) — headless/UI layer rules, a11y/RTL.
+- [surfaces.md](.agents/skills/soybean-ui-component-development/surfaces.md) — playground, docs, testing delivery surface rules.
+- [process.md](.agents/skills/soybean-ui-component-development/process.md) — finish checklist, git commit convention.
+- [EXAMPLES.md](.agents/skills/soybean-ui-component-development/EXAMPLES.md) — request shapes that trigger the skill.
 
-- If any bridge file conflicts with `.github/`, `.github/` wins.
-- If multiple `AGENTS.md` files apply, the nearest scoped file only narrows which `.github` rules to read for the current path.
+**Global skill rules (mandatory for all agents, applied before any task):**
 
-**Universal rules (read for every edit):**
+- When editing `**/*.{ts,tsx,js,jsx}` files, first `read_skill typescript-functional-style` and follow it.
+- When editing `**/*.vue` files, first `read_skill typescript-functional-style` and `read_skill vue-sfc-structure`, and follow both.
 
-- `.github/instructions/typescript-functional-style.instructions.md`
-- `.github/instructions/vue-sfc.instructions.md` (for .vue files)
+Both skills are installed globally in the skills store and can be loaded from any project. They are the single source of truth for TypeScript functional style and Vue SFC structure; the component development skill does not restate their content.
 
-**Component work (editing `packages/headless/` or `packages/ui/src/components/`):**
+Load the component development skill for any task that creates, migrates, extends, standardizes, or fixes a SoybeanUI component.
 
-- `.github/instructions/soybean-ui-component-overview.instructions.md`
-- `.github/instructions/soybean-ui-headless.instructions.md` (for `packages/headless/src/components/`)
-- `.github/instructions/soybean-ui-ui-layer.instructions.md` (for `packages/ui/src/components/`)
-- `.github/instructions/soybean-ui-accessibility-rtl.instructions.md`
-
-**Delivery surfaces:**
-
-- `.github/instructions/soybean-ui-playground.instructions.md` (for `apps/playground/`)
-- `.github/instructions/soybean-ui-docs.instructions.md` (for `apps/docs/`)
-- `.github/instructions/soybean-ui-testing.instructions.md` (for `packages/ui/test/`)
-
-**Commit / changelog:** `.github/instructions/git-commit-convention.instructions.md`
-
-The remaining content in this file is repository knowledge and project context. It is informative, but the rule source of truth stays in `.github/`.
-
-### Scoped AGENTS map
-
-- `packages/headless/src/components/AGENTS.md` routes headless component work to the relevant `.github` rules
-- `packages/headless/src/composables/AGENTS.md` routes headless composable work to the relevant `.github` rules
-- `packages/headless/src/shared/AGENTS.md` routes headless shared utility work to the relevant `.github` rules
-- `packages/ui/src/components/AGENTS.md` routes styled wrapper work to the relevant `.github` rules
-- `packages/ui/src/theme/AGENTS.md` routes theme-layer work to the relevant `.github` rules
-- `apps/playground/src/examples/AGENTS.md` routes playground demo work to the relevant `.github` rules
-- `apps/docs/src/docs/AGENTS.md` routes component docs work to the relevant `.github` rules
-- `packages/ui/test/specs/components/AGENTS.md` routes component test work to the relevant `.github` rules
+If a nearer scoped `AGENTS.md` exists for your target path, use it only to narrow which skill sections apply.
 
 **Generated:** 2026-05-04
 **Version:** 0.17.0
@@ -72,6 +51,7 @@ Data flow: `packages/headless` → `packages/ui` (never reverse). UI injects sty
 | Generated changelog data | `apps/docs/src/generated/changelog/`                                      | `pnpm sui changelog` baseline + `pnpm sui changelog-translate` locale summaries |
 | Docs content             | `apps/docs/src/docs/[en\|zh-CN]/`                                         | Markdown rendering `<UsageCode>`, `<PlaygroundGallery>`, `<ComponentApi>`       |
 | Demo source              | `apps/playground/src/examples/[component]/`                               | Vue SFCs referenced by docs                                                     |
+| Component dev skill      | `.agents/skills/soybean-ui-component-development/`                        | SKILL.md + layers.md + surfaces.md + process.md + EXAMPLES.md                   |
 
 ## BUILD & CI
 
@@ -149,7 +129,7 @@ pnpm sui changelog-translate -- --locale <locale>  # Translate generated English
 
 ## COMPONENT DEVELOPMENT
 
-组件开发规范入口：`.github/copilot-instructions.md` + `.github/instructions/*.instructions.md`。
+组件开发规范入口：`.agents/skills/soybean-ui-component-development/SKILL.md`。
 
 Minimal flow: headless types → headless context → headless base SFCs → optional Compact SFCs/hooks → UI style recipe in `packages/ui/src/styles` → UI wrapper → barrel exports.
 

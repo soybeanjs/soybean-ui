@@ -1,5 +1,7 @@
 # SoybeanUI Component Development Examples
 
+Common request shapes that should trigger this skill. Each example shows the request, why it triggers the skill, and the expected approach. The companion [SKILL.md](SKILL.md) owns the workflow and guardrails; [layers.md](layers.md) owns implementation layer rules, [surfaces.md](surfaces.md) owns delivery surface rules, and [process.md](process.md) owns finish and commit rules.
+
 ## New component
 
 Request:
@@ -15,8 +17,12 @@ Why it triggers:
 Expected approach:
 
 1. Decide whether `tree` is multi-slot, compact, or single-class.
-2. Read `.github/copilot-instructions.md` and the relevant component instructions.
-3. Implement headless first, then UI, then exports, generated files, playground, docs, and tests.
+2. Load this skill and follow [SKILL.md -> Phase order](SKILL.md#phase-order).
+3. Inspect at least one same-pattern headless reference and one UI reference in the repository.
+4. Implement headless first (types.ts -> context.ts -> base SFCs -> optional Compact -> index.ts), then UI (styles recipe -> types.ts -> wrapper.vue -> index.ts).
+5. Wire exports and run `pnpm sui headless` and `pnpm sui ui`.
+6. Finish playground, docs, tests, and generated API data; run `pnpm sui api` and locale translations when public API changes.
+7. Validate with `pnpm typecheck`, `pnpm lint`, `pnpm fmt`, and the targeted component test, then apply the finish checklist.
 
 ## Migration or normalization
 
@@ -32,9 +38,13 @@ Why it triggers:
 
 Expected approach:
 
-1. Preserve valid behavior, state, accessibility, and public API from the source implementation.
-2. Rebuild the feature into SoybeanUI's headless/UI split.
-3. Finish generated surfaces and outward delivery files.
+1. Catalog the source implementation's behavior, state, accessibility, slots, and public API that must be preserved.
+2. Classify the component pattern and confirm the delivery scope (typically full surface for migration).
+3. Rebuild the feature into SoybeanUI's headless/UI split following [SKILL.md -> Workflows -> New or migrated component](SKILL.md#new-or-migrated-component).
+4. Inspect neighboring same-pattern implementations before writing code.
+5. Reuse existing `composables`, `shared`, and `types` first; only add new helpers when the repository and `@vueuse/core` are both insufficient — and state the reason in the result.
+6. Finish generated surfaces and outward delivery files (playground, docs, menus, tests).
+7. Apply the finish checklist from [process.md -> Finish checklist](process.md#finish-checklist).
 
 ## Existing component fix or extension
 
@@ -50,6 +60,49 @@ Why it triggers:
 
 Expected approach:
 
-1. Locate the controlling layer for the new behavior.
-2. Keep accessibility and interaction semantics in headless.
-3. Update exports, playground, docs, tests, and generated API data when affected.
+1. Locate the controlling layer for the new behavior using the boundary rules in [SKILL.md -> Boundary rules](SKILL.md#boundary-rules).
+2. Keep accessibility and interaction semantics in headless; keep variant and style work in UI.
+3. Inspect the existing dialog implementation and at least one neighboring same-pattern reference.
+4. Implement the change in the correct layer; do not leak styles into headless or ARIA/keyboard logic into UI.
+5. Update exports, playground, docs, tests, and generated API data when affected.
+6. Run the relevant validation commands and apply the finish checklist.
+
+## Standards alignment
+
+Request:
+
+"把 alert 组件对齐到当前仓库规范，补齐缺失的 data-soybean-* 属性和测试。"
+
+Why it triggers:
+
+- This is standards alignment on an existing component, not a new feature.
+- It requires a gap inventory before editing.
+- It may touch multiple layers but stays component-scoped.
+
+Expected approach:
+
+1. List the gap inventory against [layers.md -> Headless](layers.md#headless) and [layers.md -> UI layer](layers.md#ui-layer).
+2. Fix architectural boundary, semantic, export, and delivery-surface gaps first.
+3. Patch in batches; do not reverse-engineer the pattern from the existing code.
+4. Sync affected delivery surfaces (tests, docs, generated data) as needed.
+5. Validate and apply the finish checklist.
+
+## Surface-scoped work
+
+Request:
+
+"只补 select 组件的 playground 示例和英文文档，不动 headless 和 UI。"
+
+Why it triggers:
+
+- The user explicitly narrowed the delivery scope to playground and docs.
+- It still touches SoybeanUI component delivery surfaces.
+
+Expected approach:
+
+1. Confirm the narrowed scope; do not widen it without explicit instruction.
+2. Follow [surfaces.md -> Playground](surfaces.md#playground) and [surfaces.md -> Docs](surfaces.md#docs) for the relevant rules.
+3. Use prefix-stripped example keys for `<UsageCode>` and `<PlaygroundGallery>`.
+4. Update `apps/docs/src/constants/menus.ts` if the component is not yet registered.
+5. If public API or changelog mapping changed (unlikely here), run the corresponding `pnpm sui` commands; otherwise skip generation steps.
+6. Validate with `pnpm typecheck`, `pnpm lint`, and `pnpm fmt` to ensure the surface edits do not break the build.

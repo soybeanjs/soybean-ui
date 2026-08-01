@@ -1,7 +1,0 @@
-Before making changes in this repository, read `.github/assistant-rules.md` and obey the `.github` rule files it routes you to.
-
-- The assistant-neutral entrypoint is `.github/assistant-rules.md`.
-- The repository also keeps `.github/copilot-instructions.md` as a GitHub Copilot compatibility entrypoint, and you should read it when `.github/assistant-rules.md` routes you there.
-- The normative rule source remains under `.github/`.
-- If a nearer `AGENTS.md` exists for your target path, use it only to narrow which `.github` rules apply.
-- If this file conflicts with anything under `.github`, `.github` wins.
