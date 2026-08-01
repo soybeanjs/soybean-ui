@@ -1,40 +1,22 @@
+import { Server } from '@modelcontextprotocol/sdk/server/index.js';
+import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js';
+import { CallToolRequestSchema, ListToolsRequestSchema } from '@modelcontextprotocol/sdk/types.js';
+import type { CallToolResult, Tool } from '@modelcontextprotocol/sdk/types.js';
 import { BUILTIN_REGISTRIES } from '../registry/constants';
 import { getConfig } from '../utils/get-config';
+import { scanInstalledComponents } from '../utils/scan-installed';
 import { fetchRegistryCatalog, fetchRegistryItem } from '../registry/fetcher';
 
-type JsonRpcId = string | number | null;
+type TextContent = { type: 'text'; text: string };
 
-type JsonRpcRequest = {
-  jsonrpc?: string;
-  id?: JsonRpcId;
-  method: string;
-  params?: Record<string, unknown>;
-};
-
-type TextContent = {
-  type: 'text';
-  text: string;
-};
-
-type ToolResult = {
-  content: TextContent[];
-  isError?: boolean;
-};
-
-type ToolDefinition = {
-  name: string;
-  description: string;
-  inputSchema: Record<string, unknown>;
-};
-
-function createTextResult(text: string, isError = false) {
+function createTextResult(text: string, isError = false): CallToolResult {
   return {
     content: [{ type: 'text', text } satisfies TextContent],
     ...(isError ? { isError: true } : {})
   };
 }
 
-export const TOOLS: ToolDefinition[] = [
+export const TOOLS: Tool[] = [
   {
     name: 'get_project_registries',
     description: 'List configured registry namespaces from sbean.json.',
@@ -119,6 +101,19 @@ export const TOOLS: ToolDefinition[] = [
     name: 'get_audit_checklist',
     description: 'Return a short post-generation checklist for SBean projects.',
     inputSchema: { type: 'object', properties: {} }
+  },
+  {
+    name: 'explain_gap',
+    description: "Compare a project's installed components against the registry and suggest missing ones.",
+    inputSchema: {
+      type: 'object',
+      properties: {
+        registries: {
+          type: 'array',
+          items: { type: 'string' }
+        }
+      }
+    }
   }
 ];
 
@@ -163,6 +158,49 @@ async function resolveConfig() {
   return getConfig(process.cwd());
 }
 
+/** Max missing-component names listed in the gap report. */
+const MAX_MISSING_LISTED = 50;
+
+/** Max component names in the suggested `sbean add` batch. */
+const MAX_ADD_BATCH = 5;
+
+type GapItem = { name: string; description?: string };
+
+/**
+ * Build the `explain_gap` text report from the installed set and the missing
+ * list. Pure — no I/O — so it can be unit-tested without a registry server.
+ */
+function formatGapReport(installed: string[], missing: GapItem[]): string {
+  if (missing.length === 0) {
+    return `All ${installed.length} registry UI component(s) appear to be installed.`;
+  }
+
+  const lines = [
+    `Installed: ${installed.length} component(s).`,
+    `Missing from registry: ${missing.length} component(s).`,
+    '',
+    ...missing
+      .slice(0, MAX_MISSING_LISTED)
+      .map(item => `- ${item.name}${item.description ? ` — ${item.description}` : ''}`)
+  ];
+
+  if (missing.length > MAX_MISSING_LISTED) {
+    lines.push(`... and ${missing.length - MAX_MISSING_LISTED} more.`);
+  }
+
+  const addBatch = missing
+    .slice(0, MAX_ADD_BATCH)
+    .map(item => item.name)
+    .join(' ');
+  lines.push(
+    '',
+    `Add missing components:`,
+    `  npx sbean@latest add ${addBatch}${missing.length > MAX_ADD_BATCH ? ' ...' : ''}`
+  );
+
+  return lines.join('\n');
+}
+
 async function getCatalog(registries?: string[]) {
   const config = await resolveConfig();
   const catalog = await fetchRegistryCatalog(config);
@@ -173,7 +211,8 @@ async function getCatalog(registries?: string[]) {
 
   return catalog.filter(item => registries.includes(getItemRegistry(item)));
 }
-export async function handleToolCall(name: string, args: Record<string, unknown>): Promise<ToolResult> {
+
+export async function handleToolCall(name: string, args: Record<string, unknown>): Promise<CallToolResult> {
   switch (name) {
     case 'get_project_registries': {
       const config = await resolveConfig();
@@ -299,118 +338,58 @@ export async function handleToolCall(name: string, args: Record<string, unknown>
       );
     }
 
+    case 'explain_gap': {
+      const registries = parseStringArray(args.registries);
+
+      if (!registries) {
+        return createTextResult('Invalid arguments for explain_gap.', true);
+      }
+
+      const config = await resolveConfig();
+
+      if (!config) {
+        return createTextResult('No sbean.json found. Run `sbean init` first to configure the project.');
+      }
+
+      const installed = await scanInstalledComponents(config.resolvedPaths.ui);
+      const catalog = await getCatalog(registries);
+      const installedSet = new Set(installed);
+
+      // Compare against user-facing UI components only — base/theme/font items
+      // don't map to a `components/<name>/` directory and would always look "missing".
+      const missing = catalog.filter(item => item.type === 'registry:ui' && !installedSet.has(item.name));
+
+      return createTextResult(formatGapReport(installed, missing));
+    }
+
     default:
       return createTextResult(`Unknown tool: ${name}`, true);
   }
 }
 
-function writeMessage(payload: Record<string, unknown>) {
-  const body = JSON.stringify(payload);
-  const header = `Content-Length: ${Buffer.byteLength(body, 'utf8')}\r\n\r\n`;
-  process.stdout.write(header);
-  process.stdout.write(body);
-}
-
-function writeResponse(id: JsonRpcId, result: Record<string, unknown>) {
-  writeMessage({
-    jsonrpc: '2.0',
-    id,
-    result
-  });
-}
-
-function writeError(id: JsonRpcId, code: number, message: string) {
-  writeMessage({
-    jsonrpc: '2.0',
-    id,
-    error: {
-      code,
-      message
-    }
-  });
-}
-
-async function dispatchRequest(request: JsonRpcRequest) {
-  const { id = null, method, params = {} } = request;
-
-  try {
-    if (method === 'initialize') {
-      writeResponse(id, {
-        protocolVersion: '2024-11-05',
-        capabilities: {
-          tools: {}
-        },
-        serverInfo: {
-          name: 'sbean',
-          version: '1.0.0'
-        }
-      });
-      return;
-    }
-
-    if (method === 'notifications/initialized') {
-      return;
-    }
-
-    if (method === 'tools/list') {
-      writeResponse(id, { tools: TOOLS as unknown as Record<string, unknown>[] });
-      return;
-    }
-
-    if (method === 'tools/call') {
-      const name = typeof params.name === 'string' ? params.name : '';
-      const args =
-        typeof params.arguments === 'object' && params.arguments ? (params.arguments as Record<string, unknown>) : {};
-      const result = await handleToolCall(name, args);
-      writeResponse(id, result as unknown as Record<string, unknown>);
-      return;
-    }
-
-    if (id !== null) {
-      writeError(id, -32601, `Method not found: ${method}`);
-    }
-  } catch (error) {
-    writeError(id, -32000, error instanceof Error ? error.message : 'Unknown error');
-  }
-}
-
+/**
+ * Start the SBean MCP server over stdio using the official
+ * `@modelcontextprotocol/sdk` transport (ADR-011).
+ */
 export async function startMcpServer(): Promise<void> {
-  let buffer = Buffer.alloc(0);
-
-  process.stdin.on('data', async chunk => {
-    const nextChunk = typeof chunk === 'string' ? Buffer.from(chunk) : chunk;
-    buffer = Buffer.concat([buffer, nextChunk]);
-
-    while (true) {
-      const headerEnd = buffer.indexOf('\r\n\r\n');
-
-      if (headerEnd === -1) {
-        break;
+  const server = new Server(
+    { name: 'sbean', version: '1.0.0' },
+    {
+      capabilities: {
+        tools: {}
       }
-
-      const header = buffer.slice(0, headerEnd).toString('utf8');
-      const lengthMatch = header.match(/Content-Length:\s*(\d+)/i);
-
-      if (!lengthMatch) {
-        buffer = buffer.slice(headerEnd + 4);
-        continue;
-      }
-
-      const contentLength = Number(lengthMatch[1]);
-      const messageStart = headerEnd + 4;
-      const messageEnd = messageStart + contentLength;
-
-      if (buffer.length < messageEnd) {
-        break;
-      }
-
-      const body = buffer.slice(messageStart, messageEnd).toString('utf8');
-      buffer = buffer.slice(messageEnd);
-
-      const request = JSON.parse(body) as JsonRpcRequest;
-      await dispatchRequest(request);
     }
+  );
+
+  server.setRequestHandler(ListToolsRequestSchema, async () => ({
+    tools: TOOLS
+  }));
+
+  server.setRequestHandler(CallToolRequestSchema, async request => {
+    const { name, arguments: toolArgs } = request.params;
+    return handleToolCall(name, toolArgs ?? {});
   });
 
-  process.stdin.resume();
+  const transport = new StdioServerTransport();
+  await server.connect(transport);
 }

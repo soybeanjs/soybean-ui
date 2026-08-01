@@ -67,6 +67,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.30.0",
     "commander": "^15.0.0",
     "dedent": "^1.7.2",
     "deepmerge": "^4.3.1",

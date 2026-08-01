@@ -4,8 +4,18 @@ import { Command } from 'commander';
 import { listAllTemplates, scaffoldFromTemplate, getTemplate } from '../templates';
 import type { FrameworkType } from '../templates';
 
+/** Framework flag values accepted by `--framework` (ADR-010). */
+type FrameworkFlag = 'vite' | 'nuxt';
+
+/** Map a `--framework` value to its internal `FrameworkType` template name. */
+const FRAMEWORK_TO_TEMPLATE: Record<FrameworkFlag, FrameworkType> = {
+  vite: 'vue-vite',
+  nuxt: 'nuxt'
+};
+
 export const templateOptionsSchema = v.object({
   name: v.optional(v.string()),
+  framework: v.optional(v.picklist(['vite', 'nuxt'])),
   cwd: v.string(),
   output: v.optional(v.string()),
   list: v.boolean()
@@ -17,17 +27,22 @@ export const template = new Command()
   .argument('[name]', 'template name to scaffold (vue-vite, nuxt)')
   .option('-l, --list', 'list available templates', false)
   .option('-o, --output <dir>', 'output directory for scaffolded project')
+  .option('-f, --framework <framework>', 'scaffold by framework (vite, nuxt)')
   .option('-c, --cwd <cwd>', 'the working directory. defaults to the current directory.', process.cwd())
   .action(async (name: string | undefined, opts) => {
     const options = v.parse(templateOptionsSchema, {
       name,
+      framework: opts.framework,
       cwd: path.resolve(opts.cwd),
       output: opts.output,
       list: opts.list
     });
 
-    // List mode
-    if (options.list || !options.name) {
+    // --framework takes precedence over the [name] positional (ADR-010).
+    const templateName = options.framework ? FRAMEWORK_TO_TEMPLATE[options.framework] : options.name;
+
+    // List mode — triggered by --list or when no template is selected.
+    if (options.list || !templateName) {
       const templates = listAllTemplates();
 
       console.log();
@@ -42,27 +57,28 @@ export const template = new Command()
 
       console.log();
       console.log('  Usage: sbean template <name> [--output <dir>]');
+      console.log('         sbean template --framework <vite|nuxt> [--output <dir>]');
       console.log();
 
-      if (options.name) {
-        showTemplateDetails(options.name);
+      if (templateName) {
+        showTemplateDetails(templateName);
       }
 
       return;
     }
 
     // Scaffold mode
-    const templateName = name ?? 'vue-vite';
-    const projectName: string = options.output ?? templateName;
+    const resolvedTemplate = templateName ?? 'vue-vite';
+    const projectName: string = options.output ?? resolvedTemplate;
 
     console.log();
     console.log(`  Scaffolding project: ${projectName}`);
-    console.log(`  Template: ${templateName}`);
+    console.log(`  Template: ${resolvedTemplate}`);
 
     const outputDir = path.join(options.cwd, projectName);
 
     try {
-      await scaffoldFromTemplate(outputDir, templateName, { projectName });
+      await scaffoldFromTemplate(outputDir, resolvedTemplate, { projectName });
 
       console.log();
       console.log(`  ✔ Project scaffolded at: ${outputDir}`);
