@@ -38,7 +38,8 @@ const onSearch = (pattern: string) => {
     window.setTimeout(() => {
       const flat: CascaderOptionData<string>[] = [];
       for (const group of options) {
-        for (const child of group.children ?? []) {
+        const children = Array.isArray(group.children) ? group.children : [];
+        for (const child of children) {
           if (String(child.label).includes(pattern)) {
             flat.push({ ...child, children: [{ label: group.label, value: group.value, disabled: true }] });
           }

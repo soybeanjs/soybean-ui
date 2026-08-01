@@ -46,7 +46,7 @@ describe('SDialog (e2e)', () => {
     await userEvent.keyboard('{Escape}');
 
     // The dialog content leaves the portal; focus returns to the trigger.
-    await expect.element(trigger).toBeFocused();
+    await (expect.element(trigger) as any).toBeFocused();
 
     unmount();
   });
