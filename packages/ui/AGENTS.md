@@ -4,12 +4,12 @@
 
 For any AI assistant editing files under `packages/ui/`:
 
-1. Read `.github/assistant-rules.md`.
-2. Follow `.github/copilot-instructions.md`.
-3. Apply the relevant files from `.github/instructions/`, especially the common TypeScript/Vue rules.
+1. Load the project skill at `.agents/skills/soybean-ui-component-development/` — start with `SKILL.md`, then `layers.md` (UI layer section) as the task requires.
+2. For `**/*.{ts,tsx,js,jsx}` edits, also load the global `typescript-functional-style` skill.
+3. For `**/*.vue` edits, also load the global `typescript-functional-style` and `vue-sfc-structure` skills.
 4. For `packages/ui/src/components/**`, the nearer `packages/ui/src/components/AGENTS.md` narrows the exact UI-component rule set.
 
-The remaining content in this file is package knowledge and local context. Normative rules still live in `.github/`.
+The remaining content in this file is package knowledge and local context. Normative component rules live in the skill.
 
 **Package:** `packages/ui/` → publishes as `@soybeanjs/ui`
 **Role:** Styled wrappers over headless primitives. UnoCSS + @soybeanjs/cva.

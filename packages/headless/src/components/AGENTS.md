@@ -2,19 +2,14 @@
 
 This scoped AGENTS file is a routing bridge for assistants editing `packages/headless/src/components/**`.
 
-Before editing files here, read and obey these `.github` sources:
+Before editing files here:
 
-1. `.github/assistant-rules.md`
-2. `.github/copilot-instructions.md`
-3. `.github/instructions/typescript-functional-style.instructions.md`
-4. `.github/instructions/vue-sfc.instructions.md` for `.vue` files
-5. `.github/instructions/soybean-ui-component-overview.instructions.md`
-6. `.github/instructions/soybean-ui-headless.instructions.md`
-7. `.github/instructions/soybean-ui-accessibility-rtl.instructions.md`
+1. Load the project skill at `.agents/skills/soybean-ui-component-development/` — start with `SKILL.md`, then `layers.md` (Headless section) and `surfaces.md` (Playground, Docs, Testing sections when the change touches delivery surfaces).
+2. For `**/*.{ts,tsx,js,jsx}` edits, also load the global `typescript-functional-style` skill.
+3. For `**/*.vue` edits, also load the global `typescript-functional-style` and `vue-sfc-structure` skills.
+4. If the task affects public delivery surfaces, also apply `process.md` (finish checklist) at the end.
 
-If the task affects public delivery surfaces, also apply the relevant docs, playground, testing, and checklist files under `.github/instructions/`.
-
-Use this file only as routing and local path context. Normative rules stay in `.github/`.
+Use this file only as routing and local path context. Normative component rules live in the skill.
 
 ## LOCAL CONTEXT
 

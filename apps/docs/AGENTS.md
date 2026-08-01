@@ -4,12 +4,12 @@
 
 For any AI assistant editing files under `apps/docs/`:
 
-1. Read `.github/assistant-rules.md`.
-2. Follow `.github/copilot-instructions.md`.
-3. Apply the relevant files from `.github/instructions/`, especially the docs-related rules.
+1. Load the project skill at `.agents/skills/soybean-ui-component-development/` — start with `SKILL.md`, then `surfaces.md` (Docs section) as the task requires.
+2. For `**/*.{ts,tsx,js,jsx}` edits, also load the global `typescript-functional-style` skill.
+3. For `**/*.vue` edits, also load the global `typescript-functional-style` and `vue-sfc-structure` skills.
 4. For `apps/docs/src/docs/**`, the nearer `apps/docs/src/docs/AGENTS.md` narrows the exact markdown rule set.
 
-The remaining content in this file is package knowledge and local context. Normative rules still live in `.github/`.
+The remaining content in this file is package knowledge and local context. Normative component rules live in the skill.
 
 **Package:** `apps/docs/` → NOT published to npm
 **Stack:** Vite + vite-ssg + unplugin-vue-markdown + markdown-exit (NOT VitePress)

@@ -152,21 +152,24 @@ specialized review.
 
 ## Coding Conventions
 
-All code under this repository follows the instruction files in `.github/instructions/`:
+Normative component rules live in the project skill at
+`.agents/skills/soybean-ui-component-development/` (`SKILL.md` + `layers.md` + `surfaces.md` +
+`process.md`). TypeScript functional style and Vue SFC structure are owned by the global
+`typescript-functional-style` and `vue-sfc-structure` skills (loaded automatically per file type).
 
-| File                                            | Applies to                          |
-| ----------------------------------------------- | ----------------------------------- |
-| `typescript-functional-style.instructions.md`   | All `.ts`, `.tsx`, `.vue` files     |
-| `vue-sfc.instructions.md`                       | All `.vue` files                    |
-| `git-commit-convention.instructions.md`         | Commit messages, changelogs         |
-| `soybean-ui-component-overview.instructions.md` | Component tasks                     |
-| `soybean-ui-headless.instructions.md`           | `packages/headless/src/components/` |
-| `soybean-ui-ui-layer.instructions.md`           | `packages/ui/src/components/`       |
-| `soybean-ui-accessibility-rtl.instructions.md`  | ARIA, keyboard, RTL                 |
-| `soybean-ui-testing.instructions.md`            | `packages/ui/test/`                 |
-| `soybean-ui-playground.instructions.md`         | `apps/playground/`                  |
-| `soybean-ui-docs.instructions.md`               | `apps/docs/`                        |
-| `soybean-ui-checklist.instructions.md`          | Component completion checklist      |
+| Skill section                                | Applies to                          |
+| -------------------------------------------- | ----------------------------------- |
+| `typescript-functional-style` (global skill) | All `.ts`, `.tsx`, `.vue` files     |
+| `vue-sfc-structure` (global skill)           | All `.vue` files                    |
+| `process.md` -> Git commit convention        | Commit messages, changelogs         |
+| `SKILL.md` + `layers.md`                     | Component tasks                     |
+| `layers.md` -> Headless                      | `packages/headless/src/components/` |
+| `layers.md` -> UI layer                      | `packages/ui/src/components/`       |
+| `layers.md` -> A11y and RTL                  | ARIA, keyboard, RTL                 |
+| `surfaces.md` -> Testing                     | `packages/ui/test/`                 |
+| `surfaces.md` -> Playground                  | `apps/playground/`                  |
+| `surfaces.md` -> Docs                        | `apps/docs/`                        |
+| `process.md` -> Finish checklist             | Component completion checklist      |
 
 ### Key Rules
 
@@ -181,7 +184,7 @@ All code under this repository follows the instruction files in `.github/instruc
 ## Component Development
 
 A new component goes through six phases. See
-`.github/instructions/soybean-ui-component-overview.instructions.md` for the full specification.
+`.agents/skills/soybean-ui-component-development/SKILL.md` for the full specification.
 
 ### Phase 0 — Determine Mode & Scope
 
@@ -244,7 +247,7 @@ pnpm test
 ```
 
 If any step fails, fix it before opening a PR. See the full checklist in
-`.github/instructions/soybean-ui-checklist.instructions.md`.
+`.agents/skills/soybean-ui-component-development/process.md`.
 
 ## Testing
 
@@ -298,7 +301,7 @@ is truly cross-cutting.
 
 **Subject:** imperative, specific, and outcome-oriented. No trailing period.
 
-Full rules: `.github/instructions/git-commit-convention.instructions.md`.
+Full rules: `.agents/skills/soybean-ui-component-development/process.md`.
 
 ### Pull Request Guidelines
 
@@ -449,21 +452,21 @@ Codex 提供专门的 **agent 角色**（prompt 面），你可以将复杂子�
 
 ## 编码规范
 
-本仓库所有代码遵循 `.github/instructions/` 下的规范文件：
+组件规范统一位于项目 skill `.agents/skills/soybean-ui-component-development/`（`SKILL.md` + `layers.md` + `surfaces.md` + `process.md`）。TypeScript 函数式风格与 Vue SFC 结构由全局 skill `typescript-functional-style` 和 `vue-sfc-structure` 负责（按文件类型自动加载）。
 
-| 文件                                            | 适用范围                            |
-| ----------------------------------------------- | ----------------------------------- |
-| `typescript-functional-style.instructions.md`   | 所有 `.ts`、`.tsx`、`.vue` 文件     |
-| `vue-sfc.instructions.md`                       | 所有 `.vue` 文件                    |
-| `git-commit-convention.instructions.md`         | Commit message、changelog           |
-| `soybean-ui-component-overview.instructions.md` | 组件任务                            |
-| `soybean-ui-headless.instructions.md`           | `packages/headless/src/components/` |
-| `soybean-ui-ui-layer.instructions.md`           | `packages/ui/src/components/`       |
-| `soybean-ui-accessibility-rtl.instructions.md`  | ARIA、键盘、RTL                     |
-| `soybean-ui-testing.instructions.md`            | `packages/ui/test/`                 |
-| `soybean-ui-playground.instructions.md`         | `apps/playground/`                  |
-| `soybean-ui-docs.instructions.md`               | `apps/docs/`                        |
-| `soybean-ui-checklist.instructions.md`          | 组件完成清单                        |
+| Skill 章节                                  | 适用范围                            |
+| ------------------------------------------- | ----------------------------------- |
+| `typescript-functional-style`（全局 skill） | 所有 `.ts`、`.tsx`、`.vue` 文件     |
+| `vue-sfc-structure`（全局 skill）           | 所有 `.vue` 文件                    |
+| `process.md` -> Git commit 规范             | Commit message、changelog           |
+| `SKILL.md` + `layers.md`                    | 组件任务                            |
+| `layers.md` -> Headless                     | `packages/headless/src/components/` |
+| `layers.md` -> UI layer                     | `packages/ui/src/components/`       |
+| `layers.md` -> A11y and RTL                 | ARIA、键盘、RTL                     |
+| `surfaces.md` -> Testing                    | `packages/ui/test/`                 |
+| `surfaces.md` -> Playground                 | `apps/playground/`                  |
+| `surfaces.md` -> Docs                       | `apps/docs/`                        |
+| `process.md` -> Finish checklist            | 组件完成清单                        |
 
 ### 核心规则
 
@@ -477,7 +480,7 @@ Codex 提供专门的 **agent 角色**（prompt 面），你可以将复杂子�
 
 ## 组件开发
 
-一个新组件经过六个阶段。详见 `.github/instructions/soybean-ui-component-overview.instructions.md`。
+一个新组件经过六个阶段。详见 `.agents/skills/soybean-ui-component-development/SKILL.md`。
 
 ### Phase 0 — 确定模式与范围
 
@@ -540,7 +543,7 @@ pnpm test
 ```
 
 任一步骤失败，请在提 PR 前修复。完整清单见
-`.github/instructions/soybean-ui-checklist.instructions.md`。
+`.agents/skills/soybean-ui-component-development/process.md`。
 
 ## 测试
 
@@ -592,7 +595,7 @@ pnpm sui api-translate -- --locale zh-CN   # 翻译描述
 
 **Subject：** 祈使语气，具体，面向结果。不以句号结尾。
 
-完整规范：`.github/instructions/git-commit-convention.instructions.md`。
+完整规范：`.agents/skills/soybean-ui-component-development/process.md`。
 
 ### Pull Request 指南
 
