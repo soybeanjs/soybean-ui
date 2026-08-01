@@ -60,6 +60,7 @@ export const components = {
   popover: ['SPopover'],
   progress: ['SProgressProvider', 'SProgress', 'SProgressCircle'],
   radioGroup: ['SRadioGroup', 'SRadioGroupCard'],
+  rating: ['SRating'],
   scrollArea: ['SScrollArea'],
   segment: ['SSegment'],
   select: ['SSelect'],

@@ -75,6 +75,11 @@ const messages: LocaleMessages = {
     cancel: 'Abbrechen',
     confirm: 'Bestätigen'
   },
+  rating: {
+    ariaLabel: 'Bewertung',
+    starN: '{count} von {max} Sternen',
+    empty: 'Keine Bewertung'
+  },
   slider: {
     valueN: 'Wert {index} von {total}',
     minimum: 'Minimum',

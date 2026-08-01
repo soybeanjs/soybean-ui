@@ -1602,7 +1602,8 @@
             "highlighted": "该节点当前是否被高亮显示。",
             "indeterminate": "该节点是否处于未定状态。",
             "loading": "该节点当前是否正在加载其子节点。",
-            "node": "正在渲染的节点。"
+            "node": "正在渲染的节点。",
+            "selected": "该节点是否为当前选中的节点（单选）。"
           },
           "slotprops": "CascaderCompact 选项的槽属性。"
         },
@@ -6889,6 +6890,45 @@
         "radioselectevent": "RadioSelectEvent 的类型信息。",
         "type": ""
       },
+      "packages_headless_src_components_rating_types": {
+        "ratingitememits": {
+          "emits": "RatingItem 组件的事件。"
+        },
+        "ratingitemprops": {
+          "members": {
+            "as": "该组件应渲染为的元素或组件。可通过 `asChild` 进行覆盖。",
+            "aschild": "将默认渲染的元素替换为作为子元素传递的元素，并合并两者的属性及行为。",
+            "index": "评分中该项的从零开始的索引。"
+          },
+          "props": "RatingItem 组件的属性。"
+        },
+        "ratingrootemits": {
+          "callables": {
+            "hoverchange": "当悬停预览值发生变化时调用的事件处理程序。当指针移出时返回 `null`。",
+            "update_modelvalue": "当评分值发生变化时调用的事件处理程序。",
+            "valuecommit": "当评分交互被提交（点击或键盘操作）时调用的事件处理程序。"
+          },
+          "emits": "RatingRoot 组件的事件。"
+        },
+        "ratingrootprops": {
+          "members": {
+            "allowclear": "点击当前值是否会将评分清零为 0。",
+            "allowhalf": "是否允许半星精度。",
+            "as": "该组件应渲染为的元素或组件。可通过 `asChild` 进行覆盖。",
+            "aschild": "将默认渲染的元素替换为作为子元素传递的元素，并合并两者的属性及行为。",
+            "defaultvalue": "未受控时的评分初始值。",
+            "dir": "评分的阅读方向。",
+            "disabled": "评分功能是否已禁用（无效）。",
+            "max": "最高评分值（项目数量）。",
+            "modelvalue": "评分的受控值。可作为 `v-model` 进行绑定。",
+            "name": "字段的名称。作为名称/值对的一部分，与其所属表单一同提交。",
+            "orientation": "评分的方向。",
+            "readonly": "该评分是否为只读（可聚焦但不可交互）。",
+            "required": "当值为 `true` 时，表示用户必须先设置该值，所属表单才能提交。"
+          },
+          "props": "RatingRoot 组件的属性。"
+        }
+      },
       "packages_headless_src_components_scroll_area_types": {
         "scrollareacompactemits": {
           "emits": "ScrollAreaCompact 组件的事件。"
@@ -9236,6 +9276,7 @@
             "pagination": "",
             "password": "",
             "progress": "",
+            "rating": "",
             "slider": "",
             "stepper": "",
             "table": "",
@@ -12403,6 +12444,38 @@
           "props": "RadioGroup 组件的属性。"
         }
       },
+      "packages_ui_src_components_rating_types": {
+        "ratingemits": {
+          "callables": {
+            "hoverchange": "当悬停预览值发生变化时调用的事件处理程序。当指针移出时返回 `null`。",
+            "update_modelvalue": "当评分值发生变化时调用的事件处理程序。",
+            "valuecommit": "当评分交互被提交（点击或键盘操作）时调用的事件处理程序。"
+          },
+          "emits": "Rating 组件的事件。"
+        },
+        "ratingprops": {
+          "members": {
+            "allowclear": "点击当前值是否会将评分清零为 0。",
+            "allowhalf": "是否允许半星精度。",
+            "as": "该组件应渲染为的元素或组件。可通过 `asChild` 进行覆盖。",
+            "aschild": "将默认渲染的元素替换为作为子元素传递的元素，并合并两者的属性及行为。",
+            "class": "已为根元素添加了额外的类名。",
+            "color": "组件的主题颜色。",
+            "defaultvalue": "未受控时的评分初始值。",
+            "dir": "评分的阅读方向。",
+            "disabled": "评分功能是否已禁用（无效）。",
+            "max": "最高评分值（项目数量）。",
+            "modelvalue": "评分的受控值。可作为 `v-model` 进行绑定。",
+            "name": "字段的名称。作为名称/值对的一部分，与其所属表单一同提交。",
+            "orientation": "评分的方向。",
+            "readonly": "该评分是否为只读（可聚焦但不可交互）。",
+            "required": "当值为 `true` 时，表示用户必须先设置该值，所属表单才能提交。",
+            "size": "组件的视觉尺寸。",
+            "variant": "该组件的视觉变体。"
+          },
+          "props": "Rating 组件的属性。"
+        }
+      },
       "packages_ui_src_components_scroll_area_types": {
         "scrollareaemits": {
           "emits": "ScrollArea 组件的事件。"
@@ -13426,6 +13499,9 @@
       },
       "packages_ui_src_styles_radio_group": {
         "radiogroupvariant": ""
+      },
+      "packages_ui_src_styles_rating": {
+        "ratingvariant": ""
       },
       "packages_ui_src_styles_separator": {
         "separatorborder": ""

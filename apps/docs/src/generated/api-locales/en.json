@@ -1602,7 +1602,8 @@
             "highlighted": "Whether the node is currently highlighted.",
             "indeterminate": "Whether the node is in an indeterminate state.",
             "loading": "Whether the node is currently loading its children.",
-            "node": "The node being rendered."
+            "node": "The node being rendered.",
+            "selected": "Whether the node is the currently selected node (single-select)."
           },
           "slotprops": "Slot properties for the CascaderCompact option."
         },
@@ -6889,6 +6890,45 @@
         "radioselectevent": "Type information for RadioSelectEvent.",
         "type": ""
       },
+      "packages_headless_src_components_rating_types": {
+        "ratingitememits": {
+          "emits": "Events for the RatingItem component."
+        },
+        "ratingitemprops": {
+          "members": {
+            "as": "The element or component this component should render as. Can be overwrite by `asChild`",
+            "aschild": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+            "index": "The zero-based index of the item within the rating."
+          },
+          "props": "Properties for the RatingItem component."
+        },
+        "ratingrootemits": {
+          "callables": {
+            "hoverchange": "Event handler called when the hover preview value changes. `null` when the pointer leaves.",
+            "update_modelvalue": "Event handler called when the rating value changes.",
+            "valuecommit": "Event handler called when a rating interaction is committed (click or keyboard)."
+          },
+          "emits": "Events for the RatingRoot component."
+        },
+        "ratingrootprops": {
+          "members": {
+            "allowclear": "Whether clicking the current value clears the rating to 0.",
+            "allowhalf": "Whether half-star precision is allowed.",
+            "as": "The element or component this component should render as. Can be overwrite by `asChild`",
+            "aschild": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+            "defaultvalue": "The initial value of the rating when uncontrolled.",
+            "dir": "The reading direction of the rating.",
+            "disabled": "Whether the rating is disabled (inert).",
+            "max": "The maximum rating value (number of items).",
+            "modelvalue": "The controlled value of the rating. Can be bound as `v-model`.",
+            "name": "The name of the field. Submitted with its owning form as part of a name/value pair.",
+            "orientation": "The orientation of the rating.",
+            "readonly": "Whether the rating is read-only (focusable but not interactive).",
+            "required": "When `true`, indicates that the user must set the value before the owning form can be submitted."
+          },
+          "props": "Properties for the RatingRoot component."
+        }
+      },
       "packages_headless_src_components_scroll_area_types": {
         "scrollareacompactemits": {
           "emits": "Events for the ScrollAreaCompact component."
@@ -9236,6 +9276,7 @@
             "pagination": "",
             "password": "",
             "progress": "",
+            "rating": "",
             "slider": "",
             "stepper": "",
             "table": "",
@@ -12403,6 +12444,38 @@
           "props": "Properties for the RadioGroup component."
         }
       },
+      "packages_ui_src_components_rating_types": {
+        "ratingemits": {
+          "callables": {
+            "hoverchange": "Event handler called when the hover preview value changes. `null` when the pointer leaves.",
+            "update_modelvalue": "Event handler called when the rating value changes.",
+            "valuecommit": "Event handler called when a rating interaction is committed (click or keyboard)."
+          },
+          "emits": "Events for the Rating component."
+        },
+        "ratingprops": {
+          "members": {
+            "allowclear": "Whether clicking the current value clears the rating to 0.",
+            "allowhalf": "Whether half-star precision is allowed.",
+            "as": "The element or component this component should render as. Can be overwrite by `asChild`",
+            "aschild": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+            "class": "Additional class names applied to the root element.",
+            "color": "Theme color of the component.",
+            "defaultvalue": "The initial value of the rating when uncontrolled.",
+            "dir": "The reading direction of the rating.",
+            "disabled": "Whether the rating is disabled (inert).",
+            "max": "The maximum rating value (number of items).",
+            "modelvalue": "The controlled value of the rating. Can be bound as `v-model`.",
+            "name": "The name of the field. Submitted with its owning form as part of a name/value pair.",
+            "orientation": "The orientation of the rating.",
+            "readonly": "Whether the rating is read-only (focusable but not interactive).",
+            "required": "When `true`, indicates that the user must set the value before the owning form can be submitted.",
+            "size": "Visual size of the component.",
+            "variant": "Visual variant of the component."
+          },
+          "props": "Properties for the Rating component."
+        }
+      },
       "packages_ui_src_components_scroll_area_types": {
         "scrollareaemits": {
           "emits": "Events for the ScrollArea component."
@@ -13426,6 +13499,9 @@
       },
       "packages_ui_src_styles_radio_group": {
         "radiogroupvariant": ""
+      },
+      "packages_ui_src_styles_rating": {
+        "ratingvariant": ""
       },
       "packages_ui_src_styles_separator": {
         "separatorborder": ""

@@ -75,6 +75,11 @@ const messages: LocaleMessages = {
     cancel: 'Batal',
     confirm: 'Konfirmasi'
   },
+  rating: {
+    ariaLabel: 'Rating',
+    starN: '{count} dari {max} bintang',
+    empty: 'Belum dinilai'
+  },
   slider: {
     valueN: 'Nilai {index} dari {total}',
     minimum: 'Minimum',

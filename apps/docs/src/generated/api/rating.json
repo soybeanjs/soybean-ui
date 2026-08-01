@@ -1,0 +1,740 @@
+{
+  "component": "rating",
+  "symbols": {
+    "Rating": {
+      "props": {
+        "kind": "props",
+        "name": "RatingProps",
+        "type": "Interface RatingProps",
+        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; color?: ThemeColor; size?: ThemeSize; variant?: RatingVariant; modelValue?: number; defaultValue?: number; max?: number; allowHalf?: boolean; allowClear?: boolean; readonly?: boolean; disabled?: boolean; orientation?: DataOrientation; dir?: Direction; name?: string; required?: boolean; asChild?: boolean; as?: AsTag | Component }",
+        "description": "Properties for the Rating component.",
+        "descriptionKey": "api.generated.packages_ui_src_components_rating_types.ratingprops.props",
+        "sourcePath": "packages/ui/src/components/rating/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "class",
+            "type": "string | false | Record<string, any> | ClassValue[] | null",
+            "required": false,
+            "description": "Additional class names applied to the root element.",
+            "descriptionKey": "api.generated.packages_ui_src_components_rating_types.ratingprops.members.class",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui/src/components/rating/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ClassValue",
+                "kind": "typeAlias",
+                "type": "string | false | Record<string, any> | ClassValue[] | null | undefined",
+                "resolvedType": "string | false | Record<string, any> | ClassValue[] | null | undefined",
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_types_common.classvalue",
+                "sourcePath": "packages/headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "color",
+            "type": "ThemeColor",
+            "required": false,
+            "description": "Theme color of the component.",
+            "descriptionKey": "api.generated.packages_ui_src_components_rating_types.ratingprops.members.color",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui/src/components/rating/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ThemeColor",
+                "kind": "typeAlias",
+                "type": "'primary' | 'destructive' | 'success' | 'warning' | 'info' | 'carbon' | 'secondary' | 'accent'",
+                "resolvedType": "'primary' | 'destructive' | 'success' | 'warning' | 'info' | 'carbon' | 'secondary' | 'accent'",
+                "description": "",
+                "descriptionKey": "api.generated.packages_ui_src_theme_types.themecolor",
+                "sourcePath": "packages/ui/src/theme/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "size",
+            "type": "ThemeSize",
+            "required": false,
+            "description": "Visual size of the component.",
+            "descriptionKey": "api.generated.packages_ui_src_components_rating_types.ratingprops.members.size",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui/src/components/rating/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ThemeSize",
+                "kind": "typeAlias",
+                "type": "'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'",
+                "resolvedType": "'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'",
+                "description": "",
+                "descriptionKey": "api.generated.packages_ui_src_theme_types.themesize",
+                "sourcePath": "packages/ui/src/theme/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "variant",
+            "type": "RatingVariant",
+            "required": false,
+            "description": "Visual variant of the component.",
+            "descriptionKey": "api.generated.packages_ui_src_components_rating_types.ratingprops.members.variant",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui/src/components/rating/types.ts",
+            "referencedTypes": [
+              {
+                "name": "RatingVariant",
+                "kind": "typeAlias",
+                "type": "'outline' | 'filled'",
+                "resolvedType": "'outline' | 'filled'",
+                "description": "",
+                "descriptionKey": "api.generated.packages_ui_src_styles_rating.ratingvariant",
+                "sourcePath": "packages/ui/src/styles/rating.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "modelValue",
+            "type": "number",
+            "required": false,
+            "description": "The controlled value of the rating. Can be bound as `v-model`.",
+            "descriptionKey": "api.generated.packages_ui_src_components_rating_types.ratingprops.members.modelvalue",
+            "default": null,
+            "inheritedFrom": "modelValue",
+            "sourcePath": "packages/headless/src/components/rating/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "defaultValue",
+            "type": "number",
+            "required": false,
+            "description": "The initial value of the rating when uncontrolled.",
+            "descriptionKey": "api.generated.packages_ui_src_components_rating_types.ratingprops.members.defaultvalue",
+            "default": null,
+            "inheritedFrom": "defaultValue",
+            "sourcePath": "packages/headless/src/components/rating/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "max",
+            "type": "number",
+            "required": false,
+            "description": "The maximum rating value (number of items).",
+            "descriptionKey": "api.generated.packages_ui_src_components_rating_types.ratingprops.members.max",
+            "default": null,
+            "inheritedFrom": "max",
+            "sourcePath": "packages/headless/src/components/rating/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "allowHalf",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether half-star precision is allowed.",
+            "descriptionKey": "api.generated.packages_ui_src_components_rating_types.ratingprops.members.allowhalf",
+            "default": null,
+            "inheritedFrom": "allowHalf",
+            "sourcePath": "packages/headless/src/components/rating/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "allowClear",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether clicking the current value clears the rating to 0.",
+            "descriptionKey": "api.generated.packages_ui_src_components_rating_types.ratingprops.members.allowclear",
+            "default": null,
+            "inheritedFrom": "allowClear",
+            "sourcePath": "packages/headless/src/components/rating/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "readonly",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether the rating is read-only (focusable but not interactive).",
+            "descriptionKey": "api.generated.packages_ui_src_components_rating_types.ratingprops.members.readonly",
+            "default": null,
+            "inheritedFrom": "readonly",
+            "sourcePath": "packages/headless/src/components/rating/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "disabled",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether the rating is disabled (inert).",
+            "descriptionKey": "api.generated.packages_ui_src_components_rating_types.ratingprops.members.disabled",
+            "default": null,
+            "inheritedFrom": "disabled",
+            "sourcePath": "packages/headless/src/components/rating/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "orientation",
+            "type": "DataOrientation",
+            "required": false,
+            "description": "The orientation of the rating.",
+            "descriptionKey": "api.generated.packages_ui_src_components_rating_types.ratingprops.members.orientation",
+            "default": null,
+            "inheritedFrom": "orientation",
+            "sourcePath": "packages/headless/src/components/rating/types.ts",
+            "referencedTypes": [
+              {
+                "name": "DataOrientation",
+                "kind": "typeAlias",
+                "type": "'vertical' | 'horizontal'",
+                "resolvedType": "'vertical' | 'horizontal'",
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_types_common.dataorientation",
+                "sourcePath": "packages/headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "dir",
+            "type": "Direction",
+            "required": false,
+            "description": "The reading direction of the rating.",
+            "descriptionKey": "api.generated.packages_ui_src_components_rating_types.ratingprops.members.dir",
+            "default": null,
+            "inheritedFrom": "dir",
+            "sourcePath": "packages/headless/src/components/rating/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Direction",
+                "kind": "typeAlias",
+                "type": "'ltr' | 'rtl'",
+                "resolvedType": "'ltr' | 'rtl'",
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_types_common.direction",
+                "sourcePath": "packages/headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "name",
+            "type": "string",
+            "required": false,
+            "description": "The name of the field. Submitted with its owning form as part of a name/value pair.",
+            "descriptionKey": "api.generated.packages_ui_src_components_rating_types.ratingprops.members.name",
+            "default": null,
+            "inheritedFrom": "name",
+            "sourcePath": "packages/headless/src/types/component.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "required",
+            "type": "boolean",
+            "required": false,
+            "description": "When `true`, indicates that the user must set the value before the owning form can be submitted.",
+            "descriptionKey": "api.generated.packages_ui_src_components_rating_types.ratingprops.members.required",
+            "default": null,
+            "inheritedFrom": "required",
+            "sourcePath": "packages/headless/src/types/component.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "asChild",
+            "type": "boolean",
+            "required": false,
+            "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+            "descriptionKey": "api.generated.packages_ui_src_components_rating_types.ratingprops.members.aschild",
+            "default": null,
+            "inheritedFrom": "asChild",
+            "sourcePath": "packages/headless/src/components/primitive/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "as",
+            "type": "AsTag | Component",
+            "required": false,
+            "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+            "descriptionKey": "api.generated.packages_ui_src_components_rating_types.ratingprops.members.as",
+            "default": "'div'",
+            "inheritedFrom": "as",
+            "sourcePath": "packages/headless/src/components/primitive/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Component",
+                "kind": "typeAlias",
+                "type": "Component",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": null,
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.40/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [
+                  "PropsOrInstance = any",
+                  "RawBindings = any",
+                  "D = any",
+                  "C extends ComputedOptions = ComputedOptions",
+                  "M extends MethodOptions = MethodOptions",
+                  "E extends EmitsOptions | Record<string, any[]> = {}",
+                  "S extends Record<string, any> = any"
+                ],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      },
+      "emits": {
+        "kind": "emits",
+        "name": "RatingEmits",
+        "type": "TypeAlias RatingEmits: RatingRootEmits",
+        "resolvedType": "{ \"update:modelValue\": [value: number]; hoverChange: [value: number | null]; valueCommit: [value: number] }",
+        "description": "Events for the Rating component.",
+        "descriptionKey": "api.generated.packages_ui_src_components_rating_types.ratingemits.emits",
+        "sourcePath": "packages/ui/src/components/rating/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [
+          {
+            "name": "update:modelValue",
+            "type": "[value: number]",
+            "parameters": "value: number",
+            "required": true,
+            "description": "Event handler called when the rating value changes.",
+            "descriptionKey": "api.generated.packages_ui_src_components_rating_types.ratingemits.callables.update_modelvalue",
+            "sourcePath": "packages/headless/src/components/rating/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "hoverChange",
+            "type": "[value: number | null]",
+            "parameters": "value: number | null",
+            "required": true,
+            "description": "Event handler called when the hover preview value changes. `null` when the pointer leaves.",
+            "descriptionKey": "api.generated.packages_ui_src_components_rating_types.ratingemits.callables.hoverchange",
+            "sourcePath": "packages/headless/src/components/rating/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "valueCommit",
+            "type": "[value: number]",
+            "parameters": "value: number",
+            "required": true,
+            "description": "Event handler called when a rating interaction is committed (click or keyboard).",
+            "descriptionKey": "api.generated.packages_ui_src_components_rating_types.ratingemits.callables.valuecommit",
+            "sourcePath": "packages/headless/src/components/rating/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "referencedTypes": [
+          {
+            "name": "RatingRootEmits",
+            "kind": "typeAlias",
+            "type": "{ 'update:modelValue': [value: number]; hoverChange: [value: number | null]; valueCommit: [value: number]; }",
+            "resolvedType": "{ \"update:modelValue\": [value: number]; hoverChange: [value: number | null]; valueCommit: [value: number] }",
+            "description": "Events for the RatingRoot component.",
+            "descriptionKey": "api.generated.packages_headless_src_components_rating_types.ratingrootemits",
+            "sourcePath": "packages/headless/src/components/rating/types.ts",
+            "typeParameters": [],
+            "external": false,
+            "members": [],
+            "callables": [
+              {
+                "name": "update:modelValue",
+                "type": "[value: number]",
+                "parameters": "value: number",
+                "required": true,
+                "description": "Event handler called when the rating value changes.",
+                "descriptionKey": "api.generated.packages_headless_src_components_rating_types.ratingrootemits.callables.update_modelvalue",
+                "sourcePath": "packages/headless/src/components/rating/types.ts",
+                "referencedTypes": []
+              },
+              {
+                "name": "hoverChange",
+                "type": "[value: number | null]",
+                "parameters": "value: number | null",
+                "required": true,
+                "description": "Event handler called when the hover preview value changes. `null` when the pointer leaves.",
+                "descriptionKey": "api.generated.packages_headless_src_components_rating_types.ratingrootemits.callables.hoverchange",
+                "sourcePath": "packages/headless/src/components/rating/types.ts",
+                "referencedTypes": []
+              },
+              {
+                "name": "valueCommit",
+                "type": "[value: number]",
+                "parameters": "value: number",
+                "required": true,
+                "description": "Event handler called when a rating interaction is committed (click or keyboard).",
+                "descriptionKey": "api.generated.packages_headless_src_components_rating_types.ratingrootemits.callables.valuecommit",
+                "sourcePath": "packages/headless/src/components/rating/types.ts",
+                "referencedTypes": []
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "RatingItem": {
+      "emits": {
+        "kind": "emits",
+        "name": "RatingItemEmits",
+        "type": "TypeAlias RatingItemEmits: Record<string, never>",
+        "resolvedType": "{ [x: string]: never; }",
+        "description": "Events for the RatingItem component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_rating_types.ratingitememits.emits",
+        "sourcePath": "packages/headless/src/components/rating/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [],
+        "referencedTypes": []
+      },
+      "props": {
+        "kind": "props",
+        "name": "RatingItemProps",
+        "type": "Interface RatingItemProps",
+        "resolvedType": "{ index: number; asChild?: boolean; as?: AsTag | Component }",
+        "description": "Properties for the RatingItem component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_rating_types.ratingitemprops.props",
+        "sourcePath": "packages/headless/src/components/rating/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "index",
+            "type": "number",
+            "required": true,
+            "description": "The zero-based index of the item within the rating.",
+            "descriptionKey": "api.generated.packages_headless_src_components_rating_types.ratingitemprops.members.index",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/rating/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "asChild",
+            "type": "boolean",
+            "required": false,
+            "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+            "descriptionKey": "api.generated.packages_headless_src_components_rating_types.ratingitemprops.members.aschild",
+            "default": null,
+            "inheritedFrom": "PrimitiveWithBaseProps.asChild",
+            "sourcePath": "packages/headless/src/components/primitive/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "as",
+            "type": "AsTag | Component",
+            "required": false,
+            "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+            "descriptionKey": "api.generated.packages_headless_src_components_rating_types.ratingitemprops.members.as",
+            "default": "'div'",
+            "inheritedFrom": "PrimitiveWithBaseProps.as",
+            "sourcePath": "packages/headless/src/components/primitive/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Component",
+                "kind": "typeAlias",
+                "type": "Component",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": null,
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.40/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [
+                  "PropsOrInstance = any",
+                  "RawBindings = any",
+                  "D = any",
+                  "C extends ComputedOptions = ComputedOptions",
+                  "M extends MethodOptions = MethodOptions",
+                  "E extends EmitsOptions | Record<string, any[]> = {}",
+                  "S extends Record<string, any> = any"
+                ],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "RatingRoot": {
+      "emits": {
+        "kind": "emits",
+        "name": "RatingRootEmits",
+        "type": "TypeAlias RatingRootEmits",
+        "resolvedType": "{ \"update:modelValue\": [value: number]; hoverChange: [value: number | null]; valueCommit: [value: number] }",
+        "description": "Events for the RatingRoot component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_rating_types.ratingrootemits.emits",
+        "sourcePath": "packages/headless/src/components/rating/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [
+          {
+            "name": "update:modelValue",
+            "type": "[value: number]",
+            "parameters": "value: number",
+            "required": true,
+            "description": "Event handler called when the rating value changes.",
+            "descriptionKey": "api.generated.packages_headless_src_components_rating_types.ratingrootemits.callables.update_modelvalue",
+            "sourcePath": "packages/headless/src/components/rating/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "hoverChange",
+            "type": "[value: number | null]",
+            "parameters": "value: number | null",
+            "required": true,
+            "description": "Event handler called when the hover preview value changes. `null` when the pointer leaves.",
+            "descriptionKey": "api.generated.packages_headless_src_components_rating_types.ratingrootemits.callables.hoverchange",
+            "sourcePath": "packages/headless/src/components/rating/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "valueCommit",
+            "type": "[value: number]",
+            "parameters": "value: number",
+            "required": true,
+            "description": "Event handler called when a rating interaction is committed (click or keyboard).",
+            "descriptionKey": "api.generated.packages_headless_src_components_rating_types.ratingrootemits.callables.valuecommit",
+            "sourcePath": "packages/headless/src/components/rating/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "referencedTypes": []
+      },
+      "props": {
+        "kind": "props",
+        "name": "RatingRootProps",
+        "type": "Interface RatingRootProps",
+        "resolvedType": "{ modelValue?: number; defaultValue?: number; max?: number; allowHalf?: boolean; allowClear?: boolean; readonly?: boolean; disabled?: boolean; orientation?: DataOrientation; dir?: Direction; name?: string; required?: boolean; asChild?: boolean; as?: AsTag | Component }",
+        "description": "Properties for the RatingRoot component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_rating_types.ratingrootprops.props",
+        "sourcePath": "packages/headless/src/components/rating/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "modelValue",
+            "type": "number",
+            "required": false,
+            "description": "The controlled value of the rating. Can be bound as `v-model`.",
+            "descriptionKey": "api.generated.packages_headless_src_components_rating_types.ratingrootprops.members.modelvalue",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/rating/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "defaultValue",
+            "type": "number",
+            "required": false,
+            "description": "The initial value of the rating when uncontrolled.",
+            "descriptionKey": "api.generated.packages_headless_src_components_rating_types.ratingrootprops.members.defaultvalue",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/rating/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "max",
+            "type": "number",
+            "required": false,
+            "description": "The maximum rating value (number of items).",
+            "descriptionKey": "api.generated.packages_headless_src_components_rating_types.ratingrootprops.members.max",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/rating/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "allowHalf",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether half-star precision is allowed.",
+            "descriptionKey": "api.generated.packages_headless_src_components_rating_types.ratingrootprops.members.allowhalf",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/rating/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "allowClear",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether clicking the current value clears the rating to 0.",
+            "descriptionKey": "api.generated.packages_headless_src_components_rating_types.ratingrootprops.members.allowclear",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/rating/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "readonly",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether the rating is read-only (focusable but not interactive).",
+            "descriptionKey": "api.generated.packages_headless_src_components_rating_types.ratingrootprops.members.readonly",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/rating/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "disabled",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether the rating is disabled (inert).",
+            "descriptionKey": "api.generated.packages_headless_src_components_rating_types.ratingrootprops.members.disabled",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/rating/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "orientation",
+            "type": "DataOrientation",
+            "required": false,
+            "description": "The orientation of the rating.",
+            "descriptionKey": "api.generated.packages_headless_src_components_rating_types.ratingrootprops.members.orientation",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/rating/types.ts",
+            "referencedTypes": [
+              {
+                "name": "DataOrientation",
+                "kind": "typeAlias",
+                "type": "'vertical' | 'horizontal'",
+                "resolvedType": "'vertical' | 'horizontal'",
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_types_common.dataorientation",
+                "sourcePath": "packages/headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "dir",
+            "type": "Direction",
+            "required": false,
+            "description": "The reading direction of the rating.",
+            "descriptionKey": "api.generated.packages_headless_src_components_rating_types.ratingrootprops.members.dir",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/headless/src/components/rating/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Direction",
+                "kind": "typeAlias",
+                "type": "'ltr' | 'rtl'",
+                "resolvedType": "'ltr' | 'rtl'",
+                "description": "",
+                "descriptionKey": "api.generated.packages_headless_src_types_common.direction",
+                "sourcePath": "packages/headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "name",
+            "type": "string",
+            "required": false,
+            "description": "The name of the field. Submitted with its owning form as part of a name/value pair.",
+            "descriptionKey": "api.generated.packages_headless_src_components_rating_types.ratingrootprops.members.name",
+            "default": null,
+            "inheritedFrom": "name",
+            "sourcePath": "packages/headless/src/types/component.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "required",
+            "type": "boolean",
+            "required": false,
+            "description": "When `true`, indicates that the user must set the value before the owning form can be submitted.",
+            "descriptionKey": "api.generated.packages_headless_src_components_rating_types.ratingrootprops.members.required",
+            "default": null,
+            "inheritedFrom": "required",
+            "sourcePath": "packages/headless/src/types/component.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "asChild",
+            "type": "boolean",
+            "required": false,
+            "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+            "descriptionKey": "api.generated.packages_headless_src_components_rating_types.ratingrootprops.members.aschild",
+            "default": null,
+            "inheritedFrom": "PrimitiveWithBaseProps.asChild",
+            "sourcePath": "packages/headless/src/components/primitive/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "as",
+            "type": "AsTag | Component",
+            "required": false,
+            "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+            "descriptionKey": "api.generated.packages_headless_src_components_rating_types.ratingrootprops.members.as",
+            "default": "'div'",
+            "inheritedFrom": "PrimitiveWithBaseProps.as",
+            "sourcePath": "packages/headless/src/components/primitive/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Component",
+                "kind": "typeAlias",
+                "type": "Component",
+                "resolvedType": null,
+                "description": "",
+                "descriptionKey": null,
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.40/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [
+                  "PropsOrInstance = any",
+                  "RawBindings = any",
+                  "D = any",
+                  "C extends ComputedOptions = ComputedOptions",
+                  "M extends MethodOptions = MethodOptions",
+                  "E extends EmitsOptions | Record<string, any[]> = {}",
+                  "S extends Record<string, any> = any"
+                ],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      }
+    }
+  }
+}

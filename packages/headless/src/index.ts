@@ -61,6 +61,7 @@ export * from './components/portal';
 export * from './components/primitive';
 export * from './components/progress';
 export * from './components/radio-group';
+export * from './components/rating';
 export * from './components/roving-focus';
 export * from './components/scroll-area';
 export * from './components/segment';

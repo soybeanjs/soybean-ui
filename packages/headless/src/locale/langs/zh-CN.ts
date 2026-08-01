@@ -75,6 +75,11 @@ const messages: LocaleMessages = {
     cancel: '取消',
     confirm: '确认'
   },
+  rating: {
+    ariaLabel: '评分',
+    starN: '{count}/{max} 星',
+    empty: '未评分'
+  },
   slider: {
     valueN: '第 {index} 个值，共 {total} 个',
     minimum: '最小值',

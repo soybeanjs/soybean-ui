@@ -153,6 +153,15 @@ export interface LocaleProgressMessages {
   loading: string;
 }
 
+export interface LocaleRatingMessages {
+  /** Aria-label for the rating slider. */
+  ariaLabel: string;
+  /** Aria-valuetext template for the rating. Supports `{count}` and `{max}` placeholders. */
+  starN: string;
+  /** Aria-valuetext for an empty rating. */
+  empty: string;
+}
+
 export interface LocaleSliderMessages {
   /**
    * Aria-label template for a thumb when there are more than two values.
@@ -244,6 +253,7 @@ export interface LocaleMessages {
   pagination: LocalePaginationMessages;
   password: LocalePasswordMessages;
   progress: LocaleProgressMessages;
+  rating: LocaleRatingMessages;
   slider: LocaleSliderMessages;
   stepper: LocaleStepperMessages;
   table: LocaleTableMessages;

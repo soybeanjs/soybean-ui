@@ -426,6 +426,8 @@ import {
   RadioGroupItem,
   RadioGroupLabel,
   RadioGroupRoot,
+  RatingItem,
+  RatingRoot,
   RovingFocusGroup,
   RovingFocusItem,
   ScrollAreaCompact,
@@ -1604,6 +1606,14 @@ export const RadioGroup = {
   Control: typeof RadioGroupControl;
   Indicator: typeof RadioGroupIndicator;
   Label: typeof RadioGroupLabel;
+};
+
+export const Rating = {
+  Item: RatingItem,
+  Root: RatingRoot
+} as {
+  Item: typeof RatingItem;
+  Root: typeof RatingRoot;
 };
 
 export const RovingFocus = {

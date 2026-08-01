@@ -75,6 +75,11 @@ const messages: LocaleMessages = {
     cancel: 'İptal',
     confirm: 'Onayla'
   },
+  rating: {
+    ariaLabel: 'Derecelendirme',
+    starN: '{max} yıldızdan {count}',
+    empty: 'Derecelendirme yok'
+  },
   slider: {
     valueN: '{total} değerden {index}. değer',
     minimum: 'Minimum',

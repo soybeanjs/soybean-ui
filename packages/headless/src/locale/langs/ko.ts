@@ -75,6 +75,11 @@ const messages: LocaleMessages = {
     cancel: '취소',
     confirm: '확인'
   },
+  rating: {
+    ariaLabel: '평점',
+    starN: '{max}개 중 {count}개',
+    empty: '평점 없음'
+  },
   slider: {
     valueN: '총 {total}개 중 {index}번째 값',
     minimum: '최소',

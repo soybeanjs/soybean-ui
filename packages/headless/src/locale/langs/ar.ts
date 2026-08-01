@@ -75,6 +75,11 @@ const messages: LocaleMessages = {
     cancel: 'إلغاء',
     confirm: 'تأكيد'
   },
+  rating: {
+    ariaLabel: 'التقييم',
+    starN: '{count} من {max} نجوم',
+    empty: 'بدون تقييم'
+  },
   slider: {
     valueN: 'القيمة {index} من {total}',
     minimum: 'الحد الأدنى',

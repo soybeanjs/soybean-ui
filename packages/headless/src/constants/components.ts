@@ -425,6 +425,7 @@ export const components = {
     'RadioGroupIndicator',
     'RadioGroupLabel'
   ],
+  rating: ['RatingItem', 'RatingRoot'],
   rovingFocus: ['RovingFocusGroup', 'RovingFocusItem'],
   scrollArea: [
     'ScrollAreaRoot',
