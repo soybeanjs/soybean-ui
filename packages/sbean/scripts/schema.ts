@@ -177,6 +177,69 @@ const REGISTRY_ITEM_ENRICHMENT: SchemaEnrichment = {
     },
     preview: {
       description: 'URL or path to a preview image for the item.'
+    },
+    uno: {
+      description:
+        'UnoCSS config fragment (ADR-005). A JSON-serializable slice of UnoCSS UserConfig — presets, rules, shortcuts, theme, safelist — that ships declaratively with the item and merges during `sbean add`.',
+      properties: {
+        presets: {
+          description: 'Preset module specifiers to load (e.g. "@soybeanjs/unocss-shadcn").'
+        },
+        rules: {
+          description:
+            'Declarative `[pattern, class]` rules. Pattern is a regex source string; the second element is the replacement class.'
+        },
+        shortcuts: {
+          description: 'Shortcut name → class string mapping.'
+        },
+        theme: {
+          description: 'UnoCSS theme object — open shape for colors, shadows, fonts, etc.'
+        },
+        safelist: {
+          description: 'Tokens to always generate, regardless of content scanning.'
+        }
+      }
+    },
+    config: {
+      description:
+        'Typed SoybeanUI base config (ADR-009). Only present on `registry:base` items. Deep-partial of sbeanBaseConfigSchema — any subset of the SoybeanUI project shape (uno palette, aliases, themePackage, resolver, iconLibrary, rtl, pointer) can be declared.',
+      properties: {
+        uno: {
+          description: 'UnoCSS theme palette — base/primary/feedback/size/radius picklists.',
+          properties: {
+            base: { description: 'Base color palette for backgrounds and borders.' },
+            primary: { description: 'Primary brand color for accents and actions.' },
+            feedback: { description: 'Feedback color preset for status states.' },
+            size: { description: 'Component size/density preset.' },
+            radius: { description: 'Default border radius for components.' }
+          }
+        },
+        aliases: {
+          description: 'Path aliases for the project source directories.',
+          properties: {
+            ui: { description: 'Alias for the UI components directory.' },
+            theme: { description: 'Alias for the theme tokens directory.' },
+            styles: { description: 'Alias for the style recipes directory.' },
+            components: { description: 'Alias for the components directory.' },
+            composables: { description: 'Alias for the composables directory.' }
+          }
+        },
+        themePackage: {
+          description: 'Theme token package, e.g. "@soybeanjs/shadcn-theme".'
+        },
+        resolver: {
+          description: 'Resolver module path (relative to project root), e.g. "./src/ui/resolver".'
+        },
+        iconLibrary: {
+          description: 'The Iconify icon set to use via SIcon.'
+        },
+        rtl: {
+          description: 'Enable right-to-left text direction.'
+        },
+        pointer: {
+          description: 'Pointer precision hint: "coarse" (touch) or "fine" (mouse/stylus).'
+        }
+      }
     }
   }
 };
@@ -209,7 +272,48 @@ const REGISTRY_ENRICHMENT: SchemaEnrichment = {
 // Helpers
 // ---------------------------------------------------------------------------
 
+/**
+ * ADR-008 — Map enrichment over each `oneOf` / `anyOf` variant branch.
+ * `JsonSchemaDefinition` allows `boolean` members (the `true`/`false` schema
+ * shortcuts); those are passed through untouched since they have no
+ * properties to enrich. Object branches are recursively merged so
+ * descriptions/defaults/nested properties propagate into discriminated-union
+ * members emitted by valibot's `v.variant()`.
+ *
+ * Branches are merged with `addEnrichmentOnlyProperties=false` — only
+ * EXISTING branch properties are enriched. Adding enrichment-only properties
+ * to a branch would leak type-specific fields across the discriminated
+ * union (e.g. `config` is valid only on `registry:base`; injecting it into
+ * every branch would make the published schema accept inputs valibot
+ * rejects). Enrichment-only properties are added solely at the schema root.
+ */
+function mergeVariantBranches(branches: JsonSchema['oneOf'], enrichment: SchemaEnrichment): JsonSchema['oneOf'] {
+  if (!Array.isArray(branches)) {
+    return branches;
+  }
+  return branches.map(branch =>
+    typeof branch === 'object' && branch !== null
+      ? mergeJsonSchemaInternal(branch as JsonSchema, enrichment, false)
+      : branch
+  );
+}
+
+/**
+ * Public entry: top-level merge. Adds enrichment-only properties that the
+ * valibot→JSON-Schema emitter may have omitted (e.g. fields the enrichment
+ * documents but valibot doesn't surface). Only the schema root does this —
+ * variant branches and nested property objects use the internal helper with
+ * the flag off so type-specific fields stay scoped to their own branch.
+ */
 function deepMergeJsonSchema(base: JsonSchema, enrichment: SchemaEnrichment): JsonSchema {
+  return mergeJsonSchemaInternal(base, enrichment, true);
+}
+
+function mergeJsonSchemaInternal(
+  base: JsonSchema,
+  enrichment: SchemaEnrichment,
+  addEnrichmentOnlyProperties: boolean
+): JsonSchema {
   const result: JsonSchema = { ...base };
 
   if (enrichment.description !== undefined) {
@@ -220,19 +324,34 @@ function deepMergeJsonSchema(base: JsonSchema, enrichment: SchemaEnrichment): Js
     result.default = enrichment.default as JsonSchema['default'];
   }
 
+  // ADR-008 — descend into oneOf / anyOf variant branches so enrichment
+  // (descriptions, defaults, nested properties) propagates into each
+  // discriminated-union member. Without this, valibot's `v.variant()` emits
+  // N copies of the common properties and the enrichment only touches the
+  // top-level wrapper, leaving every branch's `name`/`type`/etc. without
+  // descriptions. Recursion is safe: branches are full JsonSchemas and the
+  // enrichment is idempotent for keys that don't match.
+  result.oneOf = mergeVariantBranches(result.oneOf, enrichment);
+  result.anyOf = mergeVariantBranches(result.anyOf, enrichment);
+
   if (enrichment.properties && typeof result.properties === 'object' && result.properties !== null) {
-    const mergedProperties: Record<string, JsonSchema> = {};
     const baseProps = result.properties as Record<string, JsonSchema>;
+    const mergedProperties: Record<string, JsonSchema> = {};
 
     for (const [key, baseProp] of Object.entries(baseProps)) {
       const enrichmentProp = enrichment.properties[key];
-      mergedProperties[key] = enrichmentProp ? deepMergeJsonSchema(baseProp, enrichmentProp) : baseProp;
+      // Nested property objects also merge with the flag off so enrichment-
+      // only fields don't leak into nested shapes.
+      mergedProperties[key] = enrichmentProp ? mergeJsonSchemaInternal(baseProp, enrichmentProp, false) : baseProp;
     }
 
-    // Also add any enrichment-only properties that might not be in the auto-generated schema
-    for (const [key, enrichmentProp] of Object.entries(enrichment.properties)) {
-      if (!(key in mergedProperties)) {
-        mergedProperties[key] = enrichmentProp as unknown as JsonSchema;
+    // At the schema root only: add enrichment-only properties that valibot
+    // didn't emit (the enrichment documents fields the auto-generator missed).
+    if (addEnrichmentOnlyProperties) {
+      for (const [key, enrichmentProp] of Object.entries(enrichment.properties)) {
+        if (!(key in mergedProperties)) {
+          mergedProperties[key] = enrichmentProp as unknown as JsonSchema;
+        }
       }
     }
 

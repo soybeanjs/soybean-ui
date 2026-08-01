@@ -76,6 +76,13 @@
           "--background": "0 0% 3.9%",
           "--foreground": "0 0% 98%"
         }
+      },
+      "uno": {
+        "presets": ["@soybeanjs/unocss-shadcn"],
+        "shortcuts": {
+          "focus-ring": "outline-none ring-2 ring-offset-2"
+        },
+        "safelist": ["sr-only"]
       }
     },
     {
@@ -83,6 +90,31 @@
       "type": "registry:base",
       "description": "Base styles for testing.",
       "config": {},
+      "files": []
+    },
+    {
+      "name": "test-base-typed",
+      "type": "registry:base",
+      "description": "Typed SoybeanUI base config (ADR-009).",
+      "config": {
+        "uno": {
+          "base": "zinc",
+          "primary": "indigo",
+          "radius": "md"
+        },
+        "aliases": {
+          "ui": "@/ui",
+          "theme": "@/theme",
+          "styles": "@/styles",
+          "components": "@/components",
+          "composables": "@/composables"
+        },
+        "themePackage": "@soybeanjs/shadcn-theme",
+        "resolver": "./src/ui/resolver",
+        "iconLibrary": "lucide",
+        "rtl": false,
+        "pointer": "fine"
+      },
       "files": []
     },
     {

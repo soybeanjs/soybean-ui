@@ -1,4 +1,12 @@
 import * as v from 'valibot';
+import {
+  PRESET_BASE_COLORS,
+  PRESET_FEEDBACK_COLORS,
+  PRESET_ICON_LIBRARIES,
+  PRESET_PRIMARY_COLORS,
+  PRESET_RADII,
+  PRESET_SIZES
+} from './config';
 
 // ---------------------------------------------------------------------------
 // Registry item file schema
@@ -33,10 +41,27 @@ export const registryItemTypeSchema = v.picklist([
   'registry:theme',
   'registry:base',
   'registry:font',
-  'registry:block'
+  'registry:block',
+  // ADR-002: 6 missing shadcn-vue item types — adopted verbatim.
+  'registry:composable',
+  'registry:page',
+  'registry:file',
+  'registry:item',
+  'registry:example',
+  'registry:internal'
 ]);
 
 export type RegistryItemType = v.InferOutput<typeof registryItemTypeSchema>;
+
+/**
+ * ADR-002 — `registry:file` / `registry:page` carry a mandatory item-level
+ * `target` (the write path for the single artifact the item represents).
+ * Mirrors shadcn-vue's discriminated file schema. The 4 internal-only types
+ * (`registry:composable`, `registry:item`, `registry:example`,
+ * `registry:internal`) ride the generic "everything else" branch — they are
+ * resolvable but never written by `sbean add` (see WRITABLE_FILE_TYPES).
+ */
+const registryFilePageTypesSchema = v.picklist(['registry:file', 'registry:page']);
 
 // ---------------------------------------------------------------------------
 // CSS variables
@@ -66,14 +91,31 @@ export const registryItemMetaSchema = v.object({
 export type RegistryItemMeta = v.InferOutput<typeof registryItemMetaSchema>;
 
 // ---------------------------------------------------------------------------
-// Tailwind/UnoCSS config (for sbean, this is UnoCSS config)
+// UnoCSS config fragment (registry-item level, ADR-005)
 // ---------------------------------------------------------------------------
+// Mirrors a JSON-serializable slice of UnoCSS's `UserConfig` so that
+// `registry:base` / `registry:style` items can declaratively ship UnoCSS
+// fragments (presets, rules, shortcuts, theme, safelist) that merge
+// deterministically during `sbean add`. Function-shaped rules/handlers are
+// intentionally excluded — they are not JSON-serializable and belong in
+// source files, not the registry payload.
 
 export const registryItemUnoSchema = v.optional(
   v.object({
-    config: v.optional(v.object({}))
+    /** Preset module specifiers (e.g. `"@soybeanjs/unocss-shadcn"`). */
+    presets: v.optional(v.array(v.string())),
+    /** Declarative `[pattern, class]` rules; pattern is a regex source string. */
+    rules: v.optional(v.array(v.tuple([v.string(), v.string()]))),
+    /** Shortcut name → class string. */
+    shortcuts: v.optional(v.record(v.string(), v.string())),
+    /** UnoCSS theme object (open shape: colors, shadows, fonts, …). */
+    theme: v.optional(v.record(v.string(), v.unknown())),
+    /** Tokens to always generate, regardless of content scanning. */
+    safelist: v.optional(v.array(v.string()))
   })
 );
+
+export type RegistryItemUno = v.InferOutput<typeof registryItemUnoSchema>;
 
 // ---------------------------------------------------------------------------
 // Font schema (for registry:font items)
@@ -117,6 +159,68 @@ export const registryItemCommonSchema = v.object({
 });
 
 // ---------------------------------------------------------------------------
+// SBean base config (ADR-009)
+// ---------------------------------------------------------------------------
+// The SoybeanUI-native project shape a `registry:base` item can declare.
+// Mirrors the project-config concerns in `rawConfigSchema` (config.ts) but
+// focuses on fields a base item legitimately overrides at bootstrapping time:
+// the UnoCSS theme palette, path aliases, theme package, resolver location,
+// icon library, RTL, and pointer precision. `font`/`menu`/`registries` stay
+// project-config-only (they are runtime user preferences, not base-item
+// concerns). `registry:base` items carry `deepPartial(sbeanBaseConfigSchema)`
+// so any subset can be declared.
+
+export const sbeanBaseConfigSchema = v.object({
+  uno: v.object({
+    base: v.picklist(PRESET_BASE_COLORS),
+    primary: v.picklist(PRESET_PRIMARY_COLORS),
+    feedback: v.picklist(PRESET_FEEDBACK_COLORS),
+    size: v.picklist(PRESET_SIZES),
+    radius: v.picklist(PRESET_RADII)
+  }),
+  aliases: v.object({
+    ui: v.string(),
+    theme: v.string(),
+    styles: v.string(),
+    components: v.string(),
+    composables: v.string()
+  }),
+  /** Theme token package, e.g. `@soybeanjs/shadcn-theme`. */
+  themePackage: v.string(),
+  /** Resolver module path (relative to project root), e.g. `./src/ui/resolver`. */
+  resolver: v.string(),
+  iconLibrary: v.picklist(PRESET_ICON_LIBRARIES),
+  /** Enable right-to-left text direction. */
+  rtl: v.boolean(),
+  /** Pointer precision hint (`coarse` = touch, `fine` = mouse/stylus). */
+  pointer: v.picklist(['coarse', 'fine'])
+});
+
+export type SbeanBaseConfig = v.InferOutput<typeof sbeanBaseConfigSchema>;
+
+/** Any valibot object schema — the recursion target for `deepPartial`. */
+type AnyObjectSchema = v.ObjectSchema<v.ObjectEntries, v.ErrorMessage<v.ObjectIssue> | undefined>;
+
+/**
+ * Recursively wrap every field of an object schema in `v.optional(...)`,
+ * descending into nested object entries. valibot 1.x ships no `deepPartial`
+ * helper, so this covers the registry:base use case (object-of-objects-of-
+ * primitives). Non-object children are wrapped once; this does not traverse
+ * variants, unions, arrays, or pipes.
+ */
+function deepPartial<T extends AnyObjectSchema>(schema: T): T {
+  const entries: v.ObjectEntries = {};
+  for (const key in schema.entries) {
+    const child = schema.entries[key];
+    entries[key] = child.type === 'object' ? v.optional(deepPartial(child as AnyObjectSchema)) : v.optional(child);
+  }
+  return { ...schema, entries } as T;
+}
+
+/** Deep-partial of `sbeanBaseConfigSchema` — what `registry:base` items carry. */
+export const sbeanBaseItemConfigSchema = deepPartial(sbeanBaseConfigSchema);
+
+// ---------------------------------------------------------------------------
 // Discriminated union: registry:base | registry:font | everything else
 // ---------------------------------------------------------------------------
 
@@ -124,12 +228,18 @@ export const registryItemSchema = v.variant('type', [
   v.object({
     ...registryItemCommonSchema.entries,
     type: v.literal('registry:base'),
-    config: v.optional(v.object({}))
+    config: v.optional(sbeanBaseItemConfigSchema)
   }),
   v.object({
     ...registryItemCommonSchema.entries,
     type: v.literal('registry:font'),
     font: registryItemFontSchema
+  }),
+  // ADR-002: `registry:file` / `registry:page` — mandatory item-level target.
+  v.object({
+    ...registryItemCommonSchema.entries,
+    type: registryFilePageTypesSchema,
+    target: v.string()
   }),
   v.object({
     ...registryItemCommonSchema.entries,
@@ -140,7 +250,12 @@ export const registryItemSchema = v.variant('type', [
       'registry:lib',
       'registry:hook',
       'registry:theme',
-      'registry:block'
+      'registry:block',
+      // ADR-002: internal-only types — resolvable, never written.
+      'registry:composable',
+      'registry:item',
+      'registry:example',
+      'registry:internal'
     ])
   })
 ]);

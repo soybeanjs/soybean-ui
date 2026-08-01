@@ -110,10 +110,48 @@
               "uno": {
                 "type": "object",
                 "properties": {
-                  "config": {
+                  "presets": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "rules": {
+                    "type": "array",
+                    "items": {
+                      "type": "array",
+                      "items": [
+                        {
+                          "type": "string"
+                        },
+                        {
+                          "type": "string"
+                        }
+                      ],
+                      "minItems": 2
+                    }
+                  },
+                  "shortcuts": {
                     "type": "object",
-                    "properties": {},
-                    "required": []
+                    "propertyNames": {
+                      "type": "string"
+                    },
+                    "additionalProperties": {
+                      "type": "string"
+                    }
+                  },
+                  "theme": {
+                    "type": "object",
+                    "propertyNames": {
+                      "type": "string"
+                    },
+                    "additionalProperties": {}
+                  },
+                  "safelist": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
                   }
                 },
                 "required": []
@@ -201,7 +239,115 @@
               },
               "config": {
                 "type": "object",
-                "properties": {},
+                "properties": {
+                  "uno": {
+                    "type": "object",
+                    "properties": {
+                      "base": {
+                        "enum": ["slate", "mist", "gray", "zinc", "neutral", "stone", "taupe", "olive", "mauve"],
+                        "type": "string"
+                      },
+                      "primary": {
+                        "enum": [
+                          "slate",
+                          "mist",
+                          "gray",
+                          "zinc",
+                          "neutral",
+                          "stone",
+                          "taupe",
+                          "olive",
+                          "mauve",
+                          "red",
+                          "orange",
+                          "amber",
+                          "yellow",
+                          "lime",
+                          "green",
+                          "emerald",
+                          "teal",
+                          "cyan",
+                          "sky",
+                          "blue",
+                          "indigo",
+                          "violet",
+                          "purple",
+                          "fuchsia",
+                          "pink",
+                          "rose"
+                        ],
+                        "type": "string"
+                      },
+                      "feedback": {
+                        "enum": [
+                          "classic",
+                          "vivid",
+                          "subtle",
+                          "warm",
+                          "cool",
+                          "nature",
+                          "modern",
+                          "vibrant",
+                          "professional",
+                          "soft",
+                          "bold",
+                          "calm",
+                          "candy",
+                          "deep",
+                          "light"
+                        ],
+                        "type": "string"
+                      },
+                      "size": {
+                        "enum": ["xs", "sm", "md", "lg", "xl", "2xl"],
+                        "type": "string"
+                      },
+                      "radius": {
+                        "enum": ["2xs", "xs", "sm", "md", "lg", "xl", "2xl"],
+                        "type": "string"
+                      }
+                    },
+                    "required": []
+                  },
+                  "aliases": {
+                    "type": "object",
+                    "properties": {
+                      "ui": {
+                        "type": "string"
+                      },
+                      "theme": {
+                        "type": "string"
+                      },
+                      "styles": {
+                        "type": "string"
+                      },
+                      "components": {
+                        "type": "string"
+                      },
+                      "composables": {
+                        "type": "string"
+                      }
+                    },
+                    "required": []
+                  },
+                  "themePackage": {
+                    "type": "string"
+                  },
+                  "resolver": {
+                    "type": "string"
+                  },
+                  "iconLibrary": {
+                    "enum": ["lucide", "material-symbols", "ph", "tabler", "solar", "radix-icons"],
+                    "type": "string"
+                  },
+                  "rtl": {
+                    "type": "boolean"
+                  },
+                  "pointer": {
+                    "enum": ["coarse", "fine"],
+                    "type": "string"
+                  }
+                },
                 "required": []
               }
             },
@@ -291,10 +437,48 @@
               "uno": {
                 "type": "object",
                 "properties": {
-                  "config": {
+                  "presets": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "rules": {
+                    "type": "array",
+                    "items": {
+                      "type": "array",
+                      "items": [
+                        {
+                          "type": "string"
+                        },
+                        {
+                          "type": "string"
+                        }
+                      ],
+                      "minItems": 2
+                    }
+                  },
+                  "shortcuts": {
                     "type": "object",
-                    "properties": {},
-                    "required": []
+                    "propertyNames": {
+                      "type": "string"
+                    },
+                    "additionalProperties": {
+                      "type": "string"
+                    }
+                  },
+                  "theme": {
+                    "type": "object",
+                    "propertyNames": {
+                      "type": "string"
+                    },
+                    "additionalProperties": {}
+                  },
+                  "safelist": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
                   }
                 },
                 "required": []
@@ -488,10 +672,266 @@
               "uno": {
                 "type": "object",
                 "properties": {
-                  "config": {
+                  "presets": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "rules": {
+                    "type": "array",
+                    "items": {
+                      "type": "array",
+                      "items": [
+                        {
+                          "type": "string"
+                        },
+                        {
+                          "type": "string"
+                        }
+                      ],
+                      "minItems": 2
+                    }
+                  },
+                  "shortcuts": {
                     "type": "object",
-                    "properties": {},
-                    "required": []
+                    "propertyNames": {
+                      "type": "string"
+                    },
+                    "additionalProperties": {
+                      "type": "string"
+                    }
+                  },
+                  "theme": {
+                    "type": "object",
+                    "propertyNames": {
+                      "type": "string"
+                    },
+                    "additionalProperties": {}
+                  },
+                  "safelist": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "required": []
+              },
+              "cssVars": {
+                "type": "object",
+                "properties": {
+                  "light": {
+                    "type": "object",
+                    "propertyNames": {
+                      "type": "string"
+                    },
+                    "additionalProperties": {
+                      "type": "string"
+                    }
+                  },
+                  "dark": {
+                    "type": "object",
+                    "propertyNames": {
+                      "type": "string"
+                    },
+                    "additionalProperties": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "required": []
+              },
+              "css": {
+                "type": "string"
+              },
+              "meta": {
+                "type": "object",
+                "properties": {
+                  "registryNamespace": {
+                    "type": "string"
+                  },
+                  "registryUrl": {
+                    "type": "string"
+                  },
+                  "tags": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "updated": {
+                    "type": "string"
+                  },
+                  "created": {
+                    "type": "string"
+                  },
+                  "author": {
+                    "type": "string"
+                  },
+                  "source": {
+                    "type": "string"
+                  }
+                },
+                "required": []
+              },
+              "docs": {
+                "type": "string"
+              },
+              "categories": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "tags": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "preview": {
+                "type": "string"
+              },
+              "deprecated": {
+                "type": "boolean"
+              },
+              "type": {
+                "enum": ["registry:file", "registry:page"],
+                "type": "string"
+              },
+              "target": {
+                "type": "string"
+              }
+            },
+            "required": ["name", "type", "target"]
+          },
+          {
+            "type": "object",
+            "properties": {
+              "$schema": {
+                "type": "string"
+              },
+              "extends": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "title": {
+                "type": "string"
+              },
+              "author": {
+                "type": "string",
+                "minLength": 2
+              },
+              "description": {
+                "type": "string"
+              },
+              "keywords": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "license": {
+                "type": "string"
+              },
+              "version": {
+                "type": "string"
+              },
+              "dependencies": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "devDependencies": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "registryDependencies": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "files": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "path": {
+                      "type": "string"
+                    },
+                    "type": {
+                      "enum": [
+                        "registry:ui",
+                        "registry:component",
+                        "registry:style",
+                        "registry:lib",
+                        "registry:hook",
+                        "registry:theme"
+                      ],
+                      "type": "string"
+                    },
+                    "target": {
+                      "type": "string"
+                    },
+                    "content": {
+                      "type": "string"
+                    }
+                  },
+                  "required": ["path", "type"]
+                }
+              },
+              "uno": {
+                "type": "object",
+                "properties": {
+                  "presets": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "rules": {
+                    "type": "array",
+                    "items": {
+                      "type": "array",
+                      "items": [
+                        {
+                          "type": "string"
+                        },
+                        {
+                          "type": "string"
+                        }
+                      ],
+                      "minItems": 2
+                    }
+                  },
+                  "shortcuts": {
+                    "type": "object",
+                    "propertyNames": {
+                      "type": "string"
+                    },
+                    "additionalProperties": {
+                      "type": "string"
+                    }
+                  },
+                  "theme": {
+                    "type": "object",
+                    "propertyNames": {
+                      "type": "string"
+                    },
+                    "additionalProperties": {}
+                  },
+                  "safelist": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
                   }
                 },
                 "required": []
@@ -582,7 +1022,11 @@
                   "registry:lib",
                   "registry:hook",
                   "registry:theme",
-                  "registry:block"
+                  "registry:block",
+                  "registry:composable",
+                  "registry:item",
+                  "registry:example",
+                  "registry:internal"
                 ],
                 "type": "string"
               }

@@ -2,6 +2,10 @@
 import { spawn } from 'node:child_process';
 import process from 'node:process';
 import { version } from '../package.json';
+// ADR-008 — schema emission lives in the sbean package (closer to the
+// valibot schemas it converts). Imported directly so `pnpm sui sbean-schema`
+// reuses the same generator as `pnpm --filter sbean build:schema`.
+import { generateSchemaData } from '../packages/sbean/scripts/schema';
 import { generateApiData } from './api';
 import { generateApiLocaleTemplates } from './api-i18n';
 import { translateApiLocales } from './api-i18n-translate';
@@ -21,6 +25,7 @@ type Command =
   | 'changelog-translate'
   | 'headless'
   | 'locale-translate'
+  | 'sbean-schema'
   | 'skills'
   | 'ui';
 
@@ -92,6 +97,14 @@ const commandConfigs: Record<Command, CommandConfig> = {
   'locale-translate': {
     description: 'Translate headless locale source files.',
     run: translateHeadlessLocales
+  },
+  'sbean-schema': {
+    description: 'Generate sbean JSON Schemas (sbean.json, registry-item.json, registry.json).',
+    run: async () => {
+      // ADR-008 — emits valibot→JSON-Schema into apps/docs/public/schema/.
+      await generateSchemaData('apps/docs/public/schema');
+      await formatPaths(['apps/docs/public/schema/']);
+    }
   },
   skills: {
     description: 'Generate skill docs and distribution files.',

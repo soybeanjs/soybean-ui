@@ -23,6 +23,95 @@ const WRITABLE_FILE_TYPES = new Set(['registry:ui', 'registry:style', 'registry:
 const SOURCE_ROOT = findWorkspaceSourceRoot();
 
 /**
+ * ADR-006 — A registry item resolved by the BFS phase, ready for the
+ * topological-sort + write phase. Carries the transformed name (graph
+ * identity, matching the BFS `processed`/`queued` sets), the effective
+ * dependency names (transformed, filtered to the resolved set), the source
+ * item, and the file-level-expanded files (with barrels included).
+ */
+export interface ResolvedRegistryItem {
+  /** Transformed name — the BFS graph identity (post-namespace resolution). */
+  name: string;
+  /** Transformed dep names that were actually resolved by the BFS. */
+  dependencies: string[];
+  item: RegistryItem;
+  expandedFiles: RegistryItemFile[];
+}
+
+/**
+ * ADR-006 — Deterministic topological sort of resolved registry items.
+ *
+ * Dependencies are emitted before dependents; ties are broken alphabetically
+ * by item name so identical `sbean add` invocations produce identical write
+ * order (and therefore identical diffs). Cyclic nodes (already flagged as
+ * invalid by `validateRegistryDependencies`) fall back to alphabetical order
+ * at the tail — the sort stays total and deterministic regardless.
+ *
+ * Pure: no I/O, no shared state. Operates on the in-memory resolved list.
+ */
+export function topologicallySortItems(items: ResolvedRegistryItem[]): ResolvedRegistryItem[] {
+  const byName = new Map(items.map(item => [item.name, item]));
+  const inDegree = new Map<string, number>();
+  const dependents = new Map<string, Set<string>>();
+
+  for (const item of items) {
+    inDegree.set(item.name, 0);
+    dependents.set(item.name, new Set());
+  }
+
+  for (const item of items) {
+    for (const dep of item.dependencies) {
+      // Skip self-loops and deps that didn't resolve (missing or unloaded).
+      if (dep === item.name || !byName.has(dep)) {
+        continue;
+      }
+      // Edge: dep -> item.name. Dedupe via Set so a multi-referenced dep
+      // only counts once toward the dependent's in-degree.
+      const dependentsOfDep = dependents.get(dep);
+      if (dependentsOfDep && !dependentsOfDep.has(item.name)) {
+        dependentsOfDep.add(item.name);
+        inDegree.set(item.name, (inDegree.get(item.name) ?? 0) + 1);
+      }
+    }
+  }
+
+  const ordered: string[] = [];
+  // Process in waves: each wave is the set of nodes whose in-degree is 0.
+  // Within a wave, sort alphabetically for deterministic tiebreaking.
+  let wave = items
+    .filter(item => (inDegree.get(item.name) ?? 0) === 0)
+    .map(item => item.name)
+    .sort((a, b) => a.localeCompare(b));
+
+  while (wave.length > 0) {
+    ordered.push(...wave);
+    const nextWave: string[] = [];
+    for (const name of wave) {
+      for (const dependent of dependents.get(name) ?? []) {
+        const next = (inDegree.get(dependent) ?? 0) - 1;
+        inDegree.set(dependent, next);
+        if (next === 0) {
+          nextWave.push(dependent);
+        }
+      }
+    }
+    wave = [...new Set(nextWave)].sort((a, b) => a.localeCompare(b));
+  }
+
+  // Cyclic nodes (if any) appended alphabetically — total + deterministic.
+  if (ordered.length < items.length) {
+    const orderedSet = new Set(ordered);
+    const remaining = items
+      .map(item => item.name)
+      .filter(name => !orderedSet.has(name))
+      .sort((a, b) => a.localeCompare(b));
+    ordered.push(...remaining);
+  }
+
+  return ordered.map(name => byName.get(name)!);
+}
+
+/**
  * Add components to a project — the core copy-paste engine.
  *
  * Supports multiple modes:
@@ -72,6 +161,7 @@ export async function addComponents(
 
   let added = 0;
   const addedFiles: string[] = [];
+  const resolved: ResolvedRegistryItem[] = [];
 
   const resolveRegistryDependencyName = (dependencyName: string, item: RegistryItem): string => {
     if (dependencyName.startsWith('@')) {
@@ -91,6 +181,9 @@ export async function addComponents(
   const queued = new Set(componentNames);
   const processed = new Set<string>();
 
+  // Phase 1 — BFS resolution: load items, expand files, queue dependencies.
+  // No writes happen here; writes are deferred to Phase 3 so the write
+  // order can be topologically sorted (ADR-006) for deterministic diffs.
   while (queue.length > 0) {
     const componentName = queue.shift();
 
@@ -110,20 +203,10 @@ export async function addComponents(
       continue;
     }
 
-    collectPackageDependencies(item, allDeps, allDevDeps);
-
     const expandedFiles = item.files?.length ? await expandRegistryItemFiles(item.files) : [];
 
     // Include barrel index.ts from component source directories
     await includeBarrelFiles(expandedFiles, SOURCE_ROOT);
-
-    const filesToAdd = expandedFiles.filter(file => WRITABLE_FILE_TYPES.has(file.type));
-
-    if (filesToAdd.length > 0) {
-      const filesAdded = await updateFiles(filesToAdd, targetDir, updateOpts);
-      added += filesToAdd.length;
-      addedFiles.push(...filesAdded);
-    }
 
     // Filter explicit registryDependencies: skip those already covered by
     // file-level expansion (e.g. when only context.ts from a component was
@@ -132,6 +215,18 @@ export async function addComponents(
       dep => !isDependencyCoveredByFiles(dep, expandedFiles)
     );
     const registryDependencies = [...explicitDeps, ...inferRegistryDependencies(expandedFiles)];
+
+    // Record the transformed dep names for the topological-sort phase. These
+    // are filtered to the resolved set after BFS completes (a dep queued
+    // here may fail to load and never join the resolved set).
+    const transformedDeps = registryDependencies.map(dep => resolveRegistryDependencyName(dep, item));
+
+    resolved.push({
+      name: componentName,
+      dependencies: transformedDeps,
+      item,
+      expandedFiles
+    });
 
     for (const dependencyName of registryDependencies) {
       const resolvedDependencyName = resolveRegistryDependencyName(dependencyName, item);
@@ -142,6 +237,29 @@ export async function addComponents(
 
       queue.push(resolvedDependencyName);
       queued.add(resolvedDependencyName);
+    }
+  }
+
+  // Phase 2 — Topological sort (ADR-006). Filter recorded deps to the
+  // resolved set first so missing/unloaded deps don't pollute the graph.
+  const resolvedNames = new Set(resolved.map(entry => entry.name));
+  const resolvedForSort = resolved.map(entry => ({
+    ...entry,
+    dependencies: entry.dependencies.filter(dep => dep !== entry.name && resolvedNames.has(dep))
+  }));
+  const sortedItems = topologicallySortItems(resolvedForSort);
+
+  // Phase 3 — Write. Iterating in topological order so identical `sbean add`
+  // runs produce identical file-write order (and therefore identical diffs).
+  for (const { item, expandedFiles } of sortedItems) {
+    collectPackageDependencies(item, allDeps, allDevDeps);
+
+    const filesToAdd = expandedFiles.filter(file => WRITABLE_FILE_TYPES.has(file.type));
+
+    if (filesToAdd.length > 0) {
+      const filesAdded = await updateFiles(filesToAdd, targetDir, updateOpts);
+      added += filesAdded.length;
+      addedFiles.push(...filesAdded);
     }
   }
 
