@@ -15,6 +15,7 @@ export * from './components/calendar';
 export * from './components/calendar-range';
 export * from './components/card';
 export * from './components/carousel';
+export * from './components/cascader';
 export * from './components/checkbox';
 export * from './components/clipboard';
 export * from './components/collapsible';

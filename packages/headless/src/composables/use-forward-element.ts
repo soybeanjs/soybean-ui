@@ -15,6 +15,10 @@ export function useForwardElement<T extends HTMLElement = HTMLElement>(callback?
     if (node) {
       elementRef.value = node;
       callback?.(node);
+    } else {
+      // Element unmounted — clear the ref so watchers (e.g. useDismissableLayer)
+      // can detect the removal and run their cleanup logic.
+      elementRef.value = undefined;
     }
   }
 

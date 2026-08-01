@@ -16,6 +16,7 @@ export const components = {
   calendarRange: ['SCalendarRange'],
   card: ['SCard', 'SCardCollapsibleTrigger'],
   carousel: ['SCarousel'],
+  cascader: ['SCascader'],
   checkbox: ['SCheckboxGroup', 'SCheckbox', 'SCheckboxCardGroup', 'SCheckboxCard'],
   clipboard: ['SClipboard'],
   collapsible: ['SCollapsible', 'SCollapsibleTrigger', 'SCollapsibleContent'],

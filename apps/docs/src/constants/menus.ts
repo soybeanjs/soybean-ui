@@ -69,6 +69,7 @@ export const menuData: MenuData[] = [
       'colorPicker',
       'colorSlider',
       'colorSwatchPicker',
+      'cascader',
       'combobox',
       'dateField',
       'datePicker',

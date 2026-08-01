@@ -1569,6 +1569,289 @@
         "carouselui": "旋转木马组件的 UI 类重载。",
         "type": ""
       },
+      "packages_headless_src_components_cascader_index": {
+        "cascadervalue": "Cascader 组件的值类型。\n\n- `M = false`：单选。`P = false` -> `T`，`P = true` -> `T[]`（单路径）。\n- `M = true`：多选。`P = false` -> `T[]`，`P = true` -> `T[][]`（多路径）。"
+      },
+      "packages_headless_src_components_cascader_types": {
+        "cascaderarrowprops": {
+          "props": "cascader arrow 组件所使用的 popper arrow 属性别名。"
+        },
+        "cascaderclearprops": {
+          "members": {
+            "arialabel": "“清除”按钮的无障碍标签。"
+          },
+          "props": "CascaderClear 组件的属性。"
+        },
+        "cascadercompactemits": {
+          "callables": {
+            "change": "当值发生变化时，会调用该事件处理程序，并传入所选节点。",
+            "clear": "当选中内容被清除时调用的事件处理程序。",
+            "closeautofocus": "在关闭自动聚焦时触发。",
+            "escapekeydown": "按下Esc键时调用的事件处理程序。可被阻止。",
+            "loaded": "当节点的子节点加载完成时（延迟加载模式）调用的事件处理程序。",
+            "placed": "在内容被放置时生成。",
+            "pointerdownoutside": "当 `pointerdown` 事件发生在 `DismissableLayer` 外部时调用的事件处理程序。可被阻止。",
+            "update_modelvalue": "当级联组件的值发生变化时，会调用该事件处理程序。可作为 `v-model` 进行绑定。",
+            "update_open": "当级联器的打开状态发生变化时，会调用此事件处理程序。可绑定为 `v-model:open`。"
+          },
+          "emits": "CascaderCompact 组件的事件。"
+        },
+        "cascadercompactoptionslotprops": {
+          "members": {
+            "checked": "该节点是否已被选中。",
+            "highlighted": "该节点当前是否被高亮显示。",
+            "indeterminate": "该节点是否处于未定状态。",
+            "loading": "该节点当前是否正在加载其子节点。",
+            "node": "正在渲染的节点。"
+          },
+          "slotprops": "CascaderCompact 选项的槽属性。"
+        },
+        "cascadercompactprops": {
+          "members": {
+            "arrowprops": "转发至箭头部分的属性。",
+            "checkstrictly": "当值为 `false` 时，仅可选择叶节点（单选），或父子检查状态\n相互关联（多选）。当值为 `true` 时，任何节点均可独立选择。",
+            "clearable": "当值为 `true` 时，可通过“清除”按钮清除该值。",
+            "contentprops": "已将属性转发至内容部分。",
+            "defaultopen": "cascader 在初始渲染时的展开状态。",
+            "defaultvalue": "所选节点的默认值。",
+            "dir": "组件的阅读方向。",
+            "disabled": "当值为 `true` 时，禁止用户与 Cascader 进行交互。",
+            "emptyprops": "属性已转发至空部分。",
+            "expandtrigger": "用于展开节点子节点的触发器。",
+            "fieldkeys": "用于提取选项字段的字段键。",
+            "filter": "在本地过滤模式下使用的自定义过滤函数。默认情况下，会对路径中的每个标签执行\n不区分大小写的 `includes` 匹配。",
+            "filterable": "当设置为 `true` 时，触发器将变为搜索输入，面板将显示扁平化的过滤结果。",
+            "height": "虚拟滚动所使用的面板高度。",
+            "itemsize": "虚拟滚动所使用的行固定高度。",
+            "lazy": "当值为 `true` 时，节点的子节点将通过 `onLoad` 异步加载。",
+            "menuprops": "转发至每个菜单部分的属性。",
+            "modelvalue": "所选节点的受控值。可通过 `v-model` 进行绑定。",
+            "multiple": "当值为 `true` 时，可选择多个节点。",
+            "name": "字段的名称。作为名称/值对的一部分，与其所属表单一同提交。",
+            "onload": "当 `lazy` 为 `true` 时，用于加载节点子节点的异步函数。",
+            "onsearch": "远程模式下使用的异步搜索函数。返回该关键词的扁平化选项。",
+            "open": "Cascader 的受控打开状态。可绑定为 `v-model:open`。",
+            "optionprops": "这些属性将传递给每个选项部分。",
+            "options": "级联翻译器的选项。",
+            "pathmode": "当 `true` 时，模型值为完整路径数组（而非节点值）。",
+            "placeholder": "未选中任何节点时显示的内容。",
+            "placement": "内容的位置。",
+            "portalprops": "已将属性转发至门户部分。",
+            "remote": "当设置为 `true` 时，面板将从 `onSearch` 加载其选项，而非进行本地过滤。",
+            "required": "当值为 `true` 时，表示用户必须先设置该值，所属表单才能提交。",
+            "searchdelay": "过滤和远程搜索的防抖延迟（单位：毫秒）。",
+            "searchinputprops": "已转发至搜索输入部分的属性。",
+            "separator": "用于连接路径标签的分隔符。",
+            "showarrow": "当值为 `true` 时，将显示箭头图标。",
+            "showcheckedstrategy": "在多模式下用于收集和显示已检查节点的策略。\n\n- `child`：收集已检查区域的叶节点。\n- `parent`：收集最顶层的已检查节点（将已完全检查的子树折叠到父节点中）。",
+            "triggerprops": "转发至触发器部分的属性。",
+            "valueprops": "属性将转发至值部分。",
+            "virtualscroll": "当设置为 `true` 时，仅渲染各列中可见的行。"
+          },
+          "props": "CascaderCompact 组件的属性。"
+        },
+        "cascadercompactslots": {
+          "callables": {
+            "empty": "针对空状态的自定义内容。",
+            "option": "针对单个选项的自定义内容。",
+            "search_input": "搜索输入的自定义内容。",
+            "tag": "多模式下针对某个标签的自定义内容。",
+            "trigger_icon": "触发图标（箭头）的自定义内容。",
+            "trigger_value": "触发值的自定义内容。"
+          },
+          "slots": "CascaderCompact 组件的插槽。"
+        },
+        "cascadercompacttagslotprops": {
+          "members": {
+            "node": "标签的节点。",
+            "remove": "从选定内容中移除该标签。"
+          },
+          "slotprops": "CascaderCompact 标签的插槽属性。"
+        },
+        "cascadercompacttriggervalueslotprops": {
+          "members": {
+            "modelvalue": "当前模型值。",
+            "selectedlabels": "所选节点的标签。",
+            "slottext": "触发器中显示的文本（选定路径或占位符）。"
+          },
+          "slotprops": "CascaderCompact 触发值的槽属性。"
+        },
+        "cascadercontentemits": {
+          "callables": {
+            "closeautofocus": "在关闭自动聚焦时触发。",
+            "escapekeydown": "按下Esc键时调用的事件处理程序。可被阻止。",
+            "placed": "在内容被放置时生成。",
+            "pointerdownoutside": "当 `pointerdown` 事件发生在 `DismissableLayer` 外部时调用的事件处理程序。可被阻止。"
+          },
+          "emits": "CascaderContent 组件的事件。"
+        },
+        "cascadercontentprops": {
+          "members": {
+            "align": "优先采用与触发词对齐的方式。若发生冲突，对齐方式可能会发生变化。",
+            "alignflip": "当与边界发生冲突时，反转对齐方式。\n仅当 `prioritizePosition` 为 true 时才会发生。",
+            "alignoffset": "相对于 `start` 或 `end` 对齐选项的像素偏移量。",
+            "arrowpadding": "箭头与内容边缘之间的间距。如果您的内容使用了 border-radius，这将防止内容\n溢出到角落。",
+            "avoidcollisions": "当值为 `true` 时，将覆盖“侧边”和“对齐”首选项，以避免与边界边缘发生冲突。",
+            "collisionboundary": "用作碰撞边界的元素。默认情况下，该元素为视口，但您可以提供其他\n元素以将其纳入此检查范围。",
+            "collisionpadding": "从应进行碰撞检测的边界边缘开始计算的像素距离。接受一个数字（\n所有边均相同），或一个部分填充对象，例如：{ top: 20, left: 20 }。",
+            "disableoutsidepointerevents": "当设置为 `true` 时，`DismissableLayer` 外部元素的悬停/焦点/点击交互将被禁用。用户\n需要双击外部元素才能与其交互：第一次点击用于关闭 `DismissableLayer`，第二次点击用于\n触发该元素。",
+            "disableupdateonlayoutshift": "当布局发生变化时，是否禁用内容的更新位置。",
+            "emptyprops": "属性已转发至空部分。",
+            "forcemount": "用于在需要更多控制时强制挂载。\n\n在使用 Vue 动画库控制动画时非常有用。",
+            "hideshiftedarrow": "当值为 `true` 时，若无法将箭头居中对齐\n到引用元素上，则隐藏该箭头。",
+            "hidewhendetached": "当触发器被完全遮挡时，是否隐藏内容。",
+            "menuprops": "转发至每个菜单部分的属性。",
+            "placement": "浮动元素的位置。\n\n若使用该属性，它将覆盖 `side` 和 `align` 属性。",
+            "positionstrategy": "要使用的 CSS `position` 属性的类型。",
+            "prioritizeposition": "强制内容位于视口内。可能会与参考元素重叠，这可能并非预期效果。",
+            "reference": "将作为浮动元素定位参考点的自定义元素或虚拟元素。如果\n提供了该元素，它将替换默认的锚点元素。",
+            "side": "打开时优先渲染的触发器侧。当发生冲突且\n启用了 avoidCollisions 时，将进行反转。",
+            "sideflip": "遇到边界时，请翻转至另一侧。",
+            "sideoffset": "距触发器的像素距离。",
+            "sticky": "在对齐轴上的“粘附”行为。`partial` 会在触发器至少部分位于边界内时将内容保留在边界内，而\n“always” 则无论触发器是否位于边界内，都会将内容保留在边界内。",
+            "updatepositionstrategy": "在每个动画帧中更新浮动元素位置的策略。"
+          },
+          "props": "CascaderContent 组件的属性。"
+        },
+        "cascaderemptyprops": {
+          "props": "CascaderEmpty 组件的属性。"
+        },
+        "cascaderexpandevent": "Cascader 展开事件的类型信息。",
+        "cascaderfieldkeys": {
+          "members": {
+            "children": "选项子节点的键。值为 `true` 表示该节点支持懒加载。",
+            "disabled": "该选项禁用状态的键。",
+            "label": "选项标签的键。",
+            "value": "选项值的键。"
+          }
+        },
+        "cascadermenuprops": {
+          "members": {
+            "level": "菜单列的层级深度。",
+            "optionprops": "这些属性将传递给每个选项部分。"
+          },
+          "props": "CascaderMenu 组件的属性。"
+        },
+        "cascadernode": {
+          "members": {
+            "checked": "该节点是否已被选中。",
+            "children": "子节点。`null` 表示子节点尚未加载\n（懒加载已触发但尚未解析，或者该节点被标记为可加载）。",
+            "disabled": "该节点是否已禁用。",
+            "indeterminate": "该节点是否处于未确定的已检查状态。",
+            "isleaf": "该节点是否为叶节点（无子节点）。",
+            "label": "节点的标签。",
+            "level": "节点的深度，根节点为 `0`。",
+            "loaded": "该节点的子节点是否已加载。",
+            "loading": "该节点当前是否正在加载其子节点。",
+            "parent": "父节点，根节点为 `null`。",
+            "pathlabels": "从根节点开始，翻译其所有父节点的标签以及该节点本身的标签。",
+            "pathvalues": "包括该节点本身及其所有祖先节点的值，按从根节点开始的顺序排列。",
+            "raw": "用于构建该节点的原始选项数据。",
+            "uid": "节点的稳定唯一标识符。",
+            "value": "节点的值。"
+          }
+        },
+        "cascaderoptiondata": "Cascader 组件的原始选项数据。\n\n字段 `value`、`label`、`children` 和 `disabled` 可通过 `fieldKeys` 属性\n映射到原始选项的任意键。",
+        "cascaderoptionemits": {
+          "callables": {
+            "expand": "当节点展开时触发的事件处理程序。可通过调用 `event.preventDefault` 阻止该事件。",
+            "select": "当节点被选中时调用的事件处理程序。可通过调用 `event.preventDefault` 来阻止该事件。"
+          },
+          "emits": "CascaderOption 组件的事件。"
+        },
+        "cascaderoptionprops": {
+          "members": {
+            "as": "该组件应渲染为的元素或组件。可通过 `asChild` 进行覆盖。",
+            "aschild": "将默认渲染的元素替换为作为子元素传递的元素，并合并两者的属性及行为。",
+            "index": "节点在其列中的位置。",
+            "level": "该选项所属列的层级深度。",
+            "node": "由该选项渲染的节点。"
+          },
+          "props": "CascaderOption 组件的属性。"
+        },
+        "cascaderportalprops": {
+          "members": {
+            "defer": "将 Teleport 目标的解析推迟到应用程序的其他部分加载完成后（需要 Vue 3.5.0 及以上版本）\n\n{@link https://vuejs.org/guide/built-ins/teleport.html#deferred-teleport}",
+            "disabled": "禁用 teleport 并内联渲染该组件\n\n{@link https://vuejs.org/guide/built-ins/teleport.html#disabling-teleport}",
+            "forcemount": "用于在需要更多控制时强制挂载。\n\n在使用 Vue 动画库控制动画时非常有用。",
+            "to": "Vue 原生 teleport 组件属性 `:to`\n\n{@link https://vuejs.org/guide/built-ins/teleport.html#basic-usage}"
+          },
+          "props": "cascader 门户组件所使用的门户属性别名。"
+        },
+        "cascaderrootemits": {
+          "callables": {
+            "change": "当值发生变化时，会调用该事件处理程序，并传入所选节点。",
+            "clear": "当选中内容被清除时调用的事件处理程序。",
+            "loaded": "当节点的子节点加载完成时（延迟加载模式）调用的事件处理程序。",
+            "update_modelvalue": "当级联组件的值发生变化时，会调用该事件处理程序。可作为 `v-model` 进行绑定。",
+            "update_open": "当级联器的打开状态发生变化时，会调用此事件处理程序。可绑定为 `v-model:open`。"
+          },
+          "emits": "CascaderRoot 组件的事件。"
+        },
+        "cascaderrootprops": {
+          "members": {
+            "checkstrictly": "当值为 `false` 时，仅可选择叶节点（单选），或父子检查状态\n相互关联（多选）。当值为 `true` 时，任何节点均可独立选择。",
+            "clearable": "当值为 `true` 时，可通过“清除”按钮清除该值。",
+            "defaultopen": "cascader 在初始渲染时的展开状态。",
+            "defaultvalue": "所选节点的默认值。",
+            "dir": "组件的阅读方向。",
+            "disabled": "当值为 `true` 时，禁止用户与 Cascader 进行交互。",
+            "expandtrigger": "用于展开节点子节点的触发器。",
+            "fieldkeys": "用于提取选项字段的字段键。",
+            "filter": "在本地过滤模式下使用的自定义过滤函数。默认情况下，会对路径中的每个标签执行\n不区分大小写的 `includes` 匹配。",
+            "filterable": "当设置为 `true` 时，触发器将变为搜索输入，面板将显示扁平化的过滤结果。",
+            "height": "虚拟滚动所使用的面板高度。",
+            "itemsize": "虚拟滚动所使用的行固定高度。",
+            "lazy": "当值为 `true` 时，节点的子节点将通过 `onLoad` 异步加载。",
+            "modelvalue": "所选节点的受控值。可通过 `v-model` 进行绑定。",
+            "multiple": "当值为 `true` 时，可选择多个节点。",
+            "name": "字段的名称。作为名称/值对的一部分，与其所属表单一同提交。",
+            "onload": "当 `lazy` 为 `true` 时，用于加载节点子节点的异步函数。",
+            "onsearch": "远程模式下使用的异步搜索函数。返回该关键词的扁平化选项。",
+            "open": "Cascader 的受控打开状态。可绑定为 `v-model:open`。",
+            "options": "级联翻译器的选项。",
+            "pathmode": "当 `true` 时，模型值为完整路径数组（而非节点值）。",
+            "placeholder": "未选中任何节点时显示的内容。",
+            "remote": "当设置为 `true` 时，面板将从 `onSearch` 加载其选项，而非进行本地过滤。",
+            "required": "当值为 `true` 时，表示用户必须先设置该值，所属表单才能提交。",
+            "searchdelay": "过滤和远程搜索的防抖延迟（单位：毫秒）。",
+            "separator": "用于连接路径标签的分隔符。",
+            "showcheckedstrategy": "在多模式下用于收集和显示已检查节点的策略。\n\n- `child`：收集已检查区域的叶节点。\n- `parent`：收集最顶层的已检查节点（将已完全检查的子树折叠到父节点中）。",
+            "virtualscroll": "当设置为 `true` 时，仅渲染各列中可见的行。"
+          },
+          "props": "CascaderRoot 组件的属性。"
+        },
+        "cascadersearchinputprops": {
+          "props": "CascaderSearchInput 组件的属性。"
+        },
+        "cascaderselectevent": "Cascader 选择事件的类型信息。",
+        "cascadertagsprops": {
+          "props": "CascaderTags 组件的属性。"
+        },
+        "cascadertagsslots": {
+          "callables": {
+            "tag": "多模式下针对单个标签的自定义内容。",
+            "value": "当未选中任何内容时显示的自定义内容。"
+          },
+          "slots": "CascaderTags 组件的插槽。"
+        },
+        "cascadertriggerprops": {
+          "members": {
+            "as": "该组件应渲染为的元素或组件。可通过 `asChild` 进行覆盖。",
+            "aschild": "将默认渲染的元素替换为作为子元素传递的元素，并合并两者的属性及行为。",
+            "disabled": "当值为 `true` 时，禁止用户与触发器进行交互。",
+            "reference": "用于定位的引用（或锚点）元素。若未提供，则使用当前\n组件作为锚点。"
+          },
+          "props": "CascaderTrigger 组件的属性。"
+        },
+        "cascaderui": "Cascader 组件的 UI 类重写。",
+        "cascadervalueprops": {
+          "members": {
+            "placeholder": "未选中任何节点时显示的内容。"
+          },
+          "props": "CascaderValue 组件的属性。"
+        }
+      },
       "packages_headless_src_components_checkbox_types": {
         "checkboxcardcompactemits": {
           "callables": {
@@ -9009,6 +9292,23 @@
       "packages_headless_src_types_vue": {
         "baseprops": ""
       },
+      "packages_shadcn_theme_dist_index_d": {
+        "themeoptions": {
+          "members": {
+            "base": "基础颜色键",
+            "darkselector": "深色模式选择器\n\n- 类名：\".dark\"\n- 媒体查询：\"@media (prefers-color-scheme: dark)\"\n- 自定义：自定义深色模式选择器，例如 \".custom-dark\"",
+            "feedback": "反馈颜色键",
+            "format": "颜色输出格式\n\n- hsl：\"h s l [/ alpha]\"，例如 \"0 0% 100% / 0.1\"\n- oklch：\"oklch(l c h [/ alpha])\"，例如 \"oklch(0 0 0 / 0.1)\"",
+            "menuaccent": "菜单强调样式\n\n- 微妙：低饱和度的前景色高亮\n- 粗体：主色高亮",
+            "menucolor": "菜单颜色样式\n\n- default：普通弹出框背景\n- inverted：深色卡片背景\n- default-translucent：带背景模糊效果的弹出框\n- inverted-translucent：带背景模糊效果的深色卡片",
+            "preset": "自定义预设颜色，这些颜色会覆盖内置预设值。\n若提供这些颜色，最终主题中将替换相应的键值。",
+            "primary": "主颜色键",
+            "radius": "边框半径",
+            "size": "组件大小/密度\n\n控制根字体大小（`<html>`），并按比例调整所有基于 rem 的大小。",
+            "styletarget": "目标风格"
+          }
+        }
+      },
       "packages_ui_src_components_accordion_types": {
         "accordionemits": {
           "callables": {
@@ -9727,6 +10027,80 @@
             "previous": "轮播组件的导航插槽，可用于为轮播渲染自定义导航。 该插槽属性包含控制轮播所需的所有必要信息和方法，例如轮播实例、是否支持向前或向后滚动、选中索引、滚动定位、进度，以及向前、向后或跳转至特定索引的方法。"
           },
           "slots": "轮播组件的插槽。"
+        }
+      },
+      "packages_ui_src_components_cascader_types": {
+        "cascaderemits": {
+          "callables": {
+            "change": "当值发生变化时，会调用该事件处理程序，并传入所选节点。",
+            "clear": "当选中内容被清除时调用的事件处理程序。",
+            "closeautofocus": "在关闭自动聚焦时触发。",
+            "escapekeydown": "按下Esc键时调用的事件处理程序。可被阻止。",
+            "loaded": "当节点的子节点加载完成时（延迟加载模式）调用的事件处理程序。",
+            "placed": "在内容被放置时生成。",
+            "pointerdownoutside": "当 `pointerdown` 事件发生在 `DismissableLayer` 外部时调用的事件处理程序。可被阻止。",
+            "update_modelvalue": "当级联组件的值发生变化时，会调用该事件处理程序。可作为 `v-model` 进行绑定。",
+            "update_open": "当级联器的打开状态发生变化时，会调用此事件处理程序。可绑定为 `v-model:open`。"
+          },
+          "emits": "Cascader 组件的事件。"
+        },
+        "cascaderprops": {
+          "members": {
+            "arrowprops": "转发至箭头部分的属性。",
+            "checkstrictly": "当值为 `false` 时，仅可选择叶节点（单选），或父子检查状态\n相互关联（多选）。当值为 `true` 时，任何节点均可独立选择。",
+            "class": "级联触发器的类",
+            "clearable": "当值为 `true` 时，可通过“清除”按钮清除该值。",
+            "contentprops": "已将属性转发至内容部分。",
+            "defaultopen": "cascader 在初始渲染时的展开状态。",
+            "defaultvalue": "所选节点的默认值。",
+            "dir": "组件的阅读方向。",
+            "disabled": "当值为 `true` 时，禁止用户与 Cascader 进行交互。",
+            "emptyprops": "属性已转发至空部分。",
+            "expandtrigger": "用于展开节点子节点的触发器。",
+            "fieldkeys": "用于提取选项字段的字段键。",
+            "filter": "在本地过滤模式下使用的自定义过滤函数。默认情况下，会对路径中的每个标签执行\n不区分大小写的 `includes` 匹配。",
+            "filterable": "当设置为 `true` 时，触发器将变为搜索输入，面板将显示扁平化的过滤结果。",
+            "height": "虚拟滚动所使用的面板高度。",
+            "itemsize": "虚拟滚动所使用的行固定高度。",
+            "lazy": "当值为 `true` 时，节点的子节点将通过 `onLoad` 异步加载。",
+            "menuprops": "转发至每个菜单部分的属性。",
+            "modelvalue": "所选节点的受控值。可通过 `v-model` 进行绑定。",
+            "multiple": "当值为 `true` 时，可选择多个节点。",
+            "name": "字段的名称。作为名称/值对的一部分，与其所属表单一同提交。",
+            "onload": "当 `lazy` 为 `true` 时，用于加载节点子节点的异步函数。",
+            "onsearch": "远程模式下使用的异步搜索函数。返回该关键词的扁平化选项。",
+            "open": "Cascader 的受控打开状态。可绑定为 `v-model:open`。",
+            "optionprops": "这些属性将传递给每个选项部分。",
+            "options": "级联翻译器的选项。",
+            "pathmode": "当 `true` 时，模型值为完整路径数组（而非节点值）。",
+            "placeholder": "未选中任何节点时显示的内容。",
+            "placement": "内容的位置。",
+            "portalprops": "已将属性转发至门户部分。",
+            "remote": "当设置为 `true` 时，面板将从 `onSearch` 加载其选项，而非进行本地过滤。",
+            "required": "当值为 `true` 时，表示用户必须先设置该值，所属表单才能提交。",
+            "searchdelay": "过滤和远程搜索的防抖延迟（单位：毫秒）。",
+            "searchinputprops": "已转发至搜索输入部分的属性。",
+            "separator": "用于连接路径标签的分隔符。",
+            "showarrow": "当值为 `true` 时，将显示箭头图标。",
+            "showcheckedstrategy": "在多模式下用于收集和显示已检查节点的策略。\n\n- `child`：收集已检查区域的叶节点。\n- `parent`：收集最顶层的已检查节点（将已完全检查的子树折叠到父节点中）。",
+            "size": "组件的视觉尺寸。",
+            "triggerprops": "转发至触发器部分的属性。",
+            "ui": "该组件的按槽位类重写。",
+            "valueprops": "属性将转发至值部分。",
+            "virtualscroll": "当设置为 `true` 时，仅渲染各列中可见的行。"
+          },
+          "props": "Cascader 组件的属性。"
+        },
+        "cascaderslots": {
+          "callables": {
+            "empty": "针对空状态的自定义内容。",
+            "option": "针对单个选项的自定义内容。",
+            "search_input": "搜索输入的自定义内容。",
+            "tag": "多模式下针对某个标签的自定义内容。",
+            "trigger_icon": "触发图标（箭头）的自定义内容。",
+            "trigger_value": "触发值的自定义内容。"
+          },
+          "slots": "Cascader 组件的插槽。"
         }
       },
       "packages_ui_src_components_checkbox_types": {

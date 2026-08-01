@@ -24,6 +24,9 @@ export function usePageTabsScroll(activeValue: ShallowRef<string>) {
 
     await nextTick();
 
+    // Re-check after the await — the element may have been removed during the tick.
+    if (!rootElement.value) return;
+
     const activeElement = rootElement.value.querySelector<HTMLElement>(`[data-value="${activeValue.value}"]`);
     if (!activeElement) return;
 

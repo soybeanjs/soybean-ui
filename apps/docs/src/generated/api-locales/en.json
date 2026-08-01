@@ -1569,6 +1569,289 @@
         "carouselui": "UI class overrides for the Carousel component.",
         "type": ""
       },
+      "packages_headless_src_components_cascader_index": {
+        "cascadervalue": "The value type of the Cascader component.\n\n- `M = false`: single selection. `P = false` -> `T`, `P = true` -> `T[]` (one path).\n- `M = true`: multiple selection. `P = false` -> `T[]`, `P = true` -> `T[][]` (multiple paths)."
+      },
+      "packages_headless_src_components_cascader_types": {
+        "cascaderarrowprops": {
+          "props": "Alias of the popper arrow props used by the cascader arrow part."
+        },
+        "cascaderclearprops": {
+          "members": {
+            "arialabel": "The accessible label of the clear button."
+          },
+          "props": "Properties for the CascaderClear component."
+        },
+        "cascadercompactemits": {
+          "callables": {
+            "change": "Event handler called when the value changes, with the selected nodes.",
+            "clear": "Event handler called when the selection is cleared.",
+            "closeautofocus": "Emitted when close auto focus occurs.",
+            "escapekeydown": "Event handler called when the escape key is down. Can be prevented.",
+            "loaded": "Event handler called when the children of a node have been loaded (lazy mode).",
+            "placed": "Emitted when the content is placed.",
+            "pointerdownoutside": "Event handler called when the a `pointerdown` event happens outside of the `DismissableLayer`. Can be prevented.",
+            "update_modelvalue": "Event handler called when the value of the cascader changes. Can be bound as `v-model`.",
+            "update_open": "Event handler called when the open state of the cascader changes. Can be bound as `v-model:open`."
+          },
+          "emits": "Events for the CascaderCompact component."
+        },
+        "cascadercompactoptionslotprops": {
+          "members": {
+            "checked": "Whether the node is checked.",
+            "highlighted": "Whether the node is currently highlighted.",
+            "indeterminate": "Whether the node is in an indeterminate state.",
+            "loading": "Whether the node is currently loading its children.",
+            "node": "The node being rendered."
+          },
+          "slotprops": "Slot properties for the CascaderCompact option."
+        },
+        "cascadercompactprops": {
+          "members": {
+            "arrowprops": "Properties forwarded to the arrow part.",
+            "checkstrictly": "When `false`, only leaf nodes can be selected (single) or the parent-children check states\nare linked (multiple). When `true`, any node can be selected independently.",
+            "clearable": "When `true`, the value can be cleared by the clear button.",
+            "contentprops": "Properties forwarded to the content part.",
+            "defaultopen": "The open state of the cascader when it is initially rendered.",
+            "defaultvalue": "The default value of the selected node(s).",
+            "dir": "The reading direction of the component.",
+            "disabled": "When `true`, prevents the user from interacting with the Cascader.",
+            "emptyprops": "Properties forwarded to the empty part.",
+            "expandtrigger": "The trigger to expand the children of a node.",
+            "fieldkeys": "Field keys used to extract the option fields.",
+            "filter": "Custom filter function used in local filtering mode. The default performs a\ncase-insensitive `includes` match against every label of the path.",
+            "filterable": "When `true`, the trigger becomes a search input and the panel shows flat filtered results.",
+            "height": "The height of the panel used by virtual scrolling.",
+            "itemsize": "The fixed height of a row used by virtual scrolling.",
+            "lazy": "When `true`, children of a node are loaded asynchronously via `onLoad`.",
+            "menuprops": "Properties forwarded to every menu part.",
+            "modelvalue": "The controlled value of the selected node(s). Can be bound with `v-model`.",
+            "multiple": "When `true`, multiple nodes can be selected.",
+            "name": "The name of the field. Submitted with its owning form as part of a name/value pair.",
+            "onload": "Async function used to load the children of a node when `lazy` is `true`.",
+            "onsearch": "Async search function used in remote mode. Returns the flat options for the keyword.",
+            "open": "The controlled open state of the Cascader. Can be bound as `v-model:open`.",
+            "optionprops": "Properties forwarded to every option part.",
+            "options": "Options of the cascader.",
+            "pathmode": "When `true`, the model value is the full path array(s) instead of the node value(s).",
+            "placeholder": "The content shown when no node is selected.",
+            "placement": "The placement of the content.",
+            "portalprops": "Properties forwarded to the portal part.",
+            "remote": "When `true`, the panel loads its options from `onSearch` instead of filtering locally.",
+            "required": "When `true`, indicates that the user must set the value before the owning form can be submitted.",
+            "searchdelay": "Debounce delay in milliseconds for filtering and remote search.",
+            "searchinputprops": "Properties forwarded to the search input part.",
+            "separator": "The separator used to join the path labels.",
+            "showarrow": "When `true`, the arrow icon is rendered.",
+            "showcheckedstrategy": "The strategy used to collect and display checked nodes in multiple mode.\n\n- `child`: collect the leaves of the checked region.\n- `parent`: collect the topmost checked nodes (fold fully-checked subtrees into parents).",
+            "triggerprops": "Properties forwarded to the trigger part.",
+            "valueprops": "Properties forwarded to the value part.",
+            "virtualscroll": "When `true`, only the visible rows of each column are rendered."
+          },
+          "props": "Properties for the CascaderCompact component."
+        },
+        "cascadercompactslots": {
+          "callables": {
+            "empty": "Custom content for the empty state.",
+            "option": "Custom content for a single option.",
+            "search_input": "Custom content for the search input.",
+            "tag": "Custom content for a tag in multiple mode.",
+            "trigger_icon": "Custom content for the trigger icon (arrow).",
+            "trigger_value": "Custom content for the trigger value."
+          },
+          "slots": "Slots for the CascaderCompact component."
+        },
+        "cascadercompacttagslotprops": {
+          "members": {
+            "node": "The node of the tag.",
+            "remove": "Removes the tag from the selection."
+          },
+          "slotprops": "Slot properties for the CascaderCompact tag."
+        },
+        "cascadercompacttriggervalueslotprops": {
+          "members": {
+            "modelvalue": "Current model value.",
+            "selectedlabels": "Labels of the selected nodes.",
+            "slottext": "Text shown in the trigger (selected path or placeholder)."
+          },
+          "slotprops": "Slot properties for the CascaderCompact trigger value."
+        },
+        "cascadercontentemits": {
+          "callables": {
+            "closeautofocus": "Emitted when close auto focus occurs.",
+            "escapekeydown": "Event handler called when the escape key is down. Can be prevented.",
+            "placed": "Emitted when the content is placed.",
+            "pointerdownoutside": "Event handler called when the a `pointerdown` event happens outside of the `DismissableLayer`. Can be prevented."
+          },
+          "emits": "Events for the CascaderContent component."
+        },
+        "cascadercontentprops": {
+          "members": {
+            "align": "The preferred alignment against the trigger. May change when collisions occur.",
+            "alignflip": "Flip alignment when colliding with boundary.\nMay only occur when `prioritizePosition` is true.",
+            "alignoffset": "An offset in pixels from the `start` or `end` alignment options.",
+            "arrowpadding": "The padding between the arrow and the edges of the content. If your content has border-radius, this will prevent it\nfrom overflowing the corners.",
+            "avoidcollisions": "When `true`, overrides the side and align preferences to prevent collisions with boundary edges.",
+            "collisionboundary": "The element used as the collision boundary. By default this is the viewport, though you can provide additional\nelement(s) to be included in this check.",
+            "collisionpadding": "The distance in pixels from the boundary edges where collision detection should occur. Accepts a number (same for\nall sides), or a partial padding object, for example: { top: 20, left: 20 }.",
+            "disableoutsidepointerevents": "When `true`, hover/focus/click interactions will be disabled on elements outside the `DismissableLayer`. Users will\nneed to click twice on outside elements to interact with them: once to close the `DismissableLayer`, and again to\ntrigger the element.",
+            "disableupdateonlayoutshift": "Whether to disable the update position for the content when the layout shifted.",
+            "emptyprops": "Properties forwarded to the empty part.",
+            "forcemount": "Used to force mounting when more control is needed.\n\nUseful when controlling animation with Vue animation libraries.",
+            "hideshiftedarrow": "When `true`, hides the arrow when it cannot be centered\nto the reference element.",
+            "hidewhendetached": "Whether to hide the content when the trigger becomes fully occluded.",
+            "menuprops": "Properties forwarded to every menu part.",
+            "placement": "The placement of the floating element.\n\nIf used, it will override the `side` and `align` props.",
+            "positionstrategy": "The type of CSS position property to use.",
+            "prioritizeposition": "Force content to be position within the viewport. Might overlap the reference element, which may not be desired.",
+            "reference": "The custom element or virtual element that will be set as the reference to position the floating element. If\nprovided, it will replace the default anchor element.",
+            "side": "The preferred side of the trigger to render against when open. Will be reversed when collisions occur and\navoidCollisions is enabled.",
+            "sideflip": "Flip to the opposite side when colliding with boundary.",
+            "sideoffset": "The distance in pixels from the trigger.",
+            "sticky": "The sticky behavior on the align axis. `partial` will keep the content in the boundary as long as the trigger is at\nleast partially in the boundary whilst \"always\" will keep the content in the boundary regardless.",
+            "updatepositionstrategy": "Strategy to update the position of the floating element on every animation frame."
+          },
+          "props": "Properties for the CascaderContent component."
+        },
+        "cascaderemptyprops": {
+          "props": "Properties for the CascaderEmpty component."
+        },
+        "cascaderexpandevent": "Type information for the Cascader expand event.",
+        "cascaderfieldkeys": {
+          "members": {
+            "children": "Key of the option children. A `true` value marks a lazy-loadable node.",
+            "disabled": "Key of the option disabled state.",
+            "label": "Key of the option label.",
+            "value": "Key of the option value."
+          }
+        },
+        "cascadermenuprops": {
+          "members": {
+            "level": "The depth of the menu column.",
+            "optionprops": "Properties forwarded to every option part."
+          },
+          "props": "Properties for the CascaderMenu component."
+        },
+        "cascadernode": {
+          "members": {
+            "checked": "Whether the node is checked.",
+            "children": "Child nodes. `null` means the children have not been loaded yet\n(lazy loading has been triggered but not resolved, or the node is marked loadable).",
+            "disabled": "Whether the node is disabled.",
+            "indeterminate": "Whether the node is in an indeterminate checked state.",
+            "isleaf": "Whether the node is a leaf (no children).",
+            "label": "Label of the node.",
+            "level": "Depth of the node, root nodes are `0`.",
+            "loaded": "Whether the children of the node have been loaded.",
+            "loading": "Whether the node is currently loading its children.",
+            "parent": "Parent node, `null` for root nodes.",
+            "pathlabels": "Labels of the ancestors plus the node itself, root first.",
+            "pathvalues": "Values of the ancestors plus the node itself, root first.",
+            "raw": "The raw option data the node was built from.",
+            "uid": "Stable unique id of the node.",
+            "value": "Value of the node."
+          }
+        },
+        "cascaderoptiondata": "Raw option data for the Cascader component.\n\nThe fields `value`, `label`, `children` and `disabled` can be mapped to arbitrary keys\nof the raw option via the `fieldKeys` prop.",
+        "cascaderoptionemits": {
+          "callables": {
+            "expand": "Event handler called when the node is expanded. Can be prevented by calling `event.preventDefault`.",
+            "select": "Event handler called when the node is selected. Can be prevented by calling `event.preventDefault`."
+          },
+          "emits": "Events for the CascaderOption component."
+        },
+        "cascaderoptionprops": {
+          "members": {
+            "as": "The element or component this component should render as. Can be overwrite by `asChild`",
+            "aschild": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+            "index": "The position of the node inside its column.",
+            "level": "The depth of the column the option belongs to.",
+            "node": "The node rendered by the option."
+          },
+          "props": "Properties for the CascaderOption component."
+        },
+        "cascaderportalprops": {
+          "members": {
+            "defer": "Defer the resolving of a Teleport target until other parts of the application have mounted (requires Vue 3.5.0+)\n\n{@link https://vuejs.org/guide/built-ins/teleport.html#deferred-teleport}",
+            "disabled": "Disable teleport and render the component inline\n\n{@link https://vuejs.org/guide/built-ins/teleport.html#disabling-teleport}",
+            "forcemount": "Used to force mounting when more control is needed.\n\nUseful when controlling animation with Vue animation libraries.",
+            "to": "Vue native teleport component prop `:to`\n\n{@link https://vuejs.org/guide/built-ins/teleport.html#basic-usage}"
+          },
+          "props": "Alias of the portal props used by the cascader portal part."
+        },
+        "cascaderrootemits": {
+          "callables": {
+            "change": "Event handler called when the value changes, with the selected nodes.",
+            "clear": "Event handler called when the selection is cleared.",
+            "loaded": "Event handler called when the children of a node have been loaded (lazy mode).",
+            "update_modelvalue": "Event handler called when the value of the cascader changes. Can be bound as `v-model`.",
+            "update_open": "Event handler called when the open state of the cascader changes. Can be bound as `v-model:open`."
+          },
+          "emits": "Events for the CascaderRoot component."
+        },
+        "cascaderrootprops": {
+          "members": {
+            "checkstrictly": "When `false`, only leaf nodes can be selected (single) or the parent-children check states\nare linked (multiple). When `true`, any node can be selected independently.",
+            "clearable": "When `true`, the value can be cleared by the clear button.",
+            "defaultopen": "The open state of the cascader when it is initially rendered.",
+            "defaultvalue": "The default value of the selected node(s).",
+            "dir": "The reading direction of the component.",
+            "disabled": "When `true`, prevents the user from interacting with the Cascader.",
+            "expandtrigger": "The trigger to expand the children of a node.",
+            "fieldkeys": "Field keys used to extract the option fields.",
+            "filter": "Custom filter function used in local filtering mode. The default performs a\ncase-insensitive `includes` match against every label of the path.",
+            "filterable": "When `true`, the trigger becomes a search input and the panel shows flat filtered results.",
+            "height": "The height of the panel used by virtual scrolling.",
+            "itemsize": "The fixed height of a row used by virtual scrolling.",
+            "lazy": "When `true`, children of a node are loaded asynchronously via `onLoad`.",
+            "modelvalue": "The controlled value of the selected node(s). Can be bound with `v-model`.",
+            "multiple": "When `true`, multiple nodes can be selected.",
+            "name": "The name of the field. Submitted with its owning form as part of a name/value pair.",
+            "onload": "Async function used to load the children of a node when `lazy` is `true`.",
+            "onsearch": "Async search function used in remote mode. Returns the flat options for the keyword.",
+            "open": "The controlled open state of the Cascader. Can be bound as `v-model:open`.",
+            "options": "Options of the cascader.",
+            "pathmode": "When `true`, the model value is the full path array(s) instead of the node value(s).",
+            "placeholder": "The content shown when no node is selected.",
+            "remote": "When `true`, the panel loads its options from `onSearch` instead of filtering locally.",
+            "required": "When `true`, indicates that the user must set the value before the owning form can be submitted.",
+            "searchdelay": "Debounce delay in milliseconds for filtering and remote search.",
+            "separator": "The separator used to join the path labels.",
+            "showcheckedstrategy": "The strategy used to collect and display checked nodes in multiple mode.\n\n- `child`: collect the leaves of the checked region.\n- `parent`: collect the topmost checked nodes (fold fully-checked subtrees into parents).",
+            "virtualscroll": "When `true`, only the visible rows of each column are rendered."
+          },
+          "props": "Properties for the CascaderRoot component."
+        },
+        "cascadersearchinputprops": {
+          "props": "Properties for the CascaderSearchInput component."
+        },
+        "cascaderselectevent": "Type information for the Cascader select event.",
+        "cascadertagsprops": {
+          "props": "Properties for the CascaderTags component."
+        },
+        "cascadertagsslots": {
+          "callables": {
+            "tag": "Custom content for a single tag in multiple mode.",
+            "value": "Custom content shown when there is no selection."
+          },
+          "slots": "Slots for the CascaderTags component."
+        },
+        "cascadertriggerprops": {
+          "members": {
+            "as": "The element or component this component should render as. Can be overwrite by `asChild`",
+            "aschild": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+            "disabled": "When `true`, prevents the user from interacting with the trigger.",
+            "reference": "The reference (or anchor) element that is being referred to for positioning. If not provided will use the current\ncomponent as anchor."
+          },
+          "props": "Properties for the CascaderTrigger component."
+        },
+        "cascaderui": "UI class overrides for the Cascader component.",
+        "cascadervalueprops": {
+          "members": {
+            "placeholder": "The content shown when no node is selected."
+          },
+          "props": "Properties for the CascaderValue component."
+        }
+      },
       "packages_headless_src_components_checkbox_types": {
         "checkboxcardcompactemits": {
           "callables": {
@@ -9009,6 +9292,23 @@
       "packages_headless_src_types_vue": {
         "baseprops": ""
       },
+      "packages_shadcn_theme_dist_index_d": {
+        "themeoptions": {
+          "members": {
+            "base": "the base color key",
+            "darkselector": "dark mode selector\n\n- class: \".dark\"\n- media: \"@media (prefers-color-scheme: dark)\"\n- custom: custom dark mode selector, e.g. \".custom-dark\"",
+            "feedback": "the feedback color key",
+            "format": "color output format\n\n- hsl: \"h s l [/ alpha]\", e.g. \"0 0% 100% / 0.1\"\n- oklch: \"oklch(l c h [/ alpha])\", e.g. \"oklch(0 0 0 / 0.1)\"",
+            "menuaccent": "the menu accent style\n\n- subtle: muted foreground highlight\n- bold: primary color highlight",
+            "menucolor": "the menu color style\n\n- default: normal popover background\n- inverted: dark card background\n- default-translucent: popover with backdrop blur\n- inverted-translucent: dark card with backdrop blur",
+            "preset": "custom preset colors that override built-in preset values.\nWhen provided, matching keys are replaced in the final theme.",
+            "primary": "the primary color key",
+            "radius": "the border radius",
+            "size": "the component size / density\n\nControls the root font-size (`<html>`), scaling all rem-based sizes.",
+            "styletarget": "the style target"
+          }
+        }
+      },
       "packages_ui_src_components_accordion_types": {
         "accordionemits": {
           "callables": {
@@ -9727,6 +10027,80 @@
             "previous": "Navigation slot for the carousel component, which can be used to render custom navigation for the carousel. The slot props include all the necessary information and methods to control the carousel, such as the carousel instance, whether it can scroll next or prev, the selected index, scroll snaps, progress, and methods to scroll next, prev, or to a specific index."
           },
           "slots": "Slots for the Carousel component."
+        }
+      },
+      "packages_ui_src_components_cascader_types": {
+        "cascaderemits": {
+          "callables": {
+            "change": "Event handler called when the value changes, with the selected nodes.",
+            "clear": "Event handler called when the selection is cleared.",
+            "closeautofocus": "Emitted when close auto focus occurs.",
+            "escapekeydown": "Event handler called when the escape key is down. Can be prevented.",
+            "loaded": "Event handler called when the children of a node have been loaded (lazy mode).",
+            "placed": "Emitted when the content is placed.",
+            "pointerdownoutside": "Event handler called when the a `pointerdown` event happens outside of the `DismissableLayer`. Can be prevented.",
+            "update_modelvalue": "Event handler called when the value of the cascader changes. Can be bound as `v-model`.",
+            "update_open": "Event handler called when the open state of the cascader changes. Can be bound as `v-model:open`."
+          },
+          "emits": "Events for the Cascader component."
+        },
+        "cascaderprops": {
+          "members": {
+            "arrowprops": "Properties forwarded to the arrow part.",
+            "checkstrictly": "When `false`, only leaf nodes can be selected (single) or the parent-children check states\nare linked (multiple). When `true`, any node can be selected independently.",
+            "class": "the class of cascader trigger",
+            "clearable": "When `true`, the value can be cleared by the clear button.",
+            "contentprops": "Properties forwarded to the content part.",
+            "defaultopen": "The open state of the cascader when it is initially rendered.",
+            "defaultvalue": "The default value of the selected node(s).",
+            "dir": "The reading direction of the component.",
+            "disabled": "When `true`, prevents the user from interacting with the Cascader.",
+            "emptyprops": "Properties forwarded to the empty part.",
+            "expandtrigger": "The trigger to expand the children of a node.",
+            "fieldkeys": "Field keys used to extract the option fields.",
+            "filter": "Custom filter function used in local filtering mode. The default performs a\ncase-insensitive `includes` match against every label of the path.",
+            "filterable": "When `true`, the trigger becomes a search input and the panel shows flat filtered results.",
+            "height": "The height of the panel used by virtual scrolling.",
+            "itemsize": "The fixed height of a row used by virtual scrolling.",
+            "lazy": "When `true`, children of a node are loaded asynchronously via `onLoad`.",
+            "menuprops": "Properties forwarded to every menu part.",
+            "modelvalue": "The controlled value of the selected node(s). Can be bound with `v-model`.",
+            "multiple": "When `true`, multiple nodes can be selected.",
+            "name": "The name of the field. Submitted with its owning form as part of a name/value pair.",
+            "onload": "Async function used to load the children of a node when `lazy` is `true`.",
+            "onsearch": "Async search function used in remote mode. Returns the flat options for the keyword.",
+            "open": "The controlled open state of the Cascader. Can be bound as `v-model:open`.",
+            "optionprops": "Properties forwarded to every option part.",
+            "options": "Options of the cascader.",
+            "pathmode": "When `true`, the model value is the full path array(s) instead of the node value(s).",
+            "placeholder": "The content shown when no node is selected.",
+            "placement": "The placement of the content.",
+            "portalprops": "Properties forwarded to the portal part.",
+            "remote": "When `true`, the panel loads its options from `onSearch` instead of filtering locally.",
+            "required": "When `true`, indicates that the user must set the value before the owning form can be submitted.",
+            "searchdelay": "Debounce delay in milliseconds for filtering and remote search.",
+            "searchinputprops": "Properties forwarded to the search input part.",
+            "separator": "The separator used to join the path labels.",
+            "showarrow": "When `true`, the arrow icon is rendered.",
+            "showcheckedstrategy": "The strategy used to collect and display checked nodes in multiple mode.\n\n- `child`: collect the leaves of the checked region.\n- `parent`: collect the topmost checked nodes (fold fully-checked subtrees into parents).",
+            "size": "Visual size of the component.",
+            "triggerprops": "Properties forwarded to the trigger part.",
+            "ui": "Per-slot class overrides for the component.",
+            "valueprops": "Properties forwarded to the value part.",
+            "virtualscroll": "When `true`, only the visible rows of each column are rendered."
+          },
+          "props": "Properties for the Cascader component."
+        },
+        "cascaderslots": {
+          "callables": {
+            "empty": "Custom content for the empty state.",
+            "option": "Custom content for a single option.",
+            "search_input": "Custom content for the search input.",
+            "tag": "Custom content for a tag in multiple mode.",
+            "trigger_icon": "Custom content for the trigger icon (arrow).",
+            "trigger_value": "Custom content for the trigger value."
+          },
+          "slots": "Slots for the Cascader component."
         }
       },
       "packages_ui_src_components_checkbox_types": {

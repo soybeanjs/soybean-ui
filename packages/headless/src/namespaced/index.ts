@@ -112,6 +112,17 @@ import {
   CarouselNext,
   CarouselPrevious,
   CarouselRoot,
+  CascaderClear,
+  CascaderCompact,
+  CascaderContent,
+  CascaderEmpty,
+  CascaderMenu,
+  CascaderOption,
+  CascaderRoot,
+  CascaderSearchInput,
+  CascaderTags,
+  CascaderTrigger,
+  CascaderValue,
   CheckboxCardCompact,
   CheckboxCardGroupCompact,
   CheckboxCompact,
@@ -825,6 +836,32 @@ export const Carousel = {
   Navigation: typeof CarouselNavigation;
   Next: typeof CarouselNext;
   Previous: typeof CarouselPrevious;
+};
+
+export const Cascader = {
+  Root: CascaderRoot,
+  Trigger: CascaderTrigger,
+  Value: CascaderValue,
+  SearchInput: CascaderSearchInput,
+  Content: CascaderContent,
+  Menu: CascaderMenu,
+  Option: CascaderOption,
+  Empty: CascaderEmpty,
+  Tags: CascaderTags,
+  Clear: CascaderClear,
+  Compact: CascaderCompact
+} as {
+  Root: typeof CascaderRoot;
+  Trigger: typeof CascaderTrigger;
+  Value: typeof CascaderValue;
+  SearchInput: typeof CascaderSearchInput;
+  Content: typeof CascaderContent;
+  Menu: typeof CascaderMenu;
+  Option: typeof CascaderOption;
+  Empty: typeof CascaderEmpty;
+  Tags: typeof CascaderTags;
+  Clear: typeof CascaderClear;
+  Compact: typeof CascaderCompact;
 };
 
 export const Checkbox = {

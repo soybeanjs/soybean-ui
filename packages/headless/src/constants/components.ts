@@ -112,6 +112,19 @@ export const components = {
     'CarouselNext',
     'CarouselPrevious'
   ],
+  cascader: [
+    'CascaderRoot',
+    'CascaderTrigger',
+    'CascaderValue',
+    'CascaderSearchInput',
+    'CascaderContent',
+    'CascaderMenu',
+    'CascaderOption',
+    'CascaderEmpty',
+    'CascaderTags',
+    'CascaderClear',
+    'CascaderCompact'
+  ],
   checkbox: [
     'CheckboxCompact',
     'CheckboxCardCompact',
