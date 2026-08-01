@@ -1,13 +1,13 @@
 ---
 name: soybean-ui-component-development
-description: Builds and updates SoybeanUI components with headless/UI split, delivery phases, and generation workflow. Invoke when adding, migrating, extending, standardizing, or fixing components, or when work touches packages/headless/src/components, packages/ui/src/components, apps/playground/src/examples, apps/docs/src/docs, or packages/ui/test/specs/components.
+description: Builds, updates, and audits SoybeanUI components with headless/UI split, delivery phases, and generation workflow. Invoke when adding, migrating, extending, standardizing, fixing, or auditing components, or when work touches packages/headless/src/components, packages/ui/src/components, apps/playground/src/examples, apps/docs/src/docs, or packages/ui/test/specs/components.
 ---
 
 # SoybeanUI Component Development
 
-This skill is the single, self-contained source of truth for SoybeanUI component work. It owns pattern classification, phase order, layer rules, delivery surfaces, generation workflow, and the finish-stage checklist. Load it for any task that creates, migrates, extends, standardizes, or fixes a SoybeanUI component.
+This skill is the single, self-contained source of truth for SoybeanUI component work. It owns pattern classification, phase order, layer rules, delivery surfaces, generation workflow, and the finish-stage checklist. Load it for any task that creates, migrates, extends, standardizes, fixes, or audits a SoybeanUI component.
 
-For detailed rules, see [layers.md](layers.md) (implementation layers), [surfaces.md](surfaces.md) (delivery surfaces), and [process.md](process.md) (finish checklist and commit convention). For request shapes that trigger this skill, see [EXAMPLES.md](EXAMPLES.md). TypeScript functional style and Vue SFC structure are owned by the global `typescript-functional-style` and `vue-sfc-structure` skills — load them directly; this skill does not restate their content.
+For detailed rules, see [layers.md](layers.md) (implementation layers), [surfaces.md](surfaces.md) (delivery surfaces), [e2e.md](e2e.md) (browser e2e testing), [process.md](process.md) (finish checklist and commit convention), and [audit.md](audit.md) (assessment methodology, seven check dimensions, and regression flows for already-shipped components). For request shapes that trigger this skill, see [EXAMPLES.md](EXAMPLES.md). TypeScript functional style and Vue SFC structure are owned by the global `typescript-functional-style` and `vue-sfc-structure` skills — load them directly; this skill does not restate their content.
 
 ## Repository context
 
@@ -22,7 +22,7 @@ For detailed rules, see [layers.md](layers.md) (implementation layers), [surface
 
 1. **Classify the task before editing.**
    - Component pattern: multi-slot base, compact aggregation, or single-class.
-   - Scenario: new component, migration or normalization, or standards alignment.
+   - Scenario: new component, migration or normalization, standards alignment, or audit and evaluation.
    - Delivery scope: headless only, UI only, or full surface.
 2. **Find concrete local references.**
    - Inspect at least one neighboring same-pattern headless implementation and one UI implementation before editing.
@@ -33,6 +33,8 @@ For detailed rules, see [layers.md](layers.md) (implementation layers), [surface
    - Only add a new composable, helper, or type when both are insufficient, and state that reason in the result.
 
 Example: "migrate a compound widget into SoybeanUI" usually means migration scenario + multi-slot or compact pattern + full delivery surface.
+
+Example: "audit the `dialog` component against industry baselines" means audit scenario + follow [audit.md](audit.md) for the assessment flow, seven check dimensions, and regression rules; the project snapshot (component list, task table, priority, execution order, concrete benchmark findings) lives in `docs/check.md`.
 
 ## Component patterns
 
@@ -88,6 +90,15 @@ Example: "migrate a compound widget into SoybeanUI" usually means migration scen
 3. Check whether playground, docs, tests, exports, or generated API data must move with the change.
 4. If a new composable, helper, or type is introduced, explain why existing repository utilities and `@vueuse/core` were insufficient.
 
+### Audit and evaluation of shipped components
+
+1. Load [audit.md](audit.md) for the full assessment methodology, seven check dimensions (D1–D7, 100 items), severity levels, acceptance states, and regression rules.
+2. Confirm the project snapshot in `docs/check.md` for the component's task id (C01–C89), current priority, key check items, and any concrete benchmark findings already recorded.
+3. Run the eight-step assessment flow from [audit.md -> Assessment flow](audit.md#assessment-flow). Grade every finding by severity; do not start the next component while a Blocker is open.
+4. For D2 industry benchmarking, follow [audit.md -> Industry benchmarking](audit.md#d2-industry-benchmarking) (six libraries) and record concrete findings back into the component's task row in `docs/check.md`.
+5. Apply the [audit.md -> Single-component acceptance checklist](audit.md#single-component-acceptance-checklist) before marking the component passed.
+6. After each category, run the cross-component consistency regression from [audit.md -> Cross-component consistency regression](audit.md#cross-component-consistency-regression). After all components, run the full regression.
+
 ## Phase order
 
 Execute in this order. Do not skip ahead until the current phase is done.
@@ -102,6 +113,7 @@ Execute in this order. Do not skip ahead until the current phase is done.
 - Inspect at least one same-pattern headless reference and one UI reference.
 - Migration (scenario B): catalog behavior, state, a11y, slots, and public API that must be preserved.
 - Standards alignment (scenario C): list the gap inventory.
+- Audit and evaluation (scenario D): the gap inventory is the assessment itself — follow [audit.md](audit.md) instead of the implementation phases below.
 
 ### Phase 2: Implement headless
 
@@ -123,7 +135,7 @@ Execute in this order. Do not skip ahead until the current phase is done.
 
 - Playground: see [surfaces.md -> Playground](surfaces.md#playground).
 - Docs: see [surfaces.md -> Docs](surfaces.md#docs).
-- Tests: see [surfaces.md -> Testing](surfaces.md#testing).
+- Tests: see [surfaces.md -> Testing](surfaces.md#testing). For interactive components, also add a browser e2e spec — see [e2e.md](e2e.md).
 - If public API changed, run `pnpm sui api`; for non-English locales run `pnpm sui api-translate -- --locale <locale>`.
 - If changelog mapping or release surfaces changed, run `pnpm sui changelog`; for non-English locales run `pnpm sui changelog-translate -- --locale <locale>`.
 

@@ -41,3 +41,27 @@ jobs:
 
       - name: Test
         run: pnpm test
+
+  e2e:
+    name: Browser e2e
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v5
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: lts/*
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Install Playwright chromium
+        run: pnpm --filter @soybeanjs/ui exec playwright install --with-deps chromium
+
+      - name: Browser e2e tests
+        run: pnpm test:e2e

@@ -1,0 +1,345 @@
+# SoybeanUI Component Audit Rules
+
+This file is the single source of truth for evaluating already-shipped SoybeanUI components. It owns the assessment methodology, the seven check dimensions, the 100 check items with standards and acceptance conditions, severity levels, acceptance states, single-component acceptance, cross-component consistency regression, full regression, and the industry benchmarking methodology (library selection + comparison dimensions).
+
+The companion [SKILL.md](SKILL.md) owns pattern classification, phase order, workflows, guardrails, and delivery surfaces; [layers.md](layers.md) owns implementation layer rules; [surfaces.md](surfaces.md) owns delivery surface rules; [process.md](process.md) owns the finish checklist and commit convention. Project-level snapshots — the 87-component list, the C01–C89 task table, current P0–P3 priority allocation, the 13-round execution order, and concrete benchmark findings per component (for example `input` should add `showCount`) — live in `docs/check.md` and reference this file as the source.
+
+## When to load
+
+Load this file for any task that audits, evaluates, re-checks, or runs a regression pass on already-shipped SoybeanUI components. Typical triggers: "audit the `dialog` component", "re-evaluate `select` against industry baselines", "run a cross-component consistency regression on form inputs", "produce an audit report for `table`".
+
+## Assessment methodology
+
+### Assessment flow
+
+Each component is checked in this order:
+
+1. **Pattern classification** — decide whether the component is multi-slot base, compact aggregation, or single-class. The chosen pattern determines which check-item subsets apply.
+2. **Baseline alignment** — walk through the rules in [SKILL.md](SKILL.md), [layers.md](layers.md), [surfaces.md](surfaces.md), and [process.md](process.md) item by item.
+3. **Industry benchmarking** — compare the component against the six benchmark libraries to identify feature gaps and experience differences.
+4. **API and type review** — review props/emits/slots/types naming, parameters, return values, and JSDoc.
+5. **Code standards scan** — apply the `typescript-functional-style` and `vue-sfc-structure` checklists.
+6. **Documentation and example review** — check the playground, docs, and tests delivery surfaces against [surfaces.md](surfaces.md).
+7. **Extended dimension check** — performance, a11y, browser compatibility, exception handling, test coverage, extensibility.
+8. **Record and grade** — grade every finding by severity (Blocker / Major / Minor / Enhancement) and write it into the component task table.
+
+### Severity definitions
+
+| Level               | Meaning                                                                                                       | When to handle                                         |
+| :------------------ | :------------------------------------------------------------------------------------------------------------ | :----------------------------------------------------- |
+| **Blocker (B)**     | Violates a skill hard constraint, breaks headless/UI boundary, missing ARIA, type escape, circular dependency | Fix immediately; do not start the next component audit |
+| **Major (M)**       | Feature gap, API inconsistency, docs out of sync with implementation, missing test coverage, performance risk | Fix within the current iteration                       |
+| **Minor (m)**       | Naming not standard, missing comments, styles not using logical properties, wrong `shallowRef` choice         | Batch-fix in a single pass                             |
+| **Enhancement (E)** | Valuable feature or experience improvement identified through benchmarking                                    | Schedule after evaluation                              |
+
+### Acceptance status markers
+
+| Marker | Meaning                                        |
+| :----: | :--------------------------------------------- |
+|   ✅   | Passed                                         |
+|   ⚠️   | Needs optimization (has Major or Minor issues) |
+|   ❌   | Failed (has Blocker)                           |
+|   ➕   | Enhancement item                               |
+|   —    | Not applicable                                 |
+|   ⏳   | Pending check                                  |
+
+## Check dimensions overview
+
+Seven dimensions and their item counts, sources, and benchmark mapping:
+
+| Dim | Name                   | Items | Primary source                                                                             |
+| :-: | :--------------------- | :---: | :----------------------------------------------------------------------------------------- |
+| D1  | Functional compliance  |  18   | `soybean-ui-component-development` SKILL.md / layers.md / surfaces.md / process.md         |
+| D2  | Industry benchmarking  |  12   | Feature matrix of the same component across the six benchmark libraries                    |
+| D3  | API design             |  14   | Naming, parameter design, return value consistency, usability, extensibility               |
+| D4  | TypeScript type system |  10   | `typescript-functional-style` + JSDoc rules                                                |
+| D5  | Code standards         |  16   | `typescript-functional-style` + `vue-sfc-structure`                                        |
+| D6  | Documentation          |  12   | [surfaces.md](surfaces.md) Docs section + benchmark library doc structure                  |
+| D7  | Other dimensions       |  18   | Performance, a11y, browser compatibility, exception handling, test coverage, extensibility |
+
+**Total:** 100 check items. Per-component task tables in `docs/check.md` track state across these dimensions.
+
+## Dimension details
+
+### D1. Functional compliance
+
+**Goal:** ensure the component fully satisfies the functional, interaction, and performance requirements of the `soybean-ui-component-development` skill.
+
+**Scope:** every shipped component.
+
+|  ID   | Check item                       | Standard                                                                                                                                                                                                            | Acceptance condition                                                                                                                   |
+| :---: | :------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | :------------------------------------------------------------------------------------------------------------------------------------- |
+| D1-01 | Pattern classification correct   | Implementation matches one of `SKILL.md`'s multi-slot base / compact aggregation / single-class definitions                                                                                                         | `types.ts`, `context.ts`, and SFC structure match the chosen pattern                                                                   |
+| D1-02 | Headless responsibility boundary | Headless holds only logic, state, a11y, structure aggregation; no UnoCSS classes, no `<style>`, no inline styles (including `hidden`, `sr-only`)                                                                    | Full grep of `packages/headless/src/components/{name}/` returns no `class="..."`, `style="..."`, `:class`                              |
+| D1-03 | UI responsibility boundary       | UI layer only does style wrapping, variant computation, UiContext injection, props/listener forwarding; no ARIA, `role`, `tabindex`, keyboard logic, state semantics                                                | `packages/ui/src/components/{name}/*.vue` has no `aria-*`, `role=`, `@keydown` business logic                                          |
+| D1-04 | Data flow direction              | `packages/headless` -> `packages/ui` is one-way; headless has no `@soybeanjs/ui` import                                                                                                                             | grep `@soybeanjs/ui` in `packages/headless/src/` returns 0                                                                             |
+| D1-05 | Context reactivity               | Context values are `ComputedRef` or `ShallowRef`; prop-derived fields use `transformPropsToContext` or `PropsToContext`                                                                                             | No bare value assignments in `context.ts`; no raw non-reactive values enter context                                                    |
+| D1-06 | UiContext export                 | Multi-slot components export only `provide{Name}Ui`; never export `use{Name}Ui`                                                                                                                                     | `packages/headless/src/components/{name}/index.ts` does not export `use{Name}Ui`                                                       |
+| D1-07 | `data-soybean-{name}` attributes | Every headless slot root element carries a stable `data-soybean-{name}` attribute                                                                                                                                   | DOM inspection and test coverage                                                                                                       |
+| D1-08 | State reflection                 | State is reflected through both `aria-*` (`aria-expanded`, `aria-selected`, `aria-checked`, `aria-disabled`) and `data-state`; not through class alone                                                              | Tests cover state -> attribute mapping                                                                                                 |
+| D1-09 | Style recipe completeness        | `packages/ui/src/styles/{name}.ts` first line is `// @unocss-include`; `slots` keys match headless `{Name}UiSlot` exactly                                                                                           | First-line check + slot key diff                                                                                                       |
+| D1-10 | `useOmitProps` includes `class`  | Multi-slot wrapper `useOmitProps` must include `class` to avoid double binding                                                                                                                                      | grep check                                                                                                                             |
+| D1-11 | Wrapper recipe call              | Multi-slot wrapper passes `props.ui` and `{ root: props.class }` directly into the `scv()` call                                                                                                                     | Code review                                                                                                                            |
+| D1-12 | Compact aggregation sunk         | When `{Name}Compact` exists, the UI wrapper no longer iterates `items`, does not assemble default icon/title/content, does not orchestrate non-style logic                                                          | Wrapper has no `v-for="item in items"` default rendering                                                                               |
+| D1-13 | RTL support                      | Direction-sensitive components declare `dir?: Direction` in `types.ts`; `context.ts` uses `useDirection`; UI styles prefer logical properties `start-*`/`end-*`/`ms-*`/`me-*`/`ps-*`/`pe-*`/`text-start`/`text-end` | grep for `left-\|right-\|ml-\|mr-\|pl-\|pr-\|text-left\|text-right` in style recipe returns empty (except directional arrows/chevrons) |
+| D1-14 | ID association                   | `aria-labelledby`, `aria-controls` are linked through unique ids generated by `useId()`                                                                                                                             | Code review + axe-core test                                                                                                            |
+| D1-15 | Decorative elements              | Pure decorative icons or duplicated content carry `aria-hidden="true"`                                                                                                                                              | Code review                                                                                                                            |
+| D1-16 | Focus and keyboard               | All interactive elements are keyboard operable; complex components maintain a sensible focus order; overlay/dialog/drawer have focus trap and focus return                                                          | Manual keyboard test + test cases                                                                                                      |
+| D1-17 | Exports and generated files      | `packages/headless/src/index.ts` and `packages/ui/src/index.ts` are updated; `pnpm sui headless` and `pnpm sui ui` have run; no hand-edited generated files                                                         | `git diff` contains no hand edits to `constants/components.ts` or `namespaced/index.ts`                                                |
+| D1-18 | Delivery surface completeness    | Playground, docs (zh/en), menus.ts, tests, API data, and changelog data are present and in sync                                                                                                                     | See D6 for detailed checks                                                                                                             |
+
+### D2. Industry benchmarking
+
+**Goal:** survey the feature sets, interaction experience, and performance of the same component across the six benchmark libraries, produce a comparison report, and feed the results into feature enhancement and experience optimization.
+
+**Benchmark library selection:**
+
+| Library          | Ecosystem   | Focus dimensions                                                                      |
+| :--------------- | :---------- | :------------------------------------------------------------------------------------ |
+| **Ant Design**   | React + Vue | Enterprise form/table/navigation completeness, API surface                            |
+| **Element Plus** | Vue 3       | Vue 3 enterprise typical, form validation, table virtual scroll                       |
+| **Material UI**  | React       | Material Design spec, theme system, accessibility                                     |
+| **Mantine**      | React       | Modern DX, hooks-first, dark mode, forms                                              |
+| **Naive UI**     | Vue 3       | Performance, tree-shaking, on-demand import, TS types                                 |
+| **shadcn/ui**    | React       | headless/styled separation (architecture sibling), customizability, copy-source model |
+
+**Common benchmark dimensions:**
+
+|  ID   | Check item                                     | Standard                                                                                                                                                                                                         | Acceptance condition                                          |
+| :---: | :--------------------------------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------ |
+| D2-01 | Feature matrix                                 | List the feature set of the same component across the six libraries and mark whether SoybeanUI covers each                                                                                                       | One matrix per component                                      |
+| D2-02 | Interaction experience                         | Compare interaction flows (hover/focus/active/disabled/loading/error) for consistency or superiority                                                                                                             | Covers at least the mainstream interaction patterns           |
+| D2-03 | Keyboard reachability                          | Compare against WAI-ARIA APG and the six libraries; key bindings and focus behavior match                                                                                                                        | Manual keyboard test passes                                   |
+| D2-04 | Performance                                    | Compare rendering, scrolling, and filtering performance under large data (1k+ rows/items)                                                                                                                        | Render < 16ms per frame, scroll 60fps (Naive UI baseline)     |
+| D2-05 | API consistency                                | Naming (`modelValue`/`value`, `disabled`/`readonly`, `size`/`variant`/`color`) aligns with mainstream libraries                                                                                                  | See D3                                                        |
+| D2-06 | Default value reasonableness                   | Defaults for `size`, `variant`, `color`, `placement`, etc. align with the majority of libraries                                                                                                                  | Review passes                                                 |
+| D2-07 | Dark mode                                      | Dark theme styles, contrast, and state visibility are correct                                                                                                                                                    | `ConfigProvider` dark mode switch passes across the component |
+| D2-08 | i18n and RTL                                   | Under RTL languages such as Arabic, layout, icon direction, and animation direction are correct                                                                                                                  | D1-13 passes                                                  |
+| D2-09 | Mobile adaptation (within desktop-first scope) | Desktop-first, but responsive breakpoints do not break basic mobile usability                                                                                                                                    | 375px viewport is basically usable                            |
+| D2-10 | High DPI and zoom                              | At 150%/200% browser zoom the layout does not overflow or overlap                                                                                                                                                | Manual verification                                           |
+| D2-11 | Enhancement feature evaluation                 | Evaluate whether valuable features from benchmark libraries should be added (e.g. `loading`, `error`, `count`, `showCount`, `clearable`, `filterable`, `virtualScroll`, `remote`, `form validation integration`) | One enhancement recommendation list per component             |
+| D2-12 | Gap regression roadmap                         | Identified feature gaps are written back to `docs/roadmap.md` under "out of scope" or as new enhancement items                                                                                                   | Docs synced                                                   |
+
+### D3. API design
+
+**Goal:** comprehensively review API naming conventions, parameter design, return value type consistency, interface usability, and extensibility.
+
+|  ID   | Check item                   | Standard                                                                                                                                                                                                                                                           | Acceptance condition                   |
+| :---: | :--------------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------- |
+| D3-01 | Naming conventions           | Props/Emits/Slots naming follows Vue 3 + project conventions: `modelValue`/`v-model`, `disabled`/`readonly`/`loading`/`placeholder`/`size`/`variant`/`color`/`placement`/`dir`; events `update:modelValue`, `change`, `select`, `open`/`close`, `confirm`/`cancel` | Naming review list passes              |
+| D3-02 | Props inheritance            | Props `interface` extends `/** @vue-ignore */ HTMLAttributes` (or `PrimitiveWithBaseProps`); does not redefine inherited HTML attributes                                                                                                                           | grep `extends HTMLAttributes`          |
+| D3-03 | `ClassValue`/`UiClass` usage | UI props use `class?: ClassValue`; multi-slot uses `ui?: UiClass<{Name}UiSlot>`; never `Record<UiSlot, ClassValue>` or `string`                                                                                                                                    | Type review                            |
+| D3-04 | Controlled/uncontrolled      | State fields use `useControllableState`; supports both `v-model` and default values; multi-select uses `SelectionProps<M>`/`SelectionEmits<M>`                                                                                                                     | Code review                            |
+| D3-05 | Event payload consistency    | Event callback payload structure is consistent across same-category components (e.g. `select` payload unified as `(value, option?)`)                                                                                                                               | Cross-component API consistency review |
+| D3-06 | Slots complete and semantic  | All customizable positions provide slots; slot names are semantic (`default`, `trigger`, `content`, `header`, `footer`, `icon`, `prefix`, `suffix`); slot types declared via `defineSlots`                                                                         | Code review + docs listing             |
+| D3-07 | Default values reasonable    | Defaults align with mainstream libraries; no destructive defaults (e.g. default `multiple=false`, `disabled=false`, `size='md'`)                                                                                                                                   | Linked with D2-06                      |
+| D3-08 | Extension points             | Provides `as`/`asChild` (polymorphic), `ui` override, `class` override, slot override — four extension points                                                                                                                                                      | Review                                 |
+| D3-09 | Namespace and exports        | UI components use `S` prefix; headless has no prefix; `index.ts` exports both components, `provide{Name}Ui`, and related types; does not mix root-path and sub-path type imports from `@soybeanjs/headless`                                                        | grep check                             |
+| D3-10 | TypeScript type exports      | All public props/emits/slots types are exported from `index.ts`; UI re-exports headless types from `@soybeanjs/headless/{component}`; global types imported from `@soybeanjs/headless/types`                                                                       | grep check                             |
+| D3-11 | API usability                | Same-category components share API style; complex components provide `Compact` aggregation to lower the barrier; common scenarios completable in <= 5 lines                                                                                                        | Playground example review              |
+| D3-12 | Consistency                  | Same-category components (e.g. all `*-picker`, all `*-field`, all `*-menu`) share API style                                                                                                                                                                        | Cross-component review                 |
+| D3-13 | Backward compatibility       | Published API changes need a deprecation path; public API is not broken before a major version                                                                                                                                                                     | Change review                          |
+| D3-14 | Docs match implementation    | API data generated by `pnpm sui api` matches actual props/emits; doc examples are runnable                                                                                                                                                                         | `pnpm sui api` re-run diff             |
+
+### D4. TypeScript type system
+
+**Goal:** refine component TS type definitions so types are accurate, concise, and clear, with JSDoc on public interfaces, complex types, and key parameters.
+
+|  ID   | Check item               | Standard                                                                                                                                                                                             | Acceptance condition                   |
+| :---: | :----------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------- |
+| D4-01 | No type escape           | No `as any`, `@ts-ignore`, `@ts-expect-error`, `as unknown as T` anywhere                                                                                                                            | `pnpm typecheck` + grep passes         |
+| D4-02 | Strict mode passes       | `vue-tsc --noEmit --skipLibCheck` zero errors                                                                                                                                                        | `pnpm typecheck` passes                |
+| D4-03 | Props interface not type | UI/headless props use `interface`, not `type` alias                                                                                                                                                  | grep `type.*Props =` returns empty     |
+| D4-04 | Types precise            | Public functions, utilities, and complex return values declare clear parameters and return types; no broad `Record<string, any>`, `object`, `Function`                                               | Code review                            |
+| D4-05 | Shared type reuse        | `Side`, `Align`, `Direction`, `Placement`, `ThemeColor`, `ThemeSize`, `ClassValue`, `UiClass`, `SelectionProps`, etc. are reused from `packages/headless/src/types/` or `theme/types`; not redefined | grep for redefinitions                 |
+| D4-06 | JSDoc public API         | All public `Props`, `Emits`, `Slots` interfaces and exported functions have JSDoc; complex fields have `@default`, `@remarks`                                                                        | Doc generation coverage >= 90%         |
+| D4-07 | JSDoc key parameters     | Complex parameters (e.g. `items`, `columns`, `customRequest`, `formatter`, `filter`) have examples and explanations                                                                                  | Review                                 |
+| D4-08 | Type inference friendly  | `defineProps`/`defineEmits` use generics; multi-select components are generic over `M`; no forced `any`                                                                                              | IDE hover passes                       |
+| D4-09 | Union literal types      | `size`/`variant`/`color`/`placement`/`orientation` use string literal unions, not `string`                                                                                                           | grep `: string` in props returns empty |
+| D4-10 | Nullable and optional    | Optional props use explicit `?:`; nullable fields use explicit `T \| null`; do not mix `T \| undefined` and optional                                                                                 | Review                                 |
+
+### D5. Code standards
+
+**Goal:** strictly apply the `typescript-functional-style` and `vue-sfc-structure` skills when checking and fixing component code.
+
+#### D5.A TypeScript functional style (applies to `**/*.{ts,tsx,js,jsx}` and `<script setup>` inside `.vue`)
+
+|  ID   | Check item             | Standard                                                                                                                                                         | Acceptance condition                          |
+| :---: | :--------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------- |
+| D5-01 | Prefer pure functions  | Logic that does not depend on lifecycle/DOM/I/O is extracted as pure functions; module-local goes to a sibling `shared.ts`; cross-module goes to global `shared` | Review                                        |
+| D5-02 | Prefer composition     | Prefer small function composition, composables, utilities; no class (unless forced by external API)                                                              | grep `class ` in logic returns empty          |
+| D5-03 | Functions short        | One function does one thing; split when filter/map/branch/side effects mix                                                                                       | Function length <= 30 lines (with exceptions) |
+| D5-04 | Reduce nesting         | guard clause + early return; conditional nesting <= 2 levels                                                                                                     | Review                                        |
+| D5-05 | Declarative transforms | Prefer `map`/`filter`/`find`/`some`/`every`; keep hand-written loops only when clearer or more efficient                                                         | Review                                        |
+| D5-06 | Limit mutability       | No shared mutable state; prefer derived values over mirrored state; local mutation only in small scopes                                                          | grep `let ` at module level returns empty     |
+| D5-07 | Types precise          | See D4-04                                                                                                                                                        | D4-04 passes                                  |
+| D5-08 | Concise, not tricky    | Do not introduce hard-to-read chained tricks for functional style; pick the readable version                                                                     | Review                                        |
+| D5-09 | Vue derived state      | Derived state uses `computed`; not re-stored to `ref`; side effects and data transforms are separated                                                            | grep for duplicate refs                       |
+| D5-10 | Vue reuse first        | Before adding a helper/composable/type, check the project's existing implementation; then `@vueuse/core`; only add new with a stated reason                      | Review + commit message reason                |
+| D5-11 | Vue watcher restraint  | Do not introduce watchers unless necessary; prefer `computed` or event streams                                                                                   | grep `watch(` count is reasonable             |
+
+#### D5.B Vue SFC structure (applies to `**/*.vue`)
+
+|  ID   | Check item                 | Standard                                                                                                                                                                                                         | Acceptance condition                             |
+| :---: | :------------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :----------------------------------------------- |
+| D5-12 | script setup order         | import -> `defineOptions` -> props types -> `defineProps` -> emits types -> `defineEmits` -> slots types -> `defineSlots` -> hooks -> business logic -> init -> provider -> watch -> lifecycle -> `defineExpose` | Review                                           |
+| D5-13 | `defineOptions` early      | Right after imports; UI components set `name: 'S{Name}'`                                                                                                                                                         | Review                                           |
+| D5-14 | No `props.xxx` in template | Template uses prop names directly; never `props.xxx`                                                                                                                                                             | grep `props\.` inside `<template>` returns empty |
+| D5-15 | `shallowRef` first         | Objects, arrays, third-party instances, DOM handles, and context state containers default to `shallowRef`; only use `ref` when depending on inner field changes                                                  | grep `ref<` for object types reviewed            |
+| D5-16 | Template function binding  | Template-bound functions are defined or explicitly imported in `script setup`; no inline arrows (`@click="() => fn()"`); passing args is allowed (`@click="handleClick(id)"`)                                    | grep `@.*="\(\)\|@.*="\(\w\)\s*=>` returns empty |
+| D5-17 | attrs inheritance          | When a single root tag should receive attrs as a whole, do not set `inheritAttrs: false` and do not write `useAttrs()` + `v-bind="attrs"`                                                                        | Review                                           |
+| D5-18 | No unnecessary boilerplate | Do not keep empty `init`, empty watch, or empty `defineExpose` for form's sake                                                                                                                                   | Review                                           |
+
+### D6. Documentation
+
+**Goal:** optimize current component docs by referencing the doc structure and description style of mainstream component libraries.
+
+**Scope:** `apps/docs/src/docs/{en|zh-CN}/components/{component}.md`, `apps/playground/src/examples/{component}/`, `apps/docs/src/constants/menus.ts`, `apps/docs/src/generated/{api,changelog}/`.
+
+|  ID   | Check item             | Standard                                                                                                                      | Acceptance condition                                         |
+| :---: | :--------------------- | :---------------------------------------------------------------------------------------------------------------------------- | :----------------------------------------------------------- |
+| D6-01 | Bilingual docs in sync | zh/en docs share structure; only language differs                                                                             | File structure diff is empty                                 |
+| D6-02 | Doc structure complete | Top heading -> Overview -> `## Usage` `<UsageCode>` -> `## Demos` `<PlaygroundGallery>` -> `## API` `<ComponentApi>`          | Review                                                       |
+| D6-03 | Overview complete      | One-line positioning + applicable scenarios + key features + relationship to same-category components                         | Review                                                       |
+| D6-04 | Usage minimal example  | <= 10 line minimal runnable example; shows most common API                                                                    | Review                                                       |
+| D6-05 | Playground coverage    | Playground examples cover major public capabilities (`color`/`size`/`disabled`/`ui` etc.); no duplicate scenes                | `apps/playground/src/examples/{component}/` file list review |
+| D6-06 | Playground naming      | Filenames `NN-name.vue`; `name` accurately describes the capability; drives i18n title keys                                   | Review                                                       |
+| D6-07 | API data generation    | `pnpm sui api` has run; non-English locales ran `pnpm sui api-translate -- --locale <locale>`; no hand-edited generated data  | git diff contains no hand edits to `generated/api/`          |
+| D6-08 | Changelog data         | After public API/changelog mapping changes, ran `pnpm sui changelog` and `pnpm sui changelog-translate -- --locale <locale>`  | Same as above                                                |
+| D6-09 | Menu registration      | `apps/docs/src/constants/menus.ts` has the component's camelCase key inserted alphabetically into the right group             | Review                                                       |
+| D6-10 | Notes and FAQ          | Docs include "Notes" / "FAQ" sections (reference Ant Design / Element Plus / Mantine patterns)                                | Review                                                       |
+| D6-11 | Benchmark differences  | Docs note differences from benchmark libraries (e.g. SoybeanUI's headless/styled split, `ui` override, `Compact` aggregation) | Review                                                       |
+| D6-12 | Links complete         | Docs interlink with playground, API, source, and benchmark libraries; no broken links                                         | Link check                                                   |
+
+### D7. Other dimensions
+
+**Goal:** cover the remaining necessary check dimensions: performance, a11y, browser compatibility, exception handling, unit tests, extensibility.
+
+|  ID   | Check item                    | Standard                                                                                                                                            | Acceptance condition      |
+| :---: | :---------------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------------ |
+| D7-01 | Render performance            | First paint of large data (1k+ items) < 16ms; list components provide `virtualizer` integration or `virtualScroll`                                  | Performance benchmark     |
+| D7-02 | Scroll performance            | Scroll at 60fps; no layout thrashing; scroll events are passive                                                                                     | DevTools Performance      |
+| D7-03 | Resource footprint            | Components are on-demand importable; tree-shaking friendly; no side effects; `package.json` `sideEffects` correct                                   | bundle analyzer           |
+| D7-04 | Memory leaks                  | After unmount, observer/listener/timer/rAF are released; no lingering references                                                                    | Memory snapshot diff      |
+| D7-05 | A11y auto scan                | `getA11yViolations` reports zero violations in major usage scenarios                                                                                | axe-core test passes      |
+| D7-06 | A11y manual test              | Screen reader (VoiceOver/NVDA) reads reasonably; read-only mode visible; state changes perceivable                                                  | Manual test               |
+| D7-07 | A11y color contrast           | Text-to-background contrast >= 4.5:1 (WCAG AA); interactive elements >= 3:1                                                                         | Auto scan                 |
+| D7-08 | Browser compatibility         | Supports modern browsers (Chrome/Edge/Firefox/Safari latest 2 versions); no IE; ESM/CJS dual output                                                 | browserlist + manual test |
+| D7-09 | SSR compatibility             | Components do not throw under SSR (`vite-ssg`); no direct `window`/`document` access; DOM only inside `onMounted`                                   | SSR build passes          |
+| D7-10 | Exception boundary            | Edge cases (empty data, very long text, illegal prop, network failure) have a fallback; no uncaught errors                                          | Unit test coverage        |
+| D7-11 | Unit test coverage            | `packages/ui/test/specs/components/{component}.spec.ts` exists; covers rendering/state/disabled/accessibility                                       | Coverage >= 70%           |
+| D7-12 | Test quality                  | `mount()` defaults to `attachTo: document.body`; each `it()` mounts/unmounts independently; assertions match real behavior; no idealized assertions | Review                    |
+| D7-13 | Test interaction trigger      | Interaction triggers match the real implementation (`click`/`mousedown`/`mouseenter` etc.); no idealized triggers detached from the implementation  | Review                    |
+| D7-14 | Extensibility — polymorphic   | Supports `as`/`asChild` polymorphism; does not force a fixed root tag                                                                               | Review                    |
+| D7-15 | Extensibility — `ui` override | Multi-slot components support `ui` prop overriding each slot class; single-class supports `class` override                                          | Review                    |
+| D7-16 | Extensibility — slot          | All customizable positions provide slots; slots can carry any VNode                                                                                 | Review                    |
+| D7-17 | Extensibility — composable    | Complex components export a headless composable (`use{Name}`) for advanced users to bypass the UI layer                                             | Review                    |
+| D7-18 | Theme integration             | Colors/sizes follow `ThemeColor`/`ThemeSize`; supports `ConfigProvider` global theme; dark mode passes                                              | Linked with D2-07         |
+
+> Browser e2e (Tier 1, see [e2e.md](e2e.md)) complements D7-11/D7-12 but does not replace unit coverage. When an e2e spec exists, it should cover real pointer/keyboard interaction, real portal/focus behavior, and axe color-contrast with the theme injected (`withTheme: true`). A missing e2e spec is not a Blocker unless the component's contract depends on platform APIs the happy-dom spec must mock (e.g. select-style overlays).
+
+## Single-component acceptance checklist
+
+After a component completes all seven dimensions, it is marked "passed" only when every condition below is met:
+
+- [ ] D1 functional compliance: all 18 items ✅, no Blocker
+- [ ] D2 industry benchmarking: benchmark matrix produced; enhancement items evaluated and scheduled or written back to roadmap
+- [ ] D3 API design: all 14 items ✅; cross-component API consistency review passes
+- [ ] D4 type system: `pnpm typecheck` passes; JSDoc coverage >= 90%
+- [ ] D5 code standards: `pnpm lint` passes; script setup order review passes
+- [ ] D6 documentation: zh/en synced; playground/docs/menus/api/changelog all synced
+- [ ] D7 other: test coverage >= 70%; axe-core zero violations; SSR build passes
+- [ ] Generation commands: `pnpm sui headless` / `pnpm sui ui` / `pnpm sui api` / `pnpm sui changelog` (and `--locale`) run as needed
+- [ ] Validation commands: `pnpm typecheck` / `pnpm lint` / `pnpm fmt` / `pnpm test` all pass
+- [ ] Commit message follows Conventional Commits (`<type>(<scope>): <subject>`, scope is the component name)
+
+## Cross-component consistency regression
+
+After each category is complete (e.g. all "Forms" components), run a cross-component consistency regression:
+
+- API naming consistency (`disabled`/`readonly`/`loading`/`placeholder`/`size`/`variant`/`color`/`placement`)
+- Event payload consistency (`select`/`change`/`update:modelValue` payload structure)
+- Slot naming consistency (`default`/`trigger`/`content`/`header`/`footer`/`prefix`/`suffix`/`icon`)
+- Theme integration consistency (`ThemeColor`/`ThemeSize` full coverage)
+- A11y pattern consistency (same-category components share ARIA patterns)
+
+## Full regression
+
+After all components in the project snapshot are audited, run a full regression:
+
+- `pnpm typecheck` / `pnpm lint` / `pnpm fmt` / `pnpm test` all green
+- `pnpm build` (headless -> ui -> css) succeeds
+- `pnpm sui headless` / `pnpm sui ui` / `pnpm sui api` / `pnpm sui changelog` all re-run; diff only from intended changes
+- Playground dev server starts cleanly; all examples render
+- Docs build cleanly; all component pages are reachable
+- Cross-component consistency regression fully passes
+
+## WAI-ARIA APG references
+
+Authoritative interaction patterns to consult during D1 and D7 a11y checks:
+
+- Accordion: https://www.w3.org/WAI/ARIA/apg/patterns/accordion/
+- Alert: https://www.w3.org/WAI/ARIA/apg/patterns/alert/
+- Breadcrumb: https://www.w3.org/WAI/ARIA/apg/patterns/breadcrumb/
+- Carousel: https://www.w3.org/WAI/ARIA/apg/patterns/carousel/
+- Checkbox: https://www.w3.org/WAI/ARIA/apg/patterns/checkbox/
+- Combobox: https://www.w3.org/WAI/ARIA/apg/patterns/combobox/
+- Dialog: https://www.w3.org/WAI/ARIA/apg/patterns/dialogmodal/
+- Grid (Table): https://www.w3.org/WAI/ARIA/apg/patterns/grid/
+- Listbox: https://www.w3.org/WAI/ARIA/apg/patterns/listbox/
+- Menu / Menubar: https://www.w3.org/WAI/ARIA/apg/patterns/menubar/
+- Pagination: https://www.w3.org/WAI/ARIA/apg/patterns/pagination/
+- Slider: https://www.w3.org/WAI/ARIA/apg/patterns/slider/
+- Tabs: https://www.w3.org/WAI/ARIA/apg/patterns/tabs/
+- Tooltip: https://www.w3.org/WAI/ARIA/apg/patterns/tooltip/
+- Tree View: https://www.w3.org/WAI/ARIA/apg/patterns/treeview/
+
+## Benchmark library references
+
+| Library             | Site                                 | Component docs                                                 |
+| :------------------ | :----------------------------------- | :------------------------------------------------------------- |
+| Ant Design (React)  | https://ant.design/                  | https://ant.design/components/overview                         |
+| Ant Design Vue      | https://antdv.com/                   | https://antdv.com/components/overview                          |
+| Element Plus        | https://element-plus.org/            | https://element-plus.org/en-US/component/overview.html         |
+| Material UI         | https://mui.com/                     | https://mui.com/material-ui/all-components/                    |
+| Mantine             | https://mantine.dev/                 | https://mantine.dev/core/app-shell/                            |
+| Naive UI            | https://www.naiveui.com/             | https://www.naiveui.com/en-US/os-theme/components/button       |
+| shadcn/ui           | https://ui.shadcn.com/               | https://ui.shadcn.com/docs/components                          |
+| Radix UI Primitives | https://www.radix-ui.com/            | https://www.radix-ui.com/primitives/docs/overview/introduction |
+| Headless UI         | https://headlessui.com/              | https://headlessui.com/react/menu                              |
+| PrimeVue            | https://primevue.org/                | https://primevue.org/autocomplete/                             |
+| Vuetify             | https://vuetifyjs.com/               | https://vuetifyjs.com/en/components/all-components/            |
+| Quasar              | https://quasar.dev/                  | https://quasar.dev/vue-components/                             |
+| Arco Design Vue     | https://arco.design/vue              | https://arco.design/vue/component/button                       |
+| TDesign Vue Next    | https://tdesign.tencent.com/vue-next | https://tdesign.tencent.com/vue-next/overview                  |
+
+## Tooling reference
+
+- **A11y auto scan:** `getA11yViolations` (project's axe-core wrapper), see `packages/ui/test/specs/components/AGENTS.md`
+- **Performance benchmark:** Vue DevTools Performance + 1k+ item dataset + 60fps frame monitoring
+- **Type coverage:** `vue-tsc` + IDE hover + `pnpm sui api` generated data reverse lookup
+- **Bundle analysis:** `vite-bundle-visualizer` or equivalent after `pnpm build`
+- **SSR verification:** `pnpm build` (includes `vite-ssg`) + `pnpm preview`
+
+## Command quick reference
+
+```bash
+# Validation
+pnpm typecheck          # vue-tsc --noEmit --skipLibCheck
+pnpm lint               # oxlint --fix && eslint --fix
+pnpm fmt                # oxfmt
+pnpm test               # vitest run
+pnpm vitest packages/ui/test/specs/components/{component}.spec.ts  # single-component test
+
+# Generation
+pnpm sui headless       # regenerate headless constants + namespaced
+pnpm sui ui             # regenerate ui constants
+pnpm sui api            # regenerate API data
+pnpm sui api-translate -- --locale <locale>
+pnpm sui changelog      # regenerate changelog data
+pnpm sui changelog-translate -- --locale <locale>
+
+# Dev and build
+pnpm dev                # playground
+pnpm build              # headless -> ui -> css
+```

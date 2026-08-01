@@ -39,6 +39,7 @@
     "sui": "tsx scripts/cli.ts",
     "sync-template-versions": "tsx scripts/sync-template-versions.ts",
     "test": "pnpm -r run test",
+    "test:e2e": "pnpm --filter @soybeanjs/ui test:e2e",
     "typecheck": "pnpm -r typecheck",
     "upkg": "ncu -u -w"
   },

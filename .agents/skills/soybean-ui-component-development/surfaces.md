@@ -195,3 +195,7 @@ Also verify that disabled state does not emit.
 - Test assertions align with real component behavior; do not write idealized assertions disconnected from the implementation.
 - When adding or fixing a component capability, sync the corresponding tests.
 - New components require tests by default; do not leave tests as future debt.
+
+### Browser e2e (Tier 1)
+
+This section covers the happy-dom unit spec only. For real-browser e2e — pointer/keyboard interaction, real portal/focus behavior, and axe color-contrast with the theme injected — see [e2e.md](e2e.md). Add an e2e spec when the component relies on `ResizeObserver` / pointer capture / `scrollIntoView`, uses `Teleport`, has non-trivial keyboard navigation, or needs real color-contrast verification. Browser e2e lives in `packages/ui/test/browser/**` under a separate config (`vitest.browser.config.ts`, loaded via `--config`) and never overlaps this glob.
