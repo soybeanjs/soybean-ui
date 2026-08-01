@@ -108,15 +108,15 @@
     "@floating-ui/dom": "^1.8.0",
     "@floating-ui/utils": "^0.2.12",
     "@formkit/auto-animate": "^0.10.0",
-    "@internationalized/date": "^3.12.2",
+    "@internationalized/date": "^3.12.3",
     "@internationalized/number": "^3.6.7",
     "@soybeanjs/colord": "^0.6.2",
     "@soybeanjs/hooks": "^0.3.0",
     "@soybeanjs/utils": "^0.1.1",
     "@standard-schema/spec": "^1.1.0",
-    "@tanstack/vue-virtual": "^3.13.34",
-    "@vueuse/core": "^14.3.0",
-    "@vueuse/shared": "^14.3.0",
+    "@tanstack/vue-virtual": "^3.13.35",
+    "@vueuse/core": "^14.4.0",
+    "@vueuse/shared": "^14.4.0",
     "aria-hidden": "^1.2.6",
     "defu": "^6.1.7",
     "embla-carousel": "^8.6.0",
@@ -162,5 +162,5 @@
       "optional": true
     }
   },
-  "packageManager": "pnpm@11.17.0"
+  "packageManager": "pnpm@11.18.0"
 }

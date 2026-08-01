@@ -40,7 +40,7 @@
     "sync-template-versions": "tsx scripts/sync-template-versions.ts",
     "test": "pnpm -r run test",
     "typecheck": "pnpm -r typecheck",
-    "upkg": "soy ncu"
+    "upkg": "ncu -u -w"
   },
   "dependencies": {
     "@soybeanjs/utils": "^0.1.1"
@@ -56,5 +56,5 @@
     "typescript": "7.0.2",
     "vite-plus": "catalog:"
   },
-  "packageManager": "pnpm@11.17.0"
+  "packageManager": "pnpm@11.18.0"
 }

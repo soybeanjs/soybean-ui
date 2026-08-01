@@ -6,10 +6,10 @@ packages:
 catalog:
   vite: npm:@voidzero-dev/vite-plus-core@latest
   vite-plus: ^0.2.7
-  typescript: ^6.0.3
+  typescript: ^7.0.2
 overrides:
   vite: 'catalog:'
-  vue: ^3.5.38
+  vue: ^3.5.40
   vite-ssg>jsdom: 27.0.1
   markdown-exit: 1.1.0-beta.2
   typescript: 6.0.3
@@ -32,3 +32,4 @@ minimumReleaseAgeExclude:
   - '@voidzero-dev/vite-plus-win32-arm64-msvc@0.2.7'
   - '@voidzero-dev/vite-plus-win32-x64-msvc@0.2.7'
   - vite-plus@0.2.7
+  - '@internationalized/date@3.12.3'
