@@ -2,7 +2,7 @@
 
 > 本文档是当前已实现 **87 个** `@soybeanjs/ui` 组件的**项目级快照**：组件清单、C01–C89 任务表、当前 P0–P3 优先级分配、13 轮执行顺序、具体行业对标发现。
 >
-> **评估方法论的单一权威源**是 [soybean-ui-component-development/audit.md](../.agents/skills/soybean-ui-component-development/audit.md)。该文件拥有：评估方法论（8 步流程）、7 大检查维度（D1–D7）、100 个检查项（含检查标准与验收条件）、严重度定义（Blocker / Major / Minor / Enhancement）、验收状态标记（✅/⚠️/❌/➕/—/⏳）、单组件验收清单、跨组件一致性回归、全量回归、行业对标方法论（对标库选型 + 维度）、WAI-ARIA APG 参考与对标库链接。
+> **评估方法论的单一权威源**是 [soybean-ui-component-development/audit.md](../.agents/skills/soybean-ui-component-development/audit.md)。该文件拥有：评估方法论（8 步流程）、7 大检查维度（D1–D7）、102 个检查项（含检查标准与验收条件）、严重度定义（Blocker / Major / Minor / Enhancement）、验收状态标记（✅/⚠️/❌/➕/—/⏳）、单组件验收清单、跨组件一致性回归、全量回归、行业对标方法论（对标库选型 + 维度）、WAI-ARIA APG 参考与对标库链接。
 >
 > 执行检查时：先加载 [audit.md](../.agents/skills/soybean-ui-component-development/audit.md) 获取通用方法，再回到本文档查阅当前快照（任务编号、优先级、重点检查项、具体对标发现）。
 >
@@ -104,11 +104,17 @@
 ### 2.1 使用说明
 
 - 每个组件为一个独立检查维度，编号 `C{编号}`。
-- 每个组件按 7 大维度（D1-D7）执行检查，每个维度的具体检查项（共 100 项）见 [audit.md -> Dimension details](../.agents/skills/soybean-ui-component-development/audit.md#dimension-details)。
+- 每个组件按 7 大维度（D1-D7）执行检查，每个维度的具体检查项（共 102 项）见 [audit.md -> Dimension details](../.agents/skills/soybean-ui-component-development/audit.md#dimension-details)。
 - 状态列：`⏳` 待检查 / `✅` 通过 / `⚠️` 待优化 / `❌` 不通过 / `➕` 增强项 / `—` 不适用（详见 [audit.md -> Acceptance status markers](../.agents/skills/soybean-ui-component-development/audit.md#acceptance-status-markers)）。
 - 「优先级」列基于组件使用频率、对标差距、Blocker 风险综合评定：`P0`(立即) / `P1`(高) / `P2`(中) / `P3`(低)。
 - 「重点检查项」列列出该组件需重点关注的检查项编号（如 `D1-13, D2-04, D3-05`）。
 - 检查时按「严重度」分级记录问题；Blocker 修复后才可进入下一组件（详见 [audit.md -> Severity definitions](../.agents/skills/soybean-ui-component-development/audit.md#severity-definitions)）。
+- **D7-19/D7-20 浏览器 e2e 检查范围：** 以下组件因依赖平台 API（ResizeObserver / 指针捕获 / scrollIntoView）、使用 Teleport 门户、有真实键盘导航契约、或需要颜色对比验证，须纳入 e2e 检查（标准见 [e2e.md -> When to add an e2e spec](../.agents/skills/soybean-ui-component-development/e2e.md#when-to-add-an-e2e-spec)）：
+  - **已有 e2e spec：** `button`(C01)、`select`(C32)、`dialog`(C72) — 重点检查 D7-19 + D7-20。
+  - **浮层/门户类（须补 e2e）：** `combobox`(C33)、`autocomplete`(C34)、`cascader`(C35)、`date-field`~`time-range-field`(C44-C49)、`drawer`(C73)、`popover`(C74)、`popconfirm`(C75)、`hover-card`(C76)、`bottom-sheet`(C77)、`dropdown-menu`(C78)、`context-menu`(C79)、`command`(C80)、`tooltip`(C81) — 重点检查 D7-19。
+  - **键盘导航类（须补 e2e）：** `tabs`(C22)、`menu`(C26)、`menubar`(C25)、`tree`(C62)、`tree-menu`(C63)、`pagination`(C20)、`stepper`(C55) — 重点检查 D7-19。
+  - **颜色对比类（须补 e2e）：** `link`(C04)、`badge`(C57)、`tag`(C58)、`alert`(C70) — 重点检查 D7-19。
+  - 缺失 e2e spec 非Blocker，除非组件契约依赖 happy-dom 必须模拟的平台 API（如 select 类浮层）。
 
 ### 2.2 组件分类与优先级
 
@@ -126,22 +132,22 @@
 
 #### 2.3.1 通用基础 (General/Utilities) — 14 个
 
-| 编号 | 组件              | 模式 | D1  | D2  | D3  | D4  | D5  | D6  | D7  | 优先级 | 重点检查项                        |
-| :--: | :---------------- | :--- | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :----: | :-------------------------------- |
-| C01  | `button`          | 单类 | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  |   P1   | D1-09, D2-05, D3-01, D5-16, D7-14 |
-| C02  | `button-group`    | 单类 | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  |   P1   | D1-09, D3-05, D7-15               |
-| C03  | `icon`            | 单类 | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  |   P1   | D1-15, D2-02, D3-08               |
-| C04  | `link`            | 单类 | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  |   P2   | D1-09, D3-08, D7-14               |
-| C05  | `separator`       | 单类 | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  |   P3   | D1-09, D3-01                      |
-| C06  | `kbd`             | 单类 | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  |   P3   | D1-09, D3-01                      |
-| C07  | `label`           | 单类 | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  |   P2   | D1-14, D3-01, D7-05               |
-| C08  | `spinner`         | 单类 | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  |   P2   | D1-15, D2-07, D7-04               |
-| C09  | `clipboard`       | 单类 | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  |   P2   | D1-15, D3-08, D7-10               |
-| C10  | `arrow`           | 单类 | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  |   P3   | D1-09, D3-01                      |
-| C11  | `aspect-ratio`    | 单类 | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  |   P3   | D1-09, D7-09                      |
-| C12  | `backtop`         | 单类 | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  |   P2   | D1-16, D2-02, D7-04               |
-| C13  | `watermark`       | 单类 | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  |   P3   | D1-09, D2-11, D3-01               |
-| C14  | `config-provider` | 单类 | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  |   P1   | D1-05, D2-07, D2-08, D7-18        |
+| 编号 | 组件              | 模式 | D1  | D2  | D3  | D4  | D5  | D6  | D7  | 优先级 | 重点检查项                                      |
+| :--: | :---------------- | :--- | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :----: | :---------------------------------------------- |
+| C01  | `button`          | 单类 | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  |   P1   | D1-09, D2-05, D3-01, D5-16, D7-14, D7-19, D7-20 |
+| C02  | `button-group`    | 单类 | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  |   P1   | D1-09, D3-05, D7-15                             |
+| C03  | `icon`            | 单类 | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  |   P1   | D1-15, D2-02, D3-08                             |
+| C04  | `link`            | 单类 | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  |   P2   | D1-09, D3-08, D7-14                             |
+| C05  | `separator`       | 单类 | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  |   P3   | D1-09, D3-01                                    |
+| C06  | `kbd`             | 单类 | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  |   P3   | D1-09, D3-01                                    |
+| C07  | `label`           | 单类 | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  |   P2   | D1-14, D3-01, D7-05                             |
+| C08  | `spinner`         | 单类 | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  |   P2   | D1-15, D2-07, D7-04                             |
+| C09  | `clipboard`       | 单类 | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  |   P2   | D1-15, D3-08, D7-10                             |
+| C10  | `arrow`           | 单类 | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  |   P3   | D1-09, D3-01                                    |
+| C11  | `aspect-ratio`    | 单类 | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  |   P3   | D1-09, D7-09                                    |
+| C12  | `backtop`         | 单类 | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  |   P2   | D1-16, D2-02, D7-04                             |
+| C13  | `watermark`       | 单类 | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  |   P3   | D1-09, D2-11, D3-01                             |
+| C14  | `config-provider` | 单类 | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  |   P1   | D1-05, D2-07, D2-08, D7-18                      |
 
 #### 2.3.2 布局 (Layout) — 4 个
 
@@ -167,37 +173,37 @@
 
 #### 2.3.4 表单输入 (Forms) — 28 个
 
-| 编号 | 组件                | 模式           | D1  | D2  | D3  | D4  | D5  | D6  | D7  | 优先级 | 重点检查项                        |
-| :--: | :------------------ | :------------- | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :----: | :-------------------------------- |
-| C27  | `input`             | 多槽           | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  |   P0   | D1-09, D2-11, D3-01, D7-05        |
-| C28  | `textarea`          | 多槽           | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  |   P0   | D1-09, D2-11, D3-01, D7-05        |
-| C29  | `input-number`      | 多槽           | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  |   P0   | D1-09, D2-11, D3-01, D3-08        |
-| C30  | `input-otp`         | 多槽           | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  |   P1   | D1-16, D2-11, D7-05               |
-| C31  | `password`          | 多槽           | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  |   P0   | D1-09, D2-11, D3-01, D7-05        |
-| C32  | `select`            | 多槽 + Compact | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  |   P0   | D1-12, D2-04, D2-11, D3-04, D7-01 |
-| C33  | `combobox`          | 多槽 + Compact | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  |   P0   | D1-12, D2-04, D2-11, D3-04, D7-01 |
-| C34  | `autocomplete`      | 多槽 + Compact | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  |   P0   | D1-12, D2-04, D2-11, D3-04, D7-01 |
-| C35  | `cascader`          | 多槽 + Compact | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  |   P0   | D1-12, D2-11, D3-04, D7-01        |
-| C36  | `checkbox`          | 多槽 + Compact | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  |   P0   | D1-08, D2-11, D3-04, D7-05        |
-| C37  | `checkbox-group`    | 多槽 + Compact | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  |   P0   | D1-12, D2-11, D3-04, D7-05        |
-| C38  | `radio-group`       | 多槽 + Compact | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  |   P0   | D1-12, D2-11, D3-04, D7-05        |
-| C39  | `switch`            | 多槽           | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  |   P0   | D1-08, D2-11, D3-01, D7-05        |
-| C40  | `slider`            | 多槽           | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  |   P1   | D1-16, D2-11, D7-05               |
-| C41  | `toggle`            | 单类           | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  |   P1   | D1-08, D2-11, D3-01               |
-| C42  | `toggle-group`      | 多槽           | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  |   P1   | D1-08, D2-11, D3-04               |
-| C43  | `segment`           | 多槽           | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  |   P1   | D1-08, D2-11, D3-04               |
-| C44  | `date-field`        | 多槽 + Compact | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  |   P0   | D1-12, D2-11, D3-04, D7-09        |
-| C45  | `date-picker`       | 多槽 + Compact | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  |   P0   | D1-12, D2-11, D3-04, D7-09        |
-| C46  | `date-range-field`  | 多槽 + Compact | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  |   P0   | D1-12, D2-11, D3-04, D7-09        |
-| C47  | `date-range-picker` | 多槽 + Compact | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  |   P0   | D1-12, D2-11, D3-04, D7-09        |
-| C48  | `time-field`        | 多槽 + Compact | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  |   P0   | D1-12, D2-11, D3-04               |
-| C49  | `time-range-field`  | 多槽 + Compact | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  |   P0   | D1-12, D2-11, D3-04               |
-| C50  | `calendar`          | 多槽 + Compact | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  |   P1   | D1-12, D1-16, D2-11, D7-09        |
-| C51  | `calendar-range`    | 多槽 + Compact | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  |   P1   | D1-12, D1-16, D2-11, D7-09        |
-| C52  | `tags-input`        | 多槽           | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  |   P1   | D1-09, D2-11, D3-04               |
-| C53  | `form`              | 多槽 + Compact | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  |   P0   | D1-12, D2-11, D3-04, D7-10        |
-| C54  | `editable`          | 多槽 + Compact | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  |   P1   | D1-12, D2-11, D3-04               |
-| C55  | `stepper`           | 多槽 + Compact | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  |   P1   | D1-12, D2-11, D3-04               |
+| 编号 | 组件                | 模式           | D1  | D2  | D3  | D4  | D5  | D6  | D7  | 优先级 | 重点检查项                                      |
+| :--: | :------------------ | :------------- | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :----: | :---------------------------------------------- |
+| C27  | `input`             | 多槽           | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  |   P0   | D1-09, D2-11, D3-01, D7-05                      |
+| C28  | `textarea`          | 多槽           | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  |   P0   | D1-09, D2-11, D3-01, D7-05                      |
+| C29  | `input-number`      | 多槽           | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  |   P0   | D1-09, D2-11, D3-01, D3-08                      |
+| C30  | `input-otp`         | 多槽           | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  |   P1   | D1-16, D2-11, D7-05                             |
+| C31  | `password`          | 多槽           | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  |   P0   | D1-09, D2-11, D3-01, D7-05                      |
+| C32  | `select`            | 多槽 + Compact | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  |   P0   | D1-12, D2-04, D2-11, D3-04, D7-01, D7-19, D7-20 |
+| C33  | `combobox`          | 多槽 + Compact | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  |   P0   | D1-12, D2-04, D2-11, D3-04, D7-01               |
+| C34  | `autocomplete`      | 多槽 + Compact | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  |   P0   | D1-12, D2-04, D2-11, D3-04, D7-01               |
+| C35  | `cascader`          | 多槽 + Compact | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  |   P0   | D1-12, D2-11, D3-04, D7-01                      |
+| C36  | `checkbox`          | 多槽 + Compact | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  |   P0   | D1-08, D2-11, D3-04, D7-05                      |
+| C37  | `checkbox-group`    | 多槽 + Compact | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  |   P0   | D1-12, D2-11, D3-04, D7-05                      |
+| C38  | `radio-group`       | 多槽 + Compact | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  |   P0   | D1-12, D2-11, D3-04, D7-05                      |
+| C39  | `switch`            | 多槽           | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  |   P0   | D1-08, D2-11, D3-01, D7-05                      |
+| C40  | `slider`            | 多槽           | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  |   P1   | D1-16, D2-11, D7-05                             |
+| C41  | `toggle`            | 单类           | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  |   P1   | D1-08, D2-11, D3-01                             |
+| C42  | `toggle-group`      | 多槽           | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  |   P1   | D1-08, D2-11, D3-04                             |
+| C43  | `segment`           | 多槽           | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  |   P1   | D1-08, D2-11, D3-04                             |
+| C44  | `date-field`        | 多槽 + Compact | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  |   P0   | D1-12, D2-11, D3-04, D7-09                      |
+| C45  | `date-picker`       | 多槽 + Compact | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  |   P0   | D1-12, D2-11, D3-04, D7-09                      |
+| C46  | `date-range-field`  | 多槽 + Compact | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  |   P0   | D1-12, D2-11, D3-04, D7-09                      |
+| C47  | `date-range-picker` | 多槽 + Compact | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  |   P0   | D1-12, D2-11, D3-04, D7-09                      |
+| C48  | `time-field`        | 多槽 + Compact | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  |   P0   | D1-12, D2-11, D3-04                             |
+| C49  | `time-range-field`  | 多槽 + Compact | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  |   P0   | D1-12, D2-11, D3-04                             |
+| C50  | `calendar`          | 多槽 + Compact | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  |   P1   | D1-12, D1-16, D2-11, D7-09                      |
+| C51  | `calendar-range`    | 多槽 + Compact | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  |   P1   | D1-12, D1-16, D2-11, D7-09                      |
+| C52  | `tags-input`        | 多槽           | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  |   P1   | D1-09, D2-11, D3-04                             |
+| C53  | `form`              | 多槽 + Compact | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  |   P0   | D1-12, D2-11, D3-04, D7-10                      |
+| C54  | `editable`          | 多槽 + Compact | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  |   P1   | D1-12, D2-11, D3-04                             |
+| C55  | `stepper`           | 多槽 + Compact | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  |   P1   | D1-12, D2-11, D3-04                             |
 
 #### 2.3.5 数据展示 (Data Display) — 14 个
 
@@ -220,21 +226,21 @@
 
 #### 2.3.6 反馈与浮层 (Feedback & Overlay) — 13 个
 
-| 编号 | 组件            | 模式           | D1  | D2  | D3  | D4  | D5  | D6  | D7  | 优先级 | 重点检查项                        |
-| :--: | :-------------- | :------------- | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :----: | :-------------------------------- |
-| C70  | `alert`         | 多槽 + Compact | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  |   P1   | D1-12, D1-15, D2-11, D7-05        |
-| C71  | `toast`         | 多槽 + Compact | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  |   P0   | D1-12, D2-11, D3-08, D7-04        |
-| C72  | `dialog`        | 多槽 + Compact | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  |   P0   | D1-12, D1-16, D2-11, D7-04, D7-05 |
-| C73  | `drawer`        | 多槽 + Compact | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  |   P0   | D1-12, D1-16, D2-11, D7-04, D7-05 |
-| C74  | `popover`       | 多槽 + Compact | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  |   P0   | D1-12, D1-16, D2-11, D7-05        |
-| C75  | `popconfirm`    | 多槽 + Compact | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  |   P0   | D1-12, D1-16, D2-11, D7-05        |
-| C76  | `hover-card`    | 多槽 + Compact | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  |   P1   | D1-12, D1-16, D2-11, D7-05        |
-| C77  | `bottom-sheet`  | 多槽 + Compact | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  |   P1   | D1-12, D1-16, D2-11, D7-05        |
-| C78  | `dropdown-menu` | 多槽 + Compact | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  |   P0   | D1-12, D1-16, D2-11, D7-05        |
-| C79  | `context-menu`  | 多槽 + Compact | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  |   P1   | D1-12, D1-16, D2-11, D7-05        |
-| C80  | `command`       | 多槽 + Compact | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  |   P1   | D1-12, D1-16, D2-11, D7-05        |
-| C81  | `tooltip`       | 多槽 + Compact | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  |   P0   | D1-12, D1-15, D1-16, D2-11, D7-05 |
-| C82  | `toolbar`       | 多槽           | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  |   P1   | D1-16, D2-11, D3-12, D7-05        |
+| 编号 | 组件            | 模式           | D1  | D2  | D3  | D4  | D5  | D6  | D7  | 优先级 | 重点检查项                                      |
+| :--: | :-------------- | :------------- | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :----: | :---------------------------------------------- |
+| C70  | `alert`         | 多槽 + Compact | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  |   P1   | D1-12, D1-15, D2-11, D7-05                      |
+| C71  | `toast`         | 多槽 + Compact | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  |   P0   | D1-12, D2-11, D3-08, D7-04                      |
+| C72  | `dialog`        | 多槽 + Compact | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  |   P0   | D1-12, D1-16, D2-11, D7-04, D7-05, D7-19, D7-20 |
+| C73  | `drawer`        | 多槽 + Compact | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  |   P0   | D1-12, D1-16, D2-11, D7-04, D7-05               |
+| C74  | `popover`       | 多槽 + Compact | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  |   P0   | D1-12, D1-16, D2-11, D7-05                      |
+| C75  | `popconfirm`    | 多槽 + Compact | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  |   P0   | D1-12, D1-16, D2-11, D7-05                      |
+| C76  | `hover-card`    | 多槽 + Compact | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  |   P1   | D1-12, D1-16, D2-11, D7-05                      |
+| C77  | `bottom-sheet`  | 多槽 + Compact | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  |   P1   | D1-12, D1-16, D2-11, D7-05                      |
+| C78  | `dropdown-menu` | 多槽 + Compact | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  |   P0   | D1-12, D1-16, D2-11, D7-05                      |
+| C79  | `context-menu`  | 多槽 + Compact | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  |   P1   | D1-12, D1-16, D2-11, D7-05                      |
+| C80  | `command`       | 多槽 + Compact | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  |   P1   | D1-12, D1-16, D2-11, D7-05                      |
+| C81  | `tooltip`       | 多槽 + Compact | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  |   P0   | D1-12, D1-15, D1-16, D2-11, D7-05               |
+| C82  | `toolbar`       | 多槽           | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  |   P1   | D1-16, D2-11, D3-12, D7-05                      |
 
 #### 2.3.7 颜色 (Color) — 6 个
 
@@ -275,15 +281,15 @@
 
 #### C32 `select` / C33 `combobox` / C34 `autocomplete` — P0
 
-| 维度 | 具体检查内容                                                                                                                                     | 标准                | 验收条件                  |
-| :--- | :----------------------------------------------------------------------------------------------------------------------------------------------- | :------------------ | :------------------------ |
-| D1   | Compact 聚合已下沉；wrapper 不迭代 `items`；`data-soybean-select-*` 属性完整                                                                     | D1-07, D1-12        | DOM 检查                  |
-| D2   | 对标 Ant Design/Naive UI/Mantine：`filterable`、`remote`/`loading`、`multiple`/`maxTagCount`、`virtual`、`allowCreate`、`clearable`、`showArrow` | D2-01, D2-04, D2-11 | 矩阵产出 + 1k+ 项性能测试 |
-| D3   | `modelValue` 支持单选/多选；`SelectionProps<M>`/`SelectionEmits<M>` 泛型；`filter` 自定义函数；`remote` 异步载荷                                 | D3-04, D3-08, D3-12 | 类型审查                  |
-| D4   | 泛型 `M` 模型；`OptionItem<M>` JSDoc；`filter`/`remote` callback 类型清晰                                                                        | D4-06, D4-08        | IDE 推导                  |
-| D5   | 大数据列表用 `shallowRef`；滚动逻辑提取 `useSelectScroll` 等纯函数                                                                               | D5-09, D5-10        | 评审                      |
-| D6   | playground 含 `01-basic`/`02-multiple`/`03-filterable`/`04-remote`/`05-virtual`/`06-clearable`                                                   | D6-05               | 文件清单                  |
-| D7   | 1k+ 选项虚拟滚动；ARIA `listbox`/`option`/`combobox` 模式；焦点管理；`aria-activedescendant`                                                     | D7-01, D7-05        | 性能 + axe-core           |
+| 维度 | 具体检查内容                                                                                                                                                                                       | 标准                       | 验收条件                          |
+| :--- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------------- | :-------------------------------- |
+| D1   | Compact 聚合已下沉；wrapper 不迭代 `items`；`data-soybean-select-*` 属性完整                                                                                                                       | D1-07, D1-12               | DOM 检查                          |
+| D2   | 对标 Ant Design/Naive UI/Mantine：`filterable`、`remote`/`loading`、`multiple`/`maxTagCount`、`virtual`、`allowCreate`、`clearable`、`showArrow`                                                   | D2-01, D2-04, D2-11        | 矩阵产出 + 1k+ 项性能测试         |
+| D3   | `modelValue` 支持单选/多选；`SelectionProps<M>`/`SelectionEmits<M>` 泛型；`filter` 自定义函数；`remote` 异步载荷                                                                                   | D3-04, D3-08, D3-12        | 类型审查                          |
+| D4   | 泛型 `M` 模型；`OptionItem<M>` JSDoc；`filter`/`remote` callback 类型清晰                                                                                                                          | D4-06, D4-08               | IDE 推导                          |
+| D5   | 大数据列表用 `shallowRef`；滚动逻辑提取 `useSelectScroll` 等纯函数                                                                                                                                 | D5-09, D5-10               | 评审                              |
+| D6   | playground 含 `01-basic`/`02-multiple`/`03-filterable`/`04-remote`/`05-virtual`/`06-clearable`                                                                                                     | D6-05                      | 文件清单                          |
+| D7   | 1k+ 选项虚拟滚动；ARIA `listbox`/`option`/`combobox` 模式；焦点管理；`aria-activedescendant`；e2e 覆盖真实指针/键盘/portal/焦点返回/颜色对比（`select` 已有 spec，`combobox`/`autocomplete` 须补） | D7-01, D7-05, D7-19, D7-20 | 性能 + axe-core + `pnpm test:e2e` |
 
 #### C53 `form` — P0
 
@@ -299,15 +305,15 @@
 
 #### C61 `table` — P0
 
-| 维度 | 具体检查内容                                                                                                                                                                                    | 标准                | 验收条件         |
-| :--- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------ | :--------------- |
-| D1   | Compact 聚合；`columns` 配置式与 `slot` 自定义并存；`data-soybean-table-*` 完整                                                                                                                 | D1-07, D1-12        | DOM 检查         |
-| D2   | 对标 Ant Design/Element Plus/Naive UI：`columns`/`sorting`/`filtering`/`pagination`/`selection`/`expandable`/`fixedHeader`/`fixedColumns`/`virtualScroll`/`resizeColumn`/`summary`/`customCell` | D2-01, D2-04, D2-11 | 矩阵 + 1k 行性能 |
-| D3   | `columns` 类型 `TableColumn<T>[]`；`rowKey`；`sorting`/`filtering` 受控/非受控；`pagination` 与 `pagination` 组件集成                                                                           | D3-04, D3-08, D3-12 | 类型审查         |
-| D4   | 泛型 `TableProps<T>`；`TableColumn<T>`/`TableSelection`/`TableSorting` JSDoc                                                                                                                    | D4-06, D4-08        | IDE 推导         |
-| D5   | 排序/过滤纯函数；大数据用 `shallowRef`                                                                                                                                                          | D5-01, D5-09        | 评审             |
-| D6   | playground 含 `01-basic`/`02-sorting`/`03-filtering`/`04-pagination`/`05-selection`/`06-fixed`/`07-virtual`/`08-customCell`                                                                     | D6-05               | 文件清单         |
-| D7   | 1k 行虚拟滚动 60fps；`role="table"`/`grid`；`aria-sort`/`aria-selected`；列宽 resize 性能                                                                                                       | D7-01, D7-02, D7-05 | 性能 + axe-core  |
+| 维度 | 具体检查内容                                                                                                                                                                                    | 标准                       | 验收条件         |
+| :--- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------------- | :--------------- |
+| D1   | Compact 聚合；`columns` 配置式与 `slot` 自定义并存；`data-soybean-table-*` 完整                                                                                                                 | D1-07, D1-12               | DOM 检查         |
+| D2   | 对标 Ant Design/Element Plus/Naive UI：`columns`/`sorting`/`filtering`/`pagination`/`selection`/`expandable`/`fixedHeader`/`fixedColumns`/`virtualScroll`/`resizeColumn`/`summary`/`customCell` | D2-01, D2-04, D2-11        | 矩阵 + 1k 行性能 |
+| D3   | `columns` 类型 `TableColumn<T>[]`；`rowKey`；`sorting`/`filtering` 受控/非受控；`pagination` 与 `pagination` 组件集成                                                                           | D3-04, D3-08, D3-12        | 类型审查         |
+| D4   | 泛型 `TableProps<T>`；`TableColumn<T>`/`TableSelection`/`TableSorting` JSDoc                                                                                                                    | D4-06, D4-08               | IDE 推导         |
+| D5   | 排序/过滤纯函数；大数据用 `shallowRef`                                                                                                                                                          | D5-01, D5-09               | 评审             |
+| D6   | playground 含 `01-basic`/`02-sorting`/`03-filtering`/`04-pagination`/`05-selection`/`06-fixed`/`07-virtual`/`08-customCell`                                                                     | D6-05                      | 文件清单         |
+| D7   | 1k 行虚拟滚动 60fps；`role="table"`/`grid`；`aria-sort`/`aria-selected`；列宽 resize 性能；e2e 覆盖真实键盘导航（须补 spec）                                                                    | D7-01, D7-02, D7-05, D7-19 | 性能 + axe-core  |
 
 #### C62 `tree` — P0
 
@@ -319,7 +325,7 @@
 | D4   | 泛型 `TreeProps<T>`；`TreeNode<T>` JSDoc                                                                                                         | D4-06, D4-08        | IDE 推导           |
 | D5   | 树操作纯函数（`flattenTree`/`filterTree`/`toggleNode`）；递归用 `shallowRef`                                                                     | D5-01, D5-09        | 评审               |
 | D6   | playground 含 `01-basic`/`02-checkable`/`03-async`/`04-virtual`/`05-search`/`06-draggable`                                                       | D6-05               | 文件清单           |
-| D7   | 1k 节点虚拟滚动；`role="tree"`/`treeitem`；`aria-expanded`/`aria-selected`/`aria-checked`；键盘箭头导航                                          | D7-01, D7-05        | 性能 + axe-core    |
+| D7   | 1k 节点虚拟滚动；`role="tree"`/`treeitem`；`aria-expanded`/`aria-selected`/`aria-checked`；键盘箭头导航；e2e 覆盖真实键盘导航（须补 spec）       | D7-01, D7-05, D7-19 | 性能 + axe-core    |
 
 #### C71 `toast` — P0
 
@@ -335,15 +341,15 @@
 
 #### C72 `dialog` / C73 `drawer` — P0
 
-| 维度 | 具体检查内容                                                                                                                                                            | 标准                | 验收条件        |
-| :--- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------ | :-------------- |
-| D1   | Compact 聚合；焦点 trap 与焦点返回；`aria-modal`/`aria-labelledby`/`aria-describedby`；Esc 关闭                                                                         | D1-12, D1-16        | DOM + 键盘测试  |
-| D2   | 对标 Ant Design/Element Plus：`draggable`、`fullscreen`、`destroyOnClose`、`width`/`height`、`closable`、`mask`/`maskClosable`、`keyboard`(Esc)、`zIndex`、`lockScroll` | D2-01, D2-11        | 矩阵产出        |
-| D3   | `open`/`v-model:open`；`onOpenChange`；`DialogProvider` imperative API；嵌套 dialog 焦点链                                                                              | D3-04, D3-08, D7-17 | 类型审查        |
-| D4   | `DialogProps`/`DialogEmits`/`DialogSlots` JSDoc                                                                                                                         | D4-06               | 文档生成        |
-| D5   | 焦点 trap 逻辑提取 `useFocusTrap`；overlay z-index 管理                                                                                                                 | D5-01, D5-10        | 评审            |
-| D6   | playground 含 `01-basic`/`02-size`/`03-fullscreen`/`04-nested`/`05-draggable`/`06-destroyOnClose`                                                                       | D6-05               | 文件清单        |
-| D7   | unmount 焦点返回；`role="dialog"`；`aria-modal`；body scroll lock；z-index 不溢出                                                                                       | D7-04, D7-05, D7-10 | 测试 + axe-core |
+| 维度 | 具体检查内容                                                                                                                                                                   | 标准                              | 验收条件                          |
+| :--- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :-------------------------------- | :-------------------------------- |
+| D1   | Compact 聚合；焦点 trap 与焦点返回；`aria-modal`/`aria-labelledby`/`aria-describedby`；Esc 关闭                                                                                | D1-12, D1-16                      | DOM + 键盘测试                    |
+| D2   | 对标 Ant Design/Element Plus：`draggable`、`fullscreen`、`destroyOnClose`、`width`/`height`、`closable`、`mask`/`maskClosable`、`keyboard`(Esc)、`zIndex`、`lockScroll`        | D2-01, D2-11                      | 矩阵产出                          |
+| D3   | `open`/`v-model:open`；`onOpenChange`；`DialogProvider` imperative API；嵌套 dialog 焦点链                                                                                     | D3-04, D3-08, D7-17               | 类型审查                          |
+| D4   | `DialogProps`/`DialogEmits`/`DialogSlots` JSDoc                                                                                                                                | D4-06                             | 文档生成                          |
+| D5   | 焦点 trap 逻辑提取 `useFocusTrap`；overlay z-index 管理                                                                                                                        | D5-01, D5-10                      | 评审                              |
+| D6   | playground 含 `01-basic`/`02-size`/`03-fullscreen`/`04-nested`/`05-draggable`/`06-destroyOnClose`                                                                              | D6-05                             | 文件清单                          |
+| D7   | unmount 焦点返回；`role="dialog"`；`aria-modal`；body scroll lock；z-index 不溢出；e2e 覆盖真实 portal 开关/Escape 关闭/焦点返回/颜色对比（`dialog` 已有 spec，`drawer` 须补） | D7-04, D7-05, D7-10, D7-19, D7-20 | 测试 + axe-core + `pnpm test:e2e` |
 
 > 其余 P0 组件（`textarea`/`input-number`/`password`/`checkbox`/`checkbox-group`/`radio-group`/`switch`/`date-field`/`date-picker`/`date-range-field`/`date-range-picker`/`time-field`/`time-range-field`/`popconfirm`/`popover`/`dropdown-menu`/`tooltip`）按相同模板执行，每项产出独立检查记录。
 
@@ -371,10 +377,11 @@
 
 ## 四、关联文档
 
-- [audit.md](../.agents/skills/soybean-ui-component-development/audit.md) — **评估方法论单一源**（7 维度 100 检查项、严重度、验收状态、单组件验收、跨组件一致性回归、全量回归、对标库选型、WAI-ARIA APG 参考、对标库链接）
+- [audit.md](../.agents/skills/soybean-ui-component-development/audit.md) — **评估方法论单一源**（7 维度 102 检查项、严重度、验收状态、单组件验收、跨组件一致性回归、全量回归、对标库选型、WAI-ARIA APG 参考、对标库链接）
 - [SKILL.md](../.agents/skills/soybean-ui-component-development/SKILL.md) — 功能合规基线、模式分类、阶段顺序、工作流、guardrails
 - [layers.md](../.agents/skills/soybean-ui-component-development/layers.md) — headless/UI 层规则 + A11y/RTL
 - [surfaces.md](../.agents/skills/soybean-ui-component-development/surfaces.md) — playground/docs/tests 交付面规则
+- [e2e.md](../.agents/skills/soybean-ui-component-development/e2e.md) — 浏览器 e2e 测试规则（D7-19/D7-20 的标准来源）
 - [process.md](../.agents/skills/soybean-ui-component-development/process.md) — finish 检查清单 + commit 规范
 - [EXAMPLES.md](../.agents/skills/soybean-ui-component-development/EXAMPLES.md) — 触发技能的请求模式（含 audit 请求模式）
 - [roadmap.md](./roadmap.md) — 未实现组件路线图（46 个活跃 + 12 个延后至市场 + 60+ 范围外）
@@ -384,4 +391,4 @@
 
 ---
 
-_本项目快照覆盖 87 个已发布组件 × 7 大维度 × 100 个检查项（方法论见 audit.md）。最后更新：2026-08-02。执行时按「执行顺序建议」推进，每轮完成后执行跨组件一致性回归，全部完成后执行全量回归。_
+_本项目快照覆盖 87 个已发布组件 × 7 大维度 × 102 个检查项（方法论见 audit.md）。最后更新：2026-08-02。执行时按「执行顺序建议」推进，每轮完成后执行跨组件一致性回归，全部完成后执行全量回归。_
