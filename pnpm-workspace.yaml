@@ -5,7 +5,7 @@ packages:
   - 'skills'
 catalog:
   vite: npm:@voidzero-dev/vite-plus-core@latest
-  vite-plus: ^0.2.6
+  vite-plus: ^0.2.7
   typescript: ^6.0.3
 overrides:
   vite: 'catalog:'
@@ -22,11 +22,13 @@ allowBuilds:
   esbuild: false
   simple-git-hooks: false
 minimumReleaseAgeExclude:
-  - '@nuxt/icon@2.4.1'
-  - '@nuxt/kit@4.5.1'
-  - '@nuxt/nitro-server@4.5.1'
-  - '@nuxt/schema@4.5.1'
-  - '@nuxt/vite-builder@4.5.1'
-  - '@soybeanjs/cli@1.8.1'
-  - '@types/node@26.1.2'
-  - nuxt@4.5.1
+  - '@voidzero-dev/vite-plus-core@0.2.7'
+  - '@voidzero-dev/vite-plus-darwin-arm64@0.2.7'
+  - '@voidzero-dev/vite-plus-darwin-x64@0.2.7'
+  - '@voidzero-dev/vite-plus-linux-arm64-gnu@0.2.7'
+  - '@voidzero-dev/vite-plus-linux-arm64-musl@0.2.7'
+  - '@voidzero-dev/vite-plus-linux-x64-gnu@0.2.7'
+  - '@voidzero-dev/vite-plus-linux-x64-musl@0.2.7'
+  - '@voidzero-dev/vite-plus-win32-arm64-msvc@0.2.7'
+  - '@voidzero-dev/vite-plus-win32-x64-msvc@0.2.7'
+  - vite-plus@0.2.7
