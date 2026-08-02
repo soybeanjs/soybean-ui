@@ -27,7 +27,7 @@ const linkProps = useOmitProps(props, [...propKeys]);
 </script>
 
 <template>
-  <Button v-bind="buttonProps" as-child>
+  <Button v-bind="buttonProps" :disabled="disabled" as-child>
     <Link v-slot="slotProps" v-bind="linkProps">
       <slot v-bind="slotProps" />
     </Link>

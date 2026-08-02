@@ -22,23 +22,29 @@ const internalLoading = ref(false);
 
 const disabled = computed(() => props.disabled || internalLoading.value);
 
+// Announce the busy state to assistive tech; the loading icon itself is decorative
+// (aria-hidden) because `aria-busy` already conveys the state.
+const ariaBusy = computed(() => (internalLoading.value ? true : undefined));
+
 const onClick = async (event: MouseEvent) => {
-  if (props.autoLoading) {
-    internalLoading.value = true;
+  const clickHandlers = Array.isArray(attrs.onClick) ? attrs.onClick : [attrs.onClick];
+
+  if (!props.autoLoading) {
+    clickHandlers.forEach(handler => handler?.(event));
+    return;
   }
 
+  internalLoading.value = true;
+
   try {
-    const clickHandlers = Array.isArray(attrs.onClick) ? attrs.onClick : [attrs.onClick];
     clickHandlers.forEach(handler => handler?.(event));
   } finally {
-    if (props.autoLoading) {
-      if (props.loadingDuration) {
-        await new Promise(resolve => {
-          setTimeout(resolve, props.loadingDuration);
-        });
-      }
-      internalLoading.value = false;
+    if (props.loadingDuration) {
+      await new Promise(resolve => {
+        setTimeout(resolve, props.loadingDuration);
+      });
     }
+    internalLoading.value = false;
   }
 };
 
@@ -55,33 +61,33 @@ watchEffect(() => {
 </script>
 
 <template>
-  <Button v-bind="forwardedProps" :disabled="disabled" style="position: relative" @click="onClick">
+  <Button v-bind="forwardedProps" class="relative" :disabled="disabled" :aria-busy="ariaBusy" @click="onClick">
     <template #leading>
-      <Icon v-if="internalLoading && loadingPosition === 'start'" :icon="loadingIcon" v-bind="loadingIconProps" />
+      <Icon
+        v-if="internalLoading && loadingPosition === 'start'"
+        :icon="loadingIcon"
+        :aria-hidden="true"
+        v-bind="loadingIconProps"
+      />
       <slot v-else name="leading" />
     </template>
-    <span v-if="internalLoading && loadingPosition === 'center'" style="display: contents">
-      <span
-        style="
-          position: absolute;
-          inset: 0;
-          justify-content: center;
-          align-items: center;
-          display: flex;
-          gap: 0.25rem;
-          z-index: 1;
-        "
-      >
-        <Icon :icon="loadingIcon" v-bind="loadingIconProps" />
+    <span v-if="internalLoading && loadingPosition === 'center'" class="contents">
+      <span class="absolute inset-0 z-1 flex items-center justify-center gap-1">
+        <Icon :icon="loadingIcon" :aria-hidden="true" v-bind="loadingIconProps" />
         <span v-if="loadingText">{{ loadingText }}</span>
       </span>
-      <span style="visibility: hidden; display: contents">
+      <span class="invisible contents">
         <slot :loading="internalLoading" />
       </span>
     </span>
     <slot v-else :loading="internalLoading" />
     <template #trailing>
-      <Icon v-if="internalLoading && loadingPosition === 'end'" :icon="loadingIcon" v-bind="loadingIconProps" />
+      <Icon
+        v-if="internalLoading && loadingPosition === 'end'"
+        :icon="loadingIcon"
+        :aria-hidden="true"
+        v-bind="loadingIconProps"
+      />
       <slot v-else name="trailing" />
     </template>
   </Button>
