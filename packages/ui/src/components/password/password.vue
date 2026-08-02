@@ -32,6 +32,7 @@ providePasswordUi(ui);
     v-bind="forwardedProps"
     @update:model-value="emit('update:modelValue', $event)"
     @update:visible="emit('update:visible', $event)"
+    @clear="emit('clear', $event)"
   >
     <template v-for="slotName in slotNames" :key="slotName" #[slotName]="slotProps">
       <slot :name="slotName" v-bind="slotProps" />
