@@ -5,7 +5,8 @@ const messages: LocaleMessages = {
     firstPage: 'İlk sayfa',
     prevPage: 'Önceki sayfa',
     nextPage: 'Sonraki sayfa',
-    lastPage: 'Son sayfa'
+    lastPage: 'Son sayfa',
+    pageLabel: 'Sayfa {value}'
   },
   table: {
     emptyTitle: 'Veri yok',

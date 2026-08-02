@@ -5,7 +5,8 @@ const messages: LocaleMessages = {
     firstPage: 'Primera página',
     prevPage: 'Página anterior',
     nextPage: 'Página siguiente',
-    lastPage: 'Última página'
+    lastPage: 'Última página',
+    pageLabel: 'Página {value}'
   },
   table: {
     emptyTitle: 'Sin datos',

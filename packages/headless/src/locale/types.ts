@@ -137,6 +137,10 @@ export interface LocalePaginationMessages {
    * Aria-label and default slot content for the "last page" button.
    */
   lastPage: string;
+  /**
+   * Aria-label template for a page number button. Supports the `{value}` placeholder.
+   */
+  pageLabel: string;
 }
 
 export interface LocalePasswordMessages {
