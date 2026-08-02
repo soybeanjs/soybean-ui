@@ -141,8 +141,11 @@ export type MenubarCompactEmits<T extends DefinedValue = DefinedValue> = Menubar
 export type MenubarCompactSlots<T extends DefinedValue = DefinedValue> = MenuOptionsCompactSlots<T> & {
   /**
    * Custom content for the trigger slot.
+   *
+   * Optional: `MenubarCompact` renders full default trigger content (icon,
+   * label, link icon, trailing slot) when the consumer does not provide it.
    */
-  trigger: (data: { item: MenuOptionData<T> }) => any;
+  trigger?: (data: { item: MenuOptionData<T> }) => any;
 };
 
 /**

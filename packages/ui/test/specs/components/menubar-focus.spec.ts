@@ -73,7 +73,6 @@ describe('SMenubar focus recovery', () => {
       await waitForDismissableLayer();
 
       expect(wrapper.find('[role="menu"][data-state="open"]').exists()).toBe(false);
-      // expect(document.activeElement).toBe(triggerElement);
       wrapper.unmount();
     }
   );

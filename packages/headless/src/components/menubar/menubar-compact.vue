@@ -7,6 +7,7 @@ import type { DefinedValue } from '../../types';
 import Icon from '../_icon/icon.vue';
 import Link from '../link/link.vue';
 import { MenuPortal, MenuOptionsCompact } from '../menu';
+import type { MenuOptionData } from '../menu';
 import MenubarContent from './menubar-content.vue';
 import MenubarMenu from './menubar-menu.vue';
 import MenubarRoot from './menubar-root.vue';
@@ -52,6 +53,23 @@ const triggerProps = computed(() => {
   };
 });
 
+/**
+ * Resolve the effective `disabled` for a top-level trigger item.
+ *
+ * `item.disabled` takes precedence, then the compact-level `disabled` (disables
+ * the whole menubar), then `triggerProps.disabled`. The same resolved value is
+ * forwarded to the trigger and to the as-child link so the two never disagree
+ * when `Slot` merges their props.
+ */
+const getTriggerProps = (item: MenuOptionData<T>) => {
+  const disabled = item.disabled ?? triggerProps.value.disabled;
+
+  return {
+    ...props.triggerProps,
+    disabled
+  };
+};
+
 const contentProps = computed(() => {
   return {
     ...props.contentProps,
@@ -65,11 +83,11 @@ const contentProps = computed(() => {
 <template>
   <MenubarRoot v-bind="forwardedRootProps" v-on="listeners">
     <MenubarMenu v-for="item in items" :key="item.value" :value="item.value">
-      <MenubarTrigger v-if="item.to || item.href" v-bind="triggerProps" as-child>
+      <MenubarTrigger v-if="item.to || item.href" v-bind="getTriggerProps(item)" as-child>
         <Link
           v-slot="{ isHref }"
           v-bind="linkProps"
-          :disabled="item.disabled"
+          :disabled="getTriggerProps(item).disabled ?? linkProps?.disabled"
           :to="item.to"
           :href="item.href"
           :target="item.target"
@@ -88,7 +106,7 @@ const contentProps = computed(() => {
         </Link>
       </MenubarTrigger>
       <template v-else>
-        <MenubarTrigger v-bind="triggerProps">
+        <MenubarTrigger v-bind="getTriggerProps(item)">
           <slot name="trigger" :item="item">
             <slot name="item-leading" :item="item">
               <Icon v-if="item.icon" :icon="item.icon" :class="ui.itemIcon" />

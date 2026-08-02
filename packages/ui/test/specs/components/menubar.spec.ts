@@ -1,0 +1,239 @@
+import { describe, expect, it } from 'vitest';
+import { nextTick } from 'vue';
+import { mount } from '@vue/test-utils';
+import SConfigProvider from '@/components/config-provider/config-provider.vue';
+import type { MenuOptionData } from '@/components/menu';
+import { SMenubar } from '@/components/menubar';
+import { getA11yViolations } from '../../shared/a11y';
+
+const items: MenuOptionData<string>[] = [
+  {
+    value: 'file',
+    label: 'File',
+    children: [
+      { value: 'new-tab', label: 'New Tab', shortcut: '⌘T' },
+      { value: 'share', label: 'Share', children: [{ value: 'email', label: 'Email' }] },
+      { value: 'print', label: 'Print', disabled: true }
+    ]
+  },
+  {
+    value: 'edit',
+    label: 'Edit',
+    children: [{ value: 'undo', label: 'Undo' }]
+  },
+  {
+    value: 'github',
+    label: 'GitHub',
+    href: 'https://github.com/soybeanjs/soybean-ui'
+  }
+];
+
+function mountMenubar(props: Record<string, unknown> = {}) {
+  return mount(
+    {
+      components: { SConfigProvider, SMenubar },
+      setup() {
+        return { items };
+      },
+      template: `
+        <SConfigProvider>
+          <SMenubar :items="items" :portal-props="{ disabled: true }" v-bind="extraProps" />
+        </SConfigProvider>
+      `,
+      data() {
+        return { extraProps: props };
+      }
+    },
+    { attachTo: document.body }
+  );
+}
+
+describe('SMenubar', () => {
+  describe('rendering', () => {
+    it('renders the menubar root and trigger items', () => {
+      const wrapper = mountMenubar();
+
+      expect(wrapper.find('[role="menubar"]').exists()).toBe(true);
+      expect(wrapper.findAll('[role="menuitem"]')).toHaveLength(3);
+      expect(wrapper.find('[data-soybean-menubar-root]').exists()).toBe(true);
+      expect(wrapper.find('[data-soybean-menubar-trigger][data-value="file"]').exists()).toBe(true);
+      expect(wrapper.find('a[href="https://github.com/soybeanjs/soybean-ui"]').exists()).toBe(true);
+
+      wrapper.unmount();
+    });
+
+    it('applies the size variant class to the root', () => {
+      const wrapper = mountMenubar({ size: 'sm' });
+
+      const root = wrapper.find('[role="menubar"]');
+      expect(root.classes()).toContain('text-xs');
+
+      wrapper.unmount();
+    });
+  });
+
+  describe('open state', () => {
+    it('opens the menu on pointerdown and reflects aria-expanded', async () => {
+      const wrapper = mountMenubar();
+      const trigger = wrapper.find('[data-soybean-menubar-trigger][data-value="file"]');
+
+      await trigger.trigger('pointerdown', { button: 0, ctrlKey: false });
+      await nextTick();
+      await nextTick();
+
+      expect(trigger.attributes('aria-expanded')).toBe('true');
+      expect(trigger.attributes('aria-controls')).toBeTruthy();
+      expect(trigger.attributes('data-state')).toBe('open');
+      expect(wrapper.find('[role="menu"][data-state="open"]').exists()).toBe(true);
+
+      wrapper.unmount();
+    });
+
+    it('emits update:modelValue when a trigger is activated', async () => {
+      const wrapper = mount(SMenubar, {
+        props: { items, modelValue: '', portalProps: { disabled: true } },
+        attachTo: document.body
+      });
+      const trigger = wrapper.find('[data-soybean-menubar-trigger][data-value="edit"]');
+
+      await trigger.trigger('pointerdown', { button: 0, ctrlKey: false });
+      await nextTick();
+      await nextTick();
+
+      expect(wrapper.emitted('update:modelValue')?.at(-1)).toEqual(['edit']);
+
+      wrapper.unmount();
+    });
+  });
+
+  describe('disabled triggers', () => {
+    const disabledItems: MenuOptionData<string>[] = [
+      { value: 'disabled-menu', label: 'Disabled', disabled: true, children: [{ value: 'child', label: 'Child' }] },
+      { value: 'active-menu', label: 'Active', children: [{ value: 'ok', label: 'OK' }] }
+    ];
+
+    it('renders a disabled top-level trigger as inert and ignores activation', async () => {
+      const wrapper = mount(
+        {
+          components: { SConfigProvider, SMenubar },
+          setup() {
+            return { disabledItems };
+          },
+          template: `
+            <SConfigProvider>
+              <SMenubar :items="disabledItems" :portal-props="{ disabled: true }" />
+            </SConfigProvider>
+          `
+        },
+        { attachTo: document.body }
+      );
+
+      const trigger = wrapper.find('[data-soybean-menubar-trigger][data-value="disabled-menu"]');
+
+      expect(trigger.attributes('aria-disabled')).toBe('true');
+      expect(trigger.attributes('tabindex')).toBe('-1');
+
+      await trigger.trigger('pointerdown', { button: 0, ctrlKey: false });
+      await nextTick();
+      await nextTick();
+
+      expect(trigger.attributes('aria-expanded')).toBe('false');
+      expect(wrapper.find('[role="menu"][data-state="open"]').exists()).toBe(false);
+
+      wrapper.unmount();
+    });
+
+    it('disables all triggers when the compact disabled prop is set, including link triggers', async () => {
+      const linkItems: MenuOptionData<string>[] = [
+        { value: 'github', label: 'GitHub', href: 'https://github.com/soybeanjs/soybean-ui' },
+        { value: 'file', label: 'File', children: [{ value: 'new-tab', label: 'New Tab' }] }
+      ];
+
+      const wrapper = mount(
+        {
+          components: { SConfigProvider, SMenubar },
+          setup() {
+            return { linkItems };
+          },
+          template: `
+            <SConfigProvider>
+              <SMenubar :items="linkItems" disabled :portal-props="{ disabled: true }" />
+            </SConfigProvider>
+          `
+        },
+        { attachTo: document.body }
+      );
+
+      wrapper.findAll('[data-soybean-menubar-trigger]').forEach(trigger => {
+        expect(trigger.attributes('aria-disabled')).toBe('true');
+      });
+
+      const linkTrigger = wrapper.find('[data-soybean-menubar-trigger][data-value="github"]');
+      expect(linkTrigger.element.tagName).toBe('A');
+      expect(linkTrigger.attributes('aria-disabled')).toBe('true');
+
+      const fileTrigger = wrapper.find('[data-soybean-menubar-trigger][data-value="file"]');
+      await fileTrigger.trigger('pointerdown', { button: 0, ctrlKey: false });
+      await nextTick();
+      await nextTick();
+
+      expect(wrapper.find('[role="menu"][data-state="open"]').exists()).toBe(false);
+
+      wrapper.unmount();
+    });
+  });
+
+  describe('accessibility', () => {
+    it('has no a11y violations when closed', async () => {
+      const wrapper = mountMenubar();
+
+      const violations = await getA11yViolations(wrapper.element);
+      expect(violations).toHaveLength(0);
+
+      wrapper.unmount();
+    });
+
+    it('has no a11y violations when a menu is open', async () => {
+      // Real usage renders the open menu in a teleported portal; scanning the
+      // whole body covers both the menubar and the portal content. Keeping the
+      // portal disabled here would nest the menu inside the menubar and trigger
+      // a false-positive `aria-required-children` violation (menubar only allows
+      // menuitem children).
+      const wrapper = mount(
+        {
+          components: { SConfigProvider, SMenubar },
+          setup() {
+            return { items };
+          },
+          template: `
+            <SConfigProvider>
+              <SMenubar :items="items" />
+            </SConfigProvider>
+          `
+        },
+        { attachTo: document.body }
+      );
+
+      const trigger = wrapper.find('[data-soybean-menubar-trigger][data-value="file"]');
+      await trigger.trigger('pointerdown', { button: 0, ctrlKey: false });
+      await nextTick();
+      await nextTick();
+
+      // Custom rules replace the a11y.ts defaults, so re-declare them here.
+      const violations = await getA11yViolations(document.body, {
+        rules: {
+          'color-contrast': { enabled: false },
+          'svg-img-alt': { enabled: false },
+          'image-alt': { enabled: false },
+          'frame-tested': { enabled: false },
+          // Page-level best-practice rule; the bare test page has no landmark
+          // elements, so it would flag every component under scan.
+          region: { enabled: false }
+        }
+      });
+      expect(violations).toHaveLength(0);
+
+      wrapper.unmount();
+    });
+  });
+});
