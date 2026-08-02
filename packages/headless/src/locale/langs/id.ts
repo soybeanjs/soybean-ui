@@ -75,7 +75,8 @@ const messages: LocaleMessages = {
   autocomplete: {
     toggleSuggestions: 'Alihkan saran',
     clearInput: 'Hapus input',
-    noResults: 'Tidak ada hasil.'
+    noResults: 'Tidak ada hasil.',
+    options: 'Opsi'
   },
   command: {
     noResults: 'Tidak ada hasil.'

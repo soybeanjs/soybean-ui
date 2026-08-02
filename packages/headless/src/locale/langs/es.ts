@@ -75,7 +75,8 @@ const messages: LocaleMessages = {
   autocomplete: {
     toggleSuggestions: 'Alternar sugerencias',
     clearInput: 'Borrar entrada',
-    noResults: 'No se han encontrado resultados.'
+    noResults: 'No se han encontrado resultados.',
+    options: 'Opciones'
   },
   command: {
     noResults: 'No se han encontrado resultados.'

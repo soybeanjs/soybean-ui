@@ -32,7 +32,7 @@ const {
   open,
   contentId,
   inputElement: comboboxInputElement,
-  triggerElement,
+  parentElement,
   disabled: comboboxDisabled,
   openOnClick,
   openOnFocus,
@@ -122,10 +122,10 @@ const onBlur = (event: FocusEvent) => {
     return;
   }
 
-  const isInsideTrigger = triggerElement.value?.contains(nextFocus);
+  const isInsideRoot = parentElement.value?.contains(nextFocus);
   const isInsideContent = document.getElementById(contentId.value)?.contains(nextFocus);
 
-  if (!isInsideTrigger && !isInsideContent) {
+  if (!isInsideRoot && !isInsideContent) {
     onOpenChange(false);
   }
 };

@@ -75,7 +75,8 @@ const messages: LocaleMessages = {
   autocomplete: {
     toggleSuggestions: '切換建議清單',
     clearInput: '清除輸入',
-    noResults: '無符合結果。'
+    noResults: '無符合結果。',
+    options: '選項'
   },
   command: {
     noResults: '無符合結果。'

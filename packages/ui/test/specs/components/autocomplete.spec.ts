@@ -224,4 +224,223 @@ describe('SAutocomplete', () => {
       wrapper.unmount();
     });
   });
+
+  describe('filtering', () => {
+    it('filters options as the user types', async () => {
+      const wrapper = mount(SAutocomplete, {
+        props: { items },
+        attachTo: document.body
+      });
+
+      await wrapper.find('input').setValue('app');
+      await nextTick();
+      await nextTick();
+
+      const options = Array.from(document.body.querySelectorAll('[role="option"]'));
+
+      expect(options).toHaveLength(1);
+      expect(options[0].textContent).toContain('Apple');
+      wrapper.unmount();
+    });
+
+    it('shows the empty message when no option matches the search', async () => {
+      const wrapper = mount(SAutocomplete, {
+        props: { items, emptyLabel: 'No results' },
+        attachTo: document.body
+      });
+
+      await wrapper.find('input').setValue('zzz');
+      await nextTick();
+      await nextTick();
+
+      expect(document.body.textContent).toContain('No results');
+      expect(document.body.querySelectorAll('[role="option"]')).toHaveLength(0);
+      wrapper.unmount();
+    });
+
+    it('shows the empty message when the items list is empty', async () => {
+      const wrapper = mount(SAutocomplete, {
+        props: { items: [], emptyLabel: 'Nothing here' },
+        attachTo: document.body
+      });
+
+      await wrapper.find('input').setValue('a');
+      await nextTick();
+      await nextTick();
+
+      expect(document.body.textContent).toContain('Nothing here');
+      wrapper.unmount();
+    });
+  });
+
+  describe('keyboard interaction', () => {
+    it('selects the first option with Enter after ArrowDown', async () => {
+      const wrapper = mount(SAutocomplete, {
+        props: { items },
+        attachTo: document.body
+      });
+
+      const input = wrapper.find('input');
+
+      await input.trigger('keydown', { key: 'ArrowDown' });
+      await flushPromises();
+      await nextTick();
+
+      expect(document.body.querySelector('[role="listbox"]')).toBeTruthy();
+
+      await input.trigger('keydown', { key: 'Enter' });
+      await flushPromises();
+      await nextTick();
+      await nextTick();
+
+      expect(wrapper.emitted('update:modelValue')?.at(-1)).toEqual(['apple']);
+      expect(wrapper.find('input').element.value).toBe('apple');
+      wrapper.unmount();
+    });
+  });
+
+  describe('disabled items', () => {
+    it('does not select a disabled item', async () => {
+      const disabledItems = [
+        { value: 'apple', label: 'Apple' },
+        { value: 'banana', label: 'Banana', disabled: true }
+      ];
+      const wrapper = mount(SAutocomplete, {
+        props: { items: disabledItems, open: true },
+        attachTo: document.body
+      });
+      await nextTick();
+
+      const option = Array.from(document.body.querySelectorAll('[role="option"]')).find(node =>
+        node.textContent?.includes('Banana')
+      );
+
+      expect(option).toBeTruthy();
+
+      await new DOMWrapper(option as Element).trigger('click');
+      await flushPromises();
+      await nextTick();
+
+      expect(wrapper.emitted('update:modelValue')).toBeFalsy();
+      wrapper.unmount();
+    });
+  });
+
+  describe('controlled open', () => {
+    it('respects the controlled open prop', async () => {
+      const wrapper = mount(SAutocomplete, {
+        props: { items, open: true },
+        attachTo: document.body
+      });
+      await nextTick();
+      await nextTick();
+
+      expect(document.body.querySelector('[role="listbox"]')).toBeTruthy();
+
+      await wrapper.setProps({ open: false });
+      await nextTick();
+      await nextTick();
+
+      expect(document.body.querySelector('[role="listbox"]')).toBeNull();
+      wrapper.unmount();
+    });
+  });
+
+  describe('clearable', () => {
+    it('clears the input value when the clear button is clicked', async () => {
+      const wrapper = mount(SAutocomplete, {
+        props: { items, clearable: true, clearLabel: 'Clear input' },
+        attachTo: document.body
+      });
+
+      await wrapper.find('input').setValue('ban');
+      await nextTick();
+
+      const clearButton = document.body.querySelector('[aria-label="Clear input"]') as HTMLButtonElement | null;
+
+      expect(clearButton).not.toBeNull();
+
+      await new DOMWrapper(clearButton as Element).trigger('click');
+      await nextTick();
+      await nextTick();
+
+      expect(wrapper.emitted('update:modelValue')?.at(-1)).toEqual(['']);
+      expect(wrapper.find('input').element.value).toBe('');
+      wrapper.unmount();
+    });
+  });
+
+  describe('focus management', () => {
+    it('keeps the popup open when focus moves from the input to the clear button', async () => {
+      const wrapper = mount(SAutocomplete, {
+        props: { items, clearable: true, clearLabel: 'Clear input' },
+        attachTo: document.body
+      });
+
+      await wrapper.find('input').setValue('ban');
+      await nextTick();
+      await nextTick();
+
+      expect(document.body.querySelector('[role="listbox"]')).toBeTruthy();
+
+      const clearButton = document.body.querySelector('[aria-label="Clear input"]') as HTMLElement | null;
+
+      expect(clearButton).not.toBeNull();
+
+      await wrapper.find('input').trigger('blur', { relatedTarget: clearButton });
+      await nextTick();
+      await nextTick();
+
+      expect(document.body.querySelector('[role="listbox"]')).not.toBeNull();
+      wrapper.unmount();
+    });
+
+    it('closes the popup when focus moves outside the component', async () => {
+      const wrapper = mount(SAutocomplete, {
+        props: { items },
+        attachTo: document.body
+      });
+
+      await wrapper.find('input').setValue('app');
+      await nextTick();
+      await nextTick();
+
+      expect(document.body.querySelector('[role="listbox"]')).toBeTruthy();
+
+      const outside = document.createElement('button');
+
+      document.body.append(outside);
+
+      await wrapper.find('input').trigger('blur', { relatedTarget: outside });
+      await nextTick();
+      await nextTick();
+
+      expect(document.body.querySelector('[role="listbox"]')).toBeNull();
+      outside.remove();
+      wrapper.unmount();
+    });
+  });
+
+  describe('accessibility', () => {
+    it('has no a11y violations when open', async () => {
+      const wrapper = mount(SAutocomplete, {
+        props: {
+          items,
+          open: true,
+          inputProps: { controlProps: { 'aria-label': 'Fruit' } }
+        },
+        attachTo: document.body
+      });
+      await nextTick();
+      await nextTick();
+
+      const violations = await getA11yViolations(document.body, {
+        rules: {
+          region: { enabled: false }
+        }
+      });
+      expect(violations).toHaveLength(0);
+      wrapper.unmount();
+    });
+  });
 });

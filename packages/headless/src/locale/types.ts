@@ -17,6 +17,8 @@ export interface LocaleAutocompleteMessages {
   clearInput: string;
   /** Default text for the empty state. */
   noResults: string;
+  /** Fallback aria-label for the options viewport. */
+  options: string;
 }
 
 export interface LocaleCalendarMessages {

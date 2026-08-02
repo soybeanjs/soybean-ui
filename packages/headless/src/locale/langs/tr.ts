@@ -75,7 +75,8 @@ const messages: LocaleMessages = {
   autocomplete: {
     toggleSuggestions: 'Önerileri aç veya kapat',
     clearInput: 'Girdiyi temizle',
-    noResults: 'Sonuç bulunamadı.'
+    noResults: 'Sonuç bulunamadı.',
+    options: 'Seçenekler'
   },
   command: {
     noResults: 'Sonuç bulunamadı.'

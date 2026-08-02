@@ -75,7 +75,8 @@ const messages: LocaleMessages = {
   autocomplete: {
     toggleSuggestions: '추천 목록 전환',
     clearInput: '입력 지우기',
-    noResults: '결과가 없습니다.'
+    noResults: '결과가 없습니다.',
+    options: '옵션'
   },
   command: {
     noResults: '결과가 없습니다.'

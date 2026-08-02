@@ -102,6 +102,11 @@ const inputProps = computed(() => ({
   placeholder: props.placeholder ?? props.inputProps?.placeholder
 }));
 
+const viewportProps = computed(() => ({
+  ...props.viewportProps,
+  'aria-label': props.viewportProps?.['aria-label'] ?? messages.value.autocomplete.options
+}));
+
 const messages = useLocaleMessages();
 
 const getItemKey = (item: (typeof filteredItems.value)[number]) => {
