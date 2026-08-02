@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, onBeforeMount, onMounted, useAttrs, useTemplateRef, watchEffect } from 'vue';
+import { computed, onBeforeUnmount, onMounted, useAttrs, useTemplateRef, watchEffect } from 'vue';
 import { getAriaLabel, handleAndDispatchCustomEvent, isFormControl } from '../../shared';
 import type { NavigationKey } from '../../types';
 import Button from '../button/button.vue';
@@ -17,13 +17,13 @@ const attrs = useAttrs();
 
 const cls = useRadioGroupUi('control');
 
-const controlElement = useTemplateRef<HTMLButtonElement>('controlElement');
+const controlElement = useTemplateRef<{ $el?: HTMLButtonElement }>('controlElement');
 const rootContext = useRadioGroupRootContext('RadioGroupControl');
 const { value, disabled, name, required, checked, dataState, onSelect, initControlId } =
   useRadioGroupItemContext('RadioGroupControl');
 
-const formControl = computed(() => isFormControl(controlElement.value));
-const ariaLabel = computed(() => getAriaLabel(controlElement.value, props.id, attrs['aria-label'] as string));
+const formControl = computed(() => isFormControl(controlElement.value?.$el));
+const ariaLabel = computed(() => getAriaLabel(controlElement.value?.$el, props.id, attrs['aria-label'] as string));
 
 /** Arrow key constants for keyboard navigation */
 const ARROW_KEYS: NavigationKey[] = ['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'];
@@ -42,7 +42,7 @@ function onKeyUp() {
   isArrowKeyPressed = false;
 }
 
-function onClick(event: MouseEvent) {
+function onClick(event: MouseEvent | KeyboardEvent) {
   const eventDetail = { originalEvent: event, value: value.value };
 
   handleAndDispatchCustomEvent(
@@ -72,7 +72,7 @@ function onFocus() {
      * case. We click it to 'check' it (instead of updating `context.value`) so that the radio change event fires.
      */
     if (isArrowKeyPressed) {
-      controlElement.value?.click();
+      controlElement.value?.$el?.click();
     }
   }, 0);
 }
@@ -88,7 +88,7 @@ onMounted(() => {
   document.addEventListener('keyup', onKeyUp);
 });
 
-onBeforeMount(() => {
+onBeforeUnmount(() => {
   document.removeEventListener('keydown', onKeyDown);
   document.removeEventListener('keyup', onKeyUp);
 });
@@ -110,7 +110,7 @@ onBeforeMount(() => {
       :required="required"
       :name="name"
       @click.stop="onClick"
-      @keydown.enter.prevent
+      @keydown.enter.prevent="onClick"
       @focus="onFocus"
     >
       <slot :checked="checked" :required="required" :disabled="disabled" />

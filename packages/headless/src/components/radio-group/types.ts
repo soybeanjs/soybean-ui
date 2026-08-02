@@ -75,7 +75,7 @@ export type RadioSelectEvent = CustomEvent<{
   /**
    * Original event.
    */
-  originalEvent: MouseEvent;
+  originalEvent: MouseEvent | KeyboardEvent;
   /**
    * Value associated with the current item.
    */

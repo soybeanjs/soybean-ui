@@ -31,6 +31,27 @@ describe('SRadioGroup', () => {
       expect(wrapper.find('.radio-group-root-class').exists()).toBe(true);
       wrapper.unmount();
     });
+
+    it('reflects orientation via aria-orientation', () => {
+      const wrapper = mount(SRadioGroup, {
+        props: { items, orientation: 'vertical' },
+        attachTo: document.body
+      });
+
+      expect(wrapper.find('[role="radiogroup"]').attributes('aria-orientation')).toBe('vertical');
+      wrapper.unmount();
+    });
+
+    it('reflects data-state for checked and unchecked items', () => {
+      const wrapper = mount(SRadioGroup, {
+        props: { items, modelValue: 'option-1' },
+        attachTo: document.body
+      });
+
+      expect(wrapper.findAll('[role="radio"]')[0].attributes('data-state')).toBe('checked');
+      expect(wrapper.findAll('[role="radio"]')[1].attributes('data-state')).toBe('unchecked');
+      wrapper.unmount();
+    });
   });
 
   describe('active state', () => {
@@ -52,6 +73,62 @@ describe('SRadioGroup', () => {
       });
 
       await wrapper.findAll('[role="radio"]')[1].trigger('click');
+
+      expect(wrapper.emitted('update:modelValue')).toBeTruthy();
+      expect(wrapper.emitted('update:modelValue')![0][0]).toBe('option-2');
+      wrapper.unmount();
+    });
+
+    it('supports uncontrolled usage with defaultValue', () => {
+      const wrapper = mount(SRadioGroup, {
+        props: { items, defaultValue: 'option-2' },
+        attachTo: document.body
+      });
+
+      expect(wrapper.findAll('[role="radio"]')[1].attributes('aria-checked')).toBe('true');
+      wrapper.unmount();
+    });
+
+    it('updates the checked item when a controlled modelValue changes', async () => {
+      const wrapper = mount(SRadioGroup, {
+        props: { items, modelValue: 'option-1' },
+        attachTo: document.body
+      });
+
+      await wrapper.setProps({ modelValue: 'option-2' });
+
+      expect(wrapper.findAll('[role="radio"]')[1].attributes('aria-checked')).toBe('true');
+      wrapper.unmount();
+    });
+  });
+
+  describe('keyboard interaction', () => {
+    it('selects the focused radio on Enter key', async () => {
+      const wrapper = mount(SRadioGroup, {
+        props: { items, modelValue: 'option-1' },
+        attachTo: document.body
+      });
+
+      await wrapper.findAll('[role="radio"]')[1].trigger('keydown', { key: 'Enter' });
+
+      expect(wrapper.emitted('update:modelValue')).toBeTruthy();
+      expect(wrapper.emitted('update:modelValue')![0][0]).toBe('option-2');
+      wrapper.unmount();
+    });
+
+    it('moves focus with ArrowDown and checks the focused radio', async () => {
+      const wrapper = mount(SRadioGroup, {
+        props: { items, modelValue: 'option-1' },
+        attachTo: document.body
+      });
+
+      const [first, second] = wrapper.findAll('[role="radio"]');
+      await first.trigger('keydown', { key: 'ArrowDown' });
+
+      expect(second.element).toBe(document.activeElement);
+
+      // the focused radio is checked after the focus-derived click is flushed
+      await new Promise(resolve => setTimeout(resolve, 0));
 
       expect(wrapper.emitted('update:modelValue')).toBeTruthy();
       expect(wrapper.emitted('update:modelValue')![0][0]).toBe('option-2');
@@ -81,6 +158,63 @@ describe('SRadioGroup', () => {
       await wrapper.findAll('[role="radio"]')[2].trigger('click');
 
       expect(wrapper.emitted('update:modelValue')).toBeFalsy();
+      wrapper.unmount();
+    });
+
+    it('disables every item when the group root is disabled', () => {
+      const wrapper = mount(SRadioGroup, {
+        props: { items, disabled: true },
+        attachTo: document.body
+      });
+
+      const controls = wrapper.findAll('[role="radio"]');
+      expect(controls).toHaveLength(items.length);
+      controls.forEach(control => {
+        // @ts-expect-error - Vue Test Utils does not recognize the disabled property on role selectors
+        expect(control.element.disabled).toBe(true);
+      });
+      wrapper.unmount();
+    });
+  });
+
+  describe('form proxy', () => {
+    it('renders a visually hidden input carrying the current value when name is set', () => {
+      const wrapper = mount(SRadioGroup, {
+        props: { items, name: 'favorite', modelValue: 'option-1', class: 'form' },
+        attachTo: document.body
+      });
+
+      const input = wrapper.find('[data-soybean-visually-hidden-input]');
+      expect(input.exists()).toBe(true);
+      expect(input.attributes('name')).toBe('favorite');
+      expect(input.attributes('value')).toBe('option-1');
+      wrapper.unmount();
+    });
+  });
+
+  describe('label association', () => {
+    it('associates each label with its control via for/id', () => {
+      const wrapper = mount(SRadioGroup, {
+        props: { items },
+        attachTo: document.body
+      });
+
+      const labels = wrapper.findAll('label');
+      const controlId = wrapper.findAll('[role="radio"]')[0].attributes('id');
+      expect(controlId).toBeTruthy();
+      expect(labels[0].attributes('for')).toBe(controlId);
+      wrapper.unmount();
+    });
+  });
+
+  describe('class overrides', () => {
+    it('applies per-slot ui overrides to the control', () => {
+      const wrapper = mount(SRadioGroup, {
+        props: { items, ui: { control: 'custom-control-class' } },
+        attachTo: document.body
+      });
+
+      expect(wrapper.find('[role="radio"]').classes()).toContain('custom-control-class');
       wrapper.unmount();
     });
   });
