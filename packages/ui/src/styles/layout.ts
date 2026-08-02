@@ -191,7 +191,7 @@ export const layoutClassicVariants = scv({
     ],
     mobile: 'flex flex-col w-full h-full',
     rail: [
-      'absolute inset-y-0 z-20 flex w-[--soybean-layout-spacing] -translate-x-1/2 transition-all ease-linear lt-sm:hidden',
+      'absolute inset-y-0 z-20 flex w-[--soybean-layout-spacing] -translate-x-1/2 rtl:translate-x-1/2 transition-all ease-linear lt-sm:hidden',
       'after:absolute after:inset-y-0 after:start-1/2 after:content-empty after:w-[calc(var(--soybean-layout-spacing)/8)] hover:after:bg-sidebar-border'
     ],
     trigger: '',

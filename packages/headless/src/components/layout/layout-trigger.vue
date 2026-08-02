@@ -22,6 +22,7 @@ const cls = useLayoutUi('trigger');
     data-soybean-layout-trigger
     :class="cls"
     :aria-label="messages.layout.toggleSidebar"
+    :aria-expanded="!!open"
     data-sidebar="trigger"
     @click="toggleSidebar"
   >

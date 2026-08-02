@@ -65,7 +65,7 @@ const forwardedProps = useOmitProps(props, [
       <LayoutContent v-bind="contentProps" :id="scrollBehavior === 'content' ? resolvedScrollId : undefined">
         <slot />
       </LayoutContent>
-      <LayoutFooter v-if="footerVisible" v-bind="footerProps">
+      <LayoutFooter v-bind="footerProps">
         <slot name="footer" />
       </LayoutFooter>
       <LayoutClassicPlaceholder type="footer" />

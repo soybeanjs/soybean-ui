@@ -9,7 +9,7 @@ defineOptions({
 
 defineProps<LayoutRailProps>();
 
-const { toggleSidebar } = useLayoutRootContext('LayoutRail');
+const { toggleSidebar, open } = useLayoutRootContext('LayoutRail');
 const messages = useLocaleMessages();
 
 const cls = useLayoutUi('rail');
@@ -21,6 +21,7 @@ const cls = useLayoutUi('rail');
     data-soybean-layout-rail
     data-sidebar="rail"
     :aria-label="messages.layout.toggleSidebar"
+    :aria-expanded="!!open"
     :tabindex="-1"
     :title="messages.layout.toggleSidebar"
     @click="toggleSidebar"
