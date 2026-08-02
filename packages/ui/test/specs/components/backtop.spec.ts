@@ -254,6 +254,30 @@ describe('SBacktop', () => {
     });
   });
 
+  describe('target resolution', () => {
+    it('resolves a CSS selector string target', async () => {
+      const { target } = createMockScrollTarget(0);
+      target.id = 'scroll-container';
+
+      const wrapper = mount(SBacktop, {
+        props: {
+          target: '#scroll-container',
+          visibilityHeight: 100
+        },
+        attachTo: document.body
+      });
+
+      getBacktop(wrapper).updateVisibility();
+      await waitForBacktopUpdate();
+
+      const button = wrapper.find('button');
+      expect(button.attributes('data-state')).toBe('hidden');
+
+      wrapper.unmount();
+      target.remove();
+    });
+  });
+
   describe('accessibility', () => {
     it('has no a11y violations with the default icon button', async () => {
       const wrapper = mount(SBacktop, {
