@@ -2,11 +2,21 @@
 
 ## Overview
 
-A two-state button that toggles between pressed and unpressed.
+A two-state button that toggles between pressed (`on`) and unpressed (`off`) states, reflecting its state via `aria-pressed` and `data-state`. Use it for an immediate, exclusive on/off switch such as a formatting tool or a filter chip; when the choice belongs to a form that needs explicit submission, prefer `SCheckbox` instead.
 
 ## Usage
 
 <UsageCode component="toggle" />
+
+## Features
+
+- 🎚 `modelValue` / `defaultValue` — controlled and uncontrolled modes backed by `useControllableState`
+- ♿ `aria-pressed` + `data-state` (`on`/`off`) dual reflection, axe-clean
+- ⌨️ Keyboard operable — Enter and Space toggle via native button behavior
+- 🎨 3 variants (outline/soft/ghost) × 6 sizes × 8 colors × 4 shapes via `toggleVariants`
+- 🧩 Full `SButton` prop surface (icon slots, `asChild`, loading via button props) through headless `Toggle`
+- 📦 Slot props expose `modelValue` / `pressed` / `state` / `disabled` for custom content
+- 🚫 Disabled state with `disabled` + `aria-disabled` and guarded click handling
 
 ## Demos
 
@@ -15,3 +25,47 @@ A two-state button that toggles between pressed and unpressed.
 ## API
 
 <ComponentApi component="toggle" />
+
+## Notes
+
+### Architecture and benchmark differences
+
+SoybeanUI builds the toggle from the headless `Toggle` (`useControllableState` + `Button` base + `aria-pressed`/`data-state` reflection + disabled-guarded click) and a thin UI wrapper `SToggle` that only computes `toggleVariants` classes and forwards `update:modelValue`. The `data-state` attribute drives the pressed styling through UnoCSS `data-[state=on]:*` selectors, keeping state and visuals decoupled. `toggle` is a Radix/shadcn-native pattern; the other benchmark libraries express the same interaction through button-plus-state or segmented controls.
+
+| Capability                    | SoybeanUI | Ant Design | Element Plus | Mantine | Naive UI | shadcn `Toggle` |
+| :---------------------------- | :-------: | :--------: | :----------: | :-----: | :------: | :-------------: |
+| headless/styled split         |    ✅     |     —      |      —       |    —    |    —     |       ✅        |
+| Pressed/unpressed state       |    ✅     |     —      |      —       |    —    |    —     |       ✅        |
+| Controlled/uncontrolled       |    ✅     |     —      |      —       |    —    |    —     |       ✅        |
+| `aria-pressed` + `data-state` |    ✅     |     —      |      —       |    —    |    —     |       ✅        |
+| Variants (outline/soft/ghost) |    ✅     |     —      |      —       |    —    |    —     |       ✅        |
+| Sizes/shapes (6 sizes × 4)    |    ✅     |     —      |      —       |    —    |    —     |        —        |
+| Keyboard (Enter/Space)        |    ✅     |     —      |      —       |    —    |    —     |       ✅        |
+| Disabled                      |    ✅     |     —      |      —       |    —    |    —     |       ✅        |
+| Axe-clean                     |    ✅     |     —      |      —       |    —    |    —     |        —        |
+| Pressed-state icon animation  |    ➕     |     ✅     |      —       |    —    |    —     |        —        |
+
+### Cautions
+
+- An icon-only toggle has no accessible name — pass `aria-label` (or use a visible label) to stay axe-clean.
+- The pressed state is reflected by `aria-pressed` and `data-state`; style the pressed look with `data-[state=on]:*` utilities or the built-in variants.
+- Enter/Space toggling relies on the native button behavior of the `Button` base.
+- For exclusive multi-choice, compose toggles with `SToggleGroup` instead of managing state by hand.
+
+## FAQ
+
+### Controlled or uncontrolled?
+
+Pass `modelValue` with `v-model` for a controlled value, or `defaultValue` to let the toggle own its state internally. Both are supported via `useControllableState`.
+
+### How do I build an icon-only toggle?
+
+Put an icon in the default slot and add `aria-label` (e.g. `aria-label="Bold"`). The `toggleVariants` base already neutralizes `svg` pointer events and gives icons a default `size-4`.
+
+### What is the difference between `SToggle` and `SButton`?
+
+`SToggle` is a stateful button — it remembers whether it is pressed and reflects that via `aria-pressed`/`data-state` with pressed styling; `SButton` is stateless and only emits clicks.
+
+### How do I build a group of toggles?
+
+Use `SToggleGroup` — it manages single/multiple selection and the associated `aria-pressed` state for you.
