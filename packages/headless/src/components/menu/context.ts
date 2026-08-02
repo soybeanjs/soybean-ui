@@ -124,14 +124,12 @@ export const [provideMenuCheckboxGroupContext, useMenuCheckboxGroupContext] = us
     const { modelValue } = params;
 
     const onModelValueChange = (v: DefinedValue) => {
-      if (!modelValue.value) {
-        modelValue.value = [];
-      }
+      const current = modelValue.value ?? [];
 
-      if (modelValue.value.includes(v)) {
-        modelValue.value = modelValue.value.filter(item => item !== v);
+      if (current.includes(v)) {
+        modelValue.value = current.filter(item => item !== v);
       } else {
-        modelValue.value.push(v);
+        modelValue.value = [...current, v];
       }
     };
 

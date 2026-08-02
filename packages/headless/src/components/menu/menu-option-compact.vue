@@ -6,6 +6,7 @@ import type { DefinedValue } from '../../types';
 import Icon from '../_icon/icon.vue';
 import Kbd from '../kbd/kbd.vue';
 import Link from '../link/link.vue';
+import type { LinkProps } from '../link/types';
 import MenuPortal from '../portal/portal.vue';
 import MenuSeparator from '../separator/separator-root.vue';
 import { useMenuOptionsCompactContext, useMenuUi } from './context';
@@ -45,6 +46,21 @@ const { activeValue, activePaths } = useMenuOptionsCompactContext('MenuOptionCom
 const dataActive = computed(() => activeValue.value === props.item.value);
 
 const childActive = computed(() => activePaths.value.includes(props.item.value));
+
+type MenuOptionLinkProps = Pick<LinkProps, 'disabled' | 'to' | 'href' | 'target' | 'external'>;
+
+const linkProps = computed<MenuOptionLinkProps>(() =>
+  props.item.to || props.item.href
+    ? {
+        ...props.linkProps,
+        disabled: props.item.disabled ?? props.linkProps?.disabled,
+        to: props.item.to ?? props.linkProps?.to,
+        href: props.item.href,
+        target: props.item.target ?? props.linkProps?.target,
+        external: props.item.external ?? props.linkProps?.external
+      }
+    : {}
+);
 </script>
 
 <template>
@@ -59,20 +75,12 @@ const childActive = computed(() => activePaths.value.includes(props.item.value))
     v-else-if="item.to || item.href"
     v-bind="itemProps"
     as-child
-    :disabled="item.disabled"
+    :disabled="item.disabled ?? itemProps?.disabled ?? linkProps?.disabled"
     :text-value="item.textValue"
     :data-active="dataActive"
     @select="emit('select', item, $event)"
   >
-    <Link
-      v-slot="{ isHref }"
-      v-bind="linkProps"
-      :disabled="item.disabled"
-      :to="item.to"
-      :href="item.href"
-      :target="item.target"
-      :external="item.external"
-    >
+    <Link v-slot="{ isHref }" v-bind="linkProps">
       <MenuItemSlotCompact :icon="item.icon" :label="item.label">
         <template v-for="slotName in commonSlotNames">
           <slot :name="slotName" :item="item" />
@@ -88,7 +96,7 @@ const childActive = computed(() => activePaths.value.includes(props.item.value))
   <MenuItem
     v-else-if="!item.children?.length"
     v-bind="itemProps"
-    :disabled="item.disabled"
+    :disabled="item.disabled ?? itemProps?.disabled"
     :text-value="item.textValue"
     :data-active="dataActive"
     @select="emit('select', item, $event)"
@@ -105,7 +113,7 @@ const childActive = computed(() => activePaths.value.includes(props.item.value))
   <MenuSub v-else v-bind="subProps" @update:open="emit('update:open', $event)">
     <MenuSubTrigger
       v-bind="subTriggerProps"
-      :disabled="item.disabled"
+      :disabled="item.disabled ?? subTriggerProps?.disabled"
       :text-value="item.textValue"
       :data-child-active="childActive ? '' : undefined"
     >

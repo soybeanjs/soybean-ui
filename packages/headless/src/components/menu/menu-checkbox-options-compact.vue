@@ -55,7 +55,7 @@ const ui = useMenuUi();
         v-else
         v-bind="checkboxItemProps"
         :value="item.value"
-        :disabled="item.disabled"
+        :disabled="item.disabled ?? checkboxItemProps?.disabled"
         :text-value="item.textValue"
         @select="emit('select', item, $event)"
       >

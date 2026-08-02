@@ -113,7 +113,7 @@ provideMenuItemIndicatorContext({
     :ref="setMenuItemElement"
     data-soybean-menu-radio-item
     :class="cls"
-    role="menu-radio-item"
+    role="menuitemradio"
     :disabled="disabled"
     :aria-checked="ariaChecked"
     :data-state="dataState"

@@ -135,7 +135,7 @@ provideMenuItemIndicatorContext({
     :ref="setMenuItemElement"
     data-soybean-menu-checkbox-item
     :class="cls"
-    role="menu-checkbox-item"
+    role="menuitemcheckbox"
     :disabled="disabled"
     :data-state="dataState"
     :aria-checked="ariaChecked"

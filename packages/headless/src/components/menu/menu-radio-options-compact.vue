@@ -53,7 +53,7 @@ const ui = useMenuUi();
         v-else
         v-bind="radioItemProps"
         :value="item.value"
-        :disabled="item.disabled"
+        :disabled="item.disabled ?? radioItemProps?.disabled"
         :text-value="item.textValue"
         @select="emit('select', item, $event)"
       >
