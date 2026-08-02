@@ -43,6 +43,93 @@ describe('SAspectRatio', () => {
 
       wrapper.unmount();
     });
+
+    it('sets position relative on the wrapper', () => {
+      const wrapper = mount(SAspectRatio, {
+        slots: { default: '<span />' },
+        attachTo: document.body
+      });
+
+      const wrapperEl = wrapper.get('[data-soybean-aspect-ratio-wrapper]');
+      expect(wrapperEl.attributes('style')).toContain('position: relative');
+
+      wrapper.unmount();
+    });
+
+    it('sets position absolute on the content element', () => {
+      const wrapper = mount(SAspectRatio, {
+        slots: { default: '<span />' },
+        attachTo: document.body
+      });
+
+      const contentEl = wrapper.get('[data-soybean-aspect-ratio]');
+      expect(contentEl.attributes('style')).toContain('position: absolute');
+
+      wrapper.unmount();
+    });
+  });
+
+  describe('polymorphic rendering', () => {
+    it('renders as a div by default', () => {
+      const wrapper = mount(SAspectRatio, {
+        slots: { default: '<span />' },
+        attachTo: document.body
+      });
+
+      expect(wrapper.get('[data-soybean-aspect-ratio]').element.tagName).toBe('DIV');
+
+      wrapper.unmount();
+    });
+
+    it('renders as a custom element via the as prop', () => {
+      const wrapper = mount(SAspectRatio, {
+        props: { as: 'section' },
+        slots: { default: '<span />' },
+        attachTo: document.body
+      });
+
+      expect(wrapper.get('[data-soybean-aspect-ratio]').element.tagName).toBe('SECTION');
+
+      wrapper.unmount();
+    });
+  });
+
+  describe('slot props', () => {
+    it('exposes the aspect percentage via the default slot', () => {
+      let slotAspect: number | undefined;
+
+      const wrapper = mount(SAspectRatio, {
+        props: { ratio: 16 / 9 },
+        slots: {
+          default: (scope: { aspect: number }) => {
+            slotAspect = scope.aspect;
+            return '<span />';
+          }
+        },
+        attachTo: document.body
+      });
+
+      // 16:9 ratio → aspect = (9/16) * 100 ≈ 56.25
+      expect(slotAspect).toBeCloseTo(56.25, 1);
+
+      wrapper.unmount();
+    });
+  });
+
+  describe('class forwarding', () => {
+    it('forwards class to the content element', () => {
+      const wrapper = mount(SAspectRatio, {
+        props: { class: 'rounded-lg overflow-hidden' },
+        slots: { default: '<span />' },
+        attachTo: document.body
+      });
+
+      const contentEl = wrapper.get('[data-soybean-aspect-ratio]');
+      expect(contentEl.classes()).toContain('rounded-lg');
+      expect(contentEl.classes()).toContain('overflow-hidden');
+
+      wrapper.unmount();
+    });
   });
 
   describe('accessibility', () => {
