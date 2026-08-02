@@ -44,30 +44,43 @@ pnpm typecheck
 
 ```
 apps/docs/
+├── build/            # 构建期 Vite 插件（例如生成 llms.txt）
+├── locales/          # 应用 i18n 语言文件
+├── public/           # 静态资源、registry JSON 与公开 schema
 ├── src/
 │   ├── components/   # 文档专用组件（UsageCode、PlaygroundGallery、ComponentApi）
-│   ├── generated/    # 自动生成的更新日志和语言数据
+│   ├── docs/         # 结构镜像的 en/ 与 zh-CN Markdown
+│   ├── generated/    # API/changelog 文档与 locale 模板
 │   ├── layouts/      # 页面布局
+│   ├── modules/      # 应用安装器及 Markdown/i18n 集成
 │   ├── pages/        # 路由页面（基于文件的路由）
+│   ├── shared/       # 生成数据适配与共享工具
 │   └── styles/       # 站点样式
-├── locales/          # 国际化语言文件
-├── public/           # 静态资源
-└── build/            # 构建输出（已 git 忽略）
+├── package.json
+├── uno.config.ts
+└── vite.config.ts
 ```
 
 ## 📝 生成内容
 
 文档站点从 `apps/docs/src/generated/` 读取生成的数据：
 
+- `api/` — 各组件 API 文档与聚合索引
+- `api-locales/` — 按 locale 生成的 API 描述
 - `changelog/` — 各组件更新日志条目
 - `changelog-locales/` — 翻译后的更新日志数据
-- 组件 API 描述和语言基线数据
 
 从主仓库重新生成这些数据：
 
 ```bash
-pnpm sui api              # 重新生成 API JSON 和语言基线
-pnpm sui changelog         # 重新生成更新日志数据
+pnpm sui api                              # 重新生成 API JSON 与 locale 基线
+pnpm sui changelog                        # 重新生成 changelog JSON 与 locale 基线
+pnpm sui sbean-schema                     # 重新生成公开 sbean JSON schema
 pnpm sui api-translate -- --locale zh-CN
 pnpm sui changelog-translate -- --locale zh-CN
 ```
+
+生产文档构建还会重新生成 `apps/docs/public/r/` 下的 sbean registry。
+
+跨 workspace 依赖及生成链见
+[项目架构](../../docs/architecture.md)。

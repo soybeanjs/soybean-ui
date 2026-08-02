@@ -24,7 +24,7 @@ After public export changes, rerun `pnpm sui headless` so `packages/headless/src
 ## KEY PATTERNS
 
 - **useContext**: Factory returning `[provideX, injectX]` pair via `Symbol` key. Components call `injectX('ComponentName')` — throws if missing provider.
-- **useUiContext**: Bridge to UI layer. Returns `[provideXUi, useUi]`. Headless reads class tokens injected by UI layer. Only file with `@ts-expect-error`.
+- **useUiContext**: High-fanout bridge to the UI layer. Returns `[provideXUi, useUi]`; 67 component contexts currently consume it, so changes require direct contract tests plus broad component verification.
 - **useControllableState**: Controlled/uncontrolled prop pattern. If initial prop is `undefined`, uses internal `shallowRef`; otherwise returns computed proxy.
 - **useForwardElement**: Exposes inner DOM element via `defineExpose`. Prefer over direct DOM access.
 - **Compact components**: Stable, data-driven compositions can live in headless as `{Name}Compact`, reusing base parts while centralizing iteration, slot props, and default content. Current examples span accordion, card, date-field, dialog, editable, hover-card, layout, navigation-menu, pagination, popover, stepper, and table.
@@ -39,6 +39,9 @@ packages/headless/src/
 ├── shared/       # Pure TS utilities (no Vue). See shared/AGENTS.md
 ├── constants/    # ARIA attrs, collection markers, component constants
 ├── date/         # Shared date and calendar helpers
+├── locale/       # Locale registry and language bundles
+├── nuxt/         # Nuxt auto-registration module
+├── resolver/     # unplugin-vue-components resolver
 ├── types/        # Global types: ClassValue, UiClass, component/DOM/event types
 └── index.ts      # Barrel: re-exports components + composables + shared + types
 ```

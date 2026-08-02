@@ -11,9 +11,9 @@ For detailed rules, see [layers.md](layers.md) (implementation layers), [surface
 
 ## Repository context
 
-- Monorepo: pnpm workspaces (`packages/`, `apps/`; root = `@soybeanjs/ui`)
+- Monorepo: pnpm workspaces (private root + 9 child workspaces)
 - Stack: Vue 3 + TypeScript (strict) + UnoCSS + `@soybeanjs/cva`
-- Architecture: headless / styled separation. Data flow is `packages/headless` -> `packages/ui` only, never reverse.
+- Architecture: headless / styled separation. Compile-time dependency is `packages/ui` -> `packages/headless`; headless never imports UI.
 - `@soybeanjs/headless` (`packages/headless/`): Logic, state, a11y, structure. Zero styles.
 - `@soybeanjs/ui` (`packages/ui/`): Styled wrappers. UnoCSS + `cv()` / `scv()`. `S`-prefixed components.
 - `@soybeanjs/ui-docs` (`apps/docs/`): Vite + vite-ssg + unplugin-vue-markdown + markdown-exit. NOT VitePress.
@@ -92,8 +92,8 @@ Example: "audit the `dialog` component against industry baselines" means audit s
 
 ### Audit and evaluation of shipped components
 
-1. Load [audit.md](audit.md) for the full assessment methodology, seven check dimensions (D1–D7, 100 items), severity levels, acceptance states, and regression rules.
-2. Confirm the project snapshot in `docs/check.md` for the component's task id (C01–C89), current priority, key check items, and any concrete benchmark findings already recorded.
+1. Load [audit.md](audit.md) for the full assessment methodology, seven check dimensions (D1–D7, 102 items), severity levels, acceptance states, and regression rules.
+2. Confirm the project snapshot in `docs/check.md` for the component's task id (C01–C90), current priority, key check items, and any concrete benchmark findings already recorded.
 3. Run the eight-step assessment flow from [audit.md -> Assessment flow](audit.md#assessment-flow). Grade every finding by severity; do not start the next component while a Blocker is open.
 4. For D2 industry benchmarking, follow [audit.md -> Industry benchmarking](audit.md#d2-industry-benchmarking) (six libraries) and record concrete findings back into the component's task row in `docs/check.md`.
 5. Apply the [audit.md -> Single-component acceptance checklist](audit.md#single-component-acceptance-checklist) before marking the component passed.
@@ -147,7 +147,7 @@ Execute in this order. Do not skip ahead until the current phase is done.
 
 ## Boundary rules
 
-- Data flow must remain `packages/headless` -> `packages/ui`. Never import `@soybeanjs/ui` from `packages/headless`.
+- Compile-time dependency must remain `packages/ui` -> `packages/headless`. Never import `@soybeanjs/ui` from `packages/headless`.
 - Headless owns logic, state, accessibility, structure aggregation, and default semantics.
 - UI owns variants, UnoCSS classes, `ui` injection, and wrapper composition.
 - Do not add styles or visual classes in headless (not even `hidden`, `sr-only`).
@@ -199,19 +199,22 @@ Run these after the corresponding source changes. Never hand-edit generated outp
 ## Build and validation commands
 
 ```bash
-pnpm dev              # Playground (Vite)
-pnpm build            # headless (tsdown) -> ui (tsdown) -> css (unocss build)
-pnpm lint             # oxlint --fix && eslint --fix
-pnpm fmt              # oxfmt (formatter)
-pnpm test             # vitest run (happy-dom, @vue/test-utils)
-pnpm typecheck        # vue-tsc --noEmit --skipLibCheck
+pnpm dev:playground   # Playground (Vite)
+pnpm dev:docs         # Documentation site (Vite SSG)
+pnpm build            # headless -> ui -> sbean via Vite Plus pack
+pnpm build:libs       # shadcn-theme -> unocss-shadcn
+pnpm lint             # vp lint --fix && package Vue lint
+pnpm fmt              # vp fmt
+pnpm test             # recursive UI/headless and sbean tests
+pnpm test:e2e         # Vitest Browser Mode + Playwright Chromium
+pnpm typecheck        # recursive workspace type checks
 pnpm release          # Publish packages (soy release)
-pnpm stub             # tsx scripts/stub.ts — link src to dist for local dev
+pnpm stub             # switch headless exports to src (`--reset` restores dist)
 ```
 
-- Pre-commit hook (simple-git-hooks): `pnpm typecheck && pnpm lint-staged`.
-- CI: tag-triggered release only. No PR check workflow.
-- Formatter: `oxfmt`.
+- Pre-commit hook (Vite Plus, `.vite-hooks/pre-commit`): `vp staged`.
+- CI: PR/push typecheck, lint, unit tests, and browser e2e; tag-triggered build/release.
+- Formatter: Vite Plus `vp fmt`.
 
 ## Result reporting
 

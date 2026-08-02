@@ -57,25 +57,22 @@ SoybeanUI 采用 Headless 架构，将逻辑层和表现层完全分离。这意
 
 ## 架构设计
 
-SoybeanUI 采用严格的 **双层分离** 架构模型：
+SoybeanUI 的组件运行时采用严格的 **双层分离** 架构模型。下图中的箭头表示
+“依赖于”：
 
 ```text
-┌─────────────────────────────────────────┐
-│           @soybeanjs/ui (src/)          │
-│  S-prefixed 组件   (SButton…)           │
-│  UnoCSS 类 · @soybeanjs/cva             │
-│  provideXUi(ui)  ──────────────────┐    │
-└────────────────────────────────────┼────┘
-                                     │ 样式注入
-┌────────────────────────────────────▼────┐
-│        @soybeanjs/headless (headless/)  │
-│  逻辑 · 状态 · A11y · 键盘导航          │
-│  useUiContext() 读取注入的类            │
-│  零样式 — 适配任何 CSS 方案             │
-└─────────────────────────────────────────┘
+应用 ──> @soybeanjs/ui ──> @soybeanjs/headless
+                  │
+                  └─────> @soybeanjs/shadcn-theme
+
+UnoCSS 配置 ──> @soybeanjs/unocss-shadcn
+                  └─────> @soybeanjs/shadcn-theme
 ```
 
-**数据流严格单向**：`headless` → `src`。样式层永远不会导入 headless 的内部实现 — 它通过 `provideXUi(computedUi)` 注入样式令牌，headless 组件通过 `useUiContext()` 读取这些样式。
+编译期依赖保持单向：`@soybeanjs/ui` 只从
+`@soybeanjs/headless` 的公共入口导入，headless 不会反向导入 UI。运行时由样式
+包装组件通过 `provideXUi(computedUi)` 注入插槽类名映射，再由被包装的 headless
+分片通过 `useUiContext()` 读取。
 
 ### @soybeanjs/headless - 逻辑层
 
@@ -88,7 +85,9 @@ SoybeanUI 采用严格的 **双层分离** 架构模型：
 - **事件处理**：统一的事件处理机制
 - **Compact 聚合组件**：为数据驱动场景提供开箱即用的聚合组件
 
-Headless 组件完全不包含任何样式，给你最大的自由度来构建自己的设计系统。如果你想要完全控制组件的外观，或者需要构建一个独特的设计系统，Headless 包是你的最佳选择。
+Headless 组件不携带视觉主题，给你最大的自由度来构建自己的设计系统。定位与交互
+所需的 CSS 变量或内联布局值仍可能存在。如果你想要完全控制组件的外观，或者需要
+构建一个独特的设计系统，Headless 包是你的最佳选择。
 
 ### @soybeanjs/ui - 表现层
 

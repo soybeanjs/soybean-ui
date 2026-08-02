@@ -9,7 +9,7 @@ Component development rules live in the self-contained skill at `.agents/skills/
 - [surfaces.md](.agents/skills/soybean-ui-component-development/surfaces.md) — playground, docs, testing delivery surface rules.
 - [e2e.md](.agents/skills/soybean-ui-component-development/e2e.md) — browser e2e testing (Tier 1 component-level + Tier 2 app-level smoke), env setup, core scenarios, assertion standards.
 - [process.md](.agents/skills/soybean-ui-component-development/process.md) — finish checklist, git commit convention.
-- [audit.md](.agents/skills/soybean-ui-component-development/audit.md) — assessment methodology, seven check dimensions (D1–D7, 100 items), severity, acceptance, regression flows for already-shipped components.
+- [audit.md](.agents/skills/soybean-ui-component-development/audit.md) — assessment methodology, seven check dimensions (D1–D7, 102 items), severity, acceptance, regression flows for already-shipped components.
 - [EXAMPLES.md](.agents/skills/soybean-ui-component-development/EXAMPLES.md) — request shapes that trigger the skill.
 
 **Global skill rules (mandatory for all agents, applied before any task):**
@@ -25,18 +25,38 @@ If a nearer scoped `AGENTS.md` exists for your target path, use it only to narro
 
 **Generated:** 2026-08-02
 **Version:** 0.29.3
-**Monorepo:** pnpm workspaces (`packages/`, `apps/`; root = `@soybeanjs/ui`)
+**Monorepo:** pnpm workspaces (private root + 9 child workspaces; 6 publishable packages, 3 private apps)
 **Stack:** Vue 3 + TypeScript (strict) + UnoCSS + @soybeanjs/cva
 
 ## ARCHITECTURE
 
-Headless/Styled separation. Two packages ship independently:
+The canonical workspace map, labeled dependency graph, build/test flows, and
+sources of truth live in [docs/architecture.md](docs/architecture.md).
+Prioritized structural findings and acceptance criteria live in
+[docs/optimize.md](docs/optimize.md).
+
+Core Headless/Styled separation:
 
 - **@soybeanjs/headless** (`packages/headless/`): Logic, state, a11y. Zero styles. 94 component directories (92 publicly exported; `_common`/`_icon` are internal), 27 composables. Includes base primitives, date utilities, and Compact aggregations.
 - **@soybeanjs/ui** (`packages/ui/`): Styled wrappers. UnoCSS + `cv()` / `scv()`. 88 component directories / 110 S-prefixed exports.
-- **@soybeanjs/ui-docs** (`apps/docs/`): Vite + vite-ssg + unplugin-vue-markdown + markdown-exit. NOT VitePress.
 
-Data flow: `packages/headless` → `packages/ui` (never reverse). UI injects styles via `provideXUi(ui)` → headless reads via `useUiContext`.
+Compile-time dependency direction is **UI → Headless**: UI imports public
+headless entry points; headless MUST NOT import UI. Runtime class injection goes
+from the styled wrapper to its nested headless parts via `provideXUi(ui)` and
+`useUiContext`.
+
+Other publishable modules:
+
+- **@soybeanjs/shadcn-theme** (`packages/shadcn-theme/`): token and CSS-variable generator.
+- **@soybeanjs/unocss-shadcn** (`packages/unocss-shadcn/`): UnoCSS adapter over the theme generator.
+- **sbean** (`packages/sbean/`): source-distribution CLI, registry, schemas, templates, and MCP.
+- **@soybeanjs/ui-skills** (`skills/`): generated consumer-facing agent skills.
+
+Private applications:
+
+- **@soybeanjs/ui-docs** (`apps/docs/`): Vite + vite-ssg + unplugin-vue-markdown + markdown-exit. NOT VitePress.
+- **@soybeanjs/ui-playground** (`apps/playground/`): shared examples and manual/visual validation.
+- **@soybeanjs/ui-nuxt** (`apps/nuxt/`): Nuxt integration fixture.
 
 ## WHERE TO LOOK
 
@@ -47,6 +67,9 @@ Data flow: `packages/headless` → `packages/ui` (never reverse). UI injects sty
 | Variant definitions      | `packages/ui/src/styles/[name].ts`                                        | `cv()` / `scv()` with `// @unocss-include` at top                                                                          |
 | Shared hooks             | `packages/headless/src/composables/`                                      | `use-*.ts`, pure Vue composables (27 total)                                                                                |
 | Theme/sizing             | `packages/ui/src/theme/`                                                  | `ThemeColor` (8), `ThemeSize` (xs…2xl)                                                                                     |
+| Theme CSS generation     | `packages/shadcn-theme/`                                                  | `createShadcnTheme(options).getCss()`                                                                                      |
+| UnoCSS adapter           | `packages/unocss-shadcn/`                                                 | `presetShadcn()` / `presetSbean()`                                                                                         |
+| Source-distribution CLI  | `packages/sbean/`                                                         | commands → registry/schema/templates/MCP                                                                                   |
 | Utility functions        | `packages/headless/src/shared/`                                           | Pure TS helpers (DOM, focus, tree, form, guard, comparison)                                                                |
 | Global types             | `packages/headless/src/types/`                                            | `ClassValue`, `UiClass<S>`, `PropsToContext<T,K>`, `PrimitiveProps`                                                        |
 | Generated API data       | `apps/docs/src/generated/api/`                                            | `pnpm sui api` baseline + `pnpm sui api-translate` locale descriptions                                                     |
@@ -54,6 +77,8 @@ Data flow: `packages/headless` → `packages/ui` (never reverse). UI injects sty
 | Docs content             | `apps/docs/src/docs/[en\|zh-CN]/`                                         | Markdown rendering `<UsageCode>`, `<PlaygroundGallery>`, `<ComponentApi>`                                                  |
 | Demo source              | `apps/playground/src/examples/[component]/`                               | Vue SFCs referenced by docs                                                                                                |
 | Browser e2e tests        | `packages/ui/test/browser/`                                               | `vitest.browser.config.ts` + `vitest-browser-vue` + `axe-core` (color-contrast on)                                         |
+| Workspace architecture   | `docs/architecture.md`                                                    | Package/app map, dependency graph, generation/build/test/release flows                                                     |
+| Architecture assessment  | `docs/optimize.md`                                                        | Evidence-ranked maintainability, scalability, and quality recommendations                                                  |
 | Component dev skill      | `.agents/skills/soybean-ui-component-development/`                        | SKILL.md + layers.md + surfaces.md + e2e.md + process.md + audit.md + EXAMPLES.md                                          |
 | Component audit snapshot | `docs/check.md`                                                           | 88-component task table (C01–C90), P0–P3 priority, 13-round order, benchmark findings; methodology sourced from `audit.md` |
 
@@ -62,14 +87,17 @@ Data flow: `packages/headless` → `packages/ui` (never reverse). UI injects sty
 ```bash
 pnpm dev:playground    # Playground (Vite)
 pnpm dev:docs         # Docs site (Vite + vite-ssg)
-pnpm build            # headless (tsdown) → ui (tsdown) → sbean (tsdown)
+pnpm build            # headless → ui → sbean via Vite Plus pack
+pnpm build:libs       # shadcn-theme → unocss-shadcn
+pnpm build:docs       # package build → sbean registry → docs SSG
+pnpm build:playground # Playground production build
 pnpm lint             # vp lint --fix && pnpm lint:vue (uses @soybeanjs/eslint-config-vue)
 pnpm fmt              # vp fmt (formatter)
-pnpm test             # vitest run (happy-dom, @vue/test-utils)
+pnpm test             # recursive workspace unit tests (UI/headless + sbean)
 pnpm test:e2e         # browser e2e (Vitest Browser Mode + playwright chromium; run `pnpm exec playwright install chromium` first)
 pnpm typecheck        # vue-tsc --noEmit --skipLibCheck (runs across all workspaces)
 pnpm release          # Generate changelog + sync templates + publish (soy release)
-pnpm stub             # tsx scripts/stub.ts — link src to dist for local dev
+pnpm stub             # switch headless development exports to src (`--reset` restores dist exports)
 pnpm sui headless     # Regenerate packages/headless/src/constants/components.ts + packages/headless/src/namespaced/index.ts from packages/headless/src/index.ts
 pnpm sui ui           # Regenerate packages/ui/src/constants/components.ts from packages/ui/src/index.ts
 pnpm sui api          # Regenerate apps/docs/src/generated/api/*.json and apps/docs/src/generated/api-locales/*.json base data
@@ -79,8 +107,8 @@ pnpm sui changelog    # Regenerate apps/docs/src/generated/changelog/*.json and 
 pnpm sui changelog-translate -- --locale <locale>  # Translate generated English changelog summaries into a non-English locale
 ```
 
-- **Pre-commit hook** (simple-git-hooks): `vp staged`
-- **CI**: `ci.yml` runs typecheck / lint / test + browser e2e on PRs and pushes to `main`/`master`; `release.yml` handles tag-triggered release.
+- **Pre-commit hook** (Vite Plus, `.vite-hooks/pre-commit`): `vp staged`
+- **CI**: `ci.yml` runs typecheck / lint / test + browser e2e on PRs and pushes to `main`/`master`; it does not currently build packages/docs or check generated drift. `release.yml` handles tag-triggered build and release.
 - **Formatter**: `vp fmt`
 
 ## PACKAGE EXPORTS
@@ -92,6 +120,9 @@ pnpm sui changelog-translate -- --locale <locale>  # Translate generated English
 - `./shared` → pure TS utilities
 - `./constants` → ARIA constants, component keys
 - `./date` → shared date utilities and calendar helpers
+- `./locale` and `./locale/*` → locale registry and language bundles
+- `./nuxt` → Nuxt auto-registration module
+- `./resolver` → unplugin-vue-components resolver
 - `./namespaced` → named-export namespace (e.g. `Headless.AccordionRoot`)
 - `./types` → shared type surface for component, DOM, and utility types
 - `./*` → `./components/*/index.ts` (per-component sub-path: `@soybeanjs/headless/accordion`)
@@ -105,8 +136,9 @@ pnpm sui changelog-translate -- --locale <locale>  # Translate generated English
 
 ## DEPENDENCY RULES
 
-- `packages/headless` → MUST NOT import from `@soybeanjs/ui` (circular dep)
-- `packages/ui` → imports `@soybeanjs/headless` (via package.json alias, dev points to source)
+- `packages/ui` → imports public `@soybeanjs/headless` entry points
+- `packages/headless` → MUST NOT import from `@soybeanjs/ui` (would create a circular dependency)
+- `packages/unocss-shadcn` → imports `@soybeanjs/shadcn-theme`; token ownership stays in the theme package
 - Components re-exported from barrel files: `packages/headless/src/index.ts`, `packages/ui/src/index.ts`
 
 ## KEY PATTERNS (verified from source)

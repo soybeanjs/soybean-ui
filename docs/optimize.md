@@ -1,139 +1,563 @@
-# 代码与文档改进评估报告
+# 项目结构与工程质量改进评估
 
-> 基于 codegraph 分析与文档校验工作生成的系统性评估与改进建议。
+> **评估时间：** 2026-08-02
 >
-> **生成时间：** 2026-08-02
-> **适用版本：** 0.29.3
-> **分析范围：** 组件关系、模块依赖、系统层级、文档与代码对齐
+> **适用版本：** `0.29.3`
+>
+> **详细架构：** [architecture.md](./architecture.md)
+>
+> **方法：** CodeGraph 1.5.0 全量代码图谱 + workspace 清单、配置、生成物与文档交叉校验
 
----
+## 1. 结论摘要
 
-## 一、代码实现层面
+项目的核心架构方向是成立的：
 
-### 1.1 架构一致性 ✅ 良好
+- Headless 与 Styled 两层职责清楚，编译期依赖保持为
+  `@soybeanjs/ui → @soybeanjs/headless`。
+- `useUiContext` 把视觉 token 注入与行为实现隔离，是高杠杆的深模块。
+- `createShadcnTheme` 同时服务运行时主题和 UnoCSS 构建，避免两套 token
+  生成逻辑。
+- `sbean`、组件包、文档站、playground、生成脚本均有明确用途。
+- TypeScript 严格模式、106 个 UI/headless 单测文件、15 个 sbean 测试文件及
+  browser e2e 已形成基础质量网。
 
-**优点：**
+当前主要风险不在组件目录是否“分得够细”，而在跨 workspace 的工程约束没有
+完全机器化：
 
-- Headless/Styled 分层清晰，数据流单向（`headless` → `ui`），无逆向依赖
-- 三种组件模式（Multi-slot / Compact / Single-class）边界明确
-- `useContext` + `useUiContext` 桥接设计解耦了逻辑与样式
+1. 若干直接依赖未在所属 workspace 声明，由 `shamefullyHoist` 掩盖。
+2. PR CI 不构建发布包或文档，也不校验生成物是否为同一批次。
+3. docs 与 playground 存在双向源码导入，且使用全量 eager glob。
+4. 两个高影响接口缺少直接契约测试。
+5. 文档、聚合索引和逐组件生成文件仍可能部分同步。
+6. Headless/Nuxt 缺独立 typecheck，双语 Markdown 文件树也未保持同构。
 
-**潜在风险：**
+建议先解决依赖闭包、CI 构建/生成一致性和发布包 smoke test，再进行目录拆分或
+引入新的构建编排工具。
 
-| 风险点                                              | 位置                                                         | 建议                                                                                           |
-| --------------------------------------------------- | ------------------------------------------------------------ | ---------------------------------------------------------------------------------------------- |
-| Compact 组件清单仅以散文形式列举                    | `packages/headless/AGENTS.md` L30, `AGENTS.md` L120          | 改用常量数组 + 自动校验脚本，避免新增 Compact 时遗漏文档同步                                   |
-| `useUiContext` 是唯一允许 `@ts-expect-error` 的文件 | `packages/headless/AGENTS.md` L27                            | 建议添加专项单测或类型守卫，防止后续误删该豁免或扩散到其他文件                                 |
-| Barrel 文件手工维护（`index.ts`）                   | `packages/headless/src/index.ts`, `packages/ui/src/index.ts` | 已有 `pnpm sui headless/ui` 生成 constants，但 barrel 本身仍手写；可考虑生成 barrel 以杜绝遗漏 |
+## 2. 评估基线
 
-### 1.2 类型系统 ✅ 良好
+### 2.1 CodeGraph 覆盖
 
-**优点：** 严格模式 + `extends /** @vue-ignore */ HTMLAttributes` 抑制 IDE 噪声的做法统一。
+- 索引状态：最新。
+- 文件：2,053。
+- 节点：19,293。
+- 边：55,503。
+- 语言分布：1,121 Vue、926 TypeScript、4 YAML、1 JavaScript、1 TSX。
+- Git 跟踪文件总数：2,730。未进入代码图谱的 Markdown、JSON、CSS、资源文件
+  通过直接读取和内容检索校验。
 
-**改进建议：**
+### 2.2 当前规模
 
-- `UiClass<UiSlot>` 已统一，但 `PropsToContext<T,K>` 的使用散落在各组件 context.ts 中，可在 `packages/headless/src/types/` 增加一份「类型使用索引」说明各类型的适用场景，降低新成员上手成本。
-- 建议在 CI 中增加 `pnpm typecheck` 之外的「未使用类型导出」检测（如 `ts-prune`），防止类型层死代码累积。
+- pnpm 识别 10 个 workspace project：私有根项目、9 个子 workspace。
+- 可发布包：6 个。
+- 私有应用：3 个。
+- Headless：94 个目录、92 个公共组件入口、27 个 composable。
+- UI：88 个公共组件组、110 个 `S` 前缀导出。
+- Playground：451 个示例 SFC。
+- Browser e2e：3 个组件级 spec。
 
-### 1.3 测试覆盖 ⚠️ 待加强
+### 2.3 证据边界
 
-**现状：**
+以下结论区分为：
 
-- 单测基于 happy-dom + @vue/test-utils
-- e2e 基于 Vitest Browser Mode + Playwright + axe-core（color-contrast on）
+- **事实：** 由源码、manifest、配置、测试或 CodeGraph 关系直接证明。
+- **推断：** 由事实导出的风险判断，需通过构建耗时、bundle 或独立安装实验量化。
+- **未知：** 本次静态分析无法确定的运行时/生产数据。
+
+本报告不会把“没有仓库内测试”写成“功能一定有 bug”，也不会在没有基准数据时
+承诺某种构建工具能显著提速。
+
+## 3. 已验证的架构优势
+
+### 3.1 分层接口有深度
+
+**事实：** CodeGraph 显示 `useUiContext` 被 67 个组件 context 调用，变更影响
+68 个符号。调用方只需要学习 slot→class 接口，不需要了解样式 recipe 的实现。
+
+**判断：** 这是高杠杆接口，不应拆散到各组件，也不应让 UI 层复制行为逻辑。
+优化重点应是契约测试和类型收紧，而不是重写该 seam。
+
+### 3.2 主题只有一个生成核心
+
+**事实：** `createShadcnTheme` 同时被 UI `ConfigProvider` 与
+`presetShadcn` 使用；CodeGraph 影响范围为 10 个符号，覆盖四份 UnoCSS 配置。
+
+**判断：** 运行时与构建时共享生成器能降低 token 漂移。应补测试而非建立第二套
+主题适配层。
+
+### 3.3 组件交付面已有统一入口
+
+**事实：** `scripts/cli.ts` 通过 `pnpm sui` 统一暴露 headless/UI 元数据、API、
+changelog、locale、schema 和 skills 生成命令。
+
+**判断：** 后续一致性检查应建立在该入口上，不需要再创建一套平行生成 CLI。
+
+### 3.4 sbean 的模块边界较清晰
+
+**事实：** sbean 将 commands、registry、schema、preset、templates、MCP 和
+utils 分开，并有 15 个测试文件及 ADR。
+
+**判断：** sbean 已经接近“较小接口 + 较深实现”的结构。当前优先项是依赖声明、
+打包验证和 ADR/manifest 对齐，而不是继续拆目录。
+
+## 4. 发现与建议
+
+## P0：优先处理
+
+### F1. Workspace 依赖闭包不完整
+
+**严重度：Major · 置信度：高**
+
+**事实：**
+
+- `pnpm-workspace.yaml` 设置了 `shamefullyHoist: true`。
+- `packages/ui` 的运行时代码直接导入 `@vueuse/core`，但 UI manifest 未声明。
+- `packages/sbean/src/registry/config.ts` 运行时导入
+  `@soybeanjs/shadcn-theme`，但 sbean manifest 未声明。
+- `packages/unocss-shadcn/src/index.ts` 导入 `lightningcss`；manifest 将其放在
+  `devDependencies`，而 pack 配置又将 dev dependency 列入 `neverBundle`。
+- `apps/docs` 直接使用 `@soybeanjs/utils`、`@soybeanjs/colord`、
+  `@vueuse/core`、`unocss`、`unocss-preset-animations`、
+  `@soybeanjs/unocss-preset` 和 `@soybeanjs/unocss-shadcn`，其中多项未在
+  docs manifest 声明。
+- `apps/nuxt` 的 UnoCSS 配置直接使用三项未声明 preset 依赖。
+- `scripts/stub.ts` 使用 `execa`，根 manifest 未声明。
+
+**推断：**
+
+完整 monorepo 安装会因 hoist 和其他 workspace 的依赖而成功，但 filtered
+install、隔离构建、发布 tarball 或不同包管理器消费时，可能出现模块解析失败。
+这也让“删除一个看似无关依赖”产生跨 workspace 回归。
 
 **建议：**
 
-1. **Compact 组件缺测试基线**：`AccordionCompact`、`TableCompact` 等 12 个 Compact 聚合目前依赖手工 playground 验证，应补充组件级 e2e（参考 `.agents/skills/soybean-ui-component-development/e2e.md` Tier 1）。
-2. **a11y 仅 axe-core 自动扫描**：缺少键盘导航的人工/脚本化断言矩阵。建议在 `e2e.md` 中补充「键盘流断言清单」作为 Tier 1 必跑项。
-3. **覆盖率阈值未强制**：`vitest.config` 未设置 `coverage.thresholds`，建议设下限（如 statements 80%）作为 CI 门禁。
+1. 为每个直接 import 补充所属 workspace 的 `dependencies` 或
+   `devDependencies`；运行时 external 必须是 production dependency 或明确的
+   peer dependency。
+2. 对六个发布包执行 `pnpm pack` 后在临时空项目中安装并 import 每个公共入口。
+3. 为 docs、playground、nuxt 分别执行 filtered install/build smoke test。
+4. 完成闭包后再尝试关闭 `shamefullyHoist`；若暂时不能关闭，记录仍依赖 hoist
+   的工具和原因。
 
-### 1.4 依赖与构建 ⚠️ 可优化
+**验收条件：**
 
-- `pnpm stub` 用于本地 src→dist 链接，但无文档说明何时该重新 stub；建议在 `process.md` 的 finish checklist 中加一项「修改了 headless 包导出后执行 `pnpm stub`」。
-- `tsdown` 构建链 `headless → ui → css` 串行执行，未利用 turbo 缓存；若引入 `turbo.json` 的 `dependsOn` + 远端缓存，CI 增量构建可显著提速。
+- 直接依赖扫描无未声明项。
+- 六个 tarball 在空目录中可安装并导入。
+- 三个 app 可在仅安装其声明依赖的条件下构建。
+- `shamefullyHoist` 不再是隐式依赖正确性的必要条件，或保留项有明确清单。
 
----
+### F2. PR CI 未覆盖“可发布/可部署”
 
-## 二、文档实践层面
+**严重度：Major · 置信度：高**
 
-### 2.1 文档结构 ✅ 良好
+**事实：**
 
-**优点：**
+- PR CI 运行 typecheck、`pnpm lint`、unit test 和 browser e2e。
+- PR CI 不运行 `pnpm build`、`pnpm build:docs` 或发布包 smoke test。
+- 根 `lint` 脚本包含 `--fix`，CI 后没有 `git diff --exit-code`。
+- 完整发布包构建在 `v*` tag workflow 中发生。
+- Tag release workflow 不重新运行 unit/browser tests，并使用
+  `pnpm install --no-frozen-lockfile`。
 
-- 三层 AGENTS.md（根 / headless / ui）+ 自包含 skill（SKILL/layers/surfaces/e2e/process/audit/EXAMPLES），职责清晰。
-- `docs/check.md` 作为「项目快照」与 `audit.md`「方法论」分离，避免方法论漂移。
+**推断：**
 
-**改进建议：**
+- 类型和测试通过并不能证明 pack entry、CSS 产物、publishConfig、SSG 或 registry
+  构建可用。
+- lint 在 CI 中修复文件但未检查差异时，可能让未提交的格式修复通过。
+- 构建问题可能到打 tag 后才暴露。
 
-| 问题                                                                                                   | 建议                                                                                                  |
-| ------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------- |
-| 组件计数散落在 4+ 处（根 AGENTS.md、headless AGENTS.md、ui AGENTS.md、docs/check.md、docs/roadmap.md） | 抽取 `docs/stats.json` 作为单一数据源，各文档通过脚本注入或链接引用，杜绝本次出现的「88 vs 87」类漂移 |
-| `docs/roadmap.md` 与 `docs/check.md` 的优先级（P0–P3）定义可能不同步                                   | 在 `roadmap.md` 顶部增加「同步规则」说明：每次 `check.md` 调整优先级后，须同步更新 roadmap 的活跃清单 |
-| skill 内部交叉引用靠相对路径（`audit.md`、`e2e.md`）                                                   | 已较规范，但建议在 `SKILL.md` 顶部增加「文档地图」可视化各文件关系，降低首次阅读成本                  |
+**建议：**
 
-### 2.2 文档准确性 ✅ 已修正
+1. CI 使用非修改模式 lint；若工具只提供 fix 模式，则之后运行
+   `git diff --exit-code`。
+2. 新增 package build job，覆盖所有实际发布包，而不仅是 root 当前的
+   headless/UI/sbean 三项。
+3. 新增 docs SSG build smoke job。
+4. 新增 tarball import smoke job，至少验证根入口、headless 子路径、UI CSS、
+   Nuxt module、resolver 和 sbean MCP/schema 入口。
+5. Release publish 必须依赖已通过的 commit 检查，或在 publish 前重跑必要 tests；
+   默认使用 frozen lockfile，确需可变安装时记录原因。
+6. 对耗时 job 使用路径过滤和 pnpm store cache；先测量，再决定是否需要远程构建
+   缓存。
 
-本次已修正的问题：
+**验收条件：**
 
-- 组件计数（87 → 88 shipped；95 → 94 headless 目录；25 → 27 composables）
-- CI 描述（"No PR check" → `ci.yml` 在 PR 触发）
-- Pre-commit hook（`pnpm typecheck && pnpm lint-staged` → `vp staged`）
-- Roadmap 中 `Rating` 已发布但未移除
+- PR 上能发现 pack、CSS、SSG、exports 和缺失 runtime dependency 错误。
+- CI 检查后工作树必须保持干净。
+- tag workflow 只重复已在 PR 验证的构建，不首次发现构建错误。
+- 发布使用的依赖图与已验证 lockfile 一致。
 
-**长效机制建议：**
+### F3. 生成物不是原子批次，已有可复现漂移
 
-在 `process.md` 的 finish checklist 中新增一项：
+**严重度：Major · 置信度：高**
 
-> 「若本次改动涉及：组件新增/删除、包导出变更、CI 配置变更、hook 变更 → 必须同步检查根 AGENTS.md、docs/check.md、docs/roadmap.md 的计数与描述」
+**事实：**
 
-### 2.3 文档可读性 ⚠️ 可改进
+- `rating` 已从 headless/UI 根 barrel 导出，并有 playground、单测、API JSON、
+  changelog JSON 和 locale 文案。
+- `apps/docs/src/generated/api/rating.json` 已存在，但 API 聚合
+  `index.json` 不含 `rating`。
+- `apps/docs/src/generated/changelog/rating.json` 已存在，但 changelog 聚合
+  index 不含 `rating`。
+- docs 菜单、docs locale 和中英文组件 Markdown 未包含 `rating`。
+- 英文 Markdown 有 95 个、中文有 101 个，存在 8 个路径级差异：英文仅有
+  `input-number`，中文仅有 7 个 picker/旧命名页面；`DocMd` 按相同 path
+  切换 locale，因此该差异可能导致语言切换 404。
+- 本轮分析时，`docs/roadmap.md` 已将 Rating 标记为 shipped，但
+  `docs/components.md` 仍以 87 个 shipped 为基线并把 Rating 计入活跃 P0；
+  本轮已修正文档基线，应用生成面缺口仍未解决。
+- API/changelog 生成器把当前时间写入 `generatedAt`，直接“重新生成后 git
+  diff”并非完全确定性检查。
+- `release-execute` 会刷新 skills/changelog，但不会运行 `pnpm sui api` 或
+  API translation。
 
-- **中英混排**：根 AGENTS.md 以英文为主，但 `docs/check.md`、`docs/roadmap.md` 以中文为主。建议明确：技术规范类（AGENTS.md、skill/\*）保持英文；项目快照类（docs/\*）可中文，但术语统一（如 "Compact aggregation" 不译）。
-- **长表格**：`docs/check.md` 的 C01–C90 任务表行数多，建议增加按类别的折叠分组锚点（如 `#forms`、`#feedback`），便于跳转。
-- **版本号硬编码**：`AGENTS.md` 中 `**Version:** 0.29.3` 与 `package.json` 双源，建议改为从 `package.json` 读取或在 release 流程中自动更新。
+**推断：**
 
----
+当前流程允许“逐组件文件更新、聚合 index/文档入口未更新”的半完成状态。时间戳
+又使简单 drift check 产生噪声。
 
-## 三、代码 ↔ 文档对齐
+**建议：**
 
-### 3.1 已识别的对齐缺口（本次已修复）
+1. 定义一个 `check:generated` 命令，一次校验：
+   - 公共 UI 组件集合；
+   - API/changelog 逐组件文件集合；
+   - 两个聚合 index；
+   - docs 菜单、locale、双语 Markdown；
+   - playground 示例入口。
+2. 生成器先写临时目录，全部成功后原子替换目标目录。
+3. 让 `generatedAt` 支持 `SOURCE_DATE_EPOCH`、Git commit time，或在一致性
+   比较中忽略该字段。
+4. PR CI 运行确定性生成检查；翻译服务不应是 CI 必需，可只校验 locale key
+   模板完整性。
+5. 增加 en/zh-CN 文件树集合差检查；先判定中文 picker 文件是兼容别名还是应删除，
+   再统一 canonical path。
+6. Release 前显式运行或验证 API 生成状态；不要让 API freshness 依赖人工记忆。
+7. 组件完成清单中把“所有交付面集合相等”作为验收项，而不是若干独立人工步骤。
 
-| 缺口                 | 根因                                 |
-| -------------------- | ------------------------------------ |
-| 计数漂移             | 多处手写，无单一数据源               |
-| CI 描述过时          | 文档未跟随 `.github/workflows/` 演进 |
-| Roadmap 含已发布组件 | 发布流程未触发 roadmap 清理          |
+**验收条件：**
 
-### 3.2 建议的自动化对齐机制
+- 任何公共组件都不可能只出现在部分生成面。
+- 同一源码和固定 epoch 连续生成两次无差异。
+- 新增/删除公共组件但未补 docs 或 index 时，CI 给出具体缺失集合。
+- 同一路径在 en/zh-CN 均存在，或被显式列为有 owner 的单语言例外。
 
-1. **文档一致性 CI 检查**：新增脚本 `scripts/check-docs-consistency.ts`，在 CI 中校验：
-   - `AGENTS.md` 中的组件计数 == `packages/ui/src/index.ts` 实际导出数
-   - `headless` 目录计数 == `ls packages/headless/src/components` 实际数
-   - `roadmap.md` 活跃清单不含已发布组件
-   - `AGENTS.md` 版本号 == `package.json` version
+## P1：近期治理
 
-2. **发布流程钩子**：在 `pnpm release` 前自动运行上述校验 + `pnpm sui headless/ui/api/changelog`，失败则阻断发布。
+### F4. 私有 Apps 存在未声明的双向与链式源码依赖
 
-3. **AGENTS.md lint**：将 AGENTS.md 的关键约束（如"Compact 清单"、"anti-patterns"）抽取为可机器校验的规则（如 `agents-lint` 自定义工具），在 pre-commit 中运行。
+**严重度：Moderate · 置信度：高**
 
----
+**事实：**
 
-## 四、优先级建议（按投入产出排序）
+- Docs 通过 `@playground/*` 导入 playground 的 theme、theme configurator 和
+  examples。
+- Playground 通过 `@docs/constants/globs` 反向导入 docs，并直接导入 docs
+  locale JSON。
+- Nuxt `app.vue` 直接导入 playground 首页与 theme；其 i18n 配置引用
+  `en.json`/`zh-CN.json`，但 `apps/nuxt` 当前没有 locale fixture 文件。
+- CodeGraph 显示 `getOrderedPlaygroundExamples` 同时被两个 app 的 gallery
+  使用。
+- 这些边由 tsconfig path 和相对 glob 表达，未进入 package manifest。
 
-| 优先级 | 建议                                            | 预期收益           |
-| ------ | ----------------------------------------------- | ------------------ |
-| P0     | 实现「文档一致性 CI 检查」脚本                  | 杜绝本次类漂移复发 |
-| P0     | 在 `process.md` finish checklist 增加计数同步项 | 流程兜底           |
-| P1     | Compact 组件 e2e 基线补齐                       | 覆盖核心聚合组件   |
-| P1     | 抽取 `docs/stats.json` 单一数据源               | 长期维护成本下降   |
-| P2     | 覆盖率阈值门禁                                  | 防止回归           |
-| P2     | turbo 远端缓存                                  | CI 提速            |
-| P3     | AGENTS.md 版本号自动同步                        | 减少手工操作       |
-| P3     | 文档中英混排规范成文                            | 可读性提升         |
+**推断：**
 
----
+应用所有权和构建顺序不清晰；任意一侧移动文件都会影响另一侧。该结构也阻碍
+filtered build 与独立测试。
 
-## 五、总结
+**建议：**
 
-本次 codegraph 分析验证了项目架构的健壮性：分层清晰、模式统一、anti-patterns 有明确约束。主要改进空间集中在**文档与代码的自动化对齐**——本次发现的所有问题（计数、CI、roadmap）均可通过 CI 脚本和 finish checklist 兜底避免。建议优先落地 P0 的两项机制性改进，从根因上消除漂移。
+- 让 playground 拥有 demo catalog、排序规则和共享类型。
+- docs 可以单向消费 playground 的公开内部入口；playground 不再导入 docs。
+- 如果未来还会有 Storybook/视觉回归等第三个消费者，将 catalog 提取为私有
+  workspace；在只有两个消费者时，不必过早新建包。
+- 将共享 locale 的 owner 和入口显式化，避免 playground 通过相对路径读取 docs。
+- 明确 Nuxt 是 source-coupled smoke fixture 还是独立示例；前者应有构建测试，
+  后者应改用公开入口并补 locale 文件。
+- 在 root task graph 中显式表达 docs 对 demo catalog 的依赖。
+
+**验收条件：**
+
+- `apps/playground` 中不存在 `@docs/*` import。
+- app 之间最多保留一个方向的依赖。
+- 共享入口有最小接口和独立测试。
+- Nuxt i18n 配置引用的文件可解析，且 fixture 有可重复的 build smoke。
+
+### F5. Docs 构建图一次性 eager 引入过多源码
+
+**严重度：Moderate · 置信度：高（影响量需测量）**
+
+**事实：**
+
+- Demo catalog 使用 eager glob 载入 451 个 Vue 示例及其 raw code。
+- `generated-api.ts` 使用 eager raw glob 载入 headless 的 416 个 TS 文件和 UI
+  的 266 个 TS 文件，共 682 个源码文件。
+- `generated-api.ts` 共 1,466 行，内部还包含 TypeScript 文本解析、类型 registry、
+  cache、preview model 和展示适配。
+
+**推断：**
+
+这会扩大 Vite/SSG module graph，并可能增加构建内存、构建时间和客户端 chunk。
+本次没有运行 bundle analyzer，因此不宣称具体字节或性能损失。
+
+**建议：**
+
+1. 记录 docs build time、峰值内存、入口 chunk 与各 route chunk 基线。
+2. Demo 按 component 生成 manifest，组件页面只加载对应示例；raw code 可独立
+   lazy chunk 或构建时写入 JSON。
+3. 把类型源码解析移到 `pnpm sui api`，生成 UI 直接消费的 normalized preview
+   model。
+4. 将 1,466 行模块收敛为三个深模块：
+   - generated document loader；
+   - build-time type normalizer；
+   - presentation model/query interface。
+5. 设置可解释的 docs build budget，避免示例数量增长与构建成本线性绑定。
+
+**验收条件：**
+
+- 组件详情路由不再 eager 引入全部 demo 与 682 份 raw TS。
+- runtime/SSG 展示层不解析 TypeScript 声明文本。
+- 基线指标和允许回归阈值写入 CI 或工程文档。
+
+### F6. 高影响 seam 缺直接契约测试
+
+**严重度：Moderate · 置信度：高**
+
+**事实：**
+
+- `createShadcnTheme` 影响 10 个符号，CodeGraph 找不到受影响测试。
+- `packages/shadcn-theme` 和 `packages/unocss-shadcn` 无测试目录。
+- `useUiContext` 影响 68 个符号；CodeGraph 能关联 7 个下游测试，但没有
+  `use-ui-context` 的直接单测。
+- Browser e2e 当前只有 button、dialog、select 三个 spec；`docs/check.md`
+  已列出待补的浮层、键盘导航和颜色对比场景。
+- `packages/headless` 与 `apps/nuxt` 均未定义 workspace `typecheck` script；
+  递归 typecheck 不能证明它们可作为独立单元通过。
+
+**建议：**
+
+- 为 `createShadcnTheme` 增加 CSS 合约测试：light/dark selector、size/radius、
+  preset override、菜单/feedback token 和格式输出。
+- 为 `presetShadcn` 增加 preflight/preset 组合测试，并覆盖
+  `generated: false|true|object`。
+- 为 `useUiContext` 增加 slot/full-map、响应式更新、默认空值和 provider
+  缺失行为测试。
+- 为 headless 增加独立 `vue-tsc` 门禁，为 Nuxt 增加 `nuxt typecheck` 或等价
+  集成检查。
+- 按 `docs/check.md` 的风险清单扩展 browser e2e，优先浮层/focus/keyboard，
+  不按组件数量平均铺测试。
+
+**验收条件：**
+
+- 高影响 seam 的行为由小而稳定的直接测试锁定。
+- Theme/UnoCSS 改动能在 package 级测试失败，而不是依赖下游人工发现。
+- Browser e2e 优先覆盖平台 API 和真实焦点行为。
+- 根递归 typecheck 覆盖每个需要独立发布或验证的 workspace。
+
+### F7. 构建图与 workspace 依赖图未完全对齐
+
+**严重度：Moderate · 置信度：高**
+
+**事实：**
+
+- 根 `pnpm build` 只执行 headless → UI → sbean。
+- shadcn-theme → unocss-shadcn 由独立 `build:libs` 和 install-time `prepare`
+  负责。
+- UI CSS 构建依赖 unocss-shadcn；UI runtime 又依赖 shadcn-theme。
+- 根 `vite.config.ts` 已有部分 Vite Plus task dependency，但 package scripts
+  未统一通过该图执行。
+- `pnpm-workspace.yaml` 保留 `shared/**` pattern，但当前没有 workspace project
+  匹配它。
+
+**推断：**
+
+安装后修改 theme/preset 再执行根 build，可能复用旧 dist。开发者需要记住
+“先 build:libs”，说明构建顺序知识泄漏给调用者。
+
+**建议：**
+
+- 选择一个现有编排入口作为单一事实源：pnpm 拓扑递归或 Vite Plus task graph。
+- `build` 应覆盖所有发布包，并由依赖图推导顺序。
+- `build:docs`、`build:playground` 和 Nuxt smoke 应依赖相同 package build
+  任务。
+- 若 `shared/**` 没有明确落地计划则移除；若是预留层，在架构文档记录触发条件。
+- 先采集构建 profile；只有现有增量机制不足时再评估 Turbo 等额外系统。
+
+**验收条件：**
+
+- 从 clean checkout 执行一个根 build 命令即可得到所有发布产物。
+- 修改 theme 后无需人工记忆额外前置命令。
+- 同一依赖顺序不在 package.json 和 Vite Plus config 重复维护。
+
+### F8. TypeScript 声明版本与实际锁定版本分裂
+
+**严重度：Moderate · 置信度：高**
+
+**事实：**
+
+- 多个 manifest 与 workspace catalog 请求 TypeScript `7.0.2`。
+- workspace override 和 lockfile 将 TypeScript 解析为 `6.0.3`。
+
+**推断：**
+
+阅读 manifest 的开发者会误判真实编译器能力；升级测试也无法仅从版本 diff 判断。
+
+**建议：**
+
+- 如果 6.0.3 是兼容性临时锁定，统一 manifest 到 6.0.3 并记录解除条件。
+- 如果目标是 7.0.2，先验证 Vue/TypeDoc/Vite Plus 兼容，再删除 override。
+- 增加一个 toolchain report/check，输出 Node、pnpm、TypeScript、vue-tsc、
+  Vite Plus 和 Vitest 实际版本。
+
+**验收条件：**
+
+- manifest、catalog、override 和 lockfile 对有效 TypeScript 主版本表达一致。
+- 临时 override 有原因、owner 和删除条件。
+
+## P2：持续改进
+
+### F9. 类型逃逸与书面约束不一致
+
+**严重度：Minor · 置信度：高**
+
+**事实：**
+
+- 生产源码中至少有 28 行 `as any` / `@ts-expect-error` / `@ts-ignore`
+  匹配，分布于 17 个文件：headless 19 行、UI 4 行、sbean 5 行。
+- 根 AGENTS 把新增这些写法列为 anti-pattern；部分 scoped 文档曾把例外描述为
+  单一文件，但实际不止一个。
+
+**建议：**
+
+- 建立现有例外清单，记录原因和可移除条件。
+- CI 采用“禁止新增”基线，而不是在一次重构中强行清零。
+- 优先处理公共泛型默认值、DOM style 索引和 schema JSON 三类可复用问题，
+  通过 typed helper 集中复杂度。
+- 测试 mock 中的 escape 与发布源码分开统计。
+
+**验收条件：**
+
+- 每个发布源码例外都有局部说明或被 typed helper 替代。
+- 新 PR 不增加未解释的 escape。
+
+### F10. 文档事实有多个手写副本
+
+**严重度：Minor（已造成实际漂移） · 置信度：高**
+
+**事实：**
+
+- 组件数、composable 数、CI、hook 和版本信息散布在多个 README、AGENTS、
+  roadmap/check/components 文档。
+- 本轮更新前的 README 曾记录 95/25/91，实际为 94/27/88 groups + 110 exports。
+- Hook 实际来源是 `.vite-hooks/pre-commit`，不是 simple-git-hooks；本轮已修正根
+  AGENTS 与 component skill。
+- `packages/headless/src/composables/AGENTS.md` 的 25 hooks 与唯一
+  `@ts-expect-error` 描述也已在本轮按 27 个实际导出修正。
+- 本轮发现的本机绝对 `file:///Users/...` 文档链接已替换为仓库相对链接。
+
+**建议：**
+
+- 数量由 generated constants 或专用 metadata JSON 生成，README 只引用。
+- 架构事实集中在 `docs/architecture.md`；评估集中在本文件；组件方法论集中在
+  component skill。
+- 增加 Markdown link check，并禁止仓库文档出现 `file:///Users/`。
+- release 只更新一个版本源，其他文档不硬编码，或由脚本同步。
+
+**验收条件：**
+
+- 自动检查能发现计数、版本、hook 命令和绝对本机链接漂移。
+- 每类事实只有一个权威来源。
+
+### F11. 覆盖率策略尚未量化
+
+**严重度：Enhancement · 置信度：高**
+
+**事实：**
+
+- UI 提供 `test:coverage`，但仓库配置未定义项目级 coverage threshold。
+- 不同模块风险差异很大：纯 recipe、DOM/focus、theme generator、CLI 文件更新
+  不适合使用同一目标解释。
+
+**建议：**
+
+1. 先保存当前 package/目录级基线。
+2. 对新增代码采用 diff coverage；对高影响纯函数/生成器设更高目标。
+3. Browser e2e 以关键行为清单作为门禁，不用 line coverage 替代。
+4. 不直接采用缺乏基线依据的统一“80%”阈值。
+
+**验收条件：**
+
+- coverage 目标能对应具体风险，并有逐步提升计划。
+- 不因低价值 wrapper 行数挤占高价值行为测试投入。
+
+## 5. 推荐执行顺序
+
+### 阶段 A：依赖与发布安全（1–2 周）
+
+1. 完成 direct dependency audit。
+2. 添加六个 package 的 pack/install/import smoke。
+3. 将 CI lint 改为非修改检查并验证 clean tree。
+4. PR CI 增加 package build 与 docs SSG build。
+5. 为 headless/Nuxt 增加独立 typecheck，并收紧 release lockfile/test gate。
+
+### 阶段 B：生成一致性（1–2 周）
+
+1. 让 API/changelog 生成可确定重放。
+2. 实现公共组件交付面集合校验。
+3. 修复当前 Rating 的 index/menu/docs 缺口。
+4. 对齐 en/zh-CN canonical 文件树。
+5. 在 CI 中阻断部分生成状态。
+
+### 阶段 C：高影响 seam（2–4 周）
+
+1. 增加 theme、UnoCSS preset、`useUiContext` 直接测试。
+2. 按 `docs/check.md` 扩展真实浏览器场景。
+3. 统一 root build dependency graph。
+
+### 阶段 D：Docs 可扩展性（需要基准数据后）
+
+1. 消除 docs ↔ playground 反向边。
+2. Demo catalog 分组件 lazy load。
+3. 将 raw TypeScript 解析迁移到 API generator。
+4. 明确 Nuxt fixture 所有权并补齐 locale/build smoke。
+5. 建立 docs build/bundle budget。
+
+## 6. 不建议立即执行的方案
+
+- **不建议立即引入 Turbo。** 仓库已经有 pnpm 和 Vite Plus task 能力；先统一现有
+  构建图并测量瓶颈。
+- **不建议自动生成所有 barrel。** 目前 barrel 是有意维护的公共接口，生成脚本
+  从它派生 metadata。应校验遗漏，而不是让目录结构自动决定公共接口。
+- **不建议为两个消费者立刻新建 shared package。** 先把 demo catalog 所有权
+  移到 playground 并形成单向依赖；出现第三个稳定消费者后再提包。
+- **不建议用统一覆盖率数字代替风险测试。** Focus、Teleport、keyboard 和
+  package exports 需要行为/安装测试。
+- **不建议把现有类型 escape 一次性全部重写。** 先禁止新增并按可复用问题簇收敛。
+
+## 7. 未知项与后续量化
+
+本次静态分析尚不能确定：
+
+- Docs eager glob 对最终客户端 JS、SSG 峰值内存和构建时间的具体影响。
+- CI 各 job 的实际耗时分布和缓存命中率。
+- 发布 tarball 在 npm、pnpm strict、Yarn PnP 下的真实兼容情况。
+- 关闭 `shamefullyHoist` 后仍需兼容的第三方工具限制。
+- Nuxt i18n 在缺少本地 locale fixture 时的实际 fallback/错误行为。
+
+在选择缓存系统、拆包策略或性能目标前，应先完成以下基线：
+
+- clean/cached package build time；
+- docs SSG build time、峰值内存、route chunk 大小；
+- 六个 tarball 的独立安装矩阵；
+- package/目录级 unit coverage；
+- browser e2e 场景与耗时清单。
+
+## 8. 完成定义
+
+本轮建议全部落地后，项目应满足：
+
+- 每个 workspace 的 manifest 构成真实依赖闭包。
+- PR CI 同时证明“能检查、能测试、能打包、能构建文档”。
+- 公共组件的代码、metadata、API、changelog、docs、demo 集合自动一致。
+- docs/playground 依赖单向且在任务图中可见。
+- 高影响深模块有直接契约测试。
+- 构建与文档规模增长有可观察指标，而不是靠人工感觉判断。

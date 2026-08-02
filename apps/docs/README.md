@@ -44,30 +44,44 @@ pnpm typecheck
 
 ```
 apps/docs/
+├── build/            # Build-time Vite plugins (for example llms.txt generation)
+├── locales/          # Application i18n locale files
+├── public/           # Static assets, registry JSON, and public schemas
 ├── src/
 │   ├── components/   # Doc-specific components (UsageCode, PlaygroundGallery, ComponentApi)
-│   ├── generated/    # Auto-generated changelog and locale data
+│   ├── docs/         # Mirrored en/ and zh-CN Markdown content
+│   ├── generated/    # Generated API/changelog documents and locale templates
 │   ├── layouts/      # Page layouts
+│   ├── modules/      # App installers and Markdown/i18n integration
 │   ├── pages/        # Route pages (file-based routing)
+│   ├── shared/       # Generated-data adapters and shared helpers
 │   └── styles/       # Site-wide styles
-├── locales/          # i18n locale files
-├── public/           # Static assets
-└── build/            # Build output (git-ignored)
+├── package.json
+├── uno.config.ts
+└── vite.config.ts
 ```
 
 ## 📝 Generated Content
 
 The docs site reads generated data from `apps/docs/src/generated/`:
 
+- `api/` — Per-component API documents and aggregate index
+- `api-locales/` — Generated API descriptions by locale
 - `changelog/` — Per-component changelog entries
 - `changelog-locales/` — Translated changelog data
-- Component API descriptions and locale baseline data
 
 To regenerate this data from the main repository:
 
 ```bash
-pnpm sui api              # regenerate api json and locale baseline
-pnpm sui changelog         # regenerate changelog data
+pnpm sui api                              # regenerate API JSON and locale baseline
+pnpm sui changelog                        # regenerate changelog JSON and locale baseline
+pnpm sui sbean-schema                     # regenerate public sbean JSON schemas
 pnpm sui api-translate -- --locale zh-CN
 pnpm sui changelog-translate -- --locale zh-CN
 ```
+
+The production docs build also regenerates the public sbean registry under
+`apps/docs/public/r/`.
+
+For the cross-workspace dependency and generation flow, see
+[Project architecture](../../docs/architecture.md).

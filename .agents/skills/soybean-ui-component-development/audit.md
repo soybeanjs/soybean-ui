@@ -1,8 +1,8 @@
 # SoybeanUI Component Audit Rules
 
-This file is the single source of truth for evaluating already-shipped SoybeanUI components. It owns the assessment methodology, the seven check dimensions, the 100 check items with standards and acceptance conditions, severity levels, acceptance states, single-component acceptance, cross-component consistency regression, full regression, and the industry benchmarking methodology (library selection + comparison dimensions).
+This file is the single source of truth for evaluating already-shipped SoybeanUI components. It owns the assessment methodology, the seven check dimensions, the 102 check items with standards and acceptance conditions, severity levels, acceptance states, single-component acceptance, cross-component consistency regression, full regression, and the industry benchmarking methodology (library selection + comparison dimensions).
 
-The companion [SKILL.md](SKILL.md) owns pattern classification, phase order, workflows, guardrails, and delivery surfaces; [layers.md](layers.md) owns implementation layer rules; [surfaces.md](surfaces.md) owns delivery surface rules; [process.md](process.md) owns the finish checklist and commit convention. Project-level snapshots — the 87-component list, the C01–C89 task table, current P0–P3 priority allocation, the 13-round execution order, and concrete benchmark findings per component (for example `input` should add `showCount`) — live in `docs/check.md` and reference this file as the source.
+The companion [SKILL.md](SKILL.md) owns pattern classification, phase order, workflows, guardrails, and delivery surfaces; [layers.md](layers.md) owns implementation layer rules; [surfaces.md](surfaces.md) owns delivery surface rules; [process.md](process.md) owns the finish checklist and commit convention. Project-level snapshots — the 88-component-group list, the C01–C90 task table, current P0–P3 priority allocation, the 13-round execution order, and concrete benchmark findings per component (for example `input` should add `showCount`) — live in `docs/check.md` and reference this file as the source.
 
 ## When to load
 
@@ -72,7 +72,7 @@ Seven dimensions and their item counts, sources, and benchmark mapping:
 | D1-01 | Pattern classification correct   | Implementation matches one of `SKILL.md`'s multi-slot base / compact aggregation / single-class definitions                                                                                                         | `types.ts`, `context.ts`, and SFC structure match the chosen pattern                                                                   |
 | D1-02 | Headless responsibility boundary | Headless holds only logic, state, a11y, structure aggregation; no UnoCSS classes, no `<style>`, no inline styles (including `hidden`, `sr-only`)                                                                    | Full grep of `packages/headless/src/components/{name}/` returns no `class="..."`, `style="..."`, `:class`                              |
 | D1-03 | UI responsibility boundary       | UI layer only does style wrapping, variant computation, UiContext injection, props/listener forwarding; no ARIA, `role`, `tabindex`, keyboard logic, state semantics                                                | `packages/ui/src/components/{name}/*.vue` has no `aria-*`, `role=`, `@keydown` business logic                                          |
-| D1-04 | Data flow direction              | `packages/headless` -> `packages/ui` is one-way; headless has no `@soybeanjs/ui` import                                                                                                                             | grep `@soybeanjs/ui` in `packages/headless/src/` returns 0                                                                             |
+| D1-04 | Dependency direction             | Compile-time dependency is `packages/ui` -> `packages/headless`; headless has no `@soybeanjs/ui` import                                                                                                             | grep `@soybeanjs/ui` in `packages/headless/src/` returns 0                                                                             |
 | D1-05 | Context reactivity               | Context values are `ComputedRef` or `ShallowRef`; prop-derived fields use `transformPropsToContext` or `PropsToContext`                                                                                             | No bare value assignments in `context.ts`; no raw non-reactive values enter context                                                    |
 | D1-06 | UiContext export                 | Multi-slot components export only `provide{Name}Ui`; never export `use{Name}Ui`                                                                                                                                     | `packages/headless/src/components/{name}/index.ts` does not export `use{Name}Ui`                                                       |
 | D1-07 | `data-soybean-{name}` attributes | Every headless slot root element carries a stable `data-soybean-{name}` attribute                                                                                                                                   | DOM inspection and test coverage                                                                                                       |
@@ -268,7 +268,7 @@ After each category is complete (e.g. all "Forms" components), run a cross-compo
 After all components in the project snapshot are audited, run a full regression:
 
 - `pnpm typecheck` / `pnpm lint` / `pnpm fmt` / `pnpm test` all green
-- `pnpm build` (headless -> ui -> css) succeeds
+- `pnpm build` (headless -> UI -> sbean) and `pnpm build:libs` (theme -> UnoCSS preset) succeed
 - `pnpm sui headless` / `pnpm sui ui` / `pnpm sui api` / `pnpm sui changelog` all re-run; diff only from intended changes
 - Playground dev server starts cleanly; all examples render
 - Docs build cleanly; all component pages are reachable
@@ -327,9 +327,9 @@ Authoritative interaction patterns to consult during D1 and D7 a11y checks:
 ```bash
 # Validation
 pnpm typecheck          # vue-tsc --noEmit --skipLibCheck
-pnpm lint               # oxlint --fix && eslint --fix
-pnpm fmt                # oxfmt
-pnpm test               # vitest run (happy-dom unit tests)
+pnpm lint               # Vite Plus lint --fix + Vue ESLint
+pnpm fmt                # Vite Plus formatter
+pnpm test               # recursive UI/headless and sbean tests
 pnpm test:e2e           # vitest browser mode e2e (D7-19/D7-20; run `pnpm exec playwright install chromium` first)
 pnpm vitest packages/ui/test/specs/components/{component}.spec.ts  # single-component unit test
 pnpm --filter @soybeanjs/ui test:e2e test/browser/specs/components/{component}.e2e.spec.ts  # single-component e2e
@@ -343,6 +343,8 @@ pnpm sui changelog      # regenerate changelog data
 pnpm sui changelog-translate -- --locale <locale>
 
 # Dev and build
-pnpm dev                # playground
-pnpm build              # headless -> ui -> css
+pnpm dev:playground     # playground
+pnpm dev:docs           # documentation site
+pnpm build              # headless -> UI -> sbean
+pnpm build:libs         # shadcn-theme -> unocss-shadcn
 ```

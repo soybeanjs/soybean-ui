@@ -1,6 +1,6 @@
 # HEADLESS COMPOSABLES
 
-**25 hooks** shared across all headless primitives. Pure Vue Composition API.
+**27 hooks** shared across all headless primitives. Pure Vue Composition API.
 
 ## CATEGORIES
 
@@ -18,7 +18,7 @@
 ## KEY PATTERNS
 
 - **Factory pattern**: `useContext` returns `[provide, inject]` tuple — used by every component's `context.ts`
-- **useUiContext**: Only bridge to UI layer. Returns `[provideXUi, useXUi]`. The single `@ts-expect-error` in codebase lives here.
+- **useUiContext**: High-fanout bridge to the UI layer. Returns `[provideXUi, useXUi]`; changes require direct contract tests plus broad component verification.
 - **useControllableState**: If `prop()` returns `undefined` → internal `shallowRef`; otherwise → computed proxy. Deduplicates via `skip` flag + `nextTick`.
 
 ## CONVENTIONS

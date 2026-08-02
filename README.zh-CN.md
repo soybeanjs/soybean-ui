@@ -17,36 +17,46 @@ SoybeanUI 是一个优雅、现代、可访问且高质量的 UI 组件库，具
 
 ## 📚 架构
 
-SoybeanUI 采用严格的**双层分离**设计：
+SoybeanUI 的组件运行时采用严格的**双层分离**设计。下图中的箭头表示“依赖于”：
 
 ```
-┌─────────────────────────────────────────┐
-│           @soybeanjs/ui (packages/ui/)  │
-│  S 前缀组件   (SButton、SDialog…)        │
-│  UnoCSS 类名 · @soybeanjs/cva            │
-│  provideXUi(ui)  ──────────────────┐    │
-└────────────────────────────────────┼────┘
-                                     │ 样式注入
-┌────────────────────────────────────▼────┐
-│  @soybeanjs/headless (packages/headless/) │
-│  逻辑 · 状态 · A11y · 键盘导航             │
-│  useUiContext() 读取注入的样式类名      │
-│  零样式 — 可配合任意 CSS 方案         │
-└─────────────────────────────────────────┘
+应用 ──> @soybeanjs/ui ──> @soybeanjs/headless
+                  │
+                  └─────> @soybeanjs/shadcn-theme
+
+UnoCSS 配置 ──> @soybeanjs/unocss-shadcn
+                  └─────> @soybeanjs/shadcn-theme
 ```
 
 ### 包结构
 
-| 包                      | 职责                                         | 组件数量                        |
-| ----------------------- | -------------------------------------------- | ------------------------------- |
-| **@soybeanjs/headless** | 逻辑、状态、a11y，零样式                     | 95 个组件目录，25 个 composable |
-| **@soybeanjs/ui**       | 样式包装层。UnoCSS + `@soybeanjs/cva` recipe | 91 个带 `S` 前缀的组件          |
+| 包                      | 职责                                                | 当前清单                                       |
+| ----------------------- | --------------------------------------------------- | ---------------------------------------------- |
+| **@soybeanjs/headless** | 逻辑、状态、a11y、焦点、键盘交互与无主题组件分片    | 94 个目录（92 个公共组件组）、27 个 composable |
+| **@soybeanjs/ui**       | 使用 UnoCSS 与 `@soybeanjs/cva` recipe 的样式包装层 | 88 个公共组件组、110 个带 `S` 前缀的导出       |
 
-**数据流严格单向**：`headless` → `src`。样式层不会导入 headless 的内部实现，而是通过 `provideXUi(computedUi)` 注入样式 token，headless 组件再通过 `useUiContext()` 读取。
+编译期依赖严格单向：`@soybeanjs/ui` 只从
+`@soybeanjs/headless` 的公共入口导入，headless 不会反向导入 UI。运行时由样式包装
+组件通过 `provideXUi(computedUi)` 注入插槽类名映射，再由被包装的 headless 分片
+通过 `useUiContext()` 读取。
+
+这里的 “Headless” 指逻辑层不携带视觉主题；定位、尺寸或交互所必需的 CSS 变量与
+内联布局值仍可能存在。
 
 部分多插槽 headless 组件还会暴露 `Compact` 聚合层，例如 `AccordionCompact` 和 `TableCompact`。它们把条目遍历以及默认内容 / 图标组合放在 headless 层完成，而 UI 层只负责样式和 props 转发。
 
 目前采用这类 Compact 约定式组合的能力还覆盖了 card、date-field、dialog、editable、hover-card、layout、navigation-menu、pagination、popover、stepper 等稳定结构场景。
+
+### Workspace 总览
+
+Monorepo 还发布 `@soybeanjs/shadcn-theme`、
+`@soybeanjs/unocss-shadcn`、源码分发 CLI `sbean` 与
+`@soybeanjs/ui-skills`。三个私有应用分别承担文档站、playground 与 Nuxt 集成
+验证。
+
+完整 workspace 地图、依赖图、构建/测试链路及事实源见
+[项目架构](./docs/architecture.md)；按优先级排列的改进项与验收条件见
+[架构与工程质量评估](./docs/optimize.md)。
 
 ### 样式注入机制
 
@@ -116,13 +126,17 @@ registerLocale('custom', customMessages);
 
 ```ts
 import { AccordionRoot } from '@soybeanjs/headless'; // 所有组件
-import { useControllableState } from '@soybeanjs/headless/composables'; // 25 个 composable
+import { useControllableState } from '@soybeanjs/headless/composables'; // 27 个 composable
 import { transformPropsToContext } from '@soybeanjs/headless/shared'; // 纯 TS 工具
 import { createMonth } from '@soybeanjs/headless/date'; // 日期工具
+import { registerLocale } from '@soybeanjs/headless/locale'; // locale 注册表
 import * as Headless from '@soybeanjs/headless/namespaced'; // 命名空间导入
 import type { AccordionUiSlot } from '@soybeanjs/headless/accordion'; // 单组件类型
 import type { UiClass } from '@soybeanjs/headless/types'; // 共享类型导出
 ```
+
+框架集成还可从 `@soybeanjs/headless/nuxt` 与
+`@soybeanjs/headless/resolver` 引入。
 
 **@soybeanjs/ui** 导出：
 

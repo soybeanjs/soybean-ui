@@ -2,16 +2,17 @@
 
 English | [中文](./README.zh-CN.md)
 
-Example Nuxt application demonstrating `@soybeanjs/ui` integration.
+Minimal Nuxt integration fixture for `@soybeanjs/ui`.
 
 ## 📖 Overview
 
-This app shows how to use `@soybeanjs/ui` in a Nuxt application with:
+This app verifies the repository's Nuxt module and UnoCSS wiring. It is a thin
+shell around the shared playground home rather than a standalone example app:
 
 - Auto-import of `S`-prefixed components via the Nuxt module
 - UnoCSS integration for utility-first styling
-- Internationalization with `vue-i18n`
-- Full TypeScript support
+- Reuse of the playground page and theme context
+- `@nuxtjs/i18n` module configuration for `en` and `zh-CN`
 
 ## 🛠 Development
 
@@ -41,11 +42,23 @@ pnpm preview
 
 ```
 apps/nuxt/
-├── src/
-│   ├── components/   # App components
-│   ├── pages/        # Route pages (file-based routing)
-│   ├── layouts/      # Page layouts
-│   └── styles/       # App styles
-├── public/           # Static assets
-└── dist/             # Build output (git-ignored)
+├── app/
+│   └── app.vue       # Embeds the playground home and theme context
+├── nuxt.config.ts    # UI module, i18n, UnoCSS, and source aliases
+├── uno.config.ts     # Shared SoybeanUI preset stack
+├── package.json
+└── tsconfig.json
 ```
+
+## Current Fixture Limits
+
+- `app.vue` imports source directly from `apps/playground`; this app is not
+  independently deployable.
+- The Nuxt i18n configuration references `en.json` and `zh-CN.json`, but locale
+  fixture files are not currently present under `apps/nuxt`. Validate or add
+  them before using this as an i18n reference.
+- The workspace currently has no dedicated `typecheck` script or integration
+  test for this fixture.
+
+See [Project architecture](../../docs/architecture.md) for the complete
+cross-app dependency graph.

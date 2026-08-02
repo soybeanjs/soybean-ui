@@ -2,16 +2,17 @@
 
 [English](./README.md) | 中文
 
-演示 `@soybeanjs/ui` 集成的 Nuxt 示例应用。
+用于验证 `@soybeanjs/ui` 集成的最小 Nuxt fixture。
 
 ## 📖 概述
 
-此应用展示如何在 Nuxt 应用中使用 `@soybeanjs/ui`，包括：
+此应用用于验证仓库内 Nuxt module 与 UnoCSS 接线。它是复用 playground 首页的
+薄壳，而不是独立的完整示例应用：
 
 - 通过 Nuxt 模块自动导入 `S` 前缀组件
 - UnoCSS 集成实现原子化 CSS 样式
-- 使用 `vue-i18n` 实现国际化
-- 完整 TypeScript 支持
+- 复用 playground 页面与主题 context
+- 为 `en` 与 `zh-CN` 配置 `@nuxtjs/i18n` module
 
 ## 🛠 开发
 
@@ -41,11 +42,19 @@ pnpm preview
 
 ```
 apps/nuxt/
-├── src/
-│   ├── components/   # 应用组件
-│   ├── pages/        # 路由页面（基于文件的路由）
-│   ├── layouts/      # 页面布局
-│   └── styles/       # 应用样式
-├── public/           # 静态资源
-└── dist/             # 构建输出（已 git 忽略）
+├── app/
+│   └── app.vue       # 嵌入 playground 首页与主题 context
+├── nuxt.config.ts    # UI module、i18n、UnoCSS 与源码 alias
+├── uno.config.ts     # 共享 SoybeanUI preset 栈
+├── package.json
+└── tsconfig.json
 ```
+
+## 当前 Fixture 限制
+
+- `app.vue` 直接导入 `apps/playground` 源码，因此该应用目前不能独立部署。
+- Nuxt i18n 配置引用 `en.json` 与 `zh-CN.json`，但 `apps/nuxt` 下目前没有
+  locale fixture 文件；将其作为 i18n 示例前需先补齐或验证解析路径。
+- 当前 workspace 没有专用 `typecheck` 脚本或集成测试。
+
+完整跨应用依赖图见[项目架构](../../docs/architecture.md)。

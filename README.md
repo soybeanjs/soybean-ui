@@ -17,36 +17,49 @@ SoybeanUI is an elegant, modern, accessible and high-quality UI component librar
 
 ## 📚 Architecture
 
-SoybeanUI is built on a strict **two-layer separation** model:
+SoybeanUI's component runtime uses a strict **two-layer separation**. In the
+diagram below, arrows mean “depends on”:
 
 ```
-┌─────────────────────────────────────────┐
-│           @soybeanjs/ui (packages/ui/)  │
-│  S-prefixed components   (SButton…)     │
-│  UnoCSS classes · @soybeanjs/cva        │
-│  provideXUi(ui)  ──────────────────┐    │
-└────────────────────────────────────┼────┘
-                                     │ style injection
-┌────────────────────────────────────▼────┐
-│   @soybeanjs/headless (packages/headless/) │
-│  Logic · State · A11y · Keyboard nav    │
-│  useUiContext() reads injected classes  │
-│  Zero styles — works with any CSS       │
-└─────────────────────────────────────────┘
+Consumer ──> @soybeanjs/ui ──> @soybeanjs/headless
+                    │
+                    └───────> @soybeanjs/shadcn-theme
+
+UnoCSS config ──> @soybeanjs/unocss-shadcn
+                    └───────> @soybeanjs/shadcn-theme
 ```
 
 ### Packages
 
-| Package                 | Role                                                | Components                        |
-| ----------------------- | --------------------------------------------------- | --------------------------------- |
-| **@soybeanjs/headless** | Logic, state, a11y. Zero styles.                    | 95 component dirs, 25 composables |
-| **@soybeanjs/ui**       | Styled wrappers. UnoCSS + `@soybeanjs/cva` recipes. | 91 `S`-prefixed components        |
+| Package                 | Role                                                                | Current inventory                                    |
+| ----------------------- | ------------------------------------------------------------------- | ---------------------------------------------------- |
+| **@soybeanjs/headless** | Logic, state, a11y, focus, keyboard interaction, and unstyled parts | 94 directories (92 public groups), 27 composables    |
+| **@soybeanjs/ui**       | Styled wrappers using UnoCSS and `@soybeanjs/cva` recipes           | 88 public component groups, 110 `S`-prefixed exports |
 
-**Data flow is strictly one-way**: `headless` → `src`. The styled layer never imports from headless's internals — it injects style tokens via `provideXUi(computedUi)` which headless components read through `useUiContext()`.
+The compile-time dependency is strictly one-way: `@soybeanjs/ui` imports public
+`@soybeanjs/headless` entry points, while headless never imports UI. At runtime,
+styled wrappers inject slot class maps through `provideXUi(computedUi)`, and the
+wrapped headless parts read them through `useUiContext()`.
+
+“Headless” means that no visual theme is packaged with the logic layer.
+Behavior-critical CSS variables or inline layout values may still be used for
+positioning and interaction.
 
 Some multi-slot headless components also expose `Compact` aggregators, such as `AccordionCompact` and `TableCompact`. They keep item iteration and default content/icon composition inside headless, while the UI layer stays focused on styling and prop forwarding.
 
 Current Compact-style coverage also includes flows such as card, date-field, dialog, editable, hover-card, layout, navigation-menu, pagination, popover, and stepper, when those structures are stable enough to live in headless.
+
+### Workspace Overview
+
+The monorepo also publishes `@soybeanjs/shadcn-theme`,
+`@soybeanjs/unocss-shadcn`, the `sbean` source-distribution CLI, and
+`@soybeanjs/ui-skills`. Private apps provide the documentation site,
+playground, and Nuxt integration fixture.
+
+See [Project architecture](./docs/architecture.md) for the complete workspace
+map, dependency graph, build/test flows, and sources of truth. See
+[Architecture and quality assessment](./docs/optimize.md) for prioritized
+improvements and acceptance criteria.
 
 ### Style Injection
 
@@ -116,13 +129,17 @@ registerLocale('custom', customMessages);
 
 ```ts
 import { AccordionRoot } from '@soybeanjs/headless'; // all components
-import { useControllableState } from '@soybeanjs/headless/composables'; // 25 composables
+import { useControllableState } from '@soybeanjs/headless/composables'; // 27 composables
 import { transformPropsToContext } from '@soybeanjs/headless/shared'; // pure TS utils
 import { createMonth } from '@soybeanjs/headless/date'; // shared date helpers
+import { registerLocale } from '@soybeanjs/headless/locale'; // locale registry
 import * as Headless from '@soybeanjs/headless/namespaced'; // namespace object
 import type { AccordionUiSlot } from '@soybeanjs/headless/accordion'; // per-component
 import type { UiClass } from '@soybeanjs/headless/types'; // shared type surface
 ```
+
+Framework integrations are also available from
+`@soybeanjs/headless/nuxt` and `@soybeanjs/headless/resolver`.
 
 **@soybeanjs/ui** exports:
 

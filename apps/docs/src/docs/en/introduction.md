@@ -57,25 +57,22 @@ All components support tree-shaking, so you only bundle what you actually use—
 
 ## Architecture
 
-SoybeanUI is built on a strict **two-layer separation** model:
+SoybeanUI's component runtime uses a strict **two-layer separation**. The
+arrows below mean “depends on”:
 
 ```
-┌─────────────────────────────────────────┐
-│           @soybeanjs/ui (src/)          │
-│  S-prefixed components   (SButton…)     │
-│  UnoCSS classes · @soybeanjs/cva        │
-│  provideXUi(ui)  ──────────────────┐    │
-└────────────────────────────────────┼────┘
-                                     │ style injection
-┌────────────────────────────────────▼────┐
-│        @soybeanjs/headless (headless/)  │
-│  Logic · State · A11y · Keyboard nav    │
-│  useUiContext() reads injected classes  │
-│  Zero styles — works with any CSS       │
-└─────────────────────────────────────────┘
+Consumer ──> @soybeanjs/ui ──> @soybeanjs/headless
+                    │
+                    └───────> @soybeanjs/shadcn-theme
+
+UnoCSS config ──> @soybeanjs/unocss-shadcn
+                    └───────> @soybeanjs/shadcn-theme
 ```
 
-**Data flow is strictly one-way**: `headless` → `src`. The styled layer never imports from headless's internals — it injects style tokens via `provideXUi(computedUi)` which headless components read through `useUiContext()`.
+The compile-time dependency is one-way: `@soybeanjs/ui` imports public
+`@soybeanjs/headless` entry points, while headless never imports UI. At runtime,
+styled wrappers inject slot class maps through `provideXUi(computedUi)`, and the
+wrapped headless parts read them through `useUiContext()`.
 
 ### @soybeanjs/headless - Logic layer
 
@@ -88,7 +85,11 @@ This is the core foundation of SoybeanUI, responsible for handling all component
 - **Event handling**: a unified event handling mechanism
 - **Compact aggregators**: ready-to-use aggregated components for data-driven scenarios
 
-Headless components contain no styles at all, giving you maximum freedom to build your own design system. If you want full control over the look and feel—or need a unique design system—`@soybeanjs/headless` is the best choice.
+Headless components ship no visual theme, giving you maximum freedom to build
+your own design system. Behavior-critical CSS variables or inline layout values
+may still be used for positioning and interaction. If you want full control
+over the look and feel—or need a unique design system—`@soybeanjs/headless` is
+the best choice.
 
 ### @soybeanjs/ui - Presentation layer
 

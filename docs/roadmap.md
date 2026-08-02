@@ -48,7 +48,7 @@
 
 关键缺口与强需求组件，应优先实现。共 **22** 个组件（P0 × 9 + P1 × 13）。
 
-> **注：** `Rating`（原 P0 #1）已发布至 `@soybeanjs/ui`（`SRating`，见 [packages/ui/src/components/rating](file:///Users/soybean/Web/Projects/SoybeanJS/soybean-ui/packages/ui/src/components/rating)），自活跃路线图移除；下方序号沿用源文档，未重排。
+> **注：** `Rating`（原 P0 #1）已发布至 `@soybeanjs/ui`（`SRating`，见 [packages/ui/src/components/rating](../packages/ui/src/components/rating)），自活跃路线图移除；下方序号沿用源文档，未重排。
 
 ### 概要
 
@@ -90,7 +90,7 @@
 
 #### 1. `Rating` — ✅ 已发布（shipped）
 
-`Rating` 已实现并发布为 `SRating`，源码位于 [packages/ui/src/components/rating](file:///Users/soybean/Web/Projects/SoybeanJS/soybean-ui/packages/ui/src/components/rating) 与 [packages/headless/src/components/rating](file:///Users/soybean/Web/Projects/SoybeanJS/soybean-ui/packages/headless/src/components/rating)。原路线图条目（P0、Demand 10/14、Low effort、单类 `cv()` 模式）已达成，自活跃路线图移除。审计快照见 [check.md C90](./check.md)。
+`Rating` 已实现并发布为 `SRating`，源码位于 [packages/ui/src/components/rating](../packages/ui/src/components/rating) 与 [packages/headless/src/components/rating](../packages/headless/src/components/rating)。原路线图条目（P0、Demand 10/14、Low effort、单类 `cv()` 模式）已达成，自活跃路线图移除。审计快照见 [check.md C90](./check.md)。
 
 ---
 
@@ -1099,7 +1099,7 @@
 
 将多个 `SButton` 组合为视觉上相连的集群。设置在 group 上的 variant / size / color 等样式属性会**传播给所有子按钮**——子按钮继承 group 的值，除非显式覆盖。
 
-**源码：** [button-group.vue](file:///Users/soybean/Web/Projects/SoybeanJS/soybean-ui/packages/ui/src/components/button/button-group.vue) · [types.ts](file:///Users/soybean/Web/Projects/SoybeanJS/soybean-ui/packages/ui/src/components/button/types.ts) · [styles/button.ts](file:///Users/soybean/Web/Projects/SoybeanJS/soybean-ui/packages/ui/src/styles/button.ts) · [context.ts](file:///Users/soybean/Web/Projects/SoybeanJS/soybean-ui/packages/ui/src/components/button/context.ts)
+**源码：** [button-group.vue](../packages/ui/src/components/button/button-group.vue) · [types.ts](../packages/ui/src/components/button/types.ts) · [styles/button.ts](../packages/ui/src/styles/button.ts) · [context.ts](../packages/ui/src/components/button/context.ts)
 
 **典型场景：** 工具栏动作集群、视图模式切换、分页集群、表单动作栏、共享 variant 的拆分动作行。
 

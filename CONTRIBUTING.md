@@ -307,7 +307,7 @@ Full rules: `.agents/skills/soybean-ui-component-development/process.md`.
 
 - One PR = one logical change. Prefer small, focused PRs.
 - Link the related issue.
-- Ensure CI passes (typecheck, lint, format, tests).
+- Run the formatter locally, then ensure CI passes (typecheck, lint, tests, and browser e2e).
 - If the PR adds a new component, include playground demos and bilingual docs.
 - Keep the PR description concise: what, why, and how to verify.
 
@@ -601,6 +601,6 @@ pnpm sui api-translate -- --locale zh-CN   # 翻译描述
 
 - 一个 PR = 一个逻辑变更。优先小 PR。
 - 关联相关 issue。
-- 确保 CI 通过（typecheck、lint、format、tests）。
+- 先在本地运行格式化，再确保 CI 通过（typecheck、lint、tests 与 browser e2e）。
 - 新增组件须包含 playground 示例和中英文档。
 - PR 描述简洁：做了什么、为什么、如何验证。

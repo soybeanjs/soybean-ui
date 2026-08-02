@@ -5,7 +5,7 @@
 ## Methodology
 
 1. **Surveyed libraries (14 total)** — React: MUI, Ant Design, Mantine, Chakra UI, shadcn/ui, Radix UI, Headless UI, PrimeReact, MUI Base. Vue: Element Plus, Naive UI, Vuetify, Quasar, PrimeVue, Arco Design, TDesign, Vant, Varlet.
-2. **Diffed** against the 87 components already shipped in `packages/ui/src/index.ts`.
+2. **Diffed** against the 88 component groups already shipped in `packages/ui/src/index.ts`.
 3. **Desktop-only scope** — all mobile-specific components (Vant/Varlet-originated patterns) are excluded from the active roadmap.
 4. **Selection criteria** — each candidate is evaluated on:
    - **Functional independence** — does it have a single, focused responsibility?
@@ -27,9 +27,9 @@
 
 ### Coverage Snapshot
 
-- **Already shipped:** 87 components (`accordion` … `watermark`).
-- **Active roadmap below:** 46 components (single-focused, desktop-oriented).
-- **Already implemented (reference):** 1 component documented below (`ButtonGroup` — see [Implemented Component Reference](#implemented-component-reference)).
+- **Already shipped:** 88 component groups (`accordion` … `watermark`).
+- **Active roadmap below:** 45 components (single-focused, desktop-oriented).
+- **Already implemented references retained here:** `Rating` (historical P0 entry) and `ButtonGroup` (see [Implemented Component Reference](#implemented-component-reference)).
 - **Marketplace deferred:** 12 components (composite/niche — deferred to source-code marketplace).
 - **Out of scope:** 60+ candidates rejected (mobile-only, redundant, business-specific, charting, directives).
 
@@ -46,28 +46,34 @@ Each active component is documented with:
 
 ## P0 — Critical
 
-Universal or near-universal components leaving a clear gap. Low-to-medium effort, high ROI.
+Universal or near-universal components leaving a clear gap. There are 9 active
+P0 items; the shipped Rating entry is retained below as historical context.
 
 ### Summary
 
-|  #  | Component      | Demand | Effort  |
-| :-: | :------------- | :----: | :-----: |
-|  1  | `Rating`       | 10/14  |   Low   |
-|  2  | `Upload`       | 12/14  |  High   |
-|  3  | `Timeline`     | 10/14  | Medium  |
-|  4  | `Typography`   |  7/14  | Medium  |
-|  5  | `Descriptions` |  4/14  | Medium  |
-|  6  | `TreeSelect`   |  7/14  | Medium  |
-|  7  | `Statistic`    |  6/14  |   Low   |
-|  8  | `Ellipsis`     |  5/14  | Low-Med |
-|  9  | `Code`         |  5/14  | Medium  |
-| 10  | `Image`        |  8/14  | Medium  |
+|  #  | Component          | Demand | Effort  |
+| :-: | :----------------- | :----: | :-----: |
+|  1  | `Rating` (shipped) | 10/14  |   Low   |
+|  2  | `Upload`           | 12/14  |  High   |
+|  3  | `Timeline`         | 10/14  | Medium  |
+|  4  | `Typography`       |  7/14  | Medium  |
+|  5  | `Descriptions`     |  4/14  | Medium  |
+|  6  | `TreeSelect`       |  7/14  | Medium  |
+|  7  | `Statistic`        |  6/14  |   Low   |
+|  8  | `Ellipsis`         |  5/14  | Low-Med |
+|  9  | `Code`             |  5/14  | Medium  |
+| 10  | `Image`            |  8/14  | Medium  |
 
 ### Detailed Entries
 
 ---
 
-#### 1. `Rating` — P0 | Demand: 10/14 | Effort: Low
+#### 1. `Rating` — ✅ shipped (historical P0 entry)
+
+> `Rating` is exported from `@soybeanjs/ui` as `SRating` and is excluded from
+> the active roadmap count. The original evaluation is retained for traceability;
+> current delivery-surface consistency is tracked in
+> [the architecture assessment](./optimize.md#f3-生成物不是原子批次已有可复现漂移).
 
 **Purpose:** Allow users to provide a rating using stars (or custom icons) on a discrete scale.
 
@@ -1156,7 +1162,7 @@ Detailed API documentation for components already shipped in `@soybeanjs/ui`. Ea
 
 Group multiple `SButton` components into a connected visual cluster. Variant, size, color, and other styling props set on the group **propagate to all child buttons** — child buttons inherit the group's values unless they explicitly override them.
 
-**Source:** [button-group.vue](file:///Users/soybean/Web/Projects/SoybeanJS/soybean-ui/packages/ui/src/components/button/button-group.vue) · [types.ts](file:///Users/soybean/Web/Projects/SoybeanJS/soybean-ui/packages/ui/src/components/button/types.ts) · [styles/button.ts](file:///Users/soybean/Web/Projects/SoybeanJS/soybean-ui/packages/ui/src/styles/button.ts) · [context.ts](file:///Users/soybean/Web/Projects/SoybeanJS/soybean-ui/packages/ui/src/components/button/context.ts)
+**Source:** [button-group.vue](../packages/ui/src/components/button/button-group.vue) · [types.ts](../packages/ui/src/components/button/types.ts) · [styles/button.ts](../packages/ui/src/styles/button.ts) · [context.ts](../packages/ui/src/components/button/context.ts)
 
 #### Usage Scenarios
 
@@ -1224,7 +1230,7 @@ Group multiple `SButton` components into a connected visual cluster. Variant, si
 
 #### Styling
 
-The `buttonGroupVariants` recipe (from [styles/button.ts](file:///Users/soybean/Web/Projects/SoybeanJS/soybean-ui/packages/ui/src/styles/button.ts)) applies connector classes to children via descendant selectors:
+The `buttonGroupVariants` recipe (from [styles/button.ts](../packages/ui/src/styles/button.ts)) applies connector classes to children via descendant selectors:
 
 - **Base:** `[&>*]:relative focus-visible:[&>*]:z-2 not-first:not-last:[&>*]:rounded-0` — positions children relatively, raises focused child z-index, removes rounding from middle children.
 - **Horizontal:** `inline-flex` — removes the trailing border from all but the last child; removes the start rounding from the first child and the end rounding from the last child.
@@ -1368,4 +1374,4 @@ Maps each active roadmap component to its expected headless pattern (per the com
 
 ---
 
-_Last updated: 2026-08-02. Desktop-only scope. 87 components already shipped; 47 in the active roadmap; 12 deferred to the component marketplace; 60+ explicitly rejected in the Out-of-Scope section._
+_Last updated: 2026-08-02. Desktop-only scope. 88 component groups already shipped; 45 in the active roadmap; 12 deferred to the component marketplace; 60+ explicitly rejected in the Out-of-Scope section._

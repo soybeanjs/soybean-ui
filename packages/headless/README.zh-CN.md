@@ -111,11 +111,14 @@ registerLocale('custom', customMessages);
 
 ```
 headless/src/
-├── components/    # 95 个组件目录（accordion、dialog、select…）
-├── composables/   # 25 个共享 hook（状态、焦点、浮层、选择…）
+├── components/    # 94 个目录：92 个公共组件组 + _common/_icon 内部目录
+├── composables/   # 27 个共享 hook（状态、焦点、浮层、选择…）
 ├── shared/        # 纯 TS 工具函数（DOM、焦点、树、表单、守卫）
 ├── constants/     # ARIA 属性常量、组件标识键
 ├── date/          # 共享日期与日历工具
+├── locale/        # locale 注册表与语言包
+├── nuxt/          # Nuxt 自动注册模块
+├── resolver/      # unplugin-vue-components resolver
 ├── types/         # 全局类型（ClassValue、UiClass、PropsToContext…）
 └── index.ts       # 主 barrel 导出
 ```
@@ -124,9 +127,10 @@ headless/src/
 
 ```ts
 import { AccordionRoot } from '@soybeanjs/headless'; // 组件 + 类型
-import { useControllableState } from '@soybeanjs/headless/composables'; // 25 个 composable
+import { useControllableState } from '@soybeanjs/headless/composables'; // 27 个 composable
 import { transformPropsToContext } from '@soybeanjs/headless/shared'; // 纯 TS 工具
 import { createMonth } from '@soybeanjs/headless/date'; // 日期工具
+import { registerLocale } from '@soybeanjs/headless/locale'; // locale 注册表
 import * as H from '@soybeanjs/headless/namespaced'; // 命名空间导入
 import type { AccordionUiSlot } from '@soybeanjs/headless/accordion'; // 单组件类型
 import type { UiClass } from '@soybeanjs/headless/types'; // 共享类型导出
@@ -134,7 +138,7 @@ import type { UiClass } from '@soybeanjs/headless/types'; // 共享类型导出
 
 ## 🧩 Composables
 
-25 个 hook，按功能分类：
+27 个 hook，按功能分类：
 
 | 分类     | Composables                                                    |
 | -------- | -------------------------------------------------------------- |

@@ -111,11 +111,14 @@ registerLocale('custom', customMessages);
 
 ```
 headless/src/
-├── components/    # 95 component dirs (accordion, dialog, select…)
-├── composables/   # 25 shared hooks (state, focus, floating, selection…)
+├── components/    # 94 dirs: 92 public groups + _common/_icon internals
+├── composables/   # 27 shared hooks (state, focus, floating, selection…)
 ├── shared/        # Pure TS utilities (DOM, focus, tree, form, guard)
 ├── constants/     # ARIA attributes, component keys
 ├── date/          # Shared date and calendar helpers
+├── locale/        # Locale registry and language bundles
+├── nuxt/          # Nuxt auto-registration module
+├── resolver/      # unplugin-vue-components resolver
 ├── types/         # Global types (ClassValue, UiClass, PropsToContext…)
 └── index.ts       # Main barrel export
 ```
@@ -124,9 +127,10 @@ headless/src/
 
 ```ts
 import { AccordionRoot } from '@soybeanjs/headless'; // components + types
-import { useControllableState } from '@soybeanjs/headless/composables'; // 25 composables
+import { useControllableState } from '@soybeanjs/headless/composables'; // 27 composables
 import { transformPropsToContext } from '@soybeanjs/headless/shared'; // pure TS utils
 import { createMonth } from '@soybeanjs/headless/date'; // shared date helpers
+import { registerLocale } from '@soybeanjs/headless/locale'; // locale registry
 import * as H from '@soybeanjs/headless/namespaced'; // namespace object
 import type { AccordionUiSlot } from '@soybeanjs/headless/accordion'; // per-component
 import type { UiClass } from '@soybeanjs/headless/types'; // shared type surface
@@ -134,7 +138,7 @@ import type { UiClass } from '@soybeanjs/headless/types'; // shared type surface
 
 ## 🧩 Composables
 
-25 hooks organized by category:
+27 hooks organized by category:
 
 | Category      | Composables                                                    |
 | ------------- | -------------------------------------------------------------- |
