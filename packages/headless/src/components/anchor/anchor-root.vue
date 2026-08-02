@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { nextTick, onBeforeUnmount, onMounted, onWatcherCleanup, shallowRef, watch } from 'vue';
+import { computed, nextTick, onBeforeUnmount, onMounted, onWatcherCleanup, shallowRef, watch } from 'vue';
 import { transformPropsToContext, isClient } from '../../shared';
 import { useDirection } from '../config-provider/context';
 import { useControllableState, useOmitProps } from '../../composables';
@@ -46,6 +46,10 @@ const forwardedProps = useOmitProps(props, [
   'replace',
   'targetOffset'
 ]);
+
+const ariaLabel = computed(
+  () => (forwardedProps.value['aria-label'] as string | undefined) ?? messages.value.anchor.nav
+);
 
 const dir = useDirection(() => props.dir);
 
@@ -254,7 +258,7 @@ onBeforeUnmount(() => {
     :class="cls"
     :dir="dir"
     :data-orientation="orientation"
-    :aria-label="messages.anchor.nav"
+    :aria-label="ariaLabel"
   >
     <slot :model-value="activeHref" />
   </nav>

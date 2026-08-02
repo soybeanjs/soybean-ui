@@ -130,7 +130,7 @@ export interface AnchorItemCompactProps extends BaseProps {
   /**
    * Properties forwarded to the link element.
    */
-  linkProps?: AnchorLinkProps;
+  linkProps?: Omit<AnchorLinkProps, 'href'>;
   /**
    * Properties forwarded to the indicator element.
    */
@@ -156,7 +156,7 @@ export interface AnchorCompactProps extends AnchorRootProps {
   /**
    * Properties forwarded to the link element.
    */
-  linkProps?: AnchorLinkProps;
+  linkProps?: Omit<AnchorLinkProps, 'href'>;
   /**
    * Properties forwarded to the indicator element.
    */

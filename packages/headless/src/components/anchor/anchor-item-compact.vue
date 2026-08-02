@@ -24,8 +24,13 @@ const dataState = computed(() => (hasActiveChild(props.item, props.modelValue ??
 </script>
 
 <template>
-  <div :class="ui.item" :data-state="dataState">
-    <AnchorLink v-bind="linkProps" :href="item.href" :target="item.target" :disabled="item.disabled">
+  <div data-soybean-anchor-item :class="ui.item" :data-state="dataState">
+    <AnchorLink
+      v-bind="linkProps"
+      :href="item.href"
+      :target="item.target ?? linkProps?.target"
+      :disabled="item.disabled ?? linkProps?.disabled"
+    >
       <span v-bind="indicatorProps" :class="ui.indicator" aria-hidden="true" />
       <span v-bind="titleProps" :class="ui.title">{{ item.title || item.href }}</span>
     </AnchorLink>

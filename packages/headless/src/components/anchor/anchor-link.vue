@@ -21,13 +21,13 @@ const dataDisabled = computed(() => (props.disabled ? '' : undefined));
 const dataState = computed(() => (active.value ? 'active' : 'inactive'));
 
 const onClick = (event: MouseEvent) => {
-  onLinkClick(event, { href: props.href });
-
   if (props.disabled) {
     event.preventDefault();
     event.stopPropagation();
     return;
   }
+
+  onLinkClick(event, { href: props.href });
 
   if (!props.href.startsWith('#') || event.defaultPrevented) {
     return;
