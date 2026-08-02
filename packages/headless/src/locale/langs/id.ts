@@ -34,6 +34,9 @@ const messages: LocaleMessages = {
   layout: {
     toggleSidebar: 'Alihkan bilah sisi'
   },
+  input: {
+    clear: 'Hapus input'
+  },
   inputNumber: {
     increment: 'Naikkan',
     decrement: 'Turunkan',

@@ -34,6 +34,9 @@ const messages: LocaleMessages = {
   layout: {
     toggleSidebar: 'Yan çubuğu aç veya kapat'
   },
+  input: {
+    clear: 'Girdiyi temizle'
+  },
   inputNumber: {
     increment: 'Artır',
     decrement: 'Azalt',

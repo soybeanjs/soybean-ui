@@ -115,6 +115,11 @@ export interface LocaleInputNumberMessages {
   clear: string;
 }
 
+export interface LocaleInputMessages {
+  /** Aria-label for the clear button. */
+  clear: string;
+}
+
 export interface LocaleLayoutMessages {
   /** Aria-label and title for the sidebar toggle trigger/rail. */
   toggleSidebar: string;
@@ -261,6 +266,7 @@ export interface LocaleMessages {
   date: LocaleDateMessages;
   dialog: LocaleDialogMessages;
   editable: LocaleEditableMessages;
+  input: LocaleInputMessages;
   inputNumber: LocaleInputNumberMessages;
   layout: LocaleLayoutMessages;
   pagination: LocalePaginationMessages;

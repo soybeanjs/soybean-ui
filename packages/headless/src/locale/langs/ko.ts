@@ -34,6 +34,9 @@ const messages: LocaleMessages = {
   layout: {
     toggleSidebar: '사이드바 토글'
   },
+  input: {
+    clear: '입력 지우기'
+  },
   inputNumber: {
     increment: '증가',
     decrement: '감소',

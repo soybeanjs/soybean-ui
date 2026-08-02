@@ -34,6 +34,9 @@ const messages: LocaleMessages = {
   layout: {
     toggleSidebar: 'تبديل الشريط الجانبي'
   },
+  input: {
+    clear: 'مسح الإدخال'
+  },
   inputNumber: {
     increment: 'زيادة',
     decrement: 'إنقاص',

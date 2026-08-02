@@ -34,6 +34,9 @@ const messages: LocaleMessages = {
   layout: {
     toggleSidebar: 'Toggle Sidebar'
   },
+  input: {
+    clear: 'Clear input'
+  },
   inputNumber: {
     increment: 'Increase',
     decrement: 'Decrease',

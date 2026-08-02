@@ -34,6 +34,9 @@ const messages: LocaleMessages = {
   layout: {
     toggleSidebar: 'Seitenleiste umschalten'
   },
+  input: {
+    clear: 'Eingabe löschen'
+  },
   inputNumber: {
     increment: 'Erhöhen',
     decrement: 'Verringern',

@@ -34,6 +34,9 @@ const messages: LocaleMessages = {
   layout: {
     toggleSidebar: 'Переключить боковую панель'
   },
+  input: {
+    clear: 'Очистить ввод'
+  },
   inputNumber: {
     increment: 'Увеличить',
     decrement: 'Уменьшить',

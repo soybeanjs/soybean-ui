@@ -34,6 +34,9 @@ const messages: LocaleMessages = {
   layout: {
     toggleSidebar: '切换侧边栏'
   },
+  input: {
+    clear: '清除输入'
+  },
   inputNumber: {
     increment: '增加',
     decrement: '减少',
