@@ -12,9 +12,7 @@ defineOptions({
 });
 
 const props = withDefaults(defineProps<SwitchProps<T>>(), {
-  modelValue: undefined,
-  trueValue: true as any,
-  falseValue: false as any
+  modelValue: undefined
 });
 
 const emit = defineEmits<SwitchEmits<T>>();

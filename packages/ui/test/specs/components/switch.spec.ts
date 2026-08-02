@@ -34,6 +34,26 @@ describe('SSwitch', () => {
       expect(wrapper.find('[data-soybean-switch-thumb] [data-testid="thumb-slot"]').exists()).toBe(true);
       wrapper.unmount();
     });
+
+    it('merges a custom class onto the root container', () => {
+      const wrapper = mount(SSwitch, {
+        props: { class: 'switch-root-class' },
+        attachTo: document.body
+      });
+      expect(wrapper.find('.switch-root-class').exists()).toBe(true);
+      wrapper.unmount();
+    });
+
+    it('reflects data-state on control, thumb and root', () => {
+      const wrapper = mount(SSwitch, {
+        props: { modelValue: true },
+        attachTo: document.body
+      });
+      expect(wrapper.find('[role="switch"]').attributes('data-state')).toBe('checked');
+      expect(wrapper.find('[data-soybean-switch-thumb]').attributes('data-state')).toBe('checked');
+      expect(wrapper.find('[data-soybean-switch-root]').attributes('data-state')).toBe('checked');
+      wrapper.unmount();
+    });
   });
 
   describe('checked state', () => {
@@ -41,6 +61,7 @@ describe('SSwitch', () => {
       const wrapper = mount(SSwitch, { attachTo: document.body });
       const control = wrapper.find('[role="switch"]');
       expect(control.attributes('aria-checked')).toBe('false');
+      expect(control.attributes('data-state')).toBe('unchecked');
       wrapper.unmount();
     });
 
@@ -76,6 +97,40 @@ describe('SSwitch', () => {
       expect(emittedValue).toBe(false);
       wrapper.unmount();
     });
+
+    it('supports uncontrolled usage with defaultValue', () => {
+      const wrapper = mount(SSwitch, {
+        props: { defaultValue: true },
+        attachTo: document.body
+      });
+      expect(wrapper.find('[role="switch"]').attributes('aria-checked')).toBe('true');
+      wrapper.unmount();
+    });
+
+    it('supports custom trueValue/falseValue', async () => {
+      const wrapper = mount(SSwitch, {
+        props: { trueValue: 'on', falseValue: 'off', modelValue: 'on' },
+        attachTo: document.body
+      });
+      const control = wrapper.find('[role="switch"]');
+      expect(control.attributes('aria-checked')).toBe('true');
+      await control.trigger('click');
+      expect(wrapper.emitted('update:modelValue')![0][0]).toBe('off');
+      wrapper.unmount();
+    });
+  });
+
+  describe('keyboard interaction', () => {
+    it('toggles on Enter key', async () => {
+      const wrapper = mount(SSwitch, {
+        props: { modelValue: false },
+        attachTo: document.body
+      });
+      await wrapper.find('[role="switch"]').trigger('keydown', { key: 'Enter' });
+      expect(wrapper.emitted('update:modelValue')).toBeTruthy();
+      expect(wrapper.emitted('update:modelValue')![0][0]).toBe(true);
+      wrapper.unmount();
+    });
   });
 
   describe('disabled state', () => {
@@ -86,6 +141,62 @@ describe('SSwitch', () => {
       });
       await wrapper.find('[role="switch"]').trigger('click');
       expect(wrapper.emitted('update:modelValue')).toBeFalsy();
+      wrapper.unmount();
+    });
+  });
+
+  describe('form proxy', () => {
+    it('renders a visually hidden input carrying name/value when inside a form control', () => {
+      const wrapper = mount(SSwitch, {
+        props: { name: 'dark-mode', value: 'on', modelValue: true, class: 'form' },
+        attachTo: document.body
+      });
+      const input = wrapper.find('[data-soybean-visually-hidden-input]');
+      expect(input.exists()).toBe(true);
+      expect(input.attributes('name')).toBe('dark-mode');
+      expect(input.attributes('value')).toBe('on');
+      wrapper.unmount();
+    });
+
+    it('checks the hidden input only when modelValue equals trueValue', () => {
+      const wrapper = mount(SSwitch, {
+        props: { name: 'dark-mode', trueValue: 'on', falseValue: 'off', modelValue: 'off', class: 'form' },
+        attachTo: document.body
+      });
+      const input = wrapper.find('[data-soybean-visually-hidden-input]');
+      expect((input.element as HTMLInputElement).checked).toBe(false);
+      wrapper.unmount();
+    });
+
+    it('checks the hidden input when modelValue equals trueValue', () => {
+      const wrapper = mount(SSwitch, {
+        props: { name: 'dark-mode', trueValue: 'on', falseValue: 'off', modelValue: 'on', class: 'form' },
+        attachTo: document.body
+      });
+      const input = wrapper.find('[data-soybean-visually-hidden-input]');
+      expect((input.element as HTMLInputElement).checked).toBe(true);
+      wrapper.unmount();
+    });
+  });
+
+  describe('required state', () => {
+    it('reflects required via aria-required', () => {
+      const wrapper = mount(SSwitch, {
+        props: { required: true },
+        attachTo: document.body
+      });
+      expect(wrapper.find('[role="switch"]').attributes('aria-required')).toBe('true');
+      wrapper.unmount();
+    });
+  });
+
+  describe('class overrides', () => {
+    it('applies per-slot ui overrides to the control', () => {
+      const wrapper = mount(SSwitch, {
+        props: { ui: { control: 'custom-control-class' } },
+        attachTo: document.body
+      });
+      expect(wrapper.find('[role="switch"]').classes()).toContain('custom-control-class');
       wrapper.unmount();
     });
   });
