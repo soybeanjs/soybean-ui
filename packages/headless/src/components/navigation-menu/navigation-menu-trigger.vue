@@ -5,6 +5,7 @@ import { isMouseEvent, isNullish } from '../../shared';
 import { useForwardElement } from '../../composables';
 import { Primitive } from '../primitive';
 import { VisuallyHidden } from '../visually-hidden';
+import { LINK_DISMISSED } from './shared';
 import {
   useCollectionItem,
   useNavigationMenuItemContext,
@@ -93,6 +94,10 @@ const onClick = (event: PointerEvent) => {
 
   // if open via pointermove, we prevent click event
   if (hasPointerMoveOpenedRef.value) return;
+
+  // when the trigger renders a nested link as child, the link already dismissed the
+  // menu on this click; skip toggling so the menu stays closed
+  if ((event as unknown as Record<string, unknown>)[LINK_DISMISSED]) return;
 
   if (open.value) {
     onItemSelect('');

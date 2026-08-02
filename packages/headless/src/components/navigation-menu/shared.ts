@@ -6,6 +6,11 @@ const COMMON_SLOTS = ['item', 'item-leading', 'item-trailing'];
 
 export const EVENT_ROOT_CONTENT_DISMISS = 'navigationMenu.rootContentDismiss';
 export const LINK_SELECT = 'navigationMenu.linkSelect';
+/**
+ * Marker set on the shared click event when a link dismisses the menu, so a sibling
+ * trigger listener (as-child trigger) can skip re-opening it.
+ */
+export const LINK_DISMISSED = 'soybeanNavigationMenuLinkDismissed';
 
 export const navigationMenuViewportCssVars = {
   width: '--soybean-navigation-menu-viewport-width',

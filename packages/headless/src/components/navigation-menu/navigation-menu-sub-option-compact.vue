@@ -32,11 +32,11 @@ const linkProps = computed(() =>
   isLink.value
     ? {
         ...props.linkProps,
-        disabled: props.subItem.disabled,
-        to: props.subItem.to,
+        disabled: props.subItem.disabled ?? props.linkProps?.disabled,
+        to: props.subItem.to ?? props.linkProps?.to,
         href: props.subItem.href,
-        target: props.subItem.target,
-        external: props.subItem.external
+        target: props.subItem.target ?? props.linkProps?.target,
+        external: props.subItem.external ?? props.linkProps?.external
       }
     : {}
 );

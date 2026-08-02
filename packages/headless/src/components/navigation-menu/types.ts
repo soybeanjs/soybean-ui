@@ -330,7 +330,7 @@ export interface NavigationMenuSubOptionCompactProps {
   /**
    * Properties forwarded to the link element.
    */
-  linkProps?: NavigationMenuLinkProps;
+  linkProps?: Omit<NavigationMenuLinkProps, 'href'>;
 }
 
 /**
@@ -364,7 +364,7 @@ export interface NavigationMenuOptionCompactProps {
   /**
    * Properties forwarded to the link element.
    */
-  linkProps?: NavigationMenuLinkProps;
+  linkProps?: Omit<NavigationMenuLinkProps, 'href'>;
   /**
    * Properties forwarded to the trigger element.
    */

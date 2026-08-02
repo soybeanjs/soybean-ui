@@ -2,7 +2,7 @@
 import { computed } from 'vue';
 import { useOmitProps } from '../../composables';
 import Link from '../link/link.vue';
-import { EVENT_ROOT_CONTENT_DISMISS, LINK_SELECT } from './shared';
+import { EVENT_ROOT_CONTENT_DISMISS, LINK_DISMISSED, LINK_SELECT } from './shared';
 import { useCollectionItem, useNavigationMenuRootContext, useNavigationMenuUi } from './context';
 import type { NavigationMenuLinkProps, NavigationMenuLinkEmits } from './types';
 
@@ -14,7 +14,7 @@ const props = defineProps<NavigationMenuLinkProps>();
 
 const emit = defineEmits<NavigationMenuLinkEmits>();
 
-const { isRoot } = useNavigationMenuRootContext('NavigationMenuLink');
+const { isRoot, modelValue } = useNavigationMenuRootContext('NavigationMenuLink');
 
 const ui = useNavigationMenuUi();
 
@@ -36,6 +36,13 @@ const onClick = async (event: MouseEvent) => {
   emit('select', linkSelectEvent);
 
   if (linkSelectEvent.defaultPrevented || event.metaKey) return;
+
+  // when the menu is closed the click targets an as-child trigger; let the trigger
+  // handle opening instead of dismissing a menu that is already closed
+  if (!modelValue.value) return;
+
+  // mark the shared event so a sibling trigger listener skips re-opening after dismissal
+  (event as unknown as Record<string, unknown>)[LINK_DISMISSED] = true;
 
   const dismissEvent = new CustomEvent(EVENT_ROOT_CONTENT_DISMISS, {
     bubbles: true,
