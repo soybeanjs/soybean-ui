@@ -1,5 +1,7 @@
 import { describe, expect, it } from 'vitest';
+import { h } from 'vue';
 import { mount } from '@vue/test-utils';
+import SConfigProvider from '@/components/config-provider/config-provider.vue';
 import SIcon from '@/components/icon/icon.vue';
 import { getA11yViolations } from '../../shared/a11y';
 
@@ -31,6 +33,41 @@ describe('SIcon', () => {
       wrapper.unmount();
     });
 
+    it('renders a custom component when icon is a VNode directly', () => {
+      const vnode = h('span', { 'data-vnode-icon': true }, 'VNode');
+
+      const wrapper = mount(SIcon, {
+        props: { icon: vnode },
+        attachTo: document.body
+      });
+
+      expect(wrapper.find('[data-vnode-icon]').exists()).toBe(true);
+
+      wrapper.unmount();
+    });
+
+    it('renders nothing when icon is null', () => {
+      const wrapper = mount(SIcon, {
+        props: { icon: null },
+        attachTo: document.body
+      });
+
+      expect(wrapper.find('*').exists()).toBe(false);
+
+      wrapper.unmount();
+    });
+
+    it('renders nothing when icon is undefined', () => {
+      const wrapper = mount(SIcon, {
+        props: { icon: undefined },
+        attachTo: document.body
+      });
+
+      expect(wrapper.find('*').exists()).toBe(false);
+
+      wrapper.unmount();
+    });
+
     it('applies width and height props', () => {
       const wrapper = mount(SIcon, {
         props: { icon: 'lucide:check', width: '2rem', height: '2rem' },
@@ -42,17 +79,161 @@ describe('SIcon', () => {
 
       wrapper.unmount();
     });
+
+    it('inherits default size from SConfigProvider', () => {
+      const wrapper = mount(SConfigProvider, {
+        props: {
+          iconify: { width: '3rem', height: '3rem' }
+        },
+        slots: {
+          default: () => h(SIcon, { icon: 'lucide:check' })
+        },
+        attachTo: document.body
+      });
+
+      const svg = wrapper.find('svg');
+      expect(svg.exists()).toBe(true);
+      expect(svg.attributes('width')).toBe('3rem');
+      expect(svg.attributes('height')).toBe('3rem');
+
+      wrapper.unmount();
+    });
+
+    it('prop size takes precedence over config size', () => {
+      const wrapper = mount(SConfigProvider, {
+        props: {
+          iconify: { width: '3rem', height: '3rem' }
+        },
+        slots: {
+          default: () => h(SIcon, { icon: 'lucide:check', width: '1rem', height: '1rem' })
+        },
+        attachTo: document.body
+      });
+
+      const svg = wrapper.find('svg');
+      expect(svg.attributes('width')).toBe('1rem');
+      expect(svg.attributes('height')).toBe('1rem');
+
+      wrapper.unmount();
+    });
+  });
+
+  describe('attributes', () => {
+    it('carries the data-soybean-icon attribute', () => {
+      const wrapper = mount(SIcon, {
+        props: { icon: 'lucide:check' },
+        attachTo: document.body
+      });
+
+      expect(wrapper.find('svg').attributes('data-soybean-icon')).toBeDefined();
+
+      wrapper.unmount();
+    });
+
+    it('applies shrink-0 utility class instead of inline style', () => {
+      const wrapper = mount(SIcon, {
+        props: { icon: 'lucide:check' },
+        attachTo: document.body
+      });
+
+      const svg = wrapper.find('svg');
+      expect(svg.classes()).toContain('shrink-0');
+      expect(svg.attributes('style') || '').not.toContain('flex-shrink');
+
+      wrapper.unmount();
+    });
+
+    it('passes through custom class', () => {
+      const wrapper = mount(SIcon, {
+        props: { icon: 'lucide:check' },
+        attrs: { class: 'text-primary' },
+        attachTo: document.body
+      });
+
+      const svg = wrapper.find('svg');
+      expect(svg.classes()).toContain('text-primary');
+
+      wrapper.unmount();
+    });
   });
 
   describe('accessibility', () => {
+    it('sets aria-hidden="true" by default for decorative icons', () => {
+      const wrapper = mount(SIcon, {
+        props: { icon: 'lucide:check' },
+        attachTo: document.body
+      });
+
+      expect(wrapper.find('svg').attributes('aria-hidden')).toBe('true');
+
+      wrapper.unmount();
+    });
+
+    it('does not set aria-hidden when aria-label is provided', () => {
+      const wrapper = mount(SIcon, {
+        props: { icon: 'lucide:check', ariaLabel: 'Check' },
+        attachTo: document.body
+      });
+
+      expect(wrapper.find('svg').attributes('aria-hidden')).toBeUndefined();
+      expect(wrapper.find('svg').attributes('aria-label')).toBe('Check');
+
+      wrapper.unmount();
+    });
+
+    it('does not set aria-hidden when aria-labelledby is provided', () => {
+      const wrapper = mount(SIcon, {
+        props: { icon: 'lucide:check', ariaLabelledby: 'label-id' },
+        attachTo: document.body
+      });
+
+      expect(wrapper.find('svg').attributes('aria-hidden')).toBeUndefined();
+
+      wrapper.unmount();
+    });
+
+    it('respects explicit aria-hidden from user', () => {
+      const wrapper = mount(SIcon, {
+        props: { icon: 'lucide:check', ariaHidden: false },
+        attachTo: document.body
+      });
+
+      expect(wrapper.find('svg').attributes('aria-hidden')).toBeUndefined();
+
+      wrapper.unmount();
+    });
+
+    it('respects explicit aria-hidden=true from user', () => {
+      const wrapper = mount(SIcon, {
+        props: { icon: 'lucide:check', ariaHidden: true },
+        attachTo: document.body
+      });
+
+      expect(wrapper.find('svg').attributes('aria-hidden')).toBe('true');
+
+      wrapper.unmount();
+    });
+
     it('has no a11y violations with aria-label', async () => {
       const wrapper = mount(SIcon, {
-        props: { icon: 'lucide:check', 'aria-label': 'Check icon' },
+        props: { icon: 'lucide:check', ariaLabel: 'Check icon' },
         attachTo: document.body
       });
 
       const violations = await getA11yViolations(wrapper.element);
       expect(violations).toHaveLength(0);
+
+      wrapper.unmount();
+    });
+
+    it('has no a11y violations for decorative icon', async () => {
+      const wrapper = mount(SIcon, {
+        props: { icon: 'lucide:check' },
+        attachTo: document.body
+      });
+
+      const violations = await getA11yViolations(wrapper.element);
+      expect(violations).toEqual([]);
 
       wrapper.unmount();
     });

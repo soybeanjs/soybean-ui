@@ -66,7 +66,7 @@ describe('SSpinner', () => {
 
       expect(icon.attributes('class')).toContain('text-success');
       expect(icon.attributes('class')).toContain('size-6');
-      expect(icon.props('color')).toBeUndefined();
+      expect(icon.attributes('color')).toBeUndefined();
 
       wrapper.unmount();
     });

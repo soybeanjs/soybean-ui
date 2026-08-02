@@ -25,8 +25,11 @@ const iconifySize = computed(() => {
 });
 
 const forwardedProps = computed(() => ({
-  ...props,
-  ...iconifySize.value
+  ...iconifySize.value,
+  icon: props.icon,
+  ariaHidden: props.ariaHidden ?? true,
+  ariaLabel: props.ariaLabel,
+  ariaLabelledby: props.ariaLabelledby
 }));
 
 const iconifyProps = computed(() => {
