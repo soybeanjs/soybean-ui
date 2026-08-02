@@ -360,39 +360,80 @@
 
 按优先级 + 类别推进，每轮集中处理同一类组件以降低上下文切换成本。单组件验收清单见 [audit.md -> Single-component acceptance checklist](../.agents/skills/soybean-ui-component-development/audit.md#single-component-acceptance-checklist)，每轮完成后执行 [audit.md -> Cross-component consistency regression](../.agents/skills/soybean-ui-component-development/audit.md#cross-component-consistency-regression)，全部完成后执行 [audit.md -> Full regression](../.agents/skills/soybean-ui-component-development/audit.md#full-regression)。
 
-1. **第 1 轮（P0 表单核心）：** C27 `input`、C28 `textarea`、C29 `input-number`、C31 `password`、C36/C37 `checkbox`、C38 `radio-group`、C39 `switch` — 共 8 项
-2. **第 2 轮（P0 选择器）：** C32 `select`、C33 `combobox`、C34 `autocomplete`、C35 `cascader` — 共 4 项
+1. **第 1 轮（P0 表单核心）：** C27 `input`、C28 `textarea`、C29 `input-number`、C31 `password`、C36/C37 `checkbox`、C38 `radio-group`、C39 `switch` — 共 8 项 — **🟢 已完成 6/8**（C27/C28/C29/C31/C36/C37 见 [四、组件检查执行记录](#四组件检查执行记录)；剩余 C38/C39）
+2. **第 2 轮（P0 选择器）：** C32 `select`、C33 `combobox`、C34 `autocomplete`、C35 `cascader` — 共 4 项 — **✅ 已完成**（见 [四、组件检查执行记录](#四组件检查执行记录)）
 3. **第 3 轮（P0 日期时间）：** C44-C49（6 项 `*-field`/`*-picker`）
 4. **第 4 轮（P0 表单聚合）：** C53 `form`
 5. **第 5 轮（P0 数据展示）：** C61 `table`、C62 `tree`
 6. **第 6 轮（P0 浮层）：** C71 `toast`、C72 `dialog`、C73 `drawer`、C74 `popover`、C75 `popconfirm`、C78 `dropdown-menu`、C81 `tooltip`
 7. **第 7 轮（P1 通用基础）：** C01-C04、C14（5 项）
 8. **第 8 轮（P1 导航）：** C20、C22、C24-C26（4 项）
-9. **第 9 轮（P1 表单补充）：** C30、C40-C43、C52、C54、C55（8 项）
+9. **第 9 轮（P1 表单补充）：** C30、C40-C43、C52、C54、C55（8 项） — **🟡 C30 `input-otp` 已提前完成**（见 [四、组件检查执行记录](#四组件检查执行记录)）
 10. **第 10 轮（P1 数据展示）：** C56、C58、C61（已 6 轮）→ C64、C66、C69（4 项）
 11. **第 11 轮（P1 浮层补充）：** C76、C77、C79-C82、C89（7 项）
 12. **第 12 轮（P2 剩余）：** 其余 P2 组件
 13. **第 13 轮（P3 剩余）：** 其余 P3 组件
 
+> **批次 1 执行偏差说明：** 批次 1（2026-08-02 ~ 08-03）按「表单输入 → 选择器」连续推进，将属于第 9 轮的 `input-otp`（C30）提前至批次内完成，以便与 input/textarea/input-number/password 形成完整的 P0 表单核心族系审计闭环。各组件检查记录见 [四、组件检查执行记录](#四组件检查执行记录)。
+
 ---
 
-## 四、组件文档质量检查标准
+## 四、组件检查执行记录
+
+> 按 [audit.md -> Single-component acceptance checklist](../.agents/skills/soybean-ui-component-development/audit.md#single-component-acceptance-checklist) 执行，每个组件产出独立检查记录报告（`docs/check-reports/C{编号}-{组件}.md`），完成后回写 [二、组件检查任务列表](#二组件检查任务列表按组件维度独立) 状态列。
+>
+> **批次约定：** 每个批次以一段连续提交为单位（`check({Component}): optimize {Component}`），聚焦同一组件类别。批次内所有组件通过 [audit.md -> Cross-component consistency regression](../.agents/skills/soybean-ui-component-development/audit.md#cross-component-consistency-regression) 后进入下一批次。
+
+### 4.1 批次 1（P0 表单输入与选择器）— 2026-08-02 ~ 08-03
+
+覆盖 C27–C37 共 **10 个检查单元**（第 1 轮 6/8 + 第 2 轮 4/4，`input-otp` 提前完成）。批次共修复 **16 项真实缺陷**（Major 10 / Minor 6），单测由 **94 → 241 项**（+147），并为 textarea 新增浏览器 e2e 5 项。
+
+|  编号   | 组件                          | 检查报告                                                   | 缺陷修复（按严重度）                                                                                                                                                                                                                                                                                                      | 单测（前 → 后） |
+| :-----: | :---------------------------- | :--------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | :-------------- |
+|   C27   | `input`                       | [C27-input.md](./check-reports/C27-input.md)               | **Major ×1**（D1-08/D7-05）：`InputClear` 无 i18n `aria-label`（补 13 语言 `input.clear`）+ 默认图标缺 `aria-hidden`，axe `button-name`/`svg-img-alt` 违规                                                                                                                                                                | 10 → 23         |
+|   C28   | `textarea`                    | [C28-textarea.md](./check-reports/C28-textarea.md)         | 无 Blocker/Major（clear a11y 已于族系建设期完成）；补单测 8 → 26 + **浏览器 e2e 5 项**（autosize 生长/`maxRows` 封顶/counter/清除/axe——happy-dom 无布局引擎，`adjustHeight` 须浏览器级验证）                                                                                                                              | 8 → 26 + e2e 5  |
+|   C29   | `input-number`                | [C29-input-number.md](./check-reports/C29-input-number.md) | **Major ×2**：① D1-10 键盘增减 NaN 污染（`@keydown.up.prevent="onIncrease"` 未加括号，`KeyboardEvent` 被当 `multiplier`）；② D6-01 中文文档路由 404（`number-input.md` → `git mv` `input-number.md`）。**Minor ×3**：`onClear` 无禁用守卫、`usePressedHold` 定时器泄漏（补 `onScopeDispose`）、clear 图标缺 `aria-hidden` | 6 → 21          |
+|   C30   | `input-otp`                   | [C30-input-otp.md](./check-reports/C30-input-otp.md)       | **Major ×1**（D3-01/D7-05）：自定义 `aria-label` 三种传法全失效（prop 以 kebab 键声明，Vue 3.5 camelize 后读取命中不到）→ 改 `ariaLabel` 声明 + 双键读取，playground 4 个示例的 aria-label 同步恢复                                                                                                                       | 6 → 24          |
+|   C31   | `password`                    | [C31-password.md](./check-reports/C31-password.md)         | **Minor ×1**（D3-01/D7-07）：`clear` 事件被 `SPassword` 包装器吞掉（未绑定 `@clear` 转发）；**SInput 存在同一模式问题，已记录留待其检查轮次处理**                                                                                                                                                                         | 6 → 25          |
+|   C32   | `select`                      | [C32-select.md](./check-reports/C32-select.md)             | **Major ×1**（D1-04/D7-07）：`defaultValue`/受控 `modelValue` 未打开时 trigger 文本为空（collection 挂载才注册）→ `SelectCompact` 新增 `fallbackLabel` 数据驱动回退。**Minor ×1**：`select-root.vue` 的 `@ts-expect-error` 反模式 → 显式类型断言                                                                          | 5 → 16          |
+|   C33   | `combobox`                    | [C33-combobox.md](./check-reports/C33-combobox.md)         | **Major ×1**（D1-04）：disabled item 仍可被选中——`withDefaults` 将未显式默认值的 Boolean prop 隐式默认化为 `false`，`rootDisabled ?? props.disabled` 短路失效 → 改 `computed(rootDisabled \|\| props.disabled)`                                                                                                           | 13 → 23         |
+|   C34   | `autocomplete`                | [C34-autocomplete.md](./check-reports/C34-autocomplete.md) | **Major ×1**（D7-05）：打开态 `role="listbox"` 缺可访问名称（axe `aria-input-field-name` serious）→ compact `viewportProps` 注入 `aria-label` + 13 语言 `LocaleAutocompleteMessages.options`。**Minor ×1**：点击清空按钮误关弹出层（blur 圈闭不含 anchor）→ `parentElement` 判定对齐 combobox                             | 11 → 21         |
+|   C35   | `cascader`                    | [C35-cascader.md](./check-reports/C35-cascader.md)         | **Major ×2**：① D2-11/D7-05 4 处硬编码中文文案未走 locale（clear 按钮/空态/tag 移除按钮/filterable 搜索框）→ 新增 `LocaleCascaderMessages` + 13 语言包 + `emptyLabel`/`clearLabel` prop；② D7-05 打开态 axe `aria-allowed-attr` critical（`textbox` 绑定 `aria-expanded`）→ 移除冗余属性                                  | 10 → 21         |
+| C36/C37 | `checkbox` / `checkbox-group` | [C36-checkbox.md](./check-reports/C36-checkbox.md)         | **Major ×1**（D1-03）：`checkbox-card-group.vue` 向 headless 传 4 个未声明 props（`:content-class` 等）→ 泄漏为组根 DOM 非法属性（且经 `provideCheckboxCardUi` 冗余）→ 删除绑定。**顺带修复** autocomplete-compact 既有 `use-before-define` lint 错误                                                                     | 19 → 41         |
+
+> **批次合计：** 10 个检查单元全部通过 D1–D7 全维度；单测 94 → 241 项（+147），textarea 浏览器 e2e 5 项；`pnpm typecheck` / `pnpm lint` 全绿；族系回归（select/combobox/autocomplete/cascader/tags-input/password/input-number/checkbox 等）全通过。
+
+### 4.2 批次遗留增强项（统一排期，非阻塞）
+
+| 组件                                          | 增强项                                                                             | 对标依据          | 出处                                                                          |
+| :-------------------------------------------- | :--------------------------------------------------------------------------------- | :---------------- | :---------------------------------------------------------------------------- |
+| `input`/`textarea`                            | `showCount` 计数器、`error`/`loading` 态、`change` 事件、IME 组合事件              | AntD/Element Plus | [C27](./check-reports/C27-input.md)、[C28](./check-reports/C28-textarea.md)   |
+| `input-number`                                | `formatter`/`parser` 钩子、`controls` 显隐、`compact` 模式                         | AntD/Element Plus | [C29](./check-reports/C29-input-number.md)                                    |
+| `input-otp`                                   | locale 化默认 aria-label、`contextmenu` 处理                                       | reka-ui/shadcn    | [C30](./check-reports/C30-input-otp.md)                                       |
+| `checkbox`/`radio-group`                      | 独立 `indeterminate` prop、`button` variant、全选/半选联动辅助                     | AntD/Element Plus | [C36](./check-reports/C36-checkbox.md)                                        |
+| `select`/`combobox`/`autocomplete`/`cascader` | `remote`/`loading` 态、`maxTagCount`、虚拟滚动 e2e、`showArrow` 对齐               | AntD/Naive UI     | [C32](./check-reports/C32-select.md) ~ [C35](./check-reports/C35-cascader.md) |
+| 表单族系（共享）                              | `isFormControl` 语义对齐 Radix `closest('form')`（当前为「元素自身含 `form` 类」） | Radix             | [C36](./check-reports/C36-checkbox.md)                                        |
+| 测试基础设施                                  | `icon.spec.ts` 4 项环境性失败（iconify SVG 数据缺失，HEAD 既有）                   | —                 | [C36](./check-reports/C36-checkbox.md)                                        |
+
+---
+
+## 五、组件文档质量检查标准
 
 > 本节是单组件文档质量检查的**项目级标准**，整合了「参照主流组件库规范对单组件文档进行系统性优化与完善」这一任务的具体要求、执行标准与验收要点。规则权威源是 [surfaces.md -> Docs](../.agents/skills/soybean-ui-component-development/surfaces.md#docs)；评估方法论与检查项（D6-01～D6-15）见 [audit.md -> D6. Documentation](../.agents/skills/soybean-ui-component-development/audit.md#d6-documentation)。已落地的参考样本：[button.md](../apps/docs/src/docs/zh-CN/components/button.md)（含特性、组件系列、架构对标表、FAQ）。
 >
 > 对标库：Ant Design（`何时使用` + 代码演示 + API）、Element Plus（概述 + 代码演示 + API + 注意事项）、Material UI（intro + Demos + API）、Mantine（Overview + Features + Usage + API）、shadcn/ui（Usage + Examples + API Reference）。
 
-### 4.1 任务要求
+### 5.1 任务要求
 
 对单个组件的消费者文档（`apps/docs/src/docs/{en|zh-CN}/components/{component}.md`）进行系统性优化与完善，参照行业内主流组件库的组件描述规范与最佳实践，进行全面审查与改写，确保文档专业、完整、可读，并作为该组件消费者唯一的文档入口。
 
-### 4.2 适用范围
+### 5.2 适用范围
 
 - 所有已发布组件（88 个目录 / 110 个 S 前缀导出）的 zh-CN 与 en 文档。
 - 新组件发布时按本标准一次性落地；已发布组件按 [docs/check.md -> 二、组件检查任务列表](#二组件检查任务列表按组件维度独立) 的优先级（P0 → P3）逐步对齐。
 - 单组件文档优化纳入 D6 维度检查，与功能合规、API 设计、类型系统等维度并行验收。
 
-### 4.3 文档结构标准
+### 5.3 文档结构标准
 
 zh-CN 与 en 两份文档**必须共享同一章节顺序**，仅语言不同。完整结构（带 _(可选)_ 标记的章节仅在不适时可省略）：
 
@@ -408,7 +449,7 @@ zh-CN 与 en 两份文档**必须共享同一章节顺序**，仅语言不同。
 |  8   | `## Notes` 注意事项            | 手写                                            |    ✅    |
 |  9   | `## FAQ` 常见问题              | 手写                                            |    ✅    |
 
-### 4.4 各模块内容要求
+### 5.4 各模块内容要求
 
 | 模块              | 内容要求                                                                                                                                                                                                                                                                                                                        | 对标参考                                 |
 | :---------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | :--------------------------------------- |
@@ -421,16 +462,16 @@ zh-CN 与 en 两份文档**必须共享同一章节顺序**，仅语言不同。
 | 注意事项          | 至少包含：① **架构与对标差异**——表格或短文对比 SoybeanUI 与 Ant Design/Element Plus/MUI/Mantine/Naive UI/shadcn/ui，点明 headless/styled 分离、`ui` 覆盖、`as`/`asChild`、`Compact` 聚合或任何刻意偏离及理由（如「无 `block` 属性——UnoCSS `w-full` 已覆盖」）；② **运行约束**——SSR、portal/z-index、受控/非受控陷阱等用户易错点 | Element Plus 注意事项                    |
 | 常见问题          | 3–6 个问答对，覆盖用户最常问的问题（如「如何占满宽度？」「为何保留 `aria-disabled`？」「如何渲染为链接？」）；答案尽量回链相关 prop/slot/demo                                                                                                                                                                                   | Ant Design/Element Plus FAQ              |
 
-### 4.5 执行流程
+### 5.5 执行流程
 
-1. **审查现状**：读取目标组件的 zh-CN 与 en 文档、playground 示例清单、生成 API 数据，对照 4.3/4.4 列出差距清单。
+1. **审查现状**：读取目标组件的 zh-CN 与 en 文档、playground 示例清单、生成 API 数据，对照 5.3/5.4 列出差距清单。
 2. **改写文档**：按结构标准与内容要求重写两份文档；`Usage`/`Demos`/`API` 一律用渲染组件，**不**手写示例代码或 API 表。
 3. **同步 playground**：若基础/高级用法缺失，先补 `apps/playground/src/examples/{component}/` 示例（遵循 [surfaces.md -> Playground](../.agents/skills/soybean-ui-component-development/surfaces.md#playground) 命名与质量要求），再回链到文档。
 4. **同步生成数据**：公开 API 或类型描述变更后运行 `pnpm sui api`，非英文 locale 运行 `pnpm sui api-translate -- --locale <locale>`；changelog 映射变更运行 `pnpm sui changelog` 及 `pnpm sui changelog-translate -- --locale <locale>`。
 5. **同步菜单**：更新 `apps/docs/src/constants/menus.ts`，按字母序插入对应分组。
-6. **自检**：对照 4.6 验收要点逐项核对。
+6. **自检**：对照 5.6 验收要点逐项核对。
 
-### 4.6 验收要点
+### 5.6 验收要点
 
 文档质量检查纳入 D6 维度，验收映射如下（检查项标准与验收条件见 [audit.md -> D6](../.agents/skills/soybean-ui-component-development/audit.md#d6-documentation)）：
 
@@ -456,7 +497,7 @@ zh-CN 与 en 两份文档**必须共享同一章节顺序**，仅语言不同。
 
 ---
 
-## 五、关联文档
+## 六、关联文档
 
 - [audit.md](../.agents/skills/soybean-ui-component-development/audit.md) — **评估方法论单一源**（7 维度 105 检查项、严重度、验收状态、单组件验收、跨组件一致性回归、全量回归、对标库选型、WAI-ARIA APG 参考、对标库链接）
 - [SKILL.md](../.agents/skills/soybean-ui-component-development/SKILL.md) — 功能合规基线、模式分类、阶段顺序、工作流、guardrails
@@ -472,4 +513,4 @@ zh-CN 与 en 两份文档**必须共享同一章节顺序**，仅语言不同。
 
 ---
 
-_本项目快照覆盖 88 个已发布组件 × 7 大维度 × 105 个检查项（方法论见 audit.md）。最后更新：2026-08-02。执行时按「执行顺序建议」推进，每轮完成后执行跨组件一致性回归，全部完成后执行全量回归。_
+_本项目快照覆盖 88 个已发布组件 × 7 大维度 × 105 个检查项（方法论见 audit.md）。最后更新：2026-08-03。执行时按「执行顺序建议」推进（批次进度与记录见 [四、组件检查执行记录](#四组件检查执行记录)），每轮完成后执行跨组件一致性回归，全部完成后执行全量回归。_
