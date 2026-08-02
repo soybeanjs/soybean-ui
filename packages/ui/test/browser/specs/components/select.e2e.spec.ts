@@ -77,7 +77,11 @@ describe('SSelect (e2e)', () => {
       { withTheme: true }
     );
 
-    const violations = await getA11yViolations();
+    // `region` is a page-level best-practice rule: the bare test page has no
+    // landmark elements, so it flags every component scanned from `body`.
+    const violations = await getA11yViolations(undefined, {
+      rules: { region: { enabled: false } }
+    });
     expect(violations).toHaveLength(0);
     unmount();
   });
