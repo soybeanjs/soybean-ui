@@ -92,7 +92,7 @@ Example: "audit the `dialog` component against industry baselines" means audit s
 
 ### Audit and evaluation of shipped components
 
-1. Load [audit.md](audit.md) for the full assessment methodology, seven check dimensions (D1–D7, 102 items), severity levels, acceptance states, and regression rules.
+1. Load [audit.md](audit.md) for the full assessment methodology, seven check dimensions (D1–D7, 105 items), severity levels, acceptance states, and regression rules.
 2. Confirm the project snapshot in `docs/check.md` for the component's task id (C01–C90), current priority, key check items, and any concrete benchmark findings already recorded.
 3. Run the eight-step assessment flow from [audit.md -> Assessment flow](audit.md#assessment-flow). Grade every finding by severity; do not start the next component while a Blocker is open.
 4. For D2 industry benchmarking, follow [audit.md -> Industry benchmarking](audit.md#d2-industry-benchmarking) (six libraries) and record concrete findings back into the component's task row in `docs/check.md`.

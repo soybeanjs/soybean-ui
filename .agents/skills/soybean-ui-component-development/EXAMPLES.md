@@ -101,7 +101,7 @@ Why it triggers:
 
 Expected approach:
 
-1. Load [audit.md](audit.md) for the assessment methodology, seven check dimensions (D1–D7, 102 items), severity levels, and acceptance states.
+1. Load [audit.md](audit.md) for the assessment methodology, seven check dimensions (D1–D7, 105 items), severity levels, and acceptance states.
 2. Confirm the component's task id, priority, and key check items in `docs/check.md` (project snapshot).
 3. Run the eight-step assessment flow from [audit.md -> Assessment flow](audit.md#assessment-flow). Grade every finding by severity (Blocker / Major / Minor / Enhancement); do not start the next component while a Blocker is open.
 4. For D2 industry benchmarking, follow [audit.md -> D2. Industry benchmarking](audit.md#d2-industry-benchmarking) (six libraries) and record concrete findings (for example, `input` should add `showCount`) back into the component's task row in `docs/check.md`.

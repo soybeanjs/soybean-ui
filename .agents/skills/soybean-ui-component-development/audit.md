@@ -1,6 +1,6 @@
 # SoybeanUI Component Audit Rules
 
-This file is the single source of truth for evaluating already-shipped SoybeanUI components. It owns the assessment methodology, the seven check dimensions, the 102 check items with standards and acceptance conditions, severity levels, acceptance states, single-component acceptance, cross-component consistency regression, full regression, and the industry benchmarking methodology (library selection + comparison dimensions).
+This file is the single source of truth for evaluating already-shipped SoybeanUI components. It owns the assessment methodology, the seven check dimensions, the 105 check items with standards and acceptance conditions, severity levels, acceptance states, single-component acceptance, cross-component consistency regression, full regression, and the industry benchmarking methodology (library selection + comparison dimensions).
 
 The companion [SKILL.md](SKILL.md) owns pattern classification, phase order, workflows, guardrails, and delivery surfaces; [layers.md](layers.md) owns implementation layer rules; [surfaces.md](surfaces.md) owns delivery surface rules; [process.md](process.md) owns the finish checklist and commit convention. Project-level snapshots — the 88-component-group list, the C01–C90 task table, current P0–P3 priority allocation, the 13-round execution order, and concrete benchmark findings per component (for example `input` should add `showCount`) — live in `docs/check.md` and reference this file as the source.
 
@@ -54,10 +54,10 @@ Seven dimensions and their item counts, sources, and benchmark mapping:
 | D3  | API design             |  14   | Naming, parameter design, return value consistency, usability, extensibility                            |
 | D4  | TypeScript type system |  10   | `typescript-functional-style` + JSDoc rules                                                             |
 | D5  | Code standards         |  16   | `typescript-functional-style` + `vue-sfc-structure`                                                     |
-| D6  | Documentation          |  12   | [surfaces.md](surfaces.md) Docs section + benchmark library doc structure                               |
+| D6  | Documentation          |  15   | [surfaces.md](surfaces.md) Docs section + benchmark library doc structure                               |
 | D7  | Other dimensions       |  20   | Performance, a11y, browser compatibility, exception handling, test coverage (unit + e2e), extensibility |
 
-**Total:** 102 check items. Per-component task tables in `docs/check.md` track state across these dimensions.
+**Total:** 105 check items. Per-component task tables in `docs/check.md` track state across these dimensions.
 
 ## Dimension details
 
@@ -196,20 +196,23 @@ Seven dimensions and their item counts, sources, and benchmark mapping:
 
 **Scope:** `apps/docs/src/docs/{en|zh-CN}/components/{component}.md`, `apps/playground/src/examples/{component}/`, `apps/docs/src/constants/menus.ts`, `apps/docs/src/generated/{api,changelog}/`.
 
-|  ID   | Check item             | Standard                                                                                                                      | Acceptance condition                                         |
-| :---: | :--------------------- | :---------------------------------------------------------------------------------------------------------------------------- | :----------------------------------------------------------- |
-| D6-01 | Bilingual docs in sync | zh/en docs share structure; only language differs                                                                             | File structure diff is empty                                 |
-| D6-02 | Doc structure complete | Top heading -> Overview -> `## Usage` `<UsageCode>` -> `## Demos` `<PlaygroundGallery>` -> `## API` `<ComponentApi>`          | Review                                                       |
-| D6-03 | Overview complete      | One-line positioning + applicable scenarios + key features + relationship to same-category components                         | Review                                                       |
-| D6-04 | Usage minimal example  | <= 10 line minimal runnable example; shows most common API                                                                    | Review                                                       |
-| D6-05 | Playground coverage    | Playground examples cover major public capabilities (`color`/`size`/`disabled`/`ui` etc.); no duplicate scenes                | `apps/playground/src/examples/{component}/` file list review |
-| D6-06 | Playground naming      | Filenames `NN-name.vue`; `name` accurately describes the capability; drives i18n title keys                                   | Review                                                       |
-| D6-07 | API data generation    | `pnpm sui api` has run; non-English locales ran `pnpm sui api-translate -- --locale <locale>`; no hand-edited generated data  | git diff contains no hand edits to `generated/api/`          |
-| D6-08 | Changelog data         | After public API/changelog mapping changes, ran `pnpm sui changelog` and `pnpm sui changelog-translate -- --locale <locale>`  | Same as above                                                |
-| D6-09 | Menu registration      | `apps/docs/src/constants/menus.ts` has the component's camelCase key inserted alphabetically into the right group             | Review                                                       |
-| D6-10 | Notes and FAQ          | Docs include "Notes" / "FAQ" sections (reference Ant Design / Element Plus / Mantine patterns)                                | Review                                                       |
-| D6-11 | Benchmark differences  | Docs note differences from benchmark libraries (e.g. SoybeanUI's headless/styled split, `ui` override, `Compact` aggregation) | Review                                                       |
-| D6-12 | Links complete         | Docs interlink with playground, API, source, and benchmark libraries; no broken links                                         | Link check                                                   |
+|  ID   | Check item                      | Standard                                                                                                                                                                                                                                                      | Acceptance condition                                         |
+| :---: | :------------------------------ | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | :----------------------------------------------------------- |
+| D6-01 | Bilingual docs in sync          | zh/en docs share structure; only language differs                                                                                                                                                                                                             | File structure diff is empty                                 |
+| D6-02 | Doc structure complete          | All non-optional sections present in the ordered structure defined in [surfaces.md -> Recommended structure](surfaces.md#recommended-structure): title -> Overview -> Usage -> Features -> (Component family) -> Demos -> API -> Notes -> FAQ                 | Review                                                       |
+| D6-03 | Overview complete               | One-line positioning + when to use + when NOT to use / sibling preference + relationship to same-category components                                                                                                                                          | Review                                                       |
+| D6-04 | Usage minimal example           | <= 10 line minimal runnable example; shows most common API                                                                                                                                                                                                    | Review                                                       |
+| D6-05 | Playground coverage             | Playground examples cover major public capabilities (`color`/`size`/`disabled`/`ui` etc.); no duplicate scenes                                                                                                                                                | `apps/playground/src/examples/{component}/` file list review |
+| D6-06 | Playground naming               | Filenames `NN-name.vue`; `name` accurately describes the capability; drives i18n title keys                                                                                                                                                                   | Review                                                       |
+| D6-07 | API data generation             | `pnpm sui api` has run; non-English locales ran `pnpm sui api-translate -- --locale <locale>`; no hand-edited generated data                                                                                                                                  | git diff contains no hand edits to `generated/api/`          |
+| D6-08 | Changelog data                  | After public API/changelog mapping changes, ran `pnpm sui changelog` and `pnpm sui changelog-translate -- --locale <locale>`                                                                                                                                  | Same as above                                                |
+| D6-09 | Menu registration               | `apps/docs/src/constants/menus.ts` has the component's camelCase key inserted alphabetically into the right group                                                                                                                                             | Review                                                       |
+| D6-10 | Notes section                   | Docs include a `## Notes` section covering architecture/benchmark differences AND at least one runtime caution (SSR, portal, controlled/uncontrolled, etc.)                                                                                                   | Review                                                       |
+| D6-11 | Benchmark differences           | Notes include a comparison table or short prose contrasting SoybeanUI with the six benchmark libraries; calls out headless/styled split, `ui` override, `as`/`asChild`, `Compact` aggregation, or any deliberate API deviation + rationale                    | Review                                                       |
+| D6-12 | Links complete                  | Docs interlink with playground, API, source, and benchmark libraries; no broken links                                                                                                                                                                         | Link check                                                   |
+| D6-13 | Features section                | `## Features` has 4–8 bullets, one capability per bullet, emoji-prefixed; covers variant/color/size/shape counts, signature capabilities (`as`/`asChild`, `ui`, `Compact`), a11y, TS type safety; does not duplicate API table rows                           | Review                                                       |
+| D6-14 | Basic-to-advanced demo progress | Demos progress basic -> advanced: starts with `basic`, then `size`/`color`/`disabled`, then advanced scenarios (async, virtual scroll, custom slots, keyboard nav, etc.); serves as both the basic and advanced usage examples required by industry standards | `apps/playground/src/examples/{component}/` file list review |
+| D6-15 | FAQ content                     | `## FAQ` has 3–6 question/answer pairs targeting the most common user questions; each answer links back to the relevant prop/slot/demo when possible (reference Ant Design / Element Plus / Mantine FAQ patterns)                                             | Review                                                       |
 
 ### D7. Other dimensions
 
@@ -247,7 +250,7 @@ After a component completes all seven dimensions, it is marked "passed" only whe
 - [ ] D3 API design: all 14 items ✅; cross-component API consistency review passes
 - [ ] D4 type system: `pnpm typecheck` passes; JSDoc coverage >= 90%
 - [ ] D5 code standards: `pnpm lint` passes; script setup order review passes
-- [ ] D6 documentation: zh/en synced; playground/docs/menus/api/changelog all synced
+- [ ] D6 documentation: zh/en synced; full section structure (Overview/Usage/Features/Demos/API/Notes/FAQ) present; playground/docs/menus/api/changelog all synced
 - [ ] D7 other: test coverage >= 70%; axe-core zero violations; SSR build passes
 - [ ] Generation commands: `pnpm sui headless` / `pnpm sui ui` / `pnpm sui api` / `pnpm sui changelog` (and `--locale`) run as needed
 - [ ] Validation commands: `pnpm typecheck` / `pnpm lint` / `pnpm fmt` / `pnpm test` all pass

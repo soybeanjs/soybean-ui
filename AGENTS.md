@@ -9,7 +9,7 @@ Component development rules live in the self-contained skill at `.agents/skills/
 - [surfaces.md](.agents/skills/soybean-ui-component-development/surfaces.md) — playground, docs, testing delivery surface rules.
 - [e2e.md](.agents/skills/soybean-ui-component-development/e2e.md) — browser e2e testing (Tier 1 component-level + Tier 2 app-level smoke), env setup, core scenarios, assertion standards.
 - [process.md](.agents/skills/soybean-ui-component-development/process.md) — finish checklist, git commit convention.
-- [audit.md](.agents/skills/soybean-ui-component-development/audit.md) — assessment methodology, seven check dimensions (D1–D7, 102 items), severity, acceptance, regression flows for already-shipped components.
+- [audit.md](.agents/skills/soybean-ui-component-development/audit.md) — assessment methodology, seven check dimensions (D1–D7, 105 items), severity, acceptance, regression flows for already-shipped components.
 - [EXAMPLES.md](.agents/skills/soybean-ui-component-development/EXAMPLES.md) — request shapes that trigger the skill.
 
 **Global skill rules (mandatory for all agents, applied before any task):**

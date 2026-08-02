@@ -76,20 +76,46 @@ Both files must share the same structure; only the language may differ.
 
 ### Recommended structure
 
-- Top-level title
-- Overview
-- `## Usage`
-- `<UsageCode component="{component}" />`
-- `## Demos`
-- `<PlaygroundGallery component="{component}" />`
-- `## API`
-- `<ComponentApi component="{component}" />`
+The component doc is the single consumer-facing reference for one component. It mirrors the description style of mainstream libraries (Ant Design, Element Plus, Material UI, Mantine, shadcn/ui) while preserving SoybeanUI's headless/styled split and generated-data surfaces.
+
+Sections, in order. Sections marked optional are omitted only when they do not apply to the component (e.g. a primitive with a single export has no "Component family").
+
+1. Top-level title (`#`) — the component's localized display name.
+2. `## Overview` — positioning + applicable scenarios + key features + relationship to same-category components.
+3. `## Usage` — minimal quick-start; always `<UsageCode component="{component}" />`.
+4. `## Features` — core characteristics as a concise bullet list.
+5. `## Component family` _(optional)_ — only when the component exports multiple `S`-prefixed members.
+6. `## Demos` — full demo gallery; always `<PlaygroundGallery component="{component}" />`.
+7. `## API` — generated reference; always `<ComponentApi component="{component}" />`.
+8. `## Notes` — architecture and benchmark differences, cautions, constraints.
+9. `## FAQ` — common questions and solutions.
+
+Both zh-CN and en files MUST share this exact section order; only the language differs.
+
+### Section content standards
+
+Each section has a concrete content contract. Reviewers check docs against these contracts (see [audit.md -> D6](audit.md#d6-documentation)).
+
+- **Top-level title** — localized component name only (e.g. `# 按钮` / `# Button`). Do not append version, status, or marketing copy.
+- **Overview** — answer three questions in ≤ 3 short paragraphs or bullets:
+  1. What it is (one-line positioning, e.g. "a button that triggers an action").
+  2. When to use it — applicable scenarios (e.g. "form submits, toolbar actions"). Also state when NOT to use it or which sibling to prefer when the boundary is non-obvious, mirroring Ant Design's `何时使用` and Element Plus's overview guidance.
+  3. Relationship to same-category components (e.g. "pairs with `form`", "prefer `SButtonLink` for route navigation").
+- **Usage** — `<UsageCode component="{component}" />` only. The backing example must be a ≤ 10 line minimal runnable snippet showing the most common API; do not hand-write fenced code here.
+- **Features** — 4–8 bullets, each one capability, prefixed with an emoji icon for scannability (follow the `button.md` reference). Cover: variant/color/size/shape counts, loading/link/icon support, a11y, TS type safety, and any signature capability (e.g. `as`/`asChild` polymorphism, `ui` override, `Compact` aggregation). Do not duplicate API table rows verbatim.
+- **Component family** _(optional)_ — a bullet list of the component's `S`-prefixed exports with a one-line role for each (e.g. `SButton` - base button; `SButtonLink` - route-aware link button). Omit entirely for single-export components.
+- **Demos** — `<PlaygroundGallery component="{component}" />` only. The underlying playground examples must progress basic → advanced (see the Playground section): start with `basic`, then `size`/`color`/`disabled`, then advanced scenarios (async loading, virtual scroll, custom slots, keyboard nav, etc.). Demos double as the basic and advanced usage examples required by industry standards; do not hand-write example code in this section.
+- **API** — `<ComponentApi component="{component}" />` only. The generated table is authoritative and already covers type definitions, default values, and required markers; do not hand-write prop/event/slot tables. Only hand-write a `DataTable`/`TypeTable` as an exception when generated API cannot cover a special page. After public API or type-description changes, rerun `pnpm sui api`; for non-English locales also `pnpm sui api-translate -- --locale <locale>`.
+- **Notes** — at minimum:
+  - **Architecture and benchmark differences** — a table or short prose contrasting SoybeanUI with mainstream libraries (Ant Design / Element Plus / Material UI / Mantine / Naive UI / shadcn/ui). Call out the headless/styled split, `ui` slot override, `as`/`asChild` polymorphism, `Compact` aggregation, or any deliberate API deviation and the rationale (e.g. "no `block` prop — UnoCSS `w-full` covers it").
+  - **Cautions** — runtime constraints, SSR caveats, z-index/portal behavior, controlled vs uncontrolled pitfalls, or anything a user is likely to get wrong.
+- **FAQ** — 3–6 question/answer pairs covering the questions a user most commonly asks (e.g. "how to make it full-width?", "why is `aria-disabled` kept alongside native `disabled`?", "how to render as a link?"). Each answer links back to the relevant prop/slot/demo when possible. Reference Ant Design / Element Plus / Mantine FAQ patterns.
 
 ### Writing order
 
-1. Write the overview and minimal usage.
-2. Wire `<UsageCode component="{component}" />` and `<PlaygroundGallery component="{component}" />`.
-3. Wire `<ComponentApi component="{component}" />`.
+1. Write the Overview, Features, and minimal Usage.
+2. Wire `<UsageCode component="{component}" />`, `<PlaygroundGallery component="{component}" />`, and `<ComponentApi component="{component}" />`.
+3. Write Notes (architecture + benchmark differences + cautions) and FAQ.
 4. Update `apps/docs/src/constants/menus.ts`.
 5. If public API changed, run `pnpm sui api`; for non-English locales run `pnpm sui api-translate -- --locale <locale>`.
 6. If changelog mapping, release display, or changelog locale templates changed, run `pnpm sui changelog`; for non-English locales run `pnpm sui changelog-translate -- --locale <locale>`.
@@ -130,9 +156,13 @@ Common groups:
 ### Quality requirements
 
 - Doc content stays in sync with the actual component implementation.
+- All non-optional sections in the [Recommended structure](#recommended-structure) are present and follow the [Section content standards](#section-content-standards) contract; optional sections are omitted only when they do not apply.
+- zh-CN and en docs share the identical section order; a structure diff is empty.
 - `<UsageCode>` and `<PlaygroundGallery>` `component` values match the component directory name.
 - If playground sub-examples carry order prefixes, the docs still use prefix-stripped example keys — never write raw filenames like `01-basic` into docs.
-- `<ComponentApi>` `component` value matches the real API data source.
+- `<ComponentApi>` `component` value matches the real API data source; the generated table remains the authoritative source for prop/event/slot type definitions, default values, and required markers.
+- Demos progress basic → advanced and cover the component's major public capabilities; no duplicate scenes.
+- Notes include the architecture/benchmark-difference table and at least one caution; FAQ has 3–6 question/answer pairs.
 - Doc demo surfaces match `apps/playground/src/examples/{component}/` real files.
 - Titles and API content do not lag behind the implementation.
 - New components default to both Chinese and English docs; do not ship single-language only.

@@ -2,7 +2,7 @@
 
 > 本文档是当前已实现 **88 个** `@soybeanjs/ui` 组件的**项目级快照**：组件清单、C01–C90 任务表、当前 P0–P3 优先级分配、13 轮执行顺序、具体行业对标发现。
 >
-> **评估方法论的单一权威源**是 [soybean-ui-component-development/audit.md](../.agents/skills/soybean-ui-component-development/audit.md)。该文件拥有：评估方法论（8 步流程）、7 大检查维度（D1–D7）、102 个检查项（含检查标准与验收条件）、严重度定义（Blocker / Major / Minor / Enhancement）、验收状态标记（✅/⚠️/❌/➕/—/⏳）、单组件验收清单、跨组件一致性回归、全量回归、行业对标方法论（对标库选型 + 维度）、WAI-ARIA APG 参考与对标库链接。
+> **评估方法论的单一权威源**是 [soybean-ui-component-development/audit.md](../.agents/skills/soybean-ui-component-development/audit.md)。该文件拥有：评估方法论（8 步流程）、7 大检查维度（D1–D7）、105 个检查项（含检查标准与验收条件）、严重度定义（Blocker / Major / Minor / Enhancement）、验收状态标记（✅/⚠️/❌/➕/—/⏳）、单组件验收清单、跨组件一致性回归、全量回归、行业对标方法论（对标库选型 + 维度）、WAI-ARIA APG 参考与对标库链接。
 >
 > 执行检查时：先加载 [audit.md](../.agents/skills/soybean-ui-component-development/audit.md) 获取通用方法，再回到本文档查阅当前快照（任务编号、优先级、重点检查项、具体对标发现）。
 >
@@ -104,7 +104,7 @@
 ### 2.1 使用说明
 
 - 每个组件为一个独立检查维度，编号 `C{编号}`。
-- 每个组件按 7 大维度（D1-D7）执行检查，每个维度的具体检查项（共 102 项）见 [audit.md -> Dimension details](../.agents/skills/soybean-ui-component-development/audit.md#dimension-details)。
+- 每个组件按 7 大维度（D1-D7）执行检查，每个维度的具体检查项（共 105 项）见 [audit.md -> Dimension details](../.agents/skills/soybean-ui-component-development/audit.md#dimension-details)。
 - 状态列：`⏳` 待检查 / `✅` 通过 / `⚠️` 待优化 / `❌` 不通过 / `➕` 增强项 / `—` 不适用（详见 [audit.md -> Acceptance status markers](../.agents/skills/soybean-ui-component-development/audit.md#acceptance-status-markers)）。
 - 「优先级」列基于组件使用频率、对标差距、Blocker 风险综合评定：`P0`(立即) / `P1`(高) / `P2`(中) / `P3`(低)。
 - 「重点检查项」列列出该组件需重点关注的检查项编号（如 `D1-13, D2-04, D3-05`）。
@@ -376,9 +376,89 @@
 
 ---
 
-## 四、关联文档
+## 四、组件文档质量检查标准
 
-- [audit.md](../.agents/skills/soybean-ui-component-development/audit.md) — **评估方法论单一源**（7 维度 102 检查项、严重度、验收状态、单组件验收、跨组件一致性回归、全量回归、对标库选型、WAI-ARIA APG 参考、对标库链接）
+> 本节是单组件文档质量检查的**项目级标准**，整合了「参照主流组件库规范对单组件文档进行系统性优化与完善」这一任务的具体要求、执行标准与验收要点。规则权威源是 [surfaces.md -> Docs](../.agents/skills/soybean-ui-component-development/surfaces.md#docs)；评估方法论与检查项（D6-01～D6-15）见 [audit.md -> D6. Documentation](../.agents/skills/soybean-ui-component-development/audit.md#d6-documentation)。已落地的参考样本：[button.md](../apps/docs/src/docs/zh-CN/components/button.md)（含特性、组件系列、架构对标表、FAQ）。
+>
+> 对标库：Ant Design（`何时使用` + 代码演示 + API）、Element Plus（概述 + 代码演示 + API + 注意事项）、Material UI（intro + Demos + API）、Mantine（Overview + Features + Usage + API）、shadcn/ui（Usage + Examples + API Reference）。
+
+### 4.1 任务要求
+
+对单个组件的消费者文档（`apps/docs/src/docs/{en|zh-CN}/components/{component}.md`）进行系统性优化与完善，参照行业内主流组件库的组件描述规范与最佳实践，进行全面审查与改写，确保文档专业、完整、可读，并作为该组件消费者唯一的文档入口。
+
+### 4.2 适用范围
+
+- 所有已发布组件（88 个目录 / 110 个 S 前缀导出）的 zh-CN 与 en 文档。
+- 新组件发布时按本标准一次性落地；已发布组件按 [docs/check.md -> 二、组件检查任务列表](#二组件检查任务列表按组件维度独立) 的优先级（P0 → P3）逐步对齐。
+- 单组件文档优化纳入 D6 维度检查，与功能合规、API 设计、类型系统等维度并行验收。
+
+### 4.3 文档结构标准
+
+zh-CN 与 en 两份文档**必须共享同一章节顺序**，仅语言不同。完整结构（带 _(可选)_ 标记的章节仅在不适时可省略）：
+
+| 顺序 | 章节                           | 渲染方式                                        |   必填   |
+| :--: | :----------------------------- | :---------------------------------------------- | :------: |
+|  1   | 顶级标题 `#`                   | 本地化组件名                                    |    ✅    |
+|  2   | `## Overview` 概述             | 手写                                            |    ✅    |
+|  3   | `## Usage` 用法                | `<UsageCode component="{component}" />`         |    ✅    |
+|  4   | `## Features` 特性             | 手写                                            |    ✅    |
+|  5   | `## Component family` 组件系列 | 手写                                            | _(可选)_ |
+|  6   | `## Demos` 演示                | `<PlaygroundGallery component="{component}" />` |    ✅    |
+|  7   | `## API`                       | `<ComponentApi component="{component}" />`      |    ✅    |
+|  8   | `## Notes` 注意事项            | 手写                                            |    ✅    |
+|  9   | `## FAQ` 常见问题              | 手写                                            |    ✅    |
+
+### 4.4 各模块内容要求
+
+| 模块              | 内容要求                                                                                                                                                                                                                                                                                                                        | 对标参考                                 |
+| :---------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | :--------------------------------------- |
+| 功能说明（概述）  | ≤ 3 段/条，回答三个问题：① 一句话定位（是什么）；② 使用场景（何时用 / 何时不用 / 该优先哪个同级组件）；③ 与同类组件的关系（如「与 `form` 搭配」「路由导航优先 `SButtonLink`」）                                                                                                                                                 | Ant Design `何时使用`、Element Plus 概述 |
+| 核心特性          | 4–8 条 bullet，每条一个能力，emoji 前缀；覆盖 variant/color/size/shape 数量、加载/链接/图标支持、a11y、TS 类型安全，以及标志性能力（`as`/`asChild` 多态、`ui` 覆盖、`Compact` 聚合）；**不**逐条复述 API 表                                                                                                                     | Mantine Features、shadcn/ui              |
+| 基础用法          | `<UsageCode>` 渲染；背后示例须 ≤ 10 行最小可运行片段，展示最常用 API；**不**手写 fenced code                                                                                                                                                                                                                                    | 所有主流库的 quick start                 |
+| 高级用法          | 由 `## Demos` 的 `<PlaygroundGallery>` 承载；playground 示例须 basic → advanced 递进：`basic` → `size`/`color`/`disabled` → 进阶（异步加载、虚拟滚动、自定义插槽、键盘导航等）；**不**在文档内手写示例代码                                                                                                                      | Ant Design/Mantine Examples              |
+| API 参数说明      | `<ComponentApi>` 渲染**生成数据**，权威覆盖 props/events/slots 的**类型定义、默认值、必填项标识**；**不**手写 prop/event/slot 表；仅在生成数据无法覆盖特殊页面时才手写 `DataTable`/`TypeTable`；公开 API 或类型描述变更后须 `pnpm sui api`，非英文 locale 须 `pnpm sui api-translate -- --locale <locale>`                      | Material UI API、Mantine API             |
+| 组件系列 _(可选)_ | 仅当组件导出多个 `S` 前缀成员时提供；每条 bullet 列出一个导出 + 一行角色说明（如 `SButton` - 基础按钮；`SButtonLink` - 路由感知链接按钮）                                                                                                                                                                                       | Ant Design 组件家族                      |
+| 注意事项          | 至少包含：① **架构与对标差异**——表格或短文对比 SoybeanUI 与 Ant Design/Element Plus/MUI/Mantine/Naive UI/shadcn/ui，点明 headless/styled 分离、`ui` 覆盖、`as`/`asChild`、`Compact` 聚合或任何刻意偏离及理由（如「无 `block` 属性——UnoCSS `w-full` 已覆盖」）；② **运行约束**——SSR、portal/z-index、受控/非受控陷阱等用户易错点 | Element Plus 注意事项                    |
+| 常见问题          | 3–6 个问答对，覆盖用户最常问的问题（如「如何占满宽度？」「为何保留 `aria-disabled`？」「如何渲染为链接？」）；答案尽量回链相关 prop/slot/demo                                                                                                                                                                                   | Ant Design/Element Plus FAQ              |
+
+### 4.5 执行流程
+
+1. **审查现状**：读取目标组件的 zh-CN 与 en 文档、playground 示例清单、生成 API 数据，对照 4.3/4.4 列出差距清单。
+2. **改写文档**：按结构标准与内容要求重写两份文档；`Usage`/`Demos`/`API` 一律用渲染组件，**不**手写示例代码或 API 表。
+3. **同步 playground**：若基础/高级用法缺失，先补 `apps/playground/src/examples/{component}/` 示例（遵循 [surfaces.md -> Playground](../.agents/skills/soybean-ui-component-development/surfaces.md#playground) 命名与质量要求），再回链到文档。
+4. **同步生成数据**：公开 API 或类型描述变更后运行 `pnpm sui api`，非英文 locale 运行 `pnpm sui api-translate -- --locale <locale>`；changelog 映射变更运行 `pnpm sui changelog` 及 `pnpm sui changelog-translate -- --locale <locale>`。
+5. **同步菜单**：更新 `apps/docs/src/constants/menus.ts`，按字母序插入对应分组。
+6. **自检**：对照 4.6 验收要点逐项核对。
+
+### 4.6 验收要点
+
+文档质量检查纳入 D6 维度，验收映射如下（检查项标准与验收条件见 [audit.md -> D6](../.agents/skills/soybean-ui-component-development/audit.md#d6-documentation)）：
+
+| 验收要点                     | 检查项 | 验收条件                                           |
+| :--------------------------- | :----- | :------------------------------------------------- |
+| zh/en 结构一致               | D6-01  | 文档结构 diff 为空                                 |
+| 完整章节结构                 | D6-02  | 非可选章节全部存在且顺序正确                       |
+| 概述含定位/使用场景/同级关系 | D6-03  | 评审通过                                           |
+| 基础用法为最小可运行示例     | D6-04  | ≤ 10 行，展示最常用 API                            |
+| playground 覆盖主要公开能力  | D6-05  | 文件清单审查                                       |
+| playground 命名规范          | D6-06  | `NN-name.vue`，`name` 准确描述能力                 |
+| API 生成数据                 | D6-07  | `generated/api/` 无手编辑                          |
+| changelog 生成数据           | D6-08  | `generated/changelog/` 无手编辑                    |
+| 菜单注册                     | D6-09  | `menus.ts` camelCase key 按字母序入正确分组        |
+| 注意事项章节                 | D6-10  | 含架构/对标差异 + ≥ 1 条运行约束                   |
+| 对标差异表                   | D6-11  | 与 6 大对标库的对比表/短文 + 偏离理由              |
+| 链接完整                     | D6-12  | 链接检查通过                                       |
+| 核心特性章节                 | D6-13  | 4–8 条 emoji bullet，覆盖标志性能力，不复述 API 表 |
+| 基础→高级用法递进            | D6-14  | demos 按 basic → 进阶递进                          |
+| FAQ 内容                     | D6-15  | 3–6 个问答对，回链相关 prop/slot/demo              |
+
+**最低验收门槛**：D6-01/D6-02/D6-07/D6-08 必须通过（Blocker）；D6-03/D6-10/D6-11/D6-13/D6-14/D6-15 须达到「评审通过」（Major，未通过不得标记该组件 D6 为 ✅）；D6-04/D6-05/D6-06/D6-09/D6-12 为 Minor，需在下一轮内修复。
+
+---
+
+## 五、关联文档
+
+- [audit.md](../.agents/skills/soybean-ui-component-development/audit.md) — **评估方法论单一源**（7 维度 105 检查项、严重度、验收状态、单组件验收、跨组件一致性回归、全量回归、对标库选型、WAI-ARIA APG 参考、对标库链接）
 - [SKILL.md](../.agents/skills/soybean-ui-component-development/SKILL.md) — 功能合规基线、模式分类、阶段顺序、工作流、guardrails
 - [layers.md](../.agents/skills/soybean-ui-component-development/layers.md) — headless/UI 层规则 + A11y/RTL
 - [surfaces.md](../.agents/skills/soybean-ui-component-development/surfaces.md) — playground/docs/tests 交付面规则
@@ -392,4 +472,4 @@
 
 ---
 
-_本项目快照覆盖 88 个已发布组件 × 7 大维度 × 102 个检查项（方法论见 audit.md）。最后更新：2026-08-02。执行时按「执行顺序建议」推进，每轮完成后执行跨组件一致性回归，全部完成后执行全量回归。_
+_本项目快照覆盖 88 个已发布组件 × 7 大维度 × 105 个检查项（方法论见 audit.md）。最后更新：2026-08-02。执行时按「执行顺序建议」推进，每轮完成后执行跨组件一致性回归，全部完成后执行全量回归。_
