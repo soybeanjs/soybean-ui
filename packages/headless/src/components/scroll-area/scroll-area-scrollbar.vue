@@ -177,6 +177,10 @@ function handlePointerMove(event: PointerEvent) {
 }
 
 function cleanupDragListeners() {
+  if (!isDragging.value) {
+    return;
+  }
+
   isDragging.value = false;
   window.removeEventListener('pointermove', handlePointerMove);
   window.removeEventListener('pointerup', handlePointerUp);
@@ -307,10 +311,10 @@ watch(
 );
 
 onUnmounted(() => {
+  cleanupDragListeners();
   clearHideTimer();
   enabledOrientations.value.forEach(value => updateScrollbarEnabledState(value, false));
   onScrollbarVisibleChange(orientation.value, false);
-  cleanupDragListeners();
   viewportElement.value?.removeEventListener('scroll', onScroll);
 });
 </script>

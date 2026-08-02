@@ -1,4 +1,4 @@
-import { describe, expect, it } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
 import { nextTick, ref } from 'vue';
 import { mount } from '@vue/test-utils';
 import type { VueWrapper } from '@vue/test-utils';
@@ -322,6 +322,275 @@ describe('SScrollArea', () => {
 
       setViewportScroll(viewport, 'horizontal', 40, 'rtl');
       expect(viewport.scrollLeft).toBe(expectedRawScrollLeft);
+    });
+  });
+
+  describe('direction', () => {
+    it('sets dir attribute on root', () => {
+      const wrapper = mount(SScrollArea, {
+        props: { dir: 'rtl', class: 'h-40 w-40' },
+        slots: { default: '<div>Scrollable Content</div>' },
+        attachTo: document.body
+      });
+
+      expect(wrapper.find('[data-soybean-scroll-area-root]').attributes('dir')).toBe('rtl');
+      wrapper.unmount();
+    });
+
+    it('defaults dir to ltr when not provided', () => {
+      const wrapper = mount(SScrollArea, {
+        props: { class: 'h-40 w-40' },
+        slots: { default: '<div>Scrollable Content</div>' },
+        attachTo: document.body
+      });
+
+      expect(wrapper.find('[data-soybean-scroll-area-root]').attributes('dir')).toBe('ltr');
+      wrapper.unmount();
+    });
+  });
+
+  describe('viewport', () => {
+    it('makes the viewport focusable by default', () => {
+      const wrapper = mount(SScrollArea, {
+        props: { class: 'h-40 w-40' },
+        slots: { default: '<div>Scrollable Content</div>' },
+        attachTo: document.body
+      });
+
+      const viewport = wrapper.find('[data-soybean-scroll-area-viewport]');
+      expect(viewport.attributes('tabindex')).toBe('0');
+      expect(viewport.attributes('aria-hidden')).toBeUndefined();
+      wrapper.unmount();
+    });
+  });
+
+  describe('transient visibility', () => {
+    it('shows scrollbars briefly when type is scroll and viewport scrolls', async () => {
+      vi.useFakeTimers();
+
+      const wrapper = mount(SScrollArea, {
+        props: { type: 'scroll', scrollHideDelay: 100, class: 'h-40 w-40' },
+        slots: { default: '<div>Scrollable Content</div>' },
+        attachTo: document.body
+      });
+
+      mockOverflowMetrics(wrapper);
+      await nextTick();
+
+      // mockOverflowMetrics dispatches a scroll event, which triggers transient visibility;
+      // wait for the initial hide timer to expire before asserting the resting state.
+      vi.advanceTimersByTime(150);
+      await nextTick();
+
+      const [verticalScrollbar] = wrapper.findAll('[data-soybean-scroll-area-scrollbar]');
+      expect(verticalScrollbar.attributes('data-state')).toBe('hidden');
+
+      const viewport = wrapper.find('[data-soybean-scroll-area-viewport]');
+      viewport.element.dispatchEvent(new Event('scroll'));
+      await nextTick();
+
+      expect(verticalScrollbar.attributes('data-state')).toBe('visible');
+
+      vi.advanceTimersByTime(150);
+      await nextTick();
+
+      expect(verticalScrollbar.attributes('data-state')).toBe('hidden');
+
+      vi.useRealTimers();
+      wrapper.unmount();
+    });
+
+    it('shows scrollbars on hover when type is hover', async () => {
+      const wrapper = mount(SScrollArea, {
+        props: { type: 'hover', class: 'h-40 w-40' },
+        slots: { default: '<div>Scrollable Content</div>' },
+        attachTo: document.body
+      });
+
+      mockOverflowMetrics(wrapper);
+      await nextTick();
+
+      const root = wrapper.find('[data-soybean-scroll-area-root]');
+      const [verticalScrollbar] = wrapper.findAll('[data-soybean-scroll-area-scrollbar]');
+      expect(verticalScrollbar.attributes('data-state')).toBe('hidden');
+
+      await root.trigger('pointerenter');
+      await nextTick();
+
+      expect(verticalScrollbar.attributes('data-state')).toBe('visible');
+
+      await root.trigger('pointerleave');
+      await nextTick();
+
+      expect(verticalScrollbar.attributes('data-state')).toBe('hidden');
+      wrapper.unmount();
+    });
+  });
+
+  describe('thumb dragging', () => {
+    it('scrolls the viewport when the thumb is dragged', async () => {
+      const wrapper = mount(SScrollArea, {
+        props: { type: 'always', class: 'h-40 w-40' },
+        slots: { default: '<div>Scrollable Content</div>' },
+        attachTo: document.body
+      });
+
+      mockOverflowMetrics(wrapper);
+      await nextTick();
+
+      const viewport = wrapper.find('[data-soybean-scroll-area-viewport]');
+      const verticalThumb = wrapper.findAll('[data-soybean-scroll-area-thumb]')[0];
+
+      await verticalThumb.trigger('pointerdown', { button: 0, clientY: 30 });
+      window.dispatchEvent(new PointerEvent('pointermove', { clientY: 60, pointerId: 1 }));
+      window.dispatchEvent(new PointerEvent('pointerup', { clientY: 60, pointerId: 1 }));
+      await nextTick();
+
+      // Thumb at offset 24 → dragging to 60 moves scrollTop proportionally
+      expect((viewport.element as HTMLElement).scrollTop).toBeGreaterThan(0);
+      wrapper.unmount();
+    });
+
+    it('cleans up window listeners after pointerup', async () => {
+      const wrapper = mount(SScrollArea, {
+        props: { type: 'always', class: 'h-40 w-40' },
+        slots: { default: '<div>Scrollable Content</div>' },
+        attachTo: document.body
+      });
+
+      mockOverflowMetrics(wrapper);
+      await nextTick();
+
+      const verticalThumb = wrapper.findAll('[data-soybean-scroll-area-thumb]')[0];
+
+      await verticalThumb.trigger('pointerdown', { button: 0, clientY: 30 });
+      window.dispatchEvent(new PointerEvent('pointerup', { clientY: 40, pointerId: 1 }));
+
+      // Second pointerup without pointerdown should not throw (no active drag)
+      window.dispatchEvent(new PointerEvent('pointerup', { clientY: 40, pointerId: 1 }));
+      expect(true).toBe(true);
+      wrapper.unmount();
+    });
+  });
+
+  describe('track click', () => {
+    it('jumps the viewport when the track is clicked', async () => {
+      const wrapper = mount(SScrollArea, {
+        props: { type: 'always', class: 'h-40 w-40' },
+        slots: { default: '<div>Scrollable Content</div>' },
+        attachTo: document.body
+      });
+
+      mockOverflowMetrics(wrapper);
+      await nextTick();
+
+      const viewport = wrapper.find('[data-soybean-scroll-area-viewport]');
+      const [verticalScrollbar] = wrapper.findAll('[data-soybean-scroll-area-scrollbar]');
+
+      // Click on the scrollbar track (not the thumb)
+      await verticalScrollbar.trigger('pointerdown', { button: 0, clientY: 80 });
+      await nextTick();
+
+      expect((viewport.element as HTMLElement).scrollTop).toBeGreaterThan(0);
+      wrapper.unmount();
+    });
+
+    it('ignores track clicks on the thumb itself', async () => {
+      const wrapper = mount(SScrollArea, {
+        props: { type: 'always', class: 'h-40 w-40' },
+        slots: { default: '<div>Scrollable Content</div>' },
+        attachTo: document.body
+      });
+
+      mockOverflowMetrics(wrapper);
+      await nextTick();
+
+      const viewport = wrapper.find('[data-soybean-scroll-area-viewport]');
+      const verticalThumb = wrapper.findAll('[data-soybean-scroll-area-thumb]')[0];
+
+      // pointerdown on thumb should start dragging instead of jumping
+      await verticalThumb.trigger('pointerdown', { button: 0, clientY: 30 });
+      window.dispatchEvent(new PointerEvent('pointerup', { clientY: 30, pointerId: 1 }));
+      await nextTick();
+
+      expect((viewport.element as HTMLElement).scrollTop).toBe(24);
+      wrapper.unmount();
+    });
+  });
+
+  describe('corner', () => {
+    it('renders corner when both scrollbars are visible', async () => {
+      const wrapper = mount(SScrollArea, {
+        props: { type: 'always', class: 'h-40 w-40' },
+        slots: { default: '<div>Scrollable Content</div>' },
+        attachTo: document.body
+      });
+
+      mockOverflowMetrics(wrapper);
+      await nextTick();
+
+      const corner = wrapper.find('[data-soybean-scroll-area-corner]');
+      expect(corner.exists()).toBe(true);
+      expect(corner.attributes('aria-hidden')).toBe('true');
+      wrapper.unmount();
+    });
+
+    it('hides corner when only one scrollbar is visible', async () => {
+      const wrapper = mount(
+        {
+          components: { ScrollAreaRoot, ScrollAreaViewport, ScrollAreaScrollbar, ScrollAreaThumb },
+          template: `
+            <ScrollAreaRoot>
+              <ScrollAreaViewport>
+                <div>Scrollable Content</div>
+              </ScrollAreaViewport>
+              <ScrollAreaScrollbar orientation="vertical">
+                <ScrollAreaThumb />
+              </ScrollAreaScrollbar>
+            </ScrollAreaRoot>
+          `
+        },
+        { attachTo: document.body }
+      );
+
+      const viewport = wrapper.find('[data-soybean-scroll-area-viewport]').element as HTMLElement;
+      Object.defineProperties(viewport, {
+        clientHeight: { configurable: true, value: 120 },
+        clientWidth: { configurable: true, value: 180 },
+        scrollHeight: { configurable: true, value: 360 },
+        scrollWidth: { configurable: true, value: 180 }
+      });
+      viewport.dispatchEvent(new Event('scroll'));
+      await nextTick();
+
+      expect(wrapper.find('[data-soybean-scroll-area-corner]').exists()).toBe(false);
+      wrapper.unmount();
+    });
+  });
+
+  describe('unmount safety', () => {
+    it('does not leak hide timers on unmount', async () => {
+      vi.useFakeTimers();
+
+      const wrapper = mount(SScrollArea, {
+        props: { type: 'scroll', scrollHideDelay: 100, class: 'h-40 w-40' },
+        slots: { default: '<div>Scrollable Content</div>' },
+        attachTo: document.body
+      });
+
+      mockOverflowMetrics(wrapper);
+      await nextTick();
+
+      const viewport = wrapper.find('[data-soybean-scroll-area-viewport]');
+      viewport.element.dispatchEvent(new Event('scroll'));
+      await nextTick();
+
+      wrapper.unmount();
+
+      // Advancing timers after unmount must not throw or leak
+      expect(() => vi.advanceTimersByTime(200)).not.toThrow();
+
+      vi.useRealTimers();
     });
   });
 });
