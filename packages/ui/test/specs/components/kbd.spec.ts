@@ -40,15 +40,115 @@ describe('SKbd', () => {
 
       wrapper.unmount();
     });
+  });
 
-    it('symbolizes keys when symbolize is true', () => {
+  describe('symbolize', () => {
+    it('symbolizes known keys (shift → ⇧)', () => {
       const wrapper = mount(SKbd, {
-        props: { value: 'Meta', symbolize: true },
+        props: { value: 'shift', symbolize: true },
         attachTo: document.body
       });
 
-      expect(wrapper.get('kbd').text()).toBeTruthy();
+      expect(wrapper.get('kbd').text()).toBe('⇧');
 
+      wrapper.unmount();
+    });
+
+    it('preserves raw value when symbolize is false', () => {
+      const wrapper = mount(SKbd, {
+        props: { value: 'shift', symbolize: false },
+        attachTo: document.body
+      });
+
+      expect(wrapper.get('kbd').text()).toBe('shift');
+
+      wrapper.unmount();
+    });
+
+    it('uppercases unknown keys when symbolize is true', () => {
+      const wrapper = mount(SKbd, {
+        props: { value: 'F5', symbolize: true },
+        attachTo: document.body
+      });
+
+      expect(wrapper.get('kbd').text()).toBe('F5');
+
+      wrapper.unmount();
+    });
+  });
+
+  describe('data-group attribute', () => {
+    it('sets data-group when value is an array', () => {
+      const wrapper = mount(SKbd, {
+        props: { value: ['Ctrl', 'K'] },
+        attachTo: document.body
+      });
+
+      expect(wrapper.get('kbd').attributes('data-group')).toBeDefined();
+
+      wrapper.unmount();
+    });
+
+    it('does not set data-group for a single string value', () => {
+      const wrapper = mount(SKbd, {
+        props: { value: 'Enter' },
+        attachTo: document.body
+      });
+
+      expect(wrapper.get('kbd').attributes('data-group')).toBeUndefined();
+
+      wrapper.unmount();
+    });
+  });
+
+  describe('variants', () => {
+    it('applies outline variant by default', () => {
+      const wrapper = mount(SKbd, {
+        props: { value: 'A' },
+        attachTo: document.body
+      });
+
+      expect(wrapper.get('kbd').classes()).toContain('bg-background');
+      wrapper.unmount();
+    });
+
+    it('applies solid variant classes', () => {
+      const wrapper = mount(SKbd, {
+        props: { value: 'A', variant: 'solid' },
+        attachTo: document.body
+      });
+
+      expect(wrapper.get('kbd').classes()).toContain('bg-muted-foreground');
+      wrapper.unmount();
+    });
+
+    it('applies ghost variant classes', () => {
+      const wrapper = mount(SKbd, {
+        props: { value: 'A', variant: 'ghost' },
+        attachTo: document.body
+      });
+
+      expect(wrapper.get('kbd').classes()).toContain('bg-muted');
+      wrapper.unmount();
+    });
+
+    it('applies raised shadow class by default', () => {
+      const wrapper = mount(SKbd, {
+        props: { value: 'A' },
+        attachTo: document.body
+      });
+
+      expect(wrapper.get('kbd').classes()).toContain('shadow-[0_2px_0_0]');
+      wrapper.unmount();
+    });
+
+    it('does not apply shadow when raised is false', () => {
+      const wrapper = mount(SKbd, {
+        props: { value: 'A', raised: false },
+        attachTo: document.body
+      });
+
+      expect(wrapper.get('kbd').classes()).not.toContain('shadow-[0_2px_0_0]');
       wrapper.unmount();
     });
   });
