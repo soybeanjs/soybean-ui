@@ -6,7 +6,7 @@ import type {
   TabsUi
 } from '@soybeanjs/headless/tabs';
 import type { AcceptableValue, ClassValue } from '@soybeanjs/headless/types';
-import type { TabsFill } from '@/styles/tabs';
+import type { TabsFill, TabsShape } from '@/styles/tabs';
 import type { ThemeSize } from '@/theme';
 
 /**
@@ -27,6 +27,10 @@ export interface TabsProps<T extends TabsOptionData = TabsOptionData> extends Ta
    * Fill.
    */
   fill?: TabsFill;
+  /**
+   * Shape of the component.
+   */
+  shape?: TabsShape;
 }
 
 /**

@@ -98,6 +98,16 @@ describe('STabs', () => {
       wrapper.unmount();
     });
 
+    it('marks the active tab with data-state="active"', () => {
+      const wrapper = mount(STabs, {
+        props: { items, modelValue: 'tab-1' },
+        attachTo: document.body
+      });
+      expect(wrapper.findAll('[role="tab"]')[0].attributes('data-state')).toBe('active');
+      expect(wrapper.findAll('[role="tab"]')[1].attributes('data-state')).toBe('inactive');
+      wrapper.unmount();
+    });
+
     it('emits update:modelValue when tab is clicked', async () => {
       const wrapper = mount(STabs, {
         props: { items, modelValue: 'tab-1' },
@@ -161,6 +171,133 @@ describe('STabs', () => {
 
       wrapper.unmount();
     });
+
+    it('positions the indicator for vertical orientation', async () => {
+      const wrapper = mount(STabs, {
+        props: { items, modelValue: 'tab-1', orientation: 'vertical' },
+        attachTo: document.body
+      });
+
+      const tabs = wrapper.findAll('[role="tab"]').map(tab => tab.element);
+
+      Object.defineProperty(tabs[1], 'offsetHeight', {
+        configurable: true,
+        get: () => 90
+      });
+      Object.defineProperty(tabs[1], 'offsetTop', {
+        configurable: true,
+        get: () => 110
+      });
+
+      await wrapper.setProps({ modelValue: 'tab-2' });
+      await nextTick();
+
+      const indicator = wrapper.find('[data-soybean-tabs-indicator]');
+
+      expect(indicator.attributes('style')).toContain('--soybean-tabs-indicator-size: 90px;');
+      expect(indicator.attributes('style')).toContain('--soybean-tabs-indicator-position: 110px;');
+
+      wrapper.unmount();
+    });
+  });
+
+  describe('activation mode', () => {
+    it('activates on focus in automatic mode (default)', async () => {
+      const wrapper = mount(STabs, {
+        props: { items, modelValue: 'tab-1' },
+        attachTo: document.body
+      });
+
+      await wrapper.findAll('[role="tab"]')[1].trigger('focus');
+
+      expect(wrapper.emitted('update:modelValue')![0][0]).toBe('tab-2');
+
+      wrapper.unmount();
+    });
+
+    it('does not activate on focus in manual mode, but activates on mousedown', async () => {
+      const wrapper = mount(STabs, {
+        props: { items, modelValue: 'tab-1', activationMode: 'manual' },
+        attachTo: document.body
+      });
+
+      await wrapper.findAll('[role="tab"]')[1].trigger('focus');
+      expect(wrapper.emitted('update:modelValue')).toBeFalsy();
+
+      await wrapper.findAll('[role="tab"]')[1].trigger('mousedown', { button: 0 });
+      expect(wrapper.emitted('update:modelValue')![0][0]).toBe('tab-2');
+
+      wrapper.unmount();
+    });
+  });
+
+  describe('keyboard interaction', () => {
+    it('activates a tab with the Enter key', async () => {
+      const wrapper = mount(STabs, {
+        props: { items, modelValue: 'tab-1' },
+        attachTo: document.body
+      });
+
+      await wrapper.findAll('[role="tab"]')[1].trigger('keydown', { key: 'Enter' });
+
+      expect(wrapper.emitted('update:modelValue')![0][0]).toBe('tab-2');
+
+      wrapper.unmount();
+    });
+
+    it('activates a tab with the Space key', async () => {
+      const wrapper = mount(STabs, {
+        props: { items, modelValue: 'tab-1' },
+        attachTo: document.body
+      });
+
+      await wrapper.findAll('[role="tab"]')[1].trigger('keydown', { key: ' ' });
+
+      expect(wrapper.emitted('update:modelValue')![0][0]).toBe('tab-2');
+
+      wrapper.unmount();
+    });
+
+    it('moves focus with arrow keys and activates in automatic mode', async () => {
+      const wrapper = mount(STabs, {
+        props: { items, modelValue: 'tab-1' },
+        attachTo: document.body
+      });
+
+      const tabs = wrapper.findAll('[role="tab"]');
+
+      await tabs[0].trigger('focus');
+      await tabs[0].trigger('keydown', { key: 'ArrowRight' });
+      await nextTick();
+
+      expect(document.activeElement).toBe(tabs[1].element);
+      expect(wrapper.emitted('update:modelValue')!.at(-1)![0]).toBe('tab-2');
+
+      await tabs[1].trigger('keydown', { key: 'ArrowLeft' });
+      await nextTick();
+
+      expect(document.activeElement).toBe(tabs[0].element);
+
+      wrapper.unmount();
+    });
+
+    it('skips disabled tabs while navigating with arrow keys', async () => {
+      const wrapper = mount(STabs, {
+        props: { items, modelValue: 'tab-1' },
+        attachTo: document.body
+      });
+
+      const tabs = wrapper.findAll('[role="tab"]');
+
+      await tabs[1].trigger('focus');
+      await tabs[1].trigger('keydown', { key: 'ArrowRight' });
+      await nextTick();
+
+      // tab-3 is disabled, focus wraps back to tab-1
+      expect(document.activeElement).toBe(tabs[0].element);
+
+      wrapper.unmount();
+    });
   });
 
   describe('disabled state', () => {
@@ -174,12 +311,196 @@ describe('STabs', () => {
       expect(disabledTab.attributes('data-disabled')).toBe('');
       wrapper.unmount();
     });
+
+    it('does not activate a disabled tab on mousedown', async () => {
+      const wrapper = mount(STabs, {
+        props: { items, modelValue: 'tab-1' },
+        attachTo: document.body
+      });
+
+      await wrapper.findAll('[role="tab"]')[2].trigger('mousedown', { button: 0 });
+
+      expect(wrapper.emitted('update:modelValue')).toBeFalsy();
+
+      wrapper.unmount();
+    });
+  });
+
+  describe('content mounting', () => {
+    it('unmounts inactive content when unmountOnHide is true (default)', async () => {
+      const wrapper = mount(
+        {
+          components: { STabs },
+          data: () => ({ items }),
+          template: `
+            <STabs :items="items" model-value="tab-1">
+              <template #content="{ label }"><p>{{ label }}</p></template>
+            </STabs>
+          `
+        },
+        { attachTo: document.body }
+      );
+
+      await nextTick();
+
+      const panels = wrapper.findAll('[role="tabpanel"]');
+
+      expect(panels[0].text()).toBe('Account');
+      expect(panels[1].text()).toBe('');
+      expect(panels[2].text()).toBe('');
+
+      wrapper.unmount();
+    });
+
+    it('keeps inactive content mounted but hidden when unmountOnHide is false', async () => {
+      const wrapper = mount(
+        {
+          components: { STabs },
+          data: () => ({ items }),
+          template: `
+            <STabs :items="items" model-value="tab-1" :unmount-on-hide="false">
+              <template #content="{ label }"><p>{{ label }}</p></template>
+            </STabs>
+          `
+        },
+        { attachTo: document.body }
+      );
+
+      await nextTick();
+
+      const panels = wrapper.findAll('[role="tabpanel"]');
+
+      expect(panels[0].text()).toBe('Account');
+      expect(panels[1].text()).toBe('Security');
+      expect(panels[1].attributes('hidden')).toBeDefined();
+      expect(panels[0].attributes('hidden')).toBeUndefined();
+
+      wrapper.unmount();
+    });
+  });
+
+  describe('aria wiring', () => {
+    it('links triggers and panels with aria-controls and aria-labelledby', async () => {
+      const wrapper = mount(STabs, {
+        props: { items, modelValue: 'tab-1' },
+        attachTo: document.body
+      });
+
+      await nextTick();
+
+      const firstTab = wrapper.findAll('[role="tab"]')[0];
+      const firstPanel = wrapper.findAll('[role="tabpanel"]')[0];
+
+      expect(firstTab.attributes('aria-controls')).toBe('soybean-tabs-content-tab-1');
+      expect(firstPanel.attributes('id')).toBe('soybean-tabs-content-tab-1');
+      expect(firstPanel.attributes('aria-labelledby')).toBe('soybean-tabs-trigger-tab-1');
+
+      wrapper.unmount();
+    });
+  });
+
+  describe('indicator', () => {
+    it('renders no indicator when enableIndicator is false', () => {
+      const wrapper = mount(STabs, {
+        props: { items, modelValue: 'tab-1', enableIndicator: false },
+        attachTo: document.body
+      });
+
+      expect(wrapper.find('[data-soybean-tabs-indicator]').exists()).toBe(false);
+
+      wrapper.unmount();
+    });
+
+    it('renders a custom indicator slot', async () => {
+      const wrapper = mount(
+        {
+          components: { STabs },
+          data: () => ({ items }),
+          template: `
+            <STabs :items="items" model-value="tab-1">
+              <template #indicator><div class="custom-indicator" /></template>
+            </STabs>
+          `
+        },
+        { attachTo: document.body }
+      );
+
+      await nextTick();
+
+      expect(wrapper.find('[data-soybean-tabs-indicator]').find('.custom-indicator').exists()).toBe(true);
+
+      wrapper.unmount();
+    });
+  });
+
+  describe('variants', () => {
+    it('applies the square shape by default', () => {
+      const wrapper = mount(STabs, {
+        props: { items, modelValue: 'tab-1' },
+        attachTo: document.body
+      });
+
+      expect(wrapper.find('[role="tablist"]').classes()).toContain('rounded-md');
+
+      wrapper.unmount();
+    });
+
+    it('applies the rounded shape', () => {
+      const wrapper = mount(STabs, {
+        props: { items, modelValue: 'tab-1', shape: 'rounded' },
+        attachTo: document.body
+      });
+
+      expect(wrapper.find('[role="tablist"]').classes()).toContain('rounded-full');
+
+      wrapper.unmount();
+    });
+
+    it('applies the fill variant', () => {
+      const full = mount(STabs, {
+        props: { items, modelValue: 'tab-1', fill: 'full' },
+        attachTo: document.body
+      });
+
+      expect(full.find('[data-soybean-tabs-root]').classes()).toContain('items-stretch');
+
+      const auto = mount(STabs, {
+        props: { items, modelValue: 'tab-1', fill: 'auto' },
+        attachTo: document.body
+      });
+
+      expect(auto.find('[data-soybean-tabs-root]').classes()).toContain('items-start');
+
+      full.unmount();
+      auto.unmount();
+    });
+
+    it('applies the size variant', () => {
+      const wrapper = mount(STabs, {
+        props: { items, modelValue: 'tab-1', size: 'lg' },
+        attachTo: document.body
+      });
+
+      expect(wrapper.find('[data-soybean-tabs-root]').classes()).toContain('text-base');
+
+      wrapper.unmount();
+    });
   });
 
   describe('accessibility', () => {
     it('has no a11y violations', async () => {
       const wrapper = mount(STabs, {
         props: { items, modelValue: 'tab-1' },
+        attachTo: document.body
+      });
+      const violations = await getA11yViolations(wrapper.element);
+      expect(violations).toHaveLength(0);
+      wrapper.unmount();
+    });
+
+    it('has no a11y violations with unmountOnHide false', async () => {
+      const wrapper = mount(STabs, {
+        props: { items, modelValue: 'tab-1', unmountOnHide: false },
         attachTo: document.body
       });
       const violations = await getA11yViolations(wrapper.element);

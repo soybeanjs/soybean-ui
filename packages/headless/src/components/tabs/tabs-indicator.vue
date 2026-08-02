@@ -73,7 +73,7 @@ watchPostEffect(() => {
 });
 
 watch(
-  () => [modelValue.value, dir.value],
+  () => [modelValue.value, dir.value, listElement.value],
   () => {
     updateIndicatorStyle();
   },

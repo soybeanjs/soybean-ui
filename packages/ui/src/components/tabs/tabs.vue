@@ -22,7 +22,7 @@ const emit = defineEmits<TabsEmits<T['value']>>();
 
 const slots = defineSlots<TabsSlots<T>>();
 
-const forwardedProps = useOmitProps(props, ['class', 'size', 'ui', 'fill']);
+const forwardedProps = useOmitProps(props, ['class', 'size', 'ui', 'fill', 'shape']);
 
 const listeners = useForwardListeners(emit);
 const slotNames = computed(() => keysOf(slots));
@@ -33,7 +33,8 @@ const ui = computed(() =>
       size: props.size,
       orientation: props.orientation,
       fill: props.fill,
-      enableIndicator: props.enableIndicator
+      enableIndicator: props.enableIndicator,
+      shape: props.shape
     },
     props.ui,
     { root: props.class }

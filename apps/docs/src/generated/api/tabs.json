@@ -6,7 +6,7 @@
         "kind": "props",
         "name": "TabsProps",
         "type": "Interface TabsProps<T>",
-        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<TabsUi>; fill?: TabsFill; items: T[]; enableIndicator?: boolean; listProps?: TabsListProps; triggerProps?: TabsTriggerProps; contentProps?: TabsContentProps; indicatorProps?: TabsIndicatorProps; modelValue?: T['value'] | null; defaultValue?: T['value'] | null; activationMode?: TabsActivationMode; unmountOnHide?: boolean; dir?: Direction; orientation?: DataOrientation; loop?: boolean }",
+        "resolvedType": "{ class?: string | false | Record<string, any> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<TabsUi>; fill?: TabsFill; shape?: TabsShape; items: T[]; enableIndicator?: boolean; listProps?: TabsListProps; triggerProps?: TabsTriggerProps; contentProps?: TabsContentProps; indicatorProps?: TabsIndicatorProps; modelValue?: T['value'] | null; defaultValue?: T['value'] | null; activationMode?: TabsActivationMode; unmountOnHide?: boolean; dir?: Direction; orientation?: DataOrientation; loop?: boolean }",
         "description": "Properties for the Tabs component.",
         "descriptionKey": "api.generated.packages_ui_src_components_tabs_types.tabsprops.props",
         "sourcePath": "packages/ui/src/components/tabs/types.ts",
@@ -104,6 +104,31 @@
                 "resolvedType": "'auto' | 'full'",
                 "description": "",
                 "descriptionKey": "api.generated.packages_ui_src_styles_tabs.tabsfill",
+                "sourcePath": "packages/ui/src/styles/tabs.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "shape",
+            "type": "TabsShape",
+            "required": false,
+            "description": "Shape of the component.",
+            "descriptionKey": "api.generated.packages_ui_src_components_tabs_types.tabsprops.members.shape",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "packages/ui/src/components/tabs/types.ts",
+            "referencedTypes": [
+              {
+                "name": "TabsShape",
+                "kind": "typeAlias",
+                "type": "'rounded' | 'square'",
+                "resolvedType": "'rounded' | 'square'",
+                "description": "",
+                "descriptionKey": "api.generated.packages_ui_src_styles_tabs.tabsshape",
                 "sourcePath": "packages/ui/src/styles/tabs.ts",
                 "typeParameters": [],
                 "external": false,

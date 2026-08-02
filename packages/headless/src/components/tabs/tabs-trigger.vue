@@ -38,7 +38,9 @@ const onMouseDown = (event: MouseEvent) => {
 };
 
 const onKeyDown = () => {
-  changeModelValue(props.value);
+  if (!props.disabled) {
+    changeModelValue(props.value);
+  }
 };
 
 const onFocus = () => {
