@@ -63,6 +63,10 @@ const ellipsisItems = computed(() => {
 });
 
 const handleItemClick = (item: T) => {
+  if (item.disabled) {
+    return;
+  }
+
   emit('click', item);
 };
 </script>
