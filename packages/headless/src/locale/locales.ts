@@ -65,8 +65,25 @@ export function resolveLocale(locale: string): LocaleMessages {
   return resolveLocaleRegistry(locale).messages;
 }
 
+/**
+ * BCP-47 language subtags whose writing direction is right-to-left.
+ * Used as a fallback when a locale is not explicitly registered but its primary
+ * subtag is a known RTL language (e.g. `ar`, `ar-EG`, `he-IL`, `fa-IR`).
+ */
+const RTL_LOCALE_PREFIXES = new Set(['ar', 'he', 'fa', 'ur', 'yi', 'ps', 'sd', 'ug', 'ku', 'dv']);
+
 export function resolveLocaleDirection(locale?: string): Direction {
-  return locale ? (localeRegistry[locale]?.dir ?? 'ltr') : 'ltr';
+  if (!locale) {
+    return 'ltr';
+  }
+
+  const registered = localeRegistry[locale]?.dir;
+  if (registered) {
+    return registered;
+  }
+
+  const prefix = locale.split('-')[0]?.toLowerCase();
+  return prefix && RTL_LOCALE_PREFIXES.has(prefix) ? 'rtl' : 'ltr';
 }
 
 export { enLocale as en };

@@ -203,3 +203,45 @@ registerLocale('custom', myLocale);
 ## API
 
 <ComponentApi component="config-provider" />
+
+## 注意事项
+
+### 架构与对标差异
+
+SoybeanUI 将 `ConfigProvider` 拆分为 headless 层（`@soybeanjs/headless/config-provider`，负责 locale、方向、tooltip 与文案上下文）与 styled 层（`@soybeanjs/ui`，负责主题 CSS 注入、图标渲染与 provider 组合：toast / dialog / progress）。这与 `shadcn/ui` 的 headless/styled 分离一致，区别于 Ant Design、Element Plus、MUI、Mantine、Naive UI 等单包 ConfigProvider。
+
+| 维度          | SoybeanUI                                                                              | Ant Design / Element Plus / MUI / Mantine / Naive UI |
+| :------------ | :------------------------------------------------------------------------------------- | :--------------------------------------------------- |
+| 架构          | headless + styled 分离，双 `provide/inject` 上下文                                     | 单包，单一 ConfigProvider                            |
+| 主题注入      | `createShadcnTheme().getCss()` 写入 `<style id="__SoybeanUI_theme">` 标签              | CSS 变量 / 主题对象 / `ConfigProvider.theme`         |
+| 暗色模式      | `theme.darkSelector`（`'class'` → `.dark`、`'media'` → 系统、自定义）；切换 `.dark` 类 | `theme.dark`、`dark-mode` 类、`colorScheme`          |
+| RTL           | `dir` prop + `useDirection`；按 `locale` 自动推导，并带 RTL 前缀兜底                   | `direction` prop、`dir` 属性、主题方向               |
+| 国际化        | `locale` + `messages` 覆盖；`registerLocale` 注册其他 locale                           | `locale` prop / `LocalizationProvider`               |
+| Provider 组合 | 默认插槽内自动渲染 `ToastProvider`、`DialogProvider`、`ProgressProvider`               | 由用户自行挂载独立 provider                          |
+
+### 运行时注意事项
+
+- **SSR**：主题 CSS 与 headless 工具样式通过 `useStyleTag` 注入到 `<head>`。在 `vite-ssg` 下会在 SSR 水合阶段执行；`<style>` 标签按 `id` 去重，客户端水合不会产生重复标签。`SIcon` 接收 `ssr: import.meta.env.SSR`，图标渲染对 SSR 安全。
+- **样式标签生命周期**：`<style id="__SoybeanUI_theme">` 与 `<style id="__SoybeanHeadless_Styles">` 在页面生命周期内常驻 `<head>`。它们是响应式的——修改 `theme` prop 会原地更新 CSS 内容。卸载 provider 不会移除它们（全局设计如此）。
+- **Locale 注册**：默认仅预注册 `en` 与 `zh-CN`。其他 locale（如 `ar`、`ja`、`fr`）需从 `@soybeanjs/headless/locale/{code}` 导入并在应用初始化时调用 `registerLocale(...)` 注册一次。方向（`dir`）即使未注册 locale 也会兜底到内置 RTL 前缀表（`ar`、`he`、`fa`、`ur` 等），因此 `locale="ar"` 开箱即得 `dir="rtl"`。
+- **嵌套**：`SConfigProvider` 支持嵌套。内层 provider 会覆盖外层在其子树的上下文。headless 与 UI 是两套独立的 injection key，因此仅消费 headless 的组件（如 `useDirection`）读取 headless 上下文，而 UI 消费者（如 `SIcon` 的 iconify 默认值）读取 UI 上下文。
+
+### 常见问题
+
+**`SConfigProvider` 应放在哪里？**
+在应用根节点包裹一次，通常放在 `App.vue` 或根布局中。它必须是所有依赖主题、locale、方向、toast、dialog、progress 上下文的组件的祖先。
+
+**`dir` 与 `locale` 如何协同？**
+显式传入 `dir` 时优先使用。未传入时，`ConfigProvider` 按 `locale` 推导方向：已注册的 locale 使用其声明的 `dir`；未注册的 locale 兜底到内置 RTL 前缀表（如 `ar` → `rtl`、`en` → `ltr`）。若 `locale` 也未知，最终回退到 `ltr`。
+
+**如何添加未预注册的 locale？**
+导入 locale 文件并注册一次：`registerLocale(ar)`（完整注册表形式）或 `registerLocale('custom', messages)`（简写形式）。再把 `locale="ar"`（或自定义 key）传给 `SConfigProvider`。详见上方「加载其他受支持的 locale」。
+
+**暗色模式如何工作？**
+`createShadcnTheme` 始终同时生成浅色与暗色两套 CSS 变量。`theme.darkSelector` 选项决定暗色变量的作用域：`'class'`（默认）将暗色变量置于 `.dark` 选择器下；`'media'` 将其置于 `@media (prefers-color-scheme: dark)` 下；任意自定义字符串会原样作为选择器。使用默认 `'class'` 时，在 `<html>`（或任意祖先节点）切换 `.dark` 类即可切换暗色模式；使用 `'media'` 时，主题会自动跟随系统偏好。
+
+**可以嵌套 `SConfigProvider` 吗？**
+可以。嵌套是受支持的——内层 provider 的上下文对其子树覆盖外层。适用于在 LTR 应用中嵌入 RTL 区块，或为微前端使用不同主题。
+
+**如何自定义 toast 渲染？**
+传入 `customToast` 以跳过默认 `ToastProvider`：`<SConfigProvider customToast>`。然后自行导入 `SToastProvider`（或 headless `ToastProvider`）渲染自定义 toast 内容。`toast()` 命令式 API 仍然可用，因为 headless toast 状态与渲染 UI 相互独立。

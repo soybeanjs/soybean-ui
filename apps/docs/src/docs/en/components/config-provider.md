@@ -205,3 +205,45 @@ Additional components will be added in future releases following the same patter
 ## API
 
 <ComponentApi component="config-provider" />
+
+## Notes
+
+### Architecture and benchmark differences
+
+SoybeanUI splits `ConfigProvider` into a headless layer (`@soybeanjs/headless/config-provider`) that owns locale, direction, tooltip, and message context, and a styled layer (`@soybeanjs/ui`) that owns theme CSS injection, icon rendering, and provider composition (toast / dialog / progress). This mirrors `shadcn/ui`'s headless/styled separation and differs from single-package providers such as Ant Design, Element Plus, MUI, Mantine, and Naive UI.
+
+| Aspect               | SoybeanUI                                                                                | Ant Design / Element Plus / MUI / Mantine / Naive UI  |
+| :------------------- | :--------------------------------------------------------------------------------------- | :---------------------------------------------------- |
+| Architecture         | headless + styled split, dual `provide/inject` contexts                                  | single package, single ConfigProvider                 |
+| Theme injection      | `createShadcnTheme().getCss()` rendered into a `<style id="__SoybeanUI_theme">` tag      | CSS variables / theme object / `ConfigProvider.theme` |
+| Dark mode            | `theme.darkSelector` (`'class'` → `.dark`, `'media'` → OS, custom); toggle `.dark` class | `theme.dark`, `dark-mode` class, `colorScheme`        |
+| RTL                  | `dir` prop + `useDirection`; auto-derived from `locale` with RTL prefix fallback         | `direction` prop, `dir` attribute, theme direction    |
+| i18n                 | `locale` + `messages` overrides; `registerLocale` for additional locales                 | `locale` prop / `LocalizationProvider`                |
+| Provider composition | renders `ToastProvider`, `DialogProvider`, `ProgressProvider` inside the default slot    | separate providers mounted by the user                |
+
+### Runtime cautions
+
+- **SSR**: theme CSS and headless utility styles are injected via `useStyleTag` into the document head. Under `vite-ssg` this runs during SSR hydration; the `<style>` tags are deduplicated by `id` so client hydration will not produce duplicates. `SIcon` receives `ssr: import.meta.env.SSR` so icon rendering is SSR-safe.
+- **Style tag lifecycle**: the `<style id="__SoybeanUI_theme">` and `<style id="__SoybeanHeadless_Styles">` tags persist in `<head>` for the lifetime of the page. They are reactive — changing the `theme` prop updates the CSS content in place. Unmounting the provider does not remove them (they are global by design).
+- **Locale registration**: only `en` and `zh-CN` are pre-registered. For any other locale (e.g. `ar`, `ja`, `fr`), import the locale file from `@soybeanjs/headless/locale/{code}` and call `registerLocale(...)` once during app setup. Direction (`dir`) falls back to a built-in RTL prefix map (`ar`, `he`, `fa`, `ur`, …) even before a locale is registered, so `locale="ar"` resolves to `dir="rtl"` out of the box.
+- **Nesting**: `SConfigProvider` can be nested. An inner provider overrides the outer context for its subtree. The headless and UI contexts are independent injection keys, so headless-only consumers (e.g. `useDirection`) read the headless context while UI consumers (e.g. `SIcon` iconify defaults) read the UI context.
+
+### FAQ
+
+**Where should I place `SConfigProvider`?**
+Wrap your application root once, typically in `App.vue` or the root layout. It must be an ancestor of every component that relies on theme, locale, direction, toast, dialog, or progress context.
+
+**How do `dir` and `locale` interact?**
+`dir` takes precedence when provided explicitly. When omitted, `ConfigProvider` derives direction from `locale`: registered locales use their declared `dir`; unregistered locales fall back to a built-in RTL prefix map (e.g. `ar` → `rtl`, `en` → `ltr`). If `locale` is also unknown, the final fallback is `ltr`.
+
+**How do I add a locale that is not pre-registered?**
+Import the locale file and register it once: `registerLocale(ar)` (full registry form) or `registerLocale('custom', messages)` (shorthand form). Then pass `locale="ar"` (or your custom key) to `SConfigProvider`. See the "Loading another supported locale" section above.
+
+**How does dark mode work?**
+`createShadcnTheme` always generates both light and dark CSS variable sets. The `theme.darkSelector` option controls how the dark set is scoped: `'class'` (default) emits the dark variables under a `.dark` selector, `'media'` emits them under `@media (prefers-color-scheme: dark)`, and any custom string is used verbatim as the selector. With the default `'class'` selector, toggle a `.dark` class on `<html>` (or any ancestor) to switch to dark mode; with `'media'`, the theme follows the user's OS preference automatically.
+
+**Can I nest `SConfigProvider` instances?**
+Yes. Nesting is supported — the inner provider's context overrides the outer for its subtree. This is useful for embedding an RTL section inside an LTR app, or a differently-themed micro-frontend.
+
+**How do I render my own toast UI?**
+Pass `customToast` to opt out of the default `ToastProvider`: `<SConfigProvider customToast>`. Then import `SToastProvider` (or the headless `ToastProvider`) yourself and render custom toast content. The `toast()` imperative API still works because the headless toast state is independent of the rendered UI.

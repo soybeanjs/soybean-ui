@@ -59,8 +59,8 @@ provideConfigProviderContext({
 <template>
   <ConfigProvider v-bind="forwardedProps" :icon-render="iconRender">
     <slot />
-    <ToastProvider v-if="!props.customToast" v-bind="props.toast" />
+    <ToastProvider v-if="!customToast" v-bind="toast" />
     <DialogProvider />
-    <ProgressProvider v-bind="props.progress" />
+    <ProgressProvider v-bind="progress" />
   </ConfigProvider>
 </template>

@@ -12,7 +12,6 @@ defineOptions({
 
 const props = withDefaults(defineProps<ConfigProviderProps>(), {
   locale: 'en',
-  scrollBody: true,
   nonce: undefined
 });
 
