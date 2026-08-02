@@ -30,7 +30,7 @@ export interface InputOtpRootProps extends FormFieldCommonProps, Omit<BaseProps,
   /** Whether the input is readonly. */
   readonly?: boolean;
   /** Accessible label forwarded to the native input. */
-  'aria-label'?: string;
+  ariaLabel?: string;
   /** The controlled value of the OTP input. */
   modelValue?: string;
   /** The uncontrolled default value of the OTP input. */

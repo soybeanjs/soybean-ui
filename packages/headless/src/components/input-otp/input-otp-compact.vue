@@ -29,7 +29,7 @@ const rootProps = usePickProps(props, [
   'minlength',
   'placeholder',
   'readonly',
-  'aria-label',
+  'ariaLabel',
   'modelValue',
   'defaultValue',
   'maxlength',

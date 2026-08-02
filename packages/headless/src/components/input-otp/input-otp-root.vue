@@ -67,7 +67,11 @@ const resolvedPlaceholder = computed(() => {
   return resolveAttrString(props.placeholder) ?? resolveAttrString(attrs.placeholder);
 });
 const resolvedAccessibleLabel = computed(() => {
-  return resolveAttrString(props['aria-label']) ?? resolveAttrString(attrs['aria-label']) ?? 'One-time password';
+  // Vue camelizes the declared kebab-case prop into the props object, so read
+  // both the camelCase prop and the raw attribute to cover every convention.
+  const candidate = props.ariaLabel ?? attrs.ariaLabel ?? attrs['aria-label'];
+
+  return resolveAttrString(candidate) ?? 'One-time password';
 });
 const pattern = computed(() => resolveInputOtpPattern(props.pattern));
 const inputAttrs = computed(() => omit(attrs, ['class', 'style', 'id', 'placeholder', 'aria-label']));
