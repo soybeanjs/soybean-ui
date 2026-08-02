@@ -42,7 +42,7 @@ if (props.value === '') {
 
 const text = computed(() => props.textValue ?? itemElement.value?.textContent?.trim() ?? props.value);
 
-const disabled = computed(() => rootDisabled.value ?? props.disabled);
+const disabled = computed(() => rootDisabled.value || props.disabled);
 
 const visible = computed(() => {
   if (isVirtual.value || ignoreFilter.value || !filterSearch.value) {
