@@ -43,7 +43,7 @@ export type SeparatorCompactSlots = {
   /**
    * Custom content for the label slot.
    */
-  default?: () => any;
+  label?: () => any;
 };
 
 /**

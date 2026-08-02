@@ -21,8 +21,11 @@ const computedOrientation = computed(() =>
   ORIENTATIONS.includes(props.orientation) ? props.orientation : 'horizontal'
 );
 
-// `aria-orientation` defaults to `horizontal` so we only need it if `orientation` is vertical
-const ariaOrientation = computed(() => (computedOrientation.value === 'vertical' ? props.orientation : undefined));
+// `aria-orientation` defaults to `horizontal` so we only need it if `orientation` is vertical.
+// Omit `aria-orientation` when decorative — the element is removed from the a11y tree (`role="none"`).
+const ariaOrientation = computed(() =>
+  !props.decorative && computedOrientation.value === 'vertical' ? props.orientation : undefined
+);
 </script>
 
 <template>

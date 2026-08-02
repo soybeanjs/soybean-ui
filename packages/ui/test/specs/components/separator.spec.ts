@@ -66,6 +66,79 @@ describe('SSeparator', () => {
       expect(wrapper.find('[data-soybean-separator-label]').exists()).toBe(false);
       wrapper.unmount();
     });
+
+    it('sets aria-orientation to vertical for vertical separators', () => {
+      const wrapper = mount(SSeparator, {
+        props: { orientation: 'vertical' },
+        attachTo: document.body
+      });
+
+      expect(wrapper.get('[role="separator"]').attributes('aria-orientation')).toBe('vertical');
+      wrapper.unmount();
+    });
+
+    it('omits aria-orientation for horizontal separators', () => {
+      const wrapper = mount(SSeparator, {
+        attachTo: document.body
+      });
+
+      expect(wrapper.get('[role="separator"]').attributes('aria-orientation')).toBeUndefined();
+      wrapper.unmount();
+    });
+  });
+
+  describe('decorative', () => {
+    it('sets role="none" when decorative is true', () => {
+      const wrapper = mount(SSeparator, {
+        props: { decorative: true },
+        attachTo: document.body
+      });
+
+      expect(wrapper.get('[data-soybean-separator-root]').attributes('role')).toBe('none');
+      wrapper.unmount();
+    });
+
+    it('omits aria-orientation when decorative and vertical', () => {
+      const wrapper = mount(SSeparator, {
+        props: { decorative: true, orientation: 'vertical' },
+        attachTo: document.body
+      });
+
+      expect(wrapper.get('[data-soybean-separator-root]').attributes('role')).toBe('none');
+      expect(wrapper.get('[data-soybean-separator-root]').attributes('aria-orientation')).toBeUndefined();
+      wrapper.unmount();
+    });
+  });
+
+  describe('border variants', () => {
+    it('applies dashed border class', () => {
+      const wrapper = mount(SSeparator, {
+        props: { border: 'dashed' },
+        attachTo: document.body
+      });
+
+      expect(wrapper.get('[data-soybean-separator-root]').classes()).toContain('border-dashed');
+      wrapper.unmount();
+    });
+
+    it('applies dotted border class', () => {
+      const wrapper = mount(SSeparator, {
+        props: { border: 'dotted' },
+        attachTo: document.body
+      });
+
+      expect(wrapper.get('[data-soybean-separator-root]').classes()).toContain('border-dotted');
+      wrapper.unmount();
+    });
+
+    it('applies solid border class by default', () => {
+      const wrapper = mount(SSeparator, {
+        attachTo: document.body
+      });
+
+      expect(wrapper.get('[data-soybean-separator-root]').classes()).toContain('border-solid');
+      wrapper.unmount();
+    });
   });
 
   describe('accessibility', () => {
