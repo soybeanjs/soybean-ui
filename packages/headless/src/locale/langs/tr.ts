@@ -8,6 +8,11 @@ const messages: LocaleMessages = {
     lastPage: 'Son sayfa',
     pageLabel: 'Sayfa {value}'
   },
+  pageTabs: {
+    closeTab: 'Sekmeyi kapat',
+    pinTab: 'Sekmeyi sabitle',
+    unpinTab: 'Sekmeyi sabitlemeyi kaldır'
+  },
   table: {
     emptyTitle: 'Veri yok',
     emptyDescription: 'Gösterilecek veri yok.',

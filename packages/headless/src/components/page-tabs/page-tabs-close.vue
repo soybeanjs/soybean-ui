@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed, useAttrs } from 'vue';
+import { useLocaleMessages } from '../../locale';
 import Button from '../button/button.vue';
 import { usePageTabsUi, usePageTabsItemContext } from './context';
 import type { PageTabsCloseProps } from './types';
@@ -16,7 +17,9 @@ const cls = usePageTabsUi('close');
 
 const { closable, onClose } = usePageTabsItemContext('PageTabsClose');
 
-const ariaLabel = computed(() => (attrs['aria-label'] as string) ?? 'Close tab');
+const messages = useLocaleMessages();
+
+const ariaLabel = computed(() => (attrs['aria-label'] as string) ?? messages.value.pageTabs.closeTab);
 </script>
 
 <template>

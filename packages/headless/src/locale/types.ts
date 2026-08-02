@@ -143,6 +143,15 @@ export interface LocalePaginationMessages {
   pageLabel: string;
 }
 
+export interface LocalePageTabsMessages {
+  /** Aria-label for the tab close button. */
+  closeTab: string;
+  /** Aria-label for the tab pin button when the tab is not pinned. */
+  pinTab: string;
+  /** Aria-label for the tab pin button when the tab is pinned. */
+  unpinTab: string;
+}
+
 export interface LocalePasswordMessages {
   /** Fallback aria-label for the clear button. */
   clearInput: string;
@@ -255,6 +264,7 @@ export interface LocaleMessages {
   inputNumber: LocaleInputNumberMessages;
   layout: LocaleLayoutMessages;
   pagination: LocalePaginationMessages;
+  pageTabs: LocalePageTabsMessages;
   password: LocalePasswordMessages;
   progress: LocaleProgressMessages;
   rating: LocaleRatingMessages;

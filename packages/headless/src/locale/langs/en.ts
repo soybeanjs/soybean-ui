@@ -8,6 +8,11 @@ const messages: LocaleMessages = {
     lastPage: 'Last page',
     pageLabel: 'Page {value}'
   },
+  pageTabs: {
+    closeTab: 'Close tab',
+    pinTab: 'Pin tab',
+    unpinTab: 'Unpin tab'
+  },
   table: {
     emptyTitle: 'No data',
     emptyDescription: 'There is no data to display.',

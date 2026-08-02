@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed, useAttrs } from 'vue';
+import { useLocaleMessages } from '../../locale';
 import Button from '../button/button.vue';
 import { usePageTabsUi, usePageTabsItemContext } from './context';
 import type { PageTabsPinProps } from './types';
@@ -16,7 +17,13 @@ const cls = usePageTabsUi('pin');
 
 const { pinned, onPin } = usePageTabsItemContext('PageTabsPin');
 
-const ariaLabel = computed(() => (attrs['aria-label'] as string) ?? (pinned.value ? 'Unpin tab' : 'Pin tab'));
+const messages = useLocaleMessages();
+
+const ariaLabel = computed(
+  () =>
+    (attrs['aria-label'] as string) ??
+    (pinned.value ? messages.value.pageTabs.unpinTab : messages.value.pageTabs.pinTab)
+);
 </script>
 
 <template>

@@ -8,6 +8,11 @@ const messages: LocaleMessages = {
     lastPage: '最后一页',
     pageLabel: '第 {value} 页'
   },
+  pageTabs: {
+    closeTab: '关闭标签页',
+    pinTab: '固定标签页',
+    unpinTab: '取消固定标签页'
+  },
   table: {
     emptyTitle: '暂无数据',
     emptyDescription: '当前没有可显示的数据。',

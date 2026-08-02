@@ -8,6 +8,11 @@ const messages: LocaleMessages = {
     lastPage: 'Halaman terakhir',
     pageLabel: 'Halaman {value}'
   },
+  pageTabs: {
+    closeTab: 'Tutup tab',
+    pinTab: 'Sematkan tab',
+    unpinTab: 'Lepas sematan tab'
+  },
   table: {
     emptyTitle: 'Tidak ada data',
     emptyDescription: 'Tidak ada data yang dapat ditampilkan.',
