@@ -1,9 +1,10 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { h, nextTick } from 'vue';
-import { mount } from '@vue/test-utils';
+import { mount, flushPromises } from '@vue/test-utils';
 import SClipboard from '@/components/clipboard/clipboard.vue';
 import type { ClipboardProps, ClipboardSlotProps } from '@/components/clipboard/types';
 import SConfigProvider from '@/components/config-provider/config-provider.vue';
+import { copyTextToClipboard } from '../../../../headless/src/components/clipboard/shared';
 import { getA11yViolations } from '../../shared/a11y';
 
 const writeText = vi.fn(async () => undefined);
@@ -59,6 +60,17 @@ beforeEach(() => {
   Object.defineProperty(document, 'execCommand', {
     configurable: true,
     value: execCommand
+  });
+});
+
+describe('clipboard shared', () => {
+  it('falls back to legacy copy when writeText fails', async () => {
+    writeText.mockRejectedValueOnce(new Error('permission denied'));
+
+    await copyTextToClipboard('soybean-ui', true);
+
+    expect(writeText).toHaveBeenCalledWith('soybean-ui');
+    expect(execCommand).toHaveBeenCalledWith('copy');
   });
 });
 
@@ -178,21 +190,71 @@ describe('SClipboard', () => {
       wrapper.unmount();
     });
 
-    it('falls back to legacy copy when clipboard writing is unavailable', async () => {
-      Object.defineProperty(window.navigator, 'clipboard', {
-        configurable: true,
-        value: undefined
-      });
-
-      const wrapper = mountClipboard({}, { default: 'Copy' });
+    it('copies an empty string value', async () => {
+      const wrapper = mountClipboard({ value: '' }, { default: 'Copy empty' });
 
       await wrapper.find('button').trigger('click');
       await Promise.resolve();
       await nextTick();
 
+      expect(writeText).toHaveBeenCalledWith('');
+      expect(wrapper.emitted('copied')?.[0]).toEqual(['']);
+      wrapper.unmount();
+    });
+
+    it('falls back to legacy copy when clipboard writing fails', async () => {
+      writeText.mockRejectedValueOnce(new Error('permission denied'));
+
+      const wrapper = mountClipboard({ legacy: true }, { default: 'Copy' });
+
+      await wrapper.find('button').trigger('click');
+      await flushPromises();
+
+      expect(writeText).toHaveBeenCalledWith('soybean-ui');
       expect(execCommand).toHaveBeenCalledWith('copy');
       expect(wrapper.find('button').attributes('data-state')).toBe('copied');
       expect(wrapper.emitted('copied')?.[0]).toEqual(['soybean-ui']);
+      wrapper.unmount();
+    });
+
+    it('emits copyError and keeps ready state when copy fails', async () => {
+      writeText.mockRejectedValueOnce(new Error('permission denied'));
+
+      const wrapper = mountClipboard({ legacy: false }, { default: 'Copy' });
+
+      await wrapper.find('button').trigger('click');
+      await Promise.resolve();
+      await nextTick();
+
+      expect(wrapper.find('button').attributes('data-state')).toBe('ready');
+      expect(wrapper.emitted('copied')).toBeFalsy();
+      expect(wrapper.emitted('copyError')?.[0]?.[0]).toBeInstanceOf(Error);
+      wrapper.unmount();
+    });
+  });
+
+  describe('unsupported state', () => {
+    it('disables interaction and exposes unsupported state when clipboard is unavailable', async () => {
+      Object.defineProperty(window.navigator, 'clipboard', {
+        configurable: true,
+        value: undefined
+      });
+
+      Object.defineProperty(window, 'isSecureContext', {
+        configurable: true,
+        value: false
+      });
+
+      const wrapper = mountClipboard({ legacy: false }, { default: 'Copy' });
+      const button = wrapper.find('button');
+
+      expect(button.attributes('data-state')).toBe('unsupported');
+      expect(button.attributes('aria-disabled')).toBe('true');
+
+      await button.trigger('click');
+
+      expect(execCommand).not.toHaveBeenCalled();
+      expect(wrapper.emitted('copied')).toBeFalsy();
       wrapper.unmount();
     });
   });

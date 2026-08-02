@@ -145,6 +145,7 @@
         "color": "Color",
         "custom-styling": "Custom Styling",
         "disabled": "Disabled",
+        "icon-only": "Icon Only",
         "size": "Size",
         "variant": "Variant"
       },

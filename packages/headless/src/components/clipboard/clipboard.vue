@@ -1,9 +1,10 @@
 <script setup lang="ts">
-import { computed } from 'vue';
-import { useClipboard } from '@vueuse/core';
+import { computed, shallowRef, toRef } from 'vue';
+import { useTimeoutFn } from '@vueuse/core';
 import { useOmitProps } from '../../composables';
 import Icon from '../_icon/icon.vue';
 import { Button } from '../button';
+import { copyTextToClipboard, isClipboardWriteSupported } from './shared';
 import type { ClipboardProps, ClipboardSlotProps, ClipboardEmits, ClipboardState } from './types';
 
 defineOptions({
@@ -21,10 +22,24 @@ const props = withDefaults(defineProps<ClipboardProps>(), {
 
 const emit = defineEmits<ClipboardEmits>();
 
-const { copied, copy, isSupported } = useClipboard({
-  copiedDuring: props.copiedDuration,
-  legacy: props.legacy
-});
+defineSlots<{
+  leading?: (props: ClipboardSlotProps) => unknown;
+  default?: (props: ClipboardSlotProps) => unknown;
+  trailing?: (props: ClipboardSlotProps) => unknown;
+}>();
+
+const copied = shallowRef(false);
+const copiedDuration = toRef(() => props.copiedDuration);
+
+const { start: resetCopiedState } = useTimeoutFn(
+  () => {
+    copied.value = false;
+  },
+  copiedDuration,
+  { immediate: false }
+);
+
+const isSupported = computed(() => isClipboardWriteSupported() || props.legacy);
 
 const disabled = computed(() => props.disabled || !isSupported.value);
 
@@ -57,7 +72,9 @@ const copyValue = async () => {
   }
 
   try {
-    await copy(props.value);
+    await copyTextToClipboard(props.value, props.legacy);
+    copied.value = true;
+    resetCopiedState();
     emit('copied', props.value);
   } catch (error) {
     emit('copyError', error);

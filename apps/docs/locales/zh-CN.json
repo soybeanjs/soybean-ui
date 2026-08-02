@@ -145,6 +145,7 @@
         "color": "颜色",
         "custom-styling": "自定义样式",
         "disabled": "禁用",
+        "icon-only": "仅图标",
         "size": "尺寸",
         "variant": "变体"
       },
