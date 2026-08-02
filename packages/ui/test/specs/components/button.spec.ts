@@ -343,4 +343,57 @@ describe('SButtonGroup', () => {
     expect(root.classes()).toContain('flex-col');
     wrapper.unmount();
   });
+
+  it('sets role="group" on the root element', () => {
+    const wrapper = mountGroup();
+    expect(wrapper.find('.group-root').attributes('role')).toBe('group');
+    wrapper.unmount();
+  });
+
+  it('carries the data-soybean-button-group attribute', () => {
+    const wrapper = mountGroup();
+    expect(wrapper.find('.group-root').attributes('data-soybean-button-group')).toBeDefined();
+    wrapper.unmount();
+  });
+
+  it('reflects orientation via data-orientation', () => {
+    const horizontal = mountGroup();
+    expect(horizontal.find('.group-root').attributes('data-orientation')).toBe('horizontal');
+    horizontal.unmount();
+
+    const vertical = mountGroup({ props: { orientation: 'vertical' } });
+    expect(vertical.find('.group-root').attributes('data-orientation')).toBe('vertical');
+    vertical.unmount();
+  });
+
+  it('reflects dir prop on the root element', () => {
+    const wrapper = mountGroup({ props: { dir: 'rtl' } });
+    expect(wrapper.find('.group-root').attributes('dir')).toBe('rtl');
+    wrapper.unmount();
+  });
+
+  it('does not leak style props to the DOM', () => {
+    const wrapper = mountGroup({ props: { color: 'destructive', fitContent: true, shape: 'circle' } });
+    const root = wrapper.find('.group-root');
+    expect(root.attributes('color')).toBeUndefined();
+    expect(root.attributes('fitcontent')).toBeUndefined();
+    expect(root.attributes('shape')).toBeUndefined();
+    expect(root.attributes('variant')).toBeUndefined();
+    expect(root.attributes('shadow')).toBeUndefined();
+    expect(root.attributes('size')).toBeUndefined();
+    wrapper.unmount();
+  });
+
+  it('supports `as` polymorphism', () => {
+    const wrapper = mountGroup({ props: { as: 'div' } });
+    expect(wrapper.find('.group-root').element.tagName).toBe('DIV');
+    wrapper.unmount();
+  });
+
+  it('has no a11y violations', async () => {
+    const wrapper = mountGroup();
+    const violations = await getA11yViolations(wrapper.element);
+    expect(violations).toEqual([]);
+    wrapper.unmount();
+  });
 });

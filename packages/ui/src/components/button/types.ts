@@ -1,5 +1,9 @@
-import type { ButtonEmits, ButtonProps as _ButtonProps } from '@soybeanjs/headless/button';
-import type { Align, ClassValue, DataOrientation, Direction, PropsToContext } from '@soybeanjs/headless/types';
+import type {
+  ButtonEmits,
+  ButtonGroupProps as _ButtonGroupProps,
+  ButtonProps as _ButtonProps
+} from '@soybeanjs/headless/button';
+import type { Align, ClassValue, PropsToContext } from '@soybeanjs/headless/types';
 import type { ButtonShadow, ButtonShape, ButtonVariant } from '@/styles/button';
 import type { ThemeColor, ThemeSize } from '@/theme';
 import type { IconValue, IconProps } from '../icon/types';
@@ -106,19 +110,39 @@ export type ButtonLinkProps = ButtonProps & LinkProps;
 /**
  * Properties for the ButtonGroup component.
  */
-export interface ButtonGroupProps extends ButtonProps {
+export interface ButtonGroupProps extends _ButtonGroupProps {
   /**
-   * The orientation of the button group.
-   *
-   * @default 'horizontal'
+   * Additional class names applied to the root element.
    */
-  orientation?: DataOrientation;
+  class?: ClassValue;
   /**
-   * The direction of the button group.
-   *
-   * @default 'ltr'
+   * Theme color of the component.
    */
-  dir?: Direction;
+  color?: ThemeColor;
+  /**
+   * Visual size of the component.
+   */
+  size?: ThemeSize;
+  /**
+   * Visual variant of the component.
+   */
+  variant?: ButtonVariant;
+  /**
+   * Shape of the component.
+   */
+  shape?: ButtonShape;
+  /**
+   * Shadow style of the component.
+   */
+  shadow?: ButtonShadow;
+  /**
+   * Whether the component should fit its content width.
+   */
+  fitContent?: boolean;
+  /**
+   * Whether all descendant buttons are disabled.
+   */
+  disabled?: boolean;
 }
 
 /**

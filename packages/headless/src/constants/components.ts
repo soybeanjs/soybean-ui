@@ -59,7 +59,7 @@ export const components = {
     'BreadcrumbSeparator',
     'BreadcrumbEllipsis'
   ],
-  button: ['Button'],
+  button: ['Button', 'ButtonGroup'],
   calendar: [
     'CalendarCompact',
     'CalendarRoot',

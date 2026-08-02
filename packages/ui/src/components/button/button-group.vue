@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
+import { ButtonGroup } from '@soybeanjs/headless/button';
 import { useOmitProps } from '@soybeanjs/headless/composables';
-import { Primitive } from '@soybeanjs/headless/primitive';
 import { transformPropsToContext } from '@soybeanjs/headless/shared';
 import { buttonGroupVariants } from '@/styles/button';
 import { useConfigProvider } from '../config-provider/context';
@@ -19,11 +19,13 @@ const props = withDefaults(defineProps<ButtonGroupProps>(), {
 const forwardedProps = useOmitProps(props, [
   'class',
   'orientation',
+  'dir',
   'color',
   'size',
   'variant',
   'shape',
   'shadow',
+  'fitContent',
   'disabled'
 ]);
 
@@ -46,7 +48,7 @@ provideButtonGroupContext(
 </script>
 
 <template>
-  <Primitive v-bind="forwardedProps" :class="cls" :dir="dir">
+  <ButtonGroup v-bind="forwardedProps" :class="cls" :orientation="orientation" :dir="dir">
     <slot />
-  </Primitive>
+  </ButtonGroup>
 </template>

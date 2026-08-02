@@ -68,6 +68,7 @@ import {
   BreadcrumbRoot,
   BreadcrumbSeparator,
   Button,
+  ButtonGroup,
   CalendarCell,
   CalendarCellTrigger,
   CalendarCompact,
@@ -734,7 +735,7 @@ export const Breadcrumb = {
   Ellipsis: typeof BreadcrumbEllipsis;
 };
 
-export { Button };
+export { Button, ButtonGroup };
 
 export const Calendar = {
   Compact: CalendarCompact,

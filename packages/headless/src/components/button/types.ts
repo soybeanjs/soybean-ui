@@ -1,5 +1,5 @@
-import type { ButtonHTMLAttributes } from 'vue';
-import type { BaseProps } from '../../types';
+import type { ButtonHTMLAttributes, HTMLAttributes } from 'vue';
+import type { BaseProps, DataOrientation, Direction } from '../../types';
 import type { PrimitiveProps } from '../primitive/types';
 
 /**
@@ -20,6 +20,22 @@ export interface ButtonProps extends PrimitiveProps, BaseProps<ButtonHTMLAttribu
    * Whether the component is disabled.
    */
   disabled?: boolean;
+}
+
+/**
+ * Properties for the ButtonGroup component.
+ */
+export interface ButtonGroupProps extends PrimitiveProps, BaseProps<HTMLAttributes> {
+  /**
+   * The orientation of the button group.
+   *
+   * @default 'horizontal'
+   */
+  orientation?: DataOrientation;
+  /**
+   * The reading direction of the button group.
+   */
+  dir?: Direction;
 }
 
 /**
