@@ -6,8 +6,8 @@
 
 | 类别                | 数量 | 说明                                                     |
 | :------------------ | :--: | :------------------------------------------------------- |
-| 已发布（shipped）   |  87  | `accordion` … `watermark`，见 `packages/ui/src/index.ts` |
-| 高优先级（P0 + P1） |  23  | 关键缺口与强需求，优先实现                               |
+| 已发布（shipped）   |  88  | `accordion` … `watermark`，见 `packages/ui/src/index.ts` |
+| 高优先级（P0 + P1） |  22  | 关键缺口与强需求，优先实现（P0 × 9 + P1 × 13）           |
 | 中优先级（P2）      |  11  | 有用且有一定需求，按计划推进                             |
 | 低优先级（P3）      |  12  | 小众但功能独立，择机实现                                 |
 | 延后至组件市场      |  12  | 复合型 / 小众，将以源码形式分发                          |
@@ -46,15 +46,16 @@
 
 ## 高优先级（High — P0 Critical + P1 High）
 
-关键缺口与强需求组件，应优先实现。共 **23** 个组件（P0 × 10 + P1 × 13）。
+关键缺口与强需求组件，应优先实现。共 **22** 个组件（P0 × 9 + P1 × 13）。
+
+> **注：** `Rating`（原 P0 #1）已发布至 `@soybeanjs/ui`（`SRating`，见 [packages/ui/src/components/rating](file:///Users/soybean/Web/Projects/SoybeanJS/soybean-ui/packages/ui/src/components/rating)），自活跃路线图移除；下方序号沿用源文档，未重排。
 
 ### 概要
 
-#### P0 — Critical（10 个）
+#### P0 — Critical（9 个）
 
 | 序号 | 组件           | 需求度 | 工作量  |
 | :--: | :------------- | :----: | :-----: |
-|  1   | `Rating`       | 10/14  |   Low   |
 |  2   | `Upload`       | 12/14  |  High   |
 |  3   | `Timeline`     | 10/14  | Medium  |
 |  4   | `Typography`   |  7/14  | Medium  |
@@ -87,27 +88,9 @@
 
 ---
 
-#### 1. `Rating` — 高优先级 (P0) | Demand: 10/14 | Effort: Low
+#### 1. `Rating` — ✅ 已发布（shipped）
 
-**Purpose:** Allow users to provide a rating using stars (or custom icons) on a discrete scale.
-
-**Functionality:**
-
-- Hover/focus preview of the selected value.
-- Half-star (or fractional) precision support.
-- Keyboard navigation (arrow keys to increment/decrement).
-- Read-only mode for display.
-- Customisable icon, count, and colour.
-- Clear button (reset to zero).
-
-**Implementation considerations:**
-
-- **Headless:** `RatingRoot` + `RatingItem` — manages value state, hover preview, keyboard logic, ARIA (`role="slider"`, `aria-valuenow`). Single-class or minimal-slot pattern.
-- **UI:** `cv()` recipe with `size`, `color`, `variant` (filled/outline), `readOnly` axes. Reuse `icon` slot for custom glyphs.
-- **Dependencies:** None.
-- **Patterns:** Single-class component — use `ratingVariants({...}, props.class)` directly; no `UiContext` needed.
-
-**Cross-library:** MUI, Ant Design, Mantine, Element Plus, Naive UI, PrimeVue, Vuetify, Quasar, Vant, Varlet.
+`Rating` 已实现并发布为 `SRating`，源码位于 [packages/ui/src/components/rating](file:///Users/soybean/Web/Projects/SoybeanJS/soybean-ui/packages/ui/src/components/rating) 与 [packages/headless/src/components/rating](file:///Users/soybean/Web/Projects/SoybeanJS/soybean-ui/packages/headless/src/components/rating)。原路线图条目（P0、Demand 10/14、Low effort、单类 `cv()` 模式）已达成，自活跃路线图移除。审计快照见 [check.md C90](./check.md)。
 
 ---
 
@@ -1184,11 +1167,11 @@ import { SButton, SButtonGroup } from '@soybeanjs/ui';
 
 | 模式                          | 组件                                                                                                                                                                                                                                                                                  |
 | :---------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| 单类 (`cv()`)                 | `Rating`, `QRCode`, `VisuallyHidden`, `Banner`, `Backdrop`, `Space`, `NativeSelect`, `GradientText`, `Indicator`, `Spoiler`, `Marquee`, `Blockquote`, `Highlight`, `NumberFormatter`                                                                                                  |
+| 单类 (`cv()`)                 | `QRCode`, `VisuallyHidden`, `Banner`, `Backdrop`, `Space`, `NativeSelect`, `GradientText`, `Indicator`, `Spoiler`, `Marquee`, `Blockquote`, `Highlight`, `NumberFormatter`                                                                                                            |
 | 多槽 (`scv()` + `provide*Ui`) | `Upload`, `Timeline`, `Typography`, `Descriptions`, `TreeSelect`, `Statistic`, `Code`, `Image`, `Transfer`, `Mention`, `AvatarGroup`, `RangeSlider`, `SplitButton`, `Fieldset`, `InputGroup`, `Dropzone`, `Masonry`, `FloatingActionButton`, `LoadingBar`, `OverflowList`, `Terminal` |
 | 组合式优先                    | `NumberAnimation` (`useNumberAnimation`), `Countdown` (`useCountdown`), `InfiniteScroll` (`useInfiniteScroll`), `Ellipsis` (`useOverflow`), `InputMask` (`useInputMask`)                                                                                                              |
 | 现有组件扩展                  | `CurrencyInput` (→ `input-number`), `TriStateCheckbox` (→ `checkbox`), `Equation` (KaTeX wrapper), `Knob` (SVG + `useKnob`), `Signature` (canvas + `useSignature`)                                                                                                                    |
 
 ---
 
-_本路线图自 [components.md](./components.md) 提取整理。源文档最后更新：2026-08-02。桌面优先范围；87 个组件已发布；46 个进入活跃路线图（高 23 / 中 11 / 低 12）；12 个延后至组件市场；60+ 个在范围外清单中被明确拒绝。_
+_本路线图自 [components.md](./components.md) 提取整理。源文档最后更新：2026-08-02。桌面优先范围；88 个组件已发布；45 个进入活跃路线图（高 22 / 中 11 / 低 12）；12 个延后至组件市场；60+ 个在范围外清单中被明确拒绝。_

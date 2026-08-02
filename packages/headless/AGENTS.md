@@ -34,8 +34,8 @@ After public export changes, rerun `pnpm sui headless` so `packages/headless/src
 
 ```
 packages/headless/src/
-├── components/   # 95 component dirs. Base primitives plus Compact aggregations. See components/AGENTS.md
-├── composables/  # 25 reusable hooks. See composables/AGENTS.md
+├── components/   # 94 component dirs (92 publicly exported; _common/_icon are internal). Base primitives plus Compact aggregations. See components/AGENTS.md
+├── composables/  # 27 reusable hooks. See composables/AGENTS.md
 ├── shared/       # Pure TS utilities (no Vue). See shared/AGENTS.md
 ├── constants/    # ARIA attrs, collection markers, component constants
 ├── date/         # Shared date and calendar helpers

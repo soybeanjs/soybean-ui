@@ -23,8 +23,8 @@ Load the component development skill for any task that creates, migrates, extend
 
 If a nearer scoped `AGENTS.md` exists for your target path, use it only to narrow which skill sections apply.
 
-**Generated:** 2026-05-04
-**Version:** 0.17.0
+**Generated:** 2026-08-02
+**Version:** 0.29.3
 **Monorepo:** pnpm workspaces (`packages/`, `apps/`; root = `@soybeanjs/ui`)
 **Stack:** Vue 3 + TypeScript (strict) + UnoCSS + @soybeanjs/cva
 
@@ -32,8 +32,8 @@ If a nearer scoped `AGENTS.md` exists for your target path, use it only to narro
 
 Headless/Styled separation. Two packages ship independently:
 
-- **@soybeanjs/headless** (`packages/headless/`): Logic, state, a11y. Zero styles. 95 component directories, 25 composables. Includes base primitives, date utilities, and Compact aggregations.
-- **@soybeanjs/ui** (`packages/ui/`): Styled wrappers. UnoCSS + `cv()` / `scv()`. 91 components, `S`-prefixed.
+- **@soybeanjs/headless** (`packages/headless/`): Logic, state, a11y. Zero styles. 94 component directories (92 publicly exported; `_common`/`_icon` are internal), 27 composables. Includes base primitives, date utilities, and Compact aggregations.
+- **@soybeanjs/ui** (`packages/ui/`): Styled wrappers. UnoCSS + `cv()` / `scv()`. 88 component directories / 110 S-prefixed exports.
 - **@soybeanjs/ui-docs** (`apps/docs/`): Vite + vite-ssg + unplugin-vue-markdown + markdown-exit. NOT VitePress.
 
 Data flow: `packages/headless` → `packages/ui` (never reverse). UI injects styles via `provideXUi(ui)` → headless reads via `useUiContext`.
@@ -45,7 +45,7 @@ Data flow: `packages/headless` → `packages/ui` (never reverse). UI injects sty
 | New component (logic)    | `packages/headless/src/components/[name]/`                                | types.ts → context.ts → base \*.vue → optional compact/hook files → index.ts                                               |
 | New component (styled)   | `packages/ui/src/components/[name]/` + `packages/ui/src/styles/[name].ts` | style recipe → types.ts → `*.vue` → index.ts                                                                               |
 | Variant definitions      | `packages/ui/src/styles/[name].ts`                                        | `cv()` / `scv()` with `// @unocss-include` at top                                                                          |
-| Shared hooks             | `packages/headless/src/composables/`                                      | `use-*.ts`, pure Vue composables (26 total)                                                                                |
+| Shared hooks             | `packages/headless/src/composables/`                                      | `use-*.ts`, pure Vue composables (27 total)                                                                                |
 | Theme/sizing             | `packages/ui/src/theme/`                                                  | `ThemeColor` (8), `ThemeSize` (xs…2xl)                                                                                     |
 | Utility functions        | `packages/headless/src/shared/`                                           | Pure TS helpers (DOM, focus, tree, form, guard, comparison)                                                                |
 | Global types             | `packages/headless/src/types/`                                            | `ClassValue`, `UiClass<S>`, `PropsToContext<T,K>`, `PrimitiveProps`                                                        |
@@ -55,19 +55,20 @@ Data flow: `packages/headless` → `packages/ui` (never reverse). UI injects sty
 | Demo source              | `apps/playground/src/examples/[component]/`                               | Vue SFCs referenced by docs                                                                                                |
 | Browser e2e tests        | `packages/ui/test/browser/`                                               | `vitest.browser.config.ts` + `vitest-browser-vue` + `axe-core` (color-contrast on)                                         |
 | Component dev skill      | `.agents/skills/soybean-ui-component-development/`                        | SKILL.md + layers.md + surfaces.md + e2e.md + process.md + audit.md + EXAMPLES.md                                          |
-| Component audit snapshot | `docs/check.md`                                                           | 87-component task table (C01–C89), P0–P3 priority, 13-round order, benchmark findings; methodology sourced from `audit.md` |
+| Component audit snapshot | `docs/check.md`                                                           | 88-component task table (C01–C90), P0–P3 priority, 13-round order, benchmark findings; methodology sourced from `audit.md` |
 
 ## BUILD & CI
 
 ```bash
-pnpm dev              # Playground (Vite)
-pnpm build            # headless (tsdown) → ui (tsdown) → css (unocss build)
-pnpm lint             # oxlint --fix && eslint --fix (uses @soybeanjs/eslint-config-vue)
-pnpm fmt              # oxfmt (formatter)
+pnpm dev:playground    # Playground (Vite)
+pnpm dev:docs         # Docs site (Vite + vite-ssg)
+pnpm build            # headless (tsdown) → ui (tsdown) → sbean (tsdown)
+pnpm lint             # vp lint --fix && pnpm lint:vue (uses @soybeanjs/eslint-config-vue)
+pnpm fmt              # vp fmt (formatter)
 pnpm test             # vitest run (happy-dom, @vue/test-utils)
 pnpm test:e2e         # browser e2e (Vitest Browser Mode + playwright chromium; run `pnpm exec playwright install chromium` first)
-pnpm typecheck        # vue-tsc --noEmit --skipLibCheck
-pnpm release          # Publish packages (soy release)
+pnpm typecheck        # vue-tsc --noEmit --skipLibCheck (runs across all workspaces)
+pnpm release          # Generate changelog + sync templates + publish (soy release)
 pnpm stub             # tsx scripts/stub.ts — link src to dist for local dev
 pnpm sui headless     # Regenerate packages/headless/src/constants/components.ts + packages/headless/src/namespaced/index.ts from packages/headless/src/index.ts
 pnpm sui ui           # Regenerate packages/ui/src/constants/components.ts from packages/ui/src/index.ts
@@ -78,16 +79,16 @@ pnpm sui changelog    # Regenerate apps/docs/src/generated/changelog/*.json and 
 pnpm sui changelog-translate -- --locale <locale>  # Translate generated English changelog summaries into a non-English locale
 ```
 
-- **Pre-commit hook** (simple-git-hooks): `pnpm typecheck && pnpm lint-staged`
-- **CI**: Tag-triggered release only (`release.yml`). No PR check workflow.
-- **Formatter**: `oxfmt`
+- **Pre-commit hook** (simple-git-hooks): `vp staged`
+- **CI**: `ci.yml` runs typecheck / lint / test + browser e2e on PRs and pushes to `main`/`master`; `release.yml` handles tag-triggered release.
+- **Formatter**: `vp fmt`
 
 ## PACKAGE EXPORTS
 
 **@soybeanjs/headless** sub-path exports:
 
 - `.` → all components + types
-- `./composables` → 25 composables (useContext, useControllableState, useUiContext, …)
+- `./composables` → 27 composables (useContext, useControllableState, useUiContext, …)
 - `./shared` → pure TS utilities
 - `./constants` → ARIA constants, component keys
 - `./date` → shared date utilities and calendar helpers

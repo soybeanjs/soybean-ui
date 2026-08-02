@@ -1,12 +1,12 @@
 # @soybeanjs/ui — 组件优化与检查项目快照 (Check Snapshot)
 
-> 本文档是当前已实现 **87 个** `@soybeanjs/ui` 组件的**项目级快照**：组件清单、C01–C89 任务表、当前 P0–P3 优先级分配、13 轮执行顺序、具体行业对标发现。
+> 本文档是当前已实现 **88 个** `@soybeanjs/ui` 组件的**项目级快照**：组件清单、C01–C90 任务表、当前 P0–P3 优先级分配、13 轮执行顺序、具体行业对标发现。
 >
 > **评估方法论的单一权威源**是 [soybean-ui-component-development/audit.md](../.agents/skills/soybean-ui-component-development/audit.md)。该文件拥有：评估方法论（8 步流程）、7 大检查维度（D1–D7）、102 个检查项（含检查标准与验收条件）、严重度定义（Blocker / Major / Minor / Enhancement）、验收状态标记（✅/⚠️/❌/➕/—/⏳）、单组件验收清单、跨组件一致性回归、全量回归、行业对标方法论（对标库选型 + 维度）、WAI-ARIA APG 参考与对标库链接。
 >
 > 执行检查时：先加载 [audit.md](../.agents/skills/soybean-ui-component-development/audit.md) 获取通用方法，再回到本文档查阅当前快照（任务编号、优先级、重点检查项、具体对标发现）。
 >
-> - **范围：** `packages/ui/src/components/**` 已发布的 87 个 S 前缀组件及其对应 headless 实现、样式 recipe、文档、示例与测试。
+> - **范围：** `packages/ui/src/index.ts` 已发布的 88 个组件目录（110 个 S 前缀导出）及其对应 headless 实现、样式 recipe、文档、示例与测试。
 > - **基线 skill：** `soybean-ui-component-development`（功能合规）、`typescript-functional-style`（TS 代码规范）、`vue-sfc-structure`（SFC 结构规范）。
 > - **对标库：** Ant Design（React/Vue）、Element Plus、Material UI、Mantine、Naive UI、shadcn/ui。
 > - **关联文档：** [roadmap.md](./roadmap.md)（未实现组件路线图）、[components.md](./components.md)（路线图源文档）、[audit.md](../.agents/skills/soybean-ui-component-development/audit.md)（评估方法论单一源）。
@@ -15,11 +15,11 @@
 
 ## 一、行业对标分析报告
 
-> 对标方法论（对标库选型、通用对标维度 D2-01～D2-12）见 [audit.md -> D2. Industry benchmarking](../.agents/skills/soybean-ui-component-development/audit.md#d2-industry-benchmarking)。本节记录 87 个已实现组件的**具体对标发现**。
+> 对标方法论（对标库选型、通用对标维度 D2-01～D2-12）见 [audit.md -> D2. Industry benchmarking](../.agents/skills/soybean-ui-component-development/audit.md#d2-industry-benchmarking)。本节记录 88 个已实现组件的**具体对标发现**。
 
 ### 1.1 通用差异点分析
 
-针对 87 个已实现组件，对照 6 大对标库的**通用差异点**：
+针对 88 个已实现组件，对照 6 大对标库的**通用差异点**：
 
 | 差异维度 | SoybeanUI 现状                | Ant Design                 | Element Plus        | Material UI                 | Mantine                        | Naive UI               | shadcn/ui            | 改进方向                     |
 | :------- | :---------------------------- | :------------------------- | :------------------ | :-------------------------- | :----------------------------- | :--------------------- | :------------------- | :--------------------------- |
@@ -112,7 +112,7 @@
 - **D7-19/D7-20 浏览器 e2e 检查范围：** 以下组件因依赖平台 API（ResizeObserver / 指针捕获 / scrollIntoView）、使用 Teleport 门户、有真实键盘导航契约、或需要颜色对比验证，须纳入 e2e 检查（标准见 [e2e.md -> When to add an e2e spec](../.agents/skills/soybean-ui-component-development/e2e.md#when-to-add-an-e2e-spec)）：
   - **已有 e2e spec：** `button`(C01)、`select`(C32)、`dialog`(C72) — 重点检查 D7-19 + D7-20。
   - **浮层/门户类（须补 e2e）：** `combobox`(C33)、`autocomplete`(C34)、`cascader`(C35)、`date-field`~`time-range-field`(C44-C49)、`drawer`(C73)、`popover`(C74)、`popconfirm`(C75)、`hover-card`(C76)、`bottom-sheet`(C77)、`dropdown-menu`(C78)、`context-menu`(C79)、`command`(C80)、`tooltip`(C81) — 重点检查 D7-19。
-  - **键盘导航类（须补 e2e）：** `tabs`(C22)、`menu`(C26)、`menubar`(C25)、`tree`(C62)、`tree-menu`(C63)、`pagination`(C20)、`stepper`(C55) — 重点检查 D7-19。
+  - **键盘导航类（须补 e2e）：** `tabs`(C22)、`menu`(C26)、`menubar`(C25)、`tree`(C62)、`tree-menu`(C63)、`pagination`(C20)、`stepper`(C55)、`rating`(C90) — 重点检查 D7-19。
   - **颜色对比类（须补 e2e）：** `link`(C04)、`badge`(C57)、`tag`(C58)、`alert`(C70) — 重点检查 D7-19。
   - 缺失 e2e spec 非Blocker，除非组件契约依赖 happy-dom 必须模拟的平台 API（如 select 类浮层）。
 
@@ -123,7 +123,7 @@
 | 通用基础 (General/Utilities)    |   14   |     P1     | 高频复用，API 一致性影响全局           |
 | 布局 (Layout)                   |   4    |     P2     | 数量少但影响页面骨架                   |
 | 导航 (Navigation)               |   8    |     P1     | 用户路径关键，键盘/A11Y 重要           |
-| 表单输入 (Forms)                |   28   |     P0     | 数量最多、对标差距最大、用户交互最复杂 |
+| 表单输入 (Forms)                |   30   |     P0     | 数量最多、对标差距最大、用户交互最复杂 |
 | 数据展示 (Data Display)         |   14   |     P1     | 表格/树性能与功能关键                  |
 | 反馈与浮层 (Feedback & Overlay) |   13   |     P0     | 焦点 trap、A11Y、z-index 风险高        |
 | 颜色 (Color)                    |   6    |     P3     | 小众但功能独立，复用 headless 模式     |
@@ -171,7 +171,7 @@
 | C25  | `menubar`         | 多槽           | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  |   P1   | D1-16, D2-03, D7-05        |
 | C26  | `menu`            | 多槽           | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  |   P1   | D1-08, D1-16, D2-11, D7-05 |
 
-#### 2.3.4 表单输入 (Forms) — 28 个
+#### 2.3.4 表单输入 (Forms) — 30 个
 
 | 编号 | 组件                | 模式           | D1  | D2  | D3  | D4  | D5  | D6  | D7  | 优先级 | 重点检查项                                      |
 | :--: | :------------------ | :------------- | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :----: | :---------------------------------------------- |
@@ -204,6 +204,7 @@
 | C53  | `form`              | 多槽 + Compact | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  |   P0   | D1-12, D2-11, D3-04, D7-10                      |
 | C54  | `editable`          | 多槽 + Compact | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  |   P1   | D1-12, D2-11, D3-04                             |
 | C55  | `stepper`           | 多槽 + Compact | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  |   P1   | D1-12, D2-11, D3-04                             |
+| C90  | `rating`            | 单类           | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  |   P1   | D1-08, D2-11, D3-01, D7-05                      |
 
 #### 2.3.5 数据展示 (Data Display) — 14 个
 
@@ -261,7 +262,7 @@
 | :--: | :------------ | :--- | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :----: | :-------------------------------- |
 | C89  | `virtualizer` | 多槽 | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  |   P1   | D1-09, D2-04, D7-01, D7-02, D7-04 |
 
-> **统计校验：** 14 + 4 + 8 + 28 + 14 + 13 + 6 + 1 = 88 项；其中 `checkbox` 与 `checkbox-group`、`radio-group` 与 `radio-group-card`、`calendar` 与 `calendar-range` 等在 `index.ts` 中按一个导出合并统计时对应 87 个发布组件。本表按「组件家族」粒度拆分以反映实际检查单元。
+> **统计校验：** 14 + 4 + 8 + 30 + 14 + 13 + 6 + 1 = 90 项；其中 `button` 与 `button-group`、`checkbox` 与 `checkbox-group` 共享同一组件目录（同一 barrel 导出），故 90 个检查单元对应 **88 个发布组件**（与 `packages/ui/src/index.ts` 的 88 行组件导出一致，共 110 个 S 前缀导出）。`rating`（C90）为新近发布、纳入待检查队列。本表按「组件家族」粒度拆分以反映实际检查单元。
 
 ### 2.4 重点组件详细检查清单（P0 优先级）
 
@@ -391,4 +392,4 @@
 
 ---
 
-_本项目快照覆盖 87 个已发布组件 × 7 大维度 × 102 个检查项（方法论见 audit.md）。最后更新：2026-08-02。执行时按「执行顺序建议」推进，每轮完成后执行跨组件一致性回归，全部完成后执行全量回归。_
+_本项目快照覆盖 88 个已发布组件 × 7 大维度 × 102 个检查项（方法论见 audit.md）。最后更新：2026-08-02。执行时按「执行顺序建议」推进，每轮完成后执行跨组件一致性回归，全部完成后执行全量回归。_

@@ -29,7 +29,7 @@ Every styled component follows this flow:
 
 ```
 packages/ui/src/
-├── components/   # 91 styled components (S-prefixed: SButton, SDialog...)
+├── components/   # 88 component directories / 110 S-prefixed exports (SButton, SDialog...)
 │   └── [name]/   # index.ts, *.vue, types.ts
 ├── styles/       # cv/scv recipe files consumed by wrappers
 ├── theme/        # size context, ThemeColor/ThemeSize. See theme/AGENTS.md
