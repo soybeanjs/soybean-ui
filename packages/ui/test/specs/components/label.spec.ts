@@ -41,6 +41,87 @@ describe('SLabel', () => {
 
       wrapper.unmount();
     });
+
+    it('forwards HTML attributes to the label element', () => {
+      const wrapper = mount(SLabel, {
+        props: { for: 'name', id: 'name-label', 'data-testid': 'name-label' },
+        slots: { default: 'Name' },
+        attachTo: document.body
+      });
+
+      const label = wrapper.get('label');
+      expect(label.attributes('for')).toBe('name');
+      expect(label.attributes('id')).toBe('name-label');
+      expect(label.attributes('data-testid')).toBe('name-label');
+
+      wrapper.unmount();
+    });
+  });
+
+  describe('size variants', () => {
+    it('applies md text size by default', () => {
+      const wrapper = mount(SLabel, {
+        slots: { default: 'Label' },
+        attachTo: document.body
+      });
+
+      expect(wrapper.get('label').classes()).toContain('text-sm');
+      wrapper.unmount();
+    });
+
+    it('applies lg text size', () => {
+      const wrapper = mount(SLabel, {
+        props: { size: 'lg' },
+        slots: { default: 'Label' },
+        attachTo: document.body
+      });
+
+      expect(wrapper.get('label').classes()).toContain('text-base');
+      wrapper.unmount();
+    });
+
+    it('applies xs text size', () => {
+      const wrapper = mount(SLabel, {
+        props: { size: 'xs' },
+        slots: { default: 'Label' },
+        attachTo: document.body
+      });
+
+      expect(wrapper.get('label').classes()).toContain('text-2xs');
+      wrapper.unmount();
+    });
+  });
+
+  describe('interaction', () => {
+    it('prevents text selection on double-click', async () => {
+      const wrapper = mount(SLabel, {
+        slots: { default: 'Label' },
+        attachTo: document.body
+      });
+
+      const label = wrapper.get('label');
+      const event = new MouseEvent('mousedown', { detail: 2, cancelable: true });
+      label.element.dispatchEvent(event);
+
+      expect(event.defaultPrevented).toBe(true);
+
+      wrapper.unmount();
+    });
+
+    it('does not prevent default on single click', async () => {
+      const wrapper = mount(SLabel, {
+        slots: { default: 'Label' },
+        attachTo: document.body
+      });
+
+      const label = wrapper.get('label');
+      const event = new MouseEvent('mousedown', { detail: 1, cancelable: true });
+      label.element.dispatchEvent(event);
+
+      expect(event.defaultPrevented).toBe(false);
+
+      wrapper.unmount();
+    });
   });
 
   describe('accessibility', () => {
