@@ -1,4 +1,4 @@
-import { computed, ref } from 'vue';
+import { computed, onScopeDispose, ref } from 'vue';
 import type { Ref } from 'vue';
 import { createEventHook, unrefElement, useEventListener } from '@vueuse/core';
 import type { MaybeComputedElementRef } from '@vueuse/core';
@@ -52,6 +52,10 @@ export function usePressedHold(options: { target?: MaybeComputedElementRef; disa
     useEventListener(window, 'pointerup', onPressRelease);
     useEventListener(window, 'pointercancel', onPressRelease);
   }
+
+  // Clear the press-and-hold timer when the owning component unmounts, so a
+  // still-pressed pointer cannot keep ticking values into a dead component.
+  onScopeDispose(resetTimeout);
 
   return {
     isPressed,

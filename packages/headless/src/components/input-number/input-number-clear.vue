@@ -38,7 +38,7 @@ const handleClear = (event: PointerEvent) => {
     @click="handleClear"
   >
     <slot>
-      <Icon icon="lucide:x" />
+      <Icon icon="lucide:x" :aria-hidden="true" />
     </slot>
   </Button>
 </template>

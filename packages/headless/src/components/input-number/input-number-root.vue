@@ -53,6 +53,10 @@ const inputAttrs = computed(() => ({
 }));
 
 const onClear = () => {
+  if (props.disabled || props.readonly) {
+    return;
+  }
+
   modelValue.value = null;
 };
 

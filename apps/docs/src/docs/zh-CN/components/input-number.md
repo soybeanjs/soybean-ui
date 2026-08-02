@@ -6,11 +6,11 @@
 
 ## 用法
 
-<UsageCode component="number-input" />
+<UsageCode component="input-number" />
 
 ## 演示
 
-<PlaygroundGallery component="number-input" />
+<PlaygroundGallery component="input-number" />
 
 ## API
 
