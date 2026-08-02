@@ -31,6 +31,12 @@ const messages: LocaleMessages = {
     selectMonth: 'Выбрать месяц',
     selectYear: 'Выбрать год'
   },
+  cascader: {
+    clear: 'Очистить',
+    noResults: 'Нет данных',
+    removeTag: 'Удалить {label}',
+    search: 'Поиск'
+  },
   layout: {
     toggleSidebar: 'Переключить боковую панель'
   },

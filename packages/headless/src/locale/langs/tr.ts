@@ -31,6 +31,12 @@ const messages: LocaleMessages = {
     selectMonth: 'Ay seç',
     selectYear: 'Yıl seç'
   },
+  cascader: {
+    clear: 'Temizle',
+    noResults: 'Veri yok',
+    removeTag: '{label} kaldır',
+    search: 'Ara'
+  },
   layout: {
     toggleSidebar: 'Yan çubuğu aç veya kapat'
   },

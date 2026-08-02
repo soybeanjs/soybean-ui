@@ -382,6 +382,10 @@ export interface CascaderCompactProps<
   optionProps?: Partial<CascaderOptionProps<T>>;
   /** Properties forwarded to the empty part. */
   emptyProps?: CascaderEmptyProps;
+  /** The text shown in the empty state. @defaultValue The locale message */
+  emptyLabel?: string;
+  /** The accessible label of the clear button. @defaultValue The locale message */
+  clearLabel?: string;
   /** Properties forwarded to the arrow part. */
   arrowProps?: CascaderArrowProps;
 }

@@ -31,6 +31,12 @@ const messages: LocaleMessages = {
     selectMonth: 'Select month',
     selectYear: 'Select year'
   },
+  cascader: {
+    clear: 'Clear value',
+    noResults: 'No data',
+    removeTag: 'Remove {label}',
+    search: 'Search'
+  },
   layout: {
     toggleSidebar: 'Toggle Sidebar'
   },

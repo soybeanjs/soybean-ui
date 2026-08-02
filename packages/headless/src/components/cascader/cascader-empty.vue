@@ -13,6 +13,6 @@ const cls = useCascaderUi('empty');
 
 <template>
   <div data-soybean-cascader-empty :class="cls" role="status">
-    <slot>暂无数据</slot>
+    <slot />
   </div>
 </template>

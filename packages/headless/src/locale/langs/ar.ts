@@ -31,6 +31,12 @@ const messages: LocaleMessages = {
     selectMonth: 'اختر الشهر',
     selectYear: 'اختر السنة'
   },
+  cascader: {
+    clear: 'مسح',
+    noResults: 'لا توجد بيانات',
+    removeTag: 'إزالة {label}',
+    search: 'بحث'
+  },
   layout: {
     toggleSidebar: 'تبديل الشريط الجانبي'
   },

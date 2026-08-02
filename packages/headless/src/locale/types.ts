@@ -32,6 +32,17 @@ export interface LocaleCalendarMessages {
   selectYear: string;
 }
 
+export interface LocaleCascaderMessages {
+  /** Default aria-label for the clear button. */
+  clear: string;
+  /** Default text for the empty state. */
+  noResults: string;
+  /** Aria-label template for the tag remove button. Supports the `{label}` placeholder. */
+  removeTag: string;
+  /** Fallback aria-label for the search input. */
+  search: string;
+}
+
 export interface LocaleComboboxMessages {
   /** Default aria-label for the clear button. */
   clearInput: string;
@@ -263,6 +274,7 @@ export interface LocaleMessages {
   autocomplete: LocaleAutocompleteMessages;
   breadcrumb: LocaleBreadcrumbMessages;
   calendar: LocaleCalendarMessages;
+  cascader: LocaleCascaderMessages;
   combobox: LocaleComboboxMessages;
   command: LocaleCommandMessages;
   date: LocaleDateMessages;

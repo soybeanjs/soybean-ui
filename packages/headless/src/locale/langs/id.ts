@@ -31,6 +31,12 @@ const messages: LocaleMessages = {
     selectMonth: 'Pilih bulan',
     selectYear: 'Pilih tahun'
   },
+  cascader: {
+    clear: 'Hapus',
+    noResults: 'Tidak ada data',
+    removeTag: 'Hapus {label}',
+    search: 'Cari'
+  },
   layout: {
     toggleSidebar: 'Alihkan bilah sisi'
   },

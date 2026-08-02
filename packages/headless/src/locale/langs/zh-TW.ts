@@ -31,6 +31,12 @@ const messages: LocaleMessages = {
     selectMonth: '選擇月份',
     selectYear: '選擇年份'
   },
+  cascader: {
+    clear: '清除',
+    noResults: '暫無資料',
+    removeTag: '移除 {label}',
+    search: '搜尋'
+  },
   layout: {
     toggleSidebar: '切換側邊欄'
   },

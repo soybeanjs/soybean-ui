@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { computed } from 'vue';
+import { computed, useAttrs } from 'vue';
+import { useLocaleMessages } from '../../locale';
 import Icon from '../_icon/icon.vue';
 import { useCascaderRootContext, useCascaderUi } from './context';
 import type { CascaderClearProps } from './types';
@@ -8,13 +9,19 @@ defineOptions({
   name: 'CascaderClear'
 });
 
-withDefaults(defineProps<CascaderClearProps>(), {
+const props = withDefaults(defineProps<CascaderClearProps>(), {
   ariaLabel: ''
 });
+
+const attrs = useAttrs();
+
+const messages = useLocaleMessages();
 
 const { modelValue, clearValue } = useCascaderRootContext('CascaderClear');
 
 const cls = useCascaderUi('clear');
+
+const ariaLabel = computed(() => (attrs['aria-label'] as string) ?? (props.ariaLabel || messages.value.cascader.clear));
 
 const hasValue = computed(() => {
   const value = modelValue.value;
@@ -29,7 +36,7 @@ const hasValue = computed(() => {
     type="button"
     data-soybean-cascader-clear
     :class="cls"
-    :aria-label="ariaLabel || '清除'"
+    :aria-label="ariaLabel"
     tabindex="-1"
     @click.prevent.stop="clearValue"
     @pointerdown.prevent.stop

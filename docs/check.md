@@ -183,7 +183,7 @@
 | C32  | `select`            | 多槽 + Compact | ✅  | ✅  | ✅  | ✅  | ✅  | ✅  | ✅  |   P0   | D1-12, D2-04, D2-11, D3-04, D7-01, D7-19, D7-20 |
 | C33  | `combobox`          | 多槽 + Compact | ✅  | ✅  | ✅  | ✅  | ✅  | ✅  | ✅  |   P0   | D1-12, D2-04, D2-11, D3-04, D7-01               |
 | C34  | `autocomplete`      | 多槽 + Compact | ✅  | ✅  | ✅  | ✅  | ✅  | ✅  | ✅  |   P0   | D1-12, D2-04, D2-11, D3-04, D7-01               |
-| C35  | `cascader`          | 多槽 + Compact | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  |   P0   | D1-12, D2-11, D3-04, D7-01                      |
+| C35  | `cascader`          | 多槽 + Compact | ✅  | ✅  | ✅  | ✅  | ✅  | ✅  | ✅  |   P0   | D1-12, D2-11, D3-04, D7-01                      |
 | C36  | `checkbox`          | 多槽 + Compact | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  |   P0   | D1-08, D2-11, D3-04, D7-05                      |
 | C37  | `checkbox-group`    | 多槽 + Compact | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  |   P0   | D1-12, D2-11, D3-04, D7-05                      |
 | C38  | `radio-group`       | 多槽 + Compact | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  |   P0   | D1-12, D2-11, D3-04, D7-05                      |

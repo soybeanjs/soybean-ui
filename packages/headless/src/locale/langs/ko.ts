@@ -31,6 +31,12 @@ const messages: LocaleMessages = {
     selectMonth: '월 선택',
     selectYear: '연도 선택'
   },
+  cascader: {
+    clear: '지우기',
+    noResults: '데이터 없음',
+    removeTag: '{label} 제거',
+    search: '검색'
+  },
   layout: {
     toggleSidebar: '사이드바 토글'
   },

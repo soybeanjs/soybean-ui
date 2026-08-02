@@ -5,6 +5,7 @@
 >
 import { computed } from 'vue';
 import { useOmitProps } from '../../composables';
+import { useLocaleMessages } from '../../locale';
 import type { DefinedValue } from '../../types';
 import Icon from '../_icon/icon.vue';
 import { PopperArrow } from '../popper';
@@ -38,7 +39,8 @@ const props = withDefaults(defineProps<CascaderCompactProps<T, M, P>>(), {
   open: undefined,
   clearable: true,
   showArrow: true,
-  placeholder: ''
+  placeholder: '',
+  emptyLabel: undefined
 });
 
 const emit = defineEmits<CascaderCompactEmits<T, M, P>>();
@@ -56,6 +58,8 @@ const forwardedProps = useOmitProps(props, [
   'menuProps',
   'optionProps',
   'emptyProps',
+  'emptyLabel',
+  'clearLabel',
   'arrowProps'
 ]);
 
@@ -66,6 +70,14 @@ const optionArrowCls = useCascaderUi('optionArrow');
 
 const isFilterable = computed(() => Boolean(props.filterable));
 const isClearable = computed(() => Boolean(props.clearable));
+
+const messages = useLocaleMessages();
+
+/** Fallback text of the empty state, overridable via `emptyLabel`. */
+const emptyLabel = computed(() => props.emptyLabel ?? messages.value.cascader.noResults);
+
+/** Aria-label of a tag remove button, e.g. "Remove 杭州". */
+const getRemoveTagLabel = (label: string) => messages.value.cascader.removeTag.replace('{label}', label);
 
 const valueProps = computed(() => ({
   ...props.valueProps,
@@ -127,7 +139,7 @@ const handleChange = (value: CascaderModelValue | undefined, nodes: CascaderNode
             <button
               type="button"
               tabindex="-1"
-              :aria-label="`移除 ${slotProps.node.label}`"
+              :aria-label="getRemoveTagLabel(slotProps.node.label)"
               @click="slotProps.remove(slotProps.node)"
             >
               <Icon icon="lucide:x" />
@@ -140,7 +152,7 @@ const handleChange = (value: CascaderModelValue | undefined, nodes: CascaderNode
           </CascaderValue>
         </template>
       </CascaderTags>
-      <CascaderClear v-if="isClearable" />
+      <CascaderClear v-if="isClearable" :aria-label="clearLabel" />
       <span data-soybean-cascader-trigger-icon :class="triggerIconCls">
         <slot name="trigger-icon">
           <Icon icon="lucide:chevrons-up-down" />
@@ -174,7 +186,7 @@ const handleChange = (value: CascaderModelValue | undefined, nodes: CascaderNode
         </template>
         <template #empty>
           <slot name="empty">
-            <CascaderEmpty v-bind="emptyProps" />
+            <CascaderEmpty v-bind="emptyProps">{{ emptyLabel }}</CascaderEmpty>
           </slot>
         </template>
         <PopperArrow v-if="showArrow" v-bind="arrowProps" />

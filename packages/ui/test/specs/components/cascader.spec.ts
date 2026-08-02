@@ -203,6 +203,57 @@ describe('SCascader', () => {
       expect(wrapper.emitted('update:modelValue')?.at(-1)).toEqual([['zhejiang', 'hangzhou', 'xihu']]);
       wrapper.unmount();
     });
+
+    it('closes the panel after selecting a leaf in single mode', async () => {
+      const wrapper = mount(SCascader, {
+        props: { options },
+        attachTo: document.body
+      });
+
+      await wrapper.get('[role="combobox"]').trigger('click');
+      await nextTick();
+
+      const province = findTreeItem('浙江');
+      await new DOMWrapper(province as Element).trigger('click');
+      await nextTick();
+
+      const city = findTreeItem('宁波');
+      await new DOMWrapper(city as Element).trigger('click');
+      await nextTick();
+
+      const district = findTreeItem('海曙区');
+      await new DOMWrapper(district as Element).trigger('click');
+      await flushPromises();
+      await nextTick();
+      await nextTick();
+
+      expect(wrapper.emitted('update:modelValue')?.at(-1)).toEqual(['haishu']);
+      // Single selection of a leaf closes the panel.
+      expect(document.body.querySelector('[role="tree"]')).toBeNull();
+      wrapper.unmount();
+    });
+
+    it('selects a node with ArrowDown + Enter in checkStrictly mode', async () => {
+      const wrapper = mount(SCascader, {
+        props: {
+          options,
+          checkStrictly: true
+        },
+        attachTo: document.body
+      });
+
+      await wrapper.get('[role="combobox"]').trigger('click');
+      await nextTick();
+
+      const trigger = wrapper.get('[role="combobox"]');
+      await trigger.trigger('keydown', { key: 'ArrowDown' });
+      await trigger.trigger('keydown', { key: 'Enter' });
+      await flushPromises();
+      await nextTick();
+
+      expect(wrapper.emitted('update:modelValue')?.at(-1)).toEqual(['zhejiang']);
+      wrapper.unmount();
+    });
   });
 
   describe('multiple', () => {
@@ -258,6 +309,102 @@ describe('SCascader', () => {
       expect(wrapper.emitted('update:modelValue')?.at(-1)).toEqual([['zhejiang']]);
       wrapper.unmount();
     });
+
+    it('renders a tag remove button with a localized accessible label', async () => {
+      const wrapper = mount(SCascader, {
+        props: {
+          options,
+          multiple: true,
+          checkStrictly: true
+        },
+        attachTo: document.body
+      });
+
+      await wrapper.get('[role="combobox"]').trigger('click');
+      await nextTick();
+
+      const zhejiang = findTreeItem('浙江');
+      await new DOMWrapper(zhejiang as Element).trigger('click');
+      await flushPromises();
+      await nextTick();
+      await nextTick();
+
+      const removeButton = document.body.querySelector('[data-soybean-cascader-tag] button');
+      expect(removeButton).toBeTruthy();
+      // Default locale is `en`: the template substitutes `{label}` with the node label.
+      expect(removeButton?.getAttribute('aria-label')).toBe('Remove 浙江');
+      wrapper.unmount();
+    });
+
+    it('removes a single tag and updates the model value', async () => {
+      const wrapper = mount(SCascader, {
+        props: {
+          options,
+          multiple: true,
+          checkStrictly: true
+        },
+        attachTo: document.body
+      });
+
+      await wrapper.get('[role="combobox"]').trigger('click');
+      await nextTick();
+
+      const zhejiang = findTreeItem('浙江');
+      await new DOMWrapper(zhejiang as Element).trigger('click');
+      await nextTick();
+
+      const jiangsu = findTreeItem('江苏');
+      await new DOMWrapper(jiangsu as Element).trigger('click');
+      await flushPromises();
+      await nextTick();
+      await nextTick();
+
+      expect(wrapper.emitted('update:modelValue')?.at(-1)).toEqual([['zhejiang', 'jiangsu']]);
+
+      // Remove the 浙江 tag: the 江苏 selection remains.
+      const zhejiangRemove = Array.from(document.body.querySelectorAll('[data-soybean-cascader-tag] button')).find(
+        button => button.getAttribute('aria-label') === 'Remove 浙江'
+      );
+      await new DOMWrapper(zhejiangRemove as Element).trigger('click');
+      await flushPromises();
+      await nextTick();
+
+      expect(wrapper.emitted('update:modelValue')?.at(-1)).toEqual([['jiangsu']]);
+      wrapper.unmount();
+    });
+
+    it('clears all tags via the clear button and emits clear', async () => {
+      const wrapper = mount(SCascader, {
+        props: {
+          options,
+          multiple: true,
+          checkStrictly: true
+        },
+        attachTo: document.body
+      });
+
+      await wrapper.get('[role="combobox"]').trigger('click');
+      await nextTick();
+
+      const zhejiang = findTreeItem('浙江');
+      await new DOMWrapper(zhejiang as Element).trigger('click');
+      await flushPromises();
+      await nextTick();
+      await nextTick();
+
+      expect(document.body.querySelector('[data-soybean-cascader-tag]')).toBeTruthy();
+
+      const clearButton = document.body.querySelector('[data-soybean-cascader-clear]');
+      expect(clearButton).toBeTruthy();
+      await new DOMWrapper(clearButton as Element).trigger('click');
+      await flushPromises();
+      await nextTick();
+
+      expect(wrapper.emitted('update:modelValue')?.at(-1)).toEqual([[]]);
+      expect(wrapper.emitted('clear')).toHaveLength(1);
+      expect(document.body.querySelector('[data-soybean-cascader-tag]')).toBeNull();
+      wrapper.unmount();
+    });
   });
 
   describe('filterable', () => {
@@ -282,6 +429,129 @@ describe('SCascader', () => {
 
       expect(document.body.querySelector('[role="treeitem"]')?.textContent).toContain('西湖区');
       expect(document.body.textContent).not.toContain('宁波');
+      wrapper.unmount();
+    });
+
+    it('labels the search input with an accessible name', async () => {
+      const wrapper = mount(SCascader, {
+        props: {
+          options,
+          filterable: true
+        },
+        attachTo: document.body
+      });
+
+      await wrapper.get('[role="combobox"]').trigger('click');
+      await nextTick();
+
+      const input = document.body.querySelector<HTMLInputElement>('[data-soybean-cascader-search-input]');
+      expect(input).toBeTruthy();
+      // Default locale is `en`.
+      expect(input?.getAttribute('aria-label')).toBe('Search');
+      wrapper.unmount();
+    });
+
+    it('shows the localized empty text when no result matches', async () => {
+      const wrapper = mount(SCascader, {
+        props: {
+          options,
+          filterable: true
+        },
+        attachTo: document.body
+      });
+
+      await wrapper.get('[role="combobox"]').trigger('click');
+      await nextTick();
+
+      const input = document.body.querySelector<HTMLInputElement>('input');
+      await new DOMWrapper(input as Element).setValue('不存在的节点');
+      await flushPromises();
+      await nextTick();
+
+      // Default locale is `en`.
+      expect(document.body.querySelector('[data-soybean-cascader-empty]')?.textContent).toContain('No data');
+      wrapper.unmount();
+    });
+
+    it('shows a custom empty label when emptyLabel is provided', async () => {
+      const wrapper = mount(SCascader, {
+        props: {
+          options,
+          filterable: true,
+          emptyLabel: '没有匹配项'
+        },
+        attachTo: document.body
+      });
+
+      await wrapper.get('[role="combobox"]').trigger('click');
+      await nextTick();
+
+      const input = document.body.querySelector<HTMLInputElement>('input');
+      await new DOMWrapper(input as Element).setValue('不存在的节点');
+      await flushPromises();
+      await nextTick();
+
+      expect(document.body.querySelector('[data-soybean-cascader-empty]')?.textContent).toContain('没有匹配项');
+      wrapper.unmount();
+    });
+  });
+
+  describe('clearable', () => {
+    it('clears the single selection via the clear button and emits clear', async () => {
+      const wrapper = mount(SCascader, {
+        props: {
+          options,
+          checkStrictly: true
+        },
+        attachTo: document.body
+      });
+
+      await wrapper.get('[role="combobox"]').trigger('click');
+      await nextTick();
+
+      const zhejiang = findTreeItem('浙江');
+      await new DOMWrapper(zhejiang as Element).trigger('click');
+      await flushPromises();
+      await nextTick();
+      await nextTick();
+
+      expect(wrapper.emitted('update:modelValue')?.at(-1)).toEqual(['zhejiang']);
+
+      const clearButton = document.body.querySelector<HTMLButtonElement>('[data-soybean-cascader-clear]');
+      expect(clearButton).toBeTruthy();
+      // Default locale is `en`.
+      expect(clearButton?.getAttribute('aria-label')).toBe('Clear value');
+
+      await new DOMWrapper(clearButton as Element).trigger('click');
+      await flushPromises();
+      await nextTick();
+
+      expect(wrapper.emitted('update:modelValue')?.at(-1)).toEqual([undefined]);
+      expect(wrapper.emitted('clear')).toHaveLength(1);
+      wrapper.unmount();
+    });
+
+    it('uses the clearLabel prop for the clear button aria-label', async () => {
+      const wrapper = mount(SCascader, {
+        props: {
+          options,
+          checkStrictly: true,
+          clearLabel: '清空选择'
+        },
+        attachTo: document.body
+      });
+
+      await wrapper.get('[role="combobox"]').trigger('click');
+      await nextTick();
+
+      const zhejiang = findTreeItem('浙江');
+      await new DOMWrapper(zhejiang as Element).trigger('click');
+      await flushPromises();
+      await nextTick();
+      await nextTick();
+
+      const clearButton = document.body.querySelector<HTMLButtonElement>('[data-soybean-cascader-clear]');
+      expect(clearButton?.getAttribute('aria-label')).toBe('清空选择');
       wrapper.unmount();
     });
   });
@@ -325,6 +595,30 @@ describe('SCascader', () => {
       );
 
       const violations = await getA11yViolations(wrapper.element);
+
+      expect(violations).toHaveLength(0);
+      wrapper.unmount();
+    });
+
+    it('has no a11y violations when open (filterable mode)', async () => {
+      const wrapper = mount(SCascader, {
+        props: {
+          options,
+          filterable: true,
+          triggerProps: { 'aria-label': '区域' }
+        },
+        attachTo: document.body
+      });
+
+      await wrapper.get('[role="combobox"]').trigger('click');
+      await nextTick();
+      await nextTick();
+
+      const violations = await getA11yViolations(document.body, {
+        rules: {
+          region: { enabled: false }
+        }
+      });
 
       expect(violations).toHaveLength(0);
       wrapper.unmount();

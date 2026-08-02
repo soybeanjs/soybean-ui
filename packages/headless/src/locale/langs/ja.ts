@@ -31,6 +31,12 @@ const messages: LocaleMessages = {
     selectMonth: '月を選択',
     selectYear: '年を選択'
   },
+  cascader: {
+    clear: 'クリア',
+    noResults: 'データなし',
+    removeTag: '{label} を削除',
+    search: '検索'
+  },
   layout: {
     toggleSidebar: 'サイドバーの切り替え'
   },
