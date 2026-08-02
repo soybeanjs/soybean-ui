@@ -93,26 +93,10 @@ const handleClick = (event: Event) => {
 </script>
 
 <template>
-  <Primitive
-    v-if="renderA"
-    v-bind="forwardedProps"
-    :as="as"
-    :as-child="asChild"
-    data-soybean-link
-    data-link
-    @click="handleClick"
-  >
+  <Primitive v-if="renderA" v-bind="forwardedProps" :as="as" :as-child="asChild" data-soybean-link @click="handleClick">
     <slot :is-href="true" />
   </Primitive>
-  <component
-    :is="RouterLink"
-    v-else
-    v-slot="slotProps"
-    v-bind="forwardedProps"
-    data-soybean-link
-    data-link
-    @click="handleClick"
-  >
+  <component :is="RouterLink" v-else v-slot="slotProps" v-bind="forwardedProps" data-soybean-link @click="handleClick">
     <slot :is-href="false" :is-active="slotProps?.isActive" :is-exact-active="slotProps?.isExactActive" />
   </component>
 </template>

@@ -14,7 +14,6 @@ const props = withDefaults(defineProps<LinkProps>(), {
   noRel: undefined,
   prefetch: undefined,
   noPrefetch: undefined,
-  custom: undefined,
   viewTransition: undefined,
   replace: undefined
 });
