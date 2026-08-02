@@ -66,3 +66,15 @@ export interface SplitterResizeHandleProps extends HeadlessSplitterResizeHandleP
  * Events for the SplitterResizeHandle component.
  */
 export type SplitterResizeHandleEmits = HeadlessSplitterResizeHandleEmits;
+
+/**
+ * Exposed methods for the SplitterPanel component.
+ */
+export interface SplitterPanelExposed {
+  collapse: () => void;
+  expand: () => void;
+  resize: (size: number) => void;
+  getSize: () => number | undefined;
+  get isCollapsed(): boolean;
+  get isExpanded(): boolean;
+}
