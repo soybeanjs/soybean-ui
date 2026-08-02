@@ -43,6 +43,8 @@ const emit = defineEmits<AutocompleteCompactEmits<T>>();
 
 defineSlots<AutocompleteCompactSlots<T>>();
 
+const messages = useLocaleMessages();
+
 const forwardedProps = useOmitProps(props, [
   'items',
   'modelValue',
@@ -106,8 +108,6 @@ const viewportProps = computed(() => ({
   ...props.viewportProps,
   'aria-label': props.viewportProps?.['aria-label'] ?? messages.value.autocomplete.options
 }));
-
-const messages = useLocaleMessages();
 
 const getItemKey = (item: (typeof filteredItems.value)[number]) => {
   if (isGroupOption(item)) {

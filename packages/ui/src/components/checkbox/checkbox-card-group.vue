@@ -33,12 +33,5 @@ provideCheckboxCardUi(ui);
 </script>
 
 <template>
-  <CheckboxCardGroupCompact
-    v-bind="forwardedProps"
-    :content-class="ui.content"
-    :text-content-class="ui.textContent"
-    :icon-class="ui.icon"
-    :description-class="ui.description"
-    @update:model-value="emit('update:modelValue', $event)"
-  />
+  <CheckboxCardGroupCompact v-bind="forwardedProps" @update:model-value="emit('update:modelValue', $event)" />
 </template>

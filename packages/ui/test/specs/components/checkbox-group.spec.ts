@@ -95,6 +95,30 @@ describe('SCheckboxGroup', () => {
       expect(wrapper.emitted('update:modelValue')).toBeFalsy();
       wrapper.unmount();
     });
+
+    it('disables all checkboxes when the group is disabled', () => {
+      const wrapper = mount(SCheckboxGroup, {
+        props: { items, disabled: true },
+        attachTo: document.body
+      });
+
+      const controls = wrapper.findAll('[role="checkbox"]');
+      expect(controls.every(control => (control.element as HTMLButtonElement).disabled)).toBe(true);
+      wrapper.unmount();
+    });
+  });
+
+  describe('class overrides', () => {
+    it('applies per-slot ui overrides to each control', () => {
+      const wrapper = mount(SCheckboxGroup, {
+        props: { items, ui: { control: 'custom-control-class' } },
+        attachTo: document.body
+      });
+
+      const controls = wrapper.findAll('[role="checkbox"]');
+      expect(controls.every(control => control.classes().includes('custom-control-class'))).toBe(true);
+      wrapper.unmount();
+    });
   });
 
   describe('accessibility', () => {
@@ -151,6 +175,31 @@ describe('SCheckboxCardGroup', () => {
       await wrapper.findAll('[role="checkbox"]')[1].trigger('click');
 
       expect(wrapper.emitted('update:modelValue')).toBeFalsy();
+      wrapper.unmount();
+    });
+  });
+
+  describe('class overrides', () => {
+    it('applies per-slot ui overrides to the card content', () => {
+      const wrapper = mount(SCheckboxCardGroup, {
+        props: { items: cardItems, ui: { content: 'custom-content-class' } },
+        attachTo: document.body
+      });
+
+      expect(wrapper.find('.custom-content-class').exists()).toBe(true);
+      wrapper.unmount();
+    });
+  });
+
+  describe('accessibility', () => {
+    it('has no a11y violations', async () => {
+      const wrapper = mount(SCheckboxCardGroup, {
+        props: { items: cardItems, modelValue: ['option-1'] },
+        attachTo: document.body
+      });
+
+      const violations = await getA11yViolations(wrapper.element);
+      expect(violations).toHaveLength(0);
       wrapper.unmount();
     });
   });
