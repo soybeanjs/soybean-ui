@@ -110,6 +110,31 @@ describe('SSlider', () => {
       expect(thumbs[1]?.attributes('aria-label')).toBe('Price range');
       wrapper.unmount();
     });
+
+    it('applies per-slot ui overrides to thumb and range', () => {
+      const wrapper = mount(SSlider, {
+        props: {
+          ui: { thumb: 'custom-thumb-class', range: 'custom-range-class' },
+          thumbProps: { 'aria-label': 'Volume' }
+        },
+        attachTo: document.body
+      });
+
+      expect(wrapper.find('[role="slider"]').classes()).toContain('custom-thumb-class');
+      expect(wrapper.find('[data-soybean-slider-range]').classes()).toContain('custom-range-class');
+      wrapper.unmount();
+    });
+
+    it('reflects orientation via data-orientation on root and thumb', () => {
+      const wrapper = mount(SSlider, {
+        props: { orientation: 'vertical', thumbProps: { 'aria-label': 'Volume' } },
+        attachTo: document.body
+      });
+
+      expect(wrapper.find('[data-soybean-slider-root]').attributes('data-orientation')).toBe('vertical');
+      expect(wrapper.find('[role="slider"]').attributes('aria-orientation')).toBe('vertical');
+      wrapper.unmount();
+    });
   });
 
   describe('value state', () => {
@@ -175,6 +200,175 @@ describe('SSlider', () => {
       expect(wrapper.emitted('valueCommit')?.at(-1)?.[0]).toEqual([70]);
       wrapper.unmount();
     });
+
+    it('supports uncontrolled usage with defaultValue', async () => {
+      const wrapper = mount(SSlider, {
+        props: { defaultValue: [10], thumbProps: { 'aria-label': 'Volume' } },
+        attachTo: document.body
+      });
+
+      const track = wrapper.findComponent({ name: 'SliderTrack' });
+
+      mockRect(track.element, { x: 0, y: 0, width: 100, height: 10 });
+      dispatchPointerEvent(track.element, 'pointerdown', { clientX: 50, clientY: 5, pointerId: 1 });
+
+      await wrapper.vm.$nextTick();
+
+      expect(wrapper.find('[role="slider"]').attributes('aria-valuenow')).toBe('50');
+      wrapper.unmount();
+    });
+
+    it('updates the thumb when a controlled modelValue changes', async () => {
+      const wrapper = mount(SSlider, {
+        props: { modelValue: [20], thumbProps: { 'aria-label': 'Volume' } },
+        attachTo: document.body
+      });
+
+      await wrapper.setProps({ modelValue: [50] });
+
+      expect(wrapper.find('[role="slider"]').attributes('aria-valuenow')).toBe('50');
+      wrapper.unmount();
+    });
+
+    it('enforces minStepsBetweenThumbs when stepping', async () => {
+      const wrapper = mount(SSlider, {
+        props: { modelValue: [50, 52], minStepsBetweenThumbs: 3, thumbProps: { 'aria-label': 'Volume' } },
+        attachTo: document.body
+      });
+
+      await wrapper.find('[role="slider"]').trigger('keydown', { key: 'ArrowRight' });
+
+      expect(wrapper.emitted('update:modelValue')).toBeFalsy();
+      expect(wrapper.findAll('[role="slider"]')[0]?.attributes('aria-valuenow')).toBe('50');
+      wrapper.unmount();
+    });
+  });
+
+  describe('keyboard interaction', () => {
+    it('increases the value with ArrowRight', async () => {
+      const wrapper = mount(SSlider, {
+        props: { modelValue: [20], thumbProps: { 'aria-label': 'Volume' } },
+        attachTo: document.body
+      });
+
+      await wrapper.find('[role="slider"]').trigger('keydown', { key: 'ArrowRight' });
+
+      expect(wrapper.emitted('update:modelValue')?.[0]?.[0]).toEqual([21]);
+      wrapper.unmount();
+    });
+
+    it('decreases the value with ArrowLeft', async () => {
+      const wrapper = mount(SSlider, {
+        props: { modelValue: [20], thumbProps: { 'aria-label': 'Volume' } },
+        attachTo: document.body
+      });
+
+      await wrapper.find('[role="slider"]').trigger('keydown', { key: 'ArrowLeft' });
+
+      expect(wrapper.emitted('update:modelValue')?.[0]?.[0]).toEqual([19]);
+      wrapper.unmount();
+    });
+
+    it('jumps 10 steps with PageUp', async () => {
+      const wrapper = mount(SSlider, {
+        props: { modelValue: [20], thumbProps: { 'aria-label': 'Volume' } },
+        attachTo: document.body
+      });
+
+      await wrapper.find('[role="slider"]').trigger('keydown', { key: 'PageUp' });
+
+      expect(wrapper.emitted('update:modelValue')?.[0]?.[0]).toEqual([30]);
+      wrapper.unmount();
+    });
+
+    it('jumps 10 steps with Shift+Arrow', async () => {
+      const wrapper = mount(SSlider, {
+        props: { modelValue: [20], thumbProps: { 'aria-label': 'Volume' } },
+        attachTo: document.body
+      });
+
+      await wrapper.find('[role="slider"]').trigger('keydown', { key: 'ArrowRight', shiftKey: true });
+
+      expect(wrapper.emitted('update:modelValue')?.[0]?.[0]).toEqual([30]);
+      wrapper.unmount();
+    });
+
+    it('sets the value to min with Home', async () => {
+      const wrapper = mount(SSlider, {
+        props: { modelValue: [80], thumbProps: { 'aria-label': 'Volume' } },
+        attachTo: document.body
+      });
+
+      await wrapper.find('[role="slider"]').trigger('keydown', { key: 'Home' });
+
+      expect(wrapper.emitted('update:modelValue')?.[0]?.[0]).toEqual([0]);
+      wrapper.unmount();
+    });
+
+    it('steps the focused thumb in a range', async () => {
+      const wrapper = mount(SSlider, {
+        props: { modelValue: [20, 80], thumbProps: { 'aria-label': 'Price' } },
+        attachTo: document.body
+      });
+
+      const thumbs = wrapper.findAll('[role="slider"]');
+
+      await thumbs[1]?.trigger('focus');
+      await thumbs[1]?.trigger('keydown', { key: 'ArrowRight' });
+
+      expect(wrapper.emitted('update:modelValue')?.[0]?.[0]).toEqual([20, 81]);
+      wrapper.unmount();
+    });
+  });
+
+  describe('orientation and direction', () => {
+    it('increases the value with ArrowUp in vertical orientation', async () => {
+      const wrapper = mount(SSlider, {
+        props: { orientation: 'vertical', modelValue: [20], thumbProps: { 'aria-label': 'Volume' } },
+        attachTo: document.body
+      });
+
+      await wrapper.find('[role="slider"]').trigger('keydown', { key: 'ArrowUp' });
+
+      expect(wrapper.emitted('update:modelValue')?.[0]?.[0]).toEqual([21]);
+      wrapper.unmount();
+    });
+
+    it('increases the value with ArrowLeft in RTL mode', async () => {
+      const wrapper = mount(SSlider, {
+        props: { dir: 'rtl', modelValue: [20], thumbProps: { 'aria-label': 'Volume' } },
+        attachTo: document.body
+      });
+
+      await wrapper.find('[role="slider"]').trigger('keydown', { key: 'ArrowLeft' });
+
+      expect(wrapper.emitted('update:modelValue')?.[0]?.[0]).toEqual([21]);
+      wrapper.unmount();
+    });
+
+    it('increases the value with ArrowLeft when inverted', async () => {
+      const wrapper = mount(SSlider, {
+        props: { inverted: true, modelValue: [20], thumbProps: { 'aria-label': 'Volume' } },
+        attachTo: document.body
+      });
+
+      await wrapper.find('[role="slider"]').trigger('keydown', { key: 'ArrowLeft' });
+
+      expect(wrapper.emitted('update:modelValue')?.[0]?.[0]).toEqual([21]);
+      wrapper.unmount();
+    });
+
+    it('decreases the value with ArrowUp when inverted and vertical', async () => {
+      const wrapper = mount(SSlider, {
+        props: { orientation: 'vertical', inverted: true, modelValue: [20], thumbProps: { 'aria-label': 'Volume' } },
+        attachTo: document.body
+      });
+
+      await wrapper.find('[role="slider"]').trigger('keydown', { key: 'ArrowUp' });
+
+      expect(wrapper.emitted('update:modelValue')?.[0]?.[0]).toEqual([19]);
+      wrapper.unmount();
+    });
   });
 
   describe('disabled state', () => {
@@ -187,6 +381,22 @@ describe('SSlider', () => {
       await wrapper.find('[role="slider"]').trigger('keydown', { key: 'End' });
 
       expect(wrapper.find('[role="slider"]').attributes('aria-disabled')).toBe('true');
+      expect(wrapper.emitted('update:modelValue')).toBeFalsy();
+      wrapper.unmount();
+    });
+
+    it('prevents track dragging when disabled', () => {
+      const wrapper = mount(SSlider, {
+        props: { disabled: true, modelValue: [0], thumbProps: { 'aria-label': 'Volume' } },
+        attachTo: document.body
+      });
+
+      const track = wrapper.findComponent({ name: 'SliderTrack' });
+
+      mockRect(track.element, { x: 0, y: 0, width: 100, height: 10 });
+      dispatchPointerEvent(track.element, 'pointerdown', { clientX: 50, clientY: 5, pointerId: 1 });
+      dispatchPointerEvent(document, 'pointerup', { clientX: 50, clientY: 5, pointerId: 1 });
+
       expect(wrapper.emitted('update:modelValue')).toBeFalsy();
       wrapper.unmount();
     });

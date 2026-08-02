@@ -188,7 +188,7 @@
 | C37  | `checkbox-group`    | 多槽 + Compact | ✅  | ✅  | ✅  | ✅  | ✅  | ✅  | ✅  |   P0   | D1-12, D2-11, D3-04, D7-05                      |
 | C38  | `radio-group`       | 多槽 + Compact | ✅  | ✅  | ✅  | ✅  | ✅  | ✅  | ✅  |   P0   | D1-12, D2-11, D3-04, D7-05                      |
 | C39  | `switch`            | 多槽           | ✅  | ✅  | ✅  | ✅  | ✅  | ✅  | ✅  |   P0   | D1-08, D2-11, D3-01, D7-05                      |
-| C40  | `slider`            | 多槽           | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  |   P1   | D1-16, D2-11, D7-05                             |
+| C40  | `slider`            | 多槽           | ✅  | ✅  | ✅  | ✅  | ✅  | ✅  | ✅  |   P1   | D1-16, D2-11, D7-05                             |
 | C41  | `toggle`            | 单类           | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  |   P1   | D1-08, D2-11, D3-01                             |
 | C42  | `toggle-group`      | 多槽           | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  |   P1   | D1-08, D2-11, D3-04                             |
 | C43  | `segment`           | 多槽           | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  |   P1   | D1-08, D2-11, D3-04                             |
@@ -415,8 +415,19 @@
 | `checkbox`/`radio-group`                      | 独立 `indeterminate` prop、`button` variant、全选/半选联动辅助                     | AntD/Element Plus | [C36](./check-reports/C36-checkbox.md)                                        |
 | `select`/`combobox`/`autocomplete`/`cascader` | `remote`/`loading` 态、`maxTagCount`、虚拟滚动 e2e、`showArrow` 对齐               | AntD/Naive UI     | [C32](./check-reports/C32-select.md) ~ [C35](./check-reports/C35-cascader.md) |
 | `switch`                                      | `loading` 态、`onLabel`/`offLabel` 内联标签、`beforeChange` 钩子、`change` 事件    | AntD/Element Plus | [C39](./check-reports/C39-switch.md)                                          |
+| `slider`                                      | `marks` 刻度标记、拖拽时数值 tooltip、数字输入框联动                               | AntD/Element Plus | [C40](./check-reports/C40-slider.md)                                          |
 | 表单族系（共享）                              | `isFormControl` 语义对齐 Radix `closest('form')`（当前为「元素自身含 `form` 类」） | Radix             | [C36](./check-reports/C36-checkbox.md)                                        |
 | 测试基础设施                                  | `icon.spec.ts` 4 项环境性失败（iconify SVG 数据缺失，HEAD 既有）                   | —                 | [C36](./check-reports/C36-checkbox.md)                                        |
+
+### 4.3 批次 2（P1 表单补充）— 2026-08-03
+
+覆盖第 9 轮（P1 表单补充）自 C40 起的组件（`input-otp` 已提前在批次 1 完成）。
+
+| 编号 | 组件     | 检查报告                                       | 缺陷修复（按严重度）                                                                                                                                                                                                                                                                                                 | 单测（前 → 后） |
+| :--: | :------- | :--------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :-------------- |
+| C40  | `slider` | [C40-slider.md](./check-reports/C40-slider.md) | **Minor ×1**（D1-16 焦点稳定性）：`SliderCompact` thumb `v-for` key 用 `` `${index}-${value}` ``，值变化触发 thumb DOM 重建，拖拽/键盘步进时焦点与 hover/focus-visible 状态丢失 → 改 `:key="index"` 索引稳定，值更新仅走 props 响应式。**文档** en/zh 4 节 → 7 节 Recommended structure（架构对标表 12 能力 × 6 库） | 12 → 28         |
+
+> **批次 2 合计：** 1 个检查单元通过 D1–D7 全维度；单测 12 → 28 项（+16）；`pnpm typecheck` / `pnpm lint` 全绿；族系回归（switch/checkbox/radio-group/color-slider 等）全通过。
 
 ---
 

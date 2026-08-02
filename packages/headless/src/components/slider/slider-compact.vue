@@ -26,7 +26,7 @@ const listeners = useForwardListeners(emit);
     <SliderTrack v-bind="trackProps">
       <SliderRange v-bind="rangeProps" />
     </SliderTrack>
-    <SliderThumb v-for="(value, index) in modelValue" :key="`${index}-${value}`" v-bind="thumbProps" :index="index">
+    <SliderThumb v-for="(value, index) in modelValue" :key="index" v-bind="thumbProps" :index="index">
       <slot :index="index" :model-value="modelValue" :value="value" />
     </SliderThumb>
   </SliderRoot>
