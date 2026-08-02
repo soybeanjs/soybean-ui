@@ -1,5 +1,6 @@
 <script setup lang="ts" generic="T extends DefinedValue = DefinedValue, M extends boolean = false">
 import { computed } from 'vue';
+import { isNullish } from '../../shared';
 import { useOmitProps } from '../../composables';
 import type { MaybeArray, DefinedValue } from '../../types';
 import Icon from '../_icon/icon.vue';
@@ -92,6 +93,35 @@ const getTriggerValueSlotProps = (slotProps: {
   return slotProps as SelectCompactTriggerValueSlotProps<T, M>;
 };
 
+/**
+ * The collection-backed label lookup only works once the popup content has mounted
+ * (options are registered by `SelectItem` on mount). Before the first open this
+ * leaves the trigger empty even when `defaultValue`/`modelValue` is set, so we
+ * resolve the label from the data-driven `items` as a fallback.
+ */
+const fallbackLabel = computed(() => {
+  const value = props.modelValue ?? props.defaultValue;
+
+  if (isNullish(value) || (Array.isArray(value) && value.length === 0)) return '';
+
+  const values = (Array.isArray(value) ? value : [value]) as DefinedValue[];
+
+  const labelOf = (target: DefinedValue) => {
+    for (const item of props.items) {
+      if (isGroupOption(item)) {
+        const match = item.items.find(child => child.value === target);
+        if (match) return match.label;
+        continue;
+      }
+
+      if (item.value === target) return item.label;
+    }
+    return '';
+  };
+
+  return values.map(labelOf).filter(Boolean).join(', ');
+});
+
 const handleModelValueChange = (value: MaybeArray<DefinedValue> | undefined) => {
   emit('update:modelValue', value as NonNullable<SelectCompactProps<T, M>['modelValue']>);
 };
@@ -110,7 +140,9 @@ const handleSelect = (event: SelectItemEvent<DefinedValue>) => {
     <SelectTrigger v-bind="triggerProps">
       <slot name="trigger-leading" />
       <SelectValue v-slot="slotProps" v-bind="valueProps">
-        <slot name="trigger-value" v-bind="getTriggerValueSlotProps(slotProps)" />
+        <slot name="trigger-value" v-bind="getTriggerValueSlotProps(slotProps)">
+          {{ fallbackLabel || slotProps.slotText }}
+        </slot>
       </SelectValue>
       <slot name="trigger-trailing" />
       <SelectTriggerIcon v-bind="triggerIconProps">

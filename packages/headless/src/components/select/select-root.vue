@@ -23,8 +23,7 @@ const emit = defineEmits<SelectRootEmits<T, M>>();
 const { modelValue, isMultiple, onModelValueChange, isEmptyModelValue } = useSelection<boolean, DefinedValue>(
   props,
   value => {
-    // @ts-expect-error ignore type
-    emit('update:modelValue', value);
+    emit('update:modelValue', value as NonNullable<SelectRootProps<T, M>['modelValue']>);
   }
 );
 
