@@ -14,7 +14,7 @@
 
 对 `toggle-group` 完成全维度审计。headless 层 `ToggleGroupRoot` 由 `useSelection`（受控/非受控 + 单选/多选 + `clearable`）与 `RovingFocusGroup`（方向键导航/`loop` 循环/RTL 方向感知）组合，`ToggleGroupItem` 依据 context `rovingFocus` 动态切换 `RovingFocusItem` / `Button` 基座并反射 `aria-pressed`/`data-state`；UI 层 `SToggleGroup` 为薄透传包装（`toggleGroupVariants` 3 变体 × 6 尺寸 × 8 颜色 × 2 方向）。`name`/`required` 经隐藏 input 接入表单提交。
 
-**发现并修复 Major 缺陷 ×1**（泛型 SFC `withDefaults` 字面量 Boolean 默认值被编译器静默丢弃），补强单测 8 → 24 项 + 文档按 Recommended structure 重构：
+**发现并修复 Major 缺陷 ×1**（UI 透传层缺 `withDefaults` 致缺省 Boolean prop 被 Vue 运行时 cast 为 `false`、作为显式值透传覆盖 headless 子组件 `true` 默认；初版报告误判为「编译器丢弃字面量 Boolean 默认」，已于 4.3 节修正），补强单测 8 → 24 项 + 文档按 Recommended structure 重构：
 
 |    维度     | 状态 | 说明                                                                                                                                                                                                                                                                                             |
 | :---------: | :--: | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -51,33 +51,21 @@
 
 ## 三、发现的问题与处理
 
-### 3.1 D1-08 / D7-11 — **Major**：泛型 SFC `withDefaults` 字面量 Boolean 默认值被编译器静默丢弃
+### 3.1 D1-08 / D7-11 — **Major**：UI 透传层缺 `withDefaults` 致缺省 Boolean prop 被 cast 为 `false` 覆盖子组件默认
 
-**问题：** `ToggleGroupRoot` 初始 `withDefaults` 声明：
+**问题：** headless `ToggleGroupRoot` 的 `withDefaults` 声明了正确默认值：
 
 ```ts
 const props = withDefaults(defineProps<ToggleGroupRootProps<M, T>>(), {
   disabled: false,
-  rovingFocus: true, // ← 字面量 Boolean 默认
+  rovingFocus: true, // ← 正确默认
   orientation: 'horizontal',
-  loop: true, // ← 字面量 Boolean 默认
-  clearable: true // ← 字面量 Boolean 默认
+  loop: true, // ← 正确默认
+  clearable: true // ← 正确默认
 });
 ```
 
-在 `<script setup lang="ts" generic="...">` 泛型组件中，**字面量 Boolean 默认值被编译器静默丢弃**（仅字符串默认 `orientation` 存活）。运行时 `type.props` 探针证实：
-
-```json
-{
-  "rovingFocus": { "required": false },
-  "disabled": { "required": false },
-  "orientation": { "required": false, "default": "horizontal" },
-  "loop": { "required": false },
-  "clearable": { "required": false }
-}
-```
-
-缺省挂载时 Vue 将 Boolean prop cast 为字面量 `false`（`resolvePropValue`：`isAbsent && !hasDefault → false`），于是：
+但 **UI 透传层 `SToggleGroup` 是纯 `const props = defineProps<ToggleGroupProps<M, T>>()`，没有 `withDefaults`**。缺省挂载时，Vue 运行时 `resolvePropValue` 对缺失（`isAbsent`）且无默认值的 Boolean prop 直接 cast 为字面量 `false`（而非 `undefined`），`useOmitProps` 再将该 `false` 作为**显式值**透传给 headless `ToggleGroupRoot`，**覆盖**其 `withDefaults` 里的 `true` 默认（透传链路二次失效）。于是：
 
 1. **`rovingFocus` 实为 `false`** — root 退化为普通 `Primitive`（`role="group"`），方向键导航与 Tab 顺序管理静默失效；
 2. **`loop` 实为 `false`** — 即便 rovingFocus 生效也无循环回绕；
@@ -87,7 +75,7 @@ const props = withDefaults(defineProps<ToggleGroupRootProps<M, T>>(), {
 
 **处理（双层修复）：**
 
-① **headless 层改用函数式默认值**（编译器保留，运行时 `isFunction(defaultValue)` 分支执行）+ 运行时 `??` 回退防御显式 `undefined`：
+① **headless 层改用函数式默认值**（运行时 `isFunction(defaultValue)` 分支执行，显式 `undefined` 由 `??` 回退兜底）：
 
 ```ts
 const props = withDefaults(defineProps<ToggleGroupRootProps<M, T>>(), {
@@ -102,16 +90,19 @@ const resolvedRovingFocus = computed(() => props.rovingFocus ?? true);
 const resolvedLoop = computed(() => props.loop ?? true);
 ```
 
-② **UI 透传层同步声明函数式默认值**：`SToggleGroup` 未传 Boolean prop 时自身会被 cast 为 `false`，`useOmitProps` 将 `false` 作为显式值透传给 `ToggleGroupRoot`，**覆盖** headless 层默认值（透传链路的二次失效点）。UI 层同款 `withDefaults` 后缺省即传 `true`，用户显式 `:roving-focus="false"` 仍正确透传（测试 `falls back to a plain group when rovingFocus is disabled` 覆盖）。
+② **UI 透传层同步声明函数式默认值**：`SToggleGroup` 未传 Boolean prop 时自身会被 cast 为 `false`，`useOmitProps` 将 `false` 作为显式值透传给 `ToggleGroupRoot`，**覆盖** headless 层默认值。UI 层同款 `withDefaults` 后缺省即传 `true`，用户显式 `:roving-focus="false"` 仍正确透传（测试 `falls back to a plain group when rovingFocus is disabled` 覆盖）。
 
-**影响范围（同缺陷波及，已列入遗留排期）：**
+**影响范围（已核实）：**
 
-| 组件                                           | 丢失的默认值                                | 后果                                                     |
-| :--------------------------------------------- | :------------------------------------------ | :------------------------------------------------------- |
-| `accordion-root.vue` / `accordion-compact.vue` | `collapsible: true` / `unmountOnHide: true` | 折叠行为失效（点击已展开项无法收起）；折叠内容默认不卸载 |
-| `select-compact.vue`                           | `clearable: true`                           | 清除选择功能静默失效                                     |
+| 组件               | 结论                                                                                                                                      |
+| :----------------- | :---------------------------------------------------------------------------------------------------------------------------------------- |
+| `accordion` UI 层  | **不受影响** — `accordion.vue` 已有 `withDefaults`（字面量默认保留，无透传 cast 覆盖）                                                    |
+| `select` UI 层     | **不受影响** — `select.vue` 已有 `withDefaults`（同左）                                                                                   |
+| 其余 UI 层透传组件 | 全仓共 **51 个** UI 层组件使用纯 `defineProps<T>()`，凡透传 Boolean 且子组件有非 `false` 默认者存在同款风险，已列入系统性排查（见第七节） |
 
-`disabled: false` 类默认值虽同样被丢弃，但 cast 后仍为 `false`，行为无差异，不受影响。
+`disabled: false` 类默认 cast 后仍为 `false`，行为无差异，不受影响。
+
+> **⚠️ 初版报告结论修正（2026-08-03 本窗口）：** C42 报告初版将本缺陷归因于「泛型 SFC 中 `withDefaults` 字面量 Boolean 默认值被编译器静默丢弃」。经三重证据推翻：① `compiler-sfc` 源码 `genRuntimePropFromType` 确认 `hasStaticWithDefaults` 时字面量默认注入每个 prop 定义（`default: ...` 保留）；② 用完整 `ts.sys` 重编译修复前源码，产物中 `rovingFocus: { type: Boolean, required: false, default: true }` 等**全部保留**；③ 真实 vitest 环境探针（模拟泛型 SFC + 继承含条件类型参数的接口）运行时 `type.props` 显示字面量默认全部保留。决定性 **revert 实验**：恢复修复前源码（headless 字面量 + UI 纯 `defineProps`）→ 精确复现 `4 failed | 20 passed`；恢复修复后 → `24 passed`。真实机制即本节所述「UI 透传层 cast false 覆盖」。
 
 ### 3.2 D7-11 — 单测覆盖不足（已扩展 8 → 24 项）
 
@@ -139,7 +130,7 @@ const resolvedLoop = computed(() => props.loop ?? true);
 
 ### Boolean 默认值的透传链路陷阱（本次核心教训）
 
-泛型 SFC 中 Boolean props 存在**两层默认值失效**：① `withDefaults` 字面量默认被编译器丢弃（cast 为 `false`）；② 透传层（UI 包装）自身未传 Boolean prop 时同样被 cast 为 `false`，经 `useOmitProps` 作为**显式值**下传，覆盖子组件默认。修复须**两层同步**：headless 用函数式默认 + 运行时回退，UI 透传层同款声明。`toolbar-toggle-group` 既有的 `useOmitProps(props, ['dir', 'loop', 'rovingFocus'])` + 显式 `:roving-focus="false"` 正是该问题的既有规避先例。
+Boolean props 存在**两层默认值失效**：① headless 组件自身的 `withDefaults` 字面量默认在**自身直接挂载**（无中间透传层）时生效；② 一旦存在中间透传层（UI 包装），若该层是纯 `defineProps<T>()`（无 `withDefaults`），其未显式传入的 Boolean prop 会被 Vue 运行时 cast 为 `false`，经 `useOmitProps` 作为**显式值**下传，**覆盖**子组件默认。修复须**两层同步**：headless 用函数式默认 + 运行时 `??` 回退，UI 透传层同款声明。`toolbar-toggle-group` 既有的 `useOmitProps(props, ['dir', 'loop', 'rovingFocus'])` + 显式 `:roving-focus="false"` 正是该问题的既有规避先例。
 
 ### 状态、导航、视觉三层解耦
 
@@ -149,15 +140,15 @@ const resolvedLoop = computed(() => props.loop ?? true);
 
 ## 五、变更文件清单
 
-| 文件                                                                  | 变更类型                                                                                                                                                 |
-| :-------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `packages/headless/src/components/toggle-group/toggle-group-root.vue` | 字面量 Boolean 默认 → **函数式默认**（`disabled`/`rovingFocus`/`loop`/`clearable`）+ 运行时 `??` 回退（`resolved*` computed）                            |
-| `packages/ui/src/components/toggle-group/toggle-group.vue`            | 透传层同步声明函数式默认（防 Boolean cast `false` 覆盖子组件默认）                                                                                       |
-| `packages/ui/test/specs/components/toggle-group.spec.ts`              | 单测 8 → 24 项（渲染/状态/受控非受控/泛型值/键盘/loop/RTL/禁用/ui/slot/axe）；4 项失败用例即缺陷回归测试                                                 |
-| `apps/docs/src/docs/en/components/toggle-group.md`                    | 文档 4 节 → 8 节 Recommended structure（Component family + 12 能力 × 6 库对标表 + Cautions + FAQ）                                                       |
-| `apps/docs/src/docs/zh-CN/components/toggle-group.md`                 | 与 en 一一对应的 8 节中文化版本                                                                                                                          |
-| `docs/check.md`                                                       | C42 行 7 维度 ⏳ → ✅；4.2 遗留增强项追加 `toggle-group` 行（泛型 Boolean 默认值波及项）；批次 2 记录表追加 C42 行 + 批次合计更新（3 单元/单测 19 → 69） |
-| `docs/check-reports/C42-toggle-group.md`                              | **新建** 本审计报告                                                                                                                                      |
+| 文件                                                                  | 变更类型                                                                                                                                                                                             |
+| :-------------------------------------------------------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `packages/headless/src/components/toggle-group/toggle-group-root.vue` | 字面量 Boolean 默认 → **函数式默认**（`disabled`/`rovingFocus`/`loop`/`clearable`）+ 运行时 `??` 回退（`resolved*` computed）                                                                        |
+| `packages/ui/src/components/toggle-group/toggle-group.vue`            | 透传层同步声明函数式默认（防 Boolean cast `false` 覆盖子组件默认）                                                                                                                                   |
+| `packages/ui/test/specs/components/toggle-group.spec.ts`              | 单测 8 → 24 项（渲染/状态/受控非受控/泛型值/键盘/loop/RTL/禁用/ui/slot/axe）；4 项失败用例即缺陷回归测试                                                                                             |
+| `apps/docs/src/docs/en/components/toggle-group.md`                    | 文档 4 节 → 8 节 Recommended structure（Component family + 12 能力 × 6 库对标表 + Cautions + FAQ）                                                                                                   |
+| `apps/docs/src/docs/zh-CN/components/toggle-group.md`                 | 与 en 一一对应的 8 节中文化版本                                                                                                                                                                      |
+| `docs/check.md`                                                       | C42 行 7 维度 ⏳ → ✅；4.2 遗留增强项 `toggle-group` 行修正为真实机制（UI 透传层 cast 覆盖）+ 追加 51 组件系统性排查行；批次 2 记录表 C42 行修正 + 追加 C43 行 + 批次合计更新（4 单元/单测 19 → 93） |
+| `docs/check-reports/C42-toggle-group.md`                              | **新建** 本审计报告                                                                                                                                                                                  |
 
 ## 六、验证命令
 
@@ -169,6 +160,6 @@ pnpm lint && pnpm fmt                   # 0 errors / 0 warnings
 
 ## 七、遗留增强项（统一排期，非阻塞，见 check.md 4.2）
 
-| 增强项                                         | 对标依据     | 说明                                                                                                                              |
-| :--------------------------------------------- | :----------- | :-------------------------------------------------------------------------------------------------------------------------------- |
-| 泛型 SFC 字面量 Boolean 默认值修复（波及组件） | Vue 编译行为 | `accordion-root`/`accordion-compact`（`collapsible`/`unmountOnHide`）、`select-compact`（`clearable`）待按本报告 3.1 同款方案修复 |
+| 增强项                                          | 对标依据       | 说明                                                                                                                                                                                                                                           |
+| :---------------------------------------------- | :------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 51 个 UI 层纯 `defineProps<T>()` 组件系统性排查 | Vue 运行时行为 | 全仓 UI 层共 51 个组件用纯 `const props = defineProps<T>()`（无 `withDefaults`），凡透传 Boolean 且子组件有非 `false` 默认者存在与 toggle-group 同款 cast 覆盖风险，需按 3.1 双层方案统一排查（承接报告见 [C43-segment.md](./C43-segment.md)） |
