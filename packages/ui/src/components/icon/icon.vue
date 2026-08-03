@@ -9,7 +9,9 @@ defineOptions({
   name: 'SIcon'
 });
 
-const props = defineProps<IconProps>();
+const props = withDefaults(defineProps<IconProps>(), {
+  ariaHidden: true
+});
 
 const configProvider = useConfigProvider();
 
@@ -24,12 +26,19 @@ const iconifySize = computed(() => {
   };
 });
 
+const resolvedAriaHidden = computed(() => {
+  if (props.ariaLabel || props.ariaLabelledby) {
+    return false;
+  }
+  return props.ariaHidden;
+});
+
 const forwardedProps = computed(() => ({
   ...iconifySize.value,
   icon: props.icon,
-  ariaHidden: props.ariaHidden ?? true,
-  ariaLabel: props.ariaLabel,
-  ariaLabelledby: props.ariaLabelledby
+  'aria-hidden': resolvedAriaHidden.value,
+  'aria-label': props.ariaLabel,
+  'aria-labelledby': props.ariaLabelledby
 }));
 
 const iconifyProps = computed(() => {
@@ -53,11 +62,12 @@ function isIconifyIcon(icon: IconValue): icon is IconifyIcon | string {
 </script>
 
 <template>
-  <Iconify v-if="iconifyProps" v-bind="iconifyProps" style="flex-shrink: 0" />
+  <Iconify v-if="iconifyProps" v-bind="iconifyProps" class="shrink-0" data-soybean-icon />
   <component
     :is="icon"
     v-else-if="icon"
-    style="flex-shrink: 0"
+    class="shrink-0"
+    data-soybean-icon
     :style="{
       width: iconifySize.width,
       height: iconifySize.height
