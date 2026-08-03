@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { nextTick, shallowRef } from 'vue';
+import { computed, nextTick, shallowRef, useAttrs } from 'vue';
 import { isMouseEvent } from '../../shared';
 import { useCollectionItem } from '../roving-focus/context';
 import { useOmitProps } from '../../composables';
@@ -13,12 +13,16 @@ defineOptions({
 
 const props = defineProps<MenuItemImplProps>();
 
+const attrs = useAttrs();
+
 const { open } = useMenuContext('MenuItemImpl');
 const { onItemEnter, onItemLeave } = useMenuContentContext('MenuItemImpl');
 
 const { setItemElement } = useCollectionItem(() => ({ textValue: props.textValue }));
 
-const forwardedProps = useOmitProps(props, ['disabled', 'textValue', 'role']);
+const forwardedProps = useOmitProps(props, ['disabled', 'textValue']);
+
+const role = computed(() => (attrs['role'] as string | undefined) ?? 'menuitem');
 
 const isFocused = shallowRef(false);
 
@@ -68,7 +72,7 @@ const onBlur = async (event: FocusEvent) => {
     :ref="setItemElement"
     data-soybean-menu-item-impl
     data-soybean-collection-item
-    :role="props.role ?? 'menuitem'"
+    :role="role"
     tabindex="-1"
     :aria-disabled="disabled || undefined"
     :data-disabled="disabled ? '' : undefined"

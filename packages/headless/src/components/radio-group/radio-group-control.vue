@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import { computed, onBeforeUnmount, onMounted, useAttrs, useTemplateRef, watchEffect } from 'vue';
+import { computed, onBeforeUnmount, onMounted, useAttrs, watchEffect } from 'vue';
 import { getAriaLabel, handleAndDispatchCustomEvent, isFormControl } from '../../shared';
+import { useForwardElement } from '../../composables';
 import type { NavigationKey } from '../../types';
 import Button from '../button/button.vue';
 import { RovingFocusItem } from '../roving-focus';
@@ -17,13 +18,13 @@ const attrs = useAttrs();
 
 const cls = useRadioGroupUi('control');
 
-const controlElement = useTemplateRef<{ $el?: HTMLButtonElement }>('controlElement');
+const [controlElement, setControlElement] = useForwardElement();
 const rootContext = useRadioGroupRootContext('RadioGroupControl');
 const { value, disabled, name, required, checked, dataState, onSelect, initControlId } =
   useRadioGroupItemContext('RadioGroupControl');
 
-const formControl = computed(() => isFormControl(controlElement.value?.$el));
-const ariaLabel = computed(() => getAriaLabel(controlElement.value?.$el, props.id, attrs['aria-label'] as string));
+const formControl = computed(() => isFormControl(controlElement.value));
+const ariaLabel = computed(() => getAriaLabel(controlElement.value, props.id, attrs['aria-label'] as string));
 
 /** Arrow key constants for keyboard navigation */
 const ARROW_KEYS: NavigationKey[] = ['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'];
@@ -72,7 +73,7 @@ function onFocus() {
      * case. We click it to 'check' it (instead of updating `context.value`) so that the radio change event fires.
      */
     if (isArrowKeyPressed) {
-      controlElement.value?.$el?.click();
+      controlElement.value?.click();
     }
   }, 0);
 }
@@ -97,7 +98,7 @@ onBeforeUnmount(() => {
 <template>
   <RovingFocusItem as-child :checked="checked" :focusable="!disabled" :active="checked">
     <Button
-      ref="controlElement"
+      :ref="setControlElement"
       v-bind="props"
       data-soybean-radio-group-control
       :class="cls"

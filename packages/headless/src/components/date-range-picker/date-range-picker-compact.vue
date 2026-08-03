@@ -24,40 +24,42 @@ const messages = useLocaleMessages();
 
 const listeners = useForwardListeners(emit);
 
-const popoverProps = computed(() => ({
-  open: props.open,
-  defaultOpen: props.defaultOpen,
-  modal: props.modal,
-  disabled: props.disabled,
-  placement: props.placement,
-  showArrow: props.showArrow,
-  portalProps: props.portalProps,
-  positionerProps: props.positionerProps,
-  arrowProps: props.arrowProps,
-  closeProps: props.closeProps,
-  popupProps: {
-    ...props.popupProps,
-    'aria-label': props.popupProps?.['aria-label'] ?? messages.value.dateRangePicker.popupLabel
-  }
-}));
-
-const dateFieldProps = usePickProps(
+const popoverProps = usePickProps(
   props,
   [
-    'dir',
-    'locale',
-    'modelValue',
-    'defaultValue',
-    'placeholder',
-    'defaultPlaceholder',
+    'open',
+    'defaultOpen',
+    'modal',
     'disabled',
-    'readonly',
-    'maxValue',
-    'minValue',
-    'isDateUnavailable'
+    'placement',
+    'showArrow',
+    'portalProps',
+    'positionerProps',
+    'arrowProps',
+    'closeProps'
   ],
-  computed(() => ({ ...props.dateFieldProps }))
+  () => ({
+    popupProps: {
+      ...props.popupProps,
+      'aria-label': props.popupProps?.['aria-label'] ?? messages.value.dateRangePicker.popupLabel
+    }
+  })
 );
+
+const dateFieldProps = usePickProps(props, [
+  'dir',
+  'locale',
+  'modelValue',
+  'defaultValue',
+  'placeholder',
+  'defaultPlaceholder',
+  'disabled',
+  'readonly',
+  'maxValue',
+  'minValue',
+  'isDateUnavailable',
+  'dateFieldProps'
+]);
 
 const triggerProps = computed(() => ({
   ...props.triggerProps,

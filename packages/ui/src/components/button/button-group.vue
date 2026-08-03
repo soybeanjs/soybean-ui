@@ -18,10 +18,9 @@ const props = withDefaults(defineProps<ButtonGroupProps>(), {
 
 const forwardedProps = useOmitProps(props, [
   'class',
-  'orientation',
-  'dir',
   'color',
   'size',
+  'dir',
   'variant',
   'shape',
   'shadow',
@@ -48,7 +47,7 @@ provideButtonGroupContext(
 </script>
 
 <template>
-  <ButtonGroup v-bind="forwardedProps" :class="cls" :orientation="orientation" :dir="dir">
+  <ButtonGroup v-bind="forwardedProps" :class="cls" :dir="dir">
     <slot />
   </ButtonGroup>
 </template>

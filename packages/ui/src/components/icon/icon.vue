@@ -34,8 +34,6 @@ const resolvedAriaHidden = computed(() => {
 });
 
 const forwardedProps = computed(() => ({
-  ...iconifySize.value,
-  icon: props.icon,
   'aria-hidden': resolvedAriaHidden.value,
   'aria-label': props.ariaLabel,
   'aria-labelledby': props.ariaLabelledby
@@ -48,6 +46,7 @@ const iconifyProps = computed(() => {
 
   return {
     ...forwardedProps.value,
+    ...iconifySize.value,
     icon: props.icon
   };
 });
@@ -68,6 +67,7 @@ function isIconifyIcon(icon: IconValue): icon is IconifyIcon | string {
     v-else-if="icon"
     class="shrink-0"
     data-soybean-icon
+    v-bind="forwardedProps"
     :style="{
       width: iconifySize.width,
       height: iconifySize.height

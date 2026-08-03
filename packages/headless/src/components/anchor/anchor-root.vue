@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, nextTick, onBeforeUnmount, onMounted, onWatcherCleanup, shallowRef, watch } from 'vue';
+import { computed, nextTick, useAttrs, onBeforeUnmount, onMounted, onWatcherCleanup, shallowRef, watch } from 'vue';
 import { transformPropsToContext, isClient } from '../../shared';
 import { useDirection } from '../config-provider/context';
 import { useControllableState, useOmitProps } from '../../composables';
@@ -32,9 +32,6 @@ const props = withDefaults(defineProps<AnchorRootProps>(), {
 
 const emit = defineEmits<AnchorRootEmits>();
 
-const cls = useAnchorUi('root');
-const messages = useLocaleMessages();
-
 const forwardedProps = useOmitProps(props, [
   'bounds',
   'dir',
@@ -47,9 +44,12 @@ const forwardedProps = useOmitProps(props, [
   'targetOffset'
 ]);
 
-const ariaLabel = computed(
-  () => (forwardedProps.value['aria-label'] as string | undefined) ?? messages.value.anchor.nav
-);
+const attrs = useAttrs();
+
+const cls = useAnchorUi('root');
+const messages = useLocaleMessages();
+
+const ariaLabel = computed(() => (attrs['aria-label'] as string | undefined) ?? messages.value.anchor.nav);
 
 const dir = useDirection(() => props.dir);
 
