@@ -337,6 +337,14 @@ export interface LocaleTagsInputMessages {
   clear: string;
 }
 
+export interface LocaleTreeMenuMessages {
+  /**
+   * Aria-label template for the item actions trigger button.
+   * Supports the `{label}` placeholder.
+   */
+  openActions: string;
+}
+
 export interface LocaleTextareaMessages {
   /** Aria-label for the clear button. */
   clear: string;
@@ -369,6 +377,7 @@ export interface LocaleMessages {
   table: LocaleTableMessages;
   tagsInput: LocaleTagsInputMessages;
   textarea: LocaleTextareaMessages;
+  treeMenu: LocaleTreeMenuMessages;
 }
 
 export interface LocaleRegistry {

@@ -78,6 +78,9 @@ const messages: LocaleMessages = {
     addTag: '新增標籤',
     clear: '清除標籤'
   },
+  treeMenu: {
+    openActions: '開啟 {label} 的操作'
+  },
   progress: {
     loading: '載入中'
   },

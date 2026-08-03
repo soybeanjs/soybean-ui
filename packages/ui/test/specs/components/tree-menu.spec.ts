@@ -61,6 +61,53 @@ const collapsedItems = [
   }
 ];
 
+const actionItems = [
+  {
+    value: 'design-engineering',
+    label: 'Design Engineering',
+    icon: 'lucide:frame',
+    actions: [
+      {
+        label: 'Edit',
+        value: 'edit',
+        icon: 'lucide:pencil'
+      },
+      {
+        label: 'Delete',
+        value: 'delete',
+        icon: 'lucide:trash'
+      }
+    ]
+  },
+  {
+    value: 'plain',
+    label: 'Plain'
+  }
+];
+
+const disabledItems = [
+  {
+    value: 'overview',
+    label: 'Overview'
+  },
+  {
+    value: 'locked',
+    label: 'Locked',
+    disabled: true
+  },
+  {
+    value: 'section',
+    label: 'Section',
+    disabled: true,
+    children: [
+      {
+        value: 'child',
+        label: 'Child'
+      }
+    ]
+  }
+];
+
 describe('STreeMenu', () => {
   describe('rendering', () => {
     it('renders the compact tree menu structure', () => {
@@ -76,6 +123,109 @@ describe('STreeMenu', () => {
       expect(wrapper.text()).toContain('Workspace');
       expect(wrapper.text()).toContain('Projects');
       expect(wrapper.text()).toContain('Profile');
+
+      wrapper.unmount();
+    });
+
+    it('renders nested children only when the parent is expanded', () => {
+      const wrapper = mount(STreeMenu, {
+        props: {
+          items,
+          defaultExpanded: ['settings']
+        },
+        attachTo: document.body
+      });
+
+      expect(wrapper.text()).toContain('Profile');
+      expect(wrapper.text()).toContain('Security');
+      expect(wrapper.text()).not.toContain('Child-of-workspace');
+
+      wrapper.unmount();
+    });
+
+    it('renders group labels for group items', () => {
+      const wrapper = mount(STreeMenu, {
+        props: {
+          items
+        },
+        attachTo: document.body
+      });
+
+      const groupLabel = wrapper.find('[data-soybean-tree-menu-group-label]');
+
+      expect(groupLabel.exists()).toBe(true);
+      expect(groupLabel.text()).toContain('Workspace');
+
+      wrapper.unmount();
+    });
+
+    it('renders top and bottom slots', () => {
+      const wrapper = mount(STreeMenu, {
+        props: {
+          items
+        },
+        slots: {
+          top: '<div data-top>Top</div>',
+          bottom: '<div data-bottom>Bottom</div>'
+        },
+        attachTo: document.body
+      });
+
+      expect(wrapper.find('[data-top]').exists()).toBe(true);
+      expect(wrapper.find('[data-bottom]').exists()).toBe(true);
+
+      wrapper.unmount();
+    });
+
+    it('renders a link item as an anchor', () => {
+      const wrapper = mount(STreeMenu, {
+        props: {
+          items: [
+            {
+              value: 'soybean',
+              label: 'Soybean UI',
+              href: 'https://ui.soybeanjs.cn'
+            }
+          ]
+        },
+        attachTo: document.body
+      });
+
+      const link = wrapper.find('a[data-soybean-tree-menu-button]');
+
+      expect(link.exists()).toBe(true);
+      expect(link.attributes('href')).toBe('https://ui.soybeanjs.cn');
+
+      wrapper.unmount();
+    });
+
+    it('renders the item actions trigger with a localized aria-label', () => {
+      const wrapper = mount(STreeMenu, {
+        props: {
+          items: actionItems
+        },
+        attachTo: document.body
+      });
+
+      const actionButton = wrapper.find('[data-soybean-dropdown-menu-trigger]');
+
+      expect(actionButton.exists()).toBe(true);
+      expect(actionButton.attributes('aria-label')).toBe('Open Design Engineering actions');
+
+      wrapper.unmount();
+    });
+
+    it('does not leak as / asChild props to the DOM', () => {
+      const wrapper = mount(STreeMenu, {
+        props: {
+          items
+        },
+        attachTo: document.body
+      });
+      const html = wrapper.html();
+
+      expect(html).not.toContain('aschild');
+      expect(html).not.toMatch(/as="/);
 
       wrapper.unmount();
     });
@@ -96,9 +246,44 @@ describe('STreeMenu', () => {
 
       wrapper.unmount();
     });
+
+    it('forwards item-leading and item-trailing slots', () => {
+      const wrapper = mount(STreeMenu, {
+        props: {
+          items
+        },
+        slots: {
+          'item-leading': ({ item }) => h('span', { class: 'leading-slot' }, `Lead:${item.label}`),
+          'item-trailing': ({ item }) => h('span', { class: 'trailing-slot' }, `Trail:${item.label}`)
+        },
+        attachTo: document.body
+      });
+
+      expect(wrapper.find('.leading-slot').exists()).toBe(true);
+      expect(wrapper.find('.trailing-slot').exists()).toBe(true);
+
+      wrapper.unmount();
+    });
   });
 
-  describe('active state', () => {
+  describe('state', () => {
+    it('activates the default value on mount', () => {
+      const wrapper = mount(STreeMenu, {
+        props: {
+          items,
+          defaultValue: 'overview'
+        },
+        attachTo: document.body
+      });
+
+      const activeButton = wrapper.find('[data-soybean-tree-menu-button][data-active="true"]');
+
+      expect(activeButton.exists()).toBe(true);
+      expect(activeButton.text()).toContain('Overview');
+
+      wrapper.unmount();
+    });
+
     it('emits update:modelValue when a leaf item is clicked', async () => {
       const wrapper = mount(STreeMenu, {
         props: {
@@ -116,6 +301,112 @@ describe('STreeMenu', () => {
       wrapper.unmount();
     });
 
+    it('respects a controlled modelValue', async () => {
+      const wrapper = mount(STreeMenu, {
+        props: {
+          items,
+          modelValue: 'overview'
+        },
+        attachTo: document.body
+      });
+
+      await wrapper.findAll('[data-soybean-tree-menu-button]')[0].trigger('click');
+
+      expect(wrapper.emitted('update:modelValue')?.at(-1)?.[0]).toBe('overview');
+
+      await wrapper.setProps({ modelValue: 'projects' });
+
+      expect(wrapper.find('[data-soybean-tree-menu-button][data-active="true"]').text()).toContain('Projects');
+
+      wrapper.unmount();
+    });
+  });
+
+  describe('expand and collapse', () => {
+    it('expands a parent on click and exposes the collapsible state', async () => {
+      const wrapper = mount(STreeMenu, {
+        props: {
+          items
+        },
+        attachTo: document.body
+      });
+
+      expect(wrapper.text()).not.toContain('Profile');
+
+      const parentTrigger = wrapper.find('[data-soybean-tree-menu-collapsible-trigger]');
+
+      expect(parentTrigger.attributes('aria-expanded')).toBe('false');
+
+      await parentTrigger.trigger('click');
+
+      expect(wrapper.find('[data-soybean-tree-menu-collapsible-trigger]').attributes('aria-expanded')).toBe('true');
+      expect(wrapper.text()).toContain('Profile');
+
+      wrapper.unmount();
+    });
+
+    it('collapses an expanded parent on a second click', async () => {
+      const wrapper = mount(STreeMenu, {
+        props: {
+          items,
+          defaultExpanded: ['settings']
+        },
+        attachTo: document.body
+      });
+
+      expect(wrapper.text()).toContain('Profile');
+
+      await wrapper.find('[data-soybean-tree-menu-collapsible-trigger]').trigger('click');
+
+      expect(wrapper.find('[data-soybean-tree-menu-collapsible-trigger]').attributes('aria-expanded')).toBe('false');
+      expect(wrapper.text()).not.toContain('Profile');
+
+      wrapper.unmount();
+    });
+
+    it('emits update:expanded for a controlled expanded state', async () => {
+      const wrapper = mount(STreeMenu, {
+        props: {
+          items
+        },
+        attachTo: document.body
+      });
+
+      await wrapper.find('[data-soybean-tree-menu-collapsible-trigger]').trigger('click');
+
+      expect(wrapper.emitted('update:expanded')?.at(-1)?.[0]).toEqual(['settings']);
+
+      wrapper.unmount();
+    });
+
+    it('restores the expanded state after toggling collapse off', async () => {
+      const wrapper = mount(STreeMenu, {
+        props: {
+          items,
+          defaultExpanded: ['settings']
+        },
+        attachTo: document.body
+      });
+
+      expect(wrapper.text()).toContain('Profile');
+
+      await wrapper.setProps({ collapsed: true });
+      await nextTick();
+
+      expect(wrapper.find('[data-soybean-tree-menu-root]').attributes('data-state')).toBe('collapsed');
+      expect(wrapper.text()).not.toContain('Profile');
+
+      await wrapper.setProps({ collapsed: false });
+      await nextTick();
+
+      expect(wrapper.find('[data-soybean-tree-menu-root]').attributes('data-state')).toBe('expanded');
+      expect(wrapper.text()).toContain('Profile');
+
+      wrapper.unmount();
+    });
+  });
+
+  describe('collapsed', () => {
     it('renders collapsed child menus with dropdown-menu compact', async () => {
       const wrapper = mount(STreeMenu, {
         props: {
@@ -136,12 +427,138 @@ describe('STreeMenu', () => {
     });
   });
 
+  describe('disabled', () => {
+    it('blocks activation for a disabled item', async () => {
+      const wrapper = mount(STreeMenu, {
+        props: {
+          items: disabledItems,
+          modelValue: 'overview'
+        },
+        attachTo: document.body
+      });
+
+      const lockedButton = wrapper.findAll('[data-soybean-tree-menu-button]')[1];
+
+      expect(lockedButton.attributes('data-disabled')).toBeDefined();
+
+      await lockedButton.trigger('click');
+
+      expect(wrapper.emitted('update:modelValue')).toBeFalsy();
+
+      wrapper.unmount();
+    });
+
+    it('blocks expansion for a disabled parent', async () => {
+      const wrapper = mount(STreeMenu, {
+        props: {
+          items: disabledItems
+        },
+        attachTo: document.body
+      });
+
+      const sectionTrigger = wrapper.find('[data-soybean-tree-menu-collapsible-trigger]');
+
+      await sectionTrigger.trigger('click');
+
+      expect(wrapper.find('[data-soybean-tree-menu-collapsible-trigger]').attributes('aria-expanded')).toBe('false');
+      expect(wrapper.text()).not.toContain('Child');
+
+      wrapper.unmount();
+    });
+  });
+
+  describe('keyboard', () => {
+    it('renders interactive elements as native buttons', () => {
+      const wrapper = mount(STreeMenu, {
+        props: {
+          items
+        },
+        attachTo: document.body
+      });
+
+      const buttons = wrapper.findAll('[data-soybean-tree-menu-button]');
+
+      expect(buttons.length).toBeGreaterThan(0);
+      buttons.forEach(button => {
+        expect(button.element.tagName).toBe('BUTTON');
+      });
+
+      wrapper.unmount();
+    });
+
+    it('marks the collapsible trigger with aria-expanded for screen readers', async () => {
+      const wrapper = mount(STreeMenu, {
+        props: {
+          items,
+          defaultExpanded: ['settings']
+        },
+        attachTo: document.body
+      });
+
+      // the content id is initialized in the content component setup, wait for it to settle
+      await nextTick();
+      await nextTick();
+
+      const trigger = wrapper.find('[data-soybean-tree-menu-collapsible-trigger]');
+
+      expect(trigger.attributes('aria-expanded')).toBe('true');
+      expect(trigger.attributes('aria-controls')).toBeTruthy();
+
+      wrapper.unmount();
+    });
+
+    it('marks the active item button with aria-current semantics via data-active', () => {
+      const wrapper = mount(STreeMenu, {
+        props: {
+          items,
+          defaultValue: 'overview'
+        },
+        attachTo: document.body
+      });
+
+      expect(wrapper.find('[data-soybean-tree-menu-button][data-active="true"]').exists()).toBe(true);
+
+      wrapper.unmount();
+    });
+  });
+
   describe('accessibility', () => {
     it('has no a11y violations in the default expanded state', async () => {
       const wrapper = mount(STreeMenu, {
         props: {
           items,
           expanded: ['settings']
+        },
+        attachTo: document.body
+      });
+
+      const violations = await getA11yViolations(wrapper.element);
+
+      expect(violations).toHaveLength(0);
+
+      wrapper.unmount();
+    });
+
+    it('has no a11y violations in the collapsed state', async () => {
+      const wrapper = mount(STreeMenu, {
+        props: {
+          collapsed: true,
+          items: collapsedItems
+        },
+        attachTo: document.body
+      });
+
+      const violations = await getA11yViolations(wrapper.element);
+
+      expect(violations).toHaveLength(0);
+
+      wrapper.unmount();
+    });
+
+    it('has no a11y violations with item actions', async () => {
+      const wrapper = mount(STreeMenu, {
+        props: {
+          items: actionItems
         },
         attachTo: document.body
       });

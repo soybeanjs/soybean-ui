@@ -78,6 +78,9 @@ const messages: LocaleMessages = {
     addTag: 'Добавить тег',
     clear: 'Очистить теги'
   },
+  treeMenu: {
+    openActions: 'Открыть действия для «{label}»'
+  },
   progress: {
     loading: 'Загрузка'
   },

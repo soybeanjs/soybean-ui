@@ -78,6 +78,9 @@ const messages: LocaleMessages = {
     addTag: '태그 추가',
     clear: '태그 지우기'
   },
+  treeMenu: {
+    openActions: '{label} 작업 열기'
+  },
   progress: {
     loading: '로딩 중'
   },

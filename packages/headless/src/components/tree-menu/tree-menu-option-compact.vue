@@ -2,7 +2,10 @@
 import { computed } from 'vue';
 import { keysOf } from '@soybeanjs/utils';
 import { useOmitProps } from '../../composables';
+import { useLocaleMessages } from '../../locale';
 import type { Placement } from '../../types';
+import Icon from '../_icon/icon.vue';
+import Button from '../button/button.vue';
 import DropdownMenuCompact from '../dropdown-menu/dropdown-menu-compact.vue';
 import Link from '../link/link.vue';
 import { useTreeMenuRootContext, useTreeMenuUi } from './context';
@@ -37,6 +40,8 @@ const forwardedOptionProps = useOmitProps(props, ['as', 'item']);
 const slotNames = computed(() => keysOf(slots));
 
 const ui = useTreeMenuUi();
+
+const messages = useLocaleMessages();
 
 const { collapsed, modelValue, onModelValueChange } = useTreeMenuRootContext('TreeMenuCompactOption');
 
@@ -88,6 +93,10 @@ const dropdownMenuProps = computed(() => ({
   trigger: props.item.dropdownMenuProps?.trigger ?? 'hover'
 }));
 
+const showActions = computed(() => !collapsed.value && Boolean(props.item.actions?.length));
+
+const actionAriaLabel = computed(() => messages.value.treeMenu.openActions.replace('{label}', props.item.label));
+
 const handleActive = () => {
   if (props.item.disabled) return;
 
@@ -104,7 +113,7 @@ const handleDropdownMenuSelect = (item: TreeMenuBaseOptionData) => {
 
 <template>
   <TreeMenuItem v-if="!hasChildren" v-bind="itemProps" :as="as" :value="item.value" :disabled="item.disabled">
-    <TreeMenuButton v-if="isLink" v-bind="buttonProps" as-child>
+    <TreeMenuButton v-if="isLink" v-bind="buttonProps" as-child :disabled="item.disabled">
       <Link v-slot="{ isHref }" v-bind="linkProps">
         <TreeMenuSlotCompact :item="item" :show-link-icon="isHref">
           <template v-for="slotName in slotNames" #[slotName]="slotProps">
@@ -113,13 +122,25 @@ const handleDropdownMenuSelect = (item: TreeMenuBaseOptionData) => {
         </TreeMenuSlotCompact>
       </Link>
     </TreeMenuButton>
-    <TreeMenuButton v-else v-bind="buttonProps">
+    <TreeMenuButton v-else v-bind="buttonProps" :disabled="item.disabled">
       <TreeMenuSlotCompact :item="item">
         <template v-for="slotName in slotNames" #[slotName]="slotProps">
           <slot :name="slotName" v-bind="slotProps" />
         </template>
       </TreeMenuSlotCompact>
     </TreeMenuButton>
+    <DropdownMenuCompact
+      v-if="showActions"
+      v-bind="item.actionMenuProps"
+      :items="item.actions ?? []"
+      @select="item.onActionSelect"
+    >
+      <template #trigger>
+        <Button :aria-label="actionAriaLabel" :class="ui.itemAction" :disabled="item.disabled" @click.stop>
+          <Icon icon="lucide:ellipsis" :aria-hidden="true" />
+        </Button>
+      </template>
+    </DropdownMenuCompact>
     <TreeMenuTooltipCompact v-if="tooltip" v-bind="tooltipProps" :content="tooltip">
       <template #trigger>
         <Link v-if="isLink" v-bind="linkProps" :class="ui.itemAbsolute" @click="handleActive" />
@@ -130,7 +151,12 @@ const handleDropdownMenuSelect = (item: TreeMenuBaseOptionData) => {
   <TreeMenuItem v-else v-bind="itemProps" as-child :value="item.value" :disabled="item.disabled">
     <TreeMenuCollapsible v-bind="collapsibleProps" :as="as" :disabled-collapsible="collapsed">
       <template #trigger>
-        <TreeMenuButton v-bind="buttonProps" disabled-active :data-child-active="childActive ? '' : undefined">
+        <TreeMenuButton
+          v-bind="buttonProps"
+          :disabled="item.disabled"
+          disabled-active
+          :data-child-active="childActive ? '' : undefined"
+        >
           <TreeMenuSlotCompact :item="item">
             <template v-for="slotName in slotNames" #[slotName]="slotProps">
               <slot :name="slotName" v-bind="slotProps" />
@@ -164,7 +190,19 @@ const handleDropdownMenuSelect = (item: TreeMenuBaseOptionData) => {
           @select="handleDropdownMenuSelect"
         >
           <template #trigger>
-            <div :class="ui.itemAbsolute" />
+            <div role="button" :aria-label="item.label" :class="ui.itemAbsolute" @click="handleActive" />
+          </template>
+        </DropdownMenuCompact>
+        <DropdownMenuCompact
+          v-else-if="showActions"
+          v-bind="item.actionMenuProps"
+          :items="item.actions ?? []"
+          @select="item.onActionSelect"
+        >
+          <template #trigger>
+            <Button :aria-label="actionAriaLabel" :class="ui.itemAction" :disabled="item.disabled" @click.stop>
+              <Icon icon="lucide:ellipsis" :aria-hidden="true" />
+            </Button>
           </template>
         </DropdownMenuCompact>
       </template>

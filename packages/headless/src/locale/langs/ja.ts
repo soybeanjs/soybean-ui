@@ -78,6 +78,9 @@ const messages: LocaleMessages = {
     addTag: 'タグを追加',
     clear: 'タグをクリア'
   },
+  treeMenu: {
+    openActions: '{label} の操作を開く'
+  },
   progress: {
     loading: '読み込み中'
   },

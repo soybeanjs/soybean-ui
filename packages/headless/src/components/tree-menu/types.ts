@@ -445,8 +445,6 @@ export type TreeMenuUiSlot =
   | 'itemLinkIcon'
   | 'collapsibleIcon'
   | 'sub'
-  | 'subItem'
-  | 'subButton'
   | 'collapsibleRoot'
   | 'collapsibleTrigger'
   | 'collapsibleContent'

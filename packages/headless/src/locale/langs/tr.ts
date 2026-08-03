@@ -78,6 +78,9 @@ const messages: LocaleMessages = {
     addTag: 'Etiket ekle',
     clear: 'Etiketleri temizle'
   },
+  treeMenu: {
+    openActions: '{label} işlemlerini aç'
+  },
   progress: {
     loading: 'Yükleniyor'
   },

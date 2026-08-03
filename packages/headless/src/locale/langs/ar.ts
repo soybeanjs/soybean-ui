@@ -78,6 +78,9 @@ const messages: LocaleMessages = {
     addTag: 'إضافة وسم',
     clear: 'مسح الوسوم'
   },
+  treeMenu: {
+    openActions: 'فتح إجراءات {label}'
+  },
   progress: {
     loading: 'جارٍ التحميل'
   },

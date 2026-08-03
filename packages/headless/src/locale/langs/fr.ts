@@ -78,6 +78,9 @@ const messages: LocaleMessages = {
     addTag: 'Ajouter une balise',
     clear: 'Effacer les balises'
   },
+  treeMenu: {
+    openActions: 'Ouvrir les actions de {label}'
+  },
   progress: {
     loading: 'Chargement'
   },

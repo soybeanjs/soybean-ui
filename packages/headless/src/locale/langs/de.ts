@@ -78,6 +78,9 @@ const messages: LocaleMessages = {
     addTag: 'Tag hinzufügen',
     clear: 'Tags löschen'
   },
+  treeMenu: {
+    openActions: 'Aktionen für {label} öffnen'
+  },
   progress: {
     loading: 'Laden'
   },

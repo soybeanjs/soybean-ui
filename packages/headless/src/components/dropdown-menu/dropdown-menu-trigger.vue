@@ -26,7 +26,7 @@ const { isPointerInTransitRef, hoverable, onTriggerEnter, onTriggerLeave, onClos
 
 const tag = computed(() => (props.as === 'button' ? 'button' : undefined));
 
-const ariaControls = computed(() => (open.value ? popupId : undefined));
+const ariaControls = computed(() => (open.value ? popupId.value : undefined));
 const ariaDisabled = computed(() => (props.disabled ? true : undefined));
 const dataDisabled = computed(() => (props.disabled ? '' : undefined));
 

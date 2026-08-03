@@ -78,6 +78,9 @@ const messages: LocaleMessages = {
     addTag: 'Tambahkan tag',
     clear: 'Hapus tag'
   },
+  treeMenu: {
+    openActions: 'Buka tindakan {label}'
+  },
   progress: {
     loading: 'Memuat'
   },
