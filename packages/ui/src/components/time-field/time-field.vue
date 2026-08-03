@@ -3,7 +3,7 @@ import { computed } from 'vue';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
 import { TimeFieldCompact, provideTimeFieldUi } from '@soybeanjs/headless/time-field';
 import { dateFieldVariants } from '@/styles/date-field';
-import type { TimeFieldProps, TimeFieldEmits } from './types';
+import type { TimeFieldProps, TimeFieldEmits, TimeFieldSlots } from './types';
 
 defineOptions({
   name: 'STimeField'
@@ -12,6 +12,8 @@ defineOptions({
 const props = defineProps<TimeFieldProps>();
 
 const emit = defineEmits<TimeFieldEmits>();
+
+defineSlots<TimeFieldSlots>();
 
 const listeners = useForwardListeners(emit);
 
@@ -23,5 +25,12 @@ provideTimeFieldUi(ui);
 </script>
 
 <template>
-  <TimeFieldCompact v-bind="forwardedProps" v-on="listeners" />
+  <TimeFieldCompact v-bind="forwardedProps" v-on="listeners">
+    <template #leading>
+      <slot name="leading" />
+    </template>
+    <template #trailing>
+      <slot name="trailing" />
+    </template>
+  </TimeFieldCompact>
 </template>

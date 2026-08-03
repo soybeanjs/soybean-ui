@@ -7,6 +7,7 @@ export { provideTimeFieldUi } from './context';
 export type {
   TimeFieldCompactProps,
   TimeFieldCompactEmits,
+  TimeFieldCompactSlots,
   TimeFieldRootProps,
   TimeFieldRootEmits,
   TimeFieldRootSlots,

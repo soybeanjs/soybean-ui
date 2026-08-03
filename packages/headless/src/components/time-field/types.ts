@@ -139,6 +139,20 @@ export interface TimeFieldCompactProps extends TimeFieldRootProps {
 }
 
 /**
+ * Slots for the TimeFieldCompact component.
+ */
+export type TimeFieldCompactSlots = {
+  /**
+   * Content rendered before the time segments.
+   */
+  leading?: () => any;
+  /**
+   * Content rendered after the time segments.
+   */
+  trailing?: () => any;
+};
+
+/**
  * Events for the time field compact component.
  */
 export type TimeFieldCompactEmits = TimeFieldRootEmits;
