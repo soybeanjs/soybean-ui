@@ -234,10 +234,12 @@ const moveFocus = (type: 'start' | 'end', direction: 'next' | 'prev') => {
 
   if (nextIndex >= 0 && nextIndex < elements.length) {
     elements[nextIndex]?.focus();
-  } else if (direction === 'next' && type === 'start' && endSegmentElements.value.length > 0) {
+  } else if (delta > 0 && type === 'start' && endSegmentElements.value.length > 0) {
+    // Exited the end of the start group: ArrowRight in LTR, ArrowLeft in RTL.
     focusedType.value = 'end';
     endSegmentElements.value[0]?.focus();
-  } else if (direction === 'prev' && type === 'end' && startSegmentElements.value.length > 0) {
+  } else if (delta < 0 && type === 'end' && startSegmentElements.value.length > 0) {
+    // Exited the beginning of the end group: ArrowLeft in LTR, ArrowRight in RTL.
     focusedType.value = 'start';
     startSegmentElements.value[startSegmentElements.value.length - 1]?.focus();
   }
