@@ -4,7 +4,7 @@ import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composabl
 import { DateRangePickerCompact, provideDateRangePickerUi } from '@soybeanjs/headless/date-range-picker';
 import { dateRangePickerVariants } from '@/styles/date-range-picker';
 import CalendarRange from '../calendar-range/calendar-range.vue';
-import type { DateRangePickerProps, DateRangePickerEmits } from './types';
+import type { DateRangePickerProps, DateRangePickerEmits, DateRangePickerSlots } from './types';
 
 defineOptions({
   name: 'SDateRangePicker'
@@ -16,7 +16,9 @@ const props = withDefaults(defineProps<DateRangePickerProps>(), {
 
 const emit = defineEmits<DateRangePickerEmits>();
 
-const forwardedProps = useOmitProps(props, ['class', 'size', 'ui']);
+defineSlots<DateRangePickerSlots>();
+
+const forwardedProps = useOmitProps(props, ['class', 'size', 'ui', 'calendarRangeUi']);
 
 const listeners = useForwardListeners(emit);
 
@@ -26,24 +28,28 @@ provideDateRangePickerUi(ui);
 </script>
 
 <template>
-  <DateRangePickerCompact
-    v-slot="{ calendarRangeProps, close, onUpdateModelValue, onUpdatePlaceholder }"
-    v-bind="forwardedProps"
-    v-on="listeners"
-  >
-    <CalendarRange
-      v-bind="calendarRangeProps"
-      :size="size"
-      :ui="calendarRangeUi"
-      @update:model-value="
-        value => {
-          onUpdateModelValue(value);
-          if (value.start && value.end) {
-            close();
+  <DateRangePickerCompact v-bind="forwardedProps" v-on="listeners">
+    <template #leading>
+      <slot name="leading" />
+    </template>
+    <template #separator>
+      <slot name="separator" />
+    </template>
+    <template #default="{ calendarRangeProps, close, onUpdateModelValue, onUpdatePlaceholder }">
+      <CalendarRange
+        v-bind="calendarRangeProps"
+        :size="size"
+        :ui="calendarRangeUi"
+        @update:model-value="
+          value => {
+            onUpdateModelValue(value);
+            if (value.start && value.end) {
+              close();
+            }
           }
-        }
-      "
-      @update:placeholder="onUpdatePlaceholder"
-    />
+        "
+        @update:placeholder="onUpdatePlaceholder"
+      />
+    </template>
   </DateRangePickerCompact>
 </template>

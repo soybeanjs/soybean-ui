@@ -5,100 +5,99 @@ import { CalendarDate } from '@internationalized/date';
 import SDateRangePicker from '@/components/date-range-picker/date-range-picker.vue';
 import { getA11yViolations } from '../../shared/a11y';
 
-function getPopup() {
-  return document.body.querySelector('[data-soybean-popover-popup]') as HTMLElement | null;
-}
-
 describe('SDateRangePicker', () => {
+  const findPopup = () => document.body.querySelector('[data-dismissable-layer][role="dialog"]');
+  const findTrigger = (wrapper: ReturnType<typeof mount>) => wrapper.find('button[aria-haspopup="dialog"]');
+  const findCalendar = () => document.body.querySelector('[data-soybean-calendar-range-root]');
+  const waitForDismissableLayer = async () => new Promise(resolve => window.setTimeout(resolve, 0));
+
+  const mountRangePicker = (props?: Record<string, unknown>, slots?: Record<string, string>) =>
+    mount(SDateRangePicker, {
+      attachTo: document.body,
+      props: {
+        defaultPlaceholder: new CalendarDate(2024, 1, 1),
+        ...props
+      },
+      slots
+    });
+
   describe('rendering', () => {
-    it('renders correctly with default slot', () => {
-      const wrapper = mount(SDateRangePicker, {
-        attachTo: document.body,
-        props: {
-          'data-root': '',
-          triggerProps: {
-            'data-soybean-popover-trigger': ''
-          }
-        }
-      });
+    it('renders the range field and the calendar trigger', () => {
+      const wrapper = mountRangePicker();
 
       expect(wrapper.find('[data-soybean-date-range-field-root]').exists()).toBe(true);
-      expect(wrapper.find('[data-soybean-popover-trigger]').exists()).toBe(true);
+      expect(findTrigger(wrapper).exists()).toBe(true);
 
       wrapper.unmount();
     });
 
     it('renders with custom class', () => {
-      const wrapper = mount(SDateRangePicker, {
-        props: {
-          class: 'custom-class'
-        },
-        attachTo: document.body
-      });
+      const wrapper = mountRangePicker({ class: 'custom-class' });
 
       expect(wrapper.find('[data-soybean-date-range-field-root]').classes()).toContain('custom-class');
 
       wrapper.unmount();
     });
 
-    it('renders custom trigger props', () => {
-      const wrapper = mount(SDateRangePicker, {
-        props: {
-          triggerProps: {
-            'data-soybean-popover-trigger': '',
-            class: 'custom-trigger'
-          }
-        },
-        attachTo: document.body
-      });
+    it('does not show popup by default', () => {
+      const wrapper = mountRangePicker();
 
-      expect(wrapper.find('[data-soybean-popover-trigger]').classes()).toContain('custom-trigger');
+      expect(findPopup()).toBeNull();
+
+      wrapper.unmount();
+    });
+
+    it('renders the leading slot before the range segments', () => {
+      const wrapper = mountRangePicker(undefined, { leading: '<span data-test="leading">L</span>' });
+
+      expect(wrapper.find('[data-test="leading"]').exists()).toBe(true);
+
+      wrapper.unmount();
+    });
+
+    it('renders the separator slot between the segment groups', () => {
+      const wrapper = mountRangePicker(undefined, { separator: '<span data-test="separator">TO</span>' });
+
+      expect(wrapper.find('[data-test="separator"]').text()).toBe('TO');
+
+      wrapper.unmount();
+    });
+
+    it('gives the calendar toggle trigger an accessible name from the locale', () => {
+      const wrapper = mountRangePicker();
+
+      expect(findTrigger(wrapper).attributes('aria-label')).toBe('Open calendar');
 
       wrapper.unmount();
     });
   });
 
   describe('open state', () => {
-    it('opens popup when trigger is clicked', async () => {
-      const wrapper = mount(SDateRangePicker, {
-        attachTo: document.body,
-        props: {
-          triggerProps: {
-            'data-soybean-popover-trigger': ''
-          },
-          popupProps: {
-            'data-soybean-popover-popup': ''
-          }
-        }
-      });
+    it('shows popup when open is true', async () => {
+      const wrapper = mountRangePicker({ defaultOpen: true });
 
-      const trigger = wrapper.find('[data-soybean-popover-trigger]');
+      await wrapper.vm.$nextTick();
 
-      expect(wrapper.find('[data-soybean-popover-popup]').exists()).toBe(false);
-
-      await trigger.trigger('click');
-      await nextTick();
-
-      expect(getPopup()).not.toBeNull();
-      expect(trigger.attributes('data-state')).toBe('open');
-      expect(trigger.attributes('aria-expanded')).toBe('true');
+      expect(findPopup()).not.toBeNull();
 
       wrapper.unmount();
     });
 
-    it('emits update:open event', async () => {
-      const wrapper = mount(SDateRangePicker, {
-        attachTo: document.body,
-        props: {
-          triggerProps: {
-            'data-soybean-popover-trigger': ''
-          }
-        }
-      });
+    it('toggles popup on trigger click', async () => {
+      const wrapper = mountRangePicker();
 
-      const trigger = wrapper.find('[data-soybean-popover-trigger]');
+      await findTrigger(wrapper).trigger('click');
+      await wrapper.vm.$nextTick();
 
-      await trigger.trigger('click');
+      expect(findPopup()).not.toBeNull();
+
+      wrapper.unmount();
+    });
+
+    it('emits update:open when trigger is clicked', async () => {
+      const wrapper = mountRangePicker();
+
+      await findTrigger(wrapper).trigger('click');
 
       expect(wrapper.emitted('update:open')).toBeTruthy();
       expect(wrapper.emitted('update:open')?.[0]).toEqual([true]);
@@ -106,49 +105,137 @@ describe('SDateRangePicker', () => {
       wrapper.unmount();
     });
 
-    it('respects controlled open state', async () => {
-      const wrapper = mount(SDateRangePicker, {
-        props: {
-          open: false,
-          triggerProps: {
-            'data-soybean-popover-trigger': ''
-          },
-          popupProps: {
-            'data-soybean-popover-popup': ''
-          }
-        },
-        attachTo: document.body
-      });
+    it('closes popup when clicking outside', async () => {
+      const wrapper = mountRangePicker({ defaultOpen: true });
 
-      expect(wrapper.find('[data-soybean-popover-popup]').exists()).toBe(false);
+      await nextTick();
+      await waitForDismissableLayer();
 
-      await wrapper.setProps({ open: true });
+      expect(findPopup()).not.toBeNull();
+
+      document.body.dispatchEvent(new PointerEvent('pointerdown', { bubbles: true }));
+      document.body.dispatchEvent(new MouseEvent('click', { bubbles: true }));
       await nextTick();
 
-      expect(getPopup()).not.toBeNull();
+      expect(findPopup()).toBeNull();
+      expect(wrapper.emitted('update:open')).toBeTruthy();
+
+      wrapper.unmount();
+    });
+
+    it('closes popup on Escape', async () => {
+      const wrapper = mountRangePicker({ defaultOpen: true });
+
+      await nextTick();
+      await waitForDismissableLayer();
+
+      expect(findPopup()).not.toBeNull();
+
+      findPopup()?.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape', bubbles: true }));
+      await nextTick();
+      await waitForDismissableLayer();
+
+      expect(findPopup()).toBeNull();
+      expect(wrapper.emitted('update:open')?.at(-1)).toEqual([false]);
+
+      wrapper.unmount();
+    });
+
+    it('syncs the popup with a controlled open prop', async () => {
+      const wrapper = mountRangePicker({ open: true });
+
+      await nextTick();
+      expect(findPopup()).not.toBeNull();
+
+      await wrapper.setProps({ open: false });
+      await nextTick();
+
+      expect(findPopup()).toBeNull();
+
+      wrapper.unmount();
+    });
+  });
+
+  describe('calendar integration', () => {
+    it('does not leak dateFieldProps onto the calendar root', async () => {
+      const wrapper = mountRangePicker({
+        defaultOpen: true,
+        dateFieldProps: { 'data-test-extra': 'leaked' }
+      });
+
+      await nextTick();
+      await waitForDismissableLayer();
+
+      const calendar = findCalendar();
+
+      expect(calendar).not.toBeNull();
+      expect(calendar?.attributes).not.toHaveProperty('dateFieldProps');
+      expect(calendar?.attributes).not.toHaveProperty('date-field-props');
+      expect(calendar?.attributes).not.toHaveProperty('data-test-extra');
+
+      wrapper.unmount();
+    });
+
+    it('applies calendarRangeUi overrides without leaking onto the calendar root', async () => {
+      const wrapper = mountRangePicker({
+        defaultOpen: true,
+        calendarRangeUi: { root: 'custom-calendar-root' }
+      });
+
+      await nextTick();
+      await waitForDismissableLayer();
+
+      const calendar = findCalendar();
+
+      expect(calendar).not.toBeNull();
+      expect(calendar?.classList.contains('custom-calendar-root')).toBe(true);
+      expect(calendar?.attributes).not.toHaveProperty('calendarRangeUi');
+      expect(calendar?.attributes).not.toHaveProperty('calendar-range-ui');
+
+      wrapper.unmount();
+    });
+
+    it('forwards minValue and maxValue to the calendar', async () => {
+      const wrapper = mountRangePicker({
+        defaultOpen: true,
+        minValue: new CalendarDate(2024, 1, 2)
+      });
+
+      await nextTick();
+      await waitForDismissableLayer();
+
+      const outOfRangeDay = document.body.querySelector('[data-value="2024-01-01"]');
+
+      expect(outOfRangeDay).not.toBeNull();
+      expect(outOfRangeDay?.getAttribute('data-disabled')).not.toBeNull();
+
+      wrapper.unmount();
+    });
+
+    it('forwards isDateUnavailable to the calendar', async () => {
+      const wrapper = mountRangePicker({
+        defaultOpen: true,
+        isDateUnavailable: (item: CalendarDate) => item.day === 3
+      });
+
+      await nextTick();
+      await waitForDismissableLayer();
+
+      const unavailableDay = document.body.querySelector('[data-value="2024-01-03"]');
+
+      expect(unavailableDay).not.toBeNull();
+      expect(unavailableDay?.getAttribute('data-unavailable')).not.toBeNull();
 
       wrapper.unmount();
     });
   });
 
   describe('disabled state', () => {
-    it('renders disabled state correctly', () => {
-      const wrapper = mount(SDateRangePicker, {
-        props: {
-          'data-soybean-date-range-field-root': '',
-          disabled: true,
-          triggerProps: {
-            'data-soybean-popover-trigger': ''
-          },
-          popupProps: {
-            'data-soybean-popover-popup': ''
-          }
-        },
-        attachTo: document.body
-      });
+    it('marks the range field root and trigger as disabled', () => {
+      const wrapper = mountRangePicker({ disabled: true });
 
       const root = wrapper.find('[data-soybean-date-range-field-root]');
-      const trigger = wrapper.find('[data-soybean-popover-trigger]');
+      const trigger = findTrigger(wrapper);
 
       expect(root.attributes('data-disabled')).toBe('');
       expect(trigger.attributes('data-disabled')).toBe('');
@@ -157,25 +244,13 @@ describe('SDateRangePicker', () => {
       wrapper.unmount();
     });
 
-    it('does not open when disabled', async () => {
-      const wrapper = mount(SDateRangePicker, {
-        props: {
-          disabled: true,
-          triggerProps: {
-            'data-soybean-popover-trigger': ''
-          },
-          popupProps: {
-            'data-soybean-popover-popup': ''
-          }
-        },
-        attachTo: document.body
-      });
+    it('does not open popup when disabled', async () => {
+      const wrapper = mountRangePicker({ disabled: true });
 
-      const trigger = wrapper.find('[data-soybean-popover-trigger]');
+      await findTrigger(wrapper).trigger('click');
+      await wrapper.vm.$nextTick();
 
-      await trigger.trigger('click');
-
-      expect(wrapper.find('[data-soybean-popover-popup]').exists()).toBe(false);
+      expect(findPopup()).toBeNull();
       expect(wrapper.emitted('update:open')).toBeFalsy();
 
       wrapper.unmount();
@@ -183,34 +258,21 @@ describe('SDateRangePicker', () => {
   });
 
   describe('modelValue', () => {
-    it('emits update:modelValue when range changes', async () => {
-      const wrapper = mount(SDateRangePicker, {
-        props: {
-          defaultPlaceholder: new CalendarDate(2026, 4, 18),
-          triggerProps: {
-            'data-soybean-popover-trigger': ''
-          },
-          popupProps: {
-            'data-soybean-popover-popup': ''
-          }
-        },
-        attachTo: document.body
-      });
+    it('emits update:modelValue and closes popup when a range is selected', async () => {
+      const wrapper = mountRangePicker({ defaultOpen: true });
 
-      const trigger = wrapper.find('[data-soybean-popover-trigger]');
-
-      await trigger.trigger('click');
       await nextTick();
+      await waitForDismissableLayer();
 
-      const startCell = document.body.querySelector('[data-value="2026-04-18"]') as HTMLButtonElement | null;
-      const endCell = document.body.querySelector('[data-value="2026-04-20"]') as HTMLButtonElement | null;
+      const startCell = document.body.querySelector('[data-value="2024-01-02"]');
+      const endCell = document.body.querySelector('[data-value="2024-01-05"]');
 
       expect(startCell).not.toBeNull();
       expect(endCell).not.toBeNull();
 
-      startCell?.click();
+      startCell?.dispatchEvent(new MouseEvent('click', { bubbles: true }));
       await nextTick();
-      endCell?.click();
+      endCell?.dispatchEvent(new MouseEvent('click', { bubbles: true }));
       await nextTick();
 
       const emitted = wrapper.emitted('update:modelValue');
@@ -220,34 +282,26 @@ describe('SDateRangePicker', () => {
         (
           (emitted as NonNullable<typeof emitted>)[0][0] as {
             start?: CalendarDate;
-            end?: CalendarDate;
           }
         ).start?.toString()
-      ).toBe('2026-04-18');
+      ).toBe('2024-01-02');
       expect(
         (
           (emitted as NonNullable<typeof emitted>)[1][0] as {
-            start?: CalendarDate;
             end?: CalendarDate;
           }
         ).end?.toString()
-      ).toBe('2026-04-20');
-      expect(getPopup()).toBeNull();
+      ).toBe('2024-01-05');
+      expect(findPopup()).toBeNull();
 
       wrapper.unmount();
     });
 
-    it('displays formatted date range', () => {
+    it('displays the formatted date range', () => {
       const start = new CalendarDate(2024, 1, 1);
       const end = new CalendarDate(2024, 1, 31);
 
-      const wrapper = mount(SDateRangePicker, {
-        props: {
-          'data-soybean-date-range-field-root': '',
-          modelValue: { start, end }
-        },
-        attachTo: document.body
-      });
+      const wrapper = mountRangePicker({ modelValue: { start, end } });
 
       const root = wrapper.find('[data-soybean-date-range-field-root]');
 
@@ -259,61 +313,79 @@ describe('SDateRangePicker', () => {
     });
   });
 
-  describe('accessibility', () => {
-    it('has no a11y violations', async () => {
-      const wrapper = mount(SDateRangePicker, {
-        props: {
-          triggerProps: {
-            'aria-label': 'Select date range'
-          }
-        },
-        attachTo: document.body
-      });
+  describe('ui overrides', () => {
+    it('applies ui.root class overrides', () => {
+      const wrapper = mountRangePicker({ ui: { root: 'my-root-cls' } });
 
-      const violations = await getA11yViolations(wrapper.element as HTMLElement);
+      expect(wrapper.find('[data-soybean-date-range-field-root]').classes()).toContain('my-root-cls');
+
+      wrapper.unmount();
+    });
+
+    it('applies ui.trigger class overrides', () => {
+      const wrapper = mountRangePicker({ ui: { trigger: 'my-trigger-cls' } });
+
+      expect(findTrigger(wrapper).classes()).toContain('my-trigger-cls');
+
+      wrapper.unmount();
+    });
+  });
+
+  describe('accessibility', () => {
+    it('has no a11y violations when closed', async () => {
+      const wrapper = mountRangePicker({ 'aria-label': 'Event date range' });
+
+      const violations = await getA11yViolations(wrapper.element);
 
       expect(violations).toHaveLength(0);
 
       wrapper.unmount();
     });
 
-    it('has proper ARIA attributes on trigger', () => {
-      const wrapper = mount(SDateRangePicker, {
-        attachTo: document.body,
-        props: {
-          triggerProps: {
-            'data-soybean-popover-trigger': ''
-          }
-        }
+    it('has no a11y violations when open', async () => {
+      const wrapper = mountRangePicker({
+        defaultOpen: true,
+        'aria-label': 'Event date range'
       });
 
-      const trigger = wrapper.find('[data-soybean-popover-trigger]');
+      await nextTick();
+      await waitForDismissableLayer();
 
-      expect(trigger.attributes('aria-expanded')).toBe('false');
-      expect(trigger.attributes('type')).toBe('button');
+      const popup = findPopup();
+
+      expect(popup).not.toBeNull();
+
+      const violations = await getA11yViolations(popup as HTMLElement);
+
+      expect(violations).toHaveLength(0);
 
       wrapper.unmount();
     });
 
-    it('popup has dialog role', async () => {
-      const wrapper = mount(SDateRangePicker, {
-        props: {
-          open: true,
-          triggerProps: {
-            'data-soybean-popover-trigger': ''
-          },
-          popupProps: {
-            'data-soybean-popover-popup': ''
-          }
-        },
-        attachTo: document.body
+    it('gives the popup dialog an accessible name from the locale', async () => {
+      const wrapper = mountRangePicker({ defaultOpen: true });
+
+      await nextTick();
+      await waitForDismissableLayer();
+
+      const popup = findPopup();
+
+      expect(popup?.getAttribute('role')).toBe('dialog');
+      expect(popup?.getAttribute('aria-label')).toBe('Choose date range');
+
+      wrapper.unmount();
+    });
+
+    it('allows overriding the popup accessible name via popupProps', async () => {
+      const wrapper = mountRangePicker({
+        defaultOpen: true,
+        popupProps: { 'aria-label': 'Custom range dialog' }
       });
 
       await nextTick();
+      await waitForDismissableLayer();
 
-      const popup = getPopup();
-
-      expect(popup?.getAttribute('role')).toBe('dialog');
+      expect(findPopup()?.getAttribute('aria-label')).toBe('Custom range dialog');
 
       wrapper.unmount();
     });

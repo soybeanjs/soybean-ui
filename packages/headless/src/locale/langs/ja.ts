@@ -35,6 +35,10 @@ const messages: LocaleMessages = {
     toggle: 'カレンダーを開く',
     popupLabel: '日付を選択'
   },
+  dateRangePicker: {
+    toggle: 'カレンダーを開く',
+    popupLabel: '日付範囲を選択'
+  },
   cascader: {
     clear: 'クリア',
     noResults: 'データなし',

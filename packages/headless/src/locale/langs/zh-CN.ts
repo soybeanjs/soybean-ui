@@ -35,6 +35,10 @@ const messages: LocaleMessages = {
     toggle: '打开日历',
     popupLabel: '选择日期'
   },
+  dateRangePicker: {
+    toggle: '打开日历',
+    popupLabel: '选择日期范围'
+  },
   cascader: {
     clear: '清除',
     noResults: '暂无数据',

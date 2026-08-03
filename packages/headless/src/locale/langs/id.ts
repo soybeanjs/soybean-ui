@@ -35,6 +35,10 @@ const messages: LocaleMessages = {
     toggle: 'Buka kalender',
     popupLabel: 'Pilih tanggal'
   },
+  dateRangePicker: {
+    toggle: 'Buka kalender',
+    popupLabel: 'Pilih rentang tanggal'
+  },
   cascader: {
     clear: 'Hapus',
     noResults: 'Tidak ada data',

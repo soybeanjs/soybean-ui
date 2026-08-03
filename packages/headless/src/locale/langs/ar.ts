@@ -35,6 +35,10 @@ const messages: LocaleMessages = {
     toggle: 'فتح التقويم',
     popupLabel: 'اختر التاريخ'
   },
+  dateRangePicker: {
+    toggle: 'فتح التقويم',
+    popupLabel: 'اختر نطاق التاريخ'
+  },
   cascader: {
     clear: 'مسح',
     noResults: 'لا توجد بيانات',

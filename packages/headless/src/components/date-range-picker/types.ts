@@ -27,6 +27,24 @@ export interface DateRangePickerCompactSlotProps {
 /**
  * Slots for the DateRangePickerCompact component.
  */
+export type DateRangePickerCompactSlots = {
+  /**
+   * Custom content rendered before the date range segments.
+   */
+  leading?: () => any;
+  /**
+   * Custom content rendered between the start and end segment groups.
+   */
+  separator?: () => any;
+  /**
+   * Custom content for the calendar range popup, receiving the open/close controls and calendar props.
+   */
+  default?: (props: DateRangePickerCompactSlotProps) => any;
+};
+
+/**
+ * UI slot names for the DateRangePicker component.
+ */
 export type DateRangePickerUiSlot = PopoverUiSlot | DateRangeFieldUiSlot;
 
 /**

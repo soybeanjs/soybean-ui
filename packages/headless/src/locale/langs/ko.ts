@@ -35,6 +35,10 @@ const messages: LocaleMessages = {
     toggle: '달력 열기',
     popupLabel: '날짜 선택'
   },
+  dateRangePicker: {
+    toggle: '달력 열기',
+    popupLabel: '날짜 범위 선택'
+  },
   cascader: {
     clear: '지우기',
     noResults: '데이터 없음',

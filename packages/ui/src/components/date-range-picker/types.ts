@@ -33,3 +33,17 @@ export interface DateRangePickerProps extends DateRangePickerCompactProps {
  * Events for the DateRangePicker component.
  */
 export type DateRangePickerEmits = DateRangePickerCompactEmits;
+
+/**
+ * Slots for the DateRangePicker component.
+ */
+export type DateRangePickerSlots = {
+  /**
+   * Custom content rendered before the date range segments.
+   */
+  leading?: () => any;
+  /**
+   * Custom content rendered between the start and end segment groups.
+   */
+  separator?: () => any;
+};

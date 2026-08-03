@@ -35,6 +35,10 @@ const messages: LocaleMessages = {
     toggle: 'Open calendar',
     popupLabel: 'Choose date'
   },
+  dateRangePicker: {
+    toggle: 'Open calendar',
+    popupLabel: 'Choose date range'
+  },
   cascader: {
     clear: 'Clear value',
     noResults: 'No data',

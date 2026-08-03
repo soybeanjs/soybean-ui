@@ -35,6 +35,10 @@ const messages: LocaleMessages = {
     toggle: 'Takvimi aç',
     popupLabel: 'Tarih seç'
   },
+  dateRangePicker: {
+    toggle: 'Takvimi aç',
+    popupLabel: 'Tarih aralığı seç'
+  },
   cascader: {
     clear: 'Temizle',
     noResults: 'Veri yok',
