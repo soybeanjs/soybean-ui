@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
+import { useOmitProps } from '../../composables';
 import { useLocaleMessages } from '../../locale';
 import Button from '../button/button.vue';
 import { useCalendarRootContext, useCalendarUi } from './context';
@@ -17,6 +18,8 @@ const messages = useLocaleMessages();
 
 const disabled = computed(() => rootDisabled.value || isNextButtonDisabled(props.nextPage) || props.disabled);
 
+const buttonProps = useOmitProps(props, ['nextPage']);
+
 const onClick = () => {
   nextPage(props.nextPage);
 };
@@ -24,11 +27,11 @@ const onClick = () => {
 
 <template>
   <Button
-    v-bind="props"
+    v-bind="buttonProps"
     data-soybean-calendar-next
     :class="cls"
     :disabled="disabled"
-    :aria-label="messages.calendar.nextPage"
+    :aria-label="props['aria-label'] ?? messages.calendar.nextPage"
     @click="onClick"
   >
     <slot :disabled="disabled">{{ messages.calendar.nextPage }}</slot>
