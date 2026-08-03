@@ -211,9 +211,11 @@ watch([() => modelValue.value.start, locale, inferredGranularity], ([value]) => 
     return;
   }
 
-  if (Object.values(startSegmentValues.value).every(item => item !== null)) {
-    startSegmentValues.value = { ...initializeSegmentValues(inferredGranularity.value) };
-  }
+  // Replace the object even when there is no value: editing mutates the
+  // `startSegmentValues` shallowRef in place, which never invalidates the
+  // `startSegmentContents` computed. A fresh object forces a re-render so
+  // cleared segments fall back to their placeholders.
+  startSegmentValues.value = { ...startSegmentValues.value };
 });
 
 watch([() => modelValue.value.end, locale, inferredGranularity], ([value]) => {
@@ -222,9 +224,9 @@ watch([() => modelValue.value.end, locale, inferredGranularity], ([value]) => {
     return;
   }
 
-  if (Object.values(endSegmentValues.value).every(item => item !== null)) {
-    endSegmentValues.value = { ...initializeSegmentValues(inferredGranularity.value) };
-  }
+  // Same as the start watch: unconditionally replace to invalidate the
+  // `endSegmentContents` computed when segments are cleared.
+  endSegmentValues.value = { ...endSegmentValues.value };
 });
 
 const currentSegmentIndex = computed(() => {
@@ -245,10 +247,12 @@ const moveFocus = (type: 'start' | 'end', direction: 'next' | 'prev') => {
 
   if (nextIndex >= 0 && nextIndex < elements.length) {
     elements[nextIndex]?.focus();
-  } else if (direction === 'next' && type === 'start' && endSegmentElements.value.length > 0) {
+  } else if (delta > 0 && type === 'start' && endSegmentElements.value.length > 0) {
+    // Exited the end of the start group: ArrowRight in LTR, ArrowLeft in RTL.
     focusedType.value = 'end';
     endSegmentElements.value[0]?.focus();
-  } else if (direction === 'prev' && type === 'end' && startSegmentElements.value.length > 0) {
+  } else if (delta < 0 && type === 'end' && startSegmentElements.value.length > 0) {
+    // Exited the beginning of the end group: ArrowLeft in LTR, ArrowRight in RTL.
     focusedType.value = 'start';
     startSegmentElements.value[startSegmentElements.value.length - 1]?.focus();
   }
