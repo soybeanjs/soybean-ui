@@ -195,7 +195,7 @@ const handleKeydown = (event: KeyboardEvent) => {
     data-soybean-calendar-range-cell-trigger
     :class="cls"
     :disabled="isDisabled || isUnavailable"
-    :aria-label="labelText"
+    :aria-label="props['aria-label'] ?? labelText"
     :aria-pressed="isSelectedDate ? true : undefined"
     :data-focused="isFocusedDate ? '' : undefined"
     :data-highlighted="isHighlighted ? '' : undefined"

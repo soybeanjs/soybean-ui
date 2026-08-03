@@ -121,7 +121,8 @@ const {
   selectedFocusableDate,
   isInvalid,
   sortRange,
-  getInclusiveRangeDays
+  getInclusiveRangeDays,
+  isRangeInvalid
 } = useCalendarRangeState({
   start: startValue,
   end: endValue,
@@ -221,7 +222,18 @@ function onDateChange(value: DateValue) {
       return;
     }
 
-    if (!props.allowNonContiguousRanges && nextRange.start && nextRange.end && isInvalid.value) {
+    if (
+      !props.allowNonContiguousRanges &&
+      nextRange.start &&
+      nextRange.end &&
+      isRangeInvalid(nextRange.start, nextRange.end, {
+        isDateDisabled,
+        isDateUnavailable,
+        isDateHighlightable: props.isDateHighlightable,
+        allowNonContiguousRanges: props.allowNonContiguousRanges,
+        maximumDays: props.maximumDays
+      })
+    ) {
       modelValue.value = { start: value.copy(), end: undefined };
       return;
     }

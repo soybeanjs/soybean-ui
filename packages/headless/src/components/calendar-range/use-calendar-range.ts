@@ -29,6 +29,48 @@ function getInclusiveRangeDays(start: DateValue, end: DateValue) {
   return Math.floor((endTime - startTime) / 86400000) + 1;
 }
 
+/**
+ * Whether a candidate range is invalid. Computed against the range itself, so
+ * it can be used both for the derived `isInvalid` state and to validate a
+ * candidate range before committing it in `onDateChange`.
+ */
+function isRangeInvalid(
+  start: DateValue,
+  end: DateValue,
+  options: Pick<UseCalendarRangeStateProps, 'isDateDisabled' | 'isDateUnavailable' | 'isDateHighlightable'> & {
+    allowNonContiguousRanges: boolean;
+    maximumDays: number | undefined;
+  }
+) {
+  if (options.isDateDisabled(start) || options.isDateUnavailable(start)) {
+    return true;
+  }
+
+  if (options.isDateDisabled(end) || options.isDateUnavailable(end)) {
+    return true;
+  }
+
+  if (isBefore(end, start)) {
+    return true;
+  }
+
+  if (options.maximumDays && getInclusiveRangeDays(start, end) > options.maximumDays) {
+    return true;
+  }
+
+  if (options.allowNonContiguousRanges) {
+    return false;
+  }
+
+  return !areAllDaysBetweenValid(
+    start,
+    end,
+    options.isDateUnavailable,
+    options.isDateDisabled,
+    options.isDateHighlightable
+  );
+}
+
 export function useCalendarRangeState(props: UseCalendarRangeStateProps) {
   const highlightedRange = computed<DateRange | null>(() => {
     if (!props.start.value || props.end.value || !props.hoveredDate.value) {
@@ -67,44 +109,17 @@ export function useCalendarRangeState(props: UseCalendarRangeStateProps) {
   });
 
   const isInvalid = computed(() => {
-    if (!props.start.value) {
+    if (!props.start.value || !props.end.value) {
       return false;
     }
 
-    if (props.isDateDisabled(props.start.value) || props.isDateUnavailable(props.start.value)) {
-      return true;
-    }
-
-    if (!props.end.value) {
-      return false;
-    }
-
-    if (props.isDateDisabled(props.end.value) || props.isDateUnavailable(props.end.value)) {
-      return true;
-    }
-
-    if (isBefore(props.end.value, props.start.value)) {
-      return true;
-    }
-
-    if (
-      props.maximumDays.value &&
-      getInclusiveRangeDays(props.start.value, props.end.value) > props.maximumDays.value
-    ) {
-      return true;
-    }
-
-    if (props.allowNonContiguousRanges.value) {
-      return false;
-    }
-
-    return !areAllDaysBetweenValid(
-      props.start.value,
-      props.end.value,
-      props.isDateUnavailable,
-      props.isDateDisabled,
-      props.isDateHighlightable
-    );
+    return isRangeInvalid(props.start.value, props.end.value, {
+      isDateDisabled: props.isDateDisabled,
+      isDateUnavailable: props.isDateUnavailable,
+      isDateHighlightable: props.isDateHighlightable,
+      allowNonContiguousRanges: props.allowNonContiguousRanges.value,
+      maximumDays: props.maximumDays.value
+    });
   });
 
   return {
@@ -119,6 +134,7 @@ export function useCalendarRangeState(props: UseCalendarRangeStateProps) {
     selectedFocusableDate,
     isInvalid,
     sortRange,
-    getInclusiveRangeDays
+    getInclusiveRangeDays,
+    isRangeInvalid
   };
 }
