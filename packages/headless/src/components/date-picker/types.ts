@@ -27,6 +27,20 @@ export interface DatePickerCompactSlotProps {
 /**
  * Slots for the DatePickerCompact component.
  */
+export type DatePickerCompactSlots = {
+  /**
+   * Custom content rendered before the date segments.
+   */
+  leading?: () => any;
+  /**
+   * Custom content for the calendar popup, receiving the open/close controls and calendar props.
+   */
+  default?: (props: DatePickerCompactSlotProps) => any;
+};
+
+/**
+ * UI slot names for the DatePicker component.
+ */
 export type DatePickerUiSlot = PopoverUiSlot | DateFieldUiSlot;
 
 /**

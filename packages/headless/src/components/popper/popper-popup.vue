@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import type { CSSProperties } from 'vue';
-import { useForwardElement } from '../../composables';
+import { useForwardElement, useOmitProps } from '../../composables';
 import { usePopperPositionerContext, usePopperRootContext, usePopperUi } from './context';
 import type { PopperPopupProps } from './types';
 
@@ -9,7 +9,7 @@ defineOptions({
   name: 'PopperPopup'
 });
 
-defineProps<PopperPopupProps>();
+const props = defineProps<PopperPopupProps>();
 
 const cls = usePopperUi('popup');
 
@@ -23,10 +23,20 @@ const style = computed<CSSProperties>(() => {
     animation: !isPositioned.value ? 'none' : undefined
   };
 });
+
+const popupAttrs = useOmitProps(props, [
+  'class',
+  'style',
+  'dir',
+  'data-side',
+  'data-align',
+  'data-soybean-popper-popup'
+]);
 </script>
 
 <template>
   <div
+    v-bind="popupAttrs"
     :ref="setPopupElement"
     :class="cls"
     data-soybean-popper-popup

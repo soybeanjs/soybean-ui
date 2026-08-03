@@ -31,6 +31,10 @@ const messages: LocaleMessages = {
     selectMonth: 'Pilih bulan',
     selectYear: 'Pilih tahun'
   },
+  datePicker: {
+    toggle: 'Buka kalender',
+    popupLabel: 'Pilih tanggal'
+  },
   cascader: {
     clear: 'Hapus',
     noResults: 'Tidak ada data',

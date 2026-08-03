@@ -31,6 +31,10 @@ const messages: LocaleMessages = {
     selectMonth: 'اختر الشهر',
     selectYear: 'اختر السنة'
   },
+  datePicker: {
+    toggle: 'فتح التقويم',
+    popupLabel: 'اختر التاريخ'
+  },
   cascader: {
     clear: 'مسح',
     noResults: 'لا توجد بيانات',

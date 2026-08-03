@@ -103,6 +103,13 @@ export interface LocaleDateMessages {
   placeholder: LocaleDatePlaceholderMessages;
 }
 
+export interface LocaleDatePickerMessages {
+  /** Aria-label for the calendar toggle trigger. */
+  toggle: string;
+  /** Aria-label for the calendar popup dialog. */
+  popupLabel: string;
+}
+
 export interface LocaleDialogMessages {
   /** Default slot content for the cancel trigger. */
   cancel: string;
@@ -278,6 +285,7 @@ export interface LocaleMessages {
   combobox: LocaleComboboxMessages;
   command: LocaleCommandMessages;
   date: LocaleDateMessages;
+  datePicker: LocaleDatePickerMessages;
   dialog: LocaleDialogMessages;
   editable: LocaleEditableMessages;
   input: LocaleInputMessages;

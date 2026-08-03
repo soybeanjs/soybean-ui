@@ -2,10 +2,11 @@
 import { computed } from 'vue';
 import { useForwardListeners, usePickProps, useOmitProps } from '../../composables';
 import type { DateValue } from '../../date';
+import { useLocaleMessages } from '../../locale';
 import Icon from '../_icon/icon.vue';
 import DateFieldCompact from '../date-field/date-field-compact.vue';
 import PopoverCompact from '../popover/popover-compact.vue';
-import type { DatePickerCompactProps, DatePickerCompactEmits } from './types';
+import type { DatePickerCompactProps, DatePickerCompactEmits, DatePickerCompactSlots } from './types';
 
 defineOptions({
   name: 'DatePickerCompact'
@@ -17,21 +18,28 @@ const props = withDefaults(defineProps<DatePickerCompactProps>(), {
 
 const emit = defineEmits<DatePickerCompactEmits>();
 
+defineSlots<DatePickerCompactSlots>();
+
+const messages = useLocaleMessages();
+
 const listeners = useForwardListeners(emit);
 
-const popoverProps = usePickProps(props, [
-  'open',
-  'defaultOpen',
-  'modal',
-  'disabled',
-  'placement',
-  'showArrow',
-  'portalProps',
-  'positionerProps',
-  'popupProps',
-  'arrowProps',
-  'closeProps'
-]);
+const popoverProps = computed(() => ({
+  open: props.open,
+  defaultOpen: props.defaultOpen,
+  modal: props.modal,
+  disabled: props.disabled,
+  placement: props.placement,
+  showArrow: props.showArrow,
+  portalProps: props.portalProps,
+  positionerProps: props.positionerProps,
+  arrowProps: props.arrowProps,
+  closeProps: props.closeProps,
+  popupProps: {
+    ...props.popupProps,
+    'aria-label': props.popupProps?.['aria-label'] ?? messages.value.datePicker.popupLabel
+  }
+}));
 
 const dateFieldProps = usePickProps(
   props,
@@ -53,7 +61,8 @@ const dateFieldProps = usePickProps(
 
 const triggerProps = computed(() => ({
   ...props.triggerProps,
-  asChild: props.triggerProps?.asChild ?? false
+  asChild: props.triggerProps?.asChild ?? false,
+  'aria-label': props.triggerProps?.['aria-label'] ?? messages.value.datePicker.toggle
 }));
 
 const calendarProps = useOmitProps(props, [
@@ -62,6 +71,7 @@ const calendarProps = useOmitProps(props, [
   'modal',
   'placement',
   'showArrow',
+  'dateFieldProps',
   'triggerProps',
   'portalProps',
   'positionerProps',
@@ -86,6 +96,9 @@ const onUpdatePlaceholder = (placeholder: DateValue) => {
     @update:model-value="emit('update:modelValue', $event)"
     @update:placeholder="emit('update:placeholder', $event)"
   >
+    <template #leading>
+      <slot name="leading" />
+    </template>
     <template #trailing>
       <PopoverCompact v-bind="popoverProps" :trigger-props="triggerProps" v-on="listeners">
         <template #trigger>

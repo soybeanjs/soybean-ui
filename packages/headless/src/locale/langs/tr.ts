@@ -31,6 +31,10 @@ const messages: LocaleMessages = {
     selectMonth: 'Ay seç',
     selectYear: 'Yıl seç'
   },
+  datePicker: {
+    toggle: 'Takvimi aç',
+    popupLabel: 'Tarih seç'
+  },
   cascader: {
     clear: 'Temizle',
     noResults: 'Veri yok',

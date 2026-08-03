@@ -31,6 +31,10 @@ const messages: LocaleMessages = {
     selectMonth: '月を選択',
     selectYear: '年を選択'
   },
+  datePicker: {
+    toggle: 'カレンダーを開く',
+    popupLabel: '日付を選択'
+  },
   cascader: {
     clear: 'クリア',
     noResults: 'データなし',

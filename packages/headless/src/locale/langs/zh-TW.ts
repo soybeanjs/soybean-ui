@@ -31,6 +31,10 @@ const messages: LocaleMessages = {
     selectMonth: '選擇月份',
     selectYear: '選擇年份'
   },
+  datePicker: {
+    toggle: '開啟日曆',
+    popupLabel: '選擇日期'
+  },
   cascader: {
     clear: '清除',
     noResults: '暫無資料',

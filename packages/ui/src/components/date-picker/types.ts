@@ -29,3 +29,13 @@ export interface DatePickerProps extends DatePickerCompactProps {
  * Events for the DatePicker component.
  */
 export type DatePickerEmits = DatePickerCompactEmits;
+
+/**
+ * Slots for the DatePicker component.
+ */
+export type DatePickerSlots = {
+  /**
+   * Custom content rendered before the date segments.
+   */
+  leading?: () => any;
+};
