@@ -11,5 +11,6 @@
   "i18n-ally.keystyle": "nested",
   "i18n-ally.localesPaths": "apps/docs/locales",
   "i18n-ally.sortKeys": true,
+  "oxc.fmt.configPath": "./vite.config.ts",
   "unocss.root": ["packages/ui/uno.config.ts"]
 }
