@@ -41,16 +41,34 @@ export interface ClipboardProps extends ButtonProps {
   /**
    * The text to display before copying.
    *
-   * @defaultValue 'Copy'
+   * Defaults to the localized `clipboard.copy` message from `ConfigProvider`.
    */
   copyText?: string;
   /**
    * The text to display after copying.
    *
-   * @defaultValue 'Copied'
+   * Defaults to the localized `clipboard.copied` message from `ConfigProvider`.
    */
   copiedText?: string;
 }
+
+/**
+ * Events for the Clipboard component.
+ */
+export type ClipboardEmits = {
+  /**
+   * Emitted when click occurs.
+   */
+  click: [event: PointerEvent];
+  /**
+   * Emitted when copied occurs.
+   */
+  copied: [value: string];
+  /**
+   * Emitted when copy error occurs.
+   */
+  copyError: [error: unknown];
+};
 
 /**
  * Slot properties for the Clipboard component.
@@ -87,19 +105,10 @@ export interface ClipboardSlotProps {
 }
 
 /**
- * Events for the Clipboard component.
+ * Slots for the Clipboard component.
  */
-export type ClipboardEmits = {
-  /**
-   * Emitted when click occurs.
-   */
-  click: [event: PointerEvent];
-  /**
-   * Emitted when copied occurs.
-   */
-  copied: [value: string];
-  /**
-   * Emitted when copy error occurs.
-   */
-  copyError: [error: unknown];
+export type ClipboardSlots = {
+  leading?: (props: ClipboardSlotProps) => any;
+  default?: (props: ClipboardSlotProps) => any;
+  trailing?: (props: ClipboardSlotProps) => any;
 };

@@ -16,6 +16,7 @@ Built on `SButton`, it inherits the same `color`/`size`/`variant`/`shape` theme 
 
 - 📋 Copies a required text value on click
 - 🧩 Ships with built-in icon/text content that can be overridden via `leading`/`default`/`trailing` slots
+- 🌐 Defaults `copyText`/`copiedText` to localized `clipboard.copy`/`clipboard.copied` messages from `ConfigProvider`
 - ✅ Exposes `ready`, `copied`, and `unsupported` states
 - 🎨 Reuses `SButton`'s 8 variants, 8 colors, 6 sizes, and 4 shapes
 - 🔌 Inherits `SButton`'s `as`/`asChild` polymorphism and `class` override
@@ -65,6 +66,9 @@ When neither the async Clipboard API nor the legacy fallback can run, the compon
 
 **How do I handle copy failures?**
 Listen for the `copyError` event. The component keeps `data-state="ready"` on failure so users can retry without entering a false copied state.
+
+**How do I localize the built-in copy text?**
+The default `copyText`/`copiedText` resolve to the `clipboard.copy`/`clipboard.copied` messages of the locale selected by `ConfigProvider` (falling back to `en`). Pass explicit `copy-text`/`copied-text` props, or a `messages` override on `ConfigProvider`, to customize them.
 
 **Can I copy programmatically?**
 Yes. Call the `copy()` function from slot props, or trigger the button and listen for the `copied` event.

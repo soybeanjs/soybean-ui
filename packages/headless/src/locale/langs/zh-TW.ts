@@ -45,6 +45,10 @@ const messages: LocaleMessages = {
     removeTag: '移除 {label}',
     search: '搜尋'
   },
+  clipboard: {
+    copy: '複製',
+    copied: '已複製'
+  },
   layout: {
     toggleSidebar: '切換側邊欄'
   },

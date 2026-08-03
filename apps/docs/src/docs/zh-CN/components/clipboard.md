@@ -16,6 +16,7 @@
 
 - 📋 点击即可复制必填文本值
 - 🧩 内置默认图标与文本，可通过 `leading`/`default`/`trailing` 插槽覆盖
+- 🌐 `copyText`/`copiedText` 默认使用 `ConfigProvider` 中 `clipboard.copy`/`clipboard.copied` 的多语言文案
 - ✅ 暴露 `ready`、`copied`、`unsupported` 三种状态
 - 🎨 复用 `SButton` 的 8 种变体、8 种颜色、6 种尺寸、4 种形状
 - 🔌 继承 `SButton` 的 `as`/`asChild` 多态与 `class` 覆盖
@@ -65,6 +66,9 @@ SoybeanUI 将 clipboard 拆分为 headless 层（`@soybeanjs/headless/clipboard`
 
 **如何处理复制失败？**
 监听 `copyError` 事件。失败时组件会保持 `data-state="ready"`，避免进入错误的已复制状态，便于用户重试。
+
+**如何本地化内置的复制文案？**
+`copyText`/`copiedText` 默认取自 `ConfigProvider` 所选语言的 `clipboard.copy`/`clipboard.copied` 文案（回退为 `en`）。可通过传入 `copy-text`/`copied-text` 属性，或在 `ConfigProvider` 上通过 `messages` 覆盖自定义。
 
 **能否以编程方式触发复制？**
 可以。调用插槽参数中的 `copy()`，或触发按钮并监听 `copied` 事件。

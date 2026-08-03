@@ -174,6 +174,78 @@ describe('SClipboard', () => {
     });
   });
 
+  describe('localization', () => {
+    const mountWithProvider = (providerProps = {}, componentProps: Partial<ClipboardProps> = {}, defaultSlot = '') => {
+      return mount(
+        {
+          components: {
+            SClipboard,
+            SConfigProvider
+          },
+          setup() {
+            return {
+              providerProps,
+              componentProps,
+              iconRender: (icon: string) => h('span', { 'data-testid': 'icon' }, icon)
+            };
+          },
+          template: `
+            <SConfigProvider :icon-render="iconRender" v-bind="providerProps">
+              <SClipboard value="soybean-ui" v-bind="componentProps">
+                ${defaultSlot}
+              </SClipboard>
+            </SConfigProvider>
+          `
+        },
+        {
+          attachTo: document.body
+        }
+      );
+    };
+
+    it('uses the localized copy/copied text from ConfigProvider locale', async () => {
+      const wrapper = mountWithProvider({ locale: 'zh-CN' });
+
+      expect(wrapper.text()).toContain('复制');
+
+      await wrapper.find('button').trigger('click');
+      await Promise.resolve();
+      await nextTick();
+
+      expect(wrapper.text()).toContain('已复制');
+      wrapper.unmount();
+    });
+
+    it('lets explicit copy-text/copied-text props override locale messages', async () => {
+      const wrapper = mountWithProvider({ locale: 'zh-CN' }, { copyText: 'Copy', copiedText: 'Copied' });
+
+      expect(wrapper.text()).toContain('Copy');
+      expect(wrapper.text()).not.toContain('复制');
+
+      await wrapper.find('button').trigger('click');
+      await Promise.resolve();
+      await nextTick();
+
+      expect(wrapper.text()).toContain('Copied');
+      wrapper.unmount();
+    });
+
+    it('honors ConfigProvider messages overrides for clipboard', () => {
+      const wrapper = mountWithProvider({ messages: { clipboard: { copy: 'Yank', copied: 'Yanked' } } });
+
+      expect(wrapper.text()).toContain('Yank');
+      expect(wrapper.text()).not.toContain('Copy');
+      wrapper.unmount();
+    });
+
+    it('exposes the localized text through slot props', () => {
+      const wrapper = mountWithProvider({ locale: 'zh-CN' }, {}, '<template #default="{ text }">{{ text }}</template>');
+
+      expect(wrapper.text()).toContain('复制');
+      wrapper.unmount();
+    });
+  });
+
   describe('copied state', () => {
     it('copies the value and reflects copied state', async () => {
       const wrapper = mountClipboard();

@@ -45,6 +45,10 @@ const messages: LocaleMessages = {
     removeTag: '{label} を削除',
     search: '検索'
   },
+  clipboard: {
+    copy: 'コピー',
+    copied: 'コピーしました'
+  },
   layout: {
     toggleSidebar: 'サイドバーの切り替え'
   },

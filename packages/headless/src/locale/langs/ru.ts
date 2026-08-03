@@ -45,6 +45,10 @@ const messages: LocaleMessages = {
     removeTag: 'Удалить {label}',
     search: 'Поиск'
   },
+  clipboard: {
+    copy: 'Копировать',
+    copied: 'Скопировано'
+  },
   layout: {
     toggleSidebar: 'Переключить боковую панель'
   },

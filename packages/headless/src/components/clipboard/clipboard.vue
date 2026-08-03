@@ -1,11 +1,12 @@
 <script setup lang="ts">
-import { computed, shallowRef, toRef } from 'vue';
+import { computed, shallowRef } from 'vue';
 import { useTimeoutFn } from '@vueuse/core';
 import { useOmitProps } from '../../composables';
+import { useLocaleMessages } from '../../locale';
 import Icon from '../_icon/icon.vue';
 import { Button } from '../button';
 import { copyTextToClipboard, isClipboardWriteSupported } from './shared';
-import type { ClipboardProps, ClipboardSlotProps, ClipboardEmits, ClipboardState } from './types';
+import type { ClipboardProps, ClipboardSlotProps, ClipboardSlots, ClipboardEmits, ClipboardState } from './types';
 
 defineOptions({
   name: 'Clipboard'
@@ -15,27 +16,33 @@ const props = withDefaults(defineProps<ClipboardProps>(), {
   copiedDuration: 2000,
   legacy: true,
   copyIcon: 'lucide:copy',
-  copiedIcon: 'lucide:check',
-  copyText: 'Copy',
-  copiedText: 'Copied'
+  copiedIcon: 'lucide:check'
 });
 
 const emit = defineEmits<ClipboardEmits>();
 
-defineSlots<{
-  leading?: (props: ClipboardSlotProps) => unknown;
-  default?: (props: ClipboardSlotProps) => unknown;
-  trailing?: (props: ClipboardSlotProps) => unknown;
-}>();
+defineSlots<ClipboardSlots>();
+
+const messages = useLocaleMessages();
+
+const forwardedProps = useOmitProps(props, [
+  'value',
+  'copiedDuration',
+  'legacy',
+  'disabled',
+  'copyIcon',
+  'copiedIcon',
+  'copyText',
+  'copiedText'
+]);
 
 const copied = shallowRef(false);
-const copiedDuration = toRef(() => props.copiedDuration);
 
 const { start: resetCopiedState } = useTimeoutFn(
   () => {
     copied.value = false;
   },
-  copiedDuration,
+  () => props.copiedDuration,
   { immediate: false }
 );
 
@@ -51,20 +58,13 @@ const dataState = computed<ClipboardState>(() => {
   return copied.value ? 'copied' : 'ready';
 });
 
-const forwardedProps = useOmitProps(props, [
-  'value',
-  'copiedDuration',
-  'legacy',
-  'disabled',
-  'copyIcon',
-  'copiedIcon',
-  'copyText',
-  'copiedText'
-]);
-
 const displayIcon = computed(() => (copied.value ? props.copiedIcon : props.copyIcon));
 
-const displayText = computed(() => (copied.value ? props.copiedText : props.copyText));
+const displayText = computed(() =>
+  copied.value
+    ? (props.copiedText ?? messages.value.clipboard.copied)
+    : (props.copyText ?? messages.value.clipboard.copy)
+);
 
 const copyValue = async () => {
   if (disabled.value) {

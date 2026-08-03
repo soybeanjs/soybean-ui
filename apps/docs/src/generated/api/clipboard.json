@@ -235,9 +235,9 @@
             "name": "copyText",
             "type": "string",
             "required": false,
-            "description": "The text to display before copying.",
+            "description": "The text to display before copying.\n\nDefaults to the localized `clipboard.copy` message from `ConfigProvider`.",
             "descriptionKey": "api.generated.packages_ui_src_components_clipboard_types.clipboardprops.members.copytext",
-            "default": "'Copy'",
+            "default": null,
             "inheritedFrom": "_ClipboardProps.copyText",
             "sourcePath": "packages/headless/src/components/clipboard/types.ts",
             "referencedTypes": []
@@ -246,9 +246,9 @@
             "name": "copiedText",
             "type": "string",
             "required": false,
-            "description": "The text to display after copying.",
+            "description": "The text to display after copying.\n\nDefaults to the localized `clipboard.copied` message from `ConfigProvider`.",
             "descriptionKey": "api.generated.packages_ui_src_components_clipboard_types.clipboardprops.members.copiedtext",
-            "default": "'Copied'",
+            "default": null,
             "inheritedFrom": "_ClipboardProps.copiedText",
             "sourcePath": "packages/headless/src/components/clipboard/types.ts",
             "referencedTypes": []
@@ -512,6 +512,92 @@
           }
         ],
         "callables": [],
+        "referencedTypes": []
+      },
+      "slots": {
+        "kind": "slots",
+        "name": "ClipboardSlots",
+        "type": "TypeAlias ClipboardSlots",
+        "resolvedType": "{ leading?: ((props: ClipboardSlotProps) => any); Clipboard?: ((props: ClipboardSlotProps) => any); trailing?: ((props: ClipboardSlotProps) => any) }",
+        "description": "Slots for the Clipboard component.",
+        "descriptionKey": "api.generated.packages_headless_src_components_clipboard_types.clipboardslots.slots",
+        "sourcePath": "packages/headless/src/components/clipboard/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [
+          {
+            "name": "leading",
+            "type": "((props: ClipboardSlotProps) => any) | undefined",
+            "parameters": "((props: ClipboardSlotProps) => any) | undefined",
+            "required": false,
+            "description": "",
+            "descriptionKey": "api.generated.packages_headless_src_components_clipboard_types.clipboardslots.callables.leading",
+            "sourcePath": "packages/headless/src/components/clipboard/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ClipboardSlotProps",
+                "kind": "interface",
+                "type": "ClipboardSlotProps",
+                "resolvedType": null,
+                "description": "Slot properties for the Clipboard component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_clipboard_types.clipboardslotprops",
+                "sourcePath": "packages/headless/src/components/clipboard/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "default",
+            "type": "((props: ClipboardSlotProps) => any) | undefined",
+            "parameters": "((props: ClipboardSlotProps) => any) | undefined",
+            "required": false,
+            "description": "",
+            "descriptionKey": "api.generated.packages_headless_src_components_clipboard_types.clipboardslots.callables.default",
+            "sourcePath": "packages/headless/src/components/clipboard/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ClipboardSlotProps",
+                "kind": "interface",
+                "type": "ClipboardSlotProps",
+                "resolvedType": null,
+                "description": "Slot properties for the Clipboard component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_clipboard_types.clipboardslotprops",
+                "sourcePath": "packages/headless/src/components/clipboard/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "trailing",
+            "type": "((props: ClipboardSlotProps) => any) | undefined",
+            "parameters": "((props: ClipboardSlotProps) => any) | undefined",
+            "required": false,
+            "description": "",
+            "descriptionKey": "api.generated.packages_headless_src_components_clipboard_types.clipboardslots.callables.trailing",
+            "sourcePath": "packages/headless/src/components/clipboard/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ClipboardSlotProps",
+                "kind": "interface",
+                "type": "ClipboardSlotProps",
+                "resolvedType": null,
+                "description": "Slot properties for the Clipboard component.",
+                "descriptionKey": "api.generated.packages_headless_src_components_clipboard_types.clipboardslotprops",
+                "sourcePath": "packages/headless/src/components/clipboard/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
         "referencedTypes": []
       }
     }

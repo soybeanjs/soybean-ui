@@ -43,6 +43,13 @@ export interface LocaleCascaderMessages {
   search: string;
 }
 
+export interface LocaleClipboardMessages {
+  /** Default text and aria-label for the copy button before copying. */
+  copy: string;
+  /** Default text and aria-label for the copy button after a successful copy. */
+  copied: string;
+}
+
 export interface LocaleComboboxMessages {
   /** Default aria-label for the clear button. */
   clearInput: string;
@@ -289,6 +296,7 @@ export interface LocaleMessages {
   breadcrumb: LocaleBreadcrumbMessages;
   calendar: LocaleCalendarMessages;
   cascader: LocaleCascaderMessages;
+  clipboard: LocaleClipboardMessages;
   combobox: LocaleComboboxMessages;
   command: LocaleCommandMessages;
   date: LocaleDateMessages;

@@ -2030,6 +2030,14 @@
           },
           "slotprops": "剪贴板组件的槽属性。"
         },
+        "clipboardslots": {
+          "callables": {
+            "default": "",
+            "leading": "",
+            "trailing": ""
+          },
+          "slots": "Clipboard 组件的插槽。"
+        },
         "clipboardstate": "ClipboardState 的状态值"
       },
       "packages_headless_src_components_collapsible_types": {
@@ -9266,6 +9274,7 @@
             "autocomplete": "",
             "breadcrumb": "",
             "calendar": "",
+            "clipboard": "",
             "combobox": "",
             "command": "",
             "date": "",
@@ -10271,9 +10280,9 @@
             "color": "组件的主题颜色。",
             "copiedduration": "保留复制状态的时长（单位：毫秒）。",
             "copiedicon": "复制后显示的图标。",
-            "copiedtext": "复制后显示的文本。",
+            "copiedtext": "复制后显示的文本。\n\n默认使用来自 `ConfigProvider` 的本地化 `clipboard.copied` 消息。",
             "copyicon": "复制前显示的图标。",
-            "copytext": "复制前显示的文本。",
+            "copytext": "复制前显示的文本。\n\n默认使用来自 `ConfigProvider` 的本地化 `clipboard.copy` 消息。",
             "disabled": "该组件是否已禁用。",
             "fitcontent": "组件是否应适应其内容宽度。",
             "legacy": "是否启用旧版 `execCommand` 备用方案。",

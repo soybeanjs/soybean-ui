@@ -45,6 +45,10 @@ const messages: LocaleMessages = {
     removeTag: 'Hapus {label}',
     search: 'Cari'
   },
+  clipboard: {
+    copy: 'Salin',
+    copied: 'Disalin'
+  },
   layout: {
     toggleSidebar: 'Alihkan bilah sisi'
   },

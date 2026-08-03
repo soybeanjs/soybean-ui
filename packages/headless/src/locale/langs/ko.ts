@@ -45,6 +45,10 @@ const messages: LocaleMessages = {
     removeTag: '{label} 제거',
     search: '검색'
   },
+  clipboard: {
+    copy: '복사',
+    copied: '복사됨'
+  },
   layout: {
     toggleSidebar: '사이드바 토글'
   },

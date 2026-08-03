@@ -45,6 +45,10 @@ const messages: LocaleMessages = {
     removeTag: 'Eliminar {label}',
     search: 'Buscar'
   },
+  clipboard: {
+    copy: 'Copiar',
+    copied: 'Copiado'
+  },
   layout: {
     toggleSidebar: 'Alternar barra lateral'
   },

@@ -45,6 +45,10 @@ const messages: LocaleMessages = {
     removeTag: '{label} kaldır',
     search: 'Ara'
   },
+  clipboard: {
+    copy: 'Kopyala',
+    copied: 'Kopyalandı'
+  },
   layout: {
     toggleSidebar: 'Yan çubuğu aç veya kapat'
   },
