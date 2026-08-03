@@ -1,0 +1,50 @@
+{
+  "name": "@soybeanjs/theme",
+  "version": "0.29.3",
+  "description": "A lightweight theme engine for Soybean UI: minimal core tokens, deterministic derivation, and light/dark level offsets.",
+  "homepage": "https://github.com/soybeanjs/soybean-ui",
+  "bugs": {
+    "url": "https://github.com/soybeanjs/soybean-ui/issues"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "Soybean",
+    "email": "soybeanjs@outlook.com",
+    "url": "https://github.com/soybeanjs"
+  },
+  "repository": {
+    "url": "https://github.com/soybeanjs/soybean-ui.git"
+  },
+  "files": [
+    "dist"
+  ],
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.js"
+    }
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
+  "scripts": {
+    "build": "vp pack",
+    "test": "vp test",
+    "typecheck": "tsc --noEmit --skipLibCheck"
+  },
+  "dependencies": {
+    "@soybeanjs/colord": "^0.6.2"
+  },
+  "devDependencies": {
+    "@soybeanjs/shadcn-theme": "workspace:^",
+    "typescript": "7.0.2",
+    "vite-plus": "catalog:",
+    "vitest": "4.1.10"
+  },
+  "packageManager": "pnpm@11.18.0"
+}

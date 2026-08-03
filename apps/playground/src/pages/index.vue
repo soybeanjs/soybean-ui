@@ -91,7 +91,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <SCard data-soybean-bottom-sheet-scale title="SoybeanUI Playground" class="h-full">
+  <SCard data-soybean-bottom-sheet-scale title="SoybeanUI Playground" class="h-full bg-background">
     <template #extra>
       <div class="flex items-center gap-3">
         <SLink href="https://github.com/soybeanjs/soybean-ui">
