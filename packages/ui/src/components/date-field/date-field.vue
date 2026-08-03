@@ -23,5 +23,12 @@ provideDateFieldUi(ui);
 </script>
 
 <template>
-  <DateFieldCompact v-bind="forwardedProps" v-on="listeners" />
+  <DateFieldCompact v-bind="forwardedProps" v-on="listeners">
+    <template #leading>
+      <slot name="leading" />
+    </template>
+    <template #trailing>
+      <slot name="trailing" />
+    </template>
+  </DateFieldCompact>
 </template>

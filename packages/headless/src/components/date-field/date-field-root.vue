@@ -155,9 +155,11 @@ watch([modelValue, locale, inferredGranularity], ([value]) => {
     return;
   }
 
-  if (Object.values(segmentValues.value).every(item => item !== null)) {
-    segmentValues.value = { ...initializeSegmentValues(inferredGranularity.value) };
-  }
+  // Replace the object even when there is no value: editing mutates the
+  // `segmentValues` shallowRef in place, which never invalidates the
+  // `segmentContents` computed. A fresh object forces a re-render so cleared
+  // segments fall back to their placeholders.
+  segmentValues.value = { ...segmentValues.value };
 });
 
 const currentSegmentIndex = computed(() => {
