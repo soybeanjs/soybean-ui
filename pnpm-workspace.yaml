@@ -22,14 +22,7 @@ allowBuilds:
   esbuild: false
   simple-git-hooks: false
 minimumReleaseAgeExclude:
-  - '@voidzero-dev/vite-plus-core@0.2.7'
-  - '@voidzero-dev/vite-plus-darwin-arm64@0.2.7'
-  - '@voidzero-dev/vite-plus-darwin-x64@0.2.7'
-  - '@voidzero-dev/vite-plus-linux-arm64-gnu@0.2.7'
-  - '@voidzero-dev/vite-plus-linux-arm64-musl@0.2.7'
-  - '@voidzero-dev/vite-plus-linux-x64-gnu@0.2.7'
-  - '@voidzero-dev/vite-plus-linux-x64-musl@0.2.7'
-  - '@voidzero-dev/vite-plus-win32-arm64-msvc@0.2.7'
-  - '@voidzero-dev/vite-plus-win32-x64-msvc@0.2.7'
-  - vite-plus@0.2.7
-  - '@internationalized/date@3.12.3'
+  - '@soybeanjs/cli@1.8.2'
+  - npm-check-updates@23.0.1
+  - tsx@4.23.5
+  - unplugin-auto-import@21.1.0
