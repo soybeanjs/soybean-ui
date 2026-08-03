@@ -10,7 +10,16 @@ defineOptions({
   name: 'SToggleGroup'
 });
 
-const props = defineProps<ToggleGroupProps<M, T>>();
+// Functional defaults must be declared here as well as in the headless root: without them,
+// absent boolean props would be cast to `false` and forwarded as explicit values, overriding
+// the headless defaults (see C42 audit).
+const props = withDefaults(defineProps<ToggleGroupProps<M, T>>(), {
+  disabled: () => false,
+  rovingFocus: () => true,
+  orientation: 'horizontal',
+  loop: () => true,
+  clearable: () => true
+});
 
 const emit = defineEmits<ToggleGroupEmits<M, T>>();
 

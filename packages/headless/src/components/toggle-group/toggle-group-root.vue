@@ -14,12 +14,11 @@ defineOptions({
 });
 
 const props = withDefaults(defineProps<ToggleGroupRootProps<M, T>>(), {
-  modelValue: undefined,
-  rovingFocus: true,
-  disabled: false,
+  disabled: () => false,
+  rovingFocus: () => true,
   orientation: 'horizontal',
-  loop: true,
-  clearable: true
+  loop: () => true,
+  clearable: () => true
 });
 
 const emit = defineEmits<ToggleGroupRootEmits<M, T>>();
@@ -28,7 +27,16 @@ const cls = useToggleGroupUi('root');
 
 const [groupElement, setGroupElement] = useForwardElement();
 
-const { modelValue, onModelValueChange, isValueSelected, isMultiple } = useSelection<M, T>(props, value =>
+// In generic components, literal boolean defaults in `withDefaults` (e.g. `rovingFocus: true`)
+// are dropped by the compiler and cast to `false` at runtime (see C42 audit). Functional
+// defaults above are preserved, and these fallbacks guard against an explicit `undefined`.
+const resolvedDisabled = computed(() => props.disabled ?? false);
+const resolvedRovingFocus = computed(() => props.rovingFocus ?? true);
+const resolvedLoop = computed(() => props.loop ?? true);
+
+const selectionProps = computed(() => ({ ...props }));
+
+const { modelValue, onModelValueChange, isValueSelected, isMultiple } = useSelection<M, T>(selectionProps, value =>
   emit('update:modelValue', value)
 );
 
@@ -37,13 +45,11 @@ const formControl = computed(() => isFormControl(groupElement.value));
 const rovingFocusProps = computed(getRovingFocusProps);
 
 function getRovingFocusProps() {
-  const { rovingFocus, loop, dir, orientation } = props;
-
-  if (!rovingFocus) {
+  if (!resolvedRovingFocus.value) {
     return {};
   }
 
-  return { loop, dir, orientation };
+  return { loop: resolvedLoop.value, dir: props.dir, orientation: props.orientation };
 }
 
 const onValueChange = (value: DefinedValue) => {
@@ -55,7 +61,10 @@ const isSelected = (value: DefinedValue) => {
 };
 
 provideToggleGroupRootContext({
-  ...transformPropsToContext(props, ['disabled', 'rovingFocus', 'orientation', 'dir', 'loop', 'name', 'required']),
+  ...transformPropsToContext(props, ['orientation', 'dir', 'name', 'required']),
+  disabled: resolvedDisabled,
+  rovingFocus: resolvedRovingFocus,
+  loop: resolvedLoop,
   modelValue,
   onModelValueChange: onValueChange,
   isValueSelected: isSelected,
@@ -65,7 +74,7 @@ provideToggleGroupRootContext({
 
 <template>
   <component
-    :is="rovingFocus ? RovingFocusGroup : Primitive"
+    :is="resolvedRovingFocus ? RovingFocusGroup : Primitive"
     v-bind="rovingFocusProps"
     :ref="setGroupElement"
     :as="as"
@@ -74,7 +83,7 @@ provideToggleGroupRootContext({
     :class="cls"
     :dir="dir"
     role="group"
-    :data-disabled="disabled ? '' : undefined"
+    :data-disabled="resolvedDisabled ? '' : undefined"
     :data-orientation="orientation"
   >
     <slot :model-value="modelValue" />
@@ -83,7 +92,7 @@ provideToggleGroupRootContext({
       v-if="formControl && name"
       :name="name"
       :value="modelValue"
-      :disabled="disabled"
+      :disabled="resolvedDisabled"
       :required="required"
     />
   </component>
