@@ -10,7 +10,9 @@ defineOptions({
 });
 
 const props = withDefaults(defineProps<TreeVirtualizerRootProps<T, U, M>>(), {
-  items: () => []
+  items: () => [],
+  // 镜像 TreeRoot 的 loop: true 默认，避免缺失的 Boolean prop 被 cast 为 false 后透传覆盖
+  loop: true
 });
 
 const emit = defineEmits<TreeVirtualizerRootEmits<TreeVirtualizerRootProps<T, U, M>['multiple']>>();

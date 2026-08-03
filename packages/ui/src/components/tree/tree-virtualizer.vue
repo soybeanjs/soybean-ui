@@ -10,7 +10,10 @@ defineOptions({
   name: 'STreeVirtualizer'
 });
 
-const props = defineProps<TreeVirtualizerProps<T, U, M>>();
+const props = withDefaults(defineProps<TreeVirtualizerProps<T, U, M>>(), {
+  // 镜像 headless TreeRoot 的 loop: true 默认，避免缺失的 Boolean prop 被 cast 为 false 后透传覆盖
+  loop: true
+});
 
 const emit = defineEmits<TreeVirtualizerEmits<TreeVirtualizerProps<T, U, M>['multiple']>>();
 

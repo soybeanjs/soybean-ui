@@ -137,7 +137,8 @@ export type FlattenedItem<T extends TreeItemData> = {
   bind: {
     data: T;
     level: number;
-    [key: string]: any;
+    'aria-setsize'?: number;
+    'aria-posinset'?: number;
   };
 };
 

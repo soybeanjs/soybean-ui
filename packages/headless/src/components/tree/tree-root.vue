@@ -35,8 +35,7 @@ const virtualKeydownHook = createEventHook<KeyboardEvent>();
 const modelValue = useControllableState(
   () => props.modelValue,
   value => {
-    // @ts-expect-error ignore type error caused by generic type
-    emit('update:modelValue', value);
+    emit('update:modelValue', value as TreeRootEmits<TreeRootProps<T, U, M>['multiple']>['update:modelValue'][0]);
   },
   getDefaultValue() as Exclude<U, undefined>
 );
@@ -132,6 +131,12 @@ const onSelect = (value: string) => {
 
   if (item?.hasChildren && !props.allowParentSelect) return;
 
+  // 捕获点击前的选中状态，避免 onSelectItem 切换后再判定导致 propagate 行为反转
+  const wasSelected =
+    props.propagateSelect && props.multiple && Array.isArray(modelValue.value)
+      ? modelValue.value.includes(value)
+      : false;
+
   onSelectItem(value);
 
   if (props.bubbleSelect && props.multiple && Array.isArray(modelValue.value)) {
@@ -145,11 +150,10 @@ const onSelect = (value: string) => {
 
     const children = flattenChildren(item.data.children);
 
-    const exist = modelValue.value.includes(value);
-    if (exist) {
+    if (wasSelected) {
       modelValue.value = modelValue.value.filter(v => !children.some(child => child.value === v)) as U;
     } else {
-      modelValue.value = [...modelValue.value, ...children] as U;
+      modelValue.value = [...modelValue.value, ...children.map(child => child.value)] as U;
     }
   }
 };

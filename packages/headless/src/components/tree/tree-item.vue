@@ -194,6 +194,8 @@ const onKeydown = (event: KeyboardEvent) => {
       :aria-selected="isSelected"
       :aria-expanded="hasChildren ? isExpanded : undefined"
       :aria-level="level"
+      :aria-setsize="currentItem?.bind['aria-setsize']"
+      :aria-posinset="currentItem?.bind['aria-posinset']"
       :data-disabled="disabled ? '' : undefined"
       :data-indent="level"
       :data-selected="isSelected ? '' : undefined"
