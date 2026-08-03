@@ -23,7 +23,18 @@ const messages: LocaleMessages = {
     resizeColumn: '{column} sütununu yeniden boyutlandır',
     expandRow: '{row} satırını genişlet',
     collapseRow: '{row} satırını daralt',
-    selectRow: '{row} satırını seç'
+    selectRow: '{row} satırını seç',
+    filterSelected: '{count} seçildi',
+    filterKeywordActive: 'Anahtar kelime aktif',
+    filterOptionsCount: '{count} seçenek',
+    filterNoOptions: 'Filtre seçeneği yok',
+    filterEdit: '{column} için filtreyi düzenle',
+    filter: '{column} filtresi',
+    filterSearch: '{column} için filtre seçeneklerini ara',
+    filterNoMatching: 'Eşleşen seçenek yok',
+    filterClear: 'Temizle',
+    filterSelect: '{label} seç',
+    filterSearchPlaceholder: '{column} ara'
   },
   calendar: {
     prevPage: 'Önceki sayfa',

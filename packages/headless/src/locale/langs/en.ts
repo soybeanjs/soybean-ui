@@ -23,7 +23,18 @@ const messages: LocaleMessages = {
     resizeColumn: 'Resize {column} column',
     expandRow: 'Expand row {row}',
     collapseRow: 'Collapse row {row}',
-    selectRow: 'Select row {row}'
+    selectRow: 'Select row {row}',
+    filterSelected: '{count} selected',
+    filterKeywordActive: 'Keyword active',
+    filterOptionsCount: '{count} options',
+    filterNoOptions: 'No filter options',
+    filterEdit: 'Edit filter for {column}',
+    filter: 'Filter {column}',
+    filterSearch: 'Search filter options for {column}',
+    filterNoMatching: 'No matching options',
+    filterClear: 'Clear',
+    filterSelect: 'Select {label}',
+    filterSearchPlaceholder: 'Search {column}'
   },
   calendar: {
     prevPage: 'Previous page',

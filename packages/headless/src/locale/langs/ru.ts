@@ -23,7 +23,18 @@ const messages: LocaleMessages = {
     resizeColumn: 'Изменить ширину столбца {column}',
     expandRow: 'Развернуть строку {row}',
     collapseRow: 'Свернуть строку {row}',
-    selectRow: 'Выбрать строку {row}'
+    selectRow: 'Выбрать строку {row}',
+    filterSelected: 'Выбрано: {count}',
+    filterKeywordActive: 'Ключевое слово активно',
+    filterOptionsCount: 'Вариантов: {count}',
+    filterNoOptions: 'Нет вариантов фильтра',
+    filterEdit: 'Изменить фильтр для «{column}»',
+    filter: 'Фильтр «{column}»',
+    filterSearch: 'Поиск вариантов фильтра для «{column}»',
+    filterNoMatching: 'Нет подходящих вариантов',
+    filterClear: 'Очистить',
+    filterSelect: 'Выбрать {label}',
+    filterSearchPlaceholder: 'Поиск «{column}»'
   },
   calendar: {
     prevPage: 'Предыдущая страница',

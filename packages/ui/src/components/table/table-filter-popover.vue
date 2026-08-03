@@ -1,5 +1,7 @@
 <script setup lang="ts" generic="T extends TableBaseData = TableBaseData">
 import { computed } from 'vue';
+import { useLocaleMessages } from '@soybeanjs/headless';
+import { interpolate } from '@soybeanjs/headless/shared';
 import { miniSizeMap } from '@/theme';
 import SButtonIcon from '../button/button-icon.vue';
 import SButton from '../button/button.vue';
@@ -13,6 +15,8 @@ defineOptions({
 });
 
 const props = defineProps<TableFilterPopoverProps<T>>();
+
+const messages = useLocaleMessages();
 
 const columnLabel = computed(() => props.column.title ?? props.column.key ?? props.column.dataIndex ?? 'column');
 
@@ -32,21 +36,29 @@ const hasVisibleOptions = computed(() => filteredOptions.value.length > 0);
 
 const filterSummary = computed(() => {
   if (props.filterValues.length > 0) {
-    return `${props.filterValues.length} selected`;
+    return interpolate(messages.value.table.filterSelected, { count: String(props.filterValues.length) });
   }
 
   if (props.filterValue.trim().length > 0) {
-    return 'Keyword active';
+    return messages.value.table.filterKeywordActive;
   }
 
-  return props.filterOptions.length > 0 ? `${props.filterOptions.length} options` : 'No filter options';
+  return props.filterOptions.length > 0
+    ? interpolate(messages.value.table.filterOptionsCount, { count: String(props.filterOptions.length) })
+    : messages.value.table.filterNoOptions;
 });
 
 const triggerLabel = computed(() => {
-  return props.filtered ? `Edit filter for ${columnLabel.value}` : `Filter ${columnLabel.value}`;
+  const template = props.filtered ? messages.value.table.filterEdit : messages.value.table.filter;
+
+  return interpolate(template, { column: columnLabel.value });
 });
 
-const searchAriaLabel = computed(() => `Search filter options for ${columnLabel.value}`);
+const searchAriaLabel = computed(() => interpolate(messages.value.table.filterSearch, { column: columnLabel.value }));
+
+const searchPlaceholder = computed(() =>
+  interpolate(messages.value.table.filterSearchPlaceholder, { column: columnLabel.value })
+);
 
 const miniSize = computed(() => miniSizeMap[props.size ?? 'md']);
 
@@ -72,7 +84,7 @@ function updateKeyword(value: string | number | undefined) {
       :class="ui.filterSearch"
       :size="miniSize"
       :model-value="filterValue"
-      :control-props="{ 'aria-label': searchAriaLabel, placeholder: `Search ${columnLabel}` }"
+      :control-props="{ 'aria-label': searchAriaLabel, placeholder: searchPlaceholder }"
       @update:model-value="updateKeyword"
     />
 
@@ -86,11 +98,11 @@ function updateKeyword(value: string | number | undefined) {
         :model-value="isFilterOptionSelected(option.value)"
         :label="option.label"
         :ui="{ label: ui.filterOptionLabel }"
-        :control-props="{ 'aria-label': `Select ${option.label}` }"
+        :control-props="{ 'aria-label': interpolate(messages.table.filterSelect, { label: option.label }) }"
         @update:model-value="toggleFilterOption(option.value)"
       />
 
-      <div v-if="!hasVisibleOptions" :class="ui.filterEmpty">No matching options</div>
+      <div v-if="!hasVisibleOptions" :class="ui.filterEmpty">{{ messages.table.filterNoMatching }}</div>
     </div>
 
     <div :class="ui.filterFooter">
@@ -104,7 +116,7 @@ function updateKeyword(value: string | number | undefined) {
         :class="ui.filterAction"
         @click="clearFilter"
       >
-        Clear
+        {{ messages.table.filterClear }}
       </SButton>
     </div>
   </SPopover>

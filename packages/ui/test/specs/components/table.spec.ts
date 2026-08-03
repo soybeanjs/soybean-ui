@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { h, nextTick } from 'vue';
 import { mount } from '@vue/test-utils';
+import SConfigProvider from '@/components/config-provider/config-provider.vue';
 import STable from '@/components/table/table.vue';
 import type { TableColumn } from '@/components/table/types';
 import { MockResizeObserver, createMockResizeObserverEntry, delay, setupMock } from '../../shared';
@@ -936,6 +937,169 @@ describe('STable', () => {
       expect(wrapper.text()).toContain('Ada');
       expect(wrapper.text()).toContain('Ada Child 2');
       expect(wrapper.text()).not.toContain('Linus');
+
+      wrapper.unmount();
+    });
+  });
+
+  describe('defaults', () => {
+    it('renders multi-select checkboxes by default without passing multiple', () => {
+      const wrapper = mount(STable, {
+        props: {
+          columns: selectionColumns as TableColumn[],
+          data,
+          rowKey: row => row.id
+        },
+        attachTo: document.body
+      });
+
+      expect(wrapper.get('[aria-label="Select all rows"]')).toBeTruthy();
+      expect(wrapper.findAll('[aria-label^="Select row"]')).toHaveLength(data.length);
+      expect(wrapper.findAll('tbody button[aria-pressed]')).toHaveLength(0);
+
+      wrapper.unmount();
+    });
+
+    it('renders row radios and hides select-all when multiple is false', () => {
+      const wrapper = mount(STable, {
+        props: {
+          columns: selectionColumns as TableColumn[],
+          data,
+          rowKey: row => row.id,
+          multiple: false
+        },
+        attachTo: document.body
+      });
+
+      expect(wrapper.findAll('tbody button[aria-pressed]')).toHaveLength(data.length);
+      expect(wrapper.find('[aria-label="Select all rows"]').exists()).toBe(false);
+
+      wrapper.unmount();
+    });
+  });
+
+  describe('controlled state', () => {
+    it('keeps controlled sort state until the parent writes back', async () => {
+      const wrapper = mount(STable, {
+        props: {
+          columns: sortableColumns as TableColumn[],
+          data,
+          rowKey: row => row.id,
+          sortState: { key: 'age', order: 'asc' }
+        },
+        attachTo: document.body
+      });
+
+      await wrapper.get('button[aria-label="Sort by Age, currently ascending"]').trigger('click');
+
+      expect(wrapper.emitted('update:sortState')?.[0]?.[0]).toEqual({ key: 'age', order: 'desc' });
+      expect(wrapper.findAll('tbody tr')[0].text()).toContain('Linus');
+
+      wrapper.unmount();
+    });
+
+    it('keeps controlled selection without internal mutation', async () => {
+      const wrapper = mount(STable, {
+        props: {
+          columns: selectionColumns as TableColumn[],
+          data,
+          rowKey: row => row.id,
+          selected: [1]
+        },
+        attachTo: document.body
+      });
+
+      await wrapper.get('[aria-label="Select row Linus"]').trigger('click');
+
+      expect(wrapper.emitted('update:selected')?.[0]?.[0]).toEqual([1, 2]);
+      expect(wrapper.get('[aria-label="Select row Ada"]').classes()).toContain('peer');
+
+      wrapper.unmount();
+    });
+  });
+
+  describe('data attributes', () => {
+    it('renders data-soybean-table-* attributes without leaking as/asChild', () => {
+      const wrapper = mount(STable, {
+        props: {
+          columns: columns as TableColumn[],
+          data,
+          rowKey: row => row.id
+        },
+        attachTo: document.body
+      });
+
+      expect(wrapper.get('[data-soybean-table-root]')).toBeTruthy();
+      expect(wrapper.get('[data-soybean-table-scroll]')).toBeTruthy();
+      expect(wrapper.get('[data-soybean-table-content]')).toBeTruthy();
+      expect(wrapper.get('[data-soybean-table-header]')).toBeTruthy();
+      expect(wrapper.get('[data-soybean-table-body]')).toBeTruthy();
+      expect(wrapper.get('[data-soybean-table-row]')).toBeTruthy();
+      expect(wrapper.get('[data-soybean-table-head]')).toBeTruthy();
+      expect(wrapper.get('[data-soybean-table-cell]')).toBeTruthy();
+
+      const root = wrapper.get('[data-soybean-table-root]').element;
+
+      expect(root.hasAttribute('aschild')).toBe(false);
+      expect(root.hasAttribute('as')).toBe(false);
+
+      wrapper.unmount();
+    });
+  });
+
+  describe('localization', () => {
+    it('localizes filter popover copy via the ConfigProvider locale', async () => {
+      const wrapper = mount(SConfigProvider, {
+        props: { locale: 'zh-CN' },
+        slots: {
+          default: h(STable, {
+            columns: filterableColumns as TableColumn[],
+            data,
+            rowKey: row => row.id
+          })
+        },
+        attachTo: document.body
+      });
+      await nextTick();
+
+      await wrapper.get('button[aria-label="筛选「Name」"]').trigger('click');
+      await nextTick();
+
+      const searchInput = document.body.querySelector(
+        'input[aria-label="搜索「Name」的筛选选项"]'
+      ) as HTMLInputElement | null;
+
+      expect(searchInput).toBeTruthy();
+      expect(searchInput?.placeholder).toBe('搜索 Name');
+      expect(document.body.textContent).toContain('2 个选项');
+
+      await clickTeleportedControl('选择 Linus');
+
+      expect(document.body.textContent).toContain('已选 1 项');
+
+      await clickTeleportedControl('清除');
+
+      expect(wrapper.findComponent({ name: 'STable' }).emitted('update:filterState')?.at(-1)?.[0]).toEqual({});
+
+      wrapper.unmount();
+    });
+
+    it('localizes the empty state via the ConfigProvider locale', async () => {
+      const wrapper = mount(SConfigProvider, {
+        props: { locale: 'zh-CN' },
+        slots: {
+          default: h(STable, {
+            columns: columns as TableColumn[],
+            data: [],
+            rowKey: row => row.id
+          })
+        },
+        attachTo: document.body
+      });
+      await nextTick();
+
+      expect(wrapper.text()).toContain('暂无数据');
+      expect(wrapper.text()).toContain('当前没有可显示的数据。');
 
       wrapper.unmount();
     });

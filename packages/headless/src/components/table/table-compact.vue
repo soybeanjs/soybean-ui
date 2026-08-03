@@ -42,7 +42,7 @@ const props = withDefaults(defineProps<TableCompactProps<T, R, M>>(), {
   filterState: undefined,
   columnWidths: undefined,
   selected: undefined,
-  multiple: true as any,
+  multiple: () => true as M,
   indent: 16
 });
 

@@ -215,7 +215,7 @@
 | C58  | `tag`         | 多槽           | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  |   P1   | D1-09, D2-11, D3-01                      |
 | C59  | `card`        | 多槽 + Compact | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  |   P2   | D1-12, D2-11, D3-12                      |
 | C60  | `list`        | 多槽           | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  |   P2   | D1-09, D2-04, D7-01                      |
-| C61  | `table`       | 多槽 + Compact | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  |   P0   | D1-12, D2-04, D2-11, D3-04, D7-01, D7-02 |
+| C61  | `table`       | 多槽 + Compact | ✅  | ✅  | ✅  | ✅  | ✅  | ✅  | ✅  |   P0   | D1-12, D2-04, D2-11, D3-04, D7-01, D7-02 |
 | C62  | `tree`        | 多槽           | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  |   P0   | D1-16, D2-04, D2-11, D3-04, D7-01        |
 | C63  | `tree-menu`   | 多槽 + Compact | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  |   P1   | D1-12, D1-16, D2-11, D7-01               |
 | C64  | `accordion`   | 多槽 + Compact | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  | ⏳  |   P1   | D1-12, D1-16, D2-11, D7-05               |
@@ -500,6 +500,16 @@
 | C55  | `stepper` | [C55-stepper.md](./check-reports/C55-stepper.md) | **Major ×1**（D1-12/D2-11 默认行为被覆盖）：`stepper.vue` UI 包装层 `linear` 为布尔 prop，Vue 将缺失的布尔 prop 转成 `false` 并向下透传，覆盖 `StepperRoot` 的 `linear: true` 默认值——经 SStepper → StepperCompact → StepperRoot 链路后根节点不渲染 `data-linear`，且未来步骤全部可聚焦（非线性行为）→ 包装层 `withDefaults(defineProps<StepperProps>(), { linear: true })` 镜像 headless 默认值（同 cascader/segment/layout 既有模式）。**Minor ×1**（D1-08 硬编码英文 + 未本地化）：`stepper-root.vue` 实时区域 `Step {current} of {total}` 与 `aria-label` 回退 `'Step-by-step progress'` 硬编码英文 → `LocaleStepperMessages` 新增 `ariaLabel`/`stepOf`（14 语言包同步）并经 `useLocaleMessages` 本地化。**Minor ×1**（类型）：`StepperCompactProps.itemProps` 声明为 `StepperItemProps`（`step` 必填），但 Compact 以 `:step="item.step"` 覆盖推导 → `Omit<StepperItemProps, 'step'>`（消除类型/运行时不一致，同步 `sui api` 生成数据 en/zh）。**文档** en/zh 4 节 → 8 节 Recommended structure（含 Component family + 8 能力 × 5 库对标表 + Cautions 6 条 + FAQ 6 组）。**遗留**：D3-04 浏览器 e2e（Tier 2 smoke 由 CI 覆盖，本轮以 happy-dom 单测 + axe 静态检查替代）；`stepperVariants` 8 槽全对齐无死键；`StepperCompact` 6 个 `*Props` 通道全部 v-bind 透传（无 C52 类连锁缺陷） | 11 → 32         |
 
 > **批次 8 合计：** 1 个检查单元通过 D1–D7 全维度；单测 11 → 32 项（+21）；`pnpm typecheck` / `pnpm lint` 全绿；族系回归（stepper/separator 等导航族）全通过。批次 8 完结，后续按执行顺序进入下一检查项。
+
+### 4.10 批次 9（P0 数据展示）— 2026-08-03
+
+覆盖第 5 轮（P0 数据展示）的 `table`（C61），延续 D1–D7 全维度审计；本轮修复泛型布尔默认值类型卫生、筛选浮层硬编码英文本地化、样式 recipe 死键三处缺陷，并将单测从 29 项扩展到 36 项。
+
+| 编号 | 组件    | 检查报告                                     | 缺陷修复（按严重度）                                                                                                                                                                                                                                               | 单测（前 → 后）                     |
+| :--: | :------ | :------------------------------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :---------------------------------- |
+| C61  | `table` | [C61-table.md](./check-reports/C61-table.md) | **Minor ×3**（D1-08/D4-01/D5-01）：① **D4-01 类型卫生**——`table-compact.vue`/`table.vue` `withDefaults` 中 `multiple: true as unknown as M` 泛型布尔默认值双重断言违反「无 `as unknown as`」约束，且 vue-tsc 报 `Type 'M' is not assignable to InferDefault<..., M | undefined>`（`InferDefault`对泛型`M | undefined`仅接受函数形式）→ 改`multiple: () => true as M`（函数式默认，运行时语义不变）；② **D1-08/D2-11 本地化**——`table-filter-popover.vue` 筛选浮层 8 处硬编码英文文案（`filterSelected`/`filterKeywordActive`/`filterOptionsCount`/`filterNoOptions`/`filterEdit`/`filter`/`filterSearch`/`filterNoMatching`/`filterClear`/`filterSelect`/`filterSearchPlaceholder`）→ 新增 `LocaleTableMessages`11 键 + 13 语言包 +`interpolate` 插值；③ **D5-01 死键**——`styles/table.ts`6 个 size 变体`caption: 'py-_'` 槽位在组件模板中无对应渲染（死键永不生效）→ 删除。**文档** en/zh 4 节 → 8 节 Recommended structure（含 Component family + 9 能力 × 5 库对标表 + Cautions 7 条 + FAQ 7 组）。**核查结论**：C42 同款缺省 Boolean cast 风险**不适用**（`multiple`经`useSelection`的`getVueBooleanCasting`归一化，且函数式默认已保留`true` 默认）；筛选浮层关闭/清除/无匹配空态均接 axe 检查通过；`data-soybean-table-_` 8 属性无冗余 | 29 → 36 |
+
+> **批次 9 合计：** 1 个检查单元通过 D1–D7 全维度；单测 29 → 36 项（+7）；`pnpm typecheck` / `pnpm lint` 全绿；族系回归（table/stepper/date 等 1586/1586）全通过。批次 9 完结，后续按执行顺序进入下一检查项（C62 `tree`）。
 
 ---
 

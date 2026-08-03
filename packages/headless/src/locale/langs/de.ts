@@ -23,7 +23,18 @@ const messages: LocaleMessages = {
     resizeColumn: 'Größe der Spalte {column} ändern',
     expandRow: 'Zeile {row} erweitern',
     collapseRow: 'Zeile {row} einklappen',
-    selectRow: 'Zeile {row} auswählen'
+    selectRow: 'Zeile {row} auswählen',
+    filterSelected: '{count} ausgewählt',
+    filterKeywordActive: 'Stichwort aktiv',
+    filterOptionsCount: '{count} Optionen',
+    filterNoOptions: 'Keine Filteroptionen',
+    filterEdit: 'Filter für {column} bearbeiten',
+    filter: '{column} filtern',
+    filterSearch: 'Filteroptionen für {column} durchsuchen',
+    filterNoMatching: 'Keine passenden Optionen',
+    filterClear: 'Löschen',
+    filterSelect: '{label} auswählen',
+    filterSearchPlaceholder: '{column} durchsuchen'
   },
   calendar: {
     prevPage: 'Vorherige Seite',

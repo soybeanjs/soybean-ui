@@ -23,7 +23,18 @@ const messages: LocaleMessages = {
     resizeColumn: 'Ubah ukuran kolom {column}',
     expandRow: 'Buka baris {row}',
     collapseRow: 'Tutup baris {row}',
-    selectRow: 'Pilih baris {row}'
+    selectRow: 'Pilih baris {row}',
+    filterSelected: '{count} dipilih',
+    filterKeywordActive: 'Kata kunci aktif',
+    filterOptionsCount: '{count} opsi',
+    filterNoOptions: 'Tidak ada opsi filter',
+    filterEdit: 'Edit filter untuk {column}',
+    filter: 'Filter {column}',
+    filterSearch: 'Cari opsi filter untuk {column}',
+    filterNoMatching: 'Tidak ada opsi yang cocok',
+    filterClear: 'Bersihkan',
+    filterSelect: 'Pilih {label}',
+    filterSearchPlaceholder: 'Cari {column}'
   },
   calendar: {
     prevPage: 'Halaman sebelumnya',

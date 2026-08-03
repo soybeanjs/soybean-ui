@@ -23,7 +23,18 @@ const messages: LocaleMessages = {
     resizeColumn: '{column}列の幅を変更',
     expandRow: '行 {row} を展開',
     collapseRow: '行 {row} を折りたたむ',
-    selectRow: '行 {row} を選択'
+    selectRow: '行 {row} を選択',
+    filterSelected: '{count} 件選択中',
+    filterKeywordActive: 'キーワードが有効',
+    filterOptionsCount: '{count} 件のオプション',
+    filterNoOptions: 'フィルターオプションなし',
+    filterEdit: '{column} のフィルターを編集',
+    filter: '{column} でフィルター',
+    filterSearch: '{column} のフィルターオプションを検索',
+    filterNoMatching: '一致するオプションなし',
+    filterClear: 'クリア',
+    filterSelect: '{label} を選択',
+    filterSearchPlaceholder: '{column} を検索'
   },
   calendar: {
     prevPage: '前のページ',

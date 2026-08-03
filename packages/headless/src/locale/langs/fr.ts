@@ -23,7 +23,18 @@ const messages: LocaleMessages = {
     resizeColumn: 'Redimensionner la colonne {column}',
     expandRow: 'Développer la ligne {row}',
     collapseRow: 'Réduire la ligne {row}',
-    selectRow: 'Sélectionner la ligne {row}'
+    selectRow: 'Sélectionner la ligne {row}',
+    filterSelected: '{count} sélectionné(s)',
+    filterKeywordActive: 'Mot-clé actif',
+    filterOptionsCount: '{count} options',
+    filterNoOptions: 'Aucune option de filtre',
+    filterEdit: 'Modifier le filtre pour {column}',
+    filter: 'Filtrer {column}',
+    filterSearch: 'Rechercher les options de filtre pour {column}',
+    filterNoMatching: 'Aucune option correspondante',
+    filterClear: 'Effacer',
+    filterSelect: 'Sélectionner {label}',
+    filterSearchPlaceholder: 'Rechercher {column}'
   },
   calendar: {
     prevPage: 'Page précédente',

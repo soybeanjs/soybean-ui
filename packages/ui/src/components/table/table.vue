@@ -26,7 +26,7 @@ defineOptions({
 });
 
 const props = withDefaults(defineProps<TableProps<T, R, M>>(), {
-  multiple: true as any,
+  multiple: () => true as M,
   rounded: true
 });
 

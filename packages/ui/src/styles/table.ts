@@ -59,7 +59,6 @@ export const tableVariants = scv({
     size: {
       xs: {
         root: 'text-2xs',
-        caption: 'py-2',
         head: 'p-1.5',
         cell: 'p-1.5',
         radioRoot: 'w-3 h-3',
@@ -73,7 +72,6 @@ export const tableVariants = scv({
       },
       sm: {
         root: 'text-xs',
-        caption: 'py-2.5',
         head: 'p-1.75',
         cell: 'p-1.75',
         radioRoot: 'w-3.5 h-3.5',
@@ -87,7 +85,6 @@ export const tableVariants = scv({
       },
       md: {
         root: 'text-sm',
-        caption: 'py-3',
         head: 'p-2',
         cell: 'p-2',
         radioRoot: 'w-4 h-4',
@@ -101,7 +98,6 @@ export const tableVariants = scv({
       },
       lg: {
         root: 'text-base',
-        caption: 'py-3.5',
         head: 'p-2.5',
         cell: 'p-2.5',
         radioRoot: 'w-4.5 h-4.5',
@@ -115,7 +111,6 @@ export const tableVariants = scv({
       },
       xl: {
         root: 'text-lg',
-        caption: 'py-4',
         head: 'p-3',
         cell: 'p-3',
         radioRoot: 'w-5 h-5',
@@ -129,7 +124,6 @@ export const tableVariants = scv({
       },
       '2xl': {
         root: 'text-xl',
-        caption: 'py-4.5',
         head: 'p-3.5',
         cell: 'p-3.5',
         radioRoot: 'w-6 h-6',

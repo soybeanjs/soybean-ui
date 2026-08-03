@@ -23,7 +23,18 @@ const messages: LocaleMessages = {
     resizeColumn: 'تغيير عرض عمود {column}',
     expandRow: 'توسيع الصف {row}',
     collapseRow: 'طي الصف {row}',
-    selectRow: 'تحديد الصف {row}'
+    selectRow: 'تحديد الصف {row}',
+    filterSelected: 'تم تحديد {count}',
+    filterKeywordActive: 'الكلمة الأساسية نشطة',
+    filterOptionsCount: '{count} خيارات',
+    filterNoOptions: 'لا توجد خيارات تصفية',
+    filterEdit: 'تعديل الفلتر لـ {column}',
+    filter: 'تصفية {column}',
+    filterSearch: 'البحث عن خيارات التصفية لـ {column}',
+    filterNoMatching: 'لا توجد خيارات مطابقة',
+    filterClear: 'مسح',
+    filterSelect: 'تحديد {label}',
+    filterSearchPlaceholder: 'البحث في {column}'
   },
   calendar: {
     prevPage: 'الصفحة السابقة',

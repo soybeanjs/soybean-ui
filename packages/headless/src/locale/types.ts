@@ -285,6 +285,49 @@ export interface LocaleTableMessages {
    * Supports `{row}` placeholder.
    */
   selectRow: string;
+  /**
+   * Summary shown in the filter popover footer when values are selected.
+   * Supports `{count}` placeholder.
+   */
+  filterSelected: string;
+  /** Summary shown in the filter popover footer when a keyword is active. */
+  filterKeywordActive: string;
+  /**
+   * Summary shown in the filter popover footer when no value is selected.
+   * Supports `{count}` placeholder.
+   */
+  filterOptionsCount: string;
+  /** Summary shown in the filter popover footer when the column has no filter options. */
+  filterNoOptions: string;
+  /**
+   * Aria-label template for the filter trigger when the column is filtered.
+   * Supports `{column}` placeholder.
+   */
+  filterEdit: string;
+  /**
+   * Aria-label template for the filter trigger.
+   * Supports `{column}` placeholder.
+   */
+  filter: string;
+  /**
+   * Aria-label template for the filter search input.
+   * Supports `{column}` placeholder.
+   */
+  filterSearch: string;
+  /** Text shown when the keyword search returns no matching options. */
+  filterNoMatching: string;
+  /** Default text for the clear filter button. */
+  filterClear: string;
+  /**
+   * Aria-label template for a filter option.
+   * Supports `{label}` placeholder.
+   */
+  filterSelect: string;
+  /**
+   * Placeholder template for the filter search input.
+   * Supports `{column}` placeholder.
+   */
+  filterSearchPlaceholder: string;
 }
 
 export interface LocaleTagsInputMessages {

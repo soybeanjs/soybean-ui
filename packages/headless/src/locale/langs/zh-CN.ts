@@ -23,7 +23,18 @@ const messages: LocaleMessages = {
     resizeColumn: '调整{column}列宽',
     expandRow: '展开行 {row}',
     collapseRow: '收起行 {row}',
-    selectRow: '选择行 {row}'
+    selectRow: '选择行 {row}',
+    filterSelected: '已选 {count} 项',
+    filterKeywordActive: '关键字筛选生效',
+    filterOptionsCount: '{count} 个选项',
+    filterNoOptions: '无筛选项',
+    filterEdit: '编辑「{column}」筛选',
+    filter: '筛选「{column}」',
+    filterSearch: '搜索「{column}」的筛选选项',
+    filterNoMatching: '无匹配选项',
+    filterClear: '清除',
+    filterSelect: '选择 {label}',
+    filterSearchPlaceholder: '搜索 {column}'
   },
   calendar: {
     prevPage: '上一页',

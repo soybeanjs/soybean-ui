@@ -23,7 +23,18 @@ const messages: LocaleMessages = {
     resizeColumn: '{column} 열 크기 조정',
     expandRow: '{row}행 펼치기',
     collapseRow: '{row}행 접기',
-    selectRow: '{row}행 선택'
+    selectRow: '{row}행 선택',
+    filterSelected: '{count}개 선택됨',
+    filterKeywordActive: '키워드 활성화',
+    filterOptionsCount: '옵션 {count}개',
+    filterNoOptions: '필터 옵션 없음',
+    filterEdit: '{column} 필터 편집',
+    filter: '{column} 필터',
+    filterSearch: '{column} 필터 옵션 검색',
+    filterNoMatching: '일치하는 옵션 없음',
+    filterClear: '지우기',
+    filterSelect: '{label} 선택',
+    filterSearchPlaceholder: '{column} 검색'
   },
   calendar: {
     prevPage: '이전 페이지',
