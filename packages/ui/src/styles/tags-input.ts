@@ -34,7 +34,7 @@ export const tagsInputVariants = scv({
         item: 'min-h-4 gap-0.5',
         itemText: 'px-1.5 py-0.5',
         itemDelete: 'me-0.5',
-        input: 'min-h-5 px-0.5',
+        control: 'min-h-5 px-0.5',
         clear: 'end-0.5 top-0.5'
       },
       sm: {
@@ -42,7 +42,7 @@ export const tagsInputVariants = scv({
         item: 'min-h-4.5 gap-0.75',
         itemText: 'px-1.5 py-0.5',
         itemDelete: 'me-0.5',
-        input: 'min-h-5 px-0.75',
+        control: 'min-h-5 px-0.75',
         clear: 'end-0.75 top-0.75'
       },
       md: {
@@ -50,7 +50,7 @@ export const tagsInputVariants = scv({
         item: 'min-h-5 gap-1',
         itemText: 'px-2 py-0.5',
         itemDelete: 'me-1',
-        input: 'min-h-5 px-1',
+        control: 'min-h-5 px-1',
         clear: 'end-1 top-1'
       },
       lg: {
@@ -58,7 +58,7 @@ export const tagsInputVariants = scv({
         item: 'min-h-6 gap-1',
         itemText: 'px-2 py-0.5',
         itemDelete: 'me-1',
-        input: 'min-h-6 px-1.25',
+        control: 'min-h-6 px-1.25',
         clear: 'end-1.25 top-1.25'
       },
       xl: {
@@ -66,7 +66,7 @@ export const tagsInputVariants = scv({
         item: 'min-h-7 gap-1.5',
         itemText: 'px-2.5 py-1',
         itemDelete: 'me-1',
-        input: 'min-h-7 px-1.5',
+        control: 'min-h-7 px-1.5',
         clear: 'end-1.5 top-1.5'
       },
       '2xl': {
@@ -74,7 +74,7 @@ export const tagsInputVariants = scv({
         item: 'min-h-8 gap-1.5',
         itemText: 'px-3 py-1',
         itemDelete: 'me-1.5',
-        input: 'min-h-8 px-2',
+        control: 'min-h-8 px-2',
         clear: 'end-2 top-2'
       }
     }

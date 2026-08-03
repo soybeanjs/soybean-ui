@@ -41,6 +41,8 @@ const isInvalidInput = shallowRef(false);
 
 const hasValue = computed(() => modelValue.value.length > 0);
 
+const containerId = computed(() => (props.id ? `${props.id}-tags-list` : undefined));
+
 const formControl = computed(() => isFormControl(rootElement.value));
 
 const getItems = () => getOrderedItems();
@@ -195,7 +197,6 @@ provideTagsInputRootContext({
     'addOnPaste',
     'addOnTab',
     'addOnBlur',
-    'disabled',
     'delimiter',
     'max'
   ]),
@@ -214,6 +215,7 @@ provideTagsInputRootContext({
 
 <template>
   <div
+    :id="containerId"
     :ref="setRootElement"
     data-soybean-tags-input-root
     :class="cls"

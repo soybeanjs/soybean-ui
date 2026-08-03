@@ -37,6 +37,8 @@ const messages = useLocaleMessages();
 
 const ariaLabel = computed(() => (attrs['aria-label'] as string) ?? messages.value.tagsInput.addTag);
 
+const ariaControls = computed(() => (id.value ? `${id.value}-tags-list` : undefined));
+
 const isDisabled = computed(() => Boolean(attrs['disabled']) || disabled.value);
 
 const isComposing = ref(false);
@@ -168,6 +170,7 @@ const onCompositionEnd = () => {
     :maxlength="maxlength"
     :minlength="minlength"
     :aria-label="ariaLabel"
+    :aria-controls="ariaControls"
     :disabled="isDisabled"
     :pattern="pattern"
     :readonly="readonly"

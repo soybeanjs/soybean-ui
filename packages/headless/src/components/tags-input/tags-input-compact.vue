@@ -12,7 +12,9 @@ defineOptions({
   name: 'TagsInputCompact'
 });
 
-const props = defineProps<TagsInputCompactProps>();
+const props = withDefaults(defineProps<TagsInputCompactProps>(), {
+  clearable: true
+});
 
 const emit = defineEmits<TagsInputCompactEmits>();
 
@@ -32,8 +34,8 @@ const listeners = useForwardListeners(emit);
 
 <template>
   <TagsInputRoot v-slot="{ modelValue, clear }" v-bind="forwardedProps" v-on="listeners">
-    <template v-for="(value, index) in modelValue" :key="value">
-      <TagsInputItem v-slot="{ onDelete, displayedValue }" :value="value">
+    <template v-for="(value, index) in modelValue" :key="`${index}-${value}`">
+      <TagsInputItem v-slot="{ onDelete, displayedValue }" v-bind="itemProps" :value="value">
         <slot
           name="item"
           :value="value"
@@ -42,12 +44,12 @@ const listeners = useForwardListeners(emit);
           :on-delete="onDelete"
           :on-clear="clear"
         >
-          <TagsInputItemText />
-          <TagsInputItemDelete />
+          <TagsInputItemText v-bind="itemTextProps" />
+          <TagsInputItemDelete v-bind="itemDeleteProps" />
         </slot>
       </TagsInputItem>
     </template>
     <TagsInputControl v-bind="controlProps" />
-    <TagsInputClear v-bind="clearProps" />
+    <TagsInputClear v-if="clearable" v-bind="clearProps" />
   </TagsInputRoot>
 </template>
