@@ -77,7 +77,9 @@ const messages: LocaleMessages = {
     nav: "Fil d'Ariane"
   },
   stepper: {
-    step: 'Étape {step}'
+    step: 'Étape {step}',
+    ariaLabel: 'Progression par étapes',
+    stepOf: 'Étape {current} sur {total}'
   },
   editable: {
     cancel: 'Annuler',

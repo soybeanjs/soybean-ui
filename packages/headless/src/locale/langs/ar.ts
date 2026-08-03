@@ -77,7 +77,9 @@ const messages: LocaleMessages = {
     nav: 'مسار التنقل'
   },
   stepper: {
-    step: 'الخطوة {step}'
+    step: 'الخطوة {step}',
+    ariaLabel: 'التقدم خطوة بخطوة',
+    stepOf: 'الخطوة {current} من {total}'
   },
   editable: {
     cancel: 'إلغاء',

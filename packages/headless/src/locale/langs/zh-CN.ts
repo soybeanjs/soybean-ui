@@ -77,7 +77,9 @@ const messages: LocaleMessages = {
     nav: '面包屑'
   },
   stepper: {
-    step: '第 {step} 步'
+    step: '第 {step} 步',
+    ariaLabel: '分步进度',
+    stepOf: '第 {current} 步，共 {total} 步'
   },
   editable: {
     cancel: '取消',

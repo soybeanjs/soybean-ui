@@ -10,7 +10,11 @@ defineOptions({
   name: 'SStepper'
 });
 
-const props = defineProps<StepperProps>();
+const props = withDefaults(defineProps<StepperProps>(), {
+  // Mirror the headless default so an absent Boolean prop is not cast to `false`
+  // and then forwarded, which would override StepperRoot's `linear: true` default.
+  linear: true
+});
 
 const emit = defineEmits<StepperEmits>();
 

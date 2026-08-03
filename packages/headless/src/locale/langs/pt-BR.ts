@@ -77,7 +77,9 @@ const messages: LocaleMessages = {
     nav: 'Trilha de navegação'
   },
   stepper: {
-    step: 'Etapa {step}'
+    step: 'Etapa {step}',
+    ariaLabel: 'Progresso por etapas',
+    stepOf: 'Etapa {current} de {total}'
   },
   editable: {
     cancel: 'Cancelar',

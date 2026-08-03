@@ -77,7 +77,9 @@ const messages: LocaleMessages = {
     nav: '이동 경로'
   },
   stepper: {
-    step: '단계 {step}'
+    step: '단계 {step}',
+    ariaLabel: '단계 진행 상황',
+    stepOf: '단계 {current} / {total}'
   },
   editable: {
     cancel: '취소',

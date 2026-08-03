@@ -77,7 +77,9 @@ const messages: LocaleMessages = {
     nav: 'Gezinti yolu'
   },
   stepper: {
-    step: 'Adım {step}'
+    step: 'Adım {step}',
+    ariaLabel: 'Adım adım ilerleme',
+    stepOf: 'Adım {current} / {total}'
   },
   editable: {
     cancel: 'İptal',

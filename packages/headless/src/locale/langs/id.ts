@@ -77,7 +77,9 @@ const messages: LocaleMessages = {
     nav: 'Breadcrumb'
   },
   stepper: {
-    step: 'Langkah {step}'
+    step: 'Langkah {step}',
+    ariaLabel: 'Progres langkah',
+    stepOf: 'Langkah {current} dari {total}'
   },
   editable: {
     cancel: 'Batal',

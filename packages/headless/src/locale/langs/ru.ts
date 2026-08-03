@@ -77,7 +77,9 @@ const messages: LocaleMessages = {
     nav: 'Хлебные крошки'
   },
   stepper: {
-    step: 'Шаг {step}'
+    step: 'Шаг {step}',
+    ariaLabel: 'Пошаговый прогресс',
+    stepOf: 'Шаг {current} из {total}'
   },
   editable: {
     cancel: 'Отмена',

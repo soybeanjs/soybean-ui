@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { computed, shallowRef, useAttrs } from 'vue';
-import { getCollectionItemElements, isElementHasAttribute, transformPropsToContext } from '../../shared';
+import { getCollectionItemElements, interpolate, isElementHasAttribute, transformPropsToContext } from '../../shared';
 import { useControllableState, useForwardElement, useOmitProps } from '../../composables';
+import { useLocaleMessages } from '../../locale';
 import { Primitive } from '../primitive';
 import { VisuallyHidden } from '../visually-hidden';
 import { provideStepperRootContext, useStepperUi } from './context';
@@ -23,6 +24,8 @@ const emit = defineEmits<StepperRootEmits>();
 const attrs = useAttrs();
 
 const cls = useStepperUi('root');
+
+const messages = useLocaleMessages();
 
 const modelValue = useControllableState(
   () => props.modelValue,
@@ -108,7 +111,7 @@ function toNonEmptyString(value: unknown) {
   return typeof value === 'string' && value.trim().length > 0 ? value : undefined;
 }
 
-const ariaLabel = computed(() => toNonEmptyString(attrs['aria-label']) ?? 'Step-by-step progress');
+const ariaLabel = computed(() => toNonEmptyString(attrs['aria-label']) ?? messages.value.stepper.ariaLabel);
 
 const registerStepperItem = (element: HTMLElement) => {
   if (registeredStepperItems.value.includes(element)) return;
@@ -178,7 +181,7 @@ defineExpose({
     />
 
     <VisuallyHidden v-if="totalSteps > 0" as="span" role="status" aria-live="polite" aria-atomic="true">
-      Step {{ currentStep }} of {{ totalSteps }}
+      {{ interpolate(messages.stepper.stepOf, { current: String(currentStep), total: String(totalSteps) }) }}
     </VisuallyHidden>
   </Primitive>
 </template>

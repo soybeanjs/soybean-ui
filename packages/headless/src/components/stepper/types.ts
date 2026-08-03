@@ -199,9 +199,9 @@ export interface StepperCompactProps extends StepperRootProps {
    */
   items: StepperItemData[];
   /**
-   * Properties forwarded to the item element.
+   * Properties forwarded to the item element. The `step` is derived from the item order and cannot be overridden.
    */
-  itemProps?: StepperItemProps;
+  itemProps?: Omit<StepperItemProps, 'step'>;
   /**
    * Properties forwarded to the trigger element.
    */

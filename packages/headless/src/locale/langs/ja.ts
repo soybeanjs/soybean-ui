@@ -77,7 +77,9 @@ const messages: LocaleMessages = {
     nav: 'パンくずリスト'
   },
   stepper: {
-    step: 'ステップ {step}'
+    step: 'ステップ {step}',
+    ariaLabel: 'ステップ進行状況',
+    stepOf: 'ステップ {current} / {total}'
   },
   editable: {
     cancel: 'キャンセル',

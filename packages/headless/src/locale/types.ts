@@ -232,6 +232,15 @@ export interface LocaleStepperMessages {
    * Supports `{step}` placeholder.
    */
   step: string;
+  /**
+   * Default `aria-label` for the stepper group when no `aria-label` is provided.
+   */
+  ariaLabel: string;
+  /**
+   * Screen-reader announcement of the current step progress.
+   * Supports `{current}` and `{total}` placeholders.
+   */
+  stepOf: string;
 }
 
 export interface LocaleTableMessages {
