@@ -82,7 +82,10 @@ const isEmpty = computed(() => !currentValue.value);
 watch(
   modelValue,
   value => {
-    inputValue.value = value ?? '';
+    // 仅在非编辑态同步：编辑中外部推送（如受控父组件更新）不应覆盖正在输入的内容
+    if (!isEditing.value) {
+      inputValue.value = value ?? '';
+    }
   },
   { immediate: true }
 );

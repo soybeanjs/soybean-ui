@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed, nextTick, onMounted, useAttrs, watch } from 'vue';
 import { getAriaLabel } from '../../shared';
+import { useOmitProps } from '../../composables';
 import { Primitive } from '../primitive';
 import { useEditableRootContext, useEditableUi } from './context';
 import type { EditableInputProps } from './types';
@@ -15,7 +16,7 @@ const props = withDefaults(defineProps<EditableInputProps>(), {
 
 const attrs = useAttrs();
 
-const editableInputProps = props as { id?: string };
+const forwardedProps = useOmitProps(props, ['as', 'asChild', 'id']);
 
 const {
   dataDisabled,
@@ -39,7 +40,7 @@ const {
 const cls = useEditableUi('input');
 
 const inputId = computed<string | undefined>(() => {
-  return editableInputProps.id || id.value;
+  return props.id || id.value;
 });
 
 const ariaLabel = computed(() => {
@@ -95,7 +96,7 @@ onMounted(() => {
 
 <template>
   <Primitive
-    v-bind="props"
+    v-bind="forwardedProps"
     :id="inputId"
     :ref="setInputElement"
     :as="as"
