@@ -35,7 +35,7 @@ const listeners = useForwardListeners(emit);
         name="item"
         :virtual-item="item"
         :item="flattenItems[item.index]"
-        :model-value="modelValue as U"
+        :model-value="modelValue"
         :expanded="expanded"
       />
     </VirtualizerContent>

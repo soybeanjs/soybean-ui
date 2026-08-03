@@ -63,6 +63,10 @@ const isIndeterminate = computed(() => {
   return undefined;
 });
 
+const ariaSetsize = computed(() => currentItem.value?.bind?.['aria-setsize']);
+
+const ariaPosinset = computed(() => currentItem.value?.bind?.['aria-posinset']);
+
 const onKeydownRight = (event: KeyboardEvent) => {
   if (disabled.value || !hasChildren.value) return;
 
@@ -194,8 +198,8 @@ const onKeydown = (event: KeyboardEvent) => {
       :aria-selected="isSelected"
       :aria-expanded="hasChildren ? isExpanded : undefined"
       :aria-level="level"
-      :aria-setsize="currentItem?.bind['aria-setsize']"
-      :aria-posinset="currentItem?.bind['aria-posinset']"
+      :aria-setsize="ariaSetsize"
+      :aria-posinset="ariaPosinset"
       :data-disabled="disabled ? '' : undefined"
       :data-indent="level"
       :data-selected="isSelected ? '' : undefined"

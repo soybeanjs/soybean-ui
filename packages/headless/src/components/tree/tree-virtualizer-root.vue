@@ -36,7 +36,7 @@ const listeners = useForwardListeners(emit);
       <slot
         :virtual-items="virtualItems"
         :flatten-items="flattenItems"
-        :model-value="modelValue as U"
+        :model-value="modelValue"
         :expanded="expanded"
       />
     </VirtualizerRoot>
