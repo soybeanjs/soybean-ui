@@ -104,7 +104,17 @@ SoybeanUI 将图标拆分为 headless 层（`@soybeanjs/headless` 中的 `_icon`
 传入 `icon="prefix:name"` 格式的字符串，例如 `icon="lucide:home"`。Iconify 会按需从 API 加载图标数据。也可通过 `addIcon` / `addCollection` 预注册图标数据以实现离线使用。
 
 **如何旋转或翻转图标？**
-使用 `hFlip`、`vFlip`、`inline` 等 props。可通过 `class` 或自定义图标组件实现旋转。
+翻转使用 `hFlip`（水平镜像）或 `vFlip`（垂直镜像），旋转使用 `rotate`，基线对齐使用 `inline`，这些 props 会直接透传给 Iconify：
+
+```vue
+<template>
+  <SIcon icon="lucide:arrow-right" :h-flip="true" />
+  <SIcon icon="lucide:refresh-cw" rotate="90deg" />
+  <SIcon icon="lucide:home" inline />
+</template>
+```
+
+`rotate` 支持字符串（如 `"90deg"`）或数值（90° 的倍数，如 `1` 表示 90°、`2` 表示 180°）。
 
 **`SConfigProvider` 的尺寸优先级如何？**
 prop 上直接传入的 `width` / `height` 优先于 `SConfigProvider` 中配置的 `iconify.width` / `iconify.height`。

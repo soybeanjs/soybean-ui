@@ -47,6 +47,24 @@ const iconifyProps = computed(() => {
   return {
     ...forwardedProps.value,
     ...iconifySize.value,
+    // 转发 Iconify 变换与渲染选项，避免声明过的 props 被静默丢弃
+    mode: props.mode,
+    color: props.color,
+    flip: props.flip,
+    // flip 族仅转发真值，避免 Boolean cast 的 false 默认值覆盖 flip 字符串派生的变换
+    horizontalFlip: props.horizontalFlip || undefined,
+    verticalFlip: props.verticalFlip || undefined,
+    rotate: props.rotate,
+    hFlip: props.hFlip || undefined,
+    vFlip: props.vFlip || undefined,
+    inline: props.inline,
+    // 元素属性
+    id: props.id,
+    style: props.style,
+    title: props.title,
+    // Iconify 图标加载钩子
+    ssr: props.ssr,
+    customise: props.customise,
     icon: props.icon
   };
 });

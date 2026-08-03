@@ -104,7 +104,17 @@ Most icons are decorative and serve only as visual aids. Defaulting to `aria-hid
 Pass a string in the `icon="prefix:name"` format, e.g. `icon="lucide:home"`. Iconify loads the icon data on demand from its API. You can also pre-register icon data via `addIcon` / `addCollection` for offline use.
 
 **How do I rotate or flip an icon?**
-Use the `hFlip`, `vFlip`, `inline` props. You can use `class` or a custom icon component for rotation.
+Use `hFlip` for a horizontal mirror, `vFlip` for a vertical mirror, `rotate` for rotation, and `inline` for baseline alignment. These props are forwarded to Iconify:
+
+```vue
+<template>
+  <SIcon icon="lucide:arrow-right" :h-flip="true" />
+  <SIcon icon="lucide:refresh-cw" rotate="90deg" />
+  <SIcon icon="lucide:home" inline />
+</template>
+```
+
+`rotate` accepts a string (e.g. `"90deg"`) or a number of quarter turns (e.g. `1` for 90°, `2` for 180°).
 
 **How does `SConfigProvider` size priority work?**
 The `width` / `height` props passed directly take precedence over the `iconify.width` / `iconify.height` configured in `SConfigProvider`.

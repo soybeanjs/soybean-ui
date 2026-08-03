@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { h } from 'vue';
+import { h, nextTick } from 'vue';
 import { mount } from '@vue/test-utils';
 import SConfigProvider from '@/components/config-provider/config-provider.vue';
 import SIcon from '@/components/icon/icon.vue';
@@ -152,6 +152,113 @@ describe('SIcon', () => {
 
       const svg = wrapper.find('svg');
       expect(svg.classes()).toContain('text-primary');
+
+      wrapper.unmount();
+    });
+  });
+
+  describe('transforms', () => {
+    const objectIcon = { body: '<path d="M0 0h24v24H0z" />', width: 24, height: 24 };
+
+    // Iconify 在 onMounted 后异步更新 iconData，需等待重渲染再断言
+    async function mountIcon(extraProps: Record<string, unknown>) {
+      const wrapper = mount(SIcon, {
+        props: { icon: objectIcon, ...extraProps } as never,
+        attachTo: document.body
+      });
+      await nextTick();
+      await nextTick();
+      return wrapper;
+    }
+
+    it('forwards hFlip as a horizontal mirror on the icon body', async () => {
+      const wrapper = await mountIcon({ hFlip: true });
+
+      expect(wrapper.find('svg').html()).toContain('scale(-1 1)');
+
+      wrapper.unmount();
+    });
+
+    it('forwards vFlip as a vertical mirror on the icon body', async () => {
+      const wrapper = await mountIcon({ vFlip: true });
+
+      expect(wrapper.find('svg').html()).toContain('scale(1 -1)');
+
+      wrapper.unmount();
+    });
+
+    it('forwards rotate string to the icon body', async () => {
+      const wrapper = await mountIcon({ rotate: '90deg' });
+
+      expect(wrapper.find('svg').html()).toContain('rotate(90 ');
+
+      wrapper.unmount();
+    });
+
+    it('forwards rotate number as quarter turns to the icon body', async () => {
+      const wrapper = await mountIcon({ rotate: 1 });
+
+      expect(wrapper.find('svg').html()).toContain('rotate(90 ');
+
+      wrapper.unmount();
+    });
+
+    it('forwards flip string as combined flips', async () => {
+      const wrapper = await mountIcon({ flip: 'horizontal,vertical' });
+
+      expect(wrapper.find('svg').html()).toContain('rotate(180 ');
+
+      wrapper.unmount();
+    });
+
+    it('applies inline as vertical-align style', async () => {
+      const wrapper = await mountIcon({ inline: true });
+
+      expect(wrapper.find('svg').attributes('style') || '').toContain('vertical-align');
+
+      wrapper.unmount();
+    });
+
+    it('applies color to the icon style', async () => {
+      const wrapper = await mountIcon({ color: 'red' });
+
+      expect(wrapper.find('svg').attributes('style') || '').toContain('color: red');
+
+      wrapper.unmount();
+    });
+
+    it('renders a span when mode is bg', async () => {
+      const wrapper = await mountIcon({ mode: 'bg' });
+
+      expect(wrapper.find('svg').exists()).toBe(false);
+      expect(wrapper.element.tagName).toBe('SPAN');
+
+      wrapper.unmount();
+    });
+
+    it('forwards id and title to the svg element', async () => {
+      const wrapper = await mountIcon({ id: 'icon-id', title: 'Icon title' });
+
+      const svg = wrapper.find('svg');
+      expect(svg.attributes('id')).toBe('icon-id');
+      expect(svg.attributes('title')).toBe('Icon title');
+
+      wrapper.unmount();
+    });
+
+    it('does not leak transform props onto custom component root', () => {
+      const CustomComp = {
+        template: '<span data-custom-icon>Custom</span>'
+      };
+
+      const wrapper = mount(SIcon, {
+        props: { icon: CustomComp, hFlip: true },
+        attachTo: document.body
+      });
+
+      const root = wrapper.find('[data-custom-icon]');
+      expect(root.attributes('h-flip')).toBeUndefined();
+      expect(root.attributes('hflip')).toBeUndefined();
 
       wrapper.unmount();
     });
