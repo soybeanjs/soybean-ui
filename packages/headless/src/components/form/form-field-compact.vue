@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
+import { useOmitProps } from '../../composables';
 import { Slot } from '../slot';
 import FormFieldBaseCompact from './form-field-base-compact.vue';
 import type { FormFieldCompactProps, FormFieldCompactSlots } from './types';
@@ -15,6 +16,8 @@ const slots = defineSlots<FormFieldCompactSlots<any, any>>();
 
 const { useField, setFieldValue } = useFormSub();
 
+const forwardedProps = useOmitProps(props, ['name', 'validate', 'reset']);
+
 const state = useField(props.name, {
   validate: props.validate,
   reset: props.reset
@@ -28,7 +31,7 @@ function handleUpdateModelValue(value: unknown) {
 </script>
 
 <template>
-  <FormFieldBaseCompact data-soybean-form-field v-bind="props" :error="error">
+  <FormFieldBaseCompact data-soybean-form-field v-bind="forwardedProps" :error="error">
     <template #label>
       <slot v-if="slots.label || label" name="label" v-bind="state" />
     </template>

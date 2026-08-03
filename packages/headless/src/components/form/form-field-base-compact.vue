@@ -52,6 +52,7 @@ const errorProps = computed(() => mergeProps({ ...context.errorProps.value }, { 
     v-bind="fieldProps"
     :data-orientation="orientation"
     :data-error="error ? '' : undefined"
+    :error="error"
   >
     <FormLabel v-if="slots.label || label" v-bind="labelProps">
       <slot name="label">{{ label }}</slot>

@@ -23,3 +23,39 @@ globalThis.fetch = vi.fn(() =>
     })
   )
 );
+
+// @formkit/auto-animate (used by SForm's control wrapper via vAutoAnimate) calls
+// `el.animate()` on DOM mutations and removes leaving elements when the returned
+// animation fires its "finish" event. happy-dom does not implement Element.animate,
+// so stub it with a shim that fires "finish" immediately — otherwise exit animations
+// never complete and removed elements linger in the DOM.
+if (!Element.prototype.animate) {
+  Element.prototype.animate = vi.fn(() => {
+    const animation = {
+      cancel: vi.fn(),
+      finish: vi.fn(),
+      pause: vi.fn(),
+      play: vi.fn(),
+      reverse: vi.fn(),
+      commitStyles: vi.fn(),
+      addEventListener: (type: string, callback: () => void) => {
+        if (type === 'finish') {
+          // auto-animate 在拿到 animate() 返回值后才注册 finish 监听，因此异步触发
+          queueMicrotask(callback);
+        }
+      },
+      removeEventListener: vi.fn(),
+      onfinish: null,
+      oncancel: null,
+      currentTime: 0,
+      playbackRate: 1,
+      playState: 'running',
+      finished: Promise.resolve(),
+      ready: Promise.resolve(),
+      effect: null,
+      timeline: null
+    };
+
+    return animation as unknown as Animation;
+  });
+}

@@ -18,7 +18,7 @@ const forwardedProps = useOmitProps(props, ['class', 'ui', 'size']);
 
 const slotNames = computed(() => keysOf(slots));
 
-const ui = computed(() => formVariants({ size: props.size }, props.ui, { field: props.class }));
+const ui = computed(() => formVariants({ size: props.size }, props.ui, { fieldArray: props.class }));
 
 provideFormFieldUi(ui);
 </script>

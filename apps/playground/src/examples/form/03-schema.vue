@@ -92,8 +92,8 @@ const citiesItems: SelectOptionData<string>[] = [
           <SFormField :name="`${field.name}.${index}.url`" label="URL">
             <SInput />
           </SFormField>
-          <SButtonIcon icon="lucide:minus" class="mt-7 flex-shrink-0" @click="remove(index)" />
-          <SButtonIcon icon="lucide:plus" class="mt-7 flex-shrink-0" @click="append({ name: '', url: '' })" />
+          <SButtonIcon icon="lucide:minus" class="flex-shrink-0" @click="remove(index)" />
+          <SButtonIcon icon="lucide:plus" class="flex-shrink-0" @click="append({ name: '', url: '' })" />
         </div>
       </template>
     </SFormFieldArray>

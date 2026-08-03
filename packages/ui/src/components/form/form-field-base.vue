@@ -25,8 +25,8 @@ provideFormFieldUi(ui);
 
 <template>
   <FormFieldBaseCompact v-bind="forwardedProps">
-    <template v-for="slotName in slotNames" :key="slotName" #[slotName]>
-      <slot :name="slotName" />
+    <template v-for="slotName in slotNames" :key="slotName" #[slotName]="slotProps">
+      <slot :name="slotName" v-bind="slotProps" />
     </template>
   </FormFieldBaseCompact>
 </template>
