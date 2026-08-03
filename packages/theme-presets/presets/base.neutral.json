@@ -1,0 +1,29 @@
+{
+  "version": "1.0.0",
+  "name": "base.neutral",
+  "dimension": "base",
+  "light": {
+    "background": "white",
+    "foreground": "neutral.950",
+    "card": "white",
+    "cardForeground": "neutral.950",
+    "popover": "white",
+    "popoverForeground": "neutral.950",
+    "muted": "neutral.100",
+    "mutedForeground": "neutral.500",
+    "accent": "neutral.100",
+    "accentForeground": "neutral.900"
+  },
+  "dark": {
+    "background": "neutral.950",
+    "foreground": "neutral.50",
+    "card": "neutral.900",
+    "cardForeground": "neutral.50",
+    "popover": "neutral.900",
+    "popoverForeground": "neutral.50",
+    "muted": "neutral.800",
+    "mutedForeground": "neutral.400",
+    "accent": "neutral.800",
+    "accentForeground": "neutral.50"
+  }
+}

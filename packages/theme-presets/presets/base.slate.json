@@ -1,0 +1,29 @@
+{
+  "version": "1.0.0",
+  "name": "base.slate",
+  "dimension": "base",
+  "light": {
+    "background": "white",
+    "foreground": "slate.950",
+    "card": "white",
+    "cardForeground": "slate.950",
+    "popover": "white",
+    "popoverForeground": "slate.950",
+    "muted": "slate.100",
+    "mutedForeground": "slate.500",
+    "accent": "slate.100",
+    "accentForeground": "slate.900"
+  },
+  "dark": {
+    "background": "slate.950",
+    "foreground": "slate.50",
+    "card": "slate.900",
+    "cardForeground": "slate.50",
+    "popover": "slate.900",
+    "popoverForeground": "slate.50",
+    "muted": "slate.800",
+    "mutedForeground": "slate.400",
+    "accent": "slate.800",
+    "accentForeground": "slate.50"
+  }
+}

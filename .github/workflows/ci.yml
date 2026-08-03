@@ -42,6 +42,12 @@ jobs:
       - name: Test
         run: pnpm test
 
+      - name: Theme presets validate + drift check
+        run: |
+          pnpm --filter @soybeanjs/theme-presets validate
+          pnpm --filter @soybeanjs/theme-presets generate
+          git diff --exit-code -- packages/theme-presets/src/generated/
+
   e2e:
     name: Browser e2e
     runs-on: ubuntu-latest

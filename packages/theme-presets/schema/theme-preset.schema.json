@@ -1,0 +1,74 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://soybeanjs.dev/schemas/theme-preset.schema.json",
+  "title": "theme preset",
+  "description": "A preset for @soybeanjs/theme. dimension is a classification id only — it never constrains the token key set. light/dark carry any subset of the theme color keys.",
+  "type": "object",
+  "required": ["name", "version", "dimension", "light"],
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "version": {
+      "type": "string"
+    },
+    "dimension": {
+      "enum": ["base", "feedback", "chart", "theme"]
+    },
+    "light": {
+      "$ref": "#/$defs/colorTokens"
+    },
+    "dark": {
+      "$ref": "#/$defs/colorTokens"
+    }
+  },
+  "$defs": {
+    "colorTokens": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": false,
+      "properties": {
+        "background": { "type": "string" },
+        "foreground": { "type": "string" },
+        "card": { "type": "string" },
+        "cardForeground": { "type": "string" },
+        "popover": { "type": "string" },
+        "popoverForeground": { "type": "string" },
+        "primary": { "type": "string" },
+        "primaryForeground": { "type": "string" },
+        "secondary": { "type": "string" },
+        "secondaryForeground": { "type": "string" },
+        "muted": { "type": "string" },
+        "mutedForeground": { "type": "string" },
+        "accent": { "type": "string" },
+        "accentForeground": { "type": "string" },
+        "destructive": { "type": "string" },
+        "destructiveForeground": { "type": "string" },
+        "border": { "type": "string" },
+        "input": { "type": "string" },
+        "ring": { "type": "string" },
+        "success": { "type": "string" },
+        "successForeground": { "type": "string" },
+        "warning": { "type": "string" },
+        "warningForeground": { "type": "string" },
+        "info": { "type": "string" },
+        "infoForeground": { "type": "string" },
+        "carbon": { "type": "string" },
+        "carbonForeground": { "type": "string" },
+        "sidebar": { "type": "string" },
+        "sidebarForeground": { "type": "string" },
+        "sidebarPrimary": { "type": "string" },
+        "sidebarPrimaryForeground": { "type": "string" },
+        "sidebarAccent": { "type": "string" },
+        "sidebarAccentForeground": { "type": "string" },
+        "sidebarBorder": { "type": "string" },
+        "sidebarRing": { "type": "string" },
+        "chart1": { "type": "string" },
+        "chart2": { "type": "string" },
+        "chart3": { "type": "string" },
+        "chart4": { "type": "string" },
+        "chart5": { "type": "string" }
+      }
+    }
+  }
+}

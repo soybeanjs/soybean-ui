@@ -1,0 +1,29 @@
+{
+  "version": "1.0.0",
+  "name": "base.stone",
+  "dimension": "base",
+  "light": {
+    "background": "white",
+    "foreground": "stone.950",
+    "card": "white",
+    "cardForeground": "stone.950",
+    "popover": "white",
+    "popoverForeground": "stone.950",
+    "muted": "stone.100",
+    "mutedForeground": "stone.500",
+    "accent": "stone.100",
+    "accentForeground": "stone.900"
+  },
+  "dark": {
+    "background": "stone.950",
+    "foreground": "stone.50",
+    "card": "stone.900",
+    "cardForeground": "stone.50",
+    "popover": "stone.900",
+    "popoverForeground": "stone.50",
+    "muted": "stone.800",
+    "mutedForeground": "stone.400",
+    "accent": "stone.800",
+    "accentForeground": "stone.50"
+  }
+}
