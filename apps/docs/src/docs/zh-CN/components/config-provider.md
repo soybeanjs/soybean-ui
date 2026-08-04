@@ -29,7 +29,6 @@ import { SConfigProvider } from '@soybeanjs/ui';
     :theme="{
       base: 'gray',
       primary: 'violet',
-      feedback: 'modern',
       radius: '0.625rem'
     }"
   >
@@ -210,21 +209,63 @@ registerLocale('custom', myLocale);
 
 SoybeanUI 将 `ConfigProvider` 拆分为 headless 层（`@soybeanjs/headless/config-provider`，负责 locale、方向、tooltip 与文案上下文）与 styled 层（`@soybeanjs/ui`，负责主题 CSS 注入、图标渲染与 provider 组合：toast / dialog / progress）。这与 `shadcn/ui` 的 headless/styled 分离一致，区别于 Ant Design、Element Plus、MUI、Mantine、Naive UI 等单包 ConfigProvider。
 
-| 维度          | SoybeanUI                                                                              | Ant Design / Element Plus / MUI / Mantine / Naive UI |
-| :------------ | :------------------------------------------------------------------------------------- | :--------------------------------------------------- |
-| 架构          | headless + styled 分离，双 `provide/inject` 上下文                                     | 单包，单一 ConfigProvider                            |
-| 主题注入      | `createShadcnTheme().getCss()` 写入 `<style id="__SoybeanUI_theme">` 标签              | CSS 变量 / 主题对象 / `ConfigProvider.theme`         |
-| 暗色模式      | `theme.darkSelector`（`'class'` → `.dark`、`'media'` → 系统、自定义）；切换 `.dark` 类 | `theme.dark`、`dark-mode` 类、`colorScheme`          |
-| RTL           | `dir` prop + `useDirection`；按 `locale` 自动推导，并带 RTL 前缀兜底                   | `direction` prop、`dir` 属性、主题方向               |
-| 国际化        | `locale` + `messages` 覆盖；`registerLocale` 注册其他 locale                           | `locale` prop / `LocalizationProvider`               |
-| Provider 组合 | 默认插槽内自动渲染 `ToastProvider`、`DialogProvider`、`ProgressProvider`               | 由用户自行挂载独立 provider                          |
+| 维度          | SoybeanUI                                                                                | Ant Design / Element Plus / MUI / Mantine / Naive UI |
+| :------------ | :--------------------------------------------------------------------------------------- | :--------------------------------------------------- |
+| 架构          | headless + styled 分离，双 `provide/inject` 上下文                                       | 单包，单一 ConfigProvider                            |
+| 主题注入      | `createTheme()`（来自 `@soybeanjs/theme`）内联写入 `<style id="__SoybeanUI_theme">` 标签 | CSS 变量 / 主题对象 / `ConfigProvider.theme`         |
+| 暗色模式      | `theme.darkSelector`（`'class'` → `.dark`、`'media'` → 系统、自定义）；切换 `.dark` 类   | `theme.dark`、`dark-mode` 类、`colorScheme`          |
+| RTL           | `dir` prop + `useDirection`；按 `locale` 自动推导，并带 RTL 前缀兜底                     | `direction` prop、`dir` 属性、主题方向               |
+| 国际化        | `locale` + `messages` 覆盖；`registerLocale` 注册其他 locale                             | `locale` prop / `LocalizationProvider`               |
+| Provider 组合 | 默认插槽内自动渲染 `ToastProvider`、`DialogProvider`、`ProgressProvider`                 | 由用户自行挂载独立 provider                          |
 
 ### 运行时注意事项
 
-- **SSR**：主题 CSS 与 headless 工具样式通过 `useStyleTag` 注入到 `<head>`。在 `vite-ssg` 下会在 SSR 水合阶段执行；`<style>` 标签按 `id` 去重，客户端水合不会产生重复标签。`SIcon` 接收 `ssr: import.meta.env.SSR`，图标渲染对 SSR 安全。
+- **SSR**：主题 CSS 在渲染时通过 `@soybeanjs/theme` 的 `createTheme()` 计算，并以内联 `<style id="__SoybeanUI_theme">` 标签写入 SSR HTML（不再依赖仅客户端生效的样式注入），因此首屏即携带正确主题。`SIcon` 接收 `ssr: import.meta.env.SSR`，图标渲染对 SSR 安全。
 - **样式标签生命周期**：`<style id="__SoybeanUI_theme">` 与 `<style id="__SoybeanHeadless_Styles">` 在页面生命周期内常驻 `<head>`。它们是响应式的——修改 `theme` prop 会原地更新 CSS 内容。卸载 provider 不会移除它们（全局设计如此）。
 - **Locale 注册**：默认仅预注册 `en` 与 `zh-CN`。其他 locale（如 `ar`、`ja`、`fr`）需从 `@soybeanjs/headless/locale/{code}` 导入并在应用初始化时调用 `registerLocale(...)` 注册一次。方向（`dir`）即使未注册 locale 也会兜底到内置 RTL 前缀表（`ar`、`he`、`fa`、`ur` 等），因此 `locale="ar"` 开箱即得 `dir="rtl"`。
 - **嵌套**：`SConfigProvider` 支持嵌套。内层 provider 会覆盖外层在其子树的上下文。headless 与 UI 是两套独立的 injection key，因此仅消费 headless 的组件（如 `useDirection`）读取 headless 上下文，而 UI 消费者（如 `SIcon` 的 iconify 默认值）读取 UI 上下文。
+
+### SSR 主题一致性（刷新无闪烁）
+
+当主题配置持久化在 `localStorage` 时，仅客户端生效的样式注入会在水合后才应用已保存的主题，刷新时会产生默认主题闪烁。`@soybeanjs/theme` 提供了 SSR 安全的工具函数（位于 `@soybeanjs/theme/ssr` 子路径），让服务端渲染出与已保存主题完全一致的 HTML：
+
+- **`createThemeInitScript()`** — 返回一段可内联到 `<head>` 的小型 IIFE。在首帧绘制前从 `localStorage` 读取已保存的配置，在 `<html>` 上设置 `data-theme="<base>-<primary>"` 与暗色模式类，并将配置镜像写入 cookie（默认 `soybean-ui-theme`），供下一次 SSR 请求解析。
+- **`getThemeConfigFromCookie(cookieHeader)`** — 在服务端将 cookie 解析为 `ThemeConfigState`（可直接配合 Nuxt 的 `useRequestHeaders(['cookie']).cookie`）。
+- **`setThemeCookie(config)` / `getStoredThemeConfig()` / `setStoredThemeConfig()` / `removeStoredThemeConfig()`** — 客户端与服务端通用的持久化辅助函数（位于 `@soybeanjs/theme/storage` 子路径）。
+
+Nuxt 中的接线方式非常精简——把环境参数传给 `SConfigProvider`，由它自行解析持久化配置：
+
+```ts
+// nuxt.config.ts
+export default defineNuxtConfig({
+  app: {
+    head: {
+      // 首帧前应用已保存的主题，并将其同步到 cookie
+      script: [{ innerHTML: createThemeInitScript(), tagPosition: 'head' }]
+    }
+  }
+});
+```
+
+```vue
+// app.vue —— 只需传递环境参数（isServer + cookieHeader）
+<script setup lang="ts">
+import { SConfigProvider } from '@soybeanjs/ui';
+
+const isServer = import.meta.server;
+const cookieHeader = isServer ? useRequestHeaders(['cookie']).cookie : undefined;
+</script>
+
+<template>
+  <SConfigProvider :is-server="isServer" :cookie-header="cookieHeader" persist-theme>
+    <slot />
+  </SConfigProvider>
+</template>
+```
+
+`SConfigProvider` 在服务端从 cookie 解析持久化配置、在客户端从 `localStorage` 读取，应用层不再需要 `useThemeStore` 或手写 `createThemeStore`。主题状态（base / primary / radius / size / mode）与自定义 preset 由 provider 内部管理，并通过 `@soybeanjs/ui` 的 `useTheme()` 暴露给后代组件——无需 prop drilled，也无需应用层 store。
+
+由于 `SConfigProvider` 会将主题 CSS 内联进 SSR HTML，并在服务端通过 `cookieHeader` 自行解析持久化配置，首屏即携带已保存的主题——无闪烁、无不一致。
 
 ### 常见问题
 
@@ -238,7 +279,7 @@ SoybeanUI 将 `ConfigProvider` 拆分为 headless 层（`@soybeanjs/headless/con
 导入 locale 文件并注册一次：`registerLocale(ar)`（完整注册表形式）或 `registerLocale('custom', messages)`（简写形式）。再把 `locale="ar"`（或自定义 key）传给 `SConfigProvider`。详见上方「加载其他受支持的 locale」。
 
 **暗色模式如何工作？**
-`createShadcnTheme` 始终同时生成浅色与暗色两套 CSS 变量。`theme.darkSelector` 选项决定暗色变量的作用域：`'class'`（默认）将暗色变量置于 `.dark` 选择器下；`'media'` 将其置于 `@media (prefers-color-scheme: dark)` 下；任意自定义字符串会原样作为选择器。使用默认 `'class'` 时，在 `<html>`（或任意祖先节点）切换 `.dark` 类即可切换暗色模式；使用 `'media'` 时，主题会自动跟随系统偏好。
+`createTheme` 始终同时生成浅色与暗色两套 CSS 变量。`theme.darkSelector` 选项决定暗色变量的作用域：`'class'`（默认）将暗色变量置于 `.dark` 选择器下；`'media'` 将其置于 `@media (prefers-color-scheme: dark)` 下；任意自定义字符串会原样作为选择器。使用默认 `'class'` 时，在 `<html>`（或任意祖先节点）切换 `.dark` 类即可切换暗色模式；使用 `'media'` 时，主题会自动跟随系统偏好。
 
 **可以嵌套 `SConfigProvider` 吗？**
 可以。嵌套是受支持的——内层 provider 的上下文对其子树覆盖外层。适用于在 LTR 应用中嵌入 RTL 区块，或为微前端使用不同主题。

@@ -9342,12 +9342,11 @@
       "packages_headless_src_types_vue": {
         "baseprops": ""
       },
-      "packages_shadcn_theme_dist_index_d": {
+      "packages_theme_dist_index_d": {
         "themeoptions": {
           "members": {
             "base": "the base color key",
             "darkselector": "dark mode selector\n\n- class: \".dark\"\n- media: \"@media (prefers-color-scheme: dark)\"\n- custom: custom dark mode selector, e.g. \".custom-dark\"",
-            "feedback": "the feedback color key",
             "format": "color output format\n\n- hsl: \"h s l [/ alpha]\", e.g. \"0 0% 100% / 0.1\"\n- oklch: \"oklch(l c h [/ alpha])\", e.g. \"oklch(0 0 0 / 0.1)\"",
             "menuaccent": "the menu accent style\n\n- subtle: muted foreground highlight\n- bold: primary color highlight",
             "menucolor": "the menu color style\n\n- default: normal popover background\n- inverted: dark card background\n- default-translucent: popover with backdrop blur\n- inverted-translucent: dark card with backdrop blur",

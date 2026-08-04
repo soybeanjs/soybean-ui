@@ -5,7 +5,7 @@
     {
       "path": "packages/ui/src/components/label/label.vue",
       "type": "registry:ui",
-      "content": "<script setup lang=\"ts\">\nimport { computed } from 'vue';\nimport { Label } from '@soybeanjs/headless/label';\nimport { labelVariants } from '@/styles/label';\nimport type { LabelProps } from './types';\n\ndefineOptions({\n  name: 'SLabel'\n});\n\nconst props = defineProps<LabelProps>();\n\nconst cls = computed(() => labelVariants({ size: props.size }, props.class));\n</script>\n\n<template>\n  <Label :for=\"props.for\" :class=\"cls\">\n    <slot />\n  </Label>\n</template>\n"
+      "content": "<script setup lang=\"ts\">\nimport { computed } from 'vue';\nimport { useOmitProps } from '@soybeanjs/headless/composables';\nimport { Label } from '@soybeanjs/headless/label';\nimport { labelVariants } from '@/styles/label';\nimport type { LabelProps } from './types';\n\ndefineOptions({\n  name: 'SLabel'\n});\n\nconst props = defineProps<LabelProps>();\n\nconst delegatedProps = useOmitProps(props, ['class', 'size']);\n\nconst cls = computed(() => labelVariants({ size: props.size }, props.class));\n</script>\n\n<template>\n  <Label v-bind=\"delegatedProps\" :class=\"cls\">\n    <slot />\n  </Label>\n</template>\n"
     },
     {
       "path": "packages/ui/src/components/label/types.ts",

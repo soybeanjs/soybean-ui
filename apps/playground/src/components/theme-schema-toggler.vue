@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import { useDark } from '@vueuse/core';
-import { SIcon, SSwitch } from '@soybeanjs/ui';
+import { SIcon, SSwitch, useTheme } from '@soybeanjs/ui';
 
-const isDark = useDark();
+const { mode } = useTheme('ThemeSchemaToggler');
 </script>
 
 <template>
-  <SSwitch v-model="isDark" color="accent" size="lg">
-    <SIcon :icon="isDark ? 'lucide:moon' : 'lucide:sun'" />
+  <!-- `mode` is a 'light' | 'dark' string, so map the switch's boolean state to those values -->
+  <SSwitch v-model="mode" color="accent" size="lg" true-value="dark" false-value="light">
+    <SIcon :icon="mode === 'dark' ? 'lucide:moon' : 'lucide:sun'" />
   </SSwitch>
 </template>

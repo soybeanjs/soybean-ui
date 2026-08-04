@@ -60,7 +60,7 @@
     "@soybeanjs/cva": "^0.0.9",
     "@soybeanjs/headless": "workspace:^",
     "@soybeanjs/hooks": "^0.3.0",
-    "@soybeanjs/shadcn-theme": "workspace:^",
+    "@soybeanjs/theme": "workspace:^",
     "@soybeanjs/utils": "^0.1.1"
   },
   "devDependencies": {

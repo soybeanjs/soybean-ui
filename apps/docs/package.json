@@ -13,13 +13,14 @@
     "build": "pnpm build:registry && vite-ssg build",
     "build:registry": "pnpm --filter sbean build:registry && vp fmt public/r --write",
     "build:schema": "pnpm --filter sbean build:schema",
-    "dev": "vite",
-    "preview": "vite preview",
+    "dev": "vp dev",
+    "preview": "vp preview",
     "typecheck": "vue-tsc --noEmit --skipLibCheck"
   },
   "dependencies": {
     "@fontsource-variable/manrope": "^5.3.0",
     "@soybeanjs/headless": "workspace:^",
+    "@soybeanjs/theme": "workspace:^",
     "@soybeanjs/ui": "workspace:^",
     "es-toolkit": "^1.50.0",
     "pinia": "^4.0.2",
@@ -43,6 +44,7 @@
     "unplugin-vue-markdown": "^32.0.0",
     "vite": "^8.2.0",
     "vite-plugin-vue-meta-layouts": "^0.6.1",
+    "vite-plus": "catalog:",
     "vite-ssg": "^28.3.0",
     "vite-ssg-sitemap": "^0.10.0"
   },

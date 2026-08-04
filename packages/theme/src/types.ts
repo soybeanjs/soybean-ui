@@ -185,6 +185,47 @@ export type CustomThemeColorPreset = {
   dark?: Partial<ThemeColors>;
 };
 
+/**
+ * a reference to a stored custom theme preset by name
+ *
+ * the preset definition is resolved from the persisted presets table
+ * (localStorage on the client, or an injected provider on the server)
+ * when `persistTheme` is enabled on the ConfigProvider.
+ */
+export type ThemePresetRef = { presetName: string };
+
+/**
+ * theme preset input: either an inline custom preset or a reference to a stored one
+ */
+export type ThemePresetInput = CustomThemeColorPreset | ThemePresetRef;
+
+/**
+ * a persisted custom theme preset entry
+ */
+export interface StoredThemePreset extends CustomThemeColorPreset {
+  /**
+   * the preset unique name (also the storage object key)
+   */
+  name: string;
+  /**
+   * the preset data version (semver, used for display and update decisions)
+   */
+  version: string;
+}
+
+/**
+ * the persisted custom theme presets table
+ */
+export interface StoredThemePresets {
+  /**
+   * the storage schema version
+   *
+   * @defaultValue 1
+   */
+  version: number;
+  presets: Record<string, StoredThemePreset>;
+}
+
 export type StyleTarget = 'html' | ':root';
 
 export type DarkSelector = 'class' | 'media';
@@ -213,8 +254,13 @@ export interface PresetConfig extends PresetKeyConfig {
   /**
    * custom preset colors that override built-in preset values.
    * When provided, matching keys are replaced in the final theme.
+   *
+   * Accepts either an inline `CustomThemeColorPreset` or a `{ presetName }`
+   * reference resolved from the persisted presets table (see
+   * `getStoredThemePresets`). A reference is only resolved when
+   * `persistTheme` is enabled on the ConfigProvider.
    */
-  preset?: CustomThemeColorPreset;
+  preset?: ThemePresetInput;
 }
 
 export type ThemeColor = Extract<
@@ -371,3 +417,209 @@ export interface ThemeOptions extends ThemeSizeConfig, ThemeRadiusConfig, ThemeM
 export interface RequiredThemeOptions extends Required<Omit<ThemeOptions, 'preset'>>, Pick<ThemeOptions, 'preset'> {}
 
 export interface BaseThemeOptions extends Omit<ThemeOptions, 'styleTarget' | 'darkSelector' | 'format' | 'preset'> {}
+
+/**
+ * the persistable theme config state
+ *
+ * a subset of `ThemeOptions` that can be safely stored in localStorage /
+ * cookies, plus the `mode` preference used to toggle the dark mode class
+ * before first paint. Custom `preset` colors are intentionally not persisted.
+ */
+export interface ThemeConfigState extends ThemeSizeConfig, ThemeRadiusConfig, ThemeMenuConfig, PresetKeyConfig {
+  /**
+   * the color scheme preference
+   *
+   * applied as a class on `<html>` (default `'dark'`)
+   */
+  mode?: 'light' | 'dark';
+  /**
+   * color output format
+   *
+   * @default 'hsl'
+   */
+  format?: ColorFormat;
+  /**
+   * light mode darkening offset
+   *
+   * @default 0
+   */
+  lightLevel?: LightLevelOffset;
+  /**
+   * dark mode brightening offset
+   *
+   * @default 0
+   */
+  darkLevel?: DarkLevelOffset;
+}
+
+/**
+ * options for `setThemeCookie`
+ */
+export interface ThemeCookieOptions {
+  /**
+   * the cookie name
+   *
+   * @defaultValue 'soybean-ui-theme'
+   */
+  key?: string;
+  /**
+   * the cookie lifetime in seconds
+   *
+   * @defaultValue 365 days
+   */
+  maxAge?: number;
+  /**
+   * the cookie path
+   *
+   * @defaultValue '/'
+   */
+  path?: string;
+}
+
+/**
+ * options for `createThemeInitScript`
+ */
+export interface ThemeInitScriptOptions {
+  /**
+   * the localStorage key to read
+   *
+   * @defaultValue 'soybean-ui-theme'
+   */
+  storageKey?: string;
+  /**
+   * the cookie key to sync the config into
+   *
+   * @defaultValue 'soybean-ui-theme'
+   */
+  cookieKey?: string;
+  /**
+   * the dark mode class toggled on `<html>`
+   *
+   * @defaultValue 'dark'
+   */
+  darkClass?: string;
+  /**
+   * whether to set the `data-theme="<base>-<primary>"` attribute on `<html>`
+   *
+   * @defaultValue true
+   */
+  setDataTheme?: boolean;
+  /**
+   * whether to mirror the stored config into a cookie so the next SSR request
+   * can render the same theme
+   *
+   * @defaultValue true
+   */
+  syncCookie?: boolean;
+}
+
+/**
+ * options for `createThemeStore`
+ */
+export interface ThemeStoreOptions {
+  /**
+   * the localStorage key of the persisted theme config
+   *
+   * @defaultValue THEME_STORAGE_KEY ('soybean-ui-theme')
+   */
+  storageKey?: string;
+  /**
+   * the cookie name carrying the theme config for SSR resolution
+   *
+   * @defaultValue THEME_COOKIE_KEY ('soybean-ui-theme')
+   */
+  cookieKey?: string;
+  /**
+   * the localStorage key of the custom presets table
+   *
+   * @defaultValue THEME_PRESETS_STORAGE_KEY ('soybean-ui-theme-presets')
+   */
+  presetsKey?: string;
+  /**
+   * the cookie name carrying the currently applied custom preset name
+   *
+   * @defaultValue 'soybean-ui-applied-preset'
+   */
+  appliedPresetCookieKey?: string;
+  /**
+   * the explicit runtime environment.
+   *
+   * The theme library is pre-built, so `import.meta.env.SSR` is baked at build
+   * time and cannot detect the consumer's runtime. Pass the app's own flag
+   * (e.g. Nuxt's `import.meta.server`) to drive the SSR-specific storage paths.
+   *
+   * @defaultValue isServerRuntime() — runtime detection of `window`/`document`
+   */
+  isServer?: boolean;
+  /**
+   * the raw cookie header for SSR resolution, e.g. Nuxt's
+   * `useRequestHeaders(['cookie']).cookie`. Only used when `isServer` is true.
+   */
+  cookieHeader?: string | null;
+  /**
+   * the server-side custom preset registry resolver: maps a preset name to its
+   * definition so SSR can render custom presets without localStorage access.
+   * Only used when `isServer` is true.
+   */
+  presetProvider?: (name: string) => CustomThemeColorPreset | undefined;
+}
+
+/**
+ * a cohesive, environment-aware theme storage facade.
+ *
+ * Bundles the persisted theme config, the custom presets table, and the
+ * currently applied custom preset into one object. All reads and writes are
+ * routed to the correct transport based on the runtime environment:
+ *
+ * - server: reads come from the injected `cookieHeader`; writes are no-ops;
+ * - client: reads/writes go to localStorage and `document.cookie`.
+ *
+ * The cookie is the cross-environment sync channel, so the config and the
+ * applied preset name are resolvable on the server and stay consistent with
+ * the client's localStorage.
+ */
+export interface ThemeStore {
+  /**
+   * whether this store is running in the server environment
+   */
+  readonly isServer: boolean;
+  /**
+   * read the persisted theme config from the appropriate source
+   * (cookie on the server, localStorage on the client).
+   */
+  readConfig(): ThemeConfigState | null;
+  /**
+   * persist the theme config to localStorage and mirror it into a cookie so the
+   * next SSR request renders the same theme. Client-only; no-op on the server.
+   */
+  commitConfig(config: ThemeConfigState): void;
+  /**
+   * resolve a named custom preset to its definition
+   * (server via `presetProvider`, client via the presets table).
+   */
+  resolvePreset(name: string): CustomThemeColorPreset | undefined;
+  /**
+   * persist a custom preset into the presets table. Client-only; returns
+   * `false` on the server.
+   */
+  savePreset(preset: StoredThemePreset): boolean;
+  /**
+   * remove a custom preset from the presets table. Client-only; returns
+   * `false` on the server.
+   */
+  removePreset(name: string): boolean;
+  /**
+   * read the currently applied custom preset name (from the cookie on both
+   * environments) so SSR can render the applied preset on first paint.
+   */
+  readAppliedPreset(): string | null;
+  /**
+   * apply a custom preset by name and persist its reference to the cookie.
+   * Client-only; no-op on the server.
+   */
+  applyPreset(name: string): void;
+  /**
+   * clear the applied custom preset reference. Client-only; no-op on the server.
+   */
+  resetPreset(): void;
+}

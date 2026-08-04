@@ -5,7 +5,7 @@
     {
       "path": "packages/ui/src/components/link/link.vue",
       "type": "registry:ui",
-      "content": "<script setup lang=\"ts\">\nimport { computed } from 'vue';\nimport { Link } from '@soybeanjs/headless/link';\nimport { linkVariants } from '@/styles/link';\nimport type { LinkProps } from './types';\n\ndefineOptions({\n  name: 'SLink'\n});\n\nconst props = withDefaults(defineProps<LinkProps>(), {\n  disabled: undefined,\n  external: undefined,\n  noRel: undefined,\n  prefetch: undefined,\n  noPrefetch: undefined,\n  custom: undefined,\n  viewTransition: undefined,\n  replace: undefined\n});\n\nconst cls = computed(() => linkVariants(undefined, props.class));\n</script>\n\n<template>\n  <Link v-slot=\"slotProps\" v-bind=\"props\" :class=\"cls\">\n    <slot v-bind=\"slotProps\" />\n  </Link>\n</template>\n"
+      "content": "<script setup lang=\"ts\">\nimport { computed } from 'vue';\nimport { Link } from '@soybeanjs/headless/link';\nimport { linkVariants } from '@/styles/link';\nimport type { LinkProps } from './types';\n\ndefineOptions({\n  name: 'SLink'\n});\n\nconst props = withDefaults(defineProps<LinkProps>(), {\n  disabled: undefined,\n  external: undefined,\n  noRel: undefined,\n  prefetch: undefined,\n  noPrefetch: undefined,\n  viewTransition: undefined,\n  replace: undefined\n});\n\nconst cls = computed(() => linkVariants(undefined, props.class));\n</script>\n\n<template>\n  <Link v-slot=\"slotProps\" v-bind=\"props\" :class=\"cls\">\n    <slot v-bind=\"slotProps\" />\n  </Link>\n</template>\n"
     },
     {
       "path": "packages/ui/src/components/link/types.ts",

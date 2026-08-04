@@ -1,25 +1,27 @@
 <script lang="ts" setup>
+import { computed, ref } from 'vue';
 import { useMediaQuery } from '@vueuse/core';
 import { tailwindPalette } from '@soybeanjs/colord/palette';
-import {
-  builtinBasePresetKeys,
-  builtinFeedbackPresetKeys,
-  builtinPrimaryPresetKeys,
-  THEME_RADIUS
-} from '@soybeanjs/shadcn-theme';
-import type {
-  BuiltinBasePresetKey,
-  BuiltinFeedbackPresetKey,
-  BuiltinPrimaryPresetKey,
-  ThemeRadius
-} from '@soybeanjs/shadcn-theme';
-import { SButton, SButtonIcon, SLabel, SPopover, SSelect } from '@soybeanjs/ui';
+import { builtinBasePresetKeys, builtinPrimaryPresetKeys, THEME_RADIUS } from '@soybeanjs/theme';
+import type { BuiltinBasePresetKey, BuiltinPrimaryPresetKey, ThemeRadius } from '@soybeanjs/theme';
+import { SButton, SButtonIcon, SLabel, SPopover, SSelect, useTheme } from '@soybeanjs/ui';
 import type { SelectOptionData, ThemeSize } from '@soybeanjs/ui';
-import { useTheme } from '../theme';
 
 const isMobile = useMediaQuery('(max-width: 768px)');
 
-const { base, primary, feedback, radius, size, setRadius, setSize } = useTheme('ThemeConfigurator');
+const {
+  base,
+  primary,
+  radius,
+  size,
+  setRadius,
+  setSize,
+  customPresets,
+  appliedPresetName,
+  savePreset,
+  removePreset,
+  applyPreset
+} = useTheme('ThemeConfigurator');
 
 const sizes: ThemeSize[] = ['xs', 'sm', 'md', 'lg', 'xl', '2xl'];
 
@@ -35,23 +37,17 @@ const primaryOptions: SelectOptionData<BuiltinPrimaryPresetKey>[] = builtinPrima
   value: key
 }));
 
-const feedbackOptions: SelectOptionData<BuiltinFeedbackPresetKey>[] = builtinFeedbackPresetKeys.map(key => ({
-  label: key,
-  value: key
-}));
+const newPresetName = ref('');
 
-const randomColor = () => {
-  const index = Math.floor(Math.random() * builtinPrimaryPresetKeys.length);
+const customPresetNames = computed(() => Object.keys(customPresets.value));
 
-  const key = builtinPrimaryPresetKeys[index];
+const handleSavePreset = () => {
+  if (!newPresetName.value) return;
 
-  return tailwindPalette[key][500].hsl;
+  if (savePreset(newPresetName.value)) {
+    newPresetName.value = '';
+  }
 };
-
-const feedbackBg = Object.fromEntries(builtinFeedbackPresetKeys.map(key => [key, randomColor()])) as Record<
-  BuiltinFeedbackPresetKey,
-  string
->;
 </script>
 
 <template>
@@ -98,23 +94,6 @@ const feedbackBg = Object.fromEntries(builtinFeedbackPresetKeys.map(key => [key,
           </template>
         </SSelect>
       </div>
-      <div class="flex-y-center justify-between gap-6 pt-6">
-        <SLabel for="color" class="text-xs">Feedback Color</SLabel>
-        <SSelect v-model="feedback" :items="feedbackOptions" class="w-50">
-          <template #trigger-leading>
-            <span
-              class="size-4 flex shrink-0 items-center justify-center rounded-full"
-              :style="{ backgroundColor: feedbackBg[feedback] }"
-            />
-          </template>
-          <template #item-leading="{ item }">
-            <span
-              class="size-4 flex shrink-0 items-center justify-center rounded-full"
-              :style="{ backgroundColor: feedbackBg[item.value] }"
-            />
-          </template>
-        </SSelect>
-      </div>
       <div class="pt-6 space-y-1.5">
         <SLabel for="radius" class="text-xs">Radius</SLabel>
         <div class="grid grid-cols-4 gap-2 py-1.5">
@@ -141,6 +120,30 @@ const feedbackBg = Object.fromEntries(builtinFeedbackPresetKeys.map(key => [key,
           >
             <span class="text-xs">{{ s }}</span>
           </SButton>
+        </div>
+      </div>
+      <div class="border-t pt-4 mt-4 space-y-2">
+        <SLabel for="preset" class="text-xs">Custom Preset</SLabel>
+        <div class="flex-y-center gap-2">
+          <input
+            v-model="newPresetName"
+            class="h-8 w-full rounded-md border border-input bg-transparent px-2 text-xs outline-none"
+            placeholder="preset name"
+          />
+          <SButton size="sm" :disabled="!newPresetName" @click="handleSavePreset">Save</SButton>
+        </div>
+        <div v-if="customPresetNames.length" class="space-y-1 pt-1">
+          <div v-for="name in customPresetNames" :key="name" class="flex-y-center gap-2">
+            <SButton
+              size="sm"
+              :variant="name === appliedPresetName ? 'outline' : 'pure'"
+              class="w-full"
+              @click="applyPreset(name)"
+            >
+              {{ name }}
+            </SButton>
+            <SButtonIcon size="sm" variant="ghost" icon="lucide:trash-2" @click="removePreset(name)" />
+          </div>
         </div>
       </div>
     </div>

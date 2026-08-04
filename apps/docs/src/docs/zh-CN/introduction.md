@@ -63,10 +63,10 @@ SoybeanUI 的组件运行时采用严格的 **双层分离** 架构模型。下�
 ```text
 应用 ──> @soybeanjs/ui ──> @soybeanjs/headless
                   │
-                  └─────> @soybeanjs/shadcn-theme
+                  └─────> @soybeanjs/theme
 
 UnoCSS 配置 ──> @soybeanjs/unocss-shadcn
-                  └─────> @soybeanjs/shadcn-theme
+                  └─────> @soybeanjs/theme
 ```
 
 编译期依赖保持单向：`@soybeanjs/ui` 只从

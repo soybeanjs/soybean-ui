@@ -29,7 +29,7 @@
                 "resolvedType": null,
                 "description": "",
                 "descriptionKey": null,
-                "sourcePath": "node_modules/.pnpm/@soybeanjs+shadcn-theme@0.3.4/node_modules/@soybeanjs/shadcn-theme/dist/index.d.ts",
+                "sourcePath": "packages/theme/dist/index.d.ts",
                 "typeParameters": [],
                 "external": true,
                 "members": [],

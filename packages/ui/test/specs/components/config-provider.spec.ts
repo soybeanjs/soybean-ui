@@ -1,9 +1,32 @@
-import { afterEach, describe, expect, it } from 'vitest';
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+import { nextTick } from 'vue';
 import { mount } from '@vue/test-utils';
+import { createTheme } from '@soybeanjs/theme';
+import { THEME_STORAGE_KEY, getStoredThemeConfig } from '@soybeanjs/theme/storage';
 import SAccordion from '@/components/accordion/accordion.vue';
 import SConfigProvider from '@/components/config-provider/config-provider.vue';
 import SIcon from '@/components/icon/icon.vue';
 import { getA11yViolations } from '../../shared/a11y';
+
+// 部分 mock 主题引擎：保留真实实现，仅包装 createTheme / getStoredThemeConfig
+// 以便断言派生与存储读取的次数。
+vi.mock('@soybeanjs/theme', async importOriginal => {
+  const actual = await importOriginal<typeof import('@soybeanjs/theme')>();
+
+  return {
+    ...actual,
+    createTheme: vi.fn(actual.createTheme)
+  };
+});
+
+vi.mock('@soybeanjs/theme/storage', async importOriginal => {
+  const actual = await importOriginal<typeof import('@soybeanjs/theme/storage')>();
+
+  return {
+    ...actual,
+    getStoredThemeConfig: vi.fn(actual.getStoredThemeConfig)
+  };
+});
 
 const accordionItems = [{ value: 'item-1', title: 'Section One', description: 'Content for section one.' }];
 
@@ -13,8 +36,9 @@ function getStyleEl(id: string): HTMLStyleElement | null {
 
 describe('SConfigProvider', () => {
   afterEach(() => {
-    // useStyleTag leaves style elements in <head>; clear them between tests so
-    // assertions about presence/content are not polluted by prior mounts.
+    // useStyleTag (headless utilities) leaves style elements in <head>; the
+    // inline theme <style> is removed with the component tree on unmount. Clear
+    // leftovers between tests so assertions are not polluted by prior mounts.
     getStyleEl('__SoybeanUI_theme')?.remove();
     getStyleEl('__SoybeanHeadless_Styles')?.remove();
     getStyleEl('__SoybeanUI_toastStyle')?.remove();
@@ -47,7 +71,7 @@ describe('SConfigProvider', () => {
   });
 
   describe('theme injection', () => {
-    it('injects theme CSS variables into the document head', () => {
+    it('renders inline theme CSS variables', () => {
       const wrapper = mount(SConfigProvider, {
         props: { theme: { base: 'gray', primary: 'violet' } },
         slots: { default: '<div />' },
@@ -209,6 +233,180 @@ describe('SConfigProvider', () => {
 
       const violations = await getA11yViolations(wrapper.element);
       expect(violations).toHaveLength(0);
+
+      wrapper.unmount();
+    });
+  });
+
+  describe('theme persistence', () => {
+    const createThemeMock = vi.mocked(createTheme);
+    const getStoredThemeConfigMock = vi.mocked(getStoredThemeConfig);
+
+    beforeEach(() => {
+      createThemeMock.mockClear();
+      getStoredThemeConfigMock.mockClear();
+      window.localStorage.clear();
+    });
+
+    it('reuses the derived theme when props stay stable (cacheThemeConfig=true)', async () => {
+      const wrapper = mount(SConfigProvider, {
+        props: { persistTheme: true, theme: { base: 'gray' } },
+        slots: { default: '<div />' },
+        attachTo: document.body
+      });
+
+      expect(createThemeMock).toHaveBeenCalledTimes(1);
+
+      // 无关 prop 变化触发重渲染，但不重新派生主题（内存缓存命中）
+      await wrapper.setProps({ dir: 'rtl' });
+
+      expect(createThemeMock).toHaveBeenCalledTimes(1);
+
+      wrapper.unmount();
+    });
+
+    it('invalidates the derived theme when the theme prop changes', async () => {
+      const wrapper = mount(SConfigProvider, {
+        props: { persistTheme: true, theme: { base: 'gray' } },
+        slots: { default: '<div />' },
+        attachTo: document.body
+      });
+
+      expect(createThemeMock).toHaveBeenCalledTimes(1);
+
+      await wrapper.setProps({ theme: { base: 'slate' } });
+
+      expect(createThemeMock).toHaveBeenCalledTimes(2);
+
+      wrapper.unmount();
+    });
+
+    it('invalidates the cache on a storage event for the theme key', async () => {
+      const wrapper = mount(SConfigProvider, {
+        props: { persistTheme: true, cacheThemeConfig: true, theme: { base: 'gray' } },
+        slots: { default: '<div />' },
+        attachTo: document.body
+      });
+
+      expect(createThemeMock).toHaveBeenCalledTimes(1);
+
+      // 跨标签页写入：storage 事件置脏缓存，下一渲染重读存储并重新派生
+      window.dispatchEvent(new StorageEvent('storage', { key: THEME_STORAGE_KEY }));
+
+      await nextTick();
+
+      expect(createThemeMock).toHaveBeenCalledTimes(2);
+
+      wrapper.unmount();
+    });
+
+    it('does not watch storage when cacheThemeConfig=false', async () => {
+      const wrapper = mount(SConfigProvider, {
+        props: { persistTheme: true, cacheThemeConfig: false, theme: { base: 'gray' } },
+        slots: { default: '<div />' },
+        attachTo: document.body
+      });
+
+      expect(createThemeMock).toHaveBeenCalledTimes(1);
+
+      window.dispatchEvent(new StorageEvent('storage', { key: THEME_STORAGE_KEY }));
+
+      await nextTick();
+
+      // 关闭缓存时不注册 storage 监听，主题不重派生
+      expect(createThemeMock).toHaveBeenCalledTimes(1);
+
+      wrapper.unmount();
+    });
+
+    it('fills keys not provided by theme from the injected themeConfig (SSR)', () => {
+      const wrapper = mount(SConfigProvider, {
+        props: {
+          persistTheme: true,
+          theme: { base: 'gray' },
+          themeConfig: { base: 'slate', format: 'oklch' }
+        },
+        slots: { default: '<div />' },
+        attachTo: document.body
+      });
+
+      // 显式 base 优先（gray）；themeConfig 的 format 补位（oklch）
+      const lastTheme = createThemeMock.mock.calls.at(-1)?.[0];
+      expect(lastTheme?.base).toBe('gray');
+      expect(lastTheme?.format).toBe('oklch');
+
+      // themeConfig 注入时无需读取 localStorage
+      expect(getStoredThemeConfigMock).not.toHaveBeenCalled();
+
+      wrapper.unmount();
+    });
+
+    it('prefers an inline preset over a stored { presetName } reference', () => {
+      window.localStorage.setItem(
+        'soybean-ui-theme-presets',
+        JSON.stringify({
+          version: 1,
+          presets: {
+            stored: { name: 'stored', version: '1.0.0', light: { primary: 'red.600' } }
+          }
+        })
+      );
+
+      const wrapper = mount(SConfigProvider, {
+        props: {
+          persistTheme: true,
+          theme: { preset: { light: { primary: 'blue.600' } } }
+        },
+        slots: { default: '<div />' },
+        attachTo: document.body
+      });
+
+      // 内联 preset 直接使用，不经过存储解析
+      expect(createThemeMock.mock.calls.at(-1)?.[0]?.preset).toEqual({ light: { primary: 'blue.600' } });
+
+      wrapper.unmount();
+    });
+
+    it('falls back to built-in colors and warns on the server when a preset reference is missing', () => {
+      const warnSpy = vi.spyOn(console, 'warn').mockImplementation(() => {});
+
+      const wrapper = mount(SConfigProvider, {
+        props: {
+          persistTheme: true,
+          // SSR 语义：preset 缺失是真实问题（会与客户端产生主题闪烁），故告警
+          isServer: true,
+          theme: { preset: { presetName: 'missing' } }
+        },
+        slots: { default: '<div />' },
+        attachTo: document.body
+      });
+
+      expect(warnSpy).toHaveBeenCalledWith(expect.stringContaining('preset "missing" not found'));
+
+      // 回退内置：仍生成主题 CSS
+      expect(getStyleEl('__SoybeanUI_theme')?.textContent).toContain('--');
+
+      warnSpy.mockRestore();
+      wrapper.unmount();
+    });
+
+    it('ignores persistence props when persistTheme is disabled', () => {
+      const wrapper = mount(SConfigProvider, {
+        props: {
+          persistTheme: false,
+          theme: { base: 'gray' },
+          themeConfig: { base: 'slate', format: 'oklch' }
+        },
+        slots: { default: '<div />' },
+        attachTo: document.body
+      });
+
+      const lastTheme = createThemeMock.mock.calls.at(-1)?.[0];
+      expect(lastTheme?.base).toBe('gray');
+      expect(lastTheme?.format).toBeUndefined();
+
+      // 持久化管道短路：不读取任何存储
+      expect(getStoredThemeConfigMock).not.toHaveBeenCalled();
 
       wrapper.unmount();
     });

@@ -249,7 +249,6 @@ const themeConfig = {
   theme: {
     base: 'gray',
     primary: 'indigo',
-    feedback: 'classic',
     radius: '0.625rem'
   },
   size: 'md'

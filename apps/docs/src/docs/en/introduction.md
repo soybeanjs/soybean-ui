@@ -63,10 +63,10 @@ arrows below mean “depends on”:
 ```
 Consumer ──> @soybeanjs/ui ──> @soybeanjs/headless
                     │
-                    └───────> @soybeanjs/shadcn-theme
+                    └───────> @soybeanjs/theme
 
 UnoCSS config ──> @soybeanjs/unocss-shadcn
-                    └───────> @soybeanjs/shadcn-theme
+                    └───────> @soybeanjs/theme
 ```
 
 The compile-time dependency is one-way: `@soybeanjs/ui` imports public

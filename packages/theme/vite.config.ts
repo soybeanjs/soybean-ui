@@ -3,7 +3,7 @@ import pkg from './package.json' with { type: 'json' };
 
 export default defineConfig({
   pack: {
-    entry: ['src/index.ts'],
+    entry: ['src/index.ts', 'src/storage.ts', 'src/ssr.ts'],
     platform: 'neutral',
     target: 'esnext',
     clean: true,
@@ -16,6 +16,7 @@ export default defineConfig({
   },
   test: {
     globals: true,
+    environment: 'happy-dom',
     include: ['test/**/*.spec.ts']
   }
 });

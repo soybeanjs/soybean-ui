@@ -1,41 +1,20 @@
 import { computed } from 'vue';
 import { useStorage } from '@vueuse/core';
 import { useContext } from '@soybeanjs/headless/composables';
-import type {
-  BuiltinBasePresetKey,
-  BuiltinFeedbackPresetKey,
-  BuiltinPrimaryPresetKey,
-  ThemeRadius
-} from '@soybeanjs/shadcn-theme';
-import type { ConfigProviderProps, ThemeSize, Direction } from '@soybeanjs/ui';
+import type { ConfigProviderProps, Direction } from '@soybeanjs/ui';
 
-export const [provideThemeContext, useTheme] = useContext('ThemeContext', () => {
-  const base = useStorage<BuiltinBasePresetKey>('base', 'zinc');
-  const primary = useStorage<BuiltinPrimaryPresetKey>('primary', 'indigo');
-  const feedback = useStorage<BuiltinFeedbackPresetKey>('feedback', 'classic');
-  const radius = useStorage<ThemeRadius>('radius', 'md');
-  const size = useStorage<ThemeSize>('size', 'md');
+/**
+ * 页面级配置上下文：dir / locale。
+ *
+ * 主题状态（base / primary / radius / size / mode）与自定义 preset 已收敛到
+ * 库内 `SConfigProvider`（见 `@soybeanjs/ui` 的 `useTheme`），由 `persistTheme`
+ * 负责 localStorage + cookie 持久化。这里只保留不属于主题的国际化状态
+ * （dir / locale），并产出传给 `SConfigProvider` 的 props。
+ */
+export const [provideThemeContext, useTheme] = useContext('UiPageContext', () => {
   const direction = useStorage<Direction>('direction', 'ltr');
   const locale = useStorage('locale', 'en');
 
-  const configProviderProps = computed<ConfigProviderProps>(() => ({
-    theme: {
-      size: size.value,
-      base: base.value,
-      primary: primary.value,
-      feedback: feedback.value,
-      radius: radius.value
-    },
-    dir: direction.value,
-    locale: locale.value
-  }));
-
-  const setRadius = (value: ThemeRadius) => {
-    radius.value = value;
-  };
-  const setSize = (value: ThemeSize) => {
-    size.value = value;
-  };
   const setDirection = (value: Direction) => {
     direction.value = value;
   };
@@ -44,18 +23,18 @@ export const [provideThemeContext, useTheme] = useContext('ThemeContext', () => 
     locale.value = value;
   };
 
+  const configProviderProps = computed<ConfigProviderProps>(() => ({
+    dir: direction.value,
+    locale: locale.value,
+    // 主题状态由库内 SConfigProvider 统一持久化（localStorage + cookie）
+    persistTheme: true
+  }));
+
   return {
-    base,
-    primary,
-    feedback,
-    radius,
-    size,
     direction,
     locale,
-    configProviderProps,
-    setRadius,
-    setSize,
     setDirection,
-    setLocale
+    setLocale,
+    configProviderProps
   };
 });

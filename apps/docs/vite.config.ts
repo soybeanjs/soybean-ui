@@ -1,5 +1,5 @@
 import { URL, fileURLToPath } from 'node:url';
-import { defineConfig } from 'vite';
+import { defineConfig } from 'vite-plus';
 import Vue from '@vitejs/plugin-vue';
 import VueJsx from '@vitejs/plugin-vue-jsx';
 import MetaLayouts from 'vite-plugin-vue-meta-layouts';
@@ -10,6 +10,7 @@ import AutoImport from 'unplugin-auto-import/vite';
 import { VueRouterAutoImports } from 'vue-router/unplugin';
 import VueRouter from 'vue-router/vite';
 import Unocss from 'unocss/vite';
+import { createThemeInitScript } from '@soybeanjs/theme/ssr';
 import Shiki from '@shikijs/markdown-exit';
 import { unheadVueComposablesImports } from '@unhead/vue';
 import UiResolver from '../../packages/ui/src/resolver';
@@ -76,6 +77,11 @@ export default defineConfig({
     formatting: 'minify',
     beastiesOptions: {
       reduceInlineStyles: false
+    },
+    // 在预渲染 HTML 的 <head> 内联主题初始化脚本，刷新时首帧即应用
+    // 持久化主题（localStorage），避免默认主题 → 持久化主题的闪烁。
+    onBeforePageRender(_route, indexHTML) {
+      return indexHTML.replace('</head>', `<script>${createThemeInitScript()}</script></head>`);
     },
     onFinished() {
       generateSitemap();

@@ -20,7 +20,7 @@
     {
       "path": "packages/ui/src/styles/time-range-field.ts",
       "type": "registry:style",
-      "content": "export { dateRangeFieldVariants as timeRangeFieldVariants } from './date-range-field';\n"
+      "content": "// @unocss-include\nexport { dateRangeFieldVariants as timeRangeFieldVariants } from './date-range-field';\n"
     },
     {
       "path": "packages/ui/src/theme/index.ts",

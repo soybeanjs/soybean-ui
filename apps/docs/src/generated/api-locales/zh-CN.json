@@ -9342,12 +9342,11 @@
       "packages_headless_src_types_vue": {
         "baseprops": ""
       },
-      "packages_shadcn_theme_dist_index_d": {
+      "packages_theme_dist_index_d": {
         "themeoptions": {
           "members": {
             "base": "基础颜色键",
             "darkselector": "深色模式选择器\n\n- 类名：\".dark\"\n- 媒体查询：\"@media (prefers-color-scheme: dark)\"\n- 自定义：自定义深色模式选择器，例如 \".custom-dark\"",
-            "feedback": "反馈颜色键",
             "format": "颜色输出格式\n\n- hsl：\"h s l [/ alpha]\"，例如 \"0 0% 100% / 0.1\"\n- oklch：\"oklch(l c h [/ alpha])\"，例如 \"oklch(0 0 0 / 0.1)\"",
             "menuaccent": "菜单强调样式\n\n- 微妙：低饱和度的前景色高亮\n- 粗体：主色高亮",
             "menucolor": "菜单颜色样式\n\n- default：普通弹出框背景\n- inverted：深色卡片背景\n- default-translucent：带背景模糊效果的弹出框\n- inverted-translucent：带背景模糊效果的深色卡片",

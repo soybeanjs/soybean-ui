@@ -29,6 +29,10 @@ export type {
   SidebarPreset,
   ThemeColorPreset,
   CustomThemeColorPreset,
+  ThemePresetRef,
+  ThemePresetInput,
+  StoredThemePreset,
+  StoredThemePresets,
   StyleTarget,
   DarkSelector,
   ColorFormat,
@@ -41,5 +45,10 @@ export type {
   DarkLevelOffset,
   ThemeOptions,
   RequiredThemeOptions,
-  BaseThemeOptions
+  BaseThemeOptions,
+  ThemeConfigState,
+  ThemeCookieOptions,
+  ThemeInitScriptOptions,
+  ThemeStoreOptions,
+  ThemeStore
 } from './types';

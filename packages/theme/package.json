@@ -27,6 +27,16 @@
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js",
       "require": "./dist/index.js"
+    },
+    "./storage": {
+      "types": "./dist/storage.d.ts",
+      "import": "./dist/storage.js",
+      "require": "./dist/storage.js"
+    },
+    "./ssr": {
+      "types": "./dist/ssr.d.ts",
+      "import": "./dist/ssr.js",
+      "require": "./dist/ssr.js"
     }
   },
   "publishConfig": {
@@ -42,6 +52,7 @@
   },
   "devDependencies": {
     "@soybeanjs/shadcn-theme": "workspace:^",
+    "happy-dom": "^20.11.1",
     "typescript": "7.0.2",
     "vite-plus": "catalog:",
     "vitest": "4.1.10"
